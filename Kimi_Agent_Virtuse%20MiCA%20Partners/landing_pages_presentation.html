@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Virtuse Landing Pages Presentation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+/* ===== PAGE SETUP ===== */
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+@page :first { margin: 0; }
+
+/* ===== COVER ===== */
+.cover {
+  width: 297mm;
+  height: 210mm;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  page-break-after: always;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 70%);
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247,147,26,0.06) 0%, transparent 70%);
+}
+
+.cover-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #f7931a;
+}
+
+.cover-icon {
+  width: 60px;
+  height: 60px;
+  background: #f7931a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 28px;
+  color: white;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #f7931a;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover h1 {
+  font-size: 42px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover h1 span { color: #f7931a; }
+
+.cover p {
+  font-size: 15px;
+  color: #8b949e;
+  max-width: 500px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-meta {
+  position: absolute;
+  bottom: 40px;
+  font-size: 11px;
+  color: #484f58;
+  letter-spacing: 1px;
+}
+
+/* ===== PAGE SLIDE ===== */
+.page-slide {
+  width: 297mm;
+  height: 210mm;
+  background: #0d1117;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  page-break-after: always;
+}
+
+.page-slide:last-child { page-break-after: auto; }
+
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.slide-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+}
+
+.slide-logo-icon {
+  width: 28px;
+  height: 28px;
+  background: #f7931a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  color: white;
+}
+
+.slide-tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: #f7931a;
+  background: rgba(247,147,26,0.1);
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.slide-content {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+  min-height: 0;
+}
+
+.slide-left {
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-left h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.slide-left h2 .highlight { color: #f7931a; }
+
+.slide-left p {
+  font-size: 12px;
+  color: #8b949e;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.slide-features {
+  list-style: none;
+  padding: 0;
+}
+
+.slide-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 11px;
+  color: #e6edf3;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.slide-features li svg {
+  width: 16px;
+  height: 16px;
+  color: #f7931a;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.slide-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #161b22;
+  border-radius: 12px;
+  border: 1px solid #30363d;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.slide-right .img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(13,17,23,0.8) 0%, transparent 100%);
+}
+
+/* Stats row on slide */
+.slide-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+}
+
+.stat-label {
+  font-size: 9px;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Divider */
+.divider {
+  width: 40px;
+  height: 3px;
+  background: #f7931a;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+/* Full page slide */
+.full-slide {
+  width: 297mm;
+  height: 210mm;
+  background: #0d1117;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  page-break-after: always;
+}
+
+.full-slide-header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.full-slide img {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Overview slide */
+.overview {
+  width: 297mm;
+  height: 210mm;
+  background: #0d1117;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+}
+
+.overview h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.overview h2 span { color: #f7931a; }
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  flex: 1;
+}
+
+.overview-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.overview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #f7931a;
+}
+
+.overview-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.overview-card p {
+  font-size: 11px;
+  color: #8b949e;
+  line-height: 1.6;
+}
+
+.overview-card .card-stat {
+  font-size: 24px;
+  font-weight: 800;
+  color: #f7931a;
+  margin-top: 12px;
+}
+
+/* Partner list table */
+.partner-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.partner-table th {
+  text-align: left;
+  font-size: 9px;
+  color: #484f58;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 8px;
+  border-bottom: 1px solid #30363d;
+}
+
+.partner-table td {
+  font-size: 10px;
+  color: #e6edf3;
+  padding: 8px;
+  border-bottom: 1px solid #1c2128;
+}
+
+.partner-table td.muted { color: #8b949e; }
+
+.partner-table td.commission {
+  color: #f7931a;
+  font-weight: 600;
+}
+
+.slide-footer {
+  position: absolute;
+  bottom: 16px;
+  right: 40px;
+  font-size: 9px;
+  color: #484f58;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div class="cover-bar"></div>
+  <div class="cover-icon">V</div>
+  <div class="cover-label">Landing Page Portfolio</div>
+  <h1>Virtuse <span>Bitcoin-Only</span><br>Web Platform Preview</h1>
+  <p>Three landing pages designed for the Virtuse Hub —<br>showcasing referral partners across Buy, Mine, and Secure categories</p>
+  <div class="cover-meta">VIRTUSE WEALTH MANAGEMENT, A.S. — JUNE 2026</div>
+</div>
+
+<!-- ==================== OVERVIEW ==================== -->
+<div class="overview">
+  <h2>Platform <span>Overview</span></h2>
+  <div class="overview-grid">
+    <div class="overview-card">
+      <h3>1. Home / Hub</h3>
+      <p>The central gateway page positioning Virtuse as the global hub for Bitcoin-only services. Features the orbiting partner diagram, stats row, and trust badges.</p>
+      <div class="card-stat">1 Page</div>
+    </div>
+    <div class="overview-card">
+      <h3>2. Buy Bitcoin</h3>
+      <p>MiCA-licensed CASP referral page featuring Relai, 21bitcoin, Bitpanda, and Coinbase. Four-step how-it-works flow with partner cards.</p>
+      <div class="card-stat">4 Partners</div>
+    </div>
+    <div class="overview-card">
+      <h3>3. Mining</h3>
+      <p>Bitcoin mining hosting referral page with OneMiners, NiceHash, Abundant Mines, Bitkern, and Power Mining. Three-column card grid.</p>
+      <div class="card-stat">5 Partners</div>
+    </div>
+  </div>
+  <div style="margin-top: 24px;">
+    <table class="partner-table">
+      <thead>
+        <tr><th>Page</th><th>Partners</th><th>Revenue Model</th><th>Est. Y1 Revenue</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Buy Bitcoin</td><td class="muted">Relai, 21bitcoin, Bitpanda, Coinbase</td><td>CPA + Revenue Share</td><td class="commission">EUR 23K-70K</td></tr>
+        <tr><td>Mining</td><td class="muted">OneMiners, NiceHash, Abundant Mines, Bitkern, Power Mining</td><td>CPA + Rev Share</td><td class="commission">EUR 50K-150K</td></tr>
+        <tr><td><strong>Total</strong></td><td class="muted"><strong>9 partners across 2 pages</strong></td><td></td><td class="commission"><strong>EUR 73K-220K</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== PAGE 1: HOME/HUB ==================== -->
+<div class="page-slide">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="slide-logo-icon">V</div>Virtuse</div>
+    <div class="slide-tag">Page 1 of 3</div>
+  </div>
+  <div class="slide-content">
+    <div class="slide-left">
+      <h2>The Global Hub for <span class="highlight">Bitcoin-Only</span> Services</h2>
+      <div class="divider"></div>
+      <p>The central gateway page positioning Virtuse as Europe's Bitcoin-only service hub. Features the orbiting partner diagram showing all 6 service categories connected to Virtuse.</p>
+      <ul class="slide-features">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Dark theme with Bitcoin orange accents</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Animated hub visual with 6 orbiting nodes</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Stats row: 26 partners, 6 categories, 27 EU countries</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trust badges: Non-custodial, MiCA-compliant, Bitcoin-only</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Partner logo strip at bottom</li>
+      </ul>
+      <div class="slide-stats">
+        <div class="stat-item"><div class="stat-num">26</div><div class="stat-label">Partners</div></div>
+        <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Categories</div></div>
+        <div class="stat-item"><div class="stat-num">27</div><div class="stat-label">EU States</div></div>
+      </div>
+    </div>
+    <div class="slide-right">
+      <img src="/mnt/agents/output/screenshot_hero.png" alt="Virtuse Home Page">
+      <div class="img-overlay"></div>
+    </div>
+  </div>
+  <div class="slide-footer">CONFIDENTIAL — VIRTUSE INTERNAL</div>
+</div>
+
+<!-- ==================== PAGE 2: BUY BITCOIN ==================== -->
+<div class="page-slide">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="slide-logo-icon">V</div>Virtuse</div>
+    <div class="slide-tag">Page 2 of 3</div>
+  </div>
+  <div class="slide-content">
+    <div class="slide-left">
+      <h2>Buy Bitcoin Through <span class="highlight">MiCA-Licensed Partners</span></h2>
+      <div class="divider"></div>
+      <p>Referral page for MiCA-licensed CASPs. Users choose a partner, click to their platform, complete KYC there, and buy Bitcoin with self-custody. Four-step how-it-works flow.</p>
+      <ul class="slide-features">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Relai — First Bitcoin-only MiCA CASP (TOP PICK)</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>21bitcoin — Austria FMA licensed, 0.79% fees</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Bitpanda — 3 MiCA licenses, 4M+ users</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Coinbase — CSSF Luxembourg, 100M+ users</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Commission disclosure on every card</li>
+      </ul>
+      <div class="slide-stats">
+        <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Partners</div></div>
+        <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Steps</div></div>
+        <div class="stat-item"><div class="stat-num">20-50%</div><div class="stat-label">Rev Share</div></div>
+      </div>
+    </div>
+    <div class="slide-right">
+      <img src="/mnt/agents/output/screenshot_buybitcoin.png" alt="Buy Bitcoin Page">
+      <div class="img-overlay"></div>
+    </div>
+  </div>
+  <div class="slide-footer">CONFIDENTIAL — VIRTUSE INTERNAL</div>
+</div>
+
+<!-- ==================== PAGE 3: MINING ==================== -->
+<div class="page-slide">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="slide-logo-icon">V</div>Virtuse</div>
+    <div class="slide-tag">Page 3 of 3</div>
+  </div>
+  <div class="slide-content">
+    <div class="slide-left">
+      <h2>Start Mining Bitcoin <span class="highlight">Through European Hosts</span></h2>
+      <div class="divider"></div>
+      <p>Mining hosting referral page. NOT MiCA-regulated — mining is a general business activity. Five hosting partners across Europe with rates from EUR 0.043/kWh in Norway.</p>
+      <ul class="slide-features">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>OneMiners — Up to $500 per order (TOP PICK)</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>NiceHash — 15% of mining fees in BTC</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Abundant Mines — $200 BTC per miner referred</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Bitkern — 85,000+ ASICs across 14 locations</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Power Mining — Open-source Bitaxe hardware</li>
+      </ul>
+      <div class="slide-stats">
+        <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Partners</div></div>
+        <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Countries</div></div>
+        <div class="stat-item"><div class="stat-num">0.043</div><div class="stat-label">EUR/kWh</div></div>
+      </div>
+    </div>
+    <div class="slide-right">
+      <img src="/mnt/agents/output/screenshot_mining.png" alt="Mining Page">
+      <div class="img-overlay"></div>
+    </div>
+  </div>
+  <div class="slide-footer">CONFIDENTIAL — VIRTUSE INTERNAL</div>
+</div>
+
+<!-- ==================== FULL PAGE PREVIEWS ==================== -->
+<div class="full-slide">
+  <div class="full-slide-header">
+    <div class="slide-logo"><div class="slide-logo-icon">V</div>Virtuse</div>
+    <div class="slide-tag">Full Page Preview — Buy Bitcoin</div>
+  </div>
+  <img src="/mnt/agents/output/screenshot_buybitcoin.png" alt="Buy Bitcoin Full Page" style="object-fit: contain; background: #0d1117;">
+</div>
+
+<div class="full-slide">
+  <div class="full-slide-header">
+    <div class="slide-logo"><div class="slide-logo-icon">V</div>Virtuse</div>
+    <div class="slide-tag">Full Page Preview — Mining</div>
+  </div>
+  <img src="/mnt/agents/output/screenshot_mining.png" alt="Mining Full Page" style="object-fit: contain; background: #0d1117;">
+</div>
+
+</body>
+</html>

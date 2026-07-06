@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Treasury — Virtuse</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --btc-orange: #f7931a;
+  --btc-orange-light: #ffb84d;
+  --dark: #0d1117;
+  --dark-lighter: #161b22;
+  --dark-card: #1c2128;
+  --dark-card-hover: #232930;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+  --border: #30363d;
+  --border-hover: #484f58;
+  --green: #3fb950;
+  --green-bg: rgba(63, 185, 80, 0.1);
+  --blue: #58a6ff;
+  --purple: #9b59ff;
+  --section-spacing: 100px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  height: 32px; width: auto; display: block;
+  height: 32px;
+  
+  
+  
+  
+  justify-content: center;
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--btc-orange-light); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  
+  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero h1 .highlight { color: var(--btc-orange); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+/* ===== HOW IT WORKS ===== */
+.how {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.how-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 32px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.step {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.step:hover { border-color: var(--border-hover); }
+
+.step-num {
+  position: absolute;
+  top: -16px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 14px;
+  color: white;
+  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
+  z-index: 2;
+}
+
+.step h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.step p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== AUDIENCE ===== */
+.audience {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.audience-header {
+  margin-bottom: 32px;
+}
+
+.audience-header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.audience-header p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.audience-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: border-color 0.2s;
+}
+
+.audience-card:hover { border-color: var(--border-hover); }
+
+.audience-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  
+  
+  gap: 10px;
+}
+
+.audience-card h3 .icon {
+  font-size: 24px;
+}
+
+.audience-card .label {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.audience-features {
+  list-style: none;
+  padding: 0;
+}
+
+.audience-features li {
+  
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.audience-features li svg {
+  width: 16px;
+  height: 16px;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ===== PARTNERS ===== */
+.partners {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-header {
+  
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.sec-title h2 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.sec-title p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.sec-badge {
+  
+  
+  gap: 6px;
+  background: var(--green-bg);
+  color: var(--green);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Partner Card */
+.pcard {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.pcard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pcard:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.pcard:hover::before { opacity: 1; }
+
+.pcard-top-pick {
+  border-color: rgba(247, 147, 26, 0.3);
+}
+
+.pcard-top-pick::before {
+  opacity: 1;
+  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
+}
+
+.pcard-header {
+  
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pcard-logo {
+  
+  
+  gap: 14px;
+}
+
+.pcard-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  
+  
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.pcard-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.pcard-location {
+  font-size: 12px;
+  color: var(--text-dim);
+  
+  
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.pcard-tags {
+  
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.tag-orange { background: rgba(247, 147, 26, 0.12); color: var(--btc-orange); }
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-blue { background: rgba(88, 166, 255, 0.12); color: #58a6ff; }
+.tag-purple { background: rgba(155, 89, 255, 0.12); color: #9b59ff; }
+.tag-gray { background: rgba(139, 148, 158, 0.12); color: var(--text-muted); }
+
+.pcard-body {
+  margin-bottom: 24px;
+}
+
+.pcard-body p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.pcard-features {
+  list-style: none;
+  padding: 0;
+}
+
+.pcard-features li {
+  
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.pcard-features li svg {
+  width: 16px;
+  height: 16px;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pcard-features li span { color: var(--text-muted); }
+
+.pcard-footer {
+  
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  flex: 1;
+}
+
+.btn svg { width: 16px; height: 16px; }
+
+.btn-primary {
+  
+  color: white;
+}
+
+.btn-primary:hover { background: var(--btc-orange-light); transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
+
+/* ===== DISCLAIMER ===== */
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter p {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: var(--text);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: var(--btc-orange); color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-logo img {
+  height: 80px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-logo img:hover { opacity: 1; }
+
+.footer-columns {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-columns { gap: 40px; }
+  .footer-logo img { height: 60px; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 40px; }
+  .hero h1 { font-size: 36px; }
+  .how { padding: 0 24px 80px; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .audience { padding: 0 24px 80px; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .partners { padding: 0 24px 80px; }
+  .sec-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+
+@media (max-width: 500px) {
+  .steps { grid-template-columns: 1fr; }
+  .pcard-footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html" class="active">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+
+
+  <h1>Bitcoin Treasury Solutions For<br><span class="highlight">Corporations</span></h1>
+
+  <p class="hero-desc">
+    Board-ready Bitcoin treasury strategies for European companies. From educational workshops to regulated custody and execution &mdash; we connect you with the most trusted institutional partners in the EU. No custody by Virtuse.
+  </p>
+
+
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how">
+  <div class="how-title">How It Works</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Education</h3>
+      <p>Board workshop on Bitcoin treasury strategy and risk framework</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Partner Selection</h3>
+      <p>Choose regulated custody + execution provider</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Implementation</h3>
+      <p>Execute allocation through licensed CASP partner</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Ongoing Management</h3>
+      <p>Reporting, rebalancing, and governance</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUDIENCE ===== -->
+<section class="audience">
+  <div class="audience-header">
+    <h2>Who We Serve</h2>
+    <p>Tailored treasury solutions for different types of institutional clients</p>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <h3><span class="icon">&#127970;</span> Public Companies</h3>
+      <div class="label">Treasury &amp; Board Solutions</div>
+      <ul class="audience-features">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Board workshops on Bitcoin treasury strategy</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Treasury allocation strategy and risk frameworks</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Shareholder communication templates</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Regulated custody and execution partner matching</li>
+      </ul>
+    </div>
+    <div class="audience-card">
+      <h3><span class="icon">&#127942;</span> Family Offices</h3>
+      <div class="label">HNWI &amp; Wealth Preservation</div>
+      <ul class="audience-features">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> HNWI allocation models for Bitcoin exposure</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Custody comparison across licensed providers</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Estate planning with Bitcoin assets</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Quarterly portfolio reviews and rebalancing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNERS ===== -->
+<section class="partners">
+  <div class="sec-header">
+    <div class="sec-title">
+      <h2>Our Institutional Partners</h2>
+      <p>MiCA-licensed custodians and execution platforms for corporate treasuries</p>
+    </div>
+    <div class="sec-badge">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      3 Licensed Partners
+    </div>
+  </div>
+
+  <div class="partner-grid">
+
+    <!-- COINBASE INSTITUTIONAL -->
+    <div class="pcard pcard-top-pick">
+      <div class="pcard-header">
+        <div class="pcard-logo">
+          <div class="pcard-icon" style="background: linear-gradient(135deg, #0052FF, #4B83FF); color: white;">CI</div>
+          <div>
+            <div class="pcard-name">Coinbase Institutional</div>
+            <div class="pcard-location">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              Luxembourg (CSSF MiCA)
+            </div>
+          </div>
+        </div>
+        <div class="pcard-tags">
+        </div>
+      </div>
+      <div class="pcard-body">
+        <p><strong>The largest regulated crypto custodian globally.</strong> MiCA CASP licensed via CSSF Luxembourg &mdash; passported to all 27 EU states. 13+ years track record. Coinbase Prime offers custody, execution, algorithmic trading, and financing. $320M cold storage coverage. SOC 2 Type II.</p>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCA across all <strong>27 EU states</strong></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>$320M</strong> insurance coverage</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Coinbase Prime <span>(custody + execution)</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>100M+</strong> verified users</li>
+        </ul>
+      </div>
+      
+      <div class="pcard-footer">
+        <a href="https://coinbase.com/institutional" target="_blank" class="btn btn-primary">
+          Contact Coinbase
+          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+    <!-- SYGNUM -->
+    <div class="pcard">
+      <div class="pcard-header">
+        <div class="pcard-logo">
+          <div class="pcard-icon" style="background: linear-gradient(135deg, #7B3FE4, #9B59FF); color: white;">Sy</div>
+          <div>
+            <div class="pcard-name">Sygnum</div>
+            <div class="pcard-location">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              Switzerland (FINMA)
+            </div>
+          </div>
+        </div>
+        <div class="pcard-tags">
+          <span class="tag tag-gray">DISCRETIONARY</span>
+        </div>
+      </div>
+      <div class="pcard-body">
+        <p><strong>The world's first regulated digital asset bank.</strong> FINMA banking license. Sygnum Select offers discretionary mandates for corporate treasuries with $200M AuM. Active management including rebalancing, staking, and hedging. Swiss banking standard.</p>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>FINMA banking license</strong> <span>(not just CASP)</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Discretionary treasury mandates</strong></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>CHF 4B+</strong> AuA</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Active management <span>(rebalancing, staking, hedging)</span></li>
+        </ul>
+      </div>
+      
+      <div class="pcard-footer">
+        <a href="https://sygnum.com" target="_blank" class="btn btn-primary">
+          Contact Sygnum
+          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+    <!-- BITGO -->
+    <div class="pcard">
+      <div class="pcard-header">
+        <div class="pcard-logo">
+          <div class="pcard-icon" style="background: linear-gradient(135deg, #2a2a2a, #484f58); color: white;">BG</div>
+          <div>
+            <div class="pcard-name">BitGo</div>
+            <div class="pcard-location">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              Germany (BaFin MiCA)
+            </div>
+          </div>
+        </div>
+        <div class="pcard-tags">
+          <span class="tag tag-gray">API</span>
+        </div>
+      </div>
+      <div class="pcard-body">
+        <p><strong>Leading institutional custodian with MiCA CASP license</strong> via BaFin Germany. $250M insurance coverage. ETP-grade custody serving Virtune and others. Strongest API for integration. Already serves 21bitcoin &mdash; proven European infrastructure.</p>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCA via <strong>BaFin (Germany)</strong></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>$250M</strong> insurance coverage</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> ETP-grade custody</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Strongest API</strong> <span>for integration</span></li>
+        </ul>
+      </div>
+      
+      <div class="pcard-footer">
+        <a href="https://bitgo.com" target="_blank" class="btn btn-primary">
+          Contact BitGo
+          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== DISCLAIMER ===== -->
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank">AMLD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

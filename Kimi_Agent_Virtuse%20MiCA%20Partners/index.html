@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtuse — The World's First Hub for Bitcoin-Only Services</title>
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --btc-orange: #f7931a;
+  --btc-orange-light: #ffb84d;
+  --btc-gold: #ffd700;
+  --btc-dark: #c47a14;
+  --dark: #0d1117;
+  --dark-lighter: #161b22;
+  --dark-card: #1c2128;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+  --border: #30363d;
+  --green: #3fb950;
+  --green-bg: rgba(63, 185, 80, 0.1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+
+
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  background: var(--btc-orange);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--btc-orange-light); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(247, 147, 26, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 147, 26, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 70%);
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 40px 48px 80px;
+  position: relative;
+  z-index: 5;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(247, 147, 26, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--btc-orange);
+  margin-bottom: 28px;
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--btc-orange);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-headline {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero-headline .highlight { color: var(--btc-orange); }
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  max-width: 520px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.stat { display: flex; flex-direction: column; }
+.stat-number { font-size: 28px; font-weight: 800; }
+.stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.hero-buttons { display: flex; gap: 16px; margin-bottom: 40px; }
+
+.btn-primary {
+  background: var(--btc-orange); color: white; border: none; padding: 14px 32px;
+  border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer;
+  transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--btc-orange-light); transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent; color: var(--text); border: 1px solid var(--border);
+  padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 15px;
+  cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
+
+.hero-trust { display: flex; align-items: center; gap: 20px; font-size: 13px; flex-wrap: wrap; }
+
+.trust-check {
+  display: flex; align-items: center; gap: 6px; color: var(--green);
+  background: var(--green-bg); padding: 4px 12px; border-radius: 6px; font-weight: 500;
+}
+
+/* ===== 3D BITCOIN BLOOM (Right Side) ===== */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 500px;
+  perspective: 1200px;
+}
+
+.bloom-container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: bloomRotate 20s linear infinite;
+}
+
+@keyframes bloomRotate {
+  from { transform: rotateX(15deg) rotateY(0deg); }
+  to { transform: rotateX(15deg) rotateY(360deg); }
+}
+
+/* Center core */
+.bloom-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  background: radial-gradient(circle, #f7931a 0%, #c47a14 50%, transparent 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(247, 147, 26, 0.6), 0 0 120px rgba(247, 147, 26, 0.2);
+  z-index: 10;
+}
+
+.bloom-core::after {
+  content: 'B';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  font-size: 28px;
+  color: white;
+  text-shadow: 0 0 20px rgba(247, 147, 26, 0.8);
+}
+
+/* Petal layers */
+.petal-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+.petal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  border-radius: 50% 50% 50% 0;
+  opacity: 0.7;
+  backface-visibility: visible;
+}
+
+/* Ring 1 - Inner (8 petals) */
+.ring-1 {
+  width: 0;
+  height: 0;
+  animation: ring1Spin 8s linear infinite;
+}
+
+@keyframes ring1Spin {
+  from { transform: translate(-50%, -50%) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateZ(-360deg); }
+}
+
+.ring-1 .petal {
+  width: 80px;
+  height: 100px;
+  margin: -50px 0 0 -40px;
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.8), rgba(255, 184, 77, 0.4));
+  box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+}
+
+/* Ring 2 - Middle (12 petals) */
+.ring-2 {
+  width: 0;
+  height: 0;
+  animation: ring2Spin 12s linear infinite;
+}
+
+@keyframes ring2Spin {
+  from { transform: translate(-50%, -50%) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateZ(360deg); }
+}
+
+.ring-2 .petal {
+  width: 110px;
+  height: 140px;
+  margin: -70px 0 0 -55px;
+  background: linear-gradient(135deg, rgba(255, 184, 77, 0.6), rgba(247, 147, 26, 0.3));
+  border: 1px solid rgba(247, 147, 26, 0.2);
+}
+
+/* Ring 3 - Outer (16 petals) */
+.ring-3 {
+  width: 0;
+  height: 0;
+  animation: ring3Spin 16s linear infinite;
+}
+
+@keyframes ring3Spin {
+  from { transform: translate(-50%, -50%) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateZ(-360deg); }
+}
+
+.ring-3 .petal {
+  width: 140px;
+  height: 180px;
+  margin: -90px 0 0 -70px;
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.3), rgba(196, 122, 20, 0.15));
+  border: 1px solid rgba(247, 147, 26, 0.15);
+}
+
+/* Orbiting particles */
+.orbit-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--btc-orange);
+  box-shadow: 0 0 10px rgba(247, 147, 26, 0.5);
+}
+
+.orbit-1 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  margin: -4px 0 0 -4px;
+  animation: orbit1 6s linear infinite;
+}
+
+@keyframes orbit1 {
+  from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+}
+
+.orbit-2 {
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  background: var(--btc-orange-light);
+  animation: orbit2 10s linear infinite;
+}
+
+@keyframes orbit2 {
+  from { transform: rotate(180deg) translateX(180px) rotate(-180deg); }
+  to { transform: rotate(540deg) translateX(180px) rotate(-540deg); }
+}
+
+.orbit-3 {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  margin: -5px 0 0 -5px;
+  background: rgba(255, 215, 0, 0.8);
+  animation: orbit3 14s linear infinite;
+}
+
+@keyframes orbit3 {
+  from { transform: rotate(90deg) translateX(100px) rotate(-90deg); }
+  to { transform: rotate(450deg) translateX(100px) rotate(-450deg); }
+}
+
+/* Glow ring */
+.glow-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 360px;
+  height: 360px;
+  margin: -180px 0 0 -180px;
+  border: 1px solid rgba(247, 147, 26, 0.1);
+  border-radius: 50%;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* Second glow ring */
+.glow-ring-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 280px;
+  margin: -140px 0 0 -140px;
+  border: 1px solid rgba(247, 147, 26, 0.15);
+  border-radius: 50%;
+  animation: glowPulse2 5s ease-in-out infinite;
+}
+
+@keyframes glowPulse2 {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.95); }
+}
+
+/* ===== SERVICES SECTION ===== */
+.services {
+  padding: 100px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sec-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.sec-header h2 span { color: var(--btc-orange); }
+
+.sec-header p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.svc-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.svc-card:hover {
+  border-color: var(--btc-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(247, 147, 26, 0.08);
+}
+
+.svc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.svc-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.svc-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.svc-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--btc-orange);
+}
+
+.svc-meta svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ===== HOW IT WORKS ===== */
+.how {
+  padding: 0 48px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.how-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+}
+
+.how-num {
+  position: absolute;
+  top: -14px;
+  left: 24px;
+  width: 28px;
+  height: 28px;
+  background: var(--btc-orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: white;
+}
+
+.how-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 8px 0 8px;
+}
+
+.how-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== PARTNER LOGOS ===== */
+.partners-strip {
+  border-top: 1px solid var(--border);
+  padding: 40px 48px;
+}
+
+.partners-label {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.partner-logo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+
+.partner-logo:hover { opacity: 1; }
+
+/* ===== AS SEEN IN ===== */
+.as-seen {
+  padding: 60px 48px;
+  text-align: center;
+  background: var(--dark);
+}
+
+.as-seen h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text);
+  text-transform: none;
+  margin-bottom: 32px;
+  letter-spacing: 0;
+}
+
+.seen-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px 56px;
+  margin-bottom: 28px;
+}
+
+.seen-row:last-child { margin-bottom: 0; }
+
+.seen-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.seen-logo:hover { opacity: 1; color: var(--text); }
+
+/* Brand-specific font styling */
+.seen-forbes {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 31px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.seen-investing {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.seen-investing span {
+  font-weight: 400;
+  font-size: 0.75em;
+  margin-left: 1px;
+}
+
+.seen-hackernoon {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.seen-hackernoon span {
+  color: var(--btc-orange);
+  font-size: 0.85em;
+}
+
+.seen-ta3 {
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.seen-ta3 span {
+  background: var(--text-dim);
+  color: var(--dark);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  margin-left: 2px;
+}
+
+.seen-trend {
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+.seen-hn {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+
+.seen-hn span {
+  background: var(--text-dim);
+  color: var(--dark);
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-weight: 900;
+  font-size: 0.9em;
+  margin-right: 4px;
+}
+
+.seen-medium {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.seen-spotify {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.seen-spotify::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 6px;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.seen-spotify:hover::before { opacity: 1; background: var(--text); }
+
+.seen-dennik {
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.seen-dennik span {
+  display: inline-block;
+  background: var(--text-dim);
+  color: var(--dark);
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 2px;
+  font-size: 0.75em;
+  text-align: center;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .as-seen { padding: 40px 24px; }
+  .seen-row { gap: 20px 32px; }
+  .seen-logo { font-size: 19px; }
+  .seen-forbes { font-size: 26px; }
+  .seen-medium { font-size: 24px; }
+  .seen-hn { font-size: 16px; }
+}
+
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Crect fill='none' width='600' height='300'/%3E%3Cg fill='%2330363d' fill-opacity='0.25'%3E%3Ccircle cx='300' cy='80' r='1.5'/%3E%3Ccircle cx='280' cy='85' r='1.5'/%3E%3Ccircle cx='320' cy='85' r='1.5'/%3E%3Ccircle cx='260' cy='90' r='1.5'/%3E%3Ccircle cx='340' cy='90' r='1.5'/%3E%3Ccircle cx='250' cy='100' r='1.5'/%3E%3Ccircle cx='350' cy='100' r='1.5'/%3E%3Ccircle cx='240' cy='110' r='1.5'/%3E%3Ccircle cx='360' cy='110' r='1.5'/%3E%3Ccircle cx='230' cy='120' r='1.5'/%3E%3Ccircle cx='370' cy='120' r='1.5'/%3E%3Ccircle cx='220' cy='130' r='1.5'/%3E%3Ccircle cx='380' cy='130' r='1.5'/%3E%3Ccircle cx='210' cy='140' r='1.5'/%3E%3Ccircle cx='390' cy='140' r='1.5'/%3E%3Ccircle cx='200' cy='150' r='1.5'/%3E%3Ccircle cx='400' cy='150' r='1.5'/%3E%3Ccircle cx='190' cy='160' r='1.5'/%3E%3Ccircle cx='410' cy='160' r='1.5'/%3E%3Ccircle cx='180' cy='170' r='1.5'/%3E%3Ccircle cx='420' cy='170' r='1.5'/%3E%3Ccircle cx='170' cy='180' r='1.5'/%3E%3Ccircle cx='430' cy='180' r='1.5'/%3E%3Ccircle cx='160' cy='190' r='1.5'/%3E%3Ccircle cx='440' cy='190' r='1.5'/%3E%3Ccircle cx='150' cy='200' r='1.5'/%3E%3Ccircle cx='450' cy='200' r='1.5'/%3E%3Ccircle cx='140' cy='210' r='1.5'/%3E%3Ccircle cx='460' cy='210' r='1.5'/%3E%3Ccircle cx='130' cy='220' r='1.5'/%3E%3Ccircle cx='470' cy='220' r='1.5'/%3E%3Ccircle cx='120' cy='230' r='1.5'/%3E%3Ccircle cx='480' cy='230' r='1.5'/%3E%3Ccircle cx='110' cy='240' r='1.5'/%3E%3Ccircle cx='490' cy='240' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.newsletter h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter p {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: var(--text);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: var(--btc-orange); color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+}
+
+.footer-logo img {
+  height: 100px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-logo img:hover { opacity: 1; }
+
+.footer-columns {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+  .as-seen { padding: 40px 24px; }
+  .seen-row { gap: 20px 32px; }
+  .seen-logo { font-size: 19px; }
+  .seen-forbes { font-size: 26px; }
+  .seen-medium { font-size: 24px; }
+  .seen-hn { font-size: 16px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-columns { gap: 40px; }
+  .footer-logo img { height: 60px; }
+}
+
+/* ===== ANIMATIONS ===== */
+.anim-hidden { opacity: 0; transform: translateY(40px); }
+.anim-visible { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
+
+/* Floating particles */
+.particles-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: rgba(247, 147, 26, 0.3);
+  border-radius: 50%;
+  animation: float-up linear infinite;
+}
+@keyframes float-up {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* Hero letter slide-up */
+.hero-headline .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.hero-headline .word-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.hero-headline.animate .word-inner {
+  animation: letter-slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes letter-slide-up {
+  from { transform: translateY(110%); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+/* Card hover lift */
+.svc-card {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+.svc-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* "As seen in" logo shimmer */
+.seen-logo {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.seen-logo:hover {
+  transform: scale(1.08);
+}
+
+/* CTA button pulse */
+.btn-main {
+  position: relative;
+  overflow: hidden;
+}
+.btn-main::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+.btn-main:hover::after {
+  width: 300px; height: 300px;
+}
+
+/* Stat counter glow */
+.stat-number {
+  transition: text-shadow 0.3s;
+}
+.stat-number:hover {
+  text-shadow: 0 0 30px rgba(247, 147, 26, 0.4);
+}
+
+/* Scroll indicator bounce */
+.scroll-indicator {
+  animation: bounce-down 2s infinite;
+}
+@keyframes bounce-down {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Newsletter entrance */
+.newsletter.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Partner strip fade */
+.partners-label {
+  letter-spacing: 0.15em;
+  transition: letter-spacing 0.5s ease;
+}
+.partners-strip:hover .partners-label {
+  letter-spacing: 0.25em;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-content { flex-direction: column; padding: 30px 24px 60px; }
+  .hero-right { min-height: 350px; order: -1; }
+  .bloom-container { transform: scale(0.7); }
+  .hero-headline { font-size: 36px; }
+  .nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .services { padding: 60px 24px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .how { padding: 0 24px 60px; }
+  .how-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; }
+  .bloom-container { transform: scale(0.5); }
+  .hero-stats { gap: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <!-- Floating Particles -->
+  <div class="particles-container" id="particles"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1 class="hero-headline">
+        The World's First Hub<br>for <span class="highlight">Bitcoin-Only</span> Services
+      </h1>
+
+      <p class="hero-sub">
+        One gateway to every Bitcoin service you need. Buy, mine, secure,
+        borrow, and grow your Bitcoin stack through vetted European partners —
+        while you keep full custody of your keys.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">26</span>
+          <span class="stat-label">Vetted Partners</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">8</span>
+          <span class="stat-label">Service Categories</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">27</span>
+          <span class="stat-label">EU Countries</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">
+          Explore Services
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l8 6-8 6V2z" fill="currentColor"/></svg>
+          Watch How It Works
+        </a>
+      </div>
+
+
+    </div>
+
+    <!-- ===== 3D BITCOIN BLOOM ===== -->
+    <div class="hero-right">
+      <div class="bloom-container">
+        <!-- Glow rings -->
+        <div class="glow-ring"></div>
+        <div class="glow-ring-2"></div>
+
+        <!-- Center core with Bitcoin B -->
+        <div class="bloom-core"></div>
+
+        <!-- Ring 1: Inner (8 petals) -->
+        <div class="petal-ring ring-1">
+          <div class="petal" style="transform: rotate(0deg) translateZ(20px);"></div>
+          <div class="petal" style="transform: rotate(45deg) translateZ(30px);"></div>
+          <div class="petal" style="transform: rotate(90deg) translateZ(20px);"></div>
+          <div class="petal" style="transform: rotate(135deg) translateZ(30px);"></div>
+          <div class="petal" style="transform: rotate(180deg) translateZ(20px);"></div>
+          <div class="petal" style="transform: rotate(225deg) translateZ(30px);"></div>
+          <div class="petal" style="transform: rotate(270deg) translateZ(20px);"></div>
+          <div class="petal" style="transform: rotate(315deg) translateZ(30px);"></div>
+        </div>
+
+        <!-- Ring 2: Middle (12 petals) -->
+        <div class="petal-ring ring-2">
+          <div class="petal" style="transform: rotate(0deg) translateZ(50px);"></div>
+          <div class="petal" style="transform: rotate(30deg) translateZ(60px);"></div>
+          <div class="petal" style="transform: rotate(60deg) translateZ(50px);"></div>
+          <div class="petal" style="transform: rotate(90deg) translateZ(60px);"></div>
+          <div class="petal" style="transform: rotate(120deg) translateZ(50px);"></div>
+          <div class="petal" style="transform: rotate(150deg) translateZ(60px);"></div>
+          <div class="petal" style="transform: rotate(180deg) translateZ(50px);"></div>
+          <div class="petal" style="transform: rotate(210deg) translateZ(60px);"></div>
+          <div class="petal" style="transform: rotate(240deg) translateZ(50px);"></div>
+          <div class="petal" style="transform: rotate(270deg) translateZ(60px);"></div>
+          <div class="petal" style="transform: rotate(300deg) translateZ(50px);"></div>
+          <div class="petal" style="transform: rotate(330deg) translateZ(60px);"></div>
+        </div>
+
+        <!-- Ring 3: Outer (16 petals) -->
+        <div class="petal-ring ring-3">
+          <div class="petal" style="transform: rotate(0deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(22.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(45deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(67.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(90deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(112.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(135deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(157.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(180deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(202.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(225deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(247.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(270deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(292.5deg) translateZ(90px);"></div>
+          <div class="petal" style="transform: rotate(315deg) translateZ(80px);"></div>
+          <div class="petal" style="transform: rotate(337.5deg) translateZ(90px);"></div>
+        </div>
+
+        <!-- Orbiting particles -->
+        <div class="orbit-particle orbit-1"></div>
+        <div class="orbit-particle orbit-2"></div>
+        <div class="orbit-particle orbit-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES GRID ===== -->
+<section class="services anim-section anim-hidden" id="services">
+  <div class="sec-header">
+    <h2>Every Bitcoin Service <span>in One Place</span></h2>
+    <p>Access the world's best Bitcoin-only services through a single gateway. Compare partners, find the best rates, and keep your keys.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <a href="buy-bitcoin.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(247,147,26,0.12);">&#8383;</div>
+      <h3>Buy Bitcoin</h3>
+      <p>Purchase Bitcoin through MiCA-licensed European exchanges. Set up automatic DCA plans or one-time buys. Your BTC goes straight to your wallet.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        4 Partners — From 0.79% fees
+      </div>
+    </a>
+
+    <a href="secure.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(63,185,80,0.12);">&#128274;</div>
+      <h3>Custody</h3>
+      <p>Secure your Bitcoin with multi-signature vaults. Distribute keys across devices and locations. Built-in inheritance planning for long-term holders.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        4 Partners — From free
+      </div>
+    </a>
+
+    <a href="mining.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(155,89,255,0.12);">&#9881;</div>
+      <h3>Mining</h3>
+      <p>Start mining Bitcoin with European hosting providers. From hashpower marketplaces to dedicated ASIC hosting in the Nordics from EUR 0.043/kWh.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        5 Partners — No hardware needed
+      </div>
+    </a>
+
+    <a href="bots.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(88,166,255,0.12);">&#129302;</div>
+      <h3>Trading Bots</h3>
+      <p>Automate your Bitcoin strategy with non-custodial trading bots. DCA, grid, and custom strategies using trade-only API permissions.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        7 Partners — Up to 25% rev share
+      </div>
+    </a>
+
+    <a href="lending.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(255,107,53,0.12);">&#128176;</div>
+      <h3>Loans</h3>
+      <p>Don't sell your Bitcoin; get a Bitcoin-backed loan. Virtuse provides a service where Bitcoiners borrow cash against their Bitcoin at market-driven rates starting at 6% p.a.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        3 Partners — Rates from 6% p.a.
+      </div>
+    </a>
+
+    <a href="treasury.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(0,184,219,0.12);">&#128200;</div>
+      <h3>Treasury</h3>
+      <p>Optimize your balance sheet with Bitcoin. Virtuse Treasury provides the compliance, control, and strategy needed to join the world's leading corporate holders.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        3 Partners — MiCA + FINMA
+      </div>
+    </a>
+
+    <a href="tax.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(100,221,33,0.12);">&#128221;</div>
+      <h3>Tax Reporting</h3>
+      <p>Bitcoin-only tax tools built for European tax systems. Auto-import from wallets and exchanges. Country-specific reports for 7+ EU jurisdictions.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        3 Partners — From EUR 39/year
+      </div>
+    </a>
+
+    <a href="research.html" class="svc-card anim-card">
+      <div class="svc-icon" style="background: rgba(255,184,77,0.12);">&#128240;</div>
+      <h3>Media &amp; Research</h3>
+      <p>Weekly market analysis, on-chain metrics, and institutional flow data. Macro research and premium quarterly outlooks for European Bitcoin holders.</p>
+      <div class="svc-meta">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Free + Premium Tiers
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how">
+  <div class="sec-header">
+    <h2>How <span>Virtuse Works</span></h2>
+    <p>Three simple steps to access any Bitcoin service through our hub</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">1</div>
+      <h3>Pick a Service</h3>
+      <p>Browse our 8 Bitcoin-only service categories. Compare partners, fees, and features side by side.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">2</div>
+      <h3>Connect to Partner</h3>
+      <p>Click through to a vetted partner's platform. All onboarding and KYC happens on their regulated platform.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">3</div>
+      <h3>Stay in Control</h3>
+      <p>Your Bitcoin stays in your wallet. Virtuse never holds your keys, your funds, or your data. Ever.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">4</div>
+      <h3>Grow Your Stack</h3>
+      <p>Use the service — whether buying, mining, or borrowing — and watch your Bitcoin position grow over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AS SEEN IN ===== -->
+<section class="as-seen anim-section anim-hidden">
+  <h2>As seen in</h2>
+  <div class="seen-row">
+    <a href="https://www.forbes.com" target="_blank" class="seen-logo seen-forbes">Forbes</a>
+    <a href="https://www.investing.com" target="_blank" class="seen-logo seen-investing">Investing<span>.com</span></a>
+    <a href="https://hackernoon.com" target="_blank" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
+    <a href="https://www.ta3.com" target="_blank" class="seen-logo seen-ta3">TA<span>3</span></a>
+    <a href="https://www.trend.sk" target="_blank" class="seen-logo seen-trend">TREND</a>
+    <a href="https://hnonline.sk" target="_blank" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
+  </div>
+  <div class="seen-row">
+    <a href="https://medium.com" target="_blank" class="seen-logo seen-medium">Medium</a>
+    <a href="https://spotify.com" target="_blank" class="seen-logo seen-spotify">Spotify</a>
+    <a href="https://dennikn.sk" target="_blank" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter anim-section anim-hidden">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank">AMLD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ===== PARTICLES =====
+(function() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+  const particleCount = 30;
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    p.style.opacity = 0.2 + Math.random() * 0.5;
+    container.appendChild(p);
+  }
+})();
+
+// ===== WORD-BY-WORD SLIDE-UP =====
+(function() {
+  const headline = document.querySelector('.hero-headline');
+  if (!headline) return;
+
+  const originalHTML = headline.innerHTML;
+
+  // Parse HTML: split into segments of (text words) and (HTML tags)
+  // This regex captures either HTML tags or text content
+  const segmentRegex = /(<[^>]+>)|([^<]+)/g;
+  const segments = [];
+  let match;
+  while ((match = segmentRegex.exec(originalHTML)) !== null) {
+    if (match[1]) {
+      // HTML tag
+      if (match[1].toLowerCase() === '<br>' || match[1].toLowerCase() === '<br/>' || match[1].toLowerCase() === '<br />') {
+        segments.push({ type: 'br' });
+      } else {
+        segments.push({ type: 'tag', value: match[1] });
+      }
+    } else if (match[2]) {
+      // Text - split into words
+      const words = match[2].split(/\s+/).filter(w => w.length > 0);
+      for (let word of words) {
+        segments.push({ type: 'word', value: word });
+      }
+    }
+  }
+
+  // Build output: track open tags to wrap around words
+  let html = '';
+  let wordIndex = 0;
+  let openTags = [];
+
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i];
+
+    if (seg.type === 'br') {
+      html += '<br>';
+      continue;
+    }
+
+    if (seg.type === 'tag') {
+      const tag = seg.value;
+      if (tag.startsWith('</')) {
+        // Closing tag
+        openTags.pop();
+        html += tag;
+      } else {
+        // Opening tag
+        openTags.push(tag);
+        html += tag;
+      }
+      continue;
+    }
+
+    if (seg.type === 'word') {
+      const delay = (wordIndex * 0.12).toFixed(2);
+      const openPrefix = openTags.join('');
+      const closeSuffix = openTags.slice().reverse().map(t => {
+        const match = t.match(/<(\w+)/);
+        return match ? '</' + match[1] + '>' : '';
+      }).join('');
+
+      html += '<span class="word">' +
+              '<span class="word-inner" style="animation-delay:' + delay + 's">' +
+              openPrefix + seg.value + closeSuffix +
+              '</span></span> ';
+
+      wordIndex++;
+    }
+  }
+
+  headline.innerHTML = html.trim();
+
+  // Trigger animation
+  setTimeout(() => {
+    headline.classList.add('animate');
+  }, 300);
+})();
+
+// ===== SCROLL-TRIGGERED REVEALS =====
+(function() {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        // Add stagger delay based on index
+        setTimeout(() => {
+          el.classList.remove('anim-hidden');
+          el.classList.add('anim-visible');
+        }, index * 100);
+        observer.unobserve(el);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.anim-section').forEach(el => {
+    observer.observe(el);
+  });
+})();
+
+// ===== STAGGERED SERVICE CARD ENTRANCE =====
+(function() {
+  const cards = document.querySelectorAll('.anim-card');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, i) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(40px) scale(0.95)';
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+          }, i * 120);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const section = cards[0].closest('.svc-section, section');
+  if (section) observer.observe(section);
+})();
+
+// ===== "AS SEEN IN" LOGO WAVE =====
+(function() {
+  const logos = document.querySelectorAll('.seen-logo');
+  if (!logos.length) return;
+
+  let waveActive = false;
+
+  function wave() {
+    if (!waveActive) return;
+    logos.forEach((logo, i) => {
+      setTimeout(() => {
+        logo.style.opacity = '1';
+        setTimeout(() => {
+          logo.style.opacity = '0.85';
+        }, 400);
+      }, i * 80);
+    });
+    setTimeout(wave, logos.length * 80 + 2000);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        waveActive = true;
+        wave();
+      } else {
+        waveActive = false;
+      }
+    });
+  });
+
+  const section = document.querySelector('.as-seen');
+  if (section) observer.observe(section);
+})();
+
+// ===== STAT COUNTER ANIMATION =====
+(function() {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  if (!statNumbers.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        statNumbers.forEach(el => {
+          const target = parseInt(el.textContent) || 0;
+          const suffix = el.textContent.replace(/[0-9]/g, '').replace(/,/g, '');
+          let current = 0;
+          const duration = 2000;
+          const startTime = performance.now();
+
+          function updateCounter(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            current = Math.floor(eased * target);
+            el.textContent = current.toLocaleString() + suffix;
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              el.textContent = target.toLocaleString() + suffix;
+            }
+          }
+
+          requestAnimationFrame(updateCounter);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const section = statNumbers[0].closest('section, div');
+  if (section) observer.observe(section);
+})();
+
+// ===== SMOOTH SCROLL FOR NAV LINKS =====
+(function() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(13, 17, 23, 0.98)';
+      nav.style.backdropFilter = 'blur(20px)';
+    } else {
+      nav.style.background = 'rgba(13, 17, 23, 0.95)';
+      nav.style.backdropFilter = 'blur(10px)';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Tax Reporting - Virtuse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+/* Navigation */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #e6edf3; text-decoration: none; flex-shrink: 0; }
+.nav-logo-img { height: 32px; width: auto; display: block; }
+/* Logo image set in HTML */
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-decoration: none; }
+.nav-links a:hover, .nav-links a.active { color: #f7931a; }
+.nav-links a.active { font-weight: 600; }
+.nav-cta { background: #f7931a; color: #0d1117; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+.nav-cta:hover { background: #e8850a; transform: translateY(-1px); }
+.mobile-menu-btn { display: none; background: none; border: none; color: #8b949e; font-size: 22px; cursor: pointer; }
+
+/* Hero */
+.hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0; }
+.hero p { margin: 0 0 32px; }
+.hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: #f7931a; }
+.hero p { font-size: 18px; color: #8b949e; max-width: 680px; margin: 0 0 32px; line-height: 1.65; }
+/* How It Works */
+.how-section { padding: 60px 24px 80px; }
+.section-header { text-align: center; margin-bottom: 52px; }
+.section-header h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 10px; }
+.section-header p { font-size: 16px; color: #8b949e; }
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+.how-card { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; padding: 36px 28px; position: relative; transition: border-color 0.2s; }
+.how-card:hover { border-color: #484f58; }
+.step-num { position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 800; color: rgba(247,147,26,0.08); line-height: 1; }
+.how-icon { width: 44px; height: 44px; border-radius: 12px;   justify-content: center; margin-bottom: 20px; }
+.how-icon.orange { background: rgba(247,147,26,0.12); }
+.how-icon.blue { background: rgba(88,166,255,0.12); }
+.how-icon.green { background: rgba(63,185,80,0.12); }
+.how-icon.purple { background: rgba(188,140,255,0.12); }
+.how-icon svg { width: 22px; height: 22px; }
+.how-icon.orange svg { color: #f7931a; }
+.how-icon.blue svg { color: #58a6ff; }
+.how-icon.green svg { color: #3fb950; }
+.how-icon.purple svg { color: #bc8cff; }
+.how-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.how-card p { font-size: 14px; color: #8b949e; line-height: 1.55; }
+
+/* EU Tax Complexity Card */
+.eu-card { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
+.eu-card-inner { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
+.eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247,147,26,0.12);   justify-content: center; flex-shrink: 0; }
+.eu-icon svg { width: 28px; height: 28px; color: #f7931a; }
+.eu-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.eu-content p { font-size: 15px; color: #8b949e; line-height: 1.6; }
+.eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
+.eu-country-tag { background: rgba(247,147,26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247,147,26,0.2); }
+
+/* Partner Cards */
+.partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
+.partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.partner-card { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; transition: all 0.25s;  flex-direction: column; }
+.partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: #484f58; }
+.partner-card.top-pick { border: 1px solid rgba(247,147,26,0.3); }
+.partner-header { padding: 32px 28px 0;  align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.partner-icon { width: 52px; height: 52px; border-radius: 14px;   justify-content: center; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0; }
+.partner-icon.bp { background: #f7931a; }
+.partner-icon.wa { background: #58a6ff; }
+.partner-icon.di { background: #3fb950; }
+.partner-location {   gap: 5px; font-size: 12px; color: #8b949e; }
+.partner-location svg { width: 12px; height: 12px; }
+.partner-tags { padding: 0 28px;  flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+.tag.orange { background: rgba(247,147,26,0.15); color: #f7931a; }
+.tag.blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
+.tag.green { background: rgba(63,185,80,0.15); color: #3fb950; }
+.partner-body { padding: 0 28px; flex-grow: 1; }
+.partner-body p { font-size: 14px; color: #8b949e; line-height: 1.6; margin-bottom: 20px; }
+.partner-features { list-style: none; margin-bottom: 20px; }
+.partner-features li {   gap: 8px; font-size: 13px; color: #e6edf3; padding: 6px 0; }
+.partner-features li svg { width: 14px; height: 14px; color: #3fb950; flex-shrink: 0; }
+.partner-cta {  gap: 10px; padding: 0 28px 28px; }
+.btn-primary { flex: 1; background: #f7931a; color: #0d1117; font-weight: 700; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; transition: all 0.2s; border: none; cursor: pointer; }
+.btn-primary:hover { background: #e8850a; transform: translateY(-1px); }
+.btn-secondary { flex: 1; background: transparent; color: #8b949e; font-weight: 600; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; border: 1px solid #30363d; transition: all 0.2s; cursor: pointer; }
+.btn-secondary:hover { border-color: #484f58; color: #e6edf3; }
+
+/* Comparison Table */
+.compare-section { padding: 0 24px 60px; max-width: 900px; margin: 0 auto; }
+.compare-section h2 { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 28px; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.compare-table th { padding: 14px 20px; text-align: left; font-weight: 600; color: #8b949e; border-bottom: 1px solid #30363d; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+.compare-table th:first-child { width: 35%; }
+.compare-table td { padding: 14px 20px; border-bottom: 1px solid #30363d; color: #e6edf3; }
+.compare-table td:first-child { color: #8b949e; font-weight: 500; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(28,33,40,0.5); }
+.compare-table td.best { color: #3fb950; font-weight: 600; }
+
+/* Disclaimer */
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter {
+  background: #161b22;
+  border-top: 1px solid #30363d;
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter p {
+  color: #8b949e;
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background: #0d1117;
+  color: #e6edf3;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: #f7931a; }
+.newsletter-form input::placeholder { color: #484f58; }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: #e6edf3;
+  color: #0d1117;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: #f7931a; color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: #0d1117;
+  border-top: 1px solid #30363d;
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-logo img {
+  height: 80px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-logo img:hover { opacity: 1; }
+
+.footer-columns {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+.footer-col a {
+  display: block;
+  color: #8b949e;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: #f7931a; }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #30363d;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: #484f58;
+}
+
+@media (max-width: 768px) {
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-columns { gap: 40px; }
+  .footer-logo img { height: 60px; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+nav { padding: 0 24px; }
+.mobile-menu-btn { display: block; }
+.hero { padding: 64px 24px 52px; }
+.hero h1 { font-size: 34px; }
+.hero p { font-size: 16px; margin: 0 0 24px; }
+.how-grid { grid-template-columns: repeat(2, 1fr); }
+.partner-grid { grid-template-columns: 1fr; }
+.eu-card-inner { flex-direction: column; gap: 16px; }
+.compare-table { font-size: 13px; }
+.compare-table th, .compare-table td { padding: 10px 12px; }
+}
+@media (max-width: 500px) {
+.how-grid { grid-template-columns: 1fr; }
+.partner-cta { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html" class="active">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<h1>Bitcoin Tax Reporting<br><span>Made Simple</span></h1>
+<p>Bitcoin-only tax tools designed for European tax systems. Auto-import transactions from wallets and exchanges. Generate country-specific tax reports in minutes - not days. No KYC required for tax software.</p>
+
+</section>
+
+<!-- How It Works -->
+<section class="how-section">
+<div class="section-header">
+<h2>How It Works</h2>
+<p>From wallet import to tax-ready report in four steps</p>
+</div>
+<div class="how-grid">
+<div class="how-card">
+<div class="step-num">01</div>
+<div class="how-icon orange">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+</div>
+<h3>Connect Wallets</h3>
+<p>Import xPubs or CSV exports from your wallets and exchanges</p>
+</div>
+<div class="how-card">
+<div class="step-num">02</div>
+<div class="how-icon blue">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+</div>
+<h3>Auto-Classify</h3>
+<p>Software categorizes transactions (buy, sell, transfer, mining)</p>
+</div>
+<div class="how-card">
+<div class="step-num">03</div>
+<div class="how-icon green">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+</div>
+<h3>Review</h3>
+<p>Check categorizations and add missing transactions</p>
+</div>
+<div class="how-card">
+<div class="step-num">04</div>
+<div class="how-icon purple">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</div>
+<h3>Export Report</h3>
+<p>Download country-specific tax report ready for filing</p>
+</div>
+</div>
+</section>
+
+<!-- EU Tax Complexity -->
+<div class="eu-card">
+<div class="eu-card-inner">
+<div class="eu-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+</div>
+<div class="eu-content">
+<h3>Every EU Country Has Different Bitcoin Tax Rules</h3>
+<p>Germany: 1-year holding period for tax-free. France: 30% flat tax (PFU). Austria: 27.5% capital gains. Portugal: now taxable. Our partners support DE, AT, CH, FR, IT, ES, NL and more.</p>
+<div class="eu-countries">
+<span class="eu-country-tag">DE</span>
+<span class="eu-country-tag">AT</span>
+<span class="eu-country-tag">CH</span>
+<span class="eu-country-tag">FR</span>
+<span class="eu-country-tag">IT</span>
+<span class="eu-country-tag">ES</span>
+<span class="eu-country-tag">NL</span>
+<span class="eu-country-tag">PT</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Partner Cards -->
+<section class="partners-section">
+<div class="section-header">
+<h2>Our Tax Reporting Partners</h2>
+<p>Hand-picked tools for Bitcoin-only European investors</p>
+</div>
+<div class="partner-grid">
+
+<!-- Blockpit -->
+<div class="partner-card top-pick">
+<div class="partner-header">
+<div class="partner-icon bp">BP</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Austria
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Austrian-built tax tool with 700+ integrations. Official partner of Bitpanda and BISON. Country-specific reports for Germany, Austria, Switzerland, Italy, Spain, Netherlands. Free portfolio tracking tier. Fastest-growing EU tax tool.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>700+ integrations</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bitpanda/BISON partner</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>7+ EU countries</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free portfolio tracking</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://blockpit.io" class="btn-primary" target="_blank" rel="noopener">Get Blockpit</a>
+<button class="btn-secondary">Compare</button>
+</div>
+</div>
+
+<!-- Waltio -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-icon wa">Wa</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+France
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Best-in-class for French tax. 4.7/5 rating with 600+ reviews. One-click tax report generation. Supports French forms 2042, 2086, 3916-bis. Also handles DeFi and NFT transactions.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4.7/5 rating (600+ reviews)</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>French forms (2042, 2086)</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>One-click report</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>DeFi/NFT support</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://waltio.io" class="btn-primary" target="_blank" rel="noopener">Get Waltio</a>
+<button class="btn-secondary">Learn More</button>
+</div>
+</div>
+
+<!-- Divly -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-icon di">Di</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Sweden
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Privacy-first tax tool with no KYC required. 14-minute import-to-report. Supports 30+ countries including France and Scandinavia. EUR 700 cheaper than Waltio for expert review tier. Bitcoin-friendly categorization.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No KYC required</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>14-min import to report</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>30+ countries</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cheapest expert review</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://divly.io" class="btn-primary" target="_blank" rel="noopener">Get Divly</a>
+<button class="btn-secondary">Learn More</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Comparison Table -->
+<section class="compare-section">
+<h2>Quick Comparison</h2>
+<table class="compare-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Blockpit</th>
+<th>Waltio</th>
+<th>Divly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>EUR 49+/yr</td>
+<td>EUR 39+/yr</td>
+<td class="best">EUR 39/yr</td>
+</tr>
+<tr>
+<td>Free Tier</td>
+<td class="best">Yes (tracking)</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Countries</td>
+<td class="best">7+ EU</td>
+<td>France + 30</td>
+<td>30+</td>
+</tr>
+<tr>
+<td>KYC Required</td>
+<td class="best">No</td>
+<td class="best">No</td>
+<td class="best">No</td>
+</tr>
+<tr>
+<td>DeFi Support</td>
+<td class="best">Yes</td>
+<td class="best">Yes</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td>Best For</td>
+<td>Multi-country</td>
+<td>France</td>
+<td>Privacy</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- Disclaimer -->
+<!-- Newsletter -->
+<section class="newsletter">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank">AMLD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

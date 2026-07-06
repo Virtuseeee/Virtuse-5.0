@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Virtuse EU Licensed Partners</title>
+<style>
+/* ===== RESET ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, "Noto Serif", serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ===== PAGE SETUP ===== */
+@page {
+    size: A4;
+    margin: 2.5cm 2cm;
+    @top-center { content: string(doctitle); font-size: 9pt; color: #999; }
+    @bottom-center { content: counter(page); font-size: 9pt; color: #999; }
+}
+@page :first { margin: 0; @top-center { content: none; } @bottom-center { content: none; } }
+@page cover { @top-center { content: none; } @bottom-center { content: none; } }
+@page toc { @top-center { content: none; } @bottom-center { content: none; } }
+
+body { string-set: doctitle ""; }
+h1.section-title { string-set: doctitle content(); }
+
+/* ===== COVER ===== */
+.cover {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    page: cover;
+    page-break-after: always;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+.cover-top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6mm;
+    background: #f7931a;
+}
+.cover-grid {
+    position: absolute;
+    top: 0; right: 0;
+    width: 70mm; height: 100%;
+    border-left: 1px solid rgba(255,255,255,0.06);
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 19mm, rgba(255,255,255,0.03) 19mm, rgba(255,255,255,0.03) 20mm);
+}
+.cover-corner {
+    position: absolute;
+    bottom: 20mm; right: 20mm;
+    width: 50mm; height: 50mm;
+    border: 1px solid rgba(247,147,26,0.25);
+}
+.cover-accent-line {
+    position: absolute;
+    top: 38mm; left: 2.5cm;
+    width: 50mm; height: 3px;
+    background: #f7931a;
+}
+.cover-content {
+    position: absolute;
+    top: 50%;
+    left: 2.5cm;
+    transform: translateY(-50%);
+    max-width: 65%;
+    z-index: 1;
+}
+.cover-label {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #f7931a;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1.2cm;
+}
+.cover-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 34pt;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 0.6cm;
+}
+.cover-subtitle {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: 2cm;
+}
+.cover-meta {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 10pt;
+    color: rgba(255,255,255,0.4);
+    line-height: 2;
+}
+.cover-btc {
+    position: absolute;
+    bottom: 25mm; left: 25mm;
+    width: 16mm; height: 16mm;
+    border: 2px solid #f7931a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #f7931a;
+}
+
+/* ===== TOC ===== */
+.toc-page {
+    page: toc;
+    page-break-after: always;
+}
+.toc-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 1cm;
+    padding-bottom: 0.3cm;
+    border-bottom: 2px solid #f7931a;
+}
+.toc { list-style: none; padding: 0; margin: 0; }
+.toc li { margin-bottom: 0.5cm; }
+.toc a {
+    color: #333;
+    text-decoration: none;
+    font-size: 11pt;
+}
+.toc a::after {
+    content: leader('.') target-counter(attr(href url), page);
+    color: #999;
+}
+.toc .toc-l1 { font-weight: 700; font-size: 12pt; margin-top: 0.5cm; }
+.toc .toc-l2 { padding-left: 1cm; font-weight: 400; font-size: 10.5pt; color: #555; }
+
+/* ===== HEADINGS ===== */
+h1.section-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-top: 0;
+    margin-bottom: 0.6cm;
+    padding-bottom: 0.2cm;
+    border-bottom: 2px solid #f7931a;
+    page-break-after: avoid;
+}
+h2 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-top: 0.8cm;
+    margin-bottom: 0.4cm;
+    page-break-after: avoid;
+}
+h3 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #444;
+    margin-top: 0.5cm;
+    margin-bottom: 0.2cm;
+    page-break-after: avoid;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.4cm 0;
+    font-size: 10pt;
+    max-width: 100%;
+    page-break-inside: auto;
+}
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+th {
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 5pt 7pt;
+    text-align: left;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    background: #f8f8f8;
+    font-size: 9.5pt;
+}
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 5pt 7pt;
+    vertical-align: top;
+    font-size: 9.5pt;
+}
+tbody tr:last-child td { border-bottom: 2px solid #333; }
+
+/* ===== PARTNER CARD ===== */
+.partner-card {
+    border-left: 3px solid #f7931a;
+    padding: 0.4cm 0.6cm;
+    margin: 0.4cm 0;
+    background: #fffaf3;
+    page-break-inside: avoid;
+}
+.partner-card.alt {
+    border-left-color: #1a1a2e;
+    background: #f5f7fa;
+}
+.partner-card .name {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    color: #1a1a2e;
+    margin-bottom: 0.1cm;
+}
+.partner-card .meta {
+    font-size: 10pt;
+    color: #666;
+    margin-bottom: 0.15cm;
+}
+.partner-card .commission {
+    font-weight: 700;
+    color: #2e7d32;
+    font-size: 10.5pt;
+}
+
+/* ===== CALLOUT ===== */
+.callout {
+    border-left: 3px solid #f7931a;
+    padding: 0.4cm 0.7cm;
+    margin: 0.4cm 0;
+    background: #fffaf3;
+    page-break-inside: avoid;
+}
+.callout-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0.15cm;
+}
+
+.key-point {
+    border-left: 3px solid #1a1a2e;
+    padding: 0.4cm 0.7cm;
+    margin: 0.4cm 0;
+    background: #f8f8f8;
+    page-break-inside: avoid;
+}
+
+/* ===== LISTS ===== */
+ul, ol { margin: 0.2cm 0; padding-left: 1cm; }
+li { margin-bottom: 0.1cm; }
+
+/* ===== MISC ===== */
+p { margin: 0.15cm 0; text-align: justify; text-align-last: left; }
+strong { color: #1a1a2e; }
+.section { page-break-before: always; }
+.section:first-of-type { page-break-before: auto; }
+
+.status-green { color: #2e7d32; font-weight: 700; }
+.status-orange { color: #ef6c00; font-weight: 700; }
+.tag {
+    display: inline-block;
+    background: #f7931a;
+    color: white;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    padding: 2pt 6pt;
+    border-radius: 2pt;
+    margin-right: 3pt;
+}
+.tag-blue {
+    background: #1a1a2e;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+    <div class="cover-top-bar"></div>
+    <div class="cover-grid"></div>
+    <div class="cover-corner"></div>
+    <div class="cover-accent-line"></div>
+    <div class="cover-btc">B</div>
+    <div class="cover-content">
+        <div class="cover-label">Strategic Partners</div>
+        <h1 class="cover-title">EU Licensed<br>Partner Directory</h1>
+        <p class="cover-subtitle">Mining &middot; Multi-Sig &middot; Corporate Treasury &middot; Tax Reporting<br>All within the non-MiCA boundary</p>
+        <div class="cover-meta">
+            <p>Virtuse Wealth Management, a.s.</p>
+            <p>Slovak Republic &middot; June 2026</p>
+            <p>CONFIDENTIAL &middot; FOR INTERNAL USE</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOC ==================== -->
+<div class="toc-page">
+    <h2 class="toc-title">Contents</h2>
+    <ul class="toc">
+        <li class="toc-l1"><a href="#sec1">1. Mining Hosting Partners</a></li>
+        <li class="toc-l2"><a href="#sec1-1">1.1 OneMiners (Czech Republic)</a></li>
+        <li class="toc-l2"><a href="#sec1-2">1.2 NiceHash (Slovenia)</a></li>
+        <li class="toc-l2"><a href="#sec1-3">1.3 Abundant Mines (US/EU)</a></li>
+        <li class="toc-l2"><a href="#sec1-4">1.4 Bitkern (Europe)</a></li>
+        <li class="toc-l2"><a href="#sec1-5">1.5 Power Mining (Denmark)</a></li>
+        <li class="toc-l1"><a href="#sec2">2. Multi-Sig Service Partners</a></li>
+        <li class="toc-l2"><a href="#sec2-1">2.1 Nunchuk (Global)</a></li>
+        <li class="toc-l2"><a href="#sec2-2">2.2 Unchained Capital (US)</a></li>
+        <li class="toc-l2"><a href="#sec2-3">2.3 Casa (US)</a></li>
+        <li class="toc-l2"><a href="#sec2-4">2.4 Onramp Business (US)</a></li>
+        <li class="toc-l1"><a href="#sec3">3. Corporate Treasury Partners</a></li>
+        <li class="toc-l2"><a href="#sec3-1">3.1 Coinbase Institutional (Luxembourg)</a></li>
+        <li class="toc-l2"><a href="#sec3-2">3.2 Sygnum (Switzerland)</a></li>
+        <li class="toc-l2"><a href="#sec3-3">3.3 BitGo (Germany)</a></li>
+        <li class="toc-l1"><a href="#sec4">4. Tax Reporting Partners</a></li>
+        <li class="toc-l2"><a href="#sec4-1">4.1 Blockpit (Austria)</a></li>
+        <li class="toc-l2"><a href="#sec4-2">4.2 Waltio (France)</a></li>
+        <li class="toc-l2"><a href="#sec4-3">4.3 Divly (Sweden)</a></li>
+        <li class="toc-l1"><a href="#sec5">5. Implementation Roadmap</a></li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 1: MINING ==================== -->
+<div class="section" id="sec1">
+<h1 class="section-title">1. Mining Hosting Partners</h1>
+
+<div class="callout">
+    <div class="callout-title">Regulatory Note</div>
+    <p>Mining hosting is <strong>NOT a MiCA-regulated activity</strong>. Mining companies operate under general business and energy regulations, not as CASPs. This makes them ideal non-regulated referral partners for Virtuse.</p>
+</div>
+
+<!-- OneMiners -->
+<div class="partner-card" id="sec1-1">
+    <div class="name">OneMiners <span class="tag">TOP PICK</span> <span class="tag tag-blue">CZECH REPUBLIC</span></div>
+    <div class="meta">Formerly PcPraha.com | Top 5 EU ASIC reseller | 10,889 referred users | $732K paid out</div>
+    <table>
+        <tr><td><strong>Commission</strong></td><td class="status-green">Up to $500 per order</td></tr>
+        <tr><td><strong>Tier system</strong></td><td>Karma tiers: Explorer ($0-1K), Builder ($1K-10K), Elite ($10K-50K), Legend ($50K+)</td></tr>
+        <tr><td><strong>Hosting locations</strong></td><td>Norway, Finland, Ethiopia | From $0.043/kWh</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Czech/Slovak proximity; strongest EU affiliate program; proven payouts; retail-friendly</td></tr>
+        <tr><td><strong>Action</strong></td><td>Sign up for referral program at oneminers.com/partners</td></tr>
+    </table>
+</div>
+
+<!-- NiceHash -->
+<div class="partner-card alt" id="sec1-2">
+    <div class="name">NiceHash <span class="tag tag-blue">SLOVENIA</span></div>
+    <div class="meta">Global hashpower marketplace | EU-based | No hardware purchase required</div>
+    <table>
+        <tr><td><strong>Commission</strong></td><td class="status-green">15% of mining fees paid in BTC</td></tr>
+        <tr><td><strong>Program</strong></td><td>NiceHash Partner Program — revenue share on referred miner fees</td></tr>
+        <tr><td><strong>Model</strong></td><td>Plug-and-play mining: users rent/buy hashpower, no ASIC ownership needed</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Lowest barrier to entry for retail users; EU jurisdiction; BTC-denominated payouts</td></tr>
+        <tr><td><strong>Action</strong></td><td>Apply at nicehash.com/partners</td></tr>
+    </table>
+</div>
+
+<!-- Abundant Mines -->
+<div class="partner-card" id="sec1-3">
+    <div class="name">Abundant Mines <span class="tag tag-blue">US/EU</span></div>
+    <div class="meta">Professionally managed mining infrastructure | Renewable energy focus</div>
+    <table>
+        <tr><td><strong>Commission</strong></td><td class="status-green">$200 BTC per miner referred</td></tr>
+        <tr><td><strong>Bonus</strong></td><td>Referred customer gets 1 month free hosting</td></tr>
+        <tr><td><strong>Focus</strong></td><td>Bitcoin-only payouts; professionally managed; sustainable energy</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Bitcoin-only positioning aligns with Virtuse; professional managed approach appeals to HNWIs</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact for partnership agreement</td></tr>
+    </table>
+</div>
+
+<!-- Bitkern -->
+<div class="partner-card alt" id="sec1-4">
+    <div class="name">Bitkern <span class="tag tag-blue">EUROPE</span></div>
+    <div class="meta">85,000+ ASICs across 14+ locations | 24h deployment</div>
+    <table>
+        <tr><td><strong>Commission</strong></td><td>Negotiate directly — no public affiliate program</td></tr>
+        <tr><td><strong>Pricing</strong></td><td>€0.045/kWh LITE tier; €0.055/kWh PRO tier</td></tr>
+        <tr><td><strong>Scale</strong></td><td>One of Europe's largest hosting operators</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>B2B referral opportunity for institutional-size clients; massive scale</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact sales@bitkern.com for introducer agreement</td></tr>
+    </table>
+</div>
+
+<!-- Power Mining -->
+<div class="partner-card" id="sec1-5">
+    <div class="name">Power Mining <span class="tag tag-blue">DENMARK</span></div>
+    <div class="meta">EU warehouse | Open-source hardware (Bitaxe) | 22K+ products sold</div>
+    <table>
+        <tr><td><strong>Commission</strong></td><td class="status-green">Up to 10% per sale (via GoAffPro)</td></tr>
+        <tr><td><strong>Focus</strong></td><td>Open-source mining hardware (Bitaxe); consumer-friendly</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Appeals to Bitcoin purists who want home mining; EU warehouse = fast shipping; unique open-source angle</td></tr>
+        <tr><td><strong>Action</strong></td><td>Join GoAffPro program at powermining.io</td></tr>
+    </table>
+</div>
+
+</div>
+
+<!-- ==================== SECTION 2: MULTI-SIG ==================== -->
+<div class="section" id="sec2">
+<h1 class="section-title">2. Multi-Sig Service Partners</h1>
+
+<div class="callout">
+    <div class="callout-title">Regulatory Note</div>
+    <p>Multi-sig software providers are <strong>NOT MiCA-regulated</strong>. MiCA Recital 83 explicitly excludes "hardware or software providers of non-custodial wallets" from its scope. These are software tools, not financial services.</p>
+</div>
+
+<!-- Nunchuk -->
+<div class="partner-card" id="sec2-1">
+    <div class="name">Nunchuk <span class="tag">TOP PICK</span> <span class="tag tag-blue">GLOBAL</span></div>
+    <div class="meta">Bitcoin-only | No KYC | On-chain inheritance | Collaborative custody</div>
+    <table>
+        <tr><td><strong>Cost</strong></td><td>Free app + $480/year top plan</td></tr>
+        <tr><td><strong>Affiliate</strong></td><td>None formal — integrate as education partner</td></tr>
+        <tr><td><strong>Architecture</strong></td><td>User holds all keys; software coordinates PSBT signing only</td></tr>
+        <tr><td><strong>Key feature</strong></td><td>On-chain inheritance via timelocks — survives even if Nunchuk ceases operations</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Bitcoin-only ethos matches perfectly; no KYC; most robust inheritance model; ideal for European self-custody education</td></tr>
+        <tr><td><strong>Action</strong></td><td>Integrate Nunchuk tutorials into Virtuse education content; consider co-marketing arrangement</td></tr>
+    </table>
+</div>
+
+<!-- Unchained -->
+<div class="partner-card alt" id="sec2-2">
+    <div class="name">Unchained Capital <span class="tag">REFERRAL PROGRAM</span> <span class="tag tag-blue">US</span></div>
+    <div class="meta">Collaborative custody + Bitcoin-backed lending | 2-of-3 multi-sig</div>
+    <table>
+        <tr><td><strong>Cost</strong></td><td>$250+/year; Signature program $250 credit per referral</td></tr>
+        <tr><td><strong>Commission</strong></td><td class="status-green">$250 credit for referrer AND referred (Signature program)</td></tr>
+        <tr><td><strong>Services</strong></td><td>2-of-3 multi-sig, Bitcoin-backed lending, IRA/401k, inheritance</td></tr>
+        <tr><td><strong>Limitation</strong></td><td>US-only lending; serves global clients for custody</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Only multi-sig provider with a real referral program; strong HNWI focus; educational resources</td></tr>
+        <tr><td><strong>Action</strong></td><td>Sign up for Signature referral program at unchained.com/signature</td></tr>
+    </table>
+</div>
+
+<!-- Casa -->
+<div class="partner-card" id="sec2-3">
+    <div class="name">Casa <span class="tag tag-blue">US</span></div>
+    <div class="meta">Market leader in consumer multi-sig | Gold standard for self-custody</div>
+    <table>
+        <tr><td><strong>Cost</strong></td><td>$250+/year (no free tier)</td></tr>
+        <tr><td><strong>Affiliate</strong></td><td>No formal referral program found</td></tr>
+        <tr><td><strong>Services</strong></td><td>Multi-sig vaults, inheritance planning, node management, health checks</td></tr>
+        <tr><td><strong>Limitation</strong></td><td>Limited European presence; primarily US-focused</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Strongest brand in multi-sig; good for credibility in educational content; benchmark for features</td></tr>
+        <tr><td><strong>Action</strong></td><td>Feature as "industry standard" in education; contact for partnership discussion</td></tr>
+    </table>
+</div>
+
+<!-- Onramp Business -->
+<div class="partner-card alt" id="sec2-4">
+    <div class="name">Onramp Business <span class="tag">CORPORATE</span> <span class="tag tag-blue">US</span></div>
+    <div class="meta">Purpose-built for corporate treasuries | Multi-institution custody</div>
+    <table>
+        <tr><td><strong>Cost</strong></td><td>$375/month ($3,600/year) + $500 setup</td></tr>
+        <tr><td><strong>Architecture</strong></td><td>Multi-sig across 4 independent institutions: Onramp/BitGo/CoinCover/Tetra Trust</td></tr>
+        <tr><td><strong>Features</strong></td><td>Proof of reserves, corporate governance controls, Lloyd's insurance</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Only multi-sig service purpose-built for corporate treasuries; ideal for B2B referrals from Virtuse's corporate treasury education clients</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact for B2B referral/introducer agreement</td></tr>
+    </table>
+</div>
+
+</div>
+
+<!-- ==================== SECTION 3: CORPORATE TREASURY ==================== -->
+<div class="section" id="sec3">
+<h1 class="section-title">3. Corporate Treasury Partners</h1>
+
+<div class="callout">
+    <div class="callout-title">Regulatory Note</div>
+    <p>These are <strong>MiCA-licensed CASPs</strong> that Virtuse refers corporate clients to. Virtuse provides education only — never discretionary management, custody, or execution. All regulated activity is handled by the licensed partner.</p>
+</div>
+
+<!-- Coinbase -->
+<div class="partner-card" id="sec3-1">
+    <div class="name">Coinbase Institutional <span class="tag">TOP PICK</span> <span class="tag tag-blue">LUXEMBOURG</span></div>
+    <div class="meta">MiCA CASP (CSSF) | Largest global crypto custodian | $320M insurance</div>
+    <table>
+        <tr><td><strong>License</strong></td><td>✅ MiCA CASP via CSSF Luxembourg — passported to all 27 EU states</td></tr>
+        <tr><td><strong>Product</strong></td><td>Coinbase Prime: custody + execution + algorithmic trading + financing</td></tr>
+        <tr><td><strong>Insurance</strong></td><td>$320M cold storage coverage; SOC 2 Type II; 13+ years track record</td></tr>
+        <tr><td><strong>Commission</strong></td><td>Negotiate B2B introducer/ referral fee directly (not public)</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Gold standard for institutional credibility; MiCA-licensed across full EU; white-glove corporate onboarding; purpose-built treasury FAQ</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact Coinbase Institutional partnerships team for introducer agreement</td></tr>
+    </table>
+</div>
+
+<!-- Sygnum -->
+<div class="partner-card alt" id="sec3-2">
+    <div class="name">Sygnum <span class="tag">BANK</span> <span class="tag tag-blue">SWITZERLAND</span></div>
+    <div class="meta">FINMA banking license | Only regulated digital asset bank | CHF 4B+ AuA</div>
+    <table>
+        <tr><td><strong>License</strong></td><td>✅ FINMA banking license (Switzerland); not MiCA but Swiss equivalence</td></tr>
+        <tr><td><strong>Product</strong></td><td>Sygnum Select: discretionary mandates for corporate treasuries ($200M AuM)</td></tr>
+        <tr><td><strong>Services</strong></td><td>Active management, rebalancing, staking, hedging, yield generation</td></tr>
+        <tr><td><strong>Commission</strong></td><td>Negotiate B2B referral fee directly (not public)</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Only regulated digital asset BANK (not just CASP); discretionary management for treasuries; Swiss banking prestige; unicorn valuation</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact Sygnum institutional sales for referral partnership</td></tr>
+    </table>
+</div>
+
+<!-- BitGo -->
+<div class="partner-card" id="sec3-3">
+    <div class="name">BitGo <span class="tag tag-blue">GERMANY</span></div>
+    <div class="meta">MiCA CASP (BaFin) | $250M insurance | ETP-grade custody</div>
+    <table>
+        <tr><td><strong>License</strong></td><td>✅ MiCA CASP via BaFin (Germany) | BSI-regulated since 2019</td></tr>
+        <tr><td><strong>Product</strong></td><td>Institutional custody: cold storage, multi-sig, API integration</td></tr>
+        <tr><td><strong>Insurance</strong></td><td>$250M coverage; SOC 2 Type II; 15+ years track record</td></tr>
+        <tr><td><strong>Commission</strong></td><td>Negotiate B2B referral/introducer fee directly</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Strongest API for integration; already 21bitcoin's custody partner; ETP-grade (serves Virtune, others); German regulatory credibility</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact BitGo EU partnerships for introducer agreement</td></tr>
+    </table>
+</div>
+
+</div>
+
+<!-- ==================== SECTION 4: TAX REPORTING ==================== -->
+<div class="section" id="sec4">
+<h1 class="section-title">4. Tax Reporting Partners</h1>
+
+<div class="callout">
+    <div class="callout-title">Regulatory Note</div>
+    <p>Tax reporting software is <strong>NOT a MiCA-regulated activity</strong>. These are pure information and analysis tools. No CASP license is required to build, operate, or refer tax software.</p>
+</div>
+
+<!-- Blockpit -->
+<div class="partner-card" id="sec4-1">
+    <div class="name">Blockpit <span class="tag">TOP PICK</span> <span class="tag tag-blue">AUSTRIA</span></div>
+    <div class="meta">Austrian (EU) | 700+ integrations | Official partner of Bitpanda &amp; BISON</div>
+    <table>
+        <tr><td><strong>Price</strong></td><td>€49+/year | Free portfolio tracking tier</td></tr>
+        <tr><td><strong>Affiliate</strong></td><td>✅ Partnership program with exchanges (Bitpanda, BISON, Bybit EU) — negotiate similar deal</td></tr>
+        <tr><td><strong>Countries</strong></td><td>Germany, Austria, Switzerland, Italy, Spain, Netherlands, France</td></tr>
+        <tr><td><strong>Features</strong></td><td>700+ integrations; country-specific tax reports; real-time portfolio tracking; CPA-ready reports</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Fastest-growing EU tax tool; strongest exchange partnerships; Austrian regulatory familiarity; proven partner model</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact partnerships@blockpit.io for affiliate/revenue-share agreement; target 10-15% discount for Virtuse users</td></tr>
+    </table>
+</div>
+
+<!-- Waltio -->
+<div class="partner-card alt" id="sec4-2">
+    <div class="name">Waltio <span class="tag tag-blue">FRANCE</span></div>
+    <div class="meta">4.7/5 rating | 600+ reviews | French tax forms | DeFi support</div>
+    <table>
+        <tr><td><strong>Price</strong></td><td>€39+/year (Lite tier)</td></tr>
+        <tr><td><strong>Affiliate</strong></td><td>No formal program found — contact directly</td></tr>
+        <tr><td><strong>Countries</strong></td><td>France (primary); supports 30+ countries</td></tr>
+        <tr><td><strong>Features</strong></td><td>One-click tax report; French forms (2042, 2086, 3916-bis); 600+ reviews; DeFi/NFT support</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Best-in-class for French market; strongest brand recognition in France; 4.7/5 rating</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact for partnership/introducer arrangement</td></tr>
+    </table>
+</div>
+
+<!-- Divly -->
+<div class="partner-card" id="sec4-3">
+    <div class="name">Divly <span class="tag">PRIVACY</span> <span class="tag tag-blue">SWEDEN</span></div>
+    <div class="meta">14-min import-to-report | No KYC | Privacy-focused | French forms</div>
+    <table>
+        <tr><td><strong>Price</strong></td><td>€39/year (Essential); €99 Peace of Mind (expert review included)</td></tr>
+        <tr><td><strong>Affiliate</strong></td><td>No formal program found — contact directly</td></tr>
+        <tr><td><strong>Countries</strong></td><td>France, Scandinavia, 30+ countries</td></tr>
+        <tr><td><strong>Features</strong></td><td>14-min import to final report; no KYC required; French tax forms; €700 cheaper than Waltio for expert review</td></tr>
+        <tr><td><strong>Why Virtuse</strong></td><td>Privacy-first ethos aligns with Bitcoin values; no KYC appeals to self-custody audience; competitive pricing</td></tr>
+        <tr><td><strong>Action</strong></td><td>Contact for partnership discussion</td></tr>
+    </table>
+</div>
+
+</div>
+
+<!-- ==================== SECTION 5: ROADMAP ==================== -->
+<div class="section" id="sec5">
+<h1 class="section-title">5. Implementation Roadmap</h1>
+
+<table>
+<thead>
+<tr><th>Phase</th><th>Timeline</th><th>Actions</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Week 1</strong></td>
+<td>Immediate</td>
+<td>Sign up for OneMiners, NiceHash, and Unchained referral programs. Create affiliate tracking dashboard.</td>
+</tr>
+<tr>
+<td><strong>Week 2</strong></td>
+<td>Immediate</td>
+<td>Contact Blockpit (partnerships@blockpit.io) for affiliate/revenue-share agreement. Target 10-15% discount for Virtuse users.</td>
+</tr>
+<tr>
+<td><strong>Month 1</strong></td>
+<td>Short-term</td>
+<td>Contact Coinbase Institutional and Sygnum for B2B introducer agreements. Prepare corporate treasury educational collateral.</td>
+</tr>
+<tr>
+<td><strong>Month 1</strong></td>
+<td>Short-term</td>
+<td>Contact BitGo EU partnerships for custody referral agreement. Leverage existing 21bitcoin relationship.</td>
+</tr>
+<tr>
+<td><strong>Month 2</strong></td>
+<td>Short-term</td>
+<td>Integrate Nunchuk multi-sig tutorials into Virtuse education content. Build "Self-Custody 101" video series.</td>
+</tr>
+<tr>
+<td><strong>Month 2</strong></td>
+<td>Short-term</td>
+<td>Launch Bitcoin Tax Tool Comparison page on virtuse.com featuring Blockpit, Waltio, and Divly with affiliate links.</td>
+</tr>
+<tr>
+<td><strong>Month 3</strong></td>
+<td>Medium-term</td>
+<td>Contact Bitkern and Power Mining for additional mining partnership coverage (EU-wide + open-source hardware).</td>
+</tr>
+<tr>
+<td><strong>Month 3</strong></td>
+<td>Medium-term</td>
+<td>Launch dedicated Mining Hosting comparison page on virtuse.com with referral links to all partners.</td>
+</tr>
+<tr>
+<td><strong>Month 4-6</strong></td>
+<td>Medium-term</td>
+<td>Develop premium "Sovereign Individual" toolkit: jurisdiction guides, privacy stacks, multi-sig setup service (education-only). B2B white-label research for family offices.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="key-point">
+    <div class="callout-title">Key Metrics to Track</div>
+    <p><strong>Referral revenue</strong> — Monthly affiliate income from all partners</p>
+    <p><strong>Conversion rate</strong> — % of Virtuse users who click through to partner platforms</p>
+    <p><strong>Partner NPS</strong> — User satisfaction with referred services</p>
+    <p><strong>Average revenue per referral</strong> — By partner category (mining vs. multi-sig vs. treasury vs. tax)</p>
+</div>
+
+</div>
+
+</body>
+</html>
