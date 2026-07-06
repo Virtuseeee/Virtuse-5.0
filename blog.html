@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Virtuse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--btc-orange:#f7931a;--btc-orange-light:#ffb84d;--dark:#0d1117;--dark-lighter:#161b22;--dark-card:#1c2128;--dark-card-hover:#232930;--text:#e6edf3;--text-muted:#8b949e;--text-dim:#484f58;--border:#30363d;--border-hover:#484f58;--green:#3fb950}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--dark);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img{max-width:100%;display:block}
+
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);background:rgba(13,17,23,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--text)}
+.nav-logo img{height:32px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--text);background:var(--dark-card)}
+.nav-links a.active{color:var(--btc-orange);background:rgba(247,147,26,0.08)}
+.nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--btc-orange-light)}
+
+.hero{padding:100px 48px 60px;text-align:left;max-width:1200px;margin:0}
+.hero h1{font-size:48px;font-weight:900;margin-bottom:16px;line-height:1.1;letter-spacing:-0.025em}
+.hero h1 span{color:var(--btc-orange)}
+.hero p{font-size:18px;color:var(--text-muted);max-width:680px;margin:0 0 32px;line-height:1.65}
+
+.blog-grid{padding:0 48px 80px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.blog-card{background:var(--dark-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
+.blog-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+.blog-card-img{width:100%;height:200px;object-fit:cover;display:block}
+.blog-card-body{padding:24px}
+.blog-card-date{font-size:12px;color:var(--text-dim);margin-bottom:8px;font-weight:500}
+.blog-card-title{font-size:17px;font-weight:700;line-height:1.4;margin-bottom:10px;color:var(--text);transition:color .2s}
+.blog-card:hover .blog-card-title{color:var(--btc-orange)}
+.blog-card-excerpt{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blog-card-author{font-size:12px;color:var(--text-dim);font-weight:500}
+.blog-card-author span{color:var(--text-muted)}
+
+.newsletter{background:var(--dark-lighter);border-top:1px solid var(--border);padding:80px 48px;text-align:center;position:relative;overflow:hidden}
+.newsletter h2{font-size:36px;font-weight:800;margin-bottom:12px;position:relative;z-index:1}
+.newsletter p{color:var(--text-muted);font-size:16px;margin-bottom:32px;position:relative;z-index:1}
+.newsletter-form{display:flex;justify-content:center;gap:12px;max-width:520px;margin:0 auto;position:relative;z-index:1}
+.newsletter-form input{flex:1;padding:14px 20px;border:1px solid var(--border);border-radius:8px;background:var(--dark);color:var(--text);font-size:15px;outline:none;transition:border-color .2s}
+.newsletter-form input:focus{border-color:var(--btc-orange)}
+.newsletter-form input::placeholder{color:var(--text-dim)}
+.newsletter-form button{padding:14px 28px;background:var(--text);color:var(--dark);border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.newsletter-form button:hover{background:var(--btc-orange);color:#fff}
+
+.footer-main{background:var(--dark);border-top:1px solid var(--border);padding:60px 48px 30px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px}
+.footer-logo{flex-shrink:0}
+.footer-logo img{height:80px;width:auto;max-width:180px;object-fit:contain;opacity:0.9;transition:opacity .2s}
+.footer-logo img:hover{opacity:1}
+.footer-columns{display:flex;gap:80px;flex-wrap:wrap}
+.footer-col h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:16px;text-transform:none}
+.footer-col a{display:block;color:var(--text-muted);font-size:14px;text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--btc-orange)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);text-align:center}
+.footer-bottom p{font-size:13px;color:var(--text-dim)}
+
+@media(max-width:900px){
+.nav{padding:16px 24px}
+.nav-links{display:none}
+.hero{padding:60px 24px}
+.hero h1{font-size:36px}
+.blog-grid{grid-template-columns:repeat(2,1fr);padding:0 24px 60px}
+.newsletter{padding:60px 24px}
+.newsletter h2{font-size:28px}
+.newsletter-form{flex-direction:column}
+.footer-main{padding:40px 24px 20px}
+.footer-inner{flex-direction:column;gap:30px}
+.footer-columns{gap:40px}
+.footer-logo img{height:60px}
+}
+@media(max-width:600px){
+.blog-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<section class="hero">
+  <h1>Ras's <span>Articles</span></h1>
+  <p>Insights on Bitcoin, macroeconomics, and the future of money from Virtuse CEO Ras Vasilisin.</p>
+</section>
+
+<section class="blog-grid">
+
+  <!-- Article 1 -->
+  <a href="https://www.virtuse.com/why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2026/05/19e11c0d-9992-8c9b-8000-0000c74eed4a_Gemini_Generated_Image_lyuaf5lyuaf5lyua-1024x572.png" alt="Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">14 May 2026</div>
+      <div class="blog-card-title">Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?</div>
+      <div class="blog-card-excerpt">The era of questioning Bitcoin is over. It is here to stay. We no longer ask why the internet exists. We do not wonder who invented the code for AI. These technologies are now part of our daily lives.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 2 -->
+  <a href="https://www.virtuse.com/39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-15-at-6.52.29-PM-350x200.jpeg" alt="$39 Trillion and Counting" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">22 April 2026</div>
+      <div class="blog-card-title">$39 Trillion and Counting: Why the World's Biggest Credit Card Is About to Hit the Limit</div>
+      <div class="blog-card-excerpt">The man next door looks rich. He drives a fast car. His house is getting bigger. But here is what you do not see: he is borrowing to pay for all of it.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 3 -->
+  <a href="https://www.virtuse.com/rome-wokeism-and-the-rise-of-the-bitcoin-standard/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-7.21.45-PM-350x200.jpeg" alt="Rome, Wokeism, and the Rise of the Bitcoin Standard" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">13 March 2026</div>
+      <div class="blog-card-title">Rome, Wokeism, and the Rise of the Bitcoin Standard</div>
+      <div class="blog-card-excerpt">We've seen this movie before. Here is why the fall of Rome holds the key to understanding Bitcoin's inevitable rise.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 4 -->
+  <a href="https://www.virtuse.com/gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-25-at-1.00.18-PM-350x200.jpeg" alt="Gold is the Smoke Alarm, Bitcoin is the Exit Ramp" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">25 February 2026</div>
+      <div class="blog-card-title">Gold is the Smoke Alarm, Bitcoin is the Exit Ramp: Why Math is Defeating History in 2026</div>
+      <div class="blog-card-excerpt">The global financial system is currently experiencing something that has happened dozens of times before: the slow, then sudden collapse of a monetary order.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 5 -->
+  <a href="https://www.virtuse.com/the-bitcoin-war-jpmorgan-and-jane-street-are-attacking-retail/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-16-at-6.14.46-PM-1-e1766065029618-350x200.jpeg" alt="THE BITCOIN WAR" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">18 December 2025</div>
+      <div class="blog-card-title">THE BITCOIN WAR: JPMorgan and Jane Street Are Attacking Retail</div>
+      <div class="blog-card-excerpt">This is the time when the true legends are made. Do you have what it takes to hold the line?</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 6 -->
+  <a href="https://www.virtuse.com/blackrocks-bitcoin-shock-ibit-just-became-their-top-revenue-driver/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2025/12/PHOTO-2025-12-02-13-39-05-e1764682730906-350x200.jpg" alt="BlackRock's Bitcoin Shock" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">2 December 2025</div>
+      <div class="blog-card-title">BlackRock's Bitcoin Shock: IBIT Just Became Their Top Revenue Driver!</div>
+      <div class="blog-card-excerpt">It's official: BlackRock, the world's largest asset manager, just got more revenue from Bitcoin than from any other ETF in their entire lineup.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 7 -->
+  <a href="https://www.virtuse.com/is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2025/10/PHOTO-2025-10-03-10-08-50-350x200.jpg" alt="Digital Euro" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">6 October 2025</div>
+      <div class="blog-card-title">Is the Digital Euro 'Modernization' or Just China's Social Credit System for the EU?</div>
+      <div class="blog-card-excerpt">It's not "digital cash"—it's a control system designed to monitor, restrict, and ultimately dictate how you spend your money.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 8 -->
+  <a href="https://www.virtuse.com/michael-saylors-legacy-the-bitcoin-corporate-revolution/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2025/09/Screenshot-2025-09-22-at-12.29.09-PM-e1758536988904-350x200.png" alt="Michael Saylor's Legacy" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">22 September 2025</div>
+      <div class="blog-card-title">Michael Saylor's Legacy: The Bitcoin Corporate Revolution</div>
+      <div class="blog-card-excerpt">Why Wall Street Is Embracing a Digital Gold Rush. In a historic shift, the world of traditional finance is waking up to what many Bitcoiners have known for years.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+  <!-- Article 9 -->
+  <a href="https://www.virtuse.com/what-is-a-bitcoin-treasury/" target="_blank" class="blog-card">
+    <img src="https://www.virtuse.com/wp-content/uploads/2025/09/Gemini_Generated_Image_1uo0r41uo0r41uo0-e1760026344679-350x200.png" alt="What is a Bitcoin Treasury" class="blog-card-img">
+    <div class="blog-card-body">
+      <div class="blog-card-date">12 September 2025</div>
+      <div class="blog-card-title">What is a Bitcoin Treasury</div>
+      <div class="blog-card-excerpt">Hedging, Investment and Capital Growth. A Bitcoin treasury is a strategic reserve of Bitcoin held by a company or institution as part of its financial planning.</div>
+      <div class="blog-card-author">By <span>Ras Vasilisin</span></div>
+    </div>
+  </a>
+
+</section>
+
+<section class="newsletter">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank">AMLD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

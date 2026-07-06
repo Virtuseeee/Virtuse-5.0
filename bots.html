@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trading Bots — Virtuse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #1c2128;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --dim: #484f58;
+      --border: #30363d;
+      --orange: #f7931a;
+      --green: #3fb950;
+      --blue: #58a6ff;
+      --red: #f85149;
+      --max-width: 1200px;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --radius-xl: 20px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Navigation ─── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 48px;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      height: 32px; width: auto; display: block; height: 32px;
+      background: var(--orange);
+      
+      
+      
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 6px 14px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(230, 237, 243, 0.05);
+    }
+
+    .nav-links a.active {
+      color: var(--orange);
+      background: rgba(247, 147, 26, 0.08);
+      font-weight: 600;
+    }
+
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.88rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: #e08010;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(247, 147, 26, 0.3);
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 48px 80px;
+      text-align: left;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 20%, rgba(247, 147, 26, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(48, 54, 61, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 0;
+    }
+
+
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 32px;
+      line-height: 1.65;
+    }
+
+    /* ─── How It Works ─── */
+    .how {
+      padding: 80px 24px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all 0.3s;
+    }
+
+    .step:hover {
+      border-color: rgba(247, 147, 26, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .step-num {
+      position: absolute;
+      top: -16px;
+      left: 20px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--orange), #ffb84d);
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 14px;
+      color: white;
+      box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
+      z-index: 2;
+    }
+
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .step-connector {
+      display: none;
+      position: absolute;
+      right: -24px;
+      top: 50px;
+      width: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+    }
+
+    /* ─── Category Cards ─── */
+    .categories {
+      padding: 0 24px 60px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .cat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cat-card:hover {
+      border-color: rgba(247, 147, 26, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .cat-card.cloud::before {
+      background: linear-gradient(90deg, var(--blue), #7dd3fc);
+    }
+
+    .cat-card.self::before {
+      background: linear-gradient(90deg, var(--green), #86efac);
+    }
+
+    .cat-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      
+      
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .cat-card.cloud .cat-icon {
+      background: rgba(88, 166, 255, 0.12);
+      color: var(--blue);
+    }
+
+    .cat-card.self .cat-icon {
+      background: rgba(63, 185, 80, 0.12);
+      color: var(--green);
+    }
+
+    .cat-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .cat-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cat-meta {
+      
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .cat-meta span {
+      font-size: 0.78rem;
+      color: var(--dim);
+      background: rgba(255,255,255,0.03);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Partners ─── */
+    .partners {
+      padding: 60px 24px 80px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .partner-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 0;
+      transition: all 0.3s;
+      
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partner-card:hover {
+      border-color: rgba(247, 147, 26, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .partner-card.top-pick {
+      border-color: rgba(247, 147, 26, 0.4);
+    }
+
+    .partner-card.top-pick::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), #ffb347);
+    }
+
+    .partner-header {
+      padding: 24px 24px 0;
+      
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .partner-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      
+      
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .partner-title-group {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .partner-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .partner-tags {
+      
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .tag-orange {
+      background: rgba(247, 147, 26, 0.15);
+      color: var(--orange);
+      border: 1px solid rgba(247, 147, 26, 0.2);
+    }
+
+    .tag-green {
+      background: rgba(63, 185, 80, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(63, 185, 80, 0.2);
+    }
+
+    .tag-blue {
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--blue);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+    }
+
+    .tag-purple {
+      background: rgba(180, 140, 255, 0.15);
+      color: #b48cff;
+      border: 1px solid rgba(180, 140, 255, 0.2);
+    }
+
+    .tag-red {
+      background: rgba(248, 81, 73, 0.15);
+      color: var(--red);
+      border: 1px solid rgba(248, 81, 73, 0.2);
+    }
+
+    .tag-gold {
+      background: rgba(241, 196, 15, 0.15);
+      color: #f1c40f;
+      border: 1px solid rgba(241, 196, 15, 0.2);
+    }
+
+    .tag-gray {
+      background: rgba(139, 148, 158, 0.15);
+      color: var(--muted);
+      border: 1px solid rgba(139, 148, 158, 0.2);
+    }
+
+    .partner-body {
+      padding: 14px 24px 0;
+      flex: 1;
+    }
+
+    .partner-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .partner-features {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+
+    .partner-features li {
+      font-size: 0.82rem;
+      color: var(--text);
+      padding: 4px 0;
+      
+      
+      gap: 8px;
+    }
+
+    .partner-features li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--orange);
+      
+      flex-shrink: 0;
+    }
+
+    .partner-footer {
+      padding: 0 24px 24px;
+      
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #e08010;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(247, 147, 26, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: var(--dim);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* ─── Disclaimer ─── */
+    /* ===== NEWSLETTER SECTION ===== */
+    .newsletter {
+      background: var(--dark-lighter);
+      border-top: 1px solid var(--border);
+      padding: 80px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter p {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--dark);
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-form input:focus { border-color: var(--btc-orange); }
+
+    .newsletter-form input::placeholder { color: var(--text-dim); }
+
+    .newsletter-form button {
+      padding: 14px 28px;
+      background: var(--text);
+      color: var(--dark);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover { background: var(--btc-orange); color: white; }
+
+    /* ===== FOOTER ===== */
+    .footer-main {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 60px 48px 30px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-logo { flex-shrink: 0; }
+
+    .footer-logo img {
+      height: 80px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .footer-logo img:hover { opacity: 1; }
+
+    .footer-columns {
+      display: flex;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      text-transform: none;
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--text-muted);
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--btc-orange); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    @media (max-width: 768px) {
+      .newsletter { padding: 60px 24px; }
+      .newsletter h2 { font-size: 28px; }
+      .newsletter-form { flex-direction: column; }
+      .footer-main { padding: 40px 24px 20px; }
+      .footer-inner { flex-direction: column; gap: 30px; }
+      .footer-columns { gap: 40px; }
+      .footer-logo img { height: 60px; }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .nav-cta { display: none; }
+
+      .steps { grid-template-columns: 1fr; }
+      .step-connector { display: none; }
+
+      .cat-grid { grid-template-columns: 1fr; }
+
+      .partner-grid { grid-template-columns: 1fr; }
+
+      .hero { padding: 70px 24px 60px; }
+      .hero h1 { font-size: 2rem; }
+      .how, .partners { padding: 50px 20px; }
+
+      }
+
+    @media (min-width: 901px) {
+      .step:not(:last-child) .step-connector { display: block; }
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html" class="active">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content animate">
+
+      <h1>Automate Your Bitcoin Strategy With<br><span style="color:var(--orange)">Trading Bots</span></h1>
+      <p>Run non-custodial trading bots that connect via read-only or trade-only API keys. Your Bitcoin stays on your exchange — the bot just executes your strategy. No withdrawal permissions. No custody.</p>
+      </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how">
+    <div class="section-header animate delay-1">
+      <h2>How It Works</h2>
+      <p>Get started with automated trading in four simple steps</p>
+    </div>
+    <div class="steps">
+      <div class="step animate delay-1">
+        <div class="step-num">1</div>
+        <h3>Choose a Bot</h3>
+        <p>Cloud-based or self-hosted, beginner or advanced — pick what fits your needs.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step animate delay-2">
+        <div class="step-num">2</div>
+        <h3>Connect via API</h3>
+        <p>Link your exchange with trade-only permissions. No withdrawals allowed.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step animate delay-3">
+        <div class="step-num">3</div>
+        <h3>Set Your Strategy</h3>
+        <p>DCA, grid, or custom rules. Backtest first, deploy when ready.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step animate delay-4">
+        <div class="step-num">4</div>
+        <h3>Run 24/7</h3>
+        <p>Bot executes automatically while you keep full control of your keys.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Cards -->
+  <section class="categories">
+    <div class="section-header animate delay-1">
+      <h2>Two Ways to Automate</h2>
+      <p>Choose the deployment model that matches your technical comfort and privacy needs</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card cloud animate delay-2">
+        <div class="cat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <h3>Cloud Bots</h3>
+        <p>Managed platforms running on provider servers. Easier setup, subscription fee. Ideal for beginners who want plug-and-play automation without managing infrastructure.</p>
+        <div class="cat-meta">
+          <span>Easier setup</span>
+          <span>Subscription</span>
+          <span>Beginner-friendly</span>
+        </div>
+      </div>
+      <div class="cat-card self animate delay-3">
+        <div class="cat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>Self-Hosted Bots</h3>
+        <p>Run on your own server (VPS). Full control, open-source. Ideal for privacy-conscious traders who want complete sovereignty over their trading infrastructure.</p>
+        <div class="cat-meta">
+          <span>Full control</span>
+          <span>Open-source</span>
+          <span>Privacy-first</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners">
+    <div class="section-header animate delay-1">
+      <h2>Bot Partners</h2>
+      <p>Compare non-custodial trading bot platforms and find your fit</p>
+    </div>
+    <div class="partner-grid">
+
+      <!-- 3Commas -->
+      <div class="partner-card top-pick animate delay-1">
+        <div class="partner-header">
+          <div class="partner-icon" style="background:linear-gradient(135deg,#2962FF,#00B0FF)">3C</div>
+          <div class="partner-title-group">
+            <div class="partner-name">3Commas</div>
+            <div class="partner-tags">
+              <span class="tag tag-orange">Top Pick</span>
+              <span class="tag tag-blue">2M+ Users</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <p class="partner-desc">The largest cloud trading bot platform. DCA, grid, and AI bots across 15+ exchanges. Automation users trade 5x more volume.</p>
+          <ul class="partner-features">
+            <li>DCA / Grid / AI bots</li>
+            <li>15+ exchanges supported</li>
+            <li>Paper trading available</li>
+            <li>iOS & Android mobile app</li>
+          </ul>
+          <div class="partner-commission">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Up to 25% recurring rev share
+          </div>
+        </div>
+        <div class="partner-footer">
+          <a href="https://3commas.com" target="_blank" rel="noopener" class="btn btn-primary">Get 3Commas</a>
+          <button class="btn btn-secondary">Compare</button>
+        </div>
+      </div>
+
+      <!-- Coinrule -->
+      <div class="partner-card animate delay-2">
+        <div class="partner-header">
+          <div class="partner-icon" style="background:linear-gradient(135deg,#7c3aed,#c084fc)">CR</div>
+          <div class="partner-title-group">
+            <div class="partner-name">Coinrule</div>
+            <div class="partner-tags">
+              <span class="tag tag-green">Non-Custodial</span>
+              <span class="tag tag-purple">YC-Backed</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <p class="partner-desc">Explicitly non-custodial. Trade-only API, no withdrawals. 410K+ traders. Y Combinator backed. Growth stage with partnership-friendly terms.</p>
+          <ul class="partner-features">
+            <li>Explicitly non-custodial</li>
+            <li>150+ strategy templates</li>
+            <li>Any exchange supported</li>
+            <li>Backtesting engine</li>
+          </ul>
+          <div class="partner-commission">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Negotiate directly
+          </div>
+        </div>
+        <div class="partner-footer">
+          <a href="https://coinrule.com" target="_blank" rel="noopener" class="btn btn-primary">Get Coinrule</a>
+          <button class="btn btn-secondary">Learn More</button>
+        </div>
+      </div>
+
+      <!-- Cryptohopper -->
+      <div class="partner-card animate delay-3">
+        <div class="partner-header">
+          <div class="partner-icon" style="background:linear-gradient(135deg,#16a34a,#4ade80)">CH</div>
+          <div class="partner-title-group">
+            <div class="partner-name">Cryptohopper</div>
+            <div class="partner-tags">
+              <span class="tag tag-green">Beginner-Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <p class="partner-desc">Most beginner-friendly bot platform. Copy trading, paper trading, and marketplace strategies. 30-day free trial.</p>
+          <ul class="partner-features">
+            <li>Copy trading available</li>
+            <li>Paper trading mode</li>
+            <li>Strategy marketplace</li>
+            <li>Mirror trading signals</li>
+          </ul>
+          <div class="partner-commission">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            10–20% per subscription
+          </div>
+        </div>
+        <div class="partner-footer">
+          <a href="https://cryptohopper.com" target="_blank" rel="noopener" class="btn btn-primary">Get Cryptohopper</a>
+          <button class="btn btn-secondary">Learn More</button>
+        </div>
+      </div>
+
+      <!-- unCoded -->
+      <div class="partner-card animate delay-1">
+        <div class="partner-header">
+          <div class="partner-icon" style="background:linear-gradient(135deg,#ea580c,#fb923c)">uC</div>
+          <div class="partner-title-group">
+            <div class="partner-name">unCoded</div>
+            <div class="partner-tags">
+              <span class="tag tag-orange">Self-Hosted</span>
+              <span class="tag tag-blue">EU</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <p class="partner-desc">Self-hosted on your own VPS. 150+ indicators, TradingView webhooks, Telegram bot. Runs on EU servers. Full sovereignty.</p>
+          <ul class="partner-features">
+            <li>Self-hosted (your server)</li>
+            <li>150+ technical indicators</li>
+            <li>TradingView webhooks</li>
+            <li>Telegram bot control</li>
+          </ul>
+          <div class="partner-commission">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Setup fee EUR 200–500
+          </div>
+        </div>
+        <div class="partner-footer">
+          <button class="btn btn-primary">Learn More</button>
+          <button class="btn btn-secondary">View Docs</button>
+        </div>
+      </div>
+
+      <!-- RevenueBot -->
+      <div class="partner-card animate delay-2">
+        <div class="partner-header">
+          <div class="partner-icon" style="background:linear-gradient(135deg,#d97706,#fbbf24)">RB</div>
+          <div class="partner-title-group">
+            <div class="partner-name">RevenueBot</div>
+            <div class="partner-tags">
+              <span class="tag tag-gold">BTC Payouts</span>
+              <span class="tag tag-orange">Grid</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <p class="partner-desc">Cloud DCA and grid bots for Binance, OKX, and Bitget. Simple interface, Bitcoin-focused strategies. All referral commissions paid in BTC.</p>
+          <ul class="partner-features">
+            <li>DCA + Grid bots</li>
+            <li>BTC referral payouts</li>
+            <li>Binance / OKX / Bitget</li>
+            <li>Simple, clean UI</li>
+          </ul>
+          <div class="partner-commission">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            30% referral in BTC
+          </div>
+        </div>
+        <div class="partner-footer">
+          <a href="https://revenuebot.io" target="_blank" rel="noopener" class="btn btn-primary">Get RevenueBot</a>
+          <button class="btn btn-secondary">Learn More</button>
+        </div>
+      </div>
+
+      <!-- Freqtrade -->
+      <div class="partner-card animate delay-3">
+        <div class="partner-header">
+          <div class="partner-icon" style="background:linear-gradient(135deg,#4b5563,#9ca3af)">FT</div>
+          <div class="partner-title-group">
+            <div class="partner-name">Freqtrade</div>
+            <div class="partner-tags">
+              <span class="tag tag-gray">Open Source</span>
+              <span class="tag tag-green">Free</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <p class="partner-desc">Fully free and open-source Python bot. Unlimited strategies. Active community. For advanced users who want total control.</p>
+          <ul class="partner-features">
+            <li>100% free and open-source</li>
+            <li>Python-based framework</li>
+            <li>Unlimited strategies</li>
+            <li>Active Discord community</li>
+          </ul>
+          <div class="partner-commission">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Build paid courses around it
+          </div>
+        </div>
+        <div class="partner-footer">
+          <a href="https://freqtrade.io" target="_blank" rel="noopener" class="btn btn-primary">Get Freqtrade</a>
+          <button class="btn btn-secondary">View Docs</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <h2>Fix the Money, Fix the World</h2>
+    <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">SUBSCRIBE NOW</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="https://www.virtuse.com/about-us/" target="_blank">About Us</a>
+          <a href="https://www.virtuse.com/faq/" target="_blank">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Terms &amp; conditions</h4>
+          <a href="https://www.virtuse.com/privacy-policy/" target="_blank">Privacy Policy</a>
+          <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank">AMLD5</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
