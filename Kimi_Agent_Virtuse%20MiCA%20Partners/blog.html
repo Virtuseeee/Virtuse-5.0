@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--btc-orange:#f7931a;--btc-orange-light:#ffb84d;--dark:#0d1117;--dark-lighter:#161b22;--dark-card:#1c2128;--dark-card-hover:#232930;--text:#e6edf3;--text-muted:#8b949e;--text-dim:#484f58;--border:#30363d;--border-hover:#484f58;--green:#3fb950;--blue:#58a6ff;--purple:#bc8cff;--red:#f85149}
+:root{--btc-orange:#f7931a;--btc-orange-light:#ffb84d;--dark:#0d1117;--dark-lighter:#161b22;--dark-card:#1c2128;--dark-card-hover:#232930;--text:#e6edf3;--text-muted:#8b949e;--text-dim:#484f58;--border:#30363d;--border-hover:#484f58;--green:#3fb950}
 .container{max-width:1200px;margin:0 auto;padding:0 48px}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--dark);color:var(--text);line-height:1.6}
 a{color:inherit;text-decoration:none}
@@ -25,24 +25,22 @@ img{max-width:100%;display:block}
 .nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s}
 .nav-cta:hover{background:var(--btc-orange-light)}
 
-.hero{padding:100px 0 40px;text-align:left}
-.hero h1{font-size:52px;font-weight:900;margin-bottom:16px;line-height:1.1;letter-spacing:-0.03em}
+.hero{padding:96px 0 44px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.hero h1{font-size:52px;font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:14px}
 .hero h1 span{color:var(--btc-orange)}
-.hero p{font-size:18px;color:var(--text-muted);max-width:680px;margin:0 0 36px;line-height:1.65}
+.hero p{font-size:17px;color:var(--text-muted);max-width:560px;line-height:1.65}
+.hero-side{display:flex;flex-direction:column;align-items:flex-end;gap:14px;padding-bottom:6px}
+.post-count{font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:.02em}
+.post-count b{color:var(--btc-orange);font-weight:800}
 
-.filter-bar{display:flex;flex-wrap:wrap;gap:10px;padding:0 0 48px}
-.filter-pill{background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .2s}
-.filter-pill:hover{border-color:var(--border-hover);color:var(--text)}
-.filter-pill.active{background:var(--btc-orange);border-color:var(--btc-orange);color:#0d0902}
+.search-wrap{position:relative}
+.search-input{width:320px;max-width:100%;background:var(--dark-card);border:1px solid var(--border);border-radius:100px;color:var(--text);font-family:inherit;font-size:14px;padding:12px 20px 12px 44px;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--btc-orange)}
+.search-input::placeholder{color:var(--text-dim)}
+.search-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;pointer-events:none}
 
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--btc-orange);background:rgba(247,147,26,0.1);align-self:flex-start}
 .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
-.tag-markets{color:var(--btc-orange);background:rgba(247,147,26,0.1)}
-.tag-macro{color:var(--blue);background:rgba(88,166,255,0.1)}
-.tag-institutional{color:var(--purple);background:rgba(188,140,255,0.1)}
-.tag-regulation{color:var(--red);background:rgba(248,81,73,0.1)}
-.tag-guides{color:var(--green);background:rgba(63,185,80,0.1)}
-.tag-standard{color:var(--btc-orange-light);background:rgba(255,184,77,0.1)}
 
 .featured{display:block;background:var(--dark-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:56px;transition:all .3s}
 .featured:hover{border-color:var(--border-hover);box-shadow:0 20px 60px rgba(0,0,0,0.25)}
@@ -50,9 +48,9 @@ img{max-width:100%;display:block}
 .featured-media{position:relative;overflow:hidden;min-height:340px}
 .featured-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .featured:hover .featured-media img{transform:scale(1.05)}
-.featured-badge{position:absolute;top:20px;left:20px;background:rgba(13,17,23,0.85);backdrop-filter:blur(6px);color:var(--btc-orange);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:7px 14px;border-radius:100px;border:1px solid rgba(247,147,26,0.3)}
+.featured-badge{position:absolute;top:20px;left:20px;background:rgba(13,17,23,0.85);backdrop-filter:blur(6px);color:var(--btc-orange);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:7px 14px;border-radius:100px;border:1px solid rgba(247,147,26,0.3);z-index:2}
 .featured-body{padding:48px;display:flex;flex-direction:column;justify-content:center}
-.featured-title{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:16px;letter-spacing:-0.01em;transition:color .2s}
+.featured-title{font-size:29px;font-weight:800;line-height:1.25;margin-bottom:16px;letter-spacing:-0.01em;transition:color .2s}
 .featured:hover .featured-title{color:var(--btc-orange)}
 .featured-excerpt{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:24px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .featured-meta{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-dim);margin-bottom:28px}
@@ -64,19 +62,34 @@ img{max-width:100%;display:block}
 
 .section-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:24px}
 
-.blog-grid{padding:0 0 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.blog-card{background:var(--dark-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.blog-card{display:flex;flex-direction:column;background:var(--dark-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
 .blog-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
-.blog-card-media{overflow:hidden}
+.blog-card-media{overflow:hidden;flex-shrink:0}
 .blog-card-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .5s}
+.blog-card-img--empty{display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:900;color:rgba(247,147,26,0.35);background:linear-gradient(135deg,var(--dark-lighter),var(--dark-card-hover))}
 .blog-card:hover .blog-card-img{transform:scale(1.06)}
-.blog-card-body{padding:24px}
+.blog-card-body{padding:24px;display:flex;flex-direction:column;flex:1}
 .blog-card-title{font-size:17px;font-weight:700;line-height:1.4;margin-bottom:10px;color:var(--text);transition:color .2s}
 .blog-card:hover .blog-card-title{color:var(--btc-orange)}
 .blog-card-excerpt{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.blog-card-meta{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dim);font-weight:500;padding-top:14px;border-top:1px solid var(--border)}
+.blog-card-meta{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dim);font-weight:500;padding-top:14px;border-top:1px solid var(--border);margin-top:auto}
 .blog-card-meta span{color:var(--text-muted)}
-.blog-card-meta .dot,.featured-meta .dot{display:inline-block;width:3px;height:3px;flex-shrink:0;border-radius:50%;background:var(--text-dim);font-size:0;line-height:0;color:transparent}
+.dot{display:inline-block;width:3px;height:3px;flex-shrink:0;border-radius:50%;background:var(--text-dim)}
+
+.load-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:52px 0 90px}
+.load-more{background:transparent;border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:14px;font-weight:700;padding:14px 36px;border-radius:100px;cursor:pointer;transition:all .2s}
+.load-more:hover{border-color:var(--btc-orange);color:var(--btc-orange)}
+.load-more[disabled]{opacity:.45;cursor:default}
+.load-status{font-size:12px;color:var(--text-dim)}
+
+.skeleton{pointer-events:none}
+.skeleton .blog-card-img{background:linear-gradient(90deg,var(--dark-card) 25%,var(--dark-card-hover) 50%,var(--dark-card) 75%);background-size:200% 100%;animation:shimmer 1.2s infinite}
+.skeleton .sk-line{height:12px;border-radius:6px;margin-bottom:10px;background:linear-gradient(90deg,var(--dark-card-hover) 25%,var(--border) 50%,var(--dark-card-hover) 75%);background-size:200% 100%;animation:shimmer 1.2s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+.empty-state{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--text-muted)}
+.empty-state b{color:var(--text)}
 
 .newsletter{background:var(--dark-lighter);border-top:1px solid var(--border);padding:80px 48px;text-align:center;position:relative;overflow:hidden}
 .newsletter h2{font-size:36px;font-weight:800;margin-bottom:12px;position:relative;z-index:1}
@@ -104,8 +117,10 @@ img{max-width:100%;display:block}
 .nav{padding:16px 24px}
 .nav-links{display:none}
 .container{padding:0 24px}
-.hero{padding:60px 0 32px}
+.hero{padding:60px 0 32px;align-items:flex-start;flex-direction:column}
 .hero h1{font-size:36px}
+.hero-side{align-items:flex-start;width:100%}
+.search-input{width:100%}
 .featured-inner{grid-template-columns:1fr}
 .featured-media{min-height:220px}
 .featured-body{padding:32px}
@@ -145,153 +160,154 @@ img{max-width:100%;display:block}
 </nav>
 
 <section class="hero container">
-  <h1>Ras's <span>Articles</span></h1>
-  <p>Insights on Bitcoin, macroeconomics, and the future of money from Virtuse CEO Ras Vasilisin.</p>
-</section>
-
-<section class="filter-bar container" id="filterBar">
-  <button class="filter-pill active" data-filter="all">All Posts</button>
-  <button class="filter-pill" data-filter="markets">Markets</button>
-  <button class="filter-pill" data-filter="macro">Macro</button>
-  <button class="filter-pill" data-filter="institutional">Institutional</button>
-  <button class="filter-pill" data-filter="regulation">Regulation</button>
-  <button class="filter-pill" data-filter="standard">Bitcoin Standard</button>
-  <button class="filter-pill" data-filter="guides">Guides</button>
-</section>
-
-<section class="container">
-  <a href="https://www.virtuse.com/why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2/" target="_blank" rel="noopener noreferrer" class="featured" data-category="markets">
-    <div class="featured-inner">
-      <div class="featured-media">
-        <span class="featured-badge">Latest Article</span>
-        <img src="https://www.virtuse.com/wp-content/uploads/2026/05/19e11c0d-9992-8c9b-8000-0000c74eed4a_Gemini_Generated_Image_lyuaf5lyuaf5lyua-1024x572.png" alt="Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?">
-      </div>
-      <div class="featured-body">
-        <span class="tag tag-markets">Markets</span>
-        <h2 class="featured-title">Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?</h2>
-        <p class="featured-excerpt">The era of questioning Bitcoin is over. It is here to stay. We no longer ask why the internet exists. We do not wonder who invented the code for AI. These technologies are now part of our daily lives.</p>
-        <div class="featured-meta"><span>Ras Vasilisin</span><span class="dot">·</span>14 May 2026</div>
-        <span class="featured-cta">Read full article <span class="arrow">↗</span></span>
-      </div>
+  <div>
+    <h1>The Virtuse <span>Blog</span></h1>
+    <p>Insights on Bitcoin, macroeconomics, and the future of money from Virtuse CEO Ras Vasilisin.</p>
+  </div>
+  <div class="hero-side">
+    <div class="search-wrap">
+      <span class="search-icon">&#9906;</span>
+      <input type="search" class="search-input" id="searchInput" placeholder="Search articles&hellip;" autocomplete="off">
     </div>
-  </a>
-</section>
-
-<section class="container">
-  <div class="section-label">More Insights</div>
-  <div class="blog-grid" id="blogGrid">
-
-  <!-- Article 2 -->
-  <a href="https://www.virtuse.com/39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="macro">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-15-at-6.52.29-PM-350x200.jpeg" alt="$39 Trillion and Counting" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-macro">Macro</span>
-      <div class="blog-card-title">$39 Trillion and Counting: Why the World's Biggest Credit Card Is About to Hit the Limit</div>
-      <div class="blog-card-excerpt">The man next door looks rich. He drives a fast car. His house is getting bigger. But here is what you do not see: he is borrowing to pay for all of it.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>22 Apr 2026</div>
-    </div>
-  </a>
-
-  <!-- Article 3 -->
-  <a href="https://www.virtuse.com/rome-wokeism-and-the-rise-of-the-bitcoin-standard/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="standard">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-7.21.45-PM-350x200.jpeg" alt="Rome, Wokeism, and the Rise of the Bitcoin Standard" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-standard">Bitcoin Standard</span>
-      <div class="blog-card-title">Rome, Wokeism, and the Rise of the Bitcoin Standard</div>
-      <div class="blog-card-excerpt">We've seen this movie before. Here is why the fall of Rome holds the key to understanding Bitcoin's inevitable rise.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>13 Mar 2026</div>
-    </div>
-  </a>
-
-  <!-- Article 4 -->
-  <a href="https://www.virtuse.com/gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="macro">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-25-at-1.00.18-PM-350x200.jpeg" alt="Gold is the Smoke Alarm, Bitcoin is the Exit Ramp" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-macro">Macro</span>
-      <div class="blog-card-title">Gold is the Smoke Alarm, Bitcoin is the Exit Ramp: Why Math is Defeating History in 2026</div>
-      <div class="blog-card-excerpt">The global financial system is currently experiencing something that has happened dozens of times before: the slow, then sudden collapse of a monetary order.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>25 Feb 2026</div>
-    </div>
-  </a>
-
-  <!-- Article 5 -->
-  <a href="https://www.virtuse.com/the-bitcoin-war-jpmorgan-and-jane-street-are-attacking-retail/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="markets">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-16-at-6.14.46-PM-1-e1766065029618-350x200.jpeg" alt="THE BITCOIN WAR" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-markets">Markets</span>
-      <div class="blog-card-title">THE BITCOIN WAR: JPMorgan and Jane Street Are Attacking Retail</div>
-      <div class="blog-card-excerpt">This is the time when the true legends are made. Do you have what it takes to hold the line?</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>18 Dec 2025</div>
-    </div>
-  </a>
-
-  <!-- Article 6 -->
-  <a href="https://www.virtuse.com/blackrocks-bitcoin-shock-ibit-just-became-their-top-revenue-driver/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="institutional">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/12/PHOTO-2025-12-02-13-39-05-e1764682730906-350x200.jpg" alt="BlackRock's Bitcoin Shock" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-institutional">Institutional</span>
-      <div class="blog-card-title">BlackRock's Bitcoin Shock: IBIT Just Became Their Top Revenue Driver!</div>
-      <div class="blog-card-excerpt">It's official: BlackRock, the world's largest asset manager, just got more revenue from Bitcoin than from any other ETF in their entire lineup.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>2 Dec 2025</div>
-    </div>
-  </a>
-
-  <!-- Article 7 -->
-  <a href="https://www.virtuse.com/is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="regulation">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/10/PHOTO-2025-10-03-10-08-50-350x200.jpg" alt="Digital Euro" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-regulation">Regulation</span>
-      <div class="blog-card-title">Is the Digital Euro 'Modernization' or Just China's Social Credit System for the EU?</div>
-      <div class="blog-card-excerpt">It's not "digital cash"—it's a control system designed to monitor, restrict, and ultimately dictate how you spend your money.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>6 Oct 2025</div>
-    </div>
-  </a>
-
-  <!-- Article 8 -->
-  <a href="https://www.virtuse.com/michael-saylors-legacy-the-bitcoin-corporate-revolution/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="institutional">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/09/Screenshot-2025-09-22-at-12.29.09-PM-e1758536988904-350x200.png" alt="Michael Saylor's Legacy" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-institutional">Institutional</span>
-      <div class="blog-card-title">Michael Saylor's Legacy: The Bitcoin Corporate Revolution</div>
-      <div class="blog-card-excerpt">Why Wall Street Is Embracing a Digital Gold Rush. In a historic shift, the world of traditional finance is waking up to what many Bitcoiners have known for years.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>22 Sep 2025</div>
-    </div>
-  </a>
-
-  <!-- Article 9 -->
-  <a href="https://www.virtuse.com/what-is-a-bitcoin-treasury/" target="_blank" rel="noopener noreferrer" class="blog-card" data-category="guides">
-    <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/09/Gemini_Generated_Image_1uo0r41uo0r41uo0-e1760026344679-350x200.png" alt="What is a Bitcoin Treasury" class="blog-card-img"></div>
-    <div class="blog-card-body">
-      <span class="tag tag-guides">Guides</span>
-      <div class="blog-card-title">What is a Bitcoin Treasury</div>
-      <div class="blog-card-excerpt">Hedging, Investment and Capital Growth. A Bitcoin treasury is a strategic reserve of Bitcoin held by a company or institution as part of its financial planning.</div>
-      <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>12 Sep 2025</div>
-    </div>
-  </a>
-
+    <div class="post-count" id="postCount"><b>169</b> articles and counting</div>
   </div>
 </section>
 
-<script>
-(function(){
-  var pills = document.querySelectorAll('.filter-pill');
-  var featured = document.querySelector('.featured');
-  var cards = document.querySelectorAll('.blog-card');
-  pills.forEach(function(pill){
-    pill.addEventListener('click', function(){
-      pills.forEach(function(p){ p.classList.remove('active'); });
-      pill.classList.add('active');
-      var filter = pill.getAttribute('data-filter');
-      if (featured) {
-        featured.style.display = (filter === 'all' || featured.getAttribute('data-category') === filter) ? '' : 'none';
-      }
-      cards.forEach(function(card){
-        card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? '' : 'none';
-      });
-    });
-  });
-})();
-</script>
+<section class="container" id="featuredWrap">
+  <a href="https://www.virtuse.com/why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2/" target="_blank" rel="noopener noreferrer" class="featured" id="featuredCard">
+    <div class="featured-inner">
+      <div class="featured-media">
+        <span class="featured-badge">Latest Article</span>
+        <img src="https://www.virtuse.com/wp-content/uploads/2026/05/19e11c0d-9992-8c9b-8000-0000c74eed4a_Gemini_Generated_Image_lyuaf5lyuaf5lyua.png" alt="Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?" loading="eager">
+      </div>
+      <div class="featured-body">
+        <span class="tag">Blog</span>
+        <h2 class="featured-title">Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?</h2>
+        <p class="featured-excerpt">The era of questioning Bitcoin is over. It is here to stay. We no longer ask why the internet exists. We do not wonder who invented the code for AI. These technologies are now part of our daily lives. Bitcoin has reached that same stage; it is now a permanent </p>
+        <div class="featured-meta"><span>Ras Vasilisin</span><span class="dot"></span>14 May 2026</div>
+        <span class="featured-cta">Read on virtuse.com <span class="arrow">&#8599;</span></span>
+      </div>
+    </div>
+  </a>
+</section>
+
+<section class="container">
+  <div class="section-label" id="gridLabel">All Articles</div>
+  <div class="blog-grid" id="blogGrid">
+    <a href="https://www.virtuse.com/39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-15-at-6.52.29-PM.jpeg" alt="$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit</div>
+        <div class="blog-card-excerpt">The man next door looks rich. He drives a fast car. His house is huge. But at night, he stays awake. He just got his tenth credit card. He is using it to pay the interest on the other nine. He’s staring at the edge of th</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>22 Apr 2026</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/rome-wokeism-and-the-rise-of-the-bitcoin-standard/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-7.21.45-PM.jpeg" alt="Rome, Wokeism, and the Rise of the Bitcoin Standard" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">Rome, Wokeism, and the Rise of the Bitcoin Standard</div>
+        <div class="blog-card-excerpt">We’ve seen this movie before. Here is why the “Constantine Moment” is the only thing that can save the West. They say history doesn’t repeat itself, but it often rhymes. When we look at the chaotic transformation of Rome</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>13 Mar 2026</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-25-at-1.00.18-PM.jpeg" alt="Gold is the Smoke Alarm, Bitcoin is the Exit Ramp: Why Math is Defeating History in 2026" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">Gold is the Smoke Alarm, Bitcoin is the Exit Ramp: Why Math is Defeating History in 2026</div>
+        <div class="blog-card-excerpt">The global financial system is currently experiencing tremors the likes of which we haven’t seen in decades. Gold is shattering all-time records, silver is effectively “tearing up the floorboards” with 200% gains, and ce</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>25 Feb 2026</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/the-bitcoin-war-jpmorgan-and-jane-street-are-attacking-retail/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-16-at-6.14.46-PM-1-e1766065029618.jpeg" alt="THE BITCOIN WAR: JPMorgan and Jane Street Are Attacking Retail" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">THE BITCOIN WAR: JPMorgan and Jane Street Are Attacking Retail</div>
+        <div class="blog-card-excerpt">This is the time when the true legends are made Do you know the difference between a conspiracy theory and the truth?  About six months. Lately, the evidence has been piling up: what we’re seeing in the markets isn’t jus</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>18 Dec 2025</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/blackrocks-bitcoin-shock-ibit-just-became-their-top-revenue-driver/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/12/PHOTO-2025-12-02-13-39-05-e1764682730906.jpg" alt="BlackRock’s Bitcoin Shock: IBIT Just Became Their Top Revenue Driver!" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">BlackRock’s Bitcoin Shock: IBIT Just Became Their Top Revenue Driver!</div>
+        <div class="blog-card-excerpt">It’s official: BlackRock, the world’s largest asset manager, has a new golden goose, and it’s powered by Bitcoin In a stunning development that underscores the rapid mainstream acceptance of digital assets, BlackRock’s s</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>2 Dec 2025</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/10/PHOTO-2025-10-03-10-08-50.jpg" alt="Is the Digital Euro ‘Modernization’ or Just China’s Social Credit System for the EU?" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">Is the Digital Euro ‘Modernization’ or Just China’s Social Credit System for the EU?</div>
+        <div class="blog-card-excerpt">It’s not “digital cash”—it’s a control system designed to monitor your spending, enforce expiration dates on your savings, and blacklist dissenters. A recent EU-wide survey by the European Central Bank (ECB) and the Germ</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>6 Oct 2025</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/michael-saylors-legacy-the-bitcoin-corporate-revolution/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/09/Screenshot-2025-09-22-at-12.29.09-PM-e1758536988904.png" alt="Michael Saylor’s Legacy: The Bitcoin Corporate Revolution" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">Michael Saylor’s Legacy: The Bitcoin Corporate Revolution</div>
+        <div class="blog-card-excerpt">Why Wall Street Is Embracing a Digital Gold Rush In August 2020, Michael Saylor, the CEO of MicroStrategy, made an announcement that sent shockwaves through Wall Street: his company was buying $250 million worth of Bitco</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>22 Sep 2025</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/what-is-a-bitcoin-treasury/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2025/09/Gemini_Generated_Image_1uo0r41uo0r41uo0-e1760026344679.png" alt="What is a Bitcoin Treasury" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">What is a Bitcoin Treasury</div>
+        <div class="blog-card-excerpt">Hedging, Investment and Capital Growth A Bitcoin treasury refers to a company holding a portion of its assets in Bitcoin. This strategy is an increasingly common way for businesses to manage their cash and investments, o</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>12 Sep 2025</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><div class="blog-card-img blog-card-img--empty">&#8383;</div></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">Gamestop Urges All Of Us to Adapt To Bitcoin Standard</div>
+        <div class="blog-card-excerpt">GameStop just made a Michael Saylor-level move and announced the Bitcoin strategy. They immediately borrowed 1.5 billion in industry loans to execute it. The Great Reset Goes On Gamestop just made a Michael Saylor-level </div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>10 Sep 2025</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/bitcoin-ordinals-about-to-flip-ethereum-nfts/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2021/09/bitcoin-news.jpg" alt="Bitcoin Ordinals About to Flip Ethereum NFTs" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">Bitcoin Ordinals About to Flip Ethereum NFTs</div>
+        <div class="blog-card-excerpt">Bitcoin’s native non-fungible tokens (NFTs), known as “Ordinals,” are on the verge of surpassing Ethereum in the NFT market, according to data from Crypto Slam. Ordinals have seen a significant surge in both sales and ac</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>12 Jul 2023</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/sedem-dovodov-preco-sucasne-bankovnictvo-konci/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2023/04/Screenshot-2023-04-18-at-21.38.44.png" alt="7 Reasons Why Traditional Banking Is On The Way Out" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">7 Reasons Why Traditional Banking Is On The Way Out</div>
+        <div class="blog-card-excerpt">The banking system is broken. You’ve already been suspecting this for a long time, but it has been confirmed with the recent banking failures like SVB, Silvergate, and Credit Suisse.  You know they are not trustworthy, b</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>19 Apr 2023</div>
+      </div>
+    </a>
+    <a href="https://www.virtuse.com/de-dollarization-is-gaining-momentum/" target="_blank" rel="noopener noreferrer" class="blog-card">
+      <div class="blog-card-media"><img src="https://www.virtuse.com/wp-content/uploads/2023/04/Screenshot-2023-04-12-at-19.24.33.png" alt="De-Dollarization Is Gaining Momentum" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="tag">Blog</span>
+        <div class="blog-card-title">De-Dollarization Is Gaining Momentum</div>
+        <div class="blog-card-excerpt">A multi-polar world is bad news for the US but great news for bitcoin. Since the 1950s, it’s been virtually impossible for a country to function without access to US dollars. And Washington maintained this highly-favorab</div>
+        <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>13 Apr 2023</div>
+      </div>
+    </a>
+  </div>
+  <div class="load-wrap">
+    <button class="load-more" id="loadMore">Load more articles</button>
+    <div class="load-status" id="loadStatus"></div>
+  </div>
+</section>
 
 <section class="newsletter">
   <h2>Fix the Money, Fix the World</h2>
@@ -324,6 +340,201 @@ img{max-width:100%;display:block}
     <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  'use strict';
+  // WordPress is the live source of truth: posts are fetched from the public
+  // REST API at load, so newly published articles appear here automatically.
+  var API = 'https://www.virtuse.com/wp-json/wp/v2/posts';
+  var CATEGORY = 13; // "Blog"
+  var PER_PAGE = 12;
+
+  var grid = document.getElementById('blogGrid');
+  var featuredWrap = document.getElementById('featuredWrap');
+  var loadBtn = document.getElementById('loadMore');
+  var loadStatus = document.getElementById('loadStatus');
+  var postCount = document.getElementById('postCount');
+  var gridLabel = document.getElementById('gridLabel');
+  var searchInput = document.getElementById('searchInput');
+
+  var state = { page: 1, total: 169, totalPages: 15, search: '', loading: false, liveLoaded: false };
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  function stripHtml(s) {
+    var d = document.createElement('div');
+    d.innerHTML = s;
+    return (d.textContent || '').replace('[…]', '…').trim();
+  }
+
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    return d.getDate() + ' ' + ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function imgOf(post) {
+    try {
+      var m = post._embedded['wp:featuredmedia'][0];
+      return m.source_url || '';
+    } catch (e) { return ''; }
+  }
+
+  function makeCard(post) {
+    var a = el('a', 'blog-card');
+    a.href = post.link; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    var media = el('div', 'blog-card-media');
+    var src = imgOf(post);
+    if (src) {
+      var img = el('img', 'blog-card-img');
+      img.src = src; img.loading = 'lazy'; img.alt = stripHtml(post.title.rendered);
+      media.appendChild(img);
+    } else {
+      media.appendChild(el('div', 'blog-card-img blog-card-img--empty', '₿'));
+    }
+    var body = el('div', 'blog-card-body');
+    body.appendChild(el('span', 'tag', 'Blog'));
+    body.appendChild(el('div', 'blog-card-title', stripHtml(post.title.rendered)));
+    body.appendChild(el('div', 'blog-card-excerpt', stripHtml(post.excerpt.rendered)));
+    var meta = el('div', 'blog-card-meta');
+    meta.appendChild(el('span', null, 'Ras Vasilisin'));
+    meta.appendChild(el('span', 'dot'));
+    meta.appendChild(document.createTextNode(' ' + fmtDate(post.date)));
+    body.appendChild(meta);
+    a.appendChild(media); a.appendChild(body);
+    return a;
+  }
+
+  function renderFeatured(post) {
+    var media = featuredWrap.querySelector('.featured-media img');
+    var title = featuredWrap.querySelector('.featured-title');
+    var excerpt = featuredWrap.querySelector('.featured-excerpt');
+    var metaDate = featuredWrap.querySelector('.featured-meta');
+    var linkEl = featuredWrap.querySelector('.featured');
+    if (!linkEl) return;
+    linkEl.href = post.link;
+    if (media) { media.src = imgOf(post); media.alt = stripHtml(post.title.rendered); }
+    if (title) title.textContent = stripHtml(post.title.rendered);
+    if (excerpt) excerpt.textContent = stripHtml(post.excerpt.rendered);
+    if (metaDate) {
+      metaDate.innerHTML = '';
+      metaDate.appendChild(el('span', null, 'Ras Vasilisin'));
+      metaDate.appendChild(el('span', 'dot'));
+      metaDate.appendChild(document.createTextNode(' ' + fmtDate(post.date)));
+    }
+  }
+
+  function addSkeletons(n) {
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < n; i++) {
+      var c = el('div', 'blog-card skeleton');
+      var m = el('div', 'blog-card-media');
+      m.appendChild(el('div', 'blog-card-img'));
+      var b = el('div', 'blog-card-body');
+      for (var j = 0; j < 3; j++) {
+        var line = el('div', 'sk-line');
+        line.style.width = (90 - j * 20) + '%';
+        b.appendChild(line);
+      }
+      c.appendChild(m); c.appendChild(b);
+      frag.appendChild(c);
+    }
+    grid.appendChild(frag);
+    return function remove() {
+      grid.querySelectorAll('.skeleton').forEach(function (s) { s.remove(); });
+    };
+  }
+
+  function updateChrome() {
+    postCount.innerHTML = '<b>' + state.total + '</b> articles and counting';
+    var done = state.page >= state.totalPages;
+    loadBtn.disabled = done;
+    loadBtn.textContent = done ? 'You’ve reached the beginning' : 'Load more articles';
+    var shown = grid.querySelectorAll('.blog-card:not(.skeleton)').length + (state.search ? 0 : 1);
+    loadStatus.textContent = 'Showing ' + Math.min(shown, state.total) + ' of ' + state.total;
+  }
+
+  function fetchPosts(page, opts) {
+    opts = opts || {};
+    var url = API + '?categories=' + CATEGORY + '&per_page=' + PER_PAGE +
+      '&page=' + page + '&_embed=wp:featuredmedia&orderby=date&order=desc';
+    if (state.search) url += '&search=' + encodeURIComponent(state.search);
+    return fetch(url).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      state.total = parseInt(res.headers.get('X-WP-Total') || state.total, 10);
+      state.totalPages = parseInt(res.headers.get('X-WP-TotalPages') || state.totalPages, 10);
+      return res.json();
+    });
+  }
+
+  // mode: 'initial' = quiet refresh replacing static content on success;
+  //       'replace' = clear grid with skeletons (search);
+  //       'append'  = load-more.
+  function loadPage(page, mode) {
+    if (state.loading) return;
+    state.loading = true;
+    var removeSkeletons = function () {};
+    if (mode === 'replace') {
+      grid.innerHTML = '';
+      removeSkeletons = addSkeletons(6);
+    } else if (mode === 'append') {
+      removeSkeletons = addSkeletons(3);
+    }
+    fetchPosts(page).then(function (posts) {
+      removeSkeletons();
+      state.page = page;
+      var list = posts;
+      if (!state.search && page === 1) {
+        if (posts.length) renderFeatured(posts[0]);
+        list = posts.slice(1);
+      }
+      if (mode === 'initial' || mode === 'replace') grid.innerHTML = '';
+      if (!list.length && page === 1) {
+        var empty = el('div', 'empty-state');
+        empty.innerHTML = 'No articles found' + (state.search ? ' for <b></b>' : '');
+        if (state.search) empty.querySelector('b').textContent = '“' + state.search + '”';
+        grid.appendChild(empty);
+      } else {
+        var frag = document.createDocumentFragment();
+        list.forEach(function (p) { frag.appendChild(makeCard(p)); });
+        grid.appendChild(frag);
+      }
+      updateChrome();
+      state.loading = false;
+    }).catch(function () {
+      removeSkeletons();
+      state.loading = false;
+      // Static pre-rendered content stays as the fallback; just report quietly.
+      loadStatus.textContent = 'Couldn’t reach the article feed — showing recent posts.';
+    });
+  }
+
+  loadBtn.addEventListener('click', function () {
+    if (state.page < state.totalPages) loadPage(state.page + 1, 'append');
+  });
+
+  var debounce;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(debounce);
+    debounce = setTimeout(function () {
+      var q = searchInput.value.trim();
+      if (q === state.search) return;
+      state.search = q;
+      featuredWrap.style.display = q ? 'none' : '';
+      gridLabel.textContent = q ? 'Search results' : 'All Articles';
+      loadPage(1, q ? 'replace' : 'initial');
+    }, 350);
+  });
+
+  // Refresh page 1 from WordPress so the blog is always current.
+  loadPage(1, 'initial');
+})();
+</script>
 
 </body>
 </html>
