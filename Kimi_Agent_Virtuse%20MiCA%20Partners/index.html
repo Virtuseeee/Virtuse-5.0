@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Virtuse — The World's First Hub for Bitcoin-Only Services</title>
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -170,7 +170,20 @@ body {
   margin-bottom: 20px;
 }
 
-.hero-headline .highlight { color: var(--btc-orange); }
+.hero-headline .highlight {
+  color: var(--btc-orange);
+  background: linear-gradient(110deg, var(--btc-orange) 0%, #ffd27a 25%, var(--btc-orange) 50%, var(--btc-orange) 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerSweep 5s ease-in-out infinite;
+}
+
+@keyframes shimmerSweep {
+  0%, 25%  { background-position: 100% 0; }
+  70%, 100% { background-position: -60% 0; }
+}
 
 .hero-sub {
   font-size: 18px;
@@ -213,220 +226,328 @@ body {
   background: var(--green-bg); padding: 4px 12px; border-radius: 6px; font-weight: 500;
 }
 
-/* ===== 3D BITCOIN BLOOM (Right Side) ===== */
+/* ===== ORBITAL HUB (Right Side) ===== */
 .hero-right {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  min-height: 500px;
-  perspective: 1200px;
+  min-height: 560px;
+  perspective: 1100px;
 }
 
-.bloom-container {
-  width: 400px;
-  height: 400px;
+.orbit-scene {
+  width: 520px;
+  height: 520px;
   position: relative;
+  animation: sceneFloat 9s ease-in-out infinite;
+}
+
+@keyframes sceneFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.orbit-tilt {
+  position: absolute;
+  inset: 0;
   transform-style: preserve-3d;
-  animation: bloomRotate 20s linear infinite;
+  will-change: transform;
 }
 
-@keyframes bloomRotate {
-  from { transform: rotateX(15deg) rotateY(0deg); }
-  to { transform: rotateX(15deg) rotateY(360deg); }
-}
-
-/* Center core */
-.bloom-core {
+/* Soft aurora glow behind the system */
+.orbit-aurora {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  margin: -30px 0 0 -30px;
-  background: radial-gradient(circle, #f7931a 0%, #c47a14 50%, transparent 70%);
+  inset: -70px;
   border-radius: 50%;
-  box-shadow: 0 0 60px rgba(247, 147, 26, 0.6), 0 0 120px rgba(247, 147, 26, 0.2);
-  z-index: 10;
+  background:
+    radial-gradient(circle at 32% 30%, rgba(247, 147, 26, 0.16), transparent 55%),
+    radial-gradient(circle at 68% 66%, rgba(255, 184, 77, 0.10), transparent 52%);
+  filter: blur(34px);
+  animation: auroraDrift 14s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.bloom-core::after {
-  content: 'B';
+@keyframes auroraDrift {
+  from { transform: translate(-14px, 10px) scale(1); }
+  to   { transform: translate(16px, -12px) scale(1.08); }
+}
+
+/* Expanding pulse waves from the core */
+.pulse-wave {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  margin: -65px 0 0 -65px;
+  border: 1.5px solid rgba(247, 147, 26, 0.45);
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulseWave 4.8s cubic-bezier(0.25, 0.6, 0.4, 1) infinite;
+  pointer-events: none;
+}
+
+.pulse-wave.pw-2 { animation-delay: 1.6s; }
+.pulse-wave.pw-3 { animation-delay: 3.2s; }
+
+@keyframes pulseWave {
+  0%   { transform: scale(0.55); opacity: 0; }
+  12%  { opacity: 0.65; }
+  100% { transform: scale(3.7); opacity: 0; }
+}
+
+/* Central Bitcoin coin */
+.btc-coin-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 230px;
+  height: 230px;
+  margin: -115px 0 0 -115px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247, 147, 26, 0.42) 0%, rgba(247, 147, 26, 0.10) 46%, transparent 70%);
+  filter: blur(8px);
+  animation: glowBreathe 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 11;
+}
+
+@keyframes glowBreathe {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.12); }
+}
+
+.btc-coin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 122px;
+  height: 122px;
+  margin: -61px 0 0 -61px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffc76a 0%, var(--btc-orange) 44%, #a8680e 100%);
+  box-shadow:
+    0 0 46px rgba(247, 147, 26, 0.5),
+    inset 0 2px 10px rgba(255, 255, 255, 0.35),
+    inset 0 -9px 20px rgba(90, 50, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: coinBreathe 5s ease-in-out infinite;
+  z-index: 12;
+}
+
+@keyframes coinBreathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.045); }
+}
+
+/* Rotating light sweep across the coin face */
+.btc-coin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.32) 42deg, transparent 92deg);
+  animation: coinShine 6s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes coinShine {
+  to { transform: rotate(360deg); }
+}
+
+/* Coin rim detail */
+.btc-coin::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.28);
+}
+
+.btc-coin-b {
+  font-size: 54px;
   font-weight: 900;
-  font-size: 28px;
-  color: white;
-  text-shadow: 0 0 20px rgba(247, 147, 26, 0.8);
+  color: #fff8ec;
+  text-shadow: 0 2px 6px rgba(120, 60, 0, 0.5), 0 0 26px rgba(255, 255, 255, 0.45);
+  position: relative;
+  z-index: 2;
 }
 
-/* Petal layers */
-.petal-ring {
+/* Orbit rings (rotation driven by JS for smooth weighted stops) */
+.orbit {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform-style: preserve-3d;
-}
-
-.petal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-  border-radius: 50% 50% 50% 0;
-  opacity: 0.7;
-  backface-visibility: visible;
-}
-
-/* Ring 1 - Inner (8 petals) */
-.ring-1 {
-  width: 0;
-  height: 0;
-  animation: ring1Spin 8s linear infinite;
-}
-
-@keyframes ring1Spin {
-  from { transform: translate(-50%, -50%) rotateZ(0deg); }
-  to { transform: translate(-50%, -50%) rotateZ(-360deg); }
-}
-
-.ring-1 .petal {
-  width: 80px;
-  height: 100px;
-  margin: -50px 0 0 -40px;
-  background: linear-gradient(135deg, rgba(247, 147, 26, 0.8), rgba(255, 184, 77, 0.4));
-  box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
-}
-
-/* Ring 2 - Middle (12 petals) */
-.ring-2 {
-  width: 0;
-  height: 0;
-  animation: ring2Spin 12s linear infinite;
-}
-
-@keyframes ring2Spin {
-  from { transform: translate(-50%, -50%) rotateZ(0deg); }
-  to { transform: translate(-50%, -50%) rotateZ(360deg); }
-}
-
-.ring-2 .petal {
-  width: 110px;
-  height: 140px;
-  margin: -70px 0 0 -55px;
-  background: linear-gradient(135deg, rgba(255, 184, 77, 0.6), rgba(247, 147, 26, 0.3));
-  border: 1px solid rgba(247, 147, 26, 0.2);
-}
-
-/* Ring 3 - Outer (16 petals) */
-.ring-3 {
-  width: 0;
-  height: 0;
-  animation: ring3Spin 16s linear infinite;
-}
-
-@keyframes ring3Spin {
-  from { transform: translate(-50%, -50%) rotateZ(0deg); }
-  to { transform: translate(-50%, -50%) rotateZ(-360deg); }
-}
-
-.ring-3 .petal {
-  width: 140px;
-  height: 180px;
-  margin: -90px 0 0 -70px;
-  background: linear-gradient(135deg, rgba(247, 147, 26, 0.3), rgba(196, 122, 20, 0.15));
-  border: 1px solid rgba(247, 147, 26, 0.15);
-}
-
-/* Orbiting particles */
-.orbit-particle {
-  position: absolute;
   border-radius: 50%;
-  background: var(--btc-orange);
-  box-shadow: 0 0 10px rgba(247, 147, 26, 0.5);
+  border: 1px solid rgba(247, 147, 26, 0.14);
+  will-change: transform;
 }
 
-.orbit-1 {
-  width: 8px;
+/* Comet arc highlight that travels with each ring */
+.orbit::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(247, 147, 26, 0.55);
+  filter: drop-shadow(0 0 6px rgba(247, 147, 26, 0.55));
+}
+
+.orbit-a {
+  width: 230px;
+  height: 230px;
+  margin: -115px 0 0 -115px;
+  z-index: 15;
+}
+
+.orbit-b {
+  width: 350px;
+  height: 350px;
+  margin: -175px 0 0 -175px;
+  z-index: 14;
+}
+
+.orbit-c {
+  width: 470px;
+  height: 470px;
+  margin: -235px 0 0 -235px;
+  z-index: 13;
+}
+
+/* Whichever ring holds the hovered chip wins the stack */
+.orbit:has(.node-chip:hover),
+.orbit:has(.node-chip:focus-visible) {
+  z-index: 20;
+}
+
+/* Service chips riding the rings, counter-rotated to stay upright */
+.orbit-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: rotate(var(--a)) translateX(var(--r));
+}
+
+.orbit-a .orbit-node { --r: 115px; }
+.orbit-b .orbit-node { --r: 175px; }
+.orbit-c .orbit-node { --r: 235px; }
+
+.node-counter {
+  will-change: transform;
+}
+
+.node-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 7px;
+  background: linear-gradient(160deg, rgba(38, 44, 54, 0.94), rgba(20, 25, 32, 0.90));
+  border: 1px solid rgba(247, 147, 26, 0.28);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 0 14px rgba(247, 147, 26, 0.08);
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--a)));
+  transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+/* Generous invisible hit area so chips are easy to grab */
+.node-chip::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: 100px;
+}
+
+.node-chip .chip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 199, 106, 0.32), rgba(247, 147, 26, 0.12));
+  border: 1px solid rgba(247, 147, 26, 0.35);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12);
+  color: var(--btc-orange);
+  font-size: 13px;
+  line-height: 1;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.node-chip:hover,
+.node-chip:focus-visible {
+  scale: 1.12;
+  border-color: var(--btc-orange);
+  background: linear-gradient(160deg, rgba(46, 53, 64, 0.98), rgba(26, 31, 39, 0.95));
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 0 26px rgba(247, 147, 26, 0.38);
+}
+
+.node-chip:hover .chip-icon,
+.node-chip:focus-visible .chip-icon {
+  background: radial-gradient(circle at 35% 30%, rgba(255, 199, 106, 0.55), rgba(247, 147, 26, 0.25));
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 12px rgba(247, 147, 26, 0.45);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  z-index: 6;
+}
+
+.scroll-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(139, 148, 158, 0.5);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-dot {
+  width: 4px;
   height: 8px;
-  top: 50%;
-  left: 50%;
-  margin: -4px 0 0 -4px;
-  animation: orbit1 6s linear infinite;
+  background: var(--btc-orange);
+  border-radius: 4px;
+  animation: scrollDot 1.8s ease-in-out infinite;
 }
 
-@keyframes orbit1 {
-  from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+@keyframes scrollDot {
+  0%   { transform: translateY(0); opacity: 1; }
+  70%  { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
 }
 
-.orbit-2 {
-  width: 6px;
-  height: 6px;
-  top: 50%;
-  left: 50%;
-  margin: -3px 0 0 -3px;
-  background: var(--btc-orange-light);
-  animation: orbit2 10s linear infinite;
-}
-
-@keyframes orbit2 {
-  from { transform: rotate(180deg) translateX(180px) rotate(-180deg); }
-  to { transform: rotate(540deg) translateX(180px) rotate(-540deg); }
-}
-
-.orbit-3 {
-  width: 10px;
-  height: 10px;
-  top: 50%;
-  left: 50%;
-  margin: -5px 0 0 -5px;
-  background: rgba(255, 215, 0, 0.8);
-  animation: orbit3 14s linear infinite;
-}
-
-@keyframes orbit3 {
-  from { transform: rotate(90deg) translateX(100px) rotate(-90deg); }
-  to { transform: rotate(450deg) translateX(100px) rotate(-450deg); }
-}
-
-/* Glow ring */
-.glow-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 360px;
-  height: 360px;
-  margin: -180px 0 0 -180px;
-  border: 1px solid rgba(247, 147, 26, 0.1);
-  border-radius: 50%;
-  animation: glowPulse 4s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
-}
-
-/* Second glow ring */
-.glow-ring-2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 280px;
-  height: 280px;
-  margin: -140px 0 0 -140px;
-  border: 1px solid rgba(247, 147, 26, 0.15);
-  border-radius: 50%;
-  animation: glowPulse2 5s ease-in-out infinite;
-}
-
-@keyframes glowPulse2 {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.95); }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-scene, .orbit, .node-counter, .pulse-wave, .orbit-aurora,
+  .btc-coin, .btc-coin::before, .btc-coin-glow, .particle,
+  .scroll-indicator, .scroll-dot, .hero-badge-dot {
+    animation: none;
+  }
 }
 
 /* ===== SERVICES SECTION ===== */
@@ -1048,8 +1169,9 @@ body {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .hero-content { flex-direction: column; padding: 30px 24px 60px; }
-  .hero-right { min-height: 350px; order: -1; }
-  .bloom-container { transform: scale(0.7); }
+  .hero-right { min-height: 400px; order: -1; }
+  .orbit-scene { scale: 0.68; }
+  .scroll-indicator { display: none; }
   .hero-headline { font-size: 36px; }
   .nav { padding: 20px 24px; }
   .nav-links { display: none; }
@@ -1062,7 +1184,7 @@ body {
 @media (max-width: 500px) {
   .services-grid { grid-template-columns: 1fr; }
   .how-grid { grid-template-columns: 1fr; }
-  .bloom-container { transform: scale(0.5); }
+  .orbit-scene { scale: 0.52; }
   .hero-stats { gap: 24px; }
 }
 </style>
@@ -1134,70 +1256,79 @@ body {
 
     </div>
 
-    <!-- ===== 3D BITCOIN BLOOM ===== -->
+    <!-- ===== ORBITAL HUB ===== -->
     <div class="hero-right">
-      <div class="bloom-container">
-        <!-- Glow rings -->
-        <div class="glow-ring"></div>
-        <div class="glow-ring-2"></div>
+      <div class="orbit-scene">
+        <div class="orbit-tilt" id="orbitTilt">
+          <div class="orbit-aurora"></div>
 
-        <!-- Center core with Bitcoin B -->
-        <div class="bloom-core"></div>
+          <!-- Expanding pulse waves -->
+          <div class="pulse-wave"></div>
+          <div class="pulse-wave pw-2"></div>
+          <div class="pulse-wave pw-3"></div>
 
-        <!-- Ring 1: Inner (8 petals) -->
-        <div class="petal-ring ring-1">
-          <div class="petal" style="transform: rotate(0deg) translateZ(20px);"></div>
-          <div class="petal" style="transform: rotate(45deg) translateZ(30px);"></div>
-          <div class="petal" style="transform: rotate(90deg) translateZ(20px);"></div>
-          <div class="petal" style="transform: rotate(135deg) translateZ(30px);"></div>
-          <div class="petal" style="transform: rotate(180deg) translateZ(20px);"></div>
-          <div class="petal" style="transform: rotate(225deg) translateZ(30px);"></div>
-          <div class="petal" style="transform: rotate(270deg) translateZ(20px);"></div>
-          <div class="petal" style="transform: rotate(315deg) translateZ(30px);"></div>
+          <!-- Central Bitcoin coin -->
+          <div class="btc-coin-glow"></div>
+          <div class="btc-coin"><span class="btc-coin-b">&#8383;</span></div>
+
+          <!-- Inner orbit: 2 services -->
+          <div class="orbit orbit-a">
+            <div class="orbit-node" style="--a: 0deg;">
+              <div class="node-counter">
+                <a href="buy-bitcoin.html" class="node-chip"><span class="chip-icon">&#8383;</span>Buy</a>
+              </div>
+            </div>
+            <div class="orbit-node" style="--a: 180deg;">
+              <div class="node-counter">
+                <a href="secure.html" class="node-chip"><span class="chip-icon">&#128274;</span>Custody</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle orbit: 3 services -->
+          <div class="orbit orbit-b">
+            <div class="orbit-node" style="--a: 90deg;">
+              <div class="node-counter">
+                <a href="mining.html" class="node-chip"><span class="chip-icon">&#9881;</span>Mining</a>
+              </div>
+            </div>
+            <div class="orbit-node" style="--a: 210deg;">
+              <div class="node-counter">
+                <a href="lending.html" class="node-chip"><span class="chip-icon">&#128176;</span>Loans</a>
+              </div>
+            </div>
+            <div class="orbit-node" style="--a: 330deg;">
+              <div class="node-counter">
+                <a href="bots.html" class="node-chip"><span class="chip-icon">&#129302;</span>Bots</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer orbit: 3 services -->
+          <div class="orbit orbit-c">
+            <div class="orbit-node" style="--a: 30deg;">
+              <div class="node-counter">
+                <a href="treasury.html" class="node-chip"><span class="chip-icon">&#127974;</span>Treasury</a>
+              </div>
+            </div>
+            <div class="orbit-node" style="--a: 150deg;">
+              <div class="node-counter">
+                <a href="tax.html" class="node-chip"><span class="chip-icon">&#129534;</span>Tax</a>
+              </div>
+            </div>
+            <div class="orbit-node" style="--a: 270deg;">
+              <div class="node-counter">
+                <a href="research.html" class="node-chip"><span class="chip-icon">&#128202;</span>Research</a>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- Ring 2: Middle (12 petals) -->
-        <div class="petal-ring ring-2">
-          <div class="petal" style="transform: rotate(0deg) translateZ(50px);"></div>
-          <div class="petal" style="transform: rotate(30deg) translateZ(60px);"></div>
-          <div class="petal" style="transform: rotate(60deg) translateZ(50px);"></div>
-          <div class="petal" style="transform: rotate(90deg) translateZ(60px);"></div>
-          <div class="petal" style="transform: rotate(120deg) translateZ(50px);"></div>
-          <div class="petal" style="transform: rotate(150deg) translateZ(60px);"></div>
-          <div class="petal" style="transform: rotate(180deg) translateZ(50px);"></div>
-          <div class="petal" style="transform: rotate(210deg) translateZ(60px);"></div>
-          <div class="petal" style="transform: rotate(240deg) translateZ(50px);"></div>
-          <div class="petal" style="transform: rotate(270deg) translateZ(60px);"></div>
-          <div class="petal" style="transform: rotate(300deg) translateZ(50px);"></div>
-          <div class="petal" style="transform: rotate(330deg) translateZ(60px);"></div>
-        </div>
-
-        <!-- Ring 3: Outer (16 petals) -->
-        <div class="petal-ring ring-3">
-          <div class="petal" style="transform: rotate(0deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(22.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(45deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(67.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(90deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(112.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(135deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(157.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(180deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(202.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(225deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(247.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(270deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(292.5deg) translateZ(90px);"></div>
-          <div class="petal" style="transform: rotate(315deg) translateZ(80px);"></div>
-          <div class="petal" style="transform: rotate(337.5deg) translateZ(90px);"></div>
-        </div>
-
-        <!-- Orbiting particles -->
-        <div class="orbit-particle orbit-1"></div>
-        <div class="orbit-particle orbit-2"></div>
-        <div class="orbit-particle orbit-3"></div>
       </div>
     </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
   </div>
 </section>
 
@@ -1327,17 +1458,17 @@ body {
 <section class="as-seen anim-section anim-hidden">
   <h2>As seen in</h2>
   <div class="seen-row">
-    <a href="https://www.forbes.com" target="_blank" class="seen-logo seen-forbes">Forbes</a>
-    <a href="https://www.investing.com" target="_blank" class="seen-logo seen-investing">Investing<span>.com</span></a>
-    <a href="https://hackernoon.com" target="_blank" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
-    <a href="https://www.ta3.com" target="_blank" class="seen-logo seen-ta3">TA<span>3</span></a>
-    <a href="https://www.trend.sk" target="_blank" class="seen-logo seen-trend">TREND</a>
-    <a href="https://hnonline.sk" target="_blank" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
+    <a href="https://www.forbes.com" target="_blank" rel="noopener noreferrer" class="seen-logo seen-forbes">Forbes</a>
+    <a href="https://www.investing.com" target="_blank" rel="noopener noreferrer" class="seen-logo seen-investing">Investing<span>.com</span></a>
+    <a href="https://hackernoon.com" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
+    <a href="https://www.ta3.com" target="_blank" rel="noopener noreferrer" class="seen-logo seen-ta3">TA<span>3</span></a>
+    <a href="https://www.trend.sk" target="_blank" rel="noopener noreferrer" class="seen-logo seen-trend">TREND</a>
+    <a href="https://hnonline.sk" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
   </div>
   <div class="seen-row">
-    <a href="https://medium.com" target="_blank" class="seen-logo seen-medium">Medium</a>
-    <a href="https://spotify.com" target="_blank" class="seen-logo seen-spotify">Spotify</a>
-    <a href="https://dennikn.sk" target="_blank" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+    <a href="https://medium.com" target="_blank" rel="noopener noreferrer" class="seen-logo seen-medium">Medium</a>
+    <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="seen-logo seen-spotify">Spotify</a>
+    <a href="https://dennikn.sk" target="_blank" rel="noopener noreferrer" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
   </div>
 </section>
 
@@ -1360,13 +1491,13 @@ body {
     <div class="footer-columns">
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="https://www.virtuse.com/about-us/" target="_blank">About Us</a>
-        <a href="https://www.virtuse.com/faq/" target="_blank">FAQ</a>
+        <a href="https://www.virtuse.com/about-us/" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank" rel="noopener noreferrer">FAQ</a>
       </div>
       <div class="footer-col">
         <h4>Terms &amp; conditions</h4>
-        <a href="https://www.virtuse.com/privacy-policy/" target="_blank">Privacy Policy</a>
-        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank">AMLD5</a>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank" rel="noopener noreferrer">AMLD5</a>
       </div>
     </div>
   </div>
@@ -1472,6 +1603,132 @@ body {
   setTimeout(() => {
     headline.classList.add('animate');
   }, 300);
+})();
+
+// ===== ORBITAL HUB MOUSE PARALLAX =====
+(function() {
+  const tilt = document.getElementById('orbitTilt');
+  const hero = document.querySelector('.hero');
+  if (!tilt || !hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  let raf = null;
+
+  function loop() {
+    raf = requestAnimationFrame(() => {
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
+      tilt.style.transform =
+        'rotateY(' + (currentX * 11).toFixed(2) + 'deg) ' +
+        'rotateX(' + (-currentY * 8).toFixed(2) + 'deg)';
+      if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+        loop();
+      } else {
+        raf = null;
+      }
+    });
+  }
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    if (!raf) loop();
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+    if (!raf) loop();
+  });
+})();
+
+// ===== ORBIT DRIVER (smooth weighted stop on hover) =====
+(function() {
+  const scene = document.querySelector('.orbit-scene');
+  if (!scene) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const rings = [
+    { el: scene.querySelector('.orbit-a'), period: 28, dir: 1 },
+    { el: scene.querySelector('.orbit-b'), period: 42, dir: -1 },
+    { el: scene.querySelector('.orbit-c'), period: 58, dir: 1 }
+  ].filter(r => r.el);
+
+  rings.forEach(r => {
+    r.angle = 0;
+    r.counters = r.el.querySelectorAll('.node-counter');
+  });
+
+  if (reduced) return; // rings stay static at their CSS-defined positions
+
+  let speedFactor = 1;
+  let targetSpeed = 1;
+  let last = performance.now();
+
+  // Ease the whole system to a halt while the visitor is over the visual
+  scene.addEventListener('pointerenter', () => { targetSpeed = 0; });
+  scene.addEventListener('pointerleave', () => { targetSpeed = 1; });
+
+  function frame(now) {
+    const dt = Math.min((now - last) / 1000, 0.1);
+    last = now;
+    // Exponential ease toward target speed — feels weighted, never abrupt
+    speedFactor += (targetSpeed - speedFactor) * (1 - Math.exp(-5 * dt));
+
+    for (const r of rings) {
+      r.angle = (r.angle + r.dir * speedFactor * (360 / r.period) * dt) % 360;
+      r.el.style.transform = 'rotate(' + r.angle.toFixed(3) + 'deg)';
+      const counter = 'rotate(' + (-r.angle).toFixed(3) + 'deg)';
+      r.counters.forEach(c => { c.style.transform = counter; });
+    }
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+})();
+
+// ===== WEIGHTED SMOOTH SCROLL =====
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let target = window.scrollY;
+  let current = window.scrollY;
+  let raf = null;
+
+  function maxScroll() {
+    return document.documentElement.scrollHeight - window.innerHeight;
+  }
+
+  window.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) return; // let pinch-zoom through
+    e.preventDefault();
+    let delta = e.deltaY;
+    if (e.deltaMode === 1) delta *= 16;      // lines -> px
+    else if (e.deltaMode === 2) delta *= window.innerHeight;
+    target = Math.max(0, Math.min(maxScroll(), target + delta));
+    if (!raf) loop();
+  }, { passive: false });
+
+  // Stay in sync when scrolling happens elsewhere (keys, scrollbar, anchors)
+  window.addEventListener('scroll', () => {
+    if (!raf) { target = current = window.scrollY; }
+  });
+
+  function loop() {
+    raf = requestAnimationFrame(() => {
+      current += (target - current) * 0.12;
+      if (Math.abs(target - current) < 0.5) {
+        current = target;
+        raf = null;
+      }
+      window.scrollTo(0, current);
+      if (raf !== null) loop();
+    });
+  }
 })();
 
 // ===== SCROLL-TRIGGERED REVEALS =====

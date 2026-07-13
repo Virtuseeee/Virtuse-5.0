@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-c", "import os; print('cwd:', os.getcwd())"],
+      "port": 8000
+    }
+  ]
+}
