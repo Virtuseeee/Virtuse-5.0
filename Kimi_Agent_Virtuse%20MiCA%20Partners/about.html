@@ -1,819 +1,900 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Virtuse</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --btc-orange: #f7931a;
-      --btc-orange-light: #ffb84d;
-      --dark: #0d1117;
-      --dark-lighter: #161b22;
-      --dark-card: #1c2128;
-      --dark-card-hover: #232930;
-      --text: #e6edf3;
-      --text-muted: #8b949e;
-      --text-dim: #484f58;
-      --border: #30363d;
-      --border-hover: #484f58;
-      --green: #3fb950;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ===== NAVIGATION ===== */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 48px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(13, 17, 23, 0.95);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 20px;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-logo-img {
-      height: 32px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: all 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      background: var(--dark-card);
-    }
-
-    .nav-links a.active {
-      color: var(--btc-orange);
-      background: rgba(247, 147, 26, 0.08);
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      background: var(--btc-orange);
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--btc-orange-light);
-    }
-
-    /* ===== HERO ===== */
-    /* ===== COVER HERO ===== */
-    .about-cover {
-      position: relative;
-      width: 100%;
-      height: 55vh;
-      min-height: 410px;
-      max-height: 650px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: url('virtuse-exchange-cover.jpg') no-repeat center center;
-      background-size: cover;
-    }
-
-    .about-cover::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: linear-gradient(to top, var(--dark) 0%, transparent 100%);
-      z-index: 1;
-    }
-
-    .about-cover-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 800px;
-      padding: 0 48px;
-    }
-
-    .about-cover-label {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: rgba(255, 255, 255, 0.7);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 6px 18px;
-      border-radius: 100px;
-      backdrop-filter: blur(10px);
-    }
-
-    .about-cover h1 {
-      font-size: 64px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      line-height: 1.1;
-      color: white;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .about-cover h1 span {
-      color: var(--btc-orange);
-    }
-
-    .about-cover-subtitle {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.6;
-      max-width: 560px;
-      margin: 0 auto;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .about-cover-scroll {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      animation: bounce 2s infinite;
-    }
-
-    .about-cover-scroll svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-8px); }
-      60% { transform: translateX(-50%) translateY(-4px); }
-    }
-
-    .about-hero {
-      position: relative;
-      overflow: hidden;
-      padding: 100px 48px;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, var(--dark) 0%, #0f1520 40%, var(--dark-lighter) 100%);
-    }
-
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -60px;
-      transform: translateY(-50%);
-      width: 400px;
-      height: auto;
-      background: url('bull.png') no-repeat center center;
-      background-size: contain;
-      opacity: 0.12;
-      z-index: 0;
-      pointer-events: none;
-      aspect-ratio: 1;
-    }
-
-    .about-hero-watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      opacity: 0.03;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .about-hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-    }
-
-    .about-hero-label {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--btc-orange);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .about-hero h1 {
-      font-size: 52px;
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      margin-bottom: 32px;
-      line-height: 1.15;
-    }
-
-    .about-hero-text {
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--text-muted);
-    }
-
-    .about-hero-text p {
-      margin-bottom: 20px;
-    }
-
-    .about-hero-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ===== WHAT IS VIRTUSE ===== */
-    .what-is {
-      background: var(--dark-lighter);
-      padding: 100px 48px;
-    }
-
-    .what-is-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 55% 45%;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .what-is-label {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--btc-orange);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .what-is h2 {
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 24px;
-      line-height: 1.2;
-    }
-
-    .what-is-text {
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--text-muted);
-    }
-
-    .what-is-text p {
-      margin-bottom: 20px;
-    }
-
-    .what-is-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    .what-is-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .what-is-visual::before {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(247, 147, 26, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 0;
-    }
-
-    .what-is-visual img {
-      position: relative;
-      z-index: 1;
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-    }
-
-    /* ===== LEADERSHIP TEAM ===== */
-    .team {
-      background: var(--dark);
-      padding: 100px 48px;
-    }
-
-    .team-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .team-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .team-label {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--btc-orange);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .team h2 {
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .team-subtitle {
-      font-size: 16px;
-      color: var(--text-muted);
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    .team-card {
-      background: var(--dark-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px 24px;
-      text-align: center;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .team-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-    }
-
-    .team-card-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 3px solid var(--btc-orange);
-      object-fit: cover;
-      margin: 0 auto 24px;
-      display: block;
-    }
-
-    .team-card-name {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .team-card-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--btc-orange);
-      margin-bottom: 16px;
-    }
-
-    .team-card-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    /* ===== NEWSLETTER ===== */
-    .newsletter {
-      background: var(--dark-lighter);
-      border-top: 1px solid var(--border);
-      padding: 80px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .newsletter h2 {
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .newsletter p {
-      color: var(--text-muted);
-      font-size: 16px;
-      margin-bottom: 32px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .newsletter-form {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      max-width: 520px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      padding: 14px 20px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--dark);
-      color: var(--text);
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .newsletter-form input:focus {
-      border-color: var(--btc-orange);
-    }
-
-    .newsletter-form input::placeholder {
-      color: var(--text-dim);
-    }
-
-    .newsletter-form button {
-      padding: 14px 28px;
-      background: var(--text);
-      color: var(--dark);
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .newsletter-form button:hover {
-      background: var(--btc-orange);
-      color: white;
-    }
-
-    /* ===== FOOTER ===== */
-    .footer-main {
-      background: var(--dark);
-      border-top: 1px solid var(--border);
-      padding: 60px 48px 30px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-logo {
-      flex-shrink: 0;
-    }
-
-    .footer-logo img {
-      height: 100px;
-      width: auto;
-      opacity: 0.9;
-      transition: opacity 0.2s;
-    }
-
-    .footer-logo img:hover {
-      opacity: 1;
-    }
-
-    .footer-columns {
-      display: flex;
-      gap: 80px;
-      flex-wrap: wrap;
-    }
-
-    .footer-col h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 16px;
-      text-transform: none;
-    }
-
-    .footer-col a {
-      display: block;
-      color: var(--text-muted);
-      font-size: 14px;
-      text-decoration: none;
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover {
-      color: var(--btc-orange);
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 40px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .footer-bottom p {
-      font-size: 13px;
-      color: var(--text-dim);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .nav {
-        padding: 16px 24px;
-      }
-
-      .nav-links a {
-        font-size: 12px;
-        padding: 6px 10px;
-      }
-
-      .nav-cta {
-        padding: 8px 18px;
-        font-size: 13px;
-      }
-
-      .about-cover {
-        height: 45vh;
-        min-height: 300px;
-      }
-
-      .about-hero {
-        padding: 60px 24px;
-        min-height: auto;
-      }
-
-      .about-hero h1 {
-        font-size: 36px;
-      }
-
-      .about-hero::before {
-        width: 250px;
-        right: -40px;
-        opacity: 0.08;
-      }
-
-      .what-is {
-        padding: 60px 24px;
-      }
-
-      .what-is-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .what-is h2 {
-        font-size: 32px;
-      }
-
-      .what-is-visual {
-        order: 2;
-      }
-
-      .team {
-        padding: 60px 24px;
-      }
-
-      .team h2 {
-        font-size: 32px;
-      }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .newsletter {
-        padding: 60px 24px;
-      }
-
-      .newsletter h2 {
-        font-size: 28px;
-      }
-
-      .newsletter-form {
-        flex-direction: column;
-      }
-
-      .newsletter-form button {
-        width: 100%;
-      }
-
-      .footer-main {
-        padding: 40px 24px 20px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .footer-columns {
-        gap: 40px;
-        justify-content: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Virtuse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --btc-orange: #f7931a;
+  --btc-orange-light: #ffb84d;
+  --dark: #0d1117;
+  --dark-lighter: #161b22;
+  --dark-card: #1c2128;
+  --dark-card-hover: #232930;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+  --border: #30363d;
+  --border-hover: #484f58;
+  --green: #3fb950;
+  --section-spacing: 100px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-logo-img { height: 32px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--btc-orange);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--btc-orange-light); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--btc-orange);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero h1 .highlight { color: var(--btc-orange); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 880px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-box {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.stat-box:hover { border-color: var(--border-hover); }
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--btc-orange);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ===== SECTION SCAFFOLD ===== */
+.section {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 32px;
+}
+
+.sec-title h2 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.sec-title p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+/* ===== STORY TIMELINE ===== */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.step {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 26px 26px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.step:hover { border-color: var(--border-hover); }
+
+.step-num {
+  position: absolute;
+  top: -16px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 13px;
+  color: white;
+  padding: 6px 16px;
+  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
+  z-index: 2;
+}
+
+.step h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 10px 0 10px;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===== MISSION CARDS ===== */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.value-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px 26px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.value-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.value-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(247, 147, 26, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.25);
+  border-radius: 12px;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.value-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.value-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===== WHAT IS VIRTUSE ===== */
+.name-section {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: var(--section-spacing) 48px;
+  margin-bottom: var(--section-spacing);
+}
+
+.name-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  gap: 60px;
+}
+
+.name-quote {
+  border-left: 3px solid var(--btc-orange);
+  background: rgba(247, 147, 26, 0.05);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 24px;
+  margin-top: 24px;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text);
+}
+
+.name-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.name-text p:last-child { margin-bottom: 0; }
+
+.name-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.name-visual::before {
+  content: '';
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(247, 147, 26, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.name-visual img {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  width: 100%;
+}
+
+/* ===== TEAM ===== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.team-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 24px 30px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.team-card-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--btc-orange);
+  object-fit: cover;
+  margin: 0 auto 22px;
+  display: block;
+}
+
+.team-card-name {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.team-card-title {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.1);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.team-card-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ===== GLOBAL PRESENCE ===== */
+.presence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.presence-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 26px;
+  transition: border-color 0.2s;
+}
+
+.presence-card:hover { border-color: var(--border-hover); }
+
+.presence-flag { font-size: 26px; margin-bottom: 14px; }
+
+.presence-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.presence-card .presence-role {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--btc-orange);
+  margin-bottom: 10px;
+}
+
+.presence-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===== EXPLORE THE HUB ===== */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.hub-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.hub-link .arrow {
+  color: var(--text-dim);
+  transition: all 0.2s;
+}
+
+.hub-link:hover {
+  border-color: var(--btc-orange);
+  transform: translateY(-2px);
+}
+
+.hub-link:hover .arrow {
+  color: var(--btc-orange);
+  transform: translateX(3px);
+}
+
+.hub-link small {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* ===== NEWSLETTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter p {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: var(--text);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover {
+  background: var(--btc-orange);
+  color: white;
+}
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-logo img {
+  height: 80px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-logo img:hover { opacity: 1; }
+
+.footer-columns {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+
+  .hero { padding: 60px 24px 48px; }
+  .hero h1 { font-size: 38px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .section { padding: 0 24px 64px; }
+
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+
+  .value-grid { grid-template-columns: 1fr; }
+
+  .name-section { padding: 64px 24px; margin-bottom: 64px; }
+  .name-inner { grid-template-columns: 1fr; gap: 40px; }
+  .name-visual { order: 2; }
+
+  .team-grid { grid-template-columns: 1fr; }
+
+  .presence-grid { grid-template-columns: 1fr; }
+
+  .hub-grid { grid-template-columns: 1fr; }
+
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form button { width: 100%; }
+
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-columns { gap: 40px; }
+  .footer-logo img { height: 60px; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">
-      <img src="logo-virtuse-light.png" alt="Virtuse" class="nav-logo-img">
-    </a>
-    <ul class="nav-links">
-      <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
-      <li><a href="mining.html">Mining</a></li>
-      <li><a href="lending.html">Loans</a></li>
-      <li><a href="secure.html">Custody</a></li>
-      <li><a href="treasury.html">Treasury</a></li>
-      <li><a href="tax.html">Tax</a></li>
-      <li><a href="bots.html">Bots</a></li>
-      <li><a href="blog.html">Blog</a></li>
+<!-- Navigation -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li><a href="about.html" class="active">About</a></li>
-    </ul>
-    <button class="nav-cta">Get Started</button>
-  </nav>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
 
-  <!-- Panel 1: Hero -->
-  <!-- ===== COVER HERO ===== -->
-  <section class="about-cover"></section>
-
-  <section class="about-hero">
-    <img src="logo-vex-h-white.png" alt="" class="about-hero-watermark" aria-hidden="true">
-    <div class="about-hero-inner">
-      <span class="about-hero-label">ABOUT US</span>
-      <h1>About Virtuse</h1>
-      <div class="about-hero-text">
-        <p>Virtuse is the Bitcoin infrastructure hub providing the foundation for the borderless monetary economy. Founded in 2018, the company was born from the unwavering conviction that Bitcoin has the power to democratize access to the global financial system. Virtuse pioneered the space by becoming the first tokenization platform, before executing a strategic transition in 2022 to become a dedicated, Bitcoin-only exchange.</p>
-        <p>Today, the company delivers a comprehensive suite of services transforming how generational wealth is managed, built, and protected. Operating as a global Bitcoin-only infrastructure hub, Virtuse serves clients in over 100 countries within a secure, institutional-grade environment.</p>
-        <p>This infrastructure is underpinned by Virtuse Wealth Management a.s., a proud member of the multinational Virtuse Group with a strategic presence spanning the EU and Asia. The company anchors its global operations from its headquarters in the technological hub of Singapore, while maintaining deep roots and local expertise through its operational office in Bratislava.</p>
-        <p>The company's mission is to help investors not only build but effectively protect their generational wealth through an uncompromising commitment to Bitcoin, financial sovereignty, and secure monetary freedom. Operating through a robust network of over 50 strategic partners worldwide, Virtuse ensures maximum security and institutional liquidity for its global clientele, serving as a trusted bridge to the Bitcoin economy.</p>
-      </div>
+<!-- Hero -->
+<section class="hero">
+  <span class="hero-label">About Us</span>
+  <h1>The Bitcoin-Only<br><span class="highlight">Infrastructure Hub</span></h1>
+  <p class="hero-desc">
+    Founded in 2018, Virtuse provides the foundation for the borderless monetary economy. We help investors build and protect generational wealth through an uncompromising commitment to Bitcoin, financial sovereignty, and secure monetary freedom.
+  </p>
+  <div class="hero-stats">
+    <div class="stat-box">
+      <div class="stat-value">2018</div>
+      <div class="stat-label">Founded</div>
     </div>
-  </section>
+    <div class="stat-box">
+      <div class="stat-value">100+</div>
+      <div class="stat-label">Countries Served</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value">50+</div>
+      <div class="stat-label">Strategic Partners</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Global Offices</div>
+    </div>
+  </div>
+</section>
 
-  <!-- Panel 2: What is Virtuse? -->
-  <section class="what-is">
-    <div class="what-is-inner">
-      <div class="what-is-content">
-        <span class="what-is-label">OUR NAME</span>
+<!-- Our Story -->
+<section class="section">
+  <div class="sec-label">Our Story</div>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">2018</span>
+      <h3>Born from Conviction</h3>
+      <p>Virtuse was founded on the unwavering conviction that Bitcoin has the power to democratize access to the global financial system — pioneering the space as the first tokenization platform.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2022</span>
+      <h3>The Bitcoin-Only Transition</h3>
+      <p>A strategic transition made Virtuse a dedicated, Bitcoin-only exchange — trading breadth for depth, and committing entirely to the hardest money ever created.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">Today</span>
+      <h3>A Global Hub</h3>
+      <p>Virtuse operates as a global Bitcoin-only infrastructure hub, delivering a comprehensive suite of services to clients in over 100 countries within a secure, institutional-grade environment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Values -->
+<section class="section">
+  <div class="sec-label">What We Stand For</div>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-icon">&#8383;</div>
+      <h3>Bitcoin-Only Focus</h3>
+      <p>No altcoins, no distractions. An uncompromising commitment to Bitcoin as the foundation of the borderless monetary economy.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">&#128737;</div>
+      <h3>Security &amp; Trust</h3>
+      <p>A robust network of over 50 strategic partners worldwide ensures maximum security and institutional liquidity for our global clientele.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">&#128273;</div>
+      <h3>Financial Sovereignty</h3>
+      <p>We help investors not only build but effectively protect generational wealth — serving as a trusted bridge to the Bitcoin economy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- What is Virtuse? -->
+<section class="name-section">
+  <div class="name-inner">
+    <div>
+      <div class="sec-label">Our Name</div>
+      <div class="sec-title">
         <h2>What is Virtuse?</h2>
-        <div class="what-is-text">
-          <p>Our name is inspired by Virt&ugrave;, a concept introduced by Niccol&ograve; Machiavelli. To him, virt&ugrave; wasn't about conventional morality &mdash; it was about strength, control, and the ability to command one's own reality.</p>
-          <p>Bitcoin is the modern embodiment of virt&ugrave;. It provides the ultimate form of financial power and autonomy, allowing you to secure your future without external interference. It is power you control.</p>
-        </div>
       </div>
-      <div class="what-is-visual">
-        <img src="bull-virtuse.png" alt="Virtuse Bull" style="max-width: 320px; width: 100%;">
+      <div class="name-text">
+        <p>Our name is inspired by Virt&ugrave;, a concept introduced by Niccol&ograve; Machiavelli. To him, virt&ugrave; wasn't about conventional morality &mdash; it was about strength, control, and the ability to command one's own reality.</p>
+        <p>Bitcoin is the modern embodiment of virt&ugrave;. It provides the ultimate form of financial power and autonomy, allowing you to secure your future without external interference.</p>
       </div>
+      <div class="name-quote">It is power you control.</div>
     </div>
-  </section>
+    <div class="name-visual">
+      <img src="bull-virtuse.png" alt="Virtuse Bull">
+    </div>
+  </div>
+</section>
 
-  <!-- Panel 3: Leadership Team -->
-  <section class="team">
-    <div class="team-inner">
-      <div class="team-header">
-        <span class="team-label">OUR TEAM</span>
-        <h2>Our Leadership Team</h2>
-        <p class="team-subtitle">The people building the future of Bitcoin infrastructure</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <img src="headshot-ras.jpg" alt="Ras Vasilisin" class="team-card-photo">
-          <div class="team-card-name">Ras Vasilisin</div>
-          <div class="team-card-title">Founder &amp; Chief Executive Officer</div>
-          <p class="team-card-desc">Ras is a visionary leader with extensive experience in the financial and bitcoin industry.</p>
-        </div>
-        <div class="team-card">
-          <img src="headshot-leo.jpg" alt="Leo Heart" class="team-card-photo">
-          <div class="team-card-name">Leo Heart</div>
-          <div class="team-card-title">Chief Technical Officer</div>
-          <p class="team-card-desc">Leo is a strategic technology expert who oversees the development of our secure platform.</p>
-        </div>
-        <div class="team-card">
-          <img src="headshot-mykyta.jpg" alt="Mykyta Ovchynnykov" class="team-card-photo">
-          <div class="team-card-name">Mykyta Ovchynnykov</div>
-          <div class="team-card-title">Operations Manager</div>
-          <p class="team-card-desc">Mykyta is developing strategies to make Bitcoin known to a wide audience in Europe.</p>
-        </div>
-      </div>
+<!-- Leadership Team -->
+<section class="section">
+  <div class="sec-label">Our Team</div>
+  <div class="sec-title">
+    <h2>Our Leadership Team</h2>
+    <p>The people building the future of Bitcoin infrastructure</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="headshot-ras.jpg" alt="Ras Vasilisin" class="team-card-photo">
+      <div class="team-card-name">Ras Vasilisin</div>
+      <div class="team-card-title">Founder &amp; CEO</div>
+      <p class="team-card-desc">Ras is a visionary leader with extensive experience in the financial and bitcoin industry.</p>
     </div>
-  </section>
+    <div class="team-card">
+      <img src="headshot-leo.jpg" alt="Leo Heart" class="team-card-photo">
+      <div class="team-card-name">Leo Heart</div>
+      <div class="team-card-title">Chief Technical Officer</div>
+      <p class="team-card-desc">Leo is a strategic technology expert who oversees the development of our secure platform.</p>
+    </div>
+    <div class="team-card">
+      <img src="headshot-mykyta.jpg" alt="Mykyta Ovchynnykov" class="team-card-photo">
+      <div class="team-card-name">Mykyta Ovchynnykov</div>
+      <div class="team-card-title">Operations Manager</div>
+      <p class="team-card-desc">Mykyta is developing strategies to make Bitcoin known to a wide audience in Europe.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <h2>Fix the Money, Fix the World</h2>
-    <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">SUBSCRIBE NOW</button>
-    </form>
-  </section>
+<!-- Global Presence -->
+<section class="section">
+  <div class="sec-label">Global Presence</div>
+  <div class="presence-grid">
+    <div class="presence-card">
+      <div class="presence-flag">&#127480;&#127468;</div>
+      <h3>Singapore</h3>
+      <div class="presence-role">Global Headquarters</div>
+      <p>Anchoring global operations from one of the world's leading technological and financial hubs.</p>
+    </div>
+    <div class="presence-card">
+      <div class="presence-flag">&#127480;&#127472;</div>
+      <h3>Bratislava</h3>
+      <div class="presence-role">European Operations</div>
+      <p>Deep roots and local expertise through our operational office, home of Virtuse Wealth Management a.s.</p>
+    </div>
+    <div class="presence-card">
+      <div class="presence-flag">&#127758;</div>
+      <h3>EU &amp; Asia</h3>
+      <div class="presence-role">Virtuse Group</div>
+      <p>A proud member of the multinational Virtuse Group, with a strategic presence spanning two continents.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer-main">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+<!-- Explore the Hub -->
+<section class="section">
+  <div class="sec-label">Explore the Hub</div>
+  <div class="hub-grid">
+    <a href="buy-bitcoin.html" class="hub-link"><span>Buy Bitcoin<small>MiCA-licensed partners</small></span><span class="arrow">&#8594;</span></a>
+    <a href="secure.html" class="hub-link"><span>Custody<small>Self-custody &amp; collaborative</small></span><span class="arrow">&#8594;</span></a>
+    <a href="lending.html" class="hub-link"><span>Loans<small>Bitcoin-backed lending</small></span><span class="arrow">&#8594;</span></a>
+    <a href="mining.html" class="hub-link"><span>Mining<small>Hosted &amp; cloud mining</small></span><span class="arrow">&#8594;</span></a>
+    <a href="treasury.html" class="hub-link"><span>Treasury<small>Corporate Bitcoin strategy</small></span><span class="arrow">&#8594;</span></a>
+    <a href="blog.html" class="hub-link"><span>Blog<small>Insights from our CEO</small></span><span class="arrow">&#8594;</span></a>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank" rel="noopener noreferrer">FAQ</a>
       </div>
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="https://www.virtuse.com/about-us/" target="_blank" rel="noopener noreferrer">About Us</a>
-          <a href="https://www.virtuse.com/faq/" target="_blank" rel="noopener noreferrer">FAQ</a>
-        </div>
-        <div class="footer-col">
-          <h4>Terms &amp; conditions</h4>
-          <a href="https://www.virtuse.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-          <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank" rel="noopener noreferrer">AMLD5</a>
-        </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank" rel="noopener noreferrer">AMLD5</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
-    </div>
-  </footer>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>
