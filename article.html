@@ -179,7 +179,7 @@ img{max-width:100%;display:block}
 
 <div id="articleRoot">
   <div class="article-wrap">
-    <a href="blog.html" class="back-link"><span class="chev">&#8592;</span> All articles</a>
+    <a href="blog.html" class="back-link" id="backTop"><span class="chev">&#8592;</span> <span id="backTopLabel">All articles</span></a>
     <div class="article-head" id="articleHead">
       <span class="tag">Blog</span>
       <h1 class="article-title" id="articleTitle"><span class="skeleton-line" style="display:inline-block;width:80%;height:40px"></span></h1>
@@ -188,7 +188,7 @@ img{max-width:100%;display:block}
           <img src="headshot-ras.jpg" alt="Ras Vasilisin">
           <div>
             <div class="name">Ras Vasilisin</div>
-            <div class="role">Founder &amp; CEO, Virtuse</div>
+            <div class="role" id="authorRole">Founder &amp; CEO, Virtuse</div>
           </div>
         </div>
         <div class="meta-divider"></div>
@@ -200,7 +200,7 @@ img{max-width:100%;display:block}
 
   <div class="article-layout">
     <div class="share-row">
-      <span class="share-label">Share</span>
+      <span class="share-label" id="shareLabel">Share</span>
       <button class="share-btn" id="shareX" title="Share on X">&#120143;</button>
       <button class="share-btn" id="shareLi" title="Share on LinkedIn">in</button>
       <button class="share-btn" id="shareCopy" title="Copy link">&#128279;</button>
@@ -220,16 +220,16 @@ img{max-width:100%;display:block}
         <img src="headshot-ras.jpg" alt="Ras Vasilisin">
         <div>
           <div class="name">Ras Vasilisin</div>
-          <div class="bio">Founder &amp; CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.</div>
+          <div class="bio" id="authorBio">Founder &amp; CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.</div>
         </div>
       </div>
-      <a href="blog.html" class="back-link" style="margin:0"><span class="chev">&#8592;</span> Back to all articles</a>
+      <a href="blog.html" class="back-link" id="backBottom" style="margin:0"><span class="chev">&#8592;</span> <span id="backBottomLabel">Back to all articles</span></a>
     </div>
   </div>
 </div>
 
 <section class="more-section">
-  <div class="section-label">Continue Reading</div>
+  <div class="section-label" id="moreLabel">Continue Reading</div>
   <div class="more-grid" id="moreGrid"></div>
 </section>
 
@@ -269,8 +269,67 @@ img{max-width:100%;display:block}
 (function () {
   'use strict';
   // Headless-CMS reader: WordPress is the database; this page renders it.
-  var API = 'https://www.virtuse.com/wp-json/wp/v2/posts';
-  var CATEGORY = 13;
+  // Language registry — add a language here (and in gen_blog.py) to expand.
+  var LANGS = {
+    en: {
+      api: 'https://www.virtuse.com/wp-json/wp/v2/posts',
+      category: 13,
+      listPage: 'blog.html',
+      suffix: '',
+      months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+      ui: {
+        backTop: 'All articles',
+        backBottom: 'Back to all articles',
+        authorRole: 'Founder & CEO, Virtuse',
+        authorBio: 'Founder & CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.',
+        share: 'Share',
+        copied: 'Link copied',
+        readTime: ' min read',
+        moreLabel: 'Continue Reading',
+        errTitle: 'Article not found',
+        errText: 'This article may have been moved or unpublished. Browse the full archive instead.',
+        errCta: 'Back to the blog'
+      }
+    },
+    sk: {
+      api: 'https://www.virtuse.com/sk/wp-json/wp/v2/posts',
+      category: 26,
+      listPage: 'blog-sk.html',
+      suffix: '&lang=sk',
+      months: ['januára','februára','marca','apríla','mája','júna','júla','augusta','septembra','októbra','novembra','decembra'],
+      ui: {
+        backTop: 'Všetky články',
+        backBottom: 'Späť na všetky články',
+        authorRole: 'Zakladateľ & CEO, Virtuse',
+        authorBio: 'Zakladateľ & CEO Virtuse. Píše o Bitcoine, makroekonomike a budúcnosti peňazí.',
+        share: 'Zdieľať',
+        copied: 'Odkaz skopírovaný',
+        readTime: ' min čítania',
+        moreLabel: 'Pokračujte v čítaní',
+        errTitle: 'Článok sa nenašiel',
+        errText: 'Tento článok mohol byť presunutý alebo stiahnutý. Prezrite si celý archív.',
+        errCta: 'Späť na blog'
+      }
+    }
+  };
+  var langCode = new URLSearchParams(location.search).get('lang');
+  var L = LANGS[langCode] || LANGS.en;
+  if (!LANGS[langCode]) langCode = 'en';
+  document.documentElement.lang = langCode;
+
+  // Localize static chrome
+  document.getElementById('backTopLabel').textContent = L.ui.backTop;
+  document.getElementById('backBottomLabel').textContent = L.ui.backBottom;
+  document.getElementById('backTop').href = L.listPage;
+  document.getElementById('backBottom').href = L.listPage;
+  document.getElementById('authorRole').textContent = L.ui.authorRole;
+  document.getElementById('authorBio').textContent = L.ui.authorBio;
+  document.getElementById('shareLabel').textContent = L.ui.share;
+  document.getElementById('shareCopied').textContent = L.ui.copied;
+  document.getElementById('moreLabel').textContent = L.ui.moreLabel;
+
+  var API = L.api;
+  var CATEGORY = L.category;
 
   var root = document.getElementById('articleRoot');
   var titleEl = document.getElementById('articleTitle');
@@ -292,23 +351,23 @@ img{max-width:100%;display:block}
   }
   function fmtDate(iso) {
     var d = new Date(iso);
-    return d.getDate() + ' ' + ['January','February','March','April','May','June','July','August','September','October','November','December'][d.getMonth()] + ' ' + d.getFullYear();
+    return d.getDate() + ' ' + L.months[d.getMonth()] + ' ' + d.getFullYear();
   }
   function imgOf(post) {
     try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
   }
   function readingTime(html) {
     var words = stripHtml(html).split(/\s+/).length;
-    return Math.max(1, Math.round(words / 220)) + ' min read';
+    return Math.max(1, Math.round(words / 220)) + L.ui.readTime;
   }
 
   function showError() {
     root.innerHTML = '';
     var box = el('div', 'error-state');
-    box.appendChild(el('h2', null, 'Article not found'));
-    box.appendChild(el('p', null, 'This article may have been moved or unpublished. Browse the full archive instead.'));
-    var back = el('a', null, 'Back to the blog');
-    back.href = 'blog.html';
+    box.appendChild(el('h2', null, L.ui.errTitle));
+    box.appendChild(el('p', null, L.ui.errText));
+    var back = el('a', null, L.ui.errCta);
+    back.href = L.listPage;
     box.appendChild(back);
     root.appendChild(box);
   }
@@ -368,7 +427,7 @@ img{max-width:100%;display:block}
   function renderMore(posts, currentId) {
     posts.filter(function (p) { return p.id !== currentId; }).slice(0, 3).forEach(function (p) {
       var a = el('a', 'blog-card');
-      a.href = 'article.html?slug=' + encodeURIComponent(p.slug);
+      a.href = 'article.html?slug=' + encodeURIComponent(p.slug) + L.suffix;
       var media = el('div', 'blog-card-media');
       var src = imgOf(p);
       if (src) {
