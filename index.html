@@ -875,6 +875,67 @@ body {
   .seen-hn { font-size: 16px; }
 }
 
+/* ===== YOU'RE IN GOOD COMPANY ===== */
+.company {
+  padding: 60px 48px 80px;
+  text-align: center;
+  background: var(--dark);
+}
+
+.company h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.company-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.co-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px 52px;
+  margin-bottom: 30px;
+}
+
+.co-row:last-child { margin-bottom: 0; }
+
+.co-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s, color 0.3s, transform 0.3s;
+  white-space: nowrap;
+}
+
+.co-logo:hover { opacity: 1; color: var(--text); transform: translateY(-2px); }
+
+.co-firefish { font-weight: 800; letter-spacing: -0.01em; }
+.co-firefish span { color: var(--btc-orange); }
+.co-unchained { font-weight: 700; letter-spacing: -0.01em; }
+.co-banxa { font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+.co-coinfirm { font-weight: 700; }
+.co-coinfirm span { color: var(--green); }
+.co-aws { font-weight: 900; text-transform: lowercase; font-size: 24px; letter-spacing: -0.02em; }
+.co-tradingview { font-weight: 800; letter-spacing: -0.02em; }
+.co-cmc { font-weight: 800; letter-spacing: -0.01em; }
+.co-cryptowisser { font-weight: 700; letter-spacing: 0; }
+.co-sumsub { font-weight: 800; letter-spacing: 0.02em; }
+.co-finas { font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
+.co-21bitcoin { font-weight: 800; letter-spacing: -0.01em; }
+.co-21bitcoin span { color: var(--btc-orange); font-weight: 900; }
+.co-coinrule { font-weight: 800; }
+.co-abundant { font-weight: 700; letter-spacing: 0.01em; }
+.co-abundant span { color: var(--green); }
+
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter {
   background: var(--dark-lighter);
@@ -1460,6 +1521,29 @@ body {
     <a href="https://rvasilisin.medium.com/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-medium">Medium</a>
     <a href="https://creators.spotify.com/pod/profile/rendolf/episodes/CCC-32-Rastislav-Vasiliin--Virtuse-CEO-CBDCs-bud-najvm-globlnym-poruenm-udskch-prv-e1rbm1m" target="_blank" rel="noopener noreferrer" class="seen-logo seen-spotify">Spotify</a>
     <a href="https://dennikn.sk/autor/rvasilisin/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+  </div>
+</section>
+
+<!-- ===== YOU'RE IN GOOD COMPANY ===== -->
+<section class="company anim-section anim-hidden">
+  <h2>You’re in good company</h2>
+  <p class="company-sub">Trusted partners and platforms powering the Virtuse ecosystem</p>
+  <div class="co-row">
+    <a href="https://firefish.io" target="_blank" rel="noopener noreferrer" class="co-logo co-firefish">fire<span>fish</span></a>
+    <a href="https://unchained-capital.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-unchained">Unchained</a>
+    <a href="https://banxa.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-banxa">Banxa</a>
+    <a href="https://www.coinfirm.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinfirm">Coin<span>firm</span></a>
+    <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-aws">aws</a>
+    <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-tradingview">TradingView</a>
+    <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cmc">CoinMarketCap</a>
+  </div>
+  <div class="co-row">
+    <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptowisser">Cryptowisser</a>
+    <a href="https://sumsub.com" target="_blank" rel="noopener noreferrer" class="co-logo co-sumsub">Sumsub</a>
+    <a href="https://finas.sk/" target="_blank" rel="noopener noreferrer" class="co-logo co-finas">Finas</a>
+    <a href="https://21bitcoin.app/en" target="_blank" rel="noopener noreferrer" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
+    <a href="https://coinrule.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinrule">Coinrule</a>
+    <a href="https://abundantmines.com" target="_blank" rel="noopener noreferrer" class="co-logo co-abundant">Abundant <span>Mines</span></a>
   </div>
 </section>
 
