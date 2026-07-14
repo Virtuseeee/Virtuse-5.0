@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Data — Virtuse</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --btc-orange: #f7931a;
+  --btc-orange-light: #ffb84d;
+  --dark: #0d1117;
+  --dark-lighter: #161b22;
+  --dark-card: #1c2128;
+  --dark-card-hover: #232930;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+  --border: #30363d;
+  --border-hover: #484f58;
+  --green: #3fb950;
+  --green-bg: rgba(63, 185, 80, 0.1);
+  --red: #f85149;
+  --red-bg: rgba(248, 81, 73, 0.1);
+  --section-spacing: 100px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-logo img { height: 32px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--btc-orange);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--btc-orange-light); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero h1 .highlight { color: var(--btc-orange); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-bg);
+  border: 1px solid rgba(63, 185, 80, 0.35);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ===== PRICE CARD ===== */
+.price-section {
+  padding: 0 48px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.price-card {
+  background: linear-gradient(135deg, var(--dark-card) 0%, #20180d 100%);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  border-radius: 18px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.price-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.price-value {
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--btc-orange);
+  line-height: 1;
+}
+
+.price-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.price-sub b { color: var(--text); font-weight: 600; }
+
+.price-updated {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ===== STAT GRID ===== */
+.stats {
+  padding: 0 48px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-box {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+
+.stat-box:hover { border-color: var(--border-hover); }
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.stat-value.orange { color: var(--btc-orange); }
+
+.stat-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+/* ===== WIDE CARDS ===== */
+.wide-section {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.wide-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.2s;
+}
+
+.wide-card:hover { border-color: var(--border-hover); }
+
+.wide-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wide-card h3 .ico { color: var(--btc-orange); }
+
+.progress-track {
+  height: 8px;
+  background: var(--dark);
+  border-radius: 100px;
+  overflow: hidden;
+  margin: 14px 0 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
+  border-radius: 100px;
+  transition: width 0.8s ease;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.kv-row:last-child { border-bottom: none; }
+
+.kv-row .k { color: var(--text-muted); }
+.kv-row .v { color: var(--text); font-weight: 600; }
+.kv-row .v.orange { color: var(--btc-orange); }
+.kv-row .v.green { color: var(--green); }
+.kv-row .v.red { color: var(--red); }
+
+.big-metric {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--btc-orange);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.big-metric-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.sources-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 40px;
+}
+
+.sources-note a { color: var(--text-muted); text-decoration: none; }
+.sources-note a:hover { color: var(--btc-orange); }
+
+/* ===== NEWSLETTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: var(--text);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: var(--btc-orange); color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo img { height: 80px; width: auto; opacity: 0.9; transition: opacity 0.2s; }
+.footer-logo img:hover { opacity: 1; }
+
+.footer-columns { display: flex; gap: 80px; flex-wrap: wrap; }
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-bottom p { font-size: 13px; color: var(--text-dim); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .wide-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 36px; }
+  .hero h1 { font-size: 36px; }
+  .price-section, .stats, .wide-section { padding-left: 24px; padding-right: 24px; }
+  .price-card { padding: 28px 24px; }
+  .price-value { font-size: 40px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo-virtuse-light.png" alt="Virtuse">
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="bitcoin-data.html" class="active">Bitcoin Data</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-top">
+    <div>
+      <h1>Bitcoin <span class="highlight">Data</span></h1>
+      <p class="hero-desc">Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed, updated every minute.</p>
+    </div>
+    <div class="live-badge"><span class="live-dot"></span> Live · <span id="lastUpdated">loading…</span></div>
+  </div>
+</section>
+
+<!-- ===== PRICE ===== -->
+<section class="price-section">
+  <div class="price-card">
+    <div>
+      <div class="price-label">BTC / USD</div>
+      <div class="price-value" id="priceUsd">—</div>
+      <div class="price-sub">EUR: <b id="priceEur">—</b> &nbsp;·&nbsp; Sats per $1: <b id="satsPerUsd">—</b></div>
+    </div>
+    <div class="price-updated">
+      Market cap <div class="big-metric" id="marketCap" style="font-size:26px">—</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NETWORK STATS ===== -->
+<section class="stats">
+  <div class="sec-label">Network Vitals</div>
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-label">Block Height</div>
+      <div class="stat-value orange" id="blockHeight">—</div>
+      <div class="stat-sub">Blocks mined since genesis</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Transaction Fee (Fast)</div>
+      <div class="stat-value" id="feeFast">—</div>
+      <div class="stat-sub" id="feeSlow">30m: — · 1h: —</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Hash Rate</div>
+      <div class="stat-value" id="hashRate">—</div>
+      <div class="stat-sub">3-day average</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Network Difficulty</div>
+      <div class="stat-value" id="difficulty">—</div>
+      <div class="stat-sub">Current epoch</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Circulating Supply</div>
+      <div class="stat-value orange" id="supply">—</div>
+      <div class="stat-sub">of 21,000,000 BTC — forever</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Supply Issued</div>
+      <div class="stat-value" id="supplyPct">—</div>
+      <div class="stat-sub">Percentage of max supply mined</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Mempool Transactions</div>
+      <div class="stat-value" id="mempoolCount">—</div>
+      <div class="stat-sub" id="mempoolSize">— vMB pending</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Next Halving</div>
+      <div class="stat-value" id="halving">—</div>
+      <div class="stat-sub" id="halvingSub">blocks remaining</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DETAIL CARDS ===== -->
+<section class="wide-section">
+  <div class="sec-label">Deeper Signals</div>
+  <div class="wide-grid">
+    <div class="wide-card">
+      <h3><span class="ico">◆</span> Difficulty Adjustment</h3>
+      <div class="big-metric" id="diffChange">—</div>
+      <div class="big-metric-sub">estimated next adjustment</div>
+      <div class="progress-track"><div class="progress-fill" id="diffProgress"></div></div>
+      <div class="kv-row"><span class="k">Epoch progress</span><span class="v" id="diffPct">—</span></div>
+      <div class="kv-row"><span class="k">Blocks remaining</span><span class="v" id="diffBlocks">—</span></div>
+      <div class="kv-row"><span class="k">Estimated date</span><span class="v" id="diffDate">—</span></div>
+    </div>
+    <div class="wide-card">
+      <h3><span class="ico">◆</span> Latest Block</h3>
+      <div class="big-metric" id="lbHeight">—</div>
+      <div class="big-metric-sub" id="lbAgo">—</div>
+      <div class="kv-row"><span class="k">Transactions</span><span class="v" id="lbTx">—</span></div>
+      <div class="kv-row"><span class="k">Size</span><span class="v" id="lbSize">—</span></div>
+      <div class="kv-row"><span class="k">Miner</span><span class="v orange" id="lbMiner">—</span></div>
+    </div>
+    <div class="wide-card">
+      <h3><span class="ico">◆</span> Fee Environment</h3>
+      <div class="big-metric" id="feeBig">—</div>
+      <div class="big-metric-sub">fastest confirmation (sat/vB)</div>
+      <div class="kv-row"><span class="k">~30 minutes</span><span class="v" id="fee30">—</span></div>
+      <div class="kv-row"><span class="k">~1 hour</span><span class="v" id="fee60">—</span></div>
+      <div class="kv-row"><span class="k">Minimum relay</span><span class="v" id="feeMin">—</span></div>
+    </div>
+  </div>
+  <div class="sources-note">
+    Updates every minute · Sources: <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo-vex-bull.png" alt="Virtuse Exchange">
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="https://www.virtuse.com/faq/" target="_blank" rel="noopener noreferrer">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank" rel="noopener noreferrer">AMLD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  // Live Bitcoin dashboard — same public data sources as the old
+  // virtuse.com/dashboard: mempool.space REST API + CoinGecko.
+  var MP = 'https://mempool.space/api';
+  var HALVING_INTERVAL = 210000;
+
+  function $(id) { return document.getElementById(id); }
+  function num(n, d) {
+    if (n == null || isNaN(n)) return '—';
+    return n.toLocaleString('en-US', { maximumFractionDigits: d || 0 });
+  }
+  function usd(n) {
+    if (!n || isNaN(n)) return '—';
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  }
+  function eur(n) {
+    if (!n || isNaN(n)) return '—';
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  }
+  function compact(n) {
+    if (!n || isNaN(n)) return '—';
+    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 }).format(n);
+  }
+  function timeAgo(ts) {
+    var s = Math.floor(Date.now() / 1000) - ts;
+    if (s < 60) return s + 's ago';
+    if (s < 3600) return Math.floor(s / 60) + ' min ago';
+    return Math.floor(s / 3600) + ' h ago';
+  }
+  function supplyAtHeight(h) {
+    var supply = 0, subsidy = 50, remaining = h;
+    while (remaining > 0) {
+      var blocks = Math.min(remaining, HALVING_INTERVAL);
+      supply += blocks * subsidy;
+      remaining -= blocks;
+      subsidy /= 2;
+    }
+    return supply;
+  }
+
+  function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+
+  function refresh() {
+    // Price (mempool.space; USD+EUR in one call)
+    j(MP + '/v1/prices').then(function (p) {
+      $('priceUsd').textContent = usd(p.USD);
+      $('priceEur').textContent = eur(p.EUR);
+      $('satsPerUsd').textContent = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
+      window.__btcUsd = p.USD;
+      if (window.__supply && p.USD) $('marketCap').textContent = compact(window.__supply * p.USD);
+    }).catch(function () {});
+
+    // Market cap fallback via CoinGecko
+    j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true').then(function (g) {
+      if (g.bitcoin && g.bitcoin.usd_market_cap) $('marketCap').textContent = compact(g.bitcoin.usd_market_cap);
+    }).catch(function () {});
+
+    // Tip height + supply + halving
+    j(MP + '/blocks/tip/height').then(function (h) {
+      $('blockHeight').textContent = num(h);
+      var supply = supplyAtHeight(h);
+      window.__supply = supply;
+      $('supply').textContent = compact(supply);
+      $('supplyPct').textContent = (supply / 21000000 * 100).toFixed(2) + '%';
+      var nextHalving = (Math.floor(h / HALVING_INTERVAL) + 1) * HALVING_INTERVAL;
+      var blocksLeft = nextHalving - h;
+      $('halving').textContent = num(blocksLeft);
+      var days = blocksLeft * 10 / 60 / 24;
+      $('halvingSub').textContent = 'blocks · ~' + (days > 365 ? (days / 365).toFixed(1) + ' years' : Math.round(days) + ' days');
+      if (window.__btcUsd) $('marketCap').textContent = compact(supply * window.__btcUsd);
+    }).catch(function () {});
+
+    // Fees
+    j(MP + '/v1/fees/recommended').then(function (f) {
+      $('feeFast').textContent = f.fastestFee + ' sat/vB';
+      $('feeSlow').textContent = '30m: ' + f.halfHourFee + ' · 1h: ' + f.hourFee + ' sat/vB';
+      $('feeBig').textContent = f.fastestFee;
+      $('fee30').textContent = f.halfHourFee + ' sat/vB';
+      $('fee60').textContent = f.hourFee + ' sat/vB';
+      $('feeMin').textContent = f.minimumFee + ' sat/vB';
+    }).catch(function () {});
+
+    // Hashrate + difficulty
+    j(MP + '/v1/mining/hashrate/3d').then(function (m) {
+      $('hashRate').textContent = compact(m.currentHashrate / 1e18) + ' EH/s';
+      $('difficulty').textContent = compact(m.currentDifficulty / 1e12) + ' T';
+    }).catch(function () {});
+
+    // Difficulty adjustment
+    j(MP + '/v1/difficulty-adjustment').then(function (d) {
+      var chg = d.difficultyChange;
+      $('diffChange').textContent = (chg > 0 ? '+' : '') + chg.toFixed(2) + '%';
+      $('diffChange').style.color = chg >= 0 ? 'var(--green)' : 'var(--red)';
+      $('diffProgress').style.width = Math.min(100, d.progressPercent).toFixed(1) + '%';
+      $('diffPct').textContent = d.progressPercent.toFixed(1) + '%';
+      $('diffBlocks').textContent = num(d.remainingBlocks);
+      $('diffDate').textContent = new Date(d.estimatedRetargetDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    }).catch(function () {});
+
+    // Mempool
+    j(MP + '/mempool').then(function (m) {
+      $('mempoolCount').textContent = compact(m.count);
+      $('mempoolSize').textContent = (m.vsize / 1e6).toFixed(1) + ' vMB pending';
+    }).catch(function () {});
+
+    // Latest block
+    j(MP + '/v1/blocks').then(function (blocks) {
+      var b = blocks[0];
+      if (!b) return;
+      $('lbHeight').textContent = num(b.height);
+      $('lbAgo').textContent = 'mined ' + timeAgo(b.timestamp);
+      $('lbTx').textContent = num(b.tx_count);
+      $('lbSize').textContent = (b.size / 1e6).toFixed(2) + ' MB';
+      $('lbMiner').textContent = (b.extras && b.extras.pool && b.extras.pool.name) || 'Unknown';
+    }).catch(function () {});
+
+    $('lastUpdated').textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  refresh();
+  setInterval(refresh, 60000);
+})();
+</script>
+
+</body>
+</html>
