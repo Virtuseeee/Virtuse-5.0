@@ -873,7 +873,155 @@ body {
   .seen-logo { font-size: 19px; }
     .seen-medium { font-size: 24px; }
   .seen-hn { font-size: 16px; }
+  .vblog { padding: 0 24px 60px; }
+  .vblog-grid { grid-template-columns: 1fr; gap: 20px; }
 }
+@media (max-width: 1024px) and (min-width: 769px) {
+  .vblog-grid { grid-template-columns: repeat(2, 1fr); }
+  .vblog-grid .vblog-card:last-child { display: none; }
+}
+
+/* ===== THE VIRTUSE BLOG ===== */
+.vblog {
+  padding: 0 48px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vblog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 44px;
+}
+
+.vblog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.vblog-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.vblog-media { overflow: hidden; flex-shrink: 0; }
+
+.vblog-media img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.vblog-card:hover .vblog-media img { transform: scale(1.06); }
+
+.vblog-body {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vblog-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 11px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.1);
+}
+
+.vblog-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.vblog-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.vblog-card:hover h3 { color: var(--btc-orange); }
+
+.vblog-body p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vblog-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 500;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.vblog-meta span { color: var(--text-muted); }
+
+.vblog-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.vblog-cta-wrap { text-align: center; }
+
+.vblog-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.vblog-cta:hover {
+  border-color: var(--btc-orange);
+  color: var(--btc-orange);
+}
+
+.vblog-cta .arr { transition: transform 0.2s; }
+.vblog-cta:hover .arr { transform: translateX(3px); }
 
 /* ===== YOU'RE IN GOOD COMPANY ===== */
 .company {
@@ -1506,6 +1654,84 @@ body {
     </div>
   </div>
 </section>
+
+<!-- ===== THE VIRTUSE BLOG ===== -->
+<section class="vblog anim-section anim-hidden">
+  <div class="sec-header">
+    <h2>The Virtuse <span>Blog</span></h2>
+    <p>Insights on Bitcoin, macroeconomics, and the future of money from CEO Ras Vasilisin</p>
+  </div>
+  <div class="vblog-grid" id="vblogGrid">
+    <a href="article.html?slug=why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2" class="vblog-card">
+      <div class="vblog-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/05/19e11c0d-9992-8c9b-8000-0000c74eed4a_Gemini_Generated_Image_lyuaf5lyuaf5lyua.png" alt="Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?" loading="lazy"></div>
+      <div class="vblog-body">
+        <span class="vblog-tag">Blog</span>
+        <h3>Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?</h3>
+        <p>The era of questioning Bitcoin is over. It is here to stay. We no longer ask why the internet exists. We do not wonder who invented the code for AI. T</p>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>14 May 2026</div>
+      </div>
+    </a>
+    <a href="article.html?slug=39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit" class="vblog-card">
+      <div class="vblog-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-15-at-6.52.29-PM.jpeg" alt="$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit" loading="lazy"></div>
+      <div class="vblog-body">
+        <span class="vblog-tag">Blog</span>
+        <h3>$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit</h3>
+        <p>The man next door looks rich. He drives a fast car. His house is huge. But at night, he stays awake. He just got his tenth credit card. He is using it</p>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>22 Apr 2026</div>
+      </div>
+    </a>
+    <a href="article.html?slug=rome-wokeism-and-the-rise-of-the-bitcoin-standard" class="vblog-card">
+      <div class="vblog-media"><img src="https://www.virtuse.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-7.21.45-PM.jpeg" alt="Rome, Wokeism, and the Rise of the Bitcoin Standard" loading="lazy"></div>
+      <div class="vblog-body">
+        <span class="vblog-tag">Blog</span>
+        <h3>Rome, Wokeism, and the Rise of the Bitcoin Standard</h3>
+        <p>We’ve seen this movie before. Here is why the “Constantine Moment” is the only thing that can save the West. They say history doesn’t repeat itself, b</p>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>13 Mar 2026</div>
+      </div>
+    </a>
+  </div>
+  <div class="vblog-cta-wrap">
+    <a href="blog.html" class="vblog-cta">Show more <span class="arr">&#8594;</span></a>
+  </div>
+</section>
+
+<script>
+// Keep the homepage blog panel current: WordPress is the live source.
+(function () {
+  'use strict';
+  fetch('https://www.virtuse.com/wp-json/wp/v2/posts?categories=13&per_page=3&_embed=wp:featuredmedia&orderby=date&order=desc')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (posts) {
+      var grid = document.getElementById('vblogGrid');
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      function txt(s) { var d = document.createElement('div'); d.innerHTML = s; return (d.textContent || '').replace('[…]','…').trim(); }
+      grid.innerHTML = '';
+      posts.forEach(function (p) {
+        var src = '';
+        try { src = p._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) {}
+        var d = new Date(p.date);
+        var a = document.createElement('a');
+        a.className = 'vblog-card';
+        a.href = 'article.html?slug=' + encodeURIComponent(p.slug);
+        var media = document.createElement('div'); media.className = 'vblog-media';
+        if (src) { var im = document.createElement('img'); im.src = src; im.loading = 'lazy'; im.alt = txt(p.title.rendered); media.appendChild(im); }
+        var body = document.createElement('div'); body.className = 'vblog-body';
+        var tag = document.createElement('span'); tag.className = 'vblog-tag'; tag.textContent = 'Blog';
+        var h = document.createElement('h3'); h.textContent = txt(p.title.rendered);
+        var ex = document.createElement('p'); ex.textContent = txt(p.excerpt.rendered);
+        var meta = document.createElement('div'); meta.className = 'vblog-meta';
+        var au = document.createElement('span'); au.textContent = 'Ras Vasilisin';
+        var dot = document.createElement('span'); dot.className = 'vblog-dot';
+        meta.appendChild(au); meta.appendChild(dot);
+        meta.appendChild(document.createTextNode(' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear()));
+        body.appendChild(tag); body.appendChild(h); body.appendChild(ex); body.appendChild(meta);
+        a.appendChild(media); a.appendChild(body);
+        grid.appendChild(a);
+      });
+    })
+    .catch(function () { /* static cards remain as fallback */ });
+})();
+</script>
 
 <!-- ===== AS SEEN IN ===== -->
 <section class="as-seen anim-section anim-hidden">
