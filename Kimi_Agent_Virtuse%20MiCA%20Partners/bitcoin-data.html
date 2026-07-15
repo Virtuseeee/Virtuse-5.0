@@ -173,6 +173,42 @@ body {
   50% { opacity: 0.35; }
 }
 
+/* ===== SUB MENU ===== */
+.subnav-wrap {
+  padding: 0 48px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 20px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--text); }
+
+.subnav a.active { background: var(--btc-orange); color: #0d0902; }
+
 /* ===== PRICE CARD ===== */
 .price-section {
   padding: 0 48px 40px;
@@ -524,6 +560,14 @@ body {
     <div class="live-badge"><span class="live-dot"></span> Live · <span id="lastUpdated">loading…</span></div>
   </div>
 </section>
+
+<!-- ===== SUB MENU ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="Bitcoin Data pages">
+    <a href="bitcoin-data.html" class="active">&#9670; Dashboard</a>
+    <a href="retirement-calculator.html">&#9670; Retirement Calculator</a>
+  </nav>
+</div>
 
 <!-- ===== PRICE ===== -->
 <section class="price-section">
