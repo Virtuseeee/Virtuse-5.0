@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bitcoin Rainbow Chart — Virtuse</title>
+<title>BTC Dominance — Virtuse</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -448,8 +448,8 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Rainbow <span class="highlight">Chart</span></h1>
-  <p class="hero-desc">The classic Bitcoin Rainbow — price history on a logarithmic scale, wrapped in nine color bands derived from the original 2014 log-regression. A playful long-term compass: blue means fear, red means euphoria.</p>
+  <h1>BTC <span class="highlight">Dominance</span></h1>
+  <p class="hero-desc">Bitcoin's share of the total crypto market cap since 2013. High dominance means capital is concentrated in Bitcoin; falling dominance signals speculation rotating into altcoins.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
@@ -457,8 +457,8 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
   <nav class="subnav" aria-label="Bitcoin Data pages">
     <a href="bitcoin-data.html">&#9670; Dashboard</a>
     <a href="retirement-calculator.html">&#9670; Retirement Calculator</a>
-    <a href="rainbow-chart.html" class="active">&#9670; Rainbow Chart</a>
-    <a href="btc-dominance.html">&#9670; BTC Dominance</a>
+    <a href="rainbow-chart.html">&#9670; Rainbow Chart</a>
+    <a href="btc-dominance.html" class="active">&#9670; BTC Dominance</a>
   </nav>
 </div>
 
@@ -467,32 +467,32 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
   <div class="status-card">
     <div class="status-left">
       <div>
-        <div class="status-price-label">Bitcoin Today</div>
+        <div class="status-price-label">BTC Dominance Today</div>
         <div class="status-price" id="statusPrice">—</div>
       </div>
       <div class="band-chip" id="bandChip" style="background: var(--border);">Loading…</div>
     </div>
-    <div class="status-note">Where today's price sits inside the rainbow, per the original log-regression bands.</div>
+    <div class="status-note">Bitcoin's share of the total cryptocurrency market capitalization, live from CoinGecko.</div>
   </div>
 </section>
 
 <!-- ===== CHART ===== -->
 <section class="chart-section">
   <div class="chart-panel">
-    <h3><span class="ico">&#9670;</span> Price vs. the Rainbow (log scale)</h3>
+    <h3><span class="ico">&#9670;</span> Bitcoin Market-Cap Dominance (%)</h3>
     <div class="chart-wrap">
       <canvas id="chart" height="460"></canvas>
       <div class="tooltip" id="tooltip"></div>
     </div>
     <div class="chart-note">
-      Bands follow the original "Trolololo" logarithmic regression (2014). Weekly prices from Binance (2017 onward) joined with monthly historical closes (2011–2017). The rainbow is not investment advice — it's a decade-old curve-fit meme that has aged surprisingly well.
+      Monthly historical dominance (2013 onward, approximate) joined with the live share from CoinGecko. Dominance counts Bitcoin's market cap against all tracked cryptocurrencies — methodologies differ slightly between data providers.
     </div>
   </div>
 </section>
 
 <!-- ===== LEGEND ===== -->
 <section class="legend-section">
-  <div class="sec-label">The Nine Bands</div>
+  <div class="sec-label">How to Read It</div>
   <div class="legend-grid" id="legend"></div>
 </section>
 
@@ -534,151 +534,119 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 (function () {
   'use strict';
 
-  // ----- The original rainbow regression (Trolololo, bitcointalk 2014) -----
-  // log10(price) = 2.66167155005961 * ln(days since 2009-01-09) - 17.9183761889864
-  var GENESIS = Date.UTC(2009, 0, 9);
-  var A = 2.66167155005961, B = -17.9183761889864;
-  // Band offsets (in log10 around the regression) calibrated to the original
-  // chart: 2013 peak pokes above the top, Dec 2017 hits the red, Nov 2021
-  // lands mid-band, Dec 2018 and today sit in the blue bottom.
-  var BAND_LOG_LOW = -0.65, BAND_LOG_HIGH = 0.75;
-  var BAND_COUNT = 9;
-  var BAND_W = (BAND_LOG_HIGH - BAND_LOG_LOW) / BAND_COUNT;
-
-  var BANDS = [ // bottom -> top
-    { label: 'Basically a Fire Sale',     color: '#4472c4' },
-    { label: 'BUY!',                      color: '#54989f' },
-    { label: 'Accumulate',                color: '#63be7b' },
-    { label: 'Still Cheap',               color: '#b1d580' },
-    { label: 'HODL!',                     color: '#ffe600' },
-    { label: 'Is This a Bubble?',         color: '#ffd966' },
-    { label: 'FOMO Intensifies',          color: '#f6a55a' },
-    { label: 'Sell. Seriously, SELL!',    color: '#ed7d31' },
-    { label: 'Maximum Bubble Territory',  color: '#c00000' }
-  ];
-
-  function daysSinceGenesis(ts) { return (ts - GENESIS) / 86400000; }
-  function basePrice(ts) { return Math.pow(10, A * Math.log(daysSinceGenesis(ts)) + B); }
-  function bandBoundary(ts, k) { // k = 0..9 boundaries
-    return basePrice(ts) * Math.pow(10, BAND_LOG_LOW + k * BAND_W);
-  }
-  function bandIndexFor(ts, price) {
-    var ratio = Math.log10(price / basePrice(ts));
-    var idx = Math.floor((ratio - BAND_LOG_LOW) / BAND_W);
-    return Math.max(0, Math.min(BAND_COUNT - 1, idx));
-  }
-
-  // ----- Historical monthly closes 2011-01 .. 2017-07 (approx, USD) -----
-  var EARLY = [
-    ['2011-01',0.42],['2011-02',0.86],['2011-03',0.79],['2011-04',3.5],['2011-05',8.7],['2011-06',16.1],
-    ['2011-07',13.5],['2011-08',8.2],['2011-09',5.1],['2011-10',3.2],['2011-11',3.0],['2011-12',4.7],
-    ['2012-01',5.3],['2012-02',4.9],['2012-03',4.9],['2012-04',4.9],['2012-05',5.2],['2012-06',6.7],
-    ['2012-07',9.4],['2012-08',10.2],['2012-09',12.4],['2012-10',11.2],['2012-11',12.6],['2012-12',13.4],
-    ['2013-01',20.4],['2013-02',33.4],['2013-03',93],['2013-04',139],['2013-05',128],['2013-06',97],
-    ['2013-07',106],['2013-08',141],['2013-09',141],['2013-10',204],['2013-11',1130],['2013-12',754],
-    ['2014-01',800],['2014-02',550],['2014-03',458],['2014-04',446],['2014-05',627],['2014-06',640],
-    ['2014-07',583],['2014-08',478],['2014-09',387],['2014-10',338],['2014-11',378],['2014-12',320],
-    ['2015-01',217],['2015-02',254],['2015-03',244],['2015-04',236],['2015-05',230],['2015-06',263],
-    ['2015-07',284],['2015-08',230],['2015-09',236],['2015-10',314],['2015-11',377],['2015-12',430],
-    ['2016-01',369],['2016-02',437],['2016-03',416],['2016-04',448],['2016-05',531],['2016-06',673],
-    ['2016-07',624],['2016-08',575],['2016-09',610],['2016-10',700],['2016-11',745],['2016-12',963],
-    ['2017-01',970],['2017-02',1180],['2017-03',1080],['2017-04',1350],['2017-05',2300],['2017-06',2480],['2017-07',2875]
+  // Approximate monthly BTC dominance history (%, CoinMarketCap-style).
+  var HIST = [
+    ['2013-04',94.4],['2013-07',94.8],['2013-10',92.8],['2014-01',87.6],['2014-04',83.5],['2014-07',82.9],
+    ['2014-10',82.0],['2015-01',79.3],['2015-04',85.5],['2015-07',85.6],['2015-10',84.8],['2016-01',91.2],
+    ['2016-04',88.0],['2016-07',81.2],['2016-10',84.1],['2017-01',87.0],['2017-02',85.5],['2017-03',76.0],
+    ['2017-04',66.0],['2017-05',51.0],['2017-06',41.0],['2017-07',46.0],['2017-08',48.0],['2017-09',47.0],
+    ['2017-10',55.0],['2017-11',56.0],['2017-12',38.0],['2018-01',33.5],['2018-02',38.0],['2018-03',44.0],
+    ['2018-04',39.0],['2018-05',38.0],['2018-06',42.0],['2018-07',47.0],['2018-08',53.0],['2018-09',51.5],
+    ['2018-10',52.5],['2018-11',53.5],['2018-12',55.0],['2019-01',53.0],['2019-03',50.5],['2019-05',56.5],
+    ['2019-07',65.0],['2019-09',69.0],['2019-11',66.5],['2020-01',66.5],['2020-03',64.5],['2020-05',65.5],
+    ['2020-07',62.0],['2020-09',57.5],['2020-11',62.0],['2021-01',69.7],['2021-02',61.0],['2021-03',60.0],
+    ['2021-04',50.5],['2021-05',40.0],['2021-06',45.5],['2021-07',46.0],['2021-08',41.5],['2021-09',42.5],
+    ['2021-10',45.0],['2021-11',40.5],['2021-12',40.0],['2022-01',42.0],['2022-03',42.5],['2022-05',44.5],
+    ['2022-06',46.0],['2022-08',40.0],['2022-09',41.0],['2022-11',40.5],['2023-01',42.0],['2023-03',46.0],
+    ['2023-06',50.0],['2023-09',49.0],['2023-12',52.0],['2024-03',54.0],['2024-06',55.0],['2024-09',57.5],
+    ['2024-11',60.0],['2025-01',58.0],['2025-04',63.0],['2025-06',64.5]
   ].map(function (r) {
     var p = r[0].split('-');
-    return { ts: Date.UTC(+p[0], +p[1] - 1, 28), price: r[1] };
+    return { ts: Date.UTC(+p[0], +p[1] - 1, 15), v: r[1] };
   });
 
-  var series = EARLY.slice();
-  var currentPrice = null;
+  var series = HIST.slice();
+  var currentDom = null;
 
   var canvas = document.getElementById('chart');
   var tooltip = document.getElementById('tooltip');
 
-  function fmtUsd(n) {
-    if (n >= 1000) return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
-    return '$' + n.toFixed(n >= 1 ? 2 : 3);
+  function regime(v) {
+    if (v >= 60) return { label: 'Bitcoin-Dominated Market', color: '#f7931a' };
+    if (v >= 45) return { label: 'Mixed Market', color: '#ffe600' };
+    return { label: 'Altcoin-Heavy Market', color: '#bc8cff' };
   }
 
-  // ----- Chart drawing -----
-  var view = null; // stores mapping for tooltip
+  var view = null;
 
   function draw() {
     var dpr = window.devicePixelRatio || 1;
     var w = canvas.clientWidth;
-    var h = parseInt(getComputedStyle(canvas).height, 10);
-    canvas.width = w * dpr; canvas.height = h * dpr;
+    var hpx = parseInt(getComputedStyle(canvas).height, 10);
+    canvas.width = w * dpr; canvas.height = hpx * dpr;
     var ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
-    ctx.clearRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, hpx);
     if (!series.length) return;
 
-    var padL = 58, padR = 14, padT = 12, padB = 28;
-    var t0 = Date.UTC(2011, 0, 1);
-    var t1 = Date.now() + 365 * 86400000; // extend one year ahead
-    var pMin = 0.1, pMax = 1000000;
-    var lMin = Math.log10(pMin), lMax = Math.log10(pMax);
+    var padL = 52, padR = 14, padT = 14, padB = 28;
+    var t0 = Date.UTC(2013, 0, 1);
+    var t1 = Date.now() + 90 * 86400000;
 
     function x(ts) { return padL + (ts - t0) / (t1 - t0) * (w - padL - padR); }
-    function y(price) { return padT + (1 - (Math.log10(price) - lMin) / (lMax - lMin)) * (h - padT - padB); }
-    view = { x: x, y: y, t0: t0, t1: t1, padL: padL, padR: padR, w: w, h: h };
+    function y(v) { return padT + (1 - v / 100) * (hpx - padT - padB); }
+    view = { x: x, y: y, w: w, h: hpx };
 
-    // Rainbow bands
-    var steps = 160;
-    for (var b = 0; b < BAND_COUNT; b++) {
-      ctx.beginPath();
-      for (var s = 0; s <= steps; s++) {
-        var ts = t0 + (t1 - t0) * s / steps;
-        var yy = y(bandBoundary(ts, b));
-        if (s === 0) ctx.moveTo(x(ts), yy); else ctx.lineTo(x(ts), yy);
-      }
-      for (var s2 = steps; s2 >= 0; s2--) {
-        var ts2 = t0 + (t1 - t0) * s2 / steps;
-        ctx.lineTo(x(ts2), y(bandBoundary(ts2, b + 1)));
-      }
-      ctx.closePath();
-      ctx.globalAlpha = 0.55;
-      ctx.fillStyle = BANDS[b].color;
-      ctx.fill();
+    var css = getComputedStyle(document.documentElement);
+    var cOrange = css.getPropertyValue('--btc-orange').trim();
+    var cDim = css.getPropertyValue('--text-dim').trim();
+
+    // Regime shading bands (subtle)
+    function zone(v0, v1, color, alpha) {
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = color;
+      ctx.fillRect(padL, y(v1), w - padL - padR, y(v0) - y(v1));
       ctx.globalAlpha = 1;
     }
+    zone(60, 100, cOrange, 0.06);
+    zone(45, 60, '#ffe600', 0.04);
+    zone(0, 45, '#bc8cff', 0.05);
 
     // Grid + labels
-    var css = getComputedStyle(document.documentElement);
-    var cBorder = css.getPropertyValue('--border').trim();
-    var cDim = css.getPropertyValue('--text-dim').trim();
     ctx.font = '10px Inter, sans-serif';
     ctx.lineWidth = 1;
-    for (var e = -1; e <= 6; e++) {
-      var pv = Math.pow(10, e);
-      var yy2 = y(pv);
+    for (var g = 0; g <= 100; g += 20) {
+      var yy = y(g);
       ctx.strokeStyle = 'rgba(230, 237, 243, 0.07)';
-      ctx.beginPath(); ctx.moveTo(padL, yy2); ctx.lineTo(w - padR, yy2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(w - padR, yy); ctx.stroke();
       ctx.fillStyle = cDim;
-      var lab = pv >= 1000000 ? '$1M' : pv >= 1000 ? '$' + (pv / 1000) + 'k' : '$' + pv;
-      ctx.fillText(lab, 10, yy2 + 3);
+      ctx.fillText(g + '%', 14, yy + 3);
     }
-    for (var yr = 2012; yr <= new Date(t1).getUTCFullYear(); yr += 2) {
-      var ts3 = Date.UTC(yr, 0, 1);
-      if (ts3 < t0 || ts3 > t1) continue;
+    for (var yr = 2013; yr <= new Date(t1).getUTCFullYear(); yr += 2) {
+      var ts = Date.UTC(yr, 0, 1);
+      if (ts < t0 || ts > t1) continue;
       ctx.fillStyle = cDim;
-      ctx.fillText(String(yr), x(ts3) - 10, h - 8);
+      ctx.fillText(String(yr), x(ts) - 10, hpx - 8);
     }
 
-    // Price line
+    // Area fill under the line
     ctx.beginPath();
     series.forEach(function (pt, i) {
-      var xx = x(pt.ts), yy3 = y(pt.price);
-      if (i === 0) ctx.moveTo(xx, yy3); else ctx.lineTo(xx, yy3);
+      if (i === 0) ctx.moveTo(x(pt.ts), y(pt.v)); else ctx.lineTo(x(pt.ts), y(pt.v));
     });
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 2;
+    ctx.lineTo(x(series[series.length - 1].ts), y(0));
+    ctx.lineTo(x(series[0].ts), y(0));
+    ctx.closePath();
+    var grad = ctx.createLinearGradient(0, padT, 0, hpx - padB);
+    grad.addColorStop(0, 'rgba(247, 147, 26, 0.30)');
+    grad.addColorStop(1, 'rgba(247, 147, 26, 0.02)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Line
+    ctx.beginPath();
+    series.forEach(function (pt, i) {
+      if (i === 0) ctx.moveTo(x(pt.ts), y(pt.v)); else ctx.lineTo(x(pt.ts), y(pt.v));
+    });
+    ctx.strokeStyle = cOrange;
+    ctx.lineWidth = 2.5;
     ctx.stroke();
 
-    // "You are here" marker
-    if (currentPrice) {
-      var lastTs = series[series.length - 1].ts;
+    // Current marker
+    if (currentDom != null) {
+      var last = series[series.length - 1];
       ctx.beginPath();
-      ctx.arc(x(lastTs), y(currentPrice), 5, 0, Math.PI * 2);
+      ctx.arc(x(last.ts), y(last.v), 5, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
       ctx.fill();
       ctx.lineWidth = 2.5;
@@ -687,34 +655,36 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
     }
   }
 
-  // ----- Tooltip -----
   canvas.addEventListener('mousemove', function (ev) {
     if (!view || !series.length) return;
     var rect = canvas.getBoundingClientRect();
     var mx = ev.clientX - rect.left;
-    // nearest series point by x
     var best = null, bestD = 1e18;
     series.forEach(function (pt) {
       var d = Math.abs(view.x(pt.ts) - mx);
       if (d < bestD) { bestD = d; best = pt; }
     });
     if (!best || bestD > 40) { tooltip.style.display = 'none'; return; }
-    var bi = bandIndexFor(best.ts, best.price);
+    var r = regime(best.v);
     var dt = new Date(best.ts);
     tooltip.innerHTML = dt.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) +
-      ' · <b>' + fmtUsd(best.price) + '</b><br>' +
-      '<span style="color:' + BANDS[bi].color + '">&#9632;</span> ' + BANDS[bi].label;
+      ' · <b>' + best.v.toFixed(1) + '%</b><br>' +
+      '<span style="color:' + r.color + '">&#9632;</span> ' + r.label;
     tooltip.style.display = 'block';
     var tx = view.x(best.ts) + 14;
-    if (tx > view.w - 180) tx = view.x(best.ts) - 170;
+    if (tx > view.w - 190) tx = view.x(best.ts) - 180;
     tooltip.style.left = tx + 'px';
-    tooltip.style.top = Math.max(6, view.y(best.price) - 48) + 'px';
+    tooltip.style.top = Math.max(6, view.y(best.v) - 48) + 'px';
   });
   canvas.addEventListener('mouseleave', function () { tooltip.style.display = 'none'; });
 
-  // ----- Legend -----
+  // Legend: the three regimes
   var legend = document.getElementById('legend');
-  BANDS.slice().reverse().forEach(function (b) {
+  [
+    { label: '≥ 60% — Bitcoin-Dominated Market: capital concentrated in BTC', color: '#f7931a' },
+    { label: '45–60% — Mixed Market: Bitcoin leads, altcoins active', color: '#ffe600' },
+    { label: '< 45% — Altcoin-Heavy Market: speculation rotating out of BTC', color: '#bc8cff' }
+  ].forEach(function (b) {
     var item = document.createElement('span');
     item.className = 'legend-item';
     var sw = document.createElement('span');
@@ -725,38 +695,27 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
     legend.appendChild(item);
   });
 
-  // ----- Data loading -----
-  function updateStatus() {
-    if (!currentPrice) return;
-    var ts = Date.now();
-    var bi = bandIndexFor(ts, currentPrice);
-    document.getElementById('statusPrice').textContent = fmtUsd(currentPrice);
-    var chip = document.getElementById('bandChip');
-    chip.textContent = BANDS[bi].label;
-    chip.style.background = BANDS[bi].color;
-  }
-
-  // Weekly candles since 2017 from Binance (public, CORS-enabled)
-  fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1w&limit=1000')
+  // Live dominance from CoinGecko (public, CORS-enabled)
+  fetch('https://api.coingecko.com/api/v3/global')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (rows) {
-      var recent = rows.map(function (c) { return { ts: c[0], price: parseFloat(c[4]) }; });
-      series = EARLY.concat(recent);
-      draw();
-    })
-    .catch(function () { draw(); });
-
-  // Live price for the status card + freshest point
-  fetch('https://mempool.space/api/v1/prices')
-    .then(function (r) { return r.json(); })
     .then(function (d) {
-      if (!d.USD) return;
-      currentPrice = d.USD;
-      series.push({ ts: Date.now(), price: d.USD });
-      updateStatus();
+      var v = d.data && d.data.market_cap_percentage && d.data.market_cap_percentage.btc;
+      if (v == null) return;
+      currentDom = v;
+      series.push({ ts: Date.now(), v: v });
+      document.getElementById('statusPrice').textContent = v.toFixed(2) + '%';
+      var r = regime(v);
+      var chip = document.getElementById('bandChip');
+      chip.textContent = r.label;
+      chip.style.background = r.color;
       draw();
     })
-    .catch(function () {});
+    .catch(function () {
+      var last = HIST[HIST.length - 1];
+      document.getElementById('statusPrice').textContent = '~' + last.v.toFixed(0) + '%';
+      document.getElementById('bandChip').textContent = regime(last.v).label;
+      document.getElementById('bandChip').style.background = regime(last.v).color;
+    });
 
   window.addEventListener('resize', draw);
   draw();
