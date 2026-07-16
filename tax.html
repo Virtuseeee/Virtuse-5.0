@@ -276,7 +276,7 @@ nav { padding: 0 24px; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--btc-orange);
+  background: var(--btc-orange, #f7931a);
   color: #fff;
   font-weight: 700;
   border: 1px solid transparent;
@@ -289,7 +289,7 @@ nav { padding: 0 24px; }
 
 .nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
   background: #ffffff;
-  color: var(--btc-orange);
+  color: var(--btc-orange, #f7931a);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
@@ -299,8 +299,8 @@ nav { padding: 0 24px; }
 }
 
 .btn-secondary:hover {
-  border-color: var(--btc-orange);
-  color: var(--btc-orange);
+  border-color: var(--btc-orange, #f7931a);
+  color: var(--btc-orange, #f7931a);
   background: rgba(247, 147, 26, 0.06);
   transform: translateY(-1px);
 }
