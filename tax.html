@@ -69,14 +69,16 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 .partner-card { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; transition: all 0.25s;  flex-direction: column; }
 .partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: #484f58; }
 .partner-card.top-pick { border: 1px solid rgba(247,147,26,0.3); }
-.partner-header { padding: 32px 28px 0;  align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
-.partner-icon { width: 52px; height: 52px; border-radius: 14px;   justify-content: center; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0; }
+.partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.partner-logo { display: flex; align-items: center; gap: 14px; }
+.partner-name { font-size: 18px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
+.partner-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0; }
 .partner-icon.bp { background: #f7931a; }
 .partner-icon.wa { background: #58a6ff; }
 .partner-icon.di { background: #3fb950; }
-.partner-location {   gap: 5px; font-size: 12px; color: #8b949e; }
+.partner-location { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #8b949e; }
 .partner-location svg { width: 12px; height: 12px; }
-.partner-tags { padding: 0 28px;  flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.partner-tags { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 .tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
 .tag.orange { background: rgba(247,147,26,0.15); color: #f7931a; }
 .tag.blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
@@ -373,10 +375,15 @@ nav { padding: 0 24px; }
 <!-- Divly -->
 <div class="partner-card">
 <div class="partner-header">
+<div class="partner-logo">
 <div class="partner-icon di">Di</div>
+<div>
+<div class="partner-name">Divly</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
 Sweden
+</div>
+</div>
 </div>
 </div>
 <div class="partner-tags">
@@ -400,10 +407,15 @@ Sweden
 <!-- Blockpit -->
 <div class="partner-card top-pick">
 <div class="partner-header">
+<div class="partner-logo">
 <div class="partner-icon bp">BP</div>
+<div>
+<div class="partner-name">Blockpit</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
 Austria
+</div>
+</div>
 </div>
 </div>
 <div class="partner-tags">
@@ -427,10 +439,15 @@ Austria
 <!-- CoinTracking -->
 <div class="partner-card">
 <div class="partner-header">
+<div class="partner-logo">
 <div class="partner-icon" style="background: linear-gradient(135deg, #1272b8, #3ea0e0); color: #fff;">CT</div>
+<div>
+<div class="partner-name">CoinTracking</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
 Germany
+</div>
+</div>
 </div>
 </div>
 <div class="partner-tags">
