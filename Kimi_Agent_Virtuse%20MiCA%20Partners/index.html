@@ -1388,6 +1388,42 @@ body {
   .orbit-scene { scale: 0.52; }
   .hero-stats { gap: 24px; }
 }
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+.nav-cta, .btn-primary, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btc-orange);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
+  background: #ffffff;
+  color: var(--btc-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+.vblog-cta, .btn-secondary {
+  transition: all 0.2s ease;
+}
+
+.vblog-cta:hover, .btn-secondary:hover {
+  border-color: var(--btc-orange);
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.06);
+  transform: translateY(-1px);
+}
 </style>
 </head>
 <body>
