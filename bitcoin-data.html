@@ -528,6 +528,31 @@ body {
   .footer-main { padding: 40px 24px 20px; }
   .footer-inner { flex-direction: column; gap: 30px; }
 }
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+.nav-cta, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btc-orange);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover, .newsletter-form button:hover {
+  background: #ffffff;
+  color: var(--btc-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
 </style>
 </head>
 <body>
