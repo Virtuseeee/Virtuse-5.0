@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Virtuse</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --btc-orange: #f7931a;
+  --btc-orange-light: #ffb84d;
+  --dark: #0d1117;
+  --dark-lighter: #161b22;
+  --dark-card: #1c2128;
+  --dark-card-hover: #232930;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+  --border: #30363d;
+  --border-hover: #484f58;
+  --green: #3fb950;
+  --green-bg: rgba(63, 185, 80, 0.1);
+  --section-spacing: 100px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero h1 .highlight { color: var(--btc-orange); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+/* ===== CATEGORY PILLS ===== */
+.subnav-wrap {
+  padding: 0 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--btc-orange); }
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding: 0 48px 56px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+.faq-section:last-of-type { padding-bottom: var(--section-spacing); }
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--btc-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(247, 147, 26, 0.1);
+  margin-bottom: 22px;
+}
+
+.sec-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+details {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+details:hover { border-color: var(--border-hover); }
+
+details[open] { border-color: rgba(247, 147, 26, 0.4); }
+
+summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary:hover { color: var(--btc-orange); }
+
+summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+
+details[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.faq-answer strong { color: var(--text); font-weight: 600; }
+
+.faq-answer a { color: var(--btc-orange); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+/* ===== NEWSLETTER / FOOTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  font-size: 14px;
+}
+
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-columns { display: flex; gap: 80px; flex-wrap: wrap; }
+
+.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-bottom p { font-size: 13px; color: var(--text-dim); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 28px; }
+  .hero h1 { font-size: 36px; }
+  .subnav-wrap, .faq-section { padding-left: 24px; padding-right: 24px; }
+  summary { font-size: 15px; padding: 18px 20px; }
+  .faq-answer { padding: 0 20px 18px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+a.nav-logo:hover { opacity: 0.85; }
+
+.nav-cta, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btc-orange, #f7931a);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover, .newsletter-form button:hover {
+  background: #ffffff;
+  color: var(--btc-orange, #f7931a);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:21px;letter-spacing:0.14em;">VIRTUSE</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
+    <li><a href="mining.html">Mining</a></li>
+    <li><a href="lending.html">Loans</a></li>
+    <li><a href="secure.html">Custody</a></li>
+    <li><a href="treasury.html">Treasury</a></li>
+    <li><a href="tax.html">Tax</a></li>
+    <li><a href="bots.html">Bots</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="bitcoin-data.html">Bitcoin Data</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Frequently Asked <span class="highlight">Questions</span></h1>
+  <p class="hero-desc">Everything you need to know about Virtuse, our partner hub, security, fees, and how to get started — in plain language.</p>
+</section>
+
+<!-- ===== CATEGORY PILLS ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="FAQ categories">
+    <a href="#virtuse">&#9670; Virtuse</a>
+    <a href="#services">&#9670; Hub Services</a>
+    <a href="#security">&#9670; Security</a>
+    <a href="#fees">&#9670; Fees</a>
+    <a href="#trading">&#9670; Trading</a>
+    <a href="#deposits">&#9670; Deposits</a>
+    <a href="#withdrawals">&#9670; Withdrawals</a>
+    <a href="#kyc">&#9670; KYC</a>
+  </nav>
+</div>
+
+<!-- ===== ABOUT VIRTUSE ===== -->
+<section class="faq-section" id="virtuse">
+  <div class="sec-label">About Virtuse</div>
+
+  <details open>
+    <summary>What is Virtuse?</summary>
+    <div class="faq-answer">Virtuse is the world's first hub for Bitcoin-only services. Founded in 2018 and Bitcoin-only since 2022, we connect investors with vetted, regulated partners for everything Bitcoin — buying, mining, borrowing, custody, treasury, tax, and automation. Virtuse Wealth Management a.s. is part of the multinational Virtuse Group, anchored in Singapore with an operational office in Bratislava, serving clients in over 100 countries.</div>
+  </details>
+
+  <details>
+    <summary>Is Virtuse an exchange?</summary>
+    <div class="faq-answer">No. Virtuse doesn't operate an exchange, hold your funds, or take custody of your Bitcoin. We are a curation and access layer: we vet the best licensed providers in each category and connect you directly to them.</div>
+  </details>
+
+  <details>
+    <summary>Why Bitcoin only?</summary>
+    <div class="faq-answer">We believe Bitcoin is the only digital asset suited for building and protecting generational wealth. A Bitcoin-only focus means fiduciary alignment, regulatory simplicity, and deep expertise — no altcoin distractions.</div>
+  </details>
+</section>
+
+<!-- ===== HUB SERVICES ===== -->
+<section class="faq-section" id="services">
+  <div class="sec-label">Our Hub Services</div>
+
+  <details>
+    <summary>What services can I access through Virtuse?</summary>
+    <div class="faq-answer">Eight categories, each with hand-picked partners: <strong>Buy Bitcoin</strong> (MiCA-licensed CASPs like 21bitcoin, Kraken, and ByBit EU), <strong>Mining</strong> (hosted mining with OneMiners, Abundant Mines, Power Mining), <strong>Loans</strong> (Bitcoin-backed borrowing via Firefish — keep your BTC, get cash), <strong>Custody</strong> (Trezor and Ledger hardware wallets), <strong>Treasury</strong> (institutional custody with Coinbase Institutional, Sygnum, BitGo), <strong>Tax</strong> (Divly, Blockpit, CoinTracking), <strong>Trading Bots</strong> (Coinrule, Cryptohopper, RevenueBot), plus free <a href="bitcoin-data.html">Bitcoin Data</a> tools — live dashboard, retirement calculator, rainbow chart, and more.</div>
+  </details>
+
+  <details>
+    <summary>How does the hub work?</summary>
+    <div class="faq-answer">Three steps: pick a service, compare our vetted partners side by side, and click through to the partner's regulated platform. Everything after that — account, verification, transactions — happens directly with the partner. Your Bitcoin stays under your control.</div>
+  </details>
+
+  <details>
+    <summary>How do you choose partners?</summary>
+    <div class="faq-answer">We prioritize EU licensing (MiCA/MiCAR where applicable), security track record, Bitcoin-friendliness, and fair fees. Partners that don't meet the bar don't get listed.</div>
+  </details>
+</section>
+
+<!-- ===== SECURITY ===== -->
+<section class="faq-section" id="security">
+  <div class="sec-label">Security</div>
+
+  <details>
+    <summary>Does Virtuse ever hold my Bitcoin or my keys?</summary>
+    <div class="faq-answer">Never. Virtuse holds no funds, no keys, and no client data. All transactions execute on regulated partner platforms, and we encourage self-custody as the end state for your coins.</div>
+  </details>
+
+  <details>
+    <summary>How should I store my Bitcoin?</summary>
+    <div class="faq-answer">For long-term holdings we recommend hardware wallets from our <a href="secure.html">custody partners</a> — Trezor (open-source, made in the EU) or Ledger (Secure Element chip, 7M+ devices sold). Your keys are generated offline and never leave the device. Larger holdings and corporate treasuries can use institutional-grade custody via our <a href="treasury.html">Treasury partners</a>.</div>
+  </details>
+
+  <details>
+    <summary>Are the partners regulated?</summary>
+    <div class="faq-answer">Buying partners are MiCA/MiCAR-licensed EU crypto-asset service providers — for example Kraken via the Central Bank of Ireland, and ByBit EU and 21bitcoin via the Austrian FMA. Treasury partners include regulated institutions like Sygnum (Swiss banking licence) and BitGo.</div>
+  </details>
+</section>
+
+<!-- ===== FEES ===== -->
+<section class="faq-section" id="fees">
+  <div class="sec-label">Fees</div>
+
+  <details>
+    <summary>What does Virtuse charge?</summary>
+    <div class="faq-answer">Nothing. Browsing, comparing, and clicking through to partners is free. Virtuse earns a referral fee from partners when you sign up — at no extra cost to you. You never pay more by coming through Virtuse.</div>
+  </details>
+
+  <details>
+    <summary>What fees will I pay at partners?</summary>
+    <div class="faq-answer">Each partner sets its own pricing — examples currently listed: Kraken Pro trading from 0.16%, ByBit EU spot from 0.1%, 21bitcoin Auto-Invest savings plans with 0% fees, mining hosting from ~$0.043/kWh, and tax tools from €39/year (CoinTracking has a free tier up to 200 transactions). Always confirm current pricing on the partner's site.</div>
+  </details>
+</section>
+
+<!-- ===== TRADING ===== -->
+<section class="faq-section" id="trading">
+  <div class="sec-label">Trading</div>
+
+  <details>
+    <summary>Can I trade on Virtuse?</summary>
+    <div class="faq-answer">Trading happens on our partners' platforms, not on Virtuse. For spot buying and selling, use a <a href="buy-bitcoin.html">Buy Bitcoin</a> partner. For automated strategies (DCA, grid, rebalancing), our <a href="bots.html">Bots partners</a> connect to your exchange account via API keys — non-custodial, so the bot never holds your coins.</div>
+  </details>
+
+  <details>
+    <summary>Do you support altcoin trading?</summary>
+    <div class="faq-answer">No. Virtuse curates Bitcoin services only. Some partners offer other assets on their own platforms, but our focus and recommendations are strictly Bitcoin.</div>
+  </details>
+</section>
+
+<!-- ===== DEPOSITS ===== -->
+<section class="faq-section" id="deposits">
+  <div class="sec-label">Deposits</div>
+
+  <details>
+    <summary>How do I deposit money to buy Bitcoin?</summary>
+    <div class="faq-answer">Directly on the partner platform you choose — typically via SEPA bank transfer or card with EU partners like 21bitcoin, Kraken, or ByBit EU. Virtuse never receives or processes your money.</div>
+  </details>
+
+  <details>
+    <summary>Can I set up recurring purchases?</summary>
+    <div class="faq-answer">Yes — partners like 21bitcoin offer automated savings plans (DCA) with zero fees, and exchanges like Kraken support recurring buys.</div>
+  </details>
+</section>
+
+<!-- ===== WITHDRAWALS ===== -->
+<section class="faq-section" id="withdrawals">
+  <div class="sec-label">Withdrawals</div>
+
+  <details>
+    <summary>How do I withdraw my Bitcoin?</summary>
+    <div class="faq-answer">From the partner platform to any wallet address you control — we recommend withdrawing to your own hardware wallet for long-term holdings. Miners receive rewards paid out daily, directly to a wallet address they control at all times.</div>
+  </details>
+
+  <details>
+    <summary>Are there withdrawal limits or fees?</summary>
+    <div class="faq-answer">These are set by each partner and vary by platform, verification level, and network conditions. Check the partner's current terms; Virtuse adds nothing on top.</div>
+  </details>
+</section>
+
+<!-- ===== KYC ===== -->
+<section class="faq-section" id="kyc">
+  <div class="sec-label">KYC &amp; Verification</div>
+
+  <details>
+    <summary>Does Virtuse require KYC?</summary>
+    <div class="faq-answer">No — because Virtuse never touches your funds, there's nothing to verify with us. Identity verification happens once, on the regulated partner platform where you transact.</div>
+  </details>
+
+  <details>
+    <summary>What will partners ask for?</summary>
+    <div class="faq-answer">Licensed EU CASPs follow MiCA and AML rules: typically a government ID and proof of address, occasionally source-of-funds for larger amounts. Requirements vary by partner and country.</div>
+  </details>
+
+  <details>
+    <summary>Are there services without KYC?</summary>
+    <div class="faq-answer">Yes — tools that never touch your money don't need it: hardware wallets (Trezor, Ledger), tax software (Divly is explicitly privacy-first with no KYC), and all our free <a href="bitcoin-data.html">Bitcoin Data</a> tools work without any account at all.</div>
+  </details>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <h2>Fix the Money, Fix the World</h2>
+  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">SUBSCRIBE NOW</button>
+  </form>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:center;gap:14px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:27px;letter-spacing:0.14em;color:#e6edf3;">VIRTUSE</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://www.virtuse.com/about-us/" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Terms &amp; conditions</h4>
+        <a href="https://www.virtuse.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://www.virtuse.com/virtuse-is-fully-compliant-with-amld5/" target="_blank" rel="noopener noreferrer">AMLD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
