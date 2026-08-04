@@ -12,10 +12,10 @@
 :root {
   --btc-orange: #f7931a;
   --btc-orange-light: #ffb84d;
-  --dark: #0d1117;
-  --dark-lighter: #161b22;
-  --dark-card: #1c2128;
-  --dark-card-hover: #232930;
+  --dark: #0d1421;
+  --dark-lighter: #111a2b;
+  --dark-card: #161f30;
+  --dark-card-hover: #1c2740;
   --text: #e6edf3;
   --text-muted: #8b949e;
   --text-dim: #484f58;
@@ -41,7 +41,7 @@ body {
   justify-content: space-between;
   padding: 20px 48px;
   border-bottom: 1px solid var(--border);
-  background: rgba(13, 17, 23, 0.95);
+  background: rgba(13, 20, 33, 0.95);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -115,7 +115,7 @@ body {
   right: -200px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -257,7 +257,7 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 .tooltip {
   position: absolute;
   pointer-events: none;
-  background: rgba(13, 17, 23, 0.95);
+  background: rgba(13, 20, 33, 0.95);
   border: 1px solid var(--border-hover);
   border-radius: 10px;
   padding: 10px 14px;
@@ -428,8 +428,8 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 
 a.nav-logo, .nav-logo {
   display: inline-flex !important;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 1px;
   font-weight: 800;
   font-size: 19px;
   color: #e6edf3 !important;
@@ -469,7 +469,7 @@ a.nav-logo:hover { opacity: 0.85; }
 
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:21px;letter-spacing:0.14em;">VIRTUSE</span>
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
     <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
@@ -551,7 +551,7 @@ a.nav-logo:hover { opacity: 0.85; }
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:center;gap:14px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:27px;letter-spacing:0.14em;color:#e6edf3;">VIRTUSE</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
@@ -801,6 +801,114 @@ a.nav-logo:hover { opacity: 0.85; }
 
   window.addEventListener('resize', draw);
   draw();
+})();
+</script>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
 })();
 </script>
 

@@ -13,10 +13,10 @@
 :root {
   --btc-orange: #f7931a;
   --btc-orange-light: #ffb84d;
-  --dark: #0d1117;
-  --dark-lighter: #161b22;
-  --dark-card: #1c2128;
-  --dark-card-hover: #232930;
+  --dark: #0d1421;
+  --dark-lighter: #111a2b;
+  --dark-card: #161f30;
+  --dark-card-hover: #1c2740;
   --text: #e6edf3;
   --text-muted: #8b949e;
   --text-dim: #484f58;
@@ -43,7 +43,7 @@ img { max-width: 100%; }
   justify-content: space-between;
   padding: 20px 48px;
   border-bottom: 1px solid var(--border);
-  background: rgba(13, 17, 23, 0.95);
+  background: rgba(13, 20, 33, 0.95);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -117,7 +117,7 @@ img { max-width: 100%; }
   right: -200px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -214,7 +214,7 @@ img { max-width: 100%; }
 /* ===== STORY TIMELINE ===== */
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: 16px;
 }
@@ -292,6 +292,12 @@ img { max-width: 100%; }
   margin-bottom: 18px;
 }
 
+.value-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--btc-orange);
+}
+
 .value-card h3 {
   font-size: 17px;
   font-weight: 700;
@@ -365,63 +371,29 @@ img { max-width: 100%; }
   width: 100%;
 }
 
-/* ===== TEAM ===== */
-.team-grid {
+/* ===== VETTING CRITERIA ===== */
+.vet-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
-.team-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 36px 24px 30px;
-  text-align: center;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.team-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-}
-
-.team-card-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid var(--btc-orange);
-  object-fit: cover;
-  margin: 0 auto 22px;
-  display: block;
-}
-
-.team-card-name {
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.team-card-title {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--btc-orange);
+.vet-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(247, 147, 26, 0.1);
-  padding: 5px 14px;
-  border-radius: 100px;
-  margin-bottom: 16px;
+  border: 1px solid rgba(247, 147, 26, 0.25);
+  border-radius: 12px;
+  margin-bottom: 18px;
 }
 
-.team-card-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 280px;
-  margin: 0 auto;
+.vet-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--btc-orange);
 }
 
 /* ===== GLOBAL PRESENCE ===== */
@@ -665,7 +637,7 @@ img { max-width: 100%; }
   .name-inner { grid-template-columns: 1fr; gap: 40px; }
   .name-visual { order: 2; }
 
-  .team-grid { grid-template-columns: 1fr; }
+  .vet-grid { grid-template-columns: 1fr; }
 
   .presence-grid { grid-template-columns: 1fr; }
 
@@ -686,8 +658,8 @@ img { max-width: 100%; }
 
 a.nav-logo, .nav-logo {
   display: inline-flex !important;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 1px;
   font-weight: 800;
   font-size: 19px;
   color: #e6edf3 !important;
@@ -728,7 +700,7 @@ a.nav-logo:hover { opacity: 0.85; }
 <!-- Navigation -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:21px;letter-spacing:0.14em;">VIRTUSE</span>
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
     <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
@@ -778,18 +750,23 @@ a.nav-logo:hover { opacity: 0.85; }
   <div class="steps">
     <div class="step">
       <span class="step-num">2018</span>
-      <h3>Born from Conviction</h3>
-      <p>Virtuse was founded on the unwavering conviction that Bitcoin has the power to democratize access to the global financial system — pioneering the space as the first tokenization platform.</p>
+      <h3>European Roots, Singapore Reach</h3>
+      <p>Founded as a digital asset and commodity platform with roots in European energy markets, Virtuse expanded to Singapore to bridge traditional finance with crypto and tokenized real-world assets.</p>
     </div>
     <div class="step">
       <span class="step-num">2022</span>
       <h3>The Bitcoin-Only Transition</h3>
-      <p>A strategic transition made Virtuse a dedicated, Bitcoin-only exchange — trading breadth for depth, and committing entirely to the hardest money ever created.</p>
+      <p>A strategic transition made Virtuse a dedicated, Bitcoin-only exchange — trading breadth for depth, and committing fully to the hardest money ever created.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2024</span>
+      <h3>From Exchange to Hub</h3>
+      <p>Virtuse shifted from operating as an exchange to curating one — connecting investors directly with vetted, MiCA-licensed partners across every Bitcoin service instead of holding assets itself.</p>
     </div>
     <div class="step">
       <span class="step-num">Today</span>
-      <h3>A Global Hub</h3>
-      <p>Virtuse operates as a global Bitcoin-only infrastructure hub, delivering a comprehensive suite of services to clients in over 100 countries within a secure, institutional-grade environment.</p>
+      <h3>A Global Network</h3>
+      <p>Virtuse now operates as a global infrastructure hub, delivering a full suite of Bitcoin services to clients in over 100 countries through a secure, institutional-grade network.</p>
     </div>
   </div>
 </section>
@@ -799,17 +776,17 @@ a.nav-logo:hover { opacity: 0.85; }
   <div class="sec-label">What We Stand For</div>
   <div class="value-grid">
     <div class="value-card">
-      <div class="value-icon">&#8383;</div>
+      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.7 7.5h3.1a1.8 1.8 0 0 1 0 3.6H9.7m0 0h3.4a1.9 1.9 0 0 1 0 3.8H9.7M9.7 7.5V6M9.7 18v-1.5M11.8 7.5V6M11.8 18v-1.5"/></svg></div>
       <h3>Bitcoin-Only Focus</h3>
       <p>No altcoins, no distractions. An uncompromising commitment to Bitcoin as the foundation of the borderless monetary economy.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">&#128737;</div>
+      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <h3>Security &amp; Trust</h3>
       <p>A robust network of over 50 strategic partners worldwide ensures maximum security and institutional liquidity for our global clientele.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">&#128273;</div>
+      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="3.3"/><path d="M10.3 12.7L18.5 4.5M15 4.5h3.5V8"/></svg></div>
       <h3>Financial Sovereignty</h3>
       <p>We help investors not only build but effectively protect generational wealth — serving as a trusted bridge to the Bitcoin economy.</p>
     </div>
@@ -836,31 +813,41 @@ a.nav-logo:hover { opacity: 0.85; }
   </div>
 </section>
 
-<!-- Leadership Team -->
+<!-- How We Vet Partners -->
 <section class="section">
-  <div class="sec-label">Our Team</div>
+  <div class="sec-label">Our Standards</div>
   <div class="sec-title">
-    <h2>Our Leadership Team</h2>
-    <p>The people building the future of Bitcoin infrastructure</p>
+    <h2>How We Vet Partners</h2>
+    <p>Every name on this site clears the same bar before we'll recommend it</p>
   </div>
-  <div class="team-grid">
-    <div class="team-card">
-      <img src="headshot-ras.jpg" alt="Ras Vasilisin" class="team-card-photo">
-      <div class="team-card-name">Ras Vasilisin</div>
-      <div class="team-card-title">Founder &amp; CEO</div>
-      <p class="team-card-desc">Ras is a visionary leader with extensive experience in the financial and bitcoin industry.</p>
+  <div class="vet-grid">
+    <div class="value-card">
+      <div class="vet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h3>Regulatory Licensing</h3>
+      <p>MiCA-licensed CASPs or an equivalent recognized license in their home jurisdiction — no unregulated venues, ever.</p>
     </div>
-    <div class="team-card">
-      <img src="headshot-leo.jpg" alt="Leo Heart" class="team-card-photo">
-      <div class="team-card-name">Leo Heart</div>
-      <div class="team-card-title">Chief Technical Officer</div>
-      <p class="team-card-desc">Leo is a strategic technology expert who oversees the development of our secure platform.</p>
+    <div class="value-card">
+      <div class="vet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.4"/></svg>
+      </div>
+      <h3>Custody &amp; Asset Security</h3>
+      <p>Self-custody withdrawal by default, and insured, segregated custody wherever a partner does hold funds.</p>
     </div>
-    <div class="team-card">
-      <img src="headshot-mykyta.jpg" alt="Mykyta Ovchynnykov" class="team-card-photo">
-      <div class="team-card-name">Mykyta Ovchynnykov</div>
-      <div class="team-card-title">Operations Manager</div>
-      <p class="team-card-desc">Mykyta is developing strategies to make Bitcoin known to a wide audience in Europe.</p>
+    <div class="value-card">
+      <div class="vet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
+      </div>
+      <h3>Track Record</h3>
+      <p>Years in operation, scale of volume and users, and a clean incident history — new isn't disqualifying, unproven is.</p>
+    </div>
+    <div class="value-card">
+      <div class="vet-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3>Fee Transparency</h3>
+      <p>Published, comparable fee structures — no hidden spreads or terms that only show up after you've signed up.</p>
     </div>
   </div>
 </section>
@@ -879,7 +866,7 @@ a.nav-logo:hover { opacity: 0.85; }
       <div class="presence-flag">&#127480;&#127472;</div>
       <h3>Bratislava</h3>
       <div class="presence-role">European Operations</div>
-      <p>Deep roots and local expertise through our operational office, home of Virtuse Wealth Management a.s.</p>
+      <p>Deep roots and local expertise through our operational office, home of Virtuse Group Pte. Ltd.</p>
     </div>
     <div class="presence-card">
       <div class="presence-flag">&#127758;</div>
@@ -917,7 +904,7 @@ a.nav-logo:hover { opacity: 0.85; }
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:center;gap:14px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:27px;letter-spacing:0.14em;color:#e6edf3;">VIRTUSE</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
@@ -936,6 +923,114 @@ a.nav-logo:hover { opacity: 0.85; }
     <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
   </div>
 </footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
 
 </body>
 </html>
