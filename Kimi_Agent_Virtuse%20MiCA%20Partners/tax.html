@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Inter', sans-serif; background: #0d1421; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { text-decoration: none; color: inherit; }
 
 /* Navigation */
-nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
 .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #e6edf3; text-decoration: none; flex-shrink: 0; }
 .nav-logo-img { height: 32px; width: auto; display: block; }
 /* Logo image set in HTML */
@@ -21,12 +21,12 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 .nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-decoration: none; }
 .nav-links a:hover, .nav-links a.active { color: #f7931a; }
 .nav-links a.active { font-weight: 600; }
-.nav-cta { background: #f7931a; color: #0d1117; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
-.nav-cta:hover { background: #e8850a; transform: translateY(-1px); }
+.nav-cta { background: #f7931a; color: #0d1421; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+.nav-cta:hover { background: #e8850f; transform: translateY(-1px); }
 .mobile-menu-btn { display: none; background: none; border: none; color: #8b949e; font-size: 22px; cursor: pointer; }
 
 /* Hero */
-.hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0; }
+.hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0 auto; }
 .hero p { margin: 0 0 32px; }
 .hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
 .hero h1 span { color: #f7931a; }
@@ -37,11 +37,11 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 .section-header h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 10px; }
 .section-header p { font-size: 16px; color: #8b949e; }
 .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
-.how-card { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; padding: 36px 28px; position: relative; transition: border-color 0.2s; }
+.how-card { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 36px 28px; position: relative; transition: border-color 0.2s; }
 .how-card:hover { border-color: #484f58; }
-.step-num { position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 800; color: rgba(247,147,26,0.08); line-height: 1; }
+.step-num { position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 800; color: rgba(247, 147, 26,0.08); line-height: 1; }
 .how-icon { width: 44px; height: 44px; border-radius: 12px;   justify-content: center; margin-bottom: 20px; }
-.how-icon.orange { background: rgba(247,147,26,0.12); }
+.how-icon.orange { background: rgba(247, 147, 26,0.12); }
 .how-icon.blue { background: rgba(88,166,255,0.12); }
 .how-icon.green { background: rgba(63,185,80,0.12); }
 .how-icon.purple { background: rgba(188,140,255,0.12); }
@@ -55,20 +55,20 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 
 /* EU Tax Complexity Card */
 .eu-card { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
-.eu-card-inner { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
-.eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247,147,26,0.12);   justify-content: center; flex-shrink: 0; }
+.eu-card-inner { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
+.eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247, 147, 26,0.12);   justify-content: center; flex-shrink: 0; }
 .eu-icon svg { width: 28px; height: 28px; color: #f7931a; }
 .eu-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
 .eu-content p { font-size: 15px; color: #8b949e; line-height: 1.6; }
 .eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
-.eu-country-tag { background: rgba(247,147,26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247,147,26,0.2); }
+.eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
 
 /* Partner Cards */
 .partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.partner-card { background: #1c2128; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; transition: all 0.25s;  flex-direction: column; }
+.partner-card { background: #161f30; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; transition: all 0.25s;  flex-direction: column; }
 .partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: #484f58; }
-.partner-card.top-pick { border: 1px solid rgba(247,147,26,0.3); }
+.partner-card.top-pick { border: 1px solid rgba(247, 147, 26,0.3); }
 .partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
 .partner-logo { display: flex; align-items: center; gap: 14px; }
 .partner-name { font-size: 18px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
@@ -80,7 +80,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 .partner-location svg { width: 12px; height: 12px; }
 .partner-tags { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 .tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
-.tag.orange { background: rgba(247,147,26,0.15); color: #f7931a; }
+.tag.orange { background: rgba(247, 147, 26,0.15); color: #f7931a; }
 .tag.blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
 .tag.green { background: rgba(63,185,80,0.15); color: #3fb950; }
 .partner-body { padding: 0 28px; flex-grow: 1; }
@@ -103,13 +103,13 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 .compare-table td { padding: 14px 20px; border-bottom: 1px solid #30363d; color: #e6edf3; }
 .compare-table td:first-child { color: #8b949e; font-weight: 500; }
 .compare-table tr:last-child td { border-bottom: none; }
-.compare-table tr:hover td { background: rgba(28,33,40,0.5); }
+.compare-table tr:hover td { background: rgba(22, 31, 48,0.5); }
 .compare-table td.best { color: #3fb950; font-weight: 600; }
 
 /* Disclaimer */
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter {
-  background: #161b22;
+  background: #111a2b;
   border-top: 1px solid #30363d;
   padding: 80px 48px;
   text-align: center;
@@ -148,7 +148,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
   padding: 14px 20px;
   border: 1px solid #30363d;
   border-radius: 8px;
-  background: #0d1117;
+  background: #0d1421;
   color: #e6edf3;
   font-size: 15px;
   outline: none;
@@ -161,7 +161,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 .newsletter-form button {
   padding: 14px 28px;
   background: #e6edf3;
-  color: #0d1117;
+  color: #0d1421;
   border: none;
   border-radius: 8px;
   font-weight: 700;
@@ -175,7 +175,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); b
 
 /* ===== FOOTER ===== */
 .footer-main {
-  background: #0d1117;
+  background: #0d1421;
   border-top: 1px solid #30363d;
   padding: 60px 48px 30px;
 }
@@ -273,8 +273,8 @@ nav { padding: 0 24px; }
 
 a.nav-logo, .nav-logo {
   display: inline-flex !important;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 1px;
   font-weight: 800;
   font-size: 19px;
   color: #e6edf3 !important;
@@ -326,7 +326,7 @@ a.nav-logo:hover { opacity: 0.85; }
 <!-- Navigation -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:21px;letter-spacing:0.14em;">VIRTUSE</span>
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
     <li><a href="buy-bitcoin.html">Buy Bitcoin</a></li>
@@ -451,7 +451,6 @@ Sweden
 
 <div class="partner-cta">
 <a href="https://divly.com/en/" class="btn-primary" target="_blank" rel="noopener">Get Divly</a>
-<button class="btn-secondary">Learn More</button>
 </div>
 </div>
 
@@ -483,7 +482,6 @@ Austria
 
 <div class="partner-cta">
 <a href="https://www.blockpit.io" class="btn-primary" target="_blank" rel="noopener">Get Blockpit</a>
-<button class="btn-secondary">Compare</button>
 </div>
 </div>
 
@@ -515,7 +513,37 @@ Germany
 
 <div class="partner-cta">
 <a href="https://cointracking.info" class="btn-primary" target="_blank" rel="noopener">Get CoinTracking</a>
-<button class="btn-secondary">Learn More</button>
+</div>
+</div>
+
+<!-- Koinly -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="logo-koinly.png" alt="Koinly" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Koinly</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+United Kingdom
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Free portfolio tracking with AI-powered Smart Transfer matching that automatically detects wallet-to-wallet moves. Import up to 10,000 transactions across 400+ exchanges and wallets, 100+ countries — you only pay when you download the report.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free tracking up to 10,000 transactions</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>400+ exchange &amp; wallet integrations</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI Smart Transfer matching</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>FIFO, LIFO, HIFO &amp; average cost methods</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://koinly.io" class="btn-primary" target="_blank" rel="noopener">Get Koinly</a>
 </div>
 </div>
 
@@ -532,6 +560,7 @@ Germany
 <th>Divly</th>
 <th>Blockpit</th>
 <th>CoinTracking</th>
+<th>Koinly</th>
 </tr>
 </thead>
 <tbody>
@@ -540,21 +569,25 @@ Germany
 <td class="best">EUR 39/yr</td>
 <td>EUR 49+/yr</td>
 <td>From EUR 11/mo</td>
+<td>From $49/yr</td>
 </tr>
 <tr>
 <td>Free Tier</td>
 <td>No</td>
 <td class="best">Yes (tracking)</td>
 <td class="best">Yes (200 tx)</td>
+<td class="best">Yes (10,000 tx)</td>
 </tr>
 <tr>
 <td>Countries</td>
 <td>30+</td>
 <td>7+ EU</td>
 <td class="best">100+</td>
+<td class="best">100+</td>
 </tr>
 <tr>
 <td>KYC Required</td>
+<td class="best">No</td>
 <td class="best">No</td>
 <td class="best">No</td>
 <td class="best">No</td>
@@ -564,12 +597,14 @@ Germany
 <td>Limited</td>
 <td class="best">Yes</td>
 <td class="best">Yes</td>
+<td class="best">Yes</td>
 </tr>
 <tr>
 <td>Best For</td>
 <td>Privacy</td>
 <td>Multi-country EU</td>
 <td>Power users</td>
+<td>Global coverage</td>
 </tr>
 </tbody>
 </table>
@@ -590,7 +625,7 @@ Germany
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:center;gap:14px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:300;font-size:27px;letter-spacing:0.14em;color:#e6edf3;">VIRTUSE</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
@@ -609,6 +644,114 @@ Germany
     <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
   </div>
 </footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
 
 </body>
 </html>
