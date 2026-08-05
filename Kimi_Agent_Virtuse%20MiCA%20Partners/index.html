@@ -1517,6 +1517,42 @@ a.nav-logo:hover { opacity: 0.85; }
   background: rgba(247, 147, 26, 0.06);
   transform: translateY(-1px);
 }
+
+/* ===== THE VIRTUSE BLOG — RESPONSIVE FIX =====
+   Earlier .vblog-grid breakpoints were declared before the base 3-column
+   rule, so the base rule won at every width and cards never stacked.
+   Re-declared last (higher source order, same specificity) so this wins. */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .vblog-grid { grid-template-columns: repeat(2, 1fr); }
+  .vblog-grid .vblog-card:last-child { display: none; }
+}
+
+@media (max-width: 768px) {
+  .vblog { padding: 0 20px 56px; }
+  .vblog-grid { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
+  .vblog-card { flex-direction: row; border-radius: 14px; }
+  .vblog-media { width: 112px; flex-shrink: 0; }
+  .vblog-media img { width: 112px; height: 100%; min-height: 128px; aspect-ratio: 1 / 1; object-fit: cover; }
+  .vblog-body { padding: 14px 16px; }
+  .vblog-tag { font-size: 10px; padding: 3px 9px; margin-bottom: 8px; }
+  .vblog-body h3 {
+    font-size: 15px;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .vblog-body p { display: none; }
+  .vblog-meta { font-size: 11px; padding-top: 8px; margin-top: 8px; }
+  .vblog-cta { width: 100%; justify-content: center; padding: 14px 0; }
+}
+
+@media (max-width: 420px) {
+  .vblog-media { width: 96px; }
+  .vblog-media img { width: 96px; min-height: 112px; }
+}
 </style>
 </head>
 <body>
