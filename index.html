@@ -1444,7 +1444,7 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .hero-content { flex-direction: column; padding: 30px 24px 60px; }
+  .hero-content { flex-direction: column; align-items: stretch; padding: 30px 24px 60px; }
   .hero-right { min-height: 400px; order: -1; }
   .orbit-scene { scale: 0.68; }
   .scroll-indicator { display: none; }
@@ -1465,6 +1465,9 @@ body {
   .orbit-scene { scale: 0.52; }
   .hero-stats { gap: 24px; }
   .hero-trust { gap: 12px; }
+  .hero-buttons { flex-direction: column; align-items: stretch; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary { justify-content: center; width: 100%; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -1828,9 +1831,9 @@ body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-8px) rot
           Explore the Hub — Free
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#" class="btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2l8 6-8 6V2z" fill="currentColor"/></svg>
-          Watch How It Works
+        <a href="#how-it-works" class="btn-secondary how-it-works-cta">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          See How It Works
         </a>
       </div>
 
@@ -2064,7 +2067,7 @@ body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-8px) rot
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
-<section class="how">
+<section class="how" id="how-it-works">
   <div class="sec-header">
     <h2>How <span>Virtuse Works</span></h2>
     <p>Three simple steps to access any Bitcoin service through our hub</p>
@@ -2675,6 +2678,22 @@ body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-8px) rot
       var top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
+  });
+})();
+</script>
+
+<!-- ===== SEE HOW IT WORKS: SMOOTH SCROLL ===== -->
+<script>
+(function () {
+  var btn = document.querySelector('.how-it-works-cta');
+  var target = document.getElementById('how-it-works');
+  if (!btn || !target) return;
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var nav = document.querySelector('.nav');
+    var offset = (nav ? nav.offsetHeight : 0) + 16;
+    var top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
   });
 })();
 </script>
