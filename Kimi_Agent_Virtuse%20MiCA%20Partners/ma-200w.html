@@ -415,6 +415,19 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
   .hero { padding: 60px 24px 28px; }
   .hero h1 { font-size: 36px; }
   .subnav-wrap, .status-section, .chart-section, .legend-section { padding-left: 24px; padding-right: 24px; }
+
+  /* .subnav's border-radius:100px assumes one row; wrapped onto several
+     lines it turns the whole pill into an oversized rounded blob and the
+     first/last tags poke outside that curve. Scroll horizontally instead
+     of wrapping, so it always stays a single true pill. */
+  .subnav-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .subnav-wrap::-webkit-scrollbar { display: none; }
+  .subnav { flex-wrap: nowrap; }
+
   canvas { height: 320px; }
   .status-price { font-size: 28px; }
   .newsletter { padding: 60px 24px; }
