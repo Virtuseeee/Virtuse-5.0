@@ -527,6 +527,20 @@ body {
   .newsletter-form { flex-direction: column; }
   .footer-main { padding: 40px 24px 20px; }
   .footer-inner { flex-direction: column; gap: 30px; }
+
+  /* .subnav's border-radius:100px assumes one row; wrapped onto several
+     lines it turns the whole pill into an oversized rounded blob and the
+     first/last tags poke outside that curve. Scroll horizontally instead
+     of wrapping, so it always stays a single true pill. */
+  .subnav-wrap {
+    padding-left: 24px;
+    padding-right: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .subnav-wrap::-webkit-scrollbar { display: none; }
+  .subnav { flex-wrap: nowrap; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
