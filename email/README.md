@@ -74,6 +74,23 @@ No user GitHub token is needed — the workflow uses the Action's own scoped
 `GITHUB_TOKEN` to push the pulse cache back to `main`, which is why
 `permissions: contents: write` is set in the workflow.
 
+## Sending a one-off test to yourself
+
+Actions → **Send Test Email** → Run workflow → enter your own address in
+`to`, pick `welcome` or `weekly-report` in `template`, run. It sends exactly
+that one template to exactly that one address via Resend's transactional
+`/emails` endpoint -- it never touches the real subscriber segment. Uses the
+same `RESEND_API_KEY` / `RESEND_FROM_EMAIL` secrets as the weekly workflow,
+no extra setup needed.
+
+Note: `email/welcome-template.html`'s unsubscribe link is still the literal
+placeholder `{{unsubscribe_url}}` -- fine for a test send to yourself, but
+Resend's `{{{RESEND_UNSUBSCRIBE_URL}}}` merge tag (used in the weekly
+template) only resolves for Broadcast-API sends tied to a segment, not for
+this transactional single-send endpoint. A real automated welcome flow
+(triggered per new subscriber, with working unsubscribe/compliance) is a
+separate piece of work from this test tool.
+
 ## Testing before the first real Tuesday
 
 Run it manually anytime via Actions → Weekly Virtuse Report → Run workflow,

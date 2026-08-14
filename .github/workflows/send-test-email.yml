@@ -1,0 +1,66 @@
+name: Send Test Email
+
+# Manual-only: sends one of the email templates to a single test address via
+# Resend's transactional /emails endpoint, so you can see it in an actual
+# inbox before trusting it anywhere real. Never runs on a schedule, and
+# never touches the real subscriber segment -- this is a one-off,
+# single-recipient send to whichever address you type in.
+
+on:
+  workflow_dispatch:
+    inputs:
+      to:
+        description: 'Test recipient email address'
+        required: true
+      template:
+        description: 'Which template to send'
+        type: choice
+        required: true
+        default: welcome
+        options:
+          - welcome
+          - weekly-report
+      subject:
+        description: 'Subject line override (optional)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  send-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Render weekly report (only if that template was chosen)
+        if: ${{ github.event.inputs.template == 'weekly-report' }}
+        run: node .github/scripts/render-pulse.mjs
+
+      - name: Send test email
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+        run: |
+          if [ "${{ github.event.inputs.template }}" = "weekly-report" ]; then
+            TEMPLATE_PATH="dist/weekly-email.html"
+            DEFAULT_SUBJECT="The Virtuse Report (test)"
+          else
+            TEMPLATE_PATH="email/welcome-template.html"
+            DEFAULT_SUBJECT="Welcome to Virtuse (test)"
+          fi
+          SUBJECT="${{ github.event.inputs.subject }}"
+          if [ -z "$SUBJECT" ]; then SUBJECT="$DEFAULT_SUBJECT"; fi
+          node .github/scripts/send-test-email.mjs \
+            --to "${{ github.event.inputs.to }}" \
+            --template "$TEMPLATE_PATH" \
+            --subject "$SUBJECT"
