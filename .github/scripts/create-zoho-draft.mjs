@@ -77,7 +77,13 @@ async function createCampaign(accessToken) {
     method: 'POST',
     headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
   });
-  const data = await res.json();
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error(`createCampaign returned non-JSON response (status ${res.status}): ${text.slice(0, 500)}`);
+  }
   if (data.status && data.status !== 'success' && !data.campaignkey) {
     throw new Error('createCampaign failed: ' + JSON.stringify(data));
   }
