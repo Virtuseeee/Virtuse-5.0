@@ -1,0 +1,12 @@
+name = "virtuse-newsletter"
+main = "dist/worker.js"
+compatibility_date = "2026-08-14"
+
+# Created via: npx wrangler kv namespace create RATE_LIMIT_KV
+# Then paste the id it prints below.
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Secrets (RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_FROM_EMAIL) are set via
+# `wrangler secret put <NAME>` -- never listed here, never committed anywhere.

@@ -1,0 +1,13 @@
+{
+  "name": "virtuse-newsletter-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "deploy": "node build.mjs && wrangler deploy",
+    "dev": "node build.mjs && wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
