@@ -89,3 +89,15 @@ email), which is why `permissions: contents: write` is set in the workflow.
 Run it manually anytime via Actions → Weekly Virtuse Report → Run workflow,
 leaving `send` unchecked. Check the created draft in Zoho Campaigns before
 ever checking `send`.
+
+## Troubleshooting
+
+**`createCampaign returned non-JSON response (status 500)` with an HTML
+error page mentioning `zohostatic.eu`** — your Zoho org is on the **EU data
+center**, but the scripts default to the US endpoints
+(`accounts.zoho.com` / `campaigns.zoho.com`). This account's workflow step
+now sets `ZOHO_ACCOUNTS_DOMAIN: accounts.zoho.eu` and
+`ZOHO_API_DOMAIN: campaigns.zoho.eu` directly in
+`weekly-pulse.yml` to fix this. If you ever migrate to a different Zoho DC,
+update those two lines to match (`.in`, `.com.cn`, `.jp`, `.com.au`, `.ca`
+follow the same `accounts.zoho.<tld>` / `campaigns.zoho.<tld>` pattern).

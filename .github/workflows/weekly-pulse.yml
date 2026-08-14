@@ -81,5 +81,11 @@ jobs:
           ZOHO_REFRESH_TOKEN: ${{ secrets.ZOHO_REFRESH_TOKEN }}
           ZOHO_LIST_KEY: ${{ secrets.ZOHO_LIST_KEY }}
           ZOHO_FROM_EMAIL: ${{ secrets.ZOHO_FROM_EMAIL }}
+          # This Zoho org is on the EU data center -- accounts.zoho.com /
+          # campaigns.zoho.com (the defaults) return a generic HTML error
+          # page for EU accounts instead of routing correctly. See
+          # email/README.md for how to tell which DC an account is on.
+          ZOHO_ACCOUNTS_DOMAIN: accounts.zoho.eu
+          ZOHO_API_DOMAIN: campaigns.zoho.eu
           SEND_NOW: ${{ github.event.inputs.send }}
         run: node .github/scripts/create-zoho-draft.mjs "${{ steps.publish.outputs.url }}"
