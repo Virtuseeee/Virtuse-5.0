@@ -81,5 +81,7 @@ jobs:
           ZOHO_REFRESH_TOKEN: ${{ secrets.ZOHO_REFRESH_TOKEN }}
           ZOHO_LIST_KEY: ${{ secrets.ZOHO_LIST_KEY }}
           ZOHO_FROM_EMAIL: ${{ secrets.ZOHO_FROM_EMAIL }}
+          ZOHO_ACCOUNTS_DOMAIN: ${{ secrets.ZOHO_ACCOUNTS_DOMAIN }}
+          ZOHO_API_DOMAIN: ${{ secrets.ZOHO_API_DOMAIN }}
           SEND_NOW: ${{ github.event.inputs.send }}
         run: node .github/scripts/create-zoho-draft.mjs "${{ steps.publish.outputs.url }}"
