@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com; connect-src 'self' https://www.virtuse.com https://api.coingecko.com https://api.binance.com https://mempool.space; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com; connect-src 'self' https://www.virtuse.com https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>FAQ — Virtuse</title>
 <style>
@@ -767,10 +767,52 @@ body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-8px) rot
 <section class="newsletter">
   <h2>Fix the Money, Fix the World</h2>
   <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
-  <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-    <input type="email" placeholder="Enter your email" required>
+  <form class="newsletter-form" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
     <button type="submit">SUBSCRIBE NOW</button>
   </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'SENDING...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
+          msg.style.color = 'var(--green, #3fb950)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Network error \u2014 please try again.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
 </section>
 
 <!-- ===== FOOTER ===== -->
