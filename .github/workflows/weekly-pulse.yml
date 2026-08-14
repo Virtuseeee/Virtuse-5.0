@@ -70,7 +70,7 @@ jobs:
           git config user.name "virtuse-bot"
           git config user.email "actions@users.noreply.github.com"
           git add "email-archive/${ISSUE_DATE}.html"
-          git commit -m "Publish weekly report for Zoho content_url fetch (${ISSUE_DATE})"
+          git diff --cached --quiet || git commit -m "Publish weekly report for Zoho content_url fetch (${ISSUE_DATE})"
           git push origin gh-pages
           echo "url=https://staging.virtuse.com/email-archive/${ISSUE_DATE}.html" >> "$GITHUB_OUTPUT"
 
@@ -82,10 +82,11 @@ jobs:
           ZOHO_LIST_KEY: ${{ secrets.ZOHO_LIST_KEY }}
           ZOHO_FROM_EMAIL: ${{ secrets.ZOHO_FROM_EMAIL }}
           # This Zoho org is on the EU data center -- accounts.zoho.com /
-          # campaigns.zoho.com (the defaults) return a generic HTML error
-          # page for EU accounts instead of routing correctly. See
-          # email/README.md for how to tell which DC an account is on.
-          ZOHO_ACCOUNTS_DOMAIN: accounts.zoho.eu
-          ZOHO_API_DOMAIN: campaigns.zoho.eu
+          # campaigns.zoho.com (the script defaults) return a generic HTML
+          # error page for EU accounts instead of routing correctly. Set
+          # these two repo secrets to accounts.zoho.eu / campaigns.zoho.eu.
+          # See email/README.md for how to tell which DC an account is on.
+          ZOHO_ACCOUNTS_DOMAIN: ${{ secrets.ZOHO_ACCOUNTS_DOMAIN }}
+          ZOHO_API_DOMAIN: ${{ secrets.ZOHO_API_DOMAIN }}
           SEND_NOW: ${{ github.event.inputs.send }}
         run: node .github/scripts/create-zoho-draft.mjs "${{ steps.publish.outputs.url }}"
