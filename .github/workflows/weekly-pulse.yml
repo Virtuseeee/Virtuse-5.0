@@ -1,18 +1,17 @@
 name: Weekly Virtuse Report
 
 # Fetches the Bitcoin Pulse stats, renders email/template.html with them plus
-# this week's human-written content from email/weekly-issue.json, publishes
-# the result to a noindexed path on gh-pages (Zoho's createCampaign API only
-# accepts a public content_url, not raw HTML -- see the create-zoho-draft.mjs
-# script for why), and creates a draft campaign in Zoho Campaigns.
+# this week's human-written content from email/weekly-issue.json, and
+# creates a draft broadcast in Resend with the HTML sent directly in the
+# request (no publish-to-a-public-URL step needed, unlike the old
+# Zoho-based version of this workflow).
 #
-# Draft-only by default: a human still reviews and clicks send in Zoho. To
+# Draft-only by default: a human still reviews and clicks send in Resend. To
 # also auto-send, re-run manually with "send" = true, or flip the default in
 # the workflow_dispatch input below once you trust the pipeline.
 #
 # Required repo secrets (Settings -> Secrets and variables -> Actions):
-#   ZOHO_CLIENT_ID, ZOHO_CLIENT_SECRET, ZOHO_REFRESH_TOKEN
-#   ZOHO_LIST_KEY, ZOHO_FROM_EMAIL
+#   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_FROM_EMAIL
 # See email/README.md for how to obtain these.
 
 on:
@@ -21,7 +20,7 @@ on:
   workflow_dispatch:
     inputs:
       send:
-        description: 'Also trigger the Zoho send (default: draft only)'
+        description: 'Also trigger the Resend send (default: draft only)'
         type: boolean
         required: false
         default: false
@@ -54,39 +53,10 @@ jobs:
           git diff --cached --quiet || git commit -m "Update Bitcoin Pulse cache [skip ci]"
           git push origin main
 
-      - name: Checkout gh-pages
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: ghpages
-
-      - name: Publish rendered email to gh-pages
-        id: publish
-        run: |
-          ISSUE_DATE=$(node -pe "JSON.parse(require('fs').readFileSync('email/weekly-issue.json','utf8')).issue_date.replace(/\s+/g,'-')")
-          mkdir -p ghpages/email-archive
-          cp dist/weekly-email.html "ghpages/email-archive/${ISSUE_DATE}.html"
-          cd ghpages
-          git config user.name "virtuse-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add "email-archive/${ISSUE_DATE}.html"
-          git diff --cached --quiet || git commit -m "Publish weekly report for Zoho content_url fetch (${ISSUE_DATE})"
-          git push origin gh-pages
-          echo "url=https://staging.virtuse.com/email-archive/${ISSUE_DATE}.html" >> "$GITHUB_OUTPUT"
-
-      - name: Create Zoho draft campaign
+      - name: Create Resend draft broadcast
         env:
-          ZOHO_CLIENT_ID: ${{ secrets.ZOHO_CLIENT_ID }}
-          ZOHO_CLIENT_SECRET: ${{ secrets.ZOHO_CLIENT_SECRET }}
-          ZOHO_REFRESH_TOKEN: ${{ secrets.ZOHO_REFRESH_TOKEN }}
-          ZOHO_LIST_KEY: ${{ secrets.ZOHO_LIST_KEY }}
-          ZOHO_FROM_EMAIL: ${{ secrets.ZOHO_FROM_EMAIL }}
-          # This Zoho org is on the EU data center -- accounts.zoho.com /
-          # campaigns.zoho.com (the script defaults) return a generic HTML
-          # error page for EU accounts instead of routing correctly. Set
-          # these two repo secrets to accounts.zoho.eu / campaigns.zoho.eu.
-          # See email/README.md for how to tell which DC an account is on.
-          ZOHO_ACCOUNTS_DOMAIN: ${{ secrets.ZOHO_ACCOUNTS_DOMAIN }}
-          ZOHO_API_DOMAIN: ${{ secrets.ZOHO_API_DOMAIN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_SEGMENT_ID: ${{ secrets.RESEND_SEGMENT_ID }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
           SEND_NOW: ${{ github.event.inputs.send }}
-        run: node .github/scripts/create-zoho-draft.mjs "${{ steps.publish.outputs.url }}"
+        run: node .github/scripts/create-resend-broadcast.mjs

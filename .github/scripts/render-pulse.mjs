@@ -120,7 +120,10 @@ async function main() {
   const mergeFields = { ...issue, ...stats };
 
   let html = readFileSync(TEMPLATE_PATH, 'utf8');
-  html = html.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (match, key) => {
+  // Negative look-behind/-ahead so this never touches Resend's own
+  // {{{RESEND_UNSUBSCRIBE_URL}}} triple-brace merge tag -- only matches
+  // plain double-brace {{key}} placeholders.
+  html = html.replace(/(?<!\{)\{\{(?!\{)\s*([a-zA-Z0-9_]+)\s*\}\}(?!\})/g, (match, key) => {
     if (!(key in mergeFields)) {
       console.warn(`No value found for {{${key}}} -- leaving the literal placeholder in place`);
       return match;
