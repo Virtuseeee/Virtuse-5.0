@@ -1,0 +1,26 @@
+{
+  "_instructions": "Edit this file before each Tuesday run. Everything here is human-authored content the automation can't fetch for you -- the Bitcoin Pulse numbers (btc_price, btc_dominance, btc_200w_ma) are fetched live and merged in automatically, do not add them here.",
+
+  "issue_number": "1",
+  "issue_date": "18 Aug 2026",
+  "subject": "The Virtuse Report — Issue #1",
+  "preheader_text": "This week: the lead story, three more reads, and where Bitcoin actually stands right now.",
+
+  "weekly_intro": "This week we're looking at what long-term conviction actually costs short-term, why the loudest voices in the room are usually the least useful, and one chart worth bookmarking.",
+
+  "featured_title": "Why Pomp, Mow, and Saylor Forecast Bitcoin from $150K to $10M",
+  "featured_excerpt": "Three very different investors, three very different price targets, one shared thesis. Here's where they agree -- and where they don't.",
+  "featured_url": "https://staging.virtuse.com/article.html",
+
+  "story2_title": "Replace with this week's second story title",
+  "story2_excerpt": "One-sentence teaser for the second story.",
+  "story2_url": "https://staging.virtuse.com/blog.html",
+
+  "story3_title": "Replace with this week's third story title",
+  "story3_excerpt": "One-sentence teaser for the third story.",
+  "story3_url": "https://staging.virtuse.com/blog.html",
+
+  "story4_title": "Replace with this week's fourth story title",
+  "story4_excerpt": "One-sentence teaser for the fourth story.",
+  "story4_url": "https://staging.virtuse.com/blog.html"
+}
