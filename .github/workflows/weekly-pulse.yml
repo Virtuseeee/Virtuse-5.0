@@ -70,7 +70,7 @@ jobs:
           git config user.name "virtuse-bot"
           git config user.email "actions@users.noreply.github.com"
           git add "email-archive/${ISSUE_DATE}.html"
-          git commit -m "Publish weekly report for Zoho content_url fetch (${ISSUE_DATE})"
+          git diff --cached --quiet || git commit -m "Publish weekly report for Zoho content_url fetch (${ISSUE_DATE})"
           git push origin gh-pages
           echo "url=https://staging.virtuse.com/email-archive/${ISSUE_DATE}.html" >> "$GITHUB_OUTPUT"
 
