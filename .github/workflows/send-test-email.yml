@@ -20,6 +20,7 @@ on:
         options:
           - welcome
           - weekly-report
+          - virtuse-news
       subject:
         description: 'Subject line override (optional)'
         required: false
@@ -54,6 +55,9 @@ jobs:
           if [ "${{ github.event.inputs.template }}" = "weekly-report" ]; then
             TEMPLATE_PATH="dist/weekly-email.html"
             DEFAULT_SUBJECT="The Virtuse Report (test)"
+          elif [ "${{ github.event.inputs.template }}" = "virtuse-news" ]; then
+            TEMPLATE_PATH="email/virtuse-news-template.html"
+            DEFAULT_SUBJECT="Virtuse News (test)"
           else
             TEMPLATE_PATH="email/welcome-template.html"
             DEFAULT_SUBJECT="Welcome to Virtuse (test)"
