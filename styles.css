@@ -1,0 +1,199 @@
+/* ============================================================
+   styles.css -- shared across all Virtuse pages
+   Extracted from the real common core of all 21 page stylesheets.
+   Generated as part of the CSS de-duplication pass -- see git log.
+   ============================================================ */
+
+:root {
+  --btc-orange: #f7931a;
+  --btc-orange-light: #ffb84d;
+  --dark: #0d1421;
+  --dark-lighter: #111a2b;
+  --dark-card: #161f30;
+  --dark-card-hover: #1c2740;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+  --border: #30363d;
+  --border-hover: #484f58;
+  --green: #3fb950;
+  --section-spacing: 100px;
+  --green-bg: rgba(63, 185, 80, 0.1);
+  --red: #f85149;
+  --red-bg: rgba(248, 81, 73, 0.1);
+  --bg: #0d1421;
+  --card: #161f30;
+  --muted: #8b949e;
+  --dim: #484f58;
+  --orange: #f7931a;
+  --blue: #58a6ff;
+  --max-width: 1200px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --radius-xl: 20px;
+  --btc-orange-dark: #e8850f;
+  --btc-orange-glow: rgba(247, 147, 26, 0.15);
+  --btc-gold: #ffd700;
+  --btc-dark: #c47a14;
+  --card-hover: #22282f;
+  --orange-dim: #e8850f;
+  --purple: #9b59ff;
+}
+
+/* mobile hamburger menu + logo -- byte-identical across all 21 pages */
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+a.nav-logo:hover { opacity: 0.85; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger:active { background: rgba(255, 255, 255, 0.06); }
+
+.nav-link-num,
+.nav-link-arrow {
+  display: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #e6edf3;
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+body.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+
+body.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+
+body.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.nav-links-cta-item { display: none; }
+
+
+/* present on 4/21 pages */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* present on 21/21 pages */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* present on 19/21 pages */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 20, 33, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* present on 21/21 pages */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+/* present on 21/21 pages */
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+/* present on 21/21 pages */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--btc-orange);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* present on 21/21 pages */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
+/* present on 21/21 pages */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+/* present on 21/21 pages */
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+/* present on 21/21 pages */
+.footer-columns {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
