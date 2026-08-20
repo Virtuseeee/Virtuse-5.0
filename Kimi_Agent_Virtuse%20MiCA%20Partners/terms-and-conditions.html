@@ -10,7 +10,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>About — Virtuse</title>
+<title>Terms &amp; Conditions — Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -18,32 +18,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="shortcut icon" href="favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="About — Virtuse">
-<meta property="og:description" content="Founded in 2018, Virtuse provides the foundation for the borderless monetary economy. We help investors build and protect generational wealth through Bitcoin.">
-<meta property="og:url" content="https://staging.virtuse.com/about.html">
+<meta property="og:title" content="Terms &amp; Conditions — Virtuse">
+<meta property="og:description" content="The terms that govern your use of the Virtuse hub — who we are, what we do (and don't do), and how our partner referral model works.">
+<meta property="og:url" content="https://staging.virtuse.com/terms-and-conditions.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About — Virtuse">
-<meta name="twitter:description" content="Founded in 2018, Virtuse provides the foundation for the borderless monetary economy. We help investors build and protect generational wealth through Bitcoin.">
+<meta name="twitter:title" content="Terms &amp; Conditions — Virtuse">
+<meta name="twitter:description" content="The terms that govern your use of the Virtuse hub — who we are, what we do (and don't do), and how our partner referral model works.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--dark);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { max-width: 100%; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* ===== NAVIGATION ===== */
 .nav {
@@ -59,18 +49,6 @@ img { max-width: 100%; }
   z-index: 100;
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.nav-logo-img { height: 32px; width: auto; display: block; }
-
 .nav-links a:hover { color: var(--text); background: var(--dark-card); }
 
 .nav-links a.active {
@@ -78,11 +56,14 @@ img { max-width: 100%; }
   background: rgba(247, 147, 26, 0.08);
 }
 
-.nav-cta:hover { background: var(--btc-orange-light); }
+.nav-cta {
+  padding: 10px 24px;
+  font-size: 14px;
+}
 
 /* ===== HERO ===== */
 .hero {
-  padding: 80px 48px 64px;
+  padding: 80px 48px 36px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -97,16 +78,6 @@ img { max-width: 100%; }
   height: 600px;
   background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
   pointer-events: none;
-}
-
-.hero-label {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--btc-orange);
-  text-transform: uppercase;
-  margin-bottom: 16px;
 }
 
 .hero h1 {
@@ -124,367 +95,143 @@ img { max-width: 100%; }
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 680px;
-  margin-bottom: 40px;
 }
 
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 880px;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-box {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 24px;
-  text-align: center;
-  transition: border-color 0.2s;
-}
-
-.stat-box:hover { border-color: var(--border-hover); }
-
-.stat-value {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--btc-orange);
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* ===== SECTION SCAFFOLD ===== */
-.section {
-  padding: 0 48px var(--section-spacing);
+/* ===== CATEGORY PILLS ===== */
+.subnav-wrap {
+  padding: 0 48px 48px;
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--btc-orange); }
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding: 0 48px 56px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+.faq-section:last-of-type { padding-bottom: var(--section-spacing); }
 
 .sec-label {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
-}
-
-.sec-title h2 {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-
-.sec-title p {
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 40px;
-}
-
-/* ===== STORY TIMELINE ===== */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 16px;
-}
-
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 26px 26px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 100px;
-  font-weight: 800;
+  gap: 8px;
   font-size: 13px;
-  color: white;
-  padding: 6px 16px;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
-}
-
-.step h3 {
-  font-size: 17px;
   font-weight: 700;
-  margin: 10px 0 10px;
-}
-
-.step p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* ===== MISSION CARDS ===== */
-.value-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.value-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 30px 26px;
-  transition: border-color 0.3s, transform 0.3s;
-}
-
-.value-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-4px);
-}
-
-.value-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-
-.value-icon svg {
-  width: 22px;
-  height: 22px;
   color: var(--btc-orange);
-}
-
-.value-card h3 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.value-card p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* ===== WHAT IS VIRTUSE ===== */
-.name-section {
-  background: var(--dark-lighter);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: var(--section-spacing) 48px;
-  margin-bottom: var(--section-spacing);
-}
-
-.name-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 55% 45%;
-  align-items: center;
-  gap: 60px;
-}
-
-.name-quote {
-  border-left: 3px solid var(--btc-orange);
-  background: rgba(247, 147, 26, 0.05);
-  border-radius: 0 12px 12px 0;
-  padding: 18px 24px;
-  margin-top: 24px;
-  font-size: 15px;
-  font-style: italic;
-  color: var(--text);
-}
-
-.name-text p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-}
-
-.name-text p:last-child { margin-bottom: 0; }
-
-.name-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.name-visual::before {
-  content: '';
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(247, 147, 26, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.name-visual img {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  width: 100%;
-}
-
-/* ===== VETTING CRITERIA ===== */
-.vet-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.vet-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  margin-bottom: 18px;
-}
-
-.vet-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
-}
-
-/* ===== GLOBAL PRESENCE ===== */
-.presence-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.presence-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 26px;
-  transition: border-color 0.2s;
-}
-
-.presence-card:hover { border-color: var(--border-hover); }
-
-.presence-flag { font-size: 26px; margin-bottom: 14px; }
-
-.presence-card h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.presence-card .presence-role {
-  font-size: 12px;
-  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--btc-orange);
-  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(247, 147, 26, 0.1);
+  margin-bottom: 22px;
 }
 
-.presence-card p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
+.sec-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
-/* ===== EXPLORE THE HUB ===== */
-.hub-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.hub-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+details {
   background: var(--dark-card);
   border: 1px solid var(--border);
   border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+details:hover { border-color: var(--border-hover); }
+
+details[open] { border-color: rgba(247, 147, 26, 0.4); }
+
+summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   padding: 20px 24px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
 
-.hub-link .arrow {
-  color: var(--text-dim);
-  transition: all 0.2s;
-}
+summary::-webkit-details-marker { display: none; }
 
-.hub-link:hover {
-  border-color: var(--btc-orange);
-  transform: translateY(-2px);
-}
+summary:hover { color: var(--btc-orange); }
 
-.hub-link:hover .arrow {
+summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
   color: var(--btc-orange);
-  transform: translateX(3px);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+  line-height: 1;
 }
 
-.hub-link small {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
+details[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+  font-size: 15px;
+  line-height: 1.75;
   color: var(--text-muted);
-  margin-top: 3px;
 }
 
-/* ===== NEWSLETTER ===== */
+.faq-answer strong { color: var(--text); font-weight: 600; }
+
+.faq-answer a { color: var(--btc-orange); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+.faq-answer ul { margin: 10px 0 10px 20px; }
+.faq-answer li { margin-bottom: 6px; }
+
+/* ===== NEWSLETTER / FOOTER ===== */
 .newsletter {
   background: var(--dark-lighter);
   border-top: 1px solid var(--border);
   padding: 80px 48px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 
-.newsletter h2 {
-  font-size: 36px;
-  font-weight: 800;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter p {
-  color: var(--text-muted);
-  font-size: 16px;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
-}
+.newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
 
 .newsletter-form {
   display: flex;
@@ -492,8 +239,6 @@ img { max-width: 100%; }
   gap: 12px;
   max-width: 520px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
 .newsletter-form input {
@@ -513,27 +258,7 @@ img { max-width: 100%; }
 
 .newsletter-form button {
   padding: 14px 28px;
-  background: var(--text);
-  color: var(--dark);
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
   font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.newsletter-form button:hover {
-  background: var(--btc-orange);
-  color: white;
-}
-
-/* ===== FOOTER ===== */
-.footer-main {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
-  padding: 60px 48px 30px;
 }
 
 .footer-inner {
@@ -546,25 +271,7 @@ img { max-width: 100%; }
   gap: 40px;
 }
 
-.footer-logo { flex-shrink: 0; }
-
-.footer-logo img {
-  height: 80px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.2s;
-}
-
-.footer-logo img:hover { opacity: 1; }
-
-.footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
-}
+.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
 
 .footer-col a {
   display: block;
@@ -577,45 +284,22 @@ img { max-width: 100%; }
 
 .footer-col a:hover { color: var(--btc-orange); }
 
-.footer-bottom p {
-  font-size: 13px;
-  color: var(--text-dim);
-}
+.footer-bottom p { font-size: 13px; color: var(--text-dim); }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .nav { padding: 16px 24px; }
   .nav-links { display: none; }
-
-  .hero { padding: 60px 24px 48px; }
-  .hero h1 { font-size: 38px; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
-
-  .section { padding: 0 24px 64px; }
-
-  .steps { grid-template-columns: 1fr; gap: 32px; }
-
-  .value-grid { grid-template-columns: 1fr; }
-
-  .name-section { padding: 64px 24px; margin-bottom: 64px; }
-  .name-inner { grid-template-columns: 1fr; gap: 40px; }
-  .name-visual { order: 2; }
-
-  .vet-grid { grid-template-columns: 1fr; }
-
-  .presence-grid { grid-template-columns: 1fr; }
-
-  .hub-grid { grid-template-columns: 1fr; }
-
+  .hero { padding: 60px 24px 28px; }
+  .hero h1 { font-size: 36px; }
+  .subnav-wrap, .faq-section { padding-left: 24px; padding-right: 24px; }
+  summary { font-size: 15px; padding: 18px 20px; }
+  .faq-answer { padding: 0 20px 18px; }
   .newsletter { padding: 60px 24px; }
   .newsletter h2 { font-size: 28px; }
   .newsletter-form { flex-direction: column; }
-  .newsletter-form button { width: 100%; }
-
   .footer-main { padding: 40px 24px 20px; }
   .footer-inner { flex-direction: column; gap: 30px; }
-  .footer-columns { gap: 40px; }
-  .footer-logo img { height: 60px; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -846,7 +530,6 @@ a.nav-logo, .nav-logo {
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- Navigation -->
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a href="index.html" class="nav-logo">
@@ -862,186 +545,183 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
   </ul>
   <button class="nav-cta">Get Started</button>
 </nav>
 
-<!-- Hero -->
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <span class="hero-label">About Us</span>
-  <h1>The Bitcoin-Only<br><span class="highlight">Infrastructure Hub</span></h1>
-  <p class="hero-desc">
-    Founded in 2018, Virtuse provides the foundation for the borderless monetary economy. We help investors build and protect generational wealth through an uncompromising commitment to Bitcoin, financial sovereignty, and secure monetary freedom.
-  </p>
-  <div class="hero-stats">
-    <div class="stat-box">
-      <div class="stat-value">2018</div>
-      <div class="stat-label">Founded</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">100+</div>
-      <div class="stat-label">Countries Served</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">50+</div>
-      <div class="stat-label">Strategic Partners</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">2</div>
-      <div class="stat-label">Global Offices</div>
-    </div>
-  </div>
+  <h1>Terms &amp; <span class="highlight">Conditions</span></h1>
+  <p class="hero-desc">The rules that govern your use of this website. Short version: Virtuse is a non-custodial hub that connects you to independent, vetted partners — we don't hold your funds, execute your trades, or give financial advice. Effective 20 August 2026.</p>
 </section>
 
-<!-- Our Story -->
-<section class="section">
-  <div class="sec-label">Our Story</div>
-  <div class="steps">
-    <div class="step">
-      <span class="step-num">2018</span>
-      <h3>European Roots, Singapore Reach</h3>
-      <p>Founded as a digital asset and commodity platform with roots in European energy markets, Virtuse expanded to Singapore to bridge traditional finance with crypto and tokenized real-world assets.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">2022</span>
-      <h3>The Bitcoin-Only Transition</h3>
-      <p>A strategic transition made Virtuse a dedicated, Bitcoin-only exchange — trading breadth for depth, and committing fully to the hardest money ever created.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">2024</span>
-      <h3>From Exchange to Hub</h3>
-      <p>Virtuse shifted from operating as an exchange to curating one — connecting investors directly with vetted, MiCA-licensed partners across every Bitcoin service instead of holding assets itself.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">Today</span>
-      <h3>A Global Network</h3>
-      <p>Virtuse now operates as a global infrastructure hub, delivering a full suite of Bitcoin services to clients in over 100 countries through a secure, institutional-grade network.</p>
-    </div>
-  </div>
+<!-- ===== CATEGORY PILLS ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="Terms and Conditions sections">
+    <a href="#who">&#9670; Who We Are</a>
+    <a href="#service">&#9670; What We Do</a>
+    <a href="#eligibility">&#9670; Eligibility &amp; Use</a>
+    <a href="#partners">&#9670; Partner Services</a>
+    <a href="#tools">&#9670; Tools &amp; Content</a>
+    <a href="#ip">&#9670; Intellectual Property</a>
+    <a href="#liability">&#9670; Disclaimers &amp; Liability</a>
+    <a href="#law">&#9670; Governing Law</a>
+  </nav>
+</div>
+
+<!-- ===== WHO WE ARE ===== -->
+<section class="faq-section" id="who">
+  <div class="sec-label">1. Who We Are</div>
+
+  <details open>
+    <summary>The contracting entity</summary>
+    <div class="faq-answer">This website (virtuse.com and its subdomains) is operated by <strong>Virtuse Group Pte. Ltd.</strong>, a company with its operational office in Bratislava, Slovakia, and group headquarters in Singapore ("Virtuse", "we", "us", "our"). These Terms &amp; Conditions ("Terms") form a binding agreement between you and Virtuse Group Pte. Ltd. governing your access to and use of this website. Contact: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+  </details>
+
+  <details>
+    <summary>Acceptance of these Terms</summary>
+    <div class="faq-answer">By accessing or using this website in any way — browsing pages, subscribing to the newsletter, using our free tools, or clicking through to a partner — you agree to be bound by these Terms and by our <a href="privacy-policy.html">Privacy Policy</a>. If you do not agree, please do not use this website. We may update these Terms from time to time as described in <a href="#law">Section 8</a>; continued use after an update constitutes acceptance of the revised Terms.</div>
+  </details>
 </section>
 
-<!-- Mission & Values -->
-<section class="section">
-  <div class="sec-label">What We Stand For</div>
-  <div class="value-grid">
-    <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.7 7.5h3.1a1.8 1.8 0 0 1 0 3.6H9.7m0 0h3.4a1.9 1.9 0 0 1 0 3.8H9.7M9.7 7.5V6M9.7 18v-1.5M11.8 7.5V6M11.8 18v-1.5"/></svg></div>
-      <h3>Bitcoin-Only Focus</h3>
-      <p>No altcoins, no distractions. An uncompromising commitment to Bitcoin as the foundation of the borderless monetary economy.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <h3>Security &amp; Trust</h3>
-      <p>A robust network of over 50 strategic partners worldwide ensures maximum security and institutional liquidity for our global clientele.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="3.3"/><path d="M10.3 12.7L18.5 4.5M15 4.5h3.5V8"/></svg></div>
-      <h3>Financial Sovereignty</h3>
-      <p>We help investors not only build but effectively protect generational wealth — serving as a trusted bridge to the Bitcoin economy.</p>
-    </div>
-  </div>
+<!-- ===== WHAT WE DO ===== -->
+<section class="faq-section" id="service">
+  <div class="sec-label">2. What Virtuse Is — And Is Not</div>
+
+  <details open>
+    <summary>We are a non-custodial hub, not a service provider</summary>
+    <div class="faq-answer">Virtuse curates and lists vetted, independent partners across Bitcoin-related categories — buying, mining, lending, custody, treasury, tax, and trading bots. <strong>We do not ourselves operate an exchange, hold client funds or private keys, open accounts, execute trades, provide custody, extend credit, or perform identity verification (KYC).</strong> When you use a partner service, you enter into a direct contractual relationship with that partner, under that partner's own terms, privacy policy, fees, and regulatory licensing — not with Virtuse.</div>
+  </details>
+
+  <details>
+    <summary>We are not a financial adviser</summary>
+    <div class="faq-answer">Nothing on this website — including partner listings, blog articles, market data, or free calculators — constitutes investment, legal, tax, or financial advice, or a recommendation or solicitation to buy, sell, or hold any asset. Content is provided for general informational and educational purposes only. Bitcoin and other crypto-assets are volatile and carry a genuine risk of partial or total loss; you should seek independent professional advice before making any financial decision, and only ever risk what you can afford to lose.</div>
+  </details>
+
+  <details>
+    <summary>From exchange to hub</summary>
+    <div class="faq-answer">Virtuse previously operated differently; the website has since transitioned to the non-custodial referral hub model described in these Terms. For the regulatory detail behind that transition, see our <a href="aml-compliance.html">AML &amp; Compliance</a> page.</div>
+  </details>
 </section>
 
-<!-- What is Virtuse? -->
-<section class="name-section">
-  <div class="name-inner">
-    <div>
-      <div class="sec-label">Our Name</div>
-      <div class="sec-title">
-        <h2>What is Virtuse?</h2>
-      </div>
-      <div class="name-text">
-        <p>Our name is inspired by Virt&ugrave;, a concept introduced by Niccol&ograve; Machiavelli. To him, virt&ugrave; wasn't about conventional morality &mdash; it was about strength, control, and the ability to command one's own reality.</p>
-        <p>Bitcoin is the modern embodiment of virt&ugrave;. It provides the ultimate form of financial power and autonomy, allowing you to secure your future without external interference.</p>
-      </div>
-      <div class="name-quote">It is power you control.</div>
-    </div>
-    <div class="name-visual">
-      <img src="bull-virtuse.png" alt="Virtuse Bull">
-    </div>
-  </div>
+<!-- ===== ELIGIBILITY & USE ===== -->
+<section class="faq-section" id="eligibility">
+  <div class="sec-label">3. Eligibility &amp; Acceptable Use</div>
+
+  <details>
+    <summary>Who can use this website</summary>
+    <div class="faq-answer">You must be at least 18 years old and have the legal capacity to enter into a binding agreement in your jurisdiction to use this website. You are responsible for ensuring that accessing this website and any partner service is lawful where you are located — some partner services may not be available in every country, and you must comply with the local laws that apply to you, including tax reporting obligations.</div>
+  </details>
+
+  <details>
+    <summary>Acceptable use</summary>
+    <div class="faq-answer">You agree not to: use the website for any unlawful purpose, including money laundering or terrorist financing; attempt to gain unauthorised access to the website, its infrastructure, or other users' data; scrape, reverse-engineer, or systematically extract content beyond normal browsing; introduce malware or disrupt the website's operation; impersonate any person or misrepresent your affiliation; or interfere with our referral or analytics mechanisms in bad faith (for example, self-referral abuse). We may suspend or restrict access for anyone who breaches this section.</div>
+  </details>
 </section>
 
-<!-- How We Vet Partners -->
-<section class="section">
-  <div class="sec-label">Our Standards</div>
-  <div class="sec-title">
-    <h2>How We Vet Partners</h2>
-    <p>Every name on this site clears the same bar before we'll recommend it</p>
-  </div>
-  <div class="vet-grid">
-    <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
-      <h3>Regulatory Licensing</h3>
-      <p>MiCA-licensed CASPs or an equivalent recognized license in their home jurisdiction — no unregulated venues, ever.</p>
-    </div>
-    <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.4"/></svg>
-      </div>
-      <h3>Custody &amp; Asset Security</h3>
-      <p>Self-custody withdrawal by default, and insured, segregated custody wherever a partner does hold funds.</p>
-    </div>
-    <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
-      </div>
-      <h3>Track Record</h3>
-      <p>Years in operation, scale of volume and users, and a clean incident history — new isn't disqualifying, unproven is.</p>
-    </div>
-    <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
-      <h3>Fee Transparency</h3>
-      <p>Published, comparable fee structures — no hidden spreads or terms that only show up after you've signed up.</p>
-    </div>
-  </div>
+<!-- ===== PARTNER SERVICES ===== -->
+<section class="faq-section" id="partners">
+  <div class="sec-label">4. Partner Services &amp; Referral Relationships</div>
+
+  <details open>
+    <summary>You contract with the partner, not with us</summary>
+    <div class="faq-answer">Every regulated service reachable through this website — buying Bitcoin, mining hosting, Bitcoin-backed loans, custody, treasury management, tax reporting, or trading bots — is provided by an <strong>independent third-party partner</strong>, most of them MiCA-licensed Crypto-Asset Service Providers (CASPs). Virtuse is not a party to, and assumes no responsibility for, any agreement, transaction, KYC process, fee, or dispute between you and a partner. Each partner's own terms, privacy policy, and fee schedule govern that relationship, and you should read them before proceeding.</div>
+  </details>
+
+  <details>
+    <summary>How referrals work</summary>
+    <div class="faq-answer">Virtuse earns a referral commission when you sign up with or use certain partners via links on this website. This is how we fund a free-to-use hub. Receiving a commission does not make Virtuse an agent, employee, or joint venturer of the partner, and does not mean we endorse, guarantee, or take responsibility for the partner's service, security, solvency, or regulatory standing.</div>
+  </details>
+
+  <details>
+    <summary>No warranty on partner services</summary>
+    <div class="faq-answer">We take reasonable care in choosing which partners to list — for example, favouring MiCA-licensed providers — but we <strong>do not warrant or guarantee</strong> the accuracy of any partner's advertised rates, features, or licensing status at any given time, the availability, security, or performance of any partner's platform, or that a partner will be suitable for your needs. Partner details (rates, terms, licensing) can change without notice on their end; always verify current terms directly with the partner before transacting.</div>
+  </details>
 </section>
 
-<!-- Global Presence -->
-<section class="section">
-  <div class="sec-label">Global Presence</div>
-  <div class="presence-grid">
-    <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127468;</div>
-      <h3>Singapore</h3>
-      <div class="presence-role">Global Headquarters</div>
-      <p>Anchoring global operations from one of the world's leading technological and financial hubs.</p>
-    </div>
-    <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127472;</div>
-      <h3>Bratislava</h3>
-      <div class="presence-role">European Operations</div>
-      <p>Deep roots and local expertise through our operational office, home of Virtuse Group Pte. Ltd.</p>
-    </div>
-    <div class="presence-card">
-      <div class="presence-flag">&#127758;</div>
-      <h3>EU &amp; Asia</h3>
-      <div class="presence-role">Virtuse Group</div>
-      <p>A proud member of the multinational Virtuse Group, with a strategic presence spanning two continents.</p>
-    </div>
-  </div>
+<!-- ===== TOOLS & CONTENT ===== -->
+<section class="faq-section" id="tools">
+  <div class="sec-label">5. Free Tools, Market Data &amp; Content</div>
+
+  <details>
+    <summary>Calculators and charts</summary>
+    <div class="faq-answer">Our free tools (Bitcoin Data dashboard, Retirement Calculator, Rainbow Chart, BTC Dominance, 200 Week Moving Average) are provided for informational and educational purposes only, run entirely in your browser, and are not investment advice or a projection, promise, or guarantee of any future outcome. Results depend entirely on assumptions you enter or that are built into the tool, and historical performance is not indicative of future results.</div>
+  </details>
+
+  <details>
+    <summary>Market data accuracy</summary>
+    <div class="faq-answer">Live price and network data displayed on this website is sourced from third parties — including CoinGecko, Binance, and mempool.space — on an "as available" basis. We do not control these sources and cannot guarantee that the data is accurate, complete, or up to date at the moment you view it. Do not rely on data shown here for time-sensitive trading or financial decisions; verify current prices directly with your exchange or partner before acting.</div>
+  </details>
+
+  <details>
+    <summary>Blog and editorial content</summary>
+    <div class="faq-answer">Blog articles reflect the personal views and opinions of their authors (principally Virtuse founder Ras Vasilisin) at the time of writing, and do not constitute financial, legal, or tax advice, nor do they necessarily represent the views of Virtuse Group Pte. Ltd. as a company. Macroeconomic and market commentary can age quickly — check the publication date and treat older articles as historical opinion rather than current guidance.</div>
+  </details>
 </section>
 
-<!-- Explore the Hub -->
-<section class="section">
-  <div class="sec-label">Explore the Hub</div>
-  <div class="hub-grid">
-    <a href="buy-bitcoin.html" class="hub-link"><span>Buy Bitcoin<small>MiCA-licensed partners</small></span><span class="arrow">&#8594;</span></a>
-    <a href="secure.html" class="hub-link"><span>Custody<small>Self-custody &amp; collaborative</small></span><span class="arrow">&#8594;</span></a>
-    <a href="lending.html" class="hub-link"><span>Loans<small>Bitcoin-backed lending</small></span><span class="arrow">&#8594;</span></a>
-    <a href="mining.html" class="hub-link"><span>Mining<small>Hosted &amp; cloud mining</small></span><span class="arrow">&#8594;</span></a>
-    <a href="treasury.html" class="hub-link"><span>Treasury<small>Corporate Bitcoin strategy</small></span><span class="arrow">&#8594;</span></a>
-    <a href="blog.html" class="hub-link"><span>Blog<small>Insights from our CEO</small></span><span class="arrow">&#8594;</span></a>
-  </div>
+<!-- ===== INTELLECTUAL PROPERTY ===== -->
+<section class="faq-section" id="ip">
+  <div class="sec-label">6. Intellectual Property</div>
+
+  <details>
+    <summary>Our content</summary>
+    <div class="faq-answer">The Virtuse name, logo, website design, and original text, graphics, and tools on this website are owned by or licensed to Virtuse Group Pte. Ltd. and are protected by copyright, trademark, and other intellectual property laws. Partner logos and trademarks displayed on this website remain the property of their respective owners and are used to identify those partners, not to imply endorsement by them of Virtuse beyond the referral relationship described in <a href="#partners">Section 4</a>.</div>
+  </details>
+
+  <details>
+    <summary>Your licence to use this website</summary>
+    <div class="faq-answer">We grant you a limited, revocable, non-exclusive, non-transferable licence to access and use this website for your own personal, non-commercial use, subject to these Terms. You may not copy, reproduce, republish, frame, or distribute any part of this website, or use our content to build a competing product or service, without our prior written permission.</div>
+  </details>
 </section>
 
-<!-- Newsletter -->
+<!-- ===== DISCLAIMERS & LIABILITY ===== -->
+<section class="faq-section" id="liability">
+  <div class="sec-label">7. Disclaimers &amp; Limitation of Liability</div>
+
+  <details open>
+    <summary>The website is provided "as is"</summary>
+    <div class="faq-answer">To the maximum extent permitted by applicable law, this website, its tools, and its content are provided "as is" and "as available", without warranties of any kind, whether express or implied, including any implied warranty of merchantability, fitness for a particular purpose, non-infringement, or that the website will be uninterrupted, secure, or error-free. Bitcoin and crypto-asset markets are inherently volatile and speculative; nothing on this website removes that risk.</div>
+  </details>
+
+  <details>
+    <summary>Limitation of liability</summary>
+    <div class="faq-answer">To the maximum extent permitted by applicable law, Virtuse Group Pte. Ltd., its officers, employees, and affiliates will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenue, data, or funds, arising out of or in connection with your use of this website or any partner service, even if we have been advised of the possibility of such damages. This includes, without limitation, losses arising from a partner's acts or omissions, market volatility, or reliance on market data or tools provided on this website. Where our liability cannot be excluded under applicable law (for example, for death, personal injury, fraud, or gross negligence, or under mandatory consumer-protection law that applies to you), nothing in these Terms limits that liability.</div>
+  </details>
+
+  <details>
+    <summary>Indemnity</summary>
+    <div class="faq-answer">You agree to indemnify and hold Virtuse Group Pte. Ltd. harmless from any claim, loss, or expense (including reasonable legal fees) arising from your breach of these Terms, your misuse of this website, or your violation of any applicable law or third party's rights.</div>
+  </details>
+</section>
+
+<!-- ===== GOVERNING LAW ===== -->
+<section class="faq-section" id="law">
+  <div class="sec-label">8. Governing Law, Changes &amp; Contact</div>
+
+  <details open>
+    <summary>Governing law</summary>
+    <div class="faq-answer">These Terms are governed by the laws of the Republic of Singapore, without regard to conflict-of-law principles, and any dispute arising from them will be subject to the exclusive jurisdiction of the courts of Singapore. If you are a consumer resident in the European Union or European Economic Area, this choice of law does not deprive you of the protection afforded by any mandatory provisions of the law of your country of residence that cannot be excluded by agreement.</div>
+  </details>
+
+  <details>
+    <summary>Severability &amp; entire agreement</summary>
+    <div class="faq-answer">If any provision of these Terms is found unenforceable, the remaining provisions continue in full force. These Terms, together with our <a href="privacy-policy.html">Privacy Policy</a> and <a href="aml-compliance.html">AML &amp; Compliance</a> page, constitute the entire agreement between you and Virtuse regarding your use of this website, and supersede any prior agreements on the same subject. Our failure to enforce any provision is not a waiver of our right to do so later.</div>
+  </details>
+
+  <details>
+    <summary>Changes to these Terms</summary>
+    <div class="faq-answer">We may revise these Terms as our services, the regulatory landscape, or the law evolve. Changes take effect when posted on this page with an updated effective date; material changes will be flagged prominently on the site or via the newsletter before they take effect. Continuing to use the website after a revised version is posted means you accept the changes.</div>
+  </details>
+
+  <details>
+    <summary>Contact us</summary>
+    <div class="faq-answer">Questions about these Terms: <a href="mailto:support@virtuse.com">support@virtuse.com</a>, or Virtuse Group Pte. Ltd., Singapore.</div>
+  </details>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <h2>Fix the Money, Fix the World</h2>
   <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
@@ -1075,14 +755,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
+          msg.textContent = "You're in — check your inbox for a welcome email.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Network error \u2014 please try again.';
+        msg.textContent = 'Network error — please try again.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1093,11 +773,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </section>
 
-<!-- Footer -->
+<!-- ===== FOOTER ===== -->
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
