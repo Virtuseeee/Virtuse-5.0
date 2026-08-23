@@ -197,3 +197,70 @@ body {
   flex-wrap: wrap;
 }
 
+/* ============================================================
+   LANGUAGE SWITCHER -- shared component for the i18n system.
+   Base pill (.lang-switch/.lang-opt/.lang-flag) originated in
+   blog.html/blog-sk.html's hero; canonicalized here so any page
+   gets it just by linking styles.css. .nav-lang-switch is a
+   compact variant sized to sit inline in the sticky nav bar next
+   to the CTA button -- see TRANSLATION-SYSTEM.md.
+   ============================================================ */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.lang-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+.lang-opt:hover { color: var(--text); }
+
+.lang-opt.active {
+  background: var(--btc-orange);
+  color: #0d0902;
+}
+
+.lang-flag { font-size: 15px; line-height: 1; }
+
+.nav-lang-switch {
+  margin-right: 12px;
+}
+
+.nav-lang-switch .lang-opt {
+  padding: 6px 11px;
+  font-size: 12px;
+  gap: 5px;
+}
+
+.nav-lang-switch .lang-flag { font-size: 13px; }
+
+/* mobile-menu counterpart: sits below the full-width CTA button
+   inside the hamburger overlay (li.nav-links-lang-item, same
+   breakpoint every page already uses for .nav-links/.nav-hamburger) */
+.nav-links-lang-item { display: none; }
+
+@media (max-width: 1024px) {
+  .nav-lang-switch { display: none; }
+
+  .nav-links-lang-item {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+}
+
