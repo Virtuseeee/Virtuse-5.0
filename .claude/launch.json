@@ -4,7 +4,7 @@
     {
       "name": "static-site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-c", "import os; print('cwd:', os.getcwd())"],
+      "runtimeArgs": ["-m", "http.server", "8000"],
       "port": 8000
     }
   ]

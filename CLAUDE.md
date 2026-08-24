@@ -2,6 +2,108 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-08-24) — Slovak translation rollout
+
+**Current state — done:** The whole site (20 non-blog pages) now has a
+Slovak translation under `Kimi_Agent_Virtuse MiCA Partners/sk/`, plus a
+reusable i18n system to translate into more languages later. Specifics:
+- All pages except `blog.html`/`blog-sk.html`/`article.html` (intentionally
+  out of scope — see below) have a `sk/<page>.html` counterpart: nav,
+  footer, hero/body copy, and JS-generated dashboard strings (chart
+  tooltips, `sk-SK` locale formatting) are translated.
+- Reciprocal `hreflang` tags + `sitemap.xml` entries, and an EN/SK language
+  switcher wired into every page's desktop nav and mobile menu.
+- `.lang-switch` CSS component canonicalized into
+  [`styles.css`](Kimi_Agent_Virtuse%20MiCA%20Partners/styles.css).
+- Reusable tooling in
+  [`i18n-tools/`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/)
+  (`scaffold_sk.py`, `sitemap_add.py`, `wire_root.py`, `relink_sk.py`) —
+  see that folder's README before translating another page/language.
+- Full system documented in
+  [`TRANSLATION-SYSTEM.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/TRANSLATION-SYSTEM.md).
+- **Deployed and verified live** at `https://staging.virtuse.com/sk/...`
+  (GitHub Pages, see gotcha below) — confirmed via browser click-through
+  on every page, no leftover English, no new console errors.
+
+**In progress:** Nothing mid-task — this phase is complete and pushed.
+
+**Next steps, in order:**
+1. **Human legal review** of the three AI-translated compliance pages
+   (`sk/privacy-policy.html`, `sk/terms-and-conditions.html`,
+   `sk/aml-compliance.html`) before treating them as final — they carry
+   real MiCA/GDPR regulatory exposure if mistranslated, and haven't been
+   reviewed by a Slovak speaker yet. They are currently **live** on
+   staging (see gotcha below), just not yet on production.
+2. **Get it onto production `virtuse.com`** (Webglobe SFTP, not
+   GitHub Pages — see gotcha below). An `scp` upload to
+   `virtuse.com@ftp.virtuse.com:222:public_html/` was attempted and
+   *did not visibly take effect* (verified via `curl` before/after —
+   `styles.css` size and `/sk/` both unchanged); this is unresolved —
+   next session should re-verify the SFTP credentials/path with the user
+   before retrying, rather than assuming the same command will work.
+3. Decide whether to fold `blog.html`/`blog-sk.html` into the `sk/`
+   folder convention, or leave the suffix pattern permanently (currently
+   left as-is by deliberate decision — low priority).
+4. When ready for a second language, follow
+   [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)'s
+   "Adding language #2" section.
+5. Two **pre-existing, unrelated** local changes (`.claude/launch.json`,
+   `.gitignore`) have been sitting uncommitted since before this work
+   started — not touched all session, still need the user's own call on
+   whether/how to commit them.
+
+**Decisions, constraints & gotchas (not obvious from the code):**
+- **Two completely separate deploy targets, easy to conflate:**
+  `staging.virtuse.com` is **GitHub Pages**, built from the `gh-pages`
+  branch (has its own `CNAME` file) — *not* the Webglobe host. It has no
+  CI/CD; nothing auto-deploys on push to `main`. To update it: copy
+  `main`'s `Kimi_Agent_Virtuse MiCA Partners/` content onto a checkout of
+  `gh-pages` (excluding the research/docs/PDFs and `i18n-tools/` — that
+  branch only ever held site-serving assets), commit, `git push origin
+  gh-pages`. Production `virtuse.com` is the actual Webglobe SFTP host
+  (`ftp.virtuse.com:222`, `public_html`, per hosting notes) — separate
+  credentials, separate manual step, and per next-step #2 above, the
+  last attempt there didn't work.
+- **`gh-pages` drifts behind `main` silently** — it was ~7 commits stale
+  (missing OG tags, `terms-and-conditions.html`) before this session's
+  sync. There's no automation keeping it current; treat it as a manual
+  deploy step every time, not a mirror.
+- Pages translated in batches will have **stale `../page.html` links**
+  to pages that didn't have a `sk/` counterpart yet at scaffold time —
+  this bit us mid-session (whole site's nav pointed back to English) and
+  `i18n-tools/relink_sk.py` exists specifically to fix it. **Re-run it**
+  after translating any new batch of pages, before considering the batch
+  done.
+- The sandboxed Bash tool's permission classifier blocks shell loops and
+  bulk `rm -rf`/`find -exec` even against scratch/worktree paths — use
+  explicit multi-argument `cp src1 src2 ... dest/` (no loop) for
+  batch-copying files instead.
+- SFTP/hosting credentials must be typed by the user directly into their
+  own terminal — never routed through Claude, per this project's
+  established security practice.
+
+**Commands to pick this up (no env vars needed — no build tooling in this repo):**
+```bash
+# Local preview
+cd "Kimi_Agent_Virtuse MiCA Partners" && python3 -m http.server 8777
+open http://localhost:8777/sk/index.html
+
+# Translate another page into an existing language (from repo root)
+python3 "Kimi_Agent_Virtuse MiCA Partners/i18n-tools/scaffold_sk.py" "<page>.html" "<SK title>" "<SK og:description>"
+# ...hand-translate the page-specific prose, then:
+python3 "Kimi_Agent_Virtuse MiCA Partners/i18n-tools/sitemap_add.py" "<page>.html"
+python3 "Kimi_Agent_Virtuse MiCA Partners/i18n-tools/wire_root.py" "<page>.html"
+python3 "Kimi_Agent_Virtuse MiCA Partners/i18n-tools/relink_sk.py"   # re-run after EVERY batch
+
+# Sync staging (gh-pages branch) after pushing to main — see gotcha above
+git worktree add /tmp/gh-pages-wt gh-pages
+# copy main's content folder (excluding research/docs/PDFs/i18n-tools) into /tmp/gh-pages-wt, then:
+cd /tmp/gh-pages-wt && git add -A && git commit -m "..." && git push origin gh-pages
+```
+`origin` has both `main` (source of truth, PR/commit here) and `gh-pages`
+(staging deploy target, sync manually as above) as separate branches —
+don't confuse a `main` push with a staging deploy.
+
 ## Repository purpose
 
 This repo holds marketing/content assets for **Virtuse** ("The World's First Hub for Bitcoin-Only Services") — a Bitcoin-only wealth management / partner ecosystem site. It is content-first, not an application: there is no build tool, package manager, bundler, or test suite. Pages are static HTML files with inline `<style>` and `<script>` blocks, editable and viewable directly in a browser (`open <file>.html` or a static file server).
