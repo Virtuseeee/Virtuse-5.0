@@ -10,7 +10,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Dôchodková kalkulačka Bitcoinu — Virtuse</title>
+<title>Dôchodková kalkulačka Bitcoinu | Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Dôchodková kalkulačka Bitcoinu — Virtuse">
+<meta property="og:title" content="Dôchodková kalkulačka Bitcoinu | Virtuse">
 <meta property="og:description" content="Namodelujte si cestu k odchodu do dôchodku na Bitcoine. Nastavte svoj stack, mieru sporenia a predpoklady rastu a zistite, či váš Bitcoin dokáže financovať váš dôchodok na celý život.">
 <meta property="og:url" content="https://staging.virtuse.com/sk/retirement-calculator.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
@@ -29,7 +29,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="sk_SK">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dôchodková kalkulačka Bitcoinu — Virtuse">
+<meta name="twitter:title" content="Dôchodková kalkulačka Bitcoinu | Virtuse">
 <meta name="twitter:description" content="Namodelujte si cestu k odchodu do dôchodku na Bitcoine. Nastavte svoj stack, mieru sporenia a predpoklady rastu a zistite, či váš Bitcoin dokáže financovať váš dôchodok na celý život.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
@@ -713,7 +713,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Dôchodková <span class="highlight">kalkulačka</span></h1>
-  <p class="hero-desc">Namodelujte si cestu k odchodu do dôchodku na Bitcoine. Nastavte svoj stack, mieru sporenia a predpoklady rastu — kalkulačka premietne vaše roky akumulácie a následne otestuje, či váš Bitcoin dokáže financovať vaše dôchodkové výdavky na celý život.</p>
+  <p class="hero-desc">Namodelujte si cestu k odchodu do dôchodku na Bitcoine. Nastavte svoj stack, mieru sporenia a predpoklady rastu. Kalkulačka premietne vaše roky akumulácie a následne otestuje, či váš Bitcoin dokáže financovať vaše dôchodkové výdavky na celý život.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
@@ -846,12 +846,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <div class="disclaimer" style="margin-top:-60px; padding: 0 48px 100px;">
-  Len na vzdelávacie účely — nejde o finančné poradenstvo. Projekcie používajú konštantné miery rastu a inflácie; skutočné výnosy Bitcoinu sú volatilné a minulá výkonnosť nezaručuje budúce výsledky. Údaje sú nominálne (nie diskontované o infláciu), pokiaľ nie je uvedené inak.
+  Len na vzdelávacie účely. Nejde o finančné poradenstvo. Projekcie používajú konštantné miery rastu a inflácie; skutočné výnosy Bitcoinu sú volatilné a minulá výkonnosť nezaručuje budúce výsledky. Údaje sú nominálne (nie diskontované o infláciu), pokiaľ nie je uvedené inak.
 </div>
 
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Opravte peniaze, opravte svet</h2>
+  <h2>Opravíme peniaze, opravíme svet</h2>
   <p>Pridajte sa k 18 000+ investorom, ktorí sú o krok vpred. Virtuse Report každý týždeň priamo do vašej schránky.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Zadajte svoj email" required>
@@ -883,14 +883,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Ste v tom — skontrolujte si e-mail, čaká vás uvítacia správa.";
+          msg.textContent = "Ste v tom. Skontrolujte si e-mail, čaká vás uvítacia správa.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Niečo sa pokazilo. Skúste to prosím znova.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Chyba siete — skúste to prosím znova.';
+        msg.textContent = 'Chyba siete. Skúste to prosím znova.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1102,11 +1102,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .then(function (d) {
       if (d.USD) {
         els.price.value = Math.round(d.USD);
-        $('priceNote').innerHTML = '<b>●</b> Aktuálna cena načítaná — môžete ju upraviť';
+        $('priceNote').innerHTML = '<b>●</b> Aktuálna cena načítaná, môžete ju upraviť';
         recalc();
       }
     })
-    .catch(function () { $('priceNote').textContent = 'Aktuálna cena nedostupná — použitá predvolená hodnota'; });
+    .catch(function () { $('priceNote').textContent = 'Aktuálna cena nedostupná, použitá predvolená hodnota'; });
 
   recalc();
 })();
