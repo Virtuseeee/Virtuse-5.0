@@ -1,88 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://staging.virtuse.com/index.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/index.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/index.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/index.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/buy-bitcoin.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/buy-bitcoin.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/mining.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/mining.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/mining.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/mining.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/lending.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/lending.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/lending.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/lending.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/secure.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/secure.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/treasury.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/treasury.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/treasury.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/treasury.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/tax.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/tax.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/tax.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/tax.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/bots.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bots.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/bots.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bots.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/bitcoin-data.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-data.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/bitcoin-data.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/btc-dominance.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/btc-dominance.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/btc-dominance.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/btc-dominance.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/ma-200w.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/ma-200w.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/rainbow-chart.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/rainbow-chart.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/rainbow-chart.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/retirement-calculator.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/retirement-calculator.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/research.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/research.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/research.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/research.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/blog.html</loc>
@@ -98,26 +266,92 @@
   </url>
   <url>
     <loc>https://staging.virtuse.com/about.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/about.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/about.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/faq.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/faq.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/faq.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/faq.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/aml-compliance.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/aml-compliance.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/aml-compliance.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/aml-compliance.html"/>
   </url>
   <url>
     <loc>https://staging.virtuse.com/privacy-policy.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/privacy-policy.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/terms-and-conditions.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/terms-and-conditions.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/terms-and-conditions.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/terms-and-conditions.html"/>
   </url>
 </urlset>

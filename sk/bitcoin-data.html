@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,29 +10,29 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>200 Week Moving Average — Virtuse</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html">
+<title>Bitcoin dáta — Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-data.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bitcoin-data.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-data.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="200 Week Moving Average — Virtuse">
-<meta property="og:description" content="Bitcoin's most respected long-term floor. The 200-week moving average has historically marked the bottom of every bear market.">
-<meta property="og:url" content="https://staging.virtuse.com/ma-200w.html">
+<meta property="og:title" content="Bitcoin dáta — Virtuse">
+<meta property="og:description" content="Bitcoin sieťové metriky a trhové dáta v reálnom čase — cena, poplatky, hashrate, mempool a posledný blok, priamo zo siete. Bez potreby účtu.">
+<meta property="og:url" content="https://staging.virtuse.com/sk/bitcoin-data.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="sk_SK">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="200 Week Moving Average — Virtuse">
-<meta name="twitter:description" content="Bitcoin's most respected long-term floor. The 200-week moving average has historically marked the bottom of every bear market.">
+<meta name="twitter:title" content="Bitcoin dáta — Virtuse">
+<meta name="twitter:description" content="Bitcoin sieťové metriky a trhové dáta v reálnom čase — cena, poplatky, hashrate, mempool a posledný blok, priamo zo siete. Bez potreby účtu.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -75,7 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* ===== HERO ===== */
 .hero {
-  padding: 80px 48px 36px;
+  padding: 80px 48px 48px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -90,6 +90,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   height: 600px;
   background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
   pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .hero h1 {
@@ -107,6 +115,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 680px;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-bg);
+  border: 1px solid rgba(63, 185, 80, 0.35);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
 }
 
 /* ===== SUB MENU ===== */
@@ -146,114 +182,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .subnav a.active { background: var(--btc-orange); color: #0d0902; }
 
-/* ===== STATUS ===== */
-.status-section {
-  padding: 0 48px 28px;
+/* ===== PRICE CARD ===== */
+.price-section {
+  padding: 0 48px 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.status-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px 30px;
+.price-card {
+  background: linear-gradient(135deg, var(--dark-card) 0%, #20180d 100%);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  border-radius: 18px;
+  padding: 36px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
-.status-left { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-
-.status-price-label {
-  font-size: 12px;
+.price-label {
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 4px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
 }
 
-.status-price {
-  font-size: 34px;
+.price-value {
+  font-size: 52px;
   font-weight: 900;
-  color: var(--btc-orange);
   letter-spacing: -0.02em;
+  color: var(--btc-orange);
   line-height: 1;
 }
 
-.band-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  font-weight: 800;
-  padding: 12px 22px;
-  border-radius: 100px;
-  color: #0d0902;
+.price-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 10px;
 }
 
-.status-note { font-size: 12px; color: var(--text-dim); max-width: 300px; line-height: 1.5; }
+.price-sub b { color: var(--text); font-weight: 600; }
 
-/* ===== CHART ===== */
-.chart-section {
-  padding: 0 48px 36px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.chart-panel {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  position: relative;
-}
-
-.chart-panel h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.chart-panel h3 .ico { color: var(--btc-orange); }
-
-.chart-wrap { position: relative; }
-
-canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
-
-.tooltip {
-  position: absolute;
-  pointer-events: none;
-  background: rgba(13, 20, 33, 0.95);
-  border: 1px solid var(--border-hover);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 12px;
-  line-height: 1.6;
-  display: none;
-  z-index: 5;
-  white-space: nowrap;
-  backdrop-filter: blur(6px);
-}
-
-.tooltip b { color: var(--btc-orange); }
-
-.chart-note {
+.price-updated {
+  text-align: right;
   font-size: 12px;
   color: var(--text-dim);
-  margin-top: 16px;
-  line-height: 1.6;
 }
 
-/* ===== LEGEND ===== */
-.legend-section {
-  padding: 0 48px var(--section-spacing);
+/* ===== STAT GRID ===== */
+.stats {
+  padding: 0 48px 56px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -264,31 +245,141 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
-.legend-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
-.legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
+.stat-box {
   background: var(--dark-card);
   border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color 0.2s;
 }
 
-.legend-swatch { width: 14px; height: 14px; border-radius: 4px; }
+.stat-box:hover { border-color: var(--border-hover); }
 
-/* ===== NEWSLETTER / FOOTER ===== */
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.stat-value.orange { color: var(--btc-orange); }
+
+.stat-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+/* ===== WIDE CARDS ===== */
+.wide-section {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.wide-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.2s;
+}
+
+.wide-card:hover { border-color: var(--border-hover); }
+
+.wide-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wide-card h3 .ico { color: var(--btc-orange); }
+
+.progress-track {
+  height: 8px;
+  background: var(--dark);
+  border-radius: 100px;
+  overflow: hidden;
+  margin: 14px 0 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
+  border-radius: 100px;
+  transition: width 0.8s ease;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.kv-row:last-child { border-bottom: none; }
+
+.kv-row .k { color: var(--text-muted); }
+.kv-row .v { color: var(--text); font-weight: 600; }
+.kv-row .v.orange { color: var(--btc-orange); }
+.kv-row .v.green { color: var(--green); }
+.kv-row .v.red { color: var(--red); }
+
+.big-metric {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--btc-orange);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.big-metric-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.sources-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 40px;
+}
+
+.sources-note a { color: var(--text-muted); text-decoration: none; }
+.sources-note a:hover { color: var(--btc-orange); }
+
+/* ===== NEWSLETTER ===== */
 .newsletter {
   background: var(--dark-lighter);
   border-top: 1px solid var(--border);
@@ -297,6 +388,7 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 }
 
 .newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+
 .newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
 
 .newsletter-form {
@@ -337,6 +429,13 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 
 .newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 30px;
+}
+
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -350,7 +449,12 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 .footer-logo img { height: 80px; width: auto; opacity: 0.9; transition: opacity 0.2s; }
 .footer-logo img:hover { opacity: 1; }
 
-.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
 
 .footer-col a {
   display: block;
@@ -366,32 +470,39 @@ canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
 .footer-bottom p { font-size: 13px; color: var(--text-dim); }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .wide-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 768px) {
   .nav { padding: 16px 24px; }
   .nav-links { display: none; }
-  .hero { padding: 60px 24px 28px; }
+  .hero { padding: 60px 24px 36px; }
   .hero h1 { font-size: 36px; }
-  .subnav-wrap, .status-section, .chart-section, .legend-section { padding-left: 24px; padding-right: 24px; }
+  .price-section, .stats, .wide-section { padding-left: 24px; padding-right: 24px; }
+  .price-card { padding: 28px 24px; }
+  .price-value { font-size: 40px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
 
   /* .subnav's border-radius:100px assumes one row; wrapped onto several
      lines it turns the whole pill into an oversized rounded blob and the
      first/last tags poke outside that curve. Scroll horizontally instead
      of wrapping, so it always stays a single true pill. */
   .subnav-wrap {
+    padding-left: 24px;
+    padding-right: 24px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .subnav-wrap::-webkit-scrollbar { display: none; }
   .subnav { flex-wrap: nowrap; }
-
-  canvas { height: 320px; }
-  .status-price { font-size: 28px; }
-  .newsletter { padding: 60px 24px; }
-  .newsletter h2 { font-size: 28px; }
-  .newsletter-form { flex-direction: column; }
-  .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -624,98 +735,161 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="index.html" class="nav-logo">
+  <a href="/sk/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Buy Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Mining</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Loans</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Custody</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Kúpiť Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Ťažba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Pôžičky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Tax</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Dane</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boty</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog-sk.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin dáta</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začať<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Page language">
-        <a href="ma-200w.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="sk/ma-200w.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
+        <a href="../bitcoin-data.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="bitcoin-data.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
       </div>
     </li>
   </ul>
-  <div class="lang-switch nav-lang-switch" role="navigation" aria-label="Page language">
-    <a href="ma-200w.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-    <a href="sk/ma-200w.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+  <div class="lang-switch nav-lang-switch" role="navigation" aria-label="Jazyk stránky">
+    <a href="../bitcoin-data.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+    <a href="bitcoin-data.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
   </div>
-  <button class="nav-cta">Get Started</button>
+  <button class="nav-cta">Začať</button>
 </nav>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>200 Week <span class="highlight">Moving Average</span></h1>
-  <p class="hero-desc">Bitcoin's most respected long-term floor. The 200-week moving average has historically marked the bottom of every bear market — price has rarely closed below it, and never stayed there for long.</p>
+  <div class="hero-top">
+    <div>
+      <h1>Bitcoin <span class="highlight">dáta</span></h1>
+      <p class="hero-desc">Sieťové metriky a trhové dáta Bitcoinu v reálnom čase — cena, poplatky, hashrate, mempool a posledný blok, priamo zo siete. Bez potreby účtu, aktualizované každú minútu.</p>
+    </div>
+    <div class="live-badge"><span class="live-dot"></span> Naživo · <span id="lastUpdated">načítava sa…</span></div>
+  </div>
 </section>
 
 <!-- ===== SUB MENU ===== -->
 <div class="subnav-wrap">
-  <nav class="subnav" aria-label="Bitcoin Data pages">
-    <a href="bitcoin-data.html">&#9670; Dashboard</a>
-    <a href="retirement-calculator.html">&#9670; Retirement Calculator</a>
-    <a href="rainbow-chart.html">&#9670; Rainbow Chart</a>
-    <a href="btc-dominance.html">&#9670; BTC Dominance</a>
-    <a href="ma-200w.html" class="active">&#9670; 200 WMA</a>
+  <nav class="subnav" aria-label="Stránky Bitcoin dát">
+    <a href="bitcoin-data.html" class="active">&#9670; Dashboard</a>
+    <a href="retirement-calculator.html">&#9670; Dôchodková kalkulačka</a>
+    <a href="rainbow-chart.html">&#9670; Dúhový graf</a>
+    <a href="btc-dominance.html">&#9670; Dominancia BTC</a>
+    <a href="ma-200w.html">&#9670; 200 WMA</a>
   </nav>
 </div>
 
-<!-- ===== STATUS ===== -->
-<section class="status-section">
-  <div class="status-card">
-    <div class="status-left">
-      <div>
-        <div class="status-price-label">Bitcoin Today</div>
-        <div class="status-price" id="statusPrice">—</div>
-      </div>
-      <div>
-        <div class="status-price-label">200 WMA</div>
-        <div class="status-price" id="statusWma" style="color: var(--text);">—</div>
-      </div>
-      <div class="band-chip" id="bandChip" style="background: var(--border);">Loading…</div>
+<!-- ===== PRICE ===== -->
+<section class="price-section">
+  <div class="price-card">
+    <div>
+      <div class="price-label">BTC / USD</div>
+      <div class="price-value" id="priceUsd">—</div>
+      <div class="price-sub">EUR: <b id="priceEur">—</b> &nbsp;·&nbsp; Satoshi za $1: <b id="satsPerUsd">—</b></div>
     </div>
-    <div class="status-note">Price as a multiple of the 200-week moving average — the closer to 1×, the closer to Bitcoin's historic floor.</div>
-  </div>
-</section>
-
-<!-- ===== CHART ===== -->
-<section class="chart-section">
-  <div class="chart-panel">
-    <h3><span class="ico">&#9670;</span> Price vs. 200 Week Moving Average (log scale)</h3>
-    <div class="chart-wrap">
-      <canvas id="chart" height="460"></canvas>
-      <div class="tooltip" id="tooltip"></div>
-    </div>
-    <div class="chart-note">
-      Weekly closes from Binance (2017 onward) joined with interpolated monthly history (2011–2017); the moving average at each week uses the trailing 200 weeks. Touches of the 200 WMA marked the bear-market bottoms of 2015, 2018, and 2022. Not investment advice.
+    <div class="price-updated">
+      Trhová kapitalizácia <div class="big-metric" id="marketCap" style="font-size:26px">—</div>
     </div>
   </div>
 </section>
 
-<!-- ===== LEGEND ===== -->
-<section class="legend-section">
-  <div class="sec-label">How to Read It</div>
-  <div class="legend-grid" id="legend"></div>
+<!-- ===== NETWORK STATS ===== -->
+<section class="stats">
+  <div class="sec-label">Stav siete</div>
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-label">Výška bloku</div>
+      <div class="stat-value orange" id="blockHeight">—</div>
+      <div class="stat-sub">Vyťažených blokov od genesis bloku</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Transakčný poplatok (rýchly)</div>
+      <div class="stat-value" id="feeFast">—</div>
+      <div class="stat-sub" id="feeSlow">30 min: — · 1 h: —</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Hashrate</div>
+      <div class="stat-value" id="hashRate">—</div>
+      <div class="stat-sub">3-dňový priemer</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Náročnosť siete</div>
+      <div class="stat-value" id="difficulty">—</div>
+      <div class="stat-sub">Aktuálna epocha</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Obiehajúca ponuka</div>
+      <div class="stat-value orange" id="supply">—</div>
+      <div class="stat-sub">z 21 000 000 BTC — navždy</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Vydaná ponuka</div>
+      <div class="stat-value" id="supplyPct">—</div>
+      <div class="stat-sub">Percento vyťaženej maximálnej ponuky</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Transakcie v mempoole</div>
+      <div class="stat-value" id="mempoolCount">—</div>
+      <div class="stat-sub" id="mempoolSize">— vMB čaká</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Ďalší halving</div>
+      <div class="stat-value" id="halving">—</div>
+      <div class="stat-sub" id="halvingSub">zostávajúcich blokov</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DETAIL CARDS ===== -->
+<section class="wide-section">
+  <div class="sec-label">Hlbšie signály</div>
+  <div class="wide-grid">
+    <div class="wide-card">
+      <h3><span class="ico">◆</span> Úprava náročnosti</h3>
+      <div class="big-metric" id="diffChange">—</div>
+      <div class="big-metric-sub">odhadovaná ďalšia úprava</div>
+      <div class="progress-track"><div class="progress-fill" id="diffProgress"></div></div>
+      <div class="kv-row"><span class="k">Priebeh epochy</span><span class="v" id="diffPct">—</span></div>
+      <div class="kv-row"><span class="k">Zostávajúce bloky</span><span class="v" id="diffBlocks">—</span></div>
+      <div class="kv-row"><span class="k">Odhadovaný dátum</span><span class="v" id="diffDate">—</span></div>
+    </div>
+    <div class="wide-card">
+      <h3><span class="ico">◆</span> Posledný blok</h3>
+      <div class="big-metric" id="lbHeight">—</div>
+      <div class="big-metric-sub" id="lbAgo">—</div>
+      <div class="kv-row"><span class="k">Transakcie</span><span class="v" id="lbTx">—</span></div>
+      <div class="kv-row"><span class="k">Veľkosť</span><span class="v" id="lbSize">—</span></div>
+      <div class="kv-row"><span class="k">Ťažiar</span><span class="v orange" id="lbMiner">—</span></div>
+    </div>
+    <div class="wide-card">
+      <h3><span class="ico">◆</span> Prostredie poplatkov</h3>
+      <div class="big-metric" id="feeBig">—</div>
+      <div class="big-metric-sub">najrýchlejšie potvrdenie (sat/vB)</div>
+      <div class="kv-row"><span class="k">~30 minút</span><span class="v" id="fee30">—</span></div>
+      <div class="kv-row"><span class="k">~1 hodina</span><span class="v" id="fee60">—</span></div>
+      <div class="kv-row"><span class="k">Minimálny relay</span><span class="v" id="feeMin">—</span></div>
+    </div>
+  </div>
+  <div class="sources-note">
+    Aktualizuje sa každú minútu · Zdroje: <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>
+  </div>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Fix the Money, Fix the World</h2>
-  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <h2>Opravte peniaze, opravte svet</h2>
+  <p>Pridajte sa k 18 000+ investorom, ktorí sú o krok vpred. Virtuse Report každý týždeň priamo do vašej schránky.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Enter your email" required>
+    <input type="email" name="email" placeholder="Zadajte svoj email" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">SUBSCRIBE NOW</button>
+    <button type="submit">ODOBERAŤ TERAZ</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -732,7 +906,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'SENDING...';
+      btn.textContent = 'ODOSIELAM...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -742,14 +916,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
+          msg.textContent = "Ste v tom — skontrolujte si e-mail, čaká vás uvítacia správa.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
+          msg.textContent = (result.data && result.data.error) || 'Niečo sa pokazilo. Skúste to prosím znova.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Network error \u2014 please try again.';
+        msg.textContent = 'Chyba siete — skúste to prosím znova.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -768,261 +942,146 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="about.html">About Us</a>
+        <h4>Spoločnosť</h4>
+        <a href="about.html">O nás</a>
         <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="aml-compliance.html">AML &amp; Compliance</a>
+        <h4>Právne</h4>
+        <a href="terms-and-conditions.html">Obchodné podmienky</a>
+        <a href="privacy-policy.html">Ochrana osobných údajov</a>
+        <a href="aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všetky práva vyhradené.</p>
   </div>
 </footer>
 
 <script>
 (function () {
   'use strict';
+  // Live Bitcoin dashboard — same public data sources as the old
+  // virtuse.com/dashboard: mempool.space REST API + CoinGecko.
+  var MP = 'https://mempool.space/api';
+  var HALVING_INTERVAL = 210000;
 
-  // Monthly closes 2011-2017 (approx) — interpolated to weekly to seed the MA.
-  var EARLY = [
-    ['2011-01',0.42],['2011-02',0.86],['2011-03',0.79],['2011-04',3.5],['2011-05',8.7],['2011-06',16.1],
-    ['2011-07',13.5],['2011-08',8.2],['2011-09',5.1],['2011-10',3.2],['2011-11',3.0],['2011-12',4.7],
-    ['2012-01',5.3],['2012-02',4.9],['2012-03',4.9],['2012-04',4.9],['2012-05',5.2],['2012-06',6.7],
-    ['2012-07',9.4],['2012-08',10.2],['2012-09',12.4],['2012-10',11.2],['2012-11',12.6],['2012-12',13.4],
-    ['2013-01',20.4],['2013-02',33.4],['2013-03',93],['2013-04',139],['2013-05',128],['2013-06',97],
-    ['2013-07',106],['2013-08',141],['2013-09',141],['2013-10',204],['2013-11',1130],['2013-12',754],
-    ['2014-01',800],['2014-02',550],['2014-03',458],['2014-04',446],['2014-05',627],['2014-06',640],
-    ['2014-07',583],['2014-08',478],['2014-09',387],['2014-10',338],['2014-11',378],['2014-12',320],
-    ['2015-01',217],['2015-02',254],['2015-03',244],['2015-04',236],['2015-05',230],['2015-06',263],
-    ['2015-07',284],['2015-08',230],['2015-09',236],['2015-10',314],['2015-11',377],['2015-12',430],
-    ['2016-01',369],['2016-02',437],['2016-03',416],['2016-04',448],['2016-05',531],['2016-06',673],
-    ['2016-07',624],['2016-08',575],['2016-09',610],['2016-10',700],['2016-11',745],['2016-12',963],
-    ['2017-01',970],['2017-02',1180],['2017-03',1080],['2017-04',1350],['2017-05',2300],['2017-06',2480],['2017-07',2875]
-  ].map(function (r) {
-    var p = r[0].split('-');
-    return { ts: Date.UTC(+p[0], +p[1] - 1, 28), price: r[1] };
-  });
-
-  var WEEK = 7 * 86400000;
-
-  // Interpolate monthly points to a weekly grid (log-space)
-  function monthlyToWeekly(monthly) {
-    var out = [];
-    for (var i = 0; i < monthly.length - 1; i++) {
-      var a = monthly[i], b = monthly[i + 1];
-      for (var t = a.ts; t < b.ts; t += WEEK) {
-        var f = (t - a.ts) / (b.ts - a.ts);
-        var lp = Math.log(a.price) + f * (Math.log(b.price) - Math.log(a.price));
-        out.push({ ts: t, price: Math.exp(lp) });
-      }
+  function $(id) { return document.getElementById(id); }
+  function num(n, d) {
+    if (n == null || isNaN(n)) return '—';
+    return n.toLocaleString('sk-SK', { maximumFractionDigits: d || 0 });
+  }
+  function usd(n) {
+    if (!n || isNaN(n)) return '—';
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  }
+  function eur(n) {
+    if (!n || isNaN(n)) return '—';
+    return new Intl.NumberFormat('sk-SK', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  }
+  function compact(n) {
+    if (!n || isNaN(n)) return '—';
+    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 }).format(n);
+  }
+  function timeAgo(ts) {
+    var s = Math.floor(Date.now() / 1000) - ts;
+    if (s < 60) return 'pred ' + s + ' s';
+    if (s < 3600) return 'pred ' + Math.floor(s / 60) + ' min';
+    return 'pred ' + Math.floor(s / 3600) + ' h';
+  }
+  function supplyAtHeight(h) {
+    var supply = 0, subsidy = 50, remaining = h;
+    while (remaining > 0) {
+      var blocks = Math.min(remaining, HALVING_INTERVAL);
+      supply += blocks * subsidy;
+      remaining -= blocks;
+      subsidy /= 2;
     }
-    out.push(monthly[monthly.length - 1]);
-    return out;
+    return supply;
   }
 
-  var weekly = monthlyToWeekly(EARLY); // replaced/extended once Binance loads
-  var series = [];  // {ts, price, wma}
-  var currentPrice = null;
+  function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
 
-  function buildSeries() {
-    series = [];
-    for (var i = 0; i < weekly.length; i++) {
-      var wma = null;
-      if (i >= 199) {
-        var sum = 0;
-        for (var j = i - 199; j <= i; j++) sum += weekly[j].price;
-        wma = sum / 200;
-      }
-      series.push({ ts: weekly[i].ts, price: weekly[i].price, wma: wma });
-    }
+  function refresh() {
+    // Price (mempool.space; USD+EUR in one call)
+    j(MP + '/v1/prices').then(function (p) {
+      $('priceUsd').textContent = usd(p.USD);
+      $('priceEur').textContent = eur(p.EUR);
+      $('satsPerUsd').textContent = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
+      window.__btcUsd = p.USD;
+      if (window.__supply && p.USD) $('marketCap').textContent = compact(window.__supply * p.USD);
+    }).catch(function () {});
+
+    // Market cap fallback via CoinGecko
+    j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true').then(function (g) {
+      if (g.bitcoin && g.bitcoin.usd_market_cap) $('marketCap').textContent = compact(g.bitcoin.usd_market_cap);
+    }).catch(function () {});
+
+    // Tip height + supply + halving
+    j(MP + '/blocks/tip/height').then(function (h) {
+      $('blockHeight').textContent = num(h);
+      var supply = supplyAtHeight(h);
+      window.__supply = supply;
+      $('supply').textContent = compact(supply);
+      $('supplyPct').textContent = (supply / 21000000 * 100).toFixed(2) + '%';
+      var nextHalving = (Math.floor(h / HALVING_INTERVAL) + 1) * HALVING_INTERVAL;
+      var blocksLeft = nextHalving - h;
+      $('halving').textContent = num(blocksLeft);
+      var days = blocksLeft * 10 / 60 / 24;
+      $('halvingSub').textContent = 'blokov · ~' + (days > 365 ? (days / 365).toFixed(1) + ' rokov' : Math.round(days) + ' dní');
+      if (window.__btcUsd) $('marketCap').textContent = compact(supply * window.__btcUsd);
+    }).catch(function () {});
+
+    // Fees
+    j(MP + '/v1/fees/recommended').then(function (f) {
+      $('feeFast').textContent = f.fastestFee + ' sat/vB';
+      $('feeSlow').textContent = '30 min: ' + f.halfHourFee + ' · 1 h: ' + f.hourFee + ' sat/vB';
+      $('feeBig').textContent = f.fastestFee;
+      $('fee30').textContent = f.halfHourFee + ' sat/vB';
+      $('fee60').textContent = f.hourFee + ' sat/vB';
+      $('feeMin').textContent = f.minimumFee + ' sat/vB';
+    }).catch(function () {});
+
+    // Hashrate + difficulty
+    j(MP + '/v1/mining/hashrate/3d').then(function (m) {
+      $('hashRate').textContent = compact(m.currentHashrate / 1e18) + ' EH/s';
+      $('difficulty').textContent = compact(m.currentDifficulty / 1e12) + ' T';
+    }).catch(function () {});
+
+    // Difficulty adjustment
+    j(MP + '/v1/difficulty-adjustment').then(function (d) {
+      var chg = d.difficultyChange;
+      $('diffChange').textContent = (chg > 0 ? '+' : '') + chg.toFixed(2) + '%';
+      $('diffChange').style.color = chg >= 0 ? 'var(--green)' : 'var(--red)';
+      $('diffProgress').style.width = Math.min(100, d.progressPercent).toFixed(1) + '%';
+      $('diffPct').textContent = d.progressPercent.toFixed(1) + '%';
+      $('diffBlocks').textContent = num(d.remainingBlocks);
+      $('diffDate').textContent = new Date(d.estimatedRetargetDate).toLocaleDateString('sk-SK', { day: 'numeric', month: 'short', year: 'numeric' });
+    }).catch(function () {});
+
+    // Mempool
+    j(MP + '/mempool').then(function (m) {
+      $('mempoolCount').textContent = compact(m.count);
+      $('mempoolSize').textContent = (m.vsize / 1e6).toFixed(1) + ' vMB čaká';
+    }).catch(function () {});
+
+    // Latest block
+    j(MP + '/v1/blocks').then(function (blocks) {
+      var b = blocks[0];
+      if (!b) return;
+      $('lbHeight').textContent = num(b.height);
+      $('lbAgo').textContent = 'vyťažený ' + timeAgo(b.timestamp);
+      $('lbTx').textContent = num(b.tx_count);
+      $('lbSize').textContent = (b.size / 1e6).toFixed(2) + ' MB';
+      $('lbMiner').textContent = (b.extras && b.extras.pool && b.extras.pool.name) || 'Neznámy';
+    }).catch(function () {});
+
+    $('lastUpdated').textContent = new Date().toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
   }
 
-  var canvas = document.getElementById('chart');
-  var tooltip = document.getElementById('tooltip');
-
-  function fmtUsd(n) {
-    if (n == null) return '—';
-    if (n >= 1000) return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
-    return '$' + n.toFixed(n >= 1 ? 2 : 3);
-  }
-
-  function zoneFor(mult) {
-    if (mult == null) return { label: '—', color: '#484f58' };
-    if (mult < 1.0) return { label: 'Below the Floor — Historically Rare', color: '#3fb950' };
-    if (mult < 1.6) return { label: 'Near the Floor — Deep Value Zone', color: '#63be7b' };
-    if (mult < 3.0) return { label: 'Mid-Cycle Territory', color: '#ffe600' };
-    if (mult < 5.0) return { label: 'Heated — Well Above the Floor', color: '#f6a55a' };
-    return { label: 'Euphoria — Stretched Far Above the Floor', color: '#c00000' };
-  }
-
-  var view = null;
-
-  function draw() {
-    var dpr = window.devicePixelRatio || 1;
-    var w = canvas.clientWidth;
-    var hpx = parseInt(getComputedStyle(canvas).height, 10);
-    canvas.width = w * dpr; canvas.height = hpx * dpr;
-    var ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-    ctx.clearRect(0, 0, w, hpx);
-    var pts = series.filter(function (s) { return s.wma != null; });
-    if (!pts.length) return;
-
-    var padL = 58, padR = 14, padT = 14, padB = 28;
-    var t0 = pts[0].ts;
-    var t1 = Date.now() + 60 * 86400000;
-    var lMin = Math.log10(50), lMax = Math.log10(200000);
-
-    function x(ts) { return padL + (ts - t0) / (t1 - t0) * (w - padL - padR); }
-    function y(v) { return padT + (1 - (Math.log10(v) - lMin) / (lMax - lMin)) * (hpx - padT - padB); }
-    view = { x: x, y: y, w: w, h: hpx, pts: pts };
-
-    var css = getComputedStyle(document.documentElement);
-    var cOrange = css.getPropertyValue('--btc-orange').trim();
-    var cDim = css.getPropertyValue('--text-dim').trim();
-
-    // Grid + labels
-    ctx.font = '10px Inter, sans-serif';
-    ctx.lineWidth = 1;
-    [100, 1000, 10000, 100000].forEach(function (pv) {
-      var yy = y(pv);
-      ctx.strokeStyle = 'rgba(230, 237, 243, 0.07)';
-      ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(w - padR, yy); ctx.stroke();
-      ctx.fillStyle = cDim;
-      ctx.fillText(pv >= 1000 ? '$' + pv / 1000 + 'k' : '$' + pv, 12, yy + 3);
-    });
-    for (var yr = 2016; yr <= new Date(t1).getUTCFullYear(); yr += 2) {
-      var ts = Date.UTC(yr, 0, 1);
-      if (ts < t0 || ts > t1) continue;
-      ctx.fillStyle = cDim;
-      ctx.fillText(String(yr), x(ts) - 10, hpx - 8);
-    }
-
-    // Fill between price and WMA (green when above, faint)
-    ctx.beginPath();
-    pts.forEach(function (s, i) { var xx = x(s.ts), yy = y(s.price); if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy); });
-    for (var i2 = pts.length - 1; i2 >= 0; i2--) ctx.lineTo(x(pts[i2].ts), y(pts[i2].wma));
-    ctx.closePath();
-    ctx.globalAlpha = 0.08;
-    ctx.fillStyle = cOrange;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-
-    // 200 WMA line (orange, thick)
-    ctx.beginPath();
-    pts.forEach(function (s, i) { var xx = x(s.ts), yy = y(s.wma); if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy); });
-    ctx.strokeStyle = cOrange;
-    ctx.lineWidth = 3;
-    ctx.stroke();
-
-    // Price line (white)
-    ctx.beginPath();
-    pts.forEach(function (s, i) { var xx = x(s.ts), yy = y(s.price); if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy); });
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 1.8;
-    ctx.stroke();
-
-    // Current marker
-    var last = pts[pts.length - 1];
-    ctx.beginPath();
-    ctx.arc(x(last.ts), y(last.price), 5, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 2.5;
-    ctx.strokeStyle = css.getPropertyValue('--dark').trim();
-    ctx.stroke();
-  }
-
-  canvas.addEventListener('mousemove', function (ev) {
-    if (!view) return;
-    var rect = canvas.getBoundingClientRect();
-    var mx = ev.clientX - rect.left;
-    var best = null, bestD = 1e18;
-    view.pts.forEach(function (pt) {
-      var d = Math.abs(view.x(pt.ts) - mx);
-      if (d < bestD) { bestD = d; best = pt; }
-    });
-    if (!best || bestD > 40) { tooltip.style.display = 'none'; return; }
-    var mult = best.price / best.wma;
-    var dt = new Date(best.ts);
-    tooltip.innerHTML = dt.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) +
-      '<br>Price: <b>' + fmtUsd(best.price) + '</b><br>' +
-      '200 WMA: <b>' + fmtUsd(best.wma) + '</b><br>' +
-      '<span style="color:' + zoneFor(mult).color + '">&#9632;</span> ' + mult.toFixed(2) + '× the floor';
-    tooltip.style.display = 'block';
-    var tx = view.x(best.ts) + 14;
-    if (tx > view.w - 190) tx = view.x(best.ts) - 180;
-    tooltip.style.top = Math.max(6, view.y(best.price) - 64) + 'px';
-    tooltip.style.left = tx + 'px';
-  });
-  canvas.addEventListener('mouseleave', function () { tooltip.style.display = 'none'; });
-
-  // Legend
-  var legend = document.getElementById('legend');
-  [
-    { label: 'White line — weekly Bitcoin price', color: '#ffffff' },
-    { label: 'Orange line — 200-week moving average (the "floor")', color: '#f7931a' },
-    { label: '≈ 1× — bear-market bottoms of 2015, 2018 and 2022', color: '#3fb950' },
-    { label: '4×+ — cycle tops have stretched far above the floor', color: '#c00000' }
-  ].forEach(function (b) {
-    var item = document.createElement('span');
-    item.className = 'legend-item';
-    var sw = document.createElement('span');
-    sw.className = 'legend-swatch';
-    sw.style.background = b.color;
-    if (b.color === '#ffffff') sw.style.border = '1px solid #484f58';
-    item.appendChild(sw);
-    item.appendChild(document.createTextNode(b.label));
-    legend.appendChild(item);
-  });
-
-  function updateStatus() {
-    var pts = series.filter(function (s) { return s.wma != null; });
-    if (!pts.length) return;
-    var last = pts[pts.length - 1];
-    var price = currentPrice || last.price;
-    var mult = price / last.wma;
-    document.getElementById('statusPrice').textContent = fmtUsd(price);
-    document.getElementById('statusWma').textContent = fmtUsd(last.wma);
-    var z = zoneFor(mult);
-    var chip = document.getElementById('bandChip');
-    chip.textContent = mult.toFixed(2) + '× — ' + z.label;
-    chip.style.background = z.color;
-  }
-
-  buildSeries();
-  draw();
-
-  // Weekly candles since 2017 from Binance (public, CORS-enabled)
-  fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1w&limit=1000')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (rows) {
-      var recent = rows.map(function (c) { return { ts: c[0], price: parseFloat(c[4]) }; });
-      var cut = recent[0].ts;
-      weekly = monthlyToWeekly(EARLY).filter(function (s) { return s.ts < cut; }).concat(recent);
-      buildSeries();
-      updateStatus();
-      draw();
-    })
-    .catch(function () { updateStatus(); });
-
-  // Live price for the status card
-  fetch('https://mempool.space/api/v1/prices')
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
-      if (!d.USD) return;
-      currentPrice = d.USD;
-      updateStatus();
-    })
-    .catch(function () {});
-
-  window.addEventListener('resize', draw);
+  refresh();
+  setInterval(refresh, 60000);
 })();
 </script>
 

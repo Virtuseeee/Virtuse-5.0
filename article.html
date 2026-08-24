@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com; connect-src 'self' https://www.virtuse.com https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Article — Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -394,6 +399,8 @@ a.nav-logo, .nav-logo {
 </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="progress" id="progressBar"></div>
 
@@ -537,7 +544,8 @@ a.nav-logo, .nav-logo {
         <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Terms &amp; conditions</h4>
+        <h4>Legal</h4>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="aml-compliance.html">AML &amp; Compliance</a>
       </div>
@@ -555,7 +563,7 @@ a.nav-logo, .nav-logo {
   // Language registry — add a language here (and in gen_blog.py) to expand.
   var LANGS = {
     en: {
-      api: 'https://www.virtuse.com/wp-json/wp/v2/posts',
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts',
       category: 13,
       listPage: 'blog.html',
       suffix: '',
@@ -575,7 +583,7 @@ a.nav-logo, .nav-logo {
       }
     },
     sk: {
-      api: 'https://www.virtuse.com/sk/wp-json/wp/v2/posts',
+      api: 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts',
       category: 26,
       listPage: 'blog-sk.html',
       suffix: '&lang=sk',

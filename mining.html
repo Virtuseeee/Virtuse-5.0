@@ -3,14 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com; connect-src 'self' https://www.virtuse.com https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Mining — Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/mining.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/mining.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/mining.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Mining — Virtuse">
@@ -767,6 +775,8 @@ a.nav-logo, .nav-logo {
 </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
@@ -786,7 +796,17 @@ a.nav-logo, .nav-logo {
     <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-switch" role="navigation" aria-label="Page language">
+        <a href="mining.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="sk/mining.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+      </div>
+    </li>
   </ul>
+  <div class="lang-switch nav-lang-switch" role="navigation" aria-label="Page language">
+    <a href="mining.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+    <a href="sk/mining.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+  </div>
   <button class="nav-cta">Get Started</button>
 </nav>
 
@@ -1012,7 +1032,8 @@ a.nav-logo, .nav-logo {
         <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Terms &amp; conditions</h4>
+        <h4>Legal</h4>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="aml-compliance.html">AML &amp; Compliance</a>
       </div>

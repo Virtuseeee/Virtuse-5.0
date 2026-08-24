@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,29 +10,29 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Corporate Treasury — Virtuse</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/treasury.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/treasury.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/treasury.html">
+<title>Ťažba — Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/mining.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/mining.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/mining.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Corporate Treasury — Virtuse">
-<meta property="og:description" content="Board-ready Bitcoin treasury strategies for European companies — from educational workshops to regulated custody with trusted institutional partners in the EU.">
-<meta property="og:url" content="https://staging.virtuse.com/treasury.html">
+<meta property="og:title" content="Ťažba — Virtuse">
+<meta property="og:description" content="Virtuse vás spája s preverenými poskytovateľmi hostingu pre ťažbu Bitcoinu naprieč Európou — od obstarania ASIC zariadení až po hosting v dátových centrách v severských krajinách.">
+<meta property="og:url" content="https://staging.virtuse.com/sk/mining.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="sk_SK">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Corporate Treasury — Virtuse">
-<meta name="twitter:description" content="Board-ready Bitcoin treasury strategies for European companies — from educational workshops to regulated custody with trusted institutional partners in the EU.">
+<meta name="twitter:title" content="Ťažba — Virtuse">
+<meta name="twitter:description" content="Virtuse vás spája s preverenými poskytovateľmi hostingu pre ťažbu Bitcoinu naprieč Európou — od obstarania ASIC zariadení až po hosting v dátových centrách v severských krajinách.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -100,7 +100,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* ===== HERO ===== */
 .hero {
-  padding: 80px 48px 60px;
+  padding: 80px 48px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -118,11 +118,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   pointer-events: none;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
 .hero h1 {
   font-size: 52px;
   font-weight: 900;
@@ -137,8 +132,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   font-size: 17px;
   line-height: 1.7;
   color: var(--text-muted);
-  max-width: 760px;
-  margin-bottom: 24px;
+  max-width: 640px;
+  margin-bottom: 20px;
 }
 
 /* ===== HOW IT WORKS ===== */
@@ -205,90 +200,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   line-height: 1.6;
 }
 
-/* ===== AUDIENCE ===== */
-.audience {
-  padding: 0 48px var(--section-spacing);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.audience-header {
-  margin-bottom: 32px;
-}
-
-.audience-header h2 {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-
-.audience-header p {
-  font-size: 15px;
-  color: var(--text-muted);
-}
-
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.audience-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  transition: border-color 0.2s;
-}
-
-.audience-card:hover { border-color: var(--border-hover); }
-
-.audience-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  
-  
-  gap: 10px;
-}
-
-.audience-card h3 .icon {
-  font-size: 24px;
-}
-
-.audience-card .label {
-  font-size: 12px;
-  color: var(--text-dim);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 16px;
-}
-
-.audience-features {
-  list-style: none;
-  padding: 0;
-}
-
-.audience-features li {
-  
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  line-height: 1.5;
-}
-
-.audience-features li svg {
-  width: 16px;
-  height: 16px;
-  color: var(--btc-orange);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
 /* ===== PARTNERS ===== */
 .partners {
   padding: 0 48px var(--section-spacing);
@@ -317,7 +228,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .partner-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
@@ -352,22 +263,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .pcard:hover::before { opacity: 1; }
 
-.pcard-top-pick {
-  border-color: rgba(247, 147, 26, 0.3);
-}
-
-.pcard-top-pick::before {
-  opacity: 1;
-  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
-}
-
 .pcard-header {
   
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 16px;
 }
 
 .pcard-logo {
@@ -420,7 +320,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .tag-green { background: var(--green-bg); color: var(--green); }
 .tag-blue { background: rgba(88, 166, 255, 0.12); color: #58a6ff; }
 .tag-purple { background: rgba(155, 89, 255, 0.12); color: #9b59ff; }
-.tag-gray { background: rgba(139, 148, 158, 0.12); color: var(--text-muted); }
 
 .pcard-body {
   margin-bottom: 24px;
@@ -498,7 +397,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
 
 /* ===== DISCLAIMER ===== */
-/* ===== NEWSLETTER SECTION ===== */
+/* ===== FOOTER ===== */
+/* ===== NEWSLETTER ===== */
 .newsletter {
   background: var(--dark-lighter);
   border-top: 1px solid var(--border);
@@ -547,7 +447,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .newsletter-form input:focus { border-color: var(--btc-orange); }
-
 .newsletter-form input::placeholder { color: var(--text-dim); }
 
 .newsletter-form button {
@@ -573,13 +472,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  gap: 48px;
   flex-wrap: wrap;
-  gap: 40px;
 }
 
 .footer-logo { flex-shrink: 0; }
@@ -611,7 +510,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   color: var(--text-dim);
 }
 
-@media (max-width: 768px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .partner-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px; }
+  .hero h1 { font-size: 36px; }
+  .how { padding: 0 24px 80px; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .partners { padding: 0 24px 80px; }
+  .sec-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   .newsletter { padding: 60px 24px; }
   .newsletter h2 { font-size: 28px; }
   .newsletter-form { flex-direction: column; }
@@ -621,25 +533,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-logo img { height: 60px; }
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero { padding: 60px 24px 40px; }
-  .hero h1 { font-size: 36px; }
-  .how { padding: 0 24px 80px; }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .audience { padding: 0 24px 80px; }
-  .audience-grid { grid-template-columns: 1fr; }
-  .partners { padding: 0 24px 80px; }
+@media (max-width: 600px) {
   .partner-grid { grid-template-columns: 1fr; }
-  .sec-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  }
-
-@media (max-width: 500px) {
   .steps { grid-template-columns: 1fr; }
   .pcard-footer { flex-direction: column; }
-  }
+}
 
 /* ===== UNIFIED CTA SYSTEM ===== */
 
@@ -883,43 +781,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="index.html" class="nav-logo">
+  <a href="/sk/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Buy Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Mining</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Loans</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Custody</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html" class="active"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Tax</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Kúpiť Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html" class="active"><span class="nav-link-num">02</span><span class="nav-link-label">Ťažba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Pôžičky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Dane</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boty</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog-sk.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin dáta</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začať<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Page language">
-        <a href="treasury.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="sk/treasury.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
+        <a href="../mining.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="mining.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
       </div>
     </li>
   </ul>
-  <div class="lang-switch nav-lang-switch" role="navigation" aria-label="Page language">
-    <a href="treasury.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-    <a href="sk/treasury.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+  <div class="lang-switch nav-lang-switch" role="navigation" aria-label="Jazyk stránky">
+    <a href="../mining.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+    <a href="mining.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
   </div>
-  <button class="nav-cta">Get Started</button>
+  <button class="nav-cta">Začať</button>
 </nav>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-
-
-  <h1>Bitcoin Treasury Solutions For<br><span class="highlight">Corporations</span></h1>
+  <h1>Začnite ťažiť Bitcoin<br><span class="highlight">cez európskych hostingových partnerov</span></h1>
 
   <p class="hero-desc">
-    Board-ready Bitcoin treasury strategies for European companies. From educational workshops to regulated custody and execution &mdash; we connect you with the most trusted institutional partners in the EU. No custody by Virtuse.
+    Virtuse vás spája s preverenými poskytovateľmi hostingu pre ťažbu Bitcoinu naprieč Európou. Od obstarania ASIC zariadení až po hosting v dátových centrách v severských krajinách — pomáhame vám zarábať Bitcoin prostredníctvom proof-of-work. Ťažba nie je aktivitou regulovanou MiCA; títo partneri fungujú podľa všeobecných obchodných a energetických predpisov.
   </p>
 
 
@@ -927,57 +823,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">How It Works</div>
+  <div class="how-title">Ako to funguje</div>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
-      <h3>Education</h3>
-      <p>Board workshop on Bitcoin treasury strategy and risk framework</p>
+      <h3>Vyberte si poskytovateľa</h3>
+      <p>Prehliadajte si našich preverených poskytovateľov hostingu pre ťažbu. Porovnajte ceny elektriny, lokality a minimálnu veľkosť objednávky.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h3>Partner Selection</h3>
-      <p>Choose regulated custody + execution provider</p>
+      <h3>Obstarajte si ASIC zariadenia</h3>
+      <p>Kúpte si ťažiarov priamo alebo cez našich partnerov. Poradíme vám s výberom najlepšieho hardvéru pre váš rozpočet.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <h3>Implementation</h3>
-      <p>Execute allocation through licensed CASP partner</p>
+      <h3>Odošlite do zariadenia</h3>
+      <p>Vaši ťažiari sa odošlú do hostingového zariadenia a nainštaluje ich tamojší technický tím.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <h3>Ongoing Management</h3>
-      <p>Reporting, rebalancing, and governance</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== AUDIENCE ===== -->
-<section class="audience">
-  <div class="audience-header">
-    <h2>Who We Serve</h2>
-    <p>Tailored treasury solutions for different types of institutional clients</p>
-  </div>
-  <div class="audience-grid">
-    <div class="audience-card">
-      <h3><span class="icon">&#127970;</span> Public Companies</h3>
-      <div class="label">Treasury &amp; Board Solutions</div>
-      <ul class="audience-features">
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Board workshops on Bitcoin treasury strategy</li>
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Treasury allocation strategy and risk frameworks</li>
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Shareholder communication templates</li>
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Regulated custody and execution partner matching</li>
-      </ul>
-    </div>
-    <div class="audience-card">
-      <h3><span class="icon">&#127942;</span> Family Offices</h3>
-      <div class="label">HNWI &amp; Wealth Preservation</div>
-      <ul class="audience-features">
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> HNWI allocation models for Bitcoin exposure</li>
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Custody comparison across licensed providers</li>
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Estate planning with Bitcoin assets</li>
-        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Quarterly portfolio reviews and rebalancing</li>
-      </ul>
+      <h3>Zarábajte Bitcoin denne</h3>
+      <p>Odmeny z ťažby prichádzajú do vašej peňaženky každý deň. Cieľovú adresu máte pod kontrolou vy, po celý čas.</p>
     </div>
   </div>
 </section>
@@ -986,23 +852,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Our Institutional Partners</h2>
-      <p>MiCA-licensed custodians and execution platforms for corporate treasuries</p>
+      <h2>Naši ťažobní partneri</h2>
+      <p>Preverení poskytovatelia hostingu naprieč Európou s affiliate a odporúčacími programami</p>
     </div>
   </div>
 
   <div class="partner-grid">
 
-    <!-- COINBASE INSTITUTIONAL -->
-    <div class="pcard pcard-top-pick">
+    <!-- ONEMINERS -->
+    <div class="pcard">
       <div class="pcard-header">
         <div class="pcard-logo">
-          <img src="logo-coinbase.png" alt="Coinbase Institutional" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+          <img src="../logo-oneminers.png" alt="OneMiners" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
-            <div class="pcard-name">Coinbase Institutional</div>
+            <div class="pcard-name">OneMiners</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Luxembourg (CSSF MiCA)
+              Česká republika
             </div>
           </div>
         </div>
@@ -1010,90 +876,89 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>The largest regulated crypto custodian globally.</strong> MiCA CASP licensed via CSSF Luxembourg &mdash; passported to all 27 EU states. 13+ years track record. Coinbase Prime offers custody, execution, algorithmic trading, and financing. $320M cold storage coverage. SOC 2 Type II.</p>
+        <p><strong>Jeden z 5 najväčších predajcov ASIC zariadení v EÚ</strong> s hostingovými zariadeniami v Nórsku, Fínsku a Etiópii. Najsilnejší affiliate program v európskej ťažbe — vyplatených cez 732-tisíc dolárov odporúčateľom.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCA across all <strong>27 EU states</strong></li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>$320M</strong> insurance coverage</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Coinbase Prime <span>(custody + execution)</span></li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>100M+</strong> verified users</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Hosting už od <strong>0,043 $/kWh</strong></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Zariadenia v Nórsku, Fínsku a Etiópii</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 10 889 obslúžených odporučených používateľov</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Systém Karma úrovní (od Explorer po Legend)</li>
         </ul>
       </div>
-      
+
       <div class="pcard-footer">
-        <a href="https://coinbase.com/institutional" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Contact Coinbase
+        <a href="https://oneminers.com/products/?discount=virtuse_buy" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Navštíviť OneMiners
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- SYGNUM -->
+    <!-- ABUNDANT MINES -->
     <div class="pcard">
       <div class="pcard-header">
         <div class="pcard-logo">
-          <img src="logo-sygnum.png" alt="Sygnum" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+          <img src="../logo-abundantmines.png" alt="Abundant Mines" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
-            <div class="pcard-name">Sygnum</div>
+            <div class="pcard-name">Abundant Mines</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Switzerland (FINMA)
+              USA / Európa
             </div>
           </div>
         </div>
         <div class="pcard-tags">
-          <span class="tag tag-gray">DISCRETIONARY</span>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>The world's first regulated digital asset bank.</strong> FINMA banking license. Sygnum Select offers discretionary mandates for corporate treasuries with $200M AuM. Active management including rebalancing, staking, and hedging. Swiss banking standard.</p>
+        <p><strong>Profesionálne spravovaná ťažobná infraštruktúra</strong> so zameraním na obnoviteľnú energiu. Zariadenia na podnikovej úrovni. Ideálne pre stredných až veľkých ťažiarov, ktorí chcú profesionálnu správu.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>FINMA banking license</strong> <span>(not just CASP)</span></li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Discretionary treasury mandates</strong></li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>CHF 4B+</strong> AuA</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Active management <span>(rebalancing, staking, hedging)</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Poháňané obnoviteľnou energiou</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Zariadenia na podnikovej úrovni</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Profesionálny riadiaci tím</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Odporúčaný získa 1 mesiac hostingu zadarmo</li>
         </ul>
       </div>
-      
+
       <div class="pcard-footer">
-        <a href="https://sygnum.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Contact Sygnum
+        <a href="https://abundantmines.com/ref/76/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Kontaktovať Abundant
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- BITGO -->
+    <!-- POWER MINING -->
     <div class="pcard">
       <div class="pcard-header">
         <div class="pcard-logo">
-          <img src="logo-bitgo.png" alt="BitGo" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+          <img src="../logo-powermining.png" alt="Power Mining" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
-            <div class="pcard-name">BitGo</div>
+            <div class="pcard-name">Power Mining</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Germany (BaFin MiCA)
+              Dánsko (sklad v EÚ)
             </div>
           </div>
         </div>
         <div class="pcard-tags">
-          <span class="tag tag-gray">API</span>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Leading institutional custodian with MiCA CASP license</strong> via BaFin Germany. $250M insurance coverage. ETP-grade custody serving Virtune and others. Strongest API for integration. Already serves 21bitcoin &mdash; proven European infrastructure.</p>
+        <p><strong>Špecialista na open-source ťažobný hardvér</strong> (Bitaxe). Sklad v EÚ pre rýchle doručenie. Predaných viac ako 22 000 produktov. Jedinečná voľba pre bitcoinových puristov, ktorí chcú podporiť open-source ťažbu.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCA via <strong>BaFin (Germany)</strong></li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>$250M</strong> insurance coverage</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> ETP-grade custody</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Strongest API</strong> <span>for integration</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Open-source ťažiari Bitaxe</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Sklad v EÚ — rýchle doručenie</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Predaných viac ako 22-tisíc produktov</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Sledovanie affiliate cez GoAffPro</li>
         </ul>
       </div>
-      
+
       <div class="pcard-footer">
-        <a href="https://bitgo.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Contact BitGo
+        <a href="https://shop.powermining.io/?ref=Virtuse" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Navštíviť Power Mining
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+        <a href="https://shop.powermining.io/collections/products" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Zobraziť produkty</a>
       </div>
     </div>
 
@@ -1101,14 +966,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ===== DISCLAIMER ===== -->
+<!-- ===== FOOTER ===== -->
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Fix the Money, Fix the World</h2>
-  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
+  <h2>Opravte peniaze, opravte svet</h2>
+  <p>Pridajte sa k 18 000+ investorom, ktorí sú o krok vpred. Virtuse Report každý týždeň priamo do vašej schránky.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Enter your email" required>
+    <input type="email" name="email" placeholder="Zadajte svoj email" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">SUBSCRIBE NOW</button>
+    <button type="submit">ODOBERAŤ TERAZ</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -1125,7 +991,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'SENDING...';
+      btn.textContent = 'ODOSIELAM...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1135,14 +1001,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
+          msg.textContent = "Ste v tom — skontrolujte si e-mail, čaká vás uvítacia správa.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
+          msg.textContent = (result.data && result.data.error) || 'Niečo sa pokazilo. Skúste to prosím znova.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Network error \u2014 please try again.';
+        msg.textContent = 'Chyba siete — skúste to prosím znova.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1161,20 +1027,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="about.html">About Us</a>
+        <h4>Spoločnosť</h4>
+        <a href="about.html">O nás</a>
         <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="aml-compliance.html">AML &amp; Compliance</a>
+        <h4>Právne</h4>
+        <a href="terms-and-conditions.html">Obchodné podmienky</a>
+        <a href="privacy-policy.html">Ochrana osobných údajov</a>
+        <a href="aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všetky práva vyhradené.</p>
   </div>
 </footer>
 
