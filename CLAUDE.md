@@ -2,11 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-08-24) — Slovak translation rollout
+## Session status (2026-08-25) — Slovak translation rollout
 
-**Current state — done:** The whole site (20 non-blog pages) now has a
+**Current state — done:** The whole site (20 non-blog pages) has a
 Slovak translation under `Kimi_Agent_Virtuse MiCA Partners/sk/`, plus a
-reusable i18n system to translate into more languages later. Specifics:
+reusable i18n system to translate into more languages later, **and** a
+first round of human copy-review fixes has been applied on top. Specifics:
 - All pages except `blog.html`/`blog-sk.html`/`article.html` (intentionally
   out of scope — see below) have a `sk/<page>.html` counterpart: nav,
   footer, hero/body copy, and JS-generated dashboard strings (chart
@@ -21,11 +22,32 @@ reusable i18n system to translate into more languages later. Specifics:
   see that folder's README before translating another page/language.
 - Full system documented in
   [`TRANSLATION-SYSTEM.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/TRANSLATION-SYSTEM.md).
-- **Deployed and verified live** at `https://staging.virtuse.com/sk/...`
-  (GitHub Pages, see gotcha below) — confirmed via browser click-through
-  on every page, no leftover English, no new console errors.
+- **Post-launch review-fix rounds** (all on `main`, all synced to
+  `gh-pages`/staging — see commands below for the sync recipe):
+  - `b2cfad6` — 12-item homepage copy fixes from human review (hero
+    headline, CTA text, hub-node label, services heading, how-it-works
+    step count, blog subtext, mission statement) + sitewide label
+    renames (Tradingové boty, Dane, BTC Data) + sitewide removal of
+    stylistic em dashes/`&mdash;` from prose (title/OG/Twitter meta
+    separators switched to `|`).
+  - `493d889` — Buy Bitcoin how-it-works steps reworded; shared footer
+    heading "Právne" → "Informácie" propagated to all 18 pages using it.
+  - `f65ec04` — About Us hero rewritten: new h1 ("Globálna
+    infraštruktúra pre Bitcoin") and a new two-paragraph mission/company
+    copy (Virtuse Group, Singapore HQ, Bratislava base, 50+ partners).
+  - `306f717` — **Bug fix**: `blog-sk.html`'s nav/footer links were bare
+    (`buy-bitcoin.html`, `about.html`, etc.), which resolve to the
+    *English* root pages since `blog-sk.html` lives outside `sk/`. A
+    visitor reading the Slovak blog who clicked any other nav item got
+    dropped into English. Fixed by routing all of them through
+    `sk/<page>.html`; also fixed the nav's own "Blog" item, which
+    pointed at `blog.html` (English) despite being marked active.
+- `gh-pages` (staging) is currently in sync with `main` as of `306f717`
+  / `f51c6ba` — confirmed live via `curl`/browser on
+  `staging.virtuse.com`.
 
-**In progress:** Nothing mid-task — this phase is complete and pushed.
+**In progress:** Nothing mid-task — every fix above is committed, pushed,
+and verified live on staging.
 
 **Next steps, in order:**
 1. **Human legal review** of the three AI-translated compliance pages
@@ -41,16 +63,21 @@ reusable i18n system to translate into more languages later. Specifics:
    `styles.css` size and `/sk/` both unchanged); this is unresolved —
    next session should re-verify the SFTP credentials/path with the user
    before retrying, rather than assuming the same command will work.
+   Note production is now further behind than before, since none of the
+   review-fix commits above have reached it either.
 3. Decide whether to fold `blog.html`/`blog-sk.html` into the `sk/`
    folder convention, or leave the suffix pattern permanently (currently
-   left as-is by deliberate decision — low priority).
+   left as-is by deliberate decision — low priority). The nav-link bug
+   in `306f717` was fixed *without* folding it in (links now point from
+   the root-level `blog-sk.html` into `sk/`), so this decision is still
+   open, just no longer urgent.
 4. When ready for a second language, follow
    [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)'s
    "Adding language #2" section.
-5. Two **pre-existing, unrelated** local changes (`.claude/launch.json`,
-   `.gitignore`) have been sitting uncommitted since before this work
-   started — not touched all session, still need the user's own call on
-   whether/how to commit them.
+5. Keep taking human-review copy fixes as they come in — the pattern
+   established this round (edit on `main` → verify on local preview →
+   commit/push to `main` → sync `gh-pages` worktree → push → confirm
+   live via `curl`/Monitor) is the one to repeat; see commands below.
 
 **Decisions, constraints & gotchas (not obvious from the code):**
 - **Two completely separate deploy targets, easy to conflate:**
@@ -65,15 +92,23 @@ reusable i18n system to translate into more languages later. Specifics:
   credentials, separate manual step, and per next-step #2 above, the
   last attempt there didn't work.
 - **`gh-pages` drifts behind `main` silently** — it was ~7 commits stale
-  (missing OG tags, `terms-and-conditions.html`) before this session's
-  sync. There's no automation keeping it current; treat it as a manual
-  deploy step every time, not a mirror.
-- Pages translated in batches will have **stale `../page.html` links**
-  to pages that didn't have a `sk/` counterpart yet at scaffold time —
-  this bit us mid-session (whole site's nav pointed back to English) and
-  `i18n-tools/relink_sk.py` exists specifically to fix it. **Re-run it**
-  after translating any new batch of pages, before considering the batch
-  done.
+  (missing OG tags, `terms-and-conditions.html`) before the initial
+  translation sync. There's no automation keeping it current; treat it
+  as a manual deploy step every time, not a mirror. `main` itself can
+  also pick up unrelated automated commits between sessions (e.g. a
+  `[skip ci]` Bitcoin Pulse cache update bot) — if `git push origin main`
+  is rejected as non-fast-forward, `git pull --rebase origin main` and
+  push again; don't assume the rejection means a real conflict.
+- Pages translated/edited in batches can end up with **stale
+  `../page.html` links** to pages that don't share their prefix
+  convention — this has bitten the project twice: once mid-translation
+  (whole `sk/` site's nav pointed back to English; fixed by
+  `i18n-tools/relink_sk.py`, re-run after every batch), and once via
+  `blog-sk.html` specifically, which sits at the repo root outside
+  `sk/` and isn't covered by `relink_sk.py` at all — its links had to be
+  fixed by hand (`306f717`). Any future edit to `blog-sk.html`'s nav/
+  footer must keep those hrefs pointed at `sk/<page>.html`, not bare
+  `<page>.html`.
 - The sandboxed Bash tool's permission classifier blocks shell loops and
   bulk `rm -rf`/`find -exec` even against scratch/worktree paths — use
   explicit multi-argument `cp src1 src2 ... dest/` (no loop) for
