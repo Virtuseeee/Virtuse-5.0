@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>Податкова звітність для Біткоїна | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/tax.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/tax.html">
+<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/tax.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/tax.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Податкова звітність для Біткоїна | Virtuse">
+<meta property="og:description" content="Податкові інструменти для Біткоїна, розроблені під європейські податкові системи. Автоімпорт транзакцій і податкові звіти для конкретної країни за лічені хвилини. Без KYC.">
+<meta property="og:url" content="https://staging.virtuse.com/uk/tax.html">
+<meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Податкова звітність для Біткоїна | Virtuse">
+<meta name="twitter:description" content="Податкові інструменти для Біткоїна, розроблені під європейські податкові системи. Автоімпорт транзакцій і податкові звіти для конкретної країни за лічені хвилини. Без KYC.">
+<meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body { font-family: 'Inter', sans-serif; background: #0d1421; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+/* Navigation */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #e6edf3; text-decoration: none; flex-shrink: 0; }
+.nav-logo-img { height: 32px; width: auto; display: block; }
+/* Logo image set in HTML */
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-decoration: none; }
+.nav-links a:hover, .nav-links a.active { color: #f7931a; }
+.nav-links a.active { font-weight: 600; }
+.nav-cta { background: #f7931a; color: #0d1421; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+.nav-cta:hover { background: #e8850f; transform: translateY(-1px); }
+.mobile-menu-btn { display: none; background: none; border: none; color: #8b949e; font-size: 22px; cursor: pointer; }
+
+/* Hero */
+.hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0 auto; }
+.hero p { margin: 0 0 32px; }
+.hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: #f7931a; }
+.hero p { font-size: 18px; color: #8b949e; max-width: 680px; margin: 0 0 32px; line-height: 1.65; }
+/* How It Works */
+.how-section { padding: 60px 24px 80px; }
+.section-header { text-align: center; margin-bottom: 52px; }
+.section-header h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 10px; }
+.section-header p { font-size: 16px; color: #8b949e; }
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+.how-card { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 36px 28px; position: relative; transition: border-color 0.2s; }
+.how-card:hover { border-color: #484f58; }
+.step-num { position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 800; color: rgba(247, 147, 26,0.08); line-height: 1; }
+.how-icon { width: 44px; height: 44px; border-radius: 12px;   justify-content: center; margin-bottom: 20px; }
+.how-icon.orange { background: rgba(247, 147, 26,0.12); }
+.how-icon.blue { background: rgba(88,166,255,0.12); }
+.how-icon.green { background: rgba(63,185,80,0.12); }
+.how-icon.purple { background: rgba(188,140,255,0.12); }
+.how-icon svg { width: 22px; height: 22px; }
+.how-icon.orange svg { color: #f7931a; }
+.how-icon.blue svg { color: #58a6ff; }
+.how-icon.green svg { color: #3fb950; }
+.how-icon.purple svg { color: #bc8cff; }
+.how-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.how-card p { font-size: 14px; color: #8b949e; line-height: 1.55; }
+
+/* EU Tax Complexity Card */
+.eu-card { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
+.eu-card-inner { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
+.eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247, 147, 26,0.12);   justify-content: center; flex-shrink: 0; }
+.eu-icon svg { width: 28px; height: 28px; color: #f7931a; }
+.eu-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.eu-content p { font-size: 15px; color: #8b949e; line-height: 1.6; }
+.eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
+.eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
+
+/* Partner Cards */
+.partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
+.partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.partner-card { background: #161f30; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; transition: all 0.25s;  flex-direction: column; }
+.partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: #484f58; }
+.partner-card.top-pick { border: 1px solid rgba(247, 147, 26,0.3); }
+.partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.partner-logo { display: flex; align-items: center; gap: 14px; }
+.partner-name { font-size: 18px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
+.partner-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0; }
+.partner-icon.bp { background: #f7931a; }
+.partner-icon.wa { background: #58a6ff; }
+.partner-icon.di { background: #3fb950; }
+.partner-location { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #8b949e; }
+.partner-location svg { width: 12px; height: 12px; }
+.partner-tags { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+.tag.orange { background: rgba(247, 147, 26,0.15); color: #f7931a; }
+.tag.blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
+.tag.green { background: rgba(63,185,80,0.15); color: #3fb950; }
+.partner-body { padding: 0 28px; flex-grow: 1; }
+.partner-body p { font-size: 14px; color: #8b949e; line-height: 1.6; margin-bottom: 20px; }
+.partner-features { list-style: none; margin-bottom: 20px; }
+.partner-features li {   gap: 8px; font-size: 13px; color: #e6edf3; padding: 6px 0; }
+.partner-features li svg { width: 14px; height: 14px; color: #3fb950; flex-shrink: 0; }
+.partner-cta {  gap: 10px; padding: 0 28px 28px; }
+.btn-primary { flex: 1; background: #f7931a; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; transition: all 0.2s; border: none; cursor: pointer; }
+.btn-primary:hover { background: #ffffff; color: #f7931a; transform: translateY(-1px); }
+.btn-secondary { flex: 1; background: transparent; color: #8b949e; font-weight: 600; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; border: 1px solid #30363d; transition: all 0.2s; cursor: pointer; }
+.btn-secondary:hover { border-color: #484f58; color: #e6edf3; }
+
+/* Comparison Table */
+.compare-section { padding: 0 24px 60px; max-width: 900px; margin: 0 auto; }
+.compare-section h2 { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 28px; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.compare-table th { padding: 14px 20px; text-align: left; font-weight: 600; color: #8b949e; border-bottom: 1px solid #30363d; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+.compare-table th:first-child { width: 35%; }
+.compare-table td { padding: 14px 20px; border-bottom: 1px solid #30363d; color: #e6edf3; }
+.compare-table td:first-child { color: #8b949e; font-weight: 500; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(22, 31, 48,0.5); }
+.compare-table td.best { color: #3fb950; font-weight: 600; }
+
+/* Disclaimer */
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter {
+  background: #111a2b;
+  border-top: 1px solid #30363d;
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter p {
+  color: #8b949e;
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background: #0d1421;
+  color: #e6edf3;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: #f7931a; }
+.newsletter-form input::placeholder { color: #484f58; }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: #e6edf3;
+  color: #0d1421;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: #f7931a; color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: #0d1421;
+  border-top: 1px solid #30363d;
+  padding: 60px 48px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-logo img {
+  height: 80px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-logo img:hover { opacity: 1; }
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+.footer-col a {
+  display: block;
+  color: #8b949e;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: #f7931a; }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #30363d;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: #484f58;
+}
+
+@media (max-width: 768px) {
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-columns { gap: 40px; }
+  .footer-logo img { height: 60px; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+nav { padding: 0 24px; }
+.mobile-menu-btn { display: block; }
+.hero { padding: 64px 24px 52px; }
+.hero h1 { font-size: 34px; }
+.hero p { font-size: 16px; margin: 0 0 24px; }
+.how-grid { grid-template-columns: repeat(2, 1fr); }
+.partner-grid { grid-template-columns: 1fr; }
+.eu-card-inner { flex-direction: column; gap: 16px; }
+.compare-table { font-size: 13px; }
+.compare-table th, .compare-table td { padding: 10px 12px; }
+}
+@media (max-width: 500px) {
+.how-grid { grid-template-columns: 1fr; }
+.partner-cta { flex-direction: column; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .btn-primary, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btc-orange, #f7931a);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
+  background: #ffffff;
+  color: var(--btc-orange, #f7931a);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+.btn-secondary {
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--btc-orange, #f7931a);
+  color: var(--btc-orange, #f7931a);
+  background: rgba(247, 147, 26, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ===== MOBILE MENU ===== */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, #0d1421 0%, #0a0f1a 55%, #0d1421 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, #484f58);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #e6edf3;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, #484f58);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, #484f58);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links a.active { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, #484f58);
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== PARTNER CTA FIX =====
+   .btn-primary here only ever had one class (unlike other subpages' shared
+   "btn btn-primary" pattern, where .btn carries flex:1 / full-width sizing),
+   so the site-wide CTA system's display:inline-flex left it content-hugging
+   instead of spanning the card like Custody/Buy Bitcoin/Mining's buttons. */
+.partner-cta .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.partner-cta .btn-primary svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ===== UK: compact nav text =====
+   Ukrainian nav labels run noticeably longer than their English originals,
+   so at the same per-item padding/font-size they wrap onto two lines well
+   before the English nav does. Tighten the gap/padding/font-size a notch
+   and force single-line labels so the row matches (or beats) the English
+   nav's fit at the same viewport width. */
+/* .nav-actions groups the language switcher with the CTA button into one
+   flex item so the nav's space-between doesn't spread them apart -- the
+   switcher sits right next to the CTA, not centered in the leftover gap.
+   Declared before the media queries below so their narrower-width
+   overrides (same selector) win the cascade at those widths. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav-links a {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+/* Extra squeeze for the narrow "almost mobile" desktop band, where even
+   the compact pass above isn't quite enough room for the longer labels. */
+@media (min-width: 1025px) and (max-width: 1240px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+
+/* ===== UK: compact language dropdown =====
+   Site-navigation stays exactly as shipped (inline links >1024px,
+   hamburger overlay <=1024px) -- only the language switcher moves out of
+   the inline nav row. A single compact button opens a small dropdown
+   (EN/SK/UA), so the desktop nav row never overflows regardless of how
+   many languages exist. */
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--btc-orange); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--btc-orange);
+  color: #0d0902;
+}
+
+@media (max-width: 1024px) {
+  .lang-menu { display: none; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Navigation -->
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a href="/uk/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html" class="active"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
+        <a href="../tax.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/tax.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="tax.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
+        <span class="lang-flag">🇺🇦</span>UA
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../tax.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/tax.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="tax.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+      </div>
+    </div>
+    <button class="nav-cta">Розпочати</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+(function () {
+  var wrap = document.getElementById('langMenu');
+  var btn = document.getElementById('langMenuBtn');
+  if (!wrap || !btn) return;
+  function close() {
+    wrap.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+
+<!-- Hero -->
+<section class="hero">
+<h1>Податкова звітність для Біткоїна<br><span>стала простою</span></h1>
+<p>Податкові інструменти лише для Біткоїна, розроблені під європейські податкові системи. Автоімпорт транзакцій з гаманців і бірж. Формуйте податкові звіти для конкретної країни за лічені хвилини, а не дні. Без KYC для податкового ПЗ.</p>
+
+</section>
+
+<!-- How It Works -->
+<section class="how-section">
+<div class="section-header">
+<h2>Як це працює</h2>
+<p>Від імпорту гаманця до готового податкового звіту за чотири кроки</p>
+</div>
+<div class="how-grid">
+<div class="how-card">
+<div class="step-num">01</div>
+<div class="how-icon orange">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+</div>
+<h3>Підключіть гаманці</h3>
+<p>Імпортуйте xPub або CSV-експорти з ваших гаманців і бірж</p>
+</div>
+<div class="how-card">
+<div class="step-num">02</div>
+<div class="how-icon blue">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+</div>
+<h3>Автокласифікація</h3>
+<p>Програма категоризує транзакції (купівля, продаж, переказ, майнінг)</p>
+</div>
+<div class="how-card">
+<div class="step-num">03</div>
+<div class="how-icon green">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+</div>
+<h3>Перевірка</h3>
+<p>Перевірте категоризацію та додайте відсутні транзакції</p>
+</div>
+<div class="how-card">
+<div class="step-num">04</div>
+<div class="how-icon purple">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</div>
+<h3>Експорт звіту</h3>
+<p>Завантажте податковий звіт для конкретної країни, готовий до подачі</p>
+</div>
+</div>
+</section>
+
+<!-- EU Tax Complexity -->
+<div class="eu-card">
+<div class="eu-card-inner">
+<div class="eu-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+</div>
+<div class="eu-content">
+<h3>У кожній країні ЄС свої правила оподаткування Біткоїна</h3>
+<p>Німеччина: неоподатковуваний період утримання 1 рік. Франція: фіксований податок 30% (PFU). Австрія: 27,5% податку на приріст капіталу. Португалія: тепер оподатковується. Наші партнери підтримують DE, AT, CH, FR, IT, ES, NL та інші.</p>
+<div class="eu-countries">
+<span class="eu-country-tag">DE</span>
+<span class="eu-country-tag">AT</span>
+<span class="eu-country-tag">CH</span>
+<span class="eu-country-tag">FR</span>
+<span class="eu-country-tag">IT</span>
+<span class="eu-country-tag">ES</span>
+<span class="eu-country-tag">NL</span>
+<span class="eu-country-tag">PT</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Partner Cards -->
+<section class="partners-section">
+<div class="section-header">
+<h2>Наші партнери з податкової звітності</h2>
+<p>Ретельно відібрані інструменти для європейських інвесторів, які працюють лише з Біткоїном</p>
+</div>
+<div class="partner-grid">
+
+<!-- Divly -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-divly.png" alt="Divly" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Divly</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Швеція
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Податковий інструмент із пріоритетом приватності, без потреби в KYC. Від імпорту до звіту за 14 хвилин. Підтримує понад 30 країн, включно з Францією та Скандинавією. Доступний тариф з експертною перевіркою. Категоризація, зручна для Біткоїна.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Без потреби в KYC</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>14 хвилин від імпорту до звіту</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 30 країн</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Доступна експертна перевірка</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://divly.com/?ref=otfkzmf" class="btn-primary" target="_blank" rel="noopener">Отримати Divly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+<!-- Blockpit -->
+<div class="partner-card top-pick">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-blockpit.png" alt="Blockpit" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Blockpit</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Австрія
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Австрійський податковий інструмент з понад 700 інтеграціями. Офіційний партнер Bitpanda та BISON. Звіти для конкретної країни: Німеччина, Австрія, Швейцарія, Італія, Іспанія, Нідерланди. Безкоштовний тариф відстеження портфеля. Найшвидше зростаючий податковий інструмент в ЄС.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 700 інтеграцій</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Партнер Bitpanda/BISON</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 7 країн ЄС</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Безкоштовне відстеження портфеля</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://app.blockpit.io/register?fpr=virtuse" class="btn-primary" target="_blank" rel="noopener">Отримати Blockpit<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+<!-- CoinTracking -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-cointracking.png" alt="CoinTracking" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">CoinTracking</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Німеччина
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Ветеран криптоподатків: відстежує портфелі та формує податкові звіти з 2013 року з Мюнхена. Понад 1,9 мільйона користувачів, понад 300 інтеграцій з біржами та понад 25 типів звітів. Безкоштовний тариф покриває до 200 транзакцій.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>З 2013 року, оригінальний трекер</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 1,9 млн користувачів у світі</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 300 інтеграцій з біржами</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Безкоштовно до 200 транзакцій</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://cointracking.info/?ref=V328565" class="btn-primary" target="_blank" rel="noopener">Отримати CoinTracking<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+<!-- Koinly -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-koinly.png" alt="Koinly" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Koinly</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Велика Британія
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Безкоштовне відстеження портфеля зі Smart Transfer на базі ШІ, який автоматично виявляє перекази між гаманцями. Імпортуйте до 10 000 транзакцій із понад 400 бірж і гаманців у понад 100 країнах. Платите лише тоді, коли завантажуєте звіт.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Безкоштовне відстеження до 10 000 транзакцій</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 400 інтеграцій з біржами та гаманцями</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Smart Transfer на базі ШІ</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Методи FIFO, LIFO, HIFO та середньої вартості</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://koinly.io/?via=C7DEBFCF&utm_source=affiliate" class="btn-primary" target="_blank" rel="noopener">Отримати Koinly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Comparison Table -->
+<section class="compare-section">
+<h2>Швидке порівняння</h2>
+<table class="compare-table">
+<thead>
+<tr>
+<th>Характеристика</th>
+<th>Divly</th>
+<th>Blockpit</th>
+<th>CoinTracking</th>
+<th>Koinly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ціна</td>
+<td class="best">EUR 39/рік</td>
+<td>EUR 49+/рік</td>
+<td>Від EUR 11/міс</td>
+<td>Від $49/рік</td>
+</tr>
+<tr>
+<td>Безкоштовний тариф</td>
+<td>Ні</td>
+<td class="best">Так (відстеження)</td>
+<td class="best">Так (200 тр.)</td>
+<td class="best">Так (10 000 тр.)</td>
+</tr>
+<tr>
+<td>Країни</td>
+<td>30+</td>
+<td>7+ ЄС</td>
+<td class="best">100+</td>
+<td class="best">100+</td>
+</tr>
+<tr>
+<td>Потрібен KYC</td>
+<td class="best">Ні</td>
+<td class="best">Ні</td>
+<td class="best">Ні</td>
+<td class="best">Ні</td>
+</tr>
+<tr>
+<td>Підтримка DeFi</td>
+<td>Обмежена</td>
+<td class="best">Так</td>
+<td class="best">Так</td>
+<td class="best">Так</td>
+</tr>
+<tr>
+<td>Найкраще для</td>
+<td>Приватність</td>
+<td>Кількох країн ЄС</td>
+<td>Досвідчених користувачів</td>
+<td>Глобального покриття</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- Disclaimer -->
+<!-- Newsletter -->
+<section class="newsletter">
+  <h2>Змінимо гроші, змінимо світ</h2>
+  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
+  <form class="newsletter-form" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Введіть свій email" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+    <button type="submit">ПІДПИСАТИСЯ</button>
+  </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'НАДСИЛАННЯ...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
+          msg.style.color = 'var(--green, #3fb950)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
+</section>
+
+<!-- Footer -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Компанія</h4>
+        <a href="about.html">Про нас</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Правова інформація</h4>
+        <a href="terms-and-conditions.html">Умови використання</a>
+        <a href="privacy-policy.html">Політика конфіденційності</a>
+        <a href="aml-compliance.html">AML і Compliance</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+  </div>
+</footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.querySelector('.partners, .partners-section, #services');
+      if (!target) {
+        window.location.href = 'index.html#services';
+        return;
+      }
+      var nav = document.querySelector('.nav');
+      var offset = (nav ? nav.offsetHeight : 0) + 16;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
