@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com https://bitcoinwave.net; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -11,28 +11,27 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Bitcoin Data — Virtuse</title>
+<title>Bitcoin Rainbow Chart — Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-data.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bitcoin-data.html">
-<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/bitcoin-data.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-data.html">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/root-cycles.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/root-cycles.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/root-cycles.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Bitcoin Data — Virtuse">
-<meta property="og:description" content="Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed.">
-<meta property="og:url" content="https://staging.virtuse.com/bitcoin-data.html">
+<meta property="og:title" content="Bitcoin Rainbow Chart — Virtuse">
+<meta property="og:description" content="Bitcoin's price plotted on a root-scale power-law model, mapping every halving cycle onto one curve. Chart and model by @LeomathHeart (Bitcoin Wave), featured here with credit.">
+<meta property="og:url" content="https://staging.virtuse.com/root-cycles.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bitcoin Data — Virtuse">
-<meta name="twitter:description" content="Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed.">
+<meta name="twitter:title" content="Bitcoin Rainbow Chart — Virtuse">
+<meta name="twitter:description" content="Bitcoin's price plotted on a root-scale power-law model, mapping every halving cycle onto one curve. Chart and model by @LeomathHeart (Bitcoin Wave), featured here with credit.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -77,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* ===== HERO ===== */
 .hero {
-  padding: 80px 48px 48px;
+  padding: 80px 48px 36px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -92,14 +91,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   height: 600px;
   background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
   pointer-events: none;
-}
-
-.hero-top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
 }
 
 .hero h1 {
@@ -117,34 +108,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 680px;
-}
-
-.live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--green-bg);
-  border: 1px solid rgba(63, 185, 80, 0.35);
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 100px;
-  margin-bottom: 6px;
-  white-space: nowrap;
-}
-
-.live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
 }
 
 /* ===== SUB MENU ===== */
@@ -184,59 +147,119 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .subnav a.active { background: var(--btc-orange); color: #0d0902; }
 
-/* ===== PRICE CARD ===== */
-.price-section {
-  padding: 0 48px 40px;
+/* ===== CREDIT ===== */
+.credit-section {
+  padding: 0 48px 28px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.price-card {
-  background: linear-gradient(135deg, var(--dark-card) 0%, #20180d 100%);
-  border: 1px solid rgba(247, 147, 26, 0.3);
-  border-radius: 18px;
-  padding: 36px 40px;
+.credit-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.price-label {
-  font-size: 13px;
+.credit-left { display: flex; align-items: center; gap: 16px; }
+
+.credit-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(247, 147, 26, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+}
+
+.credit-text-label {
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
 }
 
-.price-value {
-  font-size: 52px;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  color: var(--btc-orange);
-  line-height: 1;
+.credit-text-name { font-size: 16px; font-weight: 800; }
+.credit-text-name a { color: var(--btc-orange); text-decoration: none; }
+.credit-text-name a:hover { text-decoration: underline; }
+
+.credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
 
-.price-sub {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 10px;
+.credit-link:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
+
+/* ===== CHART ===== */
+.chart-section {
+  padding: 0 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.price-sub b { color: var(--text); font-weight: 600; }
+.chart-panel {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+}
 
-.price-updated {
-  text-align: right;
+.chart-panel h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-panel h3 .ico { color: var(--btc-orange); }
+
+.chart-frame-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0a0f1a;
+}
+
+.chart-frame-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 760px;
+  border: none;
+}
+
+.chart-note {
   font-size: 12px;
   color: var(--text-dim);
+  margin-top: 16px;
+  line-height: 1.6;
 }
 
-/* ===== STAT GRID ===== */
-.stats {
-  padding: 0 48px 56px;
+/* ===== READING GUIDE ===== */
+.legend-section {
+  padding: 0 48px var(--section-spacing);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -247,141 +270,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.stat-box {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  transition: border-color 0.2s;
-}
-
-.stat-box:hover { border-color: var(--border-hover); }
-
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 10px;
-}
-
-.stat-value {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-
-.stat-value.orange { color: var(--btc-orange); }
-
-.stat-sub {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-top: 8px;
-}
-
-/* ===== WIDE CARDS ===== */
-.wide-section {
-  padding: 0 48px var(--section-spacing);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.wide-grid {
+.guide-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 16px;
 }
 
-.wide-card {
+.guide-card {
   background: var(--dark-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  transition: border-color 0.2s;
+  border-radius: 14px;
+  padding: 20px 22px;
 }
 
-.wide-card:hover { border-color: var(--border-hover); }
-
-.wide-card h3 {
-  font-size: 15px;
+.guide-card h4 {
+  font-size: 14px;
   font-weight: 700;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--text);
 }
 
-.wide-card h3 .ico { color: var(--btc-orange); }
-
-.progress-track {
-  height: 8px;
-  background: var(--dark);
-  border-radius: 100px;
-  overflow: hidden;
-  margin: 14px 0 10px;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 100px;
-  transition: width 0.8s ease;
-}
-
-.kv-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
+.guide-card p {
   font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
-.kv-row:last-child { border-bottom: none; }
-
-.kv-row .k { color: var(--text-muted); }
-.kv-row .v { color: var(--text); font-weight: 600; }
-.kv-row .v.orange { color: var(--btc-orange); }
-.kv-row .v.green { color: var(--green); }
-.kv-row .v.red { color: var(--red); }
-
-.big-metric {
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--btc-orange);
-  letter-spacing: -0.01em;
-  margin-bottom: 4px;
-}
-
-.big-metric-sub {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-}
-
-.sources-note {
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-top: 40px;
-}
-
-.sources-note a { color: var(--text-muted); text-decoration: none; }
-.sources-note a:hover { color: var(--btc-orange); }
-
-/* ===== NEWSLETTER ===== */
+/* ===== NEWSLETTER / FOOTER ===== */
 .newsletter {
   background: var(--dark-lighter);
   border-top: 1px solid var(--border);
@@ -390,7 +308,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
-
 .newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
 
 .newsletter-form {
@@ -431,13 +348,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
-/* ===== FOOTER ===== */
-.footer-main {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
-  padding: 60px 48px 30px;
-}
-
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -451,12 +361,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .footer-logo img { height: 80px; width: auto; opacity: 0.9; transition: opacity 0.2s; }
 .footer-logo img:hover { opacity: 1; }
 
-.footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
-}
+.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
 
 .footer-col a {
   display: block;
@@ -472,39 +377,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .footer-bottom p { font-size: 13px; color: var(--text-dim); }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .stat-grid { grid-template-columns: repeat(2, 1fr); }
-  .wide-grid { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 768px) {
   .nav { padding: 16px 24px; }
   .nav-links { display: none; }
-  .hero { padding: 60px 24px 36px; }
+  .hero { padding: 60px 24px 28px; }
   .hero h1 { font-size: 36px; }
-  .price-section, .stats, .wide-section { padding-left: 24px; padding-right: 24px; }
-  .price-card { padding: 28px 24px; }
-  .price-value { font-size: 40px; }
-  .stat-grid { grid-template-columns: 1fr; }
-  .newsletter { padding: 60px 24px; }
-  .newsletter h2 { font-size: 28px; }
-  .newsletter-form { flex-direction: column; }
-  .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; }
+  .subnav-wrap, .credit-section, .chart-section, .legend-section { padding-left: 24px; padding-right: 24px; }
 
   /* .subnav's border-radius:100px assumes one row; wrapped onto several
      lines it turns the whole pill into an oversized rounded blob and the
      first/last tags poke outside that curve. Scroll horizontally instead
      of wrapping, so it always stays a single true pill. */
   .subnav-wrap {
-    padding-left: 24px;
-    padding-right: 24px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .subnav-wrap::-webkit-scrollbar { display: none; }
   .subnav { flex-wrap: nowrap; }
+
+  .chart-frame-wrap iframe { height: 560px; }
+  .credit-card { flex-direction: column; align-items: flex-start; }
+  .guide-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -729,90 +628,6 @@ a.nav-logo, .nav-logo {
 
   body.nav-open { overflow: hidden; }
 }
-
-/* ===== Compact language dropdown (desktop) =====
-   Replaces the old 3-pill .nav-lang-switch with a single compact button
-   that opens a small dropdown, so the nav row has room regardless of how
-   many languages exist. .nav-actions groups it with the CTA button into
-   one flex item so the nav's space-between doesn't spread them apart. */
-.nav-actions { display: flex; align-items: center; gap: 12px; }
-
-.lang-menu { position: relative; }
-
-.lang-menu-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 6px 11px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--text);
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.lang-menu-btn:hover { border-color: var(--btc-orange); }
-
-.lang-menu-caret {
-  opacity: 0.6;
-  transition: transform 0.2s ease;
-}
-
-.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
-
-.lang-menu-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 130px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 6px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  z-index: 200;
-}
-
-.lang-menu.open .lang-menu-panel {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.lang-menu-panel .lang-opt {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
-
-.lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
-}
-
-@media (max-width: 1024px) {
-  .lang-menu { display: none; }
-}
 </style>
 </head>
 <body>
@@ -838,168 +653,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-switch" role="navigation" aria-label="Page language">
-        <a href="bitcoin-data.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="sk/bitcoin-data.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="uk/bitcoin-data.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="root-cycles.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="sk/root-cycles.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
       </div>
     </li>
   </ul>
-  <div class="nav-actions">
-    <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Page language">
-        <span class="lang-flag">🇬🇧</span>EN
-        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
-        <a href="bitcoin-data.html" class="lang-opt active" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="sk/bitcoin-data.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="uk/bitcoin-data.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-      </div>
-    </div>
-    <button class="nav-cta">Get Started</button>
+  <div class="lang-switch nav-lang-switch" role="navigation" aria-label="Page language">
+    <a href="root-cycles.html" class="lang-opt active" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+    <a href="sk/root-cycles.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
   </div>
+  <button class="nav-cta">Get Started</button>
 </nav>
-
-<script>
-// ===== LANGUAGE DROPDOWN =====
-(function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-  document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
-  });
-})();
-</script>
-
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-top">
-    <div>
-      <h1>Bitcoin <span class="highlight">Data</span></h1>
-      <p class="hero-desc">Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed, updated every minute.</p>
-    </div>
-    <div class="live-badge"><span class="live-dot"></span> Live · <span id="lastUpdated">loading…</span></div>
-  </div>
+  <h1>Rainbow <span class="highlight">Chart</span></h1>
+  <p class="hero-desc">Bitcoin's full price history compressed onto a single curve — every halving cycle overlaid on a root-scale power-law model, so 2013, 2017, 2021, and today all read on the same axis. Chart and model built by <a href="https://x.com/LeomathHeart" target="_blank" rel="noopener noreferrer" style="color:var(--btc-orange);text-decoration:none;">@LeomathHeart</a> of <a href="https://bitcoinwave.net" target="_blank" rel="noopener noreferrer" style="color:var(--btc-orange);text-decoration:none;">Bitcoin Wave</a>, featured here with credit.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
 <div class="subnav-wrap">
   <nav class="subnav" aria-label="Bitcoin Data pages">
-    <a href="bitcoin-data.html" class="active">&#9670; Dashboard</a>
+    <a href="bitcoin-data.html">&#9670; Dashboard</a>
     <a href="retirement-calculator.html">&#9670; Retirement Calculator</a>
     <a href="btc-dominance.html">&#9670; BTC Dominance</a>
     <a href="ma-200w.html">&#9670; 200 WMA</a>
-    <a href="root-cycles.html">&#9670; Rainbow Chart</a>
+    <a href="root-cycles.html" class="active">&#9670; Rainbow Chart</a>
   </nav>
 </div>
 
-<!-- ===== PRICE ===== -->
-<section class="price-section">
-  <div class="price-card">
-    <div>
-      <div class="price-label">BTC / USD</div>
-      <div class="price-value" id="priceUsd">—</div>
-      <div class="price-sub">EUR: <b id="priceEur">—</b> &nbsp;·&nbsp; Sats per $1: <b id="satsPerUsd">—</b></div>
+<!-- ===== CREDIT ===== -->
+<section class="credit-section">
+  <div class="credit-card">
+    <div class="credit-left">
+      <div class="credit-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18.24 3H21l-6.6 7.54L22 21h-6.14l-4.8-6.28L5.6 21H2.83l7.06-8.07L2 3h6.28l4.34 5.74L18.24 3Z" fill="currentColor"/></svg>
+      </div>
+      <div>
+        <div class="credit-text-label">Chart &amp; model by</div>
+        <div class="credit-text-name"><a href="https://x.com/LeomathHeart" target="_blank" rel="noopener noreferrer">@LeomathHeart</a> — Bitcoin Wave</div>
+      </div>
     </div>
-    <div class="price-updated">
-      Market cap <div class="big-metric" id="marketCap" style="font-size:26px">—</div>
+    <a class="credit-link" href="https://bitcoinwave.net/rootchart.htm" target="_blank" rel="noopener noreferrer">
+      View original on bitcoinwave.net
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== CHART ===== -->
+<section class="chart-section">
+  <div class="chart-panel">
+    <h3><span class="ico">&#9670;</span> Price on the Root Scale</h3>
+    <div class="chart-frame-wrap">
+      <iframe src="https://bitcoinwave.net/rootchart.htm" title="Bitcoin Root-Scale Cycles chart by Bitcoin Wave" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <div class="chart-note">
+      Live, interactive chart embedded directly from <a href="https://bitcoinwave.net" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);">bitcoinwave.net</a> — not investment advice, and not a Virtuse-built model. We're featuring it because it's one of the clearer visual explanations of Bitcoin's cycle structure we've come across.
     </div>
   </div>
 </section>
 
-<!-- ===== NETWORK STATS ===== -->
-<section class="stats">
-  <div class="sec-label">Network Vitals</div>
-  <div class="stat-grid">
-    <div class="stat-box">
-      <div class="stat-label">Block Height</div>
-      <div class="stat-value orange" id="blockHeight">—</div>
-      <div class="stat-sub">Blocks mined since genesis</div>
+<!-- ===== READING GUIDE ===== -->
+<section class="legend-section">
+  <div class="sec-label">Reading This Chart</div>
+  <div class="guide-grid">
+    <div class="guide-card">
+      <h4>h-Scale (x-axis)</h4>
+      <p>A linear count of halving epochs since Bitcoin's genesis — each whole number (H1, H2, H3&hellip;) marks a halving block, so every cycle occupies roughly the same horizontal span regardless of calendar year.</p>
     </div>
-    <div class="stat-box">
-      <div class="stat-label">Transaction Fee (Fast)</div>
-      <div class="stat-value" id="feeFast">—</div>
-      <div class="stat-sub" id="feeSlow">30m: — · 1h: —</div>
+    <div class="guide-card">
+      <h4>Price ^ (1/5.4) (y-axis)</h4>
+      <p>Price compressed by a root-power transform rather than a straight log scale — the model's way of fitting early, explosive cycles and later, calmer ones onto one consistent curve.</p>
     </div>
-    <div class="stat-box">
-      <div class="stat-label">Hash Rate</div>
-      <div class="stat-value" id="hashRate">—</div>
-      <div class="stat-sub">3-day average</div>
+    <div class="guide-card">
+      <h4>PL / W bands</h4>
+      <p>PL0 is the model's central power-law fit; the PL and W bands above and below mark historical over- and under-valuation ranges each cycle has traded within.</p>
     </div>
-    <div class="stat-box">
-      <div class="stat-label">Network Difficulty</div>
-      <div class="stat-value" id="difficulty">—</div>
-      <div class="stat-sub">Current epoch</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Circulating Supply</div>
-      <div class="stat-value orange" id="supply">—</div>
-      <div class="stat-sub">of 21,000,000 BTC — forever</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Supply Issued</div>
-      <div class="stat-value" id="supplyPct">—</div>
-      <div class="stat-sub">Percentage of max supply mined</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Mempool Transactions</div>
-      <div class="stat-value" id="mempoolCount">—</div>
-      <div class="stat-sub" id="mempoolSize">— vMB pending</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Next Halving</div>
-      <div class="stat-value" id="halving">—</div>
-      <div class="stat-sub" id="halvingSub">blocks remaining</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DETAIL CARDS ===== -->
-<section class="wide-section">
-  <div class="sec-label">Deeper Signals</div>
-  <div class="wide-grid">
-    <div class="wide-card">
-      <h3><span class="ico">◆</span> Difficulty Adjustment</h3>
-      <div class="big-metric" id="diffChange">—</div>
-      <div class="big-metric-sub">estimated next adjustment</div>
-      <div class="progress-track"><div class="progress-fill" id="diffProgress"></div></div>
-      <div class="kv-row"><span class="k">Epoch progress</span><span class="v" id="diffPct">—</span></div>
-      <div class="kv-row"><span class="k">Blocks remaining</span><span class="v" id="diffBlocks">—</span></div>
-      <div class="kv-row"><span class="k">Estimated date</span><span class="v" id="diffDate">—</span></div>
-    </div>
-    <div class="wide-card">
-      <h3><span class="ico">◆</span> Latest Block</h3>
-      <div class="big-metric" id="lbHeight">—</div>
-      <div class="big-metric-sub" id="lbAgo">—</div>
-      <div class="kv-row"><span class="k">Transactions</span><span class="v" id="lbTx">—</span></div>
-      <div class="kv-row"><span class="k">Size</span><span class="v" id="lbSize">—</span></div>
-      <div class="kv-row"><span class="k">Miner</span><span class="v orange" id="lbMiner">—</span></div>
-    </div>
-    <div class="wide-card">
-      <h3><span class="ico">◆</span> Fee Environment</h3>
-      <div class="big-metric" id="feeBig">—</div>
-      <div class="big-metric-sub">fastest confirmation (sat/vB)</div>
-      <div class="kv-row"><span class="k">~30 minutes</span><span class="v" id="fee30">—</span></div>
-      <div class="kv-row"><span class="k">~1 hour</span><span class="v" id="fee60">—</span></div>
-      <div class="kv-row"><span class="k">Minimum relay</span><span class="v" id="feeMin">—</span></div>
-    </div>
-  </div>
-  <div class="sources-note">
-    Updates every minute · Sources: <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>
   </div>
 </section>
 
@@ -1037,14 +767,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
+          msg.textContent = "You're in — check your inbox for a welcome email.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Network error \u2014 please try again.';
+        msg.textContent = 'Network error — please try again.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1079,187 +809,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
   </div>
 </footer>
-
-<script>
-(function () {
-  'use strict';
-  // Live Bitcoin dashboard — same public data sources as the old
-  // virtuse.com/dashboard: mempool.space REST API + CoinGecko.
-  var MP = 'https://mempool.space/api';
-  var HALVING_INTERVAL = 210000;
-
-  function $(id) { return document.getElementById(id); }
-  function num(n, d) {
-    if (n == null || isNaN(n)) return '—';
-    return n.toLocaleString('en-US', { maximumFractionDigits: d || 0 });
-  }
-  function usd(n) {
-    if (!n || isNaN(n)) return '—';
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
-  }
-  function eur(n) {
-    if (!n || isNaN(n)) return '—';
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
-  }
-  function compact(n) {
-    if (!n || isNaN(n)) return '—';
-    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 }).format(n);
-  }
-  function timeAgo(ts) {
-    var s = Math.floor(Date.now() / 1000) - ts;
-    if (s < 60) return s + 's ago';
-    if (s < 3600) return Math.floor(s / 60) + ' min ago';
-    return Math.floor(s / 3600) + ' h ago';
-  }
-  function supplyAtHeight(h) {
-    var supply = 0, subsidy = 50, remaining = h;
-    while (remaining > 0) {
-      var blocks = Math.min(remaining, HALVING_INTERVAL);
-      supply += blocks * subsidy;
-      remaining -= blocks;
-      subsidy /= 2;
-    }
-    return supply;
-  }
-
-  function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
-
-  function refresh() {
-    // Price (mempool.space; USD+EUR in one call)
-    j(MP + '/v1/prices').then(function (p) {
-      $('priceUsd').textContent = usd(p.USD);
-      $('priceEur').textContent = eur(p.EUR);
-      $('satsPerUsd').textContent = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
-      window.__btcUsd = p.USD;
-      if (window.__supply && p.USD) $('marketCap').textContent = compact(window.__supply * p.USD);
-    }).catch(function () {});
-
-    // Market cap fallback via CoinGecko
-    j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true').then(function (g) {
-      if (g.bitcoin && g.bitcoin.usd_market_cap) $('marketCap').textContent = compact(g.bitcoin.usd_market_cap);
-    }).catch(function () {});
-
-    // Tip height + supply + halving
-    j(MP + '/blocks/tip/height').then(function (h) {
-      $('blockHeight').textContent = num(h);
-      var supply = supplyAtHeight(h);
-      window.__supply = supply;
-      $('supply').textContent = compact(supply);
-      $('supplyPct').textContent = (supply / 21000000 * 100).toFixed(2) + '%';
-      var nextHalving = (Math.floor(h / HALVING_INTERVAL) + 1) * HALVING_INTERVAL;
-      var blocksLeft = nextHalving - h;
-      $('halving').textContent = num(blocksLeft);
-      var days = blocksLeft * 10 / 60 / 24;
-      $('halvingSub').textContent = 'blocks · ~' + (days > 365 ? (days / 365).toFixed(1) + ' years' : Math.round(days) + ' days');
-      if (window.__btcUsd) $('marketCap').textContent = compact(supply * window.__btcUsd);
-    }).catch(function () {});
-
-    // Fees
-    j(MP + '/v1/fees/recommended').then(function (f) {
-      $('feeFast').textContent = f.fastestFee + ' sat/vB';
-      $('feeSlow').textContent = '30m: ' + f.halfHourFee + ' · 1h: ' + f.hourFee + ' sat/vB';
-      $('feeBig').textContent = f.fastestFee;
-      $('fee30').textContent = f.halfHourFee + ' sat/vB';
-      $('fee60').textContent = f.hourFee + ' sat/vB';
-      $('feeMin').textContent = f.minimumFee + ' sat/vB';
-    }).catch(function () {});
-
-    // Hashrate + difficulty
-    j(MP + '/v1/mining/hashrate/3d').then(function (m) {
-      $('hashRate').textContent = compact(m.currentHashrate / 1e18) + ' EH/s';
-      $('difficulty').textContent = compact(m.currentDifficulty / 1e12) + ' T';
-    }).catch(function () {});
-
-    // Difficulty adjustment
-    j(MP + '/v1/difficulty-adjustment').then(function (d) {
-      var chg = d.difficultyChange;
-      $('diffChange').textContent = (chg > 0 ? '+' : '') + chg.toFixed(2) + '%';
-      $('diffChange').style.color = chg >= 0 ? 'var(--green)' : 'var(--red)';
-      $('diffProgress').style.width = Math.min(100, d.progressPercent).toFixed(1) + '%';
-      $('diffPct').textContent = d.progressPercent.toFixed(1) + '%';
-      $('diffBlocks').textContent = num(d.remainingBlocks);
-      $('diffDate').textContent = new Date(d.estimatedRetargetDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-    }).catch(function () {});
-
-    // Mempool
-    j(MP + '/mempool').then(function (m) {
-      $('mempoolCount').textContent = compact(m.count);
-      $('mempoolSize').textContent = (m.vsize / 1e6).toFixed(1) + ' vMB pending';
-    }).catch(function () {});
-
-    // Latest block
-    j(MP + '/v1/blocks').then(function (blocks) {
-      var b = blocks[0];
-      if (!b) return;
-      $('lbHeight').textContent = num(b.height);
-      $('lbAgo').textContent = 'mined ' + timeAgo(b.timestamp);
-      $('lbTx').textContent = num(b.tx_count);
-      $('lbSize').textContent = (b.size / 1e6).toFixed(2) + ' MB';
-      $('lbMiner').textContent = (b.extras && b.extras.pool && b.extras.pool.name) || 'Unknown';
-    }).catch(function () {});
-
-    $('lastUpdated').textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-  }
-
-  refresh();
-  setInterval(refresh, 60000);
-})();
-</script>
-
-
-
-<!-- ===== STAT COUNTERS (anime.js) ===== -->
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
-  var counters = [];
-
-  candidates.forEach(function (el) {
-    var raw = el.textContent.trim();
-    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
-    if (!m) return;
-    counters.push({
-      el: el,
-      target: parseInt(m[1].replace(/,/g, ''), 10),
-      suffix: m[2] || ''
-    });
-  });
-  if (!counters.length) return;
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var c = null;
-      for (var i = 0; i < counters.length; i++) {
-        if (counters[i].el === entry.target) { c = counters[i]; break; }
-      }
-      if (!c) return;
-
-      var obj = { val: 0 };
-      animate(obj, {
-        val: c.target,
-        duration: 1600,
-        ease: 'outCubic',
-        onUpdate: function () {
-          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
-        },
-        onComplete: function () {
-          c.el.textContent = c.target.toLocaleString() + c.suffix;
-        }
-      });
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(function (c) { io.observe(c.el); });
-})();
-</script>
 
 <!-- ===== SCROLL REVEAL (anime.js) ===== -->
 <script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
