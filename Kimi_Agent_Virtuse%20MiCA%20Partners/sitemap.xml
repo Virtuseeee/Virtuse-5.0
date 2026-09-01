@@ -184,6 +184,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/secure.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/secure.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html"/>
   </url>
   <url>
@@ -194,6 +195,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/secure.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/secure.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html"/>
   </url>
   <url>
@@ -204,6 +206,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/secure.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/secure.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/secure.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html"/>
   </url>
   <url>

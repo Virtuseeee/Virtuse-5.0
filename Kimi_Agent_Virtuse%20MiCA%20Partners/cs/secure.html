@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Захист Біткоїна за допомогою мультипідпису | Virtuse</title>
+<title>Úschova Bitcoinu | Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -23,16 +24,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/secure.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Захист Біткоїна за допомогою мультипідпису | Virtuse">
-<meta property="og:description" content="Ніколи не покладайтеся на єдину точку відмови. Розподіліть свої ключі між кількома пристроями, локаціями та підписантами за допомогою програмного забезпечення для мультипідпису, створеного лише для Біткоїна.">
-<meta property="og:url" content="https://staging.virtuse.com/uk/secure.html">
+<meta property="og:title" content="Úschova Bitcoinu | Virtuse">
+<meta property="og:description" content="Zabezpečte svůj Bitcoin pomocí multisig trezorů u prověřených evropských partnerů.">
+<meta property="og:url" content="https://staging.virtuse.com/cs/secure.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Захист Біткоїна за допомогою мультипідпису | Virtuse">
-<meta name="twitter:description" content="Ніколи не покладайтеся на єдину точку відмови. Розподіліть свої ключі між кількома пристроями, локаціями та підписантами за допомогою програмного забезпечення для мультипідпису, створеного лише для Біткоїна.">
+<meta name="twitter:title" content="Úschova Bitcoinu | Virtuse">
+<meta name="twitter:description" content="Zabezpečte svůj Bitcoin pomocí multisig trezorů u prověřených evropských partnerů.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <style>
@@ -808,46 +809,14 @@ a.nav-logo, .nav-logo {
   body.nav-open { overflow: hidden; }
 }
 
-/* ===== UK: compact nav text =====
-   Ukrainian nav labels run noticeably longer than their English originals,
-   so at the same per-item padding/font-size they wrap onto two lines well
-   before the English nav does. Tighten the gap/padding/font-size a notch
-   and force single-line labels so the row matches (or beats) the English
-   nav's fit at the same viewport width. */
-/* .nav-actions groups the language switcher with the CTA button into one
-   flex item so the nav's space-between doesn't spread them apart -- the
-   switcher sits right next to the CTA, not centered in the leftover gap.
-   Declared before the media queries below so their narrower-width
-   overrides (same selector) win the cascade at those widths. */
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
 .lang-menu { position: relative; }
-
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-/* Extra squeeze for the narrow "almost mobile" desktop band, where even
-   the compact pass above isn't quite enough room for the longer labels. */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== UK: compact language dropdown =====
-   Site-navigation stays exactly as shipped (inline links >1024px,
-   hamburger overlay <=1024px) -- only the language switcher moves out of
-   the inline nav row. A single compact button opens a small dropdown
-   (EN/SK/UA), so the desktop nav row never overflows regardless of how
-   many languages exist. */
 
 .lang-menu-btn {
   display: inline-flex;
@@ -932,44 +901,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="/uk/" class="nav-logo">
+  <a href="/cs/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html" class="active"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="../buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Koupit Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Těžba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Půjčky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html" class="active"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Daně</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boti</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začít<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
         <a href="../secure.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/secure.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="secure.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/secure.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/secure.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="secure.html" class="lang-opt active" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </li>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-        <span class="lang-flag">🇺🇦</span>UA
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky">
+        <span class="lang-flag">🇨🇿</span>CS
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="lang-menu-panel" id="langMenuPanel" role="menu">
         <a href="../secure.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/secure.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="secure.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/secure.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/secure.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="secure.html" class="lang-opt active" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </div>
-    <button class="nav-cta">Розпочати</button>
+    <button class="nav-cta">Začít</button>
   </div>
 </nav>
 
@@ -1000,10 +969,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Захистіть свій Біткоїн за<br><span class="highlight">допомогою сховищ із мультипідписом</span></h1>
+  <h1>Zabezpečte svůj Bitcoin<br><span class="highlight">pomocí multisig trezorů</span></h1>
 
   <p class="hero-desc">
-    Ніколи не покладайтеся на єдину точку відмови. Розподіліть свої ключі між кількома пристроями, локаціями та підписантами. Наші партнери надають програмне забезпечення для мультипідпису, створене лише для Біткоїна: без альткоїнів, без кастоді, без єдиної точки відмови.
+    Nikdy nedůvěřujte jedinému bodu selhání. Rozložte své klíče na více zařízení, míst a podepisujících. Naši partneři poskytují software pro multisig zaměřený výhradně na Bitcoin, žádné altcoiny, žádná úschova třetí stranou, žádný jediný bod selhání.
   </p>
 
 
@@ -1011,42 +980,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-stats">
     <div class="stat-box">
       <div class="stat-value">3</div>
-      <div class="stat-label">Партнери</div>
+      <div class="stat-label">Partneři</div>
     </div>
     <div class="stat-box">
-      <div class="stat-value">2 з 3</div>
-      <div class="stat-label">Стандарт</div>
+      <div class="stat-value">2 z 3</div>
+      <div class="stat-label">Standard</div>
     </div>
     <div class="stat-box">
-      <div class="stat-value">Безкоштовно</div>
-      <div class="stat-label">Стартова ціна</div>
+      <div class="stat-value">Zdarma</div>
+      <div class="stat-label">Počáteční cena</div>
     </div>
   </div>
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Як це працює</div>
+  <div class="how-title">Jak to funguje</div>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
-      <h3>Завантажте програму</h3>
-      <p>Оберіть застосунок для мультипідпису та налаштуйте його на своїх пристроях. Встановлюється на мобільні, десктопні або апаратні гаманці.</p>
+      <h3>Stáhněte si software</h3>
+      <p>Vyberte si multisig aplikaci a nastavte ji na svých zařízeních. Instalujte na mobil, počítač nebo hardwarovou peněženku.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h3>Створіть сховище</h3>
-      <p>Налаштуйте кворум 2 з 3, 3 з 5 або власну схему. Визначте, скільки підписів потрібно для виведення коштів.</p>
+      <h3>Vytvořte trezor</h3>
+      <p>Nastavte kvórum 2 z 3, 3 z 5 nebo vlastní kombinaci. Určete, kolik podpisů je potřeba k utracení prostředků.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <h3>Розподіліть ключі</h3>
-      <p>Зберігайте ключі на апаратних гаманцях у різних місцях. Географічне розділення критично важливе.</p>
+      <h3>Rozložte klíče</h3>
+      <p>Uložte klíče na hardwarové peněženky na různých místech. Geografické rozdělení je klíčové.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <h3>Здійснюйте безпечні транзакції</h3>
-      <p>Вимагайте кілька підписів для кожної витрати. Жоден окремий пристрій не може самостійно перемістити ваші кошти.</p>
+      <h3>Transakujte bezpečně</h3>
+      <p>Vyžadujte více podpisů při každé platbě. Žádné jediné zařízení nedokáže samo přesunout vaše prostředky.</p>
     </div>
   </div>
 </section>
@@ -1055,8 +1024,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Наші кастоді-партнери</h2>
-      <p>Апаратні гаманці для Біткоїна: ваші ключі, офлайн, у ваших руках</p>
+      <h2>Naši partneři pro úschovu</h2>
+      <p>Hardwarové Bitcoin peněženky, vaše klíče, offline, ve vašich rukou</p>
     </div>
   </div>
 
@@ -1071,7 +1040,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="pcard-name">Trezor</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Чехія (ЄС)
+              Česká republika (EU)
             </div>
           </div>
         </div>
@@ -1079,19 +1048,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Перший у світі апаратний гаманець для Біткоїна.</strong> Створений SatoshiLabs у Празі з 2013 року: повністю відкритий код обладнання та прошивки, ваші ключі генеруються і зберігаються офлайн, ніколи не торкаючись інтернету.</p>
+        <p><strong>První hardwarová Bitcoin peněženka.</strong> Vyrábí ji SatoshiLabs v Praze od roku 2013, plně open-source hardware a firmware, přičemž vaše klíče se generují a ukládají offline, nikdy se nedotknou internetu.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Відкритий код обладнання й прошивки</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Розроблено і виготовлено в ЄС</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Офлайн холодне зберігання, ключі ніколи не залишають пристрій</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Опційна парольна фраза й резервне копіювання Shamir</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Від 49 євро (Trezor Model One)</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Open-source hardware a firmware</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Navrženo a vyrobeno v EU</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Offline cold storage, klíče nikdy neopustí zařízení</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Volitelná passphrase a Shamir záloha</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Od 49 € (Trezor Model One)</li>
         </ul>
       </div>
 
       <div class="pcard-footer">
         <a href="https://affil.trezor.io/aff_c?offer_id=133&aff_id=846427" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Отримати Trezor
+          Získat Trezor
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1106,7 +1075,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="pcard-name">Ledger</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Франція (ЄС)
+              Francie (EU)
             </div>
           </div>
         </div>
@@ -1114,19 +1083,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Найпопулярніший апаратний гаманець у світі.</strong> Продано понад 7 мільйонів пристроїв, виготовлений у Франції на основі сертифікованого чипа Secure Element, із застосунком Ledger Live для повного управління вашим Біткоїном.</p>
+        <p><strong>Nejpopulárnější hardwarová peněženka na světě.</strong> Prodáno více než 7 milionů zařízení, vyráběná ve Francii okolo certifikovaného čipu Secure Element, s aplikací Ledger Live na kompletní správu vašeho Bitcoinu.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Сертифікований чип Secure Element (CC EAL5+)</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Понад 7 млн пристроїв продано у світі</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Розроблено і виготовлено у Франції</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Застосунок Ledger Live для купівлі, надсилання, отримання</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Від 79 євро (Nano S Plus)</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Certifikovaný čip Secure Element (CC EAL5+)</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Prodáno více než 7 mil. zařízení po celém světě</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Navrženo a vyrobeno ve Francii</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Aplikace Ledger Live na nákup, odesílání, přijímání</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Od 79 € (Nano S Plus)</li>
         </ul>
       </div>
 
       <div class="pcard-footer">
         <a href="https://shop.ledger.com/?r=3256467ea813" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Отримати Ledger
+          Získat Ledger
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1141,7 +1110,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="pcard-name">Blockstream</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Канада
+              Kanada
             </div>
           </div>
         </div>
@@ -1149,19 +1118,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Інфраструктура для Біткоїна, створена контриб'юторами Bitcoin Core.</strong> Blockstream Jade, повністю відкритий апаратний гаманець із рідною підтримкою мультипідпису та спільних сховищ кастоді: без захищеного елемента, без закритої прошивки, усе можна незалежно перевірити.</p>
+        <p><strong>Bitcoin infrastruktura od přispěvatelů do Bitcoin Core.</strong> Blockstream Jade je plně open-source hardwarová peněženka s nativní podporou pro multisig a kolaborativní trezory, žádný secure element, žádný uzavřený firmware, vše nezávisle auditovatelné.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Повністю відкритий код обладнання й прошивки</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Створено Blockstream, контриб'юторами Bitcoin Core і Liquid</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Рідна підтримка мультипідпису й спільного кастоді</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Підписання без підключення через QR і microSD, USB не потрібен</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Від $65 (Blockstream Jade)</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Plně open-source hardware a firmware</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Vyrábí Blockstream, přispěvatelé do Bitcoin Core a Liquid</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nativní podpora multisig a kolaborativní úschovy</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Podepisování bez připojení přes QR a microSD, bez USB</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Od 65 $ (Blockstream Jade)</li>
         </ul>
       </div>
 
       <div class="pcard-footer">
         <a href="https://rewards.blockstream.com/qo0khs" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Отримати Blockstream
+          Získat Blockstream
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1174,12 +1143,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== FOOTER ===== -->
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Змінимо гроші, змінимо світ</h2>
-  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
+  <h2>Opravme peníze, opravme svět</h2>
+  <p>Přidejte se k více než 18 000 investorům, kteří jsou vždy o krok napřed. Získávejte Virtuse Report do své schránky každý týden.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
+    <input type="email" name="email" placeholder="Zadejte svůj e-mail" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ПІДПИСАТИСЯ</button>
+    <button type="submit">ODEBÍRAT</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -1196,7 +1165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'НАДСИЛАННЯ...';
+      btn.textContent = 'ODESÍLÁNÍ...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1206,14 +1175,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
+          msg.textContent = "Hotovo, zkontrolujte si e-mail s uvítacím dopisem.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
+          msg.textContent = (result.data && result.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
+        msg.textContent = 'Chyba sítě. Zkuste to znovu.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1232,20 +1201,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Компанія</h4>
-        <a href="about.html">Про нас</a>
-        <a href="faq.html">FAQ</a>
+        <h4>Společnost</h4>
+        <a href="../about.html">O nás</a>
+        <a href="../faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Правова інформація</h4>
-        <a href="terms-and-conditions.html">Умови використання</a>
-        <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <h4>Informace</h4>
+        <a href="../terms-and-conditions.html">Obchodní podmínky</a>
+        <a href="../privacy-policy.html">Ochrana osobních údajů</a>
+        <a href="../aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
   </div>
 </footer>
 
