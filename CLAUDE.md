@@ -69,38 +69,54 @@ human copy-review fixes on top of the Slovak pages. Specifics:
   they were deployed to staging/production or only committed to `main`;
   treat `gh-pages`/production as possibly behind `main` until checked.
 
-**In progress:** Czech (`cs/`) translation — **Phase 0 (housekeeping)
-just completed**: `lang-detect.js`'s stale mapping fixed (added
-`root-cycles.html`), and both `i18n-tools/README.md` and
-`TRANSLATION-SYSTEM.md` brought up to date with the real UK-era state
-(dropdown switcher, UK-era script family, `uk/blog.html`'s shell-only
-status, the `rainbow-chart.html`/`root-cycles.html` dual-page quirk).
-**Not yet started:** Phase 1 (copy `scaffold_uk.py` etc. → `_cs` variants
-— **Option A, decided**, not the parameterized-refactor alternative) and
-everything after it.
+**In progress:** Czech (`cs/`) translation — **Phase 0 and Phase 1 both
+complete** (`bed452f`, `80046cb`). Phase 0: `lang-detect.js`'s stale
+mapping fixed (added `root-cycles.html`) and actually deployed to
+staging+production (it existed on `main` but was never synced to either —
+every live page was silently 404ing on it); `i18n-tools/README.md` and
+`TRANSLATION-SYSTEM.md` brought up to date with the real UK-era state.
+Phase 1: `scaffold_cs.py`, `relink_cs.py`, `wire_cs_into_existing.py`,
+`sitemap_add_cs.py` created (Option A — copied the UK-era scripts, not a
+parameterized refactor) and **verified end-to-end against a real page**
+(`faq.html`, then reverted since Phase 1 is tooling-only — see `80046cb`'s
+commit message for the full verification list). This surfaced and fixed
+three real bugs, none of which were obvious just from reading the UK-era
+scripts:
+- `scaffold_cs.py` (and `scaffold_uk.py`, which has the same latent bug —
+  not yet fixed there since it's never surfaced) never adjusted
+  `lang-detect.js`'s script path for the language subdirectory. Never
+  caught for `uk/` because Ukrainian isn't in `lang-detect.js`'s scope.
+- `wire_uk_into_existing.py`'s desktop-switcher regex targets the *old*
+  pill markup (`.lang-switch.nav-lang-switch`), which doesn't exist
+  anywhere anymore — `dropdown_retrofit.py` already converted every page
+  before Czech work started. Copying that regex verbatim would have
+  silently no-opped on every real page. `wire_cs_into_existing.py`
+  targets `.lang-menu-panel` instead — **this is the version to keep
+  copying for language #5**, not the UK-era original.
+- The dropdown button's `aria-label="Page language"` wasn't being
+  translated when patching an already-dropdown-ized page in place (only
+  the option list was touched). Fixed to match `sk/*.html`'s own
+  `aria-label="Jazyk stránky"` (valid Czech too — nearly identical to
+  Slovak).
+- Also caught in the glossary itself (not a bug, but worth flagging
+  loudly): Slovak's nav label "Boty" (bots) is a **false friend in
+  Czech** — "boty" means "shoes". Used "Boti" instead.
 
 **Next steps, in order:**
-1. **Phase 1**: create `scaffold_cs.py`, `relink_cs.py`,
-   `wire_cs_into_existing.py`, `sitemap_add_cs.py` by copying the UK-era
-   scripts and swapping in Czech nav labels/newsletter strings/flag
-   (`🇨🇿`)/lang code (`cs` — **not** `cz`, that's the country code, not
-   the ISO 639-1 language code). See
-   [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)'s
-   "Adding the next language" section for the exact list.
-2. **Phase 2**: scaffold + hand-translate all 21 pages into `cs/`,
+1. **Phase 2**: scaffold + hand-translate all 21 pages into `cs/`,
    running `sitemap_add_cs.py` + `wire_cs_into_existing.py` per page
    (touches root, `sk/`, **and** `uk/` to add the 4th switcher option —
    not just the new `cs/` files) and `relink_cs.py` after every batch.
    Decide the blog question (skip `cs/blog.html` like SK, or ship a
    shell like UK's) before or during this phase.
-3. **Phase 3**: verification (tag-balance check, em-dash grep audit,
+2. **Phase 3**: verification (tag-balance check, em-dash grep audit,
    browser click-through, 4-language switcher check on both desktop/
    mobile) — same rigor as SK/UK.
-4. **Phase 4**: deploy to all three targets, same recipe as below.
-5. **Separately, still open and not urgent**: decide whether
+3. **Phase 4**: deploy to all three targets, same recipe as below.
+4. **Separately, still open and not urgent**: decide whether
    `lang-detect.js` should also auto-redirect Ukrainian (and eventually
    Czech) browsers, not just Slovak ones.
-6. **Still the top-priority *compliance* item, unrelated to Czech**:
+5. **Still the top-priority *compliance* item, unrelated to Czech**:
    human legal review of the AI-translated compliance pages
    (`sk/privacy-policy.html`, `sk/terms-and-conditions.html`,
    `sk/aml-compliance.html`, and their `uk/` counterparts) — real
