@@ -733,6 +733,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -743,6 +744,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -753,6 +755,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/aml-compliance.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/aml-compliance.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/aml-compliance.html"/>
   </url>
   <url>
