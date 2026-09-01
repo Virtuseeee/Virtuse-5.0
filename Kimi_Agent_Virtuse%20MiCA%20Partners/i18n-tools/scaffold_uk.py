@@ -71,6 +71,12 @@ PATH_FIXES = [
     (r'href="favicon\.ico"', 'href="../favicon.ico"'),
     (r'src="logo-', 'src="../logo-'),
     (r'src="bull-virtuse\.png"', 'src="../bull-virtuse.png"'),
+    # Discovered missing during the Czech rollout (fixed there in
+    # scaffold_cs.py first): every uk/*.html page this script produced was
+    # shipping with an unfixed src="lang-detect.js" -- a 404 from inside
+    # uk/. Now that lang-detect.js covers Ukrainian browsers too (not just
+    # Slovak), this actually matters; wasn't caught earlier because it did.
+    (r'src="lang-detect\.js"', 'src="../lang-detect.js"'),
 ]
 
 OTHER_PAGES = [
