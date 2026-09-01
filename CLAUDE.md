@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-01) — Czech translation is next (SK + UK done)
+## Session status (2026-09-01) — Czech Phase 2 complete (all 21 pages), Phase 3/4 next
 
 **Current state — done:** Two languages are live sitewide beyond
 English — Slovak (`sk/`) and Ukrainian (`uk/`) — with a reusable, twice-
@@ -102,26 +102,68 @@ scripts:
   loudly): Slovak's nav label "Boty" (bots) is a **false friend in
   Czech** — "boty" means "shoes". Used "Boti" instead.
 
+**Phase 2 — complete.** All 21 pages (the original 20 plus
+`root-cycles.html`) hand-translated into `cs/`, each one scaffolded via
+`scaffold_cs.py`, translated using the **reviewed SK copy as the
+translation basis** (not fresh from English — Czech and Slovak are
+close enough that this reuses phrasing the team already approved and
+gives more consistent results), then `sitemap_add_cs.py` +
+`wire_cs_into_existing.py` per page, then a final `relink_cs.py` pass
+once all 21 existed. Every page individually verified: structural
+tag-balance check, exhaustive leftover-English sweep, and (new for this
+language) a **Slovak-diacritic sweep** (`ľ ĺ ô ä ŕ` — none of these
+exist in Czech) to catch words accidentally carried over verbatim from
+the SK reference instead of being translated. Commits: `ea69133`
+(index.html) through the final `aml-compliance.html` commit and the
+`relink_cs.py` cleanup commit — see `git log` on `main` for the full
+page-by-page list, one commit per page.
+
+Real bugs found and fixed *during* Phase 2 (beyond the three found in
+Phase 1 testing):
+- `scaffold_cs.py`'s title/OG/Twitter regex doesn't match `index.html`'s
+  own `"Virtuse: <tagline>"` pattern (same documented limitation as
+  `scaffold_uk.py`) — fixed by hand for `cs/index.html`.
+- The homepage's live-WordPress blog teaser section had broken article
+  links (missing `../` prefix from inside `cs/`) — and while fixing it,
+  found the **exact same bug already live on `uk/index.html`** (both the
+  static fallback cards and the JS-generated href). Flagged as a
+  separate task (`task_d6e026b1`) rather than silently fixing only the
+  Czech copy.
+- A handful of pages (`root-cycles.html`, `terms-and-conditions.html`)
+  hit the documented "literal em dash instead of `—` escape"
+  newsletter-string gotcha from `i18n-tools/README.md` — fixed by hand
+  each time, matching the documented workaround.
+- `research.html`'s blog-posts grid is **deliberately** left in English
+  (matches the documented `TRANSLATION-SYSTEM.md` precedent — excerpts
+  link to specific English blog posts); everything else on that page is
+  translated.
+- The `cs/blog.html` question was **not decided during Phase 2** — every
+  `cs/*.html` page's footer/nav still falls back to the English
+  `../blog.html` (correct, matches the pre-Phase-2 SK precedent), same
+  as it does for every other language. Still open.
+
 **Next steps, in order:**
-1. **Phase 2**: scaffold + hand-translate all 21 pages into `cs/`,
-   running `sitemap_add_cs.py` + `wire_cs_into_existing.py` per page
-   (touches root, `sk/`, **and** `uk/` to add the 4th switcher option —
-   not just the new `cs/` files) and `relink_cs.py` after every batch.
+1. **Phase 3**: broader verification beyond what was done inline per
+   page — a full local-preview click-through of all 21 pages in
+   sequence (only ~5 were spot-checked in the browser during Phase 2:
+   index, faq, buy-bitcoin), and confirming the 4-language switcher
+   renders correctly on mobile width too (only desktop was checked).
+2. **Phase 4**: deploy to all three targets (`main` already has
+   everything — this is the `gh-pages`/staging sync + Webglobe/
+   production SFTP upload, same recipe as the commands block below).
    Decide the blog question (skip `cs/blog.html` like SK, or ship a
-   shell like UK's) before or during this phase.
-2. **Phase 3**: verification (tag-balance check, em-dash grep audit,
-   browser click-through, 4-language switcher check on both desktop/
-   mobile) — same rigor as SK/UK.
-3. **Phase 4**: deploy to all three targets, same recipe as below.
-4. **Separately, still open and not urgent**: decide whether
-   `lang-detect.js` should also auto-redirect Ukrainian (and eventually
-   Czech) browsers, not just Slovak ones.
-5. **Still the top-priority *compliance* item, unrelated to Czech**:
-   human legal review of the AI-translated compliance pages
-   (`sk/privacy-policy.html`, `sk/terms-and-conditions.html`,
-   `sk/aml-compliance.html`, and their `uk/` counterparts) — real
-   MiCA/GDPR exposure if mistranslated, live on production, not yet
-   reviewed by a human speaker of either language.
+   UI-only shell like `uk/blog.html`) before or alongside this phase.
+3. **Separately, still open and not urgent**: decide whether
+   `lang-detect.js` should also auto-redirect Ukrainian and/or Czech
+   browsers, not just Slovak ones — if yes for Czech, add `'cs'` to its
+   `browserLang` check and a `cs/` branch alongside the existing `sk/`
+   one.
+4. **Still the top-priority *compliance* item, unrelated to Czech**:
+   human legal review of the AI-translated compliance pages — now in
+   **three** languages (`sk/`, `uk/`, and `cs/` `privacy-policy.html`,
+   `terms-and-conditions.html`, `aml-compliance.html`) — real MiCA/GDPR
+   exposure if mistranslated, the SK+UK versions are live on production,
+   none reviewed by a human speaker of any of the three languages yet.
 
 **Decisions, constraints & gotchas (not obvious from the code):**
 - **Real time gaps between sessions can hide substantial work** — the
