@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>200-тижнева ковзна середня | Virtuse</title>
+<title>200týdenní klouzavý průměr | Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -23,16 +24,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="200-тижнева ковзна середня | Virtuse">
-<meta property="og:description" content="Найбільш авторитетна довгострокова межа Біткоїна. 200-тижнева ковзна середня історично позначала дно кожного ведмежого ринку.">
-<meta property="og:url" content="https://staging.virtuse.com/uk/ma-200w.html">
+<meta property="og:title" content="200týdenní klouzavý průměr | Virtuse">
+<meta property="og:description" content="Sledujte Bitcoin proti 200týdennímu klouzavému průměru, historickému dnu medvědího trhu.">
+<meta property="og:url" content="https://staging.virtuse.com/cs/ma-200w.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="200-тижнева ковзна середня | Virtuse">
-<meta name="twitter:description" content="Найбільш авторитетна довгострокова межа Біткоїна. 200-тижнева ковзна середня історично позначала дно кожного ведмежого ринку.">
+<meta name="twitter:title" content="200týdenní klouzavý průměr | Virtuse">
+<meta name="twitter:description" content="Sledujte Bitcoin proti 200týdennímu klouzavému průměru, historickému dnu medvědího trhu.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <style>
@@ -619,46 +620,14 @@ a.nav-logo, .nav-logo {
   body.nav-open { overflow: hidden; }
 }
 
-/* ===== UK: compact nav text =====
-   Ukrainian nav labels run noticeably longer than their English originals,
-   so at the same per-item padding/font-size they wrap onto two lines well
-   before the English nav does. Tighten the gap/padding/font-size a notch
-   and force single-line labels so the row matches (or beats) the English
-   nav's fit at the same viewport width. */
-/* .nav-actions groups the language switcher with the CTA button into one
-   flex item so the nav's space-between doesn't spread them apart -- the
-   switcher sits right next to the CTA, not centered in the leftover gap.
-   Declared before the media queries below so their narrower-width
-   overrides (same selector) win the cascade at those widths. */
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
 .lang-menu { position: relative; }
-
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-/* Extra squeeze for the narrow "almost mobile" desktop band, where even
-   the compact pass above isn't quite enough room for the longer labels. */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== UK: compact language dropdown =====
-   Site-navigation stays exactly as shipped (inline links >1024px,
-   hamburger overlay <=1024px) -- only the language switcher moves out of
-   the inline nav row. A single compact button opens a small dropdown
-   (EN/SK/UA), so the desktop nav row never overflows regardless of how
-   many languages exist. */
 
 .lang-menu-btn {
   display: inline-flex;
@@ -742,44 +711,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="/uk/" class="nav-logo">
+  <a href="/cs/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="../buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Koupit Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Těžba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Půjčky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Daně</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boti</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bitcoin-data.html" class="active"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začít<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
         <a href="../ma-200w.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/ma-200w.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="ma-200w.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/ma-200w.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/ma-200w.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="ma-200w.html" class="lang-opt active" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </li>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-        <span class="lang-flag">🇺🇦</span>UA
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky">
+        <span class="lang-flag">🇨🇿</span>CS
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="lang-menu-panel" id="langMenuPanel" role="menu">
         <a href="../ma-200w.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/ma-200w.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="ma-200w.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/ma-200w.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/ma-200w.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="ma-200w.html" class="lang-opt active" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </div>
-    <button class="nav-cta">Розпочати</button>
+    <button class="nav-cta">Začít</button>
   </div>
 </nav>
 
@@ -810,18 +779,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>200-тижнева <span class="highlight">ковзна середня</span></h1>
-  <p class="hero-desc">Найбільш авторитетна довгострокова межа Біткоїна. 200-тижнева ковзна середня історично позначала дно кожного ведмежого ринку: ціна рідко закривалася нижче неї і ніколи не залишалася там надовго.</p>
+  <h1>200týdenní <span class="highlight">klouzavý průměr</span></h1>
+  <p class="hero-desc">Nejrespektovanější dlouhodobé dno Bitcoinu. 200týdenní klouzavý průměr historicky označoval dno každého medvědího trhu. Cena pod ním jen zřídka uzavírala a nikdy tam dlouho nezůstala.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
 <div class="subnav-wrap">
-  <nav class="subnav" aria-label="Сторінки Біткоїн даних">
-    <a href="bitcoin-data.html">&#9670; Панель</a>
-    <a href="retirement-calculator.html">&#9670; Пенсійний калькулятор</a>
-    <a href="root-cycles.html">&#9670; Райдужний графік</a>
-    <a href="btc-dominance.html">&#9670; Домінування BTC</a>
+  <nav class="subnav" aria-label="Stránky Bitcoin dat">
+    <a href="../bitcoin-data.html">&#9670; Dashboard</a>
+    <a href="../retirement-calculator.html">&#9670; Důchodová kalkulačka</a>
+    <a href="../btc-dominance.html">&#9670; Dominance BTC</a>
     <a href="ma-200w.html" class="active">&#9670; 200 WMA</a>
+    <a href="../root-cycles.html">&#9670; Duhový graf</a>
   </nav>
 </div>
 
@@ -830,47 +799,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="status-card">
     <div class="status-left">
       <div>
-        <div class="status-price-label">Біткоїн сьогодні</div>
+        <div class="status-price-label">Bitcoin dnes</div>
         <div class="status-price" id="statusPrice">—</div>
       </div>
       <div>
         <div class="status-price-label">200 WMA</div>
         <div class="status-price" id="statusWma" style="color: var(--text);">—</div>
       </div>
-      <div class="band-chip" id="bandChip" style="background: var(--border);">Завантаження…</div>
+      <div class="band-chip" id="bandChip" style="background: var(--border);">Načítá se…</div>
     </div>
-    <div class="status-note">Ціна як кратне 200-тижневої ковзної середньої: чим ближче до 1×, тим ближче до історичної межі Біткоїна.</div>
+    <div class="status-note">Cena jako násobek 200týdenního klouzavého průměru: čím blíže k 1×, tím blíže k historickému dnu Bitcoinu.</div>
   </div>
 </section>
 
 <!-- ===== CHART ===== -->
 <section class="chart-section">
   <div class="chart-panel">
-    <h3><span class="ico">&#9670;</span> Ціна проти 200-тижневої ковзної середньої (логарифмічна шкала)</h3>
+    <h3><span class="ico">&#9670;</span> Cena vs. 200týdenní klouzavý průměr (logaritmická škála)</h3>
     <div class="chart-wrap">
       <canvas id="chart" height="460"></canvas>
       <div class="tooltip" id="tooltip"></div>
     </div>
     <div class="chart-note">
-      Тижневі ціни закриття з Binance (з 2017 року), поєднані з інтерпольованою місячною історією (2011–2017); ковзна середня для кожного тижня розраховується за попередні 200 тижнів. Дотики до 200-тижневої ковзної середньої позначали дно ведмежих ринків 2015, 2018 та 2022 років. Це не інвестиційна порада.
+      Týdenní uzávěry z Binance (od roku 2017) spojené s interpolovanou měsíční historií (2011–2017); klouzavý průměr pro každý týden používá předchozích 200 týdnů. Dotyky s 200 WMA označovaly dna medvědích trhů v letech 2015, 2018 a 2022. Nejde o investiční poradenství.
     </div>
   </div>
 </section>
 
 <!-- ===== LEGEND ===== -->
 <section class="legend-section">
-  <div class="sec-label">Як це читати</div>
+  <div class="sec-label">Jak to číst</div>
   <div class="legend-grid" id="legend"></div>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Змінимо гроші, змінимо світ</h2>
-  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
+  <h2>Opravme peníze, opravme svět</h2>
+  <p>Přidejte se k více než 18 000 investorům, kteří jsou vždy o krok napřed. Získávejte Virtuse Report do své schránky každý týden.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
+    <input type="email" name="email" placeholder="Zadejte svůj e-mail" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ПІДПИСАТИСЯ</button>
+    <button type="submit">ODEBÍRAT</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -887,7 +856,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'НАДСИЛАННЯ...';
+      btn.textContent = 'ODESÍLÁNÍ...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -897,14 +866,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
+          msg.textContent = "Hotovo, zkontrolujte si e-mail s uvítacím dopisem.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
+          msg.textContent = (result.data && result.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
+        msg.textContent = 'Chyba sítě. Zkuste to znovu.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -923,20 +892,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Компанія</h4>
-        <a href="about.html">Про нас</a>
-        <a href="faq.html">FAQ</a>
+        <h4>Společnost</h4>
+        <a href="../about.html">O nás</a>
+        <a href="../faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Правова інформація</h4>
-        <a href="terms-and-conditions.html">Умови використання</a>
-        <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <h4>Informace</h4>
+        <a href="../terms-and-conditions.html">Obchodní podmínky</a>
+        <a href="../privacy-policy.html">Ochrana osobních údajů</a>
+        <a href="../aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
   </div>
 </footer>
 
@@ -1009,11 +978,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function zoneFor(mult) {
     if (mult == null) return { label: '—', color: '#484f58' };
-    if (mult < 1.0) return { label: 'Нижче межі: історична рідкість', color: '#3fb950' };
-    if (mult < 1.6) return { label: 'Близько до межі: зона глибокої вартості', color: '#63be7b' };
-    if (mult < 3.0) return { label: 'Середина циклу', color: '#ffe600' };
-    if (mult < 5.0) return { label: 'Розігрітий ринок: значно вище межі', color: '#f6a55a' };
-    return { label: 'Ейфорія: далеко вище межі', color: '#c00000' };
+    if (mult < 1.0) return { label: 'Pod dnem · historicky vzácné', color: '#3fb950' };
+    if (mult < 1.6) return { label: 'Blízko dna · zóna hluboké hodnoty', color: '#63be7b' };
+    if (mult < 3.0) return { label: 'Střední fáze cyklu', color: '#ffe600' };
+    if (mult < 5.0) return { label: 'Rozehřáté · výrazně nad dnem', color: '#f6a55a' };
+    return { label: 'Euforie · natažení daleko nad dno', color: '#c00000' };
   }
 
   var view = null;
@@ -1106,10 +1075,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!best || bestD > 40) { tooltip.style.display = 'none'; return; }
     var mult = best.price / best.wma;
     var dt = new Date(best.ts);
-    tooltip.innerHTML = dt.toLocaleDateString('uk-UA', { month: 'short', year: 'numeric' }) +
-      '<br>Ціна: <b>' + fmtUsd(best.price) + '</b><br>' +
+    tooltip.innerHTML = dt.toLocaleDateString('cs-CZ', { month: 'short', year: 'numeric' }) +
+      '<br>Price: <b>' + fmtUsd(best.price) + '</b><br>' +
       '200 WMA: <b>' + fmtUsd(best.wma) + '</b><br>' +
-      '<span style="color:' + zoneFor(mult).color + '">&#9632;</span> ' + mult.toFixed(2) + '× від межі';
+      '<span style="color:' + zoneFor(mult).color + '">&#9632;</span> ' + mult.toFixed(2) + '× the floor';
     tooltip.style.display = 'block';
     var tx = view.x(best.ts) + 14;
     if (tx > view.w - 190) tx = view.x(best.ts) - 180;
@@ -1121,10 +1090,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Legend
   var legend = document.getElementById('legend');
   [
-    { label: 'Біла лінія: тижнева ціна Біткоїна', color: '#ffffff' },
-    { label: 'Помаранчева лінія: 200-тижнева ковзна середня (межа)', color: '#f7931a' },
-    { label: '≈ 1×: дно ведмежих ринків 2015, 2018 та 2022 років', color: '#3fb950' },
-    { label: '4×+: піки циклів, що йшли далеко вище межі', color: '#c00000' }
+    { label: 'Bílá čára · týdenní cena Bitcoinu', color: '#ffffff' },
+    { label: 'Oranžová čára · 200týdenní klouzavý průměr ("dno")', color: '#f7931a' },
+    { label: '≈ 1× · dna medvědích trhů v letech 2015, 2018 a 2022', color: '#3fb950' },
+    { label: '4×+ · vrcholy cyklů se natáhly daleko nad dno', color: '#c00000' }
   ].forEach(function (b) {
     var item = document.createElement('span');
     item.className = 'legend-item';
@@ -1147,7 +1116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('statusWma').textContent = fmtUsd(last.wma);
     var z = zoneFor(mult);
     var chip = document.getElementById('bandChip');
-    chip.textContent = mult.toFixed(2) + '× · ' + z.label;
+    chip.textContent = mult.toFixed(2) + '× — ' + z.label;
     chip.style.background = z.color;
   }
 

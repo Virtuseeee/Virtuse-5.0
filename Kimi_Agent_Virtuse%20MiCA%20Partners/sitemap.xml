@@ -448,6 +448,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -458,6 +459,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -468,6 +470,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/ma-200w.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/ma-200w.html"/>
   </url>
   <url>
