@@ -763,6 +763,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -773,6 +774,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -783,6 +785,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/privacy-policy.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html"/>
   </url>
   <url>

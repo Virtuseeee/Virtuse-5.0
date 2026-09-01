@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Політика конфіденційності | Virtuse</title>
+<title>Ochrana osobních údajů | Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -23,16 +24,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Політика конфіденційності | Virtuse">
-<meta property="og:description" content="Як Virtuse обробляє ваші дані, простою мовою. Ми керуємо некастодіальним хабом і збираємо мінімум інформації.">
-<meta property="og:url" content="https://staging.virtuse.com/uk/privacy-policy.html">
+<meta property="og:title" content="Ochrana osobních údajů | Virtuse">
+<meta property="og:description" content="Zásady ochrany osobních údajů Virtuse: jak shromažďujeme, používáme a chráníme vaše data v souladu s GDPR.">
+<meta property="og:url" content="https://staging.virtuse.com/cs/privacy-policy.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Політика конфіденційності | Virtuse">
-<meta name="twitter:description" content="Як Virtuse обробляє ваші дані, простою мовою. Ми керуємо некастодіальним хабом і збираємо мінімум інформації.">
+<meta name="twitter:title" content="Ochrana osobních údajů | Virtuse">
+<meta name="twitter:description" content="Zásady ochrany osobních údajů Virtuse: jak shromažďujeme, používáme a chráníme vaše data v souladu s GDPR.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <style>
@@ -527,46 +528,14 @@ a.nav-logo, .nav-logo {
   body.nav-open { overflow: hidden; }
 }
 
-/* ===== UK: compact nav text =====
-   Ukrainian nav labels run noticeably longer than their English originals,
-   so at the same per-item padding/font-size they wrap onto two lines well
-   before the English nav does. Tighten the gap/padding/font-size a notch
-   and force single-line labels so the row matches (or beats) the English
-   nav's fit at the same viewport width. */
-/* .nav-actions groups the language switcher with the CTA button into one
-   flex item so the nav's space-between doesn't spread them apart -- the
-   switcher sits right next to the CTA, not centered in the leftover gap.
-   Declared before the media queries below so their narrower-width
-   overrides (same selector) win the cascade at those widths. */
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
 .lang-menu { position: relative; }
-
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-/* Extra squeeze for the narrow "almost mobile" desktop band, where even
-   the compact pass above isn't quite enough room for the longer labels. */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== UK: compact language dropdown =====
-   Site-navigation stays exactly as shipped (inline links >1024px,
-   hamburger overlay <=1024px) -- only the language switcher moves out of
-   the inline nav row. A single compact button opens a small dropdown
-   (EN/SK/UA), so the desktop nav row never overflows regardless of how
-   many languages exist. */
 
 .lang-menu-btn {
   display: inline-flex;
@@ -650,44 +619,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="/uk/" class="nav-logo">
+  <a href="/cs/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="../buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Koupit Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Těžba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Půjčky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Daně</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boti</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začít<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
         <a href="../privacy-policy.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/privacy-policy.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="privacy-policy.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/privacy-policy.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/privacy-policy.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="privacy-policy.html" class="lang-opt active" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </li>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-        <span class="lang-flag">🇺🇦</span>UA
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky">
+        <span class="lang-flag">🇨🇿</span>CS
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="lang-menu-panel" id="langMenuPanel" role="menu">
         <a href="../privacy-policy.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/privacy-policy.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="privacy-policy.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/privacy-policy.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/privacy-policy.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="privacy-policy.html" class="lang-opt active" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </div>
-    <button class="nav-cta">Розпочати</button>
+    <button class="nav-cta">Začít</button>
   </div>
 </nav>
 
@@ -718,167 +687,167 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Політика <span class="highlight">конфіденційності</span></h1>
-  <p class="hero-desc">Як Virtuse обробляє ваші дані, простою мовою. Коротко: ми керуємо некастодіальним хабом, збираємо майже нічого, а те невелике, що все ж збираємо, пояснено нижче. Набуває чинності 20 липня 2026 року.</p>
+  <h1>Ochrana <span class="highlight">osobních údajů</span></h1>
+  <p class="hero-desc">Jak Virtuse nakládá s vašimi údaji, jednoduchým jazykem. Zkrácená verze: provozujeme nekustodiální centrum, sbíráme téměř nic a to málo, co sbíráme, je vysvětleno níže. Účinné od 20. července 2026.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
 <div class="subnav-wrap">
-  <nav class="subnav" aria-label="Розділи Політики конфіденційності">
-    <a href="#controller">&#9670; Хто ми</a>
-    <a href="#data">&#9670; Що ми збираємо</a>
-    <a href="#use">&#9670; Як ми це використовуємо</a>
-    <a href="#cookies">&#9670; Файли cookie</a>
-    <a href="#thirdparty">&#9670; Треті сторони</a>
-    <a href="#transfers">&#9670; Передавання даних</a>
-    <a href="#rights">&#9670; Ваші права</a>
-    <a href="#contact">&#9670; Контакти</a>
+  <nav class="subnav" aria-label="Sekce ochrany osobních údajů">
+    <a href="#controller">&#9670; Kdo jsme</a>
+    <a href="#data">&#9670; Co sbíráme</a>
+    <a href="#use">&#9670; Jak to používáme</a>
+    <a href="#cookies">&#9670; Cookies</a>
+    <a href="#thirdparty">&#9670; Třetí strany</a>
+    <a href="#transfers">&#9670; Přenosy</a>
+    <a href="#rights">&#9670; Vaše práva</a>
+    <a href="#contact">&#9670; Kontakt</a>
   </nav>
 </div>
 
 <!-- ===== CONTROLLER ===== -->
 <section class="faq-section" id="controller">
-  <div class="sec-label">1. Хто ми</div>
+  <div class="sec-label">1. Kdo jsme</div>
 
   <details open>
-    <summary>Контролер даних</summary>
-    <div class="faq-answer">Цей вебсайт експлуатує <strong>Virtuse Group Pte. Ltd.</strong> з операційним офісом у Братиславі, Словаччина, та головним офісом групи в Сінгапурі ("Virtuse", "ми"). Для цілей Загального регламенту ЄС про захист даних (GDPR) саме Virtuse Group Pte. Ltd. є контролером персональних даних, які збираються через цей вебсайт. Контакти: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+    <summary>Provozovatel</summary>
+    <div class="faq-answer">Tuto webovou stránku provozuje <strong>Virtuse Group Pte. Ltd.</strong>, s provozním sídlem v Bratislavě na Slovensku a sídlem skupiny v Singapuru ("Virtuse", "my"). Pro účely Obecného nařízení EU o ochraně osobních údajů (GDPR) je Virtuse Group Pte. Ltd. správcem osobních údajů shromažďovaných prostřednictvím této webové stránky. Kontakt: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
   </details>
 
   <details>
-    <summary>Чим цей вебсайт є, а чим не є</summary>
-    <div class="faq-answer">Virtuse є <strong>некастодіальним хабом для сервісів, орієнтованих виключно на Біткоїн</strong>. Ми не керуємо біржею, не зберігаємо кошти чи ключі клієнтів, не відкриваємо рахунки і не проводимо верифікацію особи (KYC) на цьому вебсайті. Коли ви користуєтеся сервісом партнера (купівля, майнінг, кредитування, кастоді, податки чи торгові боти), ви укладаєте договір безпосередньо з цим партнером на його власній платформі, і цей партнер є <strong>самостійним контролером даних</strong> щодо всього, чим ви з ним ділитеся. Це суттєво обмежує обсяг персональних даних, які обробляємо ми самі.</div>
+    <summary>Čím tato stránka je a čím není</summary>
+    <div class="faq-answer">Virtuse je <strong>nekustodiální centrum pro služby zaměřené výhradně na Bitcoin</strong>. Neprovozujeme burzu, nedržíme prostředky ani klíče klientů, neotevíráme účty a na této stránce neprovádíme ověření identity (KYC). Když použijete partnerskou službu (nákup, těžbu, půjčky, úschovu, daně nebo obchodní boty), uzavíráte smlouvu přímo s daným partnerem na jeho vlastní platformě a tento partner je <strong>samostatným správcem</strong> pro vše, co s ním sdílíte. To výrazně omezuje osobní údaje, které zpracováváme my sami.</div>
   </details>
 </section>
 
 <!-- ===== DATA COLLECTED ===== -->
 <section class="faq-section" id="data">
-  <div class="sec-label">2. Що ми збираємо</div>
+  <div class="sec-label">2. Co sbíráme</div>
 
   <details>
-    <summary>Дані, які ви нам надаєте</summary>
-    <div class="faq-answer"><strong>Email-адреса для розсилки:</strong> якщо ви підписуєтеся на Virtuse Report, ми обробляємо надану вами email-адресу на підставі вашої згоди. Це єдині персональні дані, які запитує цей вебсайт. Ви можете відписатися в будь-який момент за посиланням у кожному листі, і ми видалимо вашу адресу зі списку розсилки.</div>
+    <summary>Údaje, které nám poskytnete</summary>
+    <div class="faq-answer"><strong>E-mailová adresa pro newsletter</strong>: pokud se přihlásíte k odběru Virtuse Report, zpracováváme e-mailovou adresu, kterou nám poskytnete, na základě vašeho souhlasu. To je jediný osobní údaj, o který tato stránka žádá. Odběr můžete kdykoli zrušit přes odkaz v každém e-mailu a vaši adresu z mailing listu vymažeme.</div>
   </details>
 
   <details>
-    <summary>Дані, що збираються автоматично</summary>
-    <div class="faq-answer"><strong>Дані про використання:</strong> як практично будь-який вебсайт, наша хостинг-інфраструктура фіксує стандартні серверні журнали: IP-адресу, тип і версію браузера, відвідані сторінки, часові мітки та сторінки-джерела переходу. Ми використовуємо ці дані виключно для безпеки, запобігання зловживанням і підтримання роботи сайту. Ми не формуємо профілі відвідувачів і не використовуємо ці дані для реклами.</div>
+    <summary>Údaje sbírané automaticky</summary>
+    <div class="faq-answer"><strong>Údaje o používání</strong>: jako prakticky každá webová stránka, i naše hostingová infrastruktura zaznamenává standardní serverové logy: IP adresu, typ a verzi prohlížeče, navštívené stránky, časové značky a odkazující stránky. Používáme je výhradně na bezpečnost, prevenci zneužití a udržení chodu stránky. Nevytváříme profily návštěvníků a nepoužíváme tyto údaje na reklamu.</div>
   </details>
 
   <details>
-    <summary>Дані, які ми не збираємо</summary>
-    <div class="faq-answer">Жодних даних облікового запису, документів, що посвідчують особу, фінансової чи платіжної інформації, адрес гаманців, історії транзакцій. Наші безкоштовні інструменти (дашборд Біткоїн дані, Пенсійний калькулятор, Райдужний графік, Домінування BTC, 200 WMA) працюють <strong>повністю у вашому браузері</strong>: цифри, які ви вводите в Пенсійний калькулятор, ніколи не залишають ваш пристрій.</div>
+    <summary>Údaje, které nesbíráme</summary>
+    <div class="faq-answer">Žádné účetní údaje, žádné doklady totožnosti, žádné finanční ani platební informace, žádné adresy peněženek, žádná historie transakcí. Naše bezplatné nástroje (dashboard Bitcoin data, Důchodová kalkulačka, Duhový graf, Dominance BTC, 200 WMA) běží <strong>úplně ve vašem prohlížeči</strong>. Čísla, která zadáte do Důchodové kalkulačky, nikdy neopustí vaše zařízení.</div>
   </details>
 </section>
 
 <!-- ===== USE ===== -->
 <section class="faq-section" id="use">
-  <div class="sec-label">3. Як і навіщо ми використовуємо дані</div>
+  <div class="sec-label">3. Jak a proč údaje používáme</div>
 
   <details>
-    <summary>Цілі та правові підстави (ст. 6 GDPR)</summary>
-    <div class="faq-answer">Ми обробляємо персональні дані лише для: <strong>(a) надсилання розсилки</strong>, на яку ви підписалися: правова підстава: згода (ст. 6(1)(a)), яку можна відкликати в будь-який момент; <strong>(b) забезпечення роботи, безпеки та налагодження вебсайту</strong>: правова підстава: законний інтерес (ст. 6(1)(f)) у підтриманні доступності та безпеки нашого сервісу; та <strong>(c) виконання юридичних зобов'язань</strong> (ст. 6(1)(c)), якщо цього вимагає право ЄС чи Словаччини. Ми не продаємо персональні дані і не використовуємо їх для автоматизованого прийняття рішень чи профілювання в розумінні ст. 22 GDPR.</div>
+    <summary>Účely a právní základy (čl. 6 GDPR)</summary>
+    <div class="faq-answer">Osobní údaje zpracováváme jen pro: <strong>(a) doručování newsletteru</strong>, o který jste požádali, právní základ: souhlas (čl. 6 odst. 1 písm. a)), kdykoli odvolatelný; <strong>(b) provoz, zabezpečení a ladění webové stránky</strong>, právní základ: oprávněný zájem (čl. 6 odst. 1 písm. f)) na udržení dostupnosti a bezpečnosti naší služby; a <strong>(c) plnění právních povinností</strong> (čl. 6 odst. 1 písm. c)), pokud to vyžaduje právo EU nebo slovenské právo. Osobní údaje neprodáváme a nepoužíváme je na automatizované rozhodování ani profilování ve smyslu čl. 22 GDPR.</div>
   </details>
 
   <details>
-    <summary>Партнерські (реферальні) відносини</summary>
-    <div class="faq-answer">Virtuse отримує реферальну винагороду, коли ви реєструєтеся у партнера через наші посилання. Це відбувається через стандартні реферальні URL-адреси: <strong>ми не передаємо ваші персональні дані партнерам</strong>, а партнери не надсилають нам ваші персональні дані у відповідь. Партнери можуть повідомляти щонайбільше агреговану, знеособлену статистику (наприклад, кількість реєстрацій) для розрахунку комісій.</div>
+    <summary>Doporučovací vztahy</summary>
+    <div class="faq-answer">Virtuse vydělává provize za doporučení, když se přes naše odkazy zaregistrujete u partnera. Funguje to prostřednictvím standardních doporučovacích URL adres. <strong>Vaše osobní údaje partnerům neposkytujeme</strong> a partneři nám vaše osobní údaje neposílají zpět. Nanejvýš nám partneři hlásí agregované, needentifikující statistiky (např. počet registrací) pro účely vyúčtování provizí.</div>
   </details>
 </section>
 
 <!-- ===== COOKIES ===== -->
 <section class="faq-section" id="cookies">
-  <div class="sec-label">4. Файли cookie та локальне сховище</div>
+  <div class="sec-label">4. Cookies a lokální úložiště</div>
 
   <details>
-    <summary>Що ми встановлюємо</summary>
-    <div class="faq-answer">Сам цей вебсайт не встановлює <strong>жодних рекламних чи міжсайтових трекінгових файлів cookie</strong>. Ми обмежуємося тим, що правила ePrivacy називають технічно необхідним зберіганням: мінімальним технічним станом, потрібним для функціонування сайту (наприклад, запам'ятовуванням налаштування інтерфейсу). Оскільки ми уникаємо неістотних файлів cookie, для сайту в його поточному вигляді банер згоди на cookie не потрібен. Якщо ми колись впровадимо аналітичні чи маркетингові файли cookie, ми попередньо запитаємо вашу згоду, відповідно до Директиви ePrivacy та GDPR.</div>
+    <summary>Co nastavujeme</summary>
+    <div class="faq-answer">Tato webová stránka sama o sobě nenastavuje <strong>žádné reklamní ani cross-site sledovací cookies</strong>. Omezujeme se na to, co pravidla ePrivacy označují jako nezbytně nutné úložiště: minimální technický stav potřebný pro fungování stránky (například zapamatování si preference rozhraní). Jelikož se vyhýbáme nepodstatným cookies, pro stránku v její současné podobě není potřeba banner se souhlasem s cookies. Pokud bychom někdy zavedli analytické nebo marketingové cookies, požádáme předem o váš souhlas, v souladu se směrnicí ePrivacy a GDPR.</div>
   </details>
 
   <details>
-    <summary>Керування файлами cookie</summary>
-    <div class="faq-answer">Ви можете в будь-який момент налаштувати браузер на відхилення або видалення файлів cookie через його налаштування. Сайт залишається повністю функціональним без них.</div>
+    <summary>Správa cookies</summary>
+    <div class="faq-answer">Svému prohlížeči můžete kdykoli přikázat odmítnout nebo vymazat cookies přes jeho nastavení. Stránka zůstává bez nich plně použitelná.</div>
   </details>
 </section>
 
 <!-- ===== THIRD PARTIES ===== -->
 <section class="faq-section" id="thirdparty">
-  <div class="sec-label">5. Послуги третіх сторін</div>
+  <div class="sec-label">5. Služby třetích stran</div>
 
   <details>
-    <summary>Сервіси, з якими взаємодіє ваш браузер на наших сторінках</summary>
-    <div class="faq-answer">Деякі функції завантажують контент або дані безпосередньо від третіх сторін. Коли це відбувається, ці постачальники технічно отримують вашу IP-адресу як частину запиту, відповідно до власних політик конфіденційності: <strong>Google Fonts</strong> (шрифти), <strong>jsDelivr</strong> (бібліотека анімації), <strong>WordPress/virtuse.com</strong> (статті блогу та зображення, наш власний сервіс), <strong>mempool.space</strong>, <strong>CoinGecko</strong> та <strong>Binance</strong> (живі дані про ринок і мережу лише для читання для наших інструментів Біткоїн дані). Ці запити не містять жодних наших ідентифікаторів: жодного логіна, жодного нашого cookie, нічого понад те, що містить будь-який запит до вебсторінки.</div>
+    <summary>Služby, se kterými váš prohlížeč komunikuje na našich stránkách</summary>
+    <div class="faq-answer">Některé funkce načítají obsah nebo data přímo od třetích stran. Když se tak stane, tito poskytovatelé technicky obdrží vaši IP adresu jako součást požadavku, podle vlastních zásad ochrany osobních údajů: <strong>Google Fonts</strong> (písma), <strong>jsDelivr</strong> (animační knihovna), <strong>WordPress/virtuse.com</strong> (blogové články a obrázky, naše vlastní služba), <strong>mempool.space</strong>, <strong>CoinGecko</strong> a <strong>Binance</strong> (živá tržní a síťová data jen na čtení pro naše nástroje Bitcoin data). Tyto požadavky neobsahují žádné identifikátory od nás: žádné přihlášení, žádné naše cookie, nic nad rámec toho, co obsahuje jakýkoli požadavek na webovou stránku.</div>
   </details>
 
   <details>
-    <summary>Посилання на партнерів та інші сайти</summary>
-    <div class="faq-answer">Наші сторінки містять посилання на партнерські платформи (наприклад, Kraken, 21bitcoin, ByBit EU, Firefish, Trezor, Ledger та інші), а також на публікації в пресі. Після того, як ви покинете наш сайт, застосовується політика конфіденційності сайту призначення. Партнери, що надають регульовані послуги, проводитимуть власне KYC відповідно до MiCA та правил ЄС щодо протидії відмиванню коштів: ці дані надходять безпосередньо до них, і ніколи не через нас. Ми рекомендуємо ознайомитися з політикою конфіденційності кожного сервісу, у якому ви реєструєтеся.</div>
+    <summary>Odkazy na partnery a jiné stránky</summary>
+    <div class="faq-answer">Naše stránky odkazují na partnerské platformy (např. Kraken, 21bitcoin, ByBit EU, Firefish, Trezor, Ledger a další) a na mediální pokrytí. Po opuštění naší stránky se uplatňují zásady ochrany osobních údajů cílové stránky. Partneři provádějící regulované služby budou provádět vlastní KYC podle MiCA a pravidel EU proti praní špinavých peněz. Tyto údaje směřují k nim, nikdy přes nás. Doporučujeme přečíst si zásady ochrany osobních údajů každé služby, do které se zaregistrujete.</div>
   </details>
 </section>
 
 <!-- ===== RETENTION & TRANSFERS ===== -->
 <section class="faq-section" id="transfers">
-  <div class="sec-label">6. Зберігання та міжнародні передавання даних</div>
+  <div class="sec-label">6. Uchovávání a mezinárodní přenosy</div>
 
   <details>
-    <summary>Як довго ми зберігаємо дані</summary>
-    <div class="faq-answer">Адреси для розсилки: доки ви не відпишетеся або доки ми не припинимо розсилку. Серверні журнали: регулярно ротуються після короткого періоду (зазвичай 30-90 днів), якщо вони не потрібні для триваючого розслідування інциденту безпеки або не вимагаються законом. Ми нічого не зберігаємо "про всяк випадок".</div>
+    <summary>Jak dlouho údaje uchováváme</summary>
+    <div class="faq-answer">Adresy pro newsletter: dokud se neodhlásíte nebo dokud newsletter neukončíme. Serverové logy: pravidelně obměňované po krátkém období (typicky 30–90 dní), pokud nejsou potřeba pro probíhající bezpečnostní vyšetřování nebo si jejich uchování nevyžaduje zákon. Nic neuchováváme "pro jistotu".</div>
   </details>
 
   <details>
-    <summary>Передавання за межі ЄЕП</summary>
-    <div class="faq-answer">Ми є оператором, що базується в ЄС, проте група Virtuse має штаб-квартиру в Сінгапурі, і деякі постачальники послуг можуть обробляти дані за межами Європейського економічного простору. У таких випадках ми покладаємося на гарантії, передбачені Розділом V GDPR: насамперед на <strong>Стандартні договірні положення</strong> Європейської комісії, або на рішення про належний рівень захисту там, де воно існує (наприклад, Рамкову угоду ЄС-США про захист даних для сертифікованих американських постачальників). Копію відповідних гарантій можна отримати, звернувшись за контактами нижче.</div>
+    <summary>Přenosy mimo EHP</summary>
+    <div class="faq-answer">Jsme provozovatel se sídlem v EU, ale skupina Virtuse má centrálu v Singapuru a někteří poskytovatelé služeb mohou zpracovávat údaje mimo Evropský hospodářský prostor. Pokud k tomu dojde, spoléháme se na záruky podle kapitoly V GDPR: především na <strong>standardní smluvní doložky</strong> Evropské komise, nebo na rozhodnutí o přiměřenosti tam, kde existuje (například rámec EU–USA pro ochranu údajů pro certifikované poskytovatele z USA). Kopii příslušných záruk si můžete vyžádat přes kontakt níže.</div>
   </details>
 </section>
 
 <!-- ===== RIGHTS ===== -->
 <section class="faq-section" id="rights">
-  <div class="sec-label">7. Ваші права</div>
+  <div class="sec-label">7. Vaše práva</div>
 
   <details>
-    <summary>Ваші права за GDPR</summary>
-    <div class="faq-answer">Якщо ви перебуваєте в ЄЕП, ви маєте право на: <strong>доступ</strong> до персональних даних, які ми про вас зберігаємо (ст. 15), <strong>виправлення</strong> (ст. 16), <strong>видалення</strong> (ст. 17), <strong>обмеження обробки</strong> (ст. 18), <strong>перенесення даних</strong> (ст. 20), <strong>заперечення</strong> проти обробки на підставі законного інтересу (ст. 21) та на <strong>відкликання згоди</strong> в будь-який момент без впливу на попередню обробку (ст. 7(3)). Враховуючи, як мало ми збираємо, більшість запитів стосуються розсилки, і посилання на відписку вирішує їх миттєво.</div>
+    <summary>Vaše práva podle GDPR</summary>
+    <div class="faq-answer">Pokud se nacházíte v EHP, máte právo na: <strong>přístup</strong> k osobním údajům, které o vás uchováváme (čl. 15), <strong>opravu</strong> (čl. 16), <strong>výmaz</strong> (čl. 17), <strong>omezení zpracování</strong> (čl. 18), <strong>přenositelnost údajů</strong> (čl. 20), <strong>námitku</strong> proti zpracování založenému na oprávněném zájmu (čl. 21) a na <strong>odvolání souhlasu</strong> kdykoli bez vlivu na předchozí zpracování (čl. 7 odst. 3). Vzhledem k tomu, jak málo sbíráme, většina žádostí se týká newsletteru a odkaz na odhlášení je vyřídí okamžitě.</div>
   </details>
 
   <details>
-    <summary>Реалізація ваших прав та скарги</summary>
-    <div class="faq-answer">Напишіть на <a href="mailto:support@virtuse.com">support@virtuse.com</a>: ми відповімо протягом одного місяця, як того вимагає GDPR, і можемо спершу попросити підтвердити вашу особу. Якщо ви вважаєте, що ми неналежним чином обробили ваші дані, ви можете подати скаргу до вашого місцевого наглядового органу; для Словаччини це <strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong> (Управління захисту персональних даних Словацької Республіки).</div>
+    <summary>Uplatnění práv a stížnosti</summary>
+    <div class="faq-answer">Napište na <a href="mailto:support@virtuse.com">support@virtuse.com</a>. Odpovíme do jednoho měsíce, jak vyžaduje GDPR, a můžeme vás nejprve požádat o ověření totožnosti. Pokud se domníváte, že jsme s vašimi údaji zacházeli nesprávně, můžete podat stížnost u místního dozorového úřadu; pro Slovensko je to <strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong> (Úřad pro ochranu osobních údajů Slovenské republiky).</div>
   </details>
 
   <details>
-    <summary>Діти</summary>
-    <div class="faq-answer">Цей вебсайт не призначений для осіб віком до 18 років, і ми свідомо не збираємо персональні дані неповнолітніх. Якщо ви вважаєте, що неповнолітня особа надала нам дані, зв'яжіться з нами, і ми їх видалимо.</div>
+    <summary>Děti</summary>
+    <div class="faq-answer">Tato webová stránka není určena osobám mladším 18 let a vědomě nesbíráme osobní údaje nezletilých. Pokud se domníváte, že nám nezletilý poskytl údaje, kontaktujte nás a my je vymažeme.</div>
   </details>
 </section>
 
 <!-- ===== CONTACT ===== -->
 <section class="faq-section" id="contact">
-  <div class="sec-label">8. Безпека, зміни та контакти</div>
+  <div class="sec-label">8. Bezpečnost, změny a kontakt</div>
 
   <details>
-    <summary>Безпека даних</summary>
-    <div class="faq-answer">Ми застосовуємо пропорційні технічні та організаційні заходи (TLS повсюдно, мінімізація збору даних вже на етапі проєктування, контроль доступу). Жодна передача даних через інтернет не є стовідсотково безпечною: це ще одна причина, чому наша архітектура від самого початку уникає збору чутливих даних.</div>
+    <summary>Bezpečnost údajů</summary>
+    <div class="faq-answer">Uplatňujeme přiměřená technická a organizační opatření (TLS všude, minimalizace sbíraných údajů už v návrhu, kontrola přístupu). Žádný přenos přes internet není 100% bezpečný, což je další důvod, proč naše architektura už od návrhu nesbírá citlivé údaje.</div>
   </details>
 
   <details>
-    <summary>Зміни до цієї політики</summary>
-    <div class="faq-answer">Ми можемо оновлювати цю Політику конфіденційності в міру розвитку вебсайту чи законодавства. Зміни публікуються на цій сторінці з новою датою набуття чинності; суттєві зміни будуть помітно позначені на сайті або через розсилку до набуття ними чинності.</div>
+    <summary>Změny těchto zásad</summary>
+    <div class="faq-answer">Tyto Zásady ochrany osobních údajů můžeme aktualizovat podle vývoje stránky nebo legislativy. Změny se zveřejňují na této stránce s novým datem účinnosti; podstatné změny budou před nabytím účinnosti výrazně označeny na stránce nebo prostřednictvím newsletteru.</div>
   </details>
 
   <details>
-    <summary>Зв'яжіться з нами</summary>
-    <div class="faq-answer">Питання щодо цієї політики або ваших даних: <a href="mailto:support@virtuse.com">support@virtuse.com</a>, або Virtuse Group Pte. Ltd., Сінгапур.</div>
+    <summary>Kontaktujte nás</summary>
+    <div class="faq-answer">Otázky týkající se těchto zásad nebo vašich údajů: <a href="mailto:support@virtuse.com">support@virtuse.com</a>, nebo Virtuse Group Pte. Ltd., Singapur.</div>
   </details>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Змінимо гроші, змінимо світ</h2>
-  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
+  <h2>Opravme peníze, opravme svět</h2>
+  <p>Přidejte se k více než 18 000 investorům, kteří jsou vždy o krok napřed. Získávejte Virtuse Report do své schránky každý týden.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
+    <input type="email" name="email" placeholder="Zadejte svůj e-mail" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ПІДПИСАТИСЯ</button>
+    <button type="submit">ODEBÍRAT</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -895,7 +864,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'НАДСИЛАННЯ...';
+      btn.textContent = 'ODESÍLÁNÍ...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -905,14 +874,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
+          msg.textContent = "Hotovo, zkontrolujte si e-mail s uvítacím dopisem.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
+          msg.textContent = (result.data && result.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
+        msg.textContent = 'Chyba sítě. Zkuste to znovu.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -931,20 +900,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Компанія</h4>
-        <a href="about.html">Про нас</a>
-        <a href="faq.html">FAQ</a>
+        <h4>Společnost</h4>
+        <a href="../about.html">O nás</a>
+        <a href="../faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Правова інформація</h4>
-        <a href="terms-and-conditions.html">Умови використання</a>
-        <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <h4>Informace</h4>
+        <a href="../terms-and-conditions.html">Obchodní podmínky</a>
+        <a href="privacy-policy.html">Ochrana osobních údajů</a>
+        <a href="../aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
   </div>
 </footer>
 
