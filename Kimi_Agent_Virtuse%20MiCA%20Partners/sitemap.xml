@@ -536,6 +536,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -546,6 +547,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -556,6 +558,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/retirement-calculator.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
