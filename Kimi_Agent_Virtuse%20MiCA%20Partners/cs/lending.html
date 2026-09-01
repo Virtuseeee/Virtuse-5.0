@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Позики | Virtuse</title>
+<title>Půjčky zajištěné Bitcoinem | Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -23,16 +24,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/lending.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Позики | Virtuse">
-<meta property="og:description" content="Не продавайте свій Біткоїн, а отримайте позику під його заставу. Позичайте готівку під заставу Біткоїна за ринковими ставками від 6% річних.">
-<meta property="og:url" content="https://staging.virtuse.com/uk/lending.html">
+<meta property="og:title" content="Půjčky zajištěné Bitcoinem | Virtuse">
+<meta property="og:description" content="Nepodávejte svůj Bitcoin, získejte půjčku zajištěnou Bitcoinem u prověřených evropských partnerů.">
+<meta property="og:url" content="https://staging.virtuse.com/cs/lending.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Позики | Virtuse">
-<meta name="twitter:description" content="Не продавайте свій Біткоїн, а отримайте позику під його заставу. Позичайте готівку під заставу Біткоїна за ринковими ставками від 6% річних.">
+<meta name="twitter:title" content="Půjčky zajištěné Bitcoinem | Virtuse">
+<meta name="twitter:description" content="Nepodávejte svůj Bitcoin, získejte půjčku zajištěnou Bitcoinem u prověřených evropských partnerů.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <style>
@@ -939,46 +940,14 @@ a.nav-logo, .nav-logo {
   body.nav-open { overflow: hidden; }
 }
 
-/* ===== UK: compact nav text =====
-   Ukrainian nav labels run noticeably longer than their English originals,
-   so at the same per-item padding/font-size they wrap onto two lines well
-   before the English nav does. Tighten the gap/padding/font-size a notch
-   and force single-line labels so the row matches (or beats) the English
-   nav's fit at the same viewport width. */
-/* .nav-actions groups the language switcher with the CTA button into one
-   flex item so the nav's space-between doesn't spread them apart -- the
-   switcher sits right next to the CTA, not centered in the leftover gap.
-   Declared before the media queries below so their narrower-width
-   overrides (same selector) win the cascade at those widths. */
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
 .lang-menu { position: relative; }
-
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-/* Extra squeeze for the narrow "almost mobile" desktop band, where even
-   the compact pass above isn't quite enough room for the longer labels. */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== UK: compact language dropdown =====
-   Site-navigation stays exactly as shipped (inline links >1024px,
-   hamburger overlay <=1024px) -- only the language switcher moves out of
-   the inline nav row. A single compact button opens a small dropdown
-   (EN/SK/UA), so the desktop nav row never overflows regardless of how
-   many languages exist. */
 
 .lang-menu-btn {
   display: inline-flex;
@@ -1063,44 +1032,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="/uk/" class="nav-logo">
+  <a href="/cs/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html" class="active"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="../buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Koupit Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Těžba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html" class="active"><span class="nav-link-num">03</span><span class="nav-link-label">Půjčky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Daně</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boti</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začít<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
         <a href="../lending.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/lending.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="lending.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/lending.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/lending.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="lending.html" class="lang-opt active" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </li>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-        <span class="lang-flag">🇺🇦</span>UA
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky">
+        <span class="lang-flag">🇨🇿</span>CS
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="lang-menu-panel" id="langMenuPanel" role="menu">
         <a href="../lending.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/lending.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="lending.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/lending.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/lending.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="lending.html" class="lang-opt active" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </div>
-    <button class="nav-cta">Розпочати</button>
+    <button class="nav-cta">Začít</button>
   </div>
 </nav>
 
@@ -1131,10 +1100,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Залиште Біткоїн собі.<br><span class="highlight">Отримайте потрібну готівку.</span></h1>
+  <h1>Ponechte si svůj Bitcoin.<br><span class="highlight">Získejte hotovost, kterou potřebujete.</span></h1>
 
   <p class="hero-desc">
-    Не продавайте свій Біткоїн, а отримайте позику під його заставу. Virtuse надає сервіс, у якому власники Біткоїна позичають готівку під заставу Біткоїна за ринковими ставками від 6% річних.
+    Neprodávejte svůj Bitcoin, získejte půjčku zajištěnou Bitcoinem. Virtuse poskytuje službu, díky které si bitcoineři půjčují hotovost oproti svému Bitcoinu za tržní sazby už od 6 % p.a.
   </p>
 
 
@@ -1142,27 +1111,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Як це працює</div>
+  <div class="how-title">Jak to funguje</div>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
-      <h3>Визначте умови позики</h3>
-      <p>Оберіть суму позики, відсоткову ставку та термін. Або скористайтеся миттєвою позикою за наперед визначеною ставкою.</p>
+      <h3>Nastavte podmínky půjčky</h3>
+      <p>Vyberte si výši půjčky, úrokovou sazbu a délku splácení. Nebo si zvolte okamžitou půjčku za předem stanovenou sazbu.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h3>Знайдіть інвестора</h3>
-      <p>Ваш запит розміщується на маркетплейсі. Інвестор фінансує вашу позику, без жодного центрального кредитора.</p>
+      <h3>Spárujte se s investorem</h3>
+      <p>Vaše žádost se zobrazí na tržišti. Půjčku vám financuje investor, bez centrálního věřitele.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <h3>Заблокуйте заставу в Біткоїні</h3>
-      <p>Надішліть Біткоїн на ончейн-адресу мультипідпис ескроу. Ви ніколи не передаєте свої приватні ключі.</p>
+      <h3>Uzamkněte Bitcoin jako zástavu</h3>
+      <p>Pošlete Bitcoin na on-chain multisig escrow adresu. Své soukromé klíče nikdy nevydáváte.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <h3>Отримайте кошти і поверніть позику</h3>
-      <p>Позика надходить на ваш банківський рахунок. Погасіть її у визначений термін, і ваш Біткоїн повернеться на ваш гаманець.</p>
+      <h3>Přijměte prostředky a splaťte</h3>
+      <p>Půjčka se odešle na váš bankovní účet. Splaťte při splatnosti, váš Bitcoin se vrátí do vaší peněženky.</p>
     </div>
   </div>
 </section>
@@ -1171,19 +1140,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Два способи участі</h2>
-      <p>Потрібна готівка чи хочете заробляти на Біткоїні? У нас є варіант для кожного.</p>
+      <h2>Dva způsoby, jak se zapojit</h2>
+      <p>Ať už potřebujete hotovost, nebo chcete vydělávat výnos, existuje Bitcoinem nativní možnost pro obojí</p>
     </div>
   </div>
 
   <div class="lending-types">
     <div class="ltype-card">
-      <h3><span class="icon">&#128176;</span> Позичальники</h3>
-      <p>Використовуйте свій Біткоїн як заставу, щоб позичити фіат (EUR, CHF, CZK) або стейблкоїни (USDC). Зберігайте свою позицію в Біткоїні, уникайте податку на приріст капіталу і отримуйте доступ до ліквідності без продажу. LTV до 50%. Терміни від 3 до 24 місяців. Ставки від 5% річних.</p>
+      <h3><span class="icon">&#128176;</span> Vypůjčovatelé</h3>
+      <p>Použijte svůj Bitcoin jako zástavu k půjčení fiatu (EUR, CHF, CZK) nebo stablecoinů (USDC). Zachovejte si expozici vůči Bitcoinu, vyhněte se dani z kapitálových výnosů a získejte likviditu bez prodeje. LTV až do 50 %. Splatnost od 3 do 24 měsíců. Sazby od 5 % p.a.</p>
     </div>
     <div class="ltype-card">
-      <h3><span class="icon">&#128200;</span> Інвестори / Кредитори</h3>
-      <p>Надавайте фіат або стейблкоїни для фінансування позик під заставу Біткоїна. Заробляйте відсотки, які сплачують позичальники. Застава заблокована в ончейн-ескроу, повністю забезпечена Біткоїном. Застава не використовується повторно (без рехіпотекації). Без експозиції на альткоїни. Мінімум від 800 євро.</p>
+      <h3><span class="icon">&#128200;</span> Investoři / věřitelé</h3>
+      <p>Poskytněte fiat nebo stablecoiny na financování půjček zajištěných Bitcoinem. Vydělávejte úrok placený vypůjčovateli. Zástava je uzamčena v on-chain escrow, plně zajištěná Bitcoinem. Žádná rehypotekace. Žádná expozice vůči altcoinům. Minimálně od 800 EUR.</p>
     </div>
   </div>
 </section>
@@ -1192,8 +1161,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Наші партнери з кредитування</h2>
-      <p>Платформи кредитування лише для Біткоїна з некастодіальним ескроу на мультипідписі</p>
+      <h2>Naši půjčkoví partneři</h2>
+      <p>Platformy zaměřené výhradně na Bitcoin s nekustodiálním multisig escrow</p>
     </div>
   </div>
 
@@ -1208,7 +1177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="pcard-name">Firefish</div>
             <div class="pcard-location">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Прага, Чехія
+              Praha, Česká republika
             </div>
           </div>
         </div>
@@ -1216,41 +1185,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Провідний європейський P2P-маркетплейс кредитування під заставу Біткоїна.</strong> Позичальники отримують позики у фіаті чи стейблкоїнах, забезпечені заставою в Біткоїні, заблокованою в ончейн-ескроу на мультипідписі. Firefish ніколи не торкається вашого Біткоїна: це виключно технологічний посередник між позичальниками та інвесторами.</p>
+        <p><strong>Přední evropské P2P tržiště pro půjčky zajištěné Bitcoinem.</strong> Vypůjčovatelé dostávají fiat/stablecoinové půjčky zajištěné Bitcoinem uzamčeným v on-chain multisig escrow. Firefish se nikdy nedotkne vašeho Bitcoinu, je čistě technologickým zprostředkovatelem mezi vypůjčovateli a investory.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Лише Біткоїн, альткоїни не приймаються</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Некастодіальний ескроу на мультипідписі</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Профінансовано 22,5 млн євро | 8 600 інвесторів</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> У реєстрі ESMA MiCA</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Тепер доступні миттєві позики</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pouze Bitcoin, žádné altcoiny se neakceptují</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nekustodiální multisig escrow</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 22,5 mil. EUR financováno | 8 600 investorů</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Zapsán v registru ESMA MiCA</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nyní dostupné i okamžité půjčky</li>
         </ul>
       </div>
       <div class="pcard-terms">
         <div class="pcard-terms-row">
-          <span class="pcard-terms-label">Сума позики</span>
-          <span class="pcard-terms-value">від 800 євро, без максимуму</span>
+          <span class="pcard-terms-label">Výše půjčky</span>
+          <span class="pcard-terms-value">800 EUR · bez maxima</span>
         </div>
         <div class="pcard-terms-row">
-          <span class="pcard-terms-label">Відсоткова ставка</span>
-          <span class="pcard-terms-value">5–15% річних</span>
+          <span class="pcard-terms-label">Úroková sazba</span>
+          <span class="pcard-terms-value">5 % až 15 % p.a.</span>
         </div>
         <div class="pcard-terms-row">
-          <span class="pcard-terms-label">Співвідношення LTV</span>
-          <span class="pcard-terms-value">До 50%</span>
+          <span class="pcard-terms-label">Poměr LTV</span>
+          <span class="pcard-terms-value">Až do 50 %</span>
         </div>
         <div class="pcard-terms-row">
-          <span class="pcard-terms-label">Термін</span>
-          <span class="pcard-terms-value">3 / 6 / 12 / 18 / 24 міс.</span>
+          <span class="pcard-terms-label">Délka splácení</span>
+          <span class="pcard-terms-value">3 / 6 / 12 / 18 / 24 měsíců</span>
         </div>
         <div class="pcard-terms-row">
-          <span class="pcard-terms-label">Валюти</span>
+          <span class="pcard-terms-label">Měny</span>
           <span class="pcard-terms-value">EUR, CZK, USDC</span>
         </div>
       </div>
-
+      
       <div class="pcard-footer">
         <a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Перейти на Firefish
+          Navštívit Firefish
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1262,20 +1231,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pcard-logo">
           <img src="../logo-firefish.png" alt="Firefish" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
-            <div class="pcard-name">Миттєвий калькулятор позики</div>
-            <div class="pcard-location">Актуальні ставки від Firefish</div>
+            <div class="pcard-name">Kalkulačka okamžité půjčky</div>
+            <div class="pcard-location">Aktuální sazby, poháněné Firefish</div>
           </div>
         </div>
       </div>
       <div class="pcard-body">
         <span class="widget-badge">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 4.6L14 7l-4.2 1.4L8 13l-1.8-4.6L2 7l4.2-1.4L8 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          Отримайте миттєву пропозицію
+          Získejte okamžitou nabídku
         </span>
-        <p>Введіть суму, щоб за кілька секунд побачити варіанти й ставки позики під заставу Біткоїна. Реєстрація не потрібна.</p>
+        <p>Zadejte částku a za pár sekund uvidíte možnosti a sazby vaší půjčky zajištěné Bitcoinem, bez registrace.</p>
       </div>
       <div class="widget-frame">
-        <iframe src="https://widget.firefish.io/?ref=virtuseloan" title="Firefish loan calculator" loading="lazy" scrolling="no"></iframe>
+        <iframe src="https://widget.firefish.io/?ref=virtuseloan" title="Firefish kalkulačka půjček" loading="lazy" scrolling="no"></iframe>
       </div>
     </div>
 
@@ -1286,12 +1255,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== FOOTER ===== -->
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Змінимо гроші, змінимо світ</h2>
-  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
+  <h2>Opravme peníze, opravme svět</h2>
+  <p>Přidejte se k více než 18 000 investorům, kteří jsou vždy o krok napřed. Získávejte Virtuse Report do své schránky každý týden.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
+    <input type="email" name="email" placeholder="Zadejte svůj e-mail" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ПІДПИСАТИСЯ</button>
+    <button type="submit">ODEBÍRAT</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -1308,7 +1277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'НАДСИЛАННЯ...';
+      btn.textContent = 'ODESÍLÁNÍ...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1318,14 +1287,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
+          msg.textContent = "Hotovo, zkontrolujte si e-mail s uvítacím dopisem.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
+          msg.textContent = (result.data && result.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
+        msg.textContent = 'Chyba sítě. Zkuste to znovu.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1344,20 +1313,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Компанія</h4>
-        <a href="about.html">Про нас</a>
-        <a href="faq.html">FAQ</a>
+        <h4>Společnost</h4>
+        <a href="../about.html">O nás</a>
+        <a href="../faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Правова інформація</h4>
-        <a href="terms-and-conditions.html">Умови використання</a>
-        <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <h4>Informace</h4>
+        <a href="../terms-and-conditions.html">Obchodní podmínky</a>
+        <a href="../privacy-policy.html">Ochrana osobních údajů</a>
+        <a href="../aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
   </div>
 </footer>
 
