@@ -2,86 +2,119 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-08-25) — Slovak translation rollout
+## Session status (2026-09-01) — Czech translation is next (SK + UK done)
 
-**Current state — done:** The whole site (20 non-blog pages) has a
-Slovak translation under `Kimi_Agent_Virtuse MiCA Partners/sk/`, plus a
-reusable i18n system to translate into more languages later, **and** a
-first round of human copy-review fixes has been applied on top. Specifics:
-- All pages except `blog.html`/`blog-sk.html`/`article.html` (intentionally
-  out of scope — see below) have a `sk/<page>.html` counterpart: nav,
-  footer, hero/body copy, and JS-generated dashboard strings (chart
-  tooltips, `sk-SK` locale formatting) are translated.
-- Reciprocal `hreflang` tags + `sitemap.xml` entries, and an EN/SK language
-  switcher wired into every page's desktop nav and mobile menu.
-- `.lang-switch` CSS component canonicalized into
-  [`styles.css`](Kimi_Agent_Virtuse%20MiCA%20Partners/styles.css).
+**Current state — done:** Two languages are live sitewide beyond
+English — Slovak (`sk/`) and Ukrainian (`uk/`) — with a reusable, twice-
+proven i18n system, plus a browser-language auto-redirect and a round of
+human copy-review fixes on top of the Slovak pages. Specifics:
+- 21 non-blog pages (the original 20, **plus `root-cycles.html`** — a
+  separate real page from `rainbow-chart.html`, not a duplicate, added
+  after the initial rollout) have both a `sk/<page>.html` and
+  `uk/<page>.html` counterpart: nav, footer, hero/body copy, and
+  JS-generated dashboard strings are translated. `blog.html`/
+  `blog-sk.html`/`article.html` stay outside the folder convention by
+  design; `uk/blog.html` is a partial exception — UI translated, but
+  still serves the English WordPress feed (no Ukrainian WP category
+  exists yet).
+- Reciprocal `hreflang` tags + `sitemap.xml` entries for both languages.
+  The language switcher is now a **compact dropdown on desktop**
+  (`.nav-actions > .lang-menu`, replacing the original 3-pill row once 3
+  languages made pills wrap) and unchanged mobile pills — see
+  [`TRANSLATION-SYSTEM.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/TRANSLATION-SYSTEM.md)'s
+  "Language switcher" section.
+- **Browser-language auto-redirect**: `lang-detect.js` (repo root) sends
+  a browser reporting Slovak straight to the matching `sk/` page,
+  `location.replace`-style, unless the visitor already made an explicit
+  language choice via the switcher (remembered in `localStorage`, so it
+  never fights a deliberate pick). Slovak-only by design so far — whether
+  Ukrainian/Czech should get the same treatment is still an open
+  decision, and this file's `TRANSLATED` mapping array needs updating
+  whenever a new page/language ships (it already went stale once, missing
+  `root-cycles.html` for a while — see [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)).
 - Reusable tooling in
-  [`i18n-tools/`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/)
-  (`scaffold_sk.py`, `sitemap_add.py`, `wire_root.py`, `relink_sk.py`) —
-  see that folder's README before translating another page/language.
+  [`i18n-tools/`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/):
+  the original SK-era scripts (`scaffold_sk.py`, `sitemap_add.py`,
+  `wire_root.py`, `relink_sk.py`) plus the **2nd-generation UK-era**
+  scripts (`scaffold_uk.py`, `sitemap_add_uk.py`,
+  `wire_uk_into_existing.py`, `relink_uk.py`, `dropdown_retrofit.py`) —
+  copy the UK-era ones (not the SK-era ones) as the template for Czech,
+  they already bake in the dropdown switcher + no-em-dash house rule. See
+  that folder's README (rewritten 2026-09-01 to actually document all of
+  this — it was still describing itself as SK-only and calling Czech
+  "language #2 (e.g. German)" despite UK already having shipped).
 - Full system documented in
-  [`TRANSLATION-SYSTEM.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/TRANSLATION-SYSTEM.md).
-- **Post-launch review-fix rounds** (all on `main`, all synced to
-  `gh-pages`/staging — see commands below for the sync recipe):
-  - `b2cfad6` — 12-item homepage copy fixes from human review (hero
-    headline, CTA text, hub-node label, services heading, how-it-works
-    step count, blog subtext, mission statement) + sitewide label
-    renames (Tradingové boty, Dane, BTC Data) + sitewide removal of
-    stylistic em dashes/`&mdash;` from prose (title/OG/Twitter meta
-    separators switched to `|`).
+  [`TRANSLATION-SYSTEM.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/TRANSLATION-SYSTEM.md)
+  (also rewritten 2026-09-01 for the same reason — it still said "Slovak
+  is done" with zero mention of Ukrainian).
+- **Slovak post-launch review-fix rounds** (all on `main`, all synced to
+  `gh-pages`/staging and production):
+  - `b2cfad6` — 12-item homepage copy fixes from human review + sitewide
+    label renames (Tradingové boty, Dane, BTC Data) + sitewide removal of
+    stylistic em dashes/`&mdash;` from prose.
   - `493d889` — Buy Bitcoin how-it-works steps reworded; shared footer
-    heading "Právne" → "Informácie" propagated to all 18 pages using it.
-  - `f65ec04` — About Us hero rewritten: new h1 ("Globálna
-    infraštruktúra pre Bitcoin") and a new two-paragraph mission/company
-    copy (Virtuse Group, Singapore HQ, Bratislava base, 50+ partners).
+    heading "Právne" → "Informácie" propagated sitewide.
+  - `f65ec04` — About Us hero rewritten.
   - `306f717` — **Bug fix**: `blog-sk.html`'s nav/footer links were bare
-    (`buy-bitcoin.html`, `about.html`, etc.), which resolve to the
-    *English* root pages since `blog-sk.html` lives outside `sk/`. A
-    visitor reading the Slovak blog who clicked any other nav item got
-    dropped into English. Fixed by routing all of them through
-    `sk/<page>.html`; also fixed the nav's own "Blog" item, which
-    pointed at `blog.html` (English) despite being marked active.
-- `gh-pages` (staging) is currently in sync with `main` as of `306f717`
-  / `f51c6ba` — confirmed live via `curl`/browser on
-  `staging.virtuse.com`.
-- **Production `virtuse.com` is now also fully deployed and in sync**
-  with `main` as of `306f717`, via Webglobe SFTP (see gotcha below for
-  the exact recipe and the two bugs that blocked it initially). Verified
-  via `curl`: homepage, `/sk/index.html`, `/sk/about.html`,
-  `/sk/buy-bitcoin.html`, `/sk/terms-and-conditions.html`, and
-  `blog-sk.html` all return 200 with fresh timestamps; spot-checked copy
-  (hero headline, nav-bug-fix link) present in the served HTML. All
-  three deploy targets — `main`, `gh-pages`/staging, and production —
-  are now aligned.
+    (resolved to the English root pages since `blog-sk.html` lives
+    outside `sk/`); fixed to route through `sk/<page>.html`.
+  - `b3d7a93` — `lang-detect.js` added (see above).
+  - `ccad770`/`fb30b1e`/`04cfc5e` — `root-cycles.html` added and
+    translated to SK + UK.
+- All three deploy targets — `main`, `gh-pages`/staging, and production —
+  were aligned as of `306f717` (confirmed via `curl`, see the prior
+  session's verification). **Not independently re-verified as of
+  2026-09-01** — the UK rollout + Rainbow Chart/root-cycles additions
+  happened in a gap between sessions with no CLAUDE.md record of whether
+  they were deployed to staging/production or only committed to `main`;
+  treat `gh-pages`/production as possibly behind `main` until checked.
 
-**In progress:** Nothing mid-task — every fix above is committed, pushed,
-and verified live on staging **and production**.
+**In progress:** Czech (`cs/`) translation — **Phase 0 (housekeeping)
+just completed**: `lang-detect.js`'s stale mapping fixed (added
+`root-cycles.html`), and both `i18n-tools/README.md` and
+`TRANSLATION-SYSTEM.md` brought up to date with the real UK-era state
+(dropdown switcher, UK-era script family, `uk/blog.html`'s shell-only
+status, the `rainbow-chart.html`/`root-cycles.html` dual-page quirk).
+**Not yet started:** Phase 1 (copy `scaffold_uk.py` etc. → `_cs` variants
+— **Option A, decided**, not the parameterized-refactor alternative) and
+everything after it.
 
 **Next steps, in order:**
-1. **Human legal review** of the three AI-translated compliance pages
-   (`sk/privacy-policy.html`, `sk/terms-and-conditions.html`,
-   `sk/aml-compliance.html`) before treating them as final — they carry
-   real MiCA/GDPR regulatory exposure if mistranslated, and haven't been
-   reviewed by a Slovak speaker yet. **This is now the top-priority open
-   item** — these pages are live on production, not just staging.
-2. When ready for a second language, follow
+1. **Phase 1**: create `scaffold_cs.py`, `relink_cs.py`,
+   `wire_cs_into_existing.py`, `sitemap_add_cs.py` by copying the UK-era
+   scripts and swapping in Czech nav labels/newsletter strings/flag
+   (`🇨🇿`)/lang code (`cs` — **not** `cz`, that's the country code, not
+   the ISO 639-1 language code). See
    [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)'s
-   "Adding language #2" section.
-3. Decide whether to fold `blog.html`/`blog-sk.html` into the `sk/`
-   folder convention, or leave the suffix pattern permanently (currently
-   left as-is by deliberate decision — low priority). The nav-link bug
-   in `306f717` was fixed *without* folding it in (links now point from
-   the root-level `blog-sk.html` into `sk/`), so this decision is still
-   open, just no longer urgent.
-4. Keep taking human-review copy fixes as they come in, and re-deploy to
-   all three targets each time — the pattern established this session
-   (edit on `main` → verify on local preview → commit/push to `main` →
-   sync `gh-pages` worktree → push → confirm live via `curl`/Monitor →
-   SFTP-upload the same changed files to production → confirm live) is
-   the one to repeat; see commands below.
+   "Adding the next language" section for the exact list.
+2. **Phase 2**: scaffold + hand-translate all 21 pages into `cs/`,
+   running `sitemap_add_cs.py` + `wire_cs_into_existing.py` per page
+   (touches root, `sk/`, **and** `uk/` to add the 4th switcher option —
+   not just the new `cs/` files) and `relink_cs.py` after every batch.
+   Decide the blog question (skip `cs/blog.html` like SK, or ship a
+   shell like UK's) before or during this phase.
+3. **Phase 3**: verification (tag-balance check, em-dash grep audit,
+   browser click-through, 4-language switcher check on both desktop/
+   mobile) — same rigor as SK/UK.
+4. **Phase 4**: deploy to all three targets, same recipe as below.
+5. **Separately, still open and not urgent**: decide whether
+   `lang-detect.js` should also auto-redirect Ukrainian (and eventually
+   Czech) browsers, not just Slovak ones.
+6. **Still the top-priority *compliance* item, unrelated to Czech**:
+   human legal review of the AI-translated compliance pages
+   (`sk/privacy-policy.html`, `sk/terms-and-conditions.html`,
+   `sk/aml-compliance.html`, and their `uk/` counterparts) — real
+   MiCA/GDPR exposure if mistranslated, live on production, not yet
+   reviewed by a human speaker of either language.
 
 **Decisions, constraints & gotchas (not obvious from the code):**
+- **Real time gaps between sessions can hide substantial work** — the
+  Ukrainian rollout, the Rainbow Chart/`root-cycles.html` pages, and the
+  dropdown switcher redesign all happened without any CLAUDE.md record,
+  discovered only by actually running `git log`/`ls` rather than trusting
+  this file's last-written status. **Always verify current git state
+  before resuming multi-session work here** — don't assume this file is
+  current just because it looks complete for what it does mention.
 - **Three completely separate deploy targets, easy to conflate:** `main`
   (source of truth / git history) → `gh-pages` branch → GitHub Pages at
   `staging.virtuse.com` (has its own `CNAME` file, no CI/CD, nothing

@@ -13,8 +13,14 @@
  * before the page paints. Root pages: <script src="lang-detect.js">.
  * Pages under sk/: <script src="../lang-detect.js">.
  *
- * Update TRANSLATED below whenever a new page gets a sk/ counterpart
- * (see i18n-tools/README.md).
+ * Update TRANSLATED below whenever a new page gets a sk/ counterpart —
+ * this is easy to forget when scaffolding a page (root-cycles.html
+ * shipped with sk/+uk/ siblings and sitemap/hreflang entries but wasn't
+ * added here until a later pass). See i18n-tools/README.md.
+ *
+ * Slovak-only for now by design: uk/ also exists, but no decision has
+ * been made yet on whether Ukrainian browsers should get the same
+ * auto-redirect treatment.
  */
 (function () {
   'use strict';
@@ -44,7 +50,7 @@
       'index.html', 'about.html', 'buy-bitcoin.html', 'mining.html', 'lending.html',
       'secure.html', 'treasury.html', 'tax.html', 'bots.html', 'research.html',
       'bitcoin-data.html', 'btc-dominance.html', 'ma-200w.html', 'rainbow-chart.html',
-      'retirement-calculator.html', 'faq.html', 'privacy-policy.html',
+      'root-cycles.html', 'retirement-calculator.html', 'faq.html', 'privacy-policy.html',
       'terms-and-conditions.html', 'aml-compliance.html', '404.html'
     ];
 

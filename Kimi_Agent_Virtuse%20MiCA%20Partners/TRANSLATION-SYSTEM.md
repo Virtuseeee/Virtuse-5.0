@@ -6,20 +6,30 @@ rollout (20 pages) completed the same month — read `sk/index.html`
 alongside this doc as the reference implementation, and see
 [`i18n-tools/`](i18n-tools/) for the scripts that did the mechanical work.
 
-**Status: Slovak is done.** All 20 non-blog pages have a `sk/` counterpart
-(`index`, `about`, `buy-bitcoin`, `mining`, `lending`, `secure`, `treasury`,
-`tax`, `bots`, `research`, `bitcoin-data`, `btc-dominance`, `ma-200w`,
-`rainbow-chart`, `retirement-calculator`, `faq`, `privacy-policy`,
-`terms-and-conditions`, `aml-compliance`, `404`), each with reciprocal
-`hreflang`, a working `sitemap.xml` entry, and the nav language switcher
-wired both directions. `blog.html`/`blog-sk.html`/`article.html` were
-deliberately left out of this rollout — see below, still true. The legal
+**Status: Slovak and Ukrainian are both done; Czech is next.** All 21
+non-blog pages (the original 20, plus `root-cycles.html` — a separate,
+real page from `rainbow-chart.html`, not a duplicate, see "Known site
+quirk" below) have both a `sk/` and a `uk/` counterpart, each with
+reciprocal `hreflang`, a working `sitemap.xml` entry, and the nav
+language switcher wired for all three languages (EN/SK/UK). The desktop
+switcher was redesigned from a 3-pill row into a compact single-button
+dropdown partway through the UK rollout — see "Language switcher" below
+for the current markup. `blog-sk.html`/`article.html` stay outside the
+folder convention by design (see below); `uk/blog.html` is an exception —
+it *does* exist (UI/nav translated) but still pulls WordPress category 13
+(the English feed), since no Ukrainian WP category exists yet. The legal
 pages (`privacy-policy`, `terms-and-conditions`, `aml-compliance`) were
-AI-translated using precise Slovak GDPR/legal terminology and EU
+AI-translated for both languages using precise legal terminology and EU
 regulation citations kept verbatim, but per the project's own QA
 guidance these carry real regulatory exposure and should get an actual
 human legal read-through before anyone treats them as final — that
-review hasn't happened yet.
+review hasn't happened yet for either language, and both are already
+live on production, not just staging.
+
+See [`i18n-tools/README.md`](i18n-tools/README.md) for the current
+tooling (the UK-era scripts, not the original SK-era ones, are the
+template for the next language) and its "Adding the next language"
+section for the concrete Czech (`cs/`) plan.
 
 ## URL scheme
 
@@ -28,7 +38,8 @@ Each language gets its own folder mirroring the root filenames:
 ```
 /index.html          <- English (canonical, unprefixed)
 /sk/index.html        <- Slovak
-/de/index.html        <- (future) German
+/uk/index.html        <- Ukrainian
+/cs/index.html        <- (next) Czech
 ```
 
 No `.htaccess` or server config is needed — these are just real static
@@ -54,24 +65,31 @@ folder) and stay as-is by design — see the decision log below.
 
 ## Language switcher
 
-A shared `.lang-switch`/`.lang-opt`/`.lang-flag` pill component lives in
-[styles.css](styles.css) (canonicalized there from its original home in
-blog.html's hero). Two placements, both already wired on `index.html` and
-`sk/index.html`:
+Every language option — on both switcher UIs below — is a
+`.lang-opt[lang="xx"]` anchor (e.g. `<a href="sk/index.html" class="lang-opt"
+lang="sk">`). Anything that needs to read or write a language link only
+ever has to target that one selector; it's stable across the redesign
+below.
 
-1. **Desktop nav bar** — `.lang-switch.nav-lang-switch`, sits between the
-   nav links and the CTA button. Hidden under 1024px (same breakpoint the
-   hamburger menu takes over at).
-2. **Mobile full-screen menu** — `<li class="nav-links-lang-item">`
-   inside `.nav-links`, appears centered below the mobile CTA button.
-   Hidden above 1024px.
+1. **Desktop nav bar** (≥1025px) — a compact single-button dropdown:
+   `.nav-actions > .lang-menu` containing a `.lang-menu-btn` (shows the
+   current language) that toggles a `.lang-menu-panel` listing every
+   `.lang-opt`. **This replaced the original 3-pill `.nav-lang-switch`
+   row** partway through the UK rollout (`i18n-tools/dropdown_retrofit.py`)
+   — the pill row wrapped/overflowed once a 3rd language with longer
+   labels (Ukrainian) was added. If you're looking at an older page or
+   screenshot with a visible EN/SK pill row in the desktop nav, that's
+   the pre-dropdown markup; copy the dropdown pattern for anything new.
+2. **Mobile full-screen menu** (≤1024px) — unchanged since the SK rollout:
+   `<li class="nav-links-lang-item"><div class="lang-switch">...</div></li>`
+   inside `.nav-links`, a plain list of `.lang-opt` pills.
 
-Both instances link to the sibling page in the other language. Copy this
-exact markup block (search `nav-lang-switch` in `index.html`) onto every
-page you translate, in both the English original and its translated
-counterpart — a page without a translated sibling yet should **not** show
-the switcher (see blog.html precedent: it only appears where both
-languages actually exist).
+Both instances list every live language's sibling page. Copy the exact
+current markup from `index.html` (search `lang-menu` for desktop,
+`nav-links-lang-item` for mobile) onto every page you translate, in the
+English original and every translated counterpart — a page without a
+translated sibling yet should **not** list that language (see blog.html
+precedent: `uk/blog.html` only appears in the switcher once it exists).
 
 ## `<head>` requirements for a translated page
 
@@ -99,7 +117,7 @@ that's a pre-existing state unrelated to translation; new pages should
 just match whatever the rest of the site is doing at the time so they
 don't stick out.
 
-## The blog is a separate, already-solved system
+## The blog is a separate, mostly-solved system
 
 `blog.html`/`blog-sk.html`/`article.html?...&lang=sk` don't follow the
 folder convention above because they don't need to: post content comes
@@ -110,6 +128,17 @@ teaser panel fetches from that same `/sk/` endpoint — see the `<script>`
 block in `sk/index.html` for the pattern if another page needs a live
 blog feed. Translating a *new* blog post is a WordPress/WPML task, not a
 static-HTML task.
+
+**`uk/blog.html` is the exception, and it's a half-measure.** It exists
+(nav/UI translated to Ukrainian) but its feed config still points at
+`category: 13` — the same default English feed `blog.html` uses — because
+there's no Ukrainian WP category yet. So a Ukrainian visitor gets a
+Ukrainian-language page shell showing English article titles/excerpts.
+This is a reasonable stopgap, not a bug, but don't assume `uk/blog.html`'s
+existence means Ukrainian blog content exists — it doesn't yet. Same
+choice will need making for Czech: either skip `cs/blog.html` entirely
+(matching SK's approach) or ship the same shell-only stopgap (matching
+UK's), until a real Czech WP category exists.
 
 ## Known gap: the newsletter Worker's error strings
 
@@ -185,13 +214,28 @@ Two page types needed extra care beyond the scaffold:
   bar — once all five existed, those links were pointed at the sibling
   `sk/` pages directly rather than falling back to `../`.
 
-## Adding a second language later
+## Known site quirk: `rainbow-chart.html` vs `root-cycles.html`
 
-Once two or three languages exist, repeat exactly this process with a new
-folder (`/de/`, `/cs/`, ...) and extend every `.lang-switch` block site-wide
-from a 2-option EN/SK pill to a 3-option row. No other architecture
-changes needed — this is why the folder + shared-component approach was
-chosen over the original filename-suffix pattern.
+These are two **different, real** pages, not a stray duplicate — a
+different tool/methodology presentation, meaningfully different content,
+both sitemapped and hreflang-wired at every language level (root, `sk/`,
+`uk/`). If you're scaffolding a new language, both need translating; if
+you're auditing for missed pages (like [`lang-detect.js`](lang-detect.js)'s
+browser-redirect mapping, which missed `root-cycles.html` for a while
+after it shipped), check for both filenames, not just one.
+
+## Adding the next language
+
+Once two or three languages exist, repeat this process with a new folder
+(`sk/`, `uk/`, `cs/`, ...) and extend every language switcher — **both**
+the desktop dropdown and the mobile pill list — with the new option. No
+other architecture changes needed — this is why the folder +
+shared-component approach was chosen over the original filename-suffix
+pattern. See [`i18n-tools/README.md`](i18n-tools/README.md)'s "Adding the
+next language" section for the concrete script-by-script Czech plan —
+copy the **UK-era** scripts (`scaffold_uk.py` etc.), not the original
+SK-era ones, since they already handle the dropdown switcher and the
+no-em-dash house rule adopted for UK.
 
 ## Decision log
 
@@ -209,3 +253,16 @@ chosen over the original filename-suffix pattern.
   for most pages; a professional or legal translator specifically for the
   compliance pages (privacy policy, terms, AML) given MiCA regulatory
   exposure if those are mistranslated. Confirmed with the user 2026-08-23.
+- **Desktop switcher redesigned as a dropdown, not a 3rd pill** — the
+  original `.nav-lang-switch` pill row was sized for 2 languages; adding
+  Ukrainian's longer labels as a 3rd pill made it wrap/overflow at real
+  viewport widths. Rather than keep shrinking type to fit more pills as
+  more languages are added, switched to a single compact button that
+  opens a dropdown — scales to any number of languages without further
+  nav redesign. Mobile kept the original pill list (screen width isn't
+  the constraint there).
+- **`uk/blog.html` ships as a UI-only shell** (English WordPress feed,
+  Ukrainian chrome) rather than being skipped like SK's blog was — a
+  deliberate stopgap so the switcher doesn't have a language option that
+  goes nowhere, accepting that the content itself won't be Ukrainian
+  until a WP category exists.
