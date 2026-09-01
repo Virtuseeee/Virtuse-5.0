@@ -510,6 +510,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/research.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/research.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/research.html"/>
   </url>
   <url>
@@ -520,6 +521,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/research.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/research.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/research.html"/>
   </url>
   <url>
@@ -530,6 +532,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/research.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/research.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/research.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/research.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/research.html"/>
   </url>
   <url>
