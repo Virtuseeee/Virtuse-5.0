@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<script src="lang-detect.js"></script>
+<script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <meta name="robots" content="noindex, follow">
-<title>Page Not Found — Virtuse</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<title>Stránka nenalezena | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="alternate" hreflang="en" href="https://staging.virtuse.com/404.html">
 <link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/404.html">
 <link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/404.html">
@@ -25,16 +25,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/404.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Page Not Found — Virtuse">
-<meta property="og:description" content="The page you're looking for doesn't exist. Head back to the Virtuse homepage.">
-<meta property="og:url" content="https://staging.virtuse.com/404.html">
+<meta property="og:title" content="Stránka nenalezena | Virtuse">
+<meta property="og:description" content="Stránka, kterou hledáte, neexistuje. Vraťte se na domovskou stránku Virtuse.">
+<meta property="og:url" content="https://staging.virtuse.com/cs/404.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Page Not Found — Virtuse">
-<meta name="twitter:description" content="The page you're looking for doesn't exist. Head back to the Virtuse homepage.">
+<meta name="twitter:title" content="Stránka nenalezena | Virtuse">
+<meta name="twitter:description" content="Stránka, kterou hledáte, neexistuje. Vraťte se na domovskou stránku Virtuse.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -137,6 +137,111 @@ body {
   color: var(--text-muted);
   border-top: 1px solid var(--border);
 }
+
+/* ===== CS: compact nav text =====
+   Same squeeze applied for UK (Czech labels aren't as long as Ukrainian
+   ones, but keeping the same tightened spacing keeps the 4-language
+   dropdown button + CTA comfortably fitting at the same breakpoints
+   rather than re-tuning per language). */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav-links a {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1240px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+
+/* ===== CS: compact language dropdown =====
+   Same dropdown pattern as UK's rollout, now listing 4 languages
+   (EN/SK/UK/CS) instead of 3. */
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--btc-orange); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--btc-orange);
+  color: #0d0902;
+}
+
+@media (max-width: 1024px) {
+  .lang-menu { display: none; }
+}
 </style>
 </head>
 <body>
@@ -144,7 +249,7 @@ body {
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="err-nav">
-  <a href="index.html" aria-label="Virtuse home">
+  <a href="index.html" aria-label="Virtuse domů">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;color:var(--text);">Virtuse</span>
   </a>
 </nav>
@@ -152,17 +257,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="err-main">
   <div>
     <div class="err-code">404</div>
-    <h1 class="err-title">This page doesn't exist</h1>
-    <p class="err-desc">The link you followed may be broken, or the page may have moved. Let's get you back on track.</p>
+    <h1 class="err-title">Tato stránka neexistuje</h1>
+    <p class="err-desc">Odkaz, který jste použili, může být nefunkční, nebo se stránka přesunula. Pojďme vás nasměrovat zpět.</p>
     <a class="err-cta" href="index.html">
-      Back to Homepage
+      Zpět na domovskou stránku
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
 </main>
 
 <footer class="err-footer">
-  &copy;2018 - 2026 Virtuse Group, All Rights Reserved.
+  &copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.
 </footer>
 
 </body>
