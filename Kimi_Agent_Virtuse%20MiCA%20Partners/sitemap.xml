@@ -795,6 +795,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -805,6 +806,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -815,6 +817,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/root-cycles.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/root-cycles.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/root-cycles.html"/>
   </url>
 </urlset>
