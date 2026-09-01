@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Податкова звітність для Біткоїна | Virtuse</title>
+<title>Bitcoin Tax Reporting - Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -23,16 +24,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/tax.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Податкова звітність для Біткоїна | Virtuse">
-<meta property="og:description" content="Податкові інструменти для Біткоїна, розроблені під європейські податкові системи. Автоімпорт транзакцій і податкові звіти для конкретної країни за лічені хвилини. Без KYC.">
-<meta property="og:url" content="https://staging.virtuse.com/uk/tax.html">
+<meta property="og:title" content="Zdanění Bitcoinu | Virtuse">
+<meta property="og:description" content="Nástroje pro zdaňování Bitcoinu postavené pro evropské daňové systémy. Automatický import z peněženek a burz.">
+<meta property="og:url" content="https://staging.virtuse.com/cs/tax.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Податкова звітність для Біткоїна | Virtuse">
-<meta name="twitter:description" content="Податкові інструменти для Біткоїна, розроблені під європейські податкові системи. Автоімпорт транзакцій і податкові звіти для конкретної країни за лічені хвилини. Без KYC.">
+<meta name="twitter:title" content="Zdanění Bitcoinu | Virtuse">
+<meta name="twitter:description" content="Nástroje pro zdaňování Bitcoinu postavené pro evropské daňové systémy. Automatický import z peněženek a burz.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -546,46 +547,14 @@ a.nav-logo, .nav-logo {
   flex-shrink: 0;
 }
 
-/* ===== UK: compact nav text =====
-   Ukrainian nav labels run noticeably longer than their English originals,
-   so at the same per-item padding/font-size they wrap onto two lines well
-   before the English nav does. Tighten the gap/padding/font-size a notch
-   and force single-line labels so the row matches (or beats) the English
-   nav's fit at the same viewport width. */
-/* .nav-actions groups the language switcher with the CTA button into one
-   flex item so the nav's space-between doesn't spread them apart -- the
-   switcher sits right next to the CTA, not centered in the leftover gap.
-   Declared before the media queries below so their narrower-width
-   overrides (same selector) win the cascade at those widths. */
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
 .lang-menu { position: relative; }
-
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-/* Extra squeeze for the narrow "almost mobile" desktop band, where even
-   the compact pass above isn't quite enough room for the longer labels. */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== UK: compact language dropdown =====
-   Site-navigation stays exactly as shipped (inline links >1024px,
-   hamburger overlay <=1024px) -- only the language switcher moves out of
-   the inline nav row. A single compact button opens a small dropdown
-   (EN/SK/UA), so the desktop nav row never overflows regardless of how
-   many languages exist. */
 
 .lang-menu-btn {
   display: inline-flex;
@@ -670,44 +639,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Navigation -->
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="/uk/" class="nav-logo">
+  <a href="/cs/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html" class="active"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="../buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Koupit Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Těžba</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Půjčky</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Úschova</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html" class="active"><span class="nav-link-num">06</span><span class="nav-link-label">Daně</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boti</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../about.html"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začít<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
+      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
         <a href="../tax.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/tax.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="tax.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/tax.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/tax.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="tax.html" class="lang-opt active" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </li>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-        <span class="lang-flag">🇺🇦</span>UA
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky">
+        <span class="lang-flag">🇨🇿</span>CS
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="lang-menu-panel" id="langMenuPanel" role="menu">
         <a href="../tax.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
         <a href="../sk/tax.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="tax.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/tax.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../uk/tax.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="tax.html" class="lang-opt active" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
       </div>
     </div>
-    <button class="nav-cta">Розпочати</button>
+    <button class="nav-cta">Začít</button>
   </div>
 </nav>
 
@@ -738,16 +707,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-<h1>Податкова звітність для Біткоїна<br><span>стала простою</span></h1>
-<p>Податкові інструменти лише для Біткоїна, розроблені під європейські податкові системи. Автоімпорт транзакцій з гаманців і бірж. Формуйте податкові звіти для конкретної країни за лічені хвилини, а не дні. Без KYC для податкового ПЗ.</p>
+<h1>Zdanění Bitcoinu<br><span>jednoduše</span></h1>
+<p>Nástroje na zdaňování navržené výhradně pro Bitcoin a evropské daňové systémy. Automaticky importujte transakce z peněženek a burz. Vygenerujte daňové reporty na míru pro danou zemi v řádu minut, ne dní. Daňový software nevyžaduje KYC.</p>
 
 </section>
 
 <!-- How It Works -->
 <section class="how-section">
 <div class="section-header">
-<h2>Як це працює</h2>
-<p>Від імпорту гаманця до готового податкового звіту за чотири кроки</p>
+<h2>Jak to funguje</h2>
+<p>Od importu z peněženky po report připravený k podání daňového přiznání ve čtyřech krocích</p>
 </div>
 <div class="how-grid">
 <div class="how-card">
@@ -755,32 +724,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="how-icon orange">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
 </div>
-<h3>Підключіть гаманці</h3>
-<p>Імпортуйте xPub або CSV-експорти з ваших гаманців і бірж</p>
+<h3>Propojte peněženky</h3>
+<p>Importujte xPub klíče nebo CSV exporty z vašich peněženek a burz</p>
 </div>
 <div class="how-card">
 <div class="step-num">02</div>
 <div class="how-icon blue">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
 </div>
-<h3>Автокласифікація</h3>
-<p>Програма категоризує транзакції (купівля, продаж, переказ, майнінг)</p>
+<h3>Automatická klasifikace</h3>
+<p>Software kategorizuje transakce (nákup, prodej, převod, těžba)</p>
 </div>
 <div class="how-card">
 <div class="step-num">03</div>
 <div class="how-icon green">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
 </div>
-<h3>Перевірка</h3>
-<p>Перевірте категоризацію та додайте відсутні транзакції</p>
+<h3>Zkontrolujte</h3>
+<p>Ověřte kategorizaci a doplňte chybějící transakce</p>
 </div>
 <div class="how-card">
 <div class="step-num">04</div>
 <div class="how-icon purple">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
 </div>
-<h3>Експорт звіту</h3>
-<p>Завантажте податковий звіт для конкретної країни, готовий до подачі</p>
+<h3>Exportujte report</h3>
+<p>Stáhněte si daňový report na míru pro danou zemi, připravený k podání</p>
 </div>
 </div>
 </section>
@@ -792,8 +761,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
 </div>
 <div class="eu-content">
-<h3>У кожній країні ЄС свої правила оподаткування Біткоїна</h3>
-<p>Німеччина: неоподатковуваний період утримання 1 рік. Франція: фіксований податок 30% (PFU). Австрія: 27,5% податку на приріст капіталу. Португалія: тепер оподатковується. Наші партнери підтримують DE, AT, CH, FR, IT, ES, NL та інші.</p>
+<h3>Každá země EU má jiná pravidla zdaňování Bitcoinu</h3>
+<p>Německo: 1letá lhůta držby pro osvobození od daně. Francie: paušální daň 30 % (PFU). Rakousko: 27,5 % z kapitálových výnosů. Portugalsko: nyní zdanitelné. Naši partneři podporují DE, AT, CH, FR, IT, ES, NL a další.</p>
 <div class="eu-countries">
 <span class="eu-country-tag">DE</span>
 <span class="eu-country-tag">AT</span>
@@ -811,8 +780,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Partner Cards -->
 <section class="partners-section">
 <div class="section-header">
-<h2>Наші партнери з податкової звітності</h2>
-<p>Ретельно відібрані інструменти для європейських інвесторів, які працюють лише з Біткоїном</p>
+<h2>Naši partneři pro zdaňování</h2>
+<p>Pečlivě vybrané nástroje pro evropské investory zaměřené výhradně na Bitcoin</p>
 </div>
 <div class="partner-grid">
 
@@ -825,7 +794,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-name">Divly</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-Швеція
+Švédsko
 </div>
 </div>
 </div>
@@ -833,17 +802,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-tags">
 </div>
 <div class="partner-body">
-<p>Податковий інструмент із пріоритетом приватності, без потреби в KYC. Від імпорту до звіту за 14 хвилин. Підтримує понад 30 країн, включно з Францією та Скандинавією. Доступний тариф з експертною перевіркою. Категоризація, зручна для Біткоїна.</p>
+<p>Daňový nástroj, který klade na první místo soukromí a nevyžaduje KYC. Import až po report za 14 minut. Podporuje více než 30 zemí včetně Francie a Skandinávie. Cenově dostupná úroveň s expertní kontrolou. Kategorizace přátelská k Bitcoinu.</p>
 <ul class="partner-features">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Без потреби в KYC</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>14 хвилин від імпорту до звіту</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 30 країн</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Доступна експертна перевірка</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bez potřeby KYC</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Import po report za 14 minut</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Více než 30 zemí</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cenově dostupná expertní kontrola</li>
 </ul>
 </div>
 
 <div class="partner-cta">
-<a href="https://divly.com/?ref=otfkzmf" class="btn-primary" target="_blank" rel="noopener">Отримати Divly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<a href="https://divly.com/?ref=otfkzmf" class="btn-primary" target="_blank" rel="noopener">Získat Divly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 </div>
 
@@ -856,7 +825,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-name">Blockpit</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-Австрія
+Rakousko
 </div>
 </div>
 </div>
@@ -864,17 +833,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-tags">
 </div>
 <div class="partner-body">
-<p>Австрійський податковий інструмент з понад 700 інтеграціями. Офіційний партнер Bitpanda та BISON. Звіти для конкретної країни: Німеччина, Австрія, Швейцарія, Італія, Іспанія, Нідерланди. Безкоштовний тариф відстеження портфеля. Найшвидше зростаючий податковий інструмент в ЄС.</p>
+<p>Rakouský daňový nástroj s více než 700 integracemi. Oficiální partner Bitpanda a BISON. Reporty na míru pro Německo, Rakousko, Švýcarsko, Itálii, Španělsko a Nizozemsko. Bezplatná úroveň pro sledování portfolia. Nejrychleji rostoucí daňový nástroj v EU.</p>
 <ul class="partner-features">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 700 інтеграцій</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Партнер Bitpanda/BISON</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 7 країн ЄС</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Безкоштовне відстеження портфеля</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Více než 700 integrací</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Partner Bitpanda/BISON</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Více než 7 zemí EU</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bezplatné sledování portfolia</li>
 </ul>
 </div>
 
 <div class="partner-cta">
-<a href="https://app.blockpit.io/register?fpr=virtuse" class="btn-primary" target="_blank" rel="noopener">Отримати Blockpit<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<a href="https://app.blockpit.io/register?fpr=virtuse" class="btn-primary" target="_blank" rel="noopener">Získat Blockpit<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 </div>
 
@@ -887,7 +856,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-name">CoinTracking</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-Німеччина
+Německo
 </div>
 </div>
 </div>
@@ -895,17 +864,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-tags">
 </div>
 <div class="partner-body">
-<p>Ветеран криптоподатків: відстежує портфелі та формує податкові звіти з 2013 року з Мюнхена. Понад 1,9 мільйона користувачів, понад 300 інтеграцій з біржами та понад 25 типів звітів. Безкоштовний тариф покриває до 200 транзакцій.</p>
+<p>Veterán mezi daňovými nástroji pro kryptoměny: sleduje portfolia a generuje daňové reporty od roku 2013 z Mnichova. Více než 1,9 milionu uživatelů, více než 300 integrací burz a více než 25 typů reportů. Bezplatná úroveň pokrývá až 200 transakcí.</p>
 <ul class="partner-features">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>З 2013 року, оригінальний трекер</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 1,9 млн користувачів у світі</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 300 інтеграцій з біржами</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Безкоштовно до 200 транзакцій</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Od roku 2013 · původní tracker</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Více než 1,9 mil. uživatelů po celém světě</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Více než 300 integrací burz</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Zdarma až do 200 transakcí</li>
 </ul>
 </div>
 
 <div class="partner-cta">
-<a href="https://cointracking.info/?ref=V328565" class="btn-primary" target="_blank" rel="noopener">Отримати CoinTracking<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<a href="https://cointracking.info/?ref=V328565" class="btn-primary" target="_blank" rel="noopener">Získat CoinTracking<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 </div>
 
@@ -918,7 +887,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-name">Koinly</div>
 <div class="partner-location">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-Велика Британія
+Spojené království
 </div>
 </div>
 </div>
@@ -926,17 +895,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-tags">
 </div>
 <div class="partner-body">
-<p>Безкоштовне відстеження портфеля зі Smart Transfer на базі ШІ, який автоматично виявляє перекази між гаманцями. Імпортуйте до 10 000 транзакцій із понад 400 бірж і гаманців у понад 100 країнах. Платите лише тоді, коли завантажуєте звіт.</p>
+<p>Bezplatné sledování portfolia s AI poháněným párováním Smart Transfer, které automaticky rozpozná přesuny mezi vlastními peněženkami. Importujte až 10 000 transakcí napříč více než 400 burzami a peněženkami, ve více než 100 zemích, platíte, až když si stáhnete report.</p>
 <ul class="partner-features">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Безкоштовне відстеження до 10 000 транзакцій</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Понад 400 інтеграцій з біржами та гаманцями</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Smart Transfer на базі ШІ</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Методи FIFO, LIFO, HIFO та середньої вартості</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bezplatné sledování až 10 000 transakcí</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Více než 400 integrací burz a peněženek</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI párování Smart Transfer</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Metody FIFO, LIFO, HIFO a průměrná cena</li>
 </ul>
 </div>
 
 <div class="partner-cta">
-<a href="https://koinly.io/?via=C7DEBFCF&utm_source=affiliate" class="btn-primary" target="_blank" rel="noopener">Отримати Koinly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<a href="https://koinly.io/?via=C7DEBFCF&utm_source=affiliate" class="btn-primary" target="_blank" rel="noopener">Získat Koinly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 </div>
 
@@ -945,11 +914,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Comparison Table -->
 <section class="compare-section">
-<h2>Швидке порівняння</h2>
+<h2>Rychlé porovnání</h2>
 <table class="compare-table">
 <thead>
 <tr>
-<th>Характеристика</th>
+<th>Funkce</th>
 <th>Divly</th>
 <th>Blockpit</th>
 <th>CoinTracking</th>
@@ -958,46 +927,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </thead>
 <tbody>
 <tr>
-<td>Ціна</td>
-<td class="best">EUR 39/рік</td>
-<td>EUR 49+/рік</td>
-<td>Від EUR 11/міс</td>
-<td>Від $49/рік</td>
+<td>Cena</td>
+<td class="best">39 EUR/rok</td>
+<td>49+ EUR/rok</td>
+<td>Od 11 EUR/měs.</td>
+<td>Od 49 $/rok</td>
 </tr>
 <tr>
-<td>Безкоштовний тариф</td>
-<td>Ні</td>
-<td class="best">Так (відстеження)</td>
-<td class="best">Так (200 тр.)</td>
-<td class="best">Так (10 000 тр.)</td>
+<td>Bezplatná úroveň</td>
+<td>Ne</td>
+<td class="best">Ano (sledování)</td>
+<td class="best">Ano (200 tx)</td>
+<td class="best">Ano (10 000 tx)</td>
 </tr>
 <tr>
-<td>Країни</td>
+<td>Země</td>
 <td>30+</td>
-<td>7+ ЄС</td>
+<td>7+ EU</td>
 <td class="best">100+</td>
 <td class="best">100+</td>
 </tr>
 <tr>
-<td>Потрібен KYC</td>
-<td class="best">Ні</td>
-<td class="best">Ні</td>
-<td class="best">Ні</td>
-<td class="best">Ні</td>
+<td>Vyžaduje KYC</td>
+<td class="best">Ne</td>
+<td class="best">Ne</td>
+<td class="best">Ne</td>
+<td class="best">Ne</td>
 </tr>
 <tr>
-<td>Підтримка DeFi</td>
-<td>Обмежена</td>
-<td class="best">Так</td>
-<td class="best">Так</td>
-<td class="best">Так</td>
+<td>Podpora DeFi</td>
+<td>Omezená</td>
+<td class="best">Ano</td>
+<td class="best">Ano</td>
+<td class="best">Ano</td>
 </tr>
 <tr>
-<td>Найкраще для</td>
-<td>Приватність</td>
-<td>Кількох країн ЄС</td>
-<td>Досвідчених користувачів</td>
-<td>Глобального покриття</td>
+<td>Nejlepší pro</td>
+<td>Soukromí</td>
+<td>Více zemí EU</td>
+<td>Pokročilé uživatele</td>
+<td>Globální pokrytí</td>
 </tr>
 </tbody>
 </table>
@@ -1006,12 +975,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Disclaimer -->
 <!-- Newsletter -->
 <section class="newsletter">
-  <h2>Змінимо гроші, змінимо світ</h2>
-  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
+  <h2>Opravme peníze, opravme svět</h2>
+  <p>Přidejte se k více než 18 000 investorům, kteří jsou vždy o krok napřed. Získávejte Virtuse Report do své schránky každý týden.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
+    <input type="email" name="email" placeholder="Zadejte svůj e-mail" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ПІДПИСАТИСЯ</button>
+    <button type="submit">ODEBÍRAT</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
   <script>
@@ -1028,7 +997,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'НАДСИЛАННЯ...';
+      btn.textContent = 'ODESÍLÁNÍ...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1038,14 +1007,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
+          msg.textContent = "Hotovo, zkontrolujte si e-mail s uvítacím dopisem.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
+          msg.textContent = (result.data && result.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
+        msg.textContent = 'Chyba sítě. Zkuste to znovu.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1064,20 +1033,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Компанія</h4>
-        <a href="about.html">Про нас</a>
-        <a href="faq.html">FAQ</a>
+        <h4>Společnost</h4>
+        <a href="../about.html">O nás</a>
+        <a href="../faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Правова інформація</h4>
-        <a href="terms-and-conditions.html">Умови використання</a>
-        <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <h4>Informace</h4>
+        <a href="../terms-and-conditions.html">Obchodní podmínky</a>
+        <a href="../privacy-policy.html">Ochrana osobních údajů</a>
+        <a href="../aml-compliance.html">AML a Compliance</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
   </div>
 </footer>
 
