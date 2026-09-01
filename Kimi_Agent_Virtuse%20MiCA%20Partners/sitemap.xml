@@ -52,6 +52,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -62,6 +63,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -72,6 +74,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/cs/buy-bitcoin.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
