@@ -7,7 +7,11 @@
 // stack: it holds the Resend secret, validates + rate-limits the request,
 // and is the only thing that ever talks to Resend on the public's behalf.
 //
-// POST /subscribe    { email, hp }        -- hp is the honeypot field, must be empty
+// POST /subscribe    { email, hp, lang }   -- hp is the honeypot field, must be empty;
+//                                              lang picks which welcome email template
+//                                              to send (see WELCOME_EMAIL_TEMPLATES
+//                                              below) -- omitted or unrecognized falls
+//                                              back to English
 // GET  /unsubscribe  ?email=...&token=...  -- clicked from the welcome email, see below
 //
 // Secrets (set via `wrangler secret put`, never in this file or wrangler.toml):
@@ -91,9 +95,21 @@ async function addContact(env, email) {
   throw new Error(`Resend contacts API failed (status ${res.status}): ${text.slice(0, 300)}`);
 }
 
-async function sendWelcomeEmail(env, email) {
+// lang -> { html, subject }. Add a row here (and a matching
+// WELCOME_EMAIL_HTML_<LANG> placeholder + build.mjs TEMPLATES entry)
+// whenever a new language gets its own welcome email -- see
+// cloudflare-worker/README.md's "Multi-language welcome emails" section.
+// A lang not present here (including undefined/omitted) falls back to 'en'.
+const WELCOME_EMAIL_TEMPLATES = {
+  en: { html: () => WELCOME_EMAIL_HTML, subject: 'Welcome to Virtuse — You\'re In' },
+  sk: { html: () => WELCOME_EMAIL_HTML_SK, subject: 'Vitajte vo Virtuse' },
+};
+
+async function sendWelcomeEmail(env, email, lang) {
+  const template = WELCOME_EMAIL_TEMPLATES[lang] || WELCOME_EMAIL_TEMPLATES.en;
+
   const unsubscribeUrl = await buildUnsubscribeUrl(env, email);
-  const html = WELCOME_EMAIL_HTML.replace('{{unsubscribe_url}}', unsubscribeUrl);
+  const html = template.html().replace('{{unsubscribe_url}}', unsubscribeUrl);
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -104,7 +120,7 @@ async function sendWelcomeEmail(env, email) {
     body: JSON.stringify({
       from: env.RESEND_FROM_EMAIL,
       to: [email],
-      subject: 'Welcome to Virtuse — You\'re In',
+      subject: template.subject,
       html,
     }),
   });
@@ -248,7 +264,7 @@ export default {
       return json(400, { error: 'Invalid JSON body' }, origin);
     }
 
-    const { email, hp } = body || {};
+    const { email, hp, lang } = body || {};
 
     // Honeypot: a hidden field real visitors never see or fill. Any value
     // here means a bot filled every field it found -- silently pretend
@@ -271,7 +287,7 @@ export default {
       if (result.created) {
         // Only send the welcome email to genuinely new subscribers --
         // never re-send it to someone who's already on the list.
-        await sendWelcomeEmail(env, email);
+        await sendWelcomeEmail(env, email, typeof lang === 'string' ? lang : undefined);
       }
       return json(200, { ok: true }, origin);
     } catch (e) {
@@ -281,8 +297,10 @@ export default {
   },
 };
 
-// Replaced with the real, JSON-escaped contents of
-// email/welcome-template.html by build.mjs -- never edit this line by
-// hand, and never deploy src/index.js directly (it still has the literal
-// placeholder). Run `node build.mjs` and deploy dist/worker.js instead.
+// Replaced with the real, JSON-escaped contents of the corresponding
+// email/welcome-template*.html file by build.mjs -- never edit these lines
+// by hand, and never deploy src/index.js directly (it still has the
+// literal placeholders). Run `node build.mjs` and deploy dist/worker.js
+// instead.
 const WELCOME_EMAIL_HTML = "__WELCOME_EMAIL_HTML__";
+const WELCOME_EMAIL_HTML_SK = "__WELCOME_EMAIL_HTML_SK__";

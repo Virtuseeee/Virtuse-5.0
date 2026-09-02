@@ -8,9 +8,10 @@ the frontend.
 
 ```
 visitor submits form
-  -> POST https://<your-worker>.workers.dev/subscribe  { email, hp }
+  -> POST https://<your-worker>.workers.dev/subscribe  { email, hp, lang }
   -> Worker validates + rate-limits + checks the honeypot field
-  -> Worker calls Resend server-side (contact + welcome email)
+  -> Worker calls Resend server-side (contact + welcome email in the
+     right language -- see "Multi-language welcome emails" below)
   -> Worker returns { ok: true } or { error: "..." } to the browser
 
 visitor clicks "Unsubscribe" in the welcome email
@@ -102,6 +103,31 @@ Note: the template's `{{unsubscribe_url}}` placeholder is deliberately
 `sendWelcomeEmail` in `src/index.js` substitutes the real, per-recipient,
 signed URL at send time instead (see "Unsubscribe" below), because the
 link has to be different for every recipient.
+
+## Multi-language welcome emails
+
+`POST /subscribe` accepts an optional `lang` field: `{ email, hp, lang }`.
+`sendWelcomeEmail` picks the matching template + subject from
+`WELCOME_EMAIL_TEMPLATES` in `src/index.js`; an omitted, unrecognized, or
+non-string `lang` (a bot sending garbage, a page that predates this field)
+falls back to `en` rather than erroring. This is deliberate — a broken or
+missing `lang` should never block someone's signup.
+
+Currently supported: `en` (default) and `sk`. The site's `sk/*.html` pages
+(and `blog-sk.html`) already send `lang: 'sk'` in their newsletter form's
+fetch call.
+
+**Adding another language** (e.g. once a `uk` or `cs` welcome email
+exists):
+1. Add `email/welcome-template-<lang>.html`.
+2. In `build.mjs`, add a `{ file: 'welcome-template-<lang>.html', placeholder: '"__WELCOME_EMAIL_HTML_<LANG>__"' }` row to `TEMPLATES`.
+3. In `src/index.js`, add `const WELCOME_EMAIL_HTML_<LANG> = "__WELCOME_EMAIL_HTML_<LANG>__";` near the bottom, and a matching `<lang>: { html: () => WELCOME_EMAIL_HTML_<LANG>, subject: '...' }` row to `WELCOME_EMAIL_TEMPLATES`.
+4. Update the language's site pages to send `lang: '<lang>'` in their form's fetch body.
+5. `npm run deploy`.
+
+No new secret or KV setup needed — every language shares the same
+`UNSUB_SECRET`, rate limit, and Resend segment; only the email content and
+subject differ per language.
 
 ## Unsubscribe
 
