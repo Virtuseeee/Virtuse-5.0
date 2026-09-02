@@ -69,6 +69,31 @@ Deployed and verified on **all four targets**: Worker (`wrangler deploy`),
 endpoint produced a real email with the Slovak subject ("Vitajte vo
 Virtuse"), received and confirmed.
 
+**Found and fixed: `blog-sk.html`'s nav/footer were still entirely
+English.** User-reported: navigating `sk/index.html` → Blog made "the
+entire menu switch to English." Root cause: `blog-sk.html` predates the
+i18n system's per-page nav translation (`scaffold_sk.py` et al. never
+touched it, since it lives outside the `sk/` folder convention by
+design) and had simply never had its own nav/footer translated, even
+though its blog content, hero, and newsletter section were already
+Slovak. Its hamburger menu showed "Buy Bitcoin", "Mining", "Loans",
+"Custody", "Tax", "Bots", "Bitcoin Data", "About", "Get Started" (×2);
+its footer showed "Company"/"About Us"/"Legal"/"Terms &
+Conditions"/"Privacy Policy"/"All Rights Reserved". Fixed (`40289ce`):
+translated to match `sk/index.html`'s established labels exactly (Kúpiť
+Bitcoin, Ťažba, Pôžičky, Úschova, Treasury, Dane, Boty, Bitcoin dáta, O
+nás, Začať; footer Spoločnosť/Informácie columns). Labels only — hrefs
+were already correct, this wasn't the `306f717`-class bare-link bug.
+Deployed to all three site targets (`main`, `gh-pages`/staging,
+production) and `curl`-verified on each. **Worth a sweep for the same
+class of bug**: any other page living outside the `sk/`/`uk/`/`cs`
+folder convention (i.e. anything the scaffold scripts never touched)
+should be checked for the same "body translated, shared nav/footer
+chrome never was" gap — `blog-sk.html` is confirmed fixed now, but
+nothing has systematically checked whether e.g. `blog.html`'s own
+nav/footer (as the English original) or any deploy-variant page
+(`mining_deploy/`, `buybitcoin/`, `hero/`) has drifted the same way.
+
 **Two secrets-handling near-misses worth remembering:**
 - Generated a random `UNSUB_SECRET` value with `openssl rand -hex 32` and
   printed it into this chat as a convenience — wrong, even though it's an
