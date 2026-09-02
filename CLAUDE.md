@@ -111,6 +111,19 @@ nav/footer (as the English original) or any deploy-variant page
   behavior rather than trusting a "success" message from an adjacent
   step.
 
+**Added: `partnerships/` — partner discount outreach templates +
+contact list.** Not site code, not deployed anywhere — reference
+material for the business side. See "Content pipeline" below for what's
+in it; the short version is email templates for asking Buy Bitcoin/
+Mining/other partners to add a Virtuse-exclusive discount, plus a
+researched (not verified by actually contacting anyone) contact list for
+the 7 Buy Bitcoin/Mining partners. Its own top note is worth repeating
+here: **every one of those partners already has a live referral
+relationship with Virtuse** (the tracked links already on
+`buy-bitcoin.html`/`mining.html`), so the existing affiliate portal/
+account manager is almost always a better contact than the public
+addresses in the file.
+
 ## Session status (2026-09-01) — Three languages fully live: SK, UK, CS
 
 **Current state — done:** Three languages are live sitewide beyond
@@ -478,6 +491,27 @@ for how this was discovered/fixed/extended, and `cloudflare-worker/README.md`
 - `plan.md` — implementation plan for landing-page animation work (scroll reveals, text scramble, staggered card entrances, hover effects) implemented via anime.js in the HTML pages.
 
 When asked to update the market analysis, prefer editing the research/outline/chapter markdown sources first, then regenerate or hand-sync the `.docx`/`.md` derivatives rather than editing a derived file in isolation.
+
+## Partner outreach
+
+`partnerships/` — business reference material, not site code, not
+deployed anywhere:
+- [`partner-discount-outreach.md`](partnerships/partner-discount-outreach.md) —
+  strategy notes + email templates for asking partners to add a
+  promotional discount for Virtuse-referred clients, to support sales.
+  Buy Bitcoin, Mining, and a general-purpose variant for other verticals
+  (lending, custody, tax, treasury, bots).
+- [`partner-contacts.md`](partnerships/partner-contacts.md) — public
+  contact points for the 7 Buy Bitcoin/Mining partners, gathered from
+  each company's own site 2026-09-02 (not third-party scraper databases,
+  which are often stale), with a confidence rating per entry. **Not
+  verified by actually contacting anyone**, and will drift out of date —
+  re-check before relying on it if it's been a while. Its own top note,
+  worth repeating: every one of those 7 partners already has a live
+  referral relationship with Virtuse (the tracked links already on
+  `buy-bitcoin.html`/`mining.html`), so an existing affiliate portal or
+  account manager is almost always a better contact than the public
+  addresses in the file.
 
 ## Git & GitHub workflow
 
