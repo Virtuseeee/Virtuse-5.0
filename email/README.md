@@ -83,13 +83,17 @@ that one template to exactly that one address via Resend's transactional
 same `RESEND_API_KEY` / `RESEND_FROM_EMAIL` secrets as the weekly workflow,
 no extra setup needed.
 
-Note: `email/welcome-template.html`'s unsubscribe link is still the literal
-placeholder `{{unsubscribe_url}}` -- fine for a test send to yourself, but
-Resend's `{{{RESEND_UNSUBSCRIBE_URL}}}` merge tag (used in the weekly
-template) only resolves for Broadcast-API sends tied to a segment, not for
-this transactional single-send endpoint. A real automated welcome flow
-(triggered per new subscriber, with working unsubscribe/compliance) is a
-separate piece of work from this test tool.
+Note: a **test send** via this workflow still shows `{{unsubscribe_url}}`
+as literal, unresolved text -- this tool sends the template file directly,
+bypassing the real signup flow entirely. That's expected and harmless for
+a send-to-yourself test.
+
+The **real** automated welcome flow is a separate piece of infrastructure:
+`cloudflare-worker/` is a Worker that the site's newsletter forms POST to
+on every real signup -- it adds the Resend contact, sends this template,
+and (unlike this test tool) fills in a real, working, per-recipient
+unsubscribe link before sending. See `cloudflare-worker/README.md`'s
+"Unsubscribe" section for how that link is generated and verified.
 
 ## Testing before the first real Tuesday
 
