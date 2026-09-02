@@ -2,6 +2,90 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-02) — Newsletter → welcome-email automation discovered, fixed, extended to Slovak
+
+**This session's work, in brief:** asked to "pull out the latest version
+of the Virtuse welcome email" and later "roll out a plan for automated
+sending" of it, discovery revealed the automated pipeline **already
+existed and was already live in production** — built and deployed
+2026-08-14 (`e9af012`/`61737f0`), with **zero mention anywhere in this
+file**. Found via `curl`, not by asking — the lesson from the Czech
+rollout below ("always verify current state before trusting this file")
+struck again, this time on a completely different subsystem. Full
+details of what the pipeline is, what was broken, and what got built are
+below; **this file itself is now the source of truth for it going
+forward** — it wasn't before.
+
+**The pipeline** (see
+[`cloudflare-worker/README.md`](cloudflare-worker/README.md) and
+[`email/README.md`](email/README.md) for full detail): every newsletter
+form sitewide POSTs to a Cloudflare Worker
+(`virtuse-newsletter.virtuse-ai.workers.dev/subscribe`), which adds the
+contact to Resend and, only for genuinely new subscribers, sends a
+welcome email. This is **backend compute outside this git repo's normal
+deploy story** — `cloudflare-worker/` is real server-side code, deployed
+via `wrangler deploy` (Cloudflare), not via `gh-pages`/SFTP like every
+other content change here. **Treat it as a fourth, fully independent
+deploy target**, alongside `main`/`gh-pages`/production-SFTP: a Worker
+code change and a frontend HTML change are two separate deploys that can
+drift from each other. This bit the session directly — the Slovak
+language-routing logic was live on the Worker *before* the frontend's
+`lang: 'sk'` field existed on any deployed page anywhere, so real Slovak
+signups would have kept getting the English email until the frontend was
+separately deployed to `gh-pages` and production.
+
+**Found and fixed: a real, live compliance bug.** The welcome email's
+unsubscribe link was a literal, unresolved `{{unsubscribe_url}}` — every
+real welcome email sent since the Aug 14 launch had a dead unsubscribe
+link (Resend's unsubscribe merge tag only resolves for Broadcast-API
+sends tied to a segment, not this flow's transactional single-send).
+Fixed (`74e6407`): the Worker now has a `GET /unsubscribe?email=...&token=...`
+route, HMAC-signed with a new `UNSUB_SECRET` Wrangler secret so a link
+can't be forged for someone else's address. Deployed and verified live
+end-to-end: real signup → real welcome email → real unsubscribe click →
+contact actually removed from the Resend segment.
+
+**Added: Slovak welcome email, live sitewide.** New
+[`email/welcome-template-sk.html`](email/welcome-template-sk.html)
+(`36587d8`), translated using the established SK glossary/tone rather
+than fresh from English, then put through a human-editing pass for
+shorter/punchier sentences (max ~20 words, cut the stiff "Vážený
+investor" formal opener and a redundant self-introduction paragraph the
+sign-off already covers). Its "Start here" article links to
+`blog-sk.html`'s **genuine** Slovak translation of the same article the
+English version features (not a Slovak title over an English link).
+Wired into the live flow (`acc08d0`): the Worker's `/subscribe` now
+accepts an optional `lang` field and picks the matching template +
+subject from a `WELCOME_EMAIL_TEMPLATES` map (anything missing/
+unrecognized/wrong-type falls back to English — a bad `lang` should never
+block a signup); all 21 Slovak-language newsletter forms (`sk/*.html` +
+`blog-sk.html`) now send `lang: 'sk'`. **`uk`/`cs` are not in the map
+yet** — those languages' signups still get the English welcome email;
+adding a third language is documented as a short, concrete checklist in
+`cloudflare-worker/README.md`'s "Multi-language welcome emails" section.
+Deployed and verified on **all four targets**: Worker (`wrangler deploy`),
+`main` (`acc08d0`), `gh-pages`/staging (`55d9fee`), and production
+(SFTP) — a real signup with `lang:"sk"` through the live production
+endpoint produced a real email with the Slovak subject ("Vitajte vo
+Virtuse"), received and confirmed.
+
+**Two secrets-handling near-misses worth remembering:**
+- Generated a random `UNSUB_SECRET` value with `openssl rand -hex 32` and
+  printed it into this chat as a convenience — wrong, even though it's an
+  internal signing key rather than a login credential, because it ends up
+  sitting in the conversation log where a secret shouldn't be. Caught it
+  and had the user generate their own directly in their terminal instead
+  (same handling the SFTP password already gets, extended to this
+  secret). **Generate/paste secrets in the user's own terminal, never in
+  chat, even for non-login secrets.**
+- Setting a Wrangler secret (`wrangler secret put`) and deploying the
+  Worker's code (`wrangler deploy`) are two independent actions — the
+  user ran the secret-put step twice, successfully, and reasonably read
+  that as "deployed," but the code (with the new route the secret
+  supports) hadn't shipped yet. Caught by `curl`-verifying the live
+  behavior rather than trusting a "success" message from an adjacent
+  step.
+
 ## Session status (2026-09-01) — Three languages fully live: SK, UK, CS
 
 **Current state — done:** Three languages are live sitewide beyond
@@ -34,14 +118,16 @@ pages 200 with correct content, 4-language switcher wired into
   [`TRANSLATION-SYSTEM.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/TRANSLATION-SYSTEM.md)'s
   "Language switcher" section.
 - **Browser-language auto-redirect**: `lang-detect.js` (repo root) sends
-  a browser reporting Slovak straight to the matching `sk/` page,
-  `location.replace`-style, unless the visitor already made an explicit
-  language choice via the switcher (remembered in `localStorage`, so it
-  never fights a deliberate pick). Slovak-only by design so far — whether
-  Ukrainian/Czech should get the same treatment is still an open
-  decision, and this file's `TRANSLATED` mapping array needs updating
-  whenever a new page/language ships (it already went stale once, missing
-  `root-cycles.html` for a while — see [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)).
+  a browser reporting Slovak, Ukrainian, or Czech straight to the
+  matching `<lang>/` page (`blog.html` handled as its own per-language
+  special case — see the file), `location.replace`-style, unless the
+  visitor already made an explicit language choice via the switcher
+  (remembered in `localStorage`, so it never fights a deliberate pick).
+  Generalized from Slovak-only to all three in `f6cf8b1` (2026-09-01,
+  before this session). This file's `TRANSLATED` mapping array needs
+  updating whenever a new page ships in *any* covered language (it
+  already went stale once, missing `root-cycles.html` for a while — see
+  [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)).
 - Reusable tooling in
   [`i18n-tools/`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/):
   the original SK-era scripts (`scaffold_sk.py`, `sitemap_add.py`,
@@ -126,9 +212,10 @@ found in Phase 1 testing):
 - The homepage's live-WordPress blog teaser section had broken article
   links (missing `../` prefix from inside `cs/`) — and while fixing it,
   found the **exact same bug already live on `uk/index.html`** (both the
-  static fallback cards and the JS-generated href, still unfixed as of
-  2026-09-01). Flagged as a separate task (`task_d6e026b1`) rather than
-  silently fixing only the Czech copy — **still open, worth picking up**.
+  static fallback cards and the JS-generated href). Flagged as a
+  separate task (`task_d6e026b1`) rather than silently fixing only the
+  Czech copy — **fixed same-day in `066082d`**, before the next session
+  started.
 - A handful of pages (`root-cycles.html`, `terms-and-conditions.html`)
   hit the documented "literal em dash instead of `—` escape"
   newsletter-string gotcha from `i18n-tools/README.md` — fixed by hand
@@ -142,23 +229,42 @@ found in Phase 1 testing):
   future Slavic-language rollout, not just assuming SK terms transfer.
 
 **Next steps, in order:**
-1. **Fix the pre-existing `uk/index.html` broken blog-link bug** flagged
-   above (`task_d6e026b1`) — quick, and now doubly worth doing since the
-   Czech equivalent required fixing the same class of bug.
-2. **Decide whether `lang-detect.js` should also auto-redirect Ukrainian
-   and/or Czech browsers**, not just Slovak ones — if yes for Czech, add
-   `'cs'` to its `browserLang` check and a `cs/` branch alongside the
-   existing `sk/` one.
+1. ~~Fix the pre-existing `uk/index.html` broken blog-link bug~~ —
+   **already done**, `066082d` (2026-09-01), before this session started.
+   Was still listed here as open going into this session — another
+   instance of this file lagging real repo state; see the "real time
+   gaps" gotcha below.
+2. ~~Decide whether `lang-detect.js` should auto-redirect Ukrainian/Czech
+   too~~ — **already done**, `f6cf8b1` (2026-09-01): it now auto-redirects
+   `sk`/`uk`/`cs` browsers, generalized from the old Slovak-only
+   `browserLang` check to a `targetLang` resolver.
 3. **Still the top-priority *compliance* item**: human legal review of
-   the AI-translated compliance pages — now in **three** languages
-   (`sk/`, `uk/`, and `cs/` `privacy-policy.html`,
-   `terms-and-conditions.html`, `aml-compliance.html`) — real MiCA/GDPR
-   exposure if mistranslated, all three languages' versions are live on
-   production, none reviewed by a human speaker of any of them yet.
-4. **When ready for language #5**: follow
+   the AI-translated compliance pages — in **three** languages (`sk/`,
+   `uk/`, and `cs/` `privacy-policy.html`, `terms-and-conditions.html`,
+   `aml-compliance.html`) — real MiCA/GDPR exposure if mistranslated, all
+   three languages' versions are live on production, none reviewed by a
+   human speaker of any of them yet.
+4. **When ready for language #5** (site pages): follow
    [`i18n-tools/README.md`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/README.md)'s
    "Adding the next language" section, copying the **Czech-era** scripts
    (not the UK-era ones — see the `wire_*_into_existing.py` note above).
+5. **New: give Ukrainian and Czech their own welcome email.** Right now
+   only `en` (default) and `sk` have a template — `uk`/`cs` signups still
+   get the English welcome email. Follow
+   [`cloudflare-worker/README.md`](cloudflare-worker/README.md)'s
+   "Multi-language welcome emails" checklist (draft
+   `email/welcome-template-<lang>.html`, add it to `build.mjs`'s
+   `TEMPLATES` and `src/index.js`'s `WELCOME_EMAIL_TEMPLATES`, wire the
+   language's forms to send `lang: '<lang>'`, deploy). The Slovak one
+   (`email/welcome-template-sk.html`) is the template to copy the
+   *process* from, including the human-editing pass for tone.
+6. **New: no human speaker has reviewed the Slovak welcome email's
+   copy** — it was translated using the site's reviewed SK glossary/tone
+   and then edited for punch, but never checked by a native speaker the
+   way the site's `sk/` pages themselves went through review rounds
+   (see the Slovak post-launch fixes below). Lower stakes than #3 (it's
+   marketing copy, not a legal page), but still worth a pass before
+   treating it as final.
 
 **Decisions, constraints & gotchas (not obvious from the code):**
 - **Real time gaps between sessions can hide substantial work** — the
@@ -229,8 +335,44 @@ found in Phase 1 testing):
   *actual current* production state before building a deploy command
   from git history alone — the git baseline can be stale in either
   direction.
+- **The Cloudflare Worker (`cloudflare-worker/`) is a fourth deploy
+  target, fully independent of `main`/`gh-pages`/production-SFTP** — see
+  the 2026-09-02 session status above. Shipping a Worker code change
+  (`npm run deploy`) does nothing to the site's static HTML, and vice
+  versa; verify each side separately with `curl` rather than assuming one
+  deploy implies the other happened.
+- **`wrangler` must be installed locally before `npm run deploy` works**
+  — `npx wrangler <command>` (e.g. `secret put`) downloads a one-off copy
+  each time and never persists it to `node_modules`, so the project's own
+  `npm run deploy` script (which calls bare `wrangler` expecting it on
+  the local `node_modules/.bin` PATH) fails with `command not found`
+  until `npm install` has actually been run once in `cloudflare-worker/`.
+- **Setting a Wrangler secret and deploying the Worker's code are two
+  separate steps that are easy to conflate** — `wrangler secret put X`
+  succeeding does not mean the code that uses `X` has shipped. Verify the
+  actual deployed behavior with `curl`, not the success message of an
+  adjacent command.
+- **Never generate or print a secret value into the chat**, even a
+  non-login one like an HMAC signing key — it ends up sitting in the
+  conversation log. Have the user generate it (e.g. `openssl rand -hex
+  32`) and paste it directly into their own terminal prompt, same
+  handling the SFTP password already gets.
+- **A `git worktree` left over from a previous session's `gh-pages` sync
+  can often be reused** — check `git worktree list` before creating a new
+  one; the branch can only be checked out in one worktree at a time, and
+  session scratchpad directories aren't always cleaned up between
+  sessions. `git pull origin gh-pages` in it first to make sure it's not
+  itself stale.
+- **`gh-pages` can drift *per file*, not just per whole folder** —
+  `blog-sk.html` on `gh-pages` was missing `lang-detect.js`, its
+  `hreflang` tags, the desktop dropdown switcher, and the UK nav pill,
+  none of which had anything to do with the newsletter-`lang` change
+  being synced. Syncing "just the changed file" from `main` can bring
+  along a larger diff than expected if that specific file had drifted
+  independently — check the diff before pushing, don't assume it's a
+  single-line change just because the intended edit was.
 
-**Commands to pick this up (no env vars needed — no build tooling in this repo):**
+**Commands to pick this up (no env vars needed for the static site itself — `cloudflare-worker/` is the one exception, see its own section below):**
 ```bash
 # Local preview
 cd "Kimi_Agent_Virtuse MiCA Partners" && python3 -m http.server 8777
@@ -261,21 +403,41 @@ sftp -P 222 virtuse.com@ftp.virtuse.com <<< "mkdir public_html/<newfolder>"
 cd "Kimi_Agent_Virtuse MiCA Partners" && scp -P 222 -r <newfolder>/* virtuse.com@ftp.virtuse.com:public_html/<newfolder>/
 # Then verify from here with curl, e.g.:
 curl -sI https://virtuse.com/<path> | grep -i "HTTP\|last-modified"
+
+# Deploy the newsletter Worker (separate from all of the above — see
+# cloudflare-worker/README.md). Needs npm install once if wrangler has
+# never been installed locally in this folder before:
+cd cloudflare-worker && npm install   # first time only
+npm run deploy                        # rebuilds dist/worker.js from src/ + email templates, then wrangler deploy
+# Verify live behavior directly, don't trust the deploy output alone:
+curl -s -i -X OPTIONS https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe -H "Origin: https://virtuse.com" -H "Access-Control-Request-Method: POST"
 ```
 `origin` has both `main` (source of truth, PR/commit here) and `gh-pages`
 (staging deploy target, sync manually as above) as separate branches —
 don't confuse a `main` push with a staging deploy. Production is a third,
 fully separate target reached only via the Webglobe SFTP commands above.
+The Cloudflare Worker is a **fourth**, fully independent target — see the
+2026-09-02 session status and its gotcha above.
 
 ## Repository purpose
 
-This repo holds marketing/content assets for **Virtuse** ("The World's First Hub for Bitcoin-Only Services") — a Bitcoin-only wealth management / partner ecosystem site. It is content-first, not an application: there is no build tool, package manager, bundler, or test suite. Pages are static HTML files with inline `<style>` and `<script>` blocks, editable and viewable directly in a browser (`open <file>.html` or a static file server).
+This repo holds marketing/content assets for **Virtuse** ("The World's First Hub for Bitcoin-Only Services") — a Bitcoin-only wealth management / partner ecosystem site. It is content-first, not an application: the site itself has no build tool, package manager, bundler, or test suite — pages are static HTML files with inline `<style>` and `<script>` blocks, editable and viewable directly in a browser (`open <file>.html` or a static file server). The one exception is `cloudflare-worker/` (see below and its own README) — real server-side code with a real `package.json`/npm/Wrangler toolchain, deployed separately from the static site.
 
 All working content currently lives under `Kimi_Agent_Virtuse MiCA Partners/` (the folder name is percent-encoded on disk as `Kimi_Agent_Virtuse%20MiCA%20Partners`).
 
+**Newsletter signup → welcome email**: every newsletter form sitewide
+POSTs to a Cloudflare Worker (`cloudflare-worker/`, deployed via
+`wrangler`, not part of the static-site deploy flow) which adds the
+contact to Resend and sends a welcome email
+(`email/welcome-template.html`, or a per-language variant like
+`email/welcome-template-sk.html` — see `cloudflare-worker/README.md`'s
+"Multi-language welcome emails"). See the 2026-09-02 session status above
+for how this was discovered/fixed/extended, and `cloudflare-worker/README.md`
++ `email/README.md` for the full system.
+
 ## Working with this repo
 
-- No install/build/lint/test commands apply — there is no `package.json`, `requirements.txt`, or config file anywhere in the tree. Preview changes by opening the HTML file directly in a browser.
+- No install/build/lint/test commands apply to the **site itself** — no `package.json`, `requirements.txt`, or config file governs the HTML pages. Preview changes by opening the HTML file directly in a browser. (`cloudflare-worker/` is a real npm/Wrangler project with its own `package.json` — see "Newsletter signup → welcome email" above and its own README; that tooling is scoped to that one folder and doesn't apply to anything else in the repo.)
 - External dependencies are loaded via CDN inline in each page (e.g. `animejs@4.5.0` from jsdelivr for animations, Google Fonts `Inter`). Don't introduce a package manager for these — keep the CDN `<script>`/`<link>` pattern consistent with existing pages.
 - Each top-level `.html` file (`index.html`, `about.html`, `blog.html`, `mining.html`, `tax.html`, `treasury.html`, `lending.html`, `research.html`, `secure.html`, `buy-bitcoin.html`, etc.) is a self-contained landing/marketing page. Each still carries its own large page-specific `<style>` block, but the common core (nav, footer, CSS custom properties like `--btc-orange`, `--dark`, `--text-muted`, the language-switcher pill) was de-duplicated into [`styles.css`](Kimi_Agent_Virtuse%20MiCA%20Partners/styles.css), which every page links — check there before assuming a style rule needs copy-pasting per page.
 - Some pages have deploy-specific subfolder variants (e.g. `mining_deploy/index.html`, `buybitcoin/index.html`, `hero/index.html`) — check whether an edit belongs in the root page or its deploy variant.
