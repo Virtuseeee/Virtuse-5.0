@@ -11,7 +11,14 @@
 //                                              lang picks which welcome email template
 //                                              to send (see WELCOME_EMAIL_TEMPLATES
 //                                              below) -- omitted or unrecognized falls
-//                                              back to English
+//                                              back to English. The same normalized
+//                                              value is also stored on the Resend
+//                                              contact as a `lang` property (see
+//                                              addContact) so signups are queryable
+//                                              by language later -- requires the `lang`
+//                                              Contact Property to exist in Resend first,
+//                                              see README.md's "Multi-language welcome
+//                                              emails" section.
 // GET  /unsubscribe  ?email=...&token=...  -- clicked from the welcome email, see below
 //
 // Secrets (set via `wrangler secret put`, never in this file or wrangler.toml):
@@ -71,7 +78,7 @@ async function isRateLimited(env, ip) {
   return false;
 }
 
-async function addContact(env, email) {
+async function addContact(env, email, lang) {
   const res = await fetch('https://api.resend.com/contacts', {
     method: 'POST',
     headers: {
@@ -81,6 +88,12 @@ async function addContact(env, email) {
     body: JSON.stringify({
       email,
       segments: [{ id: env.RESEND_SEGMENT_ID }],
+      // Requires the `lang` Contact Property to already exist in Resend
+      // (Contacts -> Properties -> Create Property, type "string") --
+      // see README.md. If it doesn't exist yet, Resend is expected to
+      // just ignore this key rather than fail the whole contact create,
+      // but that's untested; create the property first.
+      properties: { lang },
     }),
   });
 
@@ -264,7 +277,12 @@ export default {
       return json(400, { error: 'Invalid JSON body' }, origin);
     }
 
-    const { email, hp, lang } = body || {};
+    const { email, hp, lang: rawLang } = body || {};
+    // Normalize once so the Resend `lang` property and the welcome-email
+    // template lookup always agree -- a missing, non-string, or
+    // unrecognized lang (a bot, or a page that predates/doesn't yet send
+    // this field, e.g. uk/cs today) is recorded and treated as 'en'.
+    const lang = typeof rawLang === 'string' && rawLang in WELCOME_EMAIL_TEMPLATES ? rawLang : 'en';
 
     // Honeypot: a hidden field real visitors never see or fill. Any value
     // here means a bot filled every field it found -- silently pretend
@@ -283,11 +301,11 @@ export default {
     }
 
     try {
-      const result = await addContact(env, email);
+      const result = await addContact(env, email, lang);
       if (result.created) {
         // Only send the welcome email to genuinely new subscribers --
         // never re-send it to someone who's already on the list.
-        await sendWelcomeEmail(env, email, typeof lang === 'string' ? lang : undefined);
+        await sendWelcomeEmail(env, email, lang);
       }
       return json(200, { ok: true }, origin);
     } catch (e) {

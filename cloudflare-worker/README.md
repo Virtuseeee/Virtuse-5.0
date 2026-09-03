@@ -115,7 +115,10 @@ missing `lang` should never block someone's signup.
 
 Currently supported: `en` (default) and `sk`. The site's `sk/*.html` pages
 (and `blog-sk.html`) already send `lang: 'sk'` in their newsletter form's
-fetch call.
+fetch call. `uk/*.html` and `cs/*.html` pages don't send `lang` at all yet
+(not just "no welcome email" — the Worker never learns which language site
+they signed up from), so those signups are indistinguishable from plain
+English ones until step 4 below is done for them too.
 
 **Adding another language** (e.g. once a `uk` or `cs` welcome email
 exists):
@@ -128,6 +131,38 @@ exists):
 No new secret or KV setup needed — every language shares the same
 `UNSUB_SECRET`, rate limit, and Resend segment; only the email content and
 subject differ per language.
+
+### Tracking language on the Resend contact itself
+
+Every contact created via `POST /subscribe` also gets a `lang` [Contact
+Property](https://resend.com/docs/dashboard/audiences/properties) set to
+the same normalized value used for the welcome-email template lookup
+(`en`/`sk` today) — so contacts are filterable/queryable by signup
+language in Resend, not just at send time. This only fires once, on
+initial contact creation (same as `segments` above) — an already-existing
+contact's `lang` property isn't updated on a repeat signup.
+
+**One-time setup required before this works** — the `lang` property must
+exist in Resend first, or the `properties` key in `addContact`'s request
+is presumed to be silently ignored (untested; Resend doesn't document
+this):
+1. Resend dashboard -> Contacts -> Properties -> Create Property.
+2. Key: `lang`, Type: `string`, Fallback value: `en` (so contacts created
+   before this existed, or by any other path, read as English rather than
+   blank).
+
+Or via API (run this yourself with your own `RESEND_API_KEY` — never paste
+API keys into a chat session):
+```bash
+curl https://api.resend.com/contact-properties \
+  -H "Authorization: Bearer $RESEND_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"key": "lang", "type": "string", "fallback_value": "en"}'
+```
+
+This is a one-time account-level setup step, independent of `npm run
+deploy` — the property must exist before the next real signup, not
+before the Worker code ships.
 
 ## Unsubscribe
 
