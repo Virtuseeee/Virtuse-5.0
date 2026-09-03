@@ -128,9 +128,10 @@ exists):
 4. Update the language's site pages to send `lang: '<lang>'` in their form's fetch body.
 5. `npm run deploy`.
 
-No new secret or KV setup needed — every language shares the same
-`UNSUB_SECRET`, rate limit, and Resend segment; only the email content and
-subject differ per language.
+No new secret or KV setup needed for the welcome email itself — every
+language shares the same `UNSUB_SECRET`, rate limit, and (unless it has
+its own dedicated segment, see "Per-language segments" below) Resend
+segment; only the email content and subject differ per language.
 
 ### Tracking language on the Resend contact itself
 
@@ -163,6 +164,42 @@ curl https://api.resend.com/contact-properties \
 This is a one-time account-level setup step, independent of `npm run
 deploy` — the property must exist before the next real signup, not
 before the Worker code ships.
+
+### Per-language segments
+
+Some languages join their own dedicated Resend segment **instead of** the
+default `RESEND_SEGMENT_ID` segment, rather than just being tagged with
+the `lang` property above. Currently: **Slovak** signups join Resend's
+existing "Ot emails" segment (750 contacts as of 2026-09-03, a
+pre-existing list — not something this Worker created).
+
+This is a different mechanism from the `lang` Contact Property — that
+property is set regardless, on every contact, in whichever segment they
+land in; this decides *which* segment a new contact actually joins.
+`langSegmentId(env, lang)` in `src/index.js` is the one place both
+`addContact` (new signups) and `removeFromSegment` (unsubscribe, which
+has to check every possible segment since the unsubscribe link doesn't
+carry `lang`) read this mapping from.
+
+**One-time setup required before deploying this**: set the segment's ID
+as a new secret —
+```bash
+wrangler secret put RESEND_SK_SEGMENT_ID
+# paste the segment id when prompted (find it in the Resend dashboard:
+# Audience -> Segments -> click the segment -> its id is in the URL,
+# ?segmentId=...)
+```
+If this secret isn't set, `langSegmentId` returns `undefined` and
+`addContact` falls back to the default segment — a missing secret fails
+safe (signups still work, just land in the default segment) rather than
+blocking signups.
+
+**Adding another language's dedicated segment**: add a row to
+`langSegmentId`'s returned object (e.g. `{ sk: env.RESEND_SK_SEGMENT_ID,
+uk: env.RESEND_UK_SEGMENT_ID }`) and `wrangler secret put` the matching
+secret. `removeFromSegment` picks up any language added there
+automatically — no separate change needed for unsubscribe to keep
+working.
 
 ## Unsubscribe
 

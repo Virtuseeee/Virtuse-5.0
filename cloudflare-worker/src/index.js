@@ -18,11 +18,17 @@
 //                                              by language later -- requires the `lang`
 //                                              Contact Property to exist in Resend first,
 //                                              see README.md's "Multi-language welcome
-//                                              emails" section.
+//                                              emails" section. lang also picks which
+//                                              Resend segment the contact joins (see
+//                                              langSegmentId) --
+//                                              Slovak signups join the dedicated "Ot
+//                                              emails" segment INSTEAD OF the default
+//                                              one, not in addition to it.
 // GET  /unsubscribe  ?email=...&token=...  -- clicked from the welcome email, see below
 //
 // Secrets (set via `wrangler secret put`, never in this file or wrangler.toml):
-//   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_FROM_EMAIL, UNSUB_SECRET
+//   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_SK_SEGMENT_ID, RESEND_FROM_EMAIL,
+//   UNSUB_SECRET
 // KV binding (see wrangler.toml): RATE_LIMIT_KV
 //
 // The welcome email HTML is inlined below (see WELCOME_EMAIL_HTML) rather
@@ -78,7 +84,34 @@ async function isRateLimited(env, ip) {
   return false;
 }
 
+// lang -> the Worker secret name holding that language's dedicated Resend
+// segment id. A language NOT listed here (including 'en') uses the
+// default RESEND_SEGMENT_ID instead. Add a row here (and `wrangler
+// secret put` the secret) for each future language that gets its own
+// dedicated segment -- see README.md's "Per-language segments" section.
+// This is the ONE place to edit: both addContact (which segment a new
+// contact joins) and removeFromSegment (every segment an unsubscribe
+// needs to check, since the unsubscribe link doesn't carry lang) derive
+// from this map via the two helpers below, so they can't drift out of
+// sync with each other.
+const LANG_SEGMENT_SECRETS = { sk: 'RESEND_SK_SEGMENT_ID' };
+
+function langSegmentId(env, lang) {
+  const secretName = LANG_SEGMENT_SECRETS[lang];
+  return secretName ? env[secretName] : undefined;
+}
+
+function allLangSegmentIds(env) {
+  return Object.values(LANG_SEGMENT_SECRETS)
+    .map((secretName) => env[secretName])
+    .filter(Boolean);
+}
+
 async function addContact(env, email, lang) {
+  // Slovak signups join Resend's existing "Ot emails" segment INSTEAD OF
+  // the default one, not in addition to it -- see langSegmentId above.
+  const segmentId = langSegmentId(env, lang) || env.RESEND_SEGMENT_ID;
+
   const res = await fetch('https://api.resend.com/contacts', {
     method: 'POST',
     headers: {
@@ -87,7 +120,7 @@ async function addContact(env, email, lang) {
     },
     body: JSON.stringify({
       email,
-      segments: [{ id: env.RESEND_SEGMENT_ID }],
+      segments: [{ id: segmentId }],
       // Requires the `lang` Contact Property to already exist in Resend
       // (Contacts -> Properties -> Create Property, type "string") --
       // see README.md. If it doesn't exist yet, Resend is expected to
@@ -179,21 +212,30 @@ async function verifyUnsubToken(env, email, token) {
 }
 
 async function removeFromSegment(env, email) {
-  const res = await fetch(
-    `https://api.resend.com/audiences/${env.RESEND_SEGMENT_ID}/contacts/${encodeURIComponent(email)}`,
-    {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ unsubscribed: true }),
-    }
-  );
-  if (res.ok || res.status === 404) return; // 404: already gone, visitor's intent is already satisfied
+  // The unsubscribe link only carries email + token, not lang (see
+  // buildUnsubscribeUrl) -- so this can't know in advance whether the
+  // contact is in the default segment or a per-language one (see
+  // LANG_SEGMENT_SECRETS). Try every configured segment; a 404 for one
+  // the contact was never in is expected and fine, not an error.
+  const segmentIds = [...new Set([env.RESEND_SEGMENT_ID, ...allLangSegmentIds(env)].filter(Boolean))];
 
-  const text = await res.text();
-  throw new Error(`Resend unsubscribe failed (status ${res.status}): ${text.slice(0, 300)}`);
+  for (const segmentId of segmentIds) {
+    const res = await fetch(
+      `https://api.resend.com/audiences/${segmentId}/contacts/${encodeURIComponent(email)}`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ unsubscribed: true }),
+      }
+    );
+    if (res.ok || res.status === 404) continue; // 404: not a member of this segment, fine
+
+    const text = await res.text();
+    throw new Error(`Resend unsubscribe failed for segment ${segmentId} (status ${res.status}): ${text.slice(0, 300)}`);
+  }
 }
 
 function htmlResponse(status, body) {
