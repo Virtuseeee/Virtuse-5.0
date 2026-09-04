@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Bitcoin Data — Virtuse">
-<meta property="og:description" content="Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed.">
+<meta property="og:description" content="Real-time Bitcoin network metrics and market data — price, market cap, fees, hash rate, and the latest block, straight from the network. No account needed.">
 <meta property="og:url" content="https://staging.virtuse.com/bitcoin-data.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bitcoin Data — Virtuse">
-<meta name="twitter:description" content="Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed.">
+<meta name="twitter:description" content="Real-time Bitcoin network metrics and market data — price, market cap, fees, hash rate, and the latest block, straight from the network. No account needed.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -896,7 +896,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-top">
     <div>
       <h1>Bitcoin <span class="highlight">Data</span></h1>
-      <p class="hero-desc">Real-time Bitcoin network metrics and market data — price, fees, hash rate, mempool, and the latest block, straight from the network. No account needed, updated every minute.</p>
+      <p class="hero-desc">Real-time Bitcoin network metrics and market data — price, market cap, fees, hash rate, and the latest block, straight from the network. No account needed, updated every minute.</p>
     </div>
     <div class="live-badge"><span class="live-dot"></span> Live · <span id="lastUpdated">loading…</span></div>
   </div>
@@ -910,7 +910,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="btc-dominance.html">&#9670; BTC Dominance</a>
     <a href="ma-200w.html">&#9670; 200 WMA</a>
     <a href="root-cycles.html">&#9670; Rainbow Chart</a>
-    <a href="market-cap.html">&#9670; Market Cap</a>
+    <a href="mempool-transactions.html">&#9670; Mempool Transactions</a>
     <a href="trading-volume.html">&#9670; Trading Volume</a>
     <a href="fear-greed.html">&#9670; Fear &amp; Greed</a>
   </nav>
@@ -965,9 +965,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stat-sub">Percentage of max supply mined</div>
     </div>
     <div class="stat-box">
-      <div class="stat-label">Mempool Transactions</div>
-      <div class="stat-value" id="mempoolCount">—</div>
-      <div class="stat-sub" id="mempoolSize">— vMB pending</div>
+      <div class="stat-label">Market Cap</div>
+      <div class="stat-value orange" id="statMarketCap">—</div>
+      <div class="stat-sub">Price &times; circulating supply</div>
     </div>
     <div class="stat-box">
       <div class="stat-label">Next Halving</div>
@@ -1133,6 +1133,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
 
+  function setMarketCap(v) {
+    var t = compact(v);
+    $('marketCap').textContent = t;
+    $('statMarketCap').textContent = t;
+  }
+
   function refresh() {
     // Price (mempool.space; USD+EUR in one call)
     j(MP + '/v1/prices').then(function (p) {
@@ -1140,12 +1146,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('priceEur').textContent = eur(p.EUR);
       $('satsPerUsd').textContent = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
       window.__btcUsd = p.USD;
-      if (window.__supply && p.USD) $('marketCap').textContent = compact(window.__supply * p.USD);
+      if (window.__supply && p.USD) setMarketCap(window.__supply * p.USD);
     }).catch(function () {});
 
     // Market cap fallback via CoinGecko
     j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true').then(function (g) {
-      if (g.bitcoin && g.bitcoin.usd_market_cap) $('marketCap').textContent = compact(g.bitcoin.usd_market_cap);
+      if (g.bitcoin && g.bitcoin.usd_market_cap) setMarketCap(g.bitcoin.usd_market_cap);
     }).catch(function () {});
 
     // Tip height + supply + halving
@@ -1160,7 +1166,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('halving').textContent = num(blocksLeft);
       var days = blocksLeft * 10 / 60 / 24;
       $('halvingSub').textContent = 'blocks · ~' + (days > 365 ? (days / 365).toFixed(1) + ' years' : Math.round(days) + ' days');
-      if (window.__btcUsd) $('marketCap').textContent = compact(supply * window.__btcUsd);
+      if (window.__btcUsd) setMarketCap(supply * window.__btcUsd);
     }).catch(function () {});
 
     // Fees
@@ -1188,12 +1194,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('diffPct').textContent = d.progressPercent.toFixed(1) + '%';
       $('diffBlocks').textContent = num(d.remainingBlocks);
       $('diffDate').textContent = new Date(d.estimatedRetargetDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-    }).catch(function () {});
-
-    // Mempool
-    j(MP + '/mempool').then(function (m) {
-      $('mempoolCount').textContent = compact(m.count);
-      $('mempoolSize').textContent = (m.vsize / 1e6).toFixed(1) + ' vMB pending';
     }).catch(function () {});
 
     // Latest block
