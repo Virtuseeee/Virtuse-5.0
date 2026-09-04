@@ -1004,7 +1004,7 @@ Spojené království
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp })
+        body: JSON.stringify({ email: email, hp: hp, lang: 'cs' })
       }).then(function (res) {
         return res.json().then(function (data) { return { ok: res.ok, data: data }; });
       }).then(function (result) {
