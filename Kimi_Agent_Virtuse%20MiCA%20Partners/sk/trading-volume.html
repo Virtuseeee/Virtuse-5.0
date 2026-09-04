@@ -5,36 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<script src="../lang-detect.js"></script>
+<script src="lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Bitcoin dáta | Virtuse</title>
+<title>Objem obchodovania s Bitcoinom — Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-data.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/bitcoin-data.html">
-<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/bitcoin-data.html">
-<link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/bitcoin-data.html">
-<link rel="alternate" hreflang="ru" href="https://staging.virtuse.com/ru/bitcoin-data.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-data.html">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/trading-volume.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/trading-volume.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/trading-volume.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Bitcoin dáta | Virtuse">
-<meta property="og:description" content="Bitcoin sieťové metriky a trhové dáta v reálnom čase: cena, poplatky, hashrate, mempool a posledný blok, priamo zo siete. Bez potreby účtu.">
-<meta property="og:url" content="https://staging.virtuse.com/sk/bitcoin-data.html">
+<meta property="og:title" content="Objem obchodovania s Bitcoinom — Virtuse">
+<meta property="og:description" content="Denný objem obchodovania s Bitcoinom za posledných 12 mesiacov, naživo z CoinGecko — koľko kapitálu sa skutočne pohybuje, nielen koľko existuje.">
+<meta property="og:url" content="https://staging.virtuse.com/sk/trading-volume.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="sk_SK">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bitcoin dáta | Virtuse">
-<meta name="twitter:description" content="Bitcoin sieťové metriky a trhové dáta v reálnom čase: cena, poplatky, hashrate, mempool a posledný blok, priamo zo siete. Bez potreby účtu.">
+<meta name="twitter:title" content="Objem obchodovania s Bitcoinom — Virtuse">
+<meta name="twitter:description" content="Denný objem obchodovania s Bitcoinom za posledných 12 mesiacov, naživo z CoinGecko — koľko kapitálu sa skutočne pohybuje, nielen koľko existuje.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <style>
@@ -79,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* ===== HERO ===== */
 .hero {
-  padding: 80px 48px 48px;
+  padding: 80px 48px 36px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -94,14 +91,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   height: 600px;
   background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
   pointer-events: none;
-}
-
-.hero-top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
 }
 
 .hero h1 {
@@ -119,34 +108,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 680px;
-}
-
-.live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--green-bg);
-  border: 1px solid rgba(63, 185, 80, 0.35);
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 100px;
-  margin-bottom: 6px;
-  white-space: nowrap;
-}
-
-.live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
 }
 
 /* ===== SUB MENU ===== */
@@ -186,59 +147,114 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .subnav a.active { background: var(--btc-orange); color: #0d0902; }
 
-/* ===== PRICE CARD ===== */
-.price-section {
-  padding: 0 48px 40px;
+/* ===== STATUS ===== */
+.status-section {
+  padding: 0 48px 28px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.price-card {
-  background: linear-gradient(135deg, var(--dark-card) 0%, #20180d 100%);
-  border: 1px solid rgba(247, 147, 26, 0.3);
-  border-radius: 18px;
-  padding: 36px 40px;
+.status-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.price-label {
-  font-size: 13px;
+.status-left { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+
+.status-price-label {
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
 }
 
-.price-value {
-  font-size: 52px;
+.status-price {
+  font-size: 34px;
   font-weight: 900;
-  letter-spacing: -0.02em;
   color: var(--btc-orange);
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
-.price-sub {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 10px;
+.band-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 12px 22px;
+  border-radius: 100px;
+  color: #0d0902;
 }
 
-.price-sub b { color: var(--text); font-weight: 600; }
+.status-note { font-size: 12px; color: var(--text-dim); max-width: 300px; line-height: 1.5; }
 
-.price-updated {
-  text-align: right;
+/* ===== CHART ===== */
+.chart-section {
+  padding: 0 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chart-panel {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+}
+
+.chart-panel h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-panel h3 .ico { color: var(--btc-orange); }
+
+.chart-wrap { position: relative; }
+
+canvas { width: 100%; height: 460px; display: block; cursor: crosshair; }
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(13, 20, 33, 0.95);
+  border: 1px solid var(--border-hover);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.6;
+  display: none;
+  z-index: 5;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+}
+
+.tooltip b { color: var(--btc-orange); }
+
+.chart-note {
   font-size: 12px;
   color: var(--text-dim);
+  margin-top: 16px;
+  line-height: 1.6;
 }
 
-/* ===== STAT GRID ===== */
-.stats {
-  padding: 0 48px 56px;
+/* ===== LEGEND ===== */
+.legend-section {
+  padding: 0 48px var(--section-spacing);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -249,141 +265,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.stat-box {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  transition: border-color 0.2s;
-}
-
-.stat-box:hover { border-color: var(--border-hover); }
-
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 10px;
-}
-
-.stat-value {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-
-.stat-value.orange { color: var(--btc-orange); }
-
-.stat-sub {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-top: 8px;
-}
-
-/* ===== WIDE CARDS ===== */
-.wide-section {
-  padding: 0 48px var(--section-spacing);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.wide-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.wide-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  transition: border-color 0.2s;
-}
-
-.wide-card:hover { border-color: var(--border-hover); }
-
-.wide-card h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 18px;
+.legend-grid {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.legend-item {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-}
-
-.wide-card h3 .ico { color: var(--btc-orange); }
-
-.progress-track {
-  height: 8px;
-  background: var(--dark);
+  gap: 9px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
   border-radius: 100px;
-  overflow: hidden;
-  margin: 14px 0 10px;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 100px;
-  transition: width 0.8s ease;
-}
-
-.kv-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 8px 16px;
   font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
-.kv-row:last-child { border-bottom: none; }
+.legend-swatch { width: 14px; height: 14px; border-radius: 4px; }
 
-.kv-row .k { color: var(--text-muted); }
-.kv-row .v { color: var(--text); font-weight: 600; }
-.kv-row .v.orange { color: var(--btc-orange); }
-.kv-row .v.green { color: var(--green); }
-.kv-row .v.red { color: var(--red); }
-
-.big-metric {
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--btc-orange);
-  letter-spacing: -0.01em;
-  margin-bottom: 4px;
-}
-
-.big-metric-sub {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-}
-
-.sources-note {
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-top: 40px;
-}
-
-.sources-note a { color: var(--text-muted); text-decoration: none; }
-.sources-note a:hover { color: var(--btc-orange); }
-
-/* ===== NEWSLETTER ===== */
+/* ===== NEWSLETTER / FOOTER ===== */
 .newsletter {
   background: var(--dark-lighter);
   border-top: 1px solid var(--border);
@@ -392,7 +298,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
-
 .newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
 
 .newsletter-form {
@@ -433,13 +338,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
-/* ===== FOOTER ===== */
-.footer-main {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
-  padding: 60px 48px 30px;
-}
-
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -453,12 +351,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .footer-logo img { height: 80px; width: auto; opacity: 0.9; transition: opacity 0.2s; }
 .footer-logo img:hover { opacity: 1; }
 
-.footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
-}
+.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
 
 .footer-col a {
   display: block;
@@ -474,39 +367,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .footer-bottom p { font-size: 13px; color: var(--text-dim); }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .stat-grid { grid-template-columns: repeat(2, 1fr); }
-  .wide-grid { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 768px) {
   .nav { padding: 16px 24px; }
   .nav-links { display: none; }
-  .hero { padding: 60px 24px 36px; }
+  .hero { padding: 60px 24px 28px; }
   .hero h1 { font-size: 36px; }
-  .price-section, .stats, .wide-section { padding-left: 24px; padding-right: 24px; }
-  .price-card { padding: 28px 24px; }
-  .price-value { font-size: 40px; }
-  .stat-grid { grid-template-columns: 1fr; }
-  .newsletter { padding: 60px 24px; }
-  .newsletter h2 { font-size: 28px; }
-  .newsletter-form { flex-direction: column; }
-  .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; }
+  .subnav-wrap, .status-section, .chart-section, .legend-section { padding-left: 24px; padding-right: 24px; }
 
-  /* .subnav's border-radius:100px assumes one row; wrapped onto several
-     lines it turns the whole pill into an oversized rounded blob and the
-     first/last tags poke outside that curve. Scroll horizontally instead
-     of wrapping, so it always stays a single true pill. */
   .subnav-wrap {
-    padding-left: 24px;
-    padding-right: 24px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .subnav-wrap::-webkit-scrollbar { display: none; }
   .subnav { flex-wrap: nowrap; }
+
+  canvas { height: 320px; }
+  .status-price { font-size: 28px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -638,7 +520,6 @@ a.nav-logo, .nav-logo {
   .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
   .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
   .nav-links li:nth-child(10) { transition-delay: 0.31s; }
-  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
 
   .nav-links a {
     display: flex;
@@ -721,13 +602,6 @@ a.nav-logo, .nav-logo {
   }
 
   .nav-links-cta svg { width: 16px; height: 16px; }
-
-  .nav-links-tagline {
-    margin-top: 16px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-dim, #484f58);
-  }
 
   body.nav-open { overflow: hidden; }
 }
@@ -840,11 +714,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začať<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
-        <a href="../bitcoin-data.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="bitcoin-data.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="../uk/bitcoin-data.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/bitcoin-data.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/bitcoin-data.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../trading-volume.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="trading-volume.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
       </div>
     </li>
   </ul>
@@ -855,11 +726,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="lang-menu-panel" id="langMenuPanel" role="menu">
-        <a href="../bitcoin-data.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="bitcoin-data.html" class="lang-opt active" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="../uk/bitcoin-data.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/bitcoin-data.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/bitcoin-data.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../trading-volume.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="trading-volume.html" class="lang-opt active" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
       </div>
     </div>
     <button class="nav-cta">Začať</button>
@@ -890,130 +758,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
-
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-top">
-    <div>
-      <h1>Bitcoin <span class="highlight">dáta</span></h1>
-      <p class="hero-desc">Sieťové metriky a trhové dáta Bitcoinu v reálnom čase: cena, poplatky, hashrate, mempool a posledný blok, priamo zo siete. Bez potreby účtu, aktualizované každú minútu.</p>
-    </div>
-    <div class="live-badge"><span class="live-dot"></span> Naživo · <span id="lastUpdated">načítava sa…</span></div>
-  </div>
+  <h1>Objem obchodovania <span class="highlight">s Bitcoinom</span></h1>
+  <p class="hero-desc">24-hodinový objem obchodovania s Bitcoinom naprieč sledovanými burzami. Objem rastie pri prudkých rastoch aj prudkých poklesoch, meria koľko kapitálu sa reálne pohybuje, nie ktorým smerom smeruje presvedčenie trhu.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
 <div class="subnav-wrap">
   <nav class="subnav" aria-label="Stránky Bitcoin dát">
-    <a href="bitcoin-data.html" class="active">&#9670; Dashboard</a>
+    <a href="bitcoin-data.html">&#9670; Dashboard</a>
     <a href="retirement-calculator.html">&#9670; Dôchodková kalkulačka</a>
     <a href="btc-dominance.html">&#9670; Dominancia BTC</a>
     <a href="ma-200w.html">&#9670; 200 WMA</a>
     <a href="root-cycles.html">&#9670; Dúhový graf</a>
-    <a href="trading-volume.html">&#9670; Objem obchodovania</a>
+    <a href="trading-volume.html" class="active">&#9670; Objem obchodovania</a>
     <a href="fear-greed.html">&#9670; Strach a chamtivosť</a>
   </nav>
 </div>
 
-<!-- ===== PRICE ===== -->
-<section class="price-section">
-  <div class="price-card">
-    <div>
-      <div class="price-label">BTC / USD</div>
-      <div class="price-value" id="priceUsd">—</div>
-      <div class="price-sub">EUR: <b id="priceEur">—</b> &nbsp;·&nbsp; Satoshi za $1: <b id="satsPerUsd">—</b></div>
+<!-- ===== STATUS ===== -->
+<section class="status-section">
+  <div class="status-card">
+    <div class="status-left">
+      <div>
+        <div class="status-price-label">24h objem dnes</div>
+        <div class="status-price" id="statusPrice">—</div>
+      </div>
+      <div class="band-chip" id="bandChip" style="background: var(--border);">Načítava sa…</div>
     </div>
-    <div class="price-updated">
-      Trhová kapitalizácia <div class="big-metric" id="marketCap" style="font-size:26px">—</div>
+    <div class="status-note">Naživo z CoinGecko. Štítok ukazuje zmenu za zobrazené obdobie.</div>
+  </div>
+</section>
+
+<!-- ===== CHART ===== -->
+<section class="chart-section">
+  <div class="chart-panel">
+    <h3><span class="ico">&#9670;</span> 24h objem obchodovania (posledných 12 mesiacov)</h3>
+    <div class="chart-wrap">
+      <canvas id="chart" height="460"></canvas>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+    <div class="chart-note">
+      Denný 24-hodinový objem obchodovania z CoinGecko za posledných 365 dní. Objem odzrkadľuje aktivitu hlásenú burzami a na niektorých platformách ho môže skresľovať fiktívne obchodovanie, absolútne hodnoty preto berte s rezervou a sledujte skôr trend. Nejde o investičné odporúčanie.
     </div>
   </div>
 </section>
 
-<!-- ===== NETWORK STATS ===== -->
-<section class="stats">
-  <div class="sec-label">Stav siete</div>
-  <div class="stat-grid">
-    <div class="stat-box">
-      <div class="stat-label">Výška bloku</div>
-      <div class="stat-value orange" id="blockHeight">—</div>
-      <div class="stat-sub">Vyťažených blokov od genesis bloku</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Transakčný poplatok (rýchly)</div>
-      <div class="stat-value" id="feeFast">—</div>
-      <div class="stat-sub" id="feeSlow">30 min: — · 1 h: —</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Hashrate</div>
-      <div class="stat-value" id="hashRate">—</div>
-      <div class="stat-sub">3-dňový priemer</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Náročnosť siete</div>
-      <div class="stat-value" id="difficulty">—</div>
-      <div class="stat-sub">Aktuálna epocha</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Obiehajúca ponuka</div>
-      <div class="stat-value orange" id="supply">—</div>
-      <div class="stat-sub">z 21 000 000 BTC, navždy</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Vydaná ponuka</div>
-      <div class="stat-value" id="supplyPct">—</div>
-      <div class="stat-sub">Percento vyťaženej maximálnej ponuky</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Transakcie v mempoole</div>
-      <div class="stat-value" id="mempoolCount">—</div>
-      <div class="stat-sub" id="mempoolSize">— vMB čaká</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">Ďalší halving</div>
-      <div class="stat-value" id="halving">—</div>
-      <div class="stat-sub" id="halvingSub">zostávajúcich blokov</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DETAIL CARDS ===== -->
-<section class="wide-section">
-  <div class="sec-label">Hlbšie signály</div>
-  <div class="wide-grid">
-    <div class="wide-card">
-      <h3><span class="ico">◆</span> Úprava náročnosti</h3>
-      <div class="big-metric" id="diffChange">—</div>
-      <div class="big-metric-sub">odhadovaná ďalšia úprava</div>
-      <div class="progress-track"><div class="progress-fill" id="diffProgress"></div></div>
-      <div class="kv-row"><span class="k">Priebeh epochy</span><span class="v" id="diffPct">—</span></div>
-      <div class="kv-row"><span class="k">Zostávajúce bloky</span><span class="v" id="diffBlocks">—</span></div>
-      <div class="kv-row"><span class="k">Odhadovaný dátum</span><span class="v" id="diffDate">—</span></div>
-    </div>
-    <div class="wide-card">
-      <h3><span class="ico">◆</span> Posledný blok</h3>
-      <div class="big-metric" id="lbHeight">—</div>
-      <div class="big-metric-sub" id="lbAgo">—</div>
-      <div class="kv-row"><span class="k">Transakcie</span><span class="v" id="lbTx">—</span></div>
-      <div class="kv-row"><span class="k">Veľkosť</span><span class="v" id="lbSize">—</span></div>
-      <div class="kv-row"><span class="k">Ťažiar</span><span class="v orange" id="lbMiner">—</span></div>
-    </div>
-    <div class="wide-card">
-      <h3><span class="ico">◆</span> Prostredie poplatkov</h3>
-      <div class="big-metric" id="feeBig">—</div>
-      <div class="big-metric-sub">najrýchlejšie potvrdenie (sat/vB)</div>
-      <div class="kv-row"><span class="k">~30 minút</span><span class="v" id="fee30">—</span></div>
-      <div class="kv-row"><span class="k">~1 hodina</span><span class="v" id="fee60">—</span></div>
-      <div class="kv-row"><span class="k">Minimálny relay</span><span class="v" id="feeMin">—</span></div>
-    </div>
-  </div>
-  <div class="sources-note">
-    Aktualizuje sa každú minútu · Zdroje: <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>
-  </div>
+<!-- ===== LEGEND ===== -->
+<section class="legend-section">
+  <div class="sec-label">Fakty za obdobie</div>
+  <div class="legend-grid" id="legend"></div>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
-  <h2>Opravíme peniaze, opravíme svet</h2>
+  <h2>Opravte peniaze, opravte svet</h2>
   <p>Pridajte sa k 18 000+ investorom, ktorí sú o krok vpred. Virtuse Report každý týždeň priamo do vašej schránky.</p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Zadajte svoj email" required>
@@ -1039,7 +839,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp, lang: 'sk' })
+        body: JSON.stringify({ email: email, hp: hp })
       }).then(function (res) {
         return res.json().then(function (data) { return { ok: res.ok, data: data }; });
       }).then(function (result) {
@@ -1076,7 +876,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Informácie</h4>
+        <h4>Právne</h4>
         <a href="terms-and-conditions.html">Obchodné podmienky</a>
         <a href="privacy-policy.html">Ochrana osobných údajov</a>
         <a href="aml-compliance.html">AML a Compliance</a>
@@ -1091,181 +891,159 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function () {
   'use strict';
-  // Live Bitcoin dashboard — same public data sources as the old
-  // virtuse.com/dashboard: mempool.space REST API + CoinGecko.
-  var MP = 'https://mempool.space/api';
-  var HALVING_INTERVAL = 210000;
 
-  function $(id) { return document.getElementById(id); }
-  function num(n, d) {
-    if (n == null || isNaN(n)) return '—';
-    return n.toLocaleString('sk-SK', { maximumFractionDigits: d || 0 });
+  var canvas = document.getElementById('chart');
+  var tooltip = document.getElementById('tooltip');
+  var series = [];
+  var view = null;
+
+  function fmtUsd(v) {
+    if (v >= 1e12) return '$' + (v / 1e12).toFixed(2) + 'T';
+    if (v >= 1e9) return '$' + (v / 1e9).toFixed(2) + 'B';
+    if (v >= 1e6) return '$' + (v / 1e6).toFixed(2) + 'M';
+    return '$' + v.toFixed(0);
   }
-  function usd(n) {
-    if (!n || isNaN(n)) return '—';
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
-  }
-  function eur(n) {
-    if (!n || isNaN(n)) return '—';
-    return new Intl.NumberFormat('sk-SK', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
-  }
-  function compact(n) {
-    if (!n || isNaN(n)) return '—';
-    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 }).format(n);
-  }
-  function timeAgo(ts) {
-    var s = Math.floor(Date.now() / 1000) - ts;
-    if (s < 60) return 'pred ' + s + ' s';
-    if (s < 3600) return 'pred ' + Math.floor(s / 60) + ' min';
-    return 'pred ' + Math.floor(s / 3600) + ' h';
-  }
-  function supplyAtHeight(h) {
-    var supply = 0, subsidy = 50, remaining = h;
-    while (remaining > 0) {
-      var blocks = Math.min(remaining, HALVING_INTERVAL);
-      supply += blocks * subsidy;
-      remaining -= blocks;
-      subsidy /= 2;
+
+  function draw() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth;
+    var hpx = parseInt(getComputedStyle(canvas).height, 10);
+    canvas.width = w * dpr; canvas.height = hpx * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, hpx);
+    if (!series.length) return;
+
+    var padL = 62, padR = 14, padT = 14, padB = 28;
+    var t0 = series[0].ts, t1 = series[series.length - 1].ts;
+    var vMin = Math.min.apply(null, series.map(function (p) { return p.v; }));
+    var vMax = Math.max.apply(null, series.map(function (p) { return p.v; }));
+    var vPad = (vMax - vMin) * 0.08 || vMax * 0.05;
+    vMin -= vPad; vMax += vPad;
+
+    function x(ts) { return padL + (ts - t0) / (t1 - t0) * (w - padL - padR); }
+    function y(v) { return padT + (1 - (v - vMin) / (vMax - vMin)) * (hpx - padT - padB); }
+    view = { x: x, y: y, w: w, h: hpx };
+
+    var css = getComputedStyle(document.documentElement);
+    var cOrange = css.getPropertyValue('--btc-orange').trim();
+    var cDim = css.getPropertyValue('--text-dim').trim();
+
+    ctx.font = '10px Inter, sans-serif';
+    ctx.lineWidth = 1;
+    for (var g = 0; g <= 4; g++) {
+      var gv = vMin + (vMax - vMin) * (g / 4);
+      var yy = y(gv);
+      ctx.strokeStyle = 'rgba(230, 237, 243, 0.07)';
+      ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(w - padR, yy); ctx.stroke();
+      ctx.fillStyle = cDim;
+      ctx.fillText(fmtUsd(gv), 8, yy + 3);
     }
-    return supply;
-  }
-
-  function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
-
-  function refresh() {
-    // Price (mempool.space; USD+EUR in one call)
-    j(MP + '/v1/prices').then(function (p) {
-      $('priceUsd').textContent = usd(p.USD);
-      $('priceEur').textContent = eur(p.EUR);
-      $('satsPerUsd').textContent = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
-      window.__btcUsd = p.USD;
-      if (window.__supply && p.USD) $('marketCap').textContent = compact(window.__supply * p.USD);
-    }).catch(function () {});
-
-    // Market cap fallback via CoinGecko
-    j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true').then(function (g) {
-      if (g.bitcoin && g.bitcoin.usd_market_cap) $('marketCap').textContent = compact(g.bitcoin.usd_market_cap);
-    }).catch(function () {});
-
-    // Tip height + supply + halving
-    j(MP + '/blocks/tip/height').then(function (h) {
-      $('blockHeight').textContent = num(h);
-      var supply = supplyAtHeight(h);
-      window.__supply = supply;
-      $('supply').textContent = compact(supply);
-      $('supplyPct').textContent = (supply / 21000000 * 100).toFixed(2) + '%';
-      var nextHalving = (Math.floor(h / HALVING_INTERVAL) + 1) * HALVING_INTERVAL;
-      var blocksLeft = nextHalving - h;
-      $('halving').textContent = num(blocksLeft);
-      var days = blocksLeft * 10 / 60 / 24;
-      $('halvingSub').textContent = 'blokov · ~' + (days > 365 ? (days / 365).toFixed(1) + ' rokov' : Math.round(days) + ' dní');
-      if (window.__btcUsd) $('marketCap').textContent = compact(supply * window.__btcUsd);
-    }).catch(function () {});
-
-    // Fees
-    j(MP + '/v1/fees/recommended').then(function (f) {
-      $('feeFast').textContent = f.fastestFee + ' sat/vB';
-      $('feeSlow').textContent = '30 min: ' + f.halfHourFee + ' · 1 h: ' + f.hourFee + ' sat/vB';
-      $('feeBig').textContent = f.fastestFee;
-      $('fee30').textContent = f.halfHourFee + ' sat/vB';
-      $('fee60').textContent = f.hourFee + ' sat/vB';
-      $('feeMin').textContent = f.minimumFee + ' sat/vB';
-    }).catch(function () {});
-
-    // Hashrate + difficulty
-    j(MP + '/v1/mining/hashrate/3d').then(function (m) {
-      $('hashRate').textContent = compact(m.currentHashrate / 1e18) + ' EH/s';
-      $('difficulty').textContent = compact(m.currentDifficulty / 1e12) + ' T';
-    }).catch(function () {});
-
-    // Difficulty adjustment
-    j(MP + '/v1/difficulty-adjustment').then(function (d) {
-      var chg = d.difficultyChange;
-      $('diffChange').textContent = (chg > 0 ? '+' : '') + chg.toFixed(2) + '%';
-      $('diffChange').style.color = chg >= 0 ? 'var(--green)' : 'var(--red)';
-      $('diffProgress').style.width = Math.min(100, d.progressPercent).toFixed(1) + '%';
-      $('diffPct').textContent = d.progressPercent.toFixed(1) + '%';
-      $('diffBlocks').textContent = num(d.remainingBlocks);
-      $('diffDate').textContent = new Date(d.estimatedRetargetDate).toLocaleDateString('sk-SK', { day: 'numeric', month: 'short', year: 'numeric' });
-    }).catch(function () {});
-
-    // Mempool
-    j(MP + '/mempool').then(function (m) {
-      $('mempoolCount').textContent = compact(m.count);
-      $('mempoolSize').textContent = (m.vsize / 1e6).toFixed(1) + ' vMB čaká';
-    }).catch(function () {});
-
-    // Latest block
-    j(MP + '/v1/blocks').then(function (blocks) {
-      var b = blocks[0];
-      if (!b) return;
-      $('lbHeight').textContent = num(b.height);
-      $('lbAgo').textContent = 'vyťažený ' + timeAgo(b.timestamp);
-      $('lbTx').textContent = num(b.tx_count);
-      $('lbSize').textContent = (b.size / 1e6).toFixed(2) + ' MB';
-      $('lbMiner').textContent = (b.extras && b.extras.pool && b.extras.pool.name) || 'Neznámy';
-    }).catch(function () {});
-
-    $('lastUpdated').textContent = new Date().toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
-  }
-
-  refresh();
-  setInterval(refresh, 60000);
-})();
-</script>
-
-
-
-<!-- ===== STAT COUNTERS (anime.js) ===== -->
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
-  var counters = [];
-
-  candidates.forEach(function (el) {
-    var raw = el.textContent.trim();
-    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
-    if (!m) return;
-    counters.push({
-      el: el,
-      target: parseInt(m[1].replace(/,/g, ''), 10),
-      suffix: m[2] || ''
-    });
-  });
-  if (!counters.length) return;
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var c = null;
-      for (var i = 0; i < counters.length; i++) {
-        if (counters[i].el === entry.target) { c = counters[i]; break; }
+    var monthsShown = {};
+    series.forEach(function (pt) {
+      var d = new Date(pt.ts);
+      var key = d.getUTCFullYear() + '-' + d.getUTCMonth();
+      if (d.getUTCDate() <= 3 && !monthsShown[key]) {
+        monthsShown[key] = true;
+        ctx.fillStyle = cDim;
+        ctx.fillText(d.toLocaleDateString('sk-SK', { month: 'short' }), x(pt.ts) - 10, hpx - 8);
       }
-      if (!c) return;
-
-      var obj = { val: 0 };
-      animate(obj, {
-        val: c.target,
-        duration: 1600,
-        ease: 'outCubic',
-        onUpdate: function () {
-          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
-        },
-        onComplete: function () {
-          c.el.textContent = c.target.toLocaleString() + c.suffix;
-        }
-      });
-      io.unobserve(entry.target);
     });
-  }, { threshold: 0.4 });
 
-  counters.forEach(function (c) { io.observe(c.el); });
+    ctx.beginPath();
+    series.forEach(function (pt, i) {
+      if (i === 0) ctx.moveTo(x(pt.ts), y(pt.v)); else ctx.lineTo(x(pt.ts), y(pt.v));
+    });
+    ctx.lineTo(x(series[series.length - 1].ts), y(vMin));
+    ctx.lineTo(x(series[0].ts), y(vMin));
+    ctx.closePath();
+    var grad = ctx.createLinearGradient(0, padT, 0, hpx - padB);
+    grad.addColorStop(0, 'rgba(247, 147, 26, 0.30)');
+    grad.addColorStop(1, 'rgba(247, 147, 26, 0.02)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    ctx.beginPath();
+    series.forEach(function (pt, i) {
+      if (i === 0) ctx.moveTo(x(pt.ts), y(pt.v)); else ctx.lineTo(x(pt.ts), y(pt.v));
+    });
+    ctx.strokeStyle = cOrange;
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    var last = series[series.length - 1];
+    ctx.beginPath();
+    ctx.arc(x(last.ts), y(last.v), 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = css.getPropertyValue('--dark').trim();
+    ctx.stroke();
+  }
+
+  canvas.addEventListener('mousemove', function (ev) {
+    if (!view || !series.length) return;
+    var rect = canvas.getBoundingClientRect();
+    var mx = ev.clientX - rect.left;
+    var best = null, bestD = 1e18;
+    series.forEach(function (pt) {
+      var d = Math.abs(view.x(pt.ts) - mx);
+      if (d < bestD) { bestD = d; best = pt; }
+    });
+    if (!best || bestD > 40) { tooltip.style.display = 'none'; return; }
+    var dt = new Date(best.ts);
+    tooltip.innerHTML = dt.toLocaleDateString('sk-SK', { day: 'numeric', month: 'short', year: 'numeric' }) +
+      '<br><b>' + fmtUsd(best.v) + '</b>';
+    tooltip.style.display = 'block';
+    var tx = view.x(best.ts) + 14;
+    if (tx > view.w - 160) tx = view.x(best.ts) - 150;
+    tooltip.style.left = tx + 'px';
+    tooltip.style.top = Math.max(6, view.y(best.v) - 48) + 'px';
+  });
+  canvas.addEventListener('mouseleave', function () { tooltip.style.display = 'none'; });
+
+  fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) {
+      if (!d.total_volumes || !d.total_volumes.length) throw new Error('no data');
+      series = d.total_volumes.map(function (p) { return { ts: p[0], v: p[1] }; });
+
+      var current = series[series.length - 1].v;
+      var yearAgo = series[0].v;
+      var pctChange = ((current - yearAgo) / yearAgo) * 100;
+      var ath = series.reduce(function (m, p) { return p.v > m.v ? p : m; }, series[0]);
+      var low = series.reduce(function (m, p) { return p.v < m.v ? p : m; }, series[0]);
+
+      document.getElementById('statusPrice').textContent = fmtUsd(current);
+      var chip = document.getElementById('bandChip');
+      chip.textContent = (pctChange >= 0 ? '+' : '') + pctChange.toFixed(1) + '% oproti minulému roku';
+      chip.style.background = pctChange >= 0 ? '#3fb950' : '#f85149';
+
+      var legend = document.getElementById('legend');
+      [
+        { label: 'Najvyšší jednodňový objem: ' + fmtUsd(ath.v) + ' (' + new Date(ath.ts).toLocaleDateString('sk-SK', { day: 'numeric', month: 'short', year: 'numeric' }) + ')', color: '#f7931a' },
+        { label: 'Najnižší jednodňový objem: ' + fmtUsd(low.v) + ' (' + new Date(low.ts).toLocaleDateString('sk-SK', { day: 'numeric', month: 'short', year: 'numeric' }) + ')', color: '#5FAEDE' },
+        { label: 'Posledných 24h: ' + fmtUsd(current), color: '#3fb950' }
+      ].forEach(function (b) {
+        var item = document.createElement('span');
+        item.className = 'legend-item';
+        var sw = document.createElement('span');
+        sw.className = 'legend-swatch';
+        sw.style.background = b.color;
+        item.appendChild(sw);
+        item.appendChild(document.createTextNode(b.label));
+        legend.appendChild(item);
+      });
+
+      draw();
+    })
+    .catch(function () {
+      document.getElementById('statusPrice').textContent = 'Unavailable';
+      document.getElementById('bandChip').textContent = 'Error';
+      document.getElementById('bandChip').style.background = 'var(--border)';
+    });
+
+  window.addEventListener('resize', draw);
 })();
 </script>
 
