@@ -1,29 +1,34 @@
 /*
  * Virtuse browser-language auto-redirect.
  *
- * If a visitor's browser reports Slovak, Ukrainian, or Czech as its
- * preferred language and they land on an English page that has a matching
- * translated counterpart, send them straight to that page. A manual choice
- * via the language switcher (any element with class "lang-opt" and a "lang"
- * attribute) is remembered in localStorage and always wins after that — the
- * auto-redirect never fires again for that visitor once they've picked a
- * language themselves.
+ * If a visitor's browser reports Slovak, Ukrainian, Czech, or Russian as
+ * its preferred language and they land on an English page that has a
+ * matching translated counterpart, send them straight to that page. A
+ * manual choice via the language switcher (any element with class
+ * "lang-opt" and a "lang" attribute) is remembered in localStorage and
+ * always wins after that — the auto-redirect never fires again for that
+ * visitor once they've picked a language themselves.
  *
  * Include as the FIRST <script> in <head>, right after the CSP/referrer
  * meta tags and before the GTM snippet, so the redirect (if any) happens
  * before the page paints. Root pages: <script src="lang-detect.js">.
- * Pages under sk//uk//cs/: <script src="../lang-detect.js">.
+ * Pages under sk//uk//cs//ru/: <script src="../lang-detect.js">.
  *
  * Update TRANSLATED below whenever a new page gets a translated
- * counterpart in ANY of the three languages — this is easy to forget when
+ * counterpart in ANY of the four languages — this is easy to forget when
  * scaffolding a page (root-cycles.html shipped with sk/+uk/ siblings and
  * sitemap/hreflang entries but wasn't added here until a later pass). See
  * i18n-tools/README.md.
  *
+ * Russian rollout targets EU-resident Russian speakers specifically, not
+ * the Russian Federation market -- doesn't change any redirect logic
+ * here, browser locale 'ru' is 'ru' regardless of the visitor's country.
+ *
  * blog.html is a special case, handled separately per language below:
- * sk -> blog-sk.html (root-level, suffix pattern), uk -> uk/blog.html
- * (exists, UI-only shell over the English WP feed), cs -> no cs/blog.html
- * exists, so Czech browsers landing on blog.html are left alone.
+ * sk -> blog-sk.html (root-level, suffix pattern), uk -> uk/blog.html,
+ * ru -> ru/blog.html (both UI-only shells over the English WP feed);
+ * cs -> no cs/blog.html exists yet, so Czech browsers landing on
+ * blog.html are left alone.
  */
 (function () {
   'use strict';
@@ -48,11 +53,12 @@
     if (browserLang.indexOf('sk') === 0) targetLang = 'sk';
     else if (browserLang.indexOf('uk') === 0) targetLang = 'uk';
     else if (browserLang.indexOf('cs') === 0) targetLang = 'cs';
-    if (!targetLang) return; // not a Slovak/Ukrainian/Czech-preferring browser
+    else if (browserLang.indexOf('ru') === 0) targetLang = 'ru';
+    if (!targetLang) return; // not a Slovak/Ukrainian/Czech/Russian-preferring browser
 
     var path = window.location.pathname;
     // Already on any translated section? No-op regardless of which one.
-    if (path.indexOf('/sk/') !== -1 || path.indexOf('/uk/') !== -1 || path.indexOf('/cs/') !== -1) return;
+    if (path.indexOf('/sk/') !== -1 || path.indexOf('/uk/') !== -1 || path.indexOf('/cs/') !== -1 || path.indexOf('/ru/') !== -1) return;
 
     var TRANSLATED = [
       'index.html', 'about.html', 'buy-bitcoin.html', 'mining.html', 'lending.html',
@@ -68,6 +74,7 @@
     if (file === 'blog.html') {
       if (targetLang === 'sk') target = 'blog-sk.html'; // lives at root, not under sk/
       else if (targetLang === 'uk') target = 'uk/blog.html';
+      else if (targetLang === 'ru') target = 'ru/blog.html';
       // cs: no cs/blog.html yet — target stays null, page is left alone.
     } else if (file === '' || file === 'index.html' || TRANSLATED.indexOf(file) !== -1) {
       var name = (file === '' ? 'index.html' : file);

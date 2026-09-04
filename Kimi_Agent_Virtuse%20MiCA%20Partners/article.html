@@ -602,6 +602,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         errText: 'Tento článok mohol byť presunutý alebo stiahnutý. Prezrite si celý archív.',
         errCta: 'Späť na blog'
       }
+    },
+    // WPML's Russian feed only answers on the SHARED /wp-json/ path with an
+    // explicit lang=ru query param -- there's no working /ru/wp-json/...
+    // path alias the way sk has one. See fetch() calls below: they append
+    // '&lang=' + L.lang whenever a language sets that field.
+    ru: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts',
+      category: 57,
+      lang: 'ru',
+      listPage: 'ru/blog.html',
+      suffix: '&lang=ru',
+      months: ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+      ui: {
+        backTop: 'Все статьи',
+        backBottom: 'Назад ко всем статьям',
+        authorRole: 'Основатель и CEO, Virtuse',
+        authorBio: 'Основатель и CEO Virtuse. Пишет о Биткоине, макроэкономике и будущем денег.',
+        share: 'Поделиться',
+        copied: 'Ссылка скопирована',
+        readTime: ' мин чтения',
+        moreLabel: 'Продолжить чтение',
+        errTitle: 'Статья не найдена',
+        errText: 'Возможно, эта статья была перемещена или снята с публикации. Посмотрите полный архив.',
+        errCta: 'Назад в блог'
+      }
     }
   };
   var langCode = new URLSearchParams(location.search).get('lang');
@@ -816,12 +841,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var slug = new URLSearchParams(location.search).get('slug');
   if (!slug) { showError(); return; }
 
-  fetch(API + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia')
+  // WPML's ru feed only resolves through this shared endpoint with an
+  // explicit lang param (no working /ru/wp-json/... path alias like sk has)
+  // -- append it whenever the active language sets L.lang.
+  var LANG_PARAM = L.lang ? '&lang=' + L.lang : '';
+
+  fetch(API + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia' + LANG_PARAM)
     .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
     .then(function (posts) {
       if (!posts.length) { showError(); return; }
       renderArticle(posts[0]);
-      return fetch(API + '?categories=' + CATEGORY + '&per_page=4&_embed=wp:featuredmedia&orderby=date&order=desc')
+      return fetch(API + '?categories=' + CATEGORY + '&per_page=4&_embed=wp:featuredmedia&orderby=date&order=desc' + LANG_PARAM)
         .then(function (r) { return r.ok ? r.json() : []; })
         .then(function (recent) { renderMore(recent, posts[0].id); });
     })
