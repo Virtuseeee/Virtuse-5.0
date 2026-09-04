@@ -11,26 +11,26 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Bitcoin Market Cap — Virtuse</title>
+<title>Bitcoin Mempool Transactions — Virtuse</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/market-cap.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/market-cap.html">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/mempool-transactions.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/mempool-transactions.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Bitcoin Market Cap — Virtuse">
-<meta property="og:description" content="Bitcoin's total market capitalization over the past year, live from CoinGecko — price multiplied by circulating supply.">
-<meta property="og:url" content="https://staging.virtuse.com/market-cap.html">
+<meta property="og:title" content="Bitcoin Mempool Transactions — Virtuse">
+<meta property="og:description" content="Bitcoin's mempool right now: how many transactions are waiting, and what the next several blocks will look like by fee tier, live from mempool.space.">
+<meta property="og:url" content="https://staging.virtuse.com/mempool-transactions.html">
 <meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bitcoin Market Cap — Virtuse">
-<meta name="twitter:description" content="Bitcoin's total market capitalization over the past year, live from CoinGecko — price multiplied by circulating supply.">
+<meta name="twitter:title" content="Bitcoin Mempool Transactions — Virtuse">
+<meta name="twitter:description" content="Bitcoin's mempool right now: how many transactions are waiting, and what the next several blocks will look like by fee tier, live from mempool.space.">
 <meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -635,8 +635,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Bitcoin <span class="highlight">Market Cap</span></h1>
-  <p class="hero-desc">Bitcoin's total market capitalization: price multiplied by circulating supply. It's the clearest single number for how much capital the network actually holds, and the yardstick everything from "flippening" talk to gold comparisons gets measured against.</p>
+  <h1>Mempool <span class="highlight">Transactions</span></h1>
+  <p class="hero-desc">Unconfirmed transactions waiting to be mined, grouped into the next several blocks by fee rate. Higher fees get confirmed sooner; a crowded mempool means fees rise across the board. Not investment advice.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
@@ -647,7 +647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="btc-dominance.html">&#9670; BTC Dominance</a>
     <a href="ma-200w.html">&#9670; 200 WMA</a>
     <a href="root-cycles.html">&#9670; Rainbow Chart</a>
-    <a href="market-cap.html" class="active">&#9670; Market Cap</a>
+    <a href="mempool-transactions.html" class="active">&#9670; Mempool Transactions</a>
     <a href="trading-volume.html">&#9670; Trading Volume</a>
     <a href="fear-greed.html">&#9670; Fear &amp; Greed</a>
   </nav>
@@ -658,7 +658,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="status-card">
     <div class="status-left">
       <div>
-        <div class="status-price-label">Market Cap Today</div>
+        <div class="status-price-label">Pending Transactions</div>
         <div class="status-price" id="statusPrice">—</div>
       </div>
       <div class="band-chip" id="bandChip" style="background: var(--border);">Loading…</div>
@@ -670,20 +670,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== CHART ===== -->
 <section class="chart-section">
   <div class="chart-panel">
-    <h3><span class="ico">&#9670;</span> Market Cap (past 12 months)</h3>
+    <h3><span class="ico">&#9670;</span> Next Blocks Queue (by fee rate)</h3>
     <div class="chart-wrap">
       <canvas id="chart" height="460"></canvas>
       <div class="tooltip" id="tooltip"></div>
     </div>
     <div class="chart-note">
-      Daily market capitalization from CoinGecko, past 365 days. Market cap is a simple product, not a measure of real capital inflow. It rises with price even if no new money enters the market. Not investment advice.
+      Live snapshot from mempool.space, refreshed every 30 seconds. Each block is sized by its share of pending weight; the fee shown is the median for that block. Blocks 1&ndash;2 confirm soonest.
     </div>
   </div>
 </section>
 
 <!-- ===== LEGEND ===== -->
 <section class="legend-section">
-  <div class="sec-label">Period Facts</div>
+  <div class="sec-label">Reading the Queue</div>
   <div class="legend-grid" id="legend"></div>
 </section>
 
@@ -770,14 +770,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var canvas = document.getElementById('chart');
   var tooltip = document.getElementById('tooltip');
-  var series = [];
+  var blocks = [];
   var view = null;
 
-  function fmtUsd(v) {
-    if (v >= 1e12) return '$' + (v / 1e12).toFixed(2) + 'T';
-    if (v >= 1e9) return '$' + (v / 1e9).toFixed(2) + 'B';
-    if (v >= 1e6) return '$' + (v / 1e6).toFixed(2) + 'M';
-    return '$' + v.toFixed(0);
+  function fmtBtc(sats) { return (sats / 1e8).toFixed(4) + ' BTC'; }
+
+  // Low fee -> muted blue-grey, high fee -> hot orange. Scaled by rank
+  // among the shown blocks (not an absolute sat/vB scale), since the
+  // useful signal here is "which of these blocks is busiest", not a
+  // fixed threshold.
+  function feeColor(rank, total) {
+    var t = total > 1 ? rank / (total - 1) : 0;
+    var from = [93, 118, 148], to = [247, 147, 26];
+    var r = Math.round(from[0] + (to[0] - from[0]) * t);
+    var g = Math.round(from[1] + (to[1] - from[1]) * t);
+    var b = Math.round(from[2] + (to[2] - from[2]) * t);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
   }
 
   function draw() {
@@ -788,138 +796,128 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, w, hpx);
-    if (!series.length) return;
+    if (!blocks.length) return;
 
-    var padL = 62, padR = 14, padT = 14, padB = 28;
-    var t0 = series[0].ts, t1 = series[series.length - 1].ts;
-    var vMin = Math.min.apply(null, series.map(function (p) { return p.v; }));
-    var vMax = Math.max.apply(null, series.map(function (p) { return p.v; }));
-    var vPad = (vMax - vMin) * 0.08 || vMax * 0.05;
-    vMin -= vPad; vMax += vPad;
-
-    function x(ts) { return padL + (ts - t0) / (t1 - t0) * (w - padL - padR); }
-    function y(v) { return padT + (1 - (v - vMin) / (vMax - vMin)) * (hpx - padT - padB); }
-    view = { x: x, y: y, w: w, h: hpx };
+    var padL = 14, padR = 14, padT = 40, padB = 40;
+    var gap = 6;
+    var totalW = w - padL - padR - gap * (blocks.length - 1);
+    var totalVsize = blocks.reduce(function (s, b) { return s + b.blockVSize; }, 0);
+    var barTop = padT, barH = hpx - padT - padB;
 
     var css = getComputedStyle(document.documentElement);
-    var cOrange = css.getPropertyValue('--btc-orange').trim();
     var cDim = css.getPropertyValue('--text-dim').trim();
+    var cText = css.getPropertyValue('--text').trim();
 
-    ctx.font = '10px Inter, sans-serif';
-    ctx.lineWidth = 1;
-    for (var g = 0; g <= 4; g++) {
-      var gv = vMin + (vMax - vMin) * (g / 4);
-      var yy = y(gv);
-      ctx.strokeStyle = 'rgba(230, 237, 243, 0.07)';
-      ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(w - padR, yy); ctx.stroke();
-      ctx.fillStyle = cDim;
-      ctx.fillText(fmtUsd(gv), 8, yy + 3);
-    }
-    var monthsShown = {};
-    series.forEach(function (pt) {
-      var d = new Date(pt.ts);
-      var key = d.getUTCFullYear() + '-' + d.getUTCMonth();
-      if (d.getUTCDate() <= 3 && !monthsShown[key]) {
-        monthsShown[key] = true;
-        ctx.fillStyle = cDim;
-        ctx.fillText(d.toLocaleDateString('en-GB', { month: 'short' }), x(pt.ts) - 10, hpx - 8);
+    ctx.font = '700 11px Inter, sans-serif';
+    ctx.fillStyle = cDim;
+    ctx.fillText('SOONEST', padL, 16);
+    ctx.textAlign = 'right';
+    ctx.fillText('LATEST', w - padR, 16);
+    ctx.textAlign = 'left';
+
+    var segs = [];
+    var cx = padL;
+    blocks.forEach(function (b, i) {
+      var segW = Math.max(6, (b.blockVSize / totalVsize) * totalW);
+      var color = feeColor(blocks.length - 1 - i, blocks.length);
+      ctx.fillStyle = color;
+      var r = 6;
+      ctx.beginPath();
+      ctx.moveTo(cx + r, barTop);
+      ctx.arcTo(cx + segW, barTop, cx + segW, barTop + barH, r);
+      ctx.arcTo(cx + segW, barTop + barH, cx, barTop + barH, r);
+      ctx.arcTo(cx, barTop + barH, cx, barTop, r);
+      ctx.arcTo(cx, barTop, cx + segW, barTop, r);
+      ctx.closePath();
+      ctx.fill();
+
+      if (segW > 46) {
+        ctx.fillStyle = 'rgba(13, 9, 2, 0.85)';
+        ctx.font = '800 13px Inter, sans-serif';
+        ctx.fillText('~' + Math.round(b.medianFee), cx + 10, barTop + barH / 2 + 5);
+        ctx.font = '600 9px Inter, sans-serif';
+        ctx.fillText('sat/vB', cx + 10, barTop + barH / 2 + 18);
       }
+
+      ctx.fillStyle = cDim;
+      ctx.font = '600 10px Inter, sans-serif';
+      ctx.fillText('#' + (i + 1), cx + 6, barTop + barH + 16);
+
+      segs.push({ x0: cx, x1: cx + segW, block: b, index: i });
+      cx += segW + gap;
     });
 
-    ctx.beginPath();
-    series.forEach(function (pt, i) {
-      if (i === 0) ctx.moveTo(x(pt.ts), y(pt.v)); else ctx.lineTo(x(pt.ts), y(pt.v));
-    });
-    ctx.lineTo(x(series[series.length - 1].ts), y(vMin));
-    ctx.lineTo(x(series[0].ts), y(vMin));
-    ctx.closePath();
-    var grad = ctx.createLinearGradient(0, padT, 0, hpx - padB);
-    grad.addColorStop(0, 'rgba(247, 147, 26, 0.30)');
-    grad.addColorStop(1, 'rgba(247, 147, 26, 0.02)');
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    ctx.beginPath();
-    series.forEach(function (pt, i) {
-      if (i === 0) ctx.moveTo(x(pt.ts), y(pt.v)); else ctx.lineTo(x(pt.ts), y(pt.v));
-    });
-    ctx.strokeStyle = cOrange;
-    ctx.lineWidth = 2.5;
-    ctx.stroke();
-
-    var last = series[series.length - 1];
-    ctx.beginPath();
-    ctx.arc(x(last.ts), y(last.v), 5, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 2.5;
-    ctx.strokeStyle = css.getPropertyValue('--dark').trim();
-    ctx.stroke();
+    view = { segs: segs, w: w, h: hpx };
   }
 
   canvas.addEventListener('mousemove', function (ev) {
-    if (!view || !series.length) return;
+    if (!view || !view.segs.length) return;
     var rect = canvas.getBoundingClientRect();
     var mx = ev.clientX - rect.left;
-    var best = null, bestD = 1e18;
-    series.forEach(function (pt) {
-      var d = Math.abs(view.x(pt.ts) - mx);
-      if (d < bestD) { bestD = d; best = pt; }
-    });
-    if (!best || bestD > 40) { tooltip.style.display = 'none'; return; }
-    var dt = new Date(best.ts);
-    tooltip.innerHTML = dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) +
-      '<br><b>' + fmtUsd(best.v) + '</b>';
+    var hit = null;
+    view.segs.forEach(function (s) { if (mx >= s.x0 && mx <= s.x1) hit = s; });
+    if (!hit) { tooltip.style.display = 'none'; return; }
+    var b = hit.block;
+    tooltip.innerHTML = '<b>Block ' + (hit.index + 1) + '</b><br>' +
+      num(b.nTx) + ' transactions<br>' +
+      '~' + Math.round(b.medianFee) + ' sat/vB median<br>' +
+      fmtBtc(b.totalFees) + ' in fees';
     tooltip.style.display = 'block';
-    var tx = view.x(best.ts) + 14;
-    if (tx > view.w - 160) tx = view.x(best.ts) - 150;
+    var tx = hit.x0;
+    if (tx > view.w - 170) tx = view.w - 170;
     tooltip.style.left = tx + 'px';
-    tooltip.style.top = Math.max(6, view.y(best.v) - 48) + 'px';
+    tooltip.style.top = '8px';
   });
   canvas.addEventListener('mouseleave', function () { tooltip.style.display = 'none'; });
 
-  fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (d) {
-      if (!d.market_caps || !d.market_caps.length) throw new Error('no data');
-      series = d.market_caps.map(function (p) { return { ts: p[0], v: p[1] }; });
+  function num(n) { return n.toLocaleString('en-US'); }
 
-      var current = series[series.length - 1].v;
-      var yearAgo = series[0].v;
-      var pctChange = ((current - yearAgo) / yearAgo) * 100;
-      var ath = series.reduce(function (m, p) { return p.v > m.v ? p : m; }, series[0]);
-      var low = series.reduce(function (m, p) { return p.v < m.v ? p : m; }, series[0]);
+  // Legend
+  var legend = document.getElementById('legend');
+  [
+    { label: 'Block width = share of pending weight in that block', color: '#5D7694' },
+    { label: 'Darker orange = higher median fee, confirms sooner', color: '#F7931A' },
+    { label: 'Block #1 is next to be mined; later blocks are further out', color: '#3fb950' }
+  ].forEach(function (b) {
+    var item = document.createElement('span');
+    item.className = 'legend-item';
+    var sw = document.createElement('span');
+    sw.className = 'legend-swatch';
+    sw.style.background = b.color;
+    item.appendChild(sw);
+    item.appendChild(document.createTextNode(b.label));
+    legend.appendChild(item);
+  });
 
-      document.getElementById('statusPrice').textContent = fmtUsd(current);
-      var chip = document.getElementById('bandChip');
-      chip.textContent = (pctChange >= 0 ? '+' : '') + pctChange.toFixed(1) + '% (12mo)';
-      chip.style.background = pctChange >= 0 ? '#3fb950' : '#f85149';
-
-      var legend = document.getElementById('legend');
-      [
-        { label: '12-month high: ' + fmtUsd(ath.v) + ' (' + new Date(ath.ts).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) + ')', color: '#f7931a' },
-        { label: '12-month low: ' + fmtUsd(low.v) + ' (' + new Date(low.ts).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) + ')', color: '#5FAEDE' },
-        { label: 'Current: ' + fmtUsd(current), color: '#3fb950' }
-      ].forEach(function (b) {
-        var item = document.createElement('span');
-        item.className = 'legend-item';
-        var sw = document.createElement('span');
-        sw.className = 'legend-swatch';
-        sw.style.background = b.color;
-        item.appendChild(sw);
-        item.appendChild(document.createTextNode(b.label));
-        legend.appendChild(item);
+  function refresh() {
+    fetch('https://mempool.space/api/mempool')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (m) {
+        document.getElementById('statusPrice').textContent = num(m.count);
+        var chip = document.getElementById('bandChip');
+        chip.textContent = (m.vsize / 1e6).toFixed(1) + ' vMB pending';
+        chip.style.background = '#f7931a';
+      })
+      .catch(function () {
+        document.getElementById('statusPrice').textContent = 'Unavailable';
       });
 
-      draw();
-    })
-    .catch(function () {
-      document.getElementById('statusPrice').textContent = 'Unavailable';
-      document.getElementById('bandChip').textContent = 'Error';
-      document.getElementById('bandChip').style.background = 'var(--border)';
-    });
+    fetch('https://mempool.space/api/v1/fees/mempool-blocks')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        if (!d || !d.length) throw new Error('no data');
+        blocks = d;
+        draw();
+      })
+      .catch(function () {
+        document.getElementById('bandChip').textContent = 'Error';
+        document.getElementById('bandChip').style.background = 'var(--border)';
+      });
+  }
 
   window.addEventListener('resize', draw);
+  refresh();
+  setInterval(refresh, 30000);
 })();
 </script>
 
