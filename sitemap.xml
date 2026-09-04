@@ -1239,6 +1239,16 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/trading-volume.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/trading-volume.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/trading-volume.html"/>
   </url>
   <url>
@@ -1247,6 +1257,16 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/fear-greed.html"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sk/fear-greed.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/fear-greed.html"/>
   </url>
 </urlset>
