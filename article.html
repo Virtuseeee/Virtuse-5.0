@@ -566,6 +566,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     en: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts',
       category: 13,
+      lang: 'en',
+      // Always send an explicit lang param, even for English -- WPML's
+      // REST API falls back to a "current language" cookie/session when
+      // no lang is given, so an unfiltered request can silently return
+      // whatever language a visitor last viewed (e.g. after browsing a
+      // Russian article, a plain English article.html hit would come
+      // back Russian). Being explicit here closes that hole.
       listPage: 'blog.html',
       suffix: '',
       months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
@@ -649,9 +656,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('moreLabel').textContent = lang.ui.moreLabel;
   }
   localizeChrome(L, langCode);
-
-  var API = L.api;
-  var CATEGORY = L.category;
 
   var root = document.getElementById('articleRoot');
   var titleEl = document.getElementById('articleTitle');
@@ -846,12 +850,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var slug = new URLSearchParams(location.search).get('slug');
   if (!slug) { showError(); return; }
 
-  // WPML's ru feed only resolves through this shared endpoint with an
-  // explicit lang param (no working /ru/wp-json/... path alias like sk has)
-  // -- append it whenever the active language sets L.lang.
-  var LANG_PARAM = L.lang ? '&lang=' + L.lang : '';
-
-  function fetchAndRender(lang, langParam) {
+  // WPML's REST API falls back to a cookie/session "current language"
+  // whenever a request doesn't carry an explicit lang param, so every
+  // language here (English included) must always send one -- an
+  // "unfiltered" request is not actually language-neutral in practice.
+  function fetchAndRender(lang) {
+    var langParam = lang.lang ? '&lang=' + lang.lang : '';
     return fetch(lang.api + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia' + langParam)
       .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
       .then(function (posts) {
@@ -863,7 +867,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
   }
 
-  fetchAndRender(L, LANG_PARAM).then(function (found) {
+  fetchAndRender(L).then(function (found) {
     if (found) return;
     // This specific article hasn't been translated into the requested
     // language yet (its localized slug doesn't exist) -- fall back to
@@ -875,7 +879,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       L = LANGS.en;
       langCode = 'en';
       localizeChrome(L, langCode);
-      return fetchAndRender(L, '').then(function (foundEn) {
+      return fetchAndRender(L).then(function (foundEn) {
         if (!foundEn) showError();
       });
     }
