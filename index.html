@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -201,7 +201,7 @@ body {
 .stat-number { font-size: 28px; font-weight: 800; }
 .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-.hero-buttons { display: flex; gap: 16px; margin-bottom: 40px; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
 
 .btn-primary {
   background: var(--btc-orange); color: white; border: none; padding: 14px 32px;
@@ -710,6 +710,58 @@ body {
 
 .problem-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
 .problem-link:hover svg { transform: translateX(3px); }
+
+/* ===== CONCIERGE BANNER (decision-paralysis moment) ===== */
+.concierge-banner {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+
+.concierge-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 22px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(90deg, rgba(247,147,26,0.07), rgba(247,147,26,0.02));
+}
+
+.concierge-banner-text {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.concierge-banner-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.concierge-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0b0b0c;
+  background: var(--btc-orange);
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+
+.concierge-banner-cta:hover { filter: brightness(1.08); }
+
+@media (max-width: 700px) {
+  .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
+  .concierge-banner-inner { flex-direction: column; padding: 24px; }
+}
 
 /* ===== HOW IT WORKS ===== */
 .how {
@@ -1923,6 +1975,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           See How It Works
         </a>
+        <a href="concierge.html?utm_source=concierge&utm_medium=hero" class="btn-secondary concierge-hero-cta">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a6 6 0 100 12A6 6 0 008 2zM8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Get matched in 60 seconds →
+        </a>
       </div>
 
       <div class="hero-trust">
@@ -2059,6 +2115,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- ===== CONCIERGE BANNER ===== -->
+<section class="concierge-banner anim-section anim-hidden">
+  <div class="concierge-banner-inner">
+    <span class="concierge-banner-text">
+      <strong>Not sure which applies to you?</strong> Answer a few questions and get routed to the right partner.
+    </span>
+    <a href="concierge.html?utm_source=concierge&utm_medium=banner" class="concierge-banner-cta">
+      Get matched in 60 seconds
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 </section>
 
@@ -2830,5 +2899,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script src="concierge-launcher.js" defer></script>
 </body>
 </html>
