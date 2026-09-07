@@ -632,18 +632,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var langCode = new URLSearchParams(location.search).get('lang');
   var L = LANGS[langCode] || LANGS.en;
   if (!LANGS[langCode]) langCode = 'en';
-  document.documentElement.lang = langCode;
 
-  // Localize static chrome
-  document.getElementById('backTopLabel').textContent = L.ui.backTop;
-  document.getElementById('backBottomLabel').textContent = L.ui.backBottom;
-  document.getElementById('backTop').href = L.listPage;
-  document.getElementById('backBottom').href = L.listPage;
-  document.getElementById('authorRole').textContent = L.ui.authorRole;
-  document.getElementById('authorBio').textContent = L.ui.authorBio;
-  document.getElementById('shareLabel').textContent = L.ui.share;
-  document.getElementById('shareCopied').textContent = L.ui.copied;
-  document.getElementById('moreLabel').textContent = L.ui.moreLabel;
+  // Localize static chrome -- also re-run when falling back to the
+  // English article below, since at that point the page needs to show
+  // English chrome, not the originally-requested language's.
+  function localizeChrome(lang, code) {
+    document.documentElement.lang = code;
+    document.getElementById('backTopLabel').textContent = lang.ui.backTop;
+    document.getElementById('backBottomLabel').textContent = lang.ui.backBottom;
+    document.getElementById('backTop').href = lang.listPage;
+    document.getElementById('backBottom').href = lang.listPage;
+    document.getElementById('authorRole').textContent = lang.ui.authorRole;
+    document.getElementById('authorBio').textContent = lang.ui.authorBio;
+    document.getElementById('shareLabel').textContent = lang.ui.share;
+    document.getElementById('shareCopied').textContent = lang.ui.copied;
+    document.getElementById('moreLabel').textContent = lang.ui.moreLabel;
+  }
+  localizeChrome(L, langCode);
 
   var API = L.api;
   var CATEGORY = L.category;
@@ -846,16 +851,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // -- append it whenever the active language sets L.lang.
   var LANG_PARAM = L.lang ? '&lang=' + L.lang : '';
 
-  fetch(API + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia' + LANG_PARAM)
-    .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
-    .then(function (posts) {
-      if (!posts.length) { showError(); return; }
-      renderArticle(posts[0]);
-      return fetch(API + '?categories=' + CATEGORY + '&per_page=4&_embed=wp:featuredmedia&orderby=date&order=desc' + LANG_PARAM)
-        .then(function (r) { return r.ok ? r.json() : []; })
-        .then(function (recent) { renderMore(recent, posts[0].id); });
-    })
-    .catch(showError);
+  function fetchAndRender(lang, langParam) {
+    return fetch(lang.api + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia' + langParam)
+      .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+      .then(function (posts) {
+        if (!posts.length) return false;
+        renderArticle(posts[0]);
+        return fetch(lang.api + '?categories=' + lang.category + '&per_page=4&_embed=wp:featuredmedia&orderby=date&order=desc' + langParam)
+          .then(function (r) { return r.ok ? r.json() : []; })
+          .then(function (recent) { renderMore(recent, posts[0].id); return true; });
+      });
+  }
+
+  fetchAndRender(L, LANG_PARAM).then(function (found) {
+    if (found) return;
+    // This specific article hasn't been translated into the requested
+    // language yet (its localized slug doesn't exist) -- fall back to
+    // showing the English original rather than a dead "not found" page.
+    if (langCode !== 'en') {
+      localizeChrome(LANGS.en, 'en');
+      return fetchAndRender(LANGS.en, '').then(function (foundEn) {
+        if (!foundEn) showError();
+      });
+    }
+    showError();
+  }).catch(showError);
 })();
 </script>
 
