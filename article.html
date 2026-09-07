@@ -869,8 +869,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // language yet (its localized slug doesn't exist) -- fall back to
     // showing the English original rather than a dead "not found" page.
     if (langCode !== 'en') {
-      localizeChrome(LANGS.en, 'en');
-      return fetchAndRender(LANGS.en, '').then(function (foundEn) {
+      // Reassign L itself, not just the DOM text -- fmtDate() and any
+      // other code reading L.months/L.ui after this point must see
+      // English too, or dates etc. stay in the wrong language.
+      L = LANGS.en;
+      langCode = 'en';
+      localizeChrome(L, langCode);
+      return fetchAndRender(L, '').then(function (foundEn) {
         if (!foundEn) showError();
       });
     }
