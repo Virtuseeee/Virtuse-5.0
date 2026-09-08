@@ -2,6 +2,158 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-08) — Bitcoin Concierge rollout: dedicated page, sticky launcher, hero/banner CTAs, live on all 3 targets
+
+**What shipped:** a pre-built React/Vite prototype ("Bitcoin Concierge"
+— a rule-based routing assistant that asks goal/country/experience/
+custody/amount and matches the visitor to one of the vetted partners
+already listed on the site) was handed off from a Cowork/Kimi session as
+a local project at
+`~/Documents/virtuse-concierge-deploy/bitcoin-concierge/` (**outside
+this repo** — only its production build output lives here), with two
+briefing docs in `~/Documents/virtuse-concierge-deploy/`
+(`CONTEXT-FROM-COWORK.md`, `prompt-pre-claude-nasadenie.md`). This
+session built it, integrated it into the static site, and deployed it
+end-to-end to **all three** targets — `main`, `gh-pages`/staging, and
+production `virtuse.com` — same-day, fully verified on each via `curl`
+and a live in-browser click-through.
+
+**New files added to the site** (all under `Kimi_Agent_Virtuse MiCA
+Partners/`):
+- [`concierge.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge.html)
+  — standalone dedicated page, the built prototype's `dist/index.html`
+  adapted with the site's usual meta/CSP/OG boilerplate. Deliberately
+  `noindex` for now (not yet marketing/SEO-reviewed) and **not** part of
+  the `sk`/`uk`/`cs` translation system — English only.
+- `concierge-assets/` — the built JS/CSS bundle (hashed filenames from
+  Vite; re-copy both files and update the two `<script>`/`<link>` src
+  attributes in `concierge.html` by hand on every rebuild — there's no
+  build step wired into this repo for it).
+- [`concierge-launcher.js`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-launcher.js)
+  — sitewide sticky bubble (bottom-right, ₿ icon), lazy: builds the
+  bubble eagerly but only creates the `<iframe>` overlay on first click,
+  so it adds no extra request/render-blocking work to page load. Wired
+  into **25 of the 26 EN top-level pages** via `<script ... defer>`
+  before `</body>`, the same rollout pattern as `lang-detect.js`.
+  Deliberately **excluded** from `blog-sk.html` (Slovak content, and the
+  Concierge UI is English-only) and from `concierge.html` itself (the
+  destination page doesn't need a launcher pointing at itself). Not
+  wired into any `sk/`/`uk/`/`cs/` page — MVP scope was EN only, a
+  decision made explicitly this session (see "Next steps").
+
+**Site changes on top of the new files:**
+- [`index.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/index.html) hero:
+  third button `Get matched in 60 seconds →` next to the existing
+  `Explore the Hub` / `See How It Works` pair
+  (`?utm_source=concierge&utm_medium=hero`); `.hero-buttons` gained
+  `flex-wrap` so three buttons wrap instead of overflowing on
+  medium-width viewports.
+- New banner between the problem/solution cards and the services grid —
+  `Not sure which applies to you? Get matched in 60 seconds`
+  (`?utm_medium=banner`) — placed at the exact decision-paralysis moment
+  the Cowork analysis identified (`CONTEXT-FROM-COWORK.md`).
+- CSP `frame-src` on **all 26 top-level pages** gained `'self'` — it was
+  missing entirely (the site's CSP only allowlisted specific external
+  frame sources like `widget.firefish.io`/YouTube/Spotify), which would
+  have silently blocked the launcher's own iframe with zero visible
+  error beyond a console CSP violation. Easy to miss if you don't
+  actually click the launcher and check the console.
+
+**Two real bugs found and fixed during implementation** (not visible
+from reading the prototype's code, only from actually running it):
+1. The prototype's `react-router` route was `<Route path="/" ...>`. That
+   never matches once the app is deployed at `/concierge.html` instead
+   of the URL root — the page rendered completely blank, no console
+   error beyond "No routes matched location". Fixed by changing to
+   `path="*"` in the prototype's `App.tsx` before the production build.
+   **If this prototype is ever rebuilt from a fresh copy of the Cowork
+   source, re-apply this fix** — it's not something a generic
+   `npm run build` would catch.
+2. Same CSP `frame-src` gap as above — found by actually opening the
+   launcher locally and reading the console, not by reading the CSP
+   meta tag and reasoning about it.
+
+**UTM + click tracking** (was not in the prototype at all — built this
+session, without touching `src/lib/concierge.ts`'s routing logic per the
+brief's explicit constraint): every partner-card link in
+`ConciergeChat.tsx` now appends
+`utm_source=concierge&utm_medium=<inherited from the page's own
+?utm_medium>&utm_campaign=layer2-mvp&utm_content=<partner id>` and fires
+a `dataLayer.push({event:'concierge_partner_click', partner_id})` before
+navigating. Verified end-to-end in a real browser session (not just read
+the code): full chat flow → result cards → clicked a partner card →
+confirmed both the UTM-decorated `href` and the `dataLayer` event fired.
+
+**Deploy verification, all three targets, `curl` + live browser click,
+same session:**
+- `main`: `eac694c` (new page/assets/launcher) → `a4f57aa` (wired into
+  25 pages) → `04a0bee` (hero+banner CTA on index.html) → `135afb1`
+  (local `.claude/launch.json` preview fix, unrelated dev-tooling
+  cleanup). Pushed after a `git pull --rebase` (an unrelated commit had
+  landed on `main` first — see the recurring gotcha below).
+- `gh-pages`/staging: synced via the usual worktree-copy pattern, one
+  commit (`8cfbeb2`), confirmed live via `curl` (`concierge.html` 200,
+  launcher present on `buy-bitcoin.html`, correctly absent on
+  `blog-sk.html`, CSP `frame-src 'self'` present) — GitHub Pages took
+  about 45–60s to actually publish after the push, plain immediate
+  `curl` right after `git push` still 404'd.
+- Production (Webglobe SFTP): `concierge-assets/` is a **brand-new**
+  subfolder, so needed the documented two-step `sftp mkdir` +
+  `scp -r .../* ...` dance (see the gotcha below); the 27
+  already-existing-folder files (26 HTML + `concierge-launcher.js`) went
+  up as one plain multi-file `scp`. User ran both commands themselves in
+  their own terminal per the standing password rule. Verified live via
+  `curl` (same checks as staging) **and** a real in-browser click on
+  `https://virtuse.com/index.html` — bubble → overlay → iframe loaded
+  `https://virtuse.com/concierge.html?utm_medium=launcher`, no new
+  console errors.
+
+**A recurring, unrelated console error, confirmed pre-existing and out
+of scope:** every page (before and after this session's changes) throws
+a CSP `img-src` violation for `google.sk/ads/ga-audiences` — a GTM
+Google Ads remarketing pixel the site's CSP `img-src` allowlist doesn't
+cover. Confirmed via a clean fresh-tab load with zero interaction that
+this fires with or without any Concierge code present — **not**
+something this session introduced, and not in scope to fix here.
+
+**Next steps, in order:**
+1. **Marketing/SEO review of `concierge.html`** — right now it's
+   `noindex`. Once approved, remove that and add it (plus reciprocal
+   `hreflang`/sitemap entries once translated) the way other pages are
+   registered.
+2. **Decide on `sk`/`uk`/`cs` rollout for the launcher + dedicated
+   page** — explicitly out of scope this session (2026-09-08 decision,
+   made via the same kind of question this file's Slovak/Ukrainian/
+   Czech rollout sessions used). Would need: translated launcher
+   tooltip copy, a translated `concierge.html` (or an explicit decision
+   to keep it English-only and just link out from translated pages), and
+   updates to `i18n-tools/` scaffold scripts if it's to follow the
+   established per-language rollout pattern.
+3. **No human marketing/compliance review yet** of the Concierge's own
+   copy or partner-matching logic — it's a Phase 1 MVP prototype
+   (`src/lib/concierge.ts`'s own comment says so) carried over verbatim
+   per the brief's "don't touch the routing logic" constraint. Worth a
+   pass before treating it as a permanent fixture, same caution as the
+   Slovak welcome email's untouched-since-launch status below.
+4. **`concierge-assets/`'s hashed filenames need manual upkeep** — there
+   is no build/deploy automation wiring the external prototype repo to
+   this one. A future prototype change means: rebuild there, copy the
+   two new hashed files here, delete the old ones, and hand-edit the two
+   `src=`/`href=` lines in `concierge.html`. Easy to forget one of these
+   steps; verify with a browser console check (blank white panel = the
+   asset paths are stale) rather than assuming a copy succeeded.
+
+**New gotcha to add to the running list below:** the `Kimi_Agent_Virtuse
+MiCA Partners/` folder name is genuinely `%20`-literal on disk (not a
+display artifact) — `cd "Kimi_Agent_Virtuse MiCA Partners"` (real
+spaces) fails with "no such file or directory"; the actual path segment
+is `Kimi_Agent_Virtuse%20MiCA%20Partners`. This was already documented
+below ("the folder name is percent-encoded on disk") but got missed
+when handing the user a copy-pasteable `cd` command this session —
+prefer telling the user they're likely already inside it (shells
+commonly start a session there) over asking them to `cd` into a
+re-typed path.
+
 ## Session status (2026-09-02) — Newsletter → welcome-email automation discovered, fixed, extended to Slovak
 
 **This session's work, in brief:** asked to "pull out the latest version
@@ -472,6 +624,18 @@ contact to Resend and sends a welcome email
 "Multi-language welcome emails"). See the 2026-09-02 session status above
 for how this was discovered/fixed/extended, and `cloudflare-worker/README.md`
 + `email/README.md` for the full system.
+
+**Bitcoin Concierge**: a rule-based partner-matching chat prototype,
+live sitewide since 2026-09-08 as
+[`concierge.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge.html)
+(dedicated page) plus a sticky launcher bubble
+([`concierge-launcher.js`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-launcher.js))
+on every EN top-level page, and hero/banner CTAs on the homepage. Its
+source (a separate React/Vite project) lives **outside this repo** at
+`~/Documents/virtuse-concierge-deploy/bitcoin-concierge/` — only the
+production build output (`concierge-assets/`) is committed here. See the
+2026-09-08 session status above for the full rollout, the bugs found
+along the way, and what a future prototype rebuild needs to repeat.
 
 ## Working with this repo
 
