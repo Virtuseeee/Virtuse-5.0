@@ -116,6 +116,77 @@ cover. Confirmed via a clean fresh-tab load with zero interaction that
 this fires with or without any Concierge code present — **not**
 something this session introduced, and not in scope to fix here.
 
+**Same-day follow-up — Concierge now recommends only real partners,
+with real affiliate links (`428bfd5`):** the user explicitly asked to
+drop the constraint above ("don't touch the routing logic") and fix a
+real problem it had been hiding — `src/lib/concierge.ts`'s `PARTNERS`
+catalog was **entirely invented**. Names like "Banxa", "MiCA-licensed
+CASPs", "Unchained", "Coinfirm", "Virtuse Treasury", "Virtuse Bots", and
+"Vetted mining partners" don't exist as cards on any virtuse.com page,
+and every one of their `url` fields pointed back to a generic
+`virtuse.com/` page instead of an actual partner. Fixed by throwing out
+the whole catalog and rebuilding it from the **actual partner cards**
+on `buy-bitcoin.html`, `secure.html`, `tax.html`, `treasury.html`,
+`lending.html`, `bots.html`, and `mining.html` — 22 real partners, each
+with the real, currently-live affiliate/referral URL scraped straight
+from that page's own `<a href>` (e.g. Kraken →
+`proinvite.kraken.com/9f1e/lj72d37e`, Firefish →
+`app.firefish.io/auth/sign-up?ref=virtuseloan`). `recommend()` was
+rewritten around this real catalog, keeping the same
+country/experience/custody/amount-driven structure but grounding every
+`reasons` string in that partner's actual page copy instead of invented
+claims. The `'earn'` goal itself got relabeled ("Automate & compound" /
+"Non-custodial trading & DCA bots") because the site has no
+lending-for-yield partner to route to — only the three bots.html
+partners (Coinrule, Cryptohopper, RevenueBot) — and the old "Lend EUR /
+USDC, up to ~15% p.a." copy would have been actively false advertising
+once wired to those. **The governing rule now, worth repeating for any
+future partner-catalog edit:** every `Partner.url` must be either that
+partner's real affiliate/referral link (preferred) or, only if no
+affiliate link exists for that partner, their plain site — never a
+virtuse.com URL, and never a partner that doesn't have a real card on
+the site. `withUtm()` (unchanged) appends Virtuse's own UTM params onto
+whichever of those it is via `URLSearchParams.set`, which additively
+preserves the partner's own tracking param (`?ref=...`, `?code=...`,
+`?fpr=...` etc.) rather than overwriting it — verified end-to-end on
+production: a real loan-flow click landed on
+`app.firefish.io/auth/sign-up?ref=virtuseloan&utm_source=concierge&...`,
+both tracking systems intact.
+
+Also fixed in the same commit, per the user's explicit copy requests:
+- Removed the word "prototype" everywhere it was user-facing (the
+  header subtitle badge and the chat widget's badge) — it only remains
+  in code comments/dev docs now.
+- `Home.tsx`'s intro paragraph now ends after "...routes you to the
+  right regulated platform." — dropped the trailing "This is the Phase
+  1 MVP of the Virtuse Layer 2 AI Advisor." sentence.
+- `Home.tsx`'s page footer now reads only "Routing engine is
+  rule-based — a production version plugs in a conversational agent
+  over the same data and guardrails. Educational routing only; not
+  financial, tax or legal advice. KYC & onboarding are completed on
+  each partner's regulated platform." — dropped the "Prototype of the
+  Virtuse Layer 2 AI Advisor (Phase 1 · Module 1)." lead-in. (The chat
+  widget's own short disclaimer strip — "Non-custodial routing only...
+  Not financial advice." — is a separate, shorter string and was left
+  as-is; only the page-level footer matched what was asked to change.)
+- All partner-count displays ("Routes to N vetted partners", the STATS
+  tile, the "Partner ecosystem" pill list) are now derived from
+  `PARTNERS.length` / `PARTNERS` itself rather than hardcoded numbers —
+  they read **22** now and can't silently drift out of sync with the
+  catalog again the way the old hardcoded "11" did.
+
+Rebuilt and redeployed to all three targets same-day: `main` (`428bfd5`),
+`gh-pages`/staging (`facdd73`, `curl`-verified live), production (plain
+`scp` of `concierge.html` + the two new hashed asset files, **plus** an
+`sftp` cleanup step to delete the two now-orphaned old hashed files —
+unlike the first Concierge deploy, `concierge-assets/` already existed
+on production this time, so no `mkdir` dance was needed, just a
+same-folder update). Verified live on `virtuse.com` itself with a real
+chat flow (Bitcoin-backed loan → Slovakia → hodler → self-custody →
+€1–10k → Firefish), confirming the real affiliate link with both
+tracking params intact, and a clean console (same pre-existing GTM
+`ga-audiences` pixel error as always, nothing new).
+
 **Next steps, in order:**
 1. **Marketing/SEO review of `concierge.html`** — right now it's
    `noindex`. Once approved, remove that and add it (plus reciprocal
@@ -129,30 +200,50 @@ something this session introduced, and not in scope to fix here.
    to keep it English-only and just link out from translated pages), and
    updates to `i18n-tools/` scaffold scripts if it's to follow the
    established per-language rollout pattern.
-3. **No human marketing/compliance review yet** of the Concierge's own
-   copy or partner-matching logic — it's a Phase 1 MVP prototype
-   (`src/lib/concierge.ts`'s own comment says so) carried over verbatim
-   per the brief's "don't touch the routing logic" constraint. Worth a
-   pass before treating it as a permanent fixture, same caution as the
-   Slovak welcome email's untouched-since-launch status below.
+3. **No human marketing/compliance review yet of the routing
+   *reasoning* itself** — the partner *catalog* is now accurate (see
+   above), but nobody with domain expertise has checked whether e.g.
+   routing a self-custody hodler to Invity over Kraken, or a "new to
+   Bitcoin" earn-goal visitor to Cryptohopper over Coinrule, is actually
+   the right call. Worth a pass before treating the matching logic
+   itself as final, same caution as the Slovak welcome email's
+   untouched-since-launch status below.
 4. **`concierge-assets/`'s hashed filenames need manual upkeep** — there
    is no build/deploy automation wiring the external prototype repo to
    this one. A future prototype change means: rebuild there, copy the
-   two new hashed files here, delete the old ones, and hand-edit the two
-   `src=`/`href=` lines in `concierge.html`. Easy to forget one of these
-   steps; verify with a browser console check (blank white panel = the
-   asset paths are stale) rather than assuming a copy succeeded.
+   two new hashed files here, delete the old ones (both locally and on
+   every deployed target — production still needs an explicit `sftp rm`
+   of the orphaned pair, `scp` alone won't remove them), and hand-edit
+   the two `src=`/`href=` lines in `concierge.html`. Easy to forget one
+   of these steps; verify with a browser console check (blank white
+   panel = the asset paths are stale) rather than assuming a copy
+   succeeded.
+5. **If the prototype's source is ever regenerated from a fresh Cowork/
+   Kimi handoff**, both this session's fixes need re-applying by hand:
+   the `react-router` `path="*"` fix (item 1 in the bug list above) and
+   the entire real-partner `PARTNERS`/`recommend()` rewrite — a fresh
+   handoff would very likely regenerate the same kind of invented
+   catalog, since nothing about *that* mistake was specific to this one
+   prototype run.
 
-**New gotcha to add to the running list below:** the `Kimi_Agent_Virtuse
-MiCA Partners/` folder name is genuinely `%20`-literal on disk (not a
-display artifact) — `cd "Kimi_Agent_Virtuse MiCA Partners"` (real
-spaces) fails with "no such file or directory"; the actual path segment
-is `Kimi_Agent_Virtuse%20MiCA%20Partners`. This was already documented
-below ("the folder name is percent-encoded on disk") but got missed
-when handing the user a copy-pasteable `cd` command this session —
-prefer telling the user they're likely already inside it (shells
-commonly start a session there) over asking them to `cd` into a
-re-typed path.
+**New gotchas to add to the running list below:**
+- The `Kimi_Agent_Virtuse MiCA Partners/` folder name is genuinely
+  `%20`-literal on disk (not a display artifact) — `cd "Kimi_Agent_Virtuse
+  MiCA Partners"` (real spaces) fails with "no such file or directory";
+  the actual path segment is `Kimi_Agent_Virtuse%20MiCA%20Partners`.
+  This was already documented below ("the folder name is
+  percent-encoded on disk") but got missed when handing the user a
+  copy-pasteable `cd` command this session — prefer telling the user
+  they're likely already inside it (shells commonly start a session
+  there) over asking them to `cd` into a re-typed path.
+- A `git worktree` created earlier in a session can disappear from under
+  you **mid-session** (not just between sessions) if it lives under a
+  scratchpad/tmp path that gets cleaned up — `git worktree list` showed
+  it as `prunable` and `cd` into it failed outright the second time it
+  was needed the same day. Fix is the same as the between-sessions
+  case: `git worktree prune`, then `git worktree add` it again fresh —
+  just don't assume a worktree you set up 20 minutes ago in *this*
+  session is still there without checking.
 
 ## Session status (2026-09-02) — Newsletter → welcome-email automation discovered, fixed, extended to Slovak
 
