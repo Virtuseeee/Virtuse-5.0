@@ -102,16 +102,31 @@ new `stacking-DFmHQBw0.js`, old `stacking-LnKahpxQ.js` removed both
 locally and on gh-pages; UTM-decorated real affiliate link confirmed:
 `21bitcoin.app.link/...?code=VIRTUSE&utm_source=stacking&...`).
 
-**New issue found and flagged, not fixed (out of scope for this pass):**
-the "recommended route" card's *"Staying on the cheapest route saves you
-X per year in fees vs the average of the other routes"* line computes X
-as `advice.winner.annualDrag` — the winner's **own** annual fee — not an
-actual savings-vs-average calculation. This bug predates this session
-(it was already wrong for the old fake catalog, just less visible), but
-21bitcoin's real 0 % makes it read as "saves you €0" — a materially
-confusing statement for what is actually the best result on the page.
-Needs a decision on what comparison that line should actually show
-before it's fixed.
+**Second same-day follow-up — the "saves you €0" copy bug is fixed too
+(`3aefe5b`):** the "recommended route" card's *"Staying on the cheapest
+route saves you X per year in fees vs the average of the other routes"*
+line computed X as `advice.winner.annualDrag` — the winner's **own**
+annual fee — not an actual savings-vs-average calculation, so it read as
+"saves you €0" once 21bitcoin's real 0 % became the winner. Fixed in
+`Stacking.tsx` (not `stacking.ts` — this was page-level copy logic, not
+routing/fee-schedule data): X is now `avgOtherDrag - winner.annualDrag`,
+the mean `annualDrag` of every *non*-winning row minus the winner's own,
+which is what the sentence actually claims; falls back to "there is
+nothing left to save" in the (currently unreachable, but handled) case
+that's ever exactly zero. Verified live on staging at the €100/month
+default: winner (21bitcoin, €0/yr) vs. the other three rows' annual drag
+(€1 + €2 + €53 = €56, mean €18.67) now correctly shows **"saves you €19
+per year"**. Rebuilt (`stacking.html`'s script src → `stacking-BqlQkD7Z.js`,
+old `stacking-DFmHQBw0.js` removed both locally and on gh-pages).
+**Gotcha hit while verifying this**: the Browser pane's first re-check
+after deploy still showed the stale "€0" text — not a deploy failure,
+just the browser's own HTTP cache for the unversioned `stacking.html`
+path (the hashed JS chunk itself was already correct, confirmed by
+`curl`+MD5 against the local build output). A cache-busted reload
+(`?cachebust=1`) showed the fix immediately. Worth remembering for any
+future same-page recheck: `curl` the asset/HTML directly first to settle
+whether it's a deploy problem or just a stale browser tab before
+concluding a fix didn't ship.
 
 **Next steps, in order:**
 1. **Approve for production**, or hold at staging for further review —
@@ -120,15 +135,15 @@ before it's fixed.
    Your Stack widget, Buy Bitcoin step-0 section, Bots page section,
    sticky-launcher awareness of Stacking) — none of that shipped this
    session, all still just the original prompt's spec.
-3. **Fix the "saves you €0" copy bug** flagged just above — needs a
-   decision on the right comparison (vs. the priciest row? vs. the mean
-   of the non-winning rows?) before touching the code.
-4. **Marketing/SEO review** — `stacking.html` is `noindex` for the same
+3. **Marketing/SEO review** — `stacking.html` is `noindex` for the same
    reason `concierge.html` was: not yet reviewed.
-5. ~~Human review of `stacking.ts`'s `FEE_SCHEDULE`~~ — **done**, see the
-   same-day follow-up above; the remaining review item is #4 (whether the
-   routing/ranking *logic*, not just partner identity, is sound) plus the
-   RevenueBot row's still-illustrative fee once they publish real pricing.
+4. ~~Human review of `stacking.ts`'s `FEE_SCHEDULE`~~ — **done**, see the
+   first same-day follow-up above; the remaining review item is whether
+   the routing/ranking *logic*, not just partner identity, is sound, plus
+   the RevenueBot row's still-illustrative fee once they publish real
+   pricing.
+5. ~~Fix the "saves you €0" copy bug~~ — **done**, see the second
+   same-day follow-up just above.
 
 ## Session status (2026-09-08) — Bitcoin Concierge rollout: dedicated page, sticky launcher, hero/banner CTAs, live on all 3 targets
 
