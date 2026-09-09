@@ -100,34 +100,38 @@ session** — staging-only, same as Stacking.
   to. Rebuilt (only the `loan` chunk's hash changed), verified the real
   URL is present in the shipped bundle, deployed to `main`/`gh-pages`,
   confirmed live via `curl`.
-- `tax.ts`'s `PARTNER_LINKS.unchained` and `.coinfirm` both point at
-  `virtuse.com` URLs. Confirmed via `grep` that neither "Coinfirm" nor
-  "Unchained" appear anywhere in `tax.html` or `secure.html` — the same
-  invented-partner pattern the Concierge catalog had before its
-  `075fde8` rewrite (see the 2026-09-08 session status). Unlike
-  Firefish, there's no obvious real substitute already sitting in
-  `concierge.ts` for either of these — tax.html's real tax-report
-  partners are Blockpit/Koinly/CoinTracking/Divly (none of which do
-  audit reports via a "Coinfirm"-style service), and secure.html's real
-  custody partners are Trezor/Ledger/Blockstream (none offer a
-  multisig-inheritance-vault product like the "Unchained-style vault"
-  described). Fixing this one may need an actual product decision, not
-  just a find-and-replace to an already-known real URL.
+- ~~`tax.ts`'s `PARTNER_LINKS.unchained` and `.coinfirm` both pointed at
+  `virtuse.com` URLs~~ — **fixed same-day** (`d0cdc5a`), per explicit
+  user request ("link them to their respective websites"). Confirmed
+  via `grep` first that neither "Coinfirm" nor "Unchained" appear
+  anywhere in `tax.html` or `secure.html` — same invented-partner
+  pattern as before, and unlike Firefish, neither had an obvious real
+  substitute already sitting in `concierge.ts`. `unchained` → the real
+  `https://www.unchained.com/` (verified live) — no Virtuse
+  affiliate/referral relationship exists for it yet, so this is a
+  placeholder link to the real company, not a partnership claim.
+  `coinfirm` needed more than a URL swap: `curl` showed `coinfirm.com`
+  now redirects to `lukka.tech` — Coinfirm appears to have been
+  absorbed into a company called Lukka and may no longer exist as an
+  independent brand. Surfaced this to the user rather than silently
+  linking "Coinfirm" copy to a different company's site; **user chose
+  to relabel it** — the `PARTNER_LINKS` key is now `lukka`, and
+  `Tax.tsx`'s copy/CTA text/UTM `utm_content`/dataLayer `partner_id`
+  all say "Lukka" now, not "Coinfirm." Rebuilt (only the `tax` chunk's
+  hash changed both times), verified both destinations and UTM
+  decoration, deployed to `main`/`gh-pages`, confirmed live via `curl`.
 
 **Next steps, in order:**
 1. **Approve for production**, or hold at staging — all four modules
    (Concierge, Stacking, Loan, Tax) are staging-only as of this session.
-2. **Decide on `tax.ts`'s Coinfirm/Unchained links** — needs a product
-   decision (what does Virtuse actually want to route these to?), not
-   just a URL swap like `FIREFISH_URL` was.
-3. **The remaining deferred placements from the original 2-module
+2. **The remaining deferred placements from the original 2-module
    brief** (Grow Your Stack widget — done; Buy Bitcoin step-0 — done;
    Bots-page section — still open; sticky-launcher awareness of
    Stacking — still open) plus this 4-module brief's own placement
    items that were explicitly out of scope this pass: Loans-category
    embed (item D8), Custody-category inheritance section (item E11),
    and the Q1 tax-season seasonal hook (item E12).
-4. **Marketing/SEO review** — all four pages are `noindex` for the same
+3. **Marketing/SEO review** — all four pages are `noindex` for the same
    reason `concierge.html` was: none reviewed yet.
 6. **Human review of `stacking.ts`'s `FEE_SCHEDULE`** — already done,
    see the 2026-09-09 (first) session status below. `loan.ts`/`tax.ts`'s
