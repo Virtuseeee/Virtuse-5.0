@@ -86,15 +86,20 @@ worktree pattern (`12e9595`) → `curl`+browser-verified live on
 Tax Reporting", not the module). **Production was not touched this
 session** — staging-only, same as Stacking.
 
-**Two more real issues found, deliberately not fixed (flagged, per the
-brief's "don't rework the logic" constraint):**
-- `loan.ts`'s `FIREFISH_URL` constant is `'https://virtuse.com/'`, not
-  Firefish's real affiliate link, despite the loan-verdict CTA saying
-  "Get a Bitcoin-backed loan via Firefish." Firefish's real URL already
-  exists in `concierge.ts`
-  (`app.firefish.io/auth/sign-up?ref=virtuseloan`) — this should be a
-  trivial fix once approved, since the real link is already vetted and
-  used elsewhere in the same codebase.
+**Two more real issues found; one fixed same-day, one still flagged
+(per the brief's "don't rework the logic" constraint):**
+- ~~`loan.ts`'s `FIREFISH_URL` constant was `'https://virtuse.com/'`~~
+  — **fixed same-day** (`1cf72e0`), per explicit user request, to the
+  same real, currently-live URL `concierge.ts`'s `PARTNERS` catalog
+  already uses for the `loan` goal:
+  `app.firefish.io/auth/sign-up?ref=virtuseloan`. Only `loan.ts`'s
+  exported constant changed — `Loan.tsx`'s `ctaUrl` ternary
+  (`verdict === 'sell' ? 'https://virtuse.com/' : FIREFISH_URL`) was
+  correct as-is and untouched: the `sell` path intentionally stays on
+  virtuse.com since there's no specific partner to route a sell verdict
+  to. Rebuilt (only the `loan` chunk's hash changed), verified the real
+  URL is present in the shipped bundle, deployed to `main`/`gh-pages`,
+  confirmed live via `curl`.
 - `tax.ts`'s `PARTNER_LINKS.unchained` and `.coinfirm` both point at
   `virtuse.com` URLs. Confirmed via `grep` that neither "Coinfirm" nor
   "Unchained" appear anywhere in `tax.html` or `secure.html` — the same
@@ -112,20 +117,17 @@ brief's "don't rework the logic" constraint):**
 **Next steps, in order:**
 1. **Approve for production**, or hold at staging — all four modules
    (Concierge, Stacking, Loan, Tax) are staging-only as of this session.
-2. **Decide on fixing `FIREFISH_URL`** — likely a quick, low-risk fix
-   once approved (the real URL is already known and already used
-   elsewhere).
-3. **Decide on `tax.ts`'s Coinfirm/Unchained links** — needs a product
+2. **Decide on `tax.ts`'s Coinfirm/Unchained links** — needs a product
    decision (what does Virtuse actually want to route these to?), not
-   just a URL swap.
-4. **The remaining deferred placements from the original 2-module
+   just a URL swap like `FIREFISH_URL` was.
+3. **The remaining deferred placements from the original 2-module
    brief** (Grow Your Stack widget — done; Buy Bitcoin step-0 — done;
    Bots-page section — still open; sticky-launcher awareness of
    Stacking — still open) plus this 4-module brief's own placement
    items that were explicitly out of scope this pass: Loans-category
    embed (item D8), Custody-category inheritance section (item E11),
    and the Q1 tax-season seasonal hook (item E12).
-5. **Marketing/SEO review** — all four pages are `noindex` for the same
+4. **Marketing/SEO review** — all four pages are `noindex` for the same
    reason `concierge.html` was: none reviewed yet.
 6. **Human review of `stacking.ts`'s `FEE_SCHEDULE`** — already done,
    see the 2026-09-09 (first) session status below. `loan.ts`/`tax.ts`'s
