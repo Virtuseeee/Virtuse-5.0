@@ -812,6 +812,26 @@ body {
   line-height: 1.6;
 }
 
+/* Step 4 doubles as a promo for the Stacking Strategist module */
+.how-card-stack {
+  border-color: rgba(247,147,26,0.35);
+  background: linear-gradient(180deg, var(--dark-card), rgba(247,147,26,0.05));
+}
+
+.how-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--btc-orange);
+  text-decoration: none;
+}
+
+.how-card-cta svg { width: 12px; height: 12px; transition: transform 0.2s; }
+.how-card-cta:hover svg { transform: translateX(3px); }
+
 /* ===== PARTNER LOGOS ===== */
 .partners-strip {
   border-top: 1px solid var(--border);
@@ -2245,10 +2265,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3>Stay in Control</h3>
       <p>Your Bitcoin stays in your wallet. Virtuse never holds your keys, your funds, or your data. Ever.</p>
     </div>
-    <div class="how-card">
+    <div class="how-card how-card-stack">
       <div class="how-num">4</div>
       <h3>Grow Your Stack</h3>
-      <p>Use the service — whether buying, mining, or borrowing — and watch your Bitcoin position grow over time.</p>
+      <p>Set your rhythm, compare every partner's fees, automate with Bots.</p>
+      <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget" class="how-card-cta">
+        Plan my stack
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
