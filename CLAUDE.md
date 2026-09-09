@@ -2,6 +2,50 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-09, continued) — all four Layer 2 modules deployed to production
+
+**What shipped:** everything from the two sessions below — Concierge's
+real-partner rebuild, Stacking, Loan, Tax, the Firefish/Unchained/Lukka
+link fixes, the homepage widget and Buy Bitcoin step-0 — pushed to
+**production** (`virtuse.com`, Webglobe SFTP), catching production up
+from the original 2026-09-08 Concierge-only build to the full current
+state. `main`/`gh-pages` were already current; this was purely the
+SFTP leg. User ran every command themselves, per the standing password
+rule; verified end-to-end via `curl` (all pages, all 10
+`concierge-assets/` files, old orphans confirmed gone, real partner
+links confirmed present in the shipped bundles) and a live browser
+check on `virtuse.com/stacking.html` itself.
+
+**Took three attempts to actually land — worth its own gotcha entry.**
+Round 1: commands appeared to run but nothing changed on production;
+the user's terminal showed a stuck `cursh>` continuation prompt and
+unrelated scrollback (an unrecognized `index-w10oqQHA.js` filename, an
+API-keys-shaped JSON block) — likely a heredoc/herestring
+(`<<< $'...\n...'`) that didn't parse cleanly in that shell, silently
+swallowing every command pasted afterward as more input to the stuck
+one. Round 2: reissued as a plain interactive `sftp>` session (no
+scripting) plus bare `scp` commands with the leading `cd "Kimi_Agent_Virtuse%20MiCA%20Partners" &&`
+**removed**, on the mistaken assumption — from misreading an earlier
+terminal paste — that the user's shell was already inside that folder.
+It wasn't (it was at the repo root, `Virtu AI`), so both `scp` commands
+silently no-op'd on nonexistent relative paths (`zsh: no matches
+found: concierge-assets/*`). Round 3, with the `cd` restored and the
+user's own `pwd`/`ls` output actually checked first, worked cleanly —
+all 10 assets and 6 pages uploaded with real progress lines. **The
+lesson**: after two rounds of the user saying "done"/"ran it" that
+didn't match what `curl` showed, insisting on the user pasting *actual
+command output* (not just a confirmation) was what actually found the
+root cause — don't keep re-issuing corrected commands on inference
+alone once a claimed success has already failed to verify once.
+
+**Next steps, in order:**
+1. **Marketing/SEO review** — all four Layer 2 pages are still
+   `noindex` on production too; this deploy didn't change that.
+2. Everything else from the 2026-09-09 session status below is
+   unchanged and still open (deferred placements, seasonal hook,
+   routing-logic review) — this entry is only about the production
+   sync itself.
+
 ## Session status (2026-09-09, continued) — Loan & Liquidity Copilot + Tax & Inheritance Agent: two more Layer 2 modules, live on staging
 
 **What shipped:** the third and fourth Layer 2 modules —
@@ -122,8 +166,8 @@ session** — staging-only, same as Stacking.
   decoration, deployed to `main`/`gh-pages`, confirmed live via `curl`.
 
 **Next steps, in order:**
-1. **Approve for production**, or hold at staging — all four modules
-   (Concierge, Stacking, Loan, Tax) are staging-only as of this session.
+1. ~~Approve for production, or hold at staging~~ — **done**, see the
+   session status above (all four modules deployed to production).
 2. **The remaining deferred placements from the original 2-module
    brief** (Grow Your Stack widget — done; Buy Bitcoin step-0 — done;
    Bots-page section — still open; sticky-launcher awareness of
@@ -292,8 +336,9 @@ correct `href`s on both).  **Still not done**: a Bots-page section
 Stacking — the user chose only these two for this pass.
 
 **Next steps, in order:**
-1. **Approve for production**, or hold at staging for further review —
-   still staging-only as of this session.
+1. ~~Approve for production, or hold at staging for further review~~ —
+   **done**, see the top-of-file session status (all four modules
+   deployed to production).
 2. **Decide on the two remaining placements** — a Bots-page section
    (automation break-even pitch) and sticky-launcher awareness of
    Stacking — see the third same-day follow-up above for what already
