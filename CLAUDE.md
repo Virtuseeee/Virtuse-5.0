@@ -128,13 +128,38 @@ future same-page recheck: `curl` the asset/HTML directly first to settle
 whether it's a deploy problem or just a stale browser tab before
 concluding a fix didn't ship.
 
+**Third same-day follow-up — two of the three deferred placements now
+shipped (`1612a3e`):** the user asked which other placement options
+existed beyond the dedicated page + Concierge deep-link, and picked the
+homepage widget + Buy Bitcoin step-0 (the two the original brief itself
+prioritized). Both are plain links, no iframe/embed, so zero new
+render-blocking resources:
+- `index.html`'s "How Virtuse Works" step 4 card ("Grow Your Stack")
+  now carries the brief's exact copy ("Set your rhythm, compare every
+  partner's fees, automate with Bots.") plus a "Plan my stack →" CTA
+  into `stacking.html?utm_medium=widget` — replacing its previous
+  generic description, with a subtle orange highlight (`.how-card-stack`)
+  so it reads as the interactive one of the four steps.
+- `buy-bitcoin.html` gained a new "step 0" section between "How It
+  Works" and the partner comparison grid — "How much — and how often —
+  do you want to buy?" + the same CTA, styled consistently with
+  `index.html`'s existing `.concierge-banner` pattern (own scoped
+  `.stack-step0*` classes, not shared — each top-level page still
+  duplicates its own `<style>` block per this repo's convention).
+
+Verified locally and live on staging (`curl` + browser, both desktop and
+375px mobile, no new console errors beyond the pre-existing GTM one,
+correct `href`s on both).  **Still not done**: a Bots-page section
+(automation break-even angle) and any sticky-launcher awareness of
+Stacking — the user chose only these two for this pass.
+
 **Next steps, in order:**
 1. **Approve for production**, or hold at staging for further review —
-   this session's user decision was staging-only.
-2. **Decide on the deferred placements** from the original brief (Grow
-   Your Stack widget, Buy Bitcoin step-0 section, Bots page section,
-   sticky-launcher awareness of Stacking) — none of that shipped this
-   session, all still just the original prompt's spec.
+   still staging-only as of this session.
+2. **Decide on the two remaining placements** — a Bots-page section
+   (automation break-even pitch) and sticky-launcher awareness of
+   Stacking — see the third same-day follow-up above for what already
+   shipped.
 3. **Marketing/SEO review** — `stacking.html` is `noindex` for the same
    reason `concierge.html` was: not yet reviewed.
 4. ~~Human review of `stacking.ts`'s `FEE_SCHEDULE`~~ — **done**, see the
