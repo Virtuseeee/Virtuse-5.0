@@ -2,6 +2,138 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-09, continued) — Loan & Liquidity Copilot + Tax & Inheritance Agent: two more Layer 2 modules, live on staging
+
+**What shipped:** the third and fourth Layer 2 modules —
+[`loan.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/loan.html) (Loan &
+Liquidity Copilot: sell-vs-borrow calculator, liquidation watch,
+scenario matrix) and
+[`tax-agent.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/tax-agent.html)
+(Tax & Inheritance Agent: 11-country tax overview + inheritance
+readiness check) — same pattern as `concierge.html`/`stacking.html`:
+standalone static pages, `noindex` for now, English only. Source:
+`src/lib/loan.ts` + `src/lib/tax.ts` (both untouched, per the brief's
+constraint) and lightly adapted `src/pages/Loan.tsx` / `Tax.tsx`, pulled
+from the same `/Users/rasvas/Documents/kimi/tasks/2026-09-07/10-24-04-da2d695b/bitcoin-concierge/`
+handoff project as Stacking, merged into the canonical
+`virtuse-concierge-deploy` source alongside the other two — that
+project now builds all **four** modules as separate Vite entries
+(`index.html`/`stacking.html`/`tax-agent.html`/`loan.html`).
+
+**Scope, per explicit user confirmation**: both new modules built
+together (not staggered), placement limited to the dedicated pages
+themselves plus Concierge deep-links only (no category-page embeds,
+no sticky-launcher changes) — same narrow slice Stacking got. Concierge's
+result cards gained two more deep-links alongside buy's existing
+"Simulate my plan": `goal=loan` → "Compare sell vs. borrow" into
+`loan.html?amount=<bucket>` (pre-fills "cash needed"); `goal=tax` or
+`goal=custody` → "Check my country's rules" into
+`tax-agent.html?country=<id>` (pre-selects the matching country tab —
+Concierge and Tax share the same 11-country id set, verified: `pl` →
+Poland's 19% flat rate pre-selected correctly).
+
+**A near-miss worth its own callout — a real page was almost
+overwritten.** The module is internally called "Tax & Inheritance
+Agent," and the natural filename, `tax.html`, is **already the site's
+real "Bitcoin Tax Reporting" category page** — 1215 lines, full
+nav/styles, `hreflang` for 5 languages (en/sk/uk/cs/ru). An early step
+this session `Write`'d straight over it without checking first. Caught
+immediately (the harness's own "file changed since you last read it"
+diff made the mismatch obvious — a 1215-line real page collapsing to a
+46-line module shell), fixed with `git checkout` before anything was
+committed, and the module was deployed instead at `tax-agent.html`, a
+filename chosen specifically to not collide with any real site page.
+**The lesson, now a standing rule for every future Layer 2 module**:
+before writing a new page to this repo, check the *site's own existing
+pages* for that filename — `ls "Kimi_Agent_Virtuse%20MiCA%20Partners/<name>.html"`
+or equivalent — not just whether the deploy source's own `dist/`
+already produces it. `loan.html` was genuinely free (verified via `git
+log` on the path before use, the same check that should have run for
+`tax.html` first); a plural `loans.html` category page doesn't exist
+either, but a singular `loan.html` easily could have if this site ever
+grows one.
+
+**Shared-chunk rebuild, now across four pages**: `concierge.html`'s and
+`stacking.html`'s own asset hashes changed *again* in this same commit,
+even though neither module's own code changed — Vite's chunk-splitting
+now extracts `arrow-left-*.js` (the back-button icon, shared by 3 of
+the 4 pages), `shield-check-*.js` (Concierge + Tax), `table-*.js`
+(Stacking + Loan), and `triangle-alert-*.js` (Tax + Loan) as their own
+shared chunks alongside the existing `button-*.js`/`.css`. All ten
+files live together in `concierge-assets/` — expect this list to keep
+growing (and old hashes to keep needing deletion, both locally and on
+gh-pages) with every future module. **This is the same manual-upkeep
+gotcha as before, now sharper**: adding or rebuilding *any one* module
+can silently change the asset references needed by *all four* HTML
+files, not just the one that changed — always rebuild and check every
+page's actual `dist/*.html` output before assuming only the touched
+module's `<script src=...>` needs updating.
+
+**Deploy verification, this session:** local build (`npm run build`,
+`tsc -b` clean) → full loan-goal and custody-goal Concierge chat flows
+clicked through in a real local browser session to their respective
+deep links, confirmed correct query params and correct pre-fill on the
+target page → regression-checked Concierge and Stacking still render
+correctly after the shared-chunk rebuild (Stacking's "saves you €19"
+copy-bug fix from earlier this session still correct) → UTM decoration
+confirmed on both new pages' partner links → no console errors beyond
+the pre-existing GTM `ga-audiences` one → no horizontal overflow at
+375px on either new page, including Loan's scenario-matrix table →
+committed to `main` (`571a4d5`) → synced to `gh-pages` via the existing
+worktree pattern (`12e9595`) → `curl`+browser-verified live on
+`staging.virtuse.com`, **including an explicit check that the real
+`tax.html` category page still serves its original content** ("Bitcoin
+Tax Reporting", not the module). **Production was not touched this
+session** — staging-only, same as Stacking.
+
+**Two more real issues found, deliberately not fixed (flagged, per the
+brief's "don't rework the logic" constraint):**
+- `loan.ts`'s `FIREFISH_URL` constant is `'https://virtuse.com/'`, not
+  Firefish's real affiliate link, despite the loan-verdict CTA saying
+  "Get a Bitcoin-backed loan via Firefish." Firefish's real URL already
+  exists in `concierge.ts`
+  (`app.firefish.io/auth/sign-up?ref=virtuseloan`) — this should be a
+  trivial fix once approved, since the real link is already vetted and
+  used elsewhere in the same codebase.
+- `tax.ts`'s `PARTNER_LINKS.unchained` and `.coinfirm` both point at
+  `virtuse.com` URLs. Confirmed via `grep` that neither "Coinfirm" nor
+  "Unchained" appear anywhere in `tax.html` or `secure.html` — the same
+  invented-partner pattern the Concierge catalog had before its
+  `075fde8` rewrite (see the 2026-09-08 session status). Unlike
+  Firefish, there's no obvious real substitute already sitting in
+  `concierge.ts` for either of these — tax.html's real tax-report
+  partners are Blockpit/Koinly/CoinTracking/Divly (none of which do
+  audit reports via a "Coinfirm"-style service), and secure.html's real
+  custody partners are Trezor/Ledger/Blockstream (none offer a
+  multisig-inheritance-vault product like the "Unchained-style vault"
+  described). Fixing this one may need an actual product decision, not
+  just a find-and-replace to an already-known real URL.
+
+**Next steps, in order:**
+1. **Approve for production**, or hold at staging — all four modules
+   (Concierge, Stacking, Loan, Tax) are staging-only as of this session.
+2. **Decide on fixing `FIREFISH_URL`** — likely a quick, low-risk fix
+   once approved (the real URL is already known and already used
+   elsewhere).
+3. **Decide on `tax.ts`'s Coinfirm/Unchained links** — needs a product
+   decision (what does Virtuse actually want to route these to?), not
+   just a URL swap.
+4. **The remaining deferred placements from the original 2-module
+   brief** (Grow Your Stack widget — done; Buy Bitcoin step-0 — done;
+   Bots-page section — still open; sticky-launcher awareness of
+   Stacking — still open) plus this 4-module brief's own placement
+   items that were explicitly out of scope this pass: Loans-category
+   embed (item D8), Custody-category inheritance section (item E11),
+   and the Q1 tax-season seasonal hook (item E12).
+5. **Marketing/SEO review** — all four pages are `noindex` for the same
+   reason `concierge.html` was: none reviewed yet.
+6. **Human review of `stacking.ts`'s `FEE_SCHEDULE`** — already done,
+   see the 2026-09-09 (first) session status below. `loan.ts`/`tax.ts`'s
+   equivalent partner-identity review is #2/#3 above; nobody has yet
+   reviewed whether either module's underlying *logic* (sell-vs-borrow
+   verdict thresholds, inheritance-readiness scoring weights) is sound,
+   separate from the partner-link issue.
+
 ## Session status (2026-09-09) — Stacking Strategist (DCA module): dedicated page, deep-linked from Concierge, live on staging
 
 **What shipped:** the second Layer 2 prototype module, "Stacking
@@ -884,17 +1016,33 @@ contact to Resend and sends a welcome email
 for how this was discovered/fixed/extended, and `cloudflare-worker/README.md`
 + `email/README.md` for the full system.
 
-**Bitcoin Concierge**: a rule-based partner-matching chat prototype,
-live sitewide since 2026-09-08 as
-[`concierge.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge.html)
-(dedicated page) plus a sticky launcher bubble
+**Layer 2 modules**: four small rule-based/calculator tools, each a
+dedicated static page reachable directly or via deep-links from
+Bitcoin Concierge's result cards — **Bitcoin Concierge**
+([`concierge.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge.html),
+live sitewide since 2026-09-08, plus a sticky launcher bubble
 ([`concierge-launcher.js`](Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-launcher.js))
-on every EN top-level page, and hero/banner CTAs on the homepage. Its
-source (a separate React/Vite project) lives **outside this repo** at
+on every EN top-level page and hero/banner CTAs on the homepage),
+**Stacking Strategist**
+([`stacking.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/stacking.html),
+DCA projection + fee arbitrage, live since 2026-09-09, plus a homepage
+widget and a Buy Bitcoin "step 0" section), **Loan & Liquidity Copilot**
+([`loan.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/loan.html),
+sell-vs-borrow calculator, live since 2026-09-09), and **Tax &
+Inheritance Agent**
+([`tax-agent.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/tax-agent.html)
+— note the `-agent` suffix: `tax.html` itself is the real, separate
+"Bitcoin Tax Reporting" category page, live since 2026-09-09). All four
+are `noindex` (not yet marketing/SEO-reviewed) and English-only. Their
+shared source (a separate React/Vite project building all four as
+independent Vite entries) lives **outside this repo** at
 `~/Documents/virtuse-concierge-deploy/bitcoin-concierge/` — only the
-production build output (`concierge-assets/`) is committed here. See the
-2026-09-08 session status above for the full rollout, the bugs found
-along the way, and what a future prototype rebuild needs to repeat.
+production build output (`concierge-assets/`, shared across all four
+pages) is committed here. See the 2026-09-08 and 2026-09-09 session
+statuses above for the full rollout history, the bugs found along the
+way (including a near-miss where a new module's build almost overwrote
+the real `tax.html`), and what a future prototype rebuild needs to
+repeat.
 
 ## Working with this repo
 
