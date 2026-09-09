@@ -2,6 +2,97 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-09) — Stacking Strategist (DCA module): dedicated page, deep-linked from Concierge, live on staging
+
+**What shipped:** the second Layer 2 prototype module, "Stacking
+Strategist" (DCA projection + partner fee arbitrage table), deployed as
+[`stacking.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/stacking.html) —
+same pattern as `concierge.html`: standalone static page, `noindex` for
+now, English only. Source: `src/lib/stacking.ts` (untouched, per the
+brief's constraint) + a lightly adapted `src/pages/Stacking.tsx`, both
+pulled from a **separate, older** Kimi handoff at
+`/Users/rasvas/Documents/kimi/tasks/2026-09-07/10-24-04-da2d695b/bitcoin-concierge/`
+(this one bundled *both* modules; only Stacking was new — Concierge was
+already live from the 2026-09-08 session's own, different source at
+`~/Documents/virtuse-concierge-deploy/`) and merged into that canonical
+`virtuse-concierge-deploy` project alongside the existing Concierge
+code, which is now the **single source of truth for both modules**.
+
+**Scope was deliberately narrowed** from the original two-module brief
+([`prompt-pre-claude-nasadenie-2-moduly.md`](/Users/rasvas/Documents/kimi/tasks/2026-09-07/10-24-04-da2d695b/prompt-pre-claude-nasadenie-2-moduly.md),
+predates the actual Concierge rollout) to just: (1) the Stacking page
+itself, and (2) a deep-link from Concierge's buy-goal result cards
+("Simulate my plan →") that carries the visitor's amount bucket over as
+`?amount=s|m|l|xl`, which Stacking reads on load to pre-fill its
+lump-sum/contribution sliders (verified: `amount=m` → €500 initial /
+€100 contribution). **Not done, still open**: the brief's other
+placements (Grow-Your-Stack homepage widget, Buy-Bitcoin "step 0"
+section, Bots-page section, sitewide launcher awareness of Stacking),
+full i18n scaffolding for the module, and a GitHub Action to automate
+the main→gh-pages sync — all explicitly deferred, not forgotten.
+
+**Build mechanics — the deploy source is now a two-entry Vite build**,
+not a single SPA: `vite.config.ts`'s `build.rollupOptions.input` lists
+both `index.html` (Concierge) and `stacking.html` (Stacking) as
+separate entries, each with its own `main.tsx`/`main-stacking.tsx` (the
+Stacking entry skips `BrowserRouter` — it has no internal routes).
+Vite's chunk-splitting now produces a **shared** `button-*.js`/`.css`
+chunk both pages load alongside their own entry chunk — this is why
+`concierge.html`'s own asset hashes changed in this same commit even
+though nothing about Concierge itself changed; both pages' assets now
+live together in `concierge-assets/` (not a separate `stacking-assets/`
+— they share a chunk, so one folder). **Same manual-upkeep gotcha as
+Concierge applies, now to both pages at once**: any future rebuild of
+either module means re-copying whichever hashed files changed and
+hand-editing the `<script>`/`<link>` lines in *both* `concierge.html`
+and `stacking.html`, and deleting whichever old hashed files became
+orphaned (this session's rebuild orphaned the original
+`index-D2oNk2-L.js`/`index-BAqhd-t6.css` pair — deleted, both locally
+and on gh-pages).
+
+**A real issue found, deliberately not fixed (out of scope this pass):**
+`stacking.ts`'s `FEE_SCHEDULE` — untouched per the brief's "don't rework
+the logic, report errors instead" constraint — routes to "Banxa" and
+"MiCA-licensed CASP", names that read exactly like the kind of invented
+placeholder partners the Concierge catalog had *before* its `075fde8`
+real-partner rewrite (see the 2026-09-08 session status). Unlike
+Concierge, Stacking's fee table isn't tied to individual partner
+identity in the same way (its `url` fields point back to virtuse.com
+category pages like `buy-bitcoin.html`/`bots.html`, not out to a named
+partner's own site), so it's a softer version of the same problem — but
+worth the same scrutiny before this page leaves `noindex`. **Flag this
+to the user before doing any further work on `stacking.ts`, don't
+silently rewrite it** — same rule that applied to `concierge.ts` until
+the user explicitly asked for that fix.
+
+**Deploy verification, this session:** local build (`npm run build`,
+`tsc -b` clean) → local static-server click-through (Concierge's full
+buy-flow → result card → "Simulate my plan" → Stacking pre-filled
+correctly; UTM on Stacking's own partner-route link correctly inherits
+`utm_medium` from the incoming query string; `stacking_route_click`
+dataLayer event confirmed via console; 375px viewport, no horizontal
+overflow) → committed to `main` (`c04a745`) → synced to `gh-pages` via
+the existing worktree pattern (`a0bb4a2`) → `curl`+browser-verified live
+on `staging.virtuse.com` (both pages 200, correct asset hashes resolve,
+old orphaned hashes 404, no new console errors beyond the pre-existing
+GTM `ga-audiences` one). **Production was explicitly not touched this
+session** — user chose staging-only for this deploy; production sync
+(SFTP, same two-step new-file dance as any changed/new file — see the
+Webglobe gotchas below) is still open whenever it's approved.
+
+**Next steps, in order:**
+1. **Approve for production**, or hold at staging for further review —
+   this session's user decision was staging-only.
+2. **Decide on the deferred placements** from the original brief (Grow
+   Your Stack widget, Buy Bitcoin step-0 section, Bots page section,
+   sticky-launcher awareness of Stacking) — none of that shipped this
+   session, all still just the original prompt's spec.
+3. **Human review of `stacking.ts`'s `FEE_SCHEDULE`** — same class of
+   issue as the Concierge partner-catalog bug, not yet fixed (see above,
+   explicitly deferred pending user sign-off, don't fix silently).
+4. **Marketing/SEO review** — `stacking.html` is `noindex` for the same
+   reason `concierge.html` was: not yet reviewed.
+
 ## Session status (2026-09-08) — Bitcoin Concierge rollout: dedicated page, sticky launcher, hero/banner CTAs, live on all 3 targets
 
 **What shipped:** a pre-built React/Vite prototype ("Bitcoin Concierge"
