@@ -80,6 +80,39 @@ session** — user chose staging-only for this deploy; production sync
 (SFTP, same two-step new-file dance as any changed/new file — see the
 Webglobe gotchas below) is still open whenever it's approved.
 
+**Same-day follow-up — Stacking now recommends only real partners too
+(`097fb75`):** the user explicitly asked to fix the "Banxa"/"MiCA-licensed
+CASP" issue flagged above. `FEE_SCHEDULE` was rebuilt around 4 real
+partners already on virtuse.com, each with its real affiliate URL
+(reused from `concierge.ts`'s already-vetted catalog):
+**21bitcoin** (Auto-Invest plan, 0 % fees — genuinely published, and
+genuinely automated, so it doubles as the "set & forget" option),
+**ByBit EU** (Spot trading, fees from 0.1 % — published), **Kraken**
+(Pro trading, fees from 0.16 % — published), and **RevenueBot**
+(Automated DCA/grid bot — no public per-trade fee exists, so this row's
+number stays explicitly ILLUSTRATIVE, flagged in its own note, rather
+than inventing a precise figure). `bestRoute()`'s reasons/breakEven copy
+was rewritten around the new ids; `Stacking.tsx`'s remaining "Virtuse
+Bots" references (intro line, CTA button label) were swapped for the
+real names — CTA now reads "Start Auto-Invest" when 21bitcoin wins (which
+it does at every contribution level, since 0 % genuinely beats every
+other row) or "Automate with RevenueBot" when RevenueBot wins. Rebuilt,
+verified locally and live on staging (`stacking.html`'s script src →
+new `stacking-DFmHQBw0.js`, old `stacking-LnKahpxQ.js` removed both
+locally and on gh-pages; UTM-decorated real affiliate link confirmed:
+`21bitcoin.app.link/...?code=VIRTUSE&utm_source=stacking&...`).
+
+**New issue found and flagged, not fixed (out of scope for this pass):**
+the "recommended route" card's *"Staying on the cheapest route saves you
+X per year in fees vs the average of the other routes"* line computes X
+as `advice.winner.annualDrag` — the winner's **own** annual fee — not an
+actual savings-vs-average calculation. This bug predates this session
+(it was already wrong for the old fake catalog, just less visible), but
+21bitcoin's real 0 % makes it read as "saves you €0" — a materially
+confusing statement for what is actually the best result on the page.
+Needs a decision on what comparison that line should actually show
+before it's fixed.
+
 **Next steps, in order:**
 1. **Approve for production**, or hold at staging for further review —
    this session's user decision was staging-only.
@@ -87,11 +120,15 @@ Webglobe gotchas below) is still open whenever it's approved.
    Your Stack widget, Buy Bitcoin step-0 section, Bots page section,
    sticky-launcher awareness of Stacking) — none of that shipped this
    session, all still just the original prompt's spec.
-3. **Human review of `stacking.ts`'s `FEE_SCHEDULE`** — same class of
-   issue as the Concierge partner-catalog bug, not yet fixed (see above,
-   explicitly deferred pending user sign-off, don't fix silently).
+3. **Fix the "saves you €0" copy bug** flagged just above — needs a
+   decision on the right comparison (vs. the priciest row? vs. the mean
+   of the non-winning rows?) before touching the code.
 4. **Marketing/SEO review** — `stacking.html` is `noindex` for the same
    reason `concierge.html` was: not yet reviewed.
+5. ~~Human review of `stacking.ts`'s `FEE_SCHEDULE`~~ — **done**, see the
+   same-day follow-up above; the remaining review item is #4 (whether the
+   routing/ranking *logic*, not just partner identity, is sound) plus the
+   RevenueBot row's still-illustrative fee once they publish real pricing.
 
 ## Session status (2026-09-08) — Bitcoin Concierge rollout: dedicated page, sticky launcher, hero/banner CTAs, live on all 3 targets
 
