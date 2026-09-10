@@ -2857,5 +2857,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script>
+// Fix: hero CTA anchors (#services, #how-it-works) are intercepted by
+// the page's smooth-scroll script with preventDefault() and never
+// create a history entry -- so pressing the browser Back button after
+// clicking one skips past this page entirely, landing wherever the
+// visitor came from (often a different language's homepage). Push a
+// real history entry on click so Back returns to this page instead.
+// Scoped to .hero-buttons only, not every in-page anchor sitewide.
+(function () {
+  document.querySelectorAll('.hero-buttons a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { history.pushState(null, '', a.getAttribute('href')); } catch (err) { /* ignore */ }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
