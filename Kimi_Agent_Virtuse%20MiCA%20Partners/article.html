@@ -130,6 +130,12 @@ img{max-width:100%;display:block}
 .more-section{max-width:1200px;margin:0 auto;padding:72px 48px 90px}
 .section-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:24px}
 .more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+.article-consult-cta{max-width:900px;margin:0 auto;padding:0 48px 90px;text-align:center}
+.article-consult-cta-box{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:48px 40px}
+.article-consult-cta-box h2{font-size:26px;font-weight:800;margin-bottom:10px}
+.article-consult-cta-box p{color:var(--text-muted);font-size:15px;margin-bottom:26px;max-width:52ch;margin-left:auto;margin-right:auto}
+@media(max-width:640px){.article-consult-cta{padding:0 24px 70px}.article-consult-cta-box{padding:36px 24px}}
 .blog-card{display:flex;flex-direction:column;background:var(--dark-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
 .blog-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
 .blog-card-media{overflow:hidden;flex-shrink:0}
@@ -480,6 +486,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="more-section">
   <div class="section-label" id="moreLabel">Continue Reading</div>
   <div class="more-grid" id="moreGrid"></div>
+</section>
+
+<section class="article-consult-cta">
+  <div class="article-consult-cta-box">
+    <h2>Not sure what applies to you?</h2>
+    <p>A few quick questions help us prepare a free 15-minute consultation tailored to your situation — takes under 2 minutes.</p>
+    <button type="button" class="nav-cta" data-consultation-trigger data-consultation-lang="en">Book Free Consultation</button>
+  </div>
 </section>
 
 <section class="newsletter">
@@ -1046,5 +1060,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script src="concierge-launcher.js" defer></script>
+<script src="consultation-widget.js" defer></script>
 </body>
 </html>

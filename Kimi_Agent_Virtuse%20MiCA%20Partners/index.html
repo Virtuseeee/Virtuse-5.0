@@ -1987,10 +1987,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hero-buttons">
-        <a href="#services" class="btn-primary">
-          Explore the Hub — Free
+        <button type="button" class="btn-primary" data-consultation-trigger data-consultation-lang="en">
+          Book Free Consultation
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        </button>
         <a href="#how-it-works" class="btn-secondary how-it-works-cta">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           See How It Works
@@ -2924,5 +2924,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script src="concierge-launcher.js" defer></script>
+<script src="consultation-widget.js" defer></script>
+<script>
+// Fix: hero CTA anchors (#how-it-works, etc.) are intercepted by the
+// page's smooth-scroll script with preventDefault() and never create a
+// history entry -- so pressing the browser Back button after clicking
+// one skips past this page entirely, landing wherever the visitor came
+// from (often a different language's homepage). Push a real history
+// entry on click so Back returns to this page instead. Scoped to
+// .hero-buttons only, not every in-page anchor sitewide.
+(function () {
+  document.querySelectorAll('.hero-buttons a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { history.pushState(null, '', a.getAttribute('href')); } catch (err) { /* ignore */ }
+    });
+  });
+})();
+</script>
 </body>
 </html>
