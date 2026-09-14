@@ -4,7 +4,7 @@
     {
       "name": "static-site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8000", "--directory", "Kimi_Agent_Virtuse MiCA Partners"],
+      "runtimeArgs": ["-m", "http.server", "8000", "--directory", "Kimi_Agent_Virtuse%20MiCA%20Partners"],
       "port": 8000
     }
   ]
