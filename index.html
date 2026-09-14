@@ -1991,10 +1991,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Book Free Consultation
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <a href="#how-it-works" class="btn-secondary how-it-works-cta">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          See How It Works
-        </a>
         <a href="concierge.html?utm_source=concierge&utm_medium=hero" class="btn-secondary concierge-hero-cta">
           Find Best Service
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2903,22 +2899,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
-  });
-})();
-</script>
-
-<!-- ===== SEE HOW IT WORKS: SMOOTH SCROLL ===== -->
-<script>
-(function () {
-  var btn = document.querySelector('.how-it-works-cta');
-  var target = document.getElementById('how-it-works');
-  if (!btn || !target) return;
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    var nav = document.querySelector('.nav');
-    var offset = (nav ? nav.offsetHeight : 0) + 16;
-    var top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
   });
 })();
 </script>
