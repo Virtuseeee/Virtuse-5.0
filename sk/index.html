@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -201,7 +201,7 @@ body {
 .stat-number { font-size: 28px; font-weight: 800; }
 .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-.hero-buttons { display: flex; gap: 16px; margin-bottom: 40px; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
 
 .btn-primary {
   background: var(--btc-orange); color: white; border: none; padding: 14px 32px;
@@ -758,6 +758,23 @@ body {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+/* Step 4 doubles as a promo for the Stacking Strategist module */
+.how-card-stack {
+  border-color: rgba(247,147,26,0.35);
+  background: linear-gradient(180deg, var(--dark-card), rgba(247,147,26,0.05));
+}
+
+.how-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--btc-orange);
+  text-decoration: none;
 }
 
 /* ===== PARTNER LOGOS ===== */
@@ -1923,6 +1940,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Ako to funguje
         </a>
+        <a href="concierge.html?utm_source=concierge&utm_medium=hero" class="btn-secondary concierge-hero-cta">
+          Nájsť najlepšiu službu
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
 
       <div class="hero-trust">
@@ -2176,10 +2197,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3>Zostaňte pánom situácie</h3>
       <p>Váš Bitcoin zostáva vo vašej peňaženke. Virtuse nikdy nedrží vaše kľúče, vaše prostriedky ani vaše dáta. Nikdy.</p>
     </div>
-    <div class="how-card">
+    <div class="how-card how-card-stack">
       <div class="how-num">4</div>
       <h3>Rozšírte svoj stack</h3>
-      <p>Využívajte službu (či už ide o nákup, ťažbu alebo pôžičku) a sledujte, ako vaša Bitcoin pozícia postupne rastie.</p>
+      <p>Nastavte si rytmus, porovnajte poplatky všetkých partnerov, automatizujte s Botmi.</p>
+      <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget" class="how-card-cta">
+        Naplánovať si stack
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -2851,5 +2876,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script src="../concierge-launcher.js" defer></script>
 </body>
 </html>

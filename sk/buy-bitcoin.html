@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -189,6 +189,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+/* ===== STACKING "STEP 0" (above the partner comparison) ===== */
+.stack-step0 {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+}
+
+.stack-step0-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(90deg, rgba(247,147,26,0.07), rgba(247,147,26,0.02));
+}
+
+.stack-step0-text h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.stack-step0-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+.stack-step0-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0b0b0c;
+  background: var(--btc-orange);
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+
+.stack-step0-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.stack-step0-cta:hover { filter: brightness(1.08); }
+.stack-step0-cta:hover svg { transform: translateX(3px); }
+
+@media (max-width: 700px) {
+  .stack-step0 { padding: 0 24px; margin-bottom: 32px; }
+  .stack-step0-inner { flex-direction: column; text-align: center; padding: 24px; }
 }
 
 /* ===== PARTNERS ===== */
@@ -971,6 +1026,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ===== STACKING "STEP 0" ===== -->
+<section class="stack-step0">
+  <div class="stack-step0-inner">
+    <div class="stack-step0-text">
+      <h3>Koľko — a ako často — chcete kupovať?</h3>
+      <p>Porovnajte poplatky všetkých partnerov pri vašej sume ešte pred výberom, so Stacking Strategist.</p>
+    </div>
+    <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget" class="stack-step0-cta">
+      Naplánovať si stack
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
 <!-- ===== PARTNERS ===== -->
 <section class="partners">
   <div class="sec-header">
@@ -1393,5 +1462,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script src="../concierge-launcher.js" defer></script>
 </body>
 </html>
