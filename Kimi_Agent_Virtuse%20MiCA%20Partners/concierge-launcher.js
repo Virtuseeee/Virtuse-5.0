@@ -1,10 +1,17 @@
 /*
  * Virtuse Bitcoin Concierge — sticky launcher (sitewide).
  *
- * A small floating bubble, bottom-right, on every EN top-level page.
- * Clicking it opens the Concierge (concierge.html) in an embedded
- * overlay panel via <iframe> — full screen on mobile, a fixed-size
- * panel (~620px tall) on desktop.
+ * A small floating bubble, bottom-right, on every top-level EN and SK
+ * page. Clicking it opens the Concierge (concierge.html / sk/concierge.html)
+ * in an embedded overlay panel via <iframe> — full screen on mobile, a
+ * fixed-size panel (~620px tall) on desktop.
+ *
+ * Bilingual: reads <html lang> at build time (same file, no separate
+ * sk variant needed) to pick EN or SK bubble/close copy. The iframe
+ * target itself needs no language branching either — 'concierge.html'
+ * is a same-directory relative path, so from sk/index.html it already
+ * resolves to sk/concierge.html (a real sibling file), and from a root
+ * EN page it resolves to the root concierge.html.
  *
  * Perf: this script is meant to be loaded with `defer`. It only ever
  * builds the (cheap) bubble button eagerly; the iframe itself — the
@@ -18,14 +25,31 @@
  * avoid colliding with a page's own styles or the legacy AngularJS
  * bundle on the homepage.
  *
- * Include as a deferred script near the end of <body> (or in <head>
- * with `defer`) on every top-level EN page:
- *   <script src="concierge-launcher.js" defer></script>
- * Pages under sk//uk//cs/ are out of scope for this MVP rollout — see
- * CLAUDE.md's Concierge session notes.
+ * Include as a deferred script near the end of <body>:
+ *   root EN pages:  <script src="concierge-launcher.js" defer></script>
+ *   sk/ pages:      <script src="../concierge-launcher.js" defer></script>
+ * uk//cs/ pages are still out of scope for this rollout.
  */
 (function () {
   'use strict';
+
+  var LANG = document.documentElement.lang === 'sk' ? 'sk' : 'en';
+  var COPY = {
+    en: {
+      bubbleAria: 'Open Bitcoin Concierge — which Bitcoin service is right for me?',
+      bubbleTitle: 'Which Bitcoin service is right for me?',
+      bubbleSub: 'Free · No sign-up · We never hold your keys',
+      closeAria: 'Close Bitcoin Concierge',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+    sk: {
+      bubbleAria: 'Otvoriť Bitcoin Concierge — ktorá Bitcoin služba je pre mňa tá pravá?',
+      bubbleTitle: 'Ktorá Bitcoin služba je pre mňa tá pravá?',
+      bubbleSub: 'Zadarmo · Bez registrácie · Nikdy nedržíme vaše kľúče',
+      closeAria: 'Zavrieť Bitcoin Concierge',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+  }[LANG];
 
   function init() {
     injectStyles();
@@ -91,12 +115,12 @@
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'vc-bubble';
-    btn.setAttribute('aria-label', 'Open Bitcoin Concierge — which Bitcoin service is right for me?');
+    btn.setAttribute('aria-label', COPY.bubbleAria);
     btn.innerHTML =
       '<span class="vc-bubble-icon">₿</span>' +
       '<span class="vc-bubble-copy">' +
-      '<span class="vc-bubble-title">Which Bitcoin service is right for me?</span>' +
-      '<span class="vc-bubble-sub">Free · No sign-up · We never hold your keys</span>' +
+      '<span class="vc-bubble-title">' + COPY.bubbleTitle + '</span>' +
+      '<span class="vc-bubble-sub">' + COPY.bubbleSub + '</span>' +
       '</span>';
     return btn;
   }
@@ -112,7 +136,7 @@
     var close = document.createElement('button');
     close.type = 'button';
     close.className = 'vc-close';
-    close.setAttribute('aria-label', 'Close Bitcoin Concierge');
+    close.setAttribute('aria-label', COPY.closeAria);
     close.innerHTML = '✕';
     close.addEventListener('click', function () {
       closeOverlay(overlay);
@@ -120,7 +144,7 @@
 
     var iframe = document.createElement('iframe');
     iframe.src = resolveConciergeUrl() + '?utm_source=concierge&utm_medium=launcher';
-    iframe.title = 'Virtuse Bitcoin Concierge';
+    iframe.title = COPY.iframeTitle;
     iframe.loading = 'lazy';
 
     panel.appendChild(close);
@@ -138,11 +162,11 @@
   }
 
   function resolveConciergeUrl() {
-    // Root-level pages -> concierge.html next to them. Any page nested
-    // one level deep (mining_deploy/, buybitcoin/, hero/ deploy
-    // variants) would need '../concierge.html' — out of scope for this
-    // MVP rollout (top-level EN pages only), so a single relative path
-    // is correct here.
+    // Same-directory relative path: root EN pages -> concierge.html next
+    // to them, sk/ pages -> sk/concierge.html next to them (a real
+    // sibling file, not the EN one). Deploy variants nested one level
+    // deep with no concierge.html sibling of their own (mining_deploy/,
+    // buybitcoin/, hero/) are still out of scope for this rollout.
     return 'concierge.html';
   }
 
