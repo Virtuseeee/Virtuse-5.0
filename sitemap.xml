@@ -1653,4 +1653,406 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/fear-greed.html"/>
   </url>
+<!-- SEO-BUILD:START -->
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/czechia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/czechia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/tschechien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/czechia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/tschechien/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/czechia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/tschechien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/czechia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/slovakia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/slowakei/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/slovakia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/slowakei/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/slowakei/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/slovakia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/poland/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/poland/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/polen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/poland/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/polen/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/poland/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/polen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/poland/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/austria/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/austria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/oesterreich/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/austria/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/oesterreich/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/austria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/oesterreich/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/austria/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/germany/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/germany/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/deutschland/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/germany/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/deutschland/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/germany/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/deutschland/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/germany/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/hungary/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/hungary/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/ungarn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/hungary/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/ungarn/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/hungary/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/ungarn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/hungary/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/slovenia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/slovenia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/slowenien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/slovenia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/slowenien/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/slovenia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/slowenien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/slovenia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/croatia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/croatia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/kroatien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/croatia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/kroatien/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/croatia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/kroatien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/croatia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/romania/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/romania/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/rumaenien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/romania/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/rumaenien/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/romania/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/rumaenien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/romania/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/bulgaria/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/bulgaria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/bulgarien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/bulgaria/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/bulgarien/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/bulgaria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/bulgarien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/bulgaria/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-tax/netherlands/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/netherlands/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/niederlande/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/netherlands/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-steuern/niederlande/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-tax/netherlands/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-steuern/niederlande/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-tax/netherlands/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/czechia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/czechia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/czechia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/slovakia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/slovakia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/poland/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/poland/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/poland/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/austria/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/austria/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/austria/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/germany/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/germany/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/germany/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/hungary/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/hungary/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/hungary/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/slovenia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/slovenia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/slovenia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/croatia/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/croatia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/croatia/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/romania/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/romania/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/romania/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/bulgaria/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/bulgaria/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/bulgaria/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/buy-bitcoin/netherlands/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/buy-bitcoin/netherlands/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/buy-bitcoin/netherlands/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-dca-calculator/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-dca-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-dca-rechner/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-dca-calculator/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-dca-rechner/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-dca-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-dca-rechner/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-dca-calculator/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/sell-vs-borrow-bitcoin/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/sell-vs-borrow-bitcoin/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-verkaufen-oder-beleihen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/sell-vs-borrow-bitcoin/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-verkaufen-oder-beleihen/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/sell-vs-borrow-bitcoin/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-verkaufen-oder-beleihen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/sell-vs-borrow-bitcoin/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-inheritance/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-inheritance/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-erbrecht/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-inheritance/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-erbrecht/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-inheritance/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-erbrecht/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-inheritance/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-fee-index/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-fee-index/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-gebuehrenindex/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-fee-index/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/de/bitcoin-gebuehrenindex/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-fee-index/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/bitcoin-gebuehrenindex/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-fee-index/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-fee-index/2026-q3/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-fee-index/2026-q3/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-fee-index/2026-q3/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-fee-index/methodology/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-fee-index/methodology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-fee-index/methodology/"/>
+  </url>
+  <url>
+    <loc>https://staging.virtuse.com/bitcoin-fee-index/embed/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staging.virtuse.com/bitcoin-fee-index/embed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/bitcoin-fee-index/embed/"/>
+  </url>
+<!-- SEO-BUILD:END -->
 </urlset>
