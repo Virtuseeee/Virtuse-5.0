@@ -9,6 +9,17 @@
  * always wins after that — the auto-redirect never fires again for that
  * visitor once they've picked a language themselves.
  *
+ * The check also only ever runs ONCE per browser tab/session
+ * (sessionStorage flag, separate from the localStorage explicit-choice
+ * flag above). Without this, any full page reload -- e.g. clicking a CTA
+ * that navigates to another page (concierge.html, an external partner
+ * link, etc.) and then pressing the browser Back button, which doesn't
+ * always restore from bfcache -- reran this whole script from scratch on
+ * every load, with no memory of "already auto-redirect-checked this
+ * visitor," so a Slovak-locale browser got bounced back to /sk/ over and
+ * over on every reload even after the visitor had clearly navigated to
+ * (and stayed on) an English/other-language page. Fixed 2026-09-10.
+ *
  * Include as the FIRST <script> in <head>, right after the CSP/referrer
  * meta tags and before the GTM snippet, so the redirect (if any) happens
  * before the page paints. Root pages: <script src="lang-detect.js">.
@@ -44,9 +55,19 @@
     try { localStorage.setItem(STORAGE_KEY, el.getAttribute('lang')); } catch (err) { /* ignore */ }
   }, true);
 
+  var SESSION_KEY = 'vtLangChecked';
+
   try {
     // An explicit prior choice always wins — no auto-redirect.
     if (localStorage.getItem(STORAGE_KEY)) return;
+
+    // Only ever auto-redirect-check once per tab/session. Mark it
+    // checked up front (regardless of what happens below) so a later
+    // reload in this same tab -- back/forward navigation, clicking a CTA
+    // that navigates away and returning, etc. -- never re-fires this.
+    var alreadyChecked = sessionStorage.getItem(SESSION_KEY);
+    try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (err) { /* ignore */ }
+    if (alreadyChecked) return;
 
     var browserLang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
     var targetLang = null;
