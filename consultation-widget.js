@@ -237,6 +237,109 @@
         experienced: { tag: 'Konzultácia pre skúsenejších', note: 'Prejdeme si kategórie možností do väčšej hĺbky.' },
         tailored: { tag: 'Konzultácia na mieru', note: 'Pripravíme si kontext na základe tvojich odpovedí.' }
       }
+    },
+    cs: {
+      introEyebrow: 'Bezplatná konzultace',
+      introHeadline: 'Zjisti, co je pro tebe relevantní, než si zarezervuješ hovor.',
+      introBody: 'Pár krátkých otázek nám pomůže připravit konzultaci přesně na tvoji situaci — trvá to necelé 2 minuty.',
+      startLabel: 'Začít',
+      finePrint: 'Toto není investiční poradenství. Virtuse nedrží ani nezprostředkovává klientská aktiva.',
+      continueLabel: 'Pokračovat',
+      skipLabel: 'Přeskočit',
+      backLabel: '← Zpět',
+      resultHeadline: 'Máme dost na to, abychom hovor připravili.',
+      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme affiliate partnerství — rozhodnutí o alokaci je vždy na tobě.',
+      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, custody, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Na hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
+      bookLabel: 'Rezervovat 15min konzultaci',
+      restartLabel: 'Vyplnit znovu',
+      closeLabel: 'Zavřít',
+      dialogLabel: 'Virtuse Konzultace',
+      stepOf: function (n, total, label) { return n + ' / ' + total + ' — ' + label; },
+      questions: [
+        {
+          label: 'Cíl',
+          headline: 'Co je tvým hlavním důvodem zájmu o krypto-aktiva?',
+          options: [
+            'Jen se chci informovat / rozumět tomu',
+            'Chci diverzifikovat mimo tradiční aktiva',
+            'Hledám dlouhodobý růst kapitálu',
+            'Zajímá mě pasivní příjem (staking a pod.)'
+          ]
+        },
+        {
+          label: 'Zkušenost',
+          headline: 'Jaká je tvoje současná zkušenost s krypto-aktivy?',
+          options: [
+            'Žádná, jsem úplný začátečník',
+            'Základní — vlastním něco, ale nerozumím detailům',
+            'Pokročilá — aktivně obchoduji / investuji',
+            'Profesionální — pracuji v odvětví'
+          ]
+        },
+        {
+          label: 'Kapitál',
+          headline: 'Jaký je přibližný rozsah kapitálu, který zvažuješ alokovat?',
+          options: [
+            'Do 5 000 €',
+            '5 000 – 50 000 €',
+            '50 000 – 250 000 €',
+            'Nad 250 000 €'
+          ]
+        },
+        {
+          label: 'Horizont',
+          headline: 'Na jaký časový horizont uvažuješ?',
+          options: [
+            'Méně než 1 rok',
+            '1 – 3 roky',
+            '3 – 5 let',
+            '5+ let'
+          ]
+        },
+        {
+          label: 'Zapojení',
+          headline: 'Jak bys chtěl(a) být zapojen(a) do rozhodování?',
+          options: [
+            'Chci si to řídit úplně sám/sama, jen potřebuji informace',
+            'Chci podporu a vysvětlení možností, rozhodnutí dělám sám/sama',
+            'Chci co nejvíc „hands-off" řešení'
+          ]
+        },
+        {
+          label: 'Zájmy',
+          type: 'multi',
+          headline: 'Jaká témata bys chtěl(a) na hovoru probrat?',
+          sublabel: 'Můžeš vybrat víc možností — nebo pokračuj bez výběru.',
+          options: [
+            'Nákup / prodej Bitcoinu',
+            'Mining',
+            'Custody / úschova aktiv',
+            'Treasury management pro firmu',
+            'Daňové aspekty',
+            'Automatizovaní boti / algo-obchodování',
+            'DCA (pravidelné investování)',
+            'Jiné / všeobecný přehled'
+          ]
+        }
+      ],
+      // English wording, exactly matching Calendly's custom-question
+      // checkbox option text -- required so a1 maps correctly into the
+      // booking regardless of which language answered the quiz.
+      calendlyTopicLabels: [
+        'Buy / sell Bitcoin',
+        'Mining',
+        'Custody / asset safekeeping',
+        'Corporate treasury management',
+        'Tax aspects',
+        'Automated bots / algo-trading',
+        'DCA (recurring investing)'
+      ],
+      segments: {
+        handsoff: { tag: 'Pečlivě připravená konzultace', note: 'Probereme, jak přesně funguje náš affiliate model — bez správy aktiv z naší strany.' },
+        intro: { tag: 'Úvodní / vzdělávací konzultace', note: 'Zaměříme se na základy — žádný tlak na rozhodnutí.' },
+        experienced: { tag: 'Konzultace pro zkušenější', note: 'Projdeme si kategorie možností do větší hloubky.' },
+        tailored: { tag: 'Konzultace na míru', note: 'Připravíme si kontext na základě tvých odpovědí.' }
+      }
     }
   };
 
