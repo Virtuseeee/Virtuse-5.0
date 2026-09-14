@@ -1,17 +1,19 @@
 /*
  * Virtuse Bitcoin Concierge — sticky launcher (sitewide).
  *
- * A small floating bubble, bottom-right, on every top-level EN and SK
- * page. Clicking it opens the Concierge (concierge.html / sk/concierge.html)
- * in an embedded overlay panel via <iframe> — full screen on mobile, a
- * fixed-size panel (~620px tall) on desktop.
+ * A small floating bubble, bottom-right, on every top-level EN, SK and
+ * CS page. Clicking it opens the Concierge (concierge.html /
+ * sk/concierge.html / cs/concierge.html) in an embedded overlay panel
+ * via <iframe> — full screen on mobile, a fixed-size panel (~620px
+ * tall) on desktop.
  *
- * Bilingual: reads <html lang> at build time (same file, no separate
- * sk variant needed) to pick EN or SK bubble/close copy. The iframe
+ * Trilingual: reads <html lang> at build time (same file, no separate
+ * sk/cs variant needed) to pick EN/SK/CS bubble/close copy. The iframe
  * target itself needs no language branching either — 'concierge.html'
- * is a same-directory relative path, so from sk/index.html it already
- * resolves to sk/concierge.html (a real sibling file), and from a root
- * EN page it resolves to the root concierge.html.
+ * is a same-directory relative path, so from sk/index.html or
+ * cs/index.html it already resolves to that folder's own sibling
+ * concierge.html, and from a root EN page it resolves to the root
+ * concierge.html.
  *
  * Perf: this script is meant to be loaded with `defer`. It only ever
  * builds the (cheap) bubble button eagerly; the iframe itself — the
@@ -28,12 +30,15 @@
  * Include as a deferred script near the end of <body>:
  *   root EN pages:  <script src="concierge-launcher.js" defer></script>
  *   sk/ pages:      <script src="../concierge-launcher.js" defer></script>
- * uk//cs/ pages are still out of scope for this rollout.
+ *   cs/ pages:      <script src="../concierge-launcher.js" defer></script>
+ * uk/ pages are still out of scope for this rollout.
  */
 (function () {
   'use strict';
 
-  var LANG = document.documentElement.lang === 'sk' ? 'sk' : 'en';
+  var LANG = document.documentElement.lang === 'sk' || document.documentElement.lang === 'cs'
+    ? document.documentElement.lang
+    : 'en';
   var COPY = {
     en: {
       bubbleAria: 'Open Bitcoin Concierge — which Bitcoin service is right for me?',
@@ -47,6 +52,13 @@
       bubbleTitle: 'Ktorá Bitcoin služba je pre mňa tá pravá?',
       bubbleSub: 'Zadarmo · Bez registrácie · Nikdy nedržíme vaše kľúče',
       closeAria: 'Zavrieť Bitcoin Concierge',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+    cs: {
+      bubbleAria: 'Otevřít Bitcoin Concierge — která Bitcoin služba je pro mě ta pravá?',
+      bubbleTitle: 'Která Bitcoin služba je pro mě ta pravá?',
+      bubbleSub: 'Zdarma · Bez registrace · Nikdy nedržíme vaše klíče',
+      closeAria: 'Zavřít Bitcoin Concierge',
       iframeTitle: 'Virtuse Bitcoin Concierge',
     },
   }[LANG];
@@ -163,10 +175,11 @@
 
   function resolveConciergeUrl() {
     // Same-directory relative path: root EN pages -> concierge.html next
-    // to them, sk/ pages -> sk/concierge.html next to them (a real
-    // sibling file, not the EN one). Deploy variants nested one level
-    // deep with no concierge.html sibling of their own (mining_deploy/,
-    // buybitcoin/, hero/) are still out of scope for this rollout.
+    // to them, sk/ and cs/ pages -> their own folder's sibling
+    // concierge.html (a real file, not the EN one). Deploy variants
+    // nested one level deep with no concierge.html sibling of their
+    // own (mining_deploy/, buybitcoin/, hero/) are still out of scope
+    // for this rollout.
     return 'concierge.html';
   }
 
