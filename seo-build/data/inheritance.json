@@ -1,0 +1,48 @@
+{
+  "source": "Extracted from shipped Layer 2 tax bundle (concierge-assets/main-tax-CWE3nxTZ.js inheritance checklist). English strings unaltered.",
+  "asOf": "2026-Q3",
+  "items": [
+    {
+      "id": "letter",
+      "question": "Do your heirs have written instructions (a \"letter of instruction\")?",
+      "detail": "A document that says what exists, where things are, and what to do – without containing any seed words itself.",
+      "points": 20,
+      "action": "Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney."
+    },
+    {
+      "id": "separation",
+      "question": "Are your keys geographically separated?",
+      "detail": "Never all backups in one home. Fire, theft or flood should never be able to destroy access.",
+      "points": 20,
+      "action": "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent."
+    },
+    {
+      "id": "heir-aware",
+      "question": "Does at least one heir know your bitcoin exists and where to start?",
+      "detail": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
+      "points": 15,
+      "action": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction."
+    },
+    {
+      "id": "multisig",
+      "question": "Do you use multisig (2-of-3) instead of a single seed phrase?",
+      "detail": "A single seed is a single point of failure – for you and for your heirs.",
+      "points": 20,
+      "action": "Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one."
+    },
+    {
+      "id": "tested",
+      "question": "Have you tested recovery with a small amount?",
+      "detail": "An untested inheritance procedure is a hypothesis, not a plan.",
+      "points": 15,
+      "action": "Do a full recovery drill on a small UTXO, with your heir watching, once a year."
+    },
+    {
+      "id": "accounts",
+      "question": "Are exchange accounts, loans and automated plans documented?",
+      "detail": "Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.",
+      "points": 15,
+      "action": "Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction."
+    }
+  ]
+}

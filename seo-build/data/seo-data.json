@@ -1,0 +1,147 @@
+{
+  "asOf": "2026-Q3",
+  "lastmod": "2026-09-01",
+  "countries": [
+    {
+      "id": "cz",
+      "name": "Czechia",
+      "flag": "🇨🇿",
+      "gainTax": "15 % income tax (23 % above threshold)",
+      "exemption": "Tax-free after 3-year holding (time test)",
+      "filing": "Annual personal tax return",
+      "note": "Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one."
+    },
+    {
+      "id": "sk",
+      "name": "Slovakia",
+      "flag": "🇸🇰",
+      "gainTax": "19 % income tax (25 % above threshold)",
+      "exemption": "Tax-free after 1-year holding; occasional-income allowance €500/yr",
+      "filing": "Annual personal tax return",
+      "note": "Separate bank account for crypto activity makes reporting dramatically easier."
+    },
+    {
+      "id": "pl",
+      "name": "Poland",
+      "flag": "🇵🇱",
+      "gainTax": "19 % flat capital gains tax",
+      "exemption": "No holding-period exemption",
+      "filing": "Annual PIT-38",
+      "note": "Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss."
+    },
+    {
+      "id": "at",
+      "name": "Austria",
+      "flag": "🇦🇹",
+      "gainTax": "27.5 % KESt (capital gains tax)",
+      "exemption": "Gains tax-free after 1-year holding (private investors)",
+      "filing": "Annual tax return",
+      "note": "Staking and lending rewards are taxed when received, not when sold."
+    },
+    {
+      "id": "de",
+      "name": "Germany",
+      "flag": "🇩🇪",
+      "gainTax": "Up to 45 % income tax (progressive)",
+      "exemption": "0 % after 1-year holding (private-sale exemption)",
+      "filing": "Annual tax return",
+      "note": "Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical."
+    },
+    {
+      "id": "hu",
+      "name": "Hungary",
+      "flag": "🇭🇺",
+      "gainTax": "15 % capital gains tax",
+      "exemption": "No holding-period exemption",
+      "filing": "Annual personal income tax return",
+      "note": "Documented acquisition costs are deductible – keep every invoice."
+    },
+    {
+      "id": "si",
+      "name": "Slovenia",
+      "flag": "🇸🇮",
+      "gainTax": "Progressive, up to ~50 % on disposal gains",
+      "exemption": "No general holding exemption",
+      "filing": "Annual personal income tax return",
+      "note": "Cryptocurrency gains are treated as income; verify current guidance with a local advisor."
+    },
+    {
+      "id": "hr",
+      "name": "Croatia",
+      "flag": "🇭🇷",
+      "gainTax": "12 % on digital-asset gains (2025; 10 % in 2024)",
+      "exemption": "No holding-period exemption",
+      "filing": "Annual tax return",
+      "note": "Digital-asset regime is new (2024+) – rules are still being interpreted in practice."
+    },
+    {
+      "id": "ro",
+      "name": "Romania",
+      "flag": "🇷🇴",
+      "gainTax": "10 % income tax on crypto gains",
+      "exemption": "No holding-period exemption",
+      "filing": "Annual return (income from other sources)",
+      "note": "10 % is among the lowest flat rates in the EU – deduct your cost basis."
+    },
+    {
+      "id": "bg",
+      "name": "Bulgaria",
+      "flag": "🇧🇬",
+      "gainTax": "10 % flat tax on gains",
+      "exemption": "No holding-period exemption",
+      "filing": "Annual tax return",
+      "note": "Low flat rate; keep exchange statements for audit-ready records."
+    },
+    {
+      "id": "nl",
+      "name": "Netherlands",
+      "flag": "🇳🇱",
+      "gainTax": "Box 3 wealth tax on deemed return (~36 % on fictional yield)",
+      "exemption": "Tax-free allowance (~€57k per person, 2025)",
+      "filing": "Annual Box 3 declaration",
+      "note": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules."
+    }
+  ],
+  "feeSchedule": [
+    {
+      "partner": "Banxa",
+      "method": "Card",
+      "pct": 0.045,
+      "fixed": 0.0,
+      "note": "Instant, highest fee – fine for small or urgent buys",
+      "speed": "Instant"
+    },
+    {
+      "partner": "Banxa",
+      "method": "SEPA bank",
+      "pct": 0.029,
+      "fixed": 0.0,
+      "note": "Slower settlement, meaningfully cheaper than card",
+      "speed": "1–2 days"
+    },
+    {
+      "partner": "MiCA-licensed CASP",
+      "method": "SEPA + limit order",
+      "pct": 0.006,
+      "fixed": 0.0,
+      "note": "Trading fee ~0.6 %, tight spread on deep EUR books; SEPA-in free",
+      "speed": "Same day"
+    },
+    {
+      "partner": "Virtuse Bots",
+      "method": "Automated DCA",
+      "pct": 0.004,
+      "fixed": 0.0,
+      "note": "0.4 % + €4/month subscription – aggregated DCA orders; wins on larger recurring amounts",
+      "speed": "Set & forget"
+    }
+  ],
+  "moduleCtas": {
+    "tax": "/tax.html",
+    "stacking": "/stacking.html",
+    "loan": "/loan.html",
+    "concierge": "/concierge.html",
+    "alerts": "/alerts.html",
+    "private": "/private.html"
+  }
+}

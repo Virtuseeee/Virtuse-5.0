@@ -1,0 +1,36 @@
+name: SEO build verify
+
+# Read-only check. Does not deploy to gh-pages or production.
+# Staging remains the existing manual worktree copy (see seo-build/README.md).
+
+on:
+  pull_request:
+    paths:
+      - 'seo-build/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/sitemap.xml'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/robots.txt'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/llms.txt'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/llms-full.txt'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/bitcoin-tax/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/buy-bitcoin/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/bitcoin-fee-index/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/bitcoin-dca-calculator/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/bitcoin-inheritance/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/sell-vs-borrow-bitcoin/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/de/**'
+  push:
+    paths:
+      - 'seo-build/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate and verify SEO HTML
+        run: node seo-build/generate.mjs && node seo-build/verify.mjs
+      - name: Fail if generate created a dirty tree
+        run: git diff --exit-code -- 'Kimi_Agent_Virtuse%20MiCA%20Partners' seo-build/manifest.json

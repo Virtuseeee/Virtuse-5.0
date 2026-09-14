@@ -1,0 +1,14 @@
+{
+  "name": "virtuse-seo-build",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic static HTML generator for Virtuse programmatic SEO (EN + DE pilot).",
+  "scripts": {
+    "build": "node generate.mjs",
+    "verify": "node verify.mjs",
+    "build:verify": "node generate.mjs && node verify.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
