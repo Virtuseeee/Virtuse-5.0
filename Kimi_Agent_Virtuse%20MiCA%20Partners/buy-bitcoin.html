@@ -248,6 +248,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .stack-step0-inner { flex-direction: column; text-align: center; padding: 24px; }
 }
 
+.seo-guides {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+}
+.seo-guides-inner {
+  padding: 20px 32px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.seo-guides p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+.seo-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.seo-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.seo-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .seo-guides { padding: 0 24px; }
+  .seo-guides-inner { padding: 20px 24px; }
+}
+
 .partners {
   padding: 0 48px var(--section-spacing);
   max-width: 1200px;
@@ -1043,6 +1085,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ===== COUNTRY BUY GUIDES + FEE TOOLS ===== -->
+<nav class="seo-guides" aria-label="Country buy guides and fee tools">
+  <div class="seo-guides-inner">
+    <p>Country buy pages, DCA projection, and the published fee ranking.</p>
+    <div class="seo-guides-links">
+      <a href="/buy-bitcoin/slovakia/">Buy in Slovakia</a>
+      <a href="/buy-bitcoin/czechia/">Buy in Czechia</a>
+      <a href="/buy-bitcoin/germany/">Buy in Germany</a>
+      <a href="/bitcoin-dca-calculator/">DCA calculator</a>
+      <a href="/bitcoin-fee-index/">Fee Index</a>
+    </div>
+  </div>
+</nav>
+
 <!-- ===== PARTNERS ===== -->
 <section class="partners">
   <div class="sec-header">
@@ -1294,6 +1350,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Company</h4>
         <a href="about.html">About Us</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tools &amp; guides</h4>
+        <a href="/buy-bitcoin/slovakia/">Buy in Slovakia</a>
+        <a href="/buy-bitcoin/czechia/">Buy in Czechia</a>
+        <a href="/buy-bitcoin/germany/">Buy in Germany</a>
+        <a href="/bitcoin-dca-calculator/">DCA calculator</a>
+        <a href="/bitcoin-fee-index/">Fee Index</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
