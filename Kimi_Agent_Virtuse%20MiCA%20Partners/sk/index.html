@@ -1465,6 +1465,18 @@ body {
   .hero-buttons .btn-secondary { justify-content: center; width: 100%; }
 }
 
+/* SK's longer button labels ("Rezervovať bezplatnú konzultáciu") can
+   exceed the row's available width before hitting the stacked-column
+   breakpoint above, dropping the second button to its own line. Keep
+   both buttons on one row through this gap by letting them shrink
+   (and their text wrap to a second line inside the button) instead of
+   the whole button wrapping to a new row. */
+@media (min-width: 501px) and (max-width: 720px) {
+  .hero-buttons { flex-wrap: nowrap; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary { min-width: 0; text-align: center; }
+}
+
 /* ===== UNIFIED CTA SYSTEM ===== */
 
 a.nav-logo, .nav-logo {
