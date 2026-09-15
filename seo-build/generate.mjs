@@ -17,7 +17,9 @@ import {
   toRoot,
   canonicalPath,
   assertTitle,
-  assertDescription
+  assertDescription,
+  resolveSiteOrigin,
+  rewriteKnownOrigins
 } from './lib/util.mjs';
 import { rankRoutes, cheapest, breakEvenBotsVsManual, DEFAULT_CONTRIBUTIONS, routeCost } from './lib/fees.mjs';
 import { renderPage, CHROME } from './lib/html.mjs';
@@ -32,7 +34,7 @@ const meta = JSON.parse(fs.readFileSync(path.join(DATA, 'meta.json'), 'utf8'));
 const inheritance = JSON.parse(fs.readFileSync(path.join(DATA, 'inheritance.json'), 'utf8'));
 const liveFees = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-schedule-live.json'), 'utf8'));
 
-const ORIGIN = meta.site.origin;
+const ORIGIN = resolveSiteOrigin(meta.site.origin);
 const AS_OF = seoData.asOf;
 const LASTMOD = seoData.lastmod;
 const CTAS = seoData.moduleCtas;
@@ -1391,8 +1393,40 @@ Disallow: /seo-build/
 Disallow: /cloudflare-worker/
 Disallow: /email/
 Disallow: /bitcoin-fee-index/2026-q3/print.html`;
-  if (txt.includes('Disallow: /seo-build/')) return txt;
-  return txt.replace(/Allow: \/\n/, `Allow: /\n${extra}\n`);
+  let out = txt;
+  if (!out.includes('Disallow: /seo-build/')) {
+    out = out.replace(/Allow: \/\n/, `Allow: /\n${extra}\n`);
+  }
+  const sitemapLine = `Sitemap: ${ORIGIN}/sitemap.xml`;
+  if (/^Sitemap:\s*\S+/m.test(out)) {
+    out = out.replace(/^Sitemap:\s*\S+/m, sitemapLine);
+  } else {
+    out = `${out.trimEnd()}\n\n${sitemapLine}\n`;
+  }
+  return out;
+}
+
+function walkPublishedFiles(dir, acc = []) {
+  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (
+      ent.name === 'i18n-tools' ||
+      ent.name === 'research' ||
+      ent.name === 'partnerships' ||
+      ent.name === 'node_modules'
+    ) continue;
+    const fp = path.join(dir, ent.name);
+    if (ent.isDirectory()) walkPublishedFiles(fp, acc);
+    else if (/\.(html|xml|txt)$/.test(ent.name)) acc.push(fp);
+  }
+  return acc;
+}
+
+function rewritePublishedOrigins() {
+  for (const fp of walkPublishedFiles(SITE)) {
+    const before = fs.readFileSync(fp, 'utf8');
+    const after = rewriteKnownOrigins(before, ORIGIN);
+    if (after !== before) fs.writeFileSync(fp, after, 'utf8');
+  }
 }
 
 function writeAll() {
@@ -1420,11 +1454,17 @@ function writeAll() {
   files.push('llms.txt', 'llms-full.txt');
 
   const sitemapPath = path.join(SITE, 'sitemap.xml');
-  const sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  const sitemap = rewriteKnownOrigins(fs.readFileSync(sitemapPath, 'utf8'), ORIGIN);
   fs.writeFileSync(sitemapPath, patchSitemap(sitemap), 'utf8');
 
   const robotsPath = path.join(SITE, 'robots.txt');
-  fs.writeFileSync(robotsPath, patchRobots(fs.readFileSync(robotsPath, 'utf8')), 'utf8');
+  fs.writeFileSync(
+    robotsPath,
+    patchRobots(rewriteKnownOrigins(fs.readFileSync(robotsPath, 'utf8'), ORIGIN)),
+    'utf8'
+  );
+
+  rewritePublishedOrigins();
 
   const counts = {
     enIndexable: generated.filter((p) => p.lang === 'en' && !p.noindex).length,
@@ -1436,6 +1476,7 @@ function writeAll() {
   const manifest = {
     generatedAtAsOf: AS_OF,
     lastmod: LASTMOD,
+    origin: ORIGIN,
     feeSource: meta.feeSource,
     counts,
     files
@@ -1446,4 +1487,5 @@ function writeAll() {
 
 const manifest = writeAll();
 console.log(JSON.stringify(manifest.counts, null, 2));
+console.log(`origin ${ORIGIN}`);
 console.log(`Wrote ${manifest.files.length} files into ${SITE_DIR_NAME}`);

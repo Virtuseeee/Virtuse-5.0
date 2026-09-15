@@ -30,9 +30,21 @@ Same input JSON always produces the same HTML. Numbers are not invented at gener
 | `data/seo-data.json` | Exact brief JSON: 11 country tax strings, placeholder fee schedule, module CTAs |
 | `data/fee-schedule-live.json` | **Used for published Fee Index / buy / DCA pages.** Extracted from the shipped Stacking bundle (`main-stacking-*.js`). Partners: 21bitcoin, ByBit EU, Kraken, RevenueBot. Numbers unaltered. |
 | `data/inheritance.json` | Tax module inheritance checklist (English strings unaltered) |
-| `data/meta.json` | Slugs, German names/translations, origin, `feeSource` |
+| `data/meta.json` | Slugs, German names/translations, production origin (`https://virtuse.com`), `feeSource` |
 
 `meta.feeSource` is `"live"`. Set it to anything else only if you intentionally want the brief’s Banxa / “MiCA-licensed CASP” / “Virtuse Bots” placeholder table in indexable HTML (not recommended: those names were already replaced in the live Stacking module).
+
+## Site origin
+
+Default canonical origin is **`https://virtuse.com`** (`data/meta.json` → `site.origin`). Generate writes that host into sitemap `<loc>`, the robots `Sitemap:` line, `llms.txt` / `llms-full.txt`, and canonical / OG / JSON-LD / hreflang on generated pages. It also rewrites leftover `staging.virtuse.com` hosts on existing published HTML in the site folder (hreflang, `og:url`, `og:image`).
+
+Staging override:
+
+```bash
+SITE_ORIGIN=https://staging.virtuse.com node seo-build/generate.mjs
+```
+
+Do not commit a staging origin. `verify.mjs` fails if the default origin is not `https://virtuse.com` or if sitemap / robots / llms still mention `staging.virtuse.com`.
 
 ## URL map (approved)
 

@@ -6,11 +6,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SITE_DIR_NAME, wordCount } from './lib/util.mjs';
+import { SITE_DIR_NAME, wordCount, DEFAULT_ORIGIN, resolveSiteOrigin } from './lib/util.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(path.dirname(ROOT), SITE_DIR_NAME);
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8'));
+const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/meta.json'), 'utf8'));
+const ORIGIN = resolveSiteOrigin(meta.site.origin);
 
 const errors = [];
 const warnings = [];
@@ -120,14 +122,19 @@ const indexableDe = manifest.counts.deIndexable;
 if (indexableEn < 30) fail(`EN indexable ${indexableEn} < 30`);
 if (indexableDe < 13) fail(`DE indexable ${indexableDe} < 13`);
 
+if (!process.env.SITE_ORIGIN && ORIGIN !== DEFAULT_ORIGIN) {
+  fail(`default origin must be ${DEFAULT_ORIGIN} (got ${ORIGIN}; set SITE_ORIGIN to override)`);
+}
+
 const sitemap = fs.readFileSync(path.join(SITE, 'sitemap.xml'), 'utf8');
 if (!sitemap.includes('SEO-BUILD:START')) fail('sitemap.xml missing SEO-BUILD markers');
 const sampleUrls = [
-  `${JSON.parse(fs.readFileSync(path.join(ROOT, 'data/meta.json'), 'utf8')).site.origin}/bitcoin-tax/czechia/`,
-  `${JSON.parse(fs.readFileSync(path.join(ROOT, 'data/meta.json'), 'utf8')).site.origin}/de/bitcoin-steuern/deutschland/`,
-  `${JSON.parse(fs.readFileSync(path.join(ROOT, 'data/meta.json'), 'utf8')).site.origin}/bitcoin-fee-index/`,
-  `${JSON.parse(fs.readFileSync(path.join(ROOT, 'data/meta.json'), 'utf8')).site.origin}/bitcoin-dca-calculator/`,
-  `${JSON.parse(fs.readFileSync(path.join(ROOT, 'data/meta.json'), 'utf8')).site.origin}/sell-vs-borrow-bitcoin/`
+  `${ORIGIN}/bitcoin-tax/czechia/`,
+  `${ORIGIN}/de/bitcoin-steuern/deutschland/`,
+  `${ORIGIN}/bitcoin-fee-index/`,
+  `${ORIGIN}/bitcoin-dca-calculator/`,
+  `${ORIGIN}/sell-vs-borrow-bitcoin/`,
+  `${ORIGIN}/index.html`
 ];
 for (const u of sampleUrls) {
   if (!sitemap.includes(`<loc>${u}</loc>`)) fail(`sitemap missing ${u}`);
@@ -135,12 +142,39 @@ for (const u of sampleUrls) {
 
 const robots = fs.readFileSync(path.join(SITE, 'robots.txt'), 'utf8');
 if (!robots.includes('Disallow: /seo-build/')) fail('robots.txt missing internal disallows');
-if (!robots.includes('Sitemap:')) fail('robots.txt missing Sitemap');
+if (!robots.includes(`Sitemap: ${ORIGIN}/sitemap.xml`)) {
+  fail(`robots.txt Sitemap must be ${ORIGIN}/sitemap.xml`);
+}
 
 for (const f of ['llms.txt', 'llms-full.txt']) {
   const t = fs.readFileSync(path.join(SITE, f), 'utf8');
   if (t.length < 400) fail(`${f} too short`);
   if (!t.includes('never holds')) fail(`${f} missing keys disclaimer`);
+  if (!t.includes(`${ORIGIN}/bitcoin-tax/`)) fail(`${f} missing origin ${ORIGIN}`);
+}
+
+const seoOutputs = [
+  'sitemap.xml',
+  'robots.txt',
+  'llms.txt',
+  'llms-full.txt',
+  'bitcoin-tax/czechia/index.html',
+  'bitcoin-fee-index/index.html',
+  'bitcoin-dca-calculator/index.html'
+];
+if (ORIGIN !== 'https://staging.virtuse.com') {
+  for (const rel of seoOutputs) {
+    const t = fs.readFileSync(path.join(SITE, rel), 'utf8');
+    if (t.includes('staging.virtuse.com')) fail(`${rel} still contains staging.virtuse.com`);
+  }
+}
+
+const canonicalSample = fs.readFileSync(path.join(SITE, 'bitcoin-dca-calculator/index.html'), 'utf8');
+if (!canonicalSample.includes(`rel="canonical" href="${ORIGIN}/bitcoin-dca-calculator/"`)) {
+  fail('DCA canonical does not use the resolved origin');
+}
+if (!canonicalSample.includes(`property="og:url" content="${ORIGIN}/bitcoin-dca-calculator/"`)) {
+  fail('DCA og:url does not use the resolved origin');
 }
 
 // Fee index live
@@ -175,6 +209,7 @@ const after = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
 if (!before.equals(after)) fail('generate is not deterministic (fee-index HTML changed)');
 
 console.log(JSON.stringify({
+  origin: ORIGIN,
   htmlFiles: htmlFiles.length,
   enHtml: en,
   deHtml: de,

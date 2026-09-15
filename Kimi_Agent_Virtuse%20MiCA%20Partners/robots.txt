@@ -8,4 +8,4 @@ Disallow: /cloudflare-worker/
 Disallow: /email/
 Disallow: /bitcoin-fee-index/2026-q3/print.html
 
-Sitemap: https://staging.virtuse.com/sitemap.xml
+Sitemap: https://virtuse.com/sitemap.xml

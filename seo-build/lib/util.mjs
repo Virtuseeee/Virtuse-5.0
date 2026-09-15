@@ -1,5 +1,36 @@
 export const SITE_DIR_NAME = 'Kimi_Agent_Virtuse%20MiCA%20Partners';
 
+/** Production canonical origin. Override with SITE_ORIGIN for staging builds. */
+export const DEFAULT_ORIGIN = 'https://virtuse.com';
+
+const KNOWN_ORIGINS = [
+  'https://staging.virtuse.com',
+  'https://virtuse.com'
+];
+
+export function normalizeOrigin(raw) {
+  const value = String(raw || DEFAULT_ORIGIN).trim().replace(/\/+$/, '');
+  if (!/^https:\/\/[A-Za-z0-9.-]+$/.test(value)) {
+    throw new Error(
+      `Invalid origin "${raw}". Use an https host with no path, e.g. ${DEFAULT_ORIGIN}`
+    );
+  }
+  return value;
+}
+
+export function resolveSiteOrigin(metaOrigin, env = process.env) {
+  return normalizeOrigin(env.SITE_ORIGIN || metaOrigin || DEFAULT_ORIGIN);
+}
+
+/** Rewrite known Virtuse hosts to the active origin. Longer hosts first. */
+export function rewriteKnownOrigins(text, origin) {
+  let out = String(text);
+  for (const host of KNOWN_ORIGINS) {
+    if (host !== origin) out = out.split(host).join(origin);
+  }
+  return out;
+}
+
 export function esc(value) {
   return String(value)
     .replace(/&/g, '&amp;')

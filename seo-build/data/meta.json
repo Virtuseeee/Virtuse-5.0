@@ -1,6 +1,6 @@
 {
   "site": {
-    "origin": "https://staging.virtuse.com",
+    "origin": "https://virtuse.com",
     "name": "Virtuse",
     "legalName": "Virtuse Group",
     "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
