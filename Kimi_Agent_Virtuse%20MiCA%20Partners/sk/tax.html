@@ -96,6 +96,29 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 .eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
 .eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
 
+/* Country SEO guides + Tax Agent */
+.tax-guides { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
+.tax-guides-inner { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 32px 40px; }
+.tax-guides h2 { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+.tax-guides-lead { font-size: 15px; color: #8b949e; line-height: 1.6; margin: 0 0 18px; }
+.tax-guides-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.tax-guides-links a {
+  background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 13px; font-weight: 600;
+  padding: 8px 14px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2);
+}
+.tax-guides-links a:hover { border-color: rgba(247, 147, 26,0.5); background: rgba(247, 147, 26,0.14); }
+.tax-guides-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  color: #0b0b0c; background: #f7931a; margin-right: 14px; margin-bottom: 10px;
+}
+.tax-guides-cta:hover { filter: brightness(1.08); color: #0b0b0c; }
+.tax-guides-de { display: inline-block; font-size: 13px; font-weight: 600; color: #8b949e; }
+.tax-guides-de a { color: #f7931a; }
+@media (max-width: 700px) {
+  .tax-guides-inner { padding: 24px; }
+}
+
 /* Partner Cards */
 .partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -783,6 +806,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </div>
 
+<!-- Country tax guides (SEO) -->
+<section class="tax-guides" id="tax-guides">
+<div class="tax-guides-inner">
+<h2>Daňoví sprievodcovia podľa krajiny</h2>
+<p class="tax-guides-lead">Orientačné prehľady 2026 pre 11 krajín EÚ a kontrolný zoznam dedenia. Nie je to daňové poradenstvo.</p>
+<div class="tax-guides-links">
+<a href="/bitcoin-tax/">Všetkých 11 krajín</a>
+<a href="/bitcoin-tax/slovakia/">Slovensko</a>
+<a href="/bitcoin-tax/czechia/">Česko</a>
+<a href="/bitcoin-tax/germany/">Nemecko</a>
+<a href="/bitcoin-tax/austria/">Rakúsko</a>
+<a href="/bitcoin-tax/poland/">Poľsko</a>
+<a href="/bitcoin-inheritance/">Kontrolný zoznam dedenia</a>
+</div>
+<a href="tax-agent.html" class="tax-guides-cta">Skontrolovať pravidlá mojej krajiny</a>
+<p class="tax-guides-de"><a href="/de/bitcoin-steuern/deutschland/">Auf Deutsch: Bitcoin-Steuern Deutschland</a></p>
+</div>
+</section>
+
 <!-- Partner Cards -->
 <section class="partners-section">
 <div class="section-header">
@@ -1042,6 +1084,12 @@ Spojené kráľovstvo
         <h4>Spoločnosť</h4>
         <a href="about.html">O nás</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Nástroje a sprievodcovia</h4>
+        <a href="/bitcoin-tax/">Dane z Bitcoinu</a>
+        <a href="/bitcoin-inheritance/">Dedenie</a>
+        <a href="tax-agent.html">Daňový agent</a>
       </div>
       <div class="footer-col">
         <h4>Informácie</h4>
