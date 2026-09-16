@@ -203,11 +203,11 @@ ul { list-style: none; }
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .btn:hover { background: var(--accent-hot); border-color: var(--accent-hot); }
-.btn-ghost {
+.btn.btn-ghost {
   background: transparent;
   color: var(--ink);
 }
-.btn-ghost:hover { background: var(--accent); color: var(--ink); }
+.btn.btn-ghost:hover { background: var(--accent); color: var(--ink); }
 .btn[disabled] { opacity: 0.5; cursor: default; }
 
 .nav-toggle {
@@ -272,10 +272,11 @@ ul { list-style: none; }
 
 .subscribe {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: 1fr 1.3fr;
   gap: 8px;
   max-width: 540px;
 }
+.subscribe .btn { grid-column: 1 / -1; }
 .subscribe input {
   background: var(--paper-raised);
   border: 1px solid var(--paper-line);

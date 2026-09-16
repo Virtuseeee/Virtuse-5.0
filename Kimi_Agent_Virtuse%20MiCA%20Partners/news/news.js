@@ -20,8 +20,12 @@
   };
 
   function $(id) { return document.getElementById(id); }
-  function j(url) {
-    return fetch(url).then(function (r) {
+  function j(url, ms) {
+    var opts = {};
+    if (ms && typeof AbortSignal !== 'undefined' && AbortSignal.timeout) {
+      opts.signal = AbortSignal.timeout(ms);
+    }
+    return fetch(url, opts).then(function (r) {
       if (!r.ok) throw new Error(String(r.status));
       return r.json();
     });
@@ -391,15 +395,22 @@
     });
   }
 
+  function applyIssues(list, sponsor) {
+    paintSponsor(sponsor);
+    issuesState.all = list || [];
+    paintHero(issuesState.all[0]);
+    paintArchive(true);
+  }
+
   function loadIssues() {
-    var localP = j('news/issues.json').catch(function () { return { issues: [], sponsor: null }; });
-    var wpP = j(WP + '?categories=13&per_page=12&_embed=wp:featuredmedia').catch(function () { return []; });
-    Promise.all([localP, wpP]).then(function (pair) {
-      var data = pair[0] || {};
-      paintSponsor(data.sponsor);
-      issuesState.all = mergeIssues(data.issues || [], pair[1] || []);
-      paintHero(issuesState.all[0]);
-      paintArchive(true);
+    j('news/issues.json').then(function (data) {
+      var local = (data && data.issues) || [];
+      applyIssues(local, data && data.sponsor);
+      j(WP + '?categories=13&per_page=12&_embed=wp:featuredmedia', 8000).then(function (posts) {
+        applyIssues(mergeIssues(local, posts || []), data && data.sponsor);
+      }).catch(function () { /* keep the local archive */ });
+    }).catch(function () {
+      applyIssues([], null);
     });
   }
   loadIssues();
@@ -476,7 +487,16 @@
       });
     }
     shown.forEach(function (p) { grid.appendChild(blogCard(p)); });
-    if (empty) empty.hidden = shown.length > 0;
+    if (empty) {
+      if (shown.length) {
+        empty.hidden = true;
+      } else {
+        empty.hidden = false;
+        if (blog.q || blog.topic) empty.textContent = 'No articles match that filter.';
+        else if (!blog.posts.length) empty.textContent = 'Loading the desk…';
+        else empty.textContent = 'No articles match that filter.';
+      }
+    }
   }
 
   function fetchBlog(reset) {
@@ -485,7 +505,9 @@
     if (btn) btn.disabled = true;
     var url = WP + '?categories=' + BLOG_CATS + '&per_page=' + BLOG_PAGE + '&page=' + blog.page + '&_embed=wp:featuredmedia,author';
     if (blog.q) url += '&search=' + encodeURIComponent(blog.q);
-    fetch(url).then(function (r) {
+    var opts = {};
+    if (typeof AbortSignal !== 'undefined' && AbortSignal.timeout) opts.signal = AbortSignal.timeout(10000);
+    fetch(url, opts).then(function (r) {
       blog.totalPages = parseInt(r.headers.get('X-WP-TotalPages') || '1', 10);
       if (!r.ok) throw new Error(String(r.status));
       return r.json();
@@ -498,6 +520,11 @@
       }
     }).catch(function () {
       paintBlog(false);
+      var empty = $('blogEmpty');
+      if (empty && !blog.posts.length) {
+        empty.hidden = false;
+        empty.textContent = 'Could not reach the article feed.';
+      }
       if (btn) btn.disabled = false;
     });
   }
