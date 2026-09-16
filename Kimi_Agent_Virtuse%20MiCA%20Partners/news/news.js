@@ -105,7 +105,7 @@
     });
   })();
 
-  /* —— Theme (Gazette-like toggle; persist; OS default only if unset) —— */
+  /* —— Theme (toggle only; first visit / no key is always light) —— */
   (function () {
     var KEY = 'satoshi-theme';
     var btn = $('themeToggle');
@@ -189,9 +189,12 @@
   })();
 
   /* —— Ticker + Satoshi Analytics —— */
+  var lastTickerStats = null;
+  var tickerResizeTimer = null;
   function renderTicker(stats) {
     var host = $('tickerTrack');
     if (!host) return;
+    lastTickerStats = stats;
     var parts = [
       ['BTC/USD', stats.price || '—', ''],
       ['Sats/$', stats.sats || '—', ''],
@@ -218,10 +221,40 @@
       });
       return frag;
     }
+    function trailingSep() {
+      var sep = document.createElement('span');
+      sep.className = 'ticker-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = '•';
+      return sep;
+    }
+    function makeGroup(copies) {
+      var g = document.createElement('span');
+      g.className = 'ticker-group';
+      for (var i = 0; i < copies; i++) {
+        g.appendChild(row());
+        g.appendChild(trailingSep());
+      }
+      return g;
+    }
     host.textContent = '';
-    host.appendChild(row());
-    host.appendChild(row());
+    var probe = makeGroup(1);
+    host.appendChild(probe);
+    var rowW = probe.getBoundingClientRect().width;
+    var parent = host.parentElement;
+    var viewW = parent ? parent.getBoundingClientRect().width : 1200;
+    var copies = Math.max(1, Math.ceil((viewW + 1) / Math.max(rowW, 1)));
+    host.textContent = '';
+    host.appendChild(makeGroup(copies));
+    host.appendChild(makeGroup(copies));
   }
+
+  window.addEventListener('resize', function () {
+    if (tickerResizeTimer) clearTimeout(tickerResizeTimer);
+    tickerResizeTimer = setTimeout(function () {
+      if (lastTickerStats) renderTicker(lastTickerStats);
+    }, 150);
+  });
 
   function refreshMarket() {
     var stats = { price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' };
