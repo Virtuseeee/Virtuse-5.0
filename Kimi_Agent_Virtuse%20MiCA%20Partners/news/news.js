@@ -116,18 +116,26 @@
       document.documentElement.setAttribute('data-theme', theme);
       if (persist) {
         try { localStorage.setItem(KEY, theme); } catch (e) {}
+        try { sessionStorage.setItem(KEY, theme); } catch (e) {}
       }
       if (!btn) return;
       var next = theme === 'dark' ? 'light' : 'dark';
       btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
       btn.setAttribute('title', next === 'dark' ? 'Dark theme' : 'Light theme');
     }
+    function saved() {
+      try {
+        var t = localStorage.getItem(KEY) || sessionStorage.getItem(KEY);
+        if (t === 'light' || t === 'dark') return t;
+      } catch (e) {}
+      return current();
+    }
     if (btn) {
       btn.addEventListener('click', function () {
         apply(current() === 'dark' ? 'light' : 'dark', true);
       });
     }
-    apply(current(), false);
+    apply(saved(), false);
   })();
 
   /* —— EDITION date (Europe/Bratislava, Gazette format) —— */
