@@ -1,4 +1,4 @@
-/* Virtuse News hub — ticker, pulse, dashboard, issues, WP blog, subscribe. */
+/* Satoshi desk — ticker, Pulse hero, analytics, issues, WP blog, subscribe. */
 (function () {
   'use strict';
 
@@ -18,6 +18,9 @@
     Policy: /fed|warsh|senate|congress|fomc|government|white house|policy/i,
     Macro: /debt|inflat|dollar|gold|print|peasant|credit card|macro|treasury yield/i
   };
+
+  var pulseItems = [];
+  var weeklyIssue = null;
 
   function $(id) { return document.getElementById(id); }
   function j(url, ms) {
@@ -131,7 +134,7 @@
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = 'You are on the weekly list. Check your inbox.';
+          msg.textContent = 'You are on the Satoshi list. Check your inbox.';
           msg.classList.add('ok');
         } else {
           msg.textContent = (result.data && result.data.error) || 'Could not join the list. Try again.';
@@ -147,14 +150,14 @@
     });
   })();
 
-  /* —— Ticker + dashboard —— */
+  /* —— Ticker + Satoshi Analytics —— */
   function renderTicker(stats) {
     var host = $('tickerTrack');
     if (!host) return;
     var parts = [
       ['BTC/USD', stats.price || '—', ''],
+      ['Sats/$', stats.sats || '—', ''],
       ['24h', stats.chg || '—', stats.chgClass || ''],
-      ['Dominance', stats.dom || '—', ''],
       ['Hashrate', stats.hash || '—', ''],
       ['Fees', stats.fee || '—', ''],
       ['Block', stats.height || '—', '']
@@ -183,11 +186,13 @@
   }
 
   function refreshMarket() {
-    var stats = { price: '—', chg: '—', chgClass: '', dom: '—', hash: '—', fee: '—', height: '—' };
+    var stats = { price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' };
 
     j(MP + '/v1/prices').then(function (p) {
       stats.price = usd(p.USD);
+      stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
       setText('tilePrice', stats.price);
+      setText('tileSats', stats.sats);
       renderTicker(stats);
     }).catch(function () {});
 
@@ -211,13 +216,6 @@
       });
     }).catch(function () {});
 
-    j('https://api.coingecko.com/api/v3/global').then(function (g) {
-      var d = g.data && g.data.market_cap_percentage && g.data.market_cap_percentage.btc;
-      stats.dom = d != null ? d.toFixed(1) + '%' : '—';
-      setText('tileDom', stats.dom);
-      renderTicker(stats);
-    }).catch(function () {});
-
     j(MP + '/blocks/tip/height').then(function (h) {
       stats.height = num(h);
       setText('tileHeight', stats.height);
@@ -238,40 +236,100 @@
       setText('tileHash', stats.hash);
       renderTicker(stats);
     }).catch(function () {});
+
+    j(MP + '/v1/difficulty-adjustment').then(function (d) {
+      var chg = d.difficultyChange;
+      var label = (chg == null || isNaN(chg)) ? '—' : ((chg > 0 ? '+' : '') + chg.toFixed(2) + '%');
+      setText('tileDiff', label);
+      var el = $('tileDiff');
+      if (el) { el.className = 'tile-value ' + pctClass(chg); }
+    }).catch(function () {});
   }
 
-  renderTicker({ price: '—', chg: '—', chgClass: '', dom: '—', hash: '—', fee: '—', height: '—' });
+  renderTicker({ price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' });
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* —— Pulse —— */
+  /* —— Pulse hero (Collective: featured left, three shorts right) —— */
+  function featuredOf(items) {
+    if (!items || !items.length) return null;
+    var withImg = items.filter(function (it) { return it.image; });
+    var pick = withImg[0] || items[0];
+    if (pick && !pick.image && weeklyIssue && weeklyIssue.image) {
+      return Object.assign({}, pick, { image: weeklyIssue.image });
+    }
+    return pick;
+  }
+
+  function paintFeatured(item) {
+    var card = $('pulseFeature');
+    var img = $('pulseFeatureImg');
+    var title = $('pulseFeatureTitle');
+    var dek = $('pulseFeatureDek');
+    var kicker = $('pulseFeatureKicker');
+    var cta = $('pulseFeatureCta');
+    if (!card || !item) return;
+    card.href = item.url || '#';
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    if (title) title.textContent = item.title || '';
+    if (dek) dek.textContent = item.excerpt || '';
+    if (kicker) kicker.textContent = item.source || 'Satoshi Pulse';
+    if (cta) cta.textContent = 'Open outlet →';
+    if (img) {
+      if (item.image) {
+        img.src = item.image;
+        img.alt = item.title || '';
+        img.hidden = false;
+      } else {
+        img.hidden = true;
+      }
+    }
+  }
+
   function renderPulse(items) {
     var list = $('pulseList');
     var empty = $('pulseEmpty');
+    var hero = $('pulseHero');
     if (!list || !empty) return;
     list.textContent = '';
     if (!items || !items.length) {
       empty.hidden = false;
+      if (hero) hero.hidden = true;
       return;
     }
     empty.hidden = true;
+    if (hero) hero.hidden = false;
+    paintFeatured(featuredOf(items));
     items.slice(0, 3).forEach(function (it) {
       var a = document.createElement('a');
       a.className = 'pulse-item';
       a.href = it.url;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      var left = document.createElement('div');
       var h = document.createElement('h3');
       h.textContent = it.title;
-      left.appendChild(h);
+      a.appendChild(h);
+      if (it.excerpt) {
+        var dek = document.createElement('p');
+        dek.className = 'pulse-item-dek';
+        dek.textContent = it.excerpt;
+        a.appendChild(dek);
+      }
       var meta = document.createElement('div');
       meta.className = 'pulse-meta';
       meta.textContent = [it.source, timeAgo(it.published)].filter(Boolean).join(' · ');
-      a.appendChild(left);
       a.appendChild(meta);
+      var read = document.createElement('span');
+      read.className = 'read';
+      read.textContent = 'Open outlet →';
+      a.appendChild(read);
       list.appendChild(a);
     });
+  }
+
+  function refreshPulseHero() {
+    renderPulse(pulseItems);
   }
 
   function loadPulse() {
@@ -280,46 +338,27 @@
       if (data && data.feed) {
         return j(data.feed).then(function (remote) {
           var items = (remote && remote.items) || remote;
-          renderPulse(Array.isArray(items) && items.length ? items : local);
-        }).catch(function () { renderPulse(local); });
+          pulseItems = Array.isArray(items) && items.length ? items : local;
+          refreshPulseHero();
+        }).catch(function () {
+          pulseItems = local;
+          refreshPulseHero();
+        });
       }
-      renderPulse(local);
-    }).catch(function () { renderPulse([]); });
+      pulseItems = local;
+      refreshPulseHero();
+    }).catch(function () {
+      pulseItems = [];
+      refreshPulseHero();
+    });
   }
   loadPulse();
 
-  /* —— Issues / latest issue —— */
+  /* —— Issues / latest issues —— */
   var issuesState = { all: [], shown: 0 };
 
   function issueHref(issue) {
     return issue.slug ? articleUrl(issue.slug) : (issue.url || '#');
-  }
-
-  function paintHero(issue) {
-    if (!issue) return;
-    setText('heroKicker', 'This week');
-    var title = $('heroTitle');
-    if (title) title.textContent = issue.title;
-    var excerpt = $('heroExcerpt');
-    if (excerpt) excerpt.textContent = issue.excerpt || '';
-    var read = $('heroRead');
-    if (read) read.href = issueHref(issue);
-    var date = $('heroCardDate');
-    if (date) date.textContent = fmtDate(issue.date);
-    var cardTitle = $('heroCardTitle');
-    if (cardTitle) cardTitle.textContent = issue.title;
-    var img = $('heroCardImg');
-    if (img) {
-      if (issue.image) {
-        img.src = issue.image;
-        img.alt = issue.title;
-        img.hidden = false;
-      } else {
-        img.hidden = true;
-      }
-    }
-    var card = $('heroCard');
-    if (card) card.href = issueHref(issue);
   }
 
   function paintSponsor(sponsor) {
@@ -398,7 +437,8 @@
   function applyIssues(list, sponsor) {
     paintSponsor(sponsor);
     issuesState.all = list || [];
-    paintHero(issuesState.all[0]);
+    weeklyIssue = issuesState.all[0] || null;
+    refreshPulseHero();
     paintArchive(true);
   }
 
@@ -417,7 +457,7 @@
   var moreBtn = $('archiveMore');
   if (moreBtn) moreBtn.addEventListener('click', function () { paintArchive(false); });
 
-  /* —— Virtuse Blog (Phase 2 heading: Satoshi Blog) —— */
+  /* —— Satoshi Blog —— */
   var blog = { page: 1, totalPages: 1, topic: '', q: '', posts: [] };
 
   function imgOf(post) {
@@ -453,7 +493,7 @@
     } else {
       var ph = document.createElement('div');
       ph.className = 'blog-card-ph';
-      ph.textContent = 'N';
+      ph.textContent = 'S';
       a.appendChild(ph);
     }
     var body = document.createElement('div');
