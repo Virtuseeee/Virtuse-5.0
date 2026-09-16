@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>(function(){try{var t=localStorage.getItem("satoshi-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
+<script>(function(){try{var t=localStorage.getItem("satoshi-theme");if(t!=="dark"){t="light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -97,7 +97,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="wordmark" href="news.html" aria-label="Satoshi — Bitcoin-only news desk">
       <img class="wordmark-img" src="satoshi-lockup.png" alt="Satoshi" width="1600" height="346">
     </a>
-    <span class="nav-rule" aria-hidden="true"></span>
     <nav class="nav-links" id="navLinks">
       <a href="#pulse">Pulse</a>
       <a href="#analytics">Analytics</a>
@@ -119,6 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="wrap">
       <div class="edition">
         <span class="edition-label">EDITION</span>
+        <span class="edition-dot" aria-hidden="true">·</span>
         <time class="edition-date" id="editionDate" datetime="2026-09-16">Wed, Sep 16, 2026</time>
       </div>
       <div class="section-head hero-head">
@@ -269,7 +269,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <p class="tools-caption">Live via mempool.space, Binance, and CoinGecko. Failures stay as dashes.</p>
       <div class="tools">
-        <a class="tool-card primary" href="https://virtuse.com/bitcoin-dca-calculator/">
+        <a class="tool-card primary" href="https://virtuse.com/stacking.html?utm_source=stacking&amp;utm_medium=widget">
           <span class="kicker">Primary</span>
           <h3>DCA calculator</h3>
           <p>Fee-only stacking math against live partner schedules.</p>
