@@ -1,14 +1,17 @@
-name: Weekly Virtuse Report
+name: Virtuse News
 
-# Fetches the Bitcoin Pulse stats, renders email/template.html with them plus
-# this week's human-written content from email/weekly-issue.json, and
-# creates a draft broadcast in Resend with the HTML sent directly in the
-# request (no publish-to-a-public-URL step needed, unlike the old
-# Zoho-based version of this workflow).
+# Fetches the Bitcoin Pulse stats (price, dominance, 200W MA, 100-day EMA),
+# renders email/virtuse-news-template.html with them plus this issue's
+# hand-written date/subject from email/virtuse-news-issue.json, and creates
+# a draft broadcast in Resend with the HTML sent directly in the request.
 #
-# Draft-only by default: a human still reviews and clicks send in Resend. To
-# also auto-send, re-run manually with "send" = true, or flip the default in
-# the workflow_dispatch input below once you trust the pipeline.
+# Draft-only by default: a human still reviews and clicks send in Resend
+# (and, more importantly, still hand-writes this issue's headline, article
+# paragraphs, chart captions, and meme directly in
+# email/virtuse-news-template.html before this workflow runs -- only the 4
+# stat-tile numbers and the issue-date line are auto-filled). To also
+# auto-send, re-run manually with "send" = true, or flip the default in the
+# workflow_dispatch input below once you trust the pipeline.
 #
 # Required repo secrets (Settings -> Secrets and variables -> Actions):
 #   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_FROM_EMAIL
@@ -29,7 +32,7 @@ permissions:
   contents: write
 
 jobs:
-  weekly-pulse:
+  virtuse-news:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -43,7 +46,7 @@ jobs:
           node-version: 20
 
       - name: Fetch stats and render email
-        run: node .github/scripts/render-pulse.mjs
+        run: node .github/scripts/render-virtuse-news.mjs
 
       - name: Commit updated pulse cache back to main
         run: |
@@ -59,4 +62,4 @@ jobs:
           RESEND_SEGMENT_ID: ${{ secrets.RESEND_SEGMENT_ID }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
           SEND_NOW: ${{ github.event.inputs.send }}
-        run: node .github/scripts/create-resend-broadcast.mjs
+        run: node .github/scripts/create-virtuse-news-broadcast.mjs

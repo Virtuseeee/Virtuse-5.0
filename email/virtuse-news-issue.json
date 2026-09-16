@@ -1,0 +1,7 @@
+{
+  "_instructions": "Edit subject + issue_date here before each send. Everything else -- headline, article paragraphs, chart captions, meme -- is hand-edited directly in email/virtuse-news-template.html. The stats grid's 4 numbers and the issue-date line in that template are the only auto-filled parts: render-virtuse-news.mjs fills {{btc_price}}, {{btc_dominance}}, {{btc_200w_ma}}, {{btc_ema_100d}}, {{issue_date}} at render time -- don't hardcode those in the template.",
+
+  "issue_number": "1",
+  "issue_date": "15 September 2026",
+  "subject": "Virtuse News — Bitcoin Holds Above $76K"
+}

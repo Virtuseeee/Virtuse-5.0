@@ -19,7 +19,6 @@ on:
         default: welcome
         options:
           - welcome
-          - weekly-report
           - virtuse-news
       subject:
         description: 'Subject line override (optional)'
@@ -43,20 +42,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Render weekly report (only if that template was chosen)
-        if: ${{ github.event.inputs.template == 'weekly-report' }}
-        run: node .github/scripts/render-pulse.mjs
+      - name: Render Virtuse News (only if that template was chosen)
+        if: ${{ github.event.inputs.template == 'virtuse-news' }}
+        run: node .github/scripts/render-virtuse-news.mjs
 
       - name: Send test email
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
         run: |
-          if [ "${{ github.event.inputs.template }}" = "weekly-report" ]; then
-            TEMPLATE_PATH="dist/weekly-email.html"
-            DEFAULT_SUBJECT="The Virtuse Report (test)"
-          elif [ "${{ github.event.inputs.template }}" = "virtuse-news" ]; then
-            TEMPLATE_PATH="email/virtuse-news-template.html"
+          if [ "${{ github.event.inputs.template }}" = "virtuse-news" ]; then
+            TEMPLATE_PATH="dist/virtuse-news-email.html"
             DEFAULT_SUBJECT="Virtuse News (test)"
           else
             TEMPLATE_PATH="email/welcome-template.html"
