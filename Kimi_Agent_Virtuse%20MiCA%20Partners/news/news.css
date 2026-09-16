@@ -1,6 +1,5 @@
-/* Satoshi — light editorial desk.
-   Gazette-inspired tokens (white / off-white, gray bands) with Bitcoin orange
-   instead of Gazette red. Do not import virtuse.com styles.css. */
+/* Satoshi — Gazette-inspired editorial desk (light default, dark via data-theme).
+   Bitcoin orange instead of Gazette red. Do not import virtuse.com styles.css. */
 
 :root {
   --brand-name: "SATOSHI";
@@ -18,6 +17,11 @@
   --ink-faint: #626262;
   --up: #0F6A2F;
   --down: #A82820;
+  --nav-bg: rgba(251, 251, 250, 0.94);
+  --rail-bg: #0D0D0D;
+  --rail-text: #FBFBFA;
+  --rail-muted: rgba(251, 251, 250, 0.72);
+  --subscribe-bg: #0D0D0D;
   --font-display: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
   --font-ui: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -26,9 +30,29 @@
   --gutter: 28px;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #111110;
+  --paper-band: #1C1C19;
+  --paper-card: #181816;
+  --paper-line: #2A2A26;
+  --paper-line-strong: #3D3C37;
+  --ink: #F5F4F1;
+  --ink-muted: #B0ACA4;
+  --ink-faint: #918D85;
+  --up: #4ADE80;
+  --down: #FF6B5A;
+  --nav-bg: rgba(17, 17, 16, 0.94);
+  --rail-bg: #232320;
+  --rail-text: #F5F4F1;
+  --rail-muted: #A5A19A;
+  --subscribe-bg: #181816;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
 
 body {
   font-family: var(--font-ui);
@@ -77,34 +101,43 @@ ul { list-style: none; }
   border-top: 1px solid var(--paper-line);
 }
 
-/* —— Live ticker (thin, light) —— */
+/* —— Live ticker (dark reverse, Gazette rail) —— */
 .ticker {
-  background: var(--paper-card);
-  border-bottom: 1px solid var(--paper-line);
+  background: var(--rail-bg);
+  border-bottom: 0;
   overflow: hidden;
   height: 36px;
   display: flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--ink-muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rail-muted);
 }
 .ticker-track {
   display: flex;
-  gap: 2.75rem;
+  align-items: center;
+  gap: 0.55rem;
   white-space: nowrap;
-  padding-inline: 1.5rem;
+  padding-inline: 1.25rem;
   animation: ticker-x 42s linear infinite;
 }
 .ticker-item strong {
-  color: var(--ink);
+  color: var(--rail-text);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
-.ticker-item .up { color: var(--up); }
-.ticker-item .down { color: var(--down); }
-.ticker-sep { color: var(--ink-faint); }
+.ticker-item .up { color: #4ade80; }
+.ticker-item .down { color: #ff6b5a; }
+.ticker-sep {
+  color: var(--accent);
+  font-size: 10px;
+  line-height: 1;
+  padding-inline: 0.05rem;
+}
 
 @keyframes ticker-x {
   from { transform: translateX(0); }
@@ -120,16 +153,16 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(251, 251, 250, 0.94);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--paper-line);
 }
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 76px;
+  justify-content: flex-start;
+  gap: 16px;
+  min-height: 92px;
 }
 .wordmark {
   display: flex;
@@ -137,22 +170,63 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 .wordmark-img {
-  height: 48px;
+  height: 68px;
   width: auto;
+}
+[data-theme="dark"] .wordmark {
+  background: #FBFBFA;
+  padding: 6px 10px;
+}
+.nav-rule {
+  width: 3px;
+  height: 70%;
+  min-height: 52px;
+  background: var(--ink);
+  opacity: 0.78;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin-left: auto;
 }
 .nav-links a {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink-muted);
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--ink); }
+.nav-links .btn,
+.nav-links .btn:hover { color: #fff; }
+.theme-toggle {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--ink-faint);
+  border: 1px solid var(--paper-line-strong);
+  cursor: pointer;
+  background: transparent;
+  border-radius: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 .btn {
   display: inline-flex;
   align-items: center;
@@ -200,9 +274,31 @@ ul { list-style: none; }
 
 /* —— Hero = Satoshi Pulse (Collective: large left + three shorts) —— */
 .hero {
-  padding: 40px 0 56px;
+  padding: 28px 0 56px;
   background: var(--paper);
   border-bottom: 1px solid var(--paper-line);
+}
+.edition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 12px;
+  margin-bottom: 18px;
+}
+.edition-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.edition-date {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  letter-spacing: 0.01em;
 }
 .hero-head { margin-bottom: 28px; }
 .hero-title {
@@ -319,8 +415,8 @@ ul { list-style: none; }
 
 /* —— Subscribe band under hero —— */
 .subscribe-band {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--subscribe-bg);
+  color: #FBFBFA;
   padding: 36px 0;
 }
 .subscribe-band .kicker { color: var(--accent); }
@@ -532,6 +628,14 @@ ul { list-style: none; }
 .co-blockstream span { color: #1652C9; }
 .co-cryptocom { font-weight: 800; letter-spacing: -0.01em; color: #111; }
 .co-cryptocom span { color: #103F99; }
+[data-theme="dark"] .co-firefish,
+[data-theme="dark"] .co-banxa,
+[data-theme="dark"] .co-coinfirm,
+[data-theme="dark"] .co-21bitcoin,
+[data-theme="dark"] .co-abundant,
+[data-theme="dark"] .co-blockstream,
+[data-theme="dark"] .co-cryptocom,
+[data-theme="dark"] .co-unchained { color: var(--ink); }
 .trusted-fine {
   text-align: center;
   font-size: 12px;
@@ -739,7 +843,11 @@ ul { list-style: none; }
 }
 
 /* Mobile */
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
+  .wordmark-img { height: 64px; }
+  .nav-links { gap: 16px; }
+}
+@media (max-width: 1020px) {
   .pulse-hero,
   .subscribe-inner,
   .about-grid,
@@ -747,15 +855,18 @@ ul { list-style: none; }
   .dash { grid-template-columns: repeat(2, 1fr); }
   .archive, .blog-grid { grid-template-columns: 1fr 1fr; }
   .nav-toggle { display: block; }
+  .nav-rule { display: none; }
+  .theme-toggle { margin-left: auto; }
   .nav-links {
     display: none;
     position: absolute;
-    top: 76px;
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
+    margin-left: 0;
     background: var(--paper);
     border-bottom: 1px solid var(--paper-line);
     padding: 8px 0 16px;
@@ -773,10 +884,11 @@ ul { list-style: none; }
 
 @media (max-width: 720px) {
   :root { --gutter: 18px; }
-  .hero { padding: 28px 0 40px; }
+  .hero { padding: 22px 0 40px; }
   .archive, .blog-grid { grid-template-columns: 1fr; }
   .subscribe { grid-template-columns: 1fr; }
-  .wordmark-img { height: 38px; }
+  .wordmark-img { height: 48px; }
+  .nav-inner { min-height: 72px; }
   .section { padding: 52px 0; }
   .pulse-feature h2 { font-size: 26px; }
 }

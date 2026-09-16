@@ -105,6 +105,44 @@
     });
   })();
 
+  /* —— Theme (Gazette-like toggle; persist; OS default only if unset) —— */
+  (function () {
+    var KEY = 'satoshi-theme';
+    var btn = $('themeToggle');
+    function current() {
+      return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    }
+    function apply(theme, persist) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (persist) {
+        try { localStorage.setItem(KEY, theme); } catch (e) {}
+      }
+      if (!btn) return;
+      var next = theme === 'dark' ? 'light' : 'dark';
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+      btn.setAttribute('title', next === 'dark' ? 'Dark theme' : 'Light theme');
+    }
+    if (btn) {
+      btn.addEventListener('click', function () {
+        apply(current() === 'dark' ? 'light' : 'dark', true);
+      });
+    }
+    apply(current(), false);
+  })();
+
+  /* —— EDITION date (Europe/Bratislava, Gazette format) —— */
+  (function () {
+    var el = $('editionDate');
+    if (!el) return;
+    var opts = { timeZone: 'Europe/Bratislava' };
+    var now = new Date();
+    el.textContent = now.toLocaleDateString('en-US', {
+      weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
+      timeZone: opts.timeZone
+    });
+    el.setAttribute('datetime', now.toLocaleDateString('en-CA', opts));
+  })();
+
   /* —— Subscribe (existing Worker; ENG list via RESEND_SEGMENT_ID) —— */
   (function () {
     var form = $('subscribeForm');
@@ -169,7 +207,7 @@
           var sep = document.createElement('span');
           sep.className = 'ticker-sep';
           sep.setAttribute('aria-hidden', 'true');
-          sep.textContent = '·';
+          sep.textContent = '•';
           frag.appendChild(sep);
         }
         var item = document.createElement('span');

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem("satoshi-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -11,7 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Satoshi — Bitcoin-only news desk</title>
-<meta name="description" content="Satoshi is an independent Bitcoin-only publication. Weekly briefing, Pulse from original outlets, and live network numbers. No shitcoins.">
+<meta name="description" content="Satoshi is an independent Bitcoin-only publication. Weekly briefing, Pulse from original outlets, and live network numbers. No casino tokens.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://satoshi.virtuse.com/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -20,13 +21,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Satoshi">
 <meta property="og:title" content="Satoshi — Bitcoin-only news desk">
-<meta property="og:description" content="Independent Bitcoin-only publication. Weekly briefing, Pulse from original outlets, live network numbers. No shitcoins.">
+<meta property="og:description" content="Independent Bitcoin-only publication. Weekly briefing, Pulse from original outlets, live network numbers. No casino tokens.">
 <meta property="og:url" content="https://satoshi.virtuse.com/">
 <meta property="og:image" content="https://blog.virtuse.com/wp-content/uploads/2026/09/weekly-take-fed-vs-bitcoin-2026-09-14.jpg">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Satoshi — Bitcoin-only news desk">
-<meta name="twitter:description" content="Independent Bitcoin-only publication. No shitcoins.">
+<meta name="twitter:description" content="Independent Bitcoin-only publication. No casino tokens.">
 <meta name="twitter:image" content="https://blog.virtuse.com/wp-content/uploads/2026/09/weekly-take-fed-vs-bitcoin-2026-09-14.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "WebSite",
       "name": "Satoshi",
       "url": "https://satoshi.virtuse.com/",
-      "description": "Independent Bitcoin-only news desk. Weekly briefing, no shitcoins."
+      "description": "Independent Bitcoin-only news desk. Weekly briefing, no altcoin spam."
     },
     {
       "@type": "Organization",
@@ -94,9 +95,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="site-nav">
   <div class="wrap nav-inner">
     <a class="wordmark" href="news.html" aria-label="Satoshi — Bitcoin-only news desk">
-      <img class="wordmark-img" src="satoshi-lockup.png" alt="Satoshi" width="425" height="160">
+      <img class="wordmark-img" src="satoshi-lockup.png" alt="Satoshi" width="1600" height="346">
     </a>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <span class="nav-rule" aria-hidden="true"></span>
     <nav class="nav-links" id="navLinks">
       <a href="#pulse">Pulse</a>
       <a href="#analytics">Analytics</a>
@@ -105,18 +106,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="#about">About</a>
       <a class="btn" href="#subscribe">Subscribe</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Dark theme">
+      <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 3v2M12 19v2M5 5l1.5 1.5M17.5 17.5 19 19M3 12h2M19 12h2M5 19l1.5-1.5M17.5 6.5 19 5"></path></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <main id="main">
   <section class="hero" id="pulse">
     <div class="wrap">
+      <div class="edition">
+        <span class="edition-label">EDITION</span>
+        <time class="edition-date" id="editionDate" datetime="2026-09-16">Wed, Sep 16, 2026</time>
+      </div>
       <div class="section-head hero-head">
         <div>
           <p class="kicker">Satoshi Pulse</p>
           <h1 class="hero-title">Last 24–48 hours from the original outlets.</h1>
         </div>
-        <p class="section-note">Independent desk · no shitcoins</p>
+        <p class="section-note">Independent desk · no casino tokens</p>
       </div>
 
       <div class="pulse-hero" id="pulseHero">
@@ -279,7 +289,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div>
         <p class="kicker">Bitcoin-only news desk</p>
         <h2>Independent Bitcoin-only publication.</h2>
-        <p>Satoshi is an independent Bitcoin-only publication. No shitcoins, no pay-to-play press releases. We cover protocol, mining, regulation, and the real economy — including exchanges, custody, and loan platforms that are not Virtuse partners.</p>
+        <p>Satoshi is an independent Bitcoin-only publication. No casino tokens, no pay-to-play press releases. We cover protocol, mining, regulation, and the real economy — including exchanges, custody, and loan platforms that are not Virtuse partners.</p>
         <p>Published by Virtuse. The desk is editorially independent of affiliates. If a partner is wrong, we say so. Sponsored blocks are labeled Sponsored by X. This is not investment advice.</p>
       </div>
       <dl class="masthead">
