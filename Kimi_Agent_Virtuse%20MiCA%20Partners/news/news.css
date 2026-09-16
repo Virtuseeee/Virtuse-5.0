@@ -275,16 +275,26 @@ ul { list-style: none; }
 
 /* —— Hero = Satoshi Pulse (Collective: large left + three shorts) —— */
 .hero {
-  padding: 28px 0 56px;
+  padding: 22px 0 56px;
   background: var(--paper);
+  border-bottom: 1px solid var(--paper-line);
+}
+.hero-masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--paper-line);
 }
 .edition {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: center;
   gap: 0 0.75em;
-  margin-bottom: 18px;
 }
 .edition-label,
 .edition-date,
@@ -296,15 +306,13 @@ ul { list-style: none; }
   text-transform: uppercase;
   color: var(--accent);
 }
-.hero-head { margin-bottom: 28px; }
-.hero-title {
+.hero-heading {
   font-family: var(--font-display);
-  font-size: clamp(26px, 3.4vw, 40px);
+  font-size: clamp(26px, 2.8vw, 34px);
   font-weight: 600;
-  line-height: 1.12;
+  line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-top: 8px;
-  max-width: 22em;
+  color: var(--ink);
 }
 .pulse-hero {
   display: grid;
@@ -495,8 +503,7 @@ ul { list-style: none; }
   font-weight: 600;
 }
 .section-head a:hover { color: var(--accent-hot); }
-.section-head p,
-.section-note {
+.section-head p {
   font-size: 13px;
   color: var(--ink-faint);
 }
@@ -878,7 +885,8 @@ ul { list-style: none; }
 
 @media (max-width: 720px) {
   :root { --gutter: 18px; }
-  .hero { padding: 22px 0 40px; }
+  .hero { padding: 18px 0 40px; }
+  .hero-masthead { margin-bottom: 16px; padding-bottom: 12px; }
   .archive, .blog-grid { grid-template-columns: 1fr; }
   .subscribe { grid-template-columns: 1fr; }
   .wordmark-img { height: 34px; }
