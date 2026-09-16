@@ -2,6 +2,133 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-15, continued) — Virtuse News: consolidated email pipeline + new archive hub page
+
+**Why this happened:** the user asked what it would take to build something
+like [btcbreakdown.com](https://www.btcbreakdown.com) (a daily Bitcoin-only
+newsletter site monetized via sponsorship/paid subscription) using Virtuse's
+own article archive. Investigating **found a second undocumented gap**, this
+one inside the same session rather than a multi-day one: two separate,
+overlapping, undocumented email pipelines already existed —
+
+1. **"Weekly Virtuse Report"** (`email/template.html` +
+   `email/weekly-issue.json` + `.github/workflows/weekly-pulse.yml` +
+   `.github/scripts/render-pulse.mjs`/`create-resend-broadcast.mjs`) — a
+   cron running every Tuesday since mid-August, auto-fetching real Bitcoin
+   stats but merging them into `weekly-issue.json`'s content, which was
+   **never edited past its Aug-16 placeholder** ("Issue #1", "Replace with
+   this week's second story title..."). Every Tuesday for ~5 weeks this
+   created a real Resend draft with real stats around stale placeholder
+   copy — draft-only, so nothing was ever actually sent, but nobody
+   appears to have been reviewing them either.
+2. **"Virtuse News"** (`email/virtuse-news-template.html`) — a
+   significantly more polished, article-first design (Chart of the Week,
+   meme, live stats, closing CTA), added 2026-08-16 and hand-refreshed once
+   with real data (Sept 2), but wired only into the **test-send-only**
+   workflow (`send-test-email.yml`) — never connected to a real broadcast,
+   and nothing on the live site linked to it or mentioned it.
+
+**Both were built in a prior session (commits `967c0cb`, `a4b7164`,
+`f5a8a22`, etc., all with the same `Co-Authored-By: Claude Sonnet 5` trailer
+this file's own commits use) with zero corresponding CLAUDE.md entry** —
+the same failure mode as the 6-day gap below, just smaller in scope. Found
+by reading `.github/workflows/` and `email/` directly and checking commit
+history/dates, not by trusting this file.
+
+**Resolution, per explicit user decision ("choď na Virtuse News a starý
+report zruš" — go with Virtuse News, scrap the old report):**
+
+1. **Deleted** the old pipeline entirely: `email/template.html`,
+   `email/weekly-issue.json`, `.github/workflows/weekly-pulse.yml`,
+   `.github/scripts/render-pulse.mjs`, `.github/scripts/create-resend-broadcast.mjs`.
+2. **Operationalized Virtuse News** as the one surviving pipeline —
+   `.github/workflows/virtuse-news.yml` (same Tuesday-07:00-UTC-cron +
+   manual-dispatch, draft-only-by-default shape as the old one),
+   `.github/scripts/render-virtuse-news.mjs` (new),
+   `.github/scripts/create-virtuse-news-broadcast.mjs` (new),
+   `email/virtuse-news-issue.json` (new, holds just `subject`/`issue_date`
+   per issue). Converted `virtuse-news-template.html`'s **4 stat-tile
+   numbers + issue-date line** to `{{merge_tags}}` (price, dominance,
+   200W MA, and a **new 100-day EMA** the site doesn't show anywhere else
+   yet, added to `render-virtuse-news.mjs` as a standard EMA(100) on
+   Binance daily closes) — same "automate only the numbers, not the prose"
+   philosophy the old pipeline used. The headline/article
+   paragraphs/chart captions/meme stay hand-edited directly in the
+   template before each send, exactly as they were for both past issues.
+   Also fixed all 15 `staging.virtuse.com` links/image-srcs in the
+   template to `virtuse.com`, now that production is live (see the
+   `65ab0e6` canonical-repoint entry below) — the old README had this
+   flagged as a known to-do that never got done.
+   `send-test-email.yml` updated to drop the `weekly-report` test option.
+   **Verified end-to-end**: ran `render-virtuse-news.mjs` locally — live
+   fetch succeeded for all 4 stats, output HTML has zero leftover
+   `{{...}}` tags except the intentional `{{{RESEND_UNSUBSCRIBE_URL}}}`.
+   Nothing was actually sent or drafted in Resend this session (no
+   `RESEND_API_KEY` available here) — that part is still untested against
+   the real API and worth a manual dry run (`workflow_dispatch`, `send`
+   left unchecked) before trusting it Tuesday.
+3. **Built the archive hub page**, [`news.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/news.html)
+   — the piece that didn't exist at all before today. Same generated-page
+   pattern as `blog.html` (which some earlier, uncommitted `gen_blog.py`
+   apparently produces — that script isn't in the repo; `news.html` was
+   hand-adapted from `blog.html`'s output directly), pulling from
+   WordPress categories **13 (Blog) + 15 (Media Columns)** via
+   `categories=13,15` — 257 posts combined, excluding the large but
+   dormant "Crypto News" category (579 posts, mostly 2023 syndicated
+   headlines, effectively dead since mid-2026) and Uncategorized/
+   Boxes/Reports. Adds a category filter (All / Market Takes / Media
+   Columns) on top of `blog.html`'s existing search + infinite-scroll
+   pattern, and a client-side title-dedup guard (`seenTitles`) for a real,
+   pre-existing WP data-quality issue found while building this: **~28
+   posts are cross-posted under both categories**, sometimes with a
+   different slug and a missing featured image on the second copy (e.g.
+   "Why Pomp, Mow and Saylor..." exists as both `...-10m-2`, in Blog, with
+   an image, and `...-10m`, in Media Columns only, without one) — not
+   fixed at the WordPress/CMS level (out of scope, and not this session's
+   call to make), just hidden from the rendered archive. English-only for
+   now, no `noindex` (unlike the Layer 2 modules — this is aggregating
+   already-public, already-indexed content, not an unreviewed prototype).
+   Added a "News" nav entry (numbered 11, appended after About rather than
+   renumbering every page's existing 01-10) to `news.html` itself,
+   `index.html`, and `blog.html` only — **not rolled out to the other
+   ~20 top-level pages**, a deliberately narrow first slice matching how
+   Stacking/Loan/Tax-agent were placed in the 2026-09-09 sessions below,
+   not an oversight. Added a `sitemap.xml` entry. **Verified in a real
+   local browser session** (`python3 -m http.server 8000` — note: the
+   `.claude/launch.json` config's `--directory` flag fails under this
+   session's sandboxed Python with `PermissionError`, worked fine run
+   directly from inside the folder instead): live WordPress fetch
+   confirmed working (excerpts refreshed from the server-rendered
+   snapshot to fuller live text on load), category filter pills switch
+   correctly and update the tag labels, search works and stays scoped to
+   the active filter, dedup guard confirmed removing the known duplicate,
+   375px mobile layout confirmed no horizontal overflow, no new console
+   errors beyond the pre-existing GTM `ga-audiences` one.
+
+**Not done / explicitly deferred, surfaced to the user rather than
+assumed:**
+1. **Sponsorship and paid subscription** — the actual monetization the
+   user asked about — remain undesigned. `news.html` + Virtuse News give
+   the content/audience foundation (archive + weekly email), but there is
+   still no media kit, no sponsor-slot placement, and no payment
+   integration (no Stripe or equivalent exists anywhere in this repo).
+2. **Full sitewide nav rollout** for the "News" link (currently only on
+   3 of ~26 top-level EN pages) — an explicit, separate decision to make,
+   same as every past sitewide mechanical change in this file's history.
+3. **Translations** for `news.html` — English-only, matching the Layer 2
+   modules' initial-launch precedent, not evaluated against the
+   sk/uk/cs/de rollout yet.
+4. **First real Virtuse News send** — the pipeline is wired and the
+   render step is verified locally, but nobody has actually run the
+   GitHub Action against the real `RESEND_API_KEY`/segment yet, and the
+   article prose in `virtuse-news-template.html` still reflects the Sept
+   2 issue — needs a fresh hand-write pass before the next real send.
+5. **The underlying WordPress duplicate-post issue** (~28 cross-posted
+   articles, see above) is patched over client-side on `news.html` only —
+   `blog.html` and the live WP site itself still show both copies
+   wherever they surface. Worth a CMS-side cleanup pass at some point, not
+   an urgent one.
+
 ## Session status (2026-09-15) — catching this file up on 6 days / 22 commits of work done without it
 
 **Why this entry exists:** between 2026-09-09 and today, 22 commits
