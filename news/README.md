@@ -6,27 +6,27 @@ One-liner: `Virtuse Brief. Bitcoin-only. No tokens. No PR.`
 
 Served at `https://virtuse.com/news.html` and `https://staging.virtuse.com/news.html`.
 
-Full-bleed Gazette grid (12 columns, desktop main ~8 + rail ~4). Not a centered 720px magazine. Dark is the default. A masthead Light/Dark control persists `localStorage vb-theme` and sets `html data-theme`. Pulse is the forthcoming daily send — never the page title, H1, or From-name.
+Three-column Gazette desk (Pulse · weekly cover · by-the-numbers + capture). Not a centered magazine. Dark is the default. A nav Light/Dark control persists `localStorage vb-theme` and sets `html data-theme`. Pulse is the forthcoming daily send — never the page title, H1, or From-name.
 
-Banned on this page: Satoshi Brief, The Satoshi Brief, Satoshi News, Satoshi Newsletter, Satoshi Desk. **Virtuse News** appears only as “Formerly Virtuse News” on the bottom signup.
+Banned on this page as product names: any “Satoshi …” title. **Virtuse News** appears only as “Formerly Virtuse News” in footer fine print.
 
-Mark files use the face pictogram only. Alt, aria, and OG text: **Virtuse Brief**. Never caption Satoshi / satosi / Nakamoto.
+Mark files use the face pictogram only. Alt, aria, and OG text: **Virtuse Brief**.
 
 Do not restyle the Virtuse hub. Do not add Hub commerce grids.
 
 ## Subscribe (Resend audience ENG)
 
-Exactly one compact BriefCapture + one full BriefCapture:
+Exactly two quiet captures, one list:
 
-- Compact card in the rail (desktop) and one-row under the masthead title on small screens: `VIRTUSE BRIEF` / `Monday. Bitcoin-only.` / email + **Get the Brief**. Becomes sticky on desktop only after the Featured Brief has been scrolled past. Not sticky on first paint, never sticky on small screens.
-- One full card before the footer (`#subscribe`).
+- Compact Atlantic-style card in the hero right rail: email + **Get the Brief**.
+- Quiet Lenny-style footer form (`#subscribe`).
 
 Both POST to the existing Cloudflare Worker:
 
 `POST https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe`
 `{ email, hp, lang: "en" }`
 
-No new ESP. The Worker does not store a name field.
+No new ESP. The Worker does not store a name field. No sticky bar. No full-bleed Join band.
 
 Unsubscribe in the footer points at `#subscribe` (the live list-unsub route needs a signed per-email token from the welcome mail).
 
@@ -35,13 +35,13 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 | File | What to edit |
 |---|---|
 | `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
-| `issues.json` | Weekly issue archive (date, title, excerpt, slug). A row with `"essay": true` paints the rail **Read essay** teaser and **Ras Take**; if none, those blocks are omitted. `sponsor` is unused on this layout. |
+| `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 
 ## Live data
 
-Masthead BTC/USD (omitted while a dash) and the rail **data strip** (four figures) use mempool.space, with Binance / CoinGecko for the 24h change. Failures render dashes.
+The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 24h, Hashrate · 3d, Fees, Sats / $, Block) use mempool.space, with Binance / CoinGecko for the 24h change. Failures render dashes.
 
-**Data desk** (page section, formerly Analytics) is calc links only:
+**Data desk** lives in the right column of the Latest issues band (calc links only):
 
 - Full data desk: `https://virtuse.com/bitcoin-data.html`
 - 200W MA: `ma-200w.html`
@@ -50,15 +50,13 @@ Masthead BTC/USD (omitted while a dash) and the rail **data strip** (four figure
 
 ## Page order
 
-1. Masthead edge-to-edge (face mark, VIRTUSE BRIEF, by Virtuse, edition date, BTC/USD, Archive, Data, theme)
-2. Compact BriefCapture in the rail (mobile: one-row under title)
-3. Featured Brief hero + editorial illustration + 3 bullets + Read this Brief + Older issues
-4. Pulse
-5. Latest issues `#issues` (full width)
-6. Data desk (calc links only)
-7. Ras Take (omit if no essay)
-8. Full BriefCapture
-9. Footer full-width (Archive · Data desk · Hub · Unsubscribe)
+1. Live ticker (orange hairline, mono stats)
+2. Sticky nav (face mark + Virtuse Brief, muted mono links, Get the Brief, theme)
+3. Edition line (`Latest Brief · Mon, Sep 14, 2026` — muted, not orange)
+4. Three-column hero: Pulse · weekly + cover · six tiles + Atlantic capture
+5. Latest issues `#issues` with cover images; Data desk in the right column
+6. Blog / Ras Vasilisin’s Take (three columns, omit if empty)
+7. Footer with quiet Lenny-style signup (`#subscribe`)
 
 ## Marks and drawings
 
@@ -66,7 +64,6 @@ Masthead BTC/USD (omitted while a dash) and the rail **data strip** (four figure
 |---|---|
 | `brief-mark.png` | Face pictogram, light knockout, dark theme |
 | `brief-mark-dark.png` | Face pictogram, dark ink, light theme |
-| `featured-brief.svg` | Gavel / Fed colonnade / ledger / cracked bill |
-| `pulse-icons.svg` | ETF, Fed, Policy, Mining, Security |
+| `pulse-icons.svg` | ETF, Fed, Policy, Mining, Security (sprite in `news.html`) |
 | `desk-updating.svg` | Empty / loading desk figure |
 | `og-card.png` / `og-card.svg` | Wordmark + mark on `--bg` |

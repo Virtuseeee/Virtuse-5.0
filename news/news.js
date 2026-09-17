@@ -1,8 +1,9 @@
-/* Virtuse Brief — theme, capture, pulse, issues, data desk, Ras Take. */
+/* Virtuse Brief — ticker, theme, pulse, issues, blog, subscribe. */
 (function () {
   'use strict';
 
   var MP = 'https://mempool.space/api';
+  var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
   var FEATURED_SLUG = 'bitcoin-fell-below-77000-etfs-sold-fed-looms';
   var THEME_KEY = 'vb-theme';
@@ -10,6 +11,8 @@
   var THEME_LIGHT = '#FBFBFA';
   var PULSE_MAX = 5;
   var PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
+  var BLOG_CATS = '13,15';
+  var BLOG_MAX = 3;
 
   function $(id) { return document.getElementById(id); }
   function j(url, ms) {
@@ -21,6 +24,14 @@
       if (!r.ok) throw new Error(String(r.status));
       return r.json();
     });
+  }
+  function strip(s) {
+    var doc = new DOMParser().parseFromString(s || '', 'text/html');
+    return (doc.body.textContent || '').replace('[…]', '…').trim();
+  }
+  function num(n, d) {
+    if (n == null || isNaN(n)) return '—';
+    return n.toLocaleString('en-US', { maximumFractionDigits: d == null ? 0 : d });
   }
   function usd(n) {
     if (n == null || isNaN(n)) return '—';
@@ -51,6 +62,20 @@
     return (n > 0 ? '+' : '') + n.toFixed(2) + '%';
   }
 
+  /* Nav hamburger */
+  (function () {
+    var btn = $('navToggle');
+    var links = $('navLinks');
+    if (!btn || !links) return;
+    btn.addEventListener('click', function () {
+      var open = document.body.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.closest('a')) document.body.classList.remove('nav-open');
+    });
+  })();
+
   /* Theme: default dark, persist vb-theme, update theme-color. */
   (function () {
     var btn = $('themeToggle');
@@ -78,41 +103,6 @@
       });
     }
     apply(current(), false);
-  })();
-
-  /* Sticky compact capture after Featured Brief, desktop only, not first paint. */
-  (function () {
-    var capture = $('compactCapture');
-    var slot = $('compactSlot');
-    var featured = $('featured');
-    var join = $('subscribe');
-    if (!capture || !featured) return;
-    var mq = window.matchMedia('(min-width: 960px)');
-    var seenScroll = false;
-    function update() {
-      if (!seenScroll || !mq.matches) {
-        capture.classList.remove('is-sticky');
-        document.body.classList.remove('capture-sticky');
-        if (slot) slot.style.minHeight = '';
-        return;
-      }
-      var featuredPast = featured.getBoundingClientRect().bottom <= 0;
-      var joinInView = join && join.getBoundingClientRect().top < window.innerHeight;
-      var sticky = featuredPast && !joinInView;
-      if (sticky && slot && !capture.classList.contains('is-sticky')) {
-        slot.style.minHeight = capture.offsetHeight + 'px';
-      }
-      if (!sticky && slot) slot.style.minHeight = '';
-      capture.classList.toggle('is-sticky', sticky);
-      document.body.classList.toggle('capture-sticky', sticky);
-    }
-    window.addEventListener('scroll', function () {
-      seenScroll = true;
-      update();
-    }, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-    if (mq.addEventListener) mq.addEventListener('change', update);
-    else if (mq.addListener) mq.addListener(update);
   })();
 
   /* Subscribe — existing Worker, ENG list. */
@@ -169,55 +159,128 @@
   bindSubscribe($('subscribeStripForm'), $('subscribeStripMsg'));
   bindSubscribe($('subscribeForm'), $('subscribeMsg'));
 
-  /* Masthead BTC/USD (omit while dash) + rail data strip. */
-  function setMastPrice(value) {
-    var wrap = $('mastBtc');
-    var el = $('mastPrice');
-    if (!wrap || !el) return;
-    if (!value || value === '—') {
-      wrap.hidden = true;
-      el.textContent = '';
-      return;
+  /* Ticker + by-the-numbers tiles. */
+  var lastTickerStats = null;
+  var tickerResizeTimer = null;
+  function renderTicker(stats) {
+    var host = $('tickerTrack');
+    if (!host) return;
+    lastTickerStats = stats;
+    var parts = [
+      ['BTC/USD', stats.price || '—', ''],
+      ['24h', stats.chg || '—', stats.chgClass || ''],
+      ['Hashrate', stats.hash || '—', ''],
+      ['Fees', stats.fee || '—', ''],
+      ['Sats/$', stats.sats || '—', ''],
+      ['Block', stats.height || '—', '']
+    ];
+    function row() {
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (p, i) {
+        if (i) {
+          var sep = document.createElement('span');
+          sep.className = 'ticker-sep';
+          sep.setAttribute('aria-hidden', 'true');
+          sep.textContent = '•';
+          frag.appendChild(sep);
+        }
+        var item = document.createElement('span');
+        item.className = 'ticker-item';
+        item.innerHTML = p[0] + ' <strong class="' + p[2] + '"></strong>';
+        item.querySelector('strong').textContent = p[1];
+        frag.appendChild(item);
+      });
+      return frag;
     }
-    el.textContent = value;
-    wrap.hidden = false;
+    function trailingSep() {
+      var sep = document.createElement('span');
+      sep.className = 'ticker-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = '•';
+      return sep;
+    }
+    function makeGroup(copies) {
+      var g = document.createElement('span');
+      g.className = 'ticker-group';
+      for (var i = 0; i < copies; i++) {
+        g.appendChild(row());
+        g.appendChild(trailingSep());
+      }
+      return g;
+    }
+    host.textContent = '';
+    var probe = makeGroup(1);
+    host.appendChild(probe);
+    var rowW = probe.getBoundingClientRect().width;
+    var parent = host.parentElement;
+    var viewW = parent ? parent.getBoundingClientRect().width : 1200;
+    var copies = Math.max(1, Math.ceil((viewW + 1) / Math.max(rowW, 1)));
+    host.textContent = '';
+    host.appendChild(makeGroup(copies));
+    host.appendChild(makeGroup(copies));
   }
 
+  window.addEventListener('resize', function () {
+    if (tickerResizeTimer) clearTimeout(tickerResizeTimer);
+    tickerResizeTimer = setTimeout(function () {
+      if (lastTickerStats) renderTicker(lastTickerStats);
+    }, 150);
+  });
+
   function refreshMarket() {
+    var stats = { price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' };
+
     j(MP + '/v1/prices').then(function (p) {
-      var price = usd(p.USD);
-      setText('tilePrice', price);
-      setMastPrice(price);
-    }).catch(function () {
-      setMastPrice('');
-    });
+      stats.price = usd(p.USD);
+      stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
+      setText('tilePrice', stats.price);
+      setText('tileSats', stats.sats);
+      renderTicker(stats);
+    }).catch(function () {});
 
     j('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT').then(function (t) {
       var n = parseFloat(t.priceChangePercent);
-      setText('tileChg', signedPct(n));
+      stats.chg = signedPct(n);
+      stats.chgClass = pctClass(n);
+      setText('tileChg', stats.chg);
       var el = $('tileChg');
-      if (el) el.className = 'tile-value ' + pctClass(n);
+      if (el) el.className = 'tile-value ' + stats.chgClass;
+      renderTicker(stats);
     }).catch(function () {
       return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true').then(function (g) {
         var n = g.bitcoin && g.bitcoin.usd_24h_change;
-        setText('tileChg', signedPct(n));
+        stats.chg = signedPct(n);
+        stats.chgClass = pctClass(n);
+        setText('tileChg', stats.chg);
         var el = $('tileChg');
-        if (el) el.className = 'tile-value ' + pctClass(n);
+        if (el) el.className = 'tile-value ' + stats.chgClass;
+        renderTicker(stats);
       });
     }).catch(function () {});
 
+    j(MP + '/blocks/tip/height').then(function (h) {
+      stats.height = num(h);
+      setText('tileHeight', stats.height);
+      renderTicker(stats);
+    }).catch(function () {});
+
     j(MP + '/v1/fees/recommended').then(function (f) {
+      stats.fee = f.fastestFee != null ? f.fastestFee + ' sat/vB' : '—';
       setText('tileFee', f.fastestFee != null ? f.fastestFee + ' sat/vB' : '—');
+      renderTicker(stats);
     }).catch(function () {});
 
     j(MP + '/v1/mining/hashrate/3d').then(function (m) {
-      setText('tileHash', compact(m.currentHashrate / 1e18) + ' EH/s');
+      stats.hash = compact(m.currentHashrate / 1e18) + ' EH/s';
+      setText('tileHash', stats.hash);
+      renderTicker(stats);
     }).catch(function () {});
   }
+  renderTicker({ price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' });
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* Pulse: Bitcoin-only, 4–5 max, TAG icon + 2 sentences + Read at {Outlet}. */
+  /* Pulse: Bitcoin-only, 4–5 max, TAG icon + copy + Read at {Outlet}. */
   function isDeskStory(item) {
     if (!item) return false;
     var src = (item.source || '').toLowerCase();
@@ -327,7 +390,7 @@
   }
   loadPulse();
 
-  /* Latest issues + Ras Take (omit block if no essay). */
+  /* Latest issues with cover images. */
   function issueHref(issue) {
     return issue.slug ? articleUrl(issue.slug) : (issue.url || '#');
   }
@@ -335,6 +398,13 @@
     var a = document.createElement('a');
     a.className = 'archive-card';
     a.href = issueHref(issue);
+    if (issue.image) {
+      var img = document.createElement('img');
+      img.src = issue.image;
+      img.alt = issue.title || '';
+      img.loading = 'lazy';
+      a.appendChild(img);
+    }
     var t = document.createElement('time');
     t.dateTime = issue.date;
     t.textContent = fmtDate(issue.date);
@@ -347,30 +417,6 @@
     a.appendChild(p);
     return a;
   }
-  function paintRasTake(issues) {
-    var section = $('rasTake');
-    var teaser = $('essayTeaser');
-    var essay = null;
-    (issues || []).some(function (issue) {
-      if (issue && issue.essay) { essay = issue; return true; }
-      return false;
-    });
-    if (!essay) {
-      if (section) section.hidden = true;
-      if (teaser) teaser.hidden = true;
-      return;
-    }
-    setText('rasTitle', essay.title || '');
-    setText('rasDek', essay.excerpt || '');
-    setText('essayTeaserTitle', essay.title || '');
-    var href = issueHref(essay);
-    var link = $('rasRead');
-    if (link) link.href = href;
-    var tlink = $('essayTeaserRead');
-    if (tlink) tlink.href = href;
-    if (section) section.hidden = false;
-    if (teaser) teaser.hidden = false;
-  }
   function paintArchive(issues) {
     var grid = $('archiveGrid');
     if (!grid) return;
@@ -381,12 +427,108 @@
       grid.appendChild(archiveCard(issue));
     });
   }
+
+  /* Blog / Ras Take — essay + related WP posts, no empty placeholders. */
+  function imgOf(post) {
+    try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
+  }
+  function blogCardFromIssue(issue) {
+    var a = document.createElement('a');
+    a.className = 'blog-card';
+    a.href = issueHref(issue);
+    if (issue.image) {
+      var img = document.createElement('img');
+      img.src = issue.image;
+      img.alt = issue.title || '';
+      img.loading = 'lazy';
+      a.appendChild(img);
+    }
+    var body = document.createElement('div');
+    body.className = 'blog-card-body';
+    var meta = document.createElement('div');
+    meta.className = 'blog-card-meta';
+    meta.textContent = [issue.author || 'Ras Vasilisin', fmtDate(issue.date)].filter(Boolean).join(' · ');
+    var h = document.createElement('h3');
+    h.textContent = issue.title;
+    var read = document.createElement('span');
+    read.className = 'read';
+    read.textContent = 'Read essay';
+    body.appendChild(meta);
+    body.appendChild(h);
+    body.appendChild(read);
+    a.appendChild(body);
+    return a;
+  }
+  function blogCardFromWp(post) {
+    var a = document.createElement('a');
+    a.className = 'blog-card';
+    a.href = articleUrl(post.slug);
+    var imgUrl = imgOf(post);
+    if (imgUrl) {
+      var img = document.createElement('img');
+      img.src = imgUrl;
+      img.alt = strip(post.title && post.title.rendered);
+      img.loading = 'lazy';
+      a.appendChild(img);
+    }
+    var body = document.createElement('div');
+    body.className = 'blog-card-body';
+    var meta = document.createElement('div');
+    meta.className = 'blog-card-meta';
+    meta.textContent = fmtDate(post.date);
+    var h = document.createElement('h3');
+    h.textContent = strip(post.title && post.title.rendered);
+    var read = document.createElement('span');
+    read.className = 'read';
+    read.textContent = 'Read essay';
+    body.appendChild(meta);
+    body.appendChild(h);
+    body.appendChild(read);
+    a.appendChild(body);
+    return a;
+  }
+  function paintBlog(issues, wpPosts) {
+    var section = $('blog');
+    var grid = $('blogGrid');
+    if (!section || !grid) return;
+    var essay = null;
+    (issues || []).some(function (issue) {
+      if (issue && issue.essay) { essay = issue; return true; }
+      return false;
+    });
+    var skip = {};
+    skip[FEATURED_SLUG] = true;
+    (issues || []).forEach(function (issue) {
+      if (issue && issue.slug && !issue.essay) skip[issue.slug] = true;
+    });
+    if (essay && essay.slug) skip[essay.slug] = true;
+
+    var cards = [];
+    if (essay) cards.push(blogCardFromIssue(essay));
+    (wpPosts || []).forEach(function (post) {
+      if (cards.length >= BLOG_MAX) return;
+      if (!post || !post.slug || skip[post.slug]) return;
+      skip[post.slug] = true;
+      cards.push(blogCardFromWp(post));
+    });
+    grid.textContent = '';
+    if (!cards.length) {
+      section.hidden = true;
+      return;
+    }
+    cards.forEach(function (card) { grid.appendChild(card); });
+    section.hidden = false;
+  }
+
   j('news/issues.json').then(function (data) {
     var list = (data && data.issues) || [];
     paintArchive(list);
-    paintRasTake(list);
+    paintBlog(list, []);
+    j(WP + '?categories=' + BLOG_CATS + '&per_page=12&_embed=wp:featuredmedia', 8000).then(function (posts) {
+      paintBlog(list, posts || []);
+    }).catch(function () { /* keep the local essay if any */ });
   }).catch(function () {
     paintArchive([]);
-    paintRasTake([]);
+    paintBlog([], []);
   });
 })();
