@@ -1,26 +1,14 @@
-/* Satoshi desk — ticker, Pulse hero, analytics, issues, WP blog, subscribe. */
+/* Virtuse Brief — theme, capture, pulse, issues, data desk, Ras Take. */
 (function () {
   'use strict';
 
   var MP = 'https://mempool.space/api';
-  var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
-  var HALVING_INTERVAL = 210000;
-  var ISSUES_PAGE = 6;
-  var BLOG_PAGE = 12;
-  /* Boxes 16 and Reports 35 are dead; never dump uncategorized or crypto-news (38). */
-  var BLOG_CATS = '13,15';
-  var TOPICS = {
-    Market: /etf|price|market|dump|rally|outflow|inflow|spot bitcoin|dominance|\$[0-9]/i,
-    Regulation: /mica|sec|clarity|regulat|digital euro|securities|cftc/i,
-    Treasury: /treasury|saylor|strategy|microstrategy|corporate|ibit|blackrock/i,
-    Mining: /mining|hashrate|miner|asic|pool/i,
-    Policy: /fed|warsh|senate|congress|fomc|government|white house|policy/i,
-    Macro: /debt|inflat|dollar|gold|print|peasant|credit card|macro|treasury yield/i
-  };
-
-  var pulseItems = [];
-  var weeklyIssue = null;
+  var FEATURED_SLUG = 'bitcoin-fell-below-77000-etfs-sold-fed-looms';
+  var THEME_KEY = 'vb-theme';
+  var THEME_DARK = '#111110';
+  var THEME_LIGHT = '#FBFBFA';
+  var PULSE_MAX = 5;
 
   function $(id) { return document.getElementById(id); }
   function j(url, ms) {
@@ -32,14 +20,6 @@
       if (!r.ok) throw new Error(String(r.status));
       return r.json();
     });
-  }
-  function strip(s) {
-    var doc = new DOMParser().parseFromString(s || '', 'text/html');
-    return (doc.body.textContent || '').replace('[…]', '…').trim();
-  }
-  function num(n, d) {
-    if (n == null || isNaN(n)) return '—';
-    return n.toLocaleString('en-US', { maximumFractionDigits: d == null ? 0 : d });
   }
   function usd(n) {
     if (n == null || isNaN(n)) return '—';
@@ -54,28 +34,8 @@
     if (isNaN(d.getTime())) return '';
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  function timeAgo(iso) {
-    var t = new Date(iso).getTime();
-    if (isNaN(t)) return '';
-    var s = Math.round((Date.now() - t) / 1000);
-    if (s < 120) return 'just now';
-    if (s < 3600) return Math.floor(s / 60) + 'm ago';
-    if (s < 86400) return Math.floor(s / 3600) + 'h ago';
-    if (s < 172800) return 'yesterday';
-    return fmtDate(iso);
-  }
   function articleUrl(slug) {
     return 'article.html?slug=' + encodeURIComponent(slug);
-  }
-  function supplyAtHeight(h) {
-    var supply = 0, subsidy = 50, remaining = h;
-    while (remaining > 0) {
-      var blocks = Math.min(remaining, HALVING_INTERVAL);
-      supply += blocks * subsidy;
-      remaining -= blocks;
-      subsidy /= 2;
-    }
-    return supply;
   }
   function setText(id, v) {
     var el = $(id);
@@ -87,40 +47,29 @@
   }
   function signedPct(n) {
     if (n == null || isNaN(n)) return '—';
-    var sign = n > 0 ? '+' : '';
-    return sign + n.toFixed(2) + '%';
+    return (n > 0 ? '+' : '') + n.toFixed(2) + '%';
   }
 
-  /* —— Nav —— */
+  /* Theme: default dark, persist vb-theme, update theme-color. ~40 lines. */
   (function () {
-    var btn = $('navToggle');
-    var links = $('navLinks');
-    if (!btn || !links) return;
-    btn.addEventListener('click', function () {
-      var open = document.body.classList.toggle('nav-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    links.addEventListener('click', function (e) {
-      if (e.target.closest('a')) document.body.classList.remove('nav-open');
-    });
-  })();
-
-  /* —— Theme (toggle only; first visit / no key is always light) —— */
-  (function () {
-    var KEY = 'satoshi-theme';
     var btn = $('themeToggle');
+    var label = $('themeToggleLabel');
+    var meta = document.querySelector('meta[name="theme-color"]');
     function current() {
-      return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
     }
     function apply(theme, persist) {
       document.documentElement.setAttribute('data-theme', theme);
+      if (meta) meta.setAttribute('content', theme === 'light' ? THEME_LIGHT : THEME_DARK);
       if (persist) {
-        try { localStorage.setItem(KEY, theme); } catch (e) {}
+        try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
       }
       if (!btn) return;
       var next = theme === 'dark' ? 'light' : 'dark';
+      var cap = next.charAt(0).toUpperCase() + next.slice(1);
       btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
-      btn.setAttribute('title', next === 'dark' ? 'Dark theme' : 'Light theme');
+      btn.setAttribute('title', cap + ' theme');
+      if (label) label.textContent = cap;
     }
     if (btn) {
       btn.addEventListener('click', function () {
@@ -130,20 +79,35 @@
     apply(current(), false);
   })();
 
-  /* —— EDITION date (Europe/Bratislava, Gazette format) —— */
+  /* Sticky compact form after Featured Brief, desktop only, not first paint. */
   (function () {
-    var el = $('editionDate');
-    if (!el) return;
-    var opts = { timeZone: 'Europe/Bratislava' };
-    var now = new Date();
-    el.textContent = now.toLocaleDateString('en-US', {
-      weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
-      timeZone: opts.timeZone
-    });
-    el.setAttribute('datetime', now.toLocaleDateString('en-CA', opts));
+    var form = $('subscribeStripForm');
+    var featured = $('featured');
+    var join = $('subscribe');
+    if (!form || !featured) return;
+    var mq = window.matchMedia('(min-width: 1021px)');
+    var seenScroll = false;
+    function update() {
+      if (!seenScroll || !mq.matches) {
+        form.classList.remove('is-sticky');
+        document.body.classList.remove('capture-sticky');
+        return;
+      }
+      var featuredPast = featured.getBoundingClientRect().bottom <= 0;
+      var joinInView = join && join.getBoundingClientRect().top < window.innerHeight;
+      var sticky = featuredPast && !joinInView;
+      form.classList.toggle('is-sticky', sticky);
+      document.body.classList.toggle('capture-sticky', sticky);
+    }
+    window.addEventListener('scroll', function () {
+      seenScroll = true;
+      update();
+    }, { passive: true });
+    if (mq.addEventListener) mq.addEventListener('change', update);
+    else if (mq.addListener) mq.addListener(update);
   })();
 
-  /* —— Subscribe (existing Worker; ENG list via RESEND_SEGMENT_ID) —— */
+  /* Subscribe — existing Worker, ENG list. */
   function bindSubscribe(form, msg) {
     if (!form) return;
     var btn = form.querySelector('button[type="submit"]');
@@ -176,7 +140,7 @@
         if (result.ok) {
           form.reset();
           if (msg) {
-            msg.textContent = 'You are on the Satoshi list. Check your inbox.';
+            msg.textContent = 'You are on the list. Check your inbox.';
             msg.classList.add('ok');
           }
         } else if (msg) {
@@ -197,150 +161,67 @@
   bindSubscribe($('subscribeStripForm'), $('subscribeStripMsg'));
   bindSubscribe($('subscribeForm'), $('subscribeMsg'));
 
-  /* —— Ticker + Satoshi Analytics —— */
-  var lastTickerStats = null;
-  var tickerResizeTimer = null;
-  function renderTicker(stats) {
-    var host = $('tickerTrack');
-    if (!host) return;
-    lastTickerStats = stats;
-    var parts = [
-      ['BTC/USD', stats.price || '—', ''],
-      ['Sats/$', stats.sats || '—', ''],
-      ['24h', stats.chg || '—', stats.chgClass || ''],
-      ['Hashrate', stats.hash || '—', ''],
-      ['Fees', stats.fee || '—', ''],
-      ['Block', stats.height || '—', '']
-    ];
-    function row() {
-      var frag = document.createDocumentFragment();
-      parts.forEach(function (p, i) {
-        if (i) {
-          var sep = document.createElement('span');
-          sep.className = 'ticker-sep';
-          sep.setAttribute('aria-hidden', 'true');
-          sep.textContent = '•';
-          frag.appendChild(sep);
-        }
-        var item = document.createElement('span');
-        item.className = 'ticker-item';
-        item.innerHTML = p[0] + ' <strong class="' + p[2] + '"></strong>';
-        item.querySelector('strong').textContent = p[1];
-        frag.appendChild(item);
-      });
-      return frag;
+  /* Masthead BTC/USD (omit if dash) + Data desk (4 figures). */
+  function setMastPrice(value) {
+    var wrap = $('mastBtc');
+    var el = $('mastPrice');
+    if (!wrap || !el) return;
+    if (!value || value === '—') {
+      wrap.hidden = true;
+      el.textContent = '';
+      return;
     }
-    function trailingSep() {
-      var sep = document.createElement('span');
-      sep.className = 'ticker-sep';
-      sep.setAttribute('aria-hidden', 'true');
-      sep.textContent = '•';
-      return sep;
-    }
-    function makeGroup(copies) {
-      var g = document.createElement('span');
-      g.className = 'ticker-group';
-      for (var i = 0; i < copies; i++) {
-        g.appendChild(row());
-        g.appendChild(trailingSep());
-      }
-      return g;
-    }
-    host.textContent = '';
-    var probe = makeGroup(1);
-    host.appendChild(probe);
-    var rowW = probe.getBoundingClientRect().width;
-    var parent = host.parentElement;
-    var viewW = parent ? parent.getBoundingClientRect().width : 1200;
-    var copies = Math.max(1, Math.ceil((viewW + 1) / Math.max(rowW, 1)));
-    host.textContent = '';
-    host.appendChild(makeGroup(copies));
-    host.appendChild(makeGroup(copies));
+    el.textContent = value;
+    wrap.hidden = false;
   }
 
-  window.addEventListener('resize', function () {
-    if (tickerResizeTimer) clearTimeout(tickerResizeTimer);
-    tickerResizeTimer = setTimeout(function () {
-      if (lastTickerStats) renderTicker(lastTickerStats);
-    }, 150);
-  });
-
   function refreshMarket() {
-    var stats = { price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' };
-
     j(MP + '/v1/prices').then(function (p) {
-      stats.price = usd(p.USD);
-      stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
-      setText('tilePrice', stats.price);
-      setText('tileSats', stats.sats);
-      renderTicker(stats);
-    }).catch(function () {});
+      var price = usd(p.USD);
+      setText('tilePrice', price);
+      setMastPrice(price);
+    }).catch(function () {
+      setMastPrice('');
+    });
 
     j('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT').then(function (t) {
       var n = parseFloat(t.priceChangePercent);
-      stats.chg = signedPct(n);
-      stats.chgClass = pctClass(n);
-      setText('tileChg', stats.chg);
+      setText('tileChg', signedPct(n));
       var el = $('tileChg');
-      if (el) { el.className = 'tile-value ' + stats.chgClass; }
-      renderTicker(stats);
+      if (el) el.className = 'tile-value ' + pctClass(n);
     }).catch(function () {
       return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true').then(function (g) {
         var n = g.bitcoin && g.bitcoin.usd_24h_change;
-        stats.chg = signedPct(n);
-        stats.chgClass = pctClass(n);
-        setText('tileChg', stats.chg);
+        setText('tileChg', signedPct(n));
         var el = $('tileChg');
-        if (el) { el.className = 'tile-value ' + stats.chgClass; }
-        renderTicker(stats);
+        if (el) el.className = 'tile-value ' + pctClass(n);
       });
     }).catch(function () {});
 
-    j(MP + '/blocks/tip/height').then(function (h) {
-      stats.height = num(h);
-      setText('tileHeight', stats.height);
-      var next = (Math.floor(h / HALVING_INTERVAL) + 1) * HALVING_INTERVAL;
-      var days = (next - h) * 10 / 60 / 24;
-      setText('tileHalving', Math.round(days) + 'd');
-      renderTicker(stats);
-    }).catch(function () {});
-
     j(MP + '/v1/fees/recommended').then(function (f) {
-      stats.fee = (f.fastestFee != null ? f.fastestFee : '—') + ' sat/vB';
       setText('tileFee', f.fastestFee != null ? f.fastestFee + ' sat/vB' : '—');
-      renderTicker(stats);
     }).catch(function () {});
 
     j(MP + '/v1/mining/hashrate/3d').then(function (m) {
-      stats.hash = compact(m.currentHashrate / 1e18) + ' EH/s';
-      setText('tileHash', stats.hash);
-      renderTicker(stats);
-    }).catch(function () {});
-
-    j(MP + '/v1/difficulty-adjustment').then(function (d) {
-      var chg = d.difficultyChange;
-      var label = (chg == null || isNaN(chg)) ? '—' : ((chg > 0 ? '+' : '') + chg.toFixed(2) + '%');
-      setText('tileDiff', label);
-      var el = $('tileDiff');
-      if (el) { el.className = 'tile-value ' + pctClass(chg); }
+      setText('tileHash', compact(m.currentHashrate / 1e18) + ' EH/s');
     }).catch(function () {});
   }
-
-  renderTicker({ price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' });
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* —— Pulse shorts (outlet stories; weekly take lives on the featured Brief) —— */
-  var FEATURED_SLUG = 'bitcoin-fell-below-77000-etfs-sold-fed-looms';
-
+  /* Pulse: Bitcoin-only, 4–5 max, TAG + 2 sentences + Read at {Outlet}. */
   function isDeskStory(item) {
     if (!item) return false;
     var src = (item.source || '').toLowerCase();
     if (/weekly take|virtuse/.test(src)) return true;
-    var url = item.url || '';
-    return /article\.html(\?|$)/i.test(url);
+    return /article\.html(\?|$)/i.test(item.url || '');
   }
-
+  function isBitcoinOnly(item) {
+    var blob = ((item && item.title) || '') + ' ' + ((item && item.excerpt) || '');
+    if (!/bitcoin|\bbtc\b/i.test(blob)) return false;
+    if (/solana|\beth\b|ethereum|\bxrp\b|dogecoin|memecoin|altcoin/i.test(blob) && !/bitcoin|\bbtc\b/i.test(blob)) return false;
+    return true;
+  }
   function outletCta(item) {
     if (!item) return 'Full story';
     if (isDeskStory(item)) return 'Read this Brief';
@@ -349,90 +230,71 @@
     if (/crypto\s*slate/i.test(src)) return 'Read at CryptoSlate';
     return 'Read at ' + src;
   }
-
+  function firstSentence(text) {
+    var m = (text || '').match(/.*?[.!?](?=\s|$)/);
+    return m ? m[0].trim() : (text || '').trim();
+  }
+  function twoSentences(item) {
+    var title = ((item && item.title) || '').replace(/\s+/g, ' ').trim();
+    var excerpt = ((item && item.excerpt) || '').replace(/\s+/g, ' ').trim();
+    if (title && !/[.!?]$/.test(title)) title += '.';
+    if (title && excerpt) return (title + ' ' + firstSentence(excerpt)).trim();
+    return firstSentence(title || excerpt);
+  }
   function renderPulse(items) {
     var list = $('pulseList');
     var empty = $('pulseEmpty');
     if (!list || !empty) return;
     list.textContent = '';
-    var shorts = (items || []).filter(function (it) { return !isDeskStory(it); });
+    var shorts = (items || []).filter(function (it) {
+      return it && !isDeskStory(it) && isBitcoinOnly(it);
+    }).slice(0, PULSE_MAX);
     if (!shorts.length) {
       empty.hidden = false;
       return;
     }
     empty.hidden = true;
     shorts.forEach(function (it) {
-      var a = document.createElement('a');
-      a.className = 'pulse-item';
-      a.href = it.url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      var h = document.createElement('h3');
-      h.textContent = it.title;
-      a.appendChild(h);
-      if (it.excerpt) {
-        var dek = document.createElement('p');
-        dek.className = 'pulse-item-dek';
-        dek.textContent = it.excerpt;
-        a.appendChild(dek);
-      }
-      var meta = document.createElement('div');
-      meta.className = 'pulse-meta';
-      meta.textContent = [it.source, timeAgo(it.published)].filter(Boolean).join(' · ');
-      a.appendChild(meta);
-      var read = document.createElement('span');
+      var article = document.createElement('article');
+      article.className = 'pulse-item';
+      var tag = document.createElement('span');
+      tag.className = 'pulse-tag';
+      tag.textContent = (it.source || 'Desk').replace(/\s+/g, ' ').trim();
+      var copy = document.createElement('p');
+      copy.className = 'pulse-copy';
+      copy.textContent = twoSentences(it);
+      var read = document.createElement('a');
       read.className = 'read';
+      read.href = it.url || '#';
+      if (it.url && /^https?:/i.test(it.url)) {
+        read.target = '_blank';
+        read.rel = 'noopener noreferrer';
+      }
       read.textContent = outletCta(it);
-      a.appendChild(read);
-      list.appendChild(a);
+      article.appendChild(tag);
+      article.appendChild(copy);
+      article.appendChild(read);
+      list.appendChild(article);
     });
   }
-
-  function refreshPulseHero() {
-    renderPulse(pulseItems);
-  }
-
   function loadPulse() {
     j('news/news-pulse.json').then(function (data) {
       var local = (data && data.items) || [];
       if (data && data.feed) {
         return j(data.feed).then(function (remote) {
           var items = (remote && remote.items) || remote;
-          pulseItems = Array.isArray(items) && items.length ? items : local;
-          refreshPulseHero();
-        }).catch(function () {
-          pulseItems = local;
-          refreshPulseHero();
-        });
+          renderPulse(Array.isArray(items) && items.length ? items : local);
+        }).catch(function () { renderPulse(local); });
       }
-      pulseItems = local;
-      refreshPulseHero();
-    }).catch(function () {
-      pulseItems = [];
-      refreshPulseHero();
-    });
+      renderPulse(local);
+    }).catch(function () { renderPulse([]); });
   }
   loadPulse();
 
-  /* —— Issues / latest issues —— */
-  var issuesState = { all: [], shown: 0 };
-
+  /* Latest issues + Ras Take (omit block if no essay). */
   function issueHref(issue) {
     return issue.slug ? articleUrl(issue.slug) : (issue.url || '#');
   }
-
-  function paintSponsor(sponsor) {
-    var slot = $('sponsoredSlot');
-    var name = $('sponsoredName');
-    if (!slot) return;
-    if (sponsor) {
-      if (name) name.textContent = sponsor;
-      slot.hidden = false;
-    } else {
-      slot.hidden = true;
-    }
-  }
-
   function archiveCard(issue) {
     var a = document.createElement('a');
     a.className = 'archive-card';
@@ -444,227 +306,45 @@
     h.textContent = issue.title;
     var p = document.createElement('p');
     p.textContent = issue.excerpt || '';
-    var r = document.createElement('div');
-    r.className = 'read';
-    r.textContent = (issue.read_min ? issue.read_min + ' min read' : 'Read issue');
     a.appendChild(t);
     a.appendChild(h);
     a.appendChild(p);
-    a.appendChild(r);
     return a;
   }
-
-  function paintArchive(reset) {
+  function paintRasTake(issues) {
+    var section = $('rasTake');
+    if (!section) return;
+    var essay = null;
+    (issues || []).some(function (issue) {
+      if (issue && issue.essay) { essay = issue; return true; }
+      return false;
+    });
+    if (!essay) {
+      section.hidden = true;
+      return;
+    }
+    setText('rasTitle', essay.title || '');
+    setText('rasDek', essay.excerpt || '');
+    var link = $('rasRead');
+    if (link) link.href = issueHref(essay);
+    section.hidden = false;
+  }
+  function paintArchive(issues) {
     var grid = $('archiveGrid');
-    var btn = $('archiveMore');
     if (!grid) return;
-    if (reset) {
-      grid.textContent = '';
-      issuesState.shown = 0;
-    }
-    var older = issuesState.all.filter(function (issue) {
-      return issue.slug !== FEATURED_SLUG;
-    });
-    var next = older.slice(issuesState.shown, issuesState.shown + ISSUES_PAGE);
-    next.forEach(function (issue) { grid.appendChild(archiveCard(issue)); });
-    issuesState.shown += next.length;
-    if (btn) btn.hidden = issuesState.shown >= older.length;
-  }
-
-  function mergeIssues(local, wpPosts) {
-    var bySlug = {};
-    local.forEach(function (i) { if (i.slug) bySlug[i.slug] = i; });
-    (wpPosts || []).forEach(function (p) {
-      var img = '';
-      try { img = p._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) {}
-      var weekly = /weekly-take|weekly take|this week/i.test((img || '') + ' ' + (p.slug || '') + ' ' + strip(p.title && p.title.rendered));
-      if (!weekly && bySlug[p.slug]) weekly = true;
-      if (!weekly) return;
-      if (!bySlug[p.slug]) {
-        bySlug[p.slug] = {
-          date: (p.date || '').slice(0, 10),
-          title: strip(p.title && p.title.rendered),
-          excerpt: strip(p.excerpt && p.excerpt.rendered),
-          slug: p.slug,
-          image: img,
-          read_min: 5,
-          author: 'Ras Vasilisin'
-        };
-      }
-    });
-    return Object.keys(bySlug).map(function (k) { return bySlug[k]; }).sort(function (a, b) {
-      return (b.date || '').localeCompare(a.date || '');
+    grid.textContent = '';
+    (issues || []).filter(function (issue) {
+      return issue && issue.slug !== FEATURED_SLUG && !issue.essay;
+    }).forEach(function (issue) {
+      grid.appendChild(archiveCard(issue));
     });
   }
-
-  function applyIssues(list, sponsor) {
-    paintSponsor(sponsor);
-    issuesState.all = list || [];
-    weeklyIssue = issuesState.all[0] || null;
-    refreshPulseHero();
-    paintArchive(true);
-  }
-
-  function loadIssues() {
-    j('news/issues.json').then(function (data) {
-      var local = (data && data.issues) || [];
-      applyIssues(local, data && data.sponsor);
-      j(WP + '?categories=13&per_page=12&_embed=wp:featuredmedia', 8000).then(function (posts) {
-        applyIssues(mergeIssues(local, posts || []), data && data.sponsor);
-      }).catch(function () { /* keep the local archive */ });
-    }).catch(function () {
-      applyIssues([], null);
-    });
-  }
-  loadIssues();
-  var moreBtn = $('archiveMore');
-  if (moreBtn) moreBtn.addEventListener('click', function () { paintArchive(false); });
-
-  /* —— Satoshi Blog —— */
-  var blog = { page: 1, totalPages: 1, topic: '', q: '', posts: [] };
-
-  function imgOf(post) {
-    try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
-  }
-  function authorOf(post) {
-    try { return post._embedded.author[0].name || 'Ras Vasilisin'; } catch (e) { return 'Ras Vasilisin'; }
-  }
-  function catsOk(post) {
-    var cats = post.categories || [];
-    if (cats.indexOf(16) !== -1 || cats.indexOf(35) !== -1) return false;
-    return cats.indexOf(13) !== -1 || cats.indexOf(15) !== -1;
-  }
-  function topicMatch(post, topic) {
-    if (!topic) return true;
-    var re = TOPICS[topic];
-    if (!re) return true;
-    var blob = strip(post.title && post.title.rendered) + ' ' + strip(post.excerpt && post.excerpt.rendered);
-    return re.test(blob);
-  }
-
-  function blogCard(post) {
-    var a = document.createElement('a');
-    a.className = 'blog-card';
-    a.href = articleUrl(post.slug);
-    var img = imgOf(post);
-    if (img) {
-      var im = document.createElement('img');
-      im.src = img;
-      im.alt = strip(post.title && post.title.rendered);
-      im.loading = 'lazy';
-      a.appendChild(im);
-    } else {
-      var ph = document.createElement('div');
-      ph.className = 'blog-card-ph';
-      ph.textContent = 'S';
-      a.appendChild(ph);
-    }
-    var body = document.createElement('div');
-    body.className = 'blog-card-body';
-    var h = document.createElement('h3');
-    h.textContent = strip(post.title && post.title.rendered);
-    var meta = document.createElement('div');
-    meta.className = 'blog-card-meta';
-    var au = document.createElement('span');
-    au.textContent = authorOf(post);
-    var t = document.createElement('span');
-    t.textContent = fmtDate(post.date);
-    meta.appendChild(au);
-    meta.appendChild(t);
-    body.appendChild(h);
-    body.appendChild(meta);
-    a.appendChild(body);
-    return a;
-  }
-
-  function paintBlog(append) {
-    var grid = $('blogGrid');
-    var empty = $('blogEmpty');
-    if (!grid) return;
-    if (!append) grid.textContent = '';
-    var shown = blog.posts.filter(function (p) { return catsOk(p) && topicMatch(p, blog.topic); });
-    if (blog.q) {
-      var q = blog.q.toLowerCase();
-      shown = shown.filter(function (p) {
-        return (strip(p.title && p.title.rendered) + ' ' + strip(p.excerpt && p.excerpt.rendered)).toLowerCase().indexOf(q) !== -1;
-      });
-    }
-    shown.forEach(function (p) { grid.appendChild(blogCard(p)); });
-    if (empty) {
-      if (shown.length) {
-        empty.hidden = true;
-      } else {
-        empty.hidden = false;
-        if (blog.q || blog.topic) empty.textContent = 'No articles match that filter.';
-        else if (!blog.posts.length) empty.textContent = 'Loading the desk…';
-        else empty.textContent = 'No articles match that filter.';
-      }
-    }
-  }
-
-  function fetchBlog(reset) {
-    if (reset) { blog.page = 1; blog.posts = []; }
-    var btn = $('blogMore');
-    if (btn) btn.disabled = true;
-    var url = WP + '?categories=' + BLOG_CATS + '&per_page=' + BLOG_PAGE + '&page=' + blog.page + '&_embed=wp:featuredmedia,author';
-    if (blog.q) url += '&search=' + encodeURIComponent(blog.q);
-    var opts = {};
-    if (typeof AbortSignal !== 'undefined' && AbortSignal.timeout) opts.signal = AbortSignal.timeout(10000);
-    fetch(url, opts).then(function (r) {
-      blog.totalPages = parseInt(r.headers.get('X-WP-TotalPages') || '1', 10);
-      if (!r.ok) throw new Error(String(r.status));
-      return r.json();
-    }).then(function (posts) {
-      blog.posts = blog.posts.concat(posts || []);
-      paintBlog(false);
-      if (btn) {
-        btn.disabled = false;
-        btn.hidden = blog.page >= blog.totalPages;
-      }
-    }).catch(function () {
-      paintBlog(false);
-      var empty = $('blogEmpty');
-      if (empty && !blog.posts.length) {
-        empty.hidden = false;
-        empty.textContent = 'Could not reach the article feed.';
-      }
-      if (btn) btn.disabled = false;
-    });
-  }
-  fetchBlog(true);
-
-  var blogMore = $('blogMore');
-  if (blogMore) {
-    blogMore.addEventListener('click', function () {
-      blog.page += 1;
-      fetchBlog(false);
-    });
-  }
-
-  var search = $('blogSearch');
-  var searchTimer;
-  if (search) {
-    search.addEventListener('input', function () {
-      clearTimeout(searchTimer);
-      searchTimer = setTimeout(function () {
-        blog.q = search.value.trim();
-        fetchBlog(true);
-      }, 280);
-    });
-  }
-
-  var chips = document.querySelectorAll('.chip');
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var topic = chip.getAttribute('data-topic') || '';
-      if (blog.topic === topic) {
-        blog.topic = '';
-        chip.setAttribute('aria-pressed', 'false');
-      } else {
-        blog.topic = topic;
-        chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
-      }
-      paintBlog(false);
-    });
+  j('news/issues.json').then(function (data) {
+    var list = (data && data.issues) || [];
+    paintArchive(list);
+    paintRasTake(list);
+  }).catch(function () {
+    paintArchive([]);
+    paintRasTake([]);
   });
 })();
