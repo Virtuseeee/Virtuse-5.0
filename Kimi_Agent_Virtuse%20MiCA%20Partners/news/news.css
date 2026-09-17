@@ -294,9 +294,10 @@ ul { list-style: none; }
 .hero-masthead {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 16px 24px;
+  gap: 4px 24px;
   text-align: left;
   margin-bottom: 12px;
   padding: 4px 0 10px;
@@ -322,7 +323,7 @@ ul { list-style: none; }
   color: var(--ink-faint);
 }
 .hero-claim {
-  margin: 0;
+  margin: 0 0 0 auto;
   text-align: right;
   flex-shrink: 0;
   white-space: nowrap;
@@ -907,7 +908,7 @@ ul { list-style: none; }
   :root { --gutter: 18px; }
   .hero { padding: 6px 0 40px; }
   .hero-masthead { margin-bottom: 10px; padding: 2px 0 8px; flex-wrap: wrap; }
-  .hero-claim { text-align: right; flex-shrink: 1; white-space: normal; }
+  .hero-claim { white-space: nowrap; }
   .archive, .blog-grid { grid-template-columns: 1fr; }
   .subscribe { grid-template-columns: 1fr; }
   .wordmark-img { height: 34px; }
