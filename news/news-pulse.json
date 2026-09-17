@@ -5,6 +5,7 @@
     {
       "title": "US spot Bitcoin ETFs record $450.4M net outflow, largest since June",
       "source": "Cointelegraph",
+      "tag": "ETF",
       "url": "https://cointelegraph.com/news/bitcoin-etfs-shed-450m-in-biggest-outflow-since-june",
       "published": "2026-09-16T10:00:00Z",
       "excerpt": "Thirteen US-listed funds shed $450.4 million on Tuesday, the largest day since late June. Fidelity and BlackRock led the withdrawals as Bitcoin fell 2.5%."
@@ -12,6 +13,7 @@
     {
       "title": "Bitcoin holds near $75,700 as the Fed decision and a stalled market-structure bill land on the same day",
       "source": "CryptoTimes",
+      "tag": "Fed",
       "url": "https://www.cryptotimes.io/2026/09/16/bitcoin-price-slips-in-fear-as-fed-decision-nears-and-clarity-act-stalls/",
       "published": "2026-09-16T06:00:00Z",
       "excerpt": "Price clustered in a $75,400–$76,100 band into Wednesday. The FOMC statement and a failed CLARITY cloture vote sit on the same calendar."

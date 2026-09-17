@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 56" fill="none" aria-hidden="true">
+  <title>Virtuse Brief</title>
+  <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M6 38h76v10H6z"/>
+  <path stroke="currentColor" stroke-width="1.35" d="M14 38V22h28v16M18 27h20M18 32h14"/>
+  <path stroke="currentColor" stroke-width="1.35" stroke-linecap="round" d="M52 38V18M46 18h12"/>
+  <circle cx="52" cy="12" r="5" stroke="var(--accent, #F7931A)" stroke-width="1.4"/>
+  <path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M64 30h16M64 34h12"/>
+</svg>

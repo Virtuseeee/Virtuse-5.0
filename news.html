@@ -24,12 +24,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Virtuse Brief">
 <meta property="og:description" content="Virtuse Brief. Bitcoin-only. No tokens. No PR. Weekly on Monday.">
 <meta property="og:url" content="https://virtuse.com/news.html">
-<meta property="og:image" content="https://blog.virtuse.com/wp-content/uploads/2026/09/weekly-take-fed-vs-bitcoin-2026-09-14.jpg">
+<meta property="og:image" content="https://virtuse.com/news/og-card.png">
+<meta property="og:image:alt" content="Virtuse Brief">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Virtuse Brief">
 <meta name="twitter:description" content="Virtuse Brief. Bitcoin-only. No tokens. No PR.">
-<meta name="twitter:image" content="https://blog.virtuse.com/wp-content/uploads/2026/09/weekly-take-fed-vs-bitcoin-2026-09-14.jpg">
+<meta name="twitter:image" content="https://virtuse.com/news/og-card.png">
+<meta name="twitter:image:alt" content="Virtuse Brief">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
@@ -48,6 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "Organization",
       "name": "Virtuse Brief",
       "url": "https://virtuse.com/news.html",
+      "logo": "https://virtuse.com/news/brief-mark.png",
       "parentOrganization": {
         "@type": "Organization",
         "name": "Virtuse",
@@ -87,79 +92,154 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- 1) Masthead -->
+<svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="ico-etf" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12.5V7M6 12.5V4.5M9.5 12.5V8M13.5 12.5V3.5"/>
+    <path d="M11.5 3.5h2v2"/>
+  </symbol>
+  <symbol id="ico-fed" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 13.5h11M4 13.5V7h8v6.5M3 7h10L8 3.5 3 7z"/>
+    <path d="M6.5 13.5V9h3v4.5"/>
+  </symbol>
+  <symbol id="ico-policy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 12.5h9"/>
+    <path d="M9.5 3.2l3.2 1.6-5.6 8.2H4.3L9.5 3.2z"/>
+  </symbol>
+  <symbol id="ico-mining" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 13.5h4.2l1.3-3.2L5.8 8.1 3 13.5z"/>
+    <path d="M8.2 6.8l4.6-3.3 1.2 1.7-4.3 3.6"/>
+    <path d="M10.4 4.2l1.8 1.3"/>
+  </symbol>
+  <symbol id="ico-security" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 2.5l5.5 2v4.2c0 3.2-2.3 5.2-5.5 6.3-3.2-1.1-5.5-3.1-5.5-6.3V4.5L8 2.5z"/>
+    <path d="M6.2 8.1l1.4 1.4 2.4-2.6"/>
+  </symbol>
+</svg>
+
+<!-- 1) Masthead edge-to-edge -->
 <header class="masthead">
-  <div class="wrap mast-inner">
+  <div class="page-inner mast-inner">
     <a class="wordmark" href="news.html" aria-label="Virtuse Brief">
-      <span class="wordmark-name">Virtuse Brief</span>
-      <span class="wordmark-by">by Virtuse</span>
+      <img class="mark mark-on-dark" src="news/brief-mark.png" alt="" width="32" height="32" aria-hidden="true">
+      <img class="mark mark-on-light" src="news/brief-mark-dark.png" alt="" width="32" height="32" aria-hidden="true">
+      <span class="wordmark-text">
+        <h1 class="wordmark-name">Virtuse Brief</h1>
+        <span class="wordmark-by">by Virtuse</span>
+      </span>
     </a>
-    <p class="mast-micro">Fix the Money, Fix the World</p>
+    <p class="mast-edition"><time datetime="2026-09-14">Mon, Sep 14, 2026</time></p>
     <div class="mast-cluster">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Light theme">
-        <span class="theme-toggle-label" id="themeToggleLabel">Light</span>
-      </button>
       <span class="mast-btc" id="mastBtc" hidden>BTC/USD <strong id="mastPrice"></strong></span>
       <nav class="mast-links" aria-label="Virtuse Brief">
         <a href="#issues">Archive</a>
         <span class="mast-dot" aria-hidden="true">·</span>
-        <a href="https://virtuse.com/bitcoin-data.html">Data</a>
+        <a href="#data-desk">Data</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Light theme">
+        <span class="theme-toggle-label" id="themeToggleLabel">Light</span>
+      </button>
     </div>
   </div>
+  <div class="mast-rules" aria-hidden="true"></div>
 </header>
 
 <main id="main">
-  <!-- 2) Title + compact capture -->
-  <section class="title-block" id="title">
-    <div class="wrap">
-      <h1>Virtuse Brief</h1>
-      <p class="title-sub">Monday. Bitcoin-only. No tokens. No PR.</p>
-      <form class="compact-form" id="subscribeStripForm" novalidate>
-        <input type="email" name="email" placeholder="Email" required autocomplete="email">
-        <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-        <button class="btn" type="submit">Get the Brief</button>
-        <p class="subscribe-msg" id="subscribeStripMsg" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
+  <div class="gazette page-inner">
+    <div class="main-well">
+      <!-- 3) Featured Brief -->
+      <section class="featured-section" id="featured">
+        <article class="featured-brief">
+          <div class="featured-copy">
+            <p class="featured-eyebrow">Latest Brief · <time datetime="2026-09-14">Mon, Sep 14, 2026</time></p>
+            <h2>
+              <a href="article.html?slug=bitcoin-fell-below-77000-etfs-sold-fed-looms">Virtuse Brief — Bitcoin fell below $77,000. ETFs sold, the Fed looms.</a>
+            </h2>
+            <div class="featured-dek-row">
+              <ul class="featured-brief-facts">
+                <li>Price fell from about $80,000 to under $77,000</li>
+                <li>Spot ETF outflows around $463M</li>
+                <li>Next catalysts: Fed decision and CLARITY</li>
+              </ul>
+              <figure class="featured-art" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220" fill="none">
+                  <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M28 86h84M32 86v52M48 86v52M64 86v52M80 86v52M96 86v52M28 138h84M36 78h68l-4-10H40l-4 10z"/>
+                  <path stroke="currentColor" stroke-width="1.35" d="M42 68h56"/>
+                  <path stroke="currentColor" stroke-width="1.25" d="M22 148h96M18 156h104"/>
+                  <g stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="148" y="46" width="52" height="22" rx="3" transform="rotate(-28 174 57)"/>
+                    <path d="M168 72l38 72"/>
+                    <path d="M198 148h46"/>
+                  </g>
+                  <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M150 118h54l12 8v48H150V118zM204 118v56"/>
+                  <path stroke="currentColor" stroke-width="1.15" stroke-linecap="round" d="M160 132h34M160 142h34M160 152h26"/>
+                  <rect x="28" y="172" width="86" height="36" rx="3" stroke="currentColor" stroke-width="1.35"/>
+                  <circle cx="50" cy="190" r="8" stroke="currentColor" stroke-width="1.2"/>
+                  <path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M72 178l6 8-5 6 7 8M88 180v20"/>
+                  <path stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" d="M64 186l8 4-10 8"/>
+                </svg>
+              </figure>
+            </div>
+            <div class="featured-brief-actions">
+              <a class="btn" href="article.html?slug=bitcoin-fell-below-77000-etfs-sold-fed-looms">Read this Brief</a>
+              <a class="text-link" href="#issues">Older issues</a>
+            </div>
+          </div>
+        </article>
+      </section>
 
-  <!-- 3) Featured Brief (hero) -->
-  <section class="featured-section" id="featured">
-    <div class="wrap">
-      <article class="featured-brief">
-        <p class="featured-eyebrow">Latest Brief · <time datetime="2026-09-14">Mon, Sep 14, 2026</time></p>
-        <h2>
-          <a href="article.html?slug=bitcoin-fell-below-77000-etfs-sold-fed-looms">Virtuse Brief — Bitcoin fell below $77,000. ETFs sold, the Fed looms.</a>
-        </h2>
-        <ul class="featured-brief-facts">
-          <li>Price fell from about $80,000 to under $77,000</li>
-          <li>Spot ETF outflows around $463M</li>
-          <li>Next catalysts: Fed decision and CLARITY</li>
-        </ul>
-        <div class="featured-brief-actions">
-          <a class="btn" href="article.html?slug=bitcoin-fell-below-77000-etfs-sold-fed-looms">Read this Brief</a>
-          <a class="text-link" href="#issues">Older issues</a>
+      <!-- 4) Pulse -->
+      <section class="section pulse-section" id="pulse">
+        <div class="section-head">
+          <h2>Pulse</h2>
+          <p>The week on one screen. Daily Pulse comes later.</p>
         </div>
-      </article>
+        <div class="pulse-feed" id="pulseList"></div>
+        <div class="desk-status" id="pulseEmpty">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 56" fill="none" aria-hidden="true">
+            <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M6 38h76v10H6z"/>
+            <path stroke="currentColor" stroke-width="1.35" d="M14 38V22h28v16M18 27h20M18 32h14"/>
+            <path stroke="currentColor" stroke-width="1.35" stroke-linecap="round" d="M52 38V18M46 18h12"/>
+            <circle cx="52" cy="12" r="5" stroke="var(--accent)" stroke-width="1.4"/>
+            <path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M64 30h16M64 34h12"/>
+          </svg>
+          <p>Desk updating</p>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <!-- 4) Pulse -->
-  <section class="section" id="pulse">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Pulse</h2>
-        <p>The week on one screen. Daily Pulse comes later.</p>
+    <aside class="rail" aria-label="BriefCapture and desk">
+      <!-- 2) Compact BriefCapture -->
+      <div class="compact-slot" id="compactSlot">
+        <div class="brief-capture compact" id="compactCapture">
+          <p class="capture-kicker">Virtuse Brief</p>
+          <p class="capture-dek">Monday. Bitcoin-only.</p>
+          <form class="compact-form" id="subscribeStripForm" novalidate>
+            <input type="email" name="email" placeholder="Email" required autocomplete="email">
+            <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
+            <button class="btn" type="submit">Get the Brief</button>
+            <p class="subscribe-msg" id="subscribeStripMsg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
-      <div class="pulse-feed" id="pulseList"></div>
-      <p class="pulse-empty" id="pulseEmpty" hidden>No distinct Bitcoin-specific development today.</p>
-    </div>
-  </section>
+
+      <div class="data-strip" aria-label="Live figures">
+        <div class="tile"><div class="tile-label">BTC/USD</div><div class="tile-value" id="tilePrice">—</div></div>
+        <div class="tile"><div class="tile-label">24h</div><div class="tile-value" id="tileChg">—</div></div>
+        <div class="tile"><div class="tile-label">Hashrate · 3d</div><div class="tile-value" id="tileHash">—</div></div>
+        <div class="tile"><div class="tile-label">Fees</div><div class="tile-value" id="tileFee">—</div></div>
+      </div>
+
+      <div class="essay-teaser" id="essayTeaser" hidden>
+        <p class="kicker">Ras Vasilisin’s Take</p>
+        <p class="essay-teaser-title" id="essayTeaserTitle"></p>
+        <a class="text-link" id="essayTeaserRead" href="#">Read essay</a>
+      </div>
+    </aside>
+  </div>
 
   <!-- 5) Latest issues -->
-  <section class="section" id="issues">
-    <div class="wrap">
+  <section class="section issues-section" id="issues">
+    <div class="page-inner">
       <div class="section-head">
         <h2>Latest issues</h2>
         <p>Weekly takes from the desk</p>
@@ -171,17 +251,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <!-- 6) Data desk -->
-  <section class="section" id="data-desk">
-    <div class="wrap">
+  <!-- 6) Data desk (calc links only) -->
+  <section class="section data-desk-section" id="data-desk">
+    <div class="page-inner">
       <div class="section-head">
         <h2>Data desk</h2>
-      </div>
-      <div class="dash">
-        <div class="tile"><div class="tile-label">BTC/USD</div><div class="tile-value" id="tilePrice">—</div></div>
-        <div class="tile"><div class="tile-label">24h</div><div class="tile-value" id="tileChg">—</div></div>
-        <div class="tile"><div class="tile-label">Hashrate · 3d</div><div class="tile-value" id="tileHash">—</div></div>
-        <div class="tile"><div class="tile-label">Fees</div><div class="tile-value" id="tileFee">—</div></div>
+        <p>Run the numbers. Not a recommendation.</p>
       </div>
       <nav class="data-links" aria-label="Data tools">
         <a href="https://virtuse.com/bitcoin-data.html">Full data desk</a>
@@ -189,13 +264,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="https://virtuse.com/stacking.html?utm_source=stacking&amp;utm_medium=widget">DCA</a>
         <a href="retirement-calculator.html">Retirement</a>
       </nav>
-      <p class="data-note">Run the numbers. Not a recommendation.</p>
     </div>
   </section>
 
   <!-- 7) Ras Take (omitted by JS if no essay) -->
   <section class="section ras-take" id="rasTake" hidden>
-    <div class="wrap">
+    <div class="page-inner ras-inner">
       <p class="kicker">Ras Vasilisin’s Take</p>
       <p class="byline">Founder, Virtuse</p>
       <h2 id="rasTitle"></h2>
@@ -204,33 +278,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <!-- 8) Full signup -->
+  <!-- 8) Full BriefCapture -->
   <section class="join-band" id="subscribe">
-    <div class="wrap">
-      <h2>Get the Brief</h2>
-      <p>Virtuse Brief — Monday.</p>
-      <p>Bitcoin-only. No casino tokens. No pay-to-play.</p>
-      <p>Pulse later.</p>
-      <form class="subscribe join-form" id="subscribeForm" novalidate>
-        <input type="email" name="email" placeholder="Email" required autocomplete="email">
-        <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-        <button class="btn" type="submit">Get the Brief</button>
-        <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
-      </form>
-      <p class="join-social">18,000+ readers</p>
-      <p class="join-fine">Formerly Virtuse News. Unsubscribe anytime. Not advice.</p>
+    <div class="page-inner">
+      <div class="brief-capture full">
+        <h2>Get the Brief</h2>
+        <p>Virtuse Brief — Monday.</p>
+        <p>Bitcoin-only. No casino tokens. No pay-to-play.</p>
+        <p>Pulse later.</p>
+        <form class="subscribe join-form" id="subscribeForm" novalidate>
+          <input type="email" name="email" placeholder="Email" required autocomplete="email">
+          <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
+          <button class="btn" type="submit">Get the Brief</button>
+          <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="join-social">18,000+ readers</p>
+        <p class="join-fine">Formerly Virtuse News. Unsubscribe anytime. Not advice.</p>
+      </div>
     </div>
   </section>
 </main>
 
-<!-- 9) Footer -->
+<!-- 9) Footer full-width -->
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="page-inner">
     <p class="footer-tagline">Virtuse Brief. Bitcoin-only. No tokens. No PR.</p>
     <p class="footer-disclaimer">Published by Virtuse. Not financial advice.</p>
     <nav class="footer-links" aria-label="Virtuse Brief">
       <a href="#issues">Archive</a>
-      <a href="https://virtuse.com/bitcoin-data.html">Data desk</a>
+      <a href="#data-desk">Data desk</a>
       <a href="index.html">Hub</a>
       <a href="#subscribe">Unsubscribe</a>
     </nav>
