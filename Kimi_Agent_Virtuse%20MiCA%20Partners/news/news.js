@@ -194,8 +194,8 @@
       });
     });
   }
+  bindSubscribe($('subscribeStripForm'), $('subscribeStripMsg'));
   bindSubscribe($('subscribeForm'), $('subscribeMsg'));
-  bindSubscribe($('subscribeFooterForm'), $('subscribeFooterMsg'));
 
   /* —— Ticker + Satoshi Analytics —— */
   var lastTickerStats = null;
@@ -330,7 +330,9 @@
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* —— Pulse hero (Collective: featured left, shorts right) —— */
+  /* —— Pulse shorts (outlet stories; weekly take lives on the featured Brief) —— */
+  var FEATURED_SLUG = 'bitcoin-fell-below-77000-etfs-sold-fed-looms';
+
   function isDeskStory(item) {
     if (!item) return false;
     var src = (item.source || '').toLowerCase();
@@ -339,73 +341,32 @@
     return /article\.html(\?|$)/i.test(url);
   }
 
-  function featuredOf(items) {
-    if (!items || !items.length) return null;
-    var pick = items[0];
-    if (pick && !pick.image && weeklyIssue && weeklyIssue.image) {
-      return Object.assign({}, pick, { image: weeklyIssue.image });
-    }
-    return pick;
-  }
-
-  function paintFeatured(item) {
-    var card = $('pulseFeature');
-    var img = $('pulseFeatureImg');
-    var title = $('pulseFeatureTitle');
-    var dek = $('pulseFeatureDek');
-    var kicker = $('pulseFeatureKicker');
-    var cta = $('pulseFeatureCta');
-    if (!card || !item) return;
-    var desk = isDeskStory(item);
-    card.href = item.url || '#';
-    if (desk) {
-      card.removeAttribute('target');
-      card.removeAttribute('rel');
-    } else {
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
-    }
-    if (title) title.textContent = item.title || '';
-    if (dek) dek.textContent = item.excerpt || '';
-    if (kicker) kicker.textContent = item.kicker || item.source || 'Satoshi Pulse';
-    if (cta) cta.textContent = item.cta || (desk ? 'Read issue →' : 'Open outlet →');
-    if (img) {
-      if (item.image) {
-        img.src = item.image;
-        img.alt = item.title || '';
-        img.hidden = false;
-      } else {
-        img.hidden = true;
-      }
-    }
+  function outletCta(item) {
+    if (!item) return 'Full story';
+    if (isDeskStory(item)) return 'Read this Brief';
+    var src = (item.source || '').replace(/\s+/g, ' ').trim();
+    if (!src) return 'Full story';
+    if (/crypto\s*slate/i.test(src)) return 'Read at CryptoSlate';
+    return 'Read at ' + src;
   }
 
   function renderPulse(items) {
     var list = $('pulseList');
     var empty = $('pulseEmpty');
-    var hero = $('pulseHero');
     if (!list || !empty) return;
     list.textContent = '';
-    if (!items || !items.length) {
+    var shorts = (items || []).filter(function (it) { return !isDeskStory(it); });
+    if (!shorts.length) {
       empty.hidden = false;
-      if (hero) hero.hidden = true;
       return;
     }
     empty.hidden = true;
-    if (hero) hero.hidden = false;
-    paintFeatured(featuredOf(items));
-    items.slice(1, 4).forEach(function (it) {
+    shorts.forEach(function (it) {
       var a = document.createElement('a');
-      var desk = isDeskStory(it);
       a.className = 'pulse-item';
       a.href = it.url;
-      if (desk) {
-        a.removeAttribute('target');
-        a.removeAttribute('rel');
-      } else {
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-      }
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
       var h = document.createElement('h3');
       h.textContent = it.title;
       a.appendChild(h);
@@ -421,7 +382,7 @@
       a.appendChild(meta);
       var read = document.createElement('span');
       read.className = 'read';
-      read.textContent = desk ? 'Read issue →' : 'Open outlet →';
+      read.textContent = outletCta(it);
       a.appendChild(read);
       list.appendChild(a);
     });
@@ -501,10 +462,13 @@
       grid.textContent = '';
       issuesState.shown = 0;
     }
-    var next = issuesState.all.slice(issuesState.shown, issuesState.shown + ISSUES_PAGE);
+    var older = issuesState.all.filter(function (issue) {
+      return issue.slug !== FEATURED_SLUG;
+    });
+    var next = older.slice(issuesState.shown, issuesState.shown + ISSUES_PAGE);
     next.forEach(function (issue) { grid.appendChild(archiveCard(issue)); });
     issuesState.shown += next.length;
-    if (btn) btn.hidden = issuesState.shown >= issuesState.all.length;
+    if (btn) btn.hidden = issuesState.shown >= older.length;
   }
 
   function mergeIssues(local, wpPosts) {
