@@ -16,7 +16,6 @@
   <path stroke="currentColor" stroke-width="1.15" stroke-linecap="round" d="M160 132h34M160 142h34M160 152h26"/>
   <!-- Cracked bill -->
   <rect x="28" y="172" width="86" height="36" rx="3" stroke="currentColor" stroke-width="1.35"/>
-  <circle cx="50" cy="190" r="8" stroke="currentColor" stroke-width="1.2"/>
-  <path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M72 178l6 8-5 6 7 8M88 180v20"/>
-  <path stroke="var(--accent, #F7931A)" stroke-width="1.4" stroke-linecap="round" d="M64 186l8 4-10 8"/>
+  <path stroke="currentColor" stroke-width="1.15" stroke-linecap="round" d="M40 184h18M40 192h12"/>
+  <path stroke="var(--accent, #F7931A)" stroke-width="1.4" stroke-linecap="round" d="M66 176l7 10-6 8 12 10"/>
 </svg>
