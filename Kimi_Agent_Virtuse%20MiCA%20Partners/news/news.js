@@ -422,7 +422,7 @@
     if (!grid) return;
     grid.textContent = '';
     (issues || []).filter(function (issue) {
-      return issue && issue.slug !== FEATURED_SLUG && !issue.essay;
+      return issue && issue.slug !== FEATURED_SLUG && !issue.essay && issue.image;
     }).forEach(function (issue) {
       grid.appendChild(archiveCard(issue));
     });
