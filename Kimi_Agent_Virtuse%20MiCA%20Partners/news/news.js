@@ -231,8 +231,8 @@
     return 'Read at ' + src;
   }
   function firstSentence(text) {
-    var m = (text || '').match(/[^.!?]+[.!?]+|[^.!?]+$/);
-    return m ? m[0].trim() : '';
+    var m = (text || '').match(/.*?[.!?](?=\s|$)/);
+    return m ? m[0].trim() : (text || '').trim();
   }
   function twoSentences(item) {
     var title = ((item && item.title) || '').replace(/\s+/g, ' ').trim();
