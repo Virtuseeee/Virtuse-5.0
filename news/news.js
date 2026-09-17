@@ -144,21 +144,24 @@
   })();
 
   /* —— Subscribe (existing Worker; ENG list via RESEND_SEGMENT_ID) —— */
-  (function () {
-    var form = $('subscribeForm');
+  function bindSubscribe(form, msg) {
     if (!form) return;
-    var msg = $('subscribeMsg');
     var btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
     var label = btn.textContent;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = form.elements.email.value.trim();
       var hp = form.elements.website.value;
-      msg.textContent = '';
-      msg.className = 'subscribe-msg';
+      if (msg) {
+        msg.textContent = '';
+        msg.className = 'subscribe-msg';
+      }
       if (!email) {
-        msg.textContent = 'Email is required.';
-        msg.classList.add('err');
+        if (msg) {
+          msg.textContent = 'Email is required.';
+          msg.classList.add('err');
+        }
         return;
       }
       btn.disabled = true;
@@ -172,21 +175,27 @@
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = 'You are on the Satoshi list. Check your inbox.';
-          msg.classList.add('ok');
-        } else {
+          if (msg) {
+            msg.textContent = 'You are on the Satoshi list. Check your inbox.';
+            msg.classList.add('ok');
+          }
+        } else if (msg) {
           msg.textContent = (result.data && result.data.error) || 'Could not join the list. Try again.';
           msg.classList.add('err');
         }
       }).catch(function () {
-        msg.textContent = 'Network error. Try again.';
-        msg.classList.add('err');
+        if (msg) {
+          msg.textContent = 'Network error. Try again.';
+          msg.classList.add('err');
+        }
       }).then(function () {
         btn.disabled = false;
         btn.textContent = label;
       });
     });
-  })();
+  }
+  bindSubscribe($('subscribeForm'), $('subscribeMsg'));
+  bindSubscribe($('subscribeFooterForm'), $('subscribeFooterMsg'));
 
   /* —— Ticker + Satoshi Analytics —— */
   var lastTickerStats = null;
