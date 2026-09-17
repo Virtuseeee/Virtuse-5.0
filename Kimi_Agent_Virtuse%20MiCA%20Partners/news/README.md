@@ -44,7 +44,7 @@ Confirm that secret equals this id before treating Satoshi signups as a dedicate
 
 | File | What to edit |
 |---|---|
-| `news-pulse.json` | At least three Bitcoin-only stories from the last 24–48h. Link the **original outlet**, not virtuse.com. Include `excerpt` (~3 lines) for the Pulse shorts. Optional `image` (must be `blog.virtuse.com` or another host already on the page CSP) for the left featured card; otherwise the weekly-take image is used. Empty `items` shows “No distinct Bitcoin-specific development today.” Optional `feed` URL is fetched first if set. |
+| `news-pulse.json` | `items[0]` is the left featured card (desk weekly take or an outlet story with `image`). Remaining items are Pulse shorts. Outlet shorts link the **original outlet**, not virtuse.com. Include `excerpt` (~3 lines). Featured `image` must be `blog.virtuse.com` or another host already on the page CSP. Empty `items` shows “No distinct Bitcoin-specific development today.” Optional `feed` URL is fetched first if set. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, image, read time). `sponsor` is a string like `"Acme"` or `null`. A non-null value reveals the outlined Sponsored block; empty stays hidden. |
 | `../satoshi-lockup.png` | Header lockup (proprietary Virtuse mark: CTA-orange face `#F7931A` + italic charcoal wordmark). Recolor ochre→orange only; do not redraw geometry or OCR-edit letters. |
 
