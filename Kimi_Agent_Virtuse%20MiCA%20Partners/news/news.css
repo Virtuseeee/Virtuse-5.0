@@ -270,6 +270,14 @@ ul { list-style: none; }
   outline: none;
 }
 .compact-form input[type="email"]:focus { border-color: var(--ink); }
+.compact-form .btn {
+  background: transparent;
+  color: var(--accent);
+}
+.compact-form .btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
 .compact-form .subscribe-msg {
   flex: 1 0 100%;
   min-height: 0;
@@ -293,6 +301,18 @@ ul { list-style: none; }
 }
 .compact-form.is-sticky input[type="email"] {
   max-width: 280px;
+}
+.compact-form.is-sticky .btn {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+body.capture-sticky .ras-take .btn {
+  background: transparent;
+  color: var(--accent);
+}
+body.capture-sticky .ras-take .btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 @media (max-width: 1020px) {
@@ -566,8 +586,7 @@ ul { list-style: none; }
   margin-top: 16px;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--ink);
 }
 .join-fine {
