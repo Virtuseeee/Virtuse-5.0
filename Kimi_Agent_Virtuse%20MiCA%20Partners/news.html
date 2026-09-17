@@ -102,7 +102,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="#analytics">Analytics</a>
       <a href="#latest-issues">Latest issues</a>
       <a href="#blog">Blog</a>
-      <a href="#about">About</a>
       <a class="btn" href="#subscribe">Subscribe</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Dark theme">
@@ -120,9 +119,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="edition">
           <span class="edition-label">EDITION</span>
           <span class="edition-dot" aria-hidden="true">·</span>
-          <time class="edition-date" id="editionDate" datetime="2026-09-16">Wed, Sep 16, 2026</time>
+          <time class="edition-date" id="editionDate" datetime="2026-09-17">Thu, Sep 17, 2026</time>
         </div>
-        <h1 class="hero-heading">Satoshi Pulse</h1>
+        <p class="hero-claim">Fix the Money, Fix the World</p>
       </header>
 
       <div class="pulse-hero" id="pulseHero">
@@ -132,7 +131,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="pulse-feature-body">
             <p class="kicker" id="pulseFeatureKicker">CryptoSlate</p>
-            <h2 id="pulseFeatureTitle">Senate rejects CLARITY Act cloture 49–50; Bitcoin slips below $76,000</h2>
+            <h1 id="pulseFeatureTitle">Senate rejects CLARITY Act cloture 49–50; Bitcoin slips below $76,000</h1>
             <p class="pulse-feature-dek" id="pulseFeatureDek">The 49–50 cloture defeat stalled the bill, while the crypto selloff and liquidations had already begun before the vote.</p>
             <span class="read" id="pulseFeatureCta">Open outlet →</span>
           </div>
@@ -280,20 +279,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <section class="section about" id="about">
-    <div class="wrap about-grid">
-      <div>
-        <p class="kicker">Bitcoin-only news desk</p>
-        <h2>Independent Bitcoin-only publication.</h2>
-        <p>Satoshi is an independent Bitcoin-only publication. No casino tokens, no pay-to-play press releases. We cover protocol, mining, regulation, and the real economy — including exchanges, custody, and loan platforms that are not Virtuse partners.</p>
-        <p>Published by Virtuse. The desk is editorially independent of affiliates. If a partner is wrong, we say so. Sponsored blocks are labeled Sponsored by X. This is not investment advice.</p>
+  <section class="join-band" id="subscribe-footer">
+    <div class="wrap join-inner">
+      <div class="join-copy">
+        <p class="kicker">The Satoshi Brief</p>
+        <h2>Join Satoshi.</h2>
+        <p>Weekly on Monday. Daily Pulse send comes later. No casino tokens, no pay-to-play press releases.</p>
       </div>
-      <dl class="masthead">
-        <dt>Desk</dt>
-        <dd>Ras Vasilisin</dd>
-        <dt>Publisher</dt>
-        <dd>Published by Virtuse</dd>
-      </dl>
+      <form class="subscribe join-form" id="subscribeFooterForm" novalidate>
+        <input type="text" name="name" placeholder="Name (optional)" autocomplete="name">
+        <input type="email" name="email" placeholder="Email" required autocomplete="email">
+        <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+        <button class="btn" type="submit">Join Satoshi</button>
+        <p class="subscribe-msg" id="subscribeFooterMsg" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 </main>
