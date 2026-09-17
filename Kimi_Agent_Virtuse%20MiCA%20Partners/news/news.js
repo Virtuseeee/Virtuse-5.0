@@ -83,15 +83,21 @@
   (function () {
     var form = $('subscribeStripForm');
     var featured = $('featured');
+    var join = $('subscribe');
     if (!form || !featured) return;
     var mq = window.matchMedia('(min-width: 1021px)');
     var seenScroll = false;
     function update() {
       if (!seenScroll || !mq.matches) {
         form.classList.remove('is-sticky');
+        document.body.classList.remove('capture-sticky');
         return;
       }
-      form.classList.toggle('is-sticky', featured.getBoundingClientRect().bottom <= 0);
+      var featuredPast = featured.getBoundingClientRect().bottom <= 0;
+      var joinInView = join && join.getBoundingClientRect().top < window.innerHeight;
+      var sticky = featuredPast && !joinInView;
+      form.classList.toggle('is-sticky', sticky);
+      document.body.classList.toggle('capture-sticky', sticky);
     }
     window.addEventListener('scroll', function () {
       seenScroll = true;
@@ -224,14 +230,16 @@
     if (/crypto\s*slate/i.test(src)) return 'Read at CryptoSlate';
     return 'Read at ' + src;
   }
+  function firstSentence(text) {
+    var m = (text || '').match(/[^.!?]+[.!?]+|[^.!?]+$/);
+    return m ? m[0].trim() : '';
+  }
   function twoSentences(item) {
     var title = ((item && item.title) || '').replace(/\s+/g, ' ').trim();
     var excerpt = ((item && item.excerpt) || '').replace(/\s+/g, ' ').trim();
-    if (title && excerpt) {
-      if (!/[.!?]$/.test(title)) title += '.';
-      return title + ' ' + excerpt;
-    }
-    return title || excerpt;
+    if (title && !/[.!?]$/.test(title)) title += '.';
+    if (title && excerpt) return (title + ' ' + firstSentence(excerpt)).trim();
+    return firstSentence(title || excerpt);
   }
   function renderPulse(items) {
     var list = $('pulseList');
