@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220" fill="none" aria-hidden="true">
+  <title>Virtuse Brief</title>
+  <!-- Fed colonnade -->
+  <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M28 86h84M32 86v52M48 86v52M64 86v52M80 86v52M96 86v52M28 138h84M36 78h68l-4-10H40l-4 10z"/>
+  <path stroke="currentColor" stroke-width="1.35" d="M42 68h56"/>
+  <!-- Steps -->
+  <path stroke="currentColor" stroke-width="1.25" d="M22 148h96M18 156h104"/>
+  <!-- Gavel -->
+  <g stroke="var(--accent, #F7931A)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="148" y="46" width="52" height="22" rx="3" transform="rotate(-28 174 57)"/>
+    <path d="M168 72l38 72"/>
+    <path d="M198 148h46"/>
+  </g>
+  <!-- Open ledger -->
+  <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M150 118h54l12 8v48H150V118zM204 118v56"/>
+  <path stroke="currentColor" stroke-width="1.15" stroke-linecap="round" d="M160 132h34M160 142h34M160 152h26"/>
+  <!-- Cracked bill -->
+  <rect x="28" y="172" width="86" height="36" rx="3" stroke="currentColor" stroke-width="1.35"/>
+  <circle cx="50" cy="190" r="8" stroke="currentColor" stroke-width="1.2"/>
+  <path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M72 178l6 8-5 6 7 8M88 180v20"/>
+  <path stroke="var(--accent, #F7931A)" stroke-width="1.4" stroke-linecap="round" d="M64 186l8 4-10 8"/>
+</svg>

@@ -9,6 +9,7 @@
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
   var PULSE_MAX = 5;
+  var PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
 
   function $(id) { return document.getElementById(id); }
   function j(url, ms) {
@@ -50,7 +51,7 @@
     return (n > 0 ? '+' : '') + n.toFixed(2) + '%';
   }
 
-  /* Theme: default dark, persist vb-theme, update theme-color. ~40 lines. */
+  /* Theme: default dark, persist vb-theme, update theme-color. */
   (function () {
     var btn = $('themeToggle');
     var label = $('themeToggleLabel');
@@ -79,30 +80,37 @@
     apply(current(), false);
   })();
 
-  /* Sticky compact form after Featured Brief, desktop only, not first paint. */
+  /* Sticky compact capture after Featured Brief, desktop only, not first paint. */
   (function () {
-    var form = $('subscribeStripForm');
+    var capture = $('compactCapture');
+    var slot = $('compactSlot');
     var featured = $('featured');
     var join = $('subscribe');
-    if (!form || !featured) return;
-    var mq = window.matchMedia('(min-width: 1021px)');
+    if (!capture || !featured) return;
+    var mq = window.matchMedia('(min-width: 960px)');
     var seenScroll = false;
     function update() {
       if (!seenScroll || !mq.matches) {
-        form.classList.remove('is-sticky');
+        capture.classList.remove('is-sticky');
         document.body.classList.remove('capture-sticky');
+        if (slot) slot.style.minHeight = '';
         return;
       }
       var featuredPast = featured.getBoundingClientRect().bottom <= 0;
       var joinInView = join && join.getBoundingClientRect().top < window.innerHeight;
       var sticky = featuredPast && !joinInView;
-      form.classList.toggle('is-sticky', sticky);
+      if (sticky && slot && !capture.classList.contains('is-sticky')) {
+        slot.style.minHeight = capture.offsetHeight + 'px';
+      }
+      if (!sticky && slot) slot.style.minHeight = '';
+      capture.classList.toggle('is-sticky', sticky);
       document.body.classList.toggle('capture-sticky', sticky);
     }
     window.addEventListener('scroll', function () {
       seenScroll = true;
       update();
     }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
     if (mq.addEventListener) mq.addEventListener('change', update);
     else if (mq.addListener) mq.addListener(update);
   })();
@@ -161,7 +169,7 @@
   bindSubscribe($('subscribeStripForm'), $('subscribeStripMsg'));
   bindSubscribe($('subscribeForm'), $('subscribeMsg'));
 
-  /* Masthead BTC/USD (omit if dash) + Data desk (4 figures). */
+  /* Masthead BTC/USD (omit while dash) + rail data strip. */
   function setMastPrice(value) {
     var wrap = $('mastBtc');
     var el = $('mastPrice');
@@ -209,7 +217,7 @@
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* Pulse: Bitcoin-only, 4–5 max, TAG + 2 sentences + Read at {Outlet}. */
+  /* Pulse: Bitcoin-only, 4–5 max, TAG icon + 2 sentences + Read at {Outlet}. */
   function isDeskStory(item) {
     if (!item) return false;
     var src = (item.source || '').toLowerCase();
@@ -241,6 +249,32 @@
     if (title && excerpt) return (title + ' ' + firstSentence(excerpt)).trim();
     return firstSentence(title || excerpt);
   }
+  function inferTag(item) {
+    var explicit = item && item.tag ? String(item.tag).trim() : '';
+    if (explicit) {
+      var hit = PULSE_TAGS.filter(function (t) {
+        return t.toLowerCase() === explicit.toLowerCase();
+      })[0];
+      if (hit) return hit;
+    }
+    var blob = (((item && item.title) || '') + ' ' + ((item && item.excerpt) || '')).toLowerCase();
+    if (/\betfs?\b|ishares|spot fund/.test(blob)) return 'ETF';
+    if (/\bfed\b|fomc|powell|jackson hole/.test(blob)) return 'Fed';
+    if (/miner|hashrate|hash rate|difficulty adjustment/.test(blob)) return 'Mining';
+    if (/hack|exploit|stolen|custody breach|\bsecurity\b/.test(blob)) return 'Security';
+    return 'Policy';
+  }
+  function pulseIcon(tag) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '14');
+    svg.setAttribute('height', '14');
+    svg.setAttribute('viewBox', '0 0 16 16');
+    svg.setAttribute('aria-hidden', 'true');
+    var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    use.setAttribute('href', '#ico-' + tag.toLowerCase());
+    svg.appendChild(use);
+    return svg;
+  }
   function renderPulse(items) {
     var list = $('pulseList');
     var empty = $('pulseEmpty');
@@ -257,9 +291,11 @@
     shorts.forEach(function (it) {
       var article = document.createElement('article');
       article.className = 'pulse-item';
+      var tagName = inferTag(it);
       var tag = document.createElement('span');
       tag.className = 'pulse-tag';
-      tag.textContent = (it.source || 'Desk').replace(/\s+/g, ' ').trim();
+      tag.appendChild(pulseIcon(tagName));
+      tag.appendChild(document.createTextNode(tagName));
       var copy = document.createElement('p');
       copy.className = 'pulse-copy';
       copy.textContent = twoSentences(it);
@@ -313,21 +349,27 @@
   }
   function paintRasTake(issues) {
     var section = $('rasTake');
-    if (!section) return;
+    var teaser = $('essayTeaser');
     var essay = null;
     (issues || []).some(function (issue) {
       if (issue && issue.essay) { essay = issue; return true; }
       return false;
     });
     if (!essay) {
-      section.hidden = true;
+      if (section) section.hidden = true;
+      if (teaser) teaser.hidden = true;
       return;
     }
     setText('rasTitle', essay.title || '');
     setText('rasDek', essay.excerpt || '');
+    setText('essayTeaserTitle', essay.title || '');
+    var href = issueHref(essay);
     var link = $('rasRead');
-    if (link) link.href = issueHref(essay);
-    section.hidden = false;
+    if (link) link.href = href;
+    var tlink = $('essayTeaserRead');
+    if (tlink) tlink.href = href;
+    if (section) section.hidden = false;
+    if (teaser) teaser.hidden = false;
   }
   function paintArchive(issues) {
     var grid = $('archiveGrid');
