@@ -330,11 +330,18 @@
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* —— Pulse hero (Collective: featured left, three shorts right) —— */
+  /* —— Pulse hero (Collective: featured left, shorts right) —— */
+  function isDeskStory(item) {
+    if (!item) return false;
+    var src = (item.source || '').toLowerCase();
+    if (/weekly take|virtuse/.test(src)) return true;
+    var url = item.url || '';
+    return /article\.html(\?|$)/i.test(url);
+  }
+
   function featuredOf(items) {
     if (!items || !items.length) return null;
-    var withImg = items.filter(function (it) { return it.image; });
-    var pick = withImg[0] || items[0];
+    var pick = items[0];
     if (pick && !pick.image && weeklyIssue && weeklyIssue.image) {
       return Object.assign({}, pick, { image: weeklyIssue.image });
     }
@@ -349,13 +356,19 @@
     var kicker = $('pulseFeatureKicker');
     var cta = $('pulseFeatureCta');
     if (!card || !item) return;
+    var desk = isDeskStory(item);
     card.href = item.url || '#';
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
+    if (desk) {
+      card.removeAttribute('target');
+      card.removeAttribute('rel');
+    } else {
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+    }
     if (title) title.textContent = item.title || '';
     if (dek) dek.textContent = item.excerpt || '';
-    if (kicker) kicker.textContent = item.source || 'Satoshi Pulse';
-    if (cta) cta.textContent = 'Open outlet →';
+    if (kicker) kicker.textContent = item.kicker || item.source || 'Satoshi Pulse';
+    if (cta) cta.textContent = item.cta || (desk ? 'Read issue →' : 'Open outlet →');
     if (img) {
       if (item.image) {
         img.src = item.image;
@@ -381,12 +394,18 @@
     empty.hidden = true;
     if (hero) hero.hidden = false;
     paintFeatured(featuredOf(items));
-    items.slice(0, 3).forEach(function (it) {
+    items.slice(1, 4).forEach(function (it) {
       var a = document.createElement('a');
+      var desk = isDeskStory(it);
       a.className = 'pulse-item';
       a.href = it.url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
+      if (desk) {
+        a.removeAttribute('target');
+        a.removeAttribute('rel');
+      } else {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
       var h = document.createElement('h3');
       h.textContent = it.title;
       a.appendChild(h);
@@ -402,7 +421,7 @@
       a.appendChild(meta);
       var read = document.createElement('span');
       read.className = 'read';
-      read.textContent = 'Open outlet →';
+      read.textContent = desk ? 'Read issue →' : 'Open outlet →';
       a.appendChild(read);
       list.appendChild(a);
     });
