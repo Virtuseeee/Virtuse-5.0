@@ -13,6 +13,7 @@
   var PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
   var BLOG_CATS = '13,15';
   var BLOG_MAX = 3;
+  var ISSUES_MAX = 4;
 
   function $(id) { return document.getElementById(id); }
   function j(url, ms) {
@@ -423,7 +424,7 @@
     grid.textContent = '';
     (issues || []).filter(function (issue) {
       return issue && issue.slug !== FEATURED_SLUG && !issue.essay;
-    }).forEach(function (issue) {
+    }).slice(0, ISSUES_MAX).forEach(function (issue) {
       grid.appendChild(archiveCard(issue));
     });
   }
