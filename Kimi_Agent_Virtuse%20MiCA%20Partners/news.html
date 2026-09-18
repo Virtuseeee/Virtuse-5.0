@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "Organization",
       "name": "Virtuse Brief",
       "url": "https://virtuse.com/news.html",
-      "logo": "https://virtuse.com/news/brief-mark.png",
+      "logo": "https://virtuse.com/news/brief-nav-logo.png",
       "parentOrganization": {
         "@type": "Organization",
         "name": "Virtuse",
@@ -124,17 +124,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <header class="site-nav">
   <div class="page-inner nav-inner">
-    <a class="wordmark" href="news.html" aria-label="Virtuse Brief">
-      <img class="mark mark-on-dark" src="news/brief-mark.png" alt="" width="32" height="32" aria-hidden="true">
-      <img class="mark mark-on-light" src="news/brief-mark-dark.png" alt="" width="32" height="32" aria-hidden="true">
-      <span class="wordmark-text">Virtuse Brief</span>
+    <a class="wordmark" href="news.html">
+      <img class="brief-logo mark-on-dark" src="news/brief-nav-logo.svg" alt="Virtuse Brief" width="279" height="34">
+      <img class="brief-logo mark-on-light" src="news/brief-nav-logo-on-light.svg" alt="Virtuse Brief" width="279" height="34">
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Virtuse Brief">
       <a href="#pulse">Pulse</a>
       <a href="#issues">Latest issues</a>
       <a href="#blog">Blog</a>
       <a href="#data-desk">Data</a>
-      <a class="btn" href="#subscribe">Get the Brief</a>
+      <a class="btn btn-accent-outline" href="#subscribe">Get the Brief</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Light theme">
       <span class="theme-toggle-label" id="themeToggleLabel">Light</span>
@@ -210,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <label class="sr-only" for="heroEmail">Email</label>
             <input id="heroEmail" type="email" name="email" placeholder="Email address" required autocomplete="email">
             <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-            <button class="btn btn-quiet" type="submit">Get the Brief</button>
+            <button class="btn btn-accent-outline" type="submit">Get the Brief</button>
             <p class="subscribe-msg" id="subscribeStripMsg" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -224,12 +223,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2>Latest issues</h2>
       </div>
       <div class="issues-band">
-        <div class="issues-main">
-          <div class="archive" id="archiveGrid"></div>
-          <div class="more-wrap">
-            <a class="text-link" href="blog.html">All issues</a>
-          </div>
-        </div>
+        <div class="archive" id="archiveGrid"></div>
         <aside class="data-desk" id="data-desk">
           <p class="desk-label">Data desk</p>
           <div class="data-tablist" role="tablist" aria-label="Virtuse data tools" aria-orientation="horizontal">
@@ -292,6 +286,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <p class="data-fine">Run the numbers. Not a recommendation.</p>
         </aside>
+        <div class="more-wrap">
+          <a class="text-link" href="blog.html">All issues</a>
+        </div>
       </div>
     </div>
   </section>
@@ -315,7 +312,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <label class="sr-only" for="footerEmail">Email</label>
         <input id="footerEmail" type="email" name="email" placeholder="Type your email…" required autocomplete="email">
         <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-        <button class="btn btn-quiet" type="submit">Subscribe</button>
+        <button class="btn" type="submit">Subscribe</button>
         <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
       </form>
     </div>

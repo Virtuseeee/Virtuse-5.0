@@ -427,6 +427,37 @@
     }).slice(0, ISSUES_MAX).forEach(function (issue) {
       grid.appendChild(archiveCard(issue));
     });
+    alignDataDesk();
+    [].forEach.call(grid.querySelectorAll('img'), function (img) {
+      if (!img.complete) img.addEventListener('load', alignDataDesk);
+    });
+  }
+
+  /* Data desk bottom matches the third Latest issues card on desktop. */
+  var deskAlignTimer = null;
+  function alignDataDesk() {
+    var desk = $('data-desk');
+    var cards = document.querySelectorAll('#archiveGrid .archive-card');
+    if (!desk) return;
+    if (!window.matchMedia('(min-width: 1021px)').matches || cards.length < 3) {
+      desk.style.height = '';
+      return;
+    }
+    var band = desk.parentElement;
+    if (!band) return;
+    var top = band.getBoundingClientRect().top;
+    var bottom = cards[2].getBoundingClientRect().bottom;
+    desk.style.height = Math.max(0, Math.round(bottom - top)) + 'px';
+  }
+  window.addEventListener('resize', function () {
+    if (deskAlignTimer) clearTimeout(deskAlignTimer);
+    deskAlignTimer = setTimeout(alignDataDesk, 80);
+  });
+  if (typeof ResizeObserver === 'function') {
+    var archiveForAlign = $('archiveGrid');
+    if (archiveForAlign) {
+      new ResizeObserver(alignDataDesk).observe(archiveForAlign);
+    }
   }
 
   /* Blog / Ras Take — essay + related WP posts, no empty placeholders. */
