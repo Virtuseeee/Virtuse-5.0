@@ -233,14 +233,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <aside class="data-desk" id="data-desk">
           <p class="desk-label">Data desk</p>
-          <h3>Run the numbers</h3>
-          <p>Not a recommendation. Calculators from the desk.</p>
-          <nav class="data-links" aria-label="Data tools">
-            <a href="https://virtuse.com/bitcoin-data.html">Full data desk</a>
-            <a href="ma-200w.html">200W MA</a>
-            <a href="https://virtuse.com/stacking.html?utm_source=stacking&amp;utm_medium=widget">DCA</a>
-            <a href="retirement-calculator.html">Retirement</a>
-          </nav>
+          <div class="data-tablist" role="tablist" aria-label="Virtuse data tools" aria-orientation="horizontal">
+            <button type="button" role="tab" id="data-tab-desk" aria-controls="data-panel-desk" aria-selected="true" tabindex="0">Full data desk</button>
+            <button type="button" role="tab" id="data-tab-ma" aria-controls="data-panel-ma" aria-selected="false" tabindex="-1">200W MA</button>
+            <button type="button" role="tab" id="data-tab-rainbow" aria-controls="data-panel-rainbow" aria-selected="false" tabindex="-1">Rainbow</button>
+            <button type="button" role="tab" id="data-tab-dca" aria-controls="data-panel-dca" aria-selected="false" tabindex="-1">DCA / Stacking</button>
+            <button type="button" role="tab" id="data-tab-retire" aria-controls="data-panel-retire" aria-selected="false" tabindex="-1">Retirement</button>
+            <button type="button" role="tab" id="data-tab-fees" aria-controls="data-panel-fees" aria-selected="false" tabindex="-1">Fee Index</button>
+          </div>
+          <div class="data-panels">
+            <div class="data-panel" role="tabpanel" id="data-panel-desk" aria-labelledby="data-tab-desk">
+              <h3>Full data desk</h3>
+              <p>Price, market cap, fees, hash rate, and the latest block. Straight from the network. No account needed.</p>
+              <a class="data-open" href="bitcoin-data.html">Open <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="data-panel" role="tabpanel" id="data-panel-ma" aria-labelledby="data-tab-ma" hidden>
+              <h3>200-week moving average</h3>
+              <p>Bitcoin’s long-term floor. The 200-week moving average has historically marked the bottom of every bear market.</p>
+              <a class="data-open" href="ma-200w.html">Open <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="data-panel" role="tabpanel" id="data-panel-rainbow" aria-labelledby="data-tab-rainbow" hidden>
+              <h3>Rainbow chart</h3>
+              <p>Price history on a logarithmic scale, wrapped in nine color bands from the original 2014 log-regression.</p>
+              <a class="data-open" href="rainbow-chart.html">Open <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="data-panel" role="tabpanel" id="data-panel-dca" aria-labelledby="data-tab-dca" hidden>
+              <h3>DCA / Stacking</h3>
+              <p>Set a stacking rhythm, see the long-term DCA projection, and compare partner fees per purchase.</p>
+              <a class="data-open" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">Open <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="data-panel" role="tabpanel" id="data-panel-retire" aria-labelledby="data-tab-retire" hidden>
+              <h3>Retirement calculator</h3>
+              <p>Set your stack, savings rate, and growth assumptions, then see whether Bitcoin can fund a retirement.</p>
+              <a class="data-open" href="retirement-calculator.html">Open <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="data-panel" role="tabpanel" id="data-panel-fees" aria-labelledby="data-tab-fees" hidden>
+              <h3>Fee Index</h3>
+              <p>EU bitcoin buy-route ranking as of Q3 2026. Spreads excluded.</p>
+              <a class="data-open" href="bitcoin-fee-index/">Open <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <p class="data-fine">Run the numbers. Not a recommendation.</p>
         </aside>
       </div>
     </div>
@@ -262,12 +295,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="footer-tagline">Virtuse Brief. Bitcoin-only. No tokens. No PR.</p>
     <p class="footer-disclaimer">Published by Virtuse. Not financial advice.</p>
     <div class="footer-signup" id="subscribe">
-      <p class="footer-signup-label">Get the Brief</p>
       <form class="lenny-form" id="subscribeForm" novalidate>
         <label class="sr-only" for="footerEmail">Email</label>
         <input id="footerEmail" type="email" name="email" placeholder="Type your email…" required autocomplete="email">
         <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-        <button class="btn" type="submit">Get the Brief</button>
+        <button class="btn" type="submit">Subscribe</button>
         <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
       </form>
       <p class="join-fine">Formerly Virtuse News. Unsubscribe anytime.</p>

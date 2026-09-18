@@ -531,4 +531,41 @@
     paintArchive([]);
     paintBlog([], []);
   });
+
+  /* Data desk tabs: click + arrow/Home/End, no live metrics. */
+  (function () {
+    var root = $('data-desk');
+    if (!root) return;
+    var tabs = [].slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = [].slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    if (!tabs.length) return;
+
+    function select(id, moveFocus) {
+      tabs.forEach(function (tab) {
+        var on = tab.id === id;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        if (on && moveFocus) tab.focus();
+      });
+      panels.forEach(function (panel) {
+        var on = panel.getAttribute('aria-labelledby') === id;
+        if (on) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+      });
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab.id, false); });
+      tab.addEventListener('keydown', function (e) {
+        var next = i;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        select(tabs[next].id, true);
+      });
+    });
+  })();
 })();
