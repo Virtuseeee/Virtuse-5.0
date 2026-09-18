@@ -34,7 +34,7 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 
 | File | What to edit |
 |---|---|
-| `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
+| `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) paints a Gazette-style orange square kicker. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 
 ## Live data
@@ -56,10 +56,10 @@ The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 2
 ## Page order
 
 1. Live ticker (orange hairline, mono stats)
-2. Sticky nav (face mark + Virtuse Brief, muted mono links, Get the Brief, theme)
+2. Sticky nav (face mark + Virtuse Brief, Source Serif kickers, Get the Brief, theme)
 3. Edition line (`Latest Brief · Mon, Sep 14, 2026` — muted, not orange)
 4. Three-column hero: Pulse · weekly + cover · six tiles + Atlantic capture
-5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; Data desk in the right column
+5. Latest issues `#issues` — four weekly covers; **All issues** sits on the section hairline (Gazette `ALL →`) and still goes to `blog.html`; Data desk in the right column
 6. Blog / Ras Vasilisin’s Take (three columns, omit if empty)
 7. Footer with quiet Lenny-style signup (`#subscribe`)
 
