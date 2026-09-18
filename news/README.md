@@ -19,7 +19,7 @@ Do not restyle the Virtuse hub. Do not add Hub commerce grids.
 Exactly two quiet captures, one list:
 
 - Compact Atlantic-style card in the hero right rail: email + **Get the Brief**.
-- Quiet Lenny-style footer form (`#subscribe`).
+- Quiet Lenny-style footer form (`#subscribe`): email + Subscribe, no “Get the Brief” label and no hairline under the disclaimer.
 
 Both POST to the existing Cloudflare Worker:
 
@@ -41,12 +41,14 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 
 The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 24h, Hashrate · 3d, Fees, Sats / $, Block) use mempool.space, with Binance / CoinGecko for the 24h change. Failures render dashes.
 
-**Data desk** lives in the right column of the Latest issues band (calc links only):
+**Data desk** is a tabbed module in the right column of the Latest issues band (full rail height). Short dek + Open link only; no invented live metrics. Fine print: “Run the numbers. Not a recommendation.”
 
-- Full data desk: `https://virtuse.com/bitcoin-data.html`
+- Full data desk: `bitcoin-data.html`
 - 200W MA: `ma-200w.html`
-- DCA: `https://virtuse.com/stacking.html?utm_source=stacking&utm_medium=widget`
+- Rainbow: `rainbow-chart.html`
+- DCA / Stacking: `stacking.html?utm_source=stacking&utm_medium=widget`
 - Retirement: `retirement-calculator.html`
+- Fee Index: `bitcoin-fee-index/`
 
 ## Page order
 
