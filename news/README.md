@@ -10,7 +10,7 @@ Three-column Gazette desk (Pulse · weekly cover · by-the-numbers + capture). N
 
 Banned on this page as product names: any “Satoshi …” title. Do not reintroduce “Virtuse News” as a live product name.
 
-Mark files use the face pictogram only. Alt, aria, and OG text: **Virtuse Brief**.
+Nav uses the horizontal lockup (`brief-nav-logo.svg` / `-on-light.svg`, PNG companions). Alt: **Virtuse Brief**. OG still uses `og-card.png`.
 
 Do not restyle the Virtuse hub. Do not add Hub commerce grids.
 
@@ -18,8 +18,8 @@ Do not restyle the Virtuse hub. Do not add Hub commerce grids.
 
 Exactly two quiet captures, one list:
 
-- Compact Atlantic-style card in the hero right rail: email + **Get the Brief** (outline / quiet ink, not orange fill).
-- Quiet Lenny-style footer form (`#subscribe`): email + Subscribe (same quiet outline). Nav **Get the Brief** is the single orange primary in the chrome.
+- Compact Atlantic-style card in the hero right rail: email + **Get the Brief** (orange text + orange outline, Gazette Join the Brief pattern).
+- Footer form (`#subscribe`): email + **Subscribe** (solid orange fill — the loud control). Nav **Get the Brief** is the same orange outline as the hero capture.
 
 Both POST to the existing Cloudflare Worker:
 
@@ -41,7 +41,9 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 
 The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 24h, Hashrate · 3d, Fees, Sats / $, Block) use mempool.space, with Binance / CoinGecko for the 24h change. Failures render dashes.
 
-**Data desk** is a tabbed module in the right column of the Latest issues band (full rail height). Short dek + Open link only; no invented live metrics. Fine print: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
+**Data desk** is a tabbed module in the right column of the Latest issues band. On desktop its bottom edge aligns with the third Latest issues card (not the All issues link). Short dek + Open link only; no invented live metrics. Fine print: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
+
+**By the numbers** and **Data desk** sit on a Measured Record inset (`--record-bg`: Gazette `sg-bg-deep`, `#1C1C19` dark / `#EBE9E4` light).
 
 - Dashboard: `bitcoin-data.html`
 - Trading volume: `trading-volume.html`
@@ -56,7 +58,7 @@ The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 2
 ## Page order
 
 1. Live ticker (orange hairline, mono stats)
-2. Sticky nav (face mark + Virtuse Brief, muted mono links, Get the Brief, theme)
+2. Sticky nav (V + virtuse brief lockup, muted mono links, outline Get the Brief, theme)
 3. Edition line (`Latest Brief · Mon, Sep 14, 2026` — muted, not orange)
 4. Three-column hero: Pulse · weekly + cover · six tiles + Atlantic capture
 5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; Data desk in the right column
@@ -67,8 +69,10 @@ The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 2
 
 | File | Use |
 |---|---|
-| `brief-mark.png` | Face pictogram, light knockout, dark theme |
-| `brief-mark-dark.png` | Face pictogram, dark ink, light theme |
+| `brief-nav-logo.svg` / `.png` | Horizontal lockup (white V + sky-blue stroke + “virtuse brief”), dark nav |
+| `brief-nav-logo-on-light.svg` / `.png` | Same lockup in dark ink, light nav |
+| `brief-mark.png` | Face pictogram, light knockout (kept; not used in nav) |
+| `brief-mark-dark.png` | Face pictogram, dark ink (kept; not used in nav) |
 | `pulse-icons.svg` | ETF, Fed, Policy, Mining, Security (sprite in `news.html`) |
 | `desk-updating.svg` | Empty / loading desk figure |
 | `og-card.png` / `og-card.svg` | Wordmark + mark on `--bg` |
