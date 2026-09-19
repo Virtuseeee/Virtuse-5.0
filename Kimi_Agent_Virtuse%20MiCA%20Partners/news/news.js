@@ -567,12 +567,6 @@
 
   /* Treasury ledger — CoinGecko live, last-known JSON fallback. No invented figures. */
   var TREASURY_MAX = 6;
-  function fmtAsOf(iso) {
-    if (!iso) return '';
-    var d = new Date(/T/.test(iso) ? iso : iso + 'T12:00:00');
-    if (isNaN(d.getTime())) return '';
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-  }
   function fmtHoldings(n) {
     if (n == null || isNaN(n)) return '—';
     var digits = n >= 100 ? 0 : 2;
@@ -605,10 +599,9 @@
     }
     return frag;
   }
-  function paintTreasury(data, live) {
+  function paintTreasury(data) {
     var list = $('treasuryList');
     var dek = $('treasuryDek');
-    var fine = $('treasuryFine');
     if (!list) return;
     list.textContent = '';
     var companies = ((data && data.companies) || []).filter(function (c) {
@@ -617,7 +610,6 @@
     if (!companies.length) {
       list.appendChild(emptyTreasuryRows());
       if (dek) dek.textContent = 'Top corporate BTC holders.';
-      if (fine) fine.textContent = 'Not advice. Holdings unavailable.';
       return;
     }
     var max = companies[0].total_holdings || 1;
@@ -631,16 +623,11 @@
       }
       dek.textContent = parts.join(' ');
     }
-    if (fine) {
-      var when = fmtAsOf(data.as_of);
-      var tag = live ? 'live' : 'last known';
-      fine.textContent = 'Not advice. CoinGecko' + (when ? ' · ' + when : '') + ' · ' + tag;
-    }
   }
   function loadTreasury() {
-    paintTreasury({ companies: [] }, false);
+    paintTreasury({ companies: [] });
     j('news/treasury-ledger.json').then(function (local) {
-      paintTreasury(local, false);
+      paintTreasury(local);
       return j('https://api.coingecko.com/api/v3/companies/public_treasury/bitcoin', 8000).then(function (live) {
         if (!live || !Array.isArray(live.companies) || !live.companies.length) return;
         paintTreasury({
@@ -649,7 +636,7 @@
           total_holdings: live.total_holdings,
           market_cap_dominance: live.market_cap_dominance,
           companies: live.companies
-        }, true);
+        });
       }).catch(function () { /* keep last-known JSON */ });
     }).catch(function () { /* dashes already painted */ });
   }
