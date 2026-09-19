@@ -608,15 +608,18 @@
   function paintTreasury(data, live) {
     var list = $('treasuryList');
     var dek = $('treasuryDek');
+    var countEl = $('treasuryCount');
     var fine = $('treasuryFine');
     if (!list) return;
     list.textContent = '';
-    var companies = ((data && data.companies) || []).filter(function (c) {
+    var all = ((data && data.companies) || []).filter(function (c) {
       return c && c.name && c.total_holdings != null && !isNaN(c.total_holdings) && c.total_holdings > 0;
-    }).slice(0, TREASURY_MAX);
+    });
+    var companies = all.slice(0, TREASURY_MAX);
     if (!companies.length) {
       list.appendChild(emptyTreasuryRows());
-      if (dek) dek.textContent = 'Top corporate BTC holders.';
+      if (countEl) countEl.textContent = '—';
+      if (dek) dek.textContent = 'verified companies holding — BTC between them.';
       if (fine) fine.textContent = 'Not advice. Holdings unavailable.';
       return;
     }
@@ -624,12 +627,14 @@
     companies.forEach(function (c) {
       list.appendChild(treasuryRow(c.name, c.total_holdings, (c.total_holdings / max) * 100));
     });
+    var n = data.company_count;
+    if (n == null || isNaN(n)) n = all.length;
+    if (countEl) countEl.textContent = n ? num(n) : '—';
     if (dek) {
-      var parts = ['Top corporate BTC holders.'];
-      if (data.total_holdings != null && !isNaN(data.total_holdings)) {
-        parts.push(num(Math.round(data.total_holdings)) + ' BTC across public companies.');
-      }
-      dek.textContent = parts.join(' ');
+      var held = (data.total_holdings != null && !isNaN(data.total_holdings))
+        ? num(Math.round(data.total_holdings)) + ' BTC'
+        : '— BTC';
+      dek.textContent = 'verified companies holding ' + held + ' between them.';
     }
     if (fine) {
       var when = fmtAsOf(data.as_of);
@@ -648,6 +653,7 @@
           source: 'CoinGecko public-company treasuries',
           total_holdings: live.total_holdings,
           market_cap_dominance: live.market_cap_dominance,
+          company_count: live.companies.length,
           companies: live.companies
         }, true);
       }).catch(function () { /* keep last-known JSON */ });

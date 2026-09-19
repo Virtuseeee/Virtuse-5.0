@@ -37,7 +37,7 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 | `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 | `treasury-ledger.json` | Last-known public-company BTC holdings (CoinGecko snapshot + `as_of`). Live fetch from `api.coingecko.com` overwrites this when it succeeds. Never invent holdings. |
-| `firefish-promo.png` | Official Firefish OG creative for this edition’s Sponsored rail. |
+| `firefish-promo.png` | Official Firefish USDT-loan banner (firefish.io / framerusercontent) for this edition’s Sponsored rail. |
 
 ## Live data
 
@@ -47,7 +47,7 @@ The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 2
 
 On desktop the right rail (`#issuesRail`: Data desk + ledger + Sponsored Firefish promo) matches the Latest issues cards’ height; the promo sits in the lower third-column zone. Short dek + Open link only in the tabs; no invented live metrics. Fine print: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
 
-**Sponsored promo** (this edition: Firefish) is labeled Sponsored, uses official `news/firefish-promo.png` art, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial.
+**Sponsored promo** (this edition: Firefish) is labeled Sponsored, uses the official red USDT-loan banner at `news/firefish-promo.png`, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial.
 
 **By the numbers** and **Data desk** sit on a Measured Record inset (`--record-bg`: Gazette `sg-bg-deep`, `#1C1C19` dark / `#EBE9E4` light).
 
@@ -82,4 +82,4 @@ On desktop the right rail (`#issuesRail`: Data desk + ledger + Sponsored Firefis
 | `pulse-icons.svg` | ETF, Fed, Policy, Mining, Security (sprite in `news.html`) |
 | `desk-updating.svg` | Empty / loading desk figure |
 | `og-card.png` / `og-card.svg` | Wordmark + mark on `--bg` |
-| `firefish-promo.png` | Official Firefish OG (“Never sell your Bitcoin. Borrow against it.”) |
+| `firefish-promo.png` | Official Firefish banner (“Borrow USDT. Keep your Bitcoin.”) |
