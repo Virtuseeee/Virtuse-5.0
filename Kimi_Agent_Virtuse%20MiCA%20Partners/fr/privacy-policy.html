@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>Politique de confidentialité | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/privacy-policy.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/privacy-policy.html">
+<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/privacy-policy.html">
+<link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/privacy-policy.html">
+<link rel="alternate" hreflang="ru" href="https://staging.virtuse.com/ru/privacy-policy.html">
+<link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/privacy-policy.html">
+<link rel="alternate" hreflang="fr" href="https://staging.virtuse.com/fr/privacy-policy.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/privacy-policy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Politique de confidentialité | Virtuse">
+<meta property="og:description" content="Comment Virtuse traite vos données, en langage clair. Nous exploitons un hub non custodial et ne collectons presque rien.">
+<meta property="og:url" content="https://staging.virtuse.com/fr/privacy-policy.html">
+<meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Politique de confidentialité | Virtuse">
+<meta name="twitter:description" content="Comment Virtuse traite vos données, en langage clair. Nous exploitons un hub non custodial et ne collectons presque rien.">
+<meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
+<link rel="stylesheet" href="../styles.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 20, 33, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero h1 .highlight { color: var(--btc-orange); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+/* ===== CATEGORY PILLS ===== */
+.subnav-wrap {
+  padding: 0 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--btc-orange); }
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding: 0 48px 56px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+.faq-section:last-of-type { padding-bottom: var(--section-spacing); }
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--btc-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(247, 147, 26, 0.1);
+  margin-bottom: 22px;
+}
+
+.sec-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+details {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+details:hover { border-color: var(--border-hover); }
+
+details[open] { border-color: rgba(247, 147, 26, 0.4); }
+
+summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary:hover { color: var(--btc-orange); }
+
+summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+
+details[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.faq-answer strong { color: var(--text); font-weight: 600; }
+
+.faq-answer a { color: var(--btc-orange); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+/* ===== NEWSLETTER / FOOTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom p { font-size: 13px; color: var(--text-dim); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 28px; }
+  .hero h1 { font-size: 36px; }
+  .subnav-wrap, .faq-section { padding-left: 24px; padding-right: 24px; }
+  summary { font-size: 15px; padding: 18px 20px; }
+  .faq-answer { padding: 0 20px 18px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btc-orange, #f7931a);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover, .newsletter-form button:hover {
+  background: #ffffff;
+  color: var(--btc-orange, #f7931a);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+/* ===== MOBILE MENU ===== */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, #0d1421 0%, #0a0f1a 55%, #0d1421 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, #484f58);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #e6edf3;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, #484f58);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, #484f58);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links a.active { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, #484f58);
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--btc-orange); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--btc-orange);
+  color: #0d0902;
+}
+
+@media (max-width: 1024px) {
+  .lang-menu { display: none; }
+}
+
+/* ===== FR: compact nav text =====
+   French nav labels can run longer than other languages' (e.g. "Données
+   Bitcoin", "Conservation"), so at the default per-item padding/font-size
+   they wrap onto two lines at common desktop widths. Inserted
+   UNCONDITIONALLY this time (not gated behind whether the page already
+   had the compact dropdown) -- see this file's own docstring for why
+   that gate was wrong for German. */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav-links a {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a href="/fr/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Acheter du Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Minage</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Prêts</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Conservation</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Fiscalité</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-switch" role="navigation" aria-label="Langue de la page">
+        <a href="../privacy-policy.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/privacy-policy.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/privacy-policy.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/privacy-policy.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/privacy-policy.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/privacy-policy.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="privacy-policy.html" class="lang-opt active" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Langue de la page">
+        <span class="lang-flag">🇫🇷</span>FR
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../privacy-policy.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/privacy-policy.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/privacy-policy.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/privacy-policy.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/privacy-policy.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/privacy-policy.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="privacy-policy.html" class="lang-opt active" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+      </div>
+    </div>
+    <button class="nav-cta">Commencer</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+(function () {
+  var wrap = document.getElementById('langMenu');
+  var btn = document.getElementById('langMenuBtn');
+  if (!wrap || !btn) return;
+  function close() {
+    wrap.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Politique de <span class="highlight">confidentialité</span></h1>
+  <p class="hero-desc">Comment Virtuse traite vos données, en langage clair. En bref : nous exploitons un hub non custodial, nous ne collectons presque rien, et le peu que nous collectons est expliqué ci-dessous. En vigueur à compter du 20 juillet 2026.</p>
+</section>
+
+<!-- ===== CATEGORY PILLS ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="Sections de la politique de confidentialité">
+    <a href="#controller">&#9670; Qui nous sommes</a>
+    <a href="#data">&#9670; Ce que nous collectons</a>
+    <a href="#use">&#9670; Comment nous l'utilisons</a>
+    <a href="#cookies">&#9670; Cookies</a>
+    <a href="#thirdparty">&#9670; Tiers</a>
+    <a href="#transfers">&#9670; Transferts</a>
+    <a href="#rights">&#9670; Vos droits</a>
+    <a href="#contact">&#9670; Contact</a>
+  </nav>
+</div>
+
+<!-- ===== CONTROLLER ===== -->
+<section class="faq-section" id="controller">
+  <div class="sec-label">1. Qui nous sommes</div>
+
+  <details open>
+    <summary>Responsable du traitement</summary>
+    <div class="faq-answer">Ce site est exploité par <strong>Virtuse Group Pte. Ltd.</strong>, dont le bureau opérationnel se trouve à Bratislava, en Slovaquie, et le siège du groupe à Singapour (« Virtuse », « nous »). Au sens du règlement général sur la protection des données (RGPD) de l'UE, Virtuse Group Pte. Ltd. est le responsable du traitement des données personnelles collectées via ce site. Contact : <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+  </details>
+
+  <details>
+    <summary>Ce que ce site est, et ce qu'il n'est pas</summary>
+    <div class="faq-answer">Virtuse est un <strong>hub non custodial pour des services exclusivement liés au Bitcoin</strong>. Nous n'exploitons pas de plateforme d'échange, ne détenons pas les fonds ou les clés de nos clients, n'ouvrons pas de comptes et n'effectuons pas de vérification d'identité (KYC) sur ce site. Lorsque vous utilisez un service partenaire (achat, minage, prêt, conservation, fiscalité ou robots de trading), vous contractez directement avec ce partenaire sur sa propre plateforme, et ce partenaire agit en tant que <strong>responsable du traitement indépendant</strong> pour toute information que vous lui communiquez. Cela limite considérablement les données personnelles que nous traitons nous-mêmes.</div>
+  </details>
+</section>
+
+<!-- ===== DATA COLLECTED ===== -->
+<section class="faq-section" id="data">
+  <div class="sec-label">2. Ce que nous collectons</div>
+
+  <details>
+    <summary>Les données que vous nous fournissez</summary>
+    <div class="faq-answer"><strong>Adresse e-mail pour la newsletter</strong> : si vous vous abonnez au Virtuse Report, nous traitons l'adresse e-mail que vous fournissez, sur la base de votre consentement. C'est la seule donnée personnelle que ce site vous demande. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail, et nous supprimerons votre adresse de la liste de diffusion.</div>
+  </details>
+
+  <details>
+    <summary>Données collectées automatiquement</summary>
+    <div class="faq-answer"><strong>Données d'utilisation</strong> : comme la quasi-totalité des sites web, notre infrastructure d'hébergement enregistre des journaux serveur standards : adresse IP, type et version du navigateur, pages visitées, horodatages et pages de provenance. Nous utilisons ces données uniquement à des fins de sécurité, de prévention des abus et de bon fonctionnement du site. Nous ne constituons pas de profils de visiteurs et nous n'utilisons pas ces données à des fins publicitaires.</div>
+  </details>
+
+  <details>
+    <summary>Données que nous ne collectons pas</summary>
+    <div class="faq-answer">Aucune donnée de compte, aucun document d'identité, aucune information financière ou de paiement, aucune adresse de portefeuille, aucun historique de transactions. Nos outils gratuits (le tableau de bord Données Bitcoin, le simulateur de retraite, le graphique arc-en-ciel, la dominance du BTC, la MM 200 semaines) s'exécutent <strong>entièrement dans votre navigateur</strong> : les chiffres que vous saisissez dans le simulateur de retraite ne quittent jamais votre appareil.</div>
+  </details>
+</section>
+
+<!-- ===== USE ===== -->
+<section class="faq-section" id="use">
+  <div class="sec-label">3. Comment et pourquoi nous utilisons les données</div>
+
+  <details>
+    <summary>Finalités et bases légales (art. 6 RGPD)</summary>
+    <div class="faq-answer">Nous ne traitons les données personnelles que pour : <strong>(a) la fourniture de la newsletter</strong> que vous avez demandée, sur la base légale du consentement (art. 6, § 1, a), révocable à tout moment ; <strong>(b) l'exploitation, la sécurisation et le débogage du site</strong>, sur la base légale de l'intérêt légitime (art. 6, § 1, f) à maintenir notre service disponible et sûr ; et <strong>(c) le respect d'obligations légales</strong> (art. 6, § 1, c) lorsque le droit de l'UE ou slovaque l'exige. Nous ne vendons pas de données personnelles et ne les utilisons pas à des fins de décision automatisée ou de profilage au sens de l'article 22 du RGPD.</div>
+  </details>
+
+  <details>
+    <summary>Relations d'apport d'affaires</summary>
+    <div class="faq-answer">Virtuse perçoit des commissions d'apport lorsque vous vous inscrivez auprès d'un partenaire via nos liens. Ce mécanisme repose sur des URL de parrainage standards : <strong>nous ne transmettons pas vos données personnelles aux partenaires</strong>, et les partenaires ne nous renvoient pas vos données personnelles. Tout au plus, les partenaires nous communiquent des statistiques agrégées et non identifiantes (par exemple, le nombre d'inscriptions) pour le règlement des commissions.</div>
+  </details>
+</section>
+
+<!-- ===== COOKIES ===== -->
+<section class="faq-section" id="cookies">
+  <div class="sec-label">4. Cookies et stockage local</div>
+
+  <details>
+    <summary>Ce que nous déposons</summary>
+    <div class="faq-answer">Ce site ne dépose lui-même <strong>aucun cookie publicitaire ou de suivi intersite</strong>. Nous nous limitons à ce que les règles ePrivacy qualifient de stockage strictement nécessaire : l'état technique minimal requis pour le fonctionnement du site (par exemple, mémoriser une préférence d'interface). Comme nous évitons les cookies non essentiels, aucune bannière de consentement aux cookies n'est requise pour le site en l'état. Si nous devions un jour introduire des cookies d'analyse ou marketing, nous demanderions votre consentement préalable, conformément à la directive ePrivacy et au RGPD.</div>
+  </details>
+
+  <details>
+    <summary>Gérer les cookies</summary>
+    <div class="faq-answer">Vous pouvez demander à votre navigateur de refuser ou de supprimer les cookies à tout moment via ses paramètres. Le site reste pleinement utilisable sans eux.</div>
+  </details>
+</section>
+
+<!-- ===== THIRD PARTIES ===== -->
+<section class="faq-section" id="thirdparty">
+  <div class="sec-label">5. Services tiers</div>
+
+  <details>
+    <summary>Services avec lesquels votre navigateur communique sur nos pages</summary>
+    <div class="faq-answer">Certaines fonctionnalités chargent du contenu ou des données directement depuis des tiers. Le cas échéant, ces fournisseurs reçoivent techniquement votre adresse IP dans le cadre de la requête, selon leurs propres politiques de confidentialité : <strong>Google Fonts</strong> (polices de caractères), <strong>jsDelivr</strong> (bibliothèque d'animation), <strong>WordPress/virtuse.com</strong> (articles et images de blog, notre propre service), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, et <strong>Binance</strong> (données de marché et de réseau en direct, en lecture seule, pour nos outils Données Bitcoin). Ces requêtes ne transportent aucun identifiant de notre part : ni identifiant de connexion, ni cookie nous appartenant, rien au-delà de ce que contient toute requête de page web.</div>
+  </details>
+
+  <details>
+    <summary>Liens vers des partenaires et d'autres sites</summary>
+    <div class="faq-answer">Nos pages renvoient vers des plateformes partenaires (par exemple Kraken, 21bitcoin, ByBit EU, Firefish, Trezor, Ledger, et d'autres) ainsi que vers des articles de presse. Une fois que vous quittez notre site, c'est la politique de confidentialité de la destination qui s'applique. Les partenaires fournissant des services réglementés mènent leurs propres vérifications KYC en vertu de MiCA et des règles européennes de lutte contre le blanchiment de capitaux : ces données leur sont transmises directement, jamais par notre intermédiaire. Nous vous recommandons de consulter la politique de confidentialité de chaque service auquel vous vous inscrivez.</div>
+  </details>
+</section>
+
+<!-- ===== RETENTION & TRANSFERS ===== -->
+<section class="faq-section" id="transfers">
+  <div class="sec-label">6. Conservation et transferts internationaux</div>
+
+  <details>
+    <summary>Durée de conservation des données</summary>
+    <div class="faq-answer">Adresses de newsletter : jusqu'à votre désabonnement ou l'arrêt de la newsletter. Journaux serveur : rotation régulière après une courte période (généralement 30 à 90 jours), sauf besoin lié à une enquête de sécurité en cours ou obligation légale. Nous ne conservons rien « au cas où ».</div>
+  </details>
+
+  <details>
+    <summary>Transferts hors de l'EEE</summary>
+    <div class="faq-answer">Nous sommes un opérateur basé dans l'UE, mais le groupe Virtuse a son siège à Singapour, et certains prestataires peuvent traiter des données en dehors de l'Espace économique européen. Le cas échéant, nous nous appuyons sur les garanties du chapitre V du RGPD, principalement les <strong>clauses contractuelles types</strong> de la Commission européenne, ou une décision d'adéquation lorsqu'elle existe (par exemple, le cadre de protection des données UE-États-Unis pour les prestataires américains certifiés). Vous pouvez demander une copie des garanties applicables via le contact ci-dessous.</div>
+  </details>
+</section>
+
+<!-- ===== RIGHTS ===== -->
+<section class="faq-section" id="rights">
+  <div class="sec-label">7. Vos droits</div>
+
+  <details>
+    <summary>Vos droits au titre du RGPD</summary>
+    <div class="faq-answer">Si vous résidez dans l'EEE, vous disposez du droit : <strong>d'accès</strong> aux données personnelles que nous détenons à votre sujet (art. 15), de <strong>rectification</strong> (art. 16), à <strong>l'effacement</strong> (art. 17), à la <strong>limitation du traitement</strong> (art. 18), à la <strong>portabilité des données</strong> (art. 20), <strong>d'opposition</strong> au traitement fondé sur l'intérêt légitime (art. 21), et de <strong>retirer votre consentement</strong> à tout moment sans affecter le traitement déjà effectué (art. 7, § 3). Étant donné le peu de données que nous collectons, la plupart des demandes concernent la newsletter, et le lien de désabonnement les résout instantanément.</div>
+  </details>
+
+  <details>
+    <summary>Exercer vos droits et déposer une réclamation</summary>
+    <div class="faq-answer">Écrivez à <a href="mailto:support@virtuse.com">support@virtuse.com</a> : nous répondons dans un délai d'un mois, comme l'exige le RGPD, et pouvons vous demander de vérifier votre identité au préalable. Si vous estimez que nous avons mal traité vos données, vous pouvez déposer une réclamation auprès de votre autorité de contrôle locale ; pour la Slovaquie, il s'agit de l'<strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong> (Office pour la protection des données personnelles de la République slovaque).</div>
+  </details>
+
+  <details>
+    <summary>Mineurs</summary>
+    <div class="faq-answer">Ce site ne s'adresse à aucune personne de moins de 18 ans et nous ne collectons pas sciemment de données personnelles auprès de mineurs. Si vous pensez qu'un mineur nous a communiqué des données, contactez-nous et nous les supprimerons.</div>
+  </details>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="faq-section" id="contact">
+  <div class="sec-label">8. Sécurité, modifications et contact</div>
+
+  <details>
+    <summary>Sécurité des données</summary>
+    <div class="faq-answer">Nous appliquons des mesures techniques et organisationnelles proportionnées (TLS partout, collecte minimale des données dès la conception, contrôles d'accès). Aucune transmission sur internet n'est sécurisée à 100 %, ce qui est une raison de plus pour laquelle notre architecture évite de collecter des données sensibles dès le départ.</div>
+  </details>
+
+  <details>
+    <summary>Modifications de cette politique</summary>
+    <div class="faq-answer">Nous pouvons mettre à jour cette politique de confidentialité à mesure que le site ou la loi évolue. Les modifications sont publiées sur cette page avec une nouvelle date d'entrée en vigueur ; les modifications substantielles seront signalées de manière visible sur le site ou via la newsletter avant leur prise d'effet.</div>
+  </details>
+
+  <details>
+    <summary>Nous contacter</summary>
+    <div class="faq-answer">Questions relatives à cette politique ou à vos données : <a href="mailto:support@virtuse.com">support@virtuse.com</a>, ou Virtuse Group Pte. Ltd., Singapour.</div>
+  </details>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <h2>Réparons l'argent, réparons le monde</h2>
+  <p>Rejoignez plus de 18 000 investisseurs qui gardent toujours une longueur d'avance. Recevez le Virtuse Report chaque semaine dans votre boîte mail.</p>
+  <form class="newsletter-form" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+    <button type="submit">S'ABONNER MAINTENANT</button>
+  </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'ENVOI EN COURS...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "C'est fait ! Consultez votre boîte mail pour l'e-mail de bienvenue.";
+          msg.style.color = 'var(--green, #3fb950)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Une erreur s\'est produite. Veuillez réessayer.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Erreur réseau. Veuillez réessayer.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <a href="about.html">À propos</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <a href="terms-and-conditions.html">CGU</a>
+        <a href="privacy-policy.html">Politique de confidentialité</a>
+        <a href="aml-compliance.html">AML et conformité</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+  </div>
+</footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.querySelector('.partners, .partners-section, #services');
+      if (!target) {
+        window.location.href = 'index.html#services';
+        return;
+      }
+      var nav = document.querySelector('.nav');
+      var offset = (nav ? nav.offsetHeight : 0) + 16;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
