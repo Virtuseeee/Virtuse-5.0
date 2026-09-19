@@ -433,21 +433,22 @@
     });
   }
 
-  /* Data desk bottom matches the third Latest issues card on desktop. */
+  /* Right rail min-height matches the Latest issues cards on desktop. */
   var deskAlignTimer = null;
   function alignDataDesk() {
-    var desk = $('data-desk');
+    var rail = $('issuesRail');
     var cards = document.querySelectorAll('#archiveGrid .archive-card');
-    if (!desk) return;
+    if (!rail) return;
     if (!window.matchMedia('(min-width: 1021px)').matches || cards.length < 3) {
-      desk.style.height = '';
+      rail.style.minHeight = '';
       return;
     }
-    var band = desk.parentElement;
+    var band = rail.parentElement;
     if (!band) return;
+    var last = cards[cards.length - 1];
     var top = band.getBoundingClientRect().top;
-    var bottom = cards[2].getBoundingClientRect().bottom;
-    desk.style.height = Math.max(0, Math.round(bottom - top)) + 'px';
+    var bottom = last.getBoundingClientRect().bottom;
+    rail.style.minHeight = Math.max(0, Math.round(bottom - top)) + 'px';
   }
   window.addEventListener('resize', function () {
     if (deskAlignTimer) clearTimeout(deskAlignTimer);
@@ -563,6 +564,96 @@
     paintArchive([]);
     paintBlog([], []);
   });
+
+  /* Treasury ledger — CoinGecko live, last-known JSON fallback. No invented figures. */
+  var TREASURY_MAX = 6;
+  function fmtAsOf(iso) {
+    if (!iso) return '';
+    var d = new Date(/T/.test(iso) ? iso : iso + 'T12:00:00');
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  function fmtHoldings(n) {
+    if (n == null || isNaN(n)) return '—';
+    var digits = n >= 100 ? 0 : 2;
+    return n.toLocaleString('en-US', { maximumFractionDigits: digits }) + ' BTC';
+  }
+  function treasuryRow(name, holdings, pct) {
+    var li = document.createElement('li');
+    var nm = document.createElement('span');
+    nm.className = 'treasury-name';
+    nm.textContent = name || '—';
+    var track = document.createElement('span');
+    track.className = 'treasury-bar-track';
+    var bar = document.createElement('span');
+    bar.className = 'treasury-bar';
+    var width = (pct > 0 && !isNaN(pct)) ? Math.max(2, Math.min(100, pct)) : 0;
+    bar.style.width = width + '%';
+    track.appendChild(bar);
+    var btc = document.createElement('span');
+    btc.className = 'treasury-btc';
+    btc.textContent = fmtHoldings(holdings);
+    li.appendChild(nm);
+    li.appendChild(track);
+    li.appendChild(btc);
+    return li;
+  }
+  function emptyTreasuryRows() {
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < TREASURY_MAX; i++) {
+      frag.appendChild(treasuryRow('—', null, 0));
+    }
+    return frag;
+  }
+  function paintTreasury(data, live) {
+    var list = $('treasuryList');
+    var dek = $('treasuryDek');
+    var fine = $('treasuryFine');
+    if (!list) return;
+    list.textContent = '';
+    var companies = ((data && data.companies) || []).filter(function (c) {
+      return c && c.name && c.total_holdings != null && !isNaN(c.total_holdings) && c.total_holdings > 0;
+    }).slice(0, TREASURY_MAX);
+    if (!companies.length) {
+      list.appendChild(emptyTreasuryRows());
+      if (dek) dek.textContent = 'Top corporate BTC holders.';
+      if (fine) fine.textContent = 'Not advice. Holdings unavailable.';
+      return;
+    }
+    var max = companies[0].total_holdings || 1;
+    companies.forEach(function (c) {
+      list.appendChild(treasuryRow(c.name, c.total_holdings, (c.total_holdings / max) * 100));
+    });
+    if (dek) {
+      var parts = ['Top corporate BTC holders.'];
+      if (data.total_holdings != null && !isNaN(data.total_holdings)) {
+        parts.push(num(Math.round(data.total_holdings)) + ' BTC across public companies.');
+      }
+      dek.textContent = parts.join(' ');
+    }
+    if (fine) {
+      var when = fmtAsOf(data.as_of);
+      var tag = live ? 'live' : 'last known';
+      fine.textContent = 'Not advice. CoinGecko' + (when ? ' · ' + when : '') + ' · ' + tag;
+    }
+  }
+  function loadTreasury() {
+    paintTreasury({ companies: [] }, false);
+    j('news/treasury-ledger.json').then(function (local) {
+      paintTreasury(local, false);
+      return j('https://api.coingecko.com/api/v3/companies/public_treasury/bitcoin', 8000).then(function (live) {
+        if (!live || !Array.isArray(live.companies) || !live.companies.length) return;
+        paintTreasury({
+          as_of: new Date().toISOString().slice(0, 10),
+          source: 'CoinGecko public-company treasuries',
+          total_holdings: live.total_holdings,
+          market_cap_dominance: live.market_cap_dominance,
+          companies: live.companies
+        }, true);
+      }).catch(function () { /* keep last-known JSON */ });
+    }).catch(function () { /* dashes already painted */ });
+  }
+  loadTreasury();
 
   /* Data desk tabs: click + arrow/Home/End, no live metrics. */
   (function () {
