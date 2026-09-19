@@ -433,22 +433,41 @@
     });
   }
 
-  /* Right rail min-height matches the Latest issues cards on desktop. */
+  /* Right rail matches Latest issues height; Data desk pins to the first card row. */
   var deskAlignTimer = null;
   function alignDataDesk() {
     var rail = $('issuesRail');
+    var desk = $('data-desk');
     var cards = document.querySelectorAll('#archiveGrid .archive-card');
     if (!rail) return;
-    if (!window.matchMedia('(min-width: 1021px)').matches || cards.length < 3) {
+    if (!window.matchMedia('(min-width: 1021px)').matches || cards.length < 2) {
       rail.style.minHeight = '';
+      if (desk) {
+        desk.style.height = '';
+        desk.style.maxHeight = '';
+        desk.style.flex = '';
+      }
       return;
     }
     var band = rail.parentElement;
     if (!band) return;
     var last = cards[cards.length - 1];
     var top = band.getBoundingClientRect().top;
+    var railTop = rail.getBoundingClientRect().top;
+    var firstRowBottom = 0;
+    var rowCount = Math.min(2, cards.length);
+    var i;
+    for (i = 0; i < rowCount; i++) {
+      firstRowBottom = Math.max(firstRowBottom, cards[i].getBoundingClientRect().bottom);
+    }
     var bottom = last.getBoundingClientRect().bottom;
     rail.style.minHeight = Math.max(0, Math.round(bottom - top)) + 'px';
+    if (desk) {
+      var deskH = Math.max(0, Math.round(firstRowBottom - railTop));
+      desk.style.flex = '0 0 auto';
+      desk.style.height = deskH + 'px';
+      desk.style.maxHeight = deskH + 'px';
+    }
   }
   window.addEventListener('resize', function () {
     if (deskAlignTimer) clearTimeout(deskAlignTimer);

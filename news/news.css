@@ -759,14 +759,15 @@ ul { list-style: none; }
 .data-desk {
   background: var(--record-bg);
   border: 1px solid var(--line);
-  padding: 20px 18px 16px;
+  padding: 12px 14px 10px;
   display: flex;
   flex-direction: column;
   min-height: 0;
   box-sizing: border-box;
-  flex: 1 1 auto;
+  flex: 1 1 0;
+  overflow: hidden;
 }
-.data-desk .desk-label { margin-bottom: 14px; }
+.data-desk .desk-label { margin-bottom: 8px; }
 .data-tablist {
   display: flex;
   flex-wrap: wrap;
@@ -817,7 +818,7 @@ ul { list-style: none; }
 .data-panel {
   display: flex;
   flex-direction: column;
-  padding: 12px 2px 6px;
+  padding: 8px 2px 2px;
   border-bottom: 0;
 }
 .data-panel[hidden] { display: none; }
@@ -835,20 +836,12 @@ ul { list-style: none; }
   opacity: 0.7;
 }
 .data-open:hover { color: var(--accent-hot); }
-.data-fine {
-  margin-top: 8px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-}
 
 /* —— Treasury ledger (Gazette stamp + compressed bars) —— */
 .treasury-ledger {
-  margin-top: 12px;
-  padding-top: 2px;
+  margin-top: 8px;
+  padding-top: 0;
+  min-height: 0;
 }
 .treasury-stamp {
   display: flex;
@@ -862,8 +855,8 @@ ul { list-style: none; }
   text-transform: uppercase;
   color: var(--text-muted);
   line-height: 1.2;
-  padding-bottom: 0.35rem;
-  margin: 0 0 8px;
+  padding-bottom: 0.3rem;
+  margin: 0 0 6px;
   border-bottom: 1px solid var(--line);
 }
 .treasury-stamp::before {
@@ -874,7 +867,7 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 .treasury-dek {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-family: var(--font-display);
   font-size: 0.78rem;
   line-height: 1.35;
@@ -883,7 +876,7 @@ ul { list-style: none; }
 .treasury-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -936,13 +929,16 @@ ul { list-style: none; }
   text-align: right;
 }
 
-/* —— Partner promo (right rail, compact, bottom-aligned) —— */
+/* —— Partner promo (right rail, lower half, Firefish widget) —— */
 .partner-promo {
-  flex: 0 0 auto;
-  margin-top: auto;
+  flex: 1 1 0;
+  min-height: 0;
+  margin-top: 0;
   background: var(--record-bg);
   border: 1px solid var(--line);
-  padding: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
 }
 .partner-promo-label {
   display: flex;
@@ -955,6 +951,7 @@ ul { list-style: none; }
   text-transform: uppercase;
   color: var(--text-faint);
   margin: 0 0 8px;
+  flex-shrink: 0;
 }
 .partner-promo-label::before {
   content: "";
@@ -963,29 +960,27 @@ ul { list-style: none; }
   background: var(--accent);
   flex-shrink: 0;
 }
-.partner-promo-card {
-  display: grid;
-  grid-template-columns: 56px minmax(0, 1fr);
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  border: 1px solid var(--line);
-  background: var(--bg-card);
-  overflow: hidden;
-}
-.partner-promo-card img {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  object-position: 50% 28%;
-  background: #0a0a0a;
-}
-.partner-promo-body {
-  padding: 0;
+.partner-promo-inner {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 8px;
+}
+.partner-promo-head {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.partner-promo-mark {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--line);
 }
 .partner-promo-brand {
   font-family: var(--font-mono);
@@ -1003,16 +998,70 @@ ul { list-style: none; }
   color: var(--text);
   letter-spacing: -0.01em;
 }
-.partner-promo-card:hover .partner-promo-line { color: var(--accent-hot); }
-.partner-promo-cta {
+.partner-promo-blurb {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.partner-widget-frame {
+  flex: 1 1 auto;
+  min-height: 160px;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  container-type: size;
+}
+.partner-widget-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 580px;
+  border: none;
+  display: block;
+  border-radius: 6px;
+  background: #fff;
+  transform-origin: top left;
+  transform: scale(0.72);
+}
+@supports (container-type: size) {
+  .partner-widget-frame iframe {
+    transform: scale(calc(100cqw / 360));
+  }
+}
+.partner-promo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  flex-shrink: 0;
+}
+.partner-promo-cta-btn {
+  height: 1.7rem;
+  min-height: 1.7rem;
+  padding: 0 12px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.partner-promo-virtuse {
+  font-size: 11px;
+}
+.partner-promo-note {
+  margin: 0;
   font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  flex-shrink: 0;
 }
-.partner-promo-card:hover .partner-promo-cta { color: var(--accent-hot); }
 
 /* —— Blog / Ras Take —— */
 .ras-take[hidden] { display: none; }
@@ -1206,8 +1255,18 @@ ul { list-style: none; }
   }
   .data-desk {
     height: auto;
+    max-height: none;
+    flex: 0 0 auto;
     min-height: 0;
     overflow: visible;
+  }
+  .partner-promo {
+    flex: 0 0 auto;
+    min-height: 0;
+  }
+  .partner-widget-frame {
+    min-height: 280px;
+    height: 320px;
   }
   .blog-grid { grid-template-columns: 1fr 1fr; }
 }
