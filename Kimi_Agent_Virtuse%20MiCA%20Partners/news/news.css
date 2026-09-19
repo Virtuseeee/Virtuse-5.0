@@ -750,7 +750,7 @@ ul { list-style: none; }
   grid-row: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 28px;
   align-self: stretch;
   min-width: 0;
   min-height: 0;
@@ -776,12 +776,14 @@ ul { list-style: none; }
   border: 0;
   background: transparent;
 }
-.data-tablist [role="tab"] {
+.data-tablist a {
   appearance: none;
   margin: 0;
   width: auto;
   max-width: 100%;
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
   border: 1px solid var(--line);
   background: transparent;
   color: var(--muted);
@@ -797,45 +799,12 @@ ul { list-style: none; }
   min-height: 0;
   white-space: nowrap;
 }
-.data-tablist [role="tab"]:hover { color: var(--text); background: var(--bg); }
-.data-tablist [role="tab"][aria-selected="true"] {
-  color: var(--text);
-  background: var(--bg);
-  border-color: var(--line-strong);
-  box-shadow: inset 0 -2px 0 var(--accent);
-}
-.data-tablist [role="tab"]:focus-visible {
+.data-tablist a:hover { color: var(--text); background: var(--bg); }
+.data-tablist a:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: -1px;
   z-index: 1;
 }
-.data-panels {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-.data-panel {
-  display: flex;
-  flex-direction: column;
-  padding: 8px 2px 2px;
-  border-bottom: 0;
-}
-.data-panel[hidden] { display: none; }
-.data-open {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  width: fit-content;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--accent);
-}
-.data-open span[aria-hidden] {
-  font-size: 12px;
-  opacity: 0.7;
-}
-.data-open:hover { color: var(--accent-hot); }
 
 /* —— Treasury ledger (Gazette stamp + compressed bars) —— */
 .treasury-ledger {
@@ -929,7 +898,7 @@ ul { list-style: none; }
   text-align: right;
 }
 
-/* —— Partner promo (right rail, lower half, Firefish widget) —— */
+/* —— Partner promo (right rail, issues row 2 → column bottom) —— */
 .partner-promo {
   flex: 1 1 0;
   min-height: 0;
@@ -967,74 +936,33 @@ ul { list-style: none; }
   min-height: 0;
   gap: 8px;
 }
-.partner-promo-head {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.partner-promo-mark {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 10px;
+.partner-promo-art {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
   border: 1px solid var(--line);
 }
-.partner-promo-brand {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-faint);
+.partner-promo-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 42%;
 }
 .partner-promo-line {
+  margin: 0;
   font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 600;
   line-height: 1.25;
   color: var(--text);
   letter-spacing: -0.01em;
-}
-.partner-promo-blurb {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  line-height: 1.4;
-  color: var(--text-muted);
   flex-shrink: 0;
-}
-.partner-widget-frame {
-  flex: 1 1 auto;
-  min-height: 160px;
-  position: relative;
-  overflow: hidden;
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  padding: 0;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-  container-type: size;
-}
-.partner-widget-frame iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 360px;
-  height: 580px;
-  border: none;
-  display: block;
-  border-radius: 6px;
-  background: #fff;
-  transform-origin: top left;
-  transform: scale(0.72);
-}
-@supports (container-type: size) {
-  .partner-widget-frame iframe {
-    transform: scale(calc(100cqw / 360));
-  }
 }
 .partner-promo-actions {
   display: flex;
@@ -1264,9 +1192,10 @@ ul { list-style: none; }
     flex: 0 0 auto;
     min-height: 0;
   }
-  .partner-widget-frame {
-    min-height: 280px;
-    height: 320px;
+  .partner-promo-art {
+    flex: 0 0 auto;
+    min-height: 180px;
+    aspect-ratio: 16 / 10;
   }
   .blog-grid { grid-template-columns: 1fr 1fr; }
 }
