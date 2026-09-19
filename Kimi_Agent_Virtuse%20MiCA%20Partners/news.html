@@ -227,46 +227,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="issues-rail" id="issuesRail">
           <aside class="data-desk" id="data-desk">
           <p class="desk-label">Data desk</p>
-          <div class="data-tablist" role="tablist" aria-label="Virtuse data tools" aria-orientation="horizontal">
-            <button type="button" role="tab" id="data-tab-desk" aria-controls="data-panel-desk" aria-selected="true" tabindex="0">Dashboard</button>
-            <button type="button" role="tab" id="data-tab-volume" aria-controls="data-panel-volume" aria-selected="false" tabindex="-1">Trading volume</button>
-            <button type="button" role="tab" id="data-tab-dom" aria-controls="data-panel-dom" aria-selected="false" tabindex="-1">BTC dominance</button>
-            <button type="button" role="tab" id="data-tab-fg" aria-controls="data-panel-fg" aria-selected="false" tabindex="-1">Fear and greed</button>
-            <button type="button" role="tab" id="data-tab-ma" aria-controls="data-panel-ma" aria-selected="false" tabindex="-1">200W MA</button>
-            <button type="button" role="tab" id="data-tab-rainbow" aria-controls="data-panel-rainbow" aria-selected="false" tabindex="-1">Rainbow</button>
-            <button type="button" role="tab" id="data-tab-dca" aria-controls="data-panel-dca" aria-selected="false" tabindex="-1">DCA / Stacking</button>
-            <button type="button" role="tab" id="data-tab-retire" aria-controls="data-panel-retire" aria-selected="false" tabindex="-1">Retirement</button>
-            <button type="button" role="tab" id="data-tab-fees" aria-controls="data-panel-fees" aria-selected="false" tabindex="-1">Fee Index</button>
-          </div>
-          <div class="data-panels">
-            <div class="data-panel" role="tabpanel" id="data-panel-desk" aria-labelledby="data-tab-desk">
-              <a class="data-open" href="bitcoin-data.html">Dashboard <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-volume" aria-labelledby="data-tab-volume" hidden>
-              <a class="data-open" href="trading-volume.html">Trading volume <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-dom" aria-labelledby="data-tab-dom" hidden>
-              <a class="data-open" href="btc-dominance.html">BTC dominance <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-fg" aria-labelledby="data-tab-fg" hidden>
-              <a class="data-open" href="fear-greed.html">Fear and greed <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-ma" aria-labelledby="data-tab-ma" hidden>
-              <a class="data-open" href="ma-200w.html">200W MA <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-rainbow" aria-labelledby="data-tab-rainbow" hidden>
-              <a class="data-open" href="rainbow-chart.html">Rainbow <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-dca" aria-labelledby="data-tab-dca" hidden>
-              <a class="data-open" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">DCA / Stacking <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-retire" aria-labelledby="data-tab-retire" hidden>
-              <a class="data-open" href="retirement-calculator.html">Retirement <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="data-panel" role="tabpanel" id="data-panel-fees" aria-labelledby="data-tab-fees" hidden>
-              <a class="data-open" href="bitcoin-fee-index/">Fee Index <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
+          <nav class="data-tablist" aria-label="Virtuse data tools">
+            <a href="bitcoin-data.html">Dashboard</a>
+            <a href="trading-volume.html">Trading volume</a>
+            <a href="btc-dominance.html">BTC dominance</a>
+            <a href="fear-greed.html">Fear and greed</a>
+            <a href="ma-200w.html">200W MA</a>
+            <a href="rainbow-chart.html">Rainbow</a>
+            <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget">DCA / Stacking</a>
+            <a href="retirement-calculator.html">Retirement</a>
+            <a href="bitcoin-fee-index/">Fee Index</a>
+          </nav>
             <section class="treasury-ledger" id="treasuryLedger" aria-label="The treasury ledger">
               <h3 class="treasury-stamp">The treasury ledger</h3>
               <p class="treasury-dek" id="treasuryDek">Top corporate BTC holders.</p>
@@ -283,17 +254,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <aside class="partner-promo" aria-label="Partners">
             <p class="partner-promo-label">Partners</p>
             <div class="partner-promo-inner">
-              <div class="partner-promo-head">
-                <img class="partner-promo-mark" src="logo-firefish.png" alt="Firefish" width="40" height="40">
-                <div>
-                  <p class="partner-promo-brand">Firefish · partner</p>
-                  <p class="partner-promo-line">Never sell your Bitcoin. Borrow against it.</p>
-                </div>
-              </div>
-              <p class="partner-promo-blurb">Bitcoin-backed loans with non-custodial multi-sig escrow. Rates from 5% p.a. LTV up to 50%. Terms from 3 to 24 months.</p>
-              <div class="partner-widget-frame">
-                <iframe src="https://widget.firefish.io/?ref=virtuseloan" title="Firefish loan calculator" loading="lazy" scrolling="no"></iframe>
-              </div>
+              <a class="partner-promo-art" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer sponsored">
+                <img src="news/firefish-promo.png" alt="Firefish: Never sell your Bitcoin. Borrow against it." width="1200" height="630">
+              </a>
+              <p class="partner-promo-line">Never sell your Bitcoin. Borrow against it.</p>
               <div class="partner-promo-actions">
                 <a class="btn btn-accent-outline partner-promo-cta-btn" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer sponsored">Borrow against Bitcoin <span aria-hidden="true">→</span></a>
                 <a class="text-link partner-promo-virtuse" href="lending.html">On Virtuse <span aria-hidden="true">→</span></a>

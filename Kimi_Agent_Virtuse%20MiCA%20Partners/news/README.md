@@ -37,17 +37,17 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 | `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 | `treasury-ledger.json` | Last-known public-company BTC holdings (CoinGecko snapshot + `as_of`). Live fetch from `api.coingecko.com` overwrites this when it succeeds. Never invent holdings. |
-| `firefish-promo.png` | Official Firefish OG creative, cropped as a small thumb on this edition’s Partners rail. |
+| `firefish-promo.png` | Official Firefish OG creative, cover-cropped as the Partners rail poster. |
 
 ## Live data
 
 The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 24h, Hashrate · 3d, Fees, Sats / $, Block) use mempool.space, with Binance / CoinGecko for the 24h change. Failures render dashes.
 
-**Data desk** is a tabbed module in the right column of the Latest issues band. Each tab panel is a single text link labeled with the tool name (matching the tab), not a heading plus dek. Below the tabs and active panel sits **The treasury ledger** — a compressed Gazette-style bar list of top corporate BTC holders. Live figures come from CoinGecko’s public-company treasury endpoint (already on `connect-src`); if that fetch fails, `treasury-ledger.json` (dated snapshot) is shown. Dashes if both are missing. Do not attribute CoinGecko on the page.
+**Data desk** is a link strip in the right column of the Latest issues band. Each tab is itself a navigation link to the matching Virtuse tool page — no orange “Dashboard →” panels under the strip. Below the tabs sits **The treasury ledger** — a compressed Gazette-style bar list of top corporate BTC holders. Live figures come from CoinGecko’s public-company treasury endpoint (already on `connect-src`); if that fetch fails, `treasury-ledger.json` (dated snapshot) is shown. Dashes if both are missing. Do not attribute CoinGecko on the page.
 
-On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ height and splits in two halves. **Data desk** (`#data-desk`, tabs + treasury ledger) fills the top half: its bottom edge aligns with the first row of issue cards (the midpoint of the column), not the full column. **Partners** fills the lower half and stays bottom-aligned with the last issue cards. Link-only panels; no invented live metrics. Do not put “Run the numbers. Not a recommendation.” under Data desk (that line stays only under By the numbers in the hero rail). Tabs shrink to the label, each with a fine border.
+On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ height. **Data desk** (`#data-desk`, tab links + treasury ledger) fills the first card row. **Partners** starts at the top edge of issues row 2 (cards 3–4 in the 2×2) and stays bottom-aligned with the last issue cards. Rail gap matches the archive `row-gap` (28px). No invented live metrics. Do not put “Run the numbers. Not a recommendation.” under Data desk (that line stays only under By the numbers in the hero rail). Tabs shrink to the label, each with a fine border; hover only (no selected state — they leave the page).
 
-**Partners** (this edition: Firefish) keeps the Partners label, not Sponsored. Short blurb uses only facts already on `lending.html` (Bitcoin-backed loans, non-custodial multi-sig escrow, rates from 5% p.a., LTV up to 50%, terms from 3 to 24 months). Compact iframe preview of `https://widget.firefish.io/?ref=virtuseloan` (CSP already allows `widget.firefish.io`), styled like lending `.widget-frame` but scaled to the rail. Primary CTA is the Virtuse referral `https://app.firefish.io/auth/sign-up?ref=virtuseloan`. Secondary text link **On Virtuse →** goes to `lending.html`. Small Firefish mark (`logo-firefish.png`) plus a partner disclosure. Not editorial.
+**Partners** (this edition: Firefish) keeps the Partners label, not Sponsored. Composition is a rail-fit poster: official `news/firefish-promo.png` cover-cropped (`object-position: center 42%`) plus the short claim “Never sell your Bitcoin. Borrow against it.” and CTAs. The Firefish calculator iframe is omitted — it does not fit a one-card-tall, ~240–360px-wide rail without becoming unusable. Primary CTA is the Virtuse referral `https://app.firefish.io/auth/sign-up?ref=virtuseloan`. Secondary text link **On Virtuse →** goes to `lending.html`. Partner disclosure. Not editorial.
 
 **By the numbers** and **Data desk** sit on a Measured Record inset (`--record-bg`: Gazette `sg-bg-deep`, `#1C1C19` dark / `#EBE9E4` light).
 
@@ -67,7 +67,7 @@ On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ hei
 2. Sticky nav (V + virtuse brief lockup at ~26px / −25%, muted mono links, outline Get the Brief, theme)
 3. Edition line (`Latest Brief · Mon, Sep 14, 2026` — muted, not orange)
 4. Three-column hero: Pulse · weekly + cover · six tiles + Atlantic capture
-5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; right rail: Data desk (top half) + taller Partners Firefish block with widget (bottom half)
+5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; right rail: Data desk (row 1) + Partners Firefish poster (row 2 → column bottom)
 6. Blog / Ras Vasilisin’s Take (three columns, omit if empty) + **Blog archive** → `blog.html`
 7. Footer with quiet Lenny-style signup (`#subscribe`)
 
