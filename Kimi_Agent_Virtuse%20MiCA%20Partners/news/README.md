@@ -37,17 +37,17 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 | `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 | `treasury-ledger.json` | Last-known public-company BTC holdings (CoinGecko snapshot + `as_of`). Live fetch from `api.coingecko.com` overwrites this when it succeeds. Never invent holdings. |
-| `firefish-promo.png` | Official Firefish OG creative for this edition’s Sponsored rail. |
+| `firefish-promo.png` | Official Firefish OG creative, cropped as a small thumb on this edition’s Partners rail. |
 
 ## Live data
 
 The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 24h, Hashrate · 3d, Fees, Sats / $, Block) use mempool.space, with Binance / CoinGecko for the 24h change. Failures render dashes.
 
-**Data desk** is a tabbed module in the right column of the Latest issues band. Below the tabs and active panel sits **The treasury ledger** — a compressed Gazette-style bar list of top corporate BTC holders. Live figures come from CoinGecko’s public-company treasury endpoint (already on `connect-src`); if that fetch fails, `treasury-ledger.json` (dated snapshot) is shown. Dashes if both are missing. Fine print attributes the source and is not advice.
+**Data desk** is a tabbed module in the right column of the Latest issues band. Each tab panel is a single text link labeled with the tool name (matching the tab), not a heading plus dek. Below the tabs and active panel sits **The treasury ledger** — a compressed Gazette-style bar list of top corporate BTC holders. Live figures come from CoinGecko’s public-company treasury endpoint (already on `connect-src`); if that fetch fails, `treasury-ledger.json` (dated snapshot) is shown. Dashes if both are missing. Do not attribute CoinGecko on the page.
 
-On desktop the right rail (`#issuesRail`: Data desk + ledger + Sponsored Firefish promo) matches the Latest issues cards’ height; the promo sits in the lower third-column zone. Short dek + Open link only in the tabs; no invented live metrics. Fine print: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
+On desktop the right rail (`#issuesRail`: Data desk + ledger + compact Partners promo) matches the Latest issues cards’ height; the promo sits in the lower third-column zone, bottom-aligned with the issue cards. Link-only panels; no invented live metrics. Fine print under the ledger: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
 
-**Sponsored promo** (this edition: Firefish) is labeled Sponsored, uses official `news/firefish-promo.png` art, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial.
+**Partners promo** (this edition: Firefish) is labeled Partners, uses a compact thumb of official `news/firefish-promo.png` art plus a partner disclosure, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial.
 
 **By the numbers** and **Data desk** sit on a Measured Record inset (`--record-bg`: Gazette `sg-bg-deep`, `#1C1C19` dark / `#EBE9E4` light).
 
@@ -67,7 +67,7 @@ On desktop the right rail (`#issuesRail`: Data desk + ledger + Sponsored Firefis
 2. Sticky nav (V + virtuse brief lockup at ~26px / −25%, muted mono links, outline Get the Brief, theme)
 3. Edition line (`Latest Brief · Mon, Sep 14, 2026` — muted, not orange)
 4. Three-column hero: Pulse · weekly + cover · six tiles + Atlantic capture
-5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; right rail: Data desk + treasury ledger, then Sponsored Firefish promo
+5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; right rail: Data desk + treasury ledger, then compact Partners Firefish promo
 6. Blog / Ras Vasilisin’s Take (three columns, omit if empty) + **Blog archive** → `blog.html`
 7. Footer with quiet Lenny-style signup (`#subscribe`)
 
