@@ -990,9 +990,11 @@ ul { list-style: none; }
 }
 .partner-promo-card img {
   width: 100%;
-  aspect-ratio: 2 / 1;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 168px;
   object-fit: cover;
-  object-position: center 46%;
+  object-position: center 42%;
   background: #0a0a0a;
 }
 .partner-promo-body {
