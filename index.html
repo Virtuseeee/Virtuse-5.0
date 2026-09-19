@@ -17,26 +17,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/index.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/index.html">
-<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/index.html">
-<link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/index.html">
-<link rel="alternate" hreflang="ru" href="https://staging.virtuse.com/ru/index.html">
-<link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/index.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/index.html">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/index.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/index.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/index.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Virtuse — The World's First Hub for Bitcoin-Only Services">
 <meta property="og:description" content="Everything Bitcoin. Nothing else. Buy, mine, borrow, custody, and grow your Bitcoin through vetted, MiCA-licensed partners — all in one trusted hub.">
-<meta property="og:url" content="https://staging.virtuse.com/index.html">
-<meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta property="og:url" content="https://virtuse.com/index.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Virtuse — The World's First Hub for Bitcoin-Only Services">
 <meta name="twitter:description" content="Everything Bitcoin. Nothing else. Buy, mine, borrow, custody, and grow your Bitcoin through vetted, MiCA-licensed partners — all in one trusted hub.">
-<meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="styles.css">
@@ -832,6 +833,56 @@ body {
 
 .how-card-cta svg { width: 12px; height: 12px; transition: transform 0.2s; }
 .how-card-cta:hover svg { transform: translateX(3px); }
+
+/* ===== TOOLS & GUIDES (SEO hub links) ===== */
+.tools-guides {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+.tools-guides-inner {
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.tools-guides h2 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.tools-guides p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+.tools-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.tools-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tools-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .tools-guides { padding: 0 24px; margin-bottom: 60px; }
+  .tools-guides-inner { padding: 24px; }
+}
 
 /* ===== PARTNER LOGOS ===== */
 .partners-strip {
@@ -1906,6 +1957,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="cs/index.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
         <a href="ru/index.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
         <a href="de/index.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="fr/index.html" class="lang-opt" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
       </div>
     </li>
   </ul>
@@ -1922,6 +1974,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
         <a href="ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
         <a href="de/index.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
       </div>
     </div>
     <button class="nav-cta">Get Started</button>
@@ -2276,6 +2329,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ===== TOOLS & GUIDES ===== -->
+<section class="tools-guides anim-section anim-hidden" id="tools-guides">
+  <div class="tools-guides-inner">
+    <h2>Tools &amp; guides</h2>
+    <p>Country tax overviews, fee comparison, and stacking tools. Educational routing only; not tax or investment advice.</p>
+    <div class="tools-guides-links">
+      <a href="/bitcoin-tax/">Bitcoin tax</a>
+      <a href="/bitcoin-tax/slovakia/">Slovakia</a>
+      <a href="/bitcoin-tax/czechia/">Czechia</a>
+      <a href="/bitcoin-tax/germany/">Germany</a>
+      <a href="/bitcoin-fee-index/">Fee Index</a>
+      <a href="/bitcoin-dca-calculator/">DCA calculator</a>
+      <a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a>
+      <a href="/bitcoin-inheritance/">Inheritance</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== THE VIRTUSE BLOG ===== -->
 <section class="vblog anim-section anim-hidden">
   <div class="sec-header">
@@ -2460,6 +2531,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Company</h4>
         <a href="about.html">About Us</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tools &amp; guides</h4>
+        <a href="/bitcoin-tax/">Bitcoin tax</a>
+        <a href="/bitcoin-fee-index/">Fee Index</a>
+        <a href="/bitcoin-dca-calculator/">DCA calculator</a>
+        <a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a>
+        <a href="/bitcoin-inheritance/">Inheritance</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>

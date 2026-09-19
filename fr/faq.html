@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>FAQ | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/faq.html">
+<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/faq.html">
+<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/faq.html">
+<link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/faq.html">
+<link rel="alternate" hreflang="ru" href="https://staging.virtuse.com/ru/faq.html">
+<link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/faq.html">
+<link rel="alternate" hreflang="fr" href="https://staging.virtuse.com/fr/faq.html">
+<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/faq.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="FAQ | Virtuse">
+<meta property="og:description" content="Tout ce qu'il faut savoir sur Virtuse, notre hub de partenaires, la sécurité, les frais et comment démarrer, en langage clair.">
+<meta property="og:url" content="https://staging.virtuse.com/fr/faq.html">
+<meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FAQ | Virtuse">
+<meta name="twitter:description" content="Tout ce qu'il faut savoir sur Virtuse, notre hub de partenaires, la sécurité, les frais et comment démarrer, en langage clair.">
+<meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
+<link rel="stylesheet" href="../styles.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 20, 33, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active {
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.08);
+}
+
+.nav-cta {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.hero h1 .highlight { color: var(--btc-orange); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+/* ===== CATEGORY PILLS ===== */
+.subnav-wrap {
+  padding: 0 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--btc-orange); }
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding: 0 48px 56px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+.faq-section:last-of-type { padding-bottom: var(--section-spacing); }
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--btc-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(247, 147, 26, 0.1);
+  margin-bottom: 22px;
+}
+
+.sec-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+details {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+details:hover { border-color: var(--border-hover); }
+
+details[open] { border-color: rgba(247, 147, 26, 0.4); }
+
+summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary:hover { color: var(--btc-orange); }
+
+summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+
+details[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.faq-answer strong { color: var(--text); font-weight: 600; }
+
+.faq-answer a { color: var(--btc-orange); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+/* ===== NEWSLETTER / FOOTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-col h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--btc-orange); }
+
+.footer-bottom p { font-size: 13px; color: var(--text-dim); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 28px; }
+  .hero h1 { font-size: 36px; }
+  .subnav-wrap, .faq-section { padding-left: 24px; padding-right: 24px; }
+  summary { font-size: 15px; padding: 18px 20px; }
+  .faq-answer { padding: 0 20px 18px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btc-orange, #f7931a);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover, .newsletter-form button:hover {
+  background: #ffffff;
+  color: var(--btc-orange, #f7931a);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+/* ===== MOBILE MENU ===== */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, #0d1421 0%, #0a0f1a 55%, #0d1421 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, #484f58);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #e6edf3;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, #484f58);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, #484f58);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links a.active { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, #484f58);
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--btc-orange); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--btc-orange);
+  color: #0d0902;
+}
+
+@media (max-width: 1024px) {
+  .lang-menu { display: none; }
+}
+
+/* ===== FR: compact nav text =====
+   French nav labels can run longer than other languages' (e.g. "Données
+   Bitcoin", "Conservation"), so at the default per-item padding/font-size
+   they wrap onto two lines at common desktop widths. Inserted
+   UNCONDITIONALLY this time (not gated behind whether the page already
+   had the compact dropdown) -- see this file's own docstring for why
+   that gate was wrong for German. */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav-links a {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a href="/fr/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Acheter du Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Minage</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Prêts</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Conservation</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Fiscalité</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-switch" role="navigation" aria-label="Langue de la page">
+        <a href="../faq.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/faq.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/faq.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/faq.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/faq.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/faq.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="faq.html" class="lang-opt active" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Langue de la page">
+        <span class="lang-flag">🇫🇷</span>FR
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../faq.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/faq.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/faq.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/faq.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/faq.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/faq.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="faq.html" class="lang-opt active" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+      </div>
+    </div>
+    <button class="nav-cta">Commencer</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+(function () {
+  var wrap = document.getElementById('langMenu');
+  var btn = document.getElementById('langMenuBtn');
+  if (!wrap || !btn) return;
+  function close() {
+    wrap.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Foire aux <span class="highlight">questions</span></h1>
+  <p class="hero-desc">Tout ce que vous devez savoir sur Virtuse, notre hub de partenaires, la sécurité, les frais et la marche à suivre pour commencer, expliqué simplement.</p>
+</section>
+
+<!-- ===== CATEGORY PILLS ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="Catégories de la FAQ">
+    <a href="#virtuse">&#9670; Virtuse</a>
+    <a href="#services">&#9670; Services du hub</a>
+    <a href="#security">&#9670; Sécurité</a>
+    <a href="#fees">&#9670; Frais</a>
+    <a href="#trading">&#9670; Trading</a>
+    <a href="#deposits">&#9670; Dépôts</a>
+    <a href="#withdrawals">&#9670; Retraits</a>
+    <a href="#kyc">&#9670; KYC</a>
+  </nav>
+</div>
+
+<!-- ===== ABOUT VIRTUSE ===== -->
+<section class="faq-section" id="virtuse">
+  <div class="sec-label">À propos de Virtuse</div>
+
+  <details open>
+    <summary>Qu'est-ce que Virtuse ?</summary>
+    <div class="faq-answer">Virtuse est le premier hub au monde entièrement dédié aux services Bitcoin. Fondée en 2018 et exclusivement centrée sur le Bitcoin depuis 2022, nous mettons en relation les investisseurs avec des partenaires vérifiés et réglementés pour tout ce qui touche au Bitcoin : achat, minage, emprunt, conservation, Treasury, fiscalité et automatisation. Virtuse Group Pte. Ltd. est basée à Singapour, avec un bureau opérationnel à Bratislava, et sert des clients dans plus de 100 pays.</div>
+  </details>
+
+  <details>
+    <summary>Virtuse est-elle une plateforme d'échange ?</summary>
+    <div class="faq-answer">Non. Virtuse n'exploite pas de plateforme d'échange, ne détient pas vos fonds et ne conserve pas votre Bitcoin. Nous sommes une couche de sélection et d'accès : nous vérifions les meilleurs prestataires agréés dans chaque catégorie et vous mettons directement en relation avec eux.</div>
+  </details>
+
+  <details>
+    <summary>Pourquoi uniquement le Bitcoin ?</summary>
+    <div class="faq-answer">Nous pensons que le Bitcoin est le seul actif numérique adapté à la construction et à la protection d'un patrimoine transgénérationnel. Un positionnement exclusivement Bitcoin garantit un alignement fiduciaire, une simplicité réglementaire et une expertise approfondie, sans les distractions des altcoins.</div>
+  </details>
+</section>
+
+<!-- ===== HUB SERVICES ===== -->
+<section class="faq-section" id="services">
+  <div class="sec-label">Nos services du hub</div>
+
+  <details>
+    <summary>À quels services puis-je accéder via Virtuse ?</summary>
+    <div class="faq-answer">Huit catégories, chacune avec des partenaires triés sur le volet : <strong>Acheter du Bitcoin</strong> (CASP agréés MiCA comme 21bitcoin, Kraken et ByBit EU), <strong>Minage</strong> (minage hébergé avec OneMiners, Abundant Mines, Power Mining), <strong>Prêts</strong> (emprunt adossé au Bitcoin via Firefish : conservez vos BTC et obtenez des liquidités), <strong>Conservation</strong> (portefeuilles matériels Trezor et Ledger), <strong>Treasury</strong> (conservation institutionnelle avec Coinbase Institutional, Sygnum, BitGo), <strong>Fiscalité</strong> (Divly, Blockpit, CoinTracking), <strong>Bots de trading</strong> (Coinrule, Cryptohopper, RevenueBot), ainsi que des outils <a href="bitcoin-data.html">Données Bitcoin</a> gratuits : tableau de bord en direct, calculateur de retraite, graphique arc-en-ciel, et bien plus.</div>
+  </details>
+
+  <details>
+    <summary>Comment fonctionne le hub ?</summary>
+    <div class="faq-answer">Trois étapes : choisissez un service, comparez nos partenaires vérifiés côte à côte, puis accédez à la plateforme réglementée du partenaire. Tout ce qui suit (compte, vérification, transactions) se déroule directement avec le partenaire. Votre Bitcoin reste sous votre contrôle.</div>
+  </details>
+
+  <details>
+    <summary>Comment choisissez-vous vos partenaires ?</summary>
+    <div class="faq-answer">Nous privilégions l'agrément européen (MiCA/MiCAR le cas échéant), un solide historique de sécurité, une orientation favorable au Bitcoin et des frais équitables. Les partenaires qui ne répondent pas à ces critères ne sont pas référencés.</div>
+  </details>
+</section>
+
+<!-- ===== SECURITY ===== -->
+<section class="faq-section" id="security">
+  <div class="sec-label">Sécurité</div>
+
+  <details>
+    <summary>Virtuse détient-elle un jour mon Bitcoin ou mes clés ?</summary>
+    <div class="faq-answer">Jamais. Virtuse ne détient ni fonds, ni clés, ni données clients. Toutes les transactions s'exécutent sur les plateformes réglementées des partenaires, et nous encourageons l'auto-conservation comme état final pour vos coins.</div>
+  </details>
+
+  <details>
+    <summary>Comment dois-je conserver mon Bitcoin ?</summary>
+    <div class="faq-answer">Pour les avoirs de long terme, nous recommandons les portefeuilles matériels de nos <a href="secure.html">partenaires de conservation</a> : Trezor (open source, fabriqué dans l'UE) ou Ledger (puce Secure Element, plus de 7 millions d'appareils vendus). Vos clés sont générées hors ligne et ne quittent jamais l'appareil. Pour des avoirs plus importants et les trésoreries d'entreprise, une conservation de niveau institutionnel est disponible via nos <a href="treasury.html">partenaires Treasury</a>.</div>
+  </details>
+
+  <details>
+    <summary>Les partenaires sont-ils réglementés ?</summary>
+    <div class="faq-answer">Les partenaires d'achat sont des prestataires de services sur crypto-actifs agréés MiCA/MiCAR dans l'UE : par exemple Kraken via la Banque centrale d'Irlande, ainsi que ByBit EU et 21bitcoin via la FMA autrichienne. Les partenaires Treasury incluent des institutions réglementées comme Sygnum (licence bancaire suisse) et BitGo.</div>
+  </details>
+</section>
+
+<!-- ===== FEES ===== -->
+<section class="faq-section" id="fees">
+  <div class="sec-label">Frais</div>
+
+  <details>
+    <summary>Que facture Virtuse ?</summary>
+    <div class="faq-answer">Rien. Parcourir, comparer et accéder aux partenaires est gratuit. Virtuse perçoit une commission de parrainage des partenaires lorsque vous vous inscrivez, sans coût supplémentaire pour vous. Vous ne payez jamais plus en passant par Virtuse.</div>
+  </details>
+
+  <details>
+    <summary>Quels frais vais-je payer chez les partenaires ?</summary>
+    <div class="faq-answer">Chaque partenaire fixe ses propres tarifs. Exemples actuellement référencés : trading Kraken Pro à partir de 0,16 %, spot ByBit EU à partir de 0,1 %, plans d'épargne Auto-Invest de 21bitcoin à 0 % de frais, hébergement de minage à partir d'environ 0,043 $/kWh, et outils fiscaux à partir de 39 €/an (CoinTracking propose un niveau gratuit jusqu'à 200 transactions). Vérifiez toujours les tarifs actuels sur le site du partenaire.</div>
+  </details>
+</section>
+
+<!-- ===== TRADING ===== -->
+<section class="faq-section" id="trading">
+  <div class="sec-label">Trading</div>
+
+  <details>
+    <summary>Puis-je trader sur Virtuse ?</summary>
+    <div class="faq-answer">Le trading se déroule sur les plateformes de nos partenaires, pas sur Virtuse. Pour l'achat et la vente au comptant, utilisez un partenaire <a href="buy-bitcoin.html">Acheter du Bitcoin</a>. Pour les stratégies automatisées (DCA, grid, rééquilibrage), nos <a href="bots.html">partenaires Bots</a> se connectent à votre compte d'échange via des clés API : non custodial, le bot ne détient donc jamais vos coins.</div>
+  </details>
+
+  <details>
+    <summary>Prenez-vous en charge le trading d'altcoins ?</summary>
+    <div class="faq-answer">Non. Virtuse ne sélectionne que des services Bitcoin. Certains partenaires proposent d'autres actifs sur leurs propres plateformes, mais notre positionnement et nos recommandations se limitent strictement au Bitcoin.</div>
+  </details>
+</section>
+
+<!-- ===== DEPOSITS ===== -->
+<section class="faq-section" id="deposits">
+  <div class="sec-label">Dépôts</div>
+
+  <details>
+    <summary>Comment déposer de l'argent pour acheter du Bitcoin ?</summary>
+    <div class="faq-answer">Directement sur la plateforme du partenaire de votre choix, généralement par virement SEPA ou par carte auprès de partenaires européens comme 21bitcoin, Kraken ou ByBit EU. Virtuse ne reçoit ni ne traite jamais votre argent.</div>
+  </details>
+
+  <details>
+    <summary>Puis-je mettre en place des achats récurrents ?</summary>
+    <div class="faq-answer">Oui : des partenaires comme 21bitcoin proposent des plans d'épargne automatisés (DCA) sans frais, et des plateformes comme Kraken prennent en charge les achats récurrents.</div>
+  </details>
+</section>
+
+<!-- ===== WITHDRAWALS ===== -->
+<section class="faq-section" id="withdrawals">
+  <div class="sec-label">Retraits</div>
+
+  <details>
+    <summary>Comment retirer mon Bitcoin ?</summary>
+    <div class="faq-answer">Depuis la plateforme du partenaire vers n'importe quelle adresse de portefeuille que vous contrôlez : nous recommandons un retrait vers votre propre portefeuille matériel pour les avoirs de long terme. Les mineurs reçoivent leurs récompenses versées quotidiennement, directement sur une adresse de portefeuille qu'ils contrôlent en permanence.</div>
+  </details>
+
+  <details>
+    <summary>Existe-t-il des limites ou des frais de retrait ?</summary>
+    <div class="faq-answer">Ils sont fixés par chaque partenaire et varient selon la plateforme, le niveau de vérification et les conditions du réseau. Consultez les conditions actuelles du partenaire ; Virtuse n'ajoute rien de plus.</div>
+  </details>
+</section>
+
+<!-- ===== KYC ===== -->
+<section class="faq-section" id="kyc">
+  <div class="sec-label">KYC et vérification</div>
+
+  <details>
+    <summary>Virtuse exige-t-elle une vérification KYC ?</summary>
+    <div class="faq-answer">Non : comme Virtuse ne touche jamais à vos fonds, il n'y a rien à vérifier chez nous. La vérification d'identité s'effectue une seule fois, sur la plateforme réglementée du partenaire où vous transigez.</div>
+  </details>
+
+  <details>
+    <summary>Que vous demanderont les partenaires ?</summary>
+    <div class="faq-answer">Les CASP agréés dans l'UE suivent les règles MiCA et AML : généralement une pièce d'identité officielle et un justificatif de domicile, parfois une justification de l'origine des fonds pour les montants importants. Les exigences varient selon le partenaire et le pays.</div>
+  </details>
+
+  <details>
+    <summary>Existe-t-il des services sans KYC ?</summary>
+    <div class="faq-answer">Oui : les outils qui ne touchent jamais à votre argent n'en ont pas besoin : portefeuilles matériels (Trezor, Ledger), logiciels fiscaux (Divly privilégie explicitement la confidentialité, sans KYC), et tous nos outils <a href="bitcoin-data.html">Données Bitcoin</a> gratuits fonctionnent sans aucun compte.</div>
+  </details>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <h2>Réparons l'argent, réparons le monde</h2>
+  <p>Rejoignez plus de 18 000 investisseurs qui gardent toujours une longueur d'avance. Recevez le Virtuse Report chaque semaine dans votre boîte mail.</p>
+  <form class="newsletter-form" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+    <button type="submit">S'ABONNER MAINTENANT</button>
+  </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'ENVOI EN COURS...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "C'est fait ! Consultez votre boîte mail pour l'e-mail de bienvenue.";
+          msg.style.color = 'var(--green, #3fb950)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Une erreur s\'est produite. Veuillez réessayer.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Erreur réseau. Veuillez réessayer.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <a href="about.html">À propos</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <a href="terms-and-conditions.html">CGU</a>
+        <a href="privacy-policy.html">Politique de confidentialité</a>
+        <a href="aml-compliance.html">AML et conformité</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+  </div>
+</footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.querySelector('.partners, .partners-section, #services');
+      if (!target) {
+        window.location.href = 'index.html#services';
+        return;
+      }
+      var nav = document.querySelector('.nav');
+      var offset = (nav ? nav.offsetHeight : 0) + 16;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
