@@ -1007,9 +1007,8 @@ ul { list-style: none; }
   width: 100%;
   height: auto;
   aspect-ratio: 1082 / 628;
-  max-height: 148px;
-  object-fit: cover;
-  object-position: left center;
+  object-fit: contain;
+  object-position: center;
   background: #E6413E;
 }
 .partner-promo-body {
