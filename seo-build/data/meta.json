@@ -1,0 +1,181 @@
+{
+  "site": {
+    "origin": "https://virtuse.com",
+    "name": "Virtuse",
+    "legalName": "Virtuse Group",
+    "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
+  },
+  "feeSource": "live",
+  "slugs": {
+    "en": {
+      "cz": "czechia",
+      "sk": "slovakia",
+      "pl": "poland",
+      "at": "austria",
+      "de": "germany",
+      "hu": "hungary",
+      "si": "slovenia",
+      "hr": "croatia",
+      "ro": "romania",
+      "bg": "bulgaria",
+      "nl": "netherlands"
+    },
+    "de": {
+      "cz": "tschechien",
+      "sk": "slowakei",
+      "pl": "polen",
+      "at": "oesterreich",
+      "de": "deutschland",
+      "hu": "ungarn",
+      "si": "slowenien",
+      "hr": "kroatien",
+      "ro": "rumaenien",
+      "bg": "bulgarien",
+      "nl": "niederlande"
+    }
+  },
+  "names": {
+    "de": {
+      "cz": "Tschechien",
+      "sk": "Slowakei",
+      "pl": "Polen",
+      "at": "Österreich",
+      "de": "Deutschland",
+      "hu": "Ungarn",
+      "si": "Slowenien",
+      "hr": "Kroatien",
+      "ro": "Rumänien",
+      "bg": "Bulgarien",
+      "nl": "Niederlande"
+    }
+  },
+  "currency": {
+    "cz": "CZK",
+    "sk": "EUR",
+    "pl": "PLN",
+    "at": "EUR",
+    "de": "EUR",
+    "hu": "HUF",
+    "si": "EUR",
+    "hr": "EUR",
+    "ro": "RON",
+    "bg": "BGN",
+    "nl": "EUR"
+  },
+  "neighbors": {
+    "cz": ["sk", "at", "pl", "de"],
+    "sk": ["cz", "at", "hu", "pl"],
+    "pl": ["cz", "sk", "de"],
+    "at": ["de", "cz", "sk", "hu", "si"],
+    "de": ["at", "nl", "cz", "pl"],
+    "hu": ["at", "sk", "ro", "hr", "si"],
+    "si": ["at", "hu", "hr"],
+    "hr": ["si", "hu", "bg"],
+    "ro": ["hu", "bg"],
+    "bg": ["ro", "hr"],
+    "nl": ["de"]
+  },
+  "taxDe": {
+    "cz": {
+      "gainTax": "15 % Einkommensteuer (23 % oberhalb der Schwelle)",
+      "exemption": "Steuerfrei nach 3-jähriger Haltedauer (Zeittest)",
+      "filing": "Jährliche Einkommensteuererklärung",
+      "note": "Jede Veräußerung (einschließlich Krypto-zu-Krypto) ist ein steuerpflichtiges Ereignis – führen Sie vollständige Aufzeichnungen ab dem ersten Tag."
+    },
+    "sk": {
+      "gainTax": "19 % Einkommensteuer (25 % oberhalb der Schwelle)",
+      "exemption": "Steuerfrei nach 1-jähriger Haltedauer; Freigrenze für Gelegenheitseinkünfte 500 €/Jahr",
+      "filing": "Jährliche Einkommensteuererklärung",
+      "note": "Ein separates Bankkonto für Krypto-Aktivität macht die Erklärung deutlich einfacher."
+    },
+    "pl": {
+      "gainTax": "19 % pauschale Kapitalertragsteuer",
+      "exemption": "Keine Haltedauer-Befreiung",
+      "filing": "Jährliche PIT-38",
+      "note": "Krypto-zu-Krypto-Tauschgeschäfte sind steuerpflichtig – berechnen Sie den PLN-Gewinn oder -Verlust jeder Veräußerung."
+    },
+    "at": {
+      "gainTax": "27,5 % KESt (Kapitalertragsteuer)",
+      "exemption": "Gewinne nach 1-jähriger Haltedauer steuerfrei (Privatanleger)",
+      "filing": "Jährliche Steuererklärung",
+      "note": "Staking- und Lending-Erträge werden bei Zufluss besteuert, nicht beim späteren Verkauf.",
+      "review": "REVIEW: Confirm current KESt treatment of the 1-year private-investor holding period for crypto (source string from Tax module, 2026-Q3)."
+    },
+    "de": {
+      "gainTax": "Bis zu 45 % Einkommensteuer (progressiv)",
+      "exemption": "0 % nach 1-jähriger Spekulationsfrist (private Veräußerung)",
+      "filing": "Jährliche Steuererklärung",
+      "note": "Krypto-zu-Krypto ist innerhalb des ersten Jahres steuerpflichtig. FIFO-Aufzeichnungen sind entscheidend."
+    },
+    "hu": {
+      "gainTax": "15 % Kapitalertragsteuer",
+      "exemption": "Keine Haltedauer-Befreiung",
+      "filing": "Jährliche Einkommensteuererklärung",
+      "note": "Dokumentierte Anschaffungskosten sind abzugsfähig – bewahren Sie jede Rechnung auf."
+    },
+    "si": {
+      "gainTax": "Progressiv, bis zu etwa 50 % auf Veräußerungsgewinne",
+      "exemption": "Keine allgemeine Haltedauer-Befreiung",
+      "filing": "Jährliche Einkommensteuererklärung",
+      "note": "Kryptogewinne werden als Einkommen behandelt; aktuelle Hinweise mit einem lokalen Berater prüfen.",
+      "review": "REVIEW: Slovenian rate band (~50 %) is sourced from the Tax module as an approximate ceiling, not a published tariff table."
+    },
+    "hr": {
+      "gainTax": "12 % auf Digitalvermögen-Gewinne (2025; 10 % in 2024)",
+      "exemption": "Keine Haltedauer-Befreiung",
+      "filing": "Jährliche Steuererklärung",
+      "note": "Das Digitalvermögen-Regime ist neu (ab 2024) – die Praxisauslegung läuft noch."
+    },
+    "ro": {
+      "gainTax": "10 % Einkommensteuer auf Krypto-Gewinne",
+      "exemption": "Keine Haltedauer-Befreiung",
+      "filing": "Jährliche Erklärung (Einkünfte aus sonstigen Quellen)",
+      "note": "10 % gehört zu den niedrigsten Pauschalsätzen in der EU – ziehen Sie Ihre Anschaffungskosten ab."
+    },
+    "bg": {
+      "gainTax": "10 % Pauschalsteuer auf Gewinne",
+      "exemption": "Keine Haltedauer-Befreiung",
+      "filing": "Jährliche Steuererklärung",
+      "note": "Niedriger Pauschalsatz; bewahren Sie Börsenauszüge für prüfungssichere Unterlagen auf."
+    },
+    "nl": {
+      "gainTax": "Box-3-Vermögenssteuer auf fiktive Rendite (etwa 36 % auf den angenommenen Ertrag)",
+      "exemption": "Freibetrag (etwa 57.000 € je Person, 2025)",
+      "filing": "Jährliche Box-3-Erklärung",
+      "note": "Keine klassische Kapitalertragsteuer – besteuert wird die angenommene Rendite des Bestands. Box 3 wird reformiert – prüfen Sie die Regeln des laufenden Jahres.",
+      "review": "REVIEW: Box 3 deemed-return percentage and 2025 allowance are copied from the Tax module; both are under legislative reform."
+    }
+  },
+  "inheritanceDe": [
+    {
+      "id": "letter",
+      "name": "Schreiben mit Anweisungen",
+      "text": "Erben brauchen ein Schreiben mit Anweisungen: was existiert, wo es liegt, wen sie kontaktieren – ohne Seed-Wörter im Dokument selbst. Bewahren Sie es beim Testament oder Anwalt auf."
+    },
+    {
+      "id": "separation",
+      "name": "Geografische Trennung",
+      "text": "Niemals alle Backups in einem Haushalt. Feuer, Diebstahl oder Hochwasser dürfen den Zugang nicht vollständig zerstören. Lagern Sie einen Schlüssel an einem zweiten Ort."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Erbe informieren",
+      "text": "Mindestens eine Vertrauensperson muss wissen, dass der Bitcoin existiert und wo sie anfangen soll. Bitcoin, der Jahre später oder nie gefunden wird, ist der häufigste Erbschaftsfehler."
+    },
+    {
+      "id": "multisig",
+      "name": "Multisig 2-von-3",
+      "text": "Eine einzelne Seed-Phrase ist ein Single Point of Failure – für Sie und für Erben. 2-von-3-Multisig: zwei Schlüssel bei Ihnen, einer bei einem Partner oder Anwalt."
+    },
+    {
+      "id": "tested",
+      "name": "Wiederherstellung testen",
+      "text": "Ein ungetestetes Erbverfahren ist eine Hypothese, kein Plan. Einmal jährlich eine vollständige Wiederherstellung mit einem kleinen UTXO, mit dem Erben als Beobachter."
+    },
+    {
+      "id": "accounts",
+      "name": "Konten inventarisieren",
+      "text": "Börsenkonten, bitcoinbesicherte Kredite und Sparpläne sterben mit vergessenen Logins. Führen Sie im Schreiben ein Inventar der Plattformen und wie Guthaben geltend gemacht werden."
+    }
+  ]
+}

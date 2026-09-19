@@ -1,0 +1,54 @@
+# Virtuse
+
+> Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys.
+
+As of Q3 2026. Indicative 2026 overview – not tax advice. Partner KYC on each platform.
+
+## Bitcoin tax (11 EU countries)
+
+- [Czechia](https://virtuse.com/bitcoin-tax/czechia/): 15 % income tax (23 % above threshold). Tax-free after 3-year holding (time test). As of Q3 2026.
+- [Slovakia](https://virtuse.com/bitcoin-tax/slovakia/): 19 % income tax (25 % above threshold). Tax-free after 1-year holding; occasional-income allowance €500/yr. As of Q3 2026.
+- [Poland](https://virtuse.com/bitcoin-tax/poland/): 19 % flat capital gains tax. No holding-period exemption. As of Q3 2026.
+- [Austria](https://virtuse.com/bitcoin-tax/austria/): 27.5 % KESt (capital gains tax). Gains tax-free after 1-year holding (private investors). As of Q3 2026.
+- [Germany](https://virtuse.com/bitcoin-tax/germany/): Up to 45 % income tax (progressive). 0 % after 1-year holding (private-sale exemption). As of Q3 2026.
+- [Hungary](https://virtuse.com/bitcoin-tax/hungary/): 15 % capital gains tax. No holding-period exemption. As of Q3 2026.
+- [Slovenia](https://virtuse.com/bitcoin-tax/slovenia/): Progressive, up to ~50 % on disposal gains. No general holding exemption. As of Q3 2026.
+- [Croatia](https://virtuse.com/bitcoin-tax/croatia/): 12 % on digital-asset gains (2025; 10 % in 2024). No holding-period exemption. As of Q3 2026.
+- [Romania](https://virtuse.com/bitcoin-tax/romania/): 10 % income tax on crypto gains. No holding-period exemption. As of Q3 2026.
+- [Bulgaria](https://virtuse.com/bitcoin-tax/bulgaria/): 10 % flat tax on gains. No holding-period exemption. As of Q3 2026.
+- [Netherlands](https://virtuse.com/bitcoin-tax/netherlands/): Box 3 wealth tax on deemed return (~36 % on fictional yield). Tax-free allowance (~€57k per person, 2025). As of Q3 2026.
+
+Hub: https://virtuse.com/bitcoin-tax/
+
+## Buy routes / Fee Index
+
+- 1. 21bitcoin (Auto-Invest plan): 0 %, annual drag at €100/mo €0
+- 2. ByBit EU (Spot trading): 0.1 %, annual drag at €100/mo €1
+- 3. Kraken (Pro trading): 0.16 %, annual drag at €100/mo €2
+- 4. RevenueBot (Automated DCA bot): 0.4 %, annual drag at €100/mo €53
+
+Index: https://virtuse.com/bitcoin-fee-index/
+Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
+
+## Tools
+
+- DCA calculator: https://virtuse.com/bitcoin-dca-calculator/
+- Sell vs borrow: https://virtuse.com/sell-vs-borrow-bitcoin/
+- Inheritance checklist: https://virtuse.com/bitcoin-inheritance/
+- Concierge (live): https://virtuse.com/concierge.html
+- Tax agent (live): https://virtuse.com/tax-agent.html
+- Tax category: https://virtuse.com/tax.html
+- Stacking (live): https://virtuse.com/stacking.html
+- Loan copilot (live): https://virtuse.com/loan.html
+
+## German pilot
+
+- https://virtuse.com/de/bitcoin-steuern/
+- https://virtuse.com/de/bitcoin-dca-rechner/
+- https://virtuse.com/de/bitcoin-verkaufen-oder-beleihen/
+- https://virtuse.com/de/bitcoin-erbrecht/
+- https://virtuse.com/de/bitcoin-gebuehrenindex/
+
+## Optional
+
+- Full rates: https://virtuse.com/llms-full.txt

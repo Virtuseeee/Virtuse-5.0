@@ -17,27 +17,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/tax.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/tax.html">
-<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/tax.html">
-<link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/tax.html">
-<link rel="alternate" hreflang="ru" href="https://staging.virtuse.com/ru/tax.html">
-<link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/tax.html">
-<link rel="alternate" hreflang="fr" href="https://staging.virtuse.com/fr/tax.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/tax.html">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/tax.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/tax.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/tax.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/tax.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Bitcoin Tax Reporting — Virtuse">
 <meta property="og:description" content="Bitcoin-only tax tools designed for European tax systems. Auto-import transactions and generate country-specific tax reports in minutes. No KYC required.">
-<meta property="og:url" content="https://staging.virtuse.com/tax.html">
-<meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta property="og:url" content="https://virtuse.com/tax.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bitcoin Tax Reporting — Virtuse">
 <meta name="twitter:description" content="Bitcoin-only tax tools designed for European tax systems. Auto-import transactions and generate country-specific tax reports in minutes. No KYC required.">
-<meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -96,6 +96,29 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 .eu-content p { font-size: 15px; color: #8b949e; line-height: 1.6; }
 .eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
 .eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
+
+/* Country SEO guides + Tax Agent */
+.tax-guides { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
+.tax-guides-inner { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 32px 40px; }
+.tax-guides h2 { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+.tax-guides-lead { font-size: 15px; color: #8b949e; line-height: 1.6; margin: 0 0 18px; }
+.tax-guides-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.tax-guides-links a {
+  background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 13px; font-weight: 600;
+  padding: 8px 14px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2);
+}
+.tax-guides-links a:hover { border-color: rgba(247, 147, 26,0.5); background: rgba(247, 147, 26,0.14); }
+.tax-guides-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  color: #0b0b0c; background: #f7931a; margin-right: 14px; margin-bottom: 10px;
+}
+.tax-guides-cta:hover { filter: brightness(1.08); color: #0b0b0c; }
+.tax-guides-de { display: inline-block; font-size: 13px; font-weight: 600; color: #8b949e; }
+.tax-guides-de a { color: #f7931a; }
+@media (max-width: 700px) {
+  .tax-guides-inner { padding: 24px; }
+}
 
 /* Partner Cards */
 .partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
@@ -786,6 +809,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </div>
 
+<!-- Country tax guides (SEO) -->
+<section class="tax-guides" id="tax-guides">
+<div class="tax-guides-inner">
+<h2>Country tax guides</h2>
+<p class="tax-guides-lead">Indicative 2026 overviews for 11 EU countries, plus an inheritance checklist. Not tax advice.</p>
+<div class="tax-guides-links">
+<a href="/bitcoin-tax/">All 11 countries</a>
+<a href="/bitcoin-tax/slovakia/">Slovakia</a>
+<a href="/bitcoin-tax/czechia/">Czechia</a>
+<a href="/bitcoin-tax/germany/">Germany</a>
+<a href="/bitcoin-tax/austria/">Austria</a>
+<a href="/bitcoin-tax/poland/">Poland</a>
+<a href="/bitcoin-inheritance/">Inheritance checklist</a>
+</div>
+<a href="tax-agent.html" class="tax-guides-cta">Check my country's rules</a>
+<p class="tax-guides-de"><a href="/de/bitcoin-steuern/deutschland/">Auf Deutsch: Bitcoin-Steuern Deutschland</a></p>
+</div>
+</section>
+
 <!-- Partner Cards -->
 <section class="partners-section">
 <div class="section-header">
@@ -1045,6 +1087,12 @@ United Kingdom
         <h4>Company</h4>
         <a href="about.html">About Us</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tools &amp; guides</h4>
+        <a href="/bitcoin-tax/">Bitcoin tax</a>
+        <a href="/bitcoin-inheritance/">Inheritance</a>
+        <a href="tax-agent.html">Tax Agent</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>

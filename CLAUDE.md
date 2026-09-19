@@ -2,6 +2,134 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-15) — catching this file up on 6 days / 22 commits of work done without it
+
+**Why this entry exists:** between 2026-09-09 and today, 22 commits
+landed on `main` (`a721b7d`…`08daa52`) — real, substantial, well-built
+work — with **zero mention anywhere in this file**. Not this session's
+work; near-certainly a separate agent (branch names like
+`cursor/seo-global-reach-3943` suggest Cursor) plus the user, working
+through actual GitHub PRs (#1–#8) rather than direct-to-`main` commits,
+a workflow shift worth noting on its own. Found the same way this file
+keeps re-learning to find these things: `git log` and `curl` against
+the live sites, not by trusting this file. **What follows is a
+retroactive catch-up, reconstructed from commit messages and live
+verification — treat the specifics as slightly less certain than a
+same-session writeup**, and see something wrong, fix this entry rather
+than assuming it's right.
+
+**What shipped, roughly in order:**
+1. **Consultation lead-qualification widget** (`fd9a0f1`,
+   `consultation-widget.js`) — a separate 5-question single-select +
+   1-question multi-select quiz ending in a segment tag, ported from
+   two user-supplied reference HTML files, feeding a prefilled Calendly
+   link (`calendly.com/virtuseexchange/15-min-consultation`). Deliberately
+   named "Consultation," not "Concierge," to avoid colliding with the
+   already-live, unrelated Bitcoin Concierge. Wired into the homepage
+   hero (replacing the old "See How It Works" CTA — hero now reads
+   "Find Best Service") and into article CTAs.
+2. **A real bug fixed while testing that widget, affecting every
+   language section** (`a721b7d`): `lang-detect.js`'s browser-language
+   auto-redirect had no memory of already having run, so a visitor
+   whose browser reported Slovak/Ukrainian/Czech/Russian got bounced
+   back to their language section on *every* reload — including
+   pressing Back after a CTA navigated them away, even after they'd
+   deliberately chosen to stay on a different language. Fixed with a
+   `sessionStorage` flag so the check runs once per tab/session.
+3. **Slovak and Czech translations of all four Layer 2 modules**
+   (`eab6ec0`+`49f6170` for SK, `3ab69a2`+`071af09` for CS) — and this
+   is an architecture change worth knowing about, not just new pages:
+   the deploy source's `src/lib/*.ts` (concierge/stacking/tax/loan) and
+   `src/pages/*.tsx` were refactored into a **bilingual codebase** —
+   every display string is now an `{en, sk}` (or `{en, cs}`)
+   `LocalizedText` pair, or goes through a shared `t(lang, en, sk)`
+   helper in a new `src/lib/i18n.ts` — with routing/matching logic and
+   all math (DCA projection, fee comparison, liquidation price,
+   scenario matrix, inheritance scoring) explicitly **unchanged**, only
+   how strings render. Each module got a per-language HTML entry
+   (`sk-concierge.html` etc. as Vite entries), served on the site as
+   real sibling files (`sk/concierge.html`, `cs/concierge.html`, ...).
+   `concierge-launcher.js` became bilingual too (reads `<html lang>`,
+   one shared file, no per-language variant needed). **Coverage gap
+   worth flagging**: only EN/SK/CS exist for the four modules — the
+   site itself now has 6 languages (`sk`/`uk`/`cs`/`ru`/`de` + EN), so
+   `uk`, `ru`, and `de` visitors still get the English-only modules.
+4. **German (`de/`) added as the site's 6th language** (`e6a5f42`) —
+   23 top-level pages, wired into every language's switcher.
+5. **A whole new programmatic SEO system**, `seo-build/` (`f5364ed`) —
+   deterministic static-HTML generator (`node seo-build/generate.mjs`
+   + `verify.mjs`, own `README.md`/`CONTENT-OPS.md`) producing:
+   `/bitcoin-tax/{country}/` (11 countries) + hub, `/buy-bitcoin/{country}/`
+   (deliberately no `/buy-bitcoin/` hub, to not collide with the existing
+   `buy-bitcoin.html`), `/sell-vs-borrow-bitcoin/`,
+   `/bitcoin-dca-calculator/`, `/bitcoin-inheritance/`,
+   `/bitcoin-fee-index/` (+ a `2026-q3/` archive, `/methodology/`,
+   `/embed/`, and a `noindex` print/PDF companion), plus a German pilot
+   of the same set (`/de/bitcoin-steuern/{land}/` etc.) and `llms.txt`/
+   `llms-full.txt`. **Explicitly grounds its numbers in the real,
+   already-fixed data** — `data/fee-schedule-live.json` is extracted
+   from the shipped Stacking bundle (21bitcoin/ByBit EU/Kraken/RevenueBot),
+   not the old Banxa/"MiCA-licensed CASP"/"Virtuse Bots" placeholder
+   table — the generator's own README calls that out explicitly and
+   warns against reintroducing it. New `.github/workflows/seo-verify.yml`
+   (read-only CI check on PRs touching `seo-build/**` or the generated
+   paths — regenerates and diffs, does **not** deploy).
+6. **SEO canonicals repointed from `staging.virtuse.com` to
+   `virtuse.com`** (`65ab0e6`) sitewide — hreflang, `og:url`, sitemap
+   `<loc>`, robots.txt `Sitemap:` line, `llms.txt`.
+
+**Deploy state, verified live today (2026-09-15), not assumed:**
+`staging.virtuse.com` is fully caught up with all of the above.
+`virtuse.com` (production) is *almost* fully caught up — Consultation
+widget, SK/CS Layer 2 modules, and the full `seo-build/` output
+(including the German programmatic-SEO pilot pages) are all live — with
+**one real gap found and fixed this session**: all 24 of the German
+*site-page* translations (`de/index.html`, `de/about.html`, ...,
+`e6a5f42`'s "23 pages" — 24 including `de/404.html`) were **never
+uploaded to production** — every one of them 301-redirected to
+`blog.virtuse.com` (this site's catch-all for a missing path) despite
+being live on staging and despite `de/bitcoin-steuern/` and the other
+German *SEO* pages working fine (those come from a different commit/
+deploy than the German *site* pages, and only one of the two made it
+up). Found by checking **every** file in `de/*.html` against
+production individually rather than trusting that one spot-check
+(`de/index.html`) represented the whole folder — it didn't happen to,
+here. Fixed via `scp -P 222 de/*.html virtuse.com@ftp.virtuse.com:public_html/de/`
+(the `de/` directory already existed on production from the SEO pilot
+pages, so no `sftp mkdir` step was needed).
+
+**Three decisions surfaced to the user, not resolved by this entry
+(genuinely business/compliance calls, not something to guess at):**
+1. **The four core Layer 2 pages are still `noindex`** — unchanged
+   since 2026-09-09, still pending the marketing/SEO review that was
+   always the blocker.
+2. **The new programmatic SEO pages are already `index, follow` on
+   production** right now — but `seo-build/README.md` itself says to
+   hold them `noindex` until reviewed. Unknown from here whether that
+   review happened before this shipped, or this shipped ahead of it.
+3. **Legal review of the AI-translated compliance pages**
+   (`privacy-policy`/`terms-and-conditions`/`aml-compliance`) — open
+   since the 2026-09-01 session, now spans more languages than when
+   first flagged (sk/uk/cs, and German's own compliance pages exist now
+   too per the 24-page `de/` set) — still nobody confirmed as reviewed
+   by a native speaker.
+
+**Next steps, in order:**
+1. Get the user's answer on the three decisions above.
+2. Everything already listed as open in the 2026-09-09 entries below
+   (Bots-page section, sticky-launcher awareness of Stacking, Loans/
+   Custody category embeds, Q1 seasonal hook, human review of the
+   Loan/Tax routing *logic* itself) is still open and unaffected by
+   this catch-up.
+3. **Close the uk/ru/de Layer 2 translation gap**, or make an explicit
+   decision not to (mirroring how `cs/blog.html` was explicitly decided
+   against, not just skipped) — see point 3 above.
+4. Whoever resumes work from a Cursor/other non-Claude session should
+   know **this file is the shared source of truth across tools, not a
+   Claude-only artifact** — the 6-day gap this entry catches up on is
+   exactly the failure mode to avoid next time, regardless of which
+   agent does the work.
+
 ## Session status (2026-09-09, continued) — all four Layer 2 modules deployed to production
 
 **What shipped:** everything from the two sessions below — Concierge's

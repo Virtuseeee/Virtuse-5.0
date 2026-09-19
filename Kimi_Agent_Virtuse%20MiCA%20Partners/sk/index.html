@@ -17,27 +17,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="alternate" hreflang="en" href="https://staging.virtuse.com/index.html">
-<link rel="alternate" hreflang="sk" href="https://staging.virtuse.com/sk/index.html">
-<link rel="alternate" hreflang="uk" href="https://staging.virtuse.com/uk/index.html">
-<link rel="alternate" hreflang="cs" href="https://staging.virtuse.com/cs/index.html">
-<link rel="alternate" hreflang="ru" href="https://staging.virtuse.com/ru/index.html">
-<link rel="alternate" hreflang="de" href="https://staging.virtuse.com/de/index.html">
-<link rel="alternate" hreflang="fr" href="https://staging.virtuse.com/fr/index.html">
-<link rel="alternate" hreflang="x-default" href="https://staging.virtuse.com/index.html">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/index.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/index.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/index.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Virtuse | Prvé centrum na svete pre Bitcoin služby">
 <meta property="og:description" content="Všetko pre Bitcoin. Nič iné. Nakupujte, ťažte, požičiavajte si, uschovávajte a zveľaďujte svoj Bitcoin cez preverených partnerov s licenciou MiCA, všetko na jednom dôveryhodnom mieste.">
-<meta property="og:url" content="https://staging.virtuse.com/sk/index.html">
-<meta property="og:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta property="og:url" content="https://virtuse.com/sk/index.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="sk_SK">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Virtuse | Prvé centrum na svete pre Bitcoin služby">
 <meta name="twitter:description" content="Všetko pre Bitcoin. Nič iné. Nakupujte, ťažte, požičiavajte si, uschovávajte a zveľaďujte svoj Bitcoin cez preverených partnerov s licenciou MiCA, všetko na jednom dôveryhodnom mieste.">
-<meta name="twitter:image" content="https://staging.virtuse.com/og-cover.jpg">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="../styles.css">
@@ -779,6 +779,56 @@ body {
   text-decoration: none;
 }
 
+/* ===== TOOLS & GUIDES (SEO hub links) ===== */
+.tools-guides {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+.tools-guides-inner {
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.tools-guides h2 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.tools-guides p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+.tools-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.tools-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tools-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .tools-guides { padding: 0 24px; margin-bottom: 60px; }
+  .tools-guides-inner { padding: 24px; }
+}
+
 /* ===== PARTNER LOGOS ===== */
 .partners-strip {
   border-top: 1px solid var(--border);
@@ -1465,6 +1515,18 @@ body {
   .hero-buttons { flex-direction: column; align-items: stretch; }
   .hero-buttons .btn-primary,
   .hero-buttons .btn-secondary { justify-content: center; width: 100%; }
+}
+
+/* SK's longer button labels ("Rezervovať bezplatnú konzultáciu") can
+   exceed the row's available width before hitting the stacked-column
+   breakpoint above, dropping the second button to its own line. Keep
+   both buttons on one row through this gap by letting them shrink
+   (and their text wrap to a second line inside the button) instead of
+   the whole button wrapping to a new row. */
+@media (min-width: 501px) and (max-width: 720px) {
+  .hero-buttons { flex-wrap: nowrap; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary { min-width: 0; text-align: center; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -2211,6 +2273,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ===== TOOLS & GUIDES ===== -->
+<section class="tools-guides anim-section anim-hidden" id="tools-guides">
+  <div class="tools-guides-inner">
+    <h2>Nástroje a sprievodcovia</h2>
+    <p>Prehľady daní podľa krajiny, porovnanie poplatkov a nástroje na stacking. Len na vzdelávacie účely, nie daňové ani investičné poradenstvo.</p>
+    <div class="tools-guides-links">
+      <a href="/bitcoin-tax/">Dane z Bitcoinu</a>
+      <a href="/bitcoin-tax/slovakia/">Slovensko</a>
+      <a href="/bitcoin-tax/czechia/">Česko</a>
+      <a href="/bitcoin-tax/germany/">Nemecko</a>
+      <a href="/bitcoin-fee-index/">Index poplatkov</a>
+      <a href="/bitcoin-dca-calculator/">DCA kalkulačka</a>
+      <a href="/sell-vs-borrow-bitcoin/">Predať alebo požičať</a>
+      <a href="/bitcoin-inheritance/">Dedenie</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== THE VIRTUSE BLOG ===== -->
 <section class="vblog anim-section anim-hidden">
   <div class="sec-header">
@@ -2399,6 +2479,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Spoločnosť</h4>
         <a href="about.html">O nás</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Nástroje a sprievodcovia</h4>
+        <a href="/bitcoin-tax/">Dane z Bitcoinu</a>
+        <a href="/bitcoin-fee-index/">Index poplatkov</a>
+        <a href="/bitcoin-dca-calculator/">DCA kalkulačka</a>
+        <a href="/sell-vs-borrow-bitcoin/">Predať alebo požičať</a>
+        <a href="/bitcoin-inheritance/">Dedenie</a>
       </div>
       <div class="footer-col">
         <h4>Informácie</h4>
