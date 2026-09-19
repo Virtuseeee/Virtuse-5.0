@@ -125,8 +125,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="site-nav">
   <div class="page-inner nav-inner">
     <a class="wordmark" href="news.html">
-      <img class="brief-logo mark-on-dark" src="news/brief-nav-logo.svg" alt="Virtuse Brief" width="279" height="34">
-      <img class="brief-logo mark-on-light" src="news/brief-nav-logo-on-light.svg" alt="Virtuse Brief" width="279" height="34">
+      <img class="brief-logo mark-on-dark" src="news/brief-nav-logo.svg" alt="Virtuse Brief" width="213" height="26">
+      <img class="brief-logo mark-on-light" src="news/brief-nav-logo-on-light.svg" alt="Virtuse Brief" width="213" height="26">
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Virtuse Brief">
       <a href="#pulse">Pulse</a>
@@ -224,7 +224,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="issues-band">
         <div class="archive" id="archiveGrid"></div>
-        <aside class="data-desk" id="data-desk">
+        <div class="issues-rail" id="issuesRail">
+          <aside class="data-desk" id="data-desk">
           <p class="desk-label">Data desk</p>
           <div class="data-tablist" role="tablist" aria-label="Virtuse data tools" aria-orientation="horizontal">
             <button type="button" role="tab" id="data-tab-desk" aria-controls="data-panel-desk" aria-selected="true" tabindex="0">Dashboard</button>
@@ -284,8 +285,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <a class="data-open" href="bitcoin-fee-index/">Open <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <p class="data-fine">Run the numbers. Not a recommendation.</p>
-        </aside>
+            <section class="treasury-ledger" id="treasuryLedger" aria-label="The treasury ledger">
+              <h3 class="treasury-stamp">The treasury ledger</h3>
+              <p class="treasury-dek" id="treasuryDek">Top corporate BTC holders.</p>
+              <ol class="treasury-list" id="treasuryList">
+                <li><span class="treasury-name">—</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">—</span></li>
+                <li><span class="treasury-name">—</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">—</span></li>
+                <li><span class="treasury-name">—</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">—</span></li>
+                <li><span class="treasury-name">—</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">—</span></li>
+                <li><span class="treasury-name">—</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">—</span></li>
+                <li><span class="treasury-name">—</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">—</span></li>
+              </ol>
+              <p class="treasury-fine" id="treasuryFine">Not advice. CoinGecko · last known</p>
+            </section>
+            <p class="data-fine">Run the numbers. Not a recommendation.</p>
+          </aside>
+          <aside class="partner-promo" aria-label="Sponsored partner">
+            <p class="partner-promo-label">Sponsored</p>
+            <a class="partner-promo-card" href="https://firefish.io" target="_blank" rel="noopener sponsored">
+              <img src="news/firefish-promo.png" alt="Firefish — Never sell your Bitcoin. Borrow against it." width="1200" height="630">
+              <div class="partner-promo-body">
+                <p class="partner-promo-brand">Firefish · partner for this edition</p>
+                <h3>Never sell your Bitcoin. Borrow against it.</h3>
+                <p>Bitcoin-backed loans. Rates from ~5%.</p>
+                <span class="partner-promo-cta">Borrow against Bitcoin <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </aside>
+        </div>
         <div class="more-wrap">
           <a class="text-link" href="blog.html">All issues</a>
         </div>
@@ -300,6 +327,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2>Blog</h2>
       </div>
       <div class="blog-grid" id="blogGrid"></div>
+      <div class="blog-more">
+        <a class="text-link" href="blog.html">Blog archive</a>
+      </div>
     </div>
   </section>
 </main>
