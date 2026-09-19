@@ -37,7 +37,7 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 | `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 | `treasury-ledger.json` | Last-known public-company BTC holdings (CoinGecko snapshot + `as_of`). Live fetch from `api.coingecko.com` overwrites this when it succeeds. Never invent holdings. |
-| `firefish-promo.png` | Official Firefish OG creative, cropped as a small thumb on this edition’s Partners rail. |
+| `firefish-promo.png` | Official Firefish OG creative (kept; Partners rail uses the compact `logo-firefish.png` mark). |
 
 ## Live data
 
@@ -47,7 +47,7 @@ The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 2
 
 On desktop the right rail (`#issuesRail`: Data desk + ledger + compact Partners promo) matches the Latest issues cards’ height; the promo sits in the lower third-column zone, bottom-aligned with the issue cards. Link-only panels; no invented live metrics. Fine print under the ledger: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
 
-**Partners promo** (this edition: Firefish) is labeled Partners, uses a compact thumb of official `news/firefish-promo.png` art plus a partner disclosure, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial.
+**Partners promo** (this edition: Firefish) is labeled Partners, uses the compact `logo-firefish.png` mark plus a partner disclosure and CTA, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial. The OG `news/firefish-promo.png` is kept for other uses.
 
 **By the numbers** and **Data desk** sit on a Measured Record inset (`--record-bg`: Gazette `sg-bg-deep`, `#1C1C19` dark / `#EBE9E4` light).
 
