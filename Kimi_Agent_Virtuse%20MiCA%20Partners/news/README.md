@@ -45,9 +45,9 @@ The **ticker** (above nav) and **By the numbers** tiles (six figures: BTC/USD, 2
 
 **Data desk** is a tabbed module in the right column of the Latest issues band. Each tab panel is a single text link labeled with the tool name (matching the tab), not a heading plus dek. Below the tabs and active panel sits **The treasury ledger** — a compressed Gazette-style bar list of top corporate BTC holders. Live figures come from CoinGecko’s public-company treasury endpoint (already on `connect-src`); if that fetch fails, `treasury-ledger.json` (dated snapshot) is shown. Dashes if both are missing. Do not attribute CoinGecko on the page.
 
-On desktop the right rail (`#issuesRail`: Data desk + ledger + compact Partners promo) matches the Latest issues cards’ height; the promo sits in the lower third-column zone, bottom-aligned with the issue cards. Link-only panels; no invented live metrics. Fine print under the ledger: “Run the numbers. Not a recommendation.” Tabs shrink to the label, each with a fine border.
+On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ height and splits in two halves. **Data desk** (`#data-desk`, tabs + treasury ledger) fills the top half: its bottom edge aligns with the first row of issue cards (the midpoint of the column), not the full column. **Partners** fills the lower half and stays bottom-aligned with the last issue cards. Link-only panels; no invented live metrics. Do not put “Run the numbers. Not a recommendation.” under Data desk (that line stays only under By the numbers in the hero rail). Tabs shrink to the label, each with a fine border.
 
-**Partners promo** (this edition: Firefish) is labeled Partners, uses a compact thumb of official `news/firefish-promo.png` art plus a partner disclosure, and links to `https://firefish.io` with `rel="noopener sponsored"`. Not editorial.
+**Partners** (this edition: Firefish) keeps the Partners label, not Sponsored. Short blurb uses only facts already on `lending.html` (Bitcoin-backed loans, non-custodial multi-sig escrow, rates from 5% p.a., LTV up to 50%, terms from 3 to 24 months). Compact iframe preview of `https://widget.firefish.io/?ref=virtuseloan` (CSP already allows `widget.firefish.io`), styled like lending `.widget-frame` but scaled to the rail. Primary CTA is the Virtuse referral `https://app.firefish.io/auth/sign-up?ref=virtuseloan`. Secondary text link **On Virtuse →** goes to `lending.html`. Small Firefish mark (`logo-firefish.png`) plus a partner disclosure. Not editorial.
 
 **By the numbers** and **Data desk** sit on a Measured Record inset (`--record-bg`: Gazette `sg-bg-deep`, `#1C1C19` dark / `#EBE9E4` light).
 
@@ -67,7 +67,7 @@ On desktop the right rail (`#issuesRail`: Data desk + ledger + compact Partners 
 2. Sticky nav (V + virtuse brief lockup at ~26px / −25%, muted mono links, outline Get the Brief, theme)
 3. Edition line (`Latest Brief · Mon, Sep 14, 2026` — muted, not orange)
 4. Three-column hero: Pulse · weekly + cover · six tiles + Atlantic capture
-5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; right rail: Data desk + treasury ledger, then compact Partners Firefish promo
+5. Latest issues `#issues` — four weekly covers, **All issues** → `blog.html`; right rail: Data desk (top half) + taller Partners Firefish block with widget (bottom half)
 6. Blog / Ras Vasilisin’s Take (three columns, omit if empty) + **Blog archive** → `blog.html`
 7. Footer with quiet Lenny-style signup (`#subscribe`)
 
