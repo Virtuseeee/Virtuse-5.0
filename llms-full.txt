@@ -9,88 +9,88 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - Exemption: Tax-free after 3-year holding (time test)
 - Filing: Annual personal tax return
 - Note: Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one.
-- EN: https://staging.virtuse.com/bitcoin-tax/czechia/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/tschechien/
+- EN: https://virtuse.com/bitcoin-tax/czechia/
+- DE: https://virtuse.com/de/bitcoin-steuern/tschechien/
 
 ### 🇸🇰 Slovakia (`sk`)
 - Gain tax: 19 % income tax (25 % above threshold)
 - Exemption: Tax-free after 1-year holding; occasional-income allowance €500/yr
 - Filing: Annual personal tax return
 - Note: Separate bank account for crypto activity makes reporting dramatically easier.
-- EN: https://staging.virtuse.com/bitcoin-tax/slovakia/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/slowakei/
+- EN: https://virtuse.com/bitcoin-tax/slovakia/
+- DE: https://virtuse.com/de/bitcoin-steuern/slowakei/
 
 ### 🇵🇱 Poland (`pl`)
 - Gain tax: 19 % flat capital gains tax
 - Exemption: No holding-period exemption
 - Filing: Annual PIT-38
 - Note: Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss.
-- EN: https://staging.virtuse.com/bitcoin-tax/poland/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/polen/
+- EN: https://virtuse.com/bitcoin-tax/poland/
+- DE: https://virtuse.com/de/bitcoin-steuern/polen/
 
 ### 🇦🇹 Austria (`at`)
 - Gain tax: 27.5 % KESt (capital gains tax)
 - Exemption: Gains tax-free after 1-year holding (private investors)
 - Filing: Annual tax return
 - Note: Staking and lending rewards are taxed when received, not when sold.
-- EN: https://staging.virtuse.com/bitcoin-tax/austria/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/oesterreich/
+- EN: https://virtuse.com/bitcoin-tax/austria/
+- DE: https://virtuse.com/de/bitcoin-steuern/oesterreich/
 
 ### 🇩🇪 Germany (`de`)
 - Gain tax: Up to 45 % income tax (progressive)
 - Exemption: 0 % after 1-year holding (private-sale exemption)
 - Filing: Annual tax return
 - Note: Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical.
-- EN: https://staging.virtuse.com/bitcoin-tax/germany/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/deutschland/
+- EN: https://virtuse.com/bitcoin-tax/germany/
+- DE: https://virtuse.com/de/bitcoin-steuern/deutschland/
 
 ### 🇭🇺 Hungary (`hu`)
 - Gain tax: 15 % capital gains tax
 - Exemption: No holding-period exemption
 - Filing: Annual personal income tax return
 - Note: Documented acquisition costs are deductible – keep every invoice.
-- EN: https://staging.virtuse.com/bitcoin-tax/hungary/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/ungarn/
+- EN: https://virtuse.com/bitcoin-tax/hungary/
+- DE: https://virtuse.com/de/bitcoin-steuern/ungarn/
 
 ### 🇸🇮 Slovenia (`si`)
 - Gain tax: Progressive, up to ~50 % on disposal gains
 - Exemption: No general holding exemption
 - Filing: Annual personal income tax return
 - Note: Cryptocurrency gains are treated as income; verify current guidance with a local advisor.
-- EN: https://staging.virtuse.com/bitcoin-tax/slovenia/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/slowenien/
+- EN: https://virtuse.com/bitcoin-tax/slovenia/
+- DE: https://virtuse.com/de/bitcoin-steuern/slowenien/
 
 ### 🇭🇷 Croatia (`hr`)
 - Gain tax: 12 % on digital-asset gains (2025; 10 % in 2024)
 - Exemption: No holding-period exemption
 - Filing: Annual tax return
 - Note: Digital-asset regime is new (2024+) – rules are still being interpreted in practice.
-- EN: https://staging.virtuse.com/bitcoin-tax/croatia/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/kroatien/
+- EN: https://virtuse.com/bitcoin-tax/croatia/
+- DE: https://virtuse.com/de/bitcoin-steuern/kroatien/
 
 ### 🇷🇴 Romania (`ro`)
 - Gain tax: 10 % income tax on crypto gains
 - Exemption: No holding-period exemption
 - Filing: Annual return (income from other sources)
 - Note: 10 % is among the lowest flat rates in the EU – deduct your cost basis.
-- EN: https://staging.virtuse.com/bitcoin-tax/romania/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/rumaenien/
+- EN: https://virtuse.com/bitcoin-tax/romania/
+- DE: https://virtuse.com/de/bitcoin-steuern/rumaenien/
 
 ### 🇧🇬 Bulgaria (`bg`)
 - Gain tax: 10 % flat tax on gains
 - Exemption: No holding-period exemption
 - Filing: Annual tax return
 - Note: Low flat rate; keep exchange statements for audit-ready records.
-- EN: https://staging.virtuse.com/bitcoin-tax/bulgaria/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/bulgarien/
+- EN: https://virtuse.com/bitcoin-tax/bulgaria/
+- DE: https://virtuse.com/de/bitcoin-steuern/bulgarien/
 
 ### 🇳🇱 Netherlands (`nl`)
 - Gain tax: Box 3 wealth tax on deemed return (~36 % on fictional yield)
 - Exemption: Tax-free allowance (~€57k per person, 2025)
 - Filing: Annual Box 3 declaration
 - Note: No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.
-- EN: https://staging.virtuse.com/bitcoin-tax/netherlands/
-- DE: https://staging.virtuse.com/de/bitcoin-steuern/niederlande/
+- EN: https://virtuse.com/bitcoin-tax/netherlands/
+- DE: https://virtuse.com/de/bitcoin-steuern/niederlande/
 
 
 ## Fee schedule (live stacking module)

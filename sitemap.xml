@@ -12,6 +12,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
   </url>
   <url>
@@ -26,6 +27,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
   </url>
   <url>
@@ -40,6 +42,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
   </url>
   <url>
@@ -54,6 +57,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
   </url>
   <url>
@@ -68,6 +72,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
   </url>
   <url>
@@ -82,6 +87,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/index.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/index.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/index.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/index.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/index.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/index.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html"/>
   </url>
   <url>
@@ -96,6 +132,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -110,6 +147,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -124,6 +162,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -138,6 +177,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -152,6 +192,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -166,6 +207,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/buy-bitcoin.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/buy-bitcoin.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html"/>
   </url>
   <url>
@@ -180,6 +252,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
   </url>
   <url>
@@ -194,6 +267,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
   </url>
   <url>
@@ -208,6 +282,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
   </url>
   <url>
@@ -222,6 +297,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
   </url>
   <url>
@@ -236,6 +312,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
   </url>
   <url>
@@ -250,6 +327,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/mining.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/mining.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/mining.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/mining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/mining.html"/>
   </url>
   <url>
@@ -264,6 +372,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
   </url>
   <url>
@@ -278,6 +387,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
   </url>
   <url>
@@ -292,6 +402,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
   </url>
   <url>
@@ -306,6 +417,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
   </url>
   <url>
@@ -320,6 +432,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
   </url>
   <url>
@@ -334,6 +447,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/lending.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/lending.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/lending.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/lending.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/lending.html"/>
   </url>
   <url>
@@ -348,6 +492,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
   </url>
   <url>
@@ -362,6 +507,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
   </url>
   <url>
@@ -376,6 +522,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
   </url>
   <url>
@@ -390,6 +537,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
   </url>
   <url>
@@ -404,6 +552,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
   </url>
   <url>
@@ -418,6 +567,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/secure.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/secure.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/secure.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/secure.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/secure.html"/>
   </url>
   <url>
@@ -432,6 +612,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
   </url>
   <url>
@@ -446,6 +627,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
   </url>
   <url>
@@ -460,6 +642,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
   </url>
   <url>
@@ -474,6 +657,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
   </url>
   <url>
@@ -488,6 +672,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
   </url>
   <url>
@@ -502,6 +687,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/treasury.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/treasury.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/treasury.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/treasury.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/treasury.html"/>
   </url>
   <url>
@@ -516,6 +732,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
   </url>
   <url>
@@ -530,6 +747,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
   </url>
   <url>
@@ -544,6 +762,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
   </url>
   <url>
@@ -558,6 +777,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
   </url>
   <url>
@@ -572,6 +792,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
   </url>
   <url>
@@ -586,6 +807,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/tax.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/tax.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html"/>
   </url>
   <url>
@@ -600,6 +852,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
   </url>
   <url>
@@ -614,6 +867,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
   </url>
   <url>
@@ -628,6 +882,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
   </url>
   <url>
@@ -642,6 +897,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
   </url>
   <url>
@@ -656,6 +912,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
   </url>
   <url>
@@ -670,6 +927,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/bots.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/bots.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bots.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bots.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bots.html"/>
   </url>
   <url>
@@ -684,6 +972,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
@@ -698,6 +987,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
@@ -712,6 +1002,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
@@ -726,6 +1017,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
@@ -740,6 +1032,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
@@ -754,6 +1047,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/bitcoin-data.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/bitcoin-data.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-data.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-data.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-data.html"/>
   </url>
   <url>
@@ -768,6 +1092,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
   </url>
   <url>
@@ -782,6 +1107,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
   </url>
   <url>
@@ -796,6 +1122,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
   </url>
   <url>
@@ -810,6 +1137,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
   </url>
   <url>
@@ -824,6 +1152,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
   </url>
   <url>
@@ -838,6 +1167,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/btc-dominance.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/btc-dominance.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-dominance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-dominance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-dominance.html"/>
   </url>
   <url>
@@ -852,6 +1212,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -866,6 +1227,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -880,6 +1242,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -894,6 +1257,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -908,6 +1272,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -922,6 +1287,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/ma-200w.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/ma-200w.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ma-200w.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ma-200w.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ma-200w.html"/>
   </url>
   <url>
@@ -936,6 +1332,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
@@ -950,6 +1347,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
@@ -964,6 +1362,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
@@ -978,6 +1377,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
@@ -992,6 +1392,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
@@ -1006,6 +1407,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/rainbow-chart.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/rainbow-chart.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/rainbow-chart.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/rainbow-chart.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/rainbow-chart.html"/>
   </url>
   <url>
@@ -1020,6 +1452,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -1034,6 +1467,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -1048,6 +1482,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -1062,6 +1497,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -1076,6 +1512,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -1090,6 +1527,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/retirement-calculator.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/retirement-calculator.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html"/>
   </url>
   <url>
@@ -1104,6 +1572,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
   </url>
   <url>
@@ -1118,6 +1587,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
   </url>
   <url>
@@ -1132,6 +1602,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
   </url>
   <url>
@@ -1146,6 +1617,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
   </url>
   <url>
@@ -1160,6 +1632,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
   </url>
   <url>
@@ -1174,6 +1647,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/research.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/research.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/research.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/research.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/research.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/research.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/research.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/research.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/research.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/research.html"/>
   </url>
   <url>
@@ -1181,12 +1685,18 @@
     <lastmod>2026-08-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/blog.html"/>
   </url>
   <url>
     <loc>https://virtuse.com/news.html</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/news.html"/>
   </url>
   <url>
     <loc>https://virtuse.com/uk/blog.html</loc>
@@ -1203,6 +1713,8 @@
     <lastmod>2026-08-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/blog-sk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/blog-sk.html"/>
   </url>
   <url>
     <loc>https://virtuse.com/ru/blog.html</loc>
@@ -1210,7 +1722,6 @@
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/blog.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/blog-sk.html"/>
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/blog.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/blog.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/blog.html"/>
@@ -1227,6 +1738,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
   </url>
   <url>
@@ -1241,6 +1753,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
   </url>
   <url>
@@ -1255,6 +1768,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
   </url>
   <url>
@@ -1269,6 +1783,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
   </url>
   <url>
@@ -1283,6 +1798,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
   </url>
   <url>
@@ -1297,6 +1813,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/about.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/about.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/about.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/about.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/about.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/about.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html"/>
   </url>
   <url>
@@ -1311,6 +1858,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
   </url>
   <url>
@@ -1325,6 +1873,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
   </url>
   <url>
@@ -1339,6 +1888,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
   </url>
   <url>
@@ -1353,6 +1903,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
   </url>
   <url>
@@ -1367,6 +1918,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
   </url>
   <url>
@@ -1381,6 +1933,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/faq.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/faq.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/faq.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/faq.html"/>
   </url>
   <url>
@@ -1395,6 +1978,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -1409,6 +1993,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -1423,6 +2008,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -1437,6 +2023,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -1451,6 +2038,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -1465,6 +2053,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/aml-compliance.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/aml-compliance.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/aml-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/aml-compliance.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/aml-compliance.html"/>
   </url>
   <url>
@@ -1479,6 +2098,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -1493,6 +2113,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -1507,6 +2128,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -1521,6 +2143,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -1535,6 +2158,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -1549,6 +2173,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/privacy-policy.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/privacy-policy.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/privacy-policy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/privacy-policy.html"/>
   </url>
   <url>
@@ -1563,6 +2218,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
   </url>
   <url>
@@ -1577,6 +2233,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
   </url>
   <url>
@@ -1591,6 +2248,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
   </url>
   <url>
@@ -1605,6 +2263,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
   </url>
   <url>
@@ -1619,6 +2278,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
   </url>
   <url>
@@ -1633,6 +2293,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/terms-and-conditions.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/terms-and-conditions.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html"/>
   </url>
   <url>
@@ -1647,6 +2338,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -1661,6 +2353,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -1675,6 +2368,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -1689,6 +2383,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -1703,6 +2398,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -1717,6 +2413,37 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/root-cycles.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/root-cycles.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/root-cycles.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/root-cycles.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/root-cycles.html"/>
   </url>
   <url>
@@ -1728,6 +2455,7 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/trading-volume.html"/>
   </url>
   <url>
@@ -1739,6 +2467,7 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/trading-volume.html"/>
   </url>
   <url>
@@ -1750,6 +2479,31 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/trading-volume.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/trading-volume.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/trading-volume.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/trading-volume.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/trading-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/trading-volume.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/trading-volume.html"/>
   </url>
   <url>
@@ -1761,6 +2515,7 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/fear-greed.html"/>
   </url>
   <url>
@@ -1772,6 +2527,7 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/fear-greed.html"/>
   </url>
   <url>
@@ -1783,6 +2539,31 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/fear-greed.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/fear-greed.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/fear-greed.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/fear-greed.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/fear-greed.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/fear-greed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/fear-greed.html"/>
   </url>
 <!-- SEO-BUILD:START -->

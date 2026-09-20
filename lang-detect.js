@@ -2,8 +2,8 @@
  * Virtuse browser-language auto-redirect.
  *
  * If a visitor's browser reports Slovak, Ukrainian, Czech, Russian,
- * German, or French as its preferred language and they land on an
- * English page that has a matching translated counterpart, send them
+ * German, French, or Spanish as its preferred language and they land on
+ * an English page that has a matching translated counterpart, send them
  * straight to that page. A
  * manual choice via the language switcher (any element with class
  * "lang-opt" and a "lang" attribute) is remembered in localStorage and
@@ -38,9 +38,10 @@
  *
  * blog.html is a special case, handled separately per language below:
  * sk -> blog-sk.html (root-level, suffix pattern), uk -> uk/blog.html,
- * ru -> ru/blog.html, de -> de/blog.html, fr -> fr/blog.html (all
- * UI-only shells over the English WP feed); cs -> no cs/blog.html
- * exists yet, so Czech browsers landing on blog.html are left alone.
+ * ru -> ru/blog.html, de -> de/blog.html, fr -> fr/blog.html, es ->
+ * es/blog.html (all UI-only shells over the English WP feed); cs -> no
+ * cs/blog.html exists yet, so Czech browsers landing on blog.html are
+ * left alone.
  */
 (function () {
   'use strict';
@@ -78,11 +79,12 @@
     else if (browserLang.indexOf('ru') === 0) targetLang = 'ru';
     else if (browserLang.indexOf('de') === 0) targetLang = 'de';
     else if (browserLang.indexOf('fr') === 0) targetLang = 'fr';
-    if (!targetLang) return; // not a Slovak/Ukrainian/Czech/Russian/German/French-preferring browser
+    else if (browserLang.indexOf('es') === 0) targetLang = 'es';
+    if (!targetLang) return; // not a Slovak/Ukrainian/Czech/Russian/German/French/Spanish-preferring browser
 
     var path = window.location.pathname;
     // Already on any translated section? No-op regardless of which one.
-    if (path.indexOf('/sk/') !== -1 || path.indexOf('/uk/') !== -1 || path.indexOf('/cs/') !== -1 || path.indexOf('/ru/') !== -1 || path.indexOf('/de/') !== -1 || path.indexOf('/fr/') !== -1) return;
+    if (path.indexOf('/sk/') !== -1 || path.indexOf('/uk/') !== -1 || path.indexOf('/cs/') !== -1 || path.indexOf('/ru/') !== -1 || path.indexOf('/de/') !== -1 || path.indexOf('/fr/') !== -1 || path.indexOf('/es/') !== -1) return;
 
     var TRANSLATED = [
       'index.html', 'about.html', 'buy-bitcoin.html', 'mining.html', 'lending.html',
@@ -101,6 +103,7 @@
       else if (targetLang === 'ru') target = 'ru/blog.html';
       else if (targetLang === 'de') target = 'de/blog.html';
       else if (targetLang === 'fr') target = 'fr/blog.html';
+      else if (targetLang === 'es') target = 'es/blog.html';
       // cs: no cs/blog.html yet — target stays null, page is left alone.
     } else if (file === '' || file === 'index.html' || TRANSLATED.indexOf(file) !== -1) {
       var name = (file === '' ? 'index.html' : file);
