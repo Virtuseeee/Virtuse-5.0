@@ -2725,9 +2725,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if (scene) {
     scene.addEventListener('pointerenter', () => {
       hovering = true;
-      targetX = 0;
-      targetY = 0;
-      if (!raf) loop();
+      // Snap flat immediately instead of easing out -- a lingering lerp here
+      // runs on its own timescale and visibly fights the ring's own (faster)
+      // deceleration, which is what read as a shake right before the stop.
+      targetX = 0; targetY = 0;
+      currentX = 0; currentY = 0;
+      tilt.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
     });
     scene.addEventListener('pointerleave', () => { hovering = false; });
   }
