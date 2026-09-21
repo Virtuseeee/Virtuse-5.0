@@ -665,6 +665,11 @@ body {
   border-radius: 16px;
   padding: 32px 28px;
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .problem-card:hover {
@@ -709,6 +714,7 @@ body {
   font-weight: 600;
   color: var(--btc-orange);
   text-decoration: none;
+  margin-top: auto;
 }
 
 .problem-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
@@ -2178,41 +2184,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="problem-grid">
 
-    <div class="problem-card anim-card">
+    <a href="buy-bitcoin.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M12 8v4.5M12 15.5h.01"/></svg>
       </div>
       <h3>¿Qué exchange no me va a estafar?</h3>
       <p>Mt. Gox, FTX, Celsius: miles de millones en fondos de clientes han desaparecido en quiebras de exchanges desde 2014. Nosotros solo listamos CASP autorizados bajo MiCA, verificados en custodia, seguros y jurisdicción antes de llegar siquiera a esta página.</p>
-      <a href="buy-bitcoin.html" class="problem-link">
+      <div class="problem-link">
         Ver exchanges verificados
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="secure.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l3 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v4h3"/><path d="M9 13h6M9 16.5h4"/></svg>
       </div>
       <h3>¿Qué pasa con mi BTC cuando yo muera?</h3>
       <p>Se estima que una quinta parte de todo el Bitcoin minado ya está perdido para siempre, gran parte de él encerrado tras una clave que solo una persona llegó a tener. La autocustodia sin un plan de sucesión es una cuenta atrás, no una protección.</p>
-      <a href="secure.html" class="problem-link">
+      <div class="problem-link">
         Planifique la herencia de su Bitcoin
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="tax.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h11v18l-2.2-1.6-2.1 1.6-1.2-1-1.2 1-2.1-1.6L6.5 21z"/><path d="M9.5 8.2h5M9.5 12h5"/></svg>
       </div>
       <h3>¿Qué le debo a Hacienda?</h3>
       <p>Cada venta, canje y recompensa de minería es un hecho imponible en la mayoría de las jurisdicciones de la UE, y las normas varían según el país. Si se equivoca, la factura, más las sanciones, llega años después, no ahora.</p>
-      <a href="tax.html" class="problem-link">
+      <div class="problem-link">
         Calcule su exposición fiscal
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
   </div>
 </section>
