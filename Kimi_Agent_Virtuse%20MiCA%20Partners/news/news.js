@@ -550,30 +550,41 @@
     a.appendChild(body);
     return a;
   }
+  function dateMs(iso) {
+    var t = Date.parse(iso || '');
+    return isNaN(t) ? 0 : t;
+  }
+  function applyFeaturedCover(post) {
+    var img = document.querySelector('#featured .featured-cover img');
+    if (!img || !post) return;
+    var url = imgOf(post);
+    if (!url) return;
+    img.src = url;
+  }
   function paintBlog(issues, wpPosts) {
     var section = $('blog');
     var grid = $('blogGrid');
     if (!section || !grid) return;
-    var essay = null;
-    (issues || []).some(function (issue) {
-      if (issue && issue.essay) { essay = issue; return true; }
-      return false;
-    });
     var skip = {};
     skip[FEATURED_SLUG] = true;
     (issues || []).forEach(function (issue) {
       if (issue && issue.slug && !issue.essay) skip[issue.slug] = true;
     });
-    if (essay && essay.slug) skip[essay.slug] = true;
 
-    var cards = [];
-    if (essay) cards.push(blogCardFromIssue(essay));
+    var candidates = [];
+    (issues || []).forEach(function (issue) {
+      if (!issue || !issue.essay || !issue.slug || skip[issue.slug]) return;
+      skip[issue.slug] = true;
+      candidates.push({ date: dateMs(issue.date), node: blogCardFromIssue(issue) });
+    });
     (wpPosts || []).forEach(function (post) {
-      if (cards.length >= BLOG_MAX) return;
       if (!post || !post.slug || skip[post.slug]) return;
       skip[post.slug] = true;
-      cards.push(blogCardFromWp(post));
+      candidates.push({ date: dateMs(post.date), node: blogCardFromWp(post) });
     });
+    candidates.sort(function (a, b) { return b.date - a.date; });
+    var cards = candidates.slice(0, BLOG_MAX).map(function (c) { return c.node; });
+
     grid.textContent = '';
     if (!cards.length) {
       section.hidden = true;
@@ -587,9 +598,12 @@
     var list = (data && data.issues) || [];
     paintArchive(list);
     paintBlog(list, []);
-    j(WP + '?categories=' + BLOG_CATS + '&per_page=12&_embed=wp:featuredmedia', 8000).then(function (posts) {
+    j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 8000).then(function (posts) {
       paintBlog(list, posts || []);
     }).catch(function () { /* keep the local essay if any */ });
+    j(WP + '?slug=' + encodeURIComponent(FEATURED_SLUG) + '&_embed=wp:featuredmedia', 8000).then(function (posts) {
+      applyFeaturedCover((posts && posts[0]) || null);
+    }).catch(function () { /* keep the static HTML cover */ });
   }).catch(function () {
     paintArchive([]);
     paintBlog([], []);
