@@ -665,6 +665,11 @@ body {
   border-radius: 16px;
   padding: 32px 28px;
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .problem-card:hover {
@@ -709,6 +714,7 @@ body {
   font-weight: 600;
   color: var(--btc-orange);
   text-decoration: none;
+  margin-top: auto;
 }
 
 .problem-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
@@ -2130,41 +2136,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="problem-grid">
 
-    <div class="problem-card anim-card">
+    <a href="buy-bitcoin.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M12 8v4.5M12 15.5h.01"/></svg>
       </div>
       <h3>Welche Börse betrügt mich nicht?</h3>
       <p>Mt. Gox, FTX, Celsius: Milliarden an Kundengeldern sind seit 2014 bei Börsenzusammenbrüchen verschwunden. Wir listen ausschließlich MiCA-lizenzierte CASPs, die vor Aufnahme auf diese Seite auf Verwahrung, Versicherung und Rechtsraum geprüft wurden.</p>
-      <a href="buy-bitcoin.html" class="problem-link">
+      <div class="problem-link">
         Geprüfte Börsen ansehen
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="secure.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l3 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v4h3"/><path d="M9 13h6M9 16.5h4"/></svg>
       </div>
       <h3>Was passiert mit meinem BTC, wenn ich sterbe?</h3>
       <p>Schätzungsweise ein Fünftel aller jemals geminten Bitcoin ist bereits für immer verloren, ein Großteil davon hinter einem Schlüssel, den nur eine einzige Person je besaß. Selbstverwahrung ohne Nachfolgeplan ist eine tickende Uhr, kein Schutz.</p>
-      <a href="secure.html" class="problem-link">
+      <div class="problem-link">
         Ihre Bitcoin-Erbschaft planen
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="tax.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h11v18l-2.2-1.6-2.1 1.6-1.2-1-1.2 1-2.1-1.6L6.5 21z"/><path d="M9.5 8.2h5M9.5 12h5"/></svg>
       </div>
       <h3>Was schulde ich dem Finanzamt?</h3>
       <p>Jeder Verkauf, jeder Tausch und jede Mining-Belohnung ist in den meisten EU-Ländern ein steuerpflichtiges Ereignis, und die Regeln unterscheiden sich von Land zu Land. Ein Fehler bedeutet, dass die Rechnung samt Strafen erst Jahre später kommt, nicht sofort.</p>
-      <a href="tax.html" class="problem-link">
+      <div class="problem-link">
         Ihre Steuerlast berechnen
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
   </div>
 </section>

@@ -665,6 +665,11 @@ body {
   border-radius: 16px;
   padding: 32px 28px;
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .problem-card:hover {
@@ -709,6 +714,7 @@ body {
   font-weight: 600;
   color: var(--btc-orange);
   text-decoration: none;
+  margin-top: auto;
 }
 
 .problem-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
@@ -2099,41 +2105,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="problem-grid">
 
-    <div class="problem-card anim-card">
+    <a href="buy-bitcoin.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M12 8v4.5M12 15.5h.01"/></svg>
       </div>
       <h3>Která burza mě neokrade?</h3>
       <p>Mt. Gox, FTX, Celsius: od roku 2014 zmizely při krachech burz miliardy v prostředcích klientů. Uvádíme jen CASP poskytovatele s licencí MiCA, prověřené z hlediska úschovy, pojištění a jurisdikce dřív, než se vůbec dostanou na tuto stránku.</p>
-      <a href="buy-bitcoin.html" class="problem-link">
+      <div class="problem-link">
         Zobrazit prověřené burzy
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="secure.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l3 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v4h3"/><path d="M9 13h6M9 16.5h4"/></svg>
       </div>
       <h3>Co se stane s mým BTC, když zemřu?</h3>
       <p>Odhaduje se, že přibližně pětina veškerého kdy vytěženého Bitcoinu je už navždy ztracená, velká část uzamčená za klíčem, který znala jen jedna osoba. Vlastní úschova bez plánu nástupnictví není pojistkou, ale tikající bombou.</p>
-      <a href="secure.html" class="problem-link">
+      <div class="problem-link">
         Naplánujte dědictví svého Bitcoinu
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="tax.html" class="problem-card anim-card">
       <div class="problem-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h11v18l-2.2-1.6-2.1 1.6-1.2-1-1.2 1-2.1-1.6L6.5 21z"/><path d="M9.5 8.2h5M9.5 12h5"/></svg>
       </div>
       <h3>Co dlužím finančnímu úřadu?</h3>
       <p>Každý prodej, směna i odměna z těžby je ve většině jurisdikcí EU zdanitelnou událostí a pravidla se liší podle země. Když to uděláte špatně, účet i s penále přijde o roky, ne hned.</p>
-      <a href="tax.html" class="problem-link">
+      <div class="problem-link">
         Vypočítejte si svou daňovou povinnost
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
   </div>
 </section>
