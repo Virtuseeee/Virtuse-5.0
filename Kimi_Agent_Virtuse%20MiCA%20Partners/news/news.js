@@ -5,7 +5,7 @@
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
-  var FEATURED_SLUG = 'bitcoin-fell-below-77000-etfs-sold-fed-looms';
+  var FEATURED_SLUG = 'bitcoin-reclaimed-80000-after-the-fed-hike';
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
@@ -77,13 +77,17 @@
     });
   })();
 
-  /* Theme: default dark, persist vb-theme, update theme-color. */
+  /* Theme: default light, persist vb-theme, update theme-color. */
   (function () {
     var btn = $('themeToggle');
     var label = $('themeToggleLabel');
     var meta = document.querySelector('meta[name="theme-color"]');
     function current() {
-      return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      try {
+        var stored = localStorage.getItem(THEME_KEY);
+        if (stored === 'light' || stored === 'dark') return stored;
+      } catch (e) {}
+      return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     }
     function apply(theme, persist) {
       document.documentElement.setAttribute('data-theme', theme);
