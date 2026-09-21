@@ -2607,6 +2607,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function() {
   const tilt = document.getElementById('orbitTilt');
   const hero = document.querySelector('.hero');
+  const scene = document.querySelector('.orbit-scene');
   if (!tilt || !hero) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -2614,6 +2615,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
   let raf = null;
+  let hovering = false;
 
   function loop() {
     raf = requestAnimationFrame(() => {
@@ -2631,6 +2633,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   hero.addEventListener('mousemove', (e) => {
+    if (hovering) return; // orbit is easing to a stop -- don't fight it with a shifting tilt
     const rect = hero.getBoundingClientRect();
     targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -2642,6 +2645,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     targetY = 0;
     if (!raf) loop();
   });
+
+  if (scene) {
+    scene.addEventListener('pointerenter', () => {
+      hovering = true;
+      targetX = 0;
+      targetY = 0;
+      if (!raf) loop();
+    });
+    scene.addEventListener('pointerleave', () => { hovering = false; });
+  }
 })();
 
 // ===== ORBIT DRIVER (smooth weighted stop on hover) =====
