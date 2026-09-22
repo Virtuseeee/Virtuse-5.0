@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Virtuse Brief">
+  <title>Virtuse Brief</title>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#2A2A26" stroke-width="1"/>
+  <text x="120" y="300" fill="#F5F4F1" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="64" font-weight="600" letter-spacing="12">VIRTUSE BRIEF</text>
+  <text x="120" y="360" fill="#B0ACA4" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="24" letter-spacing="2">Bitcoin-only. No tokens. No PR.</text>
+  <text x="120" y="500" fill="#918D85" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="18" letter-spacing="3">BY VIRTUSE · MONDAY</text>
+</svg>

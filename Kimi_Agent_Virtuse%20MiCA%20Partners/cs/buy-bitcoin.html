@@ -25,6 +25,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/buy-bitcoin.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/buy-bitcoin.html">
 <link rel="alternate" hreflang="de" href="https://virtuse.com/de/buy-bitcoin.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/buy-bitcoin.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/buy-bitcoin.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
@@ -267,6 +269,48 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 }
 
 /* ===== PARTNERS ===== */
+.seo-guides {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+}
+.seo-guides-inner {
+  padding: 20px 32px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.seo-guides p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+.seo-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.seo-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.seo-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .seo-guides { padding: 0 24px; }
+  .seo-guides-inner { padding: 20px 24px; }
+}
+
 .partners {
   padding: 0 48px var(--section-spacing);
   max-width: 1200px;
@@ -1060,6 +1104,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a role="menuitem" href="buy-bitcoin.html" class="lang-opt active" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
         <a role="menuitem" href="../ru/buy-bitcoin.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
         <a role="menuitem" href="../de/buy-bitcoin.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/buy-bitcoin.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/buy-bitcoin.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
       </div>
       </div>
     </li>
@@ -1077,6 +1123,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="buy-bitcoin.html" class="lang-opt active" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
         <a href="../ru/buy-bitcoin.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
         <a href="../de/buy-bitcoin.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/buy-bitcoin.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/buy-bitcoin.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
       </div>
     </div>
     <button class="nav-cta">Začít</button>
@@ -1175,6 +1223,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
 </section>
+
+<!-- ===== COUNTRY BUY GUIDES + FEE TOOLS ===== -->
+<nav class="seo-guides" aria-label="Průvodci nákupem podle země a nástroje na poplatky">
+  <div class="seo-guides-inner">
+    <p>Stránky nákupu podle země, DCA projekce a zveřejněný žebříček poplatků.</p>
+    <div class="seo-guides-links">
+      <a href="/buy-bitcoin/slovakia/">Koupit na Slovensku</a>
+      <a href="/buy-bitcoin/czechia/">Koupit v Česku</a>
+      <a href="/buy-bitcoin/germany/">Koupit v Německu</a>
+      <a href="/bitcoin-dca-calculator/">DCA kalkulačka</a>
+      <a href="/bitcoin-fee-index/">Index poplatků</a>
+    </div>
+  </div>
+</nav>
 
 <!-- ===== PARTNERS ===== -->
 <section class="partners">
@@ -1329,7 +1391,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="pcard">
       <div class="pcard-header">
         <div class="pcard-logo">
-          <div class="pcard-icon" style="background:linear-gradient(135deg,#0b3faa,#1652c9)">C</div>
+          <img src="../logo-crypto-com.png" alt="Crypto.com" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
             <div class="pcard-name">Crypto.com</div>
             <div class="pcard-location">
@@ -1455,6 +1517,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="blog.html">Blog</a>
         <a href="bitcoin-data.html">Bitcoin data</a>
         <a href="research.html">Výzkum a média</a>
+        <a href="/buy-bitcoin/slovakia/">Koupit na Slovensku</a>
+        <a href="/buy-bitcoin/czechia/">Koupit v Česku</a>
+        <a href="/buy-bitcoin/germany/">Koupit v Německu</a>
+        <a href="/bitcoin-dca-calculator/">DCA kalkulačka</a>
+        <a href="/bitcoin-fee-index/">Index poplatků</a>
       </div>
       <div class="footer-col">
         <h4>Informace</h4>

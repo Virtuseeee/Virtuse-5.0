@@ -147,8 +147,8 @@ async function addContact(env, email, lang) {
 // cloudflare-worker/README.md's "Multi-language welcome emails" section.
 // A lang not present here (including undefined/omitted) falls back to 'en'.
 const WELCOME_EMAIL_TEMPLATES = {
-  en: { html: () => WELCOME_EMAIL_HTML, subject: 'Welcome to Virtuse — You\'re In' },
-  sk: { html: () => WELCOME_EMAIL_HTML_SK, subject: 'Vitajte vo Virtuse' },
+  en: { html: () => WELCOME_EMAIL_HTML, subject: 'Welcome to Virtuse Brief — You\'re In' },
+  sk: { html: () => WELCOME_EMAIL_HTML_SK, subject: 'Vitajte vo Virtuse Brief' },
 };
 
 async function sendWelcomeEmail(env, email, lang) {
@@ -280,7 +280,7 @@ async function handleUnsubscribe(env, url) {
     );
   }
 
-  return htmlResponse(200, unsubscribePage("You've been unsubscribed from the Virtuse Report. Sorry to see you go."));
+  return htmlResponse(200, unsubscribePage("You've been unsubscribed from the Virtuse Brief. Sorry to see you go."));
 }
 
 export default {
