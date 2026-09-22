@@ -30,6 +30,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html">
 <link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
@@ -614,6 +616,11 @@ body {
   border-radius: 16px;
   padding: 28px;
   transition: background-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .problem-card:hover { background: var(--dark-card-hover); }
@@ -750,6 +757,7 @@ body {
   color: var(--text);
   text-decoration: none;
   transition: opacity 0.15s ease;
+  margin-top: auto;
 }
 
 .problem-link:hover { opacity: 0.7; }
@@ -1047,6 +1055,56 @@ body {
 
 .how-card-cta svg { width: 12px; height: 12px; transition: transform 0.2s; }
 .how-card-cta:hover svg { transform: translateX(3px); }
+
+/* ===== TOOLS & GUIDES (SEO hub links) ===== */
+.tools-guides {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+.tools-guides-inner {
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.tools-guides h2 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.tools-guides p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+.tools-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.tools-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tools-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .tools-guides { padding: 0 24px; margin-bottom: 60px; }
+  .tools-guides-inner { padding: 24px; }
+}
 
 /* ===== PARTNER LOGOS ===== */
 .partners-strip {
@@ -2547,6 +2605,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
           <a href="ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
           <a href="de/index.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+<a href="fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+<a href="es/index.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
         </div>
       </div>
     </li>
@@ -2564,6 +2624,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
         <a href="ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
         <a href="de/index.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+<a href="fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+<a href="es/index.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
       </div>
     </div>
     <button class="nav-cta">Get Started</button>
@@ -2744,7 +2806,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="problem-grid">
 
-    <div class="problem-card anim-card">
+    <a href="buy-bitcoin.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.1</span>
       <div class="problem-art" aria-hidden="true">
         <div class="problem-art-box">
@@ -2762,13 +2824,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3>Which exchange won't rug me?</h3>
       <p>Mt. Gox, FTX, Celsius — billions in customer funds have vanished in exchange collapses since 2014. We only list MiCA-licensed CASPs, vetted for custody, insurance, and jurisdiction before they ever reach this page.</p>
-      <a href="buy-bitcoin.html" class="problem-link">
+      <div class="problem-link">
         See vetted exchanges
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="secure.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.2</span>
       <div class="problem-art" aria-hidden="true">
         <div class="problem-art-box">
@@ -2787,13 +2849,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3>What happens to my BTC when I die?</h3>
       <p>An estimated one-fifth of all Bitcoin ever mined is already lost forever, much of it locked behind a key only one person ever held. Self-custody without a succession plan is a ticking clock, not a safeguard.</p>
-      <a href="secure.html" class="problem-link">
+      <div class="problem-link">
         Plan your Bitcoin inheritance
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="tax.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.3</span>
       <div class="problem-art" aria-hidden="true">
         <div class="problem-art-box">
@@ -2808,11 +2870,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3>What do I owe the taxman?</h3>
       <p>Every sale, swap, and mining reward is a taxable event in most EU jurisdictions — and the rules differ by country. Get it wrong and the bill, plus penalties, lands years later, not now.</p>
-      <a href="tax.html" class="problem-link">
+      <div class="problem-link">
         Calculate your tax exposure
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
   </div>
 </section>
@@ -2991,6 +3053,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS & GUIDES ===== -->
+<section class="tools-guides anim-section anim-hidden" id="tools-guides">
+  <div class="tools-guides-inner">
+    <h2>Tools &amp; guides</h2>
+    <p>Country tax overviews, fee comparison, and stacking tools. Educational routing only; not tax or investment advice.</p>
+    <div class="tools-guides-links">
+      <a href="/bitcoin-tax/">Bitcoin tax</a>
+      <a href="/bitcoin-tax/slovakia/">Slovakia</a>
+      <a href="/bitcoin-tax/czechia/">Czechia</a>
+      <a href="/bitcoin-tax/germany/">Germany</a>
+      <a href="/bitcoin-fee-index/">Fee Index</a>
+      <a href="/bitcoin-dca-calculator/">DCA calculator</a>
+      <a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a>
+      <a href="/bitcoin-inheritance/">Inheritance</a>
     </div>
   </div>
 </section>
@@ -3238,6 +3318,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="blog.html">Blog</a>
         <a href="bitcoin-data.html">Bitcoin Data</a>
         <a href="research.html">Research &amp; Media</a>
+        <a href="/bitcoin-tax/">Bitcoin tax</a>
+        <a href="/bitcoin-fee-index/">Fee Index</a>
+        <a href="/bitcoin-dca-calculator/">DCA calculator</a>
+        <a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a>
+        <a href="/bitcoin-inheritance/">Inheritance</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
@@ -3376,6 +3461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function() {
   const tilt = document.getElementById('orbitTilt');
   const hero = document.querySelector('.hero');
+  const scene = document.querySelector('.orbit-scene');
   if (!tilt || !hero) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -3383,6 +3469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
   let raf = null;
+  let hovering = false;
 
   function loop() {
     raf = requestAnimationFrame(() => {
@@ -3400,6 +3487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   hero.addEventListener('mousemove', (e) => {
+    if (hovering) return; // orbit is easing to a stop -- don't fight it with a shifting tilt
     const rect = hero.getBoundingClientRect();
     targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -3411,6 +3499,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     targetY = 0;
     if (!raf) loop();
   });
+
+  if (scene) {
+    scene.addEventListener('pointerenter', () => {
+      hovering = true;
+      // Snap flat immediately instead of easing out -- a lingering lerp here
+      // runs on its own timescale and visibly fights the ring's own (faster)
+      // deceleration, which is what read as a shake right before the stop.
+      targetX = 0; targetY = 0;
+      currentX = 0; currentY = 0;
+      tilt.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+    });
+    scene.addEventListener('pointerleave', () => { hovering = false; });
+  }
 })();
 
 // ===== ORBIT DRIVER (smooth weighted stop on hover, restored) =====

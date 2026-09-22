@@ -24,6 +24,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html">
 <link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
@@ -577,6 +579,11 @@ body {
   border-radius: 16px;
   padding: 28px;
   transition: background-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .problem-card:hover { background: var(--dark-card-hover); }
@@ -676,6 +683,7 @@ body {
   color: var(--text);
   text-decoration: none;
   transition: opacity 0.15s ease;
+  margin-top: auto;
 }
 
 .problem-link:hover { opacity: 0.7; }
@@ -2155,6 +2163,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="../uk/index.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
           <a href="../cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
           <a href="../ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="../es/index.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
           <a href="index.html" class="lang-opt active" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
         </div>
       </div>
@@ -2172,6 +2182,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="../uk/index.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
         <a href="../cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
         <a href="../ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/index.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
         <a href="index.html" class="lang-opt active" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
       </div>
     </div>
@@ -2334,7 +2346,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="problem-grid">
 
-    <div class="problem-card anim-card">
+    <a href="buy-bitcoin.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.1</span>
       <div class="problem-art">
         <div class="problem-art-box">
@@ -2356,13 +2368,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3>Welche Börse betrügt mich nicht?</h3>
       <p>Mt. Gox, FTX, Celsius: Milliarden an Kundengeldern sind seit 2014 bei Börsenzusammenbrüchen verschwunden. Wir listen ausschließlich MiCA-lizenzierte CASPs, die vor Aufnahme auf diese Seite auf Verwahrung, Versicherung und Rechtsraum geprüft wurden.</p>
-      <a href="buy-bitcoin.html" class="problem-link">
+      <div class="problem-link">
         Geprüfte Börsen ansehen
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="secure.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.2</span>
       <div class="problem-art">
         <div class="problem-art-box">
@@ -2379,13 +2391,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3>Was passiert mit meinem BTC, wenn ich sterbe?</h3>
       <p>Schätzungsweise ein Fünftel aller jemals geminten Bitcoin ist bereits für immer verloren, ein Großteil davon hinter einem Schlüssel, den nur eine einzige Person je besaß. Selbstverwahrung ohne Nachfolgeplan ist eine tickende Uhr, kein Schutz.</p>
-      <a href="secure.html" class="problem-link">
+      <div class="problem-link">
         Ihre Bitcoin-Erbschaft planen
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
-    <div class="problem-card anim-card">
+    <a href="tax.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.3</span>
       <div class="problem-art">
         <div class="problem-art-box">
@@ -2400,11 +2412,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3>Was schulde ich dem Finanzamt?</h3>
       <p>Jeder Verkauf, jeder Tausch und jede Mining-Belohnung ist in den meisten EU-Ländern ein steuerpflichtiges Ereignis, und die Regeln unterscheiden sich von Land zu Land. Ein Fehler bedeutet, dass die Rechnung samt Strafen erst Jahre später kommt, nicht sofort.</p>
-      <a href="tax.html" class="problem-link">
+      <div class="problem-link">
         Ihre Steuerlast berechnen
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div>
+    </a>
 
   </div>
 </section>
@@ -2899,6 +2911,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function() {
   const tilt = document.getElementById('orbitTilt');
   const hero = document.querySelector('.hero');
+  const scene = document.querySelector('.orbit-scene');
   if (!tilt || !hero) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -2906,6 +2919,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
   let raf = null;
+  let hovering = false;
 
   function loop() {
     raf = requestAnimationFrame(() => {
@@ -2923,6 +2937,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   hero.addEventListener('mousemove', (e) => {
+    if (hovering) return; // orbit is easing to a stop -- don't fight it with a shifting tilt
     const rect = hero.getBoundingClientRect();
     targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -2934,6 +2949,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     targetY = 0;
     if (!raf) loop();
   });
+
+  if (scene) {
+    scene.addEventListener('pointerenter', () => {
+      hovering = true;
+      // Snap flat immediately instead of easing out -- a lingering lerp here
+      // runs on its own timescale and visibly fights the ring's own (faster)
+      // deceleration, which is what read as a shake right before the stop.
+      targetX = 0; targetY = 0;
+      currentX = 0; currentY = 0;
+      tilt.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+    });
+    scene.addEventListener('pointerleave', () => { hovering = false; });
+  }
 })();
 
 // ===== ORBIT DRIVER (smooth weighted stop on hover) =====
