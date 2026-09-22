@@ -2,6 +2,3901 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-22, continued 25th round) — cs/index.html fully ported; fifth and final of the five translated-homepage ports, closing out the whole multi-day "index.html × 5 languages" task
+
+**Fifth and last of the 5 translated-homepage ports.** `cs/index.html`
+matched the same untouched Group-A starting point as `uk`/`de`/`ru`: no
+local `:root` override, old 3-span hamburger, 6-pill mobile
+`.lang-switch`, full hero decoration set (badge, 4-logo trust row
+"18 000+ čtenářů", aurora, pulse-waves, 30-particle background, coin
+glow/breathe/shine), old 8-tile services grid (Buy Bitcoin not
+extracted, research.html card present), old 4-card `.how-grid`, no
+`.concierge-banner` section, and the by-now-expected duplicate
+`.svc-card` hover-lift rule — found and removed proactively this round,
+not retroactively, matching the `ru` round's discipline. `cs`'s hero
+also already carried a real Consultation-widget button
+(`data-consultation-trigger data-consultation-lang="cs"`, "Rezervovat
+bezplatnou konzultaci") alongside a `.concierge-hero-cta` link — same
+pattern as `de`'s round, left completely untouched while stripping only
+the decorative badge/trust markup around it.
+
+**Checked `cs/about.html` first for the correct relative-link
+convention**, same practice as every prior round — and found a real,
+pre-existing bug there rather than a clean pattern to copy: its already-
+shipped footer used bare `href="blog.html"`/`href="news.html"`, both of
+which resolve to nonexistent `cs/blog.html`/`cs/news.html` (confirmed via
+`ls` — neither file exists, unlike `cs/concierge.html`/`stacking.html`/
+`loan.html`/`tax-agent.html`/`retirement-calculator.html`, which all
+exist locally and correctly take bare hrefs). This is the same class of
+bug documented on `sk/index.html` two languages ago (round 21) and
+flagged there as "likely present on all 94 batch-upgraded pages, not yet
+swept" — confirmed here as still unfixed sitewide. Built `cs/index.html`'s
+new footer with the correct `../blog.html`/`../news.html?utm_source=
+brief&utm_medium=footer` prefix instead of copying `about.html`'s bug
+forward; **`cs/about.html` itself was not retroactively fixed** — same
+scope decision as every prior round when this class of bug turned up,
+flagged here rather than silently patched sitewide without sign-off.
+
+**Ported identically to the `uk`/`de`/`ru` rounds**: token/nav/hamburger/
+mobile-dropdown, hero cleanup (particles, badge, trust row, aurora,
+pulse-waves, coin glow/breathe/shine all removed, Consultation button
+preserved), Problems → Fig 0.1 illustrations (3, with the real existing
+Czech copy — "Která burza mě neokrade?", "Co se stane s mým BTC, když
+zemřu?", "Co dlužím finančnímu úřadu?" — carried over verbatim), Services
+8→6 with Buy Bitcoin extracted into `.credit` ("Bitcoin je váš kredit.")
++ a new `.concierge-banner` ("Nejste si jistí, co se vás týká?" / "Najděte
+partnera za 60 sekund", freshly translated), How-Works merged 4→3
+`.how-log` items ("Krok 01/02/03", step 2 linking to Concierge, step 3 to
+Stacking — both bare hrefs, correct since `cs` has local copies of both
+tools), Blog CSS parity fixes (same three drifts as every prior round),
+As Seen In / Company → `.co-ticker` marquee with the dek-pattern heading
+("Jste v dobré **společnosti**"), Newsletter/Footer rebuilt from scratch
+into "Získej **Brief**" + the 5-column ("Služby"/"Společnost"/"Nástroje"/
+"Návody"/"Informace") + wordmark footer. The hardcoded `<a href=
+"about.html" class="active">` bug on the mobile drawer's "O nás" item was
+present here too — the 5th independent instance of this bug across all
+five languages — removed. The newsletter form's fetch body already had
+`lang: 'cs'` correctly present (unlike `de`/`ru`, which were both missing
+theirs) — confirmed before editing, no fix needed there.
+
+**One tool-use slip caught and fixed mid-round**: the first CSS
+replacement for `.how-card-cta` (swapping the old `.how-card`/
+`.how-card-stack` block for the new changelog-pattern CSS) accidentally
+dropped the `transition`/`order`/`:hover`/svg-icon rules that every other
+language's `.how-card-cta` carries. Caught via a `grep -n "how-card-cta"`
+sweep immediately afterward (not assumed correct just because the edit
+succeeded) and fixed with a follow-up edit restoring the missing rules.
+
+**Verified**: tag-balance check (div/section/span/svg/h2/h3/p/a/form/
+footer/nav/ul/li/button, comment-stripped) — all balanced (107/121/121/
+etc., matching opens to closes exactly). Grep swept for every removed
+class name (`seen-row`, `company-sub`, `hero-trust`, `how-grid`,
+`how-num`, `problem-icon`, `orbit-aurora`, `pulse-wave`,
+`particles-container`) — zero remaining references; the 7 `how-card`
+hits remaining are all legitimate `.how-card-cta` (the current design's
+own CTA class), not stale leftovers. Browser-confirmed via local
+`python3 -m http.server 8891`: hero renders clean with the Consultation
+button preserved, `.svc-card` count is 6, `.how-log-item` count is 3,
+Concierge Banner and Credit panel render with the fresh Czech copy,
+footer shows 5 columns + wordmark, "Získej Brief" capture renders as the
+white-pill card, footer's Blog/Brief links confirmed resolving to
+`../blog.html`/`../news.html?...` while every Layer-2 tool link and every
+same-folder page link stayed bare. Hamburger opens/closes correctly;
+mobile language dropdown opens without closing the drawer, and
+`document.querySelectorAll('.nav-links a.active')` /
+`.lang-opt.active` confirm only the CS language pill is active anywhere
+on the page (About-link bug confirmed fixed, not just removed from
+markup). No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as every session in this multi-day thread, now covering all five
+translated homepages: `sk/index.html`, `uk/index.html`, `de/index.html`,
+`ru/index.html`, and `cs/index.html`.
+
+**This closes out the full "index.html × 5 languages" task** — the last
+open item from round 20's own audit ("Only one 'not done' item remains
+from round 19: `index.html` × 5 languages... completely untouched,
+0/5"). All five are now fully ported to the current homepage design,
+each verified individually via tag-balance + browser checks, none yet
+committed.
+
+**Next, in order:** (1) review and commit the accumulated multi-day
+working-tree diff (round 21 through this round) — nothing across the
+whole `index.html`-port thread has been committed yet; (2) decide whether
+to sweep the `blog.html`/`news.html` bare-href bug (found on `sk` in
+round 21 and reconfirmed on `cs/about.html` here) across the other 93
+already-batch-upgraded translated pages, since it's very likely present
+on most of them; (3) marketing/SEO review of the four Layer 2 module
+pages remains open from earlier session history, unrelated to this
+thread.
+
+## Session status (2026-09-21, continued 24th round) — ru/index.html fully ported; fourth of five, same untouched Group-A starting point as uk, no surprises this round
+
+**Fourth of the 5 translated-homepage ports.** Checked `ru/index.html`
+up front (per the now-standard practice) — confirmed it matches `uk`'s
+starting point almost exactly: no local `:root`, old 3-span hamburger,
+6-pill mobile `.lang-switch`, full hero decoration set intact (badge,
+4-logo trust row, aurora, pulse-waves, 30-particle background, coin
+glow/breathe/shine), old 8-tile services grid (Buy Bitcoin not
+extracted, "Медиа и исследования"/research.html card present), old
+4-card `.how-grid`, no `.concierge-banner` section at all, and — found
+proactively this round rather than after the fact — the same duplicate
+`.svc-card` hover-lift rule (`transform: translateY(-8px)`) the last two
+rounds kept finding retroactively. Checked `ru/about.html` first for the
+correct relative-link convention (confirmed `ru/blog.html` exists
+locally, `../news.html` resolves to the real root page, and
+Concierge/Stacking/Loan/Tax-agent all fall back to `../<module>.html`
+since `ru` has no local copies) before writing the new footer, rather
+than guessing or reusing `sk`'s absolute-URL fix blindly.
+
+**Ported identically to the `uk`/`de` rounds, no new surprises**:
+token/nav/hamburger/mobile-dropdown, hero cleanup, Problems → Fig 0.1,
+Services 8→6 with Buy Bitcoin extracted into `.credit` + a new
+`.concierge-banner` (freshly translated into Russian), How-Works merged
+4→3 `.how-log` items (step 3's "control" copy folded into step 2), Blog
+CSS parity fixes (same three drifts as every prior round), As Seen In /
+Company → `.co-ticker` marquee with the dek-pattern heading, Newsletter/
+Footer rebuilt from scratch into "Получите Brief" + the 5-column
+("Услуги"/"Компания"/"Инструменты"/"Материалы"/"Информация") + wordmark
+footer. The hardcoded `<a href="about.html" class="active">` bug on the
+mobile drawer's "О нас" item was present here too, independent of the
+three earlier fixes — removed. The newsletter form's fetch body was
+also missing `lang: 'ru'` (same gap found and fixed on `de`) — added.
+
+**Verified**: tag-balance check (div/section/span/svg/h2/h3/p/a/form/
+footer/nav/ul/li/button, comment-and-script-stripped) — all balanced.
+Grep swept for every removed class name — zero remaining references.
+Browser-confirmed via local `python3 -m http.server 8891`: hero renders
+clean, `.svc-card` count is 6, Concierge Banner CTA resolves to
+`../concierge.html?...`, How-Works shows 3 changelog items, footer shows
+5 columns + wordmark, "Получите Brief" capture renders as the white-pill
+card. Hamburger opens/closes correctly; mobile language dropdown opens
+without closing the drawer and only the RU language pill shows as
+`.active`. No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as every session below, now covering `sk/index.html`, `uk/index.html`,
+`de/index.html`, and `ru/index.html`.
+
+**Next**: `cs/index.html` — the last of the five. Same up-front
+state-check discipline as the last three rounds (don't assume it
+matches any prior language's starting point), and specifically check
+for the duplicate `.svc-card` hover-lift rule and the hardcoded
+`about.html` active-class bug, since both have now shown up on four
+pages out of four checked.
+
+## Session status (2026-09-21, continued 23rd round) — de/index.html fully ported; third of five, same untouched Group-A starting point as uk plus a pre-existing Consultation-widget CTA and a broken concierge-banner link fixed along the way
+
+**Third of the 5 translated-homepage ports.** Checked `de/index.html`'s
+actual state before starting (per the lesson from the `uk` round) —
+found it essentially matches `uk`'s starting point: no local `:root`
+override, old 3-span hamburger, mobile drawer still a 6-pill
+`.lang-switch` row, old orange nav/hero/problems/services styling, full
+decoration set present (badge, 4-logo trust row, aurora, pulse-waves,
+30-particle background, coin glow/breathe/shine), old 3-card `.problem-icon`
+pain section, and an 8-tile services grid (Buy Bitcoin not yet
+extracted, "Medien & Research"/research.html card still present).
+
+**Two things `de` had that `uk` didn't, found before assuming identical
+scope:**
+1. **A `.concierge-banner` section already existed** between Problems
+   and Services (from the earlier "Concierge CTA repoint" work), but
+   with the old orange-tinted CSS (`background: linear-gradient(90deg,
+   rgba(247,147,26,0.07)...)`, orange `.concierge-banner-cta`) predating
+   this rollout's neutral-gray redesign of that component, **and** a
+   broken href — `concierge.html?...` resolves to nonexistent
+   `de/concierge.html` (confirmed via `ls`: `de` has no local Concierge/
+   Stacking/Loan/Tax-agent modules, unlike `de/retirement-calculator.html`
+   and `de/blog.html`, which do exist locally). Restyled to the current
+   neutral pattern and fixed the href to `../concierge.html` — same
+   fallback-to-EN convention already used correctly elsewhere on
+   `de/about.html`, copied rather than reinvented.
+2. **The hero already had a real Consultation-widget CTA** (`<button
+   data-consultation-trigger data-consultation-lang="de">Kostenlose
+   Beratung buchen</button>` alongside a `.concierge-hero-cta` link) —
+   a genuine existing feature from the 2026-09-09 Consultation widget
+   work, not a cosmetic relic like the badge/trust row. Left both
+   buttons and their data attributes completely untouched while removing
+   only the decorative badge/trust markup around them — confirmed after
+   the port that `[data-consultation-trigger]` still exists in the DOM.
+
+**Everything else ported identically to the `uk` round**: token/nav/
+hamburger/mobile-dropdown, hero cleanup (particles, badge, trust row,
+aurora, pulse-waves, coin glow/breathe/shine all removed), Problems
+converted to the Fig 0.1 illustration pattern, Services trimmed 8→6 with
+Buy Bitcoin extracted into a new `.credit` panel (research.html card
+dropped, matching every other language's rollout), How-Works merged
+from its existing 4-card grid (already carrying a real
+`.how-card-stack`/`.how-card-cta` Stacking-widget promo on step 4, an
+intermediate historical state predating the full changelog conversion)
+into 3 `.how-log` items — step 3's "stay in control" copy folded into
+step 2 same as every other language, step 3's real Stacking CTA link
+kept verbatim (just re-pointed to `../stacking.html`, no local German
+copy exists); Blog CSS brought in line with the same three drifts as
+every prior round; As Seen In / Company converted to the `.co-ticker`
+marquee with the dek-pattern heading; Newsletter/Footer rebuilt from
+scratch (this page, like `sk`/`uk`, had never been through the separate
+footer/newsletter batch upgrade) into the "Hol dir den Brief"
+`.brief-card-poster` card and the 5-column ("Dienstleistungen"/
+"Unternehmen"/"Tools"/"Ratgeber"/"Informationen") + wordmark footer,
+copying `de/about.html`'s already-correct relative-link convention
+(`../news.html`, bare `blog.html`) rather than `sk`'s absolute-URL
+workaround, since `de/blog.html` and root `news.html` both genuinely
+resolve here — same reasoning applied on the `uk` round.
+
+**A second real, pre-existing bug found and fixed**: same hardcoded
+`<a href="about.html" class="active">` on the mobile drawer's "Über
+uns" (About) nav item, present here too, independent of the `sk`/`uk`
+fixes. Removed.
+
+**A duplicate hover-lift `.svc-card` rule found retroactively on `uk`
+too, not just `de`**: while checking `de` for the same "Card hover lift"
+duplicate-rule bug documented on `sk`'s port two rounds ago
+(`.svc-card { transform: translateY(-8px); box-shadow: ... }`
+re-declared later in the cascade, overriding the new flat borderless
+style), grepped `uk/index.html` for the same pattern on a hunch and
+found it there too — missed during that round. Fixed on both `de` and
+`uk` in this round; `sk` was confirmed clean (only one `.svc-card` rule
+exists there, already fixed correctly the first time).
+
+**The newsletter form's fetch body was also missing `lang: 'de'`**
+entirely (`JSON.stringify({ email: email, hp: hp })`, no lang field at
+all) — caught while rewriting this section into the Brief-branded
+version, which is the same fix every other language's form already
+carries (`lang: 'sk'`/`'uk'`/etc.) for the Cloudflare Worker's
+per-language welcome email. Added.
+
+**Verified**: tag-balance check (div/section/span/svg/h2/h3/p/a/form/
+footer/nav/ul/li/button, comment-and-script-stripped) — all balanced.
+Grep swept for every removed class name — zero remaining references.
+Browser-confirmed via local `python3 -m http.server 8891`: hero renders
+clean with the Consultation button still present and wired
+(`document.querySelector('[data-consultation-trigger]')` found), Fig
+0.1 illustrations render correctly, `.svc-card` count is 6, Concierge
+Banner CTA resolves to `../concierge.html?...`, How-Works shows 3
+changelog items with the Stacking CTA intact, footer shows 5 columns +
+wordmark, "Hol dir den Brief" capture renders as the white-pill card.
+Hamburger opens/closes correctly; mobile language dropdown opens
+without closing the drawer and only the DE language pill shows as
+`.active` (About-link bug confirmed fixed). No new console errors
+beyond the pre-existing GTM `ga-audiences` CSP violation. **Not
+committed** — same working-tree diff as every session below, now
+covering `sk/index.html`, `uk/index.html`, and `de/index.html`.
+
+**Next**: `ru/index.html` and `cs/index.html`, in that order. Given
+`de` and `uk` both turned out to be untouched Group-A-era pages while
+`sk` was already partway there, check each remaining language's actual
+current state up front rather than assuming — and specifically check
+for the same duplicate `.svc-card` hover-lift rule and any
+`.concierge-banner`/Consultation-widget content that might already
+exist with a broken relative link, since both patterns have now shown
+up more than once.
+
+## Session status (2026-09-21, continued 22nd round) — uk/index.html fully ported; turned out to be an untouched Group-A-era page, a much bigger lift than sk
+
+**Second of the 5 translated-homepage ports, same "start with one at a
+time" instruction.** Before starting, checked `uk/index.html`'s actual
+state rather than assuming it matched `sk`'s pre-port starting point —
+it didn't: `uk/index.html` had never been through *any* of this
+rollout's redesign passes. No local `:root` override at all (relied
+entirely on `styles.css`'s old navy-tinted defaults), old 3-span
+hamburger, mobile drawer still a 6-pill `.lang-switch` row (not the
+dropdown), old orange `.nav-links a.active`, full hero decoration set
+still present (badge, 4-logo trust row, `.orbit-aurora`, 3×
+`.pulse-wave`, coin glow/breathe/shine, 30-particle background), old
+icon-card Problems/Services/How-Works structure (8-tile services grid
+including a "Медіа та дослідження"/research.html card with no Buy
+Bitcoin extraction), and As Seen In/Company both still static wrapped
+rows. Essentially the same starting point as the very first
+`buy-bitcoin.html` pilot, not `sk`'s already-partway state — flagged to
+the user before starting since it changed the scope estimate.
+
+**Ported section by section, reusing every CSS block verbatim from the
+current EN `index.html`** (same technique as `sk`, just from a much
+larger diff): head/token block inserted fresh (no existing `:root` to
+edit, unlike `sk`); nav-links compacted with `:not(.lang-opt)`
+exclusions; hamburger converted to the two-line SVG
+(`-webkit-appearance:none` included); mobile lang-switch replaced with
+`.lang-menu.lang-menu-mobile#langMenuMobile`, JS generalized to loop
+over every `.lang-menu`, and the drawer's generic close-on-click handler
+given the `.lang-menu-btn` exclusion; hero fully stripped (badge, trust
+row, aurora, pulse-waves, particles, coin glow/breathe/shine keyframes)
+down to the same static-coin + plain-orbit look as EN, headline/stat
+weights 900/800→700, highlight de-orangized, buttons switched to the
+inverted-neutral pattern; Problems converted to the Fig 0.1
+illustration pattern (SVG rings/crosshairs + absolutely-positioned
+plain-HTML dots/bars, one orange `.problem-punc` each) with 3 new
+illustrations built fresh (this page's own real headings/copy/links
+carried over verbatim); Services trimmed from 8 tiles to the same 6
+flat borderless `.svc-card`s as every other porting round, with Buy
+Bitcoin extracted into a new `.credit` panel and a new
+`.concierge-banner` added above it (both freshly translated into
+Ukrainian, no existing copy to reuse for these two — checked first,
+confirmed no prior Ukrainian translation existed anywhere on the site);
+How-Works merged from 4 old `.how-card` tiles to 3 `.how-log`
+changelog-dot items (old step 3's "stay in control" copy folded into
+step 2, matching every other language's restructuring), with CTA links
+added to steps 1/2; Blog CSS brought in line with three small drifts
+(`.vblog` max-width 1200→1400, `.vblog-meta` color `--text-dim`→
+`--text-muted`, `.vblog-cta` hover de-orangized in both its own rule and
+the later shared `.vblog-cta, .btn-secondary:hover` override — same
+three spots that needed fixing on `sk`); As Seen In / Company converted
+to the two-direction `.co-ticker` marquee, Company moved into its own
+`.company-inner` wrapper with the border-top/inset-shadow band and the
+dek-pattern heading (`.company-sub` dropped); Newsletter/Footer rebuilt
+from scratch into the "Get the Brief" `.brief-card-poster` card and the
+5-column + wordmark footer (this page, like `sk`, had never been
+through the separate footer/newsletter batch upgrade — confirmed via
+grep before assuming, same as last round).
+
+**Real difference from `sk` worth calling out explicitly**: unlike
+`sk`'s footer (which had a genuine broken-link bug — bare `news.html`/
+`blog.html` hrefs resolving to nonexistent `sk/news.html`/`sk/blog.html`,
+fixed with an absolute staging URL and `../blog-sk.html`), `uk`'s
+existing pages (checked `uk/about.html` as the reference, already
+correctly upgraded in an earlier round) use plain relative
+`../news.html`/`blog.html` and both **actually resolve** —
+`uk/blog.html` and root `news.html` both genuinely exist. Copied that
+same convention into `uk/index.html`'s new footer rather than reusing
+`sk`'s absolute-URL fix, since applying `sk`'s fix here would have been
+solving a bug this page doesn't have. Also reused `uk/about.html`'s
+already-correct fallback pattern for the four Layer-2 modules that
+don't have Ukrainian copies (`../concierge.html`, `../stacking.html`,
+`../loan.html`, `../tax-agent.html`, all with `../` since `uk/` has none
+of its own) versus `retirement-calculator.html` (bare, since
+`uk/retirement-calculator.html` does exist) — checked each file's
+presence individually with `ls` rather than assuming the whole set
+falls back the same way.
+
+**A second instance of the "About" nav link hardcoded-active bug**,
+same as the one fixed on `sk/index.html` last round — found again here
+independently (this page never went through that fix) at the exact same
+spot, `<a href="about.html" class="active">` inside the mobile drawer's
+11th `<li>`. Removed.
+
+**A real Edit-tool gotcha hit and worked around**: attempting to remove
+the hero's 4-logo trust row and the orbit's aurora/pulse-wave divs via
+the normal string-replace `Edit` tool failed twice with "string not
+found" even though a fresh `Read` showed byte-for-byte matching text.
+Root cause, found by dumping `repr()` of the raw lines in Python: the
+source file has a **non-breaking space** (`\xa0`) between "18" and
+"000+" in "18 000+ читачів" — invisible in any editor/terminal display,
+but a hard mismatch against a normal space typed into the tool. Worked
+around by doing that specific removal with a small Python script
+operating on the raw file bytes instead of retrying the same string
+match a third time.
+
+**Verified**: tag-balance check (div/section/span/svg/h2/h3/p/a/form/
+footer/nav/ul/li/button, comment-and-script-stripped) — all balanced.
+Grep swept for every removed class name (`seen-row`, `company-sub`,
+`hero-trust`, `how-grid`, `how-card`, `how-num`, `problem-icon`,
+`orbit-aurora`, `pulse-wave`, `particles-container`) — zero remaining
+references anywhere in the file. Browser-confirmed via local
+`python3 -m http.server 8891`: hero renders clean (no glow/badge/trust
+row), Fig 0.1 illustration shows the correct rings + 4 muted dots + 1
+orange center punc, Credit panel and Concierge Banner render with the
+fresh Ukrainian copy, `.svc-card` count is exactly 6, How-Works shows 3
+changelog items, footer shows 5 columns + wordmark, "Отримайте Brief"
+capture renders as a white-pill card. Hamburger opens/closes correctly;
+mobile language dropdown opens without closing the drawer and
+`document.querySelectorAll('.nav-links a.active')` returns only the UA
+language pill (About-link bug confirmed fixed, not just removed from
+markup). No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as every session below, now covering both `sk/index.html` and
+`uk/index.html`.
+
+**Next**: `de/index.html`, `ru/index.html`, and `cs/index.html`, in that
+order per the user's "one at a time" instruction. Given `uk` turned out
+to be a full from-scratch port rather than a light restyle, worth
+checking each remaining language's actual current state up front (same
+as this round did) rather than assuming any of them match either `sk`'s
+or `uk`'s starting point — they may each be a different mix of
+already-done and untouched.
+
+## Session status (2026-09-21, continued 21st round) — sk/index.html fully ported to the current homepage design, first of the 5 translated-homepage ports ("start with one at a time")
+
+**Direct continuation of the previous round's "when can you complete all
+'not done'?" question — the user's answer was "start with one at a
+time,"** so this round did exactly one full homepage port,
+`sk/index.html`, end to end, rather than starting all 5 translated
+homepages (`sk`/`uk`/`de`/`ru`/`cs`) at once. Worked section by section
+top to bottom, diffing each section's current EN `index.html` markup/CSS
+against SK's older structure before porting, and reusing every already-
+translated string verbatim rather than re-translating.
+
+**Scoping decision, stated explicitly before starting and held for the
+whole port**: restyle/restructure content that already exists on the
+Slovak page to match the current EN design system, but do not invent
+brand-new content sections that have no Slovak copy yet (the "Quick
+Answers" FAQ accordion, and Place A/B of the "Get the Brief" capture —
+the hero brief-strip and the post-services banner). The one deliberate
+exception is the Concierge Banner + Credit panel: these aren't new
+content, just Buy Bitcoin's existing copy restructured into the
+homepage's current layout, same as EN did.
+
+**Sections ported, in order:**
+1. **Head/tokens** — added `color-scheme: dark` meta, replaced the old
+   static-weight Inter `@import` + bare `:root` with EN's current
+   variable-axis Inter import and full neutral-gray token block
+   (`--btn-text`, `--line`/`--line-strong`, `--nav-bg`/`--nav-bg-strong`,
+   `--chip-bg` family, etc.).
+2. **Nav** — `.nav-links a` rules gained `:not(.lang-opt)` exclusions
+   (desktop + mobile drawer), hamburger rebuilt as the two-line SVG
+   (`-webkit-appearance:none` included), mobile lang-switch pill row
+   replaced with the `.lang-menu.lang-menu-mobile#langMenuMobile`
+   dropdown, JS generalized to loop over every `.lang-menu` instance, and
+   `.nav.nav-scrolled` background-on-scroll added.
+   **Bug found and fixed**: an old scroll listener further down the file
+   still set `nav.style.background`/`backdropFilter` via inline styles
+   (leftover from before the CSS-class approach existed), silently
+   overriding the new `.nav-scrolled` CSS rule via inline-style
+   specificity — deleted the whole old duplicate IIFE.
+3. **Hero** — removed the particle background, hero badge, 4-logo trust
+   row, aurora/pulse-wave decorations; headline/stat weights 900/800→700;
+   highlight span de-orangized; CTAs switched to the hardcoded inverted-
+   neutral pattern; added the "Jedno dôveryhodné centrum." headline
+   line to match EN's 3-line structure.
+4. **Problems/Questions** — converted the old icon-card section to the
+   "Fig 0.1" `.problem-art-box` + plain-HTML-dot illustration pattern
+   (SVG rings/crosshairs only, dots/bars as absolutely-positioned spans —
+   the established real-device Safari fix), reusing SK's own headings/
+   copy/links verbatim.
+5. **Services** — extracted "Buy Bitcoin" into a new `.credit` panel
+   (ripple rings + pulsing coin), added a `.concierge-banner` ("Nie ste
+   si istí, čo sa vás týka? → Nájdite partnera za 60 sekúnd"), trimmed
+   the grid from 8 icon-cards to 6 flat borderless `.svc-card`s.
+6. **How It Works** — merged 4 steps into 3 changelog-dot `.how-log`
+   items (old step 3's copy folded into step 2, same restructuring EN
+   did), added CTA links to steps 1/2, translated labels to "Krok
+   01/02/03".
+7. **Blog** — CSS was already nearly identical to EN's; fixed four small
+   drifts to match exactly: `.vblog` max-width 1200→1400px, `.vblog-meta`
+   color `--text-dim`→`--text-muted` (a real contrast fix carried over
+   from EN's own history), `.vblog-cta`/`.vblog-cta:hover` de-orangized
+   to the neutral hairline pattern (was still using orange border/text on
+   hover, both in the base rule and in the later-cascading shared
+   `.vblog-cta, .btn-secondary:hover` override block).
+8. **As Seen In + You're in Good Company** — converted both from static
+   wrapped `.seen-row`/`.co-row` grids to the two-direction `.co-ticker`
+   marquee pattern (duplicated `.co-set`, `translateX(-50%)` loop,
+   `prefers-reduced-motion` fallback to the old wrapped layout), moved
+   Company into its own `.company-inner` wrapper with the
+   `border-top`/inset-shadow band styling, converted its heading to the
+   bold-lead/muted-continuation dek pattern ("Ste v dobrej
+   **spoločnosti**") and dropped the now-redundant `.company-sub`
+   subheading paragraph, matching EN's own removal of that same line.
+   Brand-specific per-logo CSS (`.co-firefish`, `.seen-hackernoon`, etc.)
+   needed no changes — already matched EN exactly.
+9. **Newsletter + Footer — the one section pair genuinely absent from
+   this page, not just differently styled.** Confirmed via grep that
+   `sk/index.html` had never gone through the "footer/newsletter content
+   upgrade" batch pass documented in the previous round's session status
+   (that batch explicitly targeted the 94 *non-homepage* translated
+   pages — the 5 translated homepages were always going to need this
+   full port instead, which is exactly what this round does). Still
+   carried the old "Opravíme peniaze, opravíme svet" / "Virtuse Report"
+   copy and the old 2-column (Spoločnosť/Informácie) footer with a plain
+   `<img>` logo, no wordmark, no Tools/Guides columns. Rebuilt both from
+   scratch using the copy/markup already shipped on `sk/about.html` (one
+   of the 94 already-upgraded pages) as the direct source: newsletter
+   became the `.brief-card.brief-card-poster` "Získaj **Brief**" /
+   "Virtuse Brief. Iba bitcoin. Žiadne tokeny. Žiadne PR." card with the
+   white-pill button; footer rebuilt to the 5-column layout (Služby/
+   Spoločnosť/Nástroje/Návody/Informácie) plus the giant clipped
+   `.footer-wordmark` watermark, all new CSS (`.footer-wordmark*`,
+   `.brief-card*`, `.newsletter-form-stacked`, keyframes) copied in
+   alongside since none of it previously existed on this page at all.
+   **Found and fixed a real broken-link bug while doing this, present on
+   `sk/about.html` too (and likely all 94 batch-upgraded pages)**: the
+   footer's "Virtuse Brief" links used a bare `href="news.html"`/
+   `"blog.html"`, which — from inside the `sk/` folder — resolve to
+   nonexistent `sk/news.html`/`sk/blog.html` (neither file exists; the
+   nav's own Brief link correctly uses the full
+   `https://staging.virtuse.com/news.html` URL, and the real Slovak blog
+   is `blog-sk.html` at the repo root). Fixed on this page with the
+   absolute staging URL for Brief and `../blog-sk.html` for Blog — **the
+   same fix should be applied across the other 93 already-upgraded pages
+   at some point**, flagged here rather than silently patched sitewide
+   without the user's sign-off on that broader scope.
+10. **A second real, pre-existing bug found and fixed**: the mobile
+    drawer's "O nás" (About) nav link carried a hardcoded `class="active"`
+    on the *homepage itself* — the exact same class of bug this file's
+    2026-09-18 session history already documented and fixed once on
+    `index.html` (EN) and caught again on `about.html` a few rounds ago —
+    just never caught on `sk/index.html` until this pass actually
+    exercised the mobile drawer. Removed the stray class.
+
+**Verified**: tag-balance check (div/section/span/svg/h2/h3/p/a/form/
+footer/nav/ul/li/button, comment-and-script-stripped) — all balanced;
+grep confirmed zero leftover `.seen-row`/`.company-sub` references.
+Browser-confirmed via a local `python3 -m http.server 8891`: ticker
+animations confirmed actually running via `getComputedStyle` transform
+polling on both `.as-seen` and `.company` rows; Company heading confirmed
+rendering the bold/muted split; footer confirmed 5 columns + wordmark
+text present; Get the Brief card renders correctly with the white pill
+button and correct Slovak copy; hamburger opens/closes correctly; mobile
+language dropdown opens without closing the drawer and correctly shows
+only the SK pill as `.active` (confirmed the About-link false-positive is
+gone, `document.querySelectorAll('.nav-links a.active')` now returns only
+the language pill, not a nav item). No new console errors beyond the
+pre-existing GTM `ga-audiences` CSP violation. **Not committed** — same
+working-tree diff as every session below, now including a fully-ported
+`sk/index.html`.
+
+**Deliberately not added to this page** (per the scoping decision
+above): the hero `#virtuse-brief` brief-strip (Place A), the post-
+services capture banner (Place B), and the "Quick answers" FAQ
+accordion — none of these have Slovak copy anywhere yet, and inventing
+translations for entirely new sections is content-authoring work
+distinct from this round's design-matching scope. Flagging these three
+as the concrete gap between "matches the current design" and "has
+100% homepage parity," for whenever that's explicitly wanted.
+
+**Next**: `uk/index.html`, `de/index.html`, `ru/index.html`, and
+`cs/index.html` — same section-by-section process, one at a time per the
+user's explicit instruction, in that order unless told otherwise. Also
+worth a decision at some point: whether to fix the `news.html`/
+`blog.html` bare-href bug found in point 9 across the other 93 already-
+upgraded translated pages, since it's very likely present on all of them
+(they all came from the same batch script).
+
+## Session status (2026-09-21, continued 20th round) — the two smaller "not done" items from last round closed out: footer/newsletter content upgraded on all 94 translated pages, and the 3 legacy tax.html pages got their full How-It-Works/hero polish; only the 5 translated `index.html` homepages remain
+
+**Direct continuation of round 19, after the user asked for a completion
+estimate on that round's three flagged gaps.** Gave the honest estimate
+(footer/newsletter and the tax.html polish were tractable this session;
+the 5 homepage ports are the real remaining weight) and then closed out
+the first two immediately.
+
+**1. Footer 5-column+wordmark and "Get the Brief" newsletter rebrand,
+applied to all 94 translated Group-A pages** (the same set from round
+19: buy-bitcoin/mining/lending/secure/treasury/tax/bots/about/
+bitcoin-data/aml-compliance/faq/privacy-policy/terms-and-conditions +
+the 7 dashboard pages, × sk/uk/de/ru/cs). Built as a **data-driven**
+script rather than a per-language hardcoded footer template: the
+Services column's 7 labels, and the Guides column's "Blog"/"Bitcoin
+Data" labels, are pulled live from **that same page's own already-
+correct nav** (`.nav-link-label` spans) via regex, not retyped —
+guarantees consistency with whatever that page already uses and needed
+no separate CS vocabulary list. The Company and Legal columns (headers
++ links) are similarly extracted verbatim from the page's *own existing*
+2-column footer before it gets replaced, since that content was already
+correctly translated. Only genuinely new vocabulary needed hardcoding
+per language: "Services"/"Tools"/"Guides" column headers, "Research &
+Media", the footer-bottom Brief line, and the newsletter's "Get the
+Brief" heading/copy/button/placeholder/fine-print (Czech added fresh
+this round; the other four reused round-18's blog-variant translations).
+- **Two real bugs caught before the batch ran wide**: the first pass
+  falsely reported all 94 files as "already has the new footer" —
+  the completion check searched for the substring `footer-wordmark-text`
+  anywhere in the file, which matched the **CSS rule name** (already
+  present sitewide from `port_homepage_redesign.py`'s CSS-only footer
+  step in round 19) even though the actual `<span
+  class="footer-wordmark-text">` HTML markup didn't exist yet. Fixed to
+  check for the literal opening tag. Relatedly, the script's own
+  `CSS_ADDITION` originally re-included the *entire* footer CSS block
+  (`.footer-main`, `.footer-wordmark`, keyframes, etc.) — harmless
+  visually since values matched, but pure duplication, since that CSS
+  was already inserted by the CSS-only step in round 19. Trimmed to only
+  the genuinely-missing `.brief-card`/`.newsletter-form-stacked` rules.
+- **One template variant found**: `bots.html` in every language indents
+  its whole `<style>`/body markup 2-4 spaces deeper than every other
+  page (a pre-existing quirk, not something this round introduced),
+  which broke the newsletter-section regex's assumption that `<script>`
+  always follows at exactly 2-space indent. Fixed with an
+  indentation-tolerant regex; re-ran clean across all 5 languages'
+  `bots.html` after the fix.
+- Verified: tag-balance clean across all 94 files (`div`/`section`/`li`/
+  `a`/`span`/`svg`/`footer`/`nav`/`button`/`p`/`form`/`h2`,
+  comment-and-script-stripped); browser-confirmed on `sk/buy-bitcoin.html`
+  (5 columns, correct Slovak vocabulary reused from its own nav,
+  screenshot matches the homepage's footer pixel-for-pixel) and
+  `de/bots.html` (the indentation-fix page) with a working
+  `.brief-card-poster`; no new console errors beyond the pre-existing
+  GTM CSP violation.
+
+**2. The 3 legacy `uk/de/ru` `tax.html` pages** (round 19 got them to
+the neutral-token/nav/footer level but flagged the hero highlight and
+"How It Works" 4-icon-grid as still not matching EN's own dedicated
+`tax.html` rewrite from several rounds ago) — finished properly this
+round:
+- Hero: `.hero h1 span` orange → `var(--text)`, weight 800→700, matching
+  every other de-orangized hero on the site.
+- "How It Works": converted from the old `.how-card`/`.how-icon`
+  (4 colored icon badges: orange/blue/green/purple) grid to the same
+  `.how-header`/`.how-log` changelog-dot pattern as everywhere else,
+  **keeping each language's own already-translated step copy verbatim**
+  — only the container markup changed, not the words. Split each
+  page's own "How It Works"-equivalent heading into the bold+muted dek
+  pattern (e.g. Ukrainian "Як це працює" → "Як <span>це працює</span>"),
+  dropped the subheading paragraph per the sitewide "only
+  buy-bitcoin.html keeps one" rule, and labeled steps with each
+  language's own word for "Step" (Ukrainian "Крок", German "Schritt",
+  Russian "Шаг") rather than leaving the English "Step 01" in place.
+- **A real shared-class collision avoided, not just repeated**: the old
+  How-It-Works CSS block was interleaved with `.section-header` (shared
+  with the Partner Cards section further down the same page — the exact
+  bug this file's history already flagged twice for other pages this
+  thread). This time caught *before* editing rather than after, by
+  targeting the replacement regex at only the `.how-grid`-through-
+  `.how-card p` rules specifically and leaving `.section-header` alone
+  entirely, rather than deleting-then-restoring it.
+- Verified: tag-balance clean on all 3; browser-confirmed on
+  `uk/tax.html` — hero highlight now `rgb(230,237,243)` (was orange),
+  4 `.how-log-item`s present, first dot confirmed orange
+  (`rgb(247,147,26)`) via `getComputedStyle`, screenshot shows the
+  changelog layout with the real translated step copy and a
+  correctly-Cyrillic "КРОК 01" label; `.section-header` CSS confirmed
+  still present and still singly-referenced (Partner Cards section
+  intact). No new console errors.
+
+**Only one "not done" item remains from round 19: `index.html` × 5
+languages (sk/uk/de/ru/cs) — completely untouched, 0/5.** This is the
+one piece that was flagged as needing genuinely more time, not
+mechanical batch work: the homepage is the site's most structurally
+unique template (hero orbit, services grid, Questions section, credit
+panel, changelog, company logo tickers, Quick Answers FAQ) and was never
+a Group-A page to begin with, so none of this round's or round 19's
+scripts apply to it. The design itself is already fixed and stable
+(it's not being re-designed, just ported onto translated markup, five
+times), but each port is still a large, bespoke, from-scratch pass
+similar in kind to the original EN homepage build — not something to
+compress into a single additional round without rushing it.
+
+**Not committed** — same working-tree diff as every round in this
+multi-day thread, still awaiting review.
+
+## Session status (2026-09-21, continued 19th round) — Brief link + Concierge CTA repointed sitewide (EN + all translated pages); `port_homepage_redesign.py` generalized to work on translated pages too, and run across 94 sk/uk/de/ru/cs pages + the 7 EN dashboard-tool pages; full translated-page redesign (footer content + index.html) still open
+## Session status (2026-09-21, continued 19th round) — Brief link + Concierge CTA repointed sitewide (EN + all translated pages); `port_homepage_redesign.py` generalized to work on translated pages too, and run across 94 sk/uk/de/ru/cs pages + the 7 EN dashboard-tool pages; full translated-page redesign (footer content + index.html) still open
+
+**Four asks this round, roughly in order of size.** ~136 files touched
+total. Nothing committed — same working-tree diff as every round in
+this multi-day thread, still awaiting review.
+
+**1. "Brief" nav item — hrefs and coverage fixed sitewide.** Two real
+gaps found and fixed:
+- Every translated page (sk/uk/de/ru/cs — ~91 files) had **no "Brief"
+  nav item at all** — the item only ever existed on EN pages. Added it
+  to all of them (same Blog→Brief→BitcoinData→About position/renumbering
+  as the EN rollout two rounds ago), linking to the explicit absolute
+  `https://staging.virtuse.com/news.html?utm_source=brief&utm_medium=nav`
+  URL per the user's own instruction (translated pages have no
+  localized `news.html` to link to relatively, so the absolute staging
+  URL sidesteps the whole "how many `../` for this folder depth" problem
+  entirely — EN's own Brief links were left as their existing relative
+  `news.html`, since that already resolves correctly).
+- **12 EN pages were also found missing Brief entirely** — the
+  2026-09-21 18th-round rollout only touched the specific 12 pages that
+  already *had* a stray "News"/"Brief" item to reorder; it never
+  occurred to check pages that had *none* at all
+  (`aml-compliance.html`, `article.html`, `btc-dominance.html`,
+  `faq.html`, `fear-greed.html`, `ma-200w.html`, `privacy-policy.html`,
+  `rainbow-chart.html`, `retirement-calculator.html`,
+  `root-cycles.html`, `terms-and-conditions.html`,
+  `trading-volume.html`, plus `research.html` which had an 11th "Research"
+  item but no Brief). Fixed identically to the 18th round's pages.
+  `research.html`'s own self-referencing item (every language) had to be
+  bumped 11→12 in the process, since Brief now occupies 9 and Research's
+  literal `nav-link-num` text was otherwise left colliding with the
+  renumbered About(11) — caught by a duplicate-number sweep across every
+  page site-wide (`grep` for repeated `nav-link-num` values within one
+  file), not just eyeballing the diff.
+- The **first attempt at the translated-page rollout missed `cs/`
+  entirely** (the script's language dict only had sk/uk/de/ru) — caught
+  when `cs/*.html` all failed a later, unrelated step
+  ("Brief nav item... expected 1, found 0") with an error that at first
+  looked like a template-drift bug in that later step, not a missing
+  earlier one. Root-caused by checking `cs/buy-bitcoin.html`'s nav
+  directly rather than assuming the failure was where the traceback
+  pointed. Fixed with the same script, `cs/` added; hit the exact same
+  Research-numbering collision as the EN/other-language rollout and
+  fixed the same way.
+
+**2. "Get Started" (`.nav-cta`) repointed from "scroll to nearby
+services grid" to "go to Concierge" — sitewide, EN + all 5 languages.**
+The button was never a real link — a shared `<script>` block
+(`document.querySelectorAll('.nav-cta').forEach(...)`) intercepted the
+click and either smooth-scrolled to a `.partners`/`#services` section on
+the same page, or fell back to `index.html#services`. Replaced that
+whole handler, on every page carrying it (133 of them), with a plain
+`window.location.href = conciergeUrl` — one line, `conciergeUrl` computed
+per file at edit time from its own folder:
+- EN root pages → `concierge.html?utm_source=concierge&utm_medium=banner`.
+- `sk/`/`cs/` pages → the same relative path, resolving to that
+  language's *own* Concierge module (both have one — confirmed via
+  `ls`, matching this file's own documented Slovak+Czech Layer-2
+  translation history).
+- `de/`/`ru/`/`uk/` pages (no Concierge module built for those
+  languages) → `../concierge.html?...`, falling back to the English
+  module, per the explicit "if no module exists for that language, link
+  to the English version" instruction.
+- `blog-sk.html` (the one root-level Slovak exception) → `sk/concierge.html?...`,
+  since it's Slovak content despite sitting outside the `sk/` folder.
+- The user's own example URL (`http://localhost:8891/concierge.html?...`)
+  was a local dev-server address, not meant literally — used the same
+  relative-path convention as every other internal link in this repo
+  instead of hardcoding a `localhost` URL into production pages, and
+  said so rather than silently "fixing" the ask without flagging it.
+- Skipped, correctly: `404.html` (no nav at all) and the Layer-2 tool
+  pages themselves (`concierge.html`/`stacking.html`/`loan.html`/
+  `tax-agent.html`, EN+sk+cs) — none of them carry this exact button/
+  script pattern, matching EN's own tool pages.
+- **Verified functionally, not just via `grep`**: real `.click()` tests
+  in a live browser session on `de/mining.html` (→ navigated to the EN
+  `concierge.html` fallback, correct UTM intact) and `sk/mining.html`
+  (→ navigated to `sk/concierge.html`, its own module) — both confirmed
+  via the resulting `window.location.href` and the destination page's
+  own title actually loading.
+
+**3. `port_homepage_redesign.py` (built 2026-09-21 rounds 10-18 for the
+EN pages) generalized to also work on translated pages, then run across
+94 files.** The script's steps split cleanly into two kinds once tested
+against a translated page: pure-CSS steps (tokens, nav/hamburger/card/
+CTA rules) are language-agnostic and ported straight through; HTML-
+content steps (footer links, newsletter copy) contain hardcoded EN
+prose that will never match a translated page's own already-translated
+text. Real fixes made to the shared script, each one unlocking every
+subsequent page of that kind rather than being a one-off patch:
+- **Step 1 (`color-scheme` meta) anchor** assumed root-relative
+  `lang-detect.js`; subfolder pages load `../lang-detect.js`. Now a
+  regex tolerant of either.
+- **Steps 12/17 (footer HTML, newsletter copy)** changed from
+  `replace_once` (abort if the literal EN text isn't found) to
+  `replace_optional` (skip gracefully) — translated pages keep their
+  existing footer/newsletter content untouched for now rather than
+  aborting the whole page's port over content that was never going to
+  match. **This is the biggest known remaining gap** — see below.
+- **Step 13 (Brief nav item + lang-switch→dropdown), "Brief already
+  present" branch**: this branch (added for the EN dashboard-page
+  rollout earlier this round) originally *regenerated* every language's
+  href from a root-only `{page}.html`/`sk/{page}.html`/... template —
+  wrong for a translated subfolder page, where the correct hrefs are
+  non-uniform (self bare, EN `../`, other langs `../<lang>/`) and were
+  already sitting correctly in the page's own existing `.lang-switch`
+  markup. Rewrote it to **capture and reuse the page's own existing
+  `<a class="lang-opt">` links and translated `aria-label` verbatim**
+  (regex capture groups, not regenerated hrefs) — sidesteps the whole
+  per-folder relative-path problem instead of solving it, and preserves
+  translations already in place (e.g. German's `aria-label="Sprache der
+  Seite"`, confirmed pre-existing, not something this round added).
+- **The nav-background regex fallback** (added for `bots.html`
+  earlier this session) picked whichever `.nav { ... }` block regex
+  `.search()` found *first* — on `uk/tax.html`/`de/tax.html`/
+  `ru/tax.html` that was a second, unrelated `.nav { padding: ... }`
+  rule inside a mobile media query, not the real one carrying the
+  `rgba(13, 20, 33, ...)` background further up the file. Fixed to
+  `.finditer()` + pick the match that actually contains `rgba(13`,
+  rather than trusting position alone.
+- **`btc-dominance.html`/`fear-greed.html`/`ma-200w.html`/
+  `rainbow-chart.html`/`retirement-calculator.html`/`root-cycles.html`/
+  `trading-volume.html`** (the EN "dashboard" pages named in the user's
+  4th ask) turned out to already be Group-A-shaped underneath — same
+  original template as `buy-bitcoin.html` pre-redesign — so the shared
+  script ported all 7 cleanly with two new fallback branches (a
+  footer-CSS anchor for pages with no local `.footer-main{}` override,
+  and the lang-switch capture-reuse fix above), rather than needing
+  individual by-hand treatment the way `tax.html`/`bots.html` did
+  earlier in this thread. A follow-up script then wrapped each one's
+  newsletter section in the homepage's `.brief-card.brief-card-poster`
+  pattern (the one piece `port_homepage_redesign.py` itself doesn't do
+  — that polish was added by hand, after the script was built, during
+  the 9-EN-page rollout).
+- **Batch run, all 94 translated Group-A-shaped pages** (`buy-bitcoin`/
+  `mining`/`lending`/`secure`/`treasury`/`tax`/`bots`/`about`/
+  `bitcoin-data`/`aml-compliance`/`faq`/`privacy-policy`/
+  `terms-and-conditions` + the 7 dashboard pages, × sk/uk/de/ru/cs where
+  each exists): **90 succeeded on the first pass after the fixes above,
+  4 needed one more**: `uk/tax.html`/`de/tax.html`/`ru/tax.html` turned
+  out to be the same pre-CSS-variable legacy template EN's own
+  `tax.html` was before its own dedicated round-15 rewrite (bare `nav
+  {}` element selector, hardcoded `#0d1421`/`#161f30`/`#30363d`/
+  `#484f58` hex literals) — `sk/tax.html`/`cs/tax.html` did NOT have
+  this problem, meaning those two were translated from a newer EN
+  snapshot than uk/de/ru's copies were. Applied the same literal
+  hex-color sweep used for EN's `tax.html` to all three (`#0d1421` →
+  `#08090a`, etc.) — confirmed via `getComputedStyle` that `body`'s
+  background actually flips from the old navy `rgb(13,20,33)` to the
+  new neutral `rgb(8,9,10)` after the fix, not just that the script
+  printed "OK".
+
+**Verified this round**: tag-balance re-checked (`div`/`section`/`li`/
+`a`/`span`/`svg`/`footer`/`nav`/`button`/`p`/`form`, comment-and-script-
+stripped) across all 94 translated files plus the 7 EN dashboard pages —
+clean, zero mismatches. Browser-confirmed on samples across languages
+(`sk/buy-bitcoin.html`, `uk/tax.html`, `retirement-calculator.html`):
+dark neutral body background, SVG hamburger, `nav-cta` still orange
+(untouched — de-orangizing only ever applied to secondary/newsletter/
+featured buttons, never the one sitewide "stamp"), no new console errors
+beyond the pre-existing GTM `ga-audiences` CSP violation.
+
+**Explicitly NOT done yet — real, sizeable gaps, not oversights:**
+1. **Footer 5-column+wordmark and "Get the Brief" newsletter rebrand
+   were deliberately skipped on all 94 translated pages** (steps 12/17
+   soft-skip, see above) — they still show the old 2-column
+   (Company/Legal) footer and old "Fix the Money, Fix the World"/
+   "Virtuse Report" newsletter copy in each language's own translation.
+   Doing this properly needs the same per-language content work as the
+   `blog.html`-variant rollout two rounds ago (translated column
+   headers, reused nav-label vocabulary for the Services column,
+   translated "Get the Brief" phrasing) — generalized to ~13 different
+   page templates instead of just one, which is a substantially bigger
+   lift than the CSS-level port this round covered.
+2. **`index.html` translated variants (sk/uk/de/ru/cs) are completely
+   untouched** — confirmed via `grep -c ":root {"` returning 0 on all
+   five. The homepage template is structurally its own thing (hero
+   orbit, services grid, Questions section, "How Virtuse Works"
+   changelog, etc.), not a Group-A page, so `port_homepage_redesign.py`
+   was never going to apply to it directly — this needs the same kind
+   of dedicated, from-scratch pass the EN homepage itself got across
+   this whole multi-day thread, five more times.
+3. **The 3 fixed-up legacy `tax.html` files (uk/de/ru) got the color-
+   token/nav-background/footer-CSS level of the redesign but not the
+   full bespoke treatment EN's `tax.html` got** in its own dedicated
+   round (hero highlight-word de-orangize, "How It Works" 4-icon-grid →
+   changelog-dot conversion) — those two steps skipped cleanly
+   ("not present on this page") rather than aborting, but the visual
+   result is not yet a full match. `sk/tax.html`/`cs/tax.html` did not
+   have this gap (already on the newer template).
+4. **Translated dashboard-page coverage is uneven by design, not a
+   bug**: `uk/`/`ru/` never had `fear-greed.html`/`trading-volume.html`
+   translated at all (confirmed via `ls` — those two files simply don't
+   exist in those folders), so nothing was skipped for them; only
+   `sk/`/`de/`/`cs/` have the full 7-page dashboard set to match EN's.
+
+**Next steps, in order:** (1) footer/newsletter content upgrade across
+the 94 already-CSS-ported translated pages — the biggest remaining
+mechanical piece; (2) `index.html` × 5 languages, each its own
+from-scratch homepage redesign pass; (3) the 3 legacy `tax.html` pages'
+remaining hero/How-It-Works polish; (4) a marketing/legal decision on
+whether the newly-added Brief nav item's absolute staging-URL link is
+meant to stay pointed at *staging* specifically (as literally
+instructed) once this work ships to production, or should become a
+relative link once `news.html` — or a localized equivalent — actually
+exists per language.
+
+## Session status (2026-09-21, continued 18th round) — blog.html's redesign ported to all 4 translated blog variants; "Brief" moved next to "Blog" sitewide in the nav; three real fixes on about.html (icons removed, timeline years de-orangized, four bare section labels promoted to real dek headings)
+## Session status (2026-09-21, continued 18th round) — blog.html's redesign ported to all 4 translated blog variants; "Brief" moved next to "Blog" sitewide in the nav; three real fixes on about.html (icons removed, timeline years de-orangized, four bare section labels promoted to real dek headings)
+
+**Three separate asks this round, all on top of the just-finished
+sitewide redesign rollout.**
+
+**1. blog.html's redesign ported to `blog-sk.html`, `de/blog.html`,
+`ru/blog.html`, `uk/blog.html`** — all four turned out to be
+byte-structurally identical to blog.html's own pre-redesign state (same
+minified top CSS block, same non-minified mobile-menu/CTA-system block),
+so the same 18-step transform (tokens, nav-scrolled, hero weight/
+highlight, flat card hovers, CTA de-orangize, SVG hamburger, brief-card
+newsletter, 5-column+wordmark footer) was scripted once and run across
+all four. **Two real script bugs found and fixed mid-run, not shipped
+silently:**
+- The color-scheme-meta step's anchor assumed `<script
+  src="lang-detect.js">` (root-relative); the three subfolder pages
+  (`de/`, `ru/`, `uk/`) load it as `../lang-detect.js`, so the first
+  attempt failed there — fixed with a regex tolerant of either path.
+- A partial first run (whose later steps succeeded despite the anchor
+  failure above not aborting the rest of the script) meant re-running
+  after the fix duplicated one CSS rule (`.lang-switch{flex-wrap:...}`)
+  across all three subfolder files, because that step's anchor
+  (`.hero-side{...}`) is left untouched by its own edit and so still
+  matches on a second pass — an idempotency gap the other 17 steps don't
+  have, since they all mutate their own anchor text. Fixed by
+  deduplicating the line in all three files; confirmed no other step has
+  the same append-after-unmodified-anchor shape.
+- **Also found**: the footer's new Tools/Guides links (Concierge,
+  Stacking, Loan, Tax Agent, the Brief) were missing their `../` prefix
+  on all three subfolder pages — the column-builder's prefix logic had an
+  `elif "?" in href: pass` branch meant to skip already-absolute URLs,
+  which accidentally also skipped the *relative* tool links (all of
+  which carry a `?utm_source=...` query string). Fixed by hand across all
+  three files, both the footer column links and the separate
+  `footer-bottom-brief` "Read →" link.
+- Newsletter/footer copy translated per language rather than left in
+  English (no prior localized version of "Virtuse Brief" existed
+  anywhere in the repo to copy from — confirmed by checking sk/de/ru/uk
+  `index.html` and `buy-bitcoin.html`, all still on the pre-rebrand
+  "Fix the Money, Fix the World"/"Virtuse Report" copy): "Get the Brief"
+  → "Získaj Brief" (SK) / "Hol dir den Brief" (DE) / "Получите Brief"
+  (RU) / "Отримайте Brief" (UK), each with matching fine-print/button/
+  placeholder text. Footer's new "Services"/"Tools"/"Guides" column
+  headers translated too (initially missed "Services" specifically — the
+  column-builder had a `cfg.get("services_header", "Services")` fallback
+  but no language ever set the key, so all four shipped with the English
+  word first; caught by a live `getComputedStyle`/textContent check
+  after the first pass, fixed by hand in all four files). "Services"
+  column's own link labels, and Company/Legal headers, reused each
+  page's own already-established translated nav-label/footer vocabulary
+  rather than inventing new terms. Tool product names (Bitcoin
+  Concierge, Stacking Strategist, etc.) kept in English on every
+  language, matching that those destination pages are themselves
+  English-only per this file's own longstanding note.
+- The hero's own `.lang-switch` pill row (a separate, page-specific
+  language switcher, distinct from the nav's dropdown) had the same
+  missing-`flex-wrap` mobile-overflow bug found on `blog.html` itself
+  last round — present on all four language variants too, fixed the same
+  way.
+
+**Verified**: tag-balance re-checked (`div`/`section`/`form`/`span`/
+`svg`/`footer`/`nav`/`button`/`a`/`p`/`h1`/`h2`, comment-and-script-
+stripped) clean on all four files; browser-confirmed hero/newsletter/
+footer/hamburger-drawer on `de/blog.html` and `uk/blog.html` (screenshot
++ `getComputedStyle`), footer links on `de/blog.html` confirmed all
+correctly `../`-prefixed after the fix; no new console errors beyond the
+pre-existing GTM CSP violation.
+
+**2. "Brief" nav item moved to sit directly after "Blog"** (was last,
+after "About") — sitewide, across all 12 pages that carry it
+(`about.html`, `bitcoin-data.html`, `blog.html`, `bots.html`,
+`buy-bitcoin.html`, `index.html`, `lending.html`, `mining.html`,
+`news.html`, `secure.html`, `tax.html`, `treasury.html`), renumbering
+`nav-link-num` 08–11 to Blog/Brief/Bitcoin Data/About in that order.
+**A real, longstanding inconsistency found and fixed in the process**:
+`blog.html` and `news.html` were the only two pages still labeling this
+item "News" instead of "Brief" (a leftover from before the "Virtuse
+News" → "Virtuse Brief" rename fully propagated), and `blog.html`'s link
+was missing the `?utm_source=brief&utm_medium=nav` tracking params every
+other page's copy already carries. Both fixed — label now reads "Brief"
+everywhere, `blog.html`'s link now carries the same UTM params as the
+rest; `news.html`'s own self-referencing `class="active"` link is left
+bare (no UTM needed on a same-page link) and correctly still points at
+`news.html` — the Virtuse Brief page itself, unchanged, since that
+destination was already correct. Verified via a scripted mobile-drawer
+open + label-list read on `index.html` (`[...Blog, Brief, Bitcoin Data,
+About]` in order) and a tag-balance check (`li`/`a`/`span`/`svg`) across
+all 12 files.
+
+**3. Three fixes on `about.html`:**
+- **Icons removed** from the "What We Stand For" (`.value-icon`, 3) and
+  "How We Vet Partners" (`.vet-icon`, 4) card grids, plus their now-dead
+  CSS — matching the flat, icon-free card language already applied
+  sitewide to `.svc-card`/`.ltype-card`/`.audience-card`/`.cat-card` this
+  session.
+- **"Our Story" timeline year badges de-orangized** — `.step-num`'s
+  orange gradient background + orange-tinted shadow replaced with a
+  flat neutral pill (`var(--dark-card-hover)` + `var(--border-hover)`
+  border), text now `var(--text)` instead of a hardcoded white-on-orange
+  pairing.
+- **Four bare section labels promoted to real, homepage-matching
+  headings**: "Our Story", "What We Stand For", "Global Presence", and
+  "Explore the Hub" previously rendered as only a small 14px uppercase
+  `.sec-label` tag with no heading beneath it — visibly inconsistent with
+  "What is Virtuse?" and "How We Vet Partners" on the same page, which
+  already had the full bold+muted "dek" heading (42px/700 + a muted-span
+  continuation, left-aligned) matching the homepage's own subheading
+  style. Converted each bare label into that same `.sec-title h2`
+  pattern (`Our <span>Story</span>`, `What <span>We Stand For</span>`,
+  `Global <span>Presence</span>`, `Explore <span>the Hub</span>`) rather
+  than just restyling text that was already correctly aligned —
+  confirmed via `getComputedStyle` that every `.sec-title h2` on the
+  page now measures identically (42px/700, `text-align:start`) before
+  this round only two of six did. Added `.sec-title h2:only-child {
+  margin-bottom: 32px }` so the new heading-only sections (no perex
+  paragraph beneath them) get proper spacing before their grid, without
+  affecting the two sections that already pair an h2 with a `p`.
+
+**Verified**: tag-balance re-checked (`div`/`section`/`span`/`svg`/`h2`/
+`h3`/`p`) clean; `valueIcons`/`vetIcons` both confirmed `0` via
+`querySelectorAll`; all 6 `.sec-title h2` elements confirmed uniform
+42px/700/left via `getComputedStyle`; step-num badge confirmed neutral
+(`rgb(28,28,28)` bg / `rgb(230,237,243)` text, no orange) via
+`getComputedStyle`; screenshots confirm the "2018" year badge, the "Our
+Story" heading, and an icon-free "Security & Trust" card. No new console
+errors beyond the pre-existing GTM CSP violation. **Not committed** —
+same working-tree diff as every round in this multi-day thread, still
+awaiting review.
+
+## Session status (2026-09-21, continued 17th round) — blog.html done: the last page in the sitewide redesign rollout, hand-edited (not scripted) since its own CSS is minified
+
+**Same multi-day `index.html`-redesign-rollout thread, immediately
+following the previous round's punch-list fixes to the 9 already-ported
+pages.** `blog.html` was the one page left from the original nav-based
+scope (per round 16's own "Remaining" note) — its `<style>` block is
+minified throughout (`.nav{display:flex;...}`, no whitespace between
+declarations), which the `port_homepage_redesign.py` script's
+whitespace-tolerant matcher can't bridge (`\s+` requires *at least one*
+whitespace character; minified CSS often has zero). Rather than extend
+the matcher to `\s*` unverified, this page was hand-edited directly —
+mechanical but exact string replacements against the minified text,
+same effect as the script would have produced.
+
+**What was found already in place, not rebuilt**: `blog.html` turned out
+to already carry the *exact* Group A mobile-menu/CTA-system/language-
+dropdown CSS (non-minified, lines ~193–489) from an earlier, separate
+mobile-nav rollout — hamburger drawer, `.lang-menu` dropdown, the
+`.nav-links li:nth-child(N)` stagger — byte-for-byte the same structure
+as `buy-bitcoin.html`'s *pre-redesign* version. Only the top ~150 lines
+of page-specific minified CSS (hero, featured card, blog-grid, newsletter,
+footer) and that shared block's still-hardcoded colors needed porting.
+
+**Applied, matching the other 9 pages exactly:**
+1. `:root` neutral-gray palette + `<meta name="color-scheme" content="dark">`.
+2. `.nav` background → `var(--nav-bg)` + added `.nav.nav-scrolled` rule
+   and its scroll-listener JS (this page never had one).
+3. Hero: `<h1>` weight 900→700; the `<span>Blog</span>` highlight demoted
+   from orange to the sitewide bold+muted "dek" split
+   (`font-weight:400;color:var(--text-muted)`).
+4. `.featured`/`.blog-card` hover flattened — dropped `transform`/
+   `box-shadow`, kept only the `border-color` change (Vercel-style
+   hairline rule already applied everywhere else).
+5. CTA de-orangize: the page's own later "UNIFIED CTA SYSTEM" block had
+   `.nav-cta, .newsletter-form button, .featured-cta` all sharing one
+   orange rule — **this silently overrode an earlier, already-correct
+   de-orange rule for `.newsletter-form button` earlier in the same
+   file** (equal specificity, later source wins), so the button was
+   actually rendering orange in production despite looking fixed at a
+   glance. Split the shared rule so only `.nav-cta` stays orange;
+   `.newsletter-form button`/`.featured-cta` (plus the `.featured:hover
+   .featured-cta` override and `.load-more:hover`) now use the same
+   inverted-neutral/neutral-hover treatment as every other page.
+6. Mobile drawer's hardcoded `#0d1421`/`#0a0f1a` gradient stops → `var(--dark)`/`var(--dark-lighter)`.
+7. Hamburger rebuilt from the old 3-`<span>`/background-color markup to
+   the SVG-stroked-`<line>` version (plus `-webkit-appearance:none`) —
+   the same real mobile-Safari fix applied to every other page this
+   rollout.
+8. Newsletter section → homepage's `.brief-card.brief-card-poster`
+   pattern verbatim ("Get the Brief" / "Virtuse Brief. Bitcoin-only. No
+   tokens. No PR." / stacked white button / fine print), keeping the
+   page's own existing `#newsletterForm` id and inline fetch handler
+   untouched — only the surrounding markup/CSS changed. Added the
+   missing `.newsletter h2 span` dek-split rule too.
+9. Footer → the same 5-column (Services/Company/Tools/Guides/Legal) +
+   giant clipped animated wordmark structure as the other 9 pages,
+   replacing the old 2-column (Company/Legal) footer — including the
+   mobile 2-up grid override and wordmark mobile sizing.
+
+**One real, previously-invisible bug found and fixed along the way,
+unrelated to the redesign itself**: the hero's own `.lang-switch` pill
+row (EN/SK/UA/RU/DE — a separate, page-specific language switcher
+distinct from the nav's dropdown) had no `flex-wrap`, so at mobile
+widths its 5 pills forced `document.body.scrollWidth` to 382px against
+a 318px viewport — a real horizontal-overflow bug, not something this
+round introduced (the row predates this session's edits). Fixed with a
+`flex-wrap:wrap; height:auto; max-width:100%` override in the existing
+900px media query; confirmed via `getBoundingClientRect` sweep across
+every element that no offender remains.
+
+**Verified this round** (local `python3 -m http.server 8891` + the
+Browser pane, ~636px mobile-equivalent width and 1440px desktop):
+comment-and-script-stripped tag-balance check clean across `div`/
+`section`/`form`/`span`/`svg`/`footer`/`nav`/`button`/`a`/`p`/`h1`/`h2`;
+hamburger opens to a clean X with the correctly re-themed dark drawer;
+desktop nav confirmed showing the full 11-item link row with "Blog"
+correctly highlighted as the active page (untouched by the CTA de-
+orangize, which only ever targeted `.nav-cta`/`.newsletter-form
+button`/`.featured-cta`); featured-article card and blog-grid cards
+screenshot-confirmed flat with white/neutral CTAs; "Get the Brief"
+section pixel-matches the homepage's own poster card; footer confirmed
+5 columns + wordmark via screenshot; no horizontal overflow at mobile
+width after the `.lang-switch` fix; no new console errors beyond the
+pre-existing GTM `ga-audiences` CSP violation. **Not committed** — same
+working-tree diff as every round below, still awaiting review.
+
+**This closes out the original nav-based redesign-rollout scope**: all
+9 top-level service/info pages plus `blog.html` now share the
+homepage's dark neutral-gray palette, flat cards, de-orangized CTAs,
+SVG hamburger, 5-column+wordmark footer, and "Get the Brief" newsletter.
+`blog-sk.html`/`article.html`/`news.html` were explicitly out of scope
+throughout this rollout (different templates/ownership, per this file's
+own longstanding split) and remain untouched.
+
+## Session status (2026-09-21, continued 16th round) — bots.html done; all 9 top-level nav pages (+About) now match the homepage's redesign; only blog.html remains from the original scope
+
+**`bots.html` needed three more script fallback branches** (all now
+reusable): a bare `nav {}` background swap combined with the
+element-vs-class ambiguity already solved for `tax.html`; a third
+nav-links hover/active variant (this page keeps hover/active as
+separate rules like Group A, but active uses `var(--orange)` — styles
+.css's alias for `--btc-orange` — with its own extra `font-weight`, and
+hover uses a literal `rgba(230,237,243,0.05)` tint instead of
+`var(--dark-card)`); and a looser footer-CSS regex tolerant of leading
+indentation before the `/* ===== FOOTER ===== */` comment and between
+it and `.footer-main` (this page indents its whole `<style>` block 4
+spaces, which the original regex's implicit zero-indentation assumption
+didn't survive).
+
+**A second real bug found in the process, more consequential than
+formatting**: this page uses styles.css's *other* alias variable set
+(`--bg`/`--card`/`--muted`/`--orange`/`--dim`) instead of the
+`--dark`/`--dark-card`/`--text-muted`/`--btc-orange`/`--text-dim` names
+every other page uses — both sets point at the same underlying
+`styles.css` values, but the page-local `:root` override this session's
+script inserts only redefines the *primary* names. `--bg`/`--card`
+would have silently kept resolving to styles.css's old navy-tinted
+`#0d1421`/`#161f30` even after everything else on the page switched to
+the new neutral-gray palette — caught by actually reading the page's
+own CSS for `var(--card)`/`var(--bg)` usage before assuming the
+`:root` override was complete, not by trusting the script's "OK". Fixed
+by adding `--bg`/`--card` overrides to **both** the already-shipped
+`bots.html` (direct edit) and the script's shared fallback `:root`
+block (so any future page using this alias set is covered
+automatically). `--muted`/`--orange`/`--dim` needed no change — they
+already matched the sitewide standard values.
+
+**Two more hand conversions, not scripted** (same category of work as
+`tax.html` last round): removed a `.hero-bg`/`.hero-grid` pair — the
+same orange-radial-plus-grid-pattern "2019 artifact" removed from every
+other page this rollout, present here in yet another naming/markup
+variant (absolutely-positioned sibling `<div>`s instead of a `::before`
+pseudo-element) — and an inline `style="color:var(--orange)"` on part
+of the H1, demoted to `var(--text)`. Converted "How It Works" from its
+own distinct variant (numbered circular badges + horizontal connector
+lines between cards, a `.step-connector` `<div>` this session hadn't
+seen the like of yet) to the `.how-header`/`.how-log` changelog-dot
+pattern, keeping the real 4 steps' copy and this page's own existing
+`animate`/`delay-N` fade-in classes on the new markup so the entrance
+animation isn't lost.
+
+**A regression repeated and caught a second time**: same mistake as
+`tax.html` last round — deleting the old How-It-Works `.section-header`
+CSS broke two *other* sections on this page ("Two Ways to Automate" and
+the Partners section) that reuse the same class. This time the
+post-edit `grep` check itself was initially too strict (searched for
+the *exact* attribute `class="section-header"`, which missed the real
+usages of `class="section-header animate delay-1"` with extra classes)
+and only caught the problem on a second, looser pass. Fixed the same
+way as `tax.html`: restored `.section-header` as its own independent
+rule. **Worth remembering for any future page**: grep for the bare
+class name as a substring, not the exact full `class="..."` attribute
+value, when checking whether a class is still referenced elsewhere —
+multi-class attributes make an exact-string check silently miss real
+usages.
+
+**Verified**: tag-balance re-checked (comment-stripped pass) — all real
+tags balance; `grep` confirmed zero remaining references to the deleted
+`.step`/`.step-num`/`.step-connector`/`.hero-bg`/`.hero-grid` classes.
+Browser-confirmed: hero clean (no glow, no orange highlight),
+hamburger/mobile-language-dropdown both work, "How It Works" shows the
+changelog layout with all 4 real steps, "Two Ways to Automate" and the
+Partners section headings both still correctly styled after the
+`.section-header` restoration, footer shows all 5 columns + wordmark.
+No new console errors. **Not committed** — same working-tree diff as
+every session below, now covering 9 fully-ported pages (buy-bitcoin,
+mining, lending, secure, treasury, about, bitcoin-data, tax, bots) —
+every nav item except Brief (owned by a separate agent, untouched) and
+Blog.
+
+**Remaining**: `blog.html` — minified CSS throughout, confirmed two
+rounds ago as needing either a dedicated pass or a `\s+`→`\s*` matcher
+change verified safe before reuse. The only page left from the original
+nav-based scope.
+
+## Session status (2026-09-21, continued 15th round) — tax.html done in full, including a from-scratch "How It Works" conversion and a real regression caught before it shipped
+
+**`tax.html` turned out to be much closer to Group A than the previous
+round's first look suggested** — the top of the file (bare `nav {}`
+element selector, hardcoded hex colors, no CSS variables at all) is
+genuinely a legacy pattern, but the mobile drawer/hamburger/language-
+dropdown further down the file is the *exact* Group A system verbatim.
+Ran `port_homepage_redesign.py` directly and it got most of the way
+there with three more fallback branches (all reusable going forward):
+a bare `nav { }` element-selector variant of the regex-based background
+swap (extending the technique already built for `.nav`-class pages,
+with a negative lookbehind so it doesn't also match `.subnav`); a
+combined-hover-and-active-selector variant of the nav-links de-orangize
+(`.nav-links a:hover, .nav-links a.active { color: #f7931a; }` in one
+rule, rather than Group A's separate rules); and a "no `:root` at all"
+path already built for `about.html`.
+
+**Cleaned up the color literals the script can't touch** (this page has
+no CSS custom properties for its own tone colors) with a plain global
+find/replace: `#0d1421`→`#08090a`, `#161f30`→`#141414`, `#30363d`→
+`rgba(255,255,255,0.06)`, `#484f58`→`rgba(255,255,255,0.12)` — the
+brand colors (`#e6edf3` text, `#8b949e` muted, `#f7931a` orange) needed
+no change, since they already matched the sitewide standard values
+exactly. These resolve correctly against `var(--text)`/`var(--btc-
+orange)`/etc. used elsewhere on the page via the shared `styles.css`
+cascade, even though this page's own inline `:root` block (inserted by
+the script's about.html-style fallback) only defines the 8 tone tokens,
+not brand colors — `styles.css`'s own `:root` already has the right
+values for those and nothing here overrides them.
+
+**"How It Works" rebuilt from scratch, not scripted** — this page's
+version was structurally the most different seen yet (a 4-icon-badge
+grid, each icon a different accent color — orange/blue/green/purple —
+with the icon SVGs and colored backgrounds baked into the markup, not
+just a CSS variant of Group A's `.step`). Hand-converted to the same
+`.how-header`/`.how-log` changelog-dot markup used everywhere else this
+rollout, keeping the 4 steps' real heading/copy verbatim and dropping
+the icon badges entirely (matching the dot-only style, not a compromise
+— the whole point of the changelog pattern is dot+text, no icon).
+Heading became `<h2>How <span>It Works</span></h2>`, **no subheading**
+(the page's old one — "From wallet import to tax-ready report in four
+steps" — was dropped, per the explicit "only buy-bitcoin.html keeps a
+subheading" instruction, not lost by accident).
+
+**A real regression found and fixed before moving on**: deleting the old
+`.how-card`/`.section-header` CSS to make room for the new
+`.how-header`/`.how-log` rules broke a *different* section — `.section-
+header` turned out to be shared with the Partner Cards section further
+down the page ("Our Tax Reporting Partners"), which went unstyled the
+moment the shared rule was removed. Caught by grepping for leftover
+references to the old class names *after* editing, not by assuming the
+edit was self-contained just because it compiled/rendered without
+errors — found one hit, traced it to the Partners section, and restored
+`.section-header` as its own independent rule (separate from the new,
+How-It-Works-specific `.how-header`) so both sections keep working.
+
+**Verified**: tag-balance re-checked (comment-stripped pass) — all real
+tags balance; `grep` confirmed zero remaining references to the deleted
+`.how-card`/`.how-icon`/`.how-grid`/`.step-num` classes anywhere in the
+file. Browser-confirmed: hero heading no longer has an orange highlight
+word, hamburger/mobile-language-dropdown both work, "How It Works" shows
+the changelog-dot layout with all 4 real steps and no subheading, the
+Partners section heading renders correctly (confirmed via
+`getComputedStyle` after this session's now-familiar scroll-reveal-
+opacity-0 tooling quirk made the screenshot blank at first), footer
+shows all 5 columns + wordmark. No new console errors. **Not committed**
+— same working-tree diff as every session below, now covering 8 fully-
+ported pages.
+
+**Remaining**: `bots.html` (verbose/differently-aliased CSS, still set
+aside) and `blog.html` (minified CSS, still set aside) — the last two
+pages from the original nav-nine-plus-Brief list, per the running
+bucket from the previous two rounds.
+
+## Session status (2026-09-21, continued 14th round) — bitcoin-data.html done (turned out to fit Group A well, not a dedicated pass after all); blog.html confirmed minified/distinct, deferred alongside tax.html and bots.html
+
+**Checked `blog.html` and `bitcoin-data.html` — the two pages flagged
+from the very start of this rollout as needing separate treatment —
+before assuming either actually does.** They turned out to be very
+different from each other:
+- **`bitcoin-data.html`** uses the same non-minified, mostly-Group-A CSS
+  style as every page ported so far. Ran `port_homepage_redesign.py`
+  directly; it needed three more small fallback branches (all now
+  reusable for future pages the same way): a regex-based `.nav { }`
+  background swap for pages whose nav has extra properties in a
+  different order (reused the same technique already built for
+  `bots.html`'s attempt); the footer-mobile-media-query step narrowed to
+  match only its own two lines and insert the new rules after them,
+  rather than requiring a specific continuation (this page has unrelated
+  `.subnav-wrap` rules right where other pages had `.footer-columns`/
+  `.footer-logo img`); and a one-line-rule fallback for `.newsletter h2`
+  (`.newsletter h2 { font-size: 36px; font-weight: 800; margin-bottom:
+  12px; }` all on one line, no `position`/`z-index`). All three succeeded
+  cleanly and the page is now fully ported — nav, footer, CTA colors,
+  "Get the Brief" newsletter, all verified in the browser (hamburger,
+  mobile language dropdown, footer wordmark, newsletter button all
+  correct, active nav state on the pre-existing "Bitcoin Data" item
+  untouched since it sits outside every edited block).
+- **`blog.html`** is genuinely different: its entire `<style>` block is
+  **minified** (`.nav{display:flex;align-items:center;...}` — no spaces
+  between declarations at all), which the current whitespace-tolerant
+  matcher can't bridge (`\s+` requires *at least one* whitespace
+  character; minified CSS has *zero* between many tokens, which `\s+`
+  by definition cannot match). Not attempted this round — flagged
+  alongside `tax.html`/`bots.html` as needing either a dedicated pass or
+  a further matcher change (`\s+` → `\s*`) verified safe before reuse,
+  rather than guessing it's risk-free under time pressure.
+
+**Verified for `bitcoin-data.html`**: tag-balance re-checked (comment-
+stripped pass) — all real tags balance, including the pre-existing
+second `<nav class="subnav">` (a category-filter bar, unrelated to the
+main nav, confirmed intentional not a leftover). Browser-confirmed:
+hero clean, hamburger/mobile-language-dropdown both work, footer shows
+all 5 columns + wordmark, newsletter shows "Get the Brief" with a
+working button, no new console errors. **Not committed** — same
+working-tree diff as every session below, now covering 7 fully-ported
+pages (buy-bitcoin, mining, lending, secure, treasury, about,
+bitcoin-data).
+
+**Remaining, in one bucket now**: `tax.html`, `bots.html`, `blog.html` —
+three pages confirmed to need dedicated, individual attention rather
+than the shared script, for three different reasons (legacy structure,
+verbose/differently-aliased CSS, and minification respectively).
+
+## Session status (2026-09-21, continued 13th round) — bots.html confirmed as a third, distinct template family; set aside alongside tax.html rather than forcing more one-off script branches
+
+**Attempted `bots.html` next.** Added two more fallback branches to
+`port_homepage_redesign.py` before concluding this page needs its own
+pass: a regex-based `.nav { ... }` background swap (this page's nav has
+extra properties Group A doesn't — `-webkit-backdrop-filter`,
+`saturate(1.2)`, `z-index: 1000` not `100`, a different opacity —
+targeting just the `background: rgba(13, 20, 33, ...)` declaration
+inside the block via `\.nav \{[^{}]*\}` rather than requiring the whole
+block to match). That got past the nav-background step, but the very
+next one (`.nav-links a:hover`/`.active`) revealed this page's CSS is
+written in a **different style throughout**, not just this one block —
+multi-line rules with an extra `font-weight: 600` on `.active`, and
+critically, it references `var(--orange)` (styles.css's alias for
+`--btc-orange`) instead of `var(--btc-orange)` directly, which several
+downstream steps also depend on by name.
+
+**Stopped adding fallback branches here rather than continuing to
+special-case a script that was built around Group A's structure.** Two
+fallbacks (about.html) generalized the script usefully; a third and
+likely fourth-fifth-sixth for `bots.html` would mean the script is now
+mostly a per-page dispatcher rather than a shared implementation — at
+that point hand-editing the page directly, the way `about.html`'s first
+attempt and every "Group A" page before this session's scripts existed,
+is more honest about the actual effort involved and less likely to hide
+a real content difference behind an ever-growing pile of "try A, else
+try B" branches. `bots.html` is confirmed **untouched** — the script
+aborts before its one `open(path, "w")` call, so nothing partial was
+written.
+
+**Current picture, three template families identified so far:**
+- **Group A** (`port_homepage_redesign.py` works with 0-2 whitespace
+  patches): buy-bitcoin, mining, lending, secure, treasury — done.
+- **Group A + fallback branches** (font-loading via `<link>`, narrower
+  CTA set, per-page active-nav-link content): about.html — done.
+- **Needs its own dedicated pass, not a Group A variant**: `tax.html`
+  (much older, `nav {}` element selector, inline hex colors, predates
+  the shared template entirely per this file's own history) and now
+  `bots.html` (verbose multi-line CSS, `var(--orange)` alias, extra nav
+  properties throughout, not just one block).
+
+**Next**: `blog.html` and `bitcoin-data.html` — already known from the
+start of this rollout to need their own separate UX/UI treatment rather
+than the Group A script — plus circling back to give `tax.html` and
+`bots.html` their own from-scratch pass once those two are done, the
+same way `buy-bitcoin.html` got one in the very first pilot round.
+
+## Session status (2026-09-21, continued 12th round) — about.html done despite belonging to a second template variant; a second, more serious bug found and fixed in the porting script's whitespace-tolerance feature (it was silently corrupting output, not just failing to match)
+
+**Continued one-by-one into `about.html`**, the first of the three
+pages flagged last round as not fitting the Group A template. Generalized
+`port_homepage_redesign.py` with per-step **fallback variants** rather
+than writing a whole separate script for one page:
+- Font loading: tries the Group A `@import`-inside-`<style>` block first;
+  falls back to inserting the `:root` token block right after the bare
+  `<style>` tag and separately swapping just the `.nav` background
+  property, for pages (like this one) that load fonts via `<link>` tags
+  and already have their own `body{}` rule.
+- CTA system: tries the full `.nav-cta, .btn-primary, .newsletter-form
+  button` block first; falls back to a narrower `.nav-cta, .newsletter-
+  form button` variant for pages with no `.btn-primary`/`.btn-secondary`
+  at all (about.html has no partner cards and no hero CTA button, just
+  the nav button and the newsletter submit).
+- Nav list: the "About" link's own `class="active"` state is real
+  per-page content (about.html is the About page, so its own nav
+  correctly highlights itself) — added a variant that detects and
+  preserves that active class rather than assuming every page's About
+  link is a plain, unhighlighted link.
+- `pcard`/hero steps continue to skip cleanly via last round's
+  `replace_optional` — this page has neither section.
+
+**A second, more serious bug found in the whitespace-tolerance
+mechanism from last round — this one produced wrong output silently
+instead of just failing to match.** The nav-list substitution ran
+successfully on the first attempt, but **deleted a real newline**: two
+adjacent `<li>` nav items ended up jammed onto one line with no line
+break between them. Root cause: `_flex_pattern`'s original "boundary"
+detection checked `list index == 0` to decide whether a whitespace piece
+was safe to leave as literal — but `old_brief_item`'s text *starts* with
+literal whitespace (four spaces of indentation), and Python's
+`re.split(r"(\s+)", ...)` on a string that begins with whitespace
+produces a **leading empty string before** the real whitespace piece,
+shifting every index by one. The actual leading whitespace piece landed
+at index 1, not 0, so it was wrongly classified as "internal" and
+converted to a flexible `\s+` — which then matched starting further left
+than intended (greedily absorbing the newline ending the *previous*,
+unmatched `<li>` line) and silently dropped it, since the replacement
+text doesn't reintroduce a leading newline of its own. Fixed by
+stripping `old`'s leading/trailing whitespace **before** splitting on
+internal whitespace runs and re-attaching the literal edges afterward,
+sidestepping the off-by-one entirely rather than trying to patch the
+index arithmetic. Verified directly with a small before/after repro
+(`PREV</li>\n    <li>...` — confirmed the newline survives now) before
+trusting it against a real page again.
+
+**This bug had already run once, undetected, against the real
+`about.html`** (the "OK" from the script only checks that a replacement
+happened, not that the surrounding document stayed well-formed) — caught
+by manually eyeballing the diff around the "About" nav item rather than
+trusting the script's own success message. Since nothing had been
+committed, recovered cleanly via `git checkout -- about.html` and
+re-ran the fixed script from scratch rather than trying to hand-patch
+the already-corrupted output. **Every page ported using the flexible
+matcher before this fix (about.html, this round's only one) has been
+regenerated from a clean revert — nothing questionable was left in
+place.** Pages ported earlier (mining/lending/secure/treasury) used the
+older exact-match-only version of the script and were never exposed to
+this bug at all.
+
+**Verified**: tag-balance re-checked (comment-stripped pass) — all real
+tags balance, including line-by-line confirmation that every `<li>` nav
+item is back on its own line. Browser-confirmed: hamburger/drawer/
+language-dropdown all work, "About" correctly shows as the active nav
+item (`document.querySelector('.nav-links a.active').textContent` →
+"10About"), footer shows all 5 columns, newsletter shows "Get the
+Brief" with a working button. No new console errors. **Not committed**
+— same working-tree diff as every session below, now covering 6 fully-
+ported pages.
+
+**Next**: `tax.html` and `bots.html`, the two remaining pages flagged
+as template outliers — `tax.html` in particular is a much older,
+structurally distinct page (plain `nav {}` element selector, inline hex
+colors), so it may need its own one-off treatment rather than another
+`port_homepage_redesign.py` fallback branch.
+
+## Session status (2026-09-21, continued 11th round) — Four more pages done (lending, secure, treasury + mining from last round); a real bug found in the porting script itself; two more pages found to be a structurally different template, paused before forcing a bad fit
+
+**Continued the page-by-page rollout with `port_homepage_redesign.py`/
+`port_how_it_works.py` from the previous round.** `lending.html` ported
+clean on the first try — good sign the two scripts generalize. `secure.html`
+too. `treasury.html` hit a real template variant: an unrelated `@keyframes
+pulse` block sits between `.hero::before` and `.hero h1` that isn't on
+any other page — fixed by splitting the "hero cleanup" step into two
+independent replacements (glow removal, then h1 weight/highlight) instead
+of one block spanning both, so the in-between keyframes survive
+untouched regardless of what's near them. Verified after each page: tag
+balance, hamburger open/close, mobile language dropdown (opens without
+closing the drawer), and a spot screenshot.
+
+**A real, worth-remembering bug found and fixed in the porting script
+itself, not just template drift**: made `replace_once`/`replace_optional`
+tolerate incidental whitespace differences between pages (several blocks
+differ only by a stray trailing space on an otherwise-blank line — almost
+certainly the debris of some earlier batch edit that deleted a
+`display: flex;`-type line without also cleaning up its blank line). The
+first attempt at this — escape the whole block with `re.escape()`, then
+`re.sub(r"\s+", r"\\s+", escaped)` to turn whitespace runs into a regex
+`\s+` — silently produced a pattern that could **never match anything**:
+`re.escape()` in Python 3.7+ already backslash-escapes whitespace
+characters themselves (not just regex metacharacters), so the second pass
+added a *second* backslash in front of an already-escaped space/newline,
+yielding `\\s+` (literal backslash-backslash-s-plus) instead of the
+intended `\s+` metacharacter. Every whitespace-tolerant match silently
+returned 0 results because of this, which — combined with
+`replace_optional`'s "0 matches means skip, don't abort" design meant
+for pages that genuinely lack a section — could have silently skipped
+real, present sections on every future page without ever raising an
+error. Caught by testing the pattern directly against real page content
+before trusting a "skip" result, not by assuming the abort-on-mismatch
+design alone was sufficient. Fixed by splitting the original text on
+whitespace runs *before* escaping each non-whitespace chunk individually,
+so `re.escape()` never sees a whitespace character to double-escape.
+
+**`tax.html` and `about.html` turned out to belong to a second,
+genuinely different template — not just whitespace drift, structural**:
+`about.html` loads fonts via `<link>` tags (`<link rel="preconnect">` +
+a `family=Inter` stylesheet link), not the `@import url(...)` inside
+`<style>` every "Group A" page (buy-bitcoin/mining/lending/secure/
+treasury) uses — the very first CSS-block substitution in the script
+depends on that `@import` line existing, so it can't proceed at all.
+`tax.html` is more different still: plain `nav { }` (element selector,
+not `.nav`), single-line CSS rules, and hardcoded hex colors directly on
+`body` — confirmed via CLAUDE.md's own much older history as "the real,
+separate Bitcoin Tax Reporting category page," predating the shared
+template. `bots.html` also didn't match on an initial grep
+(`.nav-hamburger`/`class="pcard"`/`class="how` all absent) and needs its
+own look before assuming which template family it belongs to.
+
+**Deliberately stopped here rather than forcing these three through the
+Group A script or hand-patching around every structural difference one
+substitution at a time** — the two script fixes above were worth making
+(they'll help on every remaining Group A page), but `about.html`/
+`tax.html`/`bots.html` need their own from-scratch inspection the way
+`buy-bitcoin.html` did in the very first pilot round, not an
+increasingly-special-cased version of the Group A script. Both files
+confirmed still fully untouched (the script never reached its final
+`open(path, "w")` write on either — it aborts before that on any failed
+step) — no risk of a half-applied page sitting in the working tree.
+
+**Verified this round**: tag-balance re-checked (comment-stripped pass)
+for `lending.html`/`secure.html`/`treasury.html` — all real tags
+balance. Browser-confirmed for all three: hero clean, hamburger/X/active-
+drawer-item correct, mobile language dropdown opens without closing the
+drawer, "How It Works" changelog layout with real per-page step copy and
+no added subheading, footer wordmark, "Get the Brief" newsletter with a
+working white button. `treasury.html`'s preserved `@keyframes pulse`
+confirmed still present post-port via `grep`. No new console errors
+beyond the pre-existing GTM CSP violation on any of the three. **Not
+committed** — same working-tree diff as every session below, now
+covering 5 fully-ported pages (buy-bitcoin, mining, lending, secure,
+treasury) plus the two `i18n-tools/` scripts.
+
+**Next**: `about.html`, `tax.html`, and `bots.html` each need individual
+inspection before deciding whether a second reusable script makes sense
+across any of them, or whether they're different enough from each other
+too that each is its own one-off — same open question `blog.html` and
+`bitcoin-data.html` already carried into this rollout. Everything else
+in the nav (buy-bitcoin, mining, lending, secure, treasury, tax, bots,
+blog, bitcoin-data, about) needs a final decision either way before this
+phase is called done.
+
+## Session status (2026-09-21, continued 10th round) — Sitewide rollout actually started: mining.html done via two new reusable scripts, plus the "How It Works" subheading explicitly dropped on every page except buy-bitcoin.html
+
+**User approved the pilot and asked to proceed page by page, starting
+with `mining.html`.** Also clarified the previous round's "How It Works"
+subheading: the exact sentence used on `buy-bitcoin.html` ("Four simple
+steps...") is **buy-bitcoin-specific, not a template to repeat** — every
+other page gets the same visual redesign of that panel but with **no
+subheading paragraph at all**, just the heading.
+
+**Built two reusable scripts in `i18n-tools/`, rather than repeating the
+buy-bitcoin.html edits by hand for every page** — this rollout covers
+~20 more pages, and the old `.step`/`.step-num` grid → `.how-log`
+changelog port in particular is mechanical enough to script safely:
+- `port_how_it_works.py <page.html>` — regex-parses the existing
+  `<section class="how"><div class="how-title">...</div><div
+  class="steps">...4 .step divs...</div></section>` block and rewrites
+  it as the homepage's `.how-header`/`.how-log` structure, preserving
+  every step's own heading/copy verbatim and computing "Step 01..04"
+  from position. Swaps in the matching CSS block. No subheading `<p>` is
+  added (per the clarification above) — only pages that explicitly ask
+  for one, like buy-bitcoin.html did, get one.
+- `port_homepage_redesign.py <page.html>...` — applies the full
+  buy-bitcoin.html treatment in one pass: color tokens, hamburger SVG,
+  compact nav links (`:not(.lang-opt)` fix included), mobile language
+  dropdown (replacing the 6-pill row, with the same "excludes
+  `.lang-menu-btn` from the drawer's close-on-click handler" fix baked
+  in), hero cleanup, flat `.pcard` hover, CTA de-orangizing (`.nav-cta`
+  stays orange, `.btn-primary`/`.newsletter-form button` become the
+  hardcoded inverted-neutral pill — **including partner-CTA buttons**,
+  per the explicit approval from the previous round), the 5-column +
+  wordmark footer, and the "Get the Brief" newsletter rebrand. Every
+  substitution is matched **verbatim** against the page's actual current
+  text and aborts loudly (`SystemExit`) if the expected old text isn't
+  found exactly once — this is deliberately not a fuzzy/best-effort
+  patcher; a failed run means "this page drifted from the template, port
+  the rest by hand," not "silently apply what matched and skip the
+  rest."
+
+**Two real template-drift issues found and fixed while building/running
+these scripts against `mining.html`, not assumed away:**
+1. Several of the "identical" CSS blocks actually differ from
+   `buy-bitcoin.html`'s original by **trailing whitespace on blank
+   lines** (e.g. `justify-content: space-between;\n  \n  padding:...` —
+   two trailing spaces on the blank line, not `\n\n`) — almost certainly
+   left behind by some earlier batch edit that deleted a `display:
+   flex;`-type line without also removing its blank-line remnant.
+   Exact-string matching caught every one of these immediately (the
+   script aborted rather than silently mismatching), and each was fixed
+   by copying the real whitespace from the actual file rather than
+   guessing.
+2. `.footer-inner`'s CSS properties are in a **different order** on
+   `mining.html` than on `buy-bitcoin.html`'s original (`display` first
+   vs. `max-width` first) — a real property-order drift between pages,
+   not just whitespace. Fixed by switching the footer-CSS replacement
+   from an exact-string match to a regex anchored only on the selector
+   names and comment markers (`/\* ===== FOOTER ===== \*/\n\.footer-main
+   \{.*?\.footer-bottom p \{[^}]*\}`), so internal property order no
+   longer matters. **Any future page with the same drift will still be
+   caught safely** — the fix generalizes, it's not a one-off patch.
+
+**Verified**: tag-balance re-checked (comment-stripped pass) — all real
+tags balance. Browser-confirmed: hero clean (no glow, 700-weight),
+hamburger opens to a clean X with "Mining" shown as the active drawer
+item, mobile language dropdown opens without closing the drawer, "How It
+Works" shows the changelog-dot layout with the real step copy intact and
+**no subheading**, footer shows all 5 columns + wordmark, newsletter
+shows "Get the Brief" with a working white button, and a partner card
+confirmed flat (no lift/shadow) with a de-orangized white "Get Started"-
+style primary CTA via `getComputedStyle`. **Gotcha worth noting for
+future page checks**: this page's generic anime.js scroll-reveal system
+(every `<section>` fades in via `IntersectionObserver` + `anime.animate`,
+700ms) rendered visibly slow-motion in this session's browser tool
+(fractional opacity like 0.13 → 0.38 over several real seconds instead
+of completing in 0.7s) — not a bug in the page, just rAF throttling in
+this automated browser context; confirmed by polling computed opacity
+over time and seeing it climb steadily rather than being stuck, then
+force-set to 1 for screenshotting rather than waiting it out. **Not
+committed** — same working-tree diff as every session below, now also
+covering `mining.html` and the two new `i18n-tools/` scripts.
+
+**Next**: continue page by page through the remaining top-level pages
+using these two scripts (verifying each run's output before moving on,
+same as this round), then the separately-flagged `blog.html` and
+`bitcoin-data.html` UX/UI passes, which don't share this exact template
+and will need their own by-hand treatment.
+
+## Session status (2026-09-21, continued 9th round) — Pilot approved (including the de-orangized partner CTAs); "How It Works" ported to the homepage's changelog-dot layout, keeping this page's own 4 steps
+
+**User confirmed the pilot from the previous round, explicitly including
+the partner-CTA de-orangizing trade-off** — that's now settled, not an
+open question for the rest of the rollout. This round's ask was narrower:
+redesign `buy-bitcoin.html`'s "How It Works" panel to the homepage's own
+UI for that exact section, while explicitly keeping this page's own copy
+and its 4 steps (the homepage's equivalent only has 3) — plus a specific
+new subheading.
+
+**Replaced the old 4-card grid** (`.steps`/`.step`/`.step-num` — a
+bordered card grid with a floating circular orange-badge number, hover
+lift-adjacent border change) **with the homepage's own linear.app-style
+"changelog" layout** (`.how-log`/`.how-log-item`/`.how-log-marker`/
+`.how-log-dot`/`.how-log-body`): one shared horizontal rule, entries laid
+out as columns, each with a small dot sitting on the rule (orange +
+glow for the first entry only, muted gray for the rest — the same
+"one punc" rule used throughout this redesign), then a small-caps
+"STEP 0N" label, heading, and copy. All 4 steps' own titles/descriptions
+were carried over verbatim — only the container markup and its styling
+changed, not the content itself.
+
+**Heading/subheading**: the section's plain uppercase label
+(`.how-title`, "How It Works") became a proper two-part dek heading
+matching the homepage's `.sec-header` pattern — `<h2>How <span>It
+Works</span></h2>` (bold "How" + muted "It Works", the same weight/
+color-only differentiation used everywhere else in this redesign) with
+the user's exact requested subheading, `<p>Four simple steps to access
+any Bitcoin service through our hub</p>` — the same template sentence
+as the homepage's own "Three simple steps...", with the step count word
+swapped for this page's real count. Built as a new `.how-header` class
+rather than reusing this page's existing `.sec-header` (a different,
+flex-row layout already used by the partners section's own title+badge
+row) — kept separate to avoid a collision rather than restructuring an
+already-working component.
+
+**Verified**: tag-balance re-checked (comment-stripped pass, all real
+tags balance). Screenshot-confirmed at the tool's default width: heading
+renders as bold/muted split text, subheading shows the exact requested
+copy, the horizontal rule + first-item orange glow dot + "Choose a
+Partner"/"STEP 01" render correctly, matching the homepage's own section
+pixel-for-pixel in structure. **Not committed** — same working-tree diff
+as every session below, still awaiting review alongside the rest of the
+pilot.
+
+**Next**: with the pilot now approved end-to-end, roll the same
+treatment (nav, footer, cards, CTA colors, newsletter, and now this
+How-It-Works pattern where a page has an equivalent section) out to the
+remaining top-level pages, plus the separately-flagged `blog.html` and
+`bitcoin-data.html` UX/UI passes.
+
+## Session status (2026-09-21, continued 8th round) — Pilot page done: buy-bitcoin.html brought up to the homepage's current design language, awaiting approval before the same treatment rolls out to the remaining ~20 pages
+
+**Direct continuation of the previous round** (toggle removed from
+`index.html`). This round built the agreed pilot — `buy-bitcoin.html` —
+porting every major homepage design decision from this whole multi-day
+thread onto it. Kept as **page-local `<style>` overrides**, same
+convention `index.html` already uses, not edits to the shared
+`styles.css` (still linked by ~20 other untouched pages) — so this
+pilot's blast radius stays contained to one file until it's approved.
+
+**What was ported, concretely:**
+1. **Color tokens** — added a local `:root` block with the homepage's
+   neutral-gray dark palette (`--dark:#08090a`, `--dark-card:#141414`,
+   etc.), overriding `styles.css`'s older navy-tinted defaults
+   (`#0d1421`/`#161f30`) for this page only. Added `color-scheme: dark`
+   (meta + CSS) and `.nav.nav-scrolled` + its scroll listener.
+2. **Nav** — compact 13px/400 desktop links with `:not(.lang-opt)`
+   exclusions (the same specificity-leak bug found and fixed on the
+   homepage this same day); hamburger rebuilt as the two-stroked-`<line>`
+   SVG (the fix for a real mobile-Safari bug found on the homepage
+   today, where the `<span>`-based version painted invisible); mobile
+   drawer's 6-pill `.lang-switch` row replaced with the same
+   `.lang-menu-mobile` dropdown component as the homepage, including the
+   real bug fix that came with it (excluding `.lang-menu-btn` from the
+   drawer's generic close-on-click handler, or opening it closes the
+   whole drawer instead of its own panel). Nav item 11 ("Brief" →
+   `news.html`) added — this page never had it before, a deliberate
+   parity choice, not a copy of pre-existing content. Language-dropdown
+   JS generalized from a single hardcoded `#langMenu` id to looping over
+   every `.lang-menu` on the page, matching the homepage's own rewrite.
+3. **Hero** — removed the orange radial-gradient glow behind the H1
+   (`.hero::before`, the same "2019 crypto-landing" artifact the
+   homepage removed rounds ago), dropped the H1 from 900 to 700 weight,
+   and demoted `.hero h1 .highlight` from orange to `var(--text)` — "one
+   uniform tone," matching the homepage's own hero exactly.
+4. **Cards** (`.pcard`, the partner comparison cards) — flattened from
+   `translateY(-2px) + box-shadow` hover with a colored top accent bar
+   reveal to the homepage's Vercel-style rule: hairline border in,
+   stronger hairline + `--dark-card-hover` background on hover, no lift,
+   no shadow, no color.
+5. **CTA colors** — orange is now reserved for `.nav-cta` alone, matching
+   the homepage's "used exceptionally, only as a stamp" rule.
+   `.btn-primary`/`.newsletter-form button` (hardcoded `#e6edf3`/`#08090a`,
+   not `var()` — a real device bug found on the homepage today, `var()`
+   with no fallback in `background` silently failing on mobile Safari)
+   now render as an inverted-neutral pill instead of orange. **This is
+   the one change worth flagging explicitly, not just noting in passing**:
+   `.btn-primary` is reused by this page for the partner cards' own
+   primary sign-up buttons ("Get 21bitcoin," "Get Invity," etc.) — the
+   actual commercial conversion action for this whole page — so this
+   also turned those from orange to white/black. Applying the homepage's
+   rule consistently, not an oversight, but a real trade-off on a
+   revenue-relevant button that's worth the user's explicit sign-off
+   before this same change goes out to every other partner-listing page
+   (mining.html, secure.html, lending.html, tax.html, treasury.html,
+   bots.html all have the same `.btn-primary` partner-CTA pattern).
+6. **Footer** — rebuilt from 2 columns (Company/Legal) + a plain inline
+   SVG logo to the homepage's exact 5-column structure (Services/Company/
+   Tools/Guides/Legal) plus the giant clipped animated wordmark, including
+   its Safari-safe hardcoded gradient colors and the `footer-bottom-brief`
+   "Virtuse Brief" line.
+7. **Newsletter section** — rebranded from the stale "Fix the Money, Fix
+   the World" / "Virtuse Report" / "18,000+ investors" copy (predating
+   the homepage's own Virtuse Brief rebrand by weeks) to "Get the Brief" /
+   "Virtuse Brief. Bitcoin-only. No tokens. No PR." — same copy the
+   homepage's own bottom capture uses, for actual cross-page product-name
+   consistency rather than two different products appearing to exist.
+
+**Deliberately not touched this pass** (to keep the pilot reviewable
+rather than exhaustive): `.step`/`.step-num`'s orange badge and glow,
+`.tag-orange`, the mobile drawer's orange radial accent (kept —
+confirmed the homepage's own current mobile drawer still has this exact
+accent, just recolored), and the 800-weight subheadings elsewhere on the
+page (`.sec-title h2`, `.how-title`, etc.) — none of these read as
+"2019-style" artifacts the way the hero glow and card lift did, and
+flattening every last decorative detail risked turning a reviewable
+pilot into a full rewrite before getting any user feedback on direction.
+
+**Verified**: tag-balance check (comment-stripped pass) — all real tags
+balance. Chromium-confirmed: hamburger opens to a clean X and shows
+"Buy Bitcoin" as the active drawer item, mobile language dropdown opens
+without closing the drawer (the bug this round's port also had to fix
+here, not just copy from the homepage), footer renders all 5 columns +
+wordmark, newsletter shows the new copy and a correctly-white "Get the
+Brief" button, a partner card (21bitcoin) confirmed flat with no
+lift/shadow and a white "Get 21bitcoin" CTA via both screenshot and
+`getComputedStyle` (custom 1440px-viewport screenshots returned blank
+frames again this session — the same known tooling quirk documented
+earlier in this file — cross-checked with computed styles instead of
+retrying the screenshot). No console errors. **Not committed** — same
+working-tree diff as every session below, now also covering
+`buy-bitcoin.html`, still awaiting review.
+
+**Next**: get the user's sign-off on this pilot — especially the
+partner-CTA de-orangizing trade-off in point 5 — before applying the
+same treatment to the remaining top-level pages (mining, lending,
+secure, treasury, tax, bots, about, plus the separately-called-out
+blog.html and bitcoin-data.html, which the user flagged as needing their
+own UX/UI pass beyond just this shared nav/footer/card treatment).
+
+## Session status (2026-09-21, continued 7th round) — Sitewide redesign kicked off: light/dark toggle removed entirely from index.html (dark-only now); next up, a single pilot page (buy-bitcoin.html) before rolling the homepage's redesign out everywhere else
+
+**All mobile-Safari bugs from this whole day's earlier rounds are now
+user-confirmed fixed** (hamburger, "Get the Brief," the language
+dropdown, and all three Questions illustrations) — that debugging arc is
+closed. This round starts a **much larger, explicitly-scoped follow-up
+request**: bring every other top-level page (buy-bitcoin, mining, loans,
+secure, treasury, tax, bots, blog, bitcoin-data, about, etc. — roughly
+20+ pages) up to the same visual language this whole multi-day thread
+built on the homepage, plus their nav/footer/newsletter forms, plus a
+sitewide decision to drop the light theme entirely.
+
+**Two scope questions were asked and answered before starting** (this is
+too large and too consequential to guess at): (1) build **one pilot page
+first** — `buy-bitcoin.html` — get it approved, *then* apply the same
+approach to the rest, rather than touching 20+ pages in one uncontrolled
+pass; (2) the light/dark toggle is being **removed entirely, sitewide,
+including the homepage itself** — not just withheld from new pages. Dark
+is now the page's only state everywhere this rollout touches.
+
+**Step 1 (this round): removed the toggle from `index.html` completely** —
+this had to happen before the pilot page could copy the homepage's nav/
+footer, since those still had the toggle wired in.
+- Anti-FOUC theme script deleted (no `data-theme` attribute is set at
+  all now; there's only one theme, so nothing needs deciding before
+  paint).
+- The entire `:root[data-theme="light"]` token block deleted, plus
+  every scattered per-component light-theme override found via `grep`
+  (`.problem-dot`/`.problem-bar`/`.problem-punc`, `.footer-wordmark-
+  text`, `.newsletter-form button`, `.theme-toggle` itself) — all of
+  which existed solely to support the light theme.
+- `.theme-toggle` CSS block and both HTML instances (desktop
+  `.nav-actions` + the mobile drawer's `.theme-toggle-mobile`) removed;
+  the mobile drawer's `.nav-links-lang-item` now holds only the language
+  dropdown.
+- The theme-toggle JS IIFE removed entirely (the language-dropdown IIFE
+  right after it is untouched).
+- `<meta name="color-scheme">` narrowed from `"dark light"` to just
+  `"dark"` — the Android-forced-dark-mode fix from earlier this session
+  is still in effect (a `color-scheme` value must still be declared),
+  it's just no longer offering a light option that doesn't exist.
+
+**Verified**: `grep` for `theme-toggle`/`data-theme`/`vb-theme` across
+the whole file returns zero matches. Tag-balance re-checked (comment-
+stripped pass, all real tags balance). Browser-confirmed at both mobile
+(hamburger drawer, language dropdown, no toggle anywhere) and 1440px
+desktop (nav row, language dropdown opens correctly) widths — page
+renders identically to before minus the toggle, `document.body`'s
+background still resolves to the correct dark `rgb(8,9,10)`. No console
+errors. **Not committed** — same working-tree diff as every session
+below, still awaiting review, now including this toggle removal.
+
+**Not yet started**: the actual `buy-bitcoin.html` pilot page rebuild
+(nav/footer/cards/newsletter form matching the homepage's current
+design, dark-only, toggle-free) — that's the next step, to be shown to
+the user for approval before the same treatment is applied to the
+remaining ~20 pages, plus `blog.html` and `bitcoin-data.html` called out
+specifically by the user as needing their own UX/UI pass to match.
+
+## Session status (2026-09-21, continued 6th round) — Illustrations actually fixed this time: the HTML-overlay rewrite from the previous round still used var() in `background` with no fallback, the exact bug it was supposed to be sidestepping
+
+**Sixth round, same day.** User confirmed hamburger, "Get the Brief," and
+the mobile language dropdown are all fixed. The illustration dots were
+still reported broken even after the previous round's SVG-to-HTML
+rewrite — which turned out to be a self-inflicted repeat of the bug that
+round had *just* found and fixed for the "Get the Brief" button:
+`.problem-dot`/`.problem-bar`/`.problem-punc` all set their `background`
+via `var(--text-muted)`/`var(--border-hover)`/`var(--btc-orange)` with no
+literal fallback — the identical pattern that made the "Get the Brief"
+button invisible earlier in that same round, just not yet cross-applied
+to this new code written moments later in the same diff. (The previous
+round's own comment even claimed "Plain HTML `background: var(...)` has
+not failed once anywhere else on this page" — false at the time it was
+written; the button fix earlier in that same round was exactly this.)
+
+**Fixed by hardcoding all four**, mirroring the button fix exactly:
+`.problem-dot` → `#8b949e`, `.problem-dot-strong`/`.problem-bar` →
+`rgba(255,255,255,0.12)`, `.problem-punc` → `#f7931a` (all matching
+dark theme's actual resolved token values), with a
+`:root[data-theme="light"]` override block for each (`#666666`,
+`rgba(0,0,0,0.16)`, `#c2640a`). Verified via `getComputedStyle` in both
+`data-theme` states — all four resolve to plain literal colors, no
+`var()` involved anywhere in the computed value chain now.
+
+**The lesson, worth internalizing rather than re-discovering a third
+time**: on this device, `background`/`fill` set via `var(...)` **with no
+literal fallback** has now failed in at least four separate places this
+session (this page's newsletter button, the footer wordmark text
+gradient, and now two illustration rules) — every one of these was fixed
+by hardcoding the value instead. Going forward on this page, any *new*
+`background`/`fill` declaration should either include a real fallback
+(`var(--x, #hexvalue)`) or just use a literal value with a
+`:root[data-theme="light"]` override, rather than assuming a bare
+`var(--x)` is safe — `color`/`stroke`/`border` usages of var() have not
+shown this problem anywhere this session, only `background`/`fill`.
+
+**Verified this round**: tag-balance re-checked (comment-stripped pass,
+all real tags balance). Chromium-confirmed via `getComputedStyle` in
+both dark and light `data-theme` — all four rules resolve to plain
+`rgb()`/`rgba()` values matching each theme's intended token. **Confirmed
+fixed on the user's actual iPhone/Safari after reload** — this closes out
+the entire multi-round mobile-Safari debugging arc from this day: hamburger,
+the mobile language dropdown, "Get the Brief," and all three Questions
+illustrations are now all working on the real device, not just in this
+session's own tooling. **Not committed** — same working-tree diff as
+every session below, still awaiting review; next step is for the user to
+review the accumulated diff and decide on committing/deploying.
+
+## Session status (2026-09-21, continued 5th round) — Illustrations finally fixed by abandoning SVG entirely for the dots/bars; "Get the Brief" button's real bug found (background: var(--text) with no fallback silently failing)
+
+**Fifth round, same day, after finally getting the two targeted
+screenshots requested at the end of the previous round.** Both
+confirmed exactly what they needed to.
+
+1. **Illustration dots — the stroke-only fix from two rounds ago also
+   failed**, confirmed by the fresh screenshot: rings and the dashed
+   crosshair lines visible, every dot still completely absent, identical
+   to every previous round's symptom. Three different SVG-based fixes in
+   a row (moving `fill="var(...)"` to a class, moving the float animation
+   off the `<svg>` root, converting every dot/bar to stroke-only shapes)
+   had each been verified correct in this session's own browser and each
+   still failed identically on the real device — meaning the bug isn't
+   actually about fill vs. stroke, `var()`, or animation specifically; it
+   is some more general failure of small SVG shapes on this exact device
+   that kept resembling each successive theory just closely enough to
+   look plausible. **Fix: stopped using SVG for the dots/bars entirely.**
+   The `<svg>` in each illustration now contains only the rings and
+   crosshair lines (the shapes that have rendered correctly this whole
+   time); every dot and bar is now a plain absolutely-positioned HTML
+   `<span>` with an ordinary `background` color, layered over the `<svg>`
+   inside a new `.problem-art-box` wrapper using percentages of the
+   shared 190×190 viewBox so they line up regardless of the box's actual
+   rendered size. Plain HTML `background: var(...)` has not failed once
+   anywhere else on this page through this entire debugging arc — this
+   sidesteps the unresolved SVG issue rather than chasing a fourth theory
+   for it. `.i-muted`/`.i-fill-strong` (now fully unused) were deleted;
+   `.problem-punc` was repointed from `stroke` to `background`.
+2. **"Get the Brief" (Place A) — the button had a real bug**, confirmed
+   by the second screenshot: the capture card itself was now clearly
+   visible (last round's contrast fix worked), but the "Get the Brief"
+   button rendered as bare, nearly-invisible text with **no button
+   background at all** — not a subtle contrast issue, an actual missing
+   background. `.newsletter-form button { background: var(--text); color:
+   var(--dark); }` had no fallback value in its `var()`, unlike `.nav-cta`
+   (`var(--btc-orange, #f7931a)`), which has rendered correctly in every
+   screenshot this whole session. Fixed by hardcoding both colors per
+   theme instead (`#e6edf3`/`#08090a` dark, `#0d0d0d`/`#ffffff` light via
+   a new `:root[data-theme="light"]` override) — the same
+   hardcode-instead-of-var() fix already used successfully for the footer
+   wordmark text, which hit what looks like the same class of bug.
+   Place C's own button (`.brief-card .newsletter-form button`) already
+   had literal white/black and was untouched — its higher specificity
+   still wins over this change.
+
+**A pattern worth stating plainly for this page going forward**: on this
+specific real device, `var()` inside `background`/`fill` has now failed
+in at least three unrelated contexts (a plain button background, SVG
+fill, and a background-clip:text gradient) while a hardcoded value in
+the identical spot has fixed all three. Prefer a literal value (with a
+`:root[data-theme="light"]` override where the color needs to flip per
+theme) over `var()` for any *new* color applied via `background` or
+`fill` on this page, rather than assuming var() is safe by default —
+`color`/`stroke`/`border` usages of var() have not shown this problem
+anywhere this session.
+
+**Verified this round**: tag-balance re-checked with the comment-stripped
+pass (all real tags balance exactly). Chromium-confirmed at 390px: all
+three illustrations screenshot-and-`getComputedStyle`-confirmed showing
+every dot/bar with correct colors, "Get the Brief" screenshot-confirmed
+as a solid white pill with black text matching the card. **Not yet
+re-verified on the user's actual Safari device** — both fixes are
+grounded directly in this round's own screenshots (not a fresh guess),
+unlike the three prior illustration attempts. **Not committed** — same
+working-tree diff as every session below, still awaiting review.
+
+## Session status (2026-09-21, continued 4th round) — Hamburger confirmed fixed; mobile language switcher redesigned as a dropdown (found and fixed a real bug in the process); illustrations + brief-strip STILL reported broken after two rounds of fixes each — now blocked on fresh screenshots, not more guessing
+
+**Fourth round on the same device-reported bugs, same day.** User confirmed
+the hamburger fix from the previous round actually worked on their real
+iPhone. Two items from that same round — the illustration dots and the
+"Get the Brief" strip's visibility — were reported still broken, with no
+new screenshot this time. A fourth, independent, non-bug UX request was
+also made and completed.
+
+**Mobile language switcher redesigned — real UX complaint, not a bug
+report.** The drawer's language options were 6 separate flag+code pills
+in a wrapping row (`EN SK UA CS RU DE`), which had already needed a
+`flex-wrap` patch two rounds ago just to stop the row overflowing —
+still visually cramped and inconsistent with the clean dropdown desktop
+already uses. Replaced the drawer's pill row with a second instance of
+the *same* `.lang-menu`/`.lang-menu-btn`/`.lang-menu-panel` dropdown
+component desktop uses (`#langMenuMobile`, separate ids from desktop's
+`#langMenu`), rather than inventing a new pattern — one compact
+"🇬🇧 EN ⌄" button that expands to the 6-language list on tap.
+`.lang-menu { display: none }`'s mobile-hide rule was narrowed to
+`:not(.lang-menu-mobile)` so only the desktop copy hides at this width.
+The shared open/close JS (previously hardcoded to the single desktop
+`#langMenu`/`#langMenuBtn` ids) was rewritten to loop over every
+`.lang-menu` on the page, so both instances work independently and
+opening one closes the other.
+
+**Found and fixed a real bug while wiring this up**: clicking the new
+mobile dropdown's toggle button closed the *entire* mobile drawer instead
+of opening its own panel. Root cause — a separate, pre-existing script
+(`links.querySelectorAll('a, button').forEach(el => el.addEventListener
+('click', closeMenu))`) attaches "close the whole drawer" to *every*
+link/button inside `.nav-links`, which the new `.lang-menu-btn` is
+nested inside of (same as the drawer's own theme toggle always has been).
+Fixed by excluding `.lang-menu-btn` specifically from that generic
+handler; the `.lang-opt` language links inside the dropdown's panel keep
+it, since clicking one navigates away regardless. Verified via a scripted
+click sequence (`nav-open` stays `true`, the lang dropdown's own `open`
+class also becomes `true`) and a screenshot showing the panel rendered
+correctly over the drawer.
+
+**Illustrations (Fig 0.1–0.3) and the Place A "Get the Brief" strip —
+both reported "still not showing correctly" after this session's most
+recent fixes, with no fresh screenshot provided this round.** Every
+prior screenshot-backed fix for the illustrations (moving `fill:none`
+off the `<svg>` attribute, moving the animation off the `<svg>` root,
+finally converting every dot/bar to stroke-only shapes) has been
+verified correct in this session's own Chromium-based tooling each time,
+and each has still been reported broken on the real device afterward.
+Two rounds of blind, reasoned fixes for the same two symptoms without
+new evidence have not resolved them — per this whole session's own
+established pattern, only an actual device screenshot has ever
+identified what was really wrong (it's what found the fill-vs-stroke
+distinction, the button-appearance bug, and the background-clip:text
+bug, all wrong on the first guess). **Next session/turn should get a
+fresh, targeted screenshot of both areas specifically before changing
+either again** — continuing to guess a fourth or fifth theory blind is
+unlikely to be more productive than the last two attempts were.
+
+**Verified this round**: tag-balance re-checked with the comment-stripped
+pass (all real tags — `div`/`button`/`svg`/`span`/etc. — balance
+exactly). Chromium-confirmed at 390px: hamburger open/close still correct
+after this round's unrelated JS change, mobile language dropdown opens/
+closes correctly and does not collapse the drawer, active language
+correctly highlighted. **Not committed** — same working-tree diff as
+every session below, still awaiting review.
+
+## Session status (2026-09-21, continued 3rd round) — The real fix for the illustration dots (fill:var() itself is broken on this Safari, not just animation): converted to stroke-only shapes; hamburger rebuilt as SVG lines instead of span divs; footer animation de-flashed; brief-strip contrast boosted
+
+**Third round on the same device-reported bugs, same day.** The previous
+round's fixes (moving `fill:none`/the animation off the `<svg>` root)
+did **not** resolve the illustration dots or the hamburger on the user's
+real phone — both were reported still broken after reload, while the
+footer text/icon fix from that same round *did* work. That asymmetry is
+what actually cracked it this time, instead of guessing a fourth theory
+blind.
+
+1. **Questions-illustration dots/punc — real root cause, not just
+   "animated SVG root":** since the footer icon's plain `fill="url(#id)"`
+   paths rendered fine once static, but these dots (colored via `fill:
+   var(--text-muted))`/`var(--btc-orange)` through a CSS class) kept
+   failing even fully static too, the actual variable is `var()` itself:
+   **mobile Safari doesn't reliably resolve a CSS custom property used
+   for the SVG `fill` property, full stop — while the identical `var()`
+   used for `stroke` (the rings, the dashed crosshair lines) has rendered
+   correctly this entire time.** Rather than keep chasing the exact
+   trigger, every dot/bar in all three illustrations was redrawn using
+   **stroke only** (`fill: none`, inherited from the `<svg>`): each
+   circle's radius is halved and given a `stroke-width` equal to the
+   original radius (a circle with `r = R/2, stroke-width = R, fill:
+   none` strokes a fully solid-looking disk of visual radius R with no
+   hollow center — no hole, no artifact), and Fig 0.3's rounded-rect tax
+   bars became round-capped `<line>`s the same way (a line inset by
+   half the bar's height from each original edge, `stroke-width` equal
+   to the bar's height, `stroke-linecap: round`). `.i-muted`/
+   `.i-fill-strong`/`.problem-punc` all switched from `fill: var(...)` to
+   `stroke: var(...)`. Verified via `getComputedStyle` on every dot/bar
+   (correct `stroke`/`stroke-width`, `fill: none`) and screenshots of all
+   three figs showing dots, crosshairs, and bars all rendering together.
+2. **Hamburger — also rebuilt, not just patched again.** The
+   `-webkit-appearance:none` fix from the previous round didn't resolve
+   it either. Rather than guess a fifth CSS property, the two `<span>`
+   divs (colored via `background`) were replaced entirely with an inline
+   SVG containing two **stroked `<line>` elements** — the one shape type
+   this exact device has proven, repeatedly, to render reliably
+   throughout this whole debugging arc. The open/closed→X animation
+   (`translateY + rotate`) moved from `background`-colored spans to
+   `transform` on the `<line>`s, same math as before
+   (`translateY(4px) rotate(45deg)` / `translateY(-4px) rotate(-45deg)`,
+   `transform-origin: 10px 10px` at the icon's own center). Verified via
+   a scripted click toggling `body.nav-open` and a zoomed screenshot
+   showing both a clean 2-line closed state and a clean X open state.
+3. **Footer animation "flashing" → replaced with a calmer motion**, per
+   explicit feedback (the text/icon visibility fix itself was confirmed
+   working). The icon's `footerWordmarkPulse` keyframe was an opacity
+   toggle (1↔0.6) — opacity flicking a large flat shape against solid
+   black reads as an on/off blink, especially at the faster 3s mobile
+   duration a much earlier round had deliberately sped up "so it
+   registers on a phone screen." Replaced with a subtle `scale(1)↔
+   scale(1.035)` breathe instead of opacity, and removed the
+   mobile-specific faster-duration overrides for both the icon and the
+   text shimmer entirely (both now run at their calmer original desktop
+   pace on mobile too) — the earlier "make it more noticeable" fix and
+   this round's "make it less flashy" fix were in tension; speed was the
+   part causing the complaint, not size/opacity, so size/opacity stayed
+   boosted for mobile and only the pace was reverted.
+4. **Place A ("Get the Brief" under the hero's "Find Best Service"
+   button) reported invisible against the black page** — not reproduced
+   in this session's own browser (a screenshot there showed a clearly
+   visible white "Get the Brief" button on a dark card), so this is most
+   likely the *card itself* being too close in value to the page
+   background to register on a real phone screen, not the button text.
+   `--dark-card` (#141414) vs. the page's `--dark` (#08090a) is a very
+   subtle 141414-vs-08090a difference that a screenshot's own
+   compression/anti-aliasing can make look more distinct than it
+   actually is on-device. Bumped `.brief-strip-inner`'s background/
+   border from `--dark-card`/`--border` up to the stronger `--dark-card-
+   hover`/`--border-hover` pair (already used elsewhere for hover
+   states) so it reads as a clearly separate surface at rest. **Flagged
+   as the one fix this round without strong supporting evidence** — no
+   screenshot of this specific element was provided, unlike the other
+   three; worth a targeted screenshot of this one area specifically if
+   it's still not visible after this change.
+
+**A pattern now confirmed three times over on this specific device,
+worth keeping in mind for any future decorative SVG/CSS-variable work on
+this page**: `stroke` reliably resolves a `var()`-driven color; `fill`
+does not, regardless of whether it's a bare presentation attribute, a
+CSS class, or animated. When a shape needs to be colored via a custom
+property on this page going forward, prefer stroke-based construction
+(the radius/stroke-width halving trick for dots, inset round-capped
+lines for bars) over `fill`.
+
+**Verified this round**: tag-balance re-checked with a comment-stripped
+pass (confirmed real balance, not just flat-count false positives from
+CSS comments mentioning tag names in prose — `span`/`svg`/`line`/`circle`
+all balance exactly). Chromium regression-checked at 390px: all three
+illustrations screenshot-confirmed showing dots/bars/punc correctly,
+hamburger screenshot-confirmed forming a clean 2-line closed icon and a
+clean X on click. **Not yet re-verified on the user's actual Safari
+device** — items 1–3 are grounded in resolving a real, evidence-backed
+contradiction (the footer fix worked, these didn't, under the same
+device/session), not a fresh guess; item 4 has no direct screenshot
+evidence yet. **Not committed** — same working-tree diff as every
+session below, still awaiting review.
+
+## Session status (2026-09-21, continued) — Three real Safari-only bugs found and fixed from actual device screenshots: SVG fill-on-animated-root, `<button>` missing `-webkit-appearance:none`, and `var()` inside a background-clip:text gradient
+
+**Direct follow-up to the entry below, same day.** The previous round's
+SVG fix (converting bare `fill="var(...)"` attributes to CSS classes)
+turned out to be an **incomplete diagnosis** — the user sent three fresh
+screenshots from their real device (mobile Safari, not Chrome) showing
+all three reported symptoms still present *after* that fix had already
+shipped. Each was root-caused properly this time by cropping/zooming the
+actual screenshots pixel-by-pixel (via a local Python/PIL crop, not just
+eyeballing) rather than guessing again from code alone.
+
+1. **Questions-illustration dots/punc — the real bug wasn't `var()` in a
+   bare attribute at all.** Zooming into the screenshot showed the 3 ring
+   strokes AND the dashed crosshair lines rendering fine — only the
+   **fill-only** shapes (the muted dots and the orange punc) were
+   invisible, exactly as before the "fix." The actual cause: the `<svg>`
+   root itself still carried a `fill="none"` presentation attribute, and
+   `.problem-art svg` was the element receiving `animation:
+   problemArtFloat` (a `transform` animation) directly. Mobile Safari
+   appears to silently stop repainting fill-only children once the `<svg>`
+   root both (a) carries any presentation attribute and (b) is itself the
+   target of a CSS transform animation — stroke-painted shapes keep
+   rendering, fill-only ones go invisible. Fixed by moving `fill="none"`
+   from the `<svg>` attribute into a real `.problem-art svg { fill: none;
+   }` CSS rule, AND moving the float animation off the `<svg>` element
+   entirely onto its existing plain-HTML wrapper (`.problem-art` itself),
+   so the `<svg>` is no longer an animation target at all. Verified via
+   `getComputedStyle` in this session's own browser (`svgFill: "none"`,
+   `puncFillComputed: "rgb(247, 147, 26)"`, `mutedFillComputed: "rgb(139,
+   148, 158)"`) and a fresh 390px screenshot showing all dots/punc
+   correctly visible.
+2. **Hamburger lines completely invisible (not just static) — a classic,
+   well-documented Safari gap**: `.nav-hamburger` is a `<button>` with
+   `display:flex` children, but neither this page's own override nor the
+   shared `styles.css` ever set `-webkit-appearance:none` on it. Safari
+   keeps a `<button>`'s native chrome/appearance active underneath author
+   flex/grid layout unless it's explicitly turned off, which can silently
+   break the child layout — exactly matching "the button's tappable area
+   is there, both line spans are invisible." Fixed with a page-local
+   `-webkit-appearance: none; appearance: none;` added to `.nav-hamburger`
+   in `index.html` (not touching the shared `styles.css`, per this repo's
+   per-page-override convention, since it's used unmodified on ~25 other
+   pages). Verified via `getComputedStyle(...).webkitAppearance === "none"`
+   and a screenshot showing both lines clearly rendered.
+3. **Footer wordmark — two separate, compounding causes, both fixed the
+   same way as #1's principle ("get `var()`/animation out of the specific
+   context that's failing")**: the giant "Virtuse" watermark text uses
+   `background: linear-gradient(100deg, var(--text) ..., #5FAEDE ...,
+   var(--text) ...)` with `-webkit-background-clip: text` — a real device
+   screenshot showed the text **fully invisible** while ordinary
+   `var(--text-muted)` text two lines above it in the same footer rendered
+   completely normally, meaning this is specific to `var()` used inside a
+   gradient that also drives `background-clip:text`. Fixed by hardcoding
+   the gradient's two theme-dependent stops (`#e6edf3` dark / `#0d0d0d`
+   light, matching `--text`'s actual resolved values) instead of
+   referencing the variable, with a new `:root[data-theme="light"]
+   .footer-wordmark-text` override carrying the light-theme value. The
+   V-mark icon (a two-path gradient-`url()`-filled `<svg>`) was reduced to
+   a barely-visible sliver of one path in the same screenshot — same root
+   cause as #1: the `<svg class="footer-wordmark-icon">` was itself the
+   target of `animation: footerWordmarkPulse`. Fixed the same way: wrapped
+   the `<svg>` in a new `<span class="footer-wordmark-icon-wrap">`, moved
+   the animation onto that wrapper, and left the `<svg>` itself static.
+   Both text and icon spans needed their own distinct classes
+   (`.footer-wordmark-text` / `.footer-wordmark-icon-wrap`) since they're
+   now sibling `<span>`s and the old bare `.footer-wordmark span` selector
+   would otherwise have applied the 288px/gradient-clip text styling to
+   the icon wrapper too. Verified via `getComputedStyle` (`wrapAnimation:
+   "footerWordmarkPulse"`, `textBg` resolving to the literal rgb() triple)
+   and a fresh 390px screenshot showing "Virt..." legible again.
+
+**A pattern worth remembering for any future SVG/decorative-animation work
+on this page**: on this specific mobile Safari, animating a `transform`
+or other property **directly on an `<svg>` root element** appears to
+unreliably repaint that SVG's fill-only children, especially when the
+root also carries a presentation attribute. The reliable fix, used twice
+in this round, is always the same — wrap the `<svg>` in a plain HTML
+element, animate the wrapper, leave the `<svg>` itself un-animated and
+attribute-free (real CSS rules instead of presentation attributes).
+Separately, any `background: linear-gradient(...)` feeding
+`-webkit-background-clip:text` on this device should use literal color
+values, not `var(...)`, per-theme if needed via a `:root[data-theme=...]`
+override rather than the variable itself.
+
+**Verified this round**: tag-balance re-checked with a comment-stripped
+pass this time (an earlier flat regex count falsely flagged `<span>`s
+mentioned inside CSS comments as unclosed — confirmed false positive by
+locating and re-reading each flagged line; after stripping `/* */`
+comments, `span`/`svg`/every other tracked tag balances exactly). Chromium
+regression-checked at both desktop and 390px mobile widths post-fix — all
+three fixed elements screenshot-confirmed correct, nothing else visibly
+broken. **Not yet re-verified on the user's actual Safari device** — all
+three fixes are grounded in pixel-level analysis of their own screenshots
+rather than guesses, but only a fresh screenshot from their phone can
+confirm these actually resolve it there. **Not committed** — same
+working-tree diff as every session below, still awaiting review.
+
+## Session status (2026-09-21) — Real root cause found for the Safari-only invisible dots/punc: bare `var()` SVG presentation attributes; "As seen in" converted to a single-row ticker; hamburger/footer-logo invisibility still unresolved
+
+**Same `index.html`-only thread, continuing after two rounds of the user
+reporting fixes "still not showing" on their real phone.** This round's
+first real break: the user specified they are testing on **mobile
+Safari, not Chrome**, and sent a screenshot of Fig 0.1 (the first
+Questions-section illustration) showing the ring/crosshair strokes
+rendering fine while every dot — including the orange punc — was
+completely invisible.
+
+**Root cause, confirmed by that screenshot, not guessed:** all three
+illustrations' dots were drawn with bare SVG presentation attributes
+referencing CSS custom properties directly —
+`fill="var(--text-muted)"`, `fill="var(--btc-orange)"`, etc. — while the
+ring/line strokes used the equivalent `stroke="var(...)"` form. Mobile
+Safari can silently fail to resolve a `var()` value used as a bare
+presentation-attribute string (as opposed to inside an actual CSS
+declaration), even though the identical pattern works everywhere else
+tested this session (desktop Chrome/Safari, the in-app browser). This
+is a real, narrow Safari bug, not a caching or deployment issue — every
+earlier "still broken" report for this specific symptom had a correct,
+verified DOM/CSS state; the browser itself just wasn't painting the
+`fill`.
+
+**Fix**: converted all 22 bare `fill="var(...)"`/`stroke="var(...)"`
+attributes across Fig 0.1/0.2/0.3 into real CSS classes — `.i-border`,
+`.i-border-strong`, `.i-muted`, `.i-fill-strong` (new), plus folding the
+orange punc's fill into the existing `.problem-punc` class instead of a
+bare attribute. Verified via `grep -c "fill=\"var(\|stroke=\"var("` → 0
+remaining occurrences anywhere in the three illustrations. **This is
+the correct general fix for the class of bug** — any future SVG added
+to this page should use classes for `var()`-driven fill/stroke, never
+the bare-attribute form, since this Safari failure mode isn't
+predictable from reading the code, only from a real device.
+
+**"As seen in" converted to a single-row ticker**, per explicit request
+to match "You're in good company"'s animation ("staci ak budu v jednom
+riadku" — one row is enough). The existing `.co-ticker`/`.co-row`/
+`.co-set` CSS (built for the Company section) turned out to be fully
+generic — not scoped to `.company` anywhere in its selectors — so it
+was reused directly rather than duplicated: the old two `.seen-row` divs
+(5 + 3 logos) were merged into one `.co-set` of all 8 `.seen-logo`
+links, duplicated once more (`aria-hidden="true"`, `tabindex="-1"` on
+the duplicate's links) for the seamless `translateX(-50%)` loop, both
+wrapped in one `.co-ticker > .co-row`. The now-dead `.seen-row` CSS (3
+rules, including a 768px-only grid override added two rounds ago) was
+deleted rather than left orphaned. Verified: ticker structure correct
+(2 `.co-set`s, 8 links each, second marked `aria-hidden`), animation
+confirmed actually running (`.co-row`'s computed `transform` polled
+twice 800ms apart, confirmed moving), and at 390px width `document.body
+.scrollWidth === window.innerWidth` (no horizontal overflow) with a
+screenshot showing one clean logo row. Tag-balance re-checked (section/
+form/div/script/style/span/details/summary all matched).
+
+**Still unresolved, flagged clearly rather than claimed fixed:**
+1. **Hamburger lines/X reported completely invisible on real mobile
+   Safari** (not just static — not there at all). No conflicting/
+   overriding `.nav-hamburger`/`.nav-hamburger span` rule was found in
+   either `index.html` or the shared `styles.css` on inspection. Only a
+   defensive `var(--text, #e6edf3)` fallback was added to the span's
+   `background` this round as cheap insurance, but this is **not a
+   confirmed fix** — no root cause was identified, unlike the SVG dots
+   above. Needs a fresh screenshot of the real device's top-right nav
+   corner before guessing further.
+2. **Footer wordmark/logo animation reported invisible on real mobile
+   Safari**, despite two prior rounds of visibility/animation-speed
+   tweaks. Checked whether it shares the SVG-`var()`-attribute bug found
+   above: it doesn't — the footer icon uses `fill="url(#vlgFooterA)"`
+   (a gradient `<defs>` reference), not a bare `var()`. Root cause is
+   still unidentified. Needs a fresh footer screenshot before further
+   changes — blind iteration on this element has already cost two
+   rounds without resolving it.
+
+**Verified this round**: preview server (`nocache_server.py`, a
+`SimpleHTTPRequestHandler` subclass forcing `Cache-Control: no-store`
+etc. on every response, built two rounds ago specifically to rule out
+browser caching as an explanation for "still not showing" reports) still
+running on port 8891; tag-balance check clean; ticker animation and
+no-overflow behavior confirmed via `getComputedStyle` polling and a
+real screenshot at 390px. **Not committed** — same working-tree diff as
+every session below, still awaiting review. **Not re-verified on the
+user's actual Safari device this round** — the SVG fix has strong
+supporting evidence (it directly matches the screenshotted symptom) but
+has not yet been confirmed working post-fix by the user.
+
+## Session status (2026-09-20, continued) — Preview server now sends no-cache headers (likely explains two "still not fixed" reports), plus 8 more fixes: a real hardcoded-active-nav-link bug, hamburger→X now 2 lines like Linear, "As seen in" regridded, footer restyled, Questions illustrations enlarged+animated, "You're in good company" relocated
+
+**Same `index.html`-only thread, second round of the day.** The user
+reported two of the *previous* round's fixes (Questions-illustration
+punc, footer wordmark) "still" not showing correctly on their phone even
+though this session's own DOM checks confirmed the underlying CSS/SVG
+was correct both times. Before touching any more CSS, **restarted the
+preview server itself** (`python3 -m http.server` → a custom
+`http.server` subclass sending `Cache-Control: no-store, no-cache,
+must-revalidate` / `Pragma: no-cache` / `Expires: 0` on every response)
+since the plain `SimpleHTTPRequestHandler` sends no cache headers at
+all, and mobile Chrome in particular can aggressively disk-cache a
+repeatedly-hit `http://<lan-ip>:port/` origin across page loads even
+without an explicit cache directive telling it to. This may well be the
+actual explanation for both "still broken" reports, independent of
+anything below.
+
+**Eight further fixes/changes, all `index.html`-only:**
+
+1. **All three Questions-illustration puncs re-verified and enlarged** —
+   `.problem-art` grown 170px→200px tall (SVG max-width 150→180px), each
+   illustration given a slow continuous float (`problemArtFloat`, 5s) and
+   its one orange element (now tagged `.problem-punc` for targeting) a
+   gentle breathing glow (`problemPuncPulse`, 2.6s, opacity + drop-shadow)
+   — matching the "Linear Fig 0.1, but alive" brief and giving the
+   illustrations more visual weight than the previous flat/static
+   versions, on both mobile and desktop.
+2. **Footer column typography matched to linear.app's own spec** (checked
+   live: 13px for both heading and links, weight/color is what
+   differentiates them) — `.footer-col h4` overridden from the shared
+   `styles.css` 14px/700 to 13px/600, `.footer-col a` from 14px to 13px
+   with a consistent 12px rhythm, for a more symmetric, evenly-set block
+   than the previous slightly-mismatched sizing.
+3. **A real, longstanding bug found and fixed**: the "About" nav link
+   carried a hardcoded `class="active"` on `index.html` — the *homepage*
+   — permanently highlighting it in orange with no hover needed, clearly
+   copy-pasted from `about.html`'s own nav template at some point and
+   never caught since it's a small visual detail easy to miss without
+   deliberately checking every nav item's rest-state. Removed the class
+   entirely (the homepage has no dedicated "Home" nav item to mark
+   active instead).
+4. **Hamburger menu rebuilt as Linear's own 2-line pattern** — the shared
+   `styles.css` button assumes 3 spans (fading the middle one out,
+   rotating the outer two into an X); markup here now has only 2 spans,
+   with a page-local override recalculating the rotation/translate math
+   for 2 lines 6px apart (±4px instead of ±8px) so they meet cleanly at
+   center to form the X on open — same open-state look, a plainer
+   2-line closed icon instead of 3.
+5. **"As seen in" logos re-gridded on mobile** — `.seen-row`'s old
+   `justify-content:center` + `flex-wrap` let each row re-center
+   independently around its own leftover space (5 logos vs 3 logos per
+   row), landing them at different x-offsets row to row and reading as
+   scattered. Switched to `display:grid; grid-template-columns:repeat(2,
+   1fr)` so both rows align to the same two columns. Removed a stray
+   duplicate `.seen-row{gap:...}` rule from a second, later 768px media
+   query block that would otherwise have partially overridden this.
+6. **Four hero-trust partner-logo images removed** (21bitcoin/Kraken/
+   ByBit EU/Trezor, sitting under the hero buttons) — the whole
+   `.hero-trust` block deleted along with its now-fully-dead CSS
+   (`.hero-trust`, `.trust-check`, and the mobile `.hero-trust{gap:12px}`
+   override — none had any other caller).
+7. **"You're in good company" subheading removed** ("Trusted partners
+   and platforms powering the Virtuse ecosystem") — the now-orphaned
+   `.company-sub` CSS deleted, and `.company h2`'s own `margin-bottom`
+   increased (14px→40px) to keep sensible spacing before the logo
+   tickers now that the subheading paragraph isn't there to provide it.
+8. **"You're in good company" section relocated** to sit directly after
+   "The Questions Most Bitcoiners Ignore" (previously it sat between "As
+   seen in" and the bottom "Get the Brief" capture, near the end of the
+   page) — moved via a scripted cut/paste (given the section's length —
+   two full logo tickers, ~50 lines — a manual `Edit` risked a
+   transcription slip) rather than by hand, with the orphaned "CONCIERGE
+   BANNER" HTML comment that got left behind in the old position cleaned
+   up and reinstated directly above its own section.
+
+**Verified this round** (freshly no-cache preview server + the Browser
+pane, 390px mobile and 1440px desktop, both themes): tag-balance check
+clean; section DOM order confirmed via `querySelectorAll('section')` as
+`hero → brief-strip → problems → company → concierge-banner → credit →
+services → how → vblog → as-seen → newsletter → quick-answers`; hamburger
+open/close screenshot-confirmed forming a clean X from 2 lines; "About"
+nav link confirmed no `active` class and resting-state muted color on
+both mobile and desktop; "As seen in" screenshot shows a clean aligned
+grid; footer wordmark and Questions-illustration animations reconfirmed
+actually running via `getComputedStyle` polling (background-position and
+opacity both changing over time), not just present in markup. No
+horizontal overflow at 390px. No new console errors beyond the
+pre-existing GTM `ga-audiences` CSP violation. **Not committed** — same
+working-tree diff as every prior round, still awaiting review.
+
+## Session status (2026-09-20) — Mobile polish: orange punc restored on all 3 Questions illustrations, footer column row-gap widened, footer wordmark made actually visible on small screens, first How-Virtuse-Works dot given a stronger glow
+
+**Same `index.html`-only thread, first round of a new day**, all four
+asks specifically about mobile.
+
+1. **All three Questions-section illustrations (Fig 0.1/0.2/0.3) now
+   carry the orange "punc"** — two rounds ago these were deliberately
+   desaturated to grayscale (only Fig 0.1 kept orange, per an explicit
+   "make them black & white, leave only the first colored" request that
+   day). This request explicitly reverses that for all three: Fig 0.2's
+   center succession-node dot and Fig 0.3's highlighted ledger bar both
+   switched back from `var(--text)` to `var(--btc-orange)`. **Caught a
+   real verification gotcha while confirming this**: the edited file was
+   correct on disk (confirmed via `grep`) and the server was serving it
+   correctly (confirmed via `curl`), but the already-open Browser pane
+   tab was still showing the pre-edit SVG fills — a stale-tab-cache
+   issue, not a bug in the fix itself. Resolved with an explicit
+   `location.reload(true)` before re-checking, rather than concluding
+   the edit had failed.
+2. **Mobile footer column grid row-gap widened (40px→64px)** — the
+   Services column runs 7 links deep while its row-mate (Company) has
+   only 2, so with the old 40px gap the *next* row (Tools/Guides) began
+   almost flush under "Bots," reading as cramped even though the gap
+   value itself was reasonable for evenly-tall columns.
+3. **Footer wordmark given its own, more visible mobile treatment** —
+   the desktop-tuned 0.14 opacity read as barely-there on a small,
+   possibly sunlit phone screen. Mobile now gets `opacity:0.32`, a taller
+   clip window (75px→110px) and larger icon/text (105px→140px icon,
+   138px→184px text) so more of the shimmer is visible, plus faster
+   animation durations (7s/6s→3.5s/3s) so the sweep actually completes
+   within a typical scroll-by glance instead of needing several seconds'
+   dwell time to notice.
+4. **First "How Virtuse Works" step's orange dot strengthened for
+   mobile** — the dot itself was already correctly orange sitewide
+   (confirmed via `getComputedStyle` before touching anything — this
+   wasn't a color bug), but a small 8px dot with a faint 0.2-opacity halo
+   reads as much less prominent on a small phone screen than the same
+   halo does at desktop viewing distance. Added a `box-shadow` glow
+   (`0 0 10px 2px rgba(247,147,26,0.65)`) and bumped the halo opacity to
+   0.3, mobile-only, so it visually matches how it reads on the "Mac"
+   (desktop) version without changing the desktop styling itself.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane, 390px mobile, both themes): tag-balance check clean; all three
+illustration SVGs confirmed carrying exactly one `var(--btc-orange)` fill
+each via a DOM query (not just a screenshot glance) after working around
+the stale-tab issue above; footer column screenshot shows clear
+separation between rows now; footer wordmark opacity/animation-duration
+confirmed via `getComputedStyle` (0.32, 3s/3.5s) and visibly more legible
+in a screenshot; first How-Virtuse-Works dot's `box-shadow` confirmed
+present and correctly re-themed in light mode
+(`rgb(194,100,10)` — the light-theme `--btc-orange` — with the same glow).
+No new console errors beyond the pre-existing GTM `ga-audiences` CSP
+violation. **Not committed** — same working-tree diff as every prior
+round, still awaiting review.
+
+## Session status (2026-09-19, continued 4th round) — Second, distinct mobile readability bug: no `color-scheme` declared, so the phone's own browser was double-darkening already-dark text
+
+**Same `index.html`-only thread, fourth round of the day.** The user sent
+a real screenshot from their phone after round 3's language-pill fix,
+showing the **hero headline, body copy, and stat labels all rendering as
+barely-visible dark-gray-on-black** — a different symptom from round 3's
+bug (that one was isolated to the drawer's language pills; this one hit
+the whole page) and not reproducible in the Browser pane emulator, which
+pointed at a browser-level behavior rather than a CSS specificity leak in
+this page's own rules.
+
+**Root cause: this page never declared `color-scheme` anywhere** (no
+`<meta name="color-scheme">`, no CSS `color-scheme` property) despite
+implementing a full custom light/dark toggle via `data-theme` + CSS
+variables. Browsers that don't know a page manages its own theming — most
+notably **Android Chrome's "Darken web pages" accessibility/data-saver
+feature**, on by default on many Android builds — apply their own
+automatic dark-mode color-inversion heuristics on top of the page's actual
+rendered colors. Against a page that *already* renders a fully dark UI
+without declaring `color-scheme`, that heuristic can mis-fire and
+re-darken text that's already light-on-dark, producing exactly the
+dark-text-on-dark-background the screenshot showed — indistinguishable
+from a real CSS bug from the *content* side, but nothing here would show
+up in `getComputedStyle` (the browser's forced-dark pass happens in the
+compositor, after style resolution) or in the Claude Browser pane (Chromium
+without that Android-specific feature enabled), which is why exhaustive
+`getComputedStyle`/screenshot checks in earlier rounds never caught it.
+
+**Fixed with the standard, documented opt-out**: added
+`<meta name="color-scheme" content="dark light">` in `<head>`, plus a
+matching CSS `color-scheme: dark` on the base `:root` (this page's default
+theme) and `color-scheme: light` on `:root[data-theme="light"]` — telling
+any browser with this behavior "this page already handles both schemes
+itself, don't also darken it." Both the meta tag and the CSS property
+were verified present and resolving correctly
+(`getComputedStyle(document.documentElement).colorScheme` → `"dark"`,
+`meta[name="color-scheme"].content` → `"dark light"`), but **the actual
+fix can only be confirmed on a real Android device with "Darken web
+pages" enabled** — this session's tooling has no way to reproduce or
+verify that specific browser feature, so the user needs to reload on
+their own phone to confirm this round actually resolved what they saw.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane): tag-balance check clean; screenshot confirms no regression to the
+already-correct dark rendering in this session's own tooling. **Not
+committed** — same working-tree diff as every prior round today, still
+awaiting review.
+
+## Session status (2026-09-19, continued 3rd round) — Real, longstanding bug found and fixed: the mobile drawer's language pills were unreadable because generic `.nav-links a` rules leaked onto them
+
+**Same `index.html`-only thread, third round of the day, triggered by the
+user reporting text/tabs looked "too dark, no white-on-black inversion" on
+mobile.** Extensive screenshotting of the hero, service cards, and the new
+Quick Answers section (all fine) didn't reproduce it — the actual bug was
+one specific, easy-to-miss spot: the mobile hamburger drawer's language
+switcher row (`EN SK UA CS RU DE`).
+
+**Root cause, found via `getComputedStyle` comparison against
+`styles.css`'s own `.lang-opt`/`.lang-opt.active` rules (not by
+guessing):** the `<a class="lang-opt">` language pills sit *nested inside*
+`<ul class="nav-links">` (`nav-links-lang-item > .lang-switch > a.lang-opt`)
+purely for DOM/markup convenience — but that nesting means every generic
+`.nav-links a` rule this session added over the past several rounds
+(compact desktop sizing, hover/active states, the 19px/700 mobile drawer
+link style, the orange active-page indicator) *also matches* the language
+pills, since `.nav-links a` (specificity 0,1,1) and `.nav-links a.active`
+(0,2,1) both **outrank** `.lang-opt` (0,1,0) and `.lang-opt.active` (0,2,0)
+on pure specificity, regardless of which file each is defined in or which
+loads later. Confirmed concretely: the active "EN" pill measured
+`color: rgb(247,147,26)` (orange) on `background: rgb(20,20,20)` (near-
+black) — i.e. **exactly inverted** from its intended orange-background/
+near-black-text pill — and every other pill had lost its muted gray for a
+plain near-white, while the whole `.lang-switch` row measured 419px wide
+inside a ~340px container (each pill's own width silently forced to
+`width:100%` by the leaking rule), overflowing both edges. This is not new
+damage from this session's dark-default/CTA-restore work — the leak has
+existed since the first round that added page-local `.nav-links a` rules;
+it just hadn't been specifically screenshotted/checked until now.
+
+**Fixed with `:not(.lang-opt)` on every leaking selector**, four total
+(two unconditional, two inside the mobile drawer's own media query):
+`.nav-links a`, `.nav-links a:hover`, `.nav-links a.active`, and
+`.nav-links a.active::before` (the orange left-edge accent bar for the
+current page) — each now explicitly excludes `.lang-opt` so the pills fall
+through to their own, already-correct `styles.css` rules undisturbed. Did
+**not** touch `.nav-links a.active .nav-link-num`/`.nav-link-arrow` (those
+select descendants that don't exist inside a `.lang-opt` link, so they
+were never actually part of the leak) or the desktop (non-mobile) copy of
+this same active-link styling (unreachable in practice — its parent `li`
+is `display:none` outside the mobile media query — flagged here rather
+than silently left inconsistent, but not worth a defensive fix for
+something that can't render).
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser pane,
+390px mobile and 1440px desktop): tag-balance check clean; re-measured all
+6 language pills via `getComputedStyle` after the fix — active "EN" now
+correctly `rgb(13,9,2)` text on `rgb(247,147,26)` background, the other
+five correctly `rgb(139,148,158)` (matches `--text-muted` exactly) on
+transparent; screenshot confirms the row now reads clearly and fits
+without overflowing; desktop's 11 main nav links + separate dropdown
+language switcher confirmed unaffected (different DOM structure, `.lang-
+menu-btn` not `.lang-opt`). No new console errors beyond the pre-existing
+GTM `ga-audiences` CSP violation. **Not committed** — same working-tree
+diff as every prior round today, still awaiting review.
+
+## Session status (2026-09-19, continued 2nd round) — New "Quick answers" FAQ section (firefish's own homepage pattern, 9 real questions from faq.html), mobile now defaults dark + CTA restored beside the hamburger (Linear's mobile nav pattern), footer wordmark animated
+
+**Same `index.html`-only thread, second round of the day.**
+
+1. **New "Quick answers" section added**, right after the bottom "Get the
+   Brief" capture and before the footer — matching firefish.io's own
+   homepage exactly: their "Quick answers" FAQ teaser sits in that exact
+   same spot (confirmed by locating it via `get_page_text`, since the
+   heading text itself wasn't reachable through normal `querySelector`
+   — Framer renders it through a structure that only fully resolves via
+   full-page text extraction). Built as a plain accordion (`<details>`/
+   `<summary>`, the same native pattern `faq.html` already uses
+   sitewide) with a hairline divider between rows and a `+`/`−` icon
+   that flips on open — no card/box per row, matching firefish's own
+   minimal list. **All 9 questions and answers are copied verbatim from
+   the site's own `faq.html`** (What is Virtuse? / Is Virtuse an
+   exchange? / Does Virtuse ever hold my Bitcoin or my keys? / How does
+   the hub work? / How do you choose partners? / Are the partners
+   regulated? / What does Virtuse charge? / Does Virtuse require KYC? /
+   How do I withdraw my Bitcoin?) — not invented copy, reusing content
+   that's already reviewed and live elsewhere on the site.
+2. **Mobile now defaults to dark, matching desktop** — the anti-FOUC
+   script previously fell back to `prefers-color-scheme: light` when no
+   saved preference existed, and phones commonly report system Light
+   Mode even when the user's desktop browser doesn't — explaining why
+   the user saw light-by-default only on their phone. Dropped the
+   system-preference check entirely; the only thing that overrides dark
+   now is an explicit saved `vb-theme` choice.
+3. **Mobile top bar restored to show the CTA next to the hamburger,
+   matching linear.app's own mobile nav** (checked live: logo, "Log
+   in", "Sign up" pill, and the hamburger menu button all sit together
+   in one row, no overlap, no theme toggle since Linear's marketing site
+   doesn't have one). The prior round's fix for the theme-toggle-under-
+   hamburger overlap bug had hidden `.nav-actions` **entirely** at
+   mobile widths, which took the "Get Started" CTA down with it as
+   collateral damage — nothing asked for that, and it left the mobile
+   top bar with only a bare hamburger. Fixed by hiding just
+   `.nav-actions .theme-toggle` (the desktop toggle instance
+   specifically) instead of the whole container; `.nav-cta` already had
+   its own `position:fixed` rule placing it correctly beside the
+   hamburger, so once the toggle stopped competing for that same
+   physical space, the CTA could just reappear where it always
+   belonged. Re-verified the original bug is still fixed (toggle
+   reachable via the drawer, real theme-flip confirmed via `.click()`)
+   before calling this done — didn't want to re-break round 7's fix
+   while un-breaking this one.
+4. **Footer wordmark animated** — a slow brand-blue gradient shimmer
+   sweeps across the "Virtuse" text (`background-clip:text` +
+   `background-position` keyframe, 7s ease-in-out) and the V-mark icon
+   breathes gently alongside it (opacity 1↔0.6, 6s). Firefish's own
+   equivalent element was checked live and found to actually be static
+   (`getComputedStyle` before/after scroll showed no change) — this was
+   treated as "make ours a living flourish" rather than a literal
+   like-for-like port, since there was nothing on their side to copy
+   frame-for-frame. Both animations added to the existing
+   `prefers-reduced-motion` guard.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane, 1440px desktop and 390px mobile, both themes): tag-balance check
+extended to cover `<details>`/`<summary>` for the first time this
+session (9/9 each, balanced); Quick Answers accordion confirmed
+actually toggling (`.open` state + icon flip) via a scripted click, not
+just present in markup; mobile theme confirmed `dark` on a fresh
+session even with `prefers-color-scheme:light` emulated and
+`localStorage` cleared; mobile nav-cta/hamburger rects confirmed
+non-overlapping via `getBoundingClientRect()`; drawer's theme toggle
+re-confirmed still actually flipping `data-theme` (didn't regress round
+7's fix); footer wordmark's icon opacity and text `background-position`
+both confirmed changing over a 1.5s poll. No new console errors beyond
+the pre-existing GTM `ga-audiences` CSP violation. **Not committed** —
+same working-tree diff as every prior round, still awaiting review.
+
+## Session status (2026-09-19, continued) — Three real mobile bugs found and fixed: theme toggle was unreachable (two separate causes), the hero capture's email input was inflating to ~270px tall, footer rebuilt as Linear's 2-column mobile grid
+
+**Same `index.html`-only thread, reported directly from the user's own
+phone** (not the Browser pane's emulated mobile width — the user opened
+`http://<mac-LAN-ip>:8891` on a real device on the same Wi-Fi and found
+real bugs the emulator hadn't surfaced in prior rounds' mobile checks).
+
+1. **"Can't switch to dark on mobile" — two independent, compounding
+   causes, both real bugs:**
+   - **Cause 1**: `.nav-actions` (the desktop-width group containing the
+     theme toggle, language dropdown, and CTA) had no mobile
+     `display:none` at all — it stayed visible and overlapped the
+     fixed-position hamburger button, which sits at the same top-right
+     screen position with a higher z-index. Confirmed via
+     `document.elementFromPoint()` at the toggle's own coordinates: it
+     returned the hamburger, not the toggle — every tap was being
+     silently swallowed. Fixed by hiding `.nav-actions` at
+     `max-width:1024px`, relying on the mobile drawer's own separate
+     `.theme-toggle-mobile` instance instead (already built, just
+     unused). **Took two attempts to actually land**: the first
+     `display:none` was added earlier in the file than the unconditional
+     `.nav-actions{display:flex}` base rule — same specificity, later
+     source order wins regardless of the media query, so the base rule
+     silently kept winning. Moved the override into a *later* existing
+     `@media(max-width:1024px)` block (the one that already hides
+     `.lang-menu`) so source order resolves correctly.
+   - **Cause 2**: even with the desktop toggle correctly hidden, the
+     mobile drawer's *own* toggle was unreachable too — the 6 language
+     pills (`EN/SK/UA/CS/RU/DE`) plus the toggle sit in one
+     `flex-wrap:nowrap` row (`styles.css`'s shared `.nav-links-lang-item`)
+     that measured **419px wide inside a ~340px container**, pushing the
+     toggle button off-screen to the right entirely (`getBoundingClientRect
+     ().right` past the viewport edge). Fixed with a page-local
+     `.nav-links-lang-item{flex-wrap:wrap; row-gap:12px}` override in
+     `index.html` (not touching the shared `styles.css`, per this repo's
+     per-page-override convention) — the toggle now wraps to its own row
+     instead of vanishing. **Verified end-to-end, not just visually**:
+     scripted a real `.click()` on the mobile toggle and confirmed
+     `document.documentElement`'s `data-theme` attribute actually flipped
+     light→dark.
+2. **Hero capture form's ("Virtuse Brief") email input was rendering
+   ~270px tall on mobile** — root cause: `.newsletter-form`'s mobile rule
+   flips `flex-direction` from row to column, which silently turns the
+   input's `flex:1` (meant to grow its *width* in the row layout) into a
+   *height* grow instead, and the form itself (`.brief-strip
+   .newsletter-form{flex:1 1 320px}`, also written for the row layout)
+   likewise became 320px **tall** as a flex-item of its own now-column
+   parent. Measured before fixing: form height 320px, input height
+   270.5px, button height 41.5px — confirming the mechanism, not just the
+   symptom. Fixed with two targeted `flex:none` overrides in the same
+   768px media query: one on `.brief-strip .newsletter-form` (needed the
+   more specific two-class selector to beat the base rule's own
+   specificity) and one on the generic `.newsletter-form input` (lower
+   specificity was fine here since it's the same selector as the base
+   rule, just later in source order).
+3. **Mobile footer rebuilt as linear.app's own 2-column grid** — checked
+   linear.app's real mobile footer live: `display:grid;
+   grid-template-columns:171px 171px` (i.e. a clean 2-up grid, not a
+   single stacked column), 48px row-gap, 13px/510-weight headings. Our
+   `.footer-columns` came from the shared `styles.css`
+   (`display:flex; gap:80px; flex-wrap:wrap`), which — with no per-column
+   width — collapsed to one full-width column per group on narrow
+   screens. Overrode to `display:grid; grid-template-columns:1fr 1fr;
+   gap:40px 24px` inside the existing 768px media query in `index.html`
+   only; our 5 groups (Services/Company/Tools/Guides/Legal) now lay out
+   2-up with Legal alone on its own last row, matching Linear's rhythm.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane at 390px, plus the fixes were specifically prompted by the user's
+own real-device report): tag-balance check clean; `.nav-actions`
+confirmed `display:none` at 390px and unchanged (`flex`) at 1440px — no
+desktop regression; mobile drawer's theme toggle confirmed within the
+viewport (`rect.right <= innerWidth`) and its click confirmed to
+actually flip `data-theme` via a scripted test, not just visual
+inspection; brief-strip email input confirmed back to a normal height
+via screenshot; footer confirmed as a real 2-column grid via screenshot,
+no horizontal overflow at 390px. No new console errors beyond the
+pre-existing GTM `ga-audiences` CSP violation. **Not committed** — same
+working-tree diff as every prior round, still awaiting review.
+
+## Session status (2026-09-19) — Questions-tab illustration+text unified into one card, "As seen in"/"You're in good company" re-centered, and a real sitewide left-margin bug found and fixed across every section down to the footer
+
+**Same `index.html`-only thread, first round of a new day, continuing the
+prior day's six rounds.**
+
+1. **Questions-section tabs (Fig 0.1/0.2/0.3) unified into one visual
+   card** — the previous round's fix (toning just `.problem-art`'s own
+   background so its rectangle read against black) left the illustration
+   and the heading/copy below it looking like two stacked elements, not
+   one tab, per explicit feedback comparing it to linear.app's own
+   "A new species of product tool" tab (illustration + text read as a
+   single unit there). Fixed by moving the toned background from
+   `.problem-art` up to `.problem-card` itself (`background:var(
+   --dark-card); border-radius:16px; padding:28px`), so the Fig label,
+   illustration, heading, copy, and link all now sit inside one padded
+   box; `.problem-art` itself is transparent again, just a sizing/
+   centering container. Added a `:hover` background-lighten to
+   `.problem-card` for consistency with `.svc-card`'s established
+   pattern, since it's a real card again now.
+2. **"As seen in" and "You're in good company" re-centered** — explicitly
+   named as exceptions to two rounds ago's sitewide left-alignment pass;
+   `.as-seen`/`.company` flipped back to `text-align:center`. The other
+   left-aligned headings (Services, Questions, How, Blog) were NOT part
+   of this ask and stay left-aligned.
+3. **Sitewide left-margin consistency, matching the hero** — the explicit
+   ask was to make every section's left margin match the hero's, all the
+   way down. Audit found the hero used `max-width:1400px` while every
+   other content section used `1200px` — bulk-updated all 10 other
+   `max-width:1200px` section wrappers (`.services`, `.problems`,
+   `.concierge-banner`, `.credit`, `.how`, `.vblog`, `.brief-strip`, its
+   status-message elements, `.footer-inner`) to `1400px` to match.
+   **Two real, previously-invisible bugs found in the process, not just
+   a number mismatch**: `.as-seen`, `.company`, and `.footer-main` had
+   **no width-capping wrapper at all** — their content sat directly
+   against a flat `padding: * 48px`, unconstrained by any max-width, so
+   on any viewport wider than ~1300px their content's left edge fell
+   further left than every 1200px/1400px-capped section above and below
+   them. Fixed `.as-seen` directly (its background matches the body, so
+   capping the section itself is safe); `.company` and `.footer-main`
+   needed a different fix since **their own background band would have
+   shrunk to the capped width along with the content** — added a new
+   `.company-inner` wrapper div (padding+max-width moved onto it, `
+   .company` itself keeps full-bleed background/border/shadow) and moved
+   `.footer-main`'s side padding onto the already-existing `.footer-inner`
+   the same way. **A second-order regression caught before it shipped**:
+   moving padding off `.footer-main` broke `.footer-bottom` (a separate
+   sibling of `.footer-inner`, styled by the *shared* `styles.css` with
+   its own `max-width:1200px` but no padding of its own) — it would have
+   gone flush to the viewport edge at any width narrower than 1200px.
+   Fixed with a local `.footer-bottom{padding-left/right:48px}` override
+   in `index.html` (not touching the shared `styles.css`, per this repo's
+   per-page-override convention), plus matching mobile reductions (24px)
+   for `.company-inner`/`.footer-inner`/`.footer-bottom` in the existing
+   768px media query, mirroring the pattern already used by `.as-seen`.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane, 1440px desktop and 390px mobile, both themes): tag-balance check
+clean; **measured every section's actual content left-edge via
+`getBoundingClientRect()+paddingLeft`** rather than eyeballing —
+`.hero-content`, `.services`, `.problems`, `.credit`, `.how`, `.vblog`,
+`.company-inner`, and `.footer-inner` all now measure **exactly 68px**
+from the viewport edge at 1440px width (were previously inconsistent,
+`.company-inner` alone measured 48px — a real 20px misalignment, now
+gone); confirmed 24px uniformly at 390px mobile with no horizontal
+overflow. Questions-tab cards confirmed as one unified toned box via
+screenshot. "As seen in"/"You're in good company" confirmed centered
+again in both themes. No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as the prior day's six rounds, still awaiting review.
+
+## Session status (2026-09-18, continued 7th round) — How Virtuse Works matched to Linear's exact 15px changelog type scale, Questions-tab illustrations toned + grayscaled (one kept color), every section heading left-aligned, concierge banner de-tinted
+
+**Same `index.html`-only thread, seventh round the same day.**
+
+1. **How Virtuse Works step typography matched to Linear's own changelog
+   entries, not just their dot recipe** — checked live via
+   `getComputedStyle` on an actual `.fjOtda_link`'s text nodes: heading
+   and body are the **same 15px size** (510-weight muted-white heading,
+   400-weight more-muted body), date 12px. Our `.how-log-num` (12px) and
+   `.how-log-body p` (15px) already matched from earlier rounds; only
+   `.how-log-body h3` needed to drop from 20px to 15px (kept our own
+   700-weight bold convention — only size was asked for).
+2. **Questions-section illustration tabs (Fig 0.1/0.2/0.3) redesigned
+   toward firefish.io's own illustrated-tab section**, "The open market
+   for Bitcoin-backed loans" — inspected live: each non-lead tab's
+   illustration sits in its own `rgb(20,20,20)` rounded box (firefish's
+   own card token) so the tab's rectangle reads against their black page,
+   same as our `--dark-card`. Added `background:var(--dark-card);
+   border-radius:16px; padding:24px` to `.problem-art`. **Grayscale
+   pass**: firefish keeps color only on their first ("Non-custodial")
+   tile and renders the other three in flat black-and-white — matched
+   here by leaving Fig 0.1's orange center-dot as the one colored accent
+   and swapping Fig 0.2's/0.3's orange elements (the "succession" dot,
+   the "tax" bar) to `var(--text)` so only one of the three illustrations
+   carries any color at all.
+3. **Every section/panel heading and subheading left-aligned**, matching
+   linear.app's own convention — `.sec-header` (used by Services/How/
+   Blog), `.problems-lead` (Questions), `.as-seen`, and `.company` all
+   flipped from `text-align:center` to `left` (and their now-redundant
+   `margin:0 auto` centering removed). **Deliberately left centered**:
+   the bottom "Get the Brief" `.newsletter`/`.brief-card-poster` — that's
+   a narrow, self-contained poster-style card from an earlier round's
+   explicit request, structurally different from the wide section headers
+   the ask's own example ("Every Bitcoin Service in One Place") pointed
+   at, and centering its heading while its input/button stayed centered
+   below it was judged the more consistent reading of "all headings" than
+   breaking that one component's established look.
+4. **`.concierge-banner-inner`'s orange/brown-tinted gradient background
+   replaced with flat `var(--dark-card)`** — matches the neutral gray the
+   service-grid cards and illustration boxes already use, per the
+   explicit "make it gray/less colorful like custody, mining, etc." ask.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane, 1440px desktop and 390px mobile, both themes): tag-balance check
+clean; `.how-log-body h3`/`p` both confirmed 15px via `getComputedStyle`;
+`.problem-art` confirmed `rgb(20,20,20)` background in dark theme and
+correctly re-themed in light theme; `.sec-header` confirmed
+`text-align:left`; screenshots in both themes show Fig 0.1 keeping its
+orange dot while Fig 0.2/0.3 render fully monochrome, "Every Bitcoin
+Service in One Place" and "The Questions Most Bitcoiners Ignore." both
+left-aligned, and the concierge banner reading neutral gray instead of
+brown. Mobile 390px confirmed no horizontal overflow. No new console
+errors beyond the pre-existing GTM `ga-audiences` CSP violation. **Not
+committed** — same working-tree diff as the six entries below, still
+awaiting review.
+
+## Session status (2026-09-18, continued 6th round) — Linear's exact changelog-dot recipe (red→orange, others muted gray), one more copy trim, partner-count claims removed and service cards rebuilt on firefish's space-between layout
+
+**Same `index.html`-only thread, sixth round the same day.**
+
+1. **Copy trim**: "Onboarding happens on their regulated platform..." →
+   "Onboarding **is** on their regulated platform..." (How Virtuse Works,
+   step 2) — exact wording swap, rest of the sentence unchanged.
+2. **How Virtuse Works dots now follow Linear's own changelog recipe
+   exactly**, not just its color — inspected the actual pseudo-elements
+   on linear.app's `.fjOtda_changelogIndicator` nodes via
+   `getComputedStyle(el, '::before'/'::after')`: each dot is a solid 6px
+   core (`::after`) plus a 20px soft halo behind it (`::before`, same
+   color, 0.1–0.2 opacity) — red only on the item marked
+   `data-first="true"`, muted gray (`rgb(98,102,109)`) on the rest.
+   Rebuilt `.how-log-dot` the same way: solid 8px core + an 8px-inset
+   halo (`opacity:0.2`) in `var(--text-dim)`, with `.how-log-item:
+   first-child .how-log-dot`(`::before` too) switching to
+   `var(--btc-orange)` at a lower 0.1 halo opacity — matching Linear's
+   own first/rest asymmetry, just orange instead of red. Previously all
+   three dots were flat orange with no halo at all.
+3. **All "N Partners — from X% fees"-style claims removed from the
+   6 service-grid cards** (`.svc-meta` divs and their CSS deleted
+   entirely, not just hidden) and **the whole card rebuilt on firefish.
+   io's own "Institutional grade security" tab layout**, confirmed live
+   via `getComputedStyle`: a **fixed-height card using
+   `justify-content:space-between`**, so the heading anchors to the top
+   and the body copy anchors to the bottom, leaving genuine open space
+   between them rather than the two sitting flush together. `.svc-card`
+   gained `min-height:300px` + `display:flex; flex-direction:column;
+   justify-content:space-between`; the now-trailing `.svc-card p`'s old
+   `margin-bottom:16px` (there to separate it from the now-deleted
+   `.svc-meta` line) was dropped since the flex gap does that job now.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane, 1440px desktop and 390px mobile, both themes): tag-balance check
+clean (`section`/`form`/`div`/`script`/`style`/`span`/`h2`/`h3`/`svg` all
+balanced); grep confirmed zero leftover `svc-meta` references anywhere;
+onboarding copy confirmed swapped; dot colors confirmed via
+`getComputedStyle` — first `rgb(247,147,26)` (orange), other two
+`rgb(72,79,88)` (muted, matches `--text-dim` in dark theme) — and
+re-confirmed correctly themed in light mode too; service-card screenshots
+in both themes show the heading-top/copy-bottom space-between layout with
+no partner-count line anywhere. Mobile 390px confirmed no horizontal
+overflow. No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as the five entries below, still awaiting review.
+
+## Session status (2026-09-18, continued 5th round) — Hero badge removed, service-card typography matched to firefish's card scale + 2-line clamp, a copy trim, footer wordmark +25%, one more de-orangized CTA, and a real light-theme bug fixed in the orbit chips
+
+**Same `index.html`-only thread, fifth round the same day.**
+
+1. **Hero badge removed** ("The World's First Bitcoin-Only Hub" pill +
+   its pulsing dot) — `.hero-badge`/`.hero-badge-dot`/`@keyframes pulse`
+   deleted entirely, not just hidden. `.hero-content`'s existing
+   `align-items:center` flex row re-centers the remaining headline/sub/
+   stats/buttons automatically now that the badge is gone — no extra
+   layout CSS was needed to get the "more modern, minimal hero" this was
+   asked for; removing the pill was the layout change.
+2. **Service-grid card typography matched to firefish.io's own card
+   scale** — checked live on their "Institutional grade security" tab:
+   heading 32px/500, body copy 18px/500 muted, capped at 2 lines. Applied
+   the same **sizes** to `.svc-card h3`/`p` (kept our own 700 weight for
+   headings — this page's established convention — since only size was
+   asked for, not weight), added `-webkit-line-clamp:2` as a hard cap. At
+   18px, the old 2-3 sentence copy no longer fit 2 lines, so all 6 card
+   descriptions were rewritten short, matching firefish's own terse style
+   (their example: "Non-custodial escrow, operated within a regulated
+   framework." — ~9 words): Custody, Mining, Trading Bots, Loans,
+   Treasury, and Tax Reporting each cut to one short clause.
+3. **Trimmed "Onboarding and KYC happen..." → "Onboarding happens..."**
+   in the How Virtuse Works step 2 copy, per explicit request (dropped
+   "and KYC" only, rest of the sentence unchanged).
+4. **Footer wordmark enlarged 25%** — icon 168px→210px, text
+   230px→288px, and the clipping container scaled proportionally
+   (110px→138px desktop, 60px→75px / 84px→105px / 110px→138px mobile) so
+   the crop ratio established two rounds ago stays the same, just bigger
+   overall.
+5. **`.concierge-banner-cta` ("Get matched in 60 seconds") de-orangized**
+   — same theme-aware inverted-neutral treatment (`var(--text)` on
+   `var(--dark)`) as `.btn-primary`/the brief-strip button from earlier
+   rounds. The *other* "Get matched in 60 seconds" link (How Virtuse
+   Works step 2, added two rounds ago) already used the neutral
+   `.how-card-cta` class and needed no change — confirmed by checking
+   before editing rather than assuming both instances were the same
+   color.
+6. **Real light-theme bug fixed in the orbit chips** — `.node-chip`'s pill
+   background was a **hardcoded dark navy-gray gradient**
+   (`rgba(38,44,54,…)`/`rgba(20,25,32,…)`), never overridden for light
+   theme, while its text used `var(--text)` (which flips to near-black in
+   light mode) — meaning every chip label ("Buy", "Custody", "Tax", etc.)
+   rendered as **dark text on a dark pill** in light theme, illegible
+   against the theme's own white hero background. Not something the prior
+   rounds' light-theme checks caught, since they polled color tokens on
+   already-theme-aware elements rather than screenshotting the orbit
+   specifically. Fixed with four new theme-aware tokens
+   (`--chip-bg`/`--chip-bg-hover`/`--chip-icon-bg`/`--chip-icon-bg-hover`)
+   added to both `:root` (the existing dark-navy values, unchanged
+   visually) and `:root[data-theme="light"]` (a near-white gradient
+   instead) — `.node-chip`/`.chip-icon` now reference the tokens instead
+   of the hardcoded colors. Also softened the chip's drop-shadow alpha
+   (0.5→0.28 resting, 0.55→0.3 hover) since the old heavy black shadow
+   read as muddy under a white pill.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser pane,
+1440px desktop and 390px mobile, both themes): tag-balance check clean;
+grep confirmed zero leftover `hero-badge` references; `.svc-card h3`/`p`
+computed to 32px/18px with `-webkit-line-clamp:2` active (screenshot shows
+real ellipsis-style truncation on the longer descriptions); onboarding
+copy confirmed trimmed; footer wordmark computed to 210px icon / 288px
+text; concierge-banner CTA confirmed `rgb(230,237,243)` bg / near-black
+text (no orange); **light-theme orbit chips screenshotted and confirmed
+readable** — near-white pill, near-black text, versus the old
+unreadable dark-on-dark before this fix. Mobile 390px confirmed no
+horizontal overflow. No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as the four entries below, still awaiting review.
+
+## Session status (2026-09-18, continued 4th round) — How Virtuse Works matched to Linear's actual horizontal Changelog, nav shrunk to Linear's size, footer wordmark gained the real V-mark, credit-panel coin gained a firefish-style pulse/ripple, partner logos now a two-row ticker
+
+**Same `index.html`-only thread, fourth round the same day, refining the
+previous round's work rather than adding new sections.**
+
+1. **"How Virtuse Works" corrected to Linear's actual Changelog layout** —
+   the prior round built a vertical list (steps stacked, each its own row);
+   live inspection of linear.app's own homepage "Changelog" section (not
+   the `/changelog` blog page — a distinct marketing-page section, found by
+   searching for an `h2` with that exact text) showed entries are laid out
+   **horizontally**, side by side as columns under one shared rule, each
+   column's dot sitting ON that rule, with a small date label at the
+   **bottom** of the column (not the top). Rebuilt `.how-log` as a flex
+   row (`border-top` on the parent, dot `margin-top:-4px` to straddle the
+   line), and reordered `.how-log-body`'s children via flex `order` so
+   heading → paragraph → link → "STEP 0X" label renders in that visual
+   order without touching the HTML's own logical/reading order. Added a
+   dedicated mobile fallback (`@media max-width:1024px`) reverting to a
+   vertical stack with per-item `border-top`, since the horizontal version
+   doesn't degrade gracefully on its own.
+2. **Footer wordmark gained the real V-mark + brand-blue gradient** — the
+   previous round's plain-text "Virtuse" watermark (monochrome
+   `var(--text)`) now sits next to the actual V logo icon (same SVG/
+   gradient-stop markup as the nav/footer logo elsewhere on the page, new
+   `vlgFooterA`/`vlgFooterB` gradient ids to avoid duplicate-id collisions
+   with the nav's own `vlgA`/`vlgB`), both wrapped in one `opacity:0.14`
+   container — enough to actually read as blue rather than a flat gray
+   silhouette, while still sitting well below full-opacity so it reads as
+   a background flourish, not a second competing logo.
+3. **Desktop nav link size matched to linear.app's own nav**, read live via
+   `getComputedStyle` on their actual header links: 13px/400-weight (ours
+   was 14px/500 from the shared `styles.css`). Overridden in `index.html`'s
+   own `<style>` block only — `styles.css` itself is shared by ~26 other
+   pages and wasn't touched, per this repo's per-page-override convention.
+   The mobile drawer's separate, deliberately larger 19px/700 link style
+   (inside its own `max-width:1024px` block, built for touch targets) is
+   untouched.
+4. **`.nav-cta` ("Get Started") shrunk to match** — padding `10px 24px`
+   →`8px 16px`, font-size 14px→13px, proportional to the now-more-compact
+   nav rather than copying Linear's literal pill shape (kept Virtuse's own
+   8px-radius button language, which every other CTA on the page already
+   uses — a full pill here would be the one inconsistent button shape on
+   the site).
+5. **Credit-panel coin animation extended** — firefish.io's own "Bitcoin is
+   your credit" visual was inspected via two screenshots a couple seconds
+   apart (confirmed animated, not a static image): a pixel-art ₿ glyph
+   whose glow visibly brightens and dims. Added the same idea to our own
+   3D-gradient coin: a `creditGlowPulse` keyframe breathing the coin's own
+   `box-shadow` glow (46px↔74px blur, 0.5↔0.8 alpha) layered onto its
+   existing float animation, plus three `.credit-ripple` rings (staggered
+   1.2s apart) expanding from `scale(1)`/`opacity:0.5` to
+   `scale(2.3)`/`opacity:0` behind the coin — approximating firefish's
+   concentric-ring pulse without literally copying their pixel-grid
+   rendering technique. All three ripple divs plus the coin's animation
+   added to the existing `prefers-reduced-motion` guard.
+6. **"You're in good company" rebuilt as a two-row logo ticker** — each of
+   the two existing `.co-row`s wrapped in a new `.co-ticker` (
+   `overflow:hidden` + an edge-fade `mask-image` so logos don't hard-cut at
+   the container edge) and its logo set duplicated once into two
+   `.co-set`s (the second marked `aria-hidden="true"`/`tabindex="-1"` on
+   every link) so a `translateX(-50%)` loop is seamless. Row 1 scrolls
+   left (38s), row 2 scrolls right (44s, via a mirrored keyframe) for the
+   "modern dual-direction ticker" look asked for, and pauses on hover
+   (`:hover` → `animation-play-state:paused`) so a partner logo can
+   actually be read/clicked. **Reduced-motion handled deliberately, not
+   just frozen**: a straight `animation:none` on a `width:max-content`
+   duplicated-content row would leave a broken-looking single overflowing
+   line, so its own `prefers-reduced-motion` block instead reverts the
+   whole thing to the original static wrapped/centered grid (`flex-wrap:
+   wrap`, duplicate `.co-set` hidden via `[aria-hidden="true"]`) — the
+   pre-ticker layout, not a half-broken frozen ticker.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser pane,
+1440px desktop and 390px mobile): tag-balance check clean (`section`/
+`form`/`div`/`script`/`style`/`span`/`h2`/`h3`/`svg` all balanced); nav
+link/CTA computed font-size confirmed 13px in both cases; How Virtuse
+Works confirmed as 3 real flex columns sharing one `border-top`, screenshot
+matches Linear's own layout; credit-panel ripples confirmed actually
+animating via a transform/opacity poll (not just present in markup);
+footer wordmark screenshot shows the blue V-mark next to the giant text;
+both `.co-row`s confirmed moving via a before/after transform poll: mobile
+390px confirmed no horizontal overflow and `.how-log` correctly reverting
+to a column layout. No new console errors beyond the pre-existing GTM
+`ga-audiences` CSP violation. **Not committed** — same working-tree diff
+as the three entries below, still awaiting review.
+
+## Session status (2026-09-18, continued 3rd round) — Linear.app dek pattern sitewide, Questions section rebuilt as Linear's "Fig 0.1" tab layout, "Bitcoin is your credit" extracted as its own firefish-style panel, How Virtuse Works rebuilt as a Linear changelog, giant footer wordmark, two more CTAs de-orangized
+
+**Same `index.html`-only thread as the two entries below, third round the same
+day.** Ten concrete, reference-driven asks, each checked live against
+linear.app / firefish.io before writing any code (exact computed styles
+pulled via `getComputedStyle` in a live browser, not guessed):
+
+1. **Sitewide heading treatment (`.sec-header h2`/`span`/`p`)** rebuilt
+   around linear.app's own dek pattern, verified on their actual "A new
+   species of product tool..." heading: bold and muted segments are the
+   **same font-size** (24px there), differentiated by weight (510 vs 510 —
+   i.e. weight is constant on Linear; ours uses a starker 700-vs-400 split
+   since static Inter can't hit their fractional 510) and color alone, not
+   size. Applied via `h2 span { font-weight:400; color:var(--text-muted); }`
+   sitewide — every section title with an inline `<span>` (Services, How,
+   Blog, Company, Newsletter) now reads as bold-lead + muted-continuation
+   instead of one flat tone. Added missing spans to "You're in **good
+   company**" and "Get **the Brief**" so they follow the same pattern too;
+   left "As seen in" as plain bold (too short a phrase to split without
+   looking broken).
+2. **Font sizes increased toward Linear's scale**: `.sec-header h2`
+   36px→42px, `.sec-header p` 16px→20px (`.as-seen h2`/`.company h2`/
+   `.newsletter h2` matched to the same 42px; `.company-sub`/`.newsletter p`
+   to 18px). `.problems-lead` (the Questions section's own flowing
+   heading) bumped 32px→42px / 19px→20px to match.
+3. **"The Questions Most Bitcoiners Ignore" rebuilt as linear.app's own
+   "Fig 0.1" benefit-tab layout** — confirmed via DOM inspection of
+   linear.app's actual 3-column benefit grid: no card box around any tab
+   (differentiation is column-gap alone), a small uppercase "Fig 0.1"/
+   "Fig 0.2"/"Fig 0.3" label top-left of each, a large inline-SVG
+   illustration, then heading + copy below. Removed the two-column
+   `.problems-intro` (heading beside one graphic) from 2 rounds ago
+   entirely — the heading (`.problems-lead`) now sits centered, full-width,
+   above the tab grid, exactly where Linear's own dek sits above its
+   benefit grid. The rings/nodes graphic from that removed layout became
+   Fig 0.1's illustration; two new abstract line-art SVGs were built for
+   Fig 0.2 (a branching trunk-line, inheritance/succession) and Fig 0.3
+   (stacked ledger bars) — same visual grammar as Fig 0.1 (thin
+   `var(--border)` strokes, muted node dots, **exactly one** orange dot/bar
+   per graphic, the section's "punc").
+4. **"Bitcoin is your credit" extracted from the services grid as its own
+   panel**, styled after firefish.io's own adjacent "Open markets drives
+   better rates" / "Bitcoin is your credit" sections (both inspected live —
+   firefish literally has a heading with this exact text, 42px/700,
+   confirming it as the phrase to reuse for our own Buy Bitcoin panel, not
+   a mistranslation). Layout matches firefish's "Open markets" row
+   specifically (text column left, animated visual right, no box on either
+   side, confirmed via `getBoundingClientRect` on the live page: both
+   columns 620px in a 1280px row) — new `.credit` section reuses the hero's
+   `.btc-coin` gradient/sheen/dashed-ring recipe at a smaller 170px size
+   with the existing `sceneFloat` float animation, added to the
+   `prefers-reduced-motion` guard alongside `.orbit-scene`.
+5. **Remaining 6 service tiles rearranged 3×2** exactly as specified —
+   Custody, Mining, Trading Bots / Loans, Treasury, Tax — via
+   `.services-grid { grid-template-columns: repeat(3,1fr) }` (was
+   `repeat(4,1fr)` for the old 7-tile layout).
+6. **"Virtuse Brief" tile removed from the services grid** (the "mail
+   collector" under "Every Bitcoin Service in One Place") — its removal,
+   combined with Buy Bitcoin's extraction in point 4, is exactly what makes
+   the remaining 6 tiles fit a clean 3×2 grid rather than an odd 6-into-4
+   or 7-tile layout. Its now-dead `.svc-card-brief*` CSS deleted too.
+7. **"How Virtuse Works" rebuilt as linear.app's Changelog pattern** — a
+   vertical log, each entry marked with a small dot (orange here, not
+   Linear's red — the page's one "punc" per row, per the site's established
+   accent rule) instead of the old 4-column bordered stepper. Cut from 4
+   steps to 3 per explicit request (dropped "Stay in Control" — its old
+   copy, "Virtuse never holds your keys, funds, or data," was folded into
+   step 2's own paragraph instead of deleted outright, since it's still
+   true and relevant to "Connect to Partner"). Every step now has its own
+   subtle link, matching the pattern step 4 already had ("Plan my
+   stack" → stacking.html): step 1 → "Browse all services" (`#services`),
+   step 2 → "Get matched in 60 seconds" (concierge.html), step 3 keeps its
+   existing stacking.html link.
+8. **Giant clipped wordmark added to the footer**, after firefish.io's own
+   footer (inspected live: a raw 390px-font `<p>`, full white, full
+   opacity, in an overflow-visible container that just runs past the
+   page's natural end). Adapted rather than copied literally — our footer
+   sits mid-page-flow, not at a hard viewport edge, so a full-opacity white
+   "Virtuse" at that size would dominate the page rather than read as a
+   quiet flourish. Used the same size language (230px, clipped by a
+   110px-tall `overflow:hidden` container) but at 6% opacity via
+   `var(--text)`, which is theme-safe (barely-there white on black in dark
+   mode, barely-there near-black on white in light mode) and reads as a
+   background watermark rather than a rendering bug.
+9. **`.btn-primary` ("Book Free Consultation") de-orangized.** Was the
+   only element using that class on this page (confirmed via `grep` before
+   touching it, so this couldn't regress anything else). Rather than a
+   hardcoded white — which would go invisible against a white *light-theme*
+   background, a real contrast bug the existing hardcoded-white Place-C
+   button already quietly carries — used an **inverted neutral**:
+   `background:var(--text); color:var(--dark)`, which is white-on-near-black
+   in dark mode and near-black-on-white in light mode, always readable
+   against the page behind it.
+10. **Place A's "Get the Brief" button (`.newsletter-form button`, the
+    brief-strip under the hero) de-orangized the same way** — removed from
+    the shared `.nav-cta, .btn-primary, .newsletter-form button` orange rule
+    (now just `.nav-cta`, the one sitewide orange stamp that stays) and
+    given the same theme-aware inverted-neutral treatment as point 9. Place
+    C's bottom "Get the Brief" button was **not** touched — it already
+    carries an explicit hardcoded-white style from an earlier round's
+    direct request and this ask only named the one under the hero.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser pane,
+both dark and light theme, desktop 1440px and mobile 390px): tag-balance
+check clean (`section`/`form`/`div`/`script`/`style`/`span`/`h2`/`h3` all
+balanced); grep confirmed zero orphaned references to the removed
+`.problems-intro`/`.problems-art`/`.how-stepper`/`.how-step`/
+`.svc-card-brief` classes; `.problems-lead` strong/span computed to
+42px/700/white vs 42px/400/muted-gray in dark, and correctly re-resolved in
+light theme; Questions grid confirmed 3 real columns with "Fig 0.1"/"Fig
+0.2"/"Fig 0.3" labels and inline SVGs present; credit panel confirmed
+text-left (x:168) / visual-right (x:752) via `getBoundingClientRect`, coin
+animation confirmed actually cycling via a before/after transform poll;
+services grid confirmed exactly 6 tiles in Custody→Mining→Bots→Loans→
+Treasury→Tax order; How Virtuse Works confirmed exactly 3 `.how-log-item`s,
+each with an orange dot and its own link; footer wordmark confirmed
+230px/0.06 opacity; both de-orangized buttons confirmed
+`var(--text)`-on-`var(--dark)` in dark AND correctly inverted in light
+theme (near-black-on-white) rather than a hardcoded color that could go
+invisible; mobile 390px confirmed no horizontal overflow and the credit
+panel stacking to a single column. No new console errors beyond the
+pre-existing GTM `ga-audiences` CSP violation. **Not committed** — same
+working-tree diff as the two entries below, still awaiting review.
+
+
+## Session status (2026-09-18, continued) — Hero background artifact removed, Linear.app font adopted, orange demoted to a single "punc" accent, Linear-style intro for the Questions section
+
+**What changed, all on `index.html`, continuing the same visual-overhaul
+thread as the entry below:**
+
+1. **Removed the last visible artifact behind the hero orbit/coin.**
+   Root cause was two *separate* overlapping CSS rules, not one:
+   `.hero::before` (a 60px orange-tinted grid pattern, radial-masked) and
+   `.hero-glow`/`.hero-grain` (a `mix-blend-mode: overlay` grain texture,
+   markup + CSS). Removing only the grain still left a visible rectangle
+   on screenshot — found the grid-pattern rule via
+   `getComputedStyle(hero, '::before')` and removed that too. Both are
+   now fully deleted (CSS + the `<div class="hero-glow">` markup); the
+   hero's right side sits on plain black with nothing behind the orbit.
+
+2. **Font swapped to match linear.app exactly.** Linear's own
+   `getComputedStyle` was read live (font-family stack, H1 weight 510)
+   and copied: `@import` now pulls the *variable* Inter axis range
+   (`family=Inter:opsz,wght@14..32,100..900`) instead of a handful of
+   static weights, and `body`'s `font-family` fallback chain matches
+   Linear's own (`-apple-system, "SF Pro Display", "system-ui", "Segoe
+   UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica
+   Neue", sans-serif`). Static Inter still renders in discrete weight
+   steps rather than Linear's true fractional 510 — a real limitation
+   of not self-hosting the variable font, not something worth chasing
+   further right now.
+
+3. **Heavy 800/900 weights pulled down toward Linear's more restrained
+   ~700**, per the explicit "bold + lighter font" request: `.hero-headline`
+   (900→700), `.stat-number`, `.sec-header h2` (shared by every section
+   title sitewide), `.problem-card h3`, `.as-seen h2`, `.company h2`,
+   `.newsletter h2` (all 800→700). Deliberately **left alone**:
+   `.nav-logo` (800, brand wordmark, not content hierarchy), `.btc-coin-b`
+   (900, decorative ₿ glyph), `.how-step-num` (800, small numeral badge),
+   and every `.seen-*`/`.co-*` partner-brand-specific weight (external
+   logo representations, out of scope — moot anyway under the existing
+   `filter: grayscale(1)` quiet-rail treatment).
+
+4. **Orange demoted sitewide to "used exceptionally, only as a stamp"**,
+   per explicit request — audited every remaining `var(--btc-orange)`
+   usage and neutralized ~15 of them to `var(--text)` /
+   `var(--text-muted)` / `var(--border-hover)` / `var(--dark-card-hover)`:
+   `.nav-links a.active`, `.hero-badge` (kept only `.hero-badge-dot` as
+   the intentional single accent), `.hero-headline .highlight` (also
+   deleted its orange gradient + the perpetual `shimmerSweep` keyframe
+   animation entirely — it was running forever on "Nothing else." in the
+   H1), `.sec-header h2 span` (affects the highlighted word in every
+   section title sitewide), `.scroll-dot`, `.how-step-num`,
+   `.how-card-cta` (+ added a missing `:hover` state), `.vblog-cta:hover`
+   / `.btn-secondary:hover` (both the standalone and shared-rule
+   versions), `.footer-bottom-brief a`, `.footer-col a:hover`,
+   `.lang-menu-btn:hover`. Orbit chip icons (`.node-chip .chip-icon`)
+   also de-orangized, including their hover glow. **Deliberately still
+   orange**: the Bitcoin coin's own brand gradient, every primary filled
+   CTA button (`.nav-cta`, `.btn-primary`, newsletter/concierge-banner
+   buttons), the newsletter input focus ring, `.vblog-tag` (must match
+   production per an earlier explicit revert), the orbit ring strokes
+   (part of the orbit's own explicitly-restored "as it was in previous
+   versions" look, not touched this pass), and the `lang-menu-panel`
+   active state.
+
+5. **"The Questions Most Bitcoiners Ignore" section redesigned in
+   linear.app's own hero-copy pattern** (their "A new species of
+   product tool..." section: a bold white lead sentence flowing directly
+   into a lighter-weight muted-gray continuation, all one heading, next
+   to an abstract graphic card). New `.problems-intro` flex row replaces
+   this section's old shared `.sec-header` (that class itself is
+   untouched — still used as-is by Services/How-it-Works/etc.): a new
+   `.problems-lead` H2 with a `<strong>` (700, `var(--text)`) followed by
+   a `<span>` (400, `var(--text-muted)`), next to a new `.problems-art`
+   card (`var(--dark-card)` bg, 1px `var(--border)`, 8px radius, 240×300)
+   containing a small inline SVG: three concentric rings + two muted
+   node dots + exactly **one** orange dot at the center — the section's
+   own single "punc," consistent with point 4. Stacks to a centered
+   single column under 1024px (existing breakpoint), verified no
+   horizontal overflow at 390px.
+
+**Verified this round** (`python3 -m http.server 8891` + the Browser
+pane, both dark and light theme): tag-balance check clean; no orphaned
+`.hero-glow`/`.hero-grain`/`shimmerSweep` references left anywhere;
+`.problems-lead`/`.problems-art` computed styles confirmed correct in
+both themes (dark: white/muted split `rgb(230,237,243)` vs
+`rgb(139,148,158)`; light: `rgb(13,13,13)` vs `rgb(102,102,102)`); SVG
+punc dot confirmed `rgb(247,147,26)` with the other two dots correctly
+neutral; mobile (390px) stacking confirmed with no horizontal overflow;
+font-family/weight confirmed applied via `getComputedStyle`; no new
+console errors beyond the pre-existing GTM `ga-audiences` CSP pixel.
+**Gotcha reconfirmed**: `computer{action:"screenshot"}` at a custom
+emulated width (1440×900) returned blank images this session even
+after a wait — fell back entirely to `getComputedStyle`/
+`getBoundingClientRect` checks via `javascript_tool`, which is the
+reliable path when this happens, not a sign the layout itself is
+broken.
+
+## Session status (2026-09-18) — Neutral gray tokens (matched to firefish.io's real RGB), colored hero glow removed, function-based icon animation, bottom CTA de-boxed
+
+**Same hero/cards thread as the entries below, next day.** Five more
+firefish.io-matching asks, verified against the live site's actual computed
+styles before touching any code:
+
+1. **Dark/light shading tokens rewritten to neutral gray, matched to
+   firefish.io's real values** — checked via `getComputedStyle` in a live
+   browser: their body is `rgb(8,9,10)`, their cards `rgb(20,20,20)`, both
+   essentially hueless. This page's `--dark`/`--dark-card` had stayed
+   navy-tinted (`#0d1421`/`#161f30`) through every previous round's card
+   redesign, and `--dark-card-hover` was still the *original*
+   `#1c2740` — a distinctly **blue** hover, which is exactly what the user
+   flagged. Rewrote both to `#08090a`/`#141414`/`#1c1c1c` (dark) and added
+   the light theme's own hover token, which had never been set at all
+   before (light mode was silently falling back to dark's blue hover
+   value — a real, previously-unnoticed bug, not just an aesthetic miss).
+   Light theme separately rewritten from a warm cream (`#f4f1ea`) to pure
+   white with a slightly-darker neutral gray card (`#f2f2f2`) and
+   neutral-gray text (dropped the warm brownish `#16120c`/`#5c564c` for
+   plain `#0d0d0d`/`#666666`), per explicit request for a white background
+   with "slightly darker tabs."
+2. **Colored glow removed from behind the coin and orbit.** Two rounds ago
+   this file documented adding a 5-blob + 2-ray animated orange wash plus
+   an orange `.btc-coin-glow` specifically to fill out the hero visually —
+   this round undoes exactly that (`.btc-coin-glow` set to `display:none`,
+   the blob/ray HTML spans removed, `.hero-right`'s orange radial-gradient
+   background dropped). Kept the neutral grain texture (pure grayscale
+   noise, not "color") and the orbit itself (rings, chips, coin) untouched.
+3. **More dynamic animation via anime.js function-based values** — checked
+   the specific docs page the user linked
+   (`animation/tween-value-types/function-based`) to confirm the *core*
+   `animate()` call (not just the separate `waapi` module) accepts
+   functions per-property, re-evaluated on every loop pass. Repurposed the
+   now-dead blob-animation code (dead since the blobs were just removed in
+   point 2) into a per-chip "breathe" animation on the 8 orbit
+   `.chip-icon`s: `scale`/`opacity`/`duration`/`delay` are each a function
+   returning `anime.utils.random(...)`, so every icon pulses on its own
+   randomized cycle instead of one uniform tween applied identically to
+   all — genuinely more organic than a fixed keyframe array, and a real
+   (not cosmetic) use of the specific technique asked for.
+4. **Bottom capture (Place C) de-boxed and re-colored.** Removed
+   `.brief-card`'s background/border/radius/padding entirely — it now sits
+   directly on the `.newsletter` section's own background, no card, per
+   "bez tabu, len na čiernom podklade ako firefish" (firefish's own actual
+   closing CTA is plain background, no box — confirmed, no `<form>` exists
+   on their site to copy literally, so this is the closest match).
+   Text-alignment reverted from the previous round's left-align (which
+   only made sense inside a box) back to centered. The submit button for
+   *this form only* (scoped via `.brief-card .newsletter-form button`,
+   higher specificity than the shared orange-button rule) is now white
+   with near-black text instead of the sitewide orange — explicit,
+   one-off request, not a change to the shared button language elsewhere.
+5. **Confirmed already done, not re-touched**: the "remove the capture
+   under Every Bitcoin Service in One Place" ask was fully satisfied by
+   the *previous* round (the thin strip and the tile's "Get the Brief"
+   link were already removed) — checked the live markup first rather than
+   assuming, found nothing left to remove, and said so rather than
+   silently no-op'ing or over-editing to "do something."
+
+**Verified:** re-measured `document.body`/`.svc-card` computed
+`background-color` in a live browser and confirmed exact matches to
+firefish's own `rgb(8,9,10)`/`rgb(20,20,20)`; confirmed `--dark-card-hover`
+resolves to a neutral gray (not blue) in both themes; polled a
+`.chip-icon`'s opacity before/after a delay to confirm the function-based
+animation is actually cycling; screenshotted the de-boxed bottom capture
+in dark mode showing the white button on the plain section background, no
+card. Tag balance re-checked. No new console errors beyond the
+pre-existing GTM CSP violation. **Not committed** — same working-tree diff
+as every session below, still awaiting review.
+
+## Session status (2026-09-17, continued) — Orbit restored, cards de-colored to match firefish.io, one less capture point
+
+**Follow-up correction to the last two hero rounds.** The user reviewed the
+new hero and pushed back on part of it, plus gave two more concrete
+firefish.io-matching asks. Handled as three separate, independent changes:
+
+**1. Orbit restored around the coin.** The prior round's full removal of the
+orbiting-chips diagram (3 rings, 8 category chips, JS-driven rotation, 3D
+mouse-tilt) was reverted at explicit request — re-added verbatim from this
+session's own earlier edit history (CSS: `.orbit-scene`/`.orbit`/
+`.orbit-a/b/c`/`.orbit-node`/`.node-chip`/`.chip-icon`, JS: the "smooth
+weighted stop on hover" rotation driver + the `#orbitTilt` 3D parallax),
+now layered **on top of** the blob/ray/grain backdrop added two rounds ago
+rather than instead of it — the two coexist fine since the blobs sit behind
+the coin+rings in DOM order. Net effect: hero now has the orbit back *and*
+a fuller backdrop than the original had, which is more motion at once
+(orbit float + ring rotation + blob drift + ray drift = 4 concurrent) than
+the "one motion" rule from two rounds ago — an explicit, direct request
+from the user supersedes that earlier self-imposed rule for this element;
+noting the tension rather than silently resolving it either way.
+
+**2. Questions cards + Service grid cards → firefish.io's subtle-box
+language.** Checked firefish.io's actual "Institutional grade security /
+Simple to use / Flexible terms" cards directly (`getComputedStyle` in a
+live browser, not eyeballed): flat `rgb(20,20,20)`-on-black surface, no
+border, 16px radius, no icon, white heading + `rgb(167,168,166)` muted body
+— hierarchy from size and color-intensity alone. Applied the same recipe to
+`.problem-card` and `.svc-card`: `border: none`, hover changes to
+`--dark-card-hover` instead of a border-color/orange change, and **all 8
+`.svc-icon` divs plus all 3 `.problem-icon` divs deleted from the markup**
+(not just hidden — removed, along with their now-dead CSS). `.svc-meta`
+(the "4 Partners — from X% fees" line) and `.problem-link` ("See vetted
+exchanges →") both changed from `--btc-orange` to neutral
+(`--text-muted`/`--text` respectively) — the cards are now genuinely
+black-and-white-and-gray, no color anywhere except the page's CTA buttons.
+
+**3. One fewer capture point + bottom capture restyled.** Two things
+removed as "both collectors under the Services panel": the thin capture
+strip that sat directly beneath the services grid (Place B, `.brief-strip-
+thin` — now dead CSS, removed), and the "Get the Brief" link inside the
+Virtuse Brief tile itself (kept only "Read latest Brief" → `news.html`,
+since having both a strip immediately below the grid *and* a "get the
+brief" link inside the grid's own tile read as two overlapping asks in the
+same spot). The bottom capture card (Place C, before the footer) was
+re-skinned with the same firefish subtle-box recipe — dropped the
+`btcbreakdown.com`-inspired bold poster treatment (40px centered heading,
+heavy padding) from two rounds ago in favor of a left-aligned, 26px
+heading, borderless `--dark-card` box, since firefish.io has no actual
+email-capture UI to copy literally (checked — no `<form>`/`<input>`
+anywhere on their homepage) and this is the closest their own design
+system gets. **Kept** the stacked full-width input-then-button layout from
+the btcbreakdown round; nothing in this request contradicted that part.
+
+**4. Hero capture (Place A) trimmed.** Removed the "18,000+ readers" social
+proof line entirely (not moved, just gone), changed the "Virtuse Brief"
+eyebrow from `--btc-orange` to `--text-muted` (plain, matching "orange only
+where an action is" — the eyebrow isn't an action, the button is), and
+removed the fine-print line ("Weekly on Monday. Pulse later. Unsubscribe
+anytime. Not advice.") entirely. Place C's own, differently-worded fine
+print ("Weekly on Monday. Unsubscribe anytime.") was **not** touched — the
+removal request quoted Place A's exact string, not Place C's.
+
+**Verified:** polled `getComputedStyle` on an orbit ring's transform before/
+after a delay to confirm rotation actually resumed; screenshotted the hero,
+Questions, Services, Brief tile, and bottom capture at a real 1440px width
+in a live browser session — orbit chips visible and rotating, all icons
+confirmed gone from both panels, meta/link text confirmed neutral gray/
+white, Place A confirmed missing both the readers line and fine print,
+bottom card confirmed left-aligned and borderless. Tag balance re-checked
+(2 forms now, down from 3, confirming Place B's removal). No new console
+errors beyond the pre-existing GTM CSP violation. **Not committed** — same
+working-tree diff as the sessions below, still awaiting review.
+
+## Session status (2026-09-17, continued) — Hero backdrop enriched: was too sparse after the first rebuild
+
+**Immediate follow-up to the hero rebuild below, same day.** The first pass
+at the new hero (static coin + 3 small blurred blobs) left the right half
+of the hero looking mostly empty — a fair critique: at low opacity and 80px
+blur, 3 small blobs plus a 122px coin don't fill a 560px-tall panel.
+Addressed directly rather than tweaking values slightly:
+- **Blobs: 3 → 5**, resized larger (260–420px, up from 220–320px) and
+  repositioned to corner-to-corner coverage (including negative-percent
+  offsets so they bleed off the edges) instead of clustering around the
+  coin.
+- **Added two diagonal light rays** (`.glow-ray`), the more literal read of
+  "podklad ako Raycast" — Raycast's actual hero is a WebGL shader with
+  diagonal glowing streaks; anime.js can't reproduce a shader, but blurred,
+  rotated `linear-gradient` bars animated with `anime.animate()` (slow
+  translate + opacity pulse, `alternate:true`) approximate the same visual
+  language in the same orange accent, no new palette.
+- **Added a faint grain texture** (`.hero-grain`, inline SVG
+  `feTurbulence`, 5% opacity, `mix-blend-mode: overlay`) so the wash reads
+  as textured rather than a flat CSS gradient — the detail that makes
+  Raycast's background feel expensive rather than like a simple blur.
+- Added a subtle base radial wash directly on `.hero-right` itself
+  underneath everything, so even the negative space between blobs isn't
+  fully flat.
+- All still respect `prefers-reduced-motion` (checked once, same guard as
+  the rest of this page's motion) and both light/dark themes, since every
+  color is accent-tinted rather than hardcoded to one theme.
+
+**Verified:** polled `getComputedStyle` transforms on both a blob and a ray
+before/after a delay to confirm the anime.js loops are actually running
+(not just present in markup); screenshotted both themes at a real 1440px
+width this time (the custom-width screenshot flakiness noted in an earlier
+session's entry did not recur here) — the right panel now visibly fills
+edge-to-edge in both themes rather than reading as empty space around a
+small logo. Not committed — same diff as below.
+
+## Session status (2026-09-17, continued) — Firefish/Raycast-inspired hero rebuild, anime.js actually wired up, blog reverted
+
+**Follow-up to the design-language pass above, same day.** The user gave
+four concrete, reference-driven asks in Slovak, each checked against the
+live reference site rather than guessed at (browsed firefish.io,
+raycast.com, btcbreakdown.com, and virtuse.com itself before touching code):
+
+1. **Dark pattern refinement** — verified firefish.io's actual language
+   (near-black canvas, one accent, hairlines, hierarchy from type
+   size/weight not color/glow, grayscale trusted-by rail) matches the
+   direction already built in the prior round; no new token changes
+   needed, just extended the anime.js usage (below) to match its "calm"
+   feel.
+2. **New hero** — **removed the orbiting-chips diagram entirely** (3 rings,
+   8 labeled service chips, JS-driven rotation) and replaced it with a
+   static Bitcoin coin over an anime.js-animated soft blob backdrop, styled
+   after Raycast's "static text, animated background" hero pattern. The 8
+   category chips were a real navigational shortcut (Buy, Custody, Mining,
+   Loans, Bots, Treasury, Tax, Research), but fully redundant with the
+   services grid immediately below — removing them is a real, deliberate
+   simplification, not just a motion tweak, flagged here rather than
+   buried in a diff. Kept a subtle mouse-parallax on the coin (adapted from
+   the old orbit-tilt code) as the one quiet interactive touch.
+3. **Bottom email capture redesigned after btcbreakdown.com** — that site's
+   footer signup is a bold poster block: big headline, big full-width
+   email field, big full-width button *stacked* below it (not a compact
+   side-by-side pill). Rebuilt Place C (the "Get the Brief" card before the
+   footer) the same way (`.brief-card-poster` + `.newsletter-form-stacked`)
+   while keeping Virtuse's own token colors — adapted the *layout idiom*,
+   not btcbreakdown's literal white-on-black palette.
+4. **Blog section reverted to what's actually live on virtuse.com** — the
+   previous round's "issue rows" redesign (no image, hairline list) was
+   undone at the user's explicit request. Fetched production's real CSS
+   and DOM via a live browser session (not memory) to restore an exact
+   match: `.vblog-grid`/`.vblog-card` with the image thumbnail, the "Blog"
+   tag pill, and the `.vblog-meta` author/date footer — including
+   restoring the original 190px image height, 16px card radius, hover
+   lift+shadow, and the 100px pill `.vblog-cta`, all of which the *previous*
+   round's general "no lift, no pills" rule had stripped. **One deliberate
+   exception kept**: `.vblog-meta`'s color stays `--text-muted`, not
+   production's `--text-dim` — the original measured a real 1.99:1 contrast
+   failure (found two rounds ago), and the user's ask was to revert the
+   *format*, not reintroduce a known bug. Also refreshed the static
+   fallback markup to the three articles actually live now (fetched from
+   production) instead of the stale placeholder posts this file had been
+   carrying since early in the session.
+
+**anime.js — found already loaded but never called, now actually used.**
+`index.html` has loaded `animejs@4.5.0` via jsdelivr (with an integrity
+hash) since before this session — confirmed via `grep`, it was dead
+weight. `plan.md` (present in the repo root) turns out to be the original
+brief that produced most of the "2019 carnival" effects stripped over the
+last few rounds (particles, card lift+shadow, "As Seen In" shimmer) —
+explicitly modeled on a site called "Coinpay," and explicitly planned to
+use anime.js, but every effect was actually hand-rolled in vanilla JS/
+`IntersectionObserver` instead. This session finally wires up the real
+library:
+- The section/card scroll-reveal system (`.anim-section`/`.anim-card`) now
+  calls `anime.animate()` (fade + rise, `ease:'outQuad'`) instead of
+  toggling a CSS class, and card staggering uses `anime.stagger()`.
+- **Found and fixed a real bug in the process**: the old staggered-card
+  code grabbed `document.querySelectorAll('.anim-card')` — every card
+  sitewide, both the 3 Questions cards *and* the 8 service-grid cards —
+  but only ever observed **one** section (`cards[0].closest(...)`, i.e.
+  just the Questions section). The moment Questions scrolled into view, it
+  animated **all 11 cards at once**, including the 8 service cards still
+  off-screen below — so by the time a visitor actually scrolled to
+  Services, those cards had already silently snapped to their final state
+  with no entrance animation. Fixed by grouping cards by their containing
+  `<section>` and giving each group its own `IntersectionObserver`.
+- **Removed the "As Seen In" logo wave** — an infinite `setTimeout` loop
+  that set `logo.style.opacity` directly, forever, while that section was
+  in view. This was silently fighting the grayscale-quiet-rail hover
+  treatment built two rounds ago (inline styles beat the stylesheet), and
+  is exactly the kind of perpetual-motion gimmick this whole redesign arc
+  has been removing elsewhere. Quiet rail now really is quiet.
+- New hero blob backdrop (`.glow-blob` × 3) also uses `anime.animate()`,
+  looped, `ease:'inOutSine'`, each respecting `prefers-reduced-motion`
+  (checked once before starting, matching every other motion block on
+  this page).
+
+**Verified, this session:** confirmed via `getComputedStyle` polling that
+the blob transform actually changes over time (not just present in the
+DOM); confirmed `typeof anime !== 'undefined'` before relying on it
+anywhere (all anime.js call sites also have a plain-CSS/no-op fallback if
+the CDN script fails to load, matching this page's existing defensive
+style); re-tested the light/dark toggle after the hero rebuild (coin and
+blob glow render correctly in both themes since they're accent-tinted,
+independent of the `--dark`/`--text` swap); re-verified blog cards
+(image, tag, meta, live WordPress fetch) and the new poster capture in a
+real local browser session in both themes; tag balance re-checked; no new
+console errors beyond the pre-existing GTM CSP violation. **Not
+committed** — same working-tree diff as the sessions above, still awaiting
+review.
+
+**Not done / out of scope:** `news.html` untouched (same split as every
+entry above). Did not touch Place A or B's compact capture layout — only
+Place C (bottom) got the poster treatment, per the explicit "spodná časť
+stránky" (bottom of the page) scoping. Did not re-litigate the token/
+hairline/contrast work from the round above; this round's dark-pattern ask
+was confirmed already-aligned with firefish.io rather than redone.
+
+## Session status (2026-09-17, continued) — "2019 crypto-landing → 2026 dark-default product site" pass, light theme added
+
+**Same hub/desk split as the entry below** (`news.html` owned by a separate
+agent, untouched again this session — never opened). This round's brief was
+a full design-language overhaul (explicit Linear/Vercel/Mercury/Ramp/
+Raycast/Lenny/Atlantic reference points) plus one genuinely new capability:
+**a dark/light theme toggle**, which didn't exist on this site before.
+
+**Theme toggle — built from scratch:**
+- `html[data-theme="dark"|"light"]`, persisted as `localStorage['vb-theme']`.
+  First visit with no saved preference: honors `prefers-color-scheme:
+  light`, otherwise defaults dark (the site's native canvas). Once the user
+  picks, system-preference changes are ignored, per spec.
+- Anti-FOUC: an inline script placed right after the CSP `<meta>` tag (the
+  earliest safe point given this page's meta-tag CSP) sets `data-theme`
+  before first paint.
+- Toggle button (sun/moon icon swap) in two places: `.nav-actions` for
+  desktop, duplicated inside the mobile drawer's `.nav-links-lang-item` next
+  to the language pills — both wired to the same delegated click handler.
+- Light palette added as `:root[data-theme="light"]` overrides of the
+  **existing** variable names (`--dark`, `--dark-card`, `--text`, etc.)
+  rather than a parallel set, so every rule already written against those
+  names just works. `--border`/`--border-hover` were also redefined
+  sitewide-on-this-page from a solid `#30363d` to translucent hairlines
+  (`rgba(255,255,255,.06)`/`.12` dark, `rgba(22,18,12,.08)`/`.16` light) —
+  one variable redefinition instead of rewriting ~20 individual `border:`
+  declarations.
+- **Found and fixed three real light-mode breakages while verifying, not
+  guessed:** the nav wordmark (`.nav-logo`) and the footer's inline-styled
+  "Virtuse" both hardcoded `color:#e6edf3` (near-white) — invisible against
+  the light theme's cream background; the mobile drawer's link text and the
+  shared `styles.css` hamburger-icon bars had the same hardcoding. All
+  fixed to `var(--text)` (the footer/hamburger ones as page-local overrides
+  since `styles.css` is shared across 21+ pages that have no theme toggle —
+  not touched). Also found `.nav`'s background and its scroll-listener JS
+  both hardcoded `rgba(13,20,33,...)` directly (not a CSS var), which would
+  have left the nav bar permanently dark even in light mode — fixed via new
+  `--nav-bg`/`--nav-bg-strong` tokens and rewriting the scroll listener to
+  toggle a `.nav-scrolled` class instead of setting inline styles.
+  **Known, accepted gap**: decorative accent colors hardcoded inline (the 8
+  service-icon tints, the orbit's node-chip dark background, the
+  concierge FAB's own colors) do NOT flip with the theme — each is a
+  self-contained color pair (icon-on-its-own-badge, chip-on-its-own-dark-
+  pill) so nothing is unreadable, but they're not literally re-themed. A
+  full per-decoration light/dark pass was judged out of proportion to the
+  ask; flagging here rather than silently deciding it didn't matter.
+
+**Motion reduced to the Raycast rule ("at most one slow, precise motion"):**
+the orbit graphic previously ran up to six concurrent animations at once —
+`auroraDrift` (14s background drift), three staggered `pulse-wave` rings
+(radiating outward), `glowBreathe` (coin glow pulsing), `coinBreathe` (coin
+scale pulsing), and `coinShine` (rotating conic-gradient sheen) — on top of
+the JS-driven orbit-ring rotation itself. Removed all five CSS/HTML
+extras, kept only the ring rotation (the one interactive, "smooth weighted
+stop on hover" feature) as the hero's single motion. The existing
+`prefers-reduced-motion` handling (a CSS block plus three separate JS
+`matchMedia` guards) was already correct from a prior session — verified
+it still fully freezes what's left, not rebuilt. Also removed the
+30-particle floating-dot background system entirely (this was actually
+already done in the *previous* round today, re-confirmed still gone).
+
+**Cards de-theatred (Vercel rule: hairline in, stronger hairline on hover,
+no lift, no shadow):** `.svc-card`, `.problem-card` had `transform:
+translateY()` + `box-shadow` on hover (one page even had a second,
+later-cascading `.svc-card:hover` rule adding a bouncier lift on top of the
+first) — both replaced with a plain `border-color` transition to
+`--border-hover`. Radii tightened toward the spec's 10–12px (cards) / 8–10px
+(buttons) range; `.vblog-cta`'s 100px pill became 10px. Left the handful of
+genuinely small pill badges (`.hero-badge`, the orbit's `.node-chip`s, the
+compact language-dropdown button) alone — the spec's own "except tiny
+badges" carve-out.
+
+**"Do not draw 8 equal siblings":** the Virtuse Brief tile in the services
+grid now spans the full grid width (`grid-column: 1 / -1`) as a horizontal
+editorial row (icon · copy · two links, wrapping to a stacked layout under
+640px) instead of matching the other 7 icon tiles' height/shape — visibly
+breaks the rhythm on purpose, per the brief.
+
+**Blog compressed from cards to rows:** dropped the thumbnail image
+entirely (both the static fallback markup and the live WordPress-fetch JS,
+which also dropped the now-unneeded `_embed=wp:featuredmedia` query param)
+— each post is now a plain hairline-divided row: accent small-caps date,
+headline, 2-line excerpt. Closer to a desk issue list than a magazine grid.
+Blog block itself is still titled "The Virtuse Blog," not renamed — essays
+≠ the weekly Brief, unchanged position from every prior session.
+
+**Partner logos → grayscale quiet rail:** `.seen-logo`/`.co-logo` (the "As
+seen in" and "You're in good company" rows) now render at `grayscale(1)`
++ 60% opacity at rest, full color only on hover — this also incidentally
+neutralizes several hardcoded per-brand accent colors (Blockstream blue,
+Crypto.com blue, etc.) that would otherwise have been a separate light-
+mode readability question; grayscale sidesteps it entirely. Removed the
+old hover "shimmer" (`scale(1.08)`) in favor of the plain color-reveal.
+
+**Not done / explicitly out of scope this session, per the brief's own
+"do not":** no purple, no embedded product demo in the hero, no film-still
+photography, `news.html` untouched, no Satoshi/desk branding on the hub, no
+premium-tier claims, no Pulse nav item, concierge/consultation flows
+unchanged, no mega-nav (nav is still 11 items — the brief's own fallback
+was "tuck items away if a mega-menu already exists," which it doesn't, so
+nav was left as-is rather than starting one).
+
+**Verified, this session, in a real local browser:** toggled the theme
+live via `.click()` and via computed-style checks (not just visual) before
+and after — `--nav-bg`, `.nav-logo` color, body background/text all
+confirmed flipping correctly; DOM tag balance re-checked (`section`/`form`/
+`div`/`script`/`style` all balanced); screenshots taken in both themes
+showing the previously-invisible wordmark now visible, hairline cards,
+row-format blog, grayscale partner rail, and the quieted orbit (no
+particles, no pulse rings). No new console errors beyond the pre-existing
+GTM CSP violation. **Not committed** — same working-tree diff as the two
+sessions above, still awaiting review.
+
+## Session status (2026-09-17, continued) — Hub/desk split: locked design tokens, contrast pass, real bugs fixed
+
+**Context change from the two rebrand sessions above:** the user introduced a
+formal **split ownership** for the Virtuse Brief work — a second, independent
+agent ("Grok bot") now owns `news.html` (the desk/Brief landing) and is
+redesigning it in parallel; this Claude session owns `index.html` and the
+rest of the hub only. **`news.html` was not opened, forked, or restyled this
+session** — every reference to it is a plain link to the existing URL. The
+user supplied a locked, shared design-token spec (exact hex values for
+`--bg`/`--bg-card`/`--bg-inset`/`--line`/`--text`/`--muted`/`--accent`/
+`--btn-text`) so the hub and the desk read as one system despite being built
+by two different agents independently — this is the first time this repo's
+design language has been formalized this precisely rather than left to each
+page's own copy-pasted `<style>` block.
+
+**Real, concrete bugs found and fixed (not just restyling):**
+1. **Every primary orange button sitewide on this page had a real WCAG
+   contrast failure** — `.nav-cta`/`.btn-primary`/`.newsletter-form button`/
+   `.how-num` all used white text on `--btc-orange` (#f7931a), measured via
+   an actual luminance-ratio script in a live browser session at **2.30:1**
+   (fails the 4.5:1 AA minimum badly) — and the hover state was the same
+   failure in reverse (orange text on white). Fixed by adding one new token,
+   `--btn-text: #0d0902` (near-black), and pointing every one of those rules
+   at it — verified back up to **8.65:1**. Notably, `.concierge-banner-cta`
+   already used near-black text (`#0b0b0c`) — this bug was an inconsistency
+   with an existing correct pattern elsewhere on the same page, not a novel
+   design decision.
+2. **Three real `--text-dim` (#484f58) misuses on actual body copy**, all
+   confirmed via the same contrast script before fixing: `.brief-fineprint`
+   (2.23:1), `.footer-bottom p`/copyright line (2.23:1), and the blog cards'
+   date text specifically — `.vblog-meta`'s date was a bare text node never
+   wrapped in the `<span>` that got the better `--text-muted` color, so the
+   *author name* read fine while the *date right next to it* silently failed
+   at 1.99:1. All now read at 5.99–7.18:1. (Card body copy itself —
+   `.problem-card p`, `.svc-card p`, `.how-card p`, etc. — was already
+   passing at ~5.36:1 before this session; not everything flagged as
+   "unreadable" actually was, verified rather than assumed.)
+3. **The hero's "26 / 8 / 27" stat counter had a real, reproducible bug**,
+   not just a hypothetical one: `statNumbers[0].closest('section, div')`
+   only ever found the *first* stat's own wrapper `<div class="stat">` (26,
+   Vetted Partners) — `.closest()` matches the nearest ancestor **including
+   self's parent chain**, and a `<div>` sits one level up from every
+   `<span class="stat-number">`. Combined with the count-up animation
+   reading `parseInt(el.textContent)` as its own target *at trigger time*,
+   a re-fire mid-animation would sample an already-partially-counted value
+   (e.g. reading "8" mid-way through animating toward 26) as a *new* target
+   and freeze there — which is exactly what produces the "26/8/27 → 8/2/8"
+   symptom the user described from production (30% eased-progress of
+   26/8/27 rounds to 8/2/8, almost exactly). Fixed per the user's own
+   instruction — removed the animation entirely rather than patching the
+   observer target, since the numbers were never fetched live anyway; the
+   static "26"/"8"/"27" in the markup **is** the fallback constant.
+4. **The concierge sticky FAB (`concierge-launcher.js`, shared across ~25
+   pages) visually competed with "Get Started"/"Book Free Consultation."**
+   Demoted rather than removed (removing it would reduce the concierge
+   entry point, which is explicitly out of scope) — via a homepage-only CSS
+   override (`body .vc-bubble { opacity:0.7; transform:scale(0.88); ...
+   :hover/:focus-within restore full }`), higher-specificity than the
+   shared script's own `.vc-bubble` rule, so every other page keeps the FAB
+   at full strength untouched.
+
+**Design simplification, superseding this session's own earlier round**
+(the "moderný dizajn" pass a few turns ago, done *before* this locked-token
+brief existed): the capture components (strips A/B and the "Get the Brief"
+card) had picked up an orange gradient background, drop shadows, and icon
+badges in that earlier pass. This session's spec explicitly bans exactly
+that ("Do not add glow... do not invent a second palette"), so all three
+were rebuilt flat: `background: var(--dark-card)` (`--bg-card`), `1px solid
+var(--border)` (`--line`), `border-radius: 12px`, no gradient/shadow/icons.
+The email input's own background is `var(--dark-lighter)` (`--bg-inset`),
+distinct from the card surface it sits in. This is a case of a locked,
+cross-agent spec superseding this session's own prior freelance styling,
+not a correction of a mistake — the earlier round was reasonable for what
+it knew at the time.
+
+**Also removed:** the 30-particle floating-dot background system (own
+`<div id="particles">`, JS spawn loop, `@keyframes float-up`) — a second,
+independent motion system running underneath the orbit graphic. The orbit/
+coin/pulse-wave system (the hub's one signature animation) was left intact,
+including its **already-correct** `prefers-reduced-motion` handling — the
+CSS `@media (prefers-reduced-motion: reduce)` block and three separate JS
+`matchMedia` guards (parallax, orbit driver, particle-adjacent code) were
+already there from a prior, undocumented session; this session verified
+they still fully disable all motion rather than assuming so.
+
+**Content/copy changes:**
+- Nav item 11 relabeled "News" → **"Brief"** (same href, `news.html`, now
+  with `?utm_source=brief&utm_medium=nav`) — one text link to the desk, no
+  second nav entry added (the brief's own fallback if nav is "overcrowded"
+  was to defer a mega-menu project, not to add more top-level items).
+- "18,000+ readers" moved out of the hero's trust row into capture strip A
+  only (it was showing in both places before this session).
+- Footer gained a **"Services" column** (Buy Bitcoin, Custody, Mining,
+  Loans, Treasury, Tax, Bots) — the hub footer never actually listed the
+  store's own categories before (checked: neither the original footer nor
+  any of this session's earlier additions had one), which is what "hub
+  footer stays the store" in the brief was pointing at. Footer is now 5
+  columns: Services, Company, Tools, Guides, Legal.
+- "How Virtuse Works" compressed from a 4-card padded grid into a single
+  flat stepper strip (`.how-stepper`, one bordered surface, thin dividers
+  between 4 steps) — same 4 steps and copy (trimmed to one short sentence
+  each), same "Grow Your Stack → Plan my stack" cross-link to Stacking
+  Strategist on step 4, but no longer "another 4-card marketing grid."
+- Blog cards restyled toward a "desk issue" rhythm: date in small-caps
+  accent color above the headline (replacing the old "Blog" tag pill),
+  2-line excerpt (unchanged, was already clamped to 2 lines), no separate
+  meta footer row — updated in both the static fallback markup and the
+  live WordPress-fetch JS so real posts render the same way.
+
+**Verified, this session, in a real local browser (not assumed):** every
+contrast fix re-measured via the same live-page luminance script before/
+after; hero stats confirmed static (no animation JS left to re-trigger);
+particles confirmed at 0 DOM nodes; FAB opacity confirmed 0.7 at rest;
+section DOM order and footer column count confirmed via
+`querySelectorAll`; 3-column blog grid and 4-column stepper confirmed
+intact at a real 1440px width via computed styles (screenshots at that
+custom width were unreliable in this session's browser tool — returned
+blank frames despite the DOM being correct, confirmed by cross-checking
+with `elementFromPoint`; narrower ~636px screenshots rendered fine and were
+used for the visual checks instead). No new console errors beyond the
+pre-existing GTM `ga-audiences` CSP violation. **Not committed** — working-
+tree diff on `index.html` (+ this file) for the user to review.
+
+**What was deliberately left for the desk agent / out of scope this
+session:** `news.html` itself (structure, featured issue, any Pulse
+list, its own footer, its own theme toggle) — untouched, not even read;
+the email HTML (`email/virtuse-news-*` templates) — still says "Virtuse
+News," not yet relabeled, same open item as the previous rebrand session;
+partner-radar-style features — not built; a mega-nav/mega-menu — not
+started, per the brief's own instruction not to begin one unless it
+already existed.
+
+## Session status (2026-09-17, continued) — Panel separation, capture redesign, footer Tools/Guides
+
+**Follow-up to the rebrand above, same day, in response to Slovak-language
+user feedback on the first pass.** Four changes, all still `index.html`
+only:
+
+1. **Moved Place C** ("Get the Brief" card) from between the blog teaser and
+   "As seen in" to **after** "You're in good company," right before the
+   footer — the user explicitly asked for it under that panel, overriding
+   the earlier brief's literal position spec.
+2. **Visually separated "As seen in" and "You're in good company"** — they
+   previously shared the identical `background: var(--dark)` with no border
+   between them and read as one continuous panel. `.company` now uses
+   `var(--dark-lighter)`, a `border-top`, and an inset `box-shadow` for a
+   soft seam, matching the "tieňovo odliš" (shadow-differentiate) request.
+3. **Modernized both full capture panels** (Place A and the relocated Place
+   C — Place B stayed a lightweight thin bar, not counted as one of the
+   "two collectors" per the feedback): the email input and button are now a
+   single unified rounded "pill" control (`.newsletter-form` rewritten from
+   two separate boxes to one bordered, focus-glowing container) with a mail
+   icon, shared across all three forms for consistency. Place A gained an
+   icon in its eyebrow and a resting box-shadow; Place C was rebuilt as a
+   standalone floating card (`.brief-card`, gradient background, icon badge,
+   22px radius, drop shadow) instead of a plain full-width section.
+4. **Added "Tools" and "Guides" columns to the footer** (previously just
+   Company/Legal/a single "Read" link) — footer is now Company / Tools /
+   Guides / Legal, 4 columns (the shared `styles.css` `.footer-columns` is
+   already `flex-wrap`, so this didn't need new layout CSS). Tools: Bitcoin
+   Concierge, Stacking Strategist, Loan & Liquidity Copilot, Tax &
+   Inheritance Agent, Retirement Calculator. Guides: Virtuse Brief, Blog,
+   Bitcoin Data, Research & Media. This is a **new footer section that
+   didn't exist on any page before** (checked `research.html`,
+   `buy-bitcoin.html`, `secure.html`, `tax.html`, `about.html` — none have a
+   Tools/Guides footer column), not a fix to something that regressed — the
+   other ~25 top-level pages still only have Company/Legal, same
+   narrow-first-slice pattern as every other homepage-only rollout in this
+   file's history.
+
+**Verified via a mix of screenshots (at the tool's default ~636px width,
+which reliably rendered) and direct JS/computed-style checks (screenshots
+at a manually-resized 1440px width were unreliable in this session's
+browser tool — returned blank frames despite the DOM/CSS being correct,
+confirmed via `getComputedStyle`/`elementFromPoint`; a tooling quirk, not a
+site bug):** `.brief-strip-inner` computes `flex-direction: row` at 1440px
+(so the wide-viewport side-by-side layout is intact even though it couldn't
+be screenshotted directly this session), section DOM order confirmed via
+`querySelectorAll('section')` as hero → brief-strip(A) → ... → brief-strip(B)
+→ ... → as-seen → company → newsletter(C), footer confirmed at 4 columns.
+Not committed — still a working-tree diff alongside the rebrand above.
+
+## Session status (2026-09-17) — Homepage rebrand: "Virtuse News" → "Virtuse Brief"
+
+**What happened:** per an explicit written brief from the user, renamed the
+weekly editorial product from "Virtuse News" (the pipeline built/consolidated
+2026-09-15, see below) to **Virtuse Brief** on the homepage only —
+`index.html` — while leaving Virtuse itself, the homepage H1, the hero, and
+the rest of the service grid untouched. **Mid-session name correction**: the
+first pass of this rebrand shipped the name as "Satoshi Brief"; the user
+immediately followed up with a corrected brief renaming it to **Virtuse
+Brief**, flagging that "Satoshi Brief" collides with an existing product
+("Satoshi Gazette" already publishes something called "The Satoshi Brief").
+All occurrences were replaced sitewide-on-this-page via a global find/replace
+across `index.html` (product name in copy, the `#virtuse-brief` anchor id,
+CSS/HTML comments) — nothing named "Satoshi" remains anywhere on the
+homepage. **`news.html` (the archive hub) and the `email/`/
+`.github/workflows/` pipeline files were not touched this session** — the
+brief treats `news.html` as the already-existing canonical landing page for
+the Brief and explicitly says not to invent a new URL, so every new homepage
+link simply points at `news.html` (with `?utm_source=brief&utm_medium=<placement>`),
+not at a renamed page. A future session should decide whether `news.html`
+itself, and the email template/subject lines in `email/virtuse-news-*`,
+should be relabeled to "Virtuse Brief" too — right now the **brand name
+changed on the homepage before it changed at the source**, which is a real
+inconsistency worth closing, not an oversight.
+
+**Three capture placements added to `index.html`, exactly per the brief's
+A/B/C spec, all posting to the same existing Cloudflare Worker endpoint
+(`virtuse-newsletter.virtuse-ai.workers.dev/subscribe`, the same Resend list
+the Virtuse News / Virtuse Brief pipeline already draws from — no new list
+created):**
+- **Place A (primary)** — a new compact strip (`#virtuse-brief`), inserted
+  right after the hero's stats/trust row and before "The Questions Most
+  Bitcoiners Ignore". Eyebrow, one-liner, "18,000+ readers" social proof,
+  email field, "Get the Brief" button, fine print. Hero itself (H1, buttons,
+  orbital hub) is unchanged, per the brief's explicit "do not touch" list.
+- **Place B (secondary)** — a thin bar directly under the 8-category services
+  grid (the brief offered this as the alternative to cramming a form into
+  the Media & Research card itself, which was taken since all 8 grid cards
+  share one rigid layout).
+- **Place C (tertiary)** — rather than add a *fourth* capture section, the
+  **pre-existing** full-width newsletter section that already sat just
+  before the footer (heading "Fix the Money, Fix the World", copy "Get the
+  Virtuse Report in your inbox every week") was **moved** up to sit between
+  the blog teaser and "As seen in" (the exact position the brief specifies
+  for Place C) and **rebranded** in place (heading → "Get the Brief", copy →
+  "Virtuse Brief. Bitcoin-only. No tokens. No PR."). This form already
+  existed and already posted to the same Worker/list — reusing and
+  relocating it, rather than leaving stale "Virtuse Report" copy live on the
+  page alongside three new Virtuse Brief forms, avoided both a fourth
+  redundant capture point and a jarring old/new brand mismatch on one page.
+- All three forms' submit handlers were consolidated into a **single shared
+  script** (`document.querySelectorAll('[data-brief-form]')`, resolves each
+  form's own status message via `closest('section')`) rather than the three
+  copies of near-identical fetch/error-handling logic that existed before
+  (Place C's original standalone script + two new ones would otherwise have
+  been near-duplicates). Success message on all three: "You're in. Brief
+  goes out Monday." — matches the brief's copy deck exactly.
+
+**Media & Research service-grid card rebuilt as the commercial hook for the
+Brief, per the brief's IA section:** title → "Virtuse Brief", one-liner →
+"Monday. Bitcoin-only. Market, policy, mining. No tokens. No PR.", and — the
+one structural change among the 8 service cards — it's now a `<div>` with
+two inline links ("Read latest Brief" → `news.html`, "Get the Brief" → `#virtuse-brief`
+anchor into Place A) instead of the single wrapping `<a>` every other card
+uses, since a single card can't point at two different destinations.
+`research.html` (a separate page, still linked from the orbital hub diagram
+elsewhere on the homepage) is unaffected — this card only ever linked to it
+as one entry point among several, not the sole one.
+
+**Nav/footer:** the homepage nav already had a "News" item (added
+2026-09-15, item 11) linking to `news.html` — **left as-is rather than
+adding a second, redundantly-labeled "Virtuse Brief" nav entry**, since the
+nav is already at 11 items plus a CTA and language switcher. The brief's
+"one text link" requirement was instead satisfied in the **footer**: a new
+"Read" column ("Virtuse Brief" → `news.html`) plus a one-line footer-bottom
+mention ("Virtuse Brief — the weekly desk from Virtuse. Read it →"), both
+new. **Flag this trade-off to the user** — if "Virtuse Brief" needs its own
+distinct nav presence (as opposed to sharing the "News" link), that's a
+separate, deliberate decision, same as every other sitewide nav change in
+this file's history.
+
+**Not done / explicitly out of scope, per the brief itself:** no hero
+rewrite, no homepage restyle, no email HTML changes, no change to the
+concierge/consultation CTAs, no DCA/retirement calculators moved into the
+capture strips, no issue-archive thumbnails, no inline mid-article capture
+on `article.html` (brief marked this "if in scope" — deferred, not built).
+**Verified in a real local browser session** (`python3 -m http.server`,
+since `.claude/launch.json`'s `--directory` flag still fails under this
+session's sandboxed Python — same gotcha noted in the 2026-09-15 entry): all
+three capture forms render and submit correctly (a real submit attempt
+correctly hit the "Network error" path in this sandboxed environment,
+confirming the fetch/error-handling wiring rather than a live send), the
+`#virtuse-brief` anchor link from the Media & Research card scrolls to Place
+A, 375px mobile layout confirmed no horizontal overflow on all three strips,
+and no new console errors beyond the pre-existing GTM `ga-audiences` CSP
+violation. **Not committed to git this session** — left as a working-tree
+diff for the user to review first.
+
+**Next steps, in order:**
+1. Review the diff and decide whether to commit/push, and whether to sync
+   to `gh-pages`/production per the usual three-target deploy dance.
+2. Decide whether `news.html` and the `email/virtuse-news-*` pipeline files
+   (subject lines, template headers) should be relabeled to "Virtuse Brief"
+   too, so the brand name is consistent from homepage through to the actual
+   inbox — right now only the homepage says "Virtuse Brief".
+3. Decide whether "Virtuse Brief" needs a dedicated nav entry distinct from
+   the existing "News" link, or whether sharing one link/page is fine going
+   forward (see the nav/footer trade-off above).
+4. Per the brief's own "out of scope" list: sponsorship/paid-subscription
+   monetization, and the article-template inline capture CTA (mid-article /
+   end-of-article "Want this in your inbox on Monday?" prompt) are both
+   still undesigned and unbuilt.
+5. Double-check no other repo asset (e.g. any half-built `email/` draft or
+   partnership doc) still references the short-lived "Satoshi Brief" name
+   from the first pass of this rebrand — this session only searched and
+   fixed `index.html`.
+
 ## Session status (2026-09-15, continued) — Virtuse News: consolidated email pipeline + new archive hub page
 
 **Why this happened:** the user asked what it would take to build something
