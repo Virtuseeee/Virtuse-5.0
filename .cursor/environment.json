@@ -1,0 +1,20 @@
+{
+  "name": "Virtuse 5.0",
+  "install": "cd cloudflare-worker && npm ci && npm run build",
+  "terminals": [
+    {
+      "name": "static-site",
+      "command": "cd \"Kimi_Agent_Virtuse%20MiCA%20Partners\" && python3 -m http.server 8777",
+      "description": "Serves the static marketing site (all HTML pages, the four Layer 2 modules, and the generated programmatic-SEO pages) at http://localhost:8777. Open e.g. http://localhost:8777/index.html or http://localhost:8777/concierge.html."
+    },
+    {
+      "name": "worker-dev",
+      "command": "cd cloudflare-worker && npm run dev",
+      "description": "Runs the newsletter Cloudflare Worker locally via wrangler dev at http://localhost:8787 (POST /subscribe, GET /unsubscribe). Request validation, CORS, honeypot, and routing work with no secrets; live Resend sends and real unsubscribe need RESEND_API_KEY / RESEND_SEGMENT_ID / RESEND_FROM_EMAIL / UNSUB_SECRET, which are deploy-time secrets set via `wrangler secret put` (or a gitignored .dev.vars for local link signing)."
+    }
+  ],
+  "ports": [
+    { "name": "static-site", "port": 8777 },
+    { "name": "worker-dev", "port": 8787 }
+  ]
+}
