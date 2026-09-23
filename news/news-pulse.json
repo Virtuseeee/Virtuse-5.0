@@ -1,29 +1,65 @@
 {
-  "updated": "2026-09-16T12:00:00Z",
+  "updated": "2026-09-23T08:40:05Z",
   "feed": null,
   "items": [
     {
-      "title": "Senate rejects CLARITY Act cloture 49–50; Bitcoin slips below $76,000",
-      "source": "CryptoSlate",
-      "tag": "Policy",
-      "url": "https://cryptoslate.com/bitcoin-drops-below-76000-as-senate-rejects-clarity-act-motion/",
-      "published": "2026-09-16T08:00:00Z"
-    },
-    {
-      "title": "US spot Bitcoin ETFs record $450.4M net outflow, largest since June",
+      "title": "Bitcoin ETFs flirt with $1B as Monday inflows hit a 2026 high",
       "source": "Cointelegraph",
       "tag": "ETF",
-      "url": "https://cointelegraph.com/news/bitcoin-etfs-shed-450m-in-biggest-outflow-since-june",
-      "published": "2026-09-16T10:00:00Z",
-      "excerpt": "Thirteen US-listed funds shed $450.4 million on Tuesday, the largest day since late June. Fidelity and BlackRock led the withdrawals as Bitcoin fell 2.5%."
+      "url": "https://cointelegraph.com/markets/bitcoin-etf-biggest-inflow-october-2025",
+      "published": "2026-09-22T12:00:00Z",
+      "excerpt": "SoSoValue/Farside: $998.9M Monday (IBIT $381M). Farside next day: ~$715M Tuesday — fourth straight inflow session. BTC briefly cleared $87K."
     },
     {
-      "title": "Bitcoin holds near $75,700 as the Fed decision and a stalled market-structure bill land on the same day",
-      "source": "CryptoTimes",
-      "tag": "Fed",
-      "url": "https://www.cryptotimes.io/2026/09/16/bitcoin-price-slips-in-fear-as-fed-decision-nears-and-clarity-act-stalls/",
-      "published": "2026-09-16T06:00:00Z",
-      "excerpt": "Price clustered in a $75,400–$76,100 band into Wednesday. The FOMC statement and a failed CLARITY cloture vote sit on the same calendar."
+      "title": "CLARITY Act still needs 11 more Senate votes",
+      "source": "CryptoSlate",
+      "tag": "Policy",
+      "url": "https://cryptoslate.com/clarity-act-needs-11-more-senate-votes-but-4-of-the-49-it-already-has-want-the-bill-changed/",
+      "published": "2026-09-21T18:00:00Z",
+      "excerpt": "Punchbowl: four of the 49 yes votes want the bill changed. Bitcoin policy remains short of cloture."
+    },
+    {
+      "title": "Hashprice near $41/PH as difficulty sits at 132.76T after a +4.16% retarget",
+      "source": "Hashrate Index",
+      "tag": "Mining",
+      "url": "https://hashrateindex.com/blog/hashrate-index-roundup-september-21-2026/",
+      "published": "2026-09-21T18:47:00Z",
+      "excerpt": "USD Bitcoin hashprice ~$40.93/PH/day (+4.1% week). Difficulty 132.76T after Sep 19 +4.16%; next estimate ~Oct 3 (~−1.8%). Hashrate 7d SMA ~946 EH/s."
     }
-  ]
+  ],
+  "archive": {
+    "label": "Yesterday",
+    "from": "2026-09-23T08:03:58Z",
+    "items": [
+      {
+        "title": "US spot Bitcoin ETFs take nearly $1B in a day as average holder returns to profit",
+        "source": "Decrypt",
+        "tag": "ETF",
+        "url": "https://decrypt.co/378921/bitcoin-etfs-take-nearly-1b-in-a-day-as-average-holder-returns-to-profit",
+        "published": "2026-09-22T12:00:00Z"
+      },
+      {
+        "title": "Bitcoin eyes $90K after breaking $80K resistance as shorts lose $449M",
+        "source": "CryptoTimes",
+        "tag": "Fed",
+        "url": "https://www.cryptotimes.io/2026/09/22/bitcoin-eyes-90k-after-breaking-80k-resistance-as-shorts-lose-449m/",
+        "published": "2026-09-21T19:30:00Z"
+      }
+    ]
+  },
+  "what_moved": "ETFs followed Monday’s ~$999M with ~$715M Tuesday; BTC holds ~$86.4K.",
+  "quick_media": {
+    "title": "Simply Bitcoin EP 1596 — Bitcoin EXPLODES Past $86,000",
+    "url": "https://www.youtube.com/watch?v=-PvlHscb9cg",
+    "note": "Keep — still fits this week’s $86K breakout; do not refresh daily."
+  },
+  "fear_greed": {
+    "value": 71,
+    "label": "Greed",
+    "source": "alternative.me"
+  },
+  "dominance": {
+    "btc_pct": 59.09,
+    "source": "Coinlore global"
+  }
 }
