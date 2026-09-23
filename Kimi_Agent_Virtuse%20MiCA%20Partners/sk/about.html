@@ -211,11 +211,15 @@ img { max-width: 100%; }
 }
 
 .sec-title h2 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
+
+.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
+
+.sec-title h2:only-child { margin-bottom: 32px; }
 
 .sec-title p {
   font-size: 15px;
@@ -249,13 +253,13 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
+  background: var(--dark-card-hover);
+  border: 1px solid var(--border-hover);
   border-radius: 100px;
   font-weight: 800;
   font-size: 13px;
-  color: white;
+  color: var(--text);
   padding: 6px 16px;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
   z-index: 2;
 }
 
@@ -289,25 +293,6 @@ img { max-width: 100%; }
 .value-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
-}
-
-.value-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-
-.value-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
 }
 
 .value-card h3 {
@@ -390,24 +375,6 @@ img { max-width: 100%; }
   gap: 24px;
 }
 
-.vet-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  margin-bottom: 18px;
-}
-
-.vet-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
-}
-
 /* ===== GLOBAL PRESENCE ===== */
 .presence-grid {
   display: grid;
@@ -438,7 +405,7 @@ img { max-width: 100%; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--btc-orange);
+  color: var(--text-muted);
   margin-bottom: 10px;
 }
 
@@ -1042,8 +1009,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1162,7 +1129,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-  <span class="hero-label">O nás</span>
   <h1>Globálna infraštruktúra<br><span class="highlight">pre Bitcoin</span></h1>
   <p class="hero-desc">
     Od roku 2018 staviame základ pre bezhraničnú menovú ekonomiku. Virtuse vzniklo s jasným poslaním: demokratizovať prístup ku globálnemu finančnému systému a pomáhať investorom budovať aj chrániť generačné bohatstvo. Náš záväzok voči Bitcoinu, finančnej suverenite a menovej slobode je nekompromisný.
@@ -1193,6 +1159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Our Story -->
 <section class="section">
   <div class="sec-label">Náš príbeh</div>
+  <div class="sec-title"><h2>Náš <span>príbeh</span></h2></div>
   <div class="steps">
     <div class="step">
       <span class="step-num">2018</span>
@@ -1220,19 +1187,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Mission & Values -->
 <section class="section">
   <div class="sec-label">Za čím si stojíme</div>
+  <div class="sec-title"><h2>Za čím <span>si stojíme</span></h2></div>
   <div class="value-grid">
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.7 7.5h3.1a1.8 1.8 0 0 1 0 3.6H9.7m0 0h3.4a1.9 1.9 0 0 1 0 3.8H9.7M9.7 7.5V6M9.7 18v-1.5M11.8 7.5V6M11.8 18v-1.5"/></svg></div>
       <h3>Zameranie výhradne na Bitcoin</h3>
       <p>Žiadne altcoiny, žiadne rozptyľovanie. Nekompromisný záväzok voči Bitcoinu ako základu bezhraničnej menovej ekonomiky.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <h3>Bezpečnosť a dôvera</h3>
       <p>Robustná sieť viac ako 50 strategických partnerov po celom svete zaisťuje maximálnu bezpečnosť a inštitucionálnu likviditu pre našu globálnu klientelu.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="3.3"/><path d="M10.3 12.7L18.5 4.5M15 4.5h3.5V8"/></svg></div>
       <h3>Finančná suverenita</h3>
       <p>Pomáhame investorom nielen budovať, ale aj efektívne chrániť generačné bohatstvo, sme dôveryhodným mostom do ekonomiky Bitcoinu.</p>
     </div>
@@ -1268,30 +1233,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="vet-grid">
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
       <h3>Regulačná licencia</h3>
       <p>CASP poskytovatelia s licenciou MiCA alebo rovnocennou uznávanou licenciou vo svojej domovskej jurisdikcii, nikdy neregulované platformy.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.4"/></svg>
-      </div>
       <h3>Úschova a bezpečnosť aktív</h3>
       <p>Predvolený výber vlastnej úschovy a poistená, oddelená úschova všade tam, kde partner prostriedky skutočne drží.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
-      </div>
       <h3>Preukázateľná história</h3>
       <p>Roky pôsobenia, objem a počet používateľov a čistá história bez incidentov, novota nie je dôvod na vylúčenie, neoverenosť áno.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
       <h3>Transparentnosť poplatkov</h3>
       <p>Zverejnené, porovnateľné poplatkové štruktúry, žiadne skryté spready ani podmienky, ktoré sa objavia až po registrácii.</p>
     </div>
@@ -1301,21 +1254,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Global Presence -->
 <section class="section">
   <div class="sec-label">Globálna prítomnosť</div>
+  <div class="sec-title"><h2>Globálna <span>prítomnosť</span></h2></div>
   <div class="presence-grid">
     <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127468;</div>
       <h3>Singapur</h3>
       <div class="presence-role">Globálne centrálne sídlo</div>
       <p>Globálna prevádzka je ukotvená v jednom z popredných svetových technologických a finančných centier.</p>
     </div>
     <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127472;</div>
       <h3>Bratislava</h3>
       <div class="presence-role">Európska prevádzka</div>
       <p>Hlboké korene a lokálna expertíza vďaka nášmu prevádzkovému sídlu, domovu Virtuse Group Pte. Ltd.</p>
     </div>
     <div class="presence-card">
-      <div class="presence-flag">&#127758;</div>
       <h3>EÚ a Ázia</h3>
       <div class="presence-role">Virtuse Group</div>
       <p>Hrdý člen nadnárodnej skupiny Virtuse Group so strategickou prítomnosťou na dvoch kontinentoch.</p>
@@ -1326,6 +1277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Explore the Hub -->
 <section class="section">
   <div class="sec-label">Preskúmajte centrum</div>
+  <div class="sec-title"><h2>Preskúmajte <span>centrum</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Kúpiť Bitcoin<small>Partneri s licenciou MiCA</small></span><span class="arrow">&#8594;</span></a>
     <a href="secure.html" class="hub-link"><span>Úschova<small>Vlastná aj kolaboratívna úschova</small></span><span class="arrow">&#8594;</span></a>

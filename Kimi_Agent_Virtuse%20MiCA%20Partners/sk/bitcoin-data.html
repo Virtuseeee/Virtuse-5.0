@@ -149,9 +149,9 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--green-bg);
-  border: 1px solid rgba(63, 185, 80, 0.35);
-  color: var(--green);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
   font-size: 13px;
   font-weight: 700;
   padding: 8px 16px;
@@ -164,7 +164,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--text);
   animation: pulse 2s infinite;
 }
 
@@ -208,7 +208,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .subnav a:hover { color: var(--text); }
 
-.subnav a.active { background: var(--btc-orange); color: #0d0902; }
+.subnav a.active { background: var(--text); color: var(--dark); }
 
 /* ===== PRICE CARD ===== */
 .price-section {
@@ -218,8 +218,8 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 }
 
 .price-card {
-  background: linear-gradient(135deg, var(--dark-card) 0%, #20180d 100%);
-  border: 1px solid rgba(247, 147, 26, 0.3);
+  background: var(--dark-card);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 36px 40px;
   display: flex;
@@ -227,7 +227,10 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
+  transition: border-color 0.2s;
 }
+
+.price-card:hover { border-color: var(--border-hover); }
 
 .price-label {
   font-size: 13px;
@@ -242,7 +245,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   font-size: 52px;
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: var(--btc-orange);
+  color: var(--text);
   line-height: 1;
 }
 
@@ -308,7 +311,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   letter-spacing: -0.01em;
 }
 
-.stat-value.orange { color: var(--btc-orange); }
+.stat-value.orange { color: var(--text); }
 
 .stat-sub {
   font-size: 12px;
@@ -379,14 +382,14 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .kv-row .k { color: var(--text-muted); }
 .kv-row .v { color: var(--text); font-weight: 600; }
-.kv-row .v.orange { color: var(--btc-orange); }
+.kv-row .v.orange { color: var(--text); }
 .kv-row .v.green { color: var(--green); }
 .kv-row .v.red { color: var(--red); }
 
 .big-metric {
   font-size: 30px;
   font-weight: 800;
-  color: var(--btc-orange);
+  color: var(--text);
   letter-spacing: -0.01em;
   margin-bottom: 4px;
 }
@@ -456,8 +459,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: all 0.2s;
   white-space: nowrap;
 }
-
-.newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
 /* ===== FOOTER ===== */
 .footer-main {
@@ -936,8 +937,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1385,7 +1386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     j(MP + '/v1/difficulty-adjustment').then(function (d) {
       var chg = d.difficultyChange;
       $('diffChange').textContent = (chg > 0 ? '+' : '') + chg.toFixed(2) + '%';
-      $('diffChange').style.color = chg >= 0 ? 'var(--green)' : 'var(--red)';
+      $('diffChange').style.color = chg >= 0 ? 'var(--green)' : 'var(--text)';
       $('diffProgress').style.width = Math.min(100, d.progressPercent).toFixed(1) + '%';
       $('diffPct').textContent = d.progressPercent.toFixed(1) + '%';
       $('diffBlocks').textContent = num(d.remainingBlocks);
