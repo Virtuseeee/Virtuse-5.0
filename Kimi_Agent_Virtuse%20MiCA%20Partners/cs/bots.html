@@ -231,65 +231,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 1rem;
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+    .how-header { text-align: left; margin-bottom: 60px; }
+    .how-header h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 10px; }
+    .how-header h2 span { font-weight: 400; color: var(--muted); }
 
-    .step {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      transition: all 0.3s;
-    }
+    .how-log { display: flex; gap: 40px; border-top: 1px solid var(--border); }
+    .how-log-item { flex: 1; display: flex; flex-direction: column; }
+    .how-log-marker { margin-top: -4px; margin-bottom: 24px; }
+    .how-log-dot { position: relative; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+    .how-log-dot::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: var(--dim); opacity: 0.2; }
+    .how-log-item:first-child .how-log-dot { background: var(--orange); }
+    .how-log-item:first-child .how-log-dot::before { background: var(--orange); opacity: 0.1; }
+    .how-log-body { flex: 1; display: flex; flex-direction: column; }
+    .how-log-num { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); order: 4; margin-top: 16px; }
+    .how-log-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; order: 1; }
+    .how-log-body p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; order: 2; }
 
-    .step:hover {
-      border-color: rgba(247, 147, 26, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    }
-
-    .step-num {
-      position: absolute;
-      top: -16px;
-      left: 20px;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--orange), #ffb84d);
-      border-radius: 50%;
-      font-weight: 800;
-      font-size: 14px;
-      color: white;
-      box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-      z-index: 2;
-    }
-
-    .step h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .step-connector {
-      display: none;
-      position: absolute;
-      right: -24px;
-      top: 50px;
-      width: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--orange), transparent);
+    @media (max-width: 1024px) {
+      .how-log { flex-direction: column; gap: 0; border-top: none; }
+      .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+      .how-log-marker { margin-top: 0; }
     }
 
     /* ─── Category Cards ─── */
@@ -789,9 +750,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .nav-mobile-toggle { display: block; }
       .nav-cta { display: none; }
 
-      .steps { grid-template-columns: 1fr; }
-      .step-connector { display: none; }
-
       .cat-grid { grid-template-columns: 1fr; }
 
       .partner-grid { grid-template-columns: 1fr; }
@@ -801,10 +759,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .how, .partners { padding: 50px 20px; }
 
       }
-
-    @media (min-width: 901px) {
-      .step:not(:last-child) .step-connector { display: block; }
-    }
 
     /* ─── Animations ─── */
     @keyframes fadeInUp {
@@ -1298,33 +1252,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- How It Works -->
   <section class="how">
-    <div class="section-header animate delay-1">
-      <h2>Jak to funguje</h2>
-      <p>Začněte s automatizovaným obchodováním ve čtyřech jednoduchých krocích</p>
+    <div class="how-header animate delay-1">
+      <h2>Jak <span>to funguje</span></h2>
     </div>
-    <div class="steps">
-      <div class="step animate delay-1">
-        <div class="step-num">1</div>
-        <h3>Vyberte si bota</h3>
-        <p>Cloudový nebo self-hosted, začátečnický nebo pokročilý, vyberte si, co vyhovuje vašim potřebám.</p>
-        <div class="step-connector"></div>
+    <div class="how-log">
+      <div class="how-log-item animate delay-1">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 01</span>
+          <h3>Vyberte si bota</h3>
+          <p>Cloudový nebo self-hosted, začátečnický nebo pokročilý, vyberte si, co vyhovuje vašim potřebám.</p>
+        </div>
       </div>
-      <div class="step animate delay-2">
-        <div class="step-num">2</div>
-        <h3>Propojte přes API</h3>
-        <p>Propojte svou burzu s oprávněními jen na obchodování. Výběry nejsou povoleny.</p>
-        <div class="step-connector"></div>
+      <div class="how-log-item animate delay-2">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 02</span>
+          <h3>Propojte přes API</h3>
+          <p>Propojte svou burzu s oprávněními jen na obchodování. Výběry nejsou povoleny.</p>
+        </div>
       </div>
-      <div class="step animate delay-3">
-        <div class="step-num">3</div>
-        <h3>Nastavte si strategii</h3>
-        <p>DCA, grid nebo vlastní pravidla. Nejdřív backtestujte, spusťte, když jste připraveni.</p>
-        <div class="step-connector"></div>
+      <div class="how-log-item animate delay-3">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 03</span>
+          <h3>Nastavte si strategii</h3>
+          <p>DCA, grid nebo vlastní pravidla. Nejdřív backtestujte, spusťte, když jste připraveni.</p>
+        </div>
       </div>
-      <div class="step animate delay-4">
-        <div class="step-num">4</div>
-        <h3>Běžte 24/7</h3>
-        <p>Bot pracuje automaticky, zatímco vy máte stále plnou kontrolu nad svými klíči.</p>
+      <div class="how-log-item animate delay-4">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 04</span>
+          <h3>Běžte 24/7</h3>
+          <p>Bot pracuje automaticky, zatímco vy máte stále plnou kontrolu nad svými klíči.</p>
+        </div>
       </div>
     </div>
   </section>
