@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Dark-only, matching the homepage's own redesign. -->
+<meta name="color-scheme" content="dark">
 <script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -45,6 +47,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="../styles.css">
 <style>
 
+/* Neutral-gray dark palette, matched to the homepage's own redesign —
+   overrides styles.css's older navy-tinted tokens for this page only. */
+:root {
+  color-scheme: dark;
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+  /* styles.css also defines an alternate alias set (--bg/--card) for
+     the same tone tokens — some pages (bots.html) use those names
+     instead of --dark/--dark-card, so both need overriding here or the
+     alias silently keeps styles.css's old navy-tinted value. */
+  --bg: #08090a;
+  --card: #141414;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--dark);
@@ -62,12 +84,14 @@ img { max-width: 100%; }
   justify-content: space-between;
   padding: 20px 48px;
   border-bottom: 1px solid var(--border);
-  background: rgba(13, 20, 33, 0.95);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
 }
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
 
 .nav-logo {
   display: flex;
@@ -81,11 +105,20 @@ img { max-width: 100%; }
 
 .nav-logo-img { height: 32px; width: auto; display: block; }
 
-.nav-links a:hover { color: var(--text); background: var(--dark-card); }
+/* Desktop nav link size/weight matched to linear.app's own nav, same
+   as the homepage — :not(.lang-opt) so it doesn't leak onto the
+   language pills nested inside .nav-links (a real bug found there). */
+.nav-links a:not(.lang-opt) {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 12px;
+}
 
-.nav-links a.active {
-  color: var(--btc-orange);
-  background: rgba(247, 147, 26, 0.08);
+.nav-links a:hover:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active:not(.lang-opt) {
+  color: var(--text);
+  background: var(--dark-card);
 }
 
 .nav-cta:hover { background: var(--btc-orange-light); }
@@ -96,17 +129,6 @@ img { max-width: 100%; }
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(247, 147, 26,0.08) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .hero-label {
@@ -121,13 +143,15 @@ img { max-width: 100%; }
 
 .hero h1 {
   font-size: 52px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.025em;
   margin-bottom: 20px;
 }
 
-.hero h1 .highlight { color: var(--btc-orange); }
+/* Orange is a rare stamp now, not a highlight color — matches the
+   homepage's own hero. */
+.hero h1 .highlight { color: var(--text); }
 
 .hero-desc {
   font-size: 17px;
@@ -160,7 +184,7 @@ img { max-width: 100%; }
 .stat-value {
   font-size: 28px;
   font-weight: 800;
-  color: var(--btc-orange);
+  color: var(--text);
   margin-bottom: 4px;
 }
 
@@ -187,11 +211,15 @@ img { max-width: 100%; }
 }
 
 .sec-title h2 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
+
+.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
+
+.sec-title h2:only-child { margin-bottom: 32px; }
 
 .sec-title p {
   font-size: 15px;
@@ -225,13 +253,13 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
+  background: var(--dark-card-hover);
+  border: 1px solid var(--border-hover);
   border-radius: 100px;
   font-weight: 800;
   font-size: 13px;
-  color: white;
+  color: var(--text);
   padding: 6px 16px;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
   z-index: 2;
 }
 
@@ -265,25 +293,6 @@ img { max-width: 100%; }
 .value-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
-}
-
-.value-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-
-.value-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
 }
 
 .value-card h3 {
@@ -366,24 +375,6 @@ img { max-width: 100%; }
   gap: 24px;
 }
 
-.vet-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  margin-bottom: 18px;
-}
-
-.vet-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
-}
-
 /* ===== GLOBAL PRESENCE ===== */
 .presence-grid {
   display: grid;
@@ -414,7 +405,7 @@ img { max-width: 100%; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--btc-orange);
+  color: var(--text-muted);
   margin-bottom: 10px;
 }
 
@@ -482,11 +473,13 @@ img { max-width: 100%; }
 
 .newsletter h2 {
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 12px;
   position: relative;
   z-index: 1;
 }
+
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
 
 .newsletter p {
   color: var(--text-muted);
@@ -543,12 +536,13 @@ img { max-width: 100%; }
 .footer-main {
   background: var(--dark);
   border-top: 1px solid var(--border);
-  padding: 60px 48px 30px;
+  padding: 60px 0 30px;
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 48px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -558,38 +552,88 @@ img { max-width: 100%; }
 
 .footer-logo { flex-shrink: 0; }
 
-.footer-logo img {
-  height: 80px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.2s;
-}
-
-.footer-logo img:hover { opacity: 1; }
-
 .footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
 }
 
 .footer-col a {
   display: block;
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 13px;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.4;
   transition: color 0.2s;
 }
 
-.footer-col a:hover { color: var(--btc-orange); }
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
 
 .footer-bottom p {
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -623,7 +667,12 @@ img { max-width: 100%; }
   .newsletter-form button { width: 100%; }
 
   .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
   .footer-columns { gap: 40px; }
   .footer-logo img { height: 60px; }
 }
@@ -647,8 +696,6 @@ a.nav-logo, .nav-logo {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--btc-orange, #f7931a);
-  color: #fff;
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -658,16 +705,50 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-.nav-cta:hover, .newsletter-form button:hover {
+/* nav-cta stays the one sitewide orange stamp — every other button is an
+   inverted neutral, hardcoded (not var()) per the real Safari bug found
+   on the homepage. */
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
+.nav-cta:hover {
   background: #ffffff;
-  color: var(--btc-orange, #f7931a);
+  color: #0d0902;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
 
+.newsletter-form button { background: #e6edf3; color: #08090a; }
+.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
+.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
+.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
+.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
+.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
+.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
 /* ===== MOBILE MENU ===== */
+/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
+   divs with a CSS background-color — a real device screenshot on the
+   homepage showed the span version fully invisible on mobile Safari. */
+.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
+
+.ham-line {
+  stroke: var(--text, #e6edf3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 10px 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
+body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
+
 .nav-hamburger {
   display: none;
+  -webkit-appearance: none;
+  appearance: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -710,7 +791,7 @@ a.nav-logo, .nav-logo {
     height: 100dvh;
     background:
       radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
-      linear-gradient(180deg, #0d1421 0%, #0a0f1a 55%, #0d1421 100%);
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
     padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
     gap: 0;
     opacity: 0;
@@ -808,10 +889,10 @@ a.nav-logo, .nav-logo {
     color: var(--btc-orange, #f7931a);
   }
 
-  .nav-links a.active { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
   .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
 
-  .nav-links a.active::before {
+  .nav-links a.active:not(.lang-opt)::before {
     content: '';
     position: absolute;
     left: -24px;
@@ -876,7 +957,7 @@ a.nav-logo, .nav-logo {
   transition: border-color 0.2s ease;
 }
 
-.lang-menu-btn:hover { border-color: var(--btc-orange); }
+.lang-menu-btn:hover { border-color: var(--border-hover); }
 
 .lang-menu-caret {
   opacity: 0.6;
@@ -927,12 +1008,14 @@ a.nav-logo, .nav-logo {
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
-  .lang-menu { display: none; }
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
 </style>
 </head>
@@ -942,7 +1025,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Navigation -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
+      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
+    </svg>
+  </button>
   <a href="/sk/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
@@ -955,19 +1043,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Dane</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boty</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="../blog-sk.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin dáta</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin dáta</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html" class="active"><span class="nav-link-num">11</span><span class="nav-link-label">O nás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Začať<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Jazyk stránky">
-        <a href="../about.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="about.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="../uk/about.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/about.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/about.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/about.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/about.html" class="lang-opt" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/about.html" class="lang-opt" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky">
+          <span class="lang-flag">🇸🇰</span>SK
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+        <a role="menuitem" href="../about.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a role="menuitem" href="about.html" class="lang-opt active" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a role="menuitem" href="../uk/about.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a role="menuitem" href="../cs/about.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a role="menuitem" href="../ru/about.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a role="menuitem" href="../de/about.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/about.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/about.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+      </div>
       </div>
     </li>
   </ul>
@@ -994,24 +1089,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
 (function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
   document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 </script>
@@ -1019,7 +1128,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-  <span class="hero-label">O nás</span>
   <h1>Globálna infraštruktúra<br><span class="highlight">pre Bitcoin</span></h1>
   <p class="hero-desc">
     Od roku 2018 staviame základ pre bezhraničnú menovú ekonomiku. Virtuse vzniklo s jasným poslaním: demokratizovať prístup ku globálnemu finančnému systému a pomáhať investorom budovať aj chrániť generačné bohatstvo. Náš záväzok voči Bitcoinu, finančnej suverenite a menovej slobode je nekompromisný.
@@ -1049,7 +1157,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Our Story -->
 <section class="section">
-  <div class="sec-label">Náš príbeh</div>
+  <div class="sec-title"><h2>Náš <span>príbeh</span></h2></div>
   <div class="steps">
     <div class="step">
       <span class="step-num">2018</span>
@@ -1076,20 +1184,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Mission & Values -->
 <section class="section">
-  <div class="sec-label">Za čím si stojíme</div>
+  <div class="sec-title"><h2>Za čím <span>si stojíme</span></h2></div>
   <div class="value-grid">
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.7 7.5h3.1a1.8 1.8 0 0 1 0 3.6H9.7m0 0h3.4a1.9 1.9 0 0 1 0 3.8H9.7M9.7 7.5V6M9.7 18v-1.5M11.8 7.5V6M11.8 18v-1.5"/></svg></div>
       <h3>Zameranie výhradne na Bitcoin</h3>
       <p>Žiadne altcoiny, žiadne rozptyľovanie. Nekompromisný záväzok voči Bitcoinu ako základu bezhraničnej menovej ekonomiky.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <h3>Bezpečnosť a dôvera</h3>
       <p>Robustná sieť viac ako 50 strategických partnerov po celom svete zaisťuje maximálnu bezpečnosť a inštitucionálnu likviditu pre našu globálnu klientelu.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="3.3"/><path d="M10.3 12.7L18.5 4.5M15 4.5h3.5V8"/></svg></div>
       <h3>Finančná suverenita</h3>
       <p>Pomáhame investorom nielen budovať, ale aj efektívne chrániť generačné bohatstvo, sme dôveryhodným mostom do ekonomiky Bitcoinu.</p>
     </div>
@@ -1125,30 +1230,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="vet-grid">
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
       <h3>Regulačná licencia</h3>
       <p>CASP poskytovatelia s licenciou MiCA alebo rovnocennou uznávanou licenciou vo svojej domovskej jurisdikcii, nikdy neregulované platformy.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.4"/></svg>
-      </div>
       <h3>Úschova a bezpečnosť aktív</h3>
       <p>Predvolený výber vlastnej úschovy a poistená, oddelená úschova všade tam, kde partner prostriedky skutočne drží.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
-      </div>
       <h3>Preukázateľná história</h3>
       <p>Roky pôsobenia, objem a počet používateľov a čistá história bez incidentov, novota nie je dôvod na vylúčenie, neoverenosť áno.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
       <h3>Transparentnosť poplatkov</h3>
       <p>Zverejnené, porovnateľné poplatkové štruktúry, žiadne skryté spready ani podmienky, ktoré sa objavia až po registrácii.</p>
     </div>
@@ -1157,22 +1250,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Global Presence -->
 <section class="section">
-  <div class="sec-label">Globálna prítomnosť</div>
+  <div class="sec-title"><h2>Globálna <span>prítomnosť</span></h2></div>
   <div class="presence-grid">
     <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127468;</div>
       <h3>Singapur</h3>
       <div class="presence-role">Globálne centrálne sídlo</div>
       <p>Globálna prevádzka je ukotvená v jednom z popredných svetových technologických a finančných centier.</p>
     </div>
     <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127472;</div>
       <h3>Bratislava</h3>
       <div class="presence-role">Európska prevádzka</div>
       <p>Hlboké korene a lokálna expertíza vďaka nášmu prevádzkovému sídlu, domovu Virtuse Group Pte. Ltd.</p>
     </div>
     <div class="presence-card">
-      <div class="presence-flag">&#127758;</div>
       <h3>EÚ a Ázia</h3>
       <div class="presence-role">Virtuse Group</div>
       <p>Hrdý člen nadnárodnej skupiny Virtuse Group so strategickou prítomnosťou na dvoch kontinentoch.</p>
@@ -1182,7 +1272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Explore the Hub -->
 <section class="section">
-  <div class="sec-label">Preskúmajte centrum</div>
+  <div class="sec-title"><h2>Preskúmajte <span>centrum</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Kúpiť Bitcoin<small>Partneri s licenciou MiCA</small></span><span class="arrow">&#8594;</span></a>
     <a href="secure.html" class="hub-link"><span>Úschova<small>Vlastná aj kolaboratívna úschova</small></span><span class="arrow">&#8594;</span></a>
@@ -1195,14 +1285,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Newsletter -->
 <section class="newsletter">
-  <h2>Opravíme peniaze, opravíme svet</h2>
-  <p>Pridajte sa k 18 000+ investorom, ktorí sú o krok vpred. Virtuse Report každý týždeň priamo do vašej schránky.</p>
-  <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Zadajte svoj email" required>
+  <div class="brief-card brief-card-poster">
+  <h2>Odoberať <span>Brief</span></h2>
+  <p>Virtuse Brief. Iba bitcoin. Žiadne tokeny. Žiadne PR.</p>
+  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Emailová adresa" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ODOBERAŤ TERAZ</button>
+    <button type="submit">Prihlásiť sa</button>
   </form>
-  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  </div>
   <script>
   (function () {
     var form = document.getElementById('newsletterForm');
@@ -1249,13 +1341,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <a href="buy-bitcoin.html">Kúpiť Bitcoin</a>
+        <a href="secure.html">Úschova</a>
+        <a href="mining.html">Ťažba</a>
+        <a href="lending.html">Pôžičky</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Dane</a>
+        <a href="bots.html">Boty</a>
+      </div>
       <div class="footer-col">
         <h4>Spoločnosť</h4>
         <a href="about.html">O nás</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Nástroje</h4>
+        <a href="concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Návody</h4>
+        <a href="news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Bitcoin dáta</a>
       </div>
       <div class="footer-col">
         <h4>Informácie</h4>
@@ -1267,6 +1383,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="footer-bottom">
     <p>&copy;2018 – 2026 Virtuse Group, všetky práva vyhradené.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — týždenný výber od Virtuse. <a href="news.html?utm_source=brief&amp;utm_medium=footer">Čítať →</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 
@@ -1396,11 +1526,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
     el.addEventListener('click', closeMenu);
   });
 
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function () {
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
   });
 })();
 </script>
@@ -1410,18 +1550,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var btns = document.querySelectorAll('.nav-cta');
   if (!btns.length) return;
+  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=banner';
   btns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      var target = document.querySelector('.partners, .partners-section, #services');
-      if (!target) {
-        window.location.href = 'index.html#services';
-        return;
-      }
-      var nav = document.querySelector('.nav');
-      var offset = (nav ? nav.offsetHeight : 0) + 16;
-      var top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      window.location.href = conciergeUrl;
     });
   });
 })();
