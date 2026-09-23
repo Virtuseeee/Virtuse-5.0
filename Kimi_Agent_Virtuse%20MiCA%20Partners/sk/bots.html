@@ -129,9 +129,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .nav-links a {
-      padding: 6px 14px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 400;
       color: var(--muted);
       border-radius: var(--radius-sm);
       transition: all 0.2s;
@@ -184,28 +184,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: hidden;
       padding: 100px 48px 80px;
       text-align: left;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 50% 20%, rgba(247, 147, 26, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(48, 54, 61, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
-      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
-      opacity: 0.4;
-      pointer-events: none;
     }
 
     .hero-content {
@@ -413,8 +391,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 0.82rem;
       color: var(--text);
       padding: 4px 0;
-      
-      
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
 
@@ -422,7 +400,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       content: '';
       width: 5px; height: 5px;
       background: var(--text);
-
+      border-radius: 50%;
       flex-shrink: 0;
     }
 
@@ -735,7 +713,7 @@ a.nav-logo, .nav-logo {
    inverted neutral, hardcoded (not var()) per the real Safari bug found
    on the homepage. Partner-card primary CTAs use .btn-primary too, so
    this also de-orangizes those — confirmed and approved by the user. */
-.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
 .nav-cta:hover {
   background: #ffffff;
   color: #0d0902;
@@ -1169,11 +1147,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
     <div class="hero-content animate">
 
-      <h1>Automatizujte svoju Bitcoin stratégiu<br><span style="color:var(--orange)">pomocou obchodných botov</span></h1>
+      <h1>Automatizujte svoju Bitcoin stratégiu<br><span style="color:var(--text)">pomocou obchodných botov</span></h1>
       <p>Spustite nekustodiálne obchodné boty, ktoré sa pripájajú cez API kľúče len na čítanie alebo len na obchodovanie. Váš Bitcoin zostáva na vašej burze. Bot len vykonáva vašu stratégiu. Žiadne oprávnenia na výber. Žiadna úschova.</p>
       </div>
   </section>
@@ -1333,7 +1309,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
       <input type="email" name="email" placeholder="Emailová adresa" required>
       <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-      <button type="submit">Získať Brief</button>
+      <button type="submit">Prihlásiť sa</button>
     </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
   </div>

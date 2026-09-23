@@ -76,7 +76,7 @@ img{max-width:100%;display:block}
 .hero p{font-size:17px;color:var(--text-muted);max-width:560px;line-height:1.65}
 .hero-side{display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding-bottom:6px}
 .post-count{font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:.02em}
-.post-count b{color:var(--btc-orange);font-weight:800}
+.post-count b{color:var(--text);font-weight:800}
 
 .lang-switch{display:inline-flex;align-items:center;background:var(--dark-card);border:1px solid var(--border);border-radius:100px;padding:4px;gap:2px}
 .lang-opt{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--text-muted);padding:8px 16px;border-radius:100px;transition:all .2s}
@@ -162,7 +162,6 @@ img{max-width:100%;display:block}
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 /* ===== FOOTER =====
    Matches the homepage's footer exactly -- 5 link columns, a giant
@@ -776,15 +775,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Získaj <span>Brief</span></h2>
+  <h2>Odoberať <span>Brief</span></h2>
   <p>Virtuse Brief. Iba bitcoin. Žiadne tokeny. Žiadne PR.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Emailová adresa" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Získať Brief</button>
+    <button type="submit">Prihlásiť sa</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Každý pondelok. Kedykoľvek sa môžete odhlásiť.</p>
   </div>
   <script>
   (function () {
