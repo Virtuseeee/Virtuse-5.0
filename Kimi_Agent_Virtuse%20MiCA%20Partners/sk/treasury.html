@@ -287,15 +287,20 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 }
 
 .audience-header h2 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
+.audience-header h2 span { font-weight: 400; color: var(--text-muted); }
+
 .audience-header p {
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
 .audience-grid {
@@ -354,7 +359,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .audience-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1279,12 +1284,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== AUDIENCE ===== -->
 <section class="audience">
   <div class="audience-header">
-    <h2>Komu slúžime</h2>
+    <h2>Komu <span>slúžime</span></h2>
     <p>Treasury riešenia na mieru pre rôzne typy inštitucionálnych klientov</p>
   </div>
   <div class="audience-grid">
     <div class="audience-card">
-      <h3><span class="icon">&#127970;</span> Verejne obchodované spoločnosti</h3>
+      <h3>Verejne obchodované spoločnosti</h3>
       <div class="label">Treasury a riešenia pre predstavenstvo</div>
       <ul class="audience-features">
         <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Workshopy pre predstavenstvo o Bitcoin treasury stratégii</li>
@@ -1294,7 +1299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
     <div class="audience-card">
-      <h3><span class="icon">&#127942;</span> Rodinné kancelárie</h3>
+      <h3>Rodinné kancelárie</h3>
       <div class="label">HNWI a ochrana majetku</div>
       <ul class="audience-features">
         <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Alokačné modely pre HNWI klientov s expozíciou voči Bitcoinu</li>
@@ -1365,7 +1370,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="pcard-tags">
-          <span class="tag tag-gray">DISKRÉTNE</span>
         </div>
       </div>
       <div class="pcard-body">
@@ -1400,7 +1404,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="pcard-tags">
-          <span class="tag tag-gray">API</span>
         </div>
       </div>
       <div class="pcard-body">
