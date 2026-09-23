@@ -9,7 +9,7 @@
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
-  var PULSE_MAX = 5;
+  var PULSE_MAX = 3;
   var PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
   var BLOG_CATS = '13,15';
   var BLOG_MAX = 3;
@@ -61,6 +61,112 @@
   function signedPct(n) {
     if (n == null || isNaN(n)) return '—';
     return (n > 0 ? '+' : '') + n.toFixed(2) + '%';
+  }
+  function compactBtcK(n) {
+    if (n == null || isNaN(n)) return '—';
+    var k = n / 1000;
+    var s = k.toFixed(1).replace(/\.0$/, '');
+    return '$' + s + 'k';
+  }
+  function feeBand(satVb) {
+    if (satVb == null || isNaN(satVb)) return '—';
+    if (satVb <= 5) return 'low';
+    if (satVb <= 20) return 'normal';
+    return 'high';
+  }
+  function formatPulseUpdated(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return 'Updated today · —';
+    var hhmm = d.toLocaleTimeString('en-GB', {
+      timeZone: 'Europe/Paris',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    return 'Updated today · ' + hhmm;
+  }
+  function applyFearGreed(fg) {
+    var fine = $('numbersFine');
+    if (!fine || !fg) return;
+    var bits = [];
+    if (fg.value != null && fg.value !== '') bits.push('Fear & Greed ' + fg.value);
+    if (fg.label) bits.push(String(fg.label));
+    if (!bits.length) return;
+    fine.textContent = bits.join(' · ') + ' · Run the numbers. Not a recommendation.';
+  }
+  function renderQuickMedia(qm) {
+    var section = $('quickMedia');
+    var item = $('quickMediaItem');
+    if (!section || !item) return;
+    if (!qm || !qm.title || !qm.url) {
+      section.hidden = true;
+      item.textContent = '';
+      return;
+    }
+    item.textContent = '';
+    var a = document.createElement('a');
+    a.href = qm.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = qm.title;
+    item.appendChild(a);
+    section.hidden = false;
+  }
+  function compactArchiveTitle(it) {
+    var title = ((it && it.title) || '').replace(/\s+/g, ' ').trim();
+    if (title.length > 72) title = title.slice(0, 69).replace(/\s+\S*$/, '') + '…';
+    return title || 'Story';
+  }
+  function renderArchive(archive) {
+    var host = $('pulseArchive');
+    if (!host) return;
+    host.textContent = '';
+    var items = [];
+    var labelText = 'Yesterday';
+    if (archive && Array.isArray(archive.items)) {
+      items = archive.items;
+      if (archive.label) labelText = archive.label;
+    } else if (Array.isArray(archive)) {
+      items = archive;
+    }
+    items = items.filter(Boolean).slice(0, 2);
+    if (!items.length) {
+      host.hidden = true;
+      return;
+    }
+    var label = document.createElement('p');
+    label.className = 'desk-label';
+    label.textContent = labelText;
+    host.appendChild(label);
+    items.forEach(function (it) {
+      var a = document.createElement('a');
+      a.href = it.url || '#';
+      if (it.url && /^https?:/i.test(it.url)) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+      a.textContent = inferTag(it) + ' · ' + compactArchiveTitle(it);
+      host.appendChild(a);
+    });
+    host.hidden = false;
+  }
+  function applyPulseMeta(data) {
+    var updated = data && data.updated;
+    setText('pulseUpdated', formatPulseUpdated(updated));
+    var moved = (data && (data.what_moved || data.moved)) || '';
+    var movedEl = $('pulseMoved');
+    if (movedEl) {
+      if (moved) {
+        movedEl.textContent = moved;
+        movedEl.hidden = false;
+      } else {
+        movedEl.textContent = '';
+        movedEl.hidden = true;
+      }
+    }
+    renderArchive(data && data.archive);
+    renderQuickMedia(data && data.quick_media);
+    applyFearGreed(data && data.fear_greed);
   }
 
   /* Nav hamburger */
@@ -233,9 +339,13 @@
   });
 
   function refreshMarket() {
-    var stats = { price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' };
+    var stats = {
+      price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—',
+      priceRaw: null, chgRaw: null, feeRaw: null
+    };
 
     j(MP + '/v1/prices').then(function (p) {
+      stats.priceRaw = p.USD;
       stats.price = usd(p.USD);
       stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
       setText('tilePrice', stats.price);
@@ -244,7 +354,16 @@
     }).catch(function () {});
 
     j('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT').then(function (t) {
+      var last = parseFloat(t.lastPrice);
       var n = parseFloat(t.priceChangePercent);
+      if (!isNaN(last)) {
+        stats.priceRaw = last;
+        stats.price = usd(last);
+        stats.sats = num(Math.round(1e8 / last));
+        setText('tilePrice', stats.price);
+        setText('tileSats', stats.sats);
+      }
+      stats.chgRaw = n;
       stats.chg = signedPct(n);
       stats.chgClass = pctClass(n);
       setText('tileChg', stats.chg);
@@ -254,6 +373,15 @@
     }).catch(function () {
       return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true').then(function (g) {
         var n = g.bitcoin && g.bitcoin.usd_24h_change;
+        var px = g.bitcoin && g.bitcoin.usd;
+        if (px != null && !isNaN(px)) {
+          stats.priceRaw = px;
+          stats.price = usd(px);
+          stats.sats = num(Math.round(1e8 / px));
+          setText('tilePrice', stats.price);
+          setText('tileSats', stats.sats);
+        }
+        stats.chgRaw = n;
         stats.chg = signedPct(n);
         stats.chgClass = pctClass(n);
         setText('tileChg', stats.chg);
@@ -270,8 +398,10 @@
     }).catch(function () {});
 
     j(MP + '/v1/fees/recommended').then(function (f) {
-      stats.fee = f.fastestFee != null ? f.fastestFee + ' sat/vB' : '—';
-      setText('tileFee', f.fastestFee != null ? f.fastestFee + ' sat/vB' : '—');
+      stats.feeRaw = f.fastestFee;
+      var feeTxt = f.fastestFee != null ? f.fastestFee + ' sat/vB · ' + feeBand(f.fastestFee) : '—';
+      stats.fee = feeTxt;
+      setText('tileFee', feeTxt);
       renderTicker(stats);
     }).catch(function () {});
 
@@ -285,7 +415,7 @@
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
-  /* Pulse: Bitcoin-only, 4–5 max, TAG icon + copy + Read at {Outlet}. */
+  /* Pulse: Bitcoin-only, max 3 (layout), TAG icon + copy + Read at {Outlet}. */
   function isDeskStory(item) {
     if (!item) return false;
     var src = (item.source || '').toLowerCase();
@@ -383,6 +513,7 @@
   }
   function loadPulse() {
     j('news/news-pulse.json').then(function (data) {
+      applyPulseMeta(data || {});
       var local = (data && data.items) || [];
       if (data && data.feed) {
         return j(data.feed).then(function (remote) {
@@ -391,7 +522,10 @@
         }).catch(function () { renderPulse(local); });
       }
       renderPulse(local);
-    }).catch(function () { renderPulse([]); });
+    }).catch(function () {
+      applyPulseMeta({});
+      renderPulse([]);
+    });
   }
   loadPulse();
 

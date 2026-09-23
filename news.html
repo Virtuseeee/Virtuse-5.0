@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="news/news.css">
+<link rel="stylesheet" href="news/news.css?v=20260923f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -145,7 +145,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <main id="main">
   <div class="page-inner edition-wrap">
     <div class="edition-strip">
-      <p class="edition">Latest Brief · <time datetime="2026-09-22">Tue, Sep 22, 2026</time></p>
+      <p class="edition">Latest Brief · <time datetime="2026-09-23">Wed, Sep 23, 2026</time></p>
       <p class="hero-claim">Fix the Money, Fix the World</p>
     </div>
   </div>
@@ -155,9 +155,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <aside class="hero-col hero-pulse" id="pulse">
         <div class="desk-head">
           <h2>Pulse</h2>
-          <p>The week on one screen. Daily Pulse comes later.</p>
+          <p id="pulseUpdated">Updated today · —</p>
         </div>
+        <p class="pulse-moved" id="pulseMoved" hidden></p>
         <div class="pulse-feed" id="pulseList"></div>
+        <div class="pulse-archive" id="pulseArchive" hidden></div>
         <div class="desk-status" id="pulseEmpty">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 56" fill="none" aria-hidden="true">
             <path stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" d="M6 38h76v10H6z"/>
@@ -200,7 +202,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="tile"><div class="tile-label">Sats / $</div><div class="tile-value" id="tileSats">—</div></div>
             <div class="tile"><div class="tile-label">Block</div><div class="tile-value" id="tileHeight">—</div></div>
           </div>
-          <p class="numbers-fine">Run the numbers. Not a recommendation.</p>
+          <p class="numbers-fine" id="numbersFine">Run the numbers. Not a recommendation.</p>
         </div>
         <div class="brief-capture atlantic" id="compactCapture">
           <p class="capture-kicker">Get the Brief</p>
@@ -214,6 +216,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </form>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <section class="section quick-media" id="quickMedia" hidden aria-label="Quick Media">
+    <div class="page-inner">
+      <p class="desk-label">Quick Media</p>
+      <p class="quick-media-item" id="quickMediaItem"></p>
     </div>
   </section>
 
@@ -309,6 +318,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 
-<script src="news/news.js" defer></script>
+<script src="news/news.js?v=20260923f" defer></script>
 </body>
 </html>
