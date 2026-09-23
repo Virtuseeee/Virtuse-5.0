@@ -157,6 +157,31 @@ def report(msg, findings):
     findings.append(msg)
 
 
+NAV_CTA_ANY_RULE_RE = re.compile(r'\.nav-cta(?:,[^{]*)?\s*\{([^}]*)\}')
+
+
+def resolved_nav_cta_size_before(content, upto_index):
+    """Cascade-simulate: scan every .nav-cta (or shared ".nav-cta, X")
+    rule that appears BEFORE upto_index and return the last-declared
+    padding/font-size pair, or (None, None) if nothing set them yet.
+    This is what tells a genuine gap (nothing upstream ever sets a
+    size, so the override needs one) apart from a page that already has
+    its own deliberate size via an earlier rule (e.g. the legal-page
+    10px24px/14px convention) -- forcing 7px14px/12px on TOP of that
+    would silently override it, not fix anything."""
+    padding = None
+    font_size = None
+    for m in NAV_CTA_ANY_RULE_RE.finditer(content[:upto_index]):
+        body = m.group(1)
+        p = re.search(r'padding:\s*([0-9a-z% .]+);', body)
+        fs = re.search(r'font-size:\s*([0-9a-z%.]+);', body)
+        if p:
+            padding = p.group(1)
+        if fs:
+            font_size = fs.group(1)
+    return padding, font_size
+
+
 def fix_nav_cta(path, content, findings, apply):
     changed = False
     if NAV_CTA_BASE_OLD in content:
@@ -164,11 +189,29 @@ def fix_nav_cta(path, content, findings, apply):
         if apply:
             content = content.replace(NAV_CTA_BASE_OLD, NAV_CTA_BASE_NEW, 1)
             changed = True
-    if NAV_CTA_OVERRIDE_OLD in content and NAV_CTA_OVERRIDE_NEW not in content:
-        report(f"{path}: nav-cta override missing padding/font-size", findings)
-        if apply:
-            content = content.replace(NAV_CTA_OVERRIDE_OLD, NAV_CTA_OVERRIDE_NEW, 1)
-            changed = True
+    idx = content.find(NAV_CTA_OVERRIDE_OLD)
+    if idx != -1 and NAV_CTA_OVERRIDE_NEW not in content:
+        padding, font_size = resolved_nav_cta_size_before(content, idx)
+        if padding is None and font_size is None:
+            # Nothing upstream sets a size at all -- this page genuinely
+            # falls through to the browser default until the override
+            # supplies one. Safe and necessary to add it.
+            report(f"{path}: nav-cta override missing padding/font-size (no earlier rule sets one)", findings)
+            if apply:
+                content = content.replace(NAV_CTA_OVERRIDE_OLD, NAV_CTA_OVERRIDE_NEW, 1)
+                changed = True
+        elif padding == '7px 14px' and font_size == '12px':
+            # Already correct via an earlier rule; the override doesn't
+            # need to restate it. Nothing to report or change.
+            pass
+        else:
+            # An earlier rule already gives this page its own deliberate
+            # size (e.g. the legal-page 10px24px/14px convention) --
+            # report it as a DIFFERENT class of finding so it never gets
+            # silently overridden by force-adding 7px14px/12px here.
+            report(f"{path}: nav-cta has its own size via an earlier rule "
+                   f"(padding={padding}, font-size={font_size}) -- leaving alone, "
+                   f"NOT the same bug as the missing-size case", findings)
     return content, changed
 
 
