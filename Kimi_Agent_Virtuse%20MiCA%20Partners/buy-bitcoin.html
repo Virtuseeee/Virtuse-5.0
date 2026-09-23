@@ -290,7 +290,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .stack-step0-text h3 {
   font-size: 18px;
   font-weight: 800;
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
 .stack-step0-text p {
@@ -329,10 +329,17 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   padding: 0 48px;
 }
 .seo-guides-inner {
-  padding: 20px 32px 24px;
+  padding: 28px 32px;
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--dark-card);
+}
+.seo-guides h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 14px;
 }
 .seo-guides p {
   font-size: 20px;
@@ -839,7 +846,7 @@ a.nav-logo, .nav-logo {
    inverted neutral (hardcoded, not var(--text)/var(--dark) — a real
    device screenshot on the homepage found that a bare var() in
    `background` with no fallback silently fails on mobile Safari). */
-.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
 .nav-cta:hover {
   background: #ffffff;
   color: #0d0902;
@@ -1335,7 +1342,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="stack-step0-inner">
     <div class="stack-step0-text">
       <h3>How much — and how often — do you want to buy?</h3>
-      <p>Compare every partner's fees at your amount before you pick one, with the Stacking Strategist.</p>
     </div>
     <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget" class="stack-step0-cta">
       Plan my stack
@@ -1347,7 +1353,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== COUNTRY BUY GUIDES + FEE TOOLS ===== -->
 <nav class="seo-guides" aria-label="Country buy guides and fee tools">
   <div class="seo-guides-inner">
-    <p>Fee ranking by country</p>
+    <h2>Fee ranking by country</h2>
+    <p>Compare every partner's fees at your amount before you pick one, with the Stacking Strategist.</p>
     <div class="seo-guides-links">
       <a href="/buy-bitcoin/slovakia/">Buy in Slovakia</a>
       <a href="/buy-bitcoin/czechia/">Buy in Czechia</a>

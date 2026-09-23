@@ -124,10 +124,10 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   align-items: center;
   color: white;
   border: none;
-  padding: 10px 24px;
+  padding: 7px 14px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -414,6 +414,11 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .pcard-top-pick {
   border-color: rgba(247, 147, 26, 0.3);
+}
+
+.pcard-top-pick:hover {
+  border-color: var(--border-hover);
+  background: var(--dark-card-hover);
 }
 
 .pcard-top-pick::before {

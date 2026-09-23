@@ -139,20 +139,20 @@ body {
   background: var(--dark-card);
 }
 
-/* Shrunk to match the now-more-compact nav */
+/* Shrunk to match the now-more-compact nav, sized to match the language switcher button beside it */
 .nav-cta {
-  background: var(--text);
-  color: var(--dark);
+  background: var(--btc-orange);
+  color: var(--btn-text, #0d0902);
   border: none;
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: background 0.2s;
 }
 
-.nav-cta:hover { opacity: 0.85; }
+.nav-cta:hover { background: var(--btc-orange-light); }
 
 /* ===== HERO ===== */
 .hero {
@@ -2204,11 +2204,11 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-/* nav-cta de-orangized: white stamp, no orange accent */
-.nav-cta { background: var(--text); color: var(--dark); }
+/* nav-cta stays the one sitewide orange stamp */
+.nav-cta { background: var(--btc-orange, #f7931a); color: var(--btn-text, #0d0902); }
 .nav-cta:hover {
-  opacity: 0.85;
-  color: var(--dark);
+  background: #ffffff;
+  color: var(--btn-text, #0d0902);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
@@ -2684,7 +2684,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </h1>
 
       <p class="hero-sub">
-        Vetted, licensed partners for buying, securing, mining and borrowing —
+        Vetted, licensed partners for buying, securing, mining and borrowing,
         plus the tools and playbooks to never lose a sat to fees, hacks, or inheritance chaos.
       </p>
 
