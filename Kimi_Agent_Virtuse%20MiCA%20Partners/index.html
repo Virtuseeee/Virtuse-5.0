@@ -473,7 +473,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-indicator, .scroll-dot, .orbit-scene, .credit-coin, .credit-ripple, .co-row,
-  .footer-wordmark-icon-wrap, .footer-wordmark-text, .problem-art, .problem-punc {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text,
+  .cube-scene, .cube, .cube-scan, .cube-node, .cube-veil {
     animation: none;
   }
   .credit-ripple { display: none; }
@@ -643,95 +644,155 @@ body {
   justify-content: center;
   margin-bottom: 24px;
   overflow: hidden;
-  /* The float animation lives on this wrapper, not on the <svg> itself —
-     real-device testing on mobile Safari found that animating a
-     `transform` directly on an <svg> root silently breaks painting of
-     fill-only children (see the .problem-dot/.problem-bar comment
-     below); animating the plain HTML wrapper instead sidesteps that
-     entirely. */
-  animation: problemArtFloat 5s ease-in-out infinite;
 }
 
-/* linear.app's own "Fig 0.1" illustrations are the visual lead of each
-   tab, not an afterthought — sized up from 150px. Holds both the <svg>
-   (rings/lines only now) and the plain HTML dots/bars absolutely
-   positioned over it, both scaled together since both are sized off
-   this one box. */
-.problem-art-box {
+/* ===== 3D cube illustrations (replaces the old ring/crosshair SVG
+   illustrations) — three CSS-only variations of the same shared cube
+   markup, one per tab. Sized to fit the existing 200px .problem-art
+   slot; the tab's own card/border/hover styling above is untouched. */
+.cube-stage {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 180px;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  overflow: hidden;
 }
 
-.problem-art-box svg {
+.cube-scene {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cube {
   width: 100%;
   height: 100%;
-  display: block;
-  /* Real CSS rule, not a fill="none" presentation attribute on the SVG
-     itself — see the .problem-dot/.problem-bar comment below for why
-     that distinction ended up mattering here. */
-  fill: none;
+  position: relative;
+  transform-style: preserve-3d;
 }
 
-@keyframes problemArtFloat {
+.cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03));
+}
+.cube-face.front  { transform: translateZ(75px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(75px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(75px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(75px); }
+.cube-face.top {
+  transform: rotateX(90deg) translateZ(75px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(180, 190, 210, 0.08));
+}
+.cube-face.bottom {
+  transform: rotateX(-90deg) translateZ(75px);
+  background: rgba(10, 10, 12, 0.7);
+}
+.cube-face.front::after {
+  content: "";
+  position: absolute;
+  inset: 18% 18% 28%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 12px);
+}
+
+/* Variation A — Purpose-built: slow elegant orbit + gentle float. */
+.var-purpose .cube-scene {
+  animation: cubeFloat 5s ease-in-out infinite, cubeSpinSlow 22s linear infinite;
+}
+.var-purpose .cube { transform: rotateX(-22deg) rotateY(-24deg); }
+
+@keyframes cubeFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes cubeSpinSlow {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
 }
 
-.i-border { stroke: var(--border); }
-.i-border-strong { stroke: var(--border-hover); }
+/* Variation B — Powered by agents: medium spin + scan line + pulsing nodes. */
+.var-agents .cube-scene {
+  animation: cubeFloat 4s ease-in-out infinite, cubeSpinMed 12s linear infinite;
+}
+.var-agents .cube { transform: rotateX(-12deg) rotateY(20deg); }
+.var-agents .cube-face {
+  border-color: rgba(130, 200, 255, 0.35);
+  background: linear-gradient(145deg, rgba(80, 140, 255, 0.18), rgba(255, 255, 255, 0.03));
+}
 
-/* Three fixes in a row failed on the real device for these dots/bars —
-   moving fill="var(...)" to a class, moving the animation off the <svg>
-   root, and finally redrawing every shape as stroke-only (a circle with
-   its radius halved and stroke-width equal to the original radius,
-   which strokes a solid-looking disk with no fill at all). All three
-   were verified correct in this session's own browser every time and
-   all three still showed nothing but the rings/crosshair lines on the
-   user's actual phone — meaning the bug isn't specific to fill, or to
-   var(), or to any single SVG technique; something about small SVG
-   shapes drawn this way just doesn't paint reliably on this device.
-   Given that, these are no longer SVG shapes at all: each dot/bar is a
-   plain absolutely-positioned HTML element, laid over the <svg> (which
-   keeps only the rings and crosshair lines, since those have rendered
-   correctly this entire time) using percentages of the shared 190x190
-   viewBox so they line up regardless of the box's actual rendered pixel
-   size. The colors are hardcoded per theme below, not var(...) — the
-   first version of this fix used `background: var(--text-muted)` etc.
-   and *still* failed, for the same reason the "Get the Brief" button's
-   background did a few commits earlier in this session: a `background:
-   var(...)` with no literal fallback on this device. Same fix as that
-   button: hardcode the value, override per theme. */
-.problem-dot {
+.cube-scan {
   position: absolute;
-  width: 7px;
-  height: 7px;
+  left: -30%;
+  right: -30%;
+  height: 24px;
+  z-index: 4;
+  background: linear-gradient(180deg, transparent, rgba(120, 190, 255, 0.5), transparent);
+  mix-blend-mode: screen;
+  animation: cubeScan 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cube-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #8b949e;
-  transform: translate(-50%, -50%);
+  background: #9fd0ff;
+  box-shadow: 0 0 12px #7ab8ff;
+  animation: cubeNode 1.8s ease-in-out infinite;
+}
+.cube-node:nth-child(1) { top: 16%; left: 10%; }
+.cube-node:nth-child(2) { top: 30%; right: 8%; animation-delay: 0.4s; }
+.cube-node:nth-child(3) { bottom: 18%; left: 20%; animation-delay: 0.8s; }
+
+@keyframes cubeSpinMed {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes cubeScan {
+  0%   { top: 10%; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { top: 78%; opacity: 0; }
+}
+@keyframes cubeNode {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.2); }
 }
 
-.problem-dot-strong { background: rgba(255, 255, 255, 0.12); }
+/* Variation C — Designed for speed: smooth glide + easing yaw, no snappy zip. */
+.var-speed .cube-scene { animation: cubeGlide 5.5s ease-in-out infinite; }
+.var-speed .cube {
+  transform: rotateX(-24deg) rotateY(-32deg);
+  animation: cubeYaw 9s ease-in-out infinite;
+}
 
-.problem-bar {
+.cube-veil {
   position: absolute;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-50%);
+  inset: 18% -10%;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+  animation: cubeVeil 5.5s ease-in-out infinite;
+  opacity: 0.45;
+  pointer-events: none;
 }
 
-/* The one colored "punc" per illustration breathes gently — its own
-   quiet accent within the already-quiet float. */
-.problem-punc {
-  background: #f7931a;
-  animation: problemPuncPulse 2.6s ease-in-out infinite;
+@keyframes cubeGlide {
+  0%   { transform: translate3d(-14px, 8px, 0) scale(0.96); }
+  50%  { transform: translate3d(16px, -10px, 0) scale(1.04); }
+  100% { transform: translate3d(-14px, 8px, 0) scale(0.96); }
 }
-
-@keyframes problemPuncPulse {
-  0%, 100% { opacity: 1; filter: drop-shadow(0 0 0 rgba(247, 147, 26, 0)); }
-  50% { opacity: 0.75; filter: drop-shadow(0 0 5px rgba(247, 147, 26, 0.7)); }
+@keyframes cubeYaw {
+  0%   { transform: rotateX(-24deg) rotateY(-38deg); }
+  50%  { transform: rotateX(-16deg) rotateY(28deg); }
+  100% { transform: rotateX(-24deg) rotateY(-38deg); }
+}
+@keyframes cubeVeil {
+  0%, 100% { transform: translateX(-12%); opacity: 0.2; }
+  50%      { transform: translateX(12%); opacity: 0.55; }
 }
 
 .problem-card h3 {
@@ -1928,12 +1989,10 @@ body {
   opacity: 0.14;
 }
 
-/* Animation lives on this wrapper, not on the <svg> itself — same
-   Safari fix as the Questions-section illustrations (see the
-   .problem-dot/.problem-bar comment): animating an <svg> element
-   directly silently broke its gradient-filled paths on a real device
-   (only a faint sliver of one path rendered), while animating a plain
-   wrapper around a static <svg> doesn't. */
+/* Animation lives on this wrapper, not on the <svg> itself — a real
+   device found that animating an <svg> element directly silently broke
+   its gradient-filled paths (only a faint sliver of one path rendered),
+   while animating a plain wrapper around a static <svg> doesn't. */
 .footer-wordmark-icon-wrap {
   flex-shrink: 0;
   animation: footerWordmarkPulse 6s ease-in-out infinite;
@@ -2807,17 +2866,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="buy-bitcoin.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.1</span>
       <div class="problem-art" aria-hidden="true">
-        <div class="problem-art-box">
-          <svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="95" cy="95" r="76" class="i-border" stroke-width="1"/>
-            <circle cx="95" cy="95" r="50" class="i-border" stroke-width="1"/>
-            <circle cx="95" cy="95" r="25" class="i-border-strong" stroke-width="1"/>
-            <line x1="95" y1="10" x2="95" y2="180" class="i-border" stroke-width="1" stroke-dasharray="2 6"/>
-            <line x1="10" y1="95" x2="180" y2="95" class="i-border" stroke-width="1" stroke-dasharray="2 6"/>
-          </svg>
-          <span class="problem-dot" style="left:50%;top:15.79%;"></span>
-          <span class="problem-dot" style="left:84.21%;top:50%;"></span>
-          <span class="problem-dot problem-punc" style="left:50%;top:50%;"></span>
+        <div class="cube-stage var-purpose">
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
         </div>
       </div>
       <h3>Which exchange won't rug me?</h3>
@@ -2831,18 +2890,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="secure.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.2</span>
       <div class="problem-art" aria-hidden="true">
-        <div class="problem-art-box">
-          <svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg">
-            <line x1="95" y1="20" x2="95" y2="90" class="i-border" stroke-width="1"/>
-            <line x1="95" y1="90" x2="40" y2="155" class="i-border" stroke-width="1"/>
-            <line x1="95" y1="90" x2="95" y2="155" class="i-border" stroke-width="1"/>
-            <line x1="95" y1="90" x2="150" y2="155" class="i-border" stroke-width="1"/>
-          </svg>
-          <span class="problem-dot" style="left:50%;top:10.53%;"></span>
-          <span class="problem-dot problem-dot-strong" style="left:50%;top:47.37%;"></span>
-          <span class="problem-dot" style="left:21.05%;top:81.58%;"></span>
-          <span class="problem-dot problem-punc" style="left:50%;top:81.58%;"></span>
-          <span class="problem-dot" style="left:78.95%;top:81.58%;"></span>
+        <div class="cube-stage var-agents">
+          <i class="cube-node"></i>
+          <i class="cube-node"></i>
+          <i class="cube-node"></i>
+          <div class="cube-scan"></div>
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
         </div>
       </div>
       <h3>What happens to my BTC when I die?</h3>
@@ -2856,14 +2918,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="tax.html" class="problem-card anim-card">
       <span class="problem-fig">Fig 0.3</span>
       <div class="problem-art" aria-hidden="true">
-        <div class="problem-art-box">
-          <svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg">
-            <line x1="40" y1="40" x2="40" y2="150" class="i-border" stroke-width="1"/>
-          </svg>
-          <span class="problem-bar" style="left:21.05%;top:27.89%;width:58.95%;"></span>
-          <span class="problem-bar" style="left:21.05%;top:41.58%;width:43.16%;"></span>
-          <span class="problem-bar problem-punc" style="left:21.05%;top:55.26%;width:69.47%;"></span>
-          <span class="problem-bar" style="left:21.05%;top:68.95%;width:31.58%;"></span>
+        <div class="cube-stage var-speed">
+          <div class="cube-veil"></div>
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
         </div>
       </div>
       <h3>What do I owe the taxman?</h3>
