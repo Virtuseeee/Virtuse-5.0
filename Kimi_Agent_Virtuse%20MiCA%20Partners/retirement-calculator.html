@@ -286,7 +286,7 @@ input[type="range"]::-moz-range-thumb {
   margin-top: 6px;
 }
 
-.price-note b { color: var(--green); font-weight: 600; }
+.price-note b { color: var(--text); font-weight: 600; }
 
 /* ===== RESULTS ===== */
 .results { display: flex; flex-direction: column; gap: 24px; }
@@ -300,13 +300,13 @@ input[type="range"]::-moz-range-thumb {
   gap: 18px;
 }
 
-.verdict.ok { background: var(--green-bg); border-color: rgba(63, 185, 80, 0.4); }
+.verdict.ok { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
 .verdict.bad { background: var(--red-bg); border-color: rgba(248, 81, 73, 0.4); }
 
 .verdict-icon { font-size: 34px; line-height: 1; }
 
 .verdict-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
-.verdict.ok .verdict-title { color: var(--green); }
+.verdict.ok .verdict-title { color: var(--text); }
 .verdict.bad .verdict-title { color: var(--red); }
 
 .verdict-sub { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
@@ -1141,7 +1141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3><span class="ico">◆</span> Portfolio Projection</h3>
       <div class="chart-legend">
         <span><span class="legend-dot" style="background:var(--btc-orange)"></span> Accumulation</span>
-        <span><span class="legend-dot" style="background:var(--green)"></span> Retirement drawdown</span>
+        <span><span class="legend-dot" style="background:var(--text)"></span> Retirement drawdown</span>
       </div>
       <canvas id="chart" height="300"></canvas>
     </div>
@@ -1190,7 +1190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (result.ok) {
           form.reset();
           msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
-          msg.style.color = 'var(--green, #3fb950)';
+          msg.style.color = 'var(--text)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
           msg.style.color = '#f85149';

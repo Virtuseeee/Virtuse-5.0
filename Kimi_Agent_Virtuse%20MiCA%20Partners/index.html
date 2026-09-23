@@ -141,18 +141,18 @@ body {
 
 /* Shrunk to match the now-more-compact nav */
 .nav-cta {
-  background: var(--btc-orange);
-  color: var(--btn-text, #0d0902);
+  background: var(--text);
+  color: var(--dark);
   border: none;
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 13px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: opacity 0.2s;
 }
 
-.nav-cta:hover { background: var(--btc-orange-light); }
+.nav-cta:hover { opacity: 0.85; }
 
 /* ===== HERO ===== */
 .hero {
@@ -1069,16 +1069,19 @@ body {
   background: var(--dark-card);
 }
 .tools-guides h2 {
-  font-size: 18px;
-  font-weight: 800;
-  margin: 0 0 8px;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 14px;
 }
 .tools-guides p {
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--text-muted);
-  margin: 0 0 18px;
-  max-width: 640px;
-  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 620px;
+  line-height: 1.55;
 }
 .tools-guides-links {
   display: flex;
@@ -2201,11 +2204,11 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-/* nav-cta stays the one sitewide orange stamp */
-.nav-cta { background: var(--btc-orange, #f7931a); color: var(--btn-text, #0d0902); }
+/* nav-cta de-orangized: white stamp, no orange accent */
+.nav-cta { background: var(--text); color: var(--dark); }
 .nav-cta:hover {
-  background: #ffffff;
-  color: var(--btn-text, #0d0902);
+  opacity: 0.85;
+  color: var(--dark);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
@@ -3055,10 +3058,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== TOOLS & GUIDES ===== -->
 <section class="tools-guides anim-section anim-hidden" id="tools-guides">
   <div class="tools-guides-inner">
-    <h2>Tools &amp; guides</h2>
+    <h2>Bitcoin tax in EU countries</h2>
     <p>Country tax overviews, fee comparison, and stacking tools. Educational routing only; not tax or investment advice.</p>
     <div class="tools-guides-links">
-      <a href="/bitcoin-tax/">Bitcoin tax</a>
+      <a href="/bitcoin-tax/">Country comparison</a>
       <a href="/bitcoin-tax/slovakia/">Slovakia</a>
       <a href="/bitcoin-tax/czechia/">Czechia</a>
       <a href="/bitcoin-tax/germany/">Germany</a>
