@@ -412,18 +412,9 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   background: var(--dark-card-hover);
 }
 
-.pcard-top-pick {
-  border-color: rgba(247, 147, 26, 0.3);
-}
-
 .pcard-top-pick:hover {
   border-color: var(--border-hover);
   background: var(--dark-card-hover);
-}
-
-.pcard-top-pick::before {
-  opacity: 1;
-  background: linear-gradient(90deg, var(--btc-orange), var(--btc-orange-light));
 }
 
 .pcard-header {
@@ -1162,8 +1153,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {

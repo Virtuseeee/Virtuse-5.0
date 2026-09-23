@@ -218,8 +218,8 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 }
 
 .price-card {
-  background: linear-gradient(135deg, var(--dark-card) 0%, #20180d 100%);
-  border: 1px solid rgba(247, 147, 26, 0.3);
+  background: var(--dark-card);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 36px 40px;
   display: flex;
@@ -227,7 +227,10 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
+  transition: border-color 0.2s;
 }
+
+.price-card:hover { border-color: var(--border-hover); }
 
 .price-label {
   font-size: 13px;
@@ -513,8 +516,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   position: relative;
   z-index: 1;
 }
-
-.newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
 /* ===== FOOTER ===== */
 .footer-main {
@@ -983,8 +984,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
