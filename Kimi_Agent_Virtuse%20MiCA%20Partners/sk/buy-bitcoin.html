@@ -156,55 +156,99 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   margin: 0 auto;
 }
 
-.how-title {
-  font-size: 14px;
+.how-header { text-align: left; margin-bottom: 60px; }
+
+.how-header h2 {
+  font-size: 42px;
   font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.how-header h2 span { font-weight: 400; color: var(--text-muted); }
+
+.how-header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  width: 32px;
-  height: 32px;
+.how-log {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
+  gap: 40px;
+  border-top: 1px solid var(--border);
 }
 
-.step h3 {
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+.how-log-body h3 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  order: 1;
+}
+
+.how-log-body p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  order: 2;
+}
+
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 
 .step p {
@@ -275,15 +319,24 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   padding: 0 48px;
 }
 .seo-guides-inner {
-  padding: 20px 32px 24px;
+  padding: 28px 32px;
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--dark-card);
 }
+.seo-guides h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
 .seo-guides p {
-  font-size: 13px;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--text-muted);
-  margin: 0 0 12px;
+  line-height: 1.55;
+  margin: 0 0 16px;
 }
 .seo-guides-links {
   display: flex;
@@ -457,7 +510,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1186,27 +1239,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Ako to funguje</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Vyberte si partnera</h3>
-      <p>Licencovaní MiCA poskytovatelia: Prehľad, porovnanie poplatkov, funkcie a jurisdikcie.</p>
+  <div class="how-header">
+    <h2>Ako <span>to funguje</span></h2>
+    <p>Štyri jednoduché kroky k prístupu ku každej Bitcoin službe cez náš hub</p>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 01</span>
+        <h3>Vyberte si partnera</h3>
+        <p>Licencovaní MiCA poskytovatelia: Prehľad, porovnanie poplatkov, funkcie a jurisdikcie.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Prejsť na platformu</h3>
-      <p>Váš odkaz vás presmeruje priamo k partnerovi. Virtuse nevystupuje ako sprostredkovateľ.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 02</span>
+        <h3>Prejsť na platformu</h3>
+        <p>Váš odkaz vás presmeruje priamo k partnerovi. Virtuse nevystupuje ako sprostredkovateľ.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Dokončite KYC tam</h3>
-      <p>Overenie prebieha u poskytovateľa. KYC a compliance vybavíte priamo na platforme licencovaného partnera.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 03</span>
+        <h3>Dokončite KYC tam</h3>
+        <p>Overenie prebieha u poskytovateľa. KYC a compliance vybavíte priamo na platforme licencovaného partnera.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Nákup s vlastnou úschovou</h3>
-      <p>Nakúpte Bitcoin a pošlite si ho do vlastnej peňaženky. Vaše kľúče, vaš Bitcoin.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 04</span>
+        <h3>Nákup s vlastnou úschovou</h3>
+        <p>Nakúpte Bitcoin a pošlite si ho do vlastnej peňaženky. Vaše kľúče, vaš Bitcoin.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1216,7 +1284,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="stack-step0-inner">
     <div class="stack-step0-text">
       <h3>Koľko — a ako často — chcete kupovať?</h3>
-      <p>Porovnajte poplatky všetkých partnerov pri vašej sume ešte pred výberom, so Stacking Strategist.</p>
     </div>
     <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget" class="stack-step0-cta">
       Naplánovať si stack
@@ -1228,7 +1295,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== COUNTRY BUY GUIDES + FEE TOOLS ===== -->
 <nav class="seo-guides" aria-label="Sprievodcovia nákupu podľa krajiny a nástroje na poplatky">
   <div class="seo-guides-inner">
-    <p>Stránky nákupu podľa krajiny, DCA projekcia a zverejnený rebríček poplatkov.</p>
+    <h2>Rebríček poplatkov podľa krajiny</h2>
+    <p>Porovnajte poplatky všetkých partnerov pri vašej sume ešte pred výberom, so Stacking Strategist.</p>
     <div class="seo-guides-links">
       <a href="/buy-bitcoin/slovakia/">Kúpiť na Slovensku</a>
       <a href="/buy-bitcoin/czechia/">Kúpiť v Česku</a>

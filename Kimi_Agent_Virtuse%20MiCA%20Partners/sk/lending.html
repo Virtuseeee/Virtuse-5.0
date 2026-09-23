@@ -183,55 +183,99 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   margin: 0 auto;
 }
 
-.how-title {
-  font-size: 14px;
+.how-header { text-align: left; margin-bottom: 60px; }
+
+.how-header h2 {
+  font-size: 42px;
   font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.how-header h2 span { font-weight: 400; color: var(--text-muted); }
+
+.how-header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  width: 32px;
-  height: 32px;
+.how-log {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
+  gap: 40px;
+  border-top: 1px solid var(--border);
 }
 
-.step h3 {
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+.how-log-body h3 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  order: 1;
+}
+
+.how-log-body p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  order: 2;
+}
+
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 
 .step p {
@@ -408,7 +452,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1274,27 +1318,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Ako to funguje</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Nastavte podmienky pôžičky</h3>
-      <p>Vyberte si výšku pôžičky, úrokovú sadzbu a dĺžku splácania. Alebo si zvoľte okamžitú pôžičku za vopred stanovenú sadzbu.</p>
+  <div class="how-header">
+    <h2>Ako <span>to funguje</span></h2>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 01</span>
+        <h3>Nastavte podmienky pôžičky</h3>
+        <p>Vyberte si výšku pôžičky, úrokovú sadzbu a dĺžku splácania. Alebo si zvoľte okamžitú pôžičku za vopred stanovenú sadzbu.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Spárujte sa s investorom</h3>
-      <p>Vaša žiadosť sa zobrazí na trhovisku. Pôžičku vám financuje investor, bez centrálneho veriteľa.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 02</span>
+        <h3>Spárujte sa s investorom</h3>
+        <p>Vaša žiadosť sa zobrazí na trhovisku. Pôžičku vám financuje investor, bez centrálneho veriteľa.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Uzamknite Bitcoin ako zábezpeku</h3>
-      <p>Pošlite Bitcoin na on-chain multisig escrow adresu. Svoje súkromné kľúče nikdy nevydávate.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 03</span>
+        <h3>Uzamknite Bitcoin ako zábezpeku</h3>
+        <p>Pošlite Bitcoin na on-chain multisig escrow adresu. Svoje súkromné kľúče nikdy nevydávate.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Prijmite prostriedky a splaťte</h3>
-      <p>Pôžička sa odošle na váš bankový účet. Splaťte pri splatnosti, váš Bitcoin sa vráti do vašej peňaženky.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 04</span>
+        <h3>Prijmite prostriedky a splaťte</h3>
+        <p>Pôžička sa odošle na váš bankový účet. Splaťte pri splatnosti, váš Bitcoin sa vráti do vašej peňaženky.</p>
+      </div>
     </div>
   </div>
 </section>
