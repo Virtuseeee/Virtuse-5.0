@@ -66,7 +66,7 @@ img{max-width:100%;display:block}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
 .nav-links a:hover{color:var(--text);background:var(--dark-card)}
-.nav-links a.active{color:var(--btc-orange);background:rgba(247, 147, 26,0.08)}
+.nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
 .nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:7px 14px;border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;transition:background .2s}
 .nav-cta:hover{background:var(--btc-orange-light)}
 
@@ -90,7 +90,7 @@ img{max-width:100%;display:block}
 .search-input::placeholder{color:var(--text-dim)}
 .search-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;pointer-events:none}
 
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--btc-orange);background:rgba(247, 147, 26,0.1);align-self:flex-start}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--text);background:rgba(255,255,255,0.06);align-self:flex-start}
 .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 
 .featured{display:block;background:var(--dark-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:56px;transition:all .3s}
@@ -438,11 +438,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-links a.active .nav-link-arrow {
     opacity: 1;
     transform: translateX(0);
-    color: var(--btc-orange, #f7931a);
+    color: var(--text);
   }
 
-  .nav-links a.active { color: var(--btc-orange, #f7931a); }
-  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active .nav-link-num { color: var(--text); }
 
   .nav-links a.active::before {
     content: '';
