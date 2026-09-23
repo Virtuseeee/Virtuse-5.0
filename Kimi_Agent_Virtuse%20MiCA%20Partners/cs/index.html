@@ -1710,8 +1710,6 @@ a.nav-logo, .nav-logo {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--btc-orange, #f7931a);
-  color: #fff;
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -1721,12 +1719,17 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-.nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
+/* nav-cta stays the one sitewide orange stamp */
+.nav-cta { background: var(--btc-orange, #f7931a); color: var(--btn-text, #0d0902); }
+.nav-cta:hover {
   background: #ffffff;
-  color: var(--btc-orange, #f7931a);
+  color: var(--btn-text, #0d0902);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
+
+.newsletter-form button { background: #e6edf3; color: #08090a; }
+.newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .vblog-cta, .btn-secondary {
   transition: all 0.2s ease;
