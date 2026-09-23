@@ -669,7 +669,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-links li:nth-child(10) { transition-delay: 0.31s; }
   .nav-links li:nth-child(11) { transition-delay: 0.34s; }
 
-  .nav-links a {
+  .nav-links a:not(.lang-opt) {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -745,7 +745,9 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     padding: 16px 20px;
     font-size: 16px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
     -webkit-tap-highlight-color: transparent;
   }
 
