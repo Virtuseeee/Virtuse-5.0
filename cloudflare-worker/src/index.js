@@ -147,7 +147,7 @@ async function addContact(env, email, lang) {
 // cloudflare-worker/README.md's "Multi-language welcome emails" section.
 // A lang not present here (including undefined/omitted) falls back to 'en'.
 const WELCOME_EMAIL_TEMPLATES = {
-  en: { html: () => WELCOME_EMAIL_HTML, subject: 'Welcome to Virtuse Brief — You\'re In' },
+  en: { html: () => WELCOME_EMAIL_HTML, subject: 'Welcome to Virtuse Brief' },
   sk: { html: () => WELCOME_EMAIL_HTML_SK, subject: 'Vitajte vo Virtuse Brief' },
 };
 
