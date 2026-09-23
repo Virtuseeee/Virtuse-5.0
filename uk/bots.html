@@ -129,9 +129,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .nav-links a {
-      padding: 6px 14px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 400;
       color: var(--muted);
       border-radius: var(--radius-sm);
       transition: all 0.2s;
@@ -184,28 +184,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: hidden;
       padding: 100px 48px 80px;
       text-align: left;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 50% 20%, rgba(247, 147, 26, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(48, 54, 61, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
-      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
-      opacity: 0.4;
-      pointer-events: none;
     }
 
     .hero-content {
@@ -554,16 +532,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 0.82rem;
       color: var(--text);
       padding: 4px 0;
-      
-      
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
 
     .partner-features li::before {
       content: '';
       width: 5px; height: 5px;
-      background: var(--orange);
-      
+      background: var(--text);
+      border-radius: 50%;
       flex-shrink: 0;
     }
 
@@ -876,7 +854,7 @@ a.nav-logo, .nav-logo {
    inverted neutral, hardcoded (not var()) per the real Safari bug found
    on the homepage. Partner-card primary CTAs use .btn-primary too, so
    this also de-orangizes those — confirmed and approved by the user. */
-.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
 .nav-cta:hover {
   background: #ffffff;
   color: #0d0902;
@@ -1259,7 +1237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html" class="active"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="https://virtuse.com/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
@@ -1344,11 +1322,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
     <div class="hero-content animate">
 
-      <h1>Автоматизуйте свою стратегію в Біткоїні за допомогою<br><span style="color:var(--orange)">торгових ботів</span></h1>
+      <h1>Автоматизуйте свою стратегію в Біткоїні за допомогою<br><span style="color:var(--text)">торгових ботів</span></h1>
       <p>Використовуйте некастодіальні торгові боти, які підключаються через API-ключі лише для читання або лише для торгівлі. Ваш Біткоїн залишається на вашій біржі, бот лише виконує вашу стратегію. Без прав на виведення коштів. Без кастоді.</p>
       </div>
   </section>
