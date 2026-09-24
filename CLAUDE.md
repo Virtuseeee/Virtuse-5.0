@@ -2,6 +2,92 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-24, third round) — es/ (Spanish) brought to full EN redesign parity, committed to main (`7f67ebe`), live on staging (24/24 md5-verified); production scp prepared, NOT yet run
+
+**What this round did:** the whole `es/` folder (22 of 23 pages; `404.html`
+untouched) now matches the EN redesign the same way sk/cs/fr/uk do, per the
+user's 8-point brief (homepage to the last detail incl. cube hero, cube
+illustrations and animated tickers; every subpage's "Cómo funciona";
+newsletter/footer everywhere; Loans' "Dos formas de participar" panel;
+de-orange partner bullets everywhere; de-orange Bitcoin Data/Blog/About;
+Loans' "Obtenga una cotización instantánea" badge removed + blue term values
+made white; Treasury's DISCRECIONAL/API tags removed; Bitcoin Data's green
+parts made white). Verified locally (HTMLParser tag-balance on every page,
+relative-link existence check = 0 broken, browser at 1440px and 375px: 13
+sections in EN order, cube canvas, 3 ticker rows animating, 9 Quick Answers,
+6 service cards, 3 changelog steps, drawer + mobile language dropdown, only
+the ES pill active, a computed-style sweep for `rgb(247,147,26)` on every
+key page returning only EN-identical elements — first changelog dot,
+compare-table `.best`, `.wide-card .ico`, blog featured badge/newsdesk link,
+buy-bitcoin step-0 CTA). Committed to `main` as `7f67ebe`, synced to
+`gh-pages` (`2de35b0`), md5-verified on `staging.virtuse.com` (24/24: all
+`es/*.html` + root `bots.html`). **Production not yet updated** — the user
+runs the scp below; `es/` already exists on the server (published in the
+old design on 2026-09-24), so it's a plain recursive copy, no `sftp mkdir`.
+
+**How it was done — same two techniques as uk/, plus the recurring fixes:**
+1. Mechanical parity via `i18n-tools/port_homepage_redesign_es.py` (sed-
+   derived from the fr script: tokens, SVG hamburger, mobile lang dropdown,
+   multi-instance lang JS, nav-scrolled) and
+   [`i18n-tools/port_es_parity.py`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/port_es_parity.py)
+   (Spanish counterpart of `port_uk_parity.py` + newsletter/footer/Brief-nav
+   steps; "Paso" step label; per-page `GUIDES_EXTRA` mirroring EN's non-
+   uniform footer Guides column — index gets the tax/fee set, buy-bitcoin the
+   buy-in-country set, lending/tax their own). Then `audit_parity.py es --fix`
+   for the nav-cta size / mobile-drawer `:not(.lang-opt)` gaps.
+2. "EN template + transplanted copy" for the structurally divergent pages:
+   `index.html` (script in the session scratchpad: EN file wholesale, es
+   `<head>` + `color-scheme` meta, es/buy-bitcoin's converted nav, ~90
+   asserted `str.replace` pairs, 9 Q&A pulled from `es/faq.html` by regex,
+   es footer with the EN-index Guides set, `lang:'es'`, `../` for
+   concierge/stacking/article/news/consultation-widget, no launcher);
+   `tax.html`, `bots.html`, `about.html` (EN `<style>` + the page's own
+   "ES: compact nav text" block, body sections rebuilt on EN markup with the
+   Spanish strings). `blog.html` got the mobile lang dropdown, newsdesk line
+   ("Redacción"), 13px nav links, the Brief nav item and the News-desk footer
+   link by hand.
+
+**Bugs found this round (all fixed unless noted):**
+- **Idempotency guards keyed on CSS names silently skipped real work**:
+  `port_es_parity.py`'s newsletter/footer CSS step checked
+  `footer-wordmark-text` (present in a mobile mq rule an earlier partial run
+  had inserted) and its newsletter-HTML step checked `brief-card-poster`
+  (present as a CSS selector after the CSS transplant) — so treasury kept the
+  old footer CSS and about/buy-bitcoin/lending/mining/secure kept the old
+  "Arreglemos el dinero" newsletter while the script reported "changed".
+  Guards now key on the `footerWordmark` keyframe name and the literal
+  `class="brief-card brief-card-poster"` markup. Same class of bug as the
+  round-20 `footer-wordmark-text` false positive — check for the *markup*,
+  never a class name that also exists in CSS.
+- All 21 es pages (and **all 21 fr pages — still open**) had the old
+  "Get Started scrolls to partners" handler instead of EN's concierge
+  redirect; es repointed to `../concierge.html?utm_source=concierge&utm_medium=banner`.
+- Two partner-logo `src`s without `../` (es/bots Cryptohopper, es/buy-bitcoin
+  Crypto.com) and an absolute `https://virtuse.com/stacking.html` step-0
+  link on es/buy-bitcoin (should be `../stacking.html`); es/blog had no
+  Brief nav item at all.
+- EN `bots.html`'s dead orange `.btn-primary:hover` leftover (flagged open in
+  the previous entry) is now removed on EN and on es/bots.
+- `uk/index.html`'s footer Guides column carries the buy-bitcoin set, not
+  EN index's tax/fee set — cosmetic, not fixed here.
+- The consultation widget still has no Spanish copy (falls back to English
+  for `data-consultation-lang="es"`); fresh Spanish strings written this
+  round (shortened Questions-card copy, service-card one-liners, brief strip,
+  credit panel, How-it-Works step copy, tools-guides, Quick Answers heading,
+  form messages, blog newsdesk line) need a native-speaker pass.
+
+**Next:** (1) run the es production scp below and md5-verify; (2) `ru/` and
+`de/` with the same recipe (copy `port_es_parity.py` — it is the most
+complete variant: uk steps + newsletter/footer/Brief-nav + fixed guards);
+(3) fr/: orange active language pill (also cs/) and the 21 stale Get Started
+handlers; (4) the Brief `news/` production gap from two entries ago.
+
+```bash
+# Production deploy for this round (user runs it; es/ already exists on the
+# server, so a plain recursive copy of the es/ contents + root bots.html):
+cd /private/tmp/gh-pages-wt3 && scp -P 222 -r es/* virtuse.com@ftp.virtuse.com:public_html/es/ && scp -P 222 bots.html virtuse.com@ftp.virtuse.com:public_html/
+```
+
 ## Session status (2026-09-24, second round) — uk/ (Ukrainian) brought to full EN redesign parity, committed to main (`de53862`), live on staging AND on production (user ran the scp; 21/21 md5-verified on virtuse.com)
 
 **What this round did:** the whole `uk/` folder (20 of 21 pages; `404.html`
