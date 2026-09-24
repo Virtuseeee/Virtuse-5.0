@@ -2,6 +2,133 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-24) — Redesign is LIVE ON PRODUCTION for en/sk/cs/fr (+ es published as-is); fr/ parity round finished; new og-cover.jpg; work lives on `feat/homepage-redesign-i18n-rollout`, NOT yet merged to main
+
+**Deploy state, verified live today (`curl` + md5 against the gh-pages
+worktree, not assumed):** `virtuse.com` production now serves the new
+neutral-gray homepage redesign for **English (root), `sk/`, `cs/` and
+`fr/`** — 160 files compared byte-for-byte with staging, 0 mismatches.
+`es/` (23 pages, brand-new language, never on production before) was
+published in its **old design** so the 8-language switcher, the new
+`lang-detect.js` (which redirects Spanish browsers to `es/`) and the new
+`sitemap.xml` (183 `es/` URLs) don't dead-end in a 301 to
+`blog.virtuse.com`. `uk/`, `ru/`, `de/` were deliberately **not touched**
+— they stay live and indexed on the old design until each is redesigned
+in place (the user asked about delisting them; recommendation given and
+followed: don't delist indexed, working pages over a cosmetic gap, swap
+the design in later with no URL/index change). `research.html` was
+removed from production (deleted sitewide on the branch in `569486c`,
+no remaining links in the 4 redesigned languages). The user ran every
+SFTP/scp command themselves per the standing password rule; deploy
+source was the gh-pages worktree `/private/tmp/gh-pages-wt3` (flat
+layout = `public_html/`), new folders `fr/` and `es/` needed the
+documented `sftp mkdir` step first.
+
+**Branch/merge state — important for whoever picks this up:** all of
+this multi-week redesign work sits on `feat/homepage-redesign-i18n-rollout`
+(100+ commits ahead of `main`; `main`'s tip `f661408` is the merge-base
+and has not moved). Production was deployed from that branch via
+gh-pages, so **`main` is currently NOT what's live** — merging the branch
+into `main` (PR or direct merge) is the next housekeeping step, otherwise
+the next person who deploys "from main" will roll production back.
+Always-excluded-from-commits local noise still present in the working
+tree: `cloudflare-worker/src/index.js`, `email/welcome-template.html`,
+`email/welcome-template-sk.html` (unrelated in-progress work; stage
+files explicitly, never `git add -A`).
+
+**What shipped this session (commits `cf6009c`, `901dee7` on the branch;
+gh-pages `36e3c36`, `76dfcf9`):**
+1. **fr/ parity round finished** (22 files). Homepage: hero CTAs
+   de-oranged (a later duplicate "UNIFIED CTA SYSTEM" rule was silently
+   re-orangizing them — same cascade bug class as every prior language),
+   hero CTAs side by side (root cause was NOT `max-width`: `.hero-left`
+   and `.hero-right` both `flex: 1 1 0%` split the row 50/50, so
+   `max-width` never engaged; fixed with `min-width: 660px` on
+   `.hero-left` — French button copy is ~634px wide vs EN's ~475px),
+   background fully neutral (removed an old inline-style scroll listener
+   overriding `.nav` background), Company logo ticker moved to right
+   after Questions and converted to the animated dual-direction
+   `.co-ticker` pattern, As Seen In converted to the same ticker,
+   Concierge banner de-tinted/de-oranged (renders on one line down to
+   1024px), stray hardcoded `class="active"` on the About nav link
+   removed (5th+ instance of that bug). "Brief" nav item added at
+   position 09 across all 22 non-404 `fr/` pages via a small script
+   (`../news.html`, no local `fr/news.html`), Bitcoin Data/About
+   renumbered 10/11, duplicate-number sweep clean. `about.html`: full EN
+   parity — 4 bare `.sec-label`s promoted to the 42px/700 dek-split
+   `.sec-title h2` pattern, decorative icons removed from Mission/Vetting
+   cards, country-flag emojis removed from Global Presence, timeline
+   year badges/stat values/presence-role de-oranged, an extra hero
+   eyebrow not on EN removed. Subpages: `mining.html` How-It-Works →
+   changelog pattern + "20 % de réduction" claim removed + checkmarks
+   de-oranged; `secure.html` "70 $ de bonus" claim removed; `tax.html`
+   hero highlight + partner CTAs de-oranged (this page had never received
+   the de-orange pass), compare-table `.best` green→orange (matches EN),
+   EU Tax Complexity country tag pills removed, partner-card lift/shadow
+   hover flattened; `bitcoin-data.html` all numbers de-oranged
+   (`.price-value`, `.stat-value.orange`, `.big-metric`, `.kv-row
+   .v.orange`, `.subnav a.active`, `.footer-col a:hover`) — found via a
+   `<style>`-block diff against EN, not guessing; `bots.html` legacy
+   `.partner-card:hover` (orange border + lift + shadow) and
+   `.btn-primary:hover` (orange text + box-shadow) removed.
+2. **New `og-cover.jpg`** (1200×630, single shared file referenced
+   sitewide by absolute URL, so one file covers every language): black
+   background, dek-split "Everything Bitcoin. / Nothing else.", the real
+   Three.js hero cube rendered once and composited, no orange except the
+   logo gradient. Approved from a rendered proposal before commit.
+   Social platforms cache OG images for days — append `?v=2` to a link
+   to see it immediately.
+
+**Real bugs found on EN that were NOT fixed (flag, don't forget):**
+- `bots.html` (EN) has the *identical* dead-but-active
+  `.btn-primary:hover { color: var(--orange); box-shadow: orange }` rule
+  that fr/ just had removed — the later unified rule only redeclares
+  `opacity`/`transform`, so the orange text/shadow survive on hover.
+  Same fix applies (delete the early rule).
+- `news.html` on production references `news/news.css` and
+  `news/news.js`, which 301 on production — the Brief page is live
+  without styles/JS. `news/` belongs to the Brief desk agent and its
+  gh-pages copy differs from this branch's, so it was deliberately left
+  out of this deploy; it needs its own deploy from that side.
+- `fr/buy-bitcoin.html` (and the other fr subpages converted earlier)
+  lack EN's `@media (max-width: 900px)` `.how-log` column fallback —
+  consistent with sibling fr pages, but not with EN.
+
+**Tooling lessons worth keeping:**
+- **Tag-balance checks: use an `html.parser.HTMLParser` stack walker,
+  not regex counting** — the regex counter falsely flagged an unbalanced
+  `<span>` on `fr/mining.html` (a `<span` substring inside a JS string);
+  the parser-based check found the file perfectly balanced. Script lives
+  in the session scratchpad only; trivial to recreate (start/end tag
+  stack, skip void elements).
+- **Headless Chrome on this Mac needs SwiftShader for WebGL**:
+  `--headless=new --use-gl=angle --use-angle=swiftshader
+  --enable-unsafe-swiftshader --ignore-gpu-blocklist --window-size=W,H
+  --screenshot=out.png --virtual-time-budget=6000 <url>` (binary at
+  `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`). Plain
+  headless silently rendered an empty canvas (GPU blocklist). Used to
+  turn the live Three.js cube into the static OG image.
+- **The Browser pane's screenshot tool downscales and can't be saved to
+  disk**; for a real image deliverable render via headless Chrome and
+  `SendUserFile` it.
+- **Verifying `:hover` styles**: JS `dispatchEvent(mouseover)` does not
+  trigger CSS `:hover`; use the `computer` tool's real `hover` action,
+  then screenshot/compute.
+- **Diffing translated pages against EN**: extract just the `<style>`
+  block (`awk '/<style>/,/<\/style>/'`) and `diff | grep -i orange` —
+  fast, and it caught five real drifts on `bitcoin-data.html` that
+  targeted greps had missed.
+
+**Next, in order:** (1) merge `feat/homepage-redesign-i18n-rollout` into
+`main` so `main` reflects production; (2) get the Brief desk's `news/`
+folder deployed to production (see above); (3) redesign `es/`, `uk/`,
+`ru/`, `de/` in place, one language at a time, using the same script +
+audit approach (`i18n-tools/port_homepage_redesign_fr.py` is the
+template — French aria-labels, 8-language switcher capture, bots.html
+alias-token fallbacks); (4) fix the EN `bots.html` hover leftover; (5)
+everything still open below (legal review of AI-translated compliance
+pages, uk/cs welcome emails, Layer-2 translations for uk/ru/de/es).
+
 ## Session status (2026-09-22, continued 25th round) — cs/index.html fully ported; fifth and final of the five translated-homepage ports, closing out the whole multi-day "index.html × 5 languages" task
 
 **Fifth and last of the 5 translated-homepage ports.** `cs/index.html`
