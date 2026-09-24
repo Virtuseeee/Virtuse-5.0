@@ -66,7 +66,7 @@ img{max-width:100%;display:block}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--text)}
 .nav-logo img{height:32px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nav-links a{color:var(--text-muted);font-size:13px;font-weight:400;padding:6px 12px;border-radius:8px;transition:all .2s}
 .nav-links a:hover{color:var(--text);background:var(--dark-card)}
 .nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
 .nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:7px 14px;border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;transition:background .2s}
@@ -76,6 +76,8 @@ img{max-width:100%;display:block}
 .hero h1{font-size:52px;font-weight:700;line-height:1.08;letter-spacing:-0.03em;margin-bottom:14px}
 .hero h1 span{font-weight:400;color:var(--text-muted)}
 .hero p{font-size:17px;color:var(--text-muted);max-width:560px;line-height:1.65}
+.hero-newsdesk{margin-top:16px}
+.hero-newsdesk a{color:var(--btc-orange);font-weight:700}
 .hero-side{display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding-bottom:6px}
 .post-count{font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:.02em}
 .post-count b{color:var(--text);font-weight:800}
@@ -618,7 +620,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 }
 
 @media (max-width: 1024px) {
-  .lang-menu { display: none; }
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-switch { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
 </style>
 </head>
@@ -645,9 +650,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Impuestos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html" class="active"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Datos de Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Sobre nosotros</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Datos de Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Sobre nosotros</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Comenzar<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Idioma del blog">
+          <span class="lang-flag">🇪🇸</span>ES
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+          <a href="../blog.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+          <a href="../blog-sk.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+          <a href="../uk/blog.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+          <a href="../ru/blog.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../de/blog.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+          <a href="../fr/blog.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="blog.html" class="lang-opt active" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        </div>
+      </div>
+    </li>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
@@ -671,24 +694,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
 (function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
   document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 </script>
@@ -698,6 +735,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div>
     <h1>Blog <span>Virtuse</span></h1>
     <p>Reflexiones sobre Bitcoin, macroeconomía y el futuro del dinero, por el CEO de Virtuse, Ras Vasilisin.</p>
+    <p class="hero-newsdesk"><a href="../news.html">Redacción</a>: el briefing semanal y Pulse.</p>
   </div>
   <div class="hero-side">
     <div class="lang-switch" role="navigation" aria-label="Idioma de la página">
@@ -927,6 +965,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Empresa</h4>
         <a href="about.html">Sobre nosotros</a>
         <a href="faq.html">FAQ</a>
+        <a href="../news.html">Redacción</a>
       </div>
       <div class="footer-col">
         <h4>Herramientas</h4>
@@ -1303,6 +1342,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
     el.addEventListener('click', closeMenu);
   });
 
