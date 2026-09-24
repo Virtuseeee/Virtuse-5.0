@@ -205,7 +205,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .subnav a:hover { color: var(--text); }
 
-.subnav a.active { background: var(--btc-orange); color: #0d0902; }
+.subnav a.active { background: var(--text); color: var(--dark); }
 
 /* ===== PRICE CARD ===== */
 .price-section {
@@ -239,7 +239,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   font-size: 52px;
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: var(--btc-orange);
+  color: var(--text);
   line-height: 1;
 }
 
@@ -305,7 +305,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   letter-spacing: -0.01em;
 }
 
-.stat-value.orange { color: var(--btc-orange); }
+.stat-value.orange { color: var(--text); }
 
 .stat-sub {
   font-size: 12px;
@@ -376,14 +376,14 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .kv-row .k { color: var(--text-muted); }
 .kv-row .v { color: var(--text); font-weight: 600; }
-.kv-row .v.orange { color: var(--btc-orange); }
+.kv-row .v.orange { color: var(--text); }
 .kv-row .v.green { color: var(--green); }
 .kv-row .v.red { color: var(--red); }
 
 .big-metric {
   font-size: 30px;
   font-weight: 800;
-  color: var(--btc-orange);
+  color: var(--text);
   letter-spacing: -0.01em;
   margin-bottom: 4px;
 }
@@ -454,8 +454,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   white-space: nowrap;
 }
 
-.newsletter-form button:hover { background: var(--btc-orange); color: white; }
-
 /* ===== FOOTER ===== */
 .footer-main {
   background: var(--dark);
@@ -492,7 +490,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: color 0.2s;
 }
 
-.footer-col a:hover { color: var(--btc-orange); }
+.footer-col a:hover { color: var(--text); }
 
 .footer-bottom p { font-size: 13px; color: var(--text-dim); }
 
@@ -911,8 +909,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Fiscalité</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">09</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-menu lang-menu-mobile" id="langMenuMobile">

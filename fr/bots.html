@@ -336,21 +336,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .partner-card:hover {
-      border-color: rgba(247, 147, 26, 0.25);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .partner-card.top-pick {
-      border-color: rgba(247, 147, 26, 0.4);
-    }
-
-    .partner-card.top-pick::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), #ffb347);
+      border-color: var(--border-hover);
+      background: var(--dark-card-hover);
     }
 
     .partner-header {
@@ -444,13 +431,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-primary {
       background: var(--orange);
       color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: #ffffff;
-      color: var(--orange);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(247, 147, 26, 0.3);
     }
 
     .btn-secondary {
@@ -574,7 +554,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: color 0.2s;
     }
 
-    .footer-col a:hover { color: var(--btc-orange); }
+    .footer-col a:hover { color: var(--text); }
 
     .footer-bottom p {
       font-size: 13px;
@@ -1020,8 +1000,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Fiscalité</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html" class="active"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
