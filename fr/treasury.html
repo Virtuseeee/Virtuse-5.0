@@ -1009,8 +1009,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1579,18 +1579,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var btns = document.querySelectorAll('.nav-cta');
   if (!btns.length) return;
+  var conciergeUrl = '../concierge.html?utm_source=concierge&utm_medium=banner';
   btns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      var target = document.querySelector('.partners, .partners-section, #services');
-      if (!target) {
-        window.location.href = 'index.html#services';
-        return;
-      }
-      var nav = document.querySelector('.nav');
-      var offset = (nav ? nav.offsetHeight : 0) + 16;
-      var top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      window.location.href = conciergeUrl;
     });
   });
 })();
