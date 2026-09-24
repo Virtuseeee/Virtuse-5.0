@@ -2,6 +2,62 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-24, seventh round) — Grok bot's "Phase 0 homepage polish before X launch" checked and fixed: Brief strip on sk/cs/fr homepages, nav Get Started utm_medium=nav sitewide, calculator alias redirects; committed (`dc9051b`), staging 172/172; production scp prepared, NOT yet run
+
+**The brief (from the Brief-desk agent) listed 6 items; each was verified
+against production before acting — half were stale or wrong:**
+1. "Broken blog images on EN home" (terminator-hero.jpg, hero-powell-…jpg)
+   — **not reproducible**: both return 200 `image/jpeg` and load in-browser
+   with naturalWidth 1376. Nothing changed. (Headless naturalWidth 0 was
+   most likely a timing/hotlink artefact on their side.)
+2. "SK home missing the Brief strip" — **true, and also cs/ and fr/**
+   (uk/es/ru/de got it with their EN-template rebuilds; sk/cs/fr were
+   restyled in place in September and the strip was deliberately skipped
+   then as "no local copy yet"). Ported: EN's strip CSS + mobile rules,
+   the section after the hero, and EN's shared `[data-brief-form]` handler
+   posting to the same Worker with `lang: sk/cs/fr`; copy reuses each
+   page's own newsletter wording (placeholder/button/messages) plus a
+   locale Brief line (sk "Pondelok. Iba bitcoin. Žiadne tokeny. Žiadne
+   PR.", cs "Pondělí. Jen Bitcoin. Žádné tokeny. Žádné PR.", fr "Lundi.
+   Uniquement Bitcoin. Pas de tokens. Pas de RP."). The bottom
+   `#newsletterForm` keeps its own script (no data attribute, so no
+   double-binding). Verified: strip renders as the card, submit path runs
+   (network-error branch in the sandbox), mobile column layout, no overflow.
+3. "Calculator 404 aliases" — **misdiagnosed**: `bitcoin-calculator.html` /
+   `calculator.html` never existed and nothing in the repo links to them;
+   they hit the site's catch-all 301 to `blog.virtuse.com` like any missing
+   path (so did `nonexistent-xyz.html`). Still cheap, so added: two
+   `noindex` meta-refresh + `location.replace` stubs → `/bitcoin-dca-calculator/`
+   (the repo's existing redirect convention, see `satoshi.html`). No
+   `.htaccess`/`_redirects` mechanism exists in this repo.
+4. "Get Started uses utm_medium=banner" — **true on all 170 pages** (EN
+   included), and it collided with the in-page concierge banner's own
+   `utm_medium=banner`. Changed the nav CTA's `conciergeUrl` to
+   `utm_medium=nav`; hero/how/footer/banner links untouched. Verified by a
+   real click (sk/mining → `sk/concierge.html?…utm_medium=nav`).
+5. "ES cube missing / FR strip missing" — ES cube was already live (their
+   check predates the es/ deploy); FR strip covered by item 2.
+6. Perf (defer the WebGL cube) — not done, not a blocker.
+Also: **no `news*` file was touched** (desk-owned). Shipped via the usual
+main → gh-pages → SFTP flow, not a PR (this repo's content commits go
+straight to main; see "Git & GitHub workflow" below).
+
+**Deploy:** `main` `dc9051b`, gh-pages `f7ef7cb`, staging 172/172
+md5-verified. **Production not yet updated** — scp below (172 files, 2 new
+root stubs, grouped per folder; `news.html` is not in the list).
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 about.html aml-compliance.html article.html bitcoin-calculator.html bitcoin-data.html blog-sk.html blog.html bots.html btc-dominance.html buy-bitcoin.html calculator.html faq.html fear-greed.html index.html lending.html ma-200w.html mining.html privacy-policy.html rainbow-chart.html retirement-calculator.html root-cycles.html secure.html tax.html terms-and-conditions.html trading-volume.html treasury.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 cs/about.html cs/aml-compliance.html cs/bitcoin-data.html cs/bots.html cs/btc-dominance.html cs/buy-bitcoin.html cs/faq.html cs/index.html cs/lending.html cs/ma-200w.html cs/mining.html cs/privacy-policy.html cs/rainbow-chart.html cs/retirement-calculator.html cs/root-cycles.html cs/secure.html cs/tax.html cs/terms-and-conditions.html cs/treasury.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 es/about.html es/aml-compliance.html es/bitcoin-data.html es/blog.html es/bots.html es/btc-dominance.html es/buy-bitcoin.html es/faq.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/mining.html es/privacy-policy.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/secure.html es/tax.html es/terms-and-conditions.html es/trading-volume.html es/treasury.html virtuse.com@ftp.virtuse.com:public_html/es/ && \
+scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
+scp -P 222 ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
+scp -P 222 sk/about.html sk/aml-compliance.html sk/bitcoin-data.html sk/bots.html sk/btc-dominance.html sk/buy-bitcoin.html sk/faq.html sk/fear-greed.html sk/index.html sk/lending.html sk/ma-200w.html sk/mining.html sk/privacy-policy.html sk/rainbow-chart.html sk/retirement-calculator.html sk/root-cycles.html sk/secure.html sk/tax.html sk/terms-and-conditions.html sk/trading-volume.html sk/treasury.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+scp -P 222 uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.html uk/bots.html uk/btc-dominance.html uk/buy-bitcoin.html uk/faq.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/secure.html uk/tax.html uk/terms-and-conditions.html uk/treasury.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-24, sixth round) — sitewide leftovers closed: neutral active language pill on all 66 remaining files (incl. 10 EN pages), fr/ Get Started → Concierge, sk/uk bots check icons; committed (`e5934b2`), live on staging AND production (user ran the per-folder scp; 68/68 md5-verified on virtuse.com)
 
 **What this round did (68 files):** the cross-language leftovers listed as
