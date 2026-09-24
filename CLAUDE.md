@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24, second round) — uk/ (Ukrainian) brought to full EN redesign parity, committed to main (`de53862`) and live on staging; production deploy prepared, not yet run
+## Session status (2026-09-24, second round) — uk/ (Ukrainian) brought to full EN redesign parity, committed to main (`de53862`), live on staging AND on production (user ran the scp; 21/21 md5-verified on virtuse.com)
 
 **What this round did:** the whole `uk/` folder (20 of 21 pages; `404.html`
 untouched) was brought to the same EN parity that en/sk/cs/fr already have,
@@ -14,9 +14,12 @@ locally (HTMLParser tag-balance on all pages, relative-link existence
 check, browser at 1440px and 375px incl. drawer + mobile language
 dropdown), committed to `main` as `de53862`, synced to `gh-pages`
 (`f79c6ac`), md5-verified on `staging.virtuse.com` (21/21 match).
-**Production NOT yet updated for uk/** — the scp commands were handed to
-the user at the end of this round (see the command block below); until
-they run, `virtuse.com/uk/` still serves the old-design pages.
+**Production updated the same day**: the user ran the scp below, and all
+21 `uk/*.html` on `virtuse.com` md5-match the gh-pages worktree (live
+homepage confirmed: 13 sections in EN order, cube, 4 cube illustrations,
+tickers, Brief nav item, 9 Quick Answers). So production now has the new
+design for **en, sk, cs, fr, uk**; only `es/`, `ru/`, `de/` remain on the
+old design.
 
 **How it was done — two techniques, worth reusing for es/ru/de:**
 1. **Mechanical parity via a per-language script,
