@@ -105,9 +105,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .nav-links a {
-      padding: 6px 14px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 400;
       color: var(--muted);
       border-radius: var(--radius-sm);
       transition: all 0.2s;
@@ -160,28 +160,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: hidden;
       padding: 100px 48px 80px;
       text-align: left;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 50% 20%, rgba(247, 147, 26, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(48, 54, 61, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
-      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 20%, transparent 70%);
-      opacity: 0.4;
-      pointer-events: none;
     }
 
     .hero-content {
@@ -530,16 +508,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 0.82rem;
       color: var(--text);
       padding: 4px 0;
-      
-      
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
 
     .partner-features li::before {
       content: '';
       width: 5px; height: 5px;
-      background: var(--orange);
-      
+      background: var(--text);
+      border-radius: 50%;
       flex-shrink: 0;
     }
 
@@ -973,7 +951,9 @@ a.nav-logo, .nav-logo {
     padding: 16px 20px;
     font-size: 16px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -1181,11 +1161,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
     <div class="hero-content animate">
 
-      <h1>Automatice su estrategia de Bitcoin con<br><span style="color:var(--orange)">bots de trading</span></h1>
+      <h1>Automatice su estrategia de Bitcoin con<br><span style="color:var(--text)">bots de trading</span></h1>
       <p>Utilice bots de trading no custodiales que se conectan mediante claves API de solo lectura o de trading exclusivo. Su Bitcoin permanece en su exchange, el bot solo ejecuta su estrategia. Sin permisos de retiro. Sin custodia.</p>
       </div>
   </section>

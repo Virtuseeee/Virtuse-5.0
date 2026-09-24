@@ -88,7 +88,7 @@
 
     var TRANSLATED = [
       'index.html', 'about.html', 'buy-bitcoin.html', 'mining.html', 'lending.html',
-      'secure.html', 'treasury.html', 'tax.html', 'bots.html', 'research.html',
+      'secure.html', 'treasury.html', 'tax.html', 'bots.html',
       'bitcoin-data.html', 'btc-dominance.html', 'ma-200w.html', 'rainbow-chart.html',
       'root-cycles.html', 'retirement-calculator.html', 'faq.html', 'privacy-policy.html',
       'terms-and-conditions.html', 'aml-compliance.html', '404.html'

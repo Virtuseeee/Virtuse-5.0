@@ -1,13 +1,19 @@
 #!/usr/bin/env node
-// Fetches this week's Bitcoin Pulse stats (same sources/logic as the live
-// bitcoin-data.html / btc-dominance.html / ma-200w.html pages), merges them
-// with email/weekly-issue.json, and renders email/template.html to
-// dist/weekly-email.html.
+// Fetches this issue's Bitcoin Pulse stats (same sources/logic as the live
+// bitcoin-data.html / btc-dominance.html / ma-200w.html pages, plus a
+// 100-day EMA not currently shown on any live page), merges them with
+// email/virtuse-news-issue.json, and renders email/virtuse-news-template.html
+// to dist/virtuse-news-email.html.
 //
-// Does NOT push anywhere and does NOT talk to Zoho -- see create-zoho-draft.mjs
+// Only the 4 stat-tile numbers and the issue-date line are auto-filled --
+// the headline, article paragraphs, chart captions, and meme are
+// hand-written directly in virtuse-news-template.html before each send,
+// same split as the old weekly-report pipeline this replaces.
+//
+// Does NOT push or send anywhere -- see create-virtuse-news-broadcast.mjs
 // for the next step. Run this first.
 //
-// Usage: node .github/scripts/render-pulse.mjs
+// Usage: node .github/scripts/render-virtuse-news.mjs
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
@@ -19,8 +25,8 @@ const EMAIL_DIR = path.join(ROOT, 'email');
 const DIST_DIR = path.join(ROOT, 'dist');
 
 const CACHE_PATH = path.join(EMAIL_DIR, 'pulse-cache.json');
-const ISSUE_PATH = path.join(EMAIL_DIR, 'weekly-issue.json');
-const TEMPLATE_PATH = path.join(EMAIL_DIR, 'template.html');
+const ISSUE_PATH = path.join(EMAIL_DIR, 'virtuse-news-issue.json');
+const TEMPLATE_PATH = path.join(EMAIL_DIR, 'virtuse-news-template.html');
 
 function usd(n) {
   return new Intl.NumberFormat('en-US', {
@@ -31,7 +37,7 @@ function usd(n) {
 }
 
 async function fetchJson(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': 'virtuse-weekly-pulse/1.0' } });
+  const res = await fetch(url, { headers: { 'User-Agent': 'virtuse-news/1.0' } });
   if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
   return res.json();
 }
@@ -71,6 +77,24 @@ async function getBtc200wMa() {
   return sum / rows.length;
 }
 
+// Not shown on any live site page yet -- standard EMA(100) on daily closes,
+// seeded with the SMA of the first 100 closes then EMA-recurred through the
+// remaining ~200 for convergence.
+async function getBtc100dEma() {
+  const rows = await fetchJson('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=300');
+  const period = 100;
+  if (!Array.isArray(rows) || rows.length < period + 100) {
+    throw new Error(`expected at least ${period + 100} daily candles from Binance, got ${Array.isArray(rows) ? rows.length : typeof rows}`);
+  }
+  const closes = rows.map((c) => parseFloat(c[4]));
+  const k = 2 / (period + 1);
+  let ema = closes.slice(0, period).reduce((a, b) => a + b, 0) / period;
+  for (let i = period; i < closes.length; i++) {
+    ema = closes[i] * k + ema * (1 - k);
+  }
+  return ema;
+}
+
 async function withFallback(name, fetcher, cache) {
   try {
     return { value: await fetcher(), stale: false };
@@ -97,34 +121,37 @@ async function main() {
   const cache = loadJson(CACHE_PATH, {});
   const issue = loadJson(ISSUE_PATH);
 
-  const [price, dominance, ma200w] = await Promise.all([
+  const [price, dominance, ma200w, ema100d] = await Promise.all([
     withFallback('btc_price_raw', getBtcPrice, cache),
     withFallback('btc_dominance_raw', getBtcDominance, cache),
     withFallback('btc_200w_ma_raw', getBtc200wMa, cache),
+    withFallback('btc_ema_100d_raw', getBtc100dEma, cache),
   ]);
 
   const stats = {
     btc_price: (price.stale ? '~' : '') + usd(price.value),
-    btc_dominance: (dominance.stale ? '~' : '') + dominance.value.toFixed(2) + '%',
+    btc_dominance: (dominance.stale ? '~' : '') + dominance.value.toFixed(1) + '%',
     btc_200w_ma: (ma200w.stale ? '~' : '') + usd(ma200w.value),
+    btc_ema_100d: (ema100d.stale ? '~' : '') + usd(ema100d.value),
   };
 
-  // Persist this run's raw values so next week has something to fall back to.
+  // Persist this run's raw values so next issue has something to fall back to.
   writeFileSync(CACHE_PATH, JSON.stringify({
     btc_price_raw: price.value,
     btc_dominance_raw: dominance.value,
     btc_200w_ma_raw: ma200w.value,
+    btc_ema_100d_raw: ema100d.value,
     updated_at: new Date().toISOString(),
   }, null, 2) + '\n');
 
-  const mergeFields = { ...issue, ...stats };
+  const mergeFields = { issue_date: issue.issue_date, ...stats };
 
   let html = readFileSync(TEMPLATE_PATH, 'utf8');
   // Negative look-behind/-ahead so this never touches Resend's own
   // {{{RESEND_UNSUBSCRIBE_URL}}} triple-brace merge tag -- only matches
   // plain double-brace {{key}} placeholders.
   html = html.replace(/(?<!\{)\{\{(?!\{)\s*([a-zA-Z0-9_]+)\s*\}\}(?!\})/g, (match, key) => {
-    if (!(key in mergeFields)) {
+    if (!(key in mergeFields) || mergeFields[key] == null) {
       console.warn(`No value found for {{${key}}} -- leaving the literal placeholder in place`);
       return match;
     }
@@ -132,15 +159,15 @@ async function main() {
   });
 
   if (!existsSync(DIST_DIR)) mkdirSync(DIST_DIR, { recursive: true });
-  const outPath = path.join(DIST_DIR, 'weekly-email.html');
+  const outPath = path.join(DIST_DIR, 'virtuse-news-email.html');
   writeFileSync(outPath, html);
 
-  const anyStale = price.stale || dominance.stale || ma200w.stale;
+  const anyStale = price.stale || dominance.stale || ma200w.stale || ema100d.stale;
   console.log('Rendered', outPath);
   console.log('Bitcoin Pulse stats used:', stats, anyStale ? '(one or more values are cached/stale -- check logs above)' : '(all live)');
 }
 
 main().catch((e) => {
-  console.error('render-pulse failed:', e);
+  console.error('render-virtuse-news failed:', e);
   process.exit(1);
 });

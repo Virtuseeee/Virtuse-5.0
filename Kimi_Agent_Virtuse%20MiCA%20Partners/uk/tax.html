@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Dark-only, matching the homepage's own redesign. -->
+<meta name="color-scheme" content="dark">
 <script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -44,53 +46,78 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <style>
-body { font-family: 'Inter', sans-serif; background: #0d1421; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* Neutral-gray dark palette, matched to the homepage's own redesign —
+   overrides styles.css's older navy-tinted tokens for this page only. */
+:root {
+  color-scheme: dark;
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+  /* styles.css also defines an alternate alias set (--bg/--card) for
+     the same tone tokens — some pages (bots.html) use those names
+     instead of --dark/--dark-card, so both need overriding here or the
+     alias silently keeps styles.css's old navy-tinted value. */
+  --bg: #08090a;
+  --card: #141414;
+}
+body { font-family: 'Inter', sans-serif; background: #08090a; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { text-decoration: none; color: inherit; }
 
 /* Navigation */
-nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
+nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
 .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #e6edf3; text-decoration: none; flex-shrink: 0; }
 .nav-logo-img { height: 32px; width: auto; display: block; }
 /* Logo image set in HTML */
 .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
 .nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-decoration: none; }
-.nav-links a:hover, .nav-links a.active { color: #f7931a; }
-.nav-links a.active { font-weight: 600; }
-.nav-cta { background: #f7931a; color: #0d1421; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+.nav-links a:hover:not(.lang-opt), .nav-links a.active:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
+.nav-links a.active:not(.lang-opt) { font-weight: 600; }
+.nav-cta { background: #f7931a; color: #08090a; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
 .nav-cta:hover { background: #e8850f; transform: translateY(-1px); }
 .mobile-menu-btn { display: none; background: none; border: none; color: #8b949e; font-size: 22px; cursor: pointer; }
 
 /* Hero */
 .hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0 auto; }
 .hero p { margin: 0 0 32px; }
-.hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
-.hero h1 span { color: #f7931a; }
+.hero h1 { font-size: 52px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: var(--text); }
 .hero p { font-size: 18px; color: #8b949e; max-width: 680px; margin: 0 0 32px; line-height: 1.65; }
 /* How It Works */
 .how-section { padding: 60px 24px 80px; }
 .section-header { text-align: center; margin-bottom: 52px; }
 .section-header h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 10px; }
 .section-header p { font-size: 16px; color: #8b949e; }
-.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
-.how-card { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 36px 28px; position: relative; transition: border-color 0.2s; }
-.how-card:hover { border-color: #484f58; }
-.step-num { position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 800; color: rgba(247, 147, 26,0.08); line-height: 1; }
-.how-icon { width: 44px; height: 44px; border-radius: 12px;   justify-content: center; margin-bottom: 20px; }
-.how-icon.orange { background: rgba(247, 147, 26,0.12); }
-.how-icon.blue { background: rgba(88,166,255,0.12); }
-.how-icon.green { background: rgba(63,185,80,0.12); }
-.how-icon.purple { background: rgba(188,140,255,0.12); }
-.how-icon svg { width: 22px; height: 22px; }
-.how-icon.orange svg { color: #f7931a; }
-.how-icon.blue svg { color: #58a6ff; }
-.how-icon.green svg { color: #3fb950; }
-.how-icon.purple svg { color: #bc8cff; }
-.how-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-.how-card p { font-size: 14px; color: #8b949e; line-height: 1.55; }
+.how-header { text-align: left; margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px; }
+.how-header h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 10px; }
+.how-header h2 span { font-weight: 400; color: #8b949e; }
+.how-log { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.06); max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.how-log-item { flex: 1; display: flex; flex-direction: column; }
+.how-log-marker { margin-top: -4px; margin-bottom: 24px; }
+.how-log-dot { position: relative; display: block; width: 8px; height: 8px; border-radius: 50%; background: #484f58; }
+.how-log-dot::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: #484f58; opacity: 0.2; }
+.how-log-item:first-child .how-log-dot { background: #f7931a; }
+.how-log-item:first-child .how-log-dot::before { background: #f7931a; opacity: 0.1; }
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+.how-log-num { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8b949e; order: 4; margin-top: 16px; }
+.how-log-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; order: 1; }
+.how-log-body p { font-size: 15px; color: #8b949e; line-height: 1.6; order: 2; }
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+}
 
 /* EU Tax Complexity Card */
 .eu-card { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
-.eu-card-inner { background: #161f30; border: 1px solid #30363d; border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
+.eu-card-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
 .eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247, 147, 26,0.12);   justify-content: center; flex-shrink: 0; }
 .eu-icon svg { width: 28px; height: 28px; color: #f7931a; }
 .eu-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
@@ -101,8 +128,8 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 /* Partner Cards */
 .partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.partner-card { background: #161f30; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
-.partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: #484f58; }
+.partner-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
+.partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.12); }
 .partner-card.top-pick { border: 1px solid rgba(247, 147, 26,0.3); }
 .partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
 .partner-logo { display: flex; align-items: center; gap: 14px; }
@@ -126,16 +153,16 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 .partner-cta {  gap: 10px; padding: 0 28px 28px; }
 .btn-primary { flex: 1; background: #f7931a; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; transition: all 0.2s; border: none; cursor: pointer; }
 .btn-primary:hover { background: #ffffff; color: #f7931a; transform: translateY(-1px); }
-.btn-secondary { flex: 1; background: transparent; color: #8b949e; font-weight: 600; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; border: 1px solid #30363d; transition: all 0.2s; cursor: pointer; }
-.btn-secondary:hover { border-color: #484f58; color: #e6edf3; }
+.btn-secondary { flex: 1; background: transparent; color: #8b949e; font-weight: 600; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; border: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; cursor: pointer; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.12); color: #e6edf3; }
 
 /* Comparison Table */
 .compare-section { padding: 0 24px 60px; max-width: 900px; margin: 0 auto; }
 .compare-section h2 { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 28px; }
 .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.compare-table th { padding: 14px 20px; text-align: left; font-weight: 600; color: #8b949e; border-bottom: 1px solid #30363d; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+.compare-table th { padding: 14px 20px; text-align: left; font-weight: 600; color: #8b949e; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
 .compare-table th:first-child { width: 35%; }
-.compare-table td { padding: 14px 20px; border-bottom: 1px solid #30363d; color: #e6edf3; }
+.compare-table td { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #e6edf3; }
 .compare-table td:first-child { color: #8b949e; font-weight: 500; }
 .compare-table tr:last-child td { border-bottom: none; }
 .compare-table tr:hover td { background: rgba(22, 31, 48,0.5); }
@@ -145,7 +172,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter {
   background: #111a2b;
-  border-top: 1px solid #30363d;
+  border-top: 1px solid rgba(255,255,255,0.06);
   padding: 80px 48px;
   text-align: center;
   position: relative;
@@ -154,11 +181,13 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 
 .newsletter h2 {
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 12px;
   position: relative;
   z-index: 1;
 }
+
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
 
 .newsletter p {
   color: #8b949e;
@@ -181,9 +210,9 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 .newsletter-form input {
   flex: 1;
   padding: 14px 20px;
-  border: 1px solid #30363d;
+  border: 1px solid rgba(255,255,255,0.06);
   border-radius: 8px;
-  background: #0d1421;
+  background: #08090a;
   color: #e6edf3;
   font-size: 15px;
   outline: none;
@@ -191,12 +220,12 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 }
 
 .newsletter-form input:focus { border-color: #f7931a; }
-.newsletter-form input::placeholder { color: #484f58; }
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.12); }
 
 .newsletter-form button {
   padding: 14px 28px;
   background: #e6edf3;
-  color: #0d1421;
+  color: #08090a;
   border: none;
   border-radius: 8px;
   font-weight: 700;
@@ -210,14 +239,15 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 
 /* ===== FOOTER ===== */
 .footer-main {
-  background: #0d1421;
-  border-top: 1px solid #30363d;
-  padding: 60px 48px 30px;
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 48px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -227,47 +257,88 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
 
 .footer-logo { flex-shrink: 0; }
 
-.footer-logo img {
-  height: 80px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.2s;
-}
-
-.footer-logo img:hover { opacity: 1; }
-
 .footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #e6edf3;
-  margin-bottom: 16px;
-  text-transform: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
 }
 
 .footer-col a {
   display: block;
-  color: #8b949e;
-  font-size: 14px;
+  color: var(--text-muted);
+  font-size: 13px;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.4;
   transition: color 0.2s;
 }
 
-.footer-col a:hover { color: #f7931a; }
+.footer-col a:hover { color: var(--text); }
 
 .footer-bottom {
-  max-width: 1200px;
-  margin: 40px auto 0;
-  padding-top: 24px;
-  border-top: 1px solid #30363d;
-  text-align: center;
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
 .footer-bottom p {
   font-size: 13px;
-  color: #484f58;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
 }
 
 @media (max-width: 768px) {
@@ -275,7 +346,12 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 20, 33,0.92);
   .newsletter h2 { font-size: 28px; }
   .newsletter-form { flex-direction: column; }
   .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
   .footer-columns { gap: 40px; }
   .footer-logo img { height: 60px; }
 }
@@ -317,8 +393,6 @@ a.nav-logo, .nav-logo {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--btc-orange, #f7931a);
-  color: #fff;
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -328,27 +402,65 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-.nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
+/* nav-cta stays the one sitewide orange stamp — every other button is an
+   inverted neutral, hardcoded (not var()) per the real Safari bug found
+   on the homepage. Partner-card primary CTAs use .btn-primary too, so
+   this also de-orangizes those — confirmed and approved by the user. */
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
+.nav-cta:hover {
   background: #ffffff;
-  color: var(--btc-orange, #f7931a);
+  color: #0d0902;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
 
+.btn-primary, .newsletter-form button { background: #e6edf3; color: #08090a; }
+.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
+.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
+.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
+.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
+.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
+.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
 .btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
   transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-  border-color: var(--btc-orange, #f7931a);
-  color: var(--btc-orange, #f7931a);
-  background: rgba(247, 147, 26, 0.06);
+  border-color: var(--border-hover);
+  color: var(--text);
   transform: translateY(-1px);
 }
 
 /* ===== MOBILE MENU ===== */
+/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
+   divs with a CSS background-color — a real device screenshot on the
+   homepage showed the span version fully invisible on mobile Safari. */
+.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
+
+.ham-line {
+  stroke: var(--text, #e6edf3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 10px 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
+body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
+
 .nav-hamburger {
   display: none;
+  -webkit-appearance: none;
+  appearance: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -391,7 +503,7 @@ a.nav-logo, .nav-logo {
     height: 100dvh;
     background:
       radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
-      linear-gradient(180deg, #0d1421 0%, #0a0f1a 55%, #0d1421 100%);
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
     padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
     gap: 0;
     opacity: 0;
@@ -408,7 +520,7 @@ a.nav-logo, .nav-logo {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.16em;
-    color: var(--text-dim, #484f58);
+    color: var(--text-dim, rgba(255,255,255,0.12));
     margin-bottom: 18px;
     padding: 0 4px;
   }
@@ -463,7 +575,7 @@ a.nav-logo, .nav-logo {
     display: inline-block;
     font-size: 12px;
     font-weight: 700;
-    color: var(--text-dim, #484f58);
+    color: var(--text-dim, rgba(255,255,255,0.12));
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.02em;
     transition: color 0.2s ease;
@@ -476,7 +588,7 @@ a.nav-logo, .nav-logo {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
-    color: var(--text-dim, #484f58);
+    color: var(--text-dim, rgba(255,255,255,0.12));
     opacity: 0;
     transform: translateX(-4px);
     transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
@@ -489,10 +601,10 @@ a.nav-logo, .nav-logo {
     color: var(--btc-orange, #f7931a);
   }
 
-  .nav-links a.active { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
   .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
 
-  .nav-links a.active::before {
+  .nav-links a.active:not(.lang-opt)::before {
     content: '';
     position: absolute;
     left: -24px;
@@ -516,7 +628,9 @@ a.nav-logo, .nav-logo {
     padding: 16px 20px;
     font-size: 16px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -526,7 +640,7 @@ a.nav-logo, .nav-logo {
     margin-top: 16px;
     text-align: center;
     font-size: 12px;
-    color: var(--text-dim, #484f58);
+    color: var(--text-dim, rgba(255,255,255,0.12));
   }
 
   body.nav-open { overflow: hidden; }
@@ -608,7 +722,7 @@ a.nav-logo, .nav-logo {
   transition: border-color 0.2s ease;
 }
 
-.lang-menu-btn:hover { border-color: var(--btc-orange); }
+.lang-menu-btn:hover { border-color: var(--border-hover); }
 
 .lang-menu-caret {
   opacity: 0.6;
@@ -664,7 +778,9 @@ a.nav-logo, .nav-logo {
 }
 
 @media (max-width: 1024px) {
-  .lang-menu { display: none; }
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
 </style>
 </head>
@@ -674,7 +790,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Navigation -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
+      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
+    </svg>
+  </button>
   <a href="/uk/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
@@ -687,19 +808,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html" class="active"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
-        <a href="../tax.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="../sk/tax.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="tax.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/tax.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/tax.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/tax.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/tax.html" class="lang-opt" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/tax.html" class="lang-opt" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
+          <span class="lang-flag">🇺🇦</span>UA
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+        <a role="menuitem" href="../tax.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a role="menuitem" href="../sk/tax.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a role="menuitem" href="tax.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a role="menuitem" href="../cs/tax.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a role="menuitem" href="../ru/tax.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a role="menuitem" href="../de/tax.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/tax.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/tax.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+      </div>
       </div>
     </li>
   </ul>
@@ -726,24 +854,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
 (function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
   document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 </script>
@@ -758,42 +900,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- How It Works -->
 <section class="how-section">
-<div class="section-header">
-<h2>Як це працює</h2>
-<p>Від імпорту гаманця до готового податкового звіту за чотири кроки</p>
+<div class="how-header">
+<h2>Як <span>це працює</span></h2>
 </div>
-<div class="how-grid">
-<div class="how-card">
-<div class="step-num">01</div>
-<div class="how-icon orange">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-</div>
+<div class="how-log">
+<div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">Крок 01</span>
 <h3>Підключіть гаманці</h3>
 <p>Імпортуйте xPub або CSV-експорти з ваших гаманців і бірж</p>
 </div>
-<div class="how-card">
-<div class="step-num">02</div>
-<div class="how-icon blue">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-</div>
+</div><div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">Крок 02</span>
 <h3>Автокласифікація</h3>
 <p>Програма категоризує транзакції (купівля, продаж, переказ, майнінг)</p>
 </div>
-<div class="how-card">
-<div class="step-num">03</div>
-<div class="how-icon green">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-</div>
+</div><div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">Крок 03</span>
 <h3>Перевірка</h3>
 <p>Перевірте категоризацію та додайте відсутні транзакції</p>
 </div>
-<div class="how-card">
-<div class="step-num">04</div>
-<div class="how-icon purple">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-</div>
+</div><div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">Крок 04</span>
 <h3>Експорт звіту</h3>
 <p>Завантажте податковий звіт для конкретної країни, готовий до подачі</p>
+</div>
 </div>
 </div>
 </section>
@@ -1019,14 +1157,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Disclaimer -->
 <!-- Newsletter -->
 <section class="newsletter">
-  <h2>Змінимо гроші, змінимо світ</h2>
-  <p>Приєднайтеся до понад 18 000 інвесторів, які завжди на крок попереду. Отримуйте Virtuse Report щотижня прямо на пошту.</p>
-  <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
+  <div class="brief-card brief-card-poster">
+  <h2>Отримайте <span>Brief</span></h2>
+  <p>Virtuse Brief. Лише біткоїн. Без токенів. Без піару.</p>
+  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Електронна пошта" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">ПІДПИСАТИСЯ</button>
+    <button type="submit">Отримати Brief</button>
   </form>
-  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Щопонеділка. Відписатися можна будь-коли.</p>
+  </div>
   <script>
   (function () {
     var form = document.getElementById('newsletterForm');
@@ -1073,13 +1214,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Послуги</h4>
+        <a href="buy-bitcoin.html">Купити Біткоїн</a>
+        <a href="secure.html">Кастоді</a>
+        <a href="mining.html">Майнінг</a>
+        <a href="lending.html">Позики</a>
+        <a href="treasury.html">Казначейство</a>
+        <a href="tax.html">Податки</a>
+        <a href="bots.html">Боти</a>
+      </div>
       <div class="footer-col">
         <h4>Компанія</h4>
         <a href="about.html">Про нас</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Інструменти</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Матеріали</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Блог</a>
+        <a href="bitcoin-data.html">Біткоїн дані</a>
       </div>
       <div class="footer-col">
         <h4>Правова інформація</h4>
@@ -1091,6 +1256,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="footer-bottom">
     <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — щотижневий дайджест від Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Читати →</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 
@@ -1220,11 +1399,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
     el.addEventListener('click', closeMenu);
   });
 
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function () {
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
   });
 })();
 </script>
@@ -1234,18 +1423,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var btns = document.querySelectorAll('.nav-cta');
   if (!btns.length) return;
+  var conciergeUrl = '../concierge.html?utm_source=concierge&utm_medium=banner';
   btns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      var target = document.querySelector('.partners, .partners-section, #services');
-      if (!target) {
-        window.location.href = 'index.html#services';
-        return;
-      }
-      var nav = document.querySelector('.nav');
-      var offset = (nav ? nav.offsetHeight : 0) + 16;
-      var top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      window.location.href = conciergeUrl;
     });
   });
 })();

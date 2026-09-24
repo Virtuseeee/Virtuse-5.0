@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Takes this week's already-rendered dist/weekly-email.html (see
-// render-pulse.mjs) and creates a broadcast in Resend. Unlike Zoho, Resend
-// accepts HTML directly in the request body -- no public content_url, no
-// gh-pages publish step, no OAuth token dance. Single API key, single
-// endpoint, JSON in and out.
+// Takes this issue's already-rendered dist/virtuse-news-email.html (see
+// render-virtuse-news.mjs) and creates a broadcast in Resend. Resend accepts
+// HTML directly in the request body -- no public content_url, no gh-pages
+// publish step, no OAuth token dance. Single API key, single endpoint, JSON
+// in and out.
 //
 // By default this only creates a DRAFT broadcast for manual review and
 // send. Pass SEND_NOW=true to also trigger the send immediately after.
@@ -13,7 +13,7 @@
 // Optional:
 //   SEND_NOW=true   (also sends immediately; default is draft-only)
 //
-// Usage: node .github/scripts/create-resend-broadcast.mjs
+// Usage: node .github/scripts/create-virtuse-news-broadcast.mjs
 
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -22,8 +22,8 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 
-const issue = JSON.parse(readFileSync(path.join(ROOT, 'email', 'weekly-issue.json'), 'utf8'));
-const html = readFileSync(path.join(ROOT, 'dist', 'weekly-email.html'), 'utf8');
+const issue = JSON.parse(readFileSync(path.join(ROOT, 'email', 'virtuse-news-issue.json'), 'utf8'));
+const html = readFileSync(path.join(ROOT, 'dist', 'virtuse-news-email.html'), 'utf8');
 
 const {
   RESEND_API_KEY,
@@ -65,8 +65,8 @@ async function createBroadcast() {
   return resendFetch('/broadcasts', {
     segment_id: RESEND_SEGMENT_ID,
     from: RESEND_FROM_EMAIL,
-    subject: issue.subject || `The Virtuse Report — Issue #${issue.issue_number}`,
-    name: `weekly-report-${issue.issue_date}`,
+    subject: issue.subject || `Virtuse News — Issue #${issue.issue_number}`,
+    name: `virtuse-news-${issue.issue_date}`,
     html,
     send: false, // always create as a draft here; sending is a separate explicit step below
   });
@@ -95,6 +95,6 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error('create-resend-broadcast failed:', e);
+  console.error('create-virtuse-news-broadcast failed:', e);
   process.exit(1);
 });

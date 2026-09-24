@@ -48,7 +48,7 @@ img{max-width:100%;display:block}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
 .nav-links a:hover{color:var(--text);background:var(--dark-card)}
-.nav-links a.active{color:var(--btc-orange);background:rgba(247, 147, 26,0.08)}
+.nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
 .nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s}
 .nav-cta:hover{background:var(--btc-orange-light)}
 
@@ -59,7 +59,7 @@ img{max-width:100%;display:block}
 .back-link:hover .chev{transform:translateX(-3px)}
 
 .article-head{max-width:760px;margin:0 auto;text-align:center}
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:22px;color:var(--btc-orange);background:rgba(247, 147, 26,0.1)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:22px;color:var(--text);background:rgba(255,255,255,0.06)}
 .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .article-title{font-size:44px;font-weight:900;line-height:1.14;letter-spacing:-0.025em;margin-bottom:26px}
 .article-meta{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
@@ -361,8 +361,8 @@ a.nav-logo, .nav-logo {
     color: var(--btc-orange, #f7931a);
   }
 
-  .nav-links a.active { color: var(--btc-orange, #f7931a); }
-  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active .nav-link-num { color: var(--text); }
 
   .nav-links a.active::before {
     content: '';
@@ -388,7 +388,9 @@ a.nav-logo, .nav-logo {
     padding: 16px 20px;
     font-size: 16px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(247, 147, 26, 0.25);
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -425,8 +427,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Tax</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html" class="active"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
   </ul>
   <button class="nav-cta">Get Started</button>
@@ -1042,18 +1045,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var btns = document.querySelectorAll('.nav-cta');
   if (!btns.length) return;
+  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=banner';
   btns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      var target = document.querySelector('.partners, .partners-section, #services');
-      if (!target) {
-        window.location.href = 'index.html#services';
-        return;
-      }
-      var nav = document.querySelector('.nav');
-      var offset = (nav ? nav.offsetHeight : 0) + 16;
-      var top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      window.location.href = conciergeUrl;
     });
   });
 })();

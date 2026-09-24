@@ -7,6 +7,13 @@
 <meta name="color-scheme" content="dark light">
 <meta name="supported-color-schemes" content="dark light">
 <title>Virtuse News</title>
+<!--
+  Before each send: hand-edit the headline, article paragraphs, chart
+  captions, and meme directly below -- same as every past issue.
+  Don't hand-edit {{issue_date}}, {{btc_price}}, {{btc_dominance}},
+  {{btc_200w_ma}}, {{btc_ema_100d}} -- render-virtuse-news.mjs fills those
+  in from live data and email/virtuse-news-issue.json at render time.
+-->
 <!--[if mso]>
 <noscript>
 <xml>
@@ -59,7 +66,7 @@
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                             <tr>
                               <td valign="middle" style="padding-right:11px;">
-                                <img src="https://staging.virtuse.com/email-virtuse-v-mark.png" width="30" height="20" alt="" style="display:block; width:30px; height:20px;">
+                                <img src="https://virtuse.com/email-virtuse-v-mark.png" width="30" height="20" alt="" style="display:block; width:30px; height:20px;">
                               </td>
                               <td valign="middle">
                                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 23px; font-weight: 800; letter-spacing: -0.3px; color:#ffffff;">Virtuse <span style="color:#f7931a;">News</span></span>
@@ -71,7 +78,7 @@
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                             <tr>
                               <td style="border-radius:999px; background-color:#f7931a;">
-                                <a href="https://staging.virtuse.com/index.html" target="_blank" style="display:inline-block; padding: 9px 18px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 700; letter-spacing:0.3px; color:#0a0e17; text-decoration:none; border-radius:999px; white-space:nowrap;">
+                                <a href="https://virtuse.com/index.html" target="_blank" style="display:inline-block; padding: 9px 18px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 700; letter-spacing:0.3px; color:#0a0e17; text-decoration:none; border-radius:999px; white-space:nowrap;">
                                   EXPLORE THE HUB &nbsp;&rarr;
                                 </a>
                               </td>
@@ -85,7 +92,7 @@
                 <tr>
                   <td class="header-pad" style="padding: 0 40px 30px 40px; border-top:1px solid rgba(255,255,255,0.08);">
                     <p style="margin:16px 0 0 0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color:#8fb4e8;">
-                      2 September 2026 &nbsp;&middot;&nbsp; The Bitcoin-Only Briefing
+                      {{issue_date}} &nbsp;&middot;&nbsp; The Bitcoin-Only Briefing
                     </p>
                   </td>
                 </tr>
@@ -124,7 +131,7 @@
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="border-radius:999px; border:1.5px solid #f7931a;">
-                          <a href="https://staging.virtuse.com/blog.html" target="_blank" style="display:inline-block; padding: 11px 24px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; color:#f7931a; text-decoration:none; border-radius:999px;">
+                          <a href="https://virtuse.com/blog.html" target="_blank" style="display:inline-block; padding: 11px 24px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; color:#f7931a; text-decoration:none; border-radius:999px;">
                             Continue reading on the blog &nbsp;&rarr;
                           </a>
                         </td>
@@ -155,7 +162,7 @@
                 </tr>
                 <tr>
                   <td class="fluid-pad" style="padding: 0 40px;">
-                    <img src="https://staging.virtuse.com/email-chart-rainbow.png" width="540" alt="Bitcoin Rainbow Chart: price against its nine long-term valuation bands" style="display:block; width:100%; max-width:540px; height:auto; border-radius:12px; border:1px solid #232e45;">
+                    <img src="https://virtuse.com/email-chart-rainbow.png" width="540" alt="Bitcoin Rainbow Chart: price against its nine long-term valuation bands" style="display:block; width:100%; max-width:540px; height:auto; border-radius:12px; border:1px solid #232e45;">
                   </td>
                 </tr>
                 <tr>
@@ -173,7 +180,7 @@
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:16px;">
                       <tr>
                         <td style="border-radius:999px; border:1.5px solid #5FAEDE;">
-                          <a href="https://staging.virtuse.com/rainbow-chart.html" target="_blank" style="display:inline-block; padding: 10px 22px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; color:#5FAEDE; text-decoration:none; border-radius:999px;">
+                          <a href="https://virtuse.com/rainbow-chart.html" target="_blank" style="display:inline-block; padding: 10px 22px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; color:#5FAEDE; text-decoration:none; border-radius:999px;">
                             View the live Rainbow Chart &nbsp;&rarr;
                           </a>
                         </td>
@@ -196,7 +203,7 @@
                 </tr>
                 <tr>
                   <td class="fluid-pad" style="padding: 0 40px;">
-                    <img src="https://staging.virtuse.com/email-chart-200wma.png" width="540" alt="Bitcoin price vs its 200-week moving average since 2017" style="display:block; width:100%; max-width:540px; height:auto; border-radius:12px; border:1px solid #232e45;">
+                    <img src="https://virtuse.com/email-chart-200wma.png" width="540" alt="Bitcoin price vs its 200-week moving average since 2017" style="display:block; width:100%; max-width:540px; height:auto; border-radius:12px; border:1px solid #232e45;">
                   </td>
                 </tr>
                 <tr>
@@ -207,7 +214,7 @@
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="border-radius:999px; border:1.5px solid #f7931a;">
-                          <a href="https://staging.virtuse.com/ma-200w.html" target="_blank" style="display:inline-block; padding: 10px 22px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; color:#f7931a; text-decoration:none; border-radius:999px;">
+                          <a href="https://virtuse.com/ma-200w.html" target="_blank" style="display:inline-block; padding: 10px 22px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; color:#f7931a; text-decoration:none; border-radius:999px;">
                             View the live 200W MA chart &nbsp;&rarr;
                           </a>
                         </td>
@@ -229,7 +236,7 @@
                       Meme of the Week
                     </p>
 
-                    <img src="https://staging.virtuse.com/email-meme-zoom-out.png" width="320" alt="Zoom out meme: calm reaction to the weekly chart trending up, panic at the 15-minute chart trending down" style="display:block; margin:0 auto; width:320px; max-width:100%; height:auto; border-radius:16px;">
+                    <img src="https://virtuse.com/email-meme-zoom-out.png" width="320" alt="Zoom out meme: calm reaction to the weekly chart trending up, panic at the 15-minute chart trending down" style="display:block; margin:0 auto; width:320px; max-width:100%; height:auto; border-radius:16px;">
                   </td>
                 </tr>
               </table>
@@ -251,7 +258,7 @@
                   <td class="stack stack-pad" width="50%" style="padding: 0 6px 12px 0;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#111827; border:1px solid #232e45; border-radius:14px;">
                       <tr><td style="padding:22px 22px;">
-                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">$77,253</p>
+                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">{{btc_price}}</p>
                         <p style="margin:0; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing:0.5px; text-transform:uppercase; color:#7c8aa3;">BTC / USD</p>
                       </td></tr>
                     </table>
@@ -259,7 +266,7 @@
                   <td class="stack" width="50%" style="padding: 0 0 12px 6px;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#111827; border:1px solid #232e45; border-radius:14px;">
                       <tr><td style="padding:22px 22px;">
-                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">59.1%</p>
+                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">{{btc_dominance}}</p>
                         <p style="margin:0; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing:0.5px; text-transform:uppercase; color:#7c8aa3;">BTC Dominance</p>
                       </td></tr>
                     </table>
@@ -269,7 +276,7 @@
                   <td class="stack stack-pad" width="50%" style="padding: 0 6px 0 0;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#111827; border:1px solid #232e45; border-radius:14px;">
                       <tr><td style="padding:22px 22px;">
-                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">$64,856</p>
+                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">{{btc_200w_ma}}</p>
                         <p style="margin:0; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing:0.5px; text-transform:uppercase; color:#7c8aa3;">200-Week MA</p>
                       </td></tr>
                     </table>
@@ -277,7 +284,7 @@
                   <td class="stack" width="50%" style="padding: 0 0 0 6px;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#111827; border:1px solid #232e45; border-radius:14px;">
                       <tr><td style="padding:22px 22px;">
-                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">$68,679</p>
+                        <p style="margin:0 0 6px 0; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color:#f5f7fa;">{{btc_ema_100d}}</p>
                         <p style="margin:0; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing:0.5px; text-transform:uppercase; color:#7c8aa3;">100-Day EMA (Key Level)</p>
                       </td></tr>
                     </table>
@@ -286,7 +293,7 @@
               </table>
               <p style="margin:14px 0 0 0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color:#5c6982;">
                 Live figures as of this issue. Track these in real time, free, no account needed &mdash;
-                <a href="https://staging.virtuse.com/bitcoin-data.html" style="color:#5FAEDE; text-decoration:underline;">open the dashboard &rarr;</a>
+                <a href="https://virtuse.com/bitcoin-data.html" style="color:#5FAEDE; text-decoration:underline;">open the dashboard &rarr;</a>
               </p>
             </td>
           </tr>
@@ -356,7 +363,7 @@
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="border-radius:999px; background-color:#0a0e17;">
-                          <a href="https://staging.virtuse.com/index.html" target="_blank" style="display:inline-block; padding: 13px 30px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 700; color:#ffffff; text-decoration:none; border-radius:999px;">
+                          <a href="https://virtuse.com/index.html" target="_blank" style="display:inline-block; padding: 13px 30px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 700; color:#ffffff; text-decoration:none; border-radius:999px;">
                             Visit Virtuse.com &nbsp;&rarr;
                           </a>
                         </td>
@@ -372,15 +379,15 @@
           <tr>
             <td align="center" style="padding: 34px 16px 8px 16px;">
               <p style="margin:0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 24px; color:#5c6982;">
-                <a href="https://staging.virtuse.com/buy-bitcoin.html" style="color:#5c6982; text-decoration:underline;">Buy Bitcoin</a>
+                <a href="https://virtuse.com/buy-bitcoin.html" style="color:#5c6982; text-decoration:underline;">Buy Bitcoin</a>
                 &nbsp;&middot;&nbsp;
-                <a href="https://staging.virtuse.com/mining.html" style="color:#5c6982; text-decoration:underline;">Mining</a>
+                <a href="https://virtuse.com/mining.html" style="color:#5c6982; text-decoration:underline;">Mining</a>
                 &nbsp;&middot;&nbsp;
-                <a href="https://staging.virtuse.com/lending.html" style="color:#5c6982; text-decoration:underline;">Loans</a>
+                <a href="https://virtuse.com/lending.html" style="color:#5c6982; text-decoration:underline;">Loans</a>
                 &nbsp;&middot;&nbsp;
-                <a href="https://staging.virtuse.com/secure.html" style="color:#5c6982; text-decoration:underline;">Custody</a>
+                <a href="https://virtuse.com/secure.html" style="color:#5c6982; text-decoration:underline;">Custody</a>
                 &nbsp;&middot;&nbsp;
-                <a href="https://staging.virtuse.com/blog.html" style="color:#5c6982; text-decoration:underline;">Blog</a>
+                <a href="https://virtuse.com/blog.html" style="color:#5c6982; text-decoration:underline;">Blog</a>
               </p>
             </td>
           </tr>
