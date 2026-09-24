@@ -2064,6 +2064,75 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 @media (max-width: 1024px) {
   .lang-menu { display: none; }
 }
+
+/* ===== VIRTUSE BRIEF CAPTURE STRIPS (shared surface: --bg-card + 1px --line, radius 12px) ===== */
+.brief-strip {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 48px;
+}
+
+.brief-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  border-radius: 12px;
+  /* Bumped up from --border/--dark-card (a real-device report that this
+     whole capture card was unreadable against the page's black
+     background — --dark-card is only #141414 vs. the page's #08090a,
+     a difference too subtle on some phone screens to register as a
+     card at all) to the stronger --border-hover/--dark-card-hover pair
+     already used for hover states elsewhere, so it reads as a clearly
+     separate surface at rest, not just on interaction. */
+  border: 1px solid var(--border-hover);
+  background: var(--dark-card-hover);
+}
+
+.brief-strip-copy { min-width: 240px; }
+
+/* Plain, not colored — orange stays reserved for the CTA button only */
+.brief-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.brief-line {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+.brief-strip .newsletter-form {
+  margin: 0;
+  max-width: 380px;
+  flex: 1 1 320px;
+}
+
+.brief-form-msg {.brief-form-msg {
+  max-width: 1400px;
+  margin: 10px auto 0;
+  padding: 0 48px;
+  font-size: 13px;
+  min-height: 18px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .brief-strip { padding: 24px 24px; }
+  .brief-strip-inner { flex-direction: column; align-items: stretch; text-align: center; }
+  .brief-strip .newsletter-form { max-width: 100%; flex: none; }
+  .brief-form-msg { padding: 0 24px; }
+}
 </style>
 </head>
 <body>
@@ -2225,6 +2294,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="scroll-indicator">
     <div class="scroll-mouse"><div class="scroll-dot"></div></div>
   </div>
+</section>
+
+<!-- ===== VIRTUSE BRIEF CAPTURE (primary) ===== -->
+<section class="brief-strip anim-section anim-hidden" id="virtuse-brief">
+  <div class="brief-strip-inner">
+    <div class="brief-strip-copy">
+      <span class="brief-eyebrow">Virtuse Brief</span>
+      <p class="brief-line">Pondelok. Iba bitcoin. Žiadne tokeny. Žiadne PR.</p>
+    </div>
+    <form class="newsletter-form brief-form" data-brief-form novalidate>
+      <input type="email" name="email" placeholder="Emailová adresa" required>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+      <button type="submit">Prihlásiť sa</button>
+    </form>
+  </div>
+  <p class="brief-form-msg" role="status" aria-live="polite"></p>
 </section>
 
 <!-- ===== PROBLEM / PAIN SECTION ===== -->
@@ -2675,6 +2760,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </section>
 
+<script>
+// Shared handler for the Virtuse Brief capture strip (same Worker/list as the bottom form).
+(function () {
+  document.querySelectorAll('[data-brief-form]').forEach(function (form) {
+    var section = form.closest('section');
+    var msg = section ? section.querySelector('.brief-form-msg') : null;
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      if (msg) { msg.textContent = ''; msg.style.color = 'var(--text-muted)'; }
+      btn.disabled = true;
+      btn.textContent = 'ODOSIELAM...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp, lang: 'sk' })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          if (msg) { msg.textContent = "Ste v tom. Brief vychádza v pondelok."; msg.style.color = 'var(--green, #3fb950)'; }
+        } else if (msg) {
+          msg.textContent = (result.data && result.data.error) || 'Niečo sa pokazilo. Skúste to prosím znova.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        if (msg) { msg.textContent = 'Chyba siete — skúste to prosím znova.'; msg.style.color = '#f85149'; }
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  });
+})();
+</script>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer-main">
   <div class="footer-inner">
@@ -3050,7 +3175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   var btns = document.querySelectorAll('.nav-cta');
   if (!btns.length) return;
-  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=banner';
+  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=nav';
   btns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
