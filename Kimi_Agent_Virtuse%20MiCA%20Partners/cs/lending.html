@@ -171,7 +171,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   gap: 6px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--btc-orange);
+  color: var(--text);
   text-decoration: none;
 }
 .hero-tool-link a:hover { text-decoration: underline; }
@@ -314,24 +314,29 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .ltype-card {
   background: var(--dark-card);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: 16px;
-  padding: 24px;
+  padding: 28px 24px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.15s ease;
+}
+
+.ltype-card:hover {
+  background: var(--dark-card-hover);
 }
 
 .ltype-card h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 8px;
-  
-  
-  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--text);
 }
 
-.ltype-card h3 .icon { font-size: 24px; }
-
 .ltype-card p {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
 }
@@ -526,7 +531,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-terms-value {
   font-size: 13px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--text);
 }
 
 .pcard-footer {
@@ -1362,11 +1367,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="lending-types">
     <div class="ltype-card">
-      <h3><span class="icon">&#128176;</span> Vypůjčovatelé</h3>
+      <h3>Vypůjčovatelé</h3>
       <p>Použijte svůj Bitcoin jako zástavu k půjčení fiatu (EUR, CHF, CZK) nebo stablecoinů (USDC). Zachovejte si expozici vůči Bitcoinu, vyhněte se dani z kapitálových výnosů a získejte likviditu bez prodeje. LTV až do 50 %. Splatnost od 3 do 24 měsíců. Sazby od 5 % p.a.</p>
     </div>
     <div class="ltype-card">
-      <h3><span class="icon">&#128200;</span> Investoři / věřitelé</h3>
+      <h3>Investoři / věřitelé</h3>
       <p>Poskytněte fiat nebo stablecoiny na financování půjček zajištěných Bitcoinem. Vydělávejte úrok placený vypůjčovateli. Zástava je uzamčena v on-chain escrow, plně zajištěná Bitcoinem. Žádná rehypotekace. Žádná expozice vůči altcoinům. Minimálně od 800 EUR.</p>
     </div>
   </div>
@@ -1452,10 +1457,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <span class="widget-badge">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 4.6L14 7l-4.2 1.4L8 13l-1.8-4.6L2 7l4.2-1.4L8 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          Získejte okamžitou nabídku
-        </span>
         <p>Zadejte částku a za pár sekund uvidíte možnosti a sazby vaší půjčky zajištěné Bitcoinem, bez registrace.</p>
       </div>
       <div class="widget-frame">
