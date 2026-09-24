@@ -137,61 +137,89 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   margin: 0 auto;
 }
 
-.how-title {
-  font-size: 14px;
+.how-header { text-align: left; margin-bottom: 60px; }
+
+.how-header h2 {
+  font-size: 42px;
   font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.how-header h2 span { font-weight: 400; color: var(--text-muted); }
+
+.how-header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  width: 32px;
-  height: 32px;
+.how-log {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
+  gap: 40px;
+  border-top: 1px solid var(--border);
 }
 
-.step h3 {
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+.how-log-body h3 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  order: 1;
 }
 
-.step p {
-  font-size: 13px;
+.how-log-body p {
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
+  order: 2;
 }
 
 /* ===== PARTNERS ===== */
@@ -248,6 +276,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 @media (max-width: 700px) {
   .stack-step0 { padding: 0 24px; margin-bottom: 32px; }
   .stack-step0-inner { flex-direction: column; text-align: center; padding: 24px; }
+}
+
+.seo-guides {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+}
+.seo-guides-inner {
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.seo-guides h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+.seo-guides p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+.seo-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.seo-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.seo-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .seo-guides { padding: 0 24px; }
+  .seo-guides-inner { padding: 20px 24px; }
 }
 
 .partners {
@@ -411,7 +490,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .pcard-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1036,27 +1115,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Comment ça marche</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Choisissez un partenaire</h3>
-      <p>Parcourez ci-dessous nos CASP vérifiés et agréés MiCA. Comparez les frais, les fonctionnalités et les juridictions.</p>
+  <div class="how-header">
+    <h2>Comment <span>ça marche</span></h2>
+    <p>Quatre étapes simples pour accéder à chaque service Bitcoin via notre hub</p>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 01</span>
+        <h3>Choisissez un partenaire</h3>
+        <p>Parcourez ci-dessous nos CASP vérifiés et agréés MiCA. Comparez les frais, les fonctionnalités et les juridictions.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Accédez à la plateforme</h3>
-      <p>Votre lien d'apport vous mène directement au site du partenaire. Virtuse n'intervient jamais comme intermédiaire.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 02</span>
+        <h3>Accédez à la plateforme</h3>
+        <p>Votre lien d'apport vous mène directement au site du partenaire. Virtuse n'intervient jamais comme intermédiaire.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Effectuez le KYC sur place</h3>
-      <p>Toute la vérification d'identité, l'inscription et la conformité se déroulent sur la plateforme du CASP agréé.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 03</span>
+        <h3>Effectuez le KYC sur place</h3>
+        <p>Toute la vérification d'identité, l'inscription et la conformité se déroulent sur la plateforme du CASP agréé.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Achetez et conservez vous-même</h3>
-      <p>Achetez du Bitcoin et retirez-le vers votre propre wallet. Vous gardez le contrôle de vos clés à tout moment.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 04</span>
+        <h3>Achetez et conservez vous-même</h3>
+        <p>Achetez du Bitcoin et retirez-le vers votre propre wallet. Vous gardez le contrôle de vos clés à tout moment.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1066,7 +1160,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="stack-step0-inner">
     <div class="stack-step0-text">
       <h3>Combien, et à quelle fréquence, souhaitez-vous acheter ?</h3>
-      <p>Comparez les frais de chaque partenaire pour votre montant avant de choisir, grâce au Stacking Strategist.</p>
     </div>
     <a href="https://virtuse.com/stacking.html?utm_source=stacking&amp;utm_medium=widget" class="stack-step0-cta">
       Planifier mon stack
@@ -1074,6 +1167,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
 </section>
+
+<!-- ===== COUNTRY BUY GUIDES + FEE TOOLS ===== -->
+<nav class="seo-guides" aria-label="Guides d'achat par pays et outils de frais">
+  <div class="seo-guides-inner">
+    <h2>Classement des frais par pays</h2>
+    <p>Comparez les frais de chaque partenaire pour votre montant avant de choisir, avec le Stacking Strategist.</p>
+    <div class="seo-guides-links">
+      <a href="/buy-bitcoin/slovakia/">Acheter en Slovaquie</a>
+      <a href="/buy-bitcoin/czechia/">Acheter en Tchéquie</a>
+      <a href="/buy-bitcoin/germany/">Acheter en Allemagne</a>
+      <a href="/bitcoin-dca-calculator/">Calculateur DCA</a>
+      <a href="/bitcoin-fee-index/">Indice des frais</a>
+    </div>
+  </div>
+</nav>
 
 <!-- ===== PARTNERS ===== -->
 <section class="partners">

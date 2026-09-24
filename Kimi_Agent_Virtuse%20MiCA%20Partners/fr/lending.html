@@ -150,61 +150,81 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   margin: 0 auto;
 }
 
-.how-title {
-  font-size: 14px;
+.how-header { text-align: left; margin-bottom: 60px; }
+
+.how-header h2 {
+  font-size: 42px;
   font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
+.how-header h2 span { font-weight: 400; color: var(--text-muted); }
 
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  width: 32px;
-  height: 32px;
+.how-log {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
+  gap: 40px;
+  border-top: 1px solid var(--border);
 }
 
-.step h3 {
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+.how-log-body h3 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  order: 1;
 }
 
-.step p {
-  font-size: 13px;
+.how-log-body p {
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
+  order: 2;
 }
 
 /* ===== PARTNERS ===== */
@@ -243,24 +263,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .ltype-card {
   background: var(--dark-card);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: 16px;
-  padding: 24px;
+  padding: 28px 24px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.15s ease;
+}
+
+.ltype-card:hover {
+  background: var(--dark-card-hover);
 }
 
 .ltype-card h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 8px;
-  
-  
-  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--text);
 }
 
-.ltype-card h3 .icon { font-size: 24px; }
-
 .ltype-card p {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
 }
@@ -390,7 +415,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .pcard-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -470,7 +495,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .pcard-terms-value {
   font-size: 13px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--text);
 }
 
 .pcard-footer {
@@ -1149,27 +1174,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Comment ça marche</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Définissez les conditions du prêt</h3>
-      <p>Choisissez le montant du prêt, le taux d'intérêt et la durée. Ou optez pour un prêt instantané à un taux prédéfini.</p>
+  <div class="how-header">
+    <h2>Comment <span>ça marche</span></h2>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 01</span>
+        <h3>Définissez les conditions du prêt</h3>
+        <p>Choisissez le montant du prêt, le taux d'intérêt et la durée. Ou optez pour un prêt instantané à un taux prédéfini.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Trouvez un investisseur</h3>
-      <p>Votre demande est publiée sur la place de marché. Un investisseur finance votre prêt, sans prêteur central.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 02</span>
+        <h3>Trouvez un investisseur</h3>
+        <p>Votre demande est publiée sur la place de marché. Un investisseur finance votre prêt, sans prêteur central.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Bloquez votre Bitcoin en garantie</h3>
-      <p>Envoyez votre Bitcoin vers une adresse d'entiercement multisig on-chain. Vous ne cédez jamais vos clés privées.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 03</span>
+        <h3>Bloquez votre Bitcoin en garantie</h3>
+        <p>Envoyez votre Bitcoin vers une adresse d'entiercement multisig on-chain. Vous ne cédez jamais vos clés privées.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Recevez les fonds et remboursez</h3>
-      <p>Le prêt est versé sur votre compte bancaire. Remboursez à l'échéance : votre Bitcoin est restitué dans votre portefeuille.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Étape 04</span>
+        <h3>Recevez les fonds et remboursez</h3>
+        <p>Le prêt est versé sur votre compte bancaire. Remboursez à l'échéance : votre Bitcoin est restitué dans votre portefeuille.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1185,11 +1224,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="lending-types">
     <div class="ltype-card">
-      <h3><span class="icon">&#128176;</span> Emprunteurs</h3>
+      <h3>Emprunteurs</h3>
       <p>Utilisez votre Bitcoin comme garantie pour emprunter des devises (EUR, CHF, CZK) ou des stablecoins (USDC). Conservez votre exposition au Bitcoin, évitez l'impôt sur les plus-values et accédez à des liquidités sans vendre. LTV jusqu'à 50 %. Durées de 3 à 24 mois. Taux à partir de 5 % par an.</p>
     </div>
     <div class="ltype-card">
-      <h3><span class="icon">&#128200;</span> Investisseurs / prêteurs</h3>
+      <h3>Investisseurs / prêteurs</h3>
       <p>Apportez des devises ou des stablecoins pour financer des prêts garantis par Bitcoin. Percevez les intérêts versés par les emprunteurs. La garantie est bloquée dans un entiercement on-chain, entièrement sécurisée par Bitcoin. Aucune réhypothécation. Aucune exposition aux altcoins. Minimum à partir de 800 EUR.</p>
     </div>
   </div>
@@ -1275,10 +1314,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <span class="widget-badge">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 4.6L14 7l-4.2 1.4L8 13l-1.8-4.6L2 7l4.2-1.4L8 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          Obtenez un devis instantané
-        </span>
         <p>Saisissez un montant pour découvrir vos options de prêt garanti par Bitcoin et les taux en quelques secondes, sans inscription.</p>
       </div>
       <div class="widget-frame">
