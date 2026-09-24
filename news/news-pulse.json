@@ -1,22 +1,22 @@
 {
-  "updated": "2026-09-23T08:40:05Z",
+  "updated": "2026-09-24T06:32:00Z",
   "feed": null,
   "items": [
     {
-      "title": "Bitcoin ETFs flirt with $1B as Monday inflows hit a 2026 high",
-      "source": "Cointelegraph",
-      "tag": "ETF",
-      "url": "https://cointelegraph.com/markets/bitcoin-etf-biggest-inflow-october-2025",
-      "published": "2026-09-22T12:00:00Z",
-      "excerpt": "SoSoValue/Farside: $998.9M Monday (IBIT $381M). Farside next day: ~$715M Tuesday — fourth straight inflow session. BTC briefly cleared $87K."
+      "title": "Bitcoin slips below $85,000 as 5% Treasury yield returns",
+      "source": "CryptoSlate",
+      "tag": "Fed",
+      "url": "https://cryptoslate.com/bitcoin-slips-below-85000-as-5-treasury-yield-returns-to-haunt-risk-assets/",
+      "published": "2026-09-23T23:40:38Z",
+      "excerpt": "Hot US PMI pushed the 10-year above 5%. Bitcoin fell under $85,000 with ~$126M in long liquidations as the short-squeeze fuel faded."
     },
     {
-      "title": "CLARITY Act still needs 11 more Senate votes",
-      "source": "CryptoSlate",
-      "tag": "Policy",
-      "url": "https://cryptoslate.com/clarity-act-needs-11-more-senate-votes-but-4-of-the-49-it-already-has-want-the-bill-changed/",
-      "published": "2026-09-21T18:00:00Z",
-      "excerpt": "Punchbowl: four of the 49 yes votes want the bill changed. Bitcoin policy remains short of cloture."
+      "title": "Bitcoin ETF net inflows top $1.7B as assets reach $111B",
+      "source": "Cointelegraph",
+      "tag": "ETF",
+      "url": "https://cointelegraph.com/markets/bitcoin-etf-inflow-2-days-holder-profitable",
+      "published": "2026-09-23T07:25:05Z",
+      "excerpt": "SoSoValue: ~$999M Monday + ~$715M Tuesday. US spot Bitcoin ETF assets ~$111B; IBIT led Tuesday at ~$350M."
     },
     {
       "title": "Hashprice near $41/PH as difficulty sits at 132.76T after a +4.16% retarget",
@@ -24,34 +24,34 @@
       "tag": "Mining",
       "url": "https://hashrateindex.com/blog/hashrate-index-roundup-september-21-2026/",
       "published": "2026-09-21T18:47:00Z",
-      "excerpt": "USD Bitcoin hashprice ~$40.93/PH/day (+4.1% week). Difficulty 132.76T after Sep 19 +4.16%; next estimate ~Oct 3 (~−1.8%). Hashrate 7d SMA ~946 EH/s."
+      "excerpt": "USD Bitcoin hashprice ~$40.93/PH/day (+4.1% week). Difficulty 132.76T after Sep 19 +4.16%; next estimate ~Oct 3 (~\u22121.8%). Hashrate 7d SMA ~946 EH/s."
     }
   ],
   "archive": {
     "label": "Yesterday",
-    "from": "2026-09-23T08:03:58Z",
+    "from": "2026-09-24T06:32:00Z",
     "items": [
       {
-        "title": "US spot Bitcoin ETFs take nearly $1B in a day as average holder returns to profit",
-        "source": "Decrypt",
+        "title": "Bitcoin ETFs flirt with $1B as Monday inflows hit a 2026 high",
+        "source": "Cointelegraph",
         "tag": "ETF",
-        "url": "https://decrypt.co/378921/bitcoin-etfs-take-nearly-1b-in-a-day-as-average-holder-returns-to-profit",
+        "url": "https://cointelegraph.com/markets/bitcoin-etf-biggest-inflow-october-2025",
         "published": "2026-09-22T12:00:00Z"
       },
       {
-        "title": "Bitcoin eyes $90K after breaking $80K resistance as shorts lose $449M",
-        "source": "CryptoTimes",
-        "tag": "Fed",
-        "url": "https://www.cryptotimes.io/2026/09/22/bitcoin-eyes-90k-after-breaking-80k-resistance-as-shorts-lose-449m/",
-        "published": "2026-09-21T19:30:00Z"
+        "title": "CLARITY Act still needs 11 more Senate votes",
+        "source": "CryptoSlate",
+        "tag": "Policy",
+        "url": "https://cryptoslate.com/clarity-act-needs-11-more-senate-votes-but-4-of-the-49-it-already-has-want-the-bill-changed/",
+        "published": "2026-09-21T18:00:00Z"
       }
     ]
   },
-  "what_moved": "ETFs followed Monday’s ~$999M with ~$715M Tuesday; BTC holds ~$86.4K.",
+  "what_moved": "10y yield back above 5% after hot PMI; Bitcoin slips under $85K to ~$84.2K despite ~$1.7B ETF inflows this week.",
   "quick_media": {
-    "title": "Simply Bitcoin EP 1596 — Bitcoin EXPLODES Past $86,000",
+    "title": "Simply Bitcoin EP 1596 \u2014 Bitcoin EXPLODES Past $86,000",
     "url": "https://www.youtube.com/watch?v=-PvlHscb9cg",
-    "note": "Keep — still fits this week’s $86K breakout; do not refresh daily."
+    "note": "Keep \u2014 still this week\u2019s $86K breakout tape; do not refresh daily."
   },
   "fear_greed": {
     "value": 71,
@@ -59,7 +59,14 @@
     "source": "alternative.me"
   },
   "dominance": {
-    "btc_pct": 59.09,
+    "btc_pct": 59.19,
     "source": "Coinlore global"
+  },
+  "market": {
+    "btc_usd": 84180,
+    "change_24h_pct": -2.6,
+    "fees": "low",
+    "fee_sat_vb": 1,
+    "sources": "mempool $84,120; Coinbase ~$84,160; Bitstamp $84,184 (\u22122.61%); blockchain.info $84,195"
   }
 }
