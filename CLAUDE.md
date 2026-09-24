@@ -2,6 +2,66 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-24, fourth round) — ru/ (Russian) brought to full EN redesign parity, committed to main (`20b2e8c`), live on staging (21/21 md5-verified); production scp prepared, NOT yet run
+
+**What this round did:** the whole `ru/` folder (20 of 21 pages; `404.html`
+untouched) now matches the EN redesign like sk/cs/fr/uk/es. ru/ started from
+the same batch-era state uk/ did (tokens, SVG hamburger, mobile lang
+dropdown, Brief nav, wordmark footer, Brief newsletter, concierge redirect
+already present), so it was mostly the uk recipe: a per-language script +
+three structural transplants. Verified locally (HTMLParser tag-balance on
+every page, 0 broken relative links, browser at 1440/375: 13 sections in EN
+order, cube canvas, 3 ticker rows, 9 Quick Answers, 6 service cards, 3
+changelog steps, drawer + mobile language dropdown, only the RU pill active,
+computed-style orange sweep on every key page returning only EN-identical
+elements, `audit_parity.py ru` clean). Committed `20b2e8c`, gh-pages
+`1c97f67`, staging md5-verified 21/21. **Production not yet updated** — the
+user runs the scp below (`ru/` exists on the server; plain recursive copy).
+
+**How:**
+1. [`i18n-tools/port_ru_parity.py`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/port_ru_parity.py)
+   — a thin module that *imports* `port_uk_parity` (CSS constants and the
+   language-agnostic steps: lang pill, sec-title, checkmarks, treasury/
+   secure/tax rule sets, STEP0 CSS) and `port_es_parity` (legacy hover
+   drops, bitcoin-data incl. green→white, regex helpers) and defines only
+   the Russian strings: "Шаг", buy-bitcoin subheading, `DEK_SPLIT`, per-page
+   `GUIDES_EXTRA` (EN's non-uniform Guides column), lending hero link,
+   `STEP0_HTML`, `TAX_GUIDES_HTML` (swapped into `UK.step_tax` at call time),
+   treasury tag removal, blog CSS + newsdesk line. Idempotent (second run
+   "unchanged" everywhere). **This is the template for de/** — copy it and
+   replace the strings; don't fork the UK/ES scripts again.
+2. Transplants: `index.html` (EN template + ~90 asserted Russian
+   replacements, ru head, ru/buy-bitcoin's nav, 9 Q&A from `ru/faq.html`,
+   footer Guides = EN index set; **the Russian WordPress feed was restored**
+   — the EN template fetches category 13, ru must fetch `categories=57&lang=ru`
+   and article links carry `&lang=ru`, as the old ru/index and ru/blog
+   already did), `bots.html` and `about.html` (EN `<style>` + the page's
+   "RU: compact nav text" block, same body rebuilds as es/), `blog.html`
+   (mobile dropdown li replaced the old pill row, multi-instance JS, drawer
+   exclusion, EN mq, drawer active links neutralised — ru/blog was the only
+   ru page still carrying the orange drawer-active rules).
+
+**Found/fixed:** ru/tax kept a stray `.eu-card-inner` mobile rule and had
+no `compare-table-wrap`; ru/buy-bitcoin's legacy orange `.btn-primary`
+block (overridden but present); ru/blog drawer active links orange. Fresh
+Russian copy written this round (hero CTAs, brief strip, shortened
+Questions cards, tools-guides, quick-answers heading, form messages,
+step-0/fee-ranking, tax guides, newsdesk line) needs a native-speaker pass;
+the consultation widget still has no Russian copy (English fallback).
+
+**Next:** (1) run the ru production scp below and md5-verify; (2) `de/`
+with `port_ru_parity.py` as the template (check `de/tax.html`'s legacy
+template and whether de/index is the orbit-era port like ru's was); (3)
+the fr/ open items (stale Get Started handlers, orange active pill; cs/
+pill too); (4) other languages' `bots.html` still use dot bullets (EN/es/ru
+now use check icons).
+
+```bash
+# Production deploy for this round (user runs it; ru/ already exists on the
+# server, so a plain recursive copy of the ru/ contents is enough):
+cd /private/tmp/gh-pages-wt3 && scp -P 222 -r ru/* virtuse.com@ftp.virtuse.com:public_html/ru/
+```
+
 ## Session status (2026-09-24, third round) — es/ (Spanish) brought to full EN redesign parity, committed to main (`7f67ebe`), live on staging AND on production (user ran the scp; 24/24 md5-verified on virtuse.com: all es/*.html + root bots.html)
 
 **What this round did:** the whole `es/` folder (22 of 23 pages; `404.html`
