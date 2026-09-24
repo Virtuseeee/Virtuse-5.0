@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24) — Redesign is LIVE ON PRODUCTION for en/sk/cs/fr (+ es published as-is); fr/ parity round finished; new og-cover.jpg; work lives on `feat/homepage-redesign-i18n-rollout`, NOT yet merged to main
+## Session status (2026-09-24) — Redesign is LIVE ON PRODUCTION for en/sk/cs/fr (+ es published as-is); fr/ parity round finished; new og-cover.jpg; `feat/homepage-redesign-i18n-rollout` merged into `main` (`7816e9d`) so main = production again
 
 **Deploy state, verified live today (`curl` + md5 against the gh-pages
 worktree, not assumed):** `virtuse.com` production now serves the new
@@ -24,17 +24,25 @@ source was the gh-pages worktree `/private/tmp/gh-pages-wt3` (flat
 layout = `public_html/`), new folders `fr/` and `es/` needed the
 documented `sftp mkdir` step first.
 
-**Branch/merge state — important for whoever picks this up:** all of
-this multi-week redesign work sits on `feat/homepage-redesign-i18n-rollout`
-(100+ commits ahead of `main`; `main`'s tip `f661408` is the merge-base
-and has not moved). Production was deployed from that branch via
-gh-pages, so **`main` is currently NOT what's live** — merging the branch
-into `main` (PR or direct merge) is the next housekeeping step, otherwise
-the next person who deploys "from main" will roll production back.
-Always-excluded-from-commits local noise still present in the working
-tree: `cloudflare-worker/src/index.js`, `email/welcome-template.html`,
-`email/welcome-template-sk.html` (unrelated in-progress work; stage
-files explicitly, never `git add -A`).
+**Branch/merge state:** all of this multi-week redesign work was done on
+`feat/homepage-redesign-i18n-rollout` (100+ commits) and was **merged
+into `main` the same day as the production deploy** (merge commit
+`7816e9d`, no conflicts), so `main` == production again. Two things
+found while merging, worth knowing: (a) the *local* `main` ref had
+drifted — its tip `f661408` ("Port homepage redesign to all 5
+translated languages") was never pushed and `origin/main` had moved on
+with the Brief desk's cursor PRs (#34/#36/#38); since `f661408` was
+already contained in the feature branch, local `main` was reset to
+`origin/main` before merging (nothing lost — verify with `git branch
+--contains` before doing this kind of reset again); (b) the merge was
+done in a throwaway `git worktree` for `main` rather than by checking
+out `main` in the OneDrive folder, because that working tree carries
+three always-excluded local modifications (`cloudflare-worker/src/index.js`,
+`email/welcome-template.html`, `email/welcome-template-sk.html`) that
+`origin/main` has since changed — checking out or merging `main` there
+will now be refused by git until those are stashed or discarded. Treat
+them as unrelated in-progress work: stage files explicitly, never
+`git add -A`, and don't discard them without asking.
 
 **What shipped this session (commits `cf6009c`, `901dee7` on the branch;
 gh-pages `36e3c36`, `76dfcf9`):**
@@ -119,14 +127,13 @@ gh-pages `36e3c36`, `76dfcf9`):**
   fast, and it caught five real drifts on `bitcoin-data.html` that
   targeted greps had missed.
 
-**Next, in order:** (1) merge `feat/homepage-redesign-i18n-rollout` into
-`main` so `main` reflects production; (2) get the Brief desk's `news/`
-folder deployed to production (see above); (3) redesign `es/`, `uk/`,
-`ru/`, `de/` in place, one language at a time, using the same script +
-audit approach (`i18n-tools/port_homepage_redesign_fr.py` is the
-template — French aria-labels, 8-language switcher capture, bots.html
-alias-token fallbacks); (4) fix the EN `bots.html` hover leftover; (5)
-everything still open below (legal review of AI-translated compliance
+**Next, in order:** (1) get the Brief desk's `news/` folder deployed to
+production (see above); (2) redesign `es/`, `uk/`, `ru/`, `de/` in
+place, one language at a time, using the same script + audit approach
+(`i18n-tools/port_homepage_redesign_fr.py` is the template — French
+aria-labels, 8-language switcher capture, bots.html alias-token
+fallbacks); (3) fix the EN `bots.html` hover leftover; (4) everything
+still open below (legal review of AI-translated compliance
 pages, uk/cs welcome emails, Layer-2 translations for uk/ru/de/es).
 
 ## Session status (2026-09-22, continued 25th round) — cs/index.html fully ported; fifth and final of the five translated-homepage ports, closing out the whole multi-day "index.html × 5 languages" task
