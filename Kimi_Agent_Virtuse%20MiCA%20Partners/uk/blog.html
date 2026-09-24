@@ -64,9 +64,9 @@ img{max-width:100%;display:block}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--text)}
 .nav-logo img{height:32px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nav-links a{color:var(--text-muted);font-size:13px;font-weight:400;padding:6px 12px;border-radius:8px;transition:all .2s}
 .nav-links a:hover{color:var(--text);background:var(--dark-card)}
-.nav-links a.active{color:var(--btc-orange);background:rgba(247, 147, 26,0.08)}
+.nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
 .nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:7px 14px;border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;transition:background .2s}
 .nav-cta:hover{background:var(--btc-orange-light)}
 
@@ -76,7 +76,9 @@ img{max-width:100%;display:block}
 .hero p{font-size:17px;color:var(--text-muted);max-width:560px;line-height:1.65}
 .hero-side{display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding-bottom:6px}
 .post-count{font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:.02em}
-.post-count b{color:var(--btc-orange);font-weight:800}
+.hero-newsdesk{margin-top:16px}
+.hero-newsdesk a{color:var(--btc-orange);font-weight:700}
+.post-count b{color:var(--text);font-weight:800}
 
 .lang-switch{display:inline-flex;align-items:center;background:var(--dark-card);border:1px solid var(--border);border-radius:100px;padding:4px;gap:2px}
 .lang-opt{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--text-muted);padding:8px 16px;border-radius:100px;transition:all .2s}
@@ -90,7 +92,7 @@ img{max-width:100%;display:block}
 .search-input::placeholder{color:var(--text-dim)}
 .search-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;pointer-events:none}
 
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--btc-orange);background:rgba(247, 147, 26,0.1);align-self:flex-start}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--text);background:rgba(255,255,255,0.06);align-self:flex-start}
 .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 
 .featured{display:block;background:var(--dark-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:56px;transition:all .3s}
@@ -206,7 +208,6 @@ img{max-width:100%;display:block}
 .hero{padding:60px 0 32px;align-items:flex-start;flex-direction:column}
 .hero h1{font-size:36px}
 .hero-side{align-items:flex-start;width:100%}
-.lang-switch{flex-wrap:wrap;height:auto;max-width:100%}
 .search-input{width:100%}
 .search-wrap{width:100%}
 .featured-inner{grid-template-columns:1fr}
@@ -457,11 +458,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-links a.active .nav-link-arrow {
     opacity: 1;
     transform: translateX(0);
-    color: var(--btc-orange, #f7931a);
+    color: var(--text);
   }
 
-  .nav-links a.active { color: var(--btc-orange, #f7931a); }
-  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active .nav-link-num { color: var(--text); }
 
   .nav-links a.active::before {
     content: '';
@@ -469,7 +470,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     left: -24px;
     top: 0; bottom: 0;
     width: 3px;
-    background: var(--btc-orange, #f7931a);
+    background: var(--text);
   }
 
   .nav-links-cta-item {
@@ -618,7 +619,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 }
 
 @media (max-width: 1024px) {
-  .lang-menu { display: none; }
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-switch { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
 </style>
 </head>
@@ -650,14 +654,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
-        <a href="../blog.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="../blog-sk.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="blog.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../ru/blog.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/blog.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/blog.html" class="lang-opt" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/blog.html" class="lang-opt" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
+          <span class="lang-flag">🇺🇦</span>UA
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+          <a href="../blog.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+          <a href="../blog-sk.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+          <a href="blog.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+          <a href="../ru/blog.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../de/blog.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+          <a href="../fr/blog.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="../es/blog.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        </div>
       </div>
     </li>
   </ul>
@@ -683,24 +693,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
 (function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
   document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 </script>
@@ -710,6 +734,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div>
     <h1>Блог <span>Virtuse</span></h1>
     <p>Думки про Біткоїн, макроекономіку та майбутнє грошей від CEO Virtuse Rastislava Vasilisina.</p>
+    <p class="hero-newsdesk"><a href="../news.html">Новинний деск</a> — щотижневий брифінг і Pulse.</p>
   </div>
   <div class="hero-side">
     <div class="lang-switch" role="navigation" aria-label="Мова сторінки">
@@ -730,7 +755,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <section class="container" id="featuredWrap">
-  <a href="article.html?slug=why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2" class="featured" id="featuredCard">
+  <a href="../article.html?slug=why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2" class="featured" id="featuredCard">
     <div class="featured-inner">
       <div class="featured-media">
         <span class="featured-badge">Остання стаття</span>
@@ -750,7 +775,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="container">
   <div class="section-label" id="gridLabel">Усі статті</div>
   <div class="blog-grid" id="blogGrid">
-    <a href="article.html?slug=39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit" class="blog-card">
+    <a href="../article.html?slug=39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-15-at-6.52.29-PM.jpeg" alt="$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -759,7 +784,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>22 Apr 2026</div>
       </div>
     </a>
-    <a href="article.html?slug=rome-wokeism-and-the-rise-of-the-bitcoin-standard" class="blog-card">
+    <a href="../article.html?slug=rome-wokeism-and-the-rise-of-the-bitcoin-standard" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-7.21.45-PM.jpeg" alt="Rome, Wokeism, and the Rise of the Bitcoin Standard" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -768,7 +793,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>13 Mar 2026</div>
       </div>
     </a>
-    <a href="article.html?slug=gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026" class="blog-card">
+    <a href="../article.html?slug=gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-25-at-1.00.18-PM.jpeg" alt="Gold is the Smoke Alarm, Bitcoin is the Exit Ramp: Why Math is Defeating History in 2026" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -777,7 +802,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>25 Feb 2026</div>
       </div>
     </a>
-    <a href="article.html?slug=the-bitcoin-war-jpmorgan-and-jane-street-are-attacking-retail" class="blog-card">
+    <a href="../article.html?slug=the-bitcoin-war-jpmorgan-and-jane-street-are-attacking-retail" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-16-at-6.14.46-PM-1-e1766065029618.jpeg" alt="THE BITCOIN WAR: JPMorgan and Jane Street Are Attacking Retail" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -786,7 +811,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>18 Dec 2025</div>
       </div>
     </a>
-    <a href="article.html?slug=blackrocks-bitcoin-shock-ibit-just-became-their-top-revenue-driver" class="blog-card">
+    <a href="../article.html?slug=blackrocks-bitcoin-shock-ibit-just-became-their-top-revenue-driver" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2025/12/PHOTO-2025-12-02-13-39-05-e1764682730906.jpg" alt="BlackRock’s Bitcoin Shock: IBIT Just Became Their Top Revenue Driver!" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -795,7 +820,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>2 Dec 2025</div>
       </div>
     </a>
-    <a href="article.html?slug=is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2" class="blog-card">
+    <a href="../article.html?slug=is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2025/10/PHOTO-2025-10-03-10-08-50.jpg" alt="Is the Digital Euro ‘Modernization’ or Just China’s Social Credit System for the EU?" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -804,7 +829,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>6 Oct 2025</div>
       </div>
     </a>
-    <a href="article.html?slug=michael-saylors-legacy-the-bitcoin-corporate-revolution" class="blog-card">
+    <a href="../article.html?slug=michael-saylors-legacy-the-bitcoin-corporate-revolution" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2025/09/Screenshot-2025-09-22-at-12.29.09-PM-e1758536988904.png" alt="Michael Saylor’s Legacy: The Bitcoin Corporate Revolution" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -813,7 +838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>22 Sep 2025</div>
       </div>
     </a>
-    <a href="article.html?slug=what-is-a-bitcoin-treasury" class="blog-card">
+    <a href="../article.html?slug=what-is-a-bitcoin-treasury" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2025/09/Gemini_Generated_Image_1uo0r41uo0r41uo0-e1760026344679.png" alt="What is a Bitcoin Treasury" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -822,7 +847,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>12 Sep 2025</div>
       </div>
     </a>
-    <a href="article.html?slug=gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard" class="blog-card">
+    <a href="../article.html?slug=gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard" class="blog-card">
       <div class="blog-card-media"><div class="blog-card-img blog-card-img--empty">&#8383;</div></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -831,7 +856,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>10 Sep 2025</div>
       </div>
     </a>
-    <a href="article.html?slug=bitcoin-ordinals-about-to-flip-ethereum-nfts" class="blog-card">
+    <a href="../article.html?slug=bitcoin-ordinals-about-to-flip-ethereum-nfts" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2021/09/bitcoin-news.jpg" alt="Bitcoin Ordinals About to Flip Ethereum NFTs" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -840,7 +865,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>12 Jul 2023</div>
       </div>
     </a>
-    <a href="article.html?slug=sedem-dovodov-preco-sucasne-bankovnictvo-konci" class="blog-card">
+    <a href="../article.html?slug=sedem-dovodov-preco-sucasne-bankovnictvo-konci" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2023/04/Screenshot-2023-04-18-at-21.38.44.png" alt="7 Reasons Why Traditional Banking Is On The Way Out" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -849,7 +874,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="blog-card-meta"><span>Ras Vasilisin</span><span class="dot"></span>19 Apr 2023</div>
       </div>
     </a>
-    <a href="article.html?slug=de-dollarization-is-gaining-momentum" class="blog-card">
+    <a href="../article.html?slug=de-dollarization-is-gaining-momentum" class="blog-card">
       <div class="blog-card-media"><img src="https://blog.virtuse.com/wp-content/uploads/2023/04/Screenshot-2023-04-12-at-19.24.33.png" alt="De-Dollarization Is Gaining Momentum" class="blog-card-img" loading="lazy"></div>
       <div class="blog-card-body">
         <span class="tag">Блог</span>
@@ -1020,7 +1045,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function articleUrl(post) {
-    return 'article.html?slug=' + encodeURIComponent(post.slug) + CFG.langSuffix;
+    return '../article.html?slug=' + encodeURIComponent(post.slug) + CFG.langSuffix;
   }
 
   function imgOf(post) {
@@ -1308,6 +1333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
     el.addEventListener('click', closeMenu);
   });
 

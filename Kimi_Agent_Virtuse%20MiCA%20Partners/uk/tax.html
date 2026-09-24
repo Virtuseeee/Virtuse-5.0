@@ -80,7 +80,7 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
 .nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-decoration: none; }
 .nav-links a:hover:not(.lang-opt), .nav-links a.active:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
 .nav-links a.active:not(.lang-opt) { font-weight: 600; }
-.nav-cta { background: #f7931a; color: #08090a; font-weight: 700; font-size: 13px; padding: 9px 20px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+.nav-cta { background: #f7931a; color: #08090a; font-weight: 700; font-size: 12px; padding: 7px 14px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
 .nav-cta:hover { background: #e8850f; transform: translateY(-1px); }
 .mobile-menu-btn { display: none; background: none; border: none; color: #8b949e; font-size: 22px; cursor: pointer; }
 
@@ -93,10 +93,11 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
 /* How It Works */
 .how-section { padding: 60px 24px 80px; }
 .section-header { text-align: center; margin-bottom: 52px; }
-.section-header h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 10px; }
-.section-header p { font-size: 16px; color: #8b949e; }
+.section-header h2 { font-size: 42px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+.section-header h2 span { font-weight: 400; color: var(--text-muted); }
+.section-header p { font-size: 20px; font-weight: 400; color: var(--text-muted); max-width: 620px; line-height: 1.55; }
 .how-header { text-align: left; margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px; }
-.how-header h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 10px; }
+.how-header h2 { font-size: 42px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
 .how-header h2 span { font-weight: 400; color: #8b949e; }
 .how-log { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.06); max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .how-log-item { flex: 1; display: flex; flex-direction: column; }
@@ -116,21 +117,38 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
 }
 
 /* EU Tax Complexity Card */
-.eu-card { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
-.eu-card-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
-.eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247, 147, 26,0.12);   justify-content: center; flex-shrink: 0; }
-.eu-icon svg { width: 28px; height: 28px; color: #f7931a; }
-.eu-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-.eu-content p { font-size: 15px; color: #8b949e; line-height: 1.6; }
-.eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
-.eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
+.tax-guides { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+.tax-guides-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px 32px; }
+.tax-guides h2 { font-size: 42px; font-weight: 700; color: #e6edf3; line-height: 1.25; margin: 0 0 14px; }
+.tax-guides-lead { font-size: 20px; font-weight: 400; color: #8b949e; line-height: 1.55; margin: 0 0 24px; max-width: 620px; }
+.tax-guides-links { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-bottom: 0; }
+.tax-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(247,147,26,0.06);
+  color: #e6edf3;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tax-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: #f7931a;
+}
+@media (max-width: 700px) {
+  .tax-guides { padding: 0 24px; }
+  .tax-guides-inner { padding: 24px; }
+}
 
 /* Partner Cards */
 .partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.partner-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
-.partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.12); }
-.partner-card.top-pick { border: 1px solid rgba(247, 147, 26,0.3); }
+.partner-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: border-color 0.15s ease, background-color 0.15s ease; display: flex; flex-direction: column; }
+.partner-card:hover { border-color: rgba(255,255,255,0.12); background: #1c1c1c; }
+.partner-card.top-pick:hover { border-color: rgba(255,255,255,0.12); background: #1c1c1c; }
 .partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
 .partner-logo { display: flex; align-items: center; gap: 14px; }
 .partner-name { font-size: 18px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
@@ -149,7 +167,7 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
 .partner-body p { font-size: 14px; color: #8b949e; line-height: 1.6; margin-bottom: 20px; }
 .partner-features { list-style: none; margin-bottom: 20px; }
 .partner-features li {   gap: 8px; font-size: 13px; color: #e6edf3; padding: 6px 0; }
-.partner-features li svg { width: 14px; height: 14px; color: #3fb950; flex-shrink: 0; }
+.partner-features li svg { width: 14px; height: 14px; color: #e6edf3; flex-shrink: 0; }
 .partner-cta {  gap: 10px; padding: 0 28px 28px; }
 .btn-primary { flex: 1; background: #f7931a; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; transition: all 0.2s; border: none; cursor: pointer; }
 .btn-primary:hover { background: #ffffff; color: #f7931a; transform: translateY(-1px); }
@@ -166,7 +184,7 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
 .compare-table td:first-child { color: #8b949e; font-weight: 500; }
 .compare-table tr:last-child td { border-bottom: none; }
 .compare-table tr:hover td { background: rgba(22, 31, 48,0.5); }
-.compare-table td.best { color: #3fb950; font-weight: 600; }
+.compare-table td.best { color: #f7931a; font-weight: 600; }
 
 /* Disclaimer */
 /* ===== NEWSLETTER SECTION ===== */
@@ -363,9 +381,7 @@ nav { padding: 0 24px; }
 .hero { padding: 64px 24px 52px; }
 .hero h1 { font-size: 34px; }
 .hero p { font-size: 16px; margin: 0 0 24px; }
-.how-grid { grid-template-columns: repeat(2, 1fr); }
 .partner-grid { grid-template-columns: 1fr; }
-.eu-card-inner { flex-direction: column; gap: 16px; }
 .compare-table { font-size: 13px; }
 .compare-table th, .compare-table td { padding: 10px 12px; }
 }
@@ -773,8 +789,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -936,33 +952,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- EU Tax Complexity -->
-<div class="eu-card">
-<div class="eu-card-inner">
-<div class="eu-icon">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-</div>
-<div class="eu-content">
-<h3>У кожній країні ЄС свої правила оподаткування Біткоїна</h3>
-<p>Німеччина: неоподатковуваний період утримання 1 рік. Франція: фіксований податок 30% (PFU). Австрія: 27,5% податку на приріст капіталу. Португалія: тепер оподатковується. Наші партнери підтримують DE, AT, CH, FR, IT, ES, NL та інші.</p>
-<div class="eu-countries">
-<span class="eu-country-tag">DE</span>
-<span class="eu-country-tag">AT</span>
-<span class="eu-country-tag">CH</span>
-<span class="eu-country-tag">FR</span>
-<span class="eu-country-tag">IT</span>
-<span class="eu-country-tag">ES</span>
-<span class="eu-country-tag">NL</span>
-<span class="eu-country-tag">PT</span>
+<!-- Country tax guides (SEO) -->
+<section class="tax-guides" id="tax-guides">
+<div class="tax-guides-inner">
+<h2>Податкові гіди за країнами</h2>
+<p class="tax-guides-lead">Орієнтовні огляди 2026 року для 11 країн ЄС, а також чекліст спадкування. Це не податкова консультація.</p>
+<div class="tax-guides-links">
+<a href="/bitcoin-tax/">Усі 11 країн</a>
+<a href="/bitcoin-tax/slovakia/">Словаччина</a>
+<a href="/bitcoin-tax/czechia/">Чехія</a>
+<a href="/bitcoin-tax/germany/">Німеччина</a>
+<a href="/bitcoin-tax/austria/">Австрія</a>
+<a href="/bitcoin-tax/poland/">Польща</a>
+<a href="/bitcoin-inheritance/">Чекліст спадкування</a>
+<a href="../tax-agent.html">Перевірити правила моєї країни</a>
+<a href="/de/bitcoin-steuern/deutschland/">Auf Deutsch: Bitcoin-Steuern Deutschland</a>
 </div>
 </div>
-</div>
-</div>
+</section>
 
 <!-- Partner Cards -->
 <section class="partners-section">
 <div class="section-header">
-<h2>Наші партнери з податкової звітності</h2>
+<h2>Наші <span>партнери з податкової звітності</span></h2>
 <p>Ретельно відібрані інструменти для європейських інвесторів, які працюють лише з Біткоїном</p>
 </div>
 <div class="partner-grid">
@@ -1245,6 +1257,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
         <a href="blog.html">Блог</a>
         <a href="bitcoin-data.html">Біткоїн дані</a>
+        <a href="/bitcoin-tax/">Податки на біткоїн</a>
+        <a href="/bitcoin-inheritance/">Спадкування</a>
+        <a href="../tax-agent.html">Tax Agent</a>
       </div>
       <div class="footer-col">
         <h4>Правова інформація</h4>

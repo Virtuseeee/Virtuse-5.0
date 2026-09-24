@@ -132,8 +132,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: background 0.2s;
 }
 
-.nav-cta:hover { background: var(--btc-orange-light); }
-
 /* ===== HERO ===== */
 .hero {
   padding: 80px 48px;
@@ -169,61 +167,106 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   margin: 0 auto;
 }
 
-.how-title {
-  font-size: 14px;
+/* How-it-works header, matching the homepage's shared .sec-header dek
+   pattern (own class here, not reusing this page's .sec-header, a
+   different flex-row layout used by the partners section heading+badge). */
+.how-header { text-align: left; margin-bottom: 60px; }
+
+.how-header h2 {
+  font-size: 42px;
   font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.how-header h2 span { font-weight: 400; color: var(--text-muted); }
+
+.how-header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  width: 32px;
-  height: 32px;
+/* linear.app changelog pattern, same as the homepage's own "How Virtuse
+   Works" section: one shared horizontal rule, entries side by side as
+   columns, each with a dot sitting on the rule (orange for the first,
+   muted for the rest), then heading + copy. */
+.how-log {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
+  gap: 40px;
+  border-top: 1px solid var(--border);
 }
 
-.step h3 {
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+.how-log-body h3 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  order: 1;
 }
 
-.step p {
-  font-size: 13px;
+.how-log-body p {
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
+  order: 2;
+}
+
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 
 /* ===== PARTNERS ===== */
@@ -241,15 +284,20 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 }
 
 .sec-title h2 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
+.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
+
 .sec-title p {
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
 .partner-grid {
@@ -361,7 +409,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -397,15 +445,11 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: all 0.2s;
 }
 
-.btn-primary:hover { background: #ffffff; color: var(--btc-orange); transform: translateY(-1px); }
-
 .btn-secondary {
   background: transparent;
   color: var(--text);
   border: 1px solid var(--border);
 }
-
-.btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
 
 /* ===== DISCLAIMER ===== */
 /* ===== FOOTER ===== */
@@ -474,8 +518,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: all 0.2s;
   white-space: nowrap;
 }
-
-.newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
 /* ===== FOOTER ===== */
 .footer-main {
@@ -995,8 +1037,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1126,27 +1168,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">Як це працює</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Оберіть хоста</h3>
-      <p>Перегляньте наші перевірені платформи для хостингу майнінгу. Порівняйте тарифи на електроенергію, локації та мінімальні розміри замовлення.</p>
+  <div class="how-header">
+    <h2>Як <span>це працює</span></h2>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Крок 01</span>
+        <h3>Оберіть хоста</h3>
+        <p>Перегляньте наші перевірені платформи для хостингу майнінгу. Порівняйте тарифи на електроенергію, локації та мінімальні розміри замовлення.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Придбайте ASIC</h3>
-      <p>Купуйте майнери напряму або через наших партнерів. Ми можемо порадити найкраще обладнання під ваш бюджет.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Крок 02</span>
+        <h3>Придбайте ASIC</h3>
+        <p>Купуйте майнери напряму або через наших партнерів. Ми можемо порадити найкраще обладнання під ваш бюджет.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Відправте на платформу</h3>
-      <p>Ваші майнери відправляються на хостингову платформу і встановлюються технічною командою.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Крок 03</span>
+        <h3>Відправте на платформу</h3>
+        <p>Ваші майнери відправляються на хостингову платформу і встановлюються технічною командою.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Заробляйте Біткоїн щодня</h3>
-      <p>Винагороди за майнінг щодня надходять на ваш гаманець. Ви завжди контролюєте адресу отримання.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Крок 04</span>
+        <h3>Заробляйте Біткоїн щодня</h3>
+        <p>Винагороди за майнінг щодня надходять на ваш гаманець. Ви завжди контролюєте адресу отримання.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1155,7 +1211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Наші партнери з майнінгу</h2>
+      <h2>Наші <span>партнери з майнінгу</span></h2>
       <p>Перевірені постачальники хостингу по всій Європі з партнерськими та реферальними програмами</p>
     </div>
   </div>
