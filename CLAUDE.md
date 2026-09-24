@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24, seventh round) — Grok bot's "Phase 0 homepage polish before X launch" checked and fixed: Brief strip on sk/cs/fr homepages, nav Get Started utm_medium=nav sitewide, calculator alias redirects; committed (`dc9051b`), staging 172/172; production scp prepared, NOT yet run
+## Session status (2026-09-24, seventh round) — Grok bot's "Phase 0 homepage polish before X launch" checked and fixed: Brief strip on sk/cs/fr homepages, nav Get Started utm_medium=nav sitewide, calculator alias redirects; committed (`dc9051b`), live on staging AND production (172/172 md5-verified on virtuse.com, 2026-09-25)
 
 **The brief (from the Brief-desk agent) listed 6 items; each was verified
 against production before acting — half were stale or wrong:**
@@ -43,8 +43,14 @@ main → gh-pages → SFTP flow, not a PR (this repo's content commits go
 straight to main; see "Git & GitHub workflow" below).
 
 **Deploy:** `main` `dc9051b`, gh-pages `f7ef7cb`, staging 172/172
-md5-verified. **Production not yet updated** — scp below (172 files, 2 new
-root stubs, grouped per folder; `news.html` is not in the list).
+md5-verified. **Production updated 2026-09-25**: all 172 files md5-match on
+`virtuse.com` (live: sk/cs/fr homepages show the Brief strip, EN nav CTA
+carries `utm_medium=nav`, `calculator.html` / `bitcoin-calculator.html`
+serve the 200 redirect stubs to `/bitcoin-dca-calculator/`). Gotcha from
+this deploy: the per-folder scp command I pasted into the chat had
+`sk/fear-greed.html` dropped while retyping it (the generated file in the
+scratchpad was correct) — always paste the generated command verbatim,
+and always md5-verify the full list afterwards; that is what caught it.
 
 ```bash
 cd /private/tmp/gh-pages-wt3 && \
