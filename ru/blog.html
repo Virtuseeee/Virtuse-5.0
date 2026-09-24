@@ -64,9 +64,9 @@ img{max-width:100%;display:block}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--text)}
 .nav-logo img{height:32px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nav-links a{color:var(--text-muted);font-size:13px;font-weight:400;padding:6px 12px;border-radius:8px;transition:all .2s}
 .nav-links a:hover{color:var(--text);background:var(--dark-card)}
-.nav-links a.active{color:var(--btc-orange);background:rgba(247, 147, 26,0.08)}
+.nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
 .nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:7px 14px;border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;transition:background .2s}
 .nav-cta:hover{background:var(--btc-orange-light)}
 
@@ -76,7 +76,9 @@ img{max-width:100%;display:block}
 .hero p{font-size:17px;color:var(--text-muted);max-width:560px;line-height:1.65}
 .hero-side{display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding-bottom:6px}
 .post-count{font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:.02em}
-.post-count b{color:var(--btc-orange);font-weight:800}
+.hero-newsdesk{margin-top:16px}
+.hero-newsdesk a{color:var(--btc-orange);font-weight:700}
+.post-count b{color:var(--text);font-weight:800}
 
 .lang-switch{display:inline-flex;align-items:center;background:var(--dark-card);border:1px solid var(--border);border-radius:100px;padding:4px;gap:2px}
 .lang-opt{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--text-muted);padding:8px 16px;border-radius:100px;transition:all .2s}
@@ -90,7 +92,7 @@ img{max-width:100%;display:block}
 .search-input::placeholder{color:var(--text-dim)}
 .search-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;pointer-events:none}
 
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--btc-orange);background:rgba(247, 147, 26,0.1);align-self:flex-start}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:14px;color:var(--text);background:rgba(255,255,255,0.06);align-self:flex-start}
 .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 
 .featured{display:block;background:var(--dark-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:56px;transition:all .3s}
@@ -460,8 +462,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     color: var(--btc-orange, #f7931a);
   }
 
-  .nav-links a.active { color: var(--btc-orange, #f7931a); }
-  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active .nav-link-num { color: var(--text); }
 
   .nav-links a.active::before {
     content: '';
@@ -469,7 +471,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     left: -24px;
     top: 0; bottom: 0;
     width: 3px;
-    background: var(--btc-orange, #f7931a);
+    background: var(--text);
   }
 
   .nav-links-cta-item {
@@ -618,7 +620,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 }
 
 @media (max-width: 1024px) {
-  .lang-menu { display: none; }
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-switch { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
 </style>
 </head>
@@ -650,14 +655,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">О нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Начать<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Язык страницы">
-        <a href="../blog.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="../blog-sk.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="../uk/blog.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="blog.html" class="lang-opt active" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/blog.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/blog.html" class="lang-opt" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/blog.html" class="lang-opt" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Язык блога">
+          <span class="lang-flag">🇷🇺</span>RU
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+          <a href="../blog.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+          <a href="../blog-sk.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+          <a href="../uk/blog.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+          <a href="blog.html" class="lang-opt active" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../de/blog.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+          <a href="../fr/blog.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="../es/blog.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        </div>
       </div>
     </li>
   </ul>
@@ -683,24 +694,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
 (function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
   document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 </script>
@@ -710,6 +735,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div>
     <h1>Блог <span>Virtuse</span></h1>
     <p>Мысли о Биткоине, макроэкономике и будущем денег от CEO Virtuse Растислава Василишина.</p>
+    <p class="hero-newsdesk"><a href="../news.html">Новостной деск</a> — еженедельный брифинг и Pulse.</p>
   </div>
   <div class="hero-side">
     <div class="lang-switch" role="navigation" aria-label="Язык страницы">
@@ -939,6 +965,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Компания</h4>
         <a href="about.html">О нас</a>
         <a href="faq.html">FAQ</a>
+        <a href="../news.html">Новостной деск</a>
       </div>
       <div class="footer-col">
         <h4>Инструменты</h4>
@@ -1318,6 +1345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
     el.addEventListener('click', closeMenu);
   });
 
