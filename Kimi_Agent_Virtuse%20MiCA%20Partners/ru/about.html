@@ -59,12 +59,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --border-hover: rgba(255, 255, 255, 0.12);
   --nav-bg: rgba(8, 9, 10, 0.95);
   --nav-bg-strong: rgba(8, 9, 10, 0.98);
-  /* styles.css also defines an alternate alias set (--bg/--card) for
-     the same tone tokens — some pages (bots.html) use those names
-     instead of --dark/--dark-card, so both need overriding here or the
-     alias silently keeps styles.css's old navy-tinted value. */
-  --bg: #08090a;
-  --card: #141414;
 }
 
 body {
@@ -184,7 +178,7 @@ img { max-width: 100%; }
 .stat-value {
   font-size: 28px;
   font-weight: 800;
-  color: var(--btc-orange);
+  color: var(--text);
   margin-bottom: 4px;
 }
 
@@ -211,15 +205,22 @@ img { max-width: 100%; }
 }
 
 .sec-title h2 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
+.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
+
+.sec-title h2:only-child { margin-bottom: 32px; }
+
 .sec-title p {
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
   margin-bottom: 40px;
 }
 
@@ -249,13 +250,13 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
+  background: var(--dark-card-hover);
+  border: 1px solid var(--border-hover);
   border-radius: 100px;
   font-weight: 800;
   font-size: 13px;
-  color: white;
+  color: var(--text);
   padding: 6px 16px;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
   z-index: 2;
 }
 
@@ -289,25 +290,6 @@ img { max-width: 100%; }
 .value-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
-}
-
-.value-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-
-.value-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
 }
 
 .value-card h3 {
@@ -390,24 +372,6 @@ img { max-width: 100%; }
   gap: 24px;
 }
 
-.vet-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.25);
-  border-radius: 12px;
-  margin-bottom: 18px;
-}
-
-.vet-icon svg {
-  width: 22px;
-  height: 22px;
-  color: var(--btc-orange);
-}
-
 /* ===== GLOBAL PRESENCE ===== */
 .presence-grid {
   display: grid;
@@ -438,7 +402,7 @@ img { max-width: 100%; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--btc-orange);
+  color: var(--text-muted);
   margin-bottom: 10px;
 }
 
@@ -558,6 +522,63 @@ img { max-width: 100%; }
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
+}
+
+.brief-card {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+
+.newsletter-form-stacked.newsletter-form {
+  flex-direction: column;
+  max-width: 100%;
+  gap: 12px;
+}
+
+.newsletter-form-stacked input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 15px;
+}
+
+.newsletter-form-stacked button {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+}
+
+.brief-card .newsletter-form button {
+  background: #ffffff;
+  color: #0d0d0d;
+}
+
+.brief-card .newsletter-form button:hover {
+  background: #e8e8e8;
+  color: #0d0d0d;
+}
+
+.brief-form-msg {
+  margin: 10px auto 0;
+  font-size: 13px;
+  min-height: 18px;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-fineprint {
+  margin: 6px auto 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .newsletter-form button:hover {
@@ -706,8 +727,6 @@ img { max-width: 100%; }
   .footer-wordmark { height: 110px; opacity: 0.32; }
   .footer-wordmark-icon { height: 140px; }
   .footer-wordmark-text { font-size: 184px; }
-  .footer-columns { gap: 40px; }
-  .footer-logo img { height: 60px; }
 }
 
 /* ===== UNIFIED CTA SYSTEM ===== */
@@ -750,16 +769,6 @@ a.nav-logo, .nav-logo {
 }
 
 .newsletter-form button { background: #e6edf3; color: #08090a; }
-.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
-.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.brief-card-poster p { font-size: 15px; }
-.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
-.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
-.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
-.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
-.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
-.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ===== MOBILE MENU ===== */
@@ -1044,8 +1053,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1189,7 +1198,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-  <span class="hero-label">О нас</span>
   <h1>Инфраструктурный хаб<br><span class="highlight">только для Биткоина</span></h1>
   <p class="hero-desc">
     Virtuse основана в 2018 году и формирует основу безграничной денежной экономики. Мы помогаем инвесторам создавать и защищать капитал для будущих поколений благодаря непоколебимой приверженности Биткоину, финансовому суверенитету и безопасной денежной свободе.
@@ -1216,7 +1224,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Our Story -->
 <section class="section">
-  <div class="sec-label">Наша история</div>
+  <div class="sec-title"><h2>Наша <span>история</span></h2></div>
   <div class="steps">
     <div class="step">
       <span class="step-num">2018</span>
@@ -1243,20 +1251,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Mission & Values -->
 <section class="section">
-  <div class="sec-label">Наши ценности</div>
+  <div class="sec-title"><h2>Наши <span>ценности</span></h2></div>
   <div class="value-grid">
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.7 7.5h3.1a1.8 1.8 0 0 1 0 3.6H9.7m0 0h3.4a1.9 1.9 0 0 1 0 3.8H9.7M9.7 7.5V6M9.7 18v-1.5M11.8 7.5V6M11.8 18v-1.5"/></svg></div>
       <h3>Фокус только на Биткоине</h3>
       <p>Никаких альткоинов, никаких отвлечений. Бескомпромиссная приверженность Биткоину как основе безграничной денежной экономики.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <h3>Безопасность и доверие</h3>
       <p>Надёжная сеть из более чем 50 стратегических партнёров по всему миру обеспечивает максимальную безопасность и институциональную ликвидность для наших клиентов по всему миру.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="3.3"/><path d="M10.3 12.7L18.5 4.5M15 4.5h3.5V8"/></svg></div>
       <h3>Финансовый суверенитет</h3>
       <p>Мы помогаем инвесторам не только создавать, но и эффективно защищать капитал для будущих поколений, выступая надёжным мостом к экономике Биткоина.</p>
     </div>
@@ -1269,7 +1274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <div class="sec-label">Наше название</div>
       <div class="sec-title">
-        <h2>Что такое Virtuse?</h2>
+        <h2>Что <span>такое Virtuse?</span></h2>
       </div>
       <div class="name-text">
         <p>Наше название вдохновлено понятием virt&ugrave;, которое ввёл Никколо Макиавелли. Для него virt&ugrave; не имело отношения к обычной морали: это была сила, контроль и способность управлять собственной реальностью.</p>
@@ -1287,35 +1292,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="section">
   <div class="sec-label">Наши стандарты</div>
   <div class="sec-title">
-    <h2>Как мы отбираем партнёров</h2>
+    <h2>Как <span>мы отбираем партнёров</span></h2>
     <p>Каждое имя на этом сайте проходит одну и ту же проверку, прежде чем мы его порекомендуем</p>
   </div>
   <div class="vet-grid">
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
       <h3>Регуляторное лицензирование</h3>
       <p>Поставщики криптоуслуг (CASP) с лицензией MiCA либо эквивалентной признанной лицензией в своей юрисдикции: никаких нерегулируемых площадок, никогда.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.4"/></svg>
-      </div>
       <h3>Кастоди и безопасность активов</h3>
       <p>Вывод средств в собственное хранение (self-custody) по умолчанию и застрахованное обособленное кастоди там, где партнёр всё же держит средства.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
-      </div>
       <h3>Репутация и опыт</h3>
       <p>Годы работы, масштаб оборота и число пользователей, чистая история без инцидентов: новизна компании сама по себе не является поводом для отказа, а вот отсутствие подтверждённой репутации становится таким поводом.</p>
     </div>
     <div class="value-card">
-      <div class="vet-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
       <h3>Прозрачность комиссий</h3>
       <p>Опубликованные, сопоставимые структуры комиссий: никаких скрытых спредов и условий, которые всплывают только после регистрации.</p>
     </div>
@@ -1324,22 +1317,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Global Presence -->
 <section class="section">
-  <div class="sec-label">Глобальное присутствие</div>
+  <div class="sec-title"><h2>Глобальное <span>присутствие</span></h2></div>
   <div class="presence-grid">
     <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127468;</div>
       <h3>Сингапур</h3>
       <div class="presence-role">Глобальная штаб-квартира</div>
       <p>Глобальные операции базируются в одном из ведущих технологических и финансовых центров мира.</p>
     </div>
     <div class="presence-card">
-      <div class="presence-flag">&#127480;&#127472;</div>
       <h3>Братислава</h3>
       <div class="presence-role">Европейские операции</div>
       <p>Глубокие корни и локальная экспертиза благодаря нашему операционному офису, где базируется Virtuse Group Pte. Ltd.</p>
     </div>
     <div class="presence-card">
-      <div class="presence-flag">&#127758;</div>
       <h3>ЕС и Азия</h3>
       <div class="presence-role">Virtuse Group</div>
       <p>Гордый участник международной группы Virtuse Group со стратегическим присутствием на двух континентах.</p>
@@ -1349,7 +1339,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Explore the Hub -->
 <section class="section">
-  <div class="sec-label">Изучите хаб</div>
+  <div class="sec-title"><h2>Изучите <span>хаб</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Купить Биткоин<small>Партнёры с лицензией MiCA</small></span><span class="arrow">&#8594;</span></a>
     <a href="secure.html" class="hub-link"><span>Кастоди<small>Собственное и совместное хранение</small></span><span class="arrow">&#8594;</span></a>
