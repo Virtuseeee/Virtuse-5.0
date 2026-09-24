@@ -2,6 +2,92 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-24, second round) — uk/ (Ukrainian) brought to full EN redesign parity, committed to main (`de53862`) and live on staging; production deploy prepared, not yet run
+
+**What this round did:** the whole `uk/` folder (20 of 21 pages; `404.html`
+untouched) was brought to the same EN parity that en/sk/cs/fr already have,
+per an explicit 5-point brief (homepage to the last detail incl. cube hero
++ cube illustrations + animated tickers; every subpage's "Як це працює";
+newsletter/footer everywhere; Loans' "Два способи участі" panel; de-orange
+partner bullets everywhere; de-orange Bitcoin Data/Blog/About). Verified
+locally (HTMLParser tag-balance on all pages, relative-link existence
+check, browser at 1440px and 375px incl. drawer + mobile language
+dropdown), committed to `main` as `de53862`, synced to `gh-pages`
+(`f79c6ac`), md5-verified on `staging.virtuse.com` (21/21 match).
+**Production NOT yet updated for uk/** — the scp commands were handed to
+the user at the end of this round (see the command block below); until
+they run, `virtuse.com/uk/` still serves the old-design pages.
+
+**How it was done — two techniques, worth reusing for es/ru/de:**
+1. **Mechanical parity via a per-language script,
+   [`i18n-tools/port_uk_parity.py`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/port_uk_parity.py)**
+   (every step optional/idempotent, logs what it did): neutral active
+   language pill, legacy orange `.nav-cta:hover`/`.btn-primary:hover`/
+   `.btn-secondary:hover`/`.newsletter-form button:hover` rules dropped,
+   `.sec-title h2` → 42px/700 + dek-split span, `.sec-title p` → 20px,
+   partner/audience checkmarks → `var(--text)`, How-It-Works → changelog
+   (reuses `port_how_it_works.py`'s CSS with a "Крок" label), dek-split
+   headings via an explicit string map, footer Guides column, plus
+   page-specific blocks (lending ltype cards + hero sell-vs-borrow link,
+   treasury audience cards + top-pick, secure hero stat removal,
+   buy-bitcoin step-0 + fee-ranking, tax EU-card → tax-guides,
+   bitcoin-data de-orange, blog CSS + newsdesk line). Two of its verbatim
+   CSS blocks (`.ltype-card`, `.audience-card`) failed to match because
+   the source has whitespace-only lines with trailing spaces — fixed with
+   a whitespace-tolerant regex (`\s+` between tokens), the same class of
+   drift documented for `port_homepage_redesign.py` earlier.
+2. **"EN template + transplanted copy" for structurally divergent pages**
+   (`index.html`, `bots.html`): take EN's `<style>` block wholesale (+ the
+   page's own "UK: compact nav text" block where it exists), keep the uk
+   `<head>`/nav/footer, and rebuild the body from EN's markup with the
+   Ukrainian strings substituted via asserted `str.replace` pairs — a
+   missing string aborts instead of silently shipping English. This is
+   what finally gave the homepage 1:1 section parity (13 sections, three
+   of which — brief-strip, tools-guides, quick-answers — had never existed
+   in any translation; quick-answers reuses 9 Q&A verbatim from
+   `uk/faq.html`, the other two are fresh translations). The masked
+   structural diff (`sed` text→T, attrs→X, then `diff`) is the fast way to
+   decide which uk sections can be copied verbatim vs rebuilt.
+
+**Findings worth knowing (fixed unless noted):**
+- EN's footer "Guides" column is **not uniform**: 8 links on index/
+  buy-bitcoin, 5 on lending, 6 on tax, 3 everywhere else. A first pass
+  added 8 to every uk page; corrected to mirror EN per page.
+- EN's active language pill is neutral (`var(--text)`) sitewide; uk (and
+  still **cs/ and fr/**, not fixed here) had it orange.
+- `uk/blog.html` had no mobile language dropdown at all, and 13 static
+  `article.html` links + the JS-built ones resolved to a nonexistent
+  `uk/article.html` — pre-existing, fixed (`../article.html`).
+- `uk/secure.html` still had hero stat boxes, `uk/lending`/`uk/treasury`
+  had emoji icons in cards, `uk/tax` the legacy EU card, `uk/bots` five
+  coloured claim tags — all removed to match EN. Per user request beyond
+  EN: lending's "Отримайте миттєву пропозицію" badge removed and its blue
+  loan-term values/box neutralised; treasury's DISCRETIONARY/API tags
+  removed (EN still has them); bitcoin-data's green live badge, table
+  values and price change made white.
+- The consultation widget (`consultation-widget.js`) ships en/sk/cs copy
+  only and falls back to English for `data-consultation-lang="uk"` —
+  the uk hero CTA uses it anyway (matches EN structure); Ukrainian widget
+  copy is a follow-up.
+- Fresh Ukrainian copy written this round (needs a native-speaker pass):
+  the trimmed 3-line Questions-card texts (EN shortened its own in
+  `033249e`), brief-strip, tools-guides, buy-bitcoin step-0/fee-ranking,
+  tax-guides, lending hero link, footer Guides labels, form messages.
+
+**Next:** (1) run the uk production scp (below) and md5-verify; (2) same
+recipe for `es/`, `ru/`, `de/` — start each with `audit_parity.py <lang>`
++ the marker matrix (how-log vs `.step`, checkmark colour, cube, tickers,
+`lang-menu-mobile`), then copy `port_uk_parity.py` and adapt the language
+strings; (3) fix the orange active language pill on cs/ and fr/; (4) EN
+`bots.html` orange hover leftover and the Brief `news/` production gap
+from the previous entry are still open.
+
+```bash
+# Production deploy for this round (user runs it; folder already exists on
+# the server, so a plain recursive copy of the uk/ contents is enough):
+cd /private/tmp/gh-pages-wt3 && scp -P 222 -r uk/* virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-24) — Redesign is LIVE ON PRODUCTION for en/sk/cs/fr (+ es published as-is); fr/ parity round finished; new og-cover.jpg; `feat/homepage-redesign-i18n-rollout` merged into `main` (`7816e9d`) so main = production again
 
 **Deploy state, verified live today (`curl` + md5 against the gh-pages
