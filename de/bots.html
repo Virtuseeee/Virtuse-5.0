@@ -59,10 +59,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --border-hover: rgba(255, 255, 255, 0.12);
   --nav-bg: rgba(8, 9, 10, 0.95);
   --nav-bg-strong: rgba(8, 9, 10, 0.98);
-  /* styles.css also defines an alternate alias set (--bg/--card) for
-     the same tone tokens — some pages (bots.html) use those names
-     instead of --dark/--dark-card, so both need overriding here or the
-     alias silently keeps styles.css's old navy-tinted value. */
+  /* This page uses styles.css's alternate alias names (--bg/--card) for
+     the same tone tokens instead of --dark/--dark-card — overridden here
+     too so it doesn't silently keep the old navy-tinted values. */
   --bg: #08090a;
   --card: #141414;
 }
@@ -194,7 +193,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .hero h1 {
       font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.03em;
       margin-bottom: 20px;
@@ -208,88 +207,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.65;
     }
 
-    /* ─── How It Works ─── */
-    .how {
-      padding: 80px 24px;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
     .section-header {
-      text-align: center;
+      text-align: left;
       margin-bottom: 48px;
     }
 
     .section-header h2 {
-      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-size: 42px;
       font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .step {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      transition: all 0.3s;
-    }
-
-    .step:hover {
-      border-color: rgba(247, 147, 26, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    }
-
-    .step-num {
-      position: absolute;
-      top: -16px;
-      left: 20px;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--orange), #ffb84d);
-      border-radius: 50%;
-      font-weight: 800;
-      font-size: 14px;
-      color: white;
-      box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-      z-index: 2;
-    }
-
-    .step h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
+      letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
 
-    .step p {
-      font-size: 0.88rem;
+    .section-header h2 span { font-weight: 400; color: var(--muted); }
+
+    .section-header p {
       color: var(--muted);
+      font-size: 20px;
+      font-weight: 400;
+      max-width: 620px;
       line-height: 1.55;
     }
 
-    .step-connector {
-      display: none;
-      position: absolute;
-      right: -24px;
-      top: 50px;
-      width: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--orange), transparent);
+    /* ─── How It Works — ported to the homepage's own changelog-dot
+       layout (one shared rule, a dot per step, orange only on the
+       first), replacing the old 4-card grid with numbered badge circles
+       and connector lines. No subheading paragraph, per explicit
+       instruction — only buy-bitcoin.html keeps one. ─── */
+    .how {
+      padding: 0 24px 80px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .how-header { text-align: left; margin-bottom: 60px; }
+    .how-header h2 { font-size: 42px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
+    .how-header h2 span { font-weight: 400; color: var(--muted); }
+
+    .how-log { display: flex; gap: 40px; border-top: 1px solid var(--border); }
+    .how-log-item { flex: 1; display: flex; flex-direction: column; }
+    .how-log-marker { margin-top: -4px; margin-bottom: 24px; }
+    .how-log-dot { position: relative; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+    .how-log-dot::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: var(--dim); opacity: 0.2; }
+    .how-log-item:first-child .how-log-dot { background: var(--orange); }
+    .how-log-item:first-child .how-log-dot::before { background: var(--orange); opacity: 0.1; }
+    .how-log-body { flex: 1; display: flex; flex-direction: column; }
+    .how-log-num { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); order: 4; margin-top: 16px; }
+    .how-log-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; order: 1; }
+    .how-log-body p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; order: 2; }
+
+    @media (max-width: 900px) {
+      .how-log { flex-direction: column; gap: 0; border-top: none; }
+      .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+      .how-log-marker { margin-top: 0; }
     }
 
     /* ─── Category Cards ─── */
@@ -307,57 +277,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .cat-card {
       background: var(--card);
-      border: 1px solid var(--border);
+      border: none;
       border-radius: var(--radius-lg);
-      padding: 32px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      padding: 28px 24px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.15s ease;
     }
 
     .cat-card:hover {
-      border-color: rgba(247, 147, 26, 0.25);
-      transform: translateY(-2px);
-    }
-
-    .cat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-    }
-
-    .cat-card.cloud::before {
-      background: linear-gradient(90deg, var(--blue), #7dd3fc);
-    }
-
-    .cat-card.self::before {
-      background: linear-gradient(90deg, var(--green), #86efac);
-    }
-
-    .cat-icon {
-      width: 48px; height: 48px;
-      border-radius: var(--radius-sm);
-      
-      
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-
-    .cat-card.cloud .cat-icon {
-      background: rgba(88, 166, 255, 0.12);
-      color: var(--blue);
-    }
-
-    .cat-card.self .cat-icon {
-      background: rgba(63, 185, 80, 0.12);
-      color: var(--green);
+      background: var(--dark-card-hover);
     }
 
     .cat-card h3 {
-      font-size: 1.2rem;
+      font-size: 22px;
       font-weight: 700;
       margin-bottom: 8px;
+      color: var(--text);
     }
 
     .cat-card p {
@@ -407,21 +345,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .partner-card:hover {
-      border-color: rgba(247, 147, 26, 0.25);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .partner-card.top-pick {
-      border-color: rgba(247, 147, 26, 0.4);
-    }
-
-    .partner-card.top-pick::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), #ffb347);
+      border-color: var(--border-hover);
+      background: var(--dark-card-hover);
     }
 
     .partner-header {
@@ -454,62 +379,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 2px;
     }
 
-    .partner-tags {
-      
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-
-    .tag {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-
-    .tag-orange {
-      background: rgba(247, 147, 26, 0.15);
-      color: var(--orange);
-      border: 1px solid rgba(247, 147, 26, 0.2);
-    }
-
-    .tag-green {
-      background: rgba(63, 185, 80, 0.15);
-      color: var(--green);
-      border: 1px solid rgba(63, 185, 80, 0.2);
-    }
-
-    .tag-blue {
-      background: rgba(88, 166, 255, 0.15);
-      color: var(--blue);
-      border: 1px solid rgba(88, 166, 255, 0.2);
-    }
-
-    .tag-purple {
-      background: rgba(180, 140, 255, 0.15);
-      color: #b48cff;
-      border: 1px solid rgba(180, 140, 255, 0.2);
-    }
-
-    .tag-red {
-      background: rgba(248, 81, 73, 0.15);
-      color: var(--red);
-      border: 1px solid rgba(248, 81, 73, 0.2);
-    }
-
-    .tag-gold {
-      background: rgba(241, 196, 15, 0.15);
-      color: #f1c40f;
-      border: 1px solid rgba(241, 196, 15, 0.2);
-    }
-
-    .tag-gray {
-      background: rgba(139, 148, 158, 0.15);
-      color: var(--muted);
-      border: 1px solid rgba(139, 148, 158, 0.2);
-    }
 
     .partner-body {
       padding: 14px 24px 0;
@@ -537,11 +406,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap: 8px;
     }
 
-    .partner-features li::before {
-      content: '';
-      width: 5px; height: 5px;
-      background: var(--text);
-      border-radius: 50%;
+    .partner-features li svg {
+      width: 16px; height: 16px;
+      color: var(--text);
       flex-shrink: 0;
     }
 
@@ -573,13 +440,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-primary {
       background: var(--orange);
       color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: #ffffff;
-      color: var(--orange);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(247, 147, 26, 0.3);
     }
 
     .btn-secondary {
@@ -661,6 +521,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: all 0.2s;
       white-space: nowrap;
     }
+
+.brief-card {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+
+.newsletter-form-stacked.newsletter-form {
+  flex-direction: column;
+  max-width: 100%;
+  gap: 12px;
+}
+
+.newsletter-form-stacked input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 15px;
+}
+
+.newsletter-form-stacked button {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+}
+
+.brief-card .newsletter-form button {
+  background: #ffffff;
+  color: #0d0d0d;
+}
+
+.brief-card .newsletter-form button:hover {
+  background: #e8e8e8;
+  color: #0d0d0d;
+}
+
+.brief-form-msg {
+  margin: 10px auto 0;
+  font-size: 13px;
+  min-height: 18px;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-fineprint {
+  margin: 6px auto 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
 
     .newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
@@ -789,9 +706,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .nav-mobile-toggle { display: block; }
       .nav-cta { display: none; }
 
-      .steps { grid-template-columns: 1fr; }
-      .step-connector { display: none; }
-
       .cat-grid { grid-template-columns: 1fr; }
 
       .partner-grid { grid-template-columns: 1fr; }
@@ -801,10 +715,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .how, .partners { padding: 50px 20px; }
 
       }
-
-    @media (min-width: 901px) {
-      .step:not(:last-child) .step-connector { display: block; }
-    }
 
     /* ─── Animations ─── */
     @keyframes fadeInUp {
@@ -863,16 +773,6 @@ a.nav-logo, .nav-logo {
 }
 
 .btn-primary, .newsletter-form button { background: #e6edf3; color: #08090a; }
-.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
-.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.brief-card-poster p { font-size: 15px; }
-.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
-.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
-.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
-.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
-.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
-.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .btn-secondary {
@@ -1170,8 +1070,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1325,33 +1225,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- How It Works -->
   <section class="how">
-    <div class="section-header animate delay-1">
-      <h2>So funktioniert es</h2>
-      <p>Starten Sie mit automatisiertem Trading in vier einfachen Schritten</p>
+    <div class="how-header animate delay-1">
+      <h2>So <span>funktioniert es</span></h2>
     </div>
-    <div class="steps">
-      <div class="step animate delay-1">
-        <div class="step-num">1</div>
-        <h3>Wählen Sie einen Bot</h3>
-        <p>Cloud-basiert oder selbst gehostet, für Einsteiger oder Fortgeschrittene: Wählen Sie, was zu Ihren Bedürfnissen passt.</p>
-        <div class="step-connector"></div>
+    <div class="how-log">
+      <div class="how-log-item animate delay-1">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 01</span>
+          <h3>Wählen Sie einen Bot</h3>
+          <p>Cloud-basiert oder selbst gehostet, für Einsteiger oder Fortgeschrittene: Wählen Sie, was zu Ihren Bedürfnissen passt.</p>
+        </div>
       </div>
-      <div class="step animate delay-2">
-        <div class="step-num">2</div>
-        <h3>Verbinden Sie sich per API</h3>
-        <p>Verknüpfen Sie Ihre Börse mit reinen Handelsrechten. Auszahlungen sind nicht möglich.</p>
-        <div class="step-connector"></div>
+      <div class="how-log-item animate delay-2">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 02</span>
+          <h3>Verbinden Sie sich per API</h3>
+          <p>Verknüpfen Sie Ihre Börse mit reinen Handelsrechten. Auszahlungen sind nicht möglich.</p>
+        </div>
       </div>
-      <div class="step animate delay-3">
-        <div class="step-num">3</div>
-        <h3>Legen Sie Ihre Strategie fest</h3>
-        <p>DCA, Grid oder individuelle Regeln. Erst testen, dann live schalten.</p>
-        <div class="step-connector"></div>
+      <div class="how-log-item animate delay-3">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 03</span>
+          <h3>Legen Sie Ihre Strategie fest</h3>
+          <p>DCA, Grid oder individuelle Regeln. Erst testen, dann live schalten.</p>
+        </div>
       </div>
-      <div class="step animate delay-4">
-        <div class="step-num">4</div>
-        <h3>Rund um die Uhr im Einsatz</h3>
-        <p>Der Bot handelt automatisch, während Sie die volle Kontrolle über Ihre Schlüssel behalten.</p>
+      <div class="how-log-item animate delay-4">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 04</span>
+          <h3>Rund um die Uhr im Einsatz</h3>
+          <p>Der Bot handelt automatisch, während Sie die volle Kontrolle über Ihre Schlüssel behalten.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1359,33 +1267,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Category Cards -->
   <section class="categories">
     <div class="section-header animate delay-1">
-      <h2>Zwei Wege zur Automatisierung</h2>
+      <h2>Zwei <span>Wege zur Automatisierung</span></h2>
       <p>Wählen Sie das Bereitstellungsmodell, das zu Ihrem technischen Komfort und Ihren Datenschutzbedürfnissen passt</p>
     </div>
     <div class="cat-grid">
       <div class="cat-card cloud animate delay-2">
-        <div class="cat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-        </div>
         <h3>Cloud-Bots</h3>
         <p>Verwaltete Plattformen, die auf Servern des Anbieters laufen. Einfachere Einrichtung, Abonnementgebühr. Ideal für Einsteiger, die eine Plug-and-Play-Automatisierung ohne eigene Infrastrukturverwaltung wünschen.</p>
-        <div class="cat-meta">
-          <span>Einfachere Einrichtung</span>
-          <span>Abonnement</span>
-          <span>Einsteigerfreundlich</span>
-        </div>
       </div>
       <div class="cat-card self animate delay-3">
-        <div class="cat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        </div>
         <h3>Selbst gehostete Bots</h3>
         <p>Betrieb auf Ihrem eigenen Server (VPS). Volle Kontrolle, Open Source. Ideal für datenschutzbewusste Trader, die vollständige Souveränität über ihre Trading-Infrastruktur wünschen.</p>
-        <div class="cat-meta">
-          <span>Volle Kontrolle</span>
-          <span>Open Source</span>
-          <span>Datenschutz an erster Stelle</span>
-        </div>
       </div>
     </div>
   </section>
@@ -1404,19 +1296,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-coinrule.png" alt="Coinrule" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div class="partner-title-group">
             <div class="partner-name">Coinrule</div>
-            <div class="partner-tags">
-              <span class="tag tag-green">Non-Custodial</span>
-              <span class="tag tag-purple">Von YC finanziert</span>
-            </div>
           </div>
         </div>
         <div class="partner-body">
           <p class="partner-desc">Explizit non-custodial. Reine Handels-API, keine Auszahlungen. Über 410.000 Trader. Von Y Combinator finanziert. Wachstumsphase mit partnerschaftsfreundlichen Konditionen.</p>
           <ul class="partner-features">
-            <li>Explizit non-custodial</li>
-            <li>Über 150 Strategievorlagen</li>
-            <li>Jede Börse unterstützt</li>
-            <li>Backtesting-Engine</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Explizit non-custodial</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Über 150 Strategievorlagen</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Jede Börse unterstützt</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Backtesting-Engine</li>
           </ul>
         </div>
         <div class="partner-footer">
@@ -1433,18 +1321,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-cryptohopper.png" alt="Cryptohopper" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div class="partner-title-group">
             <div class="partner-name">Cryptohopper</div>
-            <div class="partner-tags">
-              <span class="tag tag-green">Einsteigerfreundlich</span>
-            </div>
           </div>
         </div>
         <div class="partner-body">
           <p class="partner-desc">Die einsteigerfreundlichste Bot-Plattform. Copy-Trading, Paper-Trading und Marktplatz-Strategien. 30 Tage kostenlos testen.</p>
           <ul class="partner-features">
-            <li>Copy-Trading verfügbar</li>
-            <li>Paper-Trading-Modus</li>
-            <li>Strategie-Marktplatz</li>
-            <li>Mirror-Trading-Signale</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy-Trading verfügbar</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Paper-Trading-Modus</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Strategie-Marktplatz</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Mirror-Trading-Signale</li>
           </ul>
         </div>
         <div class="partner-footer">
@@ -1461,19 +1346,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-revenuebot.png" alt="RevenueBot" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div class="partner-title-group">
             <div class="partner-name">RevenueBot</div>
-            <div class="partner-tags">
-              <span class="tag tag-gold">BTC-Auszahlungen</span>
-              <span class="tag tag-orange">Grid</span>
-            </div>
           </div>
         </div>
         <div class="partner-body">
           <p class="partner-desc">Cloud-DCA- und Grid-Bots für Binance, OKX und Bitget. Einfache Oberfläche, auf Bitcoin fokussierte Strategien. Alle Empfehlungsprovisionen werden in BTC ausgezahlt.</p>
           <ul class="partner-features">
-            <li>DCA- und Grid-Bots</li>
-            <li>BTC-Empfehlungsprovisionen</li>
-            <li>Binance / OKX / Bitget</li>
-            <li>Einfache, übersichtliche Oberfläche</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> DCA- und Grid-Bots</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> BTC-Empfehlungsprovisionen</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Binance / OKX / Bitget</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Einfache, übersichtliche Oberfläche</li>
           </ul>
         </div>
         <div class="partner-footer">

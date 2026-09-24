@@ -132,8 +132,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: background 0.2s;
 }
 
-.nav-cta:hover { background: var(--btc-orange-light); }
-
 /* ===== HERO ===== */
 .hero {
   padding: 80px 48px;
@@ -162,6 +160,20 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   margin-bottom: 20px;
 }
 
+.hero-tool-link {
+  margin: 0;
+}
+.hero-tool-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+.hero-tool-link a:hover { text-decoration: underline; }
+
 /* ===== HOW IT WORKS ===== */
 .how {
   padding: 0 48px var(--section-spacing);
@@ -169,61 +181,106 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   margin: 0 auto;
 }
 
-.how-title {
-  font-size: 14px;
+/* How-it-works header, matching the homepage's shared .sec-header dek
+   pattern (own class here, not reusing this page's .sec-header, a
+   different flex-row layout used by the partners section heading+badge). */
+.how-header { text-align: left; margin-bottom: 60px; }
+
+.how-header h2 {
+  font-size: 42px;
   font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.how-header h2 span { font-weight: 400; color: var(--text-muted); }
+
+.how-header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  width: 32px;
-  height: 32px;
+/* linear.app changelog pattern, same as the homepage's own "How Virtuse
+   Works" section: one shared horizontal rule, entries side by side as
+   columns, each with a dot sitting on the rule (orange for the first,
+   muted for the rest), then heading + copy. */
+.how-log {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--btc-orange), var(--btc-orange-light));
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-  z-index: 2;
+  gap: 40px;
+  border-top: 1px solid var(--border);
 }
 
-.step h3 {
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+.how-log-body h3 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  order: 1;
 }
 
-.step p {
-  font-size: 13px;
+.how-log-body p {
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
+  order: 2;
+}
+
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 
 /* ===== PARTNERS ===== */
@@ -241,15 +298,20 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 }
 
 .sec-title h2 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
+.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
+
 .sec-title p {
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
 }
 
 /* Two types of lending */
@@ -262,24 +324,29 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 
 .ltype-card {
   background: var(--dark-card);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: 16px;
-  padding: 24px;
+  padding: 28px 24px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.15s ease;
+}
+
+.ltype-card:hover {
+  background: var(--dark-card-hover);
 }
 
 .ltype-card h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 8px;
-  
-  
-  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--text);
 }
 
-.ltype-card h3 .icon { font-size: 24px; }
-
 .ltype-card p {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
 }
@@ -394,7 +461,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-features li svg {
   width: 16px;
   height: 16px;
-  color: var(--btc-orange);
+  color: var(--text);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -402,8 +469,8 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-features li span { color: var(--text-muted); }
 
 .pcard-terms {
-  background: rgba(88, 166, 255, 0.05);
-  border: 1px dashed rgba(88, 166, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--border-hover);
   border-radius: 10px;
   padding: 12px 16px;
   margin-bottom: 20px;
@@ -474,7 +541,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .pcard-terms-value {
   font-size: 13px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--text);
 }
 
 .pcard-footer {
@@ -506,15 +573,11 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: all 0.2s;
 }
 
-.btn-primary:hover { background: #ffffff; color: var(--btc-orange); transform: translateY(-1px); }
-
 .btn-secondary {
   background: transparent;
   color: var(--text);
   border: 1px solid var(--border);
 }
-
-.btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
 
 /* ===== DISCLAIMER ===== */
 /* ===== FOOTER ===== */
@@ -583,8 +646,6 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: all 0.2s;
   white-space: nowrap;
 }
-
-.newsletter-form button:hover { background: var(--btc-orange); color: white; }
 
 /* ===== FOOTER ===== */
 .footer-main {
@@ -737,9 +798,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   transition: color 0.2s;
 }
 
-.footer-col a:hover {
-  color: var(--btc-orange);
-}
+.footer-col a:hover { color: var(--text); }
 
 .footer-bottom {
   text-align: center;
@@ -1127,8 +1186,8 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
 
 .lang-menu-panel .lang-opt.active {
-  background: var(--btc-orange);
-  color: #0d0902;
+  background: var(--text);
+  color: var(--dark);
 }
 
 @media (max-width: 1024px) {
@@ -1278,33 +1337,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="hero-desc">
     Verkaufen Sie Ihr Bitcoin nicht, sondern nehmen Sie einen Bitcoin-besicherten Kredit auf. Virtuse bietet einen Service, bei dem Bitcoiner Bargeld gegen ihr Bitcoin leihen, zu marktüblichen Zinsen ab 6 % p.a.
   </p>
+  <p class="hero-tool-link">
+    <a href="/de/bitcoin-verkaufen-oder-beleihen/">Vergleichen Sie Verkauf und Bitcoin-besicherten Kredit</a>
+  </p>
 
 
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section class="how">
-  <div class="how-title">So funktioniert es</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Kreditkonditionen festlegen</h3>
-      <p>Wählen Sie Kreditbetrag, Zinssatz und Laufzeit. Oder entscheiden Sie sich für einen Sofortkredit zu einem festgelegten Zinssatz.</p>
+  <div class="how-header">
+    <h2>So <span>funktioniert es</span></h2>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Schritt 01</span>
+        <h3>Kreditkonditionen festlegen</h3>
+        <p>Wählen Sie Kreditbetrag, Zinssatz und Laufzeit. Oder entscheiden Sie sich für einen Sofortkredit zu einem festgelegten Zinssatz.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Mit Investor zusammenbringen</h3>
-      <p>Ihre Anfrage wird auf dem Marktplatz gelistet. Ein Investor finanziert Ihren Kredit, ohne zentralen Kreditgeber.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Schritt 02</span>
+        <h3>Mit Investor zusammenbringen</h3>
+        <p>Ihre Anfrage wird auf dem Marktplatz gelistet. Ein Investor finanziert Ihren Kredit, ohne zentralen Kreditgeber.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Bitcoin als Sicherheit hinterlegen</h3>
-      <p>Senden Sie Bitcoin an eine On-Chain-Multi-Sig-Treuhandadresse. Sie geben Ihre privaten Schlüssel nie aus der Hand.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Schritt 03</span>
+        <h3>Bitcoin als Sicherheit hinterlegen</h3>
+        <p>Senden Sie Bitcoin an eine On-Chain-Multi-Sig-Treuhandadresse. Sie geben Ihre privaten Schlüssel nie aus der Hand.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Geld erhalten &amp; zurückzahlen</h3>
-      <p>Der Kredit wird auf Ihr Bankkonto überwiesen. Zahlen Sie bei Fälligkeit zurück: Ihr Bitcoin wird an Ihre Wallet zurückgegeben.</p>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Schritt 04</span>
+        <h3>Geld erhalten &amp; zurückzahlen</h3>
+        <p>Der Kredit wird auf Ihr Bankkonto überwiesen. Zahlen Sie bei Fälligkeit zurück: Ihr Bitcoin wird an Ihre Wallet zurückgegeben.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1313,18 +1389,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Zwei Wege zur Teilnahme</h2>
+      <h2>Zwei <span>Wege zur Teilnahme</span></h2>
       <p>Ob Sie Bargeld benötigen oder eine Rendite erzielen möchten: Es gibt eine Bitcoin-native Option</p>
     </div>
   </div>
 
   <div class="lending-types">
     <div class="ltype-card">
-      <h3><span class="icon">&#128176;</span> Kreditnehmer</h3>
+      <h3>Kreditnehmer</h3>
       <p>Nutzen Sie Ihr Bitcoin als Sicherheit, um Fiatgeld (EUR, CHF, CZK) oder Stablecoins (USDC) zu leihen. Behalten Sie Ihr Bitcoin-Exposure, vermeiden Sie Kapitalertragsteuern und erhalten Sie Zugang zu Liquidität, ohne zu verkaufen. LTV bis zu 50 %. Laufzeiten von 3 bis 24 Monaten. Zinssätze ab 5 % p.a.</p>
     </div>
     <div class="ltype-card">
-      <h3><span class="icon">&#128200;</span> Investoren / Kreditgeber</h3>
+      <h3>Investoren / Kreditgeber</h3>
       <p>Stellen Sie Fiatgeld oder Stablecoins zur Finanzierung Bitcoin-besicherter Kredite bereit. Verdienen Sie Zinsen, die von den Kreditnehmern gezahlt werden. Die Sicherheit wird in einer On-Chain-Treuhand hinterlegt, vollständig durch Bitcoin abgesichert. Keine Rehypothekierung. Kein Altcoin-Exposure. Mindestbetrag ab 800 EUR.</p>
     </div>
   </div>
@@ -1334,7 +1410,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Unsere Kreditpartner</h2>
+      <h2>Unsere <span>Kreditpartner</span></h2>
       <p>Bitcoin-only-Kreditplattformen mit nicht-verwahrender Multi-Sig-Treuhand</p>
     </div>
   </div>
@@ -1410,10 +1486,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <span class="widget-badge">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 4.6L14 7l-4.2 1.4L8 13l-1.8-4.6L2 7l4.2-1.4L8 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          Sofortiges Angebot erhalten
-        </span>
         <p>Geben Sie einen Betrag ein, um in Sekunden Ihre Bitcoin-besicherten Kreditoptionen und Zinssätze zu sehen, ganz ohne Anmeldung.</p>
       </div>
       <div class="widget-frame">
@@ -1516,6 +1588,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
         <a href="blog.html">Blog</a>
         <a href="bitcoin-data.html">Bitcoin-Daten</a>
+        <a href="/de/bitcoin-verkaufen-oder-beleihen/">Verkaufen oder beleihen</a>
+        <a href="../loan.html">Loan Copilot</a>
       </div>
       <div class="footer-col">
         <h4>Informationen</h4>
