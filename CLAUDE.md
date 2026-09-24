@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24, fourth round) — ru/ (Russian) brought to full EN redesign parity, committed to main (`20b2e8c`), live on staging (21/21 md5-verified); production scp prepared, NOT yet run
+## Session status (2026-09-24, fourth round) — ru/ (Russian) brought to full EN redesign parity, committed to main (`20b2e8c`), live on staging AND on production (user ran the scp; 21/21 md5-verified on virtuse.com)
 
 **What this round did:** the whole `ru/` folder (20 of 21 pages; `404.html`
 untouched) now matches the EN redesign like sk/cs/fr/uk/es. ru/ started from
@@ -15,8 +15,11 @@ order, cube canvas, 3 ticker rows, 9 Quick Answers, 6 service cards, 3
 changelog steps, drawer + mobile language dropdown, only the RU pill active,
 computed-style orange sweep on every key page returning only EN-identical
 elements, `audit_parity.py ru` clean). Committed `20b2e8c`, gh-pages
-`1c97f67`, staging md5-verified 21/21. **Production not yet updated** — the
-user runs the scp below (`ru/` exists on the server; plain recursive copy).
+`1c97f67`, staging md5-verified 21/21. **Production updated the same day**: the user ran the scp below and all 21
+`ru/*.html` md5-match the gh-pages worktree on `virtuse.com` (live ru/index:
+13 sections + cube canvas + Russian feed; ru/treasury: no `.step` grid, no
+emoji; ru/bots: 12 check icons). Production now has the new design for
+**en, sk, cs, fr, uk, es, ru**; only `de/` remains on the old design.
 
 **How:**
 1. [`i18n-tools/port_ru_parity.py`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/port_ru_parity.py)
