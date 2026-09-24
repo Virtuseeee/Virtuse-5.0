@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24, sixth round) — sitewide leftovers closed: neutral active language pill on all 66 remaining files (incl. 10 EN pages), fr/ Get Started → Concierge, sk/uk bots check icons; committed (`e5934b2`), staging 68/68 md5-verified; production scp prepared, NOT yet run
+## Session status (2026-09-24, sixth round) — sitewide leftovers closed: neutral active language pill on all 66 remaining files (incl. 10 EN pages), fr/ Get Started → Concierge, sk/uk bots check icons; committed (`e5934b2`), live on staging AND production (user ran the per-folder scp; 68/68 md5-verified on virtuse.com)
 
 **What this round did (68 files):** the cross-language leftovers listed as
 open after the de/ round, starting with fr/ as asked:
@@ -21,9 +21,11 @@ open after the de/ round, starting with fr/ as asked:
 Verified: tag-balance on all 68 files, sitewide scans return 0 orange
 pills / 0 stale handlers / 0 dot bullets, browser checks on fr/mining
 (click → EN concierge), cs/faq + EN faq (pill neutral), sk/bots (12 white
-check icons). gh-pages `5872184`, staging 68/68. **Production not yet
-updated** — the per-folder scp below (7 folders + root, only the changed
-files).
+check icons). gh-pages `5872184`, staging 68/68. **Production updated the
+same day**: all 68 files md5-match on `virtuse.com` (live: fr/mining has
+the concierge redirect and no stale handler, EN faq pill neutral, sk/bots
+12 check icons). With this, **main == staging == production for every
+page of every language**, and no known design drift remains.
 
 **Still open:** native-speaker pass on the fresh es/ru/de strings;
 consultation-widget copy for uk/es/ru/de (English fallback); the Brief
