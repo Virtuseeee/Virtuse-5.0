@@ -2,6 +2,47 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-24, sixth round) — sitewide leftovers closed: neutral active language pill on all 66 remaining files (incl. 10 EN pages), fr/ Get Started → Concierge, sk/uk bots check icons; committed (`e5934b2`), staging 68/68 md5-verified; production scp prepared, NOT yet run
+
+**What this round did (68 files):** the cross-language leftovers listed as
+open after the de/ round, starting with fr/ as asked:
+1. **Orange active language pill** (`.lang-menu-panel .lang-opt.active`)
+   was still on **66 files** — not just fr/ (22) and cs/ (19) as flagged,
+   but also sk/ (11), **10 EN dashboard/legal pages** (aml-compliance,
+   btc-dominance, faq, fear-greed, ma-200w, privacy-policy, rainbow-chart,
+   root-cycles, terms-and-conditions, trading-volume) and every language's
+   `404.html`. Found by a precise multiline scan, not the earlier per-page
+   guesses; all now use EN's `var(--text)`/`var(--dark)` pill.
+2. **fr/ Get Started**: all 21 pages had the old scroll-to-partners
+   handler; repointed to `../concierge.html?utm_source=concierge&utm_medium=banner`
+   (no fr Concierge module). Verified with a real click in the browser.
+3. **sk/bots.html, uk/bots.html** dot bullets → inline check icons (cs/fr
+   already had them). Every language's bots page now matches EN.
+Verified: tag-balance on all 68 files, sitewide scans return 0 orange
+pills / 0 stale handlers / 0 dot bullets, browser checks on fr/mining
+(click → EN concierge), cs/faq + EN faq (pill neutral), sk/bots (12 white
+check icons). gh-pages `5872184`, staging 68/68. **Production not yet
+updated** — the per-folder scp below (7 folders + root, only the changed
+files).
+
+**Still open:** native-speaker pass on the fresh es/ru/de strings;
+consultation-widget copy for uk/es/ru/de (English fallback); the Brief
+`news/` production gap (desk agent).
+
+```bash
+# Production deploy for this round (user runs it; only the 68 changed
+# files, grouped per existing server folder):
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 aml-compliance.html btc-dominance.html faq.html fear-greed.html ma-200w.html privacy-policy.html rainbow-chart.html root-cycles.html terms-and-conditions.html trading-volume.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 cs/404.html cs/about.html cs/aml-compliance.html cs/bitcoin-data.html cs/bots.html cs/btc-dominance.html cs/buy-bitcoin.html cs/faq.html cs/index.html cs/lending.html cs/ma-200w.html cs/mining.html cs/privacy-policy.html cs/rainbow-chart.html cs/retirement-calculator.html cs/root-cycles.html cs/secure.html cs/terms-and-conditions.html cs/treasury.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 de/404.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 es/404.html virtuse.com@ftp.virtuse.com:public_html/es/ && \
+scp -P 222 fr/404.html fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
+scp -P 222 ru/404.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
+scp -P 222 sk/aml-compliance.html sk/bots.html sk/btc-dominance.html sk/faq.html sk/fear-greed.html sk/ma-200w.html sk/privacy-policy.html sk/rainbow-chart.html sk/retirement-calculator.html sk/root-cycles.html sk/terms-and-conditions.html sk/trading-volume.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+scp -P 222 uk/404.html uk/bots.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-24, fifth round) — de/ (German) brought to full EN redesign parity, committed to main (`9b1f3f7`), live on staging AND on production (user ran the scp; 23/23 md5-verified on virtuse.com) — the redesign is now LIVE for all 8 languages
 
 **What this round did:** the whole `de/` folder (22 of 23 pages; `404.html`
