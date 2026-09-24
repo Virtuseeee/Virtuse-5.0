@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24, third round) — es/ (Spanish) brought to full EN redesign parity, committed to main (`7f67ebe`), live on staging (24/24 md5-verified); production scp prepared, NOT yet run
+## Session status (2026-09-24, third round) — es/ (Spanish) brought to full EN redesign parity, committed to main (`7f67ebe`), live on staging AND on production (user ran the scp; 24/24 md5-verified on virtuse.com: all es/*.html + root bots.html)
 
 **What this round did:** the whole `es/` folder (22 of 23 pages; `404.html`
 untouched) now matches the EN redesign the same way sk/cs/fr/uk do, per the
@@ -21,9 +21,12 @@ key page returning only EN-identical elements — first changelog dot,
 compare-table `.best`, `.wide-card .ico`, blog featured badge/newsdesk link,
 buy-bitcoin step-0 CTA). Committed to `main` as `7f67ebe`, synced to
 `gh-pages` (`2de35b0`), md5-verified on `staging.virtuse.com` (24/24: all
-`es/*.html` + root `bots.html`). **Production not yet updated** — the user
-runs the scp below; `es/` already exists on the server (published in the
-old design on 2026-09-24), so it's a plain recursive copy, no `sftp mkdir`.
+`es/*.html` + root `bots.html`). **Production updated the same day**: the user ran the scp below and all 22
+`es/*.html` + root `bots.html` md5-match the gh-pages worktree on
+`virtuse.com` (live es/index confirmed: 13 sections in EN order + cube canvas;
+es/treasury: no `.step` grid, no emoji icons; es/bots: 12 check icons). So
+production now has the new design for **en, sk, cs, fr, uk, es**; only
+`ru/` and `de/` remain on the old design.
 
 **How it was done — same two techniques as uk/, plus the recurring fixes:**
 1. Mechanical parity via `i18n-tools/port_homepage_redesign_es.py` (sed-
