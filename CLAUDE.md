@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-24, fifth round) — de/ (German) brought to full EN redesign parity, committed to main (`9b1f3f7`), live on staging (23/23 md5-verified); production scp prepared, NOT yet run — this completes the redesign for all 8 languages
+## Session status (2026-09-24, fifth round) — de/ (German) brought to full EN redesign parity, committed to main (`9b1f3f7`), live on staging AND on production (user ran the scp; 23/23 md5-verified on virtuse.com) — the redesign is now LIVE for all 8 languages
 
 **What this round did:** the whole `de/` folder (22 of 23 pages; `404.html`
 untouched; the German programmatic-SEO subfolders `de/bitcoin-steuern/` etc.
@@ -13,7 +13,11 @@ root-absolute `/de/...` guide paths to their `index.html`, browser at
 1440/375: 13 sections in EN order, cube, 3 tickers, 9 Quick Answers, drawer
 + mobile dropdown, only the DE pill active, orange sweep EN-identical on
 every key page, `audit_parity.py de` clean). Committed `9b1f3f7`, gh-pages
-`1f40bc7`, staging 23/23. **Production not yet updated** — scp below.
+`1f40bc7`, staging 23/23. **Production updated the same day**: all 23 `de/*.html` md5-match the
+gh-pages worktree on `virtuse.com` (live de/index: 13 sections + cube;
+de/treasury: no `.step` grid, no emoji; de/bots: 12 check icons; the
+`/de/bitcoin-steuern/` SEO pages still serve 200). **Production now has the
+new design for every language: en, sk, cs, fr, uk, es, ru, de.**
 
 **How:** [`i18n-tools/port_de_parity.py`](Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/port_de_parity.py)
 mirrors `port_ru_parity.py` (imports the UK/ES steps, defines German strings)
