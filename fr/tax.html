@@ -97,12 +97,10 @@ a { text-decoration: none; color: inherit; }
 
 /* EU Tax Complexity Card */
 .eu-card { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
-.eu-card-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 40px;  gap: 28px; align-items: flex-start; }
-.eu-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(247, 147, 26,0.12);   justify-content: center; flex-shrink: 0; }
-.eu-icon svg { width: 28px; height: 28px; color: #f7931a; }
-.eu-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-.eu-content p { font-size: 15px; color: #8b949e; line-height: 1.6; }
-.eu-countries { margin-top: 16px;  flex-wrap: wrap; gap: 8px; }
+.eu-card-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 40px; display: flex; align-items: flex-start; }
+.eu-content h3 { font-size: 42px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
+.eu-content p { font-size: 20px; font-weight: 400; color: #8b949e; line-height: 1.55; max-width: 620px; }
+.eu-countries { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 .eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
 
 /* Country tax guides */
@@ -826,12 +824,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- EU Tax Complexity -->
 <div class="eu-card">
 <div class="eu-card-inner">
-<div class="eu-icon">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-</div>
 <div class="eu-content">
 <h3>Chaque pays de l'UE applique des règles fiscales différentes pour le Bitcoin</h3>
-<p>Allemagne : durée de détention d'un an pour une exonération fiscale. France : prélèvement forfaitaire unique (PFU) de 30 %. Autriche : impôt sur les plus-values de 27,5 %. Portugal : désormais imposable. Nos partenaires couvrent l'Allemagne, l'Autriche, la Suisse, la France, l'Italie, l'Espagne, les Pays-Bas et d'autres pays.</p>
+<p>Aperçus indicatifs 2026 pour 11 pays de l'UE, plus une checklist de succession. Ceci n'est pas un conseil fiscal.</p>
 <div class="eu-countries">
 <span class="eu-country-tag">DE</span>
 <span class="eu-country-tag">AT</span>
