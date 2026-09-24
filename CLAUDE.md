@@ -76,6 +76,17 @@ old design on 2026-09-24), so it's a plain recursive copy, no `sftp mkdir`.
   credit panel, How-it-Works step copy, tools-guides, Quick Answers heading,
   form messages, blog newsdesk line) need a native-speaker pass.
 
+**Follow-up (same day):** the user reported treasury "still unfinished" with
+icons in "A quién atendemos" — that was the **old** copy (production still
+serves the pre-redesign es/treasury with the `.step` grid and 🏢/👨‍👩‍👧
+emoji in the audience headings; staging served the same until this round's
+push), not a gap in the pushed version. Checked by diffing the old gh-pages
+copy and production against the current file rather than re-editing. One
+real change requested and made on **EN + es `bots.html`** (`5159ba5`,
+gh-pages `965efcf`, staging md5-verified): partner-card feature lists now
+use the inline check SVG like every other partner page instead of the
+5px dot `::before`. Other languages' bots.html still have dots.
+
 **Next:** (1) run the es production scp below and md5-verify; (2) `ru/` and
 `de/` with the same recipe (copy `port_es_parity.py` — it is the most
 complete variant: uk steps + newsletter/footer/Brief-nav + fixed guards);
