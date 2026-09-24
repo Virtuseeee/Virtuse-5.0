@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Dark-only, matching the homepage's own redesign. -->
+<meta name="color-scheme" content="dark">
 <script src="../lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -43,7 +45,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="stylesheet" href="../styles.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+/* Neutral-gray dark palette, matched to the homepage's own redesign —
+   overrides styles.css's older navy-tinted tokens for this page only. */
+:root {
+  color-scheme: dark;
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -62,12 +78,14 @@ body {
   align-items: center;
   padding: 20px 48px;
   border-bottom: 1px solid var(--border);
-  background: rgba(13, 20, 33, 0.95);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
 }
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
 
 .nav-logo-img {
   height: 32px;
@@ -133,7 +151,8 @@ body {
 
 .hero-left {
   flex: 1;
-  max-width: 600px;
+  max-width: 660px;
+  min-width: 660px;
 }
 
 .hero-headline {
@@ -710,11 +729,13 @@ body {
 
 /* ===== CONCIERGE BANNER (decision-paralysis moment) ===== */
 .concierge-banner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto 100px;
   padding: 0 48px;
 }
 
+/* Neutral gray, not orange-tinted — matches the flat .svc-card/.problem-art
+   surfaces instead of standing out as its own warm-toned accent block */
 .concierge-banner-inner {
   display: flex;
   align-items: center;
@@ -725,7 +746,7 @@ body {
   padding: 22px 32px;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: linear-gradient(90deg, rgba(247,147,26,0.07), rgba(247,147,26,0.02));
+  background: var(--dark-card);
 }
 
 .concierge-banner-text {
@@ -738,6 +759,8 @@ body {
   font-weight: 700;
 }
 
+/* No orange highlight here either — same theme-aware inverted neutral as
+   .btn-primary/the brief-strip button */
 .concierge-banner-cta {
   display: inline-flex;
   align-items: center;
@@ -747,13 +770,13 @@ body {
   border-radius: 10px;
   font-size: 14px;
   font-weight: 700;
-  color: #0b0b0c;
-  background: var(--btc-orange);
+  color: var(--dark);
+  background: var(--text);
   text-decoration: none;
-  transition: filter 0.2s;
+  transition: opacity 0.2s;
 }
 
-.concierge-banner-cta:hover { filter: brightness(1.08); }
+.concierge-banner-cta:hover { opacity: 0.85; }
 
 @media (max-width: 700px) {
   .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
@@ -889,41 +912,33 @@ body {
 /* ===== AS SEEN IN ===== */
 .as-seen {
   padding: 60px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
   text-align: center;
   background: var(--dark);
 }
 
 .as-seen h2 {
-  font-size: 36px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   color: var(--text);
   text-transform: none;
   margin-bottom: 32px;
   letter-spacing: 0;
 }
 
-.seen-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px 56px;
-  margin-bottom: 28px;
-}
-
-.seen-row:last-child { margin-bottom: 0; }
-
 .seen-logo {
   font-size: 24px;
   font-weight: 700;
   color: var(--text-muted);
   text-decoration: none;
-  opacity: 0.85;
-  transition: opacity 0.3s;
+  opacity: 0.6;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
   white-space: nowrap;
 }
 
-.seen-logo:hover { opacity: 1; color: var(--text); }
+.seen-logo:hover { opacity: 1; filter: grayscale(0); color: var(--text); }
 
 /* Brand-specific font styling */
 
@@ -1032,7 +1047,6 @@ body {
 
 @media (max-width: 768px) {
   .as-seen { padding: 40px 24px; }
-  .seen-row { gap: 20px 32px; }
   .seen-logo { font-size: 19px; }
     .seen-medium { font-size: 24px; }
   .seen-hn { font-size: 16px; }
@@ -1188,46 +1202,92 @@ body {
 
 /* ===== YOU'RE IN GOOD COMPANY ===== */
 .company {
-  padding: 60px 48px 80px;
+  padding: 60px 0 80px;
   text-align: center;
-  background: var(--dark);
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  box-shadow: inset 0 16px 32px -24px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.company-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
 }
 
 .company h2 {
-  font-size: 36px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 12px;
-}
-
-.company-sub {
-  font-size: 15px;
-  color: var(--text-muted);
   margin-bottom: 40px;
 }
 
-.co-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 32px 52px;
+.company h2 span { font-weight: 400; color: var(--text-muted); }
+
+.co-ticker {
+  overflow: hidden;
+  width: 100%;
   margin-bottom: 30px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
-.co-row:last-child { margin-bottom: 0; }
+.co-ticker:last-child { margin-bottom: 0; }
+
+.co-row {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: coTickerLeft 38s linear infinite;
+}
+
+.co-ticker-2 .co-row { animation-name: coTickerRight; animation-duration: 44s; }
+
+.co-ticker:hover .co-row { animation-play-state: paused; }
+
+.co-set {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 52px;
+  padding-right: 52px;
+}
+
+@keyframes coTickerLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes coTickerRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .co-ticker { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .co-row {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .co-set { padding-right: 0; flex-wrap: wrap; justify-content: center; gap: 32px 52px; }
+  .co-set[aria-hidden="true"] { display: none; }
+}
 
 .co-logo {
   font-size: 20px;
   font-weight: 700;
   color: var(--text-muted);
   text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.3s, color 0.3s, transform 0.3s;
+  opacity: 0.6;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
   white-space: nowrap;
 }
 
-.co-logo:hover { opacity: 1; color: var(--text); transform: translateY(-2px); }
+.co-logo:hover { opacity: 1; filter: grayscale(0); color: var(--text); }
 
 .co-firefish { font-weight: 800; letter-spacing: -0.01em; }
 .co-firefish span { color: var(--btc-orange); }
@@ -1454,10 +1514,10 @@ body {
 
 @media (max-width: 768px) {
   .as-seen { padding: 40px 24px; }
-  .seen-row { gap: 20px 32px; }
   .seen-logo { font-size: 19px; }
     .seen-medium { font-size: 24px; }
   .seen-hn { font-size: 16px; }
+  .company-inner { padding: 0 24px; }
   .newsletter { padding: 60px 24px; }
   .newsletter h2 { font-size: 28px; }
   .newsletter-form { flex-direction: column; }
@@ -1491,14 +1551,6 @@ body {
 @keyframes letter-slide-up {
   from { transform: translateY(110%); opacity: 0; }
   to   { transform: translateY(0);   opacity: 1; }
-}
-
-/* "As seen in" logo shimmer */
-.seen-logo {
-  transition: opacity 0.3s, transform 0.3s;
-}
-.seen-logo:hover {
-  transform: scale(1.08);
 }
 
 /* CTA button pulse */
@@ -1599,8 +1651,6 @@ a.nav-logo, .nav-logo {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--btc-orange, #f7931a);
-  color: #fff;
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -1610,12 +1660,18 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-.nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
+/* nav-cta stays the one sitewide orange stamp — every other button is an
+   inverted neutral. */
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta:hover {
   background: #ffffff;
-  color: var(--btc-orange, #f7931a);
+  color: #0d0902;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
+
+.btn-primary, .newsletter-form button { background: #e6edf3; color: #08090a; }
+.btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .vblog-cta, .btn-secondary {
   transition: all 0.2s ease;
@@ -1980,8 +2036,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Fiscalité</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-switch" role="navigation" aria-label="Langue de la page">
@@ -2182,6 +2239,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </a>
 
+  </div>
+</section>
+
+<!-- ===== YOU'RE IN GOOD COMPANY ===== -->
+<section class="company anim-section anim-hidden">
+  <div class="company-inner">
+  <h2>Vous êtes en <span>bonne compagnie</span></h2>
+  <div class="co-ticker co-ticker-1">
+    <div class="co-row">
+      <div class="co-set">
+        <a href="https://firefish.io" target="_blank" rel="noopener noreferrer" class="co-logo co-firefish">fire<span>fish</span></a>
+        <a href="https://unchained-capital.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-unchained">Unchained</a>
+        <a href="https://banxa.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-banxa">Banxa</a>
+        <a href="https://www.coinfirm.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinfirm">Coin<span>firm</span></a>
+        <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-aws">aws</a>
+        <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-tradingview">TradingView</a>
+        <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cmc">CoinMarketCap</a>
+      </div>
+      <div class="co-set" aria-hidden="true">
+        <a href="https://firefish.io" tabindex="-1" class="co-logo co-firefish">fire<span>fish</span></a>
+        <a href="https://unchained-capital.com/" tabindex="-1" class="co-logo co-unchained">Unchained</a>
+        <a href="https://banxa.com/" tabindex="-1" class="co-logo co-banxa">Banxa</a>
+        <a href="https://www.coinfirm.com/" tabindex="-1" class="co-logo co-coinfirm">Coin<span>firm</span></a>
+        <a href="https://aws.amazon.com/" tabindex="-1" class="co-logo co-aws">aws</a>
+        <a href="https://www.tradingview.com/" tabindex="-1" class="co-logo co-tradingview">TradingView</a>
+        <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" tabindex="-1" class="co-logo co-cmc">CoinMarketCap</a>
+      </div>
+    </div>
+  </div>
+  <div class="co-ticker co-ticker-2">
+    <div class="co-row">
+      <div class="co-set">
+        <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptowisser">Cryptowisser</a>
+        <a href="https://sumsub.com" target="_blank" rel="noopener noreferrer" class="co-logo co-sumsub">Sumsub</a>
+        <a href="https://finas.sk/" target="_blank" rel="noopener noreferrer" class="co-logo co-finas">Finas</a>
+        <a href="https://21bitcoin.app/en" target="_blank" rel="noopener noreferrer" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
+        <a href="https://coinrule.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinrule">Coinrule</a>
+        <a href="https://abundantmines.com" target="_blank" rel="noopener noreferrer" class="co-logo co-abundant">Abundant <span>Mines</span></a>
+        <a href="https://www.invity.io" target="_blank" rel="noopener noreferrer" class="co-logo co-invity">Invity</a>
+        <a href="https://blockstream.com" target="_blank" rel="noopener noreferrer" class="co-logo co-blockstream">Block<span>stream</span></a>
+        <a href="https://crypto.com" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+      </div>
+      <div class="co-set" aria-hidden="true">
+        <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" tabindex="-1" class="co-logo co-cryptowisser">Cryptowisser</a>
+        <a href="https://sumsub.com" tabindex="-1" class="co-logo co-sumsub">Sumsub</a>
+        <a href="https://finas.sk/" tabindex="-1" class="co-logo co-finas">Finas</a>
+        <a href="https://21bitcoin.app/en" tabindex="-1" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
+        <a href="https://coinrule.com/" tabindex="-1" class="co-logo co-coinrule">Coinrule</a>
+        <a href="https://abundantmines.com" tabindex="-1" class="co-logo co-abundant">Abundant <span>Mines</span></a>
+        <a href="https://www.invity.io" tabindex="-1" class="co-logo co-invity">Invity</a>
+        <a href="https://blockstream.com" tabindex="-1" class="co-logo co-blockstream">Block<span>stream</span></a>
+        <a href="https://crypto.com" tabindex="-1" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -2389,43 +2501,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== AS SEEN IN ===== -->
 <section class="as-seen anim-section anim-hidden">
   <h2>Ils parlent de nous</h2>
-  <div class="seen-row">
-    <a href="https://hackernoon.com/u/ras" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
-    <a href="https://rvasilisin.medium.com/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-medium">Medium</a>
-    <a href="https://dennikn.sk/autor/rvasilisin/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
-    <a href="https://www.investing.com/members/contributors/205818057/opinion" target="_blank" rel="noopener noreferrer" class="seen-logo seen-investing">Investing<span>.com</span></a>
-    <a href="https://www.ta3.com/clanok/171617/host-v-studiu-r-vasilisin-o-tom-ako-spravne-investovat" target="_blank" rel="noopener noreferrer" class="seen-logo seen-ta3">TA<span>3</span></a>
-  </div>
-  <div class="seen-row">
-    <a href="https://www.trend.sk/spravy/vasilisin-bitcoin-je-poistka-voci-chaosu-je-mozne-pride-krachu-financneho-systemu" target="_blank" rel="noopener noreferrer" class="seen-logo seen-trend">TREND</a>
-    <a href="https://hnonline.sk/pr-clanky/10062582-ako-investovat-do-bitcoinu-v-eurach" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
-    <a href="https://creators.spotify.com/pod/profile/rendolf/episodes/CCC-32-Rastislav-Vasiliin--Virtuse-CEO-CBDCs-bud-najvm-globlnym-poruenm-udskch-prv-e1rbm1m" target="_blank" rel="noopener noreferrer" class="seen-logo seen-spotify">Spotify</a>
-  </div>
-</section>
-
-<!-- ===== YOU'RE IN GOOD COMPANY ===== -->
-<section class="company anim-section anim-hidden">
-  <h2>Vous êtes en bonne compagnie</h2>
-  <p class="company-sub">Des partenaires et plateformes de confiance qui font vivre l'écosystème Virtuse</p>
-  <div class="co-row">
-    <a href="https://firefish.io" target="_blank" rel="noopener noreferrer" class="co-logo co-firefish">fire<span>fish</span></a>
-    <a href="https://unchained-capital.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-unchained">Unchained</a>
-    <a href="https://banxa.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-banxa">Banxa</a>
-    <a href="https://www.coinfirm.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinfirm">Coin<span>firm</span></a>
-    <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-aws">aws</a>
-    <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-tradingview">TradingView</a>
-    <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cmc">CoinMarketCap</a>
-  </div>
-  <div class="co-row">
-    <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptowisser">Cryptowisser</a>
-    <a href="https://sumsub.com" target="_blank" rel="noopener noreferrer" class="co-logo co-sumsub">Sumsub</a>
-    <a href="https://finas.sk/" target="_blank" rel="noopener noreferrer" class="co-logo co-finas">Finas</a>
-    <a href="https://21bitcoin.app/en" target="_blank" rel="noopener noreferrer" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
-    <a href="https://coinrule.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinrule">Coinrule</a>
-    <a href="https://abundantmines.com" target="_blank" rel="noopener noreferrer" class="co-logo co-abundant">Abundant <span>Mines</span></a>
-    <a href="https://www.invity.io" target="_blank" rel="noopener noreferrer" class="co-logo co-invity">Invity</a>
-    <a href="https://blockstream.com" target="_blank" rel="noopener noreferrer" class="co-logo co-blockstream">Block<span>stream</span></a>
-    <a href="https://crypto.com" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+  <div class="co-ticker">
+    <div class="co-row">
+      <div class="co-set">
+        <a href="https://hackernoon.com/u/ras" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
+        <a href="https://rvasilisin.medium.com/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-medium">Medium</a>
+        <a href="https://dennikn.sk/autor/rvasilisin/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+        <a href="https://www.investing.com/members/contributors/205818057/opinion" target="_blank" rel="noopener noreferrer" class="seen-logo seen-investing">Investing<span>.com</span></a>
+        <a href="https://www.ta3.com/clanok/171617/host-v-studiu-r-vasilisin-o-tom-ako-spravne-investovat" target="_blank" rel="noopener noreferrer" class="seen-logo seen-ta3">TA<span>3</span></a>
+        <a href="https://www.trend.sk/spravy/vasilisin-bitcoin-je-poistka-voci-chaosu-je-mozne-pride-krachu-financneho-systemu" target="_blank" rel="noopener noreferrer" class="seen-logo seen-trend">TREND</a>
+        <a href="https://hnonline.sk/pr-clanky/10062582-ako-investovat-do-bitcoinu-v-eurach" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
+        <a href="https://creators.spotify.com/pod/profile/rendolf/episodes/CCC-32-Rastislav-Vasiliin--Virtuse-CEO-CBDCs-bud-najvm-globlnym-poruenm-udskch-prv-e1rbm1m" target="_blank" rel="noopener noreferrer" class="seen-logo seen-spotify">Spotify</a>
+      </div>
+      <div class="co-set" aria-hidden="true">
+        <a href="https://hackernoon.com/u/ras" tabindex="-1" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
+        <a href="https://rvasilisin.medium.com/" tabindex="-1" class="seen-logo seen-medium">Medium</a>
+        <a href="https://dennikn.sk/autor/rvasilisin/" tabindex="-1" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+        <a href="https://www.investing.com/members/contributors/205818057/opinion" tabindex="-1" class="seen-logo seen-investing">Investing<span>.com</span></a>
+        <a href="https://www.ta3.com/clanok/171617/host-v-studiu-r-vasilisin-o-tom-ako-spravne-investovat" tabindex="-1" class="seen-logo seen-ta3">TA<span>3</span></a>
+        <a href="https://www.trend.sk/spravy/vasilisin-bitcoin-je-poistka-voci-chaosu-je-mozne-pride-krachu-financneho-systemu" tabindex="-1" class="seen-logo seen-trend">TREND</a>
+        <a href="https://hnonline.sk/pr-clanky/10062582-ako-investovat-do-bitcoinu-v-eurach" tabindex="-1" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
+        <a href="https://creators.spotify.com/pod/profile/rendolf/episodes/CCC-32-Rastislav-Vasiliin--Virtuse-CEO-CBDCs-bud-najvm-globlnym-poruenm-udskch-prv-e1rbm1m" tabindex="-1" class="seen-logo seen-spotify">Spotify</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2811,18 +2909,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 
 // ===== NAV BACKGROUND ON SCROLL =====
-(function() {
-  const nav = document.querySelector('.nav');
+(function () {
+  var nav = document.querySelector('.nav');
   if (!nav) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.style.background = 'rgba(13, 20, 33, 0.98)';
-      nav.style.backdropFilter = 'blur(20px)';
-    } else {
-      nav.style.background = 'rgba(13, 20, 33, 0.95)';
-      nav.style.backdropFilter = 'blur(10px)';
-    }
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
   });
 })();
 </script>

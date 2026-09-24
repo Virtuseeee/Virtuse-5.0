@@ -63,8 +63,8 @@ a { text-decoration: none; color: inherit; }
 /* Hero */
 .hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0 auto; }
 .hero p { margin: 0 0 32px; }
-.hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
-.hero h1 span { color: #f7931a; }
+.hero h1 { font-size: 52px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: var(--text); }
 .hero p { font-size: 18px; color: #8b949e; max-width: 680px; margin: 0 0 32px; line-height: 1.65; }
 /* How It Works — ported to the homepage's own changelog-dot layout
    (one shared rule, a dot per step, orange only on the first), replacing
@@ -100,8 +100,6 @@ a { text-decoration: none; color: inherit; }
 .eu-card-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 40px; display: flex; align-items: flex-start; }
 .eu-content h3 { font-size: 42px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
 .eu-content p { font-size: 20px; font-weight: 400; color: #8b949e; line-height: 1.55; max-width: 620px; }
-.eu-countries { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
-.eu-country-tag { background: rgba(247, 147, 26,0.08); color: #f7931a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(247, 147, 26,0.2); }
 
 /* Country tax guides */
 .tax-guides { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
@@ -133,9 +131,9 @@ a { text-decoration: none; color: inherit; }
 /* Partner Cards */
 .partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.partner-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
-.partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.12); }
-.partner-card.top-pick { border: 1px solid rgba(247, 147, 26,0.3); }
+.partner-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: border-color 0.15s ease, background-color 0.15s ease; display: flex; flex-direction: column; }
+.partner-card:hover { border-color: rgba(255,255,255,0.12); background: #1c1c1c; }
+.partner-card.top-pick:hover { border-color: rgba(255,255,255,0.12); background: #1c1c1c; }
 .partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
 .partner-logo { display: flex; align-items: center; gap: 14px; }
 .partner-name { font-size: 18px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
@@ -171,7 +169,7 @@ a { text-decoration: none; color: inherit; }
 .compare-table td:first-child { color: #8b949e; font-weight: 500; }
 .compare-table tr:last-child td { border-bottom: none; }
 .compare-table tr:hover td { background: rgba(22, 31, 48,0.5); }
-.compare-table td.best { color: #3fb950; font-weight: 600; }
+.compare-table td.best { color: #f7931a; font-weight: 600; }
 
 /* Disclaimer */
 /* ===== NEWSLETTER SECTION ===== */
@@ -347,8 +345,6 @@ a.nav-logo, .nav-logo {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--btc-orange, #f7931a);
-  color: #fff;
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -358,21 +354,27 @@ a.nav-logo, .nav-logo {
   transition: all 0.2s ease;
 }
 
-.nav-cta:hover, .btn-primary:hover, .newsletter-form button:hover {
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta:hover {
   background: #ffffff;
-  color: var(--btc-orange, #f7931a);
+  color: #0d0902;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
 }
 
+.btn-primary, .newsletter-form button { background: #e6edf3; color: #08090a; }
+.btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
 .btn-secondary {
+  background: transparent;
+  color: var(--text, #e6edf3);
+  border: 1px solid var(--border, rgba(255,255,255,0.06));
   transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-  border-color: var(--btc-orange, #f7931a);
-  color: var(--btc-orange, #f7931a);
-  background: rgba(247, 147, 26, 0.06);
+  border-color: var(--border-hover, rgba(255,255,255,0.12));
+  color: var(--text, #e6edf3);
   transform: translateY(-1px);
 }
 
@@ -711,8 +713,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="tax.html" class="active"><span class="nav-link-num">06</span><span class="nav-link-label">Fiscalité</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">09</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">10</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Données Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-switch" role="navigation" aria-label="Langue de la page">
@@ -827,16 +830,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="eu-content">
 <h3>Chaque pays de l'UE applique des règles fiscales différentes pour le Bitcoin</h3>
 <p>Aperçus indicatifs 2026 pour 11 pays de l'UE, plus une checklist de succession. Ceci n'est pas un conseil fiscal.</p>
-<div class="eu-countries">
-<span class="eu-country-tag">DE</span>
-<span class="eu-country-tag">AT</span>
-<span class="eu-country-tag">CH</span>
-<span class="eu-country-tag">FR</span>
-<span class="eu-country-tag">IT</span>
-<span class="eu-country-tag">ES</span>
-<span class="eu-country-tag">NL</span>
-<span class="eu-country-tag">PT</span>
-</div>
 </div>
 </div>
 </div>
