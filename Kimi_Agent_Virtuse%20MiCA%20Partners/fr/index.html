@@ -136,54 +136,18 @@ body {
   max-width: 600px;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(247, 147, 26, 0.1);
-  border: 1px solid rgba(247, 147, 26, 0.2);
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--btc-orange);
-  margin-bottom: 28px;
-}
-
-.hero-badge-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--btc-orange);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
 .hero-headline {
   font-size: 56px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.025em;
   margin-bottom: 20px;
 }
 
+/* Orange is a rare stamp now, not a highlight color — the headline reads
+   as one uniform tone, matching linear.app's own single-tone H1. */
 .hero-headline .highlight {
-  color: var(--btc-orange);
-  background: linear-gradient(110deg, var(--btc-orange) 0%, #ffd27a 25%, var(--btc-orange) 50%, var(--btc-orange) 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmerSweep 5s ease-in-out infinite;
-}
-
-@keyframes shimmerSweep {
-  0%, 25%  { background-position: 100% 0; }
-  70%, 100% { background-position: -60% 0; }
+  color: var(--text);
 }
 
 .hero-sub {
@@ -201,313 +165,47 @@ body {
 }
 
 .stat { display: flex; flex-direction: column; }
-.stat-number { font-size: 28px; font-weight: 800; }
+.stat-number { font-size: 28px; font-weight: 700; }
 .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
 
+/* No orange highlight here — inverted neutral (var(--text) on var(--dark)) instead of
+   a hardcoded white, so it stays visible against the page background in both themes */
 .btn-primary {
-  background: var(--btc-orange); color: white; border: none; padding: 14px 32px;
+  background: var(--text); color: var(--dark); border: none; padding: 14px 32px;
   border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer;
   transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
 }
-.btn-primary:hover { background: var(--btc-orange-light); transform: translateY(-1px); }
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .btn-secondary {
   background: transparent; color: var(--text); border: 1px solid var(--border);
   padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 15px;
   cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
 }
-.btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
+.btn-secondary:hover { border-color: var(--border-hover); color: var(--text); }
 
-.hero-trust { display: flex; align-items: center; gap: 20px; font-size: 13px; flex-wrap: wrap; }
-
-.trust-check {
-  display: flex; align-items: center; gap: 6px; color: var(--green);
-  background: var(--green-bg); padding: 4px 12px; border-radius: 6px; font-weight: 500;
-}
-
-/* ===== ORBITAL HUB (Right Side) ===== */
+/* ===== HERO VISUAL — Three.js 3x3 cube (Resend-style), replacing the
+   old orbit/coin graphic. */
 .hero-right {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   min-height: 560px;
-  perspective: 1100px;
+  overflow: visible;
 }
 
-.orbit-scene {
-  width: 520px;
-  height: 520px;
-  position: relative;
-  animation: sceneFloat 9s ease-in-out infinite;
-}
-
-@keyframes sceneFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-
-.orbit-tilt {
+.visual {
   position: absolute;
   inset: 0;
-  transform-style: preserve-3d;
-  will-change: transform;
 }
 
-/* Soft aurora glow behind the system */
-.orbit-aurora {
-  position: absolute;
-  inset: -70px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 30%, rgba(247, 147, 26, 0.16), transparent 55%),
-    radial-gradient(circle at 68% 66%, rgba(255, 184, 77, 0.10), transparent 52%);
-  filter: blur(34px);
-  animation: auroraDrift 14s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes auroraDrift {
-  from { transform: translate(-14px, 10px) scale(1); }
-  to   { transform: translate(16px, -12px) scale(1.08); }
-}
-
-/* Expanding pulse waves from the core */
-.pulse-wave {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 130px;
-  height: 130px;
-  margin: -65px 0 0 -65px;
-  border: 1.5px solid rgba(247, 147, 26, 0.45);
-  border-radius: 50%;
-  opacity: 0;
-  animation: pulseWave 4.8s cubic-bezier(0.25, 0.6, 0.4, 1) infinite;
-  pointer-events: none;
-}
-
-.pulse-wave.pw-2 { animation-delay: 1.6s; }
-.pulse-wave.pw-3 { animation-delay: 3.2s; }
-
-@keyframes pulseWave {
-  0%   { transform: scale(0.55); opacity: 0; }
-  12%  { opacity: 0.65; }
-  100% { transform: scale(3.7); opacity: 0; }
-}
-
-/* Central Bitcoin coin */
-.btc-coin-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 230px;
-  height: 230px;
-  margin: -115px 0 0 -115px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(247, 147, 26, 0.42) 0%, rgba(247, 147, 26, 0.10) 46%, transparent 70%);
-  filter: blur(8px);
-  animation: glowBreathe 5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 11;
-}
-
-@keyframes glowBreathe {
-  0%, 100% { opacity: 0.75; transform: scale(1); }
-  50%      { opacity: 1;    transform: scale(1.12); }
-}
-
-.btc-coin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 122px;
-  height: 122px;
-  margin: -61px 0 0 -61px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #ffc76a 0%, var(--btc-orange) 44%, #a8680e 100%);
-  box-shadow:
-    0 0 46px rgba(247, 147, 26, 0.5),
-    inset 0 2px 10px rgba(255, 255, 255, 0.35),
-    inset 0 -9px 20px rgba(90, 50, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  animation: coinBreathe 5s ease-in-out infinite;
-  z-index: 12;
-}
-
-@keyframes coinBreathe {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.045); }
-}
-
-/* Rotating light sweep across the coin face */
-.btc-coin::before {
-  content: '';
+#cube {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.32) 42deg, transparent 92deg);
-  animation: coinShine 6s linear infinite;
-  mix-blend-mode: screen;
-}
-
-@keyframes coinShine {
-  to { transform: rotate(360deg); }
-}
-
-/* Coin rim detail */
-.btc-coin::after {
-  content: '';
-  position: absolute;
-  inset: 8px;
-  border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.28);
-}
-
-.btc-coin-b {
-  font-size: 54px;
-  font-weight: 900;
-  color: #fff8ec;
-  text-shadow: 0 2px 6px rgba(120, 60, 0, 0.5), 0 0 26px rgba(255, 255, 255, 0.45);
-  position: relative;
-  z-index: 2;
-}
-
-/* Orbit rings (rotation driven by JS for smooth weighted stops) */
-.orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  border: 1px solid rgba(247, 147, 26, 0.14);
-  will-change: transform;
-}
-
-/* Comet arc highlight that travels with each ring */
-.orbit::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  border-top-color: rgba(247, 147, 26, 0.55);
-  filter: drop-shadow(0 0 6px rgba(247, 147, 26, 0.55));
-}
-
-.orbit-a {
-  width: 230px;
-  height: 230px;
-  margin: -115px 0 0 -115px;
-  z-index: 15;
-}
-
-.orbit-b {
-  width: 350px;
-  height: 350px;
-  margin: -175px 0 0 -175px;
-  z-index: 14;
-}
-
-.orbit-c {
-  width: 470px;
-  height: 470px;
-  margin: -235px 0 0 -235px;
-  z-index: 13;
-}
-
-/* Whichever ring holds the hovered chip wins the stack */
-.orbit:has(.node-chip:hover),
-.orbit:has(.node-chip:focus-visible) {
-  z-index: 20;
-}
-
-/* Service chips riding the rings, counter-rotated to stay upright */
-.orbit-node {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform: rotate(var(--a)) translateX(var(--r));
-}
-
-.orbit-a .orbit-node { --r: 115px; }
-.orbit-b .orbit-node { --r: 175px; }
-.orbit-c .orbit-node { --r: 235px; }
-
-.node-counter {
-  will-change: transform;
-}
-
-.node-chip {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 7px 16px 7px 7px;
-  background: linear-gradient(160deg, rgba(38, 44, 54, 0.94), rgba(20, 25, 32, 0.90));
-  border: 1px solid rgba(247, 147, 26, 0.28);
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--text);
-  text-decoration: none;
-  white-space: nowrap;
-  backdrop-filter: blur(10px);
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 0 14px rgba(247, 147, 26, 0.08);
-  transform: translate(-50%, -50%) rotate(calc(-1 * var(--a)));
-  transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              border-color 0.3s, box-shadow 0.3s, background 0.3s;
-}
-
-/* Generous invisible hit area so chips are easy to grab */
-.node-chip::before {
-  content: '';
-  position: absolute;
-  inset: -14px;
-  border-radius: 100px;
-}
-
-.node-chip .chip-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, rgba(255, 199, 106, 0.32), rgba(247, 147, 26, 0.12));
-  border: 1px solid rgba(247, 147, 26, 0.35);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12);
-  color: var(--btc-orange);
-  line-height: 1;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.node-chip:hover,
-.node-chip:focus-visible {
-  scale: 1.12;
-  border-color: var(--btc-orange);
-  background: linear-gradient(160deg, rgba(46, 53, 64, 0.98), rgba(26, 31, 39, 0.95));
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    0 0 26px rgba(247, 147, 26, 0.38);
-}
-
-.node-chip:hover .chip-icon,
-.node-chip:focus-visible .chip-icon {
-  background: radial-gradient(circle at 35% 30%, rgba(255, 199, 106, 0.55), rgba(247, 147, 26, 0.25));
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 12px rgba(247, 147, 26, 0.45);
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Scroll indicator */
@@ -531,7 +229,7 @@ body {
 .scroll-dot {
   width: 4px;
   height: 8px;
-  background: var(--btc-orange);
+  background: var(--text-muted);
   border-radius: 4px;
   animation: scrollDot 1.8s ease-in-out infinite;
 }
@@ -543,9 +241,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit-scene, .orbit, .node-counter, .pulse-wave, .orbit-aurora,
-  .btc-coin, .btc-coin::before, .btc-coin-glow, .particle,
-  .scroll-indicator, .scroll-dot, .hero-badge-dot {
+  .scroll-indicator, .scroll-dot,
+  .cube-scene, .cube, .cube-scan, .cube-node, .cube-veil {
     animation: none;
   }
 }
@@ -649,22 +346,50 @@ body {
 /* ===== PROBLEM / PAIN SECTION ===== */
 .problems {
   padding: 100px 48px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+/* linear.app dek pattern: bold lead-in + lighter continuation, one flowing
+   headline, above the tab grid. */
+.problems-lead {
+  display: block;
+  max-width: 760px;
+  margin-bottom: 64px;
+  text-align: left;
+  font-size: 42px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.problems-lead strong {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.problems-lead span {
+  display: block;
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.55;
 }
 
 .problem-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 40px;
 }
 
+/* linear.app "Fig 0.1" benefit-tab pattern: illustration above, Fig label
+   top-left, text below, all inside one toned card. */
 .problem-card {
   background: var(--dark-card);
-  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 28px;
-  transition: all 0.3s;
+  padding: 28px;
+  transition: background-color 0.15s ease;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -672,29 +397,178 @@ body {
   cursor: pointer;
 }
 
-.problem-card:hover {
-  border-color: var(--btc-orange);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(247, 147, 26, 0.08);
+.problem-card:hover { background: var(--dark-card-hover); }
+
+.problem-fig {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
 }
 
-.problem-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+.problem-art {
+  width: 100%;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(247, 147, 26, 0.12);
-  color: var(--btc-orange);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  overflow: hidden;
 }
 
-.problem-icon svg { width: 22px; height: 22px; }
+/* ===== 3D cube illustrations — three CSS-only variations of the same
+   shared cube markup, one per tab. ===== */
+.cube-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  overflow: hidden;
+}
+
+.cube-scene {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03));
+}
+.cube-face.front  { transform: translateZ(75px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(75px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(75px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(75px); }
+.cube-face.top {
+  transform: rotateX(90deg) translateZ(75px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(180, 190, 210, 0.08));
+}
+.cube-face.bottom {
+  transform: rotateX(-90deg) translateZ(75px);
+  background: rgba(10, 10, 12, 0.7);
+}
+.cube-face.front::after {
+  content: "";
+  position: absolute;
+  inset: 18% 18% 28%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 12px);
+}
+
+/* Variation A — Purpose-built: slow elegant orbit + gentle float. */
+.var-purpose .cube-scene {
+  animation: cubeFloat 5s ease-in-out infinite, cubeSpinSlow 22s linear infinite;
+}
+.var-purpose .cube { transform: rotateX(-22deg) rotateY(-24deg); }
+
+@keyframes cubeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes cubeSpinSlow {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+/* Variation B — Powered by agents: medium spin + scan line + pulsing nodes. */
+.var-agents .cube-scene {
+  animation: cubeFloat 4s ease-in-out infinite, cubeSpinMed 12s linear infinite;
+}
+.var-agents .cube { transform: rotateX(-12deg) rotateY(20deg); }
+.var-agents .cube-face {
+  border-color: rgba(130, 200, 255, 0.35);
+  background: linear-gradient(145deg, rgba(80, 140, 255, 0.18), rgba(255, 255, 255, 0.03));
+}
+
+.cube-scan {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  height: 24px;
+  z-index: 4;
+  background: linear-gradient(180deg, transparent, rgba(120, 190, 255, 0.5), transparent);
+  mix-blend-mode: screen;
+  animation: cubeScan 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cube-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9fd0ff;
+  box-shadow: 0 0 12px #7ab8ff;
+  animation: cubeNode 1.8s ease-in-out infinite;
+}
+.cube-node:nth-child(1) { top: 16%; left: 10%; }
+.cube-node:nth-child(2) { top: 30%; right: 8%; animation-delay: 0.4s; }
+.cube-node:nth-child(3) { bottom: 18%; left: 20%; animation-delay: 0.8s; }
+
+@keyframes cubeSpinMed {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes cubeScan {
+  0%   { top: 10%; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { top: 78%; opacity: 0; }
+}
+@keyframes cubeNode {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.2); }
+}
+
+/* Variation C — Designed for speed: smooth glide + easing yaw, no snappy zip. */
+.var-speed .cube-scene { animation: cubeGlide 5.5s ease-in-out infinite; }
+.var-speed .cube {
+  transform: rotateX(-24deg) rotateY(-32deg);
+  animation: cubeYaw 9s ease-in-out infinite;
+}
+
+.cube-veil {
+  position: absolute;
+  inset: 18% -10%;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+  animation: cubeVeil 5.5s ease-in-out infinite;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@keyframes cubeGlide {
+  0%   { transform: translate3d(-14px, 8px, 0) scale(0.96); }
+  50%  { transform: translate3d(16px, -10px, 0) scale(1.04); }
+  100% { transform: translate3d(-14px, 8px, 0) scale(0.96); }
+}
+@keyframes cubeYaw {
+  0%   { transform: rotateX(-24deg) rotateY(-38deg); }
+  50%  { transform: rotateX(-16deg) rotateY(28deg); }
+  100% { transform: rotateX(-24deg) rotateY(-38deg); }
+}
+@keyframes cubeVeil {
+  0%, 100% { transform: translateX(-12%); opacity: 0.2; }
+  50%      { transform: translateX(12%); opacity: 0.55; }
+}
 
 .problem-card h3 {
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.01em;
   margin-bottom: 10px;
 }
@@ -712,10 +586,13 @@ body {
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--btc-orange);
+  color: var(--text);
   text-decoration: none;
+  transition: opacity 0.15s ease;
   margin-top: auto;
 }
+
+.problem-link:hover { opacity: 0.7; }
 
 .problem-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
 .problem-link:hover svg { transform: translateX(3px); }
@@ -1388,29 +1265,6 @@ body {
 .anim-hidden { opacity: 0; transform: translateY(40px); }
 .anim-visible { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
 
-/* Floating particles */
-.particles-container {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.particle {
-  position: absolute;
-  width: 3px; height: 3px;
-  background: rgba(247, 147, 26, 0.3);
-  border-radius: 50%;
-  animation: float-up linear infinite;
-}
-@keyframes float-up {
-  0% { transform: translateY(100vh) scale(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 0.6; }
-  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-}
-
 /* Hero letter slide-up */
 .hero-headline .word {
   display: inline-block;
@@ -1505,7 +1359,6 @@ body {
 @media (max-width: 1024px) {
   .hero-content { flex-direction: column; align-items: stretch; padding: 30px 24px 60px; }
   .hero-right { min-height: 400px; order: -1; }
-  .orbit-scene { scale: 0.68; }
   .scroll-indicator { display: none; }
   .hero-headline { font-size: 36px; }
   .nav { padding: 20px 24px; }
@@ -1515,15 +1368,14 @@ body {
   .how { padding: 0 24px 60px; }
   .how-grid { grid-template-columns: repeat(2, 1fr); }
   .problems { padding: 60px 24px; }
-  .problem-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+  .problems-lead { font-size: 32px; }
 }
 
 @media (max-width: 500px) {
   .services-grid { grid-template-columns: 1fr; }
   .how-grid { grid-template-columns: 1fr; }
-  .orbit-scene { scale: 0.52; }
   .hero-stats { gap: 24px; }
-  .hero-trust { gap: 12px; }
   .hero-buttons { flex-direction: column; align-items: stretch; }
   .hero-buttons .btn-primary,
   .hero-buttons .btn-secondary { justify-content: center; width: 100%; }
@@ -1993,16 +1845,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <!-- Floating Particles -->
-  <div class="particles-container" id="particles"></div>
-
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Le tout premier hub 100 % Bitcoin au monde
-      </div>
-
       <h1 class="hero-headline">
         Tout sur le Bitcoin.<br><span class="highlight">Rien d'autre.</span> Un hub de confiance.
       </h1>
@@ -2038,81 +1882,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
 
-      <div class="hero-trust">
-        <img src="../logo-21bitcoin-app.png" alt="21bitcoin" style="height:20px;width:auto;opacity:0.55;filter:grayscale(1);">
-        <img src="../logo-kraken.png" alt="Kraken" style="height:18px;width:auto;border-radius:4px;opacity:0.55;filter:grayscale(1);">
-        <img src="../logo-bybit.png" alt="ByBit EU" style="height:18px;width:auto;border-radius:4px;opacity:0.55;filter:grayscale(1);">
-        <img src="../logo-trezor.png" alt="Trezor" style="height:18px;width:auto;opacity:0.55;filter:grayscale(1);">
-        <span class="trust-check">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.3l-3.8 2 .7-4.3-3.1-3 4.3-.6z" fill="currentColor"/></svg>
-          Plus de 18 000 lecteurs
-        </span>
-      </div>
-
     </div>
 
-    <!-- ===== ORBITAL HUB ===== -->
-    <div class="hero-right">
-      <div class="orbit-scene">
-        <div class="orbit-tilt" id="orbitTilt">
-          <div class="orbit-aurora"></div>
-
-          <!-- Expanding pulse waves -->
-          <div class="pulse-wave"></div>
-          <div class="pulse-wave pw-2"></div>
-          <div class="pulse-wave pw-3"></div>
-
-          <!-- Central Bitcoin coin -->
-          <div class="btc-coin-glow"></div>
-          <div class="btc-coin"><span class="btc-coin-b">&#8383;</span></div>
-
-          <!-- Inner orbit: 2 services -->
-          <div class="orbit orbit-a">
-            <div class="orbit-node" style="--a: 0deg;">
-              <div class="node-counter">
-                <a href="buy-bitcoin.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5v13"/><path d="M9.5 5.5h4a2.6 2.6 0 0 1 0 5.2h-4"/><path d="M9.5 10.7h4.6a2.9 2.9 0 0 1 0 5.8H9.5"/><path d="M11.5 3.2v2.3M11.5 18.5v2.3"/></svg></span>Acheter</a>
-              </div>
-            </div>
-            <div class="orbit-node" style="--a: 180deg;">
-              <div class="node-counter">
-                <a href="secure.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.4"/></svg></span>Conservation</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Middle orbit: 3 services -->
-          <div class="orbit orbit-b">
-            <div class="orbit-node" style="--a: 90deg;">
-              <div class="node-counter">
-                <a href="mining.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l8.5-8.5"/><path d="M13 3.5c3.5.5 6.5 3.5 7.5 7"/><path d="M10.5 6l7.5 7.5"/><path d="M13 3.5L20.5 11"/></svg></span>Minage</a>
-              </div>
-            </div>
-            <div class="orbit-node" style="--a: 210deg;">
-              <div class="node-counter">
-                <a href="lending.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="19" height="11" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/></svg></span>Prêts</a>
-              </div>
-            </div>
-            <div class="orbit-node" style="--a: 330deg;">
-              <div class="node-counter">
-                <a href="bots.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="14" height="10" rx="3"/><path d="M12 9V5.5"/><circle cx="12" cy="4" r="1.3"/><path d="M9.3 13.5h.01M14.7 13.5h.01"/><path d="M9.5 16.4h5"/></svg></span>Bots</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Outer orbit: 3 services -->
-          <div class="orbit orbit-c">
-            <div class="orbit-node" style="--a: 90deg;">
-              <div class="node-counter">
-                <a href="treasury.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5.5 21v-9M10 21v-9M14 21v-9M18.5 21v-9"/><path d="M2.5 9.5L12 3.5l9.5 6z"/></svg></span>Treasury</a>
-              </div>
-            </div>
-            <div class="orbit-node" style="--a: 270deg;">
-              <div class="node-counter">
-                <a href="tax.html" class="node-chip"><span class="chip-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h11v18l-2.2-1.6-2.1 1.6-1.2-1-1.2 1-2.1-1.6L6.5 21z"/><path d="M9.5 8.2h5M9.5 12h5"/></svg></span>Fiscalité</a>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- ===== HERO VISUAL — Three.js 3x3 cube ===== -->
+    <div class="hero-right" id="heroVisual">
+      <div class="visual">
+        <canvas id="cube" aria-hidden="true"></canvas>
       </div>
     </div>
   </div>
@@ -2124,16 +1899,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== PROBLEM / PAIN SECTION ===== -->
 <section class="problems anim-section anim-hidden">
-  <div class="sec-header">
-    <h2>Les questions <span>que la plupart des bitcoiners ignorent</span></h2>
-    <p>Jusqu'à ce qu'ils ne puissent plus. Voici les trois façons dont les bitcoiners perdent le plus, et comment le Hub comble chacune de ces failles.</p>
-  </div>
+  <h2 class="problems-lead">
+    <strong>Les questions que la plupart des bitcoiners ignorent.</strong>
+    <span>Jusqu'à ce qu'ils ne puissent plus. Voici les trois façons dont les bitcoiners perdent le plus, et comment le Hub comble chacune de ces failles.</span>
+  </h2>
 
   <div class="problem-grid">
 
     <a href="buy-bitcoin.html" class="problem-card anim-card">
-      <div class="problem-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M12 8v4.5M12 15.5h.01"/></svg>
+      <span class="problem-fig">Fig 0.1</span>
+      <div class="problem-art" aria-hidden="true">
+        <div class="cube-stage var-purpose">
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <h3>Quelle plateforme ne me trahira pas ?</h3>
       <p>Mt. Gox, FTX, Celsius : des milliards de fonds clients ont disparu lors de faillites de plateformes depuis 2014. Nous ne référençons que des CASP agréés MiCA, vérifiés sur la conservation, l'assurance et la juridiction avant même d'apparaître sur cette page.</p>
@@ -2144,8 +1931,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <a href="secure.html" class="problem-card anim-card">
-      <div class="problem-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l3 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v4h3"/><path d="M9 13h6M9 16.5h4"/></svg>
+      <span class="problem-fig">Fig 0.2</span>
+      <div class="problem-art" aria-hidden="true">
+        <div class="cube-stage var-agents">
+          <i class="cube-node"></i>
+          <i class="cube-node"></i>
+          <i class="cube-node"></i>
+          <div class="cube-scan"></div>
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <h3>Que devient mon BTC à mon décès ?</h3>
       <p>On estime qu'un cinquième de tous les Bitcoin jamais minés est déjà perdu à jamais, souvent verrouillé derrière une clé que seule une personne a détenue. L'auto-conservation sans plan de succession est une bombe à retardement, pas une protection.</p>
@@ -2156,8 +1959,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <a href="tax.html" class="problem-card anim-card">
-      <div class="problem-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h11v18l-2.2-1.6-2.1 1.6-1.2-1-1.2 1-2.1-1.6L6.5 21z"/><path d="M9.5 8.2h5M9.5 12h5"/></svg>
+      <span class="problem-fig">Fig 0.3</span>
+      <div class="problem-art" aria-hidden="true">
+        <div class="cube-stage var-speed">
+          <div class="cube-veil"></div>
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <h3>Que dois-je au fisc ?</h3>
       <p>Chaque vente, chaque échange et chaque récompense de minage est un événement imposable dans la plupart des juridictions de l'UE, et les règles varient selon les pays. Une erreur aujourd'hui se traduit par une facture, majorée de pénalités, qui arrive des années plus tard.</p>
@@ -2498,23 +2314,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
-// ===== PARTICLES =====
-(function() {
-  const container = document.getElementById('particles');
-  if (!container) return;
-  const particleCount = 30;
-  for (let i = 0; i < particleCount; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (8 + Math.random() * 12) + 's';
-    p.style.animationDelay = (Math.random() * 10) + 's';
-    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
-    p.style.opacity = 0.2 + Math.random() * 0.5;
-    container.appendChild(p);
-  }
-})();
-
 // ===== WORD-BY-WORD SLIDE-UP =====
 (function() {
   const headline = document.querySelector('.hero-headline');
@@ -2594,109 +2393,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   setTimeout(() => {
     headline.classList.add('animate');
   }, 300);
-})();
-
-// ===== ORBITAL HUB MOUSE PARALLAX =====
-(function() {
-  const tilt = document.getElementById('orbitTilt');
-  const hero = document.querySelector('.hero');
-  const scene = document.querySelector('.orbit-scene');
-  if (!tilt || !hero) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!window.matchMedia('(pointer: fine)').matches) return;
-
-  let targetX = 0, targetY = 0;
-  let currentX = 0, currentY = 0;
-  let raf = null;
-  let hovering = false;
-
-  function loop() {
-    raf = requestAnimationFrame(() => {
-      currentX += (targetX - currentX) * 0.06;
-      currentY += (targetY - currentY) * 0.06;
-      tilt.style.transform =
-        'rotateY(' + (currentX * 11).toFixed(2) + 'deg) ' +
-        'rotateX(' + (-currentY * 8).toFixed(2) + 'deg)';
-      if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
-        loop();
-      } else {
-        raf = null;
-      }
-    });
-  }
-
-  hero.addEventListener('mousemove', (e) => {
-    if (hovering) return; // orbit is easing to a stop -- don't fight it with a shifting tilt
-    const rect = hero.getBoundingClientRect();
-    targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    if (!raf) loop();
-  });
-
-  hero.addEventListener('mouseleave', () => {
-    targetX = 0;
-    targetY = 0;
-    if (!raf) loop();
-  });
-
-  if (scene) {
-    scene.addEventListener('pointerenter', () => {
-      hovering = true;
-      // Snap flat immediately instead of easing out -- a lingering lerp here
-      // runs on its own timescale and visibly fights the ring's own (faster)
-      // deceleration, which is what read as a shake right before the stop.
-      targetX = 0; targetY = 0;
-      currentX = 0; currentY = 0;
-      tilt.style.transform = 'rotateY(0deg) rotateX(0deg)';
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-    });
-    scene.addEventListener('pointerleave', () => { hovering = false; });
-  }
-})();
-
-// ===== ORBIT DRIVER (smooth weighted stop on hover) =====
-(function() {
-  const scene = document.querySelector('.orbit-scene');
-  if (!scene) return;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const rings = [
-    { el: scene.querySelector('.orbit-a'), period: 28, dir: 1 },
-    { el: scene.querySelector('.orbit-b'), period: 42, dir: -1 },
-    { el: scene.querySelector('.orbit-c'), period: 58, dir: 1 }
-  ].filter(r => r.el);
-
-  rings.forEach(r => {
-    r.angle = 0;
-    r.counters = r.el.querySelectorAll('.node-counter');
-  });
-
-  if (reduced) return; // rings stay static at their CSS-defined positions
-
-  let speedFactor = 1;
-  let targetSpeed = 1;
-  let last = performance.now();
-
-  // Ease the whole system to a halt while the visitor is over the visual
-  scene.addEventListener('pointerenter', () => { targetSpeed = 0; });
-  scene.addEventListener('pointerleave', () => { targetSpeed = 1; });
-
-  function frame(now) {
-    const dt = Math.min((now - last) / 1000, 0.1);
-    last = now;
-    // Exponential ease toward target speed — feels weighted, never abrupt
-    speedFactor += (targetSpeed - speedFactor) * (1 - Math.exp(-5 * dt));
-
-    for (const r of rings) {
-      r.angle = (r.angle + r.dir * speedFactor * (360 / r.period) * dt) % 360;
-      r.el.style.transform = 'rotate(' + r.angle.toFixed(3) + 'deg)';
-      const counter = 'rotate(' + (-r.angle).toFixed(3) + 'deg)';
-      r.counters.forEach(c => { c.style.transform = counter; });
-    }
-    requestAnimationFrame(frame);
-  }
-
-  requestAnimationFrame(frame);
 })();
 
 // ===== WEIGHTED SMOOTH SCROLL =====
@@ -2947,6 +2643,181 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script src="../consultation-widget.js" defer></script>
+
+<!-- ===== HERO CUBE (Three.js, Resend-style) ===== -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+(function () {
+  const host = document.getElementById('cube');
+  if (!host || typeof THREE === 'undefined') return;
+
+  const CUBIE_SIZE = 0.84;
+  const SPACING = 1.0;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: host, antialias: true, alpha: true });
+  } catch (e) {
+    return; // WebGL unavailable -- leave the canvas empty rather than error
+  }
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 100);
+  camera.position.set(0.15, 0.2, 10.6);
+  camera.lookAt(0, 0, 0);
+
+  scene.add(new THREE.AmbientLight(0x1a1c22, 0.34));
+  const key = new THREE.DirectionalLight(0xf3f6ff, 2.6);
+  key.position.set(-3.6, 4.6, 4.4);
+  scene.add(key);
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(4, 1, 3);
+  scene.add(fillLight);
+  const rimLight = new THREE.DirectionalLight(0xffffff, 0.48);
+  rimLight.position.set(0, -4, -5);
+  scene.add(rimLight);
+
+  // Dotted-canvas texture for the third ("dotted") material.
+  function makeDotTexture() {
+    const size = 128;
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#121214';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = '#2a2b30';
+    for (let y = 5; y < size; y += 10) {
+      for (let x = 5; x < size; x += 10) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(2, 2);
+    return tex;
+  }
+
+  const materials = [
+    new THREE.MeshPhysicalMaterial({ color: 0x16171b, metalness: 0.92, roughness: 0.18, clearcoat: 0.7 }),
+    new THREE.MeshPhysicalMaterial({ color: 0x0e0f12, metalness: 0.7, roughness: 0.42 }),
+    new THREE.MeshPhysicalMaterial({ color: 0x1a1b20, roughness: 0.55, map: makeDotTexture() })
+  ];
+
+  const geometry = new RoundedBoxGeometry(CUBIE_SIZE, CUBIE_SIZE, CUBIE_SIZE, 3, 0.07);
+
+  const root = new THREE.Group();
+  root.rotation.set(0.36, -0.58, 0.08);
+  scene.add(root);
+
+  const cubies = [];
+  for (let ix = 0; ix < 3; ix++) {
+    for (let iy = 0; iy < 3; iy++) {
+      for (let iz = 0; iz < 3; iz++) {
+        const matIndex = (ix + iy + iz) % 3;
+        const mesh = new THREE.Mesh(geometry, materials[matIndex]);
+        mesh.position.set((ix - 1) * SPACING, (iy - 1) * SPACING, (iz - 1) * SPACING);
+        root.add(mesh);
+        cubies.push(mesh);
+      }
+    }
+  }
+
+  function resize() {
+    const w = host.clientWidth || (host.parentElement ? host.parentElement.clientWidth : 0);
+    const h = host.clientHeight || (host.parentElement ? host.parentElement.clientHeight : 0);
+    if (!w || !h) return;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ----- Layer twist: pick a random outer layer, rotate it 90 deg with
+  // ease-in-out, then snap positions/rotations back to the integer grid. -----
+  const HALF_PI = Math.PI / 2;
+  function easeInOutQuad(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+  let twisting = false;
+
+  function twistLayer() {
+    if (twisting || reduced) return;
+    const axes = ['x', 'y', 'z'];
+    const axis = axes[Math.floor(Math.random() * 3)];
+    const layer = Math.random() < 0.5 ? -1 : 1;
+    const selected = cubies.filter((m) => Math.round(m.position[axis] / SPACING) === layer);
+    if (!selected.length) return;
+
+    const pivot = new THREE.Group();
+    root.add(pivot);
+    selected.forEach((m) => pivot.attach(m));
+
+    const dir = Math.random() < 0.5 ? 1 : -1;
+    const targetAngle = dir * HALF_PI;
+    const duration = 980;
+    const start = performance.now();
+    twisting = true;
+
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      pivot.rotation[axis] = targetAngle * easeInOutQuad(t);
+      if (t < 1) {
+        requestAnimationFrame(step);
+        return;
+      }
+      selected.forEach((m) => {
+        root.attach(m);
+        m.position.set(
+          Math.round(m.position.x / SPACING) * SPACING,
+          Math.round(m.position.y / SPACING) * SPACING,
+          Math.round(m.position.z / SPACING) * SPACING
+        );
+        m.rotation.set(
+          Math.round(m.rotation.x / HALF_PI) * HALF_PI,
+          Math.round(m.rotation.y / HALF_PI) * HALF_PI,
+          Math.round(m.rotation.z / HALF_PI) * HALF_PI
+        );
+      });
+      root.remove(pivot);
+      twisting = false;
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (!reduced) {
+    setInterval(twistLayer, 2300);
+  }
+
+  function render() {
+    if (!reduced) {
+      root.rotation.y += 0.0026;
+      root.rotation.x += 0.0006;
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+})();
+</script>
+
 <script>
 // Fix: hero CTA anchors (#how-it-works, etc.) are intercepted by the
 // page's smooth-scroll script with preventDefault() and never create a
