@@ -186,7 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     /* ─── How It Works ─── */
     .how {
-      padding: 80px 24px;
+      padding: 0 24px 80px;
       max-width: var(--max-width);
       margin: 0 auto;
     }
@@ -207,65 +207,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 1rem;
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+    .how-header { text-align: left; margin-bottom: 60px; }
+    .how-header h2 { font-size: 42px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
+    .how-header h2 span { font-weight: 400; color: var(--muted); }
 
-    .step {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      transition: all 0.3s;
-    }
+    .how-log { display: flex; gap: 40px; border-top: 1px solid var(--border); }
+    .how-log-item { flex: 1; display: flex; flex-direction: column; }
+    .how-log-marker { margin-top: -4px; margin-bottom: 24px; }
+    .how-log-dot { position: relative; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+    .how-log-dot::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: var(--dim); opacity: 0.2; }
+    .how-log-item:first-child .how-log-dot { background: var(--orange); }
+    .how-log-item:first-child .how-log-dot::before { background: var(--orange); opacity: 0.1; }
+    .how-log-body { flex: 1; display: flex; flex-direction: column; }
+    .how-log-num { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); order: 4; margin-top: 16px; }
+    .how-log-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; order: 1; }
+    .how-log-body p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; order: 2; }
 
-    .step:hover {
-      border-color: rgba(247, 147, 26, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    }
-
-    .step-num {
-      position: absolute;
-      top: -16px;
-      left: 20px;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--orange), #ffb84d);
-      border-radius: 50%;
-      font-weight: 800;
-      font-size: 14px;
-      color: white;
-      box-shadow: 0 2px 8px rgba(247, 147, 26, 0.35);
-      z-index: 2;
-    }
-
-    .step h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .step-connector {
-      display: none;
-      position: absolute;
-      right: -24px;
-      top: 50px;
-      width: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--orange), transparent);
+    @media (max-width: 1024px) {
+      .how-log { flex-direction: column; gap: 0; border-top: none; }
+      .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+      .how-log-marker { margin-top: 0; }
     }
 
     /* ─── Category Cards ─── */
@@ -283,57 +244,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .cat-card {
       background: var(--card);
-      border: 1px solid var(--border);
+      border: none;
       border-radius: var(--radius-lg);
-      padding: 32px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      padding: 28px 24px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.15s ease;
     }
 
     .cat-card:hover {
-      border-color: rgba(247, 147, 26, 0.25);
-      transform: translateY(-2px);
-    }
-
-    .cat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-    }
-
-    .cat-card.cloud::before {
-      background: linear-gradient(90deg, var(--blue), #7dd3fc);
-    }
-
-    .cat-card.self::before {
-      background: linear-gradient(90deg, var(--green), #86efac);
-    }
-
-    .cat-icon {
-      width: 48px; height: 48px;
-      border-radius: var(--radius-sm);
-      
-      
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-
-    .cat-card.cloud .cat-icon {
-      background: rgba(88, 166, 255, 0.12);
-      color: var(--blue);
-    }
-
-    .cat-card.self .cat-icon {
-      background: rgba(63, 185, 80, 0.12);
-      color: var(--green);
+      background: var(--dark-card-hover);
     }
 
     .cat-card h3 {
-      font-size: 1.2rem;
+      font-size: 22px;
       font-weight: 700;
       margin-bottom: 8px;
+      color: var(--text);
     }
 
     .cat-card p {
@@ -343,7 +272,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .cat-meta {
-      
+
       gap: 12px;
       margin-top: 16px;
     }
@@ -430,63 +359,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 2px;
     }
 
-    .partner-tags {
-      
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-
-    .tag {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-
-    .tag-orange {
-      background: rgba(247, 147, 26, 0.15);
-      color: var(--orange);
-      border: 1px solid rgba(247, 147, 26, 0.2);
-    }
-
-    .tag-green {
-      background: rgba(63, 185, 80, 0.15);
-      color: var(--green);
-      border: 1px solid rgba(63, 185, 80, 0.2);
-    }
-
-    .tag-blue {
-      background: rgba(88, 166, 255, 0.15);
-      color: var(--blue);
-      border: 1px solid rgba(88, 166, 255, 0.2);
-    }
-
-    .tag-purple {
-      background: rgba(180, 140, 255, 0.15);
-      color: #b48cff;
-      border: 1px solid rgba(180, 140, 255, 0.2);
-    }
-
-    .tag-red {
-      background: rgba(248, 81, 73, 0.15);
-      color: var(--red);
-      border: 1px solid rgba(248, 81, 73, 0.2);
-    }
-
-    .tag-gold {
-      background: rgba(241, 196, 15, 0.15);
-      color: #f1c40f;
-      border: 1px solid rgba(241, 196, 15, 0.2);
-    }
-
-    .tag-gray {
-      background: rgba(139, 148, 158, 0.15);
-      color: var(--muted);
-      border: 1px solid rgba(139, 148, 158, 0.2);
-    }
-
     .partner-body {
       padding: 14px 24px 0;
       flex: 1;
@@ -513,11 +385,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap: 8px;
     }
 
-    .partner-features li::before {
-      content: '';
-      width: 5px; height: 5px;
-      background: var(--text);
-      border-radius: 50%;
+    .partner-features li svg {
+      width: 16px;
+      height: 16px;
+      color: var(--text);
       flex-shrink: 0;
     }
 
@@ -700,9 +571,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .nav-mobile-toggle { display: block; }
       .nav-cta { display: none; }
 
-      .steps { grid-template-columns: 1fr; }
-      .step-connector { display: none; }
-
       .cat-grid { grid-template-columns: 1fr; }
 
       .partner-grid { grid-template-columns: 1fr; }
@@ -712,10 +580,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .how, .partners { padding: 50px 20px; }
 
       }
-
-    @media (min-width: 901px) {
-      .step:not(:last-child) .step-connector { display: block; }
-    }
 
     /* ─── Animations ─── */
     @keyframes fadeInUp {
@@ -1170,33 +1034,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- How It Works -->
   <section class="how">
-    <div class="section-header animate delay-1">
-      <h2>Comment ça marche</h2>
-      <p>Lancez-vous dans le trading automatisé en quatre étapes simples</p>
+    <div class="how-header animate delay-1">
+      <h2>Comment <span>ça marche</span></h2>
     </div>
-    <div class="steps">
-      <div class="step animate delay-1">
-        <div class="step-num">1</div>
-        <h3>Choisissez un bot</h3>
-        <p>Cloud ou auto-hébergé, débutant ou avancé : choisissez ce qui correspond à vos besoins.</p>
-        <div class="step-connector"></div>
+    <div class="how-log">
+      <div class="how-log-item animate delay-1">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 01</span>
+          <h3>Choisissez un bot</h3>
+          <p>Cloud ou auto-hébergé, débutant ou avancé : choisissez ce qui correspond à vos besoins.</p>
+        </div>
       </div>
-      <div class="step animate delay-2">
-        <div class="step-num">2</div>
-        <h3>Connectez-vous via API</h3>
-        <p>Reliez votre plateforme d'échange avec des autorisations limitées au trading. Aucun retrait possible.</p>
-        <div class="step-connector"></div>
+      <div class="how-log-item animate delay-2">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 02</span>
+          <h3>Connectez-vous via API</h3>
+          <p>Reliez votre plateforme d'échange avec des autorisations limitées au trading. Aucun retrait possible.</p>
+        </div>
       </div>
-      <div class="step animate delay-3">
-        <div class="step-num">3</div>
-        <h3>Définissez votre stratégie</h3>
-        <p>DCA, grid ou règles personnalisées. Testez d'abord en backtesting, puis déployez quand vous êtes prêt.</p>
-        <div class="step-connector"></div>
+      <div class="how-log-item animate delay-3">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 03</span>
+          <h3>Définissez votre stratégie</h3>
+          <p>DCA, grid ou règles personnalisées. Testez d'abord en backtesting, puis déployez quand vous êtes prêt.</p>
+        </div>
       </div>
-      <div class="step animate delay-4">
-        <div class="step-num">4</div>
-        <h3>Actif 24h/24 et 7j/7</h3>
-        <p>Le bot exécute automatiquement vos ordres pendant que vous gardez le contrôle total de vos clés.</p>
+      <div class="how-log-item animate delay-4">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 04</span>
+          <h3>Actif 24h/24 et 7j/7</h3>
+          <p>Le bot exécute automatiquement vos ordres pendant que vous gardez le contrôle total de vos clés.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1204,33 +1076,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Category Cards -->
   <section class="categories">
     <div class="section-header animate delay-1">
-      <h2>Deux façons d'automatiser</h2>
+      <h2>Deux <span>façons d'automatiser</span></h2>
       <p>Choisissez le modèle de déploiement adapté à votre niveau technique et à vos besoins de confidentialité</p>
     </div>
     <div class="cat-grid">
       <div class="cat-card cloud animate delay-2">
-        <div class="cat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-        </div>
         <h3>Bots cloud</h3>
         <p>Plateformes gérées fonctionnant sur les serveurs du fournisseur. Installation plus simple, abonnement payant. Idéal pour les débutants qui souhaitent une automatisation prête à l'emploi sans gérer d'infrastructure.</p>
-        <div class="cat-meta">
-          <span>Installation simple</span>
-          <span>Abonnement</span>
-          <span>Adapté aux débutants</span>
-        </div>
       </div>
       <div class="cat-card self animate delay-3">
-        <div class="cat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        </div>
         <h3>Bots auto-hébergés</h3>
         <p>Fonctionnent sur votre propre serveur (VPS). Contrôle total, open source. Idéal pour les traders soucieux de leur confidentialité qui souhaitent une souveraineté complète sur leur infrastructure de trading.</p>
-        <div class="cat-meta">
-          <span>Contrôle total</span>
-          <span>Open source</span>
-          <span>Confidentialité avant tout</span>
-        </div>
       </div>
     </div>
   </section>
@@ -1249,19 +1105,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-coinrule.png" alt="Coinrule" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div class="partner-title-group">
             <div class="partner-name">Coinrule</div>
-            <div class="partner-tags">
-              <span class="tag tag-green">Non custodial</span>
-              <span class="tag tag-purple">Soutenu par YC</span>
-            </div>
           </div>
         </div>
         <div class="partner-body">
           <p class="partner-desc">Explicitement non custodial. API limitée au trading, aucun retrait. Plus de 410 000 traders. Soutenu par Y Combinator. En phase de croissance, avec des conditions favorables aux partenariats.</p>
           <ul class="partner-features">
-            <li>Explicitement non custodial</li>
-            <li>Plus de 150 modèles de stratégies</li>
-            <li>Compatible avec toutes les plateformes d'échange</li>
-            <li>Moteur de backtesting</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Explicitement non custodial</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Plus de 150 modèles de stratégies</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Compatible avec toutes les plateformes d'échange</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Moteur de backtesting</li>
           </ul>
         </div>
         <div class="partner-footer">
@@ -1275,21 +1127,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Cryptohopper -->
       <div class="partner-card animate delay-3">
         <div class="partner-header">
-          <img src="logo-cryptohopper.png" alt="Cryptohopper" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+          <img src="../logo-cryptohopper.png" alt="Cryptohopper" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div class="partner-title-group">
             <div class="partner-name">Cryptohopper</div>
-            <div class="partner-tags">
-              <span class="tag tag-green">Adapté aux débutants</span>
-            </div>
           </div>
         </div>
         <div class="partner-body">
           <p class="partner-desc">La plateforme de bots la plus adaptée aux débutants. Copy trading, paper trading et stratégies de la marketplace. Essai gratuit de 30 jours.</p>
           <ul class="partner-features">
-            <li>Copy trading disponible</li>
-            <li>Mode paper trading</li>
-            <li>Marketplace de stratégies</li>
-            <li>Signaux de trading en miroir</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy trading disponible</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Mode paper trading</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Marketplace de stratégies</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Signaux de trading en miroir</li>
           </ul>
         </div>
         <div class="partner-footer">
@@ -1306,19 +1155,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-revenuebot.png" alt="RevenueBot" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div class="partner-title-group">
             <div class="partner-name">RevenueBot</div>
-            <div class="partner-tags">
-              <span class="tag tag-gold">Paiements en BTC</span>
-              <span class="tag tag-orange">Grid</span>
-            </div>
           </div>
         </div>
         <div class="partner-body">
           <p class="partner-desc">Bots DCA et grid dans le cloud pour Binance, OKX et Bitget. Interface simple, stratégies axées sur le Bitcoin. Toutes les commissions de parrainage sont versées en BTC.</p>
           <ul class="partner-features">
-            <li>Bots DCA et grid</li>
-            <li>Commissions de parrainage en BTC</li>
-            <li>Binance / OKX / Bitget</li>
-            <li>Interface simple et épurée</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Bots DCA et grid</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Commissions de parrainage en BTC</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Binance / OKX / Bitget</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Interface simple et épurée</li>
           </ul>
         </div>
         <div class="partner-footer">
