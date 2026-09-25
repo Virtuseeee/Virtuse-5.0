@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, tenth round) — Hungarian (`hu/`) added as the 10th language; committed (`8d52740`), gh-pages `6eae6a3`, **live on staging only** (production NOT touched)
+
+- Same pipeline as pl/ (entry below): `scaffold_hu.py`, `hu_translations.py` (same EN keys as `pl_translations.py`) + `apply_hu_translations.py`, `build_hu_blog.py` (from `es/blog.html`, which already carries PL), `wire_hu_into_existing.py` (HU after every PL anchor, 192 pages incl. pl/), `sitemap_add_hu.py`. Language #11: copy the hu scripts, key off the hu anchors/hreflang, add the new code to `SWITCH_ORDER` in every `scaffold_*.py` that is still regenerated (pl/hu now emit the full 10-language switcher; regenerating pl/ = `scaffold_pl.py` + `apply_pl_translations.py`, keep `pl/blog.html` aside — it is built separately).
+- Hungarian specifics: year-first dates ("2026. szept. 14.") incl. the index/blog JS formatters, singular noun after numerals, partner CTAs "Tovább: <Partner>" (avoids suffix agreement with brand names), formal "Ön" only where unavoidable.
+- Verified: tagcheck 0 (hu+pl), 296 internal URLs 200 for both hu and pl, externals identical to EN, no overflow at 375/1100/1440 (about@1100 overflow is the pre-existing EN one), staging 23/23 + switchers + sitemap + lang-detect + real click EN→HU→nav.
+- Gotcha: running `scaffold_pl.py <page>` as a quick check overwrites that translated pl page with English — always regenerate via the scaffold→apply pair.
+- Open (same as PL): legal pages need native/legal review; consultation widget has no HU copy. Production deploy needs `sftp mkdir public_html/hu` (and `pl` if PL ships in the same run).
+
 ## Session status (2026-09-25, ninth round) — Polish (`pl/`) added as the 9th language; committed (`d514a6b`), gh-pages `4a3b147`, **live on staging only** (production NOT touched)
 
 - 23 pages in `pl/` built from the current redesigned EN site (22 pages + `blog.html` shell over the EN WP feed). Formal-neutral register ("Państwo" only where direct address is needed), pl-PL number/date formatting (decimal comma, `83 868 USD`, `14 wrz 2026`), dashboard JS strings translated, treasury DISCRETIONARY/API tags dropped.
