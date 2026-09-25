@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-seventh round) — blog hreflang complete + sitemap blog entries (`9b4bb50`, gh-pages `e15c361`, staging 5/5 md5-verified)
+
+- blog.html, uk/blog.html, ru/blog.html (5 tags) and fr/blog.html (7)
+  now carry the same 10-tag hreflang block as the de/es/pl/hu/sk blogs;
+  a reciprocity audit over all nine blogs reports 0 issues.
+- sitemap.xml had the same gap: blog entries listed 2–4 alternates
+  (blog-sk's labelled itself "en") and the de/fr/es/pl/hu blogs had no
+  entry at all. Existing entries keep lastmod/priority and get all 10
+  alternates; five entries added (261 URLs now). Script:
+  `scratchpad/fix_sitemap_blogs.py`.
+- **With this, hreflang is reciprocal on every page and every blog in
+  all 10 languages, in both the page tags and the sitemap.**
+- Production command (user runs it, then md5-verify):
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 blog.html sitemap.xml virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 fr/blog.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
+scp -P 222 ru/blog.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
+scp -P 222 uk/blog.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-25, twenty-sixth round) — blog-sk: Brief nav item, Virtuse Brief hero line, full hreflang (`25b2172`, gh-pages `46157d6`, staging 1/1 md5-verified; **live on production**, md5-verified on virtuse.com)
 
 - blog-sk.html (outside sk/, missed by the rollouts) now has the Brief
@@ -11,9 +32,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   all 10 hreflang tags (was 5). Verified at 375/1280: no overflow.
 - **Not a bug:** the switcher has no CS entry because there is no Czech
   blog; no blog in any language lists CS.
-- **Still open (same class, not requested):** blog.html, uk/blog.html and
-  ru/blog.html declare only 5 hreflang tags, fr/blog.html 7 — they miss
-  de/fr/es/pl/hu blogs that exist. de/es/pl/hu/sk blogs have the full 10.
+- The other blogs' short hreflang sets were fixed in the twenty-seventh round.
 - Production command (user runs it, then md5-verify):
 ```bash
 cd /private/tmp/gh-pages-wt3 && scp -P 222 blog-sk.html virtuse.com@ftp.virtuse.com:public_html/
