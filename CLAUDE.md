@@ -2,6 +2,35 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, fourteenth round) — RU medium-severity proofreading committed (`e229eac`, gh-pages `bf235e1`, staging 21/21 md5-verified). **Production held for the PL/HU reason** (ru pages carry the PL/HU switcher; pl/ + hu/ still 301 on production)
+
+**Round 11 of the proofreading pass (user: "oprav teraz medium položky v
+RU") — 21 ru pages** via `scratchpad/fix_medium_ru.py` (clean first run).
+- All 25 medium items + the remaining systemic items (several were
+  already closed in the high round: "Данные о Биткоине", "Только
+  Биткоин", country labels, "Virtuse — это"): «» quotes on aml/privacy/
+  terms (17 pairs; converted in visible text only by splitting the file
+  on script/style/tag tokens), "Доминирование BTC" everywhere including
+  every inflected form and chart label on the dominance page, "сетка
+  ордеров" instead of "grid", "AML и комплаенс", number-first currency in
+  the tax table, one newsletter placeholder, footer copyright.
+- Left as is on purpose: the CEO name "Растислава Василишина" (already
+  properly declined Cyrillic); "поставщики криптоактивных услуг (CASP)"
+  on the two legal pages (formal wording; marketing pages say
+  "поставщики криптоуслуг"); "саморефералами" on terms (correct).
+- EN round-5 carry-overs, same set as the other languages; blog "Новостной
+  деск" → "Virtuse Brief" like EN's blog.
+- CSS: fine print 12px. ru/index concierge CTA fits at 375px, so no
+  change was needed.
+- Verified: tagcheck 0, leftover/quote sweeps clean, browser at 375px on
+  ru/index and ru/btc-dominance (no JS errors besides the known GTM
+  pixel CSP block).
+
+**Production command (hold until pl/ + hu/ ship):**
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 ru/404.html ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/
+```
+
 ## Session status (2026-09-25, thirteenth round) — ES medium-severity proofreading committed (`7887f59`, gh-pages `6a83a2c`, staging 23/23 md5-verified). **Production held for the PL/HU reason** (es pages carry the PL/HU switcher; pl/ + hu/ still 301 on production)
 
 **Round 10 of the proofreading pass (user: "oprav teraz medium položky v
