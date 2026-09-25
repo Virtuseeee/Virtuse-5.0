@@ -572,7 +572,7 @@ img { max-width: 100%; }
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1212,8 +1212,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stat-label">Países atendidos</div>
     </div>
     <div class="stat-box">
-      <div class="stat-value">50+</div>
-      <div class="stat-label">Socios estratégicos</div>
+      <div class="stat-value">26</div>
+      <div class="stat-label">Socios verificados</div>
     </div>
     <div class="stat-box">
       <div class="stat-value">2</div>
@@ -1233,7 +1233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="step">
       <span class="step-num">2022</span>
-      <h3>La transición hacia el Bitcoin exclusivo</h3>
+      <h3>La transición a un modelo solo Bitcoin</h3>
       <p>Una transición estratégica convirtió a Virtuse en un exchange dedicado en exclusiva a Bitcoin: cambió amplitud por profundidad y se comprometió por completo con el dinero más sólido jamás creado.</p>
     </div>
     <div class="step">
@@ -1259,7 +1259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="value-card">
       <h3>Seguridad y confianza</h3>
-      <p>Una sólida red de más de 50 socios estratégicos en todo el mundo garantiza la máxima seguridad y liquidez institucional para nuestra clientela global.</p>
+      <p>Una red de 26 socios verificados en Europa y fuera de ella, seleccionados por su seguridad, sus licencias y su liquidez.</p>
     </div>
     <div class="value-card">
       <h3>Soberanía financiera</h3>
@@ -1322,17 +1322,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="presence-card">
       <h3>Singapur</h3>
       <div class="presence-role">Sede global</div>
-      <p>Ancla nuestras operaciones globales en uno de los principales hubs tecnológicos y financieros del mundo.</p>
+      <p>Sede de nuestras operaciones globales en uno de los principales hubs tecnológicos y financieros del mundo.</p>
     </div>
     <div class="presence-card">
       <h3>Bratislava</h3>
       <div class="presence-role">Operaciones europeas</div>
-      <p>Raíces profundas y experiencia local a través de nuestra oficina operativa, sede de Virtuse Group Pte. Ltd.</p>
+      <p>Raíces profundas y experiencia local a través de nuestra oficina operativa europea.</p>
     </div>
     <div class="presence-card">
       <h3>UE y Asia</h3>
       <div class="presence-role">Virtuse Group</div>
-      <p>Un orgulloso miembro del grupo multinacional Virtuse Group, con presencia estratégica en dos continentes.</p>
+      <p>Virtuse Group está presente en dos continentes, con oficinas en Singapur y Bratislava.</p>
     </div>
   </div>
 </section>
@@ -1353,7 +1353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Newsletter -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1361,7 +1361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1387,7 +1387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1450,7 +1450,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

@@ -687,7 +687,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1324,10 +1324,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h1>Conserve su Bitcoin.<br><span class="highlight">Obtenga el efectivo que necesita.</span></h1>
 
   <p class="hero-desc">
-    No venda su Bitcoin, obtenga un préstamo respaldado por Bitcoin. Virtuse ofrece un servicio mediante el cual los bitcoiners piden efectivo prestado con garantía de su Bitcoin a tipos determinados por el mercado, desde el 6 % anual.
+    No venda su Bitcoin, obtenga un préstamo respaldado por Bitcoin. Virtuse le pone en contacto con socios verificados que prestan efectivo con garantía de su Bitcoin a tipos determinados por el mercado, desde el 6 % anual.
   </p>
   <p class="hero-tool-link">
-    <a href="/sell-vs-borrow-bitcoin/">Compare vender frente a un préstamo respaldado por Bitcoin</a>
+    <a href="/sell-vs-borrow-bitcoin/">Compare la venta con un préstamo respaldado por Bitcoin</a>
   </p>
 
 
@@ -1386,7 +1386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="lending-types">
     <div class="ltype-card">
       <h3>Prestatarios</h3>
-      <p>Use su Bitcoin como garantía para pedir prestado en moneda fiduciaria (EUR, CHF, CZK) o en stablecoins (USDC). Conserve su exposición a Bitcoin, evite el impuesto sobre las ganancias patrimoniales y acceda a liquidez sin vender. LTV de hasta el 50 %. Plazos de 3 a 24 meses. Tipos desde el 5 % anual.</p>
+      <p>Use su Bitcoin como garantía para pedir prestado en moneda fiduciaria (EUR, CHF, CZK) o en stablecoins (USDC). Conserve su exposición a Bitcoin, difiera la tributación de las ganancias patrimoniales (un préstamo no es una venta sujeta a impuestos) y acceda a liquidez sin vender. LTV de hasta el 50 %. Plazos de 3 a 24 meses. Tipos desde el 5 % anual.</p>
     </div>
     <div class="ltype-card">
       <h3>Inversores / prestamistas</h3>
@@ -1451,7 +1451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Divisas</span>
-          <span class="pcard-terms-value">EUR, CZK, USDC</span>
+          <span class="pcard-terms-value">EUR, CHF, CZK, USDC</span>
         </div>
       </div>
 
@@ -1490,7 +1490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1498,7 +1498,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1524,7 +1524,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1589,7 +1589,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

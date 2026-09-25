@@ -914,7 +914,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1184,7 +1184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Calculadora de <span class="highlight">Jubilación</span></h1>
+  <h1>Calculadora de <span class="highlight">jubilación</span></h1>
   <p class="hero-desc">Modele su camino hacia la jubilación con Bitcoin. Defina su stack, su tasa de ahorro y sus supuestos de crecimiento: la calculadora proyecta sus años de acumulación y luego pone a prueba si su Bitcoin puede financiar su gasto de jubilación de por vida.</p>
 </section>
 
@@ -1198,7 +1198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="rainbow-chart.html">&#9670; Gráfico arcoíris</a>
     <a href="root-cycles.html">&#9670; Ciclos en escala raíz</a>
     <a href="trading-volume.html">&#9670; Volumen de negociación</a>
-    <a href="fear-greed.html">&#9670; Miedo y Codicia</a>
+    <a href="fear-greed.html">&#9670; Miedo y codicia</a>
   </nav>
 </div>
 
@@ -1288,29 +1288,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="result-grid">
       <div class="result-box">
-        <div class="result-label">BTC en la Jubilación</div>
+        <div class="result-label">BTC en la jubilación</div>
         <div class="result-value orange" id="rBtc">—</div>
         <div class="result-sub" id="rBtcSub">después de años acumulando</div>
       </div>
       <div class="result-box">
-        <div class="result-label">Valor en la Jubilación</div>
+        <div class="result-label">Valor en la jubilación</div>
         <div class="result-value" id="rValue">—</div>
         <div class="result-sub">proyectado, en dólares nominales</div>
       </div>
       <div class="result-box">
-        <div class="result-label">Gasto del Primer Año</div>
+        <div class="result-label">Gasto del primer año</div>
         <div class="result-value" id="rSpend">—</div>
         <div class="result-sub">ajustado a la inflación al jubilarse</div>
       </div>
       <div class="result-box">
-        <div class="result-label">BTC Necesario Hoy</div>
+        <div class="result-label">BTC necesario hoy</div>
         <div class="result-value orange" id="rNeeded">—</div>
         <div class="result-sub">para jubilarse sin ahorro adicional</div>
       </div>
     </div>
 
     <div class="panel chart-panel">
-      <h3><span class="ico">◆</span> Proyección de la Cartera</h3>
+      <h3><span class="ico">◆</span> Proyección de la cartera</h3>
       <div class="chart-legend">
         <span><span class="legend-dot" style="background:var(--btc-orange)"></span> Acumulación</span>
         <span><span class="legend-dot" style="background:var(--green)"></span> Retiro en la jubilación</span>
@@ -1327,7 +1327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1335,7 +1335,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1361,7 +1361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1424,7 +1424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
