@@ -688,6 +688,8 @@ body {
 @media (max-width: 700px) {
   .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
   .concierge-banner-inner { flex-direction: column; padding: 24px; }
+  /* The German CTA label is too long for one line at phone width */
+  .concierge-banner-cta { white-space: normal; justify-content: center; text-align: center; }
 }
 
 /* ===== BITCOIN IS YOUR CREDIT (Buy Bitcoin, firefish.io "Bitcoin is your
@@ -1558,7 +1560,7 @@ body {
   text-align: center;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   max-width: 1400px;
   margin: 6px auto 0;
   padding: 0 48px;
@@ -2458,6 +2460,11 @@ a.nav-logo, .nav-logo {
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -2804,7 +2811,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="credit-copy">
       <h2 class="credit-lead">
         <strong>Bitcoin ist Ihr Kredit.</strong>
-        <span>Kaufen Sie Bitcoin über MiCA-lizenzierte europäische Börsen. Richten Sie automatische Sparpläne oder Einmalkäufe ein — Ihr BTC geht vom ersten Tag an direkt in Ihr Wallet.</span>
+        <span>Kaufen Sie Bitcoin über MiCA-lizenzierte europäische Börsen. Richten Sie automatische Sparpläne oder Einmalkäufe ein – Ihre BTC landen vom ersten Tag an direkt in Ihrer Wallet.</span>
       </h2>
       <a href="buy-bitcoin.html" class="problem-link">
         Geprüfte Börsen ansehen
@@ -2831,7 +2838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="secure.html" class="svc-card anim-card">
       <h3>Verwahrung</h3>
-      <p>Multisig-Tresore mit integrierter Erbschaftsplanung.</p>
+      <p>Multisig-Tresore und Hardware-Wallets, damit Ihre Schlüssel offline bleiben.</p>
     </a>
 
     <a href="mining.html" class="svc-card anim-card">
@@ -2840,13 +2847,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <a href="bots.html" class="svc-card anim-card">
-      <h3>Trading Bots</h3>
+      <h3>Trading-Bots</h3>
       <p>Non-Custodial-Bots für DCA, Grid und individuelle Strategien.</p>
     </a>
 
     <a href="lending.html" class="svc-card anim-card">
       <h3>Kredite</h3>
-      <p>Beleihen Sie Ihr Bitcoin statt es zu verkaufen, ab 6 % p. a.</p>
+      <p>Beleihen Sie Ihren Bitcoin, statt ihn zu verkaufen – ab 6 % p. a.</p>
     </a>
 
     <a href="treasury.html" class="svc-card anim-card">
@@ -2886,7 +2893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Schritt 02</span>
         <h3>Mit Partner verbinden</h3>
-        <p>Onboarding läuft auf dessen regulierter Plattform ab. Virtuse verwaltet niemals Ihre Schlüssel, Gelder oder Daten.</p>
+        <p>Das Onboarding läuft auf der regulierten Plattform des Partners ab. Virtuse verwaltet niemals Ihre Schlüssel, Gelder oder Daten.</p>
         <a href="../concierge.html?utm_source=concierge&amp;utm_medium=how" class="how-card-cta">
           In 60 Sekunden passenden Partner finden
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2900,7 +2907,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Bauen Sie Ihren Bestand aus</h3>
         <p>Legen Sie Ihren Rhythmus fest, vergleichen Sie die Gebühren aller Partner und automatisieren Sie mit Bots.</p>
         <a href="../stacking.html?utm_source=stacking&amp;utm_medium=widget" class="how-card-cta">
-          Meinen Sparplan planen
+          Meinen Sparplan erstellen
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -2921,7 +2928,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a>
       <a href="/de/bitcoin-dca-rechner/">DCA-Rechner</a>
       <a href="/de/bitcoin-verkaufen-oder-beleihen/">Verkaufen oder beleihen</a>
-      <a href="/de/bitcoin-erbrecht/">Erbrecht</a>
+      <a href="/de/bitcoin-erbrecht/">Erbschaft</a>
     </div>
   </div>
 </section>
@@ -3068,7 +3075,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Wie funktioniert der Hub?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Drei Schritte: Wählen Sie einen Dienst, vergleichen Sie unsere geprüften Partner direkt nebeneinander und klicken Sie sich zur regulierten Plattform des Partners durch. Alles Weitere, Konto, Verifizierung, Transaktionen, läuft direkt über den Partner. Ihr Bitcoin bleibt dabei unter Ihrer Kontrolle.</div>
+      <div class="qa-answer">Drei Schritte: Wählen Sie einen Dienst, vergleichen Sie unsere geprüften Partner direkt nebeneinander und klicken Sie sich zur regulierten Plattform des Partners durch. Alles Weitere – Konto, Verifizierung, Transaktionen – läuft direkt über den Partner. Ihr Bitcoin bleibt dabei unter Ihrer Kontrolle.</div>
     </details>
     <details class="qa-item">
       <summary>Wie wählen Sie Partner aus?<span class="qa-icon"></span></summary>
@@ -3080,7 +3087,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Was berechnet Virtuse?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Nichts. Durchstöbern, Vergleichen und der Durchklick zu Partnern ist kostenlos. Virtuse erhält eine Vermittlungsprovision von Partnern, wenn Sie sich anmelden, ohne dass Ihnen dadurch zusätzliche Kosten entstehen. Über Virtuse zahlen Sie nie mehr.</div>
+      <div class="qa-answer">Nichts. Durchstöbern, Vergleichen und die Weiterleitung zu Partnern sind kostenlos. Virtuse erhält eine Vermittlungsprovision von Partnern, wenn Sie sich anmelden, ohne dass Ihnen dadurch zusätzliche Kosten entstehen. Über Virtuse zahlen Sie nie mehr.</div>
     </details>
     <details class="qa-item">
       <summary>Verlangt Virtuse eine KYC-Prüfung?<span class="qa-icon"></span></summary>
@@ -3172,7 +3179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a>
         <a href="/de/bitcoin-dca-rechner/">DCA-Rechner</a>
         <a href="/de/bitcoin-verkaufen-oder-beleihen/">Verkaufen oder beleihen</a>
-        <a href="/de/bitcoin-erbrecht/">Erbrecht</a>
+        <a href="/de/bitcoin-erbrecht/">Erbschaft</a>
       </div>
       <div class="footer-col">
         <h4>Informationen</h4>
@@ -3183,8 +3190,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

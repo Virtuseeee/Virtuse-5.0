@@ -467,7 +467,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ===== MOBILE MENU ===== */
@@ -787,6 +787,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -902,7 +907,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Häufig gestellte <span class="highlight">Fragen</span></h1>
-  <p class="hero-desc">Alles, was Sie über Virtuse, unser Partner-Hub, Sicherheit, Gebühren und den Einstieg wissen müssen, verständlich erklärt.</p>
+  <p class="hero-desc">Alles, was Sie über Virtuse, unseren Partner-Hub, Sicherheit, Gebühren und den Einstieg wissen müssen, verständlich erklärt.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
@@ -945,12 +950,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Auf welche Dienste kann ich über Virtuse zugreifen?</summary>
-    <div class="faq-answer">Acht Kategorien, jede mit sorgfältig ausgewählten Partnern: <strong>Bitcoin kaufen</strong> (MiCA-lizenzierte CASPs wie 21bitcoin, Kraken und ByBit EU), <strong>Mining</strong> (Hosted Mining mit OneMiners, Abundant Mines, Power Mining), <strong>Kredite</strong> (Bitcoin-besicherte Kredite über Firefish, Sie behalten Ihre BTC und erhalten Bargeld), <strong>Verwahrung</strong> (Hardware-Wallets von Trezor und Ledger), <strong>Treasury</strong> (institutionelle Verwahrung mit Coinbase Institutional, Sygnum, BitGo), <strong>Steuern</strong> (Divly, Blockpit, CoinTracking), <strong>Trading-Bots</strong> (Coinrule, Cryptohopper, RevenueBot), sowie kostenlose <a href="bitcoin-data.html">Bitcoin-Daten</a>-Tools: Live-Dashboard, Renten-Rechner, Rainbow Chart und mehr.</div>
+    <div class="faq-answer">Sieben Servicekategorien, jede mit sorgfältig ausgewählten Partnern: <strong>Bitcoin kaufen</strong> (MiCA-lizenzierte CASPs wie 21bitcoin, Kraken und ByBit EU), <strong>Mining</strong> (Hosted Mining mit OneMiners, Abundant Mines, Power Mining), <strong>Kredite</strong> (Bitcoin-besicherte Kredite über Firefish, Sie behalten Ihre BTC und erhalten Bargeld), <strong>Verwahrung</strong> (Hardware-Wallets von Trezor, Ledger und Blockstream Jade), <strong>Treasury</strong> (institutionelle Verwahrung mit Coinbase Institutional, Sygnum, BitGo), <strong>Steuern</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Trading-Bots</strong> (Coinrule, Cryptohopper, RevenueBot), sowie kostenlose <a href="bitcoin-data.html">Bitcoin-Daten</a>-Tools: Live-Dashboard, Ruhestandsrechner, Regenbogen-Chart und mehr.</div>
   </details>
 
   <details>
     <summary>Wie funktioniert der Hub?</summary>
-    <div class="faq-answer">Drei Schritte: Wählen Sie einen Dienst, vergleichen Sie unsere geprüften Partner direkt nebeneinander und klicken Sie sich zur regulierten Plattform des Partners durch. Alles Weitere, Konto, Verifizierung, Transaktionen, läuft direkt über den Partner. Ihr Bitcoin bleibt dabei unter Ihrer Kontrolle.</div>
+    <div class="faq-answer">Drei Schritte: Wählen Sie einen Dienst, vergleichen Sie unsere geprüften Partner direkt nebeneinander und klicken Sie sich zur regulierten Plattform des Partners durch. Alles Weitere – Konto, Verifizierung, Transaktionen – läuft direkt über den Partner. Ihr Bitcoin bleibt dabei unter Ihrer Kontrolle.</div>
   </details>
 
   <details>
@@ -985,12 +990,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Was berechnet Virtuse?</summary>
-    <div class="faq-answer">Nichts. Durchstöbern, Vergleichen und der Durchklick zu Partnern ist kostenlos. Virtuse erhält eine Vermittlungsprovision von Partnern, wenn Sie sich anmelden, ohne dass Ihnen dadurch zusätzliche Kosten entstehen. Über Virtuse zahlen Sie nie mehr.</div>
+    <div class="faq-answer">Nichts. Durchstöbern, Vergleichen und die Weiterleitung zu Partnern sind kostenlos. Virtuse erhält eine Vermittlungsprovision von Partnern, wenn Sie sich anmelden, ohne dass Ihnen dadurch zusätzliche Kosten entstehen. Über Virtuse zahlen Sie nie mehr.</div>
   </details>
 
   <details>
     <summary>Welche Gebühren zahle ich bei den Partnern?</summary>
-    <div class="faq-answer">Jeder Partner legt seine eigenen Preise fest. Aktuell gelistete Beispiele: Kraken Pro Trading ab 0,16 %, ByBit EU Spot ab 0,1 %, 21bitcoin Auto-Invest-Sparpläne mit 0 % Gebühren, Mining-Hosting ab ca. 0,043 $/kWh, und Steuertools ab 39 €/Jahr (CoinTracking bietet eine kostenlose Stufe bis 200 Transaktionen). Bestätigen Sie die aktuellen Preise immer auf der Website des jeweiligen Partners.</div>
+    <div class="faq-answer">Jeder Partner legt seine eigenen Preise fest. Aktuell gelistete Beispiele: Kraken Pro Trading ab 0,16 %, ByBit EU Spot ab 0,1 %, 21bitcoin Auto-Invest-Sparpläne mit 0 % Gebühren, Mining-Hosting ab ca. 0,043 $/kWh, und Steuertools ab 39 €/Jahr (CoinTracking bietet einen kostenlosen Tarif bis 200 Transaktionen). Bestätigen Sie die aktuellen Preise immer auf der Website des jeweiligen Partners.</div>
   </details>
 </section>
 
@@ -1000,7 +1005,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Kann ich bei Virtuse handeln?</summary>
-    <div class="faq-answer">Der Handel findet auf den Plattformen unserer Partner statt, nicht bei Virtuse. Für Spot-Kauf und -Verkauf nutzen Sie einen <a href="buy-bitcoin.html">Bitcoin-kaufen</a>-Partner. Für automatisierte Strategien (DCA, Grid, Rebalancing) verbinden sich unsere <a href="bots.html">Bot-Partner</a> über API-Schlüssel mit Ihrem Börsenkonto, non-custodial, sodass der Bot Ihre Coins nie hält.</div>
+    <div class="faq-answer">Der Handel findet auf den Plattformen unserer Partner statt, nicht bei Virtuse. Für Spot-Kauf und -Verkauf nutzen Sie einen <a href="buy-bitcoin.html">Bitcoin-kaufen</a>-Partner. Für automatisierte Strategien (DCA, Grid, Rebalancing) verbinden sich unsere <a href="bots.html">Bot-Partner</a> über API-Schlüssel mit Ihrem Börsenkonto (Non-Custodial), sodass der Bot Ihre Coins nie hält.</div>
   </details>
 
   <details>
@@ -1159,8 +1164,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

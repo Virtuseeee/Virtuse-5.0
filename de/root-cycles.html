@@ -563,7 +563,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ===== MOBILE MENU ===== */
@@ -883,6 +883,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1042,7 +1047,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <iframe src="https://bitcoinwave.net/rootchart.htm" title="Bitcoin-Root-Scale-Cycles-Chart von Bitcoin Wave" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
     <div class="chart-note">
-      Live-interaktiver Chart, direkt eingebettet von <a href="https://bitcoinwave.net" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);">bitcoinwave.net</a>. Keine Anlageberatung und kein von Virtuse entwickeltes Modell. Wir zeigen ihn, weil er eine der klarsten visuellen Erklärungen der Bitcoin-Zyklusstruktur ist, die uns begegnet ist.
+      Live-interaktiver Chart, direkt eingebettet von <a href="https://bitcoinwave.net" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);">bitcoinwave.net</a>. Keine Anlageberatung und kein von Virtuse entwickeltes Modell. Wir zeigen ihn, weil er eine der klarsten visuellen Erklärungen der Bitcoin-Zyklusstruktur ist, die uns begegnet sind.
     </div>
   </div>
 </section>
@@ -1166,8 +1171,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

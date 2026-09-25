@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Trading-Bots | Virtuse">
-<meta property="og:description" content="Betreiben Sie non-custodial Trading-Bots, die sich über reine Lese- oder Handels-API-Schlüssel verbinden. Ihr Bitcoin bleibt auf Ihrer Börse. Keine Auszahlungsrechte, keine Verwahrung.">
+<meta property="og:description" content="Betreiben Sie Non-Custodial-Trading-Bots, die sich über API-Schlüssel mit reinen Lese- oder Handelsrechten verbinden. Ihr Bitcoin bleibt auf Ihrer Börse. Keine Auszahlungsrechte, keine Verwahrung.">
 <meta property="og:url" content="https://virtuse.com/de/bots.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Trading-Bots | Virtuse">
-<meta name="twitter:description" content="Betreiben Sie non-custodial Trading-Bots, die sich über reine Lese- oder Handels-API-Schlüssel verbinden. Ihr Bitcoin bleibt auf Ihrer Börse. Keine Auszahlungsrechte, keine Verwahrung.">
+<meta name="twitter:description" content="Betreiben Sie Non-Custodial-Trading-Bots, die sich über API-Schlüssel mit reinen Lese- oder Handelsrechten verbinden. Ihr Bitcoin bleibt auf Ihrer Börse. Keine Auszahlungsrechte, keine Verwahrung.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -572,7 +572,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1107,6 +1107,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1225,7 +1230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-content animate">
 
       <h1>Automatisieren Sie Ihre Bitcoin-Strategie mit<br><span style="color:var(--text)">Trading-Bots</span></h1>
-      <p>Betreiben Sie non-custodial Trading-Bots, die sich über reine Lese- oder Handels-API-Schlüssel verbinden. Ihr Bitcoin bleibt auf Ihrer Börse, der Bot führt lediglich Ihre Strategie aus. Keine Auszahlungsrechte, keine Verwahrung.</p>
+      <p>Betreiben Sie Non-Custodial-Trading-Bots, die sich über API-Schlüssel mit reinen Lese- oder Handelsrechten verbinden. Ihr Bitcoin bleibt auf Ihrer Börse, der Bot führt lediglich Ihre Strategie aus. Keine Auszahlungsrechte, keine Verwahrung.</p>
       </div>
   </section>
 
@@ -1274,7 +1279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="categories">
     <div class="section-header animate delay-1">
       <h2>Zwei <span>Wege zur Automatisierung</span></h2>
-      <p>Wählen Sie das Bereitstellungsmodell, das zu Ihrem technischen Komfort und Ihren Datenschutzbedürfnissen passt</p>
+      <p>Wählen Sie das Betriebsmodell, das zu Ihren technischen Kenntnissen und Ihren Datenschutzansprüchen passt</p>
     </div>
     <div class="cat-grid">
       <div class="cat-card cloud animate delay-2">
@@ -1283,7 +1288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="cat-card self animate delay-3">
         <h3>Selbst gehostete Bots</h3>
-        <p>Betrieb auf Ihrem eigenen Server (VPS). Volle Kontrolle, Open Source. Ideal für datenschutzbewusste Trader, die vollständige Souveränität über ihre Trading-Infrastruktur wünschen.</p>
+        <p>Betrieb auf Ihrem eigenen Server (VPS) mit voller Kontrolle. Unsere gelisteten Partner sind Cloud-Plattformen; Self-Hosting eignet sich für datenschutzbewusste Trader, die vollständige Souveränität über ihre Trading-Infrastruktur wünschen.</p>
       </div>
     </div>
   </section>
@@ -1292,7 +1297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="partners">
     <div class="section-header animate delay-1">
       <h2>Bot-Partner</h2>
-      <p>Vergleichen Sie non-custodial Trading-Bot-Plattformen und finden Sie die passende Lösung</p>
+      <p>Vergleichen Sie Non-Custodial-Trading-Bot-Plattformen und finden Sie die passende Lösung</p>
     </div>
     <div class="partner-grid">
 
@@ -1305,9 +1310,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Explizit non-custodial. Reine Handels-API, keine Auszahlungen. Über 410.000 Trader. Von Y Combinator finanziert. Wachstumsphase mit partnerschaftsfreundlichen Konditionen.</p>
+          <p class="partner-desc">Explizit Non-Custodial. Reine Handels-API, keine Auszahlungen. Über 410.000 Trader. Von Y Combinator finanziert.</p>
           <ul class="partner-features">
-            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Explizit non-custodial</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Explizit Non-Custodial</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Über 150 Strategievorlagen</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Jede Börse unterstützt</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Backtesting-Engine</li>
@@ -1315,7 +1320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="partner-footer">
           <a href="https://coinrule.com/?fp_ref=virtuse" target="_blank" rel="noopener" class="btn btn-primary">
-            Coinrule erhalten
+            Coinrule öffnen
             <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -1340,7 +1345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="partner-footer">
           <a href="https://www.cryptohopper.com/?atid=40864" target="_blank" rel="noopener" class="btn btn-primary">
-            Cryptohopper erhalten
+            Cryptohopper öffnen
             <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -1355,17 +1360,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Cloud-DCA- und Grid-Bots für Binance, OKX und Bitget. Einfache Oberfläche, auf Bitcoin fokussierte Strategien. Alle Empfehlungsprovisionen werden in BTC ausgezahlt.</p>
+          <p class="partner-desc">Cloud-DCA- und Grid-Bots für Binance, OKX und Bitget. Einfache Oberfläche, auf Bitcoin fokussierte Strategien.</p>
           <ul class="partner-features">
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> DCA- und Grid-Bots</li>
-            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> BTC-Empfehlungsprovisionen</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Binance / OKX / Bitget</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Einfache, übersichtliche Oberfläche</li>
           </ul>
         </div>
         <div class="partner-footer">
           <a href="https://app.revenuebot.io/external/r/90928" target="_blank" rel="noopener" class="btn btn-primary">
-            RevenueBot erhalten
+            RevenueBot öffnen
             <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -1476,8 +1480,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

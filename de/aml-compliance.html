@@ -467,7 +467,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ===== MOBILE MENU ===== */
@@ -787,6 +787,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -937,7 +942,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Hat MiCA die AMLD5 ersetzt?</summary>
-    <div class="faq-answer">Nein: Es handelt sich um zwei parallele Regelwerke. <strong>MiCA</strong> (Verordnung (EU) 2023/1114) regelt den Marktzugang und das Marktverhalten: die Zulassung von Anbietern von Krypto-Dienstleistungen (CASP), Offenlegungspflichten und Verbraucherschutz. <strong>Die Geldwäscheprävention bleibt ein eigenständiges Regelwerk</strong>, und jeder MiCA-lizenzierte CASP ist danach eine „verpflichtete Einrichtung". Eine MiCA-Lizenz begründet zusätzliche AML-Pflichten; sie hebt diese niemals auf.</div>
+    <div class="faq-answer">Nein: Es handelt sich um zwei parallele Regelwerke. <strong>MiCA</strong> (Verordnung (EU) 2023/1114) regelt den Marktzugang und das Marktverhalten: die Zulassung von Anbietern von Krypto-Dienstleistungen (CASP), Offenlegungspflichten und Verbraucherschutz. <strong>Die Geldwäscheprävention bleibt ein eigenständiges Regelwerk</strong>, und jeder MiCA-lizenzierte CASP ist danach eine „verpflichtete Einrichtung“. Eine MiCA-Lizenz begründet zusätzliche AML-Pflichten; sie hebt diese niemals auf.</div>
   </details>
 
   <details>
@@ -947,7 +952,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Die Travel Rule</summary>
-    <div class="faq-answer">Die neu gefasste <strong>Geldtransferverordnung</strong> (Verordnung (EU) 2023/1113) gilt seit Dezember 2024 parallel zu MiCA. Sie erweitert die „Travel Rule" auf Krypto-Assets: Angaben zum Auftraggeber und zum Begünstigten müssen jeden von CASPs abgewickelten Krypto-Asset-Transfer begleiten. Aus diesem Grund fragen lizenzierte Plattformen bei Auszahlungen an Self-Custody-Wallets nach dem Bestimmungsort.</div>
+    <div class="faq-answer">Die neu gefasste <strong>Geldtransferverordnung</strong> (Verordnung (EU) 2023/1113) gilt seit Dezember 2024 parallel zu MiCA. Sie erweitert die „Travel Rule“ auf Krypto-Assets: Angaben zum Auftraggeber und zum Begünstigten müssen jeden von CASPs abgewickelten Krypto-Asset-Transfer begleiten. Aus diesem Grund fragen lizenzierte Plattformen bei Auszahlungen an Self-Custody-Wallets nach dem Bestimmungsort.</div>
   </details>
 </section>
 
@@ -972,7 +977,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Unsere begrenzte Rolle im AML-Rahmen</summary>
-    <div class="faq-answer">Als non-custodial Referral-Hub tauscht Virtuse keine Krypto-Assets, verwahrt keine Kundengelder oder Schlüssel und leitet kein Geld weiter; die Website, auf der Sie sich befinden, führt daher <strong>selbst nicht die regulierten Tätigkeiten aus</strong>, die die Pflichten einer verpflichteten Einrichtung nach dem EU-AML-Rahmen auslösen. Unsere Rolle ist die Kuratierung: Wir listen Partner nur, wenn sie über die entsprechenden EU-Lizenzen verfügen und solide AML-Programme betreiben, und wir entfernen Partner, die diesen Anforderungen nicht genügen.</div>
+    <div class="faq-answer">Als Non-Custodial-Referral-Hub tauscht Virtuse keine Krypto-Assets, verwahrt keine Kundengelder oder Schlüssel und leitet kein Geld weiter; die Website, auf der Sie sich befinden, führt daher <strong>selbst nicht die regulierten Tätigkeiten aus</strong>, die die Pflichten einer verpflichteten Einrichtung nach dem EU-AML-Rahmen auslösen. Unsere Rolle ist die Kuratierung: Wir listen Partner nur, wenn sie über die entsprechenden EU-Lizenzen verfügen und solide AML-Programme betreiben, und wir entfernen Partner, die diesen Anforderungen nicht genügen.</div>
   </details>
 
   <details>
@@ -987,7 +992,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Was Sie bei der Nutzung von Partnerdiensten erwarten können</summary>
-    <div class="faq-answer">Sie durchlaufen <strong>einmal pro Partnerplattform eine Identitätsprüfung</strong>, in der Regel einen amtlichen Ausweis und einen Selfie-Abgleich, was nur wenige Minuten dauert, bevor Sie handeln oder Geld abheben können. Bei größeren Transaktionen können Fragen zur Herkunft der Mittel gestellt werden, und Übertragungen zwischen Plattformen enthalten Angaben gemäß der Travel Rule. Keine dieser Daten läuft über Virtuse; siehe unsere <a href="privacy-policy.html">Datenschutzerklärung</a>.</div>
+    <div class="faq-answer">Sie durchlaufen <strong>einmal pro Partnerplattform eine Identitätsprüfung</strong>, in der Regel einen amtlichen Ausweis und einen Selfie-Abgleich, was nur wenige Minuten dauert, bevor Sie handeln oder Geld abheben können. Bei größeren Transaktionen können Fragen zur Herkunft der Mittel gestellt werden, und Übertragungen zwischen Plattformen enthalten Angaben gemäß der Travel Rule. Nichts davon läuft über Virtuse; siehe unsere <a href="privacy-policy.html">Datenschutzerklärung</a>.</div>
   </details>
 
   <details>
@@ -1096,8 +1101,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

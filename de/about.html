@@ -574,7 +574,7 @@ img { max-width: 100%; }
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1090,6 +1090,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1205,7 +1210,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-  <h1>Die reine Bitcoin-<br><span class="highlight">Infrastruktur-Drehscheibe</span></h1>
+  <h1>Der Infrastruktur-Hub<br><span class="highlight">für reine Bitcoin-Services</span></h1>
   <p class="hero-desc">
     Virtuse wurde 2018 gegründet und schafft das Fundament für die grenzenlose Geldwirtschaft. Wir helfen Investoren, Vermögen für Generationen aufzubauen und zu schützen, mit einem kompromisslosen Bekenntnis zu Bitcoin, finanzieller Souveränität und sicherer monetärer Freiheit.
   </p>
@@ -1219,8 +1224,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stat-label">Bediente Länder</div>
     </div>
     <div class="stat-box">
-      <div class="stat-value">50+</div>
-      <div class="stat-label">Strategische Partner</div>
+      <div class="stat-value">26</div>
+      <div class="stat-label">Geprüfte Partner</div>
     </div>
     <div class="stat-box">
       <div class="stat-value">2</div>
@@ -1251,7 +1256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="step">
       <span class="step-num">Heute</span>
       <h3>Ein globales Netzwerk</h3>
-      <p>Virtuse arbeitet heute als globale Infrastruktur-Drehscheibe und liefert ein vollständiges Angebot an Bitcoin-Services an Kunden in über 100 Ländern über ein sicheres Netzwerk auf institutionellem Niveau.</p>
+      <p>Virtuse arbeitet heute als globaler Infrastruktur-Hub und liefert ein vollständiges Angebot an Bitcoin-Services an Kunden in über 100 Ländern über ein sicheres Netzwerk auf institutionellem Niveau.</p>
     </div>
   </div>
 </section>
@@ -1266,7 +1271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="value-card">
       <h3>Sicherheit &amp; Vertrauen</h3>
-      <p>Ein robustes Netzwerk aus über 50 strategischen Partnern weltweit sichert unserer globalen Kundschaft maximale Sicherheit und institutionelle Liquidität.</p>
+      <p>Ein Netzwerk aus 26 geprüften Partnern in Europa und darüber hinaus, ausgewählt nach Sicherheit, Lizenzierung und Liquidität.</p>
     </div>
     <div class="value-card">
       <h3>Finanzielle Souveränität</h3>
@@ -1334,12 +1339,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="presence-card">
       <h3>Bratislava</h3>
       <div class="presence-role">Europäischer Betrieb</div>
-      <p>Tiefe Wurzeln und lokale Expertise durch unser operatives Büro, den Sitz der Virtuse Group Pte. Ltd.</p>
+      <p>Tiefe Wurzeln und lokale Expertise durch unser europäisches operatives Büro.</p>
     </div>
     <div class="presence-card">
       <h3>EU &amp; Asien</h3>
       <div class="presence-role">Virtuse Group</div>
-      <p>Ein stolzes Mitglied der multinationalen Virtuse Group mit strategischer Präsenz auf zwei Kontinenten.</p>
+      <p>Die Virtuse Group ist auf zwei Kontinenten tätig, mit Büros in Singapur und Bratislava.</p>
     </div>
   </div>
 </section>
@@ -1457,8 +1462,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">
