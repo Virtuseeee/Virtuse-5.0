@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, second round) — Proofreading proposal delivered (628 findings, 8 languages); EN + RU high-severity fixes committed (`54b1de2`, gh-pages `996a089`, staging 31/31 md5-verified; production command below, not yet run)
+## Session status (2026-09-25, second round) — Proofreading proposal delivered (628 findings, 8 languages); EN + RU high-severity fixes committed (`54b1de2`, gh-pages `996a089`, staging 31/31 md5-verified; **live on production** — user ran the scp, 31/31 md5-verified on virtuse.com)
 
 **Proofreading proposal:** all 8 language reports are in (EN 62, SK 99,
 CS 89, FR 76, UK 62, ES 64, RU 82, DE 94 = 628 findings: 64 high, 261
@@ -48,8 +48,9 @@ Singapore entity on about.html).
   tagcheck 0 errors on all 31, leftover-string sweep clean, sub-nav has
   exactly one rainbow + one root-cycles link and ≤1 active per page.
 
-**Next:** run the production command below and md5-verify with
-`scratchpad/verify_staging_proof.sh virtuse.com`; then the user decides on
+**Production done 2026-09-25** (31/31 md5 match; live checks: root-cycles title + both sub-nav links, lending 6 %, ru title "Данные о Биткоине", ru/secure H1 + labels).
+
+**Next:** the user decides on
 the register question (Brief block tú/du) and the medium/low rounds per
 language. Remaining high items: SK 3, CS 10, FR 5, UK 10, ES 5, DE 11.
 
