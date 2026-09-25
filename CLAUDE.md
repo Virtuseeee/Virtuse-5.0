@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, twenty-fifth round) — pl/hu de hreflang on fear-greed + trading-volume (`95f6f5a`, gh-pages `54809d3`, staging 4/4 md5-verified)
+## Session status (2026-09-25, twenty-fifth round) — pl/hu de hreflang on fear-greed + trading-volume (`95f6f5a`, gh-pages `54809d3`, staging 4/4 md5-verified; **live on production**, 4/4 md5-verified on virtuse.com)
 
 - pl/fear-greed, pl/trading-volume, hu/fear-greed, hu/trading-volume
   did not list the existing de/ versions; added. The sitemap already had
