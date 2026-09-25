@@ -2,6 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-fifth round) — pl/hu de hreflang on fear-greed + trading-volume (`95f6f5a`, gh-pages `54809d3`, staging 4/4 md5-verified)
+
+- pl/fear-greed, pl/trading-volume, hu/fear-greed, hu/trading-volume
+  did not list the existing de/ versions; added. The sitemap already had
+  de for them.
+- **Full hreflang reciprocity audit over every page in all 10 languages
+  now reports 0 issues.** Not counted, on purpose: 404 pages (noindex,
+  partial hreflang sets inherited from EN's 404 — search engines ignore
+  them) and blog pages (Slovak points to blog-sk.html by design).
+- Production command (4 files, user runs it, then md5-verify):
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 pl/fear-greed.html pl/trading-volume.html virtuse.com@ftp.virtuse.com:public_html/pl/ && \
+scp -P 222 hu/fear-greed.html hu/trading-volume.html virtuse.com@ftp.virtuse.com:public_html/hu/
+```
+
 ## Session status (2026-09-25, twenty-fourth round) — pl/hu fine print 12px + about glow clip (`37b2e73`, gh-pages `7e15134`, staging 44/44 md5-verified; **live on production** — user ran the scp, 44/44 md5-verified on virtuse.com). main == staging == production again
 
 - All 44 pl/hu pages (not the two 404s) had the plain `.brief-fineprint`
@@ -70,8 +86,7 @@ scp -P 222 uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.htm
 - Open decisions for the user: the "Bitcoin is your credit." headline
   (kept in all languages), ByBit vs Bybit spelling, the UK CEO name form,
   ES usted register (applied), CASP vs PSCA on FR legal pages.
-- Still open, not proofreading: pl/hu fear-
-  greed/trading-volume lack a DE hreflang; blog-sk structural drift (no
+- Still open, not proofreading: blog-sk structural drift (no
   Brief nav item, no CS in its switcher); native-speaker review of the
   legal pages in every language.
 
