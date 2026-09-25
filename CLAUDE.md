@@ -2,7 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, seventh round) — SK medium-severity proofreading fixes + EN carry-overs committed (`114c4a4`, gh-pages `ef1dd23`, staging 23/23 md5-verified; production command below, not yet run)
+## Session status (2026-09-25, seventh round) — SK medium-severity proofreading fixes + EN carry-overs committed (`114c4a4`, gh-pages `ef1dd23`, staging 23/23 md5-verified; **live on production** — 23/23 md5-verified on virtuse.com)
+
+**Production done 2026-09-25** (the user's first scp run did not land — all 23 files still matched the previous gh-pages version and carried Sep-24 timestamps; caught by the md5 check, re-run landed: 23/23 match, live checks: 9 Quick Answers on sk/index, "Odoberať"/"E-mailová adresa", "26. júna 2026", about 26 partners, bots title "Obchodné boty", blog-sk "Jazyk blogu" + dates). **Lesson reconfirmed: always md5-verify after the user reports "done"; a silent no-op upload looks identical to success from the chat.**
 
 **Round 6 (user: "oprav teraz medium položky v SK") — 23 files** via
 `scratchpad/fix_medium_sk.py` (aborted once on blog-sk's JSON `"months"`
