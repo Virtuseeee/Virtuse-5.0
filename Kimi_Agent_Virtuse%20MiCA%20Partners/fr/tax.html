@@ -692,6 +692,19 @@ a.nav-logo, .nav-logo {
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* ===== GET THE BRIEF (newsletter card) ===== */
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
+.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
+.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
+.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
+.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
+.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
+.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 </style>
 </head>
 <body>
@@ -1051,14 +1064,17 @@ Royaume-Uni
 <!-- Disclaimer -->
 <!-- Newsletter -->
 <section class="newsletter">
-  <h2>Réparons l'argent, réparons le monde</h2>
-  <p>Rejoignez plus de 18 000 investisseurs qui gardent toujours une longueur d'avance. Recevez le Virtuse Report chaque semaine dans votre boîte mail.</p>
-  <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+  <div class="brief-card brief-card-poster">
+  <h2>Recevez <span>le Brief</span></h2>
+  <p>Virtuse Brief. 100&nbsp;% Bitcoin. Pas de tokens. Pas de RP.</p>
+  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Adresse e-mail" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">S'ABONNER MAINTENANT</button>
+    <button type="submit">Recevoir le Brief</button>
   </form>
-  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
+  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Chaque lundi. Désabonnement à tout moment.</p>
+  </div>
   <script>
   (function () {
     var form = document.getElementById('newsletterForm');
@@ -1077,7 +1093,7 @@ Royaume-Uni
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp })
+        body: JSON.stringify({ email: email, hp: hp, lang: 'fr' })
       }).then(function (res) {
         return res.json().then(function (data) { return { ok: res.ok, data: data }; });
       }).then(function (result) {
