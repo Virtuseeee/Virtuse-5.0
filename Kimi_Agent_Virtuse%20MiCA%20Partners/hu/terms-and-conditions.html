@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Dark-only, matching the homepage's own redesign. -->
+<meta name="color-scheme" content="dark">
+<script src="../lang-detect.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>Felhasználási feltételek | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/terms-and-conditions.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/terms-and-conditions.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/terms-and-conditions.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/terms-and-conditions.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/terms-and-conditions.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/terms-and-conditions.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/terms-and-conditions.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/terms-and-conditions.html">
+<link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/terms-and-conditions.html">
+<link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/terms-and-conditions.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/terms-and-conditions.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Felhasználási feltételek | Virtuse">
+<meta property="og:description" content="A Virtuse hub használatára vonatkozó feltételek: kik vagyunk, mit teszünk (és mit nem), és hogyan működik partnerajánlói modellünk.">
+<meta property="og:url" content="https://virtuse.com/hu/terms-and-conditions.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="hu_HU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Felhasználási feltételek | Virtuse">
+<meta name="twitter:description" content="A Virtuse hub használatára vonatkozó feltételek: kik vagyunk, mit teszünk (és mit nem), és hogyan működik partnerajánlói modellünk.">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<link rel="stylesheet" href="../styles.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+/* Neutral-gray dark palette, matched to the homepage's own redesign —
+   overrides styles.css's older navy-tinted tokens for this page only. */
+:root {
+  color-scheme: dark;
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
+
+/* Desktop nav link size/weight matched to linear.app's own nav, same
+   as the homepage — :not(.lang-opt) so it doesn't leak onto the
+   language pills nested inside .nav-links (a real bug found there). */
+.nav-links a:not(.lang-opt) {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 12px;
+}
+
+.nav-links a:hover:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active:not(.lang-opt) {
+  color: var(--text);
+  background: var(--dark-card);
+}
+
+.nav-cta {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+/* Orange is a rare stamp now, not a highlight color — matches the
+   homepage's own hero. */
+.hero h1 .highlight { color: var(--text); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+/* ===== CATEGORY PILLS ===== */
+.subnav-wrap {
+  padding: 0 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--btc-orange); }
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding: 0 48px 56px;
+  max-width: 900px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+.faq-section:last-of-type { padding-bottom: var(--section-spacing); }
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--btc-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(247, 147, 26, 0.1);
+  margin-bottom: 22px;
+}
+
+.sec-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+details {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+details:hover { border-color: var(--border-hover); }
+
+details[open] { border-color: rgba(247, 147, 26, 0.4); }
+
+summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary:hover { color: var(--btc-orange); }
+
+summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--btc-orange);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+
+details[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.faq-answer strong { color: var(--text); font-weight: 600; }
+
+.faq-answer a { color: var(--btc-orange); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+
+.faq-answer ul { margin: 10px 0 10px 20px; }
+.faq-answer li { margin-bottom: 6px; }
+
+/* ===== NEWSLETTER / FOOTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.newsletter h2 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  font-size: 14px;
+}
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.brief-card {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+.brief-form-msg { margin-top: 16px; font-size: 14px; min-height: 20px; position: relative; z-index: 1; color: var(--text-muted); }
+.brief-fineprint { margin-top: 14px; font-size: 13px; color: var(--text-muted); }
+.newsletter-form-stacked.newsletter-form {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 24px;
+}
+.newsletter-form-stacked input {
+  width: 100%;
+}
+.newsletter-form-stacked button {
+  width: 100%;
+}
+.brief-card .newsletter-form button {
+  background: var(--text);
+  color: var(--dark);
+}
+.brief-card .newsletter-form button:hover {
+  opacity: 0.9;
+}
+
+.footer-wordmark {
+  position: relative;
+  height: 138px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.14;
+  pointer-events: none;
+}
+.footer-wordmark-icon-wrap {
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+.footer-wordmark-icon {
+  height: 168px;
+  width: auto;
+  display: block;
+}
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+.footer-wordmark-text {
+  font-size: 230px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background: linear-gradient(100deg, #e6edf3 30%, #5FAEDE 50%, #e6edf3 70%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+@media (max-width: 768px) {
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
+
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 28px; }
+  .hero h1 { font-size: 36px; }
+  .subnav-wrap, .faq-section { padding-left: 24px; padding-right: 24px; }
+  summary { font-size: 15px; padding: 18px 20px; }
+  .faq-answer { padding: 0 20px 18px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* nav-cta stays the one sitewide orange stamp — every other button is an
+   inverted neutral, hardcoded (not var()) per the real Safari bug found
+   on the homepage. */
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta:hover {
+  background: #ffffff;
+  color: #0d0902;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+.newsletter-form button { background: #e6edf3; color: #08090a; }
+.newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ===== MOBILE MENU ===== */
+/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
+   divs with a CSS background-color — a real device screenshot on the
+   homepage showed the span version fully invisible on mobile Safari. */
+.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
+
+.ham-line {
+  stroke: var(--text, #e6edf3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 10px 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
+body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
+
+.nav-hamburger {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, #484f58);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  .nav-links a:not(.lang-opt) {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #e6edf3;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, #484f58);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, #484f58);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active:not(.lang-opt)::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, #484f58);
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--border-hover); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--text);
+  color: var(--dark);
+}
+
+@media (max-width: 1024px) {
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
+}
+
+/* ===== HU: compact nav text =====
+   Hungarian nav labels run longer than English ("Letétkezelés",
+   "Bitcoin-adatok"), so at the default padding they wrap onto two lines at
+   common desktop widths. Same block as scaffold_es.py, with a selector
+   strong enough to beat the redesign's own .nav-links a:not(.lang-opt). */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+
+/* Below ~1200px the twelve Hungarian labels still push the CTA off-screen. */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü megnyitása" aria-expanded="false">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
+      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
+    </svg>
+  </button>
+  <a href="/hu/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Bitcoin vásárlás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Bányászat</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Hitelek</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Letétkezelés</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Adózás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Botok</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin-adatok</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Rólunk</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Kezdés<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Az oldal nyelve">
+          <span class="lang-flag">🇭🇺</span>HU
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+        <a href="../terms-and-conditions.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/terms-and-conditions.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/terms-and-conditions.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/terms-and-conditions.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/terms-and-conditions.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/terms-and-conditions.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/terms-and-conditions.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/terms-and-conditions.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        <a href="../pl/terms-and-conditions.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+        <a href="terms-and-conditions.html" class="lang-opt active" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
+      </div>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Az oldal nyelve">
+        <span class="lang-flag">🇭🇺</span>HU
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../terms-and-conditions.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/terms-and-conditions.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/terms-and-conditions.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/terms-and-conditions.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/terms-and-conditions.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/terms-and-conditions.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/terms-and-conditions.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/terms-and-conditions.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        <a href="../pl/terms-and-conditions.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+        <a href="terms-and-conditions.html" class="lang-opt active" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
+      </div>
+    </div>
+    <button class="nav-cta">Kezdés</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
+(function () {
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Felhasználási <span class="highlight">feltételek</span></h1>
+  <p class="hero-desc">A weboldal használatára vonatkozó szabályok. Röviden: a Virtuse nem letétkezelő hub, amely független, ellenőrzött partnerekkel köti össze a felhasználókat; nem kezelünk ügyfélpénzt, nem hajtunk végre ügyleteket, és nem adunk pénzügyi tanácsot. Hatályos: 2026. augusztus 20-tól.</p>
+</section>
+
+<!-- ===== CATEGORY PILLS ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="A felhasználási feltételek szakaszai">
+    <a href="#who">◆ Kik vagyunk</a>
+    <a href="#service">◆ Mivel foglalkozunk</a>
+    <a href="#eligibility">◆ Jogosultság és használat</a>
+    <a href="#partners">◆ Partnerszolgáltatások</a>
+    <a href="#tools">◆ Eszközök és tartalom</a>
+    <a href="#ip">◆ Szellemi tulajdon</a>
+    <a href="#liability">◆ Kizárások és felelősség</a>
+    <a href="#law">◆ Irányadó jog</a>
+  </nav>
+</div>
+
+<!-- ===== WHO WE ARE ===== -->
+<section class="faq-section" id="who">
+  <div class="sec-label">1. Kik vagyunk</div>
+
+  <details open>
+    <summary>A szerződő fél</summary>
+    <div class="faq-answer">A weboldalt (virtuse.com és aldomainjei) a <strong>Virtuse Group Pte. Ltd.</strong> üzemelteti, amelynek operatív irodája a szlovákiai Pozsonyban, csoportközpontja Szingapúrban van („Virtuse”, „mi”). E felhasználási feltételek („Feltételek”) kötelező erejű megállapodást képeznek Ön és a Virtuse Group Pte. Ltd. között a weboldal elérésére és használatára vonatkozóan. Kapcsolat: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+  </details>
+
+  <details>
+    <summary>A feltételek elfogadása</summary>
+    <div class="faq-answer">A weboldal bármilyen módon történő elérésével vagy használatával (oldalak böngészése, hírlevélre való feliratkozás, ingyenes eszközeink használata vagy átlépés egy partnerhez) Ön elfogadja e Feltételeket és <a href="privacy-policy.html">adatvédelmi tájékoztatónkat</a>. Ha nem ért egyet, kérjük, ne használja a weboldalt. E Feltételeket időnként frissíthetjük a <a href="#law">8. szakaszban</a> leírtak szerint; a frissítés utáni további használat a módosított Feltételek elfogadását jelenti.</div>
+  </details>
+</section>
+
+<!-- ===== WHAT WE DO ===== -->
+<section class="faq-section" id="service">
+  <div class="sec-label">2. Mi a Virtuse, és mi nem</div>
+
+  <details open>
+    <summary>Nem letétkezelő hub vagyunk, nem szolgáltató</summary>
+    <div class="faq-answer">A Virtuse ellenőrzött, független partnereket válogat és listáz a Bitcoinhoz kapcsolódó kategóriákban: vásárlás, bányászat, hitelezés, letétkezelés, treasury, adózás és kereskedési botok. <strong>Mi magunk nem üzemeltetünk tőzsdét, nem őrzünk ügyfélpénzt vagy privát kulcsot, nem nyitunk fiókot, nem hajtunk végre ügyletet, nem nyújtunk letétkezelést, nem hitelezünk, és nem végzünk személyazonosítást (KYC).</strong> Partnerszolgáltatás igénybevételekor Ön közvetlen szerződéses viszonyba kerül az adott partnerrel, annak saját feltételei, adatvédelmi szabályai, díjai és hatósági engedélyei szerint, nem a Virtuse-szal.</div>
+  </details>
+
+  <details>
+    <summary>Nem vagyunk pénzügyi tanácsadók</summary>
+    <div class="faq-answer">A weboldalon semmi, beleértve a partnerlistákat, a blogcikkeket, a piaci adatokat és az ingyenes kalkulátorokat, nem minősül befektetési, jogi, adó- vagy pénzügyi tanácsnak, illetve bármely eszköz vételére, eladására vagy tartására vonatkozó ajánlásnak vagy felhívásnak. A tartalom kizárólag általános tájékoztató és oktatási célt szolgál. A Bitcoin és más kriptoeszközök ingadozóak, és valós a részleges vagy teljes veszteség kockázata; bármely pénzügyi döntés előtt független szakmai tanácsot kell kérni, és csak annyit szabad kockáztatni, amennyi elveszíthető.</div>
+  </details>
+
+  <details>
+    <summary>Tőzsdéből hub</summary>
+    <div class="faq-answer">A Virtuse korábban másként működött; a weboldal azóta az e Feltételekben leírt nem letétkezelő ajánlói hubmodellre állt át. Az átállás szabályozási hátteréről az <a href="aml-compliance.html">AML és megfelelés</a> oldal szól.</div>
+  </details>
+</section>
+
+<!-- ===== ELIGIBILITY & USE ===== -->
+<section class="faq-section" id="eligibility">
+  <div class="sec-label">3. Jogosultság és megengedett használat</div>
+
+  <details>
+    <summary>Ki használhatja a weboldalt</summary>
+    <div class="faq-answer">A weboldal használatához legalább 18 évesnek kell lenni, és a saját joghatóság szerint rendelkezni kell a kötelező erejű szerződés megkötéséhez szükséges cselekvőképességgel. A felhasználó felel azért, hogy a weboldal és a partnerszolgáltatások elérése a tartózkodási helyén jogszerű legyen: egyes partnerszolgáltatások nem minden országban érhetők el, és be kell tartani a rá vonatkozó helyi jogszabályokat, beleértve az adóbevallási kötelezettségeket.</div>
+  </details>
+
+  <details>
+    <summary>Megengedett használat</summary>
+    <div class="faq-answer">A felhasználó vállalja, hogy nem: használja a weboldalt jogellenes célra, ideértve a pénzmosást és a terrorizmus finanszírozását; kísérli meg a weboldal, annak infrastruktúrája vagy más felhasználók adatainak jogosulatlan elérését; gyűjti automatizáltan, fejti vissza vagy nyeri ki rendszerszerűen a tartalmat a szokásos böngészésen túl; juttat be kártevőt vagy zavarja a weboldal működését; ad ki magát más személynek, vagy közöl valótlant a kapcsolatairól; illetve avatkozik be rosszhiszeműen ajánlói vagy analitikai mechanizmusainkba (például önajánlással visszaélve). Aki megszegi ezt a szakaszt, annak hozzáférését felfüggeszthetjük vagy korlátozhatjuk.</div>
+  </details>
+</section>
+
+<!-- ===== PARTNER SERVICES ===== -->
+<section class="faq-section" id="partners">
+  <div class="sec-label">4. Partnerszolgáltatások és ajánlói kapcsolatok</div>
+
+  <details open>
+    <summary>A szerződés a partnerrel jön létre, nem velünk</summary>
+    <div class="faq-answer">A weboldalon keresztül elérhető minden szabályozott szolgáltatást (Bitcoin-vásárlás, bányászati hosting, Bitcoin-fedezetű hitel, letétkezelés, treasury-kezelés, adóbevallás vagy kereskedési botok) <strong>független harmadik fél partner</strong> nyújt, többségük MiCA-engedélyes kriptoeszköz-szolgáltató (CASP). A Virtuse nem részese, és nem vállal felelősséget semmilyen, Ön és a partner közötti megállapodásért, tranzakcióért, KYC-eljárásért, díjért vagy jogvitáért. E viszonyra az egyes partnerek saját feltételei, adatvédelmi szabályai és díjszabása irányadók, amelyeket a továbblépés előtt érdemes elolvasni.</div>
+  </details>
+
+  <details>
+    <summary>Hogyan működik az ajánlás</summary>
+    <div class="faq-answer">A Virtuse ajánlói jutalékot kap, ha a felhasználó a weboldal linkjein keresztül regisztrál bizonyos partnereknél vagy veszi igénybe szolgáltatásukat. Így finanszírozzuk az ingyenesen használható hubot. A jutalék nem teszi a Virtuse-t a partner ügynökévé, alkalmazottjává vagy üzleti társává, és nem jelenti, hogy támogatnánk, garantálnánk a partner szolgáltatását, biztonságát, fizetőképességét vagy szabályozási helyzetét, illetve felelősséget vállalnánk értük.</div>
+  </details>
+
+  <details>
+    <summary>A partnerszolgáltatásokra nincs szavatosság</summary>
+    <div class="faq-answer">Észszerű gondossággal választjuk ki, mely partnereket listázzuk (például előnyben részesítjük a MiCA-engedélyes szolgáltatókat), de <strong>nem szavatoljuk és nem garantáljuk</strong> a partnerek által hirdetett díjak, funkciók vagy engedélyi státusz adott időpontbeli pontosságát, a partnerplatformok elérhetőségét, biztonságát vagy teljesítményét, sem azt, hogy egy partner megfelel az Ön igényeinek. A partneradatok (díjak, feltételek, engedélyek) előzetes értesítés nélkül változhatnak; tranzakció előtt mindig közvetlenül a partnernél kell ellenőrizni az aktuális feltételeket.</div>
+  </details>
+</section>
+
+<!-- ===== TOOLS & CONTENT ===== -->
+<section class="faq-section" id="tools">
+  <div class="sec-label">5. Ingyenes eszközök, piaci adatok és tartalom</div>
+
+  <details>
+    <summary>Kalkulátorok és grafikonok</summary>
+    <div class="faq-answer">Ingyenes eszközeink (Bitcoin-adatok dashboard, Nyugdíjkalkulátor, Szivárványgrafikon, Gyökérskálás ciklusok, BTC-dominancia, 200 hetes mozgóátlag, Félelem és kapzsiság, Kereskedési volumen) kizárólag tájékoztató és oktatási célt szolgálnak, teljes egészében a böngészőben futnak, és nem minősülnek befektetési tanácsnak, illetve jövőbeli eredményre vonatkozó előrejelzésnek, ígéretnek vagy garanciának. Az eredmények teljes mértékben a megadott vagy az eszközbe épített feltevéseken múlnak, a múltbeli teljesítmény pedig nem utal a jövőbeli eredményekre.</div>
+  </details>
+
+  <details>
+    <summary>A piaci adatok pontossága</summary>
+    <div class="faq-answer">A weboldalon megjelenő élő ár- és hálózati adatok harmadik felektől származnak, többek között a CoinGeckótól, a Binance-től és a mempool.space-től, „rendelkezésre állás szerint”. Ezeket a forrásokat nem ellenőrizzük, és nem garantálhatjuk, hogy az adatok a megtekintés pillanatában pontosak, teljesek vagy naprakészek. Időérzékeny kereskedési vagy pénzügyi döntéseknél nem szabad ezekre az adatokra hagyatkozni; cselekvés előtt az aktuális árakat közvetlenül a tőzsdén vagy a partnernél kell ellenőrizni.</div>
+  </details>
+
+  <details>
+    <summary>Blog és szerkesztőségi tartalom</summary>
+    <div class="faq-answer">A blogcikkek szerzőik (elsősorban a Virtuse alapítója, Ras Vasilisin) megírásukkori személyes nézeteit tükrözik, nem minősülnek pénzügyi, jogi vagy adótanácsnak, és nem feltétlenül képviselik a Virtuse Group Pte. Ltd. mint vállalat álláspontját. A makrogazdasági és piaci kommentárok gyorsan elavulhatnak: érdemes a megjelenés dátumát ellenőrizni, és a régebbi cikkeket történeti véleményként, nem aktuális iránymutatásként kezelni.</div>
+  </details>
+</section>
+
+<!-- ===== INTELLECTUAL PROPERTY ===== -->
+<section class="faq-section" id="ip">
+  <div class="sec-label">6. Szellemi tulajdon</div>
+
+  <details>
+    <summary>Tartalmaink</summary>
+    <div class="faq-answer">A Virtuse név, logó, a weboldal kialakítása, valamint az oldalon található eredeti szövegek, grafikák és eszközök a Virtuse Group Pte. Ltd. tulajdonában állnak vagy annak licence alapján használhatók, és szerzői jogi, védjegyjogi és egyéb szellemitulajdon-jogi védelem alatt állnak. A weboldalon megjelenő partnerlogók és védjegyek tulajdonosaik tulajdonában maradnak, és a partnerek azonosítására szolgálnak, nem arra, hogy a <a href="#partners">4. szakaszban</a> leírt ajánlói kapcsolaton túli támogatást sugalljanak a Virtuse irányában.</div>
+  </details>
+
+  <details>
+    <summary>A weboldal használatára szóló licenc</summary>
+    <div class="faq-answer">E feltételek szerint korlátozott, visszavonható, nem kizárólagos és át nem ruházható licencet adunk a weboldal saját, személyes, nem kereskedelmi célú elérésére és használatára. Előzetes írásos engedélyünk nélkül tilos a weboldal bármely részét másolni, sokszorosítani, újra közzétenni, keretbe ágyazni vagy terjeszteni, illetve tartalmainkat versengő termék vagy szolgáltatás létrehozására használni.</div>
+  </details>
+</section>
+
+<!-- ===== DISCLAIMERS & LIABILITY ===== -->
+<section class="faq-section" id="liability">
+  <div class="sec-label">7. Kizárások és a felelősség korlátozása</div>
+
+  <details open>
+    <summary>A weboldal „jelenlegi állapotában” érhető el</summary>
+    <div class="faq-answer">Az alkalmazandó jog által megengedett legteljesebb mértékben a weboldal, eszközei és tartalma „jelenlegi állapotukban” és „rendelkezésre állás szerint” érhetők el, mindennemű kifejezett vagy hallgatólagos szavatosság nélkül, ideértve a forgalomképességre, az adott célra való alkalmasságra, a jogsértés hiányára, illetve a weboldal megszakítás nélküli, biztonságos vagy hibamentes működésére vonatkozó hallgatólagos szavatosságot is. A Bitcoin- és kriptoeszköz-piacok eredendően ingadozók és spekulatívak; a weboldalon semmi nem szünteti meg ezt a kockázatot.</div>
+  </details>
+
+  <details>
+    <summary>A felelősség korlátozása</summary>
+    <div class="faq-answer">Az alkalmazandó jog által megengedett legteljesebb mértékben a Virtuse Group Pte. Ltd., annak vezető tisztségviselői, munkavállalói és kapcsolt vállalkozásai nem felelnek semmilyen közvetett, járulékos, különleges, következményi vagy büntető jellegű kárért, illetve elmaradt haszonért, bevételért, adat- vagy pénzveszteségért, amely a weboldal vagy bármely partnerszolgáltatás használatából vagy azzal összefüggésben keletkezik, még akkor sem, ha az ilyen károk lehetőségéről tájékoztattak minket. Ez korlátozás nélkül kiterjed a partner cselekményéből vagy mulasztásából, a piaci ingadozásból, illetve a weboldalon elérhető piaci adatokra vagy eszközökre való hagyatkozásból eredő veszteségekre is. Ahol felelősségünk az alkalmazandó jog szerint nem zárható ki (például halál, személyi sérülés, csalás vagy súlyos gondatlanság esetén, vagy az Önre vonatkozó kógens fogyasztóvédelmi jogszabályok alapján), e feltételek semmi sem korlátozza ezt a felelősséget.</div>
+  </details>
+
+  <details>
+    <summary>Kártalanítás</summary>
+    <div class="faq-answer">A felhasználó vállalja, hogy kártalanítja és mentesíti a Virtuse Group Pte. Ltd.-t minden olyan követelés, veszteség vagy költség (ideértve az indokolt jogi költségeket) alól, amely e feltételek megszegéséből, a weboldal visszaélésszerű használatából, illetve bármely alkalmazandó jogszabály vagy harmadik fél jogainak megsértéséből ered.</div>
+  </details>
+</section>
+
+<!-- ===== GOVERNING LAW ===== -->
+<section class="faq-section" id="law">
+  <div class="sec-label">8. Irányadó jog, változások és kapcsolat</div>
+
+  <details open>
+    <summary>Irányadó jog</summary>
+    <div class="faq-answer">E feltételekre a Szingapúri Köztársaság joga irányadó, a kollíziós szabályok kizárásával, és az ezekből eredő jogvitákra Szingapúr bíróságai kizárólagosan illetékesek. Ha Ön az Európai Unióban vagy az Európai Gazdasági Térségben lakó fogyasztó, ez a jogválasztás nem fosztja meg a lakóhelye szerinti ország jogának azon kógens rendelkezései által nyújtott védelemtől, amelyektől megállapodással nem lehet eltérni.</div>
+  </details>
+
+  <details>
+    <summary>Részleges érvénytelenség és teljes megállapodás</summary>
+    <div class="faq-answer">Ha e Feltételek bármely rendelkezése nem érvényesíthetőnek bizonyul, a többi rendelkezés teljes hatállyal fennmarad. E Feltételek <a href="privacy-policy.html">adatvédelmi tájékoztatónkkal</a> és az <a href="aml-compliance.html">AML és megfelelés</a> oldallal együtt a weboldal használatára vonatkozó teljes megállapodást képezik Ön és a Virtuse között, és felülírnak minden korábbi, azonos tárgyú megállapodást. Ha valamely rendelkezést nem érvényesítünk, az nem jelenti arról való lemondásunkat, hogy később érvényesítsük.</div>
+  </details>
+
+  <details>
+    <summary>A feltételek módosítása</summary>
+    <div class="faq-answer">E feltételeket szolgáltatásaink, a szabályozási környezet vagy a jogszabályok változásával módosíthatjuk. A módosítások az ezen az oldalon, frissített hatálybalépési dátummal történő közzététellel lépnek hatályba; a lényeges változásokat hatálybalépésük előtt jól láthatóan jelezzük az oldalon vagy a hírlevélben. A módosított változat közzététele utáni további használat a változások elfogadását jelenti.</div>
+  </details>
+
+  <details>
+    <summary>Kapcsolat</summary>
+    <div class="faq-answer">E Feltételekkel kapcsolatos kérdések: <a href="mailto:support@virtuse.com">support@virtuse.com</a>, vagy Virtuse Group Pte. Ltd., Szingapúr.</div>
+  </details>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <div class="brief-card brief-card-poster">
+  <h2>Iratkozzon fel <span>a Briefre</span></h2>
+  <p>Virtuse Brief. Csak Bitcoin. Tokenek nélkül. PR nélkül.</p>
+  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="E-mail-cím" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+    <button type="submit">Feliratkozás</button>
+    </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Minden hétfőn. Bármikor leiratkozhat.</p>
+  </div>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'KÜLDÉS...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp, lang: 'hu' })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "Kész. Az üdvözlő e-mail úton van.";
+          msg.style.color = 'var(--green, #3fb950)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Hiba történt. Kérjük, próbálja újra.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Hálózati hiba. Kérjük, próbálja újra.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Szolgáltatások</h4>
+        <a href="buy-bitcoin.html">Bitcoin vásárlás</a>
+        <a href="secure.html">Letétkezelés</a>
+        <a href="mining.html">Bányászat</a>
+        <a href="lending.html">Hitelek</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Adózás</a>
+        <a href="bots.html">Botok</a>
+      </div>
+      <div class="footer-col">
+        <h4>Cég</h4>
+        <a href="about.html">Rólunk</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Jogi információk</h4>
+        <a href="terms-and-conditions.html">Felhasználási feltételek</a>
+        <a href="privacy-policy.html">Adatvédelmi tájékoztató</a>
+        <a href="aml-compliance.html">AML és megfelelés</a>
+      </div>
+      <div class="footer-col">
+        <h4>Eszközök</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Nyugdíjkalkulátor</a>
+      </div>
+      <div class="footer-col">
+        <h4>Útmutatók</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Bitcoin-adatok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2018–2026 Virtuse Group. Minden jog fenntartva.</p>
+      <p class="footer-bottom-brief">Virtuse Brief: a Virtuse heti összefoglalója. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Elolvasom &rarr;</a></p>
+</div>
+<div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
+  </div>
+</footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function () {
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  var conciergeUrl = '../concierge.html?utm_source=concierge&utm_medium=nav';
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = conciergeUrl;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

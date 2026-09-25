@@ -29,11 +29,11 @@ PAGES = [
 # Pages that exist inside pl/ (bare relative links to these stay bare).
 LOCAL = set(PAGES) | {"blog.html"}
 
-SWITCH_ORDER = ["en", "sk", "uk", "cs", "ru", "de", "fr", "es"]
+SWITCH_ORDER = ["en", "sk", "uk", "cs", "ru", "de", "fr", "es", "pl", "hu"]
 FLAG = {"en": "🇬🇧", "sk": "🇸🇰", "uk": "🇺🇦", "cs": "🇨🇿", "ru": "🇷🇺",
-        "de": "🇩🇪", "fr": "🇫🇷", "es": "🇪🇸", "pl": "🇵🇱"}
+        "de": "🇩🇪", "fr": "🇫🇷", "es": "🇪🇸", "pl": "🇵🇱", "hu": "🇭🇺"}
 CODE = {"en": "EN", "sk": "SK", "uk": "UA", "cs": "CS", "ru": "RU",
-        "de": "DE", "fr": "FR", "es": "ES", "pl": "PL"}
+        "de": "DE", "fr": "FR", "es": "ES", "pl": "PL", "hu": "HU"}
 
 
 NAV_SQUEEZE_CSS = """
@@ -91,7 +91,7 @@ def switcher_langs(page):
     # Only languages that actually have this page (uk/cs/ru lack some
     # dashboard pages; EN's own switcher still links to those dead URLs).
     return [l for l in SWITCH_ORDER
-            if l == "en" or os.path.exists(os.path.join(ROOT, l, page))]
+            if l in ("en", LANG) or os.path.exists(os.path.join(ROOT, l, page))]
 
 
 def switcher_href(lang, page):
@@ -111,10 +111,10 @@ def rebuild_switchers(s, page):
         role = ' role="menuitem"' if 'role="menuitem"' in opts[0].group(0) else ""
         lines = []
         for lang in switcher_langs(page):
-            lines.append('%s<a href="%s" class="lang-opt" lang="%s"%s><span class="lang-flag">%s</span>%s</a>\n'
-                         % (indent, switcher_href(lang, page), lang, role, FLAG[lang], CODE[lang]))
-        lines.append('%s<a href="%s" class="lang-opt active" lang="pl"%s><span class="lang-flag">%s</span>%s</a>\n'
-                     % (indent, page, role, FLAG["pl"], CODE["pl"]))
+            active = lang == LANG
+            lines.append('%s<a href="%s" class="lang-opt%s" lang="%s"%s><span class="lang-flag">%s</span>%s</a>\n'
+                         % (indent, page if active else switcher_href(lang, page),
+                            " active" if active else "", lang, role, FLAG[lang], CODE[lang]))
         start, end = opts[0].start(), opts[-1].end()
         return block[:start] + "".join(lines) + block[end:]
 
