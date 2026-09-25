@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, twenty-seventh round) — blog hreflang complete + sitemap blog entries (`9b4bb50`, gh-pages `e15c361`, staging 5/5 md5-verified)
+## Session status (2026-09-25, twenty-seventh round) — blog hreflang complete + sitemap blog entries (`9b4bb50`, gh-pages `e15c361`, staging 5/5 md5-verified; **live on production**, 5/5 md5-verified on virtuse.com)
 
 - blog.html, uk/blog.html, ru/blog.html (5 tags) and fr/blog.html (7)
   now carry the same 10-tag hreflang block as the de/es/pl/hu/sk blogs;
