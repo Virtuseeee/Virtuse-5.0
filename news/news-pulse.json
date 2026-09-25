@@ -1,57 +1,57 @@
 {
-  "updated": "2026-09-24T06:32:00Z",
+  "updated": "2026-09-25T06:21:00Z",
   "feed": null,
   "items": [
     {
-      "title": "Bitcoin slips below $85,000 as 5% Treasury yield returns",
-      "source": "CryptoSlate",
+      "title": "Bitcoin breakout cools as October Fed hike odds hit ~75%",
+      "source": "Decrypt",
       "tag": "Fed",
-      "url": "https://cryptoslate.com/bitcoin-slips-below-85000-as-5-treasury-yield-returns-to-haunt-risk-assets/",
-      "published": "2026-09-23T23:40:38Z",
-      "excerpt": "Hot US PMI pushed the 10-year above 5%. Bitcoin fell under $85,000 with ~$126M in long liquidations as the short-squeeze fuel faded."
+      "url": "https://decrypt.co/379189/bitcoins-breakout-cools-fed-rate-hike-bets-climb",
+      "published": "2026-09-24T16:00:00Z",
+      "excerpt": "BTC near $84,490 after Monday’s ~$87,397 high. CME FedWatch: ~75% chance of another hike on Oct 28; ~$271M long liquidations in a $348M wipeout."
     },
     {
-      "title": "Bitcoin ETF net inflows top $1.7B as assets reach $111B",
-      "source": "Cointelegraph",
+      "title": "Bitcoin ETFs add $347M, stretching the inflow streak to five days",
+      "source": "Bitcoin.com",
       "tag": "ETF",
-      "url": "https://cointelegraph.com/markets/bitcoin-etf-inflow-2-days-holder-profitable",
-      "published": "2026-09-23T07:25:05Z",
-      "excerpt": "SoSoValue: ~$999M Monday + ~$715M Tuesday. US spot Bitcoin ETF assets ~$111B; IBIT led Tuesday at ~$350M."
+      "url": "https://news.bitcoin.com/market-updates/bitcoin-etfs-add-347m-as-blackrock-fidelity-lead-buying/",
+      "published": "2026-09-24T13:00:00Z",
+      "excerpt": "Wednesday ~$347M (IBIT ~$166M, FBTC ~$143M). Five-session haul ~$2.65B; no Bitcoin ETF outflow that day. Assets ~$109B."
     },
     {
-      "title": "Hashprice near $41/PH as difficulty sits at 132.76T after a +4.16% retarget",
-      "source": "Hashrate Index",
+      "title": "Bitcoin miners pivot to AI as hashrate sees deepest drop since 2021",
+      "source": "Block Insider",
       "tag": "Mining",
-      "url": "https://hashrateindex.com/blog/hashrate-index-roundup-september-21-2026/",
-      "published": "2026-09-21T18:47:00Z",
-      "excerpt": "USD Bitcoin hashprice ~$40.93/PH/day (+4.1% week). Difficulty 132.76T after Sep 19 +4.16%; next estimate ~Oct 3 (~\u22121.8%). Hashrate 7d SMA ~946 EH/s."
+      "url": "https://blockinsider.com/article/bitcoin-miners-pivot-to-ai-as-hashrate-suffers-its-deepest-drop-since-2021",
+      "published": "2026-09-25T04:00:00Z",
+      "excerpt": "True hashrate ~18% below the Nov 2025 peak (~1,101 EH/s), now ~934 EH/s. Listed miners reallocate power to AI/HPC; AI-linked miners up ~21% YTD vs pure-plays down ~8%."
     }
   ],
   "archive": {
     "label": "Yesterday",
-    "from": "2026-09-24T06:32:00Z",
+    "from": "2026-09-25T06:21:00Z",
     "items": [
       {
-        "title": "Bitcoin ETFs flirt with $1B as Monday inflows hit a 2026 high",
-        "source": "Cointelegraph",
-        "tag": "ETF",
-        "url": "https://cointelegraph.com/markets/bitcoin-etf-biggest-inflow-october-2025",
-        "published": "2026-09-22T12:00:00Z"
+        "title": "Bitcoin slips below $85,000 as 5% Treasury yield returns",
+        "source": "CryptoSlate",
+        "tag": "Fed",
+        "url": "https://cryptoslate.com/bitcoin-slips-below-85000-as-5-treasury-yield-returns-to-haunt-risk-assets/",
+        "published": "2026-09-23T23:40:38Z"
       },
       {
-        "title": "CLARITY Act still needs 11 more Senate votes",
-        "source": "CryptoSlate",
-        "tag": "Policy",
-        "url": "https://cryptoslate.com/clarity-act-needs-11-more-senate-votes-but-4-of-the-49-it-already-has-want-the-bill-changed/",
-        "published": "2026-09-21T18:00:00Z"
+        "title": "Bitcoin ETF net inflows top $1.7B as assets reach $111B",
+        "source": "Cointelegraph",
+        "tag": "ETF",
+        "url": "https://cointelegraph.com/markets/bitcoin-etf-inflow-2-days-holder-profitable",
+        "published": "2026-09-23T07:25:05Z"
       }
     ]
   },
-  "what_moved": "10y yield back above 5% after hot PMI; Bitcoin slips under $85K to ~$84.2K despite ~$1.7B ETF inflows this week.",
+  "what_moved": "October Fed hike odds near 75% and 10y yields near multi-year highs cool the $87K breakout; spot ETFs still absorb with a 5-day inflow streak (~$2.65B).",
   "quick_media": {
-    "title": "Simply Bitcoin EP 1596 \u2014 Bitcoin EXPLODES Past $86,000",
+    "title": "Simply Bitcoin EP 1596 — Bitcoin EXPLODES Past $86,000",
     "url": "https://www.youtube.com/watch?v=-PvlHscb9cg",
-    "note": "Keep \u2014 still this week\u2019s $86K breakout tape; do not refresh daily."
+    "note": "Keep — still this week’s $86K breakout tape; do not refresh daily."
   },
   "fear_greed": {
     "value": 71,
@@ -59,14 +59,14 @@
     "source": "alternative.me"
   },
   "dominance": {
-    "btc_pct": 59.19,
+    "btc_pct": 59.01,
     "source": "Coinlore global"
   },
   "market": {
-    "btc_usd": 84180,
-    "change_24h_pct": -2.6,
+    "btc_usd": 84120,
+    "change_24h_pct": 0.0,
     "fees": "low",
     "fee_sat_vb": 1,
-    "sources": "mempool $84,120; Coinbase ~$84,160; Bitstamp $84,184 (\u22122.61%); blockchain.info $84,195"
+    "sources": "mempool $84,093; Coinbase ~$84,175; Bitstamp $84,185 (+0.06%); Coinlore $84,096 (−0.03%)"
   }
 }
