@@ -2,6 +2,28 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-second round) — RU low-severity proofreading + RU heading overflow (`fac4e6a`, gh-pages `15adbf5`, staging 21/21 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry still covers everything (173 files)**
+
+**Round 19 of the proofreading pass (user: "oprav teraz low položky v
+RU") — 21 ru pages** via `scratchpad/fix_low_ru.py`.
+- 37 of 43 RU low items (lending rate, privacy "Virtuse Report",
+  root-cycles title, "travel rule" quotes, the about duplicate phrase were
+  closed earlier; the newsletter placeholder is already uniform).
+  Decisions: CEO "Растислава Василишина" on terms too (was "Раса");
+  "поставщики криптоуслуг (CASP)" on terms + aml like the marketing
+  pages; **bots keeps the medium-round term "сетка ордеров"** (the low
+  reviewer suggested "grid", which would undo the medium round) but reads
+  "боты с сеткой ордеров"; tax H1 "…по Биткоину — это просто"; og/twitter
+  descriptions on six dashboard pages now end with a period.
+- **Layout:** ru/about, ru/treasury and ru/privacy-policy overflowed up to
+  21px at 375px because single long words ("конфиденциальности",
+  "институциональные") at 36–42px headings don't fit. All 21 ru pages now
+  hyphenate h1–h3 at ≤700px (same rule as de/). **Other Cyrillic/long-word
+  languages (uk, pl, hu) had no heading overflow in their sweeps.**
+- Verified: tagcheck 0, leftover sweep clean, all 21 ru pages (incl. 404)
+  at 375px with no overflow, fine print 12px.
+- Remaining low round: DE 44.
+
 ## Session status (2026-09-25, twenty-first round) — ES low-severity proofreading (`23cf7e2`, gh-pages `ca5a7ca`, staging 22/22 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry still covers everything (173 files)**
 
 **Round 18 of the proofreading pass (user: "oprav teraz low položky v
