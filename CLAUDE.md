@@ -18,6 +18,32 @@ DE") — 22 de pages** via `scratchpad/fix_low_de.py` (clean first run).
 - Verified: tagcheck 0, leftover sweep clean, all 22 de pages at 375px
   with no overflow, fine print 12px.
 
+**Final production command (built 2026-09-25 from a full md5 diff of
+the gh-pages worktree against virtuse.com, not from git history; it
+supersedes the 173-file consolidated command).** 291 site files compared:
+82 already identical (most EN root pages were live already), 209 differ.
+Excluded: 9 repo docs (.md, never deployed) and satoshi.html +
+satoshi-lockup.png (Satoshi/Brief desk-owned). The remaining 198 files =
+PL + HU folders (new on production, need the mkdir first) + every held
+proofreading round + lang-detect.js + sitemap.xml. List:
+`scratchpad/prod_deploy_final.txt`; re-verify with an md5 loop over it.
+```bash
+sftp -P 222 virtuse.com@ftp.virtuse.com <<< "mkdir public_html/pl"
+sftp -P 222 virtuse.com@ftp.virtuse.com <<< "mkdir public_html/hu"
+
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 blog-sk.html fear-greed.html lang-detect.js sitemap.xml trading-volume.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 cs/about.html cs/aml-compliance.html cs/bitcoin-data.html cs/bots.html cs/btc-dominance.html cs/buy-bitcoin.html cs/faq.html cs/index.html cs/lending.html cs/ma-200w.html cs/mining.html cs/privacy-policy.html cs/rainbow-chart.html cs/retirement-calculator.html cs/root-cycles.html cs/secure.html cs/tax.html cs/terms-and-conditions.html cs/treasury.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 es/about.html es/aml-compliance.html es/bitcoin-data.html es/blog.html es/bots.html es/btc-dominance.html es/buy-bitcoin.html es/faq.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/mining.html es/privacy-policy.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/secure.html es/tax.html es/terms-and-conditions.html es/trading-volume.html es/treasury.html virtuse.com@ftp.virtuse.com:public_html/es/ && \
+scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
+scp -P 222 hu/404.html hu/about.html hu/aml-compliance.html hu/bitcoin-data.html hu/blog.html hu/bots.html hu/btc-dominance.html hu/buy-bitcoin.html hu/faq.html hu/fear-greed.html hu/index.html hu/lending.html hu/ma-200w.html hu/mining.html hu/privacy-policy.html hu/rainbow-chart.html hu/retirement-calculator.html hu/root-cycles.html hu/secure.html hu/tax.html hu/terms-and-conditions.html hu/trading-volume.html hu/treasury.html virtuse.com@ftp.virtuse.com:public_html/hu/ && \
+scp -P 222 pl/404.html pl/about.html pl/aml-compliance.html pl/bitcoin-data.html pl/blog.html pl/bots.html pl/btc-dominance.html pl/buy-bitcoin.html pl/faq.html pl/fear-greed.html pl/index.html pl/lending.html pl/ma-200w.html pl/mining.html pl/privacy-policy.html pl/rainbow-chart.html pl/retirement-calculator.html pl/root-cycles.html pl/secure.html pl/tax.html pl/terms-and-conditions.html pl/trading-volume.html pl/treasury.html virtuse.com@ftp.virtuse.com:public_html/pl/ && \
+scp -P 222 ru/404.html ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
+scp -P 222 sk/about.html sk/aml-compliance.html sk/bitcoin-data.html sk/bots.html sk/btc-dominance.html sk/buy-bitcoin.html sk/faq.html sk/fear-greed.html sk/index.html sk/lending.html sk/ma-200w.html sk/mining.html sk/privacy-policy.html sk/rainbow-chart.html sk/retirement-calculator.html sk/root-cycles.html sk/secure.html sk/tax.html sk/terms-and-conditions.html sk/trading-volume.html sk/treasury.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+scp -P 222 uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.html uk/bots.html uk/btc-dominance.html uk/buy-bitcoin.html uk/faq.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/secure.html uk/tax.html uk/terms-and-conditions.html uk/treasury.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 **Where the pass leaves things:**
 - Production: rounds 1–7 are live; rounds 8–20 (173 files) wait for
   pl/ + hu/ to ship first. Run the consolidated command from the
