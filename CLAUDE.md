@@ -2,6 +2,59 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, fourth round) — FR + UK high-severity proofreading fixes committed (`14ce070`, gh-pages `3e3d83a`, staging 40/40 md5-verified; production command below, not yet run)
+
+**Round 3 (user: "oprav high položky vo FR a UK") — 40 files** via
+`scratchpad/fix_high_fr_uk.py`:
+- **FR, the big one: all 20 fr subpages still carried the pre-rebrand
+  newsletter block** ("Réparons l'argent, réparons le monde" / "Recevez le
+  Virtuse Report" / "S'ABONNER MAINTENANT") — the September fr parity round
+  restyled the CSS but never swapped that markup (only fr/index and fr/blog
+  had the Brief card). Replaced with the homepage's `.brief-card
+  .brief-card-poster` block ("Recevez le Brief" / "Recevoir le Brief" /
+  "Chaque lundi. Désabonnement à tout moment."), the `.brief-card*` /
+  `.newsletter-form-stacked` / `.brief-form-msg` / `.brief-fineprint` CSS
+  copied from fr/index.html (injected before `</style>`, plus the
+  `.newsletter h2 span` dek rule where missing — fr/tax lacked it), each
+  page's own submit script kept and given `lang: 'fr'`. Verified in the
+  browser on fr/buy-bitcoin (white pill button, column form, muted span).
+- FR strings: Brief line "Uniquement Bitcoin" → "100&nbsp;% Bitcoin"
+  everywhere (index ×2, blog, 20 cards; hero strip "Le lundi."); about no
+  longer calls Bratislava the "siège" of Virtuse Group Pte. Ltd.; privacy
+  "Virtuse Brief"; root-cycles H1 "Cycles en échelle racine" (title was
+  already right); rainbow-chart English title → "Graphique arc-en-ciel
+  Bitcoin | Virtuse".
+- UK (10 highs): og/twitter "майніть"; "Ви в доброму товаристві"; bots
+  "Працює 24/7"; lending "Калькулятор миттєвої позики"; mining "виплачено
+  партнерам за залучених користувачів" (meaning was inverted); tax
+  "Недорогий/Недорога" (affordable, not available); terms "дієздатність для
+  укладення обов'язкових до виконання договорів"; privacy "майже нічого не
+  збираємо"; root-cycles footer "Блог"; root-cycles retitled "Цикли
+  Біткоїна на кореневій шкалі" / H1 "Кореневі цикли".
+- Sub-nav fix (both chart pages listed) on 8 fr + 6 uk dashboard pages.
+- **Beyond the reports:** the privacy-policy "Virtuse Report" clause was
+  still on uk/cs/de/es/ru/sk too (one string each) — fixed in this commit,
+  so that EN-source bug is now closed in all 8 languages. `article.html`
+  (EN, outside the redesign rollout) still has the whole old "Fix the
+  Money" / "Virtuse Report" newsletter block — not touched, flagged.
+- Verified: tagcheck 0 errors on all 40, leftover sweep clean (`>Blog<` on
+  fr is correct French), sub-nav one rainbow + one root-cycles link and ≤1
+  active per page.
+
+**Remaining high items:** ES 5, DE 11 (+ their root-cycles sub-nav fix).
+Then the register decision (Brief block tú/du on es/de) and medium/low.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \\
+scp -P 222 cs/privacy-policy.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \\
+scp -P 222 de/privacy-policy.html virtuse.com@ftp.virtuse.com:public_html/de/ && \\
+scp -P 222 es/privacy-policy.html virtuse.com@ftp.virtuse.com:public_html/es/ && \\
+scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \\
+scp -P 222 ru/privacy-policy.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \\
+scp -P 222 sk/privacy-policy.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \\
+scp -P 222 uk/bitcoin-data.html uk/bots.html uk/btc-dominance.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/tax.html uk/terms-and-conditions.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-25, third round) — SK + CS high-severity proofreading fixes committed (`9505b6f`, gh-pages `fd1d87e`, staging 24/24 md5-verified; **live on production** — user ran the scp, 24/24 md5-verified on virtuse.com)
 
 **Round 2 (user: "oprav high položky v SK a CS") — 24 files** via the
