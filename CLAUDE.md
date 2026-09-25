@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, ninth round) — Polish (`pl/`) added as the 9th language; committed (`d514a6b`), gh-pages `4a3b147`, **live on staging only** (production NOT touched)
+
+- 23 pages in `pl/` built from the current redesigned EN site (22 pages + `blog.html` shell over the EN WP feed). Formal-neutral register ("Państwo" only where direct address is needed), pl-PL number/date formatting (decimal comma, `83 868 USD`, `14 wrz 2026`), dashboard JS strings translated, treasury DISCRETIONARY/API tags dropped.
+- Tooling (reusable for language #10): `i18n-tools/scaffold_pl.py` (EN → `pl/`, now also injects the compact-nav CSS with a `.nav .nav-links a:not(.lang-opt)` selector — the ES-era `.nav-links a` squeeze loses to the redesign's own rule), `pl_translations.py` (TEXT/SNIPPETS/JS) + `apply_pl_translations.py` (asserted snippet/JS replacements, then text-node/attribute pass), `build_pl_blog.py` (from `es/blog.html`), `wire_pl_into_existing.py` (whole-site pass: PL option after every ES switcher anchor — both dropdown panels — plus hreflang, only where the pl file exists), `sitemap_add_pl.py` (whole-sitemap pass).
+- Verified: tagcheck 0, leftover-English sweep clean, 274 internal URLs 200 (crawl sequentially — `python3 -m http.server` resets under parallel requests), external links identical to EN, no overflow at 375/1100/1440, staging 23/23 pages + switchers + sitemap + lang-detect confirmed.
+- Open: legal pages need a native/legal review; consultation widget has no PL copy; pre-existing — `es/` nav overflows at ~1100px, blog pages' hreflang sets miss de/fr/es(/pl), `es/tax.html` link anomaly, EN fear-greed/trading-volume switchers link to missing uk/cs/ru pages.
+- **Production deploy (when approved):** `pl/` is a new server folder → `sftp mkdir public_html/pl` first, then upload `pl/*` plus the 171 changed pages, `lang-detect.js`, `sitemap.xml`; md5-verify afterwards.
+
 ## Session status (2026-09-25, eighth round) — CS medium-severity proofreading fixes + EN carry-overs committed (`cc9cd91` + `8084d8c`, gh-pages `e693597`, staging 20/20 md5-verified; **live on production** — 20/20 md5-verified on virtuse.com)
 
 **Production done 2026-09-25** (20/20 md5 match, server timestamp 12:43 UTC; live checks: 9 Quick Answers on cs/index, "Odebírat"/"E-mailová adresa"/fine print, "14. května 2026", about 26 partners, bots title + "Cloudoví boti", buy-bitcoin "KYC u partnera", 12px fine-print rule present).
