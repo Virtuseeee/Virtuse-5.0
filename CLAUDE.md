@@ -2,6 +2,36 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-third round) — DE low-severity proofreading (`73e30d9`, gh-pages `cffe621`, staging 22/22 md5-verified). **The sitewide proofreading pass is complete: all high, medium and low findings in all 8 languages are fixed on staging.** Production for everything since round 8 is held on PL/HU (consolidated command, 173 files, in the nineteenth-round entry below)
+
+**Round 20 of the proofreading pass (user: "oprav teraz low položky v
+DE") — 22 de pages** via `scratchpad/fix_low_de.py` (clean first run).
+- 36 of 44 DE low items (copyright, footer dash, lending rate, rainbow
+  title, straight quotes and the aml double colon were closed earlier).
+  Sitewide: footer legal column "Rechtliches", hamburger "Menü öffnen".
+  Index: "Abb. 0.x" figure labels, newsletter button "Brief erhalten"
+  (index was the only "Abonnieren"). Titles "Bitcoin-Treasury für
+  Unternehmen", "Bitcoin-Handelsvolumen", "Angst-und-Gier-Index für
+  Bitcoin". bots step headings nominal like every other page. Index
+  service cards + bots Cryptohopper blurb mirror the EN low round;
+  de/about `.name-visual` clip (its 2px overflow is gone).
+- Verified: tagcheck 0, leftover sweep clean, all 22 de pages at 375px
+  with no overflow, fine print 12px.
+
+**Where the pass leaves things:**
+- Production: rounds 1–7 are live; rounds 8–20 (173 files) wait for
+  pl/ + hu/ to ship first. Run the consolidated command from the
+  nineteenth-round entry, then md5-verify against
+  `scratchpad/touched_held_all.txt` (scratchpad is session-only; the
+  list is fully reproducible from `git log --name-only` since `d514a6b`).
+- Open decisions for the user: the "Bitcoin is your credit." headline
+  (kept in all languages), ByBit vs Bybit spelling, the UK CEO name form,
+  ES usted register (applied), CASP vs PSCA on FR legal pages.
+- Still open, not proofreading: fine print 15px on pl/hu; pl/hu fear-
+  greed/trading-volume lack a DE hreflang; blog-sk structural drift (no
+  Brief nav item, no CS in its switcher); native-speaker review of the
+  legal pages in every language.
+
 ## Session status (2026-09-25, twenty-second round) — RU low-severity proofreading + RU heading overflow (`fac4e6a`, gh-pages `15adbf5`, staging 21/21 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry still covers everything (173 files)**
 
 **Round 19 of the proofreading pass (user: "oprav teraz low položky v
