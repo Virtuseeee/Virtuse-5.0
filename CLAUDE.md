@@ -2,6 +2,43 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twelfth round) — UK medium-severity proofreading committed (`69f51d9`, gh-pages `000ae79`, staging 21/21 md5-verified). **Production deploy held for the same PL/HU reason as FR** (uk pages carry the PL/HU switcher entries; pl/ + hu/ are not on production)
+
+**Round 9 of the proofreading pass (user: "oprav teraz medium položky v
+UK") — 21 uk pages** via `scratchpad/fix_medium_uk.py` (aborted once on
+a count mismatch after partial writes → `git checkout -- uk`, fixed,
+re-run clean).
+- All 39 medium items, plus the report's systemic fixes: "Біткоїн-дані"
+  (was the calque "Біткоїн дані") in nav/footer/titles/sub-nav, one
+  newsletter wording sitewide ("Virtuse Brief. Лише Біткоїн. Жодних
+  токенів. Жодного PR." + placeholder "Електронна пошта"), capital
+  "Біткоїн" in the remaining lowercase spots, feminine gender for Virtuse
+  (aml/terms had neuter forms; about was feminine), «» quotes on
+  aml/privacy/terms, "AML і комплаєнс" (label, title, h1) and
+  "комплаєнс" in the aml body, "самостійне/спільне зберігання", "ЄЕП"
+  (was ЄЕЗ on buy-bitcoin), CEO named "Ras Vasilisin" (index/blog had
+  the Slovak genitive "Rastislava Vasilisina"; kept his public Latin-
+  script name rather than transliterating it — change if wanted).
+  Not changed: "%" without a space (consistent house style); "кастоді"
+  as a general noun on bots/treasury (only the self/collaborative
+  custody phrases were unified).
+- EN round-5 carry-overs, same set as SK/CS/FR.
+- **Fine-print bug is sitewide:** `.brief-fineprint { font-size: 12px }`
+  loses to `.brief-card-poster p { font-size: 15px }` on EN index and EN
+  buy-bitcoin too (verified in the browser), so every language inherits
+  it. Fixed on uk (20 pages) and cs (round 8) as `.brief-card
+  .brief-fineprint`; **still 15px on EN, sk, fr, es, ru, de, pl, hu**.
+- uk/index concierge CTA overflowed at 320px (fine at 375px); it now
+  wraps on phones, like fr/index.
+- Browser-verified at 375px: uk/index (9 Quick Answers, fine print 12px,
+  no overflow, new Custody card/newsletter/copyright), uk/aml-compliance
+  (title/h1 "AML і комплаєнс", nav "Біткоїн-дані").
+
+**Production command (hold until pl/ + hu/ ship, same as the FR round):**
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 uk/404.html uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.html uk/bots.html uk/btc-dominance.html uk/buy-bitcoin.html uk/faq.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/secure.html uk/tax.html uk/terms-and-conditions.html uk/treasury.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-25, eleventh round) — FR medium-severity proofreading + footer/homepage parity committed (`403ca3f`, gh-pages `8838a4e`, staging 22/22 md5-verified). **Production deploy held: the fr files now carry the PL/HU switcher entries from the ninth/tenth rounds, and pl/ + hu/ are not on production yet** (both 301 to blog.virtuse.com there)
 
 **Round 8 of the proofreading pass (user: "oprav teraz medium položky vo
