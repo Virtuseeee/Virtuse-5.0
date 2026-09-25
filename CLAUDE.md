@@ -2,6 +2,29 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twentieth round) — UK low-severity proofreading (`8af01f1`, gh-pages `0edb341`, staging 20/20 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry below still covers everything (173 files)**
+
+**Round 17 of the proofreading pass (user: "oprav teraz low položky v
+UK") — 20 uk pages** via `scratchpad/fix_low_uk.py` (clean first run).
+- All 13 UK low items: "кінцева мета" (index Quick Answers + faq),
+  buy-bitcoin Stacking sentence reordered, "0,043 $/кВт·год", treasury
+  "Сімейні офіси" (the UK reviewer asked for the Ukrainian term, unlike
+  SK/CS which went to the English "Family offices"), blog hero line
+  "Virtuse Brief: щотижневий брифінг." (EN parity), bitcoin-data lists
+  market cap like EN, privacy "30–90" + "а не через нас", terms
+  "Автономність положень" + "Незастосування", root-cycles "із Bitcoin
+  Wave", btc-dominance "перетікання спекулятивного капіталу", hamburger
+  "Відкрити меню" on every page. Index service cards and bots
+  Cryptohopper blurb mirror the EN low round.
+- Layout: uk/about `.name-visual` clip; uk/root-cycles credit link
+  (longest label of all languages, `nowrap`) overflowed 7px at 375px,
+  now wraps on phones. All 20 uk pages at 375px: no overflow, fine print
+  12px, concierge CTA fits.
+- **Browser gotcha:** running the iframe sweep from a uk page returned
+  every frame as cross-origin (no document); running it from another
+  page (fr/lending) worked. Use a neutral host page for the sweep.
+- Remaining low rounds: ES 41, RU 43, DE 44.
+
 ## Session status (2026-09-25, nineteenth round) — FR low-severity proofreading + FR mobile layout bugs (`aa86565`) and uk/tax table overflow (`b7543c6`); gh-pages `df800bc`, staging 23/23 md5-verified. **Held on PL/HU; the consolidated command below now covers 173 files**
 
 **Round 16 of the proofreading pass (user: "oprav teraz low položky vo
