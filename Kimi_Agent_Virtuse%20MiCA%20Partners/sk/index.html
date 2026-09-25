@@ -13,7 +13,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Virtuse | Prvé centrum na svete pre Bitcoin služby</title>
+<title>Virtuse | Prvé centrum na svete pre bitcoinové služby</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Virtuse | Prvé centrum na svete pre Bitcoin služby">
+<meta property="og:title" content="Virtuse | Prvé centrum na svete pre bitcoinové služby">
 <meta property="og:description" content="Všetko pre Bitcoin. Nič iné. Nakupujte, ťažte, požičiavajte si, uschovávajte a zveľaďujte svoj Bitcoin cez preverených partnerov s licenciou MiCA, všetko na jednom dôveryhodnom mieste.">
 <meta property="og:url" content="https://virtuse.com/sk/index.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="sk_SK">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Virtuse | Prvé centrum na svete pre Bitcoin služby">
+<meta name="twitter:title" content="Virtuse | Prvé centrum na svete pre bitcoinové služby">
 <meta name="twitter:description" content="Všetko pre Bitcoin. Nič iné. Nakupujte, ťažte, požičiavajte si, uschovávajte a zveľaďujte svoj Bitcoin cez preverených partnerov s licenciou MiCA, všetko na jednom dôveryhodnom mieste.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
@@ -1449,6 +1449,71 @@ body {
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
+.quick-answers {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.qa-list {
+  border-top: 1px solid var(--border);
+}
+
+.qa-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.qa-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  transition: opacity 0.15s ease;
+}
+
+.qa-item summary::-webkit-details-marker { display: none; }
+.qa-item summary::marker { content: ''; }
+
+.qa-item summary:hover { opacity: 0.7; }
+
+.qa-icon {
+  position: relative;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.qa-icon::before,
+.qa-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--text-muted);
+  transform: translate(-50%, -50%);
+}
+
+.qa-icon::before { width: 12px; height: 1.5px; }
+.qa-icon::after { width: 1.5px; height: 12px; transition: transform 0.2s ease, opacity 0.2s ease; }
+
+.qa-item[open] .qa-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+
+.qa-answer {
+  max-width: 720px;
+  padding: 0 0 24px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.qa-answer a { color: var(--text); }
+
 /* ===== FOOTER ===== */
 .footer-main {
   background: var(--dark);
@@ -2301,12 +2366,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="brief-strip-inner">
     <div class="brief-strip-copy">
       <span class="brief-eyebrow">Virtuse Brief</span>
-      <p class="brief-line">Pondelok. Iba bitcoin. Žiadne tokeny. Žiadne PR.</p>
+      <p class="brief-line">Pondelok. Iba Bitcoin. Žiadne tokeny. Žiadne PR.</p>
     </div>
     <form class="newsletter-form brief-form" data-brief-form novalidate>
-      <input type="email" name="email" placeholder="Emailová adresa" required>
+      <input type="email" name="email" placeholder="E-mailová adresa" required>
       <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-      <button type="submit">Prihlásiť sa</button>
+      <button type="submit">Odoberať</button>
     </form>
   </div>
   <p class="brief-form-msg" role="status" aria-live="polite"></p>
@@ -2316,7 +2381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="problems anim-section anim-hidden">
   <h2 class="problems-lead">
     <strong>Otázky, ktoré väčšina bitcoinerov ignoruje.</strong>
-    <span>Kým sa už nedá. Toto sú tri spôsoby, akými bitcoineri prichádzajú o najviac — a presne to, ako ich centrum Virtuse rieši.</span>
+    <span>Až kým už nemôžu. Toto sú tri spôsoby, akými bitcoineri prichádzajú o najviac — a presne to, ako ich centrum Virtuse rieši.</span>
   </h2>
 
   <div class="problem-grid">
@@ -2366,7 +2431,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <h3>Čo sa stane s mojím BTC, keď zomriem?</h3>
-      <p>Pätina všetkého vyťaženého Bitcoinu je už stratená za jedným kľúčom. Vlastná úschova bez plánu nástupníctva je tikajúca bomba, nie poistka.</p>
+      <p>Pätina všetkého vyťaženého Bitcoinu je už stratená za jedným kľúčom. Vlastná úschova bez plánu dedenia je tikajúca bomba, nie poistka.</p>
       <div class="problem-link">
         Naplánujte dedičstvo svojho Bitcoinu
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2437,7 +2502,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="services anim-section anim-hidden" id="services">
   <div class="sec-header">
-    <h2>Všetky Bitcoin služby. <span>Jedno miesto.</span></h2>
+    <h2>Všetky bitcoinové služby. <span>Jedno miesto.</span></h2>
     <p>Získajte prístup k najlepším svetovým službám zameraným výhradne na Bitcoin cez jedinú bránu. Porovnajte partnerov, nájdite najlepšie sadzby a ponechajte si svoje kľúče.</p>
   </div>
 
@@ -2445,7 +2510,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="secure.html" class="svc-card anim-card">
       <h3>Úschova</h3>
-      <p>Multisig trezory so zabudovaným plánovaním dedičstva.</p>
+      <p>Multisig trezory a hardvérové peňaženky, aby vaše kľúče zostali offline.</p>
     </a>
 
     <a href="mining.html" class="svc-card anim-card">
@@ -2454,7 +2519,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <a href="bots.html" class="svc-card anim-card">
-      <h3>Tradingové boty</h3>
+      <h3>Obchodné boty</h3>
       <p>Nekustodiálne boty na DCA, grid a vlastné stratégie.</p>
     </a>
 
@@ -2480,7 +2545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="how" id="how-it-works">
   <div class="sec-header">
     <h2>Ako <span>Virtuse funguje</span></h2>
-    <p>Tri jednoduché kroky k prístupu ku každej Bitcoin službe cez naše centrum</p>
+    <p>Tri jednoduché kroky k prístupu ku každej bitcoinovej službe cez naše centrum</p>
   </div>
   <div class="how-log">
     <div class="how-log-item">
@@ -2553,7 +2618,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="vblog-tag">Blog</span>
         <h3>Obchodoval som na Wall Street ako prvý Slovák. Dnes viem, prečo je Elon Musk v skutočnosti najbohatším väzňom fiat systému</h3>
         <p>Celé desaťročia som slepo veril akciovému trhu. Keďže som mal to obrovské šťastie a príležitosť vyštudovať priamo v New Yorku, začal som s akciami obchodovať priamo na Wall Street ako jeden z úplne prvých Slovákov.</p>
-        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>26 jún 2026</div>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>26. júna 2026</div>
       </div>
     </a>
     <a href="../article.html?slug=ako-bilion-elona-muska-a-rekordne-ipo-spacex-nicia-myty-o-zlych-miliardaroch&lang=sk" class="vblog-card">
@@ -2562,7 +2627,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="vblog-tag">Blog</span>
         <h3>Ako bilión Elona Muska a rekordné IPO SpaceX ničia mýty o zlých miliardároch</h3>
         <p>Na Slovensku máme národný šport. Volá sa podozrievavosť. Niekto zarobil milión? Určite nakradol. Tu je niekoľko verzií tejto konkrétnej vety, odstupňovaných podľa miery sarkazmu a údernosti.</p>
-        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>15 jún 2026</div>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>15. júna 2026</div>
       </div>
     </a>
     <a href="../article.html?slug=kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu&lang=sk" class="vblog-card">
@@ -2571,7 +2636,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="vblog-tag">Blog</span>
         <h3>Kým sa hádate o Ficovi a Šimečkovi, vo Frankfurte vám potichu zatvárajú finančnú pascu</h3>
         <p>Po kríze v roku 2008 som si myslel, že zo systému niet úniku. Sledoval som politické hádky doma aj v USA. Rozčuľoval som sa nad správami. Žil som v ilúzii, že o našej budúcnosti rozhodujú politici.</p>
-        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>4 jún 2026</div>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>4. júna 2026</div>
       </div>
     </a>
   </div>
@@ -2590,7 +2655,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (posts) {
       var grid = document.getElementById('vblogGrid');
-      var months = ['jan','feb','mar','apr','máj','jún','júl','aug','sep','okt','nov','dec'];
+      var months = ['januára','februára','marca','apríla','mája','júna','júla','augusta','septembra','októbra','novembra','decembra'];
       function txt(s) { var d = document.createElement('div'); d.innerHTML = s; return (d.textContent || '').replace('[…]','…').trim(); }
       grid.innerHTML = '';
       posts.forEach(function (p) {
@@ -2610,7 +2675,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var au = document.createElement('span'); au.textContent = 'Ras Vasilisin';
         var dot = document.createElement('span'); dot.className = 'vblog-dot';
         meta.appendChild(au); meta.appendChild(dot);
-        meta.appendChild(document.createTextNode(' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear()));
+        meta.appendChild(document.createTextNode(' ' + d.getDate() + '. ' + months[d.getMonth()] + ' ' + d.getFullYear()));
         body.appendChild(tag); body.appendChild(h); body.appendChild(ex); body.appendChild(meta);
         a.appendChild(media); a.appendChild(body);
         grid.appendChild(a);
@@ -2708,11 +2773,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="newsletter anim-section anim-hidden">
   <div class="brief-card brief-card-poster">
   <h2>Odoberať <span>Brief</span></h2>
-  <p>Virtuse Brief. Iba bitcoin. Žiadne tokeny. Žiadne PR.</p>
+  <p>Virtuse Brief. Iba Bitcoin. Žiadne tokeny. Žiadne PR.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Emailová adresa" required>
+    <input type="email" name="email" placeholder="E-mailová adresa" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Prihlásiť sa</button>
+    <button type="submit">Odoberať</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
   </div>
@@ -2758,6 +2823,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   })();
   </script>
+</section>
+
+<section class="quick-answers anim-section anim-hidden">
+  <div class="sec-header">
+    <h2>Rýchle <span>odpovede</span></h2>
+  </div>
+  <div class="qa-list">
+    <details class="qa-item">
+      <summary>Čo je Virtuse?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Virtuse je prvé centrum na svete pre služby zamerané výhradne na Bitcoin. Založené v roku 2018, výhradne na Bitcoin od roku 2022, spájame investorov s preverenými, regulovanými partnermi pre všetko okolo Bitcoinu: nákup, ťažbu, pôžičky, úschovu, treasury, dane a automatizáciu. Virtuse Group Pte. Ltd. má zázemie v Singapure, s prevádzkovým sídlom v Bratislave, a slúži klientom vo viac ako 100 krajinách.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Je Virtuse burza?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nie. Virtuse neprevádzkuje burzu, nedrží vaše prostriedky ani nepreberá úschovu vášho Bitcoinu. Sme kurátorská a prístupová vrstva: preverujeme najlepších licencovaných poskytovateľov v každej kategórii a spájame vás priamo s nimi.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Drží Virtuse niekedy môj Bitcoin alebo moje kľúče?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nikdy. Virtuse nedrží žiadne prostriedky, žiadne kľúče ani žiadne klientske dáta. Všetky transakcie sa vykonávajú na regulovaných platformách partnerov a odporúčame vlastnú úschovu ako konečný stav pre vaše mince.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Ako centrum funguje?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Tri kroky: vyberte si službu, porovnajte našich preverených partnerov vedľa seba a prekliknite sa na regulovanú platformu partnera. Všetko ostatné (účet, overenie, transakcie) prebieha priamo s partnerom. Váš Bitcoin zostáva pod vašou kontrolou.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Ako vyberáte partnerov?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Uprednostňujeme licenciu v EÚ (MiCA/MiCAR tam, kde je relevantná), bezpečnostnú históriu, naklonenosť Bitcoinu a férové poplatky. Partneri, ktorí nesplnia latku, sa na zozname neobjavia.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Sú partneri regulovaní?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Partneri pre nákup sú poskytovatelia kryptoslužieb v EÚ s licenciou MiCA/MiCAR: napríklad Kraken prostredníctvom Centrálnej banky Írska a ByBit EU aj 21bitcoin prostredníctvom rakúskeho FMA. Medzi partnermi pre Treasury sú regulované inštitúcie ako Sygnum (švajčiarska banková licencia) a BitGo.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Čo si Virtuse účtuje?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nič. Prehliadanie, porovnávanie a prekliknutie sa k partnerom je zadarmo. Virtuse zarába províziu za odporúčanie od partnerov, keď sa zaregistrujete, bez akýchkoľvek dodatočných nákladov pre vás. Cez Virtuse nikdy nezaplatíte viac.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Vyžaduje Virtuse KYC?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nie, keďže Virtuse sa nikdy nedotkne vašich prostriedkov, u nás nie je čo overovať. Overenie identity prebieha raz, na regulovanej platforme partnera, kde uskutočňujete transakciu.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Ako vyberiem svoj Bitcoin?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Z platformy partnera na akúkoľvek adresu peňaženky, ktorú kontrolujete vy, pre dlhodobé držanie odporúčame výber do vlastnej hardvérovej peňaženky. Ťažiari dostávajú odmeny vyplácané denne, priamo na adresu peňaženky, ktorú majú vždy pod vlastnou kontrolou.</div>
+    </details>
+  </div>
 </section>
 
 <script>
@@ -2850,7 +2959,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, všetky práva vyhradené.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Všetky práva vyhradené.</p>
     <p class="footer-bottom-brief">Virtuse Brief — týždenný výber od Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Čítať →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
