@@ -688,6 +688,8 @@ body {
 @media (max-width: 700px) {
   .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
   .concierge-banner-inner { flex-direction: column; padding: 24px; }
+  /* The Ukrainian CTA label is too long for one line on small phones */
+  .concierge-banner-cta { white-space: normal; justify-content: center; text-align: center; }
 }
 
 /* ===== BITCOIN IS YOUR CREDIT (Buy Bitcoin, firefish.io "Bitcoin is your
@@ -1558,7 +1560,7 @@ body {
   text-align: center;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   max-width: 1400px;
   margin: 6px auto 0;
   padding: 0 48px;
@@ -2459,7 +2461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн-дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
@@ -2607,7 +2609,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="brief-line">Щопонеділка. Лише Біткоїн. Жодних токенів. Жодного PR.</p>
     </div>
     <form class="newsletter-form brief-form" data-brief-form novalidate>
-      <input type="email" name="email" placeholder="Ваш email" required>
+      <input type="email" name="email" placeholder="Електронна пошта" required>
       <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
       <button type="submit">Отримати Brief</button>
     </form>
@@ -2642,7 +2644,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <h3>Яка біржа мене не обдурить?</h3>
-      <p>Mt. Gox, FTX, Celsius — мільярди зникли в крахах бірж. Ми додаємо лише CASP з ліцензією MiCA, перевірених насамперед за зберіганням та юрисдикцією.</p>
+      <p>Mt. Gox, FTX, Celsius — мільярди зникли в крахах бірж. Ми розміщуємо лише CASP з ліцензією MiCA, перевірених насамперед щодо зберігання та юрисдикції.</p>
       <div class="problem-link">
         Переглянути перевірені біржі
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2670,7 +2672,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <h3>Що станеться з моїм BTC після моєї смерті?</h3>
-      <p>П'ята частина всього видобутого Біткоїна вже втрачена за одним ключем. Самостійне зберігання без плану — це годинник, що цокає, а не захист.</p>
+      <p>П'ята частина всього видобутого Біткоїна вже безповоротно втрачена разом із загубленими ключами. Самостійне зберігання без плану — це міна сповільненої дії, а не захист.</p>
       <div class="problem-link">
         Спланувати спадкування Біткоїна
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2766,10 +2768,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="concierge-banner anim-section anim-hidden">
   <div class="concierge-banner-inner">
     <span class="concierge-banner-text">
-      <strong>Не впевнені, що вам підходить?</strong> Дайте відповідь на кілька запитань і ми підберемо вам потрібного партнера.
+      <strong>Не впевнені, що вам підходить?</strong> Дайте відповідь на кілька запитань, і ми підберемо вам потрібного партнера.
     </span>
     <a href="../concierge.html?utm_source=concierge&amp;utm_medium=banner" class="concierge-banner-cta">
-      Знайдіть партнера за 60 секунд
+      Підібрати партнера за 60 секунд
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -2810,7 +2812,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="secure.html" class="svc-card anim-card">
       <h3>Кастоді</h3>
-      <p>Мультипідписні сховища зі вбудованим плануванням спадкування.</p>
+      <p>Мультипідписні сховища та апаратні гаманці, щоб ваші ключі залишалися офлайн.</p>
     </a>
 
     <a href="mining.html" class="svc-card anim-card">
@@ -2820,7 +2822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="bots.html" class="svc-card anim-card">
       <h3>Торгові боти</h3>
-      <p>Некастодіальні боти для DCA, grid та власних стратегій.</p>
+      <p>Некастодіальні боти для DCA, грід та власних стратегій.</p>
     </a>
 
     <a href="lending.html" class="svc-card anim-card">
@@ -2854,7 +2856,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Крок 01</span>
         <h3>Оберіть сервіс</h3>
-        <p>Перегляньте всі категорії, орієнтовані лише на Біткоїн. Порівнюйте партнерів і комісії поруч.</p>
+        <p>Перегляньте всі категорії, орієнтовані лише на Біткоїн. Порівнюйте партнерів і комісії між собою.</p>
         <a href="#services" class="how-card-cta">
           Переглянути всі сервіси
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2866,9 +2868,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Крок 02</span>
         <h3>Підключіться до партнера</h3>
-        <p>Реєстрація відбувається на їхній регульованій платформі. Virtuse ніколи не зберігає ваші ключі, кошти чи дані.</p>
+        <p>Реєстрація відбувається на регульованій платформі партнера. Virtuse ніколи не зберігає ваші ключі, кошти чи дані.</p>
         <a href="../concierge.html?utm_source=concierge&amp;utm_medium=how" class="how-card-cta">
-          Знайдіть партнера за 60 секунд
+          Підібрати партнера за 60 секунд
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -2877,10 +2879,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-marker"><span class="how-log-dot"></span></div>
       <div class="how-log-body">
         <span class="how-log-num">Крок 03</span>
-        <h3>Нарощуйте свій стек</h3>
+        <h3>Нарощуйте свої накопичення</h3>
         <p>Задайте свій ритм, порівняйте комісії всіх партнерів і автоматизуйте це за допомогою ботів.</p>
         <a href="../stacking.html?utm_source=stacking&amp;utm_medium=widget" class="how-card-cta">
-          Спланувати свій стек
+          Спланувати накопичення
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -2892,8 +2894,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== TOOLS & GUIDES ===== -->
 <section class="tools-guides anim-section anim-hidden" id="tools-guides">
   <div class="tools-guides-inner">
-    <h2>Податки на біткоїн у країнах ЄС</h2>
-    <p>Податкові огляди за країнами, порівняння комісій та інструменти накопичення. Лише освітня навігація; не податкова чи інвестиційна порада.</p>
+    <h2>Податки на Біткоїн у країнах ЄС</h2>
+    <p>Податкові огляди за країнами, порівняння комісій та інструменти накопичення. Лише з освітньою метою; це не податкова чи інвестиційна порада.</p>
     <div class="tools-guides-links">
       <a href="/bitcoin-tax/">Порівняння країн</a>
       <a href="/bitcoin-tax/slovakia/">Словаччина</a>
@@ -2912,7 +2914,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="vblog anim-section anim-hidden">
   <div class="sec-header">
     <h2>Блог <span>Virtuse</span></h2>
-    <p>Думки про Біткоїн, макроекономіку та майбутнє грошей від CEO Rastislava Vasilisina</p>
+    <p>Думки про Біткоїн, макроекономіку та майбутнє грошей від CEO Ras Vasilisin</p>
   </div>
   <div class="vblog-grid" id="vblogGrid">
     <a href="../article.html?slug=why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2" class="vblog-card">
@@ -3023,7 +3025,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>Отримайте <span>Brief</span></h2>
     <p>Virtuse Brief. Лише Біткоїн. Жодних токенів. Жодного PR.</p>
     <form class="newsletter-form newsletter-form-stacked brief-form" data-brief-form novalidate>
-      <input type="email" name="email" placeholder="Ваш email" required>
+      <input type="email" name="email" placeholder="Електронна пошта" required>
       <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
       <button type="submit">Отримати Brief</button>
     </form>
@@ -3041,11 +3043,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="qa-list">
     <details class="qa-item">
       <summary>Що таке Virtuse?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Virtuse є першим у світі хабом винятково Біткоїн-сервісів. Компанію засновано в 2018 році, а з 2022 року вона працює виключно з Біткоїном і з'єднує інвесторів із перевіреними, регульованими партнерами для всього, що стосується Біткоїна: купівлі, майнінгу, позик, кастоді, казначейства, податків та автоматизації. Virtuse Group Pte. Ltd. базується в Сінгапурі, з операційним офісом у Братиславі, і обслуговує клієнтів у понад 100 країнах.</div>
+      <div class="qa-answer">Virtuse — перший у світі хаб сервісів лише для Біткоїна. Компанію засновано в 2018 році, а з 2022 року вона працює виключно з Біткоїном і з'єднує інвесторів із перевіреними, регульованими партнерами для всього, що стосується Біткоїна: купівлі, майнінгу, позик, кастоді, казначейства, податків та автоматизації. Virtuse Group Pte. Ltd. базується в Сінгапурі, з операційним офісом у Братиславі, і обслуговує клієнтів у понад 100 країнах.</div>
     </details>
     <details class="qa-item">
       <summary>Чи є Virtuse біржею?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Ні. Virtuse не є біржею, не зберігає ваші кошти та не бере ваш Біткоїн на кастоді. Ми є рівнем курації та доступу: ми перевіряємо найкращих ліцензованих провайдерів у кожній категорії та напряму з'єднуємо вас із ними.</div>
+      <div class="qa-answer">Ні. Virtuse не є біржею, не зберігає ваші кошти та не бере ваш Біткоїн на кастоді. Наша роль — курація та доступ: ми перевіряємо найкращих ліцензованих провайдерів у кожній категорії та напряму з'єднуємо вас із ними.</div>
     </details>
     <details class="qa-item">
       <summary>Чи зберігає Virtuse мій Біткоїн або мої ключі?<span class="qa-icon"></span></summary>
@@ -3053,7 +3055,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Як працює хаб?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Три кроки: оберіть послугу, порівняйте наших перевірених партнерів між собою і перейдіть на регульовану платформу партнера. Все, що відбувається далі (створення акаунта, верифікація, транзакції) відбувається безпосередньо з партнером. Ваш Біткоїн залишається під вашим контролем.</div>
+      <div class="qa-answer">Три кроки: оберіть послугу, порівняйте наших перевірених партнерів між собою і перейдіть на регульовану платформу партнера. Усе подальше (створення акаунта, верифікація, транзакції) відбувається безпосередньо з партнером. Ваш Біткоїн залишається під вашим контролем.</div>
     </details>
     <details class="qa-item">
       <summary>Як ви обираєте партнерів?<span class="qa-icon"></span></summary>
@@ -3061,7 +3063,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Чи регульовані партнери?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Партнери для купівлі це ліцензовані за MiCA/MiCAR постачальники послуг криптоактивів у ЄС: наприклад, Kraken через Центральний банк Ірландії, а ByBit EU та 21bitcoin через австрійський регулятор FMA. Серед партнерів із казначейства є регульовані установи, такі як Sygnum (банківська ліцензія Швейцарії) та BitGo.</div>
+      <div class="qa-answer">Партнери для купівлі — це ліцензовані за MiCA/MiCAR постачальники послуг криптоактивів у ЄС: наприклад, Kraken через Центральний банк Ірландії, а ByBit EU та 21bitcoin через австрійський регулятор FMA. Серед партнерів із казначейства є регульовані установи, такі як Sygnum (банківська ліцензія Швейцарії) та BitGo.</div>
     </details>
     <details class="qa-item">
       <summary>Що стягує Virtuse?<span class="qa-icon"></span></summary>
@@ -3069,7 +3071,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Чи вимагає Virtuse проходження KYC?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Ні. Оскільки Virtuse ніколи не торкається ваших коштів, перевіряти з нами нічого. Верифікація особи відбувається один раз, на регульованій партнерській платформі, де ви здійснюєте операції.</div>
+      <div class="qa-answer">Ні. Оскільки Virtuse ніколи не торкається ваших коштів, верифікувати в нас нічого. Верифікація особи відбувається один раз, на регульованій партнерській платформі, де ви здійснюєте операції.</div>
     </details>
     <details class="qa-item">
       <summary>Як вивести свій Біткоїн?<span class="qa-icon"></span></summary>
@@ -3153,7 +3155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Матеріали</h4>
         <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
         <a href="blog.html">Блог</a>
-        <a href="bitcoin-data.html">Біткоїн дані</a>
+        <a href="bitcoin-data.html">Біткоїн-дані</a>
         <a href="/buy-bitcoin/slovakia/">Купити у Словаччині</a>
         <a href="/buy-bitcoin/czechia/">Купити в Чехії</a>
         <a href="/buy-bitcoin/germany/">Купити в Німеччині</a>
@@ -3164,12 +3166,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Правова інформація</h4>
         <a href="terms-and-conditions.html">Умови використання</a>
         <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <a href="aml-compliance.html">AML і комплаєнс</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
     <p class="footer-bottom-brief">Virtuse Brief — щотижневий дайджест від Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Читати →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
