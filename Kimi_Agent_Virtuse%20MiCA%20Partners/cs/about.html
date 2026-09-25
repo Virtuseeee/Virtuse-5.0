@@ -353,6 +353,7 @@ img { max-width: 100%; }
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow-x: clip; /* the 380px glow below is wider than a phone */
 }
 
 .name-visual::before {
@@ -1032,7 +1033,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Navigation -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Otevřít menu" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -1162,7 +1163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="stat-box">
       <div class="stat-value">2</div>
-      <div class="stat-label">Globální pobočky</div>
+      <div class="stat-label">Globálních poboček</div>
     </div>
   </div>
 </section>
@@ -1174,7 +1175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="step">
       <span class="step-num">2018</span>
       <h3>Evropské kořeny, dosah do Singapuru</h3>
-      <p>Virtuse vzniklo jako platforma pro digitální aktiva a komodity s kořeny v evropských energetických trzích a rozšířilo se do Singapuru, aby propojilo tradiční finance s kryptoměnami a tokenizovanými reálnými aktivy.</p>
+      <p>Virtuse vzniklo jako platforma pro digitální aktiva a komodity s kořeny na evropských energetických trzích a rozšířilo se do Singapuru, aby propojilo tradiční finance s kryptoměnami a tokenizovanými reálnými aktivy.</p>
     </div>
     <div class="step">
       <span class="step-num">2022</span>
@@ -1287,7 +1288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-title"><h2>Prozkoumejte <span>centrum</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Koupit Bitcoin<small>Partneři s licencí MiCA</small></span><span class="arrow">&#8594;</span></a>
-    <a href="secure.html" class="hub-link"><span>Úschova<small>Vlastní i kolaborativní úschova</small></span><span class="arrow">&#8594;</span></a>
+    <a href="secure.html" class="hub-link"><span>Úschova<small>Vlastní a kolaborativní úschova</small></span><span class="arrow">&#8594;</span></a>
     <a href="lending.html" class="hub-link"><span>Půjčky<small>Půjčky zajištěné Bitcoinem</small></span><span class="arrow">&#8594;</span></a>
     <a href="mining.html" class="hub-link"><span>Těžba<small>Hostovaná i cloudová těžba</small></span><span class="arrow">&#8594;</span></a>
     <a href="treasury.html" class="hub-link"><span>Treasury<small>Firemní bitcoinová strategie</small></span><span class="arrow">&#8594;</span></a>
