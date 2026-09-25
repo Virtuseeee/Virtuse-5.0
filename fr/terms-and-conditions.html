@@ -700,6 +700,128 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== FOOTER (matches EN) ===== */
+/* Matches the homepage's footer exactly — 5 link columns, a giant
+   clipped brand wordmark, side padding on .footer-inner (not
+   .footer-main) so the content's left edge lines up with every other
+   section. */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded, not var(--text) — a real device screenshot on the
+     homepage found var() failing inside a background-clip:text
+     gradient on mobile Safari. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+/* ===== FOOTER (mobile, matches EN) ===== */
+@media (max-width: 900px) {
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
 </style>
 </head>
 <body>
@@ -815,7 +937,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Conditions <span class="highlight">générales</span></h1>
-  <p class="hero-desc">Les règles qui régissent votre utilisation de ce site. En bref : Virtuse est un hub non custodial qui vous met en relation avec des partenaires indépendants et sélectionnés ; nous ne détenons pas vos fonds, n'exécutons pas vos transactions et ne fournissons pas de conseil financier. En vigueur à compter du 20 août 2026.</p>
+  <p class="hero-desc">Les règles qui régissent votre utilisation de ce site. En bref&nbsp;: Virtuse est un hub non custodial qui vous met en relation avec des partenaires indépendants et sélectionnés&nbsp;; nous ne détenons pas vos fonds, n'exécutons pas vos transactions et ne fournissons pas de conseil financier. En vigueur à compter du 20 août 2026.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
@@ -838,32 +960,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details open>
     <summary>L'entité contractante</summary>
-    <div class="faq-answer">Ce site (virtuse.com et ses sous-domaines) est exploité par <strong>Virtuse Group Pte. Ltd.</strong>, une société dont le bureau opérationnel se trouve à Bratislava, en Slovaquie, et le siège du groupe à Singapour (« Virtuse », « nous », « notre »). Les présentes conditions générales (les « Conditions ») constituent un accord contraignant entre vous et Virtuse Group Pte. Ltd. régissant votre accès à ce site et son utilisation. Contact : <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+    <div class="faq-answer">Ce site (virtuse.com et ses sous-domaines) est exploité par <strong>Virtuse Group Pte. Ltd.</strong>, une société dont le bureau opérationnel se trouve à Bratislava, en Slovaquie, et le siège du groupe à Singapour («&nbsp;Virtuse&nbsp;», «&nbsp;nous&nbsp;», «&nbsp;notre&nbsp;»). Les présentes conditions générales (les «&nbsp;Conditions&nbsp;») constituent un accord contraignant entre vous et Virtuse Group Pte. Ltd. régissant votre accès à ce site et son utilisation. Contact&nbsp;: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
   </details>
 
   <details>
     <summary>Acceptation des présentes Conditions</summary>
-    <div class="faq-answer">En accédant à ce site ou en l'utilisant de quelque manière que ce soit (navigation sur les pages, abonnement à la newsletter, utilisation de nos outils gratuits, ou clic vers un partenaire), vous acceptez d'être lié par les présentes Conditions et par notre <a href="privacy-policy.html">Politique de confidentialité</a>. Si vous n'acceptez pas ces Conditions, veuillez ne pas utiliser ce site. Nous pouvons mettre à jour ces Conditions de temps à autre, comme décrit à la <a href="#law">section 8</a> ; le fait de continuer à utiliser le site après une mise à jour vaut acceptation des Conditions révisées.</div>
+    <div class="faq-answer">En accédant à ce site ou en l'utilisant de quelque manière que ce soit (navigation sur les pages, abonnement à la newsletter, utilisation de nos outils gratuits, ou clic vers un partenaire), vous acceptez d'être lié par les présentes Conditions et par notre <a href="privacy-policy.html">Politique de confidentialité</a>. Si vous n'acceptez pas ces Conditions, veuillez ne pas utiliser ce site. Nous pouvons mettre à jour ces Conditions de temps à autre, comme décrit à la <a href="#law">section 8</a>&nbsp;; le fait de continuer à utiliser le site après une mise à jour vaut acceptation des Conditions révisées.</div>
   </details>
 </section>
 
 <!-- ===== WHAT WE DO ===== -->
 <section class="faq-section" id="service">
-  <div class="sec-label">2. Ce que Virtuse est, et ce qu'il n'est pas</div>
+  <div class="sec-label">2. Ce que Virtuse est, et ce qu'elle n'est pas</div>
 
   <details open>
     <summary>Nous sommes un hub non custodial, pas un prestataire de services</summary>
-    <div class="faq-answer">Virtuse sélectionne et référence des partenaires indépendants et vérifiés dans les catégories liées au Bitcoin : achat, minage, prêt, conservation, treasury, fiscalité et robots de trading. <strong>Nous n'exploitons pas nous-mêmes de plateforme d'échange, ne détenons pas les fonds ou les clés privées de nos clients, n'ouvrons pas de comptes, n'exécutons pas de transactions, ne fournissons pas de service de conservation, n'accordons pas de crédit et n'effectuons pas de vérification d'identité (KYC).</strong> Lorsque vous utilisez un service partenaire, vous entrez dans une relation contractuelle directe avec ce partenaire, régie par ses propres conditions, sa politique de confidentialité, ses frais et son agrément réglementaire, et non avec Virtuse.</div>
+    <div class="faq-answer">Virtuse sélectionne et référence des partenaires indépendants et vérifiés dans les catégories liées au Bitcoin&nbsp;: achat, minage, prêt, conservation, treasury, fiscalité et bots de trading. <strong>Nous n'exploitons pas nous-mêmes de plateforme d'échange, ne détenons pas les fonds ou les clés privées de nos clients, n'ouvrons pas de comptes, n'exécutons pas de transactions, ne fournissons pas de service de conservation, n'accordons pas de crédit et n'effectuons pas de vérification d'identité (KYC).</strong> Lorsque vous utilisez un service partenaire, vous entrez dans une relation contractuelle directe avec ce partenaire, régie par ses propres conditions, sa politique de confidentialité, ses frais et son agrément réglementaire, et non avec Virtuse.</div>
   </details>
 
   <details>
     <summary>Nous ne sommes pas un conseiller financier</summary>
-    <div class="faq-answer">Rien sur ce site, y compris les listes de partenaires, les articles de blog, les données de marché ou les calculatrices gratuites, ne constitue un conseil en investissement, juridique, fiscal ou financier, ni une recommandation ou une sollicitation d'achat, de vente ou de détention d'un quelconque actif. Le contenu est fourni à des fins générales d'information et d'éducation uniquement. Le Bitcoin et les autres crypto-actifs sont volatils et comportent un risque réel de perte partielle ou totale ; vous devriez solliciter un conseil professionnel indépendant avant toute décision financière, et ne jamais risquer plus que ce que vous pouvez vous permettre de perdre.</div>
+    <div class="faq-answer">Rien sur ce site, y compris les listes de partenaires, les articles de blog, les données de marché ou les simulateurs gratuits, ne constitue un conseil en investissement, juridique, fiscal ou financier, ni une recommandation ou une sollicitation d'achat, de vente ou de détention d'un quelconque actif. Le contenu est fourni à des fins générales d'information et d'éducation uniquement. Le Bitcoin et les autres crypto-actifs sont volatils et comportent un risque réel de perte partielle ou totale&nbsp;; vous devriez solliciter un conseil professionnel indépendant avant toute décision financière, et ne jamais risquer plus que ce que vous pouvez vous permettre de perdre.</div>
   </details>
 
   <details>
     <summary>D'une plateforme d'échange à un hub</summary>
-    <div class="faq-answer">Virtuse fonctionnait auparavant différemment ; le site est depuis passé au modèle de hub d'apport d'affaires non custodial décrit dans les présentes Conditions. Pour le détail réglementaire de cette transition, consultez notre page <a href="aml-compliance.html">AML et conformité</a>.</div>
+    <div class="faq-answer">Virtuse fonctionnait auparavant différemment&nbsp;; le site est depuis passé au modèle de hub d'apport d'affaires non custodial décrit dans les présentes Conditions. Pour le détail réglementaire de cette transition, consultez notre page <a href="aml-compliance.html">AML et conformité</a>.</div>
   </details>
 </section>
 
@@ -873,12 +995,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Qui peut utiliser ce site</summary>
-    <div class="faq-answer">Vous devez être âgé d'au moins 18 ans et avoir la capacité juridique de conclure un accord contraignant dans votre juridiction pour utiliser ce site. Vous êtes responsable de vous assurer que l'accès à ce site et à tout service partenaire est licite à l'endroit où vous vous trouvez ; certains services partenaires peuvent ne pas être disponibles dans tous les pays, et vous devez respecter les lois locales qui vous sont applicables, y compris les obligations de déclaration fiscale.</div>
+    <div class="faq-answer">Vous devez être âgé d'au moins 18 ans et avoir la capacité juridique de conclure un accord contraignant dans votre juridiction pour utiliser ce site. Vous êtes responsable de vous assurer que l'accès à ce site et à tout service partenaire est licite à l'endroit où vous vous trouvez&nbsp;; certains services partenaires peuvent ne pas être disponibles dans tous les pays, et vous devez respecter les lois locales qui vous sont applicables, y compris les obligations de déclaration fiscale.</div>
   </details>
 
   <details>
     <summary>Utilisation acceptable</summary>
-    <div class="faq-answer">Vous acceptez de ne pas : utiliser le site à des fins illicites, y compris le blanchiment de capitaux ou le financement du terrorisme ; tenter d'obtenir un accès non autorisé au site, à son infrastructure ou aux données d'autres utilisateurs ; extraire, désassembler ou collecter systématiquement du contenu au-delà d'une navigation normale ; introduire des logiciels malveillants ou perturber le fonctionnement du site ; usurper l'identité d'une personne ou dénaturer votre affiliation ; ou interférer de mauvaise foi avec nos mécanismes de parrainage ou d'analyse (par exemple, un abus d'auto-parrainage). Nous pouvons suspendre ou restreindre l'accès de toute personne enfreignant la présente section.</div>
+    <div class="faq-answer">Vous acceptez de ne pas&nbsp;: utiliser le site à des fins illicites, y compris le blanchiment de capitaux ou le financement du terrorisme&nbsp;; tenter d'obtenir un accès non autorisé au site, à son infrastructure ou aux données d'autres utilisateurs&nbsp;; extraire, désassembler ou collecter systématiquement du contenu au-delà d'une navigation normale&nbsp;; introduire des logiciels malveillants ou perturber le fonctionnement du site&nbsp;; usurper l'identité d'une personne ou dénaturer votre affiliation&nbsp;; ou interférer de mauvaise foi avec nos mécanismes de parrainage ou d'analyse (par exemple, un abus d'auto-parrainage). Nous pouvons suspendre ou restreindre l'accès de toute personne enfreignant la présente section.</div>
   </details>
 </section>
 
@@ -888,17 +1010,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details open>
     <summary>Vous contractez avec le partenaire, pas avec nous</summary>
-    <div class="faq-answer">Chaque service réglementé accessible via ce site (achat de Bitcoin, hébergement de minage, prêts adossés au Bitcoin, conservation, gestion de treasury, déclaration fiscale ou robots de trading) est fourni par un <strong>partenaire tiers indépendant</strong>, la plupart étant des prestataires de services sur crypto-actifs (PSCA) agréés au titre de MiCA. Virtuse n'est partie à aucun accord, transaction, procédure KYC, frais ou litige entre vous et un partenaire, et n'assume aucune responsabilité à cet égard. Les conditions propres à chaque partenaire, sa politique de confidentialité et sa grille tarifaire régissent cette relation, et vous devriez les lire avant de procéder.</div>
+    <div class="faq-answer">Chaque service réglementé accessible via ce site (achat de Bitcoin, hébergement de minage, prêts adossés au Bitcoin, conservation, gestion de treasury, déclaration fiscale ou bots de trading) est fourni par un <strong>partenaire tiers indépendant</strong>, la plupart étant des prestataires de services sur crypto-actifs (PSCA) agréés au titre de MiCA. Virtuse n'est partie à aucun accord, transaction, procédure KYC, frais ou litige entre vous et un partenaire, et n'assume aucune responsabilité à cet égard. Les conditions propres à chaque partenaire, sa politique de confidentialité et sa grille tarifaire régissent cette relation, et vous devriez les lire avant de procéder.</div>
   </details>
 
   <details>
     <summary>Fonctionnement des apports d'affaires</summary>
-    <div class="faq-answer">Virtuse perçoit une commission d'apport lorsque vous vous inscrivez auprès de certains partenaires ou les utilisez via des liens présents sur ce site. C'est ainsi que nous finançons un hub gratuit. Le fait de percevoir une commission ne fait pas de Virtuse un agent, un employé ou un coentrepreneur du partenaire, et ne signifie pas que nous approuvons, garantissons ou assumons une quelconque responsabilité quant au service, à la sécurité, à la solvabilité ou au statut réglementaire du partenaire.</div>
+    <div class="faq-answer">Virtuse perçoit une commission d'apport d'affaires lorsque vous vous inscrivez auprès de certains partenaires ou les utilisez via des liens présents sur ce site. C'est ainsi que nous finançons un hub gratuit. Le fait de percevoir une commission ne fait pas de Virtuse un agent, un employé ou un coentrepreneur du partenaire, et ne signifie pas que nous approuvons, garantissons ou assumons une quelconque responsabilité quant au service, à la sécurité, à la solvabilité ou au statut réglementaire du partenaire.</div>
   </details>
 
   <details>
     <summary>Absence de garantie sur les services partenaires</summary>
-    <div class="faq-answer">Nous apportons un soin raisonnable au choix des partenaires que nous référençons, en privilégiant par exemple les prestataires agréés MiCA, mais nous <strong>ne garantissons pas</strong> l'exactitude des taux, fonctionnalités ou statut d'agrément annoncés par un partenaire à un moment donné, la disponibilité, la sécurité ou la performance de la plateforme d'un partenaire, ni qu'un partenaire conviendra à vos besoins. Les informations relatives aux partenaires (taux, conditions, agrément) peuvent changer sans préavis de leur part ; vérifiez toujours les conditions actuelles directement auprès du partenaire avant de transiger.</div>
+    <div class="faq-answer">Nous apportons un soin raisonnable au choix des partenaires que nous référençons, en privilégiant par exemple les prestataires agréés MiCA, mais nous <strong>ne garantissons pas</strong> l'exactitude des taux, fonctionnalités ou statut d'agrément annoncés par un partenaire à un moment donné, la disponibilité, la sécurité ou la performance de la plateforme d'un partenaire, ni qu'un partenaire conviendra à vos besoins. Les informations relatives aux partenaires (taux, conditions, agrément) peuvent changer sans préavis de leur part&nbsp;; vérifiez toujours les conditions actuelles directement auprès du partenaire avant de transiger.</div>
   </details>
 </section>
 
@@ -907,18 +1029,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">5. Outils gratuits, données de marché et contenu</div>
 
   <details>
-    <summary>Calculatrices et graphiques</summary>
-    <div class="faq-answer">Nos outils gratuits (tableau de bord Données Bitcoin, simulateur de retraite, graphique arc-en-ciel, dominance du BTC, moyenne mobile à 200 semaines) sont fournis à des fins d'information et d'éducation uniquement, s'exécutent entièrement dans votre navigateur, et ne constituent ni un conseil en investissement, ni une projection, une promesse ou une garantie de résultat futur. Les résultats dépendent entièrement des hypothèses que vous saisissez ou qui sont intégrées à l'outil, et les performances passées ne préjugent pas des résultats futurs.</div>
+    <summary>Simulateurs et graphiques</summary>
+    <div class="faq-answer">Nos outils gratuits (tableau de bord Données Bitcoin, simulateur de retraite, graphique arc-en-ciel, cycles en échelle racine, dominance du BTC, moyenne mobile à 200 semaines, Peur &amp; Avidité, volume d'échange) sont fournis à des fins d'information et d'éducation uniquement, s'exécutent entièrement dans votre navigateur, et ne constituent ni un conseil en investissement, ni une projection, une promesse ou une garantie de résultat futur. Les résultats dépendent entièrement des hypothèses que vous saisissez ou qui sont intégrées à l'outil, et les performances passées ne préjugent pas des résultats futurs.</div>
   </details>
 
   <details>
     <summary>Exactitude des données de marché</summary>
-    <div class="faq-answer">Les données de prix et de réseau affichées en direct sur ce site proviennent de tiers, notamment CoinGecko, Binance et mempool.space, fournies « selon disponibilité ». Nous ne contrôlons pas ces sources et ne pouvons garantir que les données sont exactes, complètes ou à jour au moment où vous les consultez. Ne vous fiez pas aux données affichées ici pour des décisions de trading ou financières sensibles au facteur temps ; vérifiez les prix actuels directement auprès de votre plateforme d'échange ou de votre partenaire avant d'agir.</div>
+    <div class="faq-answer">Les données de prix et de réseau affichées en direct sur ce site proviennent de tiers, notamment CoinGecko, Binance et mempool.space, fournies «&nbsp;selon disponibilité&nbsp;». Nous ne contrôlons pas ces sources et ne pouvons garantir que les données sont exactes, complètes ou à jour au moment où vous les consultez. Ne vous fiez pas aux données affichées ici pour des décisions de trading ou financières sensibles au facteur temps&nbsp;; vérifiez les prix actuels directement auprès de votre plateforme d'échange ou de votre partenaire avant d'agir.</div>
   </details>
 
   <details>
     <summary>Contenu du blog et éditorial</summary>
-    <div class="faq-answer">Les articles du blog reflètent les opinions et points de vue personnels de leurs auteurs (principalement le fondateur de Virtuse, Ras Vasilisin) au moment de leur rédaction, et ne constituent pas un conseil financier, juridique ou fiscal, et ne représentent pas nécessairement les vues de Virtuse Group Pte. Ltd. en tant que société. Les commentaires macroéconomiques et de marché peuvent rapidement devenir obsolètes ; vérifiez la date de publication et considérez les articles plus anciens comme une opinion historique plutôt qu'une recommandation actuelle.</div>
+    <div class="faq-answer">Les articles du blog reflètent les opinions et points de vue personnels de leurs auteurs (principalement le fondateur de Virtuse, Ras Vasilisin) au moment de leur rédaction, et ne constituent pas un conseil financier, juridique ou fiscal, et ne représentent pas nécessairement les vues de Virtuse Group Pte. Ltd. en tant que société. Les commentaires macroéconomiques et de marché peuvent rapidement devenir obsolètes&nbsp;; vérifiez la date de publication et considérez les articles plus anciens comme une opinion historique plutôt qu'une recommandation actuelle.</div>
   </details>
 </section>
 
@@ -933,7 +1055,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Votre licence d'utilisation de ce site</summary>
-    <div class="faq-answer">Nous vous accordons une licence limitée, révocable, non exclusive et incessible pour accéder à ce site et l'utiliser à des fins personnelles et non commerciales, sous réserve des présentes Conditions. Vous ne pouvez pas copier, reproduire, republier, encadrer (« framing ») ou distribuer une quelconque partie de ce site, ni utiliser notre contenu pour créer un produit ou service concurrent, sans notre autorisation écrite préalable.</div>
+    <div class="faq-answer">Nous vous accordons une licence limitée, révocable, non exclusive et incessible pour accéder à ce site et l'utiliser à des fins personnelles et non commerciales, sous réserve des présentes Conditions. Vous ne pouvez pas copier, reproduire, republier, encadrer («&nbsp;framing&nbsp;») ou distribuer une quelconque partie de ce site, ni utiliser notre contenu pour créer un produit ou service concurrent, sans notre autorisation écrite préalable.</div>
   </details>
 </section>
 
@@ -942,8 +1064,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">7. Avertissements et limitation de responsabilité</div>
 
   <details open>
-    <summary>Le site est fourni « en l'état »</summary>
-    <div class="faq-answer">Dans toute la mesure permise par le droit applicable, ce site, ses outils et son contenu sont fournis « en l'état » et « selon disponibilité », sans garantie d'aucune sorte, expresse ou implicite, y compris toute garantie implicite de qualité marchande, d'adéquation à un usage particulier, de non-contrefaçon, ou que le site sera ininterrompu, sécurisé ou exempt d'erreurs. Les marchés du Bitcoin et des crypto-actifs sont intrinsèquement volatils et spéculatifs ; rien sur ce site ne supprime ce risque.</div>
+    <summary>Le site est fourni «&nbsp;en l'état&nbsp;»</summary>
+    <div class="faq-answer">Dans toute la mesure permise par le droit applicable, ce site, ses outils et son contenu sont fournis «&nbsp;en l'état&nbsp;» et «&nbsp;selon disponibilité&nbsp;», sans garantie d'aucune sorte, expresse ou implicite, y compris toute garantie implicite de qualité marchande, d'adéquation à un usage particulier, de non-contrefaçon, ou que le site sera ininterrompu, sécurisé ou exempt d'erreurs. Les marchés du Bitcoin et des crypto-actifs sont intrinsèquement volatils et spéculatifs&nbsp;; rien sur ce site ne supprime ce risque.</div>
   </details>
 
   <details>
@@ -973,12 +1095,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Modifications des présentes Conditions</summary>
-    <div class="faq-answer">Nous pouvons réviser les présentes Conditions à mesure que nos services, le contexte réglementaire ou la loi évoluent. Les modifications prennent effet dès leur publication sur cette page avec une date d'entrée en vigueur mise à jour ; les modifications substantielles seront signalées de manière visible sur le site ou via la newsletter avant leur prise d'effet. Continuer à utiliser le site après la publication d'une version révisée signifie que vous acceptez les modifications.</div>
+    <div class="faq-answer">Nous pouvons réviser les présentes Conditions à mesure que nos services, le contexte réglementaire ou la loi évoluent. Les modifications prennent effet dès leur publication sur cette page avec une date d'entrée en vigueur mise à jour&nbsp;; les modifications substantielles seront signalées de manière visible sur le site ou via la newsletter avant leur prise d'effet. Continuer à utiliser le site après la publication d'une version révisée signifie que vous acceptez les modifications.</div>
   </details>
 
   <details>
     <summary>Nous contacter</summary>
-    <div class="faq-answer">Questions relatives aux présentes Conditions : <a href="mailto:support@virtuse.com">support@virtuse.com</a>, ou Virtuse Group Pte. Ltd., Singapour.</div>
+    <div class="faq-answer">Questions relatives aux présentes Conditions&nbsp;: <a href="mailto:support@virtuse.com">support@virtuse.com</a>, ou Virtuse Group Pte. Ltd., Singapour.</div>
   </details>
 </section>
 
@@ -1041,13 +1163,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="buy-bitcoin.html">Acheter du Bitcoin</a>
+        <a href="secure.html">Conservation</a>
+        <a href="mining.html">Minage</a>
+        <a href="lending.html">Prêts</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Fiscalité</a>
+        <a href="bots.html">Bots</a>
+      </div>
       <div class="footer-col">
         <h4>Entreprise</h4>
         <a href="about.html">À propos</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Outils</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Données Bitcoin</a>
       </div>
       <div class="footer-col">
         <h4>Informations</h4>
@@ -1058,7 +1204,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 

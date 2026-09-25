@@ -697,6 +697,128 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== FOOTER (matches EN) ===== */
+/* Matches the homepage's footer exactly — 5 link columns, a giant
+   clipped brand wordmark, side padding on .footer-inner (not
+   .footer-main) so the content's left edge lines up with every other
+   section. */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded, not var(--text) — a real device screenshot on the
+     homepage found var() failing inside a background-clip:text
+     gradient on mobile Safari. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+/* ===== FOOTER (mobile, matches EN) ===== */
+@media (max-width: 900px) {
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
 </style>
 </head>
 <body>
@@ -834,17 +956,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">À propos de Virtuse</div>
 
   <details open>
-    <summary>Qu'est-ce que Virtuse ?</summary>
-    <div class="faq-answer">Virtuse est le premier hub au monde entièrement dédié aux services Bitcoin. Fondée en 2018 et exclusivement centrée sur le Bitcoin depuis 2022, nous mettons en relation les investisseurs avec des partenaires vérifiés et réglementés pour tout ce qui touche au Bitcoin : achat, minage, emprunt, conservation, Treasury, fiscalité et automatisation. Virtuse Group Pte. Ltd. est basée à Singapour, avec un bureau opérationnel à Bratislava, et sert des clients dans plus de 100 pays.</div>
+    <summary>Qu'est-ce que Virtuse&nbsp;?</summary>
+    <div class="faq-answer">Virtuse est le premier hub au monde entièrement dédié aux services Bitcoin. Fondée en 2018 et exclusivement centrée sur le Bitcoin depuis 2022, Virtuse met en relation les investisseurs avec des partenaires vérifiés et réglementés pour tout ce qui touche au Bitcoin&nbsp;: achat, minage, emprunt, conservation, Treasury, fiscalité et automatisation. Virtuse Group Pte. Ltd. est basée à Singapour, avec un bureau opérationnel à Bratislava, et sert des clients dans plus de 100 pays.</div>
   </details>
 
   <details>
-    <summary>Virtuse est-elle une plateforme d'échange ?</summary>
-    <div class="faq-answer">Non. Virtuse n'exploite pas de plateforme d'échange, ne détient pas vos fonds et ne conserve pas votre Bitcoin. Nous sommes une couche de sélection et d'accès : nous vérifions les meilleurs prestataires agréés dans chaque catégorie et vous mettons directement en relation avec eux.</div>
+    <summary>Virtuse est-elle une plateforme d'échange&nbsp;?</summary>
+    <div class="faq-answer">Non. Virtuse n'exploite pas de plateforme d'échange, ne détient pas vos fonds et ne conserve pas votre Bitcoin. Nous sommes une couche de sélection et d'accès&nbsp;: nous vérifions les meilleurs prestataires agréés dans chaque catégorie et vous mettons directement en relation avec eux.</div>
   </details>
 
   <details>
-    <summary>Pourquoi uniquement le Bitcoin ?</summary>
+    <summary>Pourquoi uniquement le Bitcoin&nbsp;?</summary>
     <div class="faq-answer">Nous pensons que le Bitcoin est le seul actif numérique adapté à la construction et à la protection d'un patrimoine transgénérationnel. Un positionnement exclusivement Bitcoin garantit un alignement fiduciaire, une simplicité réglementaire et une expertise approfondie, sans les distractions des altcoins.</div>
   </details>
 </section>
@@ -854,17 +976,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Nos services du hub</div>
 
   <details>
-    <summary>À quels services puis-je accéder via Virtuse ?</summary>
-    <div class="faq-answer">Huit catégories, chacune avec des partenaires triés sur le volet : <strong>Acheter du Bitcoin</strong> (CASP agréés MiCA comme 21bitcoin, Kraken et ByBit EU), <strong>Minage</strong> (minage hébergé avec OneMiners, Abundant Mines, Power Mining), <strong>Prêts</strong> (emprunt adossé au Bitcoin via Firefish : conservez vos BTC et obtenez des liquidités), <strong>Conservation</strong> (portefeuilles matériels Trezor et Ledger), <strong>Treasury</strong> (conservation institutionnelle avec Coinbase Institutional, Sygnum, BitGo), <strong>Fiscalité</strong> (Divly, Blockpit, CoinTracking), <strong>Bots de trading</strong> (Coinrule, Cryptohopper, RevenueBot), ainsi que des outils <a href="bitcoin-data.html">Données Bitcoin</a> gratuits : tableau de bord en direct, calculateur de retraite, graphique arc-en-ciel, et bien plus.</div>
+    <summary>À quels services puis-je accéder via Virtuse&nbsp;?</summary>
+    <div class="faq-answer">Sept catégories de services, chacune avec des partenaires triés sur le volet&nbsp;: <strong>Acheter du Bitcoin</strong> (CASP agréés MiCA comme 21bitcoin, Kraken et ByBit EU), <strong>Minage</strong> (minage hébergé avec OneMiners, Abundant Mines, Power Mining), <strong>Prêts</strong> (emprunt adossé au Bitcoin via Firefish&nbsp;: conservez vos BTC et obtenez des liquidités), <strong>Conservation</strong> (portefeuilles matériels Trezor, Ledger et Blockstream Jade), <strong>Treasury</strong> (conservation institutionnelle avec Coinbase Institutional, Sygnum, BitGo), <strong>Fiscalité</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Bots de trading</strong> (Coinrule, Cryptohopper, RevenueBot), ainsi que des outils <a href="bitcoin-data.html">Données Bitcoin</a> gratuits&nbsp;: tableau de bord en direct, simulateur de retraite, graphique arc-en-ciel, et bien plus.</div>
   </details>
 
   <details>
-    <summary>Comment fonctionne le hub ?</summary>
-    <div class="faq-answer">Trois étapes : choisissez un service, comparez nos partenaires vérifiés côte à côte, puis accédez à la plateforme réglementée du partenaire. Tout ce qui suit (compte, vérification, transactions) se déroule directement avec le partenaire. Votre Bitcoin reste sous votre contrôle.</div>
+    <summary>Comment fonctionne le hub&nbsp;?</summary>
+    <div class="faq-answer">Trois étapes&nbsp;: choisissez un service, comparez nos partenaires vérifiés côte à côte, puis accédez à la plateforme réglementée du partenaire. Tout ce qui suit (compte, vérification, transactions) se déroule directement avec le partenaire. Votre Bitcoin reste sous votre contrôle.</div>
   </details>
 
   <details>
-    <summary>Comment choisissez-vous vos partenaires ?</summary>
+    <summary>Comment choisissez-vous vos partenaires&nbsp;?</summary>
     <div class="faq-answer">Nous privilégions l'agrément européen (MiCA/MiCAR le cas échéant), un solide historique de sécurité, une orientation favorable au Bitcoin et des frais équitables. Les partenaires qui ne répondent pas à ces critères ne sont pas référencés.</div>
   </details>
 </section>
@@ -874,18 +996,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Sécurité</div>
 
   <details>
-    <summary>Virtuse détient-elle un jour mon Bitcoin ou mes clés ?</summary>
+    <summary>Virtuse détient-elle, à un moment ou à un autre, mon Bitcoin ou mes clés&nbsp;?</summary>
     <div class="faq-answer">Jamais. Virtuse ne détient ni fonds, ni clés, ni données clients. Toutes les transactions s'exécutent sur les plateformes réglementées des partenaires, et nous encourageons l'auto-conservation comme état final pour vos coins.</div>
   </details>
 
   <details>
-    <summary>Comment dois-je conserver mon Bitcoin ?</summary>
-    <div class="faq-answer">Pour les avoirs de long terme, nous recommandons les portefeuilles matériels de nos <a href="secure.html">partenaires de conservation</a> : Trezor (open source, fabriqué dans l'UE) ou Ledger (puce Secure Element, plus de 7 millions d'appareils vendus). Vos clés sont générées hors ligne et ne quittent jamais l'appareil. Pour des avoirs plus importants et les trésoreries d'entreprise, une conservation de niveau institutionnel est disponible via nos <a href="treasury.html">partenaires Treasury</a>.</div>
+    <summary>Comment dois-je conserver mon Bitcoin&nbsp;?</summary>
+    <div class="faq-answer">Pour les avoirs de long terme, nous recommandons les portefeuilles matériels de nos <a href="secure.html">partenaires de conservation</a>&nbsp;: Trezor (open source, fabriqué dans l'UE) ou Ledger (puce Secure Element, plus de 7 millions d'appareils vendus). Vos clés sont générées hors ligne et ne quittent jamais l'appareil. Pour des avoirs plus importants et les trésoreries d'entreprise, une conservation de niveau institutionnel est disponible via nos <a href="treasury.html">partenaires Treasury</a>.</div>
   </details>
 
   <details>
-    <summary>Les partenaires sont-ils réglementés ?</summary>
-    <div class="faq-answer">Les partenaires d'achat sont des prestataires de services sur crypto-actifs agréés MiCA/MiCAR dans l'UE : par exemple Kraken via la Banque centrale d'Irlande, ainsi que ByBit EU et 21bitcoin via la FMA autrichienne. Les partenaires Treasury incluent des institutions réglementées comme Sygnum (licence bancaire suisse) et BitGo.</div>
+    <summary>Les partenaires sont-ils réglementés&nbsp;?</summary>
+    <div class="faq-answer">Les partenaires d'achat sont des prestataires de services sur crypto-actifs agréés MiCA/MiCAR dans l'UE&nbsp;: par exemple Kraken via la Banque centrale d'Irlande, ainsi que ByBit EU et 21bitcoin via la FMA autrichienne. Les partenaires Treasury incluent des institutions réglementées comme Sygnum (licence bancaire suisse) et BitGo.</div>
   </details>
 </section>
 
@@ -894,13 +1016,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Frais</div>
 
   <details>
-    <summary>Que facture Virtuse ?</summary>
+    <summary>Que facture Virtuse&nbsp;?</summary>
     <div class="faq-answer">Rien. Parcourir, comparer et accéder aux partenaires est gratuit. Virtuse perçoit une commission de parrainage des partenaires lorsque vous vous inscrivez, sans coût supplémentaire pour vous. Vous ne payez jamais plus en passant par Virtuse.</div>
   </details>
 
   <details>
-    <summary>Quels frais vais-je payer chez les partenaires ?</summary>
-    <div class="faq-answer">Chaque partenaire fixe ses propres tarifs. Exemples actuellement référencés : trading Kraken Pro à partir de 0,16 %, spot ByBit EU à partir de 0,1 %, plans d'épargne Auto-Invest de 21bitcoin à 0 % de frais, hébergement de minage à partir d'environ 0,043 $/kWh, et outils fiscaux à partir de 39 €/an (CoinTracking propose un niveau gratuit jusqu'à 200 transactions). Vérifiez toujours les tarifs actuels sur le site du partenaire.</div>
+    <summary>Quels frais vais-je payer chez les partenaires&nbsp;?</summary>
+    <div class="faq-answer">Chaque partenaire fixe ses propres tarifs. Exemples actuellement référencés&nbsp;: trading Kraken Pro à partir de 0,16&nbsp;%, spot ByBit EU à partir de 0,1&nbsp;%, plans d'épargne Auto-Invest de 21bitcoin à 0&nbsp;% de frais, hébergement de minage à partir d'environ 0,043 $/kWh, et outils fiscaux à partir de 39 €/an (CoinTracking propose un niveau gratuit jusqu'à 200 transactions). Vérifiez toujours les tarifs actuels sur le site du partenaire.</div>
   </details>
 </section>
 
@@ -909,12 +1031,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Trading</div>
 
   <details>
-    <summary>Puis-je trader sur Virtuse ?</summary>
-    <div class="faq-answer">Le trading se déroule sur les plateformes de nos partenaires, pas sur Virtuse. Pour l'achat et la vente au comptant, utilisez un partenaire <a href="buy-bitcoin.html">Acheter du Bitcoin</a>. Pour les stratégies automatisées (DCA, grid, rééquilibrage), nos <a href="bots.html">partenaires Bots</a> se connectent à votre compte d'échange via des clés API : non custodial, le bot ne détient donc jamais vos coins.</div>
+    <summary>Puis-je trader sur Virtuse&nbsp;?</summary>
+    <div class="faq-answer">Le trading se déroule sur les plateformes de nos partenaires, pas sur Virtuse. Pour l'achat et la vente au comptant, utilisez un partenaire <a href="buy-bitcoin.html">Acheter du Bitcoin</a>. Pour les stratégies automatisées (DCA, grid, rééquilibrage), nos <a href="bots.html">partenaires Bots</a> se connectent à votre compte d'échange via des clés API&nbsp;: non custodial, le bot ne détient donc jamais vos coins.</div>
   </details>
 
   <details>
-    <summary>Prenez-vous en charge le trading d'altcoins ?</summary>
+    <summary>Prenez-vous en charge le trading d'altcoins&nbsp;?</summary>
     <div class="faq-answer">Non. Virtuse ne sélectionne que des services Bitcoin. Certains partenaires proposent d'autres actifs sur leurs propres plateformes, mais notre positionnement et nos recommandations se limitent strictement au Bitcoin.</div>
   </details>
 </section>
@@ -924,13 +1046,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Dépôts</div>
 
   <details>
-    <summary>Comment déposer de l'argent pour acheter du Bitcoin ?</summary>
+    <summary>Comment déposer de l'argent pour acheter du Bitcoin&nbsp;?</summary>
     <div class="faq-answer">Directement sur la plateforme du partenaire de votre choix, généralement par virement SEPA ou par carte auprès de partenaires européens comme 21bitcoin, Kraken ou ByBit EU. Virtuse ne reçoit ni ne traite jamais votre argent.</div>
   </details>
 
   <details>
-    <summary>Puis-je mettre en place des achats récurrents ?</summary>
-    <div class="faq-answer">Oui : des partenaires comme 21bitcoin proposent des plans d'épargne automatisés (DCA) sans frais, et des plateformes comme Kraken prennent en charge les achats récurrents.</div>
+    <summary>Puis-je mettre en place des achats récurrents&nbsp;?</summary>
+    <div class="faq-answer">Oui&nbsp;: des partenaires comme 21bitcoin proposent des plans d'épargne automatisés (DCA) sans frais, et des plateformes comme Kraken prennent en charge les achats récurrents.</div>
   </details>
 </section>
 
@@ -939,13 +1061,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Retraits</div>
 
   <details>
-    <summary>Comment retirer mon Bitcoin ?</summary>
-    <div class="faq-answer">Depuis la plateforme du partenaire vers n'importe quelle adresse de portefeuille que vous contrôlez : nous recommandons un retrait vers votre propre portefeuille matériel pour les avoirs de long terme. Les mineurs reçoivent leurs récompenses versées quotidiennement, directement sur une adresse de portefeuille qu'ils contrôlent en permanence.</div>
+    <summary>Comment retirer mon Bitcoin&nbsp;?</summary>
+    <div class="faq-answer">Depuis la plateforme du partenaire vers n'importe quelle adresse de portefeuille que vous contrôlez&nbsp;: nous recommandons un retrait vers votre propre portefeuille matériel pour les avoirs de long terme. Les mineurs reçoivent leurs récompenses versées quotidiennement, directement sur une adresse de portefeuille qu'ils contrôlent en permanence.</div>
   </details>
 
   <details>
-    <summary>Existe-t-il des limites ou des frais de retrait ?</summary>
-    <div class="faq-answer">Ils sont fixés par chaque partenaire et varient selon la plateforme, le niveau de vérification et les conditions du réseau. Consultez les conditions actuelles du partenaire ; Virtuse n'ajoute rien de plus.</div>
+    <summary>Existe-t-il des limites ou des frais de retrait&nbsp;?</summary>
+    <div class="faq-answer">Ils sont fixés par chaque partenaire et varient selon la plateforme, le niveau de vérification et les conditions du réseau. Consultez les conditions actuelles du partenaire&nbsp;; Virtuse n'ajoute rien de plus.</div>
   </details>
 </section>
 
@@ -954,18 +1076,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">KYC et vérification</div>
 
   <details>
-    <summary>Virtuse exige-t-elle une vérification KYC ?</summary>
-    <div class="faq-answer">Non : comme Virtuse ne touche jamais à vos fonds, il n'y a rien à vérifier chez nous. La vérification d'identité s'effectue une seule fois, sur la plateforme réglementée du partenaire où vous transigez.</div>
+    <summary>Virtuse exige-t-elle une vérification KYC&nbsp;?</summary>
+    <div class="faq-answer">Non&nbsp;: comme Virtuse ne touche jamais à vos fonds, il n'y a rien à vérifier chez nous. La vérification d'identité s'effectue une seule fois, sur la plateforme réglementée du partenaire où vous effectuez vos transactions.</div>
   </details>
 
   <details>
-    <summary>Que vous demanderont les partenaires ?</summary>
-    <div class="faq-answer">Les CASP agréés dans l'UE suivent les règles MiCA et AML : généralement une pièce d'identité officielle et un justificatif de domicile, parfois une justification de l'origine des fonds pour les montants importants. Les exigences varient selon le partenaire et le pays.</div>
+    <summary>Que vous demanderont les partenaires&nbsp;?</summary>
+    <div class="faq-answer">Les CASP agréés dans l'UE suivent les règles MiCA et AML&nbsp;: généralement une pièce d'identité officielle et un justificatif de domicile, parfois une justification de l'origine des fonds pour les montants importants. Les exigences varient selon le partenaire et le pays.</div>
   </details>
 
   <details>
-    <summary>Existe-t-il des services sans KYC ?</summary>
-    <div class="faq-answer">Oui : les outils qui ne touchent jamais à votre argent n'en ont pas besoin : portefeuilles matériels (Trezor, Ledger), logiciels fiscaux (Divly privilégie explicitement la confidentialité, sans KYC), et tous nos outils <a href="bitcoin-data.html">Données Bitcoin</a> gratuits fonctionnent sans aucun compte.</div>
+    <summary>Existe-t-il des services sans KYC&nbsp;?</summary>
+    <div class="faq-answer">Oui&nbsp;: les outils qui ne touchent jamais à votre argent n'en ont pas besoin&nbsp;: portefeuilles matériels (Trezor, Ledger), logiciels fiscaux (Divly privilégie explicitement la confidentialité, sans KYC), et tous nos outils <a href="bitcoin-data.html">Données Bitcoin</a> gratuits fonctionnent sans aucun compte.</div>
   </details>
 </section>
 
@@ -1028,13 +1150,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="buy-bitcoin.html">Acheter du Bitcoin</a>
+        <a href="secure.html">Conservation</a>
+        <a href="mining.html">Minage</a>
+        <a href="lending.html">Prêts</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Fiscalité</a>
+        <a href="bots.html">Bots</a>
+      </div>
       <div class="footer-col">
         <h4>Entreprise</h4>
         <a href="about.html">À propos</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Outils</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Données Bitcoin</a>
       </div>
       <div class="footer-col">
         <h4>Informations</h4>
@@ -1045,7 +1191,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 
