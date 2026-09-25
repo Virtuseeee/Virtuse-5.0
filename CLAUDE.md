@@ -2,6 +2,47 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, seventh round) — SK medium-severity proofreading fixes + EN carry-overs committed (`114c4a4`, gh-pages `ef1dd23`, staging 23/23 md5-verified; production command below, not yet run)
+
+**Round 6 (user: "oprav teraz medium položky v SK") — 23 files** via
+`scratchpad/fix_medium_sk.py` (aborted once on blog-sk's JSON `"months"`
+table, files restored with `git checkout`, pattern fixed, re-run clean):
+- 38 of the 40 SK medium items applied (the privacy "Virtuse Report" was
+  already fixed in round 3; the aml "ByBit EU a 21bitcoin" conjunction is
+  present in the markup — text-dump false positive, as on ES).
+- **SK homepage now has the Quick Answers accordion** (item 34): EN's
+  section + `.quick-answers`/`.qa-*` CSS transplanted, the 9 Q&A pulled
+  verbatim from `sk/faq.html` by summary text ("Čo je Virtuse?" …
+  "Ako vyberiem svoj Bitcoin?"), heading "Rýchle <span>odpovede</span>".
+  sk/index now has all 13 EN sections. Verified on staging via DOM checks.
+- Sitewide sk + blog-sk: "E-mailová adresa", button "Odoberať" (was
+  "Prihlásiť sa" = log in), "Iba Bitcoin", footer "© 2018–2026 Virtuse
+  Group. Všetky práva vyhradené."
+- Blog dates: "26. júna 2026" (genitive month + ordinal dot) — both the
+  JS formatters (sk/index `months` array, blog-sk `CFG.months` JSON +
+  `fmtDate`) and the static fallback cards (3 + 13).
+- Terminology: "bitcoinové služby" (title/og/H2/how/about), "Obchodné
+  boty" everywhere (nav keeps "Boty"), "Dlžníci", "ťažiace zariadenia"/
+  "minery", "poskytovateľ úschovy"/"uschovávateľ", "úroveň podpory" for
+  the 200-WMA floor (incl. chart labels), "Daňové prehľady", "Návody na
+  nákup"; grammar/typography fixes per the report; Slovak „…“ quotes on
+  aml/privacy/terms/rainbow; footer "Informácie" on the 3 stragglers.
+- **EN round-5 changes carried into SK**: Custody card, buy-specific
+  How-It-Works subheading, "aplikácia regulovaná v EÚ", mining/bots
+  affiliate strings removed, self-hosted card wording, Firefish CHF,
+  Sygnum one figure, about 26 partners + Bratislava wording, faq seven
+  categories + Koinly/Jade, privacy/terms tool + third-party lists.
+- Left as is: "Ideálne pre stredných až veľkých ťažiarov" (people, correct);
+  blog-sk's structural drift (no Brief nav item, no CS in its switcher) —
+  outside a copy round, flagged.
+- Verified: tagcheck 0 errors on all 23, leftover/quote/date sweeps clean.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 blog-sk.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 sk/404.html sk/about.html sk/aml-compliance.html sk/bitcoin-data.html sk/bots.html sk/btc-dominance.html sk/buy-bitcoin.html sk/faq.html sk/fear-greed.html sk/index.html sk/lending.html sk/ma-200w.html sk/mining.html sk/privacy-policy.html sk/rainbow-chart.html sk/retirement-calculator.html sk/root-cycles.html sk/secure.html sk/tax.html sk/terms-and-conditions.html sk/trading-volume.html sk/treasury.html virtuse.com@ftp.virtuse.com:public_html/sk/
+```
+
 ## Session status (2026-09-25, sixth round) — EN medium-severity proofreading fixes committed (`8081c8b`, gh-pages `9043143`, staging 24/24 md5-verified; **live on production** — user ran the scp, 24/24 md5-verified on virtuse.com)
 
 **Production done 2026-09-25** (24/24 md5 match; live checks: footer copyright, index Custody card + "each with its own rules", about 26 partners + European operational office, secure title, bots affiliate strings gone).
