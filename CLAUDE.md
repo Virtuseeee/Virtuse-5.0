@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, twenty-third round) — DE low-severity proofreading (`73e30d9`, gh-pages `cffe621`, staging 22/22 md5-verified). **The sitewide proofreading pass is complete: all high, medium and low findings in all 8 languages are fixed on staging.** Production for everything since round 8 is held on PL/HU (consolidated command, 173 files, in the nineteenth-round entry below)
+## Session status (2026-09-25, twenty-third round) — DE low-severity proofreading (`73e30d9`, gh-pages `cffe621`, staging 22/22 md5-verified). **The sitewide proofreading pass is complete and LIVE ON PRODUCTION: all high, medium and low findings in all 8 languages, plus the new pl/ and hu/ languages.** User ran the 198-file command 2026-09-25; 198/198 md5-verified on virtuse.com (pl/ + hu/ serve 200, sitemap has 204 hreflang="pl" entries, EN switcher links to pl/). **main == staging == production again** for every site file except the desk-owned satoshi.html/satoshi-lockup.png (never deployed, not ours)
 
 **Round 20 of the proofreading pass (user: "oprav teraz low položky v
 DE") — 22 de pages** via `scratchpad/fix_low_de.py` (clean first run).
@@ -45,11 +45,8 @@ scp -P 222 uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.htm
 ```
 
 **Where the pass leaves things:**
-- Production: rounds 1–7 are live; rounds 8–20 (173 files) wait for
-  pl/ + hu/ to ship first. Run the consolidated command from the
-  nineteenth-round entry, then md5-verify against
-  `scratchpad/touched_held_all.txt` (scratchpad is session-only; the
-  list is fully reproducible from `git log --name-only` since `d514a6b`).
+- Production: everything is live (see the heading). The final command
+  below is kept for reference only; do not re-run it.
 - Open decisions for the user: the "Bitcoin is your credit." headline
   (kept in all languages), ByBit vs Bybit spelling, the UK CEO name form,
   ES usted register (applied), CASP vs PSCA on FR legal pages.
