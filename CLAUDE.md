@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, third round) — SK + CS high-severity proofreading fixes committed (`9505b6f`, gh-pages `fd1d87e`, staging 24/24 md5-verified; production command below, not yet run)
+## Session status (2026-09-25, third round) — SK + CS high-severity proofreading fixes committed (`9505b6f`, gh-pages `fd1d87e`, staging 24/24 md5-verified; **live on production** — user ran the scp, 24/24 md5-verified on virtuse.com)
 
 **Round 2 (user: "oprav high položky v SK a CS") — 24 files** via the
 asserted-replacement script `scratchpad/fix_high_sk_cs.py`:
@@ -30,6 +30,8 @@ asserted-replacement script `scratchpad/fix_high_sk_cs.py`:
   exactly one rainbow + one root-cycles link and ≤1 active per page.
   `scratchpad/verify_staging_proof.sh` now takes `LIST=sk_cs` (defaults to
   `en_ru`) to pick the touched-file list.
+
+**Production done 2026-09-25** (24/24 md5 match; live checks: sk/cs treasury wording, cs DISKREČNÍ, cs root-cycles title + both sub-nav links, cs tax title).
 
 **Remaining high items:** FR 5, UK 10, ES 5, DE 11 (+ their root-cycles
 sub-nav fix). Then the register decision (Brief block tú/du) and medium/low.
