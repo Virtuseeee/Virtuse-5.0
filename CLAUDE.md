@@ -2,6 +2,56 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, sixth round) — EN medium-severity proofreading fixes committed (`8081c8b`, gh-pages `9043143`, staging 24/24 md5-verified; production command below, not yet run)
+
+**Round 5 (user: "oprav teraz medium položky v EN") — 33 of the 34 EN
+medium findings, 24 root pages**, via `scratchpad/fix_medium_en.py`:
+- Sitewide EN footer copyright → "© 2018–2026 Virtuse Group. All rights
+  reserved." (also lands on 404/article, which share the footer).
+- index: "each with its own rules"; "Onboarding happens on the partner's
+  regulated platform"; Oxford comma in the hero sub; Custody card
+  "Multi-sig vaults and hardware wallets to keep your keys offline" (no
+  inheritance-planning partner exists on secure.html).
+- buy-bitcoin: How-It-Works subheading now buy-specific; "Go to the
+  Platform"; "never sits in between"; "MiCAR-licensed"; "EU-regulated app"
+  instead of "wide asset coverage". The ByBit/Bybit spelling split was
+  **left as is** (brand spelling is a separate sitewide decision).
+- mining/bots: affiliate-side notes removed from customer copy
+  (affiliate/referral programs subheading, GoAffPro bullet, "partnership-
+  friendly terms", "commissions paid in BTC", "BTC referral payouts"
+  bullet); "Referred users get 1 month of free hosting"; the Self-Hosted
+  card now says our listed partners are cloud platforms.
+- lending: Firefish currencies "EUR, CHF, CZK, USDC"; "EUR 800 – no
+  maximum". secure: title/og/twitter "Bitcoin Custody & Multi-Sig Wallets
+  — Virtuse", hero + og/twitter descriptions say "hardware wallets and
+  multi-sig tooling". treasury: Sygnum sentence drops "$200M AuM" (the
+  bullet keeps "CHF 4B+ AuA"). tax: em dashes in title/hero; "including
+  France and the Nordics".
+- about: **partner count set to 26** (value card + stat box; was "over
+  50"/"50+") to match the homepage hero; Bratislava is "our European
+  operational office" (not "home of Virtuse Group Pte. Ltd."); "Virtuse
+  Group operates across two continents, with offices in Singapore and
+  Bratislava."
+- faq: "Seven service categories" (+ Bitcoin Data tools = the hero's 8);
+  Koinly and Blockstream Jade added. blog: "News desk"/"Pulse" → "Virtuse
+  Brief" (hero line + footer Company column). trading-volume: two comma
+  splices. privacy/terms: tool lists now include Root-Scale Cycles, Fear &
+  Greed, Trading Volume; privacy third parties add Alternative.me and
+  bitcoinwave.net.
+- **Skipped on purpose:** item 26, the "Bitcoin is your credit." headline
+  of the Buy Bitcoin panel — a deliberate creative choice (firefish
+  reference) present in all 8 languages; needs the user's call, not a
+  proofreader's.
+- Verified: tagcheck 0 errors on all 24, leftover sweep clean.
+- **Translations now lag EN on these strings** (Custody card, hero sub,
+  step-2 copy, buy-bitcoin steps, mining/bots affiliate bullets, about
+  partner count, faq lists, privacy/terms tool lists). Their own medium
+  rounds should carry the same changes.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 404.html about.html aml-compliance.html article.html bitcoin-data.html blog.html bots.html btc-dominance.html buy-bitcoin.html faq.html fear-greed.html index.html lending.html ma-200w.html mining.html privacy-policy.html rainbow-chart.html retirement-calculator.html root-cycles.html secure.html tax.html terms-and-conditions.html trading-volume.html treasury.html virtuse.com@ftp.virtuse.com:public_html/
+```
+
 ## Session status (2026-09-25, fifth round) — ES + DE high-severity proofreading fixes committed (`17118ec`, gh-pages `4037fab`, staging 33/33 md5-verified; **live on production** — user ran the scp, 33/33 md5-verified on virtuse.com). **All 64 high-severity findings across the 8 languages are now fixed and live in production.**
 
 **Round 4 (user: "oprav high položky v ES a DE") — 33 files** via
