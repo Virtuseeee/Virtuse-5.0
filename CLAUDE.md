@@ -2,6 +2,54 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, seventeenth round) — SK low-severity proofreading + fear-greed/trading-volume switcher bugs (`0be6a1a`, gh-pages `ce3ce43`, staging 24/24 md5-verified). **Held on PL/HU; the consolidated command below now covers 155 files (adds sk/ + blog-sk + EN fear-greed/trading-volume)**
+
+**Round 14 of the proofreading pass (user: "oprav teraz low položky v SK")
+— 24 files** via `scratchpad/fix_low_sk.py`.
+- 50 of the 56 SK low items still applied (lending 5 %→6 %, root-cycles
+  title, the "Tri jednoduché kroky" wording etc. were already done in
+  earlier rounds). **Kept on purpose:** "Bitcoin je váš kredit." (same
+  open headline decision as EN), the tax comparison table's "7+ EÚ"
+  (EN keeps "7+ EU" there too).
+- Judgement calls: lending "Virtuse sprostredkúva prístup k službe"
+  (the old "poskytuje službu" contradicted the terms page); tax's
+  German cross-link now reads "Po nemecky: Bitcoin-Steuern Deutschland"
+  instead of a duplicate "Nemecko"; the index service cards mirror the
+  EN low round (tax card "viac ako 30 krajín", mining card "od nákupu
+  ASIC zariadení až po hosting v dátových centrách", "obchodných
+  botov"); sk/bots Cryptohopper blurb mirrors EN's reworded one.
+- Sitewide SK: hamburger `aria-label="Toggle menu"` → "Otvoriť menu"
+  on all 22 SK pages incl. blog-sk; fear-greed/trading-volume titles
+  use "|" like every other SK page; sk/about got EN's
+  `.name-visual { overflow-x: clip }`. **SK has no newsletter fine
+  print at all**, so the 15px fine-print bug does not apply to sk (the
+  earlier "sk still 15px" note was wrong; fr, pl, hu remain).
+- **Real link bug found and fixed (EN + sk):** on fear-greed and
+  trading-volume the EN mobile language panel linked
+  uk/cs/ru pages that don't exist (they 301 to the blog on
+  production), and the EN desktop panel + hreflang lacked DE; the sk
+  pages lacked DE entirely. Both now list EN, SK, FR, ES, PL, HU, DE.
+  pl/ and hu/ versions of these two pages also lack a DE hreflang —
+  left for the PL/HU session.
+- Verified: tagcheck 0, no "Toggle menu" left, 17 SK pages at 375px
+  with no horizontal overflow, sk/index concierge CTA fits (55–320px).
+
+**Consolidated held production command (rounds 8–14, 155 files: EN
+root, blog-sk, fr, uk, es, ru, de, sk, cs lending). Supersedes every
+previous consolidated command.** Run after pl/ + hu/ are on production;
+md5-verify against `scratchpad/touched_held_all.txt`.
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 about.html aml-compliance.html bitcoin-data.html blog-sk.html blog.html bots.html btc-dominance.html buy-bitcoin.html faq.html fear-greed.html index.html lending.html ma-200w.html mining.html privacy-policy.html rainbow-chart.html retirement-calculator.html root-cycles.html secure.html tax.html terms-and-conditions.html trading-volume.html treasury.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 cs/lending.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 de/404.html de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 es/404.html es/about.html es/aml-compliance.html es/bitcoin-data.html es/blog.html es/bots.html es/btc-dominance.html es/buy-bitcoin.html es/faq.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/mining.html es/privacy-policy.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/secure.html es/tax.html es/terms-and-conditions.html es/trading-volume.html es/treasury.html virtuse.com@ftp.virtuse.com:public_html/es/ && \
+scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
+scp -P 222 ru/404.html ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
+scp -P 222 sk/about.html sk/aml-compliance.html sk/bitcoin-data.html sk/bots.html sk/btc-dominance.html sk/buy-bitcoin.html sk/faq.html sk/fear-greed.html sk/index.html sk/lending.html sk/ma-200w.html sk/mining.html sk/privacy-policy.html sk/rainbow-chart.html sk/retirement-calculator.html sk/root-cycles.html sk/secure.html sk/tax.html sk/terms-and-conditions.html sk/trading-volume.html sk/treasury.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+scp -P 222 uk/404.html uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.html uk/bots.html uk/btc-dominance.html uk/buy-bitcoin.html uk/faq.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/secure.html uk/tax.html uk/terms-and-conditions.html uk/treasury.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-25, sixteenth round) — EN low-severity proofreading + two EN CSS bugs (`191ed4a`, gh-pages `f9ffc47`, staging 22/22 md5-verified). **Held on PL/HU like everything since round 8; the consolidated command below now also covers EN (134 files)**
 
 **Round 13 of the proofreading pass (user: "oprav teraz low položky v EN")
@@ -27,21 +75,7 @@ H1 needed a separate fix because the phrase is split across a span).
   hero sentence, "licensed" as a verb, and a "(custody + execution)"
   bullet label — all intended), browser at 375px on index/about/ma-200w.
 
-**Consolidated held production command (rounds 8–13, 134 files:
-EN root, fr, uk, es, ru, de, sk/cs lending). Supersedes the previous
-consolidated command.** Run after pl/ + hu/ are on production;
-md5-verify against `scratchpad/touched_held_all.txt`.
-```bash
-cd /private/tmp/gh-pages-wt3 && \
-scp -P 222 about.html aml-compliance.html bitcoin-data.html blog.html bots.html btc-dominance.html buy-bitcoin.html faq.html fear-greed.html index.html lending.html ma-200w.html mining.html privacy-policy.html rainbow-chart.html retirement-calculator.html root-cycles.html secure.html tax.html terms-and-conditions.html trading-volume.html treasury.html virtuse.com@ftp.virtuse.com:public_html/ && \
-scp -P 222 cs/lending.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
-scp -P 222 de/404.html de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
-scp -P 222 es/404.html es/about.html es/aml-compliance.html es/bitcoin-data.html es/blog.html es/bots.html es/btc-dominance.html es/buy-bitcoin.html es/faq.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/mining.html es/privacy-policy.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/secure.html es/tax.html es/terms-and-conditions.html es/trading-volume.html es/treasury.html virtuse.com@ftp.virtuse.com:public_html/es/ && \
-scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
-scp -P 222 ru/404.html ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
-scp -P 222 sk/lending.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
-scp -P 222 uk/404.html uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.html uk/bots.html uk/btc-dominance.html uk/buy-bitcoin.html uk/faq.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/secure.html uk/tax.html uk/terms-and-conditions.html uk/treasury.html virtuse.com@ftp.virtuse.com:public_html/uk/
-```
+**Held production command:** superseded by the seventeenth-round entry above (155 files).
 
 ## Session status (2026-09-25, fifteenth round) — DE medium-severity proofreading (`492418d`) + 6 % loan rate on all translated lending pages (`5f78a80`); gh-pages `6deae7e`, staging 29/29 md5-verified. **All medium-severity findings are now fixed on staging; production for fr/uk/es/ru/de + sk/cs lending is held on PL/HU** (consolidated command below)
 
