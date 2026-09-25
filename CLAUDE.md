@@ -2,6 +2,26 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-fourth round) — pl/hu fine print 12px + about glow clip (`37b2e73`, gh-pages `7e15134`, staging 44/44 md5-verified). **Production command below; the user runs it, then md5-verify the 44 files**
+
+- All 44 pl/hu pages (not the two 404s) had the plain `.brief-fineprint`
+  rule that loses to `.brief-card-poster p` (15px). Now
+  `.brief-fineprint, .brief-card .brief-fineprint` like EN. The four
+  legal pages (aml, faq, privacy, terms) render 13px, which is EN's own
+  value for those pages, not a bug.
+- pl/about and hu/about overflowed 4px at 375px; they now have the
+  `.name-visual { overflow-x: clip }` the other languages got.
+- **With this, the fine-print bug and the about-page overflow are fixed
+  in every language.** Script: `scratchpad/fix_fineprint_plhu.py`.
+  Future pl/hu regenerations from EN (`scaffold_pl.py` / `scaffold_hu.py`)
+  inherit both fixes, since EN already has them.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 pl/about.html pl/aml-compliance.html pl/bitcoin-data.html pl/blog.html pl/bots.html pl/btc-dominance.html pl/buy-bitcoin.html pl/faq.html pl/fear-greed.html pl/index.html pl/lending.html pl/ma-200w.html pl/mining.html pl/privacy-policy.html pl/rainbow-chart.html pl/retirement-calculator.html pl/root-cycles.html pl/secure.html pl/tax.html pl/terms-and-conditions.html pl/trading-volume.html pl/treasury.html virtuse.com@ftp.virtuse.com:public_html/pl/ && \
+scp -P 222 hu/about.html hu/aml-compliance.html hu/bitcoin-data.html hu/blog.html hu/bots.html hu/btc-dominance.html hu/buy-bitcoin.html hu/faq.html hu/fear-greed.html hu/index.html hu/lending.html hu/ma-200w.html hu/mining.html hu/privacy-policy.html hu/rainbow-chart.html hu/retirement-calculator.html hu/root-cycles.html hu/secure.html hu/tax.html hu/terms-and-conditions.html hu/trading-volume.html hu/treasury.html virtuse.com@ftp.virtuse.com:public_html/hu/
+```
+
 ## Session status (2026-09-25, twenty-third round) — DE low-severity proofreading (`73e30d9`, gh-pages `cffe621`, staging 22/22 md5-verified). **The sitewide proofreading pass is complete and LIVE ON PRODUCTION: all high, medium and low findings in all 8 languages, plus the new pl/ and hu/ languages.** User ran the 198-file command 2026-09-25; 198/198 md5-verified on virtuse.com (pl/ + hu/ serve 200, sitemap has 204 hreflang="pl" entries, EN switcher links to pl/). **main == staging == production again** for every site file except the desk-owned satoshi.html/satoshi-lockup.png (never deployed, not ours)
 
 **Round 20 of the proofreading pass (user: "oprav teraz low položky v
@@ -50,7 +70,7 @@ scp -P 222 uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.htm
 - Open decisions for the user: the "Bitcoin is your credit." headline
   (kept in all languages), ByBit vs Bybit spelling, the UK CEO name form,
   ES usted register (applied), CASP vs PSCA on FR legal pages.
-- Still open, not proofreading: fine print 15px on pl/hu; pl/hu fear-
+- Still open, not proofreading: pl/hu fear-
   greed/trading-volume lack a DE hreflang; blog-sk structural drift (no
   Brief nav item, no CS in its switcher); native-speaker review of the
   legal pages in every language.
