@@ -352,6 +352,7 @@ img { max-width: 100%; }
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow-x: clip; /* the 380px glow below is wider than a phone */
 }
 
 .name-visual::before {
@@ -1046,7 +1047,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint, .brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 /* ===== FOOTER (mobile, matches EN) ===== */
 @media (max-width: 900px) {
@@ -1180,7 +1181,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-stats">
     <div class="stat-box">
       <div class="stat-value">2018</div>
-      <div class="stat-label">Fondation</div>
+      <div class="stat-label">Création</div>
     </div>
     <div class="stat-box">
       <div class="stat-value">100+</div>
@@ -1229,7 +1230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-title"><h2>Ce que <span>nous défendons</span></h2></div>
   <div class="value-grid">
     <div class="value-card">
-      <h3>Un focus exclusivement Bitcoin</h3>
+      <h3>Une orientation 100&nbsp;% Bitcoin</h3>
       <p>Pas d'altcoins, pas de distractions. Un engagement sans compromis envers le Bitcoin comme fondation de l'économie monétaire sans frontières.</p>
     </div>
     <div class="value-card">
@@ -1317,7 +1318,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-title"><h2>Explorer <span>le Hub</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Acheter du Bitcoin<small>Partenaires agréés MiCA</small></span><span class="arrow">&#8594;</span></a>
-    <a href="secure.html" class="hub-link"><span>Conservation<small>Auto-conservation et collaborative</small></span><span class="arrow">&#8594;</span></a>
+    <a href="secure.html" class="hub-link"><span>Conservation<small>Auto-conservation et conservation collaborative</small></span><span class="arrow">&#8594;</span></a>
     <a href="lending.html" class="hub-link"><span>Prêts<small>Prêts adossés au Bitcoin</small></span><span class="arrow">&#8594;</span></a>
     <a href="mining.html" class="hub-link"><span>Minage<small>Minage hébergé et cloud</small></span><span class="arrow">&#8594;</span></a>
     <a href="treasury.html" class="hub-link"><span>Treasury<small>Stratégie Bitcoin d'entreprise</small></span><span class="arrow">&#8594;</span></a>

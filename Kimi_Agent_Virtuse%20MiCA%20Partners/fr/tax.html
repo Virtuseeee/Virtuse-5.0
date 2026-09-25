@@ -164,6 +164,7 @@ a { text-decoration: none; color: inherit; }
 /* Comparison Table */
 .compare-section { padding: 0 24px 60px; max-width: 900px; margin: 0 auto; }
 .compare-section h2 { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 28px; }
+.compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .compare-table th { padding: 14px 20px; text-align: left; font-weight: 600; color: #8b949e; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
 .compare-table th:first-child { width: 35%; }
@@ -668,7 +669,9 @@ a.nav-logo, .nav-logo {
 }
 
 @media (max-width: 1024px) {
-  .lang-menu { display: none; }
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
 
 /* ===== FR: compact nav text =====
@@ -706,7 +709,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint, .brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 /* ===== FOOTER (matches EN) ===== */
 /* Matches the homepage's footer exactly — 5 link columns, a giant
@@ -855,17 +858,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">À propos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Commencer<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
-      <div class="lang-switch" role="navigation" aria-label="Langue de la page">
-        <a href="../tax.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="../sk/tax.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="../uk/tax.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/tax.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/tax.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/tax.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="tax.html" class="lang-opt active" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/tax.html" class="lang-opt" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
-        <a href="../pl/tax.html" class="lang-opt" lang="pl"><span class="lang-flag">🇵🇱</span>PL</a>
-        <a href="../hu/tax.html" class="lang-opt" lang="hu"><span class="lang-flag">🇭🇺</span>HU</a>
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Langue de la page">
+          <span class="lang-flag">🇫🇷</span>FR
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+        <a role="menuitem" href="../tax.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a role="menuitem" href="../sk/tax.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a role="menuitem" href="../uk/tax.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a role="menuitem" href="../cs/tax.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a role="menuitem" href="../ru/tax.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a role="menuitem" href="../de/tax.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a role="menuitem" href="tax.html" class="lang-opt active" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a role="menuitem" href="../es/tax.html" class="lang-opt" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
+        <a role="menuitem" href="../pl/tax.html" class="lang-opt" lang="pl"><span class="lang-flag">🇵🇱</span>PL</a>
+        <a role="menuitem" href="../hu/tax.html" class="lang-opt" lang="hu"><span class="lang-flag">🇭🇺</span>HU</a>
+      </div>
       </div>
     </li>
   </ul>
@@ -894,24 +903,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
 (function () {
-  var wrap = document.getElementById('langMenu');
-  var btn = document.getElementById('langMenuBtn');
-  if (!wrap || !btn) return;
-  function close() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var isOpen = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
   document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 </script>
@@ -977,7 +1000,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/bitcoin-tax/germany/">Allemagne</a>
 <a href="/bitcoin-tax/austria/">Autriche</a>
 <a href="/bitcoin-tax/poland/">Pologne</a>
-<a href="/bitcoin-inheritance/">Checklist de succession</a>
+<a href="/bitcoin-inheritance/">Check-list de succession</a>
 <a href="tax-agent.html">Vérifier les règles de mon pays</a>
 <a href="/de/bitcoin-steuern/deutschland/">En allemand&nbsp;: Bitcoin-Steuern Deutschland</a>
 </div>
@@ -1012,9 +1035,9 @@ Suède
 <p>Un outil fiscal axé sur la confidentialité, sans KYC requis. Import jusqu'au rapport en 14 minutes. Prend en charge plus de 30 pays, dont la France et les pays nordiques. Offre abordable avec révision par un expert. Catégorisation adaptée au Bitcoin.</p>
 <ul class="partner-features">
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Aucun KYC requis</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Import au rapport en 14 minutes</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>De l'import au rapport en 14 minutes</li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Plus de 30 pays</li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Révision par un expert abordable</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Révision par un expert, à prix abordable</li>
 </ul>
 </div>
 
@@ -1122,6 +1145,7 @@ Royaume-Uni
 <!-- Comparison Table -->
 <section class="compare-section">
 <h2>Comparaison rapide</h2>
+<div class="compare-table-wrap">
 <table class="compare-table">
 <thead>
 <tr>
@@ -1135,9 +1159,9 @@ Royaume-Uni
 <tbody>
 <tr>
 <td>Prix</td>
-<td class="best">39 EUR/an</td>
-<td>À partir de 49 EUR/an</td>
-<td>À partir de 11 EUR/mois</td>
+<td class="best">39&nbsp;€/an</td>
+<td>À partir de 49&nbsp;€/an</td>
+<td>À partir de 11&nbsp;€/mois</td>
 <td>À partir de 49 $/an</td>
 </tr>
 <tr>
@@ -1177,6 +1201,7 @@ Royaume-Uni
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 
 <!-- Disclaimer -->
@@ -1427,6 +1452,7 @@ Royaume-Uni
   });
 
   links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
     el.addEventListener('click', closeMenu);
   });
 

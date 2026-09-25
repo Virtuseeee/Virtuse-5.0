@@ -1126,7 +1126,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint, .brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 /* ===== FOOTER (mobile, matches EN) ===== */
 @media (max-width: 900px) {
@@ -1137,6 +1137,15 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .footer-wordmark { height: 110px; opacity: 0.32; }
   .footer-wordmark-icon { height: 140px; }
   .footer-wordmark-text { font-size: 184px; }
+}
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 </style>
 </head>
@@ -1323,7 +1332,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="seo-guides" aria-label="Guides d'achat par pays et outils de frais">
   <div class="seo-guides-inner">
     <h2>Classement des frais par pays</h2>
-    <p>Comparez les frais de chaque partenaire pour votre montant avant de choisir, avec le Stacking Strategist.</p>
+    <p>Comparez les frais de chaque partenaire pour votre montant avant de choisir, grâce au Stacking Strategist.</p>
     <div class="seo-guides-links">
       <a href="/buy-bitcoin/slovakia/">Acheter en Slovaquie</a>
       <a href="/buy-bitcoin/czechia/">Acheter en Tchéquie</a>

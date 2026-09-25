@@ -197,7 +197,7 @@ img{max-width:100%;display:block}
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint, .brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 @media(max-width:900px){
 .nav{padding:16px 24px}
@@ -206,6 +206,7 @@ img{max-width:100%;display:block}
 .hero{padding:60px 0 32px;align-items:flex-start;flex-direction:column}
 .hero h1{font-size:36px}
 .hero-side{align-items:flex-start;width:100%}
+.lang-switch{flex-wrap:wrap;height:auto;max-width:100%}
 .search-input{width:100%}
 .search-wrap{width:100%}
 .featured-inner{grid-template-columns:1fr}
@@ -717,7 +718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="search-icon">&#9906;</span>
       <input type="search" class="search-input" id="searchInput" placeholder="Rechercher des articles…" autocomplete="off">
     </div>
-    <div class="post-count" id="postCount"><b>169</b> articles, et ça continue</div>
+    <div class="post-count" id="postCount"><b>169</b> articles, et ce n'est pas fini</div>
   </div>
 </section>
 
@@ -986,7 +987,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // shared English feed (category 13) with NO lang param at all, exactly
   // like de/blog.html -- only the page chrome (nav, buttons, dates,
   // newsletter) is translated.
-  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "", "author": "Ras Vasilisin", "months": ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."], "strings": {"countSuffix": "articles, et ça continue", "gridLabel": "Tous les articles", "searchLabel": "Résultats de recherche", "loadMore": "Plus d'articles", "endLabel": "Ce sont tous les articles", "showing": "{n} sur {t} affichés", "empty": "Aucun article trouvé", "feedError": "Impossible de charger le flux d'articles. Les derniers articles connus sont affichés."}};
+  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "", "author": "Ras Vasilisin", "months": ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."], "strings": {"countSuffix": "articles, et ce n'est pas fini", "gridLabel": "Tous les articles", "searchLabel": "Résultats de recherche", "loadMore": "Plus d'articles", "endLabel": "Ce sont tous les articles", "showing": "{n} sur {t} affichés", "empty": "Aucun article trouvé", "feedError": "Impossible de charger le flux d'articles. Les derniers articles connus sont affichés."}};
 
   var grid = document.getElementById('blogGrid');
   var featuredWrap = document.getElementById('featuredWrap');

@@ -1232,7 +1232,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint, .brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 /* ===== FOOTER (mobile, matches EN) ===== */
 @media (max-width: 900px) {
@@ -1243,6 +1243,28 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .footer-wordmark { height: 110px; opacity: 0.32; }
   .footer-wordmark-icon { height: 140px; }
   .footer-wordmark-text { font-size: 184px; }
+}
+.hero-tool-link {
+  margin: 0;
+}
+.hero-tool-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+.hero-tool-link a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 </style>
 </head>
@@ -1364,6 +1386,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="hero-desc">
     Ne vendez pas votre Bitcoin, obtenez un prêt garanti par votre Bitcoin. Virtuse vous met en relation avec des partenaires vérifiés qui prêtent des liquidités contre votre Bitcoin, à des taux déterminés par le marché, à partir de 6&nbsp;% par an.
   </p>
+  <p class="hero-tool-link">
+    <a href="/sell-vs-borrow-bitcoin/">Comparer la vente et le prêt garanti par Bitcoin</a>
+  </p>
 
 
 </section>
@@ -1395,7 +1420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Étape 03</span>
         <h3>Bloquez votre Bitcoin en garantie</h3>
-        <p>Envoyez votre Bitcoin vers une adresse d'entiercement multisig on-chain. Vous ne cédez jamais vos clés privées.</p>
+        <p>Envoyez votre Bitcoin vers une adresse de séquestre multisig on-chain. Vous ne cédez jamais vos clés privées.</p>
       </div>
     </div>
     <div class="how-log-item">
@@ -1425,7 +1450,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="ltype-card">
       <h3>Investisseurs / prêteurs</h3>
-      <p>Apportez des devises ou des stablecoins pour financer des prêts garantis par Bitcoin. Percevez les intérêts versés par les emprunteurs. La garantie est bloquée dans un entiercement on-chain, entièrement sécurisée par Bitcoin. Aucune réhypothécation. Aucune exposition aux altcoins. Minimum à partir de 800 EUR.</p>
+      <p>Apportez des devises ou des stablecoins pour financer des prêts garantis par Bitcoin. Percevez les intérêts versés par les emprunteurs. La garantie est bloquée dans un séquestre on-chain, entièrement sécurisée par du Bitcoin. Aucune réhypothécation. Aucune exposition aux altcoins. Minimum à partir de 800 EUR.</p>
     </div>
   </div>
 </section>
@@ -1435,7 +1460,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header">
     <div class="sec-title">
       <h2>Nos partenaires de prêt</h2>
-      <p>Des plateformes de prêt exclusivement Bitcoin avec entiercement multisig non-custodial</p>
+      <p>Des plateformes de prêt exclusivement Bitcoin avec séquestre multisig non-custodial</p>
     </div>
   </div>
 
@@ -1458,7 +1483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>La principale place de marché européenne de prêt Bitcoin en P2P.</strong> Les emprunteurs obtiennent des prêts en devises ou en stablecoins garantis par du Bitcoin bloqué dans un entiercement multisig on-chain. Firefish ne touche jamais à votre Bitcoin&nbsp;: la plateforme agit uniquement comme facilitateur technique entre emprunteurs et investisseurs.</p>
+        <p><strong>La principale place de marché européenne de prêt Bitcoin en P2P.</strong> Les emprunteurs obtiennent des prêts en devises ou en stablecoins garantis par du Bitcoin bloqué dans un séquestre multisig on-chain. Firefish ne touche jamais à votre Bitcoin&nbsp;: la plateforme agit uniquement comme facilitateur technique entre emprunteurs et investisseurs.</p>
         <ul class="pcard-features">
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Exclusivement Bitcoin, aucun altcoin accepté</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Entiercement multisig non-custodial</li>
@@ -1470,7 +1495,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pcard-terms">
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Montant du prêt</span>
-          <span class="pcard-terms-value">800 EUR, sans maximum</span>
+          <span class="pcard-terms-value">800&nbsp;€, sans maximum</span>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Taux d'intérêt</span>
@@ -1505,7 +1530,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-firefish.png" alt="Firefish" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
             <div class="pcard-name">Calculateur de prêt instantané</div>
-            <div class="pcard-location">Taux en direct, propulsé par Firefish</div>
+            <div class="pcard-location">Taux en direct, fournis par Firefish</div>
           </div>
         </div>
       </div>
