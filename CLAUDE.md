@@ -2,6 +2,75 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25) — Bitcoin Concierge redesigned to the homepage's design language (`50b8f57`, gh-pages `8c499b4`, staging 22/22 md5-verified); production scp/sftp prepared, NOT yet run. Sitewide proofreading pass in progress (7 of 8 language reports in)
+
+**Concierge redesign — what changed and where the source is.** The four
+Layer-2 modules are a React/Vite project **outside this repo** at
+`~/Documents/virtuse-concierge-deploy/bitcoin-concierge/` (not a git repo —
+the built output in `concierge-assets/` + the 12 HTML shells are the only
+versioned artefacts). This round restyled the Concierge page there to
+match the homepage instead of its 2019-style standalone look:
+- `src/components/SiteChrome.tsx` (new): `SiteNav` (real site nav — 11
+  links, EN/SK/CS language dropdown, orange CTA, 2-line hamburger + full
+  drawer), `SiteFooter` (5 columns + animated wordmark + Brief line) and
+  `useEmbedMode()` — when opened by the sitewide launcher iframe
+  (`?utm_medium=launcher`, or any iframe) the page renders the bare chat
+  only, so the nav/footer never show inside the bubble panel.
+- `src/lib/chrome.ts` (new, generated): nav/footer labels + hrefs for
+  EN/SK/CS pulled from each language's homepage markup, so the module
+  pages can't drift from the site chrome. Regenerate it if the homepage
+  nav/footer changes (the extraction script lived in the session
+  scratchpad; it reads `.nav-links` / `.footer-col` from `index.html`,
+  `sk/index.html`, `cs/index.html`).
+- `src/pages/Home.tsx`: dek hero (52px/700 + muted span), full-width chat,
+  "How routing works" as the homepage changelog pattern (`.vc-log`, first
+  dot orange), stats row, partner chips, "Your keys, always" flat card,
+  legal footnote. `src/components/ConciergeChat.tsx`: flat
+  `#141414`/`#1c1c1c` surfaces, hairline borders, neutral chips, inverted-
+  neutral user bubbles and partner CTAs, check-icon reasons; the only
+  orange left is the status dot. Welcome message stays in view on mount
+  (auto-scroll only after the first answer). `src/index.css` +
+  `tailwind.config.js`: homepage tokens (`canvas`/`panel`/`ink`/`line`)
+  mapped onto the shadcn CSS variables, Inter (the shells now `<link>`
+  the same Google Fonts URL as the homepage), neutral scrollbar/selection.
+- **Deploy mechanics (reusable)**: `npm run build` there, then the
+  scratchpad script `deploy_concierge_build.py` copies `dist/assets/*` into
+  `concierge-assets/` (removing old hashes) and rewrites the asset
+  `<script>/<link>` lines of all 12 shells from the matching `dist/*.html`.
+  Because every module shares the `i18n-*` chunk, **any rebuild changes
+  the hashes for all 12 shells** — Stacking/Loan/Tax get the new tokens/
+  font too but still carry their own old headers (follow-up: adopt
+  `SiteChrome` there).
+Verified locally (1440 + 375, embed mode, sk/concierge chrome, stacking
+still renders, full chat flow → partner CTA carries the entered
+`utm_medium`), committed `50b8f57`, gh-pages `8c499b4`, staging 22/22.
+
+**Production deploy — needs a delete step as well as uploads** (the old
+hashed asset files must go, or stale copies linger on the server):
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 concierge-assets/* virtuse.com@ftp.virtuse.com:public_html/concierge-assets/ && \
+scp -P 222 concierge.html stacking.html loan.html tax-agent.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 sk/concierge.html sk/stacking.html sk/loan.html sk/tax-agent.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+scp -P 222 cs/concierge.html cs/stacking.html cs/loan.html cs/tax-agent.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/concierge_rm_old.sftp
+```
+(`/private/tmp/concierge_rm_old.sftp` holds the 10 `rm` lines + `bye`; if the
+stdin-redirected sftp misbehaves in the user's shell, run `sftp -P 222
+virtuse.com@ftp.virtuse.com` interactively and paste the `rm` lines.)
+
+**Proofreading pass (in progress, proposal only — no site edits):** every
+page's visible text was dumped per language (`scratchpad/proof/<lang>.txt`)
+and one reviewer per language wrote `findings_<lang>.md` (severity, page,
+exact current text → proposed text, reason, plus systemic issues). EN 62,
+SK 99, CS 89, FR 76, ES 64, RU 82, DE 94 findings are in; UK is being
+re-run after a rate-limit abort. The consolidated proposal goes to the
+user next; the recurring themes across languages: tú/du vs usted/Sie
+register mixing in the Brief copy, Bitcoin/bitcoin capitalisation,
+"wallet"/custody terminology drift, untranslated partner-card country
+labels (ru), FR's missing non-breaking spaces, and two **EN-source bugs**
+inherited everywhere: `root-cycles.html` carries the Rainbow Chart
+title/H1, and the privacy policy still says "Virtuse Report".
+
 ## Session status (2026-09-24, seventh round) — Grok bot's "Phase 0 homepage polish before X launch" checked and fixed: Brief strip on sk/cs/fr homepages, nav Get Started utm_medium=nav sitewide, calculator alias redirects; committed (`dc9051b`), live on staging AND production (172/172 md5-verified on virtuse.com, 2026-09-25)
 
 **The brief (from the Brief-desk agent) listed 6 items; each was verified
