@@ -13,7 +13,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Virtuse : le tout premier hub mondial dédié aux services Bitcoin</title>
+<title>Virtuse&nbsp;: le tout premier hub mondial dédié aux services Bitcoin</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -783,6 +783,8 @@ body {
 @media (max-width: 700px) {
   .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
   .concierge-banner-inner { flex-direction: column; padding: 24px; }
+  /* The French CTA label is too long for one line at phone width */
+  .concierge-banner-cta { white-space: normal; justify-content: center; text-align: center; }
 }
 
 /* ===== HOW IT WORKS ===== */
@@ -1409,6 +1411,124 @@ body {
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== TOOLS & GUIDES (SEO hub links) ===== */
+.tools-guides {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+.tools-guides-inner {
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.tools-guides h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+.tools-guides p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+  max-width: 620px;
+  line-height: 1.55;
+}
+.tools-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.tools-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tools-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .tools-guides { padding: 0 24px; margin-bottom: 60px; }
+  .tools-guides-inner { padding: 24px; }
+}
+
+.quick-answers {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.qa-list {
+  border-top: 1px solid var(--border);
+}
+
+.qa-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.qa-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  transition: opacity 0.15s ease;
+}
+
+.qa-item summary::-webkit-details-marker { display: none; }
+.qa-item summary::marker { content: ''; }
+
+.qa-item summary:hover { opacity: 0.7; }
+
+.qa-icon {
+  position: relative;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.qa-icon::before,
+.qa-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--text-muted);
+  transform: translate(-50%, -50%);
+}
+
+.qa-icon::before { width: 12px; height: 1.5px; }
+.qa-icon::after { width: 1.5px; height: 12px; transition: transform 0.2s ease, opacity 0.2s ease; }
+
+.qa-item[open] .qa-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+
+.qa-answer {
+  max-width: 720px;
+  padding: 0 0 24px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.qa-answer a { color: var(--text); }
 
 /* ===== FOOTER ===== */
 .footer-main {
@@ -2086,6 +2206,11 @@ a.nav-logo, .nav-logo {
   .brief-strip .newsletter-form { max-width: 100%; flex: none; }
   .brief-form-msg { padding: 0 24px; }
 }
+
+@media (max-width: 700px) {
+  .tools-guides { padding: 0 24px; margin-bottom: 60px; }
+  .tools-guides-inner { padding: 24px; }
+}}
 </style>
 </head>
 <body>
@@ -2269,8 +2394,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-      <h3>Quelle plateforme ne me trahira pas ?</h3>
-      <p>Mt. Gox, FTX, Celsius : des milliards de fonds clients ont disparu lors de faillites de plateformes depuis 2014. Nous ne référençons que des CASP agréés MiCA, vérifiés sur la conservation, l'assurance et la juridiction avant même d'apparaître sur cette page.</p>
+      <h3>Quelle plateforme ne me trahira pas&nbsp;?</h3>
+      <p>Mt. Gox, FTX, Celsius&nbsp;: des milliards de fonds clients ont disparu lors de faillites de plateformes depuis 2014. Nous ne référençons que des CASP agréés MiCA, dont nous vérifions la conservation, l'assurance et la juridiction avant même qu'ils n'apparaissent sur cette page.</p>
       <div class="problem-link">
         Voir les plateformes vérifiées
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2297,8 +2422,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-      <h3>Que devient mon BTC à mon décès ?</h3>
-      <p>On estime qu'un cinquième de tous les Bitcoin jamais minés est déjà perdu à jamais, souvent verrouillé derrière une clé que seule une personne a détenue. L'auto-conservation sans plan de succession est une bombe à retardement, pas une protection.</p>
+      <h3>Que devient mon BTC à mon décès&nbsp;?</h3>
+      <p>On estime qu'un cinquième de tous les bitcoins jamais minés est déjà perdu à jamais, souvent verrouillé derrière une clé que seule une personne a détenue. L'auto-conservation sans plan de succession est une bombe à retardement, pas une protection.</p>
       <div class="problem-link">
         Planifier votre succession Bitcoin
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2322,7 +2447,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-      <h3>Que dois-je au fisc ?</h3>
+      <h3>Que dois-je au fisc&nbsp;?</h3>
       <p>Chaque vente, chaque échange et chaque récompense de minage est un événement imposable dans la plupart des juridictions de l'UE, et les règles varient selon les pays. Une erreur aujourd'hui se traduit par une facture, majorée de pénalités, qui arrive des années plus tard.</p>
       <div class="problem-link">
         Calculer votre exposition fiscale
@@ -2392,7 +2517,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="concierge-banner anim-section anim-hidden">
   <div class="concierge-banner-inner">
     <span class="concierge-banner-text">
-      <strong>Vous ne savez pas ce qui s'applique à vous ?</strong> Répondez à quelques questions et soyez orienté vers le bon partenaire.
+      <strong>Vous ne savez pas ce qui s'applique à vous&nbsp;?</strong> Répondez à quelques questions et soyez orienté vers le bon partenaire.
     </span>
     <a href="https://virtuse.com/concierge.html?utm_source=concierge&utm_medium=banner" class="concierge-banner-cta">
       Trouvez votre partenaire en 60 secondes
@@ -2407,7 +2532,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="credit-copy">
       <h2 class="credit-lead">
         <strong>Le Bitcoin est votre crédit.</strong>
-        <span>Achetez du Bitcoin via des plateformes européennes agréées MiCA. Mettez en place des plans DCA automatiques ou des achats ponctuels — votre BTC part directement vers votre wallet, dès le premier jour.</span>
+        <span>Achetez du Bitcoin via des plateformes européennes agréées MiCA. Mettez en place des plans DCA automatiques ou des achats ponctuels&nbsp;: vos BTC partent directement vers votre portefeuille, dès le premier jour.</span>
       </h2>
       <a href="buy-bitcoin.html" class="problem-link">
         Voir les plateformes vérifiées
@@ -2427,14 +2552,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="services anim-section anim-hidden" id="services">
   <div class="sec-header">
     <h2>Tous les services Bitcoin <span>réunis en un seul endroit</span></h2>
-    <p>Accédez aux meilleurs services 100 % Bitcoin au monde via une seule porte d'entrée. Comparez les partenaires, trouvez les meilleurs tarifs et gardez le contrôle de vos clés.</p>
+    <p>Accédez aux meilleurs services 100&nbsp;% Bitcoin au monde via une seule porte d'entrée. Comparez les partenaires, trouvez les meilleurs tarifs et gardez le contrôle de vos clés.</p>
   </div>
 
   <div class="services-grid">
 
     <a href="secure.html" class="svc-card anim-card">
       <h3>Conservation</h3>
-      <p>Coffres multi-signatures avec planification successorale intégrée.</p>
+      <p>Coffres multisig et portefeuilles matériels pour garder vos clés hors ligne.</p>
     </a>
 
     <a href="mining.html" class="svc-card anim-card">
@@ -2449,7 +2574,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="lending.html" class="svc-card anim-card">
       <h3>Prêts</h3>
-      <p>Empruntez contre votre Bitcoin plutôt que de le vendre, à partir de 6 % par an.</p>
+      <p>Empruntez contre votre Bitcoin plutôt que de le vendre, à partir de 6&nbsp;% par an.</p>
     </a>
 
     <a href="treasury.html" class="svc-card anim-card">
@@ -2477,7 +2602,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Étape 01</span>
         <h3>Choisissez un service</h3>
-        <p>Parcourez chaque catégorie 100 % Bitcoin. Comparez les partenaires et les frais côte à côte.</p>
+        <p>Parcourez chaque catégorie 100&nbsp;% Bitcoin. Comparez les partenaires et les frais côte à côte.</p>
         <a href="#services" class="how-card-cta">
           Voir tous les services
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2489,7 +2614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Étape 02</span>
         <h3>Connectez-vous au partenaire</h3>
-        <p>L'inscription se déroule sur leur plateforme réglementée. Votre Bitcoin reste dans votre wallet : Virtuse ne détient jamais vos clés, vos fonds ni vos données.</p>
+        <p>L'inscription se déroule sur leur plateforme réglementée. Votre Bitcoin reste dans votre portefeuille&nbsp;: Virtuse ne détient jamais vos clés, vos fonds ni vos données.</p>
         <a href="https://virtuse.com/concierge.html?utm_source=concierge&amp;utm_medium=how" class="how-card-cta">
           Être mis en relation en 60 secondes
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2511,6 +2636,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<section class="tools-guides anim-section anim-hidden" id="tools-guides">
+  <div class="tools-guides-inner">
+    <h2>Fiscalité du Bitcoin dans les pays de l'UE</h2>
+    <p>Aperçus fiscaux par pays, comparatif des frais et outils de stacking. Orientation pédagogique uniquement&nbsp;; ni conseil fiscal ni conseil en investissement.</p>
+    <div class="tools-guides-links">
+      <a href="/bitcoin-tax/">Comparatif par pays</a>
+      <a href="/bitcoin-tax/slovakia/">Slovaquie</a>
+      <a href="/bitcoin-tax/czechia/">Tchéquie</a>
+      <a href="/bitcoin-tax/germany/">Allemagne</a>
+      <a href="/bitcoin-fee-index/">Indice des frais</a>
+      <a href="/bitcoin-dca-calculator/">Calculateur DCA</a>
+      <a href="/sell-vs-borrow-bitcoin/">Vendre ou emprunter</a>
+      <a href="/bitcoin-inheritance/">Succession</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== THE VIRTUSE BLOG ===== -->
 <section class="vblog anim-section anim-hidden">
   <div class="sec-header">
@@ -2524,7 +2666,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="vblog-tag">Blog</span>
         <h3>Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?</h3>
         <p>The era of questioning Bitcoin is over. It is here to stay. We no longer ask why the internet exists. We do not wonder who invented the code for AI. T</p>
-        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>14 May 2026</div>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>14 mai 2026</div>
       </div>
     </a>
     <a href="../article.html?slug=39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit" class="vblog-card">
@@ -2533,7 +2675,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="vblog-tag">Blog</span>
         <h3>$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit</h3>
         <p>The man next door looks rich. He drives a fast car. His house is huge. But at night, he stays awake. He just got his tenth credit card. He is using it</p>
-        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>22 Apr 2026</div>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>22 avr. 2026</div>
       </div>
     </a>
     <a href="../article.html?slug=rome-wokeism-and-the-rise-of-the-bitcoin-standard" class="vblog-card">
@@ -2542,7 +2684,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="vblog-tag">Blog</span>
         <h3>Rome, Wokeism, and the Rise of the Bitcoin Standard</h3>
         <p>We’ve seen this movie before. Here is why the “Constantine Moment” is the only thing that can save the West. They say history doesn’t repeat itself, b</p>
-        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>13 Mar 2026</div>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span>13 mars 2026</div>
       </div>
     </a>
   </div>
@@ -2559,7 +2701,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (posts) {
       var grid = document.getElementById('vblogGrid');
-      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var months = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
       function txt(s) { var d = document.createElement('div'); d.innerHTML = s; return (d.textContent || '').replace('[…]','…').trim(); }
       grid.innerHTML = '';
       posts.forEach(function (p) {
@@ -2673,6 +2815,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </section>
 
+<section class="quick-answers anim-section anim-hidden">
+  <div class="sec-header">
+    <h2>Réponses <span>rapides</span></h2>
+  </div>
+  <div class="qa-list">
+    <details class="qa-item">
+      <summary>Qu'est-ce que Virtuse&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Virtuse est le premier hub au monde entièrement dédié aux services Bitcoin. Fondée en 2018 et exclusivement centrée sur le Bitcoin depuis 2022, Virtuse met en relation les investisseurs avec des partenaires vérifiés et réglementés pour tout ce qui touche au Bitcoin&nbsp;: achat, minage, emprunt, conservation, Treasury, fiscalité et automatisation. Virtuse Group Pte. Ltd. est basée à Singapour, avec un bureau opérationnel à Bratislava, et sert des clients dans plus de 100 pays.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Virtuse est-elle une plateforme d'échange&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Non. Virtuse n'exploite pas de plateforme d'échange, ne détient pas vos fonds et ne conserve pas votre Bitcoin. Nous sommes une couche de sélection et d'accès&nbsp;: nous vérifions les meilleurs prestataires agréés dans chaque catégorie et vous mettons directement en relation avec eux.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Virtuse détient-elle, à un moment ou à un autre, mon Bitcoin ou mes clés&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Jamais. Virtuse ne détient ni fonds, ni clés, ni données clients. Toutes les transactions s'exécutent sur les plateformes réglementées des partenaires, et nous encourageons l'auto-conservation comme état final pour vos coins.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Comment fonctionne le hub&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Trois étapes&nbsp;: choisissez un service, comparez nos partenaires vérifiés côte à côte, puis accédez à la plateforme réglementée du partenaire. Tout ce qui suit (compte, vérification, transactions) se déroule directement avec le partenaire. Votre Bitcoin reste sous votre contrôle.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Comment choisissez-vous vos partenaires&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nous privilégions l'agrément européen (MiCA/MiCAR le cas échéant), un solide historique de sécurité, une orientation favorable au Bitcoin et des frais équitables. Les partenaires qui ne répondent pas à ces critères ne sont pas référencés.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Les partenaires sont-ils réglementés&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Les partenaires d'achat sont des prestataires de services sur crypto-actifs agréés MiCA/MiCAR dans l'UE&nbsp;: par exemple Kraken via la Banque centrale d'Irlande, ainsi que ByBit EU et 21bitcoin via la FMA autrichienne. Les partenaires Treasury incluent des institutions réglementées comme Sygnum (licence bancaire suisse) et BitGo.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Que facture Virtuse&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Rien. Parcourir, comparer et accéder aux partenaires est gratuit. Virtuse perçoit une commission de parrainage des partenaires lorsque vous vous inscrivez, sans coût supplémentaire pour vous. Vous ne payez jamais plus en passant par Virtuse.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Virtuse exige-t-elle une vérification KYC&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Non&nbsp;: comme Virtuse ne touche jamais à vos fonds, il n'y a rien à vérifier chez nous. La vérification d'identité s'effectue une seule fois, sur la plateforme réglementée du partenaire où vous effectuez vos transactions.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Comment retirer mon Bitcoin&nbsp;?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Depuis la plateforme du partenaire vers n'importe quelle adresse de portefeuille que vous contrôlez&nbsp;: nous recommandons un retrait vers votre propre portefeuille matériel pour les avoirs de long terme. Les mineurs reçoivent leurs récompenses versées quotidiennement, directement sur une adresse de portefeuille qu'ils contrôlent en permanence.</div>
+    </details>
+  </div>
+</section>
+
 <script>
 // Shared handler for the Virtuse Brief capture strip (same Worker/list as the bottom form).
 (function () {
@@ -2748,6 +2934,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
         <a href="blog.html">Blog</a>
         <a href="bitcoin-data.html">Données Bitcoin</a>
+        <a href="/bitcoin-tax/">Fiscalité du Bitcoin</a>
+        <a href="/bitcoin-fee-index/">Indice des frais</a>
+        <a href="/bitcoin-dca-calculator/">Calculateur DCA</a>
+        <a href="/sell-vs-borrow-bitcoin/">Vendre ou emprunter</a>
+        <a href="/bitcoin-inheritance/">Succession</a>
       </div>
       <div class="footer-col">
         <h4>Informations</h4>
@@ -2758,7 +2949,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
     <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

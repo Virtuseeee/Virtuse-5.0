@@ -535,15 +535,20 @@ img { max-width: 100%; }
 }
 
 /* ===== FOOTER ===== */
+/* Matches the homepage's footer exactly — 5 link columns, a giant
+   clipped brand wordmark, side padding on .footer-inner (not
+   .footer-main) so the content's left edge lines up with every other
+   section. */
 .footer-main {
   background: var(--dark);
   border-top: 1px solid var(--border);
-  padding: 60px 48px 30px;
+  padding: 60px 0 30px;
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 48px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -553,38 +558,91 @@ img { max-width: 100%; }
 
 .footer-logo { flex-shrink: 0; }
 
-.footer-logo img {
-  height: 80px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.2s;
-}
-
-.footer-logo img:hover { opacity: 1; }
-
 .footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
 }
 
 .footer-col a {
   display: block;
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 13px;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.4;
   transition: color 0.2s;
 }
 
-.footer-col a:hover { color: var(--btc-orange); }
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
 
 .footer-bottom p {
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded, not var(--text) — a real device screenshot on the
+     homepage found var() failing inside a background-clip:text
+     gradient on mobile Safari. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -989,6 +1047,17 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== FOOTER (mobile, matches EN) ===== */
+@media (max-width: 900px) {
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
 </style>
 </head>
 <body>
@@ -1104,7 +1173,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-  <h1>Le hub d'infrastructure<br><span class="highlight">100 % Bitcoin</span></h1>
+  <h1>Le hub d'infrastructure<br><span class="highlight">100&nbsp;% Bitcoin</span></h1>
   <p class="hero-desc">
     Fondée en 2018, Virtuse pose les fondations de l'économie monétaire sans frontières. Nous aidons les investisseurs à bâtir et protéger un patrimoine générationnel grâce à un engagement sans compromis envers le Bitcoin, la souveraineté financière et une liberté monétaire sécurisée.
   </p>
@@ -1118,8 +1187,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stat-label">Pays desservis</div>
     </div>
     <div class="stat-box">
-      <div class="stat-value">50+</div>
-      <div class="stat-label">Partenaires stratégiques</div>
+      <div class="stat-value">26</div>
+      <div class="stat-label">Partenaires vérifiés</div>
     </div>
     <div class="stat-box">
       <div class="stat-value">2</div>
@@ -1139,13 +1208,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="step">
       <span class="step-num">2022</span>
-      <h3>La transition vers le tout-Bitcoin</h3>
-      <p>Une transition stratégique a fait de Virtuse une plateforme d'échange dédiée, exclusivement Bitcoin : elle a échangé la diversité contre la profondeur, en s'engageant pleinement envers la monnaie la plus solide jamais créée.</p>
+      <h3>La transition vers le 100&nbsp;% Bitcoin</h3>
+      <p>Une transition stratégique a fait de Virtuse une plateforme d'échange dédiée, exclusivement Bitcoin&nbsp;: elle a échangé la diversité contre la profondeur, en s'engageant pleinement envers la monnaie la plus solide jamais créée.</p>
     </div>
     <div class="step">
       <span class="step-num">2024</span>
       <h3>D'une plateforme d'échange à un hub</h3>
-      <p>Virtuse est passée du statut de plateforme d'échange à celui de curateur : elle connecte désormais directement les investisseurs à des partenaires vérifiés et agréés MiCA pour chaque service Bitcoin, plutôt que de détenir elle-même les actifs.</p>
+      <p>Virtuse est passée du statut de plateforme d'échange à celui de sélectionneur&nbsp;: elle connecte désormais directement les investisseurs à des partenaires vérifiés et agréés MiCA pour chaque service Bitcoin, plutôt que de détenir elle-même les actifs.</p>
     </div>
     <div class="step">
       <span class="step-num">Aujourd'hui</span>
@@ -1165,7 +1234,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="value-card">
       <h3>Sécurité et confiance</h3>
-      <p>Un réseau solide de plus de 50 partenaires stratégiques dans le monde garantit une sécurité maximale et une liquidité institutionnelle à notre clientèle internationale.</p>
+      <p>Un réseau de 26 partenaires vérifiés en Europe et au-delà, sélectionnés pour leur sécurité, leurs agréments et leur liquidité.</p>
     </div>
     <div class="value-card">
       <h3>Souveraineté financière</h3>
@@ -1180,10 +1249,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <div class="sec-label">Notre nom</div>
       <div class="sec-title">
-        <h2>Qu'est-ce que <span>Virtuse ?</span></h2>
+        <h2>Qu'est-ce que <span>Virtuse&nbsp;?</span></h2>
       </div>
       <div class="name-text">
-        <p>Notre nom s'inspire de la virt&ugrave;, un concept introduit par Niccol&ograve; Machiavel. Pour lui, la virt&ugrave; n'était pas une question de morale conventionnelle : elle relevait de la force, du contrôle et de la capacité à maîtriser sa propre réalité.</p>
+        <p>Notre nom s'inspire de la virt&ugrave;, un concept introduit par Nicolas Machiavel. Pour lui, la virt&ugrave; n'était pas une question de morale conventionnelle&nbsp;: elle relevait de la force, du contrôle et de la capacité à maîtriser sa propre réalité.</p>
         <p>Le Bitcoin est l'incarnation moderne de la virt&ugrave;. Il offre la forme ultime de pouvoir financier et d'autonomie, vous permettant de sécuriser votre avenir sans interférence extérieure.</p>
       </div>
       <div class="name-quote">Un pouvoir que vous contrôlez.</div>
@@ -1204,7 +1273,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="vet-grid">
     <div class="value-card">
       <h3>Agrément réglementaire</h3>
-      <p>Des CASP agréés MiCA ou une licence reconnue équivalente dans leur juridiction d'origine : jamais de plateforme non réglementée.</p>
+      <p>Des CASP agréés MiCA ou une licence reconnue équivalente dans leur juridiction d'origine&nbsp;: jamais de plateforme non réglementée.</p>
     </div>
     <div class="value-card">
       <h3>Conservation et sécurité des actifs</h3>
@@ -1212,11 +1281,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="value-card">
       <h3>Antécédents</h3>
-      <p>Des années d'activité, un volume et un nombre d'utilisateurs significatifs, et un historique d'incidents irréprochable : être récent n'est pas disqualifiant, être non éprouvé l'est.</p>
+      <p>Des années d'activité, un volume et un nombre d'utilisateurs significatifs, et un historique d'incidents irréprochable&nbsp;: être récent n'est pas disqualifiant, être non éprouvé l'est.</p>
     </div>
     <div class="value-card">
       <h3>Transparence des frais</h3>
-      <p>Des structures de frais publiées et comparables : pas de spreads cachés ni de conditions qui n'apparaissent qu'après inscription.</p>
+      <p>Des structures de frais publiées et comparables&nbsp;: pas de spreads cachés ni de conditions qui n'apparaissent qu'après inscription.</p>
     </div>
   </div>
 </section>
@@ -1233,12 +1302,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="presence-card">
       <h3>Bratislava</h3>
       <div class="presence-role">Opérations européennes</div>
-      <p>Des racines profondes et une expertise locale grâce au bureau opérationnel de Virtuse Group Pte. Ltd.</p>
+      <p>Des racines profondes et une expertise locale grâce à notre bureau opérationnel européen.</p>
     </div>
     <div class="presence-card">
       <h3>UE et Asie</h3>
       <div class="presence-role">Virtuse Group</div>
-      <p>Un membre fier du groupe multinational Virtuse Group, avec une présence stratégique sur deux continents.</p>
+      <p>Virtuse Group est présent sur deux continents, avec des bureaux à Singapour et à Bratislava.</p>
     </div>
   </div>
 </section>
@@ -1315,13 +1384,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="buy-bitcoin.html">Acheter du Bitcoin</a>
+        <a href="secure.html">Conservation</a>
+        <a href="mining.html">Minage</a>
+        <a href="lending.html">Prêts</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Fiscalité</a>
+        <a href="bots.html">Bots</a>
+      </div>
       <div class="footer-col">
         <h4>Entreprise</h4>
         <a href="about.html">À propos</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Outils</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Données Bitcoin</a>
       </div>
       <div class="footer-col">
         <h4>Informations</h4>
@@ -1332,7 +1425,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 

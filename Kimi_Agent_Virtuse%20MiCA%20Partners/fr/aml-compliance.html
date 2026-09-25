@@ -697,6 +697,128 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== FOOTER (matches EN) ===== */
+/* Matches the homepage's footer exactly — 5 link columns, a giant
+   clipped brand wordmark, side padding on .footer-inner (not
+   .footer-main) so the content's left edge lines up with every other
+   section. */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded, not var(--text) — a real device screenshot on the
+     homepage found var() failing inside a background-clip:text
+     gradient on mobile Safari. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+/* ===== FOOTER (mobile, matches EN) ===== */
+@media (max-width: 900px) {
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
 </style>
 </head>
 <body>
@@ -812,7 +934,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>AML et <span class="highlight">conformité</span></h1>
-  <p class="hero-desc">Comment les règles de lutte contre le blanchiment de capitaux s'appliquent au sein du hub Virtuse : notre historique sous l'AMLD5, le cadre européen qui lui a succédé, et qui porte quelles obligations aujourd'hui. Mis à jour le 20 juillet 2026.</p>
+  <p class="hero-desc">Comment les règles de lutte contre le blanchiment de capitaux s'appliquent au sein du hub Virtuse&nbsp;: notre historique sous l'AMLD5, le cadre européen qui lui a succédé, et qui porte quelles obligations aujourd'hui. Mis à jour le 20 juillet 2026.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
@@ -832,12 +954,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details open>
     <summary>Virtuse et l'AMLD5</summary>
-    <div class="faq-answer">La cinquième directive anti-blanchiment (AMLD5, directive (UE) 2018/843) a été la première loi européenne à faire entrer les plateformes de cryptomonnaies dans le champ des règles de lutte contre le blanchiment de capitaux. En tant que l'une des principales plateformes d'actifs numériques d'Europe centrale à l'époque, <strong>Virtuse a mis en œuvre une conformité AMLD5 complète dès 2020</strong> : vérification d'identité obligatoire pour tous les utilisateurs, avec des contrôles de connaissance du client (KYC) réalisés via le moteur de vérification de Sumsub, couvrant plus de 220 pays : contrôle de documents, correspondance biométrique par selfie, validation d'identité et vérifications d'antécédents, généralement effectués en quelques minutes.</div>
+    <div class="faq-answer">La cinquième directive anti-blanchiment (AMLD5, directive (UE) 2018/843) a été la première loi européenne à faire entrer les plateformes de cryptomonnaies dans le champ des règles de lutte contre le blanchiment de capitaux. En tant que l'une des principales plateformes d'actifs numériques d'Europe centrale à l'époque, <strong>Virtuse a mis en œuvre une conformité AMLD5 complète dès 2020</strong>&nbsp;: vérification d'identité obligatoire pour tous les utilisateurs, avec des contrôles de connaissance du client (KYC) réalisés via le moteur de vérification de Sumsub, couvrant plus de 220 pays&nbsp;: contrôle de documents, correspondance biométrique par selfie, validation d'identité et vérifications d'antécédents, généralement effectués en quelques minutes.</div>
   </details>
 
   <details>
     <summary>D'une plateforme d'échange à un hub</summary>
-    <div class="faq-answer">En 2022, Virtuse est passé de l'exploitation de sa propre plateforme d'échange à un <strong>hub de services exclusivement dédiés au Bitcoin</strong>. Aujourd'hui, nous ne détenons plus la garde des fonds, n'exécutons plus de transactions et n'intégrons plus nous-mêmes de clients pour le trading : nous vous mettons en relation avec des partenaires agréés qui s'en chargent. Ce changement a également redéfini où se situent les obligations AML, comme expliqué ci-dessous.</div>
+    <div class="faq-answer">En 2022, Virtuse est passée de l'exploitation de sa propre plateforme d'échange à un <strong>hub de services exclusivement dédiés au Bitcoin</strong>. Aujourd'hui, nous ne détenons plus la garde des fonds, n'exécutons plus de transactions et n'intégrons plus nous-mêmes de clients pour le trading&nbsp;: nous vous mettons en relation avec des partenaires agréés qui s'en chargent. Ce changement a également redéfini où se situent les obligations AML, comme expliqué ci-dessous.</div>
   </details>
 </section>
 
@@ -846,18 +968,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">2. Le cadre européen actuel</div>
 
   <details>
-    <summary>MiCA a-t-il remplacé l'AMLD5 ?</summary>
-    <div class="faq-answer">Non : ce sont deux régimes parallèles. <strong>MiCA</strong> (règlement (UE) 2023/1114) régit l'accès au marché et les règles de conduite : agrément des prestataires de services sur crypto-actifs (PSCA), obligations d'information et protection des consommateurs. <strong>La lutte contre le blanchiment de capitaux demeure un régime distinct</strong>, et chaque PSCA agréé au titre de MiCA est une « entité assujettie » à ce titre. Un agrément MiCA ajoute des obligations AML ; il ne les supprime jamais.</div>
+    <summary>MiCA a-t-il remplacé l'AMLD5&nbsp;?</summary>
+    <div class="faq-answer">Non&nbsp;: ce sont deux régimes parallèles. <strong>MiCA</strong> (règlement (UE) 2023/1114) régit l'accès au marché et les règles de conduite&nbsp;: agrément des prestataires de services sur crypto-actifs (PSCA), obligations d'information et protection des consommateurs. <strong>La lutte contre le blanchiment de capitaux demeure un régime distinct</strong>, et chaque PSCA agréé au titre de MiCA est une «&nbsp;entité assujettie&nbsp;» à ce titre. Un agrément MiCA ajoute des obligations AML&nbsp;; il ne les supprime jamais.</div>
   </details>
 
   <details>
-    <summary>Qu'est-ce qui a remplacé l'AMLD5 ?</summary>
-    <div class="faq-answer">Le <strong>paquet AML 2024</strong> de l'UE remplace progressivement l'ancienne chaîne de directives : le <strong>règlement AMLR</strong> (règlement (UE) 2024/1624), un corpus de règles unique directement applicable à compter de juillet 2027 ; l'<strong>AMLD6</strong> (directive (UE) 2024/1640) sur la supervision et les mécanismes nationaux ; et l'<strong>AMLA</strong>, la nouvelle Autorité européenne de lutte contre le blanchiment de capitaux, basée à Francfort. Jusqu'à l'entrée en application de l'AMLR, les lois nationales transposant les AMLD4/5 continuent de s'appliquer.</div>
+    <summary>Qu'est-ce qui a remplacé l'AMLD5&nbsp;?</summary>
+    <div class="faq-answer">Le <strong>paquet AML 2024</strong> de l'UE remplace progressivement l'ancienne chaîne de directives&nbsp;: le <strong>règlement AMLR</strong> (règlement (UE) 2024/1624), un corpus de règles unique directement applicable à compter de juillet 2027&nbsp;; l'<strong>AMLD6</strong> (directive (UE) 2024/1640) sur la supervision et les mécanismes nationaux&nbsp;; et l'<strong>AMLA</strong>, la nouvelle Autorité européenne de lutte contre le blanchiment de capitaux, basée à Francfort. Jusqu'à l'entrée en application de l'AMLR, les lois nationales transposant les AMLD4/5 continuent de s'appliquer.</div>
   </details>
 
   <details>
     <summary>La Travel Rule</summary>
-    <div class="faq-answer">Le <strong>règlement sur les transferts de fonds</strong> refondu (règlement (UE) 2023/1113) s'applique depuis décembre 2024, en parallèle de MiCA. Il étend la « Travel Rule » aux crypto-actifs : les informations sur le donneur d'ordre et le bénéficiaire doivent accompagner les transferts de crypto-actifs traités par les PSCA. C'est pourquoi les plateformes agréées vous interrogent sur la destination des retraits vers des portefeuilles en auto-conservation.</div>
+    <div class="faq-answer">Le <strong>règlement sur les transferts de fonds</strong> refondu (règlement (UE) 2023/1113) s'applique depuis décembre 2024, en parallèle de MiCA. Il étend la «&nbsp;Travel Rule&nbsp;» aux crypto-actifs&nbsp;: les informations sur le donneur d'ordre et le bénéficiaire doivent accompagner les transferts de crypto-actifs traités par les PSCA. C'est pourquoi les plateformes agréées vous interrogent sur la destination des retraits vers des portefeuilles en auto-conservation.</div>
   </details>
 </section>
 
@@ -867,12 +989,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Les services réglementés sont fournis par des partenaires agréés MiCA</summary>
-    <div class="faq-answer">Chaque service réglementé accessible via ce hub (achat et vente de Bitcoin, conservation auprès d'institutions, prêt) est fourni par des partenaires qui détiennent leur propre agrément et portent les obligations AML correspondantes en tant qu'entités assujetties : par exemple <strong>Kraken</strong> (PSCA agréé MiCA via la Banque centrale d'Irlande), <strong>ByBit EU</strong> et <strong>21bitcoin</strong> (agréés MiCAR par l'autorité autrichienne FMA), et des dépositaires institutionnels tels que <strong>Sygnum</strong> (licence bancaire suisse) et <strong>BitGo</strong>. Ils appliquent leurs propres obligations de vigilance à l'égard de la clientèle (KYC), la surveillance des transactions, le filtrage des sanctions, le respect de la Travel Rule et le signalement des activités suspectes sur leurs propres plateformes, sous la supervision de leurs régulateurs nationaux.</div>
+    <div class="faq-answer">Chaque service réglementé accessible via ce hub (achat et vente de Bitcoin, conservation auprès d'institutions, prêt) est fourni par des partenaires qui détiennent leur propre agrément et portent les obligations AML correspondantes en tant qu'entités assujetties&nbsp;: par exemple <strong>Kraken</strong> (PSCA agréé MiCA via la Banque centrale d'Irlande), <strong>ByBit EU</strong> et <strong>21bitcoin</strong> (agréés MiCAR par l'autorité autrichienne FMA), et des dépositaires institutionnels tels que <strong>Sygnum</strong> (licence bancaire suisse) et <strong>BitGo</strong>. Ils appliquent leurs propres obligations de vigilance à l'égard de la clientèle (KYC), la surveillance des transactions, le filtrage des sanctions, le respect de la Travel Rule et le signalement des activités suspectes sur leurs propres plateformes, sous la supervision de leurs régulateurs nationaux.</div>
   </details>
 
   <details>
     <summary>Outils non réglementés</summary>
-    <div class="faq-answer">Les produits qui ne touchent jamais votre argent échappent entièrement aux obligations AML : portefeuilles matériels (Trezor, Ledger), logiciels de déclaration fiscale, et nos outils gratuits <a href="bitcoin-data.html">Données Bitcoin</a>. L'auto-conservation de votre propre Bitcoin n'est pas une activité réglementée dans l'UE.</div>
+    <div class="faq-answer">Les produits qui ne touchent jamais votre argent échappent entièrement aux obligations AML&nbsp;: portefeuilles matériels (Trezor, Ledger), logiciels de déclaration fiscale, et nos outils gratuits <a href="bitcoin-data.html">Données Bitcoin</a>. L'auto-conservation de votre propre Bitcoin n'est pas une activité réglementée dans l'UE.</div>
   </details>
 </section>
 
@@ -882,12 +1004,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Notre rôle limité dans le cadre AML</summary>
-    <div class="faq-answer">En tant que hub d'apport d'affaires non custodial, Virtuse n'échange pas de crypto-actifs, ne détient ni les fonds ni les clés de ses clients, et ne transmet pas d'argent : le site sur lequel vous vous trouvez <strong>n'exerce donc pas lui-même les activités réglementées</strong> qui déclenchent les obligations d'entité assujettie au titre du cadre AML européen. Notre rôle est celui d'un sélectionneur : nous ne référençons des partenaires que s'ils détiennent les agréments européens appropriés et appliquent des programmes AML robustes, et nous retirons les partenaires qui ne sont plus à la hauteur.</div>
+    <div class="faq-answer">En tant que hub d'apport d'affaires non custodial, Virtuse n'échange pas de crypto-actifs, ne détient ni les fonds ni les clés de ses clients, et ne transmet pas d'argent&nbsp;: le site sur lequel vous vous trouvez <strong>n'exerce donc pas lui-même les activités réglementées</strong> qui déclenchent les obligations d'entité assujettie au titre du cadre AML européen. Notre rôle est celui d'un sélectionneur&nbsp;: nous ne référençons des partenaires que s'ils détiennent les agréments européens appropriés et appliquent des programmes AML robustes, et nous retirons les partenaires qui ne sont plus à la hauteur.</div>
   </details>
 
   <details>
     <summary>Notre engagement</summary>
-    <div class="faq-answer">La conformité fait partie de l'identité de Virtuse depuis nos années en tant que plateforme d'échange : nous avons été parmi les premiers à adopter la vérification AMLD5 en 2020, et nous conservons la même posture dans le modèle de hub : <strong>nous ne travaillons qu'avec des contreparties réglementées, nous coopérons avec les autorités lorsque la loi l'exige, et nous n'apportons notre concours à aucune activité visant à contourner les contrôles AML.</strong> Cette page est fournie à titre informatif et ne constitue pas un conseil juridique ; le cadre réglementaire évolue et les obligations précises dépendent du service et de la juridiction concernés.</div>
+    <div class="faq-answer">La conformité fait partie de l'identité de Virtuse depuis nos années en tant que plateforme d'échange&nbsp;: nous avons été parmi les premiers à adopter la vérification AMLD5 en 2020, et nous conservons la même posture dans le modèle de hub&nbsp;: <strong>nous ne travaillons qu'avec des contreparties réglementées, nous coopérons avec les autorités lorsque la loi l'exige, et nous n'apportons notre concours à aucune activité visant à contourner les contrôles AML.</strong> Cette page est fournie à titre informatif et ne constitue pas un conseil juridique&nbsp;; le cadre réglementaire évolue et les obligations précises dépendent du service et de la juridiction concernés.</div>
   </details>
 </section>
 
@@ -897,7 +1019,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>À quoi vous attendre en utilisant les services partenaires</summary>
-    <div class="faq-answer">Vous effectuerez une <strong>vérification d'identité une fois par plateforme partenaire</strong>, généralement une pièce d'identité officielle et un contrôle par selfie, en quelques minutes, avant de trader ou de retirer des fonds. Les transactions plus importantes peuvent déclencher des questions sur l'origine des fonds, et les transferts entre plateformes transportent les informations requises par la Travel Rule. Aucune de ces données ne transite par Virtuse ; consultez notre <a href="privacy-policy.html">Politique de confidentialité</a>.</div>
+    <div class="faq-answer">Vous effectuerez une <strong>vérification d'identité une fois par plateforme partenaire</strong>, généralement une pièce d'identité officielle et un contrôle par selfie, en quelques minutes, avant de trader ou de retirer des fonds. Les transactions plus importantes peuvent déclencher des questions sur l'origine des fonds, et les transferts entre plateformes transportent les informations requises par la Travel Rule. Aucune de ces données ne transite par Virtuse&nbsp;; consultez notre <a href="privacy-policy.html">Politique de confidentialité</a>.</div>
   </details>
 
   <details>
@@ -965,13 +1087,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="buy-bitcoin.html">Acheter du Bitcoin</a>
+        <a href="secure.html">Conservation</a>
+        <a href="mining.html">Minage</a>
+        <a href="lending.html">Prêts</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Fiscalité</a>
+        <a href="bots.html">Bots</a>
+      </div>
       <div class="footer-col">
         <h4>Entreprise</h4>
         <a href="about.html">À propos</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Outils</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Données Bitcoin</a>
       </div>
       <div class="footer-col">
         <h4>Informations</h4>
@@ -982,7 +1128,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 

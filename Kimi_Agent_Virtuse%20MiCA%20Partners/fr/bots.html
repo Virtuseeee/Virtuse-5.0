@@ -988,6 +988,128 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== FOOTER (matches EN) ===== */
+/* Matches the homepage's footer exactly — 5 link columns, a giant
+   clipped brand wordmark, side padding on .footer-inner (not
+   .footer-main) so the content's left edge lines up with every other
+   section. */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded, not var(--text) — a real device screenshot on the
+     homepage found var() failing inside a background-clip:text
+     gradient on mobile Safari. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+/* ===== FOOTER (mobile, matches EN) ===== */
+@media (max-width: 900px) {
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
 </style>
 </head>
 <body>
@@ -1121,7 +1243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="how-log-body">
           <span class="how-log-num">Étape 01</span>
           <h3>Choisissez un bot</h3>
-          <p>Cloud ou auto-hébergé, débutant ou avancé : choisissez ce qui correspond à vos besoins.</p>
+          <p>Cloud ou auto-hébergé, débutant ou avancé&nbsp;: choisissez ce qui correspond à vos besoins.</p>
         </div>
       </div>
       <div class="how-log-item animate delay-2">
@@ -1164,7 +1286,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="cat-card self animate delay-3">
         <h3>Bots auto-hébergés</h3>
-        <p>Fonctionnent sur votre propre serveur (VPS). Contrôle total, open source. Idéal pour les traders soucieux de leur confidentialité qui souhaitent une souveraineté complète sur leur infrastructure de trading.</p>
+        <p>Fonctionnent sur votre propre serveur (VPS), avec un contrôle total. Nos partenaires référencés sont des plateformes cloud&nbsp;; l'auto-hébergement convient aux traders soucieux de leur confidentialité qui souhaitent une souveraineté complète sur leur infrastructure de trading.</p>
       </div>
     </div>
   </section>
@@ -1186,7 +1308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Explicitement non custodial. API limitée au trading, aucun retrait. Plus de 410 000 traders. Soutenu par Y Combinator. En phase de croissance, avec des conditions favorables aux partenariats.</p>
+          <p class="partner-desc">Explicitement non custodial. API limitée au trading, aucun retrait. Plus de 410 000 traders. Soutenu par Y Combinator.</p>
           <ul class="partner-features">
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Explicitement non custodial</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Plus de 150 modèles de stratégies</li>
@@ -1236,10 +1358,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Bots DCA et grid dans le cloud pour Binance, OKX et Bitget. Interface simple, stratégies axées sur le Bitcoin. Toutes les commissions de parrainage sont versées en BTC.</p>
+          <p class="partner-desc">Bots DCA et grid dans le cloud pour Binance, OKX et Bitget. Interface simple, stratégies axées sur le Bitcoin.</p>
           <ul class="partner-features">
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Bots DCA et grid</li>
-            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Commissions de parrainage en BTC</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Binance / OKX / Bitget</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Interface simple et épurée</li>
           </ul>
@@ -1314,28 +1435,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer-main">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="buy-bitcoin.html">Acheter du Bitcoin</a>
+        <a href="secure.html">Conservation</a>
+        <a href="mining.html">Minage</a>
+        <a href="lending.html">Prêts</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Fiscalité</a>
+        <a href="bots.html">Bots</a>
       </div>
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h4>Entreprise</h4>
-          <a href="about.html">À propos</a>
-          <a href="faq.html">FAQ</a>
-        </div>
-        <div class="footer-col">
-          <h4>Informations</h4>
-          <a href="terms-and-conditions.html">CGU</a>
-          <a href="privacy-policy.html">Politique de confidentialité</a>
-          <a href="aml-compliance.html">AML et conformité</a>
-        </div>
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <a href="about.html">À propos</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Outils</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Données Bitcoin</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <a href="terms-and-conditions.html">CGU</a>
+        <a href="privacy-policy.html">Politique de confidentialité</a>
+        <a href="aml-compliance.html">AML et conformité</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
-    </div>
-  </footer>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
+  </div>
+</footer>
 
 
 

@@ -697,6 +697,128 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+
+/* ===== FOOTER (matches EN) ===== */
+/* Matches the homepage's footer exactly — 5 link columns, a giant
+   clipped brand wordmark, side padding on .footer-inner (not
+   .footer-main) so the content's left edge lines up with every other
+   section. */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded, not var(--text) — a real device screenshot on the
+     homepage found var() failing inside a background-clip:text
+     gradient on mobile Safari. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+/* ===== FOOTER (mobile, matches EN) ===== */
+@media (max-width: 900px) {
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
 </style>
 </head>
 <body>
@@ -812,7 +934,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Politique de <span class="highlight">confidentialité</span></h1>
-  <p class="hero-desc">Comment Virtuse traite vos données, en langage clair. En bref : nous exploitons un hub non custodial, nous ne collectons presque rien, et le peu que nous collectons est expliqué ci-dessous. En vigueur à compter du 20 juillet 2026.</p>
+  <p class="hero-desc">Comment Virtuse traite vos données, en langage clair. En bref&nbsp;: nous exploitons un hub non custodial, nous ne collectons presque rien, et le peu que nous collectons est expliqué ci-dessous. En vigueur à compter du 20 juillet 2026.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
@@ -835,12 +957,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details open>
     <summary>Responsable du traitement</summary>
-    <div class="faq-answer">Ce site est exploité par <strong>Virtuse Group Pte. Ltd.</strong>, dont le bureau opérationnel se trouve à Bratislava, en Slovaquie, et le siège du groupe à Singapour (« Virtuse », « nous »). Au sens du règlement général sur la protection des données (RGPD) de l'UE, Virtuse Group Pte. Ltd. est le responsable du traitement des données personnelles collectées via ce site. Contact : <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+    <div class="faq-answer">Ce site est exploité par <strong>Virtuse Group Pte. Ltd.</strong>, dont le bureau opérationnel se trouve à Bratislava, en Slovaquie, et le siège du groupe à Singapour («&nbsp;Virtuse&nbsp;», «&nbsp;nous&nbsp;»). Au sens du règlement général sur la protection des données (RGPD) de l'UE, Virtuse Group Pte. Ltd. est le responsable du traitement des données personnelles collectées via ce site. Contact&nbsp;: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
   </details>
 
   <details>
     <summary>Ce que ce site est, et ce qu'il n'est pas</summary>
-    <div class="faq-answer">Virtuse est un <strong>hub non custodial pour des services exclusivement liés au Bitcoin</strong>. Nous n'exploitons pas de plateforme d'échange, ne détenons pas les fonds ou les clés de nos clients, n'ouvrons pas de comptes et n'effectuons pas de vérification d'identité (KYC) sur ce site. Lorsque vous utilisez un service partenaire (achat, minage, prêt, conservation, fiscalité ou robots de trading), vous contractez directement avec ce partenaire sur sa propre plateforme, et ce partenaire agit en tant que <strong>responsable du traitement indépendant</strong> pour toute information que vous lui communiquez. Cela limite considérablement les données personnelles que nous traitons nous-mêmes.</div>
+    <div class="faq-answer">Virtuse est un <strong>hub non custodial pour des services exclusivement liés au Bitcoin</strong>. Nous n'exploitons pas de plateforme d'échange, ne détenons pas les fonds ou les clés de nos clients, n'ouvrons pas de comptes et n'effectuons pas de vérification d'identité (KYC) sur ce site. Lorsque vous utilisez un service partenaire (achat, minage, prêt, conservation, fiscalité ou bots de trading), vous contractez directement avec ce partenaire sur sa propre plateforme, et ce partenaire agit en tant que <strong>responsable du traitement indépendant</strong> pour toute information que vous lui communiquez. Cela limite considérablement les données personnelles que nous traitons nous-mêmes.</div>
   </details>
 </section>
 
@@ -850,17 +972,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Les données que vous nous fournissez</summary>
-    <div class="faq-answer"><strong>Adresse e-mail pour la newsletter</strong> : si vous vous abonnez au Virtuse Brief, nous traitons l'adresse e-mail que vous fournissez, sur la base de votre consentement. C'est la seule donnée personnelle que ce site vous demande. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail, et nous supprimerons votre adresse de la liste de diffusion.</div>
+    <div class="faq-answer"><strong>Adresse e-mail pour la newsletter</strong>&nbsp;: si vous vous abonnez au Virtuse Brief, nous traitons l'adresse e-mail que vous fournissez, sur la base de votre consentement. C'est la seule donnée personnelle que ce site vous demande. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail, et nous supprimerons votre adresse de la liste de diffusion.</div>
   </details>
 
   <details>
     <summary>Données collectées automatiquement</summary>
-    <div class="faq-answer"><strong>Données d'utilisation</strong> : comme la quasi-totalité des sites web, notre infrastructure d'hébergement enregistre des journaux serveur standards : adresse IP, type et version du navigateur, pages visitées, horodatages et pages de provenance. Nous utilisons ces données uniquement à des fins de sécurité, de prévention des abus et de bon fonctionnement du site. Nous ne constituons pas de profils de visiteurs et nous n'utilisons pas ces données à des fins publicitaires.</div>
+    <div class="faq-answer"><strong>Données d'utilisation</strong>&nbsp;: comme la quasi-totalité des sites web, notre infrastructure d'hébergement enregistre des journaux serveur standard&nbsp;: adresse IP, type et version du navigateur, pages visitées, horodatages et pages de provenance. Nous utilisons ces données uniquement à des fins de sécurité, de prévention des abus et de bon fonctionnement du site. Nous ne constituons pas de profils de visiteurs et nous n'utilisons pas ces données à des fins publicitaires.</div>
   </details>
 
   <details>
     <summary>Données que nous ne collectons pas</summary>
-    <div class="faq-answer">Aucune donnée de compte, aucun document d'identité, aucune information financière ou de paiement, aucune adresse de portefeuille, aucun historique de transactions. Nos outils gratuits (le tableau de bord Données Bitcoin, le simulateur de retraite, le graphique arc-en-ciel, la dominance du BTC, la MM 200 semaines) s'exécutent <strong>entièrement dans votre navigateur</strong> : les chiffres que vous saisissez dans le simulateur de retraite ne quittent jamais votre appareil.</div>
+    <div class="faq-answer">Aucune donnée de compte, aucun document d'identité, aucune information financière ou de paiement, aucune adresse de portefeuille, aucun historique de transactions. Nos outils gratuits (le tableau de bord Données Bitcoin, le simulateur de retraite, le graphique arc-en-ciel, les cycles en échelle racine, la dominance du BTC, la MM 200 semaines, Peur &amp; Avidité, le volume d'échange) s'exécutent <strong>entièrement dans votre navigateur</strong>&nbsp;: les chiffres que vous saisissez dans le simulateur de retraite ne quittent jamais votre appareil.</div>
   </details>
 </section>
 
@@ -870,12 +992,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Finalités et bases légales (art. 6 RGPD)</summary>
-    <div class="faq-answer">Nous ne traitons les données personnelles que pour : <strong>(a) la fourniture de la newsletter</strong> que vous avez demandée, sur la base légale du consentement (art. 6, § 1, a), révocable à tout moment ; <strong>(b) l'exploitation, la sécurisation et le débogage du site</strong>, sur la base légale de l'intérêt légitime (art. 6, § 1, f) à maintenir notre service disponible et sûr ; et <strong>(c) le respect d'obligations légales</strong> (art. 6, § 1, c) lorsque le droit de l'UE ou slovaque l'exige. Nous ne vendons pas de données personnelles et ne les utilisons pas à des fins de décision automatisée ou de profilage au sens de l'article 22 du RGPD.</div>
+    <div class="faq-answer">Nous ne traitons les données personnelles que pour&nbsp;: <strong>(a) la fourniture de la newsletter</strong> que vous avez demandée, sur la base légale du consentement (art. 6, § 1, a), révocable à tout moment&nbsp;; <strong>(b) l'exploitation, la sécurisation et le débogage du site</strong>, sur la base légale de l'intérêt légitime (art. 6, § 1, f) à maintenir notre service disponible et sûr&nbsp;; et <strong>(c) le respect d'obligations légales</strong> (art. 6, § 1, c) lorsque le droit de l'UE ou slovaque l'exige. Nous ne vendons pas de données personnelles et ne les utilisons pas à des fins de décision automatisée ou de profilage au sens de l'article 22 du RGPD.</div>
   </details>
 
   <details>
     <summary>Relations d'apport d'affaires</summary>
-    <div class="faq-answer">Virtuse perçoit des commissions d'apport lorsque vous vous inscrivez auprès d'un partenaire via nos liens. Ce mécanisme repose sur des URL de parrainage standards : <strong>nous ne transmettons pas vos données personnelles aux partenaires</strong>, et les partenaires ne nous renvoient pas vos données personnelles. Tout au plus, les partenaires nous communiquent des statistiques agrégées et non identifiantes (par exemple, le nombre d'inscriptions) pour le règlement des commissions.</div>
+    <div class="faq-answer">Virtuse perçoit des commissions d'apport lorsque vous vous inscrivez auprès d'un partenaire via nos liens. Ce mécanisme repose sur des URL de parrainage standard&nbsp;: <strong>nous ne transmettons pas vos données personnelles aux partenaires</strong>, et les partenaires ne nous renvoient pas vos données personnelles. Tout au plus, les partenaires nous communiquent des statistiques agrégées et non identifiantes (par exemple, le nombre d'inscriptions) pour le règlement des commissions.</div>
   </details>
 </section>
 
@@ -885,7 +1007,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Ce que nous déposons</summary>
-    <div class="faq-answer">Ce site ne dépose lui-même <strong>aucun cookie publicitaire ou de suivi intersite</strong>. Nous nous limitons à ce que les règles ePrivacy qualifient de stockage strictement nécessaire : l'état technique minimal requis pour le fonctionnement du site (par exemple, mémoriser une préférence d'interface). Comme nous évitons les cookies non essentiels, aucune bannière de consentement aux cookies n'est requise pour le site en l'état. Si nous devions un jour introduire des cookies d'analyse ou marketing, nous demanderions votre consentement préalable, conformément à la directive ePrivacy et au RGPD.</div>
+    <div class="faq-answer">Ce site ne dépose lui-même <strong>aucun cookie publicitaire ou de suivi intersite</strong>. Nous nous limitons à ce que les règles ePrivacy qualifient de stockage strictement nécessaire&nbsp;: l'état technique minimal requis pour le fonctionnement du site (par exemple, mémoriser une préférence d'interface). Comme nous évitons les cookies non essentiels, aucune bannière de consentement aux cookies n'est requise pour le site en l'état. Si nous devions un jour introduire des cookies d'analyse ou marketing, nous demanderions votre consentement préalable, conformément à la directive ePrivacy et au RGPD.</div>
   </details>
 
   <details>
@@ -900,12 +1022,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Services avec lesquels votre navigateur communique sur nos pages</summary>
-    <div class="faq-answer">Certaines fonctionnalités chargent du contenu ou des données directement depuis des tiers. Le cas échéant, ces fournisseurs reçoivent techniquement votre adresse IP dans le cadre de la requête, selon leurs propres politiques de confidentialité : <strong>Google Fonts</strong> (polices de caractères), <strong>jsDelivr</strong> (bibliothèque d'animation), <strong>WordPress/virtuse.com</strong> (articles et images de blog, notre propre service), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, et <strong>Binance</strong> (données de marché et de réseau en direct, en lecture seule, pour nos outils Données Bitcoin). Ces requêtes ne transportent aucun identifiant de notre part : ni identifiant de connexion, ni cookie nous appartenant, rien au-delà de ce que contient toute requête de page web.</div>
+    <div class="faq-answer">Certaines fonctionnalités chargent du contenu ou des données directement depuis des tiers. Le cas échéant, ces fournisseurs reçoivent techniquement votre adresse IP dans le cadre de la requête, selon leurs propres politiques de confidentialité&nbsp;: <strong>Google Fonts</strong> (polices de caractères), <strong>jsDelivr</strong> (bibliothèque d'animation), <strong>WordPress/virtuse.com</strong> (articles et images de blog, notre propre service), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, <strong>Binance</strong> et <strong>Alternative.me</strong> (données de marché et de réseau en direct, en lecture seule, pour nos outils Données Bitcoin), ainsi que <strong>bitcoinwave.net</strong> (le graphique intégré des cycles en échelle racine). Ces requêtes ne transportent aucun identifiant de notre part&nbsp;: ni identifiant de connexion, ni cookie nous appartenant, rien au-delà de ce que contient toute requête de page web.</div>
   </details>
 
   <details>
     <summary>Liens vers des partenaires et d'autres sites</summary>
-    <div class="faq-answer">Nos pages renvoient vers des plateformes partenaires (par exemple Kraken, 21bitcoin, ByBit EU, Firefish, Trezor, Ledger, et d'autres) ainsi que vers des articles de presse. Une fois que vous quittez notre site, c'est la politique de confidentialité de la destination qui s'applique. Les partenaires fournissant des services réglementés mènent leurs propres vérifications KYC en vertu de MiCA et des règles européennes de lutte contre le blanchiment de capitaux : ces données leur sont transmises directement, jamais par notre intermédiaire. Nous vous recommandons de consulter la politique de confidentialité de chaque service auquel vous vous inscrivez.</div>
+    <div class="faq-answer">Nos pages renvoient vers des plateformes partenaires (par exemple Kraken, 21bitcoin, ByBit EU, Firefish, Trezor, Ledger, et d'autres) ainsi que vers des articles de presse. Une fois que vous quittez notre site, c'est la politique de confidentialité de la destination qui s'applique. Les partenaires fournissant des services réglementés mènent leurs propres vérifications KYC en vertu de MiCA et des règles européennes de lutte contre le blanchiment de capitaux&nbsp;: ces données leur sont transmises directement, jamais par notre intermédiaire. Nous vous recommandons de consulter la politique de confidentialité de chaque service auquel vous vous inscrivez.</div>
   </details>
 </section>
 
@@ -915,7 +1037,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Durée de conservation des données</summary>
-    <div class="faq-answer">Adresses de newsletter : jusqu'à votre désabonnement ou l'arrêt de la newsletter. Journaux serveur : rotation régulière après une courte période (généralement 30 à 90 jours), sauf besoin lié à une enquête de sécurité en cours ou obligation légale. Nous ne conservons rien « au cas où ».</div>
+    <div class="faq-answer">Adresses de newsletter&nbsp;: jusqu'à votre désabonnement ou l'arrêt de la newsletter. Journaux serveur&nbsp;: rotation régulière après une courte période (généralement 30 à 90 jours), sauf besoin lié à une enquête de sécurité en cours ou obligation légale. Nous ne conservons rien «&nbsp;au cas où&nbsp;».</div>
   </details>
 
   <details>
@@ -930,12 +1052,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Vos droits au titre du RGPD</summary>
-    <div class="faq-answer">Si vous résidez dans l'EEE, vous disposez du droit : <strong>d'accès</strong> aux données personnelles que nous détenons à votre sujet (art. 15), de <strong>rectification</strong> (art. 16), à <strong>l'effacement</strong> (art. 17), à la <strong>limitation du traitement</strong> (art. 18), à la <strong>portabilité des données</strong> (art. 20), <strong>d'opposition</strong> au traitement fondé sur l'intérêt légitime (art. 21), et de <strong>retirer votre consentement</strong> à tout moment sans affecter le traitement déjà effectué (art. 7, § 3). Étant donné le peu de données que nous collectons, la plupart des demandes concernent la newsletter, et le lien de désabonnement les résout instantanément.</div>
+    <div class="faq-answer">Si vous résidez dans l'EEE, vous disposez du droit&nbsp;: <strong>d'accès</strong> aux données personnelles que nous détenons à votre sujet (art. 15), de <strong>rectification</strong> (art. 16), à <strong>l'effacement</strong> (art. 17), à la <strong>limitation du traitement</strong> (art. 18), à la <strong>portabilité des données</strong> (art. 20), <strong>d'opposition</strong> au traitement fondé sur l'intérêt légitime (art. 21), et de <strong>retirer votre consentement</strong> à tout moment sans affecter le traitement déjà effectué (art. 7, § 3). Étant donné le peu de données que nous collectons, la plupart des demandes concernent la newsletter, et le lien de désabonnement les résout instantanément.</div>
   </details>
 
   <details>
     <summary>Exercer vos droits et déposer une réclamation</summary>
-    <div class="faq-answer">Écrivez à <a href="mailto:support@virtuse.com">support@virtuse.com</a> : nous répondons dans un délai d'un mois, comme l'exige le RGPD, et pouvons vous demander de vérifier votre identité au préalable. Si vous estimez que nous avons mal traité vos données, vous pouvez déposer une réclamation auprès de votre autorité de contrôle locale ; pour la Slovaquie, il s'agit de l'<strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong> (Office pour la protection des données personnelles de la République slovaque).</div>
+    <div class="faq-answer">Écrivez à <a href="mailto:support@virtuse.com">support@virtuse.com</a>&nbsp;: nous répondons dans un délai d'un mois, comme l'exige le RGPD, et pouvons vous demander de vérifier votre identité au préalable. Si vous estimez que nous avons mal traité vos données, vous pouvez déposer une réclamation auprès de votre autorité de contrôle locale&nbsp;; pour la Slovaquie, il s'agit de l'<strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong> (Office pour la protection des données personnelles de la République slovaque).</div>
   </details>
 
   <details>
@@ -950,17 +1072,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Sécurité des données</summary>
-    <div class="faq-answer">Nous appliquons des mesures techniques et organisationnelles proportionnées (TLS partout, collecte minimale des données dès la conception, contrôles d'accès). Aucune transmission sur internet n'est sécurisée à 100 %, ce qui est une raison de plus pour laquelle notre architecture évite de collecter des données sensibles dès le départ.</div>
+    <div class="faq-answer">Nous appliquons des mesures techniques et organisationnelles proportionnées (TLS partout, collecte minimale des données dès la conception, contrôles d'accès). Aucune transmission sur internet n'est sécurisée à 100&nbsp;%, ce qui est une raison de plus pour laquelle notre architecture évite de collecter des données sensibles dès le départ.</div>
   </details>
 
   <details>
     <summary>Modifications de cette politique</summary>
-    <div class="faq-answer">Nous pouvons mettre à jour cette politique de confidentialité à mesure que le site ou la loi évolue. Les modifications sont publiées sur cette page avec une nouvelle date d'entrée en vigueur ; les modifications substantielles seront signalées de manière visible sur le site ou via la newsletter avant leur prise d'effet.</div>
+    <div class="faq-answer">Nous pouvons mettre à jour cette politique de confidentialité à mesure que le site ou la loi évolue. Les modifications sont publiées sur cette page avec une nouvelle date d'entrée en vigueur&nbsp;; les modifications substantielles seront signalées de manière visible sur le site ou via la newsletter avant leur prise d'effet.</div>
   </details>
 
   <details>
     <summary>Nous contacter</summary>
-    <div class="faq-answer">Questions relatives à cette politique ou à vos données : <a href="mailto:support@virtuse.com">support@virtuse.com</a>, ou Virtuse Group Pte. Ltd., Singapour.</div>
+    <div class="faq-answer">Questions relatives à cette politique ou à vos données&nbsp;: <a href="mailto:support@virtuse.com">support@virtuse.com</a>, ou Virtuse Group Pte. Ltd., Singapour.</div>
   </details>
 </section>
 
@@ -1023,13 +1145,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer-main">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgC" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgC)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgD)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
     </div>
     <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="buy-bitcoin.html">Acheter du Bitcoin</a>
+        <a href="secure.html">Conservation</a>
+        <a href="mining.html">Minage</a>
+        <a href="lending.html">Prêts</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Fiscalité</a>
+        <a href="bots.html">Bots</a>
+      </div>
       <div class="footer-col">
         <h4>Entreprise</h4>
         <a href="about.html">À propos</a>
         <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Outils</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Retirement Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Données Bitcoin</a>
       </div>
       <div class="footer-col">
         <h4>Informations</h4>
@@ -1040,7 +1186,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, tous droits réservés.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — le rendez-vous hebdomadaire de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Le lire &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
   </div>
 </footer>
 
