@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, fifth round) — ES + DE high-severity proofreading fixes committed (`17118ec`, gh-pages `4037fab`, staging 33/33 md5-verified; production command below, not yet run). **All 64 high-severity findings across the 8 languages are now fixed on main/staging.**
+## Session status (2026-09-25, fifth round) — ES + DE high-severity proofreading fixes committed (`17118ec`, gh-pages `4037fab`, staging 33/33 md5-verified; **live on production** — user ran the scp, 33/33 md5-verified on virtuse.com). **All 64 high-severity findings across the 8 languages are now fixed and live in production.**
 
 **Round 4 (user: "oprav high položky v ES a DE") — 33 files** via
 `scratchpad/fix_high_es_de.py`:
@@ -29,7 +29,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   root-cycles duplicate-title/sub-nav bug is now closed in all 8 languages.
 - Verified: tagcheck 0 errors on all 33, leftover sweep 0 problems.
 
-**Next:** production scp below + md5-verify; then the user decides on the
+**Production done 2026-09-25** (33/33 md5 match; live checks: de/buy-bitcoin Sie-register card + "Keine PR", de/lending H1/hero, es/lending escrow wording ×4, es/root-cycles H1 + both sub-nav links).
+
+**Next:** the user decides on the
 medium (261) / low (303) rounds and the ES tú/usted question. Open EN
 leftovers noted during the rounds: `article.html` still has the old "Fix
 the Money / Virtuse Report" newsletter block; the about.html
