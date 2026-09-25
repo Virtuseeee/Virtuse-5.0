@@ -2,6 +2,24 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-first round) — ES low-severity proofreading (`23cf7e2`, gh-pages `ca5a7ca`, staging 22/22 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry still covers everything (173 files)**
+
+**Round 18 of the proofreading pass (user: "oprav teraz low položky v
+ES") — 22 es pages** via `scratchpad/fix_low_es.py` (clean first run).
+- 36 of 41 ES low items (lending rate, privacy "Virtuse Report", about
+  "sede", "no custodio", "socios de informes fiscales" were closed in
+  earlier rounds). Decisions: **"retirada(s)" (Spain) for withdrawals
+  sitewide** (faq sub-nav + section, bots, about, aml, retirement legend;
+  the verb "¿Cómo retiro...?" stays); footer "Preguntas frecuentes"
+  instead of "FAQ" on all 22 pages; "tesorería" in prose; blog H1 "El
+  blog de Virtuse"; terms "Nulidad parcial"; the aml Sumsub sentence now
+  ends "; el proceso suele completarse en cuestión de minutos." Index
+  service cards, buy-bitcoin Stacking line and bots Cryptohopper blurb
+  mirror the EN low round; es/about `.name-visual` clip.
+- Verified: tagcheck 0, leftover sweep clean, all 22 es pages at 375px
+  with no overflow, fine print 12px, concierge CTA fits.
+- Remaining low rounds: RU 43, DE 44.
+
 ## Session status (2026-09-25, twentieth round) — UK low-severity proofreading (`8af01f1`, gh-pages `0edb341`, staging 20/20 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry below still covers everything (173 files)**
 
 **Round 17 of the proofreading pass (user: "oprav teraz low položky v
