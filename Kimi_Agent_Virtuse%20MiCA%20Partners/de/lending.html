@@ -890,7 +890,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .btn-secondary {
@@ -1223,6 +1223,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1338,7 +1343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Behalten Sie Ihren Bitcoin.<br><span class="highlight">Erhalten Sie das Bargeld, das Sie brauchen.</span></h1>
+  <h1>Behalten Sie Ihren Bitcoin.<br><span class="highlight">Erhalten Sie die Liquidität, die Sie brauchen.</span></h1>
 
   <p class="hero-desc">
     Verkaufen Sie Ihren Bitcoin nicht, sondern nehmen Sie einen Bitcoin-besicherten Kredit auf. Über Virtuse leihen sich Bitcoiner Geld gegen ihren Bitcoin, zu marktüblichen Zinsen ab 6 % p. a.
@@ -1396,14 +1401,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header">
     <div class="sec-title">
       <h2>Zwei <span>Wege zur Teilnahme</span></h2>
-      <p>Ob Sie Bargeld benötigen oder eine Rendite erzielen möchten: Es gibt eine Bitcoin-native Option</p>
+      <p>Ob Sie Liquidität benötigen oder eine Rendite erzielen möchten: Es gibt eine Bitcoin-native Option</p>
     </div>
   </div>
 
   <div class="lending-types">
     <div class="ltype-card">
       <h3>Kreditnehmer</h3>
-      <p>Nutzen Sie Ihr Bitcoin als Sicherheit, um Fiatgeld (EUR, CHF, CZK) oder Stablecoins (USDC) zu leihen. Behalten Sie Ihr Bitcoin-Exposure, vermeiden Sie Kapitalertragsteuern und erhalten Sie Zugang zu Liquidität, ohne zu verkaufen. LTV bis zu 50 %. Laufzeiten von 3 bis 24 Monaten. Zinssätze ab 5 % p.a.</p>
+      <p>Nutzen Sie Ihren Bitcoin als Sicherheit, um Fiatgeld (EUR, CHF, CZK) oder Stablecoins (USDC) zu leihen. Behalten Sie Ihr Bitcoin-Exposure, schieben Sie die Besteuerung von Kursgewinnen auf (ein Kredit ist kein steuerpflichtiger Verkauf) und erhalten Sie Zugang zu Liquidität, ohne zu verkaufen. LTV bis zu 50 %. Laufzeiten von 3 bis 24 Monaten. Zinssätze ab 6 % p. a.</p>
     </div>
     <div class="ltype-card">
       <h3>Investoren / Kreditgeber</h3>
@@ -1417,7 +1422,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header">
     <div class="sec-title">
       <h2>Unsere <span>Kreditpartner</span></h2>
-      <p>Bitcoin-only-Kreditplattformen mit nicht-verwahrender Multi-Sig-Treuhand</p>
+      <p>Reine Bitcoin-Kreditplattformen mit nicht verwahrender Multi-Sig-Treuhand</p>
     </div>
   </div>
 
@@ -1443,7 +1448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p><strong>Der führende europäische P2P-Marktplatz für Bitcoin-Kredite.</strong> Kreditnehmer erhalten Fiat-/Stablecoin-Kredite, die durch Bitcoin-Sicherheiten in einer On-Chain-Multi-Sig-Treuhand abgesichert sind. Firefish kommt niemals mit Ihrem Bitcoin in Berührung, sondern fungiert ausschließlich als technischer Vermittler zwischen Kreditnehmern und Investoren.</p>
         <ul class="pcard-features">
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nur Bitcoin, keine Altcoins akzeptiert</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nicht-verwahrende Multi-Sig-Treuhand</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nicht verwahrende Multi-Sig-Treuhand</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 22,5 Mio. EUR finanziert | 8.600 Investoren</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Gelistet im ESMA-MiCA-Register</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Sofortkredite jetzt verfügbar</li>
@@ -1456,7 +1461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Zinssatz</span>
-          <span class="pcard-terms-value">5 % bis 15 % p.a.</span>
+          <span class="pcard-terms-value">6 % bis 15 % p. a.</span>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">LTV-Verhältnis</span>
@@ -1468,7 +1473,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Währungen</span>
-          <span class="pcard-terms-value">EUR, CZK, USDC</span>
+          <span class="pcard-terms-value">EUR, CHF, CZK, USDC</span>
         </div>
       </div>
 
@@ -1606,8 +1611,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

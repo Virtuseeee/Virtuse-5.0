@@ -803,7 +803,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .btn-secondary {
@@ -1136,6 +1136,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1266,7 +1271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="how">
   <div class="how-header">
     <h2>So <span>funktioniert es</span></h2>
-    <p>Vier einfache Schritte zu jedem Bitcoin-Service über unseren Hub</p>
+    <p>Vier einfache Schritte zum Bitcoin-Kauf über einen lizenzierten Partner</p>
   </div>
   <div class="how-log">
     <div class="how-log-item">
@@ -1282,7 +1287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Schritt 02</span>
         <h3>Zur Plattform wechseln</h3>
-        <p>Ihr Empfehlungslink führt Sie direkt zur Seite des Partners. Virtuse tritt nie als Vermittler dazwischen.</p>
+        <p>Ihr Empfehlungslink führt Sie direkt zur Seite des Partners. Virtuse schaltet sich nie dazwischen.</p>
       </div>
     </div>
     <div class="how-log-item">
@@ -1312,7 +1317,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Vergleichen Sie mit dem Stacking Strategist die Gebühren aller Partner für Ihren Betrag, bevor Sie sich entscheiden.</p>
     </div>
     <a href="../stacking.html?utm_source=stacking&amp;utm_medium=widget" class="stack-step0-cta">
-      Meinen Sparplan planen
+      Meinen Sparplan erstellen
       <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -1365,7 +1370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pcard-body">
         <p>Die <strong>führende europäische reine Bitcoin-App</strong>, reguliert von der österreichischen FMA unter MiCAR. Über 100.000 Nutzer in ganz Europa mit versicherter Bitcoin-Verwahrung. Auto-Invest-Sparplan mit 0 % Gebühren. Banküberweisung und Kartenzahlung werden unterstützt.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> FMA-Österreich-MiCAR-lizenziert</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCAR-lizenziert durch die österreichische FMA</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Über 100.000 europäische Nutzer</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Versicherte Bitcoin-Verwahrung</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Auto-Invest mit 0 % Gebühren</li>
@@ -1374,7 +1379,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="pcard-footer">
         <a href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          21bitcoin holen
+          21bitcoin öffnen
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1408,7 +1413,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="pcard-footer">
         <a href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Kraken holen
+          Kraken öffnen
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Gebühren vergleichen</a>
@@ -1434,7 +1439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pcard-body">
         <p><strong>Der EU-Arm einer der größten Börsen der Welt:</strong> Bybit EU GmbH ist MiCAR-lizenziert durch die österreichische FMA, hat ihren Sitz in Wien und bedient den gesamten EWR. Tiefe Liquidität, niedrige Spot-Gebühren und eine voll ausgestattete App.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> FMA-Österreich-MiCAR-lizenziert</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCAR-lizenziert durch die österreichische FMA</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> EU-Hauptsitz in Wien</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Top-3-Börse weltweit nach Volumen</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Spot-Handelsgebühren ab 0,1 %</li>
@@ -1443,7 +1448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="pcard-footer">
         <a href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          ByBit EU holen
+          ByBit EU öffnen
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1477,7 +1482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="pcard-footer">
         <a href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Invity holen
+          Invity öffnen
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1502,16 +1507,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pcard-body">
         <p><strong>Eine der größten Kryptoplattformen der Welt</strong>, als MiCA-CASP lizenziert über die maltesische MFSA (Foris DAX MT Limited) mit vollen Passporting-Rechten im EWR. Tiefe Liquidität, eine voll ausgestattete App und die Crypto.com Visa Card zum direkten Ausgeben vom eigenen Guthaben.</p>
         <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MFSA-Malta-MiCA-CASP-lizenziert</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> MiCA-CASP-lizenziert durch die maltesische MFSA</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Volle Passporting-Rechte im EWR</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Crypto.com Visa Card wird unterstützt</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Tiefe Liquidität, breite Asset-Abdeckung</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Tiefe Liquidität, in der EU regulierte App</li>
         </ul>
       </div>
 
       <div class="pcard-footer">
         <a href="https://cryptocom.sjv.io/c/7490229/2051372/25666" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Crypto.com holen
+          Crypto.com öffnen
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1627,8 +1632,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

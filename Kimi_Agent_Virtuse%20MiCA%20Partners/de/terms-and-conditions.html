@@ -470,7 +470,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ===== MOBILE MENU ===== */
@@ -790,6 +790,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -905,7 +910,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Allgemeine <span class="highlight">Geschäftsbedingungen</span></h1>
-  <p class="hero-desc">Die Regeln, die Ihre Nutzung dieser Website bestimmen. Kurzfassung: Virtuse ist ein non-custodial Hub, der Sie mit unabhängigen, geprüften Partnern verbindet. Wir verwahren keine Gelder, führen keine Trades aus und erteilen keine Finanzberatung. Gültig ab 20. August 2026.</p>
+  <p class="hero-desc">Die Regeln, die Ihre Nutzung dieser Website bestimmen. Kurzfassung: Virtuse ist ein Non-Custodial-Hub, der Sie mit unabhängigen, geprüften Partnern verbindet. Wir verwahren keine Gelder, führen keine Trades aus und erteilen keine Finanzberatung. Gültig ab 20. August 2026.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
@@ -928,7 +933,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details open>
     <summary>Der Vertragspartner</summary>
-    <div class="faq-answer">Diese Website (virtuse.com und ihre Subdomains) wird betrieben von der <strong>Virtuse Group Pte. Ltd.</strong>, einem Unternehmen mit operativem Sitz in Bratislava, Slowakei, und Konzernhauptsitz in Singapur („Virtuse", „wir", „uns", „unser"). Diese Allgemeinen Geschäftsbedingungen („AGB") bilden eine verbindliche Vereinbarung zwischen Ihnen und der Virtuse Group Pte. Ltd. und regeln Ihren Zugriff auf diese Website sowie deren Nutzung. Kontakt: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
+    <div class="faq-answer">Diese Website (virtuse.com und ihre Subdomains) wird betrieben von der <strong>Virtuse Group Pte. Ltd.</strong>, einem Unternehmen mit operativem Sitz in Bratislava, Slowakei, und Konzernhauptsitz in Singapur („Virtuse“, „wir“, „uns“, „unser“). Diese Allgemeinen Geschäftsbedingungen („AGB“) bilden eine verbindliche Vereinbarung zwischen Ihnen und der Virtuse Group Pte. Ltd. und regeln Ihren Zugriff auf diese Website sowie deren Nutzung. Kontakt: <a href="mailto:support@virtuse.com">support@virtuse.com</a>.</div>
   </details>
 
   <details>
@@ -942,7 +947,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">2. Was Virtuse ist, und was Virtuse nicht ist</div>
 
   <details open>
-    <summary>Wir sind ein non-custodial Hub, kein Dienstleister</summary>
+    <summary>Wir sind ein Non-Custodial-Hub, kein Dienstleister</summary>
     <div class="faq-answer">Virtuse kuratiert und listet geprüfte, unabhängige Partner in Bitcoin-bezogenen Kategorien: Kauf, Mining, Kredite, Verwahrung, Treasury, Steuern und Trading-Bots. <strong>Wir betreiben selbst keine Börse, verwahren keine Kundengelder oder privaten Schlüssel, eröffnen keine Konten, führen keine Trades aus, bieten keine Verwahrungsdienste an, vergeben keine Kredite und führen keine Identitätsprüfung (KYC) durch.</strong> Wenn Sie einen Partnerdienst nutzen, gehen Sie eine direkte vertragliche Beziehung mit diesem Partner ein, die den eigenen Bedingungen, der Datenschutzerklärung, den Gebühren und der behördlichen Zulassung dieses Partners unterliegt, nicht Virtuse.</div>
   </details>
 
@@ -953,7 +958,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Von der Börse zum Hub</summary>
-    <div class="faq-answer">Virtuse war zuvor anders ausgerichtet; die Website ist seither auf das in diesen AGB beschriebene non-custodial Referral-Hub-Modell umgestellt. Regulatorische Details zu diesem Übergang finden Sie auf unserer Seite <a href="aml-compliance.html">AML und Compliance</a>.</div>
+    <div class="faq-answer">Virtuse war zuvor anders ausgerichtet; die Website ist seither auf das in diesen AGB beschriebene Non-Custodial-Referral-Hub-Modell umgestellt. Regulatorische Details zu diesem Übergang finden Sie auf unserer Seite <a href="aml-compliance.html">AML und Compliance</a>.</div>
   </details>
 </section>
 
@@ -998,12 +1003,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Rechner und Diagramme</summary>
-    <div class="faq-answer">Unsere kostenlosen Tools (Bitcoin-Daten-Dashboard, Ruhestandsrechner, Rainbow Chart, BTC-Dominanz, 200-Wochen-Durchschnitt) dienen ausschließlich Informations- und Bildungszwecken, laufen vollständig in Ihrem Browser und stellen keine Anlageberatung, Prognose, Zusage oder Garantie eines zukünftigen Ergebnisses dar. Die Ergebnisse hängen vollständig von den von Ihnen eingegebenen oder im Tool hinterlegten Annahmen ab, und die historische Wertentwicklung lässt keine Rückschlüsse auf zukünftige Ergebnisse zu.</div>
+    <div class="faq-answer">Unsere kostenlosen Tools (Bitcoin-Daten-Dashboard, Ruhestandsrechner, Regenbogen-Chart, Wurzelzyklen-Modell, BTC-Dominanz, 200-Wochen-Durchschnitt, Angst-&amp;-Gier-Index, Handelsvolumen) dienen ausschließlich Informations- und Bildungszwecken, laufen vollständig in Ihrem Browser und stellen keine Anlageberatung, Prognose, Zusage oder Garantie eines zukünftigen Ergebnisses dar. Die Ergebnisse hängen vollständig von den von Ihnen eingegebenen oder im Tool hinterlegten Annahmen ab, und die historische Wertentwicklung lässt keine Rückschlüsse auf zukünftige Ergebnisse zu.</div>
   </details>
 
   <details>
     <summary>Genauigkeit der Marktdaten</summary>
-    <div class="faq-answer">Die auf dieser Website angezeigten Live-Kurs- und Netzwerkdaten stammen von Drittanbietern, darunter CoinGecko, Binance und mempool.space, und werden „nach Verfügbarkeit" bereitgestellt. Wir haben keine Kontrolle über diese Quellen und können nicht garantieren, dass die Daten zum Zeitpunkt Ihrer Ansicht korrekt, vollständig oder aktuell sind. Verlassen Sie sich bei zeitkritischen Handels- oder Finanzentscheidungen nicht auf die hier angezeigten Daten; überprüfen Sie aktuelle Kurse vor jeder Handlung direkt bei Ihrer Börse oder Ihrem Partner.</div>
+    <div class="faq-answer">Die auf dieser Website angezeigten Live-Kurs- und Netzwerkdaten stammen von Drittanbietern, darunter CoinGecko, Binance und mempool.space, und werden „nach Verfügbarkeit“ bereitgestellt. Wir haben keine Kontrolle über diese Quellen und können nicht garantieren, dass die Daten zum Zeitpunkt Ihrer Ansicht korrekt, vollständig oder aktuell sind. Verlassen Sie sich bei zeitkritischen Handels- oder Finanzentscheidungen nicht auf die hier angezeigten Daten; überprüfen Sie aktuelle Kurse vor jeder Handlung direkt bei Ihrer Börse oder Ihrem Partner.</div>
   </details>
 
   <details>
@@ -1032,8 +1037,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">7. Haftungsausschluss und Haftungsbeschränkung</div>
 
   <details open>
-    <summary>Die Website wird „wie besehen" bereitgestellt</summary>
-    <div class="faq-answer">Soweit nach geltendem Recht zulässig, werden diese Website, ihre Tools und ihre Inhalte „wie besehen" und „wie verfügbar" bereitgestellt, ohne jegliche ausdrückliche oder stillschweigende Gewährleistung, einschließlich stillschweigender Zusicherungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck, der Nichtverletzung von Rechten Dritter oder dass die Website unterbrechungsfrei, sicher oder fehlerfrei ist. Bitcoin- und Krypto-Asset-Märkte sind naturgemäß volatil und spekulativ; nichts auf dieser Website beseitigt dieses Risiko.</div>
+    <summary>Die Website wird „wie besehen“ bereitgestellt</summary>
+    <div class="faq-answer">Soweit nach geltendem Recht zulässig, werden diese Website, ihre Tools und ihre Inhalte „wie besehen“ und „wie verfügbar“ bereitgestellt, ohne jegliche ausdrückliche oder stillschweigende Gewährleistung, einschließlich stillschweigender Zusicherungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck, der Nichtverletzung von Rechten Dritter oder dass die Website unterbrechungsfrei, sicher oder fehlerfrei ist. Bitcoin- und Krypto-Asset-Märkte sind naturgemäß volatil und spekulativ; nichts auf dieser Website beseitigt dieses Risiko.</div>
   </details>
 
   <details>
@@ -1172,8 +1177,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">

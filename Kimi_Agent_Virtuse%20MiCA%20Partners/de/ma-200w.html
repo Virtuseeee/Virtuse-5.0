@@ -552,7 +552,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ===== MOBILE MENU ===== */
@@ -872,6 +872,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -986,8 +991,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>200-Wochen <span class="highlight">gleitender Durchschnitt</span></h1>
-  <p class="hero-desc">Der meistbeachtete langfristige Boden von Bitcoin. Der 200-Wochen-gleitende Durchschnitt markierte historisch den Tiefpunkt jedes Bärenmarkts. Der Preis schloss nur selten darunter und blieb nie lange dort.</p>
+  <h1>Gleitender <span class="highlight">200-Wochen-Durchschnitt</span></h1>
+  <p class="hero-desc">Der meistbeachtete langfristige Boden von Bitcoin. Der gleitende 200-Wochen-Durchschnitt markierte historisch den Tiefpunkt jedes Bärenmarkts. Der Preis schloss nur selten darunter und blieb nie lange dort.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
@@ -1018,14 +1023,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="band-chip" id="bandChip" style="background: var(--border);">Wird geladen…</div>
     </div>
-    <div class="status-note">Preis als Vielfaches des 200-Wochen-gleitenden Durchschnitts: je näher an 1×, desto näher am historischen Tiefpunkt von Bitcoin.</div>
+    <div class="status-note">Preis als Vielfaches des gleitenden 200-Wochen-Durchschnitts: je näher an 1×, desto näher am historischen Tiefpunkt von Bitcoin.</div>
   </div>
 </section>
 
 <!-- ===== CHART ===== -->
 <section class="chart-section">
   <div class="chart-panel">
-    <h3><span class="ico">&#9670;</span> Preis vs. 200-Wochen-gleitender Durchschnitt (logarithmische Skala)</h3>
+    <h3><span class="ico">&#9670;</span> Preis vs. gleitender 200-Wochen-Durchschnitt (logarithmische Skala)</h3>
     <div class="chart-wrap">
       <canvas id="chart" height="460"></canvas>
       <div class="tooltip" id="tooltip"></div>
@@ -1142,8 +1147,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+    <p class="footer-bottom-brief">Virtuse Brief – der wöchentliche Überblick von Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Lesen →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">
@@ -1342,7 +1347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var legend = document.getElementById('legend');
   [
     { label: 'Weiße Linie: wöchentlicher Bitcoin-Preis', color: '#ffffff' },
-    { label: 'Orange Linie: 200-Wochen-gleitender Durchschnitt (der "Boden")', color: '#f7931a' },
+    { label: 'Orange Linie: gleitender 200-Wochen-Durchschnitt (der „Boden“)', color: '#f7931a' },
     { label: '≈ 1×: Bärenmarkt-Tiefpunkte von 2015, 2018 und 2022', color: '#3fb950' },
     { label: '4×+: Zyklushöchststände lagen weit über dem Boden', color: '#c00000' }
   ].forEach(function (b) {

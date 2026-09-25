@@ -244,6 +244,11 @@ body {
 @media (max-width: 1024px) {
   .lang-menu { display: none; }
 }
+
+/* German compounds (e.g. "Gebührenranking") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -269,7 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <footer class="err-footer">
-  &copy;2018 - 2026 Virtuse Group, All Rights Reserved.
+  &copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.
 </footer>
 
 </body>
