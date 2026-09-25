@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, twenty-sixth round) — blog-sk: Brief nav item, Virtuse Brief hero line, full hreflang (`25b2172`, gh-pages `46157d6`, staging 1/1 md5-verified)
+## Session status (2026-09-25, twenty-sixth round) — blog-sk: Brief nav item, Virtuse Brief hero line, full hreflang (`25b2172`, gh-pages `46157d6`, staging 1/1 md5-verified; **live on production**, md5-verified on virtuse.com)
 
 - blog-sk.html (outside sk/, missed by the rollouts) now has the Brief
   nav item at 09 (Bitcoin dáta/O nás renumbered 10/11, href
