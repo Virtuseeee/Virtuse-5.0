@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, eighth round) — CS medium-severity proofreading fixes + EN carry-overs committed (gh-pages synced, staging md5-verified; production command below, not yet run)
+## Session status (2026-09-25, eighth round) — CS medium-severity proofreading fixes + EN carry-overs committed (`cc9cd91` + `8084d8c`, gh-pages `e693597`, staging 20/20 md5-verified; production command below, not yet run)
 
 **Round 7 (user: "oprav teraz medium položky v CS") — 20 files** via
 `scratchpad/fix_medium_cs.py`, same shape as the SK round:
@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   categories + Koinly/Jade, privacy/terms tool + third-party lists).
 - Left as is: "Ideální pro střední až velké těžaře" (people, correct);
   terms "nástroje na této webové stránce" (correct preposition).
-- Verified: tagcheck 0 errors on all 20, leftover/quote sweeps clean.
+- Verified: tagcheck 0 errors on all 20, leftover/quote sweeps clean; staging DOM checks on cs/index (9 Quick Answers, "Odebírat", "E-mailová adresa", "21. září 2026") and cs/buy-bitcoin. **Gotcha:** the injected `.brief-fineprint` rule lost to `.brief-card-poster p` (15px) — fixed in `8084d8c` as `.brief-card .brief-fineprint`; the SK round used the same selector shape only where fr/index's block already carried it, so check computed size, not just presence, when adding the fine print to uk/es/ru/de.
 
 ```bash
 cd /private/tmp/gh-pages-wt3 && scp -P 222 cs/404.html cs/about.html cs/aml-compliance.html cs/bitcoin-data.html cs/bots.html cs/btc-dominance.html cs/buy-bitcoin.html cs/faq.html cs/index.html cs/lending.html cs/ma-200w.html cs/mining.html cs/privacy-policy.html cs/rainbow-chart.html cs/retirement-calculator.html cs/root-cycles.html cs/secure.html cs/tax.html cs/terms-and-conditions.html cs/treasury.html virtuse.com@ftp.virtuse.com:public_html/cs/
