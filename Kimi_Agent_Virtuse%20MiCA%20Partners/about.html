@@ -349,6 +349,7 @@ img { max-width: 100%; }
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow-x: clip; /* the 380px glow below is wider than a phone */
 }
 
 .name-visual::before {
@@ -574,7 +575,7 @@ img { max-width: 100%; }
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-fineprint, .brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1323,7 +1324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-title"><h2>Explore <span>the Hub</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Buy Bitcoin<small>MiCA-licensed partners</small></span><span class="arrow">&#8594;</span></a>
-    <a href="secure.html" class="hub-link"><span>Custody<small>Self-custody &amp; collaborative</small></span><span class="arrow">&#8594;</span></a>
+    <a href="secure.html" class="hub-link"><span>Custody<small>Self-custody &amp; collaborative custody</small></span><span class="arrow">&#8594;</span></a>
     <a href="lending.html" class="hub-link"><span>Loans<small>Bitcoin-backed lending</small></span><span class="arrow">&#8594;</span></a>
     <a href="mining.html" class="hub-link"><span>Mining<small>Hosted &amp; cloud mining</small></span><span class="arrow">&#8594;</span></a>
     <a href="treasury.html" class="hub-link"><span>Treasury<small>Corporate Bitcoin strategy</small></span><span class="arrow">&#8594;</span></a>
