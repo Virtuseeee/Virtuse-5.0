@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25) — Bitcoin Concierge redesigned to the homepage's design language (`50b8f57`, gh-pages `8c499b4`, staging 22/22 md5-verified); production scp/sftp prepared, NOT yet run. Sitewide proofreading pass in progress (7 of 8 language reports in)
+## Session status (2026-09-25) — Bitcoin Concierge redesigned to the homepage's design language (`50b8f57`, gh-pages `8c499b4`, staging 22/22 md5-verified, **live on production** — user ran the scp + sftp rm; 22/22 md5-verified on virtuse.com and all 10 old asset hashes confirmed gone). Sitewide proofreading pass in progress (7 of 8 language reports in)
 
 **Concierge redesign — what changed and where the source is.** The four
 Layer-2 modules are a React/Vite project **outside this repo** at
@@ -45,8 +45,11 @@ Verified locally (1440 + 375, embed mode, sk/concierge chrome, stacking
 still renders, full chat flow → partner CTA carries the entered
 `utm_medium`), committed `50b8f57`, gh-pages `8c499b4`, staging 22/22.
 
-**Production deploy — needs a delete step as well as uploads** (the old
-hashed asset files must go, or stale copies linger on the server):
+**Production deploy (done 2026-09-25) — note it needed a delete step as well
+as uploads** (the old hashed asset files must go, or stale copies linger on
+the server). Gotcha: the first live check in the Browser pane still showed
+the old page — the pane had cached the unversioned `concierge.html`; a
+cache-busted URL showed the new bundle. `curl` md5 first, as always.
 ```bash
 cd /private/tmp/gh-pages-wt3 && scp -P 222 concierge-assets/* virtuse.com@ftp.virtuse.com:public_html/concierge-assets/ && \
 scp -P 222 concierge.html stacking.html loan.html tax-agent.html virtuse.com@ftp.virtuse.com:public_html/ && \
