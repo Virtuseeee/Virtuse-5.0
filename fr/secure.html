@@ -1064,7 +1064,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint, .brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 
 /* ===== FOOTER (mobile, matches EN) ===== */
 @media (max-width: 900px) {
@@ -1075,6 +1075,15 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .footer-wordmark { height: 110px; opacity: 0.32; }
   .footer-wordmark-icon { height: 140px; }
   .footer-wordmark-text { font-size: 184px; }
+}
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
 }
 </style>
 </head>
@@ -1221,7 +1230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Étape 02</span>
         <h3>Créez votre coffre</h3>
-        <p>Configurez un quorum 2 sur 3, 3 sur 5, ou personnalisé. Définissez le nombre de signatures requises pour dépenser.</p>
+        <p>Configurez un quorum 2 sur 3, 3 sur 5 ou personnalisé. Définissez le nombre de signatures requises pour dépenser.</p>
       </div>
     </div>
     <div class="how-log-item">
@@ -1341,12 +1350,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Une infrastructure Bitcoin conçue par des contributeurs de Bitcoin Core.</strong> Blockstream Jade est un portefeuille matériel entièrement open source, avec une prise en charge native du multisig et des coffres de conservation collaborative&nbsp;: aucun secure element, aucun micrologiciel fermé, tout est vérifiable de façon indépendante.</p>
+        <p><strong>Une infrastructure Bitcoin conçue par des contributeurs de Bitcoin Core.</strong> Blockstream Jade est un portefeuille matériel entièrement open source, avec une prise en charge native du multisig et des coffres de conservation collaborative&nbsp;: aucune puce Secure Element, aucun micrologiciel fermé, tout est vérifiable de façon indépendante.</p>
         <ul class="pcard-features">
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Matériel et micrologiciel entièrement open source</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Conçu par Blockstream, contributeurs de Bitcoin Core et Liquid</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Prise en charge native du multisig et de la conservation collaborative</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Signature air-gapped via QR et microSD, sans USB</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Signature hors ligne (air-gap) via QR et microSD, sans USB</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> À partir de 65 $ (Blockstream Jade)</li>
         </ul>
       </div>
