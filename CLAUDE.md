@@ -2,6 +2,55 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, eleventh round) — FR medium-severity proofreading + footer/homepage parity committed (`403ca3f`, gh-pages `8838a4e`, staging 22/22 md5-verified). **Production deploy held: the fr files now carry the PL/HU switcher entries from the ninth/tenth rounds, and pl/ + hu/ are not on production yet** (both 301 to blog.virtuse.com there)
+
+**Round 8 of the proofreading pass (user: "oprav teraz medium položky vo
+FR") — 22 fr pages** via `scratchpad/fix_medium_fr.py`. Rebased onto the
+PL/HU commits before pushing (clean; they only touched switcher/hreflang
+lines on fr pages).
+- **Structural gaps the FR reviewer flagged, confirmed in markup:**
+  (1) all 20 fr subpages still had the old 2-column footer without the
+  wordmark (the September fr parity round only did fr/index + fr/blog) —
+  now the 5-column footer copied from fr/index, with EN's non-uniform
+  "Ressources" column per page (8 index/buy-bitcoin, 5 lending, 6 tax, 3
+  elsewhere; French labels: "Fiscalité du Bitcoin", "Indice des frais",
+  "Calculateur DCA", "Vendre ou emprunter", "Succession", "Acheter en
+  Slovaquie/Tchéquie/Allemagne"). CSS: EN buy-bitcoin's FOOTER section
+  replaces the page's block where that block holds only `.footer*` rules
+  (about, bitcoin-data, buy-bitcoin, lending, mining, secure); otherwise
+  it is appended before `</style>` (legal + dashboard pages have no
+  marked block; fr/bots' marked block also held unrelated responsive
+  rules), followed by EN's 900px footer rules. Verified at 1440 (content
+  edge 68px, 5 flex columns) and 375 (2-col grid, wordmark 184px, no
+  overflow) on one page of each path. (2) fr/index gained EN's Tools &
+  Guides block (French copy) and Quick Answers (9 Q&A from fr/faq.html)
+  → all 13 EN sections. (3) fr/tax still had the "EU tax complexity"
+  card EN removed — deleted (it held the duplicated paragraph).
+- **Pre-existing bug fixed on the way:** fr/index's concierge banner
+  overflowed 15px at 375px (confirmed on the committed version) because
+  the long French CTA had `white-space: nowrap`; the CTA wraps at ≤700px.
+  Other languages with long CTA labels may have the same issue — unchecked.
+- Copy: all 31 medium items + systemic items (portefeuille, dépositaire,
+  multisig spelling, bots de trading, crypto-actifs, du Bitcoin, French
+  blog dates "14 mai 2026" in formatter + static cards on index/blog,
+  "Tableau de bord" sub-nav) + EN round-5 carry-overs (Custody card,
+  lending hero, CHF, deferral wording, buy-bitcoin subheading/bullet,
+  secure title/og/hero, Sygnum, affiliate strings, self-hosted card,
+  about 26 partners + Bratislava, faq categories + Koinly/Jade,
+  privacy/terms lists, footer copyright). Left as is: privacy "ce qu'il
+  n'est pas" (refers to "ce site"); CASP on marketing pages vs PSCA on
+  legal pages (both correct; unify only if wanted).
+- **Non-breaking spaces:** 227 `&nbsp;` before `: ; ? ! %` and inside
+  `« »`, visible text only (tokenised on tags, script/style blocks
+  asserted byte-identical before/after). JS strings and meta attributes
+  were not touched.
+
+**Production command (hold until pl/ and hu/ are on production, or run
+it knowing the PL/HU switcher options will dead-end until then):**
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/
+```
+
 ## Session status (2026-09-25, tenth round) — Hungarian (`hu/`) added as the 10th language; committed (`8d52740`), gh-pages `6eae6a3`, **live on staging only** (production NOT touched)
 
 - Same pipeline as pl/ (entry below): `scaffold_hu.py`, `hu_translations.py` (same EN keys as `pl_translations.py`) + `apply_hu_translations.py`, `build_hu_blog.py` (from `es/blog.html`, which already carries PL), `wire_hu_into_existing.py` (HU after every PL anchor, 192 pages incl. pl/), `sitemap_add_hu.py`. Language #11: copy the hu scripts, key off the hu anchors/hreflang, add the new code to `SWITCH_ORDER` in every `scaffold_*.py` that is still regenerated (pl/hu now emit the full 10-language switcher; regenerating pl/ = `scaffold_pl.py` + `apply_pl_translations.py`, keep `pl/blog.html` aside — it is built separately).
