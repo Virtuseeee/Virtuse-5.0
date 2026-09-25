@@ -2,7 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, sixth round) — EN medium-severity proofreading fixes committed (`8081c8b`, gh-pages `9043143`, staging 24/24 md5-verified; production command below, not yet run)
+## Session status (2026-09-25, sixth round) — EN medium-severity proofreading fixes committed (`8081c8b`, gh-pages `9043143`, staging 24/24 md5-verified; **live on production** — user ran the scp, 24/24 md5-verified on virtuse.com)
+
+**Production done 2026-09-25** (24/24 md5 match; live checks: footer copyright, index Custody card + "each with its own rules", about 26 partners + European operational office, secure title, bots affiliate strings gone).
 
 **Round 5 (user: "oprav teraz medium položky v EN") — 33 of the 34 EN
 medium findings, 24 root pages**, via `scratchpad/fix_medium_en.py`:
