@@ -1222,6 +1222,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1230,7 +1234,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -1451,7 +1455,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pcard-terms">
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Сумма займа</span>
-          <span class="pcard-terms-value">От 800 евро, без ограничений</span>
+          <span class="pcard-terms-value">От 800 евро, без верхнего предела</span>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Процентная ставка</span>
@@ -1486,7 +1490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="../logo-firefish.png" alt="Firefish" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
           <div>
             <div class="pcard-name">Калькулятор мгновенного займа</div>
-            <div class="pcard-location">Актуальные ставки, на базе Firefish</div>
+            <div class="pcard-location">Актуальные ставки от Firefish</div>
           </div>
         </div>
       </div>

@@ -2457,6 +2457,10 @@ a.nav-logo, .nav-logo {
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -2465,7 +2469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -2835,7 +2839,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="mining.html" class="svc-card anim-card">
       <h3>Майнинг</h3>
-      <p>Европейский хостинг, от маркетплейсов хешрейта до выделенного ASIC-хостинга.</p>
+      <p>Европейский хостинг, от закупки ASIC до размещения в дата-центрах.</p>
     </a>
 
     <a href="bots.html" class="svc-card anim-card">
@@ -2855,7 +2859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="tax.html" class="svc-card anim-card">
       <h3>Налоговая отчётность</h3>
-      <p>Автоматические отчёты для более чем 7 налоговых юрисдикций ЕС.</p>
+      <p>Автоматические отчёты для более чем 30 стран, включая все крупные юрисдикции ЕС.</p>
     </a>
 
   </div>
@@ -2873,7 +2877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Шаг 01</span>
         <h3>Выберите сервис</h3>
-        <p>Просмотрите все категории сервисов только для Биткоина. Сравнивайте партнёров и комиссии рядом друг с другом.</p>
+        <p>Просмотрите все категории сервисов только для Биткоина. Сравнивайте партнёров и комиссии бок о бок.</p>
         <a href="#services" class="how-card-cta">
           Смотреть все сервисы
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2897,7 +2901,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Шаг 03</span>
         <h3>Наращивайте свой капитал</h3>
-        <p>Задайте свой ритм, сравните комиссии всех партнёров и автоматизируйте с помощью ботов.</p>
+        <p>Задайте свой ритм, сравните комиссии всех партнёров и автоматизируйте с помощью торговых ботов.</p>
         <a href="../stacking.html?utm_source=stacking&amp;utm_medium=widget" class="how-card-cta">
           Спланировать накопление
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3063,7 +3067,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Хранит ли Virtuse мой Биткоин или мои ключи?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Никогда. Virtuse не хранит никаких средств, ключей или данных клиентов. Все транзакции выполняются на регулируемых платформах партнёров, и мы поощряем самостоятельное хранение (self-custody) как конечное состояние для ваших монет.</div>
+      <div class="qa-answer">Никогда. Virtuse не хранит никаких средств, ключей или данных клиентов. Все транзакции выполняются на регулируемых платформах партнёров, и мы считаем самостоятельное хранение (self-custody) конечной целью для ваших монет.</div>
     </details>
     <details class="qa-item">
       <summary>Как работает хаб?<span class="qa-icon"></span></summary>
@@ -3071,7 +3075,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>Как вы выбираете партнёров?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Мы отдаём приоритет лицензированию в ЕС (MiCA/MiCAR там, где применимо), репутации в сфере безопасности, дружелюбности к Биткоину и справедливым комиссиям. Партнёры, которые не соответствуют этим критериям, не попадают в список.</div>
+      <div class="qa-answer">Мы отдаём приоритет лицензированию в ЕС (MiCA/MiCAR там, где применимо), репутации в сфере безопасности, ориентации на Биткоин и справедливым комиссиям. Партнёры, которые не соответствуют этим критериям, не попадают в список.</div>
     </details>
     <details class="qa-item">
       <summary>Регулируются ли партнёры?<span class="qa-icon"></span></summary>

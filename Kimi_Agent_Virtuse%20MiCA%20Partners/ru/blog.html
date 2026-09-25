@@ -625,6 +625,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .lang-menu-mobile { margin-top: 4px; }
   .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -632,7 +636,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -676,7 +680,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Язык страницы">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Язык блога">
         <span class="lang-flag">🇷🇺</span>RU
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -742,7 +746,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="hero-newsdesk"><a href="../news.html">Virtuse Brief</a> — еженедельный брифинг.</p>
   </div>
   <div class="hero-side">
-    <div class="lang-switch" role="navigation" aria-label="Язык страницы">
+    <div class="lang-switch" role="navigation" aria-label="Язык блога">
       <a href="../blog.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
       <a href="../blog-sk.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
       <a href="../uk/blog.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
@@ -757,7 +761,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="search-icon">&#9906;</span>
       <input type="search" class="search-input" id="searchInput" placeholder="Поиск статей…" autocomplete="off">
     </div>
-    <div class="post-count" id="postCount"><b>169</b> статей и их количество растёт</div>
+    <div class="post-count" id="postCount"><b>169</b> статей, и это не предел</div>
   </div>
 </section>
 
@@ -892,7 +896,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
   <div class="load-wrap">
-    <button class="load-more" id="loadMore">Больше статей</button>
+    <button class="load-more" id="loadMore">Показать ещё статьи</button>
     <div class="load-status" id="loadStatus"></div>
   </div>
 </section>
@@ -1026,7 +1030,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // query param; the /ru/wp-json/... path just serves the homepage HTML.
   // So this page (unlike uk/blog.html, which still has no ru-equivalent
   // feed) fetches real Russian posts as they get published in WordPress.
-  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 57, "lang": "ru", "perPage": 12, "total": 1, "totalPages": 1, "langSuffix": "&lang=ru", "author": "Ras Vasilisin", "months": ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"], "strings": {"countSuffix": "статей и их количество растёт", "gridLabel": "Все статьи", "searchLabel": "Результаты поиска", "loadMore": "Больше статей", "endLabel": "Это все статьи", "showing": "Показано {n} из {t}", "empty": "Статей не найдено", "feedError": "Не удалось загрузить ленту статей. Показаны последние публикации."}};
+  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 57, "lang": "ru", "perPage": 12, "total": 1, "totalPages": 1, "langSuffix": "&lang=ru", "author": "Ras Vasilisin", "months": ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"], "strings": {"countSuffix": "статей, и это не предел", "gridLabel": "Все статьи", "searchLabel": "Результаты поиска", "loadMore": "Показать ещё статьи", "endLabel": "Это все статьи", "showing": "Показано {n} из {t}", "empty": "Статей не найдено", "feedError": "Не удалось загрузить ленту статей. Показаны последние публикации."}};
 
   var grid = document.getElementById('blogGrid');
   var featuredWrap = document.getElementById('featuredWrap');

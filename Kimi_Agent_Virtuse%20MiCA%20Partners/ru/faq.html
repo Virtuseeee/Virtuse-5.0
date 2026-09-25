@@ -786,6 +786,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -793,7 +797,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -944,7 +948,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Какие услуги доступны через Virtuse?</summary>
-    <div class="faq-answer">Семь категорий услуг, в каждой из которых собраны тщательно отобранные партнёры: <strong>Купить Биткоин</strong> (поставщики криптоуслуг (CASP) с лицензией MiCA, например 21bitcoin, Kraken и ByBit EU), <strong>Майнинг</strong> (хостинговый майнинг с OneMiners, Abundant Mines, Power Mining), <strong>Займы</strong> (займы под залог Биткоина через Firefish: сохраняйте свои BTC, получайте наличные), <strong>Кастоди</strong> (аппаратные кошельки Trezor, Ledger и Blockstream Jade), <strong>Treasury</strong> (институциональное кастоди с Coinbase Institutional, Sygnum, BitGo), <strong>Налоги</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Торговые боты</strong> (Coinrule, Cryptohopper, RevenueBot), а также бесплатные инструменты <a href="bitcoin-data.html">Данные о Биткоине</a>: живой дашборд, пенсионный калькулятор, радужный график и другое.</div>
+    <div class="faq-answer">Семь категорий услуг, в каждой из которых собраны тщательно отобранные партнёры: <strong>Купить Биткоин</strong> (поставщики криптоуслуг (CASP) с лицензией MiCA, например 21bitcoin, Kraken и ByBit EU), <strong>Майнинг</strong> (хостинговый майнинг с OneMiners, Abundant Mines, Power Mining), <strong>Займы</strong> (займы под залог Биткоина через Firefish: сохраняйте свои BTC, получайте наличные), <strong>Кастоди</strong> (аппаратные кошельки Trezor, Ledger и Blockstream Jade), <strong>Treasury</strong> (институциональное кастоди с Coinbase Institutional, Sygnum, BitGo), <strong>Налоги</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Торговые боты</strong> (Coinrule, Cryptohopper, RevenueBot), а также бесплатные инструменты <a href="bitcoin-data.html">Данные о Биткоине</a>: дашборд в реальном времени, пенсионный калькулятор, радужный график и другое.</div>
   </details>
 
   <details>
@@ -954,7 +958,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Как вы выбираете партнёров?</summary>
-    <div class="faq-answer">Мы отдаём приоритет лицензированию в ЕС (MiCA/MiCAR там, где применимо), репутации в сфере безопасности, дружелюбности к Биткоину и справедливым комиссиям. Партнёры, которые не соответствуют этим критериям, не попадают в список.</div>
+    <div class="faq-answer">Мы отдаём приоритет лицензированию в ЕС (MiCA/MiCAR там, где применимо), репутации в сфере безопасности, ориентации на Биткоин и справедливым комиссиям. Партнёры, которые не соответствуют этим критериям, не попадают в список.</div>
   </details>
 </section>
 
@@ -964,12 +968,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Хранит ли Virtuse мой Биткоин или мои ключи?</summary>
-    <div class="faq-answer">Никогда. Virtuse не хранит никаких средств, ключей или данных клиентов. Все транзакции выполняются на регулируемых платформах партнёров, и мы поощряем самостоятельное хранение (self-custody) как конечное состояние для ваших монет.</div>
+    <div class="faq-answer">Никогда. Virtuse не хранит никаких средств, ключей или данных клиентов. Все транзакции выполняются на регулируемых платформах партнёров, и мы считаем самостоятельное хранение (self-custody) конечной целью для ваших монет.</div>
   </details>
 
   <details>
     <summary>Как мне хранить свой Биткоин?</summary>
-    <div class="faq-answer">Для долгосрочного хранения мы рекомендуем аппаратные кошельки от наших <a href="secure.html">партнёров по кастоди</a>: Trezor (с открытым исходным кодом, произведён в ЕС) или Ledger (чип Secure Element, продано более 7 млн устройств). Ваши ключи генерируются офлайн и никогда не покидают устройство. Для более крупных сумм и корпоративных treasury доступно кастоди институционального уровня через наших <a href="treasury.html">партнёров по Treasury</a>.</div>
+    <div class="faq-answer">Для долгосрочного хранения мы рекомендуем аппаратные кошельки от наших <a href="secure.html">партнёров по кастоди</a>: Trezor (с открытым исходным кодом, произведён в ЕС) или Ledger (чип Secure Element, продано более 7 млн устройств). Ваши ключи генерируются офлайн и никогда не покидают устройство. Для более крупных сумм и корпоративных Treasury доступно кастоди институционального уровня через наших <a href="treasury.html">партнёров по Treasury</a>.</div>
   </details>
 
   <details>
@@ -999,7 +1003,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Могу ли я торговать на Virtuse?</summary>
-    <div class="faq-answer">Торговля происходит на платформах наших партнёров, а не на Virtuse. Для спотовой покупки и продажи используйте партнёра раздела <a href="buy-bitcoin.html">Купить Биткоин</a>. Для автоматизированных стратегий (DCA, сетка ордеров, ребалансировка) наши <a href="bots.html">партнёры-боты</a> подключаются к вашему аккаунту на бирже через API-ключи: без кастоди, так что бот никогда не владеет вашими монетами.</div>
+    <div class="faq-answer">Торговля происходит на платформах наших партнёров, а не на Virtuse. Для спотовой покупки и продажи используйте партнёра раздела <a href="buy-bitcoin.html">Купить Биткоин</a>. Для автоматизированных стратегий (DCA, сетка ордеров, ребалансировка) наши <a href="bots.html">партнёры по ботам</a> подключаются к вашему аккаунту на бирже через API-ключи: без кастоди, так что бот никогда не владеет вашими монетами.</div>
   </details>
 
   <details>

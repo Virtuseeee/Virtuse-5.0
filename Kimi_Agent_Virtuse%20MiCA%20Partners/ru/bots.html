@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Торговые боты | Virtuse">
-<meta property="og:description" content="Запускайте некастодиальных торговых ботов, которые подключаются через API ключи только для чтения или только для торговли. Ваш Биткоин остаётся на вашей бирже. Без прав на вывод средств, без кастоди.">
+<meta property="og:description" content="Запускайте некастодиальных торговых ботов, которые подключаются через API-ключи только для чтения или только для торговли. Ваш Биткоин остаётся на вашей бирже. Без прав на вывод средств, без кастоди.">
 <meta property="og:url" content="https://virtuse.com/ru/bots.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Торговые боты | Virtuse">
-<meta name="twitter:description" content="Запускайте некастодиальных торговых ботов, которые подключаются через API ключи только для чтения или только для торговли. Ваш Биткоин остаётся на вашей бирже. Без прав на вывод средств, без кастоди.">
+<meta name="twitter:description" content="Запускайте некастодиальных торговых ботов, которые подключаются через API-ключи только для чтения или только для торговли. Ваш Биткоин остаётся на вашей бирже. Без прав на вывод средств, без кастоди.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1106,6 +1106,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1114,7 +1118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Navigation -->
   <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -1239,7 +1243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="how-log-body">
           <span class="how-log-num">Шаг 01</span>
           <h3>Выберите бота</h3>
-          <p>Облачный или самостоятельно размещённый, для новичков или продвинутых: выбирайте то, что подходит именно вам.</p>
+          <p>Облачный или на собственном сервере, для новичков или продвинутых: выбирайте то, что подходит именно вам.</p>
         </div>
       </div>
       <div class="how-log-item animate delay-2">
@@ -1304,7 +1308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Явно некастодиальный. API только для торговли, без выводов средств. Более 410 тысяч трейдеров. При поддержке Y Combinator.</p>
+          <p class="partner-desc">API-ключи только для торговли, без права на вывод средств. Более 410 000 трейдеров. При поддержке Y Combinator.</p>
           <ul class="partner-features">
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Явно некастодиальный</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Более 150 шаблонов стратегий</li>
@@ -1354,11 +1358,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Облачные DCA-боты и боты сетки ордеров для Binance, OKX и Bitget. Простой интерфейс, стратегии с фокусом на Биткоин.</p>
+          <p class="partner-desc">Облачные DCA-боты и боты с сеткой ордеров для Binance, OKX и Bitget. Простой интерфейс, стратегии с фокусом на Биткоин.</p>
           <ul class="partner-features">
-            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> DCA-боты и боты сетки ордеров</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> DCA-боты и боты с сеткой ордеров</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Binance / OKX / Bitget</li>
-            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Простой и чистый интерфейс</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Простой и понятный интерфейс</li>
           </ul>
         </div>
         <div class="partner-footer">
