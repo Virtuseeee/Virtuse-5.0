@@ -2,6 +2,44 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, third round) — SK + CS high-severity proofreading fixes committed (`9505b6f`, gh-pages `fd1d87e`, staging 24/24 md5-verified; production command below, not yet run)
+
+**Round 2 (user: "oprav high položky v SK a CS") — 24 files** via the
+asserted-replacement script `scratchpad/fix_high_sk_cs.py`:
+- SK (3 highs): `buy-bitcoin` "váš Bitcoin" diacritic; `treasury`
+  "exekúcia" (= debt enforcement in Slovak, meant "trade execution") →
+  "vykonávanie obchodov" in all 6 places incl. "Poskytovatelia úschovy a
+  obchodné platformy"; `faq` "fiduciárnu súlad" → "súlad záujmov s
+  klientom".
+- CS (10 highs): `index` "přijde až za několik let", "Prodat, nebo si
+  půjčit" (index ×2 + lending footer); `buy-bitcoin` ByBit EU bullet
+  translated; `mining` og/twitter description dropped the false
+  "MiCA-licensed mining partners" claim (now mirrors EN); `lending`
+  og/twitter "Neprodávejte"; `treasury` DISKRÉTNÍ/diskrétní → DISKREČNÍ/
+  diskreční; `tax` title "Zdanění Bitcoinu | Virtuse"; `privacy-policy`
+  "nesbíráme téměř nic", "údaje o účtech", "neidentifikující".
+- **Found beyond the report:** `cs/treasury.html` had the identical
+  "exekuce" mistranslation (6 places) the SK reviewer caught — the CS
+  reviewer missed it; fixed as "provádění obchodů" / "Poskytovatelé
+  úschovy a obchodní platformy".
+- Root-cycles duplicate-title + sub-nav bug fixed in both languages
+  (title "Cykly Bitcoinu na odmocninovej/odmocninové škále | Virtuse", H1
+  "Odmocninové cykly", both chart pages in the sub-nav on 8 sk + 6 cs
+  dashboard pages); `cs/rainbow-chart` English title translated.
+- Verified: tagcheck 0 errors on all 24, leftover sweep clean, sub-nav
+  exactly one rainbow + one root-cycles link and ≤1 active per page.
+  `scratchpad/verify_staging_proof.sh` now takes `LIST=sk_cs` (defaults to
+  `en_ru`) to pick the touched-file list.
+
+**Remaining high items:** FR 5, UK 10, ES 5, DE 11 (+ their root-cycles
+sub-nav fix). Then the register decision (Brief block tú/du) and medium/low.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 cs/bitcoin-data.html cs/btc-dominance.html cs/buy-bitcoin.html cs/index.html cs/lending.html cs/ma-200w.html cs/mining.html cs/privacy-policy.html cs/rainbow-chart.html cs/retirement-calculator.html cs/root-cycles.html cs/tax.html cs/treasury.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 sk/bitcoin-data.html sk/btc-dominance.html sk/buy-bitcoin.html sk/faq.html sk/fear-greed.html sk/ma-200w.html sk/rainbow-chart.html sk/retirement-calculator.html sk/root-cycles.html sk/trading-volume.html sk/treasury.html virtuse.com@ftp.virtuse.com:public_html/sk/
+```
+
 ## Session status (2026-09-25, second round) — Proofreading proposal delivered (628 findings, 8 languages); EN + RU high-severity fixes committed (`54b1de2`, gh-pages `996a089`, staging 31/31 md5-verified; **live on production** — user ran the scp, 31/31 md5-verified on virtuse.com)
 
 **Proofreading proposal:** all 8 language reports are in (EN 62, SK 99,
