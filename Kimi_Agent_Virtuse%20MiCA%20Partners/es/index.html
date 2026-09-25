@@ -694,6 +694,8 @@ body {
 @media (max-width: 700px) {
   .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
   .concierge-banner-inner { flex-direction: column; padding: 24px; }
+  /* The Spanish CTA label is too long for one line at phone width */
+  .concierge-banner-cta { white-space: normal; justify-content: center; text-align: center; }
 }
 
 /* ===== BITCOIN IS YOUR CREDIT (Buy Bitcoin, firefish.io "Bitcoin is your
@@ -1564,7 +1566,7 @@ body {
   text-align: center;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   max-width: 1400px;
   margin: 6px auto 0;
   padding: 0 48px;
@@ -2649,7 +2651,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="problems anim-section anim-hidden">
   <h2 class="problems-lead">
     <strong>Las preguntas que la mayoría de los bitcoiners ignoran.</strong>
-    <span>Hasta que ya no pueden ignorarlas. Estas son las tres formas en las que los bitcoiners más pierden, y así es exactamente como el Hub cierra cada brecha.</span>
+    <span>Hasta que ya no pueden ignorarlas. Estas son las tres formas en que los bitcoiners pierden más, y así es exactamente como el Hub cierra cada brecha.</span>
   </h2>
 
   <div class="problem-grid">
@@ -2699,7 +2701,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <h3>¿Qué pasa con mi BTC cuando yo muera?</h3>
-      <p>Una quinta parte de todo el Bitcoin minado ya está perdida tras una única clave. La autocustodia sin un plan es una cuenta atrás, no una protección.</p>
+      <p>Una quinta parte de todo el Bitcoin minado ya está perdida por culpa de una única clave. La autocustodia sin un plan es una cuenta atrás, no una protección.</p>
       <div class="problem-link">
         Planifique la herencia de su Bitcoin
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2808,7 +2810,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="credit-copy">
       <h2 class="credit-lead">
         <strong>Bitcoin es su crédito.</strong>
-        <span>Compre Bitcoin a través de exchanges europeos autorizados bajo MiCA. Configure planes DCA automáticos o compras puntuales: su BTC va directo a su wallet, desde el primer día.</span>
+        <span>Compre Bitcoin a través de exchanges europeos autorizados bajo MiCA. Configure planes DCA automáticos o compras puntuales: su BTC va directo a su monedero, desde el primer día.</span>
       </h2>
       <a href="buy-bitcoin.html" class="problem-link">
         Ver exchanges verificados
@@ -2835,7 +2837,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="secure.html" class="svc-card anim-card">
       <h3>Custodia</h3>
-      <p>Bóvedas multifirma con planificación de herencia integrada.</p>
+      <p>Bóvedas multifirma y monederos de hardware para mantener sus claves fuera de línea.</p>
     </a>
 
     <a href="mining.html" class="svc-card anim-card">
@@ -2859,7 +2861,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <a href="tax.html" class="svc-card anim-card">
-      <h3>Informe de impuestos</h3>
+      <h3>Declaración fiscal</h3>
       <p>Informes con importación automática para más de 7 jurisdicciones fiscales de la UE.</p>
     </a>
 
@@ -2890,7 +2892,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Paso 02</span>
         <h3>Conéctese con el socio</h3>
-        <p>El registro se realiza en su plataforma regulada. Virtuse nunca guarda sus claves, sus fondos ni sus datos.</p>
+        <p>El registro se realiza en la plataforma regulada del socio. Virtuse nunca guarda sus claves, sus fondos ni sus datos.</p>
         <a href="../concierge.html?utm_source=concierge&amp;utm_medium=how" class="how-card-cta">
           Reciba su recomendación en 60 segundos
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3040,7 +3042,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== VIRTUSE BRIEF CAPTURE (tertiary) ===== -->
 <section class="newsletter anim-section anim-hidden">
   <div class="brief-card brief-card-poster">
-    <h2>Recibe <span>el Brief</span></h2>
+    <h2>Reciba <span>el Brief</span></h2>
     <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
     <form class="newsletter-form newsletter-form-stacked brief-form" data-brief-form novalidate>
       <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -3048,7 +3050,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button type="submit">Suscribirse</button>
     </form>
     <p class="brief-form-msg" role="status" aria-live="polite"></p>
-    <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+    <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
 </section>
 
@@ -3092,7 +3094,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="qa-item">
       <summary>¿Cómo retiro mi Bitcoin?<span class="qa-icon"></span></summary>
-      <div class="qa-answer">Desde la plataforma del socio hacia cualquier dirección de cartera que usted controle. Recomendamos retirar a su propia cartera hardware para tenencias a largo plazo. Los mineros reciben sus recompensas pagadas a diario, directamente a una dirección de cartera que controlan en todo momento.</div>
+      <div class="qa-answer">Desde la plataforma del socio hacia cualquier dirección de monedero que usted controle. Recomendamos retirar a su propio monedero de hardware para tenencias a largo plazo. Los mineros reciben sus recompensas pagadas a diario, directamente a una dirección de monedero que controlan en todo momento.</div>
     </details>
   </div>
 </section>
@@ -3187,7 +3189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

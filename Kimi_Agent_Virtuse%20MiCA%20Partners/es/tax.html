@@ -301,7 +301,7 @@ a { text-decoration: none; color: inherit; }
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -951,7 +951,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-<h1>Declaración de impuestos de Bitcoin<br><span>simplificada</span></h1>
+<h1>Declaración fiscal de Bitcoin<br><span>simplificada</span></h1>
 <p>Herramientas fiscales exclusivas para Bitcoin, diseñadas para los sistemas tributarios europeos. Importe automáticamente sus transacciones desde monederos y exchanges. Genere informes fiscales específicos de cada país en minutos, no en días. No se requiere KYC para el software fiscal.</p>
 
 </section>
@@ -1005,7 +1005,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="tax-guides-links">
 <a href="/bitcoin-tax/">Los 11 países</a>
 <a href="/bitcoin-tax/slovakia/">Eslovaquia</a>
-<a href="/bitcoin-tax/czechia/">Chequia</a>
+<a href="/bitcoin-tax/czechia/">República Checa</a>
 <a href="/bitcoin-tax/germany/">Alemania</a>
 <a href="/bitcoin-tax/austria/">Austria</a>
 <a href="/bitcoin-tax/poland/">Polonia</a>
@@ -1019,7 +1019,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Partner Cards -->
 <section class="partners-section">
 <div class="section-header">
-<h2>Nuestros <span>socios de informes fiscales</span></h2>
+<h2>Nuestros <span>socios de declaración fiscal</span></h2>
 <p>Herramientas seleccionadas cuidadosamente para inversores europeos exclusivos de Bitcoin</p>
 </div>
 <div class="partner-grid">
@@ -1041,7 +1041,7 @@ Suecia
 <div class="partner-tags">
 </div>
 <div class="partner-body">
-<p>Herramienta fiscal centrada en la privacidad, sin necesidad de KYC. De la importación al informe en 14 minutos. Compatible con más de 30 países, incluidos Francia y Escandinavia. Nivel de revisión por experto asequible. Categorización adaptada a Bitcoin.</p>
+<p>Herramienta fiscal centrada en la privacidad, sin necesidad de KYC. De la importación al informe en 14 minutos. Compatible con más de 30 países, incluidos Francia y los países nórdicos. Nivel de revisión por experto asequible. Categorización adaptada a Bitcoin.</p>
 <ul class="partner-features">
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No requiere KYC</li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>De la importación al informe en 14 minutos</li>
@@ -1217,7 +1217,7 @@ Reino Unido
 <!-- Newsletter -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1225,7 +1225,7 @@ Reino Unido
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1251,7 +1251,7 @@ Reino Unido
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1317,7 +1317,7 @@ Reino Unido
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

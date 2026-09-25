@@ -648,7 +648,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1296,7 +1296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="how">
   <div class="how-header">
     <h2>Cómo <span>funciona</span></h2>
-    <p>Cuatro sencillos pasos para acceder a cualquier servicio de Bitcoin a través de nuestro hub</p>
+    <p>Cuatro sencillos pasos para comprar Bitcoin a través de un socio con licencia</p>
   </div>
   <div class="how-log">
     <div class="how-log-item">
@@ -1327,8 +1327,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-marker"><span class="how-log-dot"></span></div>
       <div class="how-log-body">
         <span class="how-log-num">Paso 04</span>
-        <h3>Compre y autocustodie</h3>
-        <p>Compre Bitcoin y retírelo a su propia wallet. Usted controla sus claves en todo momento.</p>
+        <h3>Compre y guarde en autocustodia</h3>
+        <p>Compre Bitcoin y retírelo a su propio monedero. Usted controla sus claves en todo momento.</p>
       </div>
     </div>
   </div>
@@ -1533,7 +1533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> CASP autorizado bajo MiCA por la MFSA de Malta</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pleno derecho de pasaporte en el EEE</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Compatible con la Crypto.com Visa Card</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Gran liquidez, amplia cobertura de activos</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Gran liquidez, aplicación regulada en la UE</li>
         </ul>
       </div>
 
@@ -1553,7 +1553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1561,7 +1561,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1587,7 +1587,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1655,7 +1655,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

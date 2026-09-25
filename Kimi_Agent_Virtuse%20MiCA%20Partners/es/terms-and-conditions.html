@@ -772,7 +772,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1043,7 +1043,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Términos y <span class="highlight">condiciones</span></h1>
-  <p class="hero-desc">Las normas que rigen su uso de este sitio web. En resumen: Virtuse es un hub no custodio que le conecta con socios independientes y verificados; no custodiamos sus fondos, no ejecutamos sus operaciones ni ofrecemos asesoramiento financiero. Vigente desde el 20 de agosto de 2026.</p>
+  <p class="hero-desc">Las normas que rigen su uso de este sitio web. En resumen: Virtuse es un hub no custodial que le conecta con socios independientes y verificados; no custodiamos sus fondos, no ejecutamos sus operaciones ni ofrecemos asesoramiento financiero. Vigente desde el 20 de agosto de 2026.</p>
 </section>
 
 <!-- ===== CATEGORY PILLS ===== -->
@@ -1080,7 +1080,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">2. Qué es Virtuse y qué no es</div>
 
   <details open>
-    <summary>Somos un hub no custodio, no un prestador de servicios</summary>
+    <summary>Somos un hub no custodial, no un prestador de servicios</summary>
     <div class="faq-answer">Virtuse selecciona y presenta socios independientes y verificados en categorías relacionadas con Bitcoin: compra, minería, préstamos, custodia, treasury, impuestos y bots de trading. <strong>Nosotros mismos no operamos un exchange, no custodiamos fondos ni claves privadas de clientes, no abrimos cuentas, no ejecutamos operaciones, no prestamos servicios de custodia, no concedemos crédito ni realizamos verificación de identidad (KYC).</strong> Cuando utiliza un servicio de un socio, usted entra en una relación contractual directa con ese socio, sujeta a los términos, la política de privacidad, las comisiones y la licencia regulatoria propios de ese socio, no de Virtuse.</div>
   </details>
 
@@ -1091,7 +1091,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>De exchange a hub</summary>
-    <div class="faq-answer">Virtuse operaba anteriormente de otra forma; desde entonces, el sitio web ha pasado al modelo de hub de referidos no custodio descrito en estos Términos. Para conocer el detalle regulatorio de esa transición, consulte nuestra página de <a href="aml-compliance.html">AML y cumplimiento</a>.</div>
+    <div class="faq-answer">Virtuse operaba anteriormente de otra forma; desde entonces, el sitio web ha pasado al modelo de hub de referidos no custodial descrito en estos Términos. Para conocer el detalle regulatorio de esa transición, consulte nuestra página de <a href="aml-compliance.html">AML y cumplimiento</a>.</div>
   </details>
 </section>
 
@@ -1136,7 +1136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Calculadoras y gráficos</summary>
-    <div class="faq-answer">Nuestras herramientas gratuitas (el panel de datos de Bitcoin, la calculadora de jubilación, el gráfico arcoíris, la dominancia del BTC, la media móvil de 200 semanas) se ofrecen únicamente con fines informativos y educativos, se ejecutan enteramente en su navegador, y no constituyen asesoramiento de inversión ni una proyección, promesa o garantía de ningún resultado futuro. Los resultados dependen enteramente de las hipótesis que usted introduzca o que estén integradas en la herramienta, y la rentabilidad histórica no es indicativa de resultados futuros.</div>
+    <div class="faq-answer">Nuestras herramientas gratuitas (el panel de datos de Bitcoin, la calculadora de jubilación, el gráfico arcoíris, los ciclos en escala raíz, la dominancia del BTC, la media móvil de 200 semanas, Miedo y codicia, el volumen de trading) se ofrecen únicamente con fines informativos y educativos, se ejecutan enteramente en su navegador, y no constituyen asesoramiento de inversión ni una proyección, promesa o garantía de ningún resultado futuro. Los resultados dependen enteramente de las hipótesis que usted introduzca o que estén integradas en la herramienta, y la rentabilidad histórica no es indicativa de resultados futuros.</div>
   </details>
 
   <details>
@@ -1213,7 +1213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1221,7 +1221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1247,7 +1247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1310,7 +1310,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

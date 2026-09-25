@@ -572,7 +572,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   z-index: 1;
 }
 
-.brief-fineprint {
+.brief-card .brief-fineprint {
   margin: 6px auto 0;
   font-size: 12px;
   color: var(--text-muted);
@@ -1221,7 +1221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-content animate">
 
       <h1>Automatice su estrategia de Bitcoin con<br><span style="color:var(--text)">bots de trading</span></h1>
-      <p>Utilice bots de trading no custodiales que se conectan mediante claves API de solo lectura o de trading exclusivo. Su Bitcoin permanece en su exchange, el bot solo ejecuta su estrategia. Sin permisos de retiro. Sin custodia.</p>
+      <p>Utilice bots de trading no custodiales que se conectan mediante claves API de solo lectura o solo de trading. Su Bitcoin permanece en su exchange, el bot solo ejecuta su estrategia. Sin permisos de retiro. Sin custodia.</p>
       </div>
   </section>
 
@@ -1279,7 +1279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="cat-card self animate delay-3">
         <h3>Bots autoalojados</h3>
-        <p>Se ejecutan en su propio servidor (VPS). Control total, código abierto. Ideal para traders que valoran la privacidad y buscan soberanía completa sobre su infraestructura de trading.</p>
+        <p>Se ejecutan en su propio servidor (VPS), con control total. Nuestros socios listados son plataformas en la nube; el autoalojamiento es ideal para traders que valoran la privacidad y buscan soberanía completa sobre su infraestructura de trading.</p>
       </div>
     </div>
   </section>
@@ -1301,7 +1301,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Explícitamente no custodial. API exclusiva de trading, sin retiros. Más de 410.000 traders. Respaldado por Y Combinator. En etapa de crecimiento, con condiciones favorables para partnerships.</p>
+          <p class="partner-desc">Explícitamente no custodial. API exclusiva de trading, sin retiros. Más de 410.000 traders. Respaldado por Y Combinator.</p>
           <ul class="partner-features">
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Explícitamente no custodial</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Más de 150 plantillas de estrategias</li>
@@ -1351,10 +1351,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="partner-body">
-          <p class="partner-desc">Bots de DCA y grid en la nube para Binance, OKX y Bitget. Interfaz sencilla, estrategias centradas en Bitcoin. Todas las comisiones de referidos se pagan en BTC.</p>
+          <p class="partner-desc">Bots de DCA y grid en la nube para Binance, OKX y Bitget. Interfaz sencilla, estrategias centradas en Bitcoin.</p>
           <ul class="partner-features">
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Bots de DCA y grid</li>
-            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pagos de referidos en BTC</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Binance / OKX / Bitget</li>
             <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Interfaz simple y clara</li>
           </ul>
@@ -1375,7 +1374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ===== NEWSLETTER ===== -->
   <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Recibe <span>el Brief</span></h2>
+  <h2>Reciba <span>el Brief</span></h2>
   <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -1383,7 +1382,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="submit">Recibir el Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancela cuando quieras.</p>
+  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
   </div>
   <script>
   (function () {
@@ -1409,7 +1408,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "Listo — revisa tu correo para el mensaje de bienvenida.";
+          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
           msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
@@ -1472,7 +1471,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, todos los derechos reservados.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
     <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
