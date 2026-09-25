@@ -1144,6 +1144,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1152,7 +1156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -1329,7 +1333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
     <div class="audience-card">
-      <h3>Family office</h3>
+      <h3>Семейные офисы</h3>
       <div class="label">HNWI и сохранение капитала</div>
       <ul class="audience-features">
         <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Модели распределения активов HNWI для экспозиции на Биткоин</li>
@@ -1407,7 +1411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="pcard-features">
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Банковская лицензия FINMA</strong> <span>(а не только CASP)</span></li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Дискреционные мандаты для Treasury</strong></li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Более <strong>CHF 4 млрд</strong> активов под управлением</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Более <strong>4 млрд CHF</strong> активов под управлением</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Активное управление <span>(ребалансировка, стейкинг, хеджирование)</span></li>
         </ul>
       </div>

@@ -1134,6 +1134,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1142,7 +1146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -1319,7 +1323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="seo-guides" aria-label="Руководства по покупке по странам и инструменты для сравнения комиссий">
   <div class="seo-guides-inner">
     <h2>Рейтинг комиссий по странам</h2>
-    <p>Сравните комиссии всех партнёров для вашей суммы, прежде чем выбрать платформу, с помощью Stacking Strategist.</p>
+    <p>С помощью Stacking Strategist сравните комиссии всех партнёров для вашей суммы, прежде чем выбрать платформу.</p>
     <div class="seo-guides-links">
       <a href="/buy-bitcoin/slovakia/">Купить в Словакии</a>
       <a href="/buy-bitcoin/czechia/">Купить в Чехии</a>

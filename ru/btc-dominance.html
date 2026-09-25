@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Доминирование BTC | Virtuse">
-<meta property="og:description" content="Доля Биткоина в общей капитализации криптовалютного рынка с 2013 года. Высокое доминирование означает, что капитал сосредоточен в Биткоине, падение доминирования сигнализирует о переходе в альткоины">
+<meta property="og:description" content="Доля Биткоина в общей капитализации криптовалютного рынка с 2013 года. Высокое доминирование означает, что капитал сосредоточен в Биткоине, падение доминирования сигнализирует о перетоке спекулятивного капитала в альткоины.">
 <meta property="og:url" content="https://virtuse.com/ru/btc-dominance.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Доминирование BTC | Virtuse">
-<meta name="twitter:description" content="Доля Биткоина в общей капитализации криптовалютного рынка с 2013 года. Высокое доминирование означает, что капитал сосредоточен в Биткоине, падение доминирования сигнализирует о переходе в альткоины">
+<meta name="twitter:description" content="Доля Биткоина в общей капитализации криптовалютного рынка с 2013 года. Высокое доминирование означает, что капитал сосредоточен в Биткоине, падение доминирования сигнализирует о перетоке спекулятивного капитала в альткоины.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <style>
@@ -871,6 +871,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -878,7 +882,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -986,7 +990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Доминирование <span class="highlight">BTC</span></h1>
-  <p class="hero-desc">Доля Биткоина в общей капитализации крипторынка с 2013 года. Высокое доминирование означает, что капитал сосредоточен в Биткоине, а её падение сигнализирует о переходе спекуляций в альткоины.</p>
+  <p class="hero-desc">Доля Биткоина в общей капитализации крипторынка с 2013 года. Высокое доминирование означает, что капитал сосредоточен в Биткоине, а её падение сигнализирует о перетоке спекулятивного капитала в альткоины.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
@@ -1024,7 +1028,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="tooltip" id="tooltip"></div>
     </div>
     <div class="chart-note">
-      Месячные исторические данные доминирования (с 2013 года, приблизительно) в сочетании с текущей долей от CoinGecko. Доминирование сопоставляет капитализацию Биткоина со всеми отслеживаемыми криптовалютами, методологии могут немного отличаться у разных поставщиков данных.
+      Месячные исторические данные доминирования (с 2013 года, приблизительно) в сочетании с текущей долей от CoinGecko. Доминирование сопоставляет капитализацию Биткоина со всеми отслеживаемыми криптовалютами; методологии у разных поставщиков данных могут немного отличаться.
     </div>
   </div>
 </section>

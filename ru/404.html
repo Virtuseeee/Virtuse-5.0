@@ -242,6 +242,10 @@ body {
 @media (max-width: 1024px) {
   .lang-menu { display: none; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>

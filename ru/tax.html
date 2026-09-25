@@ -795,6 +795,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -803,7 +807,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Navigation -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -910,7 +914,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Hero -->
 <section class="hero">
-<h1>Налоговая отчётность по Биткоину<br><span>стала простой</span></h1>
+<h1>Налоговая отчётность по Биткоину<br><span>— это просто</span></h1>
 <p>Инструменты для налогового учёта Биткоина, созданные для европейских налоговых систем. Автоматический импорт транзакций из кошельков и бирж. Формирование налоговых отчётов для конкретной страны за минуты, а не за дни. KYC для налогового ПО не требуется.</p>
 
 </section>
@@ -1059,7 +1063,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="partner-tags">
 </div>
 <div class="partner-body">
-<p>Ветеран крипто-налогообложения: отслеживает портфели и формирует налоговые отчёты с 2013 года из Мюнхена. Более 1,9 млн пользователей, свыше 300 интеграций с биржами и более 25 типов отчётов. Бесплатный тариф покрывает до 200 транзакций.</p>
+<p>Ветеран криптоналогообложения: отслеживает портфели и формирует налоговые отчёты с 2013 года из Мюнхена. Более 1,9 млн пользователей, свыше 300 интеграций с биржами и более 25 типов отчётов. Бесплатный тариф покрывает до 200 транзакций.</p>
 <ul class="partner-features">
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>С 2013 года: первый трекер</li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Более 1,9 млн пользователей по всему миру</li>

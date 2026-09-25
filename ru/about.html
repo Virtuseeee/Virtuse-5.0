@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="О нас | Virtuse">
-<meta property="og:description" content="Virtuse основана в 2018 году и формирует фундамент безграничной денежной экономики. Мы помогаем инвесторам создавать и защищать капитал для будущих поколений с помощью Биткоина.">
+<meta property="og:description" content="Virtuse основана в 2018 году и формирует основу безграничной денежной экономики. Мы помогаем инвесторам создавать и защищать капитал для будущих поколений с помощью Биткоина.">
 <meta property="og:url" content="https://virtuse.com/ru/about.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="О нас | Virtuse">
-<meta name="twitter:description" content="Virtuse основана в 2018 году и формирует фундамент безграничной денежной экономики. Мы помогаем инвесторам создавать и защищать капитал для будущих поколений с помощью Биткоина.">
+<meta name="twitter:description" content="Virtuse основана в 2018 году и формирует основу безграничной денежной экономики. Мы помогаем инвесторам создавать и защищать капитал для будущих поколений с помощью Биткоина.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -349,6 +349,7 @@ img { max-width: 100%; }
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow-x: clip; /* the 380px glow below is wider than a phone */
 }
 
 .name-visual::before {
@@ -1089,6 +1090,10 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav-actions { gap: 8px; }
   .nav-cta { padding: 10px 12px; }
 }
+/* Long Russian words (e.g. "конфиденциальности") overflow phone widths at heading sizes */
+@media (max-width: 700px) {
+  h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 </style>
 </head>
 <body>
@@ -1097,7 +1102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Navigation -->
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -1299,7 +1304,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-label">Наши стандарты</div>
   <div class="sec-title">
     <h2>Как <span>мы отбираем партнёров</span></h2>
-    <p>Каждое имя на этом сайте проходит одну и ту же проверку, прежде чем мы его порекомендуем</p>
+    <p>Каждый партнёр на этом сайте проходит одну и ту же проверку, прежде чем мы его порекомендуем</p>
   </div>
   <div class="vet-grid">
     <div class="value-card">
