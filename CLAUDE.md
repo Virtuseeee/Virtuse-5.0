@@ -2,6 +2,39 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, eighth round) — CS medium-severity proofreading fixes + EN carry-overs committed (gh-pages synced, staging md5-verified; production command below, not yet run)
+
+**Round 7 (user: "oprav teraz medium položky v CS") — 20 files** via
+`scratchpad/fix_medium_cs.py`, same shape as the SK round:
+- All 35 CS medium items applied except the two already closed (privacy
+  "Virtuse Report" fixed in round 3; aml "ByBit EU a 21bitcoin" is present
+  in the markup — text-dump false positive). The treasury "exekuce" item
+  was already fixed in round 2.
+- Systemic fixes from the report's top section: "Bitcoin X" anglicisms →
+  "bitcoinový…" (index title/og/H2/how, about, bots ×3, buy-bitcoin,
+  secure ×3, terms og/twitter, treasury ×5), "na" → "pro/k" (7 places),
+  "poskytovatelé CASP" word order (6 places), Czech „…“ quotes on aml/
+  privacy/terms/rainbow, bots terminology unified ("Obchodní boti" title/
+  og/faq, "Cloudoví/Self-hosted/DCA a grid boti"), newsletter block
+  unified sitewide ("Jen Bitcoin", "E-mailová adresa", "Odebírat", **fine
+  print added** with its `.brief-fineprint` CSS — CS pages never had it),
+  footer copyright normalised (incl. cs/404).
+- **cs/index now has the Quick Answers accordion** (EN section + CSS, 9
+  Czech Q&A from cs/faq.html, "Rychlé <span>odpovědi</span>") — all 13 EN
+  sections. Blog dates "14. května 2026" — the static fallback cards were
+  still English ("14 May 2026") from the EN-template rebuild.
+- EN round-5 carry-overs (Custody card, buy-specific subheading, "aplikace
+  regulovaná v EU", affiliate strings on mining/bots, self-hosted card,
+  CHF, Sygnum one figure, about 26 partners + Bratislava, faq seven
+  categories + Koinly/Jade, privacy/terms tool + third-party lists).
+- Left as is: "Ideální pro střední až velké těžaře" (people, correct);
+  terms "nástroje na této webové stránce" (correct preposition).
+- Verified: tagcheck 0 errors on all 20, leftover/quote sweeps clean.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 cs/404.html cs/about.html cs/aml-compliance.html cs/bitcoin-data.html cs/bots.html cs/btc-dominance.html cs/buy-bitcoin.html cs/faq.html cs/index.html cs/lending.html cs/ma-200w.html cs/mining.html cs/privacy-policy.html cs/rainbow-chart.html cs/retirement-calculator.html cs/root-cycles.html cs/secure.html cs/tax.html cs/terms-and-conditions.html cs/treasury.html virtuse.com@ftp.virtuse.com:public_html/cs/
+```
+
 ## Session status (2026-09-25, seventh round) — SK medium-severity proofreading fixes + EN carry-overs committed (`114c4a4`, gh-pages `ef1dd23`, staging 23/23 md5-verified; **live on production** — 23/23 md5-verified on virtuse.com)
 
 **Production done 2026-09-25** (the user's first scp run did not land — all 23 files still matched the previous gh-pages version and carried Sep-24 timestamps; caught by the md5 check, re-run landed: 23/23 match, live checks: 9 Quick Answers on sk/index, "Odoberať"/"E-mailová adresa", "26. júna 2026", about 26 partners, bots title "Obchodné boty", blog-sk "Jazyk blogu" + dates). **Lesson reconfirmed: always md5-verify after the user reports "done"; a silent no-op upload looks identical to success from the chat.**
