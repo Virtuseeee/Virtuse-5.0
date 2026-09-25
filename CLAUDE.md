@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, fourth round) — FR + UK high-severity proofreading fixes committed (`14ce070`, gh-pages `3e3d83a`, staging 40/40 md5-verified; production command below, not yet run)
+## Session status (2026-09-25, fourth round) — FR + UK high-severity proofreading fixes committed (`14ce070`, gh-pages `3e3d83a`, staging 40/40 md5-verified; **live on production** — user ran the scp, 40/40 md5-verified on virtuse.com)
 
 **Round 3 (user: "oprav high položky vo FR a UK") — 40 files** via
 `scratchpad/fix_high_fr_uk.py`:
@@ -40,6 +40,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Verified: tagcheck 0 errors on all 40, leftover sweep clean (`>Blog<` on
   fr is correct French), sub-nav one rainbow + one root-cycles link and ≤1
   active per page.
+
+**Production done 2026-09-25** (40/40 md5 match; live checks: fr/buy-bitcoin Brief card + lang fr, uk/mining referral wording, uk/root-cycles title + both sub-nav links, de/privacy "Virtuse Brief").
 
 **Remaining high items:** ES 5, DE 11 (+ their root-cycles sub-nav fix).
 Then the register decision (Brief block tú/du on es/de) and medium/low.
