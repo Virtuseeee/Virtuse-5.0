@@ -2,6 +2,46 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, fifth round) — ES + DE high-severity proofreading fixes committed (`17118ec`, gh-pages `4037fab`, staging 33/33 md5-verified; production command below, not yet run). **All 64 high-severity findings across the 8 languages are now fixed on main/staging.**
+
+**Round 4 (user: "oprav high položky v ES a DE") — 33 files** via
+`scratchpad/fix_high_es_de.py`:
+- ES (5 highs, 4 real): index "Bots no custodiales", "Hasta que ya no
+  pueden ignorarlas"; buy-bitcoin seo-guides `aria-label` translated;
+  lending "custodia multisig" → "depósito en garantía (escrow) multifirma"
+  (5 places — escrow is not custody); root-cycles H1 "Ciclos en escala
+  raíz"; rainbow-chart English title → "Gráfico arcoíris de Bitcoin". The
+  aml "ByBit EU 21bitcoin" finding was a **false positive** (the markup has
+  ` y ` between the two `<strong>`s; the reviewer's text dump lost it).
+- DE (11 highs): **register decision made by the DE reviewer's high
+  rating and applied — the newsletter block is now Sie on all 22 pages**
+  ("Holen Sie sich den Brief", index success message "Sie sind dabei");
+  "Keine Token. Keine PR." in every Brief line (die PR); "der Hub" on
+  index + faq; og/twitter "beleihen … Ihren Bitcoin"; buy-bitcoin "zahlen
+  Sie ihn auf Ihre eigene Wallet aus"; lending H1/hero/og masculine
+  accusative + "Bargeld" → "Geld" + "p. a." + hero no longer "Virtuse
+  bietet einen Service"; secure H1 "Ihren Bitcoin"; tax title now equals
+  its og:title "Bitcoin-Steuerberichte | Virtuse"; root-cycles H1
+  "Wurzelzyklen-Modell"; rainbow-chart title "Bitcoin-Regenbogen-Chart".
+  **ES keeps tú in its Brief block** — the ES reviewer listed it as a
+  systemic note, not a finding; the user has not decided.
+- Sub-nav fix (both chart pages) on 8 es + 8 de dashboard pages — the
+  root-cycles duplicate-title/sub-nav bug is now closed in all 8 languages.
+- Verified: tagcheck 0 errors on all 33, leftover sweep 0 problems.
+
+**Next:** production scp below + md5-verify; then the user decides on the
+medium (261) / low (303) rounds and the ES tú/usted question. Open EN
+leftovers noted during the rounds: `article.html` still has the old "Fix
+the Money / Virtuse Report" newsletter block; the about.html
+Bratislava-as-HQ wording is fixed only where a reviewer flagged it (FR) —
+EN/other languages still say it (medium in their reports).
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 es/bitcoin-data.html es/btc-dominance.html es/buy-bitcoin.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/trading-volume.html virtuse.com@ftp.virtuse.com:public_html/es/
+```
+
 ## Session status (2026-09-25, fourth round) — FR + UK high-severity proofreading fixes committed (`14ce070`, gh-pages `3e3d83a`, staging 40/40 md5-verified; **live on production** — user ran the scp, 40/40 md5-verified on virtuse.com)
 
 **Round 3 (user: "oprav high položky vo FR a UK") — 40 files** via
