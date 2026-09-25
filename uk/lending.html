@@ -892,7 +892,7 @@ a.nav-logo, .nav-logo {
 .brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
 .brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
 .brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 .btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
 .btn-secondary {
@@ -1258,7 +1258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн-дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
@@ -1349,10 +1349,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h1>Залиште Біткоїн собі.<br><span class="highlight">Отримайте потрібну готівку.</span></h1>
 
   <p class="hero-desc">
-    Не продавайте свій Біткоїн, а отримайте позику під його заставу. Virtuse надає сервіс, у якому власники Біткоїна позичають готівку під заставу Біткоїна за ринковими ставками від 6% річних.
+    Не продавайте свій Біткоїн, а отримайте позику під його заставу. Virtuse пов'язує вас із перевіреними партнерами, які надають готівкові позики під заставу Біткоїна за ринковими ставками від 6% річних.
   </p>
   <p class="hero-tool-link">
-    <a href="/sell-vs-borrow-bitcoin/">Порівняйте продаж і позику під заставу біткоїна</a>
+    <a href="/sell-vs-borrow-bitcoin/">Порівняйте продаж і позику під заставу Біткоїна</a>
   </p>
 
 
@@ -1385,7 +1385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="how-log-body">
         <span class="how-log-num">Крок 03</span>
         <h3>Заблокуйте заставу в Біткоїні</h3>
-        <p>Надішліть Біткоїн на ончейн-адресу мультипідпис ескроу. Ви ніколи не передаєте свої приватні ключі.</p>
+        <p>Надішліть Біткоїн на ончейн-адресу мультипідписного ескроу. Ви ніколи не передаєте свої приватні ключі.</p>
       </div>
     </div>
     <div class="how-log-item">
@@ -1411,7 +1411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="lending-types">
     <div class="ltype-card">
       <h3>Позичальники</h3>
-      <p>Використовуйте свій Біткоїн як заставу, щоб позичити фіат (EUR, CHF, CZK) або стейблкоїни (USDC). Зберігайте свою позицію в Біткоїні, уникайте податку на приріст капіталу і отримуйте доступ до ліквідності без продажу. LTV до 50%. Терміни від 3 до 24 місяців. Ставки від 5% річних.</p>
+      <p>Використовуйте свій Біткоїн як заставу, щоб позичити фіат (EUR, CHF, CZK) або стейблкоїни (USDC). Зберігайте свою позицію в Біткоїні, відкладайте оподаткування приросту капіталу (позика не є оподатковуваним продажем) і отримуйте доступ до ліквідності без продажу. LTV до 50%. Терміни від 3 до 24 місяців. Ставки від 5% річних.</p>
     </div>
     <div class="ltype-card">
       <h3>Інвестори / Кредитори</h3>
@@ -1476,7 +1476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Валюти</span>
-          <span class="pcard-terms-value">EUR, CZK, USDC</span>
+          <span class="pcard-terms-value">EUR, CHF, CZK, USDC</span>
         </div>
       </div>
 
@@ -1516,7 +1516,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
   <h2>Отримайте <span>Brief</span></h2>
-  <p>Virtuse Brief. Лише біткоїн. Без токенів. Без піару.</p>
+  <p>Virtuse Brief. Лише Біткоїн. Жодних токенів. Жодного PR.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
     <input type="email" name="email" placeholder="Електронна пошта" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
@@ -1601,7 +1601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Матеріали</h4>
         <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
         <a href="blog.html">Блог</a>
-        <a href="bitcoin-data.html">Біткоїн дані</a>
+        <a href="bitcoin-data.html">Біткоїн-дані</a>
         <a href="/sell-vs-borrow-bitcoin/">Продати чи позичити</a>
         <a href="../loan.html">Loan Copilot</a>
       </div>
@@ -1609,12 +1609,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Правова інформація</h4>
         <a href="terms-and-conditions.html">Умови використання</a>
         <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і Compliance</a>
+        <a href="aml-compliance.html">AML і комплаєнс</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, усі права захищені.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
     <p class="footer-bottom-brief">Virtuse Brief — щотижневий дайджест від Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Читати →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
