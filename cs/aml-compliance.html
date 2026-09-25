@@ -291,6 +291,7 @@ details[open] summary::after { transform: rotate(45deg); }
   font-size: 14px;
 }
 
+.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 /* ===== FOOTER ===== */
 .footer-main {
   background: var(--dark);
@@ -904,7 +905,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Nahradila MiCA směrnici AMLD5?</summary>
-    <div class="faq-answer">Ne, jde o paralelní tratě. <strong>MiCA</strong> (nařízení (EU) 2023/1114) upravuje přístup na trh a chování: licencování poskytovatelů kryptoslužeb (CASP), zveřejňování informací a ochranu spotřebitele. <strong>Boj proti praní špinavých peněz zůstává samostatným režimem</strong> a každý CASP s licencí MiCA je podle něj "povinnou osobou". Licence MiCA přidává povinnosti AML, nikdy je neodstraňuje.</div>
+    <div class="faq-answer">Ne, jde o paralelní tratě. <strong>MiCA</strong> (nařízení (EU) 2023/1114) upravuje přístup na trh a chování: licencování poskytovatelů kryptoslužeb (CASP), zveřejňování informací a ochranu spotřebitele. <strong>Boj proti praní špinavých peněz zůstává samostatným režimem</strong> a každý CASP s licencí MiCA je podle něj „povinnou osobou“. Licence MiCA přidává povinnosti AML, nikdy je neodstraňuje.</div>
   </details>
 
   <details>
@@ -914,7 +915,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Travel rule</summary>
-    <div class="faq-answer">Přepracované <strong>nařízení o převodu finančních prostředků</strong> (nařízení (EU) 2023/1113) se uplatňuje od prosince 2024 vedle MiCA. Rozšiřuje "travel rule" na kryptoaktiva: informace o příkazci a příjemci musí doprovázet převody kryptoaktiv zpracovávané CASP poskytovateli. Proto se licencované platformy ptají na cíl výběrů do peněženek ve vlastní úschově.</div>
+    <div class="faq-answer">Přepracované <strong>nařízení o převodu finančních prostředků</strong> (nařízení (EU) 2023/1113) se uplatňuje od prosince 2024 vedle MiCA. Rozšiřuje „travel rule“ na kryptoaktiva: informace o příkazci a příjemci musí doprovázet převody kryptoaktiv zpracovávané poskytovateli CASP. Proto se licencované platformy ptají na cíl výběrů do peněženek ve vlastní úschově.</div>
   </details>
 </section>
 
@@ -924,7 +925,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Regulované služby poskytují partneři s licencí MiCA</summary>
-    <div class="faq-answer">Každou regulovanou službu dostupnou přes toto centrum (nákup a prodej Bitcoinu, úschovu u institucí, půjčky) poskytují partneři, kteří mají vlastní licence a nesou odpovídající povinnosti AML jako povinné osoby: například <strong>Kraken</strong> (MiCA CASP prostřednictvím Centrální banky Irska), <strong>ByBit EU</strong> a <strong>21bitcoin</strong> (licencovaní podle MiCAR rakouským FMA) a institucionální úschovci jako <strong>Sygnum</strong> (švýcarská bankovní licence) a <strong>BitGo</strong>. Provádějí prověrku zákazníků (KYC), monitorování transakcí, kontrolu sankčních seznamů, soulad s travel rule a hlášení podezřelých aktivit na vlastních platformách, pod dohledem svých domovských regulátorů.</div>
+    <div class="faq-answer">Každou regulovanou službu dostupnou přes toto centrum (nákup a prodej Bitcoinu, úschovu u institucí, půjčky) poskytují partneři, kteří mají vlastní licence a nesou odpovídající povinnosti AML jako povinné osoby: například <strong>Kraken</strong> (MiCA CASP prostřednictvím Centrální banky Irska), <strong>ByBit EU</strong> a <strong>21bitcoin</strong> (licencovaní podle MiCAR rakouským FMA) a institucionální uschovatelé jako <strong>Sygnum</strong> (švýcarská bankovní licence) a <strong>BitGo</strong>. Provádějí prověrku zákazníků (KYC), monitorování transakcí, kontrolu sankčních seznamů, soulad s travel rule a hlášení podezřelých aktivit na vlastních platformách, pod dohledem svých domovských regulátorů.</div>
   </details>
 
   <details>
@@ -954,7 +955,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>Co očekávat při používání partnerských služeb</summary>
-    <div class="faq-answer">Před obchodováním nebo výběrem absolvujete <strong>ověření identity jednou na každé partnerské platformě</strong>, typicky doklad totožnosti a kontrolu selfie, což trvá pár minut. Větší transakce mohou vyvolat otázky o původu prostředků a převody mezi platformami nesou informace podle travel rule. Žádné z těchto údajů neprocházejí přes Virtuse; podívejte se na naše <a href="privacy-policy.html">Ochrana osobních údajů</a>.</div>
+    <div class="faq-answer">Před obchodováním nebo výběrem absolvujete <strong>ověření identity jednou na každé partnerské platformě</strong>, typicky doklad totožnosti a kontrolu selfie, což trvá pár minut. Větší transakce mohou vyvolat otázky o původu prostředků a převody mezi platformami nesou informace podle travel rule. Žádné z těchto údajů neprocházejí přes Virtuse; podívejte se na naše <a href="privacy-policy.html">Zásady ochrany osobních údajů</a>.</div>
   </details>
 
   <details>
@@ -967,13 +968,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
   <h2>Odebírat <span>Brief</span></h2>
-  <p>Virtuse Brief. Pouze bitcoin. Žádné tokeny. Žádné PR.</p>
+  <p>Virtuse Brief. Jen Bitcoin. Žádné tokeny. Žádné PR.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Emailová adresa" required>
+    <input type="email" name="email" placeholder="E-mailová adresa" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Přihlásit se</button>
+    <button type="submit">Odebírat</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Každé pondělí. Odhlášení kdykoli.</p>
   </div>
   <script>
   (function () {
@@ -1062,7 +1064,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Všechna práva vyhrazena.</p>
     <p class="footer-bottom-brief">Virtuse Brief — týdenní přehled od Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Číst →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

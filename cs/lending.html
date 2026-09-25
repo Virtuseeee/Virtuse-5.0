@@ -574,6 +574,7 @@ body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Sego
 .btn-secondary:hover { border-color: var(--btc-orange); color: var(--btc-orange); }
 
 /* ===== DISCLAIMER ===== */
+.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
 /* ===== FOOTER ===== */
 /* ===== NEWSLETTER ===== */
 .newsletter {
@@ -1361,18 +1362,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header">
     <div class="sec-title">
       <h2>Dva způsoby, jak se zapojit</h2>
-      <p>Ať už potřebujete hotovost, nebo chcete vydělávat výnos, existuje Bitcoinem nativní možnost pro obojí</p>
+      <p>Ať už potřebujete hotovost, nebo chcete vydělávat výnos, pro obojí existuje řešení postavené na Bitcoinu</p>
     </div>
   </div>
 
   <div class="lending-types">
     <div class="ltype-card">
-      <h3>Vypůjčovatelé</h3>
-      <p>Použijte svůj Bitcoin jako zástavu k půjčení fiatu (EUR, CHF, CZK) nebo stablecoinů (USDC). Zachovejte si expozici vůči Bitcoinu, vyhněte se dani z kapitálových výnosů a získejte likviditu bez prodeje. LTV až do 50 %. Splatnost od 3 do 24 měsíců. Sazby od 5 % p.a.</p>
+      <h3>Dlužníci</h3>
+      <p>Použijte svůj Bitcoin jako zástavu k půjčení fiatu (EUR, CHF, CZK) nebo stablecoinů (USDC). Zachovejte si expozici vůči Bitcoinu, odložte zdanění kapitálových výnosů (půjčka není zdanitelný prodej) a získejte likviditu bez prodeje. LTV až do 50 %. Splatnost od 3 do 24 měsíců. Sazby od 5 % p.a.</p>
     </div>
     <div class="ltype-card">
       <h3>Investoři / věřitelé</h3>
-      <p>Poskytněte fiat nebo stablecoiny na financování půjček zajištěných Bitcoinem. Vydělávejte úrok placený vypůjčovateli. Zástava je uzamčena v on-chain escrow, plně zajištěná Bitcoinem. Žádná rehypotekace. Žádná expozice vůči altcoinům. Minimálně od 800 EUR.</p>
+      <p>Poskytněte fiat nebo stablecoiny na financování půjček zajištěných Bitcoinem. Vydělávejte úrok placený dlužníky. Zástava je uzamčena v on-chain escrow, plně zajištěná Bitcoinem. Žádná rehypotekace. Žádná expozice vůči altcoinům. Minimálně od 800 EUR.</p>
     </div>
   </div>
 </section>
@@ -1381,7 +1382,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="partners">
   <div class="sec-header">
     <div class="sec-title">
-      <h2>Naši půjčkoví partneři</h2>
+      <h2>Naši partneři pro půjčky</h2>
       <p>Platformy zaměřené výhradně na Bitcoin s nekustodiálním multisig escrow</p>
     </div>
   </div>
@@ -1405,7 +1406,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="pcard-body">
-        <p><strong>Přední evropské P2P tržiště pro půjčky zajištěné Bitcoinem.</strong> Vypůjčovatelé dostávají fiat/stablecoinové půjčky zajištěné Bitcoinem uzamčeným v on-chain multisig escrow. Firefish se nikdy nedotkne vašeho Bitcoinu, je čistě technologickým zprostředkovatelem mezi vypůjčovateli a investory.</p>
+        <p><strong>Přední evropské P2P tržiště pro půjčky zajištěné Bitcoinem.</strong> Dlužníci dostávají fiat/stablecoinové půjčky zajištěné Bitcoinem uzamčeným v on-chain multisig escrow. Firefish se nikdy nedotkne vašeho Bitcoinu; je čistě technologickým zprostředkovatelem mezi dlužníky a investory.</p>
         <ul class="pcard-features">
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pouze Bitcoin, žádné altcoiny se neakceptují</li>
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Nekustodiální multisig escrow</li>
@@ -1433,7 +1434,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pcard-terms-row">
           <span class="pcard-terms-label">Měny</span>
-          <span class="pcard-terms-value">EUR, CZK, USDC</span>
+          <span class="pcard-terms-value">EUR, CHF, CZK, USDC</span>
         </div>
       </div>
       
@@ -1473,13 +1474,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
   <h2>Odebírat <span>Brief</span></h2>
-  <p>Virtuse Brief. Pouze bitcoin. Žádné tokeny. Žádné PR.</p>
+  <p>Virtuse Brief. Jen Bitcoin. Žádné tokeny. Žádné PR.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Emailová adresa" required>
+    <input type="email" name="email" placeholder="E-mailová adresa" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Přihlásit se</button>
+    <button type="submit">Odebírat</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Každé pondělí. Odhlášení kdykoli.</p>
   </div>
   <script>
   (function () {
@@ -1570,7 +1572,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 – 2026 Virtuse Group, všechna práva vyhrazena.</p>
+    <p>&copy; 2018–2026 Virtuse Group. Všechna práva vyhrazena.</p>
     <p class="footer-bottom-brief">Virtuse Brief — týdenní přehled od Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Číst →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
