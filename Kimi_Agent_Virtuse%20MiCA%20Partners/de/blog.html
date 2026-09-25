@@ -633,7 +633,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
@@ -677,7 +677,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
   <div class="nav-actions">
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Sprache der Seite">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Blogsprache">
         <span class="lang-flag">🇩🇪</span>DE
         <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -743,7 +743,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="hero-newsdesk"><a href="../news.html">Virtuse Brief</a> – das wöchentliche Briefing.</p>
   </div>
   <div class="hero-side">
-    <div class="lang-switch" role="navigation" aria-label="Sprache der Seite">
+    <div class="lang-switch" role="navigation" aria-label="Blogsprache">
       <a href="../blog.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
       <a href="../blog-sk.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
       <a href="../uk/blog.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
@@ -758,7 +758,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="search-icon">&#9906;</span>
       <input type="search" class="search-input" id="searchInput" placeholder="Artikel durchsuchen…" autocomplete="off">
     </div>
-    <div class="post-count" id="postCount"><b>169</b> Artikel, Tendenz steigend</div>
+    <div class="post-count" id="postCount"><b>169</b> Artikel – und es werden mehr</div>
   </div>
 </section>
 
@@ -893,7 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
   <div class="load-wrap">
-    <button class="load-more" id="loadMore">Mehr Artikel</button>
+    <button class="load-more" id="loadMore">Weitere Artikel laden</button>
     <div class="load-status" id="loadStatus"></div>
   </div>
 </section>
@@ -989,7 +989,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="bitcoin-data.html">Bitcoin-Daten</a>
       </div>
       <div class="footer-col">
-        <h4>Informationen</h4>
+        <h4>Rechtliches</h4>
         <a href="terms-and-conditions.html">AGB</a>
         <a href="privacy-policy.html">Datenschutzerklärung</a>
         <a href="aml-compliance.html">AML und Compliance</a>
@@ -1028,7 +1028,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // shared English feed (category 13) with NO lang param at all, exactly
   // like uk/blog.html did before ru got its real feed -- only the page
   // chrome (nav, buttons, dates, newsletter) is translated.
-  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "", "author": "Ras Vasilisin", "months": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"], "strings": {"countSuffix": "Artikel, Tendenz steigend", "gridLabel": "Alle Artikel", "searchLabel": "Suchergebnisse", "loadMore": "Mehr Artikel", "endLabel": "Das sind alle Artikel", "showing": "{n} von {t} angezeigt", "empty": "Keine Artikel gefunden", "feedError": "Der Artikel-Feed konnte nicht geladen werden. Es werden die letzten Beiträge angezeigt."}};
+  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "", "author": "Ras Vasilisin", "months": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"], "strings": {"countSuffix": "Artikel – und es werden mehr", "gridLabel": "Alle Artikel", "searchLabel": "Suchergebnisse", "loadMore": "Weitere Artikel laden", "endLabel": "Das sind alle Artikel", "showing": "{n} von {t} angezeigt", "empty": "Keine Artikel gefunden", "feedError": "Der Artikel-Feed konnte nicht geladen werden. Es werden die letzten Beiträge angezeigt."}};
 
   var grid = document.getElementById('blogGrid');
   var featuredWrap = document.getElementById('featuredWrap');
