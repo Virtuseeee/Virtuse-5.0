@@ -2,6 +2,39 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, thirteenth round) — ES medium-severity proofreading committed (`7887f59`, gh-pages `6a83a2c`, staging 23/23 md5-verified). **Production held for the PL/HU reason** (es pages carry the PL/HU switcher; pl/ + hu/ still 301 on production)
+
+**Round 10 of the proofreading pass (user: "oprav teraz medium položky v
+ES") — 23 es pages** via `scratchpad/fix_medium_es.py` (clean first run).
+- All 18 medium items (root-cycles H1 had already been fixed in the high
+  round) + the report's systemic fixes: "monedero" for wallet, keeping
+  "cartera" for portfolio; "no custodial" instead of "no custodio" on
+  legal pages; "multifirma" in headings/prose, with "multisig" kept only in
+  a partner bullet; sentence case on the retirement, 200-WMA and rainbow
+  dashboards and the "Miedo y codicia" sub-nav; "Declaración fiscal"
+  naming on the index card, tax H1 and partners heading; "República
+  Checa" everywhere; one "Páginas de Datos de Bitcoin" sub-nav label.
+- **Register decision taken:** the Brief block was the only *tú* text on
+  an otherwise *usted* site. It is now *usted* ("Reciba el Brief",
+  "Cancele cuando quiera", success message "revise su correo"), matching
+  the DE round. It was flagged to the user three times without an
+  answer; three strings to revert if *tú* is wanted.
+- EN round-5 carry-overs, same set as the other languages; es/404's
+  footer copyright was still English.
+- CSS: fine print 12px (`.brief-card .brief-fineprint`, 22 pages).
+  es/index concierge CTA overflowed 23px at 375px (pre-existing, long
+  label + nowrap) and now wraps on phones. The same fix is now on
+  fr/uk/es. **Pattern:** any translated homepage with a long CTA label
+  needs it; ru/de/sk/cs are unchecked.
+- Verified: tagcheck 0, leftover sweep clean (remaining "informes
+  fiscales" = the product output, correct), browser at 375px on es/index
+  and es/secure.
+
+**Production command (hold until pl/ + hu/ ship):**
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 es/404.html es/about.html es/aml-compliance.html es/bitcoin-data.html es/blog.html es/bots.html es/btc-dominance.html es/buy-bitcoin.html es/faq.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/mining.html es/privacy-policy.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/secure.html es/tax.html es/terms-and-conditions.html es/trading-volume.html es/treasury.html virtuse.com@ftp.virtuse.com:public_html/es/
+```
+
 ## Session status (2026-09-25, twelfth round) — UK medium-severity proofreading committed (`69f51d9`, gh-pages `000ae79`, staging 21/21 md5-verified). **Production deploy held for the same PL/HU reason as FR** (uk pages carry the PL/HU switcher entries; pl/ + hu/ are not on production)
 
 **Round 9 of the proofreading pass (user: "oprav teraz medium položky v
