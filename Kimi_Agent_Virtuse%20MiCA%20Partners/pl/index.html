@@ -1,0 +1,3662 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Tells the browser this page is dark-only, so it doesn't also apply its
+     own automatic dark-mode color inversion on top (Android Chrome's
+     "Darken web pages" in particular will otherwise re-darken text that's
+     already styled for a dark background, since it has no declared
+     color-scheme to trust — producing unreadable dark-text-on-dark-
+     background exactly like this page's own dark design, just doubled). -->
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="../lang-detect.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>Virtuse | Pierwszy na świecie hub usług wyłącznie dla Bitcoina</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/index.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/index.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/index.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/index.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/index.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/index.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/index.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/index.html">
+<link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/index.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Virtuse | Pierwszy na świecie hub usług wyłącznie dla Bitcoina">
+<meta property="og:description" content="Wszystko o Bitcoinie. Nic poza nim. Zakup, kopanie, pożyczki, przechowywanie i pomnażanie Bitcoina u sprawdzonych partnerów z licencją MiCA, w jednym zaufanym hubie.">
+<meta property="og:url" content="https://virtuse.com/pl/index.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Virtuse | Pierwszy na świecie hub usług wyłącznie dla Bitcoina">
+<meta name="twitter:description" content="Wszystko o Bitcoinie. Nic poza nim. Zakup, kopanie, pożyczki, przechowywanie i pomnażanie Bitcoina u sprawdzonych partnerów z licencją MiCA, w jednym zaufanym hubie.">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+:root {
+  /* Paired with the <meta name="color-scheme"> tag in <head> — stops the
+     browser's own automatic dark-mode inversion (Android Chrome's
+     "Darken web pages" in particular) from re-processing text that's
+     already styled for this page's own dark background. */
+  color-scheme: dark;
+  /* Near-black button label — white-on-orange fails contrast (~2.3:1); this passes ~8.8:1 */
+  --btn-text: #0d0902;
+  /* Hairline dividers, not heavy section borders — redefines --border/--border-hover
+     (used ~20x already on this page) rather than introducing a parallel set of names. */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --line: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.12);
+  /* Neutral near-black shading, matched to firefish.io's real values (checked live:
+     body rgb(8,9,10), card rgb(20,20,20)) — replaces the previous navy-tinted
+     --dark/--dark-card, whose hover state in particular read as distinctly blue. */
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.2s ease;
+}
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
+
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+/* Desktop nav link size/weight matched to linear.app's own nav (13px/400,
+   verified live via getComputedStyle) — overrides styles.css's shared
+   14px/500 for this page only; the mobile drawer's own larger 19px/700
+   rule further down (inside its own media query) is untouched. */
+.nav-links a:not(.lang-opt) {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 12px;
+}
+
+/* :not(.lang-opt) throughout — otherwise these leak onto the language
+   pills nested inside .nav-links (via .nav-links-lang-item > .lang-switch
+   > a.lang-opt), stomping their own styles.css color/background. Real
+   bug, confirmed via getComputedStyle: the active "EN" pill was losing
+   its orange-background pill styling entirely. */
+.nav-links a:hover:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active:not(.lang-opt) {
+  color: var(--text);
+  background: var(--dark-card);
+}
+
+/* Shrunk to match the now-more-compact nav, sized to match the language switcher button beside it */
+.nav-cta {
+  background: var(--btc-orange);
+  color: var(--btn-text, #0d0902);
+  border: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--btc-orange-light); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 40px 48px 80px;
+  position: relative;
+  z-index: 5;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-headline {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+/* Orange is a rare stamp now, not a highlight color — the headline reads
+   as one uniform tone, matching linear.app's own single-tone H1. */
+.hero-headline .highlight {
+  color: var(--text);
+}
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  max-width: 520px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.stat { display: flex; flex-direction: column; }
+.stat-number { font-size: 28px; font-weight: 700; }
+.stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+
+/* No orange highlight here — inverted neutral (var(--text) on var(--dark)) instead of
+   a hardcoded white, so it stays visible against the page background in both themes */
+.btn-primary {
+  background: var(--text); color: var(--dark); border: none; padding: 14px 32px;
+  border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer;
+  transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent; color: var(--text); border: 1px solid var(--border);
+  padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 15px;
+  cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { border-color: var(--border-hover); color: var(--text); }
+
+/* ===== HERO VISUAL — Three.js 3x3 cube (Resend-style), replacing the
+   old orbit/coin graphic. Camera is deliberately far back (FOV 26 at
+   z=10.6) so the cube's full silhouette stays inside frame while
+   idling and while a layer twists — overflow stays visible rather
+   than hidden so nothing about the canvas itself gets clipped. ===== */
+.hero-right {
+  flex: 1;
+  position: relative;
+  min-height: 560px;
+  overflow: visible;
+}
+
+.visual {
+  position: absolute;
+  inset: 0;
+}
+
+#cube {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  z-index: 6;
+}
+
+.scroll-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(139, 148, 158, 0.5);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-dot {
+  width: 4px;
+  height: 8px;
+  background: var(--text-muted);
+  border-radius: 4px;
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0%   { transform: translateY(0); opacity: 1; }
+  70%  { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator, .scroll-dot, .credit-coin, .credit-ripple, .co-row,
+  .footer-wordmark-icon-wrap, .footer-wordmark-text,
+  .cube-scene, .cube, .cube-scan, .cube-node, .cube-veil {
+    animation: none;
+  }
+  .credit-ripple { display: none; }
+}
+
+/* ===== SERVICES SECTION ===== */
+.services {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sec-header {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+/* linear.app dek pattern: same size throughout, bold+white lead differentiated
+   from a lighter-weight, muted continuation purely by weight/color, not size. */
+.sec-header h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.sec-header h2 span { font-weight: 400; color: var(--text-muted); }
+
+.sec-header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Subtle box, firefish.io style: flat surface, no border, no icon, hierarchy
+   from size/weight/color-intensity of type alone. */
+/* firefish.io's "Institutional grade security" tab (checked live): a
+   fixed-height card with justify-content:space-between, so the heading
+   anchors top and the body copy anchors bottom, leaving open space
+   between them rather than the two sitting flush together. */
+.svc-card {
+  background: var(--dark-card);
+  border: none;
+  border-radius: 16px;
+  padding: 28px 24px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.svc-card:hover {
+  background: var(--dark-card-hover);
+}
+
+/* Heading + body sized to match firefish.io's own card scale, verified live
+   on their "Institutional grade security" tab: 32px/500 heading, 18px/500
+   body — ours keeps 700 weight (bold headings are this page's own
+   convention) but matches their size. */
+.svc-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.svc-card p {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== PROBLEM / PAIN SECTION ===== */
+.problems {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* linear.app dek pattern: bold lead-in + lighter continuation, one flowing
+   headline, centered above the tab grid (same size throughout, weight/color
+   is what differentiates the two parts — see .sec-header h2/span). */
+.problems-lead {
+  display: block;
+  max-width: 760px;
+  margin-bottom: 64px;
+  text-align: left;
+  font-size: 42px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.problems-lead strong {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.problems-lead span {
+  display: block;
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* linear.app "Fig 0.1" benefit-tab pattern: illustration above, Fig label
+   in the top-left, text below — no card box, columns alone do the work. */
+/* Illustration + heading + copy now read as ONE tab (a single toned
+   card), not an illustration box sitting on top of separate unboxed
+   text — the background that used to live on .problem-art alone moved
+   up to wrap the whole card. */
+.problem-card {
+  background: var(--dark-card);
+  border-radius: 16px;
+  padding: 28px;
+  transition: background-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.problem-card:hover { background: var(--dark-card-hover); }
+
+.problem-fig {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.problem-art {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+/* ===== 3D cube illustrations (replaces the old ring/crosshair SVG
+   illustrations) — three CSS-only variations of the same shared cube
+   markup, one per tab. Sized to fit the existing 200px .problem-art
+   slot; the tab's own card/border/hover styling above is untouched. */
+.cube-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  overflow: hidden;
+}
+
+.cube-scene {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03));
+}
+.cube-face.front  { transform: translateZ(75px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(75px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(75px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(75px); }
+.cube-face.top {
+  transform: rotateX(90deg) translateZ(75px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(180, 190, 210, 0.08));
+}
+.cube-face.bottom {
+  transform: rotateX(-90deg) translateZ(75px);
+  background: rgba(10, 10, 12, 0.7);
+}
+.cube-face.front::after {
+  content: "";
+  position: absolute;
+  inset: 18% 18% 28%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 12px);
+}
+
+/* Variation A — Purpose-built: slow elegant orbit + gentle float. */
+.var-purpose .cube-scene {
+  animation: cubeFloat 5s ease-in-out infinite, cubeSpinSlow 22s linear infinite;
+}
+.var-purpose .cube { transform: rotateX(-22deg) rotateY(-24deg); }
+
+@keyframes cubeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes cubeSpinSlow {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+/* Variation B — Powered by agents: medium spin + scan line + pulsing nodes. */
+.var-agents .cube-scene {
+  animation: cubeFloat 4s ease-in-out infinite, cubeSpinMed 12s linear infinite;
+}
+.var-agents .cube { transform: rotateX(-12deg) rotateY(20deg); }
+.var-agents .cube-face {
+  border-color: rgba(130, 200, 255, 0.35);
+  background: linear-gradient(145deg, rgba(80, 140, 255, 0.18), rgba(255, 255, 255, 0.03));
+}
+
+.cube-scan {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  height: 24px;
+  z-index: 4;
+  background: linear-gradient(180deg, transparent, rgba(120, 190, 255, 0.5), transparent);
+  mix-blend-mode: screen;
+  animation: cubeScan 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cube-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9fd0ff;
+  box-shadow: 0 0 12px #7ab8ff;
+  animation: cubeNode 1.8s ease-in-out infinite;
+}
+.cube-node:nth-child(1) { top: 16%; left: 10%; }
+.cube-node:nth-child(2) { top: 30%; right: 8%; animation-delay: 0.4s; }
+.cube-node:nth-child(3) { bottom: 18%; left: 20%; animation-delay: 0.8s; }
+
+@keyframes cubeSpinMed {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes cubeScan {
+  0%   { top: 10%; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { top: 78%; opacity: 0; }
+}
+@keyframes cubeNode {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.2); }
+}
+
+/* Variation C — Designed for speed: smooth glide + easing yaw, no snappy zip. */
+.var-speed .cube-scene { animation: cubeGlide 5.5s ease-in-out infinite; }
+.var-speed .cube {
+  transform: rotateX(-24deg) rotateY(-32deg);
+  animation: cubeYaw 9s ease-in-out infinite;
+}
+
+.cube-veil {
+  position: absolute;
+  inset: 18% -10%;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+  animation: cubeVeil 5.5s ease-in-out infinite;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@keyframes cubeGlide {
+  0%   { transform: translate3d(-14px, 8px, 0) scale(0.96); }
+  50%  { transform: translate3d(16px, -10px, 0) scale(1.04); }
+  100% { transform: translate3d(-14px, 8px, 0) scale(0.96); }
+}
+@keyframes cubeYaw {
+  0%   { transform: rotateX(-24deg) rotateY(-38deg); }
+  50%  { transform: rotateX(-16deg) rotateY(28deg); }
+  100% { transform: rotateX(-24deg) rotateY(-38deg); }
+}
+@keyframes cubeVeil {
+  0%, 100% { transform: translateX(-12%); opacity: 0.2; }
+  50%      { transform: translateX(12%); opacity: 0.55; }
+}
+
+.problem-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.problem-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.problem-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  margin-top: auto;
+}
+
+.problem-link:hover { opacity: 0.7; }
+
+.problem-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.problem-link:hover svg { transform: translateX(3px); }
+
+/* ===== CONCIERGE BANNER (decision-paralysis moment) ===== */
+.concierge-banner {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+
+/* Neutral gray, not orange-tinted — matches the flat .svc-card/.problem-art
+   surfaces instead of standing out as its own warm-toned accent block */
+.concierge-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 22px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+
+.concierge-banner-text {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.concierge-banner-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* No orange highlight here either — same theme-aware inverted neutral as
+   .btn-primary/the brief-strip button */
+.concierge-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  background: var(--text);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.concierge-banner-cta:hover { opacity: 0.85; }
+
+@media (max-width: 700px) {
+  .concierge-banner { padding: 0 24px; margin-bottom: 60px; }
+  .concierge-banner-inner { flex-direction: column; padding: 24px; }
+}
+
+/* ===== BITCOIN IS YOUR CREDIT (Buy Bitcoin, firefish.io "Bitcoin is your
+   credit" / "Open markets drives better rates" layout: text one side, an
+   animated visual the other, no card box around either). ===== */
+.credit {
+  padding: 20px 48px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.credit-inner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.credit-copy { flex: 1; max-width: 560px; }
+
+.credit-lead {
+  font-size: 42px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
+}
+
+.credit-lead strong { display: block; font-weight: 700; color: var(--text); }
+
+.credit-lead span {
+  display: block;
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.credit-visual {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+/* firefish.io's "Bitcoin is your credit" visual (checked live) pulses its
+   glyph's glow and radiates rings outward — same idea here: rings expanding
+   from behind the coin, plus a breathing glow on the coin itself. */
+.credit-ripple {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 147, 26, 0.35);
+  animation: creditRipple 3.6s ease-out infinite;
+}
+
+.credit-ripple:nth-child(2) { animation-delay: 1.2s; }
+.credit-ripple:nth-child(3) { animation-delay: 2.4s; }
+
+@keyframes creditRipple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2.3); opacity: 0; }
+}
+
+.credit-coin {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffc76a 0%, var(--btc-orange) 44%, #a8680e 100%);
+  box-shadow:
+    0 0 46px rgba(247, 147, 26, 0.5),
+    inset 0 2px 10px rgba(255, 255, 255, 0.35),
+    inset 0 -9px 20px rgba(90, 50, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: sceneFloat 9s ease-in-out infinite, creditGlowPulse 3.6s ease-in-out infinite;
+}
+
+@keyframes creditGlowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 46px rgba(247, 147, 26, 0.5),
+      inset 0 2px 10px rgba(255, 255, 255, 0.35),
+      inset 0 -9px 20px rgba(90, 50, 0, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 0 74px rgba(247, 147, 26, 0.8),
+      inset 0 2px 10px rgba(255, 255, 255, 0.35),
+      inset 0 -9px 20px rgba(90, 50, 0, 0.45);
+  }
+}
+
+.credit-coin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.32) 42deg, transparent 92deg);
+  mix-blend-mode: screen;
+}
+
+.credit-coin::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.28);
+}
+
+.credit-coin-b {
+  font-size: 74px;
+  font-weight: 900;
+  color: #fff8ec;
+  text-shadow: 0 2px 6px rgba(120, 60, 0, 0.5), 0 0 26px rgba(255, 255, 255, 0.45);
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .credit-inner { flex-direction: column; gap: 40px; }
+  .credit-copy { max-width: 100%; text-align: center; }
+  .credit-lead strong, .credit-lead span { text-align: center; }
+  .credit-visual { min-height: 220px; }
+  .credit-coin { width: 130px; height: 130px; }
+  .credit-coin-b { font-size: 56px; }
+}
+
+/* ===== HOW IT WORKS ===== */
+.how {
+  padding: 0 48px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* linear.app changelog pattern (their actual homepage "Changelog" section,
+   verified live): one shared horizontal rule, entries side by side as
+   columns — not stacked — each with a dot sitting ON the rule (orange
+   here, not Linear's red — the page's one "punc" per entry), then
+   heading + copy + link, with a small label at the bottom like Linear's
+   date. */
+.how-log {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.how-log-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-log-marker {
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+/* linear.app's own changelog dots (checked live via getComputedStyle):
+   a solid 6px core plus a soft 20px halo behind it, red only for the
+   most-recent entry, muted gray for the rest — same idea here with our
+   own orange/muted tokens instead of their red. */
+.how-log-dot {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.how-log-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  opacity: 0.2;
+}
+
+.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
+.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
+
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+
+.how-log-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  order: 4;
+  margin-top: 16px;
+}
+
+/* linear.app's own changelog entries (checked live) use the SAME 15px
+   size for heading and body — weight/color are what differentiate them,
+   not size (their heading: 15px/510/rgb(208,214,224); body: 15px/400/
+   muted). Matched here, keeping our own 700-weight bold convention. */
+.how-log-body h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  order: 1;
+}
+
+.how-log-body p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  order: 2;
+}
+
+.how-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  order: 3;
+}
+
+.how-card-cta:hover { opacity: 0.7; }
+
+.how-card-cta svg { width: 12px; height: 12px; transition: transform 0.2s; }
+.how-card-cta:hover svg { transform: translateX(3px); }
+
+/* ===== TOOLS & GUIDES (SEO hub links) ===== */
+.tools-guides {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 48px;
+}
+.tools-guides-inner {
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--dark-card);
+}
+.tools-guides h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+.tools-guides p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+  max-width: 620px;
+  line-height: 1.55;
+}
+.tools-guides-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+.tools-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(247,147,26,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tools-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: var(--btc-orange);
+}
+@media (max-width: 700px) {
+  .tools-guides { padding: 0 24px; margin-bottom: 60px; }
+  .tools-guides-inner { padding: 24px; }
+}
+
+/* ===== PARTNER LOGOS ===== */
+.partners-strip {
+  border-top: 1px solid var(--border);
+  padding: 40px 48px;
+}
+
+.partners-label {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.partner-logo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+
+.partner-logo:hover { opacity: 1; }
+
+/* ===== AS SEEN IN ===== */
+.as-seen {
+  padding: 60px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--dark);
+}
+
+.as-seen h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: none;
+  margin-bottom: 32px;
+  letter-spacing: 0;
+}
+
+.seen-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.6;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
+  white-space: nowrap;
+}
+
+.seen-logo:hover { opacity: 1; filter: grayscale(0); color: var(--text); }
+
+/* Brand-specific font styling */
+
+.seen-investing {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.seen-investing span {
+  font-weight: 400;
+  font-size: 0.75em;
+  margin-left: 1px;
+}
+
+.seen-hackernoon {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.seen-hackernoon span {
+  color: var(--btc-orange);
+  font-size: 0.85em;
+}
+
+.seen-ta3 {
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.seen-ta3 span {
+  background: var(--text-dim);
+  color: var(--dark);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  margin-left: 2px;
+}
+
+.seen-trend {
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+.seen-hn {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+
+.seen-hn span {
+  background: var(--text-dim);
+  color: var(--dark);
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-weight: 900;
+  font-size: 0.9em;
+  margin-right: 4px;
+}
+
+.seen-medium {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.seen-spotify {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.seen-spotify::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 6px;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.seen-spotify:hover::before { opacity: 1; background: var(--text); }
+
+.seen-dennik {
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.seen-dennik span {
+  display: inline-block;
+  background: var(--text-dim);
+  color: var(--dark);
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 2px;
+  font-size: 0.75em;
+  text-align: center;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .as-seen { padding: 40px 24px; }
+  .seen-logo { font-size: 19px; }
+    .seen-medium { font-size: 24px; }
+  .seen-hn { font-size: 16px; }
+  .vblog { padding: 0 24px 60px; }
+}
+
+/* ===== THE VIRTUSE BLOG ===== */
+.vblog {
+  padding: 0 48px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Restored to the format live on virtuse.com (per explicit request) — image
+   card grid, not the hairline-row list this session tried earlier. The one
+   kept difference: .vblog-meta below uses --text-muted, not the original's
+   --text-dim, which measured a real 1.99:1 contrast failure. */
+.vblog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 44px;
+}
+
+.vblog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.vblog-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.vblog-media { overflow: hidden; flex-shrink: 0; }
+
+.vblog-media img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.vblog-card:hover .vblog-media img { transform: scale(1.06); }
+
+.vblog-body {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vblog-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 11px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  color: var(--btc-orange);
+  background: rgba(247, 147, 26, 0.1);
+}
+
+.vblog-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.vblog-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.vblog-card:hover h3 { color: var(--btc-orange); }
+
+.vblog-body p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vblog-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.vblog-meta span { color: var(--text-muted); }
+
+.vblog-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.vblog-cta-wrap { text-align: center; }
+
+.vblog-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.vblog-cta:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+.vblog-cta .arr { transition: transform 0.2s; }
+.vblog-cta:hover .arr { transform: translateX(3px); }
+
+/* ===== YOU'RE IN GOOD COMPANY ===== */
+.company {
+  padding: 60px 0 80px;
+  text-align: center;
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  box-shadow: inset 0 16px 32px -24px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+/* Section itself stays full-bleed (its own --dark-lighter band, unlike
+   .as-seen which shares the body's own background) — the width cap that
+   keeps this page's left/right margins consistent with every other
+   section lives on this inner wrapper instead. */
+.company-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.company h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+.company h2 span { font-weight: 400; color: var(--text-muted); }
+
+/* Modern logo ticker: two rows, opposite directions, each duplicated once
+   for a seamless loop (translateX(-50%) = exactly one full set). */
+.co-ticker {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 30px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.co-ticker:last-child { margin-bottom: 0; }
+
+.co-row {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: coTickerLeft 38s linear infinite;
+}
+
+.co-ticker-2 .co-row { animation-name: coTickerRight; animation-duration: 44s; }
+
+.co-ticker:hover .co-row { animation-play-state: paused; }
+
+.co-set {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 52px;
+  padding-right: 52px;
+}
+
+@keyframes coTickerLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes coTickerRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .co-ticker { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .co-row {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .co-set { padding-right: 0; flex-wrap: wrap; justify-content: center; gap: 32px 52px; }
+  .co-set[aria-hidden="true"] { display: none; }
+}
+
+.co-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.6;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
+  white-space: nowrap;
+}
+
+.co-logo:hover { opacity: 1; filter: grayscale(0); color: var(--text); }
+
+.co-firefish { font-weight: 800; letter-spacing: -0.01em; }
+.co-firefish span { color: var(--btc-orange); }
+.co-unchained { font-weight: 700; letter-spacing: -0.01em; }
+.co-banxa { font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+.co-coinfirm { font-weight: 700; }
+.co-coinfirm span { color: var(--green); }
+.co-aws { font-weight: 900; text-transform: lowercase; font-size: 24px; letter-spacing: -0.02em; }
+.co-tradingview { font-weight: 800; letter-spacing: -0.02em; }
+.co-cmc { font-weight: 800; letter-spacing: -0.01em; }
+.co-cryptowisser { font-weight: 700; letter-spacing: 0; }
+.co-sumsub { font-weight: 800; letter-spacing: 0.02em; }
+.co-finas { font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
+.co-21bitcoin { font-weight: 800; letter-spacing: -0.01em; }
+.co-21bitcoin span { color: var(--btc-orange); font-weight: 900; }
+.co-coinrule { font-weight: 800; }
+.co-abundant { font-weight: 700; letter-spacing: 0.01em; }
+.co-abundant span { color: var(--green); }
+.co-invity { font-weight: 800; letter-spacing: -0.01em; }
+.co-blockstream { font-weight: 700; letter-spacing: -0.01em; }
+.co-blockstream span { color: #58a6ff; }
+.co-cryptocom { font-weight: 800; letter-spacing: -0.01em; }
+.co-cryptocom span { color: #1652c9; }
+
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Crect fill='none' width='600' height='300'/%3E%3Cg fill='%2330363d' fill-opacity='0.25'%3E%3Ccircle cx='300' cy='80' r='1.5'/%3E%3Ccircle cx='280' cy='85' r='1.5'/%3E%3Ccircle cx='320' cy='85' r='1.5'/%3E%3Ccircle cx='260' cy='90' r='1.5'/%3E%3Ccircle cx='340' cy='90' r='1.5'/%3E%3Ccircle cx='250' cy='100' r='1.5'/%3E%3Ccircle cx='350' cy='100' r='1.5'/%3E%3Ccircle cx='240' cy='110' r='1.5'/%3E%3Ccircle cx='360' cy='110' r='1.5'/%3E%3Ccircle cx='230' cy='120' r='1.5'/%3E%3Ccircle cx='370' cy='120' r='1.5'/%3E%3Ccircle cx='220' cy='130' r='1.5'/%3E%3Ccircle cx='380' cy='130' r='1.5'/%3E%3Ccircle cx='210' cy='140' r='1.5'/%3E%3Ccircle cx='390' cy='140' r='1.5'/%3E%3Ccircle cx='200' cy='150' r='1.5'/%3E%3Ccircle cx='400' cy='150' r='1.5'/%3E%3Ccircle cx='190' cy='160' r='1.5'/%3E%3Ccircle cx='410' cy='160' r='1.5'/%3E%3Ccircle cx='180' cy='170' r='1.5'/%3E%3Ccircle cx='420' cy='170' r='1.5'/%3E%3Ccircle cx='170' cy='180' r='1.5'/%3E%3Ccircle cx='430' cy='180' r='1.5'/%3E%3Ccircle cx='160' cy='190' r='1.5'/%3E%3Ccircle cx='440' cy='190' r='1.5'/%3E%3Ccircle cx='150' cy='200' r='1.5'/%3E%3Ccircle cx='450' cy='200' r='1.5'/%3E%3Ccircle cx='140' cy='210' r='1.5'/%3E%3Ccircle cx='460' cy='210' r='1.5'/%3E%3Ccircle cx='130' cy='220' r='1.5'/%3E%3Ccircle cx='470' cy='220' r='1.5'/%3E%3Ccircle cx='120' cy='230' r='1.5'/%3E%3Ccircle cx='480' cy='230' r='1.5'/%3E%3Ccircle cx='110' cy='240' r='1.5'/%3E%3Ccircle cx='490' cy='240' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.newsletter h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
+
+.newsletter p {
+  color: var(--text-muted);
+  font-size: 18px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Shared BriefCapture input + button — one component, reused by strips A/B/C */
+.newsletter-form {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  max-width: 420px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--dark-lighter);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+
+.newsletter-form input::placeholder { color: var(--text-muted); }
+
+.newsletter-form button {
+  padding: 12px 22px;
+  flex-shrink: 0;
+}
+
+/* ===== VIRTUSE BRIEF CAPTURE STRIPS (shared surface: --bg-card + 1px --line, radius 12px) ===== */
+.brief-strip {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 48px;
+}
+
+.brief-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  border-radius: 12px;
+  /* Bumped up from --border/--dark-card (a real-device report that this
+     whole capture card was unreadable against the page's black
+     background — --dark-card is only #141414 vs. the page's #08090a,
+     a difference too subtle on some phone screens to register as a
+     card at all) to the stronger --border-hover/--dark-card-hover pair
+     already used for hover states elsewhere, so it reads as a clearly
+     separate surface at rest, not just on interaction. */
+  border: 1px solid var(--border-hover);
+  background: var(--dark-card-hover);
+}
+
+.brief-strip-copy { min-width: 240px; }
+
+/* Plain, not colored — orange stays reserved for the CTA button only */
+.brief-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.brief-line {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+.brief-strip .newsletter-form {
+  margin: 0;
+  max-width: 380px;
+  flex: 1 1 320px;
+}
+
+.brief-form-msg {
+  max-width: 1400px;
+  margin: 10px auto 0;
+  padding: 0 48px;
+  font-size: 13px;
+  min-height: 18px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.brief-fineprint {
+  max-width: 1400px;
+  margin: 6px auto 0;
+  padding: 0 48px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* No box — sits directly on the section's own dark background, like
+   firefish's own plain-background closing CTA (no card, no border). */
+.brief-card {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-card .newsletter-form { max-width: 380px; margin: 0 auto; }
+
+.brief-card-poster {
+  max-width: 480px;
+  text-align: center;
+}
+
+.brief-card-poster h2 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brief-card-poster p {
+  font-size: 15px;
+}
+
+.newsletter-form-stacked.newsletter-form {
+  flex-direction: column;
+  max-width: 100%;
+  gap: 12px;
+}
+
+.newsletter-form-stacked input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 15px;
+}
+
+.newsletter-form-stacked button {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+}
+
+/* White CTA here instead of orange, per explicit request */
+.brief-card .newsletter-form button {
+  background: #ffffff;
+  color: #0d0d0d;
+}
+
+.brief-card .newsletter-form button:hover {
+  background: #e8e8e8;
+  color: #0d0d0d;
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .brief-strip { padding: 24px 24px; }
+  .brief-strip-inner { flex-direction: column; align-items: stretch; text-align: center; }
+  /* flex:1 1 320px (set for the desktop row layout) becomes a HEIGHT
+     grow once .newsletter-form flips to a column below — the email
+     input was inflating to ~270px tall as a result. Same class of bug
+     as .newsletter-form's own fix a few rules down; this one needs the
+     more specific selector since .brief-strip .newsletter-form's own
+     flex:1 1 320px would otherwise win on specificity. */
+  .brief-strip .newsletter-form { max-width: 100%; flex: none; }
+  .brief-form-msg, .brief-fineprint { padding: 0 24px; }
+  .brief-card { max-width: calc(100% - 32px); padding: 0 16px; }
+  .brief-card .newsletter-form { max-width: 100%; }
+}
+
+/* ===== QUICK ANSWERS (firefish.io's own homepage FAQ teaser, same spot:
+   right after the last capture, right before the footer) ===== */
+.quick-answers {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.qa-list {
+  border-top: 1px solid var(--border);
+}
+
+.qa-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.qa-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  transition: opacity 0.15s ease;
+}
+
+.qa-item summary::-webkit-details-marker { display: none; }
+.qa-item summary::marker { content: ''; }
+
+.qa-item summary:hover { opacity: 0.7; }
+
+.qa-icon {
+  position: relative;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.qa-icon::before,
+.qa-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--text-muted);
+  transform: translate(-50%, -50%);
+}
+
+.qa-icon::before { width: 12px; height: 1.5px; }
+.qa-icon::after { width: 1.5px; height: 12px; transition: transform 0.2s ease, opacity 0.2s ease; }
+
+.qa-item[open] .qa-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+
+.qa-answer {
+  max-width: 720px;
+  padding: 0 0 24px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.qa-answer a { color: var(--text); }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+/* Side padding lives here, not on .footer-main, so the content's left
+   edge lines up with every other section (padding must sit INSIDE the
+   same max-width box, not stack with it — see .company-inner too) */
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+}
+
+.footer-logo img {
+  height: 100px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-logo img:hover { opacity: 1; }
+
+/* linear.app's own footer (checked live): heading and links share the
+   same 13px size, weight/color is what differentiates them — same
+   principle as this page's own dek-heading pattern, applied here for a
+   more symmetric, evenly-set footer than styles.css's shared 14px/700
+   heading paired with a slightly different link rhythm. */
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+/* styles.css's shared .footer-bottom has no side padding of its own — it
+   relied on .footer-main's, which just moved onto .footer-inner instead
+   (see above). Restoring the same gutter here directly so this element
+   doesn't go flush to the viewport edge at viewport widths narrower than
+   its own 1200px max-width. */
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* firefish.io footer pattern: an oversized wordmark, clipped at the bottom
+   edge — a quiet brand flourish, not a headline, so it sits at low opacity.
+   Carries the real V-mark + its actual brand-blue gradient (not a flat
+   monochrome), same lockup as the nav/footer logo elsewhere on this page. */
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+/* Animation lives on this wrapper, not on the <svg> itself — a real
+   device found that animating an <svg> element directly silently broke
+   its gradient-filled paths (only a faint sliver of one path rendered),
+   while animating a plain wrapper around a static <svg> doesn't. */
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+/* A slow brand-blue shimmer sweeps across the watermark text, and the
+   V-mark icon breathes gently alongside it — a quiet, living flourish
+   rather than a flat static logo. The icon's motion used to be an
+   opacity pulse (1 <-> 0.6); per explicit feedback that read as
+   "flashing" rather than breathing, so it's now a subtle scale instead
+   — opacity toggling a large flat shape against solid black reads as an
+   on/off blink, while a slow, small scale change reads as motion. */
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Hardcoded #e6edf3 here, not var(--text) — a real device screenshot
+     showed this whole watermark (text fully invisible, icon reduced to a
+     faint sliver) while every other var()-driven color on the same page
+     rendered fine. Mobile Safari appears to fail resolving a CSS custom
+     property specifically inside a gradient used with
+     -webkit-background-clip: text; a plain hex value sidesteps it. */
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .as-seen { padding: 40px 24px; }
+  .seen-logo { font-size: 19px; }
+    .seen-medium { font-size: 24px; }
+  .seen-hn { font-size: 16px; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  /* Stacking .newsletter-form (row -> column) flips its children's own
+     `flex: 1` from a WIDTH grow to a HEIGHT grow — with nothing to stop
+     it, the email input inflated to 270px tall in testing (a real bug,
+     not cosmetic). Pin both the form and its input back to their natural
+     height once stacked. */
+  .newsletter-form { flex-direction: column; flex: none; }
+  .newsletter-form input { flex: none; }
+  .company-inner { padding: 0 24px; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  /* linear.app's own mobile footer (checked live): a clean 2-column
+     grid of link groups, not a single stacked column — overrides
+     styles.css's shared flex+wrap, which left every group as its own
+     full-width row here. */
+  /* Row-gap bumped up — the Services column runs 7 links deep while its
+     row-mate (Company) has only 2, so the *next* row (Tools/Guides)
+     used to start right under "Bots" with barely any breathing room. */
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-logo img { height: 60px; }
+  /* More visible on mobile than the desktop 0.14 — small screens/direct
+     sunlight make a subtle watermark nearly invisible. The animations
+     themselves keep the same slow desktop pace (an earlier round sped
+     them up for mobile visibility, but a faster opacity/position cycle
+     on a shape this large read as "flashing" rather than alive — per
+     explicit feedback, kept large/opaque enough to notice without
+     speeding up the motion itself). */
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+  /* Stronger glow on the first step's punc specifically — matches how
+     it reads on the larger desktop canvas, where the same halo opacity
+     takes up more of the visual field. */
+  .how-log-item:first-child .how-log-dot {
+    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
+  }
+  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
+}
+
+/* Demote the sitewide concierge FAB on the homepage only — it visually
+   competes with the hero/nav "Get Started" CTA. Higher specificity than
+   the shared concierge-launcher.js's own .vc-bubble rule (element+class),
+   so this wins without touching that shared, sitewide script. */
+body .vc-bubble {
+  opacity: 0.7;
+  transform: scale(0.88);
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.15s ease;
+}
+body .vc-bubble:hover, body .vc-bubble:focus-within {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===== ANIMATIONS ===== */
+.anim-hidden { opacity: 0; transform: translateY(40px); }
+.anim-visible { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
+
+/* Floating particles */
+/* Hero letter slide-up */
+.hero-headline .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.hero-headline .word-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.hero-headline.animate .word-inner {
+  animation: letter-slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes letter-slide-up {
+  from { transform: translateY(110%); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+/* Vercel rule: hairline in, stronger hairline on hover — no lift, no shadow theatre */
+
+/* Quiet rail — no shimmer/scale, just the grayscale-in/color-on-hover above */
+
+/* CTA button pulse */
+.btn-main {
+  position: relative;
+  overflow: hidden;
+}
+.btn-main::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+.btn-main:hover::after {
+  width: 300px; height: 300px;
+}
+
+/* Stat counter glow */
+.stat-number {
+  transition: text-shadow 0.3s;
+}
+.stat-number:hover {
+  text-shadow: 0 0 30px rgba(247, 147, 26, 0.4);
+}
+
+/* Scroll indicator bounce */
+.scroll-indicator {
+  animation: bounce-down 2s infinite;
+}
+@keyframes bounce-down {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Newsletter entrance */
+.newsletter.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Partner strip fade */
+.partners-label {
+  letter-spacing: 0.15em;
+  transition: letter-spacing 0.5s ease;
+}
+.partners-strip:hover .partners-label {
+  letter-spacing: 0.25em;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-content { flex-direction: column; align-items: stretch; padding: 30px 24px 60px; }
+  .hero-right { min-height: 400px; order: -1; }
+  .scroll-indicator { display: none; }
+  .hero-headline { font-size: 36px; }
+  .nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .services { padding: 60px 24px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .how { padding: 0 24px 60px; }
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+  .problems { padding: 60px 24px; }
+  .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+  .problems-lead { font-size: 32px; }
+}
+
+@media (max-width: 500px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; }
+  .hero-buttons { flex-direction: column; align-items: stretch; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary { justify-content: center; width: 100%; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
+   divs with a CSS background-color — a real device screenshot showed
+   the span version fully invisible on mobile Safari (the button's own
+   tappable area was there, but neither bar painted), while this exact
+   page's other SVGs confirmed that stroke-based shapes render reliably
+   on the same device even where fill/background-based ones don't.
+   linear.app's own mobile menu button (checked live) is the reference:
+   two lines closed, an X on open. */
+.nav-hamburger svg {
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+}
+
+.ham-line {
+  stroke: var(--text, #e6edf3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 10px 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
+body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .btn-primary, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* nav-cta stays the one sitewide orange stamp */
+.nav-cta { background: var(--btc-orange, #f7931a); color: var(--btn-text, #0d0902); }
+.nav-cta:hover {
+  background: #ffffff;
+  color: var(--btn-text, #0d0902);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+/* Brief-strip capture button (Place A, under hero) — no orange, same inverted
+   neutral as .btn-primary. Hardcoded colors, not var(--text)/var(--dark) —
+   a real device screenshot showed this exact button rendering with zero
+   background (text visible, no pill at all) while var()-driven
+   backgrounds elsewhere on the same page (e.g. .nav-cta's orange, which
+   has its own fallback) rendered fine. */
+.newsletter-form button { background: #e6edf3; color: #08090a; }
+.newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.vblog-cta, .btn-secondary {
+  transition: all 0.2s ease;
+}
+
+.vblog-cta:hover, .btn-secondary:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .vblog-grid { grid-template-columns: repeat(2, 1fr); }
+  .vblog-grid .vblog-card:last-child { display: none; }
+}
+
+@media (max-width: 768px) {
+  .vblog { padding: 0 20px 56px; }
+  .vblog-grid { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
+  .vblog-card { flex-direction: row; border-radius: 14px; }
+  .vblog-media { width: 112px; flex-shrink: 0; }
+  .vblog-media img { width: 112px; height: 100%; min-height: 128px; aspect-ratio: 1 / 1; object-fit: cover; }
+  .vblog-body { padding: 14px 16px; }
+  .vblog-tag { font-size: 10px; padding: 3px 9px; margin-bottom: 8px; }
+  .vblog-body h3 {
+    font-size: 15px;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .vblog-body p { display: none; }
+  .vblog-meta { font-size: 11px; padding-top: 8px; margin-top: 8px; }
+  .vblog-cta { width: 100%; justify-content: center; padding: 14px 0; }
+}
+
+@media (max-width: 420px) {
+  .vblog-media { width: 96px; }
+  .vblog-media img { width: 96px; min-height: 112px; }
+}
+
+/* ===== MOBILE MENU ===== */
+.nav-hamburger {
+  display: none;
+  /* Without this, Safari keeps the button's native chrome/appearance
+     active underneath the flex layout below — on a real iOS device this
+     was silently breaking the child line-span layout (the button's own
+     tappable box rendered, but both line spans came out invisible),
+     even though the exact same markup/CSS worked fine in every
+     Chromium-based check this session. */
+  -webkit-appearance: none;
+  appearance: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, #484f58);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  /* :not(.lang-opt) — without it, this generic drawer-link styling
+     leaks onto the nested language pills (a <a class="lang-opt"> sits
+     inside .nav-links via .nav-links-lang-item > .lang-switch), since
+     .nav-links a (0,1,1) beats .lang-opt's own (0,1,0). Confirmed as a
+     real bug via getComputedStyle: the active "EN" pill was rendering
+     orange TEXT on a dark background instead of its intended orange
+     background + dark text, and every other pill had lost its muted
+     color entirely — both from this rule's color/font-size/width
+     silently overriding styles.css's own .lang-opt/.lang-opt.active. */
+  .nav-links a:not(.lang-opt) {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:not(.lang-opt):active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, #484f58);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, #484f58);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  /* :not(.lang-opt) here too — same leak as the base .nav-links a rule
+     above: .nav-links a.active (0,2,1) otherwise beats .lang-opt.active
+     (0,2,0) on specificity, which was turning the active "EN" language
+     pill orange-text-on-dark instead of its intended orange-background
+     pill. */
+  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active:not(.lang-opt)::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, #484f58);
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.nav-links-lang-item { gap: 10px; align-items: center; flex-wrap: wrap; row-gap: 12px; }
+
+.lang-menu { position: relative; }
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--border-hover); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--text);
+  color: var(--dark);
+}
+
+@media (max-width: 1024px) {
+  /* :not(.lang-menu-mobile) — the drawer's own dropdown (added to
+     replace a cramped 6-pill row that measured ~420px in a ~340px
+     container and wrapped/overflowed, per explicit UX feedback) reuses
+     this same component and must stay visible here; only the separate
+     desktop instance inside .nav-actions hides at this width. */
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
+}
+
+/* ===== PL: compact nav text =====
+   Polish nav labels run longer than English ("Przechowywanie", "Dane o
+   Bitcoinie"), so at the default padding they wrap onto two lines at
+   common desktop widths. Same block as scaffold_es.py, with a selector
+   strong enough to beat the redesign's own .nav-links a:not(.lang-opt). */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+
+/* Below ~1200px the twelve Polish labels still push the CTA off-screen. */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Przełącz menu" aria-expanded="false">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
+      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
+    </svg>
+  </button>
+  <a href="/pl/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Kup Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Kopanie</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Pożyczki</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Przechowywanie</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Podatki</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boty</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Dane o Bitcoinie</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">O nas</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Rozpocznij<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Język strony">
+          <span class="lang-flag">🇵🇱</span>PL
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+          <a href="../index.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+          <a href="../sk/index.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+          <a href="../uk/index.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+          <a href="../cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+          <a href="../ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../de/index.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+          <a href="../fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="../es/index.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+          <a href="index.html" class="lang-opt active" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Język strony">
+        <span class="lang-flag">🇵🇱</span>PL
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../index.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/index.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/index.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/index.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/index.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/index.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/index.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/index.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        <a href="index.html" class="lang-opt active" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+      </div>
+    </div>
+    <button class="nav-cta">Rozpocznij</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile, added to replace a 6-pill row that wrapped
+// and overflowed on narrow screens) — each .lang-menu wires up
+// independently, and opening one closes any other.
+(function () {
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1 class="hero-headline">
+        Wszystko o Bitcoinie.<br><span class="highlight">Nic poza nim.</span> Jeden zaufany hub.
+      </h1>
+
+      <p class="hero-sub">
+        Sprawdzeni, licencjonowani partnerzy do zakupu, zabezpieczania, kopania i pożyczek, a do tego narzędzia i poradniki, dzięki którym żaden satoshi nie przepadnie przez opłaty, włamania czy chaos spadkowy.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">26</span>
+          <span class="stat-label">Sprawdzonych partnerów</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">8</span>
+          <span class="stat-label">Kategorii usług</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">27</span>
+          <span class="stat-label">Krajów UE</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <button type="button" class="btn-primary" data-consultation-trigger data-consultation-lang="pl">
+          Umów bezpłatną konsultację
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a href="../concierge.html?utm_source=concierge&utm_medium=hero" class="btn-secondary concierge-hero-cta">
+          Znajdź najlepszą usługę
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ===== HERO VISUAL — Three.js 3x3 cube ===== -->
+    <div class="hero-right" id="heroVisual">
+      <div class="visual">
+        <canvas id="cube" aria-hidden="true"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+  </div>
+</section>
+
+<!-- ===== VIRTUSE BRIEF CAPTURE (primary) ===== -->
+<section class="brief-strip anim-section anim-hidden" id="virtuse-brief">
+  <div class="brief-strip-inner">
+    <div class="brief-strip-copy">
+      <span class="brief-eyebrow">Virtuse Brief</span>
+      <p class="brief-line">Poniedziałek. Tylko Bitcoin. Bez tokenów. Bez PR-u.</p>
+    </div>
+    <form class="newsletter-form brief-form" data-brief-form novalidate>
+      <input type="email" name="email" placeholder="Adres e-mail" required>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+      <button type="submit">Zapisz się</button>
+    </form>
+  </div>
+  <p class="brief-form-msg" role="status" aria-live="polite"></p>
+</section>
+
+<!-- ===== PROBLEM / PAIN SECTION ===== -->
+<section class="problems anim-section anim-hidden">
+  <h2 class="problems-lead">
+    <strong>Pytania, które większość bitcoinerów ignoruje.</strong>
+    <span>Do czasu, aż nie da się ich dłużej ignorować. Oto trzy sytuacje, w których bitcoinerzy tracą najwięcej, i sposób, w jaki hub zamyka każdą z tych luk.</span>
+  </h2>
+
+  <div class="problem-grid">
+
+    <a href="buy-bitcoin.html" class="problem-card anim-card">
+      <span class="problem-fig">Fig 0.1</span>
+      <div class="problem-art" aria-hidden="true">
+        <div class="cube-stage var-purpose">
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Która giełda mnie nie oszuka?</h3>
+      <p>Mt. Gox, FTX, Celsius: miliardy przepadły w upadkach giełd. Wymieniamy wyłącznie dostawców CASP z licencją MiCA, sprawdzonych najpierw pod kątem przechowywania środków i jurysdykcji.</p>
+      <div class="problem-link">
+        Zobacz sprawdzone giełdy
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+
+    <a href="secure.html" class="problem-card anim-card">
+      <span class="problem-fig">Fig 0.2</span>
+      <div class="problem-art" aria-hidden="true">
+        <div class="cube-stage var-agents">
+          <i class="cube-node"></i>
+          <i class="cube-node"></i>
+          <i class="cube-node"></i>
+          <div class="cube-scan"></div>
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Co stanie się z moim BTC po mojej śmierci?</h3>
+      <p>Jedna piąta wydobytych dotąd Bitcoinów jest już utracona, bo zależała od jednego klucza. Samodzielne przechowywanie bez planu to tykająca bomba, a nie zabezpieczenie.</p>
+      <div class="problem-link">
+        Zaplanuj dziedziczenie Bitcoina
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+
+    <a href="tax.html" class="problem-card anim-card">
+      <span class="problem-fig">Fig 0.3</span>
+      <div class="problem-art" aria-hidden="true">
+        <div class="cube-stage var-speed">
+          <div class="cube-veil"></div>
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="cube-face front"></div>
+              <div class="cube-face back"></div>
+              <div class="cube-face right"></div>
+              <div class="cube-face left"></div>
+              <div class="cube-face top"></div>
+              <div class="cube-face bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Ile jestem winien fiskusowi?</h3>
+      <p>Każda sprzedaż, wymiana i nagroda za kopanie podlega opodatkowaniu w większości krajów UE, a każdy z nich ma własne zasady. Błąd oznacza rachunek, który przychodzi po latach.</p>
+      <div class="problem-link">
+        Oblicz swoje zobowiązanie podatkowe
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== YOU'RE IN GOOD COMPANY ===== -->
+<section class="company anim-section anim-hidden">
+  <div class="company-inner">
+  <h2>W <span>dobrym towarzystwie</span></h2>
+  <div class="co-ticker co-ticker-1">
+    <div class="co-row">
+      <div class="co-set">
+        <a href="https://firefish.io" target="_blank" rel="noopener noreferrer" class="co-logo co-firefish">fire<span>fish</span></a>
+        <a href="https://unchained-capital.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-unchained">Unchained</a>
+        <a href="https://banxa.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-banxa">Banxa</a>
+        <a href="https://www.coinfirm.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinfirm">Coin<span>firm</span></a>
+        <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-aws">aws</a>
+        <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-tradingview">TradingView</a>
+        <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cmc">CoinMarketCap</a>
+      </div>
+      <div class="co-set" aria-hidden="true">
+        <a href="https://firefish.io" tabindex="-1" class="co-logo co-firefish">fire<span>fish</span></a>
+        <a href="https://unchained-capital.com/" tabindex="-1" class="co-logo co-unchained">Unchained</a>
+        <a href="https://banxa.com/" tabindex="-1" class="co-logo co-banxa">Banxa</a>
+        <a href="https://www.coinfirm.com/" tabindex="-1" class="co-logo co-coinfirm">Coin<span>firm</span></a>
+        <a href="https://aws.amazon.com/" tabindex="-1" class="co-logo co-aws">aws</a>
+        <a href="https://www.tradingview.com/" tabindex="-1" class="co-logo co-tradingview">TradingView</a>
+        <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" tabindex="-1" class="co-logo co-cmc">CoinMarketCap</a>
+      </div>
+    </div>
+  </div>
+  <div class="co-ticker co-ticker-2">
+    <div class="co-row">
+      <div class="co-set">
+        <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptowisser">Cryptowisser</a>
+        <a href="https://sumsub.com" target="_blank" rel="noopener noreferrer" class="co-logo co-sumsub">Sumsub</a>
+        <a href="https://finas.sk/" target="_blank" rel="noopener noreferrer" class="co-logo co-finas">Finas</a>
+        <a href="https://21bitcoin.app/en" target="_blank" rel="noopener noreferrer" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
+        <a href="https://coinrule.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinrule">Coinrule</a>
+        <a href="https://abundantmines.com" target="_blank" rel="noopener noreferrer" class="co-logo co-abundant">Abundant <span>Mines</span></a>
+        <a href="https://www.invity.io" target="_blank" rel="noopener noreferrer" class="co-logo co-invity">Invity</a>
+        <a href="https://blockstream.com" target="_blank" rel="noopener noreferrer" class="co-logo co-blockstream">Block<span>stream</span></a>
+        <a href="https://crypto.com" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+      </div>
+      <div class="co-set" aria-hidden="true">
+        <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" tabindex="-1" class="co-logo co-cryptowisser">Cryptowisser</a>
+        <a href="https://sumsub.com" tabindex="-1" class="co-logo co-sumsub">Sumsub</a>
+        <a href="https://finas.sk/" tabindex="-1" class="co-logo co-finas">Finas</a>
+        <a href="https://21bitcoin.app/en" tabindex="-1" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
+        <a href="https://coinrule.com/" tabindex="-1" class="co-logo co-coinrule">Coinrule</a>
+        <a href="https://abundantmines.com" tabindex="-1" class="co-logo co-abundant">Abundant <span>Mines</span></a>
+        <a href="https://www.invity.io" tabindex="-1" class="co-logo co-invity">Invity</a>
+        <a href="https://blockstream.com" tabindex="-1" class="co-logo co-blockstream">Block<span>stream</span></a>
+        <a href="https://crypto.com" tabindex="-1" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===== CONCIERGE BANNER ===== -->
+<section class="concierge-banner anim-section anim-hidden">
+  <div class="concierge-banner-inner">
+    <span class="concierge-banner-text">
+      <strong>Nie wiadomo, co wybrać?</strong> Wystarczy odpowiedzieć na kilka pytań, by trafić do właściwego partnera.
+    </span>
+    <a href="../concierge.html?utm_source=concierge&utm_medium=banner" class="concierge-banner-cta">
+      Dopasowanie w 60 sekund
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== BITCOIN IS YOUR CREDIT (Buy Bitcoin, firefish.io layout) ===== -->
+<section class="credit anim-section anim-hidden">
+  <div class="credit-inner">
+    <div class="credit-copy">
+      <h2 class="credit-lead">
+        <strong>Bitcoin to Państwa kredyt.</strong>
+        <span>Zakup Bitcoina przez europejskie giełdy z licencją MiCA. Automatyczne plany DCA lub jednorazowe zakupy, a BTC od pierwszego dnia trafia prosto do Państwa portfela.</span>
+      </h2>
+      <a href="buy-bitcoin.html" class="problem-link">
+        Zobacz sprawdzone giełdy
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="credit-visual" aria-hidden="true">
+      <div class="credit-ripple"></div>
+      <div class="credit-ripple"></div>
+      <div class="credit-ripple"></div>
+      <div class="credit-coin"><span class="credit-coin-b">&#8383;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES GRID ===== -->
+<section class="services anim-section anim-hidden" id="services">
+  <div class="sec-header">
+    <h2>Wszystkie usługi bitcoinowe <span>w jednym miejscu</span></h2>
+    <p>Dostęp do najlepszych na świecie usług wyłącznie dla Bitcoina przez jedną bramę. Porównanie partnerów, najlepsze stawki i pełna kontrola nad kluczami.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <a href="secure.html" class="svc-card anim-card">
+      <h3>Przechowywanie</h3>
+      <p>Sejfy multisig i portfele sprzętowe, dzięki którym klucze pozostają offline.</p>
+    </a>
+
+    <a href="mining.html" class="svc-card anim-card">
+      <h3>Kopanie</h3>
+      <p>Europejski hosting: od rynków mocy obliczeniowej po dedykowany hosting koparek ASIC.</p>
+    </a>
+
+    <a href="bots.html" class="svc-card anim-card">
+      <h3>Boty tradingowe</h3>
+      <p>Niepowiernicze boty do strategii DCA, grid i własnych.</p>
+    </a>
+
+    <a href="lending.html" class="svc-card anim-card">
+      <h3>Pożyczki</h3>
+      <p>Pożyczka pod zastaw Bitcoina zamiast jego sprzedaży, od 6% rocznie.</p>
+    </a>
+
+    <a href="treasury.html" class="svc-card anim-card">
+      <h3>Treasury</h3>
+      <p>Zgodność z przepisami i strategia utrzymywania Bitcoina w bilansie firmy.</p>
+    </a>
+
+    <a href="tax.html" class="svc-card anim-card">
+      <h3>Rozliczenia podatkowe</h3>
+      <p>Automatycznie importowane raporty dla ponad 7 jurysdykcji podatkowych UE.</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how" id="how-it-works">
+  <div class="sec-header">
+    <h2>Jak <span>działa Virtuse</span></h2>
+    <p>Trzy proste kroki do dowolnej usługi bitcoinowej w naszym hubie</p>
+  </div>
+  <div class="how-log">
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 01</span>
+        <h3>Wybór usługi</h3>
+        <p>Przegląd wszystkich kategorii dla Bitcoina. Porównanie partnerów i opłat obok siebie.</p>
+        <a href="#services" class="how-card-cta">
+          Przeglądaj wszystkie usługi
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 02</span>
+        <h3>Połączenie z partnerem</h3>
+        <p>Rejestracja odbywa się na regulowanej platformie partnera. Virtuse nigdy nie przechowuje Państwa kluczy, środków ani danych.</p>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=how" class="how-card-cta">
+          Dopasowanie w 60 sekund
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="how-log-item">
+      <div class="how-log-marker"><span class="how-log-dot"></span></div>
+      <div class="how-log-body">
+        <span class="how-log-num">Krok 03</span>
+        <h3>Budowanie zasobów</h3>
+        <p>Własny rytm zakupów, porównanie opłat wszystkich partnerów i automatyzacja z botami.</p>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=widget" class="how-card-cta">
+          Zaplanuj akumulację
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS & GUIDES ===== -->
+<section class="tools-guides anim-section anim-hidden" id="tools-guides">
+  <div class="tools-guides-inner">
+    <h2>Podatek od Bitcoina w krajach UE</h2>
+    <p>Przeglądy podatkowe według krajów, porównanie opłat i narzędzia do akumulacji. Wyłącznie informacyjnie; nie stanowi porady podatkowej ani inwestycyjnej.</p>
+    <div class="tools-guides-links">
+      <a href="/bitcoin-tax/">Porównanie krajów</a>
+      <a href="/bitcoin-tax/slovakia/">Słowacja</a>
+      <a href="/bitcoin-tax/czechia/">Czechy</a>
+      <a href="/bitcoin-tax/germany/">Niemcy</a>
+      <a href="/bitcoin-fee-index/">Indeks opłat</a>
+      <a href="/bitcoin-dca-calculator/">Kalkulator DCA</a>
+      <a href="/sell-vs-borrow-bitcoin/">Sprzedać czy pożyczyć</a>
+      <a href="/bitcoin-inheritance/">Dziedziczenie</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE VIRTUSE BLOG ===== -->
+<section class="vblog anim-section anim-hidden">
+  <div class="sec-header">
+    <h2>Blog <span>Virtuse</span></h2>
+    <p>Analizy o Bitcoinie, makroekonomii i przyszłości pieniądza od CEO Rasa Vasilisina</p>
+  </div>
+  <div class="vblog-grid" id="vblogGrid">
+    <a class="vblog-card" href="../article.html?slug=bitcoin-fell-below-77000-etfs-sold-fed-looms">
+      <div class="vblog-media"><img src="https://blog.virtuse.com/wp-content/uploads/2026/09/weekly-take-fed-vs-bitcoin-2026-09-14.jpg" loading="lazy" alt="Bitcoin fell below $77,000. ETFs sold, the Fed looms."></div>
+      <div class="vblog-body">
+        <span class="vblog-tag">Blog</span>
+        <h3>Bitcoin fell below $77,000. ETFs sold, the Fed looms.</h3>
+        <p>Price fell from ~$80,000 to under $77,000. ETF outflows ~$463M. The market waits on the Fed and CLARITY.</p>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span> 14 wrz 2026</div>
+      </div>
+    </a>
+    <a class="vblog-card" href="../article.html?slug=why-the-financial-system-treats-you-like-a-17th-century-peasant">
+      <div class="vblog-media"><img src="https://blog.virtuse.com/wp-content/uploads/2026/09/kyc-aml-cartoon.jpg" loading="lazy" alt="Why the Financial System Treats You Like a 17th Century Peasant"></div>
+      <div class="vblog-body">
+        <span class="vblog-tag">Blog</span>
+        <h3>Why the Financial System Treats You Like a 17th Century Peasant</h3>
+        <p>I’ve got every exam, certification, and qualification you can imagine behind me. Yet every time I try to open a brokerage account for myself, I hit the same forms and quizzes as a total beginner. I spend days proving I deserve to manage my own money. Eventually they approve the account. But it always feels …</p>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span> 7 wrz 2026</div>
+      </div>
+    </a>
+    <a class="vblog-card" href="../article.html?slug=youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests">
+      <div class="vblog-media"><img src="https://blog.virtuse.com/wp-content/uploads/2026/08/virtuse-morning.png" loading="lazy" alt="You’ll know why Bitcoin lost $80,000, and what Friday actually tests"></div>
+      <div class="vblog-body">
+        <span class="vblog-tag">Blog</span>
+        <h3>You’ll know why Bitcoin lost $80,000, and what Friday actually tests</h3>
+        <p>After Warsh, Bitcoin is sitting under $80,000 with the ETF streak broken and Strategy buying again. Three checks tell you whether this is a pause or a turn.</p>
+        <div class="vblog-meta"><span>Ras Vasilisin</span><span class="vblog-dot"></span> 2 wrz 2026</div>
+      </div>
+    </a>
+  </div>
+  <div class="vblog-cta-wrap">
+    <a href="blog.html" class="vblog-cta">Pokaż więcej <span class="arr">&#8594;</span></a>
+  </div>
+</section>
+
+<script>
+// Keep the homepage blog panel current: WordPress is the live source.
+(function () {
+  'use strict';
+  fetch('https://blog.virtuse.com/wp-json/wp/v2/posts?categories=13&per_page=3&_embed=wp:featuredmedia&orderby=date&order=desc')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (posts) {
+      var grid = document.getElementById('vblogGrid');
+      var months = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+      function txt(s) { var d = document.createElement('div'); d.innerHTML = s; return (d.textContent || '').replace('[…]','…').trim(); }
+      grid.innerHTML = '';
+      posts.forEach(function (p) {
+        var src = '';
+        try { src = p._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) {}
+        var d = new Date(p.date);
+        var a = document.createElement('a');
+        a.className = 'vblog-card';
+        a.href = '../article.html?slug=' + encodeURIComponent(p.slug);
+        var media = document.createElement('div'); media.className = 'vblog-media';
+        if (src) { var im = document.createElement('img'); im.src = src; im.loading = 'lazy'; im.alt = txt(p.title.rendered); media.appendChild(im); }
+        var body = document.createElement('div'); body.className = 'vblog-body';
+        var tag = document.createElement('span'); tag.className = 'vblog-tag'; tag.textContent = 'Blog';
+        var h = document.createElement('h3'); h.textContent = txt(p.title.rendered);
+        var ex = document.createElement('p'); ex.textContent = txt(p.excerpt.rendered);
+        var meta = document.createElement('div'); meta.className = 'vblog-meta';
+        var au = document.createElement('span'); au.textContent = 'Ras Vasilisin';
+        var dot = document.createElement('span'); dot.className = 'vblog-dot';
+        meta.appendChild(au); meta.appendChild(dot);
+        meta.appendChild(document.createTextNode(' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear()));
+        body.appendChild(tag); body.appendChild(h); body.appendChild(ex); body.appendChild(meta);
+        a.appendChild(media); a.appendChild(body);
+        grid.appendChild(a);
+      });
+    })
+    .catch(function () { /* static cards remain as fallback */ });
+})();
+</script>
+
+<!-- ===== AS SEEN IN ===== -->
+<section class="as-seen anim-section anim-hidden">
+  <h2>Pisali o nas</h2>
+  <div class="co-ticker">
+    <div class="co-row">
+      <div class="co-set">
+        <a href="https://hackernoon.com/u/ras" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
+        <a href="https://rvasilisin.medium.com/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-medium">Medium</a>
+        <a href="https://dennikn.sk/autor/rvasilisin/" target="_blank" rel="noopener noreferrer" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+        <a href="https://www.investing.com/members/contributors/205818057/opinion" target="_blank" rel="noopener noreferrer" class="seen-logo seen-investing">Investing<span>.com</span></a>
+        <a href="https://www.ta3.com/clanok/171617/host-v-studiu-r-vasilisin-o-tom-ako-spravne-investovat" target="_blank" rel="noopener noreferrer" class="seen-logo seen-ta3">TA<span>3</span></a>
+        <a href="https://www.trend.sk/spravy/vasilisin-bitcoin-je-poistka-voci-chaosu-je-mozne-pride-krachu-financneho-systemu" target="_blank" rel="noopener noreferrer" class="seen-logo seen-trend">TREND</a>
+        <a href="https://hnonline.sk/pr-clanky/10062582-ako-investovat-do-bitcoinu-v-eurach" target="_blank" rel="noopener noreferrer" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
+        <a href="https://creators.spotify.com/pod/profile/rendolf/episodes/CCC-32-Rastislav-Vasiliin--Virtuse-CEO-CBDCs-bud-najvm-globlnym-poruenm-udskch-prv-e1rbm1m" target="_blank" rel="noopener noreferrer" class="seen-logo seen-spotify">Spotify</a>
+      </div>
+      <div class="co-set" aria-hidden="true">
+        <a href="https://hackernoon.com/u/ras" tabindex="-1" class="seen-logo seen-hackernoon">Hacker<span>Noon</span></a>
+        <a href="https://rvasilisin.medium.com/" tabindex="-1" class="seen-logo seen-medium">Medium</a>
+        <a href="https://dennikn.sk/autor/rvasilisin/" tabindex="-1" class="seen-logo seen-dennik">DENNÍK <span>N</span></a>
+        <a href="https://www.investing.com/members/contributors/205818057/opinion" tabindex="-1" class="seen-logo seen-investing">Investing<span>.com</span></a>
+        <a href="https://www.ta3.com/clanok/171617/host-v-studiu-r-vasilisin-o-tom-ako-spravne-investovat" tabindex="-1" class="seen-logo seen-ta3">TA<span>3</span></a>
+        <a href="https://www.trend.sk/spravy/vasilisin-bitcoin-je-poistka-voci-chaosu-je-mozne-pride-krachu-financneho-systemu" tabindex="-1" class="seen-logo seen-trend">TREND</a>
+        <a href="https://hnonline.sk/pr-clanky/10062582-ako-investovat-do-bitcoinu-v-eurach" tabindex="-1" class="seen-logo seen-hn"><span>HN</span>Hospodárske Noviny</a>
+        <a href="https://creators.spotify.com/pod/profile/rendolf/episodes/CCC-32-Rastislav-Vasiliin--Virtuse-CEO-CBDCs-bud-najvm-globlnym-poruenm-udskch-prv-e1rbm1m" tabindex="-1" class="seen-logo seen-spotify">Spotify</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIRTUSE BRIEF CAPTURE (tertiary) ===== -->
+<section class="newsletter anim-section anim-hidden">
+  <div class="brief-card brief-card-poster">
+    <h2>Zapisz się <span>na Brief</span></h2>
+    <p>Virtuse Brief. Tylko Bitcoin. Bez tokenów. Bez PR-u.</p>
+    <form class="newsletter-form newsletter-form-stacked brief-form" data-brief-form novalidate>
+      <input type="email" name="email" placeholder="Adres e-mail" required>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+      <button type="submit">Zapisz się</button>
+    </form>
+    <p class="brief-form-msg" role="status" aria-live="polite"></p>
+    <p class="brief-fineprint">Co tydzień w poniedziałek. Rezygnacja w dowolnym momencie.</p>
+  </div>
+</section>
+
+<!-- ===== QUICK ANSWERS (firefish.io homepage FAQ teaser pattern) ===== -->
+<section class="quick-answers anim-section anim-hidden">
+  <div class="sec-header">
+    <h2>Szybkie <span>odpowiedzi</span></h2>
+  </div>
+  <div class="qa-list">
+    <details class="qa-item">
+      <summary>Czym jest Virtuse?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Virtuse to pierwszy na świecie hub usług wyłącznie dla Bitcoina. Założone w 2018 roku i skupione wyłącznie na Bitcoinie od 2022 roku, łączy inwestorów ze sprawdzonymi, regulowanymi partnerami we wszystkim, co dotyczy Bitcoina: zakupie, kopaniu, pożyczkach, przechowywaniu, treasury, podatkach i automatyzacji. Virtuse Group Pte. Ltd. ma siedzibę w Singapurze i biuro operacyjne w Bratysławie, a obsługuje klientów w ponad 100 krajach.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Czy Virtuse jest giełdą?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nie. Virtuse nie prowadzi giełdy i nie przechowuje Państwa środków ani Bitcoina. Jesteśmy warstwą selekcji i dostępu: weryfikujemy najlepszych licencjonowanych dostawców w każdej kategorii i łączymy z nimi bezpośrednio.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Czy Virtuse kiedykolwiek przechowuje mój Bitcoin lub moje klucze?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nigdy. Virtuse nie przechowuje środków, kluczy ani danych klientów. Wszystkie transakcje są realizowane na regulowanych platformach partnerów, a jako stan docelowy dla monet zalecamy samodzielne przechowywanie.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Jak działa hub?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Trzy kroki: wybór usługi, porównanie sprawdzonych partnerów obok siebie i przejście na regulowaną platformę partnera. Wszystko, co dalej (konto, weryfikacja, transakcje), odbywa się bezpośrednio u partnera. Bitcoin pozostaje pod Państwa kontrolą.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Jak wybieracie partnerów?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Priorytetem są licencje UE (MiCA/MiCAR tam, gdzie mają zastosowanie), historia bezpieczeństwa, przyjazność dla Bitcoina i uczciwe opłaty. Partnerzy, którzy nie spełniają tych kryteriów, nie trafiają na listę.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Czy partnerzy są regulowani?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Partnerzy do zakupu to unijni dostawcy usług w zakresie kryptoaktywów z licencją MiCA/MiCAR, na przykład Kraken (Central Bank of Ireland) oraz ByBit EU i 21bitcoin (austriacki FMA). Wśród partnerów treasury są regulowane instytucje, takie jak Sygnum (szwajcarska licencja bankowa) i BitGo.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Ile pobiera Virtuse?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nic. Przeglądanie, porównywanie i przechodzenie do partnerów jest bezpłatne. Virtuse otrzymuje od partnerów prowizję polecającą przy rejestracji, bez dodatkowych kosztów dla Państwa. Przejście przez Virtuse nigdy nie oznacza wyższej ceny.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Czy Virtuse wymaga KYC?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Nie. Ponieważ Virtuse nigdy nie ma dostępu do Państwa środków, nie ma u nas czego weryfikować. Weryfikacja tożsamości odbywa się raz, na regulowanej platformie partnera, na której przeprowadzane są transakcje.</div>
+    </details>
+    <details class="qa-item">
+      <summary>Jak wypłacić Bitcoin?<span class="qa-icon"></span></summary>
+      <div class="qa-answer">Z platformy partnera na dowolny adres portfela pod Państwa kontrolą. Przy długoterminowym przechowywaniu zalecamy wypłatę na własny portfel sprzętowy. Górnicy otrzymują nagrody wypłacane codziennie, bezpośrednio na adres portfela, który przez cały czas kontrolują.</div>
+    </details>
+  </div>
+</section>
+
+<script>
+// Shared handler for every Virtuse Brief capture form on this page (Places A/B/C).
+(function () {
+  document.querySelectorAll('[data-brief-form]').forEach(function (form) {
+    var section = form.closest('section');
+    var msg = section ? section.querySelector('.brief-form-msg') : null;
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      if (msg) { msg.textContent = ''; msg.style.color = 'var(--text-muted)'; }
+      btn.disabled = true;
+      btn.textContent = 'Wysyłanie...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp, lang: 'pl' })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          if (msg) { msg.textContent = "Gotowe. Brief ukazuje się w poniedziałki."; msg.style.color = 'var(--green, #3fb950)'; }
+        } else if (msg) {
+          msg.textContent = (result.data && result.data.error) || 'Coś poszło nie tak. Prosimy spróbować ponownie.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        if (msg) { msg.textContent = 'Błąd sieci. Prosimy spróbować ponownie.'; msg.style.color = '#f85149'; }
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  });
+})();
+</script>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Usługi</h4>
+        <a href="buy-bitcoin.html">Kup Bitcoin</a>
+        <a href="secure.html">Przechowywanie</a>
+        <a href="mining.html">Kopanie</a>
+        <a href="lending.html">Pożyczki</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Podatki</a>
+        <a href="bots.html">Boty</a>
+      </div>
+      <div class="footer-col">
+        <h4>Firma</h4>
+        <a href="about.html">O nas</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Narzędzia</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Kalkulator emerytalny</a>
+      </div>
+      <div class="footer-col">
+        <h4>Poradniki</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Dane o Bitcoinie</a>
+        <a href="/bitcoin-tax/">Podatek od Bitcoina</a>
+        <a href="/bitcoin-fee-index/">Indeks opłat</a>
+        <a href="/bitcoin-dca-calculator/">Kalkulator DCA</a>
+        <a href="/sell-vs-borrow-bitcoin/">Sprzedać czy pożyczyć</a>
+        <a href="/bitcoin-inheritance/">Dziedziczenie</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informacje prawne</h4>
+        <a href="terms-and-conditions.html">Regulamin</a>
+        <a href="privacy-policy.html">Polityka prywatności</a>
+        <a href="aml-compliance.html">AML i zgodność</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2018–2026 Virtuse Group. Wszelkie prawa zastrzeżone.</p>
+    <p class="footer-bottom-brief">Virtuse Brief: cotygodniowy przegląd od Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Czytaj &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
+  </div>
+</footer>
+
+<script>
+// ===== WORD-BY-WORD SLIDE-UP =====
+(function() {
+  const headline = document.querySelector('.hero-headline');
+  if (!headline) return;
+
+  const originalHTML = headline.innerHTML;
+
+  // Parse HTML: split into segments of (text words) and (HTML tags)
+  // This regex captures either HTML tags or text content
+  const segmentRegex = /(<[^>]+>)|([^<]+)/g;
+  const segments = [];
+  let match;
+  while ((match = segmentRegex.exec(originalHTML)) !== null) {
+    if (match[1]) {
+      // HTML tag
+      if (match[1].toLowerCase() === '<br>' || match[1].toLowerCase() === '<br/>' || match[1].toLowerCase() === '<br />') {
+        segments.push({ type: 'br' });
+      } else {
+        segments.push({ type: 'tag', value: match[1] });
+      }
+    } else if (match[2]) {
+      // Text - split into words
+      const words = match[2].split(/\s+/).filter(w => w.length > 0);
+      for (let word of words) {
+        segments.push({ type: 'word', value: word });
+      }
+    }
+  }
+
+  // Build output: track open tags to wrap around words
+  let html = '';
+  let wordIndex = 0;
+  let openTags = [];
+
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i];
+
+    if (seg.type === 'br') {
+      html += '<br>';
+      continue;
+    }
+
+    if (seg.type === 'tag') {
+      const tag = seg.value;
+      if (tag.startsWith('</')) {
+        // Closing tag
+        openTags.pop();
+        html += tag;
+      } else {
+        // Opening tag
+        openTags.push(tag);
+        html += tag;
+      }
+      continue;
+    }
+
+    if (seg.type === 'word') {
+      const delay = (wordIndex * 0.12).toFixed(2);
+      const openPrefix = openTags.join('');
+      const closeSuffix = openTags.slice().reverse().map(t => {
+        const match = t.match(/<(\w+)/);
+        return match ? '</' + match[1] + '>' : '';
+      }).join('');
+
+      html += '<span class="word">' +
+              '<span class="word-inner" style="animation-delay:' + delay + 's">' +
+              openPrefix + seg.value + closeSuffix +
+              '</span></span> ';
+
+      wordIndex++;
+    }
+  }
+
+  headline.innerHTML = html.trim();
+
+  // Trigger animation
+  setTimeout(() => {
+    headline.classList.add('animate');
+  }, 300);
+})();
+
+// ===== WEIGHTED SMOOTH SCROLL =====
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let target = window.scrollY;
+  let current = window.scrollY;
+  let raf = null;
+
+  function maxScroll() {
+    return document.documentElement.scrollHeight - window.innerHeight;
+  }
+
+  window.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) return; // let pinch-zoom through
+    e.preventDefault();
+    let delta = e.deltaY;
+    if (e.deltaMode === 1) delta *= 16;      // lines -> px
+    else if (e.deltaMode === 2) delta *= window.innerHeight;
+    target = Math.max(0, Math.min(maxScroll(), target + delta));
+    if (!raf) loop();
+  }, { passive: false });
+
+  // Stay in sync when scrolling happens elsewhere (keys, scrollbar, anchors)
+  window.addEventListener('scroll', () => {
+    if (!raf) { target = current = window.scrollY; }
+  });
+
+  function loop() {
+    raf = requestAnimationFrame(() => {
+      current += (target - current) * 0.12;
+      if (Math.abs(target - current) < 0.5) {
+        current = target;
+        raf = null;
+      }
+      window.scrollTo(0, current);
+      if (raf !== null) loop();
+    });
+  }
+})();
+
+// ===== SCROLL-TRIGGERED REVEALS (anime.js) =====
+// Calm, precise fade+rise per section — the "one CTA language, no glow" brief
+// means the tween itself should read as quiet, not bouncy.
+(function() {
+  const hasAnime = typeof anime !== 'undefined' && anime.animate;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animate = hasAnime ? anime.animate : null;
+  const stagger = hasAnime ? anime.stagger : function () { return 0; };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.remove('anim-hidden');
+        if (reduced || !animate) {
+          el.classList.add('anim-visible');
+        } else {
+          animate(el, { opacity: [0, 1], translateY: [28, 0], duration: 700, ease: 'outQuad' });
+        }
+        sectionObserver.unobserve(el);
+      }
+    });
+  }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+
+  document.querySelectorAll('.anim-section').forEach(el => sectionObserver.observe(el));
+
+  // Cards stagger in as a group, once per containing section — not all at once
+  // the first time ANY card-bearing section appears (the previous version's bug:
+  // it grabbed every .anim-card sitewide off the first section it found).
+  const cardGroups = new Map();
+  document.querySelectorAll('.anim-card').forEach((card) => {
+    const section = card.closest('section') || card.parentElement;
+    if (!cardGroups.has(section)) cardGroups.set(section, []);
+    cardGroups.get(section).push(card);
+  });
+
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const cards = cardGroups.get(entry.target) || [];
+      if (reduced || !animate) {
+        cards.forEach((c) => { c.style.opacity = '1'; c.style.transform = 'none'; });
+      } else {
+        cards.forEach((c) => { c.style.opacity = '0'; c.style.transform = 'translateY(28px)'; });
+        animate(cards, {
+          opacity: [0, 1],
+          translateY: [28, 0],
+          duration: 600,
+          delay: stagger(80),
+          ease: 'outQuad'
+        });
+      }
+      cardObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+
+  cardGroups.forEach((cards, section) => cardObserver.observe(section));
+})();
+
+// Quiet rail: "As seen in" / "Good company" logos are grayscale-in, color-on-hover
+// via CSS alone (see .seen-logo/.co-logo) — no perpetual wave loop anymore.
+
+// Hero stats (26/8/27) are static constants rendered directly in the markup —
+// intentionally not animated. A prior count-up-on-scroll effect here could
+// mis-fire its IntersectionObserver and freeze the numbers mid-animation
+// (e.g. "8 / 2 / 8"); fallback constants beat a flashing counter.
+
+// ===== SMOOTH SCROLL FOR NAV LINKS =====
+(function() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
+  });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    // The mobile language dropdown toggle lives inside .nav-links too —
+    // without this exclusion, clicking it closed the whole drawer
+    // instead of opening its own panel in place (the .lang-opt links
+    // inside that panel keep this handler; they navigate away anyway).
+    if (el.classList.contains('lang-menu-btn')) return;
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  var conciergeUrl = '../concierge.html?utm_source=concierge&utm_medium=nav';
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = conciergeUrl;
+    });
+  });
+})();
+</script>
+
+<script src="../consultation-widget.js" defer></script>
+<script>
+// Fix: hero CTA anchors (#how-it-works, etc.) are intercepted by the
+// page's smooth-scroll script with preventDefault() and never create a
+// history entry -- so pressing the browser Back button after clicking
+// one skips past this page entirely, landing wherever the visitor came
+// from (often a different language's homepage). Push a real history
+// entry on click so Back returns to this page instead. Scoped to
+// .hero-buttons only, not every in-page anchor sitewide.
+(function () {
+  document.querySelectorAll('.hero-buttons a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { history.pushState(null, '', a.getAttribute('href')); } catch (err) { /* ignore */ }
+    });
+  });
+})();
+</script>
+
+<!-- ===== HERO CUBE (Three.js, Resend-style) ===== -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+(function () {
+  const host = document.getElementById('cube');
+  if (!host || typeof THREE === 'undefined') return;
+
+  const CUBIE_SIZE = 0.84;
+  const SPACING = 1.0;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: host, antialias: true, alpha: true });
+  } catch (e) {
+    return; // WebGL unavailable -- leave the canvas empty rather than error
+  }
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 100);
+  camera.position.set(0.15, 0.2, 10.6);
+  camera.lookAt(0, 0, 0);
+
+  scene.add(new THREE.AmbientLight(0x1a1c22, 0.34));
+  const key = new THREE.DirectionalLight(0xf3f6ff, 2.6);
+  key.position.set(-3.6, 4.6, 4.4);
+  scene.add(key);
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(4, 1, 3);
+  scene.add(fillLight);
+  const rimLight = new THREE.DirectionalLight(0xffffff, 0.48);
+  rimLight.position.set(0, -4, -5);
+  scene.add(rimLight);
+
+  // Dotted-canvas texture for the third ("dotted") material.
+  function makeDotTexture() {
+    const size = 128;
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#121214';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = '#2a2b30';
+    for (let y = 5; y < size; y += 10) {
+      for (let x = 5; x < size; x += 10) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(2, 2);
+    return tex;
+  }
+
+  const materials = [
+    new THREE.MeshPhysicalMaterial({ color: 0x16171b, metalness: 0.92, roughness: 0.18, clearcoat: 0.7 }),
+    new THREE.MeshPhysicalMaterial({ color: 0x0e0f12, metalness: 0.7, roughness: 0.42 }),
+    new THREE.MeshPhysicalMaterial({ color: 0x1a1b20, roughness: 0.55, map: makeDotTexture() })
+  ];
+
+  const geometry = new RoundedBoxGeometry(CUBIE_SIZE, CUBIE_SIZE, CUBIE_SIZE, 3, 0.07);
+
+  const root = new THREE.Group();
+  root.rotation.set(0.36, -0.58, 0.08);
+  scene.add(root);
+
+  const cubies = [];
+  for (let ix = 0; ix < 3; ix++) {
+    for (let iy = 0; iy < 3; iy++) {
+      for (let iz = 0; iz < 3; iz++) {
+        const matIndex = (ix + iy + iz) % 3;
+        const mesh = new THREE.Mesh(geometry, materials[matIndex]);
+        mesh.position.set((ix - 1) * SPACING, (iy - 1) * SPACING, (iz - 1) * SPACING);
+        root.add(mesh);
+        cubies.push(mesh);
+      }
+    }
+  }
+
+  function resize() {
+    const w = host.clientWidth || (host.parentElement ? host.parentElement.clientWidth : 0);
+    const h = host.clientHeight || (host.parentElement ? host.parentElement.clientHeight : 0);
+    if (!w || !h) return;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ----- Layer twist: pick a random outer layer, rotate it 90 deg with
+  // ease-in-out, then snap positions/rotations back to the integer grid. -----
+  const HALF_PI = Math.PI / 2;
+  function easeInOutQuad(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+  let twisting = false;
+
+  function twistLayer() {
+    if (twisting || reduced) return;
+    const axes = ['x', 'y', 'z'];
+    const axis = axes[Math.floor(Math.random() * 3)];
+    const layer = Math.random() < 0.5 ? -1 : 1;
+    const selected = cubies.filter((m) => Math.round(m.position[axis] / SPACING) === layer);
+    if (!selected.length) return;
+
+    const pivot = new THREE.Group();
+    root.add(pivot);
+    selected.forEach((m) => pivot.attach(m));
+
+    const dir = Math.random() < 0.5 ? 1 : -1;
+    const targetAngle = dir * HALF_PI;
+    const duration = 980;
+    const start = performance.now();
+    twisting = true;
+
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      pivot.rotation[axis] = targetAngle * easeInOutQuad(t);
+      if (t < 1) {
+        requestAnimationFrame(step);
+        return;
+      }
+      selected.forEach((m) => {
+        root.attach(m);
+        m.position.set(
+          Math.round(m.position.x / SPACING) * SPACING,
+          Math.round(m.position.y / SPACING) * SPACING,
+          Math.round(m.position.z / SPACING) * SPACING
+        );
+        m.rotation.set(
+          Math.round(m.rotation.x / HALF_PI) * HALF_PI,
+          Math.round(m.rotation.y / HALF_PI) * HALF_PI,
+          Math.round(m.rotation.z / HALF_PI) * HALF_PI
+        );
+      });
+      root.remove(pivot);
+      twisting = false;
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (!reduced) {
+    setInterval(twistLayer, 2300);
+  }
+
+  function render() {
+    if (!reduced) {
+      root.rotation.y += 0.0026;
+      root.rotation.x += 0.0006;
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+})();
+</script>
+</body>
+</html>

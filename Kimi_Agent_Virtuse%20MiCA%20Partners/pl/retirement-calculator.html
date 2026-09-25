@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Dark-only, matching the homepage's own redesign. -->
+<meta name="color-scheme" content="dark">
+<script src="../lang-detect.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>Kalkulator emerytalny Bitcoin | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/retirement-calculator.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/retirement-calculator.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/retirement-calculator.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/retirement-calculator.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/retirement-calculator.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/retirement-calculator.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/retirement-calculator.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/retirement-calculator.html">
+<link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/retirement-calculator.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/retirement-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Kalkulator emerytalny Bitcoin | Virtuse">
+<meta property="og:description" content="Symulacja drogi do emerytury opartej na Bitcoinie. Zasoby, tempo oszczędzania i założenia wzrostu, a potem sprawdzenie, czy Bitcoin wystarczy na emeryturę do końca życia.">
+<meta property="og:url" content="https://virtuse.com/pl/retirement-calculator.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kalkulator emerytalny Bitcoin | Virtuse">
+<meta name="twitter:description" content="Symulacja drogi do emerytury opartej na Bitcoinie. Zasoby, tempo oszczędzania i założenia wzrostu, a potem sprawdzenie, czy Bitcoin wystarczy na emeryturę do końca życia.">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<link rel="stylesheet" href="../styles.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+/* Neutral-gray dark palette, matched to the homepage's own redesign —
+   overrides styles.css's older navy-tinted tokens for this page only. */
+:root {
+  color-scheme: dark;
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-logo img { height: 32px; width: auto; display: block; }
+
+/* Desktop nav link size/weight matched to linear.app's own nav, same
+   as the homepage — :not(.lang-opt) so it doesn't leak onto the
+   language pills nested inside .nav-links (a real bug found there). */
+.nav-links a:not(.lang-opt) {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 12px;
+}
+
+.nav-links a:hover:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
+
+.nav-links a.active:not(.lang-opt) {
+  color: var(--text);
+  background: var(--dark-card);
+}
+
+.nav-cta:hover { background: var(--btc-orange-light); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 48px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+/* Orange is a rare stamp now, not a highlight color — matches the
+   homepage's own hero. */
+.hero h1 .highlight { color: var(--text); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+/* ===== SUB MENU ===== */
+.subnav-wrap {
+  padding: 0 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subnav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 9px 20px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.subnav a:hover { color: var(--text); }
+
+.subnav a.active { background: var(--btc-orange); color: #0d0902; }
+
+/* ===== CALCULATOR LAYOUT ===== */
+.calc {
+  padding: 0 48px var(--section-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.panel h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel h3 .ico { color: var(--btc-orange); }
+
+/* Inputs */
+.field { margin-bottom: 22px; }
+.field:last-child { margin-bottom: 0; }
+
+.field-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.field-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--btc-orange);
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 100px;
+  background: var(--dark);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--btc-orange);
+  border: 3px solid var(--dark);
+  box-shadow: 0 0 0 1px var(--btc-orange);
+  cursor: grab;
+  transition: transform 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--btc-orange);
+  border: 3px solid var(--dark);
+  box-shadow: 0 0 0 1px var(--btc-orange);
+  cursor: grab;
+}
+
+.num-input {
+  width: 110px;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 7px 10px;
+  outline: none;
+  text-align: right;
+  transition: border-color 0.2s;
+}
+
+.num-input:focus { border-color: var(--btc-orange); }
+
+.price-note {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+.price-note b { color: var(--text); font-weight: 600; }
+
+/* ===== RESULTS ===== */
+.results { display: flex; flex-direction: column; gap: 24px; }
+
+.verdict {
+  border-radius: 16px;
+  padding: 26px 30px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.verdict.ok { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+.verdict.bad { background: var(--red-bg); border-color: rgba(248, 81, 73, 0.4); }
+
+.verdict-icon { font-size: 34px; line-height: 1; }
+
+.verdict-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.verdict.ok .verdict-title { color: var(--text); }
+.verdict.bad .verdict-title { color: var(--red); }
+
+.verdict-sub { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.result-box {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.result-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.result-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-value.orange { color: var(--btc-orange); }
+
+.result-sub { font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+
+.chart-panel h3 { margin-bottom: 8px; }
+
+.chart-legend {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+canvas { width: 100%; height: 300px; display: block; }
+
+.disclaimer {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 720px;
+  margin: 40px auto 0;
+}
+
+/* ===== NEWSLETTER / FOOTER ===== */
+.newsletter {
+  background: var(--dark-lighter);
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.newsletter h2 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
+.newsletter p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: var(--btc-orange); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: var(--text);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: var(--btc-orange); color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+@media (max-width: 1300px) {
+  .result-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .calc { grid-template-columns: 1fr; }
+  .result-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 28px; }
+  .hero h1 { font-size: 36px; }
+  /* .subnav's border-radius:100px assumes one row; wrapped onto several
+     lines it turns the whole pill into an oversized rounded blob and the
+     first/last tags poke outside that curve. Scroll horizontally instead
+     of wrapping, so it always stays a single true pill. */
+  .subnav-wrap {
+    padding: 0 24px 36px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .subnav-wrap::-webkit-scrollbar { display: none; }
+  .subnav { flex-wrap: nowrap; }
+  .calc { padding-left: 24px; padding-right: 24px; }
+  .result-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* nav-cta stays the one sitewide orange stamp — every other button is an
+   inverted neutral, hardcoded (not var()) per the real Safari bug found
+   on the homepage. */
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
+.nav-cta:hover {
+  background: #ffffff;
+  color: #0d0902;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+.newsletter-form button { background: #e6edf3; color: #08090a; }
+.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
+.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
+.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
+.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
+.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
+.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
+.newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ===== MOBILE MENU ===== */
+/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
+   divs with a CSS background-color — a real device screenshot on the
+   homepage showed the span version fully invisible on mobile Safari. */
+.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
+
+.ham-line {
+  stroke: var(--text, #e6edf3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 10px 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
+body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
+
+.nav-hamburger {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, #484f58);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  .nav-links a:not(.lang-opt) {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #e6edf3;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, #484f58);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, #484f58);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active:not(.lang-opt)::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, #484f58);
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--border-hover); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--text);
+  color: var(--dark);
+}
+
+@media (max-width: 1024px) {
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
+}
+
+/* ===== PL: compact nav text =====
+   Polish nav labels run longer than English ("Przechowywanie", "Dane o
+   Bitcoinie"), so at the default padding they wrap onto two lines at
+   common desktop widths. Same block as scaffold_es.py, with a selector
+   strong enough to beat the redesign's own .nav-links a:not(.lang-opt). */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+
+/* Below ~1200px the twelve Polish labels still push the CTA off-screen. */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Przełącz menu" aria-expanded="false">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
+      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
+    </svg>
+  </button>
+  <a href="/pl/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Kup Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Kopanie</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Pożyczki</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Przechowywanie</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Podatki</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Boty</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">Dane o Bitcoinie</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">O nas</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Rozpocznij<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Język strony">
+          <span class="lang-flag">🇵🇱</span>PL
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+          <a href="../retirement-calculator.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+          <a href="../sk/retirement-calculator.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+          <a href="../uk/retirement-calculator.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+          <a href="../cs/retirement-calculator.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+          <a href="../ru/retirement-calculator.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../de/retirement-calculator.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+          <a href="../fr/retirement-calculator.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="../es/retirement-calculator.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+          <a href="retirement-calculator.html" class="lang-opt active" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Język strony">
+        <span class="lang-flag">🇵🇱</span>PL
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../retirement-calculator.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/retirement-calculator.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/retirement-calculator.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/retirement-calculator.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/retirement-calculator.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/retirement-calculator.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/retirement-calculator.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/retirement-calculator.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        <a href="retirement-calculator.html" class="lang-opt active" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+      </div>
+    </div>
+    <button class="nav-cta">Rozpocznij</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
+(function () {
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Kalkulator <span class="highlight">emerytalny</span></h1>
+  <p class="hero-desc">Symulacja drogi do emerytury opartej na Bitcoinie. Po ustawieniu zasobów, tempa oszczędzania i założeń wzrostu kalkulator prognozuje lata akumulacji, a następnie sprawdza, czy Bitcoin pokryje wydatki na emeryturze do końca życia.</p>
+</section>
+
+<!-- ===== SUB MENU ===== -->
+<div class="subnav-wrap">
+  <nav class="subnav" aria-label="Strony z danymi o Bitcoinie">
+    <a href="bitcoin-data.html">◆ Dashboard</a>
+    <a href="retirement-calculator.html" class="active">◆ Kalkulator emerytalny</a>
+    <a href="btc-dominance.html">◆ Dominacja BTC</a>
+    <a href="ma-200w.html">◆ 200 WMA</a>
+    <a href="rainbow-chart.html">◆ Wykres tęczowy</a>
+    <a href="root-cycles.html">◆ Cykle w skali pierwiastkowej</a>
+    <a href="trading-volume.html">◆ Wolumen obrotu</a>
+    <a href="fear-greed.html">◆ Strach i chciwość</a>
+  </nav>
+</div>
+
+<!-- ===== CALCULATOR ===== -->
+<section class="calc">
+  <div class="panel">
+    <h3><span class="ico">◆</span> Plan</h3>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Obecny wiek</span>
+        <span class="field-value" id="vAge">30</span>
+      </div>
+      <input type="range" id="inAge" min="18" max="70" step="1" value="30">
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Wiek emerytalny</span>
+        <span class="field-value" id="vRetAge">50</span>
+      </div>
+      <input type="range" id="inRetAge" min="30" max="80" step="1" value="50">
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Oczekiwana długość życia</span>
+        <span class="field-value" id="vLife">85</span>
+      </div>
+      <input type="range" id="inLife" min="65" max="100" step="1" value="85">
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Obecne zasoby Bitcoina (BTC)</span>
+        <input type="number" class="num-input" id="inStack" min="0" step="0.01" value="0.1">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Miesięczne oszczędności w BTC ($)</span>
+        <input type="number" class="num-input" id="inDca" min="0" step="50" value="250">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Roczne wydatki na emeryturze (dzisiejsze $)</span>
+        <input type="number" class="num-input" id="inSpend" min="0" step="1000" value="60000">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Wzrost ceny BTC / rok</span>
+        <span class="field-value" id="vGrowth">20%</span>
+      </div>
+      <input type="range" id="inGrowth" min="0" max="50" step="1" value="20">
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Inflacja / rok</span>
+        <span class="field-value" id="vInflation">3%</span>
+      </div>
+      <input type="range" id="inInflation" min="0" max="15" step="0.5" value="3">
+    </div>
+
+    <div class="field">
+      <div class="field-head">
+        <span class="field-label">Cena Bitcoina dziś ($)</span>
+        <input type="number" class="num-input" id="inPrice" min="1" step="1000" value="60000">
+      </div>
+      <div class="price-note" id="priceNote">Pobieranie bieżącej ceny…</div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="verdict ok" id="verdict">
+      <div class="verdict-icon" id="verdictIcon">✓</div>
+      <div>
+        <div class="verdict-title" id="verdictTitle">—</div>
+        <div class="verdict-sub" id="verdictSub">—</div>
+      </div>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-box">
+        <div class="result-label">BTC na emeryturze</div>
+        <div class="result-value orange" id="rBtc">—</div>
+        <div class="result-sub" id="rBtcSub">po latach akumulacji</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Wartość na emeryturze</div>
+        <div class="result-value" id="rValue">—</div>
+        <div class="result-sub">prognoza, dolary nominalne</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Wydatki w pierwszym roku</div>
+        <div class="result-value" id="rSpend">—</div>
+        <div class="result-sub">skorygowane o inflację na emeryturze</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Potrzebne BTC dziś</div>
+        <div class="result-value orange" id="rNeeded">—</div>
+        <div class="result-sub">by przejść na emeryturę bez dalszych oszczędności</div>
+      </div>
+    </div>
+
+    <div class="panel chart-panel">
+      <h3><span class="ico">◆</span> Prognoza portfela</h3>
+      <div class="chart-legend">
+        <span><span class="legend-dot" style="background:var(--btc-orange)"></span> Akumulacja</span>
+        <span><span class="legend-dot" style="background:var(--text)"></span> Wypłaty na emeryturze</span>
+      </div>
+      <canvas id="chart" height="300"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="disclaimer" style="margin-top:-60px; padding: 0 48px 100px;">
+  Wyłącznie w celach edukacyjnych, to nie jest porada finansowa. Prognozy zakładają stałe tempo wzrostu i inflacji; rzeczywiste zwroty z Bitcoina są zmienne, a wyniki historyczne nie gwarantują przyszłych. Kwoty są nominalne (niezdyskontowane o inflację), chyba że zaznaczono inaczej.
+</div>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter">
+  <div class="brief-card brief-card-poster">
+  <h2>Zapisz się <span>na Brief</span></h2>
+  <p>Virtuse Brief. Tylko Bitcoin. Bez tokenów. Bez PR-u.</p>
+  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="Adres e-mail" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+    <button type="submit">Zapisz się</button>
+  </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Co tydzień w poniedziałek. Rezygnacja w dowolnym momencie.</p>
+  </div>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'WYSYŁANIE...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp, lang: 'pl' })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "Gotowe. Wiadomość powitalna jest już w drodze.";
+          msg.style.color = 'var(--text)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Coś poszło nie tak. Prosimy spróbować ponownie.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Błąd sieci. Prosimy spróbować ponownie.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Usługi</h4>
+        <a href="buy-bitcoin.html">Kup Bitcoin</a>
+        <a href="secure.html">Przechowywanie</a>
+        <a href="mining.html">Kopanie</a>
+        <a href="lending.html">Pożyczki</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Podatki</a>
+        <a href="bots.html">Boty</a>
+      </div>
+      <div class="footer-col">
+        <h4>Firma</h4>
+        <a href="about.html">O nas</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Narzędzia</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Kalkulator emerytalny</a>
+      </div>
+      <div class="footer-col">
+        <h4>Poradniki</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Dane o Bitcoinie</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informacje prawne</h4>
+        <a href="terms-and-conditions.html">Regulamin</a>
+        <a href="privacy-policy.html">Polityka prywatności</a>
+        <a href="aml-compliance.html">AML i zgodność</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2018–2026 Virtuse Group. Wszelkie prawa zastrzeżone.</p>
+    <p class="footer-bottom-brief">Virtuse Brief: cotygodniowy przegląd od Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Czytaj &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  function $(id) { return document.getElementById(id); }
+  var els = {
+    age: $('inAge'), retAge: $('inRetAge'), life: $('inLife'),
+    stack: $('inStack'), dca: $('inDca'), spend: $('inSpend'),
+    growth: $('inGrowth'), inflation: $('inInflation'), price: $('inPrice')
+  };
+
+  function usd(n) {
+    if (!isFinite(n)) return '—';
+    return new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'USD', notation: n >= 1e6 ? 'compact' : 'standard', maximumFractionDigits: n >= 1e6 ? 2 : 0 }).format(n);
+  }
+  function btc(n) {
+    if (!isFinite(n)) return '—';
+    return (n >= 100 ? n.toFixed(1) : n >= 1 ? n.toFixed(2) : n.toFixed(4)).replace('.', ',');
+  }
+
+  // Simulate from current age with a given starting stack.
+  // Accumulation: monthly DCA buys at that year's average price.
+  // Drawdown: withdraw inflation-adjusted spending each year.
+  // Returns { series: [{age, value, phase}], depletedAt, btcAtRet, valueAtRet, spendAtRet }
+  function simulate(startStack, p) {
+    var series = [];
+    var stack = startStack;
+    var price = p.price;
+    var yearsToRet = Math.max(0, p.retAge - p.age);
+    var depletedAt = null;
+    var btcAtRet = 0, valueAtRet = 0, spendAtRet = 0;
+
+    for (var age = p.age; age <= p.life; age++) {
+      var t = age - p.age;
+      var priceNow = p.price * Math.pow(1 + p.growth, t);
+      if (age < p.retAge) {
+        // buy monthly through the year at interpolated prices
+        for (var m = 0; m < 12; m++) {
+          var priceM = p.price * Math.pow(1 + p.growth, t + m / 12);
+          stack += p.dca / priceM;
+        }
+      } else {
+        var spendNow = p.spend * Math.pow(1 + p.inflation, t);
+        if (age === p.retAge) spendAtRet = spendNow;
+        stack -= spendNow / priceNow;
+        if (stack < 0 && depletedAt === null) { depletedAt = age; stack = 0; }
+      }
+      if (age === p.retAge - 1 || (p.retAge <= p.age && age === p.age)) {
+        btcAtRet = stack;
+        valueAtRet = stack * p.price * Math.pow(1 + p.growth, p.retAge - p.age);
+      }
+      series.push({ age: age, value: stack * priceNow, phase: age < p.retAge ? 'acc' : 'ret' });
+    }
+    if (p.retAge <= p.age) { btcAtRet = startStack; valueAtRet = startStack * p.price; }
+    if (spendAtRet === 0) spendAtRet = p.spend * Math.pow(1 + p.inflation, yearsToRet);
+    return { series: series, depletedAt: depletedAt, btcAtRet: btcAtRet, valueAtRet: valueAtRet, spendAtRet: spendAtRet };
+  }
+
+  // Minimal BTC today (no DCA) that survives to life expectancy — binary search.
+  function btcNeededToday(p) {
+    var q = { age: p.age, retAge: p.age, life: p.life, dca: 0, spend: p.spend, growth: p.growth, inflation: p.inflation, price: p.price };
+    var lo = 0, hi = 10000;
+    for (var i = 0; i < 60; i++) {
+      var mid = (lo + hi) / 2;
+      if (simulate(mid, q).depletedAt === null) hi = mid; else lo = mid;
+    }
+    return hi;
+  }
+
+  function drawChart(series, retAge) {
+    var canvas = $('chart');
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = 300;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, h);
+
+    var padL = 56, padR = 12, padT = 12, padB = 26;
+    var maxV = Math.max.apply(null, series.map(function (s) { return s.value; })) || 1;
+    var minAge = series[0].age, maxAge = series[series.length - 1].age;
+    function x(age) { return padL + (age - minAge) / Math.max(1, maxAge - minAge) * (w - padL - padR); }
+    function y(v) { return padT + (1 - v / maxV) * (h - padT - padB); }
+
+    var css = getComputedStyle(document.documentElement);
+    var cOrange = css.getPropertyValue('--btc-orange').trim();
+    var cGreen = css.getPropertyValue('--green').trim();
+    var cBorder = css.getPropertyValue('--border').trim();
+    var cDim = css.getPropertyValue('--text-dim').trim();
+
+    // gridlines + y labels
+    ctx.strokeStyle = cBorder; ctx.fillStyle = cDim;
+    ctx.font = '10px Inter, sans-serif'; ctx.lineWidth = 1;
+    for (var g = 0; g <= 4; g++) {
+      var vv = maxV * g / 4, yy = y(vv);
+      ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(w - padR, yy); ctx.stroke();
+      ctx.fillText(new Intl.NumberFormat('pl-PL', { notation: 'compact' }).format(vv), 8, yy + 3);
+    }
+    // x labels every ~10y
+    for (var a = Math.ceil(minAge / 10) * 10; a <= maxAge; a += 10) {
+      ctx.fillText(String(a), x(a) - 6, h - 8);
+    }
+
+    // retirement divider
+    ctx.strokeStyle = cDim; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(x(retAge), padT); ctx.lineTo(x(retAge), h - padB); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // area + line per phase
+    function drawPhase(filterPhase, color) {
+      var pts = series.filter(function (s) { return filterPhase === 'acc' ? s.age <= retAge : s.age >= retAge; });
+      if (pts.length < 2) return;
+      ctx.beginPath();
+      ctx.moveTo(x(pts[0].age), y(pts[0].value));
+      pts.forEach(function (s) { ctx.lineTo(x(s.age), y(s.value)); });
+      ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.stroke();
+      ctx.lineTo(x(pts[pts.length - 1].age), y(0));
+      ctx.lineTo(x(pts[0].age), y(0));
+      ctx.closePath();
+      ctx.globalAlpha = 0.12; ctx.fillStyle = color; ctx.fill(); ctx.globalAlpha = 1;
+    }
+    drawPhase('acc', cOrange);
+    drawPhase('ret', cGreen);
+  }
+
+  function recalc() {
+    var p = {
+      age: +els.age.value, retAge: +els.retAge.value, life: +els.life.value,
+      stack: +els.stack.value || 0, dca: +els.dca.value || 0, spend: +els.spend.value || 0,
+      growth: +els.growth.value / 100, inflation: +els.inflation.value / 100,
+      price: +els.price.value || 1
+    };
+    if (p.retAge < p.age) { p.retAge = p.age; els.retAge.value = p.age; }
+    if (p.life < p.retAge) { p.life = p.retAge; els.life.value = p.retAge; }
+
+    $('vAge').textContent = p.age;
+    $('vRetAge').textContent = p.retAge;
+    $('vLife').textContent = p.life;
+    $('vGrowth').textContent = els.growth.value + '%';
+    $('vInflation').textContent = els.inflation.value + '%';
+
+    var r = simulate(p.stack, p);
+
+    $('rBtc').textContent = btc(r.btcAtRet) + ' BTC';
+    $('rBtcSub').textContent = 'po ' + Math.max(0, p.retAge - p.age) + ' latach akumulacji';
+    $('rValue').textContent = usd(r.valueAtRet);
+    $('rSpend').textContent = usd(r.spendAtRet);
+    $('rNeeded').textContent = btc(btcNeededToday(p)) + ' BTC';
+
+    var v = $('verdict');
+    if (r.depletedAt === null) {
+      v.className = 'verdict ok';
+      $('verdictIcon').textContent = '✓';
+      $('verdictTitle').textContent = 'Plan realny: emerytura w wieku ' + p.retAge + ' lat';
+      $('verdictSub').textContent = 'Przy tych założeniach Bitcoin pokrywa wydatki do ' + p.life + '. roku życia.';
+    } else {
+      v.className = 'verdict bad';
+      $('verdictIcon').textContent = '✕';
+      $('verdictTitle').textContent = 'Zasoby wyczerpią się w wieku ' + r.depletedAt + ' lat';
+      $('verdictSub').textContent = 'Aby plan był trwały, warto zwiększyć oszczędności, opóźnić emeryturę lub ograniczyć wydatki.';
+    }
+
+    drawChart(r.series, p.retAge);
+  }
+
+  Object.keys(els).forEach(function (k) {
+    els[k].addEventListener('input', recalc);
+  });
+  window.addEventListener('resize', recalc);
+
+  // Live BTC price prefill (editable afterwards)
+  fetch('https://mempool.space/api/v1/prices')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d.USD) {
+        els.price.value = Math.round(d.USD);
+        $('priceNote').innerHTML = '<b>●</b> Wczytano bieżącą cenę, można ją zmienić ręcznie';
+        recalc();
+      }
+    })
+    .catch(function () { $('priceNote').textContent = 'Bieżąca cena niedostępna, używana jest wartość domyślna'; });
+
+  recalc();
+})();
+</script>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function () {
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  var conciergeUrl = '../concierge.html?utm_source=concierge&utm_medium=nav';
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = conciergeUrl;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
