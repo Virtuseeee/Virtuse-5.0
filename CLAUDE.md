@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, twenty-sixth round) — blog-sk: Brief nav item, Virtuse Brief hero line, full hreflang (`25b2172`, gh-pages `46157d6`, staging 1/1 md5-verified)
+
+- blog-sk.html (outside sk/, missed by the rollouts) now has the Brief
+  nav item at 09 (Bitcoin dáta/O nás renumbered 10/11, href
+  `news.html?utm_source=brief&utm_medium=nav`), the hero line
+  "Virtuse Brief: týždenný výber od Virtuse." like every other blog, and
+  all 10 hreflang tags (was 5). Verified at 375/1280: no overflow.
+- **Not a bug:** the switcher has no CS entry because there is no Czech
+  blog; no blog in any language lists CS.
+- **Still open (same class, not requested):** blog.html, uk/blog.html and
+  ru/blog.html declare only 5 hreflang tags, fr/blog.html 7 — they miss
+  de/fr/es/pl/hu blogs that exist. de/es/pl/hu/sk blogs have the full 10.
+- Production command (user runs it, then md5-verify):
+```bash
+cd /private/tmp/gh-pages-wt3 && scp -P 222 blog-sk.html virtuse.com@ftp.virtuse.com:public_html/
+```
+
 ## Session status (2026-09-25, twenty-fifth round) — pl/hu de hreflang on fear-greed + trading-volume (`95f6f5a`, gh-pages `54809d3`, staging 4/4 md5-verified; **live on production**, 4/4 md5-verified on virtuse.com)
 
 - pl/fear-greed, pl/trading-volume, hu/fear-greed, hu/trading-volume
@@ -86,8 +103,7 @@ scp -P 222 uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.htm
 - Open decisions for the user: the "Bitcoin is your credit." headline
   (kept in all languages), ByBit vs Bybit spelling, the UK CEO name form,
   ES usted register (applied), CASP vs PSCA on FR legal pages.
-- Still open, not proofreading: blog-sk structural drift (no
-  Brief nav item, no CS in its switcher); native-speaker review of the
+- Still open, not proofreading: native-speaker review of the
   legal pages in every language.
 
 ## Session status (2026-09-25, twenty-second round) — RU low-severity proofreading + RU heading overflow (`fac4e6a`, gh-pages `15adbf5`, staging 21/21 md5-verified). **Held on PL/HU; no new files, so the consolidated command in the nineteenth-round entry still covers everything (173 files)**
