@@ -2,6 +2,54 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-25, fifteenth round) — DE medium-severity proofreading (`492418d`) + 6 % loan rate on all translated lending pages (`5f78a80`); gh-pages `6deae7e`, staging 29/29 md5-verified. **All medium-severity findings are now fixed on staging; production for fr/uk/es/ru/de + sk/cs lending is held on PL/HU** (consolidated command below)
+
+**Round 12 of the proofreading pass (user: "oprav teraz medium položky v
+DE") — 23 de pages** via `scratchpad/fix_medium_de.py` (aborted once on a
+count mismatch — "non-custodial Hub" also sits in meta descriptions that
+the visible-text count missed; `git checkout -- de`, counts relaxed,
+re-run clean).
+- All medium items still open (register, "Keine PR", der Hub, H1 genders
+  and the privacy "Virtuse Report" clause were closed in earlier rounds),
+  plus: German closing quotes „…“ (16 pairs on aml/privacy/terms/rainbow),
+  "–" in the footer Brief line, partner CTAs "<Partner> öffnen" for
+  exchanges, tax software and bots ("holen" kept for Trezor/Ledger/Jade),
+  "Steuerreporting" as the single term, Non-Custodial compounds.
+- **Loan rate bug found while doing DE:** round 1 unified EN at 6 %, but
+  the loan-type card ("ab 5 %") and the Firefish range ("5–15 %") on
+  **every older translation's lending page** still said 5 % (pl/hu were
+  built later from EN and were correct). Fixed in a separate commit
+  (`5f78a80`) on sk, cs, fr, uk, es, ru; de in the DE commit.
+- **Mobile overflow fixes:** de/buy-bitcoin overflowed 13px at 375px,
+  because the single word "Gebührenranking" at 42px is wider than a phone.
+  Added `hyphens: auto` + `overflow-wrap: break-word` for h1–h3 at
+  ≤700px on all de pages (they declare lang="de"). de/index concierge CTA
+  wraps on phones (overflowed 21px). All 22 de pages checked at 375px
+  via iframes after the fix: no overflow except de/about (2px), which is
+  **pre-existing on EN about too** (`.name-visual` decorative graphic is
+  27px wider than its box) — not fixed, EN-source issue.
+- Fine print 12px on de (the EN-source specificity bug; still open on
+  EN, sk, fr, pl, hu).
+
+**Held production deploy — everything from rounds 8–12 of the
+proofreading pass (112 files: fr 22, uk 21, es 23, ru 21, de 23,
+sk/cs lending).** All of them carry the PL/HU language-switcher entries,
+and pl/ + hu/ still 301 on production. Ship pl/ + hu/ first (their own
+rollout: `sftp mkdir public_html/pl` and `public_html/hu`, then their
+pages plus the switcher wiring on EN/sk/cs/…), then run this. It
+supersedes the per-language FR/UK/ES/RU commands in the entries below.
+The file list lives at `scratchpad/touched_held_all.txt` for the md5 check.
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 cs/lending.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 de/404.html de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 es/404.html es/about.html es/aml-compliance.html es/bitcoin-data.html es/blog.html es/bots.html es/btc-dominance.html es/buy-bitcoin.html es/faq.html es/fear-greed.html es/index.html es/lending.html es/ma-200w.html es/mining.html es/privacy-policy.html es/rainbow-chart.html es/retirement-calculator.html es/root-cycles.html es/secure.html es/tax.html es/terms-and-conditions.html es/trading-volume.html es/treasury.html virtuse.com@ftp.virtuse.com:public_html/es/ && \
+scp -P 222 fr/about.html fr/aml-compliance.html fr/bitcoin-data.html fr/blog.html fr/bots.html fr/btc-dominance.html fr/buy-bitcoin.html fr/faq.html fr/fear-greed.html fr/index.html fr/lending.html fr/ma-200w.html fr/mining.html fr/privacy-policy.html fr/rainbow-chart.html fr/retirement-calculator.html fr/root-cycles.html fr/secure.html fr/tax.html fr/terms-and-conditions.html fr/trading-volume.html fr/treasury.html virtuse.com@ftp.virtuse.com:public_html/fr/ && \
+scp -P 222 ru/404.html ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/ && \
+scp -P 222 sk/lending.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+scp -P 222 uk/404.html uk/about.html uk/aml-compliance.html uk/bitcoin-data.html uk/blog.html uk/bots.html uk/btc-dominance.html uk/buy-bitcoin.html uk/faq.html uk/index.html uk/lending.html uk/ma-200w.html uk/mining.html uk/privacy-policy.html uk/rainbow-chart.html uk/retirement-calculator.html uk/root-cycles.html uk/secure.html uk/tax.html uk/terms-and-conditions.html uk/treasury.html virtuse.com@ftp.virtuse.com:public_html/uk/
+```
+
 ## Session status (2026-09-25, fourteenth round) — RU medium-severity proofreading committed (`e229eac`, gh-pages `bf235e1`, staging 21/21 md5-verified). **Production held for the PL/HU reason** (ru pages carry the PL/HU switcher; pl/ + hu/ still 301 on production)
 
 **Round 11 of the proofreading pass (user: "oprav teraz medium položky v
