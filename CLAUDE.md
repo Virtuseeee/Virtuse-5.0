@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, twenty-fourth round) — pl/hu fine print 12px + about glow clip (`37b2e73`, gh-pages `7e15134`, staging 44/44 md5-verified). **Production command below; the user runs it, then md5-verify the 44 files**
+## Session status (2026-09-25, twenty-fourth round) — pl/hu fine print 12px + about glow clip (`37b2e73`, gh-pages `7e15134`, staging 44/44 md5-verified; **live on production** — user ran the scp, 44/44 md5-verified on virtuse.com). main == staging == production again
 
 - All 44 pl/hu pages (not the two 404s) had the plain `.brief-fineprint`
   rule that loses to `.brief-card-poster p` (15px). Now
