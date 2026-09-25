@@ -2,7 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25, eighth round) — CS medium-severity proofreading fixes + EN carry-overs committed (`cc9cd91` + `8084d8c`, gh-pages `e693597`, staging 20/20 md5-verified; production command below, not yet run)
+## Session status (2026-09-25, eighth round) — CS medium-severity proofreading fixes + EN carry-overs committed (`cc9cd91` + `8084d8c`, gh-pages `e693597`, staging 20/20 md5-verified; **live on production** — 20/20 md5-verified on virtuse.com)
+
+**Production done 2026-09-25** (20/20 md5 match, server timestamp 12:43 UTC; live checks: 9 Quick Answers on cs/index, "Odebírat"/"E-mailová adresa"/fine print, "14. května 2026", about 26 partners, bots title + "Cloudoví boti", buy-bitcoin "KYC u partnera", 12px fine-print rule present).
 
 **Round 7 (user: "oprav teraz medium položky v CS") — 20 files** via
 `scratchpad/fix_medium_cs.py`, same shape as the SK round:
