@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Dark-only, matching the homepage's own redesign. -->
+<meta name="color-scheme" content="dark">
+<script src="../lang-detect.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
+<title>Bitcoin-adóbevallás | Virtuse</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/tax.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/tax.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/tax.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/tax.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/tax.html">
+<link rel="alternate" hreflang="de" href="https://virtuse.com/de/tax.html">
+<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/tax.html">
+<link rel="alternate" hreflang="es" href="https://virtuse.com/es/tax.html">
+<link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/tax.html">
+<link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/tax.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Bitcoin-adóbevallás | Virtuse">
+<meta property="og:description" content="Kizárólag Bitcoinra szabott adóeszközök az európai adórendszerekhez. Tranzakciók automatikus importja és országspecifikus adókimutatás percek alatt. KYC nélkül.">
+<meta property="og:url" content="https://virtuse.com/hu/tax.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="hu_HU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bitcoin-adóbevallás | Virtuse">
+<meta name="twitter:description" content="Kizárólag Bitcoinra szabott adóeszközök az európai adórendszerekhez. Tranzakciók automatikus importja és országspecifikus adókimutatás percek alatt. KYC nélkül.">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+
+/* Neutral-gray dark palette, matched to the homepage's own redesign —
+   overrides styles.css's older navy-tinted tokens for this page only. */
+:root {
+  color-scheme: dark;
+  --dark: #08090a;
+  --dark-lighter: #0e0e0e;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --nav-bg: rgba(8, 9, 10, 0.95);
+  --nav-bg-strong: rgba(8, 9, 10, 0.98);
+}
+body { font-family: 'Inter', sans-serif; background: #08090a; color: #e6edf3; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+/* Navigation */
+.nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 48px; }
+
+.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #e6edf3; text-decoration: none; flex-shrink: 0; }
+.nav-logo-img { height: 32px; width: auto; display: block; }
+/* Logo image set in HTML */
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a { color: #8b949e; font-size: 13px; font-weight: 400; padding: 6px 12px; border-radius: 8px; transition: all 0.2s; text-decoration: none; }
+.nav-links a:hover:not(.lang-opt), .nav-links a.active:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
+.nav-links a.active:not(.lang-opt) { font-weight: 600; }
+.nav-cta { background: #f7931a; color: #08090a; font-weight: 700; font-size: 12px; padding: 7px 14px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+.nav-cta:hover { background: #e8850f; transform: translateY(-1px); }
+.mobile-menu-btn { display: none; background: none; border: none; color: #8b949e; font-size: 22px; cursor: pointer; }
+
+/* Hero */
+.hero { padding: 100px 48px 80px; text-align: left; max-width: 1200px; margin: 0 auto; }
+.hero p { margin: 0 0 32px; }
+.hero h1 { font-size: 52px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+/* Orange is a rare stamp now, not a highlight color — matches the homepage's own hero. */
+.hero h1 span { color: var(--text); }
+.hero p { font-size: 18px; color: #8b949e; max-width: 680px; margin: 0 0 32px; line-height: 1.65; }
+.section-header { text-align: left; margin-bottom: 52px; }
+.section-header h2 { font-size: 42px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+.section-header h2 span { font-weight: 400; color: var(--text-muted); }
+.section-header p { font-size: 20px; font-weight: 400; color: var(--text-muted); max-width: 620px; line-height: 1.55; }
+
+/* How It Works — ported to the homepage's own changelog-dot layout
+   (one shared rule, a dot per step, orange only on the first), replacing
+   the old 4-icon-badge card grid. No subheading paragraph, per explicit
+   instruction — only buy-bitcoin.html keeps one. */
+.how-section { padding: 0 24px 80px; }
+.how-header { text-align: left; margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px; }
+.how-header h2 { font-size: 42px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
+.how-header h2 span { font-weight: 400; color: #8b949e; }
+.how-log { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.06); max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.how-log-item { flex: 1; display: flex; flex-direction: column; }
+.how-log-marker { margin-top: -4px; margin-bottom: 24px; }
+.how-log-dot { position: relative; display: block; width: 8px; height: 8px; border-radius: 50%; background: #484f58; }
+.how-log-dot::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: #484f58; opacity: 0.2; }
+.how-log-item:first-child .how-log-dot { background: #f7931a; }
+.how-log-item:first-child .how-log-dot::before { background: #f7931a; opacity: 0.1; }
+.how-log-body { flex: 1; display: flex; flex-direction: column; }
+.how-log-num { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8b949e; order: 4; margin-top: 16px; }
+.how-log-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; order: 1; }
+.how-log-body p { font-size: 15px; color: #8b949e; line-height: 1.6; order: 2; }
+@media (max-width: 900px) {
+  .how-log { flex-direction: column; gap: 0; border-top: none; }
+  .how-log-item { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 28px; padding-bottom: 28px; }
+  .how-log-marker { margin-top: 0; }
+}
+
+/* Country SEO guides + Tax Agent */
+.tax-guides { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+.tax-guides-inner { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px 32px; }
+.tax-guides h2 { font-size: 42px; font-weight: 700; color: #e6edf3; line-height: 1.25; margin: 0 0 14px; }
+.tax-guides-lead { font-size: 20px; font-weight: 400; color: #8b949e; line-height: 1.55; margin: 0 0 24px; max-width: 620px; }
+.tax-guides-links { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-bottom: 0; }
+.tax-guides-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(247,147,26,0.06);
+  color: #e6edf3;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tax-guides-links a:hover {
+  border-color: rgba(247,147,26,0.45);
+  color: #f7931a;
+}
+@media (max-width: 700px) {
+  .tax-guides { padding: 0 24px; }
+  .tax-guides-inner { padding: 24px; }
+}
+
+/* Partner Cards */
+.partners-section { padding: 0 24px 80px; max-width: 1200px; margin: 0 auto; }
+.partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.partner-card { background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; transition: border-color 0.15s ease, background-color 0.15s ease; display: flex; flex-direction: column; }
+.partner-card:hover { border-color: rgba(255,255,255,0.12); background: #1c1c1c; }
+.partner-card.top-pick:hover { border-color: rgba(255,255,255,0.12); background: #1c1c1c; }
+.partner-header { padding: 32px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.partner-logo { display: flex; align-items: center; gap: 14px; }
+.partner-name { font-size: 18px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
+.partner-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0; }
+.partner-icon.bp { background: #f7931a; }
+.partner-icon.wa { background: #58a6ff; }
+.partner-icon.di { background: #3fb950; }
+.partner-location { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #8b949e; }
+.partner-location svg { width: 12px; height: 12px; }
+.partner-tags { padding: 0 28px; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+.tag.orange { background: rgba(247, 147, 26,0.15); color: #f7931a; }
+.tag.blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
+.tag.green { background: rgba(63,185,80,0.15); color: #3fb950; }
+.partner-body { padding: 0 28px; flex-grow: 1; }
+.partner-body p { font-size: 14px; color: #8b949e; line-height: 1.6; margin-bottom: 20px; }
+.partner-features { list-style: none; margin-bottom: 20px; }
+.partner-features li {   gap: 8px; font-size: 13px; color: #e6edf3; padding: 6px 0; }
+.partner-features li svg { width: 14px; height: 14px; color: #e6edf3; flex-shrink: 0; }
+.partner-cta {  gap: 10px; padding: 0 28px 28px; }
+.btn-primary { flex: 1; background: #f7931a; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; transition: all 0.2s; border: none; cursor: pointer; }
+.btn-primary:hover { background: #ffffff; color: #f7931a; transform: translateY(-1px); }
+.btn-secondary { flex: 1; background: transparent; color: #8b949e; font-weight: 600; font-size: 14px; padding: 12px 0; border-radius: 10px; text-align: center; display: block; border: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; cursor: pointer; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.12); color: #e6edf3; }
+
+/* Comparison Table */
+.compare-section { padding: 0 24px 60px; max-width: 900px; margin: 0 auto; }
+.compare-section h2 { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 28px; }
+.compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.compare-table th { padding: 14px 20px; text-align: left; font-weight: 600; color: #8b949e; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+.compare-table th:first-child { width: 35%; }
+.compare-table td { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #e6edf3; }
+.compare-table td:first-child { color: #8b949e; font-weight: 500; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(22, 31, 48,0.5); }
+.compare-table td.best { color: #f7931a; font-weight: 600; }
+
+/* Disclaimer */
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter {
+  background: #0e0e0e;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
+
+.newsletter p {
+  color: #8b949e;
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  background: #08090a;
+  color: #e6edf3;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-form input:focus { border-color: #f7931a; }
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.12); }
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: #e6edf3;
+  color: #08090a;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.brief-card {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brief-card-poster p { font-size: 15px; }
+
+.newsletter-form-stacked.newsletter-form {
+  flex-direction: column;
+  max-width: 100%;
+  gap: 12px;
+}
+
+.newsletter-form-stacked input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 15px;
+}
+
+.newsletter-form-stacked button {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+}
+
+.brief-card .newsletter-form button {
+  background: #ffffff;
+  color: #0d0d0d;
+}
+
+.brief-card .newsletter-form button:hover {
+  background: #e8e8e8;
+  color: #0d0d0d;
+}
+
+.brief-form-msg {
+  margin: 10px auto 0;
+  font-size: 13px;
+  min-height: 18px;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.brief-fineprint {
+  margin: 6px auto 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-form button:hover { background: #f7931a; color: white; }
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo { flex-shrink: 0; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-brief { margin-top: 6px; }
+.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a:hover { text-decoration: underline; }
+
+.footer-wordmark {
+  overflow: hidden;
+  height: 138px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+}
+
+.footer-wordmark-icon-wrap {
+  flex-shrink: 0;
+  animation: footerWordmarkPulse 6s ease-in-out infinite;
+}
+
+.footer-wordmark-icon {
+  height: 210px;
+  width: auto;
+  display: block;
+}
+
+@keyframes footerWordmarkShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+@keyframes footerWordmarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.footer-wordmark-text {
+  display: inline-block;
+  font-size: 288px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: footerWordmarkShimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
+}
+
+@media (max-width: 768px) {
+  .newsletter { padding: 60px 24px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter-form { flex-direction: column; }
+  .footer-main { padding: 40px 24px 20px; }
+  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
+  .footer-bottom { padding-left: 0; padding-right: 0; }
+  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
+  .footer-wordmark { height: 110px; opacity: 0.32; }
+  .footer-wordmark-icon { height: 140px; }
+  .footer-wordmark-text { font-size: 184px; }
+  .footer-columns { gap: 40px; }
+  .footer-logo img { height: 60px; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+.nav { padding: 0 24px; }
+.mobile-menu-btn { display: block; }
+.hero { padding: 64px 24px 52px; }
+.hero h1 { font-size: 34px; }
+.hero p { font-size: 16px; margin: 0 0 24px; }
+.partner-grid { grid-template-columns: 1fr; }
+.compare-table { font-size: 13px; }
+.compare-table th, .compare-table td { padding: 10px 12px; }
+}
+@media (max-width: 500px) {
+.partner-cta { flex-direction: column; }
+}
+
+/* ===== UNIFIED CTA SYSTEM ===== */
+
+a.nav-logo, .nav-logo {
+  display: inline-flex !important;
+  align-items: flex-end;
+  gap: 1px;
+  font-weight: 800;
+  font-size: 19px;
+  color: #e6edf3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-cta, .btn-primary, .newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* nav-cta stays the one sitewide orange stamp — every other button is an
+   inverted neutral, hardcoded (not var()) per the real Safari bug found
+   on the homepage. Partner-card primary CTAs use .btn-primary too, so
+   this also de-orangizes those — confirmed and approved by the user. */
+.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; }
+.nav-cta:hover {
+  background: #ffffff;
+  color: #0d0902;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
+}
+
+.btn-primary, .newsletter-form button { background: #e6edf3; color: #08090a; }
+.btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+/* ===== MOBILE MENU ===== */
+/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
+   divs with a CSS background-color — a real device screenshot on the
+   homepage showed the span version fully invisible on mobile Safari. */
+.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
+
+.ham-line {
+  stroke: var(--text, #e6edf3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 10px 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
+body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
+
+.nav-hamburger {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background:
+      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
+    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-links::before {
+    content: 'MENU';
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-dim, rgba(255,255,255,0.12));
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    list-style: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
+
+  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
+  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
+  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
+  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
+  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
+  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
+  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
+  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
+  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
+  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
+  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #e6edf3;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 15px 6px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links a:active { padding-left: 10px; }
+
+  .nav-link-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim, rgba(255,255,255,0.12));
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link-label { flex: 1; }
+
+  .nav-link-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-dim, rgba(255,255,255,0.12));
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:active .nav-link-arrow,
+  .nav-links a.active .nav-link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
+  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
+
+  .nav-links a.active:not(.lang-opt)::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--btc-orange, #f7931a);
+  }
+
+  .nav-links-cta-item {
+    display: block;
+    margin-top: 22px;
+  }
+
+  .nav-links-cta {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    background: #e6edf3;
+    color: #08090a;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-links-cta svg { width: 16px; height: 16px; }
+
+  .nav-links-tagline {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim, rgba(255,255,255,0.12));
+  }
+
+  body.nav-open { overflow: hidden; }
+}
+
+/* ===== PARTNER CTA FIX =====
+   .btn-primary here only ever had one class (unlike other subpages' shared
+   "btn btn-primary" pattern, where .btn carries flex:1 / full-width sizing),
+   so the site-wide CTA system's display:inline-flex left it content-hugging
+   instead of spanning the card like Custody/Buy Bitcoin/Mining's buttons. */
+.partner-cta .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.partner-cta .btn-primary svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ===== Compact language dropdown (desktop) =====
+   Replaces the old 3-pill .nav-lang-switch with a single compact button
+   that opens a small dropdown, so the nav row has room regardless of how
+   many languages exist. .nav-actions groups it with the CTA button into
+   one flex item so the nav's space-between doesn't spread them apart. */
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-menu { position: relative; }
+
+.lang-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.lang-menu-btn:hover { border-color: var(--border-hover); }
+
+.lang-menu-caret {
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
+
+.lang-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+.lang-menu.open .lang-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-menu-panel .lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+
+.lang-menu-panel .lang-opt.active {
+  background: var(--text);
+  color: var(--dark);
+}
+
+@media (max-width: 1024px) {
+  .lang-menu:not(.lang-menu-mobile) { display: none; }
+  .lang-menu-mobile { margin-top: 4px; }
+  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
+}
+
+/* ===== HU: compact nav text =====
+   Hungarian nav labels run longer than English ("Letétkezelés",
+   "Bitcoin-adatok"), so at the default padding they wrap onto two lines at
+   common desktop widths. Same block as scaffold_es.py, with a selector
+   strong enough to beat the redesign's own .nav-links a:not(.lang-opt). */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) {
+    font-size: 13px;
+    padding: 8px 9px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+
+/* Below ~1200px the twelve Hungarian labels still push the CTA off-screen. */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Navigation -->
+<nav class="nav">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü megnyitása" aria-expanded="false">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
+      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
+    </svg>
+  </button>
+  <a href="/hu/" class="nav-logo">
+    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Bitcoin vásárlás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Bányászat</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Hitelek</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Letétkezelés</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="tax.html" class="active"><span class="nav-link-num">06</span><span class="nav-link-label">Adózás</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Botok</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin-adatok</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Rólunk</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Kezdés<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-lang-item">
+      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
+        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Az oldal nyelve">
+          <span class="lang-flag">🇭🇺</span>HU
+          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
+          <a href="../tax.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+          <a href="../sk/tax.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+          <a href="../uk/tax.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+          <a href="../cs/tax.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+          <a href="../ru/tax.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+          <a href="../de/tax.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+          <a href="../fr/tax.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+          <a href="../es/tax.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+          <a href="../pl/tax.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+          <a href="tax.html" class="lang-opt active" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Az oldal nyelve">
+        <span class="lang-flag">🇭🇺</span>HU
+        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
+        <a href="../tax.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
+        <a href="../sk/tax.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
+        <a href="../uk/tax.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
+        <a href="../cs/tax.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
+        <a href="../ru/tax.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
+        <a href="../de/tax.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
+        <a href="../fr/tax.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
+        <a href="../es/tax.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
+        <a href="../pl/tax.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
+        <a href="tax.html" class="lang-opt active" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
+      </div>
+    </div>
+    <button class="nav-cta">Kezdés</button>
+  </div>
+</nav>
+
+<script>
+// ===== LANGUAGE DROPDOWN =====
+// Handles both the desktop instance (#langMenu) and the mobile drawer's
+// own copy (#langMenuMobile) — each .lang-menu wires up independently,
+// and opening one closes any other.
+(function () {
+  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
+  if (!menus.length) return;
+  function closeAll() {
+    menus.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.lang-menu-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menus.forEach(function (wrap) {
+    var btn = wrap.querySelector('.lang-menu-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
+    if (!stillInside) closeAll();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+
+
+<!-- Hero -->
+<section class="hero">
+<h1>Bitcoin-adóbevallás<br><span>egyszerűen</span></h1>
+<p>Kizárólag Bitcoinra szabott adóeszközök az európai adórendszerekhez. Tranzakciók automatikus importja tárcákból és tőzsdékről. Országspecifikus adókimutatás percek, nem napok alatt. Az adószoftverekhez nem kell KYC.</p>
+
+</section>
+
+<!-- How It Works -->
+<section class="how-section">
+<div class="how-header">
+<h2>Hogyan <span>működik</span></h2>
+</div>
+<div class="how-log">
+<div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">01. lépés</span>
+<h3>Tárcák csatlakoztatása</h3>
+<p>xPub kulcsok vagy CSV-exportok importja tárcákból és tőzsdékről</p>
+</div>
+</div>
+<div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">02. lépés</span>
+<h3>Automatikus besorolás</h3>
+<p>A szoftver kategorizálja a tranzakciókat (vétel, eladás, átutalás, bányászat)</p>
+</div>
+</div>
+<div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">03. lépés</span>
+<h3>Ellenőrzés</h3>
+<p>A besorolások ellenőrzése és a hiányzó tranzakciók pótlása</p>
+</div>
+</div>
+<div class="how-log-item">
+<div class="how-log-marker"><span class="how-log-dot"></span></div>
+<div class="how-log-body">
+<span class="how-log-num">04. lépés</span>
+<h3>Kimutatás exportja</h3>
+<p>Benyújtásra kész, országspecifikus adókimutatás letöltése</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Country tax guides (SEO) -->
+<section class="tax-guides" id="tax-guides">
+<div class="tax-guides-inner">
+<h2>Országonkénti adóútmutatók</h2>
+<p class="tax-guides-lead">Tájékoztató jellegű 2026-os áttekintések 11 uniós országról, valamint öröklési ellenőrzőlista. Nem adótanácsadás.</p>
+<div class="tax-guides-links">
+<a href="/bitcoin-tax/">Mind a 11 ország</a>
+<a href="/bitcoin-tax/slovakia/">Szlovákia</a>
+<a href="/bitcoin-tax/czechia/">Csehország</a>
+<a href="/bitcoin-tax/germany/">Németország</a>
+<a href="/bitcoin-tax/austria/">Ausztria</a>
+<a href="/bitcoin-tax/poland/">Lengyelország</a>
+<a href="/bitcoin-inheritance/">Öröklési ellenőrzőlista</a>
+<a href="../tax-agent.html">Az országom szabályai</a>
+<a href="/de/bitcoin-steuern/deutschland/">Auf Deutsch: Bitcoin-Steuern Deutschland</a>
+</div>
+</div>
+</section>
+
+<!-- Partner Cards -->
+<section class="partners-section">
+<div class="section-header">
+<h2>Adóbevallási <span>partnereink</span></h2>
+<p>Gondosan kiválasztott eszközök európai Bitcoin-befektetőknek</p>
+</div>
+<div class="partner-grid">
+
+<!-- Divly -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-divly.png" alt="Divly" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Divly</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Svédország
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Az adatvédelmet előtérbe helyező adóeszköz, KYC nélkül. 14 perc az importtól a kimutatásig. Több mint 30 országot támogat, köztük Franciaországot és az északi államokat. Megfizethető szakértői ellenőrzési csomag. Bitcoin-barát kategorizálás.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>KYC nélkül</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>14 perc az importtól a kimutatásig</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Több mint 30 ország</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Megfizethető szakértői ellenőrzés</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://divly.com/?ref=otfkzmf" class="btn-primary" target="_blank" rel="noopener">Tovább: Divly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+<!-- Blockpit -->
+<div class="partner-card top-pick">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-blockpit.png" alt="Blockpit" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Blockpit</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Ausztria
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Osztrák fejlesztésű adóeszköz több mint 700 integrációval. A Bitpanda és a BISON hivatalos partnere. Országspecifikus kimutatások Németországra, Ausztriára, Svájcra, Olaszországra, Spanyolországra és Hollandiára. Ingyenes portfóliókövetési csomag. Az EU leggyorsabban növekvő adóeszköze.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Több mint 700 integráció</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bitpanda/BISON partner</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Több mint 7 uniós ország</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ingyenes portfóliókövetés</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://app.blockpit.io/register?fpr=virtuse" class="btn-primary" target="_blank" rel="noopener">Tovább: Blockpit<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+<!-- CoinTracking -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-cointracking.png" alt="CoinTracking" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">CoinTracking</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Németország
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>A kriptoadózás veteránja: 2013 óta követ portfóliókat és készít adókimutatásokat Münchenből. Több mint 1,9 millió felhasználó, több mint 300 tőzsdei integráció és több mint 25 kimutatástípus. Az ingyenes csomag legfeljebb 200 tranzakcióig érvényes.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2013 óta, az eredeti követő</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Több mint 1,9 millió felhasználó világszerte</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Több mint 300 tőzsdei integráció</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ingyenes 200 tranzakcióig</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://cointracking.info/?ref=V328565" class="btn-primary" target="_blank" rel="noopener">Tovább: CoinTracking<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+<!-- Koinly -->
+<div class="partner-card">
+<div class="partner-header">
+<div class="partner-logo">
+<img src="../logo-koinly.png" alt="Koinly" style="width:52px;height:52px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
+<div>
+<div class="partner-name">Koinly</div>
+<div class="partner-location">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Egyesült Királyság
+</div>
+</div>
+</div>
+</div>
+<div class="partner-tags">
+</div>
+<div class="partner-body">
+<p>Ingyenes portfóliókövetés MI-alapú Smart Transfer párosítással, amely automatikusan felismeri a tárcák közötti mozgásokat. Legfeljebb 10 000 tranzakció importja több mint 400 tőzsdéről és tárcából, több mint 100 országból; fizetni csak a kimutatás letöltésekor kell.</p>
+<ul class="partner-features">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ingyenes követés 10 000 tranzakcióig</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Több mint 400 tőzsdei és tárcaintegráció</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>MI-alapú Smart Transfer párosítás</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>FIFO, LIFO, HIFO és átlagköltség-módszer</li>
+</ul>
+</div>
+
+<div class="partner-cta">
+<a href="https://koinly.io/?via=C7DEBFCF&utm_source=affiliate" class="btn-primary" target="_blank" rel="noopener">Tovább: Koinly<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Comparison Table -->
+<section class="compare-section">
+<h2>Gyors összehasonlítás</h2>
+<div class="compare-table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th>Jellemző</th>
+<th>Divly</th>
+<th>Blockpit</th>
+<th>CoinTracking</th>
+<th>Koinly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ár</td>
+<td class="best">39 EUR/év</td>
+<td>49 EUR-tól/év</td>
+<td>11 EUR-tól/hó</td>
+<td>49 $-tól/év</td>
+</tr>
+<tr>
+<td>Ingyenes csomag</td>
+<td>Nem</td>
+<td class="best">Igen (követés)</td>
+<td class="best">Igen (200 tranzakció)</td>
+<td class="best">Igen (10 000 tranzakció)</td>
+</tr>
+<tr>
+<td>Országok</td>
+<td>30+</td>
+<td>7+ EU</td>
+<td class="best">100+</td>
+<td class="best">100+</td>
+</tr>
+<tr>
+<td>KYC szükséges</td>
+<td class="best">Nem</td>
+<td class="best">Nem</td>
+<td class="best">Nem</td>
+<td class="best">Nem</td>
+</tr>
+<tr>
+<td>DeFi-támogatás</td>
+<td>Korlátozott</td>
+<td class="best">Igen</td>
+<td class="best">Igen</td>
+<td class="best">Igen</td>
+</tr>
+<tr>
+<td>Kinek ajánlott</td>
+<td>Adatvédelem</td>
+<td>Több uniós ország</td>
+<td>Haladó felhasználók</td>
+<td>Globális lefedettség</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- Disclaimer -->
+<!-- Newsletter -->
+<section class="newsletter">
+  <div class="brief-card brief-card-poster">
+  <h2>Iratkozzon fel <span>a Briefre</span></h2>
+  <p>Virtuse Brief. Csak Bitcoin. Tokenek nélkül. PR nélkül.</p>
+  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
+    <input type="email" name="email" placeholder="E-mail-cím" required>
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+    <button type="submit">Feliratkozás</button>
+  </form>
+  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
+  <p class="brief-fineprint">Minden hétfőn. Bármikor leiratkozhat.</p>
+  </div>
+  <script>
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    var msg = document.getElementById('newsletterMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements['email'].value.trim();
+      var hp = form.elements['website'].value;
+      msg.textContent = '';
+      msg.style.color = 'var(--text-muted)';
+      btn.disabled = true;
+      btn.textContent = 'KÜLDÉS...';
+      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, hp: hp, lang: 'hu' })
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok) {
+          form.reset();
+          msg.textContent = "Kész. Az üdvözlő e-mail úton van.";
+          msg.style.color = 'var(--green, #3fb950)';
+        } else {
+          msg.textContent = (result.data && result.data.error) || 'Hiba történt. Kérjük, próbálja újra.';
+          msg.style.color = '#f85149';
+        }
+      }).catch(function () {
+        msg.textContent = 'Hálózati hiba. Kérjük, próbálja újra.';
+        msg.style.color = '#f85149';
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      });
+    });
+  })();
+  </script>
+</section>
+
+<!-- Footer -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Szolgáltatások</h4>
+        <a href="buy-bitcoin.html">Bitcoin vásárlás</a>
+        <a href="secure.html">Letétkezelés</a>
+        <a href="mining.html">Bányászat</a>
+        <a href="lending.html">Hitelek</a>
+        <a href="treasury.html">Treasury</a>
+        <a href="tax.html">Adózás</a>
+        <a href="bots.html">Botok</a>
+      </div>
+      <div class="footer-col">
+        <h4>Cég</h4>
+        <a href="about.html">Rólunk</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Eszközök</h4>
+        <a href="../concierge.html?utm_source=concierge&amp;utm_medium=footer">Bitcoin Concierge</a>
+        <a href="../stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
+        <a href="../loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
+        <a href="../tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
+        <a href="retirement-calculator.html">Nyugdíjkalkulátor</a>
+      </div>
+      <div class="footer-col">
+        <h4>Útmutatók</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Blog</a>
+        <a href="bitcoin-data.html">Bitcoin-adatok</a>
+        <a href="/bitcoin-tax/">Bitcoin-adózás</a>
+        <a href="/bitcoin-inheritance/">Öröklés</a>
+        <a href="../tax-agent.html">Tax Agent</a>
+      </div>
+      <div class="footer-col">
+        <h4>Jogi információk</h4>
+        <a href="terms-and-conditions.html">Felhasználási feltételek</a>
+        <a href="privacy-policy.html">Adatvédelmi tájékoztató</a>
+        <a href="aml-compliance.html">AML és megfelelés</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2018–2026 Virtuse Group. Minden jog fenntartva.</p>
+    <p class="footer-bottom-brief">Virtuse Brief: a Virtuse heti összefoglalója. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Elolvasom &rarr;</a></p>
+  </div>
+  <div class="footer-wordmark" aria-hidden="true">
+    <span class="footer-wordmark-icon-wrap">
+      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
+          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
+        </defs>
+        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
+        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
+      </svg>
+    </span>
+    <span class="footer-wordmark-text">Virtuse</span>
+  </div>
+</footer>
+
+
+
+<!-- ===== STAT COUNTERS (anime.js) ===== -->
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
+  var counters = [];
+
+  candidates.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
+    if (!m) return;
+    counters.push({
+      el: el,
+      target: parseInt(m[1].replace(/,/g, ''), 10),
+      suffix: m[2] || ''
+    });
+  });
+  if (!counters.length) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var c = null;
+      for (var i = 0; i < counters.length; i++) {
+        if (counters[i].el === entry.target) { c = counters[i]; break; }
+      }
+      if (!c) return;
+
+      var obj = { val: 0 };
+      animate(obj, {
+        val: c.target,
+        duration: 1600,
+        ease: 'outCubic',
+        onUpdate: function () {
+          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
+        },
+        onComplete: function () {
+          c.el.textContent = c.target.toLocaleString() + c.suffix;
+        }
+      });
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c.el); });
+})();
+</script>
+
+<!-- ===== SCROLL REVEAL (anime.js) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function () {
+  if (typeof anime === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var animate = anime.animate;
+  var stagger = anime.stagger;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
+  if (!sections.length) return;
+
+  sections.forEach(function (sec) {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(24px)';
+  });
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var sec = entry.target;
+
+      animate(sec, {
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 700,
+        ease: 'outQuad'
+      });
+
+      var groups = sec.querySelectorAll('[class*="grid"], .steps');
+      groups.forEach(function (group) {
+        var items = Array.prototype.slice.call(group.children);
+        if (!items.length) return;
+        items.forEach(function (it) { it.style.opacity = '0'; });
+        animate(items, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          delay: stagger(80, { start: 150 }),
+          duration: 600,
+          ease: 'outQuad'
+        });
+      });
+
+      io.unobserve(sec);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  sections.forEach(function (sec) { io.observe(sec); });
+})();
+</script>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<script>
+(function () {
+  var btn = document.getElementById('navHamburger');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a, button').forEach(function (el) {
+    if (el.classList.contains('lang-menu-btn')) return;
+    el.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+
+// ===== NAV BACKGROUND ON SCROLL =====
+(function () {
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
+  });
+})();
+</script>
+
+<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nav-cta');
+  if (!btns.length) return;
+  var conciergeUrl = '../concierge.html?utm_source=concierge&utm_medium=nav';
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = conciergeUrl;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
