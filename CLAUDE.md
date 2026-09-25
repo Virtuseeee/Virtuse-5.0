@@ -2,7 +2,64 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-25) — Bitcoin Concierge redesigned to the homepage's design language (`50b8f57`, gh-pages `8c499b4`, staging 22/22 md5-verified, **live on production** — user ran the scp + sftp rm; 22/22 md5-verified on virtuse.com and all 10 old asset hashes confirmed gone). Sitewide proofreading pass in progress (7 of 8 language reports in)
+## Session status (2026-09-25, second round) — Proofreading proposal delivered (628 findings, 8 languages); EN + RU high-severity fixes committed (`54b1de2`, gh-pages `996a089`, staging 31/31 md5-verified; production command below, not yet run)
+
+**Proofreading proposal:** all 8 language reports are in (EN 62, SK 99,
+CS 89, FR 76, UK 62, ES 64, RU 82, DE 94 = 628 findings: 64 high, 261
+medium, 303 low). Compiled into `scratchpad/proof/korektury-virtuse.html`
+(+ `.md`) via `scratchpad/proof/compile.py` and sent to the user; the raw
+per-language reports are `scratchpad/proof/findings_<lang>.md` (session
+scratchpad only, not in the repo). Cross-language themes are listed at the
+top of that document (EN-source bugs inherited everywhere, tú/du vs
+usted/Sie register in the Brief block on es/de, Bitcoin/bitcoin
+capitalisation, wallet/custody terminology drift, untranslated partner-card
+labels, FR non-breaking spaces, 5 % vs 6 % lending floor, partner counts
+26 / "over 50" / "eight categories", Bratislava called the HQ of the
+Singapore entity on about.html).
+
+**Round 1 fixes (user: "oprav najprv high položky v EN a RU") — 31 files:**
+- EN `lending.html`: the partner card ("5% — 15% p.a.") and loan-type card
+  ("Rates from 5% p.a.") were the only two places on the whole site quoting
+  5 %; hero/og/index and all 7 translations say 6 %, so unified at 6 %
+  ("6–15% p.a."). Hero sentence "Virtuse provides a service where…" →
+  "Virtuse connects you with vetted partners that lend cash against your
+  Bitcoin…" (the old wording contradicted the Terms' non-custodial-hub
+  language). **The real Firefish floor was not verified** (their site is
+  JS-rendered); if it is 5 %, change the 6 % in all 8 languages instead.
+- EN `index.html` hero CTA "Find the Best Service"; `privacy-policy.html`
+  "Virtuse Report" → "Virtuse Brief".
+- EN `root-cycles.html` carried rainbow-chart's exact title/og:title/
+  twitter:title/H1, **and the dashboard sub-nav on all 8 dashboard pages
+  listed root-cycles.html under the label "Rainbow Chart" while
+  rainbow-chart.html was not in the sub-nav at all.** Retitled "Bitcoin
+  Root-Scale Cycles — Virtuse" / H1 "Root-Scale Cycles" and the sub-nav now
+  lists both pages (Rainbow Chart → rainbow-chart.html, Root-Scale Cycles →
+  root-cycles.html, `active` class on the right one per page). Same fix on
+  ru/ ("Корневые циклы Биткоина", 6 ru dashboard pages). The other 6
+  languages still have the duplicate-title + sub-nav bug (medium in their
+  reports) — fix with the same two-line replacement when doing their rounds.
+- RU sitewide: "Биткоин данные" → "Данные о Биткоине" (nav label, footer,
+  bitcoin-data title/og, body mentions on faq/privacy/aml/terms); "Только
+  биткоин" → "Только Биткоин" in every Brief line; untranslated partner-card
+  country labels on buy-bitcoin (5), mining (3), lending (1), secure (3);
+  secure H1 "Защитите свой Биткоин", bots H1 "стратегию по Биткоину";
+  "Virtuse, это" → "Virtuse — это" on privacy/terms.
+- Verified: asserted replacements (script `scratchpad/fix_high_en_ru.py`),
+  tagcheck 0 errors on all 31, leftover-string sweep clean, sub-nav has
+  exactly one rainbow + one root-cycles link and ≤1 active per page.
+
+**Next:** run the production command below and md5-verify with
+`scratchpad/verify_staging_proof.sh virtuse.com`; then the user decides on
+the register question (Brief block tú/du) and the medium/low rounds per
+language. Remaining high items: SK 3, CS 10, FR 5, UK 10, ES 5, DE 11.
+
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 bitcoin-data.html btc-dominance.html fear-greed.html index.html lending.html ma-200w.html privacy-policy.html rainbow-chart.html retirement-calculator.html root-cycles.html trading-volume.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 ru/about.html ru/aml-compliance.html ru/bitcoin-data.html ru/blog.html ru/bots.html ru/btc-dominance.html ru/buy-bitcoin.html ru/faq.html ru/index.html ru/lending.html ru/ma-200w.html ru/mining.html ru/privacy-policy.html ru/rainbow-chart.html ru/retirement-calculator.html ru/root-cycles.html ru/secure.html ru/tax.html ru/terms-and-conditions.html ru/treasury.html virtuse.com@ftp.virtuse.com:public_html/ru/
+```
+
+## Session status (2026-09-25) — Bitcoin Concierge redesigned to the homepage's design language (`50b8f57`, gh-pages `8c499b4`, staging 22/22 md5-verified, **live on production** — user ran the scp + sftp rm; 22/22 md5-verified on virtuse.com and all 10 old asset hashes confirmed gone). Sitewide proofreading pass: reports done, see the entry above
 
 **Concierge redesign — what changed and where the source is.** The four
 Layer-2 modules are a React/Vite project **outside this repo** at
