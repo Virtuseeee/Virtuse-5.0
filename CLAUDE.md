@@ -2,6 +2,34 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-26) — Hero cube lighting matched to Resend, slightly brighter (`47c722f`, gh-pages `bde41f1`, staging 10/10 md5-verified)
+
+**User ask:** "Matchuj osvietenie kocky s kockou v hero resend.com/home, naša
+kocka by mala byť mierne viac vysvietená; najprv local, potom staging."
+- Resend's hero cube is a pre-rendered video (`/static/cube.mp4`, poster
+  `cube-fallback.jpg`): near-black cubelets, soft upper-left key, grey lit
+  faces, crisp bevel highlights. Ours is live Three.js (r160).
+- **Root cause of our black cube:** two of three materials are highly
+  metallic and the scene had no environment map, so metal faces reflected
+  nothing. Fix in the shared cube script (identical on all 10 language
+  homepages): `RoomEnvironment` via `PMREMGenerator` as
+  `scene.environment`; materials 0x26272c/0x26272d, roughness 0.4/0.5,
+  envMapIntensity 1.35/1.15/0.7; exposure 1.4; ambient 0.5; key 3.2 at
+  (-3.2, 4.2, 6.4); new soft frontal light 0.9 at (1.2, 0.8, 8).
+- Tuned with headless-Chrome renders (SwiftShader, see earlier tooling
+  notes): mean luminance of the cube crop 5.3 → 21.7, lit-pixel mean
+  30 → 55. Verified in the real browser (GPU) at 1280 and 375: no console
+  errors beyond the known GTM pixel, RoomEnvironment.js loads (200), no
+  overflow. Scripts: `scratchpad/cube/patch_cube.py` + `render.sh`,
+  final params in `scratchpad/cube/final_params.json`.
+- **Production not done yet** (user asked for staging). Command when
+  approved:
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 index.html virtuse.com@ftp.virtuse.com:public_html/ && \
+for l in cs de es fr hu pl ru sk uk; do scp -P 222 $l/index.html virtuse.com@ftp.virtuse.com:public_html/$l/; done
+```
+
 ## Session status (2026-09-25, twenty-seventh round) — blog hreflang complete + sitemap blog entries (`9b4bb50`, gh-pages `e15c361`, staging 5/5 md5-verified; **live on production**, 5/5 md5-verified on virtuse.com)
 
 - blog.html, uk/blog.html, ru/blog.html (5 tags) and fr/blog.html (7)
