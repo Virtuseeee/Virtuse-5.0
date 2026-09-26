@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-26) — Hero cube lighting matched to Resend, slightly brighter (`47c722f`, gh-pages `bde41f1`, staging 10/10 md5-verified)
+## Session status (2026-09-26) — Hero cube lighting matched to Resend, slightly brighter (`47c722f`, gh-pages `bde41f1`, staging 10/10 md5-verified; **live on production**, 10/10 md5-verified on virtuse.com)
 
 **User ask:** "Matchuj osvietenie kocky s kockou v hero resend.com/home, naša
 kocka by mala byť mierne viac vysvietená; najprv local, potom staging."
@@ -22,8 +22,8 @@ kocka by mala byť mierne viac vysvietená; najprv local, potom staging."
   errors beyond the known GTM pixel, RoomEnvironment.js loads (200), no
   overflow. Scripts: `scratchpad/cube/patch_cube.py` + `render.sh`,
   final params in `scratchpad/cube/final_params.json`.
-- **Production not done yet** (user asked for staging). Command when
-  approved:
+- Production done 2026-09-26 (user ran the command below; 10/10 md5).
+  Kept for reference:
 ```bash
 cd /private/tmp/gh-pages-wt3 && \
 scp -P 222 index.html virtuse.com@ftp.virtuse.com:public_html/ && \
