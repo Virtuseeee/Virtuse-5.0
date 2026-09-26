@@ -512,7 +512,7 @@
     });
   }
   function loadPulse() {
-    j('news/news-pulse.json?v=20260924a').then(function (data) {
+    j('news/news-pulse.json?v=20260926a').then(function (data) {
       applyPulseMeta(data || {});
       var local = (data && data.items) || [];
       if (data && data.feed) {
