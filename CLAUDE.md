@@ -80,8 +80,8 @@ is lifted. uk/ru/es/pl/hu still load no bubble at all.
 existing de/ folder; the last line deletes the 10 old asset hashes):**
 ```bash
 cd /private/tmp/gh-pages-wt3 && \
-scp -P 222 concierge-launcher.js concierge.html loan.html stacking.html tax-agent.html virtuse.com@ftp.virtuse.com:public_html/ && \
 scp -P 222 concierge-assets/arrow-left-DPiJmz0x.js concierge-assets/button-D6FPShcF.js concierge-assets/button-jgYAi462.css concierge-assets/de-BG_ME5XA.js concierge-assets/main-Bq9pOS7n.js concierge-assets/main-loan-nln8nJRc.js concierge-assets/main-stacking-C675Rcta.js concierge-assets/main-tax-CBk3C-JV.js concierge-assets/shield-check-B2N1nmiP.js concierge-assets/table-DP_5PsfH.js concierge-assets/triangle-alert-D460g7dq.js virtuse.com@ftp.virtuse.com:public_html/concierge-assets/ && \
+scp -P 222 concierge-launcher.js concierge.html loan.html stacking.html tax-agent.html virtuse.com@ftp.virtuse.com:public_html/ && \
 scp -P 222 cs/concierge.html cs/loan.html cs/stacking.html cs/tax-agent.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
 scp -P 222 de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/concierge.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/loan.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/stacking.html de/tax-agent.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
 scp -P 222 sk/concierge.html sk/loan.html sk/stacking.html sk/tax-agent.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
