@@ -36,9 +36,12 @@
 (function () {
   'use strict';
 
-  var LANG = document.documentElement.lang === 'sk' || document.documentElement.lang === 'cs'
-    ? document.documentElement.lang
-    : 'en';
+  // Languages that have their own Concierge page (<lang>/concierge.html).
+  // Keep in sync with MODULE_LANGS in the Concierge project (src/lib/i18n.ts).
+  var MODULE_LANGS = ['en', 'sk', 'cs', 'de'];
+  var PAGE_LANG = document.documentElement.lang || 'en';
+  var HAS_OWN = MODULE_LANGS.indexOf(PAGE_LANG) !== -1;
+  var LANG = HAS_OWN ? PAGE_LANG : 'en';
   var COPY = {
     en: {
       bubbleAria: 'Open Bitcoin Concierge — which Bitcoin service is right for me?',
@@ -59,6 +62,13 @@
       bubbleTitle: 'Která Bitcoin služba je pro mě ta pravá?',
       bubbleSub: 'Zdarma · Bez registrace · Nikdy nedržíme vaše klíče',
       closeAria: 'Zavřít Bitcoin Concierge',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+    de: {
+      bubbleAria: 'Bitcoin Concierge öffnen – welcher Bitcoin-Service passt zu mir?',
+      bubbleTitle: 'Welcher Bitcoin-Service passt zu mir?',
+      bubbleSub: 'Kostenlos · Ohne Anmeldung · Wir verwahren nie Ihre Schlüssel',
+      closeAria: 'Bitcoin Concierge schließen',
       iframeTitle: 'Virtuse Bitcoin Concierge',
     },
   }[LANG];
@@ -179,13 +189,13 @@
   }
 
   function resolveConciergeUrl() {
-    // Same-directory relative path: root EN pages -> concierge.html next
-    // to them, sk/ and cs/ pages -> their own folder's sibling
-    // concierge.html (a real file, not the EN one). Deploy variants
-    // nested one level deep with no concierge.html sibling of their
-    // own (mining_deploy/, buybitcoin/, hero/) are still out of scope
-    // for this rollout.
-    return 'concierge.html';
+    // Root EN pages and <lang>/ pages of languages that have their own
+    // Concierge open the same-directory concierge.html. Other language
+    // folders (no Concierge of their own yet) open the English one one
+    // level up -- a bare 'concierge.html' there would 404/redirect.
+    // Deploy variants nested one level deep with no concierge.html sibling
+    // of their own (mining_deploy/, buybitcoin/, hero/) are out of scope.
+    return HAS_OWN ? 'concierge.html' : '../concierge.html';
   }
 
   function openOverlay(overlay) {
