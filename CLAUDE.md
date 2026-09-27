@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-27) — Layer 2 modules: 10-language i18n foundation (phase 1) + German pilot (`ed355f6`, gh-pages `a98a0ad`, staging 50/50 md5-verified, old hashes 404). **Production pending the user's go**
+## Session status (2026-09-27) — Layer 2 modules: 10-language i18n foundation (phase 1) + German pilot (`ed355f6`, gh-pages `a98a0ad`, staging 50/50 md5-verified, old hashes 404; **live on production** — user ran the command, 50/50 md5-verified on virtuse.com, the 10 old hashes gone, German chat flow checked live)
 
 **Plan agreed with the user:** phase 1 = i18n refactor with no visible
 change; DE pilot; then FR → ES → PL → HU → UK → RU, one language per round
@@ -76,8 +76,8 @@ the short-holding case (≥1 year is 0 %) — existing data, not changed. The
 Tax Agent's German country rules need a native/tax review before noindex
 is lifted. uk/ru/es/pl/hu still load no bubble at all.
 
-**Production command (after the user approves; new de/ files go into the
-existing de/ folder; the last line deletes the 10 old asset hashes):**
+**Production command (done 2026-09-27; kept for reference — new de/ files
+went into the existing de/ folder; the last line deleted the 10 old hashes):**
 ```bash
 cd /private/tmp/gh-pages-wt3 && \
 scp -P 222 concierge-assets/arrow-left-DPiJmz0x.js concierge-assets/button-D6FPShcF.js concierge-assets/button-jgYAi462.css concierge-assets/de-BG_ME5XA.js concierge-assets/main-Bq9pOS7n.js concierge-assets/main-loan-nln8nJRc.js concierge-assets/main-stacking-C675Rcta.js concierge-assets/main-tax-CBk3C-JV.js concierge-assets/shield-check-B2N1nmiP.js concierge-assets/table-DP_5PsfH.js concierge-assets/triangle-alert-D460g7dq.js virtuse.com@ftp.virtuse.com:public_html/concierge-assets/ && \
