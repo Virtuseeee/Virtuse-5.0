@@ -2,6 +2,92 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-27) — Layer 2 modules: 10-language i18n foundation (phase 1) + German pilot (`ed355f6`, gh-pages `a98a0ad`, staging 50/50 md5-verified, old hashes 404). **Production pending the user's go**
+
+**Plan agreed with the user:** phase 1 = i18n refactor with no visible
+change; DE pilot; then FR → ES → PL → HU → UK → RU, one language per round
+(local → staging → production); translate the Tax Agent's country rules
+too (native review before noindex is lifted); Concierge bubble on every
+page of a language once it has its modules.
+
+**Architecture (Concierge project, ~/Documents/virtuse-concierge-deploy/
+bitcoin-concierge — NOT a git repo; source snapshot before the refactor:
+`scratchpad/concierge_backup/src_and_shells_2026-09-27.tgz`):**
+- `src/lib/i18n.ts`: `ALL_LANGS` (10), `MODULE_LANGS` (languages whose
+  module pages are deployed — also drives the module language switcher).
+  EN/SK/CS stay inline in the code (`t(lang, en, sk, cs)`, `{en,sk,cs}`
+  objects) exactly as before; every other language is a dictionary
+  `src/lib/i18n/<lang>.ts` keyed by the **English source text**, loaded on
+  demand by `initI18n()` in each `main*.tsx` before render (own chunk,
+  ~16 KB gz for DE), English fallback for missing keys.
+  `L(obj, lang)` replaces `obj[lang]`; the 33 strings with runtime values
+  use `tv(lang, en, sk, cs, [vars])` with `{0}` placeholders.
+- `scripts/i18n-check.mjs`: key count + per-dictionary missing/unused/
+  placeholder mismatches; `--keys out.json` exports the 382 source strings.
+  **If an English string changes, its dictionary entries fall back to EN
+  until re-keyed — run the check after every EN copy edit.**
+- `src/lib/chrome.ts` is generated for all 10 languages from the live
+  homepages by `scratchpad/i18n_check/gen_chrome.py` (nav, CTA, hamburger
+  label, footer columns, copyright, Brief line + "Read" label). Regenerate
+  after homepage nav/footer changes or after repointing tool links.
+- Tax Agent / Loan Copilot preselect the page language's country
+  (cs→cz, de, pl, hu; EN/SK keep sk); Loan's home link follows the language.
+- Verified phase 1 against a frozen baseline build: all 12 EN/SK/CS pages
+  render identical text except the intended footer sync (proofread
+  copyright; the old footer printed "Read it →" twice) and the new DE
+  switcher entry; full EN chat flows (loan, buy) byte-identical by hash.
+
+**Adding the next language (recipe, proven on DE):**
+1. Translate `--keys` output → `src/lib/i18n/<lang>.ts` (aligned JSON →
+   generated TS, see `scratchpad/i18n_check/de_*.json`); check = 0 missing.
+2. `<lang>-{concierge,stacking,loan,tax-agent}.html` entries (copy
+   `sk-*`, set lang/title/description) + 4 inputs in `vite.config.ts` +
+   add to `MODULE_LANGS` (project) and to `MODULE_LANGS` in the site's
+   `concierge-launcher.js` (+ its COPY block).
+3. Site: `scratchpad/i18n_check/make_de_shells.py` pattern creates the 4
+   `<lang>/*.html` shells from sk/ and rewrites hreflang on all shells;
+   `scratchpad/deploy_concierge_build.py` MAP gets the 4 new entries;
+   `scratchpad/i18n_check/de_site_links.py` pattern repoints
+   `../concierge|stacking|loan|tax-agent.html` on `<lang>/*.html` and adds
+   the launcher (check for the **script tag**, not the filename — de/index
+   only mentioned it in a CSS comment); regenerate chrome.ts; rebuild.
+4. Every build changes asset hashes for ALL shells → production = all
+   shells + new assets + `sftp rm` of the old hashes.
+
+**DE pilot contents:** de.ts 382/382 (Sie register, site terminology,
+tool names kept in English as on the German site); 4 German shells with
+German title/description/OG; hreflang en/sk/cs/de on all 16 shells; 117
+links on de/ repointed to the German tools; bubble on all 22 de pages
+(German copy, opens de/concierge.html). Verified locally: full German chat
+flow incl. interpolated country names, partner CTAs keep UTM, "Meinen Plan
+simulieren" → de/stacking; no English leftovers on the four tools; no
+overflow at 1280/375; EN/SK/CS bubbles unchanged.
+
+**Correction:** I first reported the uk/ru/es/pl/hu homepages as having a
+live broken bubble — wrong: they only mention `concierge-launcher.js` in a
+CSS comment and don't load it. The launcher change (languages without
+their own Concierge open `../concierge.html`) is preventive.
+
+**Open / flagged:** amounts are formatted `en-IE` ("€25,000") in every
+language incl. SK/CS — a comma-decimal reader can misread it; a per-
+language formatter would also change SK/CS output, so it's a separate
+decision. The German Loan preset "Deutschland (<1 J. gehalten) · 42 %" is
+the short-holding case (≥1 year is 0 %) — existing data, not changed. The
+Tax Agent's German country rules need a native/tax review before noindex
+is lifted. uk/ru/es/pl/hu still load no bubble at all.
+
+**Production command (after the user approves; new de/ files go into the
+existing de/ folder; the last line deletes the 10 old asset hashes):**
+```bash
+cd /private/tmp/gh-pages-wt3 && \
+scp -P 222 concierge-launcher.js concierge.html loan.html stacking.html tax-agent.html virtuse.com@ftp.virtuse.com:public_html/ && \
+scp -P 222 concierge-assets/arrow-left-DPiJmz0x.js concierge-assets/button-D6FPShcF.js concierge-assets/button-jgYAi462.css concierge-assets/de-BG_ME5XA.js concierge-assets/main-Bq9pOS7n.js concierge-assets/main-loan-nln8nJRc.js concierge-assets/main-stacking-C675Rcta.js concierge-assets/main-tax-CBk3C-JV.js concierge-assets/shield-check-B2N1nmiP.js concierge-assets/table-DP_5PsfH.js concierge-assets/triangle-alert-D460g7dq.js virtuse.com@ftp.virtuse.com:public_html/concierge-assets/ && \
+scp -P 222 cs/concierge.html cs/loan.html cs/stacking.html cs/tax-agent.html virtuse.com@ftp.virtuse.com:public_html/cs/ && \
+scp -P 222 de/about.html de/aml-compliance.html de/bitcoin-data.html de/blog.html de/bots.html de/btc-dominance.html de/buy-bitcoin.html de/concierge.html de/faq.html de/fear-greed.html de/index.html de/lending.html de/loan.html de/ma-200w.html de/mining.html de/privacy-policy.html de/rainbow-chart.html de/retirement-calculator.html de/root-cycles.html de/secure.html de/stacking.html de/tax-agent.html de/tax.html de/terms-and-conditions.html de/trading-volume.html de/treasury.html virtuse.com@ftp.virtuse.com:public_html/de/ && \
+scp -P 222 sk/concierge.html sk/loan.html sk/stacking.html sk/tax-agent.html virtuse.com@ftp.virtuse.com:public_html/sk/ && \
+sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/concierge_rm_old_de.sftp
+```
+
 ## Session status (2026-09-26) — Hero cube lighting matched to Resend, slightly brighter (`47c722f`, gh-pages `bde41f1`, staging 10/10 md5-verified; **live on production**, 10/10 md5-verified on virtuse.com)
 
 **User ask:** "Matchuj osvietenie kocky s kockou v hero resend.com/home, naša
