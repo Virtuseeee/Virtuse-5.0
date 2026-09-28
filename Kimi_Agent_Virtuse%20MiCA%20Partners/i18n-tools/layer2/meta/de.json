@@ -1,0 +1,39 @@
+{
+ "locale": "de_DE",
+ "project": {
+  "concierge": [
+   "Bitcoin Concierge · Virtuse Layer 2",
+   "Virtuse Bitcoin Concierge – Non-Custodial-Vermittlung an geprüfte Bitcoin-Partner in der EU."
+  ],
+  "stacking": [
+   "Stacking Strategist · Virtuse Layer 2",
+   "Virtuse Stacking Strategist – DCA-Projektion und Gebührenvergleich der Partner für den Aufbau Ihres Bitcoin-Bestands."
+  ],
+  "loan": [
+   "Loan & Liquidity Copilot · Virtuse Layer 2",
+   "Virtuse Loan & Liquidity Copilot – vergleichen Sie den Verkauf Ihrer Bitcoin mit einem Kredit dagegen, mit Ihren eigenen Zahlen inklusive Liquidationsrisiko."
+  ],
+  "tax-agent": [
+   "Tax & Inheritance Agent · Virtuse Layer 2",
+   "Virtuse Tax & Inheritance Agent – Übersicht zur Krypto-Besteuerung in 11 EU-Ländern plus Erbfall-Check für Ihre Bitcoin."
+  ]
+ },
+ "site": {
+  "concierge": [
+   "Bitcoin Concierge – in 60 Sekunden zum passenden Partner | Virtuse",
+   "Beantworten Sie ein paar Fragen, und der Virtuse Bitcoin Concierge vermittelt Sie an den passenden geprüften Partner mit MiCA-Lizenz – non-custodial, kostenlos, ohne Anmeldung."
+  ],
+  "stacking": [
+   "Stacking Strategist – DCA-Plan und Gebührenvergleich | Virtuse",
+   "Legen Sie Ihren Bitcoin-Stacking-Rhythmus fest, sehen Sie die langfristige DCA-Projektion und vergleichen Sie die Gebühren aller Partner, um pro Kauf den günstigsten Weg zu finden."
+  ],
+  "loan": [
+   "Loan &amp; Liquidity Copilot – Verkaufen oder beleihen | Virtuse",
+   "Vergleichen Sie den Verkauf Ihrer Bitcoin mit einem Kredit dagegen – mit Ihren eigenen Zahlen: Steuerlast, Zinskosten und Liquidationsrisiko im direkten Vergleich."
+  ],
+  "tax-agent": [
+   "Tax &amp; Inheritance Agent – 11 EU-Länder | Virtuse",
+   "Bitcoin-Steuerübersicht für 11 EU-Länder, plus ein Erbfall-Check: Was passiert mit Ihren Sats, wenn Sie nicht mehr da sind?"
+  ]
+ }
+}

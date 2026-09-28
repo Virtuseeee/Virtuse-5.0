@@ -156,6 +156,23 @@ scp -P 222 article.html brief-chrome.js blog.html blog-sk.html virtuse.com@ftp.v
 for l in uk ru de fr es pl hu; do scp -P 222 $l/blog.html virtuse.com@ftp.virtuse.com:public_html/$l/; done
 ```
 
+## Session status (2026-09-28) — Layer 2 translation handover: tools persisted in the repo + handover prompt
+
+- **Handover prompt for the next agent:**
+  `Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/HANDOVER-PROMPT.md` (FR → ES → PL →
+  HU → UK → RU, recipe, decisions, verification checklist, deploy rules).
+- The scripts used for the DE pilot lived in a session scratchpad; they are now generic tools in
+  `i18n-tools/layer2/` (`dict.py`, `pages.py`, `gen_chrome.py`, `deploy.py`, `tagcheck.py`,
+  `verify_md5.sh`, README). Verified on German: `dict.py build de` reproduces the identical
+  dictionary, `pages.py de` and a rebuild + `deploy.py` change nothing.
+- **Found while doing it:** the scratchpad tag checker only ever validated the FIRST file it was
+  given, so the multi-file "tagcheck 0 errors" claims in earlier entries covered one file each.
+  Re-ran it file by file on all 244 site pages: 0 problems. The persisted `tagcheck.py` checks
+  every file.
+- **de/blog.html lost its Concierge bubble** when another session rebuilt the blogs in 9 languages
+  (`188fd2e`, `8f375dc`); `pages.py de` re-added it. Blog rebuilds can undo per-page additions —
+  re-run `pages.py` for the affected languages afterwards.
+
 ## Session status (2026-09-27) — Layer 2 modules: 10-language i18n foundation (phase 1) + German pilot (`ed355f6`, gh-pages `a98a0ad`, staging 50/50 md5-verified, old hashes 404; **live on production** — user ran the command, 50/50 md5-verified on virtuse.com, the 10 old hashes gone, German chat flow checked live)
 
 **Plan agreed with the user:** phase 1 = i18n refactor with no visible
