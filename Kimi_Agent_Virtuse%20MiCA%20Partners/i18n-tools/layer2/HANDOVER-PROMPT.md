@@ -47,7 +47,8 @@ From the site folder `Kimi_Agent_Virtuse%20MiCA%20Partners` (T=i18n-tools/layer2
 6. Verify locally (serve the site folder: `python3 -m http.server 8891`) — see checklist below.
 7. Commit on `main` with explicit paths (`concierge-assets fr concierge-launcher.js` + the 12–16
    module shells + `i18n-tools/layer2`), `git pull --rebase origin main`, push.
-8. Sync the gh-pages worktree `/private/tmp/gh-pages-wt3` (copy the changed files, `git rm` the
+8. Sync the gh-pages worktree — find it with `git worktree list` (it lives under `/private/tmp/gh-pages-wtN`
+   and the number changes between sessions; production commands `cd` into it) — (copy the changed files, `git rm` the
    hashes listed in `$T/work/deploy_removed.txt`), push, then
    `$T/verify_md5.sh staging.virtuse.com <listfile>` until all match (GitHub Pages takes ~1–2 min).
 9. Give the user the production command. **The user runs it; you never handle the SFTP password.**
@@ -81,5 +82,6 @@ From the site folder `Kimi_Agent_Virtuse%20MiCA%20Partners` (T=i18n-tools/layer2
   English until you re-run `dict.py template` and translate the new rows.
 - Every build changes asset hashes for all shells, so every production deploy includes all shells.
 - A stale browser cache can show an old page after deploy — check with curl/md5 first.
-- If `/private/tmp/gh-pages-wt3` is gone: `git worktree prune && git worktree add /private/tmp/gh-pages-wt3 gh-pages`.
+- If no gh-pages worktree exists: `git worktree prune && git worktree add /private/tmp/gh-pages-wt5 gh-pages`.
+  Another agent may be using the current one — check `git -C <wt> status` is clean and pull before syncing.
 - Report outcomes honestly: if a check wasn't run or failed, say so.

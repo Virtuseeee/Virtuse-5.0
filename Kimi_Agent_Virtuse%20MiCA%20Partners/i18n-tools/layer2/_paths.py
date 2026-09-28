@@ -2,7 +2,16 @@
 import os
 SITE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))  # Kimi_Agent_Virtuse%20MiCA%20Partners
 PROJECT = os.path.expanduser('~/Documents/virtuse-concierge-deploy/bitcoin-concierge')
-GHPAGES = '/private/tmp/gh-pages-wt3'  # gh-pages worktree; recreate with `git worktree add /private/tmp/gh-pages-wt3 gh-pages`
+def _find_ghpages():
+    """Path of the checked-out gh-pages worktree (its /private/tmp path changes between sessions)."""
+    import subprocess
+    out = subprocess.run(['git', 'worktree', 'list', '--porcelain'], cwd=SITE, capture_output=True, text=True).stdout
+    path = None
+    for line in out.splitlines():
+        if line.startswith('worktree '): path = line[9:]
+        if line == 'branch refs/heads/gh-pages': return path
+    return None  # none: git worktree add /private/tmp/gh-pages-wtN gh-pages
+GHPAGES = _find_ghpages()
 MODULES = ('concierge', 'stacking', 'loan', 'tax-agent')
 # project entry file per module for EN (index.html = concierge) and per language (<lang>-<module>.html)
 def project_entry(lang, mod):
