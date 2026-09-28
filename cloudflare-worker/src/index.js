@@ -29,6 +29,8 @@
 // OPTIONS /pulse.json                      -- CORS preflight for that GET
 // PUT  /pulse.json                         -- publish; Bearer PULSE_PUBLISH_TOKEN
 // POST /pulse/rollback                     -- copy KV `previous` back onto `current`
+// GET  /a/<slug>[?lang=sk]                 -- social share preview (OG/Twitter tags) for a
+//                                              blog article, then redirects to virtuse.com
 //
 // Secrets (set via `wrangler secret put`, never in this file or wrangler.toml):
 //   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_SK_SEGMENT_ID, RESEND_FROM_EMAIL,
@@ -612,6 +614,258 @@ export async function handlePulse(request, env, origin, pathname) {
   return pulsePrivateJson(405, { error: 'method not allowed' });
 }
 
+// ---------------------------------------------------------------------------
+// GET /a/<slug>[?lang=sk]  -- social share preview for a blog article.
+//
+// virtuse.com/article.html renders client-side, so X / LinkedIn / Slack /
+// WhatsApp crawlers only see its generic static meta tags. This route
+// fetches the WordPress post server-side and returns a tiny HTML page with
+// per-article Open Graph + Twitter Card tags, then sends humans on to the
+// real article with a meta refresh + location.replace (deliberately NOT a
+// 30x: crawlers must receive the 200 page with the tags).
+//
+// Public, no Origin/CORS gate. Cached ~1 hour (browser/crawler via
+// Cache-Control, edge via the Cache API and the WordPress subrequest's
+// cf.cacheTtl). Unknown slug -> 404 with the generic Virtuse Brief card.
+// ---------------------------------------------------------------------------
+
+const SHARE_CACHE_SECONDS = 60 * 60;
+const SHARE_SITE_ORIGIN = 'https://virtuse.com';
+const SHARE_WP_API = {
+  en: 'https://blog.virtuse.com/wp-json/wp/v2',
+  sk: 'https://blog.virtuse.com/sk/wp-json/wp/v2', // WPML language path
+};
+const SHARE_LOCALE = { en: 'en_US', sk: 'sk_SK' };
+const SHARE_GENERIC = {
+  title: 'Virtuse Brief',
+  description: 'Bitcoin analysis from the Virtuse Brief desk. Bitcoin-only. No tokens. No PR.',
+  image: 'https://virtuse.com/news/og-card.png?v=20260921',
+  imageWidth: 1200,
+  imageHeight: 630,
+};
+const SHARE_SLUG_RE = /^[a-z0-9][a-z0-9-]{0,199}$/;
+const SHARE_EXCERPT_MAX = 200;
+
+const SHARE_NAMED_ENTITIES = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+  ndash: '\u2013', mdash: '\u2014', hellip: '\u2026', rsquo: '\u2019',
+  lsquo: '\u2018', rdquo: '\u201D', ldquo: '\u201C', laquo: '\u00AB',
+  raquo: '\u00BB', bdquo: '\u201E', middot: '\u00B7', euro: '\u20AC',
+};
+
+export function decodeEntities(s) {
+  return String(s ?? '').replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
+    if (e[0] === '#') {
+      const cp = e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      return Number.isFinite(cp) && cp > 0 && cp <= 0x10ffff ? String.fromCodePoint(cp) : m;
+    }
+    const v = SHARE_NAMED_ENTITIES[e.toLowerCase()];
+    return v === undefined ? m : v;
+  });
+}
+
+export function escapeHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// HTML fragment -> collapsed plain text.
+export function htmlToText(html) {
+  const noBlocks = String(html ?? '')
+    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]*>/g, ' ');
+  return decodeEntities(noBlocks).replace(/\s+/g, ' ').trim();
+}
+
+// Trim to ~max chars on a word boundary, with an ellipsis if cut.
+export function clipText(text, max = SHARE_EXCERPT_MAX) {
+  const t = String(text ?? '').replace(/\s*\[(?:&hellip;|\u2026|\.\.\.)\]\s*$/, '').trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max - 1);
+  const sp = cut.lastIndexOf(' ');
+  return (sp > max * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s,;:.\u2013\u2014-]+$/, '') + '\u2026';
+}
+
+function shareArticleUrl(slug, lang) {
+  return `${SHARE_SITE_ORIGIN}/article.html?slug=${encodeURIComponent(slug)}${lang === 'sk' ? '&lang=sk' : ''}`;
+}
+
+function absoluteUrl(u, base) {
+  if (!u || typeof u !== 'string') return '';
+  try {
+    const abs = new URL(u, base);
+    return abs.protocol === 'https:' || abs.protocol === 'http:' ? abs.href : '';
+  } catch {
+    return '';
+  }
+}
+
+// WP REST post (with _embed) -> share meta. Pure, exported for tests.
+export function shareMetaFromPost(post, slug, lang) {
+  const title = htmlToText(post?.title?.rendered) || SHARE_GENERIC.title;
+  let description = clipText(htmlToText(post?.excerpt?.rendered));
+  if (!description) description = clipText(htmlToText(post?.content?.rendered));
+  if (!description) description = SHARE_GENERIC.description;
+
+  const media = post?._embedded?.['wp:featuredmedia']?.[0];
+  const sizes = media?.media_details?.sizes || {};
+  const pick = sizes.large || sizes.full || null;
+  let image = absoluteUrl(pick?.source_url || media?.source_url || '', 'https://blog.virtuse.com/');
+  let imageWidth = pick?.width || (pick ? undefined : media?.media_details?.width);
+  let imageHeight = pick?.height || (pick ? undefined : media?.media_details?.height);
+  const imageAlt = htmlToText(media?.alt_text) || title;
+  if (!image) {
+    image = SHARE_GENERIC.image;
+    imageWidth = SHARE_GENERIC.imageWidth;
+    imageHeight = SHARE_GENERIC.imageHeight;
+  }
+
+  return {
+    title,
+    description,
+    image,
+    imageWidth,
+    imageHeight,
+    imageAlt,
+    url: shareArticleUrl(slug, lang),
+    lang,
+    published: post?.date_gmt ? `${post.date_gmt}Z` : '',
+    modified: post?.modified_gmt ? `${post.modified_gmt}Z` : '',
+  };
+}
+
+export function renderSharePage(meta) {
+  const e = escapeHtml;
+  const target = meta.url;
+  const tags = [
+    `<meta property="og:type" content="article">`,
+    `<meta property="og:site_name" content="Virtuse">`,
+    `<meta property="og:locale" content="${e(SHARE_LOCALE[meta.lang] || SHARE_LOCALE.en)}">`,
+    `<meta property="og:title" content="${e(meta.title)}">`,
+    `<meta property="og:description" content="${e(meta.description)}">`,
+    `<meta property="og:url" content="${e(target)}">`,
+    `<meta property="og:image" content="${e(meta.image)}">`,
+    meta.imageWidth ? `<meta property="og:image:width" content="${e(meta.imageWidth)}">` : '',
+    meta.imageHeight ? `<meta property="og:image:height" content="${e(meta.imageHeight)}">` : '',
+    `<meta property="og:image:alt" content="${e(meta.imageAlt || meta.title)}">`,
+    meta.published ? `<meta property="article:published_time" content="${e(meta.published)}">` : '',
+    meta.modified ? `<meta property="article:modified_time" content="${e(meta.modified)}">` : '',
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${e(meta.title)}">`,
+    `<meta name="twitter:description" content="${e(meta.description)}">`,
+    `<meta name="twitter:image" content="${e(meta.image)}">`,
+    `<meta name="twitter:image:alt" content="${e(meta.imageAlt || meta.title)}">`,
+  ].filter(Boolean);
+
+  // JSON.stringify for the JS string, then neutralise "<" so nothing can
+  // close the <script> element early.
+  const jsTarget = JSON.stringify(target).replace(/</g, '\\u003c');
+
+  return `<!doctype html>
+<html lang="${e(meta.lang || 'en')}">
+<head>
+<meta charset="utf-8">
+<title>${e(meta.title)} · Virtuse</title>
+<meta name="description" content="${e(meta.description)}">
+<link rel="canonical" href="${e(target)}">
+${tags.join('\n')}
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=${e(target)}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<script>location.replace(${jsTarget});</script>
+<p><a href="${e(target)}">${e(meta.title)}</a></p>
+</body>
+</html>
+`;
+}
+
+function sharePageResponse(status, html, maxAge) {
+  return new Response(html, {
+    status,
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': `public, max-age=${maxAge}`,
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+    },
+  });
+}
+
+function genericShareMeta(lang) {
+  return {
+    ...SHARE_GENERIC,
+    imageAlt: SHARE_GENERIC.title,
+    url: `${SHARE_SITE_ORIGIN}/blog.html${lang === 'sk' ? '?lang=sk' : ''}`,
+    lang,
+  };
+}
+
+async function fetchSharePost(slug, lang, fetchImpl) {
+  const api = `${SHARE_WP_API[lang]}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia&status=publish`;
+  const res = await fetchImpl(api, {
+    headers: { Accept: 'application/json', 'User-Agent': 'virtuse-share-preview/1.0' },
+    cf: { cacheTtl: SHARE_CACHE_SECONDS, cacheEverything: true },
+  });
+  if (!res.ok) throw new Error(`wp ${res.status}`);
+  const list = await res.json();
+  return Array.isArray(list) && list.length ? list[0] : null;
+}
+
+// Exported for tests; `fetchImpl` / `cache` are injectable.
+export async function handleShare(request, url, { fetchImpl = fetch, cache } = {}) {
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return new Response('Method not allowed', { status: 405, headers: { Allow: 'GET, HEAD' } });
+  }
+
+  const lang = (url.searchParams.get('lang') || '').toLowerCase() === 'sk' ? 'sk' : 'en';
+  let slug = '';
+  try {
+    slug = decodeURIComponent(url.pathname.slice('/a/'.length)).replace(/\/+$/, '').toLowerCase();
+  } catch {
+    slug = '';
+  }
+
+  if (!SHARE_SLUG_RE.test(slug)) {
+    return sharePageResponse(404, renderSharePage(genericShareMeta(lang)), 300);
+  }
+
+  // Normalised cache key: only slug + lang matter (drops utm_* etc.).
+  const cacheKey = new Request(`${WORKER_ORIGIN}/a/${slug}${lang === 'sk' ? '?lang=sk' : ''}`, { method: 'GET' });
+  if (cache) {
+    const hit = await cache.match(cacheKey);
+    if (hit) return request.method === 'HEAD' ? new Response(null, hit) : hit;
+  }
+
+  let post;
+  try {
+    post = await fetchSharePost(slug, lang, fetchImpl);
+  } catch {
+    // WordPress down / slow: still send humans to the article, don't cache.
+    const meta = { ...genericShareMeta(lang), url: shareArticleUrl(slug, lang) };
+    return sharePageResponse(200, renderSharePage(meta), 60);
+  }
+
+  const res = post
+    ? sharePageResponse(200, renderSharePage(shareMetaFromPost(post, slug, lang)), SHARE_CACHE_SECONDS)
+    : sharePageResponse(404, renderSharePage(genericShareMeta(lang)), 300);
+
+  if (cache) {
+    try {
+      await cache.put(cacheKey, res.clone());
+    } catch {
+      // Cache API is a no-op / may throw on some hosts (e.g. workers.dev).
+    }
+  }
+  return request.method === 'HEAD' ? new Response(null, res) : res;
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -621,6 +875,11 @@ export default {
     // GET /pulse.json stays public and /subscribe stays byte-identical.
     if (url.pathname === '/pulse.json' || url.pathname === '/pulse/rollback') {
       return handlePulse(request, env, origin, url.pathname);
+    }
+
+    // Public social-share preview page; no Origin gate (crawlers send none).
+    if (url.pathname.startsWith('/a/')) {
+      return handleShare(request, url, { cache: typeof caches !== 'undefined' ? caches.default : undefined });
     }
 
     if (request.method === 'OPTIONS') {
