@@ -46,13 +46,18 @@ build. Readers in a UI-only language (uk/de/fr/es/pl/hu) share
 `stories/<slug>/?lang=de`, so the preview is the story's and the recipient
 gets their interface.
 
-## When to run it
+## When it runs
 
-After new stories are published in WordPress (or titles, excerpts or
-featured images change): run the build, commit, sync gh-pages, and upload
-the new or changed story folders to production. Nothing here runs
-automatically yet. Until a story has its page, shares of it show the
-generic Brief card.
+`.github/workflows/stories-build.yml` runs daily at 05:00 UTC (and on
+demand: Actions → Stories build → Run workflow). It builds from WordPress,
+and only if something changed it commits to `main` as `virtuse-bot`
+(`[skip ci]`) and mirrors the three story trees to `gh-pages`, so staging
+updates by itself. The run's summary lists new (A), changed (M) and
+removed (D) stories.
+
+**Production stays manual.** Until a story's page is on virtuse.com, shares
+of it show the generic Brief card (article.js falls back to its own URL
+only when the page is missing on the site it runs on).
 
 **Upload:** a new story is a new folder on the server, and Webglobe's `scp`
 does not create missing remote directories (see CLAUDE.md). The build writes
@@ -61,8 +66,12 @@ ones are ignored), then one `put` per page. Run it from the gh-pages
 worktree after syncing:
 
 ```bash
+cd "<repo>" && git pull --rebase origin main && git -C /private/tmp/gh-pages-wt4 pull origin gh-pages
 cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < "<repo>/stories-build/upload.sftp"
 ```
+
+(`<repo>` = the local checkout. Pull both first: after an automatic run
+the new pages and the new `upload.sftp` exist only on GitHub.)
 
 Use `<` (stdin), not `sftp -b`: batch mode disables password login. It
 uploads all pages (about 5 MB), so it is safe to re-run. Folders of

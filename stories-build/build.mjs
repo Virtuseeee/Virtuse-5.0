@@ -225,7 +225,9 @@ async function main() {
     const dir = path.join(SITE, p);
     if (/^(?:(?:sk|ru)\/)?stories\/[^/]+\/$/.test(p) && fs.existsSync(dir)) fs.rmSync(dir, { recursive: true });
   }
-  fs.writeFileSync(MANIFEST, JSON.stringify({ generated: new Date().toISOString().slice(0, 10), stories: written.sort() }, null, 2) + '\n');
+  // No build date in here: the scheduled Action should only commit when the
+  // set of stories (or a page) actually changed.
+  fs.writeFileSync(MANIFEST, JSON.stringify({ stories: written.sort() }, null, 2) + '\n');
 
   // Production upload batch for sftp (run from the gh-pages worktree, which
   // has the site at its root). Webglobe's scp does not create missing
