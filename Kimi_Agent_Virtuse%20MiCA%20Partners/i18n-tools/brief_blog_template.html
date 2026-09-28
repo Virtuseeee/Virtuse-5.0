@@ -1,55 +1,46 @@
 <!DOCTYPE html>
-<html lang="hu" data-theme="light">
+<html lang="{{HTML_LANG}}" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FBFBFA">
 <script>(function(){var D="#111110",L="#FBFBFA";try{var t=localStorage.getItem("vb-theme");if(t!=="light"&&t!=="dark")t="light";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?L:D);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+{{CSP}}
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<script src="../lang-detect.js"></script>
+<script src="{{P}}lang-detect.js"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Virtuse blog · Virtuse Brief</title>
-<meta name="description" content="Ras Vasilisin, a Virtuse vezérigazgatójának elemzései a Bitcoinról, a makrogazdaságról és a pénz jövőjéről.">
-<link rel="canonical" href="https://virtuse.com/hu/blog.html">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="alternate" hreflang="en" href="https://virtuse.com/blog.html">
-<link rel="alternate" hreflang="sk" href="https://virtuse.com/blog-sk.html">
-<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/blog.html">
-<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/blog.html">
-<link rel="alternate" hreflang="de" href="https://virtuse.com/de/blog.html">
-<link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/blog.html">
-<link rel="alternate" hreflang="es" href="https://virtuse.com/es/blog.html">
-<link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/blog.html">
-<link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/blog.html">
-<link rel="alternate" hreflang="x-default" href="https://virtuse.com/blog.html">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<link rel="canonical" href="{{CANONICAL}}">
+<link rel="icon" type="image/svg+xml" href="{{P}}favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{{P}}favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{P}}favicon-16.png">
+<link rel="apple-touch-icon" href="{{P}}apple-touch-icon.png">
+<link rel="shortcut icon" href="{{P}}favicon.ico">
+{{HREFLANG}}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse Brief">
-<meta property="og:title" content="Virtuse blog · Virtuse Brief">
-<meta property="og:description" content="Ras Vasilisin, a Virtuse vezérigazgatójának elemzései a Bitcoinról, a makrogazdaságról és a pénz jövőjéről.">
-<meta property="og:url" content="https://virtuse.com/hu/blog.html">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:url" content="{{CANONICAL}}">
 <meta property="og:image" content="https://virtuse.com/news/og-card.png?v=20260921">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="hu_HU">
+<meta property="og:locale" content="{{OG_LOCALE}}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Virtuse blog · Virtuse Brief">
-<meta name="twitter:description" content="Ras Vasilisin, a Virtuse vezérigazgatójának elemzései a Bitcoinról, a makrogazdaságról és a pénz jövőjéről.">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESC}}">
 <meta name="twitter:image" content="https://virtuse.com/news/og-card.png?v=20260921">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 <!-- Generated by i18n-tools/build_brief_blog.py from brief_blog_template.html.
      Brief chrome comes from the desk's own stylesheet; below is archive-only. -->
-<link rel="stylesheet" href="../news/news.css">
+<link rel="stylesheet" href="{{P}}news/news.css">
 <style>
 .nav-links a[aria-current="page"]{color:var(--text)}
 
@@ -132,16 +123,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <header class="site-nav">
   <div class="page-inner nav-inner">
-    <a class="wordmark" href="../news.html">
-      <img class="brief-logo mark-on-dark" src="../news/brief-nav-logo.svg" alt="Virtuse Brief" width="213" height="26">
-      <img class="brief-logo mark-on-light" src="../news/brief-nav-logo-on-light.svg" alt="Virtuse Brief" width="213" height="26">
+    <a class="wordmark" href="{{P}}news.html">
+      <img class="brief-logo mark-on-dark" src="{{P}}news/brief-nav-logo.svg" alt="Virtuse Brief" width="213" height="26">
+      <img class="brief-logo mark-on-light" src="{{P}}news/brief-nav-logo-on-light.svg" alt="Virtuse Brief" width="213" height="26">
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Virtuse Brief">
-      <a href="../news.html#issues">Legutóbbi számok</a>
-      <a href="#main" aria-current="page">Blog</a>
-      <a href="../news.html#data-desk">Adatok</a>
-      <a href="index.html">Virtuse hub</a>
-      <a class="btn btn-accent-outline" href="#subscribe">Feliratkozás</a>
+      <a href="{{P}}news.html#issues">{{NAV_ISSUES}}</a>
+      <a href="#main" aria-current="page">{{NAV_BLOG}}</a>
+      <a href="{{P}}news.html#data-desk">{{NAV_DATA}}</a>
+      <a href="{{HUB}}">{{NAV_HUB}}</a>
+      <a class="btn btn-accent-outline" href="#subscribe">{{NAV_GET}}</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Dark theme">
       <span class="theme-toggle-label" id="themeToggleLabel">Dark</span>
@@ -154,61 +145,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="page-inner">
     <header class="arch-head">
       <div>
-        <p class="arch-kicker">Virtuse Brief</p>
-        <h1 class="arch-title">Virtuse blog</h1>
+        <p class="arch-kicker">{{KICKER}}</p>
+        <h1 class="arch-title">{{H1}}</h1>
       </div>
       <div class="arch-tools">
         <label class="arch-search">
-          <span class="sr-only">Cikkek keresése</span>
+          <span class="sr-only">{{SEARCH_LABEL}}</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14" stroke-linecap="round"/></svg>
-          <input type="search" id="searchInput" placeholder="Cikkek keresése…" autocomplete="off">
+          <input type="search" id="searchInput" placeholder="{{SEARCH_PH}}" autocomplete="off">
         </label>
         <div class="arch-meta">
-          <span id="postCount"><b>169</b> cikk, és egyre több</span>
-          <nav class="arch-langs" aria-label="Nyelv">
-          <a href="../blog.html" lang="en">EN</a>
-          <a href="../blog-sk.html" lang="sk">SK</a>
-          <a href="../uk/blog.html" lang="uk">UA</a>
-          <a href="../ru/blog.html" lang="ru">RU</a>
-          <a href="../de/blog.html" lang="de">DE</a>
-          <a href="../fr/blog.html" lang="fr">FR</a>
-          <a href="../es/blog.html" lang="es">ES</a>
-          <a href="../pl/blog.html" lang="pl">PL</a>
-          <a href="blog.html" lang="hu" class="on" aria-current="page">HU</a>
+          <span id="postCount"><b>{{COUNT}}</b> {{COUNT_SUFFIX}}</span>
+          <nav class="arch-langs" aria-label="{{LANG_LABEL}}">
+{{LANG_LINKS}}
           </nav>
         </div>
       </div>
     </header>
 
-    <a class="lead" id="featuredWrap" href="../article.html?slug=why-pomp-mow-and-saylor-forecast-bitcoin-from-150k-to-10m-2&lang=hu">
-      <div class="lead-media"><img id="leadImg" src="https://blog.virtuse.com/wp-content/uploads/2026/05/19e11c0d-9992-8c9b-8000-0000c74eed4a_Gemini_Generated_Image_lyuaf5lyuaf5lyua.png" alt="" loading="eager"></div>
+    <a class="lead" id="featuredWrap" href="{{F_HREF}}">
+      <div class="lead-media"><img id="leadImg" src="{{F_IMG}}" alt="" loading="eager"></div>
       <div class="lead-body">
-        <p class="lead-kicker" id="leadKicker">Legújabb</p>
-        <h2 class="lead-title" id="leadTitle">Why Pomp, Mow and Saylor Forecast Bitcoin from $150K to $10M?</h2>
-        <p class="lead-dek" id="leadDek">The era of questioning Bitcoin is over. It is here to stay. We no longer ask why the internet exists. We do not wonder who invented the code for AI. These technologies are now part of our daily lives. Bitcoin has reached that same stage; it is now a permanent</p>
-        <p class="lead-byline">Szerző: <strong>Ras Vasilisin</strong> / <span id="leadDate">2026. máj. 14.</span></p>
-        <span class="text-link lead-read">Tovább a cikkhez →</span>
+        <p class="lead-kicker" id="leadKicker">{{LEAD}}</p>
+        <h2 class="lead-title" id="leadTitle">{{F_TITLE}}</h2>
+        <p class="lead-dek" id="leadDek">{{F_EXCERPT}}</p>
+        <p class="lead-byline">{{BY}} <strong>Ras Vasilisin</strong> / <span id="leadDate">{{F_DATE}}</span></p>
+        <span class="text-link lead-read">{{READ_STORY}} →</span>
       </div>
     </a>
 
     <section class="arch-list" aria-labelledby="gridLabel">
-      <div class="section-head"><h2 id="gridLabel">Összes cikk</h2></div>
+      <div class="section-head"><h2 id="gridLabel">{{ALL}}</h2></div>
       <div class="blog-grid" id="blogGrid">
-      <a class="blog-card" href="../article.html?slug=39-trillion-and-counting-why-the-worlds-biggest-credit-card-is-about-to-hit-the-limit&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-15-at-6.52.29-PM.jpeg" alt="" loading="lazy"><div class="blog-card-body"><time>2026. ápr. 22.</time><h3>$39 Trillion and Counting: Why the World’s Biggest Credit Card Is About to Hit the Limit</h3><p class="card-dek">The man next door looks rich. He drives a fast car. His house is huge. But at night, he stays awake. He just got his tenth credit card. He is using it to pay the interest on the other nine. He’s staring at the edge of th</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=rome-wokeism-and-the-rise-of-the-bitcoin-standard&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-13-at-7.21.45-PM.jpeg" alt="" loading="lazy"><div class="blog-card-body"><time>2026. márc. 13.</time><h3>Rome, Wokeism, and the Rise of the Bitcoin Standard</h3><p class="card-dek">We’ve seen this movie before. Here is why the “Constantine Moment” is the only thing that can save the West. They say history doesn’t repeat itself, but it often rhymes. When we look at the chaotic transformation of Rome</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-25-at-1.00.18-PM.jpeg" alt="" loading="lazy"><div class="blog-card-body"><time>2026. febr. 25.</time><h3>Gold is the Smoke Alarm, Bitcoin is the Exit Ramp: Why Math is Defeating History in 2026</h3><p class="card-dek">The global financial system is currently experiencing tremors the likes of which we haven’t seen in decades. Gold is shattering all-time records, silver is effectively “tearing up the floorboards” with 200% gains, and ce</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=the-bitcoin-war-jpmorgan-and-jane-street-are-attacking-retail&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-16-at-6.14.46-PM-1-e1766065029618.jpeg" alt="" loading="lazy"><div class="blog-card-body"><time>2025. dec. 18.</time><h3>THE BITCOIN WAR: JPMorgan and Jane Street Are Attacking Retail</h3><p class="card-dek">This is the time when the true legends are made Do you know the difference between a conspiracy theory and the truth?  About six months. Lately, the evidence has been piling up: what we’re seeing in the markets isn’t jus</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=blackrocks-bitcoin-shock-ibit-just-became-their-top-revenue-driver&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2025/12/PHOTO-2025-12-02-13-39-05-e1764682730906.jpg" alt="" loading="lazy"><div class="blog-card-body"><time>2025. dec. 2.</time><h3>BlackRock’s Bitcoin Shock: IBIT Just Became Their Top Revenue Driver!</h3><p class="card-dek">It’s official: BlackRock, the world’s largest asset manager, has a new golden goose, and it’s powered by Bitcoin In a stunning development that underscores the rapid mainstream acceptance of digital assets, BlackRock’s s</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2025/10/PHOTO-2025-10-03-10-08-50.jpg" alt="" loading="lazy"><div class="blog-card-body"><time>2025. okt. 6.</time><h3>Is the Digital Euro ‘Modernization’ or Just China’s Social Credit System for the EU?</h3><p class="card-dek">It’s not “digital cash”—it’s a control system designed to monitor your spending, enforce expiration dates on your savings, and blacklist dissenters. A recent EU-wide survey by the European Central Bank (ECB) and the Germ</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=michael-saylors-legacy-the-bitcoin-corporate-revolution&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2025/09/Screenshot-2025-09-22-at-12.29.09-PM-e1758536988904.png" alt="" loading="lazy"><div class="blog-card-body"><time>2025. szept. 22.</time><h3>Michael Saylor’s Legacy: The Bitcoin Corporate Revolution</h3><p class="card-dek">Why Wall Street Is Embracing a Digital Gold Rush In August 2020, Michael Saylor, the CEO of MicroStrategy, made an announcement that sent shockwaves through Wall Street: his company was buying $250 million worth of Bitco</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=what-is-a-bitcoin-treasury&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2025/09/Gemini_Generated_Image_1uo0r41uo0r41uo0-e1760026344679.png" alt="" loading="lazy"><div class="blog-card-body"><time>2025. szept. 12.</time><h3>What is a Bitcoin Treasury</h3><p class="card-dek">Hedging, Investment and Capital Growth A Bitcoin treasury refers to a company holding a portion of its assets in Bitcoin. This strategy is an increasingly common way for businesses to manage their cash and investments, o</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard&lang=hu"><div class="blog-card-empty">₿</div><div class="blog-card-body"><time>2025. szept. 10.</time><h3>Gamestop Urges All Of Us to Adapt To Bitcoin Standard</h3><p class="card-dek">GameStop just made a Michael Saylor-level move and announced the Bitcoin strategy. They immediately borrowed 1.5 billion in industry loans to execute it. The Great Reset Goes On Gamestop just made a Michael Saylor-level</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=bitcoin-ordinals-about-to-flip-ethereum-nfts&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2021/09/bitcoin-news.jpg" alt="" loading="lazy"><div class="blog-card-body"><time>2023. júl. 12.</time><h3>Bitcoin Ordinals About to Flip Ethereum NFTs</h3><p class="card-dek">Bitcoin’s native non-fungible tokens (NFTs), known as “Ordinals,” are on the verge of surpassing Ethereum in the NFT market, according to data from Crypto Slam. Ordinals have seen a significant surge in both sales and ac</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=sedem-dovodov-preco-sucasne-bankovnictvo-konci&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2023/04/Screenshot-2023-04-18-at-21.38.44.png" alt="" loading="lazy"><div class="blog-card-body"><time>2023. ápr. 19.</time><h3>7 Reasons Why Traditional Banking Is On The Way Out</h3><p class="card-dek">The banking system is broken. You’ve already been suspecting this for a long time, but it has been confirmed with the recent banking failures like SVB, Silvergate, and Credit Suisse.  You know they are not trustworthy, b</p><span class="read">Elolvasom →</span></div></a>
-      <a class="blog-card" href="../article.html?slug=de-dollarization-is-gaining-momentum&lang=hu"><img src="https://blog.virtuse.com/wp-content/uploads/2023/04/Screenshot-2023-04-12-at-19.24.33.png" alt="" loading="lazy"><div class="blog-card-body"><time>2023. ápr. 13.</time><h3>De-Dollarization Is Gaining Momentum</h3><p class="card-dek">A multi-polar world is bad news for the US but great news for bitcoin. Since the 1950s, it’s been virtually impossible for a country to function without access to US dollars. And Washington maintained this highly-favorab</p><span class="read">Elolvasom →</span></div></a>
+{{CARDS}}
       </div>
       <div class="load-wrap">
-        <button class="btn btn-quiet" type="button" id="loadMore">További cikkek</button>
+        <button class="btn btn-quiet" type="button" id="loadMore">{{LOAD_MORE}}</button>
         <p class="load-status" id="loadStatus"></p>
       </div>
     </section>
@@ -217,14 +189,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section class="cap-band" id="subscribe">
     <div class="page-inner cap-inner">
       <div>
-        <p class="capture-kicker">Iratkozzon fel a Briefre</p>
-        <p class="capture-dek">Virtuse Brief. Csak Bitcoin. Tokenek nélkül. PR nélkül.</p>
+        <p class="capture-kicker">{{CAP_KICKER}}</p>
+        <p class="capture-dek">{{CAP_DEK}}</p>
       </div>
       <form class="cap-form" id="subscribeForm" novalidate>
         <label class="sr-only" for="capEmail">Email</label>
-        <input id="capEmail" type="email" name="email" placeholder="E-mail-cím" required autocomplete="email">
+        <input id="capEmail" type="email" name="email" placeholder="{{CAP_PH}}" required autocomplete="email">
         <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-        <button class="btn" type="submit">Feliratkozás</button>
+        <button class="btn" type="submit">{{CAP_BTN}}</button>
         <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -239,29 +211,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <label class="sr-only" for="footerEmail">Email</label>
         <input id="footerEmail" type="email" name="email" placeholder="Type your email…" required autocomplete="email">
         <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
-        <button class="btn" type="submit">Feliratkozás</button>
+        <button class="btn" type="submit">{{SUBSCRIBE}}</button>
         <p class="subscribe-msg" id="footerMsg" role="status" aria-live="polite"></p>
       </form>
     </div>
     <nav class="footer-links" aria-label="Footer">
-      <a href="../news.html">Virtuse Brief</a>
-      <a href="index.html">Virtuse hub</a>
-      <a href="about.html">Rólunk</a>
-      <a href="terms-and-conditions.html">Felhasználási feltételek</a>
-      <a href="privacy-policy.html">Adatvédelmi tájékoztató</a>
+      <a href="{{P}}news.html">Virtuse Brief</a>
+      <a href="{{HUB}}">{{NAV_HUB}}</a>
+      <a href="{{ABOUT_HREF}}">{{ABOUT}}</a>
+      <a href="{{TERMS_HREF}}">{{TERMS}}</a>
+      <a href="{{PRIVACY_HREF}}">{{PRIVACY}}</a>
     </nav>
-    <p class="footer-copy">&copy; 2018–2026 Virtuse Group. Minden jog fenntartva.</p>
+    <p class="footer-copy">{{COPY}}</p>
   </div>
 </footer>
 
-<script>window.VB_LANG = 'hu'; window.VB_UI = {"emailReq": "Adja meg e-mail-címét.", "sending": "Küldés", "subOk": "Kész. Nézze meg a postafiókját.", "subErr": "A feliratkozás nem sikerült. Próbálja újra.", "netErr": "Hálózati hiba. Próbálja újra."};</script>
-<script src="../brief-chrome.js"></script>
+<script>window.VB_LANG = '{{WORKER_LANG}}'; window.VB_UI = {{VB_UI}};</script>
+<script src="{{P}}brief-chrome.js"></script>
 <script>
 (function () {
   'use strict';
   // WordPress is the live database: the static cards above are the
   // pre-rendered fallback (SEO / no-JS) and get replaced from the REST API.
-  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "&lang=hu", "author": "Ras Vasilisin", "months": ["jan.", "febr.", "márc.", "ápr.", "máj.", "jún.", "júl.", "aug.", "szept.", "okt.", "nov.", "dec."], "strings": {"countSuffix": "cikk, és egyre több", "gridLabel": "Összes cikk", "searchLabel": "Találatok", "loadMore": "További cikkek", "endLabel": "Ez volt az összes cikk", "showing": "{n} / {t} megjelenítve", "empty": "Nincs találat", "feedError": "A cikklistát nem sikerült betölteni. A legutóbb ismert cikkeket mutatjuk."}, "desks": {"mining": "Bányászat", "treasury": "Treasury", "custody": "Letétkezelés", "policy": "Szabályozás", "macro": "Makró", "markets": "Piacok"}, "articleBase": "../article.html"};
+  var CFG = {{CFG}};
 
   var grid = document.getElementById('blogGrid');
   var lead = document.getElementById('featuredWrap');
