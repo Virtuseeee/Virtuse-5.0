@@ -2,6 +2,42 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-28, third round) — Pre-rendered story pages for social previews, 355 pages (`65dc51c`, gh-pages `e244659`, staging 358/358 md5-verified; **production NOT touched**)
+
+**Why:** social crawlers don't run JS, so every share of
+`article.html?slug=…` showed the generic Brief card. Now each WordPress story
+has a static page with its own Open Graph card.
+- `stories-build/build.mjs` (repo root, Node 18, no deps; see its README):
+  `stories/<slug>/` (EN, 179), `sk/stories/<slug>/` (166),
+  `ru/stories/<post-id>/` (10; Cyrillic slugs → id). Each = article.html +
+  filled head (title, Yoast description else excerpt, canonical, OG with
+  image size, Twitter, article dates, BlogPosting JSON-LD) + pre-rendered
+  desk/headline/dek/image. Body still loads from WP in the browser (full-text
+  pre-render is an open SEO decision: the WP originals on blog.virtuse.com
+  are public). **Yoast titles are broken in WP** (`… • Virtuse Exchange %`)
+  and are not used.
+- `article.html` split into `article.css` + `article.js` (74 KB → 13 KB;
+  story pages ~16 KB). `article.js` reads `data-root/-slug/-lang/-story`
+  and shares the clean URL; on `article.html` it HEAD-checks the story page
+  and falls back to its own URL for stories newer than the last build.
+- **New stories need a rebuild + deploy** (nothing automatic yet):
+  `node stories-build/build.mjs`, commit, sync gh-pages, production upload.
+  `manifest.json` tracks folders (stories removed from WP are deleted);
+  `upload.sftp` is regenerated each build.
+- Crawler check on staging (facebookexternalhit, Twitterbot): og:title/
+  description/image correct. og:url/canonical point at virtuse.com, so
+  preview debuggers only fully work after production.
+- gh-pages worktree: `/private/tmp/gh-pages-wt4`.
+
+**Production (user runs both, then md5-verify 358 files).** Webglobe `scp`
+can't create the 358 new folders, so pages go through the sftp batch
+(`-mkdir` each folder, then `put`); `<` not `-b` (batch mode disables
+password login):
+```bash
+cd /private/tmp/gh-pages-wt4 && scp -P 222 article.html article.css article.js virtuse.com@ftp.virtuse.com:public_html/
+cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < "/Users/rasvas/Library/CloudStorage/OneDrive-VirtuseWealthManagement,a.s/Virtu AI/stories-build/upload.sftp"
+```
+
 ## Session status (2026-09-28, second round) — Blog + article dark by default, hub-matched dark palette (`8f375dc`, gh-pages `e8e04f1`, staging 11/11 md5-verified; **live on production** — user ran the command, 11/11 md5-verified on virtuse.com)
 
 - Blog + article default to **dark** and store the choice under
