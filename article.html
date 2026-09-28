@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FBFBFA">
+<script>(function(){var D="#111110",L="#FBFBFA";try{var t=localStorage.getItem("vb-theme");if(t!=="light"&&t!=="dark")t="light";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?L:D);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="lang-detect.js"></script>
@@ -11,740 +13,669 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
-<title>Article — Virtuse</title>
+<title>Article · Virtuse Brief</title>
+<meta name="description" content="Bitcoin analysis from the Virtuse Brief desk. Bitcoin-only. No tokens. No PR.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Article — Virtuse">
-<meta property="og:description" content="Bitcoin news, analysis, and market intelligence from the Virtuse blog.">
+<meta property="og:site_name" content="Virtuse Brief">
+<meta property="og:title" content="Virtuse Brief">
+<meta property="og:description" content="Bitcoin analysis from the Virtuse Brief desk. Bitcoin-only. No tokens. No PR.">
 <meta property="og:url" content="https://virtuse.com/article.html">
-<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image" content="https://virtuse.com/news/og-card.png?v=20260921">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Article — Virtuse">
-<meta name="twitter:description" content="Bitcoin news, analysis, and market intelligence from the Virtuse blog.">
-<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<meta name="twitter:title" content="Virtuse Brief">
+<meta name="twitter:description" content="Bitcoin analysis from the Virtuse Brief desk. Bitcoin-only. No tokens. No PR.">
+<meta name="twitter:image" content="https://virtuse.com/news/og-card.png?v=20260921">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<!-- Brief chrome (ticker, nav, buttons, cards, footer) comes from the desk's
+     own stylesheet so the reader and news.html can't drift apart. Everything
+     below is story-page only. -->
+<link rel="stylesheet" href="news/news.css">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--dark);color:var(--text);line-height:1.6}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
-img{max-width:100%;display:block}
+/* ===== Story page (Gazette-style reader) ===== */
+.read-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:60;pointer-events:none}
 
-.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--btc-orange),var(--btc-orange-light));z-index:200;transition:width .1s linear}
+.story-wrap{padding:40px 0 24px}
+.story-grid{display:grid;grid-template-columns:minmax(0,680px) 272px;justify-content:center;column-gap:72px}
+.story-main{min-width:0}
 
-.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);background:rgba(13, 20, 33,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--text)}
-.nav-logo img{height:32px;width:auto;display:block}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
-.nav-links a:hover{color:var(--text);background:var(--dark-card)}
-.nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
-.nav-cta{display:inline-flex;align-items:center;background:var(--btc-orange);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s}
-.nav-cta:hover{background:var(--btc-orange-light)}
+.story-crumb{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:28px}
+.story-crumb a:hover{color:var(--text)}
+.story-crumb .sep{color:var(--line-strong)}
 
-.article-wrap{max-width:1080px;margin:0 auto;padding:64px 48px 40px}
-.back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-muted);margin-bottom:36px;transition:color .2s}
-.back-link:hover{color:var(--btc-orange)}
-.back-link .chev{transition:transform .2s}
-.back-link:hover .chev{transform:translateX(-3px)}
+.story-kicker{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:var(--t-stamp);font-weight:600;letter-spacing:var(--tr-stamp);text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.story-kicker::before{content:"";width:.375rem;height:.375rem;background:var(--accent)}
 
-.article-head{max-width:760px;margin:0 auto;text-align:center}
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 12px;border-radius:100px;margin-bottom:22px;color:var(--text);background:rgba(255,255,255,0.06)}
-.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
-.article-title{font-size:44px;font-weight:900;line-height:1.14;letter-spacing:-0.025em;margin-bottom:26px}
-.article-meta{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
-.author-chip{display:flex;align-items:center;gap:10px}
-.author-chip img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--border)}
-.author-chip .name{font-size:14px;font-weight:700;color:var(--text);text-align:left}
-.author-chip .role{font-size:12px;color:var(--text-dim);text-align:left}
-.meta-divider{width:1px;height:26px;background:var(--border)}
-.meta-facts{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:8px}
-.dot{display:inline-block;width:3px;height:3px;flex-shrink:0;border-radius:50%;background:var(--text-dim)}
+.story-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,1.35rem + 2.6vw,3.1rem);line-height:1.08;letter-spacing:-.018em;color:var(--text);margin-bottom:18px;text-wrap:balance}
+.story-dek{font-family:var(--font-display);font-size:clamp(1.12rem,1.02rem + .4vw,1.3rem);line-height:1.5;color:var(--text-muted);margin-bottom:26px;text-wrap:pretty}
 
-.article-hero{max-width:1080px;margin:44px auto 0}
-.article-hero img{width:100%;max-height:560px;object-fit:cover;border-radius:18px;border:1px solid var(--border)}
+.story-byline{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;padding:12px 0;border-top:var(--rule);border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+.story-byline > span{display:inline-flex;align-items:center;white-space:nowrap}
+.story-byline > span + span::before{content:"/";margin:0 12px;color:var(--line-strong)}
+.story-byline strong{color:var(--text);font-weight:600}
 
-.article-layout{max-width:760px;margin:0 auto;padding:56px 48px 0}
+.story-figure{margin:28px 0 0}
+.story-figure img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg-band);border:1px solid var(--line)}
+.story-figure figcaption{margin-top:8px;font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
 
-.share-row{display:flex;align-items:center;gap:10px;padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:44px}
-.share-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-dim);margin-right:4px}
-.share-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);color:var(--text-muted);background:transparent;cursor:pointer;font-size:15px;font-weight:700;font-family:inherit;transition:all .2s}
-.share-btn:hover{border-color:var(--btc-orange);color:var(--btc-orange);transform:translateY(-2px)}
-.share-copied{font-size:12px;color:var(--green);font-weight:600;opacity:0;transition:opacity .3s}
-.share-copied.show{opacity:1}
+/* Body */
+.story-body{margin-top:36px;font-family:var(--font-display);font-size:1.19rem;line-height:1.72;color:var(--text)}
+.story-body > *:first-child{margin-top:0}
+.story-body p{margin:0 0 1.15em}
+.story-body > p:first-of-type::first-letter{float:left;font-weight:700;font-size:3.3em;line-height:.86;margin:.06em .1em 0 0;color:var(--text)}
+.story-body h2,.story-body .sec-head{display:flex;align-items:flex-start;gap:.45rem;font-family:var(--font-mono);font-size:.8rem;font-weight:600;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--text);margin:2.6em 0 1em;padding-top:10px;border-top:var(--rule)}
+.story-body h2::before,.story-body .sec-head::before{content:"";width:.375rem;height:.375rem;background:var(--accent);flex-shrink:0;margin-top:calc((1.5em - .375rem) / 2)}
+.story-body h3{font-family:var(--font-display);font-size:1.35rem;font-weight:700;line-height:1.25;margin:1.8em 0 .6em}
+.story-body h4{font-family:var(--font-ui);font-size:1rem;font-weight:700;margin:1.6em 0 .5em}
+.story-body a{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+.story-body a:hover{color:var(--accent-hot)}
+.story-body sup.fn{font-family:var(--font-mono);font-size:.62em;font-weight:600;letter-spacing:.02em;margin-left:1px;vertical-align:super;line-height:0}
+.story-body sup.fn a{color:var(--accent);text-decoration:none}
+.story-body strong,.story-body b{font-weight:700}
+.story-body blockquote{margin:1.6em 0;padding:4px 0 4px 20px;border-left:2px solid var(--accent);font-style:italic;color:var(--text-muted)}
+.story-body blockquote p:last-child{margin-bottom:0}
+.story-body ul,.story-body ol{margin:0 0 1.15em 1.3em}
+.story-body ul{list-style:square}
+.story-body ol{list-style:decimal}
+.story-body li{margin-bottom:.45em;padding-left:.2em}
+.story-body li::marker{color:var(--accent)}
+.story-body hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+.story-body img{margin:1.6em 0;border:1px solid var(--line);height:auto}
+.story-body figure{margin:1.8em 0}
+.story-body figure img{margin:0}
+.story-body figcaption{margin-top:8px;font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);line-height:1.5}
+.story-body table{width:100%;border-collapse:collapse;margin:1.8em 0;font-family:var(--font-mono);font-size:.82rem;font-variant-numeric:tabular-nums}
+.story-body th,.story-body td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.story-body th{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;color:var(--text-faint);border-bottom:var(--rule)}
+.story-body pre,.story-body code{font-family:var(--font-mono);font-size:.85rem}
+.story-body pre{background:var(--bg-band);border:1px solid var(--line);padding:16px;overflow-x:auto;margin:1.6em 0}
+.story-body iframe{max-width:100%;border:0}
+.story-body .wp-block-embed,.story-body .video-wrap{position:relative;aspect-ratio:16/9;margin:1.8em 0}
+.story-body .wp-block-embed iframe,.story-body .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%}
 
-.article-body{font-family:'Lora',Georgia,serif;font-size:19px;line-height:1.85;color:#d6dde5}
-.article-body p{margin-bottom:26px}
-.article-body h2,.article-body h3,.article-body h4{font-family:'Inter',sans-serif;color:var(--text);line-height:1.3;letter-spacing:-0.01em;margin:44px 0 18px}
-.article-body h2{font-size:28px;font-weight:800}
-.article-body h3{font-size:22px;font-weight:700}
-.article-body h4{font-size:18px;font-weight:700}
-.article-body a{color:var(--btc-orange);text-decoration:underline;text-decoration-color:rgba(247, 147, 26,0.35);text-underline-offset:3px;transition:text-decoration-color .2s}
-.article-body a:hover{text-decoration-color:var(--btc-orange)}
-.article-body img{border-radius:14px;margin:36px auto;border:1px solid var(--border)}
-.article-body figure{margin:36px 0}
-.article-body figure img{margin:0 auto}
-.article-body figcaption{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-dim);text-align:center;margin-top:12px}
-.article-body blockquote{border-left:3px solid var(--btc-orange);background:rgba(247, 147, 26,0.05);border-radius:0 12px 12px 0;padding:22px 28px;margin:36px 0;font-style:italic;color:var(--text)}
-.article-body blockquote p:last-child{margin-bottom:0}
-.article-body ul,.article-body ol{margin:0 0 26px 26px}
-.article-body ul{list-style:disc}
-.article-body ol{list-style:decimal}
-.article-body li{margin-bottom:10px}
-.article-body li::marker{color:var(--btc-orange)}
-.article-body hr{border:none;border-top:1px solid var(--border);margin:44px auto;width:120px}
-.article-body strong{color:var(--text);font-weight:600}
-.article-body table{width:100%;border-collapse:collapse;margin:36px 0;font-family:'Inter',sans-serif;font-size:14px}
-.article-body th,.article-body td{border:1px solid var(--border);padding:12px 14px;text-align:left}
-.article-body th{background:var(--dark-card);color:var(--text);font-weight:700}
-.article-body pre{background:var(--dark-card);border:1px solid var(--border);border-radius:12px;padding:20px;overflow-x:auto;font-size:14px;margin:36px 0}
-.article-body iframe{max-width:100%;border:none;border-radius:12px}
-.article-body .wp-block-embed,.article-body .video-wrap{position:relative;aspect-ratio:16/9;margin:36px 0}
-.article-body .wp-block-embed iframe,.article-body .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%}
+/* End matter */
+.story-end{margin-top:44px}
+.end-label{display:flex;align-items:flex-start;gap:.4rem;font-family:var(--font-mono);font-size:var(--t-stamp);font-weight:600;line-height:1.4;letter-spacing:var(--tr-stamp);text-transform:uppercase;color:var(--text);padding-bottom:.375rem;margin-bottom:.9rem;border-bottom:var(--rule)}
+.end-label::before{content:"";width:.375rem;height:.375rem;background:var(--accent);flex-shrink:0;margin-top:calc((1.4em - .375rem) / 2)}
+.sources{margin-bottom:36px}
+.sources[hidden]{display:none}
+.sources ol{list-style:none;counter-reset:none}
+.sources li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:4px;padding:8px 0;border-bottom:1px solid var(--line);font-family:var(--font-ui);font-size:.9rem;line-height:1.45;color:var(--text-muted)}
+.sources li .n{font-family:var(--font-mono);font-weight:600;color:var(--accent);font-size:.78rem;padding-top:2px}
+.sources li a{color:var(--text);word-break:break-word}
+.sources li a:hover{color:var(--accent-hot)}
+.sources li .host{display:block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
 
-.article-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--border);margin-top:56px;padding:32px 0 8px}
-.foot-author{display:flex;align-items:center;gap:14px}
-.foot-author img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border)}
-.foot-author .name{font-size:15px;font-weight:700}
-.foot-author .bio{font-size:13px;color:var(--text-muted)}
+.author-box{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:start;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px}
+.author-box img{width:56px;height:56px;object-fit:cover;filter:grayscale(1);border:1px solid var(--line)}
+.author-box .who{font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px}
+.author-box .name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--text)}
+.author-box .bio{font-family:var(--font-display);font-size:.98rem;line-height:1.5;color:var(--text-muted);margin-top:2px}
 
-.skeleton-line{border-radius:8px;background:linear-gradient(90deg,var(--dark-card) 25%,var(--dark-card-hover) 50%,var(--dark-card) 75%);background-size:200% 100%;animation:shimmer 1.2s infinite}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* Share: one icon set, rendered by JS into three slots
+   (under the byline on phones, in the rail on desktop, and at the end). */
+.share-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.share-label{font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.share-icons{display:flex;flex-wrap:wrap;gap:5px}
+.share-icons a,.share-icons button{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--line-strong);border-radius:0;background:transparent;color:var(--text-muted);cursor:pointer;transition:color .15s ease,border-color .15s ease}
+.share-icons a:hover,.share-icons button:hover,.share-icons a:focus-visible,.share-icons button:focus-visible{color:var(--text);border-color:var(--text)}
+.share-icons svg{width:16px;height:16px;display:block}
+.share-inline{display:none;margin-top:14px}
+.share-toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,12px);max-width:calc(100% - 32px);display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--rail-bg);color:var(--rail-text);font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:70}
+.share-toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.share-toast a{color:var(--accent);white-space:nowrap}
+.back-row{margin-top:22px}
 
-.error-state{text-align:center;padding:100px 24px 40px;max-width:520px;margin:0 auto}
-.error-state h2{font-size:26px;font-weight:800;margin-bottom:12px}
-.error-state p{color:var(--text-muted);margin-bottom:28px}
-.error-state a{display:inline-flex;background:var(--btc-orange);color:#fff;font-weight:700;font-size:14px;padding:12px 26px;border-radius:9px;transition:background .2s}
-.error-state a:hover{background:var(--btc-orange-light)}
+/* Right rail */
+.story-rail{padding-top:6px}
+.rail-sticky{position:sticky;top:72px;display:flex;flex-direction:column;gap:24px}
+.rail-block .end-label{font-size:var(--t-scale)}
+.toc ol{list-style:none;counter-reset:toc}
+.toc li{counter-increment:toc;border-bottom:1px solid var(--line)}
+.toc a{display:grid;grid-template-columns:1.8rem minmax(0,1fr);padding:8px 0;font-family:var(--font-display);font-size:.95rem;line-height:1.35;color:var(--text-muted)}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--font-mono);font-size:.7rem;font-weight:600;color:var(--text-faint);padding-top:3px}
+.toc a:hover,.toc a.on{color:var(--text)}
+.toc a.on::before{color:var(--accent)}
+.toc[hidden]{display:none}
 
-.more-section{max-width:1200px;margin:0 auto;padding:72px 48px 90px}
-.section-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:24px}
-.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.on-virtuse{background:var(--record-bg);border:1px solid var(--line);padding:16px 14px 14px}
+.on-virtuse .ov-label{font-family:var(--font-mono);font-size:var(--t-scale);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px}
+.on-virtuse .ov-title{font-family:var(--font-display);font-size:var(--t-head-list);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:6px}
+.on-virtuse .ov-dek{font-size:var(--t-deck);line-height:var(--lh-deck);color:var(--text-muted);margin-bottom:12px}
+.on-virtuse .btn{width:100%}
+.on-virtuse .ov-alt{display:block;margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
+.on-virtuse .ov-alt:hover{color:var(--text)}
+.on-virtuse .ov-note{margin-top:10px;font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;color:var(--text-faint)}
 
-.article-consult-cta{max-width:900px;margin:0 auto;padding:0 48px 90px;text-align:center}
-.article-consult-cta-box{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:48px 40px}
-.article-consult-cta-box h2{font-size:26px;font-weight:800;margin-bottom:10px}
-.article-consult-cta-box p{color:var(--text-muted);font-size:15px;margin-bottom:26px;max-width:52ch;margin-left:auto;margin-right:auto}
-@media(max-width:640px){.article-consult-cta{padding:0 24px 70px}.article-consult-cta-box{padding:36px 24px}}
-.blog-card{display:flex;flex-direction:column;background:var(--dark-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
-.blog-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
-.blog-card-media{overflow:hidden;flex-shrink:0}
-.blog-card-img{width:100%;height:190px;object-fit:cover;display:block;transition:transform .5s}
-.blog-card:hover .blog-card-img{transform:scale(1.06)}
-.blog-card-body{padding:22px;display:flex;flex-direction:column;flex:1}
-.blog-card-title{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:12px;transition:color .2s}
-.blog-card:hover .blog-card-title{color:var(--btc-orange)}
-.blog-card-meta{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dim);font-weight:500;padding-top:12px;border-top:1px solid var(--border);margin-top:auto}
+/* More from the desk */
+.more-desk{padding:48px 0 56px;border-top:2px solid var(--text);margin-top:32px}
+.more-desk .section-head{margin-bottom:20px}
+.blog-card:hover h3{color:var(--accent-hot)}
 
-.newsletter{background:var(--dark-lighter);border-top:1px solid var(--border);padding:80px 48px;text-align:center;position:relative;overflow:hidden}
-.newsletter h2{font-size:36px;font-weight:800;margin-bottom:12px;position:relative;z-index:1}
-.newsletter p{color:var(--text-muted);font-size:16px;margin-bottom:32px;position:relative;z-index:1}
-.newsletter-form{display:flex;justify-content:center;gap:12px;max-width:520px;margin:0 auto;position:relative;z-index:1}
-.newsletter-form input{flex:1;padding:14px 20px;border:1px solid var(--border);border-radius:8px;background:var(--dark);color:var(--text);font-size:15px;outline:none;transition:border-color .2s}
-.newsletter-form input:focus{border-color:var(--btc-orange)}
-.newsletter-form input::placeholder{color:var(--text-dim)}
-.newsletter-form button{padding:14px 28px;background:var(--text);color:var(--dark);border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;white-space:nowrap}
-.newsletter-form button:hover{background:var(--btc-orange);color:#fff}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px}
-.footer-logo{flex-shrink:0}
-.footer-logo img{height:80px;width:auto;max-width:180px;object-fit:contain;opacity:0.9;transition:opacity .2s}
-.footer-logo img:hover{opacity:1}
-.footer-col a{display:block;color:var(--text-muted);font-size:14px;text-decoration:none;margin-bottom:10px;transition:color .2s}
-.footer-col a:hover{color:var(--btc-orange)}
-.footer-bottom p{font-size:13px;color:var(--text-dim)}
+/* Skeletons + error */
+.sk{display:block;background:linear-gradient(90deg,var(--bg-band) 25%,var(--line) 50%,var(--bg-band) 75%);background-size:200% 100%;animation:sk 1.2s infinite}
+@keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+.error-state{padding:96px 0 64px;max-width:560px}
+.error-state h1{font-family:var(--font-display);font-size:2rem;margin-bottom:10px}
+.error-state p{color:var(--text-muted);margin-bottom:22px}
 
-@media(max-width:900px){
-.nav{padding:16px 24px}
-.nav-links{display:none}
-.article-wrap{padding:44px 24px 20px}
-.article-title{font-size:32px}
-.article-layout{padding:40px 24px 0}
-.article-body{font-size:17px}
-.more-section{padding:56px 24px 70px}
-.more-grid{grid-template-columns:1fr}
-.newsletter{padding:60px 24px}
-.newsletter h2{font-size:28px}
-.newsletter-form{flex-direction:column}
-.footer-main{padding:40px 24px 20px}
-.footer-inner{flex-direction:column;gap:30px}
-.footer-columns{gap:40px}
-.footer-logo img{height:60px}
+.site-footer .footer-links a{color:var(--text-faint)}
+
+@media (max-width:1100px){
+  .story-grid{grid-template-columns:minmax(0,680px) 240px;column-gap:48px}
 }
-
-/* ===== UNIFIED CTA SYSTEM ===== */
-
-a.nav-logo, .nav-logo {
-  display: inline-flex !important;
-  align-items: flex-end;
-  gap: 1px;
-  font-weight: 800;
-  font-size: 19px;
-  color: #e6edf3 !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-  transition: opacity 0.2s;
+@media (max-width:900px){
+  .story-grid{grid-template-columns:minmax(0,1fr);max-width:680px;margin:0 auto}
+  .story-rail{padding-top:36px}
+  .rail-sticky{position:static}
+  .toc{display:none}
+  .share-rail{display:none}
+  .share-inline{display:flex}
 }
-
-.nav-cta, .newsletter-form button, .error-state a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--btc-orange, #f7931a);
-  color: #fff;
-  font-weight: 700;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.nav-cta:hover, .newsletter-form button:hover, .error-state a:hover {
-  background: #ffffff;
-  color: var(--btc-orange, #f7931a);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
-}
-
-/* ===== MOBILE MENU ===== */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  position: fixed;
-  top: 18px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-  transition: background 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-@media (max-width: 1024px) {
-  .nav-hamburger { display: flex; }
-  .nav-cta {
-    position: fixed;
-    top: 16px;
-    right: 60px;
-    z-index: 1001;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: left;
-    list-style: none;
-    margin: 0;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background:
-      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
-      linear-gradient(180deg, #0d1421 0%, #0a0f1a 55%, #0d1421 100%);
-    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
-    gap: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    z-index: 1000;
-    overflow-y: auto;
-  }
-
-  .nav-links::before {
-    content: 'MENU';
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--text-dim, #484f58);
-    margin-bottom: 18px;
-    padding: 0 4px;
-  }
-
-  body.nav-open .nav-links {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .nav-links li {
-    list-style: none;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
-
-  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
-  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
-  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
-  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
-  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
-  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
-  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
-  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
-  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
-  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
-  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
-
-  .nav-links a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: #e6edf3;
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    padding: 15px 6px;
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.2s ease, padding-left 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .nav-links a:active { padding-left: 10px; }
-
-  .nav-link-num {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-dim, #484f58);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
-  }
-
-  .nav-link-label { flex: 1; }
-
-  .nav-link-arrow {
-    display: block;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: var(--text-dim, #484f58);
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
-  }
-
-  .nav-links a:active .nav-link-arrow,
-  .nav-links a.active .nav-link-arrow {
-    opacity: 1;
-    transform: translateX(0);
-    color: var(--btc-orange, #f7931a);
-  }
-
-  .nav-links a.active { color: var(--text); }
-  .nav-links a.active .nav-link-num { color: var(--text); }
-
-  .nav-links a.active::before {
-    content: '';
-    position: absolute;
-    left: -24px;
-    top: 0; bottom: 0;
-    width: 3px;
-    background: var(--btc-orange, #f7931a);
-  }
-
-  .nav-links-cta-item {
-    display: block;
-    margin-top: 22px;
-  }
-
-  .nav-links-cta {
-    position: static !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 16px;
-    border-radius: 12px;
-    background: #e6edf3;
-    color: #08090a;
-    box-shadow: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .nav-links-cta svg { width: 16px; height: 16px; }
-
-  .nav-links-tagline {
-    margin-top: 16px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-dim, #484f58);
-  }
-
-  body.nav-open { overflow: hidden; }
+@media (max-width:720px){
+  .story-wrap{padding-top:24px}
+  .story-body{font-size:1.1rem;line-height:1.68}
+  .story-byline{gap:6px 16px}
+  .story-byline > span + span::before{content:none}
+  .story-body table{display:block;overflow-x:auto}
 }
 </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<a class="skip" href="#main">Skip to content</a>
+<div class="read-progress" id="progressBar" aria-hidden="true"></div>
 
-<div class="progress" id="progressBar"></div>
-
-<nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Buy Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Mining</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Loans</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Custody</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Tax</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html" class="active"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-  </ul>
-  <button class="nav-cta">Get Started</button>
-</nav>
-
-<div id="articleRoot">
-  <div class="article-wrap">
-    <a href="blog.html" class="back-link" id="backTop"><span class="chev">&#8592;</span> <span id="backTopLabel">All articles</span></a>
-    <div class="article-head" id="articleHead">
-      <span class="tag">Blog</span>
-      <h1 class="article-title" id="articleTitle"><span class="skeleton-line" style="display:inline-block;width:80%;height:40px"></span></h1>
-      <div class="article-meta">
-        <div class="author-chip">
-          <img src="headshot-ras.jpg" alt="Ras Vasilisin">
-          <div>
-            <div class="name">Ras Vasilisin</div>
-            <div class="role" id="authorRole">Founder &amp; CEO, Virtuse</div>
-          </div>
-        </div>
-        <div class="meta-divider"></div>
-        <div class="meta-facts" id="metaFacts"><span class="skeleton-line" style="display:inline-block;width:140px;height:14px"></span></div>
-      </div>
-    </div>
-    <div class="article-hero" id="articleHero"></div>
-  </div>
-
-  <div class="article-layout">
-    <div class="share-row">
-      <span class="share-label" id="shareLabel">Share</span>
-      <button class="share-btn" id="shareX" title="Share on X">&#120143;</button>
-      <button class="share-btn" id="shareLi" title="Share on LinkedIn">in</button>
-      <button class="share-btn" id="shareCopy" title="Copy link">&#128279;</button>
-      <span class="share-copied" id="shareCopied">Link copied</span>
-    </div>
-    <div class="article-body" id="articleBody">
-      <div class="skeleton-line" style="height:16px;margin-bottom:14px"></div>
-      <div class="skeleton-line" style="height:16px;margin-bottom:14px;width:95%"></div>
-      <div class="skeleton-line" style="height:16px;margin-bottom:14px;width:88%"></div>
-      <div class="skeleton-line" style="height:16px;margin-bottom:34px;width:60%"></div>
-      <div class="skeleton-line" style="height:16px;margin-bottom:14px"></div>
-      <div class="skeleton-line" style="height:16px;margin-bottom:14px;width:92%"></div>
-      <div class="skeleton-line" style="height:16px;width:75%"></div>
-    </div>
-    <div class="article-foot">
-      <div class="foot-author">
-        <img src="headshot-ras.jpg" alt="Ras Vasilisin">
-        <div>
-          <div class="name">Ras Vasilisin</div>
-          <div class="bio" id="authorBio">Founder &amp; CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.</div>
-        </div>
-      </div>
-      <a href="blog.html" class="back-link" id="backBottom" style="margin:0"><span class="chev">&#8592;</span> <span id="backBottomLabel">Back to all articles</span></a>
-    </div>
+<div class="ticker" role="status" aria-label="Live Bitcoin stats">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">BTC/USD <strong>—</strong></span>
   </div>
 </div>
 
-<section class="more-section">
-  <div class="section-label" id="moreLabel">Continue Reading</div>
-  <div class="more-grid" id="moreGrid"></div>
-</section>
-
-<section class="article-consult-cta">
-  <div class="article-consult-cta-box">
-    <h2>Not sure what applies to you?</h2>
-    <p>A few quick questions help us prepare a free 15-minute consultation tailored to your situation — takes under 2 minutes.</p>
-    <button type="button" class="nav-cta" data-consultation-trigger data-consultation-lang="en">Book Free Consultation</button>
+<header class="site-nav">
+  <div class="page-inner nav-inner">
+    <a class="wordmark" href="news.html">
+      <img class="brief-logo mark-on-dark" src="news/brief-nav-logo.svg" alt="Virtuse Brief" width="213" height="26">
+      <img class="brief-logo mark-on-light" src="news/brief-nav-logo-on-light.svg" alt="Virtuse Brief" width="213" height="26">
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Virtuse Brief">
+      <a href="news.html#issues" data-ui="navIssues">Latest issues</a>
+      <a href="blog.html" id="navBlog" data-ui="navBlog">Blog</a>
+      <a href="news.html#data-desk" data-ui="navData">Data</a>
+      <a href="index.html" id="navHub" data-hub="index.html" data-ui="navHub">Virtuse hub</a>
+      <a class="btn btn-accent-outline" href="#subscribe" data-ui="navGet">Get the Brief</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Dark theme">
+      <span class="theme-toggle-label" id="themeToggleLabel">Dark</span>
+    </button>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
-</section>
+</header>
 
-<section class="newsletter">
-  <h2>Fix the Money, Fix the World</h2>
-  <p>Join 18,000+ investors staying ahead of the curve. Get the Virtuse Report in your inbox every week.</p>
-  <form class="newsletter-form" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">SUBSCRIBE NOW</button>
-  </form>
-  <p id="newsletterMsg" role="status" aria-live="polite" style="margin-top:16px;font-size:14px;min-height:20px;position:relative;z-index:1;color:var(--text-muted)"></p>
-  <script>
-  (function () {
-    var form = document.getElementById('newsletterForm');
-    if (!form) return;
-    var msg = document.getElementById('newsletterMsg');
-    var btn = form.querySelector('button[type="submit"]');
-    var btnLabel = btn.textContent;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = form.elements['email'].value.trim();
-      var hp = form.elements['website'].value;
-      msg.textContent = '';
-      msg.style.color = 'var(--text-muted)';
-      btn.disabled = true;
-      btn.textContent = 'SENDING...';
-      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp })
-      }).then(function (res) {
-        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
-      }).then(function (result) {
-        if (result.ok) {
-          form.reset();
-          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
-          msg.style.color = 'var(--green, #3fb950)';
-        } else {
-          msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
-          msg.style.color = '#f85149';
-        }
-      }).catch(function () {
-        msg.textContent = 'Network error \u2014 please try again.';
-        msg.style.color = '#f85149';
-      }).then(function () {
-        btn.disabled = false;
-        btn.textContent = btnLabel;
-      });
-    });
-  })();
-  </script>
-</section>
+<main id="main">
+  <div class="page-inner story-wrap" id="articleRoot">
+    <div class="story-grid">
+      <article class="story-main">
+        <nav class="story-crumb" aria-label="Breadcrumb">
+          <a href="news.html">Virtuse Brief</a><span class="sep">/</span><a href="blog.html" id="crumbList" data-ui="crumbList">Blog</a>
+        </nav>
 
-<footer class="footer-main">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:#e6edf3;line-height:1;position:relative;top:4px;">Virtuse</span></div>
-    </div>
-    <div class="footer-columns">
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="about.html">About Us</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="aml-compliance.html">AML &amp; Compliance</a>
-      </div>
+        <p class="story-kicker" id="storyKicker">Markets</p>
+        <h1 class="story-title" id="articleTitle"><span class="sk" style="height:.9em;width:92%;margin-bottom:.15em"></span><span class="sk" style="height:.9em;width:60%"></span></h1>
+        <p class="story-dek" id="articleDek"><span class="sk" style="height:1em;width:96%;margin-bottom:.35em"></span><span class="sk" style="height:1em;width:70%"></span></p>
+
+        <div class="story-byline" id="storyByline">
+          <span><span data-ui="by">By</span>&nbsp;<strong>Ras Vasilisin</strong></span>
+          <span id="bylineDesk">Markets desk</span>
+          <span id="bylineDate">—</span>
+          <span id="bylineBlock" hidden>Block —</span>
+          <span id="bylineRead">— min</span>
+        </div>
+        <div class="share-row share-inline"><span class="share-label" data-ui="share">Share</span><div class="share-icons" data-share-slot></div></div>
+
+        <figure class="story-figure" id="articleHero" hidden>
+          <img id="heroImg" alt="">
+          <figcaption id="heroCap" hidden></figcaption>
+        </figure>
+
+        <div class="story-body" id="articleBody">
+          <span class="sk" style="height:1em;margin-bottom:.7em"></span>
+          <span class="sk" style="height:1em;width:94%;margin-bottom:.7em"></span>
+          <span class="sk" style="height:1em;width:88%;margin-bottom:.7em"></span>
+          <span class="sk" style="height:1em;width:60%;margin-bottom:1.6em"></span>
+          <span class="sk" style="height:1em;margin-bottom:.7em"></span>
+          <span class="sk" style="height:1em;width:91%"></span>
+        </div>
+
+        <div class="story-end">
+          <section class="sources" id="sources" hidden aria-labelledby="sourcesLabel">
+            <h2 class="end-label" id="sourcesLabel" data-ui="sources">Sources</h2>
+            <ol id="sourcesList"></ol>
+          </section>
+
+          <div class="author-box">
+            <img src="headshot-ras.jpg" alt="Ras Vasilisin" width="56" height="56">
+            <div>
+              <p class="who" data-ui="aboutAuthor">About the author</p>
+              <p class="name">Ras Vasilisin</p>
+              <p class="bio" id="authorBio">Founder &amp; CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.</p>
+            </div>
+          </div>
+
+          <div class="share-row"><span class="share-label" data-ui="share">Share</span><div class="share-icons" data-share-slot></div></div>
+          <p class="back-row"><a class="text-link" href="blog.html" id="backLink" data-ui="back">← All stories</a></p>
+        </div>
+      </article>
+
+      <aside class="story-rail" aria-label="Story tools">
+        <div class="rail-sticky">
+          <nav class="rail-block toc" id="toc" hidden aria-labelledby="tocLabel">
+            <h2 class="end-label" id="tocLabel" data-ui="inStory">In this story</h2>
+            <ol id="tocList"></ol>
+          </nav>
+
+          <div class="rail-block share-rail">
+            <h2 class="end-label" data-ui="share">Share</h2>
+            <div class="share-icons" data-share-slot></div>
+          </div>
+
+          <div class="on-virtuse" id="onVirtuse">
+            <p class="ov-label" data-ui="onVirtuse">On Virtuse</p>
+            <p class="ov-title" id="ovTitle">Compare where to buy Bitcoin</p>
+            <p class="ov-dek" id="ovDek">Vetted, regulated platforms side by side. Fees, custody and payout in one view.</p>
+            <a class="btn" id="ovCta" href="buy-bitcoin.html">Compare partners</a>
+            <a class="ov-alt" id="ovAlt" href="concierge.html?utm_source=concierge&amp;utm_medium=article" data-ui="ovAlt">Not sure? Get matched in 60 seconds →</a>
+            <p class="ov-note" data-ui="ovNote">Partner services. Not financial advice.</p>
+          </div>
+
+          <div class="brief-capture atlantic" id="subscribe">
+            <p class="capture-kicker" data-ui="capKicker">Get the Brief</p>
+            <p class="capture-dek" data-ui="capDek">Every Monday. Bitcoin-only. No tokens. No PR.</p>
+            <form class="atlantic-form" id="subscribeForm" novalidate>
+              <label class="sr-only" for="railEmail">Email</label>
+              <input id="railEmail" type="email" name="email" placeholder="Your email" required autocomplete="email">
+              <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
+              <button class="btn btn-accent-outline" type="submit" data-ui="capBtn">Get the Brief</button>
+              <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
+
+  <section class="more-desk" id="moreDesk" hidden>
+    <div class="page-inner">
+      <div class="section-head">
+        <h2 data-ui="more">More from the desk</h2>
+      </div>
+      <div class="blog-grid" id="moreGrid"></div>
+      <div class="blog-more"><a class="text-link" href="blog.html" id="moreAll" data-ui="moreAll">All stories</a></div>
+    </div>
+  </section>
+</main>
+<div class="share-toast" id="shareToast" role="status" aria-live="polite"></div>
+
+<footer class="site-footer">
+  <div class="page-inner footer-inner">
+    <p class="footer-tagline">Virtuse Brief. Bitcoin-only. No tokens. No PR.</p>
+    <div class="footer-signup">
+      <form class="lenny-form" id="footerForm" novalidate>
+        <label class="sr-only" for="footerEmail">Email</label>
+        <input id="footerEmail" type="email" name="email" placeholder="Type your email…" required autocomplete="email">
+        <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">
+        <button class="btn" type="submit" data-ui="subscribe">Subscribe</button>
+        <p class="subscribe-msg" id="footerMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="news.html">Virtuse Brief</a>
+      <a href="blog.html" id="footBlog" data-ui="navBlog">Blog</a>
+      <a href="index.html" data-hub="index.html" data-ui="navHub">Virtuse hub</a>
+      <a href="about.html" data-hub="about.html" data-ui="footAbout">About</a>
+      <a href="terms-and-conditions.html" data-hub="terms-and-conditions.html" data-ui="footTerms">Terms</a>
+      <a href="privacy-policy.html" data-hub="privacy-policy.html" data-ui="footPrivacy">Privacy</a>
+    </nav>
+    <p class="footer-copy" data-ui="footCopy">© 2018–2026 Virtuse Group. All rights reserved. Not financial advice.</p>
   </div>
 </footer>
 
+<script src="brief-chrome.js"></script>
+
+<!-- ===== Story reader: WordPress is the database, this page renders it ===== -->
 <script>
 (function () {
   'use strict';
-  // Headless-CMS reader: WordPress is the database; this page renders it.
-  // Language registry — add a language here (and in gen_blog.py) to expand.
+
   var LANGS = {
     en: {
-      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts',
-      category: 13,
-      lang: 'en',
-      // Always send an explicit lang param, even for English -- WPML's
-      // REST API falls back to a "current language" cookie/session when
-      // no lang is given, so an unfiltered request can silently return
-      // whatever language a visitor last viewed (e.g. after browsing a
-      // Russian article, a plain English article.html hit would come
-      // back Russian). Being explicit here closes that hole.
-      listPage: 'blog.html',
-      suffix: '',
-      months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'blog.html', suffix: '', locale: 'en-GB', worker: 'en', dir: '', concierge: true,
+      desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Custody', policy: 'Policy', macro: 'Macro', markets: 'Markets' },
       ui: {
-        backTop: 'All articles',
-        backBottom: 'Back to all articles',
-        authorRole: 'Founder & CEO, Virtuse',
+        navIssues: 'Latest issues', navBlog: 'Blog', navData: 'Data', navHub: 'Virtuse hub', navGet: 'Get the Brief',
+        crumbList: 'Blog', by: 'By', desk: ' desk', block: 'Block', readTime: ' min',
+        image: 'Image', sources: 'Sources', aboutAuthor: 'About the author',
         authorBio: 'Founder & CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.',
-        share: 'Share',
-        copied: 'Link copied',
-        readTime: ' min read',
-        moreLabel: 'Continue Reading',
-        errTitle: 'Article not found',
-        errText: 'This article may have been moved or unpublished. Browse the full archive instead.',
-        errCta: 'Back to the blog'
+        share: 'Share', shareOn: 'Share on', copyLink: 'Copy link', copied: 'Link copied', copyFailed: 'Could not copy. Copy the address from the browser bar.', moreShare: 'More sharing options',
+        nostrCopied: 'Copied. Paste it into your Nostr app.', openPrimal: 'Open Primal', back: '← All stories',
+        inStory: 'In this story', onVirtuse: 'On Virtuse', ovAlt: 'Not sure? Get matched in 60 seconds →',
+        ovNote: 'Partner services. Not financial advice.',
+        capKicker: 'Get the Brief', capDek: 'Every Monday. Bitcoin-only. No tokens. No PR.', capBtn: 'Get the Brief',
+        subscribe: 'Subscribe', more: 'More from the desk', moreAll: 'All stories', readMore: 'Read',
+        emailReq: 'Email is required.', sending: 'Sending', subOk: 'You are on the list. Check your inbox.',
+        subErr: 'Could not join the list. Try again.', netErr: 'Network error. Try again.',
+        footAbout: 'About', footTerms: 'Terms', footPrivacy: 'Privacy', footCopy: '© 2018–2026 Virtuse Group. All rights reserved. Not financial advice.',
+        errTitle: 'Story not found', errText: 'This story may have been moved or unpublished. Browse the full archive instead.', errCta: 'All stories'
+      },
+      services: {
+        mining: ['Mine Bitcoin with vetted partners', 'Hosting, cloud and hardware partners compared on cost and payout.', 'Compare mining partners'],
+        treasury: ['Bitcoin for your balance sheet', 'Custody, execution and reporting partners for companies and family offices.', 'See treasury partners'],
+        custody: ['Hold your own keys', 'Hardware wallets and multi-sig tooling from vetted partners.', 'Compare custody options'],
+        policy: ['Get your Bitcoin taxes right', 'Country-specific reports from tax software partners.', 'See tax partners'],
+        macro: ['Borrow against Bitcoin instead of selling', 'Bitcoin-backed loans from vetted lenders, from 6% p.a.', 'Compare loan partners'],
+        markets: ['Compare where to buy Bitcoin', 'Vetted, regulated platforms side by side. Fees, custody and payout in one view.', 'Compare partners']
       }
     },
     sk: {
-      api: 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts',
-      category: 26,
-      listPage: 'blog-sk.html',
-      suffix: '&lang=sk',
-      months: ['januára','februára','marca','apríla','mája','júna','júla','augusta','septembra','októbra','novembra','decembra'],
+      api: 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts', category: 26,
+      listPage: 'blog-sk.html', suffix: '&lang=sk', locale: 'sk-SK', worker: 'sk', dir: 'sk/', concierge: true,
+      desks: { mining: 'Ťažba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulácia', macro: 'Makro', markets: 'Trhy' },
       ui: {
-        backTop: 'Všetky články',
-        backBottom: 'Späť na všetky články',
-        authorRole: 'Zakladateľ & CEO, Virtuse',
-        authorBio: 'Zakladateľ & CEO Virtuse. Píše o Bitcoine, makroekonomike a budúcnosti peňazí.',
-        share: 'Zdieľať',
-        copied: 'Odkaz skopírovaný',
-        readTime: ' min čítania',
-        moreLabel: 'Pokračujte v čítaní',
-        errTitle: 'Článok sa nenašiel',
-        errText: 'Tento článok mohol byť presunutý alebo stiahnutý. Prezrite si celý archív.',
-        errCta: 'Späť na blog'
+        navIssues: 'Posledné vydania', navBlog: 'Blog', navData: 'Dáta', navHub: 'Virtuse hub', navGet: 'Získať Brief',
+        crumbList: 'Blog', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
+        image: 'Obrázok', sources: 'Zdroje', aboutAuthor: 'O autorovi',
+        authorBio: 'Zakladateľ a CEO Virtuse. Píše o Bitcoine, makroekonomike a budúcnosti peňazí.',
+        share: 'Zdieľať', shareOn: 'Zdieľať na', copyLink: 'Kopírovať odkaz', copied: 'Odkaz skopírovaný', copyFailed: 'Kopírovanie zlyhalo. Skopírujte adresu z prehliadača.', moreShare: 'Ďalšie možnosti zdieľania',
+        nostrCopied: 'Skopírované. Vložte to do svojej Nostr aplikácie.', openPrimal: 'Otvoriť Primal', back: '← Všetky články',
+        inStory: 'V tomto článku', onVirtuse: 'Na Virtuse', ovAlt: 'Neviete si rady? Partner za 60 sekúnd →',
+        ovNote: 'Služby partnerov. Nie je to finančné poradenstvo.',
+        capKicker: 'Získaj Brief', capDek: 'Každý pondelok. Iba Bitcoin. Žiadne tokeny. Žiadne PR.', capBtn: 'Získať Brief',
+        subscribe: 'Odoberať', more: 'Ďalšie články', moreAll: 'Všetky články', readMore: 'Čítať',
+        emailReq: 'Zadajte e-mail.', sending: 'Odosielam', subOk: 'Hotovo. Skontrolujte si schránku.',
+        subErr: 'Prihlásenie sa nepodarilo. Skúste to znova.', netErr: 'Chyba siete. Skúste to znova.',
+        footAbout: 'O nás', footTerms: 'Obchodné podmienky', footPrivacy: 'Ochrana osobných údajov', footCopy: '© 2018–2026 Virtuse Group. Všetky práva vyhradené.',
+        errTitle: 'Článok sa nenašiel', errText: 'Tento článok mohol byť presunutý alebo stiahnutý. Prezrite si celý archív.', errCta: 'Všetky články'
+      },
+      services: {
+        mining: ['Ťažte Bitcoin s overenými partnermi', 'Hosting, cloud a hardvér porovnané podľa nákladov a výplat.', 'Porovnať partnerov'],
+        treasury: ['Bitcoin v súvahe firmy', 'Úschova, exekúcia a reporting pre firmy a family offices.', 'Treasury partneri'],
+        custody: ['Majte vlastné kľúče', 'Hardvérové peňaženky a multi-sig od overených partnerov.', 'Porovnať úschovu'],
+        policy: ['Zdaňte Bitcoin správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
+        macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 6 % p. a.', 'Porovnať pôžičky'],
+        markets: ['Kde kúpiť Bitcoin', 'Overené regulované platformy vedľa seba: poplatky, úschova, výplata.', 'Porovnať partnerov']
       }
     },
-    // WPML's Russian feed only answers on the SHARED /wp-json/ path with an
-    // explicit lang=ru query param -- there's no working /ru/wp-json/...
-    // path alias the way sk has one. See fetch() calls below: they append
-    // '&lang=' + L.lang whenever a language sets that field.
+    // WPML's Russian feed only answers on the shared /wp-json/ path with an
+    // explicit lang=ru query param (no /ru/wp-json/ alias like sk has).
     ru: {
-      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts',
-      category: 57,
-      lang: 'ru',
-      listPage: 'ru/blog.html',
-      suffix: '&lang=ru',
-      months: ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 57, lang: 'ru',
+      listPage: 'ru/blog.html', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: false,
+      desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
-        backTop: 'Все статьи',
-        backBottom: 'Назад ко всем статьям',
-        authorRole: 'Основатель и CEO, Virtuse',
+        navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные', navHub: 'Virtuse', navGet: 'Получить Brief',
+        crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
+        image: 'Фото', sources: 'Источники', aboutAuthor: 'Об авторе',
         authorBio: 'Основатель и CEO Virtuse. Пишет о Биткоине, макроэкономике и будущем денег.',
-        share: 'Поделиться',
-        copied: 'Ссылка скопирована',
-        readTime: ' мин чтения',
-        moreLabel: 'Продолжить чтение',
-        errTitle: 'Статья не найдена',
-        errText: 'Возможно, эта статья была перемещена или снята с публикации. Посмотрите полный архив.',
-        errCta: 'Назад в блог'
+        share: 'Поделиться', shareOn: 'Поделиться в', copyLink: 'Копировать ссылку', copied: 'Ссылка скопирована', copyFailed: 'Не удалось скопировать. Скопируйте адрес из браузера.', moreShare: 'Другие способы поделиться',
+        nostrCopied: 'Скопировано. Вставьте в своё Nostr-приложение.', openPrimal: 'Открыть Primal', back: '← Все статьи',
+        inStory: 'В этой статье', onVirtuse: 'На Virtuse', ovAlt: 'Не уверены? Подбор за 60 секунд →',
+        ovNote: 'Услуги партнёров. Не является финансовой рекомендацией.',
+        capKicker: 'Получите Brief', capDek: 'Каждый понедельник. Только Биткоин. Без токенов. Без PR.', capBtn: 'Получить Brief',
+        subscribe: 'Подписаться', more: 'Ещё статьи', moreAll: 'Все статьи', readMore: 'Читать',
+        emailReq: 'Укажите e-mail.', sending: 'Отправка', subOk: 'Готово. Проверьте почту.',
+        subErr: 'Не удалось подписаться. Попробуйте ещё раз.', netErr: 'Ошибка сети. Попробуйте ещё раз.',
+        footAbout: 'О нас', footTerms: 'Условия использования', footPrivacy: 'Политика конфиденциальности', footCopy: '© 2018–2026 Virtuse Group. Все права защищены.',
+        errTitle: 'Статья не найдена', errText: 'Возможно, статья перемещена или снята с публикации. Посмотрите полный архив.', errCta: 'Все статьи'
+      },
+      services: {
+        mining: ['Майнинг с проверенными партнёрами', 'Хостинг, облако и оборудование: сравнение затрат и выплат.', 'Сравнить партнёров'],
+        treasury: ['Биткоин на балансе компании', 'Хранение, исполнение и отчётность для компаний и семейных офисов.', 'Партнёры'],
+        custody: ['Храните свои ключи', 'Аппаратные кошельки и мультиподпись от проверенных партнёров.', 'Сравнить хранение'],
+        policy: ['Налоги на Биткоин без ошибок', 'Отчёты по странам от налоговых сервисов.', 'Налоговые партнёры'],
+        macro: ['Займите под Биткоин вместо продажи', 'Займы под залог Биткоина от 6% годовых.', 'Сравнить займы'],
+        markets: ['Где купить Биткоин', 'Проверенные регулируемые платформы: комиссии, хранение, вывод.', 'Сравнить партнёров']
+      }
+    },
+    // The languages below have no WordPress feed of their own yet: the story
+    // is the English original (lang: 'en' for WPML), the interface and all
+    // links are in the page language.
+    uk: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'uk/blog.html', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: false,
+      desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Кастоді', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
+      ui: {
+        navIssues: 'Останні випуски', navBlog: 'Блог', navData: 'Дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
+        crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' хв',
+        image: 'Фото', sources: 'Джерела', aboutAuthor: 'Про автора',
+        authorBio: 'Засновник і CEO Virtuse. Пише про Біткоїн, макроекономіку та майбутнє грошей.',
+        share: 'Поділитися', shareOn: 'Поділитися в', copyLink: 'Копіювати посилання', copied: 'Посилання скопійовано',
+        copyFailed: 'Не вдалося скопіювати. Скопіюйте адресу з браузера.', moreShare: 'Інші способи поділитися',
+        nostrCopied: 'Скопійовано. Вставте у свій Nostr-застосунок.', openPrimal: 'Відкрити Primal', back: '← Усі статті',
+        inStory: 'У цій статті', onVirtuse: 'На Virtuse', ovAlt: 'Не впевнені? Підбір партнера за 60 секунд →',
+        ovNote: 'Послуги партнерів. Не є фінансовою порадою.',
+        capKicker: 'Отримайте Brief', capDek: 'Virtuse Brief. Лише Біткоїн. Жодних токенів. Жодного PR.', capBtn: 'Отримати Brief',
+        subscribe: 'Отримати Brief', more: 'Ще статті', moreAll: 'Усі статті', readMore: 'Читати',
+        emailReq: 'Вкажіть e-mail.', sending: 'Надсилання', subOk: 'Готово. Перевірте пошту.',
+        subErr: 'Не вдалося підписатися. Спробуйте ще раз.', netErr: 'Помилка мережі. Спробуйте ще раз.',
+        footAbout: 'Про нас', footTerms: 'Умови використання', footPrivacy: 'Політика конфіденційності', footCopy: '© 2018–2026 Virtuse Group. Усі права захищені.',
+        errTitle: 'Статтю не знайдено', errText: 'Можливо, статтю перенесено або знято з публікації. Перегляньте повний архів.', errCta: 'Усі статті'
+      },
+      services: {
+        mining: ['Майнінг із перевіреними партнерами', 'Хостинг, хмара та обладнання: порівняння витрат і виплат.', 'Порівняти партнерів'],
+        treasury: ['Біткоїн на балансі компанії', 'Зберігання, виконання угод і звітність для компаній та сімейних офісів.', 'Партнери для казначейства'],
+        custody: ['Зберігайте власні ключі', 'Апаратні гаманці та мультипідпис від перевірених партнерів.', 'Порівняти зберігання'],
+        policy: ['Податки на Біткоїн без помилок', 'Звіти за країнами від податкових сервісів.', 'Податкові партнери'],
+        macro: ['Позика під Біткоїн замість продажу', 'Позики під заставу Біткоїна від 6% річних.', 'Порівняти позики'],
+        markets: ['Де купити Біткоїн', 'Перевірені регульовані платформи: комісії, зберігання, виведення.', 'Порівняти партнерів']
+      }
+    },
+    de: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'de/blog.html', suffix: '&lang=de', locale: 'de-DE', worker: 'de', dir: 'de/', concierge: true,
+      desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Verwahrung', policy: 'Regulierung', macro: 'Makro', markets: 'Märkte' },
+      ui: {
+        navIssues: 'Neueste Ausgaben', navBlog: 'Blog', navData: 'Daten', navHub: 'Virtuse Hub', navGet: 'Brief erhalten',
+        crumbList: 'Blog', by: 'Von', desk: '', block: 'Block', readTime: ' Min.',
+        image: 'Bild', sources: 'Quellen', aboutAuthor: 'Über den Autor',
+        authorBio: 'Gründer und CEO von Virtuse. Schreibt über Bitcoin, Makroökonomie und die Zukunft des Geldes.',
+        share: 'Teilen', shareOn: 'Teilen auf', copyLink: 'Link kopieren', copied: 'Link kopiert',
+        copyFailed: 'Kopieren fehlgeschlagen. Kopieren Sie die Adresse aus der Adresszeile.', moreShare: 'Weitere Optionen zum Teilen',
+        nostrCopied: 'Kopiert. Fügen Sie es in Ihre Nostr-App ein.', openPrimal: 'Primal öffnen', back: '← Alle Artikel',
+        inStory: 'In diesem Artikel', onVirtuse: 'Auf Virtuse', ovAlt: 'Unsicher? In 60 Sekunden zum passenden Partner →',
+        ovNote: 'Partnerleistungen. Keine Anlageberatung.',
+        capKicker: 'Holen Sie sich den Brief', capDek: 'Virtuse Brief. Nur Bitcoin. Keine Token. Keine PR.', capBtn: 'Brief erhalten',
+        subscribe: 'Brief erhalten', more: 'Weitere Artikel', moreAll: 'Alle Artikel', readMore: 'Lesen',
+        emailReq: 'Bitte geben Sie Ihre E-Mail-Adresse ein.', sending: 'Wird gesendet', subOk: 'Geschafft. Bitte prüfen Sie Ihr Postfach.',
+        subErr: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.', netErr: 'Netzwerkfehler. Bitte erneut versuchen.',
+        footAbout: 'Über uns', footTerms: 'AGB', footPrivacy: 'Datenschutzerklärung', footCopy: '© 2018–2026 Virtuse Group. Alle Rechte vorbehalten.',
+        errTitle: 'Artikel nicht gefunden', errText: 'Dieser Artikel wurde möglicherweise verschoben oder depubliziert. Durchsuchen Sie das Archiv.', errCta: 'Alle Artikel'
+      },
+      services: {
+        mining: ['Bitcoin-Mining mit geprüften Partnern', 'Hosting-, Cloud- und Hardware-Partner nach Kosten und Auszahlung verglichen.', 'Mining-Partner vergleichen'],
+        treasury: ['Bitcoin in der Unternehmensbilanz', 'Verwahrung, Ausführung und Reporting für Unternehmen und Family Offices.', 'Treasury-Partner ansehen'],
+        custody: ['Behalten Sie Ihre eigenen Schlüssel', 'Hardware-Wallets und Multi-Sig-Lösungen von geprüften Partnern.', 'Verwahrung vergleichen'],
+        policy: ['Bitcoin-Steuern richtig erledigen', 'Länderspezifische Berichte von Steuersoftware-Partnern.', 'Steuer-Partner ansehen'],
+        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 6 % p. a.', 'Kredit-Partner vergleichen'],
+        markets: ['Wo Sie Bitcoin kaufen', 'Geprüfte, regulierte Plattformen im Vergleich: Gebühren, Verwahrung, Auszahlung.', 'Partner vergleichen']
+      }
+    },
+    fr: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'fr/blog.html', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: false,
+      desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Régulation', macro: 'Macro', markets: 'Marchés' },
+      ui: {
+        navIssues: 'Derniers numéros', navBlog: 'Blog', navData: 'Données', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
+        crumbList: 'Blog', by: 'Par', desk: '', block: 'Bloc', readTime: ' min',
+        image: 'Image', sources: 'Sources', aboutAuthor: 'L’auteur',
+        authorBio: 'Fondateur et CEO de Virtuse. Écrit sur le Bitcoin, la macroéconomie et l’avenir de la monnaie.',
+        share: 'Partager', shareOn: 'Partager sur', copyLink: 'Copier le lien', copied: 'Lien copié',
+        copyFailed: 'Copie impossible. Copiez l’adresse dans la barre du navigateur.', moreShare: 'Autres options de partage',
+        nostrCopied: 'Copié. Collez-le dans votre application Nostr.', openPrimal: 'Ouvrir Primal', back: '← Tous les articles',
+        inStory: 'Dans cet article', onVirtuse: 'Sur Virtuse', ovAlt: 'Vous hésitez ? Le bon partenaire en 60 secondes →',
+        ovNote: 'Services de partenaires. Pas un conseil financier.',
+        capKicker: 'Recevez le Brief', capDek: 'Virtuse Brief. 100 % Bitcoin. Pas de tokens. Pas de RP.', capBtn: 'Recevoir le Brief',
+        subscribe: 'Recevoir le Brief', more: 'Autres articles', moreAll: 'Tous les articles', readMore: 'Lire',
+        emailReq: 'Adresse e-mail requise.', sending: 'Envoi', subOk: 'C’est fait. Vérifiez votre boîte de réception.',
+        subErr: 'Inscription impossible. Réessayez.', netErr: 'Erreur réseau. Réessayez.',
+        footAbout: 'À propos', footTerms: 'CGU', footPrivacy: 'Politique de confidentialité', footCopy: '© 2018–2026 Virtuse Group. Tous droits réservés.',
+        errTitle: 'Article introuvable', errText: 'Cet article a peut-être été déplacé ou dépublié. Parcourez les archives.', errCta: 'Tous les articles'
+      },
+      services: {
+        mining: ['Miner du Bitcoin avec des partenaires vérifiés', 'Hébergement, cloud et matériel comparés sur les coûts et les paiements.', 'Comparer les partenaires'],
+        treasury: ['Le Bitcoin au bilan de l’entreprise', 'Conservation, exécution et reporting pour entreprises et family offices.', 'Voir les partenaires'],
+        custody: ['Gardez vos propres clés', 'Portefeuilles matériels et multisig de partenaires vérifiés.', 'Comparer la conservation'],
+        policy: ['Déclarez votre Bitcoin sans erreur', 'Rapports fiscaux par pays de nos partenaires logiciels.', 'Voir les partenaires fiscaux'],
+        macro: ['Empruntez au lieu de vendre', 'Prêts garantis par du Bitcoin auprès de prêteurs vérifiés, dès 6 % par an.', 'Comparer les prêts'],
+        markets: ['Où acheter du Bitcoin', 'Plateformes régulées et vérifiées côte à côte : frais, conservation, retrait.', 'Comparer les partenaires']
+      }
+    },
+    es: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'es/blog.html', suffix: '&lang=es', locale: 'es-ES', worker: 'es', dir: 'es/', concierge: false,
+      desks: { mining: 'Minería', treasury: 'Treasury', custody: 'Custodia', policy: 'Regulación', macro: 'Macro', markets: 'Mercados' },
+      ui: {
+        navIssues: 'Últimos números', navBlog: 'Blog', navData: 'Datos', navHub: 'Hub de Virtuse', navGet: 'Recibir el Brief',
+        crumbList: 'Blog', by: 'Por', desk: '', block: 'Bloque', readTime: ' min',
+        image: 'Imagen', sources: 'Fuentes', aboutAuthor: 'Sobre el autor',
+        authorBio: 'Fundador y CEO de Virtuse. Escribe sobre Bitcoin, macroeconomía y el futuro del dinero.',
+        share: 'Compartir', shareOn: 'Compartir en', copyLink: 'Copiar enlace', copied: 'Enlace copiado',
+        copyFailed: 'No se pudo copiar. Copie la dirección desde el navegador.', moreShare: 'Más opciones para compartir',
+        nostrCopied: 'Copiado. Péguelo en su aplicación de Nostr.', openPrimal: 'Abrir Primal', back: '← Todos los artículos',
+        inStory: 'En este artículo', onVirtuse: 'En Virtuse', ovAlt: '¿No está seguro? Encuentre socio en 60 segundos →',
+        ovNote: 'Servicios de socios. No es asesoramiento financiero.',
+        capKicker: 'Reciba el Brief', capDek: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.', capBtn: 'Recibir el Brief',
+        subscribe: 'Recibir el Brief', more: 'Más artículos', moreAll: 'Todos los artículos', readMore: 'Leer',
+        emailReq: 'Indique su correo electrónico.', sending: 'Enviando', subOk: 'Listo. Revise su correo.',
+        subErr: 'No se pudo completar la suscripción. Inténtelo de nuevo.', netErr: 'Error de red. Inténtelo de nuevo.',
+        footAbout: 'Sobre nosotros', footTerms: 'Términos y condiciones', footPrivacy: 'Política de privacidad', footCopy: '© 2018–2026 Virtuse Group. Todos los derechos reservados.',
+        errTitle: 'Artículo no encontrado', errText: 'Es posible que el artículo se haya movido o retirado. Consulte el archivo completo.', errCta: 'Todos los artículos'
+      },
+      services: {
+        mining: ['Mine Bitcoin con socios verificados', 'Hosting, nube y hardware comparados por costes y pagos.', 'Comparar socios de minería'],
+        treasury: ['Bitcoin en el balance de su empresa', 'Custodia, ejecución y reporting para empresas y family offices.', 'Ver socios de tesorería'],
+        custody: ['Guarde sus propias claves', 'Monederos de hardware y multifirma de socios verificados.', 'Comparar custodia'],
+        policy: ['Declare su Bitcoin sin errores', 'Informes fiscales por país de socios de software fiscal.', 'Ver socios fiscales'],
+        macro: ['Pida un préstamo en lugar de vender', 'Préstamos respaldados por Bitcoin de prestamistas verificados, desde el 6 % anual.', 'Comparar préstamos'],
+        markets: ['Dónde comprar Bitcoin', 'Plataformas reguladas y verificadas, lado a lado: comisiones, custodia y retiradas.', 'Comparar socios']
+      }
+    },
+    pl: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'pl/blog.html', suffix: '&lang=pl', locale: 'pl-PL', worker: 'pl', dir: 'pl/', concierge: false,
+      desks: { mining: 'Kopanie', treasury: 'Treasury', custody: 'Przechowywanie', policy: 'Regulacje', macro: 'Makro', markets: 'Rynki' },
+      ui: {
+        navIssues: 'Najnowsze wydania', navBlog: 'Blog', navData: 'Dane', navHub: 'Hub Virtuse', navGet: 'Zapisz się',
+        crumbList: 'Blog', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
+        image: 'Zdjęcie', sources: 'Źródła', aboutAuthor: 'O autorze',
+        authorBio: 'Założyciel i CEO Virtuse. Pisze o Bitcoinie, makroekonomii i przyszłości pieniądza.',
+        share: 'Udostępnij', shareOn: 'Udostępnij w', copyLink: 'Kopiuj link', copied: 'Link skopiowany',
+        copyFailed: 'Nie udało się skopiować. Skopiuj adres z paska przeglądarki.', moreShare: 'Więcej opcji udostępniania',
+        nostrCopied: 'Skopiowano. Wklej w swojej aplikacji Nostr.', openPrimal: 'Otwórz Primal', back: '← Wszystkie artykuły',
+        inStory: 'W tym artykule', onVirtuse: 'Na Virtuse', ovAlt: 'Nie wiesz, co wybrać? Partner w 60 sekund →',
+        ovNote: 'Usługi partnerów. To nie jest porada finansowa.',
+        capKicker: 'Zapisz się na Brief', capDek: 'Virtuse Brief. Tylko Bitcoin. Bez tokenów. Bez PR-u.', capBtn: 'Zapisz się',
+        subscribe: 'Zapisz się', more: 'Więcej artykułów', moreAll: 'Wszystkie artykuły', readMore: 'Czytaj',
+        emailReq: 'Podaj adres e-mail.', sending: 'Wysyłanie', subOk: 'Gotowe. Sprawdź skrzynkę.',
+        subErr: 'Nie udało się zapisać. Spróbuj ponownie.', netErr: 'Błąd sieci. Spróbuj ponownie.',
+        footAbout: 'O nas', footTerms: 'Regulamin', footPrivacy: 'Polityka prywatności', footCopy: '© 2018–2026 Virtuse Group. Wszelkie prawa zastrzeżone.',
+        errTitle: 'Nie znaleziono artykułu', errText: 'Artykuł mógł zostać przeniesiony lub wycofany. Przejrzyj całe archiwum.', errCta: 'Wszystkie artykuły'
+      },
+      services: {
+        mining: ['Kop Bitcoina ze sprawdzonymi partnerami', 'Hosting, chmura i sprzęt porównane pod kątem kosztów i wypłat.', 'Porównaj partnerów'],
+        treasury: ['Bitcoin w bilansie firmy', 'Przechowywanie, egzekucja zleceń i raportowanie dla firm i family offices.', 'Partnerzy treasury'],
+        custody: ['Trzymaj własne klucze', 'Portfele sprzętowe i multisig od sprawdzonych partnerów.', 'Porównaj przechowywanie'],
+        policy: ['Rozlicz Bitcoina bez błędów', 'Raporty podatkowe dla każdego kraju od partnerów podatkowych.', 'Partnerzy podatkowi'],
+        macro: ['Pożycz zamiast sprzedawać', 'Pożyczki pod zastaw Bitcoina od sprawdzonych pożyczkodawców, od 6% rocznie.', 'Porównaj pożyczki'],
+        markets: ['Gdzie kupić Bitcoina', 'Sprawdzone, regulowane platformy obok siebie: opłaty, przechowywanie, wypłaty.', 'Porównaj partnerów']
+      }
+    },
+    hu: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'hu/blog.html', suffix: '&lang=hu', locale: 'hu-HU', worker: 'hu', dir: 'hu/', concierge: false,
+      desks: { mining: 'Bányászat', treasury: 'Treasury', custody: 'Letétkezelés', policy: 'Szabályozás', macro: 'Makró', markets: 'Piacok' },
+      ui: {
+        navIssues: 'Legutóbbi számok', navBlog: 'Blog', navData: 'Adatok', navHub: 'Virtuse hub', navGet: 'Feliratkozás',
+        crumbList: 'Blog', by: 'Szerző:', desk: '', block: 'Blokk', readTime: ' perc',
+        image: 'Kép', sources: 'Források', aboutAuthor: 'A szerzőről',
+        authorBio: 'A Virtuse alapítója és vezérigazgatója. Bitcoinról, makrogazdaságról és a pénz jövőjéről ír.',
+        share: 'Megosztás', shareOn: 'Megosztás:', copyLink: 'Link másolása', copied: 'Link kimásolva',
+        copyFailed: 'A másolás nem sikerült. Másolja ki a címet a böngészőből.', moreShare: 'További megosztási lehetőségek',
+        nostrCopied: 'Kimásolva. Illessze be Nostr-alkalmazásába.', openPrimal: 'Primal megnyitása', back: '← Összes cikk',
+        inStory: 'Ebben a cikkben', onVirtuse: 'A Virtuse-on', ovAlt: 'Bizonytalan? Partner 60 másodperc alatt →',
+        ovNote: 'Partnerszolgáltatások. Nem befektetési tanácsadás.',
+        capKicker: 'Iratkozzon fel a Briefre', capDek: 'Virtuse Brief. Csak Bitcoin. Tokenek nélkül. PR nélkül.', capBtn: 'Feliratkozás',
+        subscribe: 'Feliratkozás', more: 'További cikkek', moreAll: 'Összes cikk', readMore: 'Elolvasom',
+        emailReq: 'Adja meg e-mail-címét.', sending: 'Küldés', subOk: 'Kész. Nézze meg a postafiókját.',
+        subErr: 'A feliratkozás nem sikerült. Próbálja újra.', netErr: 'Hálózati hiba. Próbálja újra.',
+        footAbout: 'Rólunk', footTerms: 'Felhasználási feltételek', footPrivacy: 'Adatvédelmi tájékoztató', footCopy: '© 2018–2026 Virtuse Group. Minden jog fenntartva.',
+        errTitle: 'A cikk nem található', errText: 'Lehet, hogy a cikket áthelyezték vagy visszavonták. Böngéssze az archívumot.', errCta: 'Összes cikk'
+      },
+      services: {
+        mining: ['Bitcoin-bányászat ellenőrzött partnerekkel', 'Hosting, felhő és hardver költség és kifizetés szerint összevetve.', 'Partnerek összehasonlítása'],
+        treasury: ['Bitcoin a cég mérlegében', 'Letétkezelés, végrehajtás és riportolás cégeknek és family office-oknak.', 'Treasury-partnerek'],
+        custody: ['Saját kulcsok, saját kézben', 'Hardveres tárcák és multisig megoldások ellenőrzött partnerektől.', 'Letétkezelők összehasonlítása'],
+        policy: ['Adózza helyesen a Bitcoint', 'Országonkénti adójelentések adószoftver-partnerektől.', 'Adópartnerek'],
+        macro: ['Eladás helyett hitel', 'Bitcoin-fedezetű hitelek ellenőrzött hitelezőktől, évi 6%-tól.', 'Hitelek összehasonlítása'],
+        markets: ['Hol vásároljon Bitcoint', 'Ellenőrzött, szabályozott platformok egymás mellett: díjak, letét, kifizetés.', 'Partnerek összehasonlítása']
       }
     }
   };
+
   var langCode = new URLSearchParams(location.search).get('lang');
-  var L = LANGS[langCode] || LANGS.en;
   if (!LANGS[langCode]) langCode = 'en';
+  var L = LANGS[langCode];
 
-  // Localize static chrome -- also re-run when falling back to the
-  // English article below, since at that point the page needs to show
-  // English chrome, not the originally-requested language's.
-  function localizeChrome(lang, code) {
-    document.documentElement.lang = code;
-    document.getElementById('backTopLabel').textContent = lang.ui.backTop;
-    document.getElementById('backBottomLabel').textContent = lang.ui.backBottom;
-    document.getElementById('backTop').href = lang.listPage;
-    document.getElementById('backBottom').href = lang.listPage;
-    document.getElementById('authorRole').textContent = lang.ui.authorRole;
-    document.getElementById('authorBio').textContent = lang.ui.authorBio;
-    document.getElementById('shareLabel').textContent = lang.ui.share;
-    document.getElementById('shareCopied').textContent = lang.ui.copied;
-    document.getElementById('moreLabel').textContent = lang.ui.moreLabel;
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
+  function stripHtml(s) { var d = new DOMParser().parseFromString(s || '', 'text/html'); return (d.body.textContent || '').replace(/\s*\[…\]\s*$/, '…').trim(); }
+
+  function localizeChrome() {
+    document.documentElement.lang = langCode;
+    window.VB_UI = L.ui;
+    window.VB_LANG = L.worker;
+    [].forEach.call(document.querySelectorAll('[data-ui]'), function (n) {
+      var v = L.ui[n.getAttribute('data-ui')];
+      if (v != null) n.textContent = v;
+    });
+    $('authorBio').textContent = L.ui.authorBio;
+    ['crumbList', 'backLink', 'moreAll', 'navBlog', 'footBlog'].forEach(function (id) { $(id).href = L.listPage; });
+    // Hub, legal pages and the service card point at the page language.
+    [].forEach.call(document.querySelectorAll('[data-hub]'), function (a) { a.href = L.dir + a.getAttribute('data-hub'); });
+    $('ovAlt').href = (L.concierge ? L.dir : '') + 'concierge.html?utm_source=concierge&utm_medium=article';
   }
-  localizeChrome(L, langCode);
+  localizeChrome();
 
-  var root = document.getElementById('articleRoot');
-  var titleEl = document.getElementById('articleTitle');
-  var metaEl = document.getElementById('metaFacts');
-  var heroEl = document.getElementById('articleHero');
-  var bodyEl = document.getElementById('articleBody');
-  var moreGrid = document.getElementById('moreGrid');
-
-  function el(tag, cls, text) {
-    var n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text !== undefined) n.textContent = text;
-    return n;
-  }
-  function stripHtml(s) {
-    // DOMParser builds an inert document -- unlike assigning to a live
-    // element's innerHTML, it never fetches images or fires on*/onerror
-    // handlers, so this can't be abused even transiently.
-    var doc = new DOMParser().parseFromString(s || '', 'text/html');
-    return (doc.body.textContent || '').trim();
-  }
-
-  // Minimal allowlist sanitizer for WordPress post bodies. WordPress is a
-  // first-party, editorially-controlled source, but it's also the one place
-  // external/CMS content becomes live HTML on an otherwise fully static
-  // site -- if that WP install (or an editor account) is ever compromised,
-  // this is what stops injected markup from executing here. Unknown tags
-  // are unwrapped (content kept, wrapper dropped); script/style/etc. are
-  // removed outright; every attribute is allowlisted per tag; href/src
-  // must be http(s)/mailto; iframes are restricted to known embed hosts.
+  // Minimal allowlist sanitizer for WordPress post bodies. WordPress is
+  // first-party, but it is the one place CMS content becomes live HTML on an
+  // otherwise static site -- this stops injected markup from executing here.
   function sanitizeHtml(html) {
-    var ALLOWED_TAGS = {
-      P: 1, BR: 1, HR: 1, H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1,
-      STRONG: 1, B: 1, EM: 1, I: 1, U: 1, S: 1, MARK: 1, SUB: 1, SUP: 1,
-      A: 1, IMG: 1, FIGURE: 1, FIGCAPTION: 1,
-      UL: 1, OL: 1, LI: 1, BLOCKQUOTE: 1, CODE: 1, PRE: 1,
-      TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TH: 1, TD: 1,
-      SPAN: 1, DIV: 1, IFRAME: 1
-    };
+    var ALLOWED_TAGS = { P: 1, BR: 1, HR: 1, H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1, STRONG: 1, B: 1, EM: 1, I: 1, U: 1, S: 1, MARK: 1, SUB: 1, SUP: 1, A: 1, IMG: 1, FIGURE: 1, FIGCAPTION: 1, UL: 1, OL: 1, LI: 1, BLOCKQUOTE: 1, CODE: 1, PRE: 1, TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TH: 1, TD: 1, SPAN: 1, DIV: 1, IFRAME: 1 };
     var REMOVE_ENTIRELY = { SCRIPT: 1, STYLE: 1, OBJECT: 1, EMBED: 1, LINK: 1, META: 1, BASE: 1, FORM: 1, INPUT: 1, BUTTON: 1, TEXTAREA: 1, SELECT: 1, NOSCRIPT: 1 };
-    var ALLOWED_ATTRS = {
-      A: ['href', 'title', 'target', 'rel'],
-      IMG: ['src', 'alt', 'width', 'height', 'loading', 'srcset', 'sizes'],
-      IFRAME: ['src', 'width', 'height', 'allow', 'allowfullscreen', 'frameborder', 'title'],
-      TD: ['colspan', 'rowspan'], TH: ['colspan', 'rowspan']
-    };
+    var ALLOWED_ATTRS = { A: ['href', 'title', 'target', 'rel'], IMG: ['src', 'alt', 'width', 'height', 'loading', 'srcset', 'sizes'], IFRAME: ['src', 'width', 'height', 'allow', 'allowfullscreen', 'frameborder', 'title'], TD: ['colspan', 'rowspan'], TH: ['colspan', 'rowspan'] };
     var GLOBAL_ATTRS = ['class'];
     var ALLOWED_IFRAME_HOSTS = ['www.youtube.com', 'youtube.com', 'www.youtube-nocookie.com', 'open.spotify.com', 'platform.twitter.com', 'twitter.com', 'x.com'];
-
-    function isSafeUrl(url) {
-      try {
-        var u = new URL(url, location.href);
-        return u.protocol === 'http:' || u.protocol === 'https:' || u.protocol === 'mailto:';
-      } catch (e) { return false; }
-    }
-
+    function isSafeUrl(url) { try { var u = new URL(url, location.href); return u.protocol === 'http:' || u.protocol === 'https:' || u.protocol === 'mailto:'; } catch (e) { return false; } }
     var doc = new DOMParser().parseFromString(html || '', 'text/html');
-
     function clean(node) {
       Array.prototype.slice.call(node.childNodes).forEach(function (child) {
-        if (child.nodeType === 8) { node.removeChild(child); return; } // comments
-        if (child.nodeType !== 1) return; // text nodes pass through
+        if (child.nodeType === 8) { node.removeChild(child); return; }
+        if (child.nodeType !== 1) return;
         var tag = child.tagName;
         if (REMOVE_ENTIRELY[tag]) { node.removeChild(child); return; }
-        if (!ALLOWED_TAGS[tag]) {
-          while (child.firstChild) node.insertBefore(child.firstChild, child);
-          node.removeChild(child);
-          return;
-        }
+        if (!ALLOWED_TAGS[tag]) { while (child.firstChild) node.insertBefore(child.firstChild, child); node.removeChild(child); return; }
         if (tag === 'IFRAME') {
-          var host = '';
-          try { host = new URL(child.getAttribute('src') || '', location.href).hostname; } catch (e) {}
+          var host = ''; try { host = new URL(child.getAttribute('src') || '', location.href).hostname; } catch (e) {}
           if (ALLOWED_IFRAME_HOSTS.indexOf(host) === -1) { node.removeChild(child); return; }
         }
         var allowed = (ALLOWED_ATTRS[tag] || []).concat(GLOBAL_ATTRS);
@@ -757,305 +688,273 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         clean(child);
       });
     }
-
     clean(doc.body);
     return doc.body.innerHTML;
   }
-  function fmtDate(iso) {
-    var d = new Date(iso);
-    return d.getDate() + ' ' + L.months[d.getMonth()] + ' ' + d.getFullYear();
-  }
-  function imgOf(post) {
-    try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
-  }
-  function readingTime(html) {
-    var words = stripHtml(html).split(/\s+/).length;
-    return Math.max(1, Math.round(words / 220)) + L.ui.readTime;
-  }
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function gmt(post) { return new Date((post.date_gmt || post.date) + (post.date_gmt ? 'Z' : '')); }
+  function fmtDate(d) { return d.toLocaleDateString(L.locale, { day: 'numeric', month: 'short', year: 'numeric' }); }
+  function fmtStamp(d) { return fmtDate(d) + ' · ' + pad2(d.getUTCHours()) + ':' + pad2(d.getUTCMinutes()) + ' UTC'; }
+  function imgOf(post) { try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; } }
+  function mediaOf(post) { try { return post._embedded['wp:featuredmedia'][0] || null; } catch (e) { return null; } }
+  function minutes(html) { return Math.max(1, Math.round(stripHtml(html).split(/\s+/).length / 220)); }
+
+  function inferDesk(post) { return window.VB_inferDesk(post); }
 
   function showError() {
-    root.innerHTML = '';
+    var root = $('articleRoot');
+    root.textContent = '';
     var box = el('div', 'error-state');
-    box.appendChild(el('h2', null, L.ui.errTitle));
+    box.appendChild(el('p', 'story-kicker', 'Virtuse Brief'));
+    box.appendChild(el('h1', null, L.ui.errTitle));
     box.appendChild(el('p', null, L.ui.errText));
-    var back = el('a', null, L.ui.errCta);
-    back.href = L.listPage;
-    box.appendChild(back);
+    var a = el('a', 'btn', L.ui.errCta); a.href = L.listPage;
+    box.appendChild(a);
     root.appendChild(box);
   }
 
+  // Every distinct external link gets a numbered marker and a Sources entry.
+  function buildSources(body) {
+    var list = $('sourcesList'), seen = {}, n = 0;
+    [].forEach.call(body.querySelectorAll('a[href]'), function (a) {
+      var u; try { u = new URL(a.href); } catch (e) { return; }
+      a.target = '_blank'; a.rel = 'noopener noreferrer';
+      if (!/^https?:$/.test(u.protocol) || /(^|\.)virtuse\.com$/.test(u.hostname)) return;
+      var key = u.href.replace(/#.*$/, '');
+      if (!seen[key]) {
+        n++; seen[key] = n;
+        var li = el('li'); li.id = 'src-' + n;
+        li.appendChild(el('span', 'n', pad2(n)));
+        var wrap = el('span');
+        var link = el('a', null, stripHtml(a.textContent) || u.hostname.replace(/^www\./, ''));
+        link.href = u.href; link.target = '_blank'; link.rel = 'noopener noreferrer';
+        wrap.appendChild(link);
+        wrap.appendChild(el('span', 'host', u.hostname.replace(/^www\./, '')));
+        li.appendChild(wrap); list.appendChild(li);
+      }
+      var sup = el('sup', 'fn'); var ref = el('a', null, pad2(seen[key])); ref.href = '#src-' + seen[key];
+      sup.appendChild(ref);
+      a.parentNode.insertBefore(sup, a.nextSibling);
+    });
+    $('sources').hidden = n === 0;
+  }
+
+  function buildToc(body) {
+    // Section level = the highest heading level the post actually uses
+    // (older posts use h3/h4 for sections). It gets the desk-rule styling.
+    var heads = [];
+    ['h2', 'h3', 'h4'].some(function (t) { heads = body.querySelectorAll(t); return heads.length > 0; });
+    [].forEach.call(heads, function (h) { h.classList.add('sec-head'); });
+    if (heads.length < 2) return;
+    var list = $('tocList'), links = [];
+    [].forEach.call(heads, function (h, i) {
+      h.id = h.id || 'sec-' + (i + 1);
+      var li = el('li'), a = el('a', null, stripHtml(h.textContent));
+      a.href = '#' + h.id; li.appendChild(a); list.appendChild(li); links.push(a);
+    });
+    $('toc').hidden = false;
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    [].forEach.call(heads, function (h) { io.observe(h); });
+  }
+
+  function setService(desk) {
+    var s = L.services[desk.id];
+    $('ovTitle').textContent = s[0];
+    $('ovDek').textContent = s[1];
+    var cta = $('ovCta');
+    cta.textContent = s[2];
+    cta.href = L.dir + desk.href + '?utm_source=brief&utm_medium=article&utm_content=' + desk.id;
+  }
+
   function renderArticle(post) {
-    document.title = stripHtml(post.title.rendered) + ' — Virtuse';
-    titleEl.textContent = stripHtml(post.title.rendered);
-    metaEl.innerHTML = '';
-    metaEl.appendChild(document.createTextNode(fmtDate(post.date)));
-    metaEl.appendChild(el('span', 'dot'));
-    metaEl.appendChild(document.createTextNode(readingTime(post.content.rendered)));
+    var title = stripHtml(post.title.rendered);
+    var desk = inferDesk(post);
+    var deskName = L.desks[desk.id];
+    var when = gmt(post);
+    document.title = title + ' · Virtuse Brief';
+
+    $('storyKicker').textContent = deskName;
+    $('articleTitle').textContent = title;
+    // Dek only from a hand-written excerpt. WordPress auto-excerpts are just
+    // the first 55 words of the body ending in [&hellip;], which would repeat
+    // the opening paragraph right below.
+    var rawEx = (post.excerpt && post.excerpt.rendered) || '';
+    var dek = /\[(&hellip;|…)\]\s*(<\/p>)?\s*$/.test(rawEx) ? '' : stripHtml(rawEx);
+    if (dek) $('articleDek').textContent = dek; else $('articleDek').remove();
+    $('bylineDesk').textContent = deskName + L.ui.desk;
+    $('bylineDate').textContent = fmtStamp(when);
+    $('bylineRead').textContent = minutes(post.content.rendered) + L.ui.readTime;
+
+    // Block height at publication time, from mempool.space.
+    fetch('https://mempool.space/api/v1/mining/blocks/timestamp/' + Math.floor(when.getTime() / 1000))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (b) { if (b && b.height) { var s = $('bylineBlock'); s.textContent = L.ui.block + ' ' + b.height.toLocaleString(L.locale); s.hidden = false; } })
+      .catch(function () {});
 
     var src = imgOf(post);
     if (src) {
-      var img = el('img');
-      img.src = src;
-      img.alt = stripHtml(post.title.rendered);
-      heroEl.appendChild(img);
+      $('heroImg').src = src; $('heroImg').alt = title;
+      $('articleHero').hidden = false;
+      var m = mediaOf(post);
+      // Only the media caption (credit line) -- alt text is a description, not a credit.
+      var cap = m ? stripHtml(m.caption && m.caption.rendered) : '';
+      if (cap) { $('heroCap').textContent = L.ui.image + ': ' + cap; $('heroCap').hidden = false; }
     }
 
-    bodyEl.innerHTML = sanitizeHtml(post.content.rendered);
-
-    // External links open in a new tab; sibling article links stay on-site.
-    bodyEl.querySelectorAll('a[href]').forEach(function (a) {
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-    });
-    // Wrap bare iframes (YouTube embeds etc.) for responsive sizing.
-    bodyEl.querySelectorAll('iframe').forEach(function (f) {
+    var body = $('articleBody');
+    body.innerHTML = sanitizeHtml(post.content.rendered);
+    body.querySelectorAll('iframe').forEach(function (f) {
       if (f.parentElement.classList.contains('wp-block-embed') || f.parentElement.classList.contains('video-wrap')) return;
-      var w = el('div', 'video-wrap');
-      f.parentNode.insertBefore(w, f);
-      w.appendChild(f);
+      var w = el('div', 'video-wrap'); f.parentNode.insertBefore(w, f); w.appendChild(f);
     });
-
-    setupShare(post);
+    buildToc(body);      // before sources, so footnote numbers stay out of TOC labels
+    buildSources(body);
+    setService(desk);
+    setupShare(title);
   }
 
-  function setupShare(post) {
-    var pageUrl = location.href;
-    var title = stripHtml(post.title.rendered);
-    document.getElementById('shareX').onclick = function () {
-      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(pageUrl), '_blank', 'noopener');
-    };
-    document.getElementById('shareLi').onclick = function () {
-      window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl), '_blank', 'noopener');
-    };
-    document.getElementById('shareCopy').onclick = function () {
-      navigator.clipboard.writeText(pageUrl).then(function () {
-        var c = document.getElementById('shareCopied');
-        c.classList.add('show');
-        setTimeout(function () { c.classList.remove('show'); }, 2000);
+  // Share. Links always point at production (never localhost), keep the
+  // story language, and carry utm_source=<network> so shares show in GA.
+  var ICONS = {
+    x: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.5l11.2 14.5z"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>',
+    telegram: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.2 15c-.2 1.1-.9 1.3-1.8.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2l-11 6.9L1.7 12c-1-.3-1-1 .2-1.5L20.5 3.4c.9-.3 1.6.2 1.4.9z"/></svg>',
+    reddit: '<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 8.5c3.9 0 7 2.2 7 5s-3.1 5-7 5-7-2.2-7-5 3.1-5 7-5zM9.5 12.3a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zm5 0a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM9.2 16.1c.8.6 1.8.9 2.8.9s2-.3 2.8-.9l-.6-.7c-.6.4-1.4.6-2.2.6s-1.6-.2-2.2-.6z"/><circle cx="5" cy="10.8" r="1.7"/><circle cx="19" cy="10.8" r="1.7"/><circle cx="17.6" cy="4.6" r="1.4"/><path d="M12.5 8.6l1-5 3.1.7-.2.9-2.1-.4-.8 3.8z"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3C16.7 2.2 15.6 2 14.4 2 11.8 2 10 3.6 10 6.5v2H7.3v3.6H10V22h4v-9.9h2.9l.4-3.6H14z"/></svg>',
+    nostr: '<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="8.5" cy="15" rx="6.5" ry="4.2"/><path d="M11.6 13.4c.9-2.8 1.6-5.6 2-8.4l2 .3c-.4 3-1.1 5.9-2.1 8.8z"/><circle cx="15.6" cy="4.4" r="2.3"/><path d="M17.4 3.5l4.6 1.3-4.4 1.4z"/><path d="M7 18.5l-1.2 4.2h1.5l1.2-4zM10.6 18.6l.9 4.1h1.5l-1-4.3z"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
+    more: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M5 12v8h14v-8"/></svg>'
+  };
+  var NETWORKS = [
+    { id: 'x',        name: 'X',        href: function (u, t) { return 'https://x.com/intent/tweet?text=' + encodeURIComponent(t) + '&url=' + encodeURIComponent(u); } },
+    { id: 'linkedin', name: 'LinkedIn', href: function (u) { return 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(u); } },
+    { id: 'telegram', name: 'Telegram', href: function (u, t) { return 'https://t.me/share/url?url=' + encodeURIComponent(u) + '&text=' + encodeURIComponent(t); } },
+    { id: 'reddit',   name: 'Reddit',   href: function (u, t) { return 'https://www.reddit.com/submit?url=' + encodeURIComponent(u) + '&title=' + encodeURIComponent(t); } },
+    { id: 'facebook', name: 'Facebook', href: function (u) { return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u); } }
+  ];
+  var toastTimer = null;
+  function toast(text, link) {
+    var t = $('shareToast');
+    t.textContent = '';
+    t.appendChild(document.createTextNode(text));
+    if (link) { var a = el('a', null, link.label + ' →'); a.href = link.href; a.target = '_blank'; a.rel = 'noopener noreferrer'; t.appendChild(a); }
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove('show'); }, link ? 5000 : 2200);
+  }
+  function track(network) { (window.dataLayer = window.dataLayer || []).push({ event: 'article_share', share_network: network, article_slug: slug }); }
+  // Clipboard API first; if the browser refuses, fall back to execCommand.
+  function legacyCopy(text) {
+    var ta = el('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove();
+    return ok ? Promise.resolve() : Promise.reject(new Error('copy failed'));
+  }
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    }
+    return legacyCopy(text);
+  }
+
+  function setupShare(title) {
+    var base = /(^|\.)virtuse\.com$/.test(location.hostname) ? location.origin : 'https://virtuse.com';
+    function url(src) {
+      return base + '/article.html?slug=' + encodeURIComponent(slug) + (langCode !== 'en' ? '&lang=' + langCode : '') +
+        '&utm_source=' + src + '&utm_medium=social_share&utm_campaign=brief_article';
+    }
+    var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    var canNative = !!navigator.share;
+
+    [].forEach.call(document.querySelectorAll('[data-share-slot]'), function (slot) {
+      slot.textContent = '';
+      NETWORKS.forEach(function (n) {
+        var a = el('a'); a.href = n.href(url(n.id), title); a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', L.ui.shareOn + ' ' + n.name); a.title = n.name; a.innerHTML = ICONS[n.id];
+        a.addEventListener('click', function () { track(n.id); });
+        slot.appendChild(a);
       });
-    };
+      // Nostr has no web share intent: phones get the system share sheet
+      // (Primal, Damus, Amethyst register as targets); elsewhere the note
+      // text is copied for pasting into any Nostr client.
+      var nb = el('button'); nb.type = 'button'; nb.setAttribute('aria-label', L.ui.shareOn + ' Nostr'); nb.title = 'Nostr'; nb.innerHTML = ICONS.nostr;
+      nb.addEventListener('click', function () {
+        track('nostr');
+        if (touch && canNative) { navigator.share({ title: title, text: title, url: url('nostr') }).catch(function () {}); return; }
+        copyText(title + '\n\n' + url('nostr')).then(function () {
+          toast(L.ui.nostrCopied, { label: L.ui.openPrimal, href: 'https://primal.net/home' });
+        }).catch(function () { toast(L.ui.copyFailed); });
+      });
+      slot.appendChild(nb);
+      var cb = el('button'); cb.type = 'button'; cb.setAttribute('aria-label', L.ui.copyLink); cb.title = L.ui.copyLink; cb.innerHTML = ICONS.copy;
+      cb.addEventListener('click', function () {
+        track('copy');
+        copyText(url('copy')).then(function () { toast(L.ui.copied); }).catch(function () { toast(L.ui.copyFailed); });
+      });
+      slot.appendChild(cb);
+      if (canNative && touch) {
+        var mb = el('button'); mb.type = 'button'; mb.setAttribute('aria-label', L.ui.moreShare); mb.title = L.ui.moreShare; mb.innerHTML = ICONS.more;
+        mb.addEventListener('click', function () { track('native'); navigator.share({ title: title, url: url('native') }).catch(function () {}); });
+        slot.appendChild(mb);
+      }
+    });
   }
 
   function renderMore(posts, currentId) {
+    var grid = $('moreGrid');
     posts.filter(function (p) { return p.id !== currentId; }).slice(0, 3).forEach(function (p) {
       var a = el('a', 'blog-card');
       a.href = 'article.html?slug=' + encodeURIComponent(p.slug) + L.suffix;
-      var media = el('div', 'blog-card-media');
       var src = imgOf(p);
-      if (src) {
-        var img = el('img', 'blog-card-img');
-        img.src = src; img.loading = 'lazy'; img.alt = stripHtml(p.title.rendered);
-        media.appendChild(img);
-      }
-      var body = el('div', 'blog-card-body');
-      body.appendChild(el('div', 'blog-card-title', stripHtml(p.title.rendered)));
-      var meta = el('div', 'blog-card-meta');
-      meta.appendChild(document.createTextNode(fmtDate(p.date)));
-      body.appendChild(meta);
-      a.appendChild(media); a.appendChild(body);
-      moreGrid.appendChild(a);
+      if (src) { var img = el('img'); img.src = src; img.loading = 'lazy'; img.alt = ''; a.appendChild(img); }
+      var b = el('div', 'blog-card-body');
+      var t = el('time', null, L.desks[inferDesk(p).id] + ' · ' + fmtDate(gmt(p)));
+      b.appendChild(t);
+      b.appendChild(el('h3', null, stripHtml(p.title.rendered)));
+      b.appendChild(el('span', 'read', L.ui.readMore + ' →'));
+      a.appendChild(b); grid.appendChild(a);
     });
+    if (grid.children.length) $('moreDesk').hidden = false;
   }
-
-  // Reading progress bar
-  var bar = document.getElementById('progressBar');
-  window.addEventListener('scroll', function () {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-  }, { passive: true });
 
   var slug = new URLSearchParams(location.search).get('slug');
   if (!slug) { showError(); return; }
 
-  // WPML's REST API falls back to a cookie/session "current language"
-  // whenever a request doesn't carry an explicit lang param, so every
-  // language here (English included) must always send one -- an
-  // "unfiltered" request is not actually language-neutral in practice.
-  function fetchAndRender(lang) {
-    var langParam = lang.lang ? '&lang=' + lang.lang : '';
-    return fetch(lang.api + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia' + langParam)
-      .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+  // WPML falls back to a cookie/session language when lang is missing, so
+  // every request (English included) sends an explicit lang param.
+  function fetchAndRender() {
+    var lp = L.lang ? '&lang=' + L.lang : '';
+    return fetch(L.api + '?slug=' + encodeURIComponent(slug) + '&_embed=wp:featuredmedia' + lp)
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (posts) {
         if (!posts.length) return false;
         renderArticle(posts[0]);
-        return fetch(lang.api + '?categories=' + lang.category + '&per_page=4&_embed=wp:featuredmedia&orderby=date&order=desc' + langParam)
+        fetch(L.api + '?categories=' + L.category + '&per_page=4&_embed=wp:featuredmedia&orderby=date&order=desc' + lp)
           .then(function (r) { return r.ok ? r.json() : []; })
-          .then(function (recent) { renderMore(recent, posts[0].id); return true; });
+          .then(function (recent) { renderMore(recent, posts[0].id); })
+          .catch(function () {});
+        return true;
       });
   }
 
-  fetchAndRender(L).then(function (found) {
+  fetchAndRender().then(function (found) {
     if (found) return;
-    // This specific article hasn't been translated into the requested
-    // language yet (its localized slug doesn't exist) -- fall back to
-    // showing the English original rather than a dead "not found" page.
-    if (langCode !== 'en') {
-      // Reassign L itself, not just the DOM text -- fmtDate() and any
-      // other code reading L.months/L.ui after this point must see
-      // English too, or dates etc. stay in the wrong language.
-      L = LANGS.en;
-      langCode = 'en';
-      localizeChrome(L, langCode);
-      return fetchAndRender(L).then(function (foundEn) {
-        if (!foundEn) showError();
-      });
+    // Not translated yet: fall back to the English original.
+    if (L.lang !== 'en') {
+      langCode = 'en'; L = LANGS.en; localizeChrome();
+      return fetchAndRender().then(function (ok) { if (!ok) showError(); });
     }
     showError();
   }).catch(showError);
 })();
 </script>
-
-
-
-<!-- ===== STAT COUNTERS (anime.js) ===== -->
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
-  var counters = [];
-
-  candidates.forEach(function (el) {
-    var raw = el.textContent.trim();
-    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
-    if (!m) return;
-    counters.push({
-      el: el,
-      target: parseInt(m[1].replace(/,/g, ''), 10),
-      suffix: m[2] || ''
-    });
-  });
-  if (!counters.length) return;
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var c = null;
-      for (var i = 0; i < counters.length; i++) {
-        if (counters[i].el === entry.target) { c = counters[i]; break; }
-      }
-      if (!c) return;
-
-      var obj = { val: 0 };
-      animate(obj, {
-        val: c.target,
-        duration: 1600,
-        ease: 'outCubic',
-        onUpdate: function () {
-          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
-        },
-        onComplete: function () {
-          c.el.textContent = c.target.toLocaleString() + c.suffix;
-        }
-      });
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(function (c) { io.observe(c.el); });
-})();
-</script>
-
-<!-- ===== SCROLL REVEAL (anime.js) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var stagger = anime.stagger;
-  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
-  if (!sections.length) return;
-
-  sections.forEach(function (sec) {
-    sec.style.opacity = '0';
-    sec.style.transform = 'translateY(24px)';
-  });
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var sec = entry.target;
-
-      animate(sec, {
-        opacity: [0, 1],
-        translateY: [24, 0],
-        duration: 700,
-        ease: 'outQuad'
-      });
-
-      var groups = sec.querySelectorAll('[class*="grid"], .steps');
-      groups.forEach(function (group) {
-        var items = Array.prototype.slice.call(group.children);
-        if (!items.length) return;
-        items.forEach(function (it) { it.style.opacity = '0'; });
-        animate(items, {
-          opacity: [0, 1],
-          translateY: [16, 0],
-          delay: stagger(80, { start: 150 }),
-          duration: 600,
-          ease: 'outQuad'
-        });
-      });
-
-      io.unobserve(sec);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-  sections.forEach(function (sec) { io.observe(sec); });
-})();
-</script>
-
-<!-- ===== MOBILE MENU TOGGLE ===== -->
-<script>
-(function () {
-  var btn = document.getElementById('navHamburger');
-  var links = document.querySelector('.nav-links');
-  if (!btn || !links) return;
-
-  function closeMenu() {
-    document.body.classList.remove('nav-open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-
-  btn.addEventListener('click', function () {
-    var open = document.body.classList.toggle('nav-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-
-  links.querySelectorAll('a, button').forEach(function (el) {
-    el.addEventListener('click', closeMenu);
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1024) closeMenu();
-  });
-})();
-</script>
-
-<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
-<script>
-(function () {
-  var btns = document.querySelectorAll('.nav-cta');
-  if (!btns.length) return;
-  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=nav';
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.href = conciergeUrl;
-    });
-  });
-})();
-</script>
-
-<script src="concierge-launcher.js" defer></script>
-<script src="consultation-widget.js" defer></script>
 </body>
 </html>
