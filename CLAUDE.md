@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-28, fourth round) — Daily GitHub Action for story pages (`2f4e094`, registered + active on GitHub)
+
+- `.github/workflows/stories-build.yml`: daily 05:00 UTC + manual run
+  (Actions → Stories build). Runs `stories-build/build.mjs`; **only when
+  story pages changed** it commits to main as `virtuse-bot` `[skip ci]` and
+  rsync-mirrors `stories/`, `sk/stories/`, `ru/stories/` to gh-pages
+  (`--delete`, nothing else on gh-pages touched). Job summary lists A/M/D.
+- `manifest.json` no longer has a build date (so no-op runs don't commit).
+- **Production stays manual** (README → Upload): pull main + the gh-pages
+  worktree first, then the same scp/sftp pair as in the entry below.
+- Not yet proven: that a gh-pages push made with `GITHUB_TOKEN` triggers
+  `pages-build-deployment` (it should for dynamic Pages builds). Check on the
+  first run that actually changes a story: staging must serve the new page.
+- The repo's Actions API is readable without auth
+  (`api.github.com/repos/Virtuseeee/Virtuse-5.0/actions/...`), handy for
+  checking runs without `gh` (not installed locally).
+
 ## Session status (2026-09-28, third round) — Pre-rendered story pages for social previews, 355 pages (`65dc51c`, gh-pages `e244659`, staging 358/358 md5-verified; **live on production** — user ran both commands, 358/358 md5-verified on virtuse.com; facebookexternalhit/Twitterbot/LinkedInBot get 200 + the story's og:title/image)
 
 **Why:** social crawlers don't run JS, so every share of
