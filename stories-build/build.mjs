@@ -33,6 +33,8 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.resolve(HERE, '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners');
 const ORIGIN = 'https://virtuse.com';
 const MANIFEST = path.join(HERE, 'manifest.json');
+const SITEMAP_START = '<!-- STORIES-BUILD:START -->';
+const SITEMAP_END = '<!-- STORIES-BUILD:END -->';
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
 const FEEDS = [
@@ -191,7 +193,7 @@ function render(template, feed, post, inferDesk) {
     sub(/<figure class="story-figure" id="articleHero" hidden>/, () => '<figure class="story-figure" id="articleHero">', 'hero');
     sub(/<img id="heroImg" alt="">/, () => `<img id="heroImg" src="${esc(img.url)}" alt="${esc(title)}"${img.width ? ` width="${img.width}" height="${img.height}"` : ''}>`, 'hero img');
   }
-  return { storyPath, html: h };
+  return { storyPath, html: h, lastmod: modified.slice(0, 10) };
 }
 
 // ---- main ------------------------------------------------------------------
@@ -200,12 +202,13 @@ async function main() {
   const inferDesk = loadDeskInference();
   const previous = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).stories || [] : [];
   const written = [];
+  const lastmods = {};
 
   for (const feed of FEEDS) {
     const posts = await fetchFeed(feed);
     const seen = new Set();
     for (const post of posts) {
-      const { storyPath, html } = render(template, feed, post, inferDesk);
+      const { storyPath, html, lastmod } = render(template, feed, post, inferDesk);
       if (seen.has(storyPath)) continue; // WP cross-posts can repeat a slug
       seen.add(storyPath);
       const file = path.join(SITE, storyPath, 'index.html');
@@ -213,6 +216,7 @@ async function main() {
       const old = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
       if (old !== html) fs.writeFileSync(file, html);
       written.push(storyPath);
+      lastmods[storyPath] = lastmod;
     }
     console.log(`${feed.lang}: ${seen.size} stories`);
   }
@@ -229,6 +233,24 @@ async function main() {
   // set of stories (or a page) actually changed.
   fs.writeFileSync(MANIFEST, JSON.stringify({ stories: written.sort() }, null, 2) + '\n');
 
+  // sitemap.xml: our own marked block (seo-build keeps its SEO-BUILD block;
+  // each generator only ever rewrites the text between its own markers).
+  const sitemapFile = path.join(SITE, 'sitemap.xml');
+  const xml = fs.readFileSync(sitemapFile, 'utf8');
+  const block = [SITEMAP_START, ...written.map((p) => `  <url>
+    <loc>${ORIGIN}/${p}</loc>
+    <lastmod>${lastmods[p]}</lastmod>
+  </url>`), SITEMAP_END].join('\n');
+  let nextXml;
+  if (xml.includes(SITEMAP_START) && xml.includes(SITEMAP_END)) {
+    nextXml = xml.replace(new RegExp(`${SITEMAP_START}[\\s\\S]*?${SITEMAP_END}`), () => block);
+  } else {
+    if (!xml.includes('</urlset>')) throw new Error('sitemap.xml missing </urlset>');
+    nextXml = xml.replace('</urlset>', `${block}\n</urlset>`);
+  }
+  if (nextXml !== xml) fs.writeFileSync(sitemapFile, nextXml);
+  console.log(`sitemap.xml: ${written.length} story URLs${nextXml === xml ? ' (unchanged)' : ''}`);
+
   // Production upload batch for sftp (run from the gh-pages worktree, which
   // has the site at its root). Webglobe's scp does not create missing
   // remote directories, so every folder is created first; '-' makes sftp
@@ -242,6 +264,7 @@ async function main() {
     .filter((d) => !['sk', 'ru'].includes(d))
     .map((d) => `-mkdir public_html/${d}`);
   for (const p of written.sort()) lines.push(`put ${p}index.html public_html/${p}index.html`);
+  lines.push('put sitemap.xml public_html/sitemap.xml');
   for (const p of removed) lines.push(`# removed from WordPress, delete on the server: public_html/${p}`);
   lines.push('bye');
   fs.writeFileSync(path.join(HERE, 'upload.sftp'), lines.join('\n') + '\n');

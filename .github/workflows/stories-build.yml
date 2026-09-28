@@ -25,6 +25,7 @@ on:
       - '.github/workflows/stories-build.yml'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/article.html'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/brief-chrome.js'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/sitemap.xml'
 
 permissions:
   contents: write
@@ -58,7 +59,7 @@ jobs:
         id: diff
         working-directory: main
         run: |
-          git add -A "$SITE/stories" "$SITE/sk/stories" "$SITE/ru/stories" stories-build/manifest.json stories-build/upload.sftp
+          git add -A "$SITE/stories" "$SITE/sk/stories" "$SITE/ru/stories" "$SITE/sitemap.xml" stories-build/manifest.json stories-build/upload.sftp
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No story changes." >> "$GITHUB_STEP_SUMMARY"
@@ -95,16 +96,18 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         run: |
           # gh-pages holds the site folder at its root. Mirror only the three
-          # story trees (removed stories disappear too); nothing else on
-          # gh-pages is touched.
+          # story trees (removed stories disappear too) and sitemap.xml (its
+          # STORIES-BUILD block lists them); nothing else on gh-pages is
+          # touched.
           for d in stories sk/stories ru/stories; do
             mkdir -p "pages/$d"
             rsync -a --delete "main/$SITE/$d/" "pages/$d/"
           done
+          cp "main/$SITE/sitemap.xml" pages/sitemap.xml
           cd pages
           git config user.name "virtuse-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A stories sk/stories ru/stories
+          git add -A stories sk/stories ru/stories sitemap.xml
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Sync main $MAIN_SHA: pre-rendered story pages"
           git push origin gh-pages

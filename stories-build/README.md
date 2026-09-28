@@ -34,6 +34,11 @@ the WordPress originals on blog.virtuse.com are public (duplicate content /
 canonical question).
 
 Desk detection runs the code from `brief-chrome.js` (one source of truth).
+
+`sitemap.xml` gets one `<url>` per story (loc + lastmod from WordPress's
+modified date) between `<!-- STORIES-BUILD:START/END -->`. seo-build keeps
+its own `SEO-BUILD` block; each generator only rewrites between its own
+markers, so they coexist.
 `manifest.json` lists every generated folder; stories removed from WordPress
 get their folder deleted on the next run (only folders from the manifest).
 
