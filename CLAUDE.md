@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-28, second round) — Blog + article dark by default, hub-matched dark palette (`8f375dc`, gh-pages `e8e04f1`, staging 11/11 md5-verified; **production NOT touched**)
+## Session status (2026-09-28, second round) — Blog + article dark by default, hub-matched dark palette (`8f375dc`, gh-pages `e8e04f1`, staging 11/11 md5-verified; **live on production** — user ran the command, 11/11 md5-verified on virtuse.com)
 
 - Blog + article default to **dark** and store the choice under
   `localStorage 'vb-theme-blog'` (`<html data-theme-key="vb-theme-blog">`,
@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   `news/news.css` untouched. Text colors stay the Brief's.
 - The template (`i18n-tools/brief_blog_template.html`) carries both changes.
 
-**Production command (user runs it, then md5-verify the 11 files):**
+**Production command (done 2026-09-28; kept for reference):**
 ```bash
 cd /private/tmp/gh-pages-wt4 && \
 scp -P 222 article.html brief-chrome.js blog.html blog-sk.html virtuse.com@ftp.virtuse.com:public_html/ && \
