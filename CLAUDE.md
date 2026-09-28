@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-28, fifth round) — Story pages in sitemap.xml (`bd27641`, gh-pages `5fc3774`, staging md5-verified, 616 URLs; **production NOT touched**)
+## Session status (2026-09-28, fifth round) — Story pages in sitemap.xml (`bd27641`, gh-pages `5fc3774`, 616 URLs; **live on production** — user ran the scp, md5-verified on virtuse.com, served as application/xml, xmllint-valid)
 
 - `stories-build/build.mjs` maintains a `<!-- STORIES-BUILD:START/END -->`
   block in `sitemap.xml` (one `<url>` per story, lastmod = WP modified
@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   originals on blog.virtuse.com (Google runs JS), so Google will pick one
   canonical per pair. Watch Search Console coverage after it's live.
 
-**Production command (user runs it, then md5-verify):**
+**Production command (done 2026-09-28; kept for reference):**
 ```bash
 cd /private/tmp/gh-pages-wt4 && scp -P 222 sitemap.xml virtuse.com@ftp.virtuse.com:public_html/
 ```
