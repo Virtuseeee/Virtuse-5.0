@@ -172,6 +172,7 @@ for l in uk ru de fr es pl hu; do scp -P 222 $l/blog.html virtuse.com@ftp.virtus
 - **de/blog.html lost its Concierge bubble** when another session rebuilt the blogs in 9 languages
   (`188fd2e`, `8f375dc`); `pages.py de` re-added it. Blog rebuilds can undo per-page additions —
   re-run `pages.py` for the affected languages afterwards.
+  Fix live: staging and production md5-verified (1/1) on 2026-09-28.
 
 ## Session status (2026-09-27) — Layer 2 modules: 10-language i18n foundation (phase 1) + German pilot (`ed355f6`, gh-pages `a98a0ad`, staging 50/50 md5-verified, old hashes 404; **live on production** — user ran the command, 50/50 md5-verified on virtuse.com, the 10 old hashes gone, German chat flow checked live)
 
