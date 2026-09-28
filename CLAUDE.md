@@ -2,6 +2,62 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-28) — Blog + article redesigned in the Virtuse Brief interface, 9 languages (`188fd2e`, gh-pages `518bf21`, staging 11/11 md5-verified; **production NOT touched**)
+
+**What changed:** `article.html` is now a Gazette-style story reader inside
+the Brief chrome (ticker, Brief nav, light/dark via `vb-theme`, Brief
+footer), styled from `news/news.css`; the 9 blog listings (`blog.html`,
+`blog-sk.html`, `uk|ru|de|fr|es|pl|hu/blog.html`) use the same interface.
+Reference layouts: satoshigazette.org story page, tftc.io share rail.
+- Article: desk kicker, serif headline, dek **only from a hand-written WP
+  excerpt** (auto-excerpts repeat the body), mono byline with UTC time and
+  block height at publication (mempool `/v1/mining/blocks/timestamp`),
+  image credit **only from the WP media caption**, drop cap, desk-rule
+  section heads (the post's top heading level, h2/h3/h4; marker aligned to
+  the first line), external links auto-numbered into "Sources", sticky rail
+  (In this story, Share, "On Virtuse" service card by desk, Get the Brief).
+- Share: X, LinkedIn, Telegram, Reddit, Facebook, Nostr, copy (+ system
+  share sheet on touch). **Nostr has no web intent**: phones use the share
+  sheet, desktops copy title+link and offer a Primal link. Share URLs point
+  at the current virtuse.com origin (never localhost), keep `&lang=`, carry
+  `utm_source=<network>&utm_medium=social_share`; dataLayer `article_share`.
+- Languages: article UI in en/sk/uk/ru/de/fr/es/pl/hu. sk/ru load their own
+  WP feeds; the other six show the English story in a localized UI (blogs
+  now pass `&lang=xx`). Hub/legal/service links go to the page language;
+  concierge only where it exists (en/sk/de).
+- `brief-chrome.js` (new, repo root): shared nav/theme/ticker/subscribe/
+  progress + `VB_inferDesk` (whole-word English keywords, title counts
+  double). Desks are a heuristic: sk/ru stories land on Markets more often.
+- `i18n-tools/build_brief_blog.py lang <old page> [out]` +
+  `brief_blog_template.html` build each blog from the OLD hub-layout page's
+  own data (hreflang, CFG + strings, switcher, newsletter copy, footer, 12
+  static cards). **It cannot re-read an already generated page**; originals
+  are in git (`9423211`). Canonical now = the page's own hreflang URL.
+- Concierge launcher bubble is no longer loaded on blog/article pages.
+
+**Gotchas found:**
+- Phone testing over `http://<LAN-IP>` breaks every page: the CSP's
+  `upgrade-insecure-requests` rewrites same-origin CSS/images to https
+  (localhost is exempt). Local LAN preview server that strips it on the fly:
+  session scratchpad `lan_server.py` (port 8895). Also no Web Share/
+  clipboard API on plain http.
+- `/private/tmp/gh-pages-wt3` lost its `.git` (tmp cleanup, partial copy
+  left behind, not deleted). New worktree: **`/private/tmp/gh-pages-wt4`**.
+- gh-pages `news/news.css` is **newer than main's** (desk agent deploys
+  straight to gh-pages; Pulse/hero changes only). Not touched here; main
+  should be synced from gh-pages by the desk side.
+
+**Open:** native review of the new UI strings (6 languages, service-card
+copy); desk as a real WP tag; per-article OG previews need static
+pre-rendering (social crawlers don't run JS, so shares show the Brief card).
+
+**Production command (user runs it, then md5-verify the 11 files):**
+```bash
+cd /private/tmp/gh-pages-wt4 && \
+scp -P 222 article.html brief-chrome.js blog.html blog-sk.html virtuse.com@ftp.virtuse.com:public_html/ && \
+for l in uk ru de fr es pl hu; do scp -P 222 $l/blog.html virtuse.com@ftp.virtuse.com:public_html/$l/; done
+```
+
 ## Session status (2026-09-27) — Layer 2 modules: 10-language i18n foundation (phase 1) + German pilot (`ed355f6`, gh-pages `a98a0ad`, staging 50/50 md5-verified, old hashes 404; **live on production** — user ran the command, 50/50 md5-verified on virtuse.com, the 10 old hashes gone, German chat flow checked live)
 
 **Plan agreed with the user:** phase 1 = i18n refactor with no visible
