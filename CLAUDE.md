@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-28, second round) — Blog + article dark by default, hub-matched dark palette (`8f375dc`, gh-pages `e8e04f1`, staging 11/11 md5-verified; **production NOT touched**)
+
+- Blog + article default to **dark** and store the choice under
+  `localStorage 'vb-theme-blog'` (`<html data-theme-key="vb-theme-blog">`,
+  read by `brief-chrome.js`); `news.html` keeps `vb-theme`, default light.
+  Separate keys on purpose: with one shared key the first toggle on either
+  section would override the other section's default.
+- In dark, these pages override the Brief surface tokens with the hub's
+  neutral values (bg `#08090a`, cards/record `#141414`, band `#0e0e0e`,
+  ticker `#1c1c1c`, white-alpha lines) in a `:root[data-theme-key=…]
+  [data-theme="dark"]` block at the top of each page's `<style>`;
+  `news/news.css` untouched. Text colors stay the Brief's.
+- The template (`i18n-tools/brief_blog_template.html`) carries both changes.
+
+**Production command (user runs it, then md5-verify the 11 files):**
+```bash
+cd /private/tmp/gh-pages-wt4 && \
+scp -P 222 article.html brief-chrome.js blog.html blog-sk.html virtuse.com@ftp.virtuse.com:public_html/ && \
+for l in uk ru de fr es pl hu; do scp -P 222 $l/blog.html virtuse.com@ftp.virtuse.com:public_html/$l/; done
+```
+
 ## Session status (2026-09-28) — Blog + article redesigned in the Virtuse Brief interface, 9 languages (`188fd2e`, gh-pages `518bf21`, staging 11/11 md5-verified; **live on production** — user ran the command, 11/11 md5-verified on virtuse.com)
 
 **What changed:** `article.html` is now a Gazette-style story reader inside
