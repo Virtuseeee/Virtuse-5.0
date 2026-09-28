@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-28) — Blog + article redesigned in the Virtuse Brief interface, 9 languages (`188fd2e`, gh-pages `518bf21`, staging 11/11 md5-verified; **production NOT touched**)
+## Session status (2026-09-28) — Blog + article redesigned in the Virtuse Brief interface, 9 languages (`188fd2e`, gh-pages `518bf21`, staging 11/11 md5-verified; **live on production** — user ran the command, 11/11 md5-verified on virtuse.com)
 
 **What changed:** `article.html` is now a Gazette-style story reader inside
 the Brief chrome (ticker, Brief nav, light/dark via `vb-theme`, Brief
@@ -51,7 +51,7 @@ Reference layouts: satoshigazette.org story page, tftc.io share rail.
 copy); desk as a real WP tag; per-article OG previews need static
 pre-rendering (social crawlers don't run JS, so shares show the Brief card).
 
-**Production command (user runs it, then md5-verify the 11 files):**
+**Production command (done 2026-09-28; kept for reference):**
 ```bash
 cd /private/tmp/gh-pages-wt4 && \
 scp -P 222 article.html brief-chrome.js blog.html blog-sk.html virtuse.com@ftp.virtuse.com:public_html/ && \
