@@ -100,6 +100,15 @@ test('WP error -> 200 page that still redirects to article, short cache', async 
   assert.ok((await res.text()).includes('location.replace("https://virtuse.com/article.html?slug=five")'));
 });
 
+test('WP transient failure is retried once', async () => {
+  let n = 0;
+  const f = async () => (++n === 1 ? new Response('err', { status: 503 }) : new Response(JSON.stringify([POST]), { status: 200 }));
+  const res = await handleShare(new Request('https://w/a/five'), new URL('https://w/a/five'), { fetchImpl: f });
+  assert.equal(res.status, 200);
+  assert.equal(n, 2);
+  assert.ok((await res.text()).includes('Five Percent Yields &amp; an'));
+});
+
 test('cache: second request served from cache without WP fetch', async () => {
   const store = new Map();
   const cache = { match: async (r) => store.get(r.url)?.clone(), put: async (r, res) => { store.set(r.url, res); } };

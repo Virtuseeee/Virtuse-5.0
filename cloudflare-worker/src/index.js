@@ -807,15 +807,29 @@ function genericShareMeta(lang) {
   };
 }
 
+const SHARE_WP_TIMEOUT_MS = 5000;
+const SHARE_WP_ATTEMPTS = 2;
+
 async function fetchSharePost(slug, lang, fetchImpl) {
   const api = `${SHARE_WP_API[lang]}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia&status=publish`;
-  const res = await fetchImpl(api, {
-    headers: { Accept: 'application/json', 'User-Agent': 'virtuse-share-preview/1.0' },
-    cf: { cacheTtl: SHARE_CACHE_SECONDS, cacheEverything: true },
-  });
-  if (!res.ok) throw new Error(`wp ${res.status}`);
-  const list = await res.json();
-  return Array.isArray(list) && list.length ? list[0] : null;
+  let lastErr;
+  // Crawlers give up after a few seconds, so bound each WordPress call and
+  // retry once rather than hang on a slow origin.
+  for (let attempt = 0; attempt < SHARE_WP_ATTEMPTS; attempt++) {
+    try {
+      const res = await fetchImpl(api, {
+        headers: { Accept: 'application/json', 'User-Agent': 'virtuse-share-preview/1.0' },
+        cf: { cacheTtl: SHARE_CACHE_SECONDS, cacheEverything: true },
+        signal: AbortSignal.timeout(SHARE_WP_TIMEOUT_MS),
+      });
+      if (!res.ok) throw new Error(`wp ${res.status}`);
+      const list = await res.json();
+      return Array.isArray(list) && list.length ? list[0] : null;
+    } catch (err) {
+      lastErr = err;
+    }
+  }
+  throw lastErr;
 }
 
 // Exported for tests; `fetchImpl` / `cache` are injectable.
