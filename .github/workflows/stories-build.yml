@@ -15,6 +15,16 @@ on:
   schedule:
     - cron: '0 5 * * *' # daily 05:00 UTC
   workflow_dispatch:
+  # Rebuild when the generator or the page template/desk logic changes.
+  # The bot's own commits can't loop: they carry [skip ci] and pushes made
+  # with GITHUB_TOKEN don't start workflows.
+  push:
+    branches: [main]
+    paths:
+      - 'stories-build/build.mjs'
+      - '.github/workflows/stories-build.yml'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/article.html'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/brief-chrome.js'
 
 permissions:
   contents: write
