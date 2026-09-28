@@ -12,6 +12,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `manifest.json` no longer has a build date (so no-op runs don't commit).
 - **Production stays manual** (README → Upload): pull main + the gh-pages
   worktree first, then the same scp/sftp pair as in the entry below.
+- Also runs on pushes to main that change `stories-build/build.mjs`, the
+  workflow, `article.html` or `brief-chrome.js` (`19ad499`). First run
+  (push-triggered, run 36440897102): success; the build on GitHub's Linux
+  runner reproduced the committed pages byte-for-byte, so no commit was made
+  and the commit/publish steps were skipped as intended.
 - Not yet proven: that a gh-pages push made with `GITHUB_TOKEN` triggers
   `pages-build-deployment` (it should for dynamic Pages builds). Check on the
   first run that actually changes a story: staging must serve the new page.
