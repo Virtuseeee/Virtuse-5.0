@@ -2,6 +2,25 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-28, fifth round) — Story pages in sitemap.xml (`bd27641`, gh-pages `5fc3774`, staging md5-verified, 616 URLs; **production NOT touched**)
+
+- `stories-build/build.mjs` maintains a `<!-- STORIES-BUILD:START/END -->`
+  block in `sitemap.xml` (one `<url>` per story, lastmod = WP modified
+  date), after seo-build's `SEO-BUILD` block. Each generator rewrites only
+  between its own markers; a seo-build run was checked to leave the file
+  byte-identical. 261 → 616 URLs, xmllint-valid, idempotent.
+- The Action commits `sitemap.xml` with the pages, copies it to gh-pages,
+  and also runs on pushes that touch `sitemap.xml`; `upload.sftp` now ends
+  with `put sitemap.xml`. Push-triggered run 36441533981: success, no-op.
+- SEO note: the story pages render the same text as the public WordPress
+  originals on blog.virtuse.com (Google runs JS), so Google will pick one
+  canonical per pair. Watch Search Console coverage after it's live.
+
+**Production command (user runs it, then md5-verify):**
+```bash
+cd /private/tmp/gh-pages-wt4 && scp -P 222 sitemap.xml virtuse.com@ftp.virtuse.com:public_html/
+```
+
 ## Session status (2026-09-28, fourth round) — Daily GitHub Action for story pages (`2f4e094`, registered + active on GitHub)
 
 - `.github/workflows/stories-build.yml`: daily 05:00 UTC + manual run
