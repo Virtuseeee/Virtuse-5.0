@@ -8,7 +8,10 @@
 (function () {
   'use strict';
   var MP = 'https://mempool.space/api';
-  var THEME_KEY = 'vb-theme';
+  // Storage key per section: news.html keeps 'vb-theme' (default light);
+  // blog + article set data-theme-key="vb-theme-blog" (default dark), so a
+  // choice made on one section doesn't override the other's default.
+  var THEME_KEY = document.documentElement.getAttribute('data-theme-key') || 'vb-theme';
   function $(id) { return document.getElementById(id); }
   function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
   function num(n) { return (n == null || isNaN(n)) ? '—' : n.toLocaleString('en-US', { maximumFractionDigits: 0 }); }
@@ -37,7 +40,7 @@
     }
     function apply(theme, persist) {
       document.documentElement.setAttribute('data-theme', theme);
-      if (meta) meta.setAttribute('content', theme === 'light' ? '#FBFBFA' : '#111110');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#FBFBFA' : (THEME_KEY === 'vb-theme-blog' ? '#08090a' : '#111110'));
       if (persist) { try { localStorage.setItem(THEME_KEY, theme); } catch (e) {} }
       var next = theme === 'dark' ? 'light' : 'dark';
       var cap = next.charAt(0).toUpperCase() + next.slice(1);

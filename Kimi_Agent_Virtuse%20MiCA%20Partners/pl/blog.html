@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="light">
+<html lang="pl" data-theme="dark" data-theme-key="vb-theme-blog">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#FBFBFA">
-<script>(function(){var D="#111110",L="#FBFBFA";try{var t=localStorage.getItem("vb-theme");if(t!=="light"&&t!=="dark")t="light";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?L:D);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
+<meta name="theme-color" content="#08090a">
+<script>(function(){var D="#08090a",L="#FBFBFA";try{var t=localStorage.getItem("vb-theme-blog");if(t!=="light"&&t!=="dark")t="dark";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?L:D);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="../lang-detect.js"></script>
@@ -51,6 +51,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      Brief chrome comes from the desk's own stylesheet; below is archive-only. -->
 <link rel="stylesheet" href="../news/news.css">
 <style>
+/* Dark theme matched to the hub's neutral palette (index.html :root),
+   blog + article only; news.html keeps the Brief's warmer dark. */
+:root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
+  --bg: #08090a;
+  --bg-band: #0e0e0e;
+  --bg-card: #141414;
+  --record-bg: #141414;
+  --rail-bg: #1c1c1c;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --nav-bg: rgba(8, 9, 10, 0.94);
+  --theme-color: #08090a;
+}
 .nav-links a[aria-current="page"]{color:var(--text)}
 
 .arch-head{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px 64px;align-items:end;padding:36px 0 20px;border-bottom:2px solid var(--text)}
