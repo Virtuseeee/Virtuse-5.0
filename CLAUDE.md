@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-28, third round) — Pre-rendered story pages for social previews, 355 pages (`65dc51c`, gh-pages `e244659`, staging 358/358 md5-verified; **production NOT touched**)
+## Session status (2026-09-28, third round) — Pre-rendered story pages for social previews, 355 pages (`65dc51c`, gh-pages `e244659`, staging 358/358 md5-verified; **live on production** — user ran both commands, 358/358 md5-verified on virtuse.com; facebookexternalhit/Twitterbot/LinkedInBot get 200 + the story's og:title/image)
 
 **Why:** social crawlers don't run JS, so every share of
 `article.html?slug=…` showed the generic Brief card. Now each WordPress story
@@ -29,7 +29,7 @@ has a static page with its own Open Graph card.
   preview debuggers only fully work after production.
 - gh-pages worktree: `/private/tmp/gh-pages-wt4`.
 
-**Production (user runs both, then md5-verify 358 files).** Webglobe `scp`
+**Production (done 2026-09-28; kept for reference — re-run the same two for every rebuild).** Webglobe `scp`
 can't create the 358 new folders, so pages go through the sftp batch
 (`-mkdir` each folder, then `put`); `<` not `-b` (batch mode disables
 password login):
