@@ -5,7 +5,7 @@
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
-  var FEATURED_SLUG = 'bitcoin-reclaimed-80000-after-the-fed-hike';
+  var FEATURED_SLUG = 'five-percent-yields-and-an-empty-bid-for-paper';
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
@@ -511,8 +511,30 @@
       list.appendChild(article);
     });
   }
+  var PULSE_REMOTE = 'https://virtuse-newsletter.virtuse-ai.workers.dev/pulse.json';
+  var PULSE_LOCAL = 'news/news-pulse.json?v=20260928b';
+  function fetchPulseRemote() {
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 3000) : null;
+    return fetch(PULSE_REMOTE, ctrl ? { signal: ctrl.signal } : {}).then(function (r) {
+      if (!r.ok) throw new Error(String(r.status));
+      return r.json();
+    }).then(function (data) {
+      if (timer) clearTimeout(timer);
+      if (!data || !Array.isArray(data.items) || !data.items.length) throw new Error('bad remote pulse');
+      return data;
+    }, function (err) {
+      if (timer) clearTimeout(timer);
+      throw err;
+    });
+  }
+  function loadPulseData() {
+    return fetchPulseRemote().catch(function () {
+      return j(PULSE_LOCAL);
+    });
+  }
   function loadPulse() {
-    j('news/news-pulse.json?v=20260926a').then(function (data) {
+    loadPulseData().then(function (data) {
       applyPulseMeta(data || {});
       var local = (data && data.items) || [];
       if (data && data.feed) {
@@ -728,7 +750,7 @@
     section.hidden = false;
   }
 
-  j('news/issues.json').then(function (data) {
+  j('news/issues.json?v=20260928c').then(function (data) {
     var list = (data && data.issues) || [];
     paintArchive(list);
     paintBlog(list, []);

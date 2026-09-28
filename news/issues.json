@@ -2,6 +2,24 @@
   "sponsor": null,
   "issues": [
     {
+      "date": "2026-09-28",
+      "title": "Five Percent Yields and an Empty Bid for Paper",
+      "excerpt": "Foreign Treasury demand has fallen 80 percent. The 10 year is back above 5 percent. Hard assets are the release valve.",
+      "slug": "five-percent-yields-and-an-empty-bid-for-paper",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/09/virtuse-brief-en-2026-09-28-hero-1024x576.jpg",
+      "read_min": 3,
+      "author": "Ras Vasilisin"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "Bitcoin reclaimed $80,000 after the Fed hike",
+      "excerpt": "Price bounced from near $75,000. Spot ETFs finished the week almost flat. The rebound is real — the conviction still looks thin.",
+      "slug": "bitcoin-reclaimed-80000-after-the-fed-hike",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/09/hero-powell-btc-80k-draft.jpg",
+      "read_min": 2,
+      "author": "Ras Vasilisin"
+    },
+    {
       "date": "2026-09-14",
       "title": "Bitcoin fell below $77,000. ETFs sold, the Fed looms.",
       "excerpt": "Price fell from about $80,000 to under $77,000 as ETF desks sold roughly $463 million. The week turns on the Fed and the stalled CLARITY vote.",
