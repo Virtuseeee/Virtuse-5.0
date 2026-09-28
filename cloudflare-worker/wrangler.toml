@@ -11,11 +11,11 @@ id = "fc6483f6d6e14cccbf0a62468fc323eb"
 # Daily Brief Pulse JSON. The namespace does not exist yet.
 # Create it on a machine logged into this Cloudflare account:
 #   wrangler kv namespace create PULSE_KV
-# Paste the printed id over PULSE_KV_ID_PLACEHOLDER below.
+# Paste the printed id over 7fbee7d7c384406a8270cd3bfae0e302 below.
 # Secret (never committed): wrangler secret put PULSE_PUBLISH_TOKEN
 [[kv_namespaces]]
 binding = "PULSE_KV"
-id = "PULSE_KV_ID_PLACEHOLDER"
+id = "7fbee7d7c384406a8270cd3bfae0e302"
 
 # Secrets (RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_FROM_EMAIL,
 # PULSE_PUBLISH_TOKEN) are set via `wrangler secret put <NAME>` -- never
