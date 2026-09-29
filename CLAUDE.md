@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, tenth round) — Tax-advisor review page for the Layer 2 tax rules (private artifact, not yet shared)
+
+- **Review page:** https://claude.ai/artifact/4A9RRLhjcYWQVr4wXbLg2K ("Kontrola daňových pravidiel", Slovak). 67 items: 13 countries × 4 fields (gain tax, holding exemption, filing, note) from `lib/tax.ts`, 11 Loan presets from `lib/loan.ts`, 4 general tax claims (Concierge loan card, Loan comparison/advice, Tax disclaimer). Each shows the SK text (what Slovak visitors see), the EN source, and for 24 items **our own question** where the current text looks doubtful (e.g. PL crypto-to-crypto probably tax-neutral; AT 1-year exemption likely only for pre-March-2021 holdings; SK 1-year exemption / 7 % rate / health levy; SI 25 % from 2026; HR 2-year exemption; RO 16 % from 2026; CZ 100 000 Kč limit; DE €1,000 Freigrenze; the new FR/ES texts).
+- The advisor sets OK / needs correction / unsure, writes the correct wording + source. Verdicts go to the page's `db` collection `review` (doc id = item id with "." → "-", e.g. `pl-note`; fields `status` ok|fix|unsure, `fix`, `source`, `at`). **Writing needs Editor access** (an outside advisor must be invited by email as Editor, and the page must not also be shared by link); otherwise the page keeps the review in the advisor's browser and offers CSV download / copy-as-text.
+- Page source: session scratchpad `review/kontrola-dani.html` (+ `review/data.json`, built from `lib/tax.ts`/`lib/loan.ts` via an esbuild dump). Functional check: `review` collection listed empty after publish; the advisor-level write path could not be exercised without a second account.
+- **Next:** when the review comes back, read `review` with ArtifactData (or the CSV), apply fixes to `lib/tax.ts` / `lib/loan.ts` (en/sk/cs inline) + the 7 dictionaries, rebuild, deploy; then decide on lifting `noindex`.
+
 ## Session status (2026-09-29, ninth round) — Layer 2: France and Spain added, fr/es preselect their country, uk/ru start neutral (`d9804a1`, gh-pages `5b1e1f9`, staging 56/56 md5-verified; **live on production** — user ran the command 2026-09-29, 56/56 md5-verified on virtuse.com, all 16 old hashes gone; live check: fr/es Tax + Loan preselect their country, uk/ru Tax shows the prompt with no tab, uk/ru Loan on Custom, 13 tabs)
 
 - User chose (question asked): add France + Spain rather than a neutral start everywhere; uk/ru get the neutral start.
