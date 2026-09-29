@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, fourteenth round) — English grammar pass over all 35 English SEO pages + llms.txt (`1fd3fc4`, gh-pages `8673113`, staging 37/37 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_engram_upload.sftp`, then md5-verify the 37 files)
+## Session status (2026-09-29, fourteenth round) — English grammar pass over all 35 English SEO pages + llms.txt (`1fd3fc4`, gh-pages `8673113`, staging 37/37 md5-verified; **live on production** — user ran the sftp batch 2026-09-29, 37/37 md5-verified on virtuse.com; live checks: no "such as EUR"/Banxa/"invented", "in the Netherlands" on the NL page)
 
 - **Internal notes were public** and are gone: "not invented for SEO",
   "does not invent APRs", the methodology FAQ about the old Banxa/CASP table,
