@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29) — Layer 2 modules translated to French (`df5f079`, gh-pages `ddb8d69` + `e0632e6`, staging 53/53 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_fr_l2.sh`** (assets first, then shells + fr pages, then `sftp < /private/tmp/concierge_rm_fr.sftp` for the 9 old hashes)
+
+- First round of "the other languages on this Mac" (order FR → ES → PL → HU → UK → RU, one per round). Ran the persisted `i18n-tools/layer2/` pipeline from the DE pilot unchanged: `dict.py template fr` → 382 strings translated → `dict.py build fr` (382/382, 0 placeholder mismatches) → `meta/fr.json` → `pages.py fr` (4 fr module shells, 107 links on 22 fr pages repointed to the local modules, launcher on every fr page) → `fr:` COPY block added to `concierge-launcher.js` by hand (pages.py warns when it is missing) → `gen_chrome.py` → `npm run build` → `deploy.py`.
+- French typography applied in a post-pass: U+00A0 before `: ; ? ! %`, inside « », in thousands ("1 000") and before €. Register vous; tool names stay English; terminology from the fr site pages (auto-conservation, dépositaire, séquestre, prêt garanti par Bitcoin, portefeuille matériel).
+- Verified locally: FR buy flow (Allemagne → Invity, UTM intact, "Simuler mon plan" → `stacking.html?amount=m`), stacking/loan/tax-agent with no English leftovers apart from tool names, no overflow at 375/1280, fr bubble opens `fr/concierge.html` with French aria text, the module switcher on de/ lists FR, tagcheck 0 on 34 files.
+- Known cosmetic gaps (code-side, same in every language): the chat summary line uses "Objectif: …" (no French space before the colon, the separator is hardcoded), match score "95%", chart year labels use a dot decimal ("2.5a"). Tax Agent country tabs have no France (the 11 countries are fixed), so fr falls back to preselecting Slovakia.
+- Backups: `~/Documents/virtuse-concierge-deploy/concierge-src-2026-09-29-{before,after}-fr.tgz`.
+- **Gotcha:** zsh does not word-split `$FILES` in `for f in $FILES` — use `while read` over a list file when syncing into gh-pages. Also, `git show --name-only` listed only the added asset hashes here; check `diff <(ls concierge-assets) <(ls $GH/concierge-assets)` after every sync and `git rm` the stale ones.
+
 ## Session status (2026-09-28, fifth round) — Story pages in sitemap.xml (`bd27641`, gh-pages `5fc3774`, 616 URLs; **live on production** — user ran the scp, md5-verified on virtuse.com, served as application/xml, xmllint-valid)
 
 - `stories-build/build.mjs` maintains a `<!-- STORIES-BUILD:START/END -->`
