@@ -14,6 +14,9 @@ import {
   formatAsOf,
   formatPct,
   formatEur,
+  formatPctDe,
+  formatEurDe,
+  methodDe,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -119,12 +122,12 @@ function neighborsOf(id) {
 function finalizeAnswer(parts, lang) {
   const pads = lang === 'de'
     ? [
-      `Zahlen unverändert aus dem Tax-Modul, Stand ${asOfDe}.`,
+      `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
     ]
     : [
-      `Figures copied unchanged from the Tax module, dated ${asOfEn}.`,
+      `Figures copied unchanged from Virtuse’s live modules, dated ${asOfEn}.`,
       'Virtuse never holds your keys.',
       'Confirm locally; not tax advice.'
     ];
@@ -154,7 +157,7 @@ function taxAnswerEn(c) {
 function taxAnswerDe(c) {
   const d = meta.taxDe[c.id];
   return finalizeAnswer([
-    `Bitcoin-Steuern ${inDe(c.id)} Stand ${asOfDe}: ${d.gainTax}.`,
+    `Bitcoin-Steuern ${inDe(c.id)}, Stand ${asOfDe}: ${d.gainTax}.`,
     `Befreiung: ${d.exemption}.`,
     `Veranlagung: ${d.filing}.`,
     d.note,
@@ -210,15 +213,15 @@ function taxFaqsDe(c) {
     },
     {
       q: `Gibt es eine Spekulationsfrist oder Haltedauer-Befreiung ${inN}?`,
-      a: `${d.exemption}. Prüfen Sie die aktuelle Gesetzeslage mit einem lokalen Steuerberater.`
+      a: `${d.exemption}. Lassen Sie die aktuelle Rechtslage von einem lokalen Steuerberater prüfen.`
     },
     {
-      q: `Wie erfolgt die Erklärung ${inN}?`,
+      q: `Wie erfolgt die Steuererklärung ${inN}?`,
       a: `${d.filing}. ${d.note}`
     },
     {
       q: 'Verwahrt Virtuse meinen Bitcoin oder übernimmt Virtuse die Steuererklärung?',
-      a: `Nein. Virtuse verwahrt niemals Ihre Schlüssel. KYC und Onboarding erfolgen beim Partner. Der Tax-Agent vergleicht die ${N}-Länder-Übersicht; die Erklärung macht ein qualifizierter Berater.`
+      a: `Nein. Virtuse verwahrt niemals Ihre Schlüssel. KYC und Onboarding erfolgen beim Partner. Der Tax-Agent vergleicht die ${N}-Länder-Übersicht; die Steuererklärung erstellt ein qualifizierter Steuerberater.`
     }
   ];
 }
@@ -319,18 +322,18 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Welche Länder umfasst dieser Überblick?', a: `${N} EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. Stand ${asOfDe}, Zahlen aus dem Virtuse-Tax-Modul.` },
     { q: 'Ist das Steuerberatung?', a: 'Nein. Unverbindlicher Überblick 2026 – keine Steuerberatung.' },
     { q: 'Meldet Virtuse Bestände an Finanzämter?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel und führt keine Transaktionshistorie.' },
-    { q: 'Wo prüfe ich Erbschaft zusätzlich zur Steuer?', a: `Im Tax- & Inheritance-Agent (Live-Modul) mit denselben ${N} Ländern plus Multisig-Check.` }
+    { q: 'Wo prüfe ich neben der Steuer auch die Nachlassplanung?', a: `Im Tax- & Inheritance-Agent (Live-Modul) mit denselben ${N} Ländern plus Multisig-Check.` }
   ];
   const answer = finalizeAnswer([
     `Dieser Hub vergleicht die Bitcoin-Besteuerung in ${N} EU-Ländern, Stand ${asOfDe}.`,
-    'Sätze, Befreiungen und Erklärungshinweise stammen aus dem Virtuse-Tax-Modul und wurden nicht für SEO erfunden.',
+    'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus dem Virtuse-Tax-Modul.',
     'Deutschland: Spekulationsfrist 1 Jahr. Österreich: KESt 27,5 %. Tschechien: 3-Jahres-Zeittest. Niederlande: Box 3 statt klassischer Kapitalertragsteuer.',
     'Unverbindlicher Überblick 2026, keine Steuerberatung.'
   ], 'de');
   pushPage({
     relFile, lang: 'de',
     title: assertTitle(`Bitcoin-Steuern in ${N} EU-Ländern (2026)`),
-    description: assertDescription(`Bitcoin-Steuersätze, Spekulationsfrist und Erklärung in ${N} EU-Ländern, Stand ${asOfDe}. Unverbindlich, keine Steuerberatung.`),
+    description: assertDescription(`Bitcoin-Steuersätze, Spekulationsfrist und Steuererklärung in ${N} EU-Ländern, Stand ${asOfDe}. Unverbindlich, keine Steuerberatung.`),
     h1: `Bitcoin-Steuern in ${N} EU-Ländern`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -346,7 +349,7 @@ ${faqHtml(faqs, 'FAQ')}
     moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Tax-Agent öffnen →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
-<p>Pro Land: Gewinnbesteuerung, etwaige Haltedauer-Befreiung und Erklärung, Stand ${esc(asOfDe)}.</p>
+<p>Pro Land: Gewinnbesteuerung, etwaige Haltedauer-Befreiung und Steuererklärung, Stand ${esc(asOfDe)}.</p>
 <h2>Ländervergleich</h2>
 ${tableHtml(['Land', 'Gewinnsteuer', 'Befreiung'], rows)}
 ${faqHtml(faqs, 'FAQ')}
@@ -423,11 +426,11 @@ ${faqHtml(faqs, 'FAQ')}
     schemas: [faqLd(faqsDe)],
     bodyHtml: `
 <p>${esc(c.flag)} Zahlen Stand ${esc(asOfDe)}, übernommen aus dem Virtuse-Tax-Modul.</p>
-<h2>Sätze und Erklärung</h2>
+<h2>Sätze und Steuererklärung</h2>
 ${tableHtml(['Feld', 'Stand ' + asOfDe], [
   ['Gewinnsteuer', esc(d.gainTax)],
   ['Befreiung', esc(d.exemption)],
-  ['Erklärung', esc(d.filing)],
+  ['Steuererklärung', esc(d.filing)],
   ['Hinweis', esc(d.note)]
 ])}
 <h2>Wann entsteht typischerweise Steuer?</h2>
@@ -597,12 +600,12 @@ ${faqHtml(faqs, 'FAQ')}
   const faqs = [
     { q: 'Prognostiziert dieser Rechner den Bitcoin-Preis?', a: 'Nein. Er isoliert die Partnergebühren laut Gebührenplan. Keine Renditeannahme.' },
     { q: `Was ist der Standardplan Stand ${asOfDe}?`, a: '500 € Einmalbetrag plus 100 €/Monat über 12 Monate. Sortierung nach Gebührenlast im ersten Jahr.' },
-    { q: 'Welche Route ist in diesem Plan am günstigsten?', a: `${win.partner} (${win.method}) mit ${formatPct(win.pct)} variabler Gebühr laut Stacking-Formel.` },
-    { q: 'Ist das eine Anlageberatung?', a: 'Nein. Nur Bildungsrouting. KYC beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.' }
+    { q: 'Welche Route ist in diesem Plan am günstigsten?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel.` },
+    { q: 'Ist das eine Anlageberatung?', a: 'Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.' }
   ];
   const answer = finalizeAnswer([
-    `Stand ${asOfDe} rangiert im gebührenbasierten DCA-Beispiel (500 € plus 100 €/Monat über 12 Monate) ${win.partner} auf Platz 1.`,
-    `Variable Gebühr ${formatPct(win.pct)}. Keine Kursprognose.`,
+    `Stand ${asOfDe} liegt im gebührenbasierten DCA-Beispiel (500 € plus 100 €/Monat über 12 Monate) ${win.partner} auf Platz 1.`,
+    `Variable Gebühr ${formatPctDe(win.pct)}. Keine Kursprognose.`,
     'Zahlen aus dem Live-Stacking-Modul. Unverbindlicher Überblick 2026.'
   ], 'de');
   const ranked = rankRoutes(FEE_ROWS, 100);
@@ -636,10 +639,10 @@ ${faqHtml(faqs, 'FAQ')}
       }
     ],
     bodyHtml: `
-<p>Standardbeispiel ohne JavaScript: 500 € plus 100 €/Monat × 12. Formel wie im Live-Stacking-Modul.</p>
+<p>Standardbeispiel: 500 € plus 100 €/Monat × 12. Formel wie im Live-Stacking-Modul.</p>
 <h2>Rangfolge bei 100 €/Monat</h2>
 ${tableHtml(['Rang', 'Partner', 'Methode', 'Variable Gebühr', 'Jahreslast'], ranked.map((r, i) => [
-  esc(String(i + 1)), esc(r.partner), esc(r.method), esc(formatPct(r.pct)), esc(formatEur(r.annualDrag))
+  esc(String(i + 1)), esc(r.partner), esc(methodDe(r.method)), esc(formatPctDe(r.pct)), esc(formatEurDe(r.annualDrag))
 ]))}
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -715,20 +718,20 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const faqs = [
-    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja bei Veräußerung. Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
-    { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und Partner-KYC bleiben. APRs werden hier nicht erfunden; Zahlen im Live-Loan-Copilot.' },
-    { q: 'Was ist Liquidationsrisiko?', a: 'Fällt der Collateral-Wert auf die Schwelle des Partners, kann der Kredit zwangsverkauft werden. Virtuse verwahrt weder Schlüssel noch Collateral.' },
-    { q: 'Wo rechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur den Trade-off anhand der veröffentlichten Steuerstrings.' }
+    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja, bei einer Veräußerung. Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
+    { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und das KYC beim Partner bleiben. Konkrete Zinssätze zeigt der Loan-Copilot.' },
+    { q: 'Was ist Liquidationsrisiko?', a: 'Fällt der Wert der Sicherheit (Collateral) auf die Schwelle des Partners, kann die Sicherheit zwangsverkauft werden. Virtuse verwahrt weder Schlüssel noch Sicherheiten.' },
+    { q: 'Wo berechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur die Abwägung anhand der veröffentlichten Steuerangaben.' }
   ];
   const answer = finalizeAnswer([
-    `Stand ${asOfDe} kann ein Bitcoin-Verkauf Steuer auslösen (Deutschland bis 45 % innerhalb der Spekulationsfrist; Rumänien 10 % Pauschale).`,
-    'Ein Kredit gegen Coins kann die Marktposition erhalten, bringt aber Zinsen und Liquidationsrisiko beim Partner.',
-    'Keine erfundenen APRs. Unverbindlicher Überblick 2026, keine Steuer- oder Kreditberatung. Virtuse verwahrt niemals Ihre Schlüssel.'
+    `Stand ${asOfDe} kann ein Bitcoin-Verkauf Steuer auslösen (Deutschland bis 45 % innerhalb der Spekulationsfrist; Rumänien pauschal 10 %).`,
+    'Ein Kredit mit Bitcoin als Sicherheit kann die Marktposition erhalten, bringt aber Zinsen und ein Liquidationsrisiko beim Partner.',
+    'Die Seite nennt keine Zinssätze. Unverbindlicher Überblick 2026, keine Steuer- oder Kreditberatung. Virtuse verwahrt niemals Ihre Schlüssel.'
   ], 'de');
   pushPage({
     relFile, lang: 'de',
     title: assertTitle('Bitcoin verkaufen oder beleihen (2026)'),
-    description: assertDescription(`Bitcoin verkaufen und Steuer zahlen oder beleihen und Exposure halten. ${N}-Länder-Sätze Stand ${asOfDe}. Keine Kreditberatung.`),
+    description: assertDescription(`Bitcoin verkaufen und Steuer zahlen oder beleihen und investiert bleiben. ${N}-Länder-Sätze, Stand ${asOfDe}. Keine Kreditberatung.`),
     h1: 'Bitcoin verkaufen oder beleihen',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -761,7 +764,7 @@ ${tableHtml(['Land', 'Gewinnsteuer', 'Befreiung'], COUNTRIES.map((c) => [
   esc(meta.taxDe[c.id].exemption)
 ]))}
 <h2>Risiko beim Kredit</h2>
-<p>Bitcoin-besicherte Kredite kommen von Partnern, nicht von Virtuse. Sie behalten die Kurschance, zahlen Zinsen und können liquidiert werden. Virtuse verwahrt das Collateral nicht.</p>
+<p>Bitcoin-besicherte Kredite kommen von Partnern, nicht von Virtuse. Sie behalten die Kurschance, zahlen Zinsen, und Ihre Sicherheit kann liquidiert werden. Virtuse verwahrt die Sicherheit (Collateral) nicht.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
   });
@@ -832,7 +835,7 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Dürfen Seed-Wörter im Schreiben stehen?', a: 'Nein. Das Schreiben nennt Inventar, Orte und Kontakte – niemals Seed-Phrasen. Aufbewahrung beim Testament oder Anwalt.' },
     { q: 'Warum Multisig 2-von-3?', a: 'Eine einzelne Seed-Phrase ist ein Single Point of Failure für Sie und für Erben.' },
     { q: 'Verwahrt Virtuse Schlüssel für Erben?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel.' },
-    { q: 'Ist das Rechtsberatung?', a: 'Nein. Bildungs-Checkliste aus dem Tax-Modul, Stand ' + asOfDe + '.' }
+    { q: 'Ist das Rechtsberatung?', a: 'Nein. Eine Checkliste zu Bildungszwecken aus dem Tax-Modul, Stand ' + asOfDe + '.' }
   ];
   const answer = finalizeAnswer([
     `Stand ${asOfDe} umfasst die Checkliste des Tax-Moduls sechs Punkte: Schreiben mit Anweisungen, geografische Schlüsseltrennung, informierte Erben, Multisig 2-von-3, Wiederherstellungstest und dokumentierte Konten.`,
@@ -870,7 +873,7 @@ ${faqHtml(faqs, 'FAQ')}
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
 <p>Inhalt entspricht der Checkliste des Tax-Moduls. Keine Rechtsberatung.</p>
-<h2>HowTo: sechs Prüfschritte</h2>
+<h2>Anleitung: sechs Prüfschritte</h2>
 <ol>${meta.inheritanceDe.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -881,24 +884,26 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
-    return `<h3>${lang === 'de' ? 'Monatlich' : 'Monthly'} ${esc(formatEur(amt))}</h3>` +
+    return `<h3>${lang === 'de' ? `${esc(formatEurDe(amt))} pro Monat` : `Monthly ${esc(formatEur(amt))}`}</h3>` +
       tableHtml(
         lang === 'de' ? ['Rang', 'Partner', 'Methode', 'Gebühr', 'Jahreslast'] : ['Rank', 'Partner', 'Method', 'Fee', 'Annual drag'],
         ranked.map((r, i) => [
           esc(String(i + 1)),
           esc(r.partner),
-          esc(r.method),
-          esc(formatPct(r.pct) + (r.monthly ? ` + ${formatEur(r.monthly)}/mo` : '')),
-          esc(formatEur(r.annualDrag))
+          esc(lang === 'de' ? methodDe(r.method) : r.method),
+          esc(lang === 'de'
+            ? formatPctDe(r.pct) + (r.monthly ? ` + ${formatEurDe(r.monthly)}/Monat` : '')
+            : formatPct(r.pct) + (r.monthly ? ` + ${formatEur(r.monthly)}/mo` : '')),
+          esc(lang === 'de' ? formatEurDe(r.annualDrag) : formatEur(r.annualDrag))
         ])
       );
   }).join('');
   let beText;
   if (lang === 'de') {
     if (be.status === 'always') {
-      beText = `Break-even Bots vs. manuell: Die günstigste automatisierte Route (${be.auto.partner}) hat ab 1 €/Monat eine niedrigere oder gleiche Jahreslast als die günstigste manuelle Route (${be.manual.partner}).`;
+      beText = `Break-even automatisiert vs. manuell: Die günstigste automatisierte Route (${be.auto.partner}) hat ab 1 €/Monat eine niedrigere oder gleiche Jahreslast als die günstigste manuelle Route (${be.manual.partner}).`;
     } else if (be.status === 'found') {
-      beText = `Break-even: ab ${formatEur(be.monthlyEur)}/Monat ist ${be.auto.partner} (automatisiert) nicht teurer als ${be.manual.partner} (manuell).`;
+      beText = `Break-even: ab ${formatEurDe(be.monthlyEur)}/Monat ist ${be.auto.partner} (automatisiert) nicht teurer als ${be.manual.partner} (manuell).`;
     } else {
       beText = `Im Scan bis 20.000 €/Monat unterbietet die günstigste automatisierte Route die günstigste manuelle Route nicht.`;
     }
@@ -1000,20 +1005,20 @@ ${faqHtml(faqs, 'FAQ')}
   const { tables, beText, winner } = feeIndexBody(relFile, 'de');
   const faqs = [
     { q: 'Was misst der Gebührenindex?', a: `Die Gebührenlast von Kaufrouten Stand ${asOfDe}, Formel wie im Stacking-Modul.` },
-    { q: 'Wer ist bei 100 €/Monat am günstigsten?', a: `${winner.partner}, ${formatPct(winner.pct)}, ${formatEur(winner.annualDrag)} Jahreslast.` },
-    { q: 'Sind Spreads enthalten?', a: 'Nein. Nur Prozentgebühr plus etwaiges Monatsabo laut Plan. FX und Miner-Fees fehlen.' },
+    { q: 'Wer ist bei 100 €/Monat am günstigsten?', a: `${winner.partner}, ${formatPctDe(winner.pct)}, ${formatEurDe(winner.annualDrag)} Jahreslast.` },
+    { q: 'Sind Spreads enthalten?', a: 'Nein. Nur die prozentuale Gebühr plus ein etwaiges Monatsabo laut Plan. Wechselkurse und Mining-Gebühren sind nicht enthalten.' },
     { q: 'Darf ich die Tabelle zitieren?', a: `Ja, mit Quellenangabe „Quelle: Virtuse Bitcoin-Gebührenindex, Stand ${asOfDe}“ und Link.` }
   ];
   const answer = finalizeAnswer([
     `Der Virtuse Bitcoin-Gebührenindex Stand ${asOfDe} sortiert EU-Kaufrouten nach Jahres-Gebührenlast.`,
-    `Bei 100 €/Monat führt ${winner.partner} (${winner.method}) mit ${formatPct(winner.pct)}, ${formatEur(winner.annualDrag)} pro Jahr.`,
+    `Bei 100 €/Monat führt ${winner.partner} (${methodDe(winner.method)}) mit ${formatPctDe(winner.pct)}, ${formatEurDe(winner.annualDrag)} pro Jahr.`,
     beText,
     'Kein Angebot. Virtuse verwahrt niemals Ihre Schlüssel.'
   ], 'de');
   pushPage({
     relFile, lang: 'de',
     title: assertTitle('Bitcoin-Gebührenindex (EU) Q3 2026'),
-    description: assertDescription(`EU-Kaufrouten nach Gebühren, Stand ${asOfDe}. Günstigste Route bei 100 €/Monat: ${winner.partner} mit ${formatPct(winner.pct)}.`),
+    description: assertDescription(`EU-Kaufrouten nach Gebühren, Stand ${asOfDe}. Günstigste Route bei 100 €/Monat: ${winner.partner} mit ${formatPctDe(winner.pct)}.`),
     h1: 'Bitcoin-Gebührenindex',
     answerHtml: esc(answer),
     breadcrumbs: [

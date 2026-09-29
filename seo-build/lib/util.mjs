@@ -92,6 +92,28 @@ export function formatEur(n) {
   return `${sign}€${withCommas}`;
 }
 
+/** German number formats: "0,1 %", "1.000 €". */
+export function formatPctDe(pct) {
+  return formatPct(pct).replace('.', ',');
+}
+
+export function formatEurDe(n) {
+  const rounded = Math.round(Number(n));
+  const sign = rounded < 0 ? '-' : '';
+  return `${sign}${String(Math.abs(rounded)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €`;
+}
+
+const METHOD_DE = {
+  'Auto-Invest plan': 'Auto-Invest-Plan',
+  'Spot trading': 'Spot-Handel',
+  'Pro trading': 'Pro-Handel',
+  'Automated DCA bot': 'Automatischer DCA-Bot'
+};
+/** German label for a fee-schedule method (falls back to the source label). */
+export function methodDe(method) {
+  return METHOD_DE[method] || method;
+}
+
 export function depthOf(relPath) {
   const trimmed = relPath.replace(/^\//, '').replace(/\/index\.html$/, '');
   const parts = trimmed.split('/').filter(Boolean);

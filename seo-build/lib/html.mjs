@@ -245,15 +245,15 @@ export const CHROME = {
     terms: 'Terms'
   },
   de: {
-    navTax: 'Steuer-Guides',
+    navTax: 'Steuerratgeber',
     navFees: 'Gebührenindex',
     navDca: 'DCA',
     navConcierge: 'Concierge',
-    relatedHeading: 'Verwandte Guides',
+    relatedHeading: 'Verwandte Ratgeber',
     asOfPrefix: 'Stand der Daten',
     disclaimerTax: 'Unverbindlicher Überblick 2026 – keine Steuerberatung.',
     disclaimerKeys: 'Virtuse verwahrt niemals Ihre Schlüssel.',
-    disclaimerKyc: 'KYC und Onboarding erfolgen auf der regulierten Plattform des jeweiligen Partners. Virtuse ist ein nicht-kustodialer Hub und verwahrt weder Guthaben noch Kundendaten dieser Plattformen.',
+    disclaimerKyc: 'KYC und Onboarding erfolgen auf der regulierten Plattform des jeweiligen Partners. Virtuse ist ein Non-Custodial-Hub und verwahrt weder Guthaben noch Kundendaten dieser Plattformen.',
     privacy: 'Datenschutz',
     terms: 'AGB'
   }
