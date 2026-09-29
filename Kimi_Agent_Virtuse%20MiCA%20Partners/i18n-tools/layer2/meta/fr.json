@@ -1,0 +1,39 @@
+{
+ "locale": "fr_FR",
+ "project": {
+  "concierge": [
+   "Bitcoin Concierge · Virtuse Layer 2",
+   "Virtuse Bitcoin Concierge : orientation non custodial vers des partenaires Bitcoin vérifiés dans l'UE."
+  ],
+  "stacking": [
+   "Stacking Strategist · Virtuse Layer 2",
+   "Virtuse Stacking Strategist : projection DCA et comparaison des frais des partenaires pour constituer votre réserve de bitcoins."
+  ],
+  "loan": [
+   "Loan & Liquidity Copilot · Virtuse Layer 2",
+   "Virtuse Loan & Liquidity Copilot : comparez la vente de vos bitcoins à un emprunt garanti par ceux-ci, avec vos propres chiffres, risque de liquidation compris."
+  ],
+  "tax-agent": [
+   "Tax & Inheritance Agent · Virtuse Layer 2",
+   "Virtuse Tax & Inheritance Agent : aperçu de la fiscalité crypto dans 11 pays de l'UE et test de préparation à la succession pour vos bitcoins."
+  ]
+ },
+ "site": {
+  "concierge": [
+   "Bitcoin Concierge : le bon partenaire en 60 secondes | Virtuse",
+   "Répondez à quelques questions et le Bitcoin Concierge de Virtuse vous oriente vers le partenaire vérifié et agréé MiCA qui vous convient : non custodial, gratuit, sans inscription."
+  ],
+  "stacking": [
+   "Stacking Strategist : plan DCA et comparaison des frais | Virtuse",
+   "Définissez votre rythme de stacking, visualisez la projection DCA à long terme et comparez les frais de chaque partenaire pour trouver l'option la moins chère par achat."
+  ],
+  "loan": [
+   "Loan &amp; Liquidity Copilot : vendre ou emprunter | Virtuse",
+   "Comparez la vente de vos bitcoins à un emprunt garanti par ceux-ci, avec vos propres chiffres : impôt, coût des intérêts et risque de liquidation côte à côte."
+  ],
+  "tax-agent": [
+   "Tax &amp; Inheritance Agent : 11 pays de l'UE | Virtuse",
+   "Aperçu de la fiscalité du Bitcoin dans 11 pays de l'UE, plus un test de succession : qu'advient-il de vos sats après votre mort ?"
+  ]
+ }
+}

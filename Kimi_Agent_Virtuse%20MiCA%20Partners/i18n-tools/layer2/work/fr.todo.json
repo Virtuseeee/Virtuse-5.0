@@ -1,0 +1,1530 @@
+[
+ {
+  "en": "Ahoj! I’m the Virtuse Bitcoin Concierge — the Layer 2 advisor on top of the Virtuse hub. I don’t hold keys or funds; I find the right vetted partner for your situation. Let’s start: what brings you here today?",
+  "tr": "Bonjour ! Je suis le Bitcoin Concierge de Virtuse, le conseiller Layer 2 du hub Virtuse. Je ne détiens ni clés ni fonds : je trouve le partenaire vérifié adapté à votre situation. Commençons : qu'est-ce qui vous amène aujourd'hui ?"
+ },
+ {
+  "en": "What brings you here today?",
+  "tr": "Qu'est-ce qui vous amène aujourd'hui ?"
+ },
+ {
+  "en": "Where are you based? (Availability and licensing differ by country.)",
+  "tr": "Où êtes-vous établi ? (La disponibilité et les licences varient selon le pays.)"
+ },
+ {
+  "en": "How would you describe your Bitcoin experience?",
+  "tr": "Comment décririez-vous votre expérience du Bitcoin ?"
+ },
+ {
+  "en": "How do you want to hold your bitcoin?",
+  "tr": "Comment souhaitez-vous conserver vos bitcoins ?"
+ },
+ {
+  "en": "Roughly what amount are we talking about?",
+  "tr": "De quel montant parle-t-on, environ ?"
+ },
+ {
+  "en": "Here’s my routing for you:\n{0}\nPick a partner — you’ll finish onboarding on their regulated platform, and your bitcoin never touches Virtuse.",
+  "tr": "Voici ma recommandation pour vous :\n{0}\nChoisissez un partenaire : vous finaliserez l'inscription sur sa plateforme régulée, et vos bitcoins ne passent jamais par Virtuse."
+ },
+ {
+  "en": "Bitcoin Concierge",
+  "tr": "Bitcoin Concierge"
+ },
+ {
+  "en": "Routes to {0} vetted partners · never holds your keys",
+  "tr": "Oriente vers {0} partenaires vérifiés · ne détient jamais vos clés"
+ },
+ {
+  "en": "Start over",
+  "tr": "Recommencer"
+ },
+ {
+  "en": "Non-custodial routing only. Onboarding & KYC happen on the partner’s regulated platform. Not financial advice.",
+  "tr": "Orientation non custodial uniquement. L'inscription et le KYC se font sur la plateforme régulée du partenaire. Pas un conseil financier."
+ },
+ {
+  "en": "Best match",
+  "tr": "Meilleur choix"
+ },
+ {
+  "en": "match",
+  "tr": "correspondance"
+ },
+ {
+  "en": "Adjust answers",
+  "tr": "Modifier mes réponses"
+ },
+ {
+  "en": "Simulate my plan",
+  "tr": "Simuler mon plan"
+ },
+ {
+  "en": "Compare sell vs. borrow",
+  "tr": "Comparer vendre ou emprunter"
+ },
+ {
+  "en": "Check my country's rules",
+  "tr": "Vérifier les règles de mon pays"
+ },
+ {
+  "en": "your country",
+  "tr": "votre pays"
+ },
+ {
+  "en": "your amount",
+  "tr": "votre montant"
+ },
+ {
+  "en": "Continue to partner",
+  "tr": "Continuer vers le partenaire"
+ },
+ {
+  "en": "Compares vetted EU exchanges in real time and routes your purchase straight to your own wallet — funds never sit on Invity itself.",
+  "tr": "Compare en temps réel des plateformes d'échange européennes vérifiées et envoie votre achat directement dans votre propre portefeuille : les fonds ne restent jamais chez Invity."
+ },
+ {
+  "en": "Licensed by the Czech National Bank; built by SatoshiLabs, the makers of Trezor.",
+  "tr": "Agréé par la Banque nationale tchèque ; développé par SatoshiLabs, les créateurs de Trezor."
+ },
+ {
+  "en": "Simplest start for newcomers in {0} — FMA MiCAR licensed, insured Bitcoin custody.",
+  "tr": "Le démarrage le plus simple pour les débutants en {0} : licence MiCAR de la FMA, conservation du Bitcoin assurée."
+ },
+ {
+  "en": "Auto-Invest savings plan with 0% fees; 100,000+ European users.",
+  "tr": "Plan d'épargne Auto-Invest sans frais ; plus de 100 000 utilisateurs en Europe."
+ },
+ {
+  "en": "Veteran EU exchange with deep EUR liquidity for {0}.",
+  "tr": "Plateforme d'échange européenne établie, avec une forte liquidité en EUR pour {0}."
+ },
+ {
+  "en": "Founded 2011 — MiCA licensed via the Central Bank of Ireland.",
+  "tr": "Fondée en 2011 : licence MiCA via la Banque centrale d'Irlande."
+ },
+ {
+  "en": "For larger amounts, a top-3 global exchange gives you deeper order books and tighter spreads.",
+  "tr": "Pour les montants plus importants, l'une des trois plus grandes plateformes au monde offre des carnets d'ordres plus profonds et des spreads plus serrés."
+ },
+ {
+  "en": "A large global platform with full EEA passporting if you want more than spot buying — card, wider asset coverage.",
+  "tr": "Une grande plateforme mondiale avec passeport EEE complet, si vous voulez plus que l'achat au comptant : carte, offre plus large."
+ },
+ {
+  "en": "Since you want self-custody: move your Bitcoin off any exchange onto your own hardware wallet as soon as you buy.",
+  "tr": "Puisque vous souhaitez l'auto-conservation : transférez vos bitcoins de la plateforme vers votre propre portefeuille matériel dès l'achat."
+ },
+ {
+  "en": "Bitcoin-backed P2P loans, market-driven rates — but note: Firefish assumes self-custody via multisig escrow.",
+  "tr": "Prêts P2P garantis par Bitcoin, à des taux fixés par le marché. Attention : Firefish suppose l'auto-conservation via un séquestre multisig."
+ },
+ {
+  "en": "If you prefer assisted custody, set that up first, then come back for the loan.",
+  "tr": "Si vous préférez une conservation accompagnée, mettez-la en place d'abord, puis revenez pour le prêt."
+ },
+ {
+  "en": "Borrow EUR against your bitcoin — keep 100% of the upside.",
+  "tr": "Empruntez des euros contre vos bitcoins et gardez 100 % du potentiel de hausse."
+ },
+ {
+  "en": "No credit checks, no sale, no taxable event in most EU jurisdictions.",
+  "tr": "Aucune vérification de solvabilité, aucune vente, aucun événement imposable dans la plupart des pays de l'UE."
+ },
+ {
+  "en": "Works for {0} in {1} via multisig-secured P2P.",
+  "tr": "Fonctionne pour {0} en {1} via des prêts P2P sécurisés par multisig."
+ },
+ {
+  "en": "The most beginner-friendly bot platform — copy trading, paper trading, and a 30-day free trial before you commit.",
+  "tr": "La plateforme de bots la plus accessible aux débutants : copy trading, paper trading et 30 jours d'essai gratuit avant de vous engager."
+ },
+ {
+  "en": "150+ ready-made strategy templates for when you want to graduate to building your own rules.",
+  "tr": "Plus de 150 modèles de stratégies prêts à l'emploi, pour le jour où vous voudrez créer vos propres règles."
+ },
+ {
+  "en": "Explicitly non-custodial — trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.",
+  "tr": "Explicitement non custodial : clés API limitées au trading, sans droit de retrait ; vos bitcoins ne quittent jamais votre plateforme d'échange."
+ },
+ {
+  "en": "150+ strategy templates with a backtesting engine.",
+  "tr": "Plus de 150 modèles de stratégies avec moteur de backtesting."
+ },
+ {
+  "en": "A simpler, Bitcoin-focused cloud DCA/grid setup — referral commissions even pay out in BTC.",
+  "tr": "Une configuration cloud DCA et grid plus simple, centrée sur le Bitcoin : les commissions de parrainage sont même versées en BTC."
+ },
+ {
+  "en": "MiCA CASP-licensed institutional custodian for {0} — $250M insurance coverage.",
+  "tr": "Dépositaire institutionnel agréé CASP au titre de MiCA pour {0} : couverture d'assurance de 250 M$."
+ },
+ {
+  "en": "Already serves 21bitcoin; proven European infrastructure.",
+  "tr": "Sert déjà 21bitcoin ; une infrastructure européenne éprouvée."
+ },
+ {
+  "en": "World's first regulated digital asset bank — discretionary treasury mandates, including rebalancing and hedging.",
+  "tr": "La première banque d'actifs numériques régulée au monde : mandats de trésorerie discrétionnaires, rééquilibrage et couverture compris."
+ },
+ {
+  "en": "For the largest allocations: the largest regulated crypto custodian globally, MiCA CASP via CSSF Luxembourg.",
+  "tr": "Pour les plus grandes allocations : le plus grand dépositaire crypto régulé au monde, CASP au titre de MiCA via la CSSF (Luxembourg)."
+ },
+ {
+  "en": "Top 5 EU ASIC reseller with hosting in Norway, Finland, and Ethiopia — an easy first hosted contract.",
+  "tr": "L'un des cinq premiers revendeurs d'ASIC de l'UE, avec hébergement en Norvège, en Finlande et en Éthiopie : un premier contrat d'hébergement simple."
+ },
+ {
+  "en": "Professionally managed, renewable-energy mining infrastructure — built for mid-to-large scale miners.",
+  "tr": "Infrastructure de minage gérée par des professionnels, alimentée par des énergies renouvelables, pour les mineurs de taille moyenne à grande."
+ },
+ {
+  "en": "For Bitcoin purists: open-source mining hardware (Bitaxe), EU warehouse for fast shipping.",
+  "tr": "Pour les puristes du Bitcoin : du matériel de minage open source (Bitaxe), entrepôt dans l'UE pour une livraison rapide."
+ },
+ {
+  "en": "The original Bitcoin hardware wallet, since 2013 — fully open-source hardware and firmware, easiest to start with.",
+  "tr": "Le portefeuille matériel Bitcoin historique, depuis 2013 : matériel et firmware entièrement open source, le plus simple pour débuter."
+ },
+ {
+  "en": "Native support for multisig and collaborative custody vaults — the setup that answers \"what happens to my bitcoin\".",
+  "tr": "Prise en charge native du multisig et des coffres de conservation collaborative : la configuration qui répond à « qu'advient-il de mes bitcoins ? »."
+ },
+ {
+  "en": "World's most popular hardware wallet — 7M+ devices sold, certified Secure Element chip.",
+  "tr": "Le portefeuille matériel le plus populaire au monde : plus de 7 millions d'appareils vendus, puce Secure Element certifiée."
+ },
+ {
+  "en": "Country-specific reports built for {0} — Austrian-built, 700+ integrations.",
+  "tr": "Rapports adaptés à {0} : outil autrichien, plus de 700 intégrations."
+ },
+ {
+  "en": "Free portfolio tracking tier.",
+  "tr": "Suivi de portefeuille gratuit."
+ },
+ {
+  "en": "Covers 100+ countries including {0}, across 400+ exchanges and wallets.",
+  "tr": "Couvre plus de 100 pays, dont {0}, sur plus de 400 plateformes et portefeuilles."
+ },
+ {
+  "en": "Free to track — you only pay when you download the report.",
+  "tr": "Suivi gratuit : vous ne payez qu'au téléchargement du rapport."
+ },
+ {
+  "en": "The veteran option — tracking crypto tax since 2013, 300+ exchange integrations.",
+  "tr": "L'option historique : suivi fiscal crypto depuis 2013, plus de 300 intégrations de plateformes."
+ },
+ {
+  "en": "Privacy-first and no KYC required, if that matters more to you than breadth of integrations.",
+  "tr": "Axé sur la confidentialité et sans KYC, si cela compte plus pour vous que le nombre d'intégrations."
+ },
+ {
+  "en": "your goal",
+  "tr": "votre objectif"
+ },
+ {
+  "en": "Goal",
+  "tr": "Objectif"
+ },
+ {
+  "en": "Country",
+  "tr": "Pays"
+ },
+ {
+  "en": "New to Bitcoin",
+  "tr": "Nouveau dans le Bitcoin"
+ },
+ {
+  "en": "Already holding BTC",
+  "tr": "Détient déjà des BTC"
+ },
+ {
+  "en": "Custody",
+  "tr": "Conservation"
+ },
+ {
+  "en": "Amount",
+  "tr": "Montant"
+ },
+ {
+  "en": "Buy Bitcoin",
+  "tr": "Acheter du Bitcoin"
+ },
+ {
+  "en": "First purchase or regular stacking",
+  "tr": "Premier achat ou stacking régulier"
+ },
+ {
+  "en": "Bitcoin-backed loan",
+  "tr": "Prêt garanti par Bitcoin"
+ },
+ {
+  "en": "Liquidity without selling",
+  "tr": "Des liquidités sans vendre"
+ },
+ {
+  "en": "Automate & compound",
+  "tr": "Automatiser et faire fructifier"
+ },
+ {
+  "en": "Non-custodial trading & DCA bots",
+  "tr": "Bots de trading et de DCA non custodial"
+ },
+ {
+  "en": "Corporate treasury",
+  "tr": "Trésorerie d'entreprise"
+ },
+ {
+  "en": "BTC on the balance sheet",
+  "tr": "Des BTC au bilan"
+ },
+ {
+  "en": "Mining",
+  "tr": "Minage"
+ },
+ {
+  "en": "Earn fresh sats",
+  "tr": "Gagner des sats neufs"
+ },
+ {
+  "en": "Custody & inheritance",
+  "tr": "Conservation et succession"
+ },
+ {
+  "en": "Keys, multisig, legacy",
+  "tr": "Clés, multisig, transmission"
+ },
+ {
+  "en": "Tax help",
+  "tr": "Aide fiscale"
+ },
+ {
+  "en": "Reports & compliance",
+  "tr": "Rapports et conformité"
+ },
+ {
+  "en": "Czechia",
+  "tr": "Tchéquie"
+ },
+ {
+  "en": "Slovakia",
+  "tr": "Slovaquie"
+ },
+ {
+  "en": "Poland",
+  "tr": "Pologne"
+ },
+ {
+  "en": "Austria",
+  "tr": "Autriche"
+ },
+ {
+  "en": "Germany",
+  "tr": "Allemagne"
+ },
+ {
+  "en": "Hungary",
+  "tr": "Hongrie"
+ },
+ {
+  "en": "Slovenia",
+  "tr": "Slovénie"
+ },
+ {
+  "en": "Croatia",
+  "tr": "Croatie"
+ },
+ {
+  "en": "Romania",
+  "tr": "Roumanie"
+ },
+ {
+  "en": "Bulgaria",
+  "tr": "Bulgarie"
+ },
+ {
+  "en": "Netherlands",
+  "tr": "Pays-Bas"
+ },
+ {
+  "en": "First purchase, learning the ropes",
+  "tr": "Premier achat, je découvre"
+ },
+ {
+  "en": "I already hold Bitcoin",
+  "tr": "Je détiens déjà du Bitcoin"
+ },
+ {
+  "en": "Looking to optimize",
+  "tr": "Je veux optimiser"
+ },
+ {
+  "en": "Self-custody",
+  "tr": "Auto-conservation"
+ },
+ {
+  "en": "My keys, my coins",
+  "tr": "Mes clés, mes bitcoins"
+ },
+ {
+  "en": "Assisted custody",
+  "tr": "Conservation accompagnée"
+ },
+ {
+  "en": "Help with keys & recovery",
+  "tr": "Aide pour les clés et la récupération"
+ },
+ {
+  "en": "No preference yet",
+  "tr": "Pas encore de préférence"
+ },
+ {
+  "en": "Advise me",
+  "tr": "Conseillez-moi"
+ },
+ {
+  "en": "< €1,000",
+  "tr": "< 1 000 €"
+ },
+ {
+  "en": "€1,000 – 10,000",
+  "tr": "1 000 – 10 000 €"
+ },
+ {
+  "en": "€10,000 – 100,000",
+  "tr": "10 000 – 100 000 €"
+ },
+ {
+  "en": "> €100,000",
+  "tr": "> 100 000 €"
+ },
+ {
+  "en": "Bitcoin-only app, FMA MiCAR licensed — insured custody",
+  "tr": "Application 100 % Bitcoin, licence MiCAR de la FMA : conservation assurée"
+ },
+ {
+  "en": "Auto-Invest savings plan with 0% fees",
+  "tr": "Plan d'épargne Auto-Invest sans frais"
+ },
+ {
+  "en": "MiCA-licensed",
+  "tr": "Agréé MiCA"
+ },
+ {
+  "en": "Veteran EU exchange — deep EUR liquidity since 2011",
+  "tr": "Plateforme européenne établie : forte liquidité en EUR depuis 2011"
+ },
+ {
+  "en": "Pro trading fees from 0.16%",
+  "tr": "Frais de trading Pro à partir de 0,16 %"
+ },
+ {
+  "en": "Top-3 global exchange, EU-licensed in Vienna",
+  "tr": "L'une des trois plus grandes plateformes au monde, agréée dans l'UE à Vienne"
+ },
+ {
+  "en": "Spot trading fees from 0.1%",
+  "tr": "Frais de trading au comptant à partir de 0,1 %"
+ },
+ {
+  "en": "Rate-comparison engine that routes straight to self-custody",
+  "tr": "Comparateur de cours qui envoie directement vers l'auto-conservation"
+ },
+ {
+  "en": "Built by SatoshiLabs; funds never held on Invity itself",
+  "tr": "Développé par SatoshiLabs ; les fonds ne restent jamais chez Invity"
+ },
+ {
+  "en": "Large global platform with full EEA passporting",
+  "tr": "Grande plateforme mondiale avec passeport EEE complet"
+ },
+ {
+  "en": "Deep liquidity; Crypto.com Visa Card supported",
+  "tr": "Forte liquidité ; carte Visa Crypto.com prise en charge"
+ },
+ {
+  "en": "The original Bitcoin hardware wallet, since 2013",
+  "tr": "Le portefeuille matériel Bitcoin historique, depuis 2013"
+ },
+ {
+  "en": "Fully open-source hardware and firmware",
+  "tr": "Matériel et firmware entièrement open source"
+ },
+ {
+  "en": "World's most popular hardware wallet — 7M+ sold",
+  "tr": "Le portefeuille matériel le plus populaire au monde : plus de 7 millions vendus"
+ },
+ {
+  "en": "Certified Secure Element chip; Ledger Live app",
+  "tr": "Puce Secure Element certifiée ; application Ledger Live"
+ },
+ {
+  "en": "Bitcoin Core-grade infra — multisig & collaborative custody",
+  "tr": "Infrastructure au niveau de Bitcoin Core : multisig et conservation collaborative"
+ },
+ {
+  "en": "Blockstream Jade — fully open-source, no secure element",
+  "tr": "Blockstream Jade : entièrement open source, sans Secure Element"
+ },
+ {
+  "en": "Bitcoin-backed P2P loans, multisig-secured",
+  "tr": "Prêts P2P garantis par Bitcoin, sécurisés par multisig"
+ },
+ {
+  "en": "Market-driven rates; no credit checks",
+  "tr": "Taux fixés par le marché ; aucune vérification de solvabilité"
+ },
+ {
+  "en": "Bitcoin-native",
+  "tr": "Natif Bitcoin"
+ },
+ {
+  "en": "Austrian-built tax tool, country-specific EU reports",
+  "tr": "Outil fiscal autrichien, rapports par pays de l'UE"
+ },
+ {
+  "en": "Free portfolio tracking tier; 700+ integrations",
+  "tr": "Suivi de portefeuille gratuit ; plus de 700 intégrations"
+ },
+ {
+  "en": "AI-matched transfers across 400+ exchanges, 100+ countries",
+  "tr": "Rapprochement des transferts par IA sur plus de 400 plateformes, plus de 100 pays"
+ },
+ {
+  "en": "Free to track; pay only when you download the report",
+  "tr": "Suivi gratuit ; paiement uniquement au téléchargement du rapport"
+ },
+ {
+  "en": "The veteran crypto tax tracker, since 2013",
+  "tr": "Le suivi fiscal crypto historique, depuis 2013"
+ },
+ {
+  "en": "300+ exchange integrations; free up to 200 transactions",
+  "tr": "Plus de 300 intégrations de plateformes ; gratuit jusqu'à 200 transactions"
+ },
+ {
+  "en": "Privacy-first tax tool, no KYC required",
+  "tr": "Outil fiscal axé sur la confidentialité, sans KYC"
+ },
+ {
+  "en": "14-minute import-to-report",
+  "tr": "De l'import au rapport en 14 minutes"
+ },
+ {
+  "en": "Institutional custodian, MiCA CASP via BaFin Germany",
+  "tr": "Dépositaire institutionnel, CASP au titre de MiCA via la BaFin (Allemagne)"
+ },
+ {
+  "en": "$250M insurance coverage; already serves 21bitcoin",
+  "tr": "Couverture d'assurance de 250 M$ ; sert déjà 21bitcoin"
+ },
+ {
+  "en": "World's first regulated digital asset bank",
+  "tr": "La première banque d'actifs numériques régulée au monde"
+ },
+ {
+  "en": "FINMA banking license; discretionary treasury mandates",
+  "tr": "Licence bancaire FINMA ; mandats de trésorerie discrétionnaires"
+ },
+ {
+  "en": "Regulated bank",
+  "tr": "Banque régulée"
+ },
+ {
+  "en": "Largest regulated crypto custodian globally",
+  "tr": "Le plus grand dépositaire crypto régulé au monde"
+ },
+ {
+  "en": "MiCA CASP via CSSF Luxembourg; SOC 2 Type II",
+  "tr": "CASP au titre de MiCA via la CSSF (Luxembourg) ; SOC 2 Type II"
+ },
+ {
+  "en": "Explicitly non-custodial, trade-only API bots",
+  "tr": "Bots API explicitement non custodial, limités au trading"
+ },
+ {
+  "en": "150+ strategy templates; Y Combinator backed",
+  "tr": "Plus de 150 modèles de stratégies ; soutenu par Y Combinator"
+ },
+ {
+  "en": "Non-custodial",
+  "tr": "Non custodial"
+ },
+ {
+  "en": "The most beginner-friendly bot platform",
+  "tr": "La plateforme de bots la plus accessible aux débutants"
+ },
+ {
+  "en": "Copy trading, paper trading, 30-day free trial",
+  "tr": "Copy trading, paper trading, 30 jours d'essai gratuit"
+ },
+ {
+  "en": "Cloud DCA and grid bots, Bitcoin-focused",
+  "tr": "Bots cloud DCA et grid, centrés sur le Bitcoin"
+ },
+ {
+  "en": "Referral commissions paid in BTC",
+  "tr": "Commissions de parrainage versées en BTC"
+ },
+ {
+  "en": "Top 5 EU ASIC reseller with EU/Nordic hosting",
+  "tr": "L'un des cinq premiers revendeurs d'ASIC de l'UE, hébergement dans l'UE et les pays nordiques"
+ },
+ {
+  "en": "Hosting in Norway, Finland, and Ethiopia",
+  "tr": "Hébergement en Norvège, en Finlande et en Éthiopie"
+ },
+ {
+  "en": "Professionally managed, renewable-energy mining",
+  "tr": "Minage géré par des professionnels, alimenté par des énergies renouvelables"
+ },
+ {
+  "en": "Enterprise-grade facilities for mid-to-large miners",
+  "tr": "Installations de niveau entreprise pour les mineurs de taille moyenne à grande"
+ },
+ {
+  "en": "Open-source mining hardware specialist (Bitaxe)",
+  "tr": "Spécialiste du matériel de minage open source (Bitaxe)"
+ },
+ {
+  "en": "EU warehouse, fast shipping; 22,000+ products sold",
+  "tr": "Entrepôt dans l'UE, livraison rapide ; plus de 22 000 produits vendus"
+ },
+ {
+  "en": "Headroom to the margin call is only {0} % – a moderate drawdown puts your collateral at risk. Lower the LTV or the amount.",
+  "tr": "La marge avant l'appel de marge n'est que de {0} % : une baisse modérée met votre garantie en danger. Réduisez le LTV ou le montant."
+ },
+ {
+  "en": "Liquidation risk is the story here",
+  "tr": "Le vrai sujet ici, c'est le risque de liquidation"
+ },
+ {
+  "en": "Talk to a loan specialist",
+  "tr": "Parler à un spécialiste du prêt"
+ },
+ {
+  "en": "Borrowing wins in {0} of {1} scenarios – you keep 100 % of the upside on your full stack.",
+  "tr": "Emprunter l'emporte dans {0} scénarios sur {1} : vous gardez 100 % du potentiel de hausse sur l'ensemble de vos bitcoins."
+ },
+ {
+  "en": "Interest costs {0} over {1}y ({2} % p.a.) – vs. an immediate {3} tax bill plus giving up future gains on {4} BTC if you sell.",
+  "tr": "Les intérêts coûtent {0} sur {1} ans ({2} % par an), contre un impôt immédiat de {3} et la perte des gains futurs sur {4} BTC si vous vendez."
+ },
+ {
+  "en": "In your jurisdiction, selling triggers ~{0} % tax on the gain portion. Loans defer that decision.",
+  "tr": "Dans votre juridiction, vendre déclenche un impôt d'environ {0} % sur la plus-value. Un prêt permet de reporter cette décision."
+ },
+ {
+  "en": "Your assumed tax rate is 0 % – selling is cheaper tax-wise, but still caps your upside.",
+  "tr": "Votre taux d'imposition supposé est de 0 % : vendre coûte moins cher fiscalement, mais plafonne tout de même votre potentiel de hausse."
+ },
+ {
+  "en": "Break-even requires BTC to appreciate ≈ {0} %/year – demanding; size the loan conservatively.",
+  "tr": "Le seuil de rentabilité exige une hausse du BTC d'environ {0} % par an : c'est exigeant, dimensionnez le prêt avec prudence."
+ },
+ {
+  "en": "Liquidity without selling fits better",
+  "tr": "Des liquidités sans vendre vous conviennent mieux"
+ },
+ {
+  "en": "Get a Bitcoin-backed loan via Firefish",
+  "tr": "Obtenir un prêt garanti par Bitcoin via Firefish"
+ },
+ {
+  "en": "Selling wins in {0} of {1} scenarios at your assumptions.",
+  "tr": "Vendre l'emporte dans {0} scénarios sur {1} avec vos hypothèses."
+ },
+ {
+  "en": "With a {0} % gain share, tax is only {1} – cheap exit liquidity.",
+  "tr": "Avec une plus-value représentant {0} %, l'impôt n'est que de {1} : une sortie peu coûteuse."
+ },
+ {
+  "en": "You give up upside only on {0} BTC; the rest of your stack stays exposed.",
+  "tr": "Vous ne renoncez au potentiel de hausse que sur {0} BTC ; le reste de vos bitcoins reste exposé."
+ },
+ {
+  "en": "Tiny break-even appreciation needed – the loan case is weak here.",
+  "tr": "La hausse nécessaire pour atteindre le seuil de rentabilité est minime : l'argument du prêt est faible ici."
+ },
+ {
+  "en": "Selling is the rational move at these numbers",
+  "tr": "Avec ces chiffres, vendre est le choix rationnel"
+ },
+ {
+  "en": "Discuss options with Virtuse",
+  "tr": "Discuter des options avec Virtuse"
+ },
+ {
+  "en": "Germany (<1y held)",
+  "tr": "Allemagne (détention < 1 an)"
+ },
+ {
+  "en": "0 % after 1-year holding",
+  "tr": "0 % après 1 an de détention"
+ },
+ {
+  "en": "Custom",
+  "tr": "Personnalisé"
+ },
+ {
+  "en": "now",
+  "tr": "maintenant"
+ },
+ {
+  "en": "y",
+  "tr": "a"
+ },
+ {
+  "en": "0 % fees on 21bitcoin's Auto-Invest plan – every euro of your {0}/period buys Bitcoin, none of it is lost to fees.",
+  "tr": "0 % de frais sur le plan Auto-Invest de 21bitcoin : chaque euro de vos {0} par période achète du Bitcoin, rien n'est perdu en frais."
+ },
+ {
+  "en": "It runs on autopilot too, once you set the schedule – the same \"set & forget\" benefit a trading bot gives you, without a subscription.",
+  "tr": "Il fonctionne aussi en pilote automatique une fois le calendrier défini : le même avantage « set & forget » qu'un bot de trading, sans abonnement."
+ },
+ {
+  "en": "At {0}/period, RevenueBot's flat monthly fee is diluted enough to beat a manual exchange purchase.",
+  "tr": "À {0} par période, l'abonnement mensuel fixe de RevenueBot est suffisamment dilué pour battre un achat manuel sur une plateforme d'échange."
+ },
+ {
+  "en": "Automation removes timing anxiety and missed purchases – the hidden cost of manual DCA.",
+  "tr": "L'automatisation supprime l'angoisse du bon moment et les achats oubliés : le coût caché du DCA manuel."
+ },
+ {
+  "en": "Lowest cost among the manual-purchase routes at this amount – {0} % per purchase via {1}.",
+  "tr": "Le coût le plus bas parmi les achats manuels pour ce montant : {0} % par achat via {1}."
+ },
+ {
+  "en": "One manual step per period; pair it with a calendar reminder or a weekly ritual.",
+  "tr": "Une étape manuelle par période : associez-la à un rappel dans votre agenda ou à un rituel hebdomadaire."
+ },
+ {
+  "en": "Between the paid routes: RevenueBot's automation undercuts manual {0} trading on pure fees once you stack more than ≈ {1}/month – below that, {0} is cheaper but manual.",
+  "tr": "Entre les options payantes : l'automatisation de RevenueBot revient moins cher en frais que le trading manuel sur {0} dès que vous investissez plus d'environ {1} par mois ; en dessous, {0} est moins cher, mais manuel."
+ },
+ {
+  "en": "Weekly",
+  "tr": "Hebdomadaire"
+ },
+ {
+  "en": "Monthly",
+  "tr": "Mensuel"
+ },
+ {
+  "en": "Conservative",
+  "tr": "Prudent"
+ },
+ {
+  "en": "Moderate",
+  "tr": "Modéré"
+ },
+ {
+  "en": "ARK-style",
+  "tr": "Façon ARK"
+ },
+ {
+  "en": "Auto-Invest plan",
+  "tr": "Plan Auto-Invest"
+ },
+ {
+  "en": "0 % fees on the built-in Auto-Invest savings plan – FMA MiCAR licensed, insured custody, and already automated: set the schedule once and it runs itself.",
+  "tr": "0 % de frais sur le plan d'épargne Auto-Invest intégré : licence MiCAR de la FMA, conservation assurée, et déjà automatisé : définissez le calendrier une fois, il tourne tout seul."
+ },
+ {
+  "en": "Automated",
+  "tr": "Automatisé"
+ },
+ {
+  "en": "Spot trading",
+  "tr": "Trading au comptant"
+ },
+ {
+  "en": "Spot trading fees from 0.1 % – EU-licensed in Vienna, deep order books for a manual recurring buy.",
+  "tr": "Frais de trading au comptant à partir de 0,1 % : agréé dans l'UE à Vienne, carnets d'ordres profonds pour un achat récurrent manuel."
+ },
+ {
+  "en": "Same day",
+  "tr": "Le jour même"
+ },
+ {
+  "en": "Pro trading",
+  "tr": "Trading Pro"
+ },
+ {
+  "en": "Pro trading fees from 0.16 % – veteran EU exchange, deep EUR liquidity since 2011.",
+  "tr": "Frais de trading Pro à partir de 0,16 % : plateforme européenne chevronnée, forte liquidité en EUR depuis 2011."
+ },
+ {
+  "en": "Automated DCA bot",
+  "tr": "Bot DCA automatisé"
+ },
+ {
+  "en": "Cloud DCA & grid bots built specifically for Bitcoin – set the rhythm once and it runs itself. Fee shown here is illustrative pending RevenueBot’s own published schedule; check their site for current pricing.",
+  "tr": "Bots cloud DCA et grid conçus spécifiquement pour le Bitcoin : définissez le rythme une fois, il tourne tout seul. Les frais affichés ici sont indicatifs, en attendant la grille tarifaire publiée par RevenueBot ; consultez leur site pour les tarifs actuels."
+ },
+ {
+  "en": "Set & forget",
+  "tr": "Set & forget"
+ },
+ {
+  "en": "At risk – coins may be lost",
+  "tr": "En danger : des bitcoins pourraient être perdus"
+ },
+ {
+  "en": "Partially protected",
+  "tr": "Partiellement protégé"
+ },
+ {
+  "en": "Inheritance-ready",
+  "tr": "Prêt pour la succession"
+ },
+ {
+  "en": "15 % income tax (23 % above threshold)",
+  "tr": "Impôt sur le revenu de 15 % (23 % au-delà du seuil)"
+ },
+ {
+  "en": "Tax-free after 3-year holding (time test)",
+  "tr": "Exonéré après 3 ans de détention (critère de durée)"
+ },
+ {
+  "en": "Annual personal tax return",
+  "tr": "Déclaration annuelle de revenus des personnes physiques"
+ },
+ {
+  "en": "Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one.",
+  "tr": "Chaque cession (y compris crypto contre crypto) est un fait générateur d'impôt : conservez des relevés complets dès le premier jour."
+ },
+ {
+  "en": "19 % income tax (25 % above threshold)",
+  "tr": "Impôt sur le revenu de 19 % (25 % au-delà du seuil)"
+ },
+ {
+  "en": "Tax-free after 1-year holding; occasional-income allowance €500/yr",
+  "tr": "Exonéré après 1 an de détention ; franchise de 500 € par an pour les revenus occasionnels"
+ },
+ {
+  "en": "Separate bank account for crypto activity makes reporting dramatically easier.",
+  "tr": "Un compte bancaire dédié à l'activité crypto simplifie considérablement les déclarations."
+ },
+ {
+  "en": "19 % flat capital gains tax",
+  "tr": "Impôt forfaitaire de 19 % sur les plus-values"
+ },
+ {
+  "en": "No holding-period exemption",
+  "tr": "Aucune exonération liée à la durée de détention"
+ },
+ {
+  "en": "Annual PIT-38",
+  "tr": "PIT-38 annuel"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss.",
+  "tr": "Les échanges crypto contre crypto sont imposables : calculez la plus- ou moins-value en PLN de chaque cession."
+ },
+ {
+  "en": "27.5 % KESt (capital gains tax)",
+  "tr": "KESt de 27,5 % (impôt sur les plus-values)"
+ },
+ {
+  "en": "Gains tax-free after 1-year holding (private investors)",
+  "tr": "Plus-values exonérées après 1 an de détention (investisseurs particuliers)"
+ },
+ {
+  "en": "Annual tax return",
+  "tr": "Déclaration fiscale annuelle"
+ },
+ {
+  "en": "Staking and lending rewards are taxed when received, not when sold.",
+  "tr": "Les récompenses de staking et de prêt sont imposées à leur réception, pas à la vente."
+ },
+ {
+  "en": "Up to 45 % income tax (progressive)",
+  "tr": "Impôt sur le revenu jusqu'à 45 % (progressif)"
+ },
+ {
+  "en": "0 % after 1-year holding (private-sale exemption)",
+  "tr": "0 % après 1 an de détention (exonération des ventes privées)"
+ },
+ {
+  "en": "Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical.",
+  "tr": "Le crypto contre crypto est imposable la première année. Une comptabilité FIFO est essentielle."
+ },
+ {
+  "en": "15 % capital gains tax",
+  "tr": "Impôt de 15 % sur les plus-values"
+ },
+ {
+  "en": "Annual personal income tax return",
+  "tr": "Déclaration annuelle d'impôt sur le revenu"
+ },
+ {
+  "en": "Documented acquisition costs are deductible – keep every invoice.",
+  "tr": "Les coûts d'acquisition documentés sont déductibles : conservez chaque facture."
+ },
+ {
+  "en": "Progressive, up to ~50 % on disposal gains",
+  "tr": "Progressif, jusqu'à environ 50 % sur les plus-values de cession"
+ },
+ {
+  "en": "No general holding exemption",
+  "tr": "Aucune exonération générale liée à la durée de détention"
+ },
+ {
+  "en": "Cryptocurrency gains are treated as income; verify current guidance with a local advisor.",
+  "tr": "Les gains en cryptomonnaies sont traités comme des revenus ; vérifiez les règles en vigueur auprès d'un conseiller local."
+ },
+ {
+  "en": "12 % on digital-asset gains (2025; 10 % in 2024)",
+  "tr": "12 % sur les gains d'actifs numériques (2025 ; 10 % en 2024)"
+ },
+ {
+  "en": "Digital-asset regime is new (2024+) – rules are still being interpreted in practice.",
+  "tr": "Le régime des actifs numériques est récent (depuis 2024) : son interprétation pratique est encore en cours."
+ },
+ {
+  "en": "10 % income tax on crypto gains",
+  "tr": "Impôt sur le revenu de 10 % sur les gains crypto"
+ },
+ {
+  "en": "Annual return (income from other sources)",
+  "tr": "Déclaration annuelle (revenus d'autres sources)"
+ },
+ {
+  "en": "10 % is among the lowest flat rates in the EU – deduct your cost basis.",
+  "tr": "10 % est l'un des taux forfaitaires les plus bas de l'UE : déduisez votre prix de revient."
+ },
+ {
+  "en": "10 % flat tax on gains",
+  "tr": "Impôt forfaitaire de 10 % sur les gains"
+ },
+ {
+  "en": "Low flat rate; keep exchange statements for audit-ready records.",
+  "tr": "Taux forfaitaire bas ; conservez les relevés des plateformes pour un dossier prêt en cas de contrôle."
+ },
+ {
+  "en": "Box 3 wealth tax on deemed return (~36 % on fictional yield)",
+  "tr": "Impôt sur la fortune Box 3 sur un rendement présumé (environ 36 % d'un rendement fictif)"
+ },
+ {
+  "en": "Tax-free allowance (~€57k per person, 2025)",
+  "tr": "Abattement (environ 57 000 € par personne, 2025)"
+ },
+ {
+  "en": "Annual Box 3 declaration",
+  "tr": "Déclaration Box 3 annuelle"
+ },
+ {
+  "en": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.",
+  "tr": "Pas d'impôt sur les plus-values à proprement parler : vous êtes imposé sur le rendement présumé de vos avoirs. Le régime Box 3 est en cours de réforme : vérifiez les règles de l'année en cours."
+ },
+ {
+  "en": "Do your heirs have written instructions (a \"letter of instruction\")?",
+  "tr": "Vos héritiers disposent-ils d'instructions écrites (une « lettre d'instructions ») ?"
+ },
+ {
+  "en": "A document that says what exists, where things are, and what to do – without containing any seed words itself.",
+  "tr": "Un document qui indique ce qui existe, où cela se trouve et quoi faire, sans contenir lui-même aucun mot de la phrase de récupération."
+ },
+ {
+  "en": "Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney.",
+  "tr": "Rédigez une lettre d'instructions : inventaire, emplacements, contacts, jamais de phrases de récupération. Conservez-la avec votre testament ou chez votre avocat."
+ },
+ {
+  "en": "Are your keys geographically separated?",
+  "tr": "Vos clés sont-elles réparties géographiquement ?"
+ },
+ {
+  "en": "Never all backups in one home. Fire, theft or flood should never be able to destroy access.",
+  "tr": "Jamais toutes les sauvegardes dans un même logement. Un incendie, un vol ou une inondation ne doivent jamais pouvoir détruire l'accès."
+ },
+ {
+  "en": "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.",
+  "tr": "Déplacez une clé ou une sauvegarde vers un second lieu : coffre bancaire, famille de confiance ou agent de clés professionnel."
+ },
+ {
+  "en": "Does at least one heir know your bitcoin exists and where to start?",
+  "tr": "Au moins un héritier sait-il que vos bitcoins existent et par où commencer ?"
+ },
+ {
+  "en": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
+  "tr": "Des bitcoins découverts des années trop tard, ou jamais : c'est l'échec de succession le plus fréquent."
+ },
+ {
+  "en": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.",
+  "tr": "Dites à une personne de confiance que ce plan existe et qui contacter. Les détails complets uniquement dans la lettre d'instructions."
+ },
+ {
+  "en": "Do you use multisig (2-of-3) instead of a single seed phrase?",
+  "tr": "Utilisez-vous le multisig (2 sur 3) plutôt qu'une seule phrase de récupération ?"
+ },
+ {
+  "en": "A single seed is a single point of failure – for you and for your heirs.",
+  "tr": "Une seule phrase de récupération est un point de défaillance unique, pour vous comme pour vos héritiers."
+ },
+ {
+  "en": "Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one.",
+  "tr": "Passez à un multisig 2 sur 3 : vous détenez deux clés, un partenaire (par exemple un coffre de type Unchained) ou un avocat détient la troisième."
+ },
+ {
+  "en": "Have you tested recovery with a small amount?",
+  "tr": "Avez-vous testé la récupération avec un petit montant ?"
+ },
+ {
+  "en": "An untested inheritance procedure is a hypothesis, not a plan.",
+  "tr": "Une procédure de succession non testée est une hypothèse, pas un plan."
+ },
+ {
+  "en": "Do a full recovery drill on a small UTXO, with your heir watching, once a year.",
+  "tr": "Faites un exercice complet de récupération sur un petit UTXO, en présence de votre héritier, une fois par an."
+ },
+ {
+  "en": "Are exchange accounts, loans and automated plans documented?",
+  "tr": "Les comptes sur les plateformes, les prêts et les plans automatisés sont-ils documentés ?"
+ },
+ {
+  "en": "Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.",
+  "tr": "Les soldes chez un dépositaire, les prêts garantis par Bitcoin et les bots DCA disparaissent avec des identifiants oubliés."
+ },
+ {
+  "en": "Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.",
+  "tr": "Tenez un inventaire des plateformes, des identifiants de compte et de la façon de réclamer les soldes, dans votre lettre d'instructions."
+ },
+ {
+  "en": "You",
+  "tr": "Vous"
+ },
+ {
+  "en": "Hardware wallet #1 · your home",
+  "tr": "Portefeuille matériel n° 1 · votre domicile"
+ },
+ {
+  "en": "Key A",
+  "tr": "Clé A"
+ },
+ {
+  "en": "Hardware wallet #2 · bank vault / second location",
+  "tr": "Portefeuille matériel n° 2 · coffre bancaire / second lieu"
+ },
+ {
+  "en": "Key B",
+  "tr": "Clé B"
+ },
+ {
+  "en": "Partner / attorney",
+  "tr": "Partenaire / avocat"
+ },
+ {
+  "en": "Unchained-style vault service · releases on inheritance event",
+  "tr": "Service de coffre de type Unchained · libère la clé en cas de succession"
+ },
+ {
+  "en": "Key C",
+  "tr": "Clé C"
+ },
+ {
+  "en": "Tell the concierge your goal",
+  "tr": "Dites au concierge votre objectif"
+ },
+ {
+  "en": "Buy, borrow, earn, mine, secure or report — a short conversation replaces an hour of comparing sites.",
+  "tr": "Acheter, emprunter, faire fructifier, miner, sécuriser ou déclarer : une courte conversation remplace une heure de comparaison de sites."
+ },
+ {
+  "en": "Get matched to a vetted partner",
+  "tr": "Soyez mis en relation avec un partenaire vérifié"
+ },
+ {
+  "en": "Every recommendation is one of {0} partners pre-screened by Virtuse, matched to your country and custody style.",
+  "tr": "Chaque recommandation est l'un des {0} partenaires présélectionnés par Virtuse, choisi selon votre pays et votre mode de conservation."
+ },
+ {
+  "en": "Finish on their regulated platform",
+  "tr": "Finalisez sur sa plateforme régulée"
+ },
+ {
+  "en": "KYC and onboarding happen at the partner. Virtuse never holds your keys, funds or data — ever.",
+  "tr": "Le KYC et l'inscription se font chez le partenaire. Virtuse ne détient jamais vos clés, vos fonds ni vos données."
+ },
+ {
+  "en": "Vetted partners",
+  "tr": "Partenaires vérifiés"
+ },
+ {
+  "en": "Service categories",
+  "tr": "Catégories de services"
+ },
+ {
+  "en": "EU countries",
+  "tr": "Pays de l'UE"
+ },
+ {
+  "en": "Weekly readers",
+  "tr": "Lecteurs chaque semaine"
+ },
+ {
+  "en": "Step",
+  "tr": "Étape"
+ },
+ {
+  "en": "Get matched",
+  "tr": "Trouver mon partenaire"
+ },
+ {
+  "en": "Bitcoin Concierge · Layer 2",
+  "tr": "Bitcoin Concierge · Layer 2"
+ },
+ {
+  "en": "One trusted hub.",
+  "tr": "Un hub de confiance."
+ },
+ {
+  "en": "Every Bitcoin service.",
+  "tr": "Tous les services Bitcoin."
+ },
+ {
+  "en": "The concierge interviews you like an advisor, compares the Virtuse partner network for your country and custody style, and routes you to the right regulated platform.",
+  "tr": "Le concierge vous interroge comme un conseiller, compare le réseau de partenaires Virtuse selon votre pays et votre mode de conservation, puis vous oriente vers la bonne plateforme régulée."
+ },
+ {
+  "en": "How",
+  "tr": "Comment"
+ },
+ {
+  "en": "routing works",
+  "tr": "fonctionne l'orientation"
+ },
+ {
+  "en": "Partner",
+  "tr": "Écosystème"
+ },
+ {
+  "en": "ecosystem",
+  "tr": "de partenaires"
+ },
+ {
+  "en": "Every name here has a live, vetted card on virtuse.com — the concierge only ever routes to one of them.",
+  "tr": "Chaque nom ici a une fiche active et vérifiée sur virtuse.com : le concierge n'oriente jamais que vers l'un d'eux."
+ },
+ {
+  "en": "Your keys, always",
+  "tr": "Vos clés, toujours"
+ },
+ {
+  "en": "The concierge only advises and routes. It cannot move funds, and Virtuse never takes custody. That is what keeps Layer 2 light on regulation — and your sats in your hands.",
+  "tr": "Le concierge se contente de conseiller et d'orienter. Il ne peut pas déplacer de fonds, et Virtuse n'en prend jamais la garde. C'est ce qui allège la réglementation du Layer 2, et garde vos sats entre vos mains."
+ },
+ {
+  "en": "Routing engine is rule-based — a production version plugs in a conversational agent over the same data and guardrails. Educational routing only; not financial, tax or legal advice. KYC & onboarding are completed on each partner’s regulated platform.",
+  "tr": "Le moteur d'orientation repose sur des règles : une version de production y branche un agent conversationnel, avec les mêmes données et garde-fous. Orientation à but éducatif uniquement ; ni conseil financier, ni fiscal, ni juridique. Le KYC et l'inscription se font sur la plateforme régulée de chaque partenaire."
+ },
+ {
+  "en": "Loan & Liquidity Copilot",
+  "tr": "Loan & Liquidity Copilot"
+ },
+ {
+  "en": "Layer 2 · Module 04",
+  "tr": "Layer 2 · Module 04"
+ },
+ {
+  "en": "Sell your bitcoin, or",
+  "tr": "Vendre vos bitcoins,"
+ },
+ {
+  "en": "borrow against it?",
+  "tr": "ou emprunter en les gageant ?"
+ },
+ {
+  "en": "The core question of the Virtuse thesis – answered with your numbers. Compare the tax bill and lost upside of selling against the interest and liquidation risk of a Bitcoin-backed loan.",
+  "tr": "La question centrale de la thèse Virtuse, avec vos chiffres. Comparez l'impôt et le potentiel de hausse perdu en cas de vente aux intérêts et au risque de liquidation d'un prêt garanti par Bitcoin."
+ },
+ {
+  "en": "Cash needed",
+  "tr": "Liquidités nécessaires"
+ },
+ {
+  "en": "Your BTC holdings",
+  "tr": "Vos avoirs en BTC"
+ },
+ {
+  "en": "BTC price",
+  "tr": "Cours du BTC"
+ },
+ {
+  "en": "Loan-to-value",
+  "tr": "Loan-to-value (LTV)"
+ },
+ {
+  "en": "Interest rate (APR)",
+  "tr": "Taux d'intérêt (TAEG)"
+ },
+ {
+  "en": "Horizon",
+  "tr": "Horizon"
+ },
+ {
+  "en": "years",
+  "tr": "ans"
+ },
+ {
+  "en": "Tax jurisdiction (gain rate)",
+  "tr": "Juridiction fiscale (taux sur la plus-value)"
+ },
+ {
+  "en": "Untaxed cost basis share",
+  "tr": "Part du prix de revient non imposée"
+ },
+ {
+  "en": "Share of the sold value that is profit (taxed), vs. your original purchase price (not taxed).",
+  "tr": "Part de la valeur vendue qui constitue une plus-value (imposée), par rapport à votre prix d'achat initial (non imposé)."
+ },
+ {
+  "en": "Liquidation watch",
+  "tr": "Surveillance de la liquidation"
+ },
+ {
+  "en": "Collateral",
+  "tr": "Garantie"
+ },
+ {
+  "en": "locked at {0} % LTV",
+  "tr": "bloquée à {0} % de LTV"
+ },
+ {
+  "en": "Margin-call price",
+  "tr": "Cours d'appel de marge"
+ },
+ {
+  "en": "at {0} % LTV threshold",
+  "tr": "au seuil de {0} % de LTV"
+ },
+ {
+  "en": "Headroom",
+  "tr": "Marge de sécurité"
+ },
+ {
+  "en": "{0} % drop room",
+  "tr": "{0} % de baisse possible"
+ },
+ {
+  "en": "past threshold",
+  "tr": "au-delà du seuil"
+ },
+ {
+  "en": "before margin call",
+  "tr": "avant l'appel de marge"
+ },
+ {
+  "en": "Bar: margin-call price relative to current price. Illustrative {0} % threshold – real terms depend on the loan provider.",
+  "tr": "Barre : cours d'appel de marge par rapport au cours actuel. Seuil indicatif de {0} % : les conditions réelles dépendent du prêteur."
+ },
+ {
+  "en": "If you sell",
+  "tr": "Si vous vendez"
+ },
+ {
+  "en": "Sell {0} BTC → {1}",
+  "tr": "Vendre {0} BTC → {1}"
+ },
+ {
+  "en": "Tax on gains: −{0}",
+  "tr": "Impôt sur la plus-value : −{0}"
+ },
+ {
+  "en": "Cash left: {0}",
+  "tr": "Liquidités restantes : {0}"
+ },
+ {
+  "en": "Future upside lost on the sold coins",
+  "tr": "Potentiel de hausse perdu sur les bitcoins vendus"
+ },
+ {
+  "en": "If you borrow (Firefish-style)",
+  "tr": "Si vous empruntez (façon Firefish)"
+ },
+ {
+  "en": "Receive {0} – keep all {1} BTC",
+  "tr": "Recevez {0} et gardez vos {1} BTC"
+ },
+ {
+  "en": "No sale, no immediate capital-gains tax",
+  "tr": "Pas de vente, pas d'impôt immédiat sur la plus-value"
+ },
+ {
+  "en": "Interest: {0}/yr → {1} total",
+  "tr": "Intérêts : {0} par an → {1} au total"
+ },
+ {
+  "en": "Margin call if BTC falls to {0}",
+  "tr": "Appel de marge si le BTC tombe à {0}"
+ },
+ {
+  "en": "Scenario matrix · net position after {0}y",
+  "tr": "Matrice de scénarios · position nette après {0} ans"
+ },
+ {
+  "en": "BTC change",
+  "tr": "Variation du BTC"
+ },
+ {
+  "en": "Sell net",
+  "tr": "Net en vendant"
+ },
+ {
+  "en": "Borrow net",
+  "tr": "Net en empruntant"
+ },
+ {
+  "en": "Winner",
+  "tr": "Gagnant"
+ },
+ {
+  "en": "Borrow",
+  "tr": "Emprunter"
+ },
+ {
+  "en": "Sell",
+  "tr": "Vendre"
+ },
+ {
+  "en": "Loan & Liquidity Copilot – Virtuse Layer 2, Module 04. Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.",
+  "tr": "Loan & Liquidity Copilot : Virtuse Layer 2, Module 04. Modèle éducatif simplifié, avec des taux indicatifs et un seuil d'appel de marge fixe : les conditions réelles dépendent du prêteur. Ni conseil financier, ni fiscal, ni juridique. Virtuse ne détient jamais vos clés ; la garantie reste dans un séquestre multisig."
+ },
+ {
+  "en": "Layer 2 · Module 03",
+  "tr": "Layer 2 · Module 03"
+ },
+ {
+  "en": "Your DCA plan,",
+  "tr": "Votre plan DCA,"
+ },
+ {
+  "en": "priced across every partner.",
+  "tr": "chiffré chez chaque partenaire."
+ },
+ {
+  "en": "Set your stacking rhythm, see the long-term projection, and let the fee arbitrage table find the cheapest route per purchase – then automate it with 21bitcoin's Auto-Invest plan or a dedicated DCA bot like RevenueBot.",
+  "tr": "Définissez votre rythme de stacking, visualisez la projection à long terme et laissez le tableau d'arbitrage des frais trouver l'option la moins chère par achat, puis automatisez-la avec le plan Auto-Invest de 21bitcoin ou un bot DCA dédié comme RevenueBot."
+ },
+ {
+  "en": "Initial lump sum",
+  "tr": "Montant initial"
+ },
+ {
+  "en": "Contribution per period",
+  "tr": "Versement par période"
+ },
+ {
+  "en": "Frequency",
+  "tr": "Fréquence"
+ },
+ {
+  "en": "Annual return assumption",
+  "tr": "Hypothèse de rendement annuel"
+ },
+ {
+  "en": "yr",
+  "tr": "an"
+ },
+ {
+  "en": "ARK-style scenario (39 %/yr) mirrors the research cited on virtuse.com. Treat it as an optimistic bound, not a promise.",
+  "tr": "Le scénario façon ARK (39 % par an) reprend les recherches citées sur virtuse.com. Voyez-le comme une borne optimiste, pas une promesse."
+ },
+ {
+  "en": "Projection compounds your contribution at the chosen rate every period. Past performance never guarantees future results.",
+  "tr": "La projection capitalise votre versement au taux choisi à chaque période. Les performances passées ne garantissent jamais les résultats futurs."
+ },
+ {
+  "en": "Total invested",
+  "tr": "Total investi"
+ },
+ {
+  "en": "Projected value",
+  "tr": "Valeur projetée"
+ },
+ {
+  "en": "Multiple",
+  "tr": "Multiple"
+ },
+ {
+  "en": "Invested",
+  "tr": "Investi"
+ },
+ {
+  "en": "Orange = projected value · dashed = your total invested",
+  "tr": "Orange = valeur projetée · pointillés = total investi"
+ },
+ {
+  "en": "Fee arbitrage",
+  "tr": "Arbitrage des frais"
+ },
+ {
+  "en": "Route",
+  "tr": "Option"
+ },
+ {
+  "en": "Fee / purchase",
+  "tr": "Frais / achat"
+ },
+ {
+  "en": "Effective",
+  "tr": "Effectif"
+ },
+ {
+  "en": "Annual drag",
+  "tr": "Coût annuel"
+ },
+ {
+  "en": "BTC per €1,000",
+  "tr": "BTC pour 1 000 €"
+ },
+ {
+  "en": "\"BTC per €1,000\" = how much bitcoin actually lands in your wallet per €1,000 invested after all route fees. Illustrative fee schedule – production wires live partner quotes.",
+  "tr": "« BTC pour 1 000 € » = la quantité de bitcoins qui arrive réellement dans votre portefeuille pour 1 000 € investis, après tous les frais. Grille tarifaire indicative : la version de production utilise les cotations en direct des partenaires."
+ },
+ {
+  "en": "Recommended route",
+  "tr": "Option recommandée"
+ },
+ {
+  "en": "eff.",
+  "tr": "eff."
+ },
+ {
+  "en": "Staying on the cheapest route saves you",
+  "tr": "Rester sur l'option la moins chère vous fait économiser"
+ },
+ {
+  "en": "per year in fees vs the average of the other routes.",
+  "tr": "par an en frais par rapport à la moyenne des autres options."
+ },
+ {
+  "en": "Every route above costs the same or more than this one — there is nothing left to save by switching.",
+  "tr": "Toutes les options ci-dessus coûtent autant ou plus que celle-ci : changer ne vous ferait rien économiser."
+ },
+ {
+  "en": "Automate with RevenueBot",
+  "tr": "Automatiser avec RevenueBot"
+ },
+ {
+  "en": "Start Auto-Invest",
+  "tr": "Lancer Auto-Invest"
+ },
+ {
+  "en": "Start this route",
+  "tr": "Choisir cette option"
+ },
+ {
+  "en": "Stacking Strategist – Virtuse Layer 2, Module 03. Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
+  "tr": "Stacking Strategist : Virtuse Layer 2, Module 03. Les frais sont indicatifs pour le prototype ; les projections sont des scénarios mathématiques, pas des promesses. Pas un conseil financier. Virtuse ne détient jamais vos clés : les achats sont réglés sur le portefeuille de votre choix."
+ },
+ {
+  "en": "Tax & Inheritance Agent",
+  "tr": "Tax & Inheritance Agent"
+ },
+ {
+  "en": "Layer 2 · Module 06",
+  "tr": "Layer 2 · Module 06"
+ },
+ {
+  "en": "Two questions every bitcoiner avoids:",
+  "tr": "Deux questions que tout bitcoiner évite :"
+ },
+ {
+  "en": "taxes and death.",
+  "tr": "les impôts et la mort."
+ },
+ {
+  "en": "A country-by-country overview of how bitcoin gains are treated across the 11 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
+  "tr": "Un aperçu pays par pays de la fiscalité des gains en bitcoin dans les 11 pays de l'UE que sert Virtuse, plus un test de préparation à la succession qui répond à la question « qu'advient-il de mes sats après ma mort ? »."
+ },
+ {
+  "en": "Tax overview · 11 EU countries",
+  "tr": "Aperçu fiscal · 11 pays de l'UE"
+ },
+ {
+  "en": "Gain tax",
+  "tr": "Impôt sur les gains"
+ },
+ {
+  "en": "Holding exemption",
+  "tr": "Exonération liée à la détention"
+ },
+ {
+  "en": "Filing",
+  "tr": "Déclaration"
+ },
+ {
+  "en": "Good to know",
+  "tr": "Bon à savoir"
+ },
+ {
+  "en": "Indicative 2025 overview.",
+  "tr": "Aperçu indicatif 2025."
+ },
+ {
+  "en": "Tax rules change fast and your situation is individual – verify with a local tax advisor. For audit-ready crypto tax reports, Virtuse partners with Lukka.",
+  "tr": "Les règles fiscales évoluent vite et votre situation est individuelle : vérifiez auprès d'un conseiller fiscal local. Pour des rapports fiscaux crypto prêts pour un contrôle, Virtuse travaille avec Lukka."
+ },
+ {
+  "en": "Tax reports via Lukka",
+  "tr": "Rapports fiscaux via Lukka"
+ },
+ {
+  "en": "What happens to my sats? · Readiness check",
+  "tr": "Qu'advient-il de mes sats ? · Test de préparation"
+ },
+ {
+  "en": "Six yes/no questions. Answer honestly – the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
+  "tr": "Six questions fermées. Répondez honnêtement : le score montre dans quelle mesure vos héritiers pourraient récupérer vos bitcoins dès demain matin."
+ },
+ {
+  "en": "Priority fixes",
+  "tr": "Corrections prioritaires"
+ },
+ {
+  "en": "Fully inheritance-ready. Schedule an annual recovery drill and keep the letter of instruction current.",
+  "tr": "Entièrement prêt pour la succession. Prévoyez un exercice de récupération annuel et tenez la lettre d'instructions à jour."
+ },
+ {
+  "en": "{0} of {1} questions not answered yet.",
+  "tr": "{0} questions sur {1} sans réponse pour l'instant."
+ },
+ {
+  "en": "The 2-of-3 multisig inheritance setup",
+  "tr": "La configuration de succession multisig 2 sur 3"
+ },
+ {
+  "en": "Three keys, any two move funds. No single point of failure – and your heirs can recover with the partner key plus one of yours.",
+  "tr": "Trois clés, deux suffisent pour déplacer les fonds. Aucun point de défaillance unique : vos héritiers peuvent récupérer les fonds avec la clé du partenaire plus l'une des vôtres."
+ },
+ {
+  "en": "Any 2 of 3 keys can move funds – 1 lost key never means lost coins.",
+  "tr": "Deux clés sur trois suffisent pour déplacer les fonds : une clé perdue ne signifie jamais des bitcoins perdus."
+ },
+ {
+  "en": "Set it up properly",
+  "tr": "La mettre en place correctement"
+ },
+ {
+  "en": "Multisig vaults with a formal inheritance protocol – you always hold the majority of keys. Vetted by Virtuse, settled to wallets you control.",
+  "tr": "Des coffres multisig avec un protocole de succession formel : vous détenez toujours la majorité des clés. Vérifiés par Virtuse, réglés sur des portefeuilles que vous contrôlez."
+ },
+ {
+  "en": "Explore multisig inheritance",
+  "tr": "Découvrir la succession multisig"
+ },
+ {
+  "en": "2-of-3 multisig",
+  "tr": "Multisig 2 sur 3"
+ },
+ {
+  "en": "Inheritance protocol",
+  "tr": "Protocole de succession"
+ },
+ {
+  "en": "Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
+  "tr": "Tax & Inheritance Agent : Virtuse Layer 2, Module 06. Les données fiscales sont un aperçu indicatif 2025 et peuvent être dépassées : ni conseil fiscal, ni juridique, ni financier. Les outils de succession sont éducatifs ; consultez un professionnel pour votre planification successorale. Virtuse ne détient jamais vos clés."
+ }
+]
