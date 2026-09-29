@@ -38,7 +38,7 @@
 
   // Languages that have their own Concierge page (<lang>/concierge.html).
   // Keep in sync with MODULE_LANGS in the Concierge project (src/lib/i18n.ts).
-  var MODULE_LANGS = ['en', 'sk', 'cs', 'de'];
+  var MODULE_LANGS = ['en', 'sk', 'cs', 'de', 'fr'];
   var PAGE_LANG = document.documentElement.lang || 'en';
   var HAS_OWN = MODULE_LANGS.indexOf(PAGE_LANG) !== -1;
   var LANG = HAS_OWN ? PAGE_LANG : 'en';
@@ -69,6 +69,13 @@
       bubbleTitle: 'Welcher Bitcoin-Service passt zu mir?',
       bubbleSub: 'Kostenlos · Ohne Anmeldung · Wir verwahren nie Ihre Schlüssel',
       closeAria: 'Bitcoin Concierge schließen',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+    fr: {
+      bubbleAria: 'Ouvrir le Bitcoin Concierge : quel service Bitcoin me convient ?',
+      bubbleTitle: 'Quel service Bitcoin me convient\u00a0?',
+      bubbleSub: 'Gratuit · Sans inscription · Nous ne détenons jamais vos clés',
+      closeAria: 'Fermer le Bitcoin Concierge',
       iframeTitle: 'Virtuse Bitcoin Concierge',
     },
   }[LANG];
