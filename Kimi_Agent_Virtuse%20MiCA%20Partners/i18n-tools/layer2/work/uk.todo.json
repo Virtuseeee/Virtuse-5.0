@@ -1436,12 +1436,12 @@
   "tr": "податки і смерть."
  },
  {
-  "en": "A country-by-country overview of how bitcoin gains are treated across the 11 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
-  "tr": "Огляд оподаткування прибутку від Біткоїна у 11 країнах ЄС, де працює Virtuse, країна за країною, а також тест готовності до спадкування, що відповідає на питання «що буде з моїми сатоші, коли мене не стане?»."
+  "en": "A country-by-country overview of how bitcoin gains are treated across the 13 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
+  "tr": "Огляд оподаткування прибутку від Біткоїна у 13 країнах ЄС, де працює Virtuse, країна за країною, а також тест готовності до спадкування, що відповідає на питання «що буде з моїми сатоші, коли мене не стане?»."
  },
  {
-  "en": "Tax overview · 11 EU countries",
-  "tr": "Податковий огляд · 11 країн ЄС"
+  "en": "Tax overview · 13 EU countries",
+  "tr": "Податковий огляд · 13 країн ЄС"
  },
  {
   "en": "Gain tax",
@@ -1526,5 +1526,53 @@
  {
   "en": "Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
   "tr": "Tax & Inheritance Agent: Virtuse Layer 2, Модуль 06. Податкові дані — це орієнтовний огляд на 2025 рік, і вони можуть бути застарілими; це не податкова, юридична чи фінансова порада. Інструменти спадкування мають освітній характер; для планування спадщини зверніться до фахівця. Virtuse ніколи не зберігає ваші ключі."
+ },
+ {
+  "en": "France",
+  "tr": "Франція"
+ },
+ {
+  "en": "Spain",
+  "tr": "Іспанія"
+ },
+ {
+  "en": "Spain (gains €6k–50k)",
+  "tr": "Іспанія (прибуток 6–50 тис. €)"
+ },
+ {
+  "en": "30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)",
+  "tr": "30% фіксованого податку (PFU: 12,8% податку на доходи + 17,2% соціальних внесків)"
+ },
+ {
+  "en": "No holding-period exemption; total disposals up to €305 a year are exempt",
+  "tr": "Без звільнення за строк володіння; продажі загалом до 305 € на рік звільнені"
+ },
+ {
+  "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
+  "tr": "Щорічна декларація з формою 2086; закордонні рахунки на формі 3916-bis"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
+  "tr": "Обмін крипто на крипто не оподатковується: податок сплачується лише з продажу за євро, товари чи послуги."
+ },
+ {
+  "en": "19–28 % progressive tax on savings income",
+  "tr": "19–28% прогресивного податку на доходи від заощаджень"
+ },
+ {
+  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
+  "tr": "Щорічна декларація IRPF; Modelo 721 для криптовалют за кордоном понад 50 000 €"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
+  "tr": "Обмін крипто на крипто є оподатковуваним відчуженням: для однакових монет застосовуйте FIFO."
+ },
+ {
+  "en": "Choose your country above to see its rules.",
+  "tr": "Оберіть країну вище, щоб побачити її правила."
+ },
+ {
+  "en": "Your tax rate on gains",
+  "tr": "Ваша ставка податку на прибуток"
  }
 ]

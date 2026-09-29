@@ -4,12 +4,12 @@
   "concierge": ["Bitcoin Concierge · Virtuse Layer 2", "Virtuse Bitcoin Concierge: niepowiernicze kierowanie do sprawdzonych partnerów bitcoinowych w UE."],
   "stacking": ["Stacking Strategist · Virtuse Layer 2", "Virtuse Stacking Strategist: prognoza DCA i porównanie opłat partnerów przy gromadzeniu Bitcoina."],
   "loan": ["Loan & Liquidity Copilot · Virtuse Layer 2", "Virtuse Loan & Liquidity Copilot: porównanie sprzedaży Bitcoina z pożyczką pod jego zastaw, na własnych liczbach, z ryzykiem likwidacji."],
-  "tax-agent": ["Tax & Inheritance Agent · Virtuse Layer 2", "Virtuse Tax & Inheritance Agent: przegląd opodatkowania kryptowalut w 11 krajach UE i test gotowości do dziedziczenia Bitcoina."]
+  "tax-agent": ["Tax & Inheritance Agent · Virtuse Layer 2", "Virtuse Tax & Inheritance Agent: przegląd opodatkowania kryptowalut w 13 krajach UE i test gotowości do dziedziczenia Bitcoina."]
  },
  "site": {
   "concierge": ["Bitcoin Concierge: właściwy partner w 60 sekund | Virtuse", "Kilka pytań i Bitcoin Concierge Virtuse wskaże sprawdzonego partnera z licencją MiCA, który pasuje do Państwa sytuacji: niepowierniczo, bezpłatnie, bez rejestracji."],
   "stacking": ["Stacking Strategist: plan DCA i porównanie opłat | Virtuse", "Ustal rytm gromadzenia Bitcoina, zobacz długoterminową prognozę DCA i porównaj opłaty wszystkich partnerów, aby znaleźć najtańszą drogę dla każdego zakupu."],
   "loan": ["Loan &amp; Liquidity Copilot: sprzedać czy pożyczyć | Virtuse", "Porównanie sprzedaży Bitcoina z pożyczką pod jego zastaw na własnych liczbach: podatek, koszt odsetek i ryzyko likwidacji obok siebie."],
-  "tax-agent": ["Tax &amp; Inheritance Agent: 11 krajów UE | Virtuse", "Przegląd opodatkowania Bitcoina w 11 krajach UE oraz test dziedziczenia: co stanie się z Państwa satoshi, gdy Państwa zabraknie?"]
+  "tax-agent": ["Tax &amp; Inheritance Agent: 13 krajów UE | Virtuse", "Przegląd opodatkowania Bitcoina w 13 krajach UE oraz test dziedziczenia: co stanie się z Państwa satoshi, gdy Państwa zabraknie?"]
  }
 }

@@ -1436,12 +1436,12 @@
   "tr": "Steuern und Tod."
  },
  {
-  "en": "A country-by-country overview of how bitcoin gains are treated across the 11 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
-  "tr": "Eine Übersicht, wie Bitcoin-Gewinne in den 11 EU-Ländern von Virtuse besteuert werden – plus ein Erbfall-Check, der beantwortet: „Was passiert mit meinen Sats, wenn ich nicht mehr da bin?“"
+  "en": "A country-by-country overview of how bitcoin gains are treated across the 13 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
+  "tr": "Eine Übersicht, wie Bitcoin-Gewinne in den 13 EU-Ländern von Virtuse besteuert werden – plus ein Erbfall-Check, der beantwortet: „Was passiert mit meinen Sats, wenn ich nicht mehr da bin?“"
  },
  {
-  "en": "Tax overview · 11 EU countries",
-  "tr": "Steuerübersicht · 11 EU-Länder"
+  "en": "Tax overview · 13 EU countries",
+  "tr": "Steuerübersicht · 13 EU-Länder"
  },
  {
   "en": "Gain tax",
@@ -1526,5 +1526,53 @@
  {
   "en": "Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
   "tr": "Tax & Inheritance Agent – Virtuse Layer 2, Modul 06. Die Steuerangaben sind eine unverbindliche Übersicht für 2025 und können veraltet sein – keine Steuer-, Rechts- oder Finanzberatung. Die Erbfall-Tools dienen der Information; ziehen Sie für die Nachlassplanung Fachleute hinzu. Virtuse verwahrt nie Ihre Schlüssel."
+ },
+ {
+  "en": "France",
+  "tr": "Frankreich"
+ },
+ {
+  "en": "Spain",
+  "tr": "Spanien"
+ },
+ {
+  "en": "Spain (gains €6k–50k)",
+  "tr": "Spanien (Gewinne 6–50 Tsd. €)"
+ },
+ {
+  "en": "30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)",
+  "tr": "30 % Pauschalsteuer (PFU: 12,8 % Einkommensteuer + 17,2 % Sozialabgaben)"
+ },
+ {
+  "en": "No holding-period exemption; total disposals up to €305 a year are exempt",
+  "tr": "Keine Befreiung nach Haltedauer; Verkäufe bis insgesamt 305 € pro Jahr sind steuerfrei"
+ },
+ {
+  "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
+  "tr": "Jährliche Erklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
+  "tr": "Krypto-zu-Krypto-Tausch ist steuerfrei: besteuert werden nur Verkäufe gegen Euro, Waren oder Dienstleistungen."
+ },
+ {
+  "en": "19–28 % progressive tax on savings income",
+  "tr": "19–28 % progressive Steuer auf Kapitalerträge"
+ },
+ {
+  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
+  "tr": "Jährliche IRPF-Erklärung; Modelo 721 für im Ausland gehaltene Kryptowerte über 50.000 €"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
+  "tr": "Krypto-zu-Krypto-Tausch ist ein steuerpflichtiger Vorgang – für gleiche Coins gilt FIFO."
+ },
+ {
+  "en": "Choose your country above to see its rules.",
+  "tr": "Wählen Sie oben Ihr Land, um die Regeln zu sehen."
+ },
+ {
+  "en": "Your tax rate on gains",
+  "tr": "Ihr Steuersatz auf Gewinne"
  }
 ]

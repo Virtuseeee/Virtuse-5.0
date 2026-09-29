@@ -1436,12 +1436,12 @@
   "tr": "az adók és a halál."
  },
  {
-  "en": "A country-by-country overview of how bitcoin gains are treated across the 11 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
-  "tr": "Országonkénti áttekintés arról, hogyan adózik a Bitcoin-nyereség a Virtuse által kiszolgált 11 uniós országban, és egy öröklési felkészültségi teszt, amely megválaszolja: „mi lesz a satjaimmal, ha már nem leszek?”."
+  "en": "A country-by-country overview of how bitcoin gains are treated across the 13 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
+  "tr": "Országonkénti áttekintés arról, hogyan adózik a Bitcoin-nyereség a Virtuse által kiszolgált 13 uniós országban, és egy öröklési felkészültségi teszt, amely megválaszolja: „mi lesz a satjaimmal, ha már nem leszek?”."
  },
  {
-  "en": "Tax overview · 11 EU countries",
-  "tr": "Adóáttekintés · 11 uniós ország"
+  "en": "Tax overview · 13 EU countries",
+  "tr": "Adóáttekintés · 13 uniós ország"
  },
  {
   "en": "Gain tax",
@@ -1526,5 +1526,53 @@
  {
   "en": "Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
   "tr": "Tax & Inheritance Agent: Virtuse Layer 2, 06. modul. Az adóadatok tájékoztató 2025-ös áttekintést jelentenek és elavultak lehetnek; nem adó-, jogi vagy pénzügyi tanácsadás. Az öröklési eszközök oktatási célúak; a hagyatéktervezéshez forduljon szakemberhez. A Virtuse soha nem kezeli a kulcsait."
+ },
+ {
+  "en": "France",
+  "tr": "Franciaország"
+ },
+ {
+  "en": "Spain",
+  "tr": "Spanyolország"
+ },
+ {
+  "en": "Spain (gains €6k–50k)",
+  "tr": "Spanyolország (6–50 ezer € nyereség)"
+ },
+ {
+  "en": "30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)",
+  "tr": "30% egykulcsos adó (PFU: 12,8% jövedelemadó + 17,2% szociális hozzájárulás)"
+ },
+ {
+  "en": "No holding-period exemption; total disposals up to €305 a year are exempt",
+  "tr": "Nincs tartási idő utáni mentesség; az évi összesen 305 €-ig terjedő eladások adómentesek"
+ },
+ {
+  "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
+  "tr": "Éves bevallás a 2086-os nyomtatványon; külföldi számlák a 3916-bis nyomtatványon"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
+  "tr": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
+ },
+ {
+  "en": "19–28 % progressive tax on savings income",
+  "tr": "19–28% progresszív adó a megtakarítási jövedelemre"
+ },
+ {
+  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
+  "tr": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldön tartott kriptóra"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
+  "tr": "A kripto-kripto csere adóköteles elidegenítés: azonos érméknél FIFO szerint kell számolni."
+ },
+ {
+  "en": "Choose your country above to see its rules.",
+  "tr": "Válasszon fent országot a szabályok megtekintéséhez."
+ },
+ {
+  "en": "Your tax rate on gains",
+  "tr": "Az Ön nyereségadókulcsa"
  }
 ]
