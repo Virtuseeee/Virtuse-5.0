@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, fifteenth round) — Slovak SEO pages, 18 pages mirroring the German pilot (`95d8897`, gh-pages `7f1f5d3`, staging 78/78 md5-verified; production pending — new folders, so the user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_sk_upload.sftp` (18 `-mkdir` + 78 `put`), then md5-verify the 78 files)
+## Session status (2026-09-29, fifteenth round) — Slovak SEO pages, 18 pages mirroring the German pilot (`95d8897`, gh-pages `7f1f5d3`, staging 78/78 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 78 `put`, kept at `/private/tmp/seo_sk_upload.sftp`), 78/78 md5-verified on virtuse.com; sk pages 200 with Slovak titles, sk/tax.html links the Slovak guides, EN pages carry hreflang sk)
 
 - User: "priprav SEO stránky aj v slovenčine". New: `sk/bitcoin-dane/` (hub +
   13 countries: cesko, slovensko, polsko, rakusko, nemecko, madarsko,
