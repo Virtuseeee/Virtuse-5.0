@@ -1,0 +1,15 @@
+{
+ "locale": "hu_HU",
+ "project": {
+  "concierge": ["Bitcoin Concierge · Virtuse Layer 2", "Virtuse Bitcoin Concierge: nem letétkezelő irányítás ellenőrzött uniós Bitcoin-partnerekhez."],
+  "stacking": ["Stacking Strategist · Virtuse Layer 2", "Virtuse Stacking Strategist: DCA-előrejelzés és a partnerek díjainak összehasonlítása a Bitcoin-gyűjtéshez."],
+  "loan": ["Loan & Liquidity Copilot · Virtuse Layer 2", "Virtuse Loan & Liquidity Copilot: a Bitcoin eladásának és a Bitcoin-fedezetű hitelnek az összehasonlítása saját számokkal, likvidációs kockázattal."],
+  "tax-agent": ["Tax & Inheritance Agent · Virtuse Layer 2", "Virtuse Tax & Inheritance Agent: kriptoadózási áttekintés 11 uniós országban és öröklési felkészültségi teszt a Bitcoinhoz."]
+ },
+ "site": {
+  "concierge": ["Bitcoin Concierge: a megfelelő partner 60 másodperc alatt | Virtuse", "Néhány kérdés után a Virtuse Bitcoin Concierge az Ön helyzetéhez illő, ellenőrzött, MiCA-engedélyes partnerhez irányítja: nem letétkezelő, ingyenes, regisztráció nélkül."],
+  "stacking": ["Stacking Strategist: DCA-terv és díj-összehasonlítás | Virtuse", "Állítsa be a Bitcoin-gyűjtés ritmusát, nézze meg a hosszú távú DCA-előrejelzést, és hasonlítsa össze a partnerek díjait a vásárlásonként legolcsóbb útért."],
+  "loan": ["Loan &amp; Liquidity Copilot: eladás vagy hitel | Virtuse", "A Bitcoin eladása és a Bitcoin-fedezetű hitel összehasonlítása saját számokkal: adó, kamatköltség és likvidációs kockázat egymás mellett."],
+  "tax-agent": ["Tax &amp; Inheritance Agent: 11 uniós ország | Virtuse", "Bitcoin-adózási áttekintés 11 uniós országban, valamint öröklési teszt: mi lesz a satjaival, ha már nem lesz?"]
+ }
+}
