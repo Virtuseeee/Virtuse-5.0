@@ -92,6 +92,22 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - EN: https://virtuse.com/bitcoin-tax/netherlands/
 - DE: https://virtuse.com/de/bitcoin-steuern/niederlande/
 
+### 🇫🇷 France (`fr`)
+- Gain tax: 30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)
+- Exemption: No holding-period exemption; total disposals up to €305 a year are exempt
+- Filing: Annual return with form 2086; foreign accounts on form 3916-bis
+- Note: Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.
+- EN: https://virtuse.com/bitcoin-tax/france/
+- DE: https://virtuse.com/de/bitcoin-steuern/frankreich/
+
+### 🇪🇸 Spain (`es`)
+- Gain tax: 19–28 % progressive tax on savings income
+- Exemption: No holding-period exemption
+- Filing: Annual IRPF return; Modelo 721 for crypto held abroad over €50,000
+- Note: Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.
+- EN: https://virtuse.com/bitcoin-tax/spain/
+- DE: https://virtuse.com/de/bitcoin-steuern/spanien/
+
 
 ## Fee schedule (live stacking module)
 

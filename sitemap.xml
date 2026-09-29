@@ -3802,6 +3802,42 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
   </url>
   <url>
+    <loc>https://virtuse.com/bitcoin-tax/france/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/france/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/frankreich/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/france/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/bitcoin-steuern/frankreich/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/france/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/frankreich/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/france/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/bitcoin-tax/spain/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/spain/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/spanien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/bitcoin-steuern/spanien/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/spain/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/spanien/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/"/>
+  </url>
+  <url>
     <loc>https://virtuse.com/buy-bitcoin/czechia/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -3888,6 +3924,22 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/netherlands/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/netherlands/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/buy-bitcoin/france/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/france/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/france/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/buy-bitcoin/spain/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/spain/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/spain/"/>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-dca-calculator/</loc>
