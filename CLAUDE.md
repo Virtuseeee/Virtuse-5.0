@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, eleventh round) — SEO tax hub gets France + Spain (13 countries) and tax.html guide blocks updated (`5894382`, gh-pages `cf2340e`, staging 47/47 md5-verified). **Production pending: user runs `cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_fres_upload.sftp`** (6 `-mkdir` for the new folders + 47 `put`)
+
+- User pointed at https://virtuse.com/bitcoin-tax/ after the Layer 2 modules went to 13 countries. `seo-build` is a separate generator with its own copy of the country data: added fr/es to `data/seo-data.json` (EN strings copied from `lib/tax.ts`) and `data/meta.json` (slugs france/spain + frankreich/spanien, German names, EUR, neighbours fr→[es,de], es→[fr], de+fr, `taxDe` from the module's German dictionary). `generate.mjs` now uses `N = COUNTRIES.length` instead of 21 hardcoded "11"s (12 single-quoted strings turned into template literals). Generate + verify: 53 pages, 0 errors.
+- New pages: `/bitcoin-tax/france/`, `/bitcoin-tax/spain/`, `/de/bitcoin-steuern/frankreich/`, `/de/bitcoin-steuern/spanien/`, plus `/buy-bitcoin/france|spain/` (the generator emits one buy page per country). Hub, country pages, sell-vs-borrow, inheritance, llms.txt and the sitemap block regenerated.
+- `tax.html` in all 10 languages: "Country tax guides" block says 13 and links France + Spain (localized names; de/ links the German pages). Other "11" matches on those pages are prices ("11 EUR/mes."), untouched.
+- **When the tax advisor's review comes back, fix the texts in BOTH places:** `lib/tax.ts` (+ the 7 module dictionaries) and `seo-build/data/seo-data.json` + `meta.json` `taxDe`, then regenerate both.
+
 ## Session status (2026-09-29, tenth round) — Tax-advisor review page for the Layer 2 tax rules (private artifact, not yet shared)
 
 - **Review page:** https://claude.ai/artifact/4A9RRLhjcYWQVr4wXbLg2K ("Kontrola daňových pravidiel", Slovak). 67 items: 13 countries × 4 fields (gain tax, holding exemption, filing, note) from `lib/tax.ts`, 11 Loan presets from `lib/loan.ts`, 4 general tax claims (Concierge loan card, Loan comparison/advice, Tax disclaimer). Each shows the SK text (what Slovak visitors see), the EN source, and for 24 items **our own question** where the current text looks doubtful (e.g. PL crypto-to-crypto probably tax-neutral; AT 1-year exemption likely only for pre-March-2021 holdings; SK 1-year exemption / 7 % rate / health levy; SI 25 % from 2026; HR 2-year exemption; RO 16 % from 2026; CZ 100 000 Kč limit; DE €1,000 Freigrenze; the new FR/ES texts).
