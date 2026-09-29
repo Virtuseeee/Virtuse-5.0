@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, thirteenth round) — German grammar pass over all 18 German SEO pages (`4473413`, gh-pages `8691e8c`, staging 22/22 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_degram2_upload.sftp`, then md5-verify the 22 files)
+## Session status (2026-09-29, thirteenth round) — German grammar pass over all 18 German SEO pages (`4473413`, gh-pages `8691e8c`, staging 22/22 md5-verified; **live on production** — user ran the sftp batch 2026-09-29, 22/22 md5-verified on virtuse.com; live checks: "Sicherheit kann liquidiert werden", "50 € pro Monat", "Erben informieren", "Verwandte Ratgeber")
 
 - Language only; tax facts stay for the advisor. "Steuererklärung" instead
   of "Erklärung", chrome "Steuerratgeber" / "Verwandte Ratgeber" /
