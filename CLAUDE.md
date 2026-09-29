@@ -2,6 +2,26 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, fourteenth round) — English grammar pass over all 35 English SEO pages + llms.txt (`1fd3fc4`, gh-pages `8673113`, staging 37/37 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_engram_upload.sftp`, then md5-verify the 37 files)
+
+- **Internal notes were public** and are gone: "not invented for SEO",
+  "does not invent APRs", the methodology FAQ about the old Banxa/CASP table,
+  "GitHub Pages / staging does not send X-Frame-Options", "re-run npm run
+  build", "(English strings unaltered)", "so it indexes without JavaScript".
+- **Bug:** the 10 euro-country buy pages said "FX (for non-EUR currencies
+  such as EUR)"; the currency sentences now only appear for CZK/PLN/HUF/RON/BGN.
+- "the Netherlands" with its article (`theEn()`/`TheEn()` in generate.mjs;
+  table cells and breadcrumbs keep "Netherlands"). English "%" without a
+  space like the rest of the English site (`formatPct` → "0.1%";
+  `formatPctDe` adds the space back, German pages byte-identical).
+- Wording: the collateral is what gets liquidated; "annual fee drag";
+  "Stacking Strategist" instead of "stacking module/formula"; country notes
+  (`seo-data.json`), fee notes (`fee-schedule-live.json`) and the inheritance
+  checklist (`inheritance.json`) tidied. These English data strings no longer
+  match `lib/tax.ts` word for word (same facts).
+- Tax description template now "Indicative overview, not tax advice." (the
+  Netherlands description would have been 157 chars).
+
 ## Session status (2026-09-29, thirteenth round) — German grammar pass over all 18 German SEO pages (`4473413`, gh-pages `8691e8c`, staging 22/22 md5-verified; **live on production** — user ran the sftp batch 2026-09-29, 22/22 md5-verified on virtuse.com; live checks: "Sicherheit kann liquidiert werden", "50 € pro Monat", "Erben informieren", "Verwandte Ratgeber")
 
 - Language only; tax facts stay for the advisor. "Steuererklärung" instead
