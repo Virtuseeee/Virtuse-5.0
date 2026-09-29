@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator DCA dla Bitcoina (opłaty w UE 2026)</title>
+<meta name="description" content="Kalkulator DCA dla Bitcoina uwzględniający tylko opłaty, stan na Q3 2026. Standard 500 € + 100 € miesięcznie, najtańsza ścieżka: 21bitcoin.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/pl/bitcoin-kalkulator-dca/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/">
+  <link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-dca-rechner/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dca-kalkulacka/">
+  <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/bitcoin-dca-kalkulacka/">
+  <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/bitcoin-kalkulator-dca/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Kalkulator DCA dla Bitcoina (opłaty w UE 2026)">
+<meta property="og:description" content="Kalkulator DCA dla Bitcoina uwzględniający tylko opłaty, stan na Q3 2026. Standard 500 € + 100 € miesięcznie, najtańsza ścieżka: 21bitcoin.">
+<meta property="og:url" content="https://virtuse.com/pl/bitcoin-kalkulator-dca/">
+<meta property="og:locale" content="pl_PL">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<style>:root {
+  --btc-orange: #f7931a;
+  --dark: #08090a;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --green: #3fb950;
+  --max: 820px;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--btc-orange); }
+.nav {
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  background: rgba(8,9,10,.96); position: sticky; top: 0;
+}
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.brand { font-weight: 700; color: var(--text) !important; font-size: 16px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 64px; }
+.crumbs { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+.crumbs a { color: var(--text-muted); }
+.answer {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin: 16px 0 28px;
+}
+.answer p { margin: 0; }
+h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--text-muted); font-weight: 600; }
+.cta {
+  display: inline-block; background: var(--text); color: var(--dark) !important;
+  text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: opacity 0.2s;
+}
+.cta:hover { opacity: 0.85; }
+.cta-secondary {
+  display: inline-block; border: 1px solid var(--border); color: var(--text) !important;
+  text-decoration: none; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: border-color 0.2s;
+}
+.cta-secondary:hover { border-color: var(--border-hover); }
+.muted { color: var(--text-muted); font-size: 14px; }
+.disclaimers { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+.related { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 16px; }
+.lang { font-size: 13px; }
+.flag { font-weight: 600; }
+.review { font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--border-hover); padding: 6px 10px; margin: 12px 0; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+pre {
+  background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px; overflow: auto; white-space: pre-wrap;
+}
+.asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
+footer.site-footer {
+  border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
+}
+footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
+@media (max-width: 640px) {
+  h1 { font-size: 1.45rem; }
+  .nav { padding: 12px 14px; }
+}
+@media print {
+  .nav, .cta, .cta-secondary, footer.site-footer { display: none !important; }
+  body { background: #fff; color: #111; }
+  a { color: #111; }
+  .answer { background: #f4f4f4; border-color: #ccc; }
+}</style>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://virtuse.com/#website",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "inLanguage": "pl",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://virtuse.com/pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Kalkulator DCA",
+          "item": "https://virtuse.com/pl/bitcoin-kalkulator-dca/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy ten kalkulator prognozuje cenę Bitcoina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie. Porównuje tylko opłaty partnerów według opublikowanego cennika. Nie modeluje zwrotu z ceny Bitcoina."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jaki jest plan standardowy, stan na Q3 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Która ścieżka jest w tym planie najtańsza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "21bitcoin (Plan Auto-Invest) z opłatą zmienną 0% według wzoru Stacking Strategist."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy to porada inwestycyjna?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Kalkulator DCA dla Bitcoina",
+      "url": "https://virtuse.com/pl/bitcoin-kalkulator-dca/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "isAccessibleForFree": true
+    }
+  ]
+}</script>
+</head>
+<body>
+<!-- generated by seo-build; do not edit by hand. answerWords=42 -->
+<header class="nav">
+  <a class="brand" href="../../pl/index.html">Virtuse</a>
+  <nav aria-label="Primary">
+    <a href="../../pl/bitcoin-podatki/">Poradniki podatkowe</a>
+    <a href="../../pl/bitcoin-indeks-oplat/">Indeks opłat</a>
+    <a href="../../pl/bitcoin-kalkulator-dca/">DCA</a>
+    <a href="../../pl/concierge.html">Concierge</a>
+  </nav>
+  <nav class="lang" aria-label="Language"><a href="../../bitcoin-dca-calculator/">EN</a> · <a href="../../de/bitcoin-dca-rechner/">DE</a> · <a href="../../sk/bitcoin-dca-kalkulacka/">SK</a> · <a href="../../cs/bitcoin-dca-kalkulacka/">CS</a> · <a href="../../pl/bitcoin-kalkulator-dca/" aria-current="page">PL</a></nav>
+</header>
+<main class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../pl/index.html">Strona główna</a> <span aria-hidden="true">/</span> <span>Kalkulator DCA</span></nav>
+  <p class="asof">Stan danych Q3 2026</p>
+  <h1>Kalkulator DCA dla Bitcoina</h1>
+  <div class="answer"><p>Według stanu na Q3 2026 w przykładzie DCA uwzględniającym tylko opłaty (500 €, a potem 100 € miesięcznie przez 12 miesięcy) na pierwszym miejscu jest 21bitcoin. Opłata zmienna 0%. To nie jest prognoza ceny. Dane z modułu Stacking Strategist. Przegląd orientacyjny 2026.</p></div>
+  
+<p>Przykład standardowy: 500 €, a potem 100 € miesięcznie × 12. Ten sam wzór co w module Stacking Strategist.</p>
+<h2>Ranking przy 100 € miesięcznie</h2>
+<div class="table-wrap"><table><thead><tr><th>Miejsce</th><th>Partner</th><th>Metoda</th><th>Opłata zmienna</th><th>Roczne opłaty</th></tr></thead><tbody><tr><td>1</td><td>21bitcoin</td><td>Plan Auto-Invest</td><td>0%</td><td>0 €</td></tr><tr><td>2</td><td>ByBit EU</td><td>Handel spot</td><td>0,1%</td><td>1 €</td></tr><tr><td>3</td><td>Kraken</td><td>Handel Pro</td><td>0,16%</td><td>2 €</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automatyczny bot DCA</td><td>0,4%</td><td>53 €</td></tr></tbody></table></div>
+<h2>Najczęstsze pytania</h2><h3>Czy ten kalkulator prognozuje cenę Bitcoina?</h3><p>Nie. Porównuje tylko opłaty partnerów według opublikowanego cennika. Nie modeluje zwrotu z ceny Bitcoina.</p><h3>Jaki jest plan standardowy, stan na Q3 2026?</h3><p>Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku.</p><h3>Która ścieżka jest w tym planie najtańsza?</h3><p>21bitcoin (Plan Auto-Invest) z opłatą zmienną 0% według wzoru Stacking Strategist.</p><h3>Czy to porada inwestycyjna?</h3><p>Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.</p>
+
+  <p><a class="cta" href="../../pl/stacking.html">Otwórz Stacking Strategist →</a></p>
+  <h2>Powiązane poradniki</h2><div class="related"><a href="../../pl/bitcoin-indeks-oplat/">Indeks opłat za Bitcoin</a><a href="../../pl/bitcoin-sprzedac-czy-pozyczyc/">Bitcoin: sprzedać czy pożyczyć</a><a href="../../pl/bitcoin-podatki/polska/">Podatek od Bitcoina w Polsce</a></div>
+  <aside class="disclaimers">
+    <p>Przegląd orientacyjny 2026 – nie stanowi porady podatkowej.</p>
+    <p>Virtuse nigdy nie przechowuje Państwa kluczy.</p>
+    <p>KYC i rejestracja odbywają się na regulowanej platformie danego partnera. Virtuse to niepowierniczy hub i nie przechowuje środków ani danych klientów tych platform.</p>
+  </aside>
+</main>
+<footer class="site-footer"><div class="inner">
+  <p>©2018 - 2026 Virtuse Group. <a href="../../pl/privacy-policy.html">Polityka prywatności</a> · <a href="../../pl/terms-and-conditions.html">Regulamin</a></p>
+</div></footer>
+</body>
+</html>

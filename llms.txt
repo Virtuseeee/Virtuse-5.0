@@ -67,6 +67,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/cs/bitcoin-dedictvi/
 - https://virtuse.com/cs/bitcoin-index-poplatku/
 
+## Polish
+
+- https://virtuse.com/pl/bitcoin-podatki/
+- https://virtuse.com/pl/bitcoin-kalkulator-dca/
+- https://virtuse.com/pl/bitcoin-sprzedac-czy-pozyczyc/
+- https://virtuse.com/pl/bitcoin-dziedziczenie/
+- https://virtuse.com/pl/bitcoin-indeks-oplat/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt
