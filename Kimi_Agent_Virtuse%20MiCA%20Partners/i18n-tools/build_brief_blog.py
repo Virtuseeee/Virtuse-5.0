@@ -103,6 +103,8 @@ def one(rx, s, flags=re.S):
 def extract(src, lang):
     d = {}
     d['csp'] = one(r'<meta http-equiv="Content-Security-Policy"[^>]*>', src).group(0)
+    if "frame-src 'self'" not in d['csp']:  # the Concierge bubble opens concierge.html in an iframe
+        d['csp'] = d['csp'].replace('frame-src ', "frame-src 'self' ", 1)
     d['hreflang'] = re.findall(r'<link rel="alternate" hreflang="[^"]+" href="[^"]+">', src)
     d['canonical'] = one(r'<link rel="alternate" hreflang="%s" href="([^"]+)">' % lang, src).group(1)
     d['cfg'] = json.loads(one(r'var CFG = (\{.*?\});', src).group(1))
