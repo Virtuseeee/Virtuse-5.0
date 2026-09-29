@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, fourth round) — Layer 2 modules translated to Hungarian (`ce855b4`, gh-pages `d3c4cca`, staging 68/68 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_hu_l2.sh`** (assets, root, 7 language folders, then `sftp < /private/tmp/concierge_rm_hu.sftp` for 13 old hashes: 9 shared + the de/fr/es/pl dictionary chunks)
+## Session status (2026-09-29, fourth round) — Layer 2 modules translated to Hungarian (`ce855b4`, gh-pages `d3c4cca`, staging 68/68 md5-verified; **live on production** — user ran the command 2026-09-29, 68/68 md5-verified on virtuse.com, all 13 old hashes gone). Next: UK
 
 - hu.ts 382/382; neutral register with "Ön" where address is needed; site terminology (saját őrzés, letétkezelés/letétkezelő, nem letétkezelő, hardvertárca, Bitcoin-fedezetű hitel, multisig escrow, ellenőrzött partner, ajánlói jutalék); singular noun after numerals; "0,16%", "1 000 €". Country names go in as "(ország: {0})" so no case suffix is needed.
 - **Chart year suffix** (`t(lang,'y',…)` in stacking.ts is appended straight to the number): dictionaries now carry a leading space, so ticks read "3 ans", "5 años", "5 l.", "5 J.", "5 év" (were "3a", "5J"…). The decimal point in "2.5" is still a dot (code-side, all languages).
