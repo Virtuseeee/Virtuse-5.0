@@ -59,6 +59,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/sk/bitcoin-dedicstvo/
 - https://virtuse.com/sk/bitcoin-index-poplatkov/
 
+## Czech
+
+- https://virtuse.com/cs/bitcoin-dane/
+- https://virtuse.com/cs/bitcoin-dca-kalkulacka/
+- https://virtuse.com/cs/bitcoin-prodat-nebo-pujcit/
+- https://virtuse.com/cs/bitcoin-dedictvi/
+- https://virtuse.com/cs/bitcoin-index-poplatku/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt
