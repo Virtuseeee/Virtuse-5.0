@@ -22,7 +22,7 @@ Then commit **both** the JSON and the regenerated HTML (this site has no server-
    - `names.de.<id>` — native German country name (Österreich is fine in the visible name)
    - `currency.<id>` — ISO code used only for FX-out-of-scope copy
    - `neighbors.<id>` — other country ids for internal links
-   - `taxDe.<id>` — German translations of the **same** facts (do not change the numbers). Use Spekulationsfrist, KESt, Freigrenze, Box 3 where they apply. If a term is uncertain, put it in `"review": "REVIEW: …"` — the page will show that marker instead of inventing a statute.
+   - `taxDe.<id>` — German translations of the **same** facts (do not change the numbers). Use Spekulationsfrist, KESt, Freigrenze, Box 3 where they apply. If a term is uncertain, put it in `"review": "REVIEW: …"` as an internal note for content ops / the tax advisor; it is **not** published on the page (it was until 2026-09-29), so the uncertainty must be resolved in the text itself before it ships.
 4. Run generate + verify. Failures usually mean: title/description too long, answer block outside 40–60 words, or a missing slug.
 5. Commit. New URLs:
    - `/bitcoin-tax/<en-slug>/`

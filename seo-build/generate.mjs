@@ -399,7 +399,7 @@ ${faqHtml(faqs, 'FAQ')}
   const d = meta.taxDe[c.id];
   const faqsDe = taxFaqsDe(c);
   const answerDe = taxAnswerDe(c);
-  const review = d.review ? `<p class="review">${esc(d.review)}</p>` : '';
+  // d.review is an internal note for content ops / the tax advisor; never published.
   pushPage({
     relFile: deRel, lang: 'de',
     title: assertTitle(`Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
@@ -421,7 +421,6 @@ ${faqHtml(faqs, 'FAQ')}
     schemas: [faqLd(faqsDe)],
     bodyHtml: `
 <p>${esc(c.flag)} Zahlen Stand ${esc(asOfDe)}, übernommen aus dem Virtuse-Tax-Modul.</p>
-${review}
 <h2>Sätze und Erklärung</h2>
 ${tableHtml(['Feld', 'Stand ' + asOfDe], [
   ['Gewinnsteuer', esc(d.gainTax)],
