@@ -136,6 +136,22 @@ export function methodCs(method) {
   return METHOD_CS[method] || method;
 }
 
+/** Polish numbers: "0,1%" (no space, like the pl site pages); amounts use formatEurSk ("1 000 €"). */
+export function formatPctPl(pct) {
+  return formatPct(pct).replace('.', ',');
+}
+
+const METHOD_PL = {
+  'Auto-Invest plan': 'Plan Auto-Invest',
+  'Spot trading': 'Handel spot',
+  'Pro trading': 'Handel Pro',
+  'Automated DCA bot': 'Automatyczny bot DCA'
+};
+/** Polish label for a fee-schedule method (same terms as the Stacking module). */
+export function methodPl(method) {
+  return METHOD_PL[method] || method;
+}
+
 const METHOD_DE = {
   'Auto-Invest plan': 'Auto-Invest-Plan',
   'Spot trading': 'Spot-Handel',

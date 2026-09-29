@@ -8,8 +8,9 @@
     "deIndexable": 18,
     "skIndexable": 18,
     "csIndexable": 18,
+    "plIndexable": 18,
     "noindex": 1,
-    "totalHtml": 89
+    "totalHtml": 107
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -101,6 +102,24 @@
     "cs/bitcoin-prodat-nebo-pujcit/index.html",
     "cs/bitcoin-dedictvi/index.html",
     "cs/bitcoin-index-poplatku/index.html",
+    "pl/bitcoin-podatki/index.html",
+    "pl/bitcoin-podatki/czechy/index.html",
+    "pl/bitcoin-podatki/slowacja/index.html",
+    "pl/bitcoin-podatki/polska/index.html",
+    "pl/bitcoin-podatki/austria/index.html",
+    "pl/bitcoin-podatki/niemcy/index.html",
+    "pl/bitcoin-podatki/wegry/index.html",
+    "pl/bitcoin-podatki/slowenia/index.html",
+    "pl/bitcoin-podatki/chorwacja/index.html",
+    "pl/bitcoin-podatki/rumunia/index.html",
+    "pl/bitcoin-podatki/bulgaria/index.html",
+    "pl/bitcoin-podatki/holandia/index.html",
+    "pl/bitcoin-podatki/francja/index.html",
+    "pl/bitcoin-podatki/hiszpania/index.html",
+    "pl/bitcoin-kalkulator-dca/index.html",
+    "pl/bitcoin-sprzedac-czy-pozyczyc/index.html",
+    "pl/bitcoin-dziedziczenie/index.html",
+    "pl/bitcoin-indeks-oplat/index.html",
     "llms.txt",
     "llms-full.txt"
   ]

@@ -167,7 +167,7 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs');
+  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl');
   const langSwitch = switchLangs.length >= 2
     ? `<nav class="lang" aria-label="Language">${switchLangs
       .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
@@ -315,5 +315,26 @@ export const CHROME = {
     conciergeHref: 'cs/concierge.html',
     privacyHref: 'cs/privacy-policy.html',
     termsHref: 'cs/terms-and-conditions.html'
+  },
+  pl: {
+    navTax: 'Poradniki podatkowe',
+    navFees: 'Indeks opłat',
+    navDca: 'DCA',
+    navConcierge: 'Concierge',
+    relatedHeading: 'Powiązane poradniki',
+    asOfPrefix: 'Stan danych',
+    disclaimerTax: 'Przegląd orientacyjny 2026 – nie stanowi porady podatkowej.',
+    disclaimerKeys: 'Virtuse nigdy nie przechowuje Państwa kluczy.',
+    disclaimerKyc: 'KYC i rejestracja odbywają się na regulowanej platformie danego partnera. Virtuse to niepowierniczy hub i nie przechowuje środków ani danych klientów tych platform.',
+    privacy: 'Polityka prywatności',
+    terms: 'Regulamin',
+    locale: 'pl_PL',
+    homeHref: 'pl/index.html',
+    taxHref: 'pl/bitcoin-podatki/',
+    feesHref: 'pl/bitcoin-indeks-oplat/',
+    dcaHref: 'pl/bitcoin-kalkulator-dca/',
+    conciergeHref: 'pl/concierge.html',
+    privacyHref: 'pl/privacy-policy.html',
+    termsHref: 'pl/terms-and-conditions.html'
   }
 };

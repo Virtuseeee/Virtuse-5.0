@@ -42,6 +42,12 @@ const DISCLAIMERS_CS = [
   'KYC'
 ];
 
+const DISCLAIMERS_PL = [
+  'Przegląd orientacyjny 2026',
+  'Virtuse nigdy nie przechowuje Państwa kluczy',
+  'KYC'
+];
+
 function stripTags(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
 }
@@ -56,6 +62,7 @@ let en = 0;
 let de = 0;
 let sk = 0;
 let cs = 0;
+let pl = 0;
 
 for (const rel of htmlFiles) {
   const fp = path.join(SITE, rel);
@@ -72,6 +79,7 @@ for (const rel of htmlFiles) {
   if (lang === 'de') de += 1;
   if (lang === 'sk') sk += 1;
   if (lang === 'cs') cs += 1;
+  if (lang === 'pl') pl += 1;
 
   const title = attr(html, /<title>([^<]+)<\/title>/);
   if (title.length > 60) fail(`${rel} title ${title.length} > 60: ${title}`);
@@ -91,7 +99,7 @@ for (const rel of htmlFiles) {
   const h2 = (html.match(/<h2>/g) || []).length;
   if (h2 < 2) fail(`${rel} has ${h2} H2s (need ≥2)`);
 
-  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : '<h2>FAQ</h2>';
+  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : lang === 'pl' ? '<h2>Najczęstsze pytania</h2>' : '<h2>FAQ</h2>';
   const faqH3 = (html.split(faqHeading)[1] || '');
   const faqCount = (html.split(faqHeading)[1] || '').match(/<h3>/g)?.length || 0;
   if (faqCount < 3 || faqCount > 5) fail(`${rel} FAQ count ${faqCount} (need 3–5)`);
@@ -108,7 +116,7 @@ for (const rel of htmlFiles) {
   const robots = attr(html, /name="robots" content="([^"]+)"/);
   const noindex = robots.includes('noindex');
 
-  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : DISCLAIMERS_EN;
+  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : DISCLAIMERS_EN;
   for (const d of dis) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
   }
@@ -128,6 +136,7 @@ for (const rel of htmlFiles) {
   if (lang === 'de' && !hreflang.includes('de')) fail(`${rel} DE page missing hreflang de`);
   if (lang === 'sk' && !hreflang.includes('sk')) fail(`${rel} SK page missing hreflang sk`);
   if (lang === 'cs' && !hreflang.includes('cs')) fail(`${rel} CS page missing hreflang cs`);
+  if (lang === 'pl' && !hreflang.includes('pl')) fail(`${rel} PL page missing hreflang pl`);
 
   // Answer must be real HTML in the body, not only injected by JS.
   if (!html.includes('<div class="answer"><p>')) fail(`${rel} missing static answer block`);
@@ -227,6 +236,11 @@ for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], [
   if (!html.includes('cs/bitcoin-dane/cesko')) fail(`${name} missing CS hreflang`);
 }
 if (!ceskoCs.includes('bitcoin-tax/czechia') || !ceskoCs.includes('sk/bitcoin-dane/cesko')) fail('CS cesko missing EN/SK hreflang');
+const czechyPl = fs.readFileSync(path.join(SITE, 'pl/bitcoin-podatki/czechy/index.html'), 'utf8');
+for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], ['SK cesko', cesko], ['CS cesko', ceskoCs]]) {
+  if (!html.includes('pl/bitcoin-podatki/czechy')) fail(`${name} missing PL hreflang`);
+}
+if (!czechyPl.includes('bitcoin-tax/czechia') || !czechyPl.includes('cs/bitcoin-dane/cesko')) fail('PL czechy missing EN/CS hreflang');
 
 // Determinism: second generate should not change bytes of one page
 const before = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
@@ -243,6 +257,7 @@ console.log(JSON.stringify({
   deHtml: de,
   skHtml: sk,
   csHtml: cs,
+  plHtml: pl,
   counts: JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8')).counts,
   warnings,
   errors: errors.length

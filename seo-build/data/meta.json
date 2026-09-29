@@ -66,6 +66,21 @@
       "nl": "nizozemsko",
       "fr": "francie",
       "es": "spanelsko"
+    },
+    "pl": {
+      "cz": "czechy",
+      "sk": "slowacja",
+      "pl": "polska",
+      "at": "austria",
+      "de": "niemcy",
+      "hu": "wegry",
+      "si": "slowenia",
+      "hr": "chorwacja",
+      "ro": "rumunia",
+      "bg": "bulgaria",
+      "nl": "holandia",
+      "fr": "francja",
+      "es": "hiszpania"
     }
   },
   "names": {
@@ -113,6 +128,21 @@
       "nl": "Nizozemsko",
       "fr": "Francie",
       "es": "Španělsko"
+    },
+    "pl": {
+      "cz": "Czechy",
+      "sk": "Słowacja",
+      "pl": "Polska",
+      "at": "Austria",
+      "de": "Niemcy",
+      "hu": "Węgry",
+      "si": "Słowenia",
+      "hr": "Chorwacja",
+      "ro": "Rumunia",
+      "bg": "Bułgaria",
+      "nl": "Holandia",
+      "fr": "Francja",
+      "es": "Hiszpania"
     }
   },
   "currency": {
@@ -572,6 +602,148 @@
       "id": "accounts",
       "name": "Seznam účtů",
       "text": "Zůstatky na burzách, půjčky zajištěné Bitcoinem a DCA boti se se zapomenutými přihlašovacími údaji ztrácejí. V dopise s pokyny veďte seznam platforem a postup, jak zůstatky uplatnit."
+    }
+  ],
+  "inPl": {
+    "cz": "w Czechach",
+    "sk": "na Słowacji",
+    "pl": "w Polsce",
+    "at": "w Austrii",
+    "de": "w Niemczech",
+    "hu": "na Węgrzech",
+    "si": "w Słowenii",
+    "hr": "w Chorwacji",
+    "ro": "w Rumunii",
+    "bg": "w Bułgarii",
+    "nl": "w Holandii",
+    "fr": "we Francji",
+    "es": "w Hiszpanii"
+  },
+  "accPl": {
+    "cz": "Czechy",
+    "sk": "Słowację",
+    "pl": "Polskę",
+    "at": "Austrię",
+    "de": "Niemcy",
+    "hu": "Węgry",
+    "si": "Słowenię",
+    "hr": "Chorwację",
+    "ro": "Rumunię",
+    "bg": "Bułgarię",
+    "nl": "Holandię",
+    "fr": "Francję",
+    "es": "Hiszpanię"
+  },
+  "taxPl": {
+    "cz": {
+      "gainTax": "15% podatku dochodowego (23% powyżej progu)",
+      "exemption": "Zwolnienie po 3 latach posiadania (test czasu)",
+      "filing": "Roczne zeznanie podatkowe",
+      "note": "Każde zbycie (także wymiana krypto na krypto) jest zdarzeniem podatkowym: pełną dokumentację warto prowadzić od pierwszego dnia."
+    },
+    "sk": {
+      "gainTax": "19% podatku dochodowego (25% powyżej progu)",
+      "exemption": "Zwolnienie po roku posiadania; kwota wolna do 500 € rocznie dla dochodów okazjonalnych",
+      "filing": "Roczne zeznanie podatkowe",
+      "note": "Osobne konto bankowe do transakcji kryptowalutowych znacznie ułatwia rozliczenie."
+    },
+    "pl": {
+      "gainTax": "19% podatku liniowego od zysków kapitałowych",
+      "exemption": "Brak zwolnienia za okres posiadania",
+      "filing": "Roczny PIT-38",
+      "note": "Wymiana krypto na krypto jest opodatkowana: dla każdego zbycia trzeba policzyć zysk lub stratę w PLN."
+    },
+    "at": {
+      "gainTax": "27,5% KESt (podatek od zysków kapitałowych)",
+      "exemption": "Zyski zwolnione po roku posiadania (inwestorzy indywidualni)",
+      "filing": "Roczne zeznanie podatkowe",
+      "note": "Nagrody ze stakingu i pożyczania są opodatkowane w chwili otrzymania, a nie sprzedaży."
+    },
+    "de": {
+      "gainTax": "Do 45% podatku dochodowego (progresywny)",
+      "exemption": "0% po roku posiadania (zwolnienie dla sprzedaży prywatnej)",
+      "filing": "Roczne zeznanie podatkowe",
+      "note": "Wymiana krypto na krypto jest opodatkowana w pierwszym roku. Kluczowa jest ewidencja metodą FIFO."
+    },
+    "hu": {
+      "gainTax": "15% podatku od zysków kapitałowych",
+      "exemption": "Brak zwolnienia za okres posiadania",
+      "filing": "Roczne zeznanie w podatku dochodowym od osób fizycznych",
+      "note": "Udokumentowane koszty nabycia można odliczyć: warto zachować każdą fakturę."
+    },
+    "si": {
+      "gainTax": "Progresywny, do ok. 50% od zysków ze zbycia",
+      "exemption": "Brak ogólnego zwolnienia za okres posiadania",
+      "filing": "Roczne zeznanie w podatku dochodowym od osób fizycznych",
+      "note": "Zyski z kryptowalut traktowane są jak dochód; aktualne zasady warto potwierdzić z lokalnym doradcą."
+    },
+    "hr": {
+      "gainTax": "12% od zysków z aktywów cyfrowych (2025; 10% w 2024)",
+      "exemption": "Brak zwolnienia za okres posiadania",
+      "filing": "Roczne zeznanie podatkowe",
+      "note": "System dla aktywów cyfrowych jest nowy (od 2024 roku): przepisy są wciąż interpretowane w praktyce."
+    },
+    "ro": {
+      "gainTax": "10% podatku dochodowego od zysków z kryptowalut",
+      "exemption": "Brak zwolnienia za okres posiadania",
+      "filing": "Roczne zeznanie (dochody z innych źródeł)",
+      "note": "10% to jedna z najniższych stawek liniowych w UE: można odliczyć koszt nabycia."
+    },
+    "bg": {
+      "gainTax": "10% podatku liniowego od zysków",
+      "exemption": "Brak zwolnienia za okres posiadania",
+      "filing": "Roczne zeznanie podatkowe",
+      "note": "Niska stawka liniowa; wyciągi z giełd warto zachować na wypadek kontroli."
+    },
+    "nl": {
+      "gainTax": "Podatek majątkowy Box 3 od domniemanego zwrotu (ok. 36% od fikcyjnego dochodu)",
+      "exemption": "Kwota wolna (ok. 57 000 € na osobę, 2025)",
+      "filing": "Roczna deklaracja Box 3",
+      "note": "Nie ma podatku od zysków kapitałowych jako takiego: opodatkowany jest domniemany zwrot z majątku. Box 3 jest w trakcie reformy, więc warto sprawdzić zasady na bieżący rok."
+    },
+    "fr": {
+      "gainTax": "30% podatku zryczałtowanego (PFU: 12,8% podatku dochodowego + 17,2% składek społecznych)",
+      "exemption": "Brak zwolnienia za okres posiadania; zbycia do łącznie 305 € rocznie są zwolnione",
+      "filing": "Roczne zeznanie z formularzem 2086; konta zagraniczne na formularzu 3916-bis",
+      "note": "Wymiana krypto na krypto nie jest opodatkowana: podatek dotyczy tylko sprzedaży za euro, towary lub usługi."
+    },
+    "es": {
+      "gainTax": "Progresywny podatek 19–28% od dochodów kapitałowych",
+      "exemption": "Brak zwolnienia za okres posiadania",
+      "filing": "Roczne zeznanie IRPF; Modelo 721 dla kryptowalut za granicą powyżej 50 000 €",
+      "note": "Wymiana krypto na krypto jest opodatkowanym zbyciem: dla identycznych monet stosuje się FIFO."
+    }
+  },
+  "inheritancePl": [
+    {
+      "id": "letter",
+      "name": "List instrukcji",
+      "text": "Spadkobiercy potrzebują pisemnych instrukcji: co istnieje, gdzie to jest i z kim się skontaktować, bez frazy odzyskiwania w samym dokumencie. Najlepiej przechowywać go razem z testamentem lub u prawnika."
+    },
+    {
+      "id": "separation",
+      "name": "Geograficzne rozdzielenie kluczy",
+      "text": "Nigdy nie należy trzymać wszystkich kopii zapasowych w jednym miejscu. Pożar, kradzież ani powódź nie mogą odciąć dostępu. Jeden klucz lub kopię warto przechowywać w drugim miejscu, np. w skrytce bankowej."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Poinformowany spadkobierca",
+      "text": "Przynajmniej jedna zaufana osoba musi wiedzieć, że Bitcoin istnieje i od czego zacząć. Bitcoin odkryty po latach albo wcale to najczęstsza porażka przy dziedziczeniu."
+    },
+    {
+      "id": "multisig",
+      "name": "Multisig 2 z 3",
+      "text": "Jedna fraza odzyskiwania to pojedynczy punkt awarii, dla Państwa i dla spadkobierców. W multisig 2 z 3 dwa klucze są u Państwa, a trzeci ma partner lub prawnik."
+    },
+    {
+      "id": "tested",
+      "name": "Test odzyskiwania",
+      "text": "Nieprzetestowana procedura dziedziczenia to hipoteza, a nie plan. Raz w roku warto przeprowadzić pełną próbę odzyskiwania na małym UTXO, w obecności spadkobiercy."
+    },
+    {
+      "id": "accounts",
+      "name": "Wykaz kont",
+      "text": "Salda na giełdach, pożyczki pod zastaw Bitcoina i boty DCA przepadają razem z zapomnianymi danymi logowania. W liście instrukcji warto prowadzić wykaz platform i opis, jak odzyskać salda."
     }
   ]
 }

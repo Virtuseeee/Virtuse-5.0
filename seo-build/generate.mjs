@@ -21,6 +21,8 @@ import {
   formatEurSk,
   methodSk,
   methodCs,
+  formatPctPl,
+  methodPl,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -58,6 +60,7 @@ const asOfEn = formatAsOf(AS_OF, 'en');
 const asOfDe = formatAsOf(AS_OF, 'de');
 const asOfSk = formatAsOf(AS_OF, 'sk');
 const asOfCs = formatAsOf(AS_OF, 'cs');
+const asOfPl = formatAsOf(AS_OF, 'pl');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -96,6 +99,19 @@ function nameCs(id) {
 }
 /** "v/na/ve <zemi>" in Czech (na Slovensku, ve Francii). */
 function inCs(id) { return meta.inCs[id]; }
+function slugPl(id) {
+  const s = meta.slugs.pl[id];
+  if (!s) throw new Error(`Missing PL slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function namePl(id) {
+  const s = meta.names.pl[id];
+  if (!s) throw new Error(`Missing PL name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** Polish locative (w Czechach, na Węgrzech, we Francji) and accusative (Słowację). */
+function inPl(id) { return meta.inPl[id]; }
+function accPl(id) { return meta.accPl[id]; }
 /** Czech accusative: only Francie changes (Francii); the -o names stay. */
 function accCs(id) { return (meta.accCs && meta.accCs[id]) || nameCs(id); }
 /** "v/na/vo <krajine>" in Slovak (na Slovensku, vo Francúzsku). */
@@ -138,12 +154,27 @@ const CS_ALT = {
 for (const c of COUNTRIES) {
   CS_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `cs/bitcoin-dane/${meta.slugs.cs[c.id]}/index.html`;
 }
+/** EN page -> its Polish counterpart. */
+const PL_ALT = {
+  'bitcoin-tax/index.html': 'pl/bitcoin-podatki/index.html',
+  'bitcoin-dca-calculator/index.html': 'pl/bitcoin-kalkulator-dca/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'pl/bitcoin-sprzedac-czy-pozyczyc/index.html',
+  'bitcoin-inheritance/index.html': 'pl/bitcoin-dziedziczenie/index.html',
+  'bitcoin-fee-index/index.html': 'pl/bitcoin-indeks-oplat/index.html'
+};
+for (const c of COUNTRIES) {
+  PL_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `pl/bitcoin-podatki/${meta.slugs.pl[c.id]}/index.html`;
+}
 
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const plPath = PL_ALT[enPath];
+  if (plPath) {
+    tags.splice(1, 0, { lang: 'pl', href: abs(plPath), path: canonicalPath(plPath) });
+  }
   const csPath = CS_ALT[enPath];
   if (csPath) {
     tags.splice(1, 0, { lang: 'cs', href: abs(csPath), path: canonicalPath(csPath) });
@@ -192,6 +223,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'pl' ? [
+      `Dane z modułów Virtuse na żywo, stan na ${asOfPl}.`,
+      'Virtuse nigdy nie przechowuje Państwa kluczy.',
+      'Warto sprawdzić lokalne przepisy; to nie porada podatkowa.'
     ]
     : lang === 'cs' ? [
       `Údaje z živých modulů Virtuse, stav ${asOfCs}.`,
@@ -964,6 +1000,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'pl') {
+      return `<h3>${esc(formatEurSk(amt))} miesięcznie</h3>` +
+        tableHtml(['Miejsce', 'Partner', 'Metoda', 'Opłata', 'Roczne opłaty'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodPl(r.method)),
+          esc(formatPctPl(r.pct) + (r.monthly ? ` + ${formatEurSk(r.monthly)} miesięcznie` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     if (lang === 'cs') {
       return `<h3>${esc(formatEurSk(amt))} měsíčně</h3>` +
         tableHtml(['Pořadí', 'Partner', 'Metoda', 'Poplatek', 'Roční poplatky'], ranked.map((r, i) => [
@@ -999,7 +1045,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'cs') {
+  if (lang === 'pl') {
+    if (be.status === 'always') {
+      beText = `Przy opublikowanych opłatach najtańsza ścieżka automatyczna (${be.auto.partner}) ma od 1 € miesięcznie takie same lub niższe roczne opłaty jak najtańsza ścieżka ręczna (${be.manual.partner}).`;
+    } else if (be.status === 'found') {
+      beText = `Próg opłacalności: od ${formatEurSk(be.monthlyEur)} miesięcznie ${be.auto.partner} (automatycznie) nie jest droższy niż ${be.manual.partner} (ręcznie).`;
+    } else {
+      beText = 'Do 20 000 € miesięcznie najtańsza ścieżka automatyczna nie wypada lepiej niż najtańsza ścieżka ręczna.';
+    }
+  } else if (lang === 'cs') {
     if (be.status === 'always') {
       beText = `Při zveřejněných poplatcích má nejlevnější automatizovaná cesta (${be.auto.partner}) od 1 € měsíčně stejné nebo nižší roční poplatky než nejlevnější ruční cesta (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -2035,6 +2089,334 @@ ${faqHtml(faqs, 'Časté dotazy')}
   });
 }
 
+// ---------- Polish (pl/) ----------
+function plHome(relFile) { return { name: 'Strona główna', href: toRoot(relFile, 'pl/index.html'), abs: abs('pl/index.html') }; }
+/** Long gain-tax strings (France) push the description past 155 chars: drop the tail then. */
+function descFit(main, tail) { return (main + ' ' + tail).length <= 155 ? `${main} ${tail}` : main; }
+
+// PL tax hub
+{
+  const relFile = 'pl/bitcoin-podatki/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(c.id)}/`))}">${esc(namePl(c.id))}</a>`,
+    esc(meta.taxPl[c.id].gainTax),
+    esc(meta.taxPl[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Jakie kraje obejmuje ten przegląd?', a: `${N} krajów UE: ${COUNTRIES.map((c) => namePl(c.id)).join(', ')}. Stan na ${asOfPl}, dane z modułu Virtuse Tax.` },
+    { q: 'Czy to porada podatkowa?', a: 'Nie. Przegląd orientacyjny 2026, nie stanowi porady podatkowej. Zasady na bieżący rok warto potwierdzić z lokalnym doradcą.' },
+    { q: 'Czy Virtuse zgłasza moje aktywa do urzędu skarbowego?', a: 'Nie. Virtuse nigdy nie przechowuje Państwa kluczy ani historii transakcji. KYC przeprowadzają sami partnerzy.' },
+    { q: 'Gdzie oprócz podatków sprawdzę też dziedziczenie?', a: `W module Tax & Inheritance Agent, z tymi samymi ${N} krajami i oceną gotowości do multisig.` }
+  ];
+  const answer = finalizeAnswer([
+    `Ten przegląd porównuje opodatkowanie Bitcoina w ${N} krajach UE, stan na ${asOfPl}.`,
+    'Stawki, zwolnienia i uwagi dotyczące zeznania pochodzą z modułu Virtuse Tax.',
+    'Niemcy i Austria zwalniają zyski po roku posiadania, Czechy stosują 3-letni test czasu, a Holandia zamiast podatku od zysków opodatkowuje domniemany zwrot (Box 3).',
+    'Przegląd orientacyjny 2026, nie stanowi porady podatkowej.'
+  ], 'pl');
+  pushPage({
+    relFile, lang: 'pl',
+    title: assertTitle(`Podatek od Bitcoina w ${N} krajach UE (2026)`),
+    description: assertDescription(`Stawki podatku od Bitcoina, zwolnienia za okres posiadania i zeznanie podatkowe w ${N} krajach UE, stan na ${asOfPl}. Przegląd orientacyjny.`),
+    h1: `Podatek od Bitcoina w ${N} krajach UE`,
+    answerHtml: esc(answer),
+    breadcrumbs: [plHome(relFile), { name: 'Podatek od Bitcoina', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' },
+      { href: toRoot(relFile, 'pl/bitcoin-dziedziczenie/'), label: 'Bitcoin i dziedziczenie' },
+      { href: toRoot(relFile, 'pl/bitcoin-indeks-oplat/'), label: 'Indeks opłat za Bitcoin' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'pl/' + TAX_AGENT), label: 'Otwórz Tax & Inheritance Agent →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Każda strona kraju podaje podatek od zysków, ewentualne zwolnienie za okres posiadania i sposób rozliczenia, stan na ${esc(asOfPl)}. Moduł Tax & Inheritance Agent korzysta z tych samych danych i dodaje ocenę gotowości do dziedziczenia.</p>
+<h2>Porównanie krajów</h2>
+${tableHtml(['Kraj', 'Podatek od zysków', 'Zwolnienie'], rows)}
+${faqHtml(faqs, 'Najczęstsze pytania')}
+`
+  });
+}
+
+// PL country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `pl/bitcoin-podatki/${slugPl(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxPl[c.id];
+  const inN = inPl(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Ile wynosi podatek od Bitcoina ${inN}?`, a: `Stan na ${asOfPl}: ${t.gainTax}. Przegląd orientacyjny 2026, nie stanowi porady podatkowej.` },
+    { q: `Czy ${inN} jest zwolnienie za okres posiadania?`, a: `${t.exemption}. Przed złożeniem zeznania warto potwierdzić zasady na bieżący rok z lokalnym doradcą podatkowym.` },
+    { q: `Jak ${inN} rozlicza się podatek od Bitcoina?`, a: `${t.filing}. ${t.note}` },
+    { q: 'Czy Virtuse przechowuje mój Bitcoin albo składa za mnie zeznanie?', a: `Nie. Virtuse nigdy nie przechowuje Państwa kluczy. KYC i rejestracja odbywają się u partnera. Tax Agent porówna przegląd ${N} krajów; zeznanie przygotuje wykwalifikowany doradca podatkowy.` }
+  ];
+  const answer = finalizeAnswer([
+    `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${t.gainTax}.`,
+    `Zwolnienie: ${t.exemption}.`,
+    `Zeznanie: ${t.filing}.`,
+    t.note,
+    'Przegląd orientacyjny 2026, nie stanowi porady podatkowej.'
+  ], 'pl');
+  pushPage({
+    relFile, lang: 'pl',
+    title: assertTitle(`Podatek od Bitcoina ${inN} (${asOfPl})`),
+    description: assertDescription(descFit(`Podatek od Bitcoina ${inN} (${asOfPl}): ${t.gainTax}.`, 'Nie stanowi porady podatkowej.')),
+    h1: `Podatek od Bitcoina ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      plHome(relFile),
+      { name: 'Podatek od Bitcoina', href: toRoot(relFile, 'pl/bitcoin-podatki/'), abs: abs('pl/bitcoin-podatki/index.html') },
+      { name: namePl(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'pl/bitcoin-sprzedac-czy-pozyczyc/'), label: 'Bitcoin: sprzedać czy pożyczyć' },
+      { href: toRoot(relFile, 'pl/bitcoin-dziedziczenie/'), label: 'Bitcoin i dziedziczenie' },
+      { href: toRoot(relFile, nbs[0] ? `pl/bitcoin-podatki/${slugPl(nbs[0].id)}/` : 'pl/bitcoin-podatki/'), label: nbs[0] ? `Podatek od Bitcoina ${inPl(nbs[0].id)}` : 'Wszystkie kraje' }
+    ],
+    moduleCta: { href: toRoot(relFile, `pl/${TAX_AGENT}?country=${c.id}`), label: `Sprawdź ${accPl(c.id)} w Tax Agencie →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Dane według stanu na ${esc(asOfPl)}, przejęte z modułu Virtuse Tax.</p>
+<h2>Stawki i zeznanie podatkowe</h2>
+${tableHtml(['Pole', 'Stan na ' + asOfPl], [
+  ['Podatek od zysków', esc(t.gainTax)],
+  ['Zwolnienie', esc(t.exemption)],
+  ['Zeznanie podatkowe', esc(t.filing)],
+  ['Uwaga', esc(t.note)]
+])}
+<h2>Kiedy zwykle powstaje podatek?</h2>
+<p>${esc(t.note)} Zakup Bitcoina nie jest w tym przeglądzie traktowany jako zbycie; przed płatnością, wymianą, darowizną lub pożyczeniem monet warto sprawdzić lokalne przepisy.</p>
+<h2>Kraje sąsiednie</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(n.id)}/`))}">Podatek od Bitcoina ${esc(inPl(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Najczęstsze pytania')}
+`
+  });
+}
+
+// PL DCA calculator
+{
+  const relFile = 'pl/bitcoin-kalkulator-dca/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Czy ten kalkulator prognozuje cenę Bitcoina?', a: 'Nie. Porównuje tylko opłaty partnerów według opublikowanego cennika. Nie modeluje zwrotu z ceny Bitcoina.' },
+    { q: `Jaki jest plan standardowy, stan na ${asOfPl}?`, a: 'Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku.' },
+    { q: 'Która ścieżka jest w tym planie najtańsza?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist.` },
+    { q: 'Czy to porada inwestycyjna?', a: 'Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.' }
+  ];
+  const answer = finalizeAnswer([
+    `Według stanu na ${asOfPl} w przykładzie DCA uwzględniającym tylko opłaty (500 €, a potem 100 € miesięcznie przez 12 miesięcy) na pierwszym miejscu jest ${win.partner}.`,
+    `Opłata zmienna ${formatPctPl(win.pct)}. To nie jest prognoza ceny.`,
+    'Dane z modułu Stacking Strategist. Przegląd orientacyjny 2026.'
+  ], 'pl');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'pl',
+    title: assertTitle('Kalkulator DCA dla Bitcoina (opłaty w UE 2026)'),
+    description: assertDescription(`Kalkulator DCA dla Bitcoina uwzględniający tylko opłaty, stan na ${asOfPl}. Standard 500 € + 100 € miesięcznie, najtańsza ścieżka: ${win.partner}.`),
+    h1: 'Kalkulator DCA dla Bitcoina',
+    answerHtml: esc(answer),
+    breadcrumbs: [plHome(relFile), { name: 'Kalkulator DCA', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'pl/bitcoin-indeks-oplat/'), label: 'Indeks opłat za Bitcoin' },
+      { href: toRoot(relFile, 'pl/bitcoin-sprzedac-czy-pozyczyc/'), label: 'Bitcoin: sprzedać czy pożyczyć' },
+      { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'pl/stacking.html'), label: 'Otwórz Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Kalkulator DCA dla Bitcoina',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Przykład standardowy: 500 €, a potem 100 € miesięcznie × 12. Ten sam wzór co w module Stacking Strategist.</p>
+<h2>Ranking przy 100 € miesięcznie</h2>
+${tableHtml(['Miejsce', 'Partner', 'Metoda', 'Opłata zmienna', 'Roczne opłaty'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodPl(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Najczęstsze pytania')}
+`
+  });
+}
+
+// PL sell vs borrow
+{
+  const relFile = 'pl/bitcoin-sprzedac-czy-pozyczyc/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `Czy sprzedaż w tych ${N} krajach wywołuje podatek?`, a: `Zazwyczaj tak, przy sprzedaży lub wymianie. Zwolnienia się różnią: Niemcy 0% po roku posiadania, Czechy 3-letni test czasu, Polska bez zwolnienia. Stan na ${asOfPl}. Nie stanowi porady podatkowej.` },
+    { q: 'Czy pożyczka jest tym samym zdarzeniem podatkowym co sprzedaż?', a: 'W tym przeglądzie nie. Odsetki, ryzyko likwidacji i KYC u partnera jednak pozostają. Konkretne liczby wyliczy Loan & Liquidity Copilot.' },
+    { q: 'Czym jest ryzyko likwidacji?', a: 'Jeśli wartość zabezpieczenia spadnie do progu partnera, partner może sprzedać zabezpieczenie i spłacić nim pożyczkę. Virtuse nigdy nie przechowuje Państwa kluczy ani zabezpieczenia.' },
+    { q: 'Gdzie przeliczę konkretną kwotę?', a: 'W module Loan & Liquidity Copilot. Ta strona wyjaśnia tylko różnicę między podatkiem a ryzykiem na podstawie opublikowanych stawek podatkowych.' }
+  ];
+  const answer = finalizeAnswer([
+    `Według stanu na ${asOfPl} sprzedaż Bitcoina może wywołać podatek (np. w Niemczech do 45% w ciągu roku posiadania, w Rumunii liniowe 10%).`,
+    'Pożyczka pod zastaw Bitcoina pozwala zachować pozycję rynkową, ale oznacza odsetki i ryzyko likwidacji u partnera.',
+    'Przegląd orientacyjny 2026, nie stanowi porady podatkowej ani kredytowej. Virtuse nigdy nie przechowuje Państwa kluczy.'
+  ], 'pl');
+  pushPage({
+    relFile, lang: 'pl',
+    title: assertTitle('Bitcoin: sprzedać czy pożyczyć? (2026)'),
+    description: assertDescription(`Sprzedać Bitcoina i zapłacić podatek czy wziąć pożyczkę pod jego zastaw i pozostać zainwestowanym? Stawki w ${N} krajach UE, stan na ${asOfPl}.`),
+    h1: 'Sprzedać Bitcoina czy pożyczyć pod jego zastaw?',
+    answerHtml: esc(answer),
+    breadcrumbs: [plHome(relFile), { name: 'Sprzedać czy pożyczyć', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' },
+      { href: toRoot(relFile, 'pl/bitcoin-kalkulator-dca/'), label: 'Kalkulator DCA' },
+      { href: toRoot(relFile, 'pl/bitcoin-dziedziczenie/'), label: 'Bitcoin i dziedziczenie' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'pl/loan.html'), label: 'Porównaj w Loan Copilot →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin: sprzedać czy pożyczyć',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Podatek przy sprzedaży</h2>
+${tableHtml(['Kraj', 'Podatek od zysków', 'Zwolnienie'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(c.id)}/`))}">${esc(namePl(c.id))}</a>`,
+  esc(meta.taxPl[c.id].gainTax),
+  esc(meta.taxPl[c.id].exemption)
+]))}
+<h2>Ryzyko przy pożyczce</h2>
+<p>Pożyczek pod zastaw Bitcoina udzielają regulowani partnerzy, a nie Virtuse. Zachowują Państwo ekspozycję na cenę i płacą odsetki, a zabezpieczenie może zostać zlikwidowane. Virtuse nigdy nie przechowuje zabezpieczenia.</p>
+${faqHtml(faqs, 'Najczęstsze pytania')}
+`
+  });
+}
+
+// PL inheritance
+{
+  const relFile = 'pl/bitcoin-dziedziczenie/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: 'Czy w liście instrukcji może być fraza odzyskiwania?', a: 'Nie. List zawiera inwentarz, lokalizacje i kontakty, nigdy frazy odzyskiwania. Najlepiej przechowywać go razem z testamentem lub u prawnika.' },
+    { q: 'Dlaczego multisig 2 z 3?', a: 'Jedna fraza odzyskiwania to pojedynczy punkt awarii, dla Państwa i dla spadkobierców.' },
+    { q: 'Czy Virtuse przechowuje klucze dla spadkobierców?', a: 'Nie. Virtuse nigdy nie przechowuje Państwa kluczy.' },
+    { q: 'Czy to porada prawna?', a: `Nie. To lista kontrolna do celów edukacyjnych z modułu Tax, stan na ${asOfPl}.` }
+  ];
+  const answer = finalizeAnswer([
+    `Według stanu na ${asOfPl} lista kontrolna modułu Tax ma sześć punktów: list instrukcji, geograficzne rozdzielenie kluczy, poinformowany spadkobierca, multisig 2 z 3, test odzyskiwania i udokumentowane konta.`,
+    'Jedna fraza odzyskiwania to pojedynczy punkt awarii. Virtuse nigdy nie przechowuje Państwa kluczy.',
+    'Nie stanowi porady prawnej.'
+  ], 'pl');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'Przygotowanie Bitcoina do dziedziczenia',
+    inLanguage: 'pl',
+    step: meta.inheritancePl.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'pl',
+    title: assertTitle('Bitcoin i dziedziczenie: lista kontrolna (2026)'),
+    description: assertDescription(`Sześciopunktowa lista kontrolna dziedziczenia Bitcoina, stan na ${asOfPl}: list instrukcji, rozdzielenie kluczy, multisig 2 z 3. Nie stanowi porady prawnej.`),
+    h1: 'Dziedziczenie Bitcoina: lista kontrolna',
+    answerHtml: esc(answer),
+    breadcrumbs: [plHome(relFile), { name: 'Dziedziczenie', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' },
+      { href: toRoot(relFile, 'pl/bitcoin-podatki/'), label: `Podatki w ${N} krajach UE` },
+      { href: toRoot(relFile, 'pl/bitcoin-sprzedac-czy-pozyczyc/'), label: 'Bitcoin: sprzedać czy pożyczyć' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'pl/' + TAX_AGENT), label: 'Oceń listę w Tax Agencie →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>Treść odpowiada liście kontrolnej modułu Tax. Nie stanowi porady prawnej.</p>
+<h2>Instrukcja: sześć kroków</h2>
+<ol>${meta.inheritancePl.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Najczęstsze pytania')}
+`
+  });
+}
+
+// PL fee index
+{
+  const relFile = 'pl/bitcoin-indeks-oplat/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'pl');
+  const faqs = [
+    { q: 'Co mierzy indeks opłat?', a: `Roczne opłaty ścieżek zakupu, stan na ${asOfPl}, według wzoru modułu Stacking Strategist.` },
+    { q: 'Kto jest najtańszy przy 100 € miesięcznie?', a: `${winner.partner}: ${formatPctPl(winner.pct)}, roczne opłaty ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Czy spready są uwzględnione?', a: 'Nie. Tylko opłata procentowa i ewentualny miesięczny abonament według cennika. Różnice kursowe i opłaty sieci Bitcoin (miner fees) nie są uwzględnione.' },
+    { q: 'Czy mogę cytować tabelę?', a: `Tak, z podaniem źródła „Źródło: indeks opłat za Bitcoin Virtuse, stan na ${asOfPl}” i linkiem.` }
+  ];
+  const answer = finalizeAnswer([
+    `Indeks opłat za Bitcoin Virtuse, stan na ${asOfPl}, porządkuje ścieżki zakupu w UE według rocznych opłat.`,
+    `Przy 100 € miesięcznie prowadzi ${winner.partner} (${methodPl(winner.method)}) z ${formatPctPl(winner.pct)}, ${formatEurSk(winner.annualDrag)} rocznie.`,
+    beText,
+    'To nie jest oferta. Virtuse nigdy nie przechowuje Państwa kluczy.'
+  ], 'pl');
+  pushPage({
+    relFile, lang: 'pl',
+    title: assertTitle('Indeks opłat za Bitcoin (UE) Q3 2026'),
+    description: assertDescription(`Ścieżki zakupu w UE według opłat, stan na ${asOfPl}. Najtańsza ścieżka przy 100 € miesięcznie: ${winner.partner} z ${formatPctPl(winner.pct)}.`),
+    h1: 'Indeks opłat za Bitcoin',
+    answerHtml: esc(answer),
+    breadcrumbs: [plHome(relFile), { name: 'Indeks opłat', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'pl/bitcoin-kalkulator-dca/'), label: 'Kalkulator DCA' },
+      { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Metodologia (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'pl/stacking.html'), label: 'Otwórz Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Indeks opłat za Bitcoin Virtuse',
+        inLanguage: 'pl',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Indeks opłat za Bitcoin Virtuse',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Ranking według miesięcznej wpłaty</h2>
+${tables}
+<h2>Automatycznie czy ręcznie?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Najczęstsze pytania')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -2097,6 +2479,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/cs/bitcoin-dedictvi/
 - ${ORIGIN}/cs/bitcoin-index-poplatku/
 
+## Polish
+
+- ${ORIGIN}/pl/bitcoin-podatki/
+- ${ORIGIN}/pl/bitcoin-kalkulator-dca/
+- ${ORIGIN}/pl/bitcoin-sprzedac-czy-pozyczyc/
+- ${ORIGIN}/pl/bitcoin-dziedziczenie/
+- ${ORIGIN}/pl/bitcoin-indeks-oplat/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -2113,6 +2503,7 @@ function llmsFull() {
 - DE: ${ORIGIN}/de/bitcoin-steuern/${slugDe(c.id)}/
 - SK: ${ORIGIN}/sk/bitcoin-dane/${slugSk(c.id)}/
 - CS: ${ORIGIN}/cs/bitcoin-dane/${slugCs(c.id)}/
+- PL: ${ORIGIN}/pl/bitcoin-podatki/${slugPl(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -2264,6 +2655,7 @@ function writeAll() {
     deIndexable: generated.filter((p) => p.lang === 'de' && !p.noindex).length,
     skIndexable: generated.filter((p) => p.lang === 'sk' && !p.noindex).length,
     csIndexable: generated.filter((p) => p.lang === 'cs' && !p.noindex).length,
+    plIndexable: generated.filter((p) => p.lang === 'pl' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };
