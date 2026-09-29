@@ -62,7 +62,7 @@ export function breakEvenBotsVsManual(rows, periodsPerYear = 12) {
         monthlyEur: amount,
         auto: snap.auto,
         manual: snap.manual,
-        note: `Automated ${snap.auto.partner} annual drag meets or beats ${snap.manual.partner} from €${amount}/month.`
+        note: `From €${amount}/month, automated ${snap.auto.partner} costs the same as or less than manual ${snap.manual.partner} in annual fees.`
       };
     }
   }
@@ -71,7 +71,7 @@ export function breakEvenBotsVsManual(rows, periodsPerYear = 12) {
     monthlyEur: null,
     auto: at(100).auto,
     manual: at(100).manual,
-    note: 'Within €1–€20,000 monthly, the cheapest automated row does not beat the cheapest manual row on annual fee drag.'
+    note: 'Between €1 and €20,000 a month, the cheapest automated route never beats the cheapest manual route on annual fee drag.'
   };
 }
 

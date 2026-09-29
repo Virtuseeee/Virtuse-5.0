@@ -81,7 +81,7 @@ export function formatPct(pct) {
   let s;
   if (Number.isInteger(v)) s = String(v);
   else s = String(Math.round(v * 1000) / 1000).replace(/\.?0+$/, '');
-  return `${s} %`;
+  return `${s}%`;
 }
 
 export function formatEur(n) {
@@ -94,7 +94,7 @@ export function formatEur(n) {
 
 /** German number formats: "0,1 %", "1.000 €". */
 export function formatPctDe(pct) {
-  return formatPct(pct).replace('.', ',');
+  return formatPct(pct).replace('.', ',').replace('%', ' %');
 }
 
 export function formatEurDe(n) {

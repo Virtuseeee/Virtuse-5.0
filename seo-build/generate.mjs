@@ -71,6 +71,10 @@ function nameDe(id) {
 /** "in <country>" in German: a few names take an article (in der Slowakei, in den Niederlanden). */
 function inDe(id) { return (meta.inDe && meta.inDe[id]) || `in ${nameDe(id)}`; }
 function countryById(id) { return COUNTRIES.find((c) => c.id === id); }
+/** English country name inside a sentence: "the Netherlands" takes an article. */
+function theEn(c) { return c.id === 'nl' ? 'the Netherlands' : c.name; }
+function TheEn(c) { const n = theEn(c); return n.charAt(0).toUpperCase() + n.slice(1); }
+function lcFirst(t) { return t.charAt(0).toLowerCase() + t.slice(1); }
 
 /** Live Tax & Inheritance Agent. seo-data.moduleCtas.tax is /tax.html (category page). */
 const TAX_AGENT = 'tax-agent.html';
@@ -127,9 +131,9 @@ function finalizeAnswer(parts, lang) {
       'Bitte lokal prüfen; keine Steuerberatung.'
     ]
     : [
-      `Figures copied unchanged from Virtuse’s live modules, dated ${asOfEn}.`,
+      `Figures taken from Virtuse’s live modules, as of ${asOfEn}.`,
       'Virtuse never holds your keys.',
-      'Confirm locally; not tax advice.'
+      'Check local rules; not tax advice.'
     ];
   let text = fitWords(parts, 1, 60);
   for (const pad of pads) {
@@ -146,7 +150,7 @@ function finalizeAnswer(parts, lang) {
 
 function taxAnswerEn(c) {
   return finalizeAnswer([
-    `Bitcoin tax in ${c.name} as of ${asOfEn}: ${c.gainTax}.`,
+    `Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${c.gainTax}.`,
     `Exemption: ${c.exemption}.`,
     `Filing: ${c.filing}.`,
     c.note,
@@ -166,15 +170,16 @@ function taxAnswerDe(c) {
 }
 
 function buyAnswerEn(c, winner) {
+  const cur = meta.currency[c.id];
   const extra = c.id === 'nl'
-    ? `In the Netherlands, Box 3 still applies to holdings after you buy, because tax is on deemed return rather than disposal gains.`
-    : `Selling or swapping later is what usually creates a tax event under ${c.name} rules (${c.exemption}).`;
+    ? `In the Netherlands, Box 3 still applies to holdings after you buy, because tax is on a deemed return rather than on disposal gains.`
+    : `Tax usually arises only when you sell or swap later; exemption in ${theEn(c)}: ${lcFirst(c.exemption)}.`;
   return finalizeAnswer([
-    `As of ${asOfEn}, the lowest-fee buy route on the Virtuse Fee Index at €100 per month is ${winner.partner} (${winner.method}) at ${formatPct(winner.pct)} variable fee, ${formatEur(winner.annualDrag)} annual drag.`,
+    `As of ${asOfEn}, the cheapest buy route on the Virtuse Fee Index at €100/month is ${winner.partner} (${winner.method}): ${formatPct(winner.pct)} variable fee, ${formatEur(winner.annualDrag)} annual fee drag.`,
     extra,
-    `SEPA from ${c.name} (${meta.currency[c.id]}) typically funds EUR books; partner KYC applies.`,
+    cur === 'EUR' ? '' : `From ${theEn(c)}, you usually fund a EUR account by SEPA transfer after converting ${cur}; partner KYC applies.`,
     'Virtuse never holds your keys.'
-  ], 'en');
+  ].filter(Boolean), 'en');
 }
 
 const DEFAULT_MONTHLY = 100;
@@ -185,15 +190,15 @@ const be = breakEvenBotsVsManual(FEE_ROWS);
 function taxFaqsEn(c) {
   return [
     {
-      q: `What is the bitcoin tax rate in ${c.name}?`,
-      a: `As of ${asOfEn}, ${c.name} treats gains as: ${c.gainTax}. This is an indicative 2026 overview, not tax advice.`
+      q: `What is the bitcoin tax rate in ${theEn(c)}?`,
+      a: `As of ${asOfEn}, bitcoin gains in ${theEn(c)} are taxed as follows: ${c.gainTax}. This is an indicative 2026 overview, not tax advice.`
     },
     {
-      q: `Is there a holding-period exemption in ${c.name}?`,
-      a: `${c.exemption}. Confirm the current-year statute with a local advisor before you file.`
+      q: `Is there a holding-period exemption in ${theEn(c)}?`,
+      a: `${c.exemption}. Confirm the current year’s rules with a local advisor before you file.`
     },
     {
-      q: `How do you file bitcoin taxes in ${c.name}?`,
+      q: `How do you file bitcoin taxes in ${theEn(c)}?`,
       a: `${c.filing}. ${c.note}`
     },
     {
@@ -227,20 +232,22 @@ function taxFaqsDe(c) {
 }
 
 function buyFaqsEn(c, winner) {
+  const cur = meta.currency[c.id];
   return [
     {
-      q: `What is the cheapest way to buy bitcoin in ${c.name} as of ${asOfEn}?`,
-      a: `On the Virtuse Fee Index, ${winner.partner} (${winner.method}) has the lowest annual fee drag at €100/month: ${formatPct(winner.pct)}, ${formatEur(winner.annualDrag)} per year. Rankings use the published partner fee schedule, not spreads or FX.`
+      q: `What is the cheapest way to buy bitcoin in ${theEn(c)} as of ${asOfEn}?`,
+      a: `On the Virtuse Fee Index, ${winner.partner} (${winner.method}) has the lowest annual fee drag at €100/month: a ${formatPct(winner.pct)} variable fee and ${formatEur(winner.annualDrag)} a year. Rankings use the published partner fee schedule, not spreads or currency conversion.`
     },
     {
-      q: `Does buying bitcoin trigger tax in ${c.name}?`,
+      q: `Does buying bitcoin trigger tax in ${theEn(c)}?`,
       a: c.id === 'nl'
-        ? `The Netherlands does not use a classic capital-gains tax. Box 3 wealth tax on deemed return still applies to holdings (as of ${asOfEn}: ${c.gainTax}).`
-        : `This overview treats tax as arising on disposal (sale or swap), not on the purchase itself. ${c.exemption}. Indicative 2026 overview, not tax advice.`
+        ? `The Netherlands does not use a classic capital gains tax. Box 3 wealth tax on a deemed return still applies to holdings (as of ${asOfEn}: ${c.gainTax}).`
+        : `No. In this overview, tax arises when you sell or swap (a disposal), not when you buy. Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}. Indicative 2026 overview, not tax advice.`
     },
     {
       q: 'Are these fees the full cost of buying?',
-      a: 'No. The index ranks percentage plus any listed monthly subscription from the stacking fee schedule. Spread, FX (for non-EUR currencies such as ' + meta.currency[c.id] + '), and network miner fees are not included.'
+      a: 'No. The index ranks the percentage fee plus any listed monthly subscription from the Stacking Strategist fee schedule. ' +
+        (cur === 'EUR' ? 'Spreads and network (miner) fees are not included.' : `Spreads, currency conversion from ${cur} and network (miner) fees are not included.`)
     },
     {
       q: 'Does Virtuse execute the buy?',
@@ -271,15 +278,15 @@ function pushPage(spec) {
     esc(c.exemption)
   ]);
   const faqs = [
-    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => c.name).join(', ')}. Figures are as of ${asOfEn} and copied from the Virtuse Tax module.` },
+    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ')}. Figures are as of ${asOfEn}, taken from the Virtuse Tax module.` },
     { q: 'Is this tax advice?', a: 'No. Indicative 2026 overview – not tax advice. Confirm current-year rules with a local advisor.' },
     { q: 'Does Virtuse report my holdings to tax authorities?', a: 'No. Virtuse never holds your keys or your transaction history. Partners complete their own KYC.' },
-    { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N}-country set plus a multisig readiness check.` }
+    { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N} countries plus a multisig readiness check.` }
   ];
   const answer = finalizeAnswer([
     `This hub compares bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
-    'Rates, exemptions and filing notes are copied from the Virtuse Tax module; they are not invented for SEO.',
-    'Germany and Austria highlight 1-year holding relief; Czechia uses a 3-year time test; the Netherlands uses Box 3 instead of classic capital gains.',
+    'Rates, exemptions and filing notes come from the Virtuse Tax module.',
+    'Germany and Austria exempt gains after a 1-year holding period; Czechia uses a 3-year time test; the Netherlands taxes a deemed return under Box 3 instead of capital gains.',
     'Indicative 2026 overview, not tax advice.'
   ], 'en');
   pushPage({
@@ -294,14 +301,14 @@ function pushPage(spec) {
     ],
     hreflang: hrefLangPair(relFile, deFile),
     related: [
-      { href: toRoot(relFile, 'bitcoin-tax/germany/'), label: 'Germany bitcoin tax' },
+      { href: toRoot(relFile, 'bitcoin-tax/germany/'), label: 'Bitcoin tax in Germany' },
       { href: toRoot(relFile, 'bitcoin-inheritance/'), label: 'Bitcoin inheritance checklist' },
       { href: toRoot(relFile, 'bitcoin-fee-index/'), label: 'Bitcoin Fee Index' }
     ],
     moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Open Tax & Inheritance Agent →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
-<p>Each country page states the gain treatment, any holding-period exemption, and filing form as of ${esc(asOfEn)}. Use the live agent if you want the same dataset with an inheritance score.</p>
+<p>Each country page gives the tax on gains, any holding-period exemption and the filing requirements as of ${esc(asOfEn)}. The live Tax & Inheritance Agent uses the same data and adds an inheritance readiness score.</p>
 <h2>Country comparison</h2>
 ${tableHtml(['Country', 'Gain tax', 'Exemption'], rows)}
 ${faqHtml(faqs, 'FAQ')}
@@ -364,7 +371,7 @@ for (const c of COUNTRIES) {
   const faqs = taxFaqsEn(c);
   const answer = taxAnswerEn(c);
   const body = `
-<p>${esc(c.flag)} <strong>${esc(c.name)}</strong> is one of ${N} EU countries in the Virtuse Tax module. Figures below are copied from that module as of ${esc(asOfEn)}.</p>
+<p>${esc(c.flag)} <strong>${esc(TheEn(c))}</strong> is one of the ${N} EU countries in the Virtuse Tax module. The figures below are taken from that module as of ${esc(asOfEn)}.</p>
 <h2>Rates and filing</h2>
 ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Gain tax', esc(c.gainTax)],
@@ -373,17 +380,17 @@ ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Note', esc(c.note)]
 ])}
 <h2>What usually creates a taxable event</h2>
-<p>${esc(c.note)} Buying bitcoin is not listed here as a disposal; check local rules if you spend, swap, gift, or lend coins.</p>
+<p>${esc(c.note)} Buying bitcoin is not treated as a disposal in this overview; check local rules before you spend, swap, gift or lend coins.</p>
 <h2>Nearby country guides</h2>
-<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(enRel, `bitcoin-tax/${slugEn(n.id)}/`))}">Bitcoin tax in ${esc(n.name)}</a></li>`).join('')}</ul>
-<p>Same-country buy-route ranking: <a href="${esc(toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`))}">Buy bitcoin in ${esc(c.name)}</a>.</p>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(enRel, `bitcoin-tax/${slugEn(n.id)}/`))}">Bitcoin tax in ${esc(theEn(n))}</a></li>`).join('')}</ul>
+<p>Cheapest ways to buy here: <a href="${esc(toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`))}">Buy bitcoin in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `;
   pushPage({
     relFile: enRel, lang: 'en',
-    title: assertTitle(`Bitcoin tax in ${c.name} (${asOfEn})`),
-    description: assertDescription(`Bitcoin tax in ${c.name} as of ${asOfEn}: ${c.gainTax}. Indicative 2026 overview, not tax advice.`),
-    h1: `Bitcoin tax in ${c.name}`,
+    title: assertTitle(`Bitcoin tax in ${theEn(c)} (${asOfEn})`),
+    description: assertDescription(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${c.gainTax}. Indicative overview, not tax advice.`),
+    h1: `Bitcoin tax in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
       { name: 'Home', href: toRoot(enRel, 'index.html'), abs: abs('index.html') },
@@ -392,11 +399,11 @@ ${faqHtml(faqs, 'FAQ')}
     ],
     hreflang: hrefLangPair(enRel, deRel),
     related: [
-      { href: toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`), label: `Buy bitcoin in ${c.name}` },
+      { href: toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`), label: `Buy bitcoin in ${theEn(c)}` },
       { href: toRoot(enRel, 'bitcoin-inheritance/'), label: 'Bitcoin inheritance checklist' },
-      { href: toRoot(enRel, nbs[0] ? `bitcoin-tax/${slugEn(nbs[0].id)}/` : 'bitcoin-tax/'), label: nbs[0] ? `Tax in ${nbs[0].name}` : 'All country tax guides' }
+      { href: toRoot(enRel, nbs[0] ? `bitcoin-tax/${slugEn(nbs[0].id)}/` : 'bitcoin-tax/'), label: nbs[0] ? `Bitcoin tax in ${theEn(nbs[0])}` : 'All country tax guides' }
     ],
-    moduleCta: { href: toRoot(enRel, TAX_AGENT + `?country=${c.id}`), label: `Check ${c.name} in the Tax Agent →` },
+    moduleCta: { href: toRoot(enRel, TAX_AGENT + `?country=${c.id}`), label: `Check ${theEn(c)} in the Tax Agent →` },
     schemas: [faqLd(faqs)],
     bodyHtml: body
   });
@@ -458,9 +465,9 @@ for (const c of COUNTRIES) {
   ]);
   pushPage({
     relFile, lang: 'en',
-    title: assertTitle(`Buy bitcoin in ${c.name}: cheapest route`),
-    description: assertDescription(`Cheapest EU bitcoin buy route for ${c.name} as of ${asOfEn}: ${winner.partner} at ${formatPct(winner.pct)}. Fee Index ranking, not a quote.`),
-    h1: `Buy bitcoin in ${c.name}`,
+    title: assertTitle(`Buy bitcoin in ${theEn(c)}: cheapest route`),
+    description: assertDescription(`Cheapest EU bitcoin buy route for ${theEn(c)} as of ${asOfEn}: ${winner.partner} at ${formatPct(winner.pct)}. Fee Index ranking, not a quote.`),
+    h1: `Buy bitcoin in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
       { name: 'Home', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
@@ -469,20 +476,20 @@ for (const c of COUNTRIES) {
     ],
     hreflang: hrefLangPair(relFile, null),
     related: [
-      { href: toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`), label: `Bitcoin tax in ${c.name}` },
+      { href: toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`), label: `Bitcoin tax in ${theEn(c)}` },
       { href: toRoot(relFile, 'bitcoin-fee-index/'), label: 'Full Bitcoin Fee Index' },
       { href: toRoot(relFile, 'bitcoin-dca-calculator/'), label: 'DCA calculator' }
     ],
     moduleCta: { href: toRoot(relFile, CTAS.stacking.replace(/^\//, '')), label: 'Simulate a DCA plan →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
-<p>Local currency context: <strong>${esc(meta.currency[c.id])}</strong>. The fee table is EUR-denominated partner fees from the stacking schedule as of ${esc(asOfEn)}. FX conversion out of ${esc(meta.currency[c.id])} is not in the ranking.</p>
+<p>Local currency: <strong>${esc(meta.currency[c.id])}</strong>. The table shows the partners’ EUR-denominated fees from the Stacking Strategist schedule as of ${esc(asOfEn)}.${meta.currency[c.id] === 'EUR' ? '' : ` Currency conversion from ${esc(meta.currency[c.id])} is not included in the ranking.`}</p>
 <h2>Ranked buy routes at €${DEFAULT_MONTHLY}/month</h2>
-${tableHtml(['Rank', 'Partner', 'Method', 'Variable fee', 'Annual drag', 'Speed'], rows)}
-<p class="muted">Annual drag uses the live stacking formula: percentage of each purchase plus any listed monthly subscription. ${ranked.some((r) => r.illustrative) ? 'RevenueBot’s percentage is flagged illustrative in the source schedule.' : ''}</p>
-<h2>Tax interaction in ${esc(c.name)}</h2>
-<p>${esc(c.gainTax)} ${esc(c.exemption)}</p>
-<p>Read the dedicated guide: <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">Bitcoin tax in ${esc(c.name)}</a>.</p>
+${tableHtml(['Rank', 'Partner', 'Method', 'Variable fee', 'Annual fee drag', 'Speed'], rows)}
+<p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription.${ranked.some((r) => r.illustrative) ? ' RevenueBot’s percentage is marked as illustrative in the source schedule.' : ''}</p>
+<h2>Tax in ${esc(theEn(c))}</h2>
+<p>Gain tax: ${esc(c.gainTax)}. Exemption: ${esc(c.exemption)}.</p>
+<p>Read the dedicated guide: <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">Bitcoin tax in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
   });
@@ -503,14 +510,14 @@ ${faqHtml(faqs, 'FAQ')}
   });
   const win = ranked[0];
   const faqs = [
-    { q: 'Does this calculator forecast bitcoin’s price?', a: 'No. It isolates partner fee drag from the published fee schedule. Return assumptions are not included.' },
-    { q: `What default plan is shown as of ${asOfEn}?`, a: `€${initial} initial plus €${monthly}/month for 12 months (€${invested} invested). Ranked by first-year fee drag using the stacking formula.` },
-    { q: 'Which route is cheapest on that plan?', a: `${win.partner} (${win.method}) at ${formatPct(win.pct)} variable fee, about ${formatEur(win.yearOneFees)} first-year fees in this fee-only illustration.` },
-    { q: 'Is this financial advice?', a: 'No. Educational routing only. KYC happens on the partner platform. Virtuse never holds your keys.' }
+    { q: 'Does this calculator forecast bitcoin’s price?', a: 'No. It isolates partner fees from the published fee schedule. Price returns are not modelled.' },
+    { q: `What default plan is shown as of ${asOfEn}?`, a: `€${initial} upfront plus €${monthly}/month for 12 months (${formatEur(invested)} invested), ranked by first-year fees using the Stacking Strategist formula.` },
+    { q: 'Which route is cheapest on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: about ${formatEur(win.yearOneFees)} in first-year fees in this fee-only example.` },
+    { q: 'Is this financial advice?', a: 'No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${asOfEn}, a fee-only DCA illustration of €${initial} plus €${monthly} per month for 12 months (€${invested} invested) ranks ${win.partner} first.`,
-    `Variable fee ${formatPct(win.pct)}; first-year fee drag about ${formatEur(win.yearOneFees)} using the live stacking formula.`,
+    `As of ${asOfEn}, a fee-only DCA example of €${initial} plus €${monthly} per month for 12 months (${formatEur(invested)} invested) ranks ${win.partner} first.`,
+    `Variable fee: ${formatPct(win.pct)}; first-year fees about ${formatEur(win.yearOneFees)}, using the live Stacking Strategist formula.`,
     'This is not a return forecast. Indicative 2026 overview.'
   ], 'en');
   const rows = ranked.map((r, i) => [
@@ -519,7 +526,7 @@ ${faqHtml(faqs, 'FAQ')}
     esc(r.method),
     esc(formatPct(r.pct)),
     esc(formatEur(r.yearOneFees)),
-    r.illustrative ? 'Illustrative fee' : 'Published in schedule'
+    r.illustrative ? 'Illustrative fee' : 'Published fee'
   ]);
   const feeJson = JSON.stringify(FEE_ROWS.map((r) => ({
     partner: r.partner, method: r.method, pct: r.pct, fixed: r.fixed || 0, monthly: r.monthly || 0
@@ -571,22 +578,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }).sort(function (a, b) { return a.year - b.year; });
     tbody.innerHTML = rows.map(function (r, i) {
       return '<tr><td>' + (i+1) + '</td><td>' + r.partner + '</td><td>' + r.method + '</td><td>' +
-        (Math.round(r.pct * 10000) / 100) + ' %</td><td>€' + Math.round(r.year) + '</td></tr>';
+        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td></tr>';
     }).join('');
   });
 });
 </script>`,
     bodyHtml: `
-<p>Default illustration (also in the answer above, so it indexes without JavaScript): <strong>€${initial} lump sum + €${monthly}/month × 12</strong>. Recalculation in the browser uses the same JSON fee schedule.</p>
+<p>Default example: <strong>€${initial} lump sum + €${monthly}/month × 12</strong>. Enter your own amounts to recalculate with the same fee schedule.</p>
 <form id="dca-form">
-  <p><label>Initial EUR <input id="dca-initial" type="number" min="0" step="50" value="${initial}"></label>
-  <label>Monthly EUR <input id="dca-monthly" type="number" min="0" step="25" value="${monthly}"></label>
+  <p><label>Initial amount (EUR) <input id="dca-initial" type="number" min="0" step="50" value="${initial}"></label>
+  <label>Monthly amount (EUR) <input id="dca-monthly" type="number" min="0" step="25" value="${monthly}"></label>
   <button type="submit" class="cta-secondary">Recalculate fees</button></p>
 </form>
-<h2>First-year fee drag on the default plan</h2>
-<table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>Year-1 fees</th><th>Note</th></tr></thead>
+<h2>First-year fees on the default plan</h2>
+<table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
 <tbody id="dca-body">${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>
-<p class="muted">Formula matches the live Stacking Strategist: annualDrag = (contribution × pct + fixed + monthly subscription) × 12, plus pct on the initial lump sum. Bitcoin price return is omitted on purpose.</p>
+<p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. Bitcoin price returns are deliberately left out.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
   });
@@ -654,15 +661,15 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Does selling bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, on disposal. Exemptions differ: Germany 0% after 1-year private-sale holding; Czechia 3-year time test; Poland no holding exemption. As of ${asOfEn}. Not tax advice.` },
-    { q: 'Does borrowing against bitcoin trigger the same tax?', a: 'A loan is not the same event as a sale in this educational overview. Interest, liquidation risk, and partner KYC still apply. Model numbers in the live Loan copilot; this page does not invent APRs.' },
-    { q: 'What is liquidation risk?', a: 'If collateral value falls to the partner’s threshold, the loan can be force-sold. Virtuse never holds your keys or the collateral.' },
-    { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the tax-versus-risk trade-off with the published country tax strings only.' }
+    { q: `Does selling bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, when you sell or swap. Exemptions differ: Germany 0% after a 1-year holding period; Czechia a 3-year time test; Poland none. As of ${asOfEn}. Not tax advice.` },
+    { q: 'Does borrowing against bitcoin trigger the same tax?', a: 'In this educational overview, a loan is not the same event as a sale. Interest, liquidation risk and partner KYC still apply. Model the numbers in the live Loan & Liquidity Copilot.' },
+    { q: 'What is liquidation risk?', a: 'If the value of your collateral falls to the partner’s threshold, the partner can sell the collateral to repay the loan. Virtuse never holds your keys or the collateral.' },
+    { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the trade-off between tax and risk using only the published country tax rates.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${asOfEn}, selling bitcoin can crystallize tax (for example Germany up to 45% inside the 1-year Spekulationsfrist; Romania 10% flat).`,
-    'Borrowing against coins can keep market exposure but adds interest and liquidation risk on a partner platform.',
-    'This page does not invent APRs. Indicative 2026 overview, not tax or credit advice. Virtuse never holds your keys.'
+    `As of ${asOfEn}, selling bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period, or Spekulationsfrist; a flat 10% in Romania).`,
+    'Borrowing against your bitcoin keeps your market exposure but adds interest and liquidation risk on a partner platform.',
+    'Indicative 2026 overview, not tax or credit advice. Virtuse never holds your keys.'
   ], 'en');
   const rows = COUNTRIES.map((c) => [
     `<a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">${esc(c.name)}</a>`,
@@ -672,7 +679,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Sell vs borrow bitcoin (EU tax 2026)'),
-    description: assertDescription(`Sell bitcoin and pay country tax, or borrow against it and keep exposure. ${N}-country tax strings as of ${asOfEn}. Not credit advice.`),
+    description: assertDescription(`Sell bitcoin and pay tax, or borrow against it and stay invested. Tax rates for ${N} EU countries as of ${asOfEn}. Not credit advice.`),
     h1: 'Sell bitcoin vs borrow against it',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -699,15 +706,15 @@ ${faqHtml(faqs, 'FAQ')}
     ],
     bodyHtml: `
 <h2>Tax if you sell</h2>
-<p>Disposal rules below are the same strings as the country tax guides (Tax module, ${esc(asOfEn)}). A sale can use up a holding-period exemption you were close to completing.</p>
+<p>The rates below are the same as in the country tax guides (Tax module, ${esc(asOfEn)}). Selling shortly before a holding period ends can cost you an exemption you were about to qualify for.</p>
 ${tableHtml(['Country', 'Gain tax', 'Exemption'], rows)}
 <h2>Risk if you borrow</h2>
-<p>Bitcoin-backed loans are offered by regulated partners, not by Virtuse. You keep price exposure, pay interest, and can be liquidated. Virtuse never holds the collateral. The live copilot runs scenario math; this page stays qualitative so we do not invent an APR.</p>
+<p>Bitcoin-backed loans are offered by regulated partners, not by Virtuse. You keep your price exposure and pay interest, and your collateral can be liquidated. Virtuse never holds the collateral. The live Loan & Liquidity Copilot runs the scenarios; this page stays qualitative and quotes no interest rates.</p>
 <h2>How to choose a next step</h2>
 <ol>
   <li>Read your country’s tax guide for the rate that would apply <em>if you sold today</em>.</li>
-  <li>Open the Loan copilot with the cash amount you actually need.</li>
-  <li>Complete KYC on the partner if you proceed; never send seeds to Virtuse.</li>
+  <li>Open the Loan & Liquidity Copilot with the cash amount you actually need.</li>
+  <li>Complete KYC with the partner if you go ahead; never send your seed phrase to anyone, including Virtuse.</li>
 </ol>
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -777,9 +784,9 @@ ${faqHtml(faqs, 'FAQ')}
   const items = inheritance.items;
   const faqs = [
     { q: 'Should a letter of instruction contain seed phrases?', a: 'No. The Tax module’s checklist says the letter lists inventory, locations and contacts – never seed phrases. Store it with your will or attorney.' },
-    { q: 'Why is 2-of-3 multisig on the checklist?', a: 'A single seed is a single point of failure for you and for heirs. The module scores 2-of-3 with two keys held by you and one by a partner or attorney.' },
-    { q: 'Does Virtuse custody keys for heirs?', a: 'No. Virtuse never holds your keys. Inheritance execution happens with your attorney, heirs, and any vault partner you choose.' },
-    { q: 'How is the readiness score weighted?', a: 'The live Tax module assigns points (letter 20, separation 20, heir-aware 15, multisig 20, tested 15, accounts 15). This page lists the same items without re-scoring.' }
+    { q: 'Why is 2-of-3 multisig on the checklist?', a: 'A single seed is a single point of failure for you and for your heirs. The module scores 2-of-3 with two keys held by you and one by a partner or attorney.' },
+    { q: 'Does Virtuse custody keys for heirs?', a: 'No. Virtuse never holds your keys. Inheritance is handled by your attorney, your heirs and any vault partner you choose.' },
+    { q: 'How is the readiness score weighted?', a: 'The live Tax module assigns points (letter 20, separation 20, heir awareness 15, multisig 20, tested recovery 15, accounts 15). This page lists the same items without scoring them.' }
   ];
   const answer = finalizeAnswer([
     `As of ${asOfEn}, the Virtuse Tax module’s inheritance checklist has six items: letter of instruction, geographic key separation, heir awareness, 2-of-3 multisig, a recovery drill, and documented accounts.`,
@@ -789,7 +796,7 @@ ${faqHtml(faqs, 'FAQ')}
   const howto = {
     '@type': 'HowTo',
     name: 'Prepare a bitcoin inheritance plan',
-    description: 'Six-step checklist copied from the Virtuse Tax & Inheritance Agent.',
+    description: 'Six-step checklist from the Virtuse Tax & Inheritance Agent.',
     totalTime: 'P7D',
     step: items.map((it, i) => ({
       '@type': 'HowToStep',
@@ -817,8 +824,8 @@ ${faqHtml(faqs, 'FAQ')}
     moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Score this checklist in the Tax Agent →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
-<p>Items and wording below are copied from the live Tax module checklist (English strings unaltered). Educational only, not legal advice.</p>
-<h2>HowTo: six checks</h2>
+<p>The items and wording come from the live Tax module checklist. Educational only, not legal advice.</p>
+<h2>Six checks</h2>
 <ol>
   ${items.map((it) => `<li><h3>${esc(it.question)}</h3><p>${esc(it.detail)}</p><p>${esc(it.action)}</p></li>`).join('')}
 </ol>
@@ -884,16 +891,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
-    return `<h3>${lang === 'de' ? `${esc(formatEurDe(amt))} pro Monat` : `Monthly ${esc(formatEur(amt))}`}</h3>` +
+    return `<h3>${lang === 'de' ? `${esc(formatEurDe(amt))} pro Monat` : `${esc(formatEur(amt))} per month`}</h3>` +
       tableHtml(
-        lang === 'de' ? ['Rang', 'Partner', 'Methode', 'Gebühr', 'Jahreslast'] : ['Rank', 'Partner', 'Method', 'Fee', 'Annual drag'],
+        lang === 'de' ? ['Rang', 'Partner', 'Methode', 'Gebühr', 'Jahreslast'] : ['Rank', 'Partner', 'Method', 'Fee', 'Annual fee drag'],
         ranked.map((r, i) => [
           esc(String(i + 1)),
           esc(r.partner),
           esc(lang === 'de' ? methodDe(r.method) : r.method),
           esc(lang === 'de'
             ? formatPctDe(r.pct) + (r.monthly ? ` + ${formatEurDe(r.monthly)}/Monat` : '')
-            : formatPct(r.pct) + (r.monthly ? ` + ${formatEur(r.monthly)}/mo` : '')),
+            : formatPct(r.pct) + (r.monthly ? ` + ${formatEur(r.monthly)}/month` : '')),
           esc(lang === 'de' ? formatEurDe(r.annualDrag) : formatEur(r.annualDrag))
         ])
       );
@@ -908,18 +915,18 @@ function feeIndexBody(relFile, lang) {
       beText = `Im Scan bis 20.000 €/Monat unterbietet die günstigste automatisierte Route die günstigste manuelle Route nicht.`;
     }
   } else if (be.status === 'always') {
-    beText = `Break-even, automated vs manual: ${be.auto.partner} already has lower or equal annual drag than ${be.manual.partner} from €1/month. ${be.note}`;
+    beText = `On listed fees, ${be.auto.partner} (automated) has an annual fee drag equal to or lower than ${be.manual.partner} (manual) at every tested monthly amount from €1.`;
   } else if (be.status === 'found') {
-    beText = `Break-even: from ${formatEur(be.monthlyEur)}/month, ${be.auto.partner} (automated) meets or beats ${be.manual.partner} (manual) on annual drag.`;
+    beText = `Break-even: from ${formatEur(be.monthlyEur)}/month, ${be.auto.partner} (automated) costs the same as or less than ${be.manual.partner} (manual) in annual fees.`;
   } else {
-    beText = `Automated vs manual: within €1–€20,000 monthly, the cheapest automated row does not beat the cheapest manual row.`;
+    beText = `Automated vs manual: between €1 and €20,000 a month, the cheapest automated route never beats the cheapest manual route.`;
   }
   return { tables, beText, winner: winnerDefault };
 }
 
 function pressBlurb() {
   const w = winnerDefault;
-  return `Virtuse Bitcoin Fee Index (${asOfEn}): among listed EU buy routes, ${w.partner} (${w.method}) ranks first on annual fee drag at €100/month (${formatPct(w.pct)}, ${formatEur(w.annualDrag)}/year). Ranking uses partner percentage fees plus any listed monthly subscription from the stacking schedule; spreads, FX and miner fees are excluded. Source: ${ORIGIN}/bitcoin-fee-index/ — Virtuse never holds your keys.`;
+  return `Virtuse Bitcoin Fee Index (${asOfEn}): among listed EU buy routes, ${w.partner} (${w.method}) ranks first on annual fee drag at €100/month (${formatPct(w.pct)}, ${formatEur(w.annualDrag)}/year). Ranking uses partner percentage fees plus any listed monthly subscription from the Stacking Strategist schedule; spreads, currency conversion and miner fees are excluded. Source: ${ORIGIN}/bitcoin-fee-index/ — Virtuse never holds your keys.`;
 }
 
 {
@@ -927,18 +934,18 @@ function pressBlurb() {
   const deFile = 'de/bitcoin-gebuehrenindex/index.html';
   const { tables, beText, winner } = feeIndexBody(relFile, 'en');
   const faqs = [
-    { q: 'What does the Bitcoin Fee Index rank?', a: `Partner buy-route fee drag as of ${asOfEn}, using the stacking module formula on listed percentage fees and monthly subscriptions.` },
-    { q: 'Who is cheapest at €100 per month?', a: `${winner.partner}, ${formatPct(winner.pct)} variable, ${formatEur(winner.annualDrag)} annual drag on that contribution.` },
+    { q: 'What does the Bitcoin Fee Index rank?', a: `The annual fee drag of partner buy routes as of ${asOfEn}, calculated with the Stacking Strategist formula from listed percentage fees and monthly subscriptions.` },
+    { q: 'Who is cheapest at €100 per month?', a: `${winner.partner}: a ${formatPct(winner.pct)} variable fee and ${formatEur(winner.annualDrag)} in annual fee drag at that amount.` },
     { q: 'Is RevenueBot’s fee exact?', a: FEE_ROWS.some((r) => r.illustrative)
-      ? 'The stacking schedule marks RevenueBot’s percentage as illustrative pending their published schedule.'
+      ? 'No. The Stacking Strategist schedule marks RevenueBot’s percentage as illustrative until RevenueBot publishes its own fee schedule.'
       : 'See each row note in the methodology page.' },
-    { q: 'May I republish the table?', a: 'Yes, with attribution: “Source: Virtuse Bitcoin Fee Index, as of ' + asOfEn + '” and a link to this page. Embed snippet is below.' }
+    { q: 'May I republish the table?', a: 'Yes, with attribution: “Source: Virtuse Bitcoin Fee Index, as of ' + asOfEn + '” and a link to this page. The embed code is above.' }
   ];
   const answer = finalizeAnswer([
     `The Virtuse Bitcoin Fee Index as of ${asOfEn} ranks EU buy routes by annual fee drag.`,
-    `At €100/month the first-ranked route is ${winner.partner} (${winner.method}) at ${formatPct(winner.pct)}, ${formatEur(winner.annualDrag)} per year.`,
+    `At €100/month, the top-ranked route is ${winner.partner} (${winner.method}) at ${formatPct(winner.pct)}, ${formatEur(winner.annualDrag)} a year.`,
     be.status === 'always'
-      ? `Automated ${be.auto.partner} already beats manual ${be.manual.partner} from €1/month on listed fees.`
+      ? `On listed fees, automated ${be.auto.partner} costs the same as or less than manual ${be.manual.partner} at every monthly amount from €1.`
       : beText,
     'Not a quote. Virtuse never holds your keys.'
   ], 'en');
@@ -983,14 +990,14 @@ function pressBlurb() {
     schemas: [faqLd(faqs), article, dataset],
     bodyHtml: `
 <h2>Rankings by monthly contribution</h2>
-<p>Citeable as of ${esc(asOfEn)}. Formula documented on the <a href="${esc(toRoot(relFile, 'bitcoin-fee-index/methodology/'))}">methodology</a> page.</p>
+<p>Figures as of ${esc(asOfEn)}. The formula is documented on the <a href="${esc(toRoot(relFile, 'bitcoin-fee-index/methodology/'))}">methodology</a> page.</p>
 ${tables}
 <h2>Break-even: automated vs manual</h2>
 <p>${esc(beText)}</p>
 <h2>Press blurb</h2>
 <p>${esc(pressBlurb())}</p>
 <h2>Embed</h2>
-<p>Copy-paste. Keep the attribution line.</p>
+<p>Copy and paste the code below; keep the attribution line.</p>
 <pre>${esc(embedSnippet)}</pre>
 <p><a class="cta-secondary" href="${esc(toRoot(relFile, 'bitcoin-fee-index/embed/'))}">Open embeddable table</a>
 <a class="cta-secondary" href="${esc(toRoot(relFile, 'bitcoin-fee-index/2026-q3/print.html'))}">Print / PDF view</a></p>
@@ -1062,20 +1069,20 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'bitcoin-fee-index/2026-q3/index.html';
   const ranked = rankRoutes(FEE_ROWS, 100);
   const faqs = [
-    { q: 'Is this archive different from the live index?', a: `This snapshot is the ${asOfEn} vintage of the same fee schedule. When a later quarter ships, this URL stays put.` },
-    { q: 'What contribution is archived in the table?', a: '€100 per month, 12 purchases, stacking formula.' },
-    { q: 'How do I export a PDF?', a: 'Open the print view and use the browser Print dialog → Save as PDF. No extra software.' },
-    { q: 'Can I cite a single number?', a: `${ranked[0].partner} annual drag at €100/month is ${formatEur(ranked[0].annualDrag)} as of ${asOfEn}.` }
+    { q: 'Is this archive different from the live index?', a: `It is the ${asOfEn} snapshot of the same fee schedule. When a later quarter is published, this URL stays the same.` },
+    { q: 'What contribution is archived in the table?', a: '€100 per month, 12 purchases, calculated with the Stacking Strategist formula.' },
+    { q: 'How do I export a PDF?', a: 'Open the print view and choose Print → Save as PDF in your browser. No extra software is needed.' },
+    { q: 'Can I cite a single number?', a: `${ranked[0].partner}’s annual fee drag at €100/month is ${formatEur(ranked[0].annualDrag)} as of ${asOfEn}.` }
   ];
   const answer = finalizeAnswer([
-    `Archive vintage ${asOfEn}: the Bitcoin Fee Index ranked ${ranked[0].partner} first at €100/month with ${formatEur(ranked[0].annualDrag)} annual drag (${formatPct(ranked[0].pct)}).`,
-    'This URL is the quarter snapshot so citations do not move when a later quarter is published.',
-    'Dataset, not a trade quote.'
+    `In the ${asOfEn} snapshot, the Bitcoin Fee Index ranked ${ranked[0].partner} first at €100/month, with ${formatEur(ranked[0].annualDrag)} annual fee drag (${formatPct(ranked[0].pct)}).`,
+    'This URL keeps the snapshot for the quarter, so citations stay valid when a later quarter is published.',
+    'A dataset, not a trade quote.'
   ], 'en');
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Fee Index archive: 2026 Q3'),
-    description: assertDescription(`Q3 2026 snapshot of the Virtuse Bitcoin Fee Index. First at €100/month: ${ranked[0].partner}, ${formatEur(ranked[0].annualDrag)} annual drag.`),
+    description: assertDescription(`Q3 2026 snapshot of the Virtuse Bitcoin Fee Index. First at €100/month: ${ranked[0].partner}, ${formatEur(ranked[0].annualDrag)} annual fee drag.`),
     h1: 'Bitcoin Fee Index archive — 2026 Q3',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1107,7 +1114,7 @@ ${faqHtml(faqs, 'FAQ')}
     ],
     bodyHtml: `
 <p>Frozen copy of the ${esc(asOfEn)} ranking at €100/month.</p>
-${tableHtml(['Rank', 'Partner', 'Method', 'Fee', 'Annual drag', 'Note'], ranked.map((r, i) => [
+${tableHtml(['Rank', 'Partner', 'Method', 'Fee', 'Annual fee drag', 'Note'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(r.method), esc(formatPct(r.pct)), esc(formatEur(r.annualDrag)), esc(r.note)
 ]))}
 <p><a class="cta-secondary" href="${esc(toRoot(relFile, 'bitcoin-fee-index/2026-q3/print.html'))}">Print-optimized view</a></p>
@@ -1121,13 +1128,13 @@ ${faqHtml(faqs, 'FAQ')}
   const ranked = rankRoutes(FEE_ROWS, 100);
   const answer = finalizeAnswer([
     `Print view of the ${asOfEn} Bitcoin Fee Index snapshot.`,
-    `First at €100/month: ${ranked[0].partner}, ${formatEur(ranked[0].annualDrag)} annual drag.`,
-    'Use the browser Print dialog and choose Save as PDF. No third-party PDF library.',
+    `First at €100/month: ${ranked[0].partner}, ${formatEur(ranked[0].annualDrag)} annual fee drag.`,
+    'Use your browser’s Print dialog and choose Save as PDF. No extra software is needed.',
     'Attribution required: Virtuse Bitcoin Fee Index, as of ' + asOfEn + '.'
   ], 'en');
   const faqs = [
     { q: 'How do I make a PDF?', a: 'File → Print → Save as PDF (Chrome, Firefox, Safari, Edge). A4 or Letter both work.' },
-    { q: 'Does this page change with the live index?', a: `It is tied to the 2026-Q3 archive vintage (${asOfEn}).` },
+    { q: 'Does this page change with the live index?', a: `No. It shows the ${asOfEn} archive snapshot.` },
     { q: 'What must a reprint include?', a: `Source line: Virtuse Bitcoin Fee Index, as of ${asOfEn}, and the canonical archive URL.` }
   ];
   pushPage({
@@ -1150,8 +1157,8 @@ ${faqHtml(faqs, 'FAQ')}
     moduleCta: { href: toRoot(relFile, CTAS.stacking.replace(/^\//, '')), label: 'Stacking Strategist →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
-<p class="muted">File → Print → Save as PDF. Navigation hides in print CSS.</p>
-${tableHtml(['Rank', 'Partner', 'Method', 'Fee', 'Annual drag (€100/mo)'], ranked.map((r, i) => [
+<p class="muted">File → Print → Save as PDF. Navigation is hidden when printing.</p>
+${tableHtml(['Rank', 'Partner', 'Method', 'Fee', 'Annual fee drag (€100/month)'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(r.method), esc(formatPct(r.pct)), esc(formatEur(r.annualDrag))
 ]))}
 <p>Source: Virtuse Bitcoin Fee Index, as of ${esc(asOfEn)}. ${esc(ORIGIN)}/bitcoin-fee-index/2026-q3/</p>
@@ -1164,22 +1171,21 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'bitcoin-fee-index/methodology/index.html';
   const faqs = [
     { q: 'Where do the percentages come from?', a: meta.feeSource === 'live'
-      ? 'From the shipped Stacking Strategist FEE_SCHEDULE (21bitcoin 0%, ByBit EU 0.1%, Kraken 0.16%, RevenueBot 0.4% + €4/month illustrative). Numbers are not edited for SEO.'
+      ? 'From the fee schedule of the live Stacking Strategist (21bitcoin 0%, ByBit EU 0.1%, Kraken 0.16%, RevenueBot 0.4% + €4/month, illustrative).'
       : 'From seo-data.json feeSchedule.' },
-    { q: 'What is the annual-drag formula?', a: 'costPerPurchase = contribution × pct + fixed + monthly / (periodsPerYear / 12); annualDrag = costPerPurchase × periodsPerYear. Copied from the live stacking module.' },
-    { q: 'Why is a later Banxa/CASP table not used?', a: 'A brief placeholder schedule existed for early prototypes. Indexable pages use the live module partners so Google does not rank invented brand names.' },
-    { q: 'How often will this change?', a: 'When the stacking fee schedule is updated, change seo-build/data/fee-schedule-live.json and re-run npm run build. Archive URLs stay stable.' }
+    { q: 'What is the annual-drag formula?', a: 'costPerPurchase = contribution × pct + fixed + monthly / (periodsPerYear / 12); annualDrag = costPerPurchase × periodsPerYear. The same formula as the live Stacking Strategist.' },
+    { q: 'How often will this change?', a: 'When a partner changes its published fees, the schedule is updated and a new quarterly snapshot is published. Archive URLs stay stable.' }
   ];
   const answer = finalizeAnswer([
     `Methodology as of ${asOfEn}: rank partners by annual fee drag at a stated monthly euro contribution.`,
-    'Formula is the live stacking module’s: percentage of each purchase plus allocated monthly subscription.',
-    'Spreads, FX and miner fees are out of scope. RevenueBot’s rate is marked illustrative in the source schedule.',
+    'The formula is the one used by the live Stacking Strategist: a percentage of each purchase plus any monthly subscription.',
+    'Spreads, currency conversion and miner fees are out of scope. RevenueBot’s rate is marked as illustrative in the source schedule.',
     'Not a brokerage quote.'
   ], 'en');
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Fee Index methodology (Q3 2026)'),
-    description: assertDescription(`How the Virtuse Bitcoin Fee Index ranks EU buy routes as of ${asOfEn}. Stacking-module formula, no invented percentages.`),
+    description: assertDescription(`How the Virtuse Bitcoin Fee Index ranks EU buy routes as of ${asOfEn}. Stacking Strategist formula, published fees.`),
     h1: 'Bitcoin Fee Index methodology',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1203,11 +1209,11 @@ ${tableHtml(['Partner', 'Method', 'pct', 'fixed', 'monthly', 'Flag'], FEE_ROWS.m
 <h2>Formula</h2>
 <pre>costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYear / 12)
 annualDrag = costPerPurchase * periodsPerYear</pre>
-<p>Default periodsPerYear = 12. Same as the live stacking module; not re-derived.</p>
+<p>Default: periodsPerYear = 12, as in the live Stacking Strategist.</p>
 <h2>Out of scope</h2>
 <ul>
   <li>Bid/ask spread</li>
-  <li>FX from CZK, PLN, HUF, RON, BGN into EUR</li>
+  <li>Currency conversion from CZK, PLN, HUF, RON or BGN into EUR</li>
   <li>Bitcoin network miner fees</li>
   <li>Promotional discounts that are not in the schedule</li>
 </ul>
@@ -1220,15 +1226,15 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'bitcoin-fee-index/embed/index.html';
   const ranked = rankRoutes(FEE_ROWS, 100);
   const faqs = [
-    { q: 'Can this page be iframed?', a: 'Yes. GitHub Pages / staging does not send X-Frame-Options. Parent pages on virtuse.com already allow frame-src self.' },
-    { q: 'What table is shown?', a: `€100/month ranking as of ${asOfEn}, four listed partners.` },
+    { q: 'Can this page be iframed?', a: 'Yes. The page is built to be embedded in an iframe on other websites.' },
+    { q: 'What table is shown?', a: `The €100/month ranking as of ${asOfEn}, with four listed partners.` },
     { q: 'Is JavaScript required?', a: 'No. The table is static HTML.' },
     { q: 'What attribution is required?', a: `Visible “Source: Virtuse Bitcoin Fee Index, as of ${asOfEn}” plus a link to the index.` }
   ];
   const answer = finalizeAnswer([
     `Embeddable Fee Index widget as of ${asOfEn}.`,
-    `At €100/month ${ranked[0].partner} ranks first at ${formatPct(ranked[0].pct)} (${formatEur(ranked[0].annualDrag)}/year).`,
-    'Static HTML, no JavaScript required. Always show the source line.',
+    `At €100/month, ${ranked[0].partner} ranks first at ${formatPct(ranked[0].pct)} (${formatEur(ranked[0].annualDrag)} a year).`,
+    'Static HTML; no JavaScript required. Always show the source line.',
     'Virtuse never holds your keys.'
   ], 'en');
   pushPage({
@@ -1258,7 +1264,7 @@ ${faqHtml(faqs, 'FAQ')}
       }
     ],
     bodyHtml: `
-${tableHtml(['Partner', 'Method', 'Fee', 'Annual drag @ €100/mo'], ranked.map((r) => [
+${tableHtml(['Partner', 'Method', 'Fee', 'Annual fee drag at €100/month'], ranked.map((r) => [
   esc(r.partner), esc(r.method), esc(formatPct(r.pct)), esc(formatEur(r.annualDrag))
 ]))}
 <p class="muted">Source: <a href="${esc(toRoot(relFile, 'bitcoin-fee-index/'))}">Virtuse Bitcoin Fee Index</a> (as of ${esc(asOfEn)}). Virtuse never holds your keys.</p>
@@ -1273,7 +1279,7 @@ function llmsShort() {
     `- [${c.name}](${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/): ${c.gainTax}. ${c.exemption}. As of ${asOfEn}.`
   ).join('\n');
   const feeLines = rankRoutes(FEE_ROWS, 100).map((r, i) =>
-    `- ${i + 1}. ${r.partner} (${r.method}): ${formatPct(r.pct)}, annual drag at €100/mo ${formatEur(r.annualDrag)}`
+    `- ${i + 1}. ${r.partner} (${r.method}): ${formatPct(r.pct)}, annual fee drag at €100/month ${formatEur(r.annualDrag)}`
   ).join('\n');
   return `# Virtuse
 

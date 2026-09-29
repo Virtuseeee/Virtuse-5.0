@@ -1,5 +1,5 @@
 {
-  "source": "Extracted from shipped Layer 2 tax bundle (concierge-assets/main-tax-CWE3nxTZ.js inheritance checklist). English strings unaltered.",
+  "source": "Extracted from shipped Layer 2 tax bundle (concierge-assets/main-tax-CWE3nxTZ.js inheritance checklist). English strings edited for grammar on 2026-09-29.",
   "asOf": "2026-Q3",
   "items": [
     {
@@ -12,23 +12,23 @@
     {
       "id": "separation",
       "question": "Are your keys geographically separated?",
-      "detail": "Never all backups in one home. Fire, theft or flood should never be able to destroy access.",
+      "detail": "Never keep all backups in one home. Fire, theft or flood should never be able to destroy your access.",
       "points": 20,
-      "action": "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent."
+      "action": "Move one key or backup to a second location: a bank vault, a trusted family member or a professional key agent."
     },
     {
       "id": "heir-aware",
       "question": "Does at least one heir know your bitcoin exists and where to start?",
       "detail": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
       "points": 15,
-      "action": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction."
+      "action": "Tell one trusted person that your bitcoin exists and whom to contact. Full details belong only in the letter of instruction."
     },
     {
       "id": "multisig",
       "question": "Do you use multisig (2-of-3) instead of a single seed phrase?",
       "detail": "A single seed is a single point of failure – for you and for your heirs.",
       "points": 20,
-      "action": "Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one."
+      "action": "Upgrade to 2-of-3 multisig: you hold two keys, and a partner (e.g. an Unchained-style vault) or an attorney holds the third."
     },
     {
       "id": "tested",
@@ -40,7 +40,7 @@
     {
       "id": "accounts",
       "question": "Are exchange accounts, loans and automated plans documented?",
-      "detail": "Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.",
+      "detail": "Custodial balances, bitcoin-backed loans and DCA bots can be lost with forgotten logins.",
       "points": 15,
       "action": "Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction."
     }

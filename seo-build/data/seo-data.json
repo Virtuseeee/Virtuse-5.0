@@ -6,25 +6,25 @@
       "id": "cz",
       "name": "Czechia",
       "flag": "🇨🇿",
-      "gainTax": "15 % income tax (23 % above threshold)",
-      "exemption": "Tax-free after 3-year holding (time test)",
+      "gainTax": "15% income tax (23% above threshold)",
+      "exemption": "Tax-free after a 3-year holding period (time test)",
       "filing": "Annual personal tax return",
-      "note": "Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one."
+      "note": "Every disposal (including crypto-to-crypto swaps) is a taxable event – keep complete records from day one."
     },
     {
       "id": "sk",
       "name": "Slovakia",
       "flag": "🇸🇰",
-      "gainTax": "19 % income tax (25 % above threshold)",
-      "exemption": "Tax-free after 1-year holding; occasional-income allowance €500/yr",
+      "gainTax": "19% income tax (25% above threshold)",
+      "exemption": "Tax-free after a 1-year holding period; occasional-income allowance of €500 a year",
       "filing": "Annual personal tax return",
-      "note": "Separate bank account for crypto activity makes reporting dramatically easier."
+      "note": "A separate bank account for crypto activity makes reporting much easier."
     },
     {
       "id": "pl",
       "name": "Poland",
       "flag": "🇵🇱",
-      "gainTax": "19 % flat capital gains tax",
+      "gainTax": "19% flat capital gains tax",
       "exemption": "No holding-period exemption",
       "filing": "Annual PIT-38",
       "note": "Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss."
@@ -33,8 +33,8 @@
       "id": "at",
       "name": "Austria",
       "flag": "🇦🇹",
-      "gainTax": "27.5 % KESt (capital gains tax)",
-      "exemption": "Gains tax-free after 1-year holding (private investors)",
+      "gainTax": "27.5% KESt (capital gains tax)",
+      "exemption": "Gains tax-free after a 1-year holding period (private investors)",
       "filing": "Annual tax return",
       "note": "Staking and lending rewards are taxed when received, not when sold."
     },
@@ -42,16 +42,16 @@
       "id": "de",
       "name": "Germany",
       "flag": "🇩🇪",
-      "gainTax": "Up to 45 % income tax (progressive)",
-      "exemption": "0 % after 1-year holding (private-sale exemption)",
+      "gainTax": "Up to 45% income tax (progressive)",
+      "exemption": "0% after a 1-year holding period (private-sale exemption)",
       "filing": "Annual tax return",
-      "note": "Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical."
+      "note": "Crypto-to-crypto swaps are taxable within the first year. FIFO record-keeping is critical."
     },
     {
       "id": "hu",
       "name": "Hungary",
       "flag": "🇭🇺",
-      "gainTax": "15 % capital gains tax",
+      "gainTax": "15% capital gains tax",
       "exemption": "No holding-period exemption",
       "filing": "Annual personal income tax return",
       "note": "Documented acquisition costs are deductible – keep every invoice."
@@ -60,52 +60,52 @@
       "id": "si",
       "name": "Slovenia",
       "flag": "🇸🇮",
-      "gainTax": "Progressive, up to ~50 % on disposal gains",
-      "exemption": "No general holding exemption",
+      "gainTax": "Progressive, up to about 50% on disposal gains",
+      "exemption": "No general holding-period exemption",
       "filing": "Annual personal income tax return",
-      "note": "Cryptocurrency gains are treated as income; verify current guidance with a local advisor."
+      "note": "Cryptocurrency gains are treated as income; check current guidance with a local advisor."
     },
     {
       "id": "hr",
       "name": "Croatia",
       "flag": "🇭🇷",
-      "gainTax": "12 % on digital-asset gains (2025; 10 % in 2024)",
+      "gainTax": "12% on digital-asset gains (2025; 10% in 2024)",
       "exemption": "No holding-period exemption",
       "filing": "Annual tax return",
-      "note": "Digital-asset regime is new (2024+) – rules are still being interpreted in practice."
+      "note": "The digital-asset regime is new (since 2024) – rules are still being interpreted in practice."
     },
     {
       "id": "ro",
       "name": "Romania",
       "flag": "🇷🇴",
-      "gainTax": "10 % income tax on crypto gains",
+      "gainTax": "10% income tax on crypto gains",
       "exemption": "No holding-period exemption",
       "filing": "Annual return (income from other sources)",
-      "note": "10 % is among the lowest flat rates in the EU – deduct your cost basis."
+      "note": "At 10%, Romania has one of the lowest flat rates in the EU – deduct your cost basis."
     },
     {
       "id": "bg",
       "name": "Bulgaria",
       "flag": "🇧🇬",
-      "gainTax": "10 % flat tax on gains",
+      "gainTax": "10% flat tax on gains",
       "exemption": "No holding-period exemption",
       "filing": "Annual tax return",
-      "note": "Low flat rate; keep exchange statements for audit-ready records."
+      "note": "Low flat rate; keep exchange statements so your records are audit-ready."
     },
     {
       "id": "nl",
       "name": "Netherlands",
       "flag": "🇳🇱",
-      "gainTax": "Box 3 wealth tax on deemed return (~36 % on fictional yield)",
-      "exemption": "Tax-free allowance (~€57k per person, 2025)",
+      "gainTax": "Box 3 wealth tax on a deemed return (about 36% of the assumed yield)",
+      "exemption": "Tax-free allowance (about €57,000 per person, 2025)",
       "filing": "Annual Box 3 declaration",
-      "note": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules."
+      "note": "No capital gains tax as such – you are taxed on an assumed return on your holdings. Box 3 is being reformed – check the current year’s rules."
     },
     {
       "id": "fr",
       "name": "France",
       "flag": "🇫🇷",
-      "gainTax": "30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)",
+      "gainTax": "30% flat tax (PFU: 12.8% income tax + 17.2% social charges)",
       "exemption": "No holding-period exemption; total disposals up to €305 a year are exempt",
       "filing": "Annual return with form 2086; foreign accounts on form 3916-bis",
       "note": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are."
@@ -114,7 +114,7 @@
       "id": "es",
       "name": "Spain",
       "flag": "🇪🇸",
-      "gainTax": "19–28 % progressive tax on savings income",
+      "gainTax": "19–28% progressive tax on savings income",
       "exemption": "No holding-period exemption",
       "filing": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
       "note": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins."

@@ -10,7 +10,7 @@
       "pct": 0,
       "fixed": 0,
       "monthly": 0,
-      "note": "0 % fees on the built-in Auto-Invest savings plan – FMA MiCAR licensed, insured custody, and already automated: set the schedule once and it runs itself.",
+      "note": "0% fees on the built-in Auto-Invest savings plan – FMA MiCAR-licensed, insured custody and already automated: set the schedule once and it runs itself.",
       "speed": "Automated",
       "url": "https://21bitcoin.app.link/invite/?code=VIRTUSE",
       "kind": "automated"
@@ -22,7 +22,7 @@
       "pct": 0.001,
       "fixed": 0,
       "monthly": 0,
-      "note": "Spot trading fees from 0.1 % – EU-licensed in Vienna, deep order books for a manual recurring buy.",
+      "note": "Spot trading fees from 0.1% – EU-licensed in Vienna, with deep order books for manual recurring buys.",
       "speed": "Same day",
       "url": "https://partner.bybit.eu/b/VIRTUSE",
       "kind": "manual"
@@ -34,7 +34,7 @@
       "pct": 0.0016,
       "fixed": 0,
       "monthly": 0,
-      "note": "Pro trading fees from 0.16 % – veteran EU exchange, deep EUR liquidity since 2011.",
+      "note": "Pro trading fees from 0.16% – a veteran EU exchange with deep EUR liquidity since 2011.",
       "speed": "Same day",
       "url": "https://proinvite.kraken.com/9f1e/lj72d37e",
       "kind": "manual"
@@ -46,7 +46,7 @@
       "pct": 0.004,
       "fixed": 0,
       "monthly": 4,
-      "note": "Cloud DCA & grid bots built specifically for Bitcoin – set the rhythm once and it runs itself. Fee shown here is illustrative pending RevenueBot’s own published schedule; check their site for current pricing.",
+      "note": "Cloud DCA and grid bots built specifically for Bitcoin – set the rhythm once and it runs itself. The fee shown is illustrative until RevenueBot publishes its own schedule; check their site for current pricing.",
       "speed": "Set & forget",
       "url": "https://app.revenuebot.io/external/r/90928",
       "kind": "automated",
