@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, second round) — Layer 2 modules translated to Spanish (`c011ab2`, gh-pages `f820dce`, staging 57/57 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_es_l2.sh`** (assets, then shells + es pages, then `sftp < /private/tmp/concierge_rm_es.sftp` for the 9 old hashes)
+## Session status (2026-09-29, second round) — Layer 2 modules translated to Spanish (`c011ab2`, gh-pages `f820dce`, staging 57/57 md5-verified; **live on production** — user ran the command 2026-09-29, 57/57 md5-verified on virtuse.com, the 9 old hashes gone). Next: PL
 
 - Same `i18n-tools/layer2/` pipeline as FR, no tool changes. es.ts 382/382; usted register; site terminology (monedero, autocustodia, custodia colaborativa, préstamo respaldado por Bitcoin, depósito en garantía (escrow) multifirma, comisiones, socios); Spanish numbers "1.000 €", "0,16 %" (U+00A0 before % and €).
 - Verified locally: ES loan flow (Eslovaquia → Firefish, UTM intact, "Comparar vender o pedir prestado" → `loan.html?amount=m`), no English leftovers on the four tools, no overflow at 375, bubble with Spanish aria text on es pages, module switcher lists 6 languages, tagcheck 0 on 32 files.
