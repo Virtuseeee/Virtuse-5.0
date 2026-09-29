@@ -20,6 +20,7 @@ import {
   formatPctSk,
   formatEurSk,
   methodSk,
+  methodCs,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -56,6 +57,7 @@ const FEE_ROWS = meta.feeSource === 'live' ? liveFees.rows : seoData.feeSchedule
 const asOfEn = formatAsOf(AS_OF, 'en');
 const asOfDe = formatAsOf(AS_OF, 'de');
 const asOfSk = formatAsOf(AS_OF, 'sk');
+const asOfCs = formatAsOf(AS_OF, 'cs');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -82,6 +84,20 @@ function nameSk(id) {
   if (!s) throw new Error(`Missing SK name for country id "${id}". Add it in seo-build/data/meta.json.`);
   return s;
 }
+function slugCs(id) {
+  const s = meta.slugs.cs[id];
+  if (!s) throw new Error(`Missing CS slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function nameCs(id) {
+  const s = meta.names.cs[id];
+  if (!s) throw new Error(`Missing CS name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** "v/na/ve <zemi>" in Czech (na Slovensku, ve Francii). */
+function inCs(id) { return meta.inCs[id]; }
+/** Czech accusative: only Francie changes (Francii); the -o names stay. */
+function accCs(id) { return (meta.accCs && meta.accCs[id]) || nameCs(id); }
 /** "v/na/vo <krajine>" in Slovak (na Slovensku, vo Francúzsku). */
 function inSk(id) { return meta.inSk[id]; }
 /** "in <country>" in German: a few names take an article (in der Slowakei, in den Niederlanden). */
@@ -111,12 +127,27 @@ const SK_ALT = {
 for (const c of COUNTRIES) {
   SK_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `sk/bitcoin-dane/${meta.slugs.sk[c.id]}/index.html`;
 }
+/** EN page -> its Czech counterpart. */
+const CS_ALT = {
+  'bitcoin-tax/index.html': 'cs/bitcoin-dane/index.html',
+  'bitcoin-dca-calculator/index.html': 'cs/bitcoin-dca-kalkulacka/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'cs/bitcoin-prodat-nebo-pujcit/index.html',
+  'bitcoin-inheritance/index.html': 'cs/bitcoin-dedictvi/index.html',
+  'bitcoin-fee-index/index.html': 'cs/bitcoin-index-poplatku/index.html'
+};
+for (const c of COUNTRIES) {
+  CS_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `cs/bitcoin-dane/${meta.slugs.cs[c.id]}/index.html`;
+}
 
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const csPath = CS_ALT[enPath];
+  if (csPath) {
+    tags.splice(1, 0, { lang: 'cs', href: abs(csPath), path: canonicalPath(csPath) });
+  }
   const skPath = SK_ALT[enPath];
   if (skPath) {
     tags.splice(1, 0, { lang: 'sk', href: abs(skPath), path: canonicalPath(skPath) });
@@ -161,6 +192,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'cs' ? [
+      `Údaje z živých modulů Virtuse, stav ${asOfCs}.`,
+      'Virtuse nikdy nedrží vaše klíče.',
+      'Ověřte si místní pravidla; nejde o daňové poradenství.'
     ]
     : lang === 'sk' ? [
       `Údaje z live modulov Virtuse, stav ${asOfSk}.`,
@@ -928,6 +964,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'cs') {
+      return `<h3>${esc(formatEurSk(amt))} měsíčně</h3>` +
+        tableHtml(['Pořadí', 'Partner', 'Metoda', 'Poplatek', 'Roční poplatky'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodCs(r.method)),
+          esc(formatPctSk(r.pct) + (r.monthly ? ` + ${formatEurSk(r.monthly)} měsíčně` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     if (lang === 'sk') {
       return `<h3>${esc(formatEurSk(amt))} mesačne</h3>` +
         tableHtml(['Poradie', 'Partner', 'Metóda', 'Poplatok', 'Ročné poplatky'], ranked.map((r, i) => [
@@ -953,7 +999,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'sk') {
+  if (lang === 'cs') {
+    if (be.status === 'always') {
+      beText = `Při zveřejněných poplatcích má nejlevnější automatizovaná cesta (${be.auto.partner}) od 1 € měsíčně stejné nebo nižší roční poplatky než nejlevnější ruční cesta (${be.manual.partner}).`;
+    } else if (be.status === 'found') {
+      beText = `Bod zvratu: od ${formatEurSk(be.monthlyEur)} měsíčně není ${be.auto.partner} (automatizovaně) dražší než ${be.manual.partner} (ručně).`;
+    } else {
+      beText = 'Do 20 000 € měsíčně nejlevnější automatizovaná cesta nepřekoná nejlevnější ruční cestu.';
+    }
+  } else if (lang === 'sk') {
     if (be.status === 'always') {
       beText = `Pri zverejnených poplatkoch má najlacnejšia automatizovaná cesta (${be.auto.partner}) od 1 € mesačne rovnaké alebo nižšie ročné poplatky ako najlacnejšia manuálna cesta (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -1655,6 +1709,332 @@ ${faqHtml(faqs, 'Časté otázky')}
   });
 }
 
+// ---------- Czech (cs/) ----------
+function csHome(relFile) { return { name: 'Domů', href: toRoot(relFile, 'cs/index.html'), abs: abs('cs/index.html') }; }
+
+// CS tax hub
+{
+  const relFile = 'cs/bitcoin-dane/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(c.id)}/`))}">${esc(nameCs(c.id))}</a>`,
+    esc(meta.taxCs[c.id].gainTax),
+    esc(meta.taxCs[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Které země tento přehled pokrývá?', a: `${N} zemí EU: ${COUNTRIES.map((c) => nameCs(c.id)).join(', ')}. Stav ${asOfCs}, údaje z modulu Virtuse Tax.` },
+    { q: 'Jde o daňové poradenství?', a: 'Ne. Orientační přehled 2026 – nejde o daňové poradenství. Pravidla pro aktuální rok si ověřte u místního poradce.' },
+    { q: 'Hlásí Virtuse moje držby finančnímu úřadu?', a: 'Ne. Virtuse nikdy nedrží vaše klíče ani historii vašich transakcí. KYC provádějí partneři sami.' },
+    { q: 'Kde si kromě daní prověřím i dědění?', a: `V modulu Tax & Inheritance Agent (živý modul) se stejnými ${N} zeměmi a kontrolou připravenosti na multisig.` }
+  ];
+  const answer = finalizeAnswer([
+    `Tento přehled porovnává zdanění Bitcoinu v ${N} zemích EU, stav ${asOfCs}.`,
+    'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z modulu Virtuse Tax.',
+    'Německo a Rakousko osvobozují zisky po 1 roce držení, Česko uplatňuje 3letý časový test a Nizozemsko místo daně ze zisků daní předpokládaný výnos (Box 3).',
+    'Orientační přehled 2026, nejde o daňové poradenství.'
+  ], 'cs');
+  pushPage({
+    relFile, lang: 'cs',
+    title: assertTitle(`Daně z Bitcoinu v ${N} zemích EU (2026)`),
+    description: assertDescription(`Sazby daně z Bitcoinu, osvobození podle doby držení a daňové přiznání v ${N} zemích EU, stav ${asOfCs}. Orientační přehled.`),
+    h1: `Daně z Bitcoinu v ${N} zemích EU`,
+    answerHtml: esc(answer),
+    breadcrumbs: [csHome(relFile), { name: 'Daně z Bitcoinu', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'cs/bitcoin-dane/cesko/'), label: 'Daně z Bitcoinu v Česku' },
+      { href: toRoot(relFile, 'cs/bitcoin-dedictvi/'), label: 'Bitcoin a dědění' },
+      { href: toRoot(relFile, 'cs/bitcoin-index-poplatku/'), label: 'Index poplatků za Bitcoin' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'cs/' + TAX_AGENT), label: 'Otevřít Tax & Inheritance Agent →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Každá stránka země uvádí daň ze zisků, případné osvobození podle doby držení a daňové přiznání, stav ${esc(asOfCs)}. Živý modul Tax & Inheritance Agent používá stejné údaje a přidává skóre připravenosti na dědění.</p>
+<h2>Srovnání zemí</h2>
+${tableHtml(['Země', 'Daň ze zisků', 'Osvobození'], rows)}
+${faqHtml(faqs, 'Časté dotazy')}
+`
+  });
+}
+
+// CS country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `cs/bitcoin-dane/${slugCs(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxCs[c.id];
+  const inN = inCs(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Jaká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfCs}: ${t.gainTax}. Orientační přehled 2026, nejde o daňové poradenství.` },
+    { q: `Existuje ${inN} osvobození podle doby držení?`, a: `${t.exemption}. Před podáním přiznání si pravidla pro aktuální rok ověřte u místního daňového poradce.` },
+    { q: `Jak se ${inN} podává daňové přiznání?`, a: `${t.filing}. ${t.note}` },
+    { q: 'Drží Virtuse můj Bitcoin nebo podává moje daňové přiznání?', a: `Ne. Virtuse nikdy nedrží vaše klíče. KYC a registrace probíhají u partnera. Tax Agent porovná přehled ${N} zemí; daňové přiznání připraví kvalifikovaný daňový poradce.` }
+  ];
+  const answer = finalizeAnswer([
+    `Daně z Bitcoinu ${inN}, stav ${asOfCs}: ${t.gainTax}.`,
+    `Osvobození: ${t.exemption}.`,
+    `Přiznání: ${t.filing}.`,
+    t.note,
+    'Orientační přehled 2026, nejde o daňové poradenství.'
+  ], 'cs');
+  pushPage({
+    relFile, lang: 'cs',
+    title: assertTitle(`Daně z Bitcoinu ${inN} (${asOfCs})`),
+    description: assertDescription(`Daně z Bitcoinu ${inN} (${asOfCs}): ${t.gainTax}. Nejde o daňové poradenství.`),
+    h1: `Daně z Bitcoinu ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      csHome(relFile),
+      { name: 'Daně z Bitcoinu', href: toRoot(relFile, 'cs/bitcoin-dane/'), abs: abs('cs/bitcoin-dane/index.html') },
+      { name: nameCs(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'cs/bitcoin-prodat-nebo-pujcit/'), label: 'Bitcoin: prodat, nebo si půjčit' },
+      { href: toRoot(relFile, 'cs/bitcoin-dedictvi/'), label: 'Bitcoin a dědění' },
+      { href: toRoot(relFile, nbs[0] ? `cs/bitcoin-dane/${slugCs(nbs[0].id)}/` : 'cs/bitcoin-dane/'), label: nbs[0] ? `Daně z Bitcoinu ${inCs(nbs[0].id)}` : 'Všechny země' }
+    ],
+    moduleCta: { href: toRoot(relFile, `cs/${TAX_AGENT}?country=${c.id}`), label: `Zkontrolovat ${accCs(c.id)} v Tax Agentovi →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Údaje ke stavu ${esc(asOfCs)}, převzaté z modulu Virtuse Tax.</p>
+<h2>Sazby a daňové přiznání</h2>
+${tableHtml(['Údaj', 'Stav ' + asOfCs], [
+  ['Daň ze zisků', esc(t.gainTax)],
+  ['Osvobození', esc(t.exemption)],
+  ['Daňové přiznání', esc(t.filing)],
+  ['Poznámka', esc(t.note)]
+])}
+<h2>Kdy obvykle vzniká daň?</h2>
+<p>${esc(t.note)} Nákup Bitcoinu se v tomto přehledu nepovažuje za zdanitelný převod; před platbou, směnou, darováním nebo půjčením mincí si ověřte místní pravidla.</p>
+<h2>Sousední země</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(n.id)}/`))}">Daně z Bitcoinu ${esc(inCs(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Časté dotazy')}
+`
+  });
+}
+
+// CS DCA calculator
+{
+  const relFile = 'cs/bitcoin-dca-kalkulacka/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Předpovídá tato kalkulačka cenu Bitcoinu?', a: 'Ne. Porovnává jen poplatky partnerů podle zveřejněného ceníku. Výnos z ceny Bitcoinu nemodeluje.' },
+    { q: `Jaký je standardní plán, stav ${asOfCs}?`, a: 'Jednorázově 500 € a poté 100 € měsíčně po dobu 12 měsíců. Pořadí podle poplatků za první rok.' },
+    { q: 'Která cesta je v tomto plánu nejlevnější?', a: `${win.partner} (${methodCs(win.method)}) s variabilním poplatkem ${formatPctSk(win.pct)} podle vzorce Stacking Strategist.` },
+    { q: 'Jde o investiční poradenství?', a: 'Ne. Slouží jen ke vzdělávacím účelům. KYC probíhá u partnera. Virtuse nikdy nedrží vaše klíče.' }
+  ];
+  const answer = finalizeAnswer([
+    `V příkladu DCA, který počítá jen s poplatky (500 € a poté 100 € měsíčně po dobu 12 měsíců), je ke stavu ${asOfCs} na prvním místě ${win.partner}.`,
+    `Variabilní poplatek ${formatPctSk(win.pct)}. Nejde o předpověď ceny.`,
+    'Údaje z živého modulu Stacking Strategist. Orientační přehled 2026.'
+  ], 'cs');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'cs',
+    title: assertTitle('Bitcoin DCA kalkulačka (poplatky v EU 2026)'),
+    description: assertDescription(`DCA kalkulačka pro Bitcoin, která počítá jen s poplatky, stav ${asOfCs}. Standard 500 € + 100 € měsíčně, nejlevnější cesta ${win.partner}.`),
+    h1: 'Bitcoin DCA kalkulačka',
+    answerHtml: esc(answer),
+    breadcrumbs: [csHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'cs/bitcoin-index-poplatku/'), label: 'Index poplatků za Bitcoin' },
+      { href: toRoot(relFile, 'cs/bitcoin-prodat-nebo-pujcit/'), label: 'Bitcoin: prodat, nebo si půjčit' },
+      { href: toRoot(relFile, 'cs/bitcoin-dane/cesko/'), label: 'Daně z Bitcoinu v Česku' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'cs/stacking.html'), label: 'Otevřít Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin DCA kalkulačka',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Standardní příklad: 500 € a poté 100 € měsíčně × 12. Stejný vzorec jako v živém modulu Stacking Strategist.</p>
+<h2>Pořadí při 100 € měsíčně</h2>
+${tableHtml(['Pořadí', 'Partner', 'Metoda', 'Variabilní poplatek', 'Roční poplatky'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodCs(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Časté dotazy')}
+`
+  });
+}
+
+// CS sell vs borrow
+{
+  const relFile = 'cs/bitcoin-prodat-nebo-pujcit/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `Vzniká při prodeji v těchto ${N} zemích daň?`, a: `Zpravidla ano, při prodeji nebo směně. Osvobození se liší: Německo 0 % po 1 roce držení, Česko 3letý časový test, Polsko bez osvobození. Stav ${asOfCs}. Nejde o daňové poradenství.` },
+    { q: 'Je půjčka stejná daňová událost jako prodej?', a: 'V tomto přehledu ne. Úroky, riziko likvidace a KYC u partnera však platí. Konkrétní čísla spočítá Loan & Liquidity Copilot.' },
+    { q: 'Co je riziko likvidace?', a: 'Pokud hodnota zajištění klesne na hranici partnera, partner může zajištění prodat a splatit jím půjčku. Virtuse nikdy nedrží vaše klíče ani zajištění.' },
+    { q: 'Kde si přepočítám konkrétní částku?', a: 'V živém modulu Loan & Liquidity Copilot. Tato stránka vysvětluje jen rozdíl mezi daní a rizikem na základě zveřejněných daňových sazeb.' }
+  ];
+  const answer = finalizeAnswer([
+    `Ke stavu ${asOfCs} může prodej Bitcoinu vyvolat daň (například v Německu až 45 % během 1leté lhůty držení, v Rumunsku jednotných 10 %).`,
+    'Půjčka zajištěná Bitcoinem vám ponechá tržní pozici, ale přidá úroky a riziko likvidace u partnera.',
+    'Orientační přehled 2026, nejde o daňové ani úvěrové poradenství. Virtuse nikdy nedrží vaše klíče.'
+  ], 'cs');
+  pushPage({
+    relFile, lang: 'cs',
+    title: assertTitle('Bitcoin: prodat, nebo si půjčit? (2026)'),
+    description: assertDescription(`Prodat Bitcoin a zaplatit daň, nebo si půjčit se zajištěním v Bitcoinu a zůstat investovaný? Sazby ${N} zemí EU, stav ${asOfCs}.`),
+    h1: 'Prodat Bitcoin, nebo si půjčit se zajištěním?',
+    answerHtml: esc(answer),
+    breadcrumbs: [csHome(relFile), { name: 'Prodat, nebo půjčit', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'cs/bitcoin-dane/cesko/'), label: 'Daně z Bitcoinu v Česku' },
+      { href: toRoot(relFile, 'cs/bitcoin-dca-kalkulacka/'), label: 'DCA kalkulačka' },
+      { href: toRoot(relFile, 'cs/bitcoin-dedictvi/'), label: 'Bitcoin a dědění' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'cs/loan.html'), label: 'Porovnat v Loan Copilotu →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin: prodat, nebo si půjčit',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Daň při prodeji</h2>
+${tableHtml(['Země', 'Daň ze zisků', 'Osvobození'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(c.id)}/`))}">${esc(nameCs(c.id))}</a>`,
+  esc(meta.taxCs[c.id].gainTax),
+  esc(meta.taxCs[c.id].exemption)
+]))}
+<h2>Riziko při půjčce</h2>
+<p>Půjčky zajištěné Bitcoinem poskytují regulovaní partneři, ne Virtuse. Ponecháte si cenovou expozici, platíte úroky a vaše zajištění může být zlikvidováno. Virtuse zajištění nikdy nedrží.</p>
+${faqHtml(faqs, 'Časté dotazy')}
+`
+  });
+}
+
+// CS inheritance
+{
+  const relFile = 'cs/bitcoin-dedictvi/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: 'Může být v dopise s pokyny seed fráze?', a: 'Ne. Dopis uvádí seznam, umístění a kontakty – nikdy ne seed fráze. Uložte ho spolu se závětí nebo u právníka.' },
+    { q: 'Proč multisig 2 ze 3?', a: 'Jediná seed fráze je jediný bod selhání pro vás i pro vaše dědice.' },
+    { q: 'Drží Virtuse klíče pro dědice?', a: 'Ne. Virtuse nikdy nedrží vaše klíče.' },
+    { q: 'Jde o právní poradenství?', a: `Ne. Je to kontrolní seznam ke vzdělávacím účelům z modulu Tax, stav ${asOfCs}.` }
+  ];
+  const answer = finalizeAnswer([
+    `Ke stavu ${asOfCs} má kontrolní seznam modulu Tax šest bodů: dopis s pokyny, geografické rozdělení klíčů, informovaný dědic, multisig 2 ze 3, test obnovy a zdokumentované účty.`,
+    'Jediná seed fráze je jediný bod selhání. Virtuse nikdy nedrží vaše klíče.',
+    'Nejde o právní poradenství.'
+  ], 'cs');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'Příprava Bitcoinu na dědění',
+    inLanguage: 'cs',
+    step: meta.inheritanceCs.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'cs',
+    title: assertTitle('Bitcoin a dědění: kontrolní seznam (2026)'),
+    description: assertDescription(`Šestibodový kontrolní seznam pro dědění Bitcoinu, stav ${asOfCs}: dopis s pokyny, rozdělení klíčů, multisig 2 ze 3. Nejde o právní poradenství.`),
+    h1: 'Dědění Bitcoinu: kontrolní seznam',
+    answerHtml: esc(answer),
+    breadcrumbs: [csHome(relFile), { name: 'Dědění', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'cs/bitcoin-dane/cesko/'), label: 'Daně z Bitcoinu v Česku' },
+      { href: toRoot(relFile, 'cs/bitcoin-dane/'), label: `Daně v ${N} zemích EU` },
+      { href: toRoot(relFile, 'cs/bitcoin-prodat-nebo-pujcit/'), label: 'Bitcoin: prodat, nebo si půjčit' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'cs/' + TAX_AGENT), label: 'Ohodnotit seznam v Tax Agentovi →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>Obsah odpovídá kontrolnímu seznamu modulu Tax. Nejde o právní poradenství.</p>
+<h2>Návod: šest kroků</h2>
+<ol>${meta.inheritanceCs.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Časté dotazy')}
+`
+  });
+}
+
+// CS fee index
+{
+  const relFile = 'cs/bitcoin-index-poplatku/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'cs');
+  const faqs = [
+    { q: 'Co měří index poplatků?', a: `Roční poplatky nákupních cest, stav ${asOfCs}, podle vzorce modulu Stacking Strategist.` },
+    { q: 'Kdo je při 100 € měsíčně nejlevnější?', a: `${winner.partner}: ${formatPctSk(winner.pct)}, roční poplatky ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Jsou v tom zahrnuté spready?', a: 'Ne. Jen procentní poplatek a případné měsíční předplatné podle ceníku. Kurzové rozdíly a poplatky sítě Bitcoin (miner fees) zahrnuté nejsou.' },
+    { q: 'Mohu tabulku citovat?', a: `Ano, s uvedením zdroje „Zdroj: Virtuse index poplatků za Bitcoin, stav ${asOfCs}“ a odkazem.` }
+  ];
+  const answer = finalizeAnswer([
+    `Virtuse index poplatků za Bitcoin, stav ${asOfCs}, řadí nákupní cesty v EU podle ročních poplatků.`,
+    `Při 100 € měsíčně vede ${winner.partner} (${methodCs(winner.method)}) s ${formatPctSk(winner.pct)}, ${formatEurSk(winner.annualDrag)} ročně.`,
+    beText,
+    'Nejde o nabídku. Virtuse nikdy nedrží vaše klíče.'
+  ], 'cs');
+  pushPage({
+    relFile, lang: 'cs',
+    title: assertTitle('Index poplatků za Bitcoin (EU) Q3 2026'),
+    description: assertDescription(`Nákupní cesty v EU podle poplatků, stav ${asOfCs}. Nejlevnější cesta při 100 € měsíčně: ${winner.partner} s ${formatPctSk(winner.pct)}.`),
+    h1: 'Index poplatků za Bitcoin',
+    answerHtml: esc(answer),
+    breadcrumbs: [csHome(relFile), { name: 'Index poplatků', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'cs/bitcoin-dca-kalkulacka/'), label: 'DCA kalkulačka' },
+      { href: toRoot(relFile, 'cs/bitcoin-dane/cesko/'), label: 'Daně z Bitcoinu v Česku' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Metodika (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'cs/stacking.html'), label: 'Otevřít Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Virtuse index poplatků za Bitcoin',
+        inLanguage: 'cs',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Virtuse index poplatků za Bitcoin',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Pořadí podle měsíčního vkladu</h2>
+${tables}
+<h2>Automatizovaně, nebo ručně?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Časté dotazy')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -1709,6 +2089,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/sk/bitcoin-dedicstvo/
 - ${ORIGIN}/sk/bitcoin-index-poplatkov/
 
+## Czech
+
+- ${ORIGIN}/cs/bitcoin-dane/
+- ${ORIGIN}/cs/bitcoin-dca-kalkulacka/
+- ${ORIGIN}/cs/bitcoin-prodat-nebo-pujcit/
+- ${ORIGIN}/cs/bitcoin-dedictvi/
+- ${ORIGIN}/cs/bitcoin-index-poplatku/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -1724,6 +2112,7 @@ function llmsFull() {
 - EN: ${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/
 - DE: ${ORIGIN}/de/bitcoin-steuern/${slugDe(c.id)}/
 - SK: ${ORIGIN}/sk/bitcoin-dane/${slugSk(c.id)}/
+- CS: ${ORIGIN}/cs/bitcoin-dane/${slugCs(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -1874,6 +2263,7 @@ function writeAll() {
     enIndexable: generated.filter((p) => p.lang === 'en' && !p.noindex).length,
     deIndexable: generated.filter((p) => p.lang === 'de' && !p.noindex).length,
     skIndexable: generated.filter((p) => p.lang === 'sk' && !p.noindex).length,
+    csIndexable: generated.filter((p) => p.lang === 'cs' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };

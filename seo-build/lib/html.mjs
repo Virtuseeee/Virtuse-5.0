@@ -167,7 +167,7 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk');
+  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs');
   const langSwitch = switchLangs.length >= 2
     ? `<nav class="lang" aria-label="Language">${switchLangs
       .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
@@ -294,5 +294,26 @@ export const CHROME = {
     conciergeHref: 'sk/concierge.html',
     privacyHref: 'sk/privacy-policy.html',
     termsHref: 'sk/terms-and-conditions.html'
+  },
+  cs: {
+    navTax: 'Daňové návody',
+    navFees: 'Index poplatků',
+    navDca: 'DCA',
+    navConcierge: 'Concierge',
+    relatedHeading: 'Související návody',
+    asOfPrefix: 'Stav údajů',
+    disclaimerTax: 'Orientační přehled 2026 – nejde o daňové poradenství.',
+    disclaimerKeys: 'Virtuse nikdy nedrží vaše klíče.',
+    disclaimerKyc: 'KYC a registrace probíhají na regulované platformě příslušného partnera. Virtuse je nekustodiální hub a nedrží prostředky ani údaje klientů těchto platforem.',
+    privacy: 'Ochrana osobních údajů',
+    terms: 'Obchodní podmínky',
+    locale: 'cs_CZ',
+    homeHref: 'cs/index.html',
+    taxHref: 'cs/bitcoin-dane/',
+    feesHref: 'cs/bitcoin-index-poplatku/',
+    dcaHref: 'cs/bitcoin-dca-kalkulacka/',
+    conciergeHref: 'cs/concierge.html',
+    privacyHref: 'cs/privacy-policy.html',
+    termsHref: 'cs/terms-and-conditions.html'
   }
 };

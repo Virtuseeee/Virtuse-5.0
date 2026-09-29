@@ -7,8 +7,9 @@
     "enIndexable": 34,
     "deIndexable": 18,
     "skIndexable": 18,
+    "csIndexable": 18,
     "noindex": 1,
-    "totalHtml": 71
+    "totalHtml": 89
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -82,6 +83,24 @@
     "sk/bitcoin-predat-alebo-pozicat/index.html",
     "sk/bitcoin-dedicstvo/index.html",
     "sk/bitcoin-index-poplatkov/index.html",
+    "cs/bitcoin-dane/index.html",
+    "cs/bitcoin-dane/cesko/index.html",
+    "cs/bitcoin-dane/slovensko/index.html",
+    "cs/bitcoin-dane/polsko/index.html",
+    "cs/bitcoin-dane/rakousko/index.html",
+    "cs/bitcoin-dane/nemecko/index.html",
+    "cs/bitcoin-dane/madarsko/index.html",
+    "cs/bitcoin-dane/slovinsko/index.html",
+    "cs/bitcoin-dane/chorvatsko/index.html",
+    "cs/bitcoin-dane/rumunsko/index.html",
+    "cs/bitcoin-dane/bulharsko/index.html",
+    "cs/bitcoin-dane/nizozemsko/index.html",
+    "cs/bitcoin-dane/francie/index.html",
+    "cs/bitcoin-dane/spanelsko/index.html",
+    "cs/bitcoin-dca-kalkulacka/index.html",
+    "cs/bitcoin-prodat-nebo-pujcit/index.html",
+    "cs/bitcoin-dedictvi/index.html",
+    "cs/bitcoin-index-poplatku/index.html",
     "llms.txt",
     "llms-full.txt"
   ]

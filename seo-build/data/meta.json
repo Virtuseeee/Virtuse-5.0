@@ -51,6 +51,21 @@
       "nl": "holandsko",
       "fr": "francuzsko",
       "es": "spanielsko"
+    },
+    "cs": {
+      "cz": "cesko",
+      "sk": "slovensko",
+      "pl": "polsko",
+      "at": "rakousko",
+      "de": "nemecko",
+      "hu": "madarsko",
+      "si": "slovinsko",
+      "hr": "chorvatsko",
+      "ro": "rumunsko",
+      "bg": "bulharsko",
+      "nl": "nizozemsko",
+      "fr": "francie",
+      "es": "spanelsko"
     }
   },
   "names": {
@@ -83,6 +98,21 @@
       "nl": "Holandsko",
       "fr": "Francúzsko",
       "es": "Španielsko"
+    },
+    "cs": {
+      "cz": "Česko",
+      "sk": "Slovensko",
+      "pl": "Polsko",
+      "at": "Rakousko",
+      "de": "Německo",
+      "hu": "Maďarsko",
+      "si": "Slovinsko",
+      "hr": "Chorvatsko",
+      "ro": "Rumunsko",
+      "bg": "Bulharsko",
+      "nl": "Nizozemsko",
+      "fr": "Francie",
+      "es": "Španělsko"
     }
   },
   "currency": {
@@ -412,6 +442,136 @@
       "id": "accounts",
       "name": "Zoznam účtov",
       "text": "Zostatky na burzách, pôžičky zabezpečené Bitcoinom a DCA boty sa so zabudnutými prihlasovacími údajmi strácajú. V liste s pokynmi veďte zoznam platforiem a postup, ako zostatky uplatniť."
+    }
+  ],
+  "inCs": {
+    "cz": "v Česku",
+    "sk": "na Slovensku",
+    "pl": "v Polsku",
+    "at": "v Rakousku",
+    "de": "v Německu",
+    "hu": "v Maďarsku",
+    "si": "ve Slovinsku",
+    "hr": "v Chorvatsku",
+    "ro": "v Rumunsku",
+    "bg": "v Bulharsku",
+    "nl": "v Nizozemsku",
+    "fr": "ve Francii",
+    "es": "ve Španělsku"
+  },
+  "accCs": {
+    "fr": "Francii"
+  },
+  "taxCs": {
+    "cz": {
+      "gainTax": "15 % daň z příjmů (23 % nad stanovenou hranicí)",
+      "exemption": "Po 3 letech držení bez daně (časový test)",
+      "filing": "Roční daňové přiznání fyzické osoby",
+      "note": "Každý prodej nebo směna (včetně výměny kryptoměny za kryptoměnu) je zdanitelná událost – veďte si úplnou evidenci od prvního dne."
+    },
+    "sk": {
+      "gainTax": "19 % daň z příjmů (25 % nad stanovenou hranicí)",
+      "exemption": "Po 1 roce držení bez daně; osvobození příležitostného příjmu do 500 € ročně",
+      "filing": "Roční daňové přiznání fyzické osoby",
+      "note": "Samostatný bankovní účet pro kryptoměny výrazně usnadní daňové přiznání."
+    },
+    "pl": {
+      "gainTax": "19 % jednotná daň z kapitálových výnosů",
+      "exemption": "Bez osvobození podle doby držení",
+      "filing": "Roční přiznání PIT-38",
+      "note": "Výměny kryptoměny za kryptoměnu jsou zdanitelné – u každého převodu vypočítejte zisk nebo ztrátu v PLN."
+    },
+    "at": {
+      "gainTax": "27,5 % KESt (daň z kapitálových výnosů)",
+      "exemption": "Zisky po 1 roce držení bez daně (soukromí investoři)",
+      "filing": "Roční daňové přiznání",
+      "note": "Odměny ze stakingu a půjčování se daní při přijetí, ne při prodeji."
+    },
+    "de": {
+      "gainTax": "Až 45 % daň z příjmů (progresivní)",
+      "exemption": "0 % po 1 roce držení (osvobození soukromého prodeje)",
+      "filing": "Roční daňové přiznání",
+      "note": "Výměna kryptoměny za kryptoměnu je v prvním roce zdanitelná. Klíčová je evidence metodou FIFO."
+    },
+    "hu": {
+      "gainTax": "15 % daň z kapitálových výnosů",
+      "exemption": "Bez osvobození podle doby držení",
+      "filing": "Roční přiznání k dani z příjmů fyzických osob",
+      "note": "Doložené pořizovací náklady lze odečíst – uchovávejte každou fakturu."
+    },
+    "si": {
+      "gainTax": "Progresivní, až přibližně 50 % ze zisku při prodeji",
+      "exemption": "Bez obecného osvobození podle doby držení",
+      "filing": "Roční přiznání k dani z příjmů fyzických osob",
+      "note": "Zisky z kryptoměn se považují za příjem; aktuální výklad si ověřte u místního poradce."
+    },
+    "hr": {
+      "gainTax": "12 % ze zisků z digitálních aktiv (2025; v roce 2024 10 %)",
+      "exemption": "Bez osvobození podle doby držení",
+      "filing": "Roční daňové přiznání",
+      "note": "Režim digitálních aktiv je nový (od roku 2024) – pravidla se v praxi teprve vykládají."
+    },
+    "ro": {
+      "gainTax": "10 % daň z příjmů ze zisků z kryptoměn",
+      "exemption": "Bez osvobození podle doby držení",
+      "filing": "Roční přiznání (příjmy z jiných zdrojů)",
+      "note": "S 10 % patří Rumunsko mezi země EU s nejnižší jednotnou sazbou – odečtěte si pořizovací cenu."
+    },
+    "bg": {
+      "gainTax": "10 % jednotná daň ze zisků",
+      "exemption": "Bez osvobození podle doby držení",
+      "filing": "Roční daňové přiznání",
+      "note": "Nízká jednotná sazba; uchovávejte si výpisy z burz pro případnou kontrolu."
+    },
+    "nl": {
+      "gainTax": "Majetková daň Box 3 (přibližně 36 % z předpokládaného výnosu)",
+      "exemption": "Nezdanitelná část (přibližně 57 000 € na osobu, 2025)",
+      "filing": "Roční přiznání Box 3",
+      "note": "Klasická daň z kapitálových výnosů se neuplatňuje – daní se předpokládaný výnos z vašeho majetku. Box 3 prochází reformou – ověřte si pravidla pro aktuální rok."
+    },
+    "fr": {
+      "gainTax": "30 % paušální daň (PFU: 12,8 % daň z příjmů + 17,2 % sociální odvody)",
+      "exemption": "Bez osvobození podle doby držení; prodeje celkem do 305 € ročně jsou osvobozené",
+      "filing": "Roční přiznání s formulářem 2086; zahraniční účty na formuláři 3916-bis",
+      "note": "Výměny kryptoměny za kryptoměnu se nedaní: daní se jen prodej za eura, zboží nebo služby."
+    },
+    "es": {
+      "gainTax": "19–28 % progresivní daň z kapitálových příjmů",
+      "exemption": "Bez osvobození podle doby držení",
+      "filing": "Roční přiznání IRPF; Modelo 721 pro kryptoaktiva v zahraničí nad 50 000 €",
+      "note": "Výměny kryptoměny za kryptoměnu jsou zdanitelné převody – u stejných mincí použijte FIFO."
+    }
+  },
+  "inheritanceCs": [
+    {
+      "id": "letter",
+      "name": "Dopis s pokyny",
+      "text": "Dědicové potřebují písemné pokyny: co existuje, kde to najdou a koho kontaktovat – bez seed fráze v samotném dokumentu. Uložte ho spolu se závětí nebo u právníka."
+    },
+    {
+      "id": "separation",
+      "name": "Geografické rozdělení klíčů",
+      "text": "Nikdy nemějte všechny zálohy na jednom místě. Požár, krádež ani povodeň nesmí zničit přístup. Jeden klíč nebo zálohu uložte na druhém místě, například v bankovním trezoru."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Informujte dědice",
+      "text": "Alespoň jedna důvěryhodná osoba musí vědět, že váš Bitcoin existuje a kde začít. Bitcoin, který se najde o roky později nebo vůbec, je nejčastější selhání při dědění."
+    },
+    {
+      "id": "multisig",
+      "name": "Multisig 2 ze 3",
+      "text": "Jediná seed fráze je jediný bod selhání – pro vás i pro vaše dědice. U multisigu 2 ze 3 držíte dva klíče vy a třetí partner nebo právník."
+    },
+    {
+      "id": "tested",
+      "name": "Otestujte obnovu",
+      "text": "Netestovaný postup dědění je hypotéza, ne plán. Jednou ročně udělejte kompletní zkoušku obnovy na malém UTXO za přítomnosti dědice."
+    },
+    {
+      "id": "accounts",
+      "name": "Seznam účtů",
+      "text": "Zůstatky na burzách, půjčky zajištěné Bitcoinem a DCA boti se se zapomenutými přihlašovacími údaji ztrácejí. V dopise s pokyny veďte seznam platforem a postup, jak zůstatky uplatnit."
     }
   ]
 }

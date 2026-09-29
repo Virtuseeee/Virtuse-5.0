@@ -125,6 +125,17 @@ export function methodSk(method) {
   return METHOD_SK[method] || method;
 }
 
+const METHOD_CS = {
+  'Auto-Invest plan': 'Plán Auto-Invest',
+  'Spot trading': 'Spotové obchodování',
+  'Pro trading': 'Pro trading',
+  'Automated DCA bot': 'Automatizovaný DCA bot'
+};
+/** Czech label for a fee-schedule method (same terms as the Stacking module). Numbers use the Slovak formatters (same format). */
+export function methodCs(method) {
+  return METHOD_CS[method] || method;
+}
+
 const METHOD_DE = {
   'Auto-Invest plan': 'Auto-Invest-Plan',
   'Spot trading': 'Spot-Handel',
