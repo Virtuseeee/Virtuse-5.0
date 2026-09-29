@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, seventh round) — Layer 2 amounts/decimals formatted per page language (`24efecc`, gh-pages `bb7c32f`, staging 49/49 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_numfmt.sh`** (assets, 4 root shells, 36 language shells, then `sftp < /private/tmp/concierge_rm_numfmt.sftp` for 9 old hashes)
+
+- User: "oprav formát súm podľa jazyka". Loan/Stacking printed `en-IE` amounts and dot decimals in every language. New helpers in the Concierge project's `src/lib/i18n.ts`: `fmtEur(n, digits)`, `fmtEurCompact(n)`, `fmtNum(n, digits)`, `fmtNumShort(n, max)`, all keyed on the page language (`LOCALES` map; `getLang()` default). `eur`/`eurCompact` in `lib/stacking.ts` and `lib/loan.ts` delegate to them; decimal `toFixed` in the pages/strings replaced.
+- Results: "25 000 €" (sk/cs/fr/pl/hu/uk/ru), "25.000 €" (de/es; es/pl leave 4-digit numbers ungrouped, CLDR convention), compact "55 tis. €" / "55 k €" / "55 mil €" / "55 тыс. €"; German compact is hand-built "55 Tsd. €" with NBSPs (Intl has no short form for thousands). `currencyDisplay: 'narrowSymbol'` forces € (uk/hu printed "EUR"). Decimal comma in %, BTC amounts, chart year ticks.
+- **English output unchanged** ("€25,000", "€55.0k", "0.16 %"), except BTC-per-€1,000 now has a thousands separator ("€1,000.00").
+- Verified locally at 375 in en/sk/de/fr/es/uk/ru/hu (Loan + Stacking incl. chart ticks): no overflow, tsc clean. Source backup: `~/Documents/virtuse-concierge-deploy/concierge-src-2026-09-29-{before,after}-numfmt.tgz`.
+- Still open: " %" is always printed with a space (house style differs: pl/hu/uk/ru pages use "6%"); the Concierge chat's amount buckets are dictionary strings and were already localized.
+
 ## Session status (2026-09-29, sixth round) — Layer 2 modules translated to Russian (`06be1e8`, gh-pages `aad58fb`, staging 70/70 md5-verified; **live on production** — the user's first run did not land (0/70, production stayed consistently on the uk-round version), the re-run did: 70/70 md5-verified, 9 old hashes gone). **All 10 site languages now have their own Layer 2 modules.**
 
 - **Bug found on the live check (`97004aa`, gh-pages `94004e5`, staging 38/38):** 19 uk + 19 ru pages kept an older CSP without `'self'` in `frame-src`, so the bubble opened an empty panel (live on uk since the uk round; the local sweeps only checked the bubble's aria text, not that the iframe loads). Fixed; `pages.py` now adds `'self'` on every page it gives the launcher. **Live on production** (2026-09-29, 38/38 md5-verified). Live check by actually opening the bubble on one page per language (en index, sk, cs, de, fr, es, pl, hu, uk, ru): each loads its own language's Concierge. Lesson: verify the bubble by opening it (iframe document loads), not by its label.
