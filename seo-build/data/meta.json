@@ -252,5 +252,9 @@
       "name": "Konten inventarisieren",
       "text": "Börsenkonten, bitcoinbesicherte Kredite und Sparpläne sterben mit vergessenen Logins. Führen Sie im Schreiben ein Inventar der Plattformen und wie Guthaben geltend gemacht werden."
     }
-  ]
+  ],
+  "inDe": {
+    "sk": "in der Slowakei",
+    "nl": "in den Niederlanden"
+  }
 }

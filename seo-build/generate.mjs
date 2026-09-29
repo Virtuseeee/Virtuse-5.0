@@ -65,6 +65,8 @@ function nameDe(id) {
   if (!s) throw new Error(`Missing DE name for country id "${id}". Add it in seo-build/data/meta.json.`);
   return s;
 }
+/** "in <country>" in German: a few names take an article (in der Slowakei, in den Niederlanden). */
+function inDe(id) { return (meta.inDe && meta.inDe[id]) || `in ${nameDe(id)}`; }
 function countryById(id) { return COUNTRIES.find((c) => c.id === id); }
 
 /** Live Tax & Inheritance Agent. seo-data.moduleCtas.tax is /tax.html (category page). */
@@ -152,7 +154,7 @@ function taxAnswerEn(c) {
 function taxAnswerDe(c) {
   const d = meta.taxDe[c.id];
   return finalizeAnswer([
-    `Bitcoin-Steuern in ${nameDe(c.id)} Stand ${asOfDe}: ${d.gainTax}.`,
+    `Bitcoin-Steuern ${inDe(c.id)} Stand ${asOfDe}: ${d.gainTax}.`,
     `Befreiung: ${d.exemption}.`,
     `Veranlagung: ${d.filing}.`,
     d.note,
@@ -200,18 +202,18 @@ function taxFaqsEn(c) {
 
 function taxFaqsDe(c) {
   const d = meta.taxDe[c.id];
-  const n = nameDe(c.id);
+  const inN = inDe(c.id);
   return [
     {
-      q: `Wie werden Bitcoin-Gewinne in ${n} besteuert?`,
+      q: `Wie werden Bitcoin-Gewinne ${inN} besteuert?`,
       a: `Stand ${asOfDe}: ${d.gainTax}. Unverbindlicher Überblick 2026, keine Steuerberatung.`
     },
     {
-      q: `Gibt es eine Spekulationsfrist oder Haltedauer-Befreiung in ${n}?`,
+      q: `Gibt es eine Spekulationsfrist oder Haltedauer-Befreiung ${inN}?`,
       a: `${d.exemption}. Prüfen Sie die aktuelle Gesetzeslage mit einem lokalen Steuerberater.`
     },
     {
-      q: `Wie erfolgt die Erklärung in ${n}?`,
+      q: `Wie erfolgt die Erklärung ${inN}?`,
       a: `${d.filing}. ${d.note}`
     },
     {
@@ -266,7 +268,7 @@ function pushPage(spec) {
     esc(c.exemption)
   ]);
   const faqs = [
-    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `Eleven: ${COUNTRIES.map((c) => c.name).join(', ')}. Figures are as of ${asOfEn} and copied from the Virtuse Tax module.` },
+    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => c.name).join(', ')}. Figures are as of ${asOfEn} and copied from the Virtuse Tax module.` },
     { q: 'Is this tax advice?', a: 'No. Indicative 2026 overview – not tax advice. Confirm current-year rules with a local advisor.' },
     { q: 'Does Virtuse report my holdings to tax authorities?', a: 'No. Virtuse never holds your keys or your transaction history. Partners complete their own KYC.' },
     { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N}-country set plus a multisig readiness check.` }
@@ -314,7 +316,7 @@ ${faqHtml(faqs, 'FAQ')}
     esc(meta.taxDe[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Welche Länder umfasst dieser Überblick?', a: `Elf EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. Stand ${asOfDe}, Zahlen aus dem Virtuse-Tax-Modul.` },
+    { q: 'Welche Länder umfasst dieser Überblick?', a: `${N} EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. Stand ${asOfDe}, Zahlen aus dem Virtuse-Tax-Modul.` },
     { q: 'Ist das Steuerberatung?', a: 'Nein. Unverbindlicher Überblick 2026 – keine Steuerberatung.' },
     { q: 'Meldet Virtuse Bestände an Finanzämter?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel und führt keine Transaktionshistorie.' },
     { q: 'Wo prüfe ich Erbschaft zusätzlich zur Steuer?', a: `Im Tax- & Inheritance-Agent (Live-Modul) mit denselben ${N} Ländern plus Multisig-Check.` }
@@ -403,8 +405,8 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile: deRel, lang: 'de',
     title: assertTitle(`Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
-    description: assertDescription(`Bitcoin-Steuern in ${nameDe(c.id)}, Stand ${asOfDe}: ${d.gainTax}. Keine Steuerberatung.`),
-    h1: `Bitcoin-Steuern in ${nameDe(c.id)}`,
+    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${d.gainTax}. Keine Steuerberatung.`),
+    h1: `Bitcoin-Steuern ${inDe(c.id)}`,
     answerHtml: esc(answerDe),
     breadcrumbs: [
       { name: 'Start', href: toRoot(deRel, 'index.html'), abs: abs('index.html') },
@@ -415,7 +417,7 @@ ${faqHtml(faqs, 'FAQ')}
     related: [
       { href: toRoot(deRel, 'de/bitcoin-verkaufen-oder-beleihen/'), label: 'Verkaufen oder beleihen' },
       { href: toRoot(deRel, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' },
-      { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern in ${nameDe(nbs[0].id)}` : 'Alle Länder' }
+      { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern ${inDe(nbs[0].id)}` : 'Alle Länder' }
     ],
     moduleCta: { href: toRoot(deRel, TAX_AGENT + `?country=${c.id}`), label: `${nameDe(c.id)} im Tax-Agent prüfen →` },
     schemas: [faqLd(faqsDe)],
