@@ -1,0 +1,15 @@
+{
+ "locale": "ru_RU",
+ "project": {
+  "concierge": ["Bitcoin Concierge · Virtuse Layer 2", "Virtuse Bitcoin Concierge: некастодиальное направление к проверенным Биткоин-партнёрам в ЕС."],
+  "stacking": ["Stacking Strategist · Virtuse Layer 2", "Virtuse Stacking Strategist: DCA-прогноз и сравнение комиссий партнёров для накопления Биткоина."],
+  "loan": ["Loan & Liquidity Copilot · Virtuse Layer 2", "Virtuse Loan & Liquidity Copilot: сравните продажу Биткоина с займом под его залог на собственных цифрах, с учётом риска ликвидации."],
+  "tax-agent": ["Tax & Inheritance Agent · Virtuse Layer 2", "Virtuse Tax & Inheritance Agent: обзор налогообложения криптовалют в 11 странах ЕС и тест готовности к наследованию Биткоина."]
+ },
+ "site": {
+  "concierge": ["Bitcoin Concierge: нужный партнёр за 60 секунд | Virtuse", "Ответьте на несколько вопросов, и Bitcoin Concierge от Virtuse направит вас к проверенному партнёру с лицензией MiCA, который вам подходит: некастодиально, бесплатно, без регистрации."],
+  "stacking": ["Stacking Strategist: план DCA и сравнение комиссий | Virtuse", "Задайте ритм накопления Биткоина, посмотрите долгосрочный DCA-прогноз и сравните комиссии всех партнёров, чтобы найти самый дешёвый путь для каждой покупки."],
+  "loan": ["Loan &amp; Liquidity Copilot: продать или занять | Virtuse", "Сравните продажу Биткоина с займом под его залог на собственных цифрах: налог, стоимость процентов и риск ликвидации рядом."],
+  "tax-agent": ["Tax &amp; Inheritance Agent: 11 стран ЕС | Virtuse", "Обзор налогообложения Биткоина в 11 странах ЕС и тест наследования: что будет с вашими сатоши, когда вас не станет?"]
+ }
+}
