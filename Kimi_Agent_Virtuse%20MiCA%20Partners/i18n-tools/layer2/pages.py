@@ -86,5 +86,8 @@ for p in sorted(glob.glob(os.path.join(SITE, lang, '*.html'))):
     if base != '404' and TAG not in s:
         assert s.count('</body>') == 1, p
         s = s.replace('</body>', TAG + '\n</body>')
+    # the bubble opens concierge.html in an iframe: the page CSP must allow it
+    if base != '404' and "frame-src 'self'" not in s and 'frame-src ' in s:
+        s = s.replace('frame-src ', "frame-src 'self' ", 1)
     if s != o: W(p, s)
 print(f'done: {nlinks} links repointed. Next: gen_chrome.py, npm run build, deploy.py')
