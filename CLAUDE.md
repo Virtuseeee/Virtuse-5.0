@@ -2,6 +2,35 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, fifteenth round) — Slovak SEO pages, 18 pages mirroring the German pilot (`95d8897`, gh-pages `7f1f5d3`, staging 78/78 md5-verified; production pending — new folders, so the user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_sk_upload.sftp` (18 `-mkdir` + 78 `put`), then md5-verify the 78 files)
+
+- User: "priprav SEO stránky aj v slovenčine". New: `sk/bitcoin-dane/` (hub +
+  13 countries: cesko, slovensko, polsko, rakusko, nemecko, madarsko,
+  slovinsko, chorvatsko, rumunsko, bulharsko, holandsko, francuzsko,
+  spanielsko), `sk/bitcoin-dca-kalkulacka/`, `sk/bitcoin-predat-alebo-pozicat/`,
+  `sk/bitcoin-dedicstvo/`, `sk/bitcoin-index-poplatkov/`. Same structure as
+  the German set (no buy pages, no methodology/archive/embed).
+- Data: `meta.json` `slugs.sk`, `names.sk`, `inSk` (v Česku, na Slovensku,
+  vo Francúzsku), `taxSk` (from the Tax module's Slovak strings, lightly
+  edited, same facts), `inheritanceSk`. Formatters `formatPctSk`
+  ("0,1 %"), `formatEurSk` ("1 000 €", NBSP), `methodSk` (module terms).
+  FAQ heading "Časté otázky" (verify.mjs accepts it for sk).
+- Chrome: `CHROME.sk` + per-language hrefs in `lib/html.mjs` (home, menu,
+  concierge, privacy/terms go to sk/ pages); CTAs open the Slovak modules
+  (`sk/tax-agent.html`, `sk/stacking.html`, `sk/loan.html`). EN/DE output
+  was byte-identical after the chrome refactor.
+- `SK_ALT` in generate.mjs: EN/DE pages now carry hreflang sk and SK in the
+  language switch; sitemap + llms.txt list the sk pages; verify.mjs checks
+  EN/DE/SK reciprocity on cz/tschechien/cesko.
+- Site pages: sk/index, sk/tax, sk/buy-bitcoin, sk/lending linked the
+  English guides with Slovak labels (30 links); now `/sk/...`.
+- **Fixed on the way (all languages):** SEO tables overflowed at 375px on
+  EN/DE (fee index, DCA, buy pages); `tableHtml` wraps them in
+  `.table-wrap { overflow-x: auto }`. 375px sweep: no overflow.
+- **When the tax advisor's review comes back, fix the texts in THREE places:**
+  `lib/tax.ts` (+ dictionaries), `seo-data.json` + `meta.taxDe`, and now
+  `meta.taxSk`.
+
 ## Session status (2026-09-29, fourteenth round) — English grammar pass over all 35 English SEO pages + llms.txt (`1fd3fc4`, gh-pages `8673113`, staging 37/37 md5-verified; **live on production** — user ran the sftp batch 2026-09-29, 37/37 md5-verified on virtuse.com; live checks: no "such as EUR"/Banxa/"invented", "in the Netherlands" on the NL page)
 
 - **Internal notes were public** and are gone: "not invented for SEO",
