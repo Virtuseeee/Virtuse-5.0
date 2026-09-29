@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, ninth round) — Layer 2: France and Spain added, fr/es preselect their country, uk/ru start neutral (`d9804a1`, gh-pages `5b1e1f9`, staging 56/56 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_fres.sh`** (assets, 4 root shells, 36 language shells, then `sftp < /private/tmp/concierge_rm_fres.sftp` for 16 old hashes: 9 shared + 7 dictionary chunks)
+## Session status (2026-09-29, ninth round) — Layer 2: France and Spain added, fr/es preselect their country, uk/ru start neutral (`d9804a1`, gh-pages `5b1e1f9`, staging 56/56 md5-verified; **live on production** — user ran the command 2026-09-29, 56/56 md5-verified on virtuse.com, all 16 old hashes gone; live check: fr/es Tax + Loan preselect their country, uk/ru Tax shows the prompt with no tab, uk/ru Loan on Custom, 13 tabs)
 
 - User chose (question asked): add France + Spain rather than a neutral start everywhere; uk/ru get the neutral start.
 - Concierge project: `COUNTRIES` + `COUNTRY_TAX` + Loan `TAX_PRESETS` gain `fr`/`es`. Tax rules (indicative 2025, **need the same expert review as the other countries before noindex is lifted**): FR 30 % PFU (12.8 % IR + 17.2 % PS), no holding exemption, disposals ≤ €305/yr exempt, forms 2086 + 3916-bis, crypto-to-crypto not taxed; ES 19–28 % savings scale, no holding exemption, IRPF + Modelo 721 (> €50k abroad), crypto-to-crypto taxable, FIFO. Loan presets: France 30 %, "Spain (gains €6k–50k)" 21 % (the dropdown shows no notes, so the band is in the name).
