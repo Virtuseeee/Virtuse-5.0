@@ -39,6 +39,7 @@ const AS_OF = seoData.asOf;
 const LASTMOD = seoData.lastmod;
 const CTAS = seoData.moduleCtas;
 const COUNTRIES = seoData.countries;
+const N = COUNTRIES.length; // country count shown in copy (was hardcoded 11)
 const FEE_ROWS = meta.feeSource === 'live' ? liveFees.rows : seoData.feeSchedule.map((row, i) => ({
   id: `brief-${i}`,
   kind: /bot|auto|dca/i.test(`${row.partner} ${row.method}`) ? 'automated' : 'manual',
@@ -192,7 +193,7 @@ function taxFaqsEn(c) {
     },
     {
       q: 'Does Virtuse hold my bitcoin or file my tax return?',
-      a: 'No. Virtuse never holds your keys. KYC and onboarding happen on each partner’s regulated platform. Use the Tax & Inheritance Agent to compare the 11-country overview, then file with a qualified advisor.'
+      a: `No. Virtuse never holds your keys. KYC and onboarding happen on each partner’s regulated platform. Use the Tax & Inheritance Agent to compare the ${N}-country overview, then file with a qualified advisor.`
     }
   ];
 }
@@ -215,7 +216,7 @@ function taxFaqsDe(c) {
     },
     {
       q: 'Verwahrt Virtuse meinen Bitcoin oder übernimmt Virtuse die Steuererklärung?',
-      a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel. KYC und Onboarding erfolgen beim Partner. Der Tax-Agent vergleicht die 11-Länder-Übersicht; die Erklärung macht ein qualifizierter Berater.'
+      a: `Nein. Virtuse verwahrt niemals Ihre Schlüssel. KYC und Onboarding erfolgen beim Partner. Der Tax-Agent vergleicht die ${N}-Länder-Übersicht; die Erklärung macht ein qualifizierter Berater.`
     }
   ];
 }
@@ -268,19 +269,19 @@ function pushPage(spec) {
     { q: 'Which EU countries does this bitcoin tax overview cover?', a: `Eleven: ${COUNTRIES.map((c) => c.name).join(', ')}. Figures are as of ${asOfEn} and copied from the Virtuse Tax module.` },
     { q: 'Is this tax advice?', a: 'No. Indicative 2026 overview – not tax advice. Confirm current-year rules with a local advisor.' },
     { q: 'Does Virtuse report my holdings to tax authorities?', a: 'No. Virtuse never holds your keys or your transaction history. Partners complete their own KYC.' },
-    { q: 'Where can I model inheritance as well as tax?', a: 'Use the Tax & Inheritance Agent (live module) for the same 11-country set plus a multisig readiness check.' }
+    { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N}-country set plus a multisig readiness check.` }
   ];
   const answer = finalizeAnswer([
-    `This hub compares bitcoin tax treatment across 11 EU countries as of ${asOfEn}.`,
+    `This hub compares bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
     'Rates, exemptions and filing notes are copied from the Virtuse Tax module; they are not invented for SEO.',
     'Germany and Austria highlight 1-year holding relief; Czechia uses a 3-year time test; the Netherlands uses Box 3 instead of classic capital gains.',
     'Indicative 2026 overview, not tax advice.'
   ], 'en');
   pushPage({
     relFile, lang: 'en',
-    title: assertTitle('Bitcoin tax in 11 EU countries (2026)'),
-    description: assertDescription(`Compare bitcoin tax rates, holding exemptions and filing notes for 11 EU countries as of ${asOfEn}. Indicative overview, not tax advice.`),
-    h1: 'Bitcoin tax in 11 EU countries',
+    title: assertTitle(`Bitcoin tax in ${N} EU countries (2026)`),
+    description: assertDescription(`Compare bitcoin tax rates, holding exemptions and filing notes for ${N} EU countries as of ${asOfEn}. Indicative overview, not tax advice.`),
+    h1: `Bitcoin tax in ${N} EU countries`,
     answerHtml: esc(answer),
     breadcrumbs: [
       { name: 'Home', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
@@ -316,19 +317,19 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Welche Länder umfasst dieser Überblick?', a: `Elf EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. Stand ${asOfDe}, Zahlen aus dem Virtuse-Tax-Modul.` },
     { q: 'Ist das Steuerberatung?', a: 'Nein. Unverbindlicher Überblick 2026 – keine Steuerberatung.' },
     { q: 'Meldet Virtuse Bestände an Finanzämter?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel und führt keine Transaktionshistorie.' },
-    { q: 'Wo prüfe ich Erbschaft zusätzlich zur Steuer?', a: 'Im Tax- & Inheritance-Agent (Live-Modul) mit denselben 11 Ländern plus Multisig-Check.' }
+    { q: 'Wo prüfe ich Erbschaft zusätzlich zur Steuer?', a: `Im Tax- & Inheritance-Agent (Live-Modul) mit denselben ${N} Ländern plus Multisig-Check.` }
   ];
   const answer = finalizeAnswer([
-    `Dieser Hub vergleicht die Bitcoin-Besteuerung in 11 EU-Ländern, Stand ${asOfDe}.`,
+    `Dieser Hub vergleicht die Bitcoin-Besteuerung in ${N} EU-Ländern, Stand ${asOfDe}.`,
     'Sätze, Befreiungen und Erklärungshinweise stammen aus dem Virtuse-Tax-Modul und wurden nicht für SEO erfunden.',
     'Deutschland: Spekulationsfrist 1 Jahr. Österreich: KESt 27,5 %. Tschechien: 3-Jahres-Zeittest. Niederlande: Box 3 statt klassischer Kapitalertragsteuer.',
     'Unverbindlicher Überblick 2026, keine Steuerberatung.'
   ], 'de');
   pushPage({
     relFile, lang: 'de',
-    title: assertTitle('Bitcoin-Steuern in 11 EU-Ländern (2026)'),
-    description: assertDescription(`Bitcoin-Steuersätze, Spekulationsfrist und Erklärung in 11 EU-Ländern, Stand ${asOfDe}. Unverbindlich, keine Steuerberatung.`),
-    h1: 'Bitcoin-Steuern in 11 EU-Ländern',
+    title: assertTitle(`Bitcoin-Steuern in ${N} EU-Ländern (2026)`),
+    description: assertDescription(`Bitcoin-Steuersätze, Spekulationsfrist und Erklärung in ${N} EU-Ländern, Stand ${asOfDe}. Unverbindlich, keine Steuerberatung.`),
+    h1: `Bitcoin-Steuern in ${N} EU-Ländern`,
     answerHtml: esc(answer),
     breadcrumbs: [
       { name: 'Start', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
@@ -358,7 +359,7 @@ for (const c of COUNTRIES) {
   const faqs = taxFaqsEn(c);
   const answer = taxAnswerEn(c);
   const body = `
-<p>${esc(c.flag)} <strong>${esc(c.name)}</strong> is one of 11 EU countries in the Virtuse Tax module. Figures below are copied from that module as of ${esc(asOfEn)}.</p>
+<p>${esc(c.flag)} <strong>${esc(c.name)}</strong> is one of ${N} EU countries in the Virtuse Tax module. Figures below are copied from that module as of ${esc(asOfEn)}.</p>
 <h2>Rates and filing</h2>
 ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Gain tax', esc(c.gainTax)],
@@ -649,7 +650,7 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: 'Does selling bitcoin trigger tax in these 11 countries?', a: `Usually yes, on disposal. Exemptions differ: Germany 0% after 1-year private-sale holding; Czechia 3-year time test; Poland no holding exemption. As of ${asOfEn}. Not tax advice.` },
+    { q: `Does selling bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, on disposal. Exemptions differ: Germany 0% after 1-year private-sale holding; Czechia 3-year time test; Poland no holding exemption. As of ${asOfEn}. Not tax advice.` },
     { q: 'Does borrowing against bitcoin trigger the same tax?', a: 'A loan is not the same event as a sale in this educational overview. Interest, liquidation risk, and partner KYC still apply. Model numbers in the live Loan copilot; this page does not invent APRs.' },
     { q: 'What is liquidation risk?', a: 'If collateral value falls to the partner’s threshold, the loan can be force-sold. Virtuse never holds your keys or the collateral.' },
     { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the tax-versus-risk trade-off with the published country tax strings only.' }
@@ -667,7 +668,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Sell vs borrow bitcoin (EU tax 2026)'),
-    description: assertDescription(`Sell bitcoin and pay country tax, or borrow against it and keep exposure. 11-country tax strings as of ${asOfEn}. Not credit advice.`),
+    description: assertDescription(`Sell bitcoin and pay country tax, or borrow against it and keep exposure. ${N}-country tax strings as of ${asOfEn}. Not credit advice.`),
     h1: 'Sell bitcoin vs borrow against it',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -713,7 +714,7 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const faqs = [
-    { q: 'Löst ein Verkauf in diesen 11 Ländern Steuer aus?', a: `In der Regel ja bei Veräußerung. Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
+    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja bei Veräußerung. Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
     { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und Partner-KYC bleiben. APRs werden hier nicht erfunden; Zahlen im Live-Loan-Copilot.' },
     { q: 'Was ist Liquidationsrisiko?', a: 'Fällt der Collateral-Wert auf die Schwelle des Partners, kann der Kredit zwangsverkauft werden. Virtuse verwahrt weder Schlüssel noch Collateral.' },
     { q: 'Wo rechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur den Trade-off anhand der veröffentlichten Steuerstrings.' }
@@ -726,7 +727,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'de',
     title: assertTitle('Bitcoin verkaufen oder beleihen (2026)'),
-    description: assertDescription(`Bitcoin verkaufen und Steuer zahlen oder beleihen und Exposure halten. 11-Länder-Sätze Stand ${asOfDe}. Keine Kreditberatung.`),
+    description: assertDescription(`Bitcoin verkaufen und Steuer zahlen oder beleihen und Exposure halten. ${N}-Länder-Sätze Stand ${asOfDe}. Keine Kreditberatung.`),
     h1: 'Bitcoin verkaufen oder beleihen',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -806,7 +807,7 @@ ${faqHtml(faqs, 'FAQ')}
     hreflang: hrefLangPair(relFile, deFile),
     related: [
       { href: toRoot(relFile, 'bitcoin-tax/germany/'), label: 'Bitcoin tax in Germany' },
-      { href: toRoot(relFile, 'bitcoin-tax/'), label: '11-country tax hub' },
+      { href: toRoot(relFile, 'bitcoin-tax/'), label: `${N}-country tax hub` },
       { href: toRoot(relFile, 'sell-vs-borrow-bitcoin/'), label: 'Sell vs borrow' }
     ],
     moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Score this checklist in the Tax Agent →' },
@@ -817,7 +818,7 @@ ${faqHtml(faqs, 'FAQ')}
 <ol>
   ${items.map((it) => `<li><h3>${esc(it.question)}</h3><p>${esc(it.detail)}</p><p>${esc(it.action)}</p></li>`).join('')}
 </ol>
-<p>Country tax still applies to heirs who later sell. Start with <a href="${esc(toRoot(relFile, 'bitcoin-tax/'))}">the 11-country tax hub</a>.</p>
+<p>Country tax still applies to heirs who later sell. Start with <a href="${esc(toRoot(relFile, 'bitcoin-tax/'))}">the ${N}-country tax hub</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
   });
@@ -861,7 +862,7 @@ ${faqHtml(faqs, 'FAQ')}
     hreflang: hrefLangPair(enFile, relFile),
     related: [
       { href: toRoot(relFile, 'de/bitcoin-steuern/deutschland/'), label: 'Bitcoin-Steuern Deutschland' },
-      { href: toRoot(relFile, 'de/bitcoin-steuern/'), label: '11-Länder-Steuerhub' },
+      { href: toRoot(relFile, 'de/bitcoin-steuern/'), label: `${N}-Länder-Steuerhub` },
       { href: toRoot(relFile, 'de/bitcoin-verkaufen-oder-beleihen/'), label: 'Verkaufen oder beleihen' }
     ],
     moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Checkliste im Tax-Agent bewerten →' },
@@ -1274,7 +1275,7 @@ function llmsShort() {
 
 As of ${asOfEn}. Indicative 2026 overview – not tax advice. Partner KYC on each platform.
 
-## Bitcoin tax (11 EU countries)
+## Bitcoin tax (${N} EU countries)
 
 ${taxLines}
 

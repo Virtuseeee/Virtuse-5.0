@@ -18,7 +18,9 @@
       "hr": "croatia",
       "ro": "romania",
       "bg": "bulgaria",
-      "nl": "netherlands"
+      "nl": "netherlands",
+      "fr": "france",
+      "es": "spain"
     },
     "de": {
       "cz": "tschechien",
@@ -31,7 +33,9 @@
       "hr": "kroatien",
       "ro": "rumaenien",
       "bg": "bulgarien",
-      "nl": "niederlande"
+      "nl": "niederlande",
+      "fr": "frankreich",
+      "es": "spanien"
     }
   },
   "names": {
@@ -46,7 +50,9 @@
       "hr": "Kroatien",
       "ro": "Rumänien",
       "bg": "Bulgarien",
-      "nl": "Niederlande"
+      "nl": "Niederlande",
+      "fr": "Frankreich",
+      "es": "Spanien"
     }
   },
   "currency": {
@@ -60,20 +66,77 @@
     "hr": "EUR",
     "ro": "RON",
     "bg": "BGN",
-    "nl": "EUR"
+    "nl": "EUR",
+    "fr": "EUR",
+    "es": "EUR"
   },
   "neighbors": {
-    "cz": ["sk", "at", "pl", "de"],
-    "sk": ["cz", "at", "hu", "pl"],
-    "pl": ["cz", "sk", "de"],
-    "at": ["de", "cz", "sk", "hu", "si"],
-    "de": ["at", "nl", "cz", "pl"],
-    "hu": ["at", "sk", "ro", "hr", "si"],
-    "si": ["at", "hu", "hr"],
-    "hr": ["si", "hu", "bg"],
-    "ro": ["hu", "bg"],
-    "bg": ["ro", "hr"],
-    "nl": ["de"]
+    "cz": [
+      "sk",
+      "at",
+      "pl",
+      "de"
+    ],
+    "sk": [
+      "cz",
+      "at",
+      "hu",
+      "pl"
+    ],
+    "pl": [
+      "cz",
+      "sk",
+      "de"
+    ],
+    "at": [
+      "de",
+      "cz",
+      "sk",
+      "hu",
+      "si"
+    ],
+    "de": [
+      "at",
+      "nl",
+      "cz",
+      "pl",
+      "fr"
+    ],
+    "hu": [
+      "at",
+      "sk",
+      "ro",
+      "hr",
+      "si"
+    ],
+    "si": [
+      "at",
+      "hu",
+      "hr"
+    ],
+    "hr": [
+      "si",
+      "hu",
+      "bg"
+    ],
+    "ro": [
+      "hu",
+      "bg"
+    ],
+    "bg": [
+      "ro",
+      "hr"
+    ],
+    "nl": [
+      "de"
+    ],
+    "fr": [
+      "es",
+      "de"
+    ],
+    "es": [
+      "fr"
+    ]
   },
   "taxDe": {
     "cz": {
@@ -144,6 +207,18 @@
       "filing": "Jährliche Box-3-Erklärung",
       "note": "Keine klassische Kapitalertragsteuer – besteuert wird die angenommene Rendite des Bestands. Box 3 wird reformiert – prüfen Sie die Regeln des laufenden Jahres.",
       "review": "REVIEW: Box 3 deemed-return percentage and 2025 allowance are copied from the Tax module; both are under legislative reform."
+    },
+    "fr": {
+      "gainTax": "30 % Pauschalsteuer (PFU: 12,8 % Einkommensteuer + 17,2 % Sozialabgaben)",
+      "exemption": "Keine Befreiung nach Haltedauer; Verkäufe bis insgesamt 305 € pro Jahr sind steuerfrei",
+      "filing": "Jährliche Erklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis",
+      "note": "Krypto-zu-Krypto-Tausch ist steuerfrei: besteuert werden nur Verkäufe gegen Euro, Waren oder Dienstleistungen."
+    },
+    "es": {
+      "gainTax": "19–28 % progressive Steuer auf Kapitalerträge",
+      "exemption": "Keine Befreiung nach Haltedauer",
+      "filing": "Jährliche IRPF-Erklärung; Modelo 721 für im Ausland gehaltene Kryptowerte über 50.000 €",
+      "note": "Krypto-zu-Krypto-Tausch ist ein steuerpflichtiger Vorgang – für gleiche Coins gilt FIFO."
     }
   },
   "inheritanceDe": [

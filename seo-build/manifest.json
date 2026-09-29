@@ -4,10 +4,10 @@
   "origin": "https://virtuse.com",
   "feeSource": "live",
   "counts": {
-    "enIndexable": 30,
-    "deIndexable": 16,
+    "enIndexable": 34,
+    "deIndexable": 18,
     "noindex": 1,
-    "totalHtml": 47
+    "totalHtml": 53
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -34,6 +34,10 @@
     "de/bitcoin-steuern/bulgarien/index.html",
     "bitcoin-tax/netherlands/index.html",
     "de/bitcoin-steuern/niederlande/index.html",
+    "bitcoin-tax/france/index.html",
+    "de/bitcoin-steuern/frankreich/index.html",
+    "bitcoin-tax/spain/index.html",
+    "de/bitcoin-steuern/spanien/index.html",
     "buy-bitcoin/czechia/index.html",
     "buy-bitcoin/slovakia/index.html",
     "buy-bitcoin/poland/index.html",
@@ -45,6 +49,8 @@
     "buy-bitcoin/romania/index.html",
     "buy-bitcoin/bulgaria/index.html",
     "buy-bitcoin/netherlands/index.html",
+    "buy-bitcoin/france/index.html",
+    "buy-bitcoin/spain/index.html",
     "bitcoin-dca-calculator/index.html",
     "de/bitcoin-dca-rechner/index.html",
     "sell-vs-borrow-bitcoin/index.html",

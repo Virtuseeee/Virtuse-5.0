@@ -100,6 +100,24 @@
       "exemption": "Tax-free allowance (~€57k per person, 2025)",
       "filing": "Annual Box 3 declaration",
       "note": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules."
+    },
+    {
+      "id": "fr",
+      "name": "France",
+      "flag": "🇫🇷",
+      "gainTax": "30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)",
+      "exemption": "No holding-period exemption; total disposals up to €305 a year are exempt",
+      "filing": "Annual return with form 2086; foreign accounts on form 3916-bis",
+      "note": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are."
+    },
+    {
+      "id": "es",
+      "name": "Spain",
+      "flag": "🇪🇸",
+      "gainTax": "19–28 % progressive tax on savings income",
+      "exemption": "No holding-period exemption",
+      "filing": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
+      "note": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins."
     }
   ],
   "feeSchedule": [
