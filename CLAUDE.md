@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, fourth round) — Layer 2 modules translated to Hungarian (`ce855b4`, gh-pages `d3c4cca`, staging 68/68 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_hu_l2.sh`** (assets, root, 7 language folders, then `sftp < /private/tmp/concierge_rm_hu.sftp` for 13 old hashes: 9 shared + the de/fr/es/pl dictionary chunks)
+
+- hu.ts 382/382; neutral register with "Ön" where address is needed; site terminology (saját őrzés, letétkezelés/letétkezelő, nem letétkezelő, hardvertárca, Bitcoin-fedezetű hitel, multisig escrow, ellenőrzött partner, ajánlói jutalék); singular noun after numerals; "0,16%", "1 000 €". Country names go in as "(ország: {0})" so no case suffix is needed.
+- **Chart year suffix** (`t(lang,'y',…)` in stacking.ts is appended straight to the number): dictionaries now carry a leading space, so ticks read "3 ans", "5 años", "5 l.", "5 J.", "5 év" (were "3a", "5J"…). The decimal point in "2.5" is still a dot (code-side, all languages).
+- Verified locally: HU buy flow (Magyarország → 21bitcoin/ByBit EU, UTM intact, "Tervem szimulálása" → `stacking.html?amount=l`), no English leftovers, no overflow at 375, bubble on hu pages, tagcheck 0.
+- Remaining languages: UK, RU (both decline nouns; use the same "country: {0}" pattern).
+
 ## Session status (2026-09-29, third round) — Layer 2 modules translated to Polish (`d825977`) + Concierge bubble on all nine blogs (`e1b274c`); gh-pages `8406520`, staging 69/69 md5-verified; **live on production** — user ran the command 2026-09-29, 69/69 md5-verified on virtuse.com, the 9 old hashes gone; live check: bubble on de/blog opens the German concierge, on blog-sk the Slovak one, pl/concierge serves Polish). Next: HU
 
 - **Blog bubble decision (user: "daj bublinu všade"):** all nine blogs load the launcher. **Real bug found:** de/fr/es blogs already loaded it, but the blog redesign kept those pages' old CSP whose `frame-src` lacked `'self'`, so the bubble opened an empty panel ("Framing … violates … frame-src", live on production for de since 2026-09-28). All nine blogs now allow `'self'`. `blog-sk.html` sits outside sk/, so `concierge-launcher.js` accepts `data-concierge="sk/concierge.html"` on its script tag. `i18n-tools/build_brief_blog.py` adds `'self'` to the copied CSP and `brief_blog_template.html` loads the launcher, so blog rebuilds keep both. uk/ru/hu blogs open the English concierge until their own rounds.
