@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, nineteenth round) — Ukrainian SEO pages, 18 pages (`703f880`, gh-pages `2004eb6`, staging 133/133 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_uk_upload.sftp` (18 `-mkdir` + 133 `put`), then md5-verify the 133 files)
+## Session status (2026-09-29, nineteenth round) — Ukrainian SEO pages, 18 pages (`703f880`, gh-pages `2004eb6`, staging 133/133 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 133 `put`), 133/133 md5-verified on virtuse.com; uk pages 200 with Ukrainian titles, uk/tax.html links the Ukrainian guides, EN poland carries hreflang en/de/sk/cs/pl/hu/uk/x-default)
 
 - Same pattern as sk/cs/pl/hu. New: `uk/bitcoin-podatky/` (hub + chekhiia,
   slovachchyna, polshcha, avstriia, nimechchyna, uhorshchyna, sloveniia,
