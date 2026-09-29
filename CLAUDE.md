@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, seventeenth round) — Polish SEO pages, 18 pages (`d0d9ad5`, gh-pages `a73065b`, staging 97/97 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_pl_upload.sftp` (18 `-mkdir` + 97 `put`), then md5-verify the 97 files)
+
+- Same pattern as sk/cs. New: `pl/bitcoin-podatki/` (hub + czechy,
+  slowacja, polska, austria, niemcy, wegry, slowenia, chorwacja, rumunia,
+  bulgaria, holandia, francja, hiszpania), `pl/bitcoin-kalkulator-dca/`,
+  `pl/bitcoin-sprzedac-czy-pozyczyc/`, `pl/bitcoin-dziedziczenie/`,
+  `pl/bitcoin-indeks-oplat/`.
+- Data: `meta.json` `slugs.pl`, `names.pl`, `inPl` (w Czechach, na
+  Węgrzech, we Francji), `accPl` (Sprawdź Słowację…), `taxPl` (from the
+  module's Polish dictionary, same facts), `inheritancePl` ("fraza
+  odzyskiwania" like the pl site). `formatPctPl` "0,1%" (no space, pl site
+  style); amounts via `formatEurSk`; `methodPl`. FAQ heading "Najczęstsze
+  pytania"; formal "Państwa" only where needed. `descFit()` drops the
+  description tail for France (would be >155).
+- `PL_ALT`: all EN/DE/SK/CS equivalents carry hreflang pl (order en, de,
+  sk, cs, pl, x-default) and PL in the switch; sitemap, llms, verify (5-way
+  reciprocity on Czechia) updated. pl/index, tax, buy-bitcoin, lending: 30
+  links repointed to `/pl/...`. 375px: no overflow.
+- **Tax advisor fixes now go to FIVE places:** `lib/tax.ts` + dictionaries,
+  `seo-data.json` + `meta.taxDe`, `meta.taxSk`, `meta.taxCs`, `meta.taxPl`.
+
 ## Session status (2026-09-29, sixteenth round) — Czech SEO pages, 18 pages (`140ee7a`, gh-pages `45bfe6f`, staging 79/79 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 79 `put`), 79/79 md5-verified on virtuse.com; cs pages 200 with Czech titles, cs/tax.html links the Czech guides, EN czechia carries hreflang en/de/sk/cs/x-default)
 
 - Same pattern as the Slovak round (entry below). New: `cs/bitcoin-dane/`
