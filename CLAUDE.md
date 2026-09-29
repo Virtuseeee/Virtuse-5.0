@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, ninth round) — Layer 2: France and Spain added, fr/es preselect their country, uk/ru start neutral (`d9804a1`, gh-pages `5b1e1f9`, staging 56/56 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_fres.sh`** (assets, 4 root shells, 36 language shells, then `sftp < /private/tmp/concierge_rm_fres.sftp` for 16 old hashes: 9 shared + 7 dictionary chunks)
+
+- User chose (question asked): add France + Spain rather than a neutral start everywhere; uk/ru get the neutral start.
+- Concierge project: `COUNTRIES` + `COUNTRY_TAX` + Loan `TAX_PRESETS` gain `fr`/`es`. Tax rules (indicative 2025, **need the same expert review as the other countries before noindex is lifted**): FR 30 % PFU (12.8 % IR + 17.2 % PS), no holding exemption, disposals ≤ €305/yr exempt, forms 2086 + 3916-bis, crypto-to-crypto not taxed; ES 19–28 % savings scale, no holding exemption, IRPF + Modelo 721 (> €50k abroad), crypto-to-crypto taxable, FIFO. Loan presets: France 30 %, "Spain (gains €6k–50k)" 21 % (the dropdown shows no notes, so the band is in the name).
+- Defaults: Tax/Loan preselect fr→fr, es→es (cs/de/pl/hu as before, en/sk → sk). uk/ru: Tax starts with no country ("Choose your country above to see its rules."), Loan starts on Custom, which is now shown as a pill with a 0–50 % "Your tax rate on gains" slider (Custom used to be hidden and fixed at 19 %).
+- Concierge routes Spain tax questions to Blockpit too (tax.html: Blockpit makes Spanish reports). "11 EU countries" → 13 in Tax copy, all tax-agent titles/descriptions (shells, project entries, meta/*.json) and the Concierge stats tile. The separate SEO hub `/bitcoin-tax/` (seo-build) still covers its own 11 countries; untouched.
+- Dictionaries 394/394 in all 7. Verified locally: fr/es Tax + Loan preselect, uk/ru neutral (prompt, Custom pill with slider), clicking a country in the neutral state shows its rules, ES tax chat → Blockpit + `tax-agent.html?country=es`, 13 tabs, no overflow at 375.
+
 ## Session status (2026-09-29, eighth round) — Layer 2 space before "%" per language (`5102d41`, gh-pages `75e3a28`, staging 49/49 md5-verified; **live on production** — user ran the command 2026-09-29, 49/49 md5-verified on virtuse.com, 9 old hashes gone; live check on en/sk/de/pl/ru/fr module pages: 0 percentages in the wrong style)
 
 - User: "zjednoť aj medzeru pred %". Site pages count: no space in en/pl/hu/uk/ru ("6%"), space in sk/cs/de/fr/es ("6 %"). `src/lib/i18n.ts`: `PCT_SPACE` map, `pctSep()`, `pct(n)`, and `normPct()` applied to everything `t`, `tv` and `L` return (regex `(\d)[ \u00a0\u202f]?%` → digit + NBSP-or-nothing + %), so source strings and dictionaries stay as they are. Bare JSX percentages (Loan sliders/presets/scenario table, Stacking return presets/fee table/badge, Concierge match score) use `pct()`.
