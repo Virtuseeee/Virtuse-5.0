@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, third round) — Layer 2 modules translated to Polish (`d825977`) + Concierge bubble on all nine blogs (`e1b274c`); gh-pages `8406520`, staging 69/69 md5-verified. **Production pending: user runs `scratchpad/prod_cmd_pl_l2.sh`** (assets, root, 8 language folders + pl, then `sftp < /private/tmp/concierge_rm_pl.sftp`)
+
+- **Blog bubble decision (user: "daj bublinu všade"):** all nine blogs load the launcher. **Real bug found:** de/fr/es blogs already loaded it, but the blog redesign kept those pages' old CSP whose `frame-src` lacked `'self'`, so the bubble opened an empty panel ("Framing … violates … frame-src", live on production for de since 2026-09-28). All nine blogs now allow `'self'`. `blog-sk.html` sits outside sk/, so `concierge-launcher.js` accepts `data-concierge="sk/concierge.html"` on its script tag. `i18n-tools/build_brief_blog.py` adds `'self'` to the copied CSP and `brief_blog_template.html` loads the launcher, so blog rebuilds keep both. uk/ru/hu blogs open the English concierge until their own rounds.
+- PL: pl.ts 382/382; formal "Państwo" in prose, imperative on buttons (the pl site's own CTA style); site terminology (samodzielne/wspólne przechowywanie, portfel sprzętowy, pożyczka pod zastaw Bitcoina, escrow multisig, niepowierniczy); "0,16%", "1 000 €". **Polish declension:** country names are interpolated in the nominative, so every such string introduces them with "kraj: {0}" (the first build said "w tym Polska"; fixed). Watch this for UK/RU/HU too.
+- Verified locally: PL tax flow (Polska → Koinly/CoinTracking/Divly, UTM intact, "Sprawdź zasady w moim kraju" → `tax-agent.html?country=pl`), no English leftovers, no overflow at 375, bubble on pl pages and on all 9 blogs opens the right concierge (blog-sk → sk/, de → de/, uk → EN), tagcheck 0.
+- Another session committed in parallel (`6785f35` author headshot); gh-pages add was limited to this round's paths.
+
 ## Session status (2026-09-29, third round) — New author headshot (`2920ba1`, gh-pages `f0b0e47`, staging md5-verified; **live on production** — user ran the scp, md5-verified on virtuse.com)
 
 - `headshot-ras.jpg` (the only author photo on the static site; used by `article.html` and all 355 story pages via `../../headshot-ras.jpg`) replaced in place with the user's new portrait, cropped square to 400×400. Same filename, so no page changes. Browsers may show the old photo until their cache expires.
