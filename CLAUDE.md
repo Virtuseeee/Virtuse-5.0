@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, thirteenth round) — German grammar pass over all 18 German SEO pages (`4473413`, gh-pages `8691e8c`, staging 22/22 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_degram2_upload.sftp`, then md5-verify the 22 files)
+
+- Language only; tax facts stay for the advisor. "Steuererklärung" instead
+  of "Erklärung", chrome "Steuerratgeber" / "Verwandte Ratgeber" /
+  "Non-Custodial-Hub", comma in "Bitcoin-Steuern in X, Stand …".
+- DCA + fee index: German method names (`methodDe`) and number formats
+  (`formatPctDe` "0,1 %", `formatEurDe` "1.000 €", "/Monat") in
+  `seo-build/lib/util.mjs`; EN output unchanged.
+- Sell vs borrow: the collateral (not the loan) is what gets liquidated;
+  "no invented APRs" / "not invented for SEO" lines removed. Erbrecht:
+  "Erben informieren", full sentences, "Anleitung:" (JSON-LD keeps HowTo).
+- `meta.json` `taxDe`/`inheritanceDe` wording fixed (hr/ro/si/sk/de notes,
+  fr/es "Keine Haltedauer-Befreiung"). The shared answer pad now says
+  "Angaben aus den Live-Modulen von Virtuse" / "Figures copied unchanged
+  from Virtuse's live modules" (it also landed on DCA/Erbrecht), so 3 EN
+  tax pages + the fee-index embed changed too.
+
 ## Session status (2026-09-29, twelfth round) — Internal REVIEW notes removed from the German SEO tax pages (`c697b3f`, gh-pages `9dcb8b6`, staging 13/13 md5-verified; **live on production** — user ran the sftp batch 2026-09-29, 13/13 md5-verified, 0 "REVIEW" on the three pages live). Follow-up fixed the same day (`874ae2a`, gh-pages `2326eef`, staging 15/15): German "in <Land>" now uses `meta.inDe` (in der Slowakei, in den Niederlanden) via `inDe()` in H1, descriptions, answers, FAQs and neighbour links; German descriptions read "… (Q3 2026): …" to stay ≤155 chars; hub FAQs "Elf EU-Länder" / "Eleven" now use N. **Live on production** (user ran the sftp batch 2026-09-29, 15/15 md5-verified; live H1s "in der Slowakei", "in den Niederlanden", hub FAQ "13 EU-Länder")
 
 - User: "odstráň tie REVIEW poznámky hneď". `de/bitcoin-steuern/{oesterreich,slowenien,niederlande}/` showed an English "REVIEW: …" paragraph from `seo-build/data/meta.json` `taxDe[].review` (by design per CONTENT-OPS.md). `generate.mjs` no longer renders `review`; the field stays in the data as an internal flag (also on the advisor review page as `seo.6`–`seo.8`); CONTENT-OPS.md updated. The other 10 German pages only lose an empty line. Verify passes.
