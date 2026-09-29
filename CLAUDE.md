@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, third round) — New author headshot (`2920ba1`, gh-pages `f0b0e47`, staging md5-verified; production pending the user's scp)
+## Session status (2026-09-29, third round) — New author headshot (`2920ba1`, gh-pages `f0b0e47`, staging md5-verified; **live on production** — user ran the scp, md5-verified on virtuse.com)
 
 - `headshot-ras.jpg` (the only author photo on the static site; used by `article.html` and all 355 story pages via `../../headshot-ras.jpg`) replaced in place with the user's new portrait, cropped square to 400×400. Same filename, so no page changes. Browsers may show the old photo until their cache expires.
 - WordPress author avatars on blog.virtuse.com are separate and were not touched.
