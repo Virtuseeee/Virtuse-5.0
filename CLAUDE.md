@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, eighth round) — Layer 2 space before "%" per language (`5102d41`, gh-pages `75e3a28`, staging 49/49 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_pct.sh`** (assets, 4 root shells, 36 language shells, then `sftp < /private/tmp/concierge_rm_pct.sftp` for 9 old hashes)
+## Session status (2026-09-29, eighth round) — Layer 2 space before "%" per language (`5102d41`, gh-pages `75e3a28`, staging 49/49 md5-verified; **live on production** — user ran the command 2026-09-29, 49/49 md5-verified on virtuse.com, 9 old hashes gone; live check on en/sk/de/pl/ru/fr module pages: 0 percentages in the wrong style)
 
 - User: "zjednoť aj medzeru pred %". Site pages count: no space in en/pl/hu/uk/ru ("6%"), space in sk/cs/de/fr/es ("6 %"). `src/lib/i18n.ts`: `PCT_SPACE` map, `pctSep()`, `pct(n)`, and `normPct()` applied to everything `t`, `tv` and `L` return (regex `(\d)[ \u00a0\u202f]?%` → digit + NBSP-or-nothing + %), so source strings and dictionaries stay as they are. Bare JSX percentages (Loan sliders/presets/scenario table, Stacking return presets/fee table/badge, Concierge match score) use `pct()`.
 - **English changes** here: "6 %" → "6%" to match the English pages.
