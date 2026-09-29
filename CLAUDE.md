@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, sixteenth round) — Czech SEO pages, 18 pages (`140ee7a`, gh-pages `45bfe6f`, staging 79/79 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_cs_upload.sftp` (18 `-mkdir` + 79 `put`), then md5-verify the 79 files)
+## Session status (2026-09-29, sixteenth round) — Czech SEO pages, 18 pages (`140ee7a`, gh-pages `45bfe6f`, staging 79/79 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 79 `put`), 79/79 md5-verified on virtuse.com; cs pages 200 with Czech titles, cs/tax.html links the Czech guides, EN czechia carries hreflang en/de/sk/cs/x-default)
 
 - Same pattern as the Slovak round (entry below). New: `cs/bitcoin-dane/`
   (hub + cesko, slovensko, polsko, rakousko, nemecko, madarsko, slovinsko,
