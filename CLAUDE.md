@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, twelfth round) — Internal REVIEW notes removed from the German SEO tax pages (`c697b3f`, gh-pages `9dcb8b6`, staging 13/13 md5-verified). **Production pending: user runs `cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_review_upload.sftp`** (13 `put`, no new folders)
+
+- User: "odstráň tie REVIEW poznámky hneď". `de/bitcoin-steuern/{oesterreich,slowenien,niederlande}/` showed an English "REVIEW: …" paragraph from `seo-build/data/meta.json` `taxDe[].review` (by design per CONTENT-OPS.md). `generate.mjs` no longer renders `review`; the field stays in the data as an internal flag (also on the advisor review page as `seo.6`–`seo.8`); CONTENT-OPS.md updated. The other 10 German pages only lose an empty line. Verify passes.
+
 ## Session status (2026-09-29, eleventh round) — SEO tax hub gets France + Spain (13 countries) and tax.html guide blocks updated (`5894382`, gh-pages `cf2340e`, staging 47/47 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (6 `-mkdir` + 47 `put`, kept at scratchpad `seo_fres_upload.sftp`), 47/47 md5-verified on virtuse.com; /bitcoin-tax/ title "13 EU countries", new FR/ES pages 200, sitemap lists them)
 
 - User pointed at https://virtuse.com/bitcoin-tax/ after the Layer 2 modules went to 13 countries. `seo-build` is a separate generator with its own copy of the country data: added fr/es to `data/seo-data.json` (EN strings copied from `lib/tax.ts`) and `data/meta.json` (slugs france/spain + frankreich/spanien, German names, EUR, neighbours fr→[es,de], es→[fr], de+fr, `taxDe` from the module's German dictionary). `generate.mjs` now uses `N = COUNTRIES.length` instead of 21 hardcoded "11"s (12 single-quoted strings turned into template literals). Generate + verify: 53 pages, 0 errors.
