@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29) — Layer 2 modules translated to French (`df5f079`, gh-pages `ddb8d69` + `e0632e6`, staging 53/53 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_fr_l2.sh`** (assets first, then shells + fr pages, then `sftp < /private/tmp/concierge_rm_fr.sftp` for the 9 old hashes)
+## Session status (2026-09-29) — Layer 2 modules translated to French (`df5f079`, gh-pages `ddb8d69` + `e0632e6`, staging 53/53 md5-verified; **live on production** — user ran the command 2026-09-29, 53/53 md5-verified on virtuse.com, the 9 old hashes gone). Next: ES
 
 - First round of "the other languages on this Mac" (order FR → ES → PL → HU → UK → RU, one per round). Ran the persisted `i18n-tools/layer2/` pipeline from the DE pilot unchanged: `dict.py template fr` → 382 strings translated → `dict.py build fr` (382/382, 0 placeholder mismatches) → `meta/fr.json` → `pages.py fr` (4 fr module shells, 107 links on 22 fr pages repointed to the local modules, launcher on every fr page) → `fr:` COPY block added to `concierge-launcher.js` by hand (pages.py warns when it is missing) → `gen_chrome.py` → `npm run build` → `deploy.py`.
 - French typography applied in a post-pass: U+00A0 before `: ; ? ! %`, inside « », in thousands ("1 000") and before €. Register vous; tool names stay English; terminology from the fr site pages (auto-conservation, dépositaire, séquestre, prêt garanti par Bitcoin, portefeuille matériel).
