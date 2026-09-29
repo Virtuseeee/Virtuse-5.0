@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, fifth round) — Layer 2 modules translated to Ukrainian (`85786cc`, gh-pages `0ee9b9d`, staging 66/66 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_uk_l2.sh`** (assets, root, 8 language folders, then `sftp < /private/tmp/concierge_rm_uk.sftp` for 9 old hashes)
+
+- uk.ts 382/382; "ви" register; site terminology (самостійне/спільне зберігання, апаратний гаманець, позика під заставу Біткоїна, ескроу на мультипідписі, некастодіальний, кастодіан, комісії, перевірені партнери); capital "Біткоїн", «» quotes, "%" without a space (site house style), copula dashes as on uk pages. Numerals avoided before plural nouns where the count varies ("(22)"); country names go in as "(країна: {0})".
+- uk/blog's bubble now opens uk/concierge.html (it opened the English one after the blog round). Loan/Tax preselect Slovakia on uk pages (no Ukraine in the 11-country list).
+- Verified locally: UK custody flow (Польща → Blockstream/Ledger, UTM intact, "Правила моєї країни" → `tax-agent.html?country=pl`), module switcher lists 9 languages, no English leftovers on the tools, no overflow at 375, bubble on uk pages and uk/blog, tagcheck 0.
+- Remaining: RU.
+
 ## Session status (2026-09-29, fourth round) — Layer 2 modules translated to Hungarian (`ce855b4`, gh-pages `d3c4cca`, staging 68/68 md5-verified; **live on production** — user ran the command 2026-09-29, 68/68 md5-verified on virtuse.com, all 13 old hashes gone). Next: UK
 
 - hu.ts 382/382; neutral register with "Ön" where address is needed; site terminology (saját őrzés, letétkezelés/letétkezelő, nem letétkezelő, hardvertárca, Bitcoin-fedezetű hitel, multisig escrow, ellenőrzött partner, ajánlói jutalék); singular noun after numerals; "0,16%", "1 000 €". Country names go in as "(ország: {0})" so no case suffix is needed.
