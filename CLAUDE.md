@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, sixth round) — Layer 2 modules translated to Russian (`06be1e8`, gh-pages `aad58fb`, staging 70/70 md5-verified). **All 10 site languages now have their own Layer 2 modules.** **Production pending: user runs `scratchpad/prod_cmd_ru_l2.sh`** (assets, root, 9 language folders, then `sftp < /private/tmp/concierge_rm_ru.sftp` for 9 old hashes)
+
+- ru.ts 382/382; "вы" register; site terminology (самостоятельное/совместное хранение, аппаратный кошелёк, заём под залог Биткоина, мультиподписной эскроу, некастодиальный, кастодиан, проверенные партнёры); capital "Биткоин", ё, «» quotes, "0,16%". Country names go in as "(страна: {0})".
+- Verified locally: RU earn flow (Германия → Coinrule/RevenueBot, UTM intact), module switcher lists all 10 languages, no English leftovers on the tools, no overflow at 375, bubble on ru pages and ru/blog, tagcheck 0. Sitewide sweep: no language page links `../concierge|stacking|loan|tax-agent.html` any more, and every non-404, non-tool page in every language folder loads the launcher.
+- **Whole translation (2026-09-27 → 29), for the record:** DE pilot, then FR, ES, PL, HU, UK, RU, one round each with the `i18n-tools/layer2/` pipeline (see its README). Still open, all flagged in the round entries: native/tax review of the translated Tax Agent country rules (all languages) before `noindex` is lifted; amounts formatted `en-IE` in every language; chart decimal point; Loan/Tax preselect Slovakia on fr/es/uk/ru pages (their countries are not in the 11-country list).
+
 ## Session status (2026-09-29, fifth round) — Layer 2 modules translated to Ukrainian (`85786cc`, gh-pages `0ee9b9d`, staging 66/66 md5-verified; **live on production** — user ran the command 2026-09-29, 66/66 md5-verified on virtuse.com, the 9 old hashes gone). Next: RU
 
 - uk.ts 382/382; "ви" register; site terminology (самостійне/спільне зберігання, апаратний гаманець, позика під заставу Біткоїна, ескроу на мультипідписі, некастодіальний, кастодіан, комісії, перевірені партнери); capital "Біткоїн", «» quotes, "%" without a space (site house style), copula dashes as on uk pages. Numerals avoided before plural nouns where the count varies ("(22)"); country names go in as "(країна: {0})".
@@ -7044,7 +7050,8 @@ Inheritance Agent**
 ([`tax-agent.html`](Kimi_Agent_Virtuse%20MiCA%20Partners/tax-agent.html)
 — note the `-agent` suffix: `tax.html` itself is the real, separate
 "Bitcoin Tax Reporting" category page, live since 2026-09-09). All four
-are `noindex` (not yet marketing/SEO-reviewed) and English-only. Their
+are `noindex` (not yet marketing/SEO-reviewed); since 2026-09-29 they exist in all 10 site
+languages (`<lang>/concierge.html` etc., pipeline in `i18n-tools/layer2/`). Their
 shared source (a separate React/Vite project building all four as
 independent Vite entries) lives **outside this repo** at
 `~/Documents/virtuse-concierge-deploy/bitcoin-concierge/` — only the
