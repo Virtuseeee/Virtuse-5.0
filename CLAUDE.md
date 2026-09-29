@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, twelfth round) — Internal REVIEW notes removed from the German SEO tax pages (`c697b3f`, gh-pages `9dcb8b6`, staging 13/13 md5-verified). **Production pending: user runs `cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_review_upload.sftp`** (13 `put`, no new folders)
+## Session status (2026-09-29, twelfth round) — Internal REVIEW notes removed from the German SEO tax pages (`c697b3f`, gh-pages `9dcb8b6`, staging 13/13 md5-verified; **live on production** — user ran the sftp batch 2026-09-29, 13/13 md5-verified, 0 "REVIEW" on the three pages live). Noticed while checking: the German template prints "Bitcoin-Steuern in Niederlande" (should be "in den Niederlanden"; `nameDe` is used after "in" without an article) — not fixed, flagged to the user
 
 - User: "odstráň tie REVIEW poznámky hneď". `de/bitcoin-steuern/{oesterreich,slowenien,niederlande}/` showed an English "REVIEW: …" paragraph from `seo-build/data/meta.json` `taxDe[].review` (by design per CONTENT-OPS.md). `generate.mjs` no longer renders `review`; the field stays in the data as an internal flag (also on the advisor review page as `seo.6`–`seo.8`); CONTENT-OPS.md updated. The other 10 German pages only lose an empty line. Verify passes.
 
