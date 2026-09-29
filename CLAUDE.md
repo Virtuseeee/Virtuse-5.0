@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, eighteenth round) — Hungarian SEO pages, 18 pages (`2a90078`, gh-pages `d9461d8`, staging 115/115 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_hu_upload.sftp` (18 `-mkdir` + 115 `put`), then md5-verify the 115 files)
+## Session status (2026-09-29, eighteenth round) — Hungarian SEO pages, 18 pages (`2a90078`, gh-pages `d9461d8`, staging 115/115 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 115 `put`), 115/115 md5-verified on virtuse.com; hu pages 200 with Hungarian titles, hu/tax.html links the Hungarian guides, EN hungary carries hreflang en/de/sk/cs/pl/hu/x-default)
 
 - Same pattern as sk/cs/pl. New: `hu/bitcoin-adozas/` (hub + csehorszag,
   szlovakia, lengyelorszag, ausztria, nemetorszag, magyarorszag, szlovenia,
