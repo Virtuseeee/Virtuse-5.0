@@ -75,6 +75,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/pl/bitcoin-dziedziczenie/
 - https://virtuse.com/pl/bitcoin-indeks-oplat/
 
+## Hungarian
+
+- https://virtuse.com/hu/bitcoin-adozas/
+- https://virtuse.com/hu/bitcoin-dca-kalkulator/
+- https://virtuse.com/hu/bitcoin-eladas-vagy-hitel/
+- https://virtuse.com/hu/bitcoin-orokles/
+- https://virtuse.com/hu/bitcoin-dijindex/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt
