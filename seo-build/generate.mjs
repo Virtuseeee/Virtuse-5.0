@@ -24,6 +24,7 @@ import {
   formatPctPl,
   methodPl,
   methodHu,
+  methodUk,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -63,6 +64,7 @@ const asOfSk = formatAsOf(AS_OF, 'sk');
 const asOfCs = formatAsOf(AS_OF, 'cs');
 const asOfPl = formatAsOf(AS_OF, 'pl');
 const asOfHu = formatAsOf(AS_OF, 'hu');
+const asOfUk = formatAsOf(AS_OF, 'uk');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -124,6 +126,19 @@ function nameHu(id) {
   if (!s) throw new Error(`Missing HU name for country id "${id}". Add it in seo-build/data/meta.json.`);
   return s;
 }
+function slugUk(id) {
+  const s = meta.slugs.uk[id];
+  if (!s) throw new Error(`Missing UK slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function nameUk(id) {
+  const s = meta.names.uk[id];
+  if (!s) throw new Error(`Missing UK name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** Ukrainian locative (у Словаччині, в Австрії) and accusative (Словаччину). */
+function inUk(id) { return meta.inUk[id]; }
+function accUk(id) { return meta.accUk[id]; }
 /** Hungarian inessive: -ban/-ben, but Magyarországon. */
 function inHu(id) { return meta.inHu[id]; }
 /** Czech accusative: only Francie changes (Francii); the -o names stay. */
@@ -190,12 +205,27 @@ const HU_ALT = {
 for (const c of COUNTRIES) {
   HU_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `hu/bitcoin-adozas/${meta.slugs.hu[c.id]}/index.html`;
 }
+/** EN page -> its Ukrainian counterpart. */
+const UK_ALT = {
+  'bitcoin-tax/index.html': 'uk/bitcoin-podatky/index.html',
+  'bitcoin-dca-calculator/index.html': 'uk/bitcoin-kalkuliator-dca/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'uk/bitcoin-prodaty-chy-pozychyty/index.html',
+  'bitcoin-inheritance/index.html': 'uk/bitcoin-spadshchyna/index.html',
+  'bitcoin-fee-index/index.html': 'uk/bitcoin-indeks-komisii/index.html'
+};
+for (const c of COUNTRIES) {
+  UK_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `uk/bitcoin-podatky/${meta.slugs.uk[c.id]}/index.html`;
+}
 
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const ukPath = UK_ALT[enPath];
+  if (ukPath) {
+    tags.splice(1, 0, { lang: 'uk', href: abs(ukPath), path: canonicalPath(ukPath) });
+  }
   const huPath = HU_ALT[enPath];
   if (huPath) {
     tags.splice(1, 0, { lang: 'hu', href: abs(huPath), path: canonicalPath(huPath) });
@@ -252,6 +282,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'uk' ? [
+      `Дані з модулів Virtuse станом на ${asOfUk}.`,
+      'Virtuse ніколи не зберігає ваші ключі.',
+      'Перевірте місцеві правила; це не податкова консультація.'
     ]
     : lang === 'hu' ? [
       `Adatok a Virtuse élő moduljaiból, ${asOfHu} állapot szerint.`,
@@ -1034,6 +1069,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'uk') {
+      return `<h3>${esc(formatEurSk(amt))} на місяць</h3>` +
+        tableHtml(['Місце', 'Партнер', 'Метод', 'Комісія', 'Річні комісії'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodUk(r.method)),
+          esc(formatPctPl(r.pct) + (r.monthly ? ` + ${formatEurSk(r.monthly)} на місяць` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     if (lang === 'hu') {
       return `<h3>Havi ${esc(formatEurSk(amt))}</h3>` +
         tableHtml(['Helyezés', 'Partner', 'Módszer', 'Díj', 'Éves díjak'], ranked.map((r, i) => [
@@ -1089,7 +1134,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'hu') {
+  if (lang === 'uk') {
+    if (be.status === 'always') {
+      beText = `За опублікованими комісіями найдешевший автоматичний шлях (${be.auto.partner}) від 1 € на місяць коштує на рік стільки ж або менше, ніж найдешевший ручний шлях (${be.manual.partner}).`;
+    } else if (be.status === 'found') {
+      beText = `Точка беззбитковості: від ${formatEurSk(be.monthlyEur)} на місяць ${be.auto.partner} (автоматично) не дорожчий за ${be.manual.partner} (вручну).`;
+    } else {
+      beText = 'До 20 000 € на місяць найдешевший автоматичний шлях не перевершує найдешевший ручний.';
+    }
+  } else if (lang === 'hu') {
     if (be.status === 'always') {
       beText = `A közzétett díjak alapján a legolcsóbb automatizált út (${be.auto.partner}) havi 1 €-tól ugyanannyiba vagy kevesebbe kerül évente, mint a legolcsóbb manuális út (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -2795,6 +2848,332 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   });
 }
 
+// ---------- Ukrainian (uk/) ----------
+function ukHome(relFile) { return { name: 'Головна', href: toRoot(relFile, 'uk/index.html'), abs: abs('uk/index.html') }; }
+
+// UK tax hub
+{
+  const relFile = 'uk/bitcoin-podatky/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(c.id)}/`))}">${esc(nameUk(c.id))}</a>`,
+    esc(meta.taxUk[c.id].gainTax),
+    esc(meta.taxUk[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Які країни охоплює цей огляд?', a: `${N} країн ЄС: ${COUNTRIES.map((c) => nameUk(c.id)).join(', ')}. Станом на ${asOfUk}, дані з модуля Virtuse Tax.` },
+    { q: 'Це податкова консультація?', a: 'Ні. Довідковий огляд 2026, не є податковою консультацією. Правила поточного року уточніть у місцевого консультанта.' },
+    { q: 'Чи повідомляє Virtuse про мої активи податковій службі?', a: 'Ні. Virtuse ніколи не зберігає ваші ключі чи історію транзакцій. KYC проводять самі партнери.' },
+    { q: 'Де, крім податків, перевірити й спадкування?', a: `У модулі Tax & Inheritance Agent, з тими самими ${N} країнами та перевіркою готовності до мультипідпису.` }
+  ];
+  const answer = finalizeAnswer([
+    `Цей огляд порівнює оподаткування Біткоїна в ${N} країнах ЄС станом на ${asOfUk}.`,
+    'Ставки, звільнення і примітки щодо декларування взято з модуля Virtuse Tax.',
+    'Німеччина та Австрія звільняють прибуток після 1 року володіння, Чехія застосовує 3-річний тест часу, а Нідерланди замість податку на прибуток оподатковують умовний дохід (Box 3).',
+    'Довідковий огляд 2026, не є податковою консультацією.'
+  ], 'uk');
+  pushPage({
+    relFile, lang: 'uk',
+    title: assertTitle(`Податки на Біткоїн у ${N} країнах ЄС (2026)`),
+    description: assertDescription(`Ставки податку на Біткоїн, звільнення за строк володіння і декларування в ${N} країнах ЄС станом на ${asOfUk}. Довідковий огляд.`),
+    h1: `Податки на Біткоїн у ${N} країнах ЄС`,
+    answerHtml: esc(answer),
+    breadcrumbs: [ukHome(relFile), { name: 'Податки на Біткоїн', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' },
+      { href: toRoot(relFile, 'uk/bitcoin-spadshchyna/'), label: 'Біткоїн і спадкування' },
+      { href: toRoot(relFile, 'uk/bitcoin-indeks-komisii/'), label: 'Індекс комісій за Біткоїн' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'uk/' + TAX_AGENT), label: 'Відкрити Tax & Inheritance Agent →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Кожна сторінка країни показує податок на прибуток, можливе звільнення за строк володіння і порядок декларування станом на ${esc(asOfUk)}. Модуль Tax & Inheritance Agent використовує ті самі дані й додає оцінку готовності до спадкування.</p>
+<h2>Порівняння країн</h2>
+${tableHtml(['Країна', 'Податок на прибуток', 'Звільнення'], rows)}
+${faqHtml(faqs, 'Часті запитання')}
+`
+  });
+}
+
+// UK country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `uk/bitcoin-podatky/${slugUk(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxUk[c.id];
+  const inN = inUk(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Який податок на Біткоїн ${inN}?`, a: `Станом на ${asOfUk}: ${t.gainTax}. Довідковий огляд 2026, не є податковою консультацією.` },
+    { q: `Чи є ${inN} звільнення за строк володіння?`, a: `${t.exemption}. Перед поданням декларації уточніть правила поточного року в місцевого податкового консультанта.` },
+    { q: `Як ${inN} декларують прибуток від Біткоїна?`, a: `${t.filing}. ${t.note}` },
+    { q: 'Чи зберігає Virtuse мій Біткоїн або подає за мене декларацію?', a: `Ні. Virtuse ніколи не зберігає ваші ключі. KYC і реєстрація відбуваються в партнера. Tax Agent порівняє огляд ${N} країн; декларацію підготує кваліфікований податковий консультант.` }
+  ];
+  const answer = finalizeAnswer([
+    `Податки на Біткоїн ${inN} станом на ${asOfUk}: ${t.gainTax}.`,
+    `Звільнення: ${t.exemption}.`,
+    `Декларування: ${t.filing}.`,
+    t.note,
+    'Довідковий огляд 2026, не є податковою консультацією.'
+  ], 'uk');
+  pushPage({
+    relFile, lang: 'uk',
+    title: assertTitle(`Податки на Біткоїн ${inN} (${asOfUk})`),
+    description: assertDescription(descFit(`Податки на Біткоїн ${inN} (${asOfUk}): ${t.gainTax}.`, 'Не є податковою консультацією.')),
+    h1: `Податки на Біткоїн ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      ukHome(relFile),
+      { name: 'Податки на Біткоїн', href: toRoot(relFile, 'uk/bitcoin-podatky/'), abs: abs('uk/bitcoin-podatky/index.html') },
+      { name: nameUk(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'uk/bitcoin-prodaty-chy-pozychyty/'), label: 'Біткоїн: продати чи позичити' },
+      { href: toRoot(relFile, 'uk/bitcoin-spadshchyna/'), label: 'Біткоїн і спадкування' },
+      { href: toRoot(relFile, nbs[0] ? `uk/bitcoin-podatky/${slugUk(nbs[0].id)}/` : 'uk/bitcoin-podatky/'), label: nbs[0] ? `Податки на Біткоїн ${inUk(nbs[0].id)}` : 'Усі країни' }
+    ],
+    moduleCta: { href: toRoot(relFile, `uk/${TAX_AGENT}?country=${c.id}`), label: `Перевірити ${accUk(c.id)} у Tax Agent →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Дані станом на ${esc(asOfUk)}, взято з модуля Virtuse Tax.</p>
+<h2>Ставки й декларування</h2>
+${tableHtml(['Поле', 'Станом на ' + asOfUk], [
+  ['Податок на прибуток', esc(t.gainTax)],
+  ['Звільнення', esc(t.exemption)],
+  ['Декларування', esc(t.filing)],
+  ['Примітка', esc(t.note)]
+])}
+<h2>Коли зазвичай виникає податок?</h2>
+<p>${esc(t.note)} Купівля Біткоїна в цьому огляді не вважається відчуженням; перед оплатою, обміном, даруванням чи позикою монет перевірте місцеві правила.</p>
+<h2>Сусідні країни</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(n.id)}/`))}">Податки на Біткоїн ${esc(inUk(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Часті запитання')}
+`
+  });
+}
+
+// UK DCA calculator
+{
+  const relFile = 'uk/bitcoin-kalkuliator-dca/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Чи прогнозує цей калькулятор ціну Біткоїна?', a: 'Ні. Він порівнює лише комісії партнерів за опублікованою тарифною таблицею. Дохідність від ціни Біткоїна не моделюється.' },
+    { q: `Який стандартний план станом на ${asOfUk}?`, a: 'Одноразово 500 €, потім 100 € на місяць протягом 12 місяців. Порядок за комісіями першого року.' },
+    { q: 'Який шлях у цьому плані найдешевший?', a: `${win.partner} (${methodUk(win.method)}) зі змінною комісією ${formatPctPl(win.pct)} за формулою Stacking Strategist.` },
+    { q: 'Це інвестиційна консультація?', a: 'Ні. Лише для освітніх цілей. KYC відбувається в партнера. Virtuse ніколи не зберігає ваші ключі.' }
+  ];
+  const answer = finalizeAnswer([
+    `Станом на ${asOfUk} у DCA-прикладі лише з комісіями (500 €, потім 100 € на місяць протягом 12 місяців) перше місце посідає ${win.partner}.`,
+    `Змінна комісія: ${formatPctPl(win.pct)}. Це не прогноз ціни.`,
+    'Комісії взято з тарифної таблиці модуля Stacking Strategist і пораховано за тією самою формулою. Довідковий огляд 2026.'
+  ], 'uk');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'uk',
+    title: assertTitle('DCA-калькулятор для Біткоїна (комісії ЄС 2026)'),
+    description: assertDescription(`DCA-калькулятор для Біткоїна лише з урахуванням комісій, станом на ${asOfUk}. Стандарт 500 € + 100 € на місяць, найдешевший шлях: ${win.partner}.`),
+    h1: 'DCA-калькулятор для Біткоїна',
+    answerHtml: esc(answer),
+    breadcrumbs: [ukHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'uk/bitcoin-indeks-komisii/'), label: 'Індекс комісій за Біткоїн' },
+      { href: toRoot(relFile, 'uk/bitcoin-prodaty-chy-pozychyty/'), label: 'Біткоїн: продати чи позичити' },
+      { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'uk/stacking.html'), label: 'Відкрити Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'DCA-калькулятор для Біткоїна',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Стандартний приклад: 500 €, потім 100 € на місяць × 12. Та сама формула, що й у модулі Stacking Strategist.</p>
+<h2>Рейтинг при 100 € на місяць</h2>
+${tableHtml(['Місце', 'Партнер', 'Метод', 'Змінна комісія', 'Річні комісії'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodUk(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Часті запитання')}
+`
+  });
+}
+
+// UK sell vs borrow
+{
+  const relFile = 'uk/bitcoin-prodaty-chy-pozychyty/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `Чи виникає податок при продажу в цих ${N} країнах?`, a: `Зазвичай так, при продажу або обміні. Звільнення різняться: Німеччина 0% після 1 року володіння, Чехія 3-річний тест часу, Польща без звільнення. Станом на ${asOfUk}. Не є податковою консультацією.` },
+    { q: 'Чи є позика такою самою податковою подією, як продаж?', a: 'У цьому огляді ні. Відсотки, ризик ліквідації та KYC у партнера все одно залишаються. Конкретні цифри розрахує Loan & Liquidity Copilot.' },
+    { q: 'Що таке ризик ліквідації?', a: 'Якщо вартість застави впаде до порогу партнера, партнер може продати заставу й погасити нею позику. Virtuse ніколи не зберігає ваші ключі чи заставу.' },
+    { q: 'Де розрахувати конкретну суму?', a: 'У модулі Loan & Liquidity Copilot. Ця сторінка пояснює лише різницю між податком і ризиком на основі опублікованих податкових ставок.' }
+  ];
+  const answer = finalizeAnswer([
+    `Станом на ${asOfUk} продаж Біткоїна може спричинити податок (наприклад, у Німеччині до 45% протягом 1 року володіння, у Румунії фіксовані 10%).`,
+    'Позика під заставу Біткоїна зберігає ринкову позицію, але додає відсотки та ризик ліквідації в партнера.',
+    'Довідковий огляд 2026, не є податковою чи кредитною консультацією. Virtuse ніколи не зберігає ваші ключі.'
+  ], 'uk');
+  pushPage({
+    relFile, lang: 'uk',
+    title: assertTitle('Біткоїн: продати чи позичити? (2026)'),
+    description: assertDescription(`Продати Біткоїн і сплатити податок чи взяти позику під його заставу й залишитися інвестованим? Ставки ${N} країн ЄС станом на ${asOfUk}.`),
+    h1: 'Продати Біткоїн чи взяти позику під його заставу?',
+    answerHtml: esc(answer),
+    breadcrumbs: [ukHome(relFile), { name: 'Продати чи позичити', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' },
+      { href: toRoot(relFile, 'uk/bitcoin-kalkuliator-dca/'), label: 'DCA-калькулятор' },
+      { href: toRoot(relFile, 'uk/bitcoin-spadshchyna/'), label: 'Біткоїн і спадкування' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'uk/loan.html'), label: 'Порівняти в Loan Copilot →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Біткоїн: продати чи позичити',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Податок при продажу</h2>
+${tableHtml(['Країна', 'Податок на прибуток', 'Звільнення'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(c.id)}/`))}">${esc(nameUk(c.id))}</a>`,
+  esc(meta.taxUk[c.id].gainTax),
+  esc(meta.taxUk[c.id].exemption)
+]))}
+<h2>Ризик при позиці</h2>
+<p>Позики під заставу Біткоїна надають регульовані партнери, а не Virtuse. Ви зберігаєте цінову експозицію, сплачуєте відсотки, а заставу можуть ліквідувати. Virtuse ніколи не зберігає заставу.</p>
+${faqHtml(faqs, 'Часті запитання')}
+`
+  });
+}
+
+// UK inheritance
+{
+  const relFile = 'uk/bitcoin-spadshchyna/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: 'Чи може в листі з інструкціями бути сід-фраза?', a: 'Ні. Лист містить перелік, місця та контакти, але ніколи не сід-фрази. Зберігайте його разом із заповітом або в юриста.' },
+    { q: 'Чому мультипідпис 2 з 3?', a: 'Одна сід-фраза — це єдина точка відмови, для вас і для ваших спадкоємців.' },
+    { q: 'Чи зберігає Virtuse ключі для спадкоємців?', a: 'Ні. Virtuse ніколи не зберігає ваші ключі.' },
+    { q: 'Це юридична консультація?', a: `Ні. Це чекліст для освітніх цілей із модуля Tax станом на ${asOfUk}.` }
+  ];
+  const answer = finalizeAnswer([
+    `Станом на ${asOfUk} чекліст модуля Tax має шість пунктів: лист з інструкціями, географічний розподіл ключів, поінформований спадкоємець, мультипідпис 2 з 3, перевірка відновлення і задокументовані рахунки.`,
+    'Одна сід-фраза — це єдина точка відмови. Virtuse ніколи не зберігає ваші ключі.',
+    'Не є юридичною консультацією.'
+  ], 'uk');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'Підготовка Біткоїна до спадкування',
+    inLanguage: 'uk',
+    step: meta.inheritanceUk.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'uk',
+    title: assertTitle('Біткоїн і спадкування: чекліст (2026)'),
+    description: assertDescription(`Чекліст із шести пунктів для спадкування Біткоїна станом на ${asOfUk}: лист з інструкціями, розподіл ключів, мультипідпис 2 з 3. Не юридична консультація.`),
+    h1: 'Спадкування Біткоїна: чекліст',
+    answerHtml: esc(answer),
+    breadcrumbs: [ukHome(relFile), { name: 'Спадкування', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' },
+      { href: toRoot(relFile, 'uk/bitcoin-podatky/'), label: `Податки в ${N} країнах ЄС` },
+      { href: toRoot(relFile, 'uk/bitcoin-prodaty-chy-pozychyty/'), label: 'Біткоїн: продати чи позичити' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'uk/' + TAX_AGENT), label: 'Оцінити чекліст у Tax Agent →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>Зміст відповідає чеклісту модуля Tax. Не є юридичною консультацією.</p>
+<h2>Інструкція: шість кроків</h2>
+<ol>${meta.inheritanceUk.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Часті запитання')}
+`
+  });
+}
+
+// UK fee index
+{
+  const relFile = 'uk/bitcoin-indeks-komisii/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'uk');
+  const faqs = [
+    { q: 'Що вимірює індекс комісій?', a: `Річні комісії шляхів купівлі станом на ${asOfUk} за формулою модуля Stacking Strategist.` },
+    { q: 'Хто найдешевший при 100 € на місяць?', a: `${winner.partner}: ${formatPctPl(winner.pct)}, річні комісії ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Чи враховано спреди?', a: 'Ні. Лише відсоткову комісію та можливу щомісячну підписку за тарифною таблицею. Курсові різниці й комісії мережі Біткоїн (miner fees) не враховано.' },
+    { q: 'Чи можна цитувати таблицю?', a: `Так, із зазначенням джерела «Джерело: індекс комісій за Біткоїн від Virtuse, станом на ${asOfUk}» і посиланням.` }
+  ];
+  const answer = finalizeAnswer([
+    `Індекс комісій за Біткоїн від Virtuse станом на ${asOfUk} ранжує шляхи купівлі в ЄС за річними комісіями.`,
+    `При 100 € на місяць лідирує ${winner.partner} (${methodUk(winner.method)}) з комісією ${formatPctPl(winner.pct)}, ${formatEurSk(winner.annualDrag)} на рік.`,
+    beText,
+    'Це не пропозиція. Virtuse ніколи не зберігає ваші ключі.'
+  ], 'uk');
+  pushPage({
+    relFile, lang: 'uk',
+    title: assertTitle('Індекс комісій за Біткоїн (ЄС) Q3 2026'),
+    description: assertDescription(`Шляхи купівлі в ЄС за комісіями станом на ${asOfUk}. Найдешевший шлях при 100 € на місяць: ${winner.partner}, ${formatPctPl(winner.pct)}.`),
+    h1: 'Індекс комісій за Біткоїн',
+    answerHtml: esc(answer),
+    breadcrumbs: [ukHome(relFile), { name: 'Індекс комісій', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'uk/bitcoin-kalkuliator-dca/'), label: 'DCA-калькулятор' },
+      { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Методологія (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'uk/stacking.html'), label: 'Відкрити Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Індекс комісій за Біткоїн від Virtuse',
+        inLanguage: 'uk',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Індекс комісій за Біткоїн від Virtuse',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Рейтинг за щомісячним внеском</h2>
+${tables}
+<h2>Автоматично чи вручну?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Часті запитання')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -2873,6 +3252,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/hu/bitcoin-orokles/
 - ${ORIGIN}/hu/bitcoin-dijindex/
 
+## Ukrainian
+
+- ${ORIGIN}/uk/bitcoin-podatky/
+- ${ORIGIN}/uk/bitcoin-kalkuliator-dca/
+- ${ORIGIN}/uk/bitcoin-prodaty-chy-pozychyty/
+- ${ORIGIN}/uk/bitcoin-spadshchyna/
+- ${ORIGIN}/uk/bitcoin-indeks-komisii/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -2891,6 +3278,7 @@ function llmsFull() {
 - CS: ${ORIGIN}/cs/bitcoin-dane/${slugCs(c.id)}/
 - PL: ${ORIGIN}/pl/bitcoin-podatki/${slugPl(c.id)}/
 - HU: ${ORIGIN}/hu/bitcoin-adozas/${slugHu(c.id)}/
+- UK: ${ORIGIN}/uk/bitcoin-podatky/${slugUk(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -3044,6 +3432,7 @@ function writeAll() {
     csIndexable: generated.filter((p) => p.lang === 'cs' && !p.noindex).length,
     plIndexable: generated.filter((p) => p.lang === 'pl' && !p.noindex).length,
     huIndexable: generated.filter((p) => p.lang === 'hu' && !p.noindex).length,
+    ukIndexable: generated.filter((p) => p.lang === 'uk' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };

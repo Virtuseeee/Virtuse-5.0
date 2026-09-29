@@ -167,7 +167,7 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu');
+  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu' || h.lang === 'uk');
   const langSwitch = switchLangs.length >= 2
     ? `<nav class="lang" aria-label="Language">${switchLangs
       .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
@@ -357,5 +357,26 @@ export const CHROME = {
     conciergeHref: 'hu/concierge.html',
     privacyHref: 'hu/privacy-policy.html',
     termsHref: 'hu/terms-and-conditions.html'
+  },
+  uk: {
+    navTax: 'Податкові гіди',
+    navFees: 'Індекс комісій',
+    navDca: 'DCA',
+    navConcierge: 'Concierge',
+    relatedHeading: 'Пов’язані гіди',
+    asOfPrefix: 'Дані станом на',
+    disclaimerTax: 'Довідковий огляд 2026 – не є податковою консультацією.',
+    disclaimerKeys: 'Virtuse ніколи не зберігає ваші ключі.',
+    disclaimerKyc: 'KYC і реєстрація відбуваються на регульованій платформі відповідного партнера. Virtuse — некастодіальний хаб і не зберігає кошти чи дані клієнтів цих платформ.',
+    privacy: 'Політика конфіденційності',
+    terms: 'Умови використання',
+    locale: 'uk_UA',
+    homeHref: 'uk/index.html',
+    taxHref: 'uk/bitcoin-podatky/',
+    feesHref: 'uk/bitcoin-indeks-komisii/',
+    dcaHref: 'uk/bitcoin-kalkuliator-dca/',
+    conciergeHref: 'uk/concierge.html',
+    privacyHref: 'uk/privacy-policy.html',
+    termsHref: 'uk/terms-and-conditions.html'
   }
 };

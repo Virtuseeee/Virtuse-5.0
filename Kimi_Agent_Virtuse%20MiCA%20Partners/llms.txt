@@ -83,6 +83,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/hu/bitcoin-orokles/
 - https://virtuse.com/hu/bitcoin-dijindex/
 
+## Ukrainian
+
+- https://virtuse.com/uk/bitcoin-podatky/
+- https://virtuse.com/uk/bitcoin-kalkuliator-dca/
+- https://virtuse.com/uk/bitcoin-prodaty-chy-pozychyty/
+- https://virtuse.com/uk/bitcoin-spadshchyna/
+- https://virtuse.com/uk/bitcoin-indeks-komisii/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt
