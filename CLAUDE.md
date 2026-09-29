@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, third round) — New author headshot (`2920ba1`, gh-pages `f0b0e47`, staging md5-verified; production pending the user's scp)
+
+- `headshot-ras.jpg` (the only author photo on the static site; used by `article.html` and all 355 story pages via `../../headshot-ras.jpg`) replaced in place with the user's new portrait, cropped square to 400×400. Same filename, so no page changes. Browsers may show the old photo until their cache expires.
+- WordPress author avatars on blog.virtuse.com are separate and were not touched.
+
+```bash
+cd /private/tmp/gh-pages-wt4 && scp -P 222 headshot-ras.jpg virtuse.com@ftp.virtuse.com:public_html/
+```
+
 ## Session status (2026-09-29, second round) — Layer 2 modules translated to Spanish (`c011ab2`, gh-pages `f820dce`, staging 57/57 md5-verified; **live on production** — user ran the command 2026-09-29, 57/57 md5-verified on virtuse.com, the 9 old hashes gone). Next: PL
 
 - Same `i18n-tools/layer2/` pipeline as FR, no tool changes. es.ts 382/382; usted register; site terminology (monedero, autocustodia, custodia colaborativa, préstamo respaldado por Bitcoin, depósito en garantía (escrow) multifirma, comisiones, socios); Spanish numbers "1.000 €", "0,16 %" (U+00A0 before % and €).
