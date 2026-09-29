@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, second round) — Layer 2 modules translated to Spanish (`c011ab2`, gh-pages `f820dce`, staging 57/57 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_es_l2.sh`** (assets, then shells + es pages, then `sftp < /private/tmp/concierge_rm_es.sftp` for the 9 old hashes)
+
+- Same `i18n-tools/layer2/` pipeline as FR, no tool changes. es.ts 382/382; usted register; site terminology (monedero, autocustodia, custodia colaborativa, préstamo respaldado por Bitcoin, depósito en garantía (escrow) multifirma, comisiones, socios); Spanish numbers "1.000 €", "0,16 %" (U+00A0 before % and €).
+- Verified locally: ES loan flow (Eslovaquia → Firefish, UTM intact, "Comparar vender o pedir prestado" → `loan.html?amount=m`), no English leftovers on the four tools, no overflow at 375, bubble with Spanish aria text on es pages, module switcher lists 6 languages, tagcheck 0 on 32 files.
+- **Open question for the user:** the blog redesign (2026-09-28) says the bubble is "no longer loaded on blog/article pages", yet `pages.py` adds it to `<lang>/blog.html` (de restored earlier as a "fix", fr and es now). EN and sk blogs have no bubble. Decide one way and make blogs consistent.
+- Sync note: build the gh-pages stale-hash list with `comm -13 <(ls concierge-assets) <(ls $GH/concierge-assets)`, not from `git show`.
+
 ## Session status (2026-09-29) — Layer 2 modules translated to French (`df5f079`, gh-pages `ddb8d69` + `e0632e6`, staging 53/53 md5-verified; **live on production** — user ran the command 2026-09-29, 53/53 md5-verified on virtuse.com, the 9 old hashes gone). Next: ES
 
 - First round of "the other languages on this Mac" (order FR → ES → PL → HU → UK → RU, one per round). Ran the persisted `i18n-tools/layer2/` pipeline from the DE pilot unchanged: `dict.py template fr` → 382 strings translated → `dict.py build fr` (382/382, 0 placeholder mismatches) → `meta/fr.json` → `pages.py fr` (4 fr module shells, 107 links on 22 fr pages repointed to the local modules, launcher on every fr page) → `fr:` COPY block added to `concierge-launcher.js` by hand (pages.py warns when it is missing) → `gen_chrome.py` → `npm run build` → `deploy.py`.
