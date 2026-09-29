@@ -1,0 +1,1530 @@
+[
+ {
+  "en": "Ahoj! I’m the Virtuse Bitcoin Concierge — the Layer 2 advisor on top of the Virtuse hub. I don’t hold keys or funds; I find the right vetted partner for your situation. Let’s start: what brings you here today?",
+  "tr": "Вітаю! Я Bitcoin Concierge від Virtuse, консультант Layer 2 у хабі Virtuse. Я не зберігаю ключі чи кошти: я знаходжу перевіреного партнера, який підходить саме вам. Почнімо: що привело вас сьогодні?"
+ },
+ {
+  "en": "What brings you here today?",
+  "tr": "Що привело вас сьогодні?"
+ },
+ {
+  "en": "Where are you based? (Availability and licensing differ by country.)",
+  "tr": "Де ви живете? (Доступність і ліцензії залежать від країни.)"
+ },
+ {
+  "en": "How would you describe your Bitcoin experience?",
+  "tr": "Як би ви описали свій досвід із Біткоїном?"
+ },
+ {
+  "en": "How do you want to hold your bitcoin?",
+  "tr": "Як ви хочете зберігати свій Біткоїн?"
+ },
+ {
+  "en": "Roughly what amount are we talking about?",
+  "tr": "Про яку приблизно суму йдеться?"
+ },
+ {
+  "en": "Here’s my routing for you:\n{0}\nPick a partner — you’ll finish onboarding on their regulated platform, and your bitcoin never touches Virtuse.",
+  "tr": "Ось моя рекомендація для вас:\n{0}\nОберіть партнера: реєстрацію ви завершите на його регульованій платформі, а ваш Біткоїн ніколи не проходить через Virtuse."
+ },
+ {
+  "en": "Bitcoin Concierge",
+  "tr": "Bitcoin Concierge"
+ },
+ {
+  "en": "Routes to {0} vetted partners · never holds your keys",
+  "tr": "Спрямовує до перевірених партнерів ({0}) · ніколи не зберігає ваші ключі"
+ },
+ {
+  "en": "Start over",
+  "tr": "Почати знову"
+ },
+ {
+  "en": "Non-custodial routing only. Onboarding & KYC happen on the partner’s regulated platform. Not financial advice.",
+  "tr": "Лише некастодіальне спрямування. Реєстрація і KYC відбуваються на регульованій платформі партнера. Це не фінансова порада."
+ },
+ {
+  "en": "Best match",
+  "tr": "Найкращий збіг"
+ },
+ {
+  "en": "match",
+  "tr": "збіг"
+ },
+ {
+  "en": "Adjust answers",
+  "tr": "Змінити відповіді"
+ },
+ {
+  "en": "Simulate my plan",
+  "tr": "Змоделювати мій план"
+ },
+ {
+  "en": "Compare sell vs. borrow",
+  "tr": "Порівняти продаж і позику"
+ },
+ {
+  "en": "Check my country's rules",
+  "tr": "Правила моєї країни"
+ },
+ {
+  "en": "your country",
+  "tr": "ваша країна"
+ },
+ {
+  "en": "your amount",
+  "tr": "ваша сума"
+ },
+ {
+  "en": "Continue to partner",
+  "tr": "Перейти до партнера"
+ },
+ {
+  "en": "Compares vetted EU exchanges in real time and routes your purchase straight to your own wallet — funds never sit on Invity itself.",
+  "tr": "Порівнює перевірені біржі ЄС у реальному часі та надсилає покупку прямо на ваш власний гаманець: кошти ніколи не лежать у самому Invity."
+ },
+ {
+  "en": "Licensed by the Czech National Bank; built by SatoshiLabs, the makers of Trezor.",
+  "tr": "Ліцензія Чеського національного банку; створено SatoshiLabs, розробниками Trezor."
+ },
+ {
+  "en": "Simplest start for newcomers in {0} — FMA MiCAR licensed, insured Bitcoin custody.",
+  "tr": "Найпростіший старт для новачків (країна: {0}): ліцензія MiCAR від FMA, застраховане зберігання Біткоїна."
+ },
+ {
+  "en": "Auto-Invest savings plan with 0% fees; 100,000+ European users.",
+  "tr": "План заощаджень Auto-Invest без комісій; понад 100 000 користувачів у Європі."
+ },
+ {
+  "en": "Veteran EU exchange with deep EUR liquidity for {0}.",
+  "tr": "Досвідчена біржа ЄС із високою ліквідністю в EUR (країна: {0})."
+ },
+ {
+  "en": "Founded 2011 — MiCA licensed via the Central Bank of Ireland.",
+  "tr": "Заснована у 2011 році: ліцензія MiCA через Центральний банк Ірландії."
+ },
+ {
+  "en": "For larger amounts, a top-3 global exchange gives you deeper order books and tighter spreads.",
+  "tr": "Для більших сум одна з трьох найбільших бірж світу дає глибші книги ордерів і вужчі спреди."
+ },
+ {
+  "en": "A large global platform with full EEA passporting if you want more than spot buying — card, wider asset coverage.",
+  "tr": "Велика глобальна платформа з повним паспортом ЄЕП, якщо вам потрібно більше, ніж спотова купівля: картка, ширший вибір активів."
+ },
+ {
+  "en": "Since you want self-custody: move your Bitcoin off any exchange onto your own hardware wallet as soon as you buy.",
+  "tr": "Оскільки ви хочете самостійного зберігання: одразу після купівлі переведіть Біткоїн з біржі на власний апаратний гаманець."
+ },
+ {
+  "en": "Bitcoin-backed P2P loans, market-driven rates — but note: Firefish assumes self-custody via multisig escrow.",
+  "tr": "P2P-позики під заставу Біткоїна за ринковими ставками. Зверніть увагу: Firefish передбачає самостійне зберігання через ескроу на мультипідписі."
+ },
+ {
+  "en": "If you prefer assisted custody, set that up first, then come back for the loan.",
+  "tr": "Якщо ви віддаєте перевагу зберіганню з допомогою, спершу налаштуйте його, а тоді поверніться по позику."
+ },
+ {
+  "en": "Borrow EUR against your bitcoin — keep 100% of the upside.",
+  "tr": "Позика в євро під заставу Біткоїна зі збереженням 100% потенціалу зростання."
+ },
+ {
+  "en": "No credit checks, no sale, no taxable event in most EU jurisdictions.",
+  "tr": "Без перевірки кредитоспроможності, без продажу і без оподатковуваної події в більшості юрисдикцій ЄС."
+ },
+ {
+  "en": "Works for {0} in {1} via multisig-secured P2P.",
+  "tr": "Працює для суми {0} (країна: {1}) через P2P-позики, захищені мультипідписом."
+ },
+ {
+  "en": "The most beginner-friendly bot platform — copy trading, paper trading, and a 30-day free trial before you commit.",
+  "tr": "Найзручніша для новачків платформа ботів: копітрейдинг, паперова торгівля та 30 днів безкоштовного пробного періоду."
+ },
+ {
+  "en": "150+ ready-made strategy templates for when you want to graduate to building your own rules.",
+  "tr": "Понад 150 готових шаблонів стратегій на той час, коли захочете створювати власні правила."
+ },
+ {
+  "en": "Explicitly non-custodial — trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.",
+  "tr": "Прямо некастодіальна: API-ключі лише для торгівлі, без права на виведення; ваш Біткоїн ніколи не залишає вашу біржу."
+ },
+ {
+  "en": "150+ strategy templates with a backtesting engine.",
+  "tr": "Понад 150 шаблонів стратегій із рушієм бектестингу."
+ },
+ {
+  "en": "A simpler, Bitcoin-focused cloud DCA/grid setup — referral commissions even pay out in BTC.",
+  "tr": "Простіше хмарне налаштування DCA- і grid-ботів із фокусом на Біткоїн: реферальні комісії навіть виплачують у BTC."
+ },
+ {
+  "en": "MiCA CASP-licensed institutional custodian for {0} — $250M insurance coverage.",
+  "tr": "Інституційний кастодіан із ліцензією CASP за MiCA (країна: {0}): страхове покриття 250 млн $."
+ },
+ {
+  "en": "Already serves 21bitcoin; proven European infrastructure.",
+  "tr": "Уже обслуговує 21bitcoin; перевірена європейська інфраструктура."
+ },
+ {
+  "en": "World's first regulated digital asset bank — discretionary treasury mandates, including rebalancing and hedging.",
+  "tr": "Перший у світі регульований банк цифрових активів: дискреційні казначейські мандати з ребалансуванням і хеджуванням."
+ },
+ {
+  "en": "For the largest allocations: the largest regulated crypto custodian globally, MiCA CASP via CSSF Luxembourg.",
+  "tr": "Для найбільших обсягів: найбільший регульований кастодіан криптоактивів у світі, CASP за MiCA через CSSF Люксембургу."
+ },
+ {
+  "en": "Top 5 EU ASIC reseller with hosting in Norway, Finland, and Ethiopia — an easy first hosted contract.",
+  "tr": "Один із п'яти найбільших реселерів ASIC у ЄС із хостингом у Норвегії, Фінляндії та Ефіопії: простий перший контракт на хостинг."
+ },
+ {
+  "en": "Professionally managed, renewable-energy mining infrastructure — built for mid-to-large scale miners.",
+  "tr": "Професійно керована майнінгова інфраструктура на відновлюваній енергії для середніх і великих майнерів."
+ },
+ {
+  "en": "For Bitcoin purists: open-source mining hardware (Bitaxe), EU warehouse for fast shipping.",
+  "tr": "Для пуристів Біткоїна: майнінгове обладнання з відкритим кодом (Bitaxe), склад у ЄС і швидка доставка."
+ },
+ {
+  "en": "The original Bitcoin hardware wallet, since 2013 — fully open-source hardware and firmware, easiest to start with.",
+  "tr": "Оригінальний апаратний гаманець для Біткоїна з 2013 року: повністю відкриті апаратна частина і прошивка, найпростіший старт."
+ },
+ {
+  "en": "Native support for multisig and collaborative custody vaults — the setup that answers \"what happens to my bitcoin\".",
+  "tr": "Вбудована підтримка мультипідпису та сховищ спільного зберігання: налаштування, яке відповідає на питання «що буде з моїм Біткоїном?»."
+ },
+ {
+  "en": "World's most popular hardware wallet — 7M+ devices sold, certified Secure Element chip.",
+  "tr": "Найпопулярніший апаратний гаманець у світі: понад 7 млн проданих пристроїв, сертифікований чип Secure Element."
+ },
+ {
+  "en": "Country-specific reports built for {0} — Austrian-built, 700+ integrations.",
+  "tr": "Звіти для конкретної країни (країна: {0}): австрійська розробка, понад 700 інтеграцій."
+ },
+ {
+  "en": "Free portfolio tracking tier.",
+  "tr": "Безкоштовний тариф для відстеження портфеля."
+ },
+ {
+  "en": "Covers 100+ countries including {0}, across 400+ exchanges and wallets.",
+  "tr": "Охоплює понад 100 країн (зокрема: {0}), понад 400 бірж і гаманців."
+ },
+ {
+  "en": "Free to track — you only pay when you download the report.",
+  "tr": "Відстеження безкоштовне: платите лише під час завантаження звіту."
+ },
+ {
+  "en": "The veteran option — tracking crypto tax since 2013, 300+ exchange integrations.",
+  "tr": "Досвідчений варіант: облік криптоподатків із 2013 року, понад 300 інтеграцій з біржами."
+ },
+ {
+  "en": "Privacy-first and no KYC required, if that matters more to you than breadth of integrations.",
+  "tr": "Приватність на першому місці і без KYC, якщо це для вас важливіше за кількість інтеграцій."
+ },
+ {
+  "en": "your goal",
+  "tr": "ваша мета"
+ },
+ {
+  "en": "Goal",
+  "tr": "Мета"
+ },
+ {
+  "en": "Country",
+  "tr": "Країна"
+ },
+ {
+  "en": "New to Bitcoin",
+  "tr": "Новачок у Біткоїні"
+ },
+ {
+  "en": "Already holding BTC",
+  "tr": "Уже має BTC"
+ },
+ {
+  "en": "Custody",
+  "tr": "Зберігання"
+ },
+ {
+  "en": "Amount",
+  "tr": "Сума"
+ },
+ {
+  "en": "Buy Bitcoin",
+  "tr": "Купити Біткоїн"
+ },
+ {
+  "en": "First purchase or regular stacking",
+  "tr": "Перша покупка або регулярне накопичення"
+ },
+ {
+  "en": "Bitcoin-backed loan",
+  "tr": "Позика під заставу Біткоїна"
+ },
+ {
+  "en": "Liquidity without selling",
+  "tr": "Ліквідність без продажу"
+ },
+ {
+  "en": "Automate & compound",
+  "tr": "Автоматизуйте і примножуйте"
+ },
+ {
+  "en": "Non-custodial trading & DCA bots",
+  "tr": "Некастодіальні торгові та DCA-боти"
+ },
+ {
+  "en": "Corporate treasury",
+  "tr": "Корпоративне казначейство"
+ },
+ {
+  "en": "BTC on the balance sheet",
+  "tr": "BTC на балансі"
+ },
+ {
+  "en": "Mining",
+  "tr": "Майнінг"
+ },
+ {
+  "en": "Earn fresh sats",
+  "tr": "Заробляйте нові сатоші"
+ },
+ {
+  "en": "Custody & inheritance",
+  "tr": "Зберігання та спадщина"
+ },
+ {
+  "en": "Keys, multisig, legacy",
+  "tr": "Ключі, мультипідпис, спадок"
+ },
+ {
+  "en": "Tax help",
+  "tr": "Податкова допомога"
+ },
+ {
+  "en": "Reports & compliance",
+  "tr": "Звіти та комплаєнс"
+ },
+ {
+  "en": "Czechia",
+  "tr": "Чехія"
+ },
+ {
+  "en": "Slovakia",
+  "tr": "Словаччина"
+ },
+ {
+  "en": "Poland",
+  "tr": "Польща"
+ },
+ {
+  "en": "Austria",
+  "tr": "Австрія"
+ },
+ {
+  "en": "Germany",
+  "tr": "Німеччина"
+ },
+ {
+  "en": "Hungary",
+  "tr": "Угорщина"
+ },
+ {
+  "en": "Slovenia",
+  "tr": "Словенія"
+ },
+ {
+  "en": "Croatia",
+  "tr": "Хорватія"
+ },
+ {
+  "en": "Romania",
+  "tr": "Румунія"
+ },
+ {
+  "en": "Bulgaria",
+  "tr": "Болгарія"
+ },
+ {
+  "en": "Netherlands",
+  "tr": "Нідерланди"
+ },
+ {
+  "en": "First purchase, learning the ropes",
+  "tr": "Перша покупка, лише вчуся"
+ },
+ {
+  "en": "I already hold Bitcoin",
+  "tr": "У мене вже є Біткоїн"
+ },
+ {
+  "en": "Looking to optimize",
+  "tr": "Хочу оптимізувати"
+ },
+ {
+  "en": "Self-custody",
+  "tr": "Самостійне зберігання"
+ },
+ {
+  "en": "My keys, my coins",
+  "tr": "Мої ключі, мої монети"
+ },
+ {
+  "en": "Assisted custody",
+  "tr": "Зберігання з допомогою"
+ },
+ {
+  "en": "Help with keys & recovery",
+  "tr": "Допомога з ключами та відновленням"
+ },
+ {
+  "en": "No preference yet",
+  "tr": "Поки без уподобань"
+ },
+ {
+  "en": "Advise me",
+  "tr": "Порадьте мені"
+ },
+ {
+  "en": "< €1,000",
+  "tr": "< 1 000 €"
+ },
+ {
+  "en": "€1,000 – 10,000",
+  "tr": "1 000 – 10 000 €"
+ },
+ {
+  "en": "€10,000 – 100,000",
+  "tr": "10 000 – 100 000 €"
+ },
+ {
+  "en": "> €100,000",
+  "tr": "> 100 000 €"
+ },
+ {
+  "en": "Bitcoin-only app, FMA MiCAR licensed — insured custody",
+  "tr": "Застосунок лише для Біткоїна, ліцензія MiCAR від FMA: застраховане зберігання"
+ },
+ {
+  "en": "Auto-Invest savings plan with 0% fees",
+  "tr": "План заощаджень Auto-Invest без комісій"
+ },
+ {
+  "en": "MiCA-licensed",
+  "tr": "Ліцензія MiCA"
+ },
+ {
+  "en": "Veteran EU exchange — deep EUR liquidity since 2011",
+  "tr": "Досвідчена біржа ЄС: висока ліквідність в EUR з 2011 року"
+ },
+ {
+  "en": "Pro trading fees from 0.16%",
+  "tr": "Комісії за Pro-торгівлю від 0,16%"
+ },
+ {
+  "en": "Top-3 global exchange, EU-licensed in Vienna",
+  "tr": "Одна з трьох найбільших бірж світу, ліцензія ЄС у Відні"
+ },
+ {
+  "en": "Spot trading fees from 0.1%",
+  "tr": "Комісії за спотову торгівлю від 0,1%"
+ },
+ {
+  "en": "Rate-comparison engine that routes straight to self-custody",
+  "tr": "Порівняння курсів зі спрямуванням одразу в самостійне зберігання"
+ },
+ {
+  "en": "Built by SatoshiLabs; funds never held on Invity itself",
+  "tr": "Створено SatoshiLabs; кошти ніколи не лежать у самому Invity"
+ },
+ {
+  "en": "Large global platform with full EEA passporting",
+  "tr": "Велика глобальна платформа з повним паспортом ЄЕП"
+ },
+ {
+  "en": "Deep liquidity; Crypto.com Visa Card supported",
+  "tr": "Висока ліквідність; підтримка картки Crypto.com Visa"
+ },
+ {
+  "en": "The original Bitcoin hardware wallet, since 2013",
+  "tr": "Оригінальний апаратний гаманець для Біткоїна, з 2013 року"
+ },
+ {
+  "en": "Fully open-source hardware and firmware",
+  "tr": "Повністю відкриті апаратна частина і прошивка"
+ },
+ {
+  "en": "World's most popular hardware wallet — 7M+ sold",
+  "tr": "Найпопулярніший апаратний гаманець у світі: понад 7 млн продано"
+ },
+ {
+  "en": "Certified Secure Element chip; Ledger Live app",
+  "tr": "Сертифікований чип Secure Element; застосунок Ledger Live"
+ },
+ {
+  "en": "Bitcoin Core-grade infra — multisig & collaborative custody",
+  "tr": "Інфраструктура рівня Bitcoin Core: мультипідпис і спільне зберігання"
+ },
+ {
+  "en": "Blockstream Jade — fully open-source, no secure element",
+  "tr": "Blockstream Jade: повністю відкритий код, без Secure Element"
+ },
+ {
+  "en": "Bitcoin-backed P2P loans, multisig-secured",
+  "tr": "P2P-позики під заставу Біткоїна, захищені мультипідписом"
+ },
+ {
+  "en": "Market-driven rates; no credit checks",
+  "tr": "Ринкові ставки; без перевірки кредитоспроможності"
+ },
+ {
+  "en": "Bitcoin-native",
+  "tr": "Біткоїн-нативний"
+ },
+ {
+  "en": "Austrian-built tax tool, country-specific EU reports",
+  "tr": "Австрійський податковий інструмент, звіти для країн ЄС"
+ },
+ {
+  "en": "Free portfolio tracking tier; 700+ integrations",
+  "tr": "Безкоштовний тариф для відстеження портфеля; понад 700 інтеграцій"
+ },
+ {
+  "en": "AI-matched transfers across 400+ exchanges, 100+ countries",
+  "tr": "ШІ-зіставлення переказів на понад 400 біржах і в понад 100 країнах"
+ },
+ {
+  "en": "Free to track; pay only when you download the report",
+  "tr": "Відстеження безкоштовне; оплата лише під час завантаження звіту"
+ },
+ {
+  "en": "The veteran crypto tax tracker, since 2013",
+  "tr": "Досвідчений трекер криптоподатків, з 2013 року"
+ },
+ {
+  "en": "300+ exchange integrations; free up to 200 transactions",
+  "tr": "Понад 300 інтеграцій з біржами; безкоштовно до 200 транзакцій"
+ },
+ {
+  "en": "Privacy-first tax tool, no KYC required",
+  "tr": "Податковий інструмент із фокусом на приватність, без KYC"
+ },
+ {
+  "en": "14-minute import-to-report",
+  "tr": "Від імпорту до звіту за 14 хвилин"
+ },
+ {
+  "en": "Institutional custodian, MiCA CASP via BaFin Germany",
+  "tr": "Інституційний кастодіан, CASP за MiCA через BaFin (Німеччина)"
+ },
+ {
+  "en": "$250M insurance coverage; already serves 21bitcoin",
+  "tr": "Страхове покриття 250 млн $; уже обслуговує 21bitcoin"
+ },
+ {
+  "en": "World's first regulated digital asset bank",
+  "tr": "Перший у світі регульований банк цифрових активів"
+ },
+ {
+  "en": "FINMA banking license; discretionary treasury mandates",
+  "tr": "Банківська ліцензія FINMA; дискреційні казначейські мандати"
+ },
+ {
+  "en": "Regulated bank",
+  "tr": "Регульований банк"
+ },
+ {
+  "en": "Largest regulated crypto custodian globally",
+  "tr": "Найбільший регульований кастодіан криптоактивів у світі"
+ },
+ {
+  "en": "MiCA CASP via CSSF Luxembourg; SOC 2 Type II",
+  "tr": "CASP за MiCA через CSSF Люксембургу; SOC 2 Type II"
+ },
+ {
+  "en": "Explicitly non-custodial, trade-only API bots",
+  "tr": "Прямо некастодіальні API-боти лише для торгівлі"
+ },
+ {
+  "en": "150+ strategy templates; Y Combinator backed",
+  "tr": "Понад 150 шаблонів стратегій; підтримка Y Combinator"
+ },
+ {
+  "en": "Non-custodial",
+  "tr": "Некастодіальний"
+ },
+ {
+  "en": "The most beginner-friendly bot platform",
+  "tr": "Найзручніша для новачків платформа ботів"
+ },
+ {
+  "en": "Copy trading, paper trading, 30-day free trial",
+  "tr": "Копітрейдинг, паперова торгівля, 30 днів безкоштовно"
+ },
+ {
+  "en": "Cloud DCA and grid bots, Bitcoin-focused",
+  "tr": "Хмарні DCA- і grid-боти з фокусом на Біткоїн"
+ },
+ {
+  "en": "Referral commissions paid in BTC",
+  "tr": "Реферальні комісії виплачуються в BTC"
+ },
+ {
+  "en": "Top 5 EU ASIC reseller with EU/Nordic hosting",
+  "tr": "Один із п'яти найбільших реселерів ASIC у ЄС, хостинг у ЄС і Скандинавії"
+ },
+ {
+  "en": "Hosting in Norway, Finland, and Ethiopia",
+  "tr": "Хостинг у Норвегії, Фінляндії та Ефіопії"
+ },
+ {
+  "en": "Professionally managed, renewable-energy mining",
+  "tr": "Професійно керований майнінг на відновлюваній енергії"
+ },
+ {
+  "en": "Enterprise-grade facilities for mid-to-large miners",
+  "tr": "Об'єкти корпоративного рівня для середніх і великих майнерів"
+ },
+ {
+  "en": "Open-source mining hardware specialist (Bitaxe)",
+  "tr": "Спеціаліст із майнінгового обладнання з відкритим кодом (Bitaxe)"
+ },
+ {
+  "en": "EU warehouse, fast shipping; 22,000+ products sold",
+  "tr": "Склад у ЄС, швидка доставка; понад 22 000 проданих товарів"
+ },
+ {
+  "en": "Headroom to the margin call is only {0} % – a moderate drawdown puts your collateral at risk. Lower the LTV or the amount.",
+  "tr": "Запас до маржин-колу лише {0}%: помірне падіння ставить заставу під загрозу. Зменште LTV або суму."
+ },
+ {
+  "en": "Liquidation risk is the story here",
+  "tr": "Головне тут — ризик ліквідації"
+ },
+ {
+  "en": "Talk to a loan specialist",
+  "tr": "Поговорити зі спеціалістом із позик"
+ },
+ {
+  "en": "Borrowing wins in {0} of {1} scenarios – you keep 100 % of the upside on your full stack.",
+  "tr": "Позика виграє в {0} з {1} сценаріїв: ви зберігаєте 100% потенціалу зростання всього свого Біткоїна."
+ },
+ {
+  "en": "Interest costs {0} over {1}y ({2} % p.a.) – vs. an immediate {3} tax bill plus giving up future gains on {4} BTC if you sell.",
+  "tr": "Відсотки коштують {0} за {1} р. ({2}% річних), проти негайного податку {3} і втрати майбутнього зростання {4} BTC у разі продажу."
+ },
+ {
+  "en": "In your jurisdiction, selling triggers ~{0} % tax on the gain portion. Loans defer that decision.",
+  "tr": "У вашій юрисдикції продаж означає податок ~{0}% з частини прибутку. Позика відкладає це рішення."
+ },
+ {
+  "en": "Your assumed tax rate is 0 % – selling is cheaper tax-wise, but still caps your upside.",
+  "tr": "Ваша припущена ставка податку 0%: продавати податково дешевше, але це все одно обмежує потенціал зростання."
+ },
+ {
+  "en": "Break-even requires BTC to appreciate ≈ {0} %/year – demanding; size the loan conservatively.",
+  "tr": "Для беззбитковості BTC має дорожчати на ≈ {0}% на рік: це вимогливо, обирайте розмір позики обережно."
+ },
+ {
+  "en": "Liquidity without selling fits better",
+  "tr": "Вам краще підходить ліквідність без продажу"
+ },
+ {
+  "en": "Get a Bitcoin-backed loan via Firefish",
+  "tr": "Отримати позику під заставу Біткоїна у Firefish"
+ },
+ {
+  "en": "Selling wins in {0} of {1} scenarios at your assumptions.",
+  "tr": "За ваших припущень продаж виграє в {0} з {1} сценаріїв."
+ },
+ {
+  "en": "With a {0} % gain share, tax is only {1} – cheap exit liquidity.",
+  "tr": "Якщо прибуток становить {0}% вартості, податок лише {1}: дешевий вихід."
+ },
+ {
+  "en": "You give up upside only on {0} BTC; the rest of your stack stays exposed.",
+  "tr": "Ви відмовляєтеся від зростання лише для {0} BTC; решта вашого Біткоїна залишається в позиції."
+ },
+ {
+  "en": "Tiny break-even appreciation needed – the loan case is weak here.",
+  "tr": "Потрібне для беззбитковості зростання мінімальне: тут аргумент на користь позики слабкий."
+ },
+ {
+  "en": "Selling is the rational move at these numbers",
+  "tr": "За таких цифр раціональний вибір — продаж"
+ },
+ {
+  "en": "Discuss options with Virtuse",
+  "tr": "Обговорити варіанти з Virtuse"
+ },
+ {
+  "en": "Germany (<1y held)",
+  "tr": "Німеччина (володіння < 1 року)"
+ },
+ {
+  "en": "0 % after 1-year holding",
+  "tr": "0% після 1 року володіння"
+ },
+ {
+  "en": "Custom",
+  "tr": "Власний"
+ },
+ {
+  "en": "now",
+  "tr": "зараз"
+ },
+ {
+  "en": "y",
+  "tr": " р."
+ },
+ {
+  "en": "0 % fees on 21bitcoin's Auto-Invest plan – every euro of your {0}/period buys Bitcoin, none of it is lost to fees.",
+  "tr": "0% комісій у плані Auto-Invest від 21bitcoin: кожен євро з ваших {0} за період купує Біткоїн, нічого не губиться на комісіях."
+ },
+ {
+  "en": "It runs on autopilot too, once you set the schedule – the same \"set & forget\" benefit a trading bot gives you, without a subscription.",
+  "tr": "Після налаштування графіка він також працює автоматично: та сама перевага «налаштуй і забудь», що й у торгового бота, але без підписки."
+ },
+ {
+  "en": "At {0}/period, RevenueBot's flat monthly fee is diluted enough to beat a manual exchange purchase.",
+  "tr": "За {0} на період фіксована щомісячна плата RevenueBot розподіляється настільки, що вигідніша за ручну купівлю на біржі."
+ },
+ {
+  "en": "Automation removes timing anxiety and missed purchases – the hidden cost of manual DCA.",
+  "tr": "Автоматизація прибирає тривогу щодо вибору моменту та пропущені покупки: прихована ціна ручного DCA."
+ },
+ {
+  "en": "Lowest cost among the manual-purchase routes at this amount – {0} % per purchase via {1}.",
+  "tr": "Найнижча вартість серед ручних варіантів купівлі для цієї суми: {0}% за покупку через {1}."
+ },
+ {
+  "en": "One manual step per period; pair it with a calendar reminder or a weekly ritual.",
+  "tr": "Один ручний крок за період: поєднайте його з нагадуванням у календарі або щотижневим ритуалом."
+ },
+ {
+  "en": "Between the paid routes: RevenueBot's automation undercuts manual {0} trading on pure fees once you stack more than ≈ {1}/month – below that, {0} is cheaper but manual.",
+  "tr": "Серед платних варіантів: автоматизація RevenueBot дешевша за комісіями, ніж ручна торгівля на {0}, якщо ви інвестуєте понад ≈ {1} на місяць; нижче цієї суми {0} дешевша, але вручну."
+ },
+ {
+  "en": "Weekly",
+  "tr": "Щотижня"
+ },
+ {
+  "en": "Monthly",
+  "tr": "Щомісяця"
+ },
+ {
+  "en": "Conservative",
+  "tr": "Консервативний"
+ },
+ {
+  "en": "Moderate",
+  "tr": "Помірний"
+ },
+ {
+  "en": "ARK-style",
+  "tr": "У стилі ARK"
+ },
+ {
+  "en": "Auto-Invest plan",
+  "tr": "План Auto-Invest"
+ },
+ {
+  "en": "0 % fees on the built-in Auto-Invest savings plan – FMA MiCAR licensed, insured custody, and already automated: set the schedule once and it runs itself.",
+  "tr": "0% комісій у вбудованому плані заощаджень Auto-Invest: ліцензія MiCAR від FMA, застраховане зберігання і вже автоматизовано; достатньо один раз налаштувати графік."
+ },
+ {
+  "en": "Automated",
+  "tr": "Автоматично"
+ },
+ {
+  "en": "Spot trading",
+  "tr": "Спотова торгівля"
+ },
+ {
+  "en": "Spot trading fees from 0.1 % – EU-licensed in Vienna, deep order books for a manual recurring buy.",
+  "tr": "Комісії за спотову торгівлю від 0,1%: ліцензія ЄС у Відні, глибокі книги ордерів для регулярної ручної купівлі."
+ },
+ {
+  "en": "Same day",
+  "tr": "Того ж дня"
+ },
+ {
+  "en": "Pro trading",
+  "tr": "Pro-торгівля"
+ },
+ {
+  "en": "Pro trading fees from 0.16 % – veteran EU exchange, deep EUR liquidity since 2011.",
+  "tr": "Комісії за Pro-торгівлю від 0,16%: досвідчена біржа ЄС, висока ліквідність в EUR з 2011 року."
+ },
+ {
+  "en": "Automated DCA bot",
+  "tr": "Автоматичний DCA-бот"
+ },
+ {
+  "en": "Cloud DCA & grid bots built specifically for Bitcoin – set the rhythm once and it runs itself. Fee shown here is illustrative pending RevenueBot’s own published schedule; check their site for current pricing.",
+  "tr": "Хмарні DCA- і grid-боти, створені саме для Біткоїна: достатньо один раз задати ритм. Наведена комісія орієнтовна, доки RevenueBot не опублікує власний тариф; актуальні ціни на їхньому сайті."
+ },
+ {
+  "en": "Set & forget",
+  "tr": "Налаштуй і забудь"
+ },
+ {
+  "en": "At risk – coins may be lost",
+  "tr": "Під загрозою: монети можуть бути втрачені"
+ },
+ {
+  "en": "Partially protected",
+  "tr": "Частково захищено"
+ },
+ {
+  "en": "Inheritance-ready",
+  "tr": "Готово до спадкування"
+ },
+ {
+  "en": "15 % income tax (23 % above threshold)",
+  "tr": "15% податку на доходи (23% понад поріг)"
+ },
+ {
+  "en": "Tax-free after 3-year holding (time test)",
+  "tr": "Звільнення після 3 років володіння (тест часу)"
+ },
+ {
+  "en": "Annual personal tax return",
+  "tr": "Щорічна декларація про доходи фізичних осіб"
+ },
+ {
+  "en": "Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one.",
+  "tr": "Кожне відчуження (зокрема обмін крипто на крипто) є оподатковуваною подією: ведіть повний облік із першого дня."
+ },
+ {
+  "en": "19 % income tax (25 % above threshold)",
+  "tr": "19% податку на доходи (25% понад поріг)"
+ },
+ {
+  "en": "Tax-free after 1-year holding; occasional-income allowance €500/yr",
+  "tr": "Звільнення після 1 року володіння; неоподатковуваний мінімум 500 € на рік для разових доходів"
+ },
+ {
+  "en": "Separate bank account for crypto activity makes reporting dramatically easier.",
+  "tr": "Окремий банківський рахунок для криптооперацій значно спрощує звітність."
+ },
+ {
+  "en": "19 % flat capital gains tax",
+  "tr": "19% єдиного податку на приріст капіталу"
+ },
+ {
+  "en": "No holding-period exemption",
+  "tr": "Без звільнення за строк володіння"
+ },
+ {
+  "en": "Annual PIT-38",
+  "tr": "Щорічна PIT-38"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss.",
+  "tr": "Обмін крипто на крипто оподатковується: розрахуйте прибуток або збиток у PLN для кожного відчуження."
+ },
+ {
+  "en": "27.5 % KESt (capital gains tax)",
+  "tr": "27,5% KESt (податок на приріст капіталу)"
+ },
+ {
+  "en": "Gains tax-free after 1-year holding (private investors)",
+  "tr": "Прибуток звільнений після 1 року володіння (приватні інвестори)"
+ },
+ {
+  "en": "Annual tax return",
+  "tr": "Щорічна податкова декларація"
+ },
+ {
+  "en": "Staking and lending rewards are taxed when received, not when sold.",
+  "tr": "Винагороди за стейкінг і кредитування оподатковуються при отриманні, а не при продажу."
+ },
+ {
+  "en": "Up to 45 % income tax (progressive)",
+  "tr": "До 45% податку на доходи (прогресивний)"
+ },
+ {
+  "en": "0 % after 1-year holding (private-sale exemption)",
+  "tr": "0% після 1 року володіння (звільнення для приватних продажів)"
+ },
+ {
+  "en": "Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical.",
+  "tr": "Крипто на крипто оподатковується протягом першого року. Облік за методом FIFO критично важливий."
+ },
+ {
+  "en": "15 % capital gains tax",
+  "tr": "15% податку на приріст капіталу"
+ },
+ {
+  "en": "Annual personal income tax return",
+  "tr": "Щорічна декларація з податку на доходи фізичних осіб"
+ },
+ {
+  "en": "Documented acquisition costs are deductible – keep every invoice.",
+  "tr": "Задокументовані витрати на придбання можна відрахувати: зберігайте кожен рахунок."
+ },
+ {
+  "en": "Progressive, up to ~50 % on disposal gains",
+  "tr": "Прогресивний, до ~50% з прибутку від відчуження"
+ },
+ {
+  "en": "No general holding exemption",
+  "tr": "Без загального звільнення за строк володіння"
+ },
+ {
+  "en": "Cryptocurrency gains are treated as income; verify current guidance with a local advisor.",
+  "tr": "Прибуток від криптовалют вважається доходом; актуальні правила уточніть у місцевого консультанта."
+ },
+ {
+  "en": "12 % on digital-asset gains (2025; 10 % in 2024)",
+  "tr": "12% з прибутку від цифрових активів (2025; 10% у 2024)"
+ },
+ {
+  "en": "Digital-asset regime is new (2024+) – rules are still being interpreted in practice.",
+  "tr": "Режим для цифрових активів новий (з 2024): практика тлумачення ще формується."
+ },
+ {
+  "en": "10 % income tax on crypto gains",
+  "tr": "10% податку на доходи з криптоприбутку"
+ },
+ {
+  "en": "Annual return (income from other sources)",
+  "tr": "Щорічна декларація (доходи з інших джерел)"
+ },
+ {
+  "en": "10 % is among the lowest flat rates in the EU – deduct your cost basis.",
+  "tr": "10% — одна з найнижчих фіксованих ставок у ЄС: відрахуйте собівартість."
+ },
+ {
+  "en": "10 % flat tax on gains",
+  "tr": "10% фіксованого податку на прибуток"
+ },
+ {
+  "en": "Low flat rate; keep exchange statements for audit-ready records.",
+  "tr": "Низька фіксована ставка; зберігайте виписки бірж, щоб облік був готовий до перевірки."
+ },
+ {
+  "en": "Box 3 wealth tax on deemed return (~36 % on fictional yield)",
+  "tr": "Податок на майно Box 3 з умовного доходу (~36% від фіктивної дохідності)"
+ },
+ {
+  "en": "Tax-free allowance (~€57k per person, 2025)",
+  "tr": "Неоподатковуваний мінімум (~57 000 € на особу, 2025)"
+ },
+ {
+  "en": "Annual Box 3 declaration",
+  "tr": "Щорічна декларація Box 3"
+ },
+ {
+  "en": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.",
+  "tr": "Податку на приріст капіталу як такого немає: оподатковується умовний дохід від ваших активів. Box 3 реформується, перевірте правила поточного року."
+ },
+ {
+  "en": "Do your heirs have written instructions (a \"letter of instruction\")?",
+  "tr": "Чи мають ваші спадкоємці письмові інструкції («лист з інструкціями»)?"
+ },
+ {
+  "en": "A document that says what exists, where things are, and what to do – without containing any seed words itself.",
+  "tr": "Документ, що описує, що існує, де воно лежить і що робити, не містячи жодного слова сід-фрази."
+ },
+ {
+  "en": "Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney.",
+  "tr": "Складіть лист з інструкціями: перелік, місця, контакти, але ніколи не сід-фрази. Зберігайте його разом із заповітом або в юриста."
+ },
+ {
+  "en": "Are your keys geographically separated?",
+  "tr": "Чи розділені ваші ключі географічно?"
+ },
+ {
+  "en": "Never all backups in one home. Fire, theft or flood should never be able to destroy access.",
+  "tr": "Ніколи не тримайте всі резервні копії в одному домі. Пожежа, крадіжка чи повінь не повинні позбавити доступу."
+ },
+ {
+  "en": "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.",
+  "tr": "Перенесіть один ключ або копію в друге місце: банківську скриньку, до довіреного родича чи професійного зберігача ключів."
+ },
+ {
+  "en": "Does at least one heir know your bitcoin exists and where to start?",
+  "tr": "Чи знає хоча б один спадкоємець, що ваш Біткоїн існує і з чого почати?"
+ },
+ {
+  "en": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
+  "tr": "Біткоїн, знайдений через роки або ніколи, — найпоширеніша невдача при спадкуванні."
+ },
+ {
+  "en": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.",
+  "tr": "Скажіть одній довіреній людині, що план існує і до кого звернутися. Повні подробиці — лише в листі з інструкціями."
+ },
+ {
+  "en": "Do you use multisig (2-of-3) instead of a single seed phrase?",
+  "tr": "Чи використовуєте ви мультипідпис (2 з 3) замість однієї сід-фрази?"
+ },
+ {
+  "en": "A single seed is a single point of failure – for you and for your heirs.",
+  "tr": "Одна сід-фраза — це єдина точка відмови, для вас і для ваших спадкоємців."
+ },
+ {
+  "en": "Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one.",
+  "tr": "Перейдіть на мультипідпис 2 з 3: два ключі у вас, третій у партнера (наприклад, сховище на кшталт Unchained) або юриста."
+ },
+ {
+  "en": "Have you tested recovery with a small amount?",
+  "tr": "Чи перевіряли ви відновлення на невеликій сумі?"
+ },
+ {
+  "en": "An untested inheritance procedure is a hypothesis, not a plan.",
+  "tr": "Неперевірена процедура спадкування — це гіпотеза, а не план."
+ },
+ {
+  "en": "Do a full recovery drill on a small UTXO, with your heir watching, once a year.",
+  "tr": "Раз на рік проводьте повне тренування з відновлення на невеликому UTXO у присутності спадкоємця."
+ },
+ {
+  "en": "Are exchange accounts, loans and automated plans documented?",
+  "tr": "Чи задокументовані рахунки на біржах, позики та автоматичні плани?"
+ },
+ {
+  "en": "Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.",
+  "tr": "Баланси в кастодіанів, позики під заставу Біткоїна і DCA-боти зникають разом із забутими даними для входу."
+ },
+ {
+  "en": "Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.",
+  "tr": "Ведіть у листі з інструкціями перелік платформ, ідентифікаторів рахунків і способів отримати баланси."
+ },
+ {
+  "en": "You",
+  "tr": "Ви"
+ },
+ {
+  "en": "Hardware wallet #1 · your home",
+  "tr": "Апаратний гаманець №1 · ваш дім"
+ },
+ {
+  "en": "Key A",
+  "tr": "Ключ A"
+ },
+ {
+  "en": "Hardware wallet #2 · bank vault / second location",
+  "tr": "Апаратний гаманець №2 · банківська скринька / друге місце"
+ },
+ {
+  "en": "Key B",
+  "tr": "Ключ B"
+ },
+ {
+  "en": "Partner / attorney",
+  "tr": "Партнер / юрист"
+ },
+ {
+  "en": "Unchained-style vault service · releases on inheritance event",
+  "tr": "Сервіс сховища на кшталт Unchained · видає ключ у разі спадкування"
+ },
+ {
+  "en": "Key C",
+  "tr": "Ключ C"
+ },
+ {
+  "en": "Tell the concierge your goal",
+  "tr": "Розкажіть консьєржу про свою мету"
+ },
+ {
+  "en": "Buy, borrow, earn, mine, secure or report — a short conversation replaces an hour of comparing sites.",
+  "tr": "Купити, позичити, примножити, майнити, захистити чи задекларувати: коротка розмова замінює годину порівняння сайтів."
+ },
+ {
+  "en": "Get matched to a vetted partner",
+  "tr": "Отримайте перевіреного партнера"
+ },
+ {
+  "en": "Every recommendation is one of {0} partners pre-screened by Virtuse, matched to your country and custody style.",
+  "tr": "Кожна рекомендація — один із партнерів, попередньо перевірених Virtuse ({0}), підібраний під вашу країну і спосіб зберігання."
+ },
+ {
+  "en": "Finish on their regulated platform",
+  "tr": "Завершіть на регульованій платформі партнера"
+ },
+ {
+  "en": "KYC and onboarding happen at the partner. Virtuse never holds your keys, funds or data — ever.",
+  "tr": "KYC і реєстрація відбуваються в партнера. Virtuse ніколи не зберігає ваші ключі, кошти чи дані."
+ },
+ {
+  "en": "Vetted partners",
+  "tr": "Перевірених партнерів"
+ },
+ {
+  "en": "Service categories",
+  "tr": "Категорій послуг"
+ },
+ {
+  "en": "EU countries",
+  "tr": "Країн ЄС"
+ },
+ {
+  "en": "Weekly readers",
+  "tr": "Читачів щотижня"
+ },
+ {
+  "en": "Step",
+  "tr": "Крок"
+ },
+ {
+  "en": "Get matched",
+  "tr": "Підібрати партнера"
+ },
+ {
+  "en": "Bitcoin Concierge · Layer 2",
+  "tr": "Bitcoin Concierge · Layer 2"
+ },
+ {
+  "en": "One trusted hub.",
+  "tr": "Один надійний хаб."
+ },
+ {
+  "en": "Every Bitcoin service.",
+  "tr": "Усі Біткоїн-сервіси."
+ },
+ {
+  "en": "The concierge interviews you like an advisor, compares the Virtuse partner network for your country and custody style, and routes you to the right regulated platform.",
+  "tr": "Консьєрж розпитує вас, як консультант, порівнює мережу партнерів Virtuse з урахуванням вашої країни та способу зберігання і спрямовує на потрібну регульовану платформу."
+ },
+ {
+  "en": "How",
+  "tr": "Як працює"
+ },
+ {
+  "en": "routing works",
+  "tr": "спрямування"
+ },
+ {
+  "en": "Partner",
+  "tr": "Екосистема"
+ },
+ {
+  "en": "ecosystem",
+  "tr": "партнерів"
+ },
+ {
+  "en": "Every name here has a live, vetted card on virtuse.com — the concierge only ever routes to one of them.",
+  "tr": "Кожна назва тут має активну перевірену картку на virtuse.com: консьєрж спрямовує лише до них."
+ },
+ {
+  "en": "Your keys, always",
+  "tr": "Ваші ключі, завжди"
+ },
+ {
+  "en": "The concierge only advises and routes. It cannot move funds, and Virtuse never takes custody. That is what keeps Layer 2 light on regulation — and your sats in your hands.",
+  "tr": "Консьєрж лише радить і спрямовує. Він не може переміщати кошти, а Virtuse ніколи не бере їх на зберігання. Саме це робить регулювання Layer 2 легким, а ваші сатоші залишаються у ваших руках."
+ },
+ {
+  "en": "Routing engine is rule-based — a production version plugs in a conversational agent over the same data and guardrails. Educational routing only; not financial, tax or legal advice. KYC & onboarding are completed on each partner’s regulated platform.",
+  "tr": "Рушій спрямування працює на правилах: робоча версія підключає розмовного агента до тих самих даних і запобіжників. Спрямування лише з освітньою метою; це не фінансова, податкова чи юридична порада. KYC і реєстрація відбуваються на регульованій платформі кожного партнера."
+ },
+ {
+  "en": "Loan & Liquidity Copilot",
+  "tr": "Loan & Liquidity Copilot"
+ },
+ {
+  "en": "Layer 2 · Module 04",
+  "tr": "Layer 2 · Модуль 04"
+ },
+ {
+  "en": "Sell your bitcoin, or",
+  "tr": "Продати свій Біткоїн"
+ },
+ {
+  "en": "borrow against it?",
+  "tr": "чи позичити під його заставу?"
+ },
+ {
+  "en": "The core question of the Virtuse thesis – answered with your numbers. Compare the tax bill and lost upside of selling against the interest and liquidation risk of a Bitcoin-backed loan.",
+  "tr": "Головне питання тези Virtuse з відповіддю на ваших цифрах. Порівняйте податок і втрачений потенціал зростання при продажу з відсотками та ризиком ліквідації позики під заставу Біткоїна."
+ },
+ {
+  "en": "Cash needed",
+  "tr": "Потрібна готівка"
+ },
+ {
+  "en": "Your BTC holdings",
+  "tr": "Ваші BTC"
+ },
+ {
+  "en": "BTC price",
+  "tr": "Ціна BTC"
+ },
+ {
+  "en": "Loan-to-value",
+  "tr": "Loan-to-value (LTV)"
+ },
+ {
+  "en": "Interest rate (APR)",
+  "tr": "Відсоткова ставка (річна)"
+ },
+ {
+  "en": "Horizon",
+  "tr": "Горизонт"
+ },
+ {
+  "en": "years",
+  "tr": "років"
+ },
+ {
+  "en": "Tax jurisdiction (gain rate)",
+  "tr": "Податкова юрисдикція (ставка на прибуток)"
+ },
+ {
+  "en": "Untaxed cost basis share",
+  "tr": "Неоподатковувана частка собівартості"
+ },
+ {
+  "en": "Share of the sold value that is profit (taxed), vs. your original purchase price (not taxed).",
+  "tr": "Частка вартості продажу, що є прибутком (оподатковується), порівняно з початковою ціною купівлі (не оподатковується)."
+ },
+ {
+  "en": "Liquidation watch",
+  "tr": "Контроль ліквідації"
+ },
+ {
+  "en": "Collateral",
+  "tr": "Застава"
+ },
+ {
+  "en": "locked at {0} % LTV",
+  "tr": "заблоковано при LTV {0}%"
+ },
+ {
+  "en": "Margin-call price",
+  "tr": "Ціна маржин-колу"
+ },
+ {
+  "en": "at {0} % LTV threshold",
+  "tr": "при порозі LTV {0}%"
+ },
+ {
+  "en": "Headroom",
+  "tr": "Запас"
+ },
+ {
+  "en": "{0} % drop room",
+  "tr": "{0}% запасу на падіння"
+ },
+ {
+  "en": "past threshold",
+  "tr": "за порогом"
+ },
+ {
+  "en": "before margin call",
+  "tr": "до маржин-колу"
+ },
+ {
+  "en": "Bar: margin-call price relative to current price. Illustrative {0} % threshold – real terms depend on the loan provider.",
+  "tr": "Смуга: ціна маржин-колу відносно поточної ціни. Орієнтовний поріг {0}%: реальні умови залежать від кредитора."
+ },
+ {
+  "en": "If you sell",
+  "tr": "Якщо продати"
+ },
+ {
+  "en": "Sell {0} BTC → {1}",
+  "tr": "Продаж {0} BTC → {1}"
+ },
+ {
+  "en": "Tax on gains: −{0}",
+  "tr": "Податок на прибуток: −{0}"
+ },
+ {
+  "en": "Cash left: {0}",
+  "tr": "Залишок готівки: {0}"
+ },
+ {
+  "en": "Future upside lost on the sold coins",
+  "tr": "Втрачене майбутнє зростання проданих монет"
+ },
+ {
+  "en": "If you borrow (Firefish-style)",
+  "tr": "Якщо позичити (як у Firefish)"
+ },
+ {
+  "en": "Receive {0} – keep all {1} BTC",
+  "tr": "Отримайте {0} і збережіть усі {1} BTC"
+ },
+ {
+  "en": "No sale, no immediate capital-gains tax",
+  "tr": "Без продажу, без негайного податку на приріст капіталу"
+ },
+ {
+  "en": "Interest: {0}/yr → {1} total",
+  "tr": "Відсотки: {0} на рік → {1} загалом"
+ },
+ {
+  "en": "Margin call if BTC falls to {0}",
+  "tr": "Маржин-кол, якщо BTC впаде до {0}"
+ },
+ {
+  "en": "Scenario matrix · net position after {0}y",
+  "tr": "Матриця сценаріїв · чиста позиція через {0} р."
+ },
+ {
+  "en": "BTC change",
+  "tr": "Зміна BTC"
+ },
+ {
+  "en": "Sell net",
+  "tr": "Чисто при продажу"
+ },
+ {
+  "en": "Borrow net",
+  "tr": "Чисто при позиці"
+ },
+ {
+  "en": "Winner",
+  "tr": "Переможець"
+ },
+ {
+  "en": "Borrow",
+  "tr": "Позика"
+ },
+ {
+  "en": "Sell",
+  "tr": "Продаж"
+ },
+ {
+  "en": "Loan & Liquidity Copilot – Virtuse Layer 2, Module 04. Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.",
+  "tr": "Loan & Liquidity Copilot: Virtuse Layer 2, Модуль 04. Спрощена освітня модель з орієнтовними ставками і фіксованим порогом маржин-колу: реальні умови залежать від кредитора. Це не фінансова, податкова чи юридична порада. Virtuse ніколи не зберігає ваші ключі; застава залишається в ескроу на мультипідписі."
+ },
+ {
+  "en": "Layer 2 · Module 03",
+  "tr": "Layer 2 · Модуль 03"
+ },
+ {
+  "en": "Your DCA plan,",
+  "tr": "Ваш план DCA,"
+ },
+ {
+  "en": "priced across every partner.",
+  "tr": "з цінами кожного партнера."
+ },
+ {
+  "en": "Set your stacking rhythm, see the long-term projection, and let the fee arbitrage table find the cheapest route per purchase – then automate it with 21bitcoin's Auto-Invest plan or a dedicated DCA bot like RevenueBot.",
+  "tr": "Задайте ритм накопичення, подивіться довгостроковий прогноз і дозвольте таблиці арбітражу комісій знайти найдешевший шлях для кожної покупки, а тоді автоматизуйте його планом Auto-Invest від 21bitcoin або DCA-ботом, як-от RevenueBot."
+ },
+ {
+  "en": "Initial lump sum",
+  "tr": "Початкова сума"
+ },
+ {
+  "en": "Contribution per period",
+  "tr": "Внесок за період"
+ },
+ {
+  "en": "Frequency",
+  "tr": "Частота"
+ },
+ {
+  "en": "Annual return assumption",
+  "tr": "Припущена річна дохідність"
+ },
+ {
+  "en": "yr",
+  "tr": "рік"
+ },
+ {
+  "en": "ARK-style scenario (39 %/yr) mirrors the research cited on virtuse.com. Treat it as an optimistic bound, not a promise.",
+  "tr": "Сценарій у стилі ARK (39% на рік) відображає дослідження, цитовані на virtuse.com. Сприймайте його як оптимістичну межу, а не обіцянку."
+ },
+ {
+  "en": "Projection compounds your contribution at the chosen rate every period. Past performance never guarantees future results.",
+  "tr": "Прогноз капіталізує ваш внесок за обраною ставкою щоперіоду. Минулі результати ніколи не гарантують майбутніх."
+ },
+ {
+  "en": "Total invested",
+  "tr": "Усього інвестовано"
+ },
+ {
+  "en": "Projected value",
+  "tr": "Прогнозована вартість"
+ },
+ {
+  "en": "Multiple",
+  "tr": "Множник"
+ },
+ {
+  "en": "Invested",
+  "tr": "Інвестовано"
+ },
+ {
+  "en": "Orange = projected value · dashed = your total invested",
+  "tr": "Помаранчева = прогнозована вартість · пунктир = усього інвестовано"
+ },
+ {
+  "en": "Fee arbitrage",
+  "tr": "Арбітраж комісій"
+ },
+ {
+  "en": "Route",
+  "tr": "Шлях"
+ },
+ {
+  "en": "Fee / purchase",
+  "tr": "Комісія / покупка"
+ },
+ {
+  "en": "Effective",
+  "tr": "Фактично"
+ },
+ {
+  "en": "Annual drag",
+  "tr": "Річні витрати"
+ },
+ {
+  "en": "BTC per €1,000",
+  "tr": "BTC за 1 000 €"
+ },
+ {
+  "en": "\"BTC per €1,000\" = how much bitcoin actually lands in your wallet per €1,000 invested after all route fees. Illustrative fee schedule – production wires live partner quotes.",
+  "tr": "«BTC за 1 000 €» = скільки Біткоїна реально надходить на ваш гаманець за кожні інвестовані 1 000 € після всіх комісій. Орієнтовний тариф: робоча версія використовує живі котирування партнерів."
+ },
+ {
+  "en": "Recommended route",
+  "tr": "Рекомендований шлях"
+ },
+ {
+  "en": "eff.",
+  "tr": "факт."
+ },
+ {
+  "en": "Staying on the cheapest route saves you",
+  "tr": "Найдешевший шлях заощаджує вам"
+ },
+ {
+  "en": "per year in fees vs the average of the other routes.",
+  "tr": "на рік на комісіях порівняно із середнім значенням інших шляхів."
+ },
+ {
+  "en": "Every route above costs the same or more than this one — there is nothing left to save by switching.",
+  "tr": "Кожен шлях вище коштує стільки ж або більше: перехід нічого не заощадить."
+ },
+ {
+  "en": "Automate with RevenueBot",
+  "tr": "Автоматизувати з RevenueBot"
+ },
+ {
+  "en": "Start Auto-Invest",
+  "tr": "Запустити Auto-Invest"
+ },
+ {
+  "en": "Start this route",
+  "tr": "Обрати цей шлях"
+ },
+ {
+  "en": "Stacking Strategist – Virtuse Layer 2, Module 03. Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
+  "tr": "Stacking Strategist: Virtuse Layer 2, Модуль 03. Комісії в прототипі орієнтовні; прогнози — це математичні сценарії, а не обіцянки. Це не фінансова порада. Virtuse ніколи не зберігає ваші ключі: покупки надходять на обраний вами гаманець."
+ },
+ {
+  "en": "Tax & Inheritance Agent",
+  "tr": "Tax & Inheritance Agent"
+ },
+ {
+  "en": "Layer 2 · Module 06",
+  "tr": "Layer 2 · Модуль 06"
+ },
+ {
+  "en": "Two questions every bitcoiner avoids:",
+  "tr": "Два питання, яких уникає кожен біткоїнер:"
+ },
+ {
+  "en": "taxes and death.",
+  "tr": "податки і смерть."
+ },
+ {
+  "en": "A country-by-country overview of how bitcoin gains are treated across the 11 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
+  "tr": "Огляд оподаткування прибутку від Біткоїна у 11 країнах ЄС, де працює Virtuse, країна за країною, а також тест готовності до спадкування, що відповідає на питання «що буде з моїми сатоші, коли мене не стане?»."
+ },
+ {
+  "en": "Tax overview · 11 EU countries",
+  "tr": "Податковий огляд · 11 країн ЄС"
+ },
+ {
+  "en": "Gain tax",
+  "tr": "Податок на прибуток"
+ },
+ {
+  "en": "Holding exemption",
+  "tr": "Звільнення за володіння"
+ },
+ {
+  "en": "Filing",
+  "tr": "Декларування"
+ },
+ {
+  "en": "Good to know",
+  "tr": "Варто знати"
+ },
+ {
+  "en": "Indicative 2025 overview.",
+  "tr": "Орієнтовний огляд на 2025 рік."
+ },
+ {
+  "en": "Tax rules change fast and your situation is individual – verify with a local tax advisor. For audit-ready crypto tax reports, Virtuse partners with Lukka.",
+  "tr": "Податкові правила швидко змінюються, а ваша ситуація індивідуальна: перевірте в місцевого податкового консультанта. Для криптоподаткових звітів, готових до перевірки, Virtuse співпрацює з Lukka."
+ },
+ {
+  "en": "Tax reports via Lukka",
+  "tr": "Податкові звіти через Lukka"
+ },
+ {
+  "en": "What happens to my sats? · Readiness check",
+  "tr": "Що буде з моїми сатоші? · Тест готовності"
+ },
+ {
+  "en": "Six yes/no questions. Answer honestly – the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
+  "tr": "Шість питань «так/ні». Відповідайте чесно: оцінка показує, наскільки ваші спадкоємці змогли б відновити ваш Біткоїн уже завтра вранці."
+ },
+ {
+  "en": "Priority fixes",
+  "tr": "Першочергові виправлення"
+ },
+ {
+  "en": "Fully inheritance-ready. Schedule an annual recovery drill and keep the letter of instruction current.",
+  "tr": "Повністю готово до спадкування. Щороку проводьте тренування з відновлення і тримайте лист з інструкціями актуальним."
+ },
+ {
+  "en": "{0} of {1} questions not answered yet.",
+  "tr": "Без відповіді: {0} з {1} питань."
+ },
+ {
+  "en": "The 2-of-3 multisig inheritance setup",
+  "tr": "Налаштування спадкування з мультипідписом 2 з 3"
+ },
+ {
+  "en": "Three keys, any two move funds. No single point of failure – and your heirs can recover with the partner key plus one of yours.",
+  "tr": "Три ключі, будь-які два переміщують кошти. Жодної єдиної точки відмови: спадкоємці відновлять доступ ключем партнера і одним із ваших."
+ },
+ {
+  "en": "Any 2 of 3 keys can move funds – 1 lost key never means lost coins.",
+  "tr": "Будь-які 2 з 3 ключів переміщують кошти: 1 втрачений ключ ніколи не означає втрачених монет."
+ },
+ {
+  "en": "Set it up properly",
+  "tr": "Налаштуйте це правильно"
+ },
+ {
+  "en": "Multisig vaults with a formal inheritance protocol – you always hold the majority of keys. Vetted by Virtuse, settled to wallets you control.",
+  "tr": "Мультипідписні сховища з формальним протоколом спадкування: більшість ключів завжди у вас. Перевірено Virtuse, розрахунки на гаманці, які ви контролюєте."
+ },
+ {
+  "en": "Explore multisig inheritance",
+  "tr": "Дізнатися про спадкування з мультипідписом"
+ },
+ {
+  "en": "2-of-3 multisig",
+  "tr": "Мультипідпис 2 з 3"
+ },
+ {
+  "en": "Inheritance protocol",
+  "tr": "Протокол спадкування"
+ },
+ {
+  "en": "Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
+  "tr": "Tax & Inheritance Agent: Virtuse Layer 2, Модуль 06. Податкові дані — це орієнтовний огляд на 2025 рік, і вони можуть бути застарілими; це не податкова, юридична чи фінансова порада. Інструменти спадкування мають освітній характер; для планування спадщини зверніться до фахівця. Virtuse ніколи не зберігає ваші ключі."
+ }
+]

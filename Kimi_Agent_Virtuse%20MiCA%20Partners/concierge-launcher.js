@@ -38,7 +38,7 @@
 
   // Languages that have their own Concierge page (<lang>/concierge.html).
   // Keep in sync with MODULE_LANGS in the Concierge project (src/lib/i18n.ts).
-  var MODULE_LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu'];
+  var MODULE_LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk'];
   var SCRIPT = document.currentScript;
   var PAGE_LANG = document.documentElement.lang || 'en';
   var HAS_OWN = MODULE_LANGS.indexOf(PAGE_LANG) !== -1;
@@ -98,6 +98,13 @@
       bubbleTitle: 'Melyik Bitcoin-szolgáltatás illik hozzám?',
       bubbleSub: 'Ingyenes · Regisztráció nélkül · A kulcsait soha nem kezeljük',
       closeAria: 'Bitcoin Concierge bezárása',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+    uk: {
+      bubbleAria: 'Відкрити Bitcoin Concierge: який Біткоїн-сервіс мені підходить?',
+      bubbleTitle: 'Який Біткоїн-сервіс мені підходить?',
+      bubbleSub: 'Безкоштовно · Без реєстрації · Ми ніколи не зберігаємо ваші ключі',
+      closeAria: 'Закрити Bitcoin Concierge',
       iframeTitle: 'Virtuse Bitcoin Concierge',
     },
   }[LANG];
