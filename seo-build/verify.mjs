@@ -30,6 +30,12 @@ const DISCLAIMERS_DE = [
   'KYC'
 ];
 
+const DISCLAIMERS_SK = [
+  'Orientačný prehľad 2026',
+  'Virtuse nikdy nedrží vaše kľúče',
+  'KYC'
+];
+
 function stripTags(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
 }
@@ -42,6 +48,7 @@ function attr(html, re) {
 const htmlFiles = manifest.files.filter((f) => f.endsWith('.html'));
 let en = 0;
 let de = 0;
+let sk = 0;
 
 for (const rel of htmlFiles) {
   const fp = path.join(SITE, rel);
@@ -56,6 +63,7 @@ for (const rel of htmlFiles) {
   const lang = attr(html, /<html lang="([^"]+)"/);
   if (lang === 'en') en += 1;
   if (lang === 'de') de += 1;
+  if (lang === 'sk') sk += 1;
 
   const title = attr(html, /<title>([^<]+)<\/title>/);
   if (title.length > 60) fail(`${rel} title ${title.length} > 60: ${title}`);
@@ -75,8 +83,9 @@ for (const rel of htmlFiles) {
   const h2 = (html.match(/<h2>/g) || []).length;
   if (h2 < 2) fail(`${rel} has ${h2} H2s (need ≥2)`);
 
-  const faqH3 = (html.match(/<h2>FAQ<\/h2>([\s\S]*?)(<h2>|<\/main>)/) || [,''])[1];
-  const faqCount = (html.split('<h2>FAQ</h2>')[1] || '').match(/<h3>/g)?.length || 0;
+  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : '<h2>FAQ</h2>';
+  const faqH3 = (html.split(faqHeading)[1] || '');
+  const faqCount = (html.split(faqHeading)[1] || '').match(/<h3>/g)?.length || 0;
   if (faqCount < 3 || faqCount > 5) fail(`${rel} FAQ count ${faqCount} (need 3–5)`);
 
   if (!html.includes('BreadcrumbList')) fail(`${rel} missing BreadcrumbList`);
@@ -91,7 +100,7 @@ for (const rel of htmlFiles) {
   const robots = attr(html, /name="robots" content="([^"]+)"/);
   const noindex = robots.includes('noindex');
 
-  const dis = lang === 'de' ? DISCLAIMERS_DE : DISCLAIMERS_EN;
+  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : DISCLAIMERS_EN;
   for (const d of dis) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
   }
@@ -109,6 +118,7 @@ for (const rel of htmlFiles) {
     fail(`${rel} hreflang missing en or x-default (${hreflang.join(',')})`);
   }
   if (lang === 'de' && !hreflang.includes('de')) fail(`${rel} DE page missing hreflang de`);
+  if (lang === 'sk' && !hreflang.includes('sk')) fail(`${rel} SK page missing hreflang sk`);
 
   // Answer must be real HTML in the body, not only injected by JS.
   if (!html.includes('<div class="answer"><p>')) fail(`${rel} missing static answer block`);
@@ -199,6 +209,10 @@ const cz = fs.readFileSync(path.join(SITE, 'bitcoin-tax/czechia/index.html'), 'u
 const tschechien = fs.readFileSync(path.join(SITE, 'de/bitcoin-steuern/tschechien/index.html'), 'utf8');
 if (!cz.includes('de/bitcoin-steuern/tschechien')) fail('EN czechia missing DE hreflang');
 if (!tschechien.includes('bitcoin-tax/czechia')) fail('DE tschechien missing EN hreflang');
+const cesko = fs.readFileSync(path.join(SITE, 'sk/bitcoin-dane/cesko/index.html'), 'utf8');
+if (!cz.includes('sk/bitcoin-dane/cesko')) fail('EN czechia missing SK hreflang');
+if (!tschechien.includes('sk/bitcoin-dane/cesko')) fail('DE tschechien missing SK hreflang');
+if (!cesko.includes('bitcoin-tax/czechia') || !cesko.includes('de/bitcoin-steuern/tschechien')) fail('SK cesko missing EN/DE hreflang');
 
 // Determinism: second generate should not change bytes of one page
 const before = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
@@ -213,6 +227,7 @@ console.log(JSON.stringify({
   htmlFiles: htmlFiles.length,
   enHtml: en,
   deHtml: de,
+  skHtml: sk,
   counts: JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8')).counts,
   warnings,
   errors: errors.length

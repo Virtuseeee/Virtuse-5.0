@@ -17,6 +17,9 @@ import {
   formatPctDe,
   formatEurDe,
   methodDe,
+  formatPctSk,
+  formatEurSk,
+  methodSk,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -52,6 +55,7 @@ const FEE_ROWS = meta.feeSource === 'live' ? liveFees.rows : seoData.feeSchedule
 
 const asOfEn = formatAsOf(AS_OF, 'en');
 const asOfDe = formatAsOf(AS_OF, 'de');
+const asOfSk = formatAsOf(AS_OF, 'sk');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -68,6 +72,18 @@ function nameDe(id) {
   if (!s) throw new Error(`Missing DE name for country id "${id}". Add it in seo-build/data/meta.json.`);
   return s;
 }
+function slugSk(id) {
+  const s = meta.slugs.sk[id];
+  if (!s) throw new Error(`Missing SK slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function nameSk(id) {
+  const s = meta.names.sk[id];
+  if (!s) throw new Error(`Missing SK name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** "v/na/vo <krajine>" in Slovak (na Slovensku, vo Francúzsku). */
+function inSk(id) { return meta.inSk[id]; }
 /** "in <country>" in German: a few names take an article (in der Slowakei, in den Niederlanden). */
 function inDe(id) { return (meta.inDe && meta.inDe[id]) || `in ${nameDe(id)}`; }
 function countryById(id) { return COUNTRIES.find((c) => c.id === id); }
@@ -84,11 +100,27 @@ function abs(p) {
   return ORIGIN + c;
 }
 
+/** EN page -> its Slovak counterpart (the sk/ set mirrors the German pilot). */
+const SK_ALT = {
+  'bitcoin-tax/index.html': 'sk/bitcoin-dane/index.html',
+  'bitcoin-dca-calculator/index.html': 'sk/bitcoin-dca-kalkulacka/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'sk/bitcoin-predat-alebo-pozicat/index.html',
+  'bitcoin-inheritance/index.html': 'sk/bitcoin-dedicstvo/index.html',
+  'bitcoin-fee-index/index.html': 'sk/bitcoin-index-poplatkov/index.html'
+};
+for (const c of COUNTRIES) {
+  SK_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `sk/bitcoin-dane/${meta.slugs.sk[c.id]}/index.html`;
+}
+
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const skPath = SK_ALT[enPath];
+  if (skPath) {
+    tags.splice(1, 0, { lang: 'sk', href: abs(skPath), path: canonicalPath(skPath) });
+  }
   if (dePath) {
     tags.splice(1, 0, { lang: 'de', href: abs(dePath), path: canonicalPath(dePath) });
   }
@@ -115,7 +147,7 @@ function faqHtml(items, heading) {
 function tableHtml(headers, rows) {
   const thead = `<tr>${headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr>`;
   const body = rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('');
-  return `<table><thead>${thead}</thead><tbody>${body}</tbody></table>`;
+  return `<div class="table-wrap"><table><thead>${thead}</thead><tbody>${body}</tbody></table></div>`;
 }
 
 function neighborsOf(id) {
@@ -129,6 +161,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'sk' ? [
+      `Údaje z live modulov Virtuse, stav ${asOfSk}.`,
+      'Virtuse nikdy nedrží vaše kľúče.',
+      'Overte si miestne pravidlá; nejde o daňové poradenstvo.'
     ]
     : [
       `Figures taken from Virtuse’s live modules, as of ${asOfEn}.`,
@@ -591,8 +628,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <button type="submit" class="cta-secondary">Recalculate fees</button></p>
 </form>
 <h2>First-year fees on the default plan</h2>
-<table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
-<tbody id="dca-body">${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>
+<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
+<tbody id="dca-body">${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
 <p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. Bitcoin price returns are deliberately left out.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -891,6 +928,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'sk') {
+      return `<h3>${esc(formatEurSk(amt))} mesačne</h3>` +
+        tableHtml(['Poradie', 'Partner', 'Metóda', 'Poplatok', 'Ročné poplatky'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodSk(r.method)),
+          esc(formatPctSk(r.pct) + (r.monthly ? ` + ${formatEurSk(r.monthly)} mesačne` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     return `<h3>${lang === 'de' ? `${esc(formatEurDe(amt))} pro Monat` : `${esc(formatEur(amt))} per month`}</h3>` +
       tableHtml(
         lang === 'de' ? ['Rang', 'Partner', 'Methode', 'Gebühr', 'Jahreslast'] : ['Rank', 'Partner', 'Method', 'Fee', 'Annual fee drag'],
@@ -906,7 +953,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'de') {
+  if (lang === 'sk') {
+    if (be.status === 'always') {
+      beText = `Pri zverejnených poplatkoch má najlacnejšia automatizovaná cesta (${be.auto.partner}) od 1 € mesačne rovnaké alebo nižšie ročné poplatky ako najlacnejšia manuálna cesta (${be.manual.partner}).`;
+    } else if (be.status === 'found') {
+      beText = `Bod zvratu: od ${formatEurSk(be.monthlyEur)} mesačne nie je ${be.auto.partner} (automatizovane) drahší ako ${be.manual.partner} (manuálne).`;
+    } else {
+      beText = 'Do 20 000 € mesačne najlacnejšia automatizovaná cesta neprekoná najlacnejšiu manuálnu cestu.';
+    }
+  } else if (lang === 'de') {
     if (be.status === 'always') {
       beText = `Break-even automatisiert vs. manuell: Die günstigste automatisierte Route (${be.auto.partner}) hat ab 1 €/Monat eine niedrigere oder gleiche Jahreslast als die günstigste manuelle Route (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -1273,6 +1328,333 @@ ${faqHtml(faqs, 'FAQ')}
   });
 }
 
+// ---------- Slovak (sk/) ----------
+const SK_HOME = { name: 'Domov', href: null, abs: abs('sk/index.html') };
+function skHome(relFile) { return { ...SK_HOME, href: toRoot(relFile, 'sk/index.html') }; }
+
+// SK tax hub
+{
+  const relFile = 'sk/bitcoin-dane/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(c.id)}/`))}">${esc(nameSk(c.id))}</a>`,
+    esc(meta.taxSk[c.id].gainTax),
+    esc(meta.taxSk[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Ktoré krajiny tento prehľad pokrýva?', a: `${N} krajín EÚ: ${COUNTRIES.map((c) => nameSk(c.id)).join(', ')}. Stav ${asOfSk}, údaje z modulu Virtuse Tax.` },
+    { q: 'Ide o daňové poradenstvo?', a: 'Nie. Orientačný prehľad 2026 – nejde o daňové poradenstvo. Pravidlá pre aktuálny rok si overte u miestneho poradcu.' },
+    { q: 'Hlási Virtuse moje držby daňovým úradom?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče ani históriu vašich transakcií. KYC robia partneri sami.' },
+    { q: 'Kde si okrem daní preverím aj dedenie?', a: `V module Tax & Inheritance Agent (live modul) s rovnakými ${N} krajinami a kontrolou pripravenosti na multisig.` }
+  ];
+  const answer = finalizeAnswer([
+    `Tento prehľad porovnáva zdanenie Bitcoinu v ${N} krajinách EÚ, stav ${asOfSk}.`,
+    'Sadzby, oslobodenia a poznámky k daňovému priznaniu pochádzajú z modulu Virtuse Tax.',
+    'Nemecko a Rakúsko oslobodzujú zisky po 1 roku držby, Česko uplatňuje 3-ročný časový test a Holandsko namiesto dane zo ziskov zdaňuje predpokladaný výnos (Box 3).',
+    'Orientačný prehľad 2026, nejde o daňové poradenstvo.'
+  ], 'sk');
+  pushPage({
+    relFile, lang: 'sk',
+    title: assertTitle(`Dane z Bitcoinu v ${N} krajinách EÚ (2026)`),
+    description: assertDescription(`Sadzby dane z Bitcoinu, oslobodenia podľa doby držby a daňové priznanie v ${N} krajinách EÚ, stav ${asOfSk}. Orientačný prehľad.`),
+    h1: `Dane z Bitcoinu v ${N} krajinách EÚ`,
+    answerHtml: esc(answer),
+    breadcrumbs: [skHome(relFile), { name: 'Dane z Bitcoinu', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' },
+      { href: toRoot(relFile, 'sk/bitcoin-dedicstvo/'), label: 'Bitcoin a dedičstvo' },
+      { href: toRoot(relFile, 'sk/bitcoin-index-poplatkov/'), label: 'Index poplatkov za Bitcoin' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'sk/' + TAX_AGENT), label: 'Otvoriť Tax & Inheritance Agent →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Každá stránka krajiny uvádza daň zo ziskov, prípadné oslobodenie podľa doby držby a daňové priznanie, stav ${esc(asOfSk)}. Live modul Tax & Inheritance Agent používa rovnaké údaje a pridáva skóre pripravenosti na dedenie.</p>
+<h2>Porovnanie krajín</h2>
+${tableHtml(['Krajina', 'Daň zo ziskov', 'Oslobodenie'], rows)}
+${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
+// SK country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `sk/bitcoin-dane/${slugSk(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxSk[c.id];
+  const inN = inSk(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Aká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfSk}: ${t.gainTax}. Orientačný prehľad 2026, nejde o daňové poradenstvo.` },
+    { q: `Existuje ${inN} oslobodenie podľa doby držby?`, a: `${t.exemption}. Pred podaním priznania si pravidlá pre aktuálny rok overte u miestneho daňového poradcu.` },
+    { q: `Ako sa ${inN} podáva daňové priznanie?`, a: `${t.filing}. ${t.note}` },
+    { q: 'Drží Virtuse môj Bitcoin alebo podáva moje daňové priznanie?', a: `Nie. Virtuse nikdy nedrží vaše kľúče. KYC a registrácia prebiehajú u partnera. Tax Agent porovná prehľad ${N} krajín; daňové priznanie pripraví kvalifikovaný daňový poradca.` }
+  ];
+  const answer = finalizeAnswer([
+    `Dane z Bitcoinu ${inN}, stav ${asOfSk}: ${t.gainTax}.`,
+    `Oslobodenie: ${t.exemption}.`,
+    `Priznanie: ${t.filing}.`,
+    t.note,
+    'Orientačný prehľad 2026, nejde o daňové poradenstvo.'
+  ], 'sk');
+  pushPage({
+    relFile, lang: 'sk',
+    title: assertTitle(`Dane z Bitcoinu ${inN} (${asOfSk})`),
+    description: assertDescription(`Dane z Bitcoinu ${inN} (${asOfSk}): ${t.gainTax}. Nejde o daňové poradenstvo.`),
+    h1: `Dane z Bitcoinu ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      skHome(relFile),
+      { name: 'Dane z Bitcoinu', href: toRoot(relFile, 'sk/bitcoin-dane/'), abs: abs('sk/bitcoin-dane/index.html') },
+      { name: nameSk(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' },
+      { href: toRoot(relFile, 'sk/bitcoin-dedicstvo/'), label: 'Bitcoin a dedičstvo' },
+      { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' }
+    ],
+    moduleCta: { href: toRoot(relFile, `sk/${TAX_AGENT}?country=${c.id}`), label: `Skontrolovať ${nameSk(c.id)} v Tax Agentovi →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Údaje so stavom ${esc(asOfSk)}, prevzaté z modulu Virtuse Tax.</p>
+<h2>Sadzby a daňové priznanie</h2>
+${tableHtml(['Údaj', 'Stav ' + asOfSk], [
+  ['Daň zo ziskov', esc(t.gainTax)],
+  ['Oslobodenie', esc(t.exemption)],
+  ['Daňové priznanie', esc(t.filing)],
+  ['Poznámka', esc(t.note)]
+])}
+<h2>Kedy zvyčajne vzniká daň?</h2>
+<p>${esc(t.note)} Nákup Bitcoinu sa v tomto prehľade nepovažuje za zdaniteľný prevod; pred platbou, výmenou, darovaním alebo požičaním mincí si overte miestne pravidlá.</p>
+<h2>Susedné krajiny</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(n.id)}/`))}">Dane z Bitcoinu ${esc(inSk(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
+// SK DCA calculator
+{
+  const relFile = 'sk/bitcoin-dca-kalkulacka/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Predpovedá táto kalkulačka cenu Bitcoinu?', a: 'Nie. Porovnáva len poplatky partnerov podľa zverejneného cenníka. Výnos z ceny Bitcoinu nemodeluje.' },
+    { q: `Aký je štandardný plán, stav ${asOfSk}?`, a: 'Jednorazovo 500 € a potom 100 € mesačne počas 12 mesiacov. Poradie podľa poplatkov za prvý rok.' },
+    { q: 'Ktorá cesta je v tomto pláne najlacnejšia?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist.` },
+    { q: 'Ide o investičné poradenstvo?', a: 'Nie. Slúži len na vzdelávacie účely. KYC prebieha u partnera. Virtuse nikdy nedrží vaše kľúče.' }
+  ];
+  const answer = finalizeAnswer([
+    `V príklade DCA, ktorý počíta len s poplatkami (500 € a potom 100 € mesačne počas 12 mesiacov), je k stavu ${asOfSk} na prvom mieste ${win.partner}.`,
+    `Variabilný poplatok ${formatPctSk(win.pct)}. Nejde o predpoveď ceny.`,
+    'Údaje z live modulu Stacking Strategist. Orientačný prehľad 2026.'
+  ], 'sk');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'sk',
+    title: assertTitle('Bitcoin DCA kalkulačka (poplatky v EÚ 2026)'),
+    description: assertDescription(`DCA kalkulačka pre Bitcoin, ktorá počíta len s poplatkami, stav ${asOfSk}. Štandard 500 € + 100 € mesačne, najlacnejšia cesta ${win.partner}.`),
+    h1: 'Bitcoin DCA kalkulačka',
+    answerHtml: esc(answer),
+    breadcrumbs: [skHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'sk/bitcoin-index-poplatkov/'), label: 'Index poplatkov za Bitcoin' },
+      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' },
+      { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'sk/stacking.html'), label: 'Otvoriť Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin DCA kalkulačka',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Štandardný príklad: 500 € a potom 100 € mesačne × 12. Rovnaký vzorec ako v live module Stacking Strategist.</p>
+<h2>Poradie pri 100 € mesačne</h2>
+${tableHtml(['Poradie', 'Partner', 'Metóda', 'Variabilný poplatok', 'Ročné poplatky'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodSk(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
+// SK sell vs borrow
+{
+  const relFile = 'sk/bitcoin-predat-alebo-pozicat/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `Vzniká pri predaji v týchto ${N} krajinách daň?`, a: `Spravidla áno, pri predaji alebo výmene. Oslobodenia sa líšia: Nemecko 0 % po 1 roku držby, Česko 3-ročný časový test, Poľsko bez oslobodenia. Stav ${asOfSk}. Nejde o daňové poradenstvo.` },
+    { q: 'Je pôžička rovnaká daňová udalosť ako predaj?', a: 'V tomto prehľade nie. Úroky, riziko likvidácie a KYC u partnera však platia. Konkrétne čísla vypočíta Loan & Liquidity Copilot.' },
+    { q: 'Čo je riziko likvidácie?', a: 'Ak hodnota zábezpeky klesne na hranicu partnera, partner môže zábezpeku predať a splatiť ňou pôžičku. Virtuse nikdy nedrží vaše kľúče ani zábezpeku.' },
+    { q: 'Kde si prepočítam konkrétnu sumu?', a: 'V live module Loan & Liquidity Copilot. Táto stránka vysvetľuje len rozdiel medzi daňou a rizikom na základe zverejnených daňových sadzieb.' }
+  ];
+  const answer = finalizeAnswer([
+    `K stavu ${asOfSk} môže predaj Bitcoinu vyvolať daň (napríklad v Nemecku až 45 % počas 1-ročnej lehoty držby, v Rumunsku jednotných 10 %).`,
+    'Pôžička zabezpečená Bitcoinom vám ponechá trhovú pozíciu, ale pridá úroky a riziko likvidácie u partnera.',
+    'Orientačný prehľad 2026, nejde o daňové ani úverové poradenstvo. Virtuse nikdy nedrží vaše kľúče.'
+  ], 'sk');
+  pushPage({
+    relFile, lang: 'sk',
+    title: assertTitle('Bitcoin: predať, alebo si požičať? (2026)'),
+    description: assertDescription(`Predať Bitcoin a zaplatiť daň, alebo si požičať so zábezpekou v Bitcoine a zostať investovaný? Sadzby ${N} krajín EÚ, stav ${asOfSk}.`),
+    h1: 'Predať Bitcoin, alebo si požičať so zábezpekou?',
+    answerHtml: esc(answer),
+    breadcrumbs: [skHome(relFile), { name: 'Predať alebo požičať', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' },
+      { href: toRoot(relFile, 'sk/bitcoin-dca-kalkulacka/'), label: 'DCA kalkulačka' },
+      { href: toRoot(relFile, 'sk/bitcoin-dedicstvo/'), label: 'Bitcoin a dedičstvo' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'sk/loan.html'), label: 'Porovnať v Loan Copilote →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin: predať alebo požičať',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Daň pri predaji</h2>
+${tableHtml(['Krajina', 'Daň zo ziskov', 'Oslobodenie'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(c.id)}/`))}">${esc(nameSk(c.id))}</a>`,
+  esc(meta.taxSk[c.id].gainTax),
+  esc(meta.taxSk[c.id].exemption)
+]))}
+<h2>Riziko pri pôžičke</h2>
+<p>Pôžičky zabezpečené Bitcoinom poskytujú regulovaní partneri, nie Virtuse. Ponecháte si cenovú expozíciu, platíte úroky a vaša zábezpeka môže byť zlikvidovaná. Virtuse zábezpeku nikdy nedrží.</p>
+${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
+// SK inheritance
+{
+  const relFile = 'sk/bitcoin-dedicstvo/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: 'Môže byť v liste s pokynmi seed fráza?', a: 'Nie. List uvádza zoznam, umiestnenia a kontakty – nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.' },
+    { q: 'Prečo multisig 2 z 3?', a: 'Jediná seed fráza je jediný bod zlyhania pre vás aj pre vašich dedičov.' },
+    { q: 'Drží Virtuse kľúče pre dedičov?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče.' },
+    { q: 'Ide o právne poradenstvo?', a: `Nie. Je to kontrolný zoznam na vzdelávacie účely z modulu Tax, stav ${asOfSk}.` }
+  ];
+  const answer = finalizeAnswer([
+    `K stavu ${asOfSk} má kontrolný zoznam modulu Tax šesť bodov: list s pokynmi, geografické rozdelenie kľúčov, informovaný dedič, multisig 2 z 3, test obnovy a zdokumentované účty.`,
+    'Jediná seed fráza je jediný bod zlyhania. Virtuse nikdy nedrží vaše kľúče.',
+    'Nejde o právne poradenstvo.'
+  ], 'sk');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'Príprava Bitcoinu na dedenie',
+    inLanguage: 'sk',
+    step: meta.inheritanceSk.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'sk',
+    title: assertTitle('Bitcoin a dedičstvo: kontrolný zoznam (2026)'),
+    description: assertDescription(`Šesťbodový kontrolný zoznam pre dedenie Bitcoinu, stav ${asOfSk}: list s pokynmi, rozdelenie kľúčov, multisig 2 z 3. Nejde o právne poradenstvo.`),
+    h1: 'Dedenie Bitcoinu: kontrolný zoznam',
+    answerHtml: esc(answer),
+    breadcrumbs: [skHome(relFile), { name: 'Dedičstvo', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' },
+      { href: toRoot(relFile, 'sk/bitcoin-dane/'), label: `Dane v ${N} krajinách EÚ` },
+      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'sk/' + TAX_AGENT), label: 'Ohodnotiť zoznam v Tax Agentovi →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>Obsah zodpovedá kontrolnému zoznamu modulu Tax. Nejde o právne poradenstvo.</p>
+<h2>Návod: šesť krokov</h2>
+<ol>${meta.inheritanceSk.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
+// SK fee index
+{
+  const relFile = 'sk/bitcoin-index-poplatkov/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'sk');
+  const faqs = [
+    { q: 'Čo meria index poplatkov?', a: `Ročné poplatky kúpnych ciest, stav ${asOfSk}, podľa vzorca modulu Stacking Strategist.` },
+    { q: 'Kto je pri 100 € mesačne najlacnejší?', a: `${winner.partner}: ${formatPctSk(winner.pct)}, ročné poplatky ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Sú v tom zahrnuté spready?', a: 'Nie. Len percentuálny poplatok a prípadné mesačné predplatné podľa cenníka. Kurzové rozdiely a poplatky siete Bitcoin (miner fees) nie sú zahrnuté.' },
+    { q: 'Môžem tabuľku citovať?', a: `Áno, s uvedením zdroja „Zdroj: Virtuse index poplatkov za Bitcoin, stav ${asOfSk}“ a odkazom.` }
+  ];
+  const answer = finalizeAnswer([
+    `Virtuse index poplatkov za Bitcoin, stav ${asOfSk}, zoraďuje kúpne cesty v EÚ podľa ročných poplatkov.`,
+    `Pri 100 € mesačne vedie ${winner.partner} (${methodSk(winner.method)}) s ${formatPctSk(winner.pct)}, ${formatEurSk(winner.annualDrag)} ročne.`,
+    beText,
+    'Nejde o ponuku. Virtuse nikdy nedrží vaše kľúče.'
+  ], 'sk');
+  pushPage({
+    relFile, lang: 'sk',
+    title: assertTitle('Index poplatkov za Bitcoin (EÚ) Q3 2026'),
+    description: assertDescription(`Kúpne cesty v EÚ podľa poplatkov, stav ${asOfSk}. Najlacnejšia cesta pri 100 € mesačne: ${winner.partner} s ${formatPctSk(winner.pct)}.`),
+    h1: 'Index poplatkov za Bitcoin',
+    answerHtml: esc(answer),
+    breadcrumbs: [skHome(relFile), { name: 'Index poplatkov', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'sk/bitcoin-dca-kalkulacka/'), label: 'DCA kalkulačka' },
+      { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Metodika (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'sk/stacking.html'), label: 'Otvoriť Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Virtuse index poplatkov za Bitcoin',
+        inLanguage: 'sk',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Virtuse index poplatkov za Bitcoin',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Poradie podľa mesačného vkladu</h2>
+${tables}
+<h2>Automatizovane, alebo manuálne?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -1319,6 +1701,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/de/bitcoin-erbrecht/
 - ${ORIGIN}/de/bitcoin-gebuehrenindex/
 
+## Slovak
+
+- ${ORIGIN}/sk/bitcoin-dane/
+- ${ORIGIN}/sk/bitcoin-dca-kalkulacka/
+- ${ORIGIN}/sk/bitcoin-predat-alebo-pozicat/
+- ${ORIGIN}/sk/bitcoin-dedicstvo/
+- ${ORIGIN}/sk/bitcoin-index-poplatkov/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -1333,6 +1723,7 @@ function llmsFull() {
 - Note: ${c.note}
 - EN: ${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/
 - DE: ${ORIGIN}/de/bitcoin-steuern/${slugDe(c.id)}/
+- SK: ${ORIGIN}/sk/bitcoin-dane/${slugSk(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -1482,6 +1873,7 @@ function writeAll() {
   const counts = {
     enIndexable: generated.filter((p) => p.lang === 'en' && !p.noindex).length,
     deIndexable: generated.filter((p) => p.lang === 'de' && !p.noindex).length,
+    skIndexable: generated.filter((p) => p.lang === 'sk' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };

@@ -103,6 +103,28 @@ export function formatEurDe(n) {
   return `${sign}${String(Math.abs(rounded)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €`;
 }
 
+/** Slovak number formats: "0,1 %", "1 000 €" (non-breaking spaces). */
+export function formatPctSk(pct) {
+  return formatPct(pct).replace('.', ',').replace('%', '\u00a0%');
+}
+
+export function formatEurSk(n) {
+  const rounded = Math.round(Number(n));
+  const sign = rounded < 0 ? '-' : '';
+  return `${sign}${String(Math.abs(rounded)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')}\u00a0€`;
+}
+
+const METHOD_SK = {
+  'Auto-Invest plan': 'Plán Auto-Invest',
+  'Spot trading': 'Spotové obchodovanie',
+  'Pro trading': 'Pro trading',
+  'Automated DCA bot': 'Automatizovaný DCA bot'
+};
+/** Slovak label for a fee-schedule method (same terms as the Stacking module). */
+export function methodSk(method) {
+  return METHOD_SK[method] || method;
+}
+
 const METHOD_DE = {
   'Auto-Invest plan': 'Auto-Invest-Plan',
   'Spot trading': 'Spot-Handel',

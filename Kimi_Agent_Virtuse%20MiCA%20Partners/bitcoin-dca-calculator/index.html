@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://virtuse.com/bitcoin-dca-calculator/">
   <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/">
   <link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-dca-rechner/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dca-kalkulacka/">
   <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
@@ -60,7 +61,8 @@ a { color: var(--btc-orange); }
 h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
 h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
 h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0 20px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
 th { color: var(--text-muted); font-weight: 600; }
 .cta {
@@ -224,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <a href="../bitcoin-dca-calculator/">DCA</a>
     <a href="../concierge.html">Concierge</a>
   </nav>
-  <nav class="lang" aria-label="Language"><a href="../bitcoin-dca-calculator/" aria-current="page">EN</a> · <a href="../de/bitcoin-dca-rechner/">DE</a></nav>
+  <nav class="lang" aria-label="Language"><a href="../bitcoin-dca-calculator/" aria-current="page">EN</a> · <a href="../de/bitcoin-dca-rechner/">DE</a> · <a href="../sk/bitcoin-dca-kalkulacka/">SK</a></nav>
 </header>
 <main class="wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span aria-hidden="true">/</span> <span>DCA calculator</span></nav>
@@ -239,8 +241,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <button type="submit" class="cta-secondary">Recalculate fees</button></p>
 </form>
 <h2>First-year fees on the default plan</h2>
-<table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
-<tbody id="dca-body"><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Published fee</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot trading</td><td>0.1%</td><td>€2</td><td>Published fee</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.16%</td><td>€3</td><td>Published fee</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automated DCA bot</td><td>0.4%</td><td>€55</td><td>Illustrative fee</td></tr></tbody></table>
+<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
+<tbody id="dca-body"><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Published fee</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot trading</td><td>0.1%</td><td>€2</td><td>Published fee</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.16%</td><td>€3</td><td>Published fee</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automated DCA bot</td><td>0.4%</td><td>€55</td><td>Illustrative fee</td></tr></tbody></table></div>
 <p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. Bitcoin price returns are deliberately left out.</p>
 <h2>FAQ</h2><h3>Does this calculator forecast bitcoin’s price?</h3><p>No. It isolates partner fees from the published fee schedule. Price returns are not modelled.</p><h3>What default plan is shown as of Q3 2026?</h3><p>€500 upfront plus €100/month for 12 months (€1,700 invested), ranked by first-year fees using the Stacking Strategist formula.</p><h3>Which route is cheapest on that plan?</h3><p>21bitcoin (Auto-Invest plan) with a 0% variable fee: about €0 in first-year fees in this fee-only example.</p><h3>Is this financial advice?</h3><p>No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.</p>
 

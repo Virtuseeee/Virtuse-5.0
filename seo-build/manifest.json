@@ -6,8 +6,9 @@
   "counts": {
     "enIndexable": 34,
     "deIndexable": 18,
+    "skIndexable": 18,
     "noindex": 1,
-    "totalHtml": 53
+    "totalHtml": 71
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -63,6 +64,24 @@
     "bitcoin-fee-index/2026-q3/print.html",
     "bitcoin-fee-index/methodology/index.html",
     "bitcoin-fee-index/embed/index.html",
+    "sk/bitcoin-dane/index.html",
+    "sk/bitcoin-dane/cesko/index.html",
+    "sk/bitcoin-dane/slovensko/index.html",
+    "sk/bitcoin-dane/polsko/index.html",
+    "sk/bitcoin-dane/rakusko/index.html",
+    "sk/bitcoin-dane/nemecko/index.html",
+    "sk/bitcoin-dane/madarsko/index.html",
+    "sk/bitcoin-dane/slovinsko/index.html",
+    "sk/bitcoin-dane/chorvatsko/index.html",
+    "sk/bitcoin-dane/rumunsko/index.html",
+    "sk/bitcoin-dane/bulharsko/index.html",
+    "sk/bitcoin-dane/holandsko/index.html",
+    "sk/bitcoin-dane/francuzsko/index.html",
+    "sk/bitcoin-dane/spanielsko/index.html",
+    "sk/bitcoin-dca-kalkulacka/index.html",
+    "sk/bitcoin-predat-alebo-pozicat/index.html",
+    "sk/bitcoin-dedicstvo/index.html",
+    "sk/bitcoin-index-poplatkov/index.html",
     "llms.txt",
     "llms-full.txt"
   ]

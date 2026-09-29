@@ -36,6 +36,21 @@
       "nl": "niederlande",
       "fr": "frankreich",
       "es": "spanien"
+    },
+    "sk": {
+      "cz": "cesko",
+      "sk": "slovensko",
+      "pl": "polsko",
+      "at": "rakusko",
+      "de": "nemecko",
+      "hu": "madarsko",
+      "si": "slovinsko",
+      "hr": "chorvatsko",
+      "ro": "rumunsko",
+      "bg": "bulharsko",
+      "nl": "holandsko",
+      "fr": "francuzsko",
+      "es": "spanielsko"
     }
   },
   "names": {
@@ -53,6 +68,21 @@
       "nl": "Niederlande",
       "fr": "Frankreich",
       "es": "Spanien"
+    },
+    "sk": {
+      "cz": "Česko",
+      "sk": "Slovensko",
+      "pl": "Poľsko",
+      "at": "Rakúsko",
+      "de": "Nemecko",
+      "hu": "Maďarsko",
+      "si": "Slovinsko",
+      "hr": "Chorvátsko",
+      "ro": "Rumunsko",
+      "bg": "Bulharsko",
+      "nl": "Holandsko",
+      "fr": "Francúzsko",
+      "es": "Španielsko"
     }
   },
   "currency": {
@@ -256,5 +286,132 @@
   "inDe": {
     "sk": "in der Slowakei",
     "nl": "in den Niederlanden"
-  }
+  },
+  "inSk": {
+    "cz": "v Česku",
+    "sk": "na Slovensku",
+    "pl": "v Poľsku",
+    "at": "v Rakúsku",
+    "de": "v Nemecku",
+    "hu": "v Maďarsku",
+    "si": "v Slovinsku",
+    "hr": "v Chorvátsku",
+    "ro": "v Rumunsku",
+    "bg": "v Bulharsku",
+    "nl": "v Holandsku",
+    "fr": "vo Francúzsku",
+    "es": "v Španielsku"
+  },
+  "taxSk": {
+    "cz": {
+      "gainTax": "15 % daň z príjmov (23 % nad stanovenou hranicou)",
+      "exemption": "Po 3 rokoch držby bez dane (časový test)",
+      "filing": "Ročné daňové priznanie fyzickej osoby",
+      "note": "Každý predaj alebo výmena (vrátane krypto za krypto) je zdaniteľná udalosť – veďte si úplnú evidenciu od prvého dňa."
+    },
+    "sk": {
+      "gainTax": "19 % daň z príjmov (25 % nad stanovenou hranicou)",
+      "exemption": "Po 1 roku držby bez dane; oslobodenie príležitostného príjmu do 500 € ročne",
+      "filing": "Ročné daňové priznanie fyzickej osoby",
+      "note": "Samostatný bankový účet na kryptoaktivity výrazne uľahčí daňové priznanie."
+    },
+    "pl": {
+      "gainTax": "19 % jednotná daň z kapitálových výnosov",
+      "exemption": "Bez oslobodenia podľa doby držby",
+      "filing": "Ročné priznanie PIT-38",
+      "note": "Výmeny krypto za krypto sú zdaniteľné – pri každom prevode vypočítajte zisk alebo stratu v PLN."
+    },
+    "at": {
+      "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
+      "exemption": "Zisky po 1 roku držby bez dane (súkromní investori)",
+      "filing": "Ročné daňové priznanie",
+      "note": "Odmeny zo stakingu a požičiavania sa zdaňujú pri prijatí, nie pri predaji."
+    },
+    "de": {
+      "gainTax": "Až 45 % daň z príjmov (progresívna)",
+      "exemption": "0 % po 1 roku držby (oslobodenie súkromného predaja)",
+      "filing": "Ročné daňové priznanie",
+      "note": "Výmena krypto za krypto je v prvom roku zdaniteľná. Kľúčová je evidencia metódou FIFO."
+    },
+    "hu": {
+      "gainTax": "15 % daň z kapitálových výnosov",
+      "exemption": "Bez oslobodenia podľa doby držby",
+      "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
+      "note": "Preukázateľné obstarávacie náklady sa dajú odpočítať – uchovávajte každú faktúru."
+    },
+    "si": {
+      "gainTax": "Progresívna, až približne 50 % zo zisku pri predaji",
+      "exemption": "Bez všeobecného oslobodenia podľa doby držby",
+      "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
+      "note": "Zisky z kryptomien sa považujú za príjem; aktuálny výklad si overte u miestneho poradcu."
+    },
+    "hr": {
+      "gainTax": "12 % zo ziskov z digitálnych aktív (2025; v roku 2024 10 %)",
+      "exemption": "Bez oslobodenia podľa doby držby",
+      "filing": "Ročné daňové priznanie",
+      "note": "Režim digitálnych aktív je nový (od roku 2024) – pravidlá sa v praxi ešte len vykladajú."
+    },
+    "ro": {
+      "gainTax": "10 % daň z príjmov zo ziskov z kryptomien",
+      "exemption": "Bez oslobodenia podľa doby držby",
+      "filing": "Ročné priznanie (príjem z iných zdrojov)",
+      "note": "S 10 % patrí Rumunsko medzi krajiny EÚ s najnižšou jednotnou sadzbou – odpočítajte si obstarávaciu cenu."
+    },
+    "bg": {
+      "gainTax": "10 % jednotná daň zo ziskov",
+      "exemption": "Bez oslobodenia podľa doby držby",
+      "filing": "Ročné daňové priznanie",
+      "note": "Nízka jednotná sadzba; uchovávajte si výpisy z búrz pre prípadnú kontrolu."
+    },
+    "nl": {
+      "gainTax": "Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)",
+      "exemption": "Nezdaniteľná časť (približne 57 000 € na osobu, 2025)",
+      "filing": "Ročné priznanie Box 3",
+      "note": "Klasická daň z kapitálových výnosov sa neuplatňuje – zdaňuje sa predpokladaný výnos z vášho majetku. Box 3 prechádza reformou – overte si pravidlá pre aktuálny rok."
+    },
+    "fr": {
+      "gainTax": "30 % paušálna daň (PFU: 12,8 % daň z príjmov + 17,2 % sociálne odvody)",
+      "exemption": "Bez oslobodenia podľa doby držby; predaje spolu do 305 € ročne sú oslobodené",
+      "filing": "Ročné priznanie s formulárom 2086; zahraničné účty na formulári 3916-bis",
+      "note": "Výmeny krypto za krypto sa nezdaňujú: zdaňuje sa len predaj za eurá, tovar alebo služby."
+    },
+    "es": {
+      "gainTax": "19–28 % progresívna daň z kapitálových príjmov",
+      "exemption": "Bez oslobodenia podľa doby držby",
+      "filing": "Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva v zahraničí nad 50 000 €",
+      "note": "Výmeny krypto za krypto sú zdaniteľné prevody – pri rovnakých minciach použite FIFO."
+    }
+  },
+  "inheritanceSk": [
+    {
+      "id": "letter",
+      "name": "List s pokynmi",
+      "text": "Dedičia potrebujú písomné pokyny: čo existuje, kde sa to nachádza a koho kontaktovať – bez seed frázy v samotnom dokumente. Uložte ho spolu so závetom alebo u právnika."
+    },
+    {
+      "id": "separation",
+      "name": "Geografické rozdelenie kľúčov",
+      "text": "Nikdy nemajte všetky zálohy na jednom mieste. Požiar, krádež ani povodeň nesmú zničiť prístup. Jeden kľúč alebo zálohu uložte na druhom mieste, napríklad v bankovom trezore."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Informujte dediča",
+      "text": "Aspoň jedna dôveryhodná osoba musí vedieť, že váš Bitcoin existuje a kde začať. Bitcoin, ktorý sa nájde o roky neskôr alebo vôbec, je najčastejšie zlyhanie pri dedení."
+    },
+    {
+      "id": "multisig",
+      "name": "Multisig 2 z 3",
+      "text": "Jediná seed fráza je jediný bod zlyhania – pre vás aj pre vašich dedičov. Pri multisigu 2 z 3 držíte dva kľúče vy a tretí partner alebo právnik."
+    },
+    {
+      "id": "tested",
+      "name": "Otestujte obnovu",
+      "text": "Neotestovaný postup dedenia je hypotéza, nie plán. Raz ročne urobte kompletnú skúšku obnovy na malom UTXO za prítomnosti dediča."
+    },
+    {
+      "id": "accounts",
+      "name": "Zoznam účtov",
+      "text": "Zostatky na burzách, pôžičky zabezpečené Bitcoinom a DCA boty sa so zabudnutými prihlasovacími údajmi strácajú. V liste s pokynmi veďte zoznam platforiem a postup, ako zostatky uplatniť."
+    }
+  ]
 }
