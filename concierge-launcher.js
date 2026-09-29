@@ -38,7 +38,8 @@
 
   // Languages that have their own Concierge page (<lang>/concierge.html).
   // Keep in sync with MODULE_LANGS in the Concierge project (src/lib/i18n.ts).
-  var MODULE_LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es'];
+  var MODULE_LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl'];
+  var SCRIPT = document.currentScript;
   var PAGE_LANG = document.documentElement.lang || 'en';
   var HAS_OWN = MODULE_LANGS.indexOf(PAGE_LANG) !== -1;
   var LANG = HAS_OWN ? PAGE_LANG : 'en';
@@ -83,6 +84,13 @@
       bubbleTitle: '¿Qué servicio de Bitcoin me conviene?',
       bubbleSub: 'Gratis · Sin registro · Nunca custodiamos sus claves',
       closeAria: 'Cerrar el Bitcoin Concierge',
+      iframeTitle: 'Virtuse Bitcoin Concierge',
+    },
+    pl: {
+      bubbleAria: 'Otwórz Bitcoin Concierge: która usługa bitcoinowa jest dla mnie?',
+      bubbleTitle: 'Która usługa bitcoinowa jest dla mnie?',
+      bubbleSub: 'Bezpłatnie · Bez rejestracji · Nigdy nie przechowujemy kluczy',
+      closeAria: 'Zamknij Bitcoin Concierge',
       iframeTitle: 'Virtuse Bitcoin Concierge',
     },
   }[LANG];
@@ -209,6 +217,9 @@
     // level up -- a bare 'concierge.html' there would 404/redirect.
     // Deploy variants nested one level deep with no concierge.html sibling
     // of their own (mining_deploy/, buybitcoin/, hero/) are out of scope.
+    // A page outside its language folder (blog-sk.html) names its target
+    // with data-concierge on the script tag.
+    if (SCRIPT && SCRIPT.getAttribute('data-concierge')) return SCRIPT.getAttribute('data-concierge');
     return HAS_OWN ? 'concierge.html' : '../concierge.html';
   }
 
