@@ -2,7 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, sixth round) — Layer 2 modules translated to Russian (`06be1e8`, gh-pages `aad58fb`, staging 70/70 md5-verified). **All 10 site languages now have their own Layer 2 modules.** **Production pending: user runs `scratchpad/prod_cmd_ru_l2.sh`** (assets, root, 9 language folders, then `sftp < /private/tmp/concierge_rm_ru.sftp` for 9 old hashes)
+## Session status (2026-09-29, sixth round) — Layer 2 modules translated to Russian (`06be1e8`, gh-pages `aad58fb`, staging 70/70 md5-verified; **live on production** — the user's first run did not land (0/70, production stayed consistently on the uk-round version), the re-run did: 70/70 md5-verified, 9 old hashes gone). **All 10 site languages now have their own Layer 2 modules.**
+
+- **Bug found on the live check (`97004aa`, gh-pages `94004e5`, staging 38/38):** 19 uk + 19 ru pages kept an older CSP without `'self'` in `frame-src`, so the bubble opened an empty panel (live on uk since the uk round; the local sweeps only checked the bubble's aria text, not that the iframe loads). Fixed; `pages.py` now adds `'self'` on every page it gives the launcher. **Production pending: user runs `scratchpad/prod_cmd_csp.sh`** (38 files). Lesson: verify the bubble by opening it (iframe document loads), not by its label.
 
 - ru.ts 382/382; "вы" register; site terminology (самостоятельное/совместное хранение, аппаратный кошелёк, заём под залог Биткоина, мультиподписной эскроу, некастодиальный, кастодиан, проверенные партнёры); capital "Биткоин", ё, «» quotes, "0,16%". Country names go in as "(страна: {0})".
 - Verified locally: RU earn flow (Германия → Coinrule/RevenueBot, UTM intact), module switcher lists all 10 languages, no English leftovers on the tools, no overflow at 375, bubble on ru pages and ru/blog, tagcheck 0. Sitewide sweep: no language page links `../concierge|stacking|loan|tax-agent.html` any more, and every non-404, non-tool page in every language folder loads the launcher.
