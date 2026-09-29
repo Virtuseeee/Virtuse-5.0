@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, sixteenth round) — Czech SEO pages, 18 pages (`140ee7a`, gh-pages `45bfe6f`, staging 79/79 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_cs_upload.sftp` (18 `-mkdir` + 79 `put`), then md5-verify the 79 files)
+
+- Same pattern as the Slovak round (entry below). New: `cs/bitcoin-dane/`
+  (hub + cesko, slovensko, polsko, rakousko, nemecko, madarsko, slovinsko,
+  chorvatsko, rumunsko, bulharsko, nizozemsko, francie, spanelsko),
+  `cs/bitcoin-dca-kalkulacka/`, `cs/bitcoin-prodat-nebo-pujcit/`,
+  `cs/bitcoin-dedictvi/`, `cs/bitcoin-index-poplatku/`.
+- Data: `meta.json` `slugs.cs`, `names.cs`, `inCs` (ve Francii, na
+  Slovensku), `accCs` (Francii), `taxCs` (module's Czech strings with the
+  Slovak-isms cleaned, e.g. "zbavení se" → "prodej nebo směna"; same facts),
+  `inheritanceCs`. Numbers reuse the Slovak formatters; `methodCs`.
+  FAQ heading "Časté dotazy". `CHROME.cs` → cs/ pages + Czech modules.
+- `CS_ALT`: EN/DE/SK pages carry hreflang cs (order en, de, sk, cs,
+  x-default) and CS in the switch; sitemap, llms.txt, verify (reciprocity
+  on the four Czechia pages) updated. cs/index, tax, buy-bitcoin, lending:
+  30 links repointed to `/cs/...`.
+- Verified: generate + verify 0 errors (89 HTML), no Slovak characters on
+  the cs pages, 375px no overflow. **Tax advisor fixes now go to FOUR
+  places:** `lib/tax.ts`, `seo-data.json` + `meta.taxDe`, `meta.taxSk`,
+  `meta.taxCs`.
+
 ## Session status (2026-09-29, fifteenth round) — Slovak SEO pages, 18 pages mirroring the German pilot (`95d8897`, gh-pages `7f1f5d3`, staging 78/78 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 78 `put`, kept at `/private/tmp/seo_sk_upload.sftp`), 78/78 md5-verified on virtuse.com; sk pages 200 with Slovak titles, sk/tax.html links the Slovak guides, EN pages carry hreflang sk)
 
 - User: "priprav SEO stránky aj v slovenčine". New: `sk/bitcoin-dane/` (hub +
