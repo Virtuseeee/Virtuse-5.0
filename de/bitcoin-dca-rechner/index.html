@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://virtuse.com/de/bitcoin-dca-rechner/">
   <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/">
   <link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-dca-rechner/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dca-kalkulacka/">
   <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
@@ -60,7 +61,8 @@ a { color: var(--btc-orange); }
 h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
 h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
 h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0 20px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
 th { color: var(--text-muted); font-weight: 600; }
 .cta {
@@ -202,7 +204,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
     <a href="../../de/bitcoin-dca-rechner/">DCA</a>
     <a href="../../concierge.html">Concierge</a>
   </nav>
-  <nav class="lang" aria-label="Language"><a href="../../bitcoin-dca-calculator/">EN</a> · <a href="../../de/bitcoin-dca-rechner/" aria-current="page">DE</a></nav>
+  <nav class="lang" aria-label="Language"><a href="../../bitcoin-dca-calculator/">EN</a> · <a href="../../de/bitcoin-dca-rechner/" aria-current="page">DE</a> · <a href="../../sk/bitcoin-dca-kalkulacka/">SK</a></nav>
 </header>
 <main class="wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Start</a> <span aria-hidden="true">/</span> <span>DCA-Rechner</span></nav>
@@ -212,7 +214,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   
 <p>Standardbeispiel: 500 € plus 100 €/Monat × 12. Formel wie im Live-Stacking-Modul.</p>
 <h2>Rangfolge bei 100 €/Monat</h2>
-<table><thead><tr><th>Rang</th><th>Partner</th><th>Methode</th><th>Variable Gebühr</th><th>Jahreslast</th></tr></thead><tbody><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest-Plan</td><td>0 %</td><td>0 €</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot-Handel</td><td>0,1 %</td><td>1 €</td></tr><tr><td>3</td><td>Kraken</td><td>Pro-Handel</td><td>0,16 %</td><td>2 €</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automatischer DCA-Bot</td><td>0,4 %</td><td>53 €</td></tr></tbody></table>
+<div class="table-wrap"><table><thead><tr><th>Rang</th><th>Partner</th><th>Methode</th><th>Variable Gebühr</th><th>Jahreslast</th></tr></thead><tbody><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest-Plan</td><td>0 %</td><td>0 €</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot-Handel</td><td>0,1 %</td><td>1 €</td></tr><tr><td>3</td><td>Kraken</td><td>Pro-Handel</td><td>0,16 %</td><td>2 €</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automatischer DCA-Bot</td><td>0,4 %</td><td>53 €</td></tr></tbody></table></div>
 <h2>FAQ</h2><h3>Prognostiziert dieser Rechner den Bitcoin-Preis?</h3><p>Nein. Er isoliert die Partnergebühren laut Gebührenplan. Keine Renditeannahme.</p><h3>Was ist der Standardplan Stand Q3 2026?</h3><p>500 € Einmalbetrag plus 100 €/Monat über 12 Monate. Sortierung nach Gebührenlast im ersten Jahr.</p><h3>Welche Route ist in diesem Plan am günstigsten?</h3><p>21bitcoin (Auto-Invest-Plan) mit 0 % variabler Gebühr laut Stacking-Formel.</p><h3>Ist das eine Anlageberatung?</h3><p>Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.</p>
 
   <p><a class="cta" href="../../stacking.html">Stacking Strategist öffnen →</a></p>

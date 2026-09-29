@@ -59,7 +59,8 @@ a { color: var(--btc-orange); }
 h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
 h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
 h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0 20px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
 th { color: var(--text-muted); font-weight: 600; }
 .cta {
@@ -200,7 +201,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   <div class="answer"><p>Methodology as of Q3 2026: rank partners by annual fee drag at a stated monthly euro contribution. The formula is the one used by the live Stacking Strategist: a percentage of each purchase plus any monthly subscription. Spreads, currency conversion and miner fees are out of scope. RevenueBot’s rate is marked as illustrative in the source schedule.</p></div>
   
 <h2>Inputs</h2>
-<table><thead><tr><th>Partner</th><th>Method</th><th>pct</th><th>fixed</th><th>monthly</th><th>Flag</th></tr></thead><tbody><tr><td>21bitcoin</td><td>Auto-Invest plan</td><td>0</td><td>0</td><td>0</td><td>as published</td></tr><tr><td>ByBit EU</td><td>Spot trading</td><td>0.001</td><td>0</td><td>0</td><td>as published</td></tr><tr><td>Kraken</td><td>Pro trading</td><td>0.0016</td><td>0</td><td>0</td><td>as published</td></tr><tr><td>RevenueBot</td><td>Automated DCA bot</td><td>0.004</td><td>0</td><td>4</td><td>illustrative</td></tr></tbody></table>
+<div class="table-wrap"><table><thead><tr><th>Partner</th><th>Method</th><th>pct</th><th>fixed</th><th>monthly</th><th>Flag</th></tr></thead><tbody><tr><td>21bitcoin</td><td>Auto-Invest plan</td><td>0</td><td>0</td><td>0</td><td>as published</td></tr><tr><td>ByBit EU</td><td>Spot trading</td><td>0.001</td><td>0</td><td>0</td><td>as published</td></tr><tr><td>Kraken</td><td>Pro trading</td><td>0.0016</td><td>0</td><td>0</td><td>as published</td></tr><tr><td>RevenueBot</td><td>Automated DCA bot</td><td>0.004</td><td>0</td><td>4</td><td>illustrative</td></tr></tbody></table></div>
 <h2>Formula</h2>
 <pre>costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYear / 12)
 annualDrag = costPerPurchase * periodsPerYear</pre>

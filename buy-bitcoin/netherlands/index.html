@@ -59,7 +59,8 @@ a { color: var(--btc-orange); }
 h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
 h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
 h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0 20px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
 th { color: var(--text-muted); font-weight: 600; }
 .cta {
@@ -204,7 +205,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   
 <p>Local currency: <strong>EUR</strong>. The table shows the partners’ EUR-denominated fees from the Stacking Strategist schedule as of Q3 2026.</p>
 <h2>Ranked buy routes at €100/month</h2>
-<table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>Annual fee drag</th><th>Speed</th></tr></thead><tbody><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Automated</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot trading</td><td>0.1%</td><td>€1</td><td>Same day</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.16%</td><td>€2</td><td>Same day</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automated DCA bot</td><td>0.4%</td><td>€53</td><td>Set &amp; forget</td></tr></tbody></table>
+<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>Annual fee drag</th><th>Speed</th></tr></thead><tbody><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Automated</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot trading</td><td>0.1%</td><td>€1</td><td>Same day</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.16%</td><td>€2</td><td>Same day</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automated DCA bot</td><td>0.4%</td><td>€53</td><td>Set &amp; forget</td></tr></tbody></table></div>
 <p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription. RevenueBot’s percentage is marked as illustrative in the source schedule.</p>
 <h2>Tax in the Netherlands</h2>
 <p>Gain tax: Box 3 wealth tax on a deemed return (about 36% of the assumed yield). Exemption: Tax-free allowance (about €57,000 per person, 2025).</p>

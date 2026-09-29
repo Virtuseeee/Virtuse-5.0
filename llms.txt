@@ -51,6 +51,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/de/bitcoin-erbrecht/
 - https://virtuse.com/de/bitcoin-gebuehrenindex/
 
+## Slovak
+
+- https://virtuse.com/sk/bitcoin-dane/
+- https://virtuse.com/sk/bitcoin-dca-kalkulacka/
+- https://virtuse.com/sk/bitcoin-predat-alebo-pozicat/
+- https://virtuse.com/sk/bitcoin-dedicstvo/
+- https://virtuse.com/sk/bitcoin-index-poplatkov/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt

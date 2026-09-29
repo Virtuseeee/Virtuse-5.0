@@ -3592,6 +3592,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/"/>
   </url>
   <url>
@@ -3601,6 +3602,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/"/>
   </url>
   <url>
@@ -3610,6 +3612,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/czechia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/tschechien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/cesko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/czechia/"/>
   </url>
   <url>
@@ -3619,6 +3622,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/czechia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/tschechien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/cesko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/czechia/"/>
   </url>
   <url>
@@ -3628,6 +3632,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/slowakei/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovensko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
   </url>
   <url>
@@ -3637,6 +3642,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/slowakei/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovensko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
   </url>
   <url>
@@ -3646,6 +3652,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/poland/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/polen/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/polsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/poland/"/>
   </url>
   <url>
@@ -3655,6 +3662,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/poland/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/polen/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/polsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/poland/"/>
   </url>
   <url>
@@ -3664,6 +3672,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/austria/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/oesterreich/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/rakusko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/austria/"/>
   </url>
   <url>
@@ -3673,6 +3682,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/austria/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/oesterreich/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/rakusko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/austria/"/>
   </url>
   <url>
@@ -3682,6 +3692,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/deutschland/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/nemecko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/germany/"/>
   </url>
   <url>
@@ -3691,6 +3702,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/deutschland/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/nemecko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/germany/"/>
   </url>
   <url>
@@ -3700,6 +3712,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/hungary/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/ungarn/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/madarsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/hungary/"/>
   </url>
   <url>
@@ -3709,6 +3722,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/hungary/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/ungarn/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/madarsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/hungary/"/>
   </url>
   <url>
@@ -3718,6 +3732,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovenia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/slowenien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovinsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovenia/"/>
   </url>
   <url>
@@ -3727,6 +3742,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovenia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/slowenien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovinsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovenia/"/>
   </url>
   <url>
@@ -3736,6 +3752,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/croatia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/kroatien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/chorvatsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/croatia/"/>
   </url>
   <url>
@@ -3745,6 +3762,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/croatia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/kroatien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/chorvatsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/croatia/"/>
   </url>
   <url>
@@ -3754,6 +3772,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/romania/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/rumaenien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/rumunsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/romania/"/>
   </url>
   <url>
@@ -3763,6 +3782,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/romania/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/rumaenien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/rumunsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/romania/"/>
   </url>
   <url>
@@ -3772,6 +3792,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/bulgaria/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/bulgarien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/bulharsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/bulgaria/"/>
   </url>
   <url>
@@ -3781,6 +3802,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/bulgaria/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/bulgarien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/bulharsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/bulgaria/"/>
   </url>
   <url>
@@ -3790,6 +3812,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/niederlande/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/holandsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
   </url>
   <url>
@@ -3799,6 +3822,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/niederlande/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/holandsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
   </url>
   <url>
@@ -3808,6 +3832,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/france/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/frankreich/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/francuzsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/france/"/>
   </url>
   <url>
@@ -3817,6 +3842,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/france/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/frankreich/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/francuzsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/france/"/>
   </url>
   <url>
@@ -3826,6 +3852,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/spain/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/spanien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/spanielsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/"/>
   </url>
   <url>
@@ -3835,6 +3862,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/spain/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/spanien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/spanielsko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/"/>
   </url>
   <url>
@@ -3948,6 +3976,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-dca-rechner/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dca-kalkulacka/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/"/>
   </url>
   <url>
@@ -3957,6 +3986,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-dca-rechner/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dca-kalkulacka/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/"/>
   </url>
   <url>
@@ -3966,6 +3996,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/sell-vs-borrow-bitcoin/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-verkaufen-oder-beleihen/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-predat-alebo-pozicat/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/sell-vs-borrow-bitcoin/"/>
   </url>
   <url>
@@ -3975,6 +4006,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/sell-vs-borrow-bitcoin/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-verkaufen-oder-beleihen/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-predat-alebo-pozicat/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/sell-vs-borrow-bitcoin/"/>
   </url>
   <url>
@@ -3984,6 +4016,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-inheritance/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-erbrecht/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dedicstvo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-inheritance/"/>
   </url>
   <url>
@@ -3993,6 +4026,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-inheritance/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-erbrecht/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dedicstvo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-inheritance/"/>
   </url>
   <url>
@@ -4002,6 +4036,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-fee-index/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-gebuehrenindex/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-index-poplatkov/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/"/>
   </url>
   <url>
@@ -4011,6 +4046,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-fee-index/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-gebuehrenindex/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-index-poplatkov/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/"/>
   </url>
   <url>
@@ -4036,6 +4072,186 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-fee-index/embed/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/embed/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/cesko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/czechia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/tschechien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/cesko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/czechia/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/slovensko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/slowakei/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovensko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/polsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/poland/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/polen/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/polsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/poland/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/rakusko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/austria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/oesterreich/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/rakusko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/austria/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/nemecko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/deutschland/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/nemecko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/germany/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/madarsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/hungary/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/ungarn/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/madarsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/hungary/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/slovinsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovenia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/slowenien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovinsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovenia/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/chorvatsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/croatia/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/kroatien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/chorvatsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/croatia/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/rumunsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/romania/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/rumaenien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/rumunsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/romania/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/bulharsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/bulgaria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/bulgarien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/bulharsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/bulgaria/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/holandsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/niederlande/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/holandsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/netherlands/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/francuzsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/france/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/frankreich/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/francuzsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/france/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/spanielsko/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/spain/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/spanien/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/spanielsko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dca-kalkulacka/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-dca-rechner/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dca-kalkulacka/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-predat-alebo-pozicat/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/sell-vs-borrow-bitcoin/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-verkaufen-oder-beleihen/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-predat-alebo-pozicat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/sell-vs-borrow-bitcoin/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dedicstvo/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-inheritance/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-erbrecht/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dedicstvo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-inheritance/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-index-poplatkov/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-fee-index/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-gebuehrenindex/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-index-poplatkov/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/"/>
   </url>
 <!-- SEO-BUILD:END -->
 <!-- STORIES-BUILD:START -->
