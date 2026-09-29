@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, eighteenth round) — Hungarian SEO pages, 18 pages (`2a90078`, gh-pages `d9461d8`, staging 115/115 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_hu_upload.sftp` (18 `-mkdir` + 115 `put`), then md5-verify the 115 files)
+
+- Same pattern as sk/cs/pl. New: `hu/bitcoin-adozas/` (hub + csehorszag,
+  szlovakia, lengyelorszag, ausztria, nemetorszag, magyarorszag, szlovenia,
+  horvatorszag, romania, bulgaria, hollandia, franciaorszag, spanyolorszag),
+  `hu/bitcoin-dca-kalkulator/`, `hu/bitcoin-eladas-vagy-hitel/`,
+  `hu/bitcoin-orokles/`, `hu/bitcoin-dijindex/`.
+- Data: `meta.json` `slugs.hu`, `names.hu`, `inHu` (Szlovákiában,
+  Magyarországon), `taxHu` (module's Hungarian dictionary, same facts),
+  `inheritanceHu` ("helyreállítási kifejezés" like the hu module). CTAs use
+  the possessive ("Szlovákia ellenőrzése a Tax Agentben") so no accusative
+  map is needed. "0%" (no space) via `formatPctPl`, amounts `formatEurSk`,
+  `methodHu`. FAQ heading "Gyakori kérdések"; dates as "Q3 2026 állapot
+  szerint".
+- `HU_ALT`: every other SEO language carries hreflang hu (en, de, sk, cs,
+  pl, hu, x-default) and HU in the switch; sitemap, llms, verify (6-way
+  reciprocity on Czechia) updated. hu/index, tax, buy-bitcoin, lending: 30
+  links repointed to `/hu/...`. 375px: no overflow.
+- **Tax advisor fixes now go to SIX places:** `lib/tax.ts` + dictionaries,
+  `seo-data.json` + `meta.taxDe`, `meta.taxSk`, `taxCs`, `taxPl`, `taxHu`.
+
 ## Session status (2026-09-29, seventeenth round) — Polish SEO pages, 18 pages (`d0d9ad5`, gh-pages `a73065b`, staging 97/97 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 97 `put`), 97/97 md5-verified on virtuse.com; pl pages 200 with Polish titles, pl/tax.html links the Polish guides, EN poland carries hreflang en/de/sk/cs/pl/x-default)
 
 - Same pattern as sk/cs. New: `pl/bitcoin-podatki/` (hub + czechy,
