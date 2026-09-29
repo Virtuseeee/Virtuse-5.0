@@ -2,6 +2,26 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-29, nineteenth round) — Ukrainian SEO pages, 18 pages (`703f880`, gh-pages `2004eb6`, staging 133/133 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_uk_upload.sftp` (18 `-mkdir` + 133 `put`), then md5-verify the 133 files)
+
+- Same pattern as sk/cs/pl/hu. New: `uk/bitcoin-podatky/` (hub + chekhiia,
+  slovachchyna, polshcha, avstriia, nimechchyna, uhorshchyna, sloveniia,
+  khorvatiia, rumuniia, bolhariia, niderlandy, frantsiia, ispaniia),
+  `uk/bitcoin-kalkuliator-dca/`, `uk/bitcoin-prodaty-chy-pozychyty/`,
+  `uk/bitcoin-spadshchyna/`, `uk/bitcoin-indeks-komisii/`.
+- Data: `meta.json` `slugs.uk`, `names.uk`, `inUk` (у Словаччині, в
+  Австрії), `accUk` (Перевірити Словаччину…), `taxUk` (module's Ukrainian
+  dictionary, same facts; cz/sk exemptions reworded to avoid "Звільнення:
+  Звільнення…"), `inheritanceUk` ("сід-фраза"). "0%" via `formatPctPl`,
+  `formatEurSk`, `methodUk`. FAQ heading "Часті запитання". Related links
+  favour Poland (no Ukraine page in the 13).
+- `UK_ALT`: every other SEO language carries hreflang uk and UK in the
+  switch; sitemap, llms, verify (7-way reciprocity on Czechia) updated.
+  uk/index, tax, buy-bitcoin, lending: 27 links repointed to `/uk/...`.
+  375px: no overflow.
+- **Tax advisor fixes now go to SEVEN places:** `lib/tax.ts` + dictionaries,
+  `seo-data.json` + `meta.taxDe`, `taxSk`, `taxCs`, `taxPl`, `taxHu`, `taxUk`.
+
 ## Session status (2026-09-29, eighteenth round) — Hungarian SEO pages, 18 pages (`2a90078`, gh-pages `d9461d8`, staging 115/115 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 115 `put`), 115/115 md5-verified on virtuse.com; hu pages 200 with Hungarian titles, hu/tax.html links the Hungarian guides, EN hungary carries hreflang en/de/sk/cs/pl/hu/x-default)
 
 - Same pattern as sk/cs/pl. New: `hu/bitcoin-adozas/` (hub + csehorszag,
