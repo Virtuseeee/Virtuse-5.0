@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, seventeenth round) — Polish SEO pages, 18 pages (`d0d9ad5`, gh-pages `a73065b`, staging 97/97 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_pl_upload.sftp` (18 `-mkdir` + 97 `put`), then md5-verify the 97 files)
+## Session status (2026-09-29, seventeenth round) — Polish SEO pages, 18 pages (`d0d9ad5`, gh-pages `a73065b`, staging 97/97 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 97 `put`), 97/97 md5-verified on virtuse.com; pl pages 200 with Polish titles, pl/tax.html links the Polish guides, EN poland carries hreflang en/de/sk/cs/pl/x-default)
 
 - Same pattern as sk/cs. New: `pl/bitcoin-podatki/` (hub + czechy,
   slowacja, polska, austria, niemcy, wegry, slowenia, chorwacja, rumunia,
