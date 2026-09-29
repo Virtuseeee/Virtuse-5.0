@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-29, seventh round) — Layer 2 amounts/decimals formatted per page language (`24efecc`, gh-pages `bb7c32f`, staging 49/49 md5-verified). **Production pending: user runs `scratchpad/prod_cmd_numfmt.sh`** (assets, 4 root shells, 36 language shells, then `sftp < /private/tmp/concierge_rm_numfmt.sftp` for 9 old hashes)
+## Session status (2026-09-29, seventh round) — Layer 2 amounts/decimals formatted per page language (`24efecc`, gh-pages `bb7c32f`, staging 49/49 md5-verified; **live on production** — user ran the command 2026-09-29, 49/49 md5-verified on virtuse.com, 9 old hashes gone; live check sk/de/fr/en Loan+Stacking show the per-language formats)
 
 - User: "oprav formát súm podľa jazyka". Loan/Stacking printed `en-IE` amounts and dot decimals in every language. New helpers in the Concierge project's `src/lib/i18n.ts`: `fmtEur(n, digits)`, `fmtEurCompact(n)`, `fmtNum(n, digits)`, `fmtNumShort(n, max)`, all keyed on the page language (`LOCALES` map; `getLang()` default). `eur`/`eurCompact` in `lib/stacking.ts` and `lib/loan.ts` delegate to them; decimal `toFixed` in the pages/strings replaced.
 - Results: "25 000 €" (sk/cs/fr/pl/hu/uk/ru), "25.000 €" (de/es; es/pl leave 4-digit numbers ungrouped, CLDR convention), compact "55 tis. €" / "55 k €" / "55 mil €" / "55 тыс. €"; German compact is hand-built "55 Tsd. €" with NBSPs (Intl has no short form for thousands). `currencyDisplay: 'narrowSymbol'` forces € (uk/hu printed "EUR"). Decimal comma in %, BTC amounts, chart year ticks.
