@@ -167,7 +167,7 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl');
+  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu');
   const langSwitch = switchLangs.length >= 2
     ? `<nav class="lang" aria-label="Language">${switchLangs
       .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
@@ -336,5 +336,26 @@ export const CHROME = {
     conciergeHref: 'pl/concierge.html',
     privacyHref: 'pl/privacy-policy.html',
     termsHref: 'pl/terms-and-conditions.html'
+  },
+  hu: {
+    navTax: 'Adózási útmutatók',
+    navFees: 'Díjindex',
+    navDca: 'DCA',
+    navConcierge: 'Concierge',
+    relatedHeading: 'Kapcsolódó útmutatók',
+    asOfPrefix: 'Adatok állapota:',
+    disclaimerTax: 'Tájékoztató áttekintés 2026 – nem adótanácsadás.',
+    disclaimerKeys: 'A Virtuse soha nem kezeli az Ön kulcsait.',
+    disclaimerKyc: 'A KYC és a regisztráció az adott partner szabályozott platformján történik. A Virtuse nem letétkezelő hub, és nem kezeli ezeknek a platformoknak az ügyfélpénzeit vagy ügyféladatait.',
+    privacy: 'Adatvédelmi tájékoztató',
+    terms: 'Felhasználási feltételek',
+    locale: 'hu_HU',
+    homeHref: 'hu/index.html',
+    taxHref: 'hu/bitcoin-adozas/',
+    feesHref: 'hu/bitcoin-dijindex/',
+    dcaHref: 'hu/bitcoin-dca-kalkulator/',
+    conciergeHref: 'hu/concierge.html',
+    privacyHref: 'hu/privacy-policy.html',
+    termsHref: 'hu/terms-and-conditions.html'
   }
 };

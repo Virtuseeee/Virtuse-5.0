@@ -23,6 +23,7 @@ import {
   methodCs,
   formatPctPl,
   methodPl,
+  methodHu,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -61,6 +62,7 @@ const asOfDe = formatAsOf(AS_OF, 'de');
 const asOfSk = formatAsOf(AS_OF, 'sk');
 const asOfCs = formatAsOf(AS_OF, 'cs');
 const asOfPl = formatAsOf(AS_OF, 'pl');
+const asOfHu = formatAsOf(AS_OF, 'hu');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -112,6 +114,18 @@ function namePl(id) {
 /** Polish locative (w Czechach, na Węgrzech, we Francji) and accusative (Słowację). */
 function inPl(id) { return meta.inPl[id]; }
 function accPl(id) { return meta.accPl[id]; }
+function slugHu(id) {
+  const s = meta.slugs.hu[id];
+  if (!s) throw new Error(`Missing HU slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function nameHu(id) {
+  const s = meta.names.hu[id];
+  if (!s) throw new Error(`Missing HU name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** Hungarian inessive: -ban/-ben, but Magyarországon. */
+function inHu(id) { return meta.inHu[id]; }
 /** Czech accusative: only Francie changes (Francii); the -o names stay. */
 function accCs(id) { return (meta.accCs && meta.accCs[id]) || nameCs(id); }
 /** "v/na/vo <krajine>" in Slovak (na Slovensku, vo Francúzsku). */
@@ -165,12 +179,27 @@ const PL_ALT = {
 for (const c of COUNTRIES) {
   PL_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `pl/bitcoin-podatki/${meta.slugs.pl[c.id]}/index.html`;
 }
+/** EN page -> its Hungarian counterpart. */
+const HU_ALT = {
+  'bitcoin-tax/index.html': 'hu/bitcoin-adozas/index.html',
+  'bitcoin-dca-calculator/index.html': 'hu/bitcoin-dca-kalkulator/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'hu/bitcoin-eladas-vagy-hitel/index.html',
+  'bitcoin-inheritance/index.html': 'hu/bitcoin-orokles/index.html',
+  'bitcoin-fee-index/index.html': 'hu/bitcoin-dijindex/index.html'
+};
+for (const c of COUNTRIES) {
+  HU_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `hu/bitcoin-adozas/${meta.slugs.hu[c.id]}/index.html`;
+}
 
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const huPath = HU_ALT[enPath];
+  if (huPath) {
+    tags.splice(1, 0, { lang: 'hu', href: abs(huPath), path: canonicalPath(huPath) });
+  }
   const plPath = PL_ALT[enPath];
   if (plPath) {
     tags.splice(1, 0, { lang: 'pl', href: abs(plPath), path: canonicalPath(plPath) });
@@ -223,6 +252,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'hu' ? [
+      `Adatok a Virtuse élő moduljaiból, ${asOfHu} állapot szerint.`,
+      'A Virtuse soha nem kezeli az Ön kulcsait.',
+      'Érdemes ellenőrizni a helyi szabályokat; nem adótanácsadás.'
     ]
     : lang === 'pl' ? [
       `Dane z modułów Virtuse na żywo, stan na ${asOfPl}.`,
@@ -1000,6 +1034,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'hu') {
+      return `<h3>Havi ${esc(formatEurSk(amt))}</h3>` +
+        tableHtml(['Helyezés', 'Partner', 'Módszer', 'Díj', 'Éves díjak'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodHu(r.method)),
+          esc(formatPctPl(r.pct) + (r.monthly ? ` + havi ${formatEurSk(r.monthly)}` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     if (lang === 'pl') {
       return `<h3>${esc(formatEurSk(amt))} miesięcznie</h3>` +
         tableHtml(['Miejsce', 'Partner', 'Metoda', 'Opłata', 'Roczne opłaty'], ranked.map((r, i) => [
@@ -1045,7 +1089,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'pl') {
+  if (lang === 'hu') {
+    if (be.status === 'always') {
+      beText = `A közzétett díjak alapján a legolcsóbb automatizált út (${be.auto.partner}) havi 1 €-tól ugyanannyiba vagy kevesebbe kerül évente, mint a legolcsóbb manuális út (${be.manual.partner}).`;
+    } else if (be.status === 'found') {
+      beText = `Megtérülési pont: havi ${formatEurSk(be.monthlyEur)}-tól kezdve ${be.auto.partner} (automatizált) nem drágább, mint ${be.manual.partner} (manuális).`;
+    } else {
+      beText = 'Havi 20 000 €-ig a legolcsóbb automatizált út nem előzi meg a legolcsóbb manuális utat.';
+    }
+  } else if (lang === 'pl') {
     if (be.status === 'always') {
       beText = `Przy opublikowanych opłatach najtańsza ścieżka automatyczna (${be.auto.partner}) ma od 1 € miesięcznie takie same lub niższe roczne opłaty jak najtańsza ścieżka ręczna (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -2417,6 +2469,332 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   });
 }
 
+// ---------- Hungarian (hu/) ----------
+function huHome(relFile) { return { name: 'Főoldal', href: toRoot(relFile, 'hu/index.html'), abs: abs('hu/index.html') }; }
+
+// HU tax hub
+{
+  const relFile = 'hu/bitcoin-adozas/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(c.id)}/`))}">${esc(nameHu(c.id))}</a>`,
+    esc(meta.taxHu[c.id].gainTax),
+    esc(meta.taxHu[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Mely országokra terjed ki az áttekintés?', a: `${N} EU-ország: ${COUNTRIES.map((c) => nameHu(c.id)).join(', ')}. ${asOfHu} állapot szerint, adatok a Virtuse Tax modulból.` },
+    { q: 'Adótanácsadásnak számít ez?', a: 'Nem. Tájékoztató áttekintés 2026, nem adótanácsadás. A tárgyévi szabályokat érdemes helyi tanácsadóval egyeztetni.' },
+    { q: 'Jelenti a Virtuse az eszközeimet az adóhatóságnak?', a: 'Nem. A Virtuse soha nem kezeli az Ön kulcsait és a tranzakciós előzményeit sem. A KYC-t a partnerek végzik.' },
+    { q: 'Hol nézhetem meg az adók mellett az öröklést is?', a: `A Tax & Inheritance Agent modulban, ugyanazzal a ${N} országgal és multisig-felkészültségi ellenőrzéssel.` }
+  ];
+  const answer = finalizeAnswer([
+    `Ez az áttekintés ${N} EU-ország Bitcoin-adózását hasonlítja össze, ${asOfHu} állapot szerint.`,
+    'Az adókulcsok, a mentességek és a bevallási tudnivalók a Virtuse Tax modulból származnak.',
+    'Németország és Ausztria 1 év tartás után mentesíti a nyereséget, Csehország 3 éves időtesztet alkalmaz, Hollandia pedig a nyereség helyett a vélelmezett hozamot adóztatja (Box 3).',
+    'Tájékoztató áttekintés 2026, nem adótanácsadás.'
+  ], 'hu');
+  pushPage({
+    relFile, lang: 'hu',
+    title: assertTitle(`Bitcoin-adózás ${N} EU-országban (2026)`),
+    description: assertDescription(`Bitcoin-adókulcsok, tartási idő utáni mentességek és bevallás ${N} EU-országban, ${asOfHu} állapot szerint. Tájékoztató áttekintés.`),
+    h1: `Bitcoin-adózás ${N} EU-országban`,
+    answerHtml: esc(answer),
+    breadcrumbs: [huHome(relFile), { name: 'Bitcoin-adózás', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'hu/bitcoin-adozas/magyarorszag/'), label: 'Bitcoin-adózás Magyarországon' },
+      { href: toRoot(relFile, 'hu/bitcoin-orokles/'), label: 'Bitcoin és öröklés' },
+      { href: toRoot(relFile, 'hu/bitcoin-dijindex/'), label: 'Bitcoin-díjindex' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'hu/' + TAX_AGENT), label: 'Tax & Inheritance Agent megnyitása →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Minden országoldal bemutatja a nyereség adóját, az esetleges tartási idő utáni mentességet és a bevallást, ${esc(asOfHu)} állapot szerint. A Tax & Inheritance Agent modul ugyanezekkel az adatokkal dolgozik, és öröklési felkészültségi pontszámot is ad.</p>
+<h2>Országok összehasonlítása</h2>
+${tableHtml(['Ország', 'Nyereségadó', 'Mentesség'], rows)}
+${faqHtml(faqs, 'Gyakori kérdések')}
+`
+  });
+}
+
+// HU country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `hu/bitcoin-adozas/${slugHu(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxHu[c.id];
+  const inN = inHu(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Mennyi a Bitcoin adója ${inN}?`, a: `${asOfHu} állapot szerint: ${t.gainTax}. Tájékoztató áttekintés 2026, nem adótanácsadás.` },
+    { q: `Van ${inN} tartási idő utáni mentesség?`, a: `${t.exemption}. A bevallás előtt érdemes a tárgyévi szabályokat helyi adótanácsadóval egyeztetni.` },
+    { q: `Hogyan kell ${inN} bevallani a Bitcoin-nyereséget?`, a: `${t.filing}. ${t.note}` },
+    { q: 'A Virtuse kezeli a Bitcoinomat, vagy beadja helyettem a bevallást?', a: `Nem. A Virtuse soha nem kezeli az Ön kulcsait. A KYC és a regisztráció a partnernél történik. A Tax Agent összeveti a ${N} ország adatait; a bevallást képzett adótanácsadó készíti el.` }
+  ];
+  const answer = finalizeAnswer([
+    `Bitcoin-adózás ${inN} (${asOfHu} állapot szerint): ${t.gainTax}.`,
+    `Mentesség: ${t.exemption}.`,
+    `Bevallás: ${t.filing}.`,
+    t.note,
+    'Tájékoztató áttekintés 2026, nem adótanácsadás.'
+  ], 'hu');
+  pushPage({
+    relFile, lang: 'hu',
+    title: assertTitle(`Bitcoin-adózás ${inN} (${asOfHu})`),
+    description: assertDescription(descFit(`Bitcoin-adózás ${inN} (${asOfHu}): ${t.gainTax}.`, 'Nem adótanácsadás.')),
+    h1: `Bitcoin-adózás ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      huHome(relFile),
+      { name: 'Bitcoin-adózás', href: toRoot(relFile, 'hu/bitcoin-adozas/'), abs: abs('hu/bitcoin-adozas/index.html') },
+      { name: nameHu(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'hu/bitcoin-eladas-vagy-hitel/'), label: 'Bitcoin: eladás vagy hitel' },
+      { href: toRoot(relFile, 'hu/bitcoin-orokles/'), label: 'Bitcoin és öröklés' },
+      { href: toRoot(relFile, nbs[0] ? `hu/bitcoin-adozas/${slugHu(nbs[0].id)}/` : 'hu/bitcoin-adozas/'), label: nbs[0] ? `Bitcoin-adózás ${inHu(nbs[0].id)}` : 'Minden ország' }
+    ],
+    moduleCta: { href: toRoot(relFile, `hu/${TAX_AGENT}?country=${c.id}`), label: `${nameHu(c.id)} ellenőrzése a Tax Agentben →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Adatok ${esc(asOfHu)} állapot szerint, a Virtuse Tax modulból.</p>
+<h2>Adókulcsok és bevallás</h2>
+${tableHtml(['Adat', asOfHu + ' állapot'], [
+  ['Nyereségadó', esc(t.gainTax)],
+  ['Mentesség', esc(t.exemption)],
+  ['Bevallás', esc(t.filing)],
+  ['Megjegyzés', esc(t.note)]
+])}
+<h2>Mikor keletkezik általában adó?</h2>
+<p>${esc(t.note)} Ebben az áttekintésben a Bitcoin vásárlása nem számít elidegenítésnek; fizetés, csere, ajándékozás vagy kölcsönadás előtt érdemes ellenőrizni a helyi szabályokat.</p>
+<h2>Szomszédos országok</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(n.id)}/`))}">Bitcoin-adózás ${esc(inHu(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Gyakori kérdések')}
+`
+  });
+}
+
+// HU DCA calculator
+{
+  const relFile = 'hu/bitcoin-dca-kalkulator/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Előre jelzi a kalkulátor a Bitcoin árfolyamát?', a: 'Nem. Csak a partnerek díjait hasonlítja össze a közzétett díjtáblázat alapján. A Bitcoin árfolyamából származó hozamot nem modellezi.' },
+    { q: `Mi az alapterv, ${asOfHu} állapot szerint?`, a: 'Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjai alapján.' },
+    { q: 'Melyik út a legolcsóbb ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint.` },
+    { q: 'Befektetési tanácsadásnak számít ez?', a: 'Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.' }
+  ];
+  const answer = finalizeAnswer([
+    `${asOfHu} állapot szerint a csak díjakkal számoló DCA-példában (500 €, majd havi 100 € 12 hónapon át) ${win.partner} áll az első helyen.`,
+    `Változó díj: ${formatPctPl(win.pct)}. Ez nem árfolyam-előrejelzés.`,
+    'A díjak a Stacking Strategist modul díjtáblázatából származnak, ugyanazzal a képlettel számolva. Tájékoztató áttekintés 2026.'
+  ], 'hu');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'hu',
+    title: assertTitle('Bitcoin DCA-kalkulátor (EU-díjak 2026)'),
+    description: assertDescription(`Csak a díjakkal számoló Bitcoin DCA-kalkulátor, ${asOfHu} állapot szerint. Alapeset 500 € + havi 100 €, a legolcsóbb út: ${win.partner}.`),
+    h1: 'Bitcoin DCA-kalkulátor',
+    answerHtml: esc(answer),
+    breadcrumbs: [huHome(relFile), { name: 'DCA-kalkulátor', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'hu/bitcoin-dijindex/'), label: 'Bitcoin-díjindex' },
+      { href: toRoot(relFile, 'hu/bitcoin-eladas-vagy-hitel/'), label: 'Bitcoin: eladás vagy hitel' },
+      { href: toRoot(relFile, 'hu/bitcoin-adozas/magyarorszag/'), label: 'Bitcoin-adózás Magyarországon' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'hu/stacking.html'), label: 'Stacking Strategist megnyitása →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin DCA-kalkulátor',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Alappélda: 500 €, majd havi 100 € × 12. Ugyanaz a képlet, mint a Stacking Strategist modulban.</p>
+<h2>Sorrend havi 100 € esetén</h2>
+${tableHtml(['Helyezés', 'Partner', 'Módszer', 'Változó díj', 'Éves díjak'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodHu(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Gyakori kérdések')}
+`
+  });
+}
+
+// HU sell vs borrow
+{
+  const relFile = 'hu/bitcoin-eladas-vagy-hitel/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `Keletkezik adó eladáskor ebben a ${N} országban?`, a: `Általában igen, eladáskor vagy cserekor. A mentességek eltérnek: Németország 0% 1 év tartás után, Csehország 3 éves időteszt, Lengyelország mentesség nélkül. ${asOfHu} állapot szerint. Nem adótanácsadás.` },
+    { q: 'Ugyanolyan adóesemény a hitel, mint az eladás?', a: 'Ebben az áttekintésben nem. A kamat, a likvidálási kockázat és a partnernél végzett KYC azonban megmarad. A konkrét számokat a Loan & Liquidity Copilot számolja ki.' },
+    { q: 'Mi a likvidálási kockázat?', a: 'Ha a fedezet értéke a partner küszöbére esik, a partner eladhatja a fedezetet, és abból törleszti a hitelt. A Virtuse soha nem kezeli az Ön kulcsait és a fedezetet sem.' },
+    { q: 'Hol számolhatok konkrét összeggel?', a: 'A Loan & Liquidity Copilot modulban. Ez az oldal csak az adó és a kockázat közti különbséget mutatja be a közzétett adókulcsok alapján.' }
+  ];
+  const answer = finalizeAnswer([
+    `${asOfHu} állapot szerint a Bitcoin eladása adót keletkeztethet (például Németországban 1 éves tartási időn belül legfeljebb 45%, Romániában egykulcsos 10%).`,
+    'A Bitcoin-fedezetű hitellel megmarad a piaci pozíció, de kamattal és likvidálási kockázattal jár a partnernél.',
+    'Tájékoztató áttekintés 2026, nem adó- és hiteltanácsadás. A Virtuse soha nem kezeli az Ön kulcsait.'
+  ], 'hu');
+  pushPage({
+    relFile, lang: 'hu',
+    title: assertTitle('Bitcoin: eladás vagy hitel? (2026)'),
+    description: assertDescription(`Eladni a Bitcoint és adózni, vagy Bitcoin-fedezetű hitelt felvenni és befektetve maradni? ${N} EU-ország adókulcsai, ${asOfHu} állapot szerint.`),
+    h1: 'Eladja a Bitcoint, vagy vesz fel rá hitelt?',
+    answerHtml: esc(answer),
+    breadcrumbs: [huHome(relFile), { name: 'Eladás vagy hitel', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'hu/bitcoin-adozas/magyarorszag/'), label: 'Bitcoin-adózás Magyarországon' },
+      { href: toRoot(relFile, 'hu/bitcoin-dca-kalkulator/'), label: 'DCA-kalkulátor' },
+      { href: toRoot(relFile, 'hu/bitcoin-orokles/'), label: 'Bitcoin és öröklés' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'hu/loan.html'), label: 'Összehasonlítás a Loan Copilotban →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin: eladás vagy hitel',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Adó eladáskor</h2>
+${tableHtml(['Ország', 'Nyereségadó', 'Mentesség'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(c.id)}/`))}">${esc(nameHu(c.id))}</a>`,
+  esc(meta.taxHu[c.id].gainTax),
+  esc(meta.taxHu[c.id].exemption)
+]))}
+<h2>Kockázat hitel esetén</h2>
+<p>Bitcoin-fedezetű hitelt szabályozott partnerek nyújtanak, nem a Virtuse. Az árfolyam-kitettség megmarad, kamatot kell fizetni, és a fedezet likvidálható. A Virtuse soha nem kezeli a fedezetet.</p>
+${faqHtml(faqs, 'Gyakori kérdések')}
+`
+  });
+}
+
+// HU inheritance
+{
+  const relFile = 'hu/bitcoin-orokles/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: 'Szerepelhet a helyreállítási kifejezés az utasítólevélben?', a: 'Nem. A levél leltárt, helyszíneket és kapcsolattartókat tartalmaz, helyreállítási kifejezést soha. A végrendelettel együtt vagy ügyvédnél érdemes tárolni.' },
+    { q: 'Miért 2 a 3-ból multisig?', a: 'Egyetlen helyreállítási kifejezés egyetlen hibapont, Önnek és az örökösöknek is.' },
+    { q: 'Kezel a Virtuse kulcsokat az örökösök számára?', a: 'Nem. A Virtuse soha nem kezeli az Ön kulcsait.' },
+    { q: 'Jogi tanácsadásnak számít ez?', a: `Nem. Oktatási célú ellenőrzőlista a Tax modulból, ${asOfHu} állapot szerint.` }
+  ];
+  const answer = finalizeAnswer([
+    `${asOfHu} állapot szerint a Tax modul ellenőrzőlistája hat pontból áll: utasítólevél, a kulcsok földrajzi szétválasztása, tájékoztatott örökös, 2 a 3-ból multisig, helyreállítási próba és dokumentált fiókok.`,
+    'Egyetlen helyreállítási kifejezés egyetlen hibapont. A Virtuse soha nem kezeli az Ön kulcsait.',
+    'Nem jogi tanácsadás.'
+  ], 'hu');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'A Bitcoin felkészítése az öröklésre',
+    inLanguage: 'hu',
+    step: meta.inheritanceHu.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'hu',
+    title: assertTitle('Bitcoin és öröklés: ellenőrzőlista (2026)'),
+    description: assertDescription(`Hatpontos ellenőrzőlista a Bitcoin örökléséhez, ${asOfHu} állapot szerint: utasítólevél, kulcsok szétválasztása, 2 a 3-ból multisig. Nem jogi tanácsadás.`),
+    h1: 'Bitcoin öröklése: ellenőrzőlista',
+    answerHtml: esc(answer),
+    breadcrumbs: [huHome(relFile), { name: 'Öröklés', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'hu/bitcoin-adozas/magyarorszag/'), label: 'Bitcoin-adózás Magyarországon' },
+      { href: toRoot(relFile, 'hu/bitcoin-adozas/'), label: `Adózás ${N} EU-országban` },
+      { href: toRoot(relFile, 'hu/bitcoin-eladas-vagy-hitel/'), label: 'Bitcoin: eladás vagy hitel' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'hu/' + TAX_AGENT), label: 'A lista értékelése a Tax Agentben →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>A tartalom a Tax modul ellenőrzőlistáját követi. Nem jogi tanácsadás.</p>
+<h2>Útmutató: hat lépés</h2>
+<ol>${meta.inheritanceHu.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Gyakori kérdések')}
+`
+  });
+}
+
+// HU fee index
+{
+  const relFile = 'hu/bitcoin-dijindex/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'hu');
+  const faqs = [
+    { q: 'Mit mér a díjindex?', a: `A vásárlási utak éves díjait ${asOfHu} állapot szerint, a Stacking Strategist modul képletével.` },
+    { q: 'Ki a legolcsóbb havi 100 € esetén?', a: `${winner.partner}: ${formatPctPl(winner.pct)}, éves díj ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Benne vannak a spreadek?', a: 'Nem. Csak a százalékos díj és az esetleges havi előfizetés a díjtáblázat szerint. Az árfolyamkülönbségek és a Bitcoin-hálózat díjai (miner fees) nincsenek benne.' },
+    { q: 'Idézhetem a táblázatot?', a: `Igen, a forrás megjelölésével („Forrás: Virtuse Bitcoin-díjindex, ${asOfHu} állapot”) és hivatkozással.` }
+  ];
+  const answer = finalizeAnswer([
+    `A Virtuse Bitcoin-díjindexe ${asOfHu} állapot szerint az EU-s vásárlási utakat az éves díjak alapján rangsorolja.`,
+    `Havi 100 € esetén ${winner.partner} (${methodHu(winner.method)}) vezet ${formatPctPl(winner.pct)} díjjal, évi ${formatEurSk(winner.annualDrag)} költséggel.`,
+    beText,
+    'Ez nem ajánlat. A Virtuse soha nem kezeli az Ön kulcsait.'
+  ], 'hu');
+  pushPage({
+    relFile, lang: 'hu',
+    title: assertTitle('Bitcoin-díjindex (EU) Q3 2026'),
+    description: assertDescription(`EU-s vásárlási utak díjak szerint, ${asOfHu} állapot szerint. A legolcsóbb út havi 100 € esetén: ${winner.partner}, ${formatPctPl(winner.pct)}.`),
+    h1: 'Bitcoin-díjindex',
+    answerHtml: esc(answer),
+    breadcrumbs: [huHome(relFile), { name: 'Díjindex', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'hu/bitcoin-dca-kalkulator/'), label: 'DCA-kalkulátor' },
+      { href: toRoot(relFile, 'hu/bitcoin-adozas/magyarorszag/'), label: 'Bitcoin-adózás Magyarországon' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Módszertan (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'hu/stacking.html'), label: 'Stacking Strategist megnyitása →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Virtuse Bitcoin-díjindex',
+        inLanguage: 'hu',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Virtuse Bitcoin-díjindex',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Rangsor havi befizetés szerint</h2>
+${tables}
+<h2>Automatizált vagy manuális?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Gyakori kérdések')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -2487,6 +2865,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/pl/bitcoin-dziedziczenie/
 - ${ORIGIN}/pl/bitcoin-indeks-oplat/
 
+## Hungarian
+
+- ${ORIGIN}/hu/bitcoin-adozas/
+- ${ORIGIN}/hu/bitcoin-dca-kalkulator/
+- ${ORIGIN}/hu/bitcoin-eladas-vagy-hitel/
+- ${ORIGIN}/hu/bitcoin-orokles/
+- ${ORIGIN}/hu/bitcoin-dijindex/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -2504,6 +2890,7 @@ function llmsFull() {
 - SK: ${ORIGIN}/sk/bitcoin-dane/${slugSk(c.id)}/
 - CS: ${ORIGIN}/cs/bitcoin-dane/${slugCs(c.id)}/
 - PL: ${ORIGIN}/pl/bitcoin-podatki/${slugPl(c.id)}/
+- HU: ${ORIGIN}/hu/bitcoin-adozas/${slugHu(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -2656,6 +3043,7 @@ function writeAll() {
     skIndexable: generated.filter((p) => p.lang === 'sk' && !p.noindex).length,
     csIndexable: generated.filter((p) => p.lang === 'cs' && !p.noindex).length,
     plIndexable: generated.filter((p) => p.lang === 'pl' && !p.noindex).length,
+    huIndexable: generated.filter((p) => p.lang === 'hu' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };

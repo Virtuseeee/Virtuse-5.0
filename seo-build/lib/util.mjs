@@ -152,6 +152,17 @@ export function methodPl(method) {
   return METHOD_PL[method] || method;
 }
 
+const METHOD_HU = {
+  'Auto-Invest plan': 'Auto-Invest terv',
+  'Spot trading': 'Spot kereskedés',
+  'Pro trading': 'Pro kereskedés',
+  'Automated DCA bot': 'Automatizált DCA-bot'
+};
+/** Hungarian label for a fee-schedule method; numbers use formatPctPl ("0,1%") and formatEurSk ("1 000 €"). */
+export function methodHu(method) {
+  return METHOD_HU[method] || method;
+}
+
 const METHOD_DE = {
   'Auto-Invest plan': 'Auto-Invest-Plan',
   'Spot trading': 'Spot-Handel',

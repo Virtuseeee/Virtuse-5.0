@@ -81,6 +81,21 @@
       "nl": "holandia",
       "fr": "francja",
       "es": "hiszpania"
+    },
+    "hu": {
+      "cz": "csehorszag",
+      "sk": "szlovakia",
+      "pl": "lengyelorszag",
+      "at": "ausztria",
+      "de": "nemetorszag",
+      "hu": "magyarorszag",
+      "si": "szlovenia",
+      "hr": "horvatorszag",
+      "ro": "romania",
+      "bg": "bulgaria",
+      "nl": "hollandia",
+      "fr": "franciaorszag",
+      "es": "spanyolorszag"
     }
   },
   "names": {
@@ -143,6 +158,21 @@
       "nl": "Holandia",
       "fr": "Francja",
       "es": "Hiszpania"
+    },
+    "hu": {
+      "cz": "Csehország",
+      "sk": "Szlovákia",
+      "pl": "Lengyelország",
+      "at": "Ausztria",
+      "de": "Németország",
+      "hu": "Magyarország",
+      "si": "Szlovénia",
+      "hr": "Horvátország",
+      "ro": "Románia",
+      "bg": "Bulgária",
+      "nl": "Hollandia",
+      "fr": "Franciaország",
+      "es": "Spanyolország"
     }
   },
   "currency": {
@@ -744,6 +774,133 @@
       "id": "accounts",
       "name": "Wykaz kont",
       "text": "Salda na giełdach, pożyczki pod zastaw Bitcoina i boty DCA przepadają razem z zapomnianymi danymi logowania. W liście instrukcji warto prowadzić wykaz platform i opis, jak odzyskać salda."
+    }
+  ],
+  "inHu": {
+    "cz": "Csehországban",
+    "sk": "Szlovákiában",
+    "pl": "Lengyelországban",
+    "at": "Ausztriában",
+    "de": "Németországban",
+    "hu": "Magyarországon",
+    "si": "Szlovéniában",
+    "hr": "Horvátországban",
+    "ro": "Romániában",
+    "bg": "Bulgáriában",
+    "nl": "Hollandiában",
+    "fr": "Franciaországban",
+    "es": "Spanyolországban"
+  },
+  "taxHu": {
+    "cz": {
+      "gainTax": "15% jövedelemadó (a küszöb felett 23%)",
+      "exemption": "3 év tartás után adómentes (időteszt)",
+      "filing": "Éves személyi jövedelemadó-bevallás",
+      "note": "Minden elidegenítés (a kripto-kripto csere is) adóköteles esemény: érdemes az első naptól teljes nyilvántartást vezetni."
+    },
+    "sk": {
+      "gainTax": "19% jövedelemadó (a küszöb felett 25%)",
+      "exemption": "1 év tartás után adómentes; alkalmi jövedelemre évi 500 €-ig mentesség",
+      "filing": "Éves személyi jövedelemadó-bevallás",
+      "note": "A kriptoügyletekhez használt külön bankszámla sokkal egyszerűbbé teszi a bevallást."
+    },
+    "pl": {
+      "gainTax": "19% egykulcsos tőkenyereségadó",
+      "exemption": "Nincs tartási idő utáni mentesség",
+      "filing": "Éves PIT-38",
+      "note": "A kripto-kripto csere adóköteles: minden elidegenítésnél ki kell számolni a PLN-ben mért nyereséget vagy veszteséget."
+    },
+    "at": {
+      "gainTax": "27,5% KESt (tőkenyereségadó)",
+      "exemption": "1 év tartás után adómentes nyereség (magánbefektetők)",
+      "filing": "Éves adóbevallás",
+      "note": "A staking- és kölcsönzési jutalmak a megszerzéskor adókötelesek, nem az eladáskor."
+    },
+    "de": {
+      "gainTax": "Legfeljebb 45% jövedelemadó (progresszív)",
+      "exemption": "0% 1 év tartás után (magánértékesítési mentesség)",
+      "filing": "Éves adóbevallás",
+      "note": "Az első évben a kripto-kripto csere adóköteles. A FIFO szerinti nyilvántartás kulcsfontosságú."
+    },
+    "hu": {
+      "gainTax": "15% tőkenyereségadó",
+      "exemption": "Nincs tartási idő utáni mentesség",
+      "filing": "Éves személyi jövedelemadó-bevallás",
+      "note": "A dokumentált beszerzési költségek levonhatók: érdemes minden számlát megőrizni."
+    },
+    "si": {
+      "gainTax": "Progresszív, az elidegenítési nyereség után legfeljebb kb. 50%",
+      "exemption": "Nincs általános tartási idő utáni mentesség",
+      "filing": "Éves személyi jövedelemadó-bevallás",
+      "note": "A kriptovaluta-nyereség jövedelemnek számít; az aktuális szabályokat érdemes helyi tanácsadóval egyeztetni."
+    },
+    "hr": {
+      "gainTax": "12% a digitáliseszköz-nyereségre (2025; 2024-ben 10%)",
+      "exemption": "Nincs tartási idő utáni mentesség",
+      "filing": "Éves adóbevallás",
+      "note": "A digitális eszközökre vonatkozó szabályozás új (2024 óta): a gyakorlati értelmezés még alakul."
+    },
+    "ro": {
+      "gainTax": "10% jövedelemadó a kriptonyereségre",
+      "exemption": "Nincs tartási idő utáni mentesség",
+      "filing": "Éves bevallás (egyéb forrásból származó jövedelem)",
+      "note": "A 10% az EU egyik legalacsonyabb egykulcsos adója: a beszerzési ár levonható."
+    },
+    "bg": {
+      "gainTax": "10% egykulcsos adó a nyereségre",
+      "exemption": "Nincs tartási idő utáni mentesség",
+      "filing": "Éves adóbevallás",
+      "note": "Alacsony egykulcsos adó; a tőzsdei kivonatokat érdemes megőrizni egy esetleges ellenőrzésre."
+    },
+    "nl": {
+      "gainTax": "Box 3 vagyonadó a vélelmezett hozam után (a fiktív hozam kb. 36%-a)",
+      "exemption": "Adómentes keret (kb. 57 000 € személyenként, 2025)",
+      "filing": "Éves Box 3 bevallás",
+      "note": "Tőkenyereségadó mint olyan nincs: a vagyon vélelmezett hozama után kell adózni. A Box 3 reform alatt áll, érdemes ellenőrizni a tárgyévi szabályokat."
+    },
+    "fr": {
+      "gainTax": "30% egykulcsos adó (PFU: 12,8% jövedelemadó + 17,2% szociális hozzájárulás)",
+      "exemption": "Nincs tartási idő utáni mentesség; az évi összesen 305 €-ig terjedő eladások adómentesek",
+      "filing": "Éves bevallás a 2086-os nyomtatványon; külföldi számlák a 3916-bis nyomtatványon",
+      "note": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
+    },
+    "es": {
+      "gainTax": "19–28% progresszív adó a megtakarítási jövedelemre",
+      "exemption": "Nincs tartási idő utáni mentesség",
+      "filing": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldön tartott kriptóra",
+      "note": "A kripto-kripto csere adóköteles elidegenítés: azonos érméknél FIFO szerint kell számolni."
+    }
+  },
+  "inheritanceHu": [
+    {
+      "id": "letter",
+      "name": "Utasítólevél",
+      "text": "Az örökösöknek írásos utasítás kell: mi létezik, hol található és kit kell keresni, a helyreállítási kifejezés nélkül. A levelet a végrendelettel együtt vagy ügyvédnél érdemes tárolni."
+    },
+    {
+      "id": "separation",
+      "name": "A kulcsok földrajzi szétválasztása",
+      "text": "Soha ne legyen minden biztonsági mentés egy helyen. Tűz, lopás vagy árvíz nem szüntetheti meg a hozzáférést. Egy kulcsot vagy mentést érdemes egy második helyen, például banki széfben tárolni."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Tájékoztatott örökös",
+      "text": "Legalább egy megbízható személynek tudnia kell, hogy a Bitcoin létezik, és hol kezdje. Az évekkel később vagy soha fel nem fedezett Bitcoin a leggyakoribb öröklési kudarc."
+    },
+    {
+      "id": "multisig",
+      "name": "Multisig 2 a 3-ból",
+      "text": "Egyetlen helyreállítási kifejezés egyetlen hibapont, Önnek és az örökösöknek is. 2 a 3-ból multisignél két kulcs Önnél van, a harmadik egy partnernél vagy ügyvédnél."
+    },
+    {
+      "id": "tested",
+      "name": "A helyreállítás kipróbálása",
+      "text": "A ki nem próbált öröklési eljárás csak hipotézis, nem terv. Évente egyszer érdemes teljes helyreállítási gyakorlatot végezni egy kis UTXO-val, az örökös jelenlétében."
+    },
+    {
+      "id": "accounts",
+      "name": "Fióklista",
+      "text": "A tőzsdei egyenlegek, a Bitcoin-fedezetű hitelek és a DCA-botok az elfelejtett belépési adatokkal együtt vesznek el. Az utasítólevélben érdemes listát vezetni a platformokról és arról, hogyan igényelhetők az egyenlegek."
     }
   ]
 }

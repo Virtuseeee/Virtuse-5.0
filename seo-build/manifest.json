@@ -9,8 +9,9 @@
     "skIndexable": 18,
     "csIndexable": 18,
     "plIndexable": 18,
+    "huIndexable": 18,
     "noindex": 1,
-    "totalHtml": 107
+    "totalHtml": 125
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -120,6 +121,24 @@
     "pl/bitcoin-sprzedac-czy-pozyczyc/index.html",
     "pl/bitcoin-dziedziczenie/index.html",
     "pl/bitcoin-indeks-oplat/index.html",
+    "hu/bitcoin-adozas/index.html",
+    "hu/bitcoin-adozas/csehorszag/index.html",
+    "hu/bitcoin-adozas/szlovakia/index.html",
+    "hu/bitcoin-adozas/lengyelorszag/index.html",
+    "hu/bitcoin-adozas/ausztria/index.html",
+    "hu/bitcoin-adozas/nemetorszag/index.html",
+    "hu/bitcoin-adozas/magyarorszag/index.html",
+    "hu/bitcoin-adozas/szlovenia/index.html",
+    "hu/bitcoin-adozas/horvatorszag/index.html",
+    "hu/bitcoin-adozas/romania/index.html",
+    "hu/bitcoin-adozas/bulgaria/index.html",
+    "hu/bitcoin-adozas/hollandia/index.html",
+    "hu/bitcoin-adozas/franciaorszag/index.html",
+    "hu/bitcoin-adozas/spanyolorszag/index.html",
+    "hu/bitcoin-dca-kalkulator/index.html",
+    "hu/bitcoin-eladas-vagy-hitel/index.html",
+    "hu/bitcoin-orokles/index.html",
+    "hu/bitcoin-dijindex/index.html",
     "llms.txt",
     "llms-full.txt"
   ]
