@@ -46,6 +46,32 @@ after the next Stories build + the manual production upload.
 - Excerpt: the user wanted none; `article.html` never shows the excerpt,
   the blog card then uses WP's auto-excerpt (the article's first lines).
 
+## Session status (2026-09-30, second round) — French SEO pages, 18 pages (`459c818`, gh-pages `00e21a9`, staging 169/169 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_fr_upload.sftp` (18 `-mkdir` + 169 `put`), then md5-verify the 169 files)
+
+- Same pattern as the other sets. New: `fr/bitcoin-fiscalite/` (hub +
+  tchequie, slovaquie, pologne, autriche, allemagne, hongrie, slovenie,
+  croatie, roumanie, bulgarie, pays-bas, france, espagne),
+  `fr/bitcoin-calculateur-dca/`, `fr/bitcoin-vendre-ou-emprunter/`,
+  `fr/bitcoin-succession/`, `fr/bitcoin-indice-frais/`.
+- Data: `meta.json` `slugs.fr`, `names.fr`, `inFr` (en Slovaquie, aux
+  Pays-Bas), `defFr` (la Slovaquie, l'Autriche, les Pays-Bas), `taxFr`
+  (module's French dictionary, same facts), `inheritanceFr` ("phrase de
+  récupération"). `formatAsOf(…, 'fr')` gives "T3 2026". "0,1 %" via
+  `formatPctSk`, `formatEurSk`, `methodFr`. FAQ heading "Questions
+  fréquentes".
+- **French typography:** strings are written with plain spaces;
+  `pushPage` runs `frTypo()` → `nbspFr()` on every text field (title,
+  description, answer, body, labels, breadcrumbs, JSON-LD strings except
+  URLs/ids) for NBSP before `: ; ? ! %`, inside « », in "57 000 €".
+  verify.mjs fails if the French Czechia page has a plain space there.
+- `FR_ALT`: every other SEO language carries hreflang fr and FR in the
+  switch (9 languages); sitemap, llms, verify (9-way reciprocity on
+  Czechia) updated. fr/index, tax, buy-bitcoin, lending: 30 links
+  repointed to `/fr/...`. 375px: no overflow.
+- **Tax advisor fixes now go to NINE places:** `lib/tax.ts` + dictionaries,
+  `seo-data.json` + `meta.taxDe`, `taxSk`, `taxCs`, `taxPl`, `taxHu`,
+  `taxUk`, `taxRu`, `taxFr`. Last site language without SEO pages: es.
+
 ## Session status (2026-09-30) — Russian SEO pages, 18 pages (`2e96f8b`, gh-pages `0b104e9`, staging 151/151 md5-verified; **live on production** — user ran the sftp batch 2026-09-30 (18 `-mkdir` + 151 `put`), 151/151 md5-verified on virtuse.com; ru pages 200 with Russian titles, ru/tax.html links the Russian guides, EN germany carries hreflang en/de/sk/cs/pl/hu/uk/ru/x-default)
 
 - Same pattern as the other sets. New: `ru/bitcoin-nalogi/` (hub + chekhiya,
