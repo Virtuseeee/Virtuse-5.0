@@ -13,8 +13,9 @@
     "ukIndexable": 18,
     "ruIndexable": 18,
     "frIndexable": 18,
+    "esIndexable": 18,
     "noindex": 1,
-    "totalHtml": 179
+    "totalHtml": 197
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -196,6 +197,24 @@
     "fr/bitcoin-vendre-ou-emprunter/index.html",
     "fr/bitcoin-succession/index.html",
     "fr/bitcoin-indice-frais/index.html",
+    "es/bitcoin-impuestos/index.html",
+    "es/bitcoin-impuestos/republica-checa/index.html",
+    "es/bitcoin-impuestos/eslovaquia/index.html",
+    "es/bitcoin-impuestos/polonia/index.html",
+    "es/bitcoin-impuestos/austria/index.html",
+    "es/bitcoin-impuestos/alemania/index.html",
+    "es/bitcoin-impuestos/hungria/index.html",
+    "es/bitcoin-impuestos/eslovenia/index.html",
+    "es/bitcoin-impuestos/croacia/index.html",
+    "es/bitcoin-impuestos/rumania/index.html",
+    "es/bitcoin-impuestos/bulgaria/index.html",
+    "es/bitcoin-impuestos/paises-bajos/index.html",
+    "es/bitcoin-impuestos/francia/index.html",
+    "es/bitcoin-impuestos/espana/index.html",
+    "es/bitcoin-calculadora-dca/index.html",
+    "es/bitcoin-vender-o-pedir-prestado/index.html",
+    "es/bitcoin-herencia/index.html",
+    "es/bitcoin-indice-comisiones/index.html",
     "llms.txt",
     "llms-full.txt"
   ]

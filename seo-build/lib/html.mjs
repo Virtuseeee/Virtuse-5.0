@@ -167,7 +167,7 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu' || h.lang === 'uk' || h.lang === 'ru' || h.lang === 'fr');
+  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu' || h.lang === 'uk' || h.lang === 'ru' || h.lang === 'fr' || h.lang === 'es');
   const langSwitch = switchLangs.length >= 2
     ? `<nav class="lang" aria-label="Language">${switchLangs
       .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
@@ -420,5 +420,26 @@ export const CHROME = {
     conciergeHref: 'fr/concierge.html',
     privacyHref: 'fr/privacy-policy.html',
     termsHref: 'fr/terms-and-conditions.html'
+  },
+  es: {
+    navTax: 'Guías fiscales',
+    navFees: 'Índice de comisiones',
+    navDca: 'DCA',
+    navConcierge: 'Concierge',
+    relatedHeading: 'Guías relacionadas',
+    asOfPrefix: 'Datos del',
+    disclaimerTax: 'Resumen orientativo 2026 – no es asesoramiento fiscal.',
+    disclaimerKeys: 'Virtuse nunca guarda sus claves.',
+    disclaimerKyc: 'El KYC y el registro se realizan en la plataforma regulada de cada socio. Virtuse es un hub no custodial y no guarda fondos ni datos de clientes de esas plataformas.',
+    privacy: 'Política de privacidad',
+    terms: 'Términos y condiciones',
+    locale: 'es_ES',
+    homeHref: 'es/index.html',
+    taxHref: 'es/bitcoin-impuestos/',
+    feesHref: 'es/bitcoin-indice-comisiones/',
+    dcaHref: 'es/bitcoin-calculadora-dca/',
+    conciergeHref: 'es/concierge.html',
+    privacyHref: 'es/privacy-policy.html',
+    termsHref: 'es/terms-and-conditions.html'
   }
 };

@@ -107,6 +107,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/fr/bitcoin-succession/
 - https://virtuse.com/fr/bitcoin-indice-frais/
 
+## Spanish
+
+- https://virtuse.com/es/bitcoin-impuestos/
+- https://virtuse.com/es/bitcoin-calculadora-dca/
+- https://virtuse.com/es/bitcoin-vender-o-pedir-prestado/
+- https://virtuse.com/es/bitcoin-herencia/
+- https://virtuse.com/es/bitcoin-indice-comisiones/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt

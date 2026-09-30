@@ -141,6 +141,21 @@
       "nl": "pays-bas",
       "fr": "france",
       "es": "espagne"
+    },
+    "es": {
+      "cz": "republica-checa",
+      "sk": "eslovaquia",
+      "pl": "polonia",
+      "at": "austria",
+      "de": "alemania",
+      "hu": "hungria",
+      "si": "eslovenia",
+      "hr": "croacia",
+      "ro": "rumania",
+      "bg": "bulgaria",
+      "nl": "paises-bajos",
+      "fr": "francia",
+      "es": "espana"
     }
   },
   "names": {
@@ -263,6 +278,21 @@
       "nl": "Pays-Bas",
       "fr": "France",
       "es": "Espagne"
+    },
+    "es": {
+      "cz": "República Checa",
+      "sk": "Eslovaquia",
+      "pl": "Polonia",
+      "at": "Austria",
+      "de": "Alemania",
+      "hu": "Hungría",
+      "si": "Eslovenia",
+      "hr": "Croacia",
+      "ro": "Rumanía",
+      "bg": "Bulgaria",
+      "nl": "Países Bajos",
+      "fr": "Francia",
+      "es": "España"
     }
   },
   "currency": {
@@ -1417,6 +1447,137 @@
       "id": "accounts",
       "name": "Inventaire des comptes",
       "text": "Les soldes sur les plateformes, les prêts garantis par Bitcoin et les bots DCA disparaissent avec des identifiants oubliés. Tenez dans votre lettre d'instructions un inventaire des plateformes et de la façon de réclamer les soldes."
+    }
+  ],
+  "inEs": {
+    "cz": "en la República Checa",
+    "sk": "en Eslovaquia",
+    "pl": "en Polonia",
+    "at": "en Austria",
+    "de": "en Alemania",
+    "hu": "en Hungría",
+    "si": "en Eslovenia",
+    "hr": "en Croacia",
+    "ro": "en Rumanía",
+    "bg": "en Bulgaria",
+    "nl": "en los Países Bajos",
+    "fr": "en Francia",
+    "es": "en España"
+  },
+  "defEs": {
+    "cz": "la República Checa",
+    "nl": "los Países Bajos"
+  },
+  "taxEs": {
+    "cz": {
+      "gainTax": "Impuesto sobre la renta del 15 % (23 % por encima del umbral)",
+      "exemption": "Sin impuesto tras 3 años de tenencia (prueba temporal)",
+      "filing": "Declaración anual del impuesto sobre la renta",
+      "note": "Cada transmisión (incluidos los intercambios cripto por cripto) es un hecho imponible: guarde registros completos desde el primer día."
+    },
+    "sk": {
+      "gainTax": "Impuesto sobre la renta del 19 % (25 % por encima del umbral)",
+      "exemption": "Sin impuesto tras 1 año de tenencia; franquicia de 500 € al año para rentas ocasionales",
+      "filing": "Declaración anual del impuesto sobre la renta",
+      "note": "Una cuenta bancaria separada para la actividad cripto simplifica mucho la declaración."
+    },
+    "pl": {
+      "gainTax": "Impuesto fijo del 19 % sobre las ganancias patrimoniales",
+      "exemption": "Sin exención por periodo de tenencia",
+      "filing": "PIT-38 anual",
+      "note": "Los intercambios cripto por cripto tributan: calcule la ganancia o pérdida en PLN de cada transmisión."
+    },
+    "at": {
+      "gainTax": "KESt del 27,5 % (impuesto sobre las ganancias patrimoniales)",
+      "exemption": "Ganancias exentas tras 1 año de tenencia (inversores particulares)",
+      "filing": "Declaración fiscal anual",
+      "note": "Las recompensas de staking y de préstamo tributan al recibirlas, no al venderlas."
+    },
+    "de": {
+      "gainTax": "Impuesto sobre la renta de hasta el 45 % (progresivo)",
+      "exemption": "0 % tras 1 año de tenencia (exención de ventas privadas)",
+      "filing": "Declaración fiscal anual",
+      "note": "Los intercambios cripto por cripto tributan durante el primer año. Llevar un registro FIFO es fundamental."
+    },
+    "hu": {
+      "gainTax": "Impuesto del 15 % sobre las ganancias patrimoniales",
+      "exemption": "Sin exención por periodo de tenencia",
+      "filing": "Declaración anual del impuesto sobre la renta de las personas físicas",
+      "note": "Los costes de adquisición documentados son deducibles: guarde todas las facturas."
+    },
+    "si": {
+      "gainTax": "Progresivo, hasta aproximadamente el 50 % sobre las ganancias por transmisión",
+      "exemption": "Sin exención general por periodo de tenencia",
+      "filing": "Declaración anual del impuesto sobre la renta de las personas físicas",
+      "note": "Las ganancias en criptomonedas se tratan como rentas; confirme las normas vigentes con un asesor local."
+    },
+    "hr": {
+      "gainTax": "12 % sobre las ganancias de activos digitales (2025; 10 % en 2024)",
+      "exemption": "Sin exención por periodo de tenencia",
+      "filing": "Declaración fiscal anual",
+      "note": "El régimen de activos digitales es nuevo (desde 2024): su aplicación práctica aún se está interpretando."
+    },
+    "ro": {
+      "gainTax": "Impuesto sobre la renta del 10 % sobre las ganancias cripto",
+      "exemption": "Sin exención por periodo de tenencia",
+      "filing": "Declaración anual (rentas de otras fuentes)",
+      "note": "Con un 10 %, Rumanía tiene uno de los tipos fijos más bajos de la UE: deduzca su coste de adquisición."
+    },
+    "bg": {
+      "gainTax": "Impuesto fijo del 10 % sobre las ganancias",
+      "exemption": "Sin exención por periodo de tenencia",
+      "filing": "Declaración fiscal anual",
+      "note": "Tipo fijo bajo; guarde los extractos de los exchanges para tener registros listos ante una inspección."
+    },
+    "nl": {
+      "gainTax": "Impuesto patrimonial del Box 3: aproximadamente el 36 % sobre un rendimiento presunto",
+      "exemption": "Mínimo exento (aproximadamente 57.000 € por persona, 2025)",
+      "filing": "Declaración anual del Box 3",
+      "note": "No hay un impuesto sobre las ganancias patrimoniales como tal: tributa por el rendimiento presunto de su patrimonio. El Box 3 está en reforma: compruebe las normas del año en curso."
+    },
+    "fr": {
+      "gainTax": "Impuesto fijo del 30 % (PFU: 12,8 % de impuesto sobre la renta + 17,2 % de cargas sociales)",
+      "exemption": "Sin exención por periodo de tenencia; las transmisiones de hasta 305 € al año en total están exentas",
+      "filing": "Declaración anual con el formulario 2086; cuentas en el extranjero en el formulario 3916-bis",
+      "note": "Los intercambios cripto por cripto no tributan: solo tributan las ventas a cambio de euros, bienes o servicios."
+    },
+    "es": {
+      "gainTax": "Impuesto progresivo del 19 al 28 % sobre la base del ahorro",
+      "exemption": "Sin exención por periodo de tenencia",
+      "filing": "Declaración anual del IRPF; Modelo 721 para criptomonedas en el extranjero por encima de 50.000 €",
+      "note": "Los intercambios cripto por cripto son transmisiones sujetas a impuesto: aplique FIFO a monedas idénticas."
+    }
+  },
+  "inheritanceEs": [
+    {
+      "id": "letter",
+      "name": "Carta de instrucciones",
+      "text": "Sus herederos necesitan instrucciones por escrito: qué existe, dónde está y a quién contactar, sin la frase semilla en el propio documento. Guarde la carta con su testamento o con su abogado."
+    },
+    {
+      "id": "separation",
+      "name": "Separación geográfica de las claves",
+      "text": "No guarde nunca todas las copias de seguridad en el mismo lugar. Un incendio, un robo o una inundación no deben poder destruir el acceso. Guarde una clave o copia en un segundo lugar, por ejemplo una caja de seguridad bancaria."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Heredero informado",
+      "text": "Al menos una persona de confianza debe saber que su Bitcoin existe y por dónde empezar. Bitcoin descubierto años tarde, o nunca: es el fallo de herencia más habitual."
+    },
+    {
+      "id": "multisig",
+      "name": "Multifirma 2 de 3",
+      "text": "Una única frase semilla es un punto único de fallo, para usted y para sus herederos. Con una multifirma 2 de 3, usted tiene dos claves y un socio o un abogado tiene la tercera."
+    },
+    {
+      "id": "tested",
+      "name": "Prueba de recuperación",
+      "text": "Un procedimiento de herencia sin probar es una hipótesis, no un plan. Haga una vez al año un simulacro completo de recuperación con un UTXO pequeño, con su heredero presente."
+    },
+    {
+      "id": "accounts",
+      "name": "Inventario de cuentas",
+      "text": "Los saldos en exchanges, los préstamos respaldados por Bitcoin y los bots de DCA desaparecen con los accesos olvidados. Mantenga en su carta de instrucciones un inventario de plataformas y de cómo reclamar los saldos."
     }
   ]
 }

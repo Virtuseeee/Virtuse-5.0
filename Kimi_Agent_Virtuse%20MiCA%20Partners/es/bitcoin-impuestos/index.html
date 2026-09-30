@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impuestos sobre Bitcoin en 13 países de la UE (2026)</title>
+<meta name="description" content="Tipos impositivos de Bitcoin, exenciones por periodo de tenencia y declaración en 13 países de la UE, datos del T3 2026. Resumen orientativo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/es/bitcoin-impuestos/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/">
+  <link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/">
+  <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/bitcoin-dane/">
+  <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/bitcoin-podatki/">
+  <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/bitcoin-adozas/">
+  <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/bitcoin-podatky/">
+  <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/bitcoin-nalogi/">
+  <link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-fiscalite/">
+  <link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-impuestos/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Impuestos sobre Bitcoin en 13 países de la UE (2026)">
+<meta property="og:description" content="Tipos impositivos de Bitcoin, exenciones por periodo de tenencia y declaración en 13 países de la UE, datos del T3 2026. Resumen orientativo.">
+<meta property="og:url" content="https://virtuse.com/es/bitcoin-impuestos/">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<style>:root {
+  --btc-orange: #f7931a;
+  --dark: #08090a;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --green: #3fb950;
+  --max: 820px;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--btc-orange); }
+.nav {
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  background: rgba(8,9,10,.96); position: sticky; top: 0;
+}
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.brand { font-weight: 700; color: var(--text) !important; font-size: 16px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 64px; }
+.crumbs { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+.crumbs a { color: var(--text-muted); }
+.answer {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin: 16px 0 28px;
+}
+.answer p { margin: 0; }
+h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--text-muted); font-weight: 600; }
+.cta {
+  display: inline-block; background: var(--text); color: var(--dark) !important;
+  text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: opacity 0.2s;
+}
+.cta:hover { opacity: 0.85; }
+.cta-secondary {
+  display: inline-block; border: 1px solid var(--border); color: var(--text) !important;
+  text-decoration: none; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: border-color 0.2s;
+}
+.cta-secondary:hover { border-color: var(--border-hover); }
+.muted { color: var(--text-muted); font-size: 14px; }
+.disclaimers { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+.related { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 16px; }
+.lang { font-size: 13px; }
+.flag { font-weight: 600; }
+.review { font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--border-hover); padding: 6px 10px; margin: 12px 0; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+pre {
+  background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px; overflow: auto; white-space: pre-wrap;
+}
+.asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
+footer.site-footer {
+  border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
+}
+footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
+@media (max-width: 640px) {
+  h1 { font-size: 1.45rem; }
+  .nav { padding: 12px 14px; }
+}
+@media print {
+  .nav, .cta, .cta-secondary, footer.site-footer { display: none !important; }
+  body { background: #fff; color: #111; }
+  a { color: #111; }
+  .answer { background: #f4f4f4; border-color: #ccc; }
+}</style>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://virtuse.com/#website",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "inLanguage": "es",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://virtuse.com/es/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Impuestos sobre Bitcoin",
+          "item": "https://virtuse.com/es/bitcoin-impuestos/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué países cubre este resumen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "13 países de la UE: República Checa, Eslovaquia, Polonia, Austria, Alemania, Hungría, Eslovenia, Croacia, Rumanía, Bulgaria, Países Bajos, Francia, España. Datos del T3 2026, procedentes del módulo Virtuse Tax."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es asesoramiento fiscal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Resumen orientativo 2026, no es asesoramiento fiscal. Confirme las normas del año en curso con un asesor local."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Informa Virtuse de mis activos a la administración tributaria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los socios realizan su propio KYC."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde reviso la herencia además de los impuestos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En el módulo Tax & Inheritance Agent, con los mismos 13 países y una comprobación de preparación para la multifirma."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<!-- generated by seo-build; do not edit by hand. answerWords=60 -->
+<header class="nav">
+  <a class="brand" href="../../es/index.html">Virtuse</a>
+  <nav aria-label="Primary">
+    <a href="../../es/bitcoin-impuestos/">Guías fiscales</a>
+    <a href="../../es/bitcoin-indice-comisiones/">Índice de comisiones</a>
+    <a href="../../es/bitcoin-calculadora-dca/">DCA</a>
+    <a href="../../es/concierge.html">Concierge</a>
+  </nav>
+  <nav class="lang" aria-label="Language"><a href="../../bitcoin-tax/">EN</a> · <a href="../../de/bitcoin-steuern/">DE</a> · <a href="../../sk/bitcoin-dane/">SK</a> · <a href="../../cs/bitcoin-dane/">CS</a> · <a href="../../pl/bitcoin-podatki/">PL</a> · <a href="../../hu/bitcoin-adozas/">HU</a> · <a href="../../uk/bitcoin-podatky/">UK</a> · <a href="../../ru/bitcoin-nalogi/">RU</a> · <a href="../../fr/bitcoin-fiscalite/">FR</a> · <a href="../../es/bitcoin-impuestos/" aria-current="page">ES</a></nav>
+</header>
+<main class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../es/index.html">Inicio</a> <span aria-hidden="true">/</span> <span>Impuestos sobre Bitcoin</span></nav>
+  <p class="asof">Datos del T3 2026</p>
+  <h1>Impuestos sobre Bitcoin en 13 países de la UE</h1>
+  <div class="answer"><p>Este resumen compara la tributación de Bitcoin en 13 países de la UE, con datos del T3 2026. Los tipos, las exenciones y las notas sobre la declaración proceden del módulo Virtuse Tax. Alemania y Austria eximen las ganancias tras 1 año de tenencia, la República Checa tras 3 años, y los Países Bajos gravan un rendimiento presunto (Box 3).</p></div>
+  
+<p>Cada página de país indica el impuesto sobre las ganancias, la posible exención por periodo de tenencia y la forma de declarar, con datos del T3 2026. El módulo Tax & Inheritance Agent usa los mismos datos y añade una puntuación de preparación para la herencia.</p>
+<h2>Comparativa por países</h2>
+<div class="table-wrap"><table><thead><tr><th>País</th><th>Impuesto sobre las ganancias</th><th>Exención</th></tr></thead><tbody><tr><td>🇨🇿 <a href="../../es/bitcoin-impuestos/republica-checa/">República Checa</a></td><td>Impuesto sobre la renta del 15 % (23 % por encima del umbral)</td><td>Sin impuesto tras 3 años de tenencia (prueba temporal)</td></tr><tr><td>🇸🇰 <a href="../../es/bitcoin-impuestos/eslovaquia/">Eslovaquia</a></td><td>Impuesto sobre la renta del 19 % (25 % por encima del umbral)</td><td>Sin impuesto tras 1 año de tenencia; franquicia de 500 € al año para rentas ocasionales</td></tr><tr><td>🇵🇱 <a href="../../es/bitcoin-impuestos/polonia/">Polonia</a></td><td>Impuesto fijo del 19 % sobre las ganancias patrimoniales</td><td>Sin exención por periodo de tenencia</td></tr><tr><td>🇦🇹 <a href="../../es/bitcoin-impuestos/austria/">Austria</a></td><td>KESt del 27,5 % (impuesto sobre las ganancias patrimoniales)</td><td>Ganancias exentas tras 1 año de tenencia (inversores particulares)</td></tr><tr><td>🇩🇪 <a href="../../es/bitcoin-impuestos/alemania/">Alemania</a></td><td>Impuesto sobre la renta de hasta el 45 % (progresivo)</td><td>0 % tras 1 año de tenencia (exención de ventas privadas)</td></tr><tr><td>🇭🇺 <a href="../../es/bitcoin-impuestos/hungria/">Hungría</a></td><td>Impuesto del 15 % sobre las ganancias patrimoniales</td><td>Sin exención por periodo de tenencia</td></tr><tr><td>🇸🇮 <a href="../../es/bitcoin-impuestos/eslovenia/">Eslovenia</a></td><td>Progresivo, hasta aproximadamente el 50 % sobre las ganancias por transmisión</td><td>Sin exención general por periodo de tenencia</td></tr><tr><td>🇭🇷 <a href="../../es/bitcoin-impuestos/croacia/">Croacia</a></td><td>12 % sobre las ganancias de activos digitales (2025; 10 % en 2024)</td><td>Sin exención por periodo de tenencia</td></tr><tr><td>🇷🇴 <a href="../../es/bitcoin-impuestos/rumania/">Rumanía</a></td><td>Impuesto sobre la renta del 10 % sobre las ganancias cripto</td><td>Sin exención por periodo de tenencia</td></tr><tr><td>🇧🇬 <a href="../../es/bitcoin-impuestos/bulgaria/">Bulgaria</a></td><td>Impuesto fijo del 10 % sobre las ganancias</td><td>Sin exención por periodo de tenencia</td></tr><tr><td>🇳🇱 <a href="../../es/bitcoin-impuestos/paises-bajos/">Países Bajos</a></td><td>Impuesto patrimonial del Box 3: aproximadamente el 36 % sobre un rendimiento presunto</td><td>Mínimo exento (aproximadamente 57.000 € por persona, 2025)</td></tr><tr><td>🇫🇷 <a href="../../es/bitcoin-impuestos/francia/">Francia</a></td><td>Impuesto fijo del 30 % (PFU: 12,8 % de impuesto sobre la renta + 17,2 % de cargas sociales)</td><td>Sin exención por periodo de tenencia; las transmisiones de hasta 305 € al año en total están exentas</td></tr><tr><td>🇪🇸 <a href="../../es/bitcoin-impuestos/espana/">España</a></td><td>Impuesto progresivo del 19 al 28 % sobre la base del ahorro</td><td>Sin exención por periodo de tenencia</td></tr></tbody></table></div>
+<h2>Preguntas frecuentes</h2><h3>¿Qué países cubre este resumen?</h3><p>13 países de la UE: República Checa, Eslovaquia, Polonia, Austria, Alemania, Hungría, Eslovenia, Croacia, Rumanía, Bulgaria, Países Bajos, Francia, España. Datos del T3 2026, procedentes del módulo Virtuse Tax.</p><h3>¿Es asesoramiento fiscal?</h3><p>No. Resumen orientativo 2026, no es asesoramiento fiscal. Confirme las normas del año en curso con un asesor local.</p><h3>¿Informa Virtuse de mis activos a la administración tributaria?</h3><p>No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los socios realizan su propio KYC.</p><h3>¿Dónde reviso la herencia además de los impuestos?</h3><p>En el módulo Tax &amp; Inheritance Agent, con los mismos 13 países y una comprobación de preparación para la multifirma.</p>
+
+  <p><a class="cta" href="../../es/tax-agent.html">Abrir Tax &amp; Inheritance Agent →</a></p>
+  <h2>Guías relacionadas</h2><div class="related"><a href="../../es/bitcoin-impuestos/espana/">Impuestos sobre Bitcoin en España</a><a href="../../es/bitcoin-herencia/">Bitcoin y herencia</a><a href="../../es/bitcoin-indice-comisiones/">Índice de comisiones de Bitcoin</a></div>
+  <aside class="disclaimers">
+    <p>Resumen orientativo 2026 – no es asesoramiento fiscal.</p>
+    <p>Virtuse nunca guarda sus claves.</p>
+    <p>El KYC y el registro se realizan en la plataforma regulada de cada socio. Virtuse es un hub no custodial y no guarda fondos ni datos de clientes de esas plataformas.</p>
+  </aside>
+</main>
+<footer class="site-footer"><div class="inner">
+  <p>©2018 - 2026 Virtuse Group. <a href="../../es/privacy-policy.html">Política de privacidad</a> · <a href="../../es/terms-and-conditions.html">Términos y condiciones</a></p>
+</div></footer>
+</body>
+</html>

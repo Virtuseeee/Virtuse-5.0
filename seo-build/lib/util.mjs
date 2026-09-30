@@ -73,7 +73,7 @@ export function fitWords(parts, min = 40, max = 60) {
 export function formatAsOf(asOf, lang = 'en') {
   const m = String(asOf).match(/^(\d{4})-Q(\d)$/i);
   if (!m) return asOf;
-  return lang === 'fr' ? `T${m[2]} ${m[1]}` : `Q${m[2]} ${m[1]}`;
+  return (lang === 'fr' || lang === 'es') ? `T${m[2]} ${m[1]}` : `Q${m[2]} ${m[1]}`;
 }
 
 export function formatPct(pct) {
@@ -203,6 +203,31 @@ export function nbspFr(s) {
     .replace(/« /g, '«\u00a0')
     .replace(/(\d) (\d{3})/g, '$1\u00a0$2')
     .replace(/(\d) €/g, '$1\u00a0€');
+}
+
+const METHOD_ES = {
+  'Auto-Invest plan': 'Plan Auto-Invest',
+  'Spot trading': 'Trading al contado',
+  'Pro trading': 'Trading Pro',
+  'Automated DCA bot': 'Bot de DCA automatizado'
+};
+/** Spanish label for a fee-schedule method; percentages use formatPctSk ("0,1 %"). */
+export function methodEs(method) {
+  return METHOD_ES[method] || method;
+}
+
+/** Spanish amounts: "1000 €" (4 digits ungrouped, CLDR es), "20.000 €". */
+export function formatEurEs(n) {
+  const rounded = Math.round(Number(n));
+  const sign = rounded < 0 ? '-' : '';
+  const a = String(Math.abs(rounded));
+  const grouped = a.length > 4 ? a.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : a;
+  return `${sign}${grouped}\u00a0€`;
+}
+
+/** Spanish typography: non-breaking space before % and €. */
+export function nbspEs(s) {
+  return String(s).replace(/(\d) ([%€])/g, '$1\u00a0$2');
 }
 
 const METHOD_DE = {

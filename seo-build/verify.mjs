@@ -72,6 +72,12 @@ const DISCLAIMERS_FR = [
   'KYC'
 ];
 
+const DISCLAIMERS_ES = [
+  'Resumen orientativo 2026',
+  'Virtuse nunca guarda sus claves',
+  'KYC'
+];
+
 function stripTags(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
 }
@@ -91,6 +97,7 @@ let hu = 0;
 let ukc = 0;
 let ruc = 0;
 let frc = 0;
+let esc2 = 0;
 
 for (const rel of htmlFiles) {
   const fp = path.join(SITE, rel);
@@ -112,6 +119,7 @@ for (const rel of htmlFiles) {
   if (lang === 'uk') ukc += 1;
   if (lang === 'ru') ruc += 1;
   if (lang === 'fr') frc += 1;
+  if (lang === 'es') esc2 += 1;
 
   const title = attr(html, /<title>([^<]+)<\/title>/);
   if (title.length > 60) fail(`${rel} title ${title.length} > 60: ${title}`);
@@ -131,7 +139,7 @@ for (const rel of htmlFiles) {
   const h2 = (html.match(/<h2>/g) || []).length;
   if (h2 < 2) fail(`${rel} has ${h2} H2s (need ≥2)`);
 
-  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : lang === 'pl' ? '<h2>Najczęstsze pytania</h2>' : lang === 'hu' ? '<h2>Gyakori kérdések</h2>' : lang === 'uk' ? '<h2>Часті запитання</h2>' : lang === 'ru' ? '<h2>Частые вопросы</h2>' : lang === 'fr' ? '<h2>Questions fréquentes</h2>' : '<h2>FAQ</h2>';
+  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : lang === 'pl' ? '<h2>Najczęstsze pytania</h2>' : lang === 'hu' ? '<h2>Gyakori kérdések</h2>' : lang === 'uk' ? '<h2>Часті запитання</h2>' : lang === 'ru' ? '<h2>Частые вопросы</h2>' : lang === 'fr' ? '<h2>Questions fréquentes</h2>' : lang === 'es' ? '<h2>Preguntas frecuentes</h2>' : '<h2>FAQ</h2>';
   const faqH3 = (html.split(faqHeading)[1] || '');
   const faqCount = (html.split(faqHeading)[1] || '').match(/<h3>/g)?.length || 0;
   if (faqCount < 3 || faqCount > 5) fail(`${rel} FAQ count ${faqCount} (need 3–5)`);
@@ -148,7 +156,7 @@ for (const rel of htmlFiles) {
   const robots = attr(html, /name="robots" content="([^"]+)"/);
   const noindex = robots.includes('noindex');
 
-  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : lang === 'fr' ? DISCLAIMERS_FR : DISCLAIMERS_EN;
+  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : lang === 'fr' ? DISCLAIMERS_FR : lang === 'es' ? DISCLAIMERS_ES : DISCLAIMERS_EN;
   for (const d of dis) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
   }
@@ -173,6 +181,7 @@ for (const rel of htmlFiles) {
   if (lang === 'uk' && !hreflang.includes('uk')) fail(`${rel} UK page missing hreflang uk`);
   if (lang === 'ru' && !hreflang.includes('ru')) fail(`${rel} RU page missing hreflang ru`);
   if (lang === 'fr' && !hreflang.includes('fr')) fail(`${rel} FR page missing hreflang fr`);
+  if (lang === 'es' && !hreflang.includes('es')) fail(`${rel} ES page missing hreflang es`);
 
   // Answer must be real HTML in the body, not only injected by JS.
   if (!html.includes('<div class="answer"><p>')) fail(`${rel} missing static answer block`);
@@ -299,6 +308,12 @@ for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], [
 if (!tchequieFr.includes('bitcoin-tax/czechia') || !tchequieFr.includes('ru/bitcoin-nalogi/chekhiya')) fail('FR tchequie missing EN/RU hreflang');
 // French typography: no plain space before : ; ? ! % in the visible text of French pages
 if (/ [:;?!%]/.test(stripTags(tchequieFr).replace(/&[a-z]+;/g, ''))) fail('FR tchequie has a plain space before : ; ? ! or %');
+const checaEs = fs.readFileSync(path.join(SITE, 'es/bitcoin-impuestos/republica-checa/index.html'), 'utf8');
+for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], ['SK cesko', cesko], ['CS cesko', ceskoCs], ['PL czechy', czechyPl], ['HU csehorszag', csehHu], ['UK chekhiia', chekhiiaUk], ['RU chekhiya', chekhiyaRu], ['FR tchequie', tchequieFr]]) {
+  if (!html.includes('es/bitcoin-impuestos/republica-checa')) fail(`${name} missing ES hreflang`);
+}
+if (!checaEs.includes('bitcoin-tax/czechia') || !checaEs.includes('fr/bitcoin-fiscalite/tchequie')) fail('ES republica-checa missing EN/FR hreflang');
+if (/\d [%€]/.test(stripTags(checaEs))) fail('ES republica-checa has a plain space before % or €');
 
 // Determinism: second generate should not change bytes of one page
 const before = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
@@ -320,6 +335,7 @@ console.log(JSON.stringify({
   ukHtml: ukc,
   ruHtml: ruc,
   frHtml: frc,
+  esHtml: esc2,
   counts: JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8')).counts,
   warnings,
   errors: errors.length
