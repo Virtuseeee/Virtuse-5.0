@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-30, fourth round) — Spanish grammar pass over the 18 Spanish SEO pages (`dcf8b8a`, gh-pages `539abd6`, staging 18/18 md5-verified; **production pending** — user runs the sftp batch below)
+
+- User: "skontroluj španielske SEO stránky na gramatiku". Language only, same facts.
+- Lowercase after a colon in descriptions, answers and FAQ answers (`lcEs()` in generate.mjs; keeps KESt, PIT-38, IRPF). Answer label "Presentación:" (was "Declaración: Declaración…"); "Sin exención …" stands alone instead of "Exención: Sin exención …".
+- `meta.taxEs`: DE exemption "Tipo del 0 % …", HR "Tipo del 12 % …" (no sentence starts with a digit), SI "Impuesto progresivo de hasta …", RO "… del 10 % para las ganancias cripto", NL "Box 3, aproximadamente …" (no second colon). `inheritanceEs`: heir/accounts/separation wording, "Una sola frase semilla".
+- FAQs: hub "Cubre 13 países …", "¿Dónde puedo revisar también la herencia?"; DCA "¿Qué plan tipo se usa?"; sell vs borrow exemptions list with semicolons, "Pero hay intereses, riesgo de liquidación y KYC con el socio"; fee index "¿Qué vía es la más barata …?", "diferenciales de cambio", no "(miner fees)", citation without "la fuente «Fuente: …»".
+- Only the 18 es pages changed. generate + verify 0 errors.
+
+```bash
+cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_es_grammar.sftp
+```
+
 ## Session status (2026-09-30, third round) — Spanish SEO pages (`5f06bc3`, gh-pages `13f02ef`, staging 187/187 md5-verified; **live on production** — user ran the sftp batch 2026-09-30 (18 `-mkdir` + 187 `put`), 187/187 md5-verified on virtuse.com; es pages 200 with Spanish titles, es/tax.html links the Spanish guides, EN spain carries hreflang for all 10 languages + x-default). With this, all 10 languages have their own SEO page set
 
 - User: "priprav SEO stránky aj v španielčine". Same pattern as the fr/ru/uk rounds: `meta.json` `slugs.es`/`names.es`/`inEs`/`defEs`/`taxEs`/`inheritanceEs`, `ES_ALT` in `generate.mjs`, `CHROME.es` in `lib/html.mjs`, `methodEs`/`formatEurEs`/`nbspEs` in `lib/util.mjs`, verify checks for es. `frTypo` became the generic `typoSpec(spec, fn)` (NBSP pass for fr and es).
