@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-30, third round) — Spanish SEO pages (`5f06bc3`, gh-pages `13f02ef`, staging 187/187 md5-verified; **production pending** — user runs the sftp batch below). With this, all 10 languages have their own SEO page set
+## Session status (2026-09-30, third round) — Spanish SEO pages (`5f06bc3`, gh-pages `13f02ef`, staging 187/187 md5-verified; **live on production** — user ran the sftp batch 2026-09-30 (18 `-mkdir` + 187 `put`), 187/187 md5-verified on virtuse.com; es pages 200 with Spanish titles, es/tax.html links the Spanish guides, EN spain carries hreflang for all 10 languages + x-default). With this, all 10 languages have their own SEO page set
 
 - User: "priprav SEO stránky aj v španielčine". Same pattern as the fr/ru/uk rounds: `meta.json` `slugs.es`/`names.es`/`inEs`/`defEs`/`taxEs`/`inheritanceEs`, `ES_ALT` in `generate.mjs`, `CHROME.es` in `lib/html.mjs`, `methodEs`/`formatEurEs`/`nbspEs` in `lib/util.mjs`, verify checks for es. `frTypo` became the generic `typoSpec(spec, fn)` (NBSP pass for fr and es).
 - Pages: `es/bitcoin-impuestos/` (hub + 13 countries: republica-checa, eslovaquia, polonia, austria, alemania, hungria, eslovenia, croacia, rumania, bulgaria, paises-bajos, francia, espana), `es/bitcoin-calculadora-dca/`, `es/bitcoin-vender-o-pedir-prestado/`, `es/bitcoin-herencia/`, `es/bitcoin-indice-comisiones/` (+ `metodologia/`). Usted register, "T3 2026", NBSP before % and €, "20.000 €" (4-digit amounts ungrouped, CLDR). NL gain-tax string shortened so the description fits 155 chars.
