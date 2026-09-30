@@ -1495,7 +1495,7 @@
     },
     "de": {
       "gainTax": "Impuesto sobre la renta de hasta el 45 % (progresivo)",
-      "exemption": "0 % tras 1 año de tenencia (exención de ventas privadas)",
+      "exemption": "Tipo del 0 % tras 1 año de tenencia (exención de ventas privadas)",
       "filing": "Declaración fiscal anual",
       "note": "Los intercambios cripto por cripto tributan durante el primer año. Llevar un registro FIFO es fundamental."
     },
@@ -1506,19 +1506,19 @@
       "note": "Los costes de adquisición documentados son deducibles: guarde todas las facturas."
     },
     "si": {
-      "gainTax": "Progresivo, hasta aproximadamente el 50 % sobre las ganancias por transmisión",
+      "gainTax": "Impuesto progresivo de hasta aproximadamente el 50 % sobre las ganancias por transmisión",
       "exemption": "Sin exención general por periodo de tenencia",
       "filing": "Declaración anual del impuesto sobre la renta de las personas físicas",
       "note": "Las ganancias en criptomonedas se tratan como rentas; confirme las normas vigentes con un asesor local."
     },
     "hr": {
-      "gainTax": "12 % sobre las ganancias de activos digitales (2025; 10 % en 2024)",
+      "gainTax": "Tipo del 12 % sobre las ganancias de activos digitales (2025; 10 % en 2024)",
       "exemption": "Sin exención por periodo de tenencia",
       "filing": "Declaración fiscal anual",
       "note": "El régimen de activos digitales es nuevo (desde 2024): su aplicación práctica aún se está interpretando."
     },
     "ro": {
-      "gainTax": "Impuesto sobre la renta del 10 % sobre las ganancias cripto",
+      "gainTax": "Impuesto sobre la renta del 10 % para las ganancias cripto",
       "exemption": "Sin exención por periodo de tenencia",
       "filing": "Declaración anual (rentas de otras fuentes)",
       "note": "Con un 10 %, Rumanía tiene uno de los tipos fijos más bajos de la UE: deduzca su coste de adquisición."
@@ -1530,7 +1530,7 @@
       "note": "Tipo fijo bajo; guarde los extractos de los exchanges para tener registros listos ante una inspección."
     },
     "nl": {
-      "gainTax": "Impuesto patrimonial del Box 3: aproximadamente el 36 % sobre un rendimiento presunto",
+      "gainTax": "Impuesto patrimonial del Box 3, aproximadamente el 36 % sobre un rendimiento presunto",
       "exemption": "Mínimo exento (aproximadamente 57.000 € por persona, 2025)",
       "filing": "Declaración anual del Box 3",
       "note": "No hay un impuesto sobre las ganancias patrimoniales como tal: tributa por el rendimiento presunto de su patrimonio. El Box 3 está en reforma: compruebe las normas del año en curso."
@@ -1557,17 +1557,17 @@
     {
       "id": "separation",
       "name": "Separación geográfica de las claves",
-      "text": "No guarde nunca todas las copias de seguridad en el mismo lugar. Un incendio, un robo o una inundación no deben poder destruir el acceso. Guarde una clave o copia en un segundo lugar, por ejemplo una caja de seguridad bancaria."
+      "text": "No guarde nunca todas las copias de seguridad en el mismo lugar. Un incendio, un robo o una inundación no deben poder destruir el acceso. Guarde una clave o una copia en un segundo lugar, por ejemplo una caja de seguridad bancaria."
     },
     {
       "id": "heir-aware",
       "name": "Heredero informado",
-      "text": "Al menos una persona de confianza debe saber que su Bitcoin existe y por dónde empezar. Bitcoin descubierto años tarde, o nunca: es el fallo de herencia más habitual."
+      "text": "Al menos una persona de confianza debe saber que su Bitcoin existe y por dónde empezar. Que el Bitcoin se descubra años después, o nunca, es el fallo más habitual en una herencia."
     },
     {
       "id": "multisig",
       "name": "Multifirma 2 de 3",
-      "text": "Una única frase semilla es un punto único de fallo, para usted y para sus herederos. Con una multifirma 2 de 3, usted tiene dos claves y un socio o un abogado tiene la tercera."
+      "text": "Una sola frase semilla es un punto único de fallo, para usted y para sus herederos. Con una multifirma 2 de 3, usted tiene dos claves y un socio o un abogado tiene la tercera."
     },
     {
       "id": "tested",
@@ -1577,7 +1577,7 @@
     {
       "id": "accounts",
       "name": "Inventario de cuentas",
-      "text": "Los saldos en exchanges, los préstamos respaldados por Bitcoin y los bots de DCA desaparecen con los accesos olvidados. Mantenga en su carta de instrucciones un inventario de plataformas y de cómo reclamar los saldos."
+      "text": "Los saldos en exchanges, los préstamos respaldados por Bitcoin y los bots de DCA se pierden cuando se olvidan los accesos. Mantenga en su carta de instrucciones un inventario de las plataformas y de cómo reclamar cada saldo."
     }
   ]
 }

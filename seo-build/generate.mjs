@@ -4016,6 +4016,8 @@ ${faqHtml(faqs, 'Questions fréquentes')}
 
 // ---------- Spanish (es/) ----------
 // pushPage applies nbspEs() (NBSP before % and €) to every Spanish text field.
+// Spanish: lowercase a data value's first letter after a colon (keeps KESt, PIT-38, IRPF).
+function lcEs(s) { return /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s; }
 function esHome(relFile) { return { name: 'Inicio', href: toRoot(relFile, 'es/index.html'), abs: abs('es/index.html') }; }
 
 // ES tax hub
@@ -4029,10 +4031,10 @@ function esHome(relFile) { return { name: 'Inicio', href: toRoot(relFile, 'es/in
     esc(meta.taxEs[c.id].exemption)
   ]);
   const faqs = [
-    { q: '¿Qué países cubre este resumen?', a: `${N} países de la UE: ${COUNTRIES.map((c) => nameEs(c.id)).join(', ')}. Datos del ${asOfEs}, procedentes del módulo Virtuse Tax.` },
+    { q: '¿Qué países cubre este resumen?', a: `Cubre ${N} países de la UE: ${COUNTRIES.map((c) => nameEs(c.id)).join(', ')}. Datos del ${asOfEs}, procedentes del módulo Virtuse Tax.` },
     { q: '¿Es asesoramiento fiscal?', a: 'No. Resumen orientativo 2026, no es asesoramiento fiscal. Confirme las normas del año en curso con un asesor local.' },
     { q: '¿Informa Virtuse de mis activos a la administración tributaria?', a: 'No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los socios realizan su propio KYC.' },
-    { q: '¿Dónde reviso la herencia además de los impuestos?', a: `En el módulo Tax & Inheritance Agent, con los mismos ${N} países y una comprobación de preparación para la multifirma.` }
+    { q: '¿Dónde puedo revisar también la herencia?', a: `En el módulo Tax & Inheritance Agent, con los mismos ${N} países y una comprobación de preparación para la multifirma.` }
   ];
   const answer = finalizeAnswer([
     `Este resumen compara la tributación de Bitcoin en ${N} países de la UE, con datos del ${asOfEs}.`,
@@ -4073,22 +4075,22 @@ for (const c of COUNTRIES) {
   const inN = inEs(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${t.gainTax}. Resumen orientativo 2026, no es asesoramiento fiscal.` },
+    { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${lcEs(t.gainTax)}. Resumen orientativo 2026, no es asesoramiento fiscal.` },
     { q: `¿Existe ${inN} una exención por periodo de tenencia?`, a: `${t.exemption}. Antes de declarar, confirme las normas del año en curso con un asesor fiscal local.` },
     { q: `¿Cómo se declaran las ganancias de Bitcoin ${inN}?`, a: `${t.filing}. ${t.note}` },
-    { q: '¿Guarda Virtuse mi Bitcoin o presenta mi declaración?', a: `No. Virtuse nunca guarda sus claves. El KYC y el registro se hacen con el socio. El Tax Agent compara el resumen de ${N} países; la declaración la prepara un asesor fiscal cualificado.` }
+    { q: '¿Guarda Virtuse mi Bitcoin o presenta mi declaración?', a: `No. Virtuse nunca guarda sus claves. El KYC y el registro se hacen con el socio. El Tax Agent muestra el resumen de ${N} países; la declaración la prepara un asesor fiscal cualificado.` }
   ];
   const answer = finalizeAnswer([
-    `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${t.gainTax}.`,
-    `Exención: ${t.exemption}.`,
-    `Declaración: ${t.filing}.`,
+    `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(t.gainTax)}.`,
+    /^Sin exención/.test(t.exemption) ? `${t.exemption}.` : `Exención: ${lcEs(t.exemption)}.`,
+    `Presentación: ${lcEs(t.filing)}.`,
     t.note,
     'Resumen orientativo 2026, no es asesoramiento fiscal.'
   ], 'es');
   pushPage({
     relFile, lang: 'es',
     title: assertTitle(`Impuestos sobre Bitcoin ${inN} (${asOfEs})`),
-    description: assertDescription(descFit(`Impuestos sobre Bitcoin ${inN} (${asOfEs}): ${t.gainTax}.`, 'No es asesoramiento fiscal.')),
+    description: assertDescription(descFit(`Impuestos sobre Bitcoin ${inN} (${asOfEs}): ${lcEs(t.gainTax)}.`, 'No es asesoramiento fiscal.')),
     h1: `Impuestos sobre Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -4130,7 +4132,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: '¿Predice esta calculadora el precio de Bitcoin?', a: 'No. Solo compara las comisiones de los socios según el baremo publicado. No modela la rentabilidad del precio de Bitcoin.' },
-    { q: `¿Cuál es el plan tipo, con datos del ${asOfEs}?`, a: 'Una aportación inicial de 500 € y después 100 € al mes durante 12 meses. Clasificación según las comisiones del primer año.' },
+    { q: '¿Qué plan tipo se usa?', a: `Una aportación inicial de 500 € y después 100 € al mes durante 12 meses, con datos del ${asOfEs}. La clasificación se basa en las comisiones del primer año.` },
     { q: '¿Qué vía es la más barata en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist.` },
     { q: '¿Es asesoramiento de inversión?', a: 'No. Solo con fines educativos. El KYC se realiza con el socio. Virtuse nunca guarda sus claves.' }
   ];
@@ -4183,8 +4185,8 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender o intercambiar. Las exenciones varían: Alemania 0 % tras 1 año de tenencia, República Checa prueba temporal de 3 años, Polonia sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
-    { q: '¿Es un préstamo el mismo hecho imponible que una venta?', a: 'En este resumen, no. Los intereses, el riesgo de liquidación y el KYC con el socio se mantienen. El Loan & Liquidity Copilot calcula las cifras concretas.' },
+    { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender o intercambiar. Las exenciones varían: Alemania, 0 % tras 1 año de tenencia; la República Checa, prueba temporal de 3 años; Polonia, sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
+    { q: '¿Es un préstamo el mismo hecho imponible que una venta?', a: 'En este resumen, no. Pero hay intereses, riesgo de liquidación y KYC con el socio. El Loan & Liquidity Copilot calcula las cifras concretas.' },
     { q: '¿Qué es el riesgo de liquidación?', a: 'Si el valor de la garantía cae hasta el umbral del socio, este puede vender la garantía para devolver el préstamo. Virtuse nunca guarda sus claves ni la garantía.' },
     { q: '¿Dónde calculo un importe concreto?', a: 'En el módulo Loan & Liquidity Copilot. Esta página solo explica la diferencia entre impuesto y riesgo a partir de los tipos publicados.' }
   ];
@@ -4239,13 +4241,13 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const deFile = 'de/bitcoin-erbrecht/index.html';
   const faqs = [
     { q: '¿Puede la carta de instrucciones contener la frase semilla?', a: 'No. La carta recoge el inventario, las ubicaciones y los contactos, nunca frases semilla. Guárdela con su testamento o con su abogado.' },
-    { q: '¿Por qué una multifirma 2 de 3?', a: 'Una única frase semilla es un punto único de fallo, para usted y para sus herederos.' },
+    { q: '¿Por qué una multifirma 2 de 3?', a: 'Una sola frase semilla es un punto único de fallo, para usted y para sus herederos.' },
     { q: '¿Guarda Virtuse claves para los herederos?', a: 'No. Virtuse nunca guarda sus claves.' },
-    { q: '¿Es asesoramiento jurídico?', a: `No. Es una lista de comprobación con fines educativos del módulo Tax, datos del ${asOfEs}.` }
+    { q: '¿Es asesoramiento jurídico?', a: `No. Es una lista de comprobación del módulo Tax, con fines educativos y datos del ${asOfEs}.` }
   ];
   const answer = finalizeAnswer([
     `Con datos del ${asOfEs}, la lista de comprobación del módulo Tax tiene seis puntos: carta de instrucciones, separación geográfica de las claves, heredero informado, multifirma 2 de 3, prueba de recuperación y cuentas documentadas.`,
-    'Una única frase semilla es un punto único de fallo. Virtuse nunca guarda sus claves.',
+    'Una sola frase semilla es un punto único de fallo. Virtuse nunca guarda sus claves.',
     'No es asesoramiento jurídico.'
   ], 'es');
   const howto = {
@@ -4291,9 +4293,9 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const { tables, beText, winner } = feeIndexBody(relFile, 'es');
   const faqs = [
     { q: '¿Qué mide el índice de comisiones?', a: `Las comisiones anuales de las vías de compra, con datos del ${asOfEs}, según la fórmula del módulo Stacking Strategist.` },
-    { q: '¿Quién es el más barato con 100 € al mes?', a: `${winner.partner}: ${formatPctSk(winner.pct)}, comisiones anuales de ${formatEurEs(winner.annualDrag)}.` },
-    { q: '¿Se incluyen los diferenciales?', a: 'No. Solo la comisión porcentual y una posible suscripción mensual según el baremo. Las diferencias de cambio y las comisiones de la red Bitcoin (miner fees) no se incluyen.' },
-    { q: '¿Puedo citar la tabla?', a: `Sí, indicando la fuente «Fuente: índice de comisiones de Bitcoin de Virtuse, datos del ${asOfEs}» y un enlace.` }
+    { q: '¿Qué vía es la más barata con 100 € al mes?', a: `${winner.partner}, con una comisión del ${formatPctSk(winner.pct)} y ${formatEurEs(winner.annualDrag)} de comisiones al año.` },
+    { q: '¿Se incluyen los diferenciales?', a: 'No. Solo la comisión porcentual y una posible suscripción mensual según el baremo. Los diferenciales de cambio y las comisiones de la red Bitcoin no se incluyen.' },
+    { q: '¿Puedo citar la tabla?', a: `Sí, citando «Fuente: índice de comisiones de Bitcoin de Virtuse, datos del ${asOfEs}» con un enlace.` }
   ];
   const answer = finalizeAnswer([
     `El índice de comisiones de Bitcoin de Virtuse ordena las vías de compra en la UE por comisiones anuales, con datos del ${asOfEs}.`,
