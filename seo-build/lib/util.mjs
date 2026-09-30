@@ -73,7 +73,7 @@ export function fitWords(parts, min = 40, max = 60) {
 export function formatAsOf(asOf, lang = 'en') {
   const m = String(asOf).match(/^(\d{4})-Q(\d)$/i);
   if (!m) return asOf;
-  return lang === 'de' ? `Q${m[2]} ${m[1]}` : `Q${m[2]} ${m[1]}`;
+  return lang === 'fr' ? `T${m[2]} ${m[1]}` : `Q${m[2]} ${m[1]}`;
 }
 
 export function formatPct(pct) {
@@ -183,6 +183,26 @@ const METHOD_RU = {
 /** Russian label for a fee-schedule method; numbers use formatPctPl ("0,1%") and formatEurSk ("1 000 €"). */
 export function methodRu(method) {
   return METHOD_RU[method] || method;
+}
+
+const METHOD_FR = {
+  'Auto-Invest plan': 'Plan Auto-Invest',
+  'Spot trading': 'Trading au comptant',
+  'Pro trading': 'Trading Pro',
+  'Automated DCA bot': 'Bot DCA automatisé'
+};
+/** French label for a fee-schedule method; numbers use formatPctSk ("0,1 %") and formatEurSk ("1 000 €"). */
+export function methodFr(method) {
+  return METHOD_FR[method] || method;
+}
+
+/** French typography: non-breaking space before : ; ? ! % and inside « », and in "1 000 €". */
+export function nbspFr(s) {
+  return String(s)
+    .replace(/ ([:;?!%»])/g, '\u00a0$1')
+    .replace(/« /g, '«\u00a0')
+    .replace(/(\d) (\d{3})/g, '$1\u00a0$2')
+    .replace(/(\d) €/g, '$1\u00a0€');
 }
 
 const METHOD_DE = {

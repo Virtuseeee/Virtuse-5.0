@@ -26,6 +26,8 @@ import {
   methodHu,
   methodUk,
   methodRu,
+  methodFr,
+  nbspFr,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -67,6 +69,7 @@ const asOfPl = formatAsOf(AS_OF, 'pl');
 const asOfHu = formatAsOf(AS_OF, 'hu');
 const asOfUk = formatAsOf(AS_OF, 'uk');
 const asOfRu = formatAsOf(AS_OF, 'ru');
+const asOfFr = formatAsOf(AS_OF, 'fr');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -154,6 +157,41 @@ function nameRu(id) {
 /** Russian prepositional (в Словакии, во Франции) and accusative (Словакию). */
 function inRu(id) { return meta.inRu[id]; }
 function accRu(id) { return meta.accRu[id]; }
+function slugFr(id) {
+  const s = meta.slugs.fr[id];
+  if (!s) throw new Error(`Missing FR slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function nameFr(id) {
+  const s = meta.names.fr[id];
+  if (!s) throw new Error(`Missing FR name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** French "en Slovaquie / aux Pays-Bas" and the name with its article (la Slovaquie, l'Autriche). */
+function inFr(id) { return meta.inFr[id]; }
+function defFr(id) { return meta.defFr[id]; }
+/** Apply French typography to every text field of a page spec (URLs and schema keys untouched). */
+const FR_SKIP_KEYS = new Set(['url', '@id', 'item', '@type', '@context', 'temporalCoverage', 'datePublished', 'dateModified', 'priceCurrency', 'price', 'applicationCategory', 'operatingSystem', 'inLanguage']);
+function frDeep(v, key) {
+  if (typeof v === 'string') return FR_SKIP_KEYS.has(key) ? v : nbspFr(v);
+  if (Array.isArray(v)) return v.map((x) => frDeep(x, key));
+  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, frDeep(x, k)]));
+  return v;
+}
+function frTypo(spec) {
+  return {
+    ...spec,
+    title: nbspFr(spec.title),
+    description: nbspFr(spec.description),
+    h1: nbspFr(spec.h1),
+    answerHtml: nbspFr(spec.answerHtml),
+    bodyHtml: nbspFr(spec.bodyHtml),
+    breadcrumbs: spec.breadcrumbs.map((b) => ({ ...b, name: nbspFr(b.name) })),
+    related: spec.related.map((r) => ({ ...r, label: nbspFr(r.label) })),
+    moduleCta: spec.moduleCta && { ...spec.moduleCta, label: nbspFr(spec.moduleCta.label) },
+    schemas: frDeep(spec.schemas)
+  };
+}
 /** Hungarian inessive: -ban/-ben, but Magyarországon. */
 function inHu(id) { return meta.inHu[id]; }
 /** Czech accusative: only Francie changes (Francii); the -o names stay. */
@@ -242,12 +280,27 @@ const RU_ALT = {
 for (const c of COUNTRIES) {
   RU_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `ru/bitcoin-nalogi/${meta.slugs.ru[c.id]}/index.html`;
 }
+/** EN page -> its French counterpart. */
+const FR_ALT = {
+  'bitcoin-tax/index.html': 'fr/bitcoin-fiscalite/index.html',
+  'bitcoin-dca-calculator/index.html': 'fr/bitcoin-calculateur-dca/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'fr/bitcoin-vendre-ou-emprunter/index.html',
+  'bitcoin-inheritance/index.html': 'fr/bitcoin-succession/index.html',
+  'bitcoin-fee-index/index.html': 'fr/bitcoin-indice-frais/index.html'
+};
+for (const c of COUNTRIES) {
+  FR_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `fr/bitcoin-fiscalite/${meta.slugs.fr[c.id]}/index.html`;
+}
 
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const frPath = FR_ALT[enPath];
+  if (frPath) {
+    tags.splice(1, 0, { lang: 'fr', href: abs(frPath), path: canonicalPath(frPath) });
+  }
   const ruPath = RU_ALT[enPath];
   if (ruPath) {
     tags.splice(1, 0, { lang: 'ru', href: abs(ruPath), path: canonicalPath(ruPath) });
@@ -312,6 +365,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'fr' ? [
+      `Données issues des modules Virtuse, situation au ${asOfFr}.`,
+      'Virtuse ne détient jamais vos clés.',
+      'Vérifiez les règles locales ; pas un conseil fiscal.'
     ]
     : lang === 'ru' ? [
       `Данные из модулей Virtuse по состоянию на ${asOfRu}.`,
@@ -472,10 +530,11 @@ function buyFaqsEn(c, winner) {
 const generated = [];
 
 function pushPage(spec) {
+  if (spec.lang === 'fr') spec = frTypo(spec);
   const html = renderPage({
     ...spec,
     origin: ORIGIN,
-    asOfLabel: spec.lang === 'de' ? asOfDe : asOfEn,
+    asOfLabel: spec.lang === 'fr' ? asOfFr : spec.lang === 'de' ? asOfDe : asOfEn,
     chrome: CHROME[spec.lang]
   });
   generated.push({ relFile: spec.relFile, html, lang: spec.lang, noindex: !!spec.noindex, title: spec.title });
@@ -1104,6 +1163,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'fr') {
+      return `<h3>${esc(formatEurSk(amt))} par mois</h3>` +
+        tableHtml(['Rang', 'Partenaire', 'Méthode', 'Frais', 'Frais annuels'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodFr(r.method)),
+          esc(formatPctSk(r.pct) + (r.monthly ? ` + ${formatEurSk(r.monthly)} par mois` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     if (lang === 'ru') {
       return `<h3>${esc(formatEurSk(amt))} в месяц</h3>` +
         tableHtml(['Место', 'Партнёр', 'Метод', 'Комиссия', 'Годовые комиссии'], ranked.map((r, i) => [
@@ -1179,7 +1248,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'ru') {
+  if (lang === 'fr') {
+    if (be.status === 'always') {
+      beText = `Selon les frais publiés, la voie automatisée la moins chère (${be.auto.partner}) coûte chaque année autant ou moins que la voie manuelle la moins chère (${be.manual.partner}), dès 1 € par mois.`;
+    } else if (be.status === 'found') {
+      beText = `Seuil de rentabilité : dès ${formatEurSk(be.monthlyEur)} par mois, ${be.auto.partner} (automatisé) n'est pas plus cher que ${be.manual.partner} (manuel).`;
+    } else {
+      beText = "Jusqu'à 20 000 € par mois, la voie automatisée la moins chère ne fait pas mieux que la voie manuelle la moins chère.";
+    }
+  } else if (lang === 'ru') {
     if (be.status === 'always') {
       beText = `По опубликованным комиссиям самый дешёвый автоматический путь (${be.auto.partner}) начиная с 1 € в месяц стоит в год столько же или меньше, чем самый дешёвый ручной путь (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -3553,6 +3630,333 @@ ${faqHtml(faqs, 'Частые вопросы')}
   });
 }
 
+// ---------- French (fr/) ----------
+// Strings are written with plain spaces; pushPage applies nbspFr() to every French text field.
+function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/index.html'), abs: abs('fr/index.html') }; }
+
+// FR tax hub
+{
+  const relFile = 'fr/bitcoin-fiscalite/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(c.id)}/`))}">${esc(nameFr(c.id))}</a>`,
+    esc(meta.taxFr[c.id].gainTax),
+    esc(meta.taxFr[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Quels pays couvre cet aperçu ?', a: `${N} pays de l'UE : ${COUNTRIES.map((c) => nameFr(c.id)).join(', ')}. Situation au ${asOfFr}, données du module Virtuse Tax.` },
+    { q: 'Est-ce un conseil fiscal ?', a: "Non. Aperçu indicatif 2026, pas un conseil fiscal. Vérifiez les règles de l'année en cours auprès d'un conseiller local." },
+    { q: "Virtuse déclare-t-il mes avoirs à l'administration fiscale ?", a: 'Non. Virtuse ne détient jamais vos clés ni votre historique de transactions. Les partenaires effectuent eux-mêmes le KYC.' },
+    { q: 'Où vérifier la succession en plus de la fiscalité ?', a: `Dans le module Tax & Inheritance Agent, avec les mêmes ${N} pays et une vérification de préparation au multisig.` }
+  ];
+  const answer = finalizeAnswer([
+    `Cet aperçu compare la fiscalité du Bitcoin dans ${N} pays de l'UE, situation au ${asOfFr}.`,
+    'Les taux, exonérations et notes de déclaration proviennent du module Virtuse Tax.',
+    "L'Allemagne et l'Autriche exonèrent après 1 an de détention, la Tchéquie après 3 ans ; les Pays-Bas imposent un rendement présumé (Box 3).",
+    'Aperçu indicatif 2026, pas un conseil fiscal.'
+  ], 'fr');
+  pushPage({
+    relFile, lang: 'fr',
+    title: assertTitle(`Fiscalité du Bitcoin dans ${N} pays de l'UE (2026)`),
+    description: assertDescription(`Taux d'imposition du Bitcoin, exonérations liées à la durée de détention et déclaration dans ${N} pays de l'UE, situation au ${asOfFr}.`),
+    h1: `Fiscalité du Bitcoin dans ${N} pays de l'UE`,
+    answerHtml: esc(answer),
+    breadcrumbs: [frHome(relFile), { name: 'Fiscalité du Bitcoin', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'fr/bitcoin-fiscalite/france/'), label: 'Fiscalité du Bitcoin en France' },
+      { href: toRoot(relFile, 'fr/bitcoin-succession/'), label: 'Bitcoin et succession' },
+      { href: toRoot(relFile, 'fr/bitcoin-indice-frais/'), label: 'Indice des frais Bitcoin' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'fr/' + TAX_AGENT), label: 'Ouvrir le Tax & Inheritance Agent →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Chaque page pays indique l'impôt sur les plus-values, l'éventuelle exonération liée à la durée de détention et les modalités de déclaration, situation au ${esc(asOfFr)}. Le module Tax & Inheritance Agent utilise les mêmes données et ajoute un score de préparation à la succession.</p>
+<h2>Comparatif par pays</h2>
+${tableHtml(['Pays', 'Impôt sur les plus-values', 'Exonération'], rows)}
+${faqHtml(faqs, 'Questions fréquentes')}
+`
+  });
+}
+
+// FR country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `fr/bitcoin-fiscalite/${slugFr(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxFr[c.id];
+  const inN = inFr(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${t.gainTax}. Aperçu indicatif 2026, pas un conseil fiscal.` },
+    { q: `Existe-t-il ${inN} une exonération liée à la durée de détention ?`, a: `${t.exemption}. Avant de déclarer, vérifiez les règles de l'année en cours auprès d'un conseiller fiscal local.` },
+    { q: `Comment déclarer ses plus-values en Bitcoin ${inN} ?`, a: `${t.filing}. ${t.note}` },
+    { q: 'Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent compare l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
+  ];
+  const answer = finalizeAnswer([
+    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${t.gainTax}.`,
+    `Exonération : ${t.exemption}.`,
+    `Déclaration : ${t.filing}.`,
+    t.note,
+    'Aperçu indicatif 2026, pas un conseil fiscal.'
+  ], 'fr');
+  pushPage({
+    relFile, lang: 'fr',
+    title: assertTitle(`Fiscalité du Bitcoin ${inN} (${asOfFr})`),
+    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${t.gainTax}.`, 'Pas un conseil fiscal.')),
+    h1: `Fiscalité du Bitcoin ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      frHome(relFile),
+      { name: 'Fiscalité du Bitcoin', href: toRoot(relFile, 'fr/bitcoin-fiscalite/'), abs: abs('fr/bitcoin-fiscalite/index.html') },
+      { name: nameFr(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'fr/bitcoin-vendre-ou-emprunter/'), label: 'Bitcoin : vendre ou emprunter' },
+      { href: toRoot(relFile, 'fr/bitcoin-succession/'), label: 'Bitcoin et succession' },
+      { href: toRoot(relFile, nbs[0] ? `fr/bitcoin-fiscalite/${slugFr(nbs[0].id)}/` : 'fr/bitcoin-fiscalite/'), label: nbs[0] ? `Fiscalité du Bitcoin ${inFr(nbs[0].id)}` : 'Tous les pays' }
+    ],
+    moduleCta: { href: toRoot(relFile, `fr/${TAX_AGENT}?country=${c.id}`), label: `Vérifier ${defFr(c.id)} dans le Tax Agent →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Données au ${esc(asOfFr)}, reprises du module Virtuse Tax.</p>
+<h2>Taux et déclaration</h2>
+${tableHtml(['Champ', 'Au ' + asOfFr], [
+  ['Impôt sur les plus-values', esc(t.gainTax)],
+  ['Exonération', esc(t.exemption)],
+  ['Déclaration', esc(t.filing)],
+  ['Remarque', esc(t.note)]
+])}
+<h2>Quand l'impôt est-il généralement dû ?</h2>
+<p>${esc(t.note)} Dans cet aperçu, l'achat de bitcoins n'est pas considéré comme une cession ; avant de payer, d'échanger, de donner ou de prêter des bitcoins, vérifiez les règles locales.</p>
+<h2>Pays voisins</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(n.id)}/`))}">Fiscalité du Bitcoin ${esc(inFr(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Questions fréquentes')}
+`
+  });
+}
+
+// FR DCA calculator
+{
+  const relFile = 'fr/bitcoin-calculateur-dca/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Ce calculateur prévoit-il le cours du Bitcoin ?', a: "Non. Il compare uniquement les frais des partenaires selon le barème publié. Le rendement lié au cours du Bitcoin n'est pas modélisé." },
+    { q: `Quel est le plan type au ${asOfFr} ?`, a: 'Un versement initial de 500 €, puis 100 € par mois pendant 12 mois. Classement selon les frais de la première année.' },
+    { q: 'Quelle voie est la moins chère pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist.` },
+    { q: 'Est-ce un conseil en investissement ?', a: 'Non. À des fins éducatives uniquement. Le KYC se fait chez le partenaire. Virtuse ne détient jamais vos clés.' }
+  ];
+  const answer = finalizeAnswer([
+    `Au ${asOfFr}, dans un exemple DCA fondé uniquement sur les frais (500 €, puis 100 € par mois pendant 12 mois), ${win.partner} arrive en tête.`,
+    `Frais variables : ${formatPctSk(win.pct)}. Ce n'est pas une prévision de cours.`,
+    'Les frais proviennent du barème du module Stacking Strategist et sont calculés avec la même formule. Aperçu indicatif 2026.'
+  ], 'fr');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'fr',
+    title: assertTitle('Calculateur DCA Bitcoin (frais UE 2026)'),
+    description: assertDescription(`Calculateur DCA Bitcoin fondé uniquement sur les frais, situation au ${asOfFr}. Scénario type : 500 € + 100 € par mois ; voie la moins chère : ${win.partner}.`),
+    h1: 'Calculateur DCA Bitcoin',
+    answerHtml: esc(answer),
+    breadcrumbs: [frHome(relFile), { name: 'Calculateur DCA', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'fr/bitcoin-indice-frais/'), label: 'Indice des frais Bitcoin' },
+      { href: toRoot(relFile, 'fr/bitcoin-vendre-ou-emprunter/'), label: 'Bitcoin : vendre ou emprunter' },
+      { href: toRoot(relFile, 'fr/bitcoin-fiscalite/france/'), label: 'Fiscalité du Bitcoin en France' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'fr/stacking.html'), label: 'Ouvrir le Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Calculateur DCA Bitcoin',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Exemple type : 500 €, puis 100 € par mois × 12. Même formule que dans le module Stacking Strategist.</p>
+<h2>Classement à 100 € par mois</h2>
+${tableHtml(['Rang', 'Partenaire', 'Méthode', 'Frais variables', 'Frais annuels'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodFr(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Questions fréquentes')}
+`
+  });
+}
+
+// FR sell vs borrow
+{
+  const relFile = 'fr/bitcoin-vendre-ou-emprunter/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `La vente déclenche-t-elle un impôt dans ces ${N} pays ?`, a: `En général oui, lors d'une vente ou d'un échange. Les exonérations varient : Allemagne 0 % après 1 an de détention, Tchéquie critère de durée de 3 ans, Pologne sans exonération. Situation au ${asOfFr}. Pas un conseil fiscal.` },
+    { q: "Un prêt est-il le même fait générateur qu'une vente ?", a: 'Pas dans cet aperçu. Les intérêts, le risque de liquidation et le KYC chez le partenaire restent toutefois. Le Loan & Liquidity Copilot calcule les chiffres concrets.' },
+    { q: "Qu'est-ce que le risque de liquidation ?", a: 'Si la valeur de la garantie tombe au seuil du partenaire, celui-ci peut vendre la garantie pour rembourser le prêt. Virtuse ne détient jamais vos clés ni la garantie.' },
+    { q: 'Où calculer un montant précis ?', a: "Dans le module Loan & Liquidity Copilot. Cette page explique seulement l'arbitrage entre impôt et risque à partir des taux publiés." }
+  ];
+  const answer = finalizeAnswer([
+    `Au ${asOfFr}, vendre des bitcoins peut déclencher un impôt (par exemple jusqu'à 45 % en Allemagne pendant la première année de détention, 10 % forfaitaire en Roumanie).`,
+    'Un prêt garanti par Bitcoin permet de conserver sa position sur le marché, mais ajoute des intérêts et un risque de liquidation chez le partenaire.',
+    'Aperçu indicatif 2026, pas un conseil fiscal ni un conseil en crédit. Virtuse ne détient jamais vos clés.'
+  ], 'fr');
+  pushPage({
+    relFile, lang: 'fr',
+    title: assertTitle('Bitcoin : vendre ou emprunter ? (2026)'),
+    description: assertDescription(`Vendre ses bitcoins et payer l'impôt, ou emprunter en les mettant en garantie et rester investi ? Taux de ${N} pays de l'UE au ${asOfFr}.`),
+    h1: 'Vendre ses bitcoins ou emprunter en les mettant en garantie ?',
+    answerHtml: esc(answer),
+    breadcrumbs: [frHome(relFile), { name: 'Vendre ou emprunter', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'fr/bitcoin-fiscalite/france/'), label: 'Fiscalité du Bitcoin en France' },
+      { href: toRoot(relFile, 'fr/bitcoin-calculateur-dca/'), label: 'Calculateur DCA' },
+      { href: toRoot(relFile, 'fr/bitcoin-succession/'), label: 'Bitcoin et succession' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'fr/loan.html'), label: 'Comparer dans le Loan Copilot →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Bitcoin : vendre ou emprunter',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Impôt en cas de vente</h2>
+${tableHtml(['Pays', 'Impôt sur les plus-values', 'Exonération'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(c.id)}/`))}">${esc(nameFr(c.id))}</a>`,
+  esc(meta.taxFr[c.id].gainTax),
+  esc(meta.taxFr[c.id].exemption)
+]))}
+<h2>Risque en cas de prêt</h2>
+<p>Les prêts garantis par Bitcoin sont proposés par des partenaires régulés, pas par Virtuse. Vous conservez votre exposition au cours, vous payez des intérêts et votre garantie peut être liquidée. Virtuse ne détient jamais la garantie.</p>
+${faqHtml(faqs, 'Questions fréquentes')}
+`
+  });
+}
+
+// FR inheritance
+{
+  const relFile = 'fr/bitcoin-succession/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: "La lettre d'instructions peut-elle contenir la phrase de récupération ?", a: "Non. La lettre contient l'inventaire, les emplacements et les contacts, jamais de phrase de récupération. Conservez-la avec votre testament ou chez votre avocat." },
+    { q: 'Pourquoi un multisig 2 sur 3 ?', a: 'Une seule phrase de récupération est un point de défaillance unique, pour vous comme pour vos héritiers.' },
+    { q: 'Virtuse détient-il des clés pour les héritiers ?', a: 'Non. Virtuse ne détient jamais vos clés.' },
+    { q: 'Est-ce un conseil juridique ?', a: `Non. C'est une check-list à but éducatif issue du module Tax, situation au ${asOfFr}.` }
+  ];
+  const answer = finalizeAnswer([
+    `Au ${asOfFr}, la check-list du module Tax compte six points : lettre d'instructions, séparation géographique des clés, héritier informé, multisig 2 sur 3, test de récupération et comptes documentés.`,
+    'Une seule phrase de récupération est un point de défaillance unique. Virtuse ne détient jamais vos clés.',
+    'Pas un conseil juridique.'
+  ], 'fr');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'Préparer la succession de ses bitcoins',
+    inLanguage: 'fr',
+    step: meta.inheritanceFr.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'fr',
+    title: assertTitle('Bitcoin et succession : check-list (2026)'),
+    description: assertDescription(`Check-list en six points pour la succession de vos bitcoins (${asOfFr}) : lettre d'instructions, séparation des clés, multisig 2 sur 3.`),
+    h1: 'Succession Bitcoin : check-list',
+    answerHtml: esc(answer),
+    breadcrumbs: [frHome(relFile), { name: 'Succession', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'fr/bitcoin-fiscalite/france/'), label: 'Fiscalité du Bitcoin en France' },
+      { href: toRoot(relFile, 'fr/bitcoin-fiscalite/'), label: `Fiscalité dans ${N} pays de l'UE` },
+      { href: toRoot(relFile, 'fr/bitcoin-vendre-ou-emprunter/'), label: 'Bitcoin : vendre ou emprunter' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'fr/' + TAX_AGENT), label: 'Évaluer la check-list dans le Tax Agent →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>Le contenu reprend la check-list du module Tax. Pas un conseil juridique.</p>
+<h2>Marche à suivre : six étapes</h2>
+<ol>${meta.inheritanceFr.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Questions fréquentes')}
+`
+  });
+}
+
+// FR fee index
+{
+  const relFile = 'fr/bitcoin-indice-frais/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'fr');
+  const faqs = [
+    { q: "Que mesure l'indice des frais ?", a: `Les frais annuels des voies d'achat au ${asOfFr}, selon la formule du module Stacking Strategist.` },
+    { q: 'Qui est le moins cher à 100 € par mois ?', a: `${winner.partner} : ${formatPctSk(winner.pct)}, frais annuels de ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Les spreads sont-ils inclus ?', a: 'Non. Seulement les frais en pourcentage et un éventuel abonnement mensuel selon le barème. Les écarts de change et les frais de réseau Bitcoin (miner fees) ne sont pas inclus.' },
+    { q: 'Puis-je citer le tableau ?', a: `Oui, en indiquant la source « Source : indice des frais Bitcoin de Virtuse, situation au ${asOfFr} » et un lien.` }
+  ];
+  const answer = finalizeAnswer([
+    `L'indice des frais Bitcoin de Virtuse classe les voies d'achat dans l'UE selon leurs frais annuels, situation au ${asOfFr}.`,
+    `À 100 € par mois, ${winner.partner} (${methodFr(winner.method)}) arrive en tête avec ${formatPctSk(winner.pct)}, soit ${formatEurSk(winner.annualDrag)} par an.`,
+    beText,
+    "Ce n'est pas une offre. Virtuse ne détient jamais vos clés."
+  ], 'fr');
+  pushPage({
+    relFile, lang: 'fr',
+    title: assertTitle(`Indice des frais Bitcoin (UE) ${asOfFr}`),
+    description: assertDescription(`Voies d'achat de Bitcoin dans l'UE classées par frais, situation au ${asOfFr}. La moins chère à 100 € par mois : ${winner.partner}, ${formatPctSk(winner.pct)}.`),
+    h1: 'Indice des frais Bitcoin',
+    answerHtml: esc(answer),
+    breadcrumbs: [frHome(relFile), { name: 'Indice des frais', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'fr/bitcoin-calculateur-dca/'), label: 'Calculateur DCA' },
+      { href: toRoot(relFile, 'fr/bitcoin-fiscalite/france/'), label: 'Fiscalité du Bitcoin en France' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Méthodologie (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'fr/stacking.html'), label: 'Ouvrir le Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Indice des frais Bitcoin de Virtuse',
+        inLanguage: 'fr',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Indice des frais Bitcoin de Virtuse',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Classement par versement mensuel</h2>
+${tables}
+<h2>Automatisé ou manuel ?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Questions fréquentes')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -3647,6 +4051,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/ru/bitcoin-nasledstvo/
 - ${ORIGIN}/ru/bitcoin-indeks-komissiy/
 
+## French
+
+- ${ORIGIN}/fr/bitcoin-fiscalite/
+- ${ORIGIN}/fr/bitcoin-calculateur-dca/
+- ${ORIGIN}/fr/bitcoin-vendre-ou-emprunter/
+- ${ORIGIN}/fr/bitcoin-succession/
+- ${ORIGIN}/fr/bitcoin-indice-frais/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -3667,6 +4079,7 @@ function llmsFull() {
 - HU: ${ORIGIN}/hu/bitcoin-adozas/${slugHu(c.id)}/
 - UK: ${ORIGIN}/uk/bitcoin-podatky/${slugUk(c.id)}/
 - RU: ${ORIGIN}/ru/bitcoin-nalogi/${slugRu(c.id)}/
+- FR: ${ORIGIN}/fr/bitcoin-fiscalite/${slugFr(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -3822,6 +4235,7 @@ function writeAll() {
     huIndexable: generated.filter((p) => p.lang === 'hu' && !p.noindex).length,
     ukIndexable: generated.filter((p) => p.lang === 'uk' && !p.noindex).length,
     ruIndexable: generated.filter((p) => p.lang === 'ru' && !p.noindex).length,
+    frIndexable: generated.filter((p) => p.lang === 'fr' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };

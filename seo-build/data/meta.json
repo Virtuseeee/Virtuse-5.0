@@ -126,6 +126,21 @@
       "nl": "niderlandy",
       "fr": "frantsiya",
       "es": "ispaniya"
+    },
+    "fr": {
+      "cz": "tchequie",
+      "sk": "slovaquie",
+      "pl": "pologne",
+      "at": "autriche",
+      "de": "allemagne",
+      "hu": "hongrie",
+      "si": "slovenie",
+      "hr": "croatie",
+      "ro": "roumanie",
+      "bg": "bulgarie",
+      "nl": "pays-bas",
+      "fr": "france",
+      "es": "espagne"
     }
   },
   "names": {
@@ -233,6 +248,21 @@
       "nl": "Нидерланды",
       "fr": "Франция",
       "es": "Испания"
+    },
+    "fr": {
+      "cz": "Tchéquie",
+      "sk": "Slovaquie",
+      "pl": "Pologne",
+      "at": "Autriche",
+      "de": "Allemagne",
+      "hu": "Hongrie",
+      "si": "Slovénie",
+      "hr": "Croatie",
+      "ro": "Roumanie",
+      "bg": "Bulgarie",
+      "nl": "Pays-Bas",
+      "fr": "France",
+      "es": "Espagne"
     }
   },
   "currency": {
@@ -1245,6 +1275,148 @@
       "id": "accounts",
       "name": "Перечень счетов",
       "text": "Балансы на биржах, займы под залог Биткоина и DCA-боты исчезают вместе с забытыми данными для входа. Ведите в письме с инструкциями перечень платформ и способов получить балансы."
+    }
+  ],
+  "inFr": {
+    "cz": "en Tchéquie",
+    "sk": "en Slovaquie",
+    "pl": "en Pologne",
+    "at": "en Autriche",
+    "de": "en Allemagne",
+    "hu": "en Hongrie",
+    "si": "en Slovénie",
+    "hr": "en Croatie",
+    "ro": "en Roumanie",
+    "bg": "en Bulgarie",
+    "nl": "aux Pays-Bas",
+    "fr": "en France",
+    "es": "en Espagne"
+  },
+  "defFr": {
+    "cz": "la Tchéquie",
+    "sk": "la Slovaquie",
+    "pl": "la Pologne",
+    "at": "l'Autriche",
+    "de": "l'Allemagne",
+    "hu": "la Hongrie",
+    "si": "la Slovénie",
+    "hr": "la Croatie",
+    "ro": "la Roumanie",
+    "bg": "la Bulgarie",
+    "nl": "les Pays-Bas",
+    "fr": "la France",
+    "es": "l'Espagne"
+  },
+  "taxFr": {
+    "cz": {
+      "gainTax": "Impôt sur le revenu de 15 % (23 % au-delà du seuil)",
+      "exemption": "Pas d'impôt après 3 ans de détention (critère de durée)",
+      "filing": "Déclaration annuelle de revenus des personnes physiques",
+      "note": "Chaque cession (y compris les échanges crypto contre crypto) est un fait générateur d'impôt : conservez des relevés complets dès le premier jour."
+    },
+    "sk": {
+      "gainTax": "Impôt sur le revenu de 19 % (25 % au-delà du seuil)",
+      "exemption": "Pas d'impôt après 1 an de détention ; franchise de 500 € par an pour les revenus occasionnels",
+      "filing": "Déclaration annuelle de revenus des personnes physiques",
+      "note": "Un compte bancaire dédié à l'activité crypto simplifie considérablement les déclarations."
+    },
+    "pl": {
+      "gainTax": "Impôt forfaitaire de 19 % sur les plus-values",
+      "exemption": "Aucune exonération liée à la durée de détention",
+      "filing": "PIT-38 annuel",
+      "note": "Les échanges crypto contre crypto sont imposables : calculez la plus- ou moins-value en PLN de chaque cession."
+    },
+    "at": {
+      "gainTax": "KESt de 27,5 % (impôt sur les plus-values)",
+      "exemption": "Plus-values exonérées après 1 an de détention (investisseurs particuliers)",
+      "filing": "Déclaration fiscale annuelle",
+      "note": "Les récompenses de staking et de prêt sont imposées à leur réception, pas à la vente."
+    },
+    "de": {
+      "gainTax": "Impôt sur le revenu jusqu'à 45 % (progressif)",
+      "exemption": "0 % après 1 an de détention (exonération des ventes privées)",
+      "filing": "Déclaration fiscale annuelle",
+      "note": "Les échanges crypto contre crypto sont imposables la première année. Une comptabilité FIFO est essentielle."
+    },
+    "hu": {
+      "gainTax": "Impôt de 15 % sur les plus-values",
+      "exemption": "Aucune exonération liée à la durée de détention",
+      "filing": "Déclaration annuelle d'impôt sur le revenu",
+      "note": "Les coûts d'acquisition documentés sont déductibles : conservez chaque facture."
+    },
+    "si": {
+      "gainTax": "Progressif, jusqu'à environ 50 % sur les plus-values de cession",
+      "exemption": "Aucune exonération générale liée à la durée de détention",
+      "filing": "Déclaration annuelle d'impôt sur le revenu",
+      "note": "Les gains en cryptomonnaies sont traités comme des revenus ; vérifiez les règles en vigueur auprès d'un conseiller local."
+    },
+    "hr": {
+      "gainTax": "12 % sur les gains d'actifs numériques (2025 ; 10 % en 2024)",
+      "exemption": "Aucune exonération liée à la durée de détention",
+      "filing": "Déclaration fiscale annuelle",
+      "note": "Le régime des actifs numériques est récent (depuis 2024) : son interprétation pratique est encore en cours."
+    },
+    "ro": {
+      "gainTax": "Impôt sur le revenu de 10 % sur les gains crypto",
+      "exemption": "Aucune exonération liée à la durée de détention",
+      "filing": "Déclaration annuelle (revenus d'autres sources)",
+      "note": "Avec 10 %, la Roumanie a l'un des taux forfaitaires les plus bas de l'UE : déduisez votre prix de revient."
+    },
+    "bg": {
+      "gainTax": "Impôt forfaitaire de 10 % sur les gains",
+      "exemption": "Aucune exonération liée à la durée de détention",
+      "filing": "Déclaration fiscale annuelle",
+      "note": "Taux forfaitaire bas ; conservez les relevés des plateformes pour un dossier prêt en cas de contrôle."
+    },
+    "nl": {
+      "gainTax": "Impôt sur la fortune Box 3 sur un rendement présumé (environ 36 % d'un rendement fictif)",
+      "exemption": "Abattement (environ 57 000 € par personne, 2025)",
+      "filing": "Déclaration Box 3 annuelle",
+      "note": "Pas d'impôt sur les plus-values à proprement parler : vous êtes imposé sur le rendement présumé de vos avoirs. Le régime Box 3 est en cours de réforme : vérifiez les règles de l'année en cours."
+    },
+    "fr": {
+      "gainTax": "Flat tax de 30 % (PFU : 12,8 % d'impôt sur le revenu + 17,2 % de prélèvements sociaux)",
+      "exemption": "Aucune exonération liée à la durée de détention ; les cessions totales jusqu'à 305 € par an sont exonérées",
+      "filing": "Déclaration annuelle avec le formulaire 2086 ; comptes à l'étranger sur le formulaire 3916-bis",
+      "note": "Les échanges crypto contre crypto ne sont pas imposés : seules les ventes contre des euros, des biens ou des services le sont."
+    },
+    "es": {
+      "gainTax": "Impôt progressif de 19 à 28 % sur les revenus de l'épargne",
+      "exemption": "Aucune exonération liée à la durée de détention",
+      "filing": "Déclaration annuelle IRPF ; Modelo 721 pour les cryptoactifs détenus à l'étranger au-delà de 50 000 €",
+      "note": "Les échanges crypto contre crypto sont des cessions imposables : appliquez la méthode FIFO aux cryptoactifs identiques."
+    }
+  },
+  "inheritanceFr": [
+    {
+      "id": "letter",
+      "name": "Lettre d'instructions",
+      "text": "Vos héritiers ont besoin d'instructions écrites : ce qui existe, où cela se trouve et qui contacter, sans phrase de récupération dans le document. Conservez la lettre avec votre testament ou chez votre avocat."
+    },
+    {
+      "id": "separation",
+      "name": "Séparation géographique des clés",
+      "text": "Ne gardez jamais toutes les sauvegardes au même endroit. Un incendie, un vol ou une inondation ne doivent pas pouvoir détruire l'accès. Placez une clé ou une sauvegarde dans un second lieu, par exemple un coffre bancaire."
+    },
+    {
+      "id": "heir-aware",
+      "name": "Héritier informé",
+      "text": "Au moins une personne de confiance doit savoir que vos bitcoins existent et par où commencer. Des bitcoins découverts des années trop tard, ou jamais : c'est l'échec de succession le plus fréquent."
+    },
+    {
+      "id": "multisig",
+      "name": "Multisig 2 sur 3",
+      "text": "Une seule phrase de récupération est un point de défaillance unique, pour vous comme pour vos héritiers. Avec un multisig 2 sur 3, vous détenez deux clés et un partenaire ou un avocat détient la troisième."
+    },
+    {
+      "id": "tested",
+      "name": "Test de récupération",
+      "text": "Une procédure de succession non testée est une hypothèse, pas un plan. Faites une fois par an un exercice complet de récupération sur un petit UTXO, en présence de votre héritier."
+    },
+    {
+      "id": "accounts",
+      "name": "Inventaire des comptes",
+      "text": "Les soldes sur les plateformes, les prêts garantis par Bitcoin et les bots DCA disparaissent avec des identifiants oubliés. Tenez dans votre lettre d'instructions un inventaire des plateformes et de la façon de réclamer les soldes."
     }
   ]
 }
