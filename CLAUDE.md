@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-30, fifth round) — French grammar pass over the 18 French SEO pages (`75db490`, gh-pages `d2cf119`, staging 18/18 md5-verified; **production pending** — user runs the sftp batch below)
+
+- User: "skontroluj francúzske SEO stránky na gramatiku". Language only, same facts; same fixes as the Spanish round.
+- Lowercase after a colon in descriptions, answers and FAQ answers (`lcFr()`; keeps KESt, PIT-38, IRPF). Answer label "Modalités :" (was "Déclaration : Déclaration…"); "Aucune exonération …" stands alone.
+- `meta.taxFr`: DE "Taux de 0 % …", HR "Taux de 12 % …", SI "Impôt progressif jusqu'à …", FR "Prélèvement forfaitaire unique de 30 % …" (was "Flat tax") and "exonération si le total annuel des cessions ne dépasse pas 305 €", RO "… appliqué aux gains crypto", NL "Impôt sur la fortune (Box 3) d'environ 36 % sur un rendement présumé" + "Déclaration annuelle Box 3", PL "Déclaration annuelle PIT-38". `inheritanceFr` accounts wording.
+- FAQs: hub "Il couvre 13 pays …", "Où vérifier aussi la succession ?"; DCA "Quel plan type est utilisé ?"; sell vs borrow semicolon list, "Il reste toutefois …", "descend jusqu'au seuil"; fee index "Quelle voie est la moins chère …", no "(miner fees)", citation without "la source « Source : … »".
+- **Gotcha:** French strings in single-quoted JS literals need `\'` for apostrophes (the first run failed with a SyntaxError).
+
+```bash
+cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_fr_grammar.sftp
+```
+
 ## Session status (2026-09-30, fourth round) — Spanish grammar pass over the 18 Spanish SEO pages (`dcf8b8a`, gh-pages `539abd6`, staging 18/18 md5-verified; **live on production** — the user's first run did not land (0/18, server kept the 09:49 files), the re-run did: 18/18 md5-verified on virtuse.com; live DE description lowercase after the colon, no "miner fees" on the fee index)
 
 - User: "skontroluj španielske SEO stránky na gramatiku". Language only, same facts.
