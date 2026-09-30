@@ -167,7 +167,7 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu' || h.lang === 'uk');
+  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu' || h.lang === 'uk' || h.lang === 'ru');
   const langSwitch = switchLangs.length >= 2
     ? `<nav class="lang" aria-label="Language">${switchLangs
       .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
@@ -378,5 +378,26 @@ export const CHROME = {
     conciergeHref: 'uk/concierge.html',
     privacyHref: 'uk/privacy-policy.html',
     termsHref: 'uk/terms-and-conditions.html'
+  },
+  ru: {
+    navTax: 'Налоговые гиды',
+    navFees: 'Индекс комиссий',
+    navDca: 'DCA',
+    navConcierge: 'Concierge',
+    relatedHeading: 'Связанные гиды',
+    asOfPrefix: 'Данные по состоянию на',
+    disclaimerTax: 'Справочный обзор 2026 – не является налоговой консультацией.',
+    disclaimerKeys: 'Virtuse никогда не хранит ваши ключи.',
+    disclaimerKyc: 'KYC и регистрация проходят на регулируемой платформе соответствующего партнёра. Virtuse — некастодиальный хаб и не хранит средства или данные клиентов этих платформ.',
+    privacy: 'Политика конфиденциальности',
+    terms: 'Условия использования',
+    locale: 'ru_RU',
+    homeHref: 'ru/index.html',
+    taxHref: 'ru/bitcoin-nalogi/',
+    feesHref: 'ru/bitcoin-indeks-komissiy/',
+    dcaHref: 'ru/bitcoin-kalkulyator-dca/',
+    conciergeHref: 'ru/concierge.html',
+    privacyHref: 'ru/privacy-policy.html',
+    termsHref: 'ru/terms-and-conditions.html'
   }
 };

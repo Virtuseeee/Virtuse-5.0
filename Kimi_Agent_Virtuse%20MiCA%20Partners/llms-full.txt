@@ -16,6 +16,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/czechy/
 - HU: https://virtuse.com/hu/bitcoin-adozas/csehorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/chekhiia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/chekhiya/
 
 ### 🇸🇰 Slovakia (`sk`)
 - Gain tax: 19% income tax (25% above threshold)
@@ -29,6 +30,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/slowacja/
 - HU: https://virtuse.com/hu/bitcoin-adozas/szlovakia/
 - UK: https://virtuse.com/uk/bitcoin-podatky/slovachchyna/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/slovakiya/
 
 ### 🇵🇱 Poland (`pl`)
 - Gain tax: 19% flat capital gains tax
@@ -42,6 +44,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/polska/
 - HU: https://virtuse.com/hu/bitcoin-adozas/lengyelorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/polshcha/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/polsha/
 
 ### 🇦🇹 Austria (`at`)
 - Gain tax: 27.5% KESt (capital gains tax)
@@ -55,6 +58,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/austria/
 - HU: https://virtuse.com/hu/bitcoin-adozas/ausztria/
 - UK: https://virtuse.com/uk/bitcoin-podatky/avstriia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/avstriya/
 
 ### 🇩🇪 Germany (`de`)
 - Gain tax: Up to 45% income tax (progressive)
@@ -68,6 +72,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/niemcy/
 - HU: https://virtuse.com/hu/bitcoin-adozas/nemetorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/nimechchyna/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/germaniya/
 
 ### 🇭🇺 Hungary (`hu`)
 - Gain tax: 15% capital gains tax
@@ -81,6 +86,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/wegry/
 - HU: https://virtuse.com/hu/bitcoin-adozas/magyarorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/uhorshchyna/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/vengriya/
 
 ### 🇸🇮 Slovenia (`si`)
 - Gain tax: Progressive, up to about 50% on disposal gains
@@ -94,6 +100,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/slowenia/
 - HU: https://virtuse.com/hu/bitcoin-adozas/szlovenia/
 - UK: https://virtuse.com/uk/bitcoin-podatky/sloveniia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/sloveniya/
 
 ### 🇭🇷 Croatia (`hr`)
 - Gain tax: 12% on digital-asset gains (2025; 10% in 2024)
@@ -107,6 +114,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/chorwacja/
 - HU: https://virtuse.com/hu/bitcoin-adozas/horvatorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/khorvatiia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/khorvatiya/
 
 ### 🇷🇴 Romania (`ro`)
 - Gain tax: 10% income tax on crypto gains
@@ -120,6 +128,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/rumunia/
 - HU: https://virtuse.com/hu/bitcoin-adozas/romania/
 - UK: https://virtuse.com/uk/bitcoin-podatky/rumuniia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/rumyniya/
 
 ### 🇧🇬 Bulgaria (`bg`)
 - Gain tax: 10% flat tax on gains
@@ -133,6 +142,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/bulgaria/
 - HU: https://virtuse.com/hu/bitcoin-adozas/bulgaria/
 - UK: https://virtuse.com/uk/bitcoin-podatky/bolhariia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/bolgariya/
 
 ### 🇳🇱 Netherlands (`nl`)
 - Gain tax: Box 3 wealth tax on a deemed return (about 36% of the assumed yield)
@@ -146,6 +156,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/holandia/
 - HU: https://virtuse.com/hu/bitcoin-adozas/hollandia/
 - UK: https://virtuse.com/uk/bitcoin-podatky/niderlandy/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/niderlandy/
 
 ### 🇫🇷 France (`fr`)
 - Gain tax: 30% flat tax (PFU: 12.8% income tax + 17.2% social charges)
@@ -159,6 +170,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/francja/
 - HU: https://virtuse.com/hu/bitcoin-adozas/franciaorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/frantsiia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/frantsiya/
 
 ### 🇪🇸 Spain (`es`)
 - Gain tax: 19–28% progressive tax on savings income
@@ -172,6 +184,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - PL: https://virtuse.com/pl/bitcoin-podatki/hiszpania/
 - HU: https://virtuse.com/hu/bitcoin-adozas/spanyolorszag/
 - UK: https://virtuse.com/uk/bitcoin-podatky/ispaniia/
+- RU: https://virtuse.com/ru/bitcoin-nalogi/ispaniya/
 
 
 ## Fee schedule (live stacking module)

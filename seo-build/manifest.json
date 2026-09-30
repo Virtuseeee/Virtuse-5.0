@@ -11,8 +11,9 @@
     "plIndexable": 18,
     "huIndexable": 18,
     "ukIndexable": 18,
+    "ruIndexable": 18,
     "noindex": 1,
-    "totalHtml": 143
+    "totalHtml": 161
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -158,6 +159,24 @@
     "uk/bitcoin-prodaty-chy-pozychyty/index.html",
     "uk/bitcoin-spadshchyna/index.html",
     "uk/bitcoin-indeks-komisii/index.html",
+    "ru/bitcoin-nalogi/index.html",
+    "ru/bitcoin-nalogi/chekhiya/index.html",
+    "ru/bitcoin-nalogi/slovakiya/index.html",
+    "ru/bitcoin-nalogi/polsha/index.html",
+    "ru/bitcoin-nalogi/avstriya/index.html",
+    "ru/bitcoin-nalogi/germaniya/index.html",
+    "ru/bitcoin-nalogi/vengriya/index.html",
+    "ru/bitcoin-nalogi/sloveniya/index.html",
+    "ru/bitcoin-nalogi/khorvatiya/index.html",
+    "ru/bitcoin-nalogi/rumyniya/index.html",
+    "ru/bitcoin-nalogi/bolgariya/index.html",
+    "ru/bitcoin-nalogi/niderlandy/index.html",
+    "ru/bitcoin-nalogi/frantsiya/index.html",
+    "ru/bitcoin-nalogi/ispaniya/index.html",
+    "ru/bitcoin-kalkulyator-dca/index.html",
+    "ru/bitcoin-prodat-ili-zanyat/index.html",
+    "ru/bitcoin-nasledstvo/index.html",
+    "ru/bitcoin-indeks-komissiy/index.html",
     "llms.txt",
     "llms-full.txt"
   ]

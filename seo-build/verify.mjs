@@ -60,6 +60,12 @@ const DISCLAIMERS_UK = [
   'KYC'
 ];
 
+const DISCLAIMERS_RU = [
+  'Справочный обзор 2026',
+  'Virtuse никогда не хранит ваши ключи',
+  'KYC'
+];
+
 function stripTags(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
 }
@@ -77,6 +83,7 @@ let cs = 0;
 let pl = 0;
 let hu = 0;
 let ukc = 0;
+let ruc = 0;
 
 for (const rel of htmlFiles) {
   const fp = path.join(SITE, rel);
@@ -96,6 +103,7 @@ for (const rel of htmlFiles) {
   if (lang === 'pl') pl += 1;
   if (lang === 'hu') hu += 1;
   if (lang === 'uk') ukc += 1;
+  if (lang === 'ru') ruc += 1;
 
   const title = attr(html, /<title>([^<]+)<\/title>/);
   if (title.length > 60) fail(`${rel} title ${title.length} > 60: ${title}`);
@@ -115,7 +123,7 @@ for (const rel of htmlFiles) {
   const h2 = (html.match(/<h2>/g) || []).length;
   if (h2 < 2) fail(`${rel} has ${h2} H2s (need ≥2)`);
 
-  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : lang === 'pl' ? '<h2>Najczęstsze pytania</h2>' : lang === 'hu' ? '<h2>Gyakori kérdések</h2>' : lang === 'uk' ? '<h2>Часті запитання</h2>' : '<h2>FAQ</h2>';
+  const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : lang === 'pl' ? '<h2>Najczęstsze pytania</h2>' : lang === 'hu' ? '<h2>Gyakori kérdések</h2>' : lang === 'uk' ? '<h2>Часті запитання</h2>' : lang === 'ru' ? '<h2>Частые вопросы</h2>' : '<h2>FAQ</h2>';
   const faqH3 = (html.split(faqHeading)[1] || '');
   const faqCount = (html.split(faqHeading)[1] || '').match(/<h3>/g)?.length || 0;
   if (faqCount < 3 || faqCount > 5) fail(`${rel} FAQ count ${faqCount} (need 3–5)`);
@@ -132,7 +140,7 @@ for (const rel of htmlFiles) {
   const robots = attr(html, /name="robots" content="([^"]+)"/);
   const noindex = robots.includes('noindex');
 
-  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : DISCLAIMERS_EN;
+  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : DISCLAIMERS_EN;
   for (const d of dis) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
   }
@@ -155,6 +163,7 @@ for (const rel of htmlFiles) {
   if (lang === 'pl' && !hreflang.includes('pl')) fail(`${rel} PL page missing hreflang pl`);
   if (lang === 'hu' && !hreflang.includes('hu')) fail(`${rel} HU page missing hreflang hu`);
   if (lang === 'uk' && !hreflang.includes('uk')) fail(`${rel} UK page missing hreflang uk`);
+  if (lang === 'ru' && !hreflang.includes('ru')) fail(`${rel} RU page missing hreflang ru`);
 
   // Answer must be real HTML in the body, not only injected by JS.
   if (!html.includes('<div class="answer"><p>')) fail(`${rel} missing static answer block`);
@@ -269,6 +278,11 @@ for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], [
   if (!html.includes('uk/bitcoin-podatky/chekhiia')) fail(`${name} missing UK hreflang`);
 }
 if (!chekhiiaUk.includes('bitcoin-tax/czechia') || !chekhiiaUk.includes('hu/bitcoin-adozas/csehorszag')) fail('UK chekhiia missing EN/HU hreflang');
+const chekhiyaRu = fs.readFileSync(path.join(SITE, 'ru/bitcoin-nalogi/chekhiya/index.html'), 'utf8');
+for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], ['SK cesko', cesko], ['CS cesko', ceskoCs], ['PL czechy', czechyPl], ['HU csehorszag', csehHu], ['UK chekhiia', chekhiiaUk]]) {
+  if (!html.includes('ru/bitcoin-nalogi/chekhiya')) fail(`${name} missing RU hreflang`);
+}
+if (!chekhiyaRu.includes('bitcoin-tax/czechia') || !chekhiyaRu.includes('uk/bitcoin-podatky/chekhiia')) fail('RU chekhiya missing EN/UK hreflang');
 
 // Determinism: second generate should not change bytes of one page
 const before = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
@@ -288,6 +302,7 @@ console.log(JSON.stringify({
   plHtml: pl,
   huHtml: hu,
   ukHtml: ukc,
+  ruHtml: ruc,
   counts: JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8')).counts,
   warnings,
   errors: errors.length

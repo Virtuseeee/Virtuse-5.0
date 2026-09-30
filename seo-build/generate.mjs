@@ -25,6 +25,7 @@ import {
   methodPl,
   methodHu,
   methodUk,
+  methodRu,
   toRoot,
   canonicalPath,
   assertTitle,
@@ -65,6 +66,7 @@ const asOfCs = formatAsOf(AS_OF, 'cs');
 const asOfPl = formatAsOf(AS_OF, 'pl');
 const asOfHu = formatAsOf(AS_OF, 'hu');
 const asOfUk = formatAsOf(AS_OF, 'uk');
+const asOfRu = formatAsOf(AS_OF, 'ru');
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -139,6 +141,19 @@ function nameUk(id) {
 /** Ukrainian locative (у Словаччині, в Австрії) and accusative (Словаччину). */
 function inUk(id) { return meta.inUk[id]; }
 function accUk(id) { return meta.accUk[id]; }
+function slugRu(id) {
+  const s = meta.slugs.ru[id];
+  if (!s) throw new Error(`Missing RU slug for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+function nameRu(id) {
+  const s = meta.names.ru[id];
+  if (!s) throw new Error(`Missing RU name for country id "${id}". Add it in seo-build/data/meta.json.`);
+  return s;
+}
+/** Russian prepositional (в Словакии, во Франции) and accusative (Словакию). */
+function inRu(id) { return meta.inRu[id]; }
+function accRu(id) { return meta.accRu[id]; }
 /** Hungarian inessive: -ban/-ben, but Magyarországon. */
 function inHu(id) { return meta.inHu[id]; }
 /** Czech accusative: only Francie changes (Francii); the -o names stay. */
@@ -216,12 +231,27 @@ const UK_ALT = {
 for (const c of COUNTRIES) {
   UK_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `uk/bitcoin-podatky/${meta.slugs.uk[c.id]}/index.html`;
 }
+/** EN page -> its Russian counterpart. */
+const RU_ALT = {
+  'bitcoin-tax/index.html': 'ru/bitcoin-nalogi/index.html',
+  'bitcoin-dca-calculator/index.html': 'ru/bitcoin-kalkulyator-dca/index.html',
+  'sell-vs-borrow-bitcoin/index.html': 'ru/bitcoin-prodat-ili-zanyat/index.html',
+  'bitcoin-inheritance/index.html': 'ru/bitcoin-nasledstvo/index.html',
+  'bitcoin-fee-index/index.html': 'ru/bitcoin-indeks-komissiy/index.html'
+};
+for (const c of COUNTRIES) {
+  RU_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `ru/bitcoin-nalogi/${meta.slugs.ru[c.id]}/index.html`;
+}
 
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
     { lang: 'x-default', href: abs(enPath), path: canonicalPath(enPath) }
   ];
+  const ruPath = RU_ALT[enPath];
+  if (ruPath) {
+    tags.splice(1, 0, { lang: 'ru', href: abs(ruPath), path: canonicalPath(ruPath) });
+  }
   const ukPath = UK_ALT[enPath];
   if (ukPath) {
     tags.splice(1, 0, { lang: 'uk', href: abs(ukPath), path: canonicalPath(ukPath) });
@@ -282,6 +312,11 @@ function finalizeAnswer(parts, lang) {
       `Angaben aus den Live-Modulen von Virtuse, Stand ${asOfDe}.`,
       'Virtuse verwahrt niemals Ihre Schlüssel.',
       'Bitte lokal prüfen; keine Steuerberatung.'
+    ]
+    : lang === 'ru' ? [
+      `Данные из модулей Virtuse по состоянию на ${asOfRu}.`,
+      'Virtuse никогда не хранит ваши ключи.',
+      'Проверьте местные правила; это не налоговая консультация.'
     ]
     : lang === 'uk' ? [
       `Дані з модулів Virtuse станом на ${asOfUk}.`,
@@ -1069,6 +1104,16 @@ function feeIndexBody(relFile, lang) {
   const contribs = DEFAULT_CONTRIBUTIONS;
   const tables = contribs.map((amt) => {
     const ranked = rankRoutes(FEE_ROWS, amt);
+    if (lang === 'ru') {
+      return `<h3>${esc(formatEurSk(amt))} в месяц</h3>` +
+        tableHtml(['Место', 'Партнёр', 'Метод', 'Комиссия', 'Годовые комиссии'], ranked.map((r, i) => [
+          esc(String(i + 1)),
+          esc(r.partner),
+          esc(methodRu(r.method)),
+          esc(formatPctPl(r.pct) + (r.monthly ? ` + ${formatEurSk(r.monthly)} в месяц` : '')),
+          esc(formatEurSk(r.annualDrag))
+        ]));
+    }
     if (lang === 'uk') {
       return `<h3>${esc(formatEurSk(amt))} на місяць</h3>` +
         tableHtml(['Місце', 'Партнер', 'Метод', 'Комісія', 'Річні комісії'], ranked.map((r, i) => [
@@ -1134,7 +1179,15 @@ function feeIndexBody(relFile, lang) {
       );
   }).join('');
   let beText;
-  if (lang === 'uk') {
+  if (lang === 'ru') {
+    if (be.status === 'always') {
+      beText = `По опубликованным комиссиям самый дешёвый автоматический путь (${be.auto.partner}) начиная с 1 € в месяц стоит в год столько же или меньше, чем самый дешёвый ручной путь (${be.manual.partner}).`;
+    } else if (be.status === 'found') {
+      beText = `Точка безубыточности: от ${formatEurSk(be.monthlyEur)} в месяц ${be.auto.partner} (автоматически) не дороже, чем ${be.manual.partner} (вручную).`;
+    } else {
+      beText = 'До 20 000 € в месяц самый дешёвый автоматический путь не превосходит самый дешёвый ручной.';
+    }
+  } else if (lang === 'uk') {
     if (be.status === 'always') {
       beText = `За опублікованими комісіями найдешевший автоматичний шлях (${be.auto.partner}) від 1 € на місяць коштує на рік стільки ж або менше, ніж найдешевший ручний шлях (${be.manual.partner}).`;
     } else if (be.status === 'found') {
@@ -3174,6 +3227,332 @@ ${faqHtml(faqs, 'Часті запитання')}
   });
 }
 
+// ---------- Russian (ru/) ----------
+function ruHome(relFile) { return { name: 'Главная', href: toRoot(relFile, 'ru/index.html'), abs: abs('ru/index.html') }; }
+
+// RU tax hub
+{
+  const relFile = 'ru/bitcoin-nalogi/index.html';
+  const enFile = 'bitcoin-tax/index.html';
+  const deFile = 'de/bitcoin-steuern/index.html';
+  const rows = COUNTRIES.map((c) => [
+    `${c.flag} <a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(c.id)}/`))}">${esc(nameRu(c.id))}</a>`,
+    esc(meta.taxRu[c.id].gainTax),
+    esc(meta.taxRu[c.id].exemption)
+  ]);
+  const faqs = [
+    { q: 'Какие страны охватывает этот обзор?', a: `${N} стран ЕС: ${COUNTRIES.map((c) => nameRu(c.id)).join(', ')}. По состоянию на ${asOfRu}, данные из модуля Virtuse Tax.` },
+    { q: 'Это налоговая консультация?', a: 'Нет. Справочный обзор 2026, не является налоговой консультацией. Правила текущего года уточните у местного консультанта.' },
+    { q: 'Сообщает ли Virtuse о моих активах в налоговую службу?', a: 'Нет. Virtuse никогда не хранит ваши ключи и историю транзакций. KYC проводят сами партнёры.' },
+    { q: 'Где, кроме налогов, проверить и наследование?', a: `В модуле Tax & Inheritance Agent, с теми же ${N} странами и проверкой готовности к мультиподписи.` }
+  ];
+  const answer = finalizeAnswer([
+    `Этот обзор сравнивает налогообложение Биткоина в ${N} странах ЕС по состоянию на ${asOfRu}.`,
+    'Ставки, освобождения и примечания по декларированию взяты из модуля Virtuse Tax.',
+    'Германия и Австрия освобождают прибыль после 1 года владения, Чехия применяет 3-летний тест времени, а Нидерланды вместо налога на прибыль облагают условный доход (Box 3).',
+    'Справочный обзор 2026, не является налоговой консультацией.'
+  ], 'ru');
+  pushPage({
+    relFile, lang: 'ru',
+    title: assertTitle(`Налоги на Биткоин в ${N} странах ЕС (2026)`),
+    description: assertDescription(`Ставки налога на Биткоин, освобождения за срок владения и декларирование в ${N} странах ЕС по состоянию на ${asOfRu}. Справочный обзор.`),
+    h1: `Налоги на Биткоин в ${N} странах ЕС`,
+    answerHtml: esc(answer),
+    breadcrumbs: [ruHome(relFile), { name: 'Налоги на Биткоин', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' },
+      { href: toRoot(relFile, 'ru/bitcoin-nasledstvo/'), label: 'Биткоин и наследство' },
+      { href: toRoot(relFile, 'ru/bitcoin-indeks-komissiy/'), label: 'Индекс комиссий за Биткоин' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'ru/' + TAX_AGENT), label: 'Открыть Tax & Inheritance Agent →' },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>Каждая страница страны показывает налог на прибыль, возможное освобождение за срок владения и порядок декларирования по состоянию на ${esc(asOfRu)}. Модуль Tax & Inheritance Agent использует те же данные и добавляет оценку готовности к наследованию.</p>
+<h2>Сравнение стран</h2>
+${tableHtml(['Страна', 'Налог на прибыль', 'Освобождение'], rows)}
+${faqHtml(faqs, 'Частые вопросы')}
+`
+  });
+}
+
+// RU country tax pages
+for (const c of COUNTRIES) {
+  const relFile = `ru/bitcoin-nalogi/${slugRu(c.id)}/index.html`;
+  const enRel = `bitcoin-tax/${slugEn(c.id)}/index.html`;
+  const deRel = `de/bitcoin-steuern/${slugDe(c.id)}/index.html`;
+  const t = meta.taxRu[c.id];
+  const inN = inRu(c.id);
+  const nbs = neighborsOf(c.id);
+  const faqs = [
+    { q: `Какой налог на Биткоин ${inN}?`, a: `По состоянию на ${asOfRu}: ${t.gainTax}. Справочный обзор 2026, не является налоговой консультацией.` },
+    { q: `Есть ли ${inN} освобождение за срок владения?`, a: `${t.exemption}. Перед подачей декларации уточните правила текущего года у местного налогового консультанта.` },
+    { q: `Как ${inN} декларируют прибыль от Биткоина?`, a: `${t.filing}. ${t.note}` },
+    { q: 'Хранит ли Virtuse мой Биткоин или подаёт за меня декларацию?', a: `Нет. Virtuse никогда не хранит ваши ключи. KYC и регистрация проходят у партнёра. Tax Agent сравнит обзор ${N} стран; декларацию подготовит квалифицированный налоговый консультант.` }
+  ];
+  const answer = finalizeAnswer([
+    `Налоги на Биткоин ${inN} по состоянию на ${asOfRu}: ${t.gainTax}.`,
+    `Освобождение: ${t.exemption}.`,
+    `Декларирование: ${t.filing}.`,
+    t.note,
+    'Справочный обзор 2026, не является налоговой консультацией.'
+  ], 'ru');
+  pushPage({
+    relFile, lang: 'ru',
+    title: assertTitle(`Налоги на Биткоин ${inN} (${asOfRu})`),
+    description: assertDescription(descFit(`Налоги на Биткоин ${inN} (${asOfRu}): ${t.gainTax}.`, 'Не является налоговой консультацией.')),
+    h1: `Налоги на Биткоин ${inN}`,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      ruHome(relFile),
+      { name: 'Налоги на Биткоин', href: toRoot(relFile, 'ru/bitcoin-nalogi/'), abs: abs('ru/bitcoin-nalogi/index.html') },
+      { name: nameRu(c.id), abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(enRel, deRel),
+    related: [
+      { href: toRoot(relFile, 'ru/bitcoin-prodat-ili-zanyat/'), label: 'Биткоин: продать или занять' },
+      { href: toRoot(relFile, 'ru/bitcoin-nasledstvo/'), label: 'Биткоин и наследство' },
+      { href: toRoot(relFile, nbs[0] ? `ru/bitcoin-nalogi/${slugRu(nbs[0].id)}/` : 'ru/bitcoin-nalogi/'), label: nbs[0] ? `Налоги на Биткоин ${inRu(nbs[0].id)}` : 'Все страны' }
+    ],
+    moduleCta: { href: toRoot(relFile, `ru/${TAX_AGENT}?country=${c.id}`), label: `Проверить ${accRu(c.id)} в Tax Agent →` },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(c.flag)} Данные по состоянию на ${esc(asOfRu)}, взяты из модуля Virtuse Tax.</p>
+<h2>Ставки и декларирование</h2>
+${tableHtml(['Поле', 'По состоянию на ' + asOfRu], [
+  ['Налог на прибыль', esc(t.gainTax)],
+  ['Освобождение', esc(t.exemption)],
+  ['Декларирование', esc(t.filing)],
+  ['Примечание', esc(t.note)]
+])}
+<h2>Когда обычно возникает налог?</h2>
+<p>${esc(t.note)} Покупка Биткоина в этом обзоре не считается отчуждением; перед оплатой, обменом, дарением или займом монет проверьте местные правила.</p>
+<h2>Соседние страны</h2>
+<ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(n.id)}/`))}">Налоги на Биткоин ${esc(inRu(n.id))}</a></li>`).join('')}</ul>
+${faqHtml(faqs, 'Частые вопросы')}
+`
+  });
+}
+
+// RU DCA calculator
+{
+  const relFile = 'ru/bitcoin-kalkulyator-dca/index.html';
+  const enFile = 'bitcoin-dca-calculator/index.html';
+  const deFile = 'de/bitcoin-dca-rechner/index.html';
+  const win = cheapest(FEE_ROWS, 100);
+  const faqs = [
+    { q: 'Прогнозирует ли этот калькулятор цену Биткоина?', a: 'Нет. Он сравнивает только комиссии партнёров по опубликованной тарифной таблице. Доходность от цены Биткоина не моделируется.' },
+    { q: `Какой стандартный план по состоянию на ${asOfRu}?`, a: 'Единоразово 500 €, затем 100 € в месяц в течение 12 месяцев. Порядок по комиссиям первого года.' },
+    { q: 'Какой путь в этом плане самый дешёвый?', a: `${win.partner} (${methodRu(win.method)}) с переменной комиссией ${formatPctPl(win.pct)} по формуле Stacking Strategist.` },
+    { q: 'Это инвестиционная консультация?', a: 'Нет. Только для образовательных целей. KYC проходит у партнёра. Virtuse никогда не хранит ваши ключи.' }
+  ];
+  const answer = finalizeAnswer([
+    `По состоянию на ${asOfRu} в DCA-примере только с комиссиями (500 €, затем 100 € в месяц в течение 12 месяцев) первое место занимает ${win.partner}.`,
+    `Переменная комиссия: ${formatPctPl(win.pct)}. Это не прогноз цены.`,
+    'Комиссии взяты из тарифной таблицы модуля Stacking Strategist и рассчитаны по той же формуле. Справочный обзор 2026.'
+  ], 'ru');
+  const ranked = rankRoutes(FEE_ROWS, 100);
+  pushPage({
+    relFile, lang: 'ru',
+    title: assertTitle('DCA-калькулятор для Биткоина (комиссии ЕС 2026)'),
+    description: assertDescription(`DCA-калькулятор для Биткоина только с учётом комиссий, по состоянию на ${asOfRu}. Стандарт 500 € + 100 € в месяц, самый дешёвый путь: ${win.partner}.`),
+    h1: 'DCA-калькулятор для Биткоина',
+    answerHtml: esc(answer),
+    breadcrumbs: [ruHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'ru/bitcoin-indeks-komissiy/'), label: 'Индекс комиссий за Биткоин' },
+      { href: toRoot(relFile, 'ru/bitcoin-prodat-ili-zanyat/'), label: 'Биткоин: продать или занять' },
+      { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'ru/stacking.html'), label: 'Открыть Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'DCA-калькулятор для Биткоина',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isAccessibleForFree: true
+      }
+    ],
+    bodyHtml: `
+<p>Стандартный пример: 500 €, затем 100 € в месяц × 12. Та же формула, что и в модуле Stacking Strategist.</p>
+<h2>Рейтинг при 100 € в месяц</h2>
+${tableHtml(['Место', 'Партнёр', 'Метод', 'Переменная комиссия', 'Годовые комиссии'], ranked.map((r, i) => [
+  esc(String(i + 1)), esc(r.partner), esc(methodRu(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
+]))}
+${faqHtml(faqs, 'Частые вопросы')}
+`
+  });
+}
+
+// RU sell vs borrow
+{
+  const relFile = 'ru/bitcoin-prodat-ili-zanyat/index.html';
+  const enFile = 'sell-vs-borrow-bitcoin/index.html';
+  const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
+  const faqs = [
+    { q: `Возникает ли налог при продаже в этих ${N} странах?`, a: `Обычно да, при продаже или обмене. Освобождения различаются: Германия 0% после 1 года владения, Чехия 3-летний тест времени, Польша без освобождения. По состоянию на ${asOfRu}. Не является налоговой консультацией.` },
+    { q: 'Является ли заём таким же налоговым событием, как продажа?', a: 'В этом обзоре нет. Проценты, риск ликвидации и KYC у партнёра всё равно остаются. Конкретные цифры рассчитает Loan & Liquidity Copilot.' },
+    { q: 'Что такое риск ликвидации?', a: 'Если стоимость залога упадёт до порога партнёра, партнёр может продать залог и погасить им заём. Virtuse никогда не хранит ваши ключи или залог.' },
+    { q: 'Где рассчитать конкретную сумму?', a: 'В модуле Loan & Liquidity Copilot. Эта страница объясняет только разницу между налогом и риском на основе опубликованных налоговых ставок.' }
+  ];
+  const answer = finalizeAnswer([
+    `По состоянию на ${asOfRu} продажа Биткоина может повлечь налог (например, в Германии до 45% в течение 1 года владения, в Румынии фиксированные 10%).`,
+    'Заём под залог Биткоина сохраняет рыночную позицию, но добавляет проценты и риск ликвидации у партнёра.',
+    'Справочный обзор 2026, не является налоговой или кредитной консультацией. Virtuse никогда не хранит ваши ключи.'
+  ], 'ru');
+  pushPage({
+    relFile, lang: 'ru',
+    title: assertTitle('Биткоин: продать или занять? (2026)'),
+    description: assertDescription(`Продать Биткоин и заплатить налог или взять заём под его залог и остаться в рынке? Ставки ${N} стран ЕС по состоянию на ${asOfRu}.`),
+    h1: 'Продать Биткоин или взять заём под его залог?',
+    answerHtml: esc(answer),
+    breadcrumbs: [ruHome(relFile), { name: 'Продать или занять', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' },
+      { href: toRoot(relFile, 'ru/bitcoin-kalkulyator-dca/'), label: 'DCA-калькулятор' },
+      { href: toRoot(relFile, 'ru/bitcoin-nasledstvo/'), label: 'Биткоин и наследство' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'ru/loan.html'), label: 'Сравнить в Loan Copilot →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'WebApplication',
+        name: 'Биткоин: продать или занять',
+        url: abs(relFile),
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'All',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
+      }
+    ],
+    bodyHtml: `
+<h2>Налог при продаже</h2>
+${tableHtml(['Страна', 'Налог на прибыль', 'Освобождение'], COUNTRIES.map((c) => [
+  `<a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(c.id)}/`))}">${esc(nameRu(c.id))}</a>`,
+  esc(meta.taxRu[c.id].gainTax),
+  esc(meta.taxRu[c.id].exemption)
+]))}
+<h2>Риск при займе</h2>
+<p>Займы под залог Биткоина предоставляют регулируемые партнёры, а не Virtuse. Вы сохраняете ценовую экспозицию, платите проценты, а залог могут ликвидировать. Virtuse никогда не хранит залог.</p>
+${faqHtml(faqs, 'Частые вопросы')}
+`
+  });
+}
+
+// RU inheritance
+{
+  const relFile = 'ru/bitcoin-nasledstvo/index.html';
+  const enFile = 'bitcoin-inheritance/index.html';
+  const deFile = 'de/bitcoin-erbrecht/index.html';
+  const faqs = [
+    { q: 'Может ли в письме с инструкциями быть сид-фраза?', a: 'Нет. Письмо содержит перечень, места и контакты, но никогда не сид-фразы. Храните его вместе с завещанием или у юриста.' },
+    { q: 'Почему мультиподпись 2 из 3?', a: 'Одна сид-фраза — это единая точка отказа, для вас и для ваших наследников.' },
+    { q: 'Хранит ли Virtuse ключи для наследников?', a: 'Нет. Virtuse никогда не хранит ваши ключи.' },
+    { q: 'Это юридическая консультация?', a: `Нет. Это чек-лист для образовательных целей из модуля Tax по состоянию на ${asOfRu}.` }
+  ];
+  const answer = finalizeAnswer([
+    `По состоянию на ${asOfRu} чек-лист модуля Tax состоит из шести пунктов: письмо с инструкциями, географическое разделение ключей, осведомлённый наследник, мультиподпись 2 из 3, проверка восстановления и задокументированные счета.`,
+    'Одна сид-фраза — это единая точка отказа. Virtuse никогда не хранит ваши ключи.',
+    'Не является юридической консультацией.'
+  ], 'ru');
+  const howto = {
+    '@type': 'HowTo',
+    name: 'Подготовка Биткоина к наследованию',
+    inLanguage: 'ru',
+    step: meta.inheritanceRu.map((it, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: it.name,
+      text: it.text
+    }))
+  };
+  pushPage({
+    relFile, lang: 'ru',
+    title: assertTitle('Биткоин и наследство: чек-лист (2026)'),
+    description: assertDescription(`Чек-лист из шести пунктов для наследования Биткоина по состоянию на ${asOfRu}: письмо с инструкциями, разделение ключей, мультиподпись 2 из 3.`),
+    h1: 'Наследование Биткоина: чек-лист',
+    answerHtml: esc(answer),
+    breadcrumbs: [ruHome(relFile), { name: 'Наследство', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' },
+      { href: toRoot(relFile, 'ru/bitcoin-nalogi/'), label: `Налоги в ${N} странах ЕС` },
+      { href: toRoot(relFile, 'ru/bitcoin-prodat-ili-zanyat/'), label: 'Биткоин: продать или занять' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'ru/' + TAX_AGENT), label: 'Оценить чек-лист в Tax Agent →' },
+    schemas: [faqLd(faqs), howto],
+    bodyHtml: `
+<p>Содержание соответствует чек-листу модуля Tax. Не является юридической консультацией.</p>
+<h2>Инструкция: шесть шагов</h2>
+<ol>${meta.inheritanceRu.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
+${faqHtml(faqs, 'Частые вопросы')}
+`
+  });
+}
+
+// RU fee index
+{
+  const relFile = 'ru/bitcoin-indeks-komissiy/index.html';
+  const enFile = 'bitcoin-fee-index/index.html';
+  const deFile = 'de/bitcoin-gebuehrenindex/index.html';
+  const { tables, beText, winner } = feeIndexBody(relFile, 'ru');
+  const faqs = [
+    { q: 'Что измеряет индекс комиссий?', a: `Годовые комиссии путей покупки по состоянию на ${asOfRu} по формуле модуля Stacking Strategist.` },
+    { q: 'Кто самый дешёвый при 100 € в месяц?', a: `${winner.partner}: ${formatPctPl(winner.pct)}, годовые комиссии ${formatEurSk(winner.annualDrag)}.` },
+    { q: 'Учтены ли спреды?', a: 'Нет. Только процентная комиссия и возможная ежемесячная подписка по тарифной таблице. Курсовые разницы и комиссии сети Биткоин (miner fees) не учтены.' },
+    { q: 'Можно ли цитировать таблицу?', a: `Да, с указанием источника «Источник: индекс комиссий за Биткоин от Virtuse, по состоянию на ${asOfRu}» и ссылкой.` }
+  ];
+  const answer = finalizeAnswer([
+    `Индекс комиссий за Биткоин от Virtuse по состоянию на ${asOfRu} ранжирует пути покупки в ЕС по годовым комиссиям.`,
+    `При 100 € в месяц лидирует ${winner.partner} (${methodRu(winner.method)}) с комиссией ${formatPctPl(winner.pct)}, ${formatEurSk(winner.annualDrag)} в год.`,
+    beText,
+    'Это не предложение. Virtuse никогда не хранит ваши ключи.'
+  ], 'ru');
+  pushPage({
+    relFile, lang: 'ru',
+    title: assertTitle('Индекс комиссий за Биткоин (ЕС) Q3 2026'),
+    description: assertDescription(`Пути покупки в ЕС по комиссиям по состоянию на ${asOfRu}. Самый дешёвый путь при 100 € в месяц: ${winner.partner}, ${formatPctPl(winner.pct)}.`),
+    h1: 'Индекс комиссий за Биткоин',
+    answerHtml: esc(answer),
+    breadcrumbs: [ruHome(relFile), { name: 'Индекс комиссий', abs: abs(relFile) }],
+    hreflang: hrefLangPair(enFile, deFile),
+    related: [
+      { href: toRoot(relFile, 'ru/bitcoin-kalkulyator-dca/'), label: 'DCA-калькулятор' },
+      { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' },
+      { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Методология (EN)' }
+    ],
+    moduleCta: { href: toRoot(relFile, 'ru/stacking.html'), label: 'Открыть Stacking Strategist →' },
+    schemas: [
+      faqLd(faqs),
+      {
+        '@type': 'Article',
+        headline: 'Индекс комиссий за Биткоин от Virtuse',
+        inLanguage: 'ru',
+        datePublished: LASTMOD,
+        author: { '@id': `${ORIGIN}/#org` }
+      },
+      {
+        '@type': 'Dataset',
+        name: 'Индекс комиссий за Биткоин от Virtuse',
+        temporalCoverage: '2026-Q3',
+        url: abs(relFile)
+      }
+    ],
+    bodyHtml: `
+<h2>Рейтинг по ежемесячному взносу</h2>
+${tables}
+<h2>Автоматически или вручную?</h2>
+<p>${esc(beText)}</p>
+${faqHtml(faqs, 'Частые вопросы')}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
@@ -3260,6 +3639,14 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - ${ORIGIN}/uk/bitcoin-spadshchyna/
 - ${ORIGIN}/uk/bitcoin-indeks-komisii/
 
+## Russian
+
+- ${ORIGIN}/ru/bitcoin-nalogi/
+- ${ORIGIN}/ru/bitcoin-kalkulyator-dca/
+- ${ORIGIN}/ru/bitcoin-prodat-ili-zanyat/
+- ${ORIGIN}/ru/bitcoin-nasledstvo/
+- ${ORIGIN}/ru/bitcoin-indeks-komissiy/
+
 ## Optional
 
 - Full rates: ${ORIGIN}/llms-full.txt
@@ -3279,6 +3666,7 @@ function llmsFull() {
 - PL: ${ORIGIN}/pl/bitcoin-podatki/${slugPl(c.id)}/
 - HU: ${ORIGIN}/hu/bitcoin-adozas/${slugHu(c.id)}/
 - UK: ${ORIGIN}/uk/bitcoin-podatky/${slugUk(c.id)}/
+- RU: ${ORIGIN}/ru/bitcoin-nalogi/${slugRu(c.id)}/
 `).join('\n');
   const fees = FEE_ROWS.map((r) => `- ${r.partner} | ${r.method} | pct=${r.pct} | fixed=${r.fixed || 0} | monthly=${r.monthly || 0} | ${r.note}`).join('\n');
   const inh = inheritance.items.map((it) => `- ${it.question} (${it.points} pts): ${it.action}`).join('\n');
@@ -3433,6 +3821,7 @@ function writeAll() {
     plIndexable: generated.filter((p) => p.lang === 'pl' && !p.noindex).length,
     huIndexable: generated.filter((p) => p.lang === 'hu' && !p.noindex).length,
     ukIndexable: generated.filter((p) => p.lang === 'uk' && !p.noindex).length,
+    ruIndexable: generated.filter((p) => p.lang === 'ru' && !p.noindex).length,
     noindex: generated.filter((p) => p.noindex).length,
     totalHtml: generated.length
   };

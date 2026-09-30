@@ -174,6 +174,17 @@ export function methodUk(method) {
   return METHOD_UK[method] || method;
 }
 
+const METHOD_RU = {
+  'Auto-Invest plan': 'План Auto-Invest',
+  'Spot trading': 'Спотовая торговля',
+  'Pro trading': 'Pro-торговля',
+  'Automated DCA bot': 'Автоматический DCA-бот'
+};
+/** Russian label for a fee-schedule method; numbers use formatPctPl ("0,1%") and formatEurSk ("1 000 €"). */
+export function methodRu(method) {
+  return METHOD_RU[method] || method;
+}
+
 const METHOD_DE = {
   'Auto-Invest plan': 'Auto-Invest-Plan',
   'Spot trading': 'Spot-Handel',
