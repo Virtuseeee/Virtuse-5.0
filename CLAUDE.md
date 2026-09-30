@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-30, fifth round) — French grammar pass over the 18 French SEO pages (`75db490`, gh-pages `d2cf119`, staging 18/18 md5-verified; **production pending** — user runs the sftp batch below)
+## Session status (2026-09-30, fifth round) — French grammar pass over the 18 French SEO pages (`75db490`, gh-pages `d2cf119`, staging 18/18 md5-verified; **live on production** — user ran the sftp batch 2026-09-30, 18/18 md5-verified on virtuse.com; live France description "prélèvement forfaitaire unique", no "miner fees" on the fee index)
 
 - User: "skontroluj francúzske SEO stránky na gramatiku". Language only, same facts; same fixes as the Spanish round.
 - Lowercase after a colon in descriptions, answers and FAQ answers (`lcFr()`; keeps KESt, PIT-38, IRPF). Answer label "Modalités :" (was "Déclaration : Déclaration…"); "Aucune exonération …" stands alone.
