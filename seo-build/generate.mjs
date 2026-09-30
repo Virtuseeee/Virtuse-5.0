@@ -3689,6 +3689,8 @@ ${faqHtml(faqs, 'Частые вопросы')}
 
 // ---------- French (fr/) ----------
 // Strings are written with plain spaces; pushPage applies nbspFr() to every French text field.
+// French: lowercase a data value's first letter after a colon (keeps KESt, PIT-38, IRPF).
+function lcFr(s) { return /^[A-ZÀÂÉÈÊÎÔÛÇ][a-zàâçéèêëîïôûùüÿœ]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s; }
 function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/index.html'), abs: abs('fr/index.html') }; }
 
 // FR tax hub
@@ -3702,15 +3704,15 @@ function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/i
     esc(meta.taxFr[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Quels pays couvre cet aperçu ?', a: `${N} pays de l'UE : ${COUNTRIES.map((c) => nameFr(c.id)).join(', ')}. Situation au ${asOfFr}, données du module Virtuse Tax.` },
+    { q: 'Quels pays couvre cet aperçu ?', a: `Il couvre ${N} pays de l'UE : ${COUNTRIES.map((c) => nameFr(c.id)).join(', ')}. Situation au ${asOfFr}, données du module Virtuse Tax.` },
     { q: 'Est-ce un conseil fiscal ?', a: "Non. Aperçu indicatif 2026, pas un conseil fiscal. Vérifiez les règles de l'année en cours auprès d'un conseiller local." },
     { q: "Virtuse déclare-t-il mes avoirs à l'administration fiscale ?", a: 'Non. Virtuse ne détient jamais vos clés ni votre historique de transactions. Les partenaires effectuent eux-mêmes le KYC.' },
-    { q: 'Où vérifier la succession en plus de la fiscalité ?', a: `Dans le module Tax & Inheritance Agent, avec les mêmes ${N} pays et une vérification de préparation au multisig.` }
+    { q: 'Où vérifier aussi la succession ?', a: `Dans le module Tax & Inheritance Agent, avec les mêmes ${N} pays et une vérification de préparation au multisig.` }
   ];
   const answer = finalizeAnswer([
     `Cet aperçu compare la fiscalité du Bitcoin dans ${N} pays de l'UE, situation au ${asOfFr}.`,
     'Les taux, exonérations et notes de déclaration proviennent du module Virtuse Tax.',
-    "L'Allemagne et l'Autriche exonèrent après 1 an de détention, la Tchéquie après 3 ans ; les Pays-Bas imposent un rendement présumé (Box 3).",
+    "L'Allemagne et l'Autriche exonèrent les plus-values après 1 an de détention, la Tchéquie après 3 ans ; les Pays-Bas imposent un rendement présumé (Box 3).",
     'Aperçu indicatif 2026, pas un conseil fiscal.'
   ], 'fr');
   pushPage({
@@ -3746,22 +3748,22 @@ for (const c of COUNTRIES) {
   const inN = inFr(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${t.gainTax}. Aperçu indicatif 2026, pas un conseil fiscal.` },
+    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${lcFr(t.gainTax)}. Aperçu indicatif 2026, pas un conseil fiscal.` },
     { q: `Existe-t-il ${inN} une exonération liée à la durée de détention ?`, a: `${t.exemption}. Avant de déclarer, vérifiez les règles de l'année en cours auprès d'un conseiller fiscal local.` },
     { q: `Comment déclarer ses plus-values en Bitcoin ${inN} ?`, a: `${t.filing}. ${t.note}` },
-    { q: 'Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent compare l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
+    { q: 'Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent présente l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
   ];
   const answer = finalizeAnswer([
-    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${t.gainTax}.`,
-    `Exonération : ${t.exemption}.`,
-    `Déclaration : ${t.filing}.`,
+    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(t.gainTax)}.`,
+    /^Aucune exonération/.test(t.exemption) ? `${t.exemption}.` : `Exonération : ${lcFr(t.exemption)}.`,
+    `Modalités : ${lcFr(t.filing)}.`,
     t.note,
     'Aperçu indicatif 2026, pas un conseil fiscal.'
   ], 'fr');
   pushPage({
     relFile, lang: 'fr',
     title: assertTitle(`Fiscalité du Bitcoin ${inN} (${asOfFr})`),
-    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${t.gainTax}.`, 'Pas un conseil fiscal.')),
+    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(t.gainTax)}.`, 'Pas un conseil fiscal.')),
     h1: `Fiscalité du Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3803,7 +3805,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Ce calculateur prévoit-il le cours du Bitcoin ?', a: "Non. Il compare uniquement les frais des partenaires selon le barème publié. Le rendement lié au cours du Bitcoin n'est pas modélisé." },
-    { q: `Quel est le plan type au ${asOfFr} ?`, a: 'Un versement initial de 500 €, puis 100 € par mois pendant 12 mois. Classement selon les frais de la première année.' },
+    { q: 'Quel plan type est utilisé ?', a: `Un versement initial de 500 €, puis 100 € par mois pendant 12 mois, situation au ${asOfFr}. Le classement repose sur les frais de la première année.` },
     { q: 'Quelle voie est la moins chère pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist.` },
     { q: 'Est-ce un conseil en investissement ?', a: 'Non. À des fins éducatives uniquement. Le KYC se fait chez le partenaire. Virtuse ne détient jamais vos clés.' }
   ];
@@ -3856,9 +3858,9 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `La vente déclenche-t-elle un impôt dans ces ${N} pays ?`, a: `En général oui, lors d'une vente ou d'un échange. Les exonérations varient : Allemagne 0 % après 1 an de détention, Tchéquie critère de durée de 3 ans, Pologne sans exonération. Situation au ${asOfFr}. Pas un conseil fiscal.` },
-    { q: "Un prêt est-il le même fait générateur qu'une vente ?", a: 'Pas dans cet aperçu. Les intérêts, le risque de liquidation et le KYC chez le partenaire restent toutefois. Le Loan & Liquidity Copilot calcule les chiffres concrets.' },
-    { q: "Qu'est-ce que le risque de liquidation ?", a: 'Si la valeur de la garantie tombe au seuil du partenaire, celui-ci peut vendre la garantie pour rembourser le prêt. Virtuse ne détient jamais vos clés ni la garantie.' },
+    { q: `La vente déclenche-t-elle un impôt dans ces ${N} pays ?`, a: `En général oui, lors d'une vente ou d'un échange. Les exonérations varient : Allemagne, 0 % après 1 an de détention ; Tchéquie, critère de durée de 3 ans ; Pologne, aucune exonération. Situation au ${asOfFr}. Pas un conseil fiscal.` },
+    { q: "Un prêt est-il le même fait générateur qu'une vente ?", a: 'Pas dans cet aperçu. Il reste toutefois les intérêts, le risque de liquidation et le KYC chez le partenaire. Le Loan & Liquidity Copilot calcule les chiffres concrets.' },
+    { q: "Qu'est-ce que le risque de liquidation ?", a: 'Si la valeur de la garantie descend jusqu\'au seuil du partenaire, celui-ci peut vendre la garantie pour rembourser le prêt. Virtuse ne détient jamais vos clés ni la garantie.' },
     { q: 'Où calculer un montant précis ?', a: "Dans le module Loan & Liquidity Copilot. Cette page explique seulement l'arbitrage entre impôt et risque à partir des taux publiés." }
   ];
   const answer = finalizeAnswer([
@@ -3964,9 +3966,9 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const { tables, beText, winner } = feeIndexBody(relFile, 'fr');
   const faqs = [
     { q: "Que mesure l'indice des frais ?", a: `Les frais annuels des voies d'achat au ${asOfFr}, selon la formule du module Stacking Strategist.` },
-    { q: 'Qui est le moins cher à 100 € par mois ?', a: `${winner.partner} : ${formatPctSk(winner.pct)}, frais annuels de ${formatEurSk(winner.annualDrag)}.` },
-    { q: 'Les spreads sont-ils inclus ?', a: 'Non. Seulement les frais en pourcentage et un éventuel abonnement mensuel selon le barème. Les écarts de change et les frais de réseau Bitcoin (miner fees) ne sont pas inclus.' },
-    { q: 'Puis-je citer le tableau ?', a: `Oui, en indiquant la source « Source : indice des frais Bitcoin de Virtuse, situation au ${asOfFr} » et un lien.` }
+    { q: 'Quelle voie est la moins chère à 100 € par mois ?', a: `${winner.partner}, avec ${formatPctSk(winner.pct)} de frais, soit ${formatEurSk(winner.annualDrag)} par an.` },
+    { q: 'Les spreads sont-ils inclus ?', a: 'Non. Seulement les frais en pourcentage et un éventuel abonnement mensuel selon le barème. Les écarts de change et les frais de réseau Bitcoin ne sont pas inclus.' },
+    { q: 'Puis-je citer le tableau ?', a: `Oui, en citant « Source : indice des frais Bitcoin de Virtuse, situation au ${asOfFr} » avec un lien.` }
   ];
   const answer = finalizeAnswer([
     `L'indice des frais Bitcoin de Virtuse classe les voies d'achat dans l'UE selon leurs frais annuels, situation au ${asOfFr}.`,

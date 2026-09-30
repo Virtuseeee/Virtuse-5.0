@@ -1353,7 +1353,7 @@
     "pl": {
       "gainTax": "Impôt forfaitaire de 19 % sur les plus-values",
       "exemption": "Aucune exonération liée à la durée de détention",
-      "filing": "PIT-38 annuel",
+      "filing": "Déclaration annuelle PIT-38",
       "note": "Les échanges crypto contre crypto sont imposables : calculez la plus- ou moins-value en PLN de chaque cession."
     },
     "at": {
@@ -1364,7 +1364,7 @@
     },
     "de": {
       "gainTax": "Impôt sur le revenu jusqu'à 45 % (progressif)",
-      "exemption": "0 % après 1 an de détention (exonération des ventes privées)",
+      "exemption": "Taux de 0 % après 1 an de détention (exonération des ventes privées)",
       "filing": "Déclaration fiscale annuelle",
       "note": "Les échanges crypto contre crypto sont imposables la première année. Une comptabilité FIFO est essentielle."
     },
@@ -1375,19 +1375,19 @@
       "note": "Les coûts d'acquisition documentés sont déductibles : conservez chaque facture."
     },
     "si": {
-      "gainTax": "Progressif, jusqu'à environ 50 % sur les plus-values de cession",
+      "gainTax": "Impôt progressif jusqu'à environ 50 % sur les plus-values de cession",
       "exemption": "Aucune exonération générale liée à la durée de détention",
       "filing": "Déclaration annuelle d'impôt sur le revenu",
       "note": "Les gains en cryptomonnaies sont traités comme des revenus ; vérifiez les règles en vigueur auprès d'un conseiller local."
     },
     "hr": {
-      "gainTax": "12 % sur les gains d'actifs numériques (2025 ; 10 % en 2024)",
+      "gainTax": "Taux de 12 % sur les gains d'actifs numériques (2025 ; 10 % en 2024)",
       "exemption": "Aucune exonération liée à la durée de détention",
       "filing": "Déclaration fiscale annuelle",
       "note": "Le régime des actifs numériques est récent (depuis 2024) : son interprétation pratique est encore en cours."
     },
     "ro": {
-      "gainTax": "Impôt sur le revenu de 10 % sur les gains crypto",
+      "gainTax": "Impôt sur le revenu de 10 % appliqué aux gains crypto",
       "exemption": "Aucune exonération liée à la durée de détention",
       "filing": "Déclaration annuelle (revenus d'autres sources)",
       "note": "Avec 10 %, la Roumanie a l'un des taux forfaitaires les plus bas de l'UE : déduisez votre prix de revient."
@@ -1399,14 +1399,14 @@
       "note": "Taux forfaitaire bas ; conservez les relevés des plateformes pour un dossier prêt en cas de contrôle."
     },
     "nl": {
-      "gainTax": "Impôt sur la fortune Box 3 sur un rendement présumé (environ 36 % d'un rendement fictif)",
+      "gainTax": "Impôt sur la fortune (Box 3) d'environ 36 % sur un rendement présumé",
       "exemption": "Abattement (environ 57 000 € par personne, 2025)",
-      "filing": "Déclaration Box 3 annuelle",
+      "filing": "Déclaration annuelle Box 3",
       "note": "Pas d'impôt sur les plus-values à proprement parler : vous êtes imposé sur le rendement présumé de vos avoirs. Le régime Box 3 est en cours de réforme : vérifiez les règles de l'année en cours."
     },
     "fr": {
-      "gainTax": "Flat tax de 30 % (PFU : 12,8 % d'impôt sur le revenu + 17,2 % de prélèvements sociaux)",
-      "exemption": "Aucune exonération liée à la durée de détention ; les cessions totales jusqu'à 305 € par an sont exonérées",
+      "gainTax": "Prélèvement forfaitaire unique de 30 % (12,8 % d'impôt sur le revenu + 17,2 % de prélèvements sociaux)",
+      "exemption": "Aucune exonération liée à la durée de détention ; exonération si le total annuel des cessions ne dépasse pas 305 €",
       "filing": "Déclaration annuelle avec le formulaire 2086 ; comptes à l'étranger sur le formulaire 3916-bis",
       "note": "Les échanges crypto contre crypto ne sont pas imposés : seules les ventes contre des euros, des biens ou des services le sont."
     },
@@ -1446,7 +1446,7 @@
     {
       "id": "accounts",
       "name": "Inventaire des comptes",
-      "text": "Les soldes sur les plateformes, les prêts garantis par Bitcoin et les bots DCA disparaissent avec des identifiants oubliés. Tenez dans votre lettre d'instructions un inventaire des plateformes et de la façon de réclamer les soldes."
+      "text": "Les soldes sur les plateformes, les prêts garantis par Bitcoin et les bots DCA sont perdus quand les identifiants sont oubliés. Tenez dans votre lettre d'instructions un inventaire des plateformes et de la façon de réclamer chaque solde."
     }
   ],
   "inEs": {
