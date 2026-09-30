@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-30, fourth round) — Spanish grammar pass over the 18 Spanish SEO pages (`dcf8b8a`, gh-pages `539abd6`, staging 18/18 md5-verified; **production pending** — user runs the sftp batch below)
+## Session status (2026-09-30, fourth round) — Spanish grammar pass over the 18 Spanish SEO pages (`dcf8b8a`, gh-pages `539abd6`, staging 18/18 md5-verified; **live on production** — the user's first run did not land (0/18, server kept the 09:49 files), the re-run did: 18/18 md5-verified on virtuse.com; live DE description lowercase after the colon, no "miner fees" on the fee index)
 
 - User: "skontroluj španielske SEO stránky na gramatiku". Language only, same facts.
 - Lowercase after a colon in descriptions, answers and FAQ answers (`lcEs()` in generate.mjs; keeps KESt, PIT-38, IRPF). Answer label "Presentación:" (was "Declaración: Declaración…"); "Sin exención …" stands alone instead of "Exención: Sin exención …".
