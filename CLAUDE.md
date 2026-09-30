@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-30, third round) — Spanish SEO pages (`5f06bc3`, gh-pages `13f02ef`, staging 187/187 md5-verified; **production pending** — user runs the sftp batch below). With this, all 10 languages have their own SEO page set
+
+- User: "priprav SEO stránky aj v španielčine". Same pattern as the fr/ru/uk rounds: `meta.json` `slugs.es`/`names.es`/`inEs`/`defEs`/`taxEs`/`inheritanceEs`, `ES_ALT` in `generate.mjs`, `CHROME.es` in `lib/html.mjs`, `methodEs`/`formatEurEs`/`nbspEs` in `lib/util.mjs`, verify checks for es. `frTypo` became the generic `typoSpec(spec, fn)` (NBSP pass for fr and es).
+- Pages: `es/bitcoin-impuestos/` (hub + 13 countries: republica-checa, eslovaquia, polonia, austria, alemania, hungria, eslovenia, croacia, rumania, bulgaria, paises-bajos, francia, espana), `es/bitcoin-calculadora-dca/`, `es/bitcoin-vender-o-pedir-prestado/`, `es/bitcoin-herencia/`, `es/bitcoin-indice-comisiones/` (+ `metodologia/`). Usted register, "T3 2026", NBSP before % and €, "20.000 €" (4-digit amounts ungrouped, CLDR). NL gain-tax string shortened so the description fits 155 chars.
+- 30 links on es/index, tax, buy-bitcoin, lending repointed to the Spanish pages; hreflang es added on every counterpart in the other 9 languages; llms.txt Spanish section; sitemap. 375 px sweep: no overflow. generate + verify: 0 errors.
+- **Tax-advisor fixes now go into 11 places:** `lib/tax.ts` (+ dictionaries), `seo-data.json`, and `meta.json` `taxDe`/`taxSk`/`taxCs`/`taxPl`/`taxHu`/`taxUk`/`taxRu`/`taxFr`/`taxEs`.
+
+```bash
+cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_es_upload.sftp
+```
+
 ## Session status (2026-09-30, second round) — Stories build failures fixed (`d314d66`, `04570e0`); EN blog post published via WordPress (2026-09-28)
 
 **Stories build (`.github/workflows/stories-build.yml`) failed 8 runs in a
