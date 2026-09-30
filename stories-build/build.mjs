@@ -79,15 +79,22 @@ function loadDeskInference() {
   return window.VB_inferDesk;
 }
 
+// blog.virtuse.com answers these queries in 8-18 s and sometimes errors or
+// stalls under load, so a request gets 90 s and up to 5 tries with a longer
+// wait each time (10, 20, 40, 80 s) before the build gives up.
 async function getJSON(url) {
   for (let attempt = 1; ; attempt++) {
     try {
-      const r = await fetch(url, { headers: { 'User-Agent': 'virtuse-stories-build' } });
+      const r = await fetch(url, {
+        headers: { 'User-Agent': 'virtuse-stories-build' },
+        signal: AbortSignal.timeout(90000),
+      });
       if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + url);
       return { data: await r.json(), totalPages: parseInt(r.headers.get('x-wp-totalpages') || '1', 10) };
     } catch (e) {
-      if (attempt >= 3) throw e;
-      await new Promise((ok) => setTimeout(ok, 1500 * attempt));
+      if (attempt >= 5) throw e;
+      console.warn(`attempt ${attempt} failed (${e.message}${e.cause ? ' / ' + (e.cause.code || e.cause) : ''}), retrying: ${url}`);
+      await new Promise((ok) => setTimeout(ok, 10000 * 2 ** (attempt - 1)));
     }
   }
 }
