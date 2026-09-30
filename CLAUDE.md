@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-09-30) — Russian SEO pages, 18 pages (`2e96f8b`, gh-pages `0b104e9`, staging 151/151 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_ru_upload.sftp` (18 `-mkdir` + 151 `put`), then md5-verify the 151 files)
+## Session status (2026-09-30) — Russian SEO pages, 18 pages (`2e96f8b`, gh-pages `0b104e9`, staging 151/151 md5-verified; **live on production** — user ran the sftp batch 2026-09-30 (18 `-mkdir` + 151 `put`), 151/151 md5-verified on virtuse.com; ru pages 200 with Russian titles, ru/tax.html links the Russian guides, EN germany carries hreflang en/de/sk/cs/pl/hu/uk/ru/x-default)
 
 - Same pattern as the other sets. New: `ru/bitcoin-nalogi/` (hub + chekhiya,
   slovakiya, polsha, avstriya, germaniya, vengriya, sloveniya, khorvatiya,
