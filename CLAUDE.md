@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-30) — Russian SEO pages, 18 pages (`2e96f8b`, gh-pages `0b104e9`, staging 151/151 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_ru_upload.sftp` (18 `-mkdir` + 151 `put`), then md5-verify the 151 files)
+
+- Same pattern as the other sets. New: `ru/bitcoin-nalogi/` (hub + chekhiya,
+  slovakiya, polsha, avstriya, germaniya, vengriya, sloveniya, khorvatiya,
+  rumyniya, bolgariya, niderlandy, frantsiya, ispaniya),
+  `ru/bitcoin-kalkulyator-dca/`, `ru/bitcoin-prodat-ili-zanyat/`,
+  `ru/bitcoin-nasledstvo/`, `ru/bitcoin-indeks-komissiy/` (next to the
+  existing `ru/stories/`).
+- Data: `meta.json` `slugs.ru`, `names.ru`, `inRu` (в Словакии, во
+  Франции), `accRu`, `taxRu` (module's Russian dictionary, same facts;
+  cz/sk exemptions reworded), `inheritanceRu`. "0%" via `formatPctPl`,
+  `formatEurSk`, `methodRu`. FAQ heading "Частые вопросы". Related links
+  favour Germany.
+- `RU_ALT`: every other SEO language carries hreflang ru and RU in the
+  switch (now 8 languages); sitemap, llms, verify (8-way reciprocity on
+  Czechia) updated. ru/index, tax, buy-bitcoin, lending: 30 links
+  repointed to `/ru/...`. 375px: no overflow.
+- **Tax advisor fixes now go to EIGHT places:** `lib/tax.ts` + dictionaries,
+  `seo-data.json` + `meta.taxDe`, `taxSk`, `taxCs`, `taxPl`, `taxHu`,
+  `taxUk`, `taxRu`. Remaining site languages without SEO pages: fr, es.
+
 ## Session status (2026-09-29, nineteenth round) — Ukrainian SEO pages, 18 pages (`703f880`, gh-pages `2004eb6`, staging 133/133 md5-verified; **live on production** — user ran the sftp batch 2026-09-29 (18 `-mkdir` + 133 `put`), 133/133 md5-verified on virtuse.com; uk pages 200 with Ukrainian titles, uk/tax.html links the Ukrainian guides, EN poland carries hreflang en/de/sk/cs/pl/hu/uk/x-default)
 
 - Same pattern as sk/cs/pl/hu. New: `uk/bitcoin-podatky/` (hub + chekhiia,
