@@ -99,6 +99,14 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - https://virtuse.com/ru/bitcoin-nasledstvo/
 - https://virtuse.com/ru/bitcoin-indeks-komissiy/
 
+## French
+
+- https://virtuse.com/fr/bitcoin-fiscalite/
+- https://virtuse.com/fr/bitcoin-calculateur-dca/
+- https://virtuse.com/fr/bitcoin-vendre-ou-emprunter/
+- https://virtuse.com/fr/bitcoin-succession/
+- https://virtuse.com/fr/bitcoin-indice-frais/
+
 ## Optional
 
 - Full rates: https://virtuse.com/llms-full.txt
