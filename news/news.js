@@ -85,6 +85,27 @@
     });
     return 'Updated today · ' + hhmm;
   }
+  /* Edition line follows the Pulse date (Europe/Paris). Static HTML date stays if the Pulse is missing or older. */
+  function applyEditionDate(iso) {
+    var t = document.querySelector('.edition time');
+    var d = new Date(iso);
+    if (!t || !iso || isNaN(d.getTime()) || typeof Intl === 'undefined') return;
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Europe/Paris', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+      }).formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+      var n = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit'
+      }).formatToParts(d).forEach(function (x) { n[x.type] = x.value; });
+      var ymd = n.year + '-' + n.month + '-' + n.day;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd) || !p.weekday || !p.month || !p.day || !p.year) return;
+      if (ymd <= (t.getAttribute('datetime') || '')) return;
+      t.setAttribute('datetime', ymd);
+      t.textContent = p.weekday + ', ' + p.month + ' ' + p.day + ', ' + p.year;
+    } catch (e) {}
+  }
   function applyFearGreed(fg) {
     var fine = $('numbersFine');
     if (!fine || !fg) return;
@@ -153,6 +174,7 @@
   function applyPulseMeta(data) {
     var updated = data && data.updated;
     setText('pulseUpdated', formatPulseUpdated(updated));
+    applyEditionDate(updated);
     var moved = (data && (data.what_moved || data.moved)) || '';
     var movedEl = $('pulseMoved');
     if (movedEl) {
