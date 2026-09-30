@@ -46,7 +46,7 @@ after the next Stories build + the manual production upload.
 - Excerpt: the user wanted none; `article.html` never shows the excerpt,
   the blog card then uses WP's auto-excerpt (the article's first lines).
 
-## Session status (2026-09-30, second round) — French SEO pages, 18 pages (`459c818`, gh-pages `00e21a9`, staging 169/169 md5-verified; production pending — user runs `sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_fr_upload.sftp` (18 `-mkdir` + 169 `put`), then md5-verify the 169 files)
+## Session status (2026-09-30, second round) — French SEO pages, 18 pages (`459c818`, gh-pages `00e21a9`, staging 169/169 md5-verified; **live on production** — user ran the sftp batch 2026-09-30 (18 `-mkdir` + 169 `put`), 169/169 md5-verified on virtuse.com; fr pages 200 with French titles, fr/tax.html links the French guides, EN france carries hreflang for all 9 languages + x-default)
 
 - Same pattern as the other sets. New: `fr/bitcoin-fiscalite/` (hub +
   tchequie, slovaquie, pologne, autriche, allemagne, hongrie, slovenie,
