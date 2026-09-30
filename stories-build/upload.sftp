@@ -238,6 +238,7 @@
 -mkdir public_html/sk/stories/blockfi-je-dalsou-obetou-ftx-kolapsu
 -mkdir public_html/sk/stories/buffet-otocil-strategiu-o-180-stupnov-vie-nieco-viac
 -mkdir public_html/sk/stories/byt-investicnym-skeptikom-sa-neoplati
+-mkdir public_html/sk/stories/camusova-otazka-ak-je-vsetko-relativne-preco-pokracovat
 -mkdir public_html/sk/stories/cantillonov-efekt-mechanizmus-ktory-dorucuje-cerstve-peniaze-bohatym-a-inflaciu-vsetkym-ostatnym
 -mkdir public_html/sk/stories/ccc-podcast-s-rastislavom-vasilisinom-virtuse-ceo-cbdcs-budu-najvacsim-globalnym-porusenim-ludskych-prav
 -mkdir public_html/sk/stories/co-ak-financna-sloboda-neznamena-mat-viac-veci-ale-lepsie-ulozeny-cas
@@ -414,6 +415,7 @@ put sk/stories/blackrock-investuje-staty-hromadia-bitcoin-no-slovak-ma-jasno-je-
 put sk/stories/blockfi-je-dalsou-obetou-ftx-kolapsu/index.html public_html/sk/stories/blockfi-je-dalsou-obetou-ftx-kolapsu/index.html
 put sk/stories/buffet-otocil-strategiu-o-180-stupnov-vie-nieco-viac/index.html public_html/sk/stories/buffet-otocil-strategiu-o-180-stupnov-vie-nieco-viac/index.html
 put sk/stories/byt-investicnym-skeptikom-sa-neoplati/index.html public_html/sk/stories/byt-investicnym-skeptikom-sa-neoplati/index.html
+put sk/stories/camusova-otazka-ak-je-vsetko-relativne-preco-pokracovat/index.html public_html/sk/stories/camusova-otazka-ak-je-vsetko-relativne-preco-pokracovat/index.html
 put sk/stories/cantillonov-efekt-mechanizmus-ktory-dorucuje-cerstve-peniaze-bohatym-a-inflaciu-vsetkym-ostatnym/index.html public_html/sk/stories/cantillonov-efekt-mechanizmus-ktory-dorucuje-cerstve-peniaze-bohatym-a-inflaciu-vsetkym-ostatnym/index.html
 put sk/stories/ccc-podcast-s-rastislavom-vasilisinom-virtuse-ceo-cbdcs-budu-najvacsim-globalnym-porusenim-ludskych-prav/index.html public_html/sk/stories/ccc-podcast-s-rastislavom-vasilisinom-virtuse-ceo-cbdcs-budu-najvacsim-globalnym-porusenim-ludskych-prav/index.html
 put sk/stories/co-ak-financna-sloboda-neznamena-mat-viac-veci-ale-lepsie-ulozeny-cas/index.html public_html/sk/stories/co-ak-financna-sloboda-neznamena-mat-viac-veci-ale-lepsie-ulozeny-cas/index.html
