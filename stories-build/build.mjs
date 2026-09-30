@@ -271,4 +271,13 @@ async function main() {
   console.log(`total ${written.length} pages; removed ${removed.length}`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((e) => {
+  console.error(e);
+  // GitHub only shows job logs to signed-in users; annotations are public, so
+  // surface the actual cause (HTTP status, timeout, DNS…) as one.
+  if (process.env.GITHUB_ACTIONS) {
+    const cause = e && e.cause ? ' | cause: ' + (e.cause.code || '') + ' ' + (e.cause.message || e.cause) : '';
+    console.log('::error title=Stories build::' + String(e && e.message || e).replace(/\r?\n/g, ' ') + cause);
+  }
+  process.exit(1);
+});
