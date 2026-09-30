@@ -2,6 +2,50 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-09-30, second round) — Stories build failures fixed (`d314d66`, `04570e0`); EN blog post published via WordPress (2026-09-28)
+
+**Stories build (`.github/workflows/stories-build.yml`) failed 8 runs in a
+row** (2026-09-29 → 30, schedule + push), sending "All jobs have failed"
+emails. The failing step was "Build story pages from WordPress"; the same
+build passed locally with no changes. Cause (most likely, logs need a
+GitHub sign-in so the exact error was never seen): blog.virtuse.com's REST
+API answers each query in 8–18 s and sometimes errors under load, and
+`getJSON()` gave up after 3 tries 1.5/3 s apart.
+- `d314d66`: on failure the build prints `::error title=Stories build::<message> | cause: <code>`,
+  so the cause is readable via the public API without signing in:
+  `curl -s https://api.github.com/repos/Virtuseeee/Virtuse-5.0/check-runs/<job id>/annotations`
+  (job id from `.../actions/runs/<run id>/jobs`).
+- `04570e0`: each WP request gets `AbortSignal.timeout(90000)` and 5 tries
+  with 10/20/40/80 s backoff, each retry logged. Both triggered runs passed.
+- If failure emails come back, read the annotation first; don't guess.
+
+**Local main had no upstream** (`git pull` silently did nothing); now set
+to `origin/main`. Commits to main can also be made from a throwaway
+`git worktree add --detach <scratch> origin/main` + `git push origin HEAD:main`,
+which avoids the OneDrive working tree.
+
+**Publishing an EN blog post (done 2026-09-28, post 15129 "How to See Why
+$10 Million Bitcoin Stops Being a Meme", category Blog 13, author 36,
+featured media 15128).** The EN blog, homepage teaser and `article.html`
+all read WordPress (blog.virtuse.com) live, so publishing needs no site
+deploy — but the story page (`stories/<slug>/`, social preview) only appears
+after the next Stories build + the manual production upload.
+- Source: a Google Doc exports without login via
+  `https://docs.google.com/document/d/<id>/export?format=html` (when shared).
+- Formatting convention of recent EN posts: `<h2>` section heads, one `<p>`
+  per paragraph (keep the doc's short one-line paragraphs), `<strong>` for
+  key sentences, `<blockquote>` for quotes, image as featured media only.
+- WP needs the user's own login (Claude must not type the password). In a
+  logged-in `wp-admin` tab, `wp.apiFetch` works: upload the image via a
+  temporary `<input type=file>` + `file_upload` tool + `POST /wp/v2/media`,
+  then `POST /wp/v2/posts` as `status: draft`.
+- **WPML gotcha:** a post created via REST shows EN in the editor but its
+  preview 404s until it is saved once from the classic editor ("Save
+  Draft"). The classic editor then appends an empty `<p>&nbsp;</p>`; remove
+  it. Publish only after the user confirms the preview.
+- Excerpt: the user wanted none; `article.html` never shows the excerpt,
+  the blog card then uses WP's auto-excerpt (the article's first lines).
+
 ## Session status (2026-09-30) — Russian SEO pages, 18 pages (`2e96f8b`, gh-pages `0b104e9`, staging 151/151 md5-verified; **live on production** — user ran the sftp batch 2026-09-30 (18 `-mkdir` + 151 `put`), 151/151 md5-verified on virtuse.com; ru pages 200 with Russian titles, ru/tax.html links the Russian guides, EN germany carries hreflang en/de/sk/cs/pl/hu/uk/ru/x-default)
 
 - Same pattern as the other sets. New: `ru/bitcoin-nalogi/` (hub + chekhiya,
