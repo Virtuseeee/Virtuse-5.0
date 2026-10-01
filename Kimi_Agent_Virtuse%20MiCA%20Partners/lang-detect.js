@@ -39,9 +39,8 @@
  * blog.html is a special case, handled separately per language below:
  * sk -> blog-sk.html (root-level, suffix pattern), uk -> uk/blog.html,
  * ru -> ru/blog.html, de -> de/blog.html, fr -> fr/blog.html, es ->
- * es/blog.html, pl -> pl/blog.html, hu -> hu/blog.html (all UI-only shells over the English WP feed); cs -> no
- * cs/blog.html exists yet, so Czech browsers landing on blog.html are
- * left alone.
+ * es/blog.html, pl -> pl/blog.html, hu -> hu/blog.html, cs -> cs/blog.html (all UI-only shells over the English
+ * WP feed).
  */
 (function () {
   'use strict';
@@ -108,7 +107,7 @@
       else if (targetLang === 'es') target = 'es/blog.html';
       else if (targetLang === 'pl') target = 'pl/blog.html';
       else if (targetLang === 'hu') target = 'hu/blog.html';
-      // cs: no cs/blog.html yet — target stays null, page is left alone.
+      else if (targetLang === 'cs') target = 'cs/blog.html';
     } else if (file === '' || file === 'index.html' || TRANSLATED.indexOf(file) !== -1) {
       var name = (file === '' ? 'index.html' : file);
       target = targetLang + '/' + name;

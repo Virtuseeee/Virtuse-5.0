@@ -27,8 +27,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = open(os.path.join(HERE, 'brief_blog_template.html'), encoding='utf-8').read()
 
 # Language switcher: fixed order and labels (targets come from the page).
-ORDER = [('en', 'EN'), ('sk', 'SK'), ('uk', 'UA'), ('ru', 'RU'), ('de', 'DE'),
+ORDER = [('en', 'EN'), ('sk', 'SK'), ('uk', 'UA'), ('cs', 'CS'), ('ru', 'RU'), ('de', 'DE'),
          ('fr', 'FR'), ('es', 'ES'), ('pl', 'PL'), ('hu', 'HU')]
+
+# Date order for the live feed (fmtDate in the template): Hungarian is
+# year-first, Slovak/Czech put a dot after the day.
+DATE_STYLE = {'hu': 'ymd', 'sk': 'dot', 'cs': 'dot'}
 
 # Strings that are new to the Brief layout. Mining / custody / treasury desk
 # names are taken from each page's own nav, so they match the site's terms.
@@ -48,6 +52,11 @@ NEW = {
                policy='Регулювання', macro='Макро', markets='Ринки',
                emailReq='Вкажіть e-mail.', sending='Надсилання', subOk='Готово. Перевірте пошту.',
                subErr='Не вдалося підписатися. Спробуйте ще раз.', netErr='Помилка мережі. Спробуйте ще раз.'),
+    'cs': dict(lead='Nejnovější', by='Autor', read='Číst', read_story='Číst článek',
+               nav_issues='Nejnovější vydání', nav_data='Data', nav_hub='Virtuse hub', lang_label='Jazyk',
+               policy='Regulace', macro='Makro', markets='Trhy',
+               emailReq='Zadejte e-mailovou adresu.', sending='Odesílání', subOk='Hotovo. Zkontrolujte svou schránku.',
+               subErr='Přihlášení se nezdařilo. Zkuste to znovu.', netErr='Chyba sítě. Zkuste to znovu.'),
     'ru': dict(lead='Новое', by='Автор', read='Читать', read_story='Читать статью',
                nav_issues='Последние выпуски', nav_data='Данные', nav_hub='Virtuse', lang_label='Язык',
                policy='Регулирование', macro='Макро', markets='Рынки',
@@ -166,6 +175,8 @@ def build(lang, src_path, out_path):
     cfg['desks'] = dict(mining=d['nav']['mining'], treasury=d['nav']['treasury'], custody=d['nav']['custody'],
                         policy=n['policy'], macro=n['macro'], markets=n['markets'])
     cfg['articleBase'] = d['p'] + 'article.html'
+    if lang in DATE_STYLE:
+        cfg['dateStyle'] = DATE_STYLE[lang]
     # Languages without their own WP feed still open the story with the
     # interface in the page language (article.html reads ?lang=).
     if lang != 'en' and not cfg.get('langSuffix'):

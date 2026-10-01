@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Bitcoin-Verwahrung und Multi-Sig-Wallets | Virtuse</title>
+<meta name="description" content="Verlassen Sie sich nie auf einen einzigen Schwachpunkt. Verteilen Sie Ihre Schlüssel mit Hardware-Wallets und Multi-Sig-Tools nur für Bitcoin auf mehrere Geräte, Standorte und Unterzeichner.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -1049,6 +1050,28 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 @media (max-width: 700px) {
   h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
 }
+
+/* ===== Compact nav at 1025-1300px =====
+   Eleven nav items plus the language menu and CTA did not fit around
+   1100px in most languages (labels wrapped, the CTA ran off-screen). Same
+   block as pl/hu (scaffold_pl.py); the .nav prefix out-ranks the page's
+   own .nav-links a:not(.lang-opt) rule. */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) { font-size: 13px; padding: 8px 9px; white-space: nowrap; }
+}
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
 </style>
 </head>
 <body>
@@ -1417,7 +1440,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
         <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
         <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
         <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Retirement Calculator</a>
+        <a href="retirement-calculator.html">Ruhestandsrechner</a>
       </div>
       <div class="footer-col">
         <h4>Ratgeber</h4>

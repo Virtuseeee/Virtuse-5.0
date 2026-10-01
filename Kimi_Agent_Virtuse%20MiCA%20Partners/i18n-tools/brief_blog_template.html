@@ -261,7 +261,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
   function stripHtml(s) { var d = new DOMParser().parseFromString(s || '', 'text/html'); return (d.body.textContent || '').replace(/\s*\[…\]\s*$/, '…').trim(); }
-  function fmtDate(iso) { var d = new Date(iso); return d.getDate() + ' ' + CFG.months[d.getMonth()] + ' ' + d.getFullYear(); }
+  function fmtDate(iso) { var d = new Date(iso), D = d.getDate(), M = CFG.months[d.getMonth()], Y = d.getFullYear();
+    // ymd: Hungarian "2026. márc. 13."; dot: Slovak/Czech "13. júna 2026"; default "13 Mar 2026".
+    return CFG.dateStyle === 'ymd' ? Y + '. ' + M + ' ' + D + '.' : CFG.dateStyle === 'dot' ? D + '. ' + M + ' ' + Y : D + ' ' + M + ' ' + Y; }
   function articleUrl(p) { return CFG.articleBase + '?slug=' + encodeURIComponent(p.slug) + CFG.langSuffix; }
   function imgOf(p) { try { return p._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; } }
   function deskOf(p) { return CFG.desks[window.VB_inferDesk(p).id]; }

@@ -66,7 +66,7 @@
     // explicit lang=ru query param (no /ru/wp-json/ alias like sk has).
     ru: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 57, lang: 'ru',
-      listPage: 'ru/blog.html', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: false,
+      listPage: 'ru/blog.html', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: true,
       desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
         navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные', navHub: 'Virtuse', navGet: 'Получить Brief',
@@ -98,7 +98,7 @@
     // links are in the page language.
     uk: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'uk/blog.html', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: false,
+      listPage: 'uk/blog.html', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: true,
       desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Кастоді', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
       ui: {
         navIssues: 'Останні випуски', navBlog: 'Блог', navData: 'Дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
@@ -158,7 +158,7 @@
     },
     fr: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'fr/blog.html', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: false,
+      listPage: 'fr/blog.html', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: true,
       desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Régulation', macro: 'Macro', markets: 'Marchés' },
       ui: {
         navIssues: 'Derniers numéros', navBlog: 'Blog', navData: 'Données', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
@@ -188,7 +188,7 @@
     },
     es: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'es/blog.html', suffix: '&lang=es', locale: 'es-ES', worker: 'es', dir: 'es/', concierge: false,
+      listPage: 'es/blog.html', suffix: '&lang=es', locale: 'es-ES', worker: 'es', dir: 'es/', concierge: true,
       desks: { mining: 'Minería', treasury: 'Treasury', custody: 'Custodia', policy: 'Regulación', macro: 'Macro', markets: 'Mercados' },
       ui: {
         navIssues: 'Últimos números', navBlog: 'Blog', navData: 'Datos', navHub: 'Hub de Virtuse', navGet: 'Recibir el Brief',
@@ -218,7 +218,7 @@
     },
     pl: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'pl/blog.html', suffix: '&lang=pl', locale: 'pl-PL', worker: 'pl', dir: 'pl/', concierge: false,
+      listPage: 'pl/blog.html', suffix: '&lang=pl', locale: 'pl-PL', worker: 'pl', dir: 'pl/', concierge: true,
       desks: { mining: 'Kopanie', treasury: 'Treasury', custody: 'Przechowywanie', policy: 'Regulacje', macro: 'Makro', markets: 'Rynki' },
       ui: {
         navIssues: 'Najnowsze wydania', navBlog: 'Blog', navData: 'Dane', navHub: 'Hub Virtuse', navGet: 'Zapisz się',
@@ -246,9 +246,39 @@
         markets: ['Gdzie kupić Bitcoina', 'Sprawdzone, regulowane platformy obok siebie: opłaty, przechowywanie, wypłaty.', 'Porównaj partnerów']
       }
     },
+    cs: {
+      api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
+      listPage: 'cs/blog.html', suffix: '&lang=cs', locale: 'cs-CZ', worker: 'cs', dir: 'cs/', concierge: true,
+      desks: { mining: 'Těžba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulace', macro: 'Makro', markets: 'Trhy' },
+      ui: {
+        navIssues: 'Nejnovější vydání', navBlog: 'Blog', navData: 'Data', navHub: 'Virtuse hub', navGet: 'Odebírat Brief',
+        crumbList: 'Blog', by: 'Autor:', desk: '', block: 'Blok', readTime: ' min',
+        image: 'Obrázek', sources: 'Zdroje', aboutAuthor: 'O autorovi',
+        authorBio: 'Zakladatel a CEO Virtuse. Píše o Bitcoinu, makroekonomii a budoucnosti peněz.',
+        share: 'Sdílet', shareOn: 'Sdílet na', copyLink: 'Kopírovat odkaz', copied: 'Odkaz zkopírován',
+        copyFailed: 'Kopírování se nezdařilo. Zkopírujte adresu z adresního řádku.', moreShare: 'Další možnosti sdílení',
+        nostrCopied: 'Zkopírováno. Vložte do své aplikace Nostr.', openPrimal: 'Otevřít Primal', back: '← Všechny články',
+        inStory: 'V tomto článku', onVirtuse: 'Na Virtuse', ovAlt: 'Nevíte si rady? Partner za 60 sekund →',
+        ovNote: 'Služby partnerů. Nejde o finanční poradenství.',
+        capKicker: 'Odebírat Brief', capDek: 'Virtuse Brief. Jen Bitcoin. Žádné tokeny. Žádné PR.', capBtn: 'Odebírat',
+        subscribe: 'Odebírat', more: 'Další články', moreAll: 'Všechny články', readMore: 'Číst',
+        emailReq: 'Zadejte e-mailovou adresu.', sending: 'Odesílání', subOk: 'Hotovo. Zkontrolujte svou schránku.',
+        subErr: 'Přihlášení se nezdařilo. Zkuste to znovu.', netErr: 'Chyba sítě. Zkuste to znovu.',
+        footAbout: 'O nás', footTerms: 'Obchodní podmínky', footPrivacy: 'Ochrana osobních údajů', footCopy: '© 2018–2026 Virtuse Group. Všechna práva vyhrazena.',
+        errTitle: 'Článek nenalezen', errText: 'Článek byl možná přesunut nebo stažen. Projděte si celý archiv.', errCta: 'Všechny články'
+      },
+      services: {
+        mining: ['Těžte Bitcoin s ověřenými partnery', 'Hosting, cloud a hardware porovnané podle nákladů a výplat.', 'Porovnat partnery pro těžbu'],
+        treasury: ['Bitcoin v rozvaze firmy', 'Úschova, provádění obchodů a reporting pro firmy a family offices.', 'Partneři pro treasury'],
+        custody: ['Vlastní klíče ve vlastních rukou', 'Hardwarové peněženky a multisig od ověřených partnerů.', 'Porovnat úschovu'],
+        policy: ['Daně z Bitcoinu správně', 'Reporty pro jednotlivé země od partnerů s daňovým softwarem.', 'Daňoví partneři'],
+        macro: ['Půjčka místo prodeje', 'Půjčky kryté Bitcoinem od ověřených věřitelů, od 6 % ročně.', 'Porovnat půjčky'],
+        markets: ['Kde koupit Bitcoin', 'Ověřené, regulované platformy vedle sebe: poplatky, úschova, výplaty.', 'Porovnat partnery']
+      }
+    },
     hu: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'hu/blog.html', suffix: '&lang=hu', locale: 'hu-HU', worker: 'hu', dir: 'hu/', concierge: false,
+      listPage: 'hu/blog.html', suffix: '&lang=hu', locale: 'hu-HU', worker: 'hu', dir: 'hu/', concierge: true,
       desks: { mining: 'Bányászat', treasury: 'Treasury', custody: 'Letétkezelés', policy: 'Szabályozás', macro: 'Makró', markets: 'Piacok' },
       ui: {
         navIssues: 'Legutóbbi számok', navBlog: 'Blog', navData: 'Adatok', navHub: 'Virtuse hub', navGet: 'Feliratkozás',

@@ -27,6 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="en" href="https://virtuse.com/blog.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/blog-sk.html">
 <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/blog.html">
+<link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/blog.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/blog.html">
 <link rel="alternate" hreflang="de" href="https://virtuse.com/de/blog.html">
 <link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/blog.html">
@@ -184,6 +185,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <a href="../blog.html" lang="en">EN</a>
           <a href="../blog-sk.html" lang="sk">SK</a>
           <a href="blog.html" lang="uk" class="on" aria-current="page">UA</a>
+          <a href="../cs/blog.html" lang="cs">CS</a>
           <a href="../ru/blog.html" lang="ru">RU</a>
           <a href="../de/blog.html" lang="de">DE</a>
           <a href="../fr/blog.html" lang="fr">FR</a>
@@ -276,7 +278,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'use strict';
   // WordPress is the live database: the static cards above are the
   // pre-rendered fallback (SEO / no-JS) and get replaced from the REST API.
-  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "&lang=uk", "author": "Ras Vasilisin", "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "strings": {"countSuffix": "статей, і їх кількість зростає", "gridLabel": "Усі статті", "searchLabel": "Результати пошуку", "loadMore": "Більше статей", "endLabel": "Це всі статті", "showing": "Показано {n} з {t}", "empty": "Статей не знайдено", "feedError": "Не вдалося завантажити стрічку статей. Показано останні публікації."}, "desks": {"mining": "Майнінг", "treasury": "Казначейство", "custody": "Кастоді", "policy": "Регулювання", "macro": "Макро", "markets": "Ринки"}, "articleBase": "../article.html"};
+  var CFG = {"api": "https://blog.virtuse.com/wp-json/wp/v2/posts", "category": 13, "perPage": 12, "total": 169, "totalPages": 15, "langSuffix": "&lang=uk", "author": "Ras Vasilisin", "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "strings": {"countSuffix": "статей, і їх кількість зростає", "gridLabel": "Усі статті", "searchLabel": "Результати пошуку", "loadMore": "Більше статей", "endLabel": "Це всі статті", "showing": "Показано {n} з {t}", "empty": "Статей не знайдено", "feedError": "Не вдалося завантажити стрічку статей. Показано останні публікації."}, "desks": {"mining": "Майнінг", "treasury": "Казначейство", "custody": "Зберігання", "policy": "Регулювання", "macro": "Макро", "markets": "Ринки"}, "articleBase": "../article.html"};
 
   var grid = document.getElementById('blogGrid');
   var lead = document.getElementById('featuredWrap');
@@ -289,7 +291,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
   function stripHtml(s) { var d = new DOMParser().parseFromString(s || '', 'text/html'); return (d.body.textContent || '').replace(/\s*\[…\]\s*$/, '…').trim(); }
-  function fmtDate(iso) { var d = new Date(iso); return d.getDate() + ' ' + CFG.months[d.getMonth()] + ' ' + d.getFullYear(); }
+  function fmtDate(iso) { var d = new Date(iso), D = d.getDate(), M = CFG.months[d.getMonth()], Y = d.getFullYear();
+    // ymd: Hungarian "2026. márc. 13."; dot: Slovak/Czech "13. júna 2026"; default "13 Mar 2026".
+    return CFG.dateStyle === 'ymd' ? Y + '. ' + M + ' ' + D + '.' : CFG.dateStyle === 'dot' ? D + '. ' + M + ' ' + Y : D + ' ' + M + ' ' + Y; }
   function articleUrl(p) { return CFG.articleBase + '?slug=' + encodeURIComponent(p.slug) + CFG.langSuffix; }
   function imgOf(p) { try { return p._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; } }
   function deskOf(p) { return CFG.desks[window.VB_inferDesk(p).id]; }

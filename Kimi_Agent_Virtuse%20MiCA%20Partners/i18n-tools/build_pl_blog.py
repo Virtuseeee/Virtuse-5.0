@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Build pl/blog.html from es/blog.html.
+"""OBSOLETE since the Brief blog redesign (188fd2e): blogs are now generated
+by build_brief_blog.py from brief_blog_template.html. Kept for history only.
+
+Build pl/blog.html from es/blog.html.
 
 The blog shell is the same template in every language folder (EN
 WordPress feed, localised chrome), so the Polish page is the Spanish one

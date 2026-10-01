@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Купить Биткоин | Virtuse</title>
+<meta name="description" content="Virtuse сотрудничает с полностью лицензированными поставщиками криптоуслуг в ЕС (CASP), открывая доступ к лучшим сервисам покупки Биткоина в Европе. Мы никогда не храним ваши средства или ключи.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -1141,6 +1142,28 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 @media (max-width: 700px) {
   h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
 }
+
+/* ===== Compact nav at 1025-1300px =====
+   Eleven nav items plus the language menu and CTA did not fit around
+   1100px in most languages (labels wrapped, the CTA ran off-screen). Same
+   block as pl/hu (scaffold_pl.py); the .nav prefix out-ranks the page's
+   own .nav-links a:not(.lang-opt) rule. */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) { font-size: 13px; padding: 8px 9px; white-space: nowrap; }
+}
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
 </style>
 </head>
 <body>
@@ -1160,7 +1183,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     <li><a href="buy-bitcoin.html" class="active"><span class="nav-link-num">01</span><span class="nav-link-label">Купить Биткоин</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнинг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Займы</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоди</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Хранение</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Налоги</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боты</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -1375,7 +1398,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
       <div class="pcard-footer">
         <a href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Получить 21bitcoin
+          Перейти на 21bitcoin
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1409,7 +1432,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
       <div class="pcard-footer">
         <a href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Получить Kraken
+          Перейти на Kraken
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Сравнить комиссии</a>
@@ -1444,7 +1467,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
       <div class="pcard-footer">
         <a href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Получить ByBit EU
+          Перейти на ByBit EU
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1478,7 +1501,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
       <div class="pcard-footer">
         <a href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Получить Invity
+          Перейти на Invity
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1512,7 +1535,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
       <div class="pcard-footer">
         <a href="https://cryptocom.sjv.io/c/7490229/2051372/25666" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Получить Crypto.com
+          Перейти на Crypto.com
           <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1588,7 +1611,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       <div class="footer-col">
         <h4>Услуги</h4>
         <a href="buy-bitcoin.html">Купить Биткоин</a>
-        <a href="secure.html">Кастоди</a>
+        <a href="secure.html">Хранение</a>
         <a href="mining.html">Майнинг</a>
         <a href="lending.html">Займы</a>
         <a href="treasury.html">Treasury</a>
@@ -1606,7 +1629,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
         <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
         <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
         <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Retirement Calculator</a>
+        <a href="retirement-calculator.html">Пенсионный калькулятор</a>
       </div>
       <div class="footer-col">
         <h4>Материалы</h4>
