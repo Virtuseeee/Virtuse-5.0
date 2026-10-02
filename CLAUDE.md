@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-02) — SEO plan phase 2: schema.org JSON-LD on 208 hub pages (committed locally, **not yet on staging or production**)
+
+- SEO rollout plan (Docs artifact "SEO rollout plan", SK + EN tabs): phase 1 (meta description) is commit `158eafc3` (cherry-picked `e9229a1` onto the 11 newer origin/main commits after the first push was rejected); phase 2 is this commit.
+- New `i18n-tools/add_structured_data.py` (idempotent, `--dry-run --list`): 10 homepages get Organization (`@id https://virtuse.com/#org`, same id as the seo-build pages, legalName Virtuse Group Pte. Ltd., logo `email-virtuse-v-mark.png` 736x483, Singapore + Bratislava, sameAs X/LinkedIn/Facebook given by the user) + WebSite; 198 other indexable hub pages get BreadcrumbList Home > page name (name = own `<title>` minus " — Virtuse" and subtitle, Home label per language).
+- Skipped on purpose: 404, noindex pages, news.html (own JSON-LD), article.html, satoshi.html, blog*.html (rebuilt by build_brief_blog.py). No FAQPage/HowTo/Product added.
+- Checked: 208 blocks parse as JSON, tagcheck 0 on 208 files, diff is insertions only.
+- Deploy: `deploy_seo_phase12.sh` in the repo root (push main, sync the changed files to gh-pages, sftp to production, md5 check). The session's shell has no network, so the user runs it.
+- Profiles (sameAs): https://twitter.com/VirtuseExchange, https://www.linkedin.com/company/virtuse-exchange/, https://www.facebook.com/virtuseexchange/
+
 ## Session status (2026-10-02, second round) — Cookie consent banner, Google Consent Mode v2, 10 languages (`371013d`, gh-pages `32483d6`, staging 622/622 md5-verified; **live on production** — user ran the sftp batch 2026-10-02, 622/622 md5-verified on virtuse.com after a follow-up upload of `sk/stories/camusova-otazka-ak-je-vsetko-relativne-preco-pokracovat/`, whose folder had been missing on the server (301 to blog) since the 2026-09-28 story upload)
 
 - Why: all 621 GTM pages (`GTM-M4C5VRD`, GA4 `G-4GPYE0VP9V`, Google Ads, plus a dead Universal Analytics tag `UA-125054796-5` still in the container) set `_ga` cookies on load with no consent, while privacy section 4 said no analytics cookies were set.
