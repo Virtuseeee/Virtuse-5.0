@@ -147,6 +147,7 @@
 -mkdir public_html/stories/three-ways-how-media-downplays-inflation-ras-vasilisin
 -mkdir public_html/stories/top-8-powerful-lessons-lockdown-has-taught-me
 -mkdir public_html/stories/two-years-after-lockdowns-what-did-we-learn-ras-vasilisin
+-mkdir public_html/stories/understand-saylors-12-strc-in-10-minutes-and-buy-it-from-europe-without-the-mistake-i-made
 -mkdir public_html/stories/understanding-stablecoins-from-an-economists-perspective
 -mkdir public_html/stories/virtuse-exchange-slim-profiling
 -mkdir public_html/stories/virtuse-news-april
@@ -680,6 +681,7 @@ put stories/three-ways-how-media-downplays-inflation-ras-vasilisin/index.html pu
 put stories/three-ways-how-media-downplays-inflation/index.html public_html/stories/three-ways-how-media-downplays-inflation/index.html
 put stories/top-8-powerful-lessons-lockdown-has-taught-me/index.html public_html/stories/top-8-powerful-lessons-lockdown-has-taught-me/index.html
 put stories/two-years-after-lockdowns-what-did-we-learn-ras-vasilisin/index.html public_html/stories/two-years-after-lockdowns-what-did-we-learn-ras-vasilisin/index.html
+put stories/understand-saylors-12-strc-in-10-minutes-and-buy-it-from-europe-without-the-mistake-i-made/index.html public_html/stories/understand-saylors-12-strc-in-10-minutes-and-buy-it-from-europe-without-the-mistake-i-made/index.html
 put stories/understanding-stablecoins-from-an-economists-perspective/index.html public_html/stories/understanding-stablecoins-from-an-economists-perspective/index.html
 put stories/virtuse-exchange-slim-profiling/index.html public_html/stories/virtuse-exchange-slim-profiling/index.html
 put stories/virtuse-news-april/index.html public_html/stories/virtuse-news-april/index.html
