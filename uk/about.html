@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Про нас | Virtuse</title>
+<meta name="description" content="Virtuse засновано в 2018 році як фундамент безкордонної грошової економіки. Ми допомагаємо інвесторам створювати та захищати капітал для майбутніх поколінь за допомогою Біткоїна.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -1059,7 +1060,49 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .lang-menu-mobile { margin-top: 4px; }
   .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
 }
+
+/* ===== Compact nav at 1025-1300px =====
+   Eleven nav items plus the language menu and CTA did not fit around
+   1100px in most languages (labels wrapped, the CTA ran off-screen). Same
+   block as pl/hu (scaffold_pl.py); the .nav prefix out-ranks the page's
+   own .nav-links a:not(.lang-opt) rule. */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) { font-size: 13px; padding: 8px 9px; white-space: nowrap; }
+}
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
 </style>
+<script type="application/ld+json" id="virtuse-ld">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Головна",
+      "item": "https://virtuse.com/uk/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Про нас",
+      "item": "https://virtuse.com/uk/about.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1078,7 +1121,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоді</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Зберігання</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -1275,7 +1318,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       <p>CASP-провайдери з ліцензією MiCA або еквівалентною визнаною ліцензією у своїй країні. Жодних нерегульованих майданчиків, ніколи.</p>
     </div>
     <div class="value-card">
-      <h3>Кастоді та безпека активів</h3>
+      <h3>Зберігання та безпека активів</h3>
       <p>Виведення на власний гаманець за замовчуванням, а там, де партнер усе ж зберігає кошти, це застраховане й відокремлене зберігання.</p>
     </div>
     <div class="value-card">
@@ -1316,7 +1359,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   <div class="sec-title"><h2>Дослідити <span>хаб</span></h2></div>
   <div class="hub-grid">
     <a href="buy-bitcoin.html" class="hub-link"><span>Купити Біткоїн<small>Партнери з ліцензією MiCA</small></span><span class="arrow">&#8594;</span></a>
-    <a href="secure.html" class="hub-link"><span>Кастоді<small>Самостійне та спільне зберігання</small></span><span class="arrow">&#8594;</span></a>
+    <a href="secure.html" class="hub-link"><span>Зберігання<small>Самостійне та спільне зберігання</small></span><span class="arrow">&#8594;</span></a>
     <a href="lending.html" class="hub-link"><span>Позики<small>Позики під заставу Біткоїна</small></span><span class="arrow">&#8594;</span></a>
     <a href="mining.html" class="hub-link"><span>Майнінг<small>Хостинг і хмарний майнінг</small></span><span class="arrow">&#8594;</span></a>
     <a href="treasury.html" class="hub-link"><span>Казначейство<small>Корпоративна стратегія для Біткоїна</small></span><span class="arrow">&#8594;</span></a>
@@ -1389,7 +1432,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       <div class="footer-col">
         <h4>Послуги</h4>
         <a href="buy-bitcoin.html">Купити Біткоїн</a>
-        <a href="secure.html">Кастоді</a>
+        <a href="secure.html">Зберігання</a>
         <a href="mining.html">Майнінг</a>
         <a href="lending.html">Позики</a>
         <a href="treasury.html">Казначейство</a>
@@ -1407,7 +1450,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
         <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
         <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
         <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Retirement Calculator</a>
+        <a href="retirement-calculator.html">Пенсійний калькулятор</a>
       </div>
       <div class="footer-col">
         <h4>Матеріали</h4>

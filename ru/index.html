@@ -16,6 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4C5VRD');</script>
 <title>Virtuse: Первый в мире хаб Биткоин-сервисов</title>
+<meta name="description" content="Только Биткоин. Ничего лишнего. Покупайте, майните, занимайте, храните и приумножайте свой Биткоин через проверенных партнёров с лицензией MiCA, всё в одном надёжном хабе.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -2464,7 +2465,80 @@ a.nav-logo, .nav-logo {
 @media (max-width: 700px) {
   h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
 }
+
+/* ===== Compact nav at 1025-1300px =====
+   Eleven nav items plus the language menu and CTA did not fit around
+   1100px in most languages (labels wrapped, the CTA ran off-screen). Same
+   block as pl/hu (scaffold_pl.py); the .nav prefix out-ranks the page's
+   own .nav-links a:not(.lang-opt) rule. */
+@media (min-width: 1025px) {
+  .nav-links { gap: 2px; }
+  .nav .nav-links a:not(.lang-opt) { font-size: 13px; padding: 8px 9px; white-space: nowrap; }
+}
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .nav { padding: 20px 16px; }
+  .nav-links { gap: 0; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta { padding: 10px 12px; }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 18px 12px; }
+  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
+  .nav-logo span { font-size: 18px !important; }
+}
 </style>
+<script type="application/ld+json" id="virtuse-ld">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "legalName": "Virtuse Group Pte. Ltd.",
+      "url": "https://virtuse.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://virtuse.com/email-virtuse-v-mark.png",
+        "width": 736,
+        "height": 483
+      },
+      "image": "https://virtuse.com/og-cover.jpg",
+      "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys.",
+      "foundingDate": "2018",
+      "email": "support@virtuse.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Singapore",
+          "addressCountry": "SG"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Bratislava",
+          "addressCountry": "SK"
+        }
+      ],
+      "sameAs": [
+        "https://twitter.com/VirtuseExchange",
+        "https://www.linkedin.com/company/virtuse-exchange/",
+        "https://www.facebook.com/virtuseexchange/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://virtuse.com/#website",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "inLanguage": "ru",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -2483,7 +2557,7 @@ a.nav-logo, .nav-logo {
     <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купить Биткоин</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнинг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Займы</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Кастоди</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Хранение</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Налоги</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боты</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -2834,7 +2908,7 @@ a.nav-logo, .nav-logo {
   <div class="services-grid">
 
     <a href="secure.html" class="svc-card anim-card">
-      <h3>Кастоди</h3>
+      <h3>Хранение</h3>
       <p>Мультиподписные хранилища и аппаратные кошельки, чтобы ваши ключи оставались офлайн.</p>
     </a>
 
@@ -3147,7 +3221,7 @@ a.nav-logo, .nav-logo {
       <div class="footer-col">
         <h4>Услуги</h4>
         <a href="buy-bitcoin.html">Купить Биткоин</a>
-        <a href="secure.html">Кастоди</a>
+        <a href="secure.html">Хранение</a>
         <a href="mining.html">Майнинг</a>
         <a href="lending.html">Займы</a>
         <a href="treasury.html">Treasury</a>
@@ -3165,7 +3239,7 @@ a.nav-logo, .nav-logo {
         <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
         <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
         <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Retirement Calculator</a>
+        <a href="retirement-calculator.html">Пенсионный калькулятор</a>
       </div>
       <div class="footer-col">
         <h4>Материалы</h4>
