@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-02) — Russian grammar pass over the 18 Russian SEO pages (`0ca5bf0`, gh-pages `613f11b`, staging 18/18 md5-verified; **production pending** — user runs the sftp batch below)
+
+- User: "skontroluj ruské SEO stránky na gramatiku". Language only, same facts; same pattern as the es/fr rounds.
+- Lowercase after a colon in descriptions, answers and FAQ answers (`lcRu()`; keeps KESt, PIT-38, IRPF). Answer label "Порядок подачи:" (was "Декларирование: Ежегодная …"); "Без освобождения …" stands alone.
+- `meta.taxRu` gain-tax strings noun-first ("Подоходный налог 15% (23% сверх порога)", "Фиксированный налог 10% на прибыль", NL "Налог на имущество Box 3 — примерно 36% от условной доходности" …), DE exemption "Ставка 0% …", RO note "Ставка 10% — …"; "по сроку владения" instead of "за срок владения" everywhere. `inheritanceRu` heir/multisig/accounts wording.
+- "способ" instead of "путь" for buy routes (fee index, DCA, `feeIndexBody` ru text); DCA "Типовой план"; sell vs borrow "в Германии 0% …, в Чехии — …, в Польше освобождения нет", "в течение первого года владения", "тот может продать залог, чтобы погасить заём"; fee index "Какой способ самый дешёвый …", no "(miner fees)", citation "со ссылкой и подписью «Источник: …»". "Q3 2026" kept as is.
+
+```bash
+cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < /private/tmp/seo_ru_grammar.sftp
+```
+
 ## Session status (2026-09-30, fifth round) — French grammar pass over the 18 French SEO pages (`75db490`, gh-pages `d2cf119`, staging 18/18 md5-verified; **live on production** — user ran the sftp batch 2026-09-30, 18/18 md5-verified on virtuse.com; live France description "prélèvement forfaitaire unique", no "miner fees" on the fee index)
 
 - User: "skontroluj francúzske SEO stránky na gramatiku". Language only, same facts; same fixes as the Spanish round.
