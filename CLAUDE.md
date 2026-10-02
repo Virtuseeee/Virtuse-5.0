@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-02, third round) — SEO plan phase 4: new titles/descriptions on 13 hub pages × 10 languages (committed locally, deploy pending)
+## Session status (2026-10-02, third round) — SEO plan phase 4: new titles/descriptions on 13 hub pages × 10 languages (main `23dfb15`; **live on production** — user ran `deploy_site.sh 86cf05c` 2026-10-02, 130/130 md5-verified on virtuse.com)
 
 - Final EN set = merge of Claude's draft and the user's double-checked draft (Docs artifact "SEO rollout plan", tab "Phase 4: titles"): facts checked against each page (22 partners, $0.043/kWh, Trezor €49 / Ledger €79 / Jade $65, CSSF $320M / FINMA / BaFin $250M, Divly €39/yr, Coinrule 410,000+), Q4 fees (ByBit EU 0.25 %, Kraken 0.8 %), brand never twice. Blog/news left out (built by build_brief_blog.py / stories-build).
 - Data: `i18n-tools/data/phase4_titles.json` (13 pages × en + 9 languages, titles ≤ 60, descriptions ≤ 155, page-local number formats). Applied with `i18n-tools/apply_phase4_titles.py` (idempotent): `<title>`, meta description, og:title/description, twitter:title/description. 130 files, tagcheck 0.
