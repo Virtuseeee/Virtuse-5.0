@@ -8,6 +8,9 @@
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
 <script src="lang-detect.js"></script>
+<!-- vb-consent -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
+<script src="/cookie-consent.js" defer></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -832,8 +835,6 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4C5VRD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
   <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -1017,12 +1018,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <details>
     <summary>What we set</summary>
-    <div class="faq-answer">This website itself sets <strong>no advertising or cross-site tracking cookies</strong>. We limit ourselves to what the ePrivacy rules call strictly necessary storage — minimal technical state needed for the site to function (for example, remembering an interface preference). Because we avoid non-essential cookies, no cookie consent banner is required for the site as it stands. Should we ever introduce analytics or marketing cookies, we will ask for your prior consent, per the ePrivacy Directive and GDPR.</div>
+    <div class="faq-answer"><strong>Necessary storage</strong> (always on): your language, theme and cookie choice, kept in your browser so the site works. It needs no consent. <strong>Analytics</strong> (only with your consent): Google Analytics, loaded through Google Tag Manager, sets cookies (such as <code>_ga</code>, kept for up to 2 years) to count visits and show us which pages are useful. <strong>Marketing</strong> (only with your consent): Google Ads cookies to measure campaigns and show our ads to people who visited the site. Until you choose, both stay off. We use Google Consent Mode, so before consent Google receives only cookieless signals without cookies or advertising identifiers. Legal basis: your consent (Art. 6(1)(a) GDPR and the ePrivacy Directive). Google may process this data outside the EEA under the safeguards described in section 6.</div>
   </details>
 
   <details>
     <summary>Managing cookies</summary>
-    <div class="faq-answer">You can instruct your browser to refuse or delete cookies at any time via its settings. The site remains fully usable without them.</div>
+    <div class="faq-answer">You can accept, reject or change your choice at any time. Withdrawing consent is as easy as giving it and does not affect processing that happened before. We ask again after 12 months. You can also block or delete cookies in your browser settings; the site stays fully usable without them.<br><button type="button" class="cookie-settings-btn" data-cookie-settings>Cookie settings</button></div>
   </details>
 </section>
 
