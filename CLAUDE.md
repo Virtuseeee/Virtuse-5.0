@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-02, fourth round) — SEO plan phase 5: Search Console export analysed; canonical tags on 209 hub pages (committed locally, deploy pending)
+
+- Export (user's ~/Downloads/virtuse, "Last 3 months" but data only from 2026-09-14): 107 clicks / 26.6K impressions. ~92 % of impressions are legacy URLs of the old site (www.virtuse.com/gold/ 16K, /oil/, /wallet/, /fees/, /virtu-token/ …; queries "crypto gold exchange" — mostly a different brand, CryptoGold Exchange; 14.3K impressions from Haiti). They hit the server catch-all 301 → blog.virtuse.com and will fade; not Bitcoin-only intent, so no redirect work planned.
+- New hub + SEO pages: ~2K impressions, ~50 clicks in 16 days — too early for CTR-based title work; re-check with the 2026-10-30 reminder. Early signals: retirement-calculator pos ~12 ("bitcoin retirement calculator", "bitcoin renten rechner" 11 % CTR), "200 wma" pos 8 with 0 clicks.
+- Technical fix: hub pages had **no rel=canonical**; Search Console showed https://virtuse.com/ and /index.html both indexed, and 7 staging.virtuse.com pages indexed. New `i18n-tools/add_canonical.py` adds `<link rel="canonical">` = own og:url (same URL as hreflang + sitemap) on 209 indexable hub pages in 10 languages; staging serves the same HTML, so it points Google to production. Homepage canonical stays `/index.html` to match hreflang/sitemap.
+
 ## Session status (2026-10-02, third round) — SEO plan phase 4: new titles/descriptions on 13 hub pages × 10 languages (main `23dfb15`; **live on production** — user ran `deploy_site.sh 86cf05c` 2026-10-02, 130/130 md5-verified on virtuse.com)
 
 - Final EN set = merge of Claude's draft and the user's double-checked draft (Docs artifact "SEO rollout plan", tab "Phase 4: titles"): facts checked against each page (22 partners, $0.043/kWh, Trezor €49 / Ledger €79 / Jade $65, CSSF $320M / FINMA / BaFin $250M, Divly €39/yr, Coinrule 410,000+), Q4 fees (ByBit EU 0.25 %, Kraken 0.8 %), brand never twice. Blog/news left out (built by build_brief_blog.py / stories-build).
