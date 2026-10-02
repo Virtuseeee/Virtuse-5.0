@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-02) — Russian grammar pass over the 18 Russian SEO pages (`0ca5bf0`, gh-pages `613f11b`, staging 18/18 md5-verified; **production pending** — user runs the sftp batch below)
+## Session status (2026-10-02) — Russian grammar pass over the 18 Russian SEO pages (`0ca5bf0`, gh-pages `613f11b`, staging 18/18 md5-verified; **live on production** — user ran the sftp batch 2026-10-02, 18/18 md5-verified on virtuse.com; live Germany description "подоходный налог до 45% (прогрессивная шкала)", no "miner fees" on the fee index)
 
 - User: "skontroluj ruské SEO stránky na gramatiku". Language only, same facts; same pattern as the es/fr rounds.
 - Lowercase after a colon in descriptions, answers and FAQ answers (`lcRu()`; keeps KESt, PIT-38, IRPF). Answer label "Порядок подачи:" (was "Декларирование: Ежегодная …"); "Без освобождения …" stands alone.
