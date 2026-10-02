@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-02, third round) — SEO plan phase 4: new titles/descriptions on 13 hub pages × 10 languages (committed locally, deploy pending)
+
+- Final EN set = merge of Claude's draft and the user's double-checked draft (Docs artifact "SEO rollout plan", tab "Phase 4: titles"): facts checked against each page (22 partners, $0.043/kWh, Trezor €49 / Ledger €79 / Jade $65, CSSF $320M / FINMA / BaFin $250M, Divly €39/yr, Coinrule 410,000+), Q4 fees (ByBit EU 0.25 %, Kraken 0.8 %), brand never twice. Blog/news left out (built by build_brief_blog.py / stories-build).
+- Data: `i18n-tools/data/phase4_titles.json` (13 pages × en + 9 languages, titles ≤ 60, descriptions ≤ 155, page-local number formats). Applied with `i18n-tools/apply_phase4_titles.py` (idempotent): `<title>`, meta description, og:title/description, twitter:title/description. 130 files, tagcheck 0.
+- Same day, separate commit: buy-bitcoin + faq in all 10 languages still said Kraken 0.16 % / ByBit 0.1 %; now 0.8 % / 0.25 %.
+- Gotcha: `add_structured_data.py` derives breadcrumb names from `<title>`; re-running it now would put the long SEO titles into breadcrumbs. The committed breadcrumbs keep the short names; give the script an explicit name map before re-running.
+- Rule: a number in a title must match the page; when a fact changes (Firefish rate, wallet prices, partner count), update phase4_titles.json and re-run the apply script.
+
 ## Session status (2026-10-02, second round) — SEO plan phase 3: fee pages Q3 → Q4 with corrected partner fees; tax pages stay Q3 (main `86cf05c`, gh-pages `52413b1`; **live on production** — user ran `deploy_site.sh af779d6` 2026-10-02, 93/93 md5-verified on virtuse.com)
 
 - User decisions: taker fee (plain market buy) for exchanges; RevenueBot removed from the purchase-cost comparison; tax-derived pages (tax hub + 13 countries, sell-vs-borrow, inheritance) **stay Q3 until the tax advisor's review**.

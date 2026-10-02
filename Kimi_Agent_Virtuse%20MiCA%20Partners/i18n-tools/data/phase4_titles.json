@@ -1,0 +1,542 @@
+{
+ "en": {
+  "index": [
+   "Bitcoin Hub: 22 Partners, 13 EU Countries | Virtuse",
+   "Buy, mine, borrow and secure Bitcoin via 22 vetted partners. 13 EU countries, loans from 6% p.a. Virtuse never holds your keys."
+  ],
+  "buy-bitcoin": [
+   "Buy Bitcoin in Europe: Compare MiCA Fees | Virtuse",
+   "Compare MiCA CASPs: 21bitcoin Auto-Invest at 0% fees, ByBit EU spot from 0.25%, Kraken Pro from 0.8%. Virtuse never holds funds."
+  ],
+  "mining": [
+   "Bitcoin Mining Hosting from $0.043/kWh | Virtuse",
+   "ASIC hosting with OneMiners, Abundant Mines and Power Mining. Hosting from $0.043/kWh. Nordics, Europe and Ethiopia."
+  ],
+  "lending": [
+   "Bitcoin-Backed Loans in the EU from 6% p.a. | Virtuse",
+   "Borrow EUR, CHF, CZK or USDC against Bitcoin via Firefish. Rates from 6% p.a., LTV up to 50%, terms 3–24 months. No need to sell."
+  ],
+  "secure": [
+   "Bitcoin Hardware Wallets from €49 | Virtuse",
+   "Self-custody with Trezor (from €49), Ledger (from €79) and Blockstream Jade (from $65). Multi-sig, no exchange custody."
+  ],
+  "treasury": [
+   "Bitcoin Treasury Custody: MiCA and FINMA | Virtuse",
+   "Corporate Bitcoin custody via Coinbase Institutional (CSSF, $320M cover), Sygnum (FINMA) and BitGo (BaFin, $250M cover)."
+  ],
+  "tax": [
+   "Bitcoin Tax Software Compared, from €39/yr | Virtuse",
+   "EU Bitcoin tax tools: Divly from €39/yr, Blockpit, CoinTracking and Koinly. No KYC on the software. Not tax advice."
+  ],
+  "bots": [
+   "Non-Custodial Bitcoin Trading Bots | Virtuse",
+   "Trade-only API bots: Coinrule (410,000+ traders), Cryptohopper and RevenueBot. No withdrawal rights. Coins stay on your exchange."
+  ],
+  "bitcoin-data": [
+   "Live Bitcoin Price, Fees and Hashrate | Virtuse",
+   "Free Bitcoin network data: price, market cap, fees, hashrate and latest block. No account. 21 million BTC hard cap."
+  ],
+  "faq": [
+   "Bitcoin FAQ: Fees, Custody, KYC, Partners | Virtuse",
+   "Fees, custody and KYC at Virtuse partners: Kraken Pro from 0.8%, ByBit EU from 0.25%, mining from $0.043/kWh. We never hold keys."
+  ],
+  "about": [
+   "About Virtuse: Bitcoin-Only Hub Since 2018",
+   "Founded 2018, Bitcoin-only since 2022, hub since 2024. 22 partners, clients in 100+ countries. Offices in Singapore and Bratislava."
+  ],
+  "ma-200w": [
+   "Bitcoin 200-Week Moving Average Chart | Virtuse",
+   "Bitcoin's most respected long-term floor. The 200-week moving average has marked the bottom of every Bitcoin bear market so far."
+  ],
+  "btc-dominance": [
+   "Bitcoin Dominance Chart Since 2013 | Virtuse",
+   "Bitcoin's share of the total crypto market cap since 2013. Rising dominance means capital is concentrating in Bitcoin; falling means altcoin rotation."
+  ]
+ },
+ "sk": {
+  "index": [
+   "Bitcoin hub: 22 partnerov, 13 krajín EÚ | Virtuse",
+   "Kúpte, ťažte, požičajte si a zabezpečte Bitcoin cez 22 overených partnerov. 13 krajín EÚ, pôžičky od 6 % p. a. Virtuse nedrží vaše kľúče."
+  ],
+  "buy-bitcoin": [
+   "Kúpiť Bitcoin v Európe: poplatky MiCA | Virtuse",
+   "Porovnajte poskytovateľov s licenciou MiCA: 21bitcoin Auto-Invest s 0 % poplatkami, ByBit EU spot od 0,25 %, Kraken Pro od 0,8 %."
+  ],
+  "mining": [
+   "Hosting na ťažbu Bitcoinu od 0,043 $/kWh | Virtuse",
+   "Hosting ASIC s OneMiners, Abundant Mines a Power Mining. Hosting od 0,043 $/kWh. Severské krajiny, Európa a Etiópia."
+  ],
+  "lending": [
+   "Pôžičky kryté Bitcoinom v EÚ od 6 % p. a. | Virtuse",
+   "Požičajte si EUR, CHF, CZK alebo USDC proti Bitcoinu cez Firefish. Úrok od 6 % p. a., LTV do 50 %, 3–24 mesiacov. Bez predaja."
+  ],
+  "secure": [
+   "Hardvérové peňaženky na Bitcoin od 49 € | Virtuse",
+   "Vlastná úschova s Trezor (od 49 €), Ledger (od 79 €) a Blockstream Jade (od 65 $). Multisig, bez úschovy na burze."
+  ],
+  "treasury": [
+   "Úschova Bitcoinu pre firmy: MiCA a FINMA | Virtuse",
+   "Firemná úschova Bitcoinu cez Coinbase Institutional (CSSF, krytie 320 mil. $), Sygnum (FINMA) a BitGo (BaFin, krytie 250 mil. $)."
+  ],
+  "tax": [
+   "Daňový softvér na Bitcoin od 39 €/rok | Virtuse",
+   "Daňové nástroje na Bitcoin v EÚ: Divly od 39 €/rok, Blockpit, CoinTracking a Koinly. Softvér bez KYC. Nejde o daňové poradenstvo."
+  ],
+  "bots": [
+   "Nekustodiálne obchodné boty na Bitcoin | Virtuse",
+   "Boty s API kľúčmi len na obchodovanie: Coinrule (410 000+ obchodníkov), Cryptohopper a RevenueBot. Bez práva výberu."
+  ],
+  "bitcoin-data": [
+   "Živé dáta o Bitcoine: cena, poplatky, hashrate | Virtuse",
+   "Bezplatné dáta zo siete Bitcoin: cena, trhová kapitalizácia, poplatky, hashrate a posledný blok. Bez účtu. Limit 21 miliónov BTC."
+  ],
+  "faq": [
+   "Bitcoin FAQ: poplatky, úschova, KYC, partneri | Virtuse",
+   "Poplatky, úschova a KYC u partnerov Virtuse: Kraken Pro od 0,8 %, ByBit EU od 0,25 %, ťažba od 0,043 $/kWh. Kľúče nikdy nedržíme."
+  ],
+  "about": [
+   "O Virtuse: Bitcoin-only hub od roku 2018",
+   "Založené v roku 2018, iba Bitcoin od 2022, hub od 2024. 22 partnerov, klienti vo viac ako 100 krajinách. Singapur a Bratislava."
+  ],
+  "ma-200w": [
+   "200-týždňový kĺzavý priemer Bitcoinu | Virtuse",
+   "Najrešpektovanejšie dlhodobé dno Bitcoinu. 200-týždňový kĺzavý priemer doteraz označil dno každého medvedieho trhu."
+  ],
+  "btc-dominance": [
+   "Graf dominancie Bitcoinu od roku 2013 | Virtuse",
+   "Podiel Bitcoinu na kapitalizácii kryptotrhu od roku 2013. Rastúca dominancia znamená prílev kapitálu do Bitcoinu, klesajúca rotáciu do altcoinov."
+  ]
+ },
+ "cs": {
+  "index": [
+   "Bitcoin hub: 22 partnerů, 13 zemí EU | Virtuse",
+   "Kupte, těžte, půjčte si a zabezpečte Bitcoin přes 22 ověřených partnerů. 13 zemí EU, půjčky od 6 % p. a. Virtuse nedrží vaše klíče."
+  ],
+  "buy-bitcoin": [
+   "Koupit Bitcoin v Evropě: poplatky MiCA | Virtuse",
+   "Srovnejte poskytovatele s licencí MiCA: 21bitcoin Auto-Invest s 0 % poplatky, ByBit EU spot od 0,25 %, Kraken Pro od 0,8 %."
+  ],
+  "mining": [
+   "Hosting pro těžbu Bitcoinu od 0,043 $/kWh | Virtuse",
+   "Hosting ASIC s OneMiners, Abundant Mines a Power Mining. Hosting od 0,043 $/kWh. Severské země, Evropa a Etiopie."
+  ],
+  "lending": [
+   "Půjčky kryté Bitcoinem v EU od 6 % p. a. | Virtuse",
+   "Půjčte si EUR, CHF, CZK nebo USDC proti Bitcoinu přes Firefish. Úrok od 6 % p. a., LTV až 50 %, 3–24 měsíců. Bez prodeje."
+  ],
+  "secure": [
+   "Hardwarové peněženky na Bitcoin od 49 € | Virtuse",
+   "Vlastní úschova s Trezor (od 49 €), Ledger (od 79 €) a Blockstream Jade (od 65 $). Multisig, bez úschovy na burze."
+  ],
+  "treasury": [
+   "Úschova Bitcoinu pro firmy: MiCA a FINMA | Virtuse",
+   "Firemní úschova Bitcoinu přes Coinbase Institutional (CSSF, krytí 320 mil. $), Sygnum (FINMA) a BitGo (BaFin, krytí 250 mil. $)."
+  ],
+  "tax": [
+   "Daňový software pro Bitcoin od 39 €/rok | Virtuse",
+   "Daňové nástroje pro Bitcoin v EU: Divly od 39 €/rok, Blockpit, CoinTracking a Koinly. Software bez KYC. Nejde o daňové poradenství."
+  ],
+  "bots": [
+   "Nekustodiální obchodní boti pro Bitcoin | Virtuse",
+   "Boti s API klíči jen pro obchodování: Coinrule (410 000+ obchodníků), Cryptohopper a RevenueBot. Bez práva výběru."
+  ],
+  "bitcoin-data": [
+   "Živá data o Bitcoinu: cena, poplatky, hashrate | Virtuse",
+   "Bezplatná data ze sítě Bitcoin: cena, tržní kapitalizace, poplatky, hashrate a poslední blok. Bez účtu. Limit 21 milionů BTC."
+  ],
+  "faq": [
+   "Bitcoin FAQ: poplatky, úschova, KYC, partneři | Virtuse",
+   "Poplatky, úschova a KYC u partnerů Virtuse: Kraken Pro od 0,8 %, ByBit EU od 0,25 %, těžba od 0,043 $/kWh. Klíče nikdy nedržíme."
+  ],
+  "about": [
+   "O Virtuse: Bitcoin-only hub od roku 2018",
+   "Založeno v roce 2018, jen Bitcoin od 2022, hub od 2024. 22 partnerů, klienti ve více než 100 zemích. Singapur a Bratislava."
+  ],
+  "ma-200w": [
+   "200týdenní klouzavý průměr Bitcoinu | Virtuse",
+   "Nejrespektovanější dlouhodobé dno Bitcoinu. 200týdenní klouzavý průměr dosud označil dno každého medvědího trhu."
+  ],
+  "btc-dominance": [
+   "Graf dominance Bitcoinu od roku 2013 | Virtuse",
+   "Podíl Bitcoinu na kapitalizaci kryptotrhu od roku 2013. Rostoucí dominance znamená příliv kapitálu do Bitcoinu, klesající rotaci do altcoinů."
+  ]
+ },
+ "pl": {
+  "index": [
+   "Hub Bitcoin: 22 partnerów, 13 krajów UE | Virtuse",
+   "Kupuj, kop, pożyczaj i zabezpieczaj Bitcoin przez 22 sprawdzonych partnerów. 13 krajów UE, pożyczki od 6% rocznie. Virtuse nie trzyma kluczy."
+  ],
+  "buy-bitcoin": [
+   "Kup Bitcoin w Europie: porównaj opłaty MiCA | Virtuse",
+   "Porównaj dostawców z licencją MiCA: 21bitcoin Auto-Invest z opłatą 0%, ByBit EU spot od 0,25%, Kraken Pro od 0,8%."
+  ],
+  "mining": [
+   "Hosting do kopania Bitcoina od 0,043 $/kWh | Virtuse",
+   "Hosting ASIC z OneMiners, Abundant Mines i Power Mining. Hosting od 0,043 $/kWh. Kraje nordyckie, Europa i Etiopia."
+  ],
+  "lending": [
+   "Pożyczki pod zastaw Bitcoina od 6% rocznie | Virtuse",
+   "Pożycz EUR, CHF, CZK lub USDC pod zastaw Bitcoina przez Firefish. Od 6% rocznie, LTV do 50%, okres 3–24 miesięcy. Bez sprzedaży."
+  ],
+  "secure": [
+   "Portfele sprzętowe na Bitcoin od 49 € | Virtuse",
+   "Samodzielne przechowywanie z Trezor (od 49 €), Ledger (od 79 €) i Blockstream Jade (od 65 $). Multisig, bez przechowywania na giełdzie."
+  ],
+  "treasury": [
+   "Przechowywanie Bitcoina dla firm: MiCA i FINMA | Virtuse",
+   "Firmowe przechowywanie Bitcoina: Coinbase Institutional (CSSF, ochrona 320 mln $), Sygnum (FINMA) i BitGo (BaFin, ochrona 250 mln $)."
+  ],
+  "tax": [
+   "Programy podatkowe do Bitcoina od 39 €/rok | Virtuse",
+   "Narzędzia podatkowe do Bitcoina w UE: Divly od 39 €/rok, Blockpit, CoinTracking i Koinly. Bez KYC w programie. To nie porada podatkowa."
+  ],
+  "bots": [
+   "Niepowiernicze boty tradingowe do Bitcoina | Virtuse",
+   "Boty z kluczami API tylko do handlu: Coinrule (410 tys.+ traderów), Cryptohopper i RevenueBot. Bez prawa wypłaty."
+  ],
+  "bitcoin-data": [
+   "Dane Bitcoina na żywo: cena, opłaty, hashrate | Virtuse",
+   "Bezpłatne dane z sieci Bitcoin: cena, kapitalizacja, opłaty, hashrate i ostatni blok. Bez konta. Twardy limit 21 milionów BTC."
+  ],
+  "faq": [
+   "Bitcoin FAQ: opłaty, przechowywanie, KYC | Virtuse",
+   "Opłaty, przechowywanie i KYC u partnerów Virtuse: Kraken Pro od 0,8%, ByBit EU od 0,25%, kopanie od 0,043 $/kWh. Nie trzymamy kluczy."
+  ],
+  "about": [
+   "O Virtuse: hub tylko dla Bitcoina od 2018 roku",
+   "Założony w 2018 r., tylko Bitcoin od 2022, hub od 2024. 22 partnerów, klienci w ponad 100 krajach. Biura w Singapurze i Bratysławie."
+  ],
+  "ma-200w": [
+   "200-tygodniowa średnia krocząca Bitcoina | Virtuse",
+   "Najbardziej szanowane długoterminowe dno Bitcoina. 200-tygodniowa średnia krocząca dotąd wyznaczała dno każdej bessy."
+  ],
+  "btc-dominance": [
+   "Wykres dominacji Bitcoina od 2013 roku | Virtuse",
+   "Udział Bitcoina w kapitalizacji rynku krypto od 2013 roku. Rosnąca dominacja to napływ kapitału do Bitcoina, spadająca to rotacja w altcoiny."
+  ]
+ },
+ "hu": {
+  "index": [
+   "Bitcoin hub: 22 partner, 13 uniós ország | Virtuse",
+   "Vásároljon, bányásszon, vegyen fel hitelt és őrizze Bitcoinját 22 partnerrel. 13 uniós ország, hitel évi 6%-tól. Kulcsait nem tároljuk."
+  ],
+  "buy-bitcoin": [
+   "Bitcoin vásárlás Európában: MiCA díjak | Virtuse",
+   "MiCA-engedélyes szolgáltatók: 21bitcoin Auto-Invest 0% díjjal, ByBit EU spot 0,25%-tól, Kraken Pro 0,8%-tól. A Virtuse nem kezel pénzt."
+  ],
+  "mining": [
+   "Bitcoin-bányászati hosting 0,043 $/kWh-tól | Virtuse",
+   "ASIC-hosting a OneMiners, az Abundant Mines és a Power Mining partnerekkel. Hosting 0,043 $/kWh-tól. Észak-Európa, Európa és Etiópia."
+  ],
+  "lending": [
+   "Bitcoin-fedezetű hitel az EU-ban évi 6%-tól | Virtuse",
+   "EUR, CHF, CZK vagy USDC hitel Bitcoin-fedezettel a Firefish-en. Kamat évi 6%-tól, LTV max. 50%, futamidő 3–24 hónap. Eladás nélkül."
+  ],
+  "secure": [
+   "Bitcoin hardvertárcák 49 €-tól | Virtuse",
+   "Saját őrzés Trezorral (49 €-tól), Ledgerrel (79 €-tól) és Blockstream Jade-del (65 $-tól). Multisig, tőzsdei letét nélkül."
+  ],
+  "treasury": [
+   "Vállalati Bitcoin-letétkezelés: MiCA és FINMA | Virtuse",
+   "Vállalati Bitcoin-letétkezelés: Coinbase Institutional (CSSF, 320 millió $ fedezet), Sygnum (FINMA) és BitGo (BaFin, 250 millió $ fedezet)."
+  ],
+  "tax": [
+   "Bitcoin adószoftverek évi 39 €-tól | Virtuse",
+   "Bitcoin-adóeszközök az EU-ban: Divly évi 39 €-tól, Blockpit, CoinTracking és Koinly. A szoftverhez nincs KYC. Nem adótanácsadás."
+  ],
+  "bots": [
+   "Nem letétkezelő Bitcoin kereskedési botok | Virtuse",
+   "Csak kereskedési API-kulcsos botok: Coinrule (410 ezer+ kereskedő), Cryptohopper és RevenueBot. Kivételi jog nélkül."
+  ],
+  "bitcoin-data": [
+   "Élő Bitcoin-adatok: árfolyam, díjak, hashrate | Virtuse",
+   "Ingyenes Bitcoin-hálózati adatok: árfolyam, piaci kapitalizáció, díjak, hashrate és a legutóbbi blokk. Fiók nélkül. 21 millió BTC limit."
+  ],
+  "faq": [
+   "Bitcoin GYIK: díjak, őrzés, KYC, partnerek | Virtuse",
+   "Díjak, őrzés és KYC a Virtuse partnereinél: Kraken Pro 0,8%-tól, ByBit EU 0,25%-tól, bányászat 0,043 $/kWh-tól. Kulcsait nem tároljuk."
+  ],
+  "about": [
+   "A Virtuse-ról: csak Bitcoin hub 2018 óta",
+   "Alapítva 2018-ban, 2022 óta csak Bitcoin, 2024 óta hub. 22 partner, ügyfelek több mint 100 országban. Szingapúr és Pozsony."
+  ],
+  "ma-200w": [
+   "Bitcoin 200 hetes mozgóátlag grafikon | Virtuse",
+   "A Bitcoin legelismertebb hosszú távú alja. A 200 hetes mozgóátlag eddig minden Bitcoin medvepiac alját kijelölte."
+  ],
+  "btc-dominance": [
+   "Bitcoin-dominancia grafikon 2013 óta | Virtuse",
+   "A Bitcoin részesedése a teljes kriptopiaci kapitalizációból 2013 óta. A növekvő dominancia tőkebeáramlást jelez, a csökkenő altcoin-rotációt."
+  ]
+ },
+ "uk": {
+  "index": [
+   "Біткоїн-хаб: 22 партнери, 13 країн ЄС | Virtuse",
+   "Купуйте, майніть, позичайте та зберігайте Біткоїн через 22 перевірених партнери. 13 країн ЄС, позики від 6% річних. Ключі лише у вас."
+  ],
+  "buy-bitcoin": [
+   "Купити Біткоїн у Європі: комісії MiCA | Virtuse",
+   "Провайдери з ліцензією MiCA: 21bitcoin Auto-Invest з комісією 0%, ByBit EU спот від 0,25%, Kraken Pro від 0,8%. Virtuse не тримає кошти."
+  ],
+  "mining": [
+   "Хостинг для майнінгу Біткоїна від 0,043 $/кВт·год | Virtuse",
+   "ASIC-хостинг з OneMiners, Abundant Mines і Power Mining. Хостинг від 0,043 $/кВт·год. Північні країни, Європа та Ефіопія."
+  ],
+  "lending": [
+   "Позики під заставу Біткоїна від 6% річних | Virtuse",
+   "Позичайте EUR, CHF, CZK або USDC під заставу Біткоїна через Firefish. Від 6% річних, LTV до 50%, строк 3–24 місяці. Без продажу."
+  ],
+  "secure": [
+   "Апаратні гаманці для Біткоїна від 49 € | Virtuse",
+   "Самостійне зберігання з Trezor (від 49 €), Ledger (від 79 €) і Blockstream Jade (від 65 $). Мультипідпис, без зберігання на біржі."
+  ],
+  "treasury": [
+   "Зберігання Біткоїна для компаній: MiCA і FINMA | Virtuse",
+   "Корпоративне зберігання Біткоїна: Coinbase Institutional (CSSF, покриття $320 млн), Sygnum (FINMA) і BitGo (BaFin, покриття $250 млн)."
+  ],
+  "tax": [
+   "Податкові сервіси для Біткоїна від 39 €/рік | Virtuse",
+   "Податкові інструменти для Біткоїна в ЄС: Divly від 39 €/рік, Blockpit, CoinTracking і Koinly. Без KYC у сервісі. Не податкова консультація."
+  ],
+  "bots": [
+   "Некастодіальні торгові боти для Біткоїна | Virtuse",
+   "Боти з API-ключами лише для торгівлі: Coinrule (410 000+ трейдерів), Cryptohopper і RevenueBot. Без права виведення коштів."
+  ],
+  "bitcoin-data": [
+   "Дані Біткоїна наживо: ціна, комісії, хешрейт | Virtuse",
+   "Безкоштовні дані мережі Біткоїн: ціна, капіталізація, комісії, хешрейт і останній блок. Без акаунта. Ліміт 21 мільйон BTC."
+  ],
+  "faq": [
+   "Біткоїн FAQ: комісії, зберігання, KYC | Virtuse",
+   "Комісії, зберігання та KYC у партнерів Virtuse: Kraken Pro від 0,8%, ByBit EU від 0,25%, майнінг від 0,043 $/кВт·год. Ключі лише у вас."
+  ],
+  "about": [
+   "Про Virtuse: Bitcoin-only хаб з 2018 року",
+   "Засновано 2018 року, лише Біткоїн з 2022, хаб з 2024. 22 партнери, клієнти у понад 100 країнах. Сінгапур і Братислава."
+  ],
+  "ma-200w": [
+   "200-тижнева ковзна середня Біткоїна | Virtuse",
+   "Найавторитетніше довгострокове дно Біткоїна. 200-тижнева ковзна середня досі позначала дно кожного ведмежого ринку."
+  ],
+  "btc-dominance": [
+   "Графік домінування Біткоїна з 2013 року | Virtuse",
+   "Частка Біткоїна в капіталізації крипторинку з 2013 року. Зростання домінування — приплив капіталу в Біткоїн, падіння — ротація в альткоїни."
+  ]
+ },
+ "ru": {
+  "index": [
+   "Биткоин-хаб: 22 партнёра, 13 стран ЕС | Virtuse",
+   "Покупайте, майните, берите займы и храните Биткоин через 22 проверенных партнёра. 13 стран ЕС, займы от 6% годовых. Ключи только у вас."
+  ],
+  "buy-bitcoin": [
+   "Купить Биткоин в Европе: комиссии MiCA | Virtuse",
+   "Провайдеры с лицензией MiCA: 21bitcoin Auto-Invest с комиссией 0%, ByBit EU спот от 0,25%, Kraken Pro от 0,8%. Virtuse не держит средства."
+  ],
+  "mining": [
+   "Хостинг для майнинга Биткоина от 0,043 $/кВт·ч | Virtuse",
+   "ASIC-хостинг с OneMiners, Abundant Mines и Power Mining. Хостинг от 0,043 $/кВт·ч. Северные страны, Европа и Эфиопия."
+  ],
+  "lending": [
+   "Займы под залог Биткоина от 6% годовых | Virtuse",
+   "Займите EUR, CHF, CZK или USDC под залог Биткоина через Firefish. От 6% годовых, LTV до 50%, срок 3–24 месяца. Без продажи."
+  ],
+  "secure": [
+   "Аппаратные кошельки для Биткоина от €49 | Virtuse",
+   "Самостоятельное хранение с Trezor (от €49), Ledger (от €79) и Blockstream Jade (от $65). Мультиподпись, без хранения на бирже."
+  ],
+  "treasury": [
+   "Хранение Биткоина для компаний: MiCA и FINMA | Virtuse",
+   "Корпоративное хранение Биткоина: Coinbase Institutional (CSSF, покрытие $320 млн), Sygnum (FINMA) и BitGo (BaFin, покрытие $250 млн)."
+  ],
+  "tax": [
+   "Налоговые сервисы для Биткоина от 39 €/год | Virtuse",
+   "Налоговые инструменты для Биткоина в ЕС: Divly от 39 €/год, Blockpit, CoinTracking и Koinly. Без KYC в сервисе. Не налоговая консультация."
+  ],
+  "bots": [
+   "Некастодиальные торговые боты для Биткоина | Virtuse",
+   "Боты с API-ключами только для торговли: Coinrule (410 000+ трейдеров), Cryptohopper и RevenueBot. Без права вывода средств."
+  ],
+  "bitcoin-data": [
+   "Данные Биткоина онлайн: цена, комиссии, хешрейт | Virtuse",
+   "Бесплатные данные сети Биткоин: цена, капитализация, комиссии, хешрейт и последний блок. Без аккаунта. Лимит 21 миллион BTC."
+  ],
+  "faq": [
+   "Биткоин FAQ: комиссии, хранение, KYC | Virtuse",
+   "Комиссии, хранение и KYC у партнёров Virtuse: Kraken Pro от 0,8%, ByBit EU от 0,25%, майнинг от 0,043 $/кВт·ч. Ключи только у вас."
+  ],
+  "about": [
+   "О Virtuse: Bitcoin-only хаб с 2018 года",
+   "Основана в 2018 году, только Биткоин с 2022, хаб с 2024. 22 партнёра, клиенты в 100+ странах. Сингапур и Братислава."
+  ],
+  "ma-200w": [
+   "200-недельная скользящая средняя Биткоина | Virtuse",
+   "Самое авторитетное долгосрочное дно Биткоина. 200-недельная скользящая средняя до сих пор отмечала дно каждого медвежьего рынка."
+  ],
+  "btc-dominance": [
+   "График доминирования Биткоина с 2013 года | Virtuse",
+   "Доля Биткоина в капитализации криптовалютного рынка с 2013 года. Рост доминирования — приток капитала в Биткоин, падение — ротация в альткоины."
+  ]
+ },
+ "de": {
+  "index": [
+   "Bitcoin-Hub: 22 Partner, 13 EU-Länder | Virtuse",
+   "Bitcoin kaufen, minen, beleihen und sichern über 22 geprüfte Partner. 13 EU-Länder, Kredite ab 6 % p. a. Virtuse verwahrt nie Ihre Schlüssel."
+  ],
+  "buy-bitcoin": [
+   "Bitcoin kaufen in Europa: MiCA-Gebühren | Virtuse",
+   "MiCA-lizenzierte Anbieter im Vergleich: 21bitcoin Auto-Invest mit 0 % Gebühren, ByBit EU Spot ab 0,25 %, Kraken Pro ab 0,8 %."
+  ],
+  "mining": [
+   "Bitcoin-Mining-Hosting ab 0,043 $/kWh | Virtuse",
+   "ASIC-Hosting mit OneMiners, Abundant Mines und Power Mining. Hosting ab 0,043 $/kWh. Nordeuropa, Europa und Äthiopien."
+  ],
+  "lending": [
+   "Bitcoin-besicherte Kredite in der EU ab 6 % p. a. | Virtuse",
+   "EUR, CHF, CZK oder USDC gegen Bitcoin leihen über Firefish. Zinsen ab 6 % p. a., LTV bis 50 %, Laufzeit 3–24 Monate. Ohne Verkauf."
+  ],
+  "secure": [
+   "Bitcoin-Hardware-Wallets ab 49 € | Virtuse",
+   "Selbstverwahrung mit Trezor (ab 49 €), Ledger (ab 79 €) und Blockstream Jade (ab 65 $). Multi-Sig, keine Verwahrung auf der Börse."
+  ],
+  "treasury": [
+   "Bitcoin-Verwahrung für Firmen: MiCA und FINMA | Virtuse",
+   "Bitcoin-Verwahrung für Unternehmen: Coinbase Institutional (CSSF, 320 Mio. USD Deckung), Sygnum (FINMA) und BitGo (BaFin, 250 Mio. USD Deckung)."
+  ],
+  "tax": [
+   "Bitcoin-Steuersoftware ab 39 €/Jahr | Virtuse",
+   "Bitcoin-Steuertools für die EU: Divly ab 39 €/Jahr, Blockpit, CoinTracking und Koinly. Kein KYC für die Software. Keine Steuerberatung."
+  ],
+  "bots": [
+   "Bitcoin-Trading-Bots ohne Verwahrung | Virtuse",
+   "Bots mit reinen Handels-API-Schlüsseln: Coinrule (über 410.000 Trader), Cryptohopper und RevenueBot. Keine Auszahlungsrechte."
+  ],
+  "bitcoin-data": [
+   "Live-Bitcoin-Daten: Kurs, Gebühren, Hashrate | Virtuse",
+   "Kostenlose Bitcoin-Netzwerkdaten: Kurs, Marktkapitalisierung, Gebühren, Hashrate und letzter Block. Ohne Konto. Fest begrenzt auf 21 Mio. BTC."
+  ],
+  "faq": [
+   "Bitcoin-FAQ: Gebühren, Verwahrung, KYC | Virtuse",
+   "Gebühren, Verwahrung und KYC bei Virtuse-Partnern: Kraken Pro ab 0,8 %, ByBit EU ab 0,25 %, Mining ab 0,043 $/kWh. Wir verwahren nie Schlüssel."
+  ],
+  "about": [
+   "Über Virtuse: Bitcoin-only-Hub seit 2018",
+   "Gegründet 2018, seit 2022 nur Bitcoin, seit 2024 ein Hub. 22 Partner, Kunden in über 100 Ländern. Büros in Singapur und Bratislava."
+  ],
+  "ma-200w": [
+   "Bitcoin 200-Wochen-Durchschnitt (Chart) | Virtuse",
+   "Der meistbeachtete langfristige Boden von Bitcoin. Der 200-Wochen-Durchschnitt markierte bisher den Boden jedes Bärenmarkts."
+  ],
+  "btc-dominance": [
+   "Bitcoin-Dominanz-Chart seit 2013 | Virtuse",
+   "Bitcoins Anteil an der gesamten Krypto-Marktkapitalisierung seit 2013. Steigende Dominanz heißt Kapital fließt in Bitcoin, fallende Altcoin-Rotation."
+  ]
+ },
+ "fr": {
+  "index": [
+   "Hub Bitcoin : 22 partenaires, 13 pays de l'UE | Virtuse",
+   "Achetez, minez, empruntez et sécurisez vos bitcoins via 22 partenaires vérifiés. 13 pays de l'UE, prêts dès 6 % par an. Vos clés restent à vous."
+  ],
+  "buy-bitcoin": [
+   "Acheter du Bitcoin en Europe : frais MiCA | Virtuse",
+   "Comparez les prestataires agréés MiCA : 21bitcoin Auto-Invest à 0 % de frais, ByBit EU spot dès 0,25 %, Kraken Pro dès 0,8 %."
+  ],
+  "mining": [
+   "Hébergement de minage Bitcoin dès 0,043 $/kWh | Virtuse",
+   "Hébergement ASIC avec OneMiners, Abundant Mines et Power Mining. Dès 0,043 $/kWh. Pays nordiques, Europe et Éthiopie."
+  ],
+  "lending": [
+   "Prêts garantis par Bitcoin dès 6 % par an | Virtuse",
+   "Empruntez des EUR, CHF, CZK ou USDC contre vos bitcoins via Firefish. Dès 6 % par an, LTV jusqu'à 50 %, 3 à 24 mois. Sans vendre."
+  ],
+  "secure": [
+   "Portefeuilles matériels Bitcoin dès 49 € | Virtuse",
+   "Auto-conservation avec Trezor (dès 49 €), Ledger (dès 79 €) et Blockstream Jade (dès 65 $). Multisig, sans garde sur une plateforme."
+  ],
+  "treasury": [
+   "Conservation Bitcoin d'entreprise : MiCA et FINMA | Virtuse",
+   "Conservation Bitcoin pour entreprises : Coinbase Institutional (CSSF, couverture 320 M$), Sygnum (FINMA) et BitGo (BaFin, couverture 250 M$)."
+  ],
+  "tax": [
+   "Logiciels fiscaux Bitcoin dès 39 €/an | Virtuse",
+   "Outils fiscaux Bitcoin dans l'UE : Divly dès 39 €/an, Blockpit, CoinTracking et Koinly. Pas de KYC pour le logiciel. Pas un conseil fiscal."
+  ],
+  "bots": [
+   "Bots de trading Bitcoin non dépositaires | Virtuse",
+   "Bots avec clés API de trading uniquement : Coinrule (410 000+ traders), Cryptohopper et RevenueBot. Aucun droit de retrait."
+  ],
+  "bitcoin-data": [
+   "Données Bitcoin en direct : prix, frais, hashrate | Virtuse",
+   "Données gratuites du réseau Bitcoin : prix, capitalisation, frais, hashrate et dernier bloc. Sans compte. Plafond de 21 millions de BTC."
+  ],
+  "faq": [
+   "FAQ Bitcoin : frais, conservation, KYC | Virtuse",
+   "Frais, conservation et KYC chez les partenaires Virtuse : Kraken Pro dès 0,8 %, ByBit EU dès 0,25 %, minage dès 0,043 $/kWh. Vos clés restent à vous."
+  ],
+  "about": [
+   "À propos de Virtuse : hub 100 % Bitcoin depuis 2018",
+   "Fondée en 2018, 100 % Bitcoin depuis 2022, hub depuis 2024. 22 partenaires, des clients dans plus de 100 pays. Singapour et Bratislava."
+  ],
+  "ma-200w": [
+   "Moyenne mobile à 200 semaines du Bitcoin | Virtuse",
+   "Le plancher de long terme le plus suivi du Bitcoin. La moyenne mobile à 200 semaines a marqué le creux de chaque marché baissier jusqu'ici."
+  ],
+  "btc-dominance": [
+   "Dominance du Bitcoin depuis 2013 (graphique) | Virtuse",
+   "Part du Bitcoin dans la capitalisation crypto depuis 2013. Dominance en hausse : afflux vers le Bitcoin ; en baisse : rotation vers les altcoins."
+  ]
+ },
+ "es": {
+  "index": [
+   "Hub Bitcoin: 22 socios, 13 países de la UE | Virtuse",
+   "Compre, mine, pida prestado y proteja Bitcoin con 22 socios verificados. 13 países de la UE, préstamos desde el 6 % anual. Sus claves son suyas."
+  ],
+  "buy-bitcoin": [
+   "Comprar Bitcoin en Europa: comisiones MiCA | Virtuse",
+   "Compare proveedores con licencia MiCA: 21bitcoin Auto-Invest con 0 % de comisión, ByBit EU spot desde 0,25 %, Kraken Pro desde 0,8 %."
+  ],
+  "mining": [
+   "Hosting de minería Bitcoin desde 0,043 $/kWh | Virtuse",
+   "Hosting ASIC con OneMiners, Abundant Mines y Power Mining. Desde 0,043 $/kWh. Países nórdicos, Europa y Etiopía."
+  ],
+  "lending": [
+   "Préstamos con garantía en Bitcoin desde el 6 % | Virtuse",
+   "Pida EUR, CHF, CZK o USDC con su Bitcoin como garantía vía Firefish. Desde el 6 % anual, LTV hasta 50 %, de 3 a 24 meses. Sin vender."
+  ],
+  "secure": [
+   "Monederos hardware para Bitcoin desde 49 € | Virtuse",
+   "Autocustodia con Trezor (desde 49 €), Ledger (desde 79 €) y Blockstream Jade (desde 65 $). Multifirma, sin custodia en un exchange."
+  ],
+  "treasury": [
+   "Custodia de Bitcoin para empresas: MiCA y FINMA | Virtuse",
+   "Custodia corporativa de Bitcoin: Coinbase Institutional (CSSF, cobertura de 320 M$), Sygnum (FINMA) y BitGo (BaFin, cobertura de 250 M$)."
+  ],
+  "tax": [
+   "Software fiscal para Bitcoin desde 39 €/año | Virtuse",
+   "Herramientas fiscales para Bitcoin en la UE: Divly desde 39 €/año, Blockpit, CoinTracking y Koinly. Sin KYC en el software. No es asesoría fiscal."
+  ],
+  "bots": [
+   "Bots de trading de Bitcoin sin custodia | Virtuse",
+   "Bots con claves API solo de trading: Coinrule (más de 410.000 traders), Cryptohopper y RevenueBot. Sin permisos de retirada."
+  ],
+  "bitcoin-data": [
+   "Bitcoin en vivo: precio, comisiones y hashrate | Virtuse",
+   "Datos gratuitos de la red Bitcoin: precio, capitalización, comisiones, hashrate y último bloque. Sin cuenta. Límite fijo de 21 millones de BTC."
+  ],
+  "faq": [
+   "FAQ de Bitcoin: comisiones, custodia, KYC | Virtuse",
+   "Comisiones, custodia y KYC en los socios de Virtuse: Kraken Pro desde 0,8 %, ByBit EU desde 0,25 %, minería desde 0,043 $/kWh. Sus claves son suyas."
+  ],
+  "about": [
+   "Sobre Virtuse: hub solo de Bitcoin desde 2018",
+   "Fundada en 2018, solo Bitcoin desde 2022, hub desde 2024. 22 socios, clientes en más de 100 países. Oficinas en Singapur y Bratislava."
+  ],
+  "ma-200w": [
+   "Media móvil de 200 semanas de Bitcoin | Virtuse",
+   "El suelo de largo plazo más respetado de Bitcoin. La media móvil de 200 semanas ha marcado hasta ahora el fondo de cada mercado bajista."
+  ],
+  "btc-dominance": [
+   "Dominancia de Bitcoin desde 2013 (gráfico) | Virtuse",
+   "Cuota de Bitcoin en la capitalización cripto total desde 2013. Si la dominancia sube, el capital va a Bitcoin; si baja, rota hacia altcoins."
+  ]
+ }
+}
