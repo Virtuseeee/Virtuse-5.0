@@ -1,6 +1,6 @@
 {
-  "source": "Extracted from shipped Layer 2 stacking bundle (concierge-assets/main-stacking-ZvoPtUJZ.js FEE_SCHEDULE). Numbers unaltered.",
-  "asOf": "2026-Q3",
+  "source": "Partner fee pages checked 2026-10-02 (taker fee = a plain market buy, entry tier); the shipped Stacking bundle was patched to the same numbers (i18n-tools/layer2/patch_fees_2026q4.py). RevenueBot removed: it charges 20% of bot profit (max $50/month), not a fee per purchase.",
+  "asOf": "2026-Q4",
   "formula": "costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYear / 12); annualDrag = costPerPurchase * periodsPerYear. Same as live stacking module.",
   "rows": [
     {
@@ -10,7 +10,7 @@
       "pct": 0,
       "fixed": 0,
       "monthly": 0,
-      "note": "0% fees on the built-in Auto-Invest savings plan – FMA MiCAR-licensed, insured custody and already automated: set the schedule once and it runs itself.",
+      "note": "0% fees on the built-in Auto-Invest savings plan from day 8 (the first 7 days carry the regular purchase fee) – FMA MiCAR-licensed, insured custody and already automated: set the schedule once and it runs itself.",
       "speed": "Automated",
       "url": "https://21bitcoin.app.link/invite/?code=VIRTUSE",
       "kind": "automated"
@@ -19,10 +19,10 @@
       "id": "bybit-eu",
       "partner": "ByBit EU",
       "method": "Spot trading",
-      "pct": 0.001,
+      "pct": 0.0025,
       "fixed": 0,
       "monthly": 0,
-      "note": "Spot trading fees from 0.1% – EU-licensed in Vienna, with deep order books for manual recurring buys.",
+      "note": "Spot taker fee 0.25% (0.1% maker) – EU-licensed in Vienna, with deep order books for manual recurring buys.",
       "speed": "Same day",
       "url": "https://partner.bybit.eu/b/VIRTUSE",
       "kind": "manual"
@@ -31,26 +31,13 @@
       "id": "kraken",
       "partner": "Kraken",
       "method": "Pro trading",
-      "pct": 0.0016,
+      "pct": 0.008,
       "fixed": 0,
       "monthly": 0,
-      "note": "Pro trading fees from 0.16% – a veteran EU exchange with deep EUR liquidity since 2011.",
+      "note": "Kraken Pro taker fee 0.8% at the entry tier (0.4% maker; lower from $2.5K monthly volume) – a veteran EU exchange with deep EUR liquidity since 2011.",
       "speed": "Same day",
       "url": "https://proinvite.kraken.com/9f1e/lj72d37e",
       "kind": "manual"
-    },
-    {
-      "id": "revenuebot",
-      "partner": "RevenueBot",
-      "method": "Automated DCA bot",
-      "pct": 0.004,
-      "fixed": 0,
-      "monthly": 4,
-      "note": "Cloud DCA and grid bots built specifically for Bitcoin – set the rhythm once and it runs itself. The fee shown is illustrative until RevenueBot publishes its own schedule; check their site for current pricing.",
-      "speed": "Set & forget",
-      "url": "https://app.revenuebot.io/external/r/90928",
-      "kind": "automated",
-      "illustrative": true
     }
   ]
 }

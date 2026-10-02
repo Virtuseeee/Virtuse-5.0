@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bitcoin DCA calculator (EU fees 2026)</title>
-<meta name="description" content="Fee-only bitcoin DCA calculator using Q3 2026 partner fees. Default €500 + €100/month ranks 21bitcoin first. Not a return forecast.">
+<meta name="description" content="Fee-only bitcoin DCA calculator using Q4 2026 partner fees. Default €500 + €100/month ranks 21bitcoin first. Not a return forecast.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://virtuse.com/bitcoin-dca-calculator/">
   <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/">
@@ -21,7 +21,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Bitcoin DCA calculator (EU fees 2026)">
-<meta property="og:description" content="Fee-only bitcoin DCA calculator using Q3 2026 partner fees. Default €500 + €100/month ranks 21bitcoin first. Not a return forecast.">
+<meta property="og:description" content="Fee-only bitcoin DCA calculator using Q4 2026 partner fees. Default €500 + €100/month ranks 21bitcoin first. Not a return forecast.">
 <meta property="og:url" content="https://virtuse.com/bitcoin-dca-calculator/">
 <meta property="og:locale" content="en_US">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -110,7 +110,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
 }</style>
-<script type="application/json" id="fee-schedule">[{"partner":"21bitcoin","method":"Auto-Invest plan","pct":0,"fixed":0,"monthly":0},{"partner":"ByBit EU","method":"Spot trading","pct":0.001,"fixed":0,"monthly":0},{"partner":"Kraken","method":"Pro trading","pct":0.0016,"fixed":0,"monthly":0},{"partner":"RevenueBot","method":"Automated DCA bot","pct":0.004,"fixed":0,"monthly":4}]</script>
+<script type="application/json" id="fee-schedule">[{"partner":"21bitcoin","method":"Auto-Invest plan","pct":0,"fixed":0,"monthly":0},{"partner":"ByBit EU","method":"Spot trading","pct":0.0025,"fixed":0,"monthly":0},{"partner":"Kraken","method":"Pro trading","pct":0.008,"fixed":0,"monthly":0}]</script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('dca-form');
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
           "@type": "Question",
-          "name": "What default plan is shown as of Q3 2026?",
+          "name": "What default plan is shown as of Q4 2026?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "€500 upfront plus €100/month for 12 months (€1,700 invested), ranked by first-year fees using the Stacking Strategist formula."
@@ -237,9 +237,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </header>
 <main class="wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span aria-hidden="true">/</span> <span>DCA calculator</span></nav>
-  <p class="asof">Data as of Q3 2026</p>
+  <p class="asof">Data as of Q4 2026</p>
   <h1>Bitcoin DCA calculator</h1>
-  <div class="answer"><p>As of Q3 2026, a fee-only DCA example of €500 plus €100 per month for 12 months (€1,700 invested) ranks 21bitcoin first. Variable fee: 0%; first-year fees about €0, using the live Stacking Strategist formula. This is not a return forecast. Indicative 2026 overview.</p></div>
+  <div class="answer"><p>As of Q4 2026, a fee-only DCA example of €500 plus €100 per month for 12 months (€1,700 invested) ranks 21bitcoin first. Variable fee: 0%; first-year fees about €0, using the live Stacking Strategist formula. This is not a return forecast. Indicative 2026 overview.</p></div>
   
 <p>Default example: <strong>€500 lump sum + €100/month × 12</strong>. Enter your own amounts to recalculate with the same fee schedule.</p>
 <form id="dca-form">
@@ -249,9 +249,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </form>
 <h2>First-year fees on the default plan</h2>
 <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
-<tbody id="dca-body"><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Published fee</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot trading</td><td>0.1%</td><td>€2</td><td>Published fee</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.16%</td><td>€3</td><td>Published fee</td></tr><tr><td>4</td><td>RevenueBot</td><td>Automated DCA bot</td><td>0.4%</td><td>€55</td><td>Illustrative fee</td></tr></tbody></table></div>
+<tbody id="dca-body"><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Published fee</td></tr><tr><td>2</td><td>ByBit EU</td><td>Spot trading</td><td>0.25%</td><td>€4</td><td>Published fee</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.8%</td><td>€14</td><td>Published fee</td></tr></tbody></table></div>
 <p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. Bitcoin price returns are deliberately left out.</p>
-<h2>FAQ</h2><h3>Does this calculator forecast bitcoin’s price?</h3><p>No. It isolates partner fees from the published fee schedule. Price returns are not modelled.</p><h3>What default plan is shown as of Q3 2026?</h3><p>€500 upfront plus €100/month for 12 months (€1,700 invested), ranked by first-year fees using the Stacking Strategist formula.</p><h3>Which route is cheapest on that plan?</h3><p>21bitcoin (Auto-Invest plan) with a 0% variable fee: about €0 in first-year fees in this fee-only example.</p><h3>Is this financial advice?</h3><p>No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.</p>
+<h2>FAQ</h2><h3>Does this calculator forecast bitcoin’s price?</h3><p>No. It isolates partner fees from the published fee schedule. Price returns are not modelled.</p><h3>What default plan is shown as of Q4 2026?</h3><p>€500 upfront plus €100/month for 12 months (€1,700 invested), ranked by first-year fees using the Stacking Strategist formula.</p><h3>Which route is cheapest on that plan?</h3><p>21bitcoin (Auto-Invest plan) with a 0% variable fee: about €0 in first-year fees in this fee-only example.</p><h3>Is this financial advice?</h3><p>No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.</p>
 
   <p><a class="cta" href="../stacking.html">Open Stacking Strategist →</a></p>
   <h2>Related guides</h2><div class="related"><a href="../bitcoin-fee-index/">Bitcoin Fee Index</a><a href="../sell-vs-borrow-bitcoin/">Sell vs borrow bitcoin</a><a href="../buy-bitcoin/germany/">Buy bitcoin in Germany</a></div>

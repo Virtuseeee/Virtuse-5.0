@@ -254,7 +254,11 @@ if (!canonicalSample.includes(`property="og:url" content="${ORIGIN}/bitcoin-dca-
 const feeIndex = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'), 'utf8');
 if (!feeIndex.includes('Dataset')) fail('Fee Index missing Dataset schema');
 if (!feeIndex.includes('Article')) fail('Fee Index missing Article schema');
-if (!feeIndex.includes('as of Q3 2026') && !feeIndex.includes('Q3 2026')) fail('Fee Index missing as-of date');
+const feeAsOfLabel = JSON.parse(fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'data', 'fee-schedule-live.json'), 'utf8')).asOf.replace(/^(\d{4})-Q(\d)$/, 'Q$2 $1');
+if (!feeIndex.includes(feeAsOfLabel)) fail(`Fee Index missing as-of date (${feeAsOfLabel})`);
+const feeArchive = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/2026-q3/index.html'), 'utf8');
+if (!feeArchive.includes('0.16%')) fail('Q3 archive must keep the frozen Q3 fees (Kraken 0.16%)');
+if (/RevenueBot/.test(feeIndex.replace(/Why is RevenueBot not ranked\?|RevenueBot charges no fee per purchase/g, ''))) fail('RevenueBot must not appear in the live Fee Index ranking');
 if (!feeIndex.includes('iframe')) fail('Fee Index missing embed snippet');
 
 const inh = fs.readFileSync(path.join(SITE, 'bitcoin-inheritance/index.html'), 'utf8');
