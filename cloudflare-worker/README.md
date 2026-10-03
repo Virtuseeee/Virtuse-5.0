@@ -267,3 +267,28 @@ SECRET="<same value as your local UNSUB_SECRET>"
 TOKEN=$(printf '%s' "$EMAIL" | openssl dgst -sha256 -hmac "$SECRET" | sed 's/^.* //')
 curl "http://localhost:8787/unsubscribe?email=$EMAIL&token=$TOKEN"
 ```
+
+## Article share previews (`GET /a/<slug>`)
+
+`virtuse.com/article.html?slug=…` renders client-side, so social crawlers
+(X, LinkedIn, Slack, WhatsApp, iMessage) only see its generic meta tags.
+Share this URL instead:
+
+```
+https://virtuse-newsletter.virtuse-ai.workers.dev/a/<slug>            # EN
+https://virtuse-newsletter.virtuse-ai.workers.dev/a/<slug>?lang=sk    # SK (WPML)
+```
+
+The Worker fetches the post from `blog.virtuse.com/wp-json/wp/v2/posts?slug=…`
+(`/sk/wp-json/…` for SK) and returns a small HTML page with per-article
+`og:*` / `twitter:*` tags (title, ~200-char plain-text excerpt, featured
+image `large` size, `summary_large_image`) and `canonical` = the real
+article URL. Humans are sent on with a meta refresh + `location.replace`
+(not a 30x — crawlers must get the 200 page with tags).
+
+- Cache: `Cache-Control: public, max-age=3600`, plus the Cache API and a
+  1 h `cf.cacheTtl` on the WordPress subrequest. Edits to a post show up
+  within about an hour; X/LinkedIn keep their own card cache on top.
+- Unknown slug → 404 with the generic Virtuse Brief card. WordPress error →
+  200 generic card that still redirects to the article (60 s cache).
+- No Origin/CORS gate, no KV, no secrets. Tests: `share.test.mjs` (`npm test`).
