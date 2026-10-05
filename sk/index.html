@@ -1334,28 +1334,10 @@ body {
 
 .co-logo:hover { opacity: 1; filter: grayscale(0); color: var(--text); }
 
-.co-firefish { font-weight: 800; letter-spacing: -0.01em; }
-.co-firefish span { color: var(--btc-orange); }
-.co-unchained { font-weight: 700; letter-spacing: -0.01em; }
-.co-banxa { font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
-.co-coinfirm { font-weight: 700; }
-.co-coinfirm span { color: var(--green); }
-.co-aws { font-weight: 900; text-transform: lowercase; font-size: 24px; letter-spacing: -0.02em; }
-.co-tradingview { font-weight: 800; letter-spacing: -0.02em; }
-.co-cmc { font-weight: 800; letter-spacing: -0.01em; }
-.co-cryptowisser { font-weight: 700; letter-spacing: 0; }
-.co-sumsub { font-weight: 800; letter-spacing: 0.02em; }
+.co-partner { display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.co-partner img { width: 28px; height: 28px; border-radius: 7px; object-fit: contain; background: #fff; flex-shrink: 0; }
+.co-partner img[src$="logo-invity.svg"] { padding: 4px; }
 .co-finas { font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
-.co-21bitcoin { font-weight: 800; letter-spacing: -0.01em; }
-.co-21bitcoin span { color: var(--btc-orange); font-weight: 900; }
-.co-coinrule { font-weight: 800; }
-.co-abundant { font-weight: 700; letter-spacing: 0.01em; }
-.co-abundant span { color: var(--green); }
-.co-invity { font-weight: 800; letter-spacing: -0.01em; }
-.co-blockstream { font-weight: 700; letter-spacing: -0.01em; }
-.co-blockstream span { color: #58a6ff; }
-.co-cryptocom { font-weight: 800; letter-spacing: -0.01em; }
-.co-cryptocom span { color: #1652c9; }
 
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter {
@@ -2803,48 +2785,62 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   <div class="co-ticker co-ticker-1">
     <div class="co-row">
       <div class="co-set">
-        <a href="https://firefish.io" target="_blank" rel="noopener noreferrer" class="co-logo co-firefish">fire<span>fish</span></a>
-        <a href="https://unchained-capital.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-unchained">Unchained</a>
-        <a href="https://banxa.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-banxa">Banxa</a>
-        <a href="https://www.coinfirm.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinfirm">Coin<span>firm</span></a>
-        <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-aws">aws</a>
-        <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-tradingview">TradingView</a>
-        <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cmc">CoinMarketCap</a>
+        <a href="buy-bitcoin.html" class="co-logo co-partner"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" decoding="async"><span>21bitcoin</span></a>
+        <a href="buy-bitcoin.html" class="co-logo co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" decoding="async"><span>ByBit EU</span></a>
+        <a href="buy-bitcoin.html" class="co-logo co-partner"><img src="../logo-kraken.png" alt="" width="28" height="28" decoding="async"><span>Kraken</span></a>
+        <a href="buy-bitcoin.html" class="co-logo co-partner"><img src="../logo-crypto-com.png" alt="" width="28" height="28" decoding="async"><span>Crypto.com</span></a>
+        <a href="buy-bitcoin.html" class="co-logo co-partner"><img src="../logo-invity.svg" alt="" width="28" height="28" decoding="async"><span>Invity</span></a>
+        <a href="secure.html" class="co-logo co-partner"><img src="../logo-blockstream.png" alt="" width="28" height="28" decoding="async"><span>Blockstream</span></a>
+        <a href="secure.html" class="co-logo co-partner"><img src="../logo-ledger.png" alt="" width="28" height="28" decoding="async"><span>Ledger</span></a>
+        <a href="secure.html" class="co-logo co-partner"><img src="../logo-trezor.png" alt="" width="28" height="28" decoding="async"><span>Trezor</span></a>
+        <a href="treasury.html" class="co-logo co-partner"><img src="../logo-bitgo.png" alt="" width="28" height="28" decoding="async"><span>BitGo</span></a>
+        <a href="treasury.html" class="co-logo co-partner"><img src="../logo-coinbase.png" alt="" width="28" height="28" decoding="async"><span>Coinbase</span></a>
+        <a href="treasury.html" class="co-logo co-partner"><img src="../logo-sygnum.png" alt="" width="28" height="28" decoding="async"><span>Sygnum</span></a>
       </div>
       <div class="co-set" aria-hidden="true">
-        <a href="https://firefish.io" tabindex="-1" class="co-logo co-firefish">fire<span>fish</span></a>
-        <a href="https://unchained-capital.com/" tabindex="-1" class="co-logo co-unchained">Unchained</a>
-        <a href="https://banxa.com/" tabindex="-1" class="co-logo co-banxa">Banxa</a>
-        <a href="https://www.coinfirm.com/" tabindex="-1" class="co-logo co-coinfirm">Coin<span>firm</span></a>
-        <a href="https://aws.amazon.com/" tabindex="-1" class="co-logo co-aws">aws</a>
-        <a href="https://www.tradingview.com/" tabindex="-1" class="co-logo co-tradingview">TradingView</a>
-        <a href="https://coinmarketcap.com/exchanges/virtuse-exchange/" tabindex="-1" class="co-logo co-cmc">CoinMarketCap</a>
+        <a href="buy-bitcoin.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" decoding="async"><span>21bitcoin</span></a>
+        <a href="buy-bitcoin.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" decoding="async"><span>ByBit EU</span></a>
+        <a href="buy-bitcoin.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-kraken.png" alt="" width="28" height="28" decoding="async"><span>Kraken</span></a>
+        <a href="buy-bitcoin.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-crypto-com.png" alt="" width="28" height="28" decoding="async"><span>Crypto.com</span></a>
+        <a href="buy-bitcoin.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-invity.svg" alt="" width="28" height="28" decoding="async"><span>Invity</span></a>
+        <a href="secure.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-blockstream.png" alt="" width="28" height="28" decoding="async"><span>Blockstream</span></a>
+        <a href="secure.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-ledger.png" alt="" width="28" height="28" decoding="async"><span>Ledger</span></a>
+        <a href="secure.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-trezor.png" alt="" width="28" height="28" decoding="async"><span>Trezor</span></a>
+        <a href="treasury.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-bitgo.png" alt="" width="28" height="28" decoding="async"><span>BitGo</span></a>
+        <a href="treasury.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-coinbase.png" alt="" width="28" height="28" decoding="async"><span>Coinbase</span></a>
+        <a href="treasury.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-sygnum.png" alt="" width="28" height="28" decoding="async"><span>Sygnum</span></a>
       </div>
     </div>
   </div>
   <div class="co-ticker co-ticker-2">
     <div class="co-row">
       <div class="co-set">
-        <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptowisser">Cryptowisser</a>
-        <a href="https://sumsub.com" target="_blank" rel="noopener noreferrer" class="co-logo co-sumsub">Sumsub</a>
-        <a href="https://finas.sk/" target="_blank" rel="noopener noreferrer" class="co-logo co-finas">Finas</a>
-        <a href="https://21bitcoin.app/en" target="_blank" rel="noopener noreferrer" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
-        <a href="https://coinrule.com/" target="_blank" rel="noopener noreferrer" class="co-logo co-coinrule">Coinrule</a>
-        <a href="https://abundantmines.com" target="_blank" rel="noopener noreferrer" class="co-logo co-abundant">Abundant <span>Mines</span></a>
-        <a href="https://www.invity.io" target="_blank" rel="noopener noreferrer" class="co-logo co-invity">Invity</a>
-        <a href="https://blockstream.com" target="_blank" rel="noopener noreferrer" class="co-logo co-blockstream">Block<span>stream</span></a>
-        <a href="https://crypto.com" target="_blank" rel="noopener noreferrer" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+        <a href="lending.html" class="co-logo co-partner"><img src="../logo-firefish.png" alt="" width="28" height="28" decoding="async"><span>Firefish</span></a>
+        <a href="tax.html" class="co-logo co-partner"><img src="../logo-koinly.png" alt="" width="28" height="28" decoding="async"><span>Koinly</span></a>
+        <a href="tax.html" class="co-logo co-partner"><img src="../logo-blockpit.png" alt="" width="28" height="28" decoding="async"><span>Blockpit</span></a>
+        <a href="tax.html" class="co-logo co-partner"><img src="../logo-cointracking.png" alt="" width="28" height="28" decoding="async"><span>CoinTracking</span></a>
+        <a href="tax.html" class="co-logo co-partner"><img src="../logo-divly.png" alt="" width="28" height="28" decoding="async"><span>Divly</span></a>
+        <a href="bots.html" class="co-logo co-partner"><img src="../logo-coinrule.png" alt="" width="28" height="28" decoding="async"><span>Coinrule</span></a>
+        <a href="bots.html" class="co-logo co-partner"><img src="../logo-cryptohopper.png" alt="" width="28" height="28" decoding="async"><span>Cryptohopper</span></a>
+        <a href="bots.html" class="co-logo co-partner"><img src="../logo-revenuebot.png" alt="" width="28" height="28" decoding="async"><span>RevenueBot</span></a>
+        <a href="mining.html" class="co-logo co-partner"><img src="../logo-abundantmines.png" alt="" width="28" height="28" decoding="async"><span>Abundant Mines</span></a>
+        <a href="mining.html" class="co-logo co-partner"><img src="../logo-oneminers.png" alt="" width="28" height="28" decoding="async"><span>OneMiners</span></a>
+        <a href="mining.html" class="co-logo co-partner"><img src="../logo-powermining.png" alt="" width="28" height="28" decoding="async"><span>PowerMining</span></a>
+        <a href="https://finas.sk/en/domov/" target="_blank" rel="noopener noreferrer" class="co-logo co-finas" title="Member of FINAS – Fintech & Insurtech Association of Slovakia">Finas</a>
       </div>
       <div class="co-set" aria-hidden="true">
-        <a href="https://www.cryptowisser.com/exchange/virtuse-exchange/" tabindex="-1" class="co-logo co-cryptowisser">Cryptowisser</a>
-        <a href="https://sumsub.com" tabindex="-1" class="co-logo co-sumsub">Sumsub</a>
-        <a href="https://finas.sk/" tabindex="-1" class="co-logo co-finas">Finas</a>
-        <a href="https://21bitcoin.app/en" tabindex="-1" class="co-logo co-21bitcoin"><span>21</span>bitcoin</a>
-        <a href="https://coinrule.com/" tabindex="-1" class="co-logo co-coinrule">Coinrule</a>
-        <a href="https://abundantmines.com" tabindex="-1" class="co-logo co-abundant">Abundant <span>Mines</span></a>
-        <a href="https://www.invity.io" tabindex="-1" class="co-logo co-invity">Invity</a>
-        <a href="https://blockstream.com" tabindex="-1" class="co-logo co-blockstream">Block<span>stream</span></a>
-        <a href="https://crypto.com" tabindex="-1" class="co-logo co-cryptocom">Crypto<span>.com</span></a>
+        <a href="lending.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-firefish.png" alt="" width="28" height="28" decoding="async"><span>Firefish</span></a>
+        <a href="tax.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-koinly.png" alt="" width="28" height="28" decoding="async"><span>Koinly</span></a>
+        <a href="tax.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-blockpit.png" alt="" width="28" height="28" decoding="async"><span>Blockpit</span></a>
+        <a href="tax.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-cointracking.png" alt="" width="28" height="28" decoding="async"><span>CoinTracking</span></a>
+        <a href="tax.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-divly.png" alt="" width="28" height="28" decoding="async"><span>Divly</span></a>
+        <a href="bots.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-coinrule.png" alt="" width="28" height="28" decoding="async"><span>Coinrule</span></a>
+        <a href="bots.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-cryptohopper.png" alt="" width="28" height="28" decoding="async"><span>Cryptohopper</span></a>
+        <a href="bots.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-revenuebot.png" alt="" width="28" height="28" decoding="async"><span>RevenueBot</span></a>
+        <a href="mining.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-abundantmines.png" alt="" width="28" height="28" decoding="async"><span>Abundant Mines</span></a>
+        <a href="mining.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-oneminers.png" alt="" width="28" height="28" decoding="async"><span>OneMiners</span></a>
+        <a href="mining.html" tabindex="-1" class="co-logo co-partner"><img src="../logo-powermining.png" alt="" width="28" height="28" decoding="async"><span>PowerMining</span></a>
+        <a href="https://finas.sk/en/domov/" target="_blank" rel="noopener noreferrer" tabindex="-1" class="co-logo co-finas" title="Member of FINAS – Fintech & Insurtech Association of Slovakia">Finas</a>
       </div>
     </div>
   </div>
