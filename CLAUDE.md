@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-05, fifth round) — Homepage partner logo rail rebuilt: 22 partners + Finas, 10 languages (committed on main, deploy pending: `bash ../deploy_site.sh 12e7379` from the site folder)
+## Session status (2026-10-05, fifth round) — Homepage partner logo rail rebuilt: 22 partners + Finas, 10 languages (main `60694aa`, gh-pages `a22bc1b`; **live on production** — user ran `bash ../deploy_site.sh 12e7379`, 11/11 md5-verified on virtuse.com, 0 removed names live)
 
 - "You're in good company" (`section.company`, only on the 10 homepages) showed non-partners (Banxa, Coinfirm, Unchained), vendors (AWS, TradingView, Sumsub) and old "Virtuse Exchange" listings (CoinMarketCap, Cryptowisser). Now: exactly the 22 partners with a card on a category page + Finas (Fintech & Insurtech Association of Slovakia) as a membership, not counted. Handover: `partnerships/HANDOVER-partner-rail.md`.
 - Source of truth: `data/partners.json` (`partners` + `memberships`). `i18n-tools/build_partner_rail.py` rebuilds the rail on all 10 homepages from it (idempotent). **Rule: the rail = exactly the partners with a category-page card; edit the JSON and re-run the script, never hand-edit the rail.**
