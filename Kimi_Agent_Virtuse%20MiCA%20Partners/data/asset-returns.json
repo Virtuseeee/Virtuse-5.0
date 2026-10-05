@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T08:54:40.163Z",
+ "generated": "2026-10-05T08:56:38.349Z",
  "asOf": "2026-10-05",
  "years": [
   2016,
@@ -27,7 +27,7 @@
   "2023": 1.10682,
   "2024": 1.04062,
   "2025": 1.17473,
-  "2026": 1.12158
+  "2026": 1.12133
  },
  "yearsElapsed": 10.7633,
  "source": "Yahoo Finance adjusted close (total return, dividends reinvested), in USD. EUR-listed ETFs converted with EUR/USD; the page converts every row to EUR on request.",
@@ -46,9 +46,9 @@
     1.5542,
     1.2105,
     -0.0634,
-    -0.015
+    -0.0152
    ],
-   "cumulative": 199.1991,
+   "cumulative": 199.1565,
    "annualized": 0.6362
   },
   {
@@ -468,9 +468,9 @@
     0.116,
     -0.0164,
     0.1629,
-    -0.0578
+    -0.058
    ],
-   "cumulative": 0.1549,
+   "cumulative": 0.1547,
    "annualized": 0.0135
   }
  ]
