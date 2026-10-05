@@ -44,6 +44,10 @@ read -r -p "FTP/SFTP username [admin.virtuse.com]: " FTPUSER </dev/tty
 FTPUSER=${FTPUSER:-admin.virtuse.com}
 echo "== 3/4 production (sftp $FTPUSER@$HOST, asks for the password)"
 { echo "-cd public_html"; echo "pwd"
+  # sftp put can't create folders: -mkdir every parent dir first (the "-"
+  # ignores "already exists").
+  while IFS= read -r f; do d=$(dirname "$f"); while [ "$d" != "." ]; do echo "$d"; d=$(dirname "$d"); done; done < "$LIST" \
+    | sort -u | awk '{ print length, $0 }' | sort -n | cut -d' ' -f2- | while IFS= read -r d; do echo "-mkdir \"$d\""; done
   while IFS= read -r f; do echo "put \"$f\" \"$f\""; done < "$LIST"; } > "$BATCH"
 (cd "$SITE" && sftp -P 222 "$FTPUSER@$HOST" < "$BATCH") || { echo "!! sftp failed"; exit 1; }
 
