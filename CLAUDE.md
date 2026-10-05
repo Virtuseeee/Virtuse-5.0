@@ -2,10 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Open task (2026-10-05) — Homepage partner logo rail: handover ready, not started
+## Session status (2026-10-05, fifth round) — Homepage partner logo rail rebuilt: 22 partners + Finas, 10 languages (committed on main, deploy pending: `bash ../deploy_site.sh 12e7379` from the site folder)
 
-- `partnerships/HANDOVER-partner-rail.md`: context, Ras's decisions and a ready-to-paste agent prompt. The "You're in good company" rail on all 10 homepages shows non-partners (Banxa, Coinfirm, Unchained), vendors (AWS, TradingView, Sumsub) and old "Virtuse Exchange" listings (CoinMarketCap, Cryptowisser); target = exactly the 22 category-page partners (from new `data/partners.json`), logos linking to our category pages, plus Finas (Fintech & Insurtech Association of Slovakia) as a membership outside the 22 count. Sumsub goes.
-- Before deploy: finas.sk's homepage nav showed a "brucebet casino" link (likely injected spam); Finas membership not verifiable from their site. `aml-compliance.html` still says KYC runs on Sumsub (separate legal item).
+- "You're in good company" (`section.company`, only on the 10 homepages) showed non-partners (Banxa, Coinfirm, Unchained), vendors (AWS, TradingView, Sumsub) and old "Virtuse Exchange" listings (CoinMarketCap, Cryptowisser). Now: exactly the 22 partners with a card on a category page + Finas (Fintech & Insurtech Association of Slovakia) as a membership, not counted. Handover: `partnerships/HANDOVER-partner-rail.md`.
+- Source of truth: `data/partners.json` (`partners` + `memberships`). `i18n-tools/build_partner_rail.py` rebuilds the rail on all 10 homepages from it (idempotent). **Rule: the rail = exactly the partners with a category-page card; edit the JSON and re-run the script, never hand-edit the rail.**
+- Row 1 buy + custody + treasury (11), row 2 loans + tax + bots + mining (11) + Finas (the handover's "buy+custody+loans+treasury" split was 12/10). Chips = app icon on a white 28px tile (like the category pages; Invity's SVG and Ledger are invisible on dark otherwise) + name; grayscale/0.6 at rest, colour on hover. Partner links go to the category page in the homepage's language (affiliate links live on the cards there); Finas links out. Icons use `alt=""` because the name is visible text.
+- Checked: tagcheck 0 on 10 files, 0 removed names, 22 + Finas in the visible set, all 22 logos 200, links resolve, animation runs, 375px no overflow, no console errors.
+- Still open: finas.sk nav showed a "brucebet casino" link (likely injected spam) — tell Finas or reconsider the link; Finas membership not verifiable from their site; `aml-compliance.html` (10 languages) still says KYC runs on Sumsub (legal item).
 
 ## Session status (2026-10-05, fourth round) — Brief "Latest Brief" card follows issues.json; SFTP login fixed on this Mac (**live on production** — user ran the sftp batch, 2/2 md5-verified on virtuse.com; card shows the Sep 28 issue)
 

@@ -1,6 +1,6 @@
 # Handover: logo pás „You're in good company“ na homepage
 
-Stav k 2026-10-05. Nič z tejto úlohy ešte nie je urobené ani nasadené.
+Stav k 2026-10-05: **úloha je urobená a commitnutá na main** (rail z `data/partners.json`, skript `i18n-tools/build_partner_rail.py`). Nasadenie na produkciu spúšťa Ras: `bash ../deploy_site.sh 12e7379` z priečinka webu. Rozdelenie radov je buy + custody + treasury (11) a loans + tax + bots + mining (11) + Finas, lebo pôvodné rozdelenie v prompte dávalo 12/10.
 
 ## O čo ide
 

@@ -1,0 +1,146 @@
+{
+  "note": "Homepage partner rail. partners = exactly the partners with a card on a category page; Finas is a membership, not counted.",
+  "partners": [
+    {
+      "name": "21bitcoin",
+      "category": "buy",
+      "logo": "logo-21bitcoin-app.png",
+      "page": "buy-bitcoin.html"
+    },
+    {
+      "name": "ByBit EU",
+      "category": "buy",
+      "logo": "logo-bybit.png",
+      "page": "buy-bitcoin.html"
+    },
+    {
+      "name": "Kraken",
+      "category": "buy",
+      "logo": "logo-kraken.png",
+      "page": "buy-bitcoin.html"
+    },
+    {
+      "name": "Crypto.com",
+      "category": "buy",
+      "logo": "logo-crypto-com.png",
+      "page": "buy-bitcoin.html"
+    },
+    {
+      "name": "Invity",
+      "category": "buy",
+      "logo": "logo-invity.svg",
+      "page": "buy-bitcoin.html"
+    },
+    {
+      "name": "Blockstream",
+      "category": "custody",
+      "logo": "logo-blockstream.png",
+      "page": "secure.html"
+    },
+    {
+      "name": "Ledger",
+      "category": "custody",
+      "logo": "logo-ledger.png",
+      "page": "secure.html"
+    },
+    {
+      "name": "Trezor",
+      "category": "custody",
+      "logo": "logo-trezor.png",
+      "page": "secure.html"
+    },
+    {
+      "name": "BitGo",
+      "category": "treasury",
+      "logo": "logo-bitgo.png",
+      "page": "treasury.html"
+    },
+    {
+      "name": "Coinbase",
+      "category": "treasury",
+      "logo": "logo-coinbase.png",
+      "page": "treasury.html"
+    },
+    {
+      "name": "Sygnum",
+      "category": "treasury",
+      "logo": "logo-sygnum.png",
+      "page": "treasury.html"
+    },
+    {
+      "name": "Firefish",
+      "category": "loans",
+      "logo": "logo-firefish.png",
+      "page": "lending.html"
+    },
+    {
+      "name": "Koinly",
+      "category": "tax",
+      "logo": "logo-koinly.png",
+      "page": "tax.html"
+    },
+    {
+      "name": "Blockpit",
+      "category": "tax",
+      "logo": "logo-blockpit.png",
+      "page": "tax.html"
+    },
+    {
+      "name": "CoinTracking",
+      "category": "tax",
+      "logo": "logo-cointracking.png",
+      "page": "tax.html"
+    },
+    {
+      "name": "Divly",
+      "category": "tax",
+      "logo": "logo-divly.png",
+      "page": "tax.html"
+    },
+    {
+      "name": "Coinrule",
+      "category": "bots",
+      "logo": "logo-coinrule.png",
+      "page": "bots.html"
+    },
+    {
+      "name": "Cryptohopper",
+      "category": "bots",
+      "logo": "logo-cryptohopper.png",
+      "page": "bots.html"
+    },
+    {
+      "name": "RevenueBot",
+      "category": "bots",
+      "logo": "logo-revenuebot.png",
+      "page": "bots.html"
+    },
+    {
+      "name": "Abundant Mines",
+      "category": "mining",
+      "logo": "logo-abundantmines.png",
+      "page": "mining.html"
+    },
+    {
+      "name": "OneMiners",
+      "category": "mining",
+      "logo": "logo-oneminers.png",
+      "page": "mining.html"
+    },
+    {
+      "name": "PowerMining",
+      "category": "mining",
+      "logo": "logo-powermining.png",
+      "page": "mining.html"
+    }
+  ],
+  "memberships": [
+    {
+      "name": "Finas",
+      "category": "association",
+      "url": "https://finas.sk/en/domov/",
+      "title": "Member of FINAS – Fintech & Insurtech Association of Slovakia",
+      "countsAsPartner": false
+    }
+  ]
+}
