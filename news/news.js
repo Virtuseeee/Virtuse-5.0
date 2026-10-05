@@ -5,7 +5,8 @@
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
-  var FEATURED_SLUG = 'bitcoin-reclaimed-80000-after-the-fed-hike';
+  /* Fallback only: the featured card follows the newest issue in news/issues.json. */
+  var FEATURED_SLUG = 'five-percent-yields-and-an-empty-bid-for-paper';
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
@@ -85,6 +86,27 @@
     });
     return 'Updated today · ' + hhmm;
   }
+  /* Edition line follows the Pulse date (Europe/Paris). Static HTML date stays if the Pulse is missing or older. */
+  function applyEditionDate(iso) {
+    var t = document.querySelector('.edition time');
+    var d = new Date(iso);
+    if (!t || !iso || isNaN(d.getTime()) || typeof Intl === 'undefined') return;
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Europe/Paris', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+      }).formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+      var n = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit'
+      }).formatToParts(d).forEach(function (x) { n[x.type] = x.value; });
+      var ymd = n.year + '-' + n.month + '-' + n.day;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd) || !p.weekday || !p.month || !p.day || !p.year) return;
+      if (ymd <= (t.getAttribute('datetime') || '')) return;
+      t.setAttribute('datetime', ymd);
+      t.textContent = p.weekday + ', ' + p.month + ' ' + p.day + ', ' + p.year;
+    } catch (e) {}
+  }
   function applyFearGreed(fg) {
     var fine = $('numbersFine');
     if (!fine || !fg) return;
@@ -153,6 +175,7 @@
   function applyPulseMeta(data) {
     var updated = data && data.updated;
     setText('pulseUpdated', formatPulseUpdated(updated));
+    applyEditionDate(updated);
     var moved = (data && (data.what_moved || data.moved)) || '';
     var movedEl = $('pulseMoved');
     if (movedEl) {
@@ -511,8 +534,30 @@
       list.appendChild(article);
     });
   }
+  var PULSE_REMOTE = 'https://virtuse-newsletter.virtuse-ai.workers.dev/pulse.json';
+  var PULSE_LOCAL = 'news/news-pulse.json?v=20260928b';
+  function fetchPulseRemote() {
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 3000) : null;
+    return fetch(PULSE_REMOTE, ctrl ? { signal: ctrl.signal } : {}).then(function (r) {
+      if (!r.ok) throw new Error(String(r.status));
+      return r.json();
+    }).then(function (data) {
+      if (timer) clearTimeout(timer);
+      if (!data || !Array.isArray(data.items) || !data.items.length) throw new Error('bad remote pulse');
+      return data;
+    }, function (err) {
+      if (timer) clearTimeout(timer);
+      throw err;
+    });
+  }
+  function loadPulseData() {
+    return fetchPulseRemote().catch(function () {
+      return j(PULSE_LOCAL);
+    });
+  }
   function loadPulse() {
-    j('news/news-pulse.json?v=20260926a').then(function (data) {
+    loadPulseData().then(function (data) {
       applyPulseMeta(data || {});
       var local = (data && data.items) || [];
       if (data && data.feed) {
@@ -688,6 +733,65 @@
     var t = Date.parse(iso || '');
     return isNaN(t) ? 0 : t;
   }
+  /* Newest non-essay issue from news/issues.json (dates are YYYY-MM-DD). */
+  function latestIssue(issues) {
+    var best = null;
+    (issues || []).forEach(function (issue) {
+      if (!issue || !issue.slug || issue.essay || !issue.title) return;
+      if (!best || String(issue.date || '') > String(best.date || '')) best = issue;
+    });
+    return best;
+  }
+  function fmtEditionDate(ymd) {
+    var d = new Date(String(ymd || '') + 'T12:00:00Z');
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function issueFacts(issue) {
+    if (issue.facts && issue.facts.length) return issue.facts.slice(0, 3);
+    var parts = String(issue.excerpt || '').match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) || [];
+    return parts.map(function (x) { return x.trim().replace(/[.]$/, ''); }).filter(Boolean).slice(0, 3);
+  }
+  /* The static HTML card is a fallback. If issues.json has a newer issue, rewrite the card from it
+     (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry. */
+  function paintFeatured(issue) {
+    var card = $('featured');
+    if (!card || !issue) return;
+    var href = articleUrl(issue.slug);
+    var head = card.querySelector('h1 a');
+    if (head && head.getAttribute('href') === href) return;
+
+    var t = card.querySelector('.featured-eyebrow time');
+    var label = fmtEditionDate(issue.date);
+    if (t && label) {
+      t.setAttribute('datetime', issue.date);
+      t.textContent = label;
+    }
+    var img = card.querySelector('.featured-cover img');
+    if (img && issue.image) {
+      img.removeAttribute('width');
+      img.removeAttribute('height');
+      img.src = issue.image;
+      img.alt = issue.title;
+    }
+    if (head) {
+      head.textContent = issue.title;
+      head.setAttribute('href', href);
+    }
+    var list = card.querySelector('.featured-brief-facts');
+    if (list) {
+      var facts = issueFacts(issue);
+      list.textContent = '';
+      facts.forEach(function (f) {
+        var li = document.createElement('li');
+        li.textContent = f;
+        list.appendChild(li);
+      });
+      list.hidden = !facts.length;
+    }
+    var read = card.querySelector('.featured-brief-actions .btn');
+    if (read) read.setAttribute('href', href);
+  }
   function applyFeaturedCover(post) {
     var img = document.querySelector('#featured .featured-cover img');
     if (!img || !post) return;
@@ -728,8 +832,13 @@
     section.hidden = false;
   }
 
-  j('news/issues.json').then(function (data) {
+  j('news/issues.json?v=20260928c').then(function (data) {
     var list = (data && data.issues) || [];
+    var latest = latestIssue(list);
+    if (latest) {
+      FEATURED_SLUG = latest.slug;
+      paintFeatured(latest);
+    }
     paintArchive(list);
     paintBlog(list, []);
     j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 8000).then(function (posts) {
