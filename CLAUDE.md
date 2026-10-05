@@ -2,6 +2,29 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-05, third round) — Bitcoin Monthly Returns heatmap (main `bb23844`, gh-pages `7d73384`; **live on production** — user ran `bash ../deploy_site.sh 25ba995`, 13/13 md5-verified on virtuse.com, page checked in the browser)
+
+- `btc-monthly-returns.html` (EN only, Bitcoin Data section, modelled on newhedge.io's monthly-returns heatmap): rows = years 2026 → 2010 (newest first), columns Jan–Dec + Year; **Monthly/Quarterly** toggle (`localStorage['vb-hm-period']`), **USD/EUR** toggle (shares `vb-ar-ccy` with asset-returns); footer rows Average / Median / Positive (n/N). The current month uses the live Binance BTCUSDT price (dashed outline) and is excluded from the footer stats; 2010 starts with August (first full month; the 2010 Year cell is Jul-end → Dec). Cell tint saturates at ±30 % (months/quarters), ±150 % (Year). Page is a clone of asset-returns.html (same chrome, `.ar-*` styles + `.hm-*` additions).
+- Data: `btc-monthly-build/build.mjs` (Node, no deps) → `data/btc-monthly-returns.json` (month-end closes keyed `YYYY-MM` + `eurusd` month ends). BTC from the **CoinMetrics community API** (`PriceUSD`, daily, from 2010-07-18, `paging_from=start`); EUR/USD from the ECB via `api.frankfurter.app`. The page derives all returns from the closes. Runs as an extra step (`continue-on-error: true`) in `.github/workflows/asset-returns.yml`, which now commits both JSON files (`FILES` env). Like asset-returns, the page reads the JSON from raw.githubusercontent.com first, so production needs no uploads for new data.
+- "◆ Monthly Returns" added after "◆ Asset Returns" in the subnav of the 9 EN Bitcoin Data pages; sitemap entry; own canonical tag. Translations not done.
+- **On this Mac (rastislavs-macbook-air) `deploy_site.sh` lives in the repo root**, not `~/Virtuse-5.0`: run `bash ../deploy_site.sh <from>` from the site folder. My push triggered the data Action, whose commit made the script stop ("origin/main has 1 newer commit"); `git pull --rebase --autostash` and re-run. Expect this after any push touching `*-build/build.mjs`.
+- `.claude/launch.json`'s `--directory` server fails under the sandbox; preview with `python3 -m http.server 8891` run from inside the site folder.
+
+## Session status (2026-10-05, second round) — Story pages: duplicate canonical fixed, 359 pages live (main `25ba995`, gh-pages `b97377f`; **live on production** — user ran `stories-build/upload.sftp`, 360/360 md5-verified on virtuse.com incl. sitemap)
+
+- **Bug:** after SEO phase 5 gave `article.html` its own `<link rel="canonical" href=".../article.html">`, `stories-build/build.mjs` copied it into every story page next to the story's own canonical (two contradictory canonicals on ~357 pages). Also `/cookie-consent.js` was rewritten to `../..//cookie-consent.js`. `build.mjs` now strips the template's canonical and leaves root-absolute paths alone. Check story pages after any change to `article.html`'s head.
+- Production had been missing the 2026-10-02/03 story builds (356 stale, STRC story 404); now all 359 (181 en, 168 sk, 10 ru) match main.
+- **Stories build Action fails** (2026-10-04, 10-05): `UND_ERR_CONNECT_TIMEOUT` to blog.virtuse.com:443 from GitHub runners (10 s connect timeout, all 5 retries). Local builds work, so likely the WP host/Wordfence blocking GitHub IPs. Not fixed; until it is, new stories need a local `node stories-build/build.mjs` + commit + gh-pages rsync + `upload.sftp`.
+- Upload: `sftp -P 222 <login>@ftp.virtuse.com < ../stories-build/upload.sftp` from the site folder (login from WebAdmin FTP účty, see the entry below).
+
+## Session status (2026-10-05) — Asset Class Returns table, rebuilt daily (main `b2a51ee`, `6d1c7f1`, `931a4ef`; **live on production** — user ran `deploy_site.sh ac581fe7`, 11/11 md5-verified on virtuse.com)
+
+- `asset-returns.html` (EN only, Bitcoin Data section): calendar-year total returns 2016 → YTD, cumulative + annualized, Highest/Lowest/% positive rows, sort (YTD / annualized / default), **USD/EUR toggle** (EUR = USD return ÷ change in EUR/USD per year; choice in `localStorage['vb-ar-ccy']`). 23 rows: BTC + 18 US-listed ETFs (TLT, LQD dropped) + Europe: FEZ (Euro Stoxx 50), VGK (FTSE Europe), EUNH.DE (€ govt bonds), EUN5.DE (€ corp bonds); the two .DE ETFs are converted EUR→USD with EUR/USD.
+- Data: `asset-returns-build/build.mjs` (Node, no deps) pulls Yahoo Finance adjusted closes (unofficial API) and writes `data/asset-returns.json` (incl. `eurusd` year-ends + `yearsElapsed`). `.github/workflows/asset-returns.yml`: Mon–Fri 22:30 UTC + weekends 12:00 UTC, commits JSON to main and gh-pages. **The page reads the JSON from raw.githubusercontent.com first** (repo is public; CSP connect-src allows it), same-origin copy is the fallback, so production stays fresh without uploads.
+- "◆ Asset Returns" link added to the subnav of the 8 EN Bitcoin Data pages; sitemap entry. Translations not done.
+- `deploy_site.sh` now `-mkdir`s missing parent folders before `put` (production had no `data/`).
+- **Gotcha:** from this Mac (rastislavs-macbook-air) the SFTP login `admin.virtuse.com` was rejected even after a password change; the deploy worked once the user typed the login shown in WebAdmin → virtuse.com → Hosting → FTP a súbory → FTP účty. Don't just press Enter at the username prompt here.
+
 ## Session status (2026-10-02, fourth round) — SEO plan phase 5: Search Console export analysed; canonical tags on 209 hub pages (committed locally, deploy pending)
 
 - Export (user's ~/Downloads/virtuse, "Last 3 months" but data only from 2026-09-14): 107 clicks / 26.6K impressions. ~92 % of impressions are legacy URLs of the old site (www.virtuse.com/gold/ 16K, /oil/, /wallet/, /fees/, /virtu-token/ …; queries "crypto gold exchange" — mostly a different brand, CryptoGold Exchange; 14.3K impressions from Haiti). They hit the server catch-all 301 → blog.virtuse.com and will fade; not Bitcoin-only intent, so no redirect work planned.
@@ -37,6 +60,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Gotcha: `deploy_seo_phase12.sh` builds its file list as "changed vs origin/main", so after a successful push the list is empty and the script exits silently (set -e + pipefail on grep). Use a fixed commit range for re-runs.
 - Gotcha: the first push was rejected (origin/main had 11 newer commits: cookie banner, ru grammar, fr/es hero stats). `e9229a1` was cherry-picked onto origin/main (clean) and phase 2 regenerated; old state kept in branch `backup/seo-2026-10-02`. Always `git fetch` and check `behind` before building a deploy list, or the upload overwrites newer production files.
 - Profiles (sameAs): https://twitter.com/VirtuseExchange, https://www.linkedin.com/company/virtuse-exchange/, https://www.facebook.com/virtuseexchange/
+
+## Session status (2026-10-02, third round) — EN blog post on STRC published via WordPress (post 15148)
+
+- "Understand Saylor's 12% STRC in 10 Minutes, and Buy It From Europe Without the Mistake I Made", category Blog 13, author 36, featured media 15144 (user-supplied cover), inline charts 15145–15147 (made in this session from strategy.com/strc and Strategy's STRC Investor Briefing of 27 Sept 2026). Draft and source in a Claude Doc: https://claude.ai/code/artifact/1ce15470-1810-4455-b170-47b8fe13a348.
+- Replaces the Slovak post of 14 Apr 2026 (blog.virtuse.com/sk/zabudni-na-05-v-banke-…), which claimed "8x collateral" and "stable as a rock"; Strategy's own briefing says STRC "is not collateralized by Strategy's bitcoin holdings", and STRC fell to ~$71 in June 2026. Whether the SK post was corrected/unpublished was not confirmed in-session.
+- Not done before publishing (user chose to publish anyway): legal read of a buying guide that names brokers, image rights for the cover (Saylor likeness).
+- **Gotcha:** `article.js` builds its own numbered "Sources" list from every external link in the body. Don't add a manual Sources list in WP content (it showed up twice); link sources inline instead.
+- Found: WordPress admin email is still `info@webhelp.sk` (likely the agency that built the WP site). User was advised to change it, check Wordfence's alert email and any Webhelp admin account; not changed by Claude.
 
 ## Session status (2026-10-02, second round) — Cookie consent banner, Google Consent Mode v2, 10 languages (`371013d`, gh-pages `32483d6`, staging 622/622 md5-verified; **live on production** — user ran the sftp batch 2026-10-02, 622/622 md5-verified on virtuse.com after a follow-up upload of `sk/stories/camusova-otazka-ak-je-vsetko-relativne-preco-pokracovat/`, whose folder had been missing on the server (301 to blog) since the 2026-09-28 story upload)
 
