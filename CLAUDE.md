@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Open task (2026-10-05) — Homepage partner logo rail: handover ready, not started
+
+- `partnerships/HANDOVER-partner-rail.md`: context, Ras's decisions and a ready-to-paste agent prompt. The "You're in good company" rail on all 10 homepages shows non-partners (Banxa, Coinfirm, Unchained), vendors (AWS, TradingView, Sumsub) and old "Virtuse Exchange" listings (CoinMarketCap, Cryptowisser); target = exactly the 22 category-page partners (from new `data/partners.json`), logos linking to our category pages, plus Finas (Fintech & Insurtech Association of Slovakia) as a membership outside the 22 count. Sumsub goes.
+- Before deploy: finas.sk's homepage nav showed a "brucebet casino" link (likely injected spam); Finas membership not verifiable from their site. `aml-compliance.html` still says KYC runs on Sumsub (separate legal item).
+
 ## Session status (2026-10-05, fourth round) — Brief "Latest Brief" card follows issues.json; SFTP login fixed on this Mac (**live on production** — user ran the sftp batch, 2/2 md5-verified on virtuse.com; card shows the Sep 28 issue)
 
 - **Bug:** the featured card on `news.html` was static HTML; `news.js` only swapped its cover image to `FEATURED_SLUG`. Production showed the Sep 28 cover over the Sep 22 headline/date/link, and the Sep 28 issue was filtered out of the archive (it skips `FEATURED_SLUG`), so the newest issue could not be opened from the page.
