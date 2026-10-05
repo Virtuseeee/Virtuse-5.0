@@ -5,6 +5,7 @@
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
+  /* Fallback only: the featured card follows the newest issue in news/issues.json. */
   var FEATURED_SLUG = 'five-percent-yields-and-an-empty-bid-for-paper';
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
@@ -732,6 +733,65 @@
     var t = Date.parse(iso || '');
     return isNaN(t) ? 0 : t;
   }
+  /* Newest non-essay issue from news/issues.json (dates are YYYY-MM-DD). */
+  function latestIssue(issues) {
+    var best = null;
+    (issues || []).forEach(function (issue) {
+      if (!issue || !issue.slug || issue.essay || !issue.title) return;
+      if (!best || String(issue.date || '') > String(best.date || '')) best = issue;
+    });
+    return best;
+  }
+  function fmtEditionDate(ymd) {
+    var d = new Date(String(ymd || '') + 'T12:00:00Z');
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function issueFacts(issue) {
+    if (issue.facts && issue.facts.length) return issue.facts.slice(0, 3);
+    var parts = String(issue.excerpt || '').match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) || [];
+    return parts.map(function (x) { return x.trim().replace(/[.]$/, ''); }).filter(Boolean).slice(0, 3);
+  }
+  /* The static HTML card is a fallback. If issues.json has a newer issue, rewrite the card from it
+     (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry. */
+  function paintFeatured(issue) {
+    var card = $('featured');
+    if (!card || !issue) return;
+    var href = articleUrl(issue.slug);
+    var head = card.querySelector('h1 a');
+    if (head && head.getAttribute('href') === href) return;
+
+    var t = card.querySelector('.featured-eyebrow time');
+    var label = fmtEditionDate(issue.date);
+    if (t && label) {
+      t.setAttribute('datetime', issue.date);
+      t.textContent = label;
+    }
+    var img = card.querySelector('.featured-cover img');
+    if (img && issue.image) {
+      img.removeAttribute('width');
+      img.removeAttribute('height');
+      img.src = issue.image;
+      img.alt = issue.title;
+    }
+    if (head) {
+      head.textContent = issue.title;
+      head.setAttribute('href', href);
+    }
+    var list = card.querySelector('.featured-brief-facts');
+    if (list) {
+      var facts = issueFacts(issue);
+      list.textContent = '';
+      facts.forEach(function (f) {
+        var li = document.createElement('li');
+        li.textContent = f;
+        list.appendChild(li);
+      });
+      list.hidden = !facts.length;
+    }
+    var read = card.querySelector('.featured-brief-actions .btn');
+    if (read) read.setAttribute('href', href);
+  }
   function applyFeaturedCover(post) {
     var img = document.querySelector('#featured .featured-cover img');
     if (!img || !post) return;
@@ -774,6 +834,11 @@
 
   j('news/issues.json?v=20260928c').then(function (data) {
     var list = (data && data.issues) || [];
+    var latest = latestIssue(list);
+    if (latest) {
+      FEATURED_SLUG = latest.slug;
+      paintFeatured(latest);
+    }
     paintArchive(list);
     paintBlog(list, []);
     j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 8000).then(function (posts) {
