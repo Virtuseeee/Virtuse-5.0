@@ -3513,6 +3513,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/trading-volume.html"/>
   </url>
   <url>
+    <loc>https://virtuse.com/asset-returns.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
     <loc>https://virtuse.com/fear-greed.html</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>daily</changefreq>
