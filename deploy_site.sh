@@ -40,8 +40,12 @@ HOST=ftp.virtuse.com
 if ! host -W 5 "$HOST" >/dev/null 2>&1 && ! dscacheutil -q host -a name "$HOST" | grep -q ip_address; then
   echo "   (this Mac can't resolve $HOST right now, connecting to $IP)"; HOST=$IP
 fi
-read -r -p "FTP/SFTP username [admin.virtuse.com]: " FTPUSER </dev/tty
-FTPUSER=${FTPUSER:-admin.virtuse.com}
+# Default login: the User set for this host in ~/.ssh/config, if any
+# (ssh -G falls back to the local account name when none is set).
+CFGUSER=$(ssh -G "$HOST" 2>/dev/null | awk '$1=="user"{print $2; exit}')
+[ -n "$CFGUSER" ] && [ "$CFGUSER" != "$(id -un)" ] || CFGUSER=admin.virtuse.com
+read -r -p "FTP/SFTP username [$CFGUSER]: " FTPUSER </dev/tty
+FTPUSER=${FTPUSER:-$CFGUSER}
 echo "== 3/4 production (sftp $FTPUSER@$HOST, asks for the password)"
 { echo "-cd public_html"; echo "pwd"
   # sftp put can't create folders: -mkdir every parent dir first (the "-"
