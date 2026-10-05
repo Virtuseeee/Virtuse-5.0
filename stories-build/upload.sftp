@@ -30,6 +30,7 @@
 -mkdir public_html/stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits
 -mkdir public_html/stories/best-10-bitcoin-trading-strategies-for-2023
 -mkdir public_html/stories/bitcoin-and-gold-are-outperforming
+-mkdir public_html/stories/bitcoin-beat-the-war-november-still-gets-a-vote
 -mkdir public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013
 -mkdir public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms
 -mkdir public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin
@@ -233,6 +234,7 @@
 -mkdir public_html/sk/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds
 -mkdir public_html/sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000
 -mkdir public_html/sk/stories/bitcoin-sa-stal-najvacsou-financnou-spolocnostou-na-svete-2
+-mkdir public_html/sk/stories/bitcoin-vyhral-vojnu-november-este-len-rozhodne
 -mkdir public_html/sk/stories/bitcoin-za-100-milionov-fidelity-to-vidi-realne
 -mkdir public_html/sk/stories/bitcoinovy-sok-v-blackrocku-bitcoin-je-zrazu-ich-hlavny-generator-prijmov
 -mkdir public_html/sk/stories/blackrock-investuje-staty-hromadia-bitcoin-no-slovak-ma-jasno-je-to-pyramida-a-vy-vsetci-si-este-zaplacete
@@ -410,6 +412,7 @@ put sk/stories/bitcoin-nie-je-mrtvy-to-len-vas-stary-matrix-kolabuje/index.html 
 put sk/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html public_html/sk/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html
 put sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000/index.html public_html/sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000/index.html
 put sk/stories/bitcoin-sa-stal-najvacsou-financnou-spolocnostou-na-svete-2/index.html public_html/sk/stories/bitcoin-sa-stal-najvacsou-financnou-spolocnostou-na-svete-2/index.html
+put sk/stories/bitcoin-vyhral-vojnu-november-este-len-rozhodne/index.html public_html/sk/stories/bitcoin-vyhral-vojnu-november-este-len-rozhodne/index.html
 put sk/stories/bitcoin-za-100-milionov-fidelity-to-vidi-realne/index.html public_html/sk/stories/bitcoin-za-100-milionov-fidelity-to-vidi-realne/index.html
 put sk/stories/bitcoinovy-sok-v-blackrocku-bitcoin-je-zrazu-ich-hlavny-generator-prijmov/index.html public_html/sk/stories/bitcoinovy-sok-v-blackrocku-bitcoin-je-zrazu-ich-hlavny-generator-prijmov/index.html
 put sk/stories/blackrock-investuje-staty-hromadia-bitcoin-no-slovak-ma-jasno-je-to-pyramida-a-vy-vsetci-si-este-zaplacete/index.html public_html/sk/stories/blackrock-investuje-staty-hromadia-bitcoin-no-slovak-ma-jasno-je-to-pyramida-a-vy-vsetci-si-este-zaplacete/index.html
@@ -564,6 +567,7 @@ put stories/banks-adopt-bitcoin-for-all-wrong-reasons/index.html public_html/sto
 put stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits/index.html public_html/stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits/index.html
 put stories/best-10-bitcoin-trading-strategies-for-2023/index.html public_html/stories/best-10-bitcoin-trading-strategies-for-2023/index.html
 put stories/bitcoin-and-gold-are-outperforming/index.html public_html/stories/bitcoin-and-gold-are-outperforming/index.html
+put stories/bitcoin-beat-the-war-november-still-gets-a-vote/index.html public_html/stories/bitcoin-beat-the-war-november-still-gets-a-vote/index.html
 put stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html
 put stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html
 put stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html

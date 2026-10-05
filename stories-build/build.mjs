@@ -148,7 +148,8 @@ function render(template, feed, post, inferDesk) {
 
   // Relative href/src in markup -> relative to this folder depth. data-hub
   // values stay site-relative (article.js prefixes them with data-root).
-  h = h.replace(/\b(href|src)="(?!https?:|\/\/|#|data:|mailto:|javascript:)([^"]*)"/g, (m, a, v) => `${a}="${root}${v}"`);
+  // Root-absolute paths (/cookie-consent.js) already work at any depth.
+  h = h.replace(/\b(href|src)="(?!https?:|\/|#|data:|mailto:|javascript:)([^"]*)"/g, (m, a, v) => `${a}="${root}${v}"`);
 
   sub(/<html lang="en" /, () =>
     `<html lang="${feed.lang}" data-root="${root}" data-slug="${esc(post.slug)}" data-lang="${feed.lang}" data-story="${esc(storyPath)}" `, 'html');
@@ -189,6 +190,8 @@ function render(template, feed, post, inferDesk) {
   ].filter(Boolean).join('\n');
   // Replace the generic head block (title .. twitter:image) in one go.
   sub(/<title>[\s\S]*?<meta name="description"[^>]*>/, () => '<!--HEAD-->', 'title/description');
+  // The template's own canonical (article.html) would contradict the story's.
+  h = h.replace(/<link rel="canonical"[^>]*>\n?/g, '');
   h = h.replace(/<meta property="og:[^>]*>\n/g, '').replace(/<meta name="twitter:[^>]*>\n/g, '');
   h = h.replace('<!--HEAD-->', head);
 
