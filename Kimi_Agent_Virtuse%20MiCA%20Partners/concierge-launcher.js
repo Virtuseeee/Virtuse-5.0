@@ -1,5 +1,5 @@
 /*
- * Virtuse Bitcoin Concierge — sticky launcher (sitewide).
+ * Virtuse Partner Finder (formerly Bitcoin Concierge) — sticky launcher (sitewide).
  *
  * A small floating bubble, bottom-right, on every top-level EN, SK and
  * CS page. Clicking it opens the Concierge (concierge.html /
@@ -45,74 +45,74 @@
   var LANG = HAS_OWN ? PAGE_LANG : 'en';
   var COPY = {
     en: {
-      bubbleAria: 'Open Bitcoin Concierge — which Bitcoin service is right for me?',
+      bubbleAria: 'Open Partner Finder: compare Bitcoin services that fit your criteria',
       bubbleTitle: 'Which Bitcoin service is right for me?',
       bubbleSub: 'Free · No sign-up · We never hold your keys',
-      closeAria: 'Close Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Close Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     sk: {
-      bubbleAria: 'Otvoriť Bitcoin Concierge — ktorá Bitcoin služba je pre mňa tá pravá?',
+      bubbleAria: 'Otvoriť Partner Finder: porovnajte Bitcoin služby podľa svojich kritérií',
       bubbleTitle: 'Ktorá Bitcoin služba je pre mňa tá pravá?',
       bubbleSub: 'Zadarmo · Bez registrácie · Nikdy nedržíme vaše kľúče',
-      closeAria: 'Zavrieť Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Zavrieť Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     cs: {
-      bubbleAria: 'Otevřít Bitcoin Concierge — která Bitcoin služba je pro mě ta pravá?',
+      bubbleAria: 'Otevřít Partner Finder: porovnejte Bitcoin služby podle svých kritérií',
       bubbleTitle: 'Která Bitcoin služba je pro mě ta pravá?',
       bubbleSub: 'Zdarma · Bez registrace · Nikdy nedržíme vaše klíče',
-      closeAria: 'Zavřít Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Zavřít Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     de: {
-      bubbleAria: 'Bitcoin Concierge öffnen – welcher Bitcoin-Service passt zu mir?',
+      bubbleAria: 'Partner Finder öffnen: Bitcoin-Services nach Ihren Kriterien vergleichen',
       bubbleTitle: 'Welcher Bitcoin-Service passt zu mir?',
       bubbleSub: 'Kostenlos · Ohne Anmeldung · Wir verwahren nie Ihre Schlüssel',
-      closeAria: 'Bitcoin Concierge schließen',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Partner Finder schließen',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     fr: {
-      bubbleAria: 'Ouvrir le Bitcoin Concierge : quel service Bitcoin me convient ?',
+      bubbleAria: 'Ouvrir le Partner Finder : comparer les services Bitcoin selon vos critères',
       bubbleTitle: 'Quel service Bitcoin me convient\u00a0?',
       bubbleSub: 'Gratuit · Sans inscription · Nous ne détenons jamais vos clés',
-      closeAria: 'Fermer le Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Fermer le Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     es: {
-      bubbleAria: 'Abrir el Bitcoin Concierge: ¿qué servicio de Bitcoin me conviene?',
+      bubbleAria: 'Abrir Partner Finder: compare servicios de Bitcoin según sus criterios',
       bubbleTitle: '¿Qué servicio de Bitcoin me conviene?',
       bubbleSub: 'Gratis · Sin registro · Nunca custodiamos sus claves',
-      closeAria: 'Cerrar el Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Cerrar Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     pl: {
-      bubbleAria: 'Otwórz Bitcoin Concierge: która usługa bitcoinowa jest dla mnie?',
+      bubbleAria: 'Otwórz Partner Finder: porównaj usługi bitcoinowe według swoich kryteriów',
       bubbleTitle: 'Która usługa bitcoinowa jest dla mnie?',
       bubbleSub: 'Bezpłatnie · Bez rejestracji · Nigdy nie przechowujemy kluczy',
-      closeAria: 'Zamknij Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Zamknij Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     hu: {
-      bubbleAria: 'Bitcoin Concierge megnyitása: melyik Bitcoin-szolgáltatás illik hozzám?',
+      bubbleAria: 'Partner Finder megnyitása: Bitcoin-szolgáltatások összevetése a feltételei szerint',
       bubbleTitle: 'Melyik Bitcoin-szolgáltatás illik hozzám?',
       bubbleSub: 'Ingyenes · Regisztráció nélkül · A kulcsait soha nem kezeljük',
-      closeAria: 'Bitcoin Concierge bezárása',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Partner Finder bezárása',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     uk: {
-      bubbleAria: 'Відкрити Bitcoin Concierge: який Біткоїн-сервіс мені підходить?',
+      bubbleAria: 'Відкрити Partner Finder: порівняти Біткоїн-сервіси за вашими критеріями',
       bubbleTitle: 'Який Біткоїн-сервіс мені підходить?',
       bubbleSub: 'Безкоштовно · Без реєстрації · Ми ніколи не зберігаємо ваші ключі',
-      closeAria: 'Закрити Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Закрити Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
     ru: {
-      bubbleAria: 'Открыть Bitcoin Concierge: какой Биткоин-сервис мне подходит?',
+      bubbleAria: 'Открыть Partner Finder: сравнить Биткоин-сервисы по вашим критериям',
       bubbleTitle: 'Какой Биткоин-сервис мне подходит?',
       bubbleSub: 'Бесплатно · Без регистрации · Мы никогда не храним ваши ключи',
-      closeAria: 'Закрыть Bitcoin Concierge',
-      iframeTitle: 'Virtuse Bitcoin Concierge',
+      closeAria: 'Закрыть Partner Finder',
+      iframeTitle: 'Virtuse Partner Finder',
     },
   }[LANG];
 

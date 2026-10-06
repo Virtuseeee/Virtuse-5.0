@@ -1,15 +1,39 @@
 {
  "locale": "es_ES",
  "project": {
-  "concierge": ["Bitcoin Concierge · Virtuse Layer 2", "Virtuse Bitcoin Concierge: orientación no custodial hacia socios de Bitcoin verificados en la UE."],
-  "stacking": ["Stacking Strategist · Virtuse Layer 2", "Virtuse Stacking Strategist: proyección DCA y comparación de comisiones de los socios para acumular Bitcoin."],
-  "loan": ["Loan & Liquidity Copilot · Virtuse Layer 2", "Virtuse Loan & Liquidity Copilot: compare vender su Bitcoin con pedir prestado usándolo como garantía, con sus propias cifras y el riesgo de liquidación."],
-  "tax-agent": ["Tax & Inheritance Agent · Virtuse Layer 2", "Virtuse Tax & Inheritance Agent: resumen de la fiscalidad cripto en 13 países de la UE y prueba de preparación para la herencia de su Bitcoin."]
+  "concierge": [
+   "Partner Finder · Virtuse Layer 2",
+   "Virtuse Partner Finder: orientación no custodial hacia socios de Bitcoin verificados en la UE."
+  ],
+  "stacking": [
+   "Stacking Strategist · Virtuse Layer 2",
+   "Virtuse Stacking Strategist: proyección DCA y comparación de comisiones de los socios para acumular Bitcoin."
+  ],
+  "loan": [
+   "Loan & Liquidity Copilot · Virtuse Layer 2",
+   "Virtuse Loan & Liquidity Copilot: compare vender su Bitcoin con pedir prestado usándolo como garantía, con sus propias cifras y el riesgo de liquidación."
+  ],
+  "tax-agent": [
+   "Tax & Inheritance Agent · Virtuse Layer 2",
+   "Virtuse Tax & Inheritance Agent: resumen de la fiscalidad cripto en 13 países de la UE y prueba de preparación para la herencia de su Bitcoin."
+  ]
  },
  "site": {
-  "concierge": ["Bitcoin Concierge: el socio adecuado en 60 segundos | Virtuse", "Responda a unas preguntas y el Bitcoin Concierge de Virtuse le dirige al socio verificado con licencia MiCA que le conviene: no custodial, gratuito y sin registro."],
-  "stacking": ["Stacking Strategist: plan DCA y comparación de comisiones | Virtuse", "Fije su ritmo de acumulación de Bitcoin, vea la proyección DCA a largo plazo y compare las comisiones de cada socio para encontrar la opción más barata por compra."],
-  "loan": ["Loan &amp; Liquidity Copilot: vender o pedir prestado | Virtuse", "Compare vender su Bitcoin con pedir prestado usándolo como garantía, con sus propias cifras: impuestos, coste de intereses y riesgo de liquidación, lado a lado."],
-  "tax-agent": ["Tax &amp; Inheritance Agent: 13 países de la UE | Virtuse", "Resumen de la fiscalidad de Bitcoin en 13 países de la UE y una prueba de herencia: ¿qué pasa con sus sats cuando usted falte?"]
+  "concierge": [
+   "Partner Finder: compare socios de Bitcoin en 60 segundos | Virtuse",
+   "Responda unas preguntas y Partner Finder de Virtuse le muestra lado a lado los socios de Bitcoin verificados que cumplen sus criterios: no custodial, gratuito y sin registro."
+  ],
+  "stacking": [
+   "Stacking Strategist: plan DCA y comparación de comisiones | Virtuse",
+   "Fije su ritmo de acumulación de Bitcoin, vea la proyección DCA a largo plazo y compare las comisiones de cada socio para encontrar la opción más barata por compra."
+  ],
+  "loan": [
+   "Loan &amp; Liquidity Copilot: vender o pedir prestado | Virtuse",
+   "Compare vender su Bitcoin con pedir prestado usándolo como garantía, con sus propias cifras: impuestos, coste de intereses y riesgo de liquidación, lado a lado."
+  ],
+  "tax-agent": [
+   "Tax &amp; Inheritance Agent: 13 países de la UE | Virtuse",
+   "Resumen de la fiscalidad de Bitcoin en 13 países de la UE y una prueba de herencia: ¿qué pasa con sus sats cuando usted falte?"
+  ]
  }
 }

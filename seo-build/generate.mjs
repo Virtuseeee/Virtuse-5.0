@@ -1731,7 +1731,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Methodology' },
       { href: toRoot(relFile, 'bitcoin-dca-calculator/'), label: 'DCA calculator' }
     ],
-    moduleCta: { href: toRoot(relFile, CTAS.concierge.replace(/^\//, '')), label: 'Get matched in Concierge →' },
+    moduleCta: { href: toRoot(relFile, CTAS.concierge.replace(/^\//, '')), label: 'Compare partners in Partner Finder →' },
     schemas: [
       faqLd(faqs),
       {
@@ -4402,7 +4402,7 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - DCA calculator: ${ORIGIN}/bitcoin-dca-calculator/
 - Sell vs borrow: ${ORIGIN}/sell-vs-borrow-bitcoin/
 - Inheritance checklist: ${ORIGIN}/bitcoin-inheritance/
-- Concierge (live): ${ORIGIN}/concierge.html
+- Partner Finder (live): ${ORIGIN}/concierge.html
 - Tax agent (live): ${ORIGIN}/tax-agent.html
 - Tax category: ${ORIGIN}/tax.html
 - Stacking (live): ${ORIGIN}/stacking.html

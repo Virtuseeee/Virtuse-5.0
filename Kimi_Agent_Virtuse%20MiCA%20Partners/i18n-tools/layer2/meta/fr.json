@@ -2,8 +2,8 @@
  "locale": "fr_FR",
  "project": {
   "concierge": [
-   "Bitcoin Concierge · Virtuse Layer 2",
-   "Virtuse Bitcoin Concierge : orientation non custodial vers des partenaires Bitcoin vérifiés dans l'UE."
+   "Partner Finder · Virtuse Layer 2",
+   "Virtuse Partner Finder : orientation non custodial vers des partenaires Bitcoin vérifiés dans l'UE."
   ],
   "stacking": [
    "Stacking Strategist · Virtuse Layer 2",
@@ -20,8 +20,8 @@
  },
  "site": {
   "concierge": [
-   "Bitcoin Concierge : le bon partenaire en 60 secondes | Virtuse",
-   "Répondez à quelques questions et le Bitcoin Concierge de Virtuse vous oriente vers le partenaire vérifié et agréé MiCA qui vous convient : non custodial, gratuit, sans inscription."
+   "Partner Finder : comparez les partenaires Bitcoin en 60 secondes | Virtuse",
+   "Répondez à quelques questions et le Partner Finder de Virtuse affiche côte à côte les partenaires Bitcoin vérifiés qui correspondent à vos critères : non custodial, gratuit, sans inscription."
   ],
   "stacking": [
    "Stacking Strategist : plan DCA et comparaison des frais | Virtuse",

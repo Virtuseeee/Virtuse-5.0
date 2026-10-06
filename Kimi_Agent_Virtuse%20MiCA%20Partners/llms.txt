@@ -36,7 +36,7 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - DCA calculator: https://virtuse.com/bitcoin-dca-calculator/
 - Sell vs borrow: https://virtuse.com/sell-vs-borrow-bitcoin/
 - Inheritance checklist: https://virtuse.com/bitcoin-inheritance/
-- Concierge (live): https://virtuse.com/concierge.html
+- Partner Finder (live): https://virtuse.com/concierge.html
 - Tax agent (live): https://virtuse.com/tax-agent.html
 - Tax category: https://virtuse.com/tax.html
 - Stacking (live): https://virtuse.com/stacking.html
