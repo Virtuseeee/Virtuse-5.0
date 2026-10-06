@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-06, fourth round) — Phase 0 of the email-capture rollout: `partner_click` tracking on every page with partner links (71 pages)
+## Session status (2026-10-06, fourth round) — Phase 0 of the email-capture rollout: `partner_click` tracking on every page with partner links (71 pages) (main `11f716f`; **live on production** — user ran `deploy_site.sh 57ba3149`, 73/73 md5-verified, event checked live on de/tax.html; **GTM GA4 tag still to be set up**)
 
 - Plan: Docs artifact "Rollout plan: email pred odchodom k partnerovi" (https://claude.ai/artifact/3gzTPbXu87Fsu2gb2ZnrmG, SK). Phase 0 = measure first; this script must run ≥ 1 week before step 2 (post-click panel) to have a baseline. **The plan's steps 1 and 3 conflict with the 2026-10-06 MiCA decision** (emails with "recommended partners + reasons + next step", Loan "sell vs borrow" verdict) — rewrite them to neutral "partners matching your criteria" before building.
 - `partner-click.js` (root, `<script src="/partner-click.js" defer>` right after the cookie-consent tag): capture-phase `click` + middle-button `auxclick` on links whose host maps to a partner → `dataLayer.push({event:'partner_click', partner, partner_category, link_type: cta|other (btn-primary or not), link_host, page_lang})`. Never prevents/delays navigation. Sends nothing itself: **GTM needs a GA4 event tag on the custom event `partner_click`** (not set up yet; Consent Mode already gates it).
