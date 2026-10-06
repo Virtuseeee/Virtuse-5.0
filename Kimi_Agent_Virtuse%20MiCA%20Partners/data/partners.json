@@ -1,137 +1,204 @@
 {
-  "note": "Homepage partner rail. partners = exactly the partners with a card on a category page; Finas is a membership, not counted.",
+  "note": "Homepage partner rail. partners = exactly the partners with a card on a category page; memberships are shown but not counted. hosts = outbound link hosts (partner-click.js maps clicks by them; i18n-tools/build_partner_click.py checks every partner link on the site is covered).",
   "partners": [
     {
       "name": "21bitcoin",
       "category": "buy",
       "logo": "logo-21bitcoin-app.png",
-      "page": "buy-bitcoin.html"
+      "page": "buy-bitcoin.html",
+      "hosts": [
+        "21bitcoin.app.link"
+      ]
     },
     {
       "name": "ByBit EU",
       "category": "buy",
       "logo": "logo-bybit.png",
-      "page": "buy-bitcoin.html"
+      "page": "buy-bitcoin.html",
+      "hosts": [
+        "partner.bybit.eu"
+      ]
     },
     {
       "name": "Kraken",
       "category": "buy",
       "logo": "logo-kraken.png",
-      "page": "buy-bitcoin.html"
+      "page": "buy-bitcoin.html",
+      "hosts": [
+        "proinvite.kraken.com",
+        "kraken.com"
+      ]
     },
     {
       "name": "Crypto.com",
       "category": "buy",
       "logo": "logo-crypto-com.png",
-      "page": "buy-bitcoin.html"
+      "page": "buy-bitcoin.html",
+      "hosts": [
+        "cryptocom.sjv.io"
+      ]
     },
     {
       "name": "Invity",
       "category": "buy",
       "logo": "logo-invity.svg",
-      "page": "buy-bitcoin.html"
+      "page": "buy-bitcoin.html",
+      "hosts": [
+        "invity.onelink.me"
+      ]
     },
     {
       "name": "Blockstream",
       "category": "custody",
       "logo": "logo-blockstream.png",
-      "page": "secure.html"
+      "page": "secure.html",
+      "hosts": [
+        "rewards.blockstream.com"
+      ]
     },
     {
       "name": "Ledger",
       "category": "custody",
       "logo": "logo-ledger.png",
-      "page": "secure.html"
+      "page": "secure.html",
+      "hosts": [
+        "shop.ledger.com"
+      ]
     },
     {
       "name": "Trezor",
       "category": "custody",
       "logo": "logo-trezor.png",
-      "page": "secure.html"
+      "page": "secure.html",
+      "hosts": [
+        "affil.trezor.io"
+      ]
     },
     {
       "name": "BitGo",
       "category": "treasury",
       "logo": "logo-bitgo.png",
-      "page": "treasury.html"
+      "page": "treasury.html",
+      "hosts": [
+        "bitgo.com"
+      ]
     },
     {
       "name": "Coinbase",
       "category": "treasury",
       "logo": "logo-coinbase.png",
-      "page": "treasury.html"
+      "page": "treasury.html",
+      "hosts": [
+        "coinbase.com"
+      ]
     },
     {
       "name": "Sygnum",
       "category": "treasury",
       "logo": "logo-sygnum.png",
-      "page": "treasury.html"
+      "page": "treasury.html",
+      "hosts": [
+        "sygnum.com"
+      ]
     },
     {
       "name": "Firefish",
       "category": "loans",
       "logo": "logo-firefish.png",
-      "page": "lending.html"
+      "page": "lending.html",
+      "hosts": [
+        "app.firefish.io"
+      ]
     },
     {
       "name": "Koinly",
       "category": "tax",
       "logo": "logo-koinly.png",
-      "page": "tax.html"
+      "page": "tax.html",
+      "hosts": [
+        "koinly.io"
+      ]
     },
     {
       "name": "Blockpit",
       "category": "tax",
       "logo": "logo-blockpit.png",
-      "page": "tax.html"
+      "page": "tax.html",
+      "hosts": [
+        "app.blockpit.io"
+      ]
     },
     {
       "name": "CoinTracking",
       "category": "tax",
       "logo": "logo-cointracking.png",
-      "page": "tax.html"
+      "page": "tax.html",
+      "hosts": [
+        "cointracking.info"
+      ]
     },
     {
       "name": "Divly",
       "category": "tax",
       "logo": "logo-divly.png",
-      "page": "tax.html"
+      "page": "tax.html",
+      "hosts": [
+        "divly.com"
+      ]
     },
     {
       "name": "Coinrule",
       "category": "bots",
       "logo": "logo-coinrule.png",
-      "page": "bots.html"
+      "page": "bots.html",
+      "hosts": [
+        "coinrule.com"
+      ]
     },
     {
       "name": "Cryptohopper",
       "category": "bots",
       "logo": "logo-cryptohopper.png",
-      "page": "bots.html"
+      "page": "bots.html",
+      "hosts": [
+        "cryptohopper.com"
+      ]
     },
     {
       "name": "RevenueBot",
       "category": "bots",
       "logo": "logo-revenuebot.png",
-      "page": "bots.html"
+      "page": "bots.html",
+      "hosts": [
+        "app.revenuebot.io"
+      ]
     },
     {
       "name": "Abundant Mines",
       "category": "mining",
       "logo": "logo-abundantmines.png",
-      "page": "mining.html"
+      "page": "mining.html",
+      "hosts": [
+        "abundantmines.com"
+      ]
     },
     {
       "name": "OneMiners",
       "category": "mining",
       "logo": "logo-oneminers.png",
-      "page": "mining.html"
+      "page": "mining.html",
+      "hosts": [
+        "oneminers.com"
+      ]
     },
     {
       "name": "PowerMining",
       "category": "mining",
       "logo": "logo-powermining.png",
-      "page": "mining.html"
+      "page": "mining.html",
+      "hosts": [
+        "shop.powermining.io"
+      ]
     }
   ],
   "memberships": []

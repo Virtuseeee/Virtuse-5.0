@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-06, fourth round) — Phase 0 of the email-capture rollout: `partner_click` tracking on every page with partner links (71 pages)
+
+- Plan: Docs artifact "Rollout plan: email pred odchodom k partnerovi" (https://claude.ai/artifact/3gzTPbXu87Fsu2gb2ZnrmG, SK). Phase 0 = measure first; this script must run ≥ 1 week before step 2 (post-click panel) to have a baseline. **The plan's steps 1 and 3 conflict with the 2026-10-06 MiCA decision** (emails with "recommended partners + reasons + next step", Loan "sell vs borrow" verdict) — rewrite them to neutral "partners matching your criteria" before building.
+- `partner-click.js` (root, `<script src="/partner-click.js" defer>` right after the cookie-consent tag): capture-phase `click` + middle-button `auxclick` on links whose host maps to a partner → `dataLayer.push({event:'partner_click', partner, partner_category, link_type: cta|other (btn-primary or not), link_host, page_lang})`. Never prevents/delays navigation. Sends nothing itself: **GTM needs a GA4 event tag on the custom event `partner_click`** (not set up yet; Consent Mode already gates it).
+- Source of truth: `hosts` per partner in `data/partners.json` (23 hosts / 22 partners; Kraken has kraken.com + proinvite.kraken.com). `i18n-tools/build_partner_click.py` (idempotent) writes the host map into the JS, adds the script tag to every HTML page linking a partner host (today: 7 category pages × 10 languages + `news.html` Firefish ad), and **fails if a category page has an unmapped outbound host** — re-run after any partner link change. Homepage and pages without partner links don't load it. Partner Finder iframe clicks stay on its own `concierge_partner_click`.
+- Checked in the browser on en/sk/de/uk/cs/fr/pl category pages + news.html: one event per partner link, correct partner/category/lang, middle click counted, non-partner externals ignored, no script on index.
+
 ## Session status (2026-10-06, third round) — Finas removed from the homepage partner rail (10 languages) (main `df876f4`; **live on production** — user ran `deploy_site.sh 9b77460a`, 10/10 md5-verified, 0 finas.sk links live)
 
 - Why: the page we linked (`https://finas.sk/en/domov/`) carries a hidden injected spam link ("brucebet casino" → no.brucebett.com, `position:absolute; left:-6813px`), i.e. their WordPress is compromised. User decided to drop Finas rather than link to it. Rail is now exactly the 22 partners.
