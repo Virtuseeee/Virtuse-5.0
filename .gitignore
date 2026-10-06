@@ -4,4 +4,6 @@
 /dist/
 cloudflare-worker/dist/
 cloudflare-worker/node_modules/
+cloudflare-worker/.dev.vars
+.dev.vars
 .wrangler/
