@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - cs, sk: `section.company` moved from between as-seen/newsletter to right after `section.problems` (block moved unchanged, as in EN and the other 7). cs, sk, fr: `.co-row` added to the top `prefers-reduced-motion` block. `build_partner_rail.py` re-run: no change. Handover: `partnerships/HANDOVER-company-panel-layout.md`.
 - Checked at 1440 and 375 px in all 10 languages: panel under problems, 2 rows, animation running, 22 partners + Finas, computed `.co-partner`/img styles = EN, no overflow, tagcheck 0.
-- Still different from EN (out of scope): cs/sk/fr top reduced-motion block lacks `.credit-coin, .credit-ripple, .footer-wordmark-*` (and cs/sk the `.cube-*`) selectors.
+- Follow-up (main `3e0f622`, **live**, user ran `deploy_site.sh 8acb01f3`, 3/3 md5-verified): cs/sk/fr top reduced-motion block replaced with EN's, now identical in all 10 languages. Still open: fr `.credit-coin` runs only `creditGlowPulse` (EN also `sceneFloat`).
 - **On Nick's Mac (MACBOOK-PRO-3):** `gh`/git default to the `beststudiodance` account (403 on this repo); push needs `gh auth switch --user Virtuseeee`. SFTP user there is entered by hand at the prompt (no `~/.ssh/config` entry).
 
 ## Session status (2026-10-06) — "Bitcoin Concierge" renamed to **Partner Finder** sitewide; advice wording removed from the Layer 2 modules (MiCA); Q4 fees ported into the module source (main `d2d12110`, gh-pages `a90859b4`; **live on production** — user ran `deploy_site.sh dd46fe1c` from the session worktree, 816/816 md5-verified on virtuse.com)
