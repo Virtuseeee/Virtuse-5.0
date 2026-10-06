@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-06, second round) — "You're in good company" panel aligned with EN on all 10 homepages (main `9f10fba`, gh-pages `e01a54f`; **live on production** — user ran `bash ../deploy_site.sh 4e802f26`, 3/3 md5-verified on virtuse.com)
+
+- cs, sk: `section.company` moved from between as-seen/newsletter to right after `section.problems` (block moved unchanged, as in EN and the other 7). cs, sk, fr: `.co-row` added to the top `prefers-reduced-motion` block. `build_partner_rail.py` re-run: no change. Handover: `partnerships/HANDOVER-company-panel-layout.md`.
+- Checked at 1440 and 375 px in all 10 languages: panel under problems, 2 rows, animation running, 22 partners + Finas, computed `.co-partner`/img styles = EN, no overflow, tagcheck 0.
+- Still different from EN (out of scope): cs/sk/fr top reduced-motion block lacks `.credit-coin, .credit-ripple, .footer-wordmark-*` (and cs/sk the `.cube-*`) selectors.
+- **On Nick's Mac (MACBOOK-PRO-3):** `gh`/git default to the `beststudiodance` account (403 on this repo); push needs `gh auth switch --user Virtuseeee`. SFTP user there is entered by hand at the prompt (no `~/.ssh/config` entry).
+
 ## Session status (2026-10-06) — "Bitcoin Concierge" renamed to **Partner Finder** sitewide; advice wording removed from the Layer 2 modules (MiCA); Q4 fees ported into the module source (main `d2d12110`, gh-pages `a90859b4`; **live on production** — user ran `deploy_site.sh dd46fe1c` from the session worktree, 816/816 md5-verified on virtuse.com)
 
 - Why: MiCA Art. 3(1)(24) counts a personalised recommendation on "the use of crypto-asset services" as advice (CASP licence). The Concierge called itself "the Layer 2 advisor", showed a "Best match" badge and a "% match" score; Loan Copilot gave a sell/borrow verdict ("Selling is the rational move…", "Talk to a loan specialist"); Stacking had "Recommended route". Offer/pricing work and the MiCA review behind this are in the chat of that session (not in the repo).
