@@ -134,13 +134,5 @@
       "page": "mining.html"
     }
   ],
-  "memberships": [
-    {
-      "name": "Finas",
-      "category": "association",
-      "url": "https://finas.sk/en/domov/",
-      "title": "Member of FINAS – Fintech & Insurtech Association of Slovakia",
-      "countsAsPartner": false
-    }
-  ]
+  "memberships": []
 }
