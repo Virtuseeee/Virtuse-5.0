@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-06, third round) — Finas removed from the homepage partner rail (10 languages)
+## Session status (2026-10-06, third round) — Finas removed from the homepage partner rail (10 languages) (main `df876f4`; **live on production** — user ran `deploy_site.sh 9b77460a`, 10/10 md5-verified, 0 finas.sk links live)
 
 - Why: the page we linked (`https://finas.sk/en/domov/`) carries a hidden injected spam link ("brucebet casino" → no.brucebett.com, `position:absolute; left:-6813px`), i.e. their WordPress is compromised. User decided to drop Finas rather than link to it. Rail is now exactly the 22 partners.
 - `data/partners.json` `memberships` = `[]`; `build_partner_rail.py` now renders any number of memberships (0..n) at the end of row 2 instead of assuming one. To bring Finas back: re-add the entry and re-run the script. `.co-finas` CSS left in place (styles membership chips).
