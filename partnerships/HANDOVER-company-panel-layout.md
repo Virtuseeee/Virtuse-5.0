@@ -23,4 +23,4 @@ The "You're in good company" panel (`section.company`, partner list) must sit in
 ## Left as is (out of scope)
 
 - ~~cs/sk/fr top reduced-motion block lacked other EN selectors~~ — fixed 2026-10-06, main `3e0f622`, live (3/3 md5).
-- fr `.credit-coin` runs only `creditGlowPulse`; EN also has `sceneFloat`. Not checked yet.
+- fr `.credit-coin` runs only `creditGlowPulse`; EN also lists `sceneFloat` — checked 2026-10-06: `@keyframes sceneFloat` is not defined anywhere, so EN's extra name is a no-op. Same look, nothing to fix.
