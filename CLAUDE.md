@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-06, third round) — Finas removed from the homepage partner rail (10 languages)
+
+- Why: the page we linked (`https://finas.sk/en/domov/`) carries a hidden injected spam link ("brucebet casino" → no.brucebett.com, `position:absolute; left:-6813px`), i.e. their WordPress is compromised. User decided to drop Finas rather than link to it. Rail is now exactly the 22 partners.
+- `data/partners.json` `memberships` = `[]`; `build_partner_rail.py` now renders any number of memberships (0..n) at the end of row 2 instead of assuming one. To bring Finas back: re-add the entry and re-run the script. `.co-finas` CSS left in place (styles membership chips).
+
 ## Session status (2026-10-06, second round) — "You're in good company" panel aligned with EN on all 10 homepages (main `9f10fba`, gh-pages `e01a54f`; **live on production** — user ran `bash ../deploy_site.sh 4e802f26`, 3/3 md5-verified on virtuse.com)
 
 - cs, sk: `section.company` moved from between as-seen/newsletter to right after `section.problems` (block moved unchanged, as in EN and the other 7). cs, sk, fr: `.co-row` added to the top `prefers-reduced-motion` block. `build_partner_rail.py` re-run: no change. Handover: `partnerships/HANDOVER-company-panel-layout.md`.

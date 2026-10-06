@@ -1,12 +1,12 @@
 """Rebuild the "You're in good company" partner rail on the 10 homepages from data/partners.json.
-Rule: partners = exactly those with a card on a category page; memberships (Finas) are shown but not counted.
+Rule: partners = exactly those with a card on a category page; memberships (none since 2026-10-06, Finas removed) are shown at the end of row 2 but not counted.
 Run: python3 i18n-tools/build_partner_rail.py (idempotent)."""
 import json, re, sys, html as H
 import os
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # site folder (script lives in i18n-tools/)
 _D = json.load(open(os.path.join(SITE,'data','partners.json'), encoding='utf-8'))
 P = [(p['name'],p['category'],p['logo'],p['page']) for p in _D['partners']]
-FINAS = _D['memberships'][0]
+MEMBERS = _D.get('memberships', [])
 ROW1 = [p for p in P if p[1] in ("buy","custody","treasury")]
 ROW2 = [p for p in P if p[1] in ("loans","tax","bots","mining")]
 assert len(P)==22 and len(ROW1)==11 and len(ROW2)==11
@@ -18,17 +18,17 @@ def link(p, pre, hidden):
             f'<img src="{pre}{l}" alt="" width="28" height="28" decoding="async">'
             f'<span>{H.escape(n)}</span></a>')
 
-def finas(hidden):
+def member(m, hidden):
     ti = ' tabindex="-1"' if hidden else ''
-    return (f'        <a href="{FINAS["url"]}" target="_blank" rel="noopener noreferrer"{ti} '
-            f'class="co-logo co-finas" title="{FINAS["title"]}">Finas</a>')
+    return (f'        <a href="{m["url"]}" target="_blank" rel="noopener noreferrer"{ti} '
+            f'class="co-logo co-finas" title="{m["title"]}">{H.escape(m["name"])}</a>')
 
 def ticker(n, rows, pre, extra=False):
     out = [f'  <div class="co-ticker co-ticker-{n}">','    <div class="co-row">']
     for hidden in (False, True):
         out.append('      <div class="co-set" aria-hidden="true">' if hidden else '      <div class="co-set">')
         out += [link(p, pre, hidden) for p in rows]
-        if extra: out.append(finas(hidden))
+        if extra: out += [member(m, hidden) for m in MEMBERS]
         out.append('      </div>')
     out += ['    </div>','  </div>']
     return '\n'.join(out)

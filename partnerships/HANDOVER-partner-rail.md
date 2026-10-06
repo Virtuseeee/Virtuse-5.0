@@ -118,3 +118,7 @@ MIMO ROZSAHU
 - všetkých 10 homepage na virtuse.com ukazuje 22 partnerov + Finas a nič z odstránených mien,
 - md5 súborov na produkcii sedí s `main`,
 - CLAUDE.md a tento súbor majú záznam o dokončení.
+
+## Update 2026-10-06: Finas removed
+
+Na https://finas.sk/en/domov/ je skrytý podvrhnutý odkaz „brucebet casino“ (no.brucebett.com, `left:-6813px`) — web Finas je napadnutý. Finas sme z pásu odstránili (`memberships: []`), pás = presne 22 partnerov. Vrátiť: doplniť záznam do `data/partners.json` a spustiť `i18n-tools/build_partner_rail.py`.
