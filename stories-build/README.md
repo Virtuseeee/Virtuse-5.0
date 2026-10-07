@@ -2,7 +2,8 @@
 
 Pre-renders one static page per blog story so social networks get that
 story's own preview card (X, LinkedIn, Facebook, Telegram, Slack, iMessage
-and the rest read Open Graph tags without running JavaScript).
+and the rest read Open Graph tags without running JavaScript), and search
+engines and readers without JavaScript get the full text.
 
 ```bash
 node stories-build/build.mjs      # from the repo root; Node 18+, needs network
@@ -23,15 +24,34 @@ Each page is `article.html` with:
   canonical, Open Graph (incl. image + size), Twitter card, article dates,
   `BlogPosting` JSON-LD. The Yoast **title** is not used: its WP template
   is broken (`… • Virtuse Exchange %`);
-- the kicker (desk), headline, dek and image pre-rendered;
+- the kicker (desk), headline, dek (only a hand-written excerpt, as in
+  `article.js`), byline (desk, date in UTC, read time) and image
+  pre-rendered;
+- the **full story body** in `#articleBody`, sanitized with the same tag and
+  attribute allowlist as `article.js`'s `sanitizeHtml()` (`sanitizeBody()`
+  in build.mjs: no scripts/styles/forms, http(s)/mailto links only,
+  iframes only from YouTube/Spotify/X, no inline styles). A small parser
+  follows the HTML rules posts hit (block tags end an open `<p>` etc.), so
+  the output is always balanced. Lazy-loaded images (`data-src`) get their
+  real `src`, body images get `loading="lazy"`;
 - relative URLs rewritten for the folder depth;
 - `data-root`, `data-slug`, `data-lang`, `data-story` on `<html>`, which
   `article.js` reads.
 
-The story body still loads from WordPress in the browser, same as on
-`article.html`. Full-text pre-rendering (SEO) is a separate decision because
-the WordPress originals on blog.virtuse.com are public (duplicate content /
-canonical question).
+`#articleBody` carries `data-modified` (WordPress's `modified_gmt` at build
+time). `article.js` still fetches the post on load (byline block height,
+More, share) and only replaces the body when WordPress has a newer version,
+so readers never see the text flash or images reload; it then builds the
+table of contents and the numbered Sources as before. The WordPress
+originals point their canonical at these pages
+(`seo-ops/wp-mu-plugin/virtuse-story-canonical.php`), so this is the copy
+Google should index.
+
+Checked on 2026-10-07 (all 359 pages): the pre-rendered body has exactly
+the text `article.js` renders from the same post, and nothing after it
+(Sources, author box, footer) ends up inside it. Paragraph counts differ
+on 8 old posts only because their stray `</p>` tags made empty paragraphs
+in the browser rendering; the build leaves those out.
 
 Desk detection runs the code from `brief-chrome.js` (one source of truth).
 

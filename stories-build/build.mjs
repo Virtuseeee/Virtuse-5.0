@@ -11,12 +11,15 @@
  *                                    Cyrillic, so the post id is used)
  *
  * Each page is article.html with the head filled in (title, description,
- * canonical, Open Graph, Twitter, JSON-LD), the title / dek / image /
- * desk pre-rendered, relative URLs rewritten for the folder depth, and
- * data-root / data-slug / data-lang / data-story on <html>. The story body
- * itself still loads from WordPress through article.js, exactly as on
- * article.html (the WordPress originals on blog.virtuse.com stay the only
- * full-text copy).
+ * canonical, Open Graph, Twitter, JSON-LD), the story pre-rendered (desk,
+ * title, dek, byline, image and the full body text, sanitized like
+ * article.js does), relative URLs rewritten for the folder depth, and
+ * data-root / data-slug / data-lang / data-story on <html>. Search engines
+ * and readers without JavaScript get the whole story; article.js still
+ * fetches the post from WordPress on load and only swaps the body if
+ * WordPress has a newer version than the build (data-modified on
+ * #articleBody). The WordPress originals point their canonical here
+ * (seo-ops/wp-mu-plugin/virtuse-story-canonical.php).
  *
  * Stories that disappear from WordPress get their folders removed; the list
  * of generated folders lives in stories-build/manifest.json.
@@ -57,6 +60,14 @@ const DESK_NAMES = {
   en: { mining: 'Mining', treasury: 'Treasury', custody: 'Custody', policy: 'Policy', macro: 'Macro', markets: 'Markets' },
   sk: { mining: 'Ťažba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulácia', macro: 'Makro', markets: 'Trhy' },
   ru: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
+};
+
+// Byline strings and date locale, from article.js's LANGS (article.js
+// re-renders the byline on load, with the reader's own time zone).
+const BYLINE = {
+  en: { locale: 'en-GB', desk: ' desk', readTime: ' min' },
+  sk: { locale: 'sk-SK', desk: '', readTime: ' min' },
+  ru: { locale: 'ru-RU', desk: '', readTime: ' мин' },
 };
 
 // ---- helpers ---------------------------------------------------------------
@@ -136,6 +147,162 @@ function descriptionOf(post) {
   return clip(d || 'Bitcoin analysis from the Virtuse Brief desk.', 200);
 }
 
+// ---- story body ------------------------------------------------------------
+// The WordPress body is pre-rendered into #articleBody so search engines and
+// readers without JavaScript get the full text. sanitizeBody() is the
+// server-side twin of sanitizeHtml() in article.js (same tag and attribute
+// allowlist). The build has no dependencies, so a small parser builds the
+// tree first, following the HTML parsing rules WordPress posts actually hit
+// (a block tag ends an open <p>, <li>/<td>/<tr> end their open sibling, an
+// end tag closes everything above its match). The output is always balanced,
+// so a stray or unclosed tag in a post cannot swallow the rest of the page.
+const BODY_TAGS = new Set(['p', 'br', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'em', 'i', 'u', 's', 'mark',
+  'sub', 'sup', 'a', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'code', 'pre', 'table', 'thead', 'tbody',
+  'tr', 'th', 'td', 'span', 'div', 'iframe']);
+const BODY_DROP = new Set(['script', 'style', 'object', 'embed', 'link', 'meta', 'base', 'form', 'input', 'button',
+  'textarea', 'select', 'noscript', 'template', 'svg', 'math']);
+const BODY_RAW = new Set(['script', 'style', 'textarea', 'noscript', 'template', 'title', 'xmp']);
+const BODY_ATTRS = { a: ['href', 'title', 'target', 'rel'], img: ['src', 'alt', 'width', 'height', 'loading', 'srcset', 'sizes'],
+  iframe: ['src', 'width', 'height', 'allow', 'allowfullscreen', 'frameborder', 'title'], td: ['colspan', 'rowspan'], th: ['colspan', 'rowspan'] };
+const IFRAME_HOSTS = new Set(['www.youtube.com', 'youtube.com', 'www.youtube-nocookie.com', 'open.spotify.com',
+  'platform.twitter.com', 'twitter.com', 'x.com']);
+const VOID_TAGS = new Set(['br', 'hr', 'img', 'input', 'link', 'meta', 'base', 'source', 'embed', 'wbr', 'col', 'area',
+  'param', 'track', 'keygen']);
+// Start tags that close an open <p> (HTML "closes a p element in button scope").
+const CLOSES_P = new Set(['address', 'article', 'aside', 'blockquote', 'details', 'dialog', 'div', 'dl', 'fieldset',
+  'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'main', 'menu', 'nav', 'ol',
+  'p', 'pre', 'section', 'summary', 'table', 'ul', 'li', 'dd', 'dt']);
+const P_SCOPE = new Set(['button', 'table', 'td', 'th', 'caption', 'object', 'template', 'marquee', 'applet']);
+const LIST_STOP = new Set(['ul', 'ol', 'table', 'td', 'th', 'tr', 'tbody', 'thead', 'blockquote', 'figure', 'section',
+  'article', 'pre', 'dl', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'button', 'iframe']);
+const TAG_RE = /<!--[\s\S]*?(?:-->|$)|<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:\s+[^\s"'>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+))?)*)\s*\/?>/g;
+const ATTR_RE = /([^\s"'>\/=]+)(?:\s*=\s*("[^"]*"|'[^']*'|[^\s"'=<>`]+))?/g;
+
+function parseBody(html) {
+  const root = { tag: '#root', attrs: {}, children: [] };
+  const stack = [root];
+  const top = () => stack[stack.length - 1];
+  const find = (tag, stops) => {
+    for (let i = stack.length - 1; i > 0; i--) {
+      if (stack[i].tag === tag) return i;
+      if (stops.has(stack[i].tag)) return -1;
+    }
+    return -1;
+  };
+  const closeAt = (i) => { if (i > 0) stack.length = i; };
+  let last = 0, m;
+  TAG_RE.lastIndex = 0;
+  while ((m = TAG_RE.exec(html))) {
+    if (m.index > last) top().children.push({ text: html.slice(last, m.index) });
+    last = TAG_RE.lastIndex;
+    if (m[0].startsWith('<!--')) continue;
+    const tag = m[2].toLowerCase();
+    if (m[1]) {
+      // End tag: close everything above its match; no match = ignored.
+      for (let i = stack.length - 1; i > 0; i--) if (stack[i].tag === tag) { closeAt(i); break; }
+      continue;
+    }
+    if (CLOSES_P.has(tag)) closeAt(find('p', P_SCOPE));
+    if (tag === 'li') closeAt(find('li', LIST_STOP));
+    if (tag === 'dd' || tag === 'dt') closeAt(Math.max(find('dd', LIST_STOP), find('dt', LIST_STOP)));
+    if (/^h[1-6]$/.test(top().tag) && /^h[1-6]$/.test(tag)) stack.pop();
+    if (tag === 'td' || tag === 'th') closeAt(Math.max(find('td', new Set(['table', 'tr'])), find('th', new Set(['table', 'tr']))));
+    if (tag === 'tr') closeAt(find('tr', new Set(['table'])));
+    const attrs = {};
+    for (const a of m[3].matchAll(ATTR_RE)) {
+      const k = a[1].toLowerCase();
+      if (!(k in attrs)) attrs[k] = a[2] == null ? '' : decode(a[2].replace(/^"([\s\S]*)"$|^'([\s\S]*)'$/, '$1$2'));
+    }
+    const node = { tag, attrs, children: [] };
+    top().children.push(node);
+    if (BODY_RAW.has(tag)) {
+      // Raw text up to the matching end tag (its content is dropped below).
+      const end = html.toLowerCase().indexOf('</' + tag, last);
+      last = end < 0 ? html.length : (html.indexOf('>', end) + 1 || html.length);
+      TAG_RE.lastIndex = last;
+      continue;
+    }
+    if (!VOID_TAGS.has(tag)) stack.push(node);
+  }
+  if (last < html.length) top().children.push({ text: html.slice(last) });
+  return root;
+}
+
+// http(s) and mailto only (article.js's isSafeUrl). Relative URLs resolve
+// against the post's own WordPress URL; in-page #anchors stay as they are.
+function safeUrl(value, base) {
+  if (/^\s*#/.test(value)) return value.trim();
+  try {
+    const u = new URL(value.trim(), base);
+    return /^(https?|mailto):$/.test(u.protocol) ? u.href : null;
+  } catch (e) { return null; }
+}
+
+// Attribute values were decoded while parsing; entities decode() does not
+// know (&eacute; ...) stay as they are instead of becoming &amp;eacute;.
+const attrEsc = (v) => v.replace(/&(?!(#\d+|#x[0-9a-f]+|[a-z][a-z0-9]*);)/gi, '&amp;')
+  .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function sanitizeBody(html, base) {
+  const out = [];
+  const walk = (nodes, parentClass, inP) => {
+    for (const n of nodes) {
+      if (n.text !== undefined) { out.push(n.text.replace(/</g, '&lt;')); continue; }
+      if (BODY_DROP.has(n.tag)) continue;
+      if (!BODY_TAGS.has(n.tag)) { walk(n.children, parentClass, inP); continue; }
+      const a = { ...n.attrs };
+      if (n.tag === 'img') {
+        // Lazy-load plugins keep the real image in data-src / data-srcset.
+        if (a['data-src'] && (!a.src || /^\s*data:/i.test(a.src))) a.src = a['data-src'];
+        if (a['data-srcset'] && !a.srcset) a.srcset = a['data-srcset'];
+        if (!a.loading) a.loading = 'lazy';
+      }
+      if (n.tag === 'iframe') {
+        const src = safeUrl(a.src || '', base);
+        let host = '';
+        try { host = new URL(src).hostname; } catch (e) { /* no src */ }
+        if (!IFRAME_HOSTS.has(host)) continue;
+      }
+      const attrs = [];
+      for (const k of (BODY_ATTRS[n.tag] || []).concat('class')) {
+        if (!(k in a)) continue;
+        let v = a[k];
+        if (k === 'href' || k === 'src') { v = safeUrl(v, base); if (v === null) continue; }
+        if (k === 'srcset' && /javascript:/i.test(v)) continue;
+        if (n.tag === 'a' && k === 'rel') continue;
+        attrs.push(v === '' && k === 'allowfullscreen' ? k : `${k}="${attrEsc(v)}"`);
+      }
+      if (n.tag === 'a') attrs.push('rel="noopener noreferrer"');
+      const cls = a.class || '';
+      // article.js wraps bare embeds the same way (16:9 box). Not inside a
+      // <p>: a <div> there would end the paragraph when the page is parsed;
+      // article.js wraps those on load.
+      const wrap = n.tag === 'iframe' && !inP && !parentClass.split(/\s+/).some((c) => c === 'wp-block-embed' || c === 'video-wrap');
+      if (wrap) out.push('<div class="video-wrap">');
+      out.push(`<${n.tag}${attrs.length ? ' ' + attrs.join(' ') : ''}>`);
+      if (!VOID_TAGS.has(n.tag)) {
+        walk(n.children, cls, inP || n.tag === 'p');
+        out.push(`</${n.tag}>`);
+      }
+      if (wrap) out.push('</div>');
+    }
+  };
+  walk(parseBody(html).children, '', false);
+  return out.join('').trim();
+}
+
+// article.js's minutes(): words of the body's text content / 220.
+function readMinutes(html) {
+  const words = decode(String(html || '').replace(/<[^>]+>/g, '')).trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
+}
+// article.js's fmtStamp(), in UTC.
+function stamp(date, locale) {
+  const d = date.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const p2 = (n) => String(n).padStart(2, '0');
+  return `${d} · ${p2(date.getUTCHours())}:${p2(date.getUTCMinutes())} UTC`;
+}
+
 function render(template, feed, post, inferDesk) {
   const key = storyKey(post);
   const storyPath = `${feed.dir}stories/${key}/`;
@@ -148,6 +315,13 @@ function render(template, feed, post, inferDesk) {
   const published = new Date(post.date_gmt + 'Z').toISOString();
   const modified = new Date((post.modified_gmt || post.date_gmt) + 'Z').toISOString();
   const desk = DESK_NAMES[feed.lang][inferDesk(post).id];
+  // Dek only from a hand-written excerpt, as in article.js: WordPress
+  // auto-excerpts (ending in [&hellip;]) repeat the body's first lines.
+  const rawEx = (post.excerpt && post.excerpt.rendered) || '';
+  const dek = /\[(&hellip;|…)\]\s*(<\/p>)?\s*$/.test(rawEx) ? '' : text(rawEx);
+  const body = sanitizeBody(post.content && post.content.rendered, post.link || WP_BASE + '/');
+  // A post can be empty in WordPress; empty output from a non-empty post is a bug here.
+  if (!body && text(post.content && post.content.rendered)) throw new Error('story body lost in sanitizing: ' + post.id + ' ' + post.slug);
 
   let h = template;
   const sub = (re, fn, label) => {
@@ -207,11 +381,21 @@ function render(template, feed, post, inferDesk) {
   // Pre-rendered story head (article.js re-renders the same on load).
   sub(/(<p class="story-kicker" id="storyKicker">)[^<]*(<\/p>)/, (m, a, b) => a + esc(desk) + b, 'kicker');
   sub(/(<h1 class="story-title" id="articleTitle">)[\s\S]*?(<\/h1>)/, (m, a, b) => a + esc(title) + b, 'title');
-  sub(/(<p class="story-dek" id="articleDek">)[\s\S]*?(<\/p>)/, (m, a, b) => a + esc(description) + b, 'dek');
+  sub(/<p class="story-dek" id="articleDek">[\s\S]*?<\/p>/, () => dek
+    ? `<p class="story-dek" id="articleDek">${esc(dek)}</p>`
+    : '<p class="story-dek" id="articleDek" hidden></p>', 'dek');
+  const by = BYLINE[feed.lang];
+  sub(/(<span id="bylineDesk">)[^<]*(<\/span>)/, (m, a, b) => a + esc(desk + by.desk) + b, 'byline desk');
+  sub(/(<span id="bylineDate">)[^<]*(<\/span>)/, (m, a, b) => a + esc(stamp(new Date(published), by.locale)) + b, 'byline date');
+  sub(/(<span id="bylineRead">)[^<]*(<\/span>)/, (m, a, b) => a + readMinutes(post.content.rendered) + esc(by.readTime) + b, 'byline read');
   if (img) {
     sub(/<figure class="story-figure" id="articleHero" hidden>/, () => '<figure class="story-figure" id="articleHero">', 'hero');
     sub(/<img id="heroImg" alt="">/, () => `<img id="heroImg" src="${esc(img.url)}" alt="${esc(title)}"${img.width ? ` width="${img.width}" height="${img.height}"` : ''}>`, 'hero img');
   }
+  // Full text. data-modified tells article.js the body is current, so it
+  // keeps it instead of re-inserting the same HTML (no flash, no reload).
+  sub(/<div class="story-body" id="articleBody">[\s\S]*?<\/div>/, () =>
+    `<div class="story-body" id="articleBody" data-modified="${esc(post.modified_gmt || '')}">\n${body}\n</div>`, 'body');
   return { storyPath, html: h, lastmod: modified.slice(0, 10) };
 }
 

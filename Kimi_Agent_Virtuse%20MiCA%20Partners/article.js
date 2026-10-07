@@ -470,7 +470,8 @@
     // the opening paragraph right below.
     var rawEx = (post.excerpt && post.excerpt.rendered) || '';
     var dek = /\[(&hellip;|…)\]\s*(<\/p>)?\s*$/.test(rawEx) ? '' : stripHtml(rawEx);
-    if (dek) $('articleDek').textContent = dek; else $('articleDek').remove();
+    var dekEl = $('articleDek');
+    if (dek) { dekEl.textContent = dek; dekEl.hidden = false; } else dekEl.remove();
     $('bylineDesk').textContent = deskName + L.ui.desk;
     $('bylineDate').textContent = fmtStamp(when);
     $('bylineRead').textContent = minutes(post.content.rendered) + L.ui.readTime;
@@ -492,7 +493,10 @@
     }
 
     var body = $('articleBody');
-    body.innerHTML = sanitizeHtml(post.content.rendered);
+    // Story pages arrive with the body pre-rendered by stories-build
+    // (data-modified = the version it was built from). Keep it unless
+    // WordPress has a newer version: no flash, no image reload.
+    if (body.getAttribute('data-modified') !== String(post.modified_gmt || '')) body.innerHTML = sanitizeHtml(post.content.rendered);
     body.querySelectorAll('iframe').forEach(function (f) {
       if (f.parentElement.classList.contains('wp-block-embed') || f.parentElement.classList.contains('video-wrap')) return;
       var w = el('div', 'video-wrap'); f.parentNode.insertBefore(w, f); w.appendChild(f);
