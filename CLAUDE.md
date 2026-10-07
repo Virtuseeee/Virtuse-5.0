@@ -2,13 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07, second round) — Email-capture step 1: "Get this list by email" form in Partner Finder, **built but switched off** (main, see git log; Worker fix c69becb6)
+## Session status (2026-10-07, second round) — Email-capture step 1: "Get this list by email" form in Partner Finder, **live but switched off** (main `52a16106`, Worker fix `e3a74293` deployed as version bde1c4a4; modules **live on production** — user ran `deploy_site.sh e3a74293 33072690`, 57/57 md5-verified on virtuse.com and staging, 4 modules load, form shows only with ?capture=1)
 
 - Form under the Partner Finder result cards (`PlanEmailForm` in the module source `src/components/ConciergeChat.tsx`): email + optional Brief checkbox + honeypot, POSTs ids only to the Worker's `/send` (`kind: plan`), dataLayer `capture_shown` / `capture_submit` (`capture_source: concierge`, `capture_brief`). 10 strings in en/sk/cs inline + 7 dictionaries (390/390).
 - **Off switch:** the form renders only if the page shell has `<meta name="vb-capture" content="on">` or the URL has `?capture=1` (testing). Turn on after legal review of the privacy text: add the meta to the 10 `*/concierge.html` shells (+ root), no rebuild needed. So any rebuild/deploy of the modules is safe meanwhile.
 - Worker fix (c69becb6, **needs `wrangler deploy`**): experience/custody are only asked for buy/loan/custody goals; /send rejected every mining/tax/treasury/earn plan before.
 - Build checks: backup of the source before this change rebuilt to exactly the 17 deployed hashes (so the new build adds only this change); 40 shells reference existing assets; stacking/loan/tax/concierge load without console errors; form off without the switch, on with `?capture=1`; SK/DE/EN text; capture_shown fires once in the production build (twice in vite dev = StrictMode). Source backups `concierge-src-2026-10-07-{before,after}-capture.tgz`.
 - Seen, not fixed: the Partner Finder chat scrolls sideways 23px at 375px (partner cards `min-w-[280px]` inside the 85% bubble), pre-existing.
+- **Incident, fixed:** the first `deploy_site.sh e3a74293` uploaded the 40 shells but only 2 of 17 new assets: git listed 15 rebuilt asset files as renames of the old hashes and `--diff-filter=AM` dropped them, so all 4 modules (10 languages) pointed at missing JS for a few minutes. `deploy_site.sh` now uses `--no-renames` (`33072690`). **After any module rebuild, md5-check `concierge-assets/` on production, not just the list the script printed.** Old hash files stay on the server (harmless).
 - Deploy from the scratchpad worktree (its `deploy_site.sh` works on that checkout); the OneDrive folder is behind origin.
 
 ## Session status (2026-10-07) — Homepage hero: one main step (consultation), 10 languages; consultation widget translated into 7 more languages (main `09819b8`, gh-pages `f1d1b32`; **live on production** — user ran `deploy_site.sh f0d77083`, 12/12 md5-verified; live de/sk: one hero button, note, widget opens in the page language)
