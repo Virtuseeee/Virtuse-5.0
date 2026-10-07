@@ -99,6 +99,13 @@ cd /private/tmp/gh-pages-wt4 && sftp -P 222 virtuse.com@ftp.virtuse.com < "<repo
 (`<repo>` = the local checkout. Pull both first: after an automatic run
 the new pages and the new `upload.sftp` exist only on GitHub.)
 
+The last `put` sends `stories/wp-canonical.json` (WordPress post ID → story
+URL, written by the build) to blog.virtuse.com's must-use plugin
+`virtuse-story-canonical.php` (`/_sub/blog/wp-content/mu-plugins/`), which
+points each WordPress original's canonical at its virtuse.com page. It goes
+after the pages on purpose: the canonical moves only once the page exists.
+See seo-ops/README.md, step 3.
+
 Use `<` (stdin), not `sftp -b`: batch mode disables password login. It
 uploads all pages (about 5 MB), so it is safe to re-run. Folders of
 stories removed from WordPress are listed as comments at the end of the file

@@ -720,4 +720,5 @@ put stories/you-need-to-know-how-currency-is-created-and-how-it-dies/index.html 
 put stories/you-still-solvent-maintain-it/index.html public_html/stories/you-still-solvent-maintain-it/index.html
 put stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/index.html public_html/stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/index.html
 put sitemap.xml public_html/sitemap.xml
+put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
 bye

@@ -1,9 +1,10 @@
 # seo-ops
 
 Prepared material for the plan "Rollout plan: SEO, staré URL a rast nových stránok"
-(Claude Docs, https://claude.ai/artifact/JXmCAC3b34NEPTCQrumWrA). Nothing here
-changes WordPress or Search Console; those changes are made by Ras (or whoever has
-the login). Everything here is read-only against the live sites.
+(Claude Docs, https://claude.ai/artifact/JXmCAC3b34NEPTCQrumWrA). The scripts
+here are read-only against the live sites; WordPress, Search Console and server
+changes are made by Ras (or whoever has the login), including the one WordPress
+plugin in `wp-mu-plugin/` (step 3).
 
 ## Step 1: old Virtuse Exchange pages on blog.virtuse.com
 
@@ -86,10 +87,28 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
 
 - `stories_canonical_map.py` → `stories-canonical-map.csv`: for each of the 359
   stories the WordPress id/URL, the virtuse.com URL, and checks (virtuse.com 200 +
-  self-canonical; the canonical WordPress serves today). 2026-10-07: 359/359 ready,
-  WordPress canonical points at itself on all 359.
-- The bulk canonical change in WordPress is prepared only after Ras decides which
-  copy is the main one (recommended: virtuse.com/stories/).
+  self-canonical; the canonical WordPress serves today). Baseline 2026-10-07 before
+  the plugin: 359/359 ready, WordPress canonical pointed at itself on all 359.
+- Main copy = virtuse.com/stories/ (Ras, 2026-10-07). WordPress can't set Yoast's
+  per-post canonical over REST, so `wp-mu-plugin/virtuse-story-canonical.php` (a
+  must-use plugin in blog.virtuse.com/wp-content/mu-plugins/) filters what Yoast
+  prints: canonical + og:url → the virtuse.com story, and those posts leave the
+  blog's Yoast sitemap. It reads `virtuse-story-canonical.json` next to it
+  (`{"posts": {post ID: URL}}`); posts not listed keep Yoast's own canonical, and a
+  missing or broken JSON changes nothing. No database change, rollback = delete the
+  PHP file. Tested on WordPress + current Yoast (Playground, PHP 7.4 and 8.3).
+- The JSON is `stories/wp-canonical.json`, written by stories-build/build.mjs and
+  put next to the plugin by `stories-build/upload.sftp` after the pages, so a story's
+  canonical moves only once its page is on virtuse.com. Check:
+  `stories_canonical_map.py` (column wp_canonical_now = virtuse_url).
+- **Live since 2026-10-07** (uploaded to `/_sub/blog/wp-content/mu-plugins/` by
+  SFTP): 359/359 WordPress originals have canonical + og:url = their virtuse.com
+  story, none of them is in the blog's post sitemaps any more, blog home and posts
+  200. No page cache answered in front of WordPress (nginx, no x-litespeed-cache
+  header), so the change showed at once without a purge.
+- Seen on the way, not changed: the 10 RU originals' `/ru/...` permalinks redirect
+  to the blog home (WPML); where WordPress actually renders them, the canonical is
+  right.
 
 ## Other
 

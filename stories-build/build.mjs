@@ -35,6 +35,11 @@ const ORIGIN = 'https://virtuse.com';
 const MANIFEST = path.join(HERE, 'manifest.json');
 const SITEMAP_START = '<!-- STORIES-BUILD:START -->';
 const SITEMAP_END = '<!-- STORIES-BUILD:END -->';
+// Post ID -> story URL for the WordPress must-use plugin virtuse-story-canonical.php
+// (seo-ops/wp-mu-plugin/), which points each WordPress original's canonical at the
+// virtuse.com copy. upload.sftp puts it next to the plugin, after the pages.
+const WP_CANONICAL = 'stories/wp-canonical.json';
+const WP_CANONICAL_REMOTE = '/_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json';
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
 // WordPress base URL. Defaults to the blog itself; the GitHub Action sets
@@ -217,6 +222,7 @@ async function main() {
   const previous = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).stories || [] : [];
   const written = [];
   const lastmods = {};
+  const wpCanonical = {};
 
   for (const feed of FEEDS) {
     const posts = await fetchFeed(feed);
@@ -231,6 +237,7 @@ async function main() {
       if (old !== html) fs.writeFileSync(file, html);
       written.push(storyPath);
       lastmods[storyPath] = lastmod;
+      wpCanonical[post.id] = ORIGIN + '/' + storyPath;
     }
     console.log(`${feed.lang}: ${seen.size} stories`);
   }
@@ -246,6 +253,9 @@ async function main() {
   // No build date in here: the scheduled Action should only commit when the
   // set of stories (or a page) actually changed.
   fs.writeFileSync(MANIFEST, JSON.stringify({ stories: written.sort() }, null, 2) + '\n');
+  // Integer keys keep ascending order, so the file only changes with the story set.
+  fs.writeFileSync(path.join(SITE, WP_CANONICAL),
+    JSON.stringify({ count: Object.keys(wpCanonical).length, posts: wpCanonical }, null, 1) + '\n');
 
   // sitemap.xml: our own marked block (seo-build keeps its SEO-BUILD block;
   // each generator only ever rewrites the text between its own markers).
@@ -279,6 +289,7 @@ async function main() {
     .map((d) => `-mkdir public_html/${d}`);
   for (const p of written.sort()) lines.push(`put ${p}index.html public_html/${p}index.html`);
   lines.push('put sitemap.xml public_html/sitemap.xml');
+  lines.push(`put ${WP_CANONICAL} ${WP_CANONICAL_REMOTE}`);
   for (const p of removed) lines.push(`# removed from WordPress, delete on the server: public_html/${p}`);
   lines.push('bye');
   fs.writeFileSync(path.join(HERE, 'upload.sftp'), lines.join('\n') + '\n');

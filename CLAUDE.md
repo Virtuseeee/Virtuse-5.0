@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Stories: virtuse.com/stories/ is the main copy; affiliate pages 410 (WordPress plugin **live on blog.virtuse.com**, uploaded by the user via SFTP; 359/359 verified)
+
+- Ras's report doc "Virtuse rollout report: six plans" (https://claude.ai/code/artifact/728f75e4-0462-4a5a-8058-a6a449720119): Nick's Calendly check done (10 slots/week Tue+Wed, 0 bookings = plan 3 baseline), Ras items 2–4 done; open: tax advisor, Crypto News noindex, WordPress backup (before 7 Nov), two optional plan-5 items.
+- Plan 6 step 3: Yoast's per-post canonical isn't writable over REST, so `seo-ops/wp-mu-plugin/virtuse-story-canonical.php` is a must-use plugin in `/_sub/blog/wp-content/mu-plugins/` (SFTP path): canonical + og:url → the virtuse.com story, those posts leave Yoast's sitemap. Reads `virtuse-story-canonical.json` next to it; missing/broken JSON or unlisted post = no change; no DB writes. Rollback = delete the PHP file. Tested in WordPress Playground (`npx @wp-playground/cli server`, Yoast from wordpress.org, PHP 7.4 + 8.3).
+- The JSON is `stories/wp-canonical.json` (post ID → story URL), written by `stories-build/build.mjs`; `upload.sftp` ends with a `put` of it to the blog, after the pages. **The Action only syncs gh-pages when stories change**, so after editing only build.mjs/the JSON, copy `stories/wp-canonical.json` to gh-pages by hand.
+- Live check: `stories_canonical_map.py` → wp_canonical_now = virtuse_url on 359/359; post sitemaps list none of them; no page cache in front of WordPress (nginx, no x-litespeed-cache), so no purge needed. RU originals' `/ru/` permalinks redirect to the blog home (WPML, pre-existing, not changed).
+- Plan 6, 8 affiliate/referral pages → 410 (`fb225b3d`): Redirection group now 99 rules + the same lines in virtuse.com's `.htaccess`; `check --status ready` 103/105 (two accepted login rows).
+- Layer 2 module source backup (not in git): OneDrive `Virtuse code backups/bitcoin-concierge/` (restore-tested, same build as live).
+
 ## Session status (2026-10-07) — Slovak tax correction + DAC8 pages **live on production**, NOT reviewed by the tax advisor (main `c2a1d8f9`; user ran `deploy_site.sh c2a1d8f9^ c2a1d8f9` 2026-10-07, 40/40 md5-verified on virtuse.com and staging; 4 DAC8 pages 200, sitemap 796 URLs)
 
 - Uncommitted work from another session (found while syncing the OneDrive folder) committed at the user's explicit request: Slovakia now "no holding-period exemption, 19–35 % income tax + 16 % health levy, every sale and crypto swap taxable, type B return by 31 March" in `seo-data.json` + `meta.json` for all languages; new DAC8 pages from `seo-build/data/dac8.json` (EN + DE for Germany, EN + SK for Slovakia), linked from those country pages. generate + verify 0 errors; sitemap 792 → 796 URLs.
