@@ -7,6 +7,12 @@ name: Stories build
 # Commits only when something changed: new stories, edited titles/excerpts/
 # images, or stories removed from WordPress (their folders are deleted).
 #
+# Up to three attempts, each on a fresh runner (see stories-build-run.yml):
+# Webglobe drops connections from part of GitHub's IPs, so attempt 2 runs only
+# if attempt 1 could not reach blog.virtuse.com, attempt 3 only if 2 could not.
+# The workflow fails only if all three are unreachable or the build itself
+# fails; commit and staging publish happen at most once.
+#
 # Production (virtuse.com, Webglobe SFTP) stays manual: after a run that
 # changed something, run the two commands from stories-build/README.md
 # ("Upload"). The job summary lists what changed.
@@ -23,6 +29,7 @@ on:
     paths:
       - 'stories-build/build.mjs'
       - '.github/workflows/stories-build.yml'
+      - '.github/workflows/stories-build-run.yml'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/article.html'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/brief-chrome.js'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/sitemap.xml'
@@ -35,83 +42,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  attempt-1:
+    uses: ./.github/workflows/stories-build-run.yml
+    with:
+      attempt: 1
+
+  attempt-2:
+    needs: attempt-1
+    if: needs.attempt-1.outputs.reachable == 'false'
+    uses: ./.github/workflows/stories-build-run.yml
+    with:
+      attempt: 2
+
+  attempt-3:
+    needs: attempt-2
+    if: needs.attempt-2.outputs.reachable == 'false'
+    uses: ./.github/workflows/stories-build-run.yml
+    with:
+      attempt: 3
+
+  unreachable:
+    needs: attempt-3
+    if: needs.attempt-3.outputs.reachable == 'false'
     runs-on: ubuntu-latest
-    env:
-      SITE: Kimi_Agent_Virtuse%20MiCA%20Partners
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          path: main
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Build story pages from WordPress
-        working-directory: main
-        run: node stories-build/build.mjs
-
-      - name: Detect changes
-        id: diff
-        working-directory: main
-        run: |
-          git add -A "$SITE/stories" "$SITE/sk/stories" "$SITE/ru/stories" "$SITE/sitemap.xml" stories-build/manifest.json stories-build/upload.sftp
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No story changes." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            {
-              echo "### Story pages changed"
-              echo
-              echo '```'
-              git diff --cached --name-status -- "$SITE" | sed "s|$SITE/||; s|/index.html||" | sort | head -200
-              echo '```'
-            } >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Commit to main
-        if: steps.diff.outputs.changed == 'true'
-        working-directory: main
-        run: |
-          git config user.name "virtuse-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git commit -m "Update pre-rendered story pages from WordPress [skip ci]"
-          git pull --rebase origin main
-          git push origin main
-          echo "MAIN_SHA=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
-
-      - name: Checkout gh-pages
-        if: steps.diff.outputs.changed == 'true'
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: pages
-
-      - name: Publish story pages to staging (gh-pages)
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          # gh-pages holds the site folder at its root. Mirror only the three
-          # story trees (removed stories disappear too) and sitemap.xml (its
-          # STORIES-BUILD block lists them); nothing else on gh-pages is
-          # touched.
-          for d in stories sk/stories ru/stories; do
-            mkdir -p "pages/$d"
-            rsync -a --delete "main/$SITE/$d/" "pages/$d/"
-          done
-          cp "main/$SITE/sitemap.xml" pages/sitemap.xml
-          cd pages
-          git config user.name "virtuse-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add -A stories sk/stories ru/stories sitemap.xml
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Sync main $MAIN_SHA: pre-rendered story pages"
-          git push origin gh-pages
-          {
-            echo
-            echo "Published to staging (gh-pages). **Production is manual:** run the two commands in stories-build/README.md → Upload."
-          } >> "$GITHUB_STEP_SUMMARY"
+      - run: |
+          echo "::error title=Stories build::blog.virtuse.com unreachable from 3 runners"
+          exit 1

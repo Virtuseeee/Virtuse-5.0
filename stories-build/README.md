@@ -60,6 +60,20 @@ and only if something changed it commits to `main` as `virtuse-bot`
 updates by itself. The run's summary lists new (A), changed (M) and
 removed (D) stories.
 
+**Retries on a fresh runner.** Webglobe (blog.virtuse.com, 212.57.32.128)
+drops TCP connections from part of GitHub's IP ranges, so a runner either
+reaches the blog or never does (`UND_ERR_CONNECT_TIMEOUT`); retrying from the
+same runner doesn't help. The workflow therefore calls
+`.github/workflows/stories-build-run.yml` up to three times (`attempt-1`,
+`attempt-2`, `attempt-3`), each a new runner with a different IP. Each attempt
+first runs `curl --connect-timeout 10 -I https://blog.virtuse.com/wp-json/`:
+unreachable → the attempt ends green with `reachable=false`, a warning
+annotation and its runner IP in the summary, and the next attempt starts;
+reachable → build, commit, staging as above. The run fails (and emails) only
+if all three runners are unreachable ("blog.virtuse.com unreachable from 3
+runners") or the build itself fails (no further attempt then). Commit and
+staging publish happen at most once per run.
+
 **Production stays manual.** Until a story's page is on virtuse.com, shares
 of it show the generic Brief card (article.js falls back to its own URL
 only when the page is missing on the site it runs on).
