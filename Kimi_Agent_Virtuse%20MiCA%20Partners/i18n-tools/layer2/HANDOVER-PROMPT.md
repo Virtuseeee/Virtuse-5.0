@@ -8,7 +8,7 @@ The user writes in Slovak; reply in Slovak.
 1. `CLAUDE.md` in the repo root — at least the entries from 2026-09-25 onwards. The 2026-09-27
    entry describes the i18n architecture and the German pilot this work continues.
 2. `Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/README.md` — the tools you will use.
-3. The project's `src/lib/i18n.ts` header (project at `~/Documents/virtuse-concierge-deploy/bitcoin-concierge`).
+3. The project's `src/lib/i18n.ts` header (project in the repo at `layer2-src/`).
 
 ## Where things stand
 - EN, SK, CS: done before (inline in the code). **DE: done and live on production** (pilot).
@@ -36,7 +36,7 @@ The user writes in Slovak; reply in Slovak.
 
 ## Recipe for one language (example: fr)
 From the site folder `Kimi_Agent_Virtuse%20MiCA%20Partners` (T=i18n-tools/layer2):
-1. Back up the project first (it is not under git), e.g. `tar czf ~/concierge-src-$(date +%F).tgz -C ~/Documents/virtuse-concierge-deploy/bitcoin-concierge src *.html vite.config.ts`.
+1. The project is under git at `layer2-src/` (no tarball backups needed); commit source changes together with the rebuilt `concierge-assets/`.
 2. `python3 $T/dict.py template fr` → translate every `tr` in `$T/work/fr.todo.json` (382 strings,
    ~3,000 words; keep `{0}` placeholders and `\n`) → `python3 $T/dict.py build fr` must end with
    `fr: 382/382 translated, 0 missing … 0 placeholder mismatches`.

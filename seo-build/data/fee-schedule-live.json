@@ -1,5 +1,5 @@
 {
-  "source": "Partner fee pages checked 2026-10-02 (taker fee = a plain market buy, entry tier); the shipped Stacking bundle was patched to the same numbers (i18n-tools/layer2/patch_fees_2026q4.py). RevenueBot removed: it charges 20% of bot profit (max $50/month), not a fee per purchase.",
+  "source": "Partner fee pages checked 2026-10-02 (taker fee = a plain market buy, entry tier); layer2-src/src/lib/stacking.ts has the same rows (checked by layer2-src/scripts/check-fees.mjs on every build). RevenueBot removed: it charges 20% of bot profit (max $50/month), not a fee per purchase.",
   "asOf": "2026-Q4",
   "formula": "costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYear / 12); annualDrag = costPerPurchase * periodsPerYear. Same as live stacking module.",
   "rows": [

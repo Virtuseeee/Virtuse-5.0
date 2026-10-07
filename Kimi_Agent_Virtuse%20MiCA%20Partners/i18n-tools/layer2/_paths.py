@@ -1,7 +1,8 @@
 # Shared paths for the Layer 2 (Concierge modules) i18n tools.
 import os
 SITE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))  # Kimi_Agent_Virtuse%20MiCA%20Partners
-PROJECT = os.path.expanduser('~/Documents/virtuse-concierge-deploy/bitcoin-concierge')
+# The module source lives in the repo at layer2-src/ (since 2026-10-07). VIRTUSE_LAYER2_SRC overrides it.
+PROJECT = os.environ.get('VIRTUSE_LAYER2_SRC') or os.path.abspath(os.path.join(SITE, '..', 'layer2-src'))
 def _find_ghpages():
     """Path of the checked-out gh-pages worktree (its /private/tmp path changes between sessions)."""
     import subprocess

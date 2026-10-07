@@ -2,8 +2,11 @@
 
 Tools for translating the four Layer 2 modules (Bitcoin Concierge, Stacking Strategist,
 Loan & Liquidity Copilot, Tax & Inheritance Agent) into more languages. The modules are a
-React/Vite project **outside this repo** at `~/Documents/virtuse-concierge-deploy/bitcoin-concierge`
-(not under git); only its build output (`concierge-assets/`) and the HTML shells live here.
+React/Vite project in this repo at `layer2-src/` (moved into git on 2026-10-07; the old copy at
+`~/Documents/virtuse-concierge-deploy/bitcoin-concierge` is no longer the source). Its build output
+(`concierge-assets/`) and the HTML shells live in the site folder. Build: `cd layer2-src && npm ci && npm run build`
+(the build first runs `scripts/check-fees.mjs`), then `deploy.py`. CI (`layer2-verify.yml`) rebuilds from
+`layer2-src/` and fails if the result differs from the committed `concierge-assets/`.
 
 | Tool | What it does |
 |---|---|

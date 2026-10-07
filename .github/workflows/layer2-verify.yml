@@ -1,0 +1,52 @@
+name: Layer 2 build verify
+
+# Read-only check, deploys nothing. Rebuilds the four Layer 2 modules from
+# layer2-src/ and fails if the result differs from the committed
+# concierge-assets/ or the module shells. So the source in git and the shipped
+# bundle can't drift apart (in Q4 2026 the fees were patched into the bundle
+# only, and a rebuild would have restored the old ones). The build also runs
+# scripts/check-fees.mjs against seo-build/data/fee-schedule-live.json.
+
+on:
+  push:
+    paths:
+      - 'layer2-src/**'
+      - 'seo-build/data/fee-schedule-live.json'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-assets/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/**'
+      - '.github/workflows/layer2-verify.yml'
+  pull_request:
+    paths:
+      - 'layer2-src/**'
+      - 'seo-build/data/fee-schedule-live.json'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-assets/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/**'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: layer2-src/package-lock.json
+      - name: Install
+        working-directory: layer2-src
+        run: npm ci --no-audit --no-fund
+      - name: Build (runs the fee check first)
+        working-directory: layer2-src
+        run: npm run build
+      - name: Copy the build into the site like deploy.py does
+        run: python3 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/deploy.py'
+      - name: Fail if the build differs from what is committed
+        run: |
+          if ! git diff --quiet || [ -n "$(git status --porcelain -- 'Kimi_Agent_Virtuse%20MiCA%20Partners')" ]; then
+            echo "::error title=Layer 2 build::Rebuilding layer2-src/ gives different files than the committed concierge-assets/ or module shells. Rebuild locally (npm run build + deploy.py) and commit source and output together."
+            git status --short
+            git diff --stat
+            exit 1
+          fi
+          echo "Rebuild matches the committed bundle."
