@@ -2236,12 +2236,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/news.html"/>
   </url>
   <url>
-    <loc>https://virtuse.com/news.html</loc>
-    <lastmod>2026-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://virtuse.com/uk/blog.html</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>

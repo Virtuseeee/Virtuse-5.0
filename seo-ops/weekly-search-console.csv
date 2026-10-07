@@ -1,0 +1,13 @@
+week_start,type,name,regex_or_page,indexed_pages,impressions,clicks,ctr_pct,avg_position,note
+2026-10-12,group,homepage,search_console_groups.py → homepage,,,,,,
+2026-10-12,group,categories,search_console_groups.py → categories,,,,,,
+2026-10-12,group,seo,search_console_groups.py → seo,,,,,,
+2026-10-12,group,data,search_console_groups.py → data,,,,,,
+2026-10-12,group,stories,search_console_groups.py → stories,,,,,,
+2026-10-12,group,tools,search_console_groups.py → tools,,,,,,
+2026-10-12,group,info,search_console_groups.py → info,,,,,,
+2026-10-12,group,new site total,NEW_SITE (Matches),,,,,,
+2026-10-12,group,legacy URLs,NEW_SITE (Doesn't match),,,,,,should fall after the 410/301 rules
+2026-10-12,query,200 wma,https://virtuse.com/ma-200w.html,,,,,,pos ~8 on 2026-10-02
+2026-10-12,query,bitcoin retirement calculator,https://virtuse.com/retirement-calculator.html,,,,,,pos ~12 on 2026-10-02
+2026-10-12,query,bitcoin renten rechner,https://virtuse.com/de/retirement-calculator.html,,,,,,11 % CTR on 2026-10-02

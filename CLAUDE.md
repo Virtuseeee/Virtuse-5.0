@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07, sixth round) — SEO / old URLs: legacy WordPress page map + rules, Search Console groups, story canonical map (main: commit "SEO ops: legacy WordPress page map…"; prepared material only, nothing changed on WordPress or Search Console)
+
+- Plan: Docs artifact "Rollout plan: SEO, staré URL a rast nových stránok" (https://claude.ai/artifact/JXmCAC3b34NEPTCQrumWrA, SK), the agent part of steps 1–3. Details and Ras's order of work: `seo-ops/README.md`.
+- Live finding: virtuse.com 301s every unknown path to blog.virtuse.com, where the old Virtuse Exchange pages still return 200 `index, follow` (all 105 WordPress pages, EN + /sk/). The blog has the **Redirection** plugin, Yoast, WPML, LiteSpeed Cache.
+- `partnerships/legacy-wp-redirects.csv` (source of truth): 105 pages, each opened live; 55 → 410 + 30 → 301 ready, 16 wait for Ras (`status=ras`: contact forms, loan request pages, affiliate/referral, glossary), 4 keep (`/blog/`, `/sk/blog/`, and the two blog front pages `/home/`, `/sk/bitcoin-vo-vasom-vrecku/`). Deviations from the plan's appendix, from the page content: `/dashboard/` is a live Bitcoin dashboard → 301 bitcoin-data.html; `/e-shop/` (hardware wallets) → 301 secure.html; `/request-a-loan/` + `/pozicky/` are live Firefish forms (lending.html has the same widget). All 24 targets 200.
+- `seo-ops/legacy_redirects.py build` → `partnerships/legacy-wp-redirection-import.csv` (+ `-ras.csv`) and `partnerships/legacy-wp-htaccess.txt` (RewriteRule, ras rows commented out); `check` follows redirects from www / apex / blog. Baseline 2026-10-07: 4/105 OK (the keep rows), as expected before the rules are live. With rules only on the blog a 301 is 3 hops from www (plan wants ≤ 2): needs the same block on virtuse.com above its catch-all, which lives in the server's public_html/.htaccess (not in the repo; download it first).
+- `seo-ops/search_console_groups.py`: RE2 regexes for 7 groups + NEW_SITE, validated: all 796 sitemap/home URLs in exactly one group, legacy samples in none. `seo-ops/weekly-search-console.csv` template.
+- `seo-ops/stories_canonical_map.py` → `stories-canonical-map.csv`: 359/359 stories on virtuse.com 200 + self-canonical; WordPress canonical self on all 359. The bulk WordPress canonical method waits for Ras's main-version decision.
+- `seo-ops/wp-posts-inventory.csv`: 1511 posts; Crypto News / Krypto novinky 566 EN + 308 SK (2021–2023), noindex decision for Ras.
+- Also: sitemap.xml had news.html twice (old entry from 2026-09-15 without hreflang) → removed, 792 URLs; **not deployed yet** (ships with the next deploy_site.sh).
+
 ## Session status (2026-10-07, fifth round) — Stories build Action: up to 3 attempts on fresh runners (main `9885dbea`; live on GitHub)
 
 - Plan: Docs artifact "Handover: Stories build bez ručného nasadzovania" (https://claude.ai/artifact/RUygmKWHheHBS2S6MNay1a, SK), step 1. Cause: Webglobe (212.57.32.128) drops TCP from part of GitHub's IPs → `UND_ERR_CONNECT_TIMEOUT` to blog.virtuse.com, ~half the runs failed; retries inside build.mjs can't help (same runner IP).
