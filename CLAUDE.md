@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07, third round) — Email-capture step 3: "Get this result by email" under Stacking, Loan and Tax, switched off like step 1 (committed; **Worker + modules not deployed yet**)
+
+- Shared `src/components/CaptureForm.tsx` in the module source (form, honeypot, Brief box, dataLayer `capture_shown`/`capture_submit` with `capture_source`, `captureEnabled()` = meta `vb-capture` on or `?capture=1`); Partner Finder's form now uses it too. `ResultCaptureForm` sits above the footer of Stacking, Loan, Tax; Tax shows it only once a country is chosen (uk/ru start without one). 2 new strings, 392/392 in all 7 dictionaries. Backup `concierge-src-2026-10-07-after-capture-step3.tgz`.
+- Payloads (numbers rounded so the email matches the page): stacking initial/contribution/frequency/years/returnPct/invested/projected/lowestFeePartner (`advice.winner.id`); loan cashNeeded/btcPrice/ltvPct/aprPct/years/taxIfSold/interestTotal/collateralBtc/liquidationPrice (facts only, no verdict); tax country + inheritanceScore + **inheritanceMax** (checklist adds to 105, page shows score/105; Worker changed to accept the max and print "score / max").
+- Checked: payload captured from each page in vite dev, run through the Worker's `validatePayload` + `renderSendEmail` (all valid; email numbers equal the page: €37,008 / €12,500, 60 000 € / 2 375 € / 4 500 € / 0,5952 BTC, 0/105); Partner Finder plan form still sends; forms hidden without the switch; 375px loan form fits, no overflow; 40 shells reference existing assets and carry the Worker in connect-src.
+- Deploy order: Worker first (`node build.mjs && wrangler deploy` in the worktree), then `deploy_site.sh` with this commit range. md5-check `concierge-assets/` afterwards.
+
 ## Session status (2026-10-07, second round) — Email-capture step 1: "Get this list by email" form in Partner Finder, **live but switched off** (main `52a16106`, Worker fix `e3a74293` deployed as version bde1c4a4; modules **live on production** — user ran `deploy_site.sh e3a74293 33072690`, 57/57 md5-verified on virtuse.com and staging, 4 modules load, form shows only with ?capture=1)
 
 - Form under the Partner Finder result cards (`PlanEmailForm` in the module source `src/components/ConciergeChat.tsx`): email + optional Brief checkbox + honeypot, POSTs ids only to the Worker's `/send` (`kind: plan`), dataLayer `capture_shown` / `capture_submit` (`capture_source: concierge`, `capture_brief`). 10 strings in en/sk/cs inline + 7 dictionaries (390/390).
