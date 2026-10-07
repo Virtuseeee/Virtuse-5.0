@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07, fourth round) — Concierge (Partner Finder) + Stacking open to search engines in all 10 languages, static text without JavaScript (main: commit "Concierge + Stacking: indexable in all 10 languages…"; **not deployed yet**)
+
+- Plan: Docs artifact "Rollout plan: nástroje do vyhľadávania a kontrola daní" (https://claude.ai/artifact/3NSPqh9CGsBEJXsXQoFwm5, SK), phase 1. Phases 2–3 (advisor review, then Loan + Tax Agent translations) wait for the tax advisor.
+- `i18n-tools/apply_tool_seo.py` (idempotent; texts in its `T` map, lengths asserted): on the 20 concierge/stacking pages robots `index, follow`; new shorter title (≤ 60, Virtuse once) + description (≤ 155) mirrored to og:/twitter:; canonical added on the 18 translations (they had none); `<main class="tool-static">` inside `#root` with H1, intro, 4 FAQ. An inline `html.js` class hides it whenever JS runs, so visitors never see it (no flash); React's `createRoot` replaces it. Crawlers/AI/link previews without JS see the text. Facts only: 22 partners, Q4 fees 21bitcoin 0 % / ByBit EU from 0.25 % / Kraken from 0.8 %, weekly/monthly, referral-fee disclosure, "not advice" (MiCA wording).
+- `sitemap.xml`: new `<!-- TOOLS:START/END -->` block (20 URLs, 10 hreflang + x-default each) before SEO-BUILD; the same script maintains it. 773 → 793 URLs, xmllint OK.
+- Loan + Tax Agent translations still `noindex` (checked, 18/18). EN Loan/Tax Agent stay indexed (plan's decision).
+- Checked: tagcheck 0 on 20; curl shows H1 + `index, follow` without JS; browser sweep of all 20 at 375 + 1440: app renders, static block gone, no overflow; no-JS render readable. `meta/<lang>.json` site titles not synced (only used when pages.py creates a shell).
+- After deploy: md5 the 20 pages + sitemap.xml, then Ras submits the sitemap in Search Console.
+
 ## Session status (2026-10-07, third round) — Email-capture step 3: "Get this result by email" under Stacking, Loan and Tax, switched off like step 1 (main `07296f4c`; Worker `835493c1` deployed as version 615c1116; **live on production** — user ran `deploy_site.sh 835493c1 07296f4c` as admin.virtuse.com, 73/73 md5 incl. every concierge-assets file on virtuse.com and staging; from virtuse.com the live Worker rejects score > max, and sk/loan.html?capture=1 shows the form)
 
 - Shared `src/components/CaptureForm.tsx` in the module source (form, honeypot, Brief box, dataLayer `capture_shown`/`capture_submit` with `capture_source`, `captureEnabled()` = meta `vb-capture` on or `?capture=1`); Partner Finder's form now uses it too. `ResultCaptureForm` sits above the footer of Stacking, Loan, Tax; Tax shows it only once a country is chosen (uk/ru start without one). 2 new strings, 392/392 in all 7 dictionaries. Backup `concierge-src-2026-10-07-after-capture-step3.tgz`.
