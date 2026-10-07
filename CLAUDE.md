@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07, sixth round) — SEO / old URLs: legacy WordPress page map + rules, Search Console groups, story canonical map (main: commit "SEO ops: legacy WordPress page map…"; prepared material only, nothing changed on WordPress or Search Console)
+## Session status (2026-10-07, sixth round) — SEO / old URLs: legacy WordPress page map + rules, Search Console groups, story canonical map (main: commit "SEO ops: legacy WordPress page map…"; rules **live on blog.virtuse.com since 2026-10-07** — 91 rules in Redirection group "Legacy Exchange 2026-10", see below)
 
 - Plan: Docs artifact "Rollout plan: SEO, staré URL a rast nových stránok" (https://claude.ai/artifact/JXmCAC3b34NEPTCQrumWrA, SK), the agent part of steps 1–3. Details and Ras's order of work: `seo-ops/README.md`.
 - Live finding: virtuse.com 301s every unknown path to blog.virtuse.com, where the old Virtuse Exchange pages still return 200 `index, follow` (all 105 WordPress pages, EN + /sk/). The blog has the **Redirection** plugin, Yoast, WPML, LiteSpeed Cache.
@@ -11,6 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `seo-ops/search_console_groups.py`: RE2 regexes for 7 groups + NEW_SITE, validated: all 796 sitemap/home URLs in exactly one group, legacy samples in none. `seo-ops/weekly-search-console.csv` template.
 - `seo-ops/stories_canonical_map.py` → `stories-canonical-map.csv`: 359/359 stories on virtuse.com 200 + self-canonical; WordPress canonical self on all 359. The bulk WordPress canonical method waits for Ras's main-version decision.
 - `seo-ops/wp-posts-inventory.csv`: 1511 posts; Crypto News / Krypto novinky 566 EN + 308 SK (2021–2023), noindex decision for Ras.
+- **Applied 2026-10-07** with Nick's WordPress login (his Chrome, Claude in Chrome; Redirection REST API): group "Legacy Exchange 2026-10" (id 3, rollback = disable the group), 91 rules = the CSV's ready rows exactly (57 × 410, 34 × 301; hash-compared). Nick decided: loan pages → 301 lending.html, glossary → 410, contact pages keep (CF7 "Contact form" → office@virtuse.com, ~5–8 messages/month, almost all spam, but some 2026 messages are former exchange users trying to register / withdraw a deposit → tell Ras), affiliate/referral (8) wait for Ras. Live check: all 410 and 301 targets correct; 301s are 3 hops from www until the virtuse.com .htaccess block exists; /login/ ends as WP's own 302 → wp-login.php (noindex). No backup plugin on the blog (only rules were added, nothing deleted); a full backup is needed before the 410 pages go to Draft.
 - Also: sitemap.xml had news.html twice (old entry from 2026-09-15 without hreflang) → removed, 792 URLs; **not deployed yet** (ships with the next deploy_site.sh).
 
 ## Session status (2026-10-07, fifth round) — Stories build Action: up to 3 attempts on fresh runners (main `9885dbea`; live on GitHub)
