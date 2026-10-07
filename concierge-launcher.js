@@ -120,6 +120,7 @@
     injectStyles();
     var bubble = buildBubble();
     document.body.appendChild(bubble);
+    revealAfterHero(bubble);
 
     var overlay = null; // built lazily on first open
 
@@ -128,6 +129,20 @@
       if (!overlay.isConnected) document.body.appendChild(overlay);
       openOverlay(overlay);
     });
+  }
+
+  // Optional data-reveal="after-hero" on the script tag: keep the bubble
+  // hidden while the page's .hero is on screen, so it doesn't compete with
+  // the hero's own call to action. Pages without the attribute (or
+  // without a .hero) show the bubble immediately, as before.
+  function revealAfterHero(bubble) {
+    if (!SCRIPT || SCRIPT.getAttribute('data-reveal') !== 'after-hero') return;
+    var hero = document.querySelector('.hero');
+    if (!hero || !('IntersectionObserver' in window)) return;
+    bubble.classList.add('vc-hidden');
+    new IntersectionObserver(function (entries) {
+      bubble.classList.toggle('vc-hidden', entries[0].isIntersecting);
+    }).observe(hero);
   }
 
   function injectStyles() {
@@ -142,6 +157,8 @@
       'font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;',
       'transition:transform .15s ease,box-shadow .15s ease;}',
       '.vc-bubble:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,0,0,0.45);}',
+      '.vc-bubble.vc-hidden{opacity:0 !important;visibility:hidden;pointer-events:none;',
+      'transform:translateY(8px);transition:opacity .25s ease,transform .25s ease,visibility 0s .25s;}',
       '.vc-bubble-icon{flex:none;width:44px;height:44px;border-radius:50%;',
       'background:#f7931a;color:#0b0b0c;display:flex;align-items:center;',
       'justify-content:center;font-weight:800;font-size:20px;line-height:1;}',
