@@ -114,5 +114,19 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
 
 - `wp-posts-inventory.csv`: all 1511 WordPress posts (en 870, sk 631, ru 10) with
   categories and whether a story page exists. "Crypto News" / "Krypto novinky":
-  566 EN + 308 SK posts, almost all 2021–2023 (decision for Ras: noindex via Yoast
-  or leave).
+  566 EN + 308 SK posts, almost all 2021–2023.
+- **Crypto News hidden from search (Ras, 2026-10-07; live the same day):**
+  `wp-mu-plugin/virtuse-crypto-news-noindex.php`, a second must-use plugin next to
+  the canonical one, sets Yoast's robots to `noindex, follow` for the posts and
+  category pages in `virtuse-crypto-news-noindex.json` and leaves them out of the
+  blog's sitemaps (posts + category sitemap). The posts stay readable. List =
+  `crypto_news_noindex.py`: every post in category 38 (Crypto News) or 40 (Krypto
+  novinky) published before 2024, minus the stories → 868 posts (561 EN, 307 SK)
+  + the two category archives. It reads all posts, not a category query: WPML
+  hides 21 posts filed under the other language's category. Kept indexable: the 5
+  that are stories and the 2025–2026 articles. Live check: exactly these 868 of 1501
+  posts are noindex, none of them in the post sitemaps (287 entries left), category
+  archives noindex, Blog category and other posts unchanged. Tested first in
+  WordPress Playground (PHP 7.4, current Yoast, with the canonical plugin; missing
+  or broken JSON = no change). Rollback = delete the PHP file. Google drops the
+  pages as it recrawls them.
