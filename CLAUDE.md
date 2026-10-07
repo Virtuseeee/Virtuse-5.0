@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Loan Copilot + Tax Agent open to search engines in all 10 languages (main `c460d077`; **live on production** — user ran `deploy_site.sh c460d077^ c460d077`, 21/21 md5-verified on virtuse.com and staging; live sitemap 816 URLs)
+
+- `i18n-tools/apply_tool_seo.py` now covers all four tools (`TOOLS` = concierge, stacking, loan, tax-agent; Loan/Tax texts in `T2`, merged into `T`). Same treatment as Partner Finder/Stacking: index, follow; title ≤ 60 / description ≤ 155 mirrored to og/twitter; canonical; `<main class="tool-static">` crawler text hidden when JS runs. **Facts only, no tax rates** in the static text (rates live in the module). Sitemap TOOLS block 20 → 40 URLs (796 → 816).
+- The 18 translations had been noindex waiting for the tax advisor; opened **before the review at the user's explicit decision**. If the advisor changes the rules: module source + seo-build data (11 places), and re-check the static FAQ wording in `T2`.
+- Legacy URLs re-checked the same day: `seo-ops/legacy_redirects.py check` → 103/105 OK; the 2 left are `/login/` + `/sk/login/` (WordPress core 302 → wp-login.php, noindex — harmless, not fixable via Redirection).
+- Next: resubmit the sitemap in Search Console; compare on the 2026-10-30 check.
+
 ## Session status (2026-10-07) — Stories: virtuse.com/stories/ is the main copy; affiliate pages 410 (WordPress plugin **live on blog.virtuse.com**, uploaded by the user via SFTP; 359/359 verified)
 
 - Ras's report doc "Virtuse rollout report: six plans" (https://claude.ai/code/artifact/728f75e4-0462-4a5a-8058-a6a449720119): Nick's Calendly check done (10 slots/week Tue+Wed, 0 bookings = plan 3 baseline), Ras items 2–4 done; open: tax advisor, Crypto News noindex, WordPress backup (before 7 Nov), two optional plan-5 items.
