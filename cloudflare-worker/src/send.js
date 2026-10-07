@@ -93,7 +93,9 @@ const RESULT_FIELDS = {
   ],
   tax: [
     ['country', 'country'],
-    ['inheritanceScore', 'score', 0, 100],
+    // Shown as "score/max" like the page (the checklist adds up to 105 today).
+    ['inheritanceScore', 'score', 0, 1000],
+    ['inheritanceMax', 'max', 1, 1000],
   ],
 };
 
@@ -264,6 +266,10 @@ export function validatePayload(kind, source, payload) {
       }
       value[key] = v;
     }
+    if (source === 'tax' && !(Number.isInteger(value.inheritanceScore) && Number.isInteger(value.inheritanceMax)
+      && value.inheritanceScore <= value.inheritanceMax)) {
+      return { ok: false, error: 'bad inheritanceScore' };
+    }
     return { ok: true, value };
   }
   return { ok: false, error: 'unknown kind' };
@@ -305,7 +311,7 @@ function formatValue(S, emailLang, unit, v) {
     case 'years':
       return S.years(v);
     case 'score':
-      return `${num(v)} / 100`;
+      return `${num(v)}`;
     case 'frequency':
       return S.values.frequency[v];
     case 'country':
@@ -392,7 +398,16 @@ ${button(withUtm(p.url, kind, id), S.openPartner.replace('{0}', p.name))}
 
   // kind === 'result'
   const fields = RESULT_FIELDS[source];
-  const table = rows(fields.map(([key, unit]) => [S.labels[key] || '', formatValue(S, emailLang, unit, payload[key])]));
+  const table = rows(
+    fields
+      .filter(([, unit]) => unit !== 'max')
+      .map(([key, unit]) => [
+        S.labels[key] || '',
+        unit === 'score'
+          ? `${formatValue(S, emailLang, unit, payload[key])} / ${payload.inheritanceMax}`
+          : formatValue(S, emailLang, unit, payload[key]),
+      ])
+  );
   let toolUrl = sitePage(siteLang, TOOL_PAGE[source]);
   if (source === 'tax') toolUrl += `?country=${payload.country}`;
   const body = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">${table}</table>

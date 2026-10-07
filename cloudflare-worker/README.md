@@ -213,7 +213,7 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
   kind=plan    source=concierge  payload { goal, country, experience, custody, amount, partners: [1-3 ids] }
   kind=result  source=stacking   payload { initial, contribution, frequency, years, returnPct, invested, projected, lowestFeePartner }
   kind=result  source=loan       payload { cashNeeded, btcPrice, ltvPct, aprPct, years, taxIfSold, interestTotal, collateralBtc, liquidationPrice }
-  kind=result  source=tax        payload { country, inheritanceScore }
+  kind=result  source=tax        payload { country, inheritanceScore, inheritanceMax }   (shown as score/max, like the page)
 ```
 
 - **No free text.** Only ids from fixed lists and bounded numbers are

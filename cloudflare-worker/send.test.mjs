@@ -95,8 +95,8 @@ test('result payload: bounded numbers, extra keys dropped', () => {
   assert.equal(validatePayload('result', 'stacking', { ...STACKING, projected: '1e9' }).ok, false);
   assert.equal(validatePayload('result', 'loan', LOAN).ok, true);
   assert.equal(validatePayload('result', 'loan', { ...LOAN, ltvPct: NaN }).ok, false);
-  assert.equal(validatePayload('result', 'tax', { country: 'de', inheritanceScore: 60 }).ok, true);
-  assert.equal(validatePayload('result', 'tax', { country: 'xx', inheritanceScore: 60 }).ok, false);
+  assert.equal(validatePayload('result', 'tax', { country: 'de', inheritanceScore: 60, inheritanceMax: 105 }).ok, true);
+  assert.equal(validatePayload('result', 'tax', { country: 'xx', inheritanceScore: 60, inheritanceMax: 105 }).ok, false);
 });
 
 test('plan email: neutral wording, tracked links, language fallbacks', () => {
@@ -126,10 +126,13 @@ test('result emails format numbers per language', () => {
   assert.match(en.html, /€63,000/);
   assert.match(en.html, /12\.5%/);
   assert.match(en.html, /0\.5556 BTC/);
-  const tax = renderSendEmail({ kind: 'result', source: 'tax', payload: { country: 'de', inheritanceScore: 60 }, lang: 'sk', brief: false });
+  const tax = renderSendEmail({ kind: 'result', source: 'tax', payload: { country: 'de', inheritanceScore: 60, inheritanceMax: 105 }, lang: 'sk', brief: false });
   assert.match(tax.html, /Nemecko/);
   assert.match(tax.html, /sk\/tax-agent\.html\?country=de/);
   assert.match(tax.html, /nie daňové poradenstvo/);
+  assert.match(tax.html, /60 \/ 105/);
+  assert.equal(validatePayload('result', 'tax', { country: 'de', inheritanceScore: 110, inheritanceMax: 105 }).ok, false);
+  assert.equal(validatePayload('result', 'tax', { country: 'de', inheritanceScore: 1.5, inheritanceMax: 105 }).ok, false);
 });
 
 test('POST /send: sends one email, stores nothing without brief', withFetch(async (calls) => {
@@ -145,7 +148,7 @@ test('POST /send: sends one email, stores nothing without brief', withFetch(asyn
 test('POST /send with brief: email, contact, welcome email', withFetch(async (calls) => {
   const e = env();
   e.RESEND_SEND_FROM = 'Virtuse <plan@virtuse.com>';
-  const res = await worker.fetch(req({ email: 'a@b.co', lang: 'cs', kind: 'result', source: 'tax', payload: { country: 'cz', inheritanceScore: 40 }, brief: true }), e);
+  const res = await worker.fetch(req({ email: 'a@b.co', lang: 'cs', kind: 'result', source: 'tax', payload: { country: 'cz', inheritanceScore: 40, inheritanceMax: 105 }, brief: true }), e);
   assert.equal(res.status, 200);
   assert.deepEqual(calls.map((c) => c.url), ['https://api.resend.com/emails', 'https://api.resend.com/contacts', 'https://api.resend.com/emails']);
   assert.equal(calls[0].body.from, 'Virtuse <plan@virtuse.com>');
