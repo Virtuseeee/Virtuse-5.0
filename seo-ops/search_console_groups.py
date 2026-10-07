@@ -58,5 +58,20 @@ def main():
         sys.exit(1)
     print('OK: every URL in exactly one group, no legacy sample matches')
 
+def links(resource='sc-domain:virtuse.com', user='', days=28):
+    """Performance report links with the group filter already applied (bookmark them).
+    `page=~regex` = Matches regex, `page=!~regex` = Doesn't match. `user`: the /u/N/ index
+    of the Google account that owns the property in this browser ('' = default account)."""
+    from urllib.parse import quote
+    base = f'https://search.google.com/{("u/" + user + "/") if user else ""}search-console/performance/search-analytics'
+    out = {g: f'{base}?resource_id={quote(resource)}&num_of_days={days}&breakdown=page&page=~{quote(r, safe="")}' for g, r in GROUPS.items()}
+    out['new site (all groups)'] = f'{base}?resource_id={quote(resource)}&num_of_days={days}&breakdown=page&page=~{quote(NEW_SITE, safe="")}'
+    out['legacy URLs (not new site)'] = f'{base}?resource_id={quote(resource)}&num_of_days={days}&breakdown=page&page=!~{quote(NEW_SITE, safe="")}'
+    return out
+
 if __name__ == '__main__':
-    main()
+    if '--links' in sys.argv:
+        for g, u in links(user=sys.argv[sys.argv.index('--links') + 1] if len(sys.argv) > sys.argv.index('--links') + 1 else '').items():
+            print(f'{g}\n  {u}\n')
+    else:
+        main()
