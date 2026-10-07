@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `i18n-tools/apply_tool_seo.py` now covers all four tools (`TOOLS` = concierge, stacking, loan, tax-agent; Loan/Tax texts in `T2`, merged into `T`). Same treatment as Partner Finder/Stacking: index, follow; title ≤ 60 / description ≤ 155 mirrored to og/twitter; canonical; `<main class="tool-static">` crawler text hidden when JS runs. **Facts only, no tax rates** in the static text (rates live in the module). Sitemap TOOLS block 20 → 40 URLs (796 → 816).
 - The 18 translations had been noindex waiting for the tax advisor; opened **before the review at the user's explicit decision**. If the advisor changes the rules: module source + seo-build data (11 places), and re-check the static FAQ wording in `T2`.
 - Legacy URLs re-checked the same day: `seo-ops/legacy_redirects.py check` → 103/105 OK; the 2 left are `/login/` + `/sk/login/` (WordPress core 302 → wp-login.php, noindex — harmless, not fixable via Redirection).
-- Next: resubmit the sitemap in Search Console; compare on the 2026-10-30 check.
+- Sitemap (816 URLs) resubmitted in Search Console 2026-10-07 evening ("submitted successfully"; Google had last read the 793-URL version earlier that day). Compare on the 2026-10-30 check.
 
 ## Session status (2026-10-07) — Stories: virtuse.com/stories/ is the main copy; old Crypto News noindex; affiliate pages 410 (two WordPress must-use plugins **live on blog.virtuse.com**, uploaded by the user via SFTP; 359/359 canonicals + 868/868 noindex verified)
 
