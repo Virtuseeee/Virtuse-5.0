@@ -620,10 +620,20 @@ export async function handlePulse(request, env, origin, pathname) {
   return pulsePrivateJson(405, { error: 'method not allowed' });
 }
 
+// Git commit this bundle was built from; build.mjs fills it in. GET /version
+// lets deploy_worker.sh (and anyone) check which code is live.
+const BUILD_COMMIT = "__BUILD_COMMIT__";
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
     const url = new URL(request.url);
+
+    if (url.pathname === '/version' && (request.method === 'GET' || request.method === 'HEAD')) {
+      return new Response(JSON.stringify({ commit: BUILD_COMMIT }), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Access-Control-Allow-Origin': '*' },
+      });
+    }
 
     // Pulse is dispatched before the newsletter OPTIONS/origin gate so
     // GET /pulse.json stays public and /subscribe stays byte-identical.

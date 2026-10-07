@@ -9,6 +9,7 @@
 //   node build.mjs && npx wrangler deploy
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -47,8 +48,24 @@ for (const { file, placeholder } of TEMPLATES) {
   source = source.replace(placeholder, JSON.stringify(templateHtml));
 }
 
+// Commit stamp for GET /version: BUILD_COMMIT env, else git HEAD (+ "-dirty"
+// when the Worker or email folders have uncommitted changes).
+let commit = process.env.BUILD_COMMIT || 'unknown';
+if (!process.env.BUILD_COMMIT) {
+  try {
+    commit = execSync('git rev-parse HEAD', { cwd: __dirname }).toString().trim();
+    const dirty = execSync('git status --porcelain -- . ../email', { cwd: __dirname }).toString().trim();
+    if (dirty) commit += '-dirty';
+  } catch { /* not a git checkout */ }
+}
+if (!source.includes('"__BUILD_COMMIT__"')) {
+  console.error('Placeholder "__BUILD_COMMIT__" not found in src/index.js');
+  process.exit(1);
+}
+source = source.replace('"__BUILD_COMMIT__"', JSON.stringify(commit));
+
 const distDir = path.join(__dirname, 'dist');
 if (!existsSync(distDir)) mkdirSync(distDir, { recursive: true });
 writeFileSync(path.join(distDir, 'worker.js'), source);
 
-console.log('Built dist/worker.js (' + source.length + ' bytes)');
+console.log('Built dist/worker.js (' + source.length + ' bytes, commit ' + commit + ')');
