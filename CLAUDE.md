@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Story pages carry the full article text (main `f35c7400`, gh-pages `0dcf47a1`; **live on production** — user ran `deploy_site.sh 67ca3321 f35c7400` from the scratchpad worktree: DEPLOY OK, 361/361 md5 on virtuse.com and staging)
+
+- SEO item 1 from Ras's SEO list: the 359 story pages had only title/dek/image without JavaScript (~200 words); the body loaded from WordPress in the browser. `stories-build/build.mjs` now pre-renders the whole post into `#articleBody` with `sanitizeBody()`, the server-side twin of `article.js`'s `sanitizeHtml()` (same allowlist; small parser that keeps the output balanced; `data-src` images fixed; `loading="lazy"`). Dek only from a hand-written excerpt and the byline (desk, UTC date, read time) are pre-rendered too. `article.js?v=20261007` keeps the body when `data-modified` = the post's `modified_gmt` (no flash) and still builds TOC/Sources; a hidden dek is shown if WordPress has one.
+- Checked on all 359 pages against `article.js`'s own rendering: identical text, Sources/author box/footer outside the body; 8 old posts lose empty paragraphs their stray `</p>` made. Sample story: 785 words without JS. Browser: en/sk/ru, `article.html?slug=`, iframe-in-`<p>` post (wrapped on load), 375 px.
+- Live check: article.js/html + en/sk/ru story md5 = repo; live story page 785 words without JS; with JS on virtuse.com: body kept, TOC + 5 footnotes + Sources built, no console errors. The Action only syncs story trees when the build changes, so this commit was synced to gh-pages by hand (`0dcf47a1`).
+- Found in WordPress, not fixed: post 8775 "Three Ways How Media Downplays Inflation" has an empty body; some posts store "−" as mojibake "âˆ’" (e.g. the October table in the war story); ~300 outside images in old posts (Giphy, Cointelegraph, Medium, an old Virtuse Exchange app GIF) are blocked by article.html's CSP `img-src` (they were before too); 151 posts use `<h1>` inside the body.
+
 ## Session status (2026-10-07) — Blog: old GTM container removed (must-use plugin **live on blog.virtuse.com**, uploaded by the user 2026-10-07)
 
 - Found: blog.virtuse.com's theme (`virtuse`, header) hardcodes the old container `GTM-M4C5VRD` (v8, only dead UA tags UA-125054796-1/-3/-5). With no cookie banner on the blog, a fresh visit set `_ga`, `_gid`, `_gat_UA-…`, `_ga_2VPZD595FF`, `_ga_4GPYE0VP9V` before any consent (likely the unexplained GA4 data in the tracking-audit entry). virtuse.com pages all use `GTM-KXX4Q6WH` (v3, GA4 only, consent-gated); Finas link already gone (0 on live homepages and in the repo).
