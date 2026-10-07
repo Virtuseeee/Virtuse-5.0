@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Firefish 5 %, Invity rewritten, Invity out of the self-custody route (main `a8229ff2`, `5d247e93`; **live on production**, 87 + 56 files md5-verified on virtuse.com and staging)
+
+- Firefish "from 6%" → "from 5%" (firefish.io/borrow): index + lending in 10 languages, article.js, `i18n-tools/data/phase4_titles.json`.
+- Invity is now a Bitcoin-only app (Auto Buy, Auto Send, BitGo custody until withdrawal, CNB CASP licence), no longer a rate-comparison engine: buy-bitcoin card in 10 languages + Partner Finder card (`concierge.ts` + 7 dictionaries).
+- Partner Finder: buy + self-custody no longer routes to Invity (falls through to 21bitcoin / Kraken + Trezor). Invity is now recommended nowhere in Partner Finder; it stays on buy-bitcoin.html.
+- **`deploy_site.sh` uploads but never deletes**: old `concierge-assets/` hashes stay on the server. Remove them with an sftp batch (`cd public_html` + `-rm concierge-assets/<old>`), built from `git diff --no-renames --diff-filter=D`; done for both builds today (32 files).
+- On this Mac use `sftp ftp.virtuse.com < batch` (login `virtuse.com` from ~/.ssh/config); `admin.virtuse.com` is rejected here.
+
 ## Session status (2026-10-07, eighth round) — Email-capture step 2: partner registration steps after a partner click (built, **switched off, no partner approved**; not deployed)
 
 - Review doc (SK): "Krok 2: návody pre 22 partnerov na schválenie" https://claude.ai/code/artifact/037b67d1-a1f8-4428-a717-f94d021d3334 — one checkbox per partner. Steps researched by 4 subagents **only from each partner's own pages** (sources per partner), neutral wording, no fees/returns except figures the partner states.
