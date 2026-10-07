@@ -323,7 +323,7 @@ export default {
    "https://docs.firefish.io/firefish-protocol"
   ],
   "open_questions": [
-   "Figures left out of steps. Official pages state 'rates from 5%', durations 3-24 months, loans 'from $800', 'up to half of your Bitcoin's value' (firefish.io/borrow, firefish.io). NOTE: virtuse.com says loans from 6%.",
+   "Figures left out of steps. Official pages state 'rates from 5%', durations 3-24 months, loans 'from $800', 'up to half of your Bitcoin's value' (firefish.io/borrow, firefish.io). virtuse.com updated to 5% on 2026-10-07.",
    "Liquidation threshold (LTV 95%) only seen in a search snippet.",
    "KYC documents and supported countries/currencies for EU borrowers not verified.",
    "Top-up mechanics not opened."
