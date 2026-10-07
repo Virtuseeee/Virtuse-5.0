@@ -15,10 +15,10 @@
       "id": "sk",
       "name": "Slovakia",
       "flag": "🇸🇰",
-      "gainTax": "19% income tax (25% above threshold)",
-      "exemption": "Tax-free after a 1-year holding period; occasional-income allowance of €500 a year",
-      "filing": "Annual personal tax return",
-      "note": "A separate bank account for crypto activity makes reporting much easier."
+      "gainTax": "19–35% income tax plus 16% health contributions",
+      "exemption": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
+      "filing": "Annual personal tax return (type B), due 31 March",
+      "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income."
     },
     {
       "id": "pl",

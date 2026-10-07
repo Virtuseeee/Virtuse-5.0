@@ -1,0 +1,352 @@
+{
+  "_comment": "DAC8 country pages (Germany, Slovakia). Facts checked 2026-10-06; every page is pending the tax advisor's review. Each country is written for its own tax law, not translated from another country. Edit here and run `node generate.mjs`.",
+  "asOf": "2026-Q4",
+  "taxSoftware": [
+    { "name": "Blockpit", "href": "https://app.blockpit.io/register?fpr=virtuse" },
+    { "name": "Koinly", "href": "https://koinly.io/?via=C7DEBFCF&utm_source=affiliate" },
+    { "name": "CoinTracking", "href": "https://cointracking.info/?ref=V328565" },
+    { "name": "Divly", "href": "https://divly.com/?ref=otfkzmf" }
+  ],
+  "countries": [
+    {
+      "id": "de",
+      "native": "de",
+      "paths": {
+        "en": "bitcoin-tax/germany/dac8/index.html",
+        "de": "de/bitcoin-steuern/deutschland/dac8/index.html"
+      },
+      "pages": {
+        "en": {
+          "title": "DAC8 in Germany: what your exchange reports (2026)",
+          "description": "Since 2026 EU exchanges record your trades for the tax office under DAC8. What is reported, when, and what German Bitcoin holders should do now.",
+          "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Germany",
+          "answer": "Since 1 January 2026, crypto exchanges serving EU residents record your identity, tax ID and trades under DAC8. German providers report 2026 data to the Federal Central Tax Office (BZSt) by 31 July 2027; data from exchanges in other EU countries reaches Germany by 30 September 2027. Bitcoin held over one year stays tax-free.",
+          "crumbs": ["Home", "Bitcoin tax", "Germany", "DAC8"],
+          "boxText": "DAC8: since 2026 your exchange records your trades for the tax office.",
+          "boxLink": "What Germany's tax office will see",
+          "cta": "Check Germany in the Tax Agent →",
+          "related": ["Bitcoin tax in Germany", "Sell or borrow against Bitcoin", "Bitcoin inheritance checklist"],
+          "sections": [
+            {
+              "h2": "What DAC8 is",
+              "p": [
+                "DAC8 (EU Directive 2023/2226) brings crypto into the automatic exchange of tax information that already covers bank accounts. In Germany it is implemented by the Crypto-Asset Tax Transparency Act (KStTG).",
+                "Every crypto service provider serving EU residents collects the data, whether it is licensed in Germany or elsewhere in the EU. It reports to the tax authority of its own country, which forwards the data to your country of residence."
+              ]
+            },
+            {
+              "h2": "What your exchange reports",
+              "table": {
+                "headers": ["Reported", "Details"],
+                "rows": [
+                  ["Who you are", "Name, address, date of birth and your German tax ID (Steuer-ID)"],
+                  ["Crypto to euro", "Total amounts bought and sold per crypto-asset and year"],
+                  ["Crypto to crypto", "Total amounts per crypto-asset"],
+                  ["Transfers", "Transfers out of the exchange, including to your own wallet"]
+                ]
+              },
+              "p": ["Moving Bitcoin to your own hardware wallet is not a sale and is not taxed, but the transfer shows up in the report. Keep a record that the address is yours."]
+            },
+            {
+              "h2": "Timeline",
+              "table": {
+                "headers": ["Date", "What happens"],
+                "rows": [
+                  ["1 Jan 2026", "Exchanges start recording transactions and ask customers for their tax ID"],
+                  ["31 Jul 2027", "Deadline for your 2026 tax return without a tax advisor"],
+                  ["31 Jul 2027", "Providers reporting in Germany send 2026 data to the BZSt"],
+                  ["30 Sep 2027", "Data from exchanges in other EU countries reaches Germany"],
+                  ["From late 2027", "Tax offices can compare exchange data with returns"]
+                ]
+              }
+            },
+            {
+              "h2": "How Bitcoin is taxed in Germany",
+              "ul": [
+                "Selling Bitcoin is a private sale under section 23 of the Income Tax Act (EStG).",
+                "Held more than one year: tax-free, whatever the amount.",
+                "Held one year or less: taxed at your personal income tax rate, up to 45% plus any solidarity surcharge and church tax.",
+                "Short-term gains below €1,000 a year in total are tax-free. This is a threshold, not an allowance: at €1,000 or more, the whole gain is taxed.",
+                "Swapping Bitcoin for another crypto-asset within the first year is a taxable sale.",
+                "Coins bought first count as sold first (FIFO), so you need the date of every purchase.",
+                "Losses only offset gains from private sales and can be carried forward.",
+                "Gains go on Annex SO (Anlage SO) of your tax return."
+              ]
+            },
+            {
+              "h2": "What to do now",
+              "ol": [
+                "Export your full trade history from every exchange you have used, including closed accounts.",
+                "Work out the holding period of each purchase. It decides whether you owe 0% or up to 45%.",
+                "Use tax software that produces a German report for Annex SO.",
+                "If you did not declare earlier gains, see a tax advisor before 2027. You must correct a return once you know it is wrong (section 153 AO), and a voluntary disclosure (section 371 AO) only protects you before the tax office finds the gap.",
+                "When you withdraw to your own wallet, keep proof that the address belongs to you."
+              ]
+            },
+            {
+              "h2": "Tax software for a German report",
+              "p": ["These tools import your exchange history and calculate gains with German holding-period rules. Virtuse may receive a commission if you sign up."],
+              "software": true
+            }
+          ],
+          "faq": [
+            { "q": "Does DAC8 apply to exchanges outside the EU?", "a": "DAC8 covers every provider serving EU residents, including ones based outside the EU. Many non-EU countries are adopting the OECD's parallel standard (CARF) on a similar timeline." },
+            { "q": "Is my hardware wallet reported?", "a": "No. Your wallet's balance is not reported, but transfers from an exchange to it are." },
+            { "q": "Do I owe tax on Bitcoin I have not sold?", "a": "No. In Germany tax is due when you sell or swap, not while you hold." },
+            { "q": "I bought before 2026. Does that matter?", "a": "DAC8 data starts with 2026, but the tax office can still ask about earlier years within the normal assessment period." }
+          ]
+        },
+        "de": {
+          "title": "DAC8: Was Ihre Kryptobörse ans Finanzamt meldet",
+          "description": "Seit 2026 erfassen Kryptobörsen Ihre Transaktionen nach DAC8. Was gemeldet wird, wann, und was Bitcoin-Anleger in Deutschland jetzt tun sollten.",
+          "h1": "Ihre Börse meldet Ihre Bitcoin-Transaktionen: DAC8 in Deutschland",
+          "answer": "Seit dem 1. Januar 2026 erfassen Kryptobörsen für Kunden in der EU nach DAC8 Identität, Steuer-ID und Transaktionen. Anbieter, die in Deutschland melden, übermitteln die Daten für 2026 bis zum 31. Juli 2027 an das Bundeszentralamt für Steuern; Daten aus anderen EU-Staaten folgen bis 30. September 2027. Bitcoin, den Sie länger als ein Jahr halten, bleibt steuerfrei.",
+          "crumbs": ["Start", "Bitcoin-Steuern", "Deutschland", "DAC8"],
+          "boxText": "DAC8: Seit 2026 erfasst Ihre Börse Ihre Transaktionen für das Finanzamt.",
+          "boxLink": "Was das Finanzamt sehen wird",
+          "cta": "Deutschland im Tax-Agent prüfen →",
+          "related": ["Bitcoin-Steuern Deutschland", "Bitcoin verkaufen oder beleihen", "Bitcoin und Erbrecht"],
+          "sections": [
+            {
+              "h2": "Was DAC8 ist",
+              "p": [
+                "DAC8 (EU-Richtlinie 2023/2226) bezieht Kryptowerte in den automatischen Informationsaustausch ein, den es für Bankkonten schon gibt. In Deutschland setzt das Kryptowerte-Steuertransparenzgesetz (KStTG) die Richtlinie um.",
+                "Jeder Anbieter, der Kunden in der EU bedient, erfasst die Daten, egal ob er in Deutschland oder einem anderen EU-Staat zugelassen ist. Er meldet an die Steuerbehörde seines Landes, und diese leitet die Daten an Ihr Wohnsitzland weiter."
+              ]
+            },
+            {
+              "h2": "Was Ihre Börse meldet",
+              "table": {
+                "headers": ["Gemeldet", "Inhalt"],
+                "rows": [
+                  ["Ihre Identität", "Name, Anschrift, Geburtsdatum und steuerliche Identifikationsnummer (Steuer-ID)"],
+                  ["Krypto gegen Euro", "Gesamtbeträge der Käufe und Verkäufe je Kryptowert und Jahr"],
+                  ["Krypto gegen Krypto", "Gesamtbeträge je Kryptowert"],
+                  ["Übertragungen", "Auszahlungen von der Börse, auch auf Ihre eigene Wallet"]
+                ]
+              },
+              "p": ["Die Übertragung auf Ihre eigene Hardware-Wallet ist kein Verkauf und nicht steuerpflichtig, erscheint aber in der Meldung. Halten Sie fest, dass die Adresse Ihnen gehört."]
+            },
+            {
+              "h2": "Zeitplan",
+              "table": {
+                "headers": ["Datum", "Was passiert"],
+                "rows": [
+                  ["1. Jan. 2026", "Börsen erfassen Transaktionen und fragen Kunden nach der Steuer-ID"],
+                  ["31. Juli 2027", "Abgabefrist für die Steuererklärung 2026 ohne Steuerberater"],
+                  ["31. Juli 2027", "In Deutschland meldende Anbieter übermitteln die Daten 2026 an das BZSt"],
+                  ["30. Sept. 2027", "Daten von Börsen aus anderen EU-Staaten erreichen Deutschland"],
+                  ["Ab Ende 2027", "Finanzämter können Börsendaten mit Steuererklärungen abgleichen"]
+                ]
+              }
+            },
+            {
+              "h2": "So wird Bitcoin in Deutschland besteuert",
+              "ul": [
+                "Der Verkauf von Bitcoin ist ein privates Veräußerungsgeschäft nach § 23 EStG.",
+                "Haltedauer über ein Jahr: steuerfrei, unabhängig von der Höhe.",
+                "Haltedauer bis zu einem Jahr: persönlicher Einkommensteuersatz bis 45 %, ggf. zuzüglich Solidaritätszuschlag und Kirchensteuer.",
+                "Kurzfristige Gewinne unter 1.000 € im Jahr bleiben steuerfrei. Das ist eine Freigrenze, kein Freibetrag: Ab 1.000 € ist der gesamte Gewinn steuerpflichtig.",
+                "Der Tausch von Bitcoin gegen einen anderen Kryptowert im ersten Jahr ist ein steuerpflichtiger Verkauf.",
+                "Zuerst gekaufte Coins gelten als zuerst verkauft (FIFO). Sie brauchen daher das Datum jedes Kaufs.",
+                "Verluste sind nur mit Gewinnen aus privaten Veräußerungsgeschäften verrechenbar und können vorgetragen werden.",
+                "Gewinne gehören in die Anlage SO der Steuererklärung."
+              ]
+            },
+            {
+              "h2": "Was Sie jetzt tun sollten",
+              "ol": [
+                "Exportieren Sie Ihre vollständige Transaktionshistorie von allen genutzten Börsen, auch von geschlossenen Konten.",
+                "Ermitteln Sie die Haltedauer jedes Kaufs. Sie entscheidet, ob 0 % oder bis zu 45 % Steuer anfallen.",
+                "Nutzen Sie eine Steuersoftware, die einen deutschen Bericht für die Anlage SO erstellt.",
+                "Haben Sie frühere Gewinne nicht erklärt, sprechen Sie vor 2027 mit einem Steuerberater. Erkennen Sie einen Fehler, müssen Sie die Erklärung berichtigen (§ 153 AO); eine Selbstanzeige (§ 371 AO) schützt nur, bevor das Finanzamt die Lücke entdeckt.",
+                "Bewahren Sie bei Auszahlungen auf Ihre eigene Wallet einen Nachweis auf, dass die Adresse Ihnen gehört."
+              ]
+            },
+            {
+              "h2": "Steuersoftware für einen deutschen Bericht",
+              "p": ["Diese Programme importieren Ihre Börsenhistorie und berechnen Gewinne nach deutschen Haltedauer-Regeln. Virtuse erhält bei einer Anmeldung ggf. eine Provision."],
+              "software": true
+            }
+          ],
+          "faq": [
+            { "q": "Gilt DAC8 auch für Börsen außerhalb der EU?", "a": "DAC8 erfasst alle Anbieter, die Kunden in der EU bedienen, auch solche mit Sitz außerhalb der EU. Viele Nicht-EU-Staaten führen den parallelen OECD-Standard (CARF) mit ähnlichem Zeitplan ein." },
+            { "q": "Wird meine Hardware-Wallet gemeldet?", "a": "Nein. Der Bestand Ihrer Wallet wird nicht gemeldet, Übertragungen von der Börse auf die Wallet aber schon." },
+            { "q": "Muss ich Bitcoin versteuern, den ich nicht verkauft habe?", "a": "Nein. In Deutschland entsteht Steuer erst beim Verkauf oder Tausch, nicht beim Halten." },
+            { "q": "Ich habe vor 2026 gekauft. Spielt das eine Rolle?", "a": "DAC8-Daten beginnen mit 2026, das Finanzamt kann frühere Jahre aber innerhalb der regulären Festsetzungsfrist prüfen." }
+          ]
+        }
+      }
+    },
+    {
+      "id": "sk",
+      "native": "sk",
+      "paths": {
+        "en": "bitcoin-tax/slovakia/dac8/index.html",
+        "sk": "sk/bitcoin-dane/slovensko/dac8/index.html"
+      },
+      "pages": {
+        "en": {
+          "title": "DAC8 in Slovakia: what your exchange reports (2026)",
+          "description": "Since 2026 exchanges record Slovak residents' crypto trades under DAC8. What is reported, the 2027 deadlines and how Bitcoin is taxed in Slovakia.",
+          "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Slovakia",
+          "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Slovak residents under DAC8. Your 2026 tax return is due on 31 March 2027, but data from all EU exchanges reaches the Financial Administration by 30 September 2027, after you file. Slovakia has no holding-period exemption: every Bitcoin sale or swap is taxable.",
+          "crumbs": ["Home", "Bitcoin tax", "Slovakia", "DAC8"],
+          "boxText": "DAC8: since 2026 your exchange records your trades for the Financial Administration.",
+          "boxLink": "What Slovakia's tax office will see",
+          "cta": "Check Slovakia in the Tax Agent →",
+          "related": ["Bitcoin tax in Slovakia", "Sell or borrow against Bitcoin", "Bitcoin inheritance checklist"],
+          "sections": [
+            {
+              "h2": "What DAC8 is",
+              "p": [
+                "DAC8 (EU Directive 2023/2226) brings crypto into the automatic exchange of tax information that already covers bank accounts. Slovakia implemented it by amending the Act on Automatic Exchange of Financial Account Information (Act No. 359/2015), with effect from 1 January 2026.",
+                "Most exchanges Slovaks use are licensed in another EU country. They report to that country's tax authority, which forwards the data to Slovakia. Providers reporting in Slovakia send it to the Financial Administration directly."
+              ]
+            },
+            {
+              "h2": "What your exchange reports",
+              "table": {
+                "headers": ["Reported", "Details"],
+                "rows": [
+                  ["Who you are", "Name, address, date of birth and tax identification number"],
+                  ["Crypto to euro", "Total amounts bought and sold per crypto-asset and year"],
+                  ["Crypto to crypto", "Total amounts per crypto-asset"],
+                  ["Transfers", "Transfers out of the exchange, including to your own wallet"]
+                ]
+              },
+              "p": ["Moving Bitcoin between your own wallets is not taxed, but a transfer out of an exchange shows up in the report. Keep a record that the address is yours."]
+            },
+            {
+              "h2": "Timeline",
+              "table": {
+                "headers": ["Date", "What happens"],
+                "rows": [
+                  ["1 Jan 2026", "Exchanges start recording transactions"],
+                  ["31 Mar 2027", "Deadline for your 2026 tax return (extendable by 3 months, or 6 with foreign income)"],
+                  ["31 May 2027", "Providers reporting in Slovakia send 2026 data to the Financial Administration"],
+                  ["30 Sep 2027", "Data from exchanges in other EU countries reaches Slovakia"],
+                  ["From late 2027", "The Financial Administration can compare exchange data with returns already filed"]
+                ]
+              },
+              "p": ["The data arrives after most people have filed. A missing or understated gain can surface months after the deadline."]
+            },
+            {
+              "h2": "How Bitcoin is taxed in Slovakia",
+              "ul": [
+                "Income from selling crypto is other income under section 8 of the Income Tax Act.",
+                "Taxable: selling for euros, swapping for another crypto-asset, and paying for goods or services. Buying, holding and moving coins between your own wallets are not taxed.",
+                "There is no holding-period exemption. A 7% rate and a one-year exemption were passed in 2023, but the consolidation package cancelled them before they took effect.",
+                "Income tax for 2026 on your total tax base: 19% up to €43,975, 25% up to €60,388, 30% up to €74,997 and 35% above.",
+                "Health insurance contributions of 16% are charged on the gain on top of income tax.",
+                "You can deduct the purchase price and fees, but only up to the income. Gains and losses from crypto in the same year offset each other; a net loss cannot reduce other income or be carried forward.",
+                "Crypto income goes on the type B personal income tax return."
+              ]
+            },
+            {
+              "h2": "What to do now",
+              "ol": [
+                "Export your full trade history from every exchange you have used, including closed accounts.",
+                "Match each sale and swap with its purchase price and fees, including crypto-to-crypto swaps.",
+                "File a type B return by 31 March 2027 and count the 16% health contributions in your budget.",
+                "If you did not declare gains in earlier years, talk to a tax advisor about a supplementary return. Correcting a return before a tax audit starts is treated more leniently than a finding during one.",
+                "When you withdraw to your own wallet, keep proof that the address belongs to you."
+              ]
+            },
+            {
+              "h2": "Tax software",
+              "p": ["These tools import your exchange history and calculate gains. Check that the tool supports Slovak rules before you pay. Virtuse may receive a commission if you sign up."],
+              "software": true
+            }
+          ],
+          "faq": [
+            { "q": "Do I pay tax when I swap Bitcoin for another crypto-asset?", "a": "Yes. In Slovakia a crypto-to-crypto swap counts as a sale, and the gain is taxed in that year." },
+            { "q": "Is my hardware wallet reported?", "a": "No. Your wallet's balance is not reported, but transfers from an exchange to it are." },
+            { "q": "Does it help to hold Bitcoin longer than a year?", "a": "Not for Bitcoin held directly. Slovakia has no holding-period exemption for crypto. Securities traded on a regulated market, such as some Bitcoin ETPs, follow different rules; ask a tax advisor." },
+            { "q": "I bought before 2026. Does that matter?", "a": "DAC8 data starts with 2026, but the Financial Administration can still assess earlier years within the statutory period." }
+          ]
+        },
+        "sk": {
+          "title": "DAC8: čo vaša kryptoburza hlási finančnej správe",
+          "description": "Od roku 2026 kryptoburzy evidujú vaše obchody podľa DAC8. Čo sa hlási, termíny v roku 2027 a ako sa na Slovensku zdaňuje Bitcoin.",
+          "h1": "Vaša burza hlási vaše obchody s Bitcoinom: DAC8 na Slovensku",
+          "answer": "Od 1. januára 2026 kryptoburzy podľa smernice DAC8 evidujú totožnosť, daňové identifikačné číslo a obchody slovenských rezidentov. Daňové priznanie za rok 2026 podávate do 31. marca 2027, údaje zo všetkých búrz v EÚ však finančná správa dostane do 30. septembra 2027, teda po podaní priznania. Slovensko nemá oslobodenie podľa doby držby.",
+          "crumbs": ["Domov", "Dane z Bitcoinu", "Slovensko", "DAC8"],
+          "boxText": "DAC8: od roku 2026 vaša burza eviduje vaše obchody pre finančnú správu.",
+          "boxLink": "Čo uvidí finančná správa",
+          "cta": "Preveriť Slovensko v Tax Agentovi →",
+          "related": ["Dane z Bitcoinu na Slovensku", "Predať alebo si požičať na Bitcoin", "Bitcoin a dedičstvo"],
+          "sections": [
+            {
+              "h2": "Čo je DAC8",
+              "p": [
+                "DAC8 (smernica EÚ 2023/2226) zaraďuje kryptoaktíva do automatickej výmeny daňových informácií, ktorá už platí pre bankové účty. Slovensko ju prevzalo novelou zákona č. 359/2015 Z. z. o automatickej výmene informácií o finančných účtoch s účinnosťou od 1. januára 2026.",
+                "Väčšina búrz, ktoré Slováci používajú, má licenciu v inej krajine EÚ. Hlásia daňovému úradu svojej krajiny a ten údaje pošle na Slovensko. Poskytovatelia, ktorí hlásia na Slovensku, ich posielajú priamo finančnej správe."
+              ]
+            },
+            {
+              "h2": "Čo vaša burza hlási",
+              "table": {
+                "headers": ["Hlási sa", "Podrobnosti"],
+                "rows": [
+                  ["Vaša totožnosť", "Meno, adresa, dátum narodenia a daňové identifikačné číslo"],
+                  ["Krypto za eurá", "Celkové sumy nákupov a predajov za každé kryptoaktívum a rok"],
+                  ["Krypto za krypto", "Celkové sumy za každé kryptoaktívum"],
+                  ["Prevody", "Výbery z burzy vrátane prevodov do vašej vlastnej peňaženky"]
+                ]
+              },
+              "p": ["Presun Bitcoinu medzi vlastnými peňaženkami sa nezdaňuje, výber z burzy sa však v hlásení objaví. Uschovajte si doklad, že adresa patrí vám."]
+            },
+            {
+              "h2": "Termíny",
+              "table": {
+                "headers": ["Dátum", "Čo sa deje"],
+                "rows": [
+                  ["1. 1. 2026", "Burzy začínajú evidovať transakcie"],
+                  ["31. 3. 2027", "Termín daňového priznania za rok 2026 (predĺženie o 3 mesiace, pri zahraničných príjmoch o 6)"],
+                  ["31. 5. 2027", "Poskytovatelia hlásiaci na Slovensku posielajú údaje za rok 2026 finančnej správe"],
+                  ["30. 9. 2027", "Údaje z búrz v iných krajinách EÚ prichádzajú na Slovensko"],
+                  ["Od konca 2027", "Finančná správa môže porovnať údaje z búrz s podanými priznaniami"]
+                ]
+              },
+              "p": ["Údaje prídu až po tom, čo väčšina ľudí podá priznanie. Chýbajúci alebo podhodnotený zisk sa tak môže ukázať aj niekoľko mesiacov po termíne."]
+            },
+            {
+              "h2": "Ako sa na Slovensku zdaňuje Bitcoin",
+              "ul": [
+                "Príjem z predaja kryptomien je ostatný príjem podľa § 8 zákona o dani z príjmov.",
+                "Zdaniteľné: predaj za eurá, výmena za iné kryptoaktívum a platba za tovar alebo službu. Nákup, držba a presun medzi vlastnými peňaženkami sa nezdaňujú.",
+                "Oslobodenie podľa doby držby neexistuje. Sadzbu 7 % a oslobodenie po roku schválili v roku 2023, konsolidačný balíček ich však zrušil skôr, než nadobudli účinnosť.",
+                "Daň z príjmov za rok 2026 z celkového základu dane: 19 % do 43 975 €, 25 % do 60 388 €, 30 % do 74 997 € a 35 % nad touto hranicou.",
+                "Zo zisku sa navyše platia zdravotné odvody vo výške 16 %.",
+                "Odpočítať môžete obstarávaciu cenu a poplatky, najviac do výšky príjmu. Zisky a straty z kryptomien v tom istom roku sa započítajú; celková strata neznižuje iné príjmy a neprenáša sa do ďalších rokov.",
+                "Príjem z kryptomien uvádzate v daňovom priznaní fyzickej osoby typ B."
+              ]
+            },
+            {
+              "h2": "Čo urobiť teraz",
+              "ol": [
+                "Exportujte celú históriu obchodov zo všetkých búrz, ktoré ste používali, aj zo zrušených účtov.",
+                "Ku každému predaju a výmene priraďte nákupnú cenu a poplatky, vrátane výmen krypto za krypto.",
+                "Podajte priznanie typ B do 31. marca 2027 a v rozpočte počítajte aj so 16 % zdravotnými odvodmi.",
+                "Ak ste zisky v minulých rokoch nepriznali, poraďte sa s daňovým poradcom o dodatočnom daňovom priznaní. Oprava pred začatím daňovej kontroly je posudzovaná miernejšie ako zistenie počas nej.",
+                "Pri výbere do vlastnej peňaženky si uschovajte doklad, že adresa patrí vám."
+              ]
+            },
+            {
+              "h2": "Daňový softvér",
+              "p": ["Tieto nástroje importujú históriu z búrz a vypočítajú zisky. Pred zaplatením si overte, že podporujú slovenské pravidlá. Virtuse môže za registráciu dostať províziu."],
+              "software": true
+            }
+          ],
+          "faq": [
+            { "q": "Platím daň aj pri výmene Bitcoinu za inú kryptomenu?", "a": "Áno. Na Slovensku sa výmena krypto za krypto považuje za predaj a zisk sa zdaňuje v danom roku." },
+            { "q": "Hlási sa moja hardvérová peňaženka?", "a": "Nie. Zostatok peňaženky sa nehlási, prevody z burzy do nej áno." },
+            { "q": "Oplatí sa držať Bitcoin dlhšie ako rok?", "a": "Pri priamo držanom Bitcoine nie. Slovensko pre kryptomeny nemá oslobodenie podľa doby držby. Cenné papiere obchodované na regulovanom trhu, napríklad niektoré Bitcoin ETP, majú iné pravidlá; poraďte sa s daňovým poradcom." },
+            { "q": "Kupoval som pred rokom 2026. Má to vplyv?", "a": "Údaje podľa DAC8 začínajú rokom 2026, finančná správa však môže preverovať aj staršie roky v zákonnej lehote." }
+          ]
+        }
+      }
+    }
+  ]
+}

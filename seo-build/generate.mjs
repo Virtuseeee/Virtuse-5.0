@@ -52,6 +52,8 @@ const inheritance = JSON.parse(fs.readFileSync(path.join(DATA, 'inheritance.json
 const liveFees = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-schedule-live.json'), 'utf8'));
 // Frozen Q3 2026 schedule for the /bitcoin-fee-index/2026-q3/ archive (citations must not move).
 const FEE_ROWS_Q3 = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-schedule-2026-q3.json'), 'utf8')).rows;
+// DAC8 reporting pages (country-specific content, not a translation template).
+const DAC8 = JSON.parse(fs.readFileSync(path.join(DATA, 'dac8.json'), 'utf8'));
 
 const ORIGIN = resolveSiteOrigin(meta.site.origin);
 const AS_OF = seoData.asOf;
@@ -596,12 +598,21 @@ function pushPage(spec) {
   const html = renderPage({
     ...spec,
     origin: ORIGIN,
-    asOfLabel: isFeePage(spec.relFile)
+    asOfLabel: spec.asOfLabel || (isFeePage(spec.relFile)
       ? (spec.lang === 'fr' ? feeAsOfFr : spec.lang === 'es' ? feeAsOfEs : spec.lang === 'de' ? feeAsOfDe : feeAsOfEn)
-      : (spec.lang === 'fr' ? asOfFr : spec.lang === 'es' ? asOfEs : spec.lang === 'de' ? asOfDe : asOfEn),
+      : (spec.lang === 'fr' ? asOfFr : spec.lang === 'es' ? asOfEs : spec.lang === 'de' ? asOfDe : asOfEn)),
     chrome: CHROME[spec.lang]
   });
   generated.push({ relFile: spec.relFile, html, lang: spec.lang, noindex: !!spec.noindex, title: spec.title });
+}
+
+// Link box from a country tax page to its DAC8 page (only for countries in dac8.json).
+function dac8Box(id, lang, relFile) {
+  const d = DAC8.countries.find((x) => x.id === id);
+  if (!d || !d.paths[lang] || !d.pages[lang]) return '';
+  const pg = d.pages[lang];
+  const target = d.paths[lang].replace(/index\.html$/, '');
+  return `<p class="dac8-note" style="border:1px solid var(--border-hover);border-radius:8px;padding:12px 14px;margin:16px 0"><strong>${esc(pg.boxText)}</strong> <a href="${esc(toRoot(relFile, target))}">${esc(pg.boxLink)} →</a></p>\n`;
 }
 
 // --- EN tax hub ---
@@ -715,7 +726,7 @@ ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Filing', esc(c.filing)],
   ['Note', esc(c.note)]
 ])}
-<h2>What usually creates a taxable event</h2>
+${dac8Box(c.id, 'en', enRel)}<h2>What usually creates a taxable event</h2>
 <p>${esc(c.note)} Buying bitcoin is not treated as a disposal in this overview; check local rules before you spend, swap, gift or lend coins.</p>
 <h2>Nearby country guides</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(enRel, `bitcoin-tax/${slugEn(n.id)}/`))}">Bitcoin tax in ${esc(theEn(n))}</a></li>`).join('')}</ul>
@@ -776,7 +787,7 @@ ${tableHtml(['Feld', 'Stand ' + asOfDe], [
   ['Steuererklärung', esc(d.filing)],
   ['Hinweis', esc(d.note)]
 ])}
-<h2>Wann entsteht typischerweise Steuer?</h2>
+${dac8Box(c.id, 'de', deRel)}<h2>Wann entsteht typischerweise Steuer?</h2>
 <p>${esc(d.note)}</p>
 <h2>Nachbarländer</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(deRel, `de/bitcoin-steuern/${slugDe(n.id)}/`))}">${esc(nameDe(n.id))}</a></li>`).join('')}</ul>
@@ -1850,13 +1861,84 @@ ${tableHtml(['Údaj', 'Stav ' + asOfSk], [
   ['Daňové priznanie', esc(t.filing)],
   ['Poznámka', esc(t.note)]
 ])}
-<h2>Kedy zvyčajne vzniká daň?</h2>
+${dac8Box(c.id, 'sk', relFile)}<h2>Kedy zvyčajne vzniká daň?</h2>
 <p>${esc(t.note)} Nákup Bitcoinu sa v tomto prehľade nepovažuje za zdaniteľný prevod; pred platbou, výmenou, darovaním alebo požičaním mincí si overte miestne pravidlá.</p>
 <h2>Susedné krajiny</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(n.id)}/`))}">Dane z Bitcoinu ${esc(inSk(n.id))}</a></li>`).join('')}</ul>
 ${faqHtml(faqs, 'Časté otázky')}
 `
   });
+}
+
+// --- DAC8 pages: one per country and language (dac8.json) ---
+{
+  const ASOF = {
+    en: formatAsOf(DAC8.asOf, 'en'),
+    de: formatAsOf(DAC8.asOf, 'de'),
+    sk: formatAsOf(DAC8.asOf, 'sk')
+  };
+  // Breadcrumb / related / CTA targets per language. Country slug comes from the generator's maps.
+  const LINKS = {
+    en: (id) => ({
+      home: 'index.html', hub: 'bitcoin-tax/', country: `bitcoin-tax/${slugEn(id)}/`,
+      related: [`bitcoin-tax/${slugEn(id)}/`, 'sell-vs-borrow-bitcoin/', 'bitcoin-inheritance/'],
+      agent: `${TAX_AGENT}?country=${id}`, faqHeading: 'FAQ'
+    }),
+    de: (id) => ({
+      home: 'de/index.html', hub: 'de/bitcoin-steuern/', country: `de/bitcoin-steuern/${slugDe(id)}/`,
+      related: [`de/bitcoin-steuern/${slugDe(id)}/`, 'de/bitcoin-verkaufen-oder-beleihen/', 'de/bitcoin-erbrecht/'],
+      agent: `de/${TAX_AGENT}?country=${id}`, faqHeading: 'FAQ'
+    }),
+    sk: (id) => ({
+      home: 'sk/index.html', hub: 'sk/bitcoin-dane/', country: `sk/bitcoin-dane/${slugSk(id)}/`,
+      related: [`sk/bitcoin-dane/${slugSk(id)}/`, 'sk/bitcoin-predat-alebo-pozicat/', 'sk/bitcoin-dedicstvo/'],
+      agent: `sk/${TAX_AGENT}?country=${id}`, faqHeading: 'Časté otázky'
+    })
+  };
+  function dac8Section(sec, relFile) {
+    let h = `<h2>${esc(sec.h2)}</h2>`;
+    if (sec.table) h += tableHtml(sec.table.headers, sec.table.rows.map((r) => r.map(esc)));
+    for (const para of sec.p || []) h += `<p>${esc(para)}</p>`;
+    if (sec.ul) h += `<ul>${sec.ul.map((li) => `<li>${esc(li)}</li>`).join('')}</ul>`;
+    if (sec.ol) h += `<ol>${sec.ol.map((li) => `<li>${esc(li)}</li>`).join('')}</ol>`;
+    if (sec.software) {
+      h += `<ul>${DAC8.taxSoftware.map((t) => `<li><a href="${esc(t.href)}" rel="sponsored noopener" target="_blank">${esc(t.name)}</a></li>`).join('')}</ul>`;
+    }
+    return h;
+  }
+  for (const d of DAC8.countries) {
+    const langs = Object.keys(d.paths);
+    const hreflang = [
+      ...langs.map((l) => ({ lang: l, href: abs(d.paths[l]), path: canonicalPath(d.paths[l]) })),
+      { lang: 'x-default', href: abs(d.paths.en), path: canonicalPath(d.paths.en) }
+    ];
+    for (const lang of langs) {
+      const relFile = d.paths[lang];
+      const pg = d.pages[lang];
+      const L = LINKS[lang](d.id);
+      const words = wordCount(pg.answer);
+      if (words < 40 || words > 60) throw new Error(`DAC8 ${relFile} answer words ${words}`);
+      pushPage({
+        relFile, lang,
+        asOfLabel: ASOF[lang],
+        title: assertTitle(pg.title),
+        description: assertDescription(pg.description),
+        h1: pg.h1,
+        answerHtml: esc(pg.answer),
+        breadcrumbs: [
+          { name: pg.crumbs[0], href: toRoot(relFile, L.home), abs: abs(L.home) },
+          { name: pg.crumbs[1], href: toRoot(relFile, L.hub), abs: abs(L.hub + 'index.html') },
+          { name: pg.crumbs[2], href: toRoot(relFile, L.country), abs: abs(L.country + 'index.html') },
+          { name: pg.crumbs[3], abs: abs(relFile) }
+        ],
+        hreflang,
+        related: L.related.map((r, i) => ({ href: toRoot(relFile, r), label: pg.related[i] })),
+        moduleCta: { href: toRoot(relFile, L.agent), label: pg.cta },
+        schemas: [faqLd(pg.faq)],
+        bodyHtml: '\n' + pg.sections.map((sec) => dac8Section(sec, relFile)).join('\n') + '\n' + faqHtml(pg.faq, L.faqHeading) + '\n'
+      });
+    }
+  }
 }
 
 // SK DCA calculator

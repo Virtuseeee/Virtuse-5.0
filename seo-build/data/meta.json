@@ -386,10 +386,10 @@
       "note": "Jede Veräußerung (einschließlich Krypto-zu-Krypto) ist ein steuerpflichtiges Ereignis – führen Sie vollständige Aufzeichnungen ab dem ersten Tag."
     },
     "sk": {
-      "gainTax": "19 % Einkommensteuer (25 % oberhalb der Schwelle)",
-      "exemption": "Steuerfrei nach 1-jähriger Haltedauer; Freigrenze für Gelegenheitseinkünfte 500 €/Jahr",
-      "filing": "Jährliche Einkommensteuererklärung",
-      "note": "Ein separates Bankkonto für Krypto-Aktivitäten macht die Steuererklärung deutlich einfacher."
+      "gainTax": "19–35 % Einkommensteuer plus 16 % Krankenversicherungsbeitrag",
+      "exemption": "Keine Befreiung nach Haltedauer; jeder Verkauf und Krypto-Tausch ist steuerpflichtig",
+      "filing": "Jährliche Einkommensteuererklärung (Typ B), fällig am 31. März",
+      "note": "Ein Satz von 7 % und eine Befreiung nach 1 Jahr wurden vor Inkrafttreten gestrichen. Ein Nettoverlust aus Krypto mindert keine anderen Einkünfte."
     },
     "pl": {
       "gainTax": "19 % pauschale Kapitalertragsteuer",
@@ -520,10 +520,10 @@
       "note": "Každý predaj alebo výmena (vrátane krypto za krypto) je zdaniteľná udalosť – veďte si úplnú evidenciu od prvého dňa."
     },
     "sk": {
-      "gainTax": "19 % daň z príjmov (25 % nad stanovenou hranicou)",
-      "exemption": "Po 1 roku držby bez dane; oslobodenie príležitostného príjmu do 500 € ročne",
-      "filing": "Ročné daňové priznanie fyzickej osoby",
-      "note": "Samostatný bankový účet na kryptoaktivity výrazne uľahčí daňové priznanie."
+      "gainTax": "19–35 % daň z príjmov a 16 % zdravotné odvody",
+      "exemption": "Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje",
+      "filing": "Daňové priznanie fyzickej osoby typ B, do 31. marca",
+      "note": "Sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť. Celková strata z kryptomien neznižuje iné príjmy."
     },
     "pl": {
       "gainTax": "19 % jednotná daň z kapitálových výnosov",
@@ -650,10 +650,10 @@
       "note": "Každý prodej nebo směna (včetně výměny kryptoměny za kryptoměnu) je zdanitelná událost – veďte si úplnou evidenci od prvního dne."
     },
     "sk": {
-      "gainTax": "19 % daň z příjmů (25 % nad stanovenou hranicí)",
-      "exemption": "Po 1 roce držení bez daně; osvobození příležitostného příjmu do 500 € ročně",
-      "filing": "Roční daňové přiznání fyzické osoby",
-      "note": "Samostatný bankovní účet pro kryptoměny výrazně usnadní daňové přiznání."
+      "gainTax": "19–35 % daň z příjmů a 16 % zdravotní pojištění",
+      "exemption": "Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní",
+      "filing": "Daňové přiznání fyzické osoby typu B, do 31. března",
+      "note": "Sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti. Celková ztráta z kryptoměn nesnižuje jiné příjmy."
     },
     "pl": {
       "gainTax": "19 % jednotná daň z kapitálových výnosů",
@@ -792,10 +792,10 @@
       "note": "Każde zbycie (także wymiana krypto na krypto) jest zdarzeniem podatkowym: pełną dokumentację warto prowadzić od pierwszego dnia."
     },
     "sk": {
-      "gainTax": "19% podatku dochodowego (25% powyżej progu)",
-      "exemption": "Zwolnienie po roku posiadania; kwota wolna do 500 € rocznie dla dochodów okazjonalnych",
-      "filing": "Roczne zeznanie podatkowe",
-      "note": "Osobne konto bankowe do transakcji kryptowalutowych znacznie ułatwia rozliczenie."
+      "gainTax": "19–35% podatku dochodowego plus 16% składki zdrowotnej",
+      "exemption": "Brak zwolnienia za okres posiadania; każda sprzedaż i wymiana krypto na krypto jest opodatkowana",
+      "filing": "Roczne zeznanie podatkowe typu B, do 31 marca",
+      "note": "Stawkę 7% i zwolnienie po roku zniesiono przed wejściem w życie. Strata netto z kryptowalut nie pomniejsza innych dochodów."
     },
     "pl": {
       "gainTax": "19% podatku liniowego od zysków kapitałowych",
@@ -919,10 +919,10 @@
       "note": "Minden elidegenítés (a kripto-kripto csere is) adóköteles esemény: érdemes az első naptól teljes nyilvántartást vezetni."
     },
     "sk": {
-      "gainTax": "19% jövedelemadó (a küszöb felett 25%)",
-      "exemption": "1 év tartás után adómentes; alkalmi jövedelemre évi 500 €-ig mentesség",
-      "filing": "Éves személyi jövedelemadó-bevallás",
-      "note": "A kriptoügyletekhez használt külön bankszámla sokkal egyszerűbbé teszi a bevallást."
+      "gainTax": "19–35% jövedelemadó és 16% egészségbiztosítási járulék",
+      "exemption": "Nincs tartási idő utáni mentesség; minden eladás és kripto–kripto csere adóköteles",
+      "filing": "Éves személyi jövedelemadó-bevallás (B típus), március 31-ig",
+      "note": "A 7%-os kulcsot és az 1 év utáni mentességet hatálybalépés előtt eltörölték. A kriptóból származó nettó veszteség nem csökkenti az egyéb jövedelmet."
     },
     "pl": {
       "gainTax": "19% egykulcsos tőkenyereségadó",
@@ -1061,10 +1061,10 @@
       "note": "Кожне відчуження (зокрема обмін криптовалюти на криптовалюту) є оподатковуваною подією: ведіть повний облік із першого дня."
     },
     "sk": {
-      "gainTax": "19% податку на доходи (25% понад поріг)",
-      "exemption": "Після 1 року володіння податку немає; неоподатковуваний мінімум до 500 € на рік для разових доходів",
-      "filing": "Щорічна декларація про доходи фізичних осіб",
-      "note": "Окремий банківський рахунок для криптооперацій значно спрощує звітність."
+      "gainTax": "19–35% податку на доходи плюс 16% внесків на медичне страхування",
+      "exemption": "Звільнення за строком володіння немає; кожен продаж і обмін криптовалюти на криптовалюту оподатковується",
+      "filing": "Щорічна декларація фізичної особи (тип B), до 31 березня",
+      "note": "Ставку 7% і звільнення після 1 року скасували до набрання чинності. Чистий збиток від криптовалют не зменшує інші доходи."
     },
     "pl": {
       "gainTax": "19% єдиного податку на приріст капіталу",
@@ -1203,10 +1203,10 @@
       "note": "Каждое отчуждение (включая обмен криптовалюты на криптовалюту) является налогооблагаемым событием: ведите полный учёт с первого дня."
     },
     "sk": {
-      "gainTax": "Подоходный налог 19% (25% сверх порога)",
-      "exemption": "После 1 года владения налога нет; необлагаемый минимум до 500 € в год для разовых доходов",
-      "filing": "Ежегодная декларация о доходах физических лиц",
-      "note": "Отдельный банковский счёт для криптоопераций значительно упрощает отчётность."
+      "gainTax": "Подоходный налог 19–35% плюс 16% взносов на медицинское страхование",
+      "exemption": "Освобождения по сроку владения нет; каждая продажа и обмен криптовалюты на криптовалюту облагаются налогом",
+      "filing": "Ежегодная декларация физического лица (тип B), до 31 марта",
+      "note": "Ставку 7% и освобождение после 1 года отменили до вступления в силу. Чистый убыток от криптовалют не уменьшает другие доходы."
     },
     "pl": {
       "gainTax": "Единый налог 19% на прирост капитала",
@@ -1345,10 +1345,10 @@
       "note": "Chaque cession (y compris les échanges crypto contre crypto) est un fait générateur d'impôt : conservez des relevés complets dès le premier jour."
     },
     "sk": {
-      "gainTax": "Impôt sur le revenu de 19 % (25 % au-delà du seuil)",
-      "exemption": "Pas d'impôt après 1 an de détention ; franchise de 500 € par an pour les revenus occasionnels",
-      "filing": "Déclaration annuelle de revenus des personnes physiques",
-      "note": "Un compte bancaire dédié à l'activité crypto simplifie considérablement les déclarations."
+      "gainTax": "Impôt sur le revenu de 19 à 35 %, plus 16 % de cotisations d'assurance maladie",
+      "exemption": "Aucune exonération liée à la durée de détention ; chaque vente et chaque échange crypto contre crypto est imposable",
+      "filing": "Déclaration annuelle de revenus (type B), avant le 31 mars",
+      "note": "Le taux de 7 % et l'exonération après 1 an ont été supprimés avant leur entrée en vigueur. Une perte nette sur crypto ne réduit pas les autres revenus."
     },
     "pl": {
       "gainTax": "Impôt forfaitaire de 19 % sur les plus-values",
@@ -1476,10 +1476,10 @@
       "note": "Cada transmisión (incluidos los intercambios cripto por cripto) es un hecho imponible: guarde registros completos desde el primer día."
     },
     "sk": {
-      "gainTax": "Impuesto sobre la renta del 19 % (25 % por encima del umbral)",
-      "exemption": "Sin impuesto tras 1 año de tenencia; franquicia de 500 € al año para rentas ocasionales",
-      "filing": "Declaración anual del impuesto sobre la renta",
-      "note": "Una cuenta bancaria separada para la actividad cripto simplifica mucho la declaración."
+      "gainTax": "Impuesto sobre la renta del 19 al 35 %, más un 16 % de cotizaciones al seguro de salud",
+      "exemption": "Sin exención por tiempo de tenencia; cada venta y cada permuta entre criptoactivos tributa",
+      "filing": "Declaración anual de la renta (tipo B), hasta el 31 de marzo",
+      "note": "El tipo del 7 % y la exención tras 1 año se suprimieron antes de entrar en vigor. Una pérdida neta en cripto no reduce otras rentas."
     },
     "pl": {
       "gainTax": "Impuesto fijo del 19 % sobre las ganancias patrimoniales",

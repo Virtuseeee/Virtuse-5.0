@@ -254,7 +254,7 @@ if (!canonicalSample.includes(`property="og:url" content="${ORIGIN}/bitcoin-dca-
 const feeIndex = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'), 'utf8');
 if (!feeIndex.includes('Dataset')) fail('Fee Index missing Dataset schema');
 if (!feeIndex.includes('Article')) fail('Fee Index missing Article schema');
-const feeAsOfLabel = JSON.parse(fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'data', 'fee-schedule-live.json'), 'utf8')).asOf.replace(/^(\d{4})-Q(\d)$/, 'Q$2 $1');
+const feeAsOfLabel = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'fee-schedule-live.json'), 'utf8')).asOf.replace(/^(\d{4})-Q(\d)$/, 'Q$2 $1');
 if (!feeIndex.includes(feeAsOfLabel)) fail(`Fee Index missing as-of date (${feeAsOfLabel})`);
 const feeArchive = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/2026-q3/index.html'), 'utf8');
 if (!feeArchive.includes('0.16%')) fail('Q3 archive must keep the frozen Q3 fees (Kraken 0.16%)');

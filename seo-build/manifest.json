@@ -4,9 +4,9 @@
   "origin": "https://virtuse.com",
   "feeSource": "live",
   "counts": {
-    "enIndexable": 34,
-    "deIndexable": 18,
-    "skIndexable": 18,
+    "enIndexable": 36,
+    "deIndexable": 19,
+    "skIndexable": 19,
     "csIndexable": 18,
     "plIndexable": 18,
     "huIndexable": 18,
@@ -15,7 +15,7 @@
     "frIndexable": 18,
     "esIndexable": 18,
     "noindex": 1,
-    "totalHtml": 197
+    "totalHtml": 201
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -85,6 +85,10 @@
     "sk/bitcoin-dane/holandsko/index.html",
     "sk/bitcoin-dane/francuzsko/index.html",
     "sk/bitcoin-dane/spanielsko/index.html",
+    "bitcoin-tax/germany/dac8/index.html",
+    "de/bitcoin-steuern/deutschland/dac8/index.html",
+    "bitcoin-tax/slovakia/dac8/index.html",
+    "sk/bitcoin-dane/slovensko/dac8/index.html",
     "sk/bitcoin-dca-kalkulacka/index.html",
     "sk/bitcoin-predat-alebo-pozicat/index.html",
     "sk/bitcoin-dedicstvo/index.html",
