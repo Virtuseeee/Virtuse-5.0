@@ -2,12 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07) — Blog: old GTM container to be removed (must-use plugin built, **not uploaded yet**)
+## Session status (2026-10-07) — Blog: old GTM container removed (must-use plugin **live on blog.virtuse.com**, uploaded by the user 2026-10-07)
 
 - Found: blog.virtuse.com's theme (`virtuse`, header) hardcodes the old container `GTM-M4C5VRD` (v8, only dead UA tags UA-125054796-1/-3/-5). With no cookie banner on the blog, a fresh visit set `_ga`, `_gid`, `_gat_UA-…`, `_ga_2VPZD595FF`, `_ga_4GPYE0VP9V` before any consent (likely the unexplained GA4 data in the tracking-audit entry). virtuse.com pages all use `GTM-KXX4Q6WH` (v3, GA4 only, consent-gated); Finas link already gone (0 on live homepages and in the repo).
 - User chose option 1 (remove, no analytics on the blog). `seo-ops/wp-mu-plugin/virtuse-remove-old-gtm.php`: output buffer on `template_redirect` (front end only; admin, REST, feeds, AJAX untouched) removes the `<script>` and `<noscript><iframe>` that contain GTM-M4C5VRD; nothing found = page unchanged; regex error = page unchanged. No DB writes. Rollback = delete the file.
 - Tested: on the two live pages saved from the blog (home + a post) exactly 1 script + 1 noscript/iframe removed, all other 49/44 scripts kept, 0 googletagmanager left; in WordPress Playground (PHP 8.3 and 7.4) with a fake theme snippet: front end clean, a neighbouring script kept, admin/feed markers untouched, no PHP warnings.
-- **Upload:** SFTP to `/_sub/blog/wp-content/mu-plugins/` (same folder as the two other must-use plugins). Then check a fresh visit of blog.virtuse.com: no `GTM-M4C5VRD` in the HTML, no _ga cookies. Cookies set earlier stay until they expire.
+- Uploaded via SFTP to `/_sub/blog/wp-content/mu-plugins/`. Live check: home, /sk/, /contact/ and a post 200 with 0 × GTM-M4C5VRD and 0 × googletagmanager; feed + wp-json 200; a fresh visit sets no _ga/_gid/_gat cookies, loads no Google script, no dataLayer. Cookies set earlier stay until they expire. The blog now sends no analytics (user's choice).
 - Still open (needs a WordPress login, not checked): admin email `info@webhelp.sk` (Settings → General), any Webhelp admin user, Wordfence alert email.
 
 ## Session status (2026-10-07) — Deploys hardened; Layer 2 source in git (see `DEPLOY.md`)
