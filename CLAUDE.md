@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07, second round) — Email-capture step 1: "Get this list by email" form in Partner Finder, **built but switched off** (main, see git log; Worker fix c69becb6)
+
+- Form under the Partner Finder result cards (`PlanEmailForm` in the module source `src/components/ConciergeChat.tsx`): email + optional Brief checkbox + honeypot, POSTs ids only to the Worker's `/send` (`kind: plan`), dataLayer `capture_shown` / `capture_submit` (`capture_source: concierge`, `capture_brief`). 10 strings in en/sk/cs inline + 7 dictionaries (390/390).
+- **Off switch:** the form renders only if the page shell has `<meta name="vb-capture" content="on">` or the URL has `?capture=1` (testing). Turn on after legal review of the privacy text: add the meta to the 10 `*/concierge.html` shells (+ root), no rebuild needed. So any rebuild/deploy of the modules is safe meanwhile.
+- Worker fix (c69becb6, **needs `wrangler deploy`**): experience/custody are only asked for buy/loan/custody goals; /send rejected every mining/tax/treasury/earn plan before.
+- Build checks: backup of the source before this change rebuilt to exactly the 17 deployed hashes (so the new build adds only this change); 40 shells reference existing assets; stacking/loan/tax/concierge load without console errors; form off without the switch, on with `?capture=1`; SK/DE/EN text; capture_shown fires once in the production build (twice in vite dev = StrictMode). Source backups `concierge-src-2026-10-07-{before,after}-capture.tgz`.
+- Seen, not fixed: the Partner Finder chat scrolls sideways 23px at 375px (partner cards `min-w-[280px]` inside the 85% bubble), pre-existing.
+- Deploy from the scratchpad worktree (its `deploy_site.sh` works on that checkout); the OneDrive folder is behind origin.
+
 ## Session status (2026-10-07) — Homepage hero: one main step (consultation), 10 languages; consultation widget translated into 7 more languages (committed, **not deployed yet**)
 
 - Plan: Docs artifact "Rollout plan: jeden hlavný krok v heri" (https://claude.ai/artifact/JHHuDWvqRqLsNCCziX4DSj, SK). Ras's open decisions there: button wording (we used the doc's proposal), who takes calls outside SK/CS/EN, Calendly capacity. **Baseline numbers (4 weeks before) can't come from GA4: the site sends no GA4 data** (GTM-M4C5VRD has only dead UA tags; see the memory/plan note) — use Calendly bookings + Resend subscriptions.
