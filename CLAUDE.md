@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07, fourth round) — Tracking audit: GTM has no GA4 tag; GA4 outbound clicks switched on as the partner-click baseline
+
+- **GTM `GTM-M4C5VRD` (live gtm.js v8) contains only dead Universal Analytics tags** (`UA-125054796-1/-3/-5`, analytics.js) and no GA4 tag, so the `partner_click` / `capture_*` dataLayer events from `partner-click.js` and the capture forms go nowhere yet. Neither rvasilisin@gmail.com nor vasilisin@virtuse.com has access to that GTM container (both show no accounts); owner unknown. Next: whoever has it adds vasilisin@virtuse.com (Publish), then replace the UA tags with a GA4 event tag on `partner_click` (+ `capture_shown`, `capture_submit`).
+- **GA4 still receives data**, after consent, through Google tags connected to the UA snippet: **two** properties get every page_view, `G-2VPZD595FF` (account 125054796, property 399381628, stream "virtuse.com - GA4" 5903787016, accessible as rvasilisin@gmail.com) and `G-4GPYE0VP9V` (not visible to either of the user's accounts). Earlier entries calling G-4GPYE0VP9V "the" GA4 property are incomplete.
+- 2026-10-07, with the user's OK: stream 5903787016 Enhanced measurement had only Page views; **Outbound clicks switched on** (saved; served gtag config shows `enableOutboundClick: true`). Partner clicks now arrive as GA4 `click` events with `link_domain`/`link_url` = the baseline before capture step 2 (map domain → partner via `data/partners.json` hosts). Synthetic test clicks were not recorded (GA ignores them); a real click was not made to avoid a fake affiliate click, so check Reports → Engagement → Events → `click` after real traffic.
+
 ## Session status (2026-10-07, fourth round) — Concierge (Partner Finder) + Stacking open to search engines in all 10 languages, static text without JavaScript (main: commit "Concierge + Stacking: indexable in all 10 languages…"; **not deployed yet**)
 
 - Plan: Docs artifact "Rollout plan: nástroje do vyhľadávania a kontrola daní" (https://claude.ai/artifact/3NSPqh9CGsBEJXsXQoFwm5, SK), phase 1. Phases 2–3 (advisor review, then Loan + Tax Agent translations) wait for the tax advisor.
