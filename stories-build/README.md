@@ -74,6 +74,13 @@ if all three runners are unreachable ("blog.virtuse.com unreachable from 3
 runners") or the build itself fails (no further attempt then). Commit and
 staging publish happen at most once per run.
 
+**Through Cloudflare first (since 2026-10-07).** Each attempt now probes the
+Cloudflare Worker proxy `https://virtuse-newsletter.virtuse-ai.workers.dev/wp`
+first (`cloudflare-worker/src/wp-proxy.js`) and only then blog.virtuse.com
+directly; the build gets whichever answered as `WP_BASE`. GitHub → Cloudflare
+→ Webglobe avoids the dropped GitHub IPs, so the three attempts should rarely
+be needed. Locally `WP_BASE` is unset and the build talks to the blog directly.
+
 **Production stays manual.** Until a story's page is on virtuse.com, shares
 of it show the generic Brief card (article.js falls back to its own URL
 only when the page is missing on the site it runs on).

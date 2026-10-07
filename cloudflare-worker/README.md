@@ -300,3 +300,20 @@ SECRET="<same value as your local UNSUB_SECRET>"
 TOKEN=$(printf '%s' "$EMAIL" | openssl dgst -sha256 -hmac "$SECRET" | sed 's/^.* //')
 curl "http://localhost:8787/unsubscribe?email=$EMAIL&token=$TOKEN"
 ```
+
+## WordPress proxy for the Stories build (`/wp/*`)
+
+`src/wp-proxy.js`. Webglobe drops TCP connections from part of GitHub's
+runner IPs, so `stories-build/build.mjs` timed out on some runners. The
+Stories Action now fetches WordPress through this Worker
+(`https://virtuse-newsletter.virtuse-ai.workers.dev/wp/...`), and falls back
+to blog.virtuse.com directly if the proxy is unreachable.
+
+- Forwards only GET/HEAD on `/wp-json/`, `/wp-json/wp/v2/posts` and
+  `/sk/wp-json/wp/v2/posts` (query string kept). Everything else is 404, so
+  it is not an open proxy and never reaches wp-admin or login.
+- Passes `X-WP-Total`/`X-WP-TotalPages` back (the build pages on them);
+  drops cookies. Successful responses are cached ~5 minutes.
+- Tests: `npm test` (`wp-proxy.test.mjs`).
+- Check after a deploy:
+  `curl -sI https://virtuse-newsletter.virtuse-ai.workers.dev/wp/wp-json/` → 200.

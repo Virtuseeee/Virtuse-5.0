@@ -37,10 +37,14 @@ const SITEMAP_START = '<!-- STORIES-BUILD:START -->';
 const SITEMAP_END = '<!-- STORIES-BUILD:END -->';
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
+// WordPress base URL. Defaults to the blog itself; the GitHub Action sets
+// WP_BASE to the Cloudflare Worker proxy (cloudflare-worker/src/wp-proxy.js)
+// because Webglobe drops connections from part of GitHub's runner IPs.
+const WP_BASE = (process.env.WP_BASE || 'https://blog.virtuse.com').replace(/\/+$/, '');
 const FEEDS = [
-  { lang: 'en', api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, wpLang: 'en', dir: '', locale: 'en_US' },
-  { lang: 'sk', api: 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts', category: 26, wpLang: null, dir: 'sk/', locale: 'sk_SK' },
-  { lang: 'ru', api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 57, wpLang: 'ru', dir: 'ru/', locale: 'ru_RU' },
+  { lang: 'en', api: WP_BASE + '/wp-json/wp/v2/posts', category: 13, wpLang: 'en', dir: '', locale: 'en_US' },
+  { lang: 'sk', api: WP_BASE + '/sk/wp-json/wp/v2/posts', category: 26, wpLang: null, dir: 'sk/', locale: 'sk_SK' },
+  { lang: 'ru', api: WP_BASE + '/wp-json/wp/v2/posts', category: 57, wpLang: 'ru', dir: 'ru/', locale: 'ru_RU' },
 ];
 // Desk names for the pre-rendered kicker (article.js replaces it on load
 // with the same value). Taken from article.js's LANGS.

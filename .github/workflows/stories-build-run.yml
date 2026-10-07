@@ -5,7 +5,9 @@ name: Stories build (one attempt)
 # GitHub's IP ranges, so a run either reaches blog.virtuse.com at all or not
 # at all; retrying from the same runner doesn't help.
 #
-# Starts with a connection check. Unreachable -> the job ends green with
+# Starts with a connection check: the Cloudflare Worker proxy first
+# (cloudflare-worker/src/wp-proxy.js), then blog.virtuse.com directly.
+# Unreachable both ways -> the job ends green with
 # reachable=false and skips everything else, so the caller tries the next
 # runner. Reachable -> build, commit and staging publish run exactly as they
 # did before; a failure there fails the job (no further attempts).
@@ -29,17 +31,32 @@ jobs:
     env:
       SITE: Kimi_Agent_Virtuse%20MiCA%20Partners
     steps:
-      - name: Check connection to blog.virtuse.com
+      - name: Check connection to WordPress (proxy first, then direct)
         id: probe
+        env:
+          WP_PROXY: https://virtuse-newsletter.virtuse-ai.workers.dev/wp
+          WP_DIRECT: https://blog.virtuse.com
         run: |
+          # The Cloudflare Worker proxy (cloudflare-worker/src/wp-proxy.js)
+          # avoids Webglobe's drops of GitHub IPs. If the proxy itself is down,
+          # fall back to blog.virtuse.com directly (works from some runners).
           ip=$(curl -s --max-time 10 https://api.ipify.org || echo unknown)
-          if curl --connect-timeout 10 --max-time 60 -sS -o /dev/null -I https://blog.virtuse.com/wp-json/; then
+          base=""
+          for candidate in "$WP_PROXY" "$WP_DIRECT"; do
+            start=$(date +%s)
+            if curl --connect-timeout 10 --max-time 60 -sS -o /dev/null -f -I "$candidate/wp-json/"; then
+              base="$candidate"
+              echo "Attempt ${{ inputs.attempt }}: $candidate reachable from runner $ip in $(( $(date +%s) - start ))s." >> "$GITHUB_STEP_SUMMARY"
+              break
+            fi
+            echo "::warning title=Stories build::Attempt ${{ inputs.attempt }}: $candidate unreachable from runner $ip"
+            echo "Attempt ${{ inputs.attempt }}: $candidate **unreachable** from runner $ip." >> "$GITHUB_STEP_SUMMARY"
+          done
+          if [ -n "$base" ]; then
             echo "reachable=true" >> "$GITHUB_OUTPUT"
-            echo "Attempt ${{ inputs.attempt }}: blog.virtuse.com reachable from runner $ip, building." >> "$GITHUB_STEP_SUMMARY"
+            echo "wp_base=$base" >> "$GITHUB_OUTPUT"
           else
             echo "reachable=false" >> "$GITHUB_OUTPUT"
-            echo "::warning title=Stories build::Attempt ${{ inputs.attempt }}: blog.virtuse.com unreachable from runner $ip, trying the next runner"
-            echo "Attempt ${{ inputs.attempt }}: blog.virtuse.com **unreachable** from runner $ip, skipped." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Checkout main
@@ -58,6 +75,8 @@ jobs:
       - name: Build story pages from WordPress
         if: steps.probe.outputs.reachable == 'true'
         working-directory: main
+        env:
+          WP_BASE: ${{ steps.probe.outputs.wp_base }}
         run: node stories-build/build.mjs
 
       - name: Detect changes

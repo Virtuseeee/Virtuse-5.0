@@ -54,6 +54,7 @@
 // '../src/send.js' resolves both from src/ (tests) and from dist/ (the
 // built worker wrangler bundles).
 import { handleSend } from '../src/send.js';
+import { handleWpProxy, WP_PREFIX } from '../src/wp-proxy.js';
 
 const ALLOWED_ORIGINS = [
   'https://staging.virtuse.com',
@@ -628,6 +629,12 @@ export default {
     // GET /pulse.json stays public and /subscribe stays byte-identical.
     if (url.pathname === '/pulse.json' || url.pathname === '/pulse/rollback') {
       return handlePulse(request, env, origin, url.pathname);
+    }
+
+    // Read-only WordPress proxy for the Stories build (see src/wp-proxy.js).
+    // Called from GitHub runners, not browsers: no Origin, no CORS.
+    if (url.pathname.startsWith(WP_PREFIX + '/')) {
+      return handleWpProxy(request, url);
     }
 
     if (request.method === 'OPTIONS') {
