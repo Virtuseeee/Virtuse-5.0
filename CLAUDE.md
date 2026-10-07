@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07, seventh round) — Partner Finder: no sideways scroll on phones (committed; deploy with the printed range)
+## Session status (2026-10-07, seventh round) — Partner Finder: no sideways scroll on phones (main `6b4aff82`; **live on production** — user ran `deploy_site.sh 1897c18e 6b4aff82`, 57/57 md5 incl. every concierge-assets file on virtuse.com and staging; live sk/concierge.html at 375 px: chat and page overflow 0)
 
 - The chat scrolled sideways 23 px at 375 px (28 px at 320): partner cards and the email form had `min-w-[280px]` inside the 85 % assistant bubble, and the card's name + MiCA badge row didn't wrap. Module source (`ConciergeChat.tsx`): assistant column `min-w-0 max-w-full sm:max-w-[85%]`, cards/form `w-full max-w-sm sm:w-96` (no min width), name row `flex-wrap`; `CaptureForm.tsx`: input row wraps, input `min-w-[160px]` (on phones the Send button goes under the field). Desktop unchanged (cards 384 px, form one row).
 - Checked in vite dev: chat overflow 0 at 375 and 320, page overflow 0; built shells load (sk concierge, stacking, de loan, pl tax-agent). Backups `concierge-src-2026-10-07-{before,after}-overflow.tgz`.
