@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07, seventh round) — Partner Finder: no sideways scroll on phones (committed; deploy with the printed range)
+
+- The chat scrolled sideways 23 px at 375 px (28 px at 320): partner cards and the email form had `min-w-[280px]` inside the 85 % assistant bubble, and the card's name + MiCA badge row didn't wrap. Module source (`ConciergeChat.tsx`): assistant column `min-w-0 max-w-full sm:max-w-[85%]`, cards/form `w-full max-w-sm sm:w-96` (no min width), name row `flex-wrap`; `CaptureForm.tsx`: input row wraps, input `min-w-[160px]` (on phones the Send button goes under the field). Desktop unchanged (cards 384 px, form one row).
+- Checked in vite dev: chat overflow 0 at 375 and 320, page overflow 0; built shells load (sk concierge, stacking, de loan, pl tax-agent). Backups `concierge-src-2026-10-07-{before,after}-overflow.tgz`.
+
 ## Session status (2026-10-07, fifth round) — New GTM container `GTM-KXX4Q6WH` (ours) replaces `GTM-M4C5VRD` (no access) on all 628 pages (main `59f82948`; **live on production** — user ran `deploy_site.sh a691f504 59f82948`, 627/627 md5 on virtuse.com and staging; container **version 3** live)
 
 - Plan: Docs artifact "Plán: vlastný GTM kontajner namiesto GTM-M4C5VRD" (https://claude.ai/code/artifact/c5deacef-14fb-4c8d-8c00-94f638efc8db, SK).
