@@ -9,6 +9,7 @@ and run `build` again.
     python3 seo-ops/legacy_redirects.py build   # writes the three rule files below
     python3 seo-ops/legacy_redirects.py check   # live check of every row (read-only)
     python3 seo-ops/legacy_redirects.py check --status ready
+    python3 seo-ops/legacy_redirects.py merge-virtuse <server .htaccess> <out>
 
 build writes into partnerships/:
   legacy-wp-redirection-import.csv      ready rows, for WordPress → Tools → Redirection → Import
@@ -24,7 +25,7 @@ reports: final code, final URL, number of hops. Expected: 410 rows end in 410,
 From www.virtuse.com at most 2 hops (plan "SEO, staré URL…", step 1). Before the
 rules are live every 301/410 row fails; that is the baseline.
 """
-import csv, os, sys, urllib.request, urllib.parse, concurrent.futures as cf
+import csv, os, re, sys, urllib.request, urllib.parse, concurrent.futures as cf
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'partnerships/legacy-wp-redirects.csv')
@@ -66,6 +67,25 @@ def build():
     open(os.path.join(OUT, 'legacy-wp-htaccess.txt'), 'w', encoding='utf-8').write('\n'.join(lines))
     n_ready = sum(r['status'] == 'ready' for r in rs)
     print(f'{len(rs)} rules: {n_ready} ready, {len(rs) - n_ready} waiting for Ras → partnerships/legacy-wp-*')
+
+CATCH_ALL = 'RewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule ^(.*)$ https://blog.virtuse.com/$1 [R=301,L]'
+BEGIN, END = '# BEGIN legacy-exchange (seo-ops/legacy_redirects.py)', '# END legacy-exchange'
+
+def merge_virtuse(src, out):
+    """virtuse.com's public_html/.htaccess (server only, not in the repo) with the legacy block
+    inserted right before its catch-all to the blog, so www.virtuse.com/<old path> is 2 hops
+    (www → apex → target) and 410s are answered on virtuse.com itself. Re-running replaces
+    the block between the BEGIN/END markers."""
+    s = open(src, encoding='utf-8').read()
+    s = re.sub(re.escape(BEGIN) + r'.*?' + re.escape(END) + r'\n\n?', '', s, flags=re.S)
+    if s.count(CATCH_ALL) != 1: sys.exit('catch-all rule to blog.virtuse.com not found exactly once')
+    rules = [l for l in open(os.path.join(OUT, 'legacy-wp-htaccess.txt'), encoding='utf-8').read().splitlines()
+             if l.startswith('RewriteRule ') or l.startswith('#   RewriteRule ')]
+    block = '\n'.join([BEGIN, '# Old Virtuse Exchange paths: 301 to the new page or 410 Gone, before the blog fallback.',
+                       '# Source: partnerships/legacy-wp-redirects.csv. Commented lines wait for Ras.'] + rules + [END, '', ''])
+    s = s.replace(CATCH_ALL, block + CATCH_ALL, 1)
+    open(out, 'w', encoding='utf-8').write(s)
+    print(f'{out}: {sum(1 for r in rules if r.startswith("RewriteRule"))} active rules before the blog fallback')
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, *a, **k): return None
@@ -123,6 +143,7 @@ def check(status):
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else ''
     if cmd == 'build': build()
+    elif cmd == 'merge-virtuse': merge_virtuse(sys.argv[2], sys.argv[3])
     elif cmd == 'check':
         st = sys.argv[sys.argv.index('--status') + 1] if '--status' in sys.argv else None
         sys.exit(1 if check(st) else 0)

@@ -1,0 +1,28 @@
+# Virtuse — static site + WordPress blog split
+#
+# The blog moved from virtuse.com (WordPress) to blog.virtuse.com.
+# Any request that doesn't match a real file/directory on this static
+# site (old post slugs, category/tag/author archives, etc.) is 301
+# redirected to the same path on blog.virtuse.com, preserving SEO
+# value from existing backlinks and search results.
+
+RewriteEngine On
+
+# Canonicalize to non-www (this site's OG tags/sitemap already use the
+# bare domain). Runs first so it applies to real files too, not just
+# the old-post fallback below.
+RewriteCond %{HTTP_HOST} ^www\.virtuse\.com$ [NC]
+RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ https://blog.virtuse.com/$1 [R=301,L]
+
+# Security headers for virtuse.com
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>

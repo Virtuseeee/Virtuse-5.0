@@ -38,7 +38,13 @@ never fade, and they contradict "we are not an exchange / Bitcoin only, no token
 5. 410 pages: switch them to Draft in WordPress, delete only after a month without
    problems. Search Console: URL inspection → request indexing for a few of them.
 
-**Hops:** with rules only on the blog, a 301 row from www.virtuse.com is 3 hops
+**virtuse.com .htaccess (live since 2026-10-07):** `virtuse.com.htaccess` is the server's
+public_html/.htaccess with the block inserted by `legacy_redirects.py merge-virtuse`
+(`virtuse.com.htaccess.before` = the original, for rollback). It is not deployed by
+deploy_site.sh: after changing rules, download the live file, run merge-virtuse on it, test,
+upload by hand. Test locally first (`httpd -t` + a throwaway Apache on a high port).
+
+**Hops (before the virtuse.com block):** with rules only on the blog, a 301 row from www.virtuse.com is 3 hops
 (www → virtuse.com → blog → target); the plan wants at most 2. To get 2, the same
 `.htaccess` block also goes on virtuse.com, above its catch-all rule to the blog.
 That file is on the server only (public_html/.htaccess, not in this repo): download
