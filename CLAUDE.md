@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07) — Email-capture Phase 0: Worker route `POST /send` (main `b8a3941e`; **Worker deployed** 2026-10-07, version 4129dfd4, `RESEND_SEND_FROM` = `Virtuse <plan@virtuse.com>`; live checks: unknown partner/checklist → 400, honeypot → 200, /subscribe and /pulse.json unchanged; no real email sent yet)
+## Session status (2026-10-07) — Email-capture Phase 0: Worker route `POST /send` (main `b8a3941e`; **Worker deployed** 2026-10-07, version 4129dfd4, `RESEND_SEND_FROM` = `Virtuse <plan@virtuse.com>`; live checks: unknown partner/checklist → 400, honeypot → 200, /subscribe and /pulse.json unchanged; real SK plan email to the user arrived in the inbox (not spam) from plan@virtuse.com and looks right)
 
 - `cloudflare-worker/src/send.js` + `send.test.mjs` (19/19 with pulse tests, `wrangler deploy --dry-run` bundles). Kinds `plan` (Partner Finder criteria + 1-3 matching partners, MiCA-neutral wording, no reasons/verdict) and `result` (stacking / loan / tax numbers). Only fixed ids and bounded numbers accepted; text EN/SK/CS, other languages EN text + own-language links. Nothing stored unless `brief: true`. 3 emails/address/hour on top of the IP limit. Details: cloudflare-worker/README.md "POST /send".
 - Deviation from the plan doc: non-Brief contacts are **not** saved to Resend (simpler privacy text, no unverified Resend segment-less contact behaviour); measurement of sources stays in GA4. `checklist` kind deferred to step 2 (needs verified per-partner steps).
