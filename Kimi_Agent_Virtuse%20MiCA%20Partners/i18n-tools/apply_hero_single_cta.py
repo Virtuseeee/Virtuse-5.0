@@ -8,13 +8,13 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 T = {  # button, note, alt question, nav label  (alt link text = the page's own banner CTA)
  'cs': ('Domluvit bezplatný hovor', '15 minut, zdarma, bez prodejních řečí.', 'Raději si služby porovnáte sami?', 'Domluvit hovor'),
  'sk': ('Dohodnúť bezplatný hovor', '15 minút, zadarmo, bez predaja.', 'Radšej si služby porovnáte sami?', 'Dohodnúť hovor'),
- 'de': ('Kostenloses Gespräch buchen', '15 Minuten, kostenlos, ohne Verkaufsgespräch.', 'Lieber selbst vergleichen?', 'Gespräch buchen'),
- 'es': ('Reservar una llamada gratuita', '15 minutos, gratis, sin discurso de venta.', '¿Prefiere comparar los servicios usted mismo?', 'Reservar llamada'),
- 'fr': ('Réserver un appel gratuit', '15&nbsp;minutes, gratuit, sans discours commercial.', 'Vous préférez comparer vous-même&nbsp;?', 'Réserver un appel'),
- 'hu': ('Ingyenes hívás foglalása', '15 perc, ingyenes, értékesítési szöveg nélkül.', 'Inkább maga hasonlítaná össze a szolgáltatásokat?', 'Hívás foglalása'),
- 'pl': ('Umów bezpłatną rozmowę', '15 minut, bezpłatnie, bez sprzedaży.', 'Wolą Państwo porównać usługi samodzielnie?', 'Umów rozmowę'),
- 'ru': ('Записаться на бесплатный звонок', '15 минут, бесплатно, без продаж.', 'Хотите сравнить сервисы сами?', 'Записаться'),
- 'uk': ('Записатися на безкоштовний дзвінок', '15 хвилин, безкоштовно, без продажів.', 'Хочете порівняти сервіси самостійно?', 'Записатися'),
+ 'de': ('Kostenloses Gespräch buchen', '15 Minuten, kostenlos, ohne Verkaufsgespräch, auf Englisch.', 'Lieber selbst vergleichen?', 'Gespräch buchen'),
+ 'es': ('Reservar una llamada gratuita', '15 minutos, gratis, sin discurso de venta, en inglés.', '¿Prefiere comparar los servicios usted mismo?', 'Reservar llamada'),
+ 'fr': ('Réserver un appel gratuit', '15&nbsp;minutes, gratuit, sans discours commercial, en anglais.', 'Vous préférez comparer vous-même&nbsp;?', 'Réserver un appel'),
+ 'hu': ('Ingyenes hívás foglalása', '15 perc, ingyenes, értékesítési szöveg nélkül, angol nyelven.', 'Inkább maga hasonlítaná össze a szolgáltatásokat?', 'Hívás foglalása'),
+ 'pl': ('Umów bezpłatną rozmowę', '15 minut, bezpłatnie, bez sprzedaży, po angielsku.', 'Wolą Państwo porównać usługi samodzielnie?', 'Umów rozmowę'),
+ 'ru': ('Записаться на бесплатный звонок', '15 минут, бесплатно, без продаж, на английском.', 'Хотите сравнить сервисы сами?', 'Записаться'),
+ 'uk': ('Записатися на безкоштовний дзвінок', '15 хвилин, безкоштовно, без продажів, англійською.', 'Хочете порівняти сервіси самостійно?', 'Записатися'),
 }
 CSS_OLD = '.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }'
 CSS_NEW = '''.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; }

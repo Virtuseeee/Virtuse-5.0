@@ -342,6 +342,7 @@
       }
     },
     de: {
+      callLang: 'Das Gespräch findet auf Englisch statt.',
       introEyebrow: 'Kostenlose Beratung',
       introHeadline: 'Finden Sie heraus, was für Sie relevant ist, bevor Sie ein Gespräch buchen.',
       introBody: 'Ein paar kurze Fragen helfen uns, eine auf Ihre Situation zugeschnittene Beratung vorzubereiten — dauert weniger als 2 Minuten.',
@@ -442,6 +443,7 @@
       }
     },
     fr: {
+      callLang: 'L’appel se déroule en anglais.',
       introEyebrow: 'Consultation gratuite',
       introHeadline: 'Découvrez ce qui est pertinent pour vous avant de réserver un appel.',
       introBody: 'Quelques questions rapides nous aident à préparer une consultation adaptée à votre situation — moins de 2 minutes.',
@@ -542,6 +544,7 @@
       }
     },
     es: {
+      callLang: 'La llamada se realiza en inglés.',
       introEyebrow: 'Consulta gratuita',
       introHeadline: 'Descubra qué es relevante para usted antes de reservar una llamada.',
       introBody: 'Unas pocas preguntas rápidas nos ayudan a preparar una consulta adaptada a su situación — lleva menos de 2 minutos.',
@@ -642,6 +645,7 @@
       }
     },
     pl: {
+      callLang: 'Rozmowa odbywa się po angielsku.',
       introEyebrow: 'Bezpłatna konsultacja',
       introHeadline: 'Zanim zarezerwują Państwo rozmowę, sprawdźmy, co jest dla Państwa istotne.',
       introBody: 'Kilka krótkich pytań pomoże nam przygotować konsultację dopasowaną do Państwa sytuacji — zajmie to mniej niż 2 minuty.',
@@ -742,6 +746,7 @@
       }
     },
     hu: {
+      callLang: 'A beszélgetés angol nyelven zajlik.',
       introEyebrow: 'Ingyenes konzultáció',
       introHeadline: 'Tudja meg, mi releváns az Ön számára, mielőtt hívást foglal.',
       introBody: 'Néhány gyors kérdés segít, hogy az Ön helyzetére szabott konzultációt készítsünk elő — kevesebb mint 2 perc.',
@@ -842,6 +847,7 @@
       }
     },
     uk: {
+      callLang: 'Дзвінок проходить англійською мовою.',
       introEyebrow: 'Безкоштовна консультація',
       introHeadline: 'Дізнайтеся, що актуально саме для вас, перш ніж бронювати дзвінок.',
       introBody: 'Кілька коротких запитань допоможуть нам підготувати консультацію з урахуванням вашої ситуації — це займе менше 2 хвилин.',
@@ -942,6 +948,7 @@
       }
     },
     ru: {
+      callLang: 'Звонок проходит на английском языке.',
       introEyebrow: 'Бесплатная консультация',
       introHeadline: 'Узнайте, что актуально именно для вас, прежде чем бронировать звонок.',
       introBody: 'Несколько коротких вопросов помогут нам подготовить консультацию с учётом вашей ситуации — это займёт меньше 2 минут.',
@@ -1051,7 +1058,9 @@
   }
 
   function buildCalendlyUrl(copy, answers) {
-    var q = copy.questions;
+    // Answers go to Calendly in English for every page language (calls outside SK/CS run in
+    // English, and the team reads them); option order is identical in all languages.
+    var q = COPY.en.questions;
     var goal = answers[0], exp = answers[1], capital = answers[2], horizon = answers[3], involvement = answers[4];
     var interests = Array.isArray(answers[5]) ? answers[5] : [];
 
@@ -1063,6 +1072,7 @@
     if (involvement != null) parts.push('Involvement: ' + q[4].options[involvement]);
     if (interests.indexOf(7) !== -1) parts.push('Also mentioned: ' + q[5].options[7]);
 
+    parts.push('Page language: ' + lang);
     var a2 = parts.join(' | ');
     var topicLabels = copy.calendlyTopicLabels || q[5].options;
     var a1 = interests.filter(function (i) { return i < 7; })
@@ -1120,6 +1130,7 @@
       '.vwc-back:disabled{visibility:hidden;}',
       '.vwc-intro-eyebrow{font-size:13px;color:var(--vwc-brass-dark);margin:0 0 14px;font-weight:600;}',
       '.vwc-intro-body{font-size:16px;line-height:1.6;color:var(--vwc-muted);margin:0 0 32px;max-width:38ch;}',
+      '.vwc-call-lang{font-size:14px;color:var(--vwc-muted);margin:0 0 12px;text-align:center;}',
       '.vwc-cta{display:block;width:100%;text-align:center;background:var(--vwc-ink);color:var(--vwc-paper);border:none;padding:15px 26px;font-size:16px;font-family:inherit;font-weight:600;cursor:pointer;border-radius:4px;text-decoration:none;transition:background .15s ease;}',
       '.vwc-cta:hover{background:var(--vwc-brass-dark);color:var(--vwc-paper);}',
       '.vwc-fine-print{font-size:12.5px;color:var(--vwc-muted);margin-top:22px;line-height:1.5;}',
@@ -1376,6 +1387,7 @@
       '<p class="vwc-result-body">' + seg.note + '</p>' +
       '<div class="vwc-disclaimer vwc-fade">' + c.disclaimer + '</div>' +
       riskNote +
+      (c.callLang ? '<p class="vwc-call-lang vwc-fade">' + c.callLang + '</p>' : '') +
       '<a href="' + calendlyUrl + '" target="_blank" rel="noopener" class="vwc-cta vwc-fade" id="vwc-book">' + c.bookLabel + '</a>' +
       '<button type="button" class="vwc-secondary-link vwc-fade" id="vwc-restart">' + c.restartLabel + '</button>';
 
