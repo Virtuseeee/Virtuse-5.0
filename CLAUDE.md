@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Email-capture Phase 0: Worker route `POST /send` (committed; **not deployed** — Worker needs `npm run deploy` from cloudflare-worker/ on a Mac logged into Cloudflare)
+
+- `cloudflare-worker/src/send.js` + `send.test.mjs` (19/19 with pulse tests, `wrangler deploy --dry-run` bundles). Kinds `plan` (Partner Finder criteria + 1-3 matching partners, MiCA-neutral wording, no reasons/verdict) and `result` (stacking / loan / tax numbers). Only fixed ids and bounded numbers accepted; text EN/SK/CS, other languages EN text + own-language links. Nothing stored unless `brief: true`. 3 emails/address/hour on top of the IP limit. Details: cloudflare-worker/README.md "POST /send".
+- Deviation from the plan doc: non-Brief contacts are **not** saved to Resend (simpler privacy text, no unverified Resend segment-less contact behaviour); measurement of sources stays in GA4. `checklist` kind deferred to step 2 (needs verified per-partner steps).
+- Still open for Phase 0: GTM GA4 event tag for `partner_click` (GTM UI), sender address decision (`RESEND_SEND_FROM`), privacy-policy text (draft in the plan doc, legal review before step 1). No form on the site calls `/send` yet.
+- The OneDrive main folder's local `main` was 16 commits behind origin and shows ~850 "modified" files: that is the Partner Finder rename (`d2d12110`) already on origin, not unsaved work. This round was done in a scratchpad worktree off origin/main.
+
 ## Session status (2026-10-06, fourth round) — Phase 0 of the email-capture rollout: `partner_click` tracking on every page with partner links (71 pages) (main `11f716f`; **live on production** — user ran `deploy_site.sh 57ba3149`, 73/73 md5-verified, event checked live on de/tax.html; **GTM GA4 tag still to be set up**)
 
 - Plan: Docs artifact "Rollout plan: email pred odchodom k partnerovi" (https://claude.ai/artifact/3gzTPbXu87Fsu2gb2ZnrmG, SK). Phase 0 = measure first; this script must run ≥ 1 week before step 2 (post-click panel) to have a baseline. **The plan's steps 1 and 3 conflict with the 2026-10-06 MiCA decision** (emails with "recommended partners + reasons + next step", Loan "sell vs borrow" verdict) — rewrite them to neutral "partners matching your criteria" before building.

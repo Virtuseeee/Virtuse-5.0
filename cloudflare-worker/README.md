@@ -201,6 +201,39 @@ secret. `removeFromSegment` picks up any language added there
 automatically — no separate change needed for unsubscribe to keep
 working.
 
+## POST /send (email before the partner click)
+
+One transactional email the visitor asked for, from the rollout plan
+"Rollout plan: email pred odchodom k partnerovi" (Docs artifact
+https://claude.ai/artifact/3gzTPbXu87Fsu2gb2ZnrmG). Code: `src/send.js`,
+tests: `send.test.mjs` (`npm test`).
+
+```
+POST /send  { email, hp, lang, kind, source, payload, brief }
+  kind=plan    source=concierge  payload { goal, country, experience, custody, amount, partners: [1-3 ids] }
+  kind=result  source=stacking   payload { initial, contribution, frequency, years, returnPct, invested, projected, lowestFeePartner }
+  kind=result  source=loan       payload { cashNeeded, btcPrice, ltvPct, aprPct, years, taxIfSold, interestTotal, collateralBtc, liquidationPrice }
+  kind=result  source=tax        payload { country, inheritanceScore }
+```
+
+- **No free text.** Only ids from fixed lists and bounded numbers are
+  accepted; unknown keys are dropped. Every word comes from `STRINGS` in
+  `src/send.js` (EN, SK, CS; other site languages get EN text with links
+  to their own language pages).
+- **MiCA:** the plan email lists "partners matching your criteria" in the
+  Partner Finder's order. No "best", no reasons, no verdict.
+- **Nothing stored without `brief: true`.** With it, the contact joins the
+  Brief segment like `/subscribe` (welcome email only for new contacts).
+- Limits: the shared per-IP limit (5/hour) plus 3 emails per address per
+  hour (KV key is a SHA-256 of the address).
+- Partner links: the card's tracked link + `utm_source=email&utm_medium=<kind>&utm_campaign=capture&utm_content=<partner>`.
+  `PARTNERS` in `src/send.js` must match `data/partners.json`; the test
+  fails if a host is missing there.
+- Optional secrets: `RESEND_SEND_FROM` (sender for these emails, falls back
+  to `RESEND_FROM_EMAIL`) and `RESEND_REPLY_TO`.
+- `kind=checklist` (step 2, after the partner click) is rejected until
+  verified per-partner steps exist.
+
 ## Unsubscribe
 
 The welcome email's unsubscribe link points at this Worker's own

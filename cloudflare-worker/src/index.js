@@ -24,6 +24,9 @@
 //                                              Slovak signups join the dedicated "Ot
 //                                              emails" segment INSTEAD OF the default
 //                                              one, not in addition to it.
+// POST /send         { email, hp, lang, kind, source, payload, brief }
+//                                          -- one email the visitor asked for (Partner Finder
+//                                             criteria or a calculator result); see src/send.js
 // GET  /unsubscribe  ?email=...&token=...  -- clicked from the welcome email, see below
 // GET  /pulse.json                         -- current Brief pulse JSON (KV `current`)
 // OPTIONS /pulse.json                      -- CORS preflight for that GET
@@ -47,6 +50,10 @@
 // tied to a segment, and this is a transactional single-send, so we have
 // to build and validate the link ourselves. The link is HMAC-signed with
 // UNSUB_SECRET so it can't be replayed against a different email address.
+
+// '../src/send.js' resolves both from src/ (tests) and from dist/ (the
+// built worker wrangler bundles).
+import { handleSend } from '../src/send.js';
 
 const ALLOWED_ORIGINS = [
   'https://staging.virtuse.com',
@@ -641,6 +648,17 @@ export default {
 
     if (request.method !== 'POST') {
       return json(405, { error: 'Method not allowed' }, origin);
+    }
+
+    if (url.pathname === '/send') {
+      return handleSend(request, env, origin, {
+        json,
+        isRateLimited,
+        addContact,
+        sendWelcomeEmail,
+        emailRe: EMAIL_RE,
+        welcomeLangs: Object.keys(WELCOME_EMAIL_TEMPLATES),
+      });
     }
 
     if (url.pathname !== '/subscribe') {
