@@ -78,6 +78,13 @@ test('plan payload: known ids only, 1-3 partners', () => {
   assert.equal(validatePayload('plan', 'concierge', { ...PLAN, partners: ['kraken', 'kraken'] }).ok, false);
   assert.equal(validatePayload('plan', 'concierge', { ...PLAN, partners: ['toString'] }).ok, false);
   assert.equal(validatePayload('plan', 'stacking', PLAN).ok, false);
+  // Mining/tax/treasury/earn: the Partner Finder skips experience + custody.
+  const mining = { goal: 'mining', country: 'de', amount: 'l', partners: ['oneminers'] };
+  assert.equal(validatePayload('plan', 'concierge', mining).ok, true);
+  assert.equal(validatePayload('plan', 'concierge', { ...mining, custody: 'self' }).ok, false);
+  assert.equal(validatePayload('plan', 'concierge', { ...PLAN, custody: undefined }).ok, false);
+  const html = renderSendEmail({ kind: 'plan', source: 'concierge', payload: mining, lang: 'en', brief: false }).html;
+  assert.doesNotMatch(html, /Experience|Custody|undefined/);
 });
 
 test('result payload: bounded numbers, extra keys dropped', () => {

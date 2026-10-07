@@ -62,6 +62,9 @@ const COUNTRIES = ['cz', 'sk', 'pl', 'at', 'de', 'hu', 'si', 'hr', 'ro', 'bg', '
 const EXPERIENCE = ['new', 'hodler'];
 const CUSTODY = ['self', 'assisted', 'any'];
 const AMOUNTS = ['s', 'm', 'l', 'xl'];
+// Goals for which the Partner Finder asks experience + custody (its
+// needsCustodyStep); for the other goals both are absent.
+const GOALS_WITH_CUSTODY = ['buy', 'loan', 'custody'];
 const FREQUENCIES = ['weekly', 'monthly'];
 
 // Result fields per calculator: [key, unit, min, max]. Units decide the
@@ -229,8 +232,12 @@ export function validatePayload(kind, source, payload) {
     const { goal, country, experience, custody, amount, partners } = payload;
     if (!oneOf(GOALS, goal)) return { ok: false, error: 'bad goal' };
     if (!oneOf(COUNTRIES, country)) return { ok: false, error: 'bad country' };
-    if (!oneOf(EXPERIENCE, experience)) return { ok: false, error: 'bad experience' };
-    if (!oneOf(CUSTODY, custody)) return { ok: false, error: 'bad custody' };
+    if (GOALS_WITH_CUSTODY.includes(goal)) {
+      if (!oneOf(EXPERIENCE, experience)) return { ok: false, error: 'bad experience' };
+      if (!oneOf(CUSTODY, custody)) return { ok: false, error: 'bad custody' };
+    } else if (experience !== undefined || custody !== undefined) {
+      return { ok: false, error: 'experience/custody not asked for this goal' };
+    }
     if (!oneOf(AMOUNTS, amount)) return { ok: false, error: 'bad amount' };
     if (!Array.isArray(partners) || partners.length < 1 || partners.length > 3) {
       return { ok: false, error: 'partners must list 1 to 3 ids' };
@@ -239,7 +246,9 @@ export function validatePayload(kind, source, payload) {
       return { ok: false, error: 'unknown partner' };
     }
     if (new Set(partners).size !== partners.length) return { ok: false, error: 'duplicate partner' };
-    return { ok: true, value: { goal, country, experience, custody, amount, partners: [...partners] } };
+    const value = { goal, country, amount, partners: [...partners] };
+    if (GOALS_WITH_CUSTODY.includes(goal)) Object.assign(value, { experience, custody });
+    return { ok: true, value };
   }
   if (kind === 'result') {
     const fields = RESULT_FIELDS[source];
@@ -356,7 +365,9 @@ export function renderSendEmail({ kind, source, payload, lang, brief }) {
 
   if (kind === 'plan') {
     const criteria = rows(
-      ['goal', 'country', 'experience', 'custody', 'amount'].map((k) => [S.labels[k], S.values[k][payload[k]]])
+      ['goal', 'country', 'experience', 'custody', 'amount']
+        .filter((k) => payload[k] !== undefined)
+        .map((k) => [S.labels[k], S.values[k][payload[k]]])
     );
     const partners = payload.partners
       .map((id) => {
