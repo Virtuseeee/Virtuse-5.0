@@ -29,7 +29,7 @@
         treasury: ['Bitcoin for your balance sheet', 'Custody, execution and reporting partners for companies and family offices.', 'See treasury partners'],
         custody: ['Hold your own keys', 'Hardware wallets and multi-sig tooling from vetted partners.', 'Compare custody options'],
         policy: ['Get your Bitcoin taxes right', 'Country-specific reports from tax software partners.', 'See tax partners'],
-        macro: ['Borrow against Bitcoin instead of selling', 'Bitcoin-backed loans from vetted lenders, from 6% p.a.', 'Compare loan partners'],
+        macro: ['Borrow against Bitcoin instead of selling', 'Bitcoin-backed loans from vetted lenders, from 5% p.a.', 'Compare loan partners'],
         markets: ['Compare where to buy Bitcoin', 'Vetted, regulated platforms side by side. Fees, custody and payout in one view.', 'Compare partners']
       }
     },
@@ -58,7 +58,7 @@
         treasury: ['Bitcoin v súvahe firmy', 'Úschova, exekúcia a reporting pre firmy a family offices.', 'Treasury partneri'],
         custody: ['Majte vlastné kľúče', 'Hardvérové peňaženky a multi-sig od overených partnerov.', 'Porovnať úschovu'],
         policy: ['Zdaňte Bitcoin správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
-        macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 6 % p. a.', 'Porovnať pôžičky'],
+        macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 5 % p. a.', 'Porovnať pôžičky'],
         markets: ['Kde kúpiť Bitcoin', 'Overené regulované platformy vedľa seba: poplatky, úschova, výplata.', 'Porovnať partnerov']
       }
     },
@@ -89,7 +89,7 @@
         treasury: ['Биткоин на балансе компании', 'Хранение, исполнение и отчётность для компаний и семейных офисов.', 'Партнёры'],
         custody: ['Храните свои ключи', 'Аппаратные кошельки и мультиподпись от проверенных партнёров.', 'Сравнить хранение'],
         policy: ['Налоги на Биткоин без ошибок', 'Отчёты по странам от налоговых сервисов.', 'Налоговые партнёры'],
-        macro: ['Займите под Биткоин вместо продажи', 'Займы под залог Биткоина от 6% годовых.', 'Сравнить займы'],
+        macro: ['Займите под Биткоин вместо продажи', 'Займы под залог Биткоина от 5% годовых.', 'Сравнить займы'],
         markets: ['Где купить Биткоин', 'Проверенные регулируемые платформы: комиссии, хранение, вывод.', 'Сравнить партнёров']
       }
     },
@@ -122,7 +122,7 @@
         treasury: ['Біткоїн на балансі компанії', 'Зберігання, виконання угод і звітність для компаній та сімейних офісів.', 'Партнери для казначейства'],
         custody: ['Зберігайте власні ключі', 'Апаратні гаманці та мультипідпис від перевірених партнерів.', 'Порівняти зберігання'],
         policy: ['Податки на Біткоїн без помилок', 'Звіти за країнами від податкових сервісів.', 'Податкові партнери'],
-        macro: ['Позика під Біткоїн замість продажу', 'Позики під заставу Біткоїна від 6% річних.', 'Порівняти позики'],
+        macro: ['Позика під Біткоїн замість продажу', 'Позики під заставу Біткоїна від 5% річних.', 'Порівняти позики'],
         markets: ['Де купити Біткоїн', 'Перевірені регульовані платформи: комісії, зберігання, виведення.', 'Порівняти партнерів']
       }
     },
@@ -152,7 +152,7 @@
         treasury: ['Bitcoin in der Unternehmensbilanz', 'Verwahrung, Ausführung und Reporting für Unternehmen und Family Offices.', 'Treasury-Partner ansehen'],
         custody: ['Behalten Sie Ihre eigenen Schlüssel', 'Hardware-Wallets und Multi-Sig-Lösungen von geprüften Partnern.', 'Verwahrung vergleichen'],
         policy: ['Bitcoin-Steuern richtig erledigen', 'Länderspezifische Berichte von Steuersoftware-Partnern.', 'Steuer-Partner ansehen'],
-        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 6 % p. a.', 'Kredit-Partner vergleichen'],
+        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 5 % p. a.', 'Kredit-Partner vergleichen'],
         markets: ['Wo Sie Bitcoin kaufen', 'Geprüfte, regulierte Plattformen im Vergleich: Gebühren, Verwahrung, Auszahlung.', 'Partner vergleichen']
       }
     },
@@ -182,7 +182,7 @@
         treasury: ['Le Bitcoin au bilan de l’entreprise', 'Conservation, exécution et reporting pour entreprises et family offices.', 'Voir les partenaires'],
         custody: ['Gardez vos propres clés', 'Portefeuilles matériels et multisig de partenaires vérifiés.', 'Comparer la conservation'],
         policy: ['Déclarez votre Bitcoin sans erreur', 'Rapports fiscaux par pays de nos partenaires logiciels.', 'Voir les partenaires fiscaux'],
-        macro: ['Empruntez au lieu de vendre', 'Prêts garantis par du Bitcoin auprès de prêteurs vérifiés, dès 6 % par an.', 'Comparer les prêts'],
+        macro: ['Empruntez au lieu de vendre', 'Prêts garantis par du Bitcoin auprès de prêteurs vérifiés, dès 5 % par an.', 'Comparer les prêts'],
         markets: ['Où acheter du Bitcoin', 'Plateformes régulées et vérifiées côte à côte : frais, conservation, retrait.', 'Comparer les partenaires']
       }
     },
@@ -212,7 +212,7 @@
         treasury: ['Bitcoin en el balance de su empresa', 'Custodia, ejecución y reporting para empresas y family offices.', 'Ver socios de tesorería'],
         custody: ['Guarde sus propias claves', 'Monederos de hardware y multifirma de socios verificados.', 'Comparar custodia'],
         policy: ['Declare su Bitcoin sin errores', 'Informes fiscales por país de socios de software fiscal.', 'Ver socios fiscales'],
-        macro: ['Pida un préstamo en lugar de vender', 'Préstamos respaldados por Bitcoin de prestamistas verificados, desde el 6 % anual.', 'Comparar préstamos'],
+        macro: ['Pida un préstamo en lugar de vender', 'Préstamos respaldados por Bitcoin de prestamistas verificados, desde el 5 % anual.', 'Comparar préstamos'],
         markets: ['Dónde comprar Bitcoin', 'Plataformas reguladas y verificadas, lado a lado: comisiones, custodia y retiradas.', 'Comparar socios']
       }
     },
@@ -242,7 +242,7 @@
         treasury: ['Bitcoin w bilansie firmy', 'Przechowywanie, egzekucja zleceń i raportowanie dla firm i family offices.', 'Partnerzy treasury'],
         custody: ['Trzymaj własne klucze', 'Portfele sprzętowe i multisig od sprawdzonych partnerów.', 'Porównaj przechowywanie'],
         policy: ['Rozlicz Bitcoina bez błędów', 'Raporty podatkowe dla każdego kraju od partnerów podatkowych.', 'Partnerzy podatkowi'],
-        macro: ['Pożycz zamiast sprzedawać', 'Pożyczki pod zastaw Bitcoina od sprawdzonych pożyczkodawców, od 6% rocznie.', 'Porównaj pożyczki'],
+        macro: ['Pożycz zamiast sprzedawać', 'Pożyczki pod zastaw Bitcoina od sprawdzonych pożyczkodawców, od 5% rocznie.', 'Porównaj pożyczki'],
         markets: ['Gdzie kupić Bitcoina', 'Sprawdzone, regulowane platformy obok siebie: opłaty, przechowywanie, wypłaty.', 'Porównaj partnerów']
       }
     },
@@ -272,7 +272,7 @@
         treasury: ['Bitcoin v rozvaze firmy', 'Úschova, provádění obchodů a reporting pro firmy a family offices.', 'Partneři pro treasury'],
         custody: ['Vlastní klíče ve vlastních rukou', 'Hardwarové peněženky a multisig od ověřených partnerů.', 'Porovnat úschovu'],
         policy: ['Daně z Bitcoinu správně', 'Reporty pro jednotlivé země od partnerů s daňovým softwarem.', 'Daňoví partneři'],
-        macro: ['Půjčka místo prodeje', 'Půjčky kryté Bitcoinem od ověřených věřitelů, od 6 % ročně.', 'Porovnat půjčky'],
+        macro: ['Půjčka místo prodeje', 'Půjčky kryté Bitcoinem od ověřených věřitelů, od 5 % ročně.', 'Porovnat půjčky'],
         markets: ['Kde koupit Bitcoin', 'Ověřené, regulované platformy vedle sebe: poplatky, úschova, výplaty.', 'Porovnat partnery']
       }
     },
@@ -302,7 +302,7 @@
         treasury: ['Bitcoin a cég mérlegében', 'Letétkezelés, végrehajtás és riportolás cégeknek és family office-oknak.', 'Treasury-partnerek'],
         custody: ['Saját kulcsok, saját kézben', 'Hardveres tárcák és multisig megoldások ellenőrzött partnerektől.', 'Letétkezelők összehasonlítása'],
         policy: ['Adózza helyesen a Bitcoint', 'Országonkénti adójelentések adószoftver-partnerektől.', 'Adópartnerek'],
-        macro: ['Eladás helyett hitel', 'Bitcoin-fedezetű hitelek ellenőrzött hitelezőktől, évi 6%-tól.', 'Hitelek összehasonlítása'],
+        macro: ['Eladás helyett hitel', 'Bitcoin-fedezetű hitelek ellenőrzött hitelezőktől, évi 5%-tól.', 'Hitelek összehasonlítása'],
         markets: ['Hol vásároljon Bitcoint', 'Ellenőrzött, szabályozott platformok egymás mellett: díjak, letét, kifizetés.', 'Partnerek összehasonlítása']
       }
     }
