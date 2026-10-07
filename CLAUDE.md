@@ -2,10 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07) — Slovak tax correction + DAC8 pages committed, **NOT reviewed by the tax advisor, NOT deployed** (main `c2a1d8f9`)
+## Session status (2026-10-07) — Slovak tax correction + DAC8 pages **live on production**, NOT reviewed by the tax advisor (main `c2a1d8f9`; user ran `deploy_site.sh c2a1d8f9^ c2a1d8f9` 2026-10-07, 40/40 md5-verified on virtuse.com and staging; 4 DAC8 pages 200, sitemap 796 URLs)
 
 - Uncommitted work from another session (found while syncing the OneDrive folder) committed at the user's explicit request: Slovakia now "no holding-period exemption, 19–35 % income tax + 16 % health levy, every sale and crypto swap taxable, type B return by 31 March" in `seo-data.json` + `meta.json` for all languages; new DAC8 pages from `seo-build/data/dac8.json` (EN + DE for Germany, EN + SK for Slovakia), linked from those country pages. generate + verify 0 errors; sitemap 792 → 796 URLs.
-- **Before deploy_site.sh includes this commit, get the tax advisor's OK** (the review page from 2026-09-29 still has the old SK questions). Correction: the Layer 2 Tax Agent already has the new SK rule (`lib/tax.ts` + 7 dictionaries + Loan preset Slovakia 35 %, source edited 2026-10-07 13:23) and is **already live on production** in all 10 languages — it shipped inside the Partner Finder rebuild (`d225dbca`, main-tax-BsdUMi2n.js). So the new SK rule is public in the module but not yet on the SEO pages.
+- Deployed at the user's explicit decision before the tax advisor's review; if the advisor changes the SK wording, fix it in the module source **and** seo-build data, then redeploy both (the review page from 2026-09-29 still has the old SK questions). Correction: the Layer 2 Tax Agent already has the new SK rule (`lib/tax.ts` + 7 dictionaries + Loan preset Slovakia 35 %, source edited 2026-10-07 13:23) and is **already live on production** in all 10 languages — it shipped inside the Partner Finder rebuild (`d225dbca`, main-tax-BsdUMi2n.js). So the new SK rule is public in the module but not yet on the SEO pages.
 - Left uncommitted in the folder (not ours): partnerships/*, seo-ops/README.md, seo-ops/virtuse.com.htaccess, .claude/launch.json.
 
 ## Session status (2026-10-07) — Stories build fetches WordPress through the Cloudflare Worker (main `f373a22a`, `e95e1311`; **Worker deployed** by the user, proxy verified live)
