@@ -215,7 +215,11 @@ body {
 .stat-number { font-size: 28px; font-weight: 700; }
 .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; }
+.hero-cta-note { font-size: 14px; color: var(--text-muted); margin: 0 0 22px; }
+.hero-alt { margin: 0 0 40px; font-size: 15px; }
+.hero-alt-link { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border-hover); padding-bottom: 2px; transition: border-color .2s ease; }
+.hero-alt-link:hover { border-color: var(--text); }
 
 /* No orange highlight here — inverted neutral (var(--text) on var(--dark)) instead of
    a hardcoded white, so it stays visible against the page background in both themes */
@@ -2532,7 +2536,7 @@ a.nav-logo, .nav-logo {
     <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin-adatok</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Rólunk</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Kezdés<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta" data-consultation-trigger data-consultation-lang="hu">Hívás foglalása<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
         <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Az oldal nyelve">
@@ -2573,7 +2577,7 @@ a.nav-logo, .nav-logo {
         <a href="index.html" class="lang-opt active" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
       </div>
     </div>
-    <button class="nav-cta">Kezdés</button>
+    <button type="button" class="nav-cta" data-consultation-trigger data-consultation-lang="hu">Hívás foglalása</button>
   </div>
 </nav>
 
@@ -2646,14 +2650,12 @@ a.nav-logo, .nav-logo {
 
       <div class="hero-buttons">
         <button type="button" class="btn-primary" data-consultation-trigger data-consultation-lang="hu">
-          Ingyenes konzultáció
+          Ingyenes hívás foglalása
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <a href="concierge.html?utm_source=concierge&utm_medium=hero" class="btn-secondary concierge-hero-cta">
-          Szolgáltatások összevetése
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
+      <p class="hero-cta-note">15 perc, ingyenes, értékesítési szöveg nélkül.</p>
+      <p class="hero-alt"><a href="concierge.html?utm_source=concierge&utm_medium=hero" class="hero-alt-link">Inkább maga hasonlítaná össze a szolgáltatásokat? Partnerek 60 másodperc alatt <span aria-hidden="true">&rarr;</span></a></p>
 
     </div>
 
@@ -2668,22 +2670,6 @@ a.nav-logo, .nav-logo {
   <div class="scroll-indicator">
     <div class="scroll-mouse"><div class="scroll-dot"></div></div>
   </div>
-</section>
-
-<!-- ===== VIRTUSE BRIEF CAPTURE (primary) ===== -->
-<section class="brief-strip anim-section anim-hidden" id="virtuse-brief">
-  <div class="brief-strip-inner">
-    <div class="brief-strip-copy">
-      <span class="brief-eyebrow">Virtuse Brief</span>
-      <p class="brief-line">Hétfő. Csak Bitcoin. Tokenek nélkül. PR nélkül.</p>
-    </div>
-    <form class="newsletter-form brief-form" data-brief-form novalidate>
-      <input type="email" name="email" placeholder="E-mail-cím" required>
-      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-      <button type="submit">Feliratkozás</button>
-    </form>
-  </div>
-  <p class="brief-form-msg" role="status" aria-live="polite"></p>
 </section>
 
 <!-- ===== PROBLEM / PAIN SECTION ===== -->
@@ -2917,6 +2903,22 @@ a.nav-logo, .nav-logo {
     </a>
 
   </div>
+</section>
+
+<!-- ===== VIRTUSE BRIEF CAPTURE (primary) ===== -->
+<section class="brief-strip anim-section anim-hidden" id="virtuse-brief">
+  <div class="brief-strip-inner">
+    <div class="brief-strip-copy">
+      <span class="brief-eyebrow">Virtuse Brief</span>
+      <p class="brief-line">Hétfő. Csak Bitcoin. Tokenek nélkül. PR nélkül.</p>
+    </div>
+    <form class="newsletter-form brief-form" data-brief-form novalidate>
+      <input type="email" name="email" placeholder="E-mail-cím" required>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+      <button type="submit">Feliratkozás</button>
+    </form>
+  </div>
+  <p class="brief-form-msg" role="status" aria-live="polite"></p>
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
@@ -3503,22 +3505,9 @@ a.nav-logo, .nav-logo {
 })();
 </script>
 
-<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
-<script>
-(function () {
-  var btns = document.querySelectorAll('.nav-cta');
-  if (!btns.length) return;
-  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=nav';
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.href = conciergeUrl;
-    });
-  });
-})();
-</script>
+<!-- Homepage only: the nav CTA opens the consultation widget (data-consultation-trigger), not concierge.html. -->
 
-<script src="../consultation-widget.js" defer></script>
+<script src="../consultation-widget.js?v=20261007" defer></script>
 <script>
 // Fix: hero CTA anchors (#how-it-works, etc.) are intercepted by the
 // page's smooth-scroll script with preventDefault() and never create a
@@ -3720,6 +3709,6 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   requestAnimationFrame(render);
 })();
 </script>
-<script src="../concierge-launcher.js" defer></script>
+<script src="../concierge-launcher.js?v=20261007" data-reveal="after-hero" defer></script>
 </body>
 </html>
