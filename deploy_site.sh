@@ -19,7 +19,7 @@ if [ -n "$(git rev-list HEAD..origin/main)" ]; then
   echo "!! origin/main has $(git rev-list --count HEAD..origin/main) newer commit(s). Nothing was pushed or uploaded."
   echo "   Tell Claude, so they get merged first."; exit 1
 fi
-git diff --name-only --diff-filter=AM "$FROM" "$TO" -- "$SITE" | sed "s#^$SITE/##" | grep -v -E '^i18n-tools/|\.md$' > "$LIST" || true
+git diff --name-only --no-renames --diff-filter=AM "$FROM" "$TO" -- "$SITE" | sed "s#^$SITE/##" | grep -v -E '^i18n-tools/|\.md$' > "$LIST" || true
 N=$(wc -l < "$LIST" | tr -d ' ')
 echo "== $N site files in ${FROM:0:7}..${TO:0:7}"
 [ "$N" -gt 0 ] || { echo "nothing to deploy"; exit 0; }
