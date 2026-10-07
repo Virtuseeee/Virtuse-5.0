@@ -56,8 +56,11 @@ file can be prepared. 410 rows are 2 hops either way.
 --status ready`: every 410 and every 301 target correct; the 34 301 rows are 3 hops from
 www (needs the virtuse.com .htaccess block); `/login/` + `/sk/login/` end as WordPress's
 own 302 to wp-login.php (noindex), accepted. Contact pages kept (only contact channel for
-former exchange clients, messages to office@virtuse.com); 8 affiliate/referral pages
-wait for Ras. Not done yet: switching the 410 pages to Draft, Search Console requests.
+former exchange clients, messages to office@virtuse.com). The 8 affiliate/referral pages
+(they still offered "$10 of bitcoin" with a Register link to the dead virtuse.exchange)
+went to 410 on Ras's decision the same evening: group now 99 rules, the same 8 lines are
+live in virtuse.com's .htaccess, `check --status ready` 103/105 (only the two login rows
+above). Not done yet: switching the 410 pages to Draft, Search Console requests.
 Nine older rules in the "Redirections" group (e.g. /sk/registration/ → /sk/registracia/)
 now end in a 410 after one extra hop; fine, can be pointed straight at 410 later.
 
