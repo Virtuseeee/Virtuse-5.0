@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Slovak tax correction + DAC8 pages committed, **NOT reviewed by the tax advisor, NOT deployed** (main `c2a1d8f9`)
+
+- Uncommitted work from another session (found while syncing the OneDrive folder) committed at the user's explicit request: Slovakia now "no holding-period exemption, 19–35 % income tax + 16 % health levy, every sale and crypto swap taxable, type B return by 31 March" in `seo-data.json` + `meta.json` for all languages; new DAC8 pages from `seo-build/data/dac8.json` (EN + DE for Germany, EN + SK for Slovakia), linked from those country pages. generate + verify 0 errors; sitemap 792 → 796 URLs.
+- **Before deploy_site.sh includes this commit, get the tax advisor's OK** (the review page from 2026-09-29 still has the old SK questions). The Layer 2 Tax Agent (`lib/tax.ts`, module source) still has the old SK rule — the 11-places rule applies.
+- Left uncommitted in the folder (not ours): partnerships/*, seo-ops/README.md, seo-ops/virtuse.com.htaccess, .claude/launch.json.
+
 ## Session status (2026-10-07) — Stories build fetches WordPress through the Cloudflare Worker (main `f373a22a`, `e95e1311`; **Worker deployed** by the user, proxy verified live)
 
 - Root cause of the Stories Action timeouts: Webglobe (212.57.32.128, no CDN, no IPv6) silently drops TCP connections from part of GitHub's Azure IPs (connect timeout, not a Wordfence 403).
