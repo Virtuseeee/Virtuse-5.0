@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-07) — Stories build fetches WordPress through the Cloudflare Worker (main `f373a22a`, `e95e1311`; **Worker deployed** by the user, proxy verified live)
+
+- Root cause of the Stories Action timeouts: Webglobe (212.57.32.128, no CDN, no IPv6) silently drops TCP connections from part of GitHub's Azure IPs (connect timeout, not a Wordfence 403).
+- Fix: the newsletter Worker has a read-only `/wp/*` route (`cloudflare-worker/src/wp-proxy.js`): GET/HEAD only on `/wp-json/`, `/wp-json/wp/v2/posts`, `/sk/wp-json/wp/v2/posts`, everything else 404/405; passes `X-WP-Total(Pages)`, drops cookies, ~5 min cache. `stories-build-run.yml` probes the proxy first, then the blog directly, and passes the winner as `WP_BASE`; `build.mjs` defaults to the blog. The 3-attempt fallback stays.
+- Verified: 26/26 Worker tests; a local build through the proxy reproduced all 359 story pages unchanged; live proxy 200 (EN + SK), wp-login 404, POST 405, cached repeat 0.18 s; /subscribe and /pulse.json unaffected. Not yet proven: a GitHub run actually using the proxy (the run before the deploy fell back to direct, as designed) — check the next run's summary says the workers.dev URL was reachable.
+- Gotcha: the local OneDrive folder's git HEAD is behind while its files are newer (~857 files synced from another machine), so `git pull` aborts there. This session worked from a `git worktree` of origin/main and deployed the Worker from it.
+
 ## Session status (2026-10-07) — Firefish 5 %, Invity rewritten, Invity out of the self-custody route (main `a8229ff2`, `5d247e93`; **live on production**, 87 + 56 files md5-verified on virtuse.com and staging)
 
 - Firefish "from 6%" → "from 5%" (firefish.io/borrow): index + lending in 10 languages, article.js, `i18n-tools/data/phase4_titles.json`.
