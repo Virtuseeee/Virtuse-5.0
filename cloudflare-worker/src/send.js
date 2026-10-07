@@ -17,11 +17,15 @@
 // it. With `brief: true` the contact joins the Brief segment exactly like
 // POST /subscribe (welcome email only for new contacts).
 //
-// The `checklist` kind (step 2 of the rollout plan) is not accepted yet:
-// it needs verified per-partner steps first.
+// `checklist` (step 2: the panel after a partner click, partner-capture.js)
+// sends the partner's registration steps from data/partner-checklists.json
+// (bundled as src/checklists.js by build.mjs). Only partners whose entry has
+// "approved": true are accepted.
 
-export const SEND_KINDS = ['plan', 'result'];
-export const SEND_SOURCES = ['concierge', 'stacking', 'loan', 'tax'];
+import CHECKLISTS from './checklists.js';
+
+export const SEND_KINDS = ['plan', 'result', 'checklist'];
+export const SEND_SOURCES = ['concierge', 'stacking', 'loan', 'tax', 'partner_click'];
 export const SITE_LANGS = ['en', 'sk', 'uk', 'cs', 'ru', 'de', 'fr', 'es', 'pl', 'hu'];
 export const EMAIL_LANGS = ['en', 'sk', 'cs'];
 
@@ -103,6 +107,11 @@ const TOOL_PAGE = { stacking: 'stacking.html', loan: 'loan.html', tax: 'tax-agen
 
 const STRINGS = {
   en: {
+    checklistSubject: 'Signing up at {0}: the steps',
+    checklistTitle: 'Signing up at {0}',
+    checklistIntro: 'You asked us to send the registration steps for {0}. They follow {0}\u2019s own help pages as of {1}; the partner may change its process.',
+    checklistOpen: 'Continue at {0}',
+    checklistSources: 'Based on',
     planSubject: 'Your Partner Finder criteria',
     planTitle: 'Your criteria and the partners that match them',
     planIntro: 'You asked us to send what you saw in the Partner Finder on virtuse.com. Here it is.',
@@ -139,6 +148,11 @@ const STRINGS = {
     },
   },
   sk: {
+    checklistSubject: 'Registrácia u {0}: postup',
+    checklistTitle: 'Registrácia u {0}',
+    checklistIntro: 'Požiadali ste nás o postup registrácie u {0}. Vychádza z návodov {0} platných k {1}; partner môže svoj postup zmeniť.',
+    checklistOpen: 'Pokračovať na {0}',
+    checklistSources: 'Zdroje',
     planSubject: 'Vaše kritériá z Partner Finder',
     planTitle: 'Vaše kritériá a partneri, ktorí im zodpovedajú',
     planIntro: 'Požiadali ste nás o zaslanie toho, čo ste videli v Partner Finder na virtuse.com. Tu to je.',
@@ -175,6 +189,11 @@ const STRINGS = {
     },
   },
   cs: {
+    checklistSubject: 'Registrace u {0}: postup',
+    checklistTitle: 'Registrace u {0}',
+    checklistIntro: 'Požádali jste nás o postup registrace u {0}. Vychází z návodů {0} platných k {1}; partner může svůj postup změnit.',
+    checklistOpen: 'Pokračovat na {0}',
+    checklistSources: 'Zdroje',
     planSubject: 'Vaše kritéria z Partner Finder',
     planTitle: 'Vaše kritéria a partneři, kteří jim odpovídají',
     planIntro: 'Požádali jste nás o zaslání toho, co jste viděli v Partner Finder na virtuse.com. Tady to je.',
@@ -228,6 +247,14 @@ function finiteIn(value, min, max) {
 export function validatePayload(kind, source, payload) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
     return { ok: false, error: 'payload must be an object' };
+  }
+  if (kind === 'checklist') {
+    if (source !== 'partner_click') return { ok: false, error: 'checklist needs source partner_click' };
+    const { partner } = payload;
+    if (!(typeof partner === 'string' && Object.hasOwn(PARTNERS, partner))) return { ok: false, error: 'unknown partner' };
+    const c = CHECKLISTS[partner];
+    if (!c || c.approved !== true) return { ok: false, error: 'no approved checklist for this partner' };
+    return { ok: true, value: { partner } };
   }
   if (kind === 'plan') {
     if (source !== 'concierge') return { ok: false, error: 'plan needs source concierge' };
@@ -368,6 +395,29 @@ export function renderSendEmail({ kind, source, payload, lang, brief }) {
   const siteLang = SITE_LANGS.includes(lang) ? lang : 'en';
   const emailLang = EMAIL_LANGS.includes(lang) ? lang : 'en';
   const S = STRINGS[emailLang];
+
+  if (kind === 'checklist') {
+    const p = PARTNERS[payload.partner];
+    const c = CHECKLISTS[payload.partner];
+    const steps = (c.steps[emailLang] && c.steps[emailLang].length ? c.steps[emailLang] : c.steps.en);
+    const asOf = new Intl.DateTimeFormat(LOCALES[emailLang], { day: 'numeric', month: emailLang === 'en' ? 'long' : 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(c.as_of + 'T00:00:00Z'));
+    const fill = (str) => str.split('{0}').join(p.name).split('{1}').join(asOf);
+    const list = steps
+      .map((st, i) => `<tr><td valign="top" style="padding:10px 12px 10px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#7a7366;">${i + 1}.</td>
+<td style="padding:10px 0;border-bottom:1px solid #e3ddd0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#16120c;"><strong style="color:#16120c;">${esc(st.title)}</strong><br>${esc(st.text)}</td></tr>`)
+      .join('\n');
+    const sources = (c.sources || []).slice(0, 4)
+      .map((u) => `<a href="${esc(u)}" style="color:#5c564c;">${esc(new URL(u).hostname.replace(/^www\./, ''))}</a>`)
+      .join(' · ');
+    const body = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">${list}</table>
+${button(withUtm(p.url, kind, payload.partner), fill(S.checklistOpen))}
+<a href="${esc(withUtm(sitePage(siteLang, p.page), kind, payload.partner))}" style="margin-left:12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#5c564c;">${esc(S.seeCard)}</a>
+${sources ? `<p style="margin:16px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#7a7366;">${esc(S.checklistSources)}: ${sources}</p>` : ''}`;
+    return {
+      subject: fill(S.checklistSubject),
+      html: layout({ lang: emailLang, title: fill(S.checklistTitle), intro: fill(S.checklistIntro), body, footer: footerHtml(S, brief) }),
+    };
+  }
 
   if (kind === 'plan') {
     const criteria = rows(

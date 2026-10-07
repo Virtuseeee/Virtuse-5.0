@@ -57,6 +57,10 @@
         page_lang: (document.documentElement.lang || 'en').slice(0, 2)
       });
     } catch (err) {}
+    // For partner-capture.js (the "registration steps by email" panel), if loaded.
+    try {
+      document.dispatchEvent(new CustomEvent('vb:partner-click', { detail: { partner: p[0], category: p[1] } }));
+    } catch (err) {}
   }
 
   document.addEventListener('click', track, true);
