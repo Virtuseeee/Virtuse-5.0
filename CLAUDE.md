@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-07, third round) — Email-capture step 3: "Get this result by email" under Stacking, Loan and Tax, switched off like step 1 (committed; **Worker + modules not deployed yet**)
+## Session status (2026-10-07, third round) — Email-capture step 3: "Get this result by email" under Stacking, Loan and Tax, switched off like step 1 (main `07296f4c`; Worker `835493c1` deployed as version 615c1116; **live on production** — user ran `deploy_site.sh 835493c1 07296f4c` as admin.virtuse.com, 73/73 md5 incl. every concierge-assets file on virtuse.com and staging; from virtuse.com the live Worker rejects score > max, and sk/loan.html?capture=1 shows the form)
 
 - Shared `src/components/CaptureForm.tsx` in the module source (form, honeypot, Brief box, dataLayer `capture_shown`/`capture_submit` with `capture_source`, `captureEnabled()` = meta `vb-capture` on or `?capture=1`); Partner Finder's form now uses it too. `ResultCaptureForm` sits above the footer of Stacking, Loan, Tax; Tax shows it only once a country is chosen (uk/ru start without one). 2 new strings, 392/392 in all 7 dictionaries. Backup `concierge-src-2026-10-07-after-capture-step3.tgz`.
 - Payloads (numbers rounded so the email matches the page): stacking initial/contribution/frequency/years/returnPct/invested/projected/lowestFeePartner (`advice.winner.id`); loan cashNeeded/btcPrice/ltvPct/aprPct/years/taxIfSold/interestTotal/collateralBtc/liquidationPrice (facts only, no verdict); tax country + inheritanceScore + **inheritanceMax** (checklist adds to 105, page shows score/105; Worker changed to accept the max and print "score / max").
