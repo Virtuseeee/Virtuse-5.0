@@ -2236,12 +2236,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/news.html"/>
   </url>
   <url>
-    <loc>https://virtuse.com/news.html</loc>
-    <lastmod>2026-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://virtuse.com/uk/blog.html</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
@@ -4946,6 +4940,42 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-fiscalite/espagne/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-impuestos/espana/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/bitcoin-tax/germany/dac8/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/deutschland/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/germany/dac8/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/bitcoin-steuern/deutschland/dac8/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/deutschland/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/germany/dac8/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/bitcoin-tax/slovakia/dac8/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovensko/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovakia/dac8/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-dane/slovensko/dac8/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-dane/slovensko/dac8/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/slovakia/dac8/"/>
   </url>
   <url>
     <loc>https://virtuse.com/sk/bitcoin-dca-kalkulacka/</loc>

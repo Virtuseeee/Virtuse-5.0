@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAC8 in Germany: what your exchange reports (2026)</title>
+<meta name="description" content="Since 2026 EU exchanges record your trades for the tax office under DAC8. What is reported, when, and what German Bitcoin holders should do now.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/bitcoin-tax/germany/dac8/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/dac8/">
+  <link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-steuern/deutschland/dac8/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/germany/dac8/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="DAC8 in Germany: what your exchange reports (2026)">
+<meta property="og:description" content="Since 2026 EU exchanges record your trades for the tax office under DAC8. What is reported, when, and what German Bitcoin holders should do now.">
+<meta property="og:url" content="https://virtuse.com/bitcoin-tax/germany/dac8/">
+<meta property="og:locale" content="en_US">
+<link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<style>:root {
+  --btc-orange: #f7931a;
+  --dark: #08090a;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --green: #3fb950;
+  --max: 820px;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--btc-orange); }
+.nav {
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  background: rgba(8,9,10,.96); position: sticky; top: 0;
+}
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.brand { font-weight: 700; color: var(--text) !important; font-size: 16px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 64px; }
+.crumbs { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+.crumbs a { color: var(--text-muted); }
+.answer {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin: 16px 0 28px;
+}
+.answer p { margin: 0; }
+h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--text-muted); font-weight: 600; }
+.cta {
+  display: inline-block; background: var(--text); color: var(--dark) !important;
+  text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: opacity 0.2s;
+}
+.cta:hover { opacity: 0.85; }
+.cta-secondary {
+  display: inline-block; border: 1px solid var(--border); color: var(--text) !important;
+  text-decoration: none; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: border-color 0.2s;
+}
+.cta-secondary:hover { border-color: var(--border-hover); }
+.muted { color: var(--text-muted); font-size: 14px; }
+.disclaimers { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+.related { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 16px; }
+.lang { font-size: 13px; }
+.flag { font-weight: 600; }
+.review { font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--border-hover); padding: 6px 10px; margin: 12px 0; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+pre {
+  background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px; overflow: auto; white-space: pre-wrap;
+}
+.asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
+footer.site-footer {
+  border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
+}
+footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
+@media (max-width: 640px) {
+  h1 { font-size: 1.45rem; }
+  .nav { padding: 12px 14px; }
+}
+@media print {
+  .nav, .cta, .cta-secondary, footer.site-footer { display: none !important; }
+  body { background: #fff; color: #111; }
+  a { color: #111; }
+  .answer { background: #f4f4f4; border-color: #ccc; }
+}</style>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://virtuse.com/#website",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://virtuse.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bitcoin tax",
+          "item": "https://virtuse.com/bitcoin-tax/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Germany",
+          "item": "https://virtuse.com/bitcoin-tax/germany/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "DAC8",
+          "item": "https://virtuse.com/bitcoin-tax/germany/dac8/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does DAC8 apply to exchanges outside the EU?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DAC8 covers every provider serving EU residents, including ones based outside the EU. Many non-EU countries are adopting the OECD's parallel standard (CARF) on a similar timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my hardware wallet reported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your wallet's balance is not reported, but transfers from an exchange to it are."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I owe tax on Bitcoin I have not sold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. In Germany tax is due when you sell or swap, not while you hold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I bought before 2026. Does that matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DAC8 data starts with 2026, but the tax office can still ask about earlier years within the normal assessment period."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<!-- generated by seo-build; do not edit by hand. answerWords=54 -->
+<header class="nav">
+  <a class="brand" href="../../../index.html">Virtuse</a>
+  <nav aria-label="Primary">
+    <a href="../../../bitcoin-tax/">Tax guides</a>
+    <a href="../../../bitcoin-fee-index/">Fee Index</a>
+    <a href="../../../bitcoin-dca-calculator/">DCA</a>
+    <a href="../../../concierge.html">Partner Finder</a>
+  </nav>
+  <nav class="lang" aria-label="Language"><a href="../../../bitcoin-tax/germany/dac8/" aria-current="page">EN</a> · <a href="../../../de/bitcoin-steuern/deutschland/dac8/">DE</a></nav>
+</header>
+<main class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../index.html">Home</a> <span aria-hidden="true">/</span> <a href="../../../bitcoin-tax/">Bitcoin tax</a> <span aria-hidden="true">/</span> <a href="../../../bitcoin-tax/germany/">Germany</a> <span aria-hidden="true">/</span> <span>DAC8</span></nav>
+  <p class="asof">Data as of Q4 2026</p>
+  <h1>Your exchange is reporting your Bitcoin trades: DAC8 in Germany</h1>
+  <div class="answer"><p>Since 1 January 2026, crypto exchanges serving EU residents record your identity, tax ID and trades under DAC8. German providers report 2026 data to the Federal Central Tax Office (BZSt) by 31 July 2027; data from exchanges in other EU countries reaches Germany by 30 September 2027. Bitcoin held over one year stays tax-free.</p></div>
+  
+<h2>What DAC8 is</h2><p>DAC8 (EU Directive 2023/2226) brings crypto into the automatic exchange of tax information that already covers bank accounts. In Germany it is implemented by the Crypto-Asset Tax Transparency Act (KStTG).</p><p>Every crypto service provider serving EU residents collects the data, whether it is licensed in Germany or elsewhere in the EU. It reports to the tax authority of its own country, which forwards the data to your country of residence.</p>
+<h2>What your exchange reports</h2><div class="table-wrap"><table><thead><tr><th>Reported</th><th>Details</th></tr></thead><tbody><tr><td>Who you are</td><td>Name, address, date of birth and your German tax ID (Steuer-ID)</td></tr><tr><td>Crypto to euro</td><td>Total amounts bought and sold per crypto-asset and year</td></tr><tr><td>Crypto to crypto</td><td>Total amounts per crypto-asset</td></tr><tr><td>Transfers</td><td>Transfers out of the exchange, including to your own wallet</td></tr></tbody></table></div><p>Moving Bitcoin to your own hardware wallet is not a sale and is not taxed, but the transfer shows up in the report. Keep a record that the address is yours.</p>
+<h2>Timeline</h2><div class="table-wrap"><table><thead><tr><th>Date</th><th>What happens</th></tr></thead><tbody><tr><td>1 Jan 2026</td><td>Exchanges start recording transactions and ask customers for their tax ID</td></tr><tr><td>31 Jul 2027</td><td>Deadline for your 2026 tax return without a tax advisor</td></tr><tr><td>31 Jul 2027</td><td>Providers reporting in Germany send 2026 data to the BZSt</td></tr><tr><td>30 Sep 2027</td><td>Data from exchanges in other EU countries reaches Germany</td></tr><tr><td>From late 2027</td><td>Tax offices can compare exchange data with returns</td></tr></tbody></table></div>
+<h2>How Bitcoin is taxed in Germany</h2><ul><li>Selling Bitcoin is a private sale under section 23 of the Income Tax Act (EStG).</li><li>Held more than one year: tax-free, whatever the amount.</li><li>Held one year or less: taxed at your personal income tax rate, up to 45% plus any solidarity surcharge and church tax.</li><li>Short-term gains below €1,000 a year in total are tax-free. This is a threshold, not an allowance: at €1,000 or more, the whole gain is taxed.</li><li>Swapping Bitcoin for another crypto-asset within the first year is a taxable sale.</li><li>Coins bought first count as sold first (FIFO), so you need the date of every purchase.</li><li>Losses only offset gains from private sales and can be carried forward.</li><li>Gains go on Annex SO (Anlage SO) of your tax return.</li></ul>
+<h2>What to do now</h2><ol><li>Export your full trade history from every exchange you have used, including closed accounts.</li><li>Work out the holding period of each purchase. It decides whether you owe 0% or up to 45%.</li><li>Use tax software that produces a German report for Annex SO.</li><li>If you did not declare earlier gains, see a tax advisor before 2027. You must correct a return once you know it is wrong (section 153 AO), and a voluntary disclosure (section 371 AO) only protects you before the tax office finds the gap.</li><li>When you withdraw to your own wallet, keep proof that the address belongs to you.</li></ol>
+<h2>Tax software for a German report</h2><p>These tools import your exchange history and calculate gains with German holding-period rules. Virtuse may receive a commission if you sign up.</p><ul><li><a href="https://app.blockpit.io/register?fpr=virtuse" rel="sponsored noopener" target="_blank">Blockpit</a></li><li><a href="https://koinly.io/?via=C7DEBFCF&amp;utm_source=affiliate" rel="sponsored noopener" target="_blank">Koinly</a></li><li><a href="https://cointracking.info/?ref=V328565" rel="sponsored noopener" target="_blank">CoinTracking</a></li><li><a href="https://divly.com/?ref=otfkzmf" rel="sponsored noopener" target="_blank">Divly</a></li></ul>
+<h2>FAQ</h2><h3>Does DAC8 apply to exchanges outside the EU?</h3><p>DAC8 covers every provider serving EU residents, including ones based outside the EU. Many non-EU countries are adopting the OECD's parallel standard (CARF) on a similar timeline.</p><h3>Is my hardware wallet reported?</h3><p>No. Your wallet's balance is not reported, but transfers from an exchange to it are.</p><h3>Do I owe tax on Bitcoin I have not sold?</h3><p>No. In Germany tax is due when you sell or swap, not while you hold.</p><h3>I bought before 2026. Does that matter?</h3><p>DAC8 data starts with 2026, but the tax office can still ask about earlier years within the normal assessment period.</p>
+
+  <p><a class="cta" href="../../../tax-agent.html?country=de">Check Germany in the Tax Agent →</a></p>
+  <h2>Related guides</h2><div class="related"><a href="../../../bitcoin-tax/germany/">Bitcoin tax in Germany</a><a href="../../../sell-vs-borrow-bitcoin/">Sell or borrow against Bitcoin</a><a href="../../../bitcoin-inheritance/">Bitcoin inheritance checklist</a></div>
+  <aside class="disclaimers">
+    <p>Indicative 2026 overview – not tax advice.</p>
+    <p>Virtuse never holds your keys.</p>
+    <p>KYC and onboarding are completed on each partner’s regulated platform. Virtuse is a non-custodial hub and does not hold funds or customer data for those platforms.</p>
+  </aside>
+</main>
+<footer class="site-footer"><div class="inner">
+  <p>©2018 - 2026 Virtuse Group. <a href="../../../privacy-policy.html">Privacy</a> · <a href="../../../terms-and-conditions.html">Terms</a></p>
+</div></footer>
+</body>
+</html>

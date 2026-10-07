@@ -7,7 +7,7 @@ As of Q3 2026. Indicative 2026 overview – not tax advice. Partner KYC on each 
 ## Bitcoin tax (13 EU countries)
 
 - [Czechia](https://virtuse.com/bitcoin-tax/czechia/): 15% income tax (23% above threshold). Tax-free after a 3-year holding period (time test). As of Q3 2026.
-- [Slovakia](https://virtuse.com/bitcoin-tax/slovakia/): 19% income tax (25% above threshold). Tax-free after a 1-year holding period; occasional-income allowance of €500 a year. As of Q3 2026.
+- [Slovakia](https://virtuse.com/bitcoin-tax/slovakia/): 19–35% income tax plus 16% health contributions. No holding-period exemption; every sale or crypto-to-crypto swap is taxed. As of Q3 2026.
 - [Poland](https://virtuse.com/bitcoin-tax/poland/): 19% flat capital gains tax. No holding-period exemption. As of Q3 2026.
 - [Austria](https://virtuse.com/bitcoin-tax/austria/): 27.5% KESt (capital gains tax). Gains tax-free after a 1-year holding period (private investors). As of Q3 2026.
 - [Germany](https://virtuse.com/bitcoin-tax/germany/): Up to 45% income tax (progressive). 0% after a 1-year holding period (private-sale exemption). As of Q3 2026.
