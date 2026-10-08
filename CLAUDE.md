@@ -2,11 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-08) — Leftover blog posts: 240 hidden, 45 moved into Blog → story pages (noindex list **live on blog.virtuse.com**, uploaded by the user; WordPress edits done; 45 new story pages built, not yet committed/deployed)
+## Session status (2026-10-08) — Leftover blog posts: 240 hidden, 45 moved into Blog → story pages (main `f23b51de`, gh-pages `3388cf2d`; **live** — noindex list and story canonical map uploaded to blog.virtuse.com by the user, `deploy_site.sh f23b51de^ f23b51de` 47/47 md5 on virtuse.com and staging)
 
 - SEO item 2: 285 posts were still indexable on blog.virtuse.com (not stories, not Crypto News). Ras's decisions per group are in `seo-ops/blog-leftover-posts.csv` (group, decision, categories before/after) and `seo-ops/README.md`. **Hidden (240):** 171 empty pages, 4 copies, 52 Virtuse Exchange-era posts, 13 weekly Virtuse Reports 2021 — merged into `virtuse-crypto-news-noindex.json` (now 1108 IDs; `crypto_news_noindex.py` reads the CSV). Live: 232 noindex + 8 that already 301 to story originals; none in the post sitemaps.
 - **Moved into Blog (45):** 24 Slovak posts were in the English Blog category 13, and 15170 (published 2026-10-07, Slovak) was set to English, so blog-sk.html and the stories build never saw them; plus 20 real articles outside Blog. Edited in wp-admin as Ras (REST + the WPML language box for 15170). WPML gotchas (save SK posts via `/sk/wp-json/`, two saves when the other language's term is attached, originals copy categories to translations) in `seo-ops/README.md`. Full diff of all 1502 posts: only the intended changes.
-- Stories build: 359 → 404 pages (en 186, sk 208, ru 10); the 45 new pages checked against the live posts (identical text, 38,025 words). To ship: commit, gh-pages, production (new folders + `stories/wp-canonical.json` to the blog so the 45 originals point at virtuse.com).
+- Stories build: 359 → 404 pages (en 186, sk 208, ru 10); the 45 new pages checked against the live posts (identical text, 38,025 words). Live: all 45 WordPress originals' canonical = their virtuse.com story; the blog's post sitemaps now list only the blog home and 2 Ukrainian posts (`/uk/…80000…`, translations of EN stories; no UK feed in the stories build — open).
 - Seen: 14013's slug is "14013-2" (story URL `sk/stories/14013-2/`); 13767 and 13774 were the same Argentina article (13774 kept).
 
 ## Session status (2026-10-07) — Story pages carry the full article text (main `f35c7400`, gh-pages `0dcf47a1`; **live on production** — user ran `deploy_site.sh 67ca3321 f35c7400` from the scratchpad worktree: DEPLOY OK, 361/361 md5 on virtuse.com and staging)
