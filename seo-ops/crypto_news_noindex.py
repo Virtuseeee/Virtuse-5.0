@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Post list for the WordPress must-use plugin virtuse-crypto-news-noindex.php.
 
+Since 2026-10-08 the list also holds the leftover blog posts Ras decided to
+hide (seo-ops/blog-leftover-posts.csv, decision "noindex": empty pages,
+duplicates, Virtuse Exchange-era posts, 2021 weekly reports). The plugin's
+name still says Crypto News; it hides whatever post IDs the JSON lists.
+
 Ras's decision 2026-10-07: hide the old "Crypto News" / "Krypto novinky" posts
 (mostly short excerpts of third-party news from 2021-2023) from search engines
 but keep them readable. This reads the live WordPress REST API and writes
@@ -13,11 +18,12 @@ Read-only against WordPress.
 
     python3 seo-ops/crypto_news_noindex.py
 """
-import datetime, json, os, sys, time, urllib.request
+import csv, datetime, json, os, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'seo-ops/wp-mu-plugin/virtuse-crypto-news-noindex.json')
 STORIES = os.path.join(ROOT, 'Kimi_Agent_Virtuse%20MiCA%20Partners/stories/wp-canonical.json')
+LEFTOVER = os.path.join(ROOT, 'seo-ops/blog-leftover-posts.csv')
 CUTOFF = '2024-01-01'
 TERMS = [38, 40]  # Crypto News (EN), Krypto novinky (SK)
 # Every post, both language endpoints: WPML hides posts filed under the other
@@ -50,10 +56,16 @@ for api in APIS:
 stories = {int(k) for k in json.load(open(STORIES))['posts']}
 old = sorted(i for i, p in posts.items() if p['date'] < CUTOFF and i not in stories)
 kept = sorted((p['date'][:10], i) for i, p in posts.items() if i not in old)
+extra = sorted({int(r['wp_id']) for r in csv.DictReader(open(LEFTOVER, encoding='utf-8')) if r['decision'] == 'noindex'})
+missing = [i for i in extra if i not in seen]
+if missing: sys.exit(f'leftover posts not found in WordPress: {missing}')
+clash = [i for i in extra if i in stories]
+if clash: sys.exit(f'leftover posts marked noindex are stories: {clash}')
+allp = sorted(set(old) | set(extra))
 data = {'generated': datetime.date.today().isoformat(),
-        'rule': f'category 38 or 40, published before {CUTOFF}, not a story',
-        'terms': TERMS, 'count': len(old), 'posts': old}
+        'rule': f'category 38 or 40, published before {CUTOFF}, not a story; plus blog-leftover-posts.csv decision noindex',
+        'terms': TERMS, 'count': len(allp), 'crypto_news': len(old), 'leftover': len(extra), 'posts': allp}
 with open(OUT, 'w', encoding='utf-8') as f:
     json.dump(data, f, indent=1)
     f.write('\n')
-print(f'{len(seen)} posts read; {len(posts)} in the two categories; {len(old)} to noindex; kept indexable: {kept}')
+print(f'{len(seen)} posts read; {len(posts)} in the two categories; {len(old)} Crypto News + {len(extra)} leftover = {len(allp)} to noindex; Crypto News kept indexable: {kept}')

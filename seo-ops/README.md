@@ -130,3 +130,26 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
   WordPress Playground (PHP 7.4, current Yoast, with the canonical plugin; missing
   or broken JSON = no change). Rollback = delete the PHP file. Google drops the
   pages as it recrawls them.
+- **Leftover blog posts (Ras, 2026-10-08):** after stories (canonical → virtuse.com)
+  and Crypto News (noindex), 285 posts were still indexable on the blog.
+  `blog-leftover-posts.csv` has one row per post with its group, Ras's decision and
+  the categories before/after (for rollback):
+  - **noindex (240):** 171 empty pages (title + share buttons only; most are old
+    "Media Columns" entries with the title of a story), 4 copies of stories, 52
+    Virtuse Exchange-era posts (exchange news, VIRTU token, contests, "partnerships"
+    with Coinfirm/Banxa/Unchained), 13 weekly Virtuse Reports from 2021. Added to
+    `virtuse-crypto-news-noindex.json` (`crypto_news_noindex.py` now merges the CSV's
+    noindex rows; the plugin hides whatever IDs the JSON lists). Live check: 232
+    noindex, the other 8 URLs already 301 to the story originals (old slugs); none in
+    the post sitemaps.
+  - **story (45):** 24 Slovak posts sat in the English Blog category (13) and
+    yesterday's post 15170 was set to English with the Slovak category, so neither
+    blog page nor the stories build saw them; 20 more real articles were moved into
+    the Blog category (13 EN / 26 SK, Uncategorized dropped). Done in wp-admin as Ras
+    over the REST API. **WPML gotchas:** save a Slovak post through
+    `/sk/wp-json/...`, an English one through `/wp-json/...`; a post that still holds
+    the other language's term loses it on the first save and gets the new one on a
+    second save; editing an original copies its categories to its translations
+    (5409 → 6520). A full before/after diff of all 1502 posts showed only the
+    intended changes. 15170's language was switched in the classic editor's WPML box
+    (old URL 301s to `/sk/...`). The next stories build turns them into story pages.
