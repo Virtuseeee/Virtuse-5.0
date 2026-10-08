@@ -78,6 +78,28 @@ pre {
   padding: 12px; overflow: auto; white-space: pre-wrap;
 }
 .asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
+.brief {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px 20px; margin: 36px 0 8px;
+}
+.brief h2 { margin: 0 0 6px; font-size: 1.25rem; }
+.brief h2 span { font-weight: 400; color: var(--text-muted); }
+.brief .line { margin: 0 0 14px; color: var(--text-muted); font-size: 15px; }
+.brief form { display: flex; flex-wrap: wrap; gap: 8px; }
+.brief input[type="email"] {
+  flex: 1 1 220px; min-width: 0; background: var(--dark); color: var(--text);
+  border: 1px solid var(--border-hover); border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 15px;
+}
+.brief input[type="email"]:focus { outline: none; border-color: var(--text-muted); }
+.brief button {
+  flex: 0 0 auto; background: var(--text); color: var(--dark); border: 0; border-radius: 8px;
+  padding: 10px 16px; font: inherit; font-weight: 700; cursor: pointer;
+}
+.brief button:disabled { opacity: 0.6; cursor: default; }
+.brief .msg { margin: 10px 0 0; font-size: 14px; min-height: 1px; }
+.brief .fine { margin: 8px 0 0; font-size: 12px; color: var(--text-muted); }
+.brief .fine a { color: var(--text-muted); }
+@media (max-width: 480px) { .brief button { flex: 1 1 100%; } }
 footer.site-footer {
   border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
 }
@@ -87,7 +109,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   .nav { padding: 12px 14px; }
 }
 @media print {
-  .nav, .cta, .cta-secondary, footer.site-footer { display: none !important; }
+  .nav, .cta, .cta-secondary, .brief, footer.site-footer { display: none !important; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
@@ -109,6 +131,7 @@ export function renderPage({
   moduleCta,
   extraHead = '',
   noindex = false,
+  noCapture = false,
   origin,
   asOfLabel,
   chrome
@@ -174,6 +197,44 @@ export function renderPage({
       .join(' · ')}</nav>`
     : '';
 
+
+  const b = chrome.brief;
+  const briefHtml = (!b || noindex || noCapture) ? '' : `<section class="brief" aria-labelledby="brief-h">
+    <h2 id="brief-h">${b.heading}</h2>
+    <p class="line">${esc(b.line)}</p>
+    <form data-brief-form novalidate>
+      <input type="email" name="email" placeholder="${esc(b.placeholder)}" aria-label="${esc(b.placeholder)}" autocomplete="email" required>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit">${esc(b.button)}</button>
+    </form>
+    <p class="msg" role="status" aria-live="polite"></p>
+    <p class="fine">${esc(b.fine)} <a href="${esc(toRoot(relFile, chrome.privacyHref))}">${esc(chrome.privacy)}</a></p>
+  </section>
+<script>
+(function () {
+  var f = document.querySelector('.brief form'); if (!f) return;
+  var m = f.parentNode.querySelector('.msg'), btn = f.querySelector('button'), label = btn.textContent;
+  var T = ${JSON.stringify({ sending: b.sending, ok: b.ok, fail: b.fail, network: b.network }).replace(/</g, '\\u003c')};
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = f.elements.email.value.trim();
+    m.textContent = ''; btn.disabled = true; btn.textContent = T.sending;
+    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, hp: f.elements.website.value, lang: ${JSON.stringify(lang)} })
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        if (x.ok) {
+          f.reset(); m.textContent = T.ok; m.style.color = 'var(--green)';
+          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'seo_page', capture_brief: true });
+        } else { m.textContent = (x.d && x.d.error) || T.fail; m.style.color = '#f85149'; }
+      })
+      .catch(function () { m.textContent = T.network; m.style.color = '#f85149'; })
+      .then(function () { btn.disabled = false; btn.textContent = label; });
+  });
+})();
+</script>` ;
+
   const wc = wordCount(answerHtml.replace(/<[^>]+>/g, ' '));
 
   return `<!DOCTYPE html>
@@ -217,6 +278,7 @@ ${extraHead}
   ${bodyHtml}
   ${ctaHtml}
   ${relatedHtml}
+  ${briefHtml}
   <aside class="disclaimers">
     <p>${esc(chrome.disclaimerTax)}</p>
     <p>${esc(chrome.disclaimerKeys)}</p>
@@ -251,6 +313,7 @@ export const CHROME = {
     dcaHref: 'bitcoin-dca-calculator/',
     conciergeHref: 'concierge.html',
     privacyHref: 'privacy-policy.html',
+    brief: { heading: 'Get <span>the Brief</span>', line: 'Virtuse Brief. Bitcoin-only. No tokens. No PR.', placeholder: 'Email address', button: 'Subscribe', fine: 'Weekly on Monday. Unsubscribe anytime.', sending: 'Sending...', ok: 'You\'re in. Brief goes out Monday.', fail: 'Something went wrong. Please try again.', network: 'Network error — please try again.' },
     termsHref: 'terms-and-conditions.html'
   },
   de: {
@@ -272,6 +335,7 @@ export const CHROME = {
     dcaHref: 'de/bitcoin-dca-rechner/',
     conciergeHref: 'concierge.html',
     privacyHref: 'privacy-policy.html',
+    brief: { heading: 'Holen Sie sich <span>den Brief</span>', line: 'Virtuse Brief. Nur Bitcoin. Keine Token. Keine PR.', placeholder: 'E-Mail-Adresse', button: 'Brief erhalten', fine: 'Jeden Montag. Jederzeit abbestellbar.', sending: 'Wird gesendet...', ok: 'Sie sind dabei. Der Brief kommt am Montag.', fail: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.', network: 'Netzwerkfehler – bitte versuchen Sie es erneut.' },
     termsHref: 'terms-and-conditions.html'
   },
   sk: {
@@ -293,6 +357,7 @@ export const CHROME = {
     dcaHref: 'sk/bitcoin-dca-kalkulacka/',
     conciergeHref: 'sk/concierge.html',
     privacyHref: 'sk/privacy-policy.html',
+    brief: { heading: 'Odoberať <span>Brief</span>', line: 'Virtuse Brief. Iba Bitcoin. Žiadne tokeny. Žiadne PR.', placeholder: 'E-mailová adresa', button: 'Odoberať', fine: 'Každý pondelok. Odhlásenie kedykoľvek.', sending: 'Odosielam...', ok: 'Ste v tom. Brief vychádza v pondelok.', fail: 'Niečo sa pokazilo. Skúste to prosím znova.', network: 'Chyba siete. Skúste to prosím znova.' },
     termsHref: 'sk/terms-and-conditions.html'
   },
   cs: {
@@ -314,6 +379,7 @@ export const CHROME = {
     dcaHref: 'cs/bitcoin-dca-kalkulacka/',
     conciergeHref: 'cs/concierge.html',
     privacyHref: 'cs/privacy-policy.html',
+    brief: { heading: 'Odebírat <span>Brief</span>', line: 'Virtuse Brief. Jen Bitcoin. Žádné tokeny. Žádné PR.', placeholder: 'E-mailová adresa', button: 'Odebírat', fine: 'Každé pondělí. Odhlášení kdykoli.', sending: 'Odesílání...', ok: 'Hotovo. Brief vychází v pondělí.', fail: 'Něco se pokazilo. Zkuste to znovu.', network: 'Chyba sítě. Zkuste to znovu.' },
     termsHref: 'cs/terms-and-conditions.html'
   },
   pl: {
@@ -335,6 +401,7 @@ export const CHROME = {
     dcaHref: 'pl/bitcoin-kalkulator-dca/',
     conciergeHref: 'pl/concierge.html',
     privacyHref: 'pl/privacy-policy.html',
+    brief: { heading: 'Zapisz się <span>na Brief</span>', line: 'Virtuse Brief. Tylko Bitcoin. Bez tokenów. Bez PR-u.', placeholder: 'Adres e-mail', button: 'Zapisz się', fine: 'Co tydzień w poniedziałek. Rezygnacja w dowolnym momencie.', sending: 'Wysyłanie...', ok: 'Gotowe. Brief ukazuje się w poniedziałki.', fail: 'Coś poszło nie tak. Prosimy spróbować ponownie.', network: 'Błąd sieci. Prosimy spróbować ponownie.' },
     termsHref: 'pl/terms-and-conditions.html'
   },
   hu: {
@@ -356,6 +423,7 @@ export const CHROME = {
     dcaHref: 'hu/bitcoin-dca-kalkulator/',
     conciergeHref: 'hu/concierge.html',
     privacyHref: 'hu/privacy-policy.html',
+    brief: { heading: 'Iratkozzon fel <span>a Briefre</span>', line: 'Virtuse Brief. Csak Bitcoin. Tokenek nélkül. PR nélkül.', placeholder: 'E-mail-cím', button: 'Feliratkozás', fine: 'Minden hétfőn. Bármikor leiratkozhat.', sending: 'Küldés...', ok: 'Kész. A Brief hétfőnként érkezik.', fail: 'Hiba történt. Kérjük, próbálja újra.', network: 'Hálózati hiba. Kérjük, próbálja újra.' },
     termsHref: 'hu/terms-and-conditions.html'
   },
   uk: {
@@ -377,6 +445,7 @@ export const CHROME = {
     dcaHref: 'uk/bitcoin-kalkuliator-dca/',
     conciergeHref: 'uk/concierge.html',
     privacyHref: 'uk/privacy-policy.html',
+    brief: { heading: 'Отримайте <span>Brief</span>', line: 'Virtuse Brief. Лише Біткоїн. Жодних токенів. Жодного PR.', placeholder: 'Електронна пошта', button: 'Отримати Brief', fine: 'Щопонеділка. Відписатися можна будь-коли.', sending: 'Надсилання...', ok: 'Готово! Brief вийде в понеділок.', fail: 'Щось пішло не так. Спробуйте ще раз.', network: 'Помилка мережі. Спробуйте ще раз.' },
     termsHref: 'uk/terms-and-conditions.html'
   },
   ru: {
@@ -398,6 +467,7 @@ export const CHROME = {
     dcaHref: 'ru/bitcoin-kalkulyator-dca/',
     conciergeHref: 'ru/concierge.html',
     privacyHref: 'ru/privacy-policy.html',
+    brief: { heading: 'Получите <span>Brief</span>', line: 'Virtuse Brief. Только Биткоин. Без токенов. Без пиара.', placeholder: 'Электронная почта', button: 'Подписаться', fine: 'Каждый понедельник. Отписаться можно в любой момент.', sending: 'Отправка...', ok: 'Готово. Brief выходит в понедельник.', fail: 'Что-то пошло не так. Попробуйте ещё раз.', network: 'Ошибка сети. Попробуйте ещё раз.' },
     termsHref: 'ru/terms-and-conditions.html'
   },
   fr: {
@@ -419,6 +489,7 @@ export const CHROME = {
     dcaHref: 'fr/bitcoin-calculateur-dca/',
     conciergeHref: 'fr/concierge.html',
     privacyHref: 'fr/privacy-policy.html',
+    brief: { heading: 'Recevez <span>le Brief</span>', line: 'Virtuse Brief. 100\u00a0% Bitcoin. Pas de tokens. Pas de RP.', placeholder: 'Adresse e-mail', button: 'Recevoir le Brief', fine: 'Chaque lundi. Désabonnement à tout moment.', sending: 'Envoi en cours...', ok: 'C\'est fait. Le Brief part lundi.', fail: 'Une erreur est survenue. Veuillez réessayer.', network: 'Erreur réseau. Veuillez réessayer.' },
     termsHref: 'fr/terms-and-conditions.html'
   },
   es: {
@@ -440,6 +511,7 @@ export const CHROME = {
     dcaHref: 'es/bitcoin-calculadora-dca/',
     conciergeHref: 'es/concierge.html',
     privacyHref: 'es/privacy-policy.html',
+    brief: { heading: 'Reciba <span>el Brief</span>', line: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.', placeholder: 'Correo electrónico', button: 'Suscribirse', fine: 'Cada lunes. Cancele cuando quiera.', sending: 'Enviando...', ok: 'Listo. El Brief sale el lunes.', fail: 'Algo salió mal. Inténtelo de nuevo.', network: 'Error de red. Inténtelo de nuevo.' },
     termsHref: 'es/terms-and-conditions.html'
   }
 };

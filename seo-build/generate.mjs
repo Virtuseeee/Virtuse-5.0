@@ -1727,7 +1727,7 @@ ${faqHtml(faqs, 'FAQ')}
     'Virtuse never holds your keys.'
   ], 'en', 'fee');
   pushPage({
-    relFile, lang: 'en',
+    relFile, lang: 'en', noCapture: true,
     title: assertTitle('Fee Index embed widget (Q4 2026)'),
     description: assertDescription(`Iframe-ready Bitcoin Fee Index table as of ${feeAsOfEn}. ${ranked[0].partner} first at €100/month. Attribution required.`),
     h1: 'Bitcoin Fee Index — embed',
