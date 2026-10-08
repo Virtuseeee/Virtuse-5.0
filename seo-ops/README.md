@@ -153,3 +153,38 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
     (5409 → 6520). A full before/after diff of all 1502 posts showed only the
     intended changes. 15170's language was switched in the classic editor's WPML box
     (old URL 301s to `/sk/...`). The next stories build turns them into story pages.
+- **Blog name (Ras, 2026-10-08):** the blog called itself "Virtuse Exchange" in every
+  title, og:site_name, the Organization schema and the RSS feed. Changed in wp-admin
+  (WordPress database, not in git; old values here for rollback):
+  - Settings → General with `?lang=en` (WPML original): Site Title "Virtuse Exchange"
+    → **Virtuse Brief**, Tagline "A one-stop shop for your Bitcoin" → **Bitcoin-only
+    analysis by Ras Vasilisin**; with `?lang=sk` (WPML translation): Site Title →
+    Virtuse Brief, Tagline "Investovanie je ľahké" → **Analýzy len o Bitcoine od Rasťa
+    Vasilisina**. uk/ru have no translation and show the English values. The admin
+    language is SK: open settings with `?lang=en` to edit originals.
+  - Yoast (opened with `?lang=en`; its `wpseo_titles` texts are WPML strings, the
+    originals had been typed in Slovak): Organization name "Virtuse Exchange" →
+    **Virtuse**; logo → media 9238 (blog copy of VIRTUSE-SM2.jpg, was the
+    www.virtuse.com URL behind two redirects); homepage social title "%%sitename%%"
+    (printed literally) → empty, so og:title = the SEO title; 404 title "Stránka
+    nenájdená %%sep%% %%sitename%%" → "Page not found …"; breadcrumbs "Úvod" → Home,
+    "Archív pre" → Archives for, "Hľadali ste" → You searched for, "Chyba 404:
+    Stránka nenájdená" → Error 404: Page not found. Slovak pages keep "Úvod" and
+    "Stránka nenájdená" (WPML translations already existed).
+  - Pages 9 (/blog/) and 2814 (/sk/blog/): Yoast SEO title "News from Crypto World" /
+    "Novinky z krypto sveta" → **Blog** (→ "Blog • Virtuse Brief").
+  - Live: home "Virtuse Brief • Bitcoin-only analysis by Ras Vasilisin" (SK "…Analýzy
+    len o Bitcoine od Rasťa Vasilisina"), posts "<title> • Virtuse Brief",
+    og:site_name Virtuse Brief, Organization "Virtuse", RSS "Virtuse Brief".
+  - Theme `virtuse/header.php` line 75 (Appearance → Theme File Editor): header logo
+    alt="Virtuse Exchange" → alt="Virtuse" (the image itself reads VIRTUSE). Original
+    file in the 2026-10-07 blog backup. The same file still has the old GTM-M4C5VRD
+    snippet; the must-use plugin virtuse-remove-old-gtm.php strips it from the output.
+  - Pages 9 / 2814 meta description (was "Crypto blogs and announcements about news
+    from cryptocurrencies and commodity trading…" / "Krypto články a novinky zo sveta
+    kryptomien, svetových búrz a obchodovania s komoditami…"): EN "Bitcoin-only
+    articles by Ras Vasilisin, founder of Virtuse: markets, macro, custody and
+    Bitcoin-backed loans, explained without hype." / SK "Články Rasťa Vasilisina,
+    zakladateľa Virtuse, len o Bitcoine: trhy, makroekonómia, úschova a pôžičky so
+    zábezpekou v Bitcoine."
+  - Live: no "Virtuse Exchange" left in the HTML of the home pages, /blog/, posts, 404.

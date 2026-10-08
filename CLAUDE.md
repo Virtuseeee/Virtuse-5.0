@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-08) — Blog renamed "Virtuse Exchange" → "Virtuse Brief" (WordPress + Yoast settings, **live on blog.virtuse.com**; not in git)
+
+- SEO item 3. Site Title Virtuse Brief, taglines EN "Bitcoin-only analysis by Ras Vasilisin" / SK "Analýzy len o Bitcoine od Rasťa Vasilisina" (WPML: edit originals with `?lang=en`, the admin language is SK); Yoast Organization "Virtuse" + logo media 9238; homepage social title emptied (it printed "%%sitename%%"); 404 title and breadcrumb texts in English with the Slovak translations kept; /blog/ + /sk/blog/ SEO title "News from Crypto World"/"Novinky z krypto sveta" → "Blog". Old values for rollback in `seo-ops/README.md`.
+- Also: theme `header.php` logo alt "Virtuse Exchange" → "Virtuse" (Theme File Editor; the file still carries the old GTM-M4C5VRD snippet, stripped by the must-use plugin), and Bitcoin-only meta descriptions on /blog/ + /sk/blog/. Live check: home, posts, /blog/, 404, RSS and og:site_name say Virtuse Brief; Organization "Virtuse" on EN + SK; no "Virtuse Exchange" left in those pages' HTML.
+
 ## Session status (2026-10-08) — Leftover blog posts: 240 hidden, 45 moved into Blog → story pages (main `f23b51de`, gh-pages `3388cf2d`; **live** — noindex list and story canonical map uploaded to blog.virtuse.com by the user, `deploy_site.sh f23b51de^ f23b51de` 47/47 md5 on virtuse.com and staging)
 
 - SEO item 2: 285 posts were still indexable on blog.virtuse.com (not stories, not Crypto News). Ras's decisions per group are in `seo-ops/blog-leftover-posts.csv` (group, decision, categories before/after) and `seo-ops/README.md`. **Hidden (240):** 171 empty pages, 4 copies, 52 Virtuse Exchange-era posts, 13 weekly Virtuse Reports 2021 — merged into `virtuse-crypto-news-noindex.json` (now 1108 IDs; `crypto_news_noindex.py` reads the CSV). Live: 232 noindex + 8 that already 301 to story originals; none in the post sitemaps.
