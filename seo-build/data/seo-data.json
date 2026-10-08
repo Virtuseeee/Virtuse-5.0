@@ -27,16 +27,16 @@
       "gainTax": "19% flat capital gains tax",
       "exemption": "No holding-period exemption",
       "filing": "Annual PIT-38",
-      "note": "Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss."
+      "note": "Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss."
     },
     {
       "id": "at",
       "name": "Austria",
       "flag": "🇦🇹",
       "gainTax": "27.5% KESt (capital gains tax)",
-      "exemption": "Gains tax-free after a 1-year holding period (private investors)",
-      "filing": "Annual tax return",
-      "note": "Staking and lending rewards are taxed when received, not when sold."
+      "exemption": "Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption",
+      "filing": "Annual return for gains via foreign exchanges; Austrian providers withhold the tax",
+      "note": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost."
     },
     {
       "id": "de",
@@ -60,28 +60,28 @@
       "id": "si",
       "name": "Slovenia",
       "flag": "🇸🇮",
-      "gainTax": "Progressive, up to about 50% on disposal gains",
-      "exemption": "No general holding-period exemption",
-      "filing": "Annual personal income tax return",
-      "note": "Cryptocurrency gains are treated as income; check current guidance with a local advisor."
+      "gainTax": "No tax on private disposal gains (business trading is taxed)",
+      "exemption": "Private gains are not taxed; a proposed 25% tax was withdrawn in 2025",
+      "filing": "None for private gains; business and mining income in the annual return",
+      "note": "Mining is taxed as other income. Frequent trading can count as a business activity."
     },
     {
       "id": "hr",
       "name": "Croatia",
       "flag": "🇭🇷",
-      "gainTax": "12% on digital-asset gains (2025; 10% in 2024)",
-      "exemption": "No holding-period exemption",
-      "filing": "Annual tax return",
-      "note": "The digital-asset regime is new (since 2024) – rules are still being interpreted in practice."
+      "gainTax": "12% on crypto gains (since 2024)",
+      "exemption": "Tax-free after a 2-year holding period",
+      "filing": "JOPPD form by the end of February (not the annual return)",
+      "note": "File JOPPD even for exempt sales. Losses offset gains only within the same year."
     },
     {
       "id": "ro",
       "name": "Romania",
       "flag": "🇷🇴",
-      "gainTax": "10% income tax on crypto gains",
+      "gainTax": "16% income tax on crypto gains (10% until 2025)",
       "exemption": "No holding-period exemption",
       "filing": "Annual return (income from other sources)",
-      "note": "At 10%, Romania has one of the lowest flat rates in the EU – deduct your cost basis."
+      "note": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year."
     },
     {
       "id": "bg",
@@ -97,7 +97,7 @@
       "name": "Netherlands",
       "flag": "🇳🇱",
       "gainTax": "Box 3 wealth tax on a deemed return (about 36% of the assumed yield)",
-      "exemption": "Tax-free allowance (about €57,000 per person, 2025)",
+      "exemption": "Tax-free allowance (€59,357 per person, 2026)",
       "filing": "Annual Box 3 declaration",
       "note": "No capital gains tax as such – you are taxed on an assumed return on your holdings. Box 3 is being reformed – check the current year’s rules."
     },
@@ -105,7 +105,7 @@
       "id": "fr",
       "name": "France",
       "flag": "🇫🇷",
-      "gainTax": "30% flat tax (PFU: 12.8% income tax + 17.2% social charges)",
+      "gainTax": "31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026)",
       "exemption": "No holding-period exemption; total disposals up to €305 a year are exempt",
       "filing": "Annual return with form 2086; foreign accounts on form 3916-bis",
       "note": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are."
@@ -114,7 +114,7 @@
       "id": "es",
       "name": "Spain",
       "flag": "🇪🇸",
-      "gainTax": "19–28% progressive tax on savings income",
+      "gainTax": "19–30% progressive tax on savings income",
       "exemption": "No holding-period exemption",
       "filing": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
       "note": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins."

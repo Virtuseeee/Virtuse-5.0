@@ -633,7 +633,7 @@ function dac8Box(id, lang, relFile) {
   const answer = finalizeAnswer([
     `This hub compares bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
     'Rates, exemptions and filing notes come from the Virtuse Tax module.',
-    'Germany and Austria exempt gains after a 1-year holding period; Czechia uses a 3-year time test; the Netherlands taxes a deemed return under Box 3 instead of capital gains.',
+    'Germany exempts gains after a 1-year holding period, Croatia after 2 years and Czechia after 3; Slovenia does not tax private gains; the Netherlands taxes a deemed return under Box 3.',
     'Indicative 2026 overview, not tax advice.'
   ], 'en');
   pushPage({
@@ -681,7 +681,7 @@ ${faqHtml(faqs, 'FAQ')}
   const answer = finalizeAnswer([
     `Dieser Hub vergleicht die Bitcoin-Besteuerung in ${N} EU-Ländern, Stand ${asOfDe}.`,
     'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus dem Virtuse-Tax-Modul.',
-    'Deutschland: Spekulationsfrist 1 Jahr. Österreich: KESt 27,5 %. Tschechien: 3-Jahres-Zeittest. Niederlande: Box 3 statt klassischer Kapitalertragsteuer.',
+    'Deutschland: Spekulationsfrist 1 Jahr. Kroatien: 2 Jahre. Tschechien: 3-Jahres-Zeittest. Slowenien: private Gewinne steuerfrei. Niederlande: Box 3 statt Kapitalertragsteuer.',
     'Unverbindlicher Überblick 2026, keine Steuerberatung.'
   ], 'de');
   pushPage({
@@ -1785,7 +1785,7 @@ function skHome(relFile) { return { ...SK_HOME, href: toRoot(relFile, 'sk/index.
   const answer = finalizeAnswer([
     `Tento prehľad porovnáva zdanenie Bitcoinu v ${N} krajinách EÚ, stav ${asOfSk}.`,
     'Sadzby, oslobodenia a poznámky k daňovému priznaniu pochádzajú z modulu Virtuse Tax.',
-    'Nemecko a Rakúsko oslobodzujú zisky po 1 roku držby, Česko uplatňuje 3-ročný časový test a Holandsko namiesto dane zo ziskov zdaňuje predpokladaný výnos (Box 3).',
+    'Nemecko oslobodzuje zisky po 1 roku držby, Chorvátsko po 2 rokoch a Česko po 3 rokoch; Slovinsko súkromné zisky nezdaňuje a Holandsko zdaňuje predpokladaný výnos (Box 3).',
     'Orientačný prehľad 2026, nejde o daňové poradenstvo.'
   ], 'sk');
   pushPage({
@@ -1875,7 +1875,12 @@ ${faqHtml(faqs, 'Časté otázky')}
   const ASOF = {
     en: formatAsOf(DAC8.asOf, 'en'),
     de: formatAsOf(DAC8.asOf, 'de'),
-    sk: formatAsOf(DAC8.asOf, 'sk')
+    sk: formatAsOf(DAC8.asOf, 'sk'),
+    cs: formatAsOf(DAC8.asOf, 'cs'),
+    pl: formatAsOf(DAC8.asOf, 'pl'),
+    hu: formatAsOf(DAC8.asOf, 'hu'),
+    fr: formatAsOf(DAC8.asOf, 'fr'),
+    es: formatAsOf(DAC8.asOf, 'es')
   };
   // Breadcrumb / related / CTA targets per language. Country slug comes from the generator's maps.
   const LINKS = {
@@ -1893,6 +1898,31 @@ ${faqHtml(faqs, 'Časté otázky')}
       home: 'sk/index.html', hub: 'sk/bitcoin-dane/', country: `sk/bitcoin-dane/${slugSk(id)}/`,
       related: [`sk/bitcoin-dane/${slugSk(id)}/`, 'sk/bitcoin-predat-alebo-pozicat/', 'sk/bitcoin-dedicstvo/'],
       agent: `sk/${TAX_AGENT}?country=${id}`, faqHeading: 'Časté otázky'
+    }),
+    cs: (id) => ({
+      home: 'cs/index.html', hub: 'cs/bitcoin-dane/', country: `cs/bitcoin-dane/${slugCs(id)}/`,
+      related: [`cs/bitcoin-dane/${slugCs(id)}/`, 'cs/bitcoin-prodat-nebo-pujcit/', 'cs/bitcoin-dedictvi/'],
+      agent: `cs/${TAX_AGENT}?country=${id}`, faqHeading: 'Časté dotazy'
+    }),
+    pl: (id) => ({
+      home: 'pl/index.html', hub: 'pl/bitcoin-podatki/', country: `pl/bitcoin-podatki/${slugPl(id)}/`,
+      related: [`pl/bitcoin-podatki/${slugPl(id)}/`, 'pl/bitcoin-sprzedac-czy-pozyczyc/', 'pl/bitcoin-dziedziczenie/'],
+      agent: `pl/${TAX_AGENT}?country=${id}`, faqHeading: 'Najczęstsze pytania'
+    }),
+    hu: (id) => ({
+      home: 'hu/index.html', hub: 'hu/bitcoin-adozas/', country: `hu/bitcoin-adozas/${slugHu(id)}/`,
+      related: [`hu/bitcoin-adozas/${slugHu(id)}/`, 'hu/bitcoin-eladas-vagy-hitel/', 'hu/bitcoin-orokles/'],
+      agent: `hu/${TAX_AGENT}?country=${id}`, faqHeading: 'Gyakori kérdések'
+    }),
+    fr: (id) => ({
+      home: 'fr/index.html', hub: 'fr/bitcoin-fiscalite/', country: `fr/bitcoin-fiscalite/${slugFr(id)}/`,
+      related: [`fr/bitcoin-fiscalite/${slugFr(id)}/`, 'fr/bitcoin-vendre-ou-emprunter/', 'fr/bitcoin-succession/'],
+      agent: `fr/${TAX_AGENT}?country=${id}`, faqHeading: 'Questions fréquentes'
+    }),
+    es: (id) => ({
+      home: 'es/index.html', hub: 'es/bitcoin-impuestos/', country: `es/bitcoin-impuestos/${slugEs(id)}/`,
+      related: [`es/bitcoin-impuestos/${slugEs(id)}/`, 'es/bitcoin-vender-o-pedir-prestado/', 'es/bitcoin-herencia/'],
+      agent: `es/${TAX_AGENT}?country=${id}`, faqHeading: 'Preguntas frecuentes'
     })
   };
   function dac8Section(sec, relFile) {
@@ -2182,7 +2212,7 @@ function csHome(relFile) { return { name: 'Domů', href: toRoot(relFile, 'cs/ind
   const answer = finalizeAnswer([
     `Tento přehled porovnává zdanění Bitcoinu v ${N} zemích EU, stav ${asOfCs}.`,
     'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z modulu Virtuse Tax.',
-    'Německo a Rakousko osvobozují zisky po 1 roce držení, Česko uplatňuje 3letý časový test a Nizozemsko místo daně ze zisků daní předpokládaný výnos (Box 3).',
+    'Německo osvobozuje zisky po 1 roce držení, Chorvatsko po 2 letech a Česko po 3 letech; Slovinsko soukromé zisky nedaní a Nizozemsko daní předpokládaný výnos (Box 3).',
     'Orientační přehled 2026, nejde o daňové poradenství.'
   ], 'cs');
   pushPage({
@@ -2258,7 +2288,7 @@ ${tableHtml(['Údaj', 'Stav ' + asOfCs], [
   ['Daňové přiznání', esc(t.filing)],
   ['Poznámka', esc(t.note)]
 ])}
-<h2>Kdy obvykle vzniká daň?</h2>
+${dac8Box(c.id, 'cs', relFile)}<h2>Kdy obvykle vzniká daň?</h2>
 <p>${esc(t.note)} Nákup Bitcoinu se v tomto přehledu nepovažuje za zdanitelný převod; před platbou, směnou, darováním nebo půjčením mincí si ověřte místní pravidla.</p>
 <h2>Sousední země</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(n.id)}/`))}">Daně z Bitcoinu ${esc(inCs(n.id))}</a></li>`).join('')}</ul>
@@ -2510,7 +2540,7 @@ function descFit(main, tail) { return (main + ' ' + tail).length <= 155 ? `${mai
   const answer = finalizeAnswer([
     `Ten przegląd porównuje opodatkowanie Bitcoina w ${N} krajach UE, stan na ${asOfPl}.`,
     'Stawki, zwolnienia i uwagi dotyczące zeznania pochodzą z modułu Virtuse Tax.',
-    'Niemcy i Austria zwalniają zyski po roku posiadania, Czechy stosują 3-letni test czasu, a Holandia zamiast podatku od zysków opodatkowuje domniemany zwrot (Box 3).',
+    'Niemcy zwalniają zyski po roku posiadania, Chorwacja po 2 latach, a Czechy po 3 latach; Słowenia nie opodatkowuje prywatnych zysków, a Holandia opodatkowuje domniemany zwrot (Box 3).',
     'Przegląd orientacyjny 2026, nie stanowi porady podatkowej.'
   ], 'pl');
   pushPage({
@@ -2586,7 +2616,7 @@ ${tableHtml(['Pole', 'Stan na ' + asOfPl], [
   ['Zeznanie podatkowe', esc(t.filing)],
   ['Uwaga', esc(t.note)]
 ])}
-<h2>Kiedy zwykle powstaje podatek?</h2>
+${dac8Box(c.id, 'pl', relFile)}<h2>Kiedy zwykle powstaje podatek?</h2>
 <p>${esc(t.note)} Zakup Bitcoina nie jest w tym przeglądzie traktowany jako zbycie; przed płatnością, wymianą, darowizną lub pożyczeniem monet warto sprawdzić lokalne przepisy.</p>
 <h2>Kraje sąsiednie</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(n.id)}/`))}">Podatek od Bitcoina ${esc(inPl(n.id))}</a></li>`).join('')}</ul>
@@ -2836,7 +2866,7 @@ function huHome(relFile) { return { name: 'Főoldal', href: toRoot(relFile, 'hu/
   const answer = finalizeAnswer([
     `Ez az áttekintés ${N} EU-ország Bitcoin-adózását hasonlítja össze, ${asOfHu} állapot szerint.`,
     'Az adókulcsok, a mentességek és a bevallási tudnivalók a Virtuse Tax modulból származnak.',
-    'Németország és Ausztria 1 év tartás után mentesíti a nyereséget, Csehország 3 éves időtesztet alkalmaz, Hollandia pedig a nyereség helyett a vélelmezett hozamot adóztatja (Box 3).',
+    'Németország 1 év, Horvátország 2 év, Csehország 3 év tartás után mentesíti a nyereséget; Szlovénia nem adóztatja a magánszemélyek nyereségét, Hollandia a vélelmezett hozamot adóztatja (Box 3).',
     'Tájékoztató áttekintés 2026, nem adótanácsadás.'
   ], 'hu');
   pushPage({
@@ -2912,7 +2942,7 @@ ${tableHtml(['Adat', asOfHu + ' állapot'], [
   ['Bevallás', esc(t.filing)],
   ['Megjegyzés', esc(t.note)]
 ])}
-<h2>Mikor keletkezik általában adó?</h2>
+${dac8Box(c.id, 'hu', relFile)}<h2>Mikor keletkezik általában adó?</h2>
 <p>${esc(t.note)} Ebben az áttekintésben a Bitcoin vásárlása nem számít elidegenítésnek; fizetés, csere, ajándékozás vagy kölcsönadás előtt érdemes ellenőrizni a helyi szabályokat.</p>
 <h2>Szomszédos országok</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(n.id)}/`))}">Bitcoin-adózás ${esc(inHu(n.id))}</a></li>`).join('')}</ul>
@@ -3162,7 +3192,7 @@ function ukHome(relFile) { return { name: 'Головна', href: toRoot(relFile
   const answer = finalizeAnswer([
     `Цей огляд порівнює оподаткування Біткоїна в ${N} країнах ЄС станом на ${asOfUk}.`,
     'Ставки, звільнення і примітки щодо декларування взято з модуля Virtuse Tax.',
-    'Німеччина та Австрія звільняють прибуток після 1 року володіння, Чехія застосовує 3-річний тест часу, а Нідерланди замість податку на прибуток оподатковують умовний дохід (Box 3).',
+    'Німеччина звільняє прибуток після 1 року володіння, Хорватія — після 2 років, Чехія — після 3; Словенія не оподатковує приватний прибуток, а Нідерланди оподатковують умовний дохід (Box 3).',
     'Довідковий огляд 2026, не є податковою консультацією.'
   ], 'uk');
   pushPage({
@@ -3490,7 +3520,7 @@ function ruHome(relFile) { return { name: 'Главная', href: toRoot(relFile
   const answer = finalizeAnswer([
     `Этот обзор сравнивает налогообложение Биткоина в ${N} странах ЕС по состоянию на ${asOfRu}.`,
     'Ставки, освобождения и примечания по декларированию взяты из модуля Virtuse Tax.',
-    'Германия и Австрия освобождают прибыль после 1 года владения, Чехия применяет 3-летний тест времени, а Нидерланды вместо налога на прибыль облагают условный доход (Box 3).',
+    'Германия освобождает прибыль после 1 года владения, Хорватия — после 2 лет, Чехия — после 3; Словения не облагает частную прибыль, а Нидерланды облагают условный доход (Box 3).',
     'Справочный обзор 2026, не является налоговой консультацией.'
   ], 'ru');
   pushPage({
@@ -3819,7 +3849,7 @@ function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/i
   const answer = finalizeAnswer([
     `Cet aperçu compare la fiscalité du Bitcoin dans ${N} pays de l'UE, situation au ${asOfFr}.`,
     'Les taux, exonérations et notes de déclaration proviennent du module Virtuse Tax.',
-    "L'Allemagne et l'Autriche exonèrent les plus-values après 1 an de détention, la Tchéquie après 3 ans ; les Pays-Bas imposent un rendement présumé (Box 3).",
+    "L'Allemagne exonère les plus-values après 1 an de détention, la Croatie après 2 ans et la Tchéquie après 3 ; la Slovénie n'impose pas les gains des particuliers ; les Pays-Bas imposent un rendement présumé (Box 3).",
     'Aperçu indicatif 2026, pas un conseil fiscal.'
   ], 'fr');
   pushPage({
@@ -3895,7 +3925,7 @@ ${tableHtml(['Champ', 'Au ' + asOfFr], [
   ['Déclaration', esc(t.filing)],
   ['Remarque', esc(t.note)]
 ])}
-<h2>Quand l'impôt est-il généralement dû ?</h2>
+${dac8Box(c.id, 'fr', relFile)}<h2>Quand l'impôt est-il généralement dû ?</h2>
 <p>${esc(t.note)} Dans cet aperçu, l'achat de bitcoins n'est pas considéré comme une cession ; avant de payer, d'échanger, de donner ou de prêter des bitcoins, vérifiez les règles locales.</p>
 <h2>Pays voisins</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(n.id)}/`))}">Fiscalité du Bitcoin ${esc(inFr(n.id))}</a></li>`).join('')}</ul>
@@ -4148,7 +4178,7 @@ function esHome(relFile) { return { name: 'Inicio', href: toRoot(relFile, 'es/in
   const answer = finalizeAnswer([
     `Este resumen compara la tributación de Bitcoin en ${N} países de la UE, con datos del ${asOfEs}.`,
     'Los tipos, las exenciones y las notas sobre la declaración proceden del módulo Virtuse Tax.',
-    'Alemania y Austria eximen las ganancias tras 1 año de tenencia, la República Checa tras 3 años, y los Países Bajos gravan un rendimiento presunto (Box 3).',
+    'Alemania exime las ganancias tras 1 año de tenencia, Croacia tras 2 y la República Checa tras 3; Eslovenia no grava las ganancias privadas y los Países Bajos gravan un rendimiento presunto (Box 3).',
     'Resumen orientativo 2026, no es asesoramiento fiscal.'
   ], 'es');
   pushPage({
@@ -4224,7 +4254,7 @@ ${tableHtml(['Campo', 'Datos del ' + asOfEs], [
   ['Declaración', esc(t.filing)],
   ['Nota', esc(t.note)]
 ])}
-<h2>¿Cuándo suele generarse el impuesto?</h2>
+${dac8Box(c.id, 'es', relFile)}<h2>¿Cuándo suele generarse el impuesto?</h2>
 <p>${esc(t.note)} En este resumen, la compra de Bitcoin no se considera una transmisión; antes de pagar, intercambiar, donar o prestar monedas, compruebe las normas locales.</p>
 <h2>Países vecinos</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(relFile, `es/bitcoin-impuestos/${slugEs(n.id)}/`))}">Impuestos sobre Bitcoin ${esc(inEs(n.id))}</a></li>`).join('')}</ul>

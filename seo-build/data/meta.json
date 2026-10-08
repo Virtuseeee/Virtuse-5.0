@@ -395,14 +395,13 @@
       "gainTax": "19 % pauschale Kapitalertragsteuer",
       "exemption": "Keine Haltedauer-Befreiung",
       "filing": "Jährliche PIT-38",
-      "note": "Krypto-zu-Krypto-Tauschgeschäfte sind steuerpflichtig – berechnen Sie den PLN-Gewinn oder -Verlust jeder Veräußerung."
+      "note": "Krypto-zu-Krypto-Tausch ist steuerfrei – besteuert werden nur Verkäufe gegen Geld, Waren oder Dienstleistungen. Berechnen Sie den PLN-Gewinn jedes Verkaufs."
     },
     "at": {
       "gainTax": "27,5 % KESt (Kapitalertragsteuer)",
-      "exemption": "Gewinne nach 1-jähriger Haltedauer steuerfrei (Privatanleger)",
-      "filing": "Jährliche Steuererklärung",
-      "note": "Staking- und Lending-Erträge werden bei Zufluss besteuert, nicht beim späteren Verkauf.",
-      "review": "REVIEW: Confirm current KESt treatment of the 1-year private-investor holding period for crypto (source string from Tax module, 2026-Q3)."
+      "exemption": "Nach 1 Jahr steuerfrei nur für Altvermögen (gekauft vor März 2021); spätere Käufe ohne Befreiung",
+      "filing": "Steuererklärung für Gewinne über ausländische Börsen; österreichische Anbieter behalten die KESt ein",
+      "note": "Krypto-zu-Krypto-Tausch ist steuerneutral. Lending und Mining werden bei Zufluss besteuert, Staking und Airdrops erst beim Verkauf (Anschaffungskosten null)."
     },
     "de": {
       "gainTax": "Bis zu 45 % Einkommensteuer (progressiv)",
@@ -417,23 +416,22 @@
       "note": "Dokumentierte Anschaffungskosten sind abzugsfähig – bewahren Sie jede Rechnung auf."
     },
     "si": {
-      "gainTax": "Progressiv, bis zu etwa 50 % auf Veräußerungsgewinne",
-      "exemption": "Keine allgemeine Haltedauer-Befreiung",
-      "filing": "Jährliche Einkommensteuererklärung",
-      "note": "Kryptogewinne werden als Einkommen behandelt; prüfen Sie die aktuellen Vorgaben mit einem lokalen Berater.",
-      "review": "REVIEW: Slovenian rate band (~50 %) is sourced from the Tax module as an approximate ceiling, not a published tariff table."
+      "gainTax": "Keine Steuer auf private Veräußerungsgewinne (gewerblicher Handel ist steuerpflichtig)",
+      "exemption": "Private Gewinne sind steuerfrei; eine geplante 25-%-Steuer wurde 2025 zurückgezogen",
+      "filing": "Keine für private Gewinne; gewerbliche und Mining-Einkünfte in der Jahreserklärung",
+      "note": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten."
     },
     "hr": {
-      "gainTax": "12 % auf Gewinne aus digitalen Vermögenswerten (2025; 2024: 10 %)",
-      "exemption": "Keine Haltedauer-Befreiung",
-      "filing": "Jährliche Steuererklärung",
-      "note": "Die Regelung für digitale Vermögenswerte ist neu (seit 2024) – ihre Auslegung in der Praxis entwickelt sich noch."
+      "gainTax": "12 % auf Krypto-Gewinne (seit 2024)",
+      "exemption": "Nach 2 Jahren Haltedauer steuerfrei",
+      "filing": "Formular JOPPD bis Ende Februar (nicht die Jahreserklärung)",
+      "note": "JOPPD auch für steuerfreie Verkäufe abgeben. Verluste nur im selben Jahr verrechenbar."
     },
     "ro": {
-      "gainTax": "10 % Einkommensteuer auf Krypto-Gewinne",
+      "gainTax": "16 % Einkommensteuer auf Krypto-Gewinne (bis 2025: 10 %)",
       "exemption": "Keine Haltedauer-Befreiung",
       "filing": "Jährliche Erklärung (Einkünfte aus sonstigen Quellen)",
-      "note": "Mit 10 % gehört Rumänien zu den EU-Ländern mit den niedrigsten Pauschalsätzen – ziehen Sie Ihre Anschaffungskosten ab."
+      "note": "Der Satz stieg für Gewinne ab 2026 von 10 % auf 16 %. Gewinne unter 200 Lei je Transaktion sind bis 600 Lei im Jahr steuerfrei."
     },
     "bg": {
       "gainTax": "10 % Pauschalsteuer auf Gewinne",
@@ -443,19 +441,19 @@
     },
     "nl": {
       "gainTax": "Box-3-Vermögenssteuer auf fiktive Rendite (etwa 36 % auf den angenommenen Ertrag)",
-      "exemption": "Freibetrag (etwa 57.000 € je Person, 2025)",
+      "exemption": "Freibetrag (59.357 € je Person, 2026)",
       "filing": "Jährliche Box-3-Erklärung",
       "note": "Keine klassische Kapitalertragsteuer – besteuert wird die angenommene Rendite des Bestands. Box 3 wird reformiert – prüfen Sie die Regeln des laufenden Jahres.",
       "review": "REVIEW: Box 3 deemed-return percentage and 2025 allowance are copied from the Tax module; both are under legislative reform."
     },
     "fr": {
-      "gainTax": "30 % Pauschalsteuer (PFU: 12,8 % Einkommensteuer + 17,2 % Sozialabgaben)",
+      "gainTax": "31,4 % Pauschalsteuer (PFU: 12,8 % Einkommensteuer + 18,6 % Sozialabgaben, 2026)",
       "exemption": "Keine Haltedauer-Befreiung; Verkäufe bis insgesamt 305 € pro Jahr sind steuerfrei",
       "filing": "Jährliche Erklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis",
       "note": "Krypto-zu-Krypto-Tausch ist steuerfrei: besteuert werden nur Verkäufe gegen Euro, Waren oder Dienstleistungen."
     },
     "es": {
-      "gainTax": "19–28 % progressive Steuer auf Kapitalerträge",
+      "gainTax": "19–30 % progressive Steuer auf Kapitalerträge",
       "exemption": "Keine Haltedauer-Befreiung",
       "filing": "Jährliche IRPF-Erklärung; Modelo 721 für im Ausland gehaltene Kryptowerte über 50.000 €",
       "note": "Krypto-zu-Krypto-Tausch ist ein steuerpflichtiger Vorgang – für gleiche Coins gilt FIFO."
@@ -529,13 +527,13 @@
       "gainTax": "19 % jednotná daň z kapitálových výnosov",
       "exemption": "Bez oslobodenia podľa doby držby",
       "filing": "Ročné priznanie PIT-38",
-      "note": "Výmeny krypto za krypto sú zdaniteľné – pri každom prevode vypočítajte zisk alebo stratu v PLN."
+      "note": "Výmeny krypto za krypto sa nezdaňujú – zdaňuje sa len predaj za peniaze, tovar alebo služby. Pri každom predaji vypočítajte zisk v PLN."
     },
     "at": {
       "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
-      "exemption": "Zisky po 1 roku držby bez dane (súkromní investori)",
-      "filing": "Ročné daňové priznanie",
-      "note": "Odmeny zo stakingu a požičiavania sa zdaňujú pri prijatí, nie pri predaji."
+      "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia",
+      "filing": "Priznanie pre zisky cez zahraničné burzy; rakúski poskytovatelia daň zrážajú",
+      "note": "Výmeny krypto za krypto sú daňovo neutrálne. Požičiavanie a ťažba sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou cenou)."
     },
     "de": {
       "gainTax": "Až 45 % daň z príjmov (progresívna)",
@@ -550,22 +548,22 @@
       "note": "Preukázateľné obstarávacie náklady sa dajú odpočítať – uchovávajte každú faktúru."
     },
     "si": {
-      "gainTax": "Progresívna, až približne 50 % zo zisku pri predaji",
-      "exemption": "Bez všeobecného oslobodenia podľa doby držby",
-      "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
-      "note": "Zisky z kryptomien sa považujú za príjem; aktuálny výklad si overte u miestneho poradcu."
+      "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
+      "exemption": "Súkromné zisky sú bez dane; navrhovaná 25 % daň bola v roku 2025 stiahnutá",
+      "filing": "Pri súkromných ziskoch žiadne; podnikateľské príjmy a ťažba v ročnom priznaní",
+      "note": "Ťažba sa zdaňuje ako iný príjem. Časté obchodovanie môže byť podnikaním."
     },
     "hr": {
-      "gainTax": "12 % zo ziskov z digitálnych aktív (2025; v roku 2024 10 %)",
-      "exemption": "Bez oslobodenia podľa doby držby",
-      "filing": "Ročné daňové priznanie",
-      "note": "Režim digitálnych aktív je nový (od roku 2024) – pravidlá sa v praxi ešte len vykladajú."
+      "gainTax": "12 % zo ziskov z kryptomien (od roku 2024)",
+      "exemption": "Bez dane po 2 rokoch držby",
+      "filing": "Formulár JOPPD do konca februára (nie ročné priznanie)",
+      "note": "JOPPD podajte aj pri oslobodených predajoch. Straty sa započítavajú len v rámci toho istého roka."
     },
     "ro": {
-      "gainTax": "10 % daň z príjmov zo ziskov z kryptomien",
+      "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do 2025: 10 %)",
       "exemption": "Bez oslobodenia podľa doby držby",
       "filing": "Ročné priznanie (príjem z iných zdrojov)",
-      "note": "S 10 % patrí Rumunsko medzi krajiny EÚ s najnižšou jednotnou sadzbou – odpočítajte si obstarávaciu cenu."
+      "note": "Sadzba pre zisky od roku 2026 stúpla z 10 % na 16 %. Zisky pod 200 lei za transakciu sú oslobodené do 600 lei ročne."
     },
     "bg": {
       "gainTax": "10 % jednotná daň zo ziskov",
@@ -575,18 +573,18 @@
     },
     "nl": {
       "gainTax": "Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)",
-      "exemption": "Nezdaniteľná časť (približne 57 000 € na osobu, 2025)",
+      "exemption": "Nezdaniteľná časť (59 357 € na osobu, 2026)",
       "filing": "Ročné priznanie Box 3",
       "note": "Klasická daň z kapitálových výnosov sa neuplatňuje – zdaňuje sa predpokladaný výnos z vášho majetku. Box 3 prechádza reformou – overte si pravidlá pre aktuálny rok."
     },
     "fr": {
-      "gainTax": "30 % paušálna daň (PFU: 12,8 % daň z príjmov + 17,2 % sociálne odvody)",
+      "gainTax": "31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026)",
       "exemption": "Bez oslobodenia podľa doby držby; predaje spolu do 305 € ročne sú oslobodené",
       "filing": "Ročné priznanie s formulárom 2086; zahraničné účty na formulári 3916-bis",
       "note": "Výmeny krypto za krypto sa nezdaňujú: zdaňuje sa len predaj za eurá, tovar alebo služby."
     },
     "es": {
-      "gainTax": "19–28 % progresívna daň z kapitálových príjmov",
+      "gainTax": "19–30 % progresívna daň z kapitálových príjmov",
       "exemption": "Bez oslobodenia podľa doby držby",
       "filing": "Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva v zahraničí nad 50 000 €",
       "note": "Výmeny krypto za krypto sú zdaniteľné prevody – pri rovnakých minciach použite FIFO."
@@ -659,13 +657,13 @@
       "gainTax": "19 % jednotná daň z kapitálových výnosů",
       "exemption": "Bez osvobození podle doby držení",
       "filing": "Roční přiznání PIT-38",
-      "note": "Výměny kryptoměny za kryptoměnu jsou zdanitelné – u každého převodu vypočítejte zisk nebo ztrátu v PLN."
+      "note": "Výměny kryptoměny za kryptoměnu se nedaní – daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk v PLN."
     },
     "at": {
       "gainTax": "27,5 % KESt (daň z kapitálových výnosů)",
-      "exemption": "Zisky po 1 roce držení bez daně (soukromí investoři)",
-      "filing": "Roční daňové přiznání",
-      "note": "Odměny ze stakingu a půjčování se daní při přijetí, ne při prodeji."
+      "exemption": "Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození",
+      "filing": "Přiznání pro zisky přes zahraniční burzy; rakouští poskytovatelé daň srážejí",
+      "note": "Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Půjčování a těžba se daní při přijetí, staking a airdropy až při prodeji (s nulovou cenou)."
     },
     "de": {
       "gainTax": "Až 45 % daň z příjmů (progresivní)",
@@ -680,22 +678,22 @@
       "note": "Doložené pořizovací náklady lze odečíst – uchovávejte každou fakturu."
     },
     "si": {
-      "gainTax": "Progresivní, až přibližně 50 % ze zisku při prodeji",
-      "exemption": "Bez obecného osvobození podle doby držení",
-      "filing": "Roční přiznání k dani z příjmů fyzických osob",
-      "note": "Zisky z kryptoměn se považují za příjem; aktuální výklad si ověřte u místního poradce."
+      "gainTax": "Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)",
+      "exemption": "Soukromé zisky jsou bez daně; navrhovaná 25% daň byla v roce 2025 stažena",
+      "filing": "U soukromých zisků žádné; podnikatelské příjmy a těžba v ročním přiznání",
+      "note": "Těžba se daní jako jiný příjem. Časté obchodování může být podnikáním."
     },
     "hr": {
-      "gainTax": "12 % ze zisků z digitálních aktiv (2025; v roce 2024 10 %)",
-      "exemption": "Bez osvobození podle doby držení",
-      "filing": "Roční daňové přiznání",
-      "note": "Režim digitálních aktiv je nový (od roku 2024) – pravidla se v praxi teprve vykládají."
+      "gainTax": "12 % ze zisků z kryptoměn (od roku 2024)",
+      "exemption": "Bez daně po 2 letech držení",
+      "filing": "Formulář JOPPD do konce února (ne roční přiznání)",
+      "note": "JOPPD podejte i u osvobozených prodejů. Ztráty se započítávají jen v rámci téhož roku."
     },
     "ro": {
-      "gainTax": "10 % daň z příjmů ze zisků z kryptoměn",
+      "gainTax": "16 % daň z příjmů ze zisků z kryptoměn (do 2025: 10 %)",
       "exemption": "Bez osvobození podle doby držení",
       "filing": "Roční přiznání (příjmy z jiných zdrojů)",
-      "note": "S 10 % patří Rumunsko mezi země EU s nejnižší jednotnou sazbou – odečtěte si pořizovací cenu."
+      "note": "Sazba pro zisky od roku 2026 vzrostla z 10 % na 16 %. Zisky pod 200 lei za transakci jsou osvobozené do 600 lei ročně."
     },
     "bg": {
       "gainTax": "10 % jednotná daň ze zisků",
@@ -705,18 +703,18 @@
     },
     "nl": {
       "gainTax": "Majetková daň Box 3 (přibližně 36 % z předpokládaného výnosu)",
-      "exemption": "Nezdanitelná část (přibližně 57 000 € na osobu, 2025)",
+      "exemption": "Nezdanitelná část (59 357 € na osobu, 2026)",
       "filing": "Roční přiznání Box 3",
       "note": "Klasická daň z kapitálových výnosů se neuplatňuje – daní se předpokládaný výnos z vašeho majetku. Box 3 prochází reformou – ověřte si pravidla pro aktuální rok."
     },
     "fr": {
-      "gainTax": "30 % paušální daň (PFU: 12,8 % daň z příjmů + 17,2 % sociální odvody)",
+      "gainTax": "31,4 % paušální daň (PFU: 12,8 % daň z příjmů + 18,6 % sociální odvody, 2026)",
       "exemption": "Bez osvobození podle doby držení; prodeje celkem do 305 € ročně jsou osvobozené",
       "filing": "Roční přiznání s formulářem 2086; zahraniční účty na formuláři 3916-bis",
       "note": "Výměny kryptoměny za kryptoměnu se nedaní: daní se jen prodej za eura, zboží nebo služby."
     },
     "es": {
-      "gainTax": "19–28 % progresivní daň z kapitálových příjmů",
+      "gainTax": "19–30 % progresivní daň z kapitálových příjmů",
       "exemption": "Bez osvobození podle doby držení",
       "filing": "Roční přiznání IRPF; Modelo 721 pro kryptoaktiva v zahraničí nad 50 000 €",
       "note": "Výměny kryptoměny za kryptoměnu jsou zdanitelné převody – u stejných mincí použijte FIFO."
@@ -801,13 +799,13 @@
       "gainTax": "19% podatku liniowego od zysków kapitałowych",
       "exemption": "Brak zwolnienia za okres posiadania",
       "filing": "Roczny PIT-38",
-      "note": "Wymiana krypto na krypto jest opodatkowana: dla każdego zbycia trzeba policzyć zysk lub stratę w PLN."
+      "note": "Wymiana krypto na krypto nie jest opodatkowana – podatek dotyczy tylko sprzedaży za pieniądze, towary lub usługi. Dla każdej sprzedaży trzeba policzyć zysk w PLN."
     },
     "at": {
       "gainTax": "27,5% KESt (podatek od zysków kapitałowych)",
-      "exemption": "Zyski zwolnione po roku posiadania (inwestorzy indywidualni)",
-      "filing": "Roczne zeznanie podatkowe",
-      "note": "Nagrody ze stakingu i pożyczania są opodatkowane w chwili otrzymania, a nie sprzedaży."
+      "exemption": "Zwolnienie po roku tylko dla kryptowalut kupionych przed marcem 2021; późniejsze zakupy bez zwolnienia",
+      "filing": "Zeznanie dla zysków z zagranicznych giełd; austriaccy dostawcy pobierają podatek",
+      "note": "Wymiana krypto na krypto jest neutralna podatkowo. Pożyczanie i kopanie są opodatkowane przy otrzymaniu, staking i airdropy dopiero przy sprzedaży (koszt zero)."
     },
     "de": {
       "gainTax": "Do 45% podatku dochodowego (progresywny)",
@@ -822,22 +820,22 @@
       "note": "Udokumentowane koszty nabycia można odliczyć: warto zachować każdą fakturę."
     },
     "si": {
-      "gainTax": "Progresywny, do ok. 50% od zysków ze zbycia",
-      "exemption": "Brak ogólnego zwolnienia za okres posiadania",
-      "filing": "Roczne zeznanie w podatku dochodowym od osób fizycznych",
-      "note": "Zyski z kryptowalut traktowane są jak dochód; aktualne zasady warto potwierdzić z lokalnym doradcą."
+      "gainTax": "Brak podatku od prywatnych zysków ze zbycia (handel w ramach działalności jest opodatkowany)",
+      "exemption": "Prywatne zyski są wolne od podatku; proponowany podatek 25% wycofano w 2025 r.",
+      "filing": "Brak dla prywatnych zysków; działalność i kopanie w zeznaniu rocznym",
+      "note": "Kopanie jest opodatkowane jako inny dochód. Częsty handel może zostać uznany za działalność."
     },
     "hr": {
-      "gainTax": "12% od zysków z aktywów cyfrowych (2025; 10% w 2024)",
-      "exemption": "Brak zwolnienia za okres posiadania",
-      "filing": "Roczne zeznanie podatkowe",
-      "note": "System dla aktywów cyfrowych jest nowy (od 2024 roku): przepisy są wciąż interpretowane w praktyce."
+      "gainTax": "12% od zysków z kryptowalut (od 2024 r.)",
+      "exemption": "Zwolnienie po 2 latach posiadania",
+      "filing": "Formularz JOPPD do końca lutego (nie zeznanie roczne)",
+      "note": "JOPPD składa się także przy zwolnionej sprzedaży. Straty rozlicza się tylko w tym samym roku."
     },
     "ro": {
-      "gainTax": "10% podatku dochodowego od zysków z kryptowalut",
+      "gainTax": "16% podatku dochodowego od zysków z kryptowalut (do 2025 r.: 10%)",
       "exemption": "Brak zwolnienia za okres posiadania",
       "filing": "Roczne zeznanie (dochody z innych źródeł)",
-      "note": "10% to jedna z najniższych stawek liniowych w UE: można odliczyć koszt nabycia."
+      "note": "Stawka dla zysków od 2026 r. wzrosła z 10% do 16%. Zyski poniżej 200 lei na transakcję są zwolnione do 600 lei rocznie."
     },
     "bg": {
       "gainTax": "10% podatku liniowego od zysków",
@@ -847,18 +845,18 @@
     },
     "nl": {
       "gainTax": "Podatek majątkowy Box 3 od domniemanego zwrotu (ok. 36% od fikcyjnego dochodu)",
-      "exemption": "Kwota wolna (ok. 57 000 € na osobę, 2025)",
+      "exemption": "Kwota wolna (59 357 € na osobę, 2026)",
       "filing": "Roczna deklaracja Box 3",
       "note": "Nie ma podatku od zysków kapitałowych jako takiego: opodatkowany jest domniemany zwrot z majątku. Box 3 jest w trakcie reformy, więc warto sprawdzić zasady na bieżący rok."
     },
     "fr": {
-      "gainTax": "30% podatku zryczałtowanego (PFU: 12,8% podatku dochodowego + 17,2% składek społecznych)",
+      "gainTax": "31,4% podatku zryczałtowanego (PFU: 12,8% podatku dochodowego + 18,6% składek społecznych, 2026)",
       "exemption": "Brak zwolnienia za okres posiadania; zbycia do łącznie 305 € rocznie są zwolnione",
       "filing": "Roczne zeznanie z formularzem 2086; konta zagraniczne na formularzu 3916-bis",
       "note": "Wymiana krypto na krypto nie jest opodatkowana: podatek dotyczy tylko sprzedaży za euro, towary lub usługi."
     },
     "es": {
-      "gainTax": "Progresywny podatek 19–28% od dochodów kapitałowych",
+      "gainTax": "Progresywny podatek 19–30% od dochodów kapitałowych",
       "exemption": "Brak zwolnienia za okres posiadania",
       "filing": "Roczne zeznanie IRPF; Modelo 721 dla kryptowalut za granicą powyżej 50 000 €",
       "note": "Wymiana krypto na krypto jest opodatkowanym zbyciem: dla identycznych monet stosuje się FIFO."
@@ -928,13 +926,13 @@
       "gainTax": "19% egykulcsos tőkenyereségadó",
       "exemption": "Nincs tartási idő utáni mentesség",
       "filing": "Éves PIT-38",
-      "note": "A kripto-kripto csere adóköteles: minden elidegenítésnél ki kell számolni a PLN-ben mért nyereséget vagy veszteséget."
+      "note": "A kripto-kripto csere nem adóköteles – csak a pénzért, áruért vagy szolgáltatásért történő eladás az. Minden eladásnál ki kell számolni a PLN-ben mért nyereséget."
     },
     "at": {
       "gainTax": "27,5% KESt (tőkenyereségadó)",
-      "exemption": "1 év tartás után adómentes nyereség (magánbefektetők)",
-      "filing": "Éves adóbevallás",
-      "note": "A staking- és kölcsönzési jutalmak a megszerzéskor adókötelesek, nem az eladáskor."
+      "exemption": "1 év után csak a 2021 márciusa előtt vett kripto adómentes; a későbbi vételekre nincs mentesség",
+      "filing": "Bevallás a külföldi tőzsdéken elért nyereségre; az osztrák szolgáltatók levonják az adót",
+      "note": "A kripto-kripto csere adósemleges. A kölcsönzés és a bányászat jóváíráskor adózik, a staking és az airdrop csak eladáskor (nulla bekerülési értékkel)."
     },
     "de": {
       "gainTax": "Legfeljebb 45% jövedelemadó (progresszív)",
@@ -949,22 +947,22 @@
       "note": "A dokumentált beszerzési költségek levonhatók: érdemes minden számlát megőrizni."
     },
     "si": {
-      "gainTax": "Progresszív, az elidegenítési nyereség után legfeljebb kb. 50%",
-      "exemption": "Nincs általános tartási idő utáni mentesség",
-      "filing": "Éves személyi jövedelemadó-bevallás",
-      "note": "A kriptovaluta-nyereség jövedelemnek számít; az aktuális szabályokat érdemes helyi tanácsadóval egyeztetni."
+      "gainTax": "A magánszemélyek elidegenítési nyeresége nem adózik (az üzletszerű kereskedés igen)",
+      "exemption": "A magánnyereség adómentes; a tervezett 25%-os adót 2025-ben visszavonták",
+      "filing": "Magánnyereségnél nincs; üzleti és bányászati jövedelem az éves bevallásban",
+      "note": "A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet."
     },
     "hr": {
-      "gainTax": "12% a digitáliseszköz-nyereségre (2025; 2024-ben 10%)",
-      "exemption": "Nincs tartási idő utáni mentesség",
-      "filing": "Éves adóbevallás",
-      "note": "A digitális eszközökre vonatkozó szabályozás új (2024 óta): a gyakorlati értelmezés még alakul."
+      "gainTax": "12% a kriptonyereségre (2024 óta)",
+      "exemption": "2 év tartás után adómentes",
+      "filing": "JOPPD nyomtatvány február végéig (nem az éves bevallás)",
+      "note": "JOPPD-t mentes eladásnál is be kell adni. A veszteség csak ugyanabban az évben számolható el."
     },
     "ro": {
-      "gainTax": "10% jövedelemadó a kriptonyereségre",
+      "gainTax": "16% jövedelemadó a kriptonyereségre (2025-ig 10%)",
       "exemption": "Nincs tartási idő utáni mentesség",
       "filing": "Éves bevallás (egyéb forrásból származó jövedelem)",
-      "note": "A 10% az EU egyik legalacsonyabb egykulcsos adója: a beszerzési ár levonható."
+      "note": "A 2026-tól elért nyereség adója 10%-ról 16%-ra nőtt. A tranzakciónként 200 lej alatti nyereség évi 600 lejig adómentes."
     },
     "bg": {
       "gainTax": "10% egykulcsos adó a nyereségre",
@@ -974,18 +972,18 @@
     },
     "nl": {
       "gainTax": "Box 3 vagyonadó a vélelmezett hozam után (a fiktív hozam kb. 36%-a)",
-      "exemption": "Adómentes keret (kb. 57 000 € személyenként, 2025)",
+      "exemption": "Adómentes keret (59 357 € személyenként, 2026)",
       "filing": "Éves Box 3 bevallás",
       "note": "Tőkenyereségadó mint olyan nincs: a vagyon vélelmezett hozama után kell adózni. A Box 3 reform alatt áll, érdemes ellenőrizni a tárgyévi szabályokat."
     },
     "fr": {
-      "gainTax": "30% egykulcsos adó (PFU: 12,8% jövedelemadó + 17,2% szociális hozzájárulás)",
+      "gainTax": "31,4% egykulcsos adó (PFU: 12,8% jövedelemadó + 18,6% szociális hozzájárulás, 2026)",
       "exemption": "Nincs tartási idő utáni mentesség; az évi összesen 305 €-ig terjedő eladások adómentesek",
       "filing": "Éves bevallás a 2086-os nyomtatványon; külföldi számlák a 3916-bis nyomtatványon",
       "note": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
     },
     "es": {
-      "gainTax": "19–28% progresszív adó a megtakarítási jövedelemre",
+      "gainTax": "19–30% progresszív adó a megtakarítási jövedelemre",
       "exemption": "Nincs tartási idő utáni mentesség",
       "filing": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldön tartott kriptóra",
       "note": "A kripto-kripto csere adóköteles elidegenítés: azonos érméknél FIFO szerint kell számolni."
@@ -1070,13 +1068,13 @@
       "gainTax": "19% єдиного податку на приріст капіталу",
       "exemption": "Без звільнення за строк володіння",
       "filing": "Щорічна декларація PIT-38",
-      "note": "Обмін криптовалюти на криптовалюту оподатковується: для кожного відчуження розрахуйте прибуток або збиток у PLN."
+      "note": "Обмін криптовалюти на криптовалюту не оподатковується — податок сплачується лише з продажу за гроші, товари чи послуги. Для кожного продажу розрахуйте прибуток у PLN."
     },
     "at": {
       "gainTax": "27,5% KESt (податок на приріст капіталу)",
-      "exemption": "Прибуток звільнений після 1 року володіння (приватні інвестори)",
-      "filing": "Щорічна податкова декларація",
-      "note": "Винагороди за стейкінг і кредитування оподатковуються при отриманні, а не при продажу."
+      "exemption": "Звільнення після 1 року лише для крипти, купленої до березня 2021 року; пізніші покупки без звільнення",
+      "filing": "Декларація для прибутку через іноземні біржі; австрійські провайдери утримують податок",
+      "note": "Обмін криптовалюти на криптовалюту податково нейтральний. Кредитування й майнінг оподатковуються при отриманні, стейкінг і ейрдропи — лише при продажу (з нульовою собівартістю)."
     },
     "de": {
       "gainTax": "До 45% податку на доходи (прогресивний)",
@@ -1091,22 +1089,22 @@
       "note": "Задокументовані витрати на придбання можна відрахувати: зберігайте кожен рахунок."
     },
     "si": {
-      "gainTax": "Прогресивний, до приблизно 50% з прибутку від відчуження",
-      "exemption": "Без загального звільнення за строк володіння",
-      "filing": "Щорічна декларація з податку на доходи фізичних осіб",
-      "note": "Прибуток від криптовалют вважається доходом; актуальні правила уточніть у місцевого консультанта."
+      "gainTax": "Приватний прибуток від продажу не оподатковується (підприємницька торгівля — так)",
+      "exemption": "Приватний прибуток звільнений; запропонований податок 25% відкликали у 2025 році",
+      "filing": "Для приватного прибутку немає; підприємницький дохід і майнінг — у річній декларації",
+      "note": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом."
     },
     "hr": {
-      "gainTax": "12% з прибутку від цифрових активів (2025; 10% у 2024 році)",
-      "exemption": "Без звільнення за строк володіння",
-      "filing": "Щорічна податкова декларація",
-      "note": "Режим для цифрових активів новий (з 2024 року): практика тлумачення ще формується."
+      "gainTax": "12% з криптоприбутку (з 2024 року)",
+      "exemption": "Звільнення після 2 років володіння",
+      "filing": "Форма JOPPD до кінця лютого (не річна декларація)",
+      "note": "JOPPD подають і для звільнених продажів. Збитки зараховуються лише в межах того самого року."
     },
     "ro": {
-      "gainTax": "10% податку на доходи з криптоприбутку",
+      "gainTax": "16% податку на доходи з криптоприбутку (до 2025 року — 10%)",
       "exemption": "Без звільнення за строк володіння",
       "filing": "Щорічна декларація (доходи з інших джерел)",
-      "note": "10% — одна з найнижчих фіксованих ставок у ЄС: собівартість можна відрахувати."
+      "note": "Для прибутку з 2026 року ставка зросла з 10% до 16%. Прибуток до 200 леїв за операцію звільнений у межах 600 леїв на рік."
     },
     "bg": {
       "gainTax": "10% фіксованого податку на прибуток",
@@ -1116,18 +1114,18 @@
     },
     "nl": {
       "gainTax": "Податок на майно Box 3 з умовного доходу (приблизно 36% від умовної дохідності)",
-      "exemption": "Неоподатковуваний мінімум (приблизно 57 000 € на особу, 2025)",
+      "exemption": "Неоподатковуваний мінімум (59 357 € на особу, 2026)",
       "filing": "Щорічна декларація Box 3",
       "note": "Податку на приріст капіталу як такого немає: оподатковується умовний дохід від ваших активів. Box 3 реформується, тож перевірте правила поточного року."
     },
     "fr": {
-      "gainTax": "30% фіксованого податку (PFU: 12,8% податку на доходи + 17,2% соціальних внесків)",
+      "gainTax": "31,4% фіксованого податку (PFU: 12,8% податку на доходи + 18,6% соціальних внесків, 2026)",
       "exemption": "Без звільнення за строк володіння; продажі загалом до 305 € на рік звільнені",
       "filing": "Щорічна декларація з формою 2086; закордонні рахунки на формі 3916-bis",
       "note": "Обмін криптовалюти на криптовалюту не оподатковується: податок сплачується лише з продажу за євро, товари чи послуги."
     },
     "es": {
-      "gainTax": "19–28% прогресивного податку на доходи від заощаджень",
+      "gainTax": "19–30% прогресивного податку на доходи від заощаджень",
       "exemption": "Без звільнення за строк володіння",
       "filing": "Щорічна декларація IRPF; Modelo 721 для криптовалют за кордоном понад 50 000 €",
       "note": "Обмін криптовалюти на криптовалюту є оподатковуваним відчуженням: для однакових монет застосовуйте FIFO."
@@ -1212,13 +1210,13 @@
       "gainTax": "Единый налог 19% на прирост капитала",
       "exemption": "Без освобождения по сроку владения",
       "filing": "Ежегодная декларация PIT-38",
-      "note": "Обмен криптовалюты на криптовалюту облагается налогом: для каждого отчуждения рассчитайте прибыль или убыток в PLN."
+      "note": "Обмен криптовалюты на криптовалюту не облагается налогом — налог платится только с продажи за деньги, товары или услуги. Для каждой продажи рассчитайте прибыль в PLN."
     },
     "at": {
       "gainTax": "KESt 27,5% (налог на прирост капитала)",
-      "exemption": "Прибыль освобождена после 1 года владения (частные инвесторы)",
-      "filing": "Ежегодная налоговая декларация",
-      "note": "Вознаграждения за стейкинг и кредитование облагаются налогом при получении, а не при продаже."
+      "exemption": "Освобождение через 1 год только для крипты, купленной до марта 2021 года; более поздние покупки без освобождения",
+      "filing": "Декларация для прибыли через иностранные биржи; австрийские провайдеры удерживают налог",
+      "note": "Обмен криптовалюты на криптовалюту налогово нейтрален. Кредитование и майнинг облагаются при получении, стейкинг и эйрдропы — только при продаже (с нулевой себестоимостью)."
     },
     "de": {
       "gainTax": "Подоходный налог до 45% (прогрессивная шкала)",
@@ -1233,22 +1231,22 @@
       "note": "Документально подтверждённые расходы на приобретение можно вычесть: сохраняйте каждый счёт."
     },
     "si": {
-      "gainTax": "Прогрессивный налог примерно до 50% с прибыли от отчуждения",
-      "exemption": "Без общего освобождения по сроку владения",
-      "filing": "Ежегодная декларация по налогу на доходы физических лиц",
-      "note": "Прибыль от криптовалют считается доходом; актуальные правила уточните у местного консультанта."
+      "gainTax": "Частная прибыль от продажи не облагается (предпринимательская торговля — да)",
+      "exemption": "Частная прибыль освобождена; предложенный налог 25% отозвали в 2025 году",
+      "filing": "Для частной прибыли нет; предпринимательский доход и майнинг — в годовой декларации",
+      "note": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством."
     },
     "hr": {
-      "gainTax": "Ставка 12% с прибыли от цифровых активов (2025; 10% в 2024 году)",
-      "exemption": "Без освобождения по сроку владения",
-      "filing": "Ежегодная налоговая декларация",
-      "note": "Режим для цифровых активов новый (с 2024 года): практика толкования ещё складывается."
+      "gainTax": "12% с криптоприбыли (с 2024 года)",
+      "exemption": "Освобождение после 2 лет владения",
+      "filing": "Форма JOPPD до конца февраля (не годовая декларация)",
+      "note": "JOPPD подают и для освобождённых продаж. Убытки зачитываются только в пределах того же года."
     },
     "ro": {
-      "gainTax": "Подоходный налог 10% с криптоприбыли",
+      "gainTax": "Подоходный налог 16% с криптоприбыли (до 2025 года — 10%)",
       "exemption": "Без освобождения по сроку владения",
       "filing": "Ежегодная декларация (доходы из других источников)",
-      "note": "Ставка 10% — одна из самых низких фиксированных ставок в ЕС: себестоимость можно вычесть."
+      "note": "Для прибыли с 2026 года ставка выросла с 10% до 16%. Прибыль до 200 леев за операцию освобождена в пределах 600 леев в год."
     },
     "bg": {
       "gainTax": "Фиксированный налог 10% на прибыль",
@@ -1258,18 +1256,18 @@
     },
     "nl": {
       "gainTax": "Налог на имущество Box 3 — примерно 36% от условной доходности",
-      "exemption": "Необлагаемый минимум (примерно 57 000 € на человека, 2025)",
+      "exemption": "Необлагаемый минимум (59 357 € на человека, 2026)",
       "filing": "Ежегодная декларация Box 3",
       "note": "Налога на прирост капитала как такового нет: облагается условный доход от ваших активов. Box 3 реформируется, поэтому проверьте правила текущего года."
     },
     "fr": {
-      "gainTax": "Фиксированный налог 30% (PFU: 12,8% подоходного налога + 17,2% социальных взносов)",
+      "gainTax": "Фиксированный налог 31,4% (PFU: 12,8% подоходного налога + 18,6% социальных взносов, 2026)",
       "exemption": "Без освобождения по сроку владения; продажи в сумме до 305 € в год освобождены",
       "filing": "Ежегодная декларация с формой 2086; зарубежные счета на форме 3916-bis",
       "note": "Обмен криптовалюты на криптовалюту не облагается налогом: налог платится только с продажи за евро, товары или услуги."
     },
     "es": {
-      "gainTax": "Прогрессивный налог 19–28% на доходы от сбережений",
+      "gainTax": "Прогрессивный налог 19–30% на доходы от сбережений",
       "exemption": "Без освобождения по сроку владения",
       "filing": "Ежегодная декларация IRPF; Modelo 721 для криптовалют за рубежом свыше 50 000 €",
       "note": "Обмен криптовалюты на криптовалюту является налогооблагаемым отчуждением: для одинаковых монет применяйте FIFO."
@@ -1354,13 +1352,13 @@
       "gainTax": "Impôt forfaitaire de 19 % sur les plus-values",
       "exemption": "Aucune exonération liée à la durée de détention",
       "filing": "Déclaration annuelle PIT-38",
-      "note": "Les échanges crypto contre crypto sont imposables : calculez la plus- ou moins-value en PLN de chaque cession."
+      "note": "Les échanges crypto contre crypto ne sont pas imposés : seules les ventes contre de l'argent, des biens ou des services le sont. Calculez la plus-value en PLN de chaque vente."
     },
     "at": {
       "gainTax": "KESt de 27,5 % (impôt sur les plus-values)",
-      "exemption": "Plus-values exonérées après 1 an de détention (investisseurs particuliers)",
-      "filing": "Déclaration fiscale annuelle",
-      "note": "Les récompenses de staking et de prêt sont imposées à leur réception, pas à la vente."
+      "exemption": "Exonération après 1 an uniquement pour les cryptos achetées avant mars 2021 ; aucune pour les achats ultérieurs",
+      "filing": "Déclaration pour les gains via des plateformes étrangères ; les prestataires autrichiens retiennent l'impôt",
+      "note": "Les échanges crypto contre crypto sont neutres. Le prêt et le minage sont imposés à la réception, le staking et les airdrops à la vente (coût nul)."
     },
     "de": {
       "gainTax": "Impôt sur le revenu jusqu'à 45 % (progressif)",
@@ -1375,22 +1373,22 @@
       "note": "Les coûts d'acquisition documentés sont déductibles : conservez chaque facture."
     },
     "si": {
-      "gainTax": "Impôt progressif jusqu'à environ 50 % sur les plus-values de cession",
-      "exemption": "Aucune exonération générale liée à la durée de détention",
-      "filing": "Déclaration annuelle d'impôt sur le revenu",
-      "note": "Les gains en cryptomonnaies sont traités comme des revenus ; vérifiez les règles en vigueur auprès d'un conseiller local."
+      "gainTax": "Pas d'impôt sur les plus-values des particuliers (le trading professionnel est imposé)",
+      "exemption": "Les gains privés ne sont pas imposés ; un impôt de 25 % proposé a été retiré en 2025",
+      "filing": "Aucune pour les gains privés ; revenus professionnels et minage dans la déclaration annuelle",
+      "note": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle."
     },
     "hr": {
-      "gainTax": "Taux de 12 % sur les gains d'actifs numériques (2025 ; 10 % en 2024)",
-      "exemption": "Aucune exonération liée à la durée de détention",
-      "filing": "Déclaration fiscale annuelle",
-      "note": "Le régime des actifs numériques est récent (depuis 2024) : son interprétation pratique est encore en cours."
+      "gainTax": "12 % sur les gains crypto (depuis 2024)",
+      "exemption": "Exonération après 2 ans de détention",
+      "filing": "Formulaire JOPPD avant fin février (pas la déclaration annuelle)",
+      "note": "Déposez le JOPPD même pour les ventes exonérées. Les pertes ne s'imputent que sur la même année."
     },
     "ro": {
-      "gainTax": "Impôt sur le revenu de 10 % appliqué aux gains crypto",
+      "gainTax": "Impôt sur le revenu de 16 % appliqué aux gains crypto (10 % jusqu'en 2025)",
       "exemption": "Aucune exonération liée à la durée de détention",
       "filing": "Déclaration annuelle (revenus d'autres sources)",
-      "note": "Avec 10 %, la Roumanie a l'un des taux forfaitaires les plus bas de l'UE : déduisez votre prix de revient."
+      "note": "Le taux est passé de 10 % à 16 % pour les gains à partir de 2026. Les gains inférieurs à 200 lei par opération sont exonérés jusqu'à 600 lei par an."
     },
     "bg": {
       "gainTax": "Impôt forfaitaire de 10 % sur les gains",
@@ -1400,18 +1398,18 @@
     },
     "nl": {
       "gainTax": "Impôt sur la fortune (Box 3) d'environ 36 % sur un rendement présumé",
-      "exemption": "Abattement (environ 57 000 € par personne, 2025)",
+      "exemption": "Abattement (59 357 € par personne, 2026)",
       "filing": "Déclaration annuelle Box 3",
       "note": "Pas d'impôt sur les plus-values à proprement parler : vous êtes imposé sur le rendement présumé de vos avoirs. Le régime Box 3 est en cours de réforme : vérifiez les règles de l'année en cours."
     },
     "fr": {
-      "gainTax": "Prélèvement forfaitaire unique de 30 % (12,8 % d'impôt sur le revenu + 17,2 % de prélèvements sociaux)",
+      "gainTax": "Prélèvement forfaitaire unique de 31,4 % (12,8 % d'impôt sur le revenu + 18,6 % de prélèvements sociaux, 2026)",
       "exemption": "Aucune exonération liée à la durée de détention ; exonération si le total annuel des cessions ne dépasse pas 305 €",
       "filing": "Déclaration annuelle avec le formulaire 2086 ; comptes à l'étranger sur le formulaire 3916-bis",
       "note": "Les échanges crypto contre crypto ne sont pas imposés : seules les ventes contre des euros, des biens ou des services le sont."
     },
     "es": {
-      "gainTax": "Impôt progressif de 19 à 28 % sur les revenus de l'épargne",
+      "gainTax": "Impôt progressif de 19 à 30 % sur les revenus de l'épargne",
       "exemption": "Aucune exonération liée à la durée de détention",
       "filing": "Déclaration annuelle IRPF ; Modelo 721 pour les cryptoactifs détenus à l'étranger au-delà de 50 000 €",
       "note": "Les échanges crypto contre crypto sont des cessions imposables : appliquez la méthode FIFO aux cryptoactifs identiques."
@@ -1485,13 +1483,13 @@
       "gainTax": "Impuesto fijo del 19 % sobre las ganancias patrimoniales",
       "exemption": "Sin exención por periodo de tenencia",
       "filing": "PIT-38 anual",
-      "note": "Los intercambios cripto por cripto tributan: calcule la ganancia o pérdida en PLN de cada transmisión."
+      "note": "Los intercambios cripto por cripto no tributan: solo tributan las ventas a cambio de dinero, bienes o servicios. Calcule la ganancia en PLN de cada venta."
     },
     "at": {
       "gainTax": "KESt del 27,5 % (impuesto sobre las ganancias patrimoniales)",
-      "exemption": "Ganancias exentas tras 1 año de tenencia (inversores particulares)",
-      "filing": "Declaración fiscal anual",
-      "note": "Las recompensas de staking y de préstamo tributan al recibirlas, no al venderlas."
+      "exemption": "Exención tras 1 año solo para cripto comprada antes de marzo de 2021; las compras posteriores no tienen exención",
+      "filing": "Declaración para ganancias en exchanges extranjeros; los proveedores austriacos retienen el impuesto",
+      "note": "Los intercambios cripto por cripto son neutros. El préstamo y la minería tributan al recibirse; el staking y los airdrops, al vender (coste cero)."
     },
     "de": {
       "gainTax": "Impuesto sobre la renta de hasta el 45 % (progresivo)",
@@ -1506,22 +1504,22 @@
       "note": "Los costes de adquisición documentados son deducibles: guarde todas las facturas."
     },
     "si": {
-      "gainTax": "Impuesto progresivo de hasta aproximadamente el 50 % sobre las ganancias por transmisión",
-      "exemption": "Sin exención general por periodo de tenencia",
-      "filing": "Declaración anual del impuesto sobre la renta de las personas físicas",
-      "note": "Las ganancias en criptomonedas se tratan como rentas; confirme las normas vigentes con un asesor local."
+      "gainTax": "Las ganancias privadas por venta no tributan (el trading empresarial sí)",
+      "exemption": "Las ganancias privadas están exentas; un impuesto del 25 % propuesto se retiró en 2025",
+      "filing": "Ninguna para ganancias privadas; rentas empresariales y minería en la declaración anual",
+      "note": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial."
     },
     "hr": {
-      "gainTax": "Tipo del 12 % sobre las ganancias de activos digitales (2025; 10 % en 2024)",
-      "exemption": "Sin exención por periodo de tenencia",
-      "filing": "Declaración fiscal anual",
-      "note": "El régimen de activos digitales es nuevo (desde 2024): su aplicación práctica aún se está interpretando."
+      "gainTax": "12 % sobre las ganancias cripto (desde 2024)",
+      "exemption": "Exención tras 2 años de tenencia",
+      "filing": "Formulario JOPPD antes de fin de febrero (no la declaración anual)",
+      "note": "Presente el JOPPD también en ventas exentas. Las pérdidas solo se compensan en el mismo año."
     },
     "ro": {
-      "gainTax": "Impuesto sobre la renta del 10 % para las ganancias cripto",
+      "gainTax": "Impuesto sobre la renta del 16 % para las ganancias cripto (10 % hasta 2025)",
       "exemption": "Sin exención por periodo de tenencia",
       "filing": "Declaración anual (rentas de otras fuentes)",
-      "note": "Con un 10 %, Rumanía tiene uno de los tipos fijos más bajos de la UE: deduzca su coste de adquisición."
+      "note": "El tipo subió del 10 % al 16 % para las ganancias desde 2026. Las ganancias inferiores a 200 lei por operación están exentas hasta 600 lei al año."
     },
     "bg": {
       "gainTax": "Impuesto fijo del 10 % sobre las ganancias",
@@ -1531,18 +1529,18 @@
     },
     "nl": {
       "gainTax": "Impuesto patrimonial del Box 3, aproximadamente el 36 % sobre un rendimiento presunto",
-      "exemption": "Mínimo exento (aproximadamente 57.000 € por persona, 2025)",
+      "exemption": "Mínimo exento (59.357 € por persona, 2026)",
       "filing": "Declaración anual del Box 3",
       "note": "No hay un impuesto sobre las ganancias patrimoniales como tal: tributa por el rendimiento presunto de su patrimonio. El Box 3 está en reforma: compruebe las normas del año en curso."
     },
     "fr": {
-      "gainTax": "Impuesto fijo del 30 % (PFU: 12,8 % de impuesto sobre la renta + 17,2 % de cargas sociales)",
+      "gainTax": "Impuesto fijo del 31,4 % (PFU: 12,8 % de impuesto sobre la renta + 18,6 % de cargas sociales, 2026)",
       "exemption": "Sin exención por periodo de tenencia; las transmisiones de hasta 305 € al año en total están exentas",
       "filing": "Declaración anual con el formulario 2086; cuentas en el extranjero en el formulario 3916-bis",
       "note": "Los intercambios cripto por cripto no tributan: solo tributan las ventas a cambio de euros, bienes o servicios."
     },
     "es": {
-      "gainTax": "Impuesto progresivo del 19 al 28 % sobre la base del ahorro",
+      "gainTax": "Impuesto progresivo del 19 al 30 % sobre la base del ahorro",
       "exemption": "Sin exención por periodo de tenencia",
       "filing": "Declaración anual del IRPF; Modelo 721 para criptomonedas en el extranjero por encima de 50.000 €",
       "note": "Los intercambios cripto por cripto son transmisiones sujetas a impuesto: aplique FIFO a monedas idénticas."

@@ -40,7 +40,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - Gain tax: 19% flat capital gains tax
 - Exemption: No holding-period exemption
 - Filing: Annual PIT-38
-- Note: Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss.
+- Note: Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.
 - EN: https://virtuse.com/bitcoin-tax/poland/
 - DE: https://virtuse.com/de/bitcoin-steuern/polen/
 - SK: https://virtuse.com/sk/bitcoin-dane/polsko/
@@ -54,9 +54,9 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 
 ### 🇦🇹 Austria (`at`)
 - Gain tax: 27.5% KESt (capital gains tax)
-- Exemption: Gains tax-free after a 1-year holding period (private investors)
-- Filing: Annual tax return
-- Note: Staking and lending rewards are taxed when received, not when sold.
+- Exemption: Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption
+- Filing: Annual return for gains via foreign exchanges; Austrian providers withhold the tax
+- Note: Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.
 - EN: https://virtuse.com/bitcoin-tax/austria/
 - DE: https://virtuse.com/de/bitcoin-steuern/oesterreich/
 - SK: https://virtuse.com/sk/bitcoin-dane/rakusko/
@@ -101,10 +101,10 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/hungria/
 
 ### 🇸🇮 Slovenia (`si`)
-- Gain tax: Progressive, up to about 50% on disposal gains
-- Exemption: No general holding-period exemption
-- Filing: Annual personal income tax return
-- Note: Cryptocurrency gains are treated as income; check current guidance with a local advisor.
+- Gain tax: No tax on private disposal gains (business trading is taxed)
+- Exemption: Private gains are not taxed; a proposed 25% tax was withdrawn in 2025
+- Filing: None for private gains; business and mining income in the annual return
+- Note: Mining is taxed as other income. Frequent trading can count as a business activity.
 - EN: https://virtuse.com/bitcoin-tax/slovenia/
 - DE: https://virtuse.com/de/bitcoin-steuern/slowenien/
 - SK: https://virtuse.com/sk/bitcoin-dane/slovinsko/
@@ -117,10 +117,10 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/eslovenia/
 
 ### 🇭🇷 Croatia (`hr`)
-- Gain tax: 12% on digital-asset gains (2025; 10% in 2024)
-- Exemption: No holding-period exemption
-- Filing: Annual tax return
-- Note: The digital-asset regime is new (since 2024) – rules are still being interpreted in practice.
+- Gain tax: 12% on crypto gains (since 2024)
+- Exemption: Tax-free after a 2-year holding period
+- Filing: JOPPD form by the end of February (not the annual return)
+- Note: File JOPPD even for exempt sales. Losses offset gains only within the same year.
 - EN: https://virtuse.com/bitcoin-tax/croatia/
 - DE: https://virtuse.com/de/bitcoin-steuern/kroatien/
 - SK: https://virtuse.com/sk/bitcoin-dane/chorvatsko/
@@ -133,10 +133,10 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/croacia/
 
 ### 🇷🇴 Romania (`ro`)
-- Gain tax: 10% income tax on crypto gains
+- Gain tax: 16% income tax on crypto gains (10% until 2025)
 - Exemption: No holding-period exemption
 - Filing: Annual return (income from other sources)
-- Note: At 10%, Romania has one of the lowest flat rates in the EU – deduct your cost basis.
+- Note: The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year.
 - EN: https://virtuse.com/bitcoin-tax/romania/
 - DE: https://virtuse.com/de/bitcoin-steuern/rumaenien/
 - SK: https://virtuse.com/sk/bitcoin-dane/rumunsko/
@@ -166,7 +166,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 
 ### 🇳🇱 Netherlands (`nl`)
 - Gain tax: Box 3 wealth tax on a deemed return (about 36% of the assumed yield)
-- Exemption: Tax-free allowance (about €57,000 per person, 2025)
+- Exemption: Tax-free allowance (€59,357 per person, 2026)
 - Filing: Annual Box 3 declaration
 - Note: No capital gains tax as such – you are taxed on an assumed return on your holdings. Box 3 is being reformed – check the current year’s rules.
 - EN: https://virtuse.com/bitcoin-tax/netherlands/
@@ -181,7 +181,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/paises-bajos/
 
 ### 🇫🇷 France (`fr`)
-- Gain tax: 30% flat tax (PFU: 12.8% income tax + 17.2% social charges)
+- Gain tax: 31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026)
 - Exemption: No holding-period exemption; total disposals up to €305 a year are exempt
 - Filing: Annual return with form 2086; foreign accounts on form 3916-bis
 - Note: Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.
@@ -197,7 +197,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/francia/
 
 ### 🇪🇸 Spain (`es`)
-- Gain tax: 19–28% progressive tax on savings income
+- Gain tax: 19–30% progressive tax on savings income
 - Exemption: No holding-period exemption
 - Filing: Annual IRPF return; Modelo 721 for crypto held abroad over €50,000
 - Note: Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.
