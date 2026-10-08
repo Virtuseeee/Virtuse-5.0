@@ -53,11 +53,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Hub Bitcoin: 22 partnerów, 13 krajów UE | Virtuse">
 <meta name="twitter:description" content="Kupuj, kop, pożyczaj i zabezpieczaj Bitcoin przez 22 sprawdzonych partnerów. 13 krajów UE, pożyczki od 5% rocznie. Virtuse nie trzyma kluczy.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous" defer></script>
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
 :root {
   /* Paired with the <meta name="color-scheme"> tag in <head> — stops the
@@ -260,7 +262,11 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+  opacity: 0;
+  transition: opacity .8s ease;
 }
+#cube.is-ready { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { #cube { transition: none; } }
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -3385,7 +3391,9 @@ a.nav-logo, .nav-logo {
 // ===== SCROLL-TRIGGERED REVEALS (anime.js) =====
 // Calm, precise fade+rise per section — the "one CTA language, no glow" brief
 // means the tween itself should read as quiet, not bouncy.
-(function() {
+// anime.js loads with defer (it was a render-blocking script in <head>), so the
+// reveals start at DOMContentLoaded, after deferred scripts have run.
+function initReveals() {
   const hasAnime = typeof anime !== 'undefined' && anime.animate;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const animate = hasAnime ? anime.animate : null;
@@ -3439,7 +3447,9 @@ a.nav-logo, .nav-logo {
   }, { threshold: 0.15 });
 
   cardGroups.forEach((cards, section) => cardObserver.observe(section));
-})();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initReveals);
+else initReveals();
 
 // Quiet rail: "As seen in" / "Good company" logos are grayscale-in, color-on-hover
 // via CSS alone (see .seen-logo/.co-logo) — no perpetual wave loop anymore.
@@ -3535,13 +3545,22 @@ a.nav-logo, .nav-logo {
 }
 </script>
 <script type="module">
-import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+// Three.js (255 KB) and this scene setup took most of a phone's CPU while the page was
+// still loading (Lighthouse mobile: LCP 5.6 s, TBT 530 ms). So the cube is fetched and
+// built only after the load event, fades in, and stops rendering while off screen.
+function startCube() {
+  Promise.all([
+    import('three'),
+    import('three/addons/geometries/RoundedBoxGeometry.js'),
+    import('three/addons/environments/RoomEnvironment.js')
+  ]).then(([THREE, geo, env]) => cube(THREE, geo.RoundedBoxGeometry, env.RoomEnvironment)).catch(() => {});
+}
+if (document.readyState === 'complete') startCube();
+else window.addEventListener('load', startCube, { once: true });
 
-(function () {
+function cube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   const host = document.getElementById('cube');
-  if (!host || typeof THREE === 'undefined') return;
+  if (!host || !THREE) return;
 
   const CUBIE_SIZE = 0.84;
   const SPACING = 1.0;
@@ -3651,7 +3670,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   let twisting = false;
 
   function twistLayer() {
-    if (twisting || reduced) return;
+    if (twisting || reduced || !visible) return;
     const axes = ['x', 'y', 'z'];
     const axis = axes[Math.floor(Math.random() * 3)];
     const layer = Math.random() < 0.5 ? -1 : 1;
@@ -3698,7 +3717,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     setInterval(twistLayer, 2300);
   }
 
+  // Render only while the cube is on screen (requestAnimationFrame already stops in
+  // hidden tabs); the IntersectionObserver restarts the loop when it scrolls back in.
+  let visible = true;
+  let running = false;
   function render() {
+    if (!visible) { running = false; return; }
     if (!reduced) {
       root.rotation.y += 0.0026;
       root.rotation.x += 0.0006;
@@ -3706,8 +3730,19 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     renderer.render(scene, camera);
     requestAnimationFrame(render);
   }
-  requestAnimationFrame(render);
-})();
+  function play() {
+    if (!running) { running = true; requestAnimationFrame(render); }
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      if (visible) play();
+    }).observe(host);
+  }
+  renderer.render(scene, camera);
+  host.classList.add('is-ready');
+  play();
+}
 </script>
 <script src="../concierge-launcher.js?v=20261007" data-reveal="after-hero" defer></script>
 </body>

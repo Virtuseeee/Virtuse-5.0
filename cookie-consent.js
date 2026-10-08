@@ -291,6 +291,28 @@
     (p || host).appendChild(b);
   }
 
+  // The banner is set in Inter. Shown before the web font arrives, it grows when the font
+  // swaps in, and because it is anchored to the bottom its top edge jumps (Lighthouse:
+  // layout shift 0.14-0.16 on phones, cause "Web font loaded"). So wait for the Inter
+  // faces it uses (at most 3 s; pages without Inter resolve at once).
+  function whenFontsReady(cb) {
+    var done = false;
+    function go() { if (!done) { done = true; cb(); } }
+    setTimeout(go, 3000);
+    try {
+      if (document.fonts && document.fonts.load) {
+        var text = [S.title, S.text, S.policy, S.reject, S.settings, S.accept].join(' ');
+        Promise.all([
+          document.fonts.load('400 14px Inter', text),
+          document.fonts.load('600 14px Inter', text),
+          document.fonts.load('700 16px Inter', S.title)
+        ]).then(go, go);
+        return;
+      }
+    } catch (e) {}
+    go();
+  }
+
   function init() {
     document.addEventListener('click', function (e) {
       var t = e.target.closest ? e.target.closest('[data-cookie-settings]') : null;
@@ -300,7 +322,7 @@
     });
     addFooterLink();
     if (document.querySelector('[data-cookie-settings]')) injectCss();
-    if (!read()) open(false);
+    if (!read()) whenFontsReady(function () { if (!read() && !box) open(false); });
   }
 
   window.VirtuseConsent = { open: function () { open(true); }, get: read };
