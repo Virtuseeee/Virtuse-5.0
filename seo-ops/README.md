@@ -110,6 +110,17 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
   to the blog home (WPML); where WordPress actually renders them, the canonical is
   right.
 
+## Bing Webmaster Tools and IndexNow (2026-10-08)
+
+- **IndexNow** tells Bing (and Yandex, Seznam, Naver, Yep) which pages changed, so
+  they recrawl them within minutes. Key = the file `<32 hex>.txt` in the site root
+  (content = the key; public by design, the engines fetch it to check the sender).
+  `indexnow.py --range FROM TO` sends the html pages added/changed in a git range
+  that are in sitemap.xml, plus deleted pages; `--sitemap` sends every sitemap URL;
+  `--urls …`; `--dry-run`. It refuses to send while the key file is not live.
+  `deploy_site.sh` runs `--range` after DEPLOY OK. Story uploads through
+  `stories-build/upload.sftp` do not ping (run `--range` by hand afterwards).
+
 ## Other
 
 - `wp-posts-inventory.csv`: all 1511 WordPress posts (en 870, sk 631, ru 10) with

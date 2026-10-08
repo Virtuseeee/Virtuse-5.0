@@ -21,6 +21,8 @@
 # The password is typed once (an SSH control connection is reused for the
 # upload, the retry and the deletions). The Worker is deployed separately:
 # bash deploy_worker.sh (see DEPLOY.md).
+# After DEPLOY OK it pings IndexNow (Bing & co.) with the indexable pages of the
+# range (seo-ops/indexnow.py); a failed ping never changes the deploy result.
 set -uo pipefail
 cd "$(dirname "$0")"
 SITE="Kimi_Agent_Virtuse%20MiCA%20Partners"
@@ -164,3 +166,9 @@ done
 [ -s "$TMP/stgbad.txt" ] && fail "staging still differs after 8 min (production is fine):$(sed 's/^/ /' "$TMP/stgbad.txt" | head -20 | tr '\n' ' ')"
 echo
 echo "== DEPLOY OK: ${FROM:0:7}..${TO:0:7}, $N files on main, staging and production (md5), $ND deleted"
+
+# ---- IndexNow (Bing, Yandex, Seznam, …): changed pages get recrawled sooner ----
+if [ -f seo-ops/indexnow.py ]; then
+  echo "== IndexNow"
+  python3 seo-ops/indexnow.py --range "$FROM" "$TO" | sed 's/^/   /' || echo "   (IndexNow ping failed; the deploy itself is complete)"
+fi

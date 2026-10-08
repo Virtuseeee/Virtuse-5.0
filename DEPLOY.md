@@ -29,6 +29,9 @@ Run from the repo root on a Mac with an SFTP login. Order:
 5. md5 of every uploaded file on production. Mismatches are uploaded once
    more and re-checked. Deleted files must no longer return 200.
 6. md5 on staging.
+7. After `DEPLOY OK`: IndexNow ping with the range's indexable pages
+   (`seo-ops/indexnow.py --range`, see `seo-ops/README.md`). A failed ping is
+   printed but never changes the deploy result.
 
 Useful variants: `DRY_RUN=1` (show the file list and the sftp batch, change
 nothing), `LOGIN_ONLY=1` (only test the SFTP login).
