@@ -1008,7 +1008,7 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Does selling bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, when you sell or swap. Exemptions differ: Germany 0% after a 1-year holding period; Czechia a 3-year time test; Poland none. As of ${asOfEn}. Not tax advice.` },
+    { q: `Does selling bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, when you sell for money. Crypto-to-crypto swaps are taxed in some countries (Germany, Czechia, Spain) but not in others (Poland, France, Austria, Hungary). Exemptions differ: Germany 0% after a 1-year holding period; Czechia a 3-year time test; Poland none. As of ${asOfEn}. Not tax advice.` },
     { q: 'Does borrowing against bitcoin trigger the same tax?', a: 'In this educational overview, a loan is not the same event as a sale. Interest, liquidation risk and partner KYC still apply. Model the numbers in the live Loan & Liquidity Copilot.' },
     { q: 'What is liquidation risk?', a: 'If the value of your collateral falls to the partner’s threshold, the partner can sell the collateral to repay the loan. Virtuse never holds your keys or the collateral.' },
     { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the trade-off between tax and risk using only the published country tax rates.' }
@@ -1072,7 +1072,7 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const faqs = [
-    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja, bei einer Veräußerung. Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
+    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja, beim Verkauf gegen Geld. Krypto-zu-Krypto-Tausch ist in manchen Ländern steuerpflichtig (Deutschland, Tschechien, Spanien), in anderen nicht (Polen, Frankreich, Österreich, Ungarn). Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
     { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und das KYC beim Partner bleiben. Konkrete Zinssätze zeigt der Loan-Copilot.' },
     { q: 'Was ist Liquidationsrisiko?', a: 'Fällt der Wert der Sicherheit (Collateral) auf die Schwelle des Partners, kann die Sicherheit zwangsverkauft werden. Virtuse verwahrt weder Schlüssel noch Sicherheiten.' },
     { q: 'Wo berechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur die Abwägung anhand der veröffentlichten Steuerangaben.' }
@@ -2032,7 +2032,7 @@ ${faqHtml(faqs, 'Časté otázky')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Vzniká pri predaji v týchto ${N} krajinách daň?`, a: `Spravidla áno, pri predaji alebo výmene. Oslobodenia sa líšia: Nemecko 0 % po 1 roku držby, Česko 3-ročný časový test, Poľsko bez oslobodenia. Stav ${asOfSk}. Nejde o daňové poradenstvo.` },
+    { q: `Vzniká pri predaji v týchto ${N} krajinách daň?`, a: `Spravidla áno, pri predaji za peniaze. Výmena krypto za krypto sa v niektorých krajinách zdaňuje (Nemecko, Česko, Španielsko), v iných nie (Poľsko, Francúzsko, Rakúsko, Maďarsko). Oslobodenia sa líšia: Nemecko 0 % po 1 roku držby, Česko 3-ročný časový test, Poľsko bez oslobodenia. Stav ${asOfSk}. Nejde o daňové poradenstvo.` },
     { q: 'Je pôžička rovnaká daňová udalosť ako predaj?', a: 'V tomto prehľade nie. Úroky, riziko likvidácie a KYC u partnera však platia. Konkrétne čísla vypočíta Loan & Liquidity Copilot.' },
     { q: 'Čo je riziko likvidácie?', a: 'Ak hodnota zábezpeky klesne na hranicu partnera, partner môže zábezpeku predať a splatiť ňou pôžičku. Virtuse nikdy nedrží vaše kľúče ani zábezpeku.' },
     { q: 'Kde si prepočítam konkrétnu sumu?', a: 'V live module Loan & Liquidity Copilot. Táto stránka vysvetľuje len rozdiel medzi daňou a rizikom na základe zverejnených daňových sadzieb.' }
@@ -2358,7 +2358,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Vzniká při prodeji v těchto ${N} zemích daň?`, a: `Zpravidla ano, při prodeji nebo směně. Osvobození se liší: Německo 0 % po 1 roce držení, Česko 3letý časový test, Polsko bez osvobození. Stav ${asOfCs}. Nejde o daňové poradenství.` },
+    { q: `Vzniká při prodeji v těchto ${N} zemích daň?`, a: `Zpravidla ano, při prodeji za peníze. Směna kryptoměny za kryptoměnu se v některých zemích daní (Německo, Česko, Španělsko), v jiných ne (Polsko, Francie, Rakousko, Maďarsko). Osvobození se liší: Německo 0 % po 1 roce držení, Česko 3letý časový test, Polsko bez osvobození. Stav ${asOfCs}. Nejde o daňové poradenství.` },
     { q: 'Je půjčka stejná daňová událost jako prodej?', a: 'V tomto přehledu ne. Úroky, riziko likvidace a KYC u partnera však platí. Konkrétní čísla spočítá Loan & Liquidity Copilot.' },
     { q: 'Co je riziko likvidace?', a: 'Pokud hodnota zajištění klesne na hranici partnera, partner může zajištění prodat a splatit jím půjčku. Virtuse nikdy nedrží vaše klíče ani zajištění.' },
     { q: 'Kde si přepočítám konkrétní částku?', a: 'V živém modulu Loan & Liquidity Copilot. Tato stránka vysvětluje jen rozdíl mezi daní a rizikem na základě zveřejněných daňových sazeb.' }
@@ -2686,7 +2686,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Czy sprzedaż w tych ${N} krajach wywołuje podatek?`, a: `Zazwyczaj tak, przy sprzedaży lub wymianie. Zwolnienia się różnią: Niemcy 0% po roku posiadania, Czechy 3-letni test czasu, Polska bez zwolnienia. Stan na ${asOfPl}. Nie stanowi porady podatkowej.` },
+    { q: `Czy sprzedaż w tych ${N} krajach wywołuje podatek?`, a: `Zazwyczaj tak, przy sprzedaży za pieniądze. Wymiana krypto na krypto jest opodatkowana w niektórych krajach (Niemcy, Czechy, Hiszpania), w innych nie (Polska, Francja, Austria, Węgry). Zwolnienia się różnią: Niemcy 0% po roku posiadania, Czechy 3-letni test czasu, Polska bez zwolnienia. Stan na ${asOfPl}. Nie stanowi porady podatkowej.` },
     { q: 'Czy pożyczka jest tym samym zdarzeniem podatkowym co sprzedaż?', a: 'W tym przeglądzie nie. Odsetki, ryzyko likwidacji i KYC u partnera jednak pozostają. Konkretne liczby wyliczy Loan & Liquidity Copilot.' },
     { q: 'Czym jest ryzyko likwidacji?', a: 'Jeśli wartość zabezpieczenia spadnie do progu partnera, partner może sprzedać zabezpieczenie i spłacić nim pożyczkę. Virtuse nigdy nie przechowuje Państwa kluczy ani zabezpieczenia.' },
     { q: 'Gdzie przeliczę konkretną kwotę?', a: 'W module Loan & Liquidity Copilot. Ta strona wyjaśnia tylko różnicę między podatkiem a ryzykiem na podstawie opublikowanych stawek podatkowych.' }
@@ -3012,7 +3012,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Keletkezik adó eladáskor ebben a ${N} országban?`, a: `Általában igen, eladáskor vagy cserekor. A mentességek eltérnek: Németország 0% 1 év tartás után, Csehország 3 éves időteszt, Lengyelország mentesség nélkül. ${asOfHu} állapot szerint. Nem adótanácsadás.` },
+    { q: `Keletkezik adó eladáskor ebben a ${N} országban?`, a: `Általában igen, pénzért történő eladáskor. A kripto-kripto csere egyes országokban adóköteles (Németország, Csehország, Spanyolország), másokban nem (Lengyelország, Franciaország, Ausztria, Magyarország). A mentességek eltérnek: Németország 0% 1 év tartás után, Csehország 3 éves időteszt, Lengyelország mentesség nélkül. ${asOfHu} állapot szerint. Nem adótanácsadás.` },
     { q: 'Ugyanolyan adóesemény a hitel, mint az eladás?', a: 'Ebben az áttekintésben nem. A kamat, a likvidálási kockázat és a partnernél végzett KYC azonban megmarad. A konkrét számokat a Loan & Liquidity Copilot számolja ki.' },
     { q: 'Mi a likvidálási kockázat?', a: 'Ha a fedezet értéke a partner küszöbére esik, a partner eladhatja a fedezetet, és abból törleszti a hitelt. A Virtuse soha nem kezeli az Ön kulcsait és a fedezetet sem.' },
     { q: 'Hol számolhatok konkrét összeggel?', a: 'A Loan & Liquidity Copilot modulban. Ez az oldal csak az adó és a kockázat közti különbséget mutatja be a közzétett adókulcsok alapján.' }
@@ -3338,7 +3338,7 @@ ${faqHtml(faqs, 'Часті запитання')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Чи виникає податок при продажу в цих ${N} країнах?`, a: `Зазвичай так, при продажу або обміні. Звільнення різняться: Німеччина 0% після 1 року володіння, Чехія 3-річний тест часу, Польща без звільнення. Станом на ${asOfUk}. Не є податковою консультацією.` },
+    { q: `Чи виникає податок при продажу в цих ${N} країнах?`, a: `Зазвичай так, при продажу за гроші. Обмін криптовалюти на криптовалюту оподатковується в одних країнах (Німеччина, Чехія, Іспанія), а в інших ні (Польща, Франція, Австрія, Угорщина). Звільнення різняться: Німеччина 0% після 1 року володіння, Чехія 3-річний тест часу, Польща без звільнення. Станом на ${asOfUk}. Не є податковою консультацією.` },
     { q: 'Чи є позика такою самою податковою подією, як продаж?', a: 'У цьому огляді ні. Відсотки, ризик ліквідації та KYC у партнера все одно залишаються. Конкретні цифри розрахує Loan & Liquidity Copilot.' },
     { q: 'Що таке ризик ліквідації?', a: 'Якщо вартість застави впаде до порогу партнера, партнер може продати заставу й погасити нею позику. Virtuse ніколи не зберігає ваші ключі чи заставу.' },
     { q: 'Де розрахувати конкретну суму?', a: 'У модулі Loan & Liquidity Copilot. Ця сторінка пояснює лише різницю між податком і ризиком на основі опублікованих податкових ставок.' }
@@ -3666,7 +3666,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Возникает ли налог при продаже в этих ${N} странах?`, a: `Обычно да, при продаже или обмене. Освобождения различаются: в Германии 0% после 1 года владения, в Чехии — 3-летний тест времени, в Польше освобождения нет. По состоянию на ${asOfRu}. Не является налоговой консультацией.` },
+    { q: `Возникает ли налог при продаже в этих ${N} странах?`, a: `Обычно да, при продаже за деньги. Обмен криптовалюты на криптовалюту облагается в одних странах (Германия, Чехия, Испания), а в других нет (Польша, Франция, Австрия, Венгрия). Освобождения различаются: в Германии 0% после 1 года владения, в Чехии — 3-летний тест времени, в Польше освобождения нет. По состоянию на ${asOfRu}. Не является налоговой консультацией.` },
     { q: 'Является ли заём таким же налоговым событием, как продажа?', a: 'В этом обзоре — нет. Но проценты, риск ликвидации и KYC у партнёра всё равно остаются. Конкретные цифры рассчитает Loan & Liquidity Copilot.' },
     { q: 'Что такое риск ликвидации?', a: 'Если стоимость залога упадёт до порога партнёра, тот может продать залог, чтобы погасить заём. Virtuse никогда не хранит ваши ключи или залог.' },
     { q: 'Где рассчитать конкретную сумму?', a: 'В модуле Loan & Liquidity Copilot. Эта страница объясняет только разницу между налогом и риском на основе опубликованных налоговых ставок.' }
@@ -3995,7 +3995,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `La vente déclenche-t-elle un impôt dans ces ${N} pays ?`, a: `En général oui, lors d'une vente ou d'un échange. Les exonérations varient : Allemagne, 0 % après 1 an de détention ; Tchéquie, critère de durée de 3 ans ; Pologne, aucune exonération. Situation au ${asOfFr}. Pas un conseil fiscal.` },
+    { q: `La vente déclenche-t-elle un impôt dans ces ${N} pays ?`, a: `En général oui, lors d'une vente contre de l'argent. Les échanges crypto contre crypto sont imposés dans certains pays (Allemagne, Tchéquie, Espagne), pas dans d'autres (Pologne, France, Autriche, Hongrie). Les exonérations varient : Allemagne, 0 % après 1 an de détention ; Tchéquie, critère de durée de 3 ans ; Pologne, aucune exonération. Situation au ${asOfFr}. Pas un conseil fiscal.` },
     { q: "Un prêt est-il le même fait générateur qu'une vente ?", a: 'Pas dans cet aperçu. Il reste toutefois les intérêts, le risque de liquidation et le KYC chez le partenaire. Le Loan & Liquidity Copilot calcule les chiffres concrets.' },
     { q: "Qu'est-ce que le risque de liquidation ?", a: 'Si la valeur de la garantie descend jusqu\'au seuil du partenaire, celui-ci peut vendre la garantie pour rembourser le prêt. Virtuse ne détient jamais vos clés ni la garantie.' },
     { q: 'Où calculer un montant précis ?', a: "Dans le module Loan & Liquidity Copilot. Cette page explique seulement l'arbitrage entre impôt et risque à partir des taux publiés." }
@@ -4324,7 +4324,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender o intercambiar. Las exenciones varían: Alemania, 0 % tras 1 año de tenencia; la República Checa, prueba temporal de 3 años; Polonia, sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
+    { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender a cambio de dinero. Los intercambios cripto por cripto tributan en algunos países (Alemania, República Checa, España) y en otros no (Polonia, Francia, Austria, Hungría). Las exenciones varían: Alemania, 0 % tras 1 año de tenencia; la República Checa, prueba temporal de 3 años; Polonia, sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
     { q: '¿Es un préstamo el mismo hecho imponible que una venta?', a: 'En este resumen, no. Pero hay intereses, riesgo de liquidación y KYC con el socio. El Loan & Liquidity Copilot calcula las cifras concretas.' },
     { q: '¿Qué es el riesgo de liquidación?', a: 'Si el valor de la garantía cae hasta el umbral del socio, este puede vender la garantía para devolver el préstamo. Virtuse nunca guarda sus claves ni la garantía.' },
     { q: '¿Dónde calculo un importe concreto?', a: 'En el módulo Loan & Liquidity Copilot. Esta página solo explica la diferencia entre impuesto y riesgo a partir de los tipos publicados.' }

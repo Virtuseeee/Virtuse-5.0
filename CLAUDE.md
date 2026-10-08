@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Session status (2026-10-08) — Tax advisor review page refreshed; Romania sentence on sell-vs-borrow fixed
 
 - Review page https://claude.ai/artifact/4A9RRLhjcYWQVr4wXbLg2K (same URL, version 3): 82 items rebuilt from the current Tax Agent source (13 countries × 4 fields, incl. the 2026-10-07 SK texts), 13 DAC8 summaries, 11 Loan presets, 6 general claims. 39 items carry a "zmenené" badge + source links, 38 open questions (answered ones removed). Filters "Len otázky" / "Len zmenené". Verdicts still in db collection `review` (was empty before the refresh); localStorage key bumped to `vtx-review-v2`. Page source: session scratchpad `review/build_data.py` + `template.html`.
-- Found while rebuilding: the sell-vs-borrow answer still said "a flat 10% in Romania" in all 10 languages (hardcoded in generate.mjs); now "16% from 2026". Also flagged on the page, not changed: the sell-vs-borrow FAQ says tax arises "when you sell or swap", but swaps are untaxed in PL/FR/HU/AT (HR per 2018 opinion).
+- Found while rebuilding: the sell-vs-borrow answer still said "a flat 10% in Romania" in all 10 languages (hardcoded in generate.mjs); now "16% from 2026". The sell-vs-borrow FAQ "Does selling bitcoin trigger tax…" said "when you sell or swap" (de: "bei einer Veräußerung"); now in all 10 languages: taxed on sale for money, swaps taxed in DE/CZ/ES but not in PL/FR/AT/HU (HR and RO left out as uncertain). Review item seo.1 updated (page version 4).
 
 ## Session status (2026-10-08) — Page speed / Core Web Vitals pass (SEO item 6); caching headers **live** in virtuse.com's .htaccess, page changes committed + on staging, **production deploy pending** (`deploy_site.sh` for this commit)
 
