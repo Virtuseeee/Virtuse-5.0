@@ -1014,7 +1014,7 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the trade-off between tax and risk using only the published country tax rates.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${asOfEn}, selling bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period, or Spekulationsfrist; a flat 10% in Romania).`,
+    `As of ${asOfEn}, selling bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period, or Spekulationsfrist; 16% in Romania from 2026).`,
     'Borrowing against your bitcoin keeps your market exposure but adds interest and liquidation risk on a partner platform.',
     'Indicative 2026 overview, not tax or credit advice. Virtuse never holds your keys.'
   ], 'en');
@@ -1078,7 +1078,7 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Wo berechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur die Abwägung anhand der veröffentlichten Steuerangaben.' }
   ];
   const answer = finalizeAnswer([
-    `Stand ${asOfDe} kann ein Bitcoin-Verkauf Steuer auslösen (Deutschland bis 45 % innerhalb der Spekulationsfrist; Rumänien pauschal 10 %).`,
+    `Stand ${asOfDe} kann ein Bitcoin-Verkauf Steuer auslösen (Deutschland bis 45 % innerhalb der Spekulationsfrist; Rumänien 16 % ab 2026).`,
     'Ein Kredit mit Bitcoin als Sicherheit kann die Marktposition erhalten, bringt aber Zinsen und ein Liquidationsrisiko beim Partner.',
     'Die Seite nennt keine Zinssätze. Unverbindlicher Überblick 2026, keine Steuer- oder Kreditberatung. Virtuse verwahrt niemals Ihre Schlüssel.'
   ], 'de');
@@ -2038,7 +2038,7 @@ ${faqHtml(faqs, 'Časté otázky')}
     { q: 'Kde si prepočítam konkrétnu sumu?', a: 'V live module Loan & Liquidity Copilot. Táto stránka vysvetľuje len rozdiel medzi daňou a rizikom na základe zverejnených daňových sadzieb.' }
   ];
   const answer = finalizeAnswer([
-    `K stavu ${asOfSk} môže predaj Bitcoinu vyvolať daň (napríklad v Nemecku až 45 % počas 1-ročnej lehoty držby, v Rumunsku jednotných 10 %).`,
+    `K stavu ${asOfSk} môže predaj Bitcoinu vyvolať daň (napríklad v Nemecku až 45 % počas 1-ročnej lehoty držby, v Rumunsku 16 % od roku 2026).`,
     'Pôžička zabezpečená Bitcoinom vám ponechá trhovú pozíciu, ale pridá úroky a riziko likvidácie u partnera.',
     'Orientačný prehľad 2026, nejde o daňové ani úverové poradenstvo. Virtuse nikdy nedrží vaše kľúče.'
   ], 'sk');
@@ -2364,7 +2364,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
     { q: 'Kde si přepočítám konkrétní částku?', a: 'V živém modulu Loan & Liquidity Copilot. Tato stránka vysvětluje jen rozdíl mezi daní a rizikem na základě zveřejněných daňových sazeb.' }
   ];
   const answer = finalizeAnswer([
-    `Ke stavu ${asOfCs} může prodej Bitcoinu vyvolat daň (například v Německu až 45 % během 1leté lhůty držení, v Rumunsku jednotných 10 %).`,
+    `Ke stavu ${asOfCs} může prodej Bitcoinu vyvolat daň (například v Německu až 45 % během 1leté lhůty držení, v Rumunsku 16 % od roku 2026).`,
     'Půjčka zajištěná Bitcoinem vám ponechá tržní pozici, ale přidá úroky a riziko likvidace u partnera.',
     'Orientační přehled 2026, nejde o daňové ani úvěrové poradenství. Virtuse nikdy nedrží vaše klíče.'
   ], 'cs');
@@ -2692,7 +2692,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
     { q: 'Gdzie przeliczę konkretną kwotę?', a: 'W module Loan & Liquidity Copilot. Ta strona wyjaśnia tylko różnicę między podatkiem a ryzykiem na podstawie opublikowanych stawek podatkowych.' }
   ];
   const answer = finalizeAnswer([
-    `Według stanu na ${asOfPl} sprzedaż Bitcoina może wywołać podatek (np. w Niemczech do 45% w ciągu roku posiadania, w Rumunii liniowe 10%).`,
+    `Według stanu na ${asOfPl} sprzedaż Bitcoina może wywołać podatek (np. w Niemczech do 45% w ciągu roku posiadania, w Rumunii 16% od 2026 r.).`,
     'Pożyczka pod zastaw Bitcoina pozwala zachować pozycję rynkową, ale oznacza odsetki i ryzyko likwidacji u partnera.',
     'Przegląd orientacyjny 2026, nie stanowi porady podatkowej ani kredytowej. Virtuse nigdy nie przechowuje Państwa kluczy.'
   ], 'pl');
@@ -3018,7 +3018,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
     { q: 'Hol számolhatok konkrét összeggel?', a: 'A Loan & Liquidity Copilot modulban. Ez az oldal csak az adó és a kockázat közti különbséget mutatja be a közzétett adókulcsok alapján.' }
   ];
   const answer = finalizeAnswer([
-    `${asOfHu} állapot szerint a Bitcoin eladása adót keletkeztethet (például Németországban 1 éves tartási időn belül legfeljebb 45%, Romániában egykulcsos 10%).`,
+    `${asOfHu} állapot szerint a Bitcoin eladása adót keletkeztethet (például Németországban 1 éves tartási időn belül legfeljebb 45%, Romániában 2026-tól 16%).`,
     'A Bitcoin-fedezetű hitellel megmarad a piaci pozíció, de kamattal és likvidálási kockázattal jár a partnernél.',
     'Tájékoztató áttekintés 2026, nem adó- és hiteltanácsadás. A Virtuse soha nem kezeli az Ön kulcsait.'
   ], 'hu');
@@ -3344,7 +3344,7 @@ ${faqHtml(faqs, 'Часті запитання')}
     { q: 'Де розрахувати конкретну суму?', a: 'У модулі Loan & Liquidity Copilot. Ця сторінка пояснює лише різницю між податком і ризиком на основі опублікованих податкових ставок.' }
   ];
   const answer = finalizeAnswer([
-    `Станом на ${asOfUk} продаж Біткоїна може спричинити податок (наприклад, у Німеччині до 45% протягом 1 року володіння, у Румунії фіксовані 10%).`,
+    `Станом на ${asOfUk} продаж Біткоїна може спричинити податок (наприклад, у Німеччині до 45% протягом 1 року володіння, у Румунії 16% з 2026 року).`,
     'Позика під заставу Біткоїна зберігає ринкову позицію, але додає відсотки та ризик ліквідації в партнера.',
     'Довідковий огляд 2026, не є податковою чи кредитною консультацією. Virtuse ніколи не зберігає ваші ключі.'
   ], 'uk');
@@ -3672,7 +3672,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
     { q: 'Где рассчитать конкретную сумму?', a: 'В модуле Loan & Liquidity Copilot. Эта страница объясняет только разницу между налогом и риском на основе опубликованных налоговых ставок.' }
   ];
   const answer = finalizeAnswer([
-    `По состоянию на ${asOfRu} продажа Биткоина может повлечь налог (например, в Германии до 45% в течение первого года владения, в Румынии фиксированные 10%).`,
+    `По состоянию на ${asOfRu} продажа Биткоина может повлечь налог (например, в Германии до 45% в течение первого года владения, в Румынии 16% с 2026 года).`,
     'Заём под залог Биткоина сохраняет рыночную позицию, но добавляет проценты и риск ликвидации у партнёра.',
     'Справочный обзор 2026, не является налоговой или кредитной консультацией. Virtuse никогда не хранит ваши ключи.'
   ], 'ru');
@@ -4001,7 +4001,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
     { q: 'Où calculer un montant précis ?', a: "Dans le module Loan & Liquidity Copilot. Cette page explique seulement l'arbitrage entre impôt et risque à partir des taux publiés." }
   ];
   const answer = finalizeAnswer([
-    `Au ${asOfFr}, vendre des bitcoins peut déclencher un impôt (par exemple jusqu'à 45 % en Allemagne pendant la première année de détention, 10 % forfaitaire en Roumanie).`,
+    `Au ${asOfFr}, vendre des bitcoins peut déclencher un impôt (par exemple jusqu'à 45 % en Allemagne pendant la première année de détention, 16 % en Roumanie depuis 2026).`,
     'Un prêt garanti par Bitcoin permet de conserver sa position sur le marché, mais ajoute des intérêts et un risque de liquidation chez le partenaire.',
     'Aperçu indicatif 2026, pas un conseil fiscal ni un conseil en crédit. Virtuse ne détient jamais vos clés.'
   ], 'fr');
@@ -4330,7 +4330,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
     { q: '¿Dónde calculo un importe concreto?', a: 'En el módulo Loan & Liquidity Copilot. Esta página solo explica la diferencia entre impuesto y riesgo a partir de los tipos publicados.' }
   ];
   const answer = finalizeAnswer([
-    `Con datos del ${asOfEs}, vender Bitcoin puede generar impuestos (por ejemplo, hasta el 45 % en Alemania durante el primer año de tenencia, un 10 % fijo en Rumanía).`,
+    `Con datos del ${asOfEs}, vender Bitcoin puede generar impuestos (por ejemplo, hasta el 45 % en Alemania durante el primer año de tenencia, un 16 % en Rumanía desde 2026).`,
     'Un préstamo respaldado por Bitcoin mantiene su posición en el mercado, pero añade intereses y riesgo de liquidación con el socio.',
     'Resumen orientativo 2026, no es asesoramiento fiscal ni crediticio. Virtuse nunca guarda sus claves.'
   ], 'es');
