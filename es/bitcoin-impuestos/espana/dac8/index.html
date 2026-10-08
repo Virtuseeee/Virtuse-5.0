@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAC8 en España: qué comunicarán los exchanges (2026)</title>
+<meta name="description" content="España aún no ha aprobado su ley DAC8, pero los exchanges de otros países de la UE ya registran operaciones de residentes españoles. Plazos y fiscalidad.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/es/bitcoin-impuestos/espana/dac8/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/spain/dac8/">
+  <link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-impuestos/espana/dac8/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax/spain/dac8/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="DAC8 en España: qué comunicarán los exchanges (2026)">
+<meta property="og:description" content="España aún no ha aprobado su ley DAC8, pero los exchanges de otros países de la UE ya registran operaciones de residentes españoles. Plazos y fiscalidad.">
+<meta property="og:url" content="https://virtuse.com/es/bitcoin-impuestos/espana/dac8/">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" type="image/svg+xml" href="../../../../favicon.svg">
+<style>:root {
+  --btc-orange: #f7931a;
+  --dark: #08090a;
+  --dark-card: #141414;
+  --dark-card-hover: #1c1c1c;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --green: #3fb950;
+  --max: 820px;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--btc-orange); }
+.nav {
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  background: rgba(8,9,10,.96); position: sticky; top: 0;
+}
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.brand { font-weight: 700; color: var(--text) !important; font-size: 16px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 64px; }
+.crumbs { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+.crumbs a { color: var(--text-muted); }
+.answer {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin: 16px 0 28px;
+}
+.answer p { margin: 0; }
+h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--text-muted); font-weight: 600; }
+.cta {
+  display: inline-block; background: var(--text); color: var(--dark) !important;
+  text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: opacity 0.2s;
+}
+.cta:hover { opacity: 0.85; }
+.cta-secondary {
+  display: inline-block; border: 1px solid var(--border); color: var(--text) !important;
+  text-decoration: none; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
+  transition: border-color 0.2s;
+}
+.cta-secondary:hover { border-color: var(--border-hover); }
+.muted { color: var(--text-muted); font-size: 14px; }
+.disclaimers { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+.related { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 16px; }
+.lang { font-size: 13px; }
+.flag { font-weight: 600; }
+.review { font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--border-hover); padding: 6px 10px; margin: 12px 0; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+pre {
+  background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px; overflow: auto; white-space: pre-wrap;
+}
+.asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
+.brief {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px 20px; margin: 36px 0 8px;
+}
+.brief h2 { margin: 0 0 6px; font-size: 1.25rem; }
+.brief h2 span { font-weight: 400; color: var(--text-muted); }
+.brief .line { margin: 0 0 14px; color: var(--text-muted); font-size: 15px; }
+.brief form { display: flex; flex-wrap: wrap; gap: 8px; }
+.brief input[type="email"] {
+  flex: 1 1 220px; min-width: 0; background: var(--dark); color: var(--text);
+  border: 1px solid var(--border-hover); border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 15px;
+}
+.brief input[type="email"]:focus { outline: none; border-color: var(--text-muted); }
+.brief button {
+  flex: 0 0 auto; background: var(--text); color: var(--dark); border: 0; border-radius: 8px;
+  padding: 10px 16px; font: inherit; font-weight: 700; cursor: pointer;
+}
+.brief button:disabled { opacity: 0.6; cursor: default; }
+.brief .msg { margin: 10px 0 0; font-size: 14px; min-height: 1px; }
+.brief .fine { margin: 8px 0 0; font-size: 12px; color: var(--text-muted); }
+.brief .fine a { color: var(--text-muted); }
+@media (max-width: 480px) { .brief button { flex: 1 1 100%; } }
+footer.site-footer {
+  border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
+}
+footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
+@media (max-width: 640px) {
+  h1 { font-size: 1.45rem; }
+  .nav { padding: 12px 14px; }
+}
+@media print {
+  .nav, .cta, .cta-secondary, .brief, footer.site-footer { display: none !important; }
+  body { background: #fff; color: #111; }
+  a { color: #111; }
+  .answer { background: #f4f4f4; border-color: #ccc; }
+}</style>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://virtuse.com/#website",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "inLanguage": "es",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://virtuse.com/es/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Impuestos sobre Bitcoin",
+          "item": "https://virtuse.com/es/bitcoin-impuestos/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "España",
+          "item": "https://virtuse.com/es/bitcoin-impuestos/espana/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "DAC8",
+          "item": "https://virtuse.com/es/bitcoin-impuestos/espana/dac8/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "España aún no tiene ley DAC8. ¿Se comunican mis datos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, por los exchanges de otros países de la UE, que registran sus operaciones de 2026 y deben enviarlas a España antes del 30 de septiembre de 2027."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Tributa cambiar Bitcoin por otra criptomoneda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. En España una permuta entre criptomonedas genera una ganancia o pérdida en ese año."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Se comunica mi monedero físico?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El saldo de su monedero no se comunica, pero las retiradas del exchange hacia él sí."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuántos años puede revisar Hacienda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En general, cuatro años desde el final del plazo de declaración de cada ejercicio."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<!-- generated by seo-build; do not edit by hand. answerWords=59 -->
+<header class="nav">
+  <a class="brand" href="../../../../es/index.html">Virtuse</a>
+  <nav aria-label="Primary">
+    <a href="../../../../es/bitcoin-impuestos/">Guías fiscales</a>
+    <a href="../../../../es/bitcoin-indice-comisiones/">Índice de comisiones</a>
+    <a href="../../../../es/bitcoin-calculadora-dca/">DCA</a>
+    <a href="../../../../es/concierge.html">Partner Finder</a>
+  </nav>
+  <nav class="lang" aria-label="Language"><a href="../../../../bitcoin-tax/spain/dac8/">EN</a> · <a href="../../../../es/bitcoin-impuestos/espana/dac8/" aria-current="page">ES</a></nav>
+</header>
+<main class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../es/index.html">Inicio</a> <span aria-hidden="true">/</span> <a href="../../../../es/bitcoin-impuestos/">Impuestos sobre Bitcoin</a> <span aria-hidden="true">/</span> <a href="../../../../es/bitcoin-impuestos/espana/">España</a> <span aria-hidden="true">/</span> <span>DAC8</span></nav>
+  <p class="asof">Datos del T4 2026</p>
+  <h1>DAC8 en España: sus operaciones con Bitcoin ya se registran</h1>
+  <div class="answer"><p>España aún no ha aprobado su ley DAC8 y la Comisión Europea abrió un procedimiento en enero de 2026. Los exchanges de otros países de la UE ya registran las operaciones de residentes españoles y deben enviarlas a la AEAT antes del 30 de septiembre de 2027. Las ganancias, también entre criptomonedas, tributan del 19 % al 30 %.</p></div>
+  
+<h2>Qué es DAC8</h2><p>DAC8 (Directiva UE 2023/2226) extiende a los criptoactivos el intercambio automático de información fiscal que ya se aplica a las cuentas bancarias. Los Estados miembros debían incorporarla antes de finales de 2025.</p><p>España no cumplió ese plazo. El proyecto de ley que modifica la Ley General Tributaria para incorporar DAC8 no se ha publicado en el BOE, y en enero de 2026 la Comisión Europea envió a España una carta de emplazamiento. Los proyectos de reglamento tratan 2026 como primer año de información, con un nuevo modelo 175 para los proveedores que sustituye al modelo 173.</p><p>Los exchanges autorizados en otros países de la UE registran a sus clientes españoles según su propia ley e informan a su administración tributaria, que envía los datos a la Agencia Estatal de Administración Tributaria (AEAT).</p>
+<h2>Qué comunica su exchange</h2><div class="table-wrap"><table><thead><tr><th>Dato</th><th>Detalle</th></tr></thead><tbody><tr><td>Quién es usted</td><td>Nombre, dirección, fecha de nacimiento y número de identificación fiscal</td></tr><tr><td>Cripto por dinero</td><td>Importes totales comprados y vendidos por criptoactivo y año</td></tr><tr><td>Cripto por cripto</td><td>Importes totales por criptoactivo</td></tr><tr><td>Transferencias</td><td>Retiradas del exchange, también a su propio monedero</td></tr></tbody></table></div><p>Mover Bitcoin entre sus propios monederos no tributa, pero una retirada del exchange aparece en la información. Conserve una prueba de que la dirección es suya.</p>
+<h2>Calendario</h2><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Qué ocurre</th></tr></thead><tbody><tr><td>1 ene. 2026</td><td>Los exchanges de otros países de la UE empiezan a registrar operaciones</td></tr><tr><td>Ene. 2027</td><td>Plazo previsto para los proveedores que informan en España (modelo 175, aún en proyecto)</td></tr><tr><td>Primavera 2027</td><td>Declaración de la renta 2026 (IRPF), normalmente de abril al 30 de junio</td></tr><tr><td>30 sept. 2027</td><td>Los datos de exchanges de otros países de la UE llegan a España</td></tr></tbody></table></div><p>La AEAT ya recibe información sobre saldos en proveedores españoles, y su plan de control de 2026 se centra en los criptoactivos.</p>
+<h2>Cómo tributa el Bitcoin en España</h2><ul><li>Las ganancias por la venta de criptomonedas son ganancias patrimoniales de la base del ahorro del IRPF.</li><li>La base del ahorro tributa al 19 % hasta 6.000 €, 21 % hasta 50.000 €, 23 % hasta 200.000 €, 27 % hasta 300.000 € y 30 % por encima.</li><li>Cambiar un criptoactivo por otro es una permuta sujeta a tributación: cada intercambio genera una ganancia o pérdida.</li><li>Hacienda aplica el método FIFO: las primeras monedas compradas son las primeras que se venden.</li><li>No existe exención por tiempo de tenencia.</li><li>Una pérdida neta compensa otras ganancias de la base del ahorro y hasta el 25 % de los rendimientos del ahorro; el resto se arrastra cuatro años.</li><li>Si sus criptomonedas en proveedores fuera de España superan 50.000 € a 31 de diciembre, debe presentar el modelo 721 entre el 1 de enero y el 31 de marzo.</li></ul>
+<h2>Qué hacer ahora</h2><ol><li>Descargue el historial completo de todos los exchanges que haya usado, incluidas las cuentas cerradas.</li><li>Calcule cada venta y cada permuta entre criptomonedas con el método FIFO.</li><li>Compruebe si sus criptomonedas en el extranjero superaban 50.000 € a 31 de diciembre de 2026 y necesita el modelo 721.</li><li>Si omitió ganancias de años anteriores, consulte con un asesor fiscal una declaración complementaria. Presentarla antes de que Hacienda le contacte evita sanciones, aunque se aplican recargos.</li><li>Al retirar a su propio monedero, conserve una prueba de que la dirección es suya.</li></ol>
+<h2>Software fiscal</h2><p>Estas herramientas importan el historial de sus exchanges y calculan las ganancias. Compruebe que admiten las normas españolas antes de pagar. Virtuse puede recibir una comisión si se registra.</p><ul><li><a href="https://app.blockpit.io/register?fpr=virtuse" rel="sponsored noopener" target="_blank">Blockpit</a></li><li><a href="https://koinly.io/?via=C7DEBFCF&amp;utm_source=affiliate" rel="sponsored noopener" target="_blank">Koinly</a></li><li><a href="https://cointracking.info/?ref=V328565" rel="sponsored noopener" target="_blank">CoinTracking</a></li><li><a href="https://divly.com/?ref=otfkzmf" rel="sponsored noopener" target="_blank">Divly</a></li></ul>
+<h2>Preguntas frecuentes</h2><h3>España aún no tiene ley DAC8. ¿Se comunican mis datos?</h3><p>Sí, por los exchanges de otros países de la UE, que registran sus operaciones de 2026 y deben enviarlas a España antes del 30 de septiembre de 2027.</p><h3>¿Tributa cambiar Bitcoin por otra criptomoneda?</h3><p>Sí. En España una permuta entre criptomonedas genera una ganancia o pérdida en ese año.</p><h3>¿Se comunica mi monedero físico?</h3><p>No. El saldo de su monedero no se comunica, pero las retiradas del exchange hacia él sí.</p><h3>¿Cuántos años puede revisar Hacienda?</h3><p>En general, cuatro años desde el final del plazo de declaración de cada ejercicio.</p>
+
+  <p><a class="cta" href="../../../../es/tax-agent.html?country=es">Consultar España en el Tax Agent →</a></p>
+  <h2>Guías relacionadas</h2><div class="related"><a href="../../../../es/bitcoin-impuestos/espana/">Impuestos sobre Bitcoin en España</a><a href="../../../../es/bitcoin-vender-o-pedir-prestado/">Bitcoin: vender o pedir prestado</a><a href="../../../../es/bitcoin-herencia/">Bitcoin y herencia</a></div>
+  <section class="brief" aria-labelledby="brief-h">
+    <h2 id="brief-h">Reciba <span>el Brief</span></h2>
+    <p class="line">Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
+    <form data-brief-form novalidate>
+      <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" autocomplete="email" required>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit">Suscribirse</button>
+    </form>
+    <p class="msg" role="status" aria-live="polite"></p>
+    <p class="fine">Cada lunes. Cancele cuando quiera. <a href="../../../../es/privacy-policy.html">Política de privacidad</a></p>
+  </section>
+<script>
+(function () {
+  var f = document.querySelector('.brief form'); if (!f) return;
+  var m = f.parentNode.querySelector('.msg'), btn = f.querySelector('button'), label = btn.textContent;
+  var T = {"sending":"Enviando...","ok":"Listo. El Brief sale el lunes.","fail":"Algo salió mal. Inténtelo de nuevo.","network":"Error de red. Inténtelo de nuevo."};
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = f.elements.email.value.trim();
+    m.textContent = ''; btn.disabled = true; btn.textContent = T.sending;
+    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, hp: f.elements.website.value, lang: "es" })
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        if (x.ok) {
+          f.reset(); m.textContent = T.ok; m.style.color = 'var(--green)';
+          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'seo_page', capture_brief: true });
+        } else { m.textContent = (x.d && x.d.error) || T.fail; m.style.color = '#f85149'; }
+      })
+      .catch(function () { m.textContent = T.network; m.style.color = '#f85149'; })
+      .then(function () { btn.disabled = false; btn.textContent = label; });
+  });
+})();
+</script>
+  <aside class="disclaimers">
+    <p>Resumen orientativo 2026 – no es asesoramiento fiscal.</p>
+    <p>Virtuse nunca guarda sus claves.</p>
+    <p>El KYC y el registro se realizan en la plataforma regulada de cada socio. Virtuse es un hub no custodial y no guarda fondos ni datos de clientes de esas plataformas.</p>
+  </aside>
+</main>
+<footer class="site-footer"><div class="inner">
+  <p>©2018 - 2026 Virtuse Group. <a href="../../../../es/privacy-policy.html">Política de privacidad</a> · <a href="../../../../es/terms-and-conditions.html">Términos y condiciones</a></p>
+</div></footer>
+</body>
+</html>
