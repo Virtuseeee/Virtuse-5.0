@@ -65,6 +65,14 @@ above). Not done yet: switching the 410 pages to Draft, Search Console requests.
 Nine older rules in the "Redirections" group (e.g. /sk/registration/ → /sk/registracia/)
 now end in a 410 after one extra hop; fine, can be pointed straight at 410 later.
 
+**Backlink check 2026-10-08 (Bing Webmaster Tools → Backlinks For Your Site, 262 pages
+from 54 domains):** only `/gold/` (5 links: trend.sk ×2, hackernoon.com, moneyahoy.com,
+myfrugalbusiness.com) and `/commodities/` (3 links, moneyminiblog.com) of the 65 410 pages
+had outside links. Both changed to 301 → asset-returns.html (Bitcoin vs Gold / Commodities
+by year) on Ras's decision: Redirection rules 80 + 70 and the two virtuse.com .htaccess lines.
+The other 63 stay 410. Everything else outside sites link to (homepage, /sk/, blog-sk.html,
+/fees/, /about-us/, /privacy-policy/, old posts) already ends in a 200. Group now 36 × 301, 63 × 410.
+
 **Changed against the plan's appendix (checked on the live pages):**
 `/dashboard/` is a live Bitcoin dashboard (2026-05), not the old app → 301 to
 bitcoin-data.html; `/home/` and `/sk/bitcoin-vo-vasom-vrecku/` are the blog's own

@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-08) — Backlinks to the old 410 pages checked; /gold/ + /commodities/ now 301 → asset-returns.html (**live** on blog.virtuse.com and virtuse.com)
+
+- SEO item 5. Source: Bing Webmaster Tools → Backlinks → Backlinks For Your Site (ready the day after verification): 262 linking pages from 54 domains, read in full (the list is virtualized; read it by scrolling `.mainContainer`, 100 rows per page). Of the 65 410 pages only `/gold/` (5 links: trend.sk ×2, hackernoon.com, moneyahoy.com, myfrugalbusiness.com) and `/commodities/` (3, moneyminiblog.com) had outside links. Everything else they link to already ends in a 200 (homepage, /sk/, blog-sk.html incl. all 65 Denník N links, /fees/, /about-us/, /privacy-policy/, old posts).
+- On Ras's decision both → 301 `https://virtuse.com/asset-returns.html` (Bitcoin vs Gold / Commodities by year): CSV rows changed, rules rebuilt, Redirection rules 80 + 70 edited over REST (group 3 now 36 × 301, 63 × 410), virtuse.com `.htaccess` uploaded by Ras (script downloaded the live file first, it matched the repo copy). `check`: 103/105 (the two accepted login rows); www → target 2 hops. The other 63 stay 410 and can go to Draft ~7 Nov. The gold links on HackerNoon / trend.sk are likely Ras's own columns: he can repoint them himself.
+- `partnerships/legacy-wp-redirects.csv` uses CRLF line endings: write it with `newline=''` or the whole file shows as changed.
+
 ## Session status (2026-10-08) — Bing Webmaster Tools + IndexNow (main `873024ae`, `18fecfe0`; **live** — user ran `deploy_site.sh 873024ae^ 18fecfe0`, both files 200 + md5 on virtuse.com and staging)
 
 - SEO item 4. **IndexNow:** key file `3e5933c038bccec653f3deedb8caafcc.txt` in the site root (public by design), `seo-ops/indexnow.py` (`--range`, `--sitemap`, `--urls`, `--dry-run`; refuses while the key is not live), and `deploy_site.sh` pings the range's indexable pages after DEPLOY OK (a failed ping never changes the result). First full send: 861 sitemap URLs, HTTP 200 (the first try right after the deploy got 403, retry minutes later OK).

@@ -7,7 +7,7 @@ source,target,regex,code
 /an-exchange-like-no-other/,,0,410
 /career/,,0,410
 /coffee/,,0,410
-/commodities/,,0,410
+/commodities/,https://virtuse.com/asset-returns.html,0,301
 /compound-interest-calculator/,https://virtuse.com/stacking.html,0,301
 /cryptocurrency-exchange-development/,,0,410
 /dashboard/,https://virtuse.com/bitcoin-data.html,0,301
@@ -17,7 +17,7 @@ source,target,regex,code
 /faq/,https://virtuse.com/faq.html,0,301
 /fees/,https://virtuse.com/bitcoin-fee-index/,0,301
 /glossary/,,0,410
-/gold/,,0,410
+/gold/,https://virtuse.com/asset-returns.html,0,301
 /home-2/,,0,410
 /institutions/,https://virtuse.com/treasury.html,0,301
 /invite/,,0,410
