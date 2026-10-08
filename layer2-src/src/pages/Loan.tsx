@@ -27,7 +27,7 @@ import {
   MARGIN_CALL_LTV,
   TAX_PRESETS,
 } from '@/lib/loan';
-import { getLang, t, tv, L, fmtNum, pct } from '@/lib/i18n';
+import { getLang, t, tv, L, fmtNum, fmtNumShort, pct } from '@/lib/i18n';
 import { ResultCaptureForm } from '@/components/CaptureForm';
 
 // ── Deep-link presets ────────────────────────────────────────
@@ -200,7 +200,7 @@ export default function Loan() {
                         : 'border-white/15 text-zinc-400 hover:border-bitcoin/50 hover:text-white'
                     }`}
                   >
-                    {L(tp.name, lang)} · {pct(((tp.id === 'custom' ? customRate : tp.rate) * 100).toFixed(0), lang)}
+                    {L(tp.name, lang)} · {pct(fmtNumShort(Math.round((tp.id === 'custom' ? customRate : tp.rate) * 1000) / 10, 1, lang), lang)}
                   </button>
                 ))}
               </div>

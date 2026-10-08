@@ -28,13 +28,13 @@ export const TAX_PRESETS: TaxPreset[] = [
   { id: 'sk', name: { en: 'Slovakia', sk: 'Slovensko', cs: 'Slovensko' }, rate: 0.35 }, // 19 % income tax + 16 % health contributions (2026)
   { id: 'cz', name: { en: 'Czechia', sk: 'Česko', cs: 'Česko' }, rate: 0.15 },
   { id: 'de', name: { en: 'Germany (<1y held)', sk: 'Nemecko (držba <1 rok)', cs: 'Německo (držba <1 rok)' }, rate: 0.42, note: { en: '0 % after 1-year holding', sk: '0 % po 1-ročnom držaní', cs: '0 % po ročním držení' } },
-  { id: 'at', name: { en: 'Austria', sk: 'Rakúsko', cs: 'Rakousko' }, rate: 0.275 },
+  { id: 'at', name: { en: 'Austria (bought from Mar 2021)', sk: 'Rakúsko (kúpené od 3/2021)', cs: 'Rakousko (koupeno od 3/2021)' }, rate: 0.275, note: { en: '0 % after 1-year holding if bought before Mar 2021', sk: '0 % po 1-ročnom držaní pri nákupe pred 3/2021', cs: '0 % po ročním držení při nákupu před 3/2021' } },
   { id: 'hu', name: { en: 'Hungary', sk: 'Maďarsko', cs: 'Maďarsko' }, rate: 0.15 },
-  { id: 'hr', name: { en: 'Croatia', sk: 'Chorvátsko', cs: 'Chorvatsko' }, rate: 0.12 },
-  { id: 'ro', name: { en: 'Romania', sk: 'Rumunsko', cs: 'Rumunsko' }, rate: 0.1 },
+  { id: 'hr', name: { en: 'Croatia (<2y held)', sk: 'Chorvátsko (držba <2 roky)', cs: 'Chorvatsko (držba <2 roky)' }, rate: 0.12, note: { en: '0 % after 2-year holding', sk: '0 % po 2-ročnom držaní', cs: '0 % po dvouletém držení' } },
+  { id: 'ro', name: { en: 'Romania', sk: 'Rumunsko', cs: 'Rumunsko' }, rate: 0.16 }, // 16 % from 2026 (10 % until 2025)
   { id: 'bg', name: { en: 'Bulgaria', sk: 'Bulharsko', cs: 'Bulharsko' }, rate: 0.1 },
   { id: 'pl', name: { en: 'Poland', sk: 'Poľsko', cs: 'Polsko' }, rate: 0.19 },
-  { id: 'fr', name: { en: 'France', sk: 'Francúzsko', cs: 'Francie' }, rate: 0.3 },
+  { id: 'fr', name: { en: 'France', sk: 'Francúzsko', cs: 'Francie' }, rate: 0.314 }, // PFU 12.8 % + 18.6 % social charges (2026)
   { id: 'es', name: { en: 'Spain (gains €6k–50k)', sk: 'Španielsko (zisk 6–50 tis. €)', cs: 'Španělsko (zisk 6–50 tis. €)' }, rate: 0.21 },
   { id: 'custom', name: { en: 'Custom', sk: 'Vlastné', cs: 'Vlastní' }, rate: 0.19 },
 ];
