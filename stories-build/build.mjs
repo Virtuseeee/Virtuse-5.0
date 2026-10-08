@@ -141,6 +141,23 @@ function imageOf(post) {
   } catch (e) { /* no featured image */ }
   return null;
 }
+// Same rule as srcsetOf() in article.js: WordPress's smaller copies of the featured
+// image, same shape only, so phones don't download the full original (story LCP).
+// Only when the hero is the featured image itself (Yoast can name another image).
+const HERO_SIZES = '(max-width: 712px) calc(100vw - 32px), 680px';
+function srcsetOf(post, url) {
+  let m;
+  try { m = post._embedded['wp:featuredmedia'][0]; } catch (e) { return ''; }
+  const d = m && m.media_details;
+  if (!d || !d.width || !d.height || m.source_url !== url) return '';
+  const ratio = d.width / d.height, seen = new Set(), out = [];
+  for (const x of [...Object.values(d.sizes || {}), { width: d.width, height: d.height, source_url: m.source_url }]) {
+    if (!x || !x.width || !x.height || !x.source_url || seen.has(x.width)) continue;
+    if (Math.abs(x.width / x.height - ratio) > 0.02 * ratio) continue;
+    seen.add(x.width); out.push(`${x.source_url} ${x.width}w`);
+  }
+  return out.length > 1 ? out.join(', ') : '';
+}
 function descriptionOf(post) {
   const y = post.yoast_head_json && (post.yoast_head_json.og_description || post.yoast_head_json.description);
   const d = y ? decode(y).trim() : text(post.excerpt && post.excerpt.rendered).replace(/\s*\[…\]\s*$/, '');
@@ -390,7 +407,10 @@ function render(template, feed, post, inferDesk) {
   sub(/(<span id="bylineRead">)[^<]*(<\/span>)/, (m, a, b) => a + readMinutes(post.content.rendered) + esc(by.readTime) + b, 'byline read');
   if (img) {
     sub(/<figure class="story-figure" id="articleHero" hidden>/, () => '<figure class="story-figure" id="articleHero">', 'hero');
-    sub(/<img id="heroImg" alt="">/, () => `<img id="heroImg" src="${esc(img.url)}" alt="${esc(title)}"${img.width ? ` width="${img.width}" height="${img.height}"` : ''}>`, 'hero img');
+    const srcset = srcsetOf(post, img.url);
+    sub(/<img id="heroImg" alt="">/, () => `<img id="heroImg" src="${esc(img.url)}"` +
+      (srcset ? ` srcset="${esc(srcset)}" sizes="${HERO_SIZES}"` : '') +
+      ` alt="${esc(title)}"${img.width ? ` width="${img.width}" height="${img.height}"` : ''} fetchpriority="high">`, 'hero img');
   }
   // Full text. data-modified tells article.js the body is current, so it
   // keeps it instead of re-inserting the same HTML (no flash, no reload).

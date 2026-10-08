@@ -130,3 +130,18 @@ RewriteRule ^(.*)$ https://blog.virtuse.com/$1 [R=301,L]
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
+
+# Browser caching (2026-10-08, Lighthouse "Use efficient cache lifetimes"). Before this
+# no Cache-Control was sent, so browsers guessed lifetimes from Last-Modified (an old
+# page could be served from cache for days without asking). Files keep their names
+# when they change, so lifetimes stay short except for the hashed module files.
+<IfModule mod_headers.c>
+  # Pages and data: always revalidate (cheap 304 when unchanged).
+  Header set Cache-Control "no-cache" "expr=%{CONTENT_TYPE} =~ m#^(text/html|application/json)#"
+  # Unversioned CSS/JS (styles.css, cookie-consent.js, ...): 1 hour.
+  Header set Cache-Control "public, max-age=3600" "expr=%{CONTENT_TYPE} =~ m#^(text/css|application/javascript|text/javascript)#"
+  # Images and fonts: 7 days (some images are replaced under the same name).
+  Header set Cache-Control "public, max-age=604800" "expr=%{CONTENT_TYPE} =~ m#^(image/|font/|application/font)#"
+  # Layer 2 module bundles have a content hash in the name: 1 year.
+  Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/concierge-assets/#"
+</IfModule>

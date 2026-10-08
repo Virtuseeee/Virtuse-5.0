@@ -47,11 +47,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Bitcoin hub: 22 partnerů, 13 zemí EU | Virtuse">
 <meta name="twitter:description" content="Kupte, těžte, půjčte si a zabezpečte Bitcoin přes 22 ověřených partnerů. 13 zemí EU, půjčky od 5 % p. a. Virtuse nedrží vaše klíče.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
 :root {
   color-scheme: dark;
@@ -255,7 +256,11 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+  opacity: 0;
+  transition: opacity .8s ease;
 }
+#cube.is-ready { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { #cube { transition: none; } }
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -3407,13 +3412,22 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 }
 </script>
 <script type="module">
-import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+// Three.js (255 KB) and this scene setup took most of a phone's CPU while the page was
+// still loading (Lighthouse mobile: LCP 5.6 s, TBT 530 ms). So the cube is fetched and
+// built only after the load event, fades in, and stops rendering while off screen.
+function startCube() {
+  Promise.all([
+    import('three'),
+    import('three/addons/geometries/RoundedBoxGeometry.js'),
+    import('three/addons/environments/RoomEnvironment.js')
+  ]).then(([THREE, geo, env]) => cube(THREE, geo.RoundedBoxGeometry, env.RoomEnvironment)).catch(() => {});
+}
+if (document.readyState === 'complete') startCube();
+else window.addEventListener('load', startCube, { once: true });
 
-(function () {
+function cube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   const host = document.getElementById('cube');
-  if (!host || typeof THREE === 'undefined') return;
+  if (!host || !THREE) return;
 
   const CUBIE_SIZE = 0.84;
   const SPACING = 1.0;
@@ -3523,7 +3537,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   let twisting = false;
 
   function twistLayer() {
-    if (twisting || reduced) return;
+    if (twisting || reduced || !visible) return;
     const axes = ['x', 'y', 'z'];
     const axis = axes[Math.floor(Math.random() * 3)];
     const layer = Math.random() < 0.5 ? -1 : 1;
@@ -3570,7 +3584,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     setInterval(twistLayer, 2300);
   }
 
+  // Render only while the cube is on screen (requestAnimationFrame already stops in
+  // hidden tabs); the IntersectionObserver restarts the loop when it scrolls back in.
+  let visible = true;
+  let running = false;
   function render() {
+    if (!visible) { running = false; return; }
     if (!reduced) {
       root.rotation.y += 0.0026;
       root.rotation.x += 0.0006;
@@ -3578,8 +3597,19 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     renderer.render(scene, camera);
     requestAnimationFrame(render);
   }
-  requestAnimationFrame(render);
-})();
+  function play() {
+    if (!running) { running = true; requestAnimationFrame(render); }
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      if (visible) play();
+    }).observe(host);
+  }
+  renderer.render(scene, camera);
+  host.classList.add('is-ready');
+  play();
+}
 </script>
 
 </body>

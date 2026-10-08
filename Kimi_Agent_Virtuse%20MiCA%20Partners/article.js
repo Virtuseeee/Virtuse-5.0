@@ -381,6 +381,30 @@
   function fmtStamp(d) { return fmtDate(d) + ' · ' + pad2(d.getUTCHours()) + ':' + pad2(d.getUTCMinutes()) + ' UTC'; }
   function imgOf(post) { try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; } }
   function mediaOf(post) { try { return post._embedded['wp:featuredmedia'][0] || null; } catch (e) { return null; } }
+  // WordPress keeps smaller copies of every upload (300 / 768 / 1024 / 1536 px).
+  // srcset lets a phone take the 768 px copy instead of the full original
+  // (Lighthouse: 250-450 KB images, story LCP 5.5 s). Only copies with the same
+  // shape as the original; the square crops are left out.
+  var HERO_SIZES = '(max-width: 712px) calc(100vw - 32px), 680px';
+  var CARD_SIZES = '(max-width: 480px) calc(100vw - 32px), 410px';
+  function srcsetOf(m) {
+    try {
+      var d = m.media_details, ratio = d.width / d.height, seen = {}, out = [];
+      var all = Object.keys(d.sizes || {}).map(function (k) { return d.sizes[k]; });
+      all.push({ width: d.width, height: d.height, source_url: m.source_url });
+      all.forEach(function (x) {
+        if (!x || !x.width || !x.height || !x.source_url || seen[x.width]) return;
+        if (Math.abs(x.width / x.height - ratio) > 0.02 * ratio) return;
+        seen[x.width] = 1; out.push(x.source_url + ' ' + x.width + 'w');
+      });
+      return out.length > 1 ? out.join(', ') : '';
+    } catch (e) { return ''; }
+  }
+  function setImg(img, post, sizes) {
+    var ss = srcsetOf(mediaOf(post));
+    if (ss) { img.sizes = sizes; img.srcset = ss; } else img.removeAttribute('srcset');
+    img.src = imgOf(post);
+  }
   function minutes(html) { return Math.max(1, Math.round(stripHtml(html).split(/\s+/).length / 220)); }
 
   function inferDesk(post) { return window.VB_inferDesk(post); }
@@ -484,7 +508,7 @@
 
     var src = imgOf(post);
     if (src) {
-      $('heroImg').src = src; $('heroImg').alt = title;
+      setImg($('heroImg'), post, HERO_SIZES); $('heroImg').alt = title;
       $('articleHero').hidden = false;
       var m = mediaOf(post);
       // Only the media caption (credit line) -- alt text is a description, not a credit.
@@ -622,7 +646,7 @@
       var a = el('a', 'blog-card');
       a.href = ROOT + 'article.html?slug=' + encodeURIComponent(p.slug) + L.suffix;
       var src = imgOf(p);
-      if (src) { var img = el('img'); img.src = src; img.loading = 'lazy'; img.alt = ''; a.appendChild(img); }
+      if (src) { var img = el('img'); img.loading = 'lazy'; setImg(img, p, CARD_SIZES); img.alt = ''; a.appendChild(img); }
       var b = el('div', 'blog-card-body');
       var t = el('time', null, L.desks[inferDesk(p).id] + ' · ' + fmtDate(gmt(p)));
       b.appendChild(t);

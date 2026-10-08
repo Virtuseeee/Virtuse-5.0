@@ -138,6 +138,41 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
   sitemap.virtuse.com/sitemap_index.xml); they all lead to the blog's sitemap index,
   harmless. Add Nick in Settings → Users if he needs access.
 
+## Page speed / Core Web Vitals (2026-10-08)
+
+- **Field data:** PageSpeed Insights shows "No Data" for virtuse.com (too few Chrome
+  users for CrUX), so Core Web Vitals don't affect Google ranking yet; Google only
+  uses field data. Re-check at pagespeed.web.dev once traffic grows. The PageSpeed
+  API answers 429 without a key; run Lighthouse locally instead
+  (`npx lighthouse@13 URL --only-categories=performance`, phone profile by default).
+- **Lighthouse before (live, phone):** homepage EN 55 / SK 65 (LCP 5.6 / 5.9 s:
+  render-blocking anime.js + font @import, Three.js cube), blog.html 70 and news.html
+  69 (3.9 / 2.3 MB of full-size WordPress images, LCP 6-7 s), story page 79 (LCP 5.5 s,
+  full-size hero), concierge 81, asset-returns 92, buy-bitcoin / bitcoin-data /
+  bitcoin-tax 97-100. Cookie banner layout shift 0.14-0.16 (cause "Web font loaded").
+- **Fixes:** `i18n-tools/apply_speed_fixes.py` (186 pages: font `<link>` + preconnect
+  instead of `@import`; 10 homepages: anime.js `defer` with the reveals on
+  DOMContentLoaded, removed where unused; cube built after the load event, fades in,
+  pauses off screen). `cookie-consent.js` waits for the Inter faces (max 3 s) before
+  showing the banner. asset-returns keeps the table's height while it loads.
+  WordPress's smaller image copies as `srcset` (same shape only): `article.js`,
+  `stories-build/build.mjs` (hero, plus `fetchpriority="high"`), the 9 blog listings
+  + `i18n-tools/brief_blog_template.html` (script) and their static fallback images
+  (`i18n-tools/blog_static_srcset.py`), `news/news.js` (one WordPress request for all
+  issue slugs) + news.html's static cover. Browser caching headers in virtuse.com's
+  `.htaccess` (`virtuse.com.htaccess`): HTML/JSON no-cache, CSS/JS 1 h, images/fonts
+  7 days, `concierge-assets/` 1 year immutable; tested on a local Apache 2.4.
+- **Local A/B (same machine, phone profile):** homepage EN 79 → 91 (LCP 3.9 → 3.2 s,
+  CLS 0.144 → 0), SK 87 → 94 (LCP 3.7 → 2.7 s); blog.html 70 → 79-89 (LCP 6.7 →
+  3.6-5.4 s, 3.9 → 1.7 MB); blog-sk 76 → 78 (3.5 → 1.5 MB); news.html 68 → 80 (LCP
+  7.6 → 5.1 s, CLS 0.175 → 0.02); story page 73 → 79 (CLS 0.144 → 0.008);
+  asset-returns CLS 0.17 → 0.02.
+- **Left open:** the blog lead and the Brief cover come from a WordPress request made
+  by the page script, so their LCP stays ~5 s on a slow phone; a static, current lead
+  in the HTML would fix that. news.html's cover and first issue cards still start at
+  full size (they load before the WordPress answer with the sizes arrives); the Brief
+  desk could put the 768 px copies (`-768x…`) in `news/issues.json` instead.
+
 ## Other
 
 - `wp-posts-inventory.csv`: all 1511 WordPress posts (en 870, sk 631, ru 10) with

@@ -6,7 +6,7 @@
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
-  var FEATURED_SLUG = 'five-percent-yields-and-an-empty-bid-for-paper';
+  var FEATURED_SLUG = 'bitcoin-beat-the-war-november-still-gets-a-vote';
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
@@ -584,9 +584,9 @@
     a.href = issueHref(issue);
     if (issue.image) {
       var img = document.createElement('img');
-      img.src = issue.image;
-      img.alt = issue.title || '';
       img.loading = 'lazy';
+      sizedImg(img, issue.image, CARD_SIZES);
+      img.alt = issue.title || '';
       a.appendChild(img);
     }
     var t = document.createElement('time');
@@ -674,15 +674,56 @@
   function imgOf(post) {
     try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
   }
+  /* WordPress keeps smaller copies of every upload (300 / 768 / 1024 / 1536 px).
+     SRCSET maps an original's URL to those copies (same shape only, no square crops),
+     filled from the WordPress answers, so phones take a 768 px copy instead of the
+     original (Lighthouse mobile: 2.3 MB of images, cover LCP 7.5 s). */
+  var FEATURED_SIZES = '(max-width: 800px) calc(100vw - 32px), 510px';
+  var CARD_SIZES = '(max-width: 480px) calc(100vw - 32px), 410px';
+  var SRCSET = {};
+  function remember(posts) {
+    (posts || []).forEach(function (p) {
+      try {
+        var m = p._embedded['wp:featuredmedia'][0], d = m.media_details, ratio = d.width / d.height, seen = {}, out = [];
+        var all = Object.keys(d.sizes || {}).map(function (k) { return d.sizes[k]; });
+        all.push({ width: d.width, height: d.height, source_url: m.source_url });
+        all.forEach(function (x) {
+          if (!x || !x.width || !x.height || !x.source_url || seen[x.width]) return;
+          if (Math.abs(x.width / x.height - ratio) > 0.02 * ratio) return;
+          seen[x.width] = 1; out.push(x.source_url + ' ' + x.width + 'w');
+        });
+        if (out.length > 1) {
+          SRCSET[m.source_url] = out.join(', ');
+          // issues.json sometimes names a smaller copy instead of the original
+          all.forEach(function (x) { if (x && x.source_url && !SRCSET[x.source_url]) SRCSET[x.source_url] = SRCSET[m.source_url]; });
+        }
+      } catch (e) { /* no featured image */ }
+    });
+  }
+  function sizedImg(img, url, sizes) {
+    var ss = SRCSET[url];
+    if (ss) { img.sizes = sizes; img.srcset = ss; } else img.removeAttribute('srcset');
+    img.src = url;
+  }
+  /* Images already on the page when an answer arrives; one that has already
+     finished loading is left alone (no second download). */
+  function upgradeImages() {
+    Array.prototype.forEach.call(document.querySelectorAll('img'), function (img) {
+      var ss = SRCSET[img.getAttribute('src')];
+      if (!ss || img.hasAttribute('srcset') || (img.complete && img.naturalWidth)) return;
+      img.sizes = img.closest('.featured-cover') ? FEATURED_SIZES : CARD_SIZES;
+      img.srcset = ss;
+    });
+  }
   function blogCardFromIssue(issue) {
     var a = document.createElement('a');
     a.className = 'blog-card';
     a.href = issueHref(issue);
     if (issue.image) {
       var img = document.createElement('img');
-      img.src = issue.image;
-      img.alt = issue.title || '';
       img.loading = 'lazy';
+      sizedImg(img, issue.image, CARD_SIZES);
+      img.alt = issue.title || '';
       a.appendChild(img);
     }
     var body = document.createElement('div');
@@ -708,9 +749,9 @@
     var imgUrl = imgOf(post);
     if (imgUrl) {
       var img = document.createElement('img');
-      img.src = imgUrl;
-      img.alt = strip(post.title && post.title.rendered);
       img.loading = 'lazy';
+      sizedImg(img, imgUrl, CARD_SIZES);
+      img.alt = strip(post.title && post.title.rendered);
       a.appendChild(img);
     }
     var body = document.createElement('div');
@@ -771,7 +812,7 @@
     if (img && issue.image) {
       img.removeAttribute('width');
       img.removeAttribute('height');
-      img.src = issue.image;
+      sizedImg(img, issue.image, FEATURED_SIZES);
       img.alt = issue.title;
     }
     if (head) {
@@ -796,8 +837,8 @@
     var img = document.querySelector('#featured .featured-cover img');
     if (!img || !post) return;
     var url = imgOf(post);
-    if (!url) return;
-    img.src = url;
+    if (!url || img.getAttribute('src') === url) return;
+    sizedImg(img, url, FEATURED_SIZES);
   }
   function paintBlog(issues, wpPosts) {
     var section = $('blog');
@@ -832,7 +873,7 @@
     section.hidden = false;
   }
 
-  j('news/issues.json?v=20260928c').then(function (data) {
+  j('news/issues.json?v=20261005a').then(function (data) {
     var list = (data && data.issues) || [];
     var latest = latestIssue(list);
     if (latest) {
@@ -842,10 +883,17 @@
     paintArchive(list);
     paintBlog(list, []);
     j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 8000).then(function (posts) {
+      remember(posts);
       paintBlog(list, posts || []);
+      upgradeImages();
     }).catch(function () { /* keep the local essay if any */ });
-    j(WP + '?slug=' + encodeURIComponent(FEATURED_SLUG) + '&_embed=wp:featuredmedia', 8000).then(function (posts) {
-      applyFeaturedCover((posts && posts[0]) || null);
+    // One request for every issue's post (featured cover + the smaller image copies).
+    var slugs = [FEATURED_SLUG];
+    list.forEach(function (i) { if (i.slug && slugs.indexOf(i.slug) < 0) slugs.push(i.slug); });
+    j(WP + '?slug=' + encodeURIComponent(slugs.slice(0, 50).join(',')) + '&per_page=50&_embed=wp:featuredmedia', 8000).then(function (posts) {
+      remember(posts);
+      applyFeaturedCover((posts || []).filter(function (p) { return p.slug === FEATURED_SLUG; })[0] || null);
+      upgradeImages();
     }).catch(function () { /* keep the static HTML cover */ });
   }).catch(function () {
     paintArchive([]);

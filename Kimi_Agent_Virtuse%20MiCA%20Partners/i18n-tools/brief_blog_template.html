@@ -266,12 +266,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     return CFG.dateStyle === 'ymd' ? Y + '. ' + M + ' ' + D + '.' : CFG.dateStyle === 'dot' ? D + '. ' + M + ' ' + Y : D + ' ' + M + ' ' + Y; }
   function articleUrl(p) { return CFG.articleBase + '?slug=' + encodeURIComponent(p.slug) + CFG.langSuffix; }
   function imgOf(p) { try { return p._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; } }
+  // WordPress keeps smaller copies of every upload (300 / 768 / 1024 / 1536 px); srcset
+  // lets phones take a 768 px copy instead of the original (Lighthouse: 3.9 MB of
+  // images on this page). Same-shape copies only; the square crops are left out.
+  var LEAD_SIZES = '(max-width: 800px) calc(100vw - 32px), 730px';
+  var CARD_SIZES = '(max-width: 480px) calc(100vw - 32px), 410px';
+  function srcsetOf(p) {
+    try {
+      var m = p._embedded['wp:featuredmedia'][0], d = m.media_details, ratio = d.width / d.height, seen = {}, out = [];
+      var all = Object.keys(d.sizes || {}).map(function (k) { return d.sizes[k]; });
+      all.push({ width: d.width, height: d.height, source_url: m.source_url });
+      all.forEach(function (x) {
+        if (!x || !x.width || !x.height || !x.source_url || seen[x.width]) return;
+        if (Math.abs(x.width / x.height - ratio) > 0.02 * ratio) return;
+        seen[x.width] = 1; out.push(x.source_url + ' ' + x.width + 'w');
+      });
+      return out.length > 1 ? out.join(', ') : '';
+    } catch (e) { return ''; }
+  }
+  function setImg(img, p, sizes) {
+    var ss = srcsetOf(p);
+    if (ss) { img.sizes = sizes; img.srcset = ss; } else img.removeAttribute('srcset');
+    img.src = imgOf(p);
+  }
   function deskOf(p) { return CFG.desks[window.VB_inferDesk(p).id]; }
 
   function makeCard(p) {
     var a = el('a', 'blog-card'); a.href = articleUrl(p);
     var src = imgOf(p);
-    if (src) { var img = el('img'); img.src = src; img.loading = 'lazy'; img.alt = ''; a.appendChild(img); }
+    if (src) { var img = el('img'); img.loading = 'lazy'; setImg(img, p, CARD_SIZES); img.alt = ''; a.appendChild(img); }
     else a.appendChild(el('div', 'blog-card-empty', '₿'));
     var b = el('div', 'blog-card-body');
     b.appendChild(el('time', null, deskOf(p) + ' · ' + fmtDate(p.date)));
@@ -285,7 +308,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   function renderLead(p) {
     lead.href = articleUrl(p);
     var src = imgOf(p);
-    if (src) document.getElementById('leadImg').src = src;
+    if (src) setImg(document.getElementById('leadImg'), p, LEAD_SIZES);
     document.getElementById('leadKicker').textContent = deskOf(p);
     document.getElementById('leadTitle').textContent = stripHtml(p.title.rendered);
     document.getElementById('leadDek').textContent = stripHtml(p.excerpt.rendered);
