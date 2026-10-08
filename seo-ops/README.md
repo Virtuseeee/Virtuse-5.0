@@ -120,6 +120,15 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
   `--urls …`; `--dry-run`. It refuses to send while the key file is not live.
   `deploy_site.sh` runs `--range` after DEPLOY OK. Story uploads through
   `stories-build/upload.sftp` do not ping (run `--range` by hand afterwards).
+  First full send 2026-10-08: 861 sitemap URLs, HTTP 200. The very first try right
+  after the key went live got 403 ("key not valid"); a retry minutes later worked.
+- **Bing Webmaster Tools (2026-10-08):** account = Ras (vasilisin@virtuse.com),
+  site `https://virtuse.com/` verified with `BingSiteAuth.xml` in the site root (keep
+  that file; deleting it unverifies the site). `https://virtuse.com/sitemap.xml`
+  submitted. Bing already knew three old WordPress-era sitemaps
+  (www.virtuse.com/sitemap_index.xml from 2021, blog.virtuse.com/sitemap.xml,
+  sitemap.virtuse.com/sitemap_index.xml); they all lead to the blog's sitemap index,
+  harmless. Add Nick in Settings → Users if he needs access.
 
 ## Other
 

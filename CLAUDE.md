@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-08) — Bing Webmaster Tools + IndexNow (main `873024ae`, `18fecfe0`; **live** — user ran `deploy_site.sh 873024ae^ 18fecfe0`, both files 200 + md5 on virtuse.com and staging)
+
+- SEO item 4. **IndexNow:** key file `3e5933c038bccec653f3deedb8caafcc.txt` in the site root (public by design), `seo-ops/indexnow.py` (`--range`, `--sitemap`, `--urls`, `--dry-run`; refuses while the key is not live), and `deploy_site.sh` pings the range's indexable pages after DEPLOY OK (a failed ping never changes the result). First full send: 861 sitemap URLs, HTTP 200 (the first try right after the deploy got 403, retry minutes later OK).
+- **Bing Webmaster Tools:** Ras's account (vasilisin@virtuse.com), `https://virtuse.com/` verified via `BingSiteAuth.xml` (keep the file), sitemap.xml submitted ("submitted for processing"). Bing also lists three old WordPress-era sitemaps that now lead to the blog's sitemap index (harmless).
+
 ## Session status (2026-10-08) — Blog renamed "Virtuse Exchange" → "Virtuse Brief" (WordPress + Yoast settings, **live on blog.virtuse.com**; not in git)
 
 - SEO item 3. Site Title Virtuse Brief, taglines EN "Bitcoin-only analysis by Ras Vasilisin" / SK "Analýzy len o Bitcoine od Rasťa Vasilisina" (WPML: edit originals with `?lang=en`, the admin language is SK); Yoast Organization "Virtuse" + logo media 9238; homepage social title emptied (it printed "%%sitename%%"); 404 title and breadcrumb texts in English with the Slovak translations kept; /blog/ + /sk/blog/ SEO title "News from Crypto World"/"Novinky z krypto sveta" → "Blog". Old values for rollback in `seo-ops/README.md`.
