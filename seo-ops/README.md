@@ -172,6 +172,17 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
   in the HTML would fix that. news.html's cover and first issue cards still start at
   full size (they load before the WordPress answer with the sizes arrives); the Brief
   desk could put the 768 px copies (`-768x…`) in `news/issues.json` instead.
+- **Story pages (checked 2026-10-08, left as they are on Ras's decision):** live
+  Lighthouse says LCP ~5.3 s, but in Chrome the hero image is the LCP at 0.3-0.7 s and
+  nothing re-renders it. The 5.3 s is Lantern's slow-4G model sharing bandwidth with
+  ~500 KB downloaded alongside the hero: GTM 128 KB, Source Serif 4 168 KB (the
+  `opsz` axis), Inter 48 KB, IBM Plex Mono 30 KB. Moving the ticker's API calls and
+  article.js's WordPress check after `load` changed nothing (they are a few KB).
+  Local A/B, 3 runs each: GTM loaded after `load` 5.4 → 4.8 s (no visual change, but
+  visits/partner clicks in the first 1-2 s go uncounted in GA4); Source Serif 4
+  without `opsz` (168 → 69 KB) 5.4 → 4.9 s, but headlines get visibly wider and
+  heavier sitewide; both 4.3 s (score 79 → ~84). Revisit if CrUX data appears and
+  story LCP turns out poor.
 
 ## Other
 
