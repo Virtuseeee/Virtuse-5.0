@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --inset: #0e0e0e;
   --text: #e6edf3;
   --muted: #8b949e;
-  --dim: #5b636d;
+  --dim: #7d8590;
   --line: rgba(255,255,255,0.07);
   --line-strong: rgba(255,255,255,0.14);
   --orange: #f7931a;
@@ -378,13 +378,13 @@ section { padding-block: 100px; border-top: 0; }
    ease up on scroll. Ours: 64px rise + slight blur + scale on cards, long
    expo ease, staggered children. Only active when JS adds html.anim and the
    visitor hasn't asked for reduced motion. */
-html.anim .rv { opacity: 0; transform: translateY(64px); filter: blur(6px);
-  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1), filter .9s ease;
+html.anim .rv { opacity: 0; transform: translateY(20px);
+  transition: opacity .45s ease-out, transform .55s cubic-bezier(.16,1,.3,1);
   transition-delay: var(--d, 0ms); will-change: transform, opacity; }
-html.anim .rv.rv-card { transform: translateY(56px) scale(.965); }
+html.anim .rv.rv-card { transform: translateY(16px); }
 html.anim .rv.in { opacity: 1; transform: none; filter: none; }
-html.anim .w { display: inline-block; opacity: 0; transform: translateY(.55em); filter: blur(8px);
-  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1), filter .8s ease;
+html.anim .w { display: inline-block; opacity: 0; transform: translateY(.25em);
+  transition: opacity .4s ease-out, transform .5s cubic-bezier(.16,1,.3,1);
   transition-delay: var(--d, 0ms); }
 html.anim .split-in .w { opacity: 1; transform: none; filter: none; }
 html.anim .nav { animation: navIn .9s cubic-bezier(.16,1,.3,1) both; }
@@ -400,6 +400,7 @@ html.anim .how-log.drawn .how-log-dot { transform: scale(1); }
 /* bars grow when their card comes into view */
 html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important; }
 .fill, .abar .f { transition: width 1.1s cubic-bezier(.16,1,.3,1); }
+@media (prefers-reduced-motion: reduce) { html.anim .rv, html.anim .w { opacity: 1 !important; transform: none !important; transition: none !important; } }
 /* cursor spotlight on cards (subtle) */
 .spot { position: relative; isolation: isolate; }
 .spot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0;
@@ -419,21 +420,68 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
 .lang-opt.active { color: var(--text); }
 .alt .link-btn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
 .brief-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.nav-langs { display: none; }
-@media (max-width: 640px) {
-  .lang-menu { display: none; }
-  .nav-langs { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 14px; }
-  .nav-links .nav-langs a { padding: 6px 9px; border: 1px solid var(--line-strong); border-radius: 6px; font-size: 12px; }
-  .nav-links .nav-langs a.on { color: var(--text); }
-  .nav-inner .menu-btn { margin-left: auto; }
-}
-@media (max-width: 1180px) { .lang-menu { margin-left: auto; } .menu-btn { margin-left: 0; } }
 </style>
 <style>
 /* CFO page, waitlist stage: the sample replaces the drop zone */
 .demo .play { width: 100%; justify-content: center; margin-bottom: 4px; }
 .wait .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .wait-note { width: 100%; font-size: 12px; color: var(--dim); margin: 2px 0 0; }
+</style>
+<style>
+/* phones: shorter page (review round 1) */
+@media (max-width: 640px) {
+  section { padding-block: 48px; }
+  .sec-head { margin-bottom: 28px; }
+  .tile, .tiles.t2 .tile { min-height: 0; padding: 20px; }
+  .tile h3 { font-size: 24px; }
+  .tile p { padding-top: 12px; font-size: 16px; }
+}
+/* pricing terms */
+.founding { align-self: flex-start; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--text); border: 1px solid var(--line-strong); border-radius: 6px; padding: 5px 7px; }
+.terms { margin-top: 28px; }
+.terms-k { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin: 0 0 4px; }
+.terms .assure-row { margin-top: 10px; }
+.terms-fine { font-size: 12px; color: var(--dim); margin: 14px 0 0; }
+/* NAV v2: grouped dropdowns, one language menu, solid mobile panel */
+.nav-links { align-items: center; gap: 26px; }
+.nav-group { position: relative; }
+.nav-group-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0; background: none; border: 0; font: 500 13px/1 var(--sans); color: var(--muted); cursor: pointer; }
+.nav-group-btn::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .15s; }
+.nav-group-btn:hover, .nav-group.open .nav-group-btn, .nav-group:focus-within .nav-group-btn { color: var(--text); }
+.nav-group.open .nav-group-btn::after { transform: translateY(1px) rotate(225deg); }
+.nav-drop { position: absolute; top: calc(100% + 16px); left: -12px; min-width: 240px; display: none; flex-direction: column; padding: 8px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,.5); z-index: 40; }
+.nav-drop::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+.nav-group.open .nav-drop { display: flex; }
+@media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
+.nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
+.nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
+.nav-links a[aria-current="page"] { color: var(--text); }
+.nav-top { font-size: 13px; }
+.nav-badge { margin-left: 4px; }
+.menu-btn { width: 40px; height: 36px; padding: 0; justify-content: center; align-items: center; }
+.menu-btn svg line { stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; transition: transform .2s; transform-origin: 10px 10px; }
+.nav.open .menu-btn .m1 { transform: translateY(3px) rotate(45deg); }
+.nav.open .menu-btn .m2 { transform: translateY(-3px) rotate(-45deg); }
+@media (max-width: 1180px) {
+  .nav-links { display: none !important; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; margin: 0; padding: 8px 24px 20px; background: var(--dark); border-bottom: 1px solid var(--line-strong); max-height: calc(100vh - 64px); overflow-y: auto; }
+  .nav.open .nav-links { display: flex !important; }
+  .nav-group { border-bottom: 1px solid var(--line); padding: 14px 0 6px; }
+  .nav-group-btn { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); pointer-events: none; }
+  .nav-group-btn::after { display: none; }
+  .nav-drop { position: static; display: flex; min-width: 0; padding: 6px 0 0; background: none; border: 0; box-shadow: none; }
+  .nav-drop::before { display: none; }
+  .nav-links .nav-drop a { padding: 10px 0; font-size: 16px; border-radius: 0; }
+  .nav-links .nav-drop a:hover { background: none; }
+  .nav-top { padding: 16px 0 4px; font-size: 16px; color: var(--muted); text-decoration: none; }
+  .lang-menu { margin-left: auto; }
+  .menu-btn { margin-left: 0; }
+}
+@media (max-width: 640px) {
+  .nav-inner { gap: 10px; }
+  .lang-menu-btn { padding: 8px; }
+  .lang-menu-btn .code { display: none; }
+  .nav-cta { padding: 9px 12px; }
+}
 </style>
 </head>
 <body>
@@ -445,36 +493,25 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
       <span>Virtuse</span>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Main">
-      <a href="buy-bitcoin.html">Buy Bitcoin</a>
-      <a href="mining.html">Mining</a>
-      <a href="lending.html">Loans</a>
-      <a href="secure.html">Custody</a>
-      <a href="treasury.html">Treasury</a>
-      <a href="tax.html">Tax</a>
-      <a href="bots.html">Bots</a>
-      <a href="blog.html">Blog</a>
-      <a href="news.html?utm_source=brief&amp;utm_medium=nav">Brief</a>
-      <a href="bitcoin-data.html">Bitcoin Data</a>
-      <a href="cfo.html" id="navCfo" aria-current="page">CFO<span class="nav-badge" id="cfoBadge">Soon</span></a>
-      <a href="about.html">About</a>
-      <span class="nav-langs" aria-label="Page language"><a href="index.html" class="on" lang="en">EN</a><a href="sk/index.html" lang="sk">SK</a><a href="cs/index.html" lang="cs">CS</a><a href="de/index.html" lang="de">DE</a><a href="pl/index.html" lang="pl">PL</a><a href="hu/index.html" lang="hu">HU</a><a href="fr/index.html" lang="fr">FR</a><a href="es/index.html" lang="es">ES</a><a href="uk/index.html" lang="uk">UA</a><a href="ru/index.html" lang="ru">RU</a></span>
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Services</button>
+        <div class="nav-drop" id="nd-services"><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="lending.html">Loans</a><a href="mining.html">Mining</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Learn</button>
+        <div class="nav-drop" id="nd-learn"><a href="news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-fee-index/">Fee Index</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" aria-current="page" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Soon</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div>
+      </div>
+      <a class="nav-top" href="about.html">About</a>
     </nav>
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language"><span aria-hidden="true">&#127468;&#127463;</span><span class="code">EN</span></button>
-      <div class="lang-menu-panel" role="menu">
-        <a href="index.html" class="lang-opt active" lang="en" role="menuitem">English</a>
-        <a href="sk/index.html" class="lang-opt" lang="sk" role="menuitem">Slovenčina</a>
-        <a href="cs/index.html" class="lang-opt" lang="cs" role="menuitem">Čeština</a>
-        <a href="de/index.html" class="lang-opt" lang="de" role="menuitem">Deutsch</a>
-        <a href="pl/index.html" class="lang-opt" lang="pl" role="menuitem">Polski</a>
-        <a href="hu/index.html" class="lang-opt" lang="hu" role="menuitem">Magyar</a>
-        <a href="fr/index.html" class="lang-opt" lang="fr" role="menuitem">Français</a>
-        <a href="es/index.html" class="lang-opt" lang="es" role="menuitem">Español</a>
-        <a href="uk/index.html" class="lang-opt" lang="uk" role="menuitem">Українська</a>
-        <a href="ru/index.html" class="lang-opt" lang="ru" role="menuitem">Русский</a>
-      </div>
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language: English"><span aria-hidden="true">&#127468;&#127463;</span><span class="code">EN</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="index.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="sk/index.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="cs/index.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="de/index.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="pl/index.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="hu/index.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="fr/index.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="es/index.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="uk/index.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="ru/index.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
     </div>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
     <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Find partners</a>
   </div>
 </header>
@@ -513,9 +550,9 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
         <li>Finding every buy and its fee</li>
         <li>Pricing the same buys at each partner</li>
       </ol>
-      <div class="res pending" id="res">
+      <div class="res" id="res">
         <div class="lbl">You overpaid in the last 12 months</div>
-        <div class="big">€<span id="over">0</span> <small>on €43,000 of buys</small></div>
+        <div class="big">€<span id="over">341</span> <small>on €43,000 of buys</small></div>
         <div class="bars">
           <div class="bar"><span>You paid · Kraken Pro 0.8%</span><div class="t"><div class="f" data-w="100"></div></div><b>€449</b></div>
           <div class="bar"><span>ByBit EU 0.25%</span><div class="t"><div class="f m" data-w="24"></div></div><b>€108</b></div>
@@ -541,7 +578,7 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
           <div class="msg q">Should I buy more before the end of the year?</div>
           <div class="msg a decline">That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div>
         </div>
-        <p class="disclose">Answers are written by AI (Claude) from your totals and labels. Your files, wallet and addresses stay on your device.</p>
+        <p class="disclose">AI-written answers, from your totals and labels. Your files, wallet and addresses stay on your device.</p>
       </div>
       <div class="ask-side">
         <div><b>Grounded</b><p>Every answer names the rows and file it came from.</p></div>
@@ -635,6 +672,7 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
         <a class="btn btn-ghost only-wait" href="#waitForm">Tell me on 1 Dec</a>
       </div>
       <div class="plan pro">
+        <span class="founding only-wait">Founding price, from 1 Dec</span>
         <h3>Virtuse CFO</h3>
         <div class="price"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div>
         <p class="for"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p>
@@ -643,11 +681,15 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
         <a class="btn btn-primary only-wait" href="#waitForm">Tell me on 1 Dec</a>
       </div>
     </div>
-    <div class="assure-row">
-      <span><b>30-day refund</b>No questions, no form.</span>
-      <span><b>Cancel in one click</b>From your account page.</span>
-      <span><b>Pay with Lightning</b>Card optional.</span>
-      <span><b>One price everywhere</b>Same in all 10 languages.</span>
+    <div class="terms">
+      <p class="terms-k"><span class="only-wait">Terms that apply from launch on 1 December</span><span class="only-audit">Terms</span></p>
+      <div class="assure-row">
+        <span><b>30-day refund</b>No questions, no form.</span>
+        <span><b>Cancel in one click</b>From your account page.</span>
+        <span><b>Pay with Lightning or card</b>No card needed for the free audit.</span>
+        <span><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
+      </div>
+      <p class="terms-fine">Prices include VAT where applicable. Same price in all 10 languages.</p>
     </div>
   </section>
 
@@ -672,12 +714,6 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
 
 <script>
 (function () {
-  var btn = document.getElementById('menuBtn'), nav = document.querySelector('.nav');
-  if (btn) {
-    var set = function (open) { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.textContent = open ? 'Close' : 'Menu'; };
-    btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
-    document.querySelectorAll('#navLinks a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
-  }
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var steps = document.querySelectorAll('#steps li'), res = document.getElementById('res'), over = document.getElementById('over');
   var fills = document.querySelectorAll('.f[data-w]'), running = false;
@@ -716,14 +752,16 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
   ['dragover', 'dragenter'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); }); });
   ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
   drop.addEventListener('drop', function (e) { var f = e.dataTransfer.files[0]; if (f) run(f.name); });
-  steps.forEach(function (s) { s.className = 'done'; }); show();
+  steps.forEach(function (s) { s.className = 'done'; }); res.classList.remove('pending'); fills.forEach(function (f) { f.style.width = f.dataset.w + '%'; });
 })();
 </script>
 <script>
 /* MOTION v1 (see CSS). Reveals, word-by-word headline, count-ups, bar growth, spotlight. */
 (function () {
   var root = document.documentElement;
-  var on = root.classList.contains('anim');
+  var on = root.classList.contains('anim') && 'IntersectionObserver' in window;
+  if (!on) root.classList.remove('anim');
+  try {
   var GROUPS = '.shelf6, .tiles, .plans3, .plans, .problem-grid, .how-log, .ask-side, .assure-row, .tools, .promises, .proof, .feature, .cfo-panel, .ask, .calc, .footer-columns';
   var CARDS = '.shelf6 > a, .tile, .plan, .problem-card, .tool, .promises > *, .ask-side > div, .audit-card, #buy .panel, .demo, .chat-panel, .code';
 
@@ -744,7 +782,7 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
           n.textContent.split(/(\s+)/).forEach(function (part) {
             if (!part) return;
             if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
-            var w = document.createElement('span'); w.className = 'w'; w.style.setProperty('--d', (i++ * 55) + 'ms'); w.textContent = part; frag.appendChild(w);
+            var w = document.createElement('span'); w.className = 'w'; w.style.setProperty('--d', (i++ * 28) + 'ms'); w.textContent = part; frag.appendChild(w);
           });
           n.parentNode.replaceChild(frag, n);
         } else if (n.nodeType === 1 && !n.classList.contains('w')) walk(n);
@@ -759,20 +797,20 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
   // 2. mark reveal targets
   var heroBox = h1 ? h1.parentElement : null;
   if (heroBox) Array.prototype.slice.call(heroBox.children).forEach(function (c, k) {
-    if (c === h1) return; c.classList.add('rv'); c.style.setProperty('--d', (heroWords * 55 + 120 + k * 90) + 'ms');
+    if (c === h1) return; c.classList.add('rv'); c.style.setProperty('--d', (heroWords * 28 + 80 + k * 60) + 'ms');
   });
   if (heroBox && heroBox.nextElementSibling && heroBox.parentElement.tagName !== 'MAIN') {
     var side = heroBox.nextElementSibling; side.classList.add('rv', 'rv-card'); side.style.setProperty('--d', '250ms');
   }
   document.querySelectorAll('main section, footer').forEach(function (sec) {
     var head = sec.querySelector('.sec-head');
-    if (head) Array.prototype.slice.call(head.querySelectorAll('h2, .sec-sub, .k, .note, p.lead')).forEach(function (c, k) { c.classList.add('rv'); c.style.setProperty('--d', (k * 110) + 'ms'); });
+    if (head) Array.prototype.slice.call(head.querySelectorAll('h2, .sec-sub, .k, .note, p.lead')).forEach(function (c, k) { c.classList.add('rv'); c.style.setProperty('--d', (k * 60) + 'ms'); });
   });
   document.querySelectorAll(GROUPS).forEach(function (g) {
     if (g.closest('.rv') && !g.closest('.feature, .cfo-panel, .ask')) return;
     Array.prototype.slice.call(g.children).forEach(function (c, k) {
       c.classList.add('rv'); if (c.matches(CARDS)) c.classList.add('rv-card');
-      c.style.setProperty('--d', (Math.min(k, 6) * 95) + 'ms');
+      c.style.setProperty('--d', (Math.min(k, 6) * 50) + 'ms');
     });
   });
   document.querySelectorAll('main section > *:not(.sec-head):not(.rv), .co-ticker, .billing, .shelf-disclose, .close > *').forEach(function (b) {
@@ -808,15 +846,33 @@ html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important;
       el.querySelectorAll('.audit-card .big').forEach(countUp);
       if (el.matches('.audit-card')) el.querySelectorAll('.big').forEach(countUp);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px 15% 0px' });
   document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
   document.querySelectorAll('.how-log').forEach(function (el) { io.observe(el); });
 
   // safety: never leave content hidden
-  setTimeout(function () { document.querySelectorAll('.rv:not(.in)').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add('in'); }); }, 2500);
+  setTimeout(function () { document.querySelectorAll('.rv:not(.in)').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight * 1.5) el.classList.add('in'); }); }, 1200);
+  } catch (err) { root.classList.remove('anim'); }
 })();
 </script>
 <script>
+// NAV v2: menu button, dropdown groups
+(function () {
+  var nav = document.querySelector('.nav'), btn = document.getElementById('menuBtn');
+  if (btn) {
+    var set = function (open) { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+    btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+    document.querySelectorAll('#navLinks a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+  }
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  function closeAll(except) { groups.forEach(function (g) { if (g !== except) { g.classList.remove('open'); g.querySelector('.nav-group-btn').setAttribute('aria-expanded', 'false'); } }); }
+  groups.forEach(function (g) {
+    var b = g.querySelector('.nav-group-btn');
+    b.addEventListener('click', function (e) { e.stopPropagation(); var o = !g.classList.contains('open'); closeAll(g); g.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); });
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.nav-group')) closeAll(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeAll(); if (btn) { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Open menu'); } } });
+})();
 // Language menu
 (function () {
   var wrap = document.getElementById('langMenu'); if (!wrap) return;
