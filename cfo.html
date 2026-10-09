@@ -530,6 +530,69 @@ body.stage-wait .nav-badge::before, body.stage-wait .cfo-foot-badge::before { ba
 body.stage-wait .nav-badge, body.stage-wait .cfo-foot-badge { color: #ffc27a; border-color: rgba(247,147,26,.4); }
 body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color: #a8d8f5; border-color: rgba(95,174,222,.45); }
 </style>
+<style>
+/* ===== COLOR v2 (CFO): blue is the page colour; one meaningful accent per section ===== */
+.c-hero h1 .grad, .c-hero h1 .grad .w { background: linear-gradient(90deg, var(--blue) 0%, var(--teal) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.c-hero { position: relative; overflow-x: clip; }
+.c-hero::before { content: ""; position: absolute; right: -6%; top: 50%; width: 58%; height: 130%; transform: translateY(-50%); pointer-events: none; z-index: 0;
+  background: radial-gradient(closest-side, rgba(95,174,222,.22), rgba(45,212,191,.06) 60%, transparent 78%); }
+.c-hero > * { position: relative; z-index: 1; }
+
+/* tiles: dot + hover glow in the tile colour (three costs, four jobs) */
+.tile { --c: var(--text); border: 1px solid transparent; transition: border-color .25s, box-shadow .25s; }
+.tile[style*="--c"] h3 { display: flex; align-items: center; gap: 10px; }
+.tile[style*="--c"] h3::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--c); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 60%, transparent); flex: none; }
+.tile[style*="--c"]:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 18px 50px -24px color-mix(in srgb, var(--c) 55%, transparent); }
+.tile[style*="--c"] .meta b { color: var(--c); }
+.tile .meta b.mark { display: inline-flex; align-items: center; gap: 6px; }
+.tile .meta b.mark::before { content: ""; width: 7px; height: 7px; border-radius: 50%; }
+.tile .meta b.yes { color: var(--green); } .tile .meta b.yes::before { background: var(--green); }
+.tile .meta b.no { color: var(--red); } .tile .meta b.no::before { background: var(--red); }
+.tile .meta b.rarely { color: var(--yellow); } .tile .meta b.rarely::before { background: var(--yellow); }
+
+/* what EUR 449 is made of */
+.cost-split { margin-top: 18px; padding: 18px 20px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
+.cs-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.cs-top b { font-size: 20px; color: var(--text); font-variant-numeric: tabular-nums; }
+.cs-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--inset); outline: 1px dashed rgba(242,201,76,.5); outline-offset: 3px; }
+.cs-bar i { display: block; height: 100%; }
+.cs-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-size: 13px; color: var(--muted); }
+.cs-key span { display: inline-flex; align-items: center; gap: 8px; }
+.cs-key i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.cs-fee { background: var(--orange); } .cs-wd { background: var(--red); }
+.cs-key i.cs-sp { background: transparent; border: 1.5px dashed var(--yellow); }
+.cs-hidden { color: #e9d48a; }
+
+/* proof: syntax colours; free = green, paid = blue */
+.code .k2 { color: var(--blue); }
+.code .n { color: var(--orange); }
+.code .str { color: var(--teal); }
+.code .c.ok { color: var(--green); text-shadow: 0 0 14px rgba(63,185,80,.55); }
+.code .c.bad { color: var(--red); }
+.code-free { border-color: rgba(63,185,80,.45); background: radial-gradient(100% 120% at 0% 0%, rgba(63,185,80,.08), transparent 60%), var(--inset); }
+.code-paid { border-color: rgba(95,174,222,.45); background: radial-gradient(100% 120% at 100% 0%, rgba(95,174,222,.08), transparent 60%), var(--inset); }
+
+/* what it can't do: good news, in green */
+.tile.never { background: rgba(63,185,80,.06); border: 1px dashed rgba(63,185,80,.35); }
+.tile.never .meta { align-items: baseline; }
+.tile.never .meta b { color: var(--green); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; }
+
+/* pricing: the CFO plan in a blue panel */
+.plan.pro { background: radial-gradient(120% 90% at 100% 0%, rgba(95,174,222,.30), transparent 55%), linear-gradient(145deg, #06121a 0%, #0b2233 100%); border: 1px solid rgba(95,174,222,.38); }
+.plan.pro .price { color: var(--blue); text-shadow: 0 0 28px rgba(95,174,222,.3); }
+.plan.pro .price small { color: #8fc6e6; }
+.plan.pro h3, .plan.pro .for { color: #a8d0e8; }
+.plan.pro ul { border-top-color: rgba(95,174,222,.25); }
+.founding { color: #d6efff; background: rgba(95,174,222,.18); border: 1px solid rgba(95,174,222,.5); border-radius: 999px; padding: 6px 10px; }
+.plan li::before { color: var(--blue); }
+.billing button[aria-selected="true"] { background: var(--blue); color: #04121b; }
+.assure-row span.ic b { display: flex; align-items: center; gap: 8px; }
+.assure-row span.ic b::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.ic-green b::before { background: var(--green); box-shadow: 0 0 0 4px rgba(63,185,80,.15); }
+.ic-orange b::before { background: var(--orange); box-shadow: 0 0 0 4px rgba(247,147,26,.15); }
+.ic-blue b::before { background: var(--blue); box-shadow: 0 0 0 4px rgba(95,174,222,.15); }
+.ic-muted b::before { background: var(--muted); }
+</style>
 </head>
 <body>
 <script>document.body.classList.toggle('stage-wait', (document.querySelector('meta[name="vb-cfo-stage"]') || {}).content !== 'audit');</script>
@@ -569,7 +632,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <div class="c-hero">
     <div>
       <div class="eyebrow"><span class="stage-k only-audit">Free audit · live from 1 Nov</span><span class="stage-k only-wait">Free audit · opens 1 Nov</span></div>
-      <h1>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1>
+      <h1>Your AI <span class="grad">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1>
       <p class="sub">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p>
       <div class="only-audit">
         <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Try it with a sample export</button></div>
@@ -642,9 +705,14 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>A buy has three costs. <span>Most people only look at one.</span></h2>
     </div>
     <div class="tiles t3">
-      <div class="tile"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class="meta"><span>On your receipt</span><b>Yes</b></div></div>
-      <div class="tile"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class="meta"><span>On your receipt</span><b>No</b></div></div>
-      <div class="tile"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class="meta"><span>On your receipt</span><b>Rarely</b></div></div>
+      <div class="tile" style="--c: var(--orange)"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class="meta"><span>On your receipt</span><b class="mark yes">Yes</b></div></div>
+      <div class="tile" style="--c: var(--yellow)"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class="meta"><span>On your receipt</span><b class="mark no">No</b></div></div>
+      <div class="tile" style="--c: var(--red)"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class="meta"><span>On your receipt</span><b class="mark rarely">Rarely</b></div></div>
+    </div>
+    <div class="cost-split" aria-label="What the sample's EUR 449 is made of">
+      <div class="cs-top"><span>The sample's €449, split</span><b>€449</b></div>
+      <div class="cs-bar"><i class="cs-fee" style="width:76.6%"></i><i class="cs-wd" style="width:23.4%"></i></div>
+      <div class="cs-key"><span><i class="cs-fee"></i>Fee €344</span><span><i class="cs-wd"></i>Withdrawals €105</span><span class="cs-hidden"><i class="cs-sp"></i>Spread: hidden in the price, on top</span></div>
     </div>
   </section>
 
@@ -654,17 +722,17 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2>
     </div>
     <div class="proof">
-<pre class="code" aria-label="Free audit upload"><span class="c">// free audit</span>
-<span class="c">// nothing. 0 bytes.</span></pre>
-<pre class="code" aria-label="Paid account upload"><span class="c">// CFO account · to keep your alerts running</span>
+<pre class="code code-free" aria-label="Free audit upload"><span class="c">// free audit</span>
+<span class="c ok">// nothing. 0 bytes.</span></pre>
+<pre class="code code-paid" aria-label="Paid account upload"><span class="c">// CFO account · to keep your alerts running</span>
 {
-  <span class="k2">"year"</span>: 2026,
-  <span class="k2">"country"</span>: "SK",
-  <span class="k2">"buys_eur"</span>: 43000,
-  <span class="k2">"fees_eur"</span>: 449,
-  <span class="k2">"disposals"</span>: 41
+  <span class="k2">"year"</span>: <span class="n">2026</span>,
+  <span class="k2">"country"</span>: <span class="str">"SK"</span>,
+  <span class="k2">"buys_eur"</span>: <span class="n">43000</span>,
+  <span class="k2">"fees_eur"</span>: <span class="n">449</span>,
+  <span class="k2">"disposals"</span>: <span class="n">41</span>
 }
-<span class="c">// never: xpub, addresses, txids, raw rows, your name</span></pre>
+<span class="c bad">// never: xpub, addresses, txids, raw rows, your name</span></pre>
     </div>
   </section>
 
@@ -674,10 +742,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>After the number, the CFO keeps watching. <span>Four jobs, nothing else.</span></h2>
     </div>
     <div class="tiles t2">
-      <div class="tile"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class="meta"><span>Checks</span><b>Every month</b></div></div>
-      <div class="tile"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class="meta"><span>Checks</span><b>Every day</b></div></div>
-      <div class="tile"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class="meta"><span>Countries</span><b>13</b></div></div>
-      <div class="tile"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class="meta"><span>Seed phrases stored</span><b>None</b></div></div>
+      <div class="tile" style="--c: var(--orange)"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class="meta"><span>Checks</span><b>Every month</b></div></div>
+      <div class="tile" style="--c: var(--purple)"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class="meta"><span>Checks</span><b>Every day</b></div></div>
+      <div class="tile" style="--c: var(--blue)"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class="meta"><span>Countries</span><b>13</b></div></div>
+      <div class="tile" style="--c: var(--teal)"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class="meta"><span>Seed phrases stored</span><b>None</b></div></div>
     </div>
   </section>
 
@@ -732,10 +800,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="terms">
       <p class="terms-k">Terms that apply when paid plans open in January</p>
       <div class="assure-row">
-        <span><b>30-day refund</b>No questions, no form.</span>
-        <span><b>Cancel in one click</b>From your account page.</span>
-        <span><b>Pay with Lightning or card</b>No card needed for the free audit.</span>
-        <span><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
+        <span class="ic ic-green"><b>30-day refund</b>No questions, no form.</span>
+        <span class="ic ic-muted"><b>Cancel in one click</b>From your account page.</span>
+        <span class="ic ic-orange"><b>Pay with Lightning or card</b>No card needed for the free audit.</span>
+        <span class="ic ic-blue"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
       </div>
       <p class="terms-fine">Prices include VAT where applicable. Same price in all 10 languages.</p>
     </div>
