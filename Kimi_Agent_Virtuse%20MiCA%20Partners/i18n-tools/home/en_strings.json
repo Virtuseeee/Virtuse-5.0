@@ -1,0 +1,1222 @@
+[
+ {
+  "en": "Virtuse home",
+  "kind": "attr:aria-label",
+  "context": "ctor('meta[name=\"vb-cfo-stage\"]') || {}).content !== 'audit');</script> <header class=\"nav\"> <div class=\"nav-inner\"> <a class=\"logo\" href=\"/\" aria-label=\"Virtuse home\"> <svg viewBox=\"0 0 760 483\" style=\"height:24px;width:auto\" aria-hidden=\"true\"><defs><linearGradient id=\"vA\" x1=\"0\" y1=\"0\" x2=\"0.55\" y2=\"1\"><stop offset="
+ },
+ {
+  "en": "Virtuse",
+  "kind": "text",
+  "context": "olor=\"#2B62C0\"/></linearGradient></defs><path fill=\"url(#vA)\" d=\"M30 0h220l250 483H280Z\"/><path fill=\"url(#vB)\" d=\"M510 0h245L645 205H400Z\"/></svg> <span>Virtuse</span> </a> <nav class=\"nav-links\" id=\"navLinks\" aria-label=\"Main\"> <div class=\"nav-group\" id=\"ng-services\"> <button type=\"button\" class="
+ },
+ {
+  "en": "Main",
+  "kind": "attr:aria-label",
+  "context": "0 483H280Z\"/><path fill=\"url(#vB)\" d=\"M510 0h245L645 205H400Z\"/></svg> <span>Virtuse</span> </a> <nav class=\"nav-links\" id=\"navLinks\" aria-label=\"Main\"> <div class=\"nav-group\" id=\"ng-services\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-services\">Services"
+ },
+ {
+  "en": "Services",
+  "kind": "text",
+  "context": "el=\"Main\"> <div class=\"nav-group\" id=\"ng-services\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-services\">Services</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans"
+ },
+ {
+  "en": "Buy Bitcoin",
+  "kind": "text",
+  "context": "s=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-services\">Services</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax<"
+ },
+ {
+  "en": "Custody",
+  "kind": "text",
+  "context": "e\" aria-controls=\"nd-services\">Services</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></"
+ },
+ {
+  "en": "Loans",
+  "kind": "text",
+  "context": "vices</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div cla"
+ },
+ {
+  "en": "Mining",
+  "kind": "text",
+  "context": "ss=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> "
+ },
+ {
+  "en": "Treasury",
+  "kind": "text",
+  "context": "href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"n"
+ },
+ {
+  "en": "Tax",
+  "kind": "text",
+  "context": "coin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expande"
+ },
+ {
+  "en": "Bots",
+  "kind": "text",
+  "context": "l\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-"
+ },
+ {
+  "en": "Learn",
+  "kind": "text",
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a hr"
+ },
+ {
+  "en": "Virtuse Brief",
+  "kind": "text",
+  "context": "ia-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav"
+ },
+ {
+  "en": "Blog",
+  "kind": "text",
+  "context": "-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> "
+ },
+ {
+  "en": "Bitcoin Data",
+  "kind": "text",
+  "context": "class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-bt"
+ },
+ {
+  "en": "Fee Index",
+  "kind": "text",
+  "context": "tml?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-"
+ },
+ {
+  "en": "Tools",
+  "kind": "text",
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"conci"
+ },
+ {
+  "en": "Virtuse CFO",
+  "kind": "text",
+  "context": " class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Sta"
+ },
+ {
+  "en": "Soon",
+  "kind": "text",
+  "context": "ria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\""
+ },
+ {
+  "en": "Partner Finder",
+  "kind": "text",
+  "context": "s\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><"
+ },
+ {
+  "en": "Stacking Strategist",
+  "kind": "text",
+  "context": "CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement "
+ },
+ {
+  "en": "Loan &amp; Liquidity Copilot",
+  "kind": "text",
+  "context": "/span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"na"
+ },
+ {
+  "en": "Tax &amp; Inheritance Agent",
+  "kind": "text",
+  "context": "p;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div c"
+ },
+ {
+  "en": "Retirement Calculator",
+  "kind": "text",
+  "context": " Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" cl"
+ },
+ {
+  "en": "About",
+  "kind": "text",
+  "context": "ml\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-labe"
+ },
+ {
+  "en": "Page language: English",
+  "kind": "attr:aria-label",
+  "context": "> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-label=\"Page language: English\"><span aria-hidden=\"true\">&#127468;&#127463;</span><span class=\"lang-code\">EN</span></button> <div class=\"lang-menu-panel\" role=\"menu\"><a href=\"index.htm"
+ },
+ {
+  "en": "EN",
+  "kind": "text",
+  "context": "u-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-label=\"Page language: English\"><span aria-hidden=\"true\">&#127468;&#127463;</span><span class=\"lang-code\">EN</span></button> <div class=\"lang-menu-panel\" role=\"menu\"><a href=\"index.html\" class=\"lang-opt active\" lang=\"en\" hreflang=\"en\" role=\"menuitem\">English</a>"
+ },
+ {
+  "en": "English",
+  "kind": "text",
+  "context": "ng-code\">EN</span></button> <div class=\"lang-menu-panel\" role=\"menu\"><a href=\"index.html\" class=\"lang-opt active\" lang=\"en\" hreflang=\"en\" role=\"menuitem\">English</a><a href=\"sk/index.html\" class=\"lang-opt\" lang=\"sk\" hreflang=\"sk\" role=\"menuitem\">Slovenčina</a><a href=\"cs/index.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\""
+ },
+ {
+  "en": "Slovenčina",
+  "kind": "text",
+  "context": "ml\" class=\"lang-opt active\" lang=\"en\" hreflang=\"en\" role=\"menuitem\">English</a><a href=\"sk/index.html\" class=\"lang-opt\" lang=\"sk\" hreflang=\"sk\" role=\"menuitem\">Slovenčina</a><a href=\"cs/index.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\"cs\" role=\"menuitem\">Čeština</a><a href=\"de/index.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\""
+ },
+ {
+  "en": "Čeština",
+  "kind": "text",
+  "context": "x.html\" class=\"lang-opt\" lang=\"sk\" hreflang=\"sk\" role=\"menuitem\">Slovenčina</a><a href=\"cs/index.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\"cs\" role=\"menuitem\">Čeština</a><a href=\"de/index.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\" role=\"menuitem\">Deutsch</a><a href=\"pl/index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\""
+ },
+ {
+  "en": "Deutsch",
+  "kind": "text",
+  "context": "ndex.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\"cs\" role=\"menuitem\">Čeština</a><a href=\"de/index.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\" role=\"menuitem\">Deutsch</a><a href=\"pl/index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\" role=\"menuitem\">Polski</a><a href=\"hu/index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" "
+ },
+ {
+  "en": "Polski",
+  "kind": "text",
+  "context": "ndex.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\" role=\"menuitem\">Deutsch</a><a href=\"pl/index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\" role=\"menuitem\">Polski</a><a href=\"hu/index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" role=\"menuitem\">Magyar</a><a href=\"fr/index.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" "
+ },
+ {
+  "en": "Magyar",
+  "kind": "text",
+  "context": "index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\" role=\"menuitem\">Polski</a><a href=\"hu/index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" role=\"menuitem\">Magyar</a><a href=\"fr/index.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" role=\"menuitem\">Français</a><a href=\"es/index.html\" class=\"lang-opt\" lang=\"es\" hreflang=\"es"
+ },
+ {
+  "en": "Français",
+  "kind": "text",
+  "context": "index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" role=\"menuitem\">Magyar</a><a href=\"fr/index.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" role=\"menuitem\">Français</a><a href=\"es/index.html\" class=\"lang-opt\" lang=\"es\" hreflang=\"es\" role=\"menuitem\">Español</a><a href=\"uk/index.html\" class=\"lang-opt\" lang=\"uk\" hreflang=\"uk\""
+ },
+ {
+  "en": "Español",
+  "kind": "text",
+  "context": "dex.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" role=\"menuitem\">Français</a><a href=\"es/index.html\" class=\"lang-opt\" lang=\"es\" hreflang=\"es\" role=\"menuitem\">Español</a><a href=\"uk/index.html\" class=\"lang-opt\" lang=\"uk\" hreflang=\"uk\" role=\"menuitem\">Українська</a><a href=\"ru/index.html\" class=\"lang-opt\" lang=\"ru\" hreflang=\""
+ },
+ {
+  "en": "Open menu",
+  "kind": "attr:aria-label",
+  "context": "role=\"menuitem\">Русский</a></div> </div> <button class=\"menu-btn\" id=\"menuBtn\" type=\"button\" aria-expanded=\"false\" aria-controls=\"navLinks\" aria-label=\"Open menu\"><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\" aria-hidden=\"true\"><line class=\"m1\" x1=\"3\" y1=\"7\" x2=\"17\" y2=\"7\"/><line class=\"m2\" x1=\"3\" y1=\"13\" x2=\"17\" y2=\""
+ },
+ {
+  "en": "Find partners",
+  "kind": "text",
+  "context": "\" y2=\"7\"/><line class=\"m2\" x1=\"3\" y1=\"13\" x2=\"17\" y2=\"13\"/></svg></button> <a class=\"nav-cta\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Find partners</a> </div> </header> <main class=\"wrap\" id=\"top\"> <!-- 1. HERO: one question, six answers, the cube --> <div class=\"hero3 hero\"> <div> <div c"
+ },
+ {
+  "en": "22 vetted partners · 7 categories · Bitcoin only",
+  "kind": "text",
+  "context": "> <main class=\"wrap\" id=\"top\"> <!-- 1. HERO: one question, six answers, the cube --> <div class=\"hero3 hero\"> <div> <div class=\"eyebrow\"><i></i>22 vetted partners · 7 categories · Bitcoin only</div> <h1>Every Bitcoin service, <span class=\"grad\">compared.</span> <span>Published prices, side by side.</span></h1> <div class=\"hero-ctas\"> "
+ },
+ {
+  "en": "Every Bitcoin service,",
+  "kind": "text",
+  "context": "x answers, the cube --> <div class=\"hero3 hero\"> <div> <div class=\"eyebrow\"><i></i>22 vetted partners · 7 categories · Bitcoin only</div> <h1>Every Bitcoin service, <span class=\"grad\">compared.</span> <span>Published prices, side by side.</span></h1> <div class=\"hero-ctas\"> <a class=\"btn btn-primary\" href=\"co"
+ },
+ {
+  "en": "compared.",
+  "kind": "text",
+  "context": "3 hero\"> <div> <div class=\"eyebrow\"><i></i>22 vetted partners · 7 categories · Bitcoin only</div> <h1>Every Bitcoin service, <span class=\"grad\">compared.</span> <span>Published prices, side by side.</span></h1> <div class=\"hero-ctas\"> <a class=\"btn btn-primary\" href=\"concierge.html?utm_source=conci"
+ },
+ {
+  "en": "Published prices, side by side.",
+  "kind": "text",
+  "context": " <div class=\"eyebrow\"><i></i>22 vetted partners · 7 categories · Bitcoin only</div> <h1>Every Bitcoin service, <span class=\"grad\">compared.</span> <span>Published prices, side by side.</span></h1> <div class=\"hero-ctas\"> <a class=\"btn btn-primary\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=hero\">Find partners in 60"
+ },
+ {
+  "en": "Find partners in 60 seconds",
+  "kind": "text",
+  "context": "ices, side by side.</span></h1> <div class=\"hero-ctas\"> <a class=\"btn btn-primary\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=hero\">Find partners in 60 seconds</a> <a class=\"btn btn-ghost\" href=\"#shelf\">See all services</a> </div> <p class=\"alt\">Prefer to talk? <button type=\"button\" class=\"link-btn"
+ },
+ {
+  "en": "See all services",
+  "kind": "text",
+  "context": "\"btn btn-primary\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=hero\">Find partners in 60 seconds</a> <a class=\"btn btn-ghost\" href=\"#shelf\">See all services</a> </div> <p class=\"alt\">Prefer to talk? <button type=\"button\" class=\"link-btn\" data-consultation-trigger data-consultation-lang=\"en\">Book a free "
+ },
+ {
+  "en": "Prefer to talk?",
+  "kind": "text",
+  "context": "erge&amp;utm_medium=hero\">Find partners in 60 seconds</a> <a class=\"btn btn-ghost\" href=\"#shelf\">See all services</a> </div> <p class=\"alt\">Prefer to talk? <button type=\"button\" class=\"link-btn\" data-consultation-trigger data-consultation-lang=\"en\">Book a free 15-minute call</button>.</p> </div> <div class"
+ },
+ {
+  "en": "Book a free 15-minute call",
+  "kind": "text",
+  "context": "all services</a> </div> <p class=\"alt\">Prefer to talk? <button type=\"button\" class=\"link-btn\" data-consultation-trigger data-consultation-lang=\"en\">Book a free 15-minute call</button>.</p> </div> <div class=\"hero-visual\" aria-hidden=\"true\"> <canvas id=\"cube\"></canvas> <div class=\"hero-poster\"><div class=\"cube-sta"
+ },
+ {
+  "en": "Partners",
+  "kind": "attr:aria-label",
+  "context": "op\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> </div> </div> <!-- 2. PARTNER TICKER --> <div class=\"ticker-band\" aria-label=\"Partners\"> <span class=\"k\">Our 22 partners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img s"
+ },
+ {
+  "en": "Our 22 partners",
+  "kind": "text",
+  "context": " bottom\"></div></div></div></div></div> </div> </div> <!-- 2. PARTNER TICKER --> <div class=\"ticker-band\" aria-label=\"Partners\"> <span class=\"k\">Our 22 partners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bit"
+ },
+ {
+  "en": "21bitcoin logo",
+  "kind": "attr:alt",
+  "context": "tners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" "
+ },
+ {
+  "en": "21bitcoin",
+  "kind": "text",
+  "context": "v class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</s"
+ },
+ {
+  "en": "ByBit EU logo",
+  "kind": "attr:alt",
+  "context": "\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" wi"
+ },
+ {
+  "en": "ByBit EU",
+  "kind": "text",
+  "context": "\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span"
+ },
+ {
+  "en": "Kraken logo",
+  "kind": "attr:alt",
+  "context": "=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com lo"
+ },
+ {
+  "en": "Kraken",
+  "kind": "text",
+  "context": "ue\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryp"
+ },
+ {
+  "en": "Crypto.com logo",
+  "kind": "attr:alt",
+  "context": "=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Crypto.com</span></span> <span class=\"co-partner\"><img src=\"logo-invity.svg\" alt=\"Invity logo\" "
+ },
+ {
+  "en": "Crypto.com",
+  "kind": "text",
+  "context": "aken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Crypto.com</span></span> <span class=\"co-partner\"><img src=\"logo-invity.svg\" alt=\"Invity logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Invity</span"
+ },
+ {
+  "en": "Invity logo",
+  "kind": "attr:alt",
+  "context": "ypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Crypto.com</span></span> <span class=\"co-partner\"><img src=\"logo-invity.svg\" alt=\"Invity logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Invity</span></span> <span class=\"co-partner\"><img src=\"logo-blockstream.png\" alt=\"Blockstream "
+ },
+ {
+  "en": "Invity",
+  "kind": "text",
+  "context": "\">Crypto.com</span></span> <span class=\"co-partner\"><img src=\"logo-invity.svg\" alt=\"Invity logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Invity</span></span> <span class=\"co-partner\"><img src=\"logo-blockstream.png\" alt=\"Blockstream logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bl"
+ },
+ {
+  "en": "Blockstream logo",
+  "kind": "attr:alt",
+  "context": "\"Invity logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Invity</span></span> <span class=\"co-partner\"><img src=\"logo-blockstream.png\" alt=\"Blockstream logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockstream</span></span> <span class=\"co-partner\"><img src=\"logo-ledger.png\" alt=\"Ledger logo\""
+ },
+ {
+  "en": "Blockstream",
+  "kind": "text",
+  "context": "ty</span></span> <span class=\"co-partner\"><img src=\"logo-blockstream.png\" alt=\"Blockstream logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockstream</span></span> <span class=\"co-partner\"><img src=\"logo-ledger.png\" alt=\"Ledger logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Ledger</span"
+ },
+ {
+  "en": "Ledger logo",
+  "kind": "attr:alt",
+  "context": "kstream logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockstream</span></span> <span class=\"co-partner\"><img src=\"logo-ledger.png\" alt=\"Ledger logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" widt"
+ },
+ {
+  "en": "Ledger",
+  "kind": "text",
+  "context": ">Blockstream</span></span> <span class=\"co-partner\"><img src=\"logo-ledger.png\" alt=\"Ledger logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span"
+ },
+ {
+  "en": "Trezor logo",
+  "kind": "attr:alt",
+  "context": " alt=\"Ledger logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width="
+ },
+ {
+  "en": "Trezor",
+  "kind": "text",
+  "context": "true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></"
+ },
+ {
+  "en": "BitGo logo",
+  "kind": "attr:alt",
+  "context": "\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" w"
+ },
+ {
+  "en": "BitGo",
+  "kind": "text",
+  "context": "=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinbase"
+ },
+ {
+  "en": "Coinbase logo",
+  "kind": "attr:alt",
+  "context": " alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinbase</span></span> <span class=\"co-partner\"><img src=\"logo-sygnum.png\" alt=\"Sygnum logo\" wi"
+ },
+ {
+  "en": "Coinbase",
+  "kind": "text",
+  "context": "e\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinbase</span></span> <span class=\"co-partner\"><img src=\"logo-sygnum.png\" alt=\"Sygnum logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Sygnum</span"
+ },
+ {
+  "en": "Sygnum logo",
+  "kind": "attr:alt",
+  "context": "=\"Coinbase logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinbase</span></span> <span class=\"co-partner\"><img src=\"logo-sygnum.png\" alt=\"Sygnum logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Sygnum</span></span> <span class=\"co-partner\"><img src=\"logo-firefish.png\" alt=\"Firefish logo\" "
+ },
+ {
+  "en": "Sygnum",
+  "kind": "text",
+  "context": "ue\">Coinbase</span></span> <span class=\"co-partner\"><img src=\"logo-sygnum.png\" alt=\"Sygnum logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Sygnum</span></span> <span class=\"co-partner\"><img src=\"logo-firefish.png\" alt=\"Firefish logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Firefish"
+ },
+ {
+  "en": "Firefish logo",
+  "kind": "attr:alt",
+  "context": "lt=\"Sygnum logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Sygnum</span></span> <span class=\"co-partner\"><img src=\"logo-firefish.png\" alt=\"Firefish logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Firefish</span></span> <span class=\"co-partner\"><img src=\"logo-koinly.png\" alt=\"Koinly logo\" wi"
+ },
+ {
+  "en": "Firefish",
+  "kind": "text",
+  "context": "\">Sygnum</span></span> <span class=\"co-partner\"><img src=\"logo-firefish.png\" alt=\"Firefish logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Firefish</span></span> <span class=\"co-partner\"><img src=\"logo-koinly.png\" alt=\"Koinly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Koinly</span"
+ },
+ {
+  "en": "Koinly logo",
+  "kind": "attr:alt",
+  "context": "=\"Firefish logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Firefish</span></span> <span class=\"co-partner\"><img src=\"logo-koinly.png\" alt=\"Koinly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Koinly</span></span> <span class=\"co-partner\"><img src=\"logo-blockpit.png\" alt=\"Blockpit logo\" "
+ },
+ {
+  "en": "Koinly",
+  "kind": "text",
+  "context": "ue\">Firefish</span></span> <span class=\"co-partner\"><img src=\"logo-koinly.png\" alt=\"Koinly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Koinly</span></span> <span class=\"co-partner\"><img src=\"logo-blockpit.png\" alt=\"Blockpit logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockpit"
+ },
+ {
+  "en": "Blockpit logo",
+  "kind": "attr:alt",
+  "context": "lt=\"Koinly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Koinly</span></span> <span class=\"co-partner\"><img src=\"logo-blockpit.png\" alt=\"Blockpit logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockpit</span></span> <span class=\"co-partner\"><img src=\"logo-cointracking.png\" alt=\"CoinTrack"
+ },
+ {
+  "en": "Blockpit",
+  "kind": "text",
+  "context": "\">Koinly</span></span> <span class=\"co-partner\"><img src=\"logo-blockpit.png\" alt=\"Blockpit logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockpit</span></span> <span class=\"co-partner\"><img src=\"logo-cointracking.png\" alt=\"CoinTracking logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">"
+ },
+ {
+  "en": "CoinTracking logo",
+  "kind": "attr:alt",
+  "context": "kpit logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Blockpit</span></span> <span class=\"co-partner\"><img src=\"logo-cointracking.png\" alt=\"CoinTracking logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">CoinTracking</span></span> <span class=\"co-partner\"><img src=\"logo-divly.png\" alt=\"Divly logo\" "
+ },
+ {
+  "en": "CoinTracking",
+  "kind": "text",
+  "context": "</span></span> <span class=\"co-partner\"><img src=\"logo-cointracking.png\" alt=\"CoinTracking logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">CoinTracking</span></span> <span class=\"co-partner\"><img src=\"logo-divly.png\" alt=\"Divly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Divly</span></"
+ },
+ {
+  "en": "Divly logo",
+  "kind": "attr:alt",
+  "context": "racking logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">CoinTracking</span></span> <span class=\"co-partner\"><img src=\"logo-divly.png\" alt=\"Divly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Divly</span></span> <span class=\"co-partner\"><img src=\"logo-coinrule.png\" alt=\"Coinrule logo\" w"
+ },
+ {
+  "en": "Divly",
+  "kind": "text",
+  "context": "\">CoinTracking</span></span> <span class=\"co-partner\"><img src=\"logo-divly.png\" alt=\"Divly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Divly</span></span> <span class=\"co-partner\"><img src=\"logo-coinrule.png\" alt=\"Coinrule logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinrule"
+ },
+ {
+  "en": "Coinrule logo",
+  "kind": "attr:alt",
+  "context": " alt=\"Divly logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Divly</span></span> <span class=\"co-partner\"><img src=\"logo-coinrule.png\" alt=\"Coinrule logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinrule</span></span> <span class=\"co-partner\"><img src=\"logo-cryptohopper.png\" alt=\"Cryptohop"
+ },
+ {
+  "en": "Coinrule",
+  "kind": "text",
+  "context": "e\">Divly</span></span> <span class=\"co-partner\"><img src=\"logo-coinrule.png\" alt=\"Coinrule logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinrule</span></span> <span class=\"co-partner\"><img src=\"logo-cryptohopper.png\" alt=\"Cryptohopper logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">"
+ },
+ {
+  "en": "Cryptohopper logo",
+  "kind": "attr:alt",
+  "context": "rule logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinrule</span></span> <span class=\"co-partner\"><img src=\"logo-cryptohopper.png\" alt=\"Cryptohopper logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryptohopper</span></span> <span class=\"co-partner\"><img src=\"logo-revenuebot.png\" alt=\"Revenue"
+ },
+ {
+  "en": "Cryptohopper",
+  "kind": "text",
+  "context": "</span></span> <span class=\"co-partner\"><img src=\"logo-cryptohopper.png\" alt=\"Cryptohopper logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryptohopper</span></span> <span class=\"co-partner\"><img src=\"logo-revenuebot.png\" alt=\"RevenueBot logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Reve"
+ },
+ {
+  "en": "RevenueBot logo",
+  "kind": "attr:alt",
+  "context": "er logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryptohopper</span></span> <span class=\"co-partner\"><img src=\"logo-revenuebot.png\" alt=\"RevenueBot logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">RevenueBot</span></span> <span class=\"co-partner\"><img src=\"logo-abundantmines.png\" alt=\"Abunda"
+ },
+ {
+  "en": "RevenueBot",
+  "kind": "text",
+  "context": "pper</span></span> <span class=\"co-partner\"><img src=\"logo-revenuebot.png\" alt=\"RevenueBot logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">RevenueBot</span></span> <span class=\"co-partner\"><img src=\"logo-abundantmines.png\" alt=\"Abundant Mines logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"tru"
+ },
+ {
+  "en": "Abundant Mines logo",
+  "kind": "attr:alt",
+  "context": "t logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">RevenueBot</span></span> <span class=\"co-partner\"><img src=\"logo-abundantmines.png\" alt=\"Abundant Mines logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Abundant Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMin"
+ },
+ {
+  "en": "Abundant Mines",
+  "kind": "text",
+  "context": "pan></span> <span class=\"co-partner\"><img src=\"logo-abundantmines.png\" alt=\"Abundant Mines logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Abundant Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMin"
+ },
+ {
+  "en": "OneMiners logo",
+  "kind": "attr:alt",
+  "context": "s logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Abundant Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMini"
+ },
+ {
+  "en": "OneMiners",
+  "kind": "text",
+  "context": " Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Po"
+ },
+ {
+  "en": "PowerMining logo",
+  "kind": "attr:alt",
+  "context": "ners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">PowerMining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-"
+ },
+ {
+  "en": "PowerMining",
+  "kind": "text",
+  "context": "rs</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">PowerMining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"\" width=\"28\" height=\"28\" loa"
+ },
+ {
+  "en": "What we promise.",
+  "kind": "text",
+  "context": " </div> </div> </div> <!-- 2b. WHAT WE PROMISE --> <section id=\"money\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>What we promise. <span>Read it before you trust us.</span></h2> </div> </div> <div class=\"problem-grid\"> <div class=\"problem-card\"> <span class=\"pro"
+ },
+ {
+  "en": "Read it before you trust us.",
+  "kind": "text",
+  "context": " </div> <!-- 2b. WHAT WE PROMISE --> <section id=\"money\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>What we promise. <span>Read it before you trust us.</span></h2> </div> </div> <div class=\"problem-grid\"> <div class=\"problem-card\"> <span class=\"problem-fig\">Fig 0.1</span> <d"
+ },
+ {
+  "en": "Fig 0.1",
+  "kind": "text",
+  "context": "d it before you trust us.</span></h2> </div> </div> <div class=\"problem-grid\"> <div class=\"problem-card\"> <span class=\"problem-fig\">Fig 0.1</span> <div class=\"problem-art\" aria-hidden=\"true\"><div class=\"cube-stage var-purpose\"><div class=\"cube-scene\"><div class=\"cube\"><div class=\"cube-face "
+ },
+ {
+  "en": "We never hold your coins",
+  "kind": "text",
+  "context": "e-face right\"></div><div class=\"cube-face left\"></div><div class=\"cube-face top\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> <h3>We never hold your coins</h3> <p>No keys, no coins, no money. You open your account and transact on the partner's licensed platform.</p> </div> <div class=\"problem-"
+ },
+ {
+  "en": "No keys, no coins, no money. You open your account and transact on the partner's licensed platform.",
+  "kind": "text",
+  "context": " left\"></div><div class=\"cube-face top\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> <h3>We never hold your coins</h3> <p>No keys, no coins, no money. You open your account and transact on the partner's licensed platform.</p> </div> <div class=\"problem-card\"> <span class=\"problem-fig\">Fig 0.2</span> <div class=\"problem-art\" aria-hidden=\"true\"><div cla"
+ },
+ {
+  "en": "Fig 0.2",
+  "kind": "text",
+  "context": "ney. You open your account and transact on the partner's licensed platform.</p> </div> <div class=\"problem-card\"> <span class=\"problem-fig\">Fig 0.2</span> <div class=\"problem-art\" aria-hidden=\"true\"><div class=\"cube-stage var-agents\"><i class=\"cube-node\"></i><i class=\"cube-node\"></i><i class=\"cube-"
+ },
+ {
+  "en": "The order is never for sale",
+  "kind": "text",
+  "context": "e-face right\"></div><div class=\"cube-face left\"></div><div class=\"cube-face top\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> <h3>The order is never for sale</h3> <p>Lists are sorted by published price or by fixed rules based on your answers, never by what a partner pays us.</p> </div> <div class"
+ },
+ {
+  "en": "Lists are sorted by published price or by fixed rules based on your answers, never by what a partner pays us.",
+  "kind": "text",
+  "context": "ft\"></div><div class=\"cube-face top\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> <h3>The order is never for sale</h3> <p>Lists are sorted by published price or by fixed rules based on your answers, never by what a partner pays us.</p> </div> <div class=\"problem-card\"> <span class=\"problem-fig\">Fig 0.3</span> <div class=\"problem-art\" aria-hidden=\"true\"><div cla"
+ },
+ {
+  "en": "Fig 0.3",
+  "kind": "text",
+  "context": "e or by fixed rules based on your answers, never by what a partner pays us.</p> </div> <div class=\"problem-card\"> <span class=\"problem-fig\">Fig 0.3</span> <div class=\"problem-art\" aria-hidden=\"true\"><div class=\"cube-stage var-speed\"><div class=\"cube-veil\"></div><div class=\"cube-scene\"><div class=\"c"
+ },
+ {
+  "en": "We say what partners pay us",
+  "kind": "text",
+  "context": "e-face right\"></div><div class=\"cube-face left\"></div><div class=\"cube-face top\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> <h3>We say what partners pay us</h3> <p>Some partners pay a referral fee when you sign up through our link. You pay the same price either way.</p> </div> </div> </section> "
+ },
+ {
+  "en": "Some partners pay a referral fee when you sign up through our link. You pay the same price either way.",
+  "kind": "text",
+  "context": "ft\"></div><div class=\"cube-face top\"></div><div class=\"cube-face bottom\"></div></div></div></div></div> <h3>We say what partners pay us</h3> <p>Some partners pay a referral fee when you sign up through our link. You pay the same price either way.</p> </div> </div> </section> <!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) --> <section id=\"buy\"> <div class=\"fea"
+ },
+ {
+  "en": "Buy Bitcoin · most visitors start here",
+  "kind": "text",
+  "context": "<!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by publi"
+ },
+ {
+  "en": "Buy Bitcoin from 0% fees.",
+  "kind": "text",
+  "context": "redit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly "
+ },
+ {
+  "en": "See what each route costs you.",
+  "kind": "text",
+  "context": "=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-"
+ },
+ {
+  "en": "Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.",
+  "kind": "text",
+  "context": "k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-box\"> <label for=\"amt\">You buy every month</label> <div class=\"amount\">€<span id=\"amtOut\">500</span> <small>"
+ },
+ {
+  "en": "You buy every month",
+  "kind": "text",
+  "context": "ad\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-box\"> <label for=\"amt\">You buy every month</label> <div class=\"amount\">€<span id=\"amtOut\">500</span> <small>/ month</small></div> <input type=\"range\" id=\"amt\" min=\"50\" max=\"5000\" ste"
+ },
+ {
+  "en": "/ month",
+  "kind": "text",
+  "context": "</p> <div class=\"slider-box\"> <label for=\"amt\">You buy every month</label> <div class=\"amount\">€<span id=\"amtOut\">500</span> <small>/ month</small></div> <input type=\"range\" id=\"amt\" min=\"50\" max=\"5000\" step=\"50\" value=\"500\"> <div class=\"range-ends\"><span>€50</span><span>€5,000<"
+ },
+ {
+  "en": "See all 5 buy partners",
+  "kind": "text",
+  "context": ",000</span></div> </div> <div class=\"hero-ctas\" style=\"margin-top:24px\"> <a class=\"btn btn-primary only-wait\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> <a class=\"btn btn-primary only-audit\" href=\"cfo.html\">Check your real fees</a> <a class=\"btn btn-ghost only-audit\" href=\"buy-bitcoin.ht"
+ },
+ {
+  "en": "Check your real fees",
+  "kind": "text",
+  "context": " <a class=\"btn btn-primary only-wait\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> <a class=\"btn btn-primary only-audit\" href=\"cfo.html\">Check your real fees</a> <a class=\"btn btn-ghost only-audit\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> "
+ },
+ {
+  "en": "Top 3 by fee",
+  "kind": "text",
+  "context": ">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin<"
+ },
+ {
+  "en": "Fee",
+  "kind": "text",
+  "context": "a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-I"
+ },
+ {
+  "en": "Per year",
+  "kind": "text",
+  "context": "div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-Invest, from day 8</small></span><span class=\"pct\">0%</span><span class="
+ },
+ {
+  "en": "Auto-Invest, from day 8",
+  "kind": "text",
+  "context": "an>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-Invest, from day 8</small></span><span class=\"pct\">0%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill low\"></div></div></span><span class=\"yr\">€0</span></div> "
+ },
+ {
+  "en": "Spot, taker fee",
+  "kind": "text",
+  "context": " class=\"track\"><div class=\"fill low\"></div></div></span><span class=\"yr\">€0</span></div> <div class=\"row\" data-pct=\"0.25\"><span><b>ByBit EU</b><small>Spot, taker fee</small></span><span class=\"pct\">0.25%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€15</span></div> "
+ },
+ {
+  "en": "Pro, tier 1 taker fee",
+  "kind": "text",
+  "context": "\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€15</span></div> <div class=\"row\" data-pct=\"0.8\"><span><b>Kraken</b><small>Pro, tier 1 taker fee</small></span><span class=\"pct\">0.8%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€48</span></div> "
+ },
+ {
+  "en": "Difference between the highest and lowest published fee, over 10 years",
+  "kind": "text",
+  "context": " class=\"fill\"></div></div></span><span class=\"yr\">€48</span></div> </div> <div class=\"diff\"> <div class=\"diff-txt\"> <span>Difference between the highest and lowest published fee, over 10 years</span> <b class=\"diff-big\" id=\"diff10\">€480</b> <em><b id=\"diffYr\">€48</b> a year on <b id=\"diffBase\">€6,000</b> of buys a year.</em> "
+ },
+ {
+  "en": "a year on",
+  "kind": "text",
+  "context": " between the highest and lowest published fee, over 10 years</span> <b class=\"diff-big\" id=\"diff10\">€480</b> <em><b id=\"diffYr\">€48</b> a year on <b id=\"diffBase\">€6,000</b> of buys a year.</em> </div> <svg class=\"save-chart\" viewBox=\"0 0 220 96\" aria-hidden=\"true\"> <defs>"
+ },
+ {
+  "en": "of buys a year.",
+  "kind": "text",
+  "context": "hed fee, over 10 years</span> <b class=\"diff-big\" id=\"diff10\">€480</b> <em><b id=\"diffYr\">€48</b> a year on <b id=\"diffBase\">€6,000</b> of buys a year.</em> </div> <svg class=\"save-chart\" viewBox=\"0 0 220 96\" aria-hidden=\"true\"> <defs><linearGradient id=\"saveFill\" x1=\"0\" y1=\"0\" "
+ },
+ {
+  "en": "year 0",
+  "kind": "text",
+  "context": "ke=\"#3fb950\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/> <circle cx=\"200\" cy=\"12\" r=\"3.5\" fill=\"#f7931a\"/> <text x=\"8\" y=\"94\">year 0</text><text x=\"200\" y=\"94\" text-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> "
+ },
+ {
+  "en": "year 10",
+  "kind": "text",
+  "context": "ecap=\"round\"/> <circle cx=\"200\" cy=\"12\" r=\"3.5\" fill=\"#f7931a\"/> <text x=\"8\" y=\"94\">year 0</text><text x=\"200\" y=\"94\" text-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> </div> <p class=\"src\">Fees as published by e"
+ },
+ {
+  "en": "Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included.",
+  "kind": "text",
+  "context": "t-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> </div> <p class=\"src\">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <sec"
+ },
+ {
+  "en": "Full Fee Index",
+  "kind": "text",
+  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
+ },
+ {
+  "en": "Virtuse CFO ·",
+  "kind": "text",
+  "context": " the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exp"
+ },
+ {
+  "en": "Free audit from 1 Nov",
+  "kind": "text",
+  "context": "ection id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> "
+ },
+ {
+  "en": "New",
+  "kind": "text",
+  "context": "iv> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculat"
+ },
+ {
+  "en": "Your AI CFO for Bitcoin.",
+  "kind": "text",
+  "context": "yle=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads you"
+ },
+ {
+  "en": "It reads your own exports and never sees your wallet.",
+  "kind": "text",
+  "context": "m:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actual"
+ },
+ {
+  "en": "The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.",
+  "kind": "text",
+  "context": "y-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class=\"only-wait\"> The free audit opens on 1 November.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn "
+ },
+ {
+  "en": "The free audit opens on 1 November.",
+  "kind": "text",
+  "context": " Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class=\"only-wait\"> The free audit opens on 1 November.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> "
+ },
+ {
+  "en": "Run the free audit",
+  "kind": "text",
+  "context": "free audit opens on 1 November.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> "
+ },
+ {
+  "en": "How it works",
+  "kind": "text",
+  "context": "nly-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> <label for=\"waitEmail\" style=\"position:absolute;left:-9999px\">E"
+ },
+ {
+  "en": "Email address",
+  "kind": "text",
+  "context": "s</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> <label for=\"waitEmail\" style=\"position:absolute;left:-9999px\">Email address</label> <input id=\"waitEmail\" name=\"email\" type=\"email\" placeholder=\"Email address\" autocomplete=\"email\" required> <input class=\"hp\" type=\""
+ },
+ {
+  "en": "Tell me 1 Nov",
+  "kind": "text",
+  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Tell me 1 Nov</button> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </form> <div class=\"wait-msg only-wait\" id=\"waitMsg\" aria-live=\"po"
+ },
+ {
+  "en": "One email when the audit opens, nothing else.",
+  "kind": "text",
+  "context": "tml\">How it works</a> </form> <div class=\"wait-msg only-wait\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"cfo-wait-note only-wait\">One email when the audit opens, nothing else. <a href=\"privacy-policy.html\">Privacy</a></p> </div> <div class=\"audit-card\" aria-label=\"Sample audit result\"> <div class=\"top\">Fee audit <"
+ },
+ {
+  "en": "Privacy",
+  "kind": "text",
+  "context": "\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"cfo-wait-note only-wait\">One email when the audit opens, nothing else. <a href=\"privacy-policy.html\">Privacy</a></p> </div> <div class=\"audit-card\" aria-label=\"Sample audit result\"> <div class=\"top\">Fee audit <span class=\"tag\">runs in your browser<"
+ },
+ {
+  "en": "Sample audit result",
+  "kind": "attr:aria-label",
+  "context": "e only-wait\">One email when the audit opens, nothing else. <a href=\"privacy-policy.html\">Privacy</a></p> </div> <div class=\"audit-card\" aria-label=\"Sample audit result\"> <div class=\"top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <div class=\"file\">kraken-ledgers-2026.csv · 214 rows · 0 bytes"
+ },
+ {
+  "en": "Fee audit",
+  "kind": "text",
+  "context": "thing else. <a href=\"privacy-policy.html\">Privacy</a></p> </div> <div class=\"audit-card\" aria-label=\"Sample audit result\"> <div class=\"top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <div class=\"file\">kraken-ledgers-2026.csv · 214 rows · 0 bytes sent</div> <div class=\"lbl\">"
+ },
+ {
+  "en": "runs in your browser",
+  "kind": "text",
+  "context": "-policy.html\">Privacy</a></p> </div> <div class=\"audit-card\" aria-label=\"Sample audit result\"> <div class=\"top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <div class=\"file\">kraken-ledgers-2026.csv · 214 rows · 0 bytes sent</div> <div class=\"lbl\">You overpaid in the last 12 months</div"
+ },
+ {
+  "en": "kraken-ledgers-2026.csv · 214 rows · 0 bytes sent",
+  "kind": "text",
+  "context": "\"audit-card\" aria-label=\"Sample audit result\"> <div class=\"top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <div class=\"file\">kraken-ledgers-2026.csv · 214 rows · 0 bytes sent</div> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€341 <small>on €43,000 of buys</small></div> <div clas"
+ },
+ {
+  "en": "You overpaid in the last 12 months",
+  "kind": "text",
+  "context": " <span class=\"tag\">runs in your browser</span></div> <div class=\"file\">kraken-ledgers-2026.csv · 214 rows · 0 bytes sent</div> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€341 <small>on €43,000 of buys</small></div> <div class=\"abars\"> <div class=\"abar\"><span class=\"lbl\">You paid<"
+ },
+ {
+  "en": "on €43,000 of buys",
+  "kind": "text",
+  "context": ">kraken-ledgers-2026.csv · 214 rows · 0 bytes sent</div> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€341 <small>on €43,000 of buys</small></div> <div class=\"abars\"> <div class=\"abar\"><span class=\"lbl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div><"
+ },
+ {
+  "en": "You paid",
+  "kind": "text",
+  "context": "12 months</div> <div class=\"big\">€341 <small>on €43,000 of buys</small></div> <div class=\"abars\"> <div class=\"abar\"><span class=\"lbl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div></div><span class=\"v\">€449</span></div> <div class=\"abar\"><span class=\"lbl\">Cheapest rou"
+ },
+ {
+  "en": "Cheapest route",
+  "kind": "text",
+  "context": "bl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div></div><span class=\"v\">€449</span></div> <div class=\"abar\"><span class=\"lbl\">Cheapest route</span><div class=\"t\"><div class=\"f g\" style=\"width:24%\"></div></div><span class=\"v\">€108</span></div> </div> <div class=\"sample\">Sample export "
+ },
+ {
+  "en": "Sample export and figures for illustration.",
+  "kind": "text",
+  "context": "Cheapest route</span><div class=\"t\"><div class=\"f g\" style=\"width:24%\"></div></div><span class=\"v\">€108</span></div> </div> <div class=\"sample\">Sample export and figures for illustration.</div> </div> </div> </section> <!-- 4. SHELF: everything else --> <section id=\"shelf\"> <div class=\"sec-head one\"> <div class=\"sec-co"
+ },
+ {
+  "en": "Every other Bitcoin need, on one shelf.",
+  "kind": "text",
+  "context": "v> </div> </section> <!-- 4. SHELF: everything else --> <section id=\"shelf\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>Every other Bitcoin need, on one shelf. <span>Each with the fact that matters most.</span></h2> </div> </div> <div class=\"shelf6\"> <a href=\"secure.html\" style=\"--c: var(--teal)\"><"
+ },
+ {
+  "en": "Each with the fact that matters most.",
+  "kind": "text",
+  "context": "verything else --> <section id=\"shelf\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>Every other Bitcoin need, on one shelf. <span>Each with the fact that matters most.</span></h2> </div> </div> <div class=\"shelf6\"> <a href=\"secure.html\" style=\"--c: var(--teal)\"><div><h3>Store</h3><p>Hardware wallets and mu"
+ },
+ {
+  "en": "Store",
+  "kind": "text",
+  "context": "ach with the fact that matters most.</span></h2> </div> </div> <div class=\"shelf6\"> <a href=\"secure.html\" style=\"--c: var(--teal)\"><div><h3>Store</h3><p>Hardware wallets and multisig, so your keys stay yours.</p></div><div class=\"meta\"><span>Hardware wallets from</span><b>€49</b></div></a> <a href="
+ },
+ {
+  "en": "Hardware wallets and multisig, so your keys stay yours.",
+  "kind": "text",
+  "context": "fact that matters most.</span></h2> </div> </div> <div class=\"shelf6\"> <a href=\"secure.html\" style=\"--c: var(--teal)\"><div><h3>Store</h3><p>Hardware wallets and multisig, so your keys stay yours.</p></div><div class=\"meta\"><span>Hardware wallets from</span><b>€49</b></div></a> <a href=\"lending.html\" style=\"--c: var(--purple)\"><div><h3>Borrow</h3><"
+ },
+ {
+  "en": "Hardware wallets from",
+  "kind": "text",
+  "context": " <a href=\"secure.html\" style=\"--c: var(--teal)\"><div><h3>Store</h3><p>Hardware wallets and multisig, so your keys stay yours.</p></div><div class=\"meta\"><span>Hardware wallets from</span><b>€49</b></div></a> <a href=\"lending.html\" style=\"--c: var(--purple)\"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><d"
+ },
+ {
+  "en": "Borrow",
+  "kind": "text",
+  "context": " stay yours.</p></div><div class=\"meta\"><span>Hardware wallets from</span><b>€49</b></div></a> <a href=\"lending.html\" style=\"--c: var(--purple)\"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><div class=\"meta\"><span>Rates from</span><b>5% p.a.</b></div></a> <a href=\"tax.html\" style=\"--c"
+ },
+ {
+  "en": "Loans against Bitcoin without selling it.",
+  "kind": "text",
+  "context": "p></div><div class=\"meta\"><span>Hardware wallets from</span><b>€49</b></div></a> <a href=\"lending.html\" style=\"--c: var(--purple)\"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><div class=\"meta\"><span>Rates from</span><b>5% p.a.</b></div></a> <a href=\"tax.html\" style=\"--c: var(--blue)\"><div><h3>Tax</h3><p>Reporting tool"
+ },
+ {
+  "en": "Rates from",
+  "kind": "text",
+  "context": "></a> <a href=\"lending.html\" style=\"--c: var(--purple)\"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><div class=\"meta\"><span>Rates from</span><b>5% p.a.</b></div></a> <a href=\"tax.html\" style=\"--c: var(--blue)\"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class=\"m"
+ },
+ {
+  "en": "5% p.a.",
+  "kind": "text",
+  "context": "\"lending.html\" style=\"--c: var(--purple)\"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><div class=\"meta\"><span>Rates from</span><b>5% p.a.</b></div></a> <a href=\"tax.html\" style=\"--c: var(--blue)\"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class=\"meta\"><span>Covers"
+ },
+ {
+  "en": "Reporting tools and country guides.",
+  "kind": "text",
+  "context": "ut selling it.</p></div><div class=\"meta\"><span>Rates from</span><b>5% p.a.</b></div></a> <a href=\"tax.html\" style=\"--c: var(--blue)\"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class=\"meta\"><span>Covers</span><b>13 countries</b></div></a> <a href=\"bots.html\" style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and"
+ },
+ {
+  "en": "Covers",
+  "kind": "text",
+  "context": "% p.a.</b></div></a> <a href=\"tax.html\" style=\"--c: var(--blue)\"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class=\"meta\"><span>Covers</span><b>13 countries</b></div></a> <a href=\"bots.html\" style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange "
+ },
+ {
+  "en": "13 countries",
+  "kind": "text",
+  "context": "</a> <a href=\"tax.html\" style=\"--c: var(--blue)\"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class=\"meta\"><span>Covers</span><b>13 countries</b></div></a> <a href=\"bots.html\" style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div"
+ },
+ {
+  "en": "Automate",
+  "kind": "text",
+  "context": "ols and country guides.</p></div><div class=\"meta\"><span>Covers</span><b>13 countries</b></div></a> <a href=\"bots.html\" style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div class=\"meta\"><span>Choose from</span><b>3 bot partners</b></div></a> <a href"
+ },
+ {
+  "en": "DCA and trading bots that run on your exchange account.",
+  "kind": "text",
+  "context": "guides.</p></div><div class=\"meta\"><span>Covers</span><b>13 countries</b></div></a> <a href=\"bots.html\" style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div class=\"meta\"><span>Choose from</span><b>3 bot partners</b></div></a> <a href=\"treasury.html\" style=\"--c: var(--indigo)\"><div><h3>Treasury</"
+ },
+ {
+  "en": "Choose from",
+  "kind": "text",
+  "context": " <a href=\"bots.html\" style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div class=\"meta\"><span>Choose from</span><b>3 bot partners</b></div></a> <a href=\"treasury.html\" style=\"--c: var(--indigo)\"><div><h3>Treasury</h3><p>Custody and execution for companies and"
+ },
+ {
+  "en": "3 bot partners",
+  "kind": "text",
+  "context": "style=\"--c: var(--pink)\"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div class=\"meta\"><span>Choose from</span><b>3 bot partners</b></div></a> <a href=\"treasury.html\" style=\"--c: var(--indigo)\"><div><h3>Treasury</h3><p>Custody and execution for companies and family offices.</p></di"
+ },
+ {
+  "en": "Custody and execution for companies and family offices.",
+  "kind": "text",
+  "context": "div><div class=\"meta\"><span>Choose from</span><b>3 bot partners</b></div></a> <a href=\"treasury.html\" style=\"--c: var(--indigo)\"><div><h3>Treasury</h3><p>Custody and execution for companies and family offices.</p></div><div class=\"meta\"><span>Built for:</span><b>companies</b></div></a> <a href=\"mining.html\" style=\"--c: var(--yellow)\"><div><h3>Mine</h3><p>Hostin"
+ },
+ {
+  "en": "Built for:",
+  "kind": "text",
+  "context": "ef=\"treasury.html\" style=\"--c: var(--indigo)\"><div><h3>Treasury</h3><p>Custody and execution for companies and family offices.</p></div><div class=\"meta\"><span>Built for:</span><b>companies</b></div></a> <a href=\"mining.html\" style=\"--c: var(--yellow)\"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p><"
+ },
+ {
+  "en": "companies",
+  "kind": "text",
+  "context": "tyle=\"--c: var(--indigo)\"><div><h3>Treasury</h3><p>Custody and execution for companies and family offices.</p></div><div class=\"meta\"><span>Built for:</span><b>companies</b></div></a> <a href=\"mining.html\" style=\"--c: var(--yellow)\"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class=\"me"
+ },
+ {
+  "en": "Mine",
+  "kind": "text",
+  "context": "nd family offices.</p></div><div class=\"meta\"><span>Built for:</span><b>companies</b></div></a> <a href=\"mining.html\" style=\"--c: var(--yellow)\"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class=\"meta\"><span>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a> "
+ },
+ {
+  "en": "Hosting and hardware for home and pro miners.",
+  "kind": "text",
+  "context": "fices.</p></div><div class=\"meta\"><span>Built for:</span><b>companies</b></div></a> <a href=\"mining.html\" style=\"--c: var(--yellow)\"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class=\"meta\"><span>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a> </div> <p class=\"shelf-disclose\"><b style=\"col"
+ },
+ {
+  "en": "Partner's hosting price, in USD, from",
+  "kind": "text",
+  "context": "</a> <a href=\"mining.html\" style=\"--c: var(--yellow)\"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class=\"meta\"><span>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a> </div> <p class=\"shelf-disclose\"><b style=\"color:var(--text);font-weight:600\">What we earn:</b> some partners pay Vir"
+ },
+ {
+  "en": "$0.043/kWh",
+  "kind": "text",
+  "context": "r(--yellow)\"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class=\"meta\"><span>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a> </div> <p class=\"shelf-disclose\"><b style=\"color:var(--text);font-weight:600\">What we earn:</b> some partners pay Virtuse a referral fee "
+ },
+ {
+  "en": "What we earn:",
+  "kind": "text",
+  "context": "n>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a> </div> <p class=\"shelf-disclose\"><b style=\"color:var(--text);font-weight:600\">What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.</p> "
+ },
+ {
+  "en": "some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.",
+  "kind": "text",
+  "context": "g price, in USD, from</span><b>$0.043/kWh</b></div></a> </div> <p class=\"shelf-disclose\"><b style=\"color:var(--text);font-weight:600\">What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.</p> </section> <!-- 4b. HOW VIRTUSE WORKS (from the live site) --> <section id=\"how\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> "
+ },
+ {
+  "en": "How Virtuse works.",
+  "kind": "text",
+  "context": "</section> <!-- 4b. HOW VIRTUSE WORKS (from the live site) --> <section id=\"how\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>How Virtuse works. <span>Three simple steps to any Bitcoin service.</span></h2> </div> </div> <div class=\"how-log\"> <div class=\"how-log-item\"> <div cl"
+ },
+ {
+  "en": "Three simple steps to any Bitcoin service.",
+  "kind": "text",
+  "context": "OW VIRTUSE WORKS (from the live site) --> <section id=\"how\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>How Virtuse works. <span>Three simple steps to any Bitcoin service.</span></h2> </div> </div> <div class=\"how-log\"> <div class=\"how-log-item\"> <div class=\"how-log-marker\"><span class=\"how-log-dot\"></"
+ },
+ {
+  "en": "Step 01",
+  "kind": "text",
+  "context": "w-log-item\"> <div class=\"how-log-marker\"><span class=\"how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 01</span> <h3>Pick a service</h3> <p>Browse every Bitcoin-only category. Compare partners and fees side by side.</p> <a href=\"#shelf"
+ },
+ {
+  "en": "Pick a service",
+  "kind": "text",
+  "context": "ss=\"how-log-marker\"><span class=\"how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 01</span> <h3>Pick a service</h3> <p>Browse every Bitcoin-only category. Compare partners and fees side by side.</p> <a href=\"#shelf\" class=\"how-card-cta\">Browse all se"
+ },
+ {
+  "en": "Browse every Bitcoin-only category. Compare partners and fees side by side.",
+  "kind": "text",
+  "context": "how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 01</span> <h3>Pick a service</h3> <p>Browse every Bitcoin-only category. Compare partners and fees side by side.</p> <a href=\"#shelf\" class=\"how-card-cta\">Browse all services <svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\" s"
+ },
+ {
+  "en": "Browse all services",
+  "kind": "text",
+  "context": "ick a service</h3> <p>Browse every Bitcoin-only category. Compare partners and fees side by side.</p> <a href=\"#shelf\" class=\"how-card-cta\">Browse all services <svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-line"
+ },
+ {
+  "en": "Step 02",
+  "kind": "text",
+  "context": "w-log-item\"> <div class=\"how-log-marker\"><span class=\"how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 02</span> <h3>Connect to the partner</h3> <p>Sign up with the regulated partner. We never hold your keys or funds.</p> <a href=\"conc"
+ },
+ {
+  "en": "Connect to the partner",
+  "kind": "text",
+  "context": "ss=\"how-log-marker\"><span class=\"how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 02</span> <h3>Connect to the partner</h3> <p>Sign up with the regulated partner. We never hold your keys or funds.</p> <a href=\"concierge.html?utm_source=concierge&amp;utm_medi"
+ },
+ {
+  "en": "Sign up with the regulated partner. We never hold your keys or funds.",
+  "kind": "text",
+  "context": "dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 02</span> <h3>Connect to the partner</h3> <p>Sign up with the regulated partner. We never hold your keys or funds.</p> <a href=\"concierge.html?utm_source=concierge&amp;utm_medium=how\" class=\"how-card-cta\">Find partners in 60 seconds <svg viewBox=\"0 0 16 16\" fill=\""
+ },
+ {
+  "en": "Step 03",
+  "kind": "text",
+  "context": "w-log-item\"> <div class=\"how-log-marker\"><span class=\"how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 03</span> <h3>Grow your stack</h3> <p>Set your rhythm, compare every partner's fees, and automate with trading bots.</p> <a href=\"st"
+ },
+ {
+  "en": "Grow your stack",
+  "kind": "text",
+  "context": "ss=\"how-log-marker\"><span class=\"how-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 03</span> <h3>Grow your stack</h3> <p>Set your rhythm, compare every partner's fees, and automate with trading bots.</p> <a href=\"stacking.html?utm_source=stacking&amp;u"
+ },
+ {
+  "en": "Set your rhythm, compare every partner's fees, and automate with trading bots.",
+  "kind": "text",
+  "context": "ow-log-dot\"></span></div> <div class=\"how-log-body\"> <span class=\"how-log-num\">Step 03</span> <h3>Grow your stack</h3> <p>Set your rhythm, compare every partner's fees, and automate with trading bots.</p> <a href=\"stacking.html?utm_source=stacking&amp;utm_medium=how\" class=\"how-card-cta\">Plan my stack <svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidde"
+ },
+ {
+  "en": "Plan my stack",
+  "kind": "text",
+  "context": "compare every partner's fees, and automate with trading bots.</p> <a href=\"stacking.html?utm_source=stacking&amp;utm_medium=how\" class=\"how-card-cta\">Plan my stack <svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-line"
+ },
+ {
+  "en": "Not sure which shelf you need?",
+  "kind": "text",
+  "context": "nd\"/></svg></a> </div> </div> </div> </section> <!-- 5. NOT SURE --> <section id=\"finder\"> <div class=\"finder\"> <div><h3>Not sure which shelf you need?</h3><p>Answer five questions and see which partners match your criteria. It takes about 60 seconds.</p></div> <a class=\"btn btn-primary\" href=\"concierge."
+ },
+ {
+  "en": "Answer five questions and see which partners match your criteria. It takes about 60 seconds.",
+  "kind": "text",
+  "context": "/div> </div> </section> <!-- 5. NOT SURE --> <section id=\"finder\"> <div class=\"finder\"> <div><h3>Not sure which shelf you need?</h3><p>Answer five questions and see which partners match your criteria. It takes about 60 seconds.</p></div> <a class=\"btn btn-primary\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=finder\">Find partners in 60 seconds</a> </div> </sect"
+ },
+ {
+  "en": "Virtuse Brief.",
+  "kind": "text",
+  "context": " seconds</a> </div> </section> <!-- 6. LATEST BRIEF --> <section id=\"brief\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2> </div> </div> <div class=\"brief\"> <a class=\"issue\" id=\"briefIssue\" href=\"article.html?slug=bi"
+ },
+ {
+  "en": "Bitcoin-only, every Monday.",
+  "kind": "text",
+  "context": "v> </section> <!-- 6. LATEST BRIEF --> <section id=\"brief\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"> <h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2> </div> </div> <div class=\"brief\"> <a class=\"issue\" id=\"briefIssue\" href=\"article.html?slug=bitcoin-beat-the-war-november-still-"
+ },
+ {
+  "en": "Cover image: Bitcoin Beat the War. November Still Gets a Vote.",
+  "kind": "attr:alt",
+  "context": "war-november-still-gets-a-vote\"> <img id=\"briefImg\" src=\"https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg\" alt=\"Cover image: Bitcoin Beat the War. November Still Gets a Vote.\" loading=\"lazy\" onerror=\"this.remove()\"> <div class=\"issue-body\"> <span class=\"k\" id=\"briefMeta\">Latest Brief · 5 Oct 2026 · 3 min</span> "
+ },
+ {
+  "en": "Latest Brief · 5 Oct 2026 · 3 min",
+  "kind": "text",
+  "context": "in Beat the War. November Still Gets a Vote.\" loading=\"lazy\" onerror=\"this.remove()\"> <div class=\"issue-body\"> <span class=\"k\" id=\"briefMeta\">Latest Brief · 5 Oct 2026 · 3 min</span> <h3 id=\"briefTitle\">Bitcoin Beat the War. November Still Gets a Vote.</h3> <p id=\"briefExcerpt\">Up 65% against gold since the Februa"
+ },
+ {
+  "en": "Bitcoin Beat the War. November Still Gets a Vote.",
+  "kind": "text",
+  "context": "his.remove()\"> <div class=\"issue-body\"> <span class=\"k\" id=\"briefMeta\">Latest Brief · 5 Oct 2026 · 3 min</span> <h3 id=\"briefTitle\">Bitcoin Beat the War. November Still Gets a Vote.</h3> <p id=\"briefExcerpt\">Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to e"
+ },
+ {
+  "en": "Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.",
+  "kind": "text",
+  "context": "a\">Latest Brief · 5 Oct 2026 · 3 min</span> <h3 id=\"briefTitle\">Bitcoin Beat the War. November Still Gets a Vote.</h3> <p id=\"briefExcerpt\">Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.</p> <span class=\"more\">Read the issue →</span> </div> </a> <div class=\"signup\"> <div class=\"btc-spark\" id=\"btcSpark\" hidd"
+ },
+ {
+  "en": "Read the issue →",
+  "kind": "text",
+  "context": "f every major asset since the war began. October has the history to extend the lead. November has the history to take it back.</p> <span class=\"more\">Read the issue →</span> </div> </a> <div class=\"signup\"> <div class=\"btc-spark\" id=\"btcSpark\" hidden> <div class=\"btc-top\"><span>BTC / EUR"
+ },
+ {
+  "en": "BTC / EUR · 90 days",
+  "kind": "text",
+  "context": "e issue →</span> </div> </a> <div class=\"signup\"> <div class=\"btc-spark\" id=\"btcSpark\" hidden> <div class=\"btc-top\"><span>BTC / EUR · 90 days</span><b id=\"btcLast\"></b><em id=\"btcChg\"></em></div> <svg viewBox=\"0 0 300 56\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><defs><linearGradient i"
+ },
+ {
+  "en": "Get the Brief.",
+  "kind": "text",
+  "context": "path id=\"btcLine\" fill=\"none\" stroke=\"#f7931a\" stroke-width=\"1.8\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/></svg> </div> <h3>Get the Brief. <span>Free.</span></h3> <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p> <form class=\"brief-form\" id=\"briefForm\" data-"
+ },
+ {
+  "en": "Free.",
+  "kind": "text",
+  "context": "l=\"none\" stroke=\"#f7931a\" stroke-width=\"1.8\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/></svg> </div> <h3>Get the Brief. <span>Free.</span></h3> <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p> <form class=\"brief-form\" id=\"briefForm\" data-brief-form n"
+ },
+ {
+  "en": "Market, policy, mining. No tokens. No PR. One email, every Monday.",
+  "kind": "text",
+  "context": "oke-width=\"1.8\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/></svg> </div> <h3>Get the Brief. <span>Free.</span></h3> <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p> <form class=\"brief-form\" id=\"briefForm\" data-brief-form novalidate> <label for=\"email\" style=\"position:absolute;left:-9999px\">Email addre"
+ },
+ {
+  "en": "Get the Brief",
+  "kind": "text",
+  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Get the Brief</button> </form> <div class=\"brief-msg\" id=\"briefMsg\" aria-live=\"polite\"></div> <div class=\"fine\">Unsubscribe anytime. Not advice. <a h"
+ },
+ {
+  "en": "Unsubscribe anytime. Not advice.",
+  "kind": "text",
+  "context": "-primary\" type=\"submit\">Get the Brief</button> </form> <div class=\"brief-msg\" id=\"briefMsg\" aria-live=\"polite\"></div> <div class=\"fine\">Unsubscribe anytime. Not advice. <a href=\"news.html?utm_source=brief&amp;utm_medium=home\" style=\"color:var(--muted)\">All issues and the blog →</a></div> </div> </div> </section> "
+ },
+ {
+  "en": "All issues and the blog →",
+  "kind": "text",
+  "context": "=\"polite\"></div> <div class=\"fine\">Unsubscribe anytime. Not advice. <a href=\"news.html?utm_source=brief&amp;utm_medium=home\" style=\"color:var(--muted)\">All issues and the blog →</a></div> </div> </div> </section> <!-- 7. QUICK ANSWERS --> <section id=\"answers\" class=\"qa\"> <div class=\"sec-head one\"> <div cla"
+ },
+ {
+  "en": "Quick answers.",
+  "kind": "text",
+  "context": "/div> </div> </section> <!-- 7. QUICK ANSWERS --> <section id=\"answers\" class=\"qa\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"><h2>Quick answers. <span>The four that matter first.</span></h2></div> </div> <details open><summary>Is Virtuse an exchange?</summary><p>No. Virtuse is an independent com"
+ },
+ {
+  "en": "The four that matter first.",
+  "kind": "text",
+  "context": "section> <!-- 7. QUICK ANSWERS --> <section id=\"answers\" class=\"qa\"> <div class=\"sec-head one\"> <div class=\"sec-copy\"><h2>Quick answers. <span>The four that matter first.</span></h2></div> </div> <details open><summary>Is Virtuse an exchange?</summary><p>No. Virtuse is an independent comparison hub. You buy, store and bo"
+ },
+ {
+  "en": "Is Virtuse an exchange?",
+  "kind": "text",
+  "context": " class=\"sec-head one\"> <div class=\"sec-copy\"><h2>Quick answers. <span>The four that matter first.</span></h2></div> </div> <details open><summary>Is Virtuse an exchange?</summary><p>No. Virtuse is an independent comparison hub. You buy, store and borrow on the partner's own platform, under its licence.</p></details> <detail"
+ },
+ {
+  "en": "No. Virtuse is an independent comparison hub. You buy, store and borrow on the partner's own platform, under its licence.",
+  "kind": "text",
+  "context": "ass=\"sec-copy\"><h2>Quick answers. <span>The four that matter first.</span></h2></div> </div> <details open><summary>Is Virtuse an exchange?</summary><p>No. Virtuse is an independent comparison hub. You buy, store and borrow on the partner's own platform, under its licence.</p></details> <details><summary>Does Virtuse ever hold my Bitcoin?</summary><p>No. Virtuse never holds coins, keys or euros, and never places orders for yo"
+ },
+ {
+  "en": "Does Virtuse ever hold my Bitcoin?",
+  "kind": "text",
+  "context": "p>No. Virtuse is an independent comparison hub. You buy, store and borrow on the partner's own platform, under its licence.</p></details> <details><summary>Does Virtuse ever hold my Bitcoin?</summary><p>No. Virtuse never holds coins, keys or euros, and never places orders for you.</p></details> <details><summary>Are the partners regulated?</sum"
+ },
+ {
+  "en": "No. Virtuse never holds coins, keys or euros, and never places orders for you.",
+  "kind": "text",
+  "context": " You buy, store and borrow on the partner's own platform, under its licence.</p></details> <details><summary>Does Virtuse ever hold my Bitcoin?</summary><p>No. Virtuse never holds coins, keys or euros, and never places orders for you.</p></details> <details><summary>Are the partners regulated?</summary><p>Each partner operates under its own licence or registration where its service requi"
+ },
+ {
+  "en": "Are the partners regulated?",
+  "kind": "text",
+  "context": "es Virtuse ever hold my Bitcoin?</summary><p>No. Virtuse never holds coins, keys or euros, and never places orders for you.</p></details> <details><summary>Are the partners regulated?</summary><p>Each partner operates under its own licence or registration where its service requires one. We check this before listing a partner, and each partne"
+ },
+ {
+  "en": "Each partner operates under its own licence or registration where its service requires one. We check this before listing a partner, and each partner card shows the details.",
+  "kind": "text",
+  "context": "y><p>No. Virtuse never holds coins, keys or euros, and never places orders for you.</p></details> <details><summary>Are the partners regulated?</summary><p>Each partner operates under its own licence or registration where its service requires one. We check this before listing a partner, and each partner card shows the details.</p></details> <details><summary>Which countries and languages are covered?</summary><p>The site is in 10 languages and the tax tools cover 13 EU countries."
+ },
+ {
+  "en": "Which countries and languages are covered?",
+  "kind": "text",
+  "context": "gistration where its service requires one. We check this before listing a partner, and each partner card shows the details.</p></details> <details><summary>Which countries and languages are covered?</summary><p>The site is in 10 languages and the tax tools cover 13 EU countries. Each partner decides where it serves customers, so check the partner's page fo"
+ },
+ {
+  "en": "The site is in 10 languages and the tax tools cover 13 EU countries. Each partner decides where it serves customers, so check the partner's page for your country.",
+  "kind": "text",
+  "context": "s before listing a partner, and each partner card shows the details.</p></details> <details><summary>Which countries and languages are covered?</summary><p>The site is in 10 languages and the tax tools cover 13 EU countries. Each partner decides where it serves customers, so check the partner's page for your country.</p></details> <a class=\"all\" href=\"faq.html\">All questions →</a> </section> <footer class=\"footer-main\"> <div class=\"footer-inner\"> <div c"
+ },
+ {
+  "en": "All questions →",
+  "kind": "text",
+  "context": "13 EU countries. Each partner decides where it serves customers, so check the partner's page for your country.</p></details> <a class=\"all\" href=\"faq.html\">All questions →</a> </section> <footer class=\"footer-main\"> <div class=\"footer-inner\"> <div class=\"footer-logo\"><div style=\"display:flex;align-items:flex-end;"
+ },
+ {
+  "en": "Company",
+  "kind": "text",
+  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo"
+ },
+ {
+  "en": "About Us",
+  "kind": "text",
+  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo-foot-badge\">Soon</span></a><a hre"
+ },
+ {
+  "en": "FAQ",
+  "kind": "text",
+  "context": "sury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo-foot-badge\">Soon</span></a><a href=\"concierge.html\">Partner"
+ },
+ {
+  "en": "Guides",
+  "kind": "text",
+  "context": "ilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div><div class=\"footer-col\"><h4>Guides</h4><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href"
+ },
+ {
+  "en": "Bitcoin tax",
+  "kind": "text",
+  "context": "footer-col\"><h4>Guides</h4><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href"
+ },
+ {
+  "en": "DCA calculator",
+  "kind": "text",
+  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"ter"
+ },
+ {
+  "en": "Sell vs borrow",
+  "kind": "text",
+  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a "
+ },
+ {
+  "en": "Inheritance",
+  "kind": "text",
+  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a"
+ },
+ {
+  "en": "Legal",
+  "kind": "text",
+  "context": "lator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
+ },
+ {
+  "en": "Terms &amp; Conditions",
+  "kind": "text",
+  "context": "rrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
+ },
+ {
+  "en": "Privacy Policy",
+  "kind": "text",
+  "context": "itance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All r"
+ },
+ {
+  "en": "AML &amp; Compliance",
+  "kind": "text",
+  "context": "-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brie"
+ },
+ {
+  "en": "&copy; 2018–2026 Virtuse Group. All rights reserved.",
+  "kind": "text",
+  "context": "=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"foote"
+ },
+ {
+  "en": "Virtuse Brief &mdash; the weekly desk from Virtuse.",
+  "kind": "text",
+  "context": "></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">Englis"
+ },
+ {
+  "en": "Read it &rarr;",
+  "kind": "text",
+  "context": " 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">English</a><a href=\"sk/index.html\" hrefla"
+ },
+ {
+  "en": "Languages",
+  "kind": "attr:aria-label",
+  "context": "footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">English</a><a href=\"sk/index.html\" hreflang=\"sk\">Slovenčina</a><a href=\"cs/index.html\" hreflang=\"cs\">Če"
+ },
+ {
+  "en": "Virtuse is an independent comparison hub. It does not hold client funds or keys, does not execute orders and does not give investment advice. Services are provided by the listed partners under their own licences. Fees are as published by each partner and can change.",
+  "kind": "text",
+  "context": "ml\" hreflang=\"es\">Español</a><a href=\"uk/index.html\" hreflang=\"uk\">Українська</a><a href=\"ru/index.html\" hreflang=\"ru\">Русский</a></nav> <p class=\"legal\">Virtuse is an independent comparison hub. It does not hold client funds or keys, does not execute orders and does not give investment advice. Services are provided by the listed partners under their own licences. Fees are as published by each partner and can change.</p> </div> <div class=\"footer-wordmark\" aria-hidden=\"true\"> <span class=\"footer-wordmark-icon-wrap\"><svg class=\"footer-wordmark-icon\" viewBox=\"0 "
+ },
+ {
+  "en": "V",
+  "kind": "text",
+  "context": "gWA)\" d=\"M30 0h220l250 483H280Z\"/><path fill=\"url(#vlgWB)\" d=\"M510 0h245L645 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></s"
+ },
+ {
+  "en": "i",
+  "kind": "text",
+  "context": "3H280Z\"/><path fill=\"url(#vlgWB)\" d=\"M510 0h245L645 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </foote"
+ },
+ {
+  "en": "r",
+  "kind": "text",
+  "context": "#vlgWB)\" d=\"M510 0h245L645 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script>"
+ },
+ {
+  "en": "t",
+  "kind": "text",
+  "context": "5 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var amt"
+ },
+ {
+  "en": "u",
+  "kind": "text",
+  "context": "> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var amt = document.getElementByI"
+ },
+ {
+  "en": "s",
+  "kind": "text",
+  "context": "er-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var amt = document.getElementById('amt'), out = document."
+ },
+ {
+  "en": "e",
+  "kind": "text",
+  "context": "lass=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var amt = document.getElementById('amt'), out = document.getElementById('amtOut');"
+ },
+ {
+  "en": "Close menu",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "Cover image: ",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "Please enter a valid email address.",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "You're in. Brief goes out Monday.",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "Something went wrong. Please try again.",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "Network error. Please try again.",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "You're on the list. We'll email you once, when the free audit opens.",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "Sending...",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": "Latest Brief · ",
+  "kind": "js",
+  "context": "string shown by the page script"
+ },
+ {
+  "en": " min",
+  "kind": "js",
+  "context": "string shown by the page script"
+ }
+]
