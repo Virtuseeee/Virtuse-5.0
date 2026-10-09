@@ -3512,7 +3512,66 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/uk/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/cs/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
   </url>
   <url>
@@ -3521,7 +3580,100 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/pl/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/hu/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/asset-returns.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
   </url>
   <url>
@@ -3530,7 +3682,66 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/uk/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/cs/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
   </url>
   <url>
@@ -3539,7 +3750,100 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/pl/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/hu/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/btc-monthly-returns.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
   </url>
   <url>
