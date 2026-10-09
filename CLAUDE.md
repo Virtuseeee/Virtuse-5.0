@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-09) — i18n proofreading live (PR Virtuseeee/Virtuse-5.0#53, merge `753d0ce5`; **live on production** — user ran `deploy_site.sh 1261ba3e 753d0ce5`, DEPLOY OK; 18/18 md5-verified)
+
+- Applied the safe fixes from Ras's handover `HANDOVER-claude-i18n.md` (iCloud VWM 5.0/HANDOVERS) to `i18n-tools/home/<lang>.json` and `i18n-tools/cfo/<lang>.json` (shared nav/footer strings fixed on the CFO pages too), rebuilt homepage + CFO page in 9 languages. Builder additions in `home/build_lang.py`: Brief headline gets a localized "(in English)" label (static + JS), JSON-LD description localized (`LD_DESC`), hu head hyphenation (`HEAD_FIX`), es four-digit numbers ungrouped (`num`). Footer "Legal": sk "Právne informácie", cs "Právní informace", fr "Mentions légales".
+- New SK hero: "Všetky bitcoinové služby a ich <grad>ceny.</grad> Prehľadne a vedľa seba."
+- Open for Ras (in the PR): pl vy/ty mix (text "Państwo", buttons imperative); es "socios" → "partners/proveedores" sitewide; fr nav CTA "Trouver des partenaires" wraps to two lines ≤359 px.
+- No `gh` on this Mac: PRs are created/merged via the GitHub REST API with the Keychain token (`git credential fill`), never printed.
+
 ## Session status (2026-10-09) — Virtuse CFO page live in all 10 languages (main `c772518b`; **live on production** — user ran `deploy_site.sh 8edf854c c772518b`, DEPLOY OK; 19/19 md5-verified on virtuse.com and staging)
 
 - `<lang>/cfo.html` (sk cs pl de fr es hu uk ru) generated from `cfo.html` by `i18n-tools/cfo/build_cfo.py` + `<lang>.json` (243 strings; title/description translated; canonical + og:url `/<lang>/cfo.html`; still `noindex`). Language menu on every CFO page (EN too) links the CFO page per language; homepages rebuilt so their CFO links stay in-language.
