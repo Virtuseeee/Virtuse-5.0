@@ -234,6 +234,21 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
 - `kind=checklist` (step 2, after the partner click) is rejected until
   verified per-partner steps exist.
 
+## POST /waitlist (Virtuse CFO waitlist)
+
+`src/waitlist.js`, tests in `waitlist.test.mjs`. Body `{ email, hp, source }`, where `source` is one of `cfo_page`, `home_buy`, `home_cfo` (optional).
+
+- A sign-up joins its **own Resend audience** (secret `RESEND_CFO_AUDIENCE_ID`), never the Brief segment. Contacts are created audience-scoped (`POST /audiences/{id}/contacts`), so a Brief reader can still join.
+- New sign-ups get one confirmation email (from `RESEND_SEND_FROM`, else `RESEND_FROM_EMAIL`) with a "Leave the waitlist" link: the normal signed unsubscribe link plus `&list=cfo`, which removes them from the CFO audience only and leaves any Brief subscription alone.
+- Honeypot, origin gate and the shared per-IP rate limit work as on `/subscribe`.
+- Without `RESEND_CFO_AUDIENCE_ID` the route answers **503** ("The waitlist is not open yet"), so the code can be deployed before the audience exists without losing sign-ups silently.
+
+Setup, once:
+
+1. Resend -> Audiences -> create "Virtuse CFO waitlist", copy its id.
+2. `npx wrangler secret put RESEND_CFO_AUDIENCE_ID` (paste the id at the prompt).
+3. Deploy with `deploy_worker.sh` (it deploys origin/main).
+
 ## Unsubscribe
 
 The welcome email's unsubscribe link points at this Worker's own
