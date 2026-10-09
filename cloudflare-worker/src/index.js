@@ -55,6 +55,7 @@
 // built worker wrangler bundles).
 import { handleSend } from '../src/send.js';
 import { handleWpProxy, WP_PREFIX } from '../src/wp-proxy.js';
+import { handleWaitlist, leaveWaitlist } from '../src/waitlist.js';
 
 const ALLOWED_ORIGINS = [
   'https://staging.virtuse.com',
@@ -282,8 +283,12 @@ async function handleUnsubscribe(env, url) {
     return htmlResponse(400, unsubscribePage('That unsubscribe link is invalid.'));
   }
 
+  // &list=cfo: the link in the CFO waitlist confirmation -- leave only the
+  // waitlist, keep any Brief subscription (see src/waitlist.js).
+  const cfoOnly = url.searchParams.get('list') === 'cfo';
   try {
-    await removeFromSegment(env, email);
+    if (cfoOnly) await leaveWaitlist(env, email);
+    else await removeFromSegment(env, email);
   } catch (e) {
     console.error(e);
     return htmlResponse(
@@ -292,6 +297,7 @@ async function handleUnsubscribe(env, url) {
     );
   }
 
+  if (cfoOnly) return htmlResponse(200, unsubscribePage("You've left the Virtuse CFO waitlist. We won't email you about it again."));
   return htmlResponse(200, unsubscribePage("You've been unsubscribed from the Virtuse Brief. Sorry to see you go."));
 }
 
@@ -676,6 +682,10 @@ export default {
         emailRe: EMAIL_RE,
         welcomeLangs: Object.keys(WELCOME_EMAIL_TEMPLATES),
       });
+    }
+
+    if (url.pathname === '/waitlist') {
+      return handleWaitlist(request, env, origin, { json, isRateLimited, emailRe: EMAIL_RE, buildUnsubscribeUrl });
     }
 
     if (url.pathname !== '/subscribe') {
