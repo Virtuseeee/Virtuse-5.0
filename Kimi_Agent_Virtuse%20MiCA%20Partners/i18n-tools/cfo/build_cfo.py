@@ -82,6 +82,11 @@ def build(L):
     h = one(h, '</head>', '<style>.spot, .tiles > * { min-width: 0; } .tile h3, .plan h3 { hyphens: auto; overflow-wrap: break-word; }\n'
             '@media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }'
             '@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>\n</head>')
+    if L in B.SHORT_CTA:  # long nav button label: short form on the smallest phones
+        h, k = re.subn(r'(<a class="nav-cta"[^>]*>)([^<]+)(</a>)', lambda m: m.group(1) + '<span class="cta-full">' + m.group(2) + '</span><span class="cta-short">' + B.SHORT_CTA[L] + '</span>' + m.group(3), h)
+        if k != 1:
+            sys.exit('%s: nav-cta not found' % L)
+        h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 359px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
     h = B.localise_numbers(h, L)
 
     for bad in ('<html lang="en"', "'en-IE'", 'Your AI CFO for Bitcoin |'):

@@ -1240,7 +1240,7 @@ function feeIndexBody(relFile, lang) {
     const ranked = rankRoutes(FEE_ROWS, amt);
     if (lang === 'es') {
       return `<h3>${esc(formatEurEs(amt))} al mes</h3>` +
-        tableHtml(['Puesto', 'Socio', 'Método', 'Comisión', 'Comisiones anuales'], ranked.map((r, i) => [
+        tableHtml(['Puesto', 'Partner', 'Método', 'Comisión', 'Comisiones anuales'], ranked.map((r, i) => [
           esc(String(i + 1)),
           esc(r.partner),
           esc(methodEs(r.method)),
@@ -4172,7 +4172,7 @@ function esHome(relFile) { return { name: 'Inicio', href: toRoot(relFile, 'es/in
   const faqs = [
     { q: '¿Qué países cubre este resumen?', a: `Cubre ${N} países de la UE: ${COUNTRIES.map((c) => nameEs(c.id)).join(', ')}. Datos del ${asOfEs}, procedentes del módulo Virtuse Tax.` },
     { q: '¿Es asesoramiento fiscal?', a: 'No. Resumen orientativo 2026, no es asesoramiento fiscal. Confirme las normas del año en curso con un asesor local.' },
-    { q: '¿Informa Virtuse de mis activos a la administración tributaria?', a: 'No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los socios realizan su propio KYC.' },
+    { q: '¿Informa Virtuse de mis activos a la administración tributaria?', a: 'No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los partners realizan su propio KYC.' },
     { q: '¿Dónde puedo revisar también la herencia?', a: `En el módulo Tax & Inheritance Agent, con los mismos ${N} países y una comprobación de preparación para la multifirma.` }
   ];
   const answer = finalizeAnswer([
@@ -4217,7 +4217,7 @@ for (const c of COUNTRIES) {
     { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${lcEs(t.gainTax)}. Resumen orientativo 2026, no es asesoramiento fiscal.` },
     { q: `¿Existe ${inN} una exención por periodo de tenencia?`, a: `${t.exemption}. Antes de declarar, confirme las normas del año en curso con un asesor fiscal local.` },
     { q: `¿Cómo se declaran las ganancias de Bitcoin ${inN}?`, a: `${t.filing}. ${t.note}` },
-    { q: '¿Guarda Virtuse mi Bitcoin o presenta mi declaración?', a: `No. Virtuse nunca guarda sus claves. El KYC y el registro se hacen con el socio. El Tax Agent muestra el resumen de ${N} países; la declaración la prepara un asesor fiscal cualificado.` }
+    { q: '¿Guarda Virtuse mi Bitcoin o presenta mi declaración?', a: `No. Virtuse nunca guarda sus claves. El KYC y el registro se hacen con el partner. El Tax Agent muestra el resumen de ${N} países; la declaración la prepara un asesor fiscal cualificado.` }
   ];
   const answer = finalizeAnswer([
     `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(t.gainTax)}.`,
@@ -4270,10 +4270,10 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const deFile = 'de/bitcoin-dca-rechner/index.html';
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
-    { q: '¿Predice esta calculadora el precio de Bitcoin?', a: 'No. Solo compara las comisiones de los socios según el baremo publicado. No modela la rentabilidad del precio de Bitcoin.' },
+    { q: '¿Predice esta calculadora el precio de Bitcoin?', a: 'No. Solo compara las comisiones de los partners según el baremo publicado. No modela la rentabilidad del precio de Bitcoin.' },
     { q: '¿Qué plan tipo se usa?', a: `Una aportación inicial de 500 € y después 100 € al mes durante 12 meses, con datos del ${feeAsOfEs}. La clasificación se basa en las comisiones del primer año.` },
     { q: '¿Qué vía es la más barata en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist.` },
-    { q: '¿Es asesoramiento de inversión?', a: 'No. Solo con fines educativos. El KYC se realiza con el socio. Virtuse nunca guarda sus claves.' }
+    { q: '¿Es asesoramiento de inversión?', a: 'No. Solo con fines educativos. El KYC se realiza con el partner. Virtuse nunca guarda sus claves.' }
   ];
   const answer = finalizeAnswer([
     `Con datos del ${feeAsOfEs}, en un ejemplo de DCA basado solo en comisiones (500 € y después 100 € al mes durante 12 meses), ${win.partner} queda en primer lugar.`,
@@ -4310,7 +4310,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
     bodyHtml: `
 <p>Ejemplo tipo: 500 € y después 100 € al mes × 12. La misma fórmula que en el módulo Stacking Strategist.</p>
 <h2>Clasificación con 100 € al mes</h2>
-${tableHtml(['Puesto', 'Socio', 'Método', 'Comisión variable', 'Comisiones anuales'], ranked.map((r, i) => [
+${tableHtml(['Puesto', 'Partner', 'Método', 'Comisión variable', 'Comisiones anuales'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodEs(r.method)), esc(formatPctSk(r.pct)), esc(formatEurEs(r.annualDrag))
 ]))}
 ${faqHtml(faqs, 'Preguntas frecuentes')}
@@ -4325,13 +4325,13 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
     { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender a cambio de dinero. Los intercambios cripto por cripto tributan en algunos países (Alemania, República Checa, España) y en otros no (Polonia, Francia, Austria, Hungría). Las exenciones varían: Alemania, 0 % tras 1 año de tenencia; la República Checa, prueba temporal de 3 años; Polonia, sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
-    { q: '¿Es un préstamo el mismo hecho imponible que una venta?', a: 'En este resumen, no. Pero hay intereses, riesgo de liquidación y KYC con el socio. El Loan & Liquidity Copilot calcula las cifras concretas.' },
-    { q: '¿Qué es el riesgo de liquidación?', a: 'Si el valor de la garantía cae hasta el umbral del socio, este puede vender la garantía para devolver el préstamo. Virtuse nunca guarda sus claves ni la garantía.' },
+    { q: '¿Es un préstamo el mismo hecho imponible que una venta?', a: 'En este resumen, no. Pero hay intereses, riesgo de liquidación y KYC con el partner. El Loan & Liquidity Copilot calcula las cifras concretas.' },
+    { q: '¿Qué es el riesgo de liquidación?', a: 'Si el valor de la garantía cae hasta el umbral del partner, este puede vender la garantía para devolver el préstamo. Virtuse nunca guarda sus claves ni la garantía.' },
     { q: '¿Dónde calculo un importe concreto?', a: 'En el módulo Loan & Liquidity Copilot. Esta página solo explica la diferencia entre impuesto y riesgo a partir de los tipos publicados.' }
   ];
   const answer = finalizeAnswer([
     `Con datos del ${asOfEs}, vender Bitcoin puede generar impuestos (por ejemplo, hasta el 45 % en Alemania durante el primer año de tenencia, un 16 % en Rumanía desde 2026).`,
-    'Un préstamo respaldado por Bitcoin mantiene su posición en el mercado, pero añade intereses y riesgo de liquidación con el socio.',
+    'Un préstamo respaldado por Bitcoin mantiene su posición en el mercado, pero añade intereses y riesgo de liquidación con el partner.',
     'Resumen orientativo 2026, no es asesoramiento fiscal ni crediticio. Virtuse nunca guarda sus claves.'
   ], 'es');
   pushPage({
@@ -4367,7 +4367,7 @@ ${tableHtml(['País', 'Impuesto sobre las ganancias', 'Exención'], COUNTRIES.ma
   esc(meta.taxEs[c.id].exemption)
 ]))}
 <h2>Riesgo al pedir prestado</h2>
-<p>Los préstamos respaldados por Bitcoin los ofrecen socios regulados, no Virtuse. Usted mantiene la exposición al precio y paga intereses, y su garantía puede liquidarse. Virtuse nunca guarda la garantía.</p>
+<p>Los préstamos respaldados por Bitcoin los ofrecen partners regulados, no Virtuse. Usted mantiene la exposición al precio y paga intereses, y su garantía puede liquidarse. Virtuse nunca guarda la garantía.</p>
 ${faqHtml(faqs, 'Preguntas frecuentes')}
 `
   });

@@ -1565,7 +1565,7 @@
     {
       "id": "multisig",
       "name": "Multifirma 2 de 3",
-      "text": "Una sola frase semilla es un punto único de fallo, para usted y para sus herederos. Con una multifirma 2 de 3, usted tiene dos claves y un socio o un abogado tiene la tercera."
+      "text": "Una sola frase semilla es un punto único de fallo, para usted y para sus herederos. Con una multifirma 2 de 3, usted tiene dos claves y un partner o un abogado tiene la tercera."
     },
     {
       "id": "tested",

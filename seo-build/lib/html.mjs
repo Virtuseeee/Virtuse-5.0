@@ -501,7 +501,7 @@ export const CHROME = {
     asOfPrefix: 'Datos del',
     disclaimerTax: 'Resumen orientativo 2026 – no es asesoramiento fiscal.',
     disclaimerKeys: 'Virtuse nunca guarda sus claves.',
-    disclaimerKyc: 'El KYC y el registro se realizan en la plataforma regulada de cada socio. Virtuse es un hub no custodial y no guarda fondos ni datos de clientes de esas plataformas.',
+    disclaimerKyc: 'El KYC y el registro se realizan en la plataforma regulada de cada partner. Virtuse es un hub no custodial y no guarda fondos ni datos de clientes de esas plataformas.',
     privacy: 'Política de privacidad',
     terms: 'Términos y condiciones',
     locale: 'es_ES',
