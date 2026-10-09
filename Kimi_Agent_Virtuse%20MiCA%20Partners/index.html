@@ -828,7 +828,7 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (max-width: 640px) {
   .nav-inner { gap: 10px; }
   .lang-menu-btn { padding: 8px; }
-  .lang-menu-btn .code { display: none; }
+  .lang-menu-btn .lang-code { display: none; }
   .nav-cta { padding: 9px 12px; }
 }
 </style>
@@ -848,6 +848,84 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
 .footer-wordmark-icon { height: .8em; width: auto; }
 @media (max-width: 900px) { .footer-wordmark { margin-top: 88px; gap: 8px; opacity: 1; height: .66em; } .footer-wordmark-text { font-size: 1em; } .footer-wordmark-icon { height: .8em; } }
 @media (prefers-reduced-motion: reduce) { html.anim .footer-wordmark .wl, html.anim .footer-wordmark-icon-wrap { opacity: 1 !important; transform: none !important; transition: none !important; } }
+</style>
+<style>
+/* ===== COLOR v1: one accent per section, colour in the product, not the frame ===== */
+:root { --orange: #f7931a; --blue: #5faede; --green: #3fb950; --red: #f85149; --yellow: #f2c94c; --teal: #2dd4bf; --purple: #a78bfa; --pink: #f472b6; --indigo: #818cf8; }
+
+/* hero: soft orange-to-blue glow behind the cube; faint block grid on phones */
+.hero-visual::before { content: ""; position: absolute; inset: -12% -8%; z-index: 0; pointer-events: none;
+  background: radial-gradient(closest-side at 45% 50%, rgba(247,147,26,.16), rgba(95,174,222,.11) 55%, transparent 78%); filter: blur(12px); }
+.hero-visual canvas, .hero-visual .hero-poster { z-index: 1; }
+.hero3 { overflow-x: clip; }
+@media (max-width: 960px) {
+  .hero3 { position: relative; }
+  .hero3::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .05;
+    background-image: linear-gradient(var(--text) 1px, transparent 1px), linear-gradient(90deg, var(--text) 1px, transparent 1px); background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 70%, #000, transparent 70%); mask-image: radial-gradient(ellipse at 50% 70%, #000, transparent 70%); }
+}
+/* gradient keyword in the headline */
+.hero3 h1 .grad, .hero3 h1 .grad .w { background: linear-gradient(90deg, #ffb347 0%, var(--orange) 40%, var(--blue) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* section accents */
+#money { --acc: var(--green); }
+#buy { --acc: var(--orange); }
+#cfo { --acc: var(--blue); }
+#buy .k, #cfo .k { display: inline-flex !important; align-items: center; gap: 8px; }
+#buy .k::before, #cfo .k::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 18%, transparent); }
+.problem-fig { display: inline-flex; align-items: center; gap: 8px; }
+.problem-fig::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(63,185,80,.15); }
+.problem-card { transition: box-shadow .25s, border-color .25s; border: 1px solid transparent; }
+.problem-card:hover { border-color: rgba(63,185,80,.35); box-shadow: 0 18px 50px -24px rgba(63,185,80,.45); }
+
+/* Buy: warm firefish-style panel, big orange 10-year number, savings chart */
+#buy .panel { background: radial-gradient(120% 90% at 100% 0%, rgba(247,147,26,.30), transparent 55%), linear-gradient(145deg, #1a1006 0%, #3a1f08 100%); border: 1px solid rgba(247,147,26,.28); }
+#buy .row.head { color: rgba(255,214,170,.7); }
+#buy .row small { color: rgba(255,226,196,.62); }
+#buy .track { background: rgba(255,255,255,.08); }
+#buy .fill { background: linear-gradient(90deg, rgba(247,147,26,.55), var(--orange)); }
+#buy .fill.low { background: var(--green) !important; }
+#buy .src { color: rgba(255,226,196,.62); border-top-color: rgba(247,147,26,.2); }
+#buy .src a { color: #ffd6aa; }
+.diff { grid-template-columns: 1fr auto; align-items: end; column-gap: 18px; background: rgba(0,0,0,.28); border-color: rgba(247,147,26,.28); }
+.diff-txt { display: grid; gap: 4px; }
+.diff-txt > span { font-size: 13px; color: rgba(255,226,196,.75); }
+.diff .diff-big { font-size: 46px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; color: var(--orange); font-variant-numeric: tabular-nums; text-shadow: 0 0 30px rgba(247,147,26,.35); }
+.diff-txt em { font-style: normal; font-size: 13px; color: rgba(255,226,196,.75); }
+.diff .diff-txt em b { font-size: inherit; letter-spacing: 0; line-height: inherit; color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+.save-chart { width: 200px; height: 96px; display: block; }
+.save-chart text { font: 10px var(--mono); fill: rgba(255,226,196,.65); }
+@media (max-width: 640px) { .diff { grid-template-columns: 1fr; } .save-chart { width: 100%; height: 90px; margin-top: 10px; } .diff .diff-big { font-size: 40px; } }
+
+/* CFO section: blue */
+#cfo .audit-card { border-color: rgba(95,174,222,.30); background: radial-gradient(120% 80% at 100% 0%, rgba(95,174,222,.14), transparent 55%), var(--card); }
+#cfo .audit-card .tag { color: var(--blue); border-color: rgba(95,174,222,.45); }
+.abar .f { background: var(--red) !important; }
+.abar .f.g { background: var(--green) !important; }
+
+/* shelf: each category its own quiet colour */
+.shelf6 a { --c: var(--text); position: relative; border: 1px solid transparent; transition: background .15s, border-color .25s, box-shadow .25s; }
+.shelf6 a h3 { display: flex; align-items: center; gap: 10px; }
+.shelf6 a h3::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--c); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 60%, transparent); flex: none; }
+.shelf6 a h3::after { margin-left: auto; }
+.shelf6 a .meta b { color: var(--c); }
+.shelf6 a:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 18px 50px -24px color-mix(in srgb, var(--c) 55%, transparent); }
+
+/* badges: Soon orange, New blue */
+.nav-badge, .cfo-foot-badge { display: inline-flex; align-items: center; gap: 5px; }
+.nav-badge::before, .cfo-foot-badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); }
+body.stage-wait .nav-badge::before, body.stage-wait .cfo-foot-badge::before { background: var(--orange); }
+body.stage-wait .nav-badge, body.stage-wait .cfo-foot-badge { color: #ffc27a; border-color: rgba(247,147,26,.4); }
+body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color: #a8d8f5; border-color: rgba(95,174,222,.45); }
+
+/* Brief: live BTC sparkline */
+.btc-spark { margin-bottom: 18px; padding: 14px 16px 10px; border-radius: 12px; background: radial-gradient(100% 120% at 0% 0%, rgba(247,147,26,.12), transparent 60%), var(--inset); border: 1px solid var(--line); }
+.btc-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.btc-top span { font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.btc-top b { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: auto; }
+.btc-top em { font-style: normal; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.btc-top em.up { color: var(--green); } .btc-top em.down { color: var(--red); }
+.btc-spark svg { width: 100%; height: 56px; display: block; margin-top: 8px; }
 </style>
 <script type="application/ld+json" id="virtuse-ld">
 {
@@ -925,7 +1003,7 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
       <a class="nav-top" href="about.html">About</a>
     </nav>
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language: English"><span aria-hidden="true">&#127468;&#127463;</span><span class="code">EN</span></button>
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language: English"><span aria-hidden="true">&#127468;&#127463;</span><span class="lang-code">EN</span></button>
       <div class="lang-menu-panel" role="menu"><a href="index.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="sk/index.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="cs/index.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="de/index.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="pl/index.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="hu/index.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="fr/index.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="es/index.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="uk/index.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="ru/index.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
     </div>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
@@ -939,7 +1017,7 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
   <div class="hero3 hero">
     <div>
       <div class="eyebrow"><i></i>22 vetted partners · 7 categories · Bitcoin only</div>
-      <h1>Every Bitcoin service, compared. <span>Published prices, side by side.</span></h1>
+      <h1>Every Bitcoin service, <span class="grad">compared.</span> <span>Published prices, side by side.</span></h1>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="concierge.html?utm_source=concierge&amp;utm_medium=hero">Find partners in 60 seconds</a>
         <a class="btn btn-ghost" href="#shelf">See all services</a>
@@ -1061,9 +1139,21 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
           <div class="row" data-pct="0.8"><span><b>Kraken</b><small>Pro, tier 1 taker fee</small></span><span class="pct">0.8%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">€48</span></div>
         </div>
         <div class="diff">
-          <span>Difference between the highest and lowest published fee</span>
-          <b id="diffYr">€48 <small>a year</small></b>
-          <em>On <span id="diffBase">€6,000</span> of buys a year. Over 10 years: <span id="diff10">€480</span>.</em>
+          <div class="diff-txt">
+            <span>Difference between the highest and lowest published fee, over 10 years</span>
+            <b class="diff-big" id="diff10">€480</b>
+            <em><b id="diffYr">€48</b> a year on <b id="diffBase">€6,000</b> of buys a year.</em>
+          </div>
+          <svg class="save-chart" viewBox="0 0 220 96" aria-hidden="true">
+            <defs><linearGradient id="saveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".45"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs>
+            <path d="M8 80 L200 12 L200 80 Z" fill="url(#saveFill)"/>
+            <path d="M8 80 L200 12" stroke="#f7931a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M8 80 L200 58.75" stroke="#f2c94c" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
+            <path d="M8 80 L200 80" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="200" cy="12" r="3.5" fill="#f7931a"/>
+            <text x="8" y="94">year 0</text><text x="200" y="94" text-anchor="end">year 10</text>
+            <text x="194" y="8" text-anchor="end" id="saveEnd">€480</text>
+          </svg>
         </div>
         <p class="src">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href="/bitcoin-fee-index/">Full Fee Index</a></p>
       </div>
@@ -1113,12 +1203,12 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
       </div>
     </div>
     <div class="shelf6">
-      <a href="secure.html"><div><h3>Store</h3><p>Hardware wallets and multisig, so your keys stay yours.</p></div><div class="meta"><span>Hardware wallets from</span><b>€49</b></div></a>
-      <a href="lending.html"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><div class="meta"><span>Rates from</span><b>5% p.a.</b></div></a>
-      <a href="tax.html"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class="meta"><span>Covers</span><b>13 countries</b></div></a>
-      <a href="bots.html"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div class="meta"><span>Choose from</span><b>3 bot partners</b></div></a>
-      <a href="treasury.html"><div><h3>Treasury</h3><p>Custody and execution for companies and family offices.</p></div><div class="meta"><span>Built for:</span><b>companies</b></div></a>
-      <a href="mining.html"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class="meta"><span>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a>
+      <a href="secure.html" style="--c: var(--teal)"><div><h3>Store</h3><p>Hardware wallets and multisig, so your keys stay yours.</p></div><div class="meta"><span>Hardware wallets from</span><b>€49</b></div></a>
+      <a href="lending.html" style="--c: var(--purple)"><div><h3>Borrow</h3><p>Loans against Bitcoin without selling it.</p></div><div class="meta"><span>Rates from</span><b>5% p.a.</b></div></a>
+      <a href="tax.html" style="--c: var(--blue)"><div><h3>Tax</h3><p>Reporting tools and country guides.</p></div><div class="meta"><span>Covers</span><b>13 countries</b></div></a>
+      <a href="bots.html" style="--c: var(--pink)"><div><h3>Automate</h3><p>DCA and trading bots that run on your exchange account.</p></div><div class="meta"><span>Choose from</span><b>3 bot partners</b></div></a>
+      <a href="treasury.html" style="--c: var(--indigo)"><div><h3>Treasury</h3><p>Custody and execution for companies and family offices.</p></div><div class="meta"><span>Built for:</span><b>companies</b></div></a>
+      <a href="mining.html" style="--c: var(--yellow)"><div><h3>Mine</h3><p>Hosting and hardware for home and pro miners.</p></div><div class="meta"><span>Partner's hosting price, in USD, from</span><b>$0.043/kWh</b></div></a>
     </div>
     <p class="shelf-disclose"><b style="color:var(--text);font-weight:600">What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.</p>
   </section>
@@ -1192,6 +1282,10 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
         </div>
       </a>
       <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 days</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+        </div>
         <h3>Get the Brief. <span>Free.</span></h3>
         <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p>
         <form class="brief-form" id="briefForm" data-brief-form novalidate>
@@ -1259,7 +1353,8 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
       r.querySelector('.fill').style.width = (p === 0 ? 2 : (p / 0.8) * 100) + '%';
     });
     var y = m * 12 * 0.8 / 100;
-    document.getElementById('diffYr').innerHTML = fmt(y) + ' <small>a year</small>';
+    document.getElementById('diffYr').textContent = fmt(y);
+    document.getElementById('saveEnd').textContent = fmt(y * 10);
     document.getElementById('diffBase').textContent = fmt(m * 12);
     document.getElementById('diff10').textContent = fmt(y * 10);
   }
@@ -1600,6 +1695,22 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   if (!document.documentElement.classList.contains('anim') || !('IntersectionObserver' in window)) { wm.classList.add('in'); return; }
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { wm.classList.add('in'); io.disconnect(); } }); }, { threshold: 0.2 });
   io.observe(wm);
+})();
+// Brief: live BTC/EUR sparkline (Binance daily closes, 90 days); hidden if the fetch fails
+(function () {
+  var box = document.getElementById('btcSpark'); if (!box) return;
+  fetch('https://api.binance.com/api/v3/klines?symbol=BTCEUR&interval=1d&limit=90').then(function (r) { return r.json(); }).then(function (k) {
+    var c = k.map(function (x) { return Number(x[4]); }).filter(function (v) { return v > 0; }); if (c.length < 10) return;
+    var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c), W = 300, H = 56;
+    var pts = c.map(function (v, i) { return [i / (c.length - 1) * W, H - 4 - (v - lo) / (hi - lo || 1) * (H - 8)]; });
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+    document.getElementById('btcLine').setAttribute('d', d);
+    document.getElementById('btcArea').setAttribute('d', d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z');
+    var last = c[c.length - 1], chg = (last / c[0] - 1) * 100;
+    document.getElementById('btcLast').textContent = '€' + Math.round(last).toLocaleString('en-IE');
+    var e = document.getElementById('btcChg'); e.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%'; e.className = chg >= 0 ? 'up' : 'down';
+    box.hidden = false;
+  }).catch(function () {});
 })();
 // Language menu
 (function () {
