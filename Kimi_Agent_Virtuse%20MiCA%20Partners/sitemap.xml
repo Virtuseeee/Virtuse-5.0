@@ -3512,6 +3512,16 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ru/asset-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html"/>
   </url>
   <url>
@@ -3520,6 +3530,16 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ru/btc-monthly-returns.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/btc-monthly-returns.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html"/>
   </url>
   <url>
