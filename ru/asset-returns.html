@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
-<script src="lang-detect.js"></script>
+<script src="../lang-detect.js"></script>
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
@@ -16,30 +16,31 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');</script>
-<title>Asset Class Returns — Virtuse</title>
-<meta name="description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualized.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<title>Доходность классов активов | Virtuse</title>
+<meta name="description" content="Календарная годовая доходность Биткоина, американских и европейских акций и облигаций, золота, товаров и наличных за последние 10 лет, обновляется каждый день. Лучший и худший актив каждого года, совокупная и годовая доходность.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/asset-returns.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/asset-returns.html">
+<link rel="canonical" href="https://virtuse.com/ru/asset-returns.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Asset Class Returns — Virtuse">
-<meta property="og:description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualized.">
-<meta property="og:url" content="https://virtuse.com/asset-returns.html">
+<meta property="og:title" content="Доходность классов активов | Virtuse">
+<meta property="og:description" content="Календарная годовая доходность Биткоина, американских и европейских акций и облигаций, золота, товаров и наличных за последние 10 лет, обновляется каждый день. Лучший и худший актив каждого года, совокупная и годовая доходность.">
+<meta property="og:url" content="https://virtuse.com/ru/asset-returns.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Asset Class Returns — Virtuse">
-<meta name="twitter:description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualized.">
+<meta name="twitter:title" content="Доходность классов активов | Virtuse">
+<meta name="twitter:description" content="Календарная годовая доходность Биткоина, американских и европейских акций и облигаций, золота, товаров и наличных за последние 10 лет, обновляется каждый день. Лучший и худший актив каждого года, совокупная и годовая доходность.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
@@ -889,32 +890,52 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .ar-table td.ar-asset span { display: none; }
 }
 </style>
+<script type="application/ld+json" id="virtuse-ld">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://virtuse.com/ru/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Доходность активов",
+      "item": "https://virtuse.com/ru/asset-returns.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Открыть меню" aria-expanded="false">
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
       <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
     </svg>
   </button>
-  <a href="index.html" class="nav-logo">
+  <a href="/ru/" class="nav-logo">
     <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
   </a>
   <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Buy Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Mining</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Loans</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Custody</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Купить Биткоин</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнинг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Займы</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Хранение</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Tax</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">Bitcoin Data</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">About</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Get Started<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Налоги</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боты</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="bitcoin-data.html" class="active"><span class="nav-link-num">10</span><span class="nav-link-label">Данные о Биткоине</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">О нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Начать<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
     <li class="nav-links-lang-item">
       <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
         <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Язык страницы">
@@ -939,7 +960,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
         <a href="asset-returns.html" class="lang-opt active" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
       </div>
     </div>
-    <button class="nav-cta">Get Started</button>
+    <button class="nav-cta">Начать</button>
   </div>
 </nav>
 
@@ -984,62 +1005,60 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Asset Class <span class="highlight">Returns</span></h1>
-  <p class="hero-desc">Calendar-year total returns of Bitcoin and 22 US and European asset classes over the last 10 years, dividends reinvested. Updated every day.</p>
+  <h1>Доходность <span class="highlight">классов активов</span></h1>
+  <p class="hero-desc">Календарная годовая доходность Биткоина и 22 классов активов США и Европы за последние 10 лет, дивиденды реинвестированы. Обновляется каждый день.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
 <div class="subnav-wrap">
-  <nav class="subnav" aria-label="Bitcoin Data pages">
-    <a href="bitcoin-data.html">&#9670; Dashboard</a>
-    <a href="retirement-calculator.html">&#9670; Retirement Calculator</a>
-    <a href="btc-dominance.html">&#9670; BTC Dominance</a>
+    <nav class="subnav" aria-label="Страницы данных о Биткоине">
+    <a href="bitcoin-data.html">&#9670; Дашборд</a>
+    <a href="retirement-calculator.html">&#9670; Пенсионный калькулятор</a>
+    <a href="btc-dominance.html">&#9670; Доминирование BTC</a>
     <a href="ma-200w.html">&#9670; 200 WMA</a>
-    <a href="rainbow-chart.html">&#9670; Rainbow Chart</a>
-    <a href="root-cycles.html">&#9670; Root-Scale Cycles</a>
-    <a href="trading-volume.html">&#9670; Trading Volume</a>
-    <a href="fear-greed.html">&#9670; Fear &amp; Greed</a>
-    <a href="asset-returns.html" class="active">&#9670; Asset Returns</a>
-    <a href="btc-monthly-returns.html">&#9670; Monthly Returns</a>
+    <a href="rainbow-chart.html">&#9670; Радужный график</a>
+    <a href="root-cycles.html">&#9670; Корневые циклы</a>
+    <a href="asset-returns.html" class="active">&#9670; Доходность активов</a>
+    <a href="btc-monthly-returns.html">&#9670; Месячная доходность</a>
   </nav>
 </div>
 
 <!-- ===== TABLE ===== -->
 <section class="ar-section">
   <div class="ar-head">
-    <div class="ar-asof" id="arAsOf">Loading data…</div>
+    <div class="ar-asof" id="arAsOf">Загрузка данных…</div>
     <div class="ar-controls">
     <div class="ar-sort" role="group" aria-label="Currency">
-      <span>Currency</span>
+      <span>Валюта</span>
       <button type="button" data-ccy="USD" class="active">USD</button>
       <button type="button" data-ccy="EUR">EUR</button>
     </div>
     <div class="ar-sort" role="group" aria-label="Sort rows">
-      <span>Sort by</span>
+      <span>Сортировка</span>
       <button type="button" data-sort="ytd" class="active">YTD</button>
-      <button type="button" data-sort="ann">Annualized</button>
-      <button type="button" data-sort="fixed">Default</button>
+      <button type="button" data-sort="ann">Годовая</button>
+      <button type="button" data-sort="fixed">По умолчанию</button>
     </div>
     </div>
   </div>
   <div class="ar-wrap">
     <table class="ar-table" id="arTable"></table>
   </div>
-  <p class="ar-note" id="arNote">Total return in the selected currency. ETFs via adjusted closing prices (dividends and distributions reinvested). Rows marked EU are European assets; the euro bond ETFs (EUNH, EUN5) trade in EUR. The EUR view converts every row with the EUR/USD rate at each year end, i.e. what a euro-based investor earned holding the asset unhedged. Past performance does not guarantee future results. Not investment advice.</p>
+  <p class="ar-note" id="arNote">Полная доходность в выбранной валюте. ETF рассчитаны по скорректированным ценам закрытия (дивиденды и выплаты реинвестированы). Строки с пометкой EU — европейские активы; облигационные ETF в евро (EUNH, EUN5) торгуются в EUR. Вид в евро пересчитывает каждую строку по курсу EUR/USD на конец соответствующего года, то есть показывает доходность актива для инвестора с базовой валютой евро без хеджирования. Прошлая доходность не гарантирует будущую. Не является инвестиционной рекомендацией.</p>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <div class="brief-card brief-card-poster">
-  <h2>Get <span>the Brief</span></h2>
-  <p>Virtuse Brief. Bitcoin-only. No tokens. No PR.</p>
+  <h2>Получите <span>Brief</span></h2>
+  <p>Virtuse Brief. Только Биткоин. Без токенов. Без пиара.</p>
   <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Email address" required>
+    <input type="email" name="email" placeholder="Электронная почта" required>
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Subscribe</button>
+    <button type="submit">Получить Brief</button>
   </form>
   <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Weekly on Monday. Unsubscribe anytime.</p>
+  <p class="brief-fineprint">Каждый понедельник. Отписаться можно в любой момент.</p>
   </div>
   <script>
   (function () {
@@ -1055,7 +1074,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       msg.textContent = '';
       msg.style.color = 'var(--text-muted)';
       btn.disabled = true;
-      btn.textContent = 'SENDING...';
+      btn.textContent = 'ОТПРАВКА...';
       fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1065,14 +1084,14 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          msg.textContent = "You're in \u2014 check your inbox for a welcome email.";
+          msg.textContent = "Готово! Проверьте почту, вас ждёт приветственное письмо.";
           msg.style.color = 'var(--green, #3fb950)';
         } else {
-          msg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
+          msg.textContent = (result.data && result.data.error) || 'Что-то пошло не так. Попробуйте ещё раз.';
           msg.style.color = '#f85149';
         }
       }).catch(function () {
-        msg.textContent = 'Network error \u2014 please try again.';
+        msg.textContent = 'Ошибка сети. Попробуйте ещё раз.';
         msg.style.color = '#f85149';
       }).then(function () {
         btn.disabled = false;
@@ -1091,45 +1110,45 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     </div>
     <div class="footer-columns">
       <div class="footer-col">
-        <h4>Services</h4>
-        <a href="buy-bitcoin.html">Buy Bitcoin</a>
-        <a href="secure.html">Custody</a>
-        <a href="mining.html">Mining</a>
-        <a href="lending.html">Loans</a>
+        <h4>Услуги</h4>
+        <a href="buy-bitcoin.html">Купить Биткоин</a>
+        <a href="secure.html">Хранение</a>
+        <a href="mining.html">Майнинг</a>
+        <a href="lending.html">Займы</a>
         <a href="treasury.html">Treasury</a>
-        <a href="tax.html">Tax</a>
-        <a href="bots.html">Bots</a>
+        <a href="tax.html">Налоги</a>
+        <a href="bots.html">Боты</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="about.html">About Us</a>
+        <h4>Компания</h4>
+        <a href="about.html">О нас</a>
         <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h4>Tools</h4>
+        <h4>Инструменты</h4>
         <a href="concierge.html?utm_source=concierge&amp;utm_medium=footer">Partner Finder</a>
         <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
         <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
         <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Retirement Calculator</a>
+        <a href="retirement-calculator.html">Пенсионный калькулятор</a>
       </div>
       <div class="footer-col">
-        <h4>Guides</h4>
-        <a href="news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
-        <a href="blog.html">Blog</a>
-        <a href="bitcoin-data.html">Bitcoin Data</a>
+        <h4>Материалы</h4>
+        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
+        <a href="blog.html">Блог</a>
+        <a href="bitcoin-data.html">Данные о Биткоине</a>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="aml-compliance.html">AML &amp; Compliance</a>
+        <h4>Информация</h4>
+        <a href="terms-and-conditions.html">Условия использования</a>
+        <a href="privacy-policy.html">Политика конфиденциальности</a>
+        <a href="aml-compliance.html">AML и комплаенс</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
-    <p class="footer-bottom-brief">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href="news.html?utm_source=brief&amp;utm_medium=footer">Read it &rarr;</a></p>
+    <p>&copy; 2018–2026 Virtuse Group. Все права защищены.</p>
+    <p class="footer-bottom-brief">Virtuse Brief — еженедельный дайджест от Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Читать →</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">
     <span class="footer-wordmark-icon-wrap">
@@ -1154,7 +1173,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   // is the fallback.
   var SOURCES = [
     'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json',
-    'data/asset-returns.json'
+    '../data/asset-returns.json'
   ];
   var table = document.getElementById('arTable');
   var asOfEl = document.getElementById('arAsOf');
@@ -1178,7 +1197,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   }
 
   function load(i) {
-    if (i >= SOURCES.length) { asOfEl.textContent = 'Data temporarily unavailable.'; table.style.height = 'auto'; return; }
+    if (i >= SOURCES.length) { asOfEl.textContent = 'Данные временно недоступны.'; table.style.height = 'auto'; return; }
     fetch(SOURCES[i], { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) { data = d; render(); })
@@ -1189,7 +1208,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     if (v == null) return '–';
     var p = v * 100, a = Math.abs(p);
     if (a < 0.05) return '0.0%';
-    var s = a >= 1000 ? Math.round(p).toLocaleString('en-US') : a >= 100 ? Math.round(p).toString() : p.toFixed(1);
+    var s = a >= 1000 ? Math.round(p).toLocaleString('ru-RU') : a >= 100 ? Math.round(p).toString() : p.toFixed(1);
     return s + '%';
   }
   // Tint by sign; intensity grows with size and saturates around ±40%.
@@ -1208,9 +1227,9 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     if (sortKey === 'ann') rows.sort(function (a, b) { return (b.annualized || -9) - (a.annualized || -9); });
 
     var startY = years[0];
-    var h = '<thead><tr><th class="ar-asset">Asset</th>';
+    var h = '<thead><tr><th class="ar-asset">Актив</th>';
     years.forEach(function (y, i) { h += '<th class="' + (i === last ? 'ar-cur' : '') + '">' + (i === last ? y + ' YTD' : y) + '</th>'; });
-    h += '<th class="ar-gap">' + startY + '–' + String(years[last]).slice(2) + ' cumul.</th><th>Annualized</th></tr></thead><tbody>';
+    h += '<th class="ar-gap">' + startY + '–' + String(years[last]).slice(2) + ' итог</th><th>Годовая</th></tr></thead><tbody>';
     rows.forEach(function (r) {
       h += '<tr class="' + (r.ticker === 'BTC' ? 'ar-btc' : '') + '"><td class="ar-asset"><b>' + r.ticker + '</b><span>' + r.name + (r.region === 'eu' ? ' <i class="ar-eu">EU</i>' : '') + '</span></td>';
       r.returns.forEach(function (v, i) { h += cell(v, i === last ? 'ar-cur' : ''); });
@@ -1225,14 +1244,14 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       return t;
     }
     function valid(a) { return a.filter(function (x) { return x.v != null; }); }
-    h += stat('Highest return', function (a) { a = valid(a); return a.reduce(function (m, x) { return x.v > m.v ? x : m; }).t; });
-    h += stat('Lowest return', function (a) { a = valid(a); return a.reduce(function (m, x) { return x.v < m.v ? x : m; }).t; });
-    h += stat('% of assets positive', function (a) { a = valid(a); return Math.round(100 * a.filter(function (x) { return x.v > 0; }).length / a.length) + '%'; });
+    h += stat('Максимальная доходность', function (a) { a = valid(a); return a.reduce(function (m, x) { return x.v > m.v ? x : m; }).t; });
+    h += stat('Минимальная доходность', function (a) { a = valid(a); return a.reduce(function (m, x) { return x.v < m.v ? x : m; }).t; });
+    h += stat('% активов в плюсе', function (a) { a = valid(a); return Math.round(100 * a.filter(function (x) { return x.v > 0; }).length / a.length) + '%'; });
     h += '</tfoot>';
     table.innerHTML = h;
 
     var d = new Date(data.asOf + 'T00:00:00Z');
-    asOfEl.textContent = 'Data as of ' + d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) + ' · ' + rows.length + ' assets · returns in ' + ccy;
+    asOfEl.textContent = 'Данные на ' + d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) + ' · ' + rows.length + ' активов · доходность в ' + ccy;
   }
 
   document.querySelectorAll('[data-sort]').forEach(function (b) {
@@ -1416,6 +1435,6 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 })();
 </script>
 
-<script src="concierge-launcher.js" defer></script>
+<script src="../concierge-launcher.js" defer></script>
 </body>
 </html>

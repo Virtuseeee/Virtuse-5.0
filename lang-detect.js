@@ -108,6 +108,12 @@
       else if (targetLang === 'pl') target = 'pl/blog.html';
       else if (targetLang === 'hu') target = 'hu/blog.html';
       else if (targetLang === 'cs') target = 'cs/blog.html';
+    } else if (file === 'asset-returns.html' || file === 'btc-monthly-returns.html') {
+      // RU-only for now: the other languages' translations of these two
+      // pages don't exist yet, so only a Russian-locale browser gets
+      // redirected. Add the pages to TRANSLATED once every language
+      // has a sibling (the generic branch redirects for ALL languages).
+      if (targetLang === 'ru') target = 'ru/' + file;
     } else if (file === '' || file === 'index.html' || TRANSLATED.indexOf(file) !== -1) {
       var name = (file === '' ? 'index.html' : file);
       target = targetLang + '/' + name;
