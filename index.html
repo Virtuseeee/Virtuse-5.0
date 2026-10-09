@@ -847,6 +847,7 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
       <a href="blog.html">Blog</a>
       <a href="news.html?utm_source=brief&amp;utm_medium=nav">Brief</a>
       <a href="bitcoin-data.html">Bitcoin Data</a>
+      <a href="cfo.html" id="navCfo">CFO<span class="nav-badge" id="cfoBadge">Soon</span></a>
       <a href="about.html">About</a>
       <span class="nav-langs" aria-label="Page language"><a href="index.html" class="on" lang="en">EN</a><a href="sk/index.html" lang="sk">SK</a><a href="cs/index.html" lang="cs">CS</a><a href="de/index.html" lang="de">DE</a><a href="pl/index.html" lang="pl">PL</a><a href="hu/index.html" lang="hu">HU</a><a href="fr/index.html" lang="fr">FR</a><a href="es/index.html" lang="es">ES</a><a href="uk/index.html" lang="uk">UA</a><a href="ru/index.html" lang="ru">RU</a></span>
     </nav>
@@ -959,6 +960,16 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
           <a class="btn btn-primary only-wait" href="buy-bitcoin.html">Compare all buy partners</a>
           <a class="btn btn-primary only-audit" href="cfo.html">Check your real fees</a>
           <a class="btn btn-ghost only-audit" href="buy-bitcoin.html">Compare all buy partners</a>
+        </div>
+        <div class="wait only-wait">
+          Want this for your own exchange history? <button class="wait-link" type="button" id="waitBtn" aria-expanded="false" aria-controls="waitForm">Join the Virtuse CFO waitlist</button>
+          <form class="wait-form" id="waitForm" hidden novalidate>
+            <label for="waitEmail" style="position:absolute;left:-9999px">Email address</label>
+            <input id="waitEmail" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-primary" type="submit">Join</button>
+          </form>
+          <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
         </div>
       </div>
       <div class="panel">
@@ -1175,7 +1186,7 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Soon</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
@@ -1572,6 +1583,37 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
       })
       .catch(function () { msg.textContent = 'Network error. Please try again.'; })
       .then(function () { btn.disabled = false; btn.textContent = label; });
+  });
+})();
+// Stage badges: "Soon" while the waitlist runs, "New" once the audit is live
+(function () {
+  var audit = !document.body.classList.contains('stage-wait');
+  document.querySelectorAll('.nav-badge, .cfo-foot-badge').forEach(function (b) { b.textContent = audit ? 'New' : 'Soon'; });
+})();
+// CFO waitlist line in the Buy panel -> Worker /waitlist
+(function () {
+  var btn = document.getElementById('waitBtn'), form = document.getElementById('waitForm'), msg = document.getElementById('waitMsg');
+  if (!btn || !form) return;
+  btn.addEventListener('click', function () { form.hidden = !form.hidden; btn.setAttribute('aria-expanded', String(!form.hidden)); if (!form.hidden) document.getElementById('waitEmail').focus(); });
+  var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; return; }
+    msg.textContent = ''; sub.disabled = true; sub.textContent = 'Sending...';
+    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, hp: hp, source: 'home_buy' })
+    }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (r) {
+        if (r.ok) {
+          form.reset(); form.hidden = true; btn.setAttribute('aria-expanded', 'false');
+          msg.textContent = "You're on the list. We'll email you once, when the free audit opens.";
+          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
+        } else { msg.textContent = (r.data && r.data.error) || 'Something went wrong. Please try again.'; }
+      })
+      .catch(function () { msg.textContent = 'Network error. Please try again.'; })
+      .then(function () { sub.disabled = false; sub.textContent = label; });
   });
 })();
 // CFO panel clicks (audit stage only)
