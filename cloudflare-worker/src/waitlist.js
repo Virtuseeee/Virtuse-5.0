@@ -27,7 +27,7 @@ export function renderWaitlistEmail(leaveUrl) {
 <tr><td style="padding:36px 32px;">
 <p style="margin:0 0 20px 0;font-size:22px;font-weight:800;"><span style="color:#5FAEDE;">V</span><span style="color:#e6edf3;">irtuse</span> <span style="color:#8b949e;font-weight:400;">CFO</span></p>
 <p style="margin:0 0 14px 0;font-size:20px;line-height:28px;font-weight:700;color:#e6edf3;">You're on the list.</p>
-<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email when the free fee audit opens, planned from 1 December 2026. It reads your exchange export in your browser and shows what your buying really cost you. Nothing is uploaded.</p>
+<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email when the free fee audit opens, planned from 1 November 2026. It reads your exchange export in your browser and shows what your buying really cost you. Nothing is uploaded.</p>
 <p style="margin:0 0 24px 0;font-size:15px;line-height:24px;color:#c3ccd6;">Until then we won't email you about anything else.</p>
 <p style="margin:0;font-size:12px;line-height:20px;color:#8b949e;">You joined the waitlist on virtuse.com. Virtuse never holds your keys or funds and gives no investment advice. <a href="${leaveUrl}" style="color:#8b949e;">Leave the waitlist</a></p>
 </td></tr></table>

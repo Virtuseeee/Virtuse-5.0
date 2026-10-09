@@ -56,7 +56,7 @@ test('new sign-up joins the CFO audience, not the Brief, and gets one confirmati
   assert.equal(calls[1].body.from, 'Virtuse <plan@virtuse.com>');
   assert.equal(calls[1].body.subject, "You're on the Virtuse CFO waitlist");
   assert.match(calls[1].body.html, /list=cfo/);
-  assert.match(calls[1].body.html, /1 December 2026/);
+  assert.match(calls[1].body.html, /1 November 2026/);
 }));
 
 test('already on the waitlist: 200, no second email', withFetch(async (calls) => {
