@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-09) — Virtuse CFO page live in all 10 languages (main `c772518b`; **live on production** — user ran `deploy_site.sh 8edf854c c772518b`, DEPLOY OK; 19/19 md5-verified on virtuse.com and staging)
+
+- `<lang>/cfo.html` (sk cs pl de fr es hu uk ru) generated from `cfo.html` by `i18n-tools/cfo/build_cfo.py` + `<lang>.json` (243 strings; title/description translated; canonical + og:url `/<lang>/cfo.html`; still `noindex`). Language menu on every CFO page (EN too) links the CFO page per language; homepages rebuilt so their CFO links stay in-language.
+- Waitlist form sends `lang`, but the Worker ignores it: the confirmation email is English only (open item if wanted).
+- Open for native review: Kraken menu labels kept English in the FAQ export steps; masculine first person in the sk/cs/pl chat sample; free renderings (de "Technisch ausgeschlossen, nicht nur versprochen", sk "Dedičský balík").
+
 ## Session status (2026-10-09) — New homepage live in all 10 languages (main `46d8227f`; **live on production** — user ran `deploy_site.sh b0d03f5d 46d8227f`, DEPLOY OK; 9/9 md5-verified on virtuse.com and staging)
 
 - `<lang>/index.html` for sk cs pl de fr es hu uk ru are generated from the English homepage by `i18n-tools/home/build_lang.py` + `<lang>.json` (244 strings each, `check.py` 0 problems; rules in `BRIEF.md`, steps in its README). Each language keeps its own title, description, canonical, Open Graph and JSON-LD (read from its current index.html). Guide links go to each language's own guides; local number/date formats; "Soon/New" CFO badge translated; call link gets "(in English)" in de/fr/es/pl/hu/uk/ru.
