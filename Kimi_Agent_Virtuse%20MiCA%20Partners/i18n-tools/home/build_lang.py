@@ -34,6 +34,20 @@ GUIDES = {  # tax, fee index, dca, sell vs borrow, inheritance
 }
 EN_GUIDES = ['bitcoin-tax', 'bitcoin-fee-index', 'bitcoin-dca-calculator', 'sell-vs-borrow-bitcoin', 'bitcoin-inheritance']
 IN_EN = {'de': 'auf Englisch', 'fr': 'en anglais', 'es': 'en inglés', 'pl': 'po angielsku', 'hu': 'angol nyelven', 'uk': 'англійською', 'ru': 'на английском'}
+BRIEF_EN = {'sk': 'v angličtine', 'cs': 'v angličtině', 'de': 'auf Englisch', 'fr': 'en anglais', 'es': 'en inglés',
+            'pl': 'po angielsku', 'hu': 'angol nyelven', 'uk': 'англійською', 'ru': 'на английском'}
+LD_DESC = {  # JSON-LD Organization/WebSite description
+    'sk': 'Nekustodiálny hub pre služby zamerané výhradne na Bitcoin. Virtuse nikdy nedrží vaše kľúče.',
+    'cs': 'Nekustodiální hub pro služby zaměřené výhradně na Bitcoin. Virtuse nikdy nedrží vaše klíče.',
+    'pl': 'Niepowierniczy hub usług wyłącznie dla Bitcoina. Virtuse nigdy nie przechowuje Państwa kluczy.',
+    'de': 'Non-Custodial-Hub für reine Bitcoin-Dienste. Virtuse verwahrt nie Ihre Schlüssel.',
+    'fr': 'Hub non dépositaire de services 100 % Bitcoin. Virtuse ne détient jamais vos clés.',
+    'es': 'Hub no custodial de servicios solo para Bitcoin. Virtuse nunca custodia sus claves.',
+    'hu': 'Nem letétkezelő hub kizárólag Bitcoin-szolgáltatásokhoz. A Virtuse soha nem őrzi a kulcsait.',
+    'uk': 'Некастодіальний хаб сервісів лише для Біткоїна. Virtuse ніколи не зберігає ваші ключі.',
+    'ru': 'Некастодиальный хаб сервисов только для Биткоина. Virtuse никогда не хранит ваши ключи.',
+}
+HEAD_FIX = {'hu': [('Bitcoin hub:', 'Bitcoin-hub:'), ('Bitcoin vásárlás', 'Bitcoin-vásárlás')]}
 LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru']
 
 
@@ -46,6 +60,8 @@ def one(s, a, b, n=1):
 
 def num(n, L):
     """Group digits the local way (space or dot), as the translators do."""
+    if L == 'es' and n < 10000:
+        return str(n)   # RAE: four-digit numbers are not grouped (es-ES toLocaleString agrees)
     sep = '.' if L in ('de', 'es') else ' '
     s = str(n)
     out = ''
@@ -179,6 +195,16 @@ def build(L):
     h = one(h, "b.textContent = audit ? 'New' : 'Soon';", "b.textContent = audit ? '%s' : '%s';" % (js_lit(tr['New'], "'"), js_lit(tr['Soon'], "'")))
     # longer labels than English: let them fit on small phones
     h = one(h, '</head>', '<style>.spot, .shelf6 > * { min-width: 0; } .spot h3 { hyphens: auto; overflow-wrap: break-word; }\n@media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>\n</head>')
+    # the Brief is published in English: say so after the headline (static + script)
+    h, k = re.subn(r'(<h3 id="briefTitle">)([^<]*)(</h3>)', lambda m: m.group(1) + m.group(2) + ' (%s)' % BRIEF_EN[L] + m.group(3), h)
+    if k != 1:
+        sys.exit('%s: briefTitle not found' % L)
+    h = one(h, "document.getElementById('briefTitle').textContent = iss.title;",
+            "document.getElementById('briefTitle').textContent = iss.title + ' (%s)';" % js_lit(BRIEF_EN[L], "'"))
+    h = h.replace('"description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."',
+                  '"description": ' + json.dumps(LD_DESC[L], ensure_ascii=False))
+    for a, b2 in HEAD_FIX.get(L, []):
+        h = h.replace(a, b2)
     h = localise_numbers(h, L)
 
     # 6. sanity

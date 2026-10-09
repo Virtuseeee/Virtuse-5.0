@@ -1,7 +1,7 @@
 {
  "Virtuse home": "Главная Virtuse",
  "Virtuse": "Virtuse",
- "Main": "Главное",
+ "Main": "Основная навигация",
  "Services": "Услуги",
  "Buy Bitcoin": "Купить Биткоин",
  "Custody": "Хранение",
@@ -74,7 +74,7 @@
  "Sending...": "Отправка...",
  "You're on the list. We'll email you once, when the free audit opens.": "Вы в списке. Мы напишем один раз, когда откроется бесплатный аудит.",
  "Something went wrong. Please try again.": "Что-то пошло не так. Попробуйте ещё раз.",
- "Network error. Please try again.": "Ошибка сети — попробуйте ещё раз.",
+ "Network error. Please try again.": "Ошибка сети. Попробуйте ещё раз.",
  "Free audit · live from 1 Nov": "Бесплатный аудит · с 1 ноября",
  "Free audit · opens 1 Nov": "Бесплатный аудит · откроется 1 ноября",
  "Your AI": "Ваш AI",
