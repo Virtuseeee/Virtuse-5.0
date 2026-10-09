@@ -91,7 +91,8 @@
       'index.html', 'about.html', 'buy-bitcoin.html', 'mining.html', 'lending.html',
       'secure.html', 'treasury.html', 'tax.html', 'bots.html',
       'bitcoin-data.html', 'btc-dominance.html', 'ma-200w.html', 'rainbow-chart.html',
-      'root-cycles.html', 'retirement-calculator.html', 'faq.html', 'privacy-policy.html',
+      'root-cycles.html', 'retirement-calculator.html', 'asset-returns.html',
+      'btc-monthly-returns.html', 'faq.html', 'privacy-policy.html',
       'terms-and-conditions.html', 'aml-compliance.html', '404.html'
     ];
 
@@ -108,12 +109,6 @@
       else if (targetLang === 'pl') target = 'pl/blog.html';
       else if (targetLang === 'hu') target = 'hu/blog.html';
       else if (targetLang === 'cs') target = 'cs/blog.html';
-    } else if (file === 'asset-returns.html' || file === 'btc-monthly-returns.html') {
-      // RU-only for now: the other languages' translations of these two
-      // pages don't exist yet, so only a Russian-locale browser gets
-      // redirected. Add the pages to TRANSLATED once every language
-      // has a sibling (the generic branch redirects for ALL languages).
-      if (targetLang === 'ru') target = 'ru/' + file;
     } else if (file === '' || file === 'index.html' || TRANSLATED.indexOf(file) !== -1) {
       var name = (file === '' ? 'index.html' : file);
       target = targetLang + '/' + name;
