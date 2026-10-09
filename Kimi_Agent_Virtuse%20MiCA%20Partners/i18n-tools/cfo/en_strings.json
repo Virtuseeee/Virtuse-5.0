@@ -1,0 +1,1217 @@
+[
+ {
+  "en": "Virtuse home",
+  "kind": "attr:aria-label",
+  "context": "ctor('meta[name=\"vb-cfo-stage\"]') || {}).content !== 'audit');</script> <header class=\"nav\"> <div class=\"nav-inner\"> <a class=\"logo\" href=\"/\" aria-label=\"Virtuse home\"> <svg viewBox=\"0 0 760 483\" style=\"height:24px;width:auto\" aria-hidden=\"true\"><defs><linearGradient id=\"vA\" x1=\"0\" y1=\"0\" x2=\"0.55\" y2=\"1\"><stop offset="
+ },
+ {
+  "en": "Virtuse",
+  "kind": "text",
+  "context": "olor=\"#2B62C0\"/></linearGradient></defs><path fill=\"url(#vA)\" d=\"M30 0h220l250 483H280Z\"/><path fill=\"url(#vB)\" d=\"M510 0h245L645 205H400Z\"/></svg> <span>Virtuse</span> </a> <nav class=\"nav-links\" id=\"navLinks\" aria-label=\"Main\"> <div class=\"nav-group\" id=\"ng-services\"> <button type=\"button\" class="
+ },
+ {
+  "en": "Main",
+  "kind": "attr:aria-label",
+  "context": "0 483H280Z\"/><path fill=\"url(#vB)\" d=\"M510 0h245L645 205H400Z\"/></svg> <span>Virtuse</span> </a> <nav class=\"nav-links\" id=\"navLinks\" aria-label=\"Main\"> <div class=\"nav-group\" id=\"ng-services\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-services\">Services"
+ },
+ {
+  "en": "Services",
+  "kind": "text",
+  "context": "el=\"Main\"> <div class=\"nav-group\" id=\"ng-services\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-services\">Services</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans"
+ },
+ {
+  "en": "Buy Bitcoin",
+  "kind": "text",
+  "context": "s=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-services\">Services</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax<"
+ },
+ {
+  "en": "Custody",
+  "kind": "text",
+  "context": "e\" aria-controls=\"nd-services\">Services</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></"
+ },
+ {
+  "en": "Loans",
+  "kind": "text",
+  "context": "vices</button> <div class=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div cla"
+ },
+ {
+  "en": "Mining",
+  "kind": "text",
+  "context": "ss=\"nav-drop\" id=\"nd-services\"><a href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> "
+ },
+ {
+  "en": "Treasury",
+  "kind": "text",
+  "context": "href=\"buy-bitcoin.html\">Buy Bitcoin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"n"
+ },
+ {
+  "en": "Tax",
+  "kind": "text",
+  "context": "coin</a><a href=\"secure.html\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expande"
+ },
+ {
+  "en": "Bots",
+  "kind": "text",
+  "context": "l\">Custody</a><a href=\"lending.html\">Loans</a><a href=\"mining.html\">Mining</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-"
+ },
+ {
+  "en": "Learn",
+  "kind": "text",
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a hr"
+ },
+ {
+  "en": "Virtuse Brief",
+  "kind": "text",
+  "context": "ia-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav"
+ },
+ {
+  "en": "Blog",
+  "kind": "text",
+  "context": "-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> "
+ },
+ {
+  "en": "Bitcoin Data",
+  "kind": "text",
+  "context": "class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-bt"
+ },
+ {
+  "en": "Fee Index",
+  "kind": "text",
+  "context": "tml?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-"
+ },
+ {
+  "en": "Tools",
+  "kind": "text",
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" aria-current=\"page\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</spa"
+ },
+ {
+  "en": "Virtuse CFO",
+  "kind": "text",
+  "context": "n\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" aria-current=\"page\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Sta"
+ },
+ {
+  "en": "Soon",
+  "kind": "text",
+  "context": "ls\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" aria-current=\"page\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\""
+ },
+ {
+  "en": "Partner Finder",
+  "kind": "text",
+  "context": "\" aria-current=\"page\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><"
+ },
+ {
+  "en": "Stacking Strategist",
+  "kind": "text",
+  "context": "CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement "
+ },
+ {
+  "en": "Loan &amp; Liquidity Copilot",
+  "kind": "text",
+  "context": "/span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"na"
+ },
+ {
+  "en": "Tax &amp; Inheritance Agent",
+  "kind": "text",
+  "context": "p;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div c"
+ },
+ {
+  "en": "Retirement Calculator",
+  "kind": "text",
+  "context": " Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" cl"
+ },
+ {
+  "en": "About",
+  "kind": "text",
+  "context": "ml\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-labe"
+ },
+ {
+  "en": "Page language: English",
+  "kind": "attr:aria-label",
+  "context": "> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-label=\"Page language: English\"><span aria-hidden=\"true\">&#127468;&#127463;</span><span class=\"lang-code\">EN</span></button> <div class=\"lang-menu-panel\" role=\"menu\"><a href=\"index.htm"
+ },
+ {
+  "en": "EN",
+  "kind": "text",
+  "context": "u-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-label=\"Page language: English\"><span aria-hidden=\"true\">&#127468;&#127463;</span><span class=\"lang-code\">EN</span></button> <div class=\"lang-menu-panel\" role=\"menu\"><a href=\"index.html\" class=\"lang-opt active\" lang=\"en\" hreflang=\"en\" role=\"menuitem\">English</a>"
+ },
+ {
+  "en": "English",
+  "kind": "text",
+  "context": "ng-code\">EN</span></button> <div class=\"lang-menu-panel\" role=\"menu\"><a href=\"index.html\" class=\"lang-opt active\" lang=\"en\" hreflang=\"en\" role=\"menuitem\">English</a><a href=\"sk/index.html\" class=\"lang-opt\" lang=\"sk\" hreflang=\"sk\" role=\"menuitem\">Slovenčina</a><a href=\"cs/index.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\""
+ },
+ {
+  "en": "Slovenčina",
+  "kind": "text",
+  "context": "ml\" class=\"lang-opt active\" lang=\"en\" hreflang=\"en\" role=\"menuitem\">English</a><a href=\"sk/index.html\" class=\"lang-opt\" lang=\"sk\" hreflang=\"sk\" role=\"menuitem\">Slovenčina</a><a href=\"cs/index.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\"cs\" role=\"menuitem\">Čeština</a><a href=\"de/index.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\""
+ },
+ {
+  "en": "Čeština",
+  "kind": "text",
+  "context": "x.html\" class=\"lang-opt\" lang=\"sk\" hreflang=\"sk\" role=\"menuitem\">Slovenčina</a><a href=\"cs/index.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\"cs\" role=\"menuitem\">Čeština</a><a href=\"de/index.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\" role=\"menuitem\">Deutsch</a><a href=\"pl/index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\""
+ },
+ {
+  "en": "Deutsch",
+  "kind": "text",
+  "context": "ndex.html\" class=\"lang-opt\" lang=\"cs\" hreflang=\"cs\" role=\"menuitem\">Čeština</a><a href=\"de/index.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\" role=\"menuitem\">Deutsch</a><a href=\"pl/index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\" role=\"menuitem\">Polski</a><a href=\"hu/index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" "
+ },
+ {
+  "en": "Polski",
+  "kind": "text",
+  "context": "ndex.html\" class=\"lang-opt\" lang=\"de\" hreflang=\"de\" role=\"menuitem\">Deutsch</a><a href=\"pl/index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\" role=\"menuitem\">Polski</a><a href=\"hu/index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" role=\"menuitem\">Magyar</a><a href=\"fr/index.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" "
+ },
+ {
+  "en": "Magyar",
+  "kind": "text",
+  "context": "index.html\" class=\"lang-opt\" lang=\"pl\" hreflang=\"pl\" role=\"menuitem\">Polski</a><a href=\"hu/index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" role=\"menuitem\">Magyar</a><a href=\"fr/index.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" role=\"menuitem\">Français</a><a href=\"es/index.html\" class=\"lang-opt\" lang=\"es\" hreflang=\"es"
+ },
+ {
+  "en": "Français",
+  "kind": "text",
+  "context": "index.html\" class=\"lang-opt\" lang=\"hu\" hreflang=\"hu\" role=\"menuitem\">Magyar</a><a href=\"fr/index.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" role=\"menuitem\">Français</a><a href=\"es/index.html\" class=\"lang-opt\" lang=\"es\" hreflang=\"es\" role=\"menuitem\">Español</a><a href=\"uk/index.html\" class=\"lang-opt\" lang=\"uk\" hreflang=\"uk\""
+ },
+ {
+  "en": "Español",
+  "kind": "text",
+  "context": "dex.html\" class=\"lang-opt\" lang=\"fr\" hreflang=\"fr\" role=\"menuitem\">Français</a><a href=\"es/index.html\" class=\"lang-opt\" lang=\"es\" hreflang=\"es\" role=\"menuitem\">Español</a><a href=\"uk/index.html\" class=\"lang-opt\" lang=\"uk\" hreflang=\"uk\" role=\"menuitem\">Українська</a><a href=\"ru/index.html\" class=\"lang-opt\" lang=\"ru\" hreflang=\""
+ },
+ {
+  "en": "Open menu",
+  "kind": "attr:aria-label",
+  "context": "role=\"menuitem\">Русский</a></div> </div> <button class=\"menu-btn\" id=\"menuBtn\" type=\"button\" aria-expanded=\"false\" aria-controls=\"navLinks\" aria-label=\"Open menu\"><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\" aria-hidden=\"true\"><line class=\"m1\" x1=\"3\" y1=\"7\" x2=\"17\" y2=\"7\"/><line class=\"m2\" x1=\"3\" y1=\"13\" x2=\"17\" y2=\""
+ },
+ {
+  "en": "Find partners",
+  "kind": "text",
+  "context": "\" y2=\"7\"/><line class=\"m2\" x1=\"3\" y1=\"13\" x2=\"17\" y2=\"13\"/></svg></button> <a class=\"nav-cta\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Find partners</a> </div> </header> <main class=\"wrap\" id=\"top\"> <!-- 1. HERO = THE PRODUCT --> <div class=\"c-hero\"> <div> <div class=\"eyebrow\"><span class="
+ },
+ {
+  "en": "Free audit · live from 1 Nov",
+  "kind": "text",
+  "context": "r> <main class=\"wrap\" id=\"top\"> <!-- 1. HERO = THE PRODUCT --> <div class=\"c-hero\"> <div> <div class=\"eyebrow\"><span class=\"stage-k only-audit\">Free audit · live from 1 Nov</span><span class=\"stage-k only-wait\">Free audit · opens 1 Nov</span></div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your ow"
+ },
+ {
+  "en": "Free audit · opens 1 Nov",
+  "kind": "text",
+  "context": " <div class=\"c-hero\"> <div> <div class=\"eyebrow\"><span class=\"stage-k only-audit\">Free audit · live from 1 Nov</span><span class=\"stage-k only-wait\">Free audit · opens 1 Nov</span></div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1> <p clas"
+ },
+ {
+  "en": "Your AI",
+  "kind": "text",
+  "context": "s=\"eyebrow\"><span class=\"stage-k only-audit\">Free audit · live from 1 Nov</span><span class=\"stage-k only-wait\">Free audit · opens 1 Nov</span></div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number m"
+ },
+ {
+  "en": "CFO",
+  "kind": "text",
+  "context": "age-k only-audit\">Free audit · live from 1 Nov</span><span class=\"stage-k only-wait\">Free audit · opens 1 Nov</span></div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never "
+ },
+ {
+  "en": "for Bitcoin.",
+  "kind": "text",
+  "context": "audit\">Free audit · live from 1 Nov</span><span class=\"stage-k only-wait\">Free audit · opens 1 Nov</span></div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never seen: what your buyi"
+ },
+ {
+  "en": "It reads your own exports and never sees your wallet.",
+  "kind": "text",
+  "context": " live from 1 Nov</span><span class=\"stage-k only-wait\">Free audit · opens 1 Nov</span></div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export i"
+ },
+ {
+  "en": "Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.",
+  "kind": "text",
+  "context": "/div> <h1>Your AI <span class=\"grad\">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p> <div class=\"only-audit\"> <div class=\"hero-ctas\"><button class=\"btn btn-primary\" type=\"button\" id=\"heroRun\">Try it with a sample export</butto"
+ },
+ {
+  "en": "Try it with a sample export",
+  "kind": "text",
+  "context": "s questions from your own numbers.</p> <div class=\"only-audit\"> <div class=\"hero-ctas\"><button class=\"btn btn-primary\" type=\"button\" id=\"heroRun\">Try it with a sample export</button></div> </div> <form class=\"wait only-wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" a"
+ },
+ {
+  "en": "Email address",
+  "kind": "attr:placeholder",
+  "context": " a sample export</button></div> </div> <form class=\"wait only-wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" aria-label=\"Email address\" autocomplete=\"email\" required> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"t"
+ },
+ {
+  "en": "Tell me 1 Nov",
+  "kind": "text",
+  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Tell me 1 Nov</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when the audit opens, nothing else. Leave "
+ },
+ {
+  "en": "One email when the audit opens, nothing else. Leave any time from that email.",
+  "kind": "text",
+  "context": " class=\"btn btn-primary\" type=\"submit\">Tell me 1 Nov</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when the audit opens, nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> <p class=\"wait-count\" id=\"waitCount\"><b>136</b> people on the waitlist</p> </"
+ },
+ {
+  "en": "Privacy",
+  "kind": "text",
+  "context": " <p class=\"wait-note\">One email when the audit opens, nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> <p class=\"wait-count\" id=\"waitCount\"><b>136</b> people on the waitlist</p> </form> </div> <div class=\"demo\" id=\"demo\" aria-label"
+ },
+ {
+  "en": "people on the waitlist",
+  "kind": "text",
+  "context": "se. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> <p class=\"wait-count\" id=\"waitCount\"><b>136</b> people on the waitlist</p> </form> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your"
+ },
+ {
+  "en": "Fee audit demo",
+  "kind": "attr:aria-label",
+  "context": "a></p> <p class=\"wait-count\" id=\"waitCount\"><b>136</b> people on the waitlist</p> </form> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" da"
+ },
+ {
+  "en": "Fee audit",
+  "kind": "text",
+  "context": "Count\"><b>136</b> people on the waitlist</p> </form> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> "
+ },
+ {
+  "en": "runs in your browser",
+  "kind": "text",
+  "context": "the waitlist</p> </form> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\""
+ },
+ {
+  "en": "Play the sample audit",
+  "kind": "text",
+  "context": " <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> "
+ },
+ {
+  "en": "Choose an exchange export (CSV)",
+  "kind": "attr:aria-label",
+  "context": "\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"met"
+ },
+ {
+  "en": "Drop your exchange export here",
+  "kind": "text",
+  "context": "on> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026."
+ },
+ {
+  "en": "Kraken, ByBit EU or 21bitcoin CSV · or use the sample",
+  "kind": "text",
+  "context": "\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> "
+ },
+ {
+  "en": "kraken-ledgers-2026.csv · 214 rows",
+  "kind": "text",
+  "context": "exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Findin"
+ },
+ {
+  "en": "bytes sent",
+  "kind": "text",
+  "context": "n CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Finding every buy and its fee</li> <li>Pr"
+ },
+ {
+  "en": "Reading 214 rows on this device",
+  "kind": "text",
+  "context": "><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Finding every buy and its fee</li> <li>Pricing the same buys at each partner</li> </ol> <div class=\"res\" id=\"res\"> "
+ },
+ {
+  "en": "Finding every buy and its fee",
+  "kind": "text",
+  "context": "4 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Finding every buy and its fee</li> <li>Pricing the same buys at each partner</li> </ol> <div class=\"res\" id=\"res\"> <div class=\"lbl\">You overpaid in the last 12 m"
+ },
+ {
+  "en": "Pricing the same buys at each partner",
+  "kind": "text",
+  "context": "nt</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Finding every buy and its fee</li> <li>Pricing the same buys at each partner</li> </ol> <div class=\"res\" id=\"res\"> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€<span id=\"over\">3"
+ },
+ {
+  "en": "You overpaid in the last 12 months",
+  "kind": "text",
+  "context": "Finding every buy and its fee</li> <li>Pricing the same buys at each partner</li> </ol> <div class=\"res\" id=\"res\"> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>"
+ },
+ {
+  "en": "on €43,000 of buys",
+  "kind": "text",
+  "context": " <div class=\"res\" id=\"res\"> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div><"
+ },
+ {
+  "en": "You paid · Kraken Pro 0.8%",
+  "kind": "text",
+  "context": "</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>ByBit EU 0.25%</span><div class=\"t\"><div clas"
+ },
+ {
+  "en": "ByBit EU 0.25%",
+  "kind": "text",
+  "context": " class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>ByBit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\""
+ },
+ {
+  "en": "21bitcoin Auto-Invest 0%*",
+  "kind": "text",
+  "context": " <div class=\"bar\"><span>ByBit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\"><div class=\"f g\" data-w=\"1\"></div></div><b>€0</b></div> </div> <p class=\"sample\">Sample export and figures for illustratio"
+ },
+ {
+  "en": "Sample export and figures for illustration. Published taker fees for a plain market buy; spreads and withdrawal fees not included. *0% from day 8 of Auto-Invest. Not investment advice.",
+  "kind": "text",
+  "context": "ass=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\"><div class=\"f g\" data-w=\"1\"></div></div><b>€0</b></div> </div> <p class=\"sample\">Sample export and figures for illustration. Published taker fees for a plain market buy; spreads and withdrawal fees not included. *0% from day 8 of Auto-Invest. Not investment advice.</p> </div> </div> </div> <!-- ASK YOUR CFO --> <section id=\"ask\"> <div class=\"sec-head\"> <h2>Ask your CFO. <span>Answers from your "
+ },
+ {
+  "en": "Ask your CFO.",
+  "kind": "text",
+  "context": "of Auto-Invest. Not investment advice.</p> </div> </div> </div> <!-- ASK YOUR CFO --> <section id=\"ask\"> <div class=\"sec-head\"> <h2>Ask your CFO. <span>Answers from your own numbers, read in your browser.</span></h2> </div> <div class=\"ask\"> <div class=\"chat-panel\"> <div class=\"chat"
+ },
+ {
+  "en": "Answers from your own numbers, read in your browser.",
+  "kind": "text",
+  "context": "investment advice.</p> </div> </div> </div> <!-- ASK YOUR CFO --> <section id=\"ask\"> <div class=\"sec-head\"> <h2>Ask your CFO. <span>Answers from your own numbers, read in your browser.</span></h2> </div> <div class=\"ask\"> <div class=\"chat-panel\"> <div class=\"chat-head\"><b>Ask your CFO</b><span class=\"tag\">AI · your data "
+ },
+ {
+  "en": "Ask your CFO",
+  "kind": "text",
+  "context": "wers from your own numbers, read in your browser.</span></h2> </div> <div class=\"ask\"> <div class=\"chat-panel\"> <div class=\"chat-head\"><b>Ask your CFO</b><span class=\"tag\">AI · your data only</span></div> <div class=\"chat\"> <div class=\"msg q\">Why did I pay €449 in fees last year?</div> "
+ },
+ {
+  "en": "AI · your data only",
+  "kind": "text",
+  "context": "n your browser.</span></h2> </div> <div class=\"ask\"> <div class=\"chat-panel\"> <div class=\"chat-head\"><b>Ask your CFO</b><span class=\"tag\">AI · your data only</span></div> <div class=\"chat\"> <div class=\"msg q\">Why did I pay €449 in fees last year?</div> <div class=\"msg a\">You made 48 buys "
+ },
+ {
+  "en": "Why did I pay €449 in fees last year?",
+  "kind": "text",
+  "context": "\"> <div class=\"chat-head\"><b>Ask your CFO</b><span class=\"tag\">AI · your data only</span></div> <div class=\"chat\"> <div class=\"msg q\">Why did I pay €449 in fees last year?</div> <div class=\"msg a\">You made 48 buys on Kraken Pro, €43,000 in total. €344 of it is the 0.8% taker fee on those buys. The other €105 is withdraw"
+ },
+ {
+  "en": "You made 48 buys on Kraken Pro, €43,000 in total. €344 of it is the 0.8% taker fee on those buys. The other €105 is withdrawal fees on 12 transfers to your own wallet.",
+  "kind": "text",
+  "context": " · your data only</span></div> <div class=\"chat\"> <div class=\"msg q\">Why did I pay €449 in fees last year?</div> <div class=\"msg a\">You made 48 buys on Kraken Pro, €43,000 in total. €344 of it is the 0.8% taker fee on those buys. The other €105 is withdrawal fees on 12 transfers to your own wallet.<small>Source: kraken-ledgers-2026.csv · 214 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?<"
+ },
+ {
+  "en": "Source: kraken-ledgers-2026.csv · 214 rows, read on this device",
+  "kind": "text",
+  "context": "ys on Kraken Pro, €43,000 in total. €344 of it is the 0.8% taker fee on those buys. The other €105 is withdrawal fees on 12 transfers to your own wallet.<small>Source: kraken-ledgers-2026.csv · 214 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about whe"
+ },
+ {
+  "en": "Should I buy more before the end of the year?",
+  "kind": "text",
+  "context": "rawal fees on 12 transfers to your own wallet.<small>Source: kraken-ledgers-2026.csv · 214 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month "
+ },
+ {
+  "en": "That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.",
+  "kind": "text",
+  "context": "4 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">AI-written answers, fr"
+ },
+ {
+  "en": "Virtuse CFO explains your data. It doesn't give investment or tax advice.",
+  "kind": "text",
+  "context": " buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">AI-written answers, from your totals and labels. Your files, wallet and addresses stay on your device."
+ },
+ {
+  "en": "AI-written answers, from your totals and labels. Your files, wallet and addresses stay on your device.",
+  "kind": "text",
+  "context": " can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">AI-written answers, from your totals and labels. Your files, wallet and addresses stay on your device.</p> </div> <div class=\"ask-side\"> <div><b>Grounded</b><p>Every answer names the rows and file it came from.</p></div> <div><b>Priva"
+ },
+ {
+  "en": "Grounded",
+  "kind": "text",
+  "context": "itten answers, from your totals and labels. Your files, wallet and addresses stay on your device.</p> </div> <div class=\"ask-side\"> <div><b>Grounded</b><p>Every answer names the rows and file it came from.</p></div> <div><b>Private</b><p>The question and your totals are sent; your raw rows and walle"
+ },
+ {
+  "en": "Every answer names the rows and file it came from.",
+  "kind": "text",
+  "context": "from your totals and labels. Your files, wallet and addresses stay on your device.</p> </div> <div class=\"ask-side\"> <div><b>Grounded</b><p>Every answer names the rows and file it came from.</p></div> <div><b>Private</b><p>The question and your totals are sent; your raw rows and wallet are not.</p></div> <div><b>Bounded</b><p>Buy, s"
+ },
+ {
+  "en": "Private",
+  "kind": "text",
+  "context": "vice.</p> </div> <div class=\"ask-side\"> <div><b>Grounded</b><p>Every answer names the rows and file it came from.</p></div> <div><b>Private</b><p>The question and your totals are sent; your raw rows and wallet are not.</p></div> <div><b>Bounded</b><p>Buy, sell, hold and timing questions are"
+ },
+ {
+  "en": "The question and your totals are sent; your raw rows and wallet are not.",
+  "kind": "text",
+  "context": " </div> <div class=\"ask-side\"> <div><b>Grounded</b><p>Every answer names the rows and file it came from.</p></div> <div><b>Private</b><p>The question and your totals are sent; your raw rows and wallet are not.</p></div> <div><b>Bounded</b><p>Buy, sell, hold and timing questions are declined, every time, and you can see it.</p></div> </div> </div> "
+ },
+ {
+  "en": "Bounded",
+  "kind": "text",
+  "context": "d file it came from.</p></div> <div><b>Private</b><p>The question and your totals are sent; your raw rows and wallet are not.</p></div> <div><b>Bounded</b><p>Buy, sell, hold and timing questions are declined, every time, and you can see it.</p></div> </div> </div> </section> <!-- 2. FIRST PRINCI"
+ },
+ {
+  "en": "Buy, sell, hold and timing questions are declined, every time, and you can see it.",
+  "kind": "text",
+  "context": " from.</p></div> <div><b>Private</b><p>The question and your totals are sent; your raw rows and wallet are not.</p></div> <div><b>Bounded</b><p>Buy, sell, hold and timing questions are declined, every time, and you can see it.</p></div> </div> </div> </section> <!-- 2. FIRST PRINCIPLES --> <section> <div class=\"sec-head\"> <h2>A buy has three costs. <span>Mo"
+ },
+ {
+  "en": "A buy has three costs.",
+  "kind": "text",
+  "context": "every time, and you can see it.</p></div> </div> </div> </section> <!-- 2. FIRST PRINCIPLES --> <section> <div class=\"sec-head\"> <h2>A buy has three costs. <span>Most people only look at one.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>The fee</h3><p>The"
+ },
+ {
+  "en": "Most people only look at one.",
+  "kind": "text",
+  "context": "t.</p></div> </div> </div> </section> <!-- 2. FIRST PRINCIPLES --> <section> <div class=\"sec-head\"> <h2>A buy has three costs. <span>Most people only look at one.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>The fee</h3><p>The percentage on your receipt, from 0%"
+ },
+ {
+  "en": "The fee",
+  "kind": "text",
+  "context": "y has three costs. <span>Most people only look at one.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark yes\">Yes</b></div></div"
+ },
+ {
+  "en": "The percentage on your receipt, from 0% to 0.8% at our partners.",
+  "kind": "text",
+  "context": "ts. <span>Most people only look at one.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark yes\">Yes</b></div></div> <div class=\"tile\" style=\"--c: var(--yellow)\"><h3>The spread</h3>"
+ },
+ {
+  "en": "On your receipt",
+  "kind": "text",
+  "context": " <div class=\"tile\" style=\"--c: var(--orange)\"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark yes\">Yes</b></div></div> <div class=\"tile\" style=\"--c: var(--yellow)\"><h3>The spread</h3><p>The gap between your price and the marke"
+ },
+ {
+  "en": "Yes",
+  "kind": "text",
+  "context": "ange)\"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark yes\">Yes</b></div></div> <div class=\"tile\" style=\"--c: var(--yellow)\"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><di"
+ },
+ {
+  "en": "The spread",
+  "kind": "text",
+  "context": "t our partners.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark yes\">Yes</b></div></div> <div class=\"tile\" style=\"--c: var(--yellow)\"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark no\">No</b></div></div> "
+ },
+ {
+  "en": "The gap between your price and the market price at that minute.",
+  "kind": "text",
+  "context": "><div class=\"meta\"><span>On your receipt</span><b class=\"mark yes\">Yes</b></div></div> <div class=\"tile\" style=\"--c: var(--yellow)\"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark no\">No</b></div></div> <div class=\"tile\" style=\"--c: var(--red)\"><h3>The withdrawal</h3><"
+ },
+ {
+  "en": "No",
+  "kind": "text",
+  "context": "low)\"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark no\">No</b></div></div> <div class=\"tile\" style=\"--c: var(--red)\"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.<"
+ },
+ {
+  "en": "The withdrawal",
+  "kind": "text",
+  "context": "rice at that minute.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark no\">No</b></div></div> <div class=\"tile\" style=\"--c: var(--red)\"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark rarely\">Rarely</b><"
+ },
+ {
+  "en": "Moving coins to your own wallet. Small each time, large over a year.",
+  "kind": "text",
+  "context": "p><div class=\"meta\"><span>On your receipt</span><b class=\"mark no\">No</b></div></div> <div class=\"tile\" style=\"--c: var(--red)\"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark rarely\">Rarely</b></div></div> </div> <div class=\"cost-split\" aria-label=\"What the samp"
+ },
+ {
+  "en": "Rarely",
+  "kind": "text",
+  "context": " withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark rarely\">Rarely</b></div></div> </div> <div class=\"cost-split\" aria-label=\"What the sample's EUR 449 is made of\"> <div class=\"cs-top\"><span>The sample's €449, sp"
+ },
+ {
+  "en": "What the sample's EUR 449 is made of",
+  "kind": "attr:aria-label",
+  "context": " over a year.</p><div class=\"meta\"><span>On your receipt</span><b class=\"mark rarely\">Rarely</b></div></div> </div> <div class=\"cost-split\" aria-label=\"What the sample's EUR 449 is made of\"> <div class=\"cs-top\"><span>The sample's €449, split</span><b>€449</b></div> <div class=\"cs-bar\"><i class=\"cs-fee\" style=\"width:76.6%\"></i><i class"
+ },
+ {
+  "en": "The sample's €449, split",
+  "kind": "text",
+  "context": "=\"mark rarely\">Rarely</b></div></div> </div> <div class=\"cost-split\" aria-label=\"What the sample's EUR 449 is made of\"> <div class=\"cs-top\"><span>The sample's €449, split</span><b>€449</b></div> <div class=\"cs-bar\"><i class=\"cs-fee\" style=\"width:76.6%\"></i><i class=\"cs-wd\" style=\"width:23.4%\"></i></div> <div class=\"c"
+ },
+ {
+  "en": "Fee €344",
+  "kind": "text",
+  "context": " class=\"cs-bar\"><i class=\"cs-fee\" style=\"width:76.6%\"></i><i class=\"cs-wd\" style=\"width:23.4%\"></i></div> <div class=\"cs-key\"><span><i class=\"cs-fee\"></i>Fee €344</span><span><i class=\"cs-wd\"></i>Withdrawals €105</span><span class=\"cs-hidden\"><i class=\"cs-sp\"></i>Spread: hidden in the price, on top</span></div> </div"
+ },
+ {
+  "en": "Withdrawals €105",
+  "kind": "text",
+  "context": "idth:76.6%\"></i><i class=\"cs-wd\" style=\"width:23.4%\"></i></div> <div class=\"cs-key\"><span><i class=\"cs-fee\"></i>Fee €344</span><span><i class=\"cs-wd\"></i>Withdrawals €105</span><span class=\"cs-hidden\"><i class=\"cs-sp\"></i>Spread: hidden in the price, on top</span></div> </div> </section> <!-- 3. PROOF, NOT PROMISE --> "
+ },
+ {
+  "en": "Spread: hidden in the price, on top",
+  "kind": "text",
+  "context": " <div class=\"cs-key\"><span><i class=\"cs-fee\"></i>Fee €344</span><span><i class=\"cs-wd\"></i>Withdrawals €105</span><span class=\"cs-hidden\"><i class=\"cs-sp\"></i>Spread: hidden in the price, on top</span></div> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your dev"
+ },
+ {
+  "en": "This is everything that leaves your device.",
+  "kind": "text",
+  "context": "</i>Spread: hidden in the price, on top</span></div> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\""
+ },
+ {
+  "en": "Open the network tab and check.",
+  "kind": "text",
+  "context": "v> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c o"
+ },
+ {
+  "en": "Free audit upload",
+  "kind": "attr:aria-label",
+  "context": "verything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span c"
+ },
+ {
+  "en": "// free audit",
+  "kind": "text",
+  "context": "<span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to ke"
+ },
+ {
+  "en": "// nothing. 0 bytes.",
+  "kind": "text",
+  "context": "pan></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\""
+ },
+ {
+  "en": "Paid account upload",
+  "kind": "attr:aria-label",
+  "context": "ria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"count"
+ },
+ {
+  "en": "// CFO account · to keep your alerts running",
+  "kind": "text",
+  "context": "lass=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">"
+ },
+ {
+  "en": "\"year\"",
+  "kind": "text",
+  "context": "an></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">\"buys_eur\"</span>: <span class=\"n\">"
+ },
+ {
+  "en": "\"country\"",
+  "kind": "text",
+  "context": "upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">\"buys_eur\"</span>: <span class=\"n\">43000</span>, <span class=\"k2\">\"fees_eur\"</span>: <span class=\"n"
+ },
+ {
+  "en": "\"SK\"",
+  "kind": "text",
+  "context": "nt · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">\"buys_eur\"</span>: <span class=\"n\">43000</span>, <span class=\"k2\">\"fees_eur\"</span>: <span class=\"n\">449</span>, <span class=\"k2"
+ },
+ {
+  "en": "\"buys_eur\"",
+  "kind": "text",
+  "context": "</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">\"buys_eur\"</span>: <span class=\"n\">43000</span>, <span class=\"k2\">\"fees_eur\"</span>: <span class=\"n\">449</span>, <span class=\"k2\">\"disposals\"</span>: <span class=\"n\">"
+ },
+ {
+  "en": "\"fees_eur\"",
+  "kind": "text",
+  "context": "an>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">\"buys_eur\"</span>: <span class=\"n\">43000</span>, <span class=\"k2\">\"fees_eur\"</span>: <span class=\"n\">449</span>, <span class=\"k2\">\"disposals\"</span>: <span class=\"n\">41</span> } <span class=\"c bad\">// never: xpub, addresses, txids, ra"
+ },
+ {
+  "en": "\"disposals\"",
+  "kind": "text",
+  "context": "span>, <span class=\"k2\">\"buys_eur\"</span>: <span class=\"n\">43000</span>, <span class=\"k2\">\"fees_eur\"</span>: <span class=\"n\">449</span>, <span class=\"k2\">\"disposals\"</span>: <span class=\"n\">41</span> } <span class=\"c bad\">// never: xpub, addresses, txids, raw rows, your name</span></pre> </div> </section> <!-- 4. A"
+ },
+ {
+  "en": "// never: xpub, addresses, txids, raw rows, your name",
+  "kind": "text",
+  "context": "span>, <span class=\"k2\">\"fees_eur\"</span>: <span class=\"n\">449</span>, <span class=\"k2\">\"disposals\"</span>: <span class=\"n\">41</span> } <span class=\"c bad\">// never: xpub, addresses, txids, raw rows, your name</span></pre> </div> </section> <!-- 4. AFTER THE AUDIT --> <section> <div class=\"sec-head\"> <h2>After the number, the CFO keeps watching. "
+ },
+ {
+  "en": "After the number, the CFO keeps watching.",
+  "kind": "text",
+  "context": "pub, addresses, txids, raw rows, your name</span></pre> </div> </section> <!-- 4. AFTER THE AUDIT --> <section> <div class=\"sec-head\"> <h2>After the number, the CFO keeps watching. <span>Four jobs, nothing else.</span></h2> </div> <div class=\"tiles t2\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>Fee alerts</h3><p>A mes"
+ },
+ {
+  "en": "Four jobs, nothing else.",
+  "kind": "text",
+  "context": "></pre> </div> </section> <!-- 4. AFTER THE AUDIT --> <section> <div class=\"sec-head\"> <h2>After the number, the CFO keeps watching. <span>Four jobs, nothing else.</span></h2> </div> <div class=\"tiles t2\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>Fee alerts</h3><p>A message when what you pay drifts a"
+ },
+ {
+  "en": "Fee alerts",
+  "kind": "text",
+  "context": "the CFO keeps watching. <span>Four jobs, nothing else.</span></h2> </div> <div class=\"tiles t2\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class=\"meta\"><span>Checks</span><b>Every month</b></div></div> <div cla"
+ },
+ {
+  "en": "A message when what you pay drifts above the cheapest route again.",
+  "kind": "text",
+  "context": "hing. <span>Four jobs, nothing else.</span></h2> </div> <div class=\"tiles t2\"> <div class=\"tile\" style=\"--c: var(--orange)\"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class=\"meta\"><span>Checks</span><b>Every month</b></div></div> <div class=\"tile\" style=\"--c: var(--purple)\"><h3>Loan LTV alerts</h3><p>A warning "
+ },
+ {
+  "en": "Checks",
+  "kind": "text",
+  "context": "div class=\"tile\" style=\"--c: var(--orange)\"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class=\"meta\"><span>Checks</span><b>Every month</b></div></div> <div class=\"tile\" style=\"--c: var(--purple)\"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets "
+ },
+ {
+  "en": "Every month",
+  "kind": "text",
+  "context": " style=\"--c: var(--orange)\"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class=\"meta\"><span>Checks</span><b>Every month</b></div></div> <div class=\"tile\" style=\"--c: var(--purple)\"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation."
+ },
+ {
+  "en": "Loan LTV alerts",
+  "kind": "text",
+  "context": "s above the cheapest route again.</p><div class=\"meta\"><span>Checks</span><b>Every month</b></div></div> <div class=\"tile\" style=\"--c: var(--purple)\"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class=\"meta\"><span>Checks</span><b>Every day</b></div></div> <div class="
+ },
+ {
+  "en": "A warning before a Bitcoin-backed loan gets close to liquidation.",
+  "kind": "text",
+  "context": "ute again.</p><div class=\"meta\"><span>Checks</span><b>Every month</b></div></div> <div class=\"tile\" style=\"--c: var(--purple)\"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class=\"meta\"><span>Checks</span><b>Every day</b></div></div> <div class=\"tile\" style=\"--c: var(--blue)\"><h3>Tax report</h3><p>A summary of your s"
+ },
+ {
+  "en": "Every day",
+  "kind": "text",
+  "context": "le=\"--c: var(--purple)\"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class=\"meta\"><span>Checks</span><b>Every day</b></div></div> <div class=\"tile\" style=\"--c: var(--blue)\"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicativ"
+ },
+ {
+  "en": "Tax report",
+  "kind": "text",
+  "context": "acked loan gets close to liquidation.</p><div class=\"meta\"><span>Checks</span><b>Every day</b></div></div> <div class=\"tile\" style=\"--c: var(--blue)\"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class=\"meta\"><span>Countries</span><b>13</b></div></div> <div c"
+ },
+ {
+  "en": "A summary of your sales and swaps, for you or your accountant. Indicative.",
+  "kind": "text",
+  "context": "ose to liquidation.</p><div class=\"meta\"><span>Checks</span><b>Every day</b></div></div> <div class=\"tile\" style=\"--c: var(--blue)\"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class=\"meta\"><span>Countries</span><b>13</b></div></div> <div class=\"tile\" style=\"--c: var(--teal)\"><h3>Inheritance kit</h3><p>A checklist and a "
+ },
+ {
+  "en": "Countries",
+  "kind": "text",
+  "context": "ass=\"tile\" style=\"--c: var(--blue)\"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class=\"meta\"><span>Countries</span><b>13</b></div></div> <div class=\"tile\" style=\"--c: var(--teal)\"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or see"
+ },
+ {
+  "en": "Inheritance kit",
+  "kind": "text",
+  "context": ", for you or your accountant. Indicative.</p><div class=\"meta\"><span>Countries</span><b>13</b></div></div> <div class=\"tile\" style=\"--c: var(--teal)\"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class=\"meta\"><span>Seed phrases stored</span><b>None</b></div></div> "
+ },
+ {
+  "en": "A checklist and a letter for your heirs. No keys or seed phrases, ever.",
+  "kind": "text",
+  "context": "ntant. Indicative.</p><div class=\"meta\"><span>Countries</span><b>13</b></div></div> <div class=\"tile\" style=\"--c: var(--teal)\"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class=\"meta\"><span>Seed phrases stored</span><b>None</b></div></div> </div> </section> <!-- 5. HARD LIMITS --> <section> <div class=\"sec"
+ },
+ {
+  "en": "Seed phrases stored",
+  "kind": "text",
+  "context": "s=\"tile\" style=\"--c: var(--teal)\"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class=\"meta\"><span>Seed phrases stored</span><b>None</b></div></div> </div> </section> <!-- 5. HARD LIMITS --> <section> <div class=\"sec-head\"> <h2>What it can't do. <span>By de"
+ },
+ {
+  "en": "None",
+  "kind": "text",
+  "context": "al)\"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class=\"meta\"><span>Seed phrases stored</span><b>None</b></div></div> </div> </section> <!-- 5. HARD LIMITS --> <section> <div class=\"sec-head\"> <h2>What it can't do. <span>By design, not by p"
+ },
+ {
+  "en": "What it can't do.",
+  "kind": "text",
+  "context": "ta\"><span>Seed phrases stored</span><b>None</b></div></div> </div> </section> <!-- 5. HARD LIMITS --> <section> <div class=\"sec-head\"> <h2>What it can't do. <span>By design, not by policy.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile never\"><h3>Move money</h3><p>No keys, no coins, no eur"
+ },
+ {
+  "en": "By design, not by policy.",
+  "kind": "text",
+  "context": "tored</span><b>None</b></div></div> </div> </section> <!-- 5. HARD LIMITS --> <section> <div class=\"sec-head\"> <h2>What it can't do. <span>By design, not by policy.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile never\"><h3>Move money</h3><p>No keys, no coins, no euros. Read-only, always.</p><div c"
+ },
+ {
+  "en": "Move money",
+  "kind": "text",
+  "context": "ass=\"sec-head\"> <h2>What it can't do. <span>By design, not by policy.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile never\"><h3>Move money</h3><p>No keys, no coins, no euros. Read-only, always.</p><div class=\"meta\"><span>Tools that can move funds</span><b>0</b></div></div> <div class=\"tile n"
+ },
+ {
+  "en": "No keys, no coins, no euros. Read-only, always.",
+  "kind": "text",
+  "context": " <h2>What it can't do. <span>By design, not by policy.</span></h2> </div> <div class=\"tiles t3\"> <div class=\"tile never\"><h3>Move money</h3><p>No keys, no coins, no euros. Read-only, always.</p><div class=\"meta\"><span>Tools that can move funds</span><b>0</b></div></div> <div class=\"tile never\"><h3>Place orders</h3><p>Buying happens on the par"
+ },
+ {
+  "en": "Tools that can move funds",
+  "kind": "text",
+  "context": "/div> <div class=\"tiles t3\"> <div class=\"tile never\"><h3>Move money</h3><p>No keys, no coins, no euros. Read-only, always.</p><div class=\"meta\"><span>Tools that can move funds</span><b>0</b></div></div> <div class=\"tile never\"><h3>Place orders</h3><p>Buying happens on the partner's own licensed platform.</p><div class=\"meta\"><s"
+ },
+ {
+  "en": "Place orders",
+  "kind": "text",
+  "context": " keys, no coins, no euros. Read-only, always.</p><div class=\"meta\"><span>Tools that can move funds</span><b>0</b></div></div> <div class=\"tile never\"><h3>Place orders</h3><p>Buying happens on the partner's own licensed platform.</p><div class=\"meta\"><span>Orders sent by Virtuse</span><b>0</b></div></div> <div class=\"ti"
+ },
+ {
+  "en": "Buying happens on the partner's own licensed platform.",
+  "kind": "text",
+  "context": "euros. Read-only, always.</p><div class=\"meta\"><span>Tools that can move funds</span><b>0</b></div></div> <div class=\"tile never\"><h3>Place orders</h3><p>Buying happens on the partner's own licensed platform.</p><div class=\"meta\"><span>Orders sent by Virtuse</span><b>0</b></div></div> <div class=\"tile never\"><h3>Tell you to buy or sell</h3><p>The AI explains y"
+ },
+ {
+  "en": "Orders sent by Virtuse",
+  "kind": "text",
+  "context": "an><b>0</b></div></div> <div class=\"tile never\"><h3>Place orders</h3><p>Buying happens on the partner's own licensed platform.</p><div class=\"meta\"><span>Orders sent by Virtuse</span><b>0</b></div></div> <div class=\"tile never\"><h3>Tell you to buy or sell</h3><p>The AI explains your numbers and declines timing questions.</p><div"
+ },
+ {
+  "en": "Tell you to buy or sell",
+  "kind": "text",
+  "context": " happens on the partner's own licensed platform.</p><div class=\"meta\"><span>Orders sent by Virtuse</span><b>0</b></div></div> <div class=\"tile never\"><h3>Tell you to buy or sell</h3><p>The AI explains your numbers and declines timing questions.</p><div class=\"meta\"><span>Buy or sell answers</span><b>Declined</b></div></div> </div> "
+ },
+ {
+  "en": "The AI explains your numbers and declines timing questions.",
+  "kind": "text",
+  "context": "icensed platform.</p><div class=\"meta\"><span>Orders sent by Virtuse</span><b>0</b></div></div> <div class=\"tile never\"><h3>Tell you to buy or sell</h3><p>The AI explains your numbers and declines timing questions.</p><div class=\"meta\"><span>Buy or sell answers</span><b>Declined</b></div></div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <d"
+ },
+ {
+  "en": "Buy or sell answers",
+  "kind": "text",
+  "context": "></div> <div class=\"tile never\"><h3>Tell you to buy or sell</h3><p>The AI explains your numbers and declines timing questions.</p><div class=\"meta\"><span>Buy or sell answers</span><b>Declined</b></div></div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>Free to start. <"
+ },
+ {
+  "en": "Declined",
+  "kind": "text",
+  "context": "e never\"><h3>Tell you to buy or sell</h3><p>The AI explains your numbers and declines timing questions.</p><div class=\"meta\"><span>Buy or sell answers</span><b>Declined</b></div></div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>Free to start. <span>Upgrade only "
+ },
+ {
+  "en": "Free to start.",
+  "kind": "text",
+  "context": " or sell answers</span><b>Declined</b></div></div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>Free to start. <span>Upgrade only if it works.</span></h2> <p class=\"sec-sub\">Cancel anytime. No card needed for the free audit. The same read-only, local-first design "
+ },
+ {
+  "en": "Upgrade only if it works.",
+  "kind": "text",
+  "context": "n><b>Declined</b></div></div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>Free to start. <span>Upgrade only if it works.</span></h2> <p class=\"sec-sub\">Cancel anytime. No card needed for the free audit. The same read-only, local-first design on every plan.</p> </div> "
+ },
+ {
+  "en": "Cancel anytime. No card needed for the free audit. The same read-only, local-first design on every plan.",
+  "kind": "text",
+  "context": ". PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>Free to start. <span>Upgrade only if it works.</span></h2> <p class=\"sec-sub\">Cancel anytime. No card needed for the free audit. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">M"
+ },
+ {
+  "en": "Billing period",
+  "kind": "attr:aria-label",
+  "context": "me. No card needed for the free audit. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">Monthly</button> <button type=\"button\" role=\"tab\" aria-selected=\"false\" data-"
+ },
+ {
+  "en": "Monthly",
+  "kind": "text",
+  "context": ".</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">Monthly</button> <button type=\"button\" role=\"tab\" aria-selected=\"false\" data-bill=\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> "
+ },
+ {
+  "en": "Yearly",
+  "kind": "text",
+  "context": "<button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">Monthly</button> <button type=\"button\" role=\"tab\" aria-selected=\"false\" data-bill=\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> <div class=\"plan\"> <h3>Hub</h3> <div class=\"price\">€0 <small>forever</s"
+ },
+ {
+  "en": "2 months free",
+  "kind": "text",
+  "context": "pe=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">Monthly</button> <button type=\"button\" role=\"tab\" aria-selected=\"false\" data-bill=\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> <div class=\"plan\"> <h3>Hub</h3> <div class=\"price\">€0 <small>forever</small></div> "
+ },
+ {
+  "en": "Hub",
+  "kind": "text",
+  "context": "n\" role=\"tab\" aria-selected=\"false\" data-bill=\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> <div class=\"plan\"> <h3>Hub</h3> <div class=\"price\">€0 <small>forever</small></div> <p class=\"for\">For anyone choosing where to buy, store or borrow.</p> <ul><li>C"
+ },
+ {
+  "en": "forever",
+  "kind": "text",
+  "context": "\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> <div class=\"plan\"> <h3>Hub</h3> <div class=\"price\">€0 <small>forever</small></div> <p class=\"for\">For anyone choosing where to buy, store or borrow.</p> <ul><li>Compare 22 vetted partners</li><li>Fee Index, Partn"
+ },
+ {
+  "en": "For anyone choosing where to buy, store or borrow.",
+  "kind": "text",
+  "context": "</div> <div class=\"plans3\"> <div class=\"plan\"> <h3>Hub</h3> <div class=\"price\">€0 <small>forever</small></div> <p class=\"for\">For anyone choosing where to buy, store or borrow.</p> <ul><li>Compare 22 vetted partners</li><li>Fee Index, Partner Finder, all tools</li><li>Virtuse Brief every Monday</li></ul> <a class=\"btn "
+ },
+ {
+  "en": "Compare 22 vetted partners",
+  "kind": "text",
+  "context": "b</h3> <div class=\"price\">€0 <small>forever</small></div> <p class=\"for\">For anyone choosing where to buy, store or borrow.</p> <ul><li>Compare 22 vetted partners</li><li>Fee Index, Partner Finder, all tools</li><li>Virtuse Brief every Monday</li></ul> <a class=\"btn btn-ghost\" href=\"index.html\">Open the hub</a> "
+ },
+ {
+  "en": "Fee Index, Partner Finder, all tools",
+  "kind": "text",
+  "context": "0 <small>forever</small></div> <p class=\"for\">For anyone choosing where to buy, store or borrow.</p> <ul><li>Compare 22 vetted partners</li><li>Fee Index, Partner Finder, all tools</li><li>Virtuse Brief every Monday</li></ul> <a class=\"btn btn-ghost\" href=\"index.html\">Open the hub</a> </div> <div class=\"plan\"> "
+ },
+ {
+  "en": "Virtuse Brief every Monday",
+  "kind": "text",
+  "context": "ss=\"for\">For anyone choosing where to buy, store or borrow.</p> <ul><li>Compare 22 vetted partners</li><li>Fee Index, Partner Finder, all tools</li><li>Virtuse Brief every Monday</li></ul> <a class=\"btn btn-ghost\" href=\"index.html\">Open the hub</a> </div> <div class=\"plan\"> <h3>Free audit</h3> <div cl"
+ },
+ {
+  "en": "Open the hub",
+  "kind": "text",
+  "context": "22 vetted partners</li><li>Fee Index, Partner Finder, all tools</li><li>Virtuse Brief every Monday</li></ul> <a class=\"btn btn-ghost\" href=\"index.html\">Open the hub</a> </div> <div class=\"plan\"> <h3>Free audit</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">For "
+ },
+ {
+  "en": "Free audit",
+  "kind": "text",
+  "context": "><li>Virtuse Brief every Monday</li></ul> <a class=\"btn btn-ghost\" href=\"index.html\">Open the hub</a> </div> <div class=\"plan\"> <h3>Free audit</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">For checking what your buying has cost you.</p> <ul><li>12-mo"
+ },
+ {
+  "en": "no account",
+  "kind": "text",
+  "context": "class=\"btn btn-ghost\" href=\"index.html\">Open the hub</a> </div> <div class=\"plan\"> <h3>Free audit</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">For checking what your buying has cost you.</p> <ul><li>12-month fee audit from your export</li><li>Cheapest licen"
+ },
+ {
+  "en": "For checking what your buying has cost you.",
+  "kind": "text",
+  "context": " hub</a> </div> <div class=\"plan\"> <h3>Free audit</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">For checking what your buying has cost you.</p> <ul><li>12-month fee audit from your export</li><li>Cheapest licensed route for how you buy</li><li>Ask your CFO, 10 questions</li><li>Runs in your"
+ },
+ {
+  "en": "12-month fee audit from your export",
+  "kind": "text",
+  "context": "audit</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">For checking what your buying has cost you.</p> <ul><li>12-month fee audit from your export</li><li>Cheapest licensed route for how you buy</li><li>Ask your CFO, 10 questions</li><li>Runs in your browser; nothing uploaded</li></ul> <button cla"
+ },
+ {
+  "en": "Cheapest licensed route for how you buy",
+  "kind": "text",
+  "context": "all>no account</small></div> <p class=\"for\">For checking what your buying has cost you.</p> <ul><li>12-month fee audit from your export</li><li>Cheapest licensed route for how you buy</li><li>Ask your CFO, 10 questions</li><li>Runs in your browser; nothing uploaded</li></ul> <button class=\"btn btn-ghost only-audit\" type=\"button\" data"
+ },
+ {
+  "en": "Ask your CFO, 10 questions",
+  "kind": "text",
+  "context": "or\">For checking what your buying has cost you.</p> <ul><li>12-month fee audit from your export</li><li>Cheapest licensed route for how you buy</li><li>Ask your CFO, 10 questions</li><li>Runs in your browser; nothing uploaded</li></ul> <button class=\"btn btn-ghost only-audit\" type=\"button\" data-run>Run the free audit</button> "
+ },
+ {
+  "en": "Runs in your browser; nothing uploaded",
+  "kind": "text",
+  "context": "as cost you.</p> <ul><li>12-month fee audit from your export</li><li>Cheapest licensed route for how you buy</li><li>Ask your CFO, 10 questions</li><li>Runs in your browser; nothing uploaded</li></ul> <button class=\"btn btn-ghost only-audit\" type=\"button\" data-run>Run the free audit</button> <a class=\"btn btn-ghost only-wait\" href=\""
+ },
+ {
+  "en": "Run the free audit",
+  "kind": "text",
+  "context": "<li>Ask your CFO, 10 questions</li><li>Runs in your browser; nothing uploaded</li></ul> <button class=\"btn btn-ghost only-audit\" type=\"button\" data-run>Run the free audit</button> <a class=\"btn btn-ghost only-wait\" href=\"#waitForm\">Tell me 1 Nov</a> </div> <div class=\"plan pro\"> <span class=\"founding\""
+ },
+ {
+  "en": "Founding price, when paid plans open in January",
+  "kind": "text",
+  "context": "/button> <a class=\"btn btn-ghost only-wait\" href=\"#waitForm\">Tell me 1 Nov</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span"
+ },
+ {
+  "en": "/ month",
+  "kind": "text",
+  "context": " <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y"
+ },
+ {
+  "en": "/ year",
+  "kind": "text",
+  "context": "lans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span><"
+ },
+ {
+  "en": "Or €90 a year, two months free.",
+  "kind": "text",
+  "context": " <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li"
+ },
+ {
+  "en": "That's €7.50 a month, billed yearly.",
+  "kind": "text",
+  "context": "</span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir "
+ },
+ {
+  "en": "Unlimited exports and wallets",
+  "kind": "text",
+  "context": "> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul> <"
+ },
+ {
+  "en": "Fee and loan LTV alerts",
+  "kind": "text",
+  "context": "Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary on"
+ },
+ {
+  "en": "Tax report, 13 EU countries",
+  "kind": "text",
+  "context": "/span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Sta"
+ },
+ {
+  "en": "Inheritance kit with heir letter",
+  "kind": "text",
+  "context": "50 a month, billed yearly.</span></p> <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the free audit</button> <"
+ },
+ {
+  "en": "Ask your CFO, no limit",
+  "kind": "text",
+  "context": " <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the free audit</button> <a class=\"btn btn-primary only-w"
+ },
+ {
+  "en": "Start with the free audit",
+  "kind": "text",
+  "context": "ies</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the free audit</button> <a class=\"btn btn-primary only-wait\" href=\"#waitForm\">Tell me 1 Nov</a> </div> </div> <div class=\"terms\"> <p class=\"terms-"
+ },
+ {
+  "en": "Terms that apply when paid plans open in January",
+  "kind": "text",
+  "context": "utton> <a class=\"btn btn-primary only-wait\" href=\"#waitForm\">Tell me 1 Nov</a> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Can"
+ },
+ {
+  "en": "30-day refund",
+  "kind": "text",
+  "context": "lass=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\">"
+ },
+ {
+  "en": "No questions, no form.",
+  "kind": "text",
+  "context": " <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or c"
+ },
+ {
+  "en": "Cancel in one click",
+  "kind": "text",
+  "context": "ary</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span c"
+ },
+ {
+  "en": "From your account page.",
+  "kind": "text",
+  "context": "s=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day"
+ },
+ {
+  "en": "Pay with Lightning or card",
+  "kind": "text",
+  "context": ">No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span"
+ },
+ {
+  "en": "No card needed for the free audit.",
+  "kind": "text",
+  "context": " <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-f"
+ },
+ {
+  "en": "14-day EU withdrawal",
+  "kind": "text",
+  "context": " page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 l"
+ },
+ {
+  "en": "Your statutory right to withdraw applies on top.",
+  "kind": "text",
+  "context": "pan class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 languages.</p> </div> </section> <!-- 7. QU"
+ },
+ {
+  "en": "Prices include VAT where applicable. Same price in all 10 languages.",
+  "kind": "text",
+  "context": "n> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 languages.</p> </div> </section> <!-- 7. QUESTIONS: where people drop off during the audit --> <section id=\"faq\"> <div class=\"sec-head faq-head\"> <h"
+ },
+ {
+  "en": "Questions.",
+  "kind": "text",
+  "context": "p> </div> </section> <!-- 7. QUESTIONS: where people drop off during the audit --> <section id=\"faq\"> <div class=\"sec-head faq-head\"> <h2>Questions. <span>Before you export anything.</span></h2> </div> <div class=\"faq\"> <details open><summary>How do I get my Kraken export?</summary><p>On krake"
+ },
+ {
+  "en": "Before you export anything.",
+  "kind": "text",
+  "context": "/section> <!-- 7. QUESTIONS: where people drop off during the audit --> <section id=\"faq\"> <div class=\"sec-head faq-head\"> <h2>Questions. <span>Before you export anything.</span></h2> </div> <div class=\"faq\"> <details open><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at "
+ },
+ {
+  "en": "How do I get my Kraken export?",
+  "kind": "text",
+  "context": "div class=\"sec-head faq-head\"> <h2>Questions. <span>Before you export anything.</span></h2> </div> <div class=\"faq\"> <details open><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</"
+ },
+ {
+  "en": "On kraken.com, click your profile icon at the top right and choose",
+  "kind": "text",
+  "context": "estions. <span>Before you export anything.</span></h2> </div> <div class=\"faq\"> <details open><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appe"
+ },
+ {
+  "en": "Documents",
+  "kind": "text",
+  "context": "<div class=\"faq\"> <details open><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the sa"
+ },
+ {
+  "en": ". Under Exports, click",
+  "kind": "text",
+  "context": "aq\"> <details open><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. "
+ },
+ {
+  "en": "Create export",
+  "kind": "text",
+  "context": "summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a f"
+ },
+ {
+  "en": ", choose",
+  "kind": "text",
+  "context": "get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes o"
+ },
+ {
+  "en": "Ledgers",
+  "kind": "text",
+  "context": "n export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several d"
+ },
+ {
+  "en": ", set a start and end date, pick",
+  "kind": "text",
+  "context": "summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. "
+ },
+ {
+  "en": "CSV",
+  "kind": "text",
+  "context": " profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. Choose "
+ },
+ {
+  "en": "and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. Choose Ledgers rather than Trades: it includes every fee and your instant buys. If you use Kraken Pro and don't see Documents, look under Statements.",
+  "kind": "text",
+  "context": " icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. Choose Ledgers rather than Trades: it includes every fee and your instant buys. If you use Kraken Pro and don't see Documents, look under Statements. <a href=\"https://support.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> "
+ },
+ {
+  "en": "Kraken's guide",
+  "kind": "text",
+  "context": "see Documents, look under Statements. <a href=\"https://support.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer "
+ },
+ {
+  "en": "And from ByBit EU or 21bitcoin?",
+  "kind": "text",
+  "context": "pport.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity "
+ },
+ {
+  "en": "ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.",
+  "kind": "text",
+  "context": "xport-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You "
+ },
+ {
+  "en": "Is my file uploaded anywhere?",
+  "kind": "text",
+  "context": "to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> "
+ },
+ {
+  "en": "No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.",
+  "kind": "text",
+  "context": " their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later cho"
+ },
+ {
+  "en": "Do I need an account or a card?",
+  "kind": "text",
+  "context": "dit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges"
+ },
+ {
+  "en": "No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.",
+  "kind": "text",
+  "context": " nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></deta"
+ },
+ {
+  "en": "Which exchanges work at launch?",
+  "kind": "text",
+  "context": "ount or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summar"
+ },
+ {
+  "en": "Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.",
+  "kind": "text",
+  "context": "it needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partne"
+ },
+ {
+  "en": "Is this investment or tax advice?",
+  "kind": "text",
+  "context": "><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax a"
+ },
+ {
+  "en": "No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax adviser.",
+  "kind": "text",
+  "context": "mary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax adviser.</p></details> </div> </section> <footer class=\"footer-main\"> <div class=\"footer-inner\"> <div class=\"footer-logo\"><div style=\"display:flex;al"
+ },
+ {
+  "en": "Company",
+  "kind": "text",
+  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo"
+ },
+ {
+  "en": "About Us",
+  "kind": "text",
+  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo-foot-badge\">Soon</span></a><a hre"
+ },
+ {
+  "en": "FAQ",
+  "kind": "text",
+  "context": "sury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo-foot-badge\">Soon</span></a><a href=\"concierge.html\">Partner"
+ },
+ {
+  "en": "Guides",
+  "kind": "text",
+  "context": "ilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div><div class=\"footer-col\"><h4>Guides</h4><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href"
+ },
+ {
+  "en": "Bitcoin tax",
+  "kind": "text",
+  "context": "footer-col\"><h4>Guides</h4><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href"
+ },
+ {
+  "en": "DCA calculator",
+  "kind": "text",
+  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"ter"
+ },
+ {
+  "en": "Sell vs borrow",
+  "kind": "text",
+  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a "
+ },
+ {
+  "en": "Inheritance",
+  "kind": "text",
+  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a"
+ },
+ {
+  "en": "Legal",
+  "kind": "text",
+  "context": "lator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
+ },
+ {
+  "en": "Terms &amp; Conditions",
+  "kind": "text",
+  "context": "rrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
+ },
+ {
+  "en": "Privacy Policy",
+  "kind": "text",
+  "context": "itance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All r"
+ },
+ {
+  "en": "AML &amp; Compliance",
+  "kind": "text",
+  "context": "-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brie"
+ },
+ {
+  "en": "&copy; 2018–2026 Virtuse Group. All rights reserved.",
+  "kind": "text",
+  "context": "=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <p class=\"legal\">"
+ },
+ {
+  "en": "Virtuse Brief &mdash; the weekly desk from Virtuse.",
+  "kind": "text",
+  "context": "></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <p class=\"legal\">Virtuse CFO is read-only, local-first software. Files are processed on your device. Virtuse d"
+ },
+ {
+  "en": "Read it &rarr;",
+  "kind": "text",
+  "context": " 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <p class=\"legal\">Virtuse CFO is read-only, local-first software. Files are processed on your device. Virtuse does not hold private keys, bitcoin "
+ },
+ {
+  "en": "Virtuse CFO is read-only, local-first software. Files are processed on your device. Virtuse does not hold private keys, bitcoin or fiat money, does not place or transmit orders, and gives no investment or tax advice. Fee figures are estimates based on published partner fees; tax figures are indicative.",
+  "kind": "text",
+  "context": "</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <p class=\"legal\">Virtuse CFO is read-only, local-first software. Files are processed on your device. Virtuse does not hold private keys, bitcoin or fiat money, does not place or transmit orders, and gives no investment or tax advice. Fee figures are estimates based on published partner fees; tax figures are indicative.</p> </div> <div class=\"footer-wordmark\" aria-hidden=\"true\"> <span class=\"footer-wordmark-icon-wrap\"><svg class=\"footer-wordmark-icon\" viewBox=\"0 "
+ },
+ {
+  "en": "V",
+  "kind": "text",
+  "context": "gWA)\" d=\"M30 0h220l250 483H280Z\"/><path fill=\"url(#vlgWB)\" d=\"M510 0h245L645 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></s"
+ },
+ {
+  "en": "i",
+  "kind": "text",
+  "context": "3H280Z\"/><path fill=\"url(#vlgWB)\" d=\"M510 0h245L645 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </foote"
+ },
+ {
+  "en": "r",
+  "kind": "text",
+  "context": "#vlgWB)\" d=\"M510 0h245L645 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (f"
+ },
+ {
+  "en": "t",
+  "kind": "text",
+  "context": "5 205H400Z\"/></svg></span> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var reduce"
+ },
+ {
+  "en": "u",
+  "kind": "text",
+  "context": "> <span class=\"footer-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var reduce = window.matchMedia('(pr"
+ },
+ {
+  "en": "s",
+  "kind": "text",
+  "context": "er-wordmark-text\"><span class=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var reduce = window.matchMedia('(prefers-reduced-motion: red"
+ },
+ {
+  "en": "e",
+  "kind": "text",
+  "context": "lass=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; var ste"
+ },
+ {
+  "en": "Virtuse CFO: Your AI CFO for Bitcoin | Virtuse",
+  "kind": "head",
+  "context": "<title>/<meta description> (title max ~60 chars, description max ~155)"
+ },
+ {
+  "en": "Virtuse CFO reads your exchange export in your browser and shows what your Bitcoin buying really cost. Free audit planned from 1 November 2026.",
+  "kind": "head",
+  "context": "<title>/<meta description> (title max ~60 chars, description max ~155)"
+ },
+ {
+  "en": " · read locally",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "Close menu",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "New",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "Please enter a valid email address.",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "Sending...",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "You're on the list. We'll email you once, when the free audit opens.",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "Something went wrong. Please try again.",
+  "kind": "js",
+  "context": "script message"
+ },
+ {
+  "en": "Network error. Please try again.",
+  "kind": "js",
+  "context": "script message"
+ }
+]
