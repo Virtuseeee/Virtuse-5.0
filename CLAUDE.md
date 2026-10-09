@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-09) — es "partners", pl register, fr short nav button live (PR Virtuseeee/Virtuse-5.0#54, merge `2d9e4c24`; **live on production** — user ran `deploy_site.sh b8b950a0 2d9e4c24`, DEPLOY OK; 88/88 md5-verified, 10 old concierge-assets hashes gone)
+
+- **es:** every "socio(s)" → "partner(s)" (351×): es/ pages, `seo-build` (generate.mjs, html.mjs, meta.json; regenerated, verify OK), `layer2-src` es.ts + es shells (rebuilt: `npm run build` + `i18n-tools/layer2/deploy.py`, so all 40 module shells + 10 assets changed), article.js, i18n sources. Don't reintroduce "socios".
+- **pl** (homepage + CFO): prose keeps "Państwo"; buttons are nouns or first person ("Szukam partnerów", "Zapisuję się", "Kopanie"), Kraken FAQ steps "należy kliknąć…", meta description reworded (`HEAD_FIX['pl']`). Nav label "Kup Bitcoin" kept (category name on all 22 pl pages). The rest of the pl site still has imperative CTAs.
+- **fr:** nav CTA shows "Partenaires" below 360 px, "Trouver des partenaires" above (`SHORT_CTA` in home/build_lang.py, used by cfo too).
+- Fixed a bug from PR #53: substring fix "od 1 lis" turned "od 1 listopada" into "listopadatopada" in the pl CFO description (was live a few hours). **Lesson: never apply a find/replace whose replacement contains the find string as a substring pass; match whole values or check `find in replace` first.**
+
 ## Session status (2026-10-09) — i18n proofreading live (PR Virtuseeee/Virtuse-5.0#53, merge `753d0ce5`; **live on production** — user ran `deploy_site.sh 1261ba3e 753d0ce5`, DEPLOY OK; 18/18 md5-verified)
 
 - Applied the safe fixes from Ras's handover `HANDOVER-claude-i18n.md` (iCloud VWM 5.0/HANDOVERS) to `i18n-tools/home/<lang>.json` and `i18n-tools/cfo/<lang>.json` (shared nav/footer strings fixed on the CFO pages too), rebuilt homepage + CFO page in 9 languages. Builder additions in `home/build_lang.py`: Brief headline gets a localized "(in English)" label (static + JS), JSON-LD description localized (`LD_DESC`), hu head hyphenation (`HEAD_FIX`), es four-digit numbers ungrouped (`num`). Footer "Legal": sk "Právne informácie", cs "Právní informace", fr "Mentions légales".
