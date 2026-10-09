@@ -3,11 +3,11 @@
  "project": {
   "concierge": [
    "Partner Finder · Virtuse Layer 2",
-   "Virtuse Partner Finder: orientación no custodial hacia socios de Bitcoin verificados en la UE."
+   "Virtuse Partner Finder: orientación no custodial hacia partners de Bitcoin verificados en la UE."
   ],
   "stacking": [
    "Stacking Strategist · Virtuse Layer 2",
-   "Virtuse Stacking Strategist: proyección DCA y comparación de comisiones de los socios para acumular Bitcoin."
+   "Virtuse Stacking Strategist: proyección DCA y comparación de comisiones de los partners para acumular Bitcoin."
   ],
   "loan": [
    "Loan & Liquidity Copilot · Virtuse Layer 2",
@@ -20,12 +20,12 @@
  },
  "site": {
   "concierge": [
-   "Partner Finder: compare socios de Bitcoin en 60 segundos | Virtuse",
-   "Responda unas preguntas y Partner Finder de Virtuse le muestra lado a lado los socios de Bitcoin verificados que cumplen sus criterios: no custodial, gratuito y sin registro."
+   "Partner Finder: compare partners de Bitcoin en 60 segundos | Virtuse",
+   "Responda unas preguntas y Partner Finder de Virtuse le muestra lado a lado los partners de Bitcoin verificados que cumplen sus criterios: no custodial, gratuito y sin registro."
   ],
   "stacking": [
    "Stacking Strategist: plan DCA y comparación de comisiones | Virtuse",
-   "Fije su ritmo de acumulación de Bitcoin, vea la proyección DCA a largo plazo y compare las comisiones de cada socio para encontrar la opción más barata por compra."
+   "Fije su ritmo de acumulación de Bitcoin, vea la proyección DCA a largo plazo y compare las comisiones de cada partner para encontrar la opción más barata por compra."
   ],
   "loan": [
    "Loan &amp; Liquidity Copilot: vender o pedir prestado | Virtuse",

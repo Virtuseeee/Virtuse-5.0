@@ -47,7 +47,9 @@ LD_DESC = {  # JSON-LD Organization/WebSite description
     'uk': 'Некастодіальний хаб сервісів лише для Біткоїна. Virtuse ніколи не зберігає ваші ключі.',
     'ru': 'Некастодиальный хаб сервисов только для Биткоина. Virtuse никогда не хранит ваши ключи.',
 }
-HEAD_FIX = {'hu': [('Bitcoin hub:', 'Bitcoin-hub:'), ('Bitcoin vásárlás', 'Bitcoin-vásárlás')]}
+HEAD_FIX = {'pl': [('Kupuj, kop, pożyczaj i zabezpieczaj Bitcoin przez 22 sprawdzonych partnerów.', 'Zakup, kopanie, pożyczki i zabezpieczenie Bitcoina u 22 sprawdzonych partnerów.')],
+            'hu': [('Bitcoin hub:', 'Bitcoin-hub:'), ('Bitcoin vásárlás', 'Bitcoin-vásárlás')]}
+SHORT_CTA = {'fr': 'Partenaires'}
 LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru']
 
 
@@ -205,6 +207,11 @@ def build(L):
                   '"description": ' + json.dumps(LD_DESC[L], ensure_ascii=False))
     for a, b2 in HEAD_FIX.get(L, []):
         h = h.replace(a, b2)
+    if L in SHORT_CTA:  # long nav button label: short form on the smallest phones
+        h, k = re.subn(r'(<a class="nav-cta"[^>]*>)([^<]+)(</a>)', lambda m: m.group(1) + '<span class="cta-full">' + m.group(2) + '</span><span class="cta-short">' + SHORT_CTA[L] + '</span>' + m.group(3), h)
+        if k != 1:
+            sys.exit('%s: nav-cta not found' % L)
+        h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 359px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
     h = localise_numbers(h, L)
 
     # 6. sanity
