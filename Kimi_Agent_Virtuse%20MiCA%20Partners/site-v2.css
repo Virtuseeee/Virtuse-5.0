@@ -1170,3 +1170,53 @@ img.invert { filter: invert(1); }
   .sp-row .cur-note { display: none; }
 }
 .sp-row .hc-name > span { min-width: 0; overflow-wrap: anywhere; }
+
+/* ===== LOANS PAGE v2 (lending.html, handover 2026-10-10d): Firefish widget as the centerpiece, purple accent ===== */
+.eyebrow.purple i { background: var(--purple); box-shadow: 0 0 0 4px rgba(167,139,250,.15); }
+.hpanel.purple::before { background: radial-gradient(closest-side, rgba(167,139,250,.12), transparent); }
+.lend-panel { border-radius: 24px; padding: 32px; }
+.lend-grid { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 40px; align-items: center; justify-content: center; }
+.lend-widget { width: 100%; max-width: 400px; justify-self: center; border-radius: 16px; overflow: hidden; background: #141414; line-height: 0; }
+.lend-widget iframe { display: block; width: 100%; height: 580px; border: 0; }
+.lend-details { display: grid; gap: 0; }
+.ld-title { font-size: 18px; font-weight: 600; margin: 0 0 8px; }
+.ld-row { display: grid; gap: 2px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.06); }
+.ld-row span { font-size: 13px; color: #8b949e; }
+.ld-row b { font-size: 20px; font-weight: 600; }
+.ld-note { margin: 12px 0 0; font-size: 13px; color: #8b949e; }
+.hp-cta.btn-primary { background: transparent; color: var(--text); }
+.hp-cta.btn-primary:hover { background: rgba(255,255,255,.05); }
+.lend-compare { margin-top: 16px; font-size: 14px; }
+.page-lend .hp-fine { margin-top: 28px; }
+.pcard2.purple { --c: var(--purple); }
+.way-card h3 { font-size: 22px; font-weight: 700; }
+.way-card > p { margin: 0; color: var(--muted); font-size: 15px; }
+.page-lend .how-log-item:first-child .how-log-dot { background: var(--purple); }
+.page-lend .how-log-item:first-child .how-log-dot::before { background: var(--purple); }
+.page-lend .how-log-body p { color: #8b949e; }
+.page-lend .qa details { max-width: none; }
+.page-lend .qa details a { color: var(--text); }
+.page-lend .rv { transition-duration: .3s, .4s; }
+@media (max-width: 860px) {
+  .lend-grid { grid-template-columns: 1fr; gap: 24px; }
+  .lend-details { max-width: 400px; width: 100%; justify-self: center; }
+}
+@media (max-width: 640px) {
+  .lend-panel { padding: 12px; border-radius: 18px; }
+  .lend-details { padding: 0 6px 6px; }
+  .ld-row b { font-size: 17px; }
+  .page-lend .how-log-item:first-child .how-log-dot { box-shadow: 0 0 10px 2px rgba(167,139,250,.55); }
+}
+.page-lend .buy-hero2 { padding-top: 56px; }
+.page-lend .hpanel { margin-top: 32px; }
+.lend-panel { padding: 20px 32px; }
+.lend-widget iframe { height: 560px; }
+@media (max-width: 640px) { .page-lend .buy-hero2 { padding-top: 28px; } .page-lend .hpanel { margin-top: 20px; } .lend-panel { padding: 10px; } }
+/* the widget document has no color-scheme; matching it keeps the iframe transparent (no white canvas behind the dark card) */
+.lend-widget iframe { color-scheme: light; }
+@media (min-width: 961px) {
+  .page-lend .buy-hero2 { padding-top: 40px; }
+  .page-lend .buy-hero2 h1 { font-size: clamp(30px, 2.7vw, 40px); max-width: 1160px; margin-top: 14px; }
+  .page-lend .hpanel { margin-top: 24px; }
+  .lend-panel { padding: 16px 32px; }
+}
