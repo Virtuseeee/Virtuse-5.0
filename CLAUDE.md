@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-10) — Mining (mining.html) v2 live in 10 languages (PR Virtuseeee/Virtuse-5.0#61, merge `851a4a1b`; **live on production** — user ran `deploy_site.sh efcdcd90 851a4a1b`, DEPLOY OK; 12/12 md5-verified)
+
+- Built by `i18n-tools/mining/build_mining.py <lang>` (on `v2common.py`) from `mining/<lang>.json` (94 strings). Yellow accent (#f2c94c). Panel with All / Hosting / Home mining filter pills (generic `.seg` + `data-kind` rows, in `site-v2.js`) and a 3-partner table (OneMiners, Abundant Mines, Power Mining; type, locations, key fact). Two how-it-works paths (hosted / home), cards, 3 FAQs, Brief. Removed affiliate stats ($732K to referrers, 10,889 users, Karma tiers), "Top 5 EU ASIC reseller" and "Earn Bitcoin Daily". EN title now "Bitcoin Mining Hosting & Hardware Partners | Virtuse". Referral URLs unchanged.
+- Open question (in the PR): v2 partner buttons are outline buttons, so partner-click logs `link_type: other` instead of `cta` on buy/Custody/Loans/Mining (Loans' main pill keeps `cta`). Change if GA reports rely on `cta`.
+- Done in v2: homepage, CFO, buy-bitcoin, Custody, Loans, Mining. Left: treasury, tax, bots (+ nav/footer v2 on the remaining pages).
+
 ## Session status (2026-10-10) — Loans (lending.html) v2 live in 10 languages (PRs Virtuseeee/Virtuse-5.0#58 + #59, merge `d34808f5`; **live on production** — user ran `deploy_site.sh 7de42a91 d34808f5`, DEPLOY OK; 11/11 md5-verified)
 
 - Built by `i18n-tools/lending/build_lending.py <lang>` (on `v2common.py`) from `lending/<lang>.json` (69 strings). Purple accent (#a78bfa). Centered hero, one panel: Firefish calculator iframe + "Loan details at a glance" (5–15 % p.a., LTV ≤ 50 %, 3–24 months, EUR/CHF/CZK/USDC, min EUR 800, multi-sig escrow); outlined "Get your loan at Firefish" pill (`btn-primary` class kept so partner-click logs `cta`), referral + liquidation-risk fine print, trust row with inline Firefish logo, steps, borrower/investor cards, 3 risk FAQs, Brief. Partner card merged into the details box; "leading" and the "avoid capital gains taxes" claim removed.
