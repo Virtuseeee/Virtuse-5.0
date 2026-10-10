@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
@@ -50,1135 +50,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Купити Біткоїн у Європі: комісії MiCA | Virtuse">
 <meta name="twitter:description" content="Провайдери з ліцензією MiCA: 21bitcoin Auto-Invest з комісією 0%, ByBit EU спот від 0,25%, Kraken Pro від 0,8%. Virtuse не тримає кошти.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<link rel="stylesheet" href="../styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<style>
-
-/* Neutral-gray dark palette, matched to the homepage's own redesign —
-   overrides styles.css's older navy-tinted tokens for this page only. */
-:root {
-  color-scheme: dark;
-  --dark: #08090a;
-  --dark-lighter: #0e0e0e;
-  --dark-card: #141414;
-  --dark-card-hover: #1c1c1c;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.12);
-  --nav-bg: rgba(8, 9, 10, 0.95);
-  --nav-bg-strong: rgba(8, 9, 10, 0.98);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body { font-family: 'Inter', -apple-system, 'SF Pro Display', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
-
-/* ===== NAVIGATION ===== */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 20px 48px;
-  border-bottom: 1px solid var(--border);
-  background: var(--nav-bg);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.nav-logo-img {
-  height: 32px; width: auto; display: block;
-  height: 32px;
-  
-  
-  
-  
-  justify-content: center;
-  font-weight: 900;
-  font-size: 16px;
-  color: white;
-}
-
-/* Desktop nav link size/weight matched to linear.app's own nav, same
-   as the homepage — :not(.lang-opt) so it doesn't leak onto the
-   language pills nested inside .nav-links (a real bug found there). */
-.nav-links a:not(.lang-opt) {
-  font-size: 13px;
-  font-weight: 400;
-  padding: 6px 12px;
-}
-
-.nav-links a:hover:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
-
-.nav-links a.active:not(.lang-opt) {
-  color: var(--text);
-  background: var(--dark-card);
-}
-
-/* ===== HERO ===== */
-.hero {
-  padding: 80px 48px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.hero h1 {
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  margin-bottom: 20px;
-}
-
-/* Orange is a rare stamp now, not a highlight color — matches the
-   homepage's own hero. */
-.hero h1 .highlight { color: var(--text); }
-
-.hero-desc {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 640px;
-  margin-bottom: 20px;
-}
-
-/* ===== HOW IT WORKS ===== */
-.how {
-  padding: 0 48px var(--section-spacing);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* How-it-works header, matching the homepage's shared .sec-header dek
-   pattern (own class here, not reusing this page's .sec-header, a
-   different flex-row layout used by the partners section heading+badge). */
-.how-header { text-align: left; margin-bottom: 60px; }
-
-.how-header h2 {
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.25;
-  margin-bottom: 14px;
-}
-
-.how-header h2 span { font-weight: 400; color: var(--text-muted); }
-
-.how-header p {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--text-muted);
-  max-width: 620px;
-  line-height: 1.55;
-}
-
-/* linear.app changelog pattern, same as the homepage's own "How Virtuse
-   Works" section: one shared horizontal rule, entries side by side as
-   columns, each with a dot sitting on the rule (orange for the first,
-   muted for the rest), then heading + copy. */
-.how-log {
-  display: flex;
-  gap: 40px;
-  border-top: 1px solid var(--border);
-}
-
-.how-log-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.how-log-marker {
-  margin-top: -4px;
-  margin-bottom: 24px;
-}
-
-.how-log-dot {
-  position: relative;
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-dim);
-}
-
-.how-log-dot::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: var(--text-dim);
-  opacity: 0.2;
-}
-
-.how-log-item:first-child .how-log-dot { background: var(--btc-orange); }
-.how-log-item:first-child .how-log-dot::before { background: var(--btc-orange); opacity: 0.1; }
-
-.how-log-body { flex: 1; display: flex; flex-direction: column; }
-
-.how-log-num {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  order: 4;
-  margin-top: 16px;
-}
-
-.how-log-body h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  order: 1;
-}
-
-.how-log-body p {
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  order: 2;
-}
-
-@media (max-width: 900px) {
-  .how-log { flex-direction: column; gap: 0; border-top: none; }
-  .how-log-item { border-top: 1px solid var(--border); padding-top: 28px; padding-bottom: 28px; }
-  .how-log-marker { margin-top: 0; }
-  .how-log-item:first-child .how-log-dot {
-    box-shadow: 0 0 10px 2px rgba(247, 147, 26, 0.65);
-  }
-  .how-log-item:first-child .how-log-dot::before { opacity: 0.3; }
-}
-
-.stack-step0 {
-  max-width: 1200px;
-  margin: 0 auto 48px;
-  padding: 0 48px;
-}
-
-.stack-step0-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-  padding: 28px 32px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: linear-gradient(90deg, rgba(247,147,26,0.07), rgba(247,147,26,0.02));
-}
-
-.stack-step0-text h3 {
-  font-size: 18px;
-  font-weight: 800;
-  margin-bottom: 0;
-}
-
-.stack-step0-text p {
-  font-size: 14px;
-  color: var(--text-muted);
-  max-width: 520px;
-}
-
-.stack-step0-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-  padding: 12px 22px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #0b0b0c;
-  background: var(--btc-orange);
-  text-decoration: none;
-  transition: filter 0.2s;
-}
-
-.stack-step0-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
-.stack-step0-cta:hover { filter: brightness(1.08); }
-.stack-step0-cta:hover svg { transform: translateX(3px); }
-
-@media (max-width: 700px) {
-  .stack-step0 { padding: 0 24px; margin-bottom: 32px; }
-  .stack-step0-inner { flex-direction: column; text-align: center; padding: 24px; }
-}
-
-.seo-guides {
-  max-width: 1200px;
-  margin: 0 auto 48px;
-  padding: 0 48px;
-}
-.seo-guides-inner {
-  padding: 28px 32px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: var(--dark-card);
-}
-.seo-guides h2 {
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.25;
-  margin: 0 0 14px;
-}
-.seo-guides p {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--text-muted);
-  line-height: 1.55;
-  margin: 0 0 16px;
-}
-.seo-guides-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 12px;
-}
-.seo-guides-links a {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 14px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: rgba(247,147,26,0.06);
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-.seo-guides-links a:hover {
-  border-color: rgba(247,147,26,0.45);
-  color: var(--btc-orange);
-}
-@media (max-width: 700px) {
-  .seo-guides { padding: 0 24px; }
-  .seo-guides-inner { padding: 20px 24px; }
-}
-
-/* ===== PARTNERS ===== */
-.partners {
-  padding: 0 48px var(--section-spacing);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.sec-header {
-  
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 40px;
-}
-
-.sec-title h2 {
-  font-size: 42px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-
-.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
-
-.sec-title p {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--text-muted);
-  max-width: 620px;
-  line-height: 1.55;
-}
-
-.sec-badge {
-  
-  
-  gap: 6px;
-  background: var(--green-bg);
-  color: var(--green);
-  padding: 6px 14px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.partner-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-/* Partner Card */
-/* Flat hairline card — matches the homepage's Vercel-style card rule. */
-.pcard {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  position: relative;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.pcard:hover {
-  border-color: var(--border-hover);
-  background: var(--dark-card-hover);
-}
-
-.pcard-header {
-  
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.pcard-logo {
-  
-  
-  gap: 14px;
-}
-
-.pcard-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 20px;
-  flex-shrink: 0;
-  color: #fff;
-}
-
-.pcard-name {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.pcard-location {
-  font-size: 12px;
-  color: var(--text-dim);
-  
-  
-  gap: 4px;
-  margin-top: 2px;
-}
-
-.pcard-tags {
-  
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-
-.tag-orange { background: rgba(247, 147, 26, 0.12); color: var(--btc-orange); }
-.tag-green { background: var(--green-bg); color: var(--green); }
-.tag-blue { background: rgba(88, 166, 255, 0.12); color: #58a6ff; }
-
-.pcard-body {
-  margin-bottom: 24px;
-}
-
-.pcard-body p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: 16px;
-}
-
-.pcard-features {
-  list-style: none;
-  padding: 0;
-}
-
-.pcard-features li {
-  
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text);
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-.pcard-features li svg {
-  width: 16px;
-  height: 16px;
-  color: var(--text);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.pcard-features li span { color: var(--text-muted); }
-
-.pcard-footer {
-  
-  gap: 12px;
-}
-
-.btn {
-  display: inline-flex;
-  
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none;
-  flex: 1;
-}
-
-.btn svg { width: 16px; height: 16px; }
-
-.btn-primary {
-  background: var(--btc-orange);
-  color: white;
-  transition: all 0.2s;
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-/* ===== DISCLAIMER ===== */
-/* ===== NEWSLETTER ===== */
-.newsletter {
-  background: var(--dark-lighter);
-  border-top: 1px solid var(--border);
-  padding: 80px 48px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.newsletter h2 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
-
-.newsletter p {
-  color: var(--text-muted);
-  font-size: 16px;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter-form {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  max-width: 520px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 14px 20px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--dark);
-  color: var(--text);
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.newsletter-form input:focus { border-color: var(--btc-orange); }
-.newsletter-form input::placeholder { color: var(--text-dim); }
-
-.newsletter-form button {
-  padding: 14px 28px;
-  background: var(--text);
-  color: var(--dark);
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-/* ===== FOOTER ===== */
-.footer-main {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
-  padding: 60px 0 30px;
-}
-
-.footer-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.footer-logo { flex-shrink: 0; }
-
-.footer-col h4 {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-.footer-col a {
-  display: block;
-  color: var(--text-muted);
-  font-size: 13px;
-  text-decoration: none;
-  margin-bottom: 12px;
-  line-height: 1.4;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover { color: var(--text); }
-
-.footer-bottom {
-  padding-left: 48px;
-  padding-right: 48px;
-}
-
-.footer-bottom p {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.footer-bottom-brief { margin-top: 6px; }
-.footer-bottom-brief a { color: var(--text); text-decoration: none; }
-.footer-bottom-brief a:hover { text-decoration: underline; }
-
-.footer-wordmark {
-  overflow: hidden;
-  height: 138px;
-  margin-top: 40px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 8px;
-  pointer-events: none;
-  user-select: none;
-  opacity: 0.14;
-}
-
-.footer-wordmark-icon-wrap {
-  flex-shrink: 0;
-  animation: footerWordmarkPulse 6s ease-in-out infinite;
-}
-
-.footer-wordmark-icon {
-  height: 210px;
-  width: auto;
-  display: block;
-}
-
-@keyframes footerWordmarkShimmer {
-  0%, 100% { background-position: 200% 0; }
-  50% { background-position: -200% 0; }
-}
-
-@keyframes footerWordmarkPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.035); }
-}
-
-.footer-wordmark-text {
-  display: inline-block;
-  font-size: 288px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: footerWordmarkShimmer 7s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero { padding: 60px 24px; }
-  .hero h1 { font-size: 36px; }
-  .how { padding: 0 24px 80px; }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .partners { padding: 0 24px 80px; }
-  .partner-grid { grid-template-columns: 1fr; }
-  .sec-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .newsletter { padding: 60px 24px; }
-  .newsletter h2 { font-size: 28px; }
-  .newsletter-form { flex-direction: column; }
-  .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
-  .footer-bottom { padding-left: 0; padding-right: 0; }
-  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
-  .footer-wordmark { height: 110px; opacity: 0.32; }
-  .footer-wordmark-icon { height: 140px; }
-  .footer-wordmark-text { font-size: 184px; }
-  .footer-columns { gap: 40px; }
-  .footer-logo img { height: 60px; }
-}
-
-@media (max-width: 500px) {
-  .steps { grid-template-columns: 1fr; }
-  .pcard-footer { flex-direction: column; }
-}
-
-/* ===== UNIFIED CTA SYSTEM ===== */
-
-a.nav-logo, .nav-logo {
-  display: inline-flex !important;
-  align-items: flex-end;
-  gap: 1px;
-  font-weight: 800;
-  font-size: 19px;
-  color: #e6edf3 !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-}
-
-.nav-cta, .btn-primary, .newsletter-form button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-weight: 700;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-/* nav-cta stays the one sitewide orange stamp — every other button is an
-   inverted neutral, hardcoded (not var()) per the real Safari bug found
-   on the homepage. Partner-card primary CTAs use .btn-primary too, so
-   this also de-orangizes those — confirmed and approved by the user. */
-.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
-.nav-cta:hover {
-  background: #ffffff;
-  color: #0d0902;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
-}
-
-.btn-primary, .newsletter-form button { background: #e6edf3; color: #08090a; }
-.brief-card { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
-.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.brief-card-poster p { font-size: 15px; }
-.newsletter-form-stacked.newsletter-form { flex-direction: column; max-width: 100%; gap: 12px; }
-.newsletter-form-stacked input { width: 100%; padding: 16px 18px; font-size: 15px; }
-.newsletter-form-stacked button { width: 100%; padding: 16px; font-size: 15px; }
-.brief-card .newsletter-form button { background: #ffffff; color: #0d0d0d; }
-.brief-card .newsletter-form button:hover { background: #e8e8e8; color: #0d0d0d; }
-.brief-form-msg { margin: 10px auto 0; font-size: 13px; min-height: 18px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.brief-card .brief-fineprint { margin: 6px auto 0; font-size: 12px; color: var(--text-muted); text-align: center; position: relative; z-index: 1; }
-.btn-primary:hover, .newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  border-color: var(--border-hover);
-  color: var(--text);
-  transform: translateY(-1px);
-}
-
-/* ===== MOBILE MENU ===== */
-/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
-   divs with a CSS background-color — a real device screenshot on the
-   homepage showed the span version fully invisible on mobile Safari. */
-.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
-
-.ham-line {
-  stroke: var(--text, #e6edf3);
-  stroke-width: 2;
-  stroke-linecap: round;
-  transform-origin: 10px 10px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
-body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
-
-.nav-hamburger {
-  display: none;
-  -webkit-appearance: none;
-  appearance: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  position: fixed;
-  top: 18px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-  transition: background 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-@media (max-width: 1024px) {
-  .nav-hamburger { display: flex; }
-  .nav-cta {
-    position: fixed;
-    top: 16px;
-    right: 60px;
-    z-index: 1001;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: left;
-    list-style: none;
-    margin: 0;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background:
-      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
-      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
-    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
-    gap: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    z-index: 1000;
-    overflow-y: auto;
-  }
-
-  .nav-links::before {
-    content: 'MENU';
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--text-dim, #484f58);
-    margin-bottom: 18px;
-    padding: 0 4px;
-  }
-
-  body.nav-open .nav-links {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .nav-links li {
-    list-style: none;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
-
-  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
-  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
-  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
-  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
-  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
-  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
-  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
-  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
-  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
-  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
-  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
-
-  .nav-links a:not(.lang-opt) {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: #e6edf3;
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    padding: 15px 6px;
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.2s ease, padding-left 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .nav-links a:active { padding-left: 10px; }
-
-  .nav-link-num {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-dim, #484f58);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
-  }
-
-  .nav-link-label { flex: 1; }
-
-  .nav-link-arrow {
-    display: block;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: var(--text-dim, #484f58);
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
-  }
-
-  .nav-links a:active .nav-link-arrow,
-  .nav-links a.active .nav-link-arrow {
-    opacity: 1;
-    transform: translateX(0);
-    color: var(--btc-orange, #f7931a);
-  }
-
-  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
-  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
-
-  .nav-links a.active:not(.lang-opt)::before {
-    content: '';
-    position: absolute;
-    left: -24px;
-    top: 0; bottom: 0;
-    width: 3px;
-    background: var(--btc-orange, #f7931a);
-  }
-
-  .nav-links-cta-item {
-    display: block;
-    margin-top: 22px;
-  }
-
-  .nav-links-cta {
-    position: static !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 16px;
-    border-radius: 12px;
-    background: #e6edf3;
-    color: #08090a;
-    box-shadow: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .nav-links-cta svg { width: 16px; height: 16px; }
-
-  .nav-links-tagline {
-    margin-top: 16px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-dim, #484f58);
-  }
-
-  body.nav-open { overflow: hidden; }
-}
-
-/* ===== UK: compact nav text =====
-   Ukrainian nav labels run noticeably longer than their English originals,
-   so at the same per-item padding/font-size they wrap onto two lines well
-   before the English nav does. Tighten the gap/padding/font-size a notch
-   and force single-line labels so the row matches (or beats) the English
-   nav's fit at the same viewport width. */
-/* .nav-actions groups the language switcher with the CTA button into one
-   flex item so the nav's space-between doesn't spread them apart -- the
-   switcher sits right next to the CTA, not centered in the leftover gap.
-   Declared before the media queries below so their narrower-width
-   overrides (same selector) win the cascade at those widths. */
-.nav-actions { display: flex; align-items: center; gap: 12px; }
-
-.lang-menu { position: relative; }
-
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-/* Extra squeeze for the narrow "almost mobile" desktop band, where even
-   the compact pass above isn't quite enough room for the longer labels. */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== UK: compact language dropdown =====
-   Site-navigation stays exactly as shipped (inline links >1024px,
-   hamburger overlay <=1024px) -- only the language switcher moves out of
-   the inline nav row. A single compact button opens a small dropdown
-   (EN/SK/UA), so the desktop nav row never overflows regardless of how
-   many languages exist. */
-
-.lang-menu-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 6px 11px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--text);
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.lang-menu-btn:hover { border-color: var(--border-hover); }
-
-.lang-menu-caret {
-  opacity: 0.6;
-  transition: transform 0.2s ease;
-}
-
-.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
-
-.lang-menu-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 130px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 6px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  z-index: 200;
-}
-
-.lang-menu.open .lang-menu-panel {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.lang-menu-panel .lang-opt {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
-
-.lang-menu-panel .lang-opt.active {
-  background: var(--text);
-  color: var(--dark);
-}
-
-@media (max-width: 1024px) {
-  .lang-menu:not(.lang-menu-mobile) { display: none; }
-  .lang-menu-mobile { margin-top: 4px; }
-  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
-}
-
-/* ===== Compact nav at 1025-1300px =====
-   Eleven nav items plus the language menu and CTA did not fit around
-   1100px in most languages (labels wrapped, the CTA ran off-screen). Same
-   block as pl/hu (scaffold_pl.py); the .nav prefix out-ranks the page's
-   own .nav-links a:not(.lang-opt) rule. */
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav .nav-links a:not(.lang-opt) { font-size: 13px; padding: 8px 9px; white-space: nowrap; }
-}
-@media (min-width: 1025px) and (max-width: 1300px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .nav { padding: 18px 12px; }
-  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
-  .nav-logo span { font-size: 18px !important; }
-}
-</style>
 <script type="application/ld+json" id="virtuse-ld">
 {
   "@context": "https://schema.org",
@@ -1199,670 +70,233 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   ]
 }
 </script>
+<script>window.VB_I18N = {"openMenu": "Відкрити меню", "closeMenu": "Закрити меню", "soon": "Незабаром", "new": "Нове", "latestBrief": "Останній Brief · ", "min": " хв", "coverImage": "Обкладинка: ", "badEmail": "Введіть дійсну адресу електронної пошти.", "sending": "Надсилання...", "subscribed": "Готово! Brief вийде в понеділок.", "error": "Щось пішло не так. Спробуйте ще раз.", "netError": "Помилка мережі. Спробуйте ще раз.", "briefLangNote": " (англійською)"};</script>
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../site-v2.css?v=2">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script>window.VB_I18N = {"openMenu": "Відкрити меню", "closeMenu": "Закрити меню", "soon": "Незабаром", "new": "Нове", "latestBrief": "Останній Brief · ", "min": " хв", "coverImage": "Обкладинка: ", "badEmail": "Введіть дійсну адресу електронної пошти.", "sending": "Надсилання...", "subscribed": "Готово! Brief вийде в понеділок.", "error": "Щось пішло не так. Спробуйте ще раз.", "netError": "Помилка мережі. Спробуйте ще раз.", "briefLangNote": " (англійською)"};</script>
 </head>
-<body>
-
-<!-- ===== NAVIGATION ===== -->
-<nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Відкрити меню" aria-expanded="false">
-    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
-      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
-    </svg>
-  </button>
-  <a href="/uk/" class="nav-logo">
-    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="buy-bitcoin.html" class="active"><span class="nav-link-num">01</span><span class="nav-link-label">Купити Біткоїн</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Майнінг</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Позики</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Зберігання</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Казначейство</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Податки</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Боти</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Блог</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Біткоїн-дані</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html"><span class="nav-link-num">11</span><span class="nav-link-label">Про нас</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Розпочати<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-    <li class="nav-links-lang-item">
-      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
-        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-          <span class="lang-flag">🇺🇦</span>UA
-          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
-        <a role="menuitem" href="../buy-bitcoin.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a role="menuitem" href="../sk/buy-bitcoin.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a role="menuitem" href="buy-bitcoin.html" class="lang-opt active" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a role="menuitem" href="../cs/buy-bitcoin.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a role="menuitem" href="../ru/buy-bitcoin.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a role="menuitem" href="../de/buy-bitcoin.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/buy-bitcoin.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/buy-bitcoin.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
-        <a href="../pl/buy-bitcoin.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
-        <a href="../hu/buy-bitcoin.html" class="lang-opt" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
-      </div>
-      </div>
-    </li>
-  </ul>
-  <div class="nav-actions">
-    <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки">
-        <span class="lang-flag">🇺🇦</span>UA
-        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
-        <a href="../buy-bitcoin.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="../sk/buy-bitcoin.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="buy-bitcoin.html" class="lang-opt active" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/buy-bitcoin.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/buy-bitcoin.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/buy-bitcoin.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/buy-bitcoin.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="../es/buy-bitcoin.html" class="lang-opt" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
-        <a href="../pl/buy-bitcoin.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
-        <a href="../hu/buy-bitcoin.html" class="lang-opt" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
-      </div>
-    </div>
-    <button class="nav-cta">Розпочати</button>
-  </div>
-</nav>
-
-<script>
-// ===== LANGUAGE DROPDOWN =====
-// Handles both the desktop instance (#langMenu) and the mobile drawer's
-// own copy (#langMenuMobile) — each .lang-menu wires up independently,
-// and opening one closes any other.
-(function () {
-  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
-  if (!menus.length) return;
-  function closeAll() {
-    menus.forEach(function (wrap) {
-      wrap.classList.remove('open');
-      var b = wrap.querySelector('.lang-menu-btn');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    });
-  }
-  menus.forEach(function (wrap) {
-    var btn = wrap.querySelector('.lang-menu-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var willOpen = !wrap.classList.contains('open');
-      closeAll();
-      if (willOpen) {
-        wrap.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-  document.addEventListener('click', function (e) {
-    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
-    if (!stillInside) closeAll();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeAll();
-  });
-})();
-</script>
-
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  
-
-  <h1>Купуйте Біткоїн через<br><span class="highlight">партнерів із ліцензією MiCA</span></h1>
-
-  <p class="hero-desc">
-    Virtuse співпрацює з повністю ліцензованими постачальниками криптопослуг у ЄС (CASP), надаючи вам доступ до найкращих сервісів купівлі Біткоїна в Європі. Ми ніколи не зберігаємо ваші кошти чи ключі: ваші транзакції виконуються безпосередньо на регульованих партнерських платформах. Ми отримуємо реферальну винагороду за кожну реєстрацію, без додаткових витрат для вас.
-  </p>
-
-
-</section>
-
-<!-- ===== HOW IT WORKS ===== -->
-<section class="how">
-  <div class="how-header">
-    <h2>Як <span>це працює</span></h2>
-    <p>Чотири прості кроки, щоб купити Біткоїн через ліцензованого партнера</p>
-  </div>
-  <div class="how-log">
-    <div class="how-log-item">
-      <div class="how-log-marker"><span class="how-log-dot"></span></div>
-      <div class="how-log-body">
-        <span class="how-log-num">Крок 01</span>
-        <h3>Оберіть партнера</h3>
-        <p>Перегляньте наших перевірених CASP-провайдерів із ліцензією MiCA нижче. Порівняйте комісії, функції та юрисдикції.</p>
-      </div>
-    </div>
-    <div class="how-log-item">
-      <div class="how-log-marker"><span class="how-log-dot"></span></div>
-      <div class="how-log-body">
-        <span class="how-log-num">Крок 02</span>
-        <h3>Перейдіть на платформу</h3>
-        <p>Реферальне посилання веде вас прямо на сайт партнера. Virtuse ніколи не виступає посередником.</p>
-      </div>
-    </div>
-    <div class="how-log-item">
-      <div class="how-log-marker"><span class="how-log-dot"></span></div>
-      <div class="how-log-body">
-        <span class="how-log-num">Крок 03</span>
-        <h3>Пройдіть KYC там</h3>
-        <p>Уся перевірка особи, реєстрація та комплаєнс відбуваються на платформі ліцензованого CASP.</p>
-      </div>
-    </div>
-    <div class="how-log-item">
-      <div class="how-log-marker"><span class="how-log-dot"></span></div>
-      <div class="how-log-body">
-        <span class="how-log-num">Крок 04</span>
-        <h3>Купуйте і зберігайте самостійно</h3>
-        <p>Придбайте Біткоїн і виведіть його у власний гаманець. Ви завжди контролюєте свої ключі.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STACKING "STEP 0" ===== -->
-<section class="stack-step0">
-  <div class="stack-step0-inner">
-    <div class="stack-step0-text">
-      <h3>Скільки і як часто ви хочете купувати?</h3>
-    </div>
-    <a href="stacking.html?utm_source=stacking&amp;utm_medium=widget" class="stack-step0-cta">
-      Спланувати накопичення
-      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<body class="page-buy">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html" aria-label="Головна Virtuse">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
     </a>
+    <nav class="nav-links" id="navLinks" aria-label="Головна навігація">
+      <div class="nav-group current" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Послуги</button>
+        <div class="nav-drop" id="nd-services"><a href="buy-bitcoin.html" aria-current="page">Купити Біткоїн</a><a href="secure.html">Зберігання</a><a href="lending.html">Позики</a><a href="mining.html">Майнінг</a><a href="treasury.html">Казначейство</a><a href="tax.html">Податки</a><a href="bots.html">Боти</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Матеріали</button>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Інструменти</button>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Незабаром</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div>
+      </div>
+      <a class="nav-top" href="about.html">Про нас</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки: українська"><span aria-hidden="true">&#127482;&#127462;</span><span class="lang-code">UA</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="../buy-bitcoin.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/buy-bitcoin.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/buy-bitcoin.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/buy-bitcoin.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/buy-bitcoin.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/buy-bitcoin.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="../fr/buy-bitcoin.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/buy-bitcoin.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="buy-bitcoin.html" class="lang-opt active" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/buy-bitcoin.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Відкрити меню"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Знайти партнерів</a>
   </div>
-</section>
+</header>
 
-<!-- ===== COUNTRY BUY GUIDES + FEE TOOLS ===== -->
-<nav class="seo-guides" aria-label="Путівники з купівлі за країнами та інструменти порівняння комісій">
-  <div class="seo-guides-inner">
-    <h2>Рейтинг комісій за країнами</h2>
-    <p>За допомогою Stacking Strategist порівняйте комісії всіх партнерів для вашої суми, перш ніж обрати платформу.</p>
-    <div class="seo-guides-links">
-      <a href="/buy-bitcoin/slovakia/">Купити у Словаччині</a>
-      <a href="/buy-bitcoin/czechia/">Купити в Чехії</a>
-      <a href="/buy-bitcoin/germany/">Купити в Німеччині</a>
-      <a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a>
-      <a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a>
+<main class="wrap" id="top">
+
+  <!-- 1. HERO v2: centered headline + one comparison panel -->
+  <div class="buy-hero2">
+    <div class="eyebrow"><i></i>Купівля Біткоїна · 5 партнерів · ліцензія MiCA</div>
+    <h1>Купуйте Біткоїн через ліцензованих за MiCA партнерів. <span class="h1-grey">Опубліковані комісії поруч.</span></h1>
+    <div class="hpanel" id="feeRows">
+      <div class="hp-slider">
+        <label for="amt">Ви купуєте щомісяця</label>
+        <div class="amount"><span id="amtOut">500</span>&nbsp;€ <small>/ місяць</small></div>
+        <input type="range" id="amt" min="50" max="5000" step="50" value="500">
+        <div class="range-ends"><span>50 €</span><span>5 000 €</span></div>
+      </div>
+      <div class="row head hp-row"><span>Партнер</span><span>Комісія</span><span class="yr">За рік</span><span></span></div>
+      <div class="row hp-row" data-pct="0"><span class="hc-name"><img src="../logo-21bitcoin-app.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>21bitcoin <span class="lowest-pill">Найнижча комісія</span></b><small>Auto-Invest, з 8-го дня</small></span></span><span class="hc-fee">0%</span><span class="yr">0 €</span><a class="hp-get" href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Перейти на 21bitcoin">Перейти <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row" data-pct="0.25"><span class="hc-name"><img src="../logo-bybit.png" alt="" width="36" height="36" class="dark" loading="lazy"><span><b>ByBit EU </b><small>Spot, комісія тейкера</small></span></span><span class="hc-fee">0,25%</span><span class="yr">15 €</span><a class="hp-get" href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Перейти на ByBit EU">Перейти <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row" data-pct="0.8"><span class="hc-name"><img src="../logo-kraken.png" alt="" width="36" height="36" class="cover" loading="lazy"><span><b>Kraken </b><small>Pro, рівень 1, комісія тейкера</small></span></span><span class="hc-fee">0,8%</span><span class="yr">48 €</span><a class="hp-get" href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" aria-label="Перейти на Kraken">Перейти <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row"><span class="hc-name"><img src="../logo-invity.svg" alt="" width="36" height="36" class="pad" loading="lazy"><span><b>Invity </b><small>Застосунок Auto Buy</small></span></span><span class="hc-fee na">На сайті партнера</span><span class="yr na">–</span><a class="hp-get" href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" aria-label="Перейти на Invity">Перейти <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row"><span class="hc-name"><img src="../logo-crypto-com.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Crypto.com </b><small>Застосунок і картка Visa</small></span></span><span class="hc-fee na">На сайті партнера</span><span class="yr na">–</span><a class="hp-get" href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" aria-label="Перейти на Crypto.com">Перейти <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <p class="hp-diff">Різниця між найвищою та найнижчою опублікованою комісією за 10 років: <b class="hp-480" id="diff10">480 €</b> <span class="hp-sep">·</span> <b id="diffYr">48 €</b> на рік, якщо купувати на <b id="diffBase">6 000 €</b> на рік.</p>
     </div>
+    <div class="hp-fine">
+      <p>Порівняйте п’ять платформ із ліцензією в ЄС за опублікованою комісією, а потім купуйте безпосередньо на платформі партнера. Virtuse ніколи не зберігає ваші кошти чи ключі. Комісії в тому вигляді, як їх публікує кожен партнер, Q4 2026: комісія тейкера за звичайну ринкову купівлю. Перші 7 днів плану 21bitcoin стягує звичайну комісію. Invity та Crypto.com публікують свої комісії на власних сайтах. Спреди та комісії за виведення не враховано. <a href="/uk/bitcoin-indeks-komisii/">Повний індекс комісій</a></p>
+      <p><b>Що ми заробляємо:</b> деякі партнери сплачують Virtuse реферальну винагороду, коли ви реєструєтеся за нашим посиланням. Ви платите ту саму ціну, а винагорода ніколи не змінює порядок чи факти.</p>
+      <p>Хочете поговорити? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="uk">Записатися на безкоштовний 15-хвилинний дзвінок</button> (англійською).</p>
+    </div>
+    <a class="hp-cta" href="#partners">Усі подробиці про партнерів <span aria-hidden="true">↓</span></a>
   </div>
-</nav>
-
-<!-- ===== PARTNERS ===== -->
-<section class="partners">
-  <div class="sec-header">
-    <div class="sec-title">
-      <h2>Наші <span>CASP-партнери</span></h2>
-      <p>Платформи лише для Біткоїна або дружні до Біткоїна, повністю ліцензовані за регламентом MiCA ЄС</p>
-    </div>
-
+  <div class="trust-strip ts-center">
+    <span class="ts-stats"><span><b>5</b> партнерів</span><span><b>0%</b> найнижча опублікована комісія</span><span><b>ЄЕП</b> паспорт MiCA</span></span>
+    <span class="ts-logos"><img src="../logo-21bitcoin-app.png" alt="21bitcoin" width="22" height="22" class="" loading="lazy"><img src="../logo-bybit.png" alt="ByBit EU" width="22" height="22" class="dark" loading="lazy"><img src="../logo-kraken.png" alt="Kraken" width="22" height="22" class="cover" loading="lazy"><img src="../logo-invity.svg" alt="Invity" width="22" height="22" class="pad" loading="lazy"><img src="../logo-crypto-com.png" alt="Crypto.com" width="22" height="22" class="" loading="lazy"></span>
   </div>
 
-  <div class="partner-grid">
+  <!-- 2. PARTNERS -->
+  <section id="partners">
+    <div class="sec-head one"><div class="sec-copy"><h2>Усі 5 партнерів. <span>Упорядковано за опублікованою комісією, як і в таблиці вище.</span></h2></div></div>
+    <div class="pgrid pgrid3">
+      <article class="pcard2" id="p-21bitcoin">
+        <span class="pc-badge">0%</span>
+        <div class="pc-head"><img src="../logo-21bitcoin-app.png" alt="21bitcoin" class="" width="48" height="48" loading="lazy"><div><h3>21bitcoin</h3><div class="pc-lic">Австрія · FMA MiCAR</div></div></div>
+        <details class="pc-more" open><summary>Деталі</summary>
+          <p>Застосунок лише для Біткоїна, регульований австрійським FMA за MiCAR, із застрахованим кастоді Біткоїна. Ощадний план Auto-Invest без комісій з 8-го дня. Підтримка банківського переказу та картки.</p>
+          <ul class="pc-feats"><li>Ліцензія FMA Австрії за MiCAR</li><li>Понад 100 000 користувачів у Європі</li><li>Застраховане кастоді Біткоїна</li><li>Банківський переказ і картка</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Перейти на 21bitcoin <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2" id="p-bybit">
+        <span class="pc-badge">0,25%</span>
+        <div class="pc-head"><img src="../logo-bybit.png" alt="ByBit EU" class="dark" width="48" height="48" loading="lazy"><div><h3>ByBit EU</h3><div class="pc-lic">Австрія · FMA MiCAR</div></div></div>
+        <details class="pc-more" open><summary>Деталі</summary>
+          <p>Bybit EU GmbH ліцензована австрійським FMA за MiCAR, має штаб-квартиру у Відні та обслуговує всю ЄЕП. Спотова комісія тейкера 0,25%, мейкера 0,1%.</p>
+          <ul class="pc-feats"><li>Ліцензія FMA Австрії за MiCAR</li><li>Штаб-квартира у Відні, обслуговує ЄЕП</li><li>Спотова комісія тейкера 0,25%</li><li>Вебверсія та мобільний застосунок</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Перейти на ByBit EU <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2" id="p-kraken">
+        <span class="pc-badge">0,8%</span>
+        <div class="pc-head"><img src="../logo-kraken.png" alt="Kraken" class="cover" width="48" height="48" loading="lazy"><div><h3>Kraken</h3><div class="pc-lic">Ірландія · Центральний банк Ірландії, MiCA</div></div></div>
+        <details class="pc-more" open><summary>Деталі</summary>
+          <p>Біржа Біткоїна, заснована у 2011 році, ліцензована як CASP за MiCA через Центральний банк Ірландії з паспортизацією по всій ЄЕП. Комісія тейкера Kraken Pro на початковому рівні 0,8%.</p>
+          <ul class="pc-feats"><li>Ліцензія MiCA через Центральний банк Ірландії</li><li>Засновано у 2011 році</li><li>Комісія тейкера Pro 0,8% (початковий рівень)</li><li>Депозити в EUR і миттєва купівля</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Перейти на Kraken <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2" id="p-invity">
+        <span class="pc-badge na">Комісія на сайті</span>
+        <div class="pc-head"><img src="../logo-invity.svg" alt="Invity" class="pad" width="48" height="48" loading="lazy"><div><h3>Invity</h3><div class="pc-lic">Чехія · Чеський національний банк</div></div></div>
+        <details class="pc-more" open><summary>Деталі</summary>
+          <p>Застосунок лише для Біткоїна від групи SatoshiLabs, творців Trezor. Купуйте разово або автоматично через Auto Buy. Invity зберігає ваш Біткоїн у кастодіана BitGo, доки ви не виведете його на власний гаманець, що можна зробити будь-коли.</p>
+          <ul class="pc-feats"><li>Ліцензія Чеського національного банку</li><li>Лише Біткоїн</li><li>Auto Buy для регулярних покупок</li><li>Кастоді BitGo до виведення</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Перейти на Invity <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2" id="p-cryptocom">
+        <span class="pc-badge na">Комісія на сайті</span>
+        <div class="pc-head"><img src="../logo-crypto-com.png" alt="Crypto.com" class="" width="48" height="48" loading="lazy"><div><h3>Crypto.com</h3><div class="pc-lic">Мальта · MFSA MiCA CASP</div></div></div>
+        <details class="pc-more" open><summary>Деталі</summary>
+          <p>Foris DAX MT Limited ліцензована як CASP за MiCA мальтійським MFSA з паспортизацією в ЄЕП. Застосунок із карткою Crypto.com Visa для витрат прямо з балансу.</p>
+          <ul class="pc-feats"><li>Ліцензія MFSA Мальти за MiCA</li><li>Паспортизація в ЄЕП</li><li>Картка Crypto.com Visa</li><li>Вебверсія та мобільний застосунок</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Перейти на Crypto.com <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <a class="pcard2 pc-finder" href="concierge.html?utm_source=concierge&amp;utm_medium=buy_grid">
+        <h3>Не впевнені, що вам підходить?</h3><p>Дайте відповідь на п’ять запитань і подивіться, які партнери відповідають вашим критеріям. Це займає близько 60 секунд.</p><span class="pc-finder-cta">Знайти партнерів за 60 секунд <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+    <p class="cat-note"><b>Що ми заробляємо:</b> деякі партнери сплачують Virtuse реферальну винагороду, коли ви реєструєтеся за нашим посиланням. Ви платите ту саму ціну, а винагорода ніколи не змінює порядок чи факти.</p>
+  </section>
 
-    <!-- 21BITCOIN -->
-    <div class="pcard">
-      <div class="pcard-header">
-        <div class="pcard-logo">
-          <img src="../logo-21bitcoin-app.png" alt="21bitcoin" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
-          <div>
-            <div class="pcard-name">21bitcoin</div>
-            <div class="pcard-location">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Німеччина / Австрія (FMA MiCAR)
-            </div>
-          </div>
-        </div>
-        <div class="pcard-tags">
+  <!-- 3. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>Як це працює. <span>Чотири прості кроки, щоб купити Біткоїн через ліцензованого партнера.</span></h2></div></div>
+    <div class="how-log how-log-4">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 01</span>
+          <h3>Оберіть партнера</h3>
+          <p>Порівняйте партнерів вище: комісії, ліцензії та функції.</p>
         </div>
       </div>
-      <div class="pcard-body">
-        <p><strong>Провідний європейський застосунок лише для Біткоїна</strong>, регульований австрійським FMA за MiCAR. Понад 100 000 користувачів по всій Європі із застрахованим кастоді Біткоїна. Ощадний план Auto-Invest із нульовою комісією. Підтримка банківського переказу та картки.</p>
-        <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ліцензія FMA Австрії за MiCAR</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Понад 100 000 користувачів у Європі</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Застраховане кастоді Біткоїна</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Auto-Invest без комісій</li>
-        </ul>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 02</span>
+          <h3>Перейдіть на платформу</h3>
+          <p>Реферальне посилання веде вас прямо на сайт партнера. Virtuse ніколи не виступає посередником.</p>
+        </div>
       </div>
-
-      <div class="pcard-footer">
-        <a href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Перейти на 21bitcoin
-          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 03</span>
+          <h3>Пройдіть KYC там</h3>
+          <p>Уся перевірка особи, реєстрація та комплаєнс відбуваються на платформі ліцензованого партнера.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 04</span>
+          <h3>Купуйте і зберігайте самостійно</h3>
+          <p>Придбайте Біткоїн і виведіть його у власний гаманець. Ви завжди контролюєте свої ключі.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- KRAKEN -->
-    <div class="pcard">
-      <div class="pcard-header">
-        <div class="pcard-logo">
-          <img src="../logo-kraken.png" alt="Kraken" style="width:48px;height:48px;border-radius:14px;object-fit:cover;flex-shrink:0;">
-          <div>
-            <div class="pcard-name">Kraken</div>
-            <div class="pcard-location">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Ірландія (Центральний банк Ірландії, MiCA)
-            </div>
-          </div>
-        </div>
-        <div class="pcard-tags">
-        </div>
-      </div>
-      <div class="pcard-body">
-        <p><strong>Одна з найстаріших бірж Біткоїна у світі</strong>, заснована у 2011 році, ліцензована як CASP за MiCA через Центральний банк Ірландії з паспортизацією по всій ЄЕП. Провідна в галузі репутація безпеки та глибока ліквідність у євро.</p>
-        <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ліцензія MiCA через Центральний банк Ірландії</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Засновано у 2011 році, багаторічна репутація безпеки</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Комісії Pro-трейдингу від 0,8%</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Глибока ліквідність EUR і миттєва купівля</li>
-        </ul>
-      </div>
+  <!-- 4. COUNTRY GUIDES -->
+  <section id="guides">
+    <div class="sec-head one"><div class="sec-copy"><h2>Путівники за країнами. <span>Партнери, комісії та податкові нотатки для вашої країни.</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/buy-bitcoin/slovakia/"><span class="gflag" aria-hidden="true">&#127480;&#127472;</span><b>Купити у Словаччині</b><span>Партнери, комісії та податкові нотатки</span></a><a class="gcard" href="/buy-bitcoin/czechia/"><span class="gflag" aria-hidden="true">&#127464;&#127487;</span><b>Купити в Чехії</b><span>Партнери, комісії та податкові нотатки</span></a><a class="gcard" href="/buy-bitcoin/germany/"><span class="gflag" aria-hidden="true">&#127465;&#127466;</span><b>Купити в Німеччині</b><span>Партнери, комісії та податкові нотатки</span></a></div>
+    <p class="tools-line">Інструменти комісій: <a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a> · <a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a></p>
+  </section>
 
-      <div class="pcard-footer">
-        <a href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Перейти на Kraken
-          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Порівняти комісії</a>
+  <!-- 5. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Лише Біткоїн, щопонеділка.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="../" href="../article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=uk">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Кур'єр Virtuse Brief на скутері доставляє випуск від 5 жовтня 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Останній Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (англійською)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Читати випуск →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Отримайте Brief. <span>Безкоштовно.</span></h3>
+        <p>Ринок, регулювання, майнінг. Жодних токенів. Жодного PR. Один лист щопонеділка.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="buy_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Електронна пошта</label>
+          <input id="email" name="email" type="email" placeholder="Електронна пошта" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Отримати Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Відписатися можна будь-коли. Не є порадою. <a href="../news.html?utm_source=brief&amp;utm_medium=buy" style="color:var(--muted)">Усі випуски та блог →</a></div>
       </div>
     </div>
+  </section>
 
-    <!-- BYBIT EU -->
-    <div class="pcard">
-      <div class="pcard-header">
-        <div class="pcard-logo">
-          <img src="../logo-bybit.png" alt="ByBit EU" style="width:48px;height:48px;border-radius:14px;object-fit:cover;flex-shrink:0;background:#17181e;border:1px solid #30363d;">
-          <div>
-            <div class="pcard-name">ByBit EU</div>
-            <div class="pcard-location">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Австрія (FMA MiCAR)
-            </div>
-          </div>
-        </div>
-        <div class="pcard-tags">
-        </div>
-      </div>
-      <div class="pcard-body">
-        <p><strong>Підрозділ ЄС однієї з найбільших бірж світу</strong>: Bybit EU GmbH ліцензована австрійським FMA за MiCAR, штаб-квартира у Відні, обслуговує всю ЄЕП. Глибока ліквідність, низькі спотові комісії та повнофункціональний застосунок.</p>
-        <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ліцензія FMA Австрії за MiCAR</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Штаб-квартира ЄС у Відні</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> У трійці найбільших бірж світу за обсягом торгів</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Комісії за спотову торгівлю від 0,25%</li>
-        </ul>
-      </div>
-
-      <div class="pcard-footer">
-        <a href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Перейти на ByBit EU
-          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Послуги</h4><a href="buy-bitcoin.html">Купити Біткоїн</a><a href="secure.html">Зберігання</a><a href="mining.html">Майнінг</a><a href="lending.html">Позики</a><a href="treasury.html">Казначейство</a><a href="tax.html">Податки</a><a href="bots.html">Боти</a></div><div class="footer-col"><h4>Компанія</h4><a href="about.html">Про нас</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Інструменти</h4><a href="cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Незабаром</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div><div class="footer-col"><h4>Матеріали</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-podatky/">Податки на Біткоїн</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a><a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a><a href="/uk/bitcoin-prodaty-chy-pozychyty/">Продати чи позичити</a><a href="/uk/bitcoin-spadshchyna/">Спадкування</a></div><div class="footer-col"><h4>Правова інформація</h4><a href="terms-and-conditions.html">Умови використання</a><a href="privacy-policy.html">Політика конфіденційності</a><a href="aml-compliance.html">AML і комплаєнс</a></div></div>
     </div>
-
-    <!-- INVITY -->
-    <div class="pcard">
-      <div class="pcard-header">
-        <div class="pcard-logo">
-          <img src="../logo-invity.svg" alt="Invity" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;padding:8px;flex-shrink:0;">
-          <div>
-            <div class="pcard-name">Invity</div>
-            <div class="pcard-location">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Чехія (Чеський національний банк)
-            </div>
-          </div>
-        </div>
-        <div class="pcard-tags">
-        </div>
-      </div>
-      <div class="pcard-body">
-        <p><strong>Застосунок лише для Біткоїна від групи SatoshiLabs</strong>, творців Trezor. Купуйте разово або автоматично через Auto Buy. Invity зберігає ваш Біткоїн у кастодіана BitGo, доки ви не виведете його на власний гаманець, що можна зробити будь-коли.</p>
-        <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ліцензія Чеського національного банку (CASP за MiCA)</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Лише Біткоїн, без альткоїнів</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Auto Buy для регулярних покупок</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Виведення або Auto Send на власний гаманець будь-коли</li>
-        </ul>
-      </div>
-
-      <div class="pcard-footer">
-        <a href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Перейти на Invity
-          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
+      <p class="footer-bottom-brief">Virtuse Brief &mdash; щотижневий дайджест від Virtuse. <a href="../news.html">Читати &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Мови"><a href="../buy-bitcoin.html" hreflang="en">English</a><a href="../sk/buy-bitcoin.html" hreflang="sk">Slovenčina</a><a href="../cs/buy-bitcoin.html" hreflang="cs">Čeština</a><a href="../de/buy-bitcoin.html" hreflang="de">Deutsch</a><a href="../pl/buy-bitcoin.html" hreflang="pl">Polski</a><a href="../hu/buy-bitcoin.html" hreflang="hu">Magyar</a><a href="../fr/buy-bitcoin.html" hreflang="fr">Français</a><a href="../es/buy-bitcoin.html" hreflang="es">Español</a><a href="buy-bitcoin.html" hreflang="uk" aria-current="page">Українська</a><a href="../ru/buy-bitcoin.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse — незалежний хаб для порівняння. Він не зберігає кошти чи ключі клієнтів, не виконує ордери й не надає інвестиційних порад. Послуги надають зазначені партнери за власними ліцензіями. Комісії вказано так, як їх публікує кожен партнер, і вони можуть змінюватися.</p>
     </div>
-
-    <!-- CRYPTO.COM -->
-    <div class="pcard">
-      <div class="pcard-header">
-        <div class="pcard-logo">
-          <img src="../logo-crypto-com.png" alt="Crypto.com" style="width:48px;height:48px;border-radius:14px;object-fit:contain;background:#fff;flex-shrink:0;">
-          <div>
-            <div class="pcard-name">Crypto.com</div>
-            <div class="pcard-location">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style="display:inline"><path d="M8 1a5 5 0 0 0-5 5c0 3.75 5 9 5 9s5-5.25 5-9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-              Мальта (MFSA MiCA CASP)
-            </div>
-          </div>
-        </div>
-        <div class="pcard-tags">
-        </div>
-      </div>
-      <div class="pcard-body">
-        <p><strong>Одна з найбільших крипто-платформ світу</strong>, ліцензована як CASP за MiCA через мальтійський MFSA (Foris DAX MT Limited) з повними правами паспортизації в ЄЕП. Глибока ліквідність, повнофункціональний застосунок і картка Crypto.com Visa для витрат прямо з балансу.</p>
-        <ul class="pcard-features">
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ліцензія MFSA Мальти як MiCA CASP</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Повні права паспортизації в ЄЕП</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Підтримка картки Crypto.com Visa</li>
-          <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Глибока ліквідність, застосунок, регульований у ЄС</li>
-        </ul>
-      </div>
-
-      <div class="pcard-footer">
-        <a href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Перейти на Crypto.com
-          <svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
     </div>
+  </footer>
+</main>
 
-  </div>
-</section>
-
-<!-- ===== DISCLAIMER ===== -->
-<!-- ===== FOOTER ===== -->
-<!-- ===== NEWSLETTER ===== -->
-<section class="newsletter">
-  <div class="brief-card brief-card-poster">
-  <h2>Отримайте <span>Brief</span></h2>
-  <p>Virtuse Brief. Лише Біткоїн. Жодних токенів. Жодного PR.</p>
-  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Електронна пошта" required>
-    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Отримати Brief</button>
-  </form>
-  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Щопонеділка. Відписатися можна будь-коли.</p>
-  </div>
-  <script>
-  (function () {
-    var form = document.getElementById('newsletterForm');
-    if (!form) return;
-    var msg = document.getElementById('newsletterMsg');
-    var btn = form.querySelector('button[type="submit"]');
-    var btnLabel = btn.textContent;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = form.elements['email'].value.trim();
-      var hp = form.elements['website'].value;
-      msg.textContent = '';
-      msg.style.color = 'var(--text-muted)';
-      btn.disabled = true;
-      btn.textContent = 'НАДСИЛАННЯ...';
-      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp, lang: 'uk' })
-      }).then(function (res) {
-        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
-      }).then(function (result) {
-        if (result.ok) {
-          form.reset();
-          msg.textContent = "Готово! Перевірте пошту, на вас чекає вітальний лист.";
-          msg.style.color = 'var(--green, #3fb950)';
-        } else {
-          msg.textContent = (result.data && result.data.error) || 'Щось пішло не так. Спробуйте ще раз.';
-          msg.style.color = '#f85149';
-        }
-      }).catch(function () {
-        msg.textContent = 'Помилка мережі. Спробуйте ще раз.';
-        msg.style.color = '#f85149';
-      }).then(function () {
-        btn.disabled = false;
-        btn.textContent = btnLabel;
-      });
-    });
-  })();
-  </script>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer-main">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
-    </div>
-    <div class="footer-columns">
-      <div class="footer-col">
-        <h4>Послуги</h4>
-        <a href="buy-bitcoin.html">Купити Біткоїн</a>
-        <a href="secure.html">Зберігання</a>
-        <a href="mining.html">Майнінг</a>
-        <a href="lending.html">Позики</a>
-        <a href="treasury.html">Казначейство</a>
-        <a href="tax.html">Податки</a>
-        <a href="bots.html">Боти</a>
-      </div>
-      <div class="footer-col">
-        <h4>Компанія</h4>
-        <a href="about.html">Про нас</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Інструменти</h4>
-        <a href="concierge.html?utm_source=concierge&amp;utm_medium=footer">Partner Finder</a>
-        <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
-        <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
-        <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Пенсійний калькулятор</a>
-      </div>
-      <div class="footer-col">
-        <h4>Матеріали</h4>
-        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
-        <a href="blog.html">Блог</a>
-        <a href="bitcoin-data.html">Біткоїн-дані</a>
-        <a href="/buy-bitcoin/slovakia/">Купити у Словаччині</a>
-        <a href="/buy-bitcoin/czechia/">Купити в Чехії</a>
-        <a href="/buy-bitcoin/germany/">Купити в Німеччині</a>
-        <a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a>
-        <a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a>
-      </div>
-      <div class="footer-col">
-        <h4>Правова інформація</h4>
-        <a href="terms-and-conditions.html">Умови використання</a>
-        <a href="privacy-policy.html">Політика конфіденційності</a>
-        <a href="aml-compliance.html">AML і комплаєнс</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — щотижневий дайджест від Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Читати →</a></p>
-  </div>
-  <div class="footer-wordmark" aria-hidden="true">
-    <span class="footer-wordmark-icon-wrap">
-      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
-          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
-        </defs>
-        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
-        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
-      </svg>
-    </span>
-    <span class="footer-wordmark-text">Virtuse</span>
-  </div>
-</footer>
-
-
-
-<!-- ===== STAT COUNTERS (anime.js) ===== -->
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
-  var counters = [];
-
-  candidates.forEach(function (el) {
-    var raw = el.textContent.trim();
-    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
-    if (!m) return;
-    counters.push({
-      el: el,
-      target: parseInt(m[1].replace(/,/g, ''), 10),
-      suffix: m[2] || ''
-    });
-  });
-  if (!counters.length) return;
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var c = null;
-      for (var i = 0; i < counters.length; i++) {
-        if (counters[i].el === entry.target) { c = counters[i]; break; }
-      }
-      if (!c) return;
-
-      var obj = { val: 0 };
-      animate(obj, {
-        val: c.target,
-        duration: 1600,
-        ease: 'outCubic',
-        onUpdate: function () {
-          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
-        },
-        onComplete: function () {
-          c.el.textContent = c.target.toLocaleString() + c.suffix;
-        }
-      });
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(function (c) { io.observe(c.el); });
-})();
-</script>
-
-<!-- ===== SCROLL REVEAL (anime.js) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var stagger = anime.stagger;
-  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
-  if (!sections.length) return;
-
-  sections.forEach(function (sec) {
-    sec.style.opacity = '0';
-    sec.style.transform = 'translateY(24px)';
-  });
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var sec = entry.target;
-
-      animate(sec, {
-        opacity: [0, 1],
-        translateY: [24, 0],
-        duration: 700,
-        ease: 'outQuad'
-      });
-
-      var groups = sec.querySelectorAll('[class*="grid"], .steps');
-      groups.forEach(function (group) {
-        var items = Array.prototype.slice.call(group.children);
-        if (!items.length) return;
-        items.forEach(function (it) { it.style.opacity = '0'; });
-        animate(items, {
-          opacity: [0, 1],
-          translateY: [16, 0],
-          delay: stagger(80, { start: 150 }),
-          duration: 600,
-          ease: 'outQuad'
-        });
-      });
-
-      io.unobserve(sec);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-  sections.forEach(function (sec) { io.observe(sec); });
-})();
-</script>
-
-<!-- ===== MOBILE MENU TOGGLE ===== -->
-<script>
-(function () {
-  var btn = document.getElementById('navHamburger');
-  var links = document.querySelector('.nav-links');
-  if (!btn || !links) return;
-
-  function closeMenu() {
-    document.body.classList.remove('nav-open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-
-  btn.addEventListener('click', function () {
-    var open = document.body.classList.toggle('nav-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-
-  links.querySelectorAll('a, button').forEach(function (el) {
-    if (el.classList.contains('lang-menu-btn')) return;
-    el.addEventListener('click', closeMenu);
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1024) closeMenu();
-  });
-})();
-
-// ===== NAV BACKGROUND ON SCROLL =====
-(function () {
-  var nav = document.querySelector('.nav');
-  if (!nav) return;
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
-  });
-})();
-</script>
-
-<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
-<script>
-(function () {
-  var btns = document.querySelectorAll('.nav-cta');
-  if (!btns.length) return;
-  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=nav';
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.href = conciergeUrl;
-    });
-  });
-})();
-</script>
-
+<script src="../site-v2.js?v=2" defer></script>
+<script src="../consultation-widget.js?v=20261007b" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 </body>
 </html>
