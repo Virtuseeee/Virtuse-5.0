@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-10) — Custody (secure.html) v2 live in 10 languages (PR Virtuseeee/Virtuse-5.0#57, merge `9505e0d8`; **live on production** — user ran `deploy_site.sh 7ddfe842 9505e0d8`, DEPLOY OK; md5-verified)
+
+- Built by `i18n-tools/secure/build_secure.py <lang>` from `secure/<lang>.json` (76 strings). **New `i18n-tools/v2common.py`** holds the shared head/nav/footer/Brief/link-fix code for v2 category builders (build_buy.py still has its own copy). Same components as buy-bitcoin, teal accent (#2dd4bf): centered hero, one panel with Trezor Model One €49 / Blockstream Jade $65 (USD, as published, no conversion) / Ledger Nano S Plus €79, made in / open source / key feature columns (Ledger "Not stated": the page makes no open-source claim), trust row, rewritten self-custody steps, 3 device cards, Brief with image.
+- Framed as hardware wallets / self-custody; "Multi-Sig Vaults" dropped. **Open for Ras:** add BitGo/Sygnum or a multisig service to Custody? Ledger logo shown inverted via CSS (`img.invert`), no new file.
+- Next category pages on the same pattern: lending, mining, treasury, tax, bots (one handover each so far).
+
 ## Session status (2026-10-10) — Buy Bitcoin v2 + hero v2 live in 10 languages; shared design-v2 base (PRs Virtuseeee/Virtuse-5.0#55 + #56, merge `78aa5104`; **live on production** — user ran `deploy_site.sh 13bd171e 78aa5104`, DEPLOY OK; 12/12 md5-verified)
 
 - **Shared base for the sitewide redesign:** `site-v2.css` (the v2 homepage's CSS verbatim + category/buy components) and `site-v2.js` (nav v2, language menu, stage badges, footer wordmark, fee calculator, Brief card + signup, motion layer; texts via `window.VB_I18N`, English default, locale from `<html lang>`). Only the buy pages use them so far; homepage/CFO still carry their own inline CSS.
