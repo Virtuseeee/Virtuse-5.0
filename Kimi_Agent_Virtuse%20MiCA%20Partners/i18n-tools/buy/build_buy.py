@@ -73,7 +73,7 @@ def build(L):
     head = head.rstrip() + '\n<meta name="vb-cfo-stage" content="wait">\n' \
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' \
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">\n' \
-        '<link rel="stylesheet" href="%ssite-v2.css?v=2">\n' % root + \
+        '<link rel="stylesheet" href="%ssite-v2.css?v=5">\n' % root + \
         "<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>\n" + i18n + '</head>\n'
 
     # ---------- nav + footer from this language's homepage ----------
@@ -203,7 +203,7 @@ def build(L):
                        note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), img_alt=t('b_img_alt'), gh=t('b_get_h'), free=t('b_free'), gp=t('b_get_p'),
                        email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'))
 
-    body = '''<body class="page-buy">
+    body = '''<body class="page-buy no-split">
 {nav}
 
 <main class="wrap" id="top">
@@ -251,7 +251,7 @@ def build(L):
   {foot}
 </main>
 
-<script src="{root}site-v2.js?v=2" defer></script>
+<script src="{root}site-v2.js?v=5" defer></script>
 <script src="{root}consultation-widget.js?v=20261007b" defer></script>
 <script src="{root}concierge-launcher.js" defer></script>
 </body>

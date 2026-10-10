@@ -32,6 +32,13 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
   })();
 
+  // sticky header height -> --nav-h (anchored sections use it for scroll-margin-top)
+  (function () {
+    var hd = document.querySelector('header.nav'); if (!hd) return;
+    function set() { document.documentElement.style.setProperty('--nav-h', hd.offsetHeight + 'px'); }
+    set(); window.addEventListener('resize', set);
+  })();
+
   // Language menu
   (function () {
     var wrap = document.getElementById('langMenu'); if (!wrap) return;
@@ -189,7 +196,9 @@
   // spotlight works with or without motion
   document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo').forEach(function (c) {
     c.classList.add('spot');
-    c.addEventListener('pointermove', function (e) { var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    // .pm = the pointer really moved over the card: no glow on a card that a scroll or anchor jump slid under a still cursor
+    c.addEventListener('pointermove', function (e) { c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    c.addEventListener('pointerleave', function () { c.classList.remove('pm'); });
   });
   if (!on) return;
 
@@ -239,6 +248,23 @@
     b.classList.add('rv');
   });
 
+  // 2b. anchor jumps (hash on load, in-page links): everything at and after the target shows at once, no animation
+  function showFrom(t) {
+    if (!t) return;
+    document.querySelectorAll('.rv:not(.in)').forEach(function (el) {
+      if (el === t || el.contains(t) || t.contains(el) || (t.compareDocumentPosition(el) & 4)) { el.classList.add('rv-now', 'in'); }
+    });
+    document.querySelectorAll('.how-log').forEach(function (log) {
+      if (log === t || t.contains(log) || (t.compareDocumentPosition(log) & 4)) { log.classList.add('rv-now', 'drawn'); }
+    });
+  }
+  function hashTarget(h) { if (!h || h.length < 2) return null; try { return document.getElementById(decodeURIComponent(h.slice(1))); } catch (e) { return null; } }
+  showFrom(hashTarget(location.hash));
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (a) showFrom(hashTarget(a.getAttribute('href')));
+  }, true);
+  window.addEventListener('hashchange', function () { showFrom(hashTarget(location.hash)); });
+
   // 3. bars wait until seen
   document.querySelectorAll('#buy .panel, .audit-card').forEach(function (c) { c.classList.add('bars-wait'); });
 
@@ -268,8 +294,8 @@
       if (el.matches('.audit-card')) el.querySelectorAll('.big').forEach(countUp);
     });
   }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
-  document.querySelectorAll('.how-log').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.rv:not(.in)').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.how-log:not(.drawn)').forEach(function (el) { io.observe(el); });
 
   // safety: never leave content hidden
   setTimeout(function () { document.querySelectorAll('.rv:not(.in)').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight * 1.5) el.classList.add('in'); }); }, 1200);
