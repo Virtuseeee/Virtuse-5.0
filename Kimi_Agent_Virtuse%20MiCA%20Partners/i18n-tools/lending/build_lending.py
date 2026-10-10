@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 import v2common as C
 
 SIGNUP = 'https://app.firefish.io/auth/sign-up?ref=virtuseloan'
-WIDGET = 'https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=141414&amp;borderCard=141414&amp;shadowCard=none'
+WIDGET = 'https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=rgba(0,0,0,0)&amp;borderCard=rgba(0,0,0,0)&amp;shadowCard=none&amp;widgetShadow=none'
 BORROW = SIGNUP  # firefish.io itself is not in the partner-click host map; app.firefish.io is
 
 
@@ -39,8 +39,7 @@ def build(L):
     </div>'''.format(widget=WIDGET, wt=t('widget_title'), dt=t('d_title'), details=details, dn=t('d_note'))
 
     trust = '''<div class="trust-strip ts-center">
-    <span class="ts-stats"><span>{a}</span><span>{b}</span><span>{c}</span><span>{d}</span></span>
-    <span class="ts-logos"><img src="{root}logo-firefish.png" alt="Firefish" width="22" height="22" loading="lazy"></span>
+    <span class="ts-stats"><span class="ts-brand"><img src="{root}logo-firefish.png" alt="" width="32" height="32" loading="lazy"><b>Firefish</b></span><span>{a}</span><span>{b}</span><span>{c}</span><span>{d}</span></span>
   </div>'''.format(a=t('t_funded'), b=t('t_investors'), c=t('t_esma'), d=t('t_btc'), root=root)
 
     steps = ''.join('''      <div class="how-log-item">
