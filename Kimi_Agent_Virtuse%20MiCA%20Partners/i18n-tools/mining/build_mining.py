@@ -78,7 +78,7 @@ def build(L):
     <details><summary>{q3}</summary><p>{a3} <a href="{tax}">{a3l} →</a></p></details>'''.format(
         q1=t('q1'), a1=t('a1'), q2=t('q2'), a2=t('a2'), q3=t('q3'), a3=t('a3'), tax=tax, a3l=t('a3_link'))
 
-    body = '''<body class="page-buy page-mine">
+    body = '''<body class="page-buy page-mine no-split">
 {nav}
 
 <main class="wrap" id="top">

@@ -34,7 +34,7 @@ def build(L):
     t = lambda k: T[k]
     page_path, home_path, root = C.paths(L, 'tax.html')
     old, home = open(page_path).read(), open(home_path).read()
-    head = C.head(L, old, home, root, version='4')
+    head = C.head(L, old, home, root)
     nav, foot = C.chrome(home, 'tax.html')
     names = EN_NAMES if L == 'en' else META['names'][L]
     slugs = META['slugs'][L]
@@ -151,7 +151,7 @@ def build(L):
            trust=trust, hh2a=t('h_h2_a'), hh2b=t('h_h2_b'), steps=steps, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), cards='\n'.join(cards),
            inh=inh, inh_t=t('inh_t'), inh_p=t('inh_p'), inh_cta=t('inh_cta'), arrow=C.ARROW,
            qh2a=t('q_h2_a'), qh2b=t('q_h2_b'), faq=faq, brief=C.brief(L, t, root, 'tax_brief'), foot=foot)
-    out = C.fix_links(L, head + body + C.scripts(root).replace('site-v2.js?v=3', 'site-v2.js?v=4'))
+    out = C.fix_links(L, head + body + C.scripts(root))
     open(page_path, 'w').write(out)
     print('%s: %d bytes' % (L, len(out)))
 

@@ -81,7 +81,7 @@ def build(L):
       </div>
 '''.format(step=t('step'), n=n, tt=t('s%d_t' % n), pp=t('s%d_p' % n)) for n in range(1, 5))
 
-    body = '''<body class="page-buy page-secure">
+    body = '''<body class="page-buy page-secure no-split">
 {nav}
 
 <main class="wrap" id="top">

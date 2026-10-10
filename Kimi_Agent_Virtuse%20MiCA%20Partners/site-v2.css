@@ -1428,3 +1428,38 @@ button.hp-cta { background: transparent; font-family: var(--sans); cursor: point
   .page-tax .how-log-item:first-child .how-log-dot { box-shadow: 0 0 10px 2px rgba(95,174,222,.55); }
 }
 @media (max-width: 640px) { .tx-b .row.head + .tx-row { border-top: 0; } }
+
+/* ===== SERVICE PAGES POLISH (handover 2026-10-11): shorter reveals, anchor jumps, logos, cookie sheet, header offset ===== */
+/* reveals: 0.25 s, 12 px, short stagger; anything at/after an anchor target shows at once (.rv-now) */
+html.anim .page-buy .rv, html.anim .page-buy .rv.rv-card { transform: translateY(12px); transition: opacity .25s ease-out, transform .25s ease-out; transition-delay: calc(var(--d, 0ms) / 3); }
+html.anim .page-buy .rv.in { transform: none; }
+html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now::before, html.anim .how-log.rv-now .how-log-dot { transition: none !important; }
+/* card glow only while the pointer actually moves over a card */
+.pcard2:hover:not(.pm) { background: var(--card); border-color: transparent; box-shadow: none; }
+.spot:hover:not(.pm)::after { opacity: 0; }
+@media (hover: none) { .pcard2:hover { background: var(--card); border-color: transparent; box-shadow: none; } }
+/* partner logo strip: larger and easier to see; colour on hover */
+.page-buy .ts-logos { gap: 10px; }
+.page-buy .ts-logos img { width: 28px; height: 28px; opacity: .6; transition: opacity .2s, filter .2s; }
+.page-buy .ts-logos img:hover { opacity: .9; filter: none; }
+.page-buy .ts-logos img.invert:hover { filter: invert(1); }
+/* anchored sections clear the sticky header */
+.page-buy [id] { scroll-margin-top: calc(var(--nav-h, 64px) + 16px); }
+/* cookie banner as a compact bottom sheet on phones (styles only; consent logic untouched) */
+@media (max-width: 640px) {
+  body .vb-cc { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px; max-height: 30vh; overflow-y: auto; border-radius: 14px; }
+  body .vb-cc:has(.vb-cc-cats) { max-height: calc(100vh - 16px); }
+  body .vb-cc h2 { font-size: 14px; margin: 0 0 4px; }
+  body .vb-cc p { font-size: 12.5px; line-height: 1.4; }
+  body .vb-cc:not(:has(.vb-cc-cats)) .vb-cc-row { flex-wrap: nowrap; gap: 6px; margin-top: 10px; }
+  body .vb-cc:not(:has(.vb-cc-cats)) .vb-cc-row button { flex: 1 1 0; min-width: 0; padding: 8px 6px; font-size: 12.5px; white-space: normal; line-height: 1.2; }
+}
+/* card heads: room on the right only where a price badge sits there */
+.pcard2:not(:has(.pc-badge)) .pc-head { padding-right: 0; }
+.pcard2:has(.pc-badge) .pc-head { padding-right: 64px; }
+/* grayscale logos are brightened so dark marks still read on #08090a */
+/* (buy/custody logos sit on white chips and need no boost) */
+.page-mine .ts-logos img, .page-treasury .ts-logos img, .page-tax .ts-logos img { filter: grayscale(1) brightness(1.8); }
+.page-mine .ts-logos img.invert { filter: grayscale(1) invert(1) brightness(1.2); }
+.page-buy .ts-logos img:hover { filter: none; }
+.page-buy .ts-logos img.invert:hover { filter: invert(1); }

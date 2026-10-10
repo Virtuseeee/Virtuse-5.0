@@ -29,7 +29,7 @@ def eur(n, L):
     return B.num(int(round(n)), L) + ' €'
 
 
-def head(L, old, home, root, version='3'):
+def head(L, old, home, root, version='5'):
     h = old[:old.index('</head>')]
     h = re.sub(r'<style\b.*?</style>\s*', '', h, flags=re.S)
     h = re.sub(r'<link rel="(?:stylesheet|preconnect)"[^>]*>\s*', '', h)
@@ -125,7 +125,7 @@ def fix_links(L, out):
 
 
 def scripts(root):
-    return '''<script src="{r}site-v2.js?v=3" defer></script>
+    return '''<script src="{r}site-v2.js?v=5" defer></script>
 <script src="{r}consultation-widget.js?v=20261007b" defer></script>
 <script src="{r}concierge-launcher.js" defer></script>
 </body>
