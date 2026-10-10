@@ -2,6 +2,20 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-11) — Tax (tax.html) v2 + service-pages polish, 10 languages (PR #65 + #66, main `a2b23545`; **live on production** — user ran `deploy_site.sh 9b3f79e4 a2b23545`, 62/62 md5-verified on virtuse.com)
+
+- Tax: builder `i18n-tools/tax/build_tax.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`), blue accent. One hero panel: country pills linking the seo-build guides in the page language (slugs/names from `seo-build/data/meta.json`; own country highlighted, Hungary added on hu) + the 4 reporting tools compared (price as published, free tier, countries, "Typical use"). KYC/DeFi columns and the superlatives are gone.
+- Polish across buy-bitcoin, secure, lending, mining, treasury, tax (`site-v2.css`/`site-v2.js`, one cache key `?v=5` from `v2common.py`; buy builder now on v=5 too):
+  - Anchor jumps (hash on load, in-page link, hashchange) show every `.rv` at/after the target at once (`.rv-now`).
+  - Reveals on `.page-buy` are 0.25 s / 12 px, and every service page has `body.no-split` (no word-by-word H1).
+  - Card hover glow needs a real pointer move (`.pcard2.pm`), off on touch.
+  - Trust-row logos 28 px, .6 grayscale (brightened on mining/treasury/tax), colour on hover.
+  - `.pc-head` right padding only when a `.pc-badge` exists.
+  - Eyebrows use `&nbsp;` after numbers and before a short last word.
+  - `[id]` scroll-margin-top = `--nav-h` (set by JS) + 16 px.
+  - Phones: cookie banner restyled as a compact bottom sheet from site-v2.css (`body .vb-cc…`); cookie-consent.js untouched.
+- Remaining v2 category page: Bots.
+
 ## Session status (2026-10-10) — Treasury (treasury.html) v2 in 10 languages (PR #63 + follow-up #64, main `b32ec416`; **live on production** — user ran `deploy_site.sh 5683c474 b32ec416`, 12/12 md5-verified on virtuse.com)
 
 - Builder `i18n-tools/treasury/build_treasury.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`), same pattern as mining/lending. Indigo accent (#818cf8). Hero panel compares Coinbase / Sygnum / BitGo (regulator, model, cover or scale, "Typical use" instead of "Best for"); CTA "Book a 15-minute treasury call" = consultation widget; new "Why companies hold Bitcoin" (3 principles, Saylor article card → `stories/michael-saylors-legacy-the-bitcoin-corporate-revolution/` because the story page has the full text in HTML, asset-returns card with Bitcoin's annualized return + rank computed live in `site-v2.js` from `data/asset-returns.json`, raw GitHub first, same-origin fallback, hidden on failure; never hardcode a return). This page alone adds `https://raw.githubusercontent.com` to CSP connect-src and loads `site-v2.css/js?v=4`. `body.no-split` turns off the word-by-word hero H1 animation.
