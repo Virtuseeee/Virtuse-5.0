@@ -32,8 +32,8 @@ def build(L):
     suffix = (' (%s)' % C.B.IN_EN[L]) if L in C.B.IN_EN else ''
     en_note = (' (%s)' % C.B.BRIEF_EN[L]) if L != 'en' else ''
     tax = '/bitcoin-tax/' if L == 'en' else '/%s/%s/' % (L, C.B.GUIDES[L][0])
-    # sk and ru article pages read their own WordPress feeds, which don't carry this English story
-    art = '%sarticle.html?slug=%s%s' % (root, SLUG, '' if L in ('en', 'sk', 'ru') else '&amp;lang=' + L)
+    # the pre-rendered story page (stories-build) has the title and the full text in its HTML; article.html?slug= fills in by JavaScript
+    art = '%sstories/%s/' % (root, SLUG)
     call = lambda label, cls: '<button type="button" class="%s" data-consultation-trigger data-consultation-lang="%s">%s</button>' % (cls, L, label)
 
     rows = []
