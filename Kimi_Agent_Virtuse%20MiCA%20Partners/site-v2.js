@@ -96,6 +96,21 @@
     });
   })();
 
+  // Treasury: Bitcoin's annualized return and rank from the asset-returns data (same file and maths as asset-returns.html); stays hidden if it can't load
+  (function () {
+    var box = document.getElementById('arStat'); if (!box || !window.fetch) return;
+    function get(u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+    get(box.getAttribute('data-src')).catch(function () { return get(box.getAttribute('data-local')); }).then(function (d) {
+      var rows = (d.rows || []).filter(function (r) { return typeof r.annualized === 'number'; });
+      var btc = rows.filter(function (r) { return r.ticker === 'BTC'; })[0]; if (!btc || rows.length < 2) return;
+      rows.sort(function (a, b) { return b.annualized - a.annualized; });
+      var v = (btc.annualized * 100).toLocaleString(box.getAttribute('data-locale') || 'en-GB', { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+      document.getElementById('arStatVal').textContent = (btc.annualized >= 0 ? '+' : '') + v + box.getAttribute('data-pct');
+      document.getElementById('arStatLabel').textContent = box.getAttribute('data-label').replace('{rank}', rows.indexOf(btc) + 1).replace('{n}', rows.length);
+      box.hidden = false;
+    }).catch(function () {});
+  })();
+
   // Partner cards: details open on wide screens, collapsed on phones
   (function () {
     var ds = document.querySelectorAll('details.pc-more'); if (!ds.length || !window.matchMedia) return;
@@ -197,7 +212,7 @@
     return i;
   }
   var h1 = document.querySelector('main h1');
-  var heroWords = h1 ? split(h1) : 0;
+  var heroWords = h1 && !document.body.classList.contains('no-split') ? split(h1) : 0;
   if (h1) requestAnimationFrame(function () { requestAnimationFrame(function () { h1.classList.add('split-in'); }); });
 
   // 2. mark reveal targets
