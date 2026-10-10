@@ -72,6 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
+<script>window.VB_I18N = {"openMenu": "Menu", "closeMenu": "Zamknięcie menu", "soon": "Wkrótce", "new": "Nowość", "latestBrief": "Najnowszy Brief · ", "min": " min", "coverImage": "Okładka: ", "badEmail": "Proszę podać prawidłowy adres e-mail.", "sending": "Wysyłanie...", "subscribed": "Gotowe. Brief ukazuje się w poniedziałki.", "error": "Coś poszło nie tak. Prosimy spróbować ponownie.", "netError": "Błąd sieci. Prosimy spróbować ponownie.", "briefLangNote": " (po angielsku)"};</script>
 <meta name="vb-cfo-stage" content="wait">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,59 +114,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <main class="wrap" id="top">
 
-  <!-- 1. HERO: headline + live comparison of all 5 partners -->
-  <div class="buy-hero">
-    <div class="bh-copy">
-      <div class="eyebrow"><i></i>Zakup Bitcoina · 5 partnerów · licencja MiCA</div>
-      <h1>Zakup Bitcoina u partnerów <span class="grad">z licencją MiCA</span>.</h1>
-      <p class="bh-sub">Opublikowane opłaty obok siebie.</p>
-      <p class="bh-lead">Porównanie pięciu platform z licencją UE według opublikowanej opłaty, a potem zakup bezpośrednio na platformie partnera. Virtuse nigdy nie przechowuje Państwa środków ani kluczy.</p>
-      <div class="bh-ctas">
-        <a class="btn btn-orange" href="#partners">Porównanie wszystkich 5 partnerów</a>
-        <a class="tlink" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">Plan akumulacji <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <!-- 1. HERO v2: centered headline + one comparison panel -->
+  <div class="buy-hero2">
+    <div class="eyebrow"><i></i>Zakup Bitcoina · 5 partnerów · licencja MiCA</div>
+    <h1>Zakup Bitcoina u partnerów z licencją MiCA. <span class="h1-grey">Opublikowane opłaty obok siebie.</span></h1>
+    <div class="hpanel" id="feeRows">
+      <div class="hp-slider">
+        <label for="amt">Miesięczny zakup</label>
+        <div class="amount"><span id="amtOut">500</span>&nbsp;€ <small>/ miesiąc</small></div>
+        <input type="range" id="amt" min="50" max="5000" step="50" value="500">
+        <div class="range-ends"><span>50 €</span><span>5 000 €</span></div>
       </div>
-      <p class="alt bh-talk">Wolą Państwo porozmawiać? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="pl">Bezpłatna 15-minutowa rozmowa</button> (po angielsku).</p>
+      <div class="row head hp-row"><span>Partner</span><span>Opłata</span><span class="yr">Rocznie</span><span></span></div>
+      <div class="row hp-row" data-pct="0"><span class="hc-name"><img src="../logo-21bitcoin-app.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>21bitcoin <span class="lowest-pill">Najniższa opłata</span></b><small>Auto-Invest, od 8. dnia</small></span></span><span class="hc-fee">0%</span><span class="yr">0 €</span><a class="hp-get" href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Przejście do 21bitcoin">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row" data-pct="0.25"><span class="hc-name"><img src="../logo-bybit.png" alt="" width="36" height="36" class="dark" loading="lazy"><span><b>ByBit EU </b><small>Spot, opłata takera</small></span></span><span class="hc-fee">0,25%</span><span class="yr">15 €</span><a class="hp-get" href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Przejście do ByBit EU">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row" data-pct="0.8"><span class="hc-name"><img src="../logo-kraken.png" alt="" width="36" height="36" class="cover" loading="lazy"><span><b>Kraken </b><small>Pro, opłata takera, poziom 1</small></span></span><span class="hc-fee">0,8%</span><span class="yr">48 €</span><a class="hp-get" href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" aria-label="Przejście do Kraken">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row"><span class="hc-name"><img src="../logo-invity.svg" alt="" width="36" height="36" class="pad" loading="lazy"><span><b>Invity </b><small>Aplikacja Auto Buy</small></span></span><span class="hc-fee na">Na stronie partnera</span><span class="yr na">–</span><a class="hp-get" href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" aria-label="Przejście do Invity">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="row hp-row"><span class="hc-name"><img src="../logo-crypto-com.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Crypto.com </b><small>Aplikacja i karta Visa</small></span></span><span class="hc-fee na">Na stronie partnera</span><span class="yr na">–</span><a class="hp-get" href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" aria-label="Przejście do Crypto.com">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <p class="hp-diff">Różnica między najwyższą a najniższą opublikowaną opłatą w ciągu 10 lat: <b class="hp-480" id="diff10">480 €</b> <span class="hp-sep">·</span> <b id="diffYr">48 €</b> rocznie przy zakupach za <b id="diffBase">6 000 €</b> rocznie.</p>
     </div>
-    <div class="bh-table">
-      <div class="hcard" id="feeRows">
-        <div class="hc-slider">
-          <label for="amt">Miesięczny zakup</label>
-          <div class="amount"><span id="amtOut">500</span>&nbsp;€ <small>/ miesiąc</small></div>
-          <input type="range" id="amt" min="50" max="5000" step="50" value="500">
-          <div class="range-ends"><span>50 €</span><span>5 000 €</span></div>
-        </div>
-        <div class="row head hc-row"><span>Partner</span><span>Opłata</span><span class="yr">Rocznie</span><span></span></div>
-        <div class="row hc-row best" data-pct="0"><span class="hc-name"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" class="" loading="lazy"><span><b>21bitcoin</b><small>Auto-Invest, od 8. dnia</small></span></span><span class="hc-fee">0%</span><span class="yr">0 €</span><a class="hc-get" href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Przejście do 21bitcoin">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <div class="row hc-row" data-pct="0.25"><span class="hc-name"><img src="../logo-bybit.png" alt="" width="28" height="28" class="dark" loading="lazy"><span><b>ByBit EU</b><small>Spot, opłata takera</small></span></span><span class="hc-fee">0,25%</span><span class="yr">15 €</span><a class="hc-get" href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Przejście do ByBit EU">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <div class="row hc-row" data-pct="0.8"><span class="hc-name"><img src="../logo-kraken.png" alt="" width="28" height="28" class="cover" loading="lazy"><span><b>Kraken</b><small>Pro, opłata takera, poziom 1</small></span></span><span class="hc-fee">0,8%</span><span class="yr">48 €</span><a class="hc-get" href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" aria-label="Przejście do Kraken">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <div class="row hc-row hc-more"><span class="hc-name"><img src="../logo-invity.svg" alt="" width="28" height="28" class="pad" loading="lazy"><span><b>Invity</b><small>Aplikacja Auto Buy</small></span></span><span class="hc-fee na">Na stronie partnera</span><span class="yr na">–</span><a class="hc-get" href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" aria-label="Przejście do Invity">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <div class="row hc-row hc-more"><span class="hc-name"><img src="../logo-crypto-com.png" alt="" width="28" height="28" class="" loading="lazy"><span><b>Crypto.com</b><small>Aplikacja i karta Visa</small></span></span><span class="hc-fee na">Na stronie partnera</span><span class="yr na">–</span><a class="hc-get" href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" aria-label="Przejście do Crypto.com">Przechodzę <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <button type="button" class="hc-toggle" id="hcToggle" aria-expanded="false" data-less="Pierwsza trójka">Wszyscy (5)</button>
-        <p class="hc-lowest"><i></i>Najniższa opublikowana opłata</p>
-      </div>
-      <div class="diff hc-diff">
-        <div class="diff-txt">
-          <span>Różnica między najwyższą a najniższą opublikowaną opłatą w ciągu 10 lat</span>
-          <b class="diff-big" id="diff10">480 €</b>
-          <em><b id="diffYr">48 €</b> rocznie przy zakupach za <b id="diffBase">6 000 €</b> rocznie.</em>
-        </div>
-        <svg class="save-chart" viewBox="0 0 220 96" aria-hidden="true">
-          <defs><linearGradient id="saveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".45"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs>
-          <path d="M8 80 L200 12 L200 80 Z" fill="url(#saveFill)"/>
-          <path d="M8 80 L200 12" stroke="#f7931a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-          <path d="M8 80 L200 58.75" stroke="#f2c94c" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
-          <path d="M8 80 L200 80" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <circle cx="200" cy="12" r="3.5" fill="#f7931a"/>
-          <text x="8" y="94">rok 0</text><text x="200" y="94" text-anchor="end">rok 10</text>
-          <text x="194" y="8" text-anchor="end" id="saveEnd">480 €</text>
-        </svg>
-      </div>
-      <p class="src hc-src">Opłaty według danych opublikowanych przez partnerów, Q4 2026: opłata takera przy zwykłym zakupie rynkowym. 21bitcoin pobiera standardową opłatę przez pierwsze 7 dni planu. Invity i Crypto.com publikują swoje opłaty na własnych stronach. Spready i opłaty za wypłatę nie są uwzględnione. <a href="/pl/bitcoin-indeks-oplat/">Pełny Indeks opłat</a></p>
-      <p class="cat-note hc-earn"><b>Na czym zarabiamy:</b> niektórzy partnerzy płacą Virtuse prowizję polecającą, gdy rejestrują się Państwo przez nasz link. Cena pozostaje taka sama, a prowizja nigdy nie zmienia kolejności ani faktów.</p>
+    <div class="hp-fine">
+      <p>Porównanie pięciu platform z licencją UE według opublikowanej opłaty, a potem zakup bezpośrednio na platformie partnera. Virtuse nigdy nie przechowuje Państwa środków ani kluczy. Opłaty według danych opublikowanych przez partnerów, Q4 2026: opłata takera przy zwykłym zakupie rynkowym. 21bitcoin pobiera standardową opłatę przez pierwsze 7 dni planu. Invity i Crypto.com publikują swoje opłaty na własnych stronach. Spready i opłaty za wypłatę nie są uwzględnione. <a href="/pl/bitcoin-indeks-oplat/">Pełny Indeks opłat</a></p>
+      <p><b>Na czym zarabiamy:</b> niektórzy partnerzy płacą Virtuse prowizję polecającą, gdy rejestrują się Państwo przez nasz link. Cena pozostaje taka sama, a prowizja nigdy nie zmienia kolejności ani faktów.</p>
+      <p>Wolą Państwo porozmawiać? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="pl">Bezpłatna 15-minutowa rozmowa</button> (po angielsku).</p>
     </div>
+    <a class="hp-cta" href="#partners">Pełne informacje o partnerach <span aria-hidden="true">↓</span></a>
   </div>
-  <div class="trust-strip">
-    <span><b>5</b> partnerów</span><span><b>0%</b> najniższa opublikowana opłata</span><span><b>EOG</b> paszport MiCA</span>
+  <div class="trust-strip ts-center">
+    <span class="ts-stats"><span><b>5</b> partnerów</span><span><b>0%</b> najniższa opublikowana opłata</span><span><b>EOG</b> paszport MiCA</span></span>
     <span class="ts-logos"><img src="../logo-21bitcoin-app.png" alt="21bitcoin" width="22" height="22" class="" loading="lazy"><img src="../logo-bybit.png" alt="ByBit EU" width="22" height="22" class="dark" loading="lazy"><img src="../logo-kraken.png" alt="Kraken" width="22" height="22" class="cover" loading="lazy"><img src="../logo-invity.svg" alt="Invity" width="22" height="22" class="pad" loading="lazy"><img src="../logo-crypto-com.png" alt="Crypto.com" width="22" height="22" class="" loading="lazy"></span>
   </div>
 
@@ -275,7 +251,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Tylko Bitcoin, w każdy poniedziałek.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue issue-slim" id="briefIssue" data-root="../" href="../article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=pl">
+      <a class="issue" id="briefIssue" data-root="../" href="../article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=pl">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Kurier Virtuse Brief na skuterze dostarcza wydanie z 5 października 2026" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Najnowszy Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (po angielsku)</h3>

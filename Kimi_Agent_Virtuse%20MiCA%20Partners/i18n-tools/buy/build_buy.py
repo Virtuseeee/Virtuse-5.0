@@ -92,12 +92,11 @@ def build(L):
 
     call_suffix = (' (%s)' % B.IN_EN[L]) if L in B.IN_EN else ''
 
-    # ---------- hero table ----------
+    # ---------- hero panel (v2: centered, one card) ----------
     rows = []
     for k, p in enumerate(PARTNERS):
         pid = p['id']
-        cheapest = ' best' if k == 0 else ''
-        more = ' hc-more' if k >= 3 else ''
+        pill = '<span class="lowest-pill">%s</span>' % t('lowest_pill') if k == 0 else ''
         if p['pct'] is None:
             fee = '<span class="hc-fee na">%s</span>' % t('fee_site')
             yr = '<span class="yr na">–</span>'
@@ -106,51 +105,33 @@ def build(L):
             fee = '<span class="hc-fee">%s</span>' % pct(p['pct'], L)
             yr = '<span class="yr">%s</span>' % eur(500 * 12 * p['pct'] / 100, L)
             data = ' data-pct="%g"' % p['pct']
-        rows.append('<div class="row hc-row%s%s"%s><span class="hc-name"><img src="%s%s" alt="" width="28" height="28" class="%s" loading="lazy"><span><b>%s</b><small>%s</small></span></span>%s%s<a class="hc-get" href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s">%s %s</a></div>'
-                    % (cheapest, more, data, root, p['logo'], p['cls'], p['name'], t('pr_%s_product' % pid), fee, yr, p['url'], t('pr_%s_get' % pid), t('get'), ARROW))
-    hero_card = '''<div class="hcard" id="feeRows">
-        <div class="hc-slider">
-          <label for="amt">{amt_label}</label>
-          <div class="amount">{amt_html} <small>{per_month}</small></div>
-          <input type="range" id="amt" min="50" max="5000" step="50" value="500">
-          <div class="range-ends"><span>{e50}</span><span>{e5000}</span></div>
-        </div>
-        <div class="row head hc-row"><span>{col_partner}</span><span>{col_fee}</span><span class="yr">{col_year}</span><span></span></div>
-        {rows}
-        <button type="button" class="hc-toggle" id="hcToggle" aria-expanded="false" data-less="{show_less}">{show_all}</button>
-        <p class="hc-lowest"><i></i>{lowest}</p>
-      </div>'''.format(amt_label=t('amt_label'), per_month=t('per_month'),
-                      amt_html=('€<span id="amtOut">500</span>' if L == 'en' else '<span id="amtOut">500</span>&nbsp;€'),
-                      e50=eur(50, L), e5000=eur(5000, L), col_partner=t('col_partner'), col_fee=t('col_fee'), col_year=t('col_year'),
-                      rows='\n        '.join(rows), show_all=t('show_all'), show_less=t('show_less'), lowest=t('lowest'))
-
+        rows.append('<div class="row hp-row"%s><span class="hc-name"><img src="%s%s" alt="" width="36" height="36" class="%s" loading="lazy"><span><b>%s %s</b><small>%s</small></span></span>%s%s<a class="hp-get" href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s">%s %s</a></div>'
+                    % (data, root, p['logo'], p['cls'], p['name'], pill, t('pr_%s_product' % pid), fee, yr, p['url'], t('pr_%s_get' % pid), t('get'), ARROW))
     diff_line = t('diff_line')
-    for a, b in (('€48', eur(48, L)), ('€6,000', eur(6000, L))):
-        diff_line = diff_line.replace(a, b)
-    diff = '''<div class="diff hc-diff">
-        <div class="diff-txt">
-          <span>{diff_label}</span>
-          <b class="diff-big" id="diff10">{e480}</b>
-          <em>{diff_line}</em>
-        </div>
-        <svg class="save-chart" viewBox="0 0 220 96" aria-hidden="true">
-          <defs><linearGradient id="saveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".45"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs>
-          <path d="M8 80 L200 12 L200 80 Z" fill="url(#saveFill)"/>
-          <path d="M8 80 L200 12" stroke="#f7931a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-          <path d="M8 80 L200 58.75" stroke="#f2c94c" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
-          <path d="M8 80 L200 80" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <circle cx="200" cy="12" r="3.5" fill="#f7931a"/>
-          <text x="8" y="94">{y0}</text><text x="200" y="94" text-anchor="end">{y10}</text>
-          <text x="194" y="8" text-anchor="end" id="saveEnd">{e480}</text>
-        </svg>
-      </div>'''.format(diff_label=t('diff_label'), e480=eur(480, L), diff_line=diff_line, y0=t('year0'), y10=t('year10'))
+    for a_, b_ in (('€48', eur(48, L)), ('€6,000', eur(6000, L))):
+        diff_line = diff_line.replace(a_, b_)
+    hero_card = """<div class="hpanel" id="feeRows">
+      <div class="hp-slider">
+        <label for="amt">{amt_label}</label>
+        <div class="amount">{amt_html} <small>{per_month}</small></div>
+        <input type="range" id="amt" min="50" max="5000" step="50" value="500">
+        <div class="range-ends"><span>{e50}</span><span>{e5000}</span></div>
+      </div>
+      <div class="row head hp-row"><span>{col_partner}</span><span>{col_fee}</span><span class="yr">{col_year}</span><span></span></div>
+      {rows}
+      <p class="hp-diff">{diff_label}: <b class="hp-480" id="diff10">{e480}</b> <span class="hp-sep">·</span> {diff_line}</p>
+    </div>""".format(amt_label=t('amt_label'), per_month=t('per_month'),
+                  amt_html=('€<span id="amtOut">500</span>' if L == 'en' else '<span id="amtOut">500</span>&nbsp;€'),
+                  e50=eur(50, L), e5000=eur(5000, L), col_partner=t('col_partner'), col_fee=t('col_fee'), col_year=t('col_year'),
+                  rows='\n      '.join(rows), diff_label=t('diff_label'), e480=eur(480, L), diff_line=diff_line)
+    diff = ''
 
     dca = '/%s%s/' % (pre, B.GUIDES[L][2]) if L != 'en' else '/bitcoin-dca-calculator/'
     fidx = '/%s%s/' % (pre, B.GUIDES[L][1]) if L != 'en' else '/bitcoin-fee-index/'
 
     logos = ''.join('<img src="%s%s" alt="%s" width="22" height="22" class="%s" loading="lazy">' % (root, p['logo'], p['name'], p['cls']) for p in PARTNERS)
-    trust = '''<div class="trust-strip">
-    <span><b>5</b> {tp}</span><span><b>{zero}</b> {tl}</span><span><b>{eea}</b> {te}</span>
+    trust = '''<div class="trust-strip ts-center">
+    <span class="ts-stats"><span><b>5</b> {tp}</span><span><b>{zero}</b> {tl}</span><span><b>{eea}</b> {te}</span></span>
     <span class="ts-logos">{logos}</span>
   </div>'''.format(tp=t('trust_partners'), zero=pct(0, L), tl=t('trust_lowest'), te=t('trust_eea'), eea=EEA[L], logos=logos)
 
@@ -191,7 +172,8 @@ def build(L):
     brief = '''<section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>{h2a} <span>{h2b}</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue issue-slim" id="briefIssue" data-root="{root}" href="{root}article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote{langq}">
+      <a class="issue" id="briefIssue" data-root="{root}" href="{root}article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote{langq}">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="{img_alt}" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">{latest}</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.{note}</h3>
@@ -217,7 +199,7 @@ def build(L):
       </div>
     </div>
   </section>'''.format(h2a=t('b_h2_a'), h2b=t('b_h2_b'), root=root, langq=('&amp;lang=' + L) if L != 'en' else '', latest=t('b_latest'),
-                       note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), gh=t('b_get_h'), free=t('b_free'), gp=t('b_get_p'),
+                       note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), img_alt=t('b_img_alt'), gh=t('b_get_h'), free=t('b_free'), gp=t('b_get_p'),
                        email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'))
 
     body = '''<body class="page-buy">
@@ -225,25 +207,17 @@ def build(L):
 
 <main class="wrap" id="top">
 
-  <!-- 1. HERO: headline + live comparison of all 5 partners -->
-  <div class="buy-hero">
-    <div class="bh-copy">
-      <div class="eyebrow"><i></i>{eyebrow}</div>
-      <h1>{h1a} <span class="grad">{h1g}</span>{h1b}</h1>
-      <p class="bh-sub">{sub}</p>
-      <p class="bh-lead">{lead}</p>
-      <div class="bh-ctas">
-        <a class="btn btn-orange" href="#partners">{cta}</a>
-        <a class="tlink" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">{plan} {arrow}</a>
-      </div>
-      <p class="alt bh-talk">{talk} <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="{L}">{call}</button>{suffix}.</p>
+  <!-- 1. HERO v2: centered headline + one comparison panel -->
+  <div class="buy-hero2">
+    <div class="eyebrow"><i></i>{eyebrow}</div>
+    <h1>{h1a} {h1g}{h1b} <span class="h1-grey">{sub}</span></h1>
+    {hero_card}
+    <div class="hp-fine">
+      <p>{lead} {src} <a href="{fidx}">{fee_index}</a></p>
+      <p>{earn}</p>
+      <p>{talk} <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="{L}">{call}</button>{suffix}.</p>
     </div>
-    <div class="bh-table">
-      {hero_card}
-      {diff}
-      <p class="src hc-src">{src} <a href="{fidx}">{fee_index}</a></p>
-      <p class="cat-note hc-earn">{earn}</p>
-    </div>
+    <a class="hp-cta" href="#partners">{cta_details} <span aria-hidden="true">↓</span></a>
   </div>
   {trust}
 
@@ -281,7 +255,7 @@ def build(L):
 <script src="{root}concierge-launcher.js" defer></script>
 </body>
 </html>
-'''.format(nav=nav, eyebrow=t('eyebrow'), h1a=t('h1_a'), h1g=t('h1_grad'), h1b=(t('h1_b') if t('h1_b')[:1] in '.!?' else ' ' + t('h1_b')), sub=t('sub'), lead=t('lead'), cta=t('cta'),
+'''.format(nav=nav, eyebrow=t('eyebrow'), h1a=t('h1_a'), h1g=t('h1_grad'), cta_details=t('cta_details'), h1b=(t('h1_b') if t('h1_b')[:1] in '.!?' else ' ' + t('h1_b')), sub=t('sub'), lead=t('lead'), cta=t('cta'),
            plan=t('plan'), arrow=ARROW, talk=t('talk'), L=L, call=t('call'), suffix=call_suffix, cube=CUBE, hero_card=hero_card, diff=diff,
            src=t('src'), fidx=fidx, fee_index=t('fee_index'), earn=t('earn'), trust=trust, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'),
            cards='\n'.join(cards), hh2a=t('h_h2_a'), hh2b=t('h_h2_b'), steps=steps, gh2a=t('g_h2_a'), gh2b=t('g_h2_b'),
