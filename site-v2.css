@@ -1227,3 +1227,6 @@ img.invert { filter: invert(1); }
 .ts-brand:hover img { filter: none; opacity: 1; }
 .ts-brand b { font-size: 16px; font-weight: 600; color: #e6edf3; }
 @media (max-width: 640px) { .ts-brand img { height: 28px; } }
+/* Loans: keep the purple glow behind the details column so the widget card (#141414) sits on a flat panel and its corners don't show */
+.lend-panel::before { left: auto; right: -140px; top: -170px; width: 620px; transform: none; }
+@media (max-width: 860px) { .lend-panel::before { display: none; } }
