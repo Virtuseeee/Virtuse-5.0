@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-10) — Treasury (treasury.html) v2 in 10 languages (PR #63 + follow-up #64, main `b32ec416`; **live on production** — user ran `deploy_site.sh 5683c474 b32ec416`, 12/12 md5-verified on virtuse.com)
+
+- Builder `i18n-tools/treasury/build_treasury.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`), same pattern as mining/lending. Indigo accent (#818cf8). Hero panel compares Coinbase / Sygnum / BitGo (regulator, model, cover or scale, "Typical use" instead of "Best for"); CTA "Book a 15-minute treasury call" = consultation widget; new "Why companies hold Bitcoin" (3 principles, Saylor article card → `stories/michael-saylors-legacy-the-bitcoin-corporate-revolution/` because the story page has the full text in HTML, asset-returns card with Bitcoin's annualized return + rank computed live in `site-v2.js` from `data/asset-returns.json`, raw GitHub first, same-origin fallback, hidden on failure; never hardcode a return). This page alone adds `https://raw.githubusercontent.com` to CSP connect-src and loads `site-v2.css/js?v=4`. `body.no-split` turns off the word-by-word hero H1 animation.
+- Copy: superlatives removed; no "staking" for Sygnum (Bitcoin isn't staked). Partner URLs unchanged, partner buttons carry `btn-primary` (cta).
+- Open: `logo-sygnum.png` is a generic share icon, not Sygnum's logo (replace with the real mark). Cookie banner covers the bottom of the mobile hero on every page (cookie-consent.js, out of scope so far).
+
 ## Session status (2026-10-10) — Mining (mining.html) v2 live in 10 languages (PR Virtuseeee/Virtuse-5.0#61, merge `851a4a1b`; **live on production** — user ran `deploy_site.sh efcdcd90 851a4a1b`, DEPLOY OK; 12/12 md5-verified)
 
 - Built by `i18n-tools/mining/build_mining.py <lang>` (on `v2common.py`) from `mining/<lang>.json` (94 strings). Yellow accent (#f2c94c). Panel with All / Hosting / Home mining filter pills (generic `.seg` + `data-kind` rows, in `site-v2.js`) and a 3-partner table (OneMiners, Abundant Mines, Power Mining; type, locations, key fact). Two how-it-works paths (hosted / home), cards, 3 FAQs, Brief. Removed affiliate stats ($732K to referrers, 10,889 users, Karma tiers), "Top 5 EU ASIC reseller" and "Earn Bitcoin Daily". EN title now "Bitcoin Mining Hosting & Hardware Partners | Virtuse". Referral URLs unchanged.
