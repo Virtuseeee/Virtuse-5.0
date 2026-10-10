@@ -68,12 +68,27 @@
       rows.forEach(function (r) {
         var p = Number(r.dataset.pct);
         r.querySelector('.yr').textContent = eur(m * 12 * p / 100);
-        r.querySelector('.fill').style.width = (p === 0 ? 2 : (p / 0.8) * 100) + '%';
+        var f = r.querySelector('.fill'); if (f) f.style.width = (p === 0 ? 2 : (p / 0.8) * 100) + '%';
       });
       var y = m * 12 * 0.8 / 100;
       set('diffYr', eur(y)); set('saveEnd', eur(y * 10)); set('diffBase', eur(m * 12)); set('diff10', eur(y * 10));
     }
     amt.addEventListener('input', update); update();
+  })();
+
+  // Hero comparison table: "Show all 5" on phones
+  (function () {
+    var b = document.getElementById('hcToggle'); if (!b) return;
+    var box = b.closest('.hcard'), more = b.textContent, less = b.getAttribute('data-less');
+    b.addEventListener('click', function () { var o = box.classList.toggle('show-all'); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? less : more; });
+  })();
+
+  // Partner cards: details open on wide screens, collapsed on phones
+  (function () {
+    var ds = document.querySelectorAll('details.pc-more'); if (!ds.length || !window.matchMedia) return;
+    var mq = window.matchMedia('(max-width: 640px)');
+    function apply() { ds.forEach(function (d) { d.open = !mq.matches; }); }
+    apply(); if (mq.addEventListener) mq.addEventListener('change', apply);
   })();
 
   // Brief: live BTC/EUR sparkline (Binance daily closes, 90 days); hidden if the fetch fails
