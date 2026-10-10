@@ -57,6 +57,7 @@ def build(L):
     head = re.sub(r'<script src="https://cdn\.jsdelivr\.net/npm/animejs[^>]*></script>\s*', '', head)
     head = re.sub(r'<script>if \(!window\.matchMedia\(\'\(prefers-reduced-motion: reduce\)\'\)\.matches\) document\.documentElement\.classList\.add\(\'anim\'\);</script>\s*', '', head)
     head = re.sub(r'<meta name="vb-cfo-stage"[^>]*>\s*', '', head)
+    head = re.sub(r'<script>window\.VB_I18N = .*?</script>\s*', '', head)
     head = re.sub(r'<meta http-equiv="Content-Security-Policy" content="[^"]*">',
                   lambda m: re.search(r'<meta http-equiv="Content-Security-Policy" content="[^"]*">', home).group(0), head)
     root = '' if L == 'en' else '../'
@@ -105,7 +106,7 @@ def build(L):
             fee = '<span class="hc-fee">%s</span>' % pct(p['pct'], L)
             yr = '<span class="yr">%s</span>' % eur(500 * 12 * p['pct'] / 100, L)
             data = ' data-pct="%g"' % p['pct']
-        rows.append('<div class="row hp-row"%s><span class="hc-name"><img src="%s%s" alt="" width="36" height="36" class="%s" loading="lazy"><span><b>%s %s</b><small>%s</small></span></span>%s%s<a class="hp-get" href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s">%s %s</a></div>'
+        rows.append('<div class="row hp-row"%s><span class="hc-name"><img src="%s%s" alt="" width="36" height="36" class="%s" loading="lazy"><span><b>%s %s</b><small>%s</small></span></span>%s%s<a class="hp-get btn-primary" href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s">%s %s</a></div>'
                     % (data, root, p['logo'], p['cls'], p['name'], pill, t('pr_%s_product' % pid), fee, yr, p['url'], t('pr_%s_get' % pid), t('get'), ARROW))
     diff_line = t('diff_line')
     for a_, b_ in (('€48', eur(48, L)), ('€6,000', eur(6000, L))):
@@ -148,7 +149,7 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">{get} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{get} {out}</a></div>
       </article>'''.format(pid=pid, na='' if p['pct'] is not None else ' na', badge=badge, root=root, logo=p['logo'], name=p['name'], cls=p['cls'],
                            lic=t('pr_%s_lic' % pid), details=t('details'), body=t('pr_%s_body' % pid), feats=feats, url=p['url'],
                            get=t('pr_%s_get' % pid), out=OUT))

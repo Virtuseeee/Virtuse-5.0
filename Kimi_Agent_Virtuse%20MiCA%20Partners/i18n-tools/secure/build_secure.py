@@ -40,7 +40,7 @@ def build(L):
         usd = '<small class="cur-note">%s</small>' % t('usd_note') if d['cur'] == 'USD' else ''
         rows.append('<div class="row sp-row"><span class="hc-name"><img src="{root}{logo}" alt="" width="36" height="36" class="{cls}" loading="lazy"><span><b>{dev} {pill}</b><small>{feat}</small></span></span>'
                     '<span class="sp-made">{made}</span><span class="sp-open">{open}</span><span class="sp-feat">{feat}</span>'
-                    '<span class="sp-price">{p}{usd}</span><a class="hp-get" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{getl}">{get} {arrow}</a></div>'.format(
+                    '<span class="sp-price">{p}{usd}</span><a class="hp-get btn-primary" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{getl}">{get} {arrow}</a></div>'.format(
                         root=root, logo=d['logo'], cls=d['cls'], dev=t('pr_%s_device' % i), pill=pill, feat=t('pr_%s_feature' % i),
                         made=t('pr_%s_made' % i), open=t('yes') if d['open'] else t('not_stated'), p=p, usd=usd, url=d['url'],
                         getl=t('pr_%s_get' % i), get=t('get'), arrow=C.ARROW))
@@ -67,7 +67,7 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">{get} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{get} {out}</a></div>
       </article>'''.format(i=i, badge=badge, root=root, logo=d['logo'], cls=d['cls'], dev=t('pr_%s_device' % i), made=t('pr_%s_made' % i),
                            details=t('details'), body=t('pr_%s_body' % i), feats=feats, url=d['url'], get=t('pr_%s_get' % i), out=C.OUT))
 
