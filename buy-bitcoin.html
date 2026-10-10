@@ -52,12 +52,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Buy Bitcoin in Europe: Compare MiCA Fees | Virtuse">
 <meta name="twitter:description" content="Compare MiCA CASPs: 21bitcoin Auto-Invest at 0% fees, ByBit EU spot from 0.25%, Kraken Pro from 0.8%. Virtuse never holds funds.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="vb-cfo-stage" content="wait">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="site-v2.css?v=1">
-<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script type="application/ld+json" id="virtuse-ld">
 {
   "@context": "https://schema.org",
@@ -78,8 +72,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site-v2.css?v=2">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 </head>
-<body>
+<body class="page-buy">
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="index.html" aria-label="Virtuse home">
@@ -112,132 +112,135 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <main class="wrap" id="top">
 
-  <!-- 1. HERO -->
-  <div class="cat-hero">
-    <div>
+  <!-- 1. HERO: headline + live comparison of all 5 partners -->
+  <div class="buy-hero">
+    <div class="bh-copy">
       <div class="eyebrow"><i></i>Buy Bitcoin · 5 partners · MiCA-licensed</div>
-      <h1>Buy Bitcoin through <span class="grad" style="white-space:nowrap">MiCA-licensed</span> partners. <span class="sub">Published fees, side by side.</span></h1>
-      <p class="lead">Virtuse compares Bitcoin buying services from EU crypto-asset service providers (CASPs) licensed under MiCA. We never hold your funds or keys: you buy directly on the partner's regulated platform. Some partners pay us a referral fee when you sign up, at no extra cost to you.</p>
-      <ul class="cat-stats">
-        <li><b>5</b><span>Partners</span></li>
-        <li><b>0%</b><span>Lowest published fee</span></li>
-        <li><b>EEA</b><span>MiCA passport</span></li>
-      </ul>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#partners">Compare the partners</a>
-        <a class="btn btn-ghost" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">Plan my stack</a>
+      <h1>Buy Bitcoin through <span class="grad">MiCA&#8209;licensed</span> partners.</h1>
+      <p class="bh-sub">Published fees, side by side.</p>
+      <p class="bh-lead">Compare five EU-licensed platforms by published fee, then buy directly on the partner's platform. Virtuse never holds your funds or keys.</p>
+      <div class="bh-ctas">
+        <a class="btn btn-orange" href="#partners">Compare all 5 partners</a>
+        <a class="tlink" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">Plan my stack <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <p class="alt">Prefer to talk? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="en">Book a free 15-minute call</button>.</p>
+      <p class="alt bh-talk">Prefer to talk? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="en">Book a free 15-minute call</button>.</p>
     </div>
-    <div class="cat-visual" aria-hidden="true" style="--c: var(--orange)"><div class="cube-stage var-purpose"><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
-  </div>
-
-  <!-- 2. FEES -->
-  <section id="buy">
-    <div class="feature">
-      <div>
-        <span class="k">Fee calculator</span>
-        <h2>What each route costs you. <span>Move the slider to see your yearly fee.</span></h2>
-        <p class="lead">Three EU-licensed routes, sorted by published fee.</p>
-        <div class="slider-box">
+    <div class="bh-table">
+      <div class="hcard" id="feeRows">
+        <div class="hc-slider">
           <label for="amt">You buy every month</label>
           <div class="amount">€<span id="amtOut">500</span> <small>/ month</small></div>
           <input type="range" id="amt" min="50" max="5000" step="50" value="500">
           <div class="range-ends"><span>€50</span><span>€5,000</span></div>
         </div>
-        <div class="hero-ctas" style="margin-top:24px">
-          <a class="btn btn-primary" href="stacking.html?utm_source=stacking&amp;utm_medium=widget">Plan my stack</a>
-          <a class="btn btn-ghost" href="/bitcoin-fee-index/">Fee Index</a>
-        </div>
+        <div class="row head hc-row"><span>Partner</span><span>Fee</span><span class="yr">Per year</span><span></span></div>
+        <div class="row hc-row best" data-pct="0"><span class="hc-name"><img src="logo-21bitcoin-app.png" alt="" width="28" height="28" class="" loading="lazy"><span><b>21bitcoin</b><small>Auto-Invest, from day 8</small></span></span><span class="hc-fee">0%</span><span class="yr">€0</span><a class="hc-get" href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Get 21bitcoin">Get <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="row hc-row" data-pct="0.25"><span class="hc-name"><img src="logo-bybit.png" alt="" width="28" height="28" class="dark" loading="lazy"><span><b>ByBit EU</b><small>Spot, taker fee</small></span></span><span class="hc-fee">0.25%</span><span class="yr">€15</span><a class="hc-get" href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" aria-label="Get ByBit EU">Get <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="row hc-row" data-pct="0.8"><span class="hc-name"><img src="logo-kraken.png" alt="" width="28" height="28" class="cover" loading="lazy"><span><b>Kraken</b><small>Pro, tier 1 taker fee</small></span></span><span class="hc-fee">0.8%</span><span class="yr">€48</span><a class="hc-get" href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" aria-label="Get Kraken">Get <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="row hc-row hc-more"><span class="hc-name"><img src="logo-invity.svg" alt="" width="28" height="28" class="pad" loading="lazy"><span><b>Invity</b><small>Auto Buy app</small></span></span><span class="hc-fee na">On partner site</span><span class="yr na">–</span><a class="hc-get" href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" aria-label="Get Invity">Get <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="row hc-row hc-more"><span class="hc-name"><img src="logo-crypto-com.png" alt="" width="28" height="28" class="" loading="lazy"><span><b>Crypto.com</b><small>App and Visa Card</small></span></span><span class="hc-fee na">On partner site</span><span class="yr na">–</span><a class="hc-get" href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" aria-label="Get Crypto.com">Get <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <button type="button" class="hc-toggle" id="hcToggle" aria-expanded="false" data-less="Show top 3">Show all 5</button>
+        <p class="hc-lowest"><i></i>Lowest published fee</p>
       </div>
-<div class="panel">
-        <div class="rows" id="feeRows">
-          <div class="row head"><span>Top 3 by fee</span><span>Fee</span><span class="bar"></span><span style="text-align:right">Per year</span></div>
-          <div class="row" data-pct="0"><span><b>21bitcoin</b><small>Auto-Invest, from day 8</small></span><span class="pct">0%</span><span class="bar"><div class="track"><div class="fill low"></div></div></span><span class="yr">€0</span></div>
-          <div class="row" data-pct="0.25"><span><b>ByBit EU</b><small>Spot, taker fee</small></span><span class="pct">0.25%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">€15</span></div>
-          <div class="row" data-pct="0.8"><span><b>Kraken</b><small>Pro, tier 1 taker fee</small></span><span class="pct">0.8%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">€48</span></div>
+      <div class="diff hc-diff">
+        <div class="diff-txt">
+          <span>Difference between the highest and lowest published fee, over 10 years</span>
+          <b class="diff-big" id="diff10">€480</b>
+          <em><b id="diffYr">€48</b> a year on <b id="diffBase">€6,000</b> of buys a year.</em>
         </div>
-        <div class="diff">
-          <div class="diff-txt">
-            <span>Difference between the highest and lowest published fee, over 10 years</span>
-            <b class="diff-big" id="diff10">€480</b>
-            <em><b id="diffYr">€48</b> a year on <b id="diffBase">€6,000</b> of buys a year.</em>
-          </div>
-          <svg class="save-chart" viewBox="0 0 220 96" aria-hidden="true">
-            <defs><linearGradient id="saveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".45"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs>
-            <path d="M8 80 L200 12 L200 80 Z" fill="url(#saveFill)"/>
-            <path d="M8 80 L200 12" stroke="#f7931a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-            <path d="M8 80 L200 58.75" stroke="#f2c94c" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
-            <path d="M8 80 L200 80" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <circle cx="200" cy="12" r="3.5" fill="#f7931a"/>
-            <text x="8" y="94">year 0</text><text x="200" y="94" text-anchor="end">year 10</text>
-            <text x="194" y="8" text-anchor="end" id="saveEnd">€480</text>
-          </svg>
-        </div>
-        <p class="src">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href="/bitcoin-fee-index/">Full Fee Index</a></p>
+        <svg class="save-chart" viewBox="0 0 220 96" aria-hidden="true">
+          <defs><linearGradient id="saveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".45"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs>
+          <path d="M8 80 L200 12 L200 80 Z" fill="url(#saveFill)"/>
+          <path d="M8 80 L200 12" stroke="#f7931a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M8 80 L200 58.75" stroke="#f2c94c" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
+          <path d="M8 80 L200 80" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="200" cy="12" r="3.5" fill="#f7931a"/>
+          <text x="8" y="94">year 0</text><text x="200" y="94" text-anchor="end">year 10</text>
+          <text x="194" y="8" text-anchor="end" id="saveEnd">€480</text>
+        </svg>
       </div>
+      <p class="src hc-src">Fees as published by each partner, Q4 2026: taker fee for a plain market buy. 21bitcoin charges its regular fee for the first 7 days of a plan. Invity and Crypto.com publish their fees on their own sites. Spreads and withdrawal fees not included. <a href="/bitcoin-fee-index/">Full Fee Index</a></p>
+      <p class="cat-note hc-earn"><b>What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.</p>
     </div>
-  </section>
+  </div>
+  <div class="trust-strip">
+    <span><b>5</b> partners</span><span><b>0%</b> lowest published fee</span><span><b>EEA</b> MiCA passport</span>
+    <span class="ts-logos"><img src="logo-21bitcoin-app.png" alt="21bitcoin" width="22" height="22" class="" loading="lazy"><img src="logo-bybit.png" alt="ByBit EU" width="22" height="22" class="dark" loading="lazy"><img src="logo-kraken.png" alt="Kraken" width="22" height="22" class="cover" loading="lazy"><img src="logo-invity.svg" alt="Invity" width="22" height="22" class="pad" loading="lazy"><img src="logo-crypto-com.png" alt="Crypto.com" width="22" height="22" class="" loading="lazy"></span>
+  </div>
 
-  <!-- 3. PARTNERS -->
+  <!-- 2. PARTNERS -->
   <section id="partners">
-    <div class="sec-head one">
-      <div class="sec-copy"><h2>Our partners. <span>Bitcoin-only or Bitcoin-friendly platforms, licensed under EU MiCA.</span></h2></div>
-    </div>
-    <div class="pgrid">
-      <article class="pcard2">
-        <div class="pc-head"><img src="logo-21bitcoin-app.png" alt="21bitcoin" width="48" height="48" loading="lazy"><div><h3>21bitcoin</h3><div class="pc-lic">Germany / Austria (FMA MiCAR)</div></div></div>
-        <p>The <strong>leading European Bitcoin-only app</strong> regulated by the Austrian FMA under MiCAR. 100,000+ users across Europe with insured Bitcoin custody. Auto-Invest savings plan with 0% fees. Bank transfer and card supported.</p>
-        <ul class="pc-feats"><li>FMA Austria MiCAR licensed</li><li>100,000+ European users</li><li>Insured Bitcoin custody</li><li>Auto-Invest with 0% fees</li></ul>
-        <div class="pc-cta"><a href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get 21bitcoin <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="sec-head one"><div class="sec-copy"><h2>All 5 partners. <span>Sorted by published fee, same as the table above.</span></h2></div></div>
+    <div class="pgrid pgrid3">
+      <article class="pcard2" id="p-21bitcoin">
+        <span class="pc-badge">0%</span>
+        <div class="pc-head"><img src="logo-21bitcoin-app.png" alt="21bitcoin" class="" width="48" height="48" loading="lazy"><div><h3>21bitcoin</h3><div class="pc-lic">Austria · FMA MiCAR</div></div></div>
+        <details class="pc-more" open><summary>Details</summary>
+          <p>Bitcoin-only app regulated by the Austrian FMA under MiCAR, with insured Bitcoin custody. Auto-Invest savings plan with 0% fees from day 8. Bank transfer and card supported.</p>
+          <ul class="pc-feats"><li>FMA Austria MiCAR licence</li><li>100,000+ European users</li><li>Insured Bitcoin custody</li><li>Bank transfer and card</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://21bitcoin.app.link/invite/?code=VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Get 21bitcoin <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </article>
-      <article class="pcard2">
-        <div class="pc-head"><img src="logo-kraken.png" alt="Kraken" width="48" height="48" loading="lazy"><div><h3>Kraken</h3><div class="pc-lic">Ireland (Central Bank of Ireland, MiCA)</div></div></div>
-        <p><strong>One of the world's longest-running Bitcoin exchanges</strong> — founded in 2011, MiCA CASP licensed via the Central Bank of Ireland and passported across the EEA. An industry-leading security track record and deep euro liquidity.</p>
-        <ul class="pc-feats"><li>MiCA licensed via Central Bank of Ireland</li><li>Founded 2011 — veteran security record</li><li>Pro trading fees from 0.8%</li><li>Deep EUR liquidity and instant buy</li></ul>
-        <div class="pc-cta"><a href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Kraken <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Compare Fees</a></div>
+      <article class="pcard2" id="p-bybit">
+        <span class="pc-badge">0.25%</span>
+        <div class="pc-head"><img src="logo-bybit.png" alt="ByBit EU" class="dark" width="48" height="48" loading="lazy"><div><h3>ByBit EU</h3><div class="pc-lic">Austria · FMA MiCAR</div></div></div>
+        <details class="pc-more" open><summary>Details</summary>
+          <p>Bybit EU GmbH is MiCAR-licensed by the Austrian FMA, based in Vienna and serves the whole EEA. Spot taker fee 0.25%, maker fee 0.1%.</p>
+          <ul class="pc-feats"><li>FMA Austria MiCAR licence</li><li>Based in Vienna, serves the EEA</li><li>Spot taker fee 0.25%</li><li>Web and mobile app</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Get ByBit EU <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </article>
-      <article class="pcard2">
-        <div class="pc-head"><img src="logo-bybit.png" alt="ByBit EU" class="dark" width="48" height="48" loading="lazy"><div><h3>ByBit EU</h3><div class="pc-lic">Austria (FMA MiCAR)</div></div></div>
-        <p><strong>The EU arm of one of the world's largest exchanges</strong> — Bybit EU GmbH is MiCAR-licensed by the Austrian FMA and headquartered in Vienna, serving the entire EEA. Deep liquidity, low spot fees, and a full-featured app.</p>
-        <ul class="pc-feats"><li>FMA Austria MiCAR licensed</li><li>EU headquarters in Vienna</li><li>Top-3 global exchange by volume</li><li>Spot trading fees from 0.25%</li></ul>
-        <div class="pc-cta"><a href="https://partner.bybit.eu/b/VIRTUSE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get ByBit EU <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <article class="pcard2" id="p-kraken">
+        <span class="pc-badge">0.8%</span>
+        <div class="pc-head"><img src="logo-kraken.png" alt="Kraken" class="cover" width="48" height="48" loading="lazy"><div><h3>Kraken</h3><div class="pc-lic">Ireland · Central Bank of Ireland, MiCA</div></div></div>
+        <details class="pc-more" open><summary>Details</summary>
+          <p>Bitcoin exchange founded in 2011, MiCA CASP licensed via the Central Bank of Ireland and passported across the EEA. Kraken Pro taker fee 0.8% at the entry tier.</p>
+          <ul class="pc-feats"><li>MiCA licence via the Central Bank of Ireland</li><li>Founded in 2011</li><li>Pro taker fee 0.8% (entry tier)</li><li>EUR deposits and instant buy</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://proinvite.kraken.com/9f1e/lj72d37e" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Get Kraken <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </article>
-      <article class="pcard2">
-        <div class="pc-head"><img src="logo-invity.svg" alt="Invity" class="pad" width="48" height="48" loading="lazy"><div><h3>Invity</h3><div class="pc-lic">Czechia (Czech National Bank)</div></div></div>
-        <p><strong>A Bitcoin-only app from the SatoshiLabs group</strong>, the makers of Trezor. Buy once or automatically with Auto Buy. Invity holds your Bitcoin with the custodian BitGo until you withdraw it to your own wallet, which you can do at any time.</p>
-        <ul class="pc-feats"><li>Licensed by the Czech National Bank (CASP under MiCA)</li><li>Bitcoin only, no altcoins</li><li>Auto Buy for regular purchases</li><li>Withdraw or Auto Send to your own wallet at any time</li></ul>
-        <div class="pc-cta"><a href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Invity <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <article class="pcard2" id="p-invity">
+        <span class="pc-badge na">Fee on site</span>
+        <div class="pc-head"><img src="logo-invity.svg" alt="Invity" class="pad" width="48" height="48" loading="lazy"><div><h3>Invity</h3><div class="pc-lic">Czechia · Czech National Bank</div></div></div>
+        <details class="pc-more" open><summary>Details</summary>
+          <p>Bitcoin-only app from the SatoshiLabs group, the makers of Trezor. Buy once or automatically with Auto Buy. Invity holds your Bitcoin with the custodian BitGo until you withdraw it to your own wallet, which you can do at any time.</p>
+          <ul class="pc-feats"><li>Licensed by the Czech National Bank</li><li>Bitcoin only</li><li>Auto Buy for recurring purchases</li><li>BitGo custody until you withdraw</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://invity.onelink.me/yIY4/j44d7awx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Get Invity <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </article>
-      <article class="pcard2">
-        <div class="pc-head"><img src="logo-crypto-com.png" alt="Crypto.com" width="48" height="48" loading="lazy"><div><h3>Crypto.com</h3><div class="pc-lic">Malta (MFSA MiCA CASP)</div></div></div>
-        <p><strong>One of the world's largest crypto platforms</strong>, MiCA CASP licensed via Malta's MFSA (Foris DAX MT Limited) with full EEA passporting rights. Deep liquidity, a full-featured app, and the Crypto.com Visa Card for spending straight from your balance.</p>
-        <ul class="pc-feats"><li>MFSA Malta MiCA CASP licensed</li><li>Full EEA passporting rights</li><li>Crypto.com Visa Card supported</li><li>Deep liquidity, EU-regulated app</li></ul>
-        <div class="pc-cta"><a href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Crypto.com <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <article class="pcard2" id="p-cryptocom">
+        <span class="pc-badge na">Fee on site</span>
+        <div class="pc-head"><img src="logo-crypto-com.png" alt="Crypto.com" class="" width="48" height="48" loading="lazy"><div><h3>Crypto.com</h3><div class="pc-lic">Malta · MFSA MiCA CASP</div></div></div>
+        <details class="pc-more" open><summary>Details</summary>
+          <p>Foris DAX MT Limited is MiCA CASP licensed by Malta's MFSA with EEA passporting. App with the Crypto.com Visa Card for spending from your balance.</p>
+          <ul class="pc-feats"><li>MFSA Malta MiCA licence</li><li>EEA passporting</li><li>Crypto.com Visa Card</li><li>Web and mobile app</li></ul>
+        </details>
+        <div class="pc-cta"><a href="https://cryptocom.sjv.io/gRVPor" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Get Crypto.com <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </article>
+      <a class="pcard2 pc-finder" href="concierge.html?utm_source=concierge&amp;utm_medium=buy_grid">
+        <h3>Not sure which one fits?</h3><p>Answer five questions and see which partners match your criteria. It takes about 60 seconds.</p><span class="pc-finder-cta">Find partners in 60 seconds <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
     </div>
     <p class="cat-note"><b>What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.</p>
   </section>
 
-  <!-- 4. HOW IT WORKS -->
+  <!-- 3. HOW IT WORKS -->
   <section id="how">
-    <div class="sec-head one">
-      <div class="sec-copy"><h2>How it works. <span>Four simple steps to buy Bitcoin through a licensed partner.</span></h2></div>
-    </div>
-    <div class="how-log">
+    <div class="sec-head one"><div class="sec-copy"><h2>How it works. <span>Four simple steps to buy Bitcoin through a licensed partner.</span></h2></div></div>
+    <div class="how-log how-log-4">
       <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
           <span class="how-log-num">Step 01</span>
-          <h3>Choose a Partner</h3>
-          <p>Browse our vetted MiCA-licensed CASPs below. Compare fees, features, and jurisdictions.</p>
+          <h3>Choose a partner</h3>
+          <p>Compare the partners above: fees, licences and features.</p>
         </div>
       </div>
       <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
           <span class="how-log-num">Step 02</span>
-          <h3>Go to the Platform</h3>
+          <h3>Go to the platform</h3>
           <p>Your referral link takes you directly to the partner's site. Virtuse never sits in between.</p>
         </div>
       </div>
@@ -245,50 +248,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
           <span class="how-log-num">Step 03</span>
-          <h3>Complete KYC There</h3>
-          <p>All identity verification, onboarding, and compliance happen on the licensed CASP's platform.</p>
+          <h3>Complete KYC there</h3>
+          <p>All identity verification, onboarding and compliance happen on the licensed partner's platform.</p>
         </div>
       </div>
       <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
           <span class="how-log-num">Step 04</span>
-          <h3>Buy &amp; Self-Custody</h3>
-          <p>Purchase Bitcoin and withdraw to your own wallet. You control your keys at all times.</p>
+          <h3>Buy and self-custody</h3>
+          <p>Buy Bitcoin and withdraw it to your own wallet. You control your keys at all times.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. GUIDES -->
+  <!-- 4. COUNTRY GUIDES -->
   <section id="guides">
-    <div class="sec-head one">
-      <div class="sec-copy"><h2>Fee ranking by country. <span>Compare every partner's fees for your amount before you pick one.</span></h2></div>
-    </div>
-    <div class="guide-links"><a href="/buy-bitcoin/slovakia/"><b>Buy in Slovakia</b><span>Partners, fees and tax notes</span></a><a href="/buy-bitcoin/czechia/"><b>Buy in Czechia</b><span>Partners, fees and tax notes</span></a><a href="/buy-bitcoin/germany/"><b>Buy in Germany</b><span>Partners, fees and tax notes</span></a><a href="/bitcoin-dca-calculator/"><b>DCA calculator</b><span>What a monthly plan costs</span></a><a href="/bitcoin-fee-index/"><b>Fee Index</b><span>Every published fee, quarterly</span></a></div>
+    <div class="sec-head one"><div class="sec-copy"><h2>Country guides. <span>Partners, fees and tax notes for your country.</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/buy-bitcoin/slovakia/"><span class="gflag" aria-hidden="true">&#127480;&#127472;</span><b>Buy in Slovakia</b><span>Partners, fees and tax notes</span></a><a class="gcard" href="/buy-bitcoin/czechia/"><span class="gflag" aria-hidden="true">&#127464;&#127487;</span><b>Buy in Czechia</b><span>Partners, fees and tax notes</span></a><a class="gcard" href="/buy-bitcoin/germany/"><span class="gflag" aria-hidden="true">&#127465;&#127466;</span><b>Buy in Germany</b><span>Partners, fees and tax notes</span></a></div>
+    <p class="tools-line">Fee tools: <a href="/bitcoin-dca-calculator/">DCA calculator</a> · <a href="/bitcoin-fee-index/">Fee Index</a></p>
   </section>
 
-  <!-- 6. BRIEF -->
+  <!-- 5. BRIEF -->
   <section id="brief">
-    <div class="sec-head one">
-      <div class="sec-copy">
-        <h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2>
-      </div>
-    </div>
-    <div class="brief">
-      <a class="issue" id="briefIssue" href="article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote">
-        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Cover image: Bitcoin Beat the War. November Still Gets a Vote." loading="lazy" onerror="this.remove()">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue issue-slim" id="briefIssue" data-root="" href="article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote">
         <div class="issue-body">
-          <span class="k" id="briefMeta">Latest Brief · 5 Oct 2026 · 3 min</span>
+          <span class="k" id="briefMeta">Latest Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
-          <p id="briefExcerpt">Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.</p>
+          <p id="briefExcerpt"></p>
           <span class="more">Read the issue →</span>
         </div>
       </a>
       <div class="signup">
         <div class="btc-spark" id="btcSpark" hidden>
-          <div class="btc-top"><span>BTC / EUR · 90 days</span><b id="btcLast"></b><em id="btcChg"></em></div>
-          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
         </div>
         <h3>Get the Brief. <span>Free.</span></h3>
         <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p>
@@ -296,7 +293,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <label for="email" style="position:absolute;left:-9999px">Email address</label>
           <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-primary" type="submit">Get the Brief</button>
+          <button class="btn btn-ghost" type="submit">Get the Brief</button>
         </form>
         <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
         <div class="fine">Unsubscribe anytime. Not advice. <a href="news.html?utm_source=brief&amp;utm_medium=buy" style="color:var(--muted)">All issues and the blog →</a></div>
@@ -322,7 +319,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </footer>
 </main>
 
-<script src="site-v2.js?v=1" defer></script>
+<script src="site-v2.js?v=2" defer></script>
 <script src="consultation-widget.js?v=20261007b" defer></script>
 <script src="concierge-launcher.js" defer></script>
 </body>
