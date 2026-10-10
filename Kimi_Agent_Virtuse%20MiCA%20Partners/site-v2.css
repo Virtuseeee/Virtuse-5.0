@@ -1282,3 +1282,6 @@ img.clear { background: transparent !important; }
   .mp-row .hp-get svg { width: 15px; height: 15px; }
   .mp-path { padding: 20px; }
 }
+/* v2 partner buttons carry .btn-primary so partner-click logs them as link_type "cta"; keep the outline look */
+.btn-ghost.btn-primary, .hp-get.btn-primary { background: transparent; color: var(--text); }
+.btn-ghost.btn-primary:hover, .hp-get.btn-primary:hover { background: rgba(255,255,255,.05); }

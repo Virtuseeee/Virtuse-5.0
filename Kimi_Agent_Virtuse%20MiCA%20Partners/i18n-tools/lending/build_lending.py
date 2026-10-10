@@ -55,7 +55,7 @@ def build(L):
     ways = ''.join('''      <article class="pcard2 purple way-card">
         <h3>{tt}</h3>
         <p>{pp}</p>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
       </article>
 '''.format(tt=t('w_%s_t' % w), pp=t('w_%s_p' % w), url=SIGNUP, cta=t('w_%s_cta' % w), out=C.OUT) for w in ('b', 'i'))
 
