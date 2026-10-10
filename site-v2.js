@@ -83,6 +83,19 @@
     b.addEventListener('click', function () { var o = box.classList.toggle('show-all'); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? less : more; });
   })();
 
+  // Segmented filter pills in a comparison panel (rows carry data-kind)
+  (function () {
+    document.querySelectorAll('.seg').forEach(function (seg) {
+      var panel = seg.closest('.hpanel'); if (!panel) return;
+      var btns = seg.querySelectorAll('[data-filter]');
+      btns.forEach(function (b) { b.addEventListener('click', function () {
+        var f = b.getAttribute('data-filter');
+        btns.forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+        panel.querySelectorAll('.row[data-kind]').forEach(function (r) { r.hidden = f !== 'all' && r.getAttribute('data-kind') !== f; });
+      }); });
+    });
+  })();
+
   // Partner cards: details open on wide screens, collapsed on phones
   (function () {
     var ds = document.querySelectorAll('details.pc-more'); if (!ds.length || !window.matchMedia) return;
