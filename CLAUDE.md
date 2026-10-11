@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-11) — Bots (bots.html) v2 + desktop cookie corner card (PR #67 + #68, main `53e0949d`; **live on production** — user ran `deploy_site.sh 2e8a4a29 53e0949d`, 13/13 md5-verified on virtuse.com). All service pages are now v2.
+
+- Bots: builder `i18n-tools/bots/build_bots.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`, `UPDATE.md`), pink accent, DCA first. Panel filter All / DCA / Advanced rules; `site-v2.js` filter now accepts several kinds per row (`data-kind="dca rules"`).
+- Facts (verified against partners' sites per the handover): Cryptohopper 3-day free trial; RevenueBot "Binance, Bybit, OKX and more"; Coinrule kept (Ras, 2026-10-11) with an availability note "not available in some countries (e.g. France)", and without the 410,000+ / Y Combinator / 150+ claims (the builder also strips "(410,000+ …)" from the old meta description). No trial column.
+- Custody wording: the bot never holds funds; the exchange holds coins and keys; trade-only key without withdrawals, kept secret and IP-limited; BTC pairs only. FAQ links secure.html for self-custody.
+- Coinrule's referral link redirects to `not-available.coinrule.fr` from a French IP. RevenueBot's ref sets a 1-year `_ref_uuid` cookie; attribution can only be confirmed in their dashboard.
+- Cookie banner: from 1024 px it is a 420 px card at the bottom-left (CSS string in `cookie-consent.js`; consent logic untouched). At 1440 px it still overlaps the left ~196 px of centered content; there is no overlap from about 1912 px. Phones keep the compact sheet from site-v2.css.
+
 ## Session status (2026-10-11) — Tax (tax.html) v2 + service-pages polish, 10 languages (PR #65 + #66, main `a2b23545`; **live on production** — user ran `deploy_site.sh 9b3f79e4 a2b23545`, 62/62 md5-verified on virtuse.com)
 
 - Tax: builder `i18n-tools/tax/build_tax.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`), blue accent. One hero panel: country pills linking the seo-build guides in the page language (slugs/names from `seo-build/data/meta.json`; own country highlighted, Hungary added on hu) + the 4 reporting tools compared (price as published, free tier, countries, "Typical use"). KYC/DeFi columns and the superlatives are gone.
