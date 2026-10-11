@@ -1510,3 +1510,11 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
   .bt-row .hp-get svg { width: 15px; height: 15px; }
   .page-bots .how-log-item:first-child .how-log-dot { box-shadow: 0 0 10px 2px rgba(244,114,182,.55); }
 }
+/* bots polish (handover 2026-10-11c): no trial column, availability note, readable disclosure */
+.bt-row { grid-template-columns: minmax(150px, 1.1fr) 1.4fr 1.5fr 1.3fr 100px; }
+.bt-avail { display: block; margin-top: 4px; font-style: normal; font-size: 12px; line-height: 1.35; color: #c9a14a; }
+.pc-avail { margin: 0; padding: 10px 12px; border-radius: 10px; background: rgba(242,201,76,.07); border: 1px solid rgba(242,201,76,.22); font-size: 13px; color: #d8c48a; }
+.page-bots .tx-fine { max-width: 860px; font-size: 14px; line-height: 1.55; color: #a3abb4; }
+@media (max-width: 1100px) { .bt-row { grid-template-columns: minmax(150px, 1.2fr) 1.4fr 1.6fr 100px; } }
+@media (max-width: 860px) { .bt-row { grid-template-columns: minmax(150px, 1.3fr) 1.5fr 100px; } }
+@media (max-width: 640px) { .bt-row { grid-template-columns: minmax(0, 1fr) auto; } }
