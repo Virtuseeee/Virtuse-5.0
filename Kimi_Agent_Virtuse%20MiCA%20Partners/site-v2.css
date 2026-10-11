@@ -1463,3 +1463,58 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
 .page-mine .ts-logos img.invert { filter: grayscale(1) invert(1) brightness(1.2); }
 .page-buy .ts-logos img:hover { filter: none; }
 .page-buy .ts-logos img.invert:hover { filter: invert(1); }
+
+/* ===== BOTS PAGE v2 (bots.html, handover 2026-10-11b): pink accent, DCA first, filter pills ===== */
+.eyebrow.pink i { background: var(--pink); box-shadow: 0 0 0 4px rgba(244,114,182,.15); }
+.hpanel.pink::before { background: radial-gradient(closest-side, rgba(244,114,182,.10), transparent); }
+.pcard2.pink { --c: var(--pink); }
+.bt-panel { border-radius: 24px; padding: 22px 36px 16px; text-align: left; }
+.bt-panel .seg { margin-bottom: 14px; }
+.bt-row { display: grid; grid-template-columns: minmax(150px, 1.1fr) 1.5fr 1.25fr 0.9fr 1.2fr 100px; gap: 16px; align-items: center; min-height: 64px; padding: 10px 4px; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 0; font-size: 14px; }
+.bt-row[hidden] { display: none; }
+.bt-row.head { min-height: 0; padding: 0 4px 10px; border-top: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.bt-row .hc-name img { width: 36px; height: 36px; border-radius: 9px; }
+.bt-row .hc-name b { font-size: 16px; font-weight: 600; white-space: nowrap; }
+.bt-row .hc-name small { display: none; }
+.bt-types, .bt-ex, .bt-use { color: var(--muted); }
+.bt-row:not(.head) .bt-trial { color: var(--text); font-weight: 600; }
+.page-bots .hc-name img, .page-bots .pc-head img, .bt-logos img { background: transparent; }
+.page-bots .ts-logos img { filter: grayscale(1) brightness(1.8); }
+.page-bots .ts-logos img:hover { filter: none; }
+.page-bots .hp-cta { margin-top: 28px; }
+.bt-stack { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.bt-stack:hover { color: var(--text); }
+.bt-stack svg { width: 13px; height: 13px; }
+.page-bots .how-log-item:first-child .how-log-dot, .page-bots .how-log-item:first-child .how-log-dot::before { background: var(--pink); }
+.page-bots .how-log-body p { color: #8b949e; }
+.page-bots .qa details { max-width: none; }
+.page-bots .qa details a { color: var(--text); }
+@media (min-width: 961px) {
+  .page-bots .buy-hero2 { padding-top: 40px; }
+  .page-bots .buy-hero2 h1 { margin-top: 14px; }
+  .page-bots .sp-lead { margin-top: 12px; }
+  .page-bots .hpanel { margin-top: 24px; }
+}
+@media (max-width: 1100px) { .bt-row { grid-template-columns: minmax(150px, 1.2fr) 1.5fr 1.3fr 0.9fr 100px; } .bt-row .bt-use { display: none; } }
+@media (max-width: 860px) { .bt-row { grid-template-columns: minmax(150px, 1.3fr) 1.5fr 1fr 100px; } .bt-row .bt-ex { display: none; } }
+@media (max-width: 640px) {
+  .page-bots .buy-hero2 { padding-top: 28px; }
+  .bt-panel { padding: 14px 14px 8px; border-radius: 18px; }
+  .bt-panel .seg { margin-bottom: 6px; }
+  .bt-row.head { display: none; }
+  .bt-row.head + .bt-row { border-top: 0; }
+  .bt-row { grid-template-columns: minmax(0, 1fr) auto; padding: 12px 2px; gap: 12px; min-height: 0; }
+  .bt-row .bt-types, .bt-row .bt-ex, .bt-row .bt-trial, .bt-row .bt-use { display: none; }
+  .bt-row .hc-name small { display: block; font-size: 13px; color: var(--muted); white-space: normal; }
+  .bt-row .hp-get { grid-area: auto; grid-column: 2; margin: 0; padding: 0; width: 36px; height: 36px; justify-content: center; font-size: 0; gap: 0; }
+  .bt-row .hp-get svg { width: 15px; height: 15px; }
+  .page-bots .how-log-item:first-child .how-log-dot { box-shadow: 0 0 10px 2px rgba(244,114,182,.55); }
+}
+/* bots polish (handover 2026-10-11c): no trial column, availability note, readable disclosure */
+.bt-row { grid-template-columns: minmax(150px, 1.1fr) 1.4fr 1.5fr 1.3fr 100px; }
+.bt-avail { display: block; margin-top: 4px; font-style: normal; font-size: 12px; line-height: 1.35; color: #c9a14a; }
+.pc-avail { margin: 0; padding: 10px 12px; border-radius: 10px; background: rgba(242,201,76,.07); border: 1px solid rgba(242,201,76,.22); font-size: 13px; color: #d8c48a; }
+.page-bots .tx-fine { max-width: 860px; font-size: 14px; line-height: 1.55; color: #a3abb4; }
+@media (max-width: 1100px) { .bt-row { grid-template-columns: minmax(150px, 1.2fr) 1.4fr 1.6fr 100px; } }
+@media (max-width: 860px) { .bt-row { grid-template-columns: minmax(150px, 1.3fr) 1.5fr 100px; } }
+@media (max-width: 640px) { .bt-row { grid-template-columns: minmax(0, 1fr) auto; } }
