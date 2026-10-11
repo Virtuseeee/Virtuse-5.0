@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-11) — Sharp Sygnum logo (PR #69, main `e7e73c63`; **live on production**, md5-verified)
+
+- `logo-sygnum.svg` = the symbol path from Sygnum's official `main_logo.svg` (sygnum.com, #DF2A4F). `logo-sygnum.png` was replaced in place by a transparent 128 px render (was a blurry 32 px copy), so homepages, treasury pages and `data/partners.json` pick it up unchanged. The three-node mark is Sygnum's real logo (the earlier "generic share icon" note was wrong).
+- Rendering SVG to PNG here: headless Chrome via CDP (`scratchpad/shots/svg2png.mjs`) on a white HTML page, then alpha derived from the green channel in PIL. Plain `--headless --screenshot` hangs on this Mac.
+
 ## Session status (2026-10-11) — Bots (bots.html) v2 + desktop cookie corner card (PR #67 + #68, main `53e0949d`; **live on production** — user ran `deploy_site.sh 2e8a4a29 53e0949d`, 13/13 md5-verified on virtuse.com). All service pages are now v2.
 
 - Bots: builder `i18n-tools/bots/build_bots.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`, `UPDATE.md`), pink accent, DCA first. Panel filter All / DCA / Advanced rules; `site-v2.js` filter now accepts several kinds per row (`data-kind="dca rules"`).
@@ -28,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Builder `i18n-tools/treasury/build_treasury.py` (+ `<lang>.json`, `check.py`, `BRIEF.md`), same pattern as mining/lending. Indigo accent (#818cf8). Hero panel compares Coinbase / Sygnum / BitGo (regulator, model, cover or scale, "Typical use" instead of "Best for"); CTA "Book a 15-minute treasury call" = consultation widget; new "Why companies hold Bitcoin" (3 principles, Saylor article card → `stories/michael-saylors-legacy-the-bitcoin-corporate-revolution/` because the story page has the full text in HTML, asset-returns card with Bitcoin's annualized return + rank computed live in `site-v2.js` from `data/asset-returns.json`, raw GitHub first, same-origin fallback, hidden on failure; never hardcode a return). This page alone adds `https://raw.githubusercontent.com` to CSP connect-src and loads `site-v2.css/js?v=4`. `body.no-split` turns off the word-by-word hero H1 animation.
 - Copy: superlatives removed; no "staking" for Sygnum (Bitcoin isn't staked). Partner URLs unchanged, partner buttons carry `btn-primary` (cta).
-- Open: `logo-sygnum.png` is a generic share icon, not Sygnum's logo (replace with the real mark). Cookie banner covers the bottom of the mobile hero on every page (cookie-consent.js, out of scope so far).
+- Cookie banner covers the bottom of the mobile hero on every page (cookie-consent.js, out of scope so far).
 
 ## Session status (2026-10-10) — Mining (mining.html) v2 live in 10 languages (PR Virtuseeee/Virtuse-5.0#61, merge `851a4a1b`; **live on production** — user ran `deploy_site.sh efcdcd90 851a4a1b`, DEPLOY OK; 12/12 md5-verified)
 
