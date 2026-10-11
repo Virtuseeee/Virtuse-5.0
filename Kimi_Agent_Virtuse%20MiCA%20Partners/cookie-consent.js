@@ -197,6 +197,11 @@
     'background:transparent;color:inherit;border:1px solid currentColor;-webkit-appearance:none;appearance:none}' +
     '@media (max-width:560px){.vb-cc{left:8px;right:8px;bottom:8px;padding:18px 16px;max-height:calc(100vh - 16px);overflow-y:auto}' +
     '.vb-cc-row button{flex:1 1 100%}}' +
+    // desktop: a compact card in the bottom-left corner, so it never covers centered page content
+    '@media (min-width:1024px){.vb-cc{left:16px;right:auto;bottom:16px;width:calc(100% - 32px);max-width:420px;margin:0;' +
+    'padding:16px 18px;max-height:calc(100vh - 32px);overflow-y:auto}' +
+    '.vb-cc h2{font-size:15px}.vb-cc p{font-size:13px;line-height:1.5}' +
+    '.vb-cc-row{flex-wrap:nowrap;gap:6px;margin-top:12px}.vb-cc-row button{flex:1 1 0;min-width:0;padding:9px 10px;font-size:13px}}' +
     '@media (prefers-reduced-motion:reduce){.vb-cc-sw span,.vb-cc-sw span:after{transition:none}}';
 
   var box = null;
