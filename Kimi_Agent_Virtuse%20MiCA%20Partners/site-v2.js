@@ -98,7 +98,7 @@
       btns.forEach(function (b) { b.addEventListener('click', function () {
         var f = b.getAttribute('data-filter');
         btns.forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
-        panel.querySelectorAll('.row[data-kind]').forEach(function (r) { r.hidden = f !== 'all' && r.getAttribute('data-kind') !== f; });
+        panel.querySelectorAll('.row[data-kind]').forEach(function (r) { r.hidden = f !== 'all' && (' ' + r.getAttribute('data-kind') + ' ').indexOf(' ' + f + ' ') < 0; });
       }); });
     });
   })();
