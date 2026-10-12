@@ -12,7 +12,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - 405 pages, incl. `everything-but-bitcoin`.
 - `.htaccess`: `/a/<slug>` and `/sk/a/<slug>` 301 to the story page when `%{DOCUMENT_ROOT}/…/index.html` exists, else 302 to `article.html?slug=`. `article.html?slug=X[&lang=sk]` also 301s to the story page when it exists (slug read via `E=VB_SLUG`). Live: `/a/everything-but-bitcoin` and `article.html?slug=everything-but-bitcoin` → 301 `/stories/everything-but-bitcoin/`; an unbuilt slug → 302 to the reader.
 - `article.js?v=20261012` sets article.html's canonical to the story page when it exists. news.js cards still link `article.html?slug=` on purpose, so a new issue doesn't 404 before the next build.
-- WordPress: `virtuse-story-canonical.json` updated (live canonical of the new post = virtuse.com/stories/…). New `virtuse-brief-link.php` uploaded, **but the bar does not show**: the old theme apparently doesn't call `wp_body_open`. Option B (301) is in the file as a comment.
+- WordPress: `virtuse-story-canonical.json` updated (live canonical of the new post = virtuse.com/stories/…). `virtuse-brief-link.php` v2.1 (PR #73, #74) is **live and visible**: the fixed bar "Read the Brief on virtuse.com" (SK text on SK posts) at the top of posts that have a virtuse.com copy.
+  - It is printed from `wp_footer`, never in wp-admin. The old theme doesn't call `wp_body_open`.
+  - JS pads `<body>` and pushes the theme's top-pinned navbar/progress bar down by the bar height, also while scrolling.
+  - Styles are inline `style` attributes, because LiteSpeed Cache strips `<style>` blocks printed in the footer.
+  - Option B (301) is in the file as a comment.
+  - **Gotcha:** `printf … | sftp host` exits 0 even when `put` fails (the first v2 upload silently didn't land). Always end the batch with `ls -l <remote file>` and compare the size.
 
 ## Session status (2026-10-12) — SEO/GA hygiene (PR #71, main `cd595392` + stories `d5bf6abf`; **live on production**, `.htaccess` uploaded by the user and verified)
 
