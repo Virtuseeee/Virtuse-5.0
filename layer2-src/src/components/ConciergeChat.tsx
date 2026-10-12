@@ -62,13 +62,19 @@ const phaseText = (lang: Lang): Record<Phase, string> => ({
 // opened with (?utm_medium=hero|banner|launcher|page, set by
 // virtuse.com), so a partner click always carries where the user
 // entered the concierge from, not just that they used it.
+// No UTM on these referral links: Bybit EU drops it in its redirect, 21bitcoin's
+// Branch link replaces its own utm_medium with ours and Kraken passes it into
+// AppsFlyer. Referral credit isn't verifiable from outside, so they stay exactly
+// as the partner issued them; the click is still counted by partner_click.
+const NO_UTM = new Set(['21bitcoin', 'bybit-eu', 'kraken']);
 function withUtm(url: string, partnerId: string): string {
+  if (NO_UTM.has(partnerId)) return url;
   try {
     const target = new URL(url);
     const here = new URLSearchParams(window.location.search);
     target.searchParams.set('utm_source', 'concierge');
     target.searchParams.set('utm_medium', here.get('utm_medium') || 'page');
-    target.searchParams.set('utm_campaign', 'layer2-mvp');
+    target.searchParams.set('utm_campaign', 'partner_finder');
     target.searchParams.set('utm_content', partnerId);
     return target.toString();
   } catch {
@@ -412,7 +418,7 @@ function ResultCards({
             target="_blank"
             rel="sponsored noopener"
             onClick={() => trackPartnerClick(rec.partner.id)}
-            className="mt-3 flex items-center justify-center gap-1.5 rounded-[10px] bg-ink px-4 py-2.5 text-sm font-semibold text-canvas transition hover:opacity-85"
+            className="btn-primary mt-3 flex items-center justify-center gap-1.5 rounded-[10px] bg-ink px-4 py-2.5 text-sm font-semibold text-canvas transition hover:opacity-85"
           >
             {rec.actionLabel} <ArrowUpRight className="h-4 w-4" />
           </a>

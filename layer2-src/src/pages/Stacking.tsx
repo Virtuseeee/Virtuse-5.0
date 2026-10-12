@@ -65,7 +65,10 @@ function readAmountBucket(): { initial: number; contribution: number } | null {
 // with (?utm_medium=page|concierge, set by virtuse.com or by the
 // Concierge deep link), so a route click always carries where the
 // visitor entered Stacking from.
+// 21bitcoin, Bybit EU and Kraken referral links stay as issued (see ConciergeChat.tsx NO_UTM).
+const NO_UTM = new Set(['21bitcoin', 'bybit-eu', 'kraken']);
 function withUtm(url: string, routeId: string): string {
+  if (NO_UTM.has(routeId)) return url;
   try {
     const target = new URL(url, window.location.href);
     const here = new URLSearchParams(window.location.search);
