@@ -1,0 +1,149 @@
+{
+  "checked": "2026-10-12",
+  "about": "Official sources for how a private individual's gain from selling Bitcoin is taxed in tax year 2026 in the 13 countries of the Loan & Liquidity Copilot / Tax Agent. loanRate = the single short-term rate for the calculator (decimal); 0 where the sale itself is not taxed; null if no official confirmation. Each source URL was fetched and returned HTTP 200 on 2026-10-12; quotes are copied from that source. Indicative, not tax advice; needs the tax advisor's review.",
+  "countries": [
+    {
+      "id": "cz",
+      "name": "Czechia",
+      "loanRate": 0.15,
+      "condition": "15% income tax (23% on the part of the tax base above 36x the average wage); exempt if held more than 3 years, or if total crypto sale proceeds in the year do not exceed CZK 100,000.",
+      "source": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
+      "sourceTitle": "Finanční správa: Daň z příjmů – Obecné informace (rate); exemption text: financnisprava.gov.cz/assets/cs/prilohy/d-placeni-dani/Krypto-29_4_2026.pdf",
+      "quote": "pro část základu daně do 36násobku průměrné mzdy se použije sazba daně 15 % a pro část základu daně nad 36násobek … 23 %",
+      "verified": true,
+      "notes": "Exemption verified from the statute text of § 4(1)(zj) and (zk) ZDP (as amended by Act 32/2025, effective 15 Feb 2025) reproduced in a Koordinační výbor 04/26 paper hosted on financnisprava.gov.cz: '(zk) … přesáhne-li doba mezi nabytím a úplatným převodem … dobu 3 let' and '(zj) … pokud jejich úhrn … nepřesáhne … 100 000 Kč'. The 3-year exemption is capped at CZK 40 million a year (§ 4(3), shared with securities). Difference from site: the site mentions the 3-year test but not the CZK 100,000 gross-proceeds annual exemption or the 40 M cap. 2026 23% threshold: CZK 1,762,812."
+    },
+    {
+      "id": "sk",
+      "name": "Slovakia",
+      "loanRate": 0.19,
+      "condition": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
+      "source": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
+      "sourceTitle": "Finančná správa: Sadzba dane z príjmov fyzickej osoby za rok 2026 (+ podpora.financnasprava.sk/293880 Príjmy z predaja kryptoaktív u nepodnikateľa)",
+      "quote": "z ostatných príjmov (§ 8) 19 % z tej časti základu dane, ktorá nepresiahne sumu 43 983,32 eura vrátane",
+      "verified": true,
+      "notes": "Verified for the income tax part only. The crypto page (293880) confirms taxation under § 8(1)(t), that expenses above income are ignored, and that health/social insurance 'which the taxpayer must pay from this type of income' is deductible, but it does not state the health levy rate. The site's calculator uses 0.35 (19% + 16% health contributions); the 16% health levy was NOT verified from an official source (only press). Site's gainTax '19–35%' matches the 2026 bands; consider 0.19 (income tax) or 0.35 only once the health-insurance rate is confirmed (zákon 580/2004, VšZP/ÚDZS)."
+    },
+    {
+      "id": "pl",
+      "name": "Poland",
+      "loanRate": 0.19,
+      "condition": "19% on income from paid disposal of virtual currency (PIT-38); no holding-period exemption; crypto-to-crypto swaps not taxed.",
+      "source": "https://www.podatki.gov.pl/pit/rozliczenie-ze-sprzedazy-kryptowalut/",
+      "sourceTitle": "Serwis o podatkach – Zbycie kryptowalut (Ministerstwo Finansów)",
+      "quote": "Podatek oblicz od dochodu. Stawka podatku wynosi 19%.",
+      "verified": true,
+      "notes": "Matches site. Page also states 'Wymiana pomiędzy walutami wirtualnymi … nie podlega opodatkowaniu'. Possible 4% solidarity levy on income above PLN 1 million not checked."
+    },
+    {
+      "id": "at",
+      "name": "Austria",
+      "loanRate": 0.275,
+      "condition": "27.5% special rate for crypto acquired after 28 February 2021 (no holding exemption); crypto acquired up to 28 Feb 2021 ('Altbestand') stays under the old regime.",
+      "source": "https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/steuerliche-behandlung-von-kryptowaehrungen.html",
+      "sourceTitle": "BMF: Steuerliche Behandlung von Kryptowährungen",
+      "quote": "unterliegen gemäß § 27a Abs 1 EStG einem besonderen Steuersatz in Höhe von 27,5 Prozent",
+      "verified": true,
+      "notes": "Page: new regime applies to crypto 'die nach dem 28. Februar 2021 angeschafft wurden'; older holdings are 'Altbestände … weiterhin die Besteuerung wie vor der ökosozialen Steuerreform'. The page does NOT spell out the old 1-year speculation period, so the site's '0% after 1 year if bought before March 2021' is plausible (old § 31 EStG) but not verified from this page. Cut-off: site says 'before March 2021' = correct (acquired by 28 Feb 2021)."
+    },
+    {
+      "id": "de",
+      "name": "Germany",
+      "loanRate": 0.42,
+      "condition": "Private sale taxed at the personal progressive rate (0–45%; 42% band for taxable income €69,879–277,825) if held 1 year or less; tax-free after more than 1 year; total private-sale gains under €1,000 a year are tax-free.",
+      "source": "https://www.gesetze-im-internet.de/estg/__23.html",
+      "sourceTitle": "§ 23 EStG Private Veräußerungsgeschäfte (rates: https://www.gesetze-im-internet.de/estg/__32a.html)",
+      "quote": "bei denen der Zeitraum zwischen Anschaffung und Veräußerung nicht mehr als ein Jahr beträgt",
+      "verified": true,
+      "notes": "§ 23(3): 'Gewinne bleiben steuerfrei, wenn … Gesamtgewinn im Kalenderjahr weniger als 1 000 Euro betragen hat' (Freigrenze, not allowance). § 32a: '0,42 • x' for €69,879–277,825 and '0,45 • x' from €277,826. 0.42 is a high-income marginal rate, not typical; solidarity surcharge/church tax excluded. That crypto falls under 'andere Wirtschaftsgüter' is BMF administrative practice (not quoted here). Site's '0% after 1 year' matches; site does not mention the €1,000 Freigrenze."
+    },
+    {
+      "id": "hu",
+      "name": "Hungary",
+      "loanRate": 0.15,
+      "condition": "15% personal income tax on the annual net gain from crypto transactions; no holding-period exemption; small transactions exempt under minimum-wage-linked limits.",
+      "source": "https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa",
+      "sourceTitle": "NAV: A kriptoügyletek jövedelmének adózása",
+      "quote": "A kriptoeszközzel végrehajtott ügyletekből az adóévben elért ügyleti nyereség után 15 százalék személyi jövedelemadót kell fizetni.",
+      "verified": true,
+      "notes": "Matches site. The NAV page is written for the 2021/2022 returns (Szja tv. § 67/C); the rule is unchanged as far as checked but the page is not 2026-specific. Losses can be offset via 'adókiegyenlítés' over the previous 2 years."
+    },
+    {
+      "id": "si",
+      "name": "Slovenia",
+      "loanRate": 0,
+      "condition": "No income tax on capital gains from selling virtual currencies by a private individual, unless trading is carried on as a business activity.",
+      "source": "https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/",
+      "sourceTitle": "FURS: Trgujem z virtualnimi valutami",
+      "quote": "se dohodnine ne plača pod pogojem, da fizična oseba ne dosega tovrstnih dohodkov v zvezi z opravljanjem dejavnosti",
+      "verified": true,
+      "notes": "Site has no Loan preset for Slovenia (calculator would use 0). The site's claim that a proposed 25% tax was withdrawn in 2025 is from press (rtvslo.si: bill pulled from the December 2025 session); not verified on an official page. Re-check before 2027 in case the bill returns."
+    },
+    {
+      "id": "hr",
+      "name": "Croatia",
+      "loanRate": 0.12,
+      "condition": "12% tax on capital gains; gains on crypto acquired more than 2 years before the sale are not taxed (still reported on JOPPD).",
+      "source": "https://porezna-uprava.gov.hr/hr/primjer-podnosenja-obrasca-joppd-za-primitke-po-osnovi-trgovanja-kriptoimovinom/8342",
+      "sourceTitle": "Porezna uprava: Primjer podnošenja Obrasca JOPPD za primitke po osnovi trgovanja kriptoimovinom (rate: porezna-uprava.gov.hr/hr/dohodak-od-kapitala-po-osnovi-kapitalnih-dobitaka/4653)",
+      "quote": "Ako je kapitalni dobitak ostvaren prodajom kriptoimovine koja je stečena prije više od dvije godine, takav dobitak ne oporezuje se porezom na dohodak.",
+      "verified": true,
+      "notes": "Rate from the capital-gains page: '… umanjene za ostvarene kapitalne gubitke po stopi od 12%'. Matches site (12%, 2-year exemption, JOPPD even for exempt sales)."
+    },
+    {
+      "id": "ro",
+      "name": "Romania",
+      "loanRate": 0.16,
+      "condition": "16% on the gain from transfers of virtual currency made from 1 Jan 2026 (10% before); gains under 200 lei per transaction are exempt if annual gains do not exceed 600 lei; no holding exemption.",
+      "source": "https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf",
+      "sourceTitle": "Legea nr. 239/2025 (published by ANAF; also legislatie.just.ro/Public/DetaliiDocument/305208)",
+      "quote": "prin aplicarea cotei de 16% asupra câştigului din transferul de monedă virtuală, determinat ca diferenţă pozitivă între preţul de vânzare şi preţul de achiziţie",
+      "verified": true,
+      "notes": "Art. XIII: applies 'câştigurilor din transferul de monedă virtuală obţinute începând cu data de 1 ianuarie 2026'. Matches site (16% from 2026; 200/600 lei). Health contribution CASS may apply above income thresholds; not checked."
+    },
+    {
+      "id": "bg",
+      "name": "Bulgaria",
+      "loanRate": 0.1,
+      "condition": "10% tax on the annual tax base; crypto gains (net of the year's losses) are reduced by 10% deemed expenses, so the effective rate on the gain is about 9%; no holding-period exemption.",
+      "source": "https://nra.bg/wps/portal/nra/taxes/godishen-danak-varhu-dohdite/virtualni-valuti",
+      "sourceTitle": "НАП: Виртуални валути / криптоактиви (rate: nra.bg …/danak-vurhu-dohodite-na-fizicheski-lica)",
+      "quote": "сумата от реализираните през годината печалби … намалена със сумата от реализираните през годината загуби … се намалява с 10 на сто разходи",
+      "verified": true,
+      "notes": "Rate from the NRA personal income tax page: 'Размер на данъка 10 % от данъчната основа'. Matches site's 10%; site could add the 10% deemed-expense reduction (effective ≈9%). No advance tax; declared in Annex 5."
+    },
+    {
+      "id": "nl",
+      "name": "Netherlands",
+      "loanRate": 0,
+      "condition": "No tax on the sale itself; crypto is a Box 3 asset taxed at 36% on a deemed return (6.00% for 'other assets' in the 2026 provisional assessment), above a €59,357 tax-free allowance per person (2026).",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026",
+      "sourceTitle": "Belastingdienst: Hoe is het box 3-inkomen op mijn voorlopige aanslag 2026 berekend? (+ …/werk-en-inkomen/content/cryptovaluta, …/box-3/content/heffingsvrij-vermogen)",
+      "quote": "Vermenigvuldig het belastingtarief voor box 3 in 2026 (36%) met het voordeel uit sparen en beleggen",
+      "verified": true,
+      "notes": "loanRate 0 because selling does not trigger tax; holding does (wealth on 1 January). Crypto page: 'Deze crypto's geeft u aan in box 3'. Allowance €59,357 (€118,714 with partner) confirmed. 6.00% is the provisional-assessment deemed return; the final 2026 figure may differ. Matches site."
+    },
+    {
+      "id": "fr",
+      "name": "France",
+      "loanRate": 0.314,
+      "condition": "Flat tax (PFU) 31.4% = 12.8% income tax + 18.6% social charges on private-wealth crypto gains; option for the progressive scale; exempt if total disposal proceeds in the year are €305 or less; no holding exemption.",
+      "source": "https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques",
+      "sourceTitle": "impots.gouv.fr: Comment déclarer les plus ou moins values sur cessions d'actifs numériques ?",
+      "quote": "imposées au prélèvement forfaitaire unique (PFU) de 31,4 % (12,8 % d'impôt + 18,6 % de prélèvements sociaux), quel que soit le nombre de transactions",
+      "verified": true,
+      "notes": "Matches site (31.4%, €305). Older BOFiP pages still show 30% / 17.2% social charges (pre-2026). The site's earlier 30% (12.8 + 17.2) is outdated. Crypto-to-crypto swaps are in tax deferral ('sursis d'imposition') per the same page."
+    },
+    {
+      "id": "es",
+      "name": "Spain",
+      "loanRate": 0.21,
+      "condition": "Gains go to the savings base: combined state + regional scale 19% to €6,000, 21% €6,000–50,000, 23% €50,000–200,000, 27% €200,000–300,000, 30% above; no holding exemption.",
+      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+      "sourceTitle": "BOE: Ley 35/2006 del IRPF (consolidated, updated 07/10/2026), arts. 66 and 76",
+      "quote": "0 0 6.000 9,5 6.000,00 570 44.000 10,5 50.000,00 5.190 150.000 11,5 … En adelante 15",
+      "verified": true,
+      "notes": "Art. 66 (state) and art. 76 (regional) each give 9.5/10.5/11.5/13.5/15%, summing to 19/21/23/27/30% (top band 15%+15% since 1 Jan 2025, Ley 7/2024). 0.21 is the band for €6k–50k as the site labels it; small gains (<€6k) are 19%. That crypto gains are ganancias patrimoniales in the savings base (art. 46) was not separately quoted. Matches site."
+    }
+  ]
+}
