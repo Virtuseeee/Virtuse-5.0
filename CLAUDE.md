@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Stacking Strategist redesign + limits up to €1,000,000 (branch `feat/stacking-v2`, PR open; **staging only, not on production**)
+
+- Handover `HANDOVER-claude-stacking.md`. Shells built by `i18n-tools/stacking/build_stacking.py` (same pattern as Partner Finder; run after deploy.py). App (`layer2-src/src/pages/Stacking.tsx`, `lib/stacking.ts`) renders only the calculator.
+- Ras decisions: scenarios 10% / 20% / **Optimistic 25%/yr (hypothetical)** (no ARK, id `optimistic`); lump sum €0–1,000,000, contribution monthly €10–100,000 / weekly €10–25,000, stepped sliders + typed fields (accept 250k, 1m, 250 000), frequency switch converts + clamps; URL `?amount=s|m|l|xl|xxl|pc` or `?initial=&contribution=&freq=&years=&scenario=`, kept in sync with replaceState.
+- Virtuse CFO card (€9/month or €90/year, from cfo.html) when initial > 100k, contribution × periods/yr > 100k or projected ≥ €1M; link `/<lang>/cfo.html?utm_source=stacking&utm_medium=cta&utm_campaign=cfo`, same tab, `data-cta="cfo"`, no btn-primary (not a partner link).
+- Fee rows = Fee Index (21bitcoin day-8 wording, Bybit EU 0.25%, Kraken Pro spot taker Tier 1 0.8%) with Source + "checked 12 Oct 2026"; spreads not included, link to the Fee Index. CTAs `btn-primary` + `rel="sponsored noopener"`, no UTM on 21bitcoin/Bybit/Kraken. `fmtEurCompact` (shared, also Loan) now does billions ("€3.7bn", "3,7 mld. €", "3,7 Mrd. €", es "3,7 mil M €").
+
 ## Session status (2026-10-12) — Brief card links straight to /stories/<slug>/ (main `b73e45b4`, PR #79; **live on production**, 11/11 md5-verified)
 
 - Homepages (inline script, also in `i18n-tools/home/build_lang.py`) and `site-v2.js`: the card starts with the reader link `article.html?slug=…`, then a HEAD request swaps in `/stories/<slug>/` when it exists (a new issue without a built story page still works). Slovak only with `slug_sk` in issues.json (`/sk/stories/<slug_sk>/`), else the reader, same as the .htaccess rule. Homepage cards also use the issue's `og_image` (virtuse.com).

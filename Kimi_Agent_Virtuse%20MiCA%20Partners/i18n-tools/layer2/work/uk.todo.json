@@ -736,32 +736,20 @@
   "tr": " р."
  },
  {
-  "en": "0 % fees on 21bitcoin's Auto-Invest plan – every euro of your {0}/period buys Bitcoin, none of it is lost to fees.",
-  "tr": "0% комісій у плані Auto-Invest від 21bitcoin: кожен євро з ваших {0} за період купує Біткоїн, нічого не губиться на комісіях."
+  "en": "0% fees on 21bitcoin's Auto-Invest plan from day 8, so all of your {0} per purchase goes into Bitcoin.",
+  "tr": "0% комісій у плані Auto-Invest від 21bitcoin з 8-го дня, тож уся сума {0} з кожної покупки йде в Біткоїн."
  },
  {
-  "en": "It runs on autopilot too, once you set the schedule – the same \"set & forget\" benefit a trading bot gives you, without a subscription.",
-  "tr": "Після налаштування графіка він також працює автоматично: та сама перевага «налаштуй і забудь», що й у торгового бота, але без підписки."
+  "en": "Once you set the schedule, the plan buys on its own.",
+  "tr": "Щойно ви встановите розклад, план купує сам."
  },
  {
-  "en": "At {0}/period, RevenueBot's flat monthly fee is diluted enough to beat a manual exchange purchase.",
-  "tr": "За {0} на період фіксована щомісячна плата RevenueBot розподіляється настільки, що вигідніша за ручну купівлю на біржі."
+  "en": "Lowest fee at this amount: {0} per purchase via {1}.",
+  "tr": "Найнижча комісія для цієї суми: {0} за покупку через {1}."
  },
  {
-  "en": "Automation removes timing anxiety and missed purchases – the hidden cost of manual DCA.",
-  "tr": "Автоматизація прибирає тривогу щодо вибору моменту та пропущені покупки: прихована ціна ручного DCA."
- },
- {
-  "en": "Lowest cost among the manual-purchase routes at this amount – {0} % per purchase via {1}.",
-  "tr": "Найнижча вартість серед ручних варіантів купівлі для цієї суми: {0}% за покупку через {1}."
- },
- {
-  "en": "One manual step per period; pair it with a calendar reminder or a weekly ritual.",
-  "tr": "Один ручний крок за період: поєднайте його з нагадуванням у календарі або щотижневим ритуалом."
- },
- {
-  "en": "Between the paid routes: RevenueBot's automation undercuts manual {0} trading on pure fees once you stack more than ≈ {1}/month – below that, {0} is cheaper but manual.",
-  "tr": "Серед платних варіантів: автоматизація RevenueBot дешевша за комісіями, ніж ручна торгівля на {0}, якщо ви інвестуєте понад ≈ {1} на місяць; нижче цієї суми {0} дешевша, але вручну."
+  "en": "One manual purchase per period. A calendar reminder helps you keep the rhythm.",
+  "tr": "Одна ручна покупка за період. Нагадування в календарі допоможе тримати ритм."
  },
  {
   "en": "Weekly",
@@ -780,40 +768,20 @@
   "tr": "Помірний"
  },
  {
-  "en": "ARK-style",
-  "tr": "У стилі ARK"
+  "en": "Optimistic",
+  "tr": "Оптимістичний"
  },
  {
-  "en": "Auto-Invest plan",
-  "tr": "План Auto-Invest"
+  "en": "Auto-Invest plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
+  "tr": "План Auto-Invest: 0% комісій з 8-го дня (перші 7 днів 0,99%, з реферальним кодом 0,79%)"
  },
  {
-  "en": "0 % fees on the built-in Auto-Invest savings plan, already automated: set the schedule once and it runs itself.",
-  "tr": "0% комісій у вбудованому плані заощаджень Auto-Invest, уже автоматизовано: достатньо один раз налаштувати графік."
+  "en": "Spot: 0.25% fee",
+  "tr": "Спот: комісія 0,25%"
  },
  {
-  "en": "Automated",
-  "tr": "Автоматично"
- },
- {
-  "en": "Spot trading",
-  "tr": "Спотова торгівля"
- },
- {
-  "en": "Spot trading fees from 0.25 %, EU company in Vienna, for a manual recurring buy.",
-  "tr": "Комісії за спотову торгівлю від 0,25%, компанія ЄС у Відні, для регулярної ручної купівлі."
- },
- {
-  "en": "Same day",
-  "tr": "Того ж дня"
- },
- {
-  "en": "Pro trading",
-  "tr": "Pro-торгівля"
- },
- {
-  "en": "Pro trading fees from 0.8 %, exchange with EUR trading since 2011.",
-  "tr": "Комісії за Pro-торгівлю від 0,8%, біржа з торгівлею в EUR з 2011 року."
+  "en": "Kraken Pro (spot taker, Tier 1): 0.8%",
+  "tr": "Kraken Pro (спот, тейкер, рівень 1): 0,8%"
  },
  {
   "en": "At risk – coins may be lost",
@@ -1300,16 +1268,24 @@
   "tr": "Спрощена освітня модель з орієнтовними ставками і фіксованим порогом маржин-колу: реальні умови залежать від кредитора. Це не фінансова, податкова чи юридична порада. Virtuse ніколи не зберігає ваші ключі; застава залишається в ескроу на мультипідписі."
  },
  {
-  "en": "Your DCA plan,",
-  "tr": "Ваш план DCA,"
+  "en": "Route",
+  "tr": "Шлях"
  },
  {
-  "en": "priced across every partner.",
-  "tr": "з цінами кожного партнера."
+  "en": "Fee / purchase",
+  "tr": "Комісія / покупка"
  },
  {
-  "en": "Set your stacking rhythm, see the long-term projection, and let the fee arbitrage table find the cheapest route per purchase – then automate it with 21bitcoin's Auto-Invest plan or a dedicated DCA bot like RevenueBot.",
-  "tr": "Задайте ритм накопичення, подивіться довгостроковий прогноз і дозвольте таблиці арбітражу комісій знайти найдешевший шлях для кожної покупки, а тоді автоматизуйте його планом Auto-Invest від 21bitcoin або DCA-ботом, як-от RevenueBot."
+  "en": "Effective",
+  "tr": "Фактично"
+ },
+ {
+  "en": "Annual drag",
+  "tr": "Річні витрати"
+ },
+ {
+  "en": "Invested after fees per €1,000",
+  "tr": "Інвестовано після комісій на кожні 1000 €"
  },
  {
   "en": "Initial lump sum",
@@ -1328,16 +1304,16 @@
   "tr": "Припущена річна дохідність"
  },
  {
-  "en": "yr",
-  "tr": "рік"
+  "en": "{0}: {1}/yr",
+  "tr": "{0}: {1}/рік"
  },
  {
-  "en": "ARK-style scenario (39 %/yr) mirrors the research cited on virtuse.com. Treat it as an optimistic bound, not a promise.",
-  "tr": "Сценарій у стилі ARK (39% на рік) відображає дослідження, цитовані на virtuse.com. Сприймайте його як оптимістичну межу, а не обіцянку."
+  "en": "(hypothetical)",
+  "tr": "(гіпотетичний)"
  },
  {
-  "en": "Projection compounds your contribution at the chosen rate every period. Past performance never guarantees future results.",
-  "tr": "Прогноз капіталізує ваш внесок за обраною ставкою щоперіоду. Минулі результати ніколи не гарантують майбутніх."
+  "en": "Scenarios, not forecasts. Not investment advice. Past performance doesn't guarantee future results.",
+  "tr": "Сценарії, а не прогнози. Це не інвестиційна порада. Минулі результати не гарантують майбутніх."
  },
  {
   "en": "Total invested",
@@ -1360,32 +1336,32 @@
   "tr": "Помаранчева = прогнозована вартість · пунктир = усього інвестовано"
  },
  {
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.",
+  "tr": "Плануєте більший розподіл коштів? Virtuse CFO допомагає вести біткоїн-скарбницю: планувати, відстежувати й звітувати. {0}/місяць або {1}/рік."
+ },
+ {
+  "en": "See Virtuse CFO",
+  "tr": "Переглянути Virtuse CFO"
+ },
+ {
   "en": "Fee arbitrage",
   "tr": "Арбітраж комісій"
  },
  {
-  "en": "Route",
-  "tr": "Шлях"
+  "en": "Open {0}",
+  "tr": "Відкрити {0}"
  },
  {
-  "en": "Fee / purchase",
-  "tr": "Комісія / покупка"
+  "en": "\"Invested after fees per €1,000\" = how many euros of every €1,000 actually buy Bitcoin after the route's fee.",
+  "tr": "«Інвестовано після комісій на кожні 1000 €» = скільки євро з кожних 1000 € справді купують Біткоїн після комісії цього шляху."
  },
  {
-  "en": "Effective",
-  "tr": "Фактично"
+  "en": "Spreads are not included. For total cost (fee + estimated spread) see the {0}.",
+  "tr": "Спреди не враховано. Повну вартість (комісія + оцінений спред) дивіться в розділі {0}."
  },
  {
-  "en": "Annual drag",
-  "tr": "Річні витрати"
- },
- {
-  "en": "BTC per €1,000",
-  "tr": "BTC за 1 000 €"
- },
- {
-  "en": "\"BTC per €1,000\" = how much bitcoin actually lands in your wallet per €1,000 invested after all route fees. Illustrative fee schedule – production wires live partner quotes.",
-  "tr": "«BTC за 1 000 €» = скільки Біткоїна реально надходить на ваш гаманець за кожні інвестовані 1 000 € після всіх комісій. Орієнтовний тариф: робоча версія використовує живі котирування партнерів."
+  "en": "Fee Index",
+  "tr": "Індекс комісій Біткоїна"
  },
  {
   "en": "Lowest fee at your amount",
@@ -1406,14 +1382,6 @@
  {
   "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
   "tr": "Кожен шлях вище коштує стільки ж або більше: перехід нічого не заощадить."
- },
- {
-  "en": "Open {0}",
-  "tr": "Відкрити {0}"
- },
- {
-  "en": "Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
-  "tr": "Комісії в прототипі орієнтовні; прогнози є математичними сценаріями, а не обіцянками. Це не фінансова порада. Virtuse ніколи не зберігає ваші ключі: покупки надходять на обраний вами гаманець."
  },
  {
   "en": "Tax & Inheritance Agent",

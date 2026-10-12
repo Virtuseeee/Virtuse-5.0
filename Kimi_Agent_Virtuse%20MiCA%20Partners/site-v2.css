@@ -1668,3 +1668,5 @@ html.vc-embed .nav, html.vc-embed .pf-hero, html.vc-embed main > section, html.v
 html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margin: 0; }
 /* the app's Tailwind sets --card/--muted as HSL parts on :root; give the page around it its own values back */
 .page-pf .nav, .page-pf main > :not(.pf-app), .page-pf .pf-disc, .page-pf #vbConsent { --card: #141414; --muted: #8b949e; }
+/* STACKING STRATEGIST: same shell as Partner Finder, wider panel for the calculator */
+.st-app { width: min(1200px, 100%); }

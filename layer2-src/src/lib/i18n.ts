@@ -55,14 +55,23 @@ export function fmtEur(n: number, digits = 0, lang: Lang = getLang()): string {
 }
 
 export function fmtEurCompact(n: number, lang: Lang = getLang()): string {
+  if (!Number.isFinite(n)) return fmtEur(0, 0, lang);
+  const a = Math.abs(n);
+  // Thresholds sit just below the next unit so a value that would round up to
+  // "1000.0" moves to the next unit instead ("€1.0M", never "€1000.0k").
+  const BN = 999_950_000, MN = 999_950;
   if (lang === 'en') {
-    if (Math.abs(n) >= 1_000_000) return '€' + (n / 1_000_000).toFixed(1) + 'M';
-    if (Math.abs(n) >= 1_000) return '€' + (n / 1_000).toFixed(1) + 'k';
+    if (a >= BN) return '€' + (n / 1e9).toFixed(1) + 'bn';
+    if (a >= MN) return '€' + (n / 1_000_000).toFixed(1) + 'M';
+    if (a >= 1_000) return '€' + (n / 1_000).toFixed(1) + 'k';
     return fmtEur(n, 0, lang);
   }
-  if (Math.abs(n) < 1_000) return fmtEur(n, 0, lang);
+  if (a < 1_000) return fmtEur(n, 0, lang);
   // German has no short form for thousands (Intl prints "25.500,0 €").
-  if (lang === 'de' && Math.abs(n) < 1_000_000) return fmtNumShort(n / 1_000, 1, lang) + '\u00a0Tsd.\u00a0€';
+  if (lang === 'de' && a < MN) return fmtNumShort(n / 1_000, 1, lang) + '\u00a0Tsd.\u00a0€';
+  if (lang === 'de' && a < 1_000_000) return fmtNumShort(n / 1_000_000, 1, lang) + '\u00a0Mio.\u00a0€';
+  // Spanish CLDR has no unit for 10^9 ("1000 M €"); use its 10^10 form "mil M".
+  if (lang === 'es' && a >= BN) return fmtNumShort(n / 1e9, 1, lang) + '\u00a0mil\u00a0M\u00a0€';
   return new Intl.NumberFormat(LOCALES[lang] ?? 'en-IE', {
     style: 'currency', currency: 'EUR', currencyDisplay: 'narrowSymbol', notation: 'compact', maximumFractionDigits: 1,
   }).format(n);

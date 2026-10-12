@@ -736,32 +736,20 @@
   "tr": " év"
  },
  {
-  "en": "0 % fees on 21bitcoin's Auto-Invest plan – every euro of your {0}/period buys Bitcoin, none of it is lost to fees.",
-  "tr": "0% díj a 21bitcoin Auto-Invest tervében: az időszakonkénti {0} minden eurója Bitcoint vásárol, semmi sem vész el díjakra."
+  "en": "0% fees on 21bitcoin's Auto-Invest plan from day 8, so all of your {0} per purchase goes into Bitcoin.",
+  "tr": "0% díj a 21bitcoin Auto-Invest tervében a 8. naptól, így vásárlásonként a teljes {0} Bitcoinba megy."
  },
  {
-  "en": "It runs on autopilot too, once you set the schedule – the same \"set & forget\" benefit a trading bot gives you, without a subscription.",
-  "tr": "Az ütemezés beállítása után automatikusan is fut: ugyanaz a „beállítod és elfelejted” előny, mint egy kereskedési botnál, előfizetés nélkül."
+  "en": "Once you set the schedule, the plan buys on its own.",
+  "tr": "Az ütemezés beállítása után a terv magától vásárol."
  },
  {
-  "en": "At {0}/period, RevenueBot's flat monthly fee is diluted enough to beat a manual exchange purchase.",
-  "tr": "Időszakonként {0} mellett a RevenueBot fix havidíja annyira eloszlik, hogy olcsóbb egy kézi tőzsdei vásárlásnál."
+  "en": "Lowest fee at this amount: {0} per purchase via {1}.",
+  "tr": "Legalacsonyabb díj ennél az összegnél: vásárlásonként {0}, a(z) {1} útján."
  },
  {
-  "en": "Automation removes timing anxiety and missed purchases – the hidden cost of manual DCA.",
-  "tr": "Az automatizálás megszünteti az időzítés miatti szorongást és az elfelejtett vásárlásokat: ez a kézi DCA rejtett költsége."
- },
- {
-  "en": "Lowest cost among the manual-purchase routes at this amount – {0} % per purchase via {1}.",
-  "tr": "A legalacsonyabb költség a kézi vásárlási lehetőségek közül ennél az összegnél: vásárlásonként {0}% ({1})."
- },
- {
-  "en": "One manual step per period; pair it with a calendar reminder or a weekly ritual.",
-  "tr": "Időszakonként egy kézi lépés: érdemes naptáremlékeztetővel vagy heti rutinnal összekötni."
- },
- {
-  "en": "Between the paid routes: RevenueBot's automation undercuts manual {0} trading on pure fees once you stack more than ≈ {1}/month – below that, {0} is cheaper but manual.",
-  "tr": "A fizetős lehetőségek közül: a RevenueBot automatizálása díjban olcsóbb a kézi kereskedésnél ({0}), ha havonta kb. {1} fölött fektet be; ez alatt a(z) {0} olcsóbb, de kézi."
+  "en": "One manual purchase per period. A calendar reminder helps you keep the rhythm.",
+  "tr": "Időszakonként egy kézi vásárlás. Egy naptári emlékeztető segít tartani a ritmust."
  },
  {
   "en": "Weekly",
@@ -780,40 +768,20 @@
   "tr": "Mérsékelt"
  },
  {
-  "en": "ARK-style",
-  "tr": "ARK-stílusú"
+  "en": "Optimistic",
+  "tr": "Optimista"
  },
  {
-  "en": "Auto-Invest plan",
-  "tr": "Auto-Invest terv"
+  "en": "Auto-Invest plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
+  "tr": "Auto-Invest terv: 0% díj a 8. naptól (az első 7 napban 0,99%, ajánlói kóddal 0,79%)"
  },
  {
-  "en": "0 % fees on the built-in Auto-Invest savings plan, already automated: set the schedule once and it runs itself.",
-  "tr": "0% díj a beépített Auto-Invest megtakarítási tervben, már automatizálva: az ütemezést egyszer kell beállítani."
+  "en": "Spot: 0.25% fee",
+  "tr": "Spot: 0,25% díj"
  },
  {
-  "en": "Automated",
-  "tr": "Automatizált"
- },
- {
-  "en": "Spot trading",
-  "tr": "Spot kereskedés"
- },
- {
-  "en": "Spot trading fees from 0.25 %, EU company in Vienna, for a manual recurring buy.",
-  "tr": "Spot kereskedési díjak 0,25%-tól, uniós társaság Bécsben, rendszeres kézi vásárláshoz."
- },
- {
-  "en": "Same day",
-  "tr": "Aznap"
- },
- {
-  "en": "Pro trading",
-  "tr": "Pro kereskedés"
- },
- {
-  "en": "Pro trading fees from 0.8 %, exchange with EUR trading since 2011.",
-  "tr": "Pro kereskedési díjak 0,8%-tól, tőzsde EUR-kereskedéssel 2011 óta."
+  "en": "Kraken Pro (spot taker, Tier 1): 0.8%",
+  "tr": "Kraken Pro (spot taker, 1. szint): 0,8%"
  },
  {
   "en": "At risk – coins may be lost",
@@ -1300,16 +1268,24 @@
   "tr": "Egyszerűsített oktatási modell tájékoztató kamatokkal és rögzített fedezetkiegészítési küszöbbel: a valós feltételek a hitelezőtől függnek. Nem pénzügyi, adó- vagy jogi tanácsadás. A Virtuse soha nem kezeli a kulcsait; a fedezet multisig escrow-ban marad."
  },
  {
-  "en": "Your DCA plan,",
-  "tr": "Az Ön DCA-terve,"
+  "en": "Route",
+  "tr": "Út"
  },
  {
-  "en": "priced across every partner.",
-  "tr": "minden partner díjaival."
+  "en": "Fee / purchase",
+  "tr": "Díj / vásárlás"
  },
  {
-  "en": "Set your stacking rhythm, see the long-term projection, and let the fee arbitrage table find the cheapest route per purchase – then automate it with 21bitcoin's Auto-Invest plan or a dedicated DCA bot like RevenueBot.",
-  "tr": "Állítsa be a gyűjtés ritmusát, nézze meg a hosszú távú előrejelzést, és hagyja, hogy a díjarbitrázs-táblázat megtalálja a vásárlásonként legolcsóbb utat, majd automatizálja a 21bitcoin Auto-Invest tervével vagy egy DCA-bottal, például a RevenueBottal."
+  "en": "Effective",
+  "tr": "Tényleges"
+ },
+ {
+  "en": "Annual drag",
+  "tr": "Éves költség"
+ },
+ {
+  "en": "Invested after fees per €1,000",
+  "tr": "Díjak után befektetett összeg 1000 €-ként"
  },
  {
   "en": "Initial lump sum",
@@ -1328,16 +1304,16 @@
   "tr": "Feltételezett éves hozam"
  },
  {
-  "en": "yr",
-  "tr": "év"
+  "en": "{0}: {1}/yr",
+  "tr": "{0}: {1}/év"
  },
  {
-  "en": "ARK-style scenario (39 %/yr) mirrors the research cited on virtuse.com. Treat it as an optimistic bound, not a promise.",
-  "tr": "Az ARK-stílusú forgatókönyv (évi 39%) a virtuse.com-on idézett kutatást tükrözi. Optimista felső határként kezelje, ne ígéretként."
+  "en": "(hypothetical)",
+  "tr": "(feltételezett)"
  },
  {
-  "en": "Projection compounds your contribution at the chosen rate every period. Past performance never guarantees future results.",
-  "tr": "Az előrejelzés minden időszakban a választott kamattal tőkésíti a befizetést. A múltbeli teljesítmény soha nem garantálja a jövőbeli eredményt."
+  "en": "Scenarios, not forecasts. Not investment advice. Past performance doesn't guarantee future results.",
+  "tr": "Forgatókönyvek, nem előrejelzések. Nem befektetési tanácsadás. A múltbeli teljesítmény nem garantálja a jövőbeli eredményeket."
  },
  {
   "en": "Total invested",
@@ -1360,32 +1336,32 @@
   "tr": "Narancs = várható érték · szaggatott = összes befektetés"
  },
  {
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.",
+  "tr": "Nagyobb allokációt tervez? A Virtuse CFO segít a Bitcoin-treasury vezetésében: tervezés, követés és riportolás. {0}/hó vagy {1}/év."
+ },
+ {
+  "en": "See Virtuse CFO",
+  "tr": "Virtuse CFO megtekintése"
+ },
+ {
   "en": "Fee arbitrage",
   "tr": "Díjarbitrázs"
  },
  {
-  "en": "Route",
-  "tr": "Út"
+  "en": "Open {0}",
+  "tr": "{0} megnyitása"
  },
  {
-  "en": "Fee / purchase",
-  "tr": "Díj / vásárlás"
+  "en": "\"Invested after fees per €1,000\" = how many euros of every €1,000 actually buy Bitcoin after the route's fee.",
+  "tr": "„Díjak után befektetett összeg 1000 €-ként” = minden 1000 €-ból hány euró vásárol ténylegesen Bitcoint az adott út díja után."
  },
  {
-  "en": "Effective",
-  "tr": "Tényleges"
+  "en": "Spreads are not included. For total cost (fee + estimated spread) see the {0}.",
+  "tr": "A spreadek nincsenek benne. A teljes költséget (díj + becsült spread) lásd itt: {0}."
  },
  {
-  "en": "Annual drag",
-  "tr": "Éves költség"
- },
- {
-  "en": "BTC per €1,000",
-  "tr": "BTC 1 000 €-ért"
- },
- {
-  "en": "\"BTC per €1,000\" = how much bitcoin actually lands in your wallet per €1,000 invested after all route fees. Illustrative fee schedule – production wires live partner quotes.",
-  "tr": "„BTC 1 000 €-ért” = mennyi Bitcoin érkezik ténylegesen a tárcájába minden befektetett 1 000 € után, minden díj levonásával. Tájékoztató díjszabás: az éles verzió a partnerek élő árajánlataival dolgozik."
+  "en": "Fee Index",
+  "tr": "Bitcoin-díjindex"
  },
  {
   "en": "Lowest fee at your amount",
@@ -1406,14 +1382,6 @@
  {
   "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
   "tr": "A fenti utak mindegyike ugyanannyiba vagy többe kerül: váltással semmit sem takarítana meg."
- },
- {
-  "en": "Open {0}",
-  "tr": "{0} megnyitása"
- },
- {
-  "en": "Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
-  "tr": "A prototípus díjai tájékoztató jellegűek; az előrejelzések matematikai forgatókönyvek, nem ígéretek. Nem pénzügyi tanácsadás. A Virtuse soha nem kezeli a kulcsait: a vásárlások az Ön által választott tárcába érkeznek."
  },
  {
   "en": "Tax & Inheritance Agent",
