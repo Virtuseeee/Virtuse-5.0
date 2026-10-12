@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<!-- Note: frame-ancestors (restricting who may embed this page) only works via an HTTP response header, not a <meta> tag. If/when this page moves behind a server that can set custom headers, add:
-     Content-Security-Policy: frame-ancestors 'self' https://virtuse.com https://virtuse.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Stacking Strategist — DCA Plan and Fee Comparison | Virtuse</title>
-<meta name="description" content="Set your Bitcoin buying rhythm, see a long-term DCA projection and compare partner fees per purchase to find the cheapest route.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<title>Stacking Strategist: Bitcoin DCA plan and fee comparison | Virtuse</title>
+<meta name="description" content="Plan a regular Bitcoin buy, see a scenario projection and what each partner&#x27;s fee costs you a year. From €10 a month to €1,000,000 upfront.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/stacking.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/stacking.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stacking.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/stacking.html">
@@ -33,56 +31,264 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/stacking.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/stacking.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/stacking.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Stacking Strategist — DCA Plan and Fee Comparison | Virtuse">
-<meta property="og:description" content="Set your Bitcoin buying rhythm, see a long-term DCA projection and compare partner fees per purchase to find the cheapest route.">
-<link rel="canonical" href="https://virtuse.com/stacking.html">
+<meta property="og:title" content="Stacking Strategist: Bitcoin DCA plan and fee comparison">
+<meta property="og:description" content="Plan a regular Bitcoin buy, see a scenario projection and what each partner&#x27;s fee costs you a year. From €10 a month to €1,000,000 upfront.">
 <meta property="og:url" content="https://virtuse.com/stacking.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacking Strategist: Bitcoin DCA plan and fee comparison">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Stacking Strategist — DCA Plan and Fee Comparison | Virtuse">
-<meta name="twitter:description" content="Set your Bitcoin buying rhythm, see a long-term DCA projection and compare partner fees per purchase to find the cheapest route.">
+<meta name="twitter:title" content="Stacking Strategist: Bitcoin DCA plan and fee comparison">
+<meta name="twitter:description" content="Plan a regular Bitcoin buy, see a scenario projection and what each partner&#x27;s fee costs you a year. From €10 a month to €1,000,000 upfront.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="robots" content="index, follow">
-<style id="tool-static-css">.tool-static{max-width:720px;margin:0 auto;padding:48px 20px 64px;line-height:1.6}.tool-static h1{font-size:28px;line-height:1.25;margin:0 0 16px}.tool-static h2{font-size:18px;margin:28px 0 6px}.tool-static p{margin:0 0 12px}html.js .tool-static{display:none}</style>
-<script>document.documentElement.classList.add('js')</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<script type="application/ld+json" id="virtuse-ld">
-{
+<meta name="twitter:image:alt" content="Stacking Strategist: Bitcoin DCA plan and fee comparison">
+<script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://virtuse.com/index.html"
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://virtuse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stacking Strategist",
+          "item": "https://virtuse.com/stacking.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
       "name": "Stacking Strategist",
-      "item": "https://virtuse.com/stacking.html"
+      "url": "https://virtuse.com/stacking.html",
+      "inLanguage": "en",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "dateModified": "2026-10-12"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this a forecast?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The returns are scenarios to show a range. Past performance doesn't guarantee future results, and Bitcoin can fall in value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are spreads included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The comparison uses each partner's listed fee. The Fee Index adds the estimated spread for total cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can I enter up to €1,000,000?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Some private clients and companies plan larger allocations. For those, Virtuse CFO helps plan, track and report a Bitcoin treasury."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Virtuse hold my Bitcoin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. You buy directly at the partner you choose. Virtuse never holds your keys or funds."
+          }
+        }
+      ]
     }
   ]
-}
-</script>
-<script type="module" crossorigin src="./concierge-assets/button-C6DVoenp.js"></script>
-<script type="module" crossorigin src="./concierge-assets/table-DhQGhQlo.js"></script>
-<script type="module" crossorigin src="./concierge-assets/arrow-left-CKlafPOF.js"></script>
-<script type="module" crossorigin src="./concierge-assets/main-stacking-BZCdLwHu.js"></script>
-<link rel="stylesheet" crossorigin href="./concierge-assets/button-kb_De07j.css">
+}</script>
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script type="module" crossorigin src="./concierge-assets/badge-CZeCODiB.js"></script>
+<script type="module" crossorigin src="./concierge-assets/slider-Dngn6XJ0.js"></script>
+<script type="module" crossorigin src="./concierge-assets/arrow-right-Biu-_BAx.js"></script>
+<script type="module" crossorigin src="./concierge-assets/main-stacking-DsNHH00K.js"></script>
+<link rel="stylesheet" crossorigin href="./concierge-assets/badge-Cv8WXJDB.css">
 </head>
-<body>
-<div id="root"><main class="tool-static"><h1>Stacking Strategist: plan your Bitcoin DCA and compare fees</h1><p>Choose how much you put in and whether you buy weekly or monthly, and see a long-term projection of your plan. The fee table compares partner routes and shows how much bitcoin actually lands in your wallet per €1,000.</p><p>Projections are mathematical scenarios, not promises. Not financial advice.</p><h2>What is DCA?</h2><p>Dollar-cost averaging: buying Bitcoin for a fixed amount at regular intervals instead of trying to time the market.</p><h2>Which fees does it compare?</h2><p>Partner fees as of Q4 2026, for example 0 % on the 21bitcoin Auto-Invest plan, from 0.25 % on ByBit EU and from 0.8 % on Kraken. Check each partner's site for current pricing.</p><h2>Is the projection a forecast?</h2><p>No. It compounds your contribution at the rate you choose. Past performance never guarantees future results.</p><h2>Does Virtuse hold my bitcoin?</h2><p>No. You buy and hold through the partner you choose. Virtuse never holds your keys or funds.</p></main></div>
-<div style="max-width:820px;margin:0 auto;padding:24px 20px 48px;text-align:center;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1421;">
-  <a href="bitcoin-dca-calculator/" style="color:#f7931a;font-size:14px;font-weight:600;text-decoration:none;">See the fee-only DCA calculator (SEO reference version) &rarr;</a>
-</div>
+<body class="page-buy page-fee page-pf page-stack no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/index.html" aria-label="Virtuse home">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Services</button>
+        <div class="nav-drop" id="nd-services"><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/lending.html">Loans</a><a href="/mining.html">Mining</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Learn</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-fee-index/">Fee Index</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
+        <div class="nav-drop" id="nd-tools"><a href="/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Soon</span></a><a href="/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/stacking.html" aria-current="page">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div>
+      </div>
+      <a class="nav-top" href="/about.html">About</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language: English"><span aria-hidden="true">&#127468;&#127463;</span><span class="lang-code">EN</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/stacking.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/stacking.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/stacking.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/stacking.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/stacking.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/stacking.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/stacking.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/stacking.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/stacking.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/stacking.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/concierge.html?utm_source=concierge&amp;utm_medium=nav">Find partners</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO + the calculator -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Stacking Strategist</div>
+    <h1>Plan your Bitcoin stacking, <span class="h1-or">see what it costs.</span></h1>
+    <p class="sp-lead">Set an amount, a rhythm and a time frame. You see a scenario projection and what the fee at each partner costs you every year.</p>
+  </div>
+  <div class="pf-app st-app" id="plan">
+    <div id="root"><noscript><p class="pf-noscript">Stacking Strategist needs JavaScript. You can compare buy fees on the Fee Index.</p></noscript></div>
+  </div>
+
+  <!-- 2. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>How <span>it works</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Step 01</span>
+          <h3>Set your plan</h3>
+          <p>A lump sum, a weekly or monthly amount and how many years you want to buy.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Step 02</span>
+          <h3>See a scenario</h3>
+          <p>Three return scenarios show a range, not a forecast. Bitcoin can also lose value.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Step 03</span>
+          <h3>Compare the fees</h3>
+          <p>What the listed fee at each partner costs you a year at your amount. You choose where to buy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FAQ -->
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Questions <span>and answers</span></h2></div></div>
+    <details open><summary>Is this a forecast?</summary><p>No. The returns are scenarios to show a range. Past performance doesn't guarantee future results, and Bitcoin can fall in value.</p></details>
+    <details><summary>Are spreads included?</summary><p>No. The comparison uses each partner's listed fee. The Fee Index adds the estimated spread for total cost.</p></details>
+    <details><summary>Why can I enter up to €1,000,000?</summary><p>Some private clients and companies plan larger allocations. For those, Virtuse CFO helps plan, track and report a Bitcoin treasury.</p></details>
+    <details><summary>Does Virtuse hold my Bitcoin?</summary><p>No. You buy directly at the partner you choose. Virtuse never holds your keys or funds.</p></details>
+  </section>
+
+  <!-- 4. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Latest Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Read the issue →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Get the Brief. <span>Free.</span></h3>
+        <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="stacking_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Get the Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Unsubscribe anytime. Not advice. <a href="/news.html?utm_source=brief&amp;utm_medium=stacking_brief" style="color:var(--muted)">All issues and the blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RELATED TOOLS -->
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Related <span>tools</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/bitcoin-fee-index/"><b>Fee Index</b><span>Total cost of buying Bitcoin every month.</span></a><a class="gcard" href="/bitcoin-dca-calculator/"><b>DCA calculator</b><span>Fees on a regular plan, year one.</span></a><a class="gcard" href="/concierge.html"><b>Partner Finder</b><span>Partners that fit your criteria.</span></a><a class="gcard" href="/buy-bitcoin.html"><b>Buy Bitcoin</b><span>Buy partners and their fees, side by side.</span></a><a class="gcard" href="/cfo.html"><b>Virtuse CFO</b><span>Bitcoin treasury for companies.</span></a><a class="gcard" href="/bitcoin-data.html"><b>Bitcoin Data</b><span>Price, fees and network data, live.</span></a></div>
+    <p class="tx-fine fi-disc">Scenarios, not forecasts. Not investment advice. Virtuse never holds your keys or funds; you buy on each partner's platform.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/mining.html">Mining</a><a href="/lending.html">Loans</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Soon</span></a><a href="/concierge.html">Partner Finder</a><a href="/stacking.html">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="/news.html">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/aml-compliance.html">AML &amp; Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, the weekly desk from Virtuse. <a href="/news.html">Read it &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Languages"><a href="/stacking.html" hreflang="en" aria-current="page">English</a><a href="/sk/stacking.html" hreflang="sk">Slovenčina</a><a href="/cs/stacking.html" hreflang="cs">Čeština</a><a href="/de/stacking.html" hreflang="de">Deutsch</a><a href="/pl/stacking.html" hreflang="pl">Polski</a><a href="/hu/stacking.html" hreflang="hu">Magyar</a><a href="/fr/stacking.html" hreflang="fr">Français</a><a href="/es/stacking.html" hreflang="es">Español</a><a href="/uk/stacking.html" hreflang="uk">Українська</a><a href="/ru/stacking.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse is an independent comparison hub. It does not hold client funds or keys, does not execute orders and does not give investment advice. Services are provided by the listed partners under their own licences. Fees are as published by each partner and can change.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
+<script src="/concierge-launcher.js" defer></script>
 </body>
 </html>

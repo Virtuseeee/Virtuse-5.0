@@ -736,32 +736,20 @@
   "tr": " J."
  },
  {
-  "en": "0 % fees on 21bitcoin's Auto-Invest plan – every euro of your {0}/period buys Bitcoin, none of it is lost to fees.",
-  "tr": "0 % Gebühren im Auto-Invest-Plan von 21bitcoin – jeder Euro Ihrer {0} pro Intervall kauft Bitcoin, nichts geht an Gebühren verloren."
+  "en": "0% fees on 21bitcoin's Auto-Invest plan from day 8, so all of your {0} per purchase goes into Bitcoin.",
+  "tr": "0 % Gebühren im Auto-Invest-Plan von 21bitcoin ab Tag 8, damit fließen Ihre {0} pro Kauf vollständig in Bitcoin."
  },
  {
-  "en": "It runs on autopilot too, once you set the schedule – the same \"set & forget\" benefit a trading bot gives you, without a subscription.",
-  "tr": "Einmal eingerichtet, läuft er auch automatisch – derselbe „Einrichten und vergessen“-Vorteil wie bei einem Trading-Bot, nur ohne Abo."
+  "en": "Once you set the schedule, the plan buys on its own.",
+  "tr": "Sobald Sie den Zeitplan festgelegt haben, kauft der Plan selbstständig."
  },
  {
-  "en": "At {0}/period, RevenueBot's flat monthly fee is diluted enough to beat a manual exchange purchase.",
-  "tr": "Bei {0} pro Intervall verteilt sich die monatliche Pauschale von RevenueBot so weit, dass sie einen manuellen Kauf an der Börse schlägt."
+  "en": "Lowest fee at this amount: {0} per purchase via {1}.",
+  "tr": "Niedrigste Gebühr bei diesem Betrag: {0} pro Kauf über {1}."
  },
  {
-  "en": "Automation removes timing anxiety and missed purchases – the hidden cost of manual DCA.",
-  "tr": "Automatisierung nimmt die Angst vor dem falschen Zeitpunkt und verhindert verpasste Käufe – die versteckten Kosten manueller DCA."
- },
- {
-  "en": "Lowest cost among the manual-purchase routes at this amount – {0} % per purchase via {1}.",
-  "tr": "Die günstigste der manuellen Kaufvarianten bei diesem Betrag – {0} % pro Kauf über {1}."
- },
- {
-  "en": "One manual step per period; pair it with a calendar reminder or a weekly ritual.",
-  "tr": "Ein manueller Schritt pro Intervall; verbinden Sie ihn mit einer Kalendererinnerung oder einem wöchentlichen Ritual."
- },
- {
-  "en": "Between the paid routes: RevenueBot's automation undercuts manual {0} trading on pure fees once you stack more than ≈ {1}/month – below that, {0} is cheaper but manual.",
-  "tr": "Unter den kostenpflichtigen Varianten: Die Automatisierung von RevenueBot ist rein bei den Gebühren günstiger als der manuelle Handel bei {0}, sobald Sie mehr als ≈ {1} pro Monat investieren – darunter ist {0} günstiger, aber manuell."
+  "en": "One manual purchase per period. A calendar reminder helps you keep the rhythm.",
+  "tr": "Ein manueller Kauf pro Intervall. Eine Kalendererinnerung hilft Ihnen, den Rhythmus zu halten."
  },
  {
   "en": "Weekly",
@@ -780,40 +768,20 @@
   "tr": "Moderat"
  },
  {
-  "en": "ARK-style",
-  "tr": "ARK-Szenario"
+  "en": "Optimistic",
+  "tr": "Optimistisch"
  },
  {
-  "en": "Auto-Invest plan",
-  "tr": "Auto-Invest-Plan"
+  "en": "Auto-Invest plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
+  "tr": "Auto-Invest-Plan: 0 % Gebühren ab Tag 8 (in den ersten 7 Tagen 0,99 %, mit Empfehlungscode 0,79 %)"
  },
  {
-  "en": "0 % fees on the built-in Auto-Invest savings plan, already automated: set the schedule once and it runs itself.",
-  "tr": "0 % Gebühren im integrierten Auto-Invest-Sparplan, bereits automatisiert: Zeitplan einmal festlegen, der Rest läuft von selbst."
+  "en": "Spot: 0.25% fee",
+  "tr": "Spot: 0,25 % Gebühr"
  },
  {
-  "en": "Automated",
-  "tr": "Automatisiert"
- },
- {
-  "en": "Spot trading",
-  "tr": "Spot-Handel"
- },
- {
-  "en": "Spot trading fees from 0.25 %, EU company in Vienna, for a manual recurring buy.",
-  "tr": "Spot-Handelsgebühren ab 0,25 %, EU-Gesellschaft in Wien, für einen manuellen wiederkehrenden Kauf."
- },
- {
-  "en": "Same day",
-  "tr": "Am selben Tag"
- },
- {
-  "en": "Pro trading",
-  "tr": "Pro-Handel"
- },
- {
-  "en": "Pro trading fees from 0.8 %, exchange with EUR trading since 2011.",
-  "tr": "Pro-Handelsgebühren ab 0,8 %, Börse mit EUR-Handel seit 2011."
+  "en": "Kraken Pro (spot taker, Tier 1): 0.8%",
+  "tr": "Kraken Pro (Spot-Taker, Stufe 1): 0,8 %"
  },
  {
   "en": "At risk – coins may be lost",
@@ -1300,16 +1268,24 @@
   "tr": "Vereinfachtes Lernmodell mit beispielhaften Zinssätzen und fester Margin-Call-Schwelle – die tatsächlichen Kreditbedingungen hängen vom Anbieter ab. Keine Finanz-, Steuer- oder Rechtsberatung. Virtuse verwahrt nie Ihre Schlüssel; die Sicherheit bleibt in einer Multisig-Treuhand."
  },
  {
-  "en": "Your DCA plan,",
-  "tr": "Ihr DCA-Plan,"
+  "en": "Route",
+  "tr": "Weg"
  },
  {
-  "en": "priced across every partner.",
-  "tr": "bei jedem Partner durchgerechnet."
+  "en": "Fee / purchase",
+  "tr": "Gebühr pro Kauf"
  },
  {
-  "en": "Set your stacking rhythm, see the long-term projection, and let the fee arbitrage table find the cheapest route per purchase – then automate it with 21bitcoin's Auto-Invest plan or a dedicated DCA bot like RevenueBot.",
-  "tr": "Legen Sie Ihren Stacking-Rhythmus fest, sehen Sie die langfristige Projektion und lassen Sie die Gebührenvergleichstabelle den günstigsten Weg pro Kauf finden – dann automatisieren Sie ihn mit dem Auto-Invest-Plan von 21bitcoin oder einem DCA-Bot wie RevenueBot."
+  "en": "Effective",
+  "tr": "Effektiv"
+ },
+ {
+  "en": "Annual drag",
+  "tr": "Kosten pro Jahr"
+ },
+ {
+  "en": "Invested after fees per €1,000",
+  "tr": "Nach Gebühren investiert je 1.000 €"
  },
  {
   "en": "Initial lump sum",
@@ -1324,20 +1300,24 @@
   "tr": "Häufigkeit"
  },
  {
+  "en": "Horizon in years",
+  "tr": "Horizont in Jahren"
+ },
+ {
   "en": "Annual return assumption",
   "tr": "Angenommene Jahresrendite"
  },
  {
-  "en": "yr",
-  "tr": "J."
+  "en": "{0}: {1}/yr",
+  "tr": "{0}: {1}/Jahr"
  },
  {
-  "en": "ARK-style scenario (39 %/yr) mirrors the research cited on virtuse.com. Treat it as an optimistic bound, not a promise.",
-  "tr": "Das ARK-Szenario (39 % pro Jahr) entspricht der auf virtuse.com zitierten Studie. Betrachten Sie es als optimistische Obergrenze, nicht als Versprechen."
+  "en": "(hypothetical)",
+  "tr": "(hypothetisch)"
  },
  {
-  "en": "Projection compounds your contribution at the chosen rate every period. Past performance never guarantees future results.",
-  "tr": "Die Projektion verzinst Ihre Beiträge in jedem Intervall mit dem gewählten Satz. Vergangene Wertentwicklung ist keine Garantie für die Zukunft."
+  "en": "Scenarios, not forecasts. Not investment advice. Past performance doesn't guarantee future results.",
+  "tr": "Szenarien, keine Prognosen. Keine Anlageberatung. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse."
  },
  {
   "en": "Total invested",
@@ -1360,32 +1340,32 @@
   "tr": "Orange = projizierter Wert · gestrichelt = Ihr investierter Gesamtbetrag"
  },
  {
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
+  "tr": "Planen Sie eine größere Allokation? Virtuse CFO hilft Ihnen, eine Bitcoin-Treasury zu führen: planen, verfolgen und berichten. Start am 1. November; kostenpflichtige Pläne ab Januar: {0}/Monat oder {1}/Jahr."
+ },
+ {
+  "en": "Get notified",
+  "tr": "Benachrichtigen Sie mich"
+ },
+ {
   "en": "Fee arbitrage",
   "tr": "Gebührenvergleich"
  },
  {
-  "en": "Route",
-  "tr": "Weg"
+  "en": "Open {0}",
+  "tr": "{0} öffnen"
  },
  {
-  "en": "Fee / purchase",
-  "tr": "Gebühr pro Kauf"
+  "en": "\"Invested after fees per €1,000\" = how many euros of every €1,000 actually buy Bitcoin after the route's fee.",
+  "tr": "„Nach Gebühren investiert je 1.000 €“ = wie viele Euro von je 1.000 € nach der Gebühr des Wegs tatsächlich Bitcoin kaufen."
  },
  {
-  "en": "Effective",
-  "tr": "Effektiv"
+  "en": "Spreads are not included. For total cost (fee + estimated spread) see the {0}.",
+  "tr": "Spreads sind nicht enthalten. Die Gesamtkosten (Gebühr + geschätzter Spread) finden Sie im {0}."
  },
  {
-  "en": "Annual drag",
-  "tr": "Kosten pro Jahr"
- },
- {
-  "en": "BTC per €1,000",
-  "tr": "BTC pro 1.000 €"
- },
- {
-  "en": "\"BTC per €1,000\" = how much bitcoin actually lands in your wallet per €1,000 invested after all route fees. Illustrative fee schedule – production wires live partner quotes.",
-  "tr": "„BTC pro 1.000 €“ = wie viel Bitcoin nach allen Gebühren tatsächlich pro 1.000 € Investition in Ihrer Wallet ankommt. Beispielhafte Gebührenübersicht – die Produktionsversion nutzt Live-Angebote der Partner."
+  "en": "Fee Index",
+  "tr": "Bitcoin-Gebührenindex"
  },
  {
   "en": "Lowest fee at your amount",
@@ -1405,15 +1385,7 @@
  },
  {
   "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
-  "tr": "Jeder andere Weg oben kostet gleich viel oder mehr – ein Wechsel spart hier nichts mehr."
- },
- {
-  "en": "Open {0}",
-  "tr": "{0} öffnen"
- },
- {
-  "en": "Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
-  "tr": "Die Gebühren im Prototyp sind beispielhaft; Projektionen sind mathematische Szenarien, keine Versprechen. Keine Finanzberatung. Virtuse verwahrt nie Ihre Schlüssel – Käufe gehen an die Wallet Ihrer Wahl."
+  "tr": "Jeder andere Weg oben kostet gleich viel oder mehr: Ein Wechsel spart hier nichts mehr."
  },
  {
   "en": "Tax & Inheritance Agent",
