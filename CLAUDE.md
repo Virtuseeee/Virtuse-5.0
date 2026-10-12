@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — SEO/GA hygiene (PR #71, main `cd595392` + stories `d5bf6abf`; **live on production**, `.htaccess` uploaded by the user and verified)
+
+- `.htaccess` (live = `seo-ops/virtuse.com.htaccess`, rollback `.before`): www (any scheme) and http go to `https://virtuse.com/$1` in one 301 hop. "https" = Apache `HTTPS=on` or nginx `X-Forwarded-Proto: https`, no loop on Webglobe. `/sk/news.html` 301s to `/news.html` (no source in the repo; external links). Live checks: https 200, http/www 301 to https, HSTS kept, legacy 410/301 rules and the blog fallback unchanged.
+- Staging: the GTM loader on all 701 pages + `brief_blog_template.html` is wrapped in `if(location.hostname!=='staging.virtuse.com'){…}` (ID once per page; same bytes on both hosts). `deploy_site.sh` keeps a staging-only `robots.txt` (`Disallow: /`) and skips robots.txt in the gh-pages copy/delete and the staging md5 list.
+- Homepages: canonical/og:url/hreflang/sitemap use `https://virtuse.com/` and `/<lang>/`. JSON-LD breadcrumbs still say `/index.html`. No index.html→/ redirect (internal links use index.html).
+- `seo-ops/audit_canonical.py`: 897 indexable pages, 0 problems. All 896 sitemap URLs were 200 on 2026-10-12. `robots.txt` disallows `/blog-translations-ru/`. cfo pages carry a TODO(launch 2026-11-01) comment; checklist in `docs/LAUNCH-CFO.md`.
+- **Gotcha:** a PR that touches `article.html` triggers the Stories build Action, which rebuilds stories from WordPress and pushes to main + gh-pages while `deploy_site.sh` runs. The staging md5 check then fails for those stories ("DEPLOY NOT COMPLETE", production fine). Fix: deploy the bot's commit range (here `cd595392..d5bf6abf`).
+- For Ras: resubmit the sitemap in Search Console, GA4 stream URL → `https://virtuse.com`, internal-traffic IP filter.
+
 ## Session status (2026-10-12) — Bitcoin Data (bitcoin-data.html) v2 live dashboard, 10 languages (PR #70, main `342f26c7`; **live on production** — user ran `deploy_site.sh 9357e3a5 342f26c7`, 12/12 md5-verified; live page loads every metric, requests only mempool.space + api.coingecko.com + raw GitHub)
 
 - Builder `i18n-tools/bitcoin-data/build_bitcoin_data.py` (+ `<lang>.json`, `check.py` also enforces `{n}/{t}/{d}` placeholders, `BRIEF.md`). Nav group "Learn" marked current. Sections: hero with 4 key metrics, price & market (30/90-day chart), network & mining, supply & halving, Bitcoin vs gold/S&P/bonds YTD (asset-returns.json), chart-card grid, Brief (without the BTC/EUR sparkline on this page), disclaimer.
