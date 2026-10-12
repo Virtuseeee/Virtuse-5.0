@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Bitcoin Data (bitcoin-data.html) v2 live dashboard, 10 languages (PR #70, main `342f26c7`; **live on production** — user ran `deploy_site.sh 9357e3a5 342f26c7`, 12/12 md5-verified; live page loads every metric, requests only mempool.space + api.coingecko.com + raw GitHub)
+
+- Builder `i18n-tools/bitcoin-data/build_bitcoin_data.py` (+ `<lang>.json`, `check.py` also enforces `{n}/{t}/{d}` placeholders, `BRIEF.md`). Nav group "Learn" marked current. Sections: hero with 4 key metrics, price & market (30/90-day chart), network & mining, supply & halving, Bitcoin vs gold/S&P/bonds YTD (asset-returns.json), chart-card grid, Brief (without the BTC/EUR sparkline on this page), disclaimer.
+- New shared `btc-data.js` (strings from `#bdI18n`, locale per language).
+  - Block height and latest block come from one `/v1/blocks` call.
+  - CoinGecko is called at most every 5 min (rate limits come back without CORS headers). If it fails, the 24 h change and chart stay empty with stale/error + Retry. **No Binance anywhere** (Ras, 2026-10-12; removed from this page's CSP too).
+  - Timestamps "Updated 14:05 CEST" (24 h, browser zone; English uses en-GB zone names).
+  - Equal fee tiers collapse to one line (`fees_equal`).
+- anime.js no longer loaded; page + script 41 KB vs 60 KB before.
+
 ## Session status (2026-10-11) — Sharp Sygnum logo (PR #69, main `e7e73c63`; **live on production**, md5-verified)
 
 - `logo-sygnum.svg` = the symbol path from Sygnum's official `main_logo.svg` (sygnum.com, #DF2A4F). `logo-sygnum.png` was replaced in place by a transparent 128 px render (was a blurry 32 px copy), so homepages, treasury pages and `data/partners.json` pick it up unchanged. The three-node mark is Sygnum's real logo (the earlier "generic share icon" note was wrong).
