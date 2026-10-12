@@ -18,7 +18,7 @@
       "logo": "logo-bybit.png",
       "logo_class": "dark",
       "fee_pct": 0.25,
-      "fee_fact": "Spot trading fee 0.25% at VIP 0 (maker and taker, new fee structure from 5 Oct 2026).",
+      "fee_fact": "Spot trading fee 0.25% at VIP 0, maker and taker alike (bybit.eu fee page, new fee structure for trades from 5 Oct 2026; page last updated 5 Oct 2026, checked on bybit.eu 12 Oct 2026, 14:16 UTC).",
       "url": "https://partner.bybit.eu/b/VIRTUSE",
       "source": "https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure"
     },

@@ -155,7 +155,7 @@
       document.getElementById('briefMeta').textContent = t('latestBrief', 'Latest Brief · ') + when + ' · ' + (iss.read_min || 3) + t('min', ' min');
       document.getElementById('briefTitle').textContent = iss.title + t('briefLangNote', '');
       document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-      var img = document.getElementById('briefImg'); if (img && iss.image) { img.src = iss.image; img.alt = t('coverImage', 'Cover image: ') + iss.title; }
+      var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = t('coverImage', 'Cover image: ') + iss.title; }
     }).catch(function () {});
   })();
 

@@ -225,6 +225,7 @@ def chrome(L, lang_url):
     nav = re.sub(r'<a class="logo" href="[^"]*"', '<a class="logo" href="index.html"', nav)
     foot = home[home.index('<footer class="footer-main">'):home.index('</footer>') + len('</footer>')]
     nav, foot = absolutize(nav, L), absolutize(foot, L)
+    foot = foot.replace(' &mdash; ', ', ').replace(' \u2014 ', ', ')   # no long dash in the footer line
 
     def langs(seg):
         def one(m):
@@ -275,6 +276,15 @@ def write(rel, out):
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
+def brief_card(L, t):
+    """Shared Brief card; its cover image comes from virtuse.com (the issue's og_image), not blog.virtuse.com."""
+    b = absolutize(C.brief(L, lambda k: t[k], '', 'fee_index_brief'), L).replace('data-root=""', 'data-root="/"')
+    iss = [x for x in json.load(open(os.path.join(SITE, 'news', 'issues.json')))['issues'] if x.get('slug') and not x.get('essay')][0]
+    if iss.get('og_image'):
+        b = re.sub(r'(<img id="briefImg" src=")[^"]*', lambda m: m.group(1) + iss['og_image'], b)
+    return b
+
+
 # ---------- main page (10 languages) ----------
 
 def panel(L, t, fi, s21, date):
@@ -316,10 +326,13 @@ def build_main(L, fi, s21, extra_pages):
     page = url(L)
     alts = [(x, url(x)) for x in LANGS] + [('x-default', url('en'))]
     rk = ranked(fi, s21, DEFAULT)
-    spnote = t['spread_note']
+    # measurement time of the order-book spreads, e.g. "12 Oct 2026, 12:24 UTC"
+    when = '%s, %s UTC' % (date, fi['spreads']['measured'][0][11:16])
+    spnote = T['spread_note'].replace('{date}', when, 1).replace('{date}', date)
     if s21 is None:   # first sentence (the exchanges) + the 21bitcoin 'being measured' note
         cut = T['spread_note'].index('{date}.') + len('{date}.')
-        spnote = T['spread_note'][:cut].replace('{date}', date) + ' ' + t['spread_note_21_pending']
+        spnote = T['spread_note'][:cut].replace('{date}', when) + ' ' + t['spread_note_21_pending']
+    spnote += ' <a href="/bitcoin-fee-index/methodology/">%s</a>' % t['method_link']
     finding = t['finding'].format(amount=eur(DEFAULT, L), w=rk[0]['name'], wt=pct(rk[0]['total'], L), s=rk[1]['name'], st=pct(rk[1]['total'], L))
     faq = [(t['q%d' % n], t['a%d' % n]) for n in range(1, 5)]
     ld = {'@context': 'https://schema.org', '@graph': org_ld() + [
@@ -415,9 +428,9 @@ def build_main(L, fi, s21, extra_pages):
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, mlink=t['method_link'], arrow=C.ARROW,
            qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, psum=t['press_sum'], pintro=t['press_intro'], pbh=t['press_blurb_h'],
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
-           brief=absolutize(C.brief(L, lambda k: t[k], '', 'fee_index_brief'), L).replace('data-root=""', 'data-root="/"'),
+           brief=brief_card(L, t),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
-    out += body + C.scripts('/')
+    out += body + C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
     check_text(out, L)
     write(out_file(L)[len(SITE) + 1:], out)
 
@@ -448,7 +461,7 @@ def simple_page(rel, title, desc, page_url, crumbs, h1, h1o, lead, sections, faq
 </main>
 
 '''.format(nav=nav, crumb=' · '.join(esc(n) for n, _ in crumbs[1:]), h1=h1, h1o=h1o, lead=lead, sections=sections, faq=faq_html, foot=foot)
-    out += C.scripts('/')
+    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
     check_text(out, rel)
     write(rel, out)
 
