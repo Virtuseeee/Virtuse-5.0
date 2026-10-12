@@ -1300,6 +1300,10 @@
   "tr": "Gyakoriság"
  },
  {
+  "en": "Horizon in years",
+  "tr": "Időtáv években"
+ },
+ {
   "en": "Annual return assumption",
   "tr": "Feltételezett éves hozam"
  },
@@ -1336,12 +1340,12 @@
   "tr": "Narancs = várható érték · szaggatott = összes befektetés"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.",
-  "tr": "Nagyobb allokációt tervez? A Virtuse CFO segít a Bitcoin-treasury vezetésében: tervezés, követés és riportolás. {0}/hó vagy {1}/év."
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
+  "tr": "Nagyobb allokációt tervez? A Virtuse CFO segít Bitcoin-treasuryt vezetni: tervezés, követés és jelentés. Indulás november 1-jén; fizetős csomagok januártól: {0}/hó vagy {1}/év."
  },
  {
-  "en": "See Virtuse CFO",
-  "tr": "Virtuse CFO megtekintése"
+  "en": "Get notified",
+  "tr": "Értesítést kérek"
  },
  {
   "en": "Fee arbitrage",

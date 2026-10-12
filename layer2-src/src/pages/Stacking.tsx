@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { ArrowUpRight, Bot, Calculator, Trophy } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Bot, Calculator, Trophy } from 'lucide-react';
 import {
   Area,
   AreaChart,
@@ -150,7 +150,20 @@ const FEE_INDEX_PATH: Record<Lang, string> = {
   es: '/es/bitcoin-indice-comisiones/',
 };
 const cfoHref = (lang: Lang) =>
-  `${lang === 'en' ? '/cfo.html' : `/${lang}/cfo.html`}?utm_source=stacking&utm_medium=cta&utm_campaign=cfo`;
+  `${lang === 'en' ? '/cfo.html' : `/${lang}/cfo.html`}?utm_source=stacking&utm_medium=cta&utm_campaign=cfo#waitForm`;
+
+// true on phone widths (the x axis shows fewer year labels there)
+function useNarrow(): boolean {
+  const q = '(max-width: 639px)';
+  const [narrow, setNarrow] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches);
+  useEffect(() => {
+    const m = window.matchMedia(q);
+    const on = () => setNarrow(m.matches);
+    m.addEventListener('change', on);
+    return () => m.removeEventListener('change', on);
+  }, []);
+  return narrow;
+}
 
 // Big values: full amount up to €10M, compact above so stat cards fit a phone.
 const eurStat = (n: number) => (Math.abs(n) >= 10_000_000 ? eurCompact(n) : eur(n));
@@ -253,6 +266,12 @@ export default function Stacking() {
     : advice.winner.annualDrag;
   const annualSavingsVsAverage = Math.max(0, avgOtherDrag - advice.winner.annualDrag);
 
+  // x axis: whole years only; on phones every 5 years for long horizons (every 2 from 6 years)
+  const narrow = useNarrow();
+  const tickStep = narrow ? (years > 10 ? 5 : years > 5 ? 2 : 1) : (years > 15 ? 2 : 1);
+  const xTicks = points
+    .filter((pt, i) => pt.period === 0 || i === points.length - 1 || (pt.period % periodsPerYear === 0 && (pt.period / periodsPerYear) % tickStep === 0 && years - pt.period / periodsPerYear >= tickStep / 2))
+    .map((pt) => pt.label);
   const showCfo = initial > 100_000 || contribution * periodsPerYear > 100_000 || final.value >= 1_000_000;
 
   const freqLabel = L(FREQUENCIES.find((f) => f.id === frequency)!.label, lang).toLowerCase();
@@ -324,7 +343,7 @@ export default function Stacking() {
               <Label className="text-ink-muted">{t(lang, 'Horizon', 'Horizont', 'Horizont')}</Label>
               <span className="text-sm font-semibold text-bitcoin">{years} {t(lang, 'years', 'rokov', 'let')}</span>
             </div>
-            <Slider value={[years]} onValueChange={([v]) => setYears(v)} min={YEARS_LIMITS.min} max={YEARS_LIMITS.max} step={1} />
+            <Slider value={[years]} onValueChange={([v]) => setYears(v)} min={YEARS_LIMITS.min} max={YEARS_LIMITS.max} step={1} aria-label={t(lang, 'Horizon in years', 'Horizont v rokoch', 'Horizont v letech')} />
           </div>
 
           <div>
@@ -388,7 +407,7 @@ export default function Stacking() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
-                <XAxis dataKey="label" tick={{ fill: '#71717a', fontSize: 11 }} tickLine={false} axisLine={false} />
+                <XAxis dataKey="label" ticks={xTicks} interval={0} tick={{ fill: '#71717a', fontSize: 11 }} tickLine={false} axisLine={false} />
                 <YAxis
                   tick={{ fill: '#71717a', fontSize: 11 }}
                   tickLine={false}
@@ -422,9 +441,9 @@ export default function Stacking() {
         <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm leading-relaxed text-ink">
             {tv(lang,
-              'Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.',
-              'Plánujete väčšiu alokáciu? Virtuse CFO vám pomôže viesť bitcoinovú treasury: plánovať, sledovať a reportovať. {0}/mesiac alebo {1}/rok.',
-              'Plánujete větší alokaci? Virtuse CFO vám pomůže vést bitcoinovou treasury: plánovat, sledovat a reportovat. {0}/měsíc nebo {1}/rok.',
+              'Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.',
+              'Plánujete väčšiu alokáciu? Virtuse CFO vám pomôže viesť bitcoinovú treasury: plánovať, sledovať a reportovať. Spúšťa sa 1. novembra; platené plány od januára: {0}/mesiac alebo {1}/rok.',
+              'Plánujete větší alokaci? Virtuse CFO vám pomůže vést bitcoinovou treasury: plánovat, sledovat a reportovat. Spouští se 1. listopadu; placené plány od ledna: {0}/měsíc nebo {1}/rok.',
               [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
           </p>
           <a
@@ -432,7 +451,7 @@ export default function Stacking() {
             data-cta="cfo"
             className="flex shrink-0 items-center justify-center gap-1.5 rounded-[10px] border border-line-strong px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-white/30 hover:bg-panel-hover"
           >
-            {t(lang, 'See Virtuse CFO', 'Pozrieť Virtuse CFO', 'Zobrazit Virtuse CFO')}
+            {t(lang, 'Get notified', 'Dajte mi vedieť', 'Dejte mi vědět')} <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       )}

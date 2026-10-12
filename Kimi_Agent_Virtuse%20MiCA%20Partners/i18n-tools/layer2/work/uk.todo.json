@@ -1300,6 +1300,10 @@
   "tr": "Частота"
  },
  {
+  "en": "Horizon in years",
+  "tr": "Горизонт у роках"
+ },
+ {
   "en": "Annual return assumption",
   "tr": "Припущена річна дохідність"
  },
@@ -1336,12 +1340,12 @@
   "tr": "Помаранчева = прогнозована вартість · пунктир = усього інвестовано"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.",
-  "tr": "Плануєте більший розподіл коштів? Virtuse CFO допомагає вести біткоїн-скарбницю: планувати, відстежувати й звітувати. {0}/місяць або {1}/рік."
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
+  "tr": "Плануєте більшу суму? Virtuse CFO допомагає вести Біткоїн-казначейство: планувати, відстежувати й звітувати. Запуск 1 листопада; платні плани з січня: {0}/міс. або {1}/рік."
  },
  {
-  "en": "See Virtuse CFO",
-  "tr": "Переглянути Virtuse CFO"
+  "en": "Get notified",
+  "tr": "Повідомити мене"
  },
  {
   "en": "Fee arbitrage",

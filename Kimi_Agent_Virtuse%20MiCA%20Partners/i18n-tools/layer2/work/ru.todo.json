@@ -1300,6 +1300,10 @@
   "tr": "Частота"
  },
  {
+  "en": "Horizon in years",
+  "tr": "Горизонт в годах"
+ },
+ {
   "en": "Annual return assumption",
   "tr": "Предполагаемая годовая доходность"
  },
@@ -1336,12 +1340,12 @@
   "tr": "Оранжевая = прогнозируемая стоимость · пунктир = всего инвестировано"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.",
-  "tr": "Планируете более крупное распределение средств? Virtuse CFO помогает вести биткоин-казначейство: планировать, отслеживать и отчитываться. {0}/месяц или {1}/год."
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
+  "tr": "Планируете более крупную сумму? Virtuse CFO помогает вести Биткоин-Treasury: планировать, отслеживать и отчитываться. Запуск 1 ноября; платные планы с января: {0}/мес. или {1}/год."
  },
  {
-  "en": "See Virtuse CFO",
-  "tr": "Посмотреть Virtuse CFO"
+  "en": "Get notified",
+  "tr": "Сообщить мне"
  },
  {
   "en": "Fee arbitrage",

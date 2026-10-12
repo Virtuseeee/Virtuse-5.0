@@ -1300,6 +1300,10 @@
   "tr": "Częstotliwość"
  },
  {
+  "en": "Horizon in years",
+  "tr": "Horyzont w latach"
+ },
+ {
   "en": "Annual return assumption",
   "tr": "Zakładany roczny zwrot"
  },
@@ -1336,12 +1340,12 @@
   "tr": "Pomarańczowa = prognozowana wartość · przerywana = łącznie zainwestowano"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. {0}/month or {1}/year.",
-  "tr": "Planują Państwo większą alokację? Virtuse CFO pomaga prowadzić bitcoinową treasury: planować, śledzić i raportować. {0}/miesiąc lub {1}/rok."
+  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
+  "tr": "Planowana większa alokacja? Virtuse CFO pomaga prowadzić bitcoinową treasury: planowanie, śledzenie i raportowanie. Start 1 listopada; płatne plany od stycznia: {0}/mies. lub {1}/rok."
  },
  {
-  "en": "See Virtuse CFO",
-  "tr": "Zobacz Virtuse CFO"
+  "en": "Get notified",
+  "tr": "Powiadom mnie"
  },
  {
   "en": "Fee arbitrage",
