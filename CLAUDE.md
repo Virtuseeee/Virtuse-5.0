@@ -2,11 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-12) — Bitcoin Fee Index redesign, ranked by total cost (branch `feat/fee-index-v2`, PR open; **staging only, not on production**)
+## Session status (2026-10-12) — Bitcoin Fee Index redesign, ranked by total cost (main `a52f4b3e`, PR #76; **live on production** — user ran `deploy_site.sh 248abb81 a52f4b3e` + an sftp put of `partner-capture.js`, 43/43 md5-verified on virtuse.com)
 
 - Handover `HANDOVER-claude-fee-index.md`. All Fee Index pages are now built by `i18n-tools/fee-index/build_fee_index.py` (10 languages + EN methodology, `print.html` (current), `2026-q3/` + print, `embed/`) from `seo-build/data/fee-index.json`. **seo-build no longer writes them** (`FEE_INDEX_EXTERNAL` in generate.mjs) but keeps them in the sitemap; run generate.mjs first, then the builder.
 - Head = buy-bitcoin's standard block (consent → cookie-consent.js → partner-click.js → partner-capture.js → GTM-KXX4Q6WH with staging guard); embed has no GTM and its Source link carries `utm_source=embed&utm_medium=referral&utm_campaign=fee_index`.
 - Ranking by total cost = listed fee + estimated spread, per amount (€50–1,000). Fees checked 12 Oct 2026 on the partners' pages: 21bitcoin Auto-Invest 0% (first 7 days 0.99%/0.79%), Bybit EU 0.25% flat from 5 Oct 2026, Kraken Pro 0.80% taker Tier 1 (Instant Buy 1% + spread noted). Exchange spreads: `measure_spreads.py --write` (public order books; <0.01% on 12 Oct). **21bitcoin's spread is not measured yet** (no public price): until `spread_21bitcoin.pct` is set in fee-index.json, 21bitcoin is listed last without a rank ("Being measured"). Measure from the app price vs Kraken 1-min mid at the same minute before production.
+- Follow-up in the same PR: spread note shows the measurement time (UTC) + methodology link; Bybit EU re-checked on bybit.eu 12 Oct 14:16 UTC (page updated 5 Oct); Brief card cover from virtuse.com (`site-v2.js` uses the issue's `og_image` when set; fee pages load `site-v2.js?v=6`); footer line on fee pages uses a comma instead of the long dash (other v2 pages still have it).
+- **`partner-capture.js` had never been deployed** (404 on staging and production although ~70 pages load it); now on both. It's still switched off. `deploy_site.sh` only uploads files changed in the commit range, so a file committed earlier but never uploaded needs its own sftp put.
 - The builder fails if `fee_pct` differs from fee-schedule-live.json (Stacking table). Brand now "Bybit EU" in the seo-build data (DCA/buy-country pages changed with it); buy-bitcoin.html and stacking.ts still say "ByBit EU" and rank by fee only.
 
 ## Session status (2026-10-12) — Brief share preview per edition (news.html og:/twitter:) (main `f78545b9`; **live on production** — user ran `deploy_site.sh 3acfa833 f78545b9`, news.html + issues.json + og image md5-verified on virtuse.com)
