@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<!-- Note: frame-ancestors (restricting who may embed this page) only works via an HTTP response header, not a <meta> tag. If/when this page moves behind a server that can set custom headers, add:
-     Content-Security-Policy: frame-ancestors 'self' https://virtuse.com https://virtuse.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Loan &amp; Liquidity Copilot — vender o pedir prestado | Virtuse</title>
-<meta name="description" content="Compare vender su bitcoin con un préstamo respaldado por Bitcoin: impuesto si vende, intereses si pide prestado y precio de liquidación.">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="shortcut icon" href="../favicon.ico">
+<title>Loan &amp; Liquidity Copilot: vender o pedir prestado | Virtuse</title>
+<meta name="description" content="Compare vender Bitcoin con un préstamo respaldado por Bitcoin: impuestos, intereses, precio de liquidación y cinco escenarios. No es asesoramiento.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/es/loan.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/loan.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/loan.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/loan.html">
@@ -33,34 +31,266 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/loan.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/loan.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/loan.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Loan &amp; Liquidity Copilot — vender o pedir prestado | Virtuse">
-<meta property="og:description" content="Compare vender su bitcoin con un préstamo respaldado por Bitcoin: impuesto si vende, intereses si pide prestado y precio de liquidación.">
+<meta property="og:title" content="Loan &amp; Liquidity Copilot: vender o pedir prestado con Bitcoin">
+<meta property="og:description" content="Compare vender Bitcoin con un préstamo respaldado por Bitcoin: impuestos, intereses, precio de liquidación y cinco escenarios. No es asesoramiento.">
 <meta property="og:url" content="https://virtuse.com/es/loan.html">
-<link rel="canonical" href="https://virtuse.com/es/loan.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Loan &amp; Liquidity Copilot: vender o pedir prestado con Bitcoin">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loan &amp; Liquidity Copilot — vender o pedir prestado | Virtuse">
-<meta name="twitter:description" content="Compare vender su bitcoin con un préstamo respaldado por Bitcoin: impuesto si vende, intereses si pide prestado y precio de liquidación.">
+<meta name="twitter:title" content="Loan &amp; Liquidity Copilot: vender o pedir prestado con Bitcoin">
+<meta name="twitter:description" content="Compare vender Bitcoin con un préstamo respaldado por Bitcoin: impuestos, intereses, precio de liquidación y cinco escenarios. No es asesoramiento.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="robots" content="index, follow">
-<style id="tool-static-css">.tool-static{max-width:720px;margin:0 auto;padding:48px 20px 64px;line-height:1.6}.tool-static h1{font-size:28px;line-height:1.25;margin:0 0 16px}.tool-static h2{font-size:18px;margin:28px 0 6px}.tool-static p{margin:0 0 12px}html.js .tool-static{display:none}</style>
-<script>document.documentElement.classList.add('js')</script>
+<meta name="twitter:image:alt" content="Loan &amp; Liquidity Copilot: vender o pedir prestado con Bitcoin">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://virtuse.com/es/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Loan & Liquidity Copilot",
+          "item": "https://virtuse.com/es/loan.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Loan & Liquidity Copilot",
+      "url": "https://virtuse.com/es/loan.html",
+      "inLanguage": "es",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "dateModified": "2026-10-12"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es una liquidación?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si el precio de Bitcoin cae lo suficiente, el prestamista puede vender parte o toda su garantía para devolver el préstamo. Puede perder el Bitcoin que aportó como garantía."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿De dónde salen los tipos impositivos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cada país muestra el tipo con un enlace a la fuente oficial y la fecha en que lo comprobamos. Se indican las exenciones por periodo de tenencia. No es asesoramiento fiscal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Quién custodia la garantía?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del prestamista. Consulte las condiciones del prestamista antes de aportar Bitcoin como garantía."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es asesoramiento financiero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Es una calculadora para sus propias cifras. No le dice si debe vender o pedir prestado."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+<meta name="vb-cfo-stage" content="wait">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<script type="module" crossorigin src="../concierge-assets/badge-CZeCODiB.js"></script>
-<script type="module" crossorigin src="../concierge-assets/button-7SGobdtK.js"></script>
-<script type="module" crossorigin src="../concierge-assets/slider-Dngn6XJ0.js"></script>
-<script type="module" crossorigin src="../concierge-assets/triangle-alert-BONPnrVh.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-loan-T9bqUK0y.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/badge-Cv8WXJDB.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script>window.VB_I18N = {"openMenu": "Abrir menú", "closeMenu": "Cerrar menú", "soon": "Pronto", "new": "Nuevo", "latestBrief": "Último Brief · ", "min": " min", "coverImage": "Imagen de portada: ", "badEmail": "Introduzca un correo electrónico válido.", "sending": "Enviando...", "subscribed": "Listo. El Brief sale el lunes.", "error": "Algo salió mal. Inténtelo de nuevo.", "netError": "Error de red. Inténtelo de nuevo.", "briefLangNote": " (en inglés)"};</script>
+<script type="module" crossorigin src="../concierge-assets/utils-D_cZ8W0F.js"></script>
+<script type="module" crossorigin src="../concierge-assets/slider-CUc0BTl2.js"></script>
+<script type="module" crossorigin src="../concierge-assets/triangle-alert-D4ven5Z5.js"></script>
+<script type="module" crossorigin src="../concierge-assets/arrow-right-evfikLw8.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-loan-Cc9uHaCd.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/utils-CKEVrtYH.css">
 </head>
-<body>
-<div id="root"><main class="tool-static"><h1>Loan &amp; Liquidity Copilot: ¿vender su bitcoin o pedir prestado con él?</h1><p>Indique cuánto bitcoin tiene, cuánto dinero necesita, la relación préstamo-valor (LTV) y el tipo de interés. El Copilot pone las dos vías una junto a otra: el impuesto que pagaría si vende y los intereses que pagaría si, en su lugar, pide un préstamo con su bitcoin como garantía.</p><p>También muestra el precio del bitcoin al que un préstamo llega a la llamada de margen y puede liquidarse, y una tabla para distintos escenarios de precio. Las cifras son estimaciones, no asesoramiento.</p><h2>¿Qué compara?</h2><p>Vender bitcoin para obtener dinero frente a un préstamo respaldado por Bitcoin: el impuesto sobre la ganancia si vende, los intereses del plazo si pide prestado y cuánto bitcoin conserva.</p><h2>¿Qué es el precio de liquidación?</h2><p>El precio del bitcoin al que el prestamista puede vender su garantía para devolver el préstamo. Un LTV más bajo lo aleja.</p><h2>¿Qué tipo impositivo usa?</h2><p>Elige el valor predefinido de su país o introduce su propio tipo. Los valores predefinidos son orientativos, no asesoramiento fiscal; compruébelos con un asesor fiscal local.</p><h2>¿Es asesoramiento financiero?</h2><p>No. El Copilot muestra las cifras de las dos vías. La decisión es suya y Virtuse nunca custodia su bitcoin.</p></main></div>
+<body class="page-buy page-fee page-pf page-loan no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/es/index.html" aria-label="Inicio de Virtuse">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Servicios</button>
+        <div class="nav-drop" id="nd-services"><a href="/es/buy-bitcoin.html">Comprar Bitcoin</a><a href="/es/secure.html">Custodia</a><a href="/es/lending.html">Préstamos</a><a href="/es/mining.html">Minería</a><a href="/es/treasury.html">Treasury</a><a href="/es/tax.html">Impuestos</a><a href="/es/bots.html">Bots</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Aprender</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/es/blog.html">Blog</a><a href="/es/bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Herramientas</button>
+        <div class="nav-drop" id="nd-tools"><a href="/es/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Pronto</span></a><a href="/es/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/es/stacking.html">Stacking Strategist</a><a href="/es/loan.html" aria-current="page">Loan &amp; Liquidity Copilot</a><a href="/es/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/es/retirement-calculator.html">Calculadora de jubilación</a></div>
+      </div>
+      <a class="nav-top" href="/es/about.html">Sobre nosotros</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma de la página: español"><span aria-hidden="true">&#127466;&#127480;</span><span class="lang-code">ES</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/loan.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/loan.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/loan.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/loan.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/loan.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/loan.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/loan.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/loan.html" class="lang-opt active" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/loan.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/loan.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/es/concierge.html?utm_source=concierge&amp;utm_medium=nav">Encontrar partners</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO + the calculator -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Loan & Liquidity Copilot</div>
+    <h1>¿Vender su Bitcoin <span class="h1-or">o pedir prestado con él como garantía?</span></h1>
+    <p class="sp-lead">Indique el dinero que necesita y el Bitcoin que tiene. Verá el impuesto de una venta, el coste de un préstamo, el precio al que un préstamo entra en problemas y lo que queda en cinco escenarios de precio.</p>
+  </div>
+  <div class="pf-app st-app" id="plan">
+    <div id="root"><noscript><p class="pf-noscript">Loan & Liquidity Copilot necesita JavaScript. Puede leer en su lugar la guía Vender o pedir prestado.</p></noscript></div>
+  </div>
+
+  <!-- 2. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>Cómo <span>funciona</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Paso 01</span>
+          <h3>Introduzca sus cifras</h3>
+          <p>El dinero que necesita, el Bitcoin que tiene, las condiciones del préstamo y su país fiscal.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Paso 02</span>
+          <h3>Compare ambas opciones</h3>
+          <p>Vender cuesta impuestos ahora. Pedir prestado cuesta intereses, y la garantía puede liquidarse si el precio cae.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Paso 03</span>
+          <h3>Revise los escenarios</h3>
+          <p>Cinco trayectorias de precio muestran lo que queda de su Bitcoin en cada caso. Ambas columnas suponen que usted gasta el dinero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FAQ -->
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Preguntas <span>y respuestas</span></h2></div></div>
+    <details open><summary>¿Qué es una liquidación?</summary><p>Si el precio de Bitcoin cae lo suficiente, el prestamista puede vender parte o toda su garantía para devolver el préstamo. Puede perder el Bitcoin que aportó como garantía.</p></details>
+    <details><summary>¿De dónde salen los tipos impositivos?</summary><p>Cada país muestra el tipo con un enlace a la fuente oficial y la fecha en que lo comprobamos. Se indican las exenciones por periodo de tenencia. No es asesoramiento fiscal.</p></details>
+    <details><summary>¿Quién custodia la garantía?</summary><p>Depende del prestamista. Consulte las condiciones del prestamista antes de aportar Bitcoin como garantía.</p></details>
+    <details><summary>¿Es asesoramiento financiero?</summary><p>No. Es una calculadora para sus propias cifras. No le dice si debe vender o pedir prestado.</p></details>
+  </section>
+
+  <!-- 4. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Solo Bitcoin, cada lunes.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=es">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Último Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (en inglés)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Leer el número →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Reciba el Brief. <span>Gratis.</span></h3>
+        <p>Mercado, regulación, minería. Sin tokens. Sin publirreportajes. Un correo, cada lunes.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="loan_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="Correo electrónico" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Recibir el Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Puede darse de baja cuando quiera. No es asesoramiento. <a href="/news.html?utm_source=brief&amp;utm_medium=loan_brief" style="color:var(--muted)">Todos los números y el blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RELATED TOOLS -->
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Herramientas <span>relacionadas</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/es/lending.html"><b>Préstamos con Bitcoin</b><span>Partners de préstamo y sus condiciones.</span></a><a class="gcard" href="/es/bitcoin-impuestos/"><b>Guías fiscales de Bitcoin</b><span>Normas de 13 países de la UE.</span></a><a class="gcard" href="/es/bitcoin-vender-o-pedir-prestado/"><b>Guía Vender o pedir prestado</b><span>Las ventajas y desventajas, explicadas.</span></a><a class="gcard" href="/es/stacking.html"><b>Stacking Strategist</b><span>Planifique una cantidad y un ritmo.</span></a><a class="gcard" href="/es/concierge.html"><b>Partner Finder</b><span>Partners que encajan con sus criterios.</span></a><a class="gcard" href="/es/cfo.html"><b>Virtuse CFO</b><span>Treasury en Bitcoin para empresas.</span></a></div>
+    <p class="tx-fine fi-disc">Un préstamo respaldado por Bitcoin puede liquidarse si el precio cae. No es asesoramiento financiero, fiscal ni legal. Virtuse nunca custodia sus claves ni sus fondos.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Servicios</h4><a href="/es/buy-bitcoin.html">Comprar Bitcoin</a><a href="/es/secure.html">Custodia</a><a href="/es/mining.html">Minería</a><a href="/es/lending.html">Préstamos</a><a href="/es/treasury.html">Treasury</a><a href="/es/tax.html">Impuestos</a><a href="/es/bots.html">Bots</a></div><div class="footer-col"><h4>Empresa</h4><a href="/es/about.html">Sobre nosotros</a><a href="/es/faq.html">Preguntas frecuentes</a></div><div class="footer-col"><h4>Herramientas</h4><a href="/es/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Pronto</span></a><a href="/es/concierge.html">Partner Finder</a><a href="/es/stacking.html">Stacking Strategist</a><a href="/es/loan.html">Loan &amp; Liquidity Copilot</a><a href="/es/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/es/retirement-calculator.html">Calculadora de jubilación</a></div><div class="footer-col"><h4>Recursos</h4><a href="/news.html">Virtuse Brief</a><a href="/es/blog.html">Blog</a><a href="/es/bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-impuestos/">Impuestos sobre Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a><a href="/es/bitcoin-calculadora-dca/">Calculadora DCA</a><a href="/es/bitcoin-vender-o-pedir-prestado/">Vender o pedir prestado</a><a href="/es/bitcoin-herencia/">Herencia</a></div><div class="footer-col"><h4>Legal</h4><a href="/es/terms-and-conditions.html">Términos y condiciones</a><a href="/es/privacy-policy.html">Política de privacidad</a><a href="/es/aml-compliance.html">AML y cumplimiento</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, el resumen semanal de Virtuse. <a href="/news.html">Leerlo &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Idiomas"><a href="/loan.html" hreflang="en">English</a><a href="/sk/loan.html" hreflang="sk">Slovenčina</a><a href="/cs/loan.html" hreflang="cs">Čeština</a><a href="/de/loan.html" hreflang="de">Deutsch</a><a href="/pl/loan.html" hreflang="pl">Polski</a><a href="/hu/loan.html" hreflang="hu">Magyar</a><a href="/fr/loan.html" hreflang="fr">Français</a><a href="/es/loan.html" hreflang="es" aria-current="page">Español</a><a href="/uk/loan.html" hreflang="uk">Українська</a><a href="/ru/loan.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse es un hub de comparación independiente. No custodia fondos ni claves de clientes, no ejecuta órdenes y no presta asesoramiento de inversión. Los servicios los prestan los partners incluidos bajo sus propias licencias. Las comisiones son las publicadas por cada partner y pueden cambiar.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
+<script src="/concierge-launcher.js" defer></script>
 </body>
 </html>
