@@ -170,6 +170,9 @@ def build(L):
     h = one(h, "fetch('news/issues.json'", "fetch('../news/issues.json'")
     h = one(h, "document.getElementById('briefIssue').href = 'article.html?slug=' + encodeURIComponent(iss.slug);",
             "document.getElementById('briefIssue').href = '../article.html?slug=' + encodeURIComponent(iss.slug) + '&lang=%s';" % L)
+    if L == 'sk':   # Slovak issues have their own story page (slug_sk); without one the reader link stays
+        h = one(h, "var sp = '/stories/' + encodeURIComponent(iss.slug) + '/';",
+                "var sp = (iss.slug_sk ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '');")
     h = one(h, "body: JSON.stringify({ email: email, hp: hp, lang: 'en' })", "body: JSON.stringify({ email: email, hp: hp, lang: '%s' })" % L)
     h = h.replace('data-consultation-lang="en"', 'data-consultation-lang="%s"' % L)
     h = one(h, "function fmt(n) { return '€' + Math.round(n).toLocaleString('en-IE'); }",

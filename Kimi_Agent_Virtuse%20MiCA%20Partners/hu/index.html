@@ -1729,10 +1729,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     var dt = new Date(iss.date + 'T12:00:00Z');
     var when = dt.toLocaleDateString('hu-HU', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
     document.getElementById('briefIssue').href = '../article.html?slug=' + encodeURIComponent(iss.slug) + '&lang=hu';
+    // the static story page when it exists (the reader link stays as the fallback)
+    var sp = '/stories/' + encodeURIComponent(iss.slug) + '/'; if (sp && window.fetch) fetch(sp, { method: 'HEAD' }).then(function (r) { if (r.ok) document.getElementById('briefIssue').href = sp; }).catch(function () {});
     document.getElementById('briefMeta').textContent = 'Legújabb Brief · ' + when + ' · ' + (iss.read_min || 3) + ' perc';
     document.getElementById('briefTitle').textContent = iss.title + ' (angol nyelven)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'); if (img && iss.image) { img.src = iss.image; img.alt = 'Borítókép: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = 'Borítókép: ' + iss.title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)
