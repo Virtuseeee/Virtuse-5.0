@@ -136,10 +136,6 @@
   "tr": "Démarrage simple pour les débutants (pays : {0}) : une application 100 % Bitcoin."
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees.",
-  "tr": "Plan d'épargne Auto-Invest avec 0 % de frais."
- },
- {
   "en": "Exchange with EUR trading pairs for {0}.",
   "tr": "Plateforme d'échange avec des paires en EUR pour {0}."
  },
@@ -150,10 +146,6 @@
  {
   "en": "Bitcoin-only app: buy once or with Auto Buy, then withdraw to your own wallet at any time or let Auto Send move it automatically.",
   "tr": "Application 100 % Bitcoin : achetez ponctuellement ou avec Auto Buy, puis retirez vers votre propre portefeuille à tout moment ou laissez Auto Send le faire automatiquement."
- },
- {
-  "en": "Your Bitcoin is held with BitGo until you withdraw it.",
-  "tr": "Vos bitcoins sont conservés chez BitGo jusqu'à ce que vous les retiriez."
  },
  {
   "en": "For larger amounts, a spot order book exchange with EUR pairs.",
@@ -464,8 +456,8 @@
   "tr": "Application 100 % Bitcoin pour acheter et épargner"
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees",
-  "tr": "Plan d'épargne Auto-Invest sans frais"
+  "en": "Auto-Invest savings plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
+  "tr": "Plan d’épargne Auto-Invest : 0 % de frais à partir du 8e jour (0,99 %, ou 0,79 % avec un code de parrainage, les 7 premiers jours)"
  },
  {
   "en": "FMA Austria",
@@ -496,8 +488,8 @@
   "tr": "Application 100 % Bitcoin avec Auto Buy et Auto Send vers votre propre portefeuille"
  },
  {
-  "en": "Bitcoin held with BitGo until you withdraw it",
-  "tr": "Bitcoins conservés chez BitGo jusqu'à leur retrait"
+  "en": "Customer Bitcoin held in BitGo institutional custody",
+  "tr": "Bitcoin des clients conservés chez BitGo, dépositaire institutionnel"
  },
  {
   "en": "Bitcoin only",

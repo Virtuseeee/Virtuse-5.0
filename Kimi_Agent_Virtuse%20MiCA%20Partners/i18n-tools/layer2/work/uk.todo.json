@@ -136,10 +136,6 @@
   "tr": "Простий старт для новачків (країна: {0}): застосунок лише для Біткоїна."
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees.",
-  "tr": "План заощаджень Auto-Invest з 0% комісій."
- },
- {
   "en": "Exchange with EUR trading pairs for {0}.",
   "tr": "Біржа з торговими парами в EUR (сума: {0})."
  },
@@ -150,10 +146,6 @@
  {
   "en": "Bitcoin-only app: buy once or with Auto Buy, then withdraw to your own wallet at any time or let Auto Send move it automatically.",
   "tr": "Застосунок лише для Біткоїна: купуйте разово або через Auto Buy і виводьте на власний гаманець будь-коли, або Auto Send зробить це автоматично."
- },
- {
-  "en": "Your Bitcoin is held with BitGo until you withdraw it.",
-  "tr": "Ваш Біткоїн зберігається в BitGo, доки ви його не виведете."
  },
  {
   "en": "For larger amounts, a spot order book exchange with EUR pairs.",
@@ -464,8 +456,8 @@
   "tr": "Застосунок лише для Біткоїна для купівлі та заощаджень"
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees",
-  "tr": "План заощаджень Auto-Invest без комісій"
+  "en": "Auto-Invest savings plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
+  "tr": "План заощаджень Auto-Invest: 0% комісії з 8-го дня (перші 7 днів 0,99% або 0,79% з реферальним кодом)"
  },
  {
   "en": "FMA Austria",
@@ -496,8 +488,8 @@
   "tr": "Застосунок лише для Біткоїна з Auto Buy та Auto Send на власний гаманець"
  },
  {
-  "en": "Bitcoin held with BitGo until you withdraw it",
-  "tr": "Біткоїн зберігається в BitGo, доки ви його не виведете"
+  "en": "Customer Bitcoin held in BitGo institutional custody",
+  "tr": "Біткоїн клієнтів зберігається в інституційному зберіганні BitGo"
  },
  {
   "en": "Bitcoin only",

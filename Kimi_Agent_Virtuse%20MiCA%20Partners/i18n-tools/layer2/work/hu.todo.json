@@ -136,10 +136,6 @@
   "tr": "Egyszerű kezdés újoncoknak (ország: {0}): csak Bitcoinos app."
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees.",
-  "tr": "Auto-Invest megtakarítási terv 0% díjjal."
- },
- {
   "en": "Exchange with EUR trading pairs for {0}.",
   "tr": "Tőzsde EUR-kereskedési párokkal (összeg: {0})."
  },
@@ -150,10 +146,6 @@
  {
   "en": "Bitcoin-only app: buy once or with Auto Buy, then withdraw to your own wallet at any time or let Auto Send move it automatically.",
   "tr": "Csak Bitcoinra épülő alkalmazás: vásároljon egyszer vagy Auto Buy-jal, és bármikor vegye ki a saját tárcájába, vagy az Auto Send automatikusan átküldi."
- },
- {
-  "en": "Your Bitcoin is held with BitGo until you withdraw it.",
-  "tr": "A Bitcoint a BitGo őrzi, amíg ki nem veszi."
  },
  {
   "en": "For larger amounts, a spot order book exchange with EUR pairs.",
@@ -464,8 +456,8 @@
   "tr": "Csak Bitcoinos app vásárláshoz és megtakarításhoz"
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees",
-  "tr": "Díjmentes Auto-Invest megtakarítási terv"
+  "en": "Auto-Invest savings plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
+  "tr": "Auto-Invest megtakarítási terv: 0% díj a 8. naptól (az első 7 napban 0,99%, ajánlói kóddal 0,79%)"
  },
  {
   "en": "FMA Austria",
@@ -496,8 +488,8 @@
   "tr": "Csak Bitcoinra épülő alkalmazás Auto Buy és Auto Send funkcióval a saját tárcába"
  },
  {
-  "en": "Bitcoin held with BitGo until you withdraw it",
-  "tr": "Bitcoin a BitGo őrzésében, amíg ki nem veszi"
+  "en": "Customer Bitcoin held in BitGo institutional custody",
+  "tr": "Az ügyfelek bitcoinja a BitGo intézményi letétkezelésében"
  },
  {
   "en": "Bitcoin only",

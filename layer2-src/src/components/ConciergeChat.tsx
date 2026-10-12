@@ -411,7 +411,18 @@ function ResultCards({
             ))}
           </ul>
 
-          <p className="mt-3 text-[11px] text-ink-muted">{L(rec.partner.feeNote, lang)}</p>
+          <p className="mt-3 text-[11px] text-ink-muted">
+            {L(rec.partner.feeNote, lang)}
+            {rec.partner.feeSource && (
+              <>
+                {' · '}
+                <a href={rec.partner.feeSource} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
+                  {t(lang, 'Source', 'Zdroj', 'Zdroj')}
+                </a>
+                , {L(LICENCE_CHECKED, lang)}
+              </>
+            )}
+          </p>
 
           <a
             href={withUtm(rec.partner.url, rec.partner.id)}
