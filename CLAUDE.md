@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-12) — Loan & Liquidity Copilot: math fixes, limits, sourced tax rates, redesign (branch `feat/loan-v2`, PR open; **staging only, not on production**)
+## Session status (2026-10-12) — Loan & Liquidity Copilot: math fixes, limits, sourced tax rates, redesign (main `1d75e57c`, PR #81; **live on production** — user ran `deploy_site.sh 33753a53 1d75e57c`, 58/58 md5-verified, 18 old asset hashes gone)
 
 - Handover `HANDOVER-claude-loan.md`. Shells by `i18n-tools/loan/build_loan.py` (Partner Finder pattern; run after deploy.py); the app (`Loan.tsx`, `lib/loan.ts`) renders only the calculator.
 - Math (Ras decision 1): cash is spent in both columns; Sell net = remaining BTC value, Borrow net = all BTC value − loan − interest; sale grossed up so proceeds − tax = cash needed; warnings + max loan / max cash when holdings are too small; true minus "−€".
