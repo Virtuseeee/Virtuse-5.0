@@ -1645,3 +1645,26 @@ section.fi-press { padding-top: 0; }
   .fi-cards { grid-template-columns: 1fr; }
 }
 @media print { .nav, .footer-main, #brief, .fi-noprint, .vc-bubble, #vbConsent { display: none !important; } body { background: #fff; color: #111; } .fi-table th, .fi-table td { color: #111; border-color: #ccc; } }
+
+/* PARTNER FINDER: static page around the React chat in #root; in the launcher iframe only the chat */
+.pf-counts { margin: 18px 0 0; font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.pf-app { width: min(960px, 100%); margin: 40px auto 0; }
+.pf-app #root { min-height: 560px; }
+.pf-noscript { margin: 0; padding: 32px; background: var(--card); border-radius: 16px; color: var(--muted); }
+.pf-disc { margin: 14px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
+.pf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.pf-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--card); border: 1px solid transparent; border-radius: 14px; text-decoration: none; transition: background .2s, border-color .2s; min-width: 0; }
+.pf-card:hover { background: var(--card-hover); border-color: var(--line-strong); }
+.pf-card img { width: 36px; height: 36px; border-radius: 9px; background: #fff; object-fit: contain; flex: none; }
+.pf-card img.dark { background: #17181e; object-fit: cover; } .pf-card img.cover { object-fit: cover; } .pf-card img.pad { padding: 4px; }
+.pf-card b { display: block; font-size: 15px; font-weight: 600; }
+.pf-card small { display: block; font-size: 12px; color: var(--muted); }
+.pf-card > span { min-width: 0; }
+@media (max-width: 1100px) { .pf-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .pf-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .pf-app { margin-top: 24px; } .pf-app #root { min-height: 0; } .pf-grid { grid-template-columns: 1fr; } }
+html.vc-embed body { padding: 0; }
+html.vc-embed .nav, html.vc-embed .pf-hero, html.vc-embed main > section, html.vc-embed .footer-main, html.vc-embed .pf-disc { display: none !important; }
+html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margin: 0; }
+/* the app's Tailwind sets --card/--muted as HSL parts on :root; give the page around it its own values back */
+.page-pf .nav, .page-pf main > :not(.pf-app), .page-pf .pf-disc, .page-pf #vbConsent { --card: #141414; --muted: #8b949e; }

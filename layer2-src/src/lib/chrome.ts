@@ -190,7 +190,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. All rights reserved.",
-    "briefLine": "Virtuse Brief — the weekly desk from Virtuse.",
+    "briefLine": "Virtuse Brief, the weekly desk from Virtuse.",
     "briefHref": "news.html?utm_source=brief&utm_medium=footer",
     "read": "Read it →"
   },
@@ -372,7 +372,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. Všetky práva vyhradené.",
-    "briefLine": "Virtuse Brief — týždenný výber od Virtuse.",
+    "briefLine": "Virtuse Brief, týždenný výber od Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Čítať →"
   },
@@ -554,7 +554,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. Všechna práva vyhrazena.",
-    "briefLine": "Virtuse Brief — týdenní přehled od Virtuse.",
+    "briefLine": "Virtuse Brief, týdenní přehled od Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Číst →"
   },
@@ -736,7 +736,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. Усі права захищені.",
-    "briefLine": "Virtuse Brief — щотижневий дайджест від Virtuse.",
+    "briefLine": "Virtuse Brief, щотижневий дайджест від Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Читати →"
   },
@@ -918,7 +918,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. Все права защищены.",
-    "briefLine": "Virtuse Brief — еженедельный дайджест от Virtuse.",
+    "briefLine": "Virtuse Brief, еженедельный дайджест от Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Читать →"
   },
@@ -1282,7 +1282,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. Tous droits réservés.",
-    "briefLine": "Virtuse Brief — le rendez-vous hebdomadaire de Virtuse.",
+    "briefLine": "Virtuse Brief, le rendez-vous hebdomadaire de Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Le lire →"
   },
@@ -1464,7 +1464,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Group. Todos los derechos reservados.",
-    "briefLine": "Virtuse Brief — el resumen semanal de Virtuse.",
+    "briefLine": "Virtuse Brief, el resumen semanal de Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Leerlo →"
   },

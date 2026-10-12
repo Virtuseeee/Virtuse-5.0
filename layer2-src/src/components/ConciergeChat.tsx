@@ -9,6 +9,7 @@ import {
   CUSTODY,
   EXPERIENCE,
   GOALS,
+  LICENCE_CHECKED,
   PARTNERS,
   needsCustodyStep,
   recommend,
@@ -175,7 +176,7 @@ export default function ConciergeChat() {
       setPhase('done');
       const recs = recommend(next, lang);
       say(
-        tv(lang, `Your criteria:\n{0}\nThese partners fit them. The order comes from fixed rules based on your answers, never from commission. Compare and choose one: you finish onboarding on the partner’s regulated platform, and your bitcoin never touches Virtuse.`, `Vaše kritériá:\n{0}\nTíto partneri ich spĺňajú. Poradie určujú pevné pravidlá podľa vašich odpovedí, nikdy nie provízia. Porovnajte ich a vyberte si: onboarding dokončíte na regulovanej platforme partnera a váš bitcoin sa Virtuse nikdy nedotkne.`, `Vaše kritéria:\n{0}\nTito partneři je splňují. Pořadí určují pevná pravidla podle vašich odpovědí, nikdy ne provize. Porovnejte je a vyberte si: onboarding dokončíte na regulované platformě partnera a váš bitcoin se Virtuse nikdy nedotkne.`, [summaryLine(next, lang)]),
+        tv(lang, `Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.`, `Vaše kritériá:\n{0}\nTíto partneri ich spĺňajú. Porovnajte ich a vyberte si: onboarding dokončíte na platforme partnera a váš bitcoin sa Virtuse nikdy nedotkne.`, `Vaše kritéria:\n{0}\nTito partneři je splňují. Porovnejte je a vyberte si: onboarding dokončíte na platformě partnera a váš bitcoin se Virtuse nikdy nedotkne.`, [summaryLine(next, lang)]),
         undefined,
         recs,
         next,
@@ -205,7 +206,6 @@ export default function ConciergeChat() {
         <div className="flex-1">
           <div className="flex items-center gap-2">
             <span className="text-[15px] font-bold text-ink">{t(lang, 'Partner Finder', 'Partner Finder', 'Partner Finder')}</span>
-            <Badge variant="outline" className="border-line-strong bg-transparent text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-muted hover:bg-transparent">Layer 2</Badge>
           </div>
           <div className="flex items-center gap-1.5 text-xs text-ink-muted">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-bitcoin" />
@@ -296,9 +296,9 @@ export default function ConciergeChat() {
       <div className="flex items-center gap-2 border-t border-line px-5 py-3 text-xs text-ink-muted">
         <ShieldCheck className="h-4 w-4 shrink-0 text-ink-muted" />
         {t(lang,
-          'A comparison, not advice. Virtuse never holds your keys. Onboarding & KYC happen on the partner’s regulated platform.',
-          'Porovnanie, nie poradenstvo. Virtuse nikdy nedrží vaše kľúče. Onboarding a KYC prebiehajú na regulovanej platforme partnera.',
-          'Srovnání, ne poradenství. Virtuse nikdy nedrží vaše klíče. Onboarding a KYC probíhají na regulované platformě partnera.')}
+          'A comparison, not advice. Virtuse never holds your keys. Onboarding & KYC happen on the partner’s platform.',
+          'Porovnanie, nie poradenstvo. Virtuse nikdy nedrží vaše kľúče. Onboarding a KYC prebiehajú na platforme partnera.',
+          'Srovnání, ne poradenství. Virtuse nikdy nedrží vaše klíče. Onboarding a KYC probíhají na platformě partnera.')}
       </div>
     </div>
   );
@@ -376,6 +376,23 @@ function ResultCards({
                 )}
               </div>
               <p className="mt-0.5 text-xs text-ink-muted">{L(rec.partner.tagline, lang)}</p>
+              {rec.partner.licence && (
+                <p className="mt-1.5 text-xs text-ink">
+                  {tv(lang, 'MiCA licensed ({0})', 'Licencia MiCA ({0})', 'Licence MiCA ({0})', [L(rec.partner.licence.regulator, lang)])}{' '}
+                  <span className="text-ink-muted">
+                    ·{' '}
+                    <a
+                      href={rec.partner.licence.source}
+                      target="_blank"
+                      rel="noopener"
+                      className="underline underline-offset-2 hover:text-ink"
+                    >
+                      {t(lang, 'Source', 'Zdroj', 'Zdroj')}
+                    </a>
+                    , {L(LICENCE_CHECKED, lang)}
+                  </span>
+                </p>
+              )}
             </div>
           </div>
 
@@ -393,7 +410,7 @@ function ResultCards({
           <a
             href={withUtm(rec.partner.url, rec.partner.id)}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored noopener"
             onClick={() => trackPartnerClick(rec.partner.id)}
             className="mt-3 flex items-center justify-center gap-1.5 rounded-[10px] bg-ink px-4 py-2.5 text-sm font-semibold text-canvas transition hover:opacity-85"
           >
@@ -401,6 +418,12 @@ function ResultCards({
           </a>
         </div>
       ))}
+      <p className="w-full max-w-sm text-[11px] leading-relaxed text-ink-muted sm:w-96">
+        {t(lang,
+          "Virtuse may earn a referral fee. It doesn't change the results.",
+          'Virtuse môže dostať odmenu za odporúčanie. Výsledky to nemení.',
+          'Virtuse může dostat odměnu za doporučení. Výsledky to nemění.')}
+      </p>
       <div className="flex flex-wrap gap-2 pt-1">
         <Button
           variant="outline"

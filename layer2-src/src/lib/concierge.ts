@@ -48,6 +48,8 @@ export interface Partner {
   feeNote: LocalizedText;
   countries: string[]; // 'ALL' = all supported countries
   badge?: LocalizedText;
+  // MiCA licence: shown as "MiCA licensed (<regulator>)" + source link.
+  licence?: { regulator: LocalizedText; source: string };
 }
 
 export interface Recommendation {
@@ -101,50 +103,59 @@ export const AMOUNTS: ChipOption[] = [
   { id: 'xl', label: { en: '> €100,000', sk: '> 100 000 €', cs: '> 100 000 €' } },
 ];
 
+// ESMA's MiCA page (interim register of authorised CASPs), the source for
+// every licence line below. Checked on the date in LICENCE_CHECKED.
+export const ESMA_MICA_URL =
+  'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica';
+export const LICENCE_CHECKED: LocalizedText = { en: 'checked 12 Oct 2026', sk: 'overené 12. 10. 2026', cs: 'ověřeno 12. 10. 2026' };
+
+const lic = (regulator: LocalizedText) => ({ regulator, source: ESMA_MICA_URL });
+
 // Every entry below is a real partner with a real, currently-live
 // affiliate/referral link taken directly from the matching page on
 // virtuse.com (buy-bitcoin.html, mining.html, secure.html, tax.html,
-// treasury.html, lending.html, bots.html) — the concierge must never
+// treasury.html, lending.html, bots.html). The concierge must never
 // recommend a partner the site doesn't actually feature, and every
 // "Continue to partner" click must land on that partner's own site via
 // our tracked link, not a virtuse.com page. If a category ever has no
 // affiliate/referral link for a given partner, link to that partner's
-// plain site instead of inventing a tracked URL — never fall back to a
-// virtuse.com page for a "continue to partner" action.
+// plain site instead of inventing a tracked URL.
+// Claims: licences only via `licence` (regulator + ESMA source); no
+// superlatives or figures we can't source.
 export const PARTNERS: Partner[] = [
   // ── Buy Bitcoin (buy-bitcoin.html) ──
   {
     id: '21bitcoin',
     name: '21bitcoin',
-    tagline: { en: 'Bitcoin-only app, FMA MiCAR licensed — insured custody', sk: 'Aplikácia len pre Bitcoin, licencia FMA MiCAR — poistená úschova', cs: 'Aplikace jen pro Bitcoin, licence FMA MiCAR — pojištěná úschova' },
+    tagline: { en: 'Bitcoin-only app for buying and saving', sk: 'Aplikácia len pre Bitcoin na nákup a sporenie', cs: 'Aplikace jen pro Bitcoin na nákup a spoření' },
     goals: ['buy'],
     custody: ['any', 'assisted'],
     url: 'https://21bitcoin.app.link/invite/?code=VIRTUSE',
     feeNote: { en: 'Auto-Invest savings plan with 0% fees', sk: 'Sporiaci plán Auto-Invest s 0 % poplatkami', cs: 'Spořicí plán Auto-Invest s 0 % poplatky' },
     countries: ['ALL'],
-    badge: { en: 'MiCA-licensed', sk: 's licenciou MiCA', cs: 's licencí MiCA' },
+    licence: lic({ en: 'FMA Austria', sk: 'FMA Rakúsko', cs: 'FMA Rakousko' }),
   },
   {
     id: 'kraken',
     name: 'Kraken',
-    tagline: { en: 'Veteran EU exchange — deep EUR liquidity since 2011', sk: 'Skúsená EÚ burza — hlboká EUR likvidita od roku 2011', cs: 'Zkušená EU burza — hluboká EUR likvidita od roku 2011' },
+    tagline: { en: 'Exchange with EUR trading, founded in 2011', sk: 'Burza s obchodovaním v EUR, založená v roku 2011', cs: 'Burza s obchodováním v EUR, založená v roce 2011' },
     goals: ['buy'],
     custody: ['any', 'self'],
     url: 'https://proinvite.kraken.com/9f1e/lj72d37e',
     feeNote: { en: 'Pro trading fees from 0.8%', sk: 'Poplatky Pro trading od 0,8 %', cs: 'Poplatky Pro trading od 0,8 %' },
     countries: ['ALL'],
-    badge: { en: 'MiCA-licensed', sk: 's licenciou MiCA', cs: 's licencí MiCA' },
+    licence: lic({ en: 'Central Bank of Ireland', sk: 'Centrálna banka Írska', cs: 'Centrální banka Irska' }),
   },
   {
     id: 'bybit-eu',
-    name: 'ByBit EU',
-    tagline: { en: 'Top-3 global exchange, EU-licensed in Vienna', sk: 'Burza v top 3 celosvetovo, licencovaná v EÚ vo Viedni', cs: 'Burza v top 3 celosvětově, licencovaná v EU ve Vídni' },
+    name: 'Bybit EU',
+    tagline: { en: "Bybit's EU exchange, based in Vienna", sk: 'EÚ burza Bybit so sídlom vo Viedni', cs: 'EU burza Bybit se sídlem ve Vídni' },
     goals: ['buy'],
     custody: ['any'],
     url: 'https://partner.bybit.eu/b/VIRTUSE',
     feeNote: { en: 'Spot trading fees from 0.25%', sk: 'Poplatky za spot obchodovanie od 0,25 %', cs: 'Poplatky za spotové obchodování od 0,25 %' },
     countries: ['ALL'],
-    badge: { en: 'MiCA-licensed', sk: 's licenciou MiCA', cs: 's licencí MiCA' },
+    licence: lic({ en: 'FMA Austria', sk: 'FMA Rakúsko', cs: 'FMA Rakousko' }),
   },
   {
     id: 'invity',
@@ -153,53 +164,54 @@ export const PARTNERS: Partner[] = [
     goals: ['buy'],
     custody: ['any'],
     url: 'https://invity.onelink.me/yIY4/j44d7awx',
-    feeNote: { en: 'From the SatoshiLabs group; Bitcoin held with BitGo until you withdraw it', sk: 'Zo skupiny SatoshiLabs; Bitcoin u správcu BitGo, kým ho nevyberiete', cs: 'Ze skupiny SatoshiLabs; Bitcoin u správce BitGo, dokud ho nevyberete' },
+    feeNote: { en: 'Bitcoin held with BitGo until you withdraw it', sk: 'Bitcoin u správcu BitGo, kým ho nevyberiete', cs: 'Bitcoin u správce BitGo, dokud ho nevyberete' },
     countries: ['ALL'],
     badge: { en: 'Bitcoin only', sk: 'Iba Bitcoin', cs: 'Jen Bitcoin' },
+    licence: lic({ en: 'Czech National Bank', sk: 'Česká národná banka', cs: 'Česká národní banka' }),
   },
   {
     id: 'crypto-com',
     name: 'Crypto.com',
-    tagline: { en: 'Large global platform with full EEA passporting', sk: 'Veľká globálna platforma s plným EHP passportingom', cs: 'Velká globální platforma s plným EHP passportingem' },
+    tagline: { en: 'Platform with spot buying and the Crypto.com Visa Card', sk: 'Platforma so spotovým nákupom a kartou Crypto.com Visa', cs: 'Platforma se spotovým nákupem a kartou Crypto.com Visa' },
     goals: ['buy'],
     custody: ['any'],
     url: 'https://cryptocom.sjv.io/c/7490229/2051372/25666',
-    feeNote: { en: 'Deep liquidity; Crypto.com Visa Card supported', sk: 'Hlboká likvidita; podporovaná Crypto.com Visa karta', cs: 'Hluboká likvidita; podporovaná karta Crypto.com Visa' },
+    feeNote: { en: 'Card and wider asset coverage', sk: 'Karta a širšia ponuka aktív', cs: 'Karta a širší nabídka aktiv' },
     countries: ['ALL'],
-    badge: { en: 'MiCA-licensed', sk: 's licenciou MiCA', cs: 's licencí MiCA' },
+    licence: lic({ en: 'MFSA Malta', sk: 'MFSA Malta', cs: 'MFSA Malta' }),
   },
 
   // ── Custody (secure.html) ──
   {
     id: 'trezor',
     name: 'Trezor',
-    tagline: { en: 'The original Bitcoin hardware wallet, since 2013', sk: 'Pôvodná hardvérová peňaženka pre Bitcoin, od roku 2013', cs: 'Původní hardwarová peněženka pro Bitcoin, od roku 2013' },
+    tagline: { en: 'Bitcoin hardware wallet, since 2013', sk: 'Hardvérová peňaženka pre Bitcoin, od roku 2013', cs: 'Hardwarová peněženka pro Bitcoin, od roku 2013' },
     goals: ['custody', 'buy'],
     custody: ['self'],
     url: 'https://affil.trezor.io/aff_c?offer_id=133&aff_id=846427',
-    feeNote: { en: 'Fully open-source hardware and firmware', sk: 'Plne open-source hardvér aj firmvér', cs: 'Plně open-source hardware i firmware' },
+    feeNote: { en: 'Open-source hardware and firmware', sk: 'Open-source hardvér aj firmvér', cs: 'Open-source hardware i firmware' },
     countries: ['ALL'],
     badge: { en: 'Self-custody', sk: 'Vlastná úschova', cs: 'Vlastní úschova' },
   },
   {
     id: 'ledger',
     name: 'Ledger',
-    tagline: { en: "World's most popular hardware wallet — 7M+ sold", sk: 'Najpopulárnejšia hardvérová peňaženka na svete — predaných 7M+', cs: 'Nejpopulárnější hardwarová peněženka na světě — prodáno 7M+' },
+    tagline: { en: 'Hardware wallet with the Ledger Live app', sk: 'Hardvérová peňaženka s aplikáciou Ledger Live', cs: 'Hardwarová peněženka s aplikací Ledger Live' },
     goals: ['custody'],
     custody: ['self'],
     url: 'https://shop.ledger.com/?r=3256467ea813',
-    feeNote: { en: 'Certified Secure Element chip; Ledger Live app', sk: 'Certifikovaný čip Secure Element; aplikácia Ledger Live', cs: 'Certifikovaný čip Secure Element; aplikace Ledger Live' },
+    feeNote: { en: 'Certified Secure Element chip', sk: 'Certifikovaný čip Secure Element', cs: 'Certifikovaný čip Secure Element' },
     countries: ['ALL'],
     badge: { en: 'Self-custody', sk: 'Vlastná úschova', cs: 'Vlastní úschova' },
   },
   {
     id: 'blockstream',
     name: 'Blockstream',
-    tagline: { en: 'Bitcoin Core-grade infra — multisig & collaborative custody', sk: 'Infraštruktúra na úrovni Bitcoin Core — multisig a kolaboratívna úschova', cs: 'Infrastruktura na úrovni Bitcoin Core — multisig a kolaborativní úschova' },
+    tagline: { en: 'Multisig and collaborative custody tools', sk: 'Nástroje pre multisig a kolaboratívnu úschovu', cs: 'Nástroje pro multisig a kolaborativní úschovu' },
     goals: ['custody'],
     custody: ['self'],
     url: 'https://rewards.blockstream.com/qo0khs',
-    feeNote: { en: 'Blockstream Jade — fully open-source, no secure element', sk: 'Blockstream Jade — plne open-source, bez secure elementu', cs: 'Blockstream Jade — plně open-source, bez secure elementu' },
+    feeNote: { en: 'Blockstream Jade: open-source, no secure element', sk: 'Blockstream Jade: open-source, bez secure elementu', cs: 'Blockstream Jade: open-source, bez secure elementu' },
     countries: ['ALL'],
     badge: { en: 'Self-custody', sk: 'Vlastná úschova', cs: 'Vlastní úschova' },
   },
@@ -214,7 +226,7 @@ export const PARTNERS: Partner[] = [
     url: 'https://app.firefish.io/auth/sign-up?ref=virtuseloan',
     feeNote: { en: 'Market-driven rates; no credit checks', sk: 'Trhové úrokové sadzby; bez kontroly bonity', cs: 'Tržní úrokové sazby; bez kontroly bonity' },
     countries: ['ALL'],
-    badge: { en: 'Bitcoin-native', sk: 'Natívne pre Bitcoin', cs: 'Nativní pro Bitcoin' },
+    licence: lic({ en: 'NBS Slovakia', sk: 'NBS Slovensko', cs: 'NBS Slovensko' }),
   },
 
   // ── Tax (tax.html) ──
@@ -239,7 +251,7 @@ export const PARTNERS: Partner[] = [
   {
     id: 'cointracking',
     name: 'CoinTracking',
-    tagline: { en: 'The veteran crypto tax tracker, since 2013', sk: 'Skúsený nástroj na sledovanie kryptodaní, od roku 2013', cs: 'Zkušený nástroj pro sledování kryptoDaní, od roku 2013' },
+    tagline: { en: 'Crypto tax tracker, since 2013', sk: 'Nástroj na sledovanie kryptodaní, od roku 2013', cs: 'Nástroj pro sledování kryptodaní, od roku 2013' },
     goals: ['tax'],
     url: 'https://cointracking.info/?ref=V328565',
     feeNote: { en: '300+ exchange integrations; free up to 200 transactions', sk: '300+ integrácií búrz; zdarma do 200 transakcií', cs: '300+ integrací burz; zdarma do 200 transakcí' },
@@ -248,7 +260,7 @@ export const PARTNERS: Partner[] = [
   {
     id: 'divly',
     name: 'Divly',
-    tagline: { en: 'Privacy-first tax tool, no KYC required', sk: 'Daňový nástroj s dôrazom na súkromie, bez potreby KYC', cs: 'Daňový nástroj s důrazem na soukromí, bez nutnosti KYC' },
+    tagline: { en: 'Crypto tax report tool', sk: 'Nástroj na daňové výkazy z kryptomien', cs: 'Nástroj pro daňové výkazy z kryptoměn' },
     goals: ['tax'],
     url: 'https://divly.com/?ref=otfkzmf',
     feeNote: { en: '14-minute import-to-report', sk: 'Od importu k výkazu za 14 minút', cs: 'Od importu k výkazu za 14 minut' },
@@ -259,32 +271,32 @@ export const PARTNERS: Partner[] = [
   {
     id: 'bitgo',
     name: 'BitGo',
-    tagline: { en: 'Institutional custodian, MiCA CASP via BaFin Germany', sk: 'Inštitucionálny kustodián, MiCA CASP cez nemecký BaFin', cs: 'Institucionální kustodián, MiCA CASP přes německý BaFin' },
+    tagline: { en: 'Institutional custodian', sk: 'Inštitucionálny kustodián', cs: 'Institucionální kustodián' },
     goals: ['treasury'],
     url: 'https://bitgo.com',
-    feeNote: { en: '$250M insurance coverage; already serves 21bitcoin', sk: 'Poistné krytie 250 mil. USD; už slúži 21bitcoin', cs: 'Pojistné krytí 250 mil. USD; už slouží 21bitcoin' },
+    feeNote: { en: 'Custody for companies and funds', sk: 'Úschova pre firmy a fondy', cs: 'Úschova pro firmy a fondy' },
     countries: ['ALL'],
-    badge: { en: 'MiCA-licensed', sk: 's licenciou MiCA', cs: 's licencí MiCA' },
+    licence: lic({ en: 'BaFin Germany', sk: 'BaFin Nemecko', cs: 'BaFin Německo' }),
   },
   {
     id: 'sygnum',
     name: 'Sygnum',
-    tagline: { en: "World's first regulated digital asset bank", sk: 'Prvá regulovaná banka pre digitálne aktíva na svete', cs: 'První regulovaná banka pro digitální aktiva na světě' },
+    tagline: { en: 'Digital asset bank', sk: 'Banka pre digitálne aktíva', cs: 'Banka pro digitální aktiva' },
     goals: ['treasury'],
     url: 'https://sygnum.com',
-    feeNote: { en: 'FINMA banking license; discretionary treasury mandates', sk: 'Banková licencia FINMA; diskrečné treasury mandáty', cs: 'Bankovní licence FINMA; diskreční treasury mandáty' },
+    feeNote: { en: 'Discretionary treasury mandates', sk: 'Diskrečné treasury mandáty', cs: 'Diskreční treasury mandáty' },
     countries: ['ALL'],
-    badge: { en: 'Regulated bank', sk: 'Regulovaná banka', cs: 'Regulovaná banka' },
+    licence: lic({ en: 'FMA Liechtenstein', sk: 'FMA Lichtenštajnsko', cs: 'FMA Lichtenštejnsko' }),
   },
   {
     id: 'coinbase-institutional',
     name: 'Coinbase Institutional',
-    tagline: { en: 'Largest regulated crypto custodian globally', sk: 'Najväčší regulovaný kryptokustodián na svete', cs: 'Největší regulovaný kryptokustodián na světě' },
+    tagline: { en: 'Institutional custody and trading', sk: 'Inštitucionálna úschova a obchodovanie', cs: 'Institucionální úschova a obchodování' },
     goals: ['treasury'],
     url: 'https://coinbase.com/institutional',
-    feeNote: { en: 'MiCA CASP via CSSF Luxembourg; SOC 2 Type II', sk: 'MiCA CASP cez luxemburský CSSF; SOC 2 Type II', cs: 'MiCA CASP přes lucemburský CSSF; SOC 2 Type II' },
+    feeNote: { en: 'For larger company allocations', sk: 'Pre väčšie firemné alokácie', cs: 'Pro větší firemní alokace' },
     countries: ['ALL'],
-    badge: { en: 'MiCA-licensed', sk: 's licenciou MiCA', cs: 's licencí MiCA' },
+    licence: lic({ en: 'CSSF Luxembourg', sk: 'CSSF Luxembursko', cs: 'CSSF Lucembursko' }),
   },
 
   // ── Bots (bots.html) ──
@@ -295,18 +307,18 @@ export const PARTNERS: Partner[] = [
     goals: ['earn'],
     custody: ['self', 'any'],
     url: 'https://coinrule.com/?fp_ref=virtuse',
-    feeNote: { en: '150+ strategy templates; Y Combinator backed', sk: '150+ šablón stratégií; podporené Y Combinator', cs: '150+ šablon strategií; podpořeno Y Combinator' },
+    feeNote: { en: '150+ strategy templates', sk: '150+ šablón stratégií', cs: '150+ šablon strategií' },
     countries: ['ALL'],
     badge: { en: 'Non-custodial', sk: 'Nekustodiálne', cs: 'Nekustodiální' },
   },
   {
     id: 'cryptohopper',
     name: 'Cryptohopper',
-    tagline: { en: 'The most beginner-friendly bot platform', sk: 'Platforma botov najprívetivejšia pre začiatočníkov', cs: 'Platforma botů nejpřívětivější pro začátečníky' },
+    tagline: { en: 'Bot platform with copy trading and paper trading', sk: 'Platforma botov s copy tradingom a papierovým obchodovaním', cs: 'Platforma botů s copy tradingem a papírovým obchodováním' },
     goals: ['earn'],
     custody: ['self', 'any'],
     url: 'https://www.cryptohopper.com/?atid=40864',
-    feeNote: { en: 'Copy trading, paper trading, 30-day free trial', sk: 'Copy trading, papierové obchodovanie, 30-dňová skúšobná verzia', cs: 'Copy trading, papírové obchodování, 30denní zkušební verze' },
+    feeNote: { en: '30-day free trial', sk: '30-dňová skúšobná verzia zdarma', cs: '30denní zkušební verze zdarma' },
     countries: ['ALL'],
   },
   {
@@ -324,7 +336,7 @@ export const PARTNERS: Partner[] = [
   {
     id: 'oneminers',
     name: 'OneMiners',
-    tagline: { en: 'Top 5 EU ASIC reseller with EU/Nordic hosting', sk: 'Top 5 predajca ASIC v EÚ s hostingom v EÚ/Škandinávii', cs: 'Top 5 prodejce ASIC v EU s hostingem v EU/Skandinávii' },
+    tagline: { en: 'ASIC reseller with EU/Nordic hosting', sk: 'Predajca ASIC s hostingom v EÚ/Škandinávii', cs: 'Prodejce ASIC s hostingem v EU/Skandinávii' },
     goals: ['mining'],
     url: 'https://oneminers.com/products/?discount=virtuse_buy',
     feeNote: { en: 'Hosting in Norway, Finland, and Ethiopia', sk: 'Hosting v Nórsku, Fínsku a Etiópii', cs: 'Hosting v Norsku, Finsku a Etiopii' },
@@ -336,7 +348,7 @@ export const PARTNERS: Partner[] = [
     tagline: { en: 'Professionally managed, renewable-energy mining', sk: 'Profesionálne spravovaná ťažba na obnoviteľnú energiu', cs: 'Profesionálně spravovaná těžba na obnovitelnou energii' },
     goals: ['mining'],
     url: 'https://abundantmines.com/ref/76/',
-    feeNote: { en: 'Enterprise-grade facilities for mid-to-large miners', sk: 'Zariadenia podnikovej úrovne pre stredných a veľkých ťažiarov', cs: 'Zařízení podnikové úrovně pro střední a velké těžaře' },
+    feeNote: { en: 'Hosting for mid-to-large miners', sk: 'Hosting pre stredných a veľkých ťažiarov', cs: 'Hosting pro střední a velké těžaře' },
     countries: ['ALL'],
   },
   {
@@ -345,7 +357,7 @@ export const PARTNERS: Partner[] = [
     tagline: { en: 'Open-source mining hardware specialist (Bitaxe)', sk: 'Špecialista na open-source ťažobný hardvér (Bitaxe)', cs: 'Specialista na open-source těžební hardware (Bitaxe)' },
     goals: ['mining'],
     url: 'https://shop.powermining.io/?ref=Virtuse',
-    feeNote: { en: 'EU warehouse, fast shipping; 22,000+ products sold', sk: 'Sklad v EÚ, rýchle doručenie; predaných 22 000+ produktov', cs: 'Sklad v EU, rychlé doručení; prodáno 22 000+ produktů' },
+    feeNote: { en: 'EU warehouse, fast shipping', sk: 'Sklad v EÚ, rýchle doručenie', cs: 'Sklad v EU, rychlé doručení' },
     countries: ['ALL'],
   },
 ];
@@ -379,19 +391,19 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
     case 'buy': {
       if (a.experience === 'new') {
         push('21bitcoin', 96, [
-          tv(lang, `Simplest start for newcomers in {0} — FMA MiCAR licensed, insured Bitcoin custody.`, `Najjednoduchší štart pre začiatočníkov ({0}) — licencia FMA MiCAR, poistená úschova Bitcoinu.`, `Nejjednodušší start pro začátečníky ({0}) — licence FMA MiCAR, pojištěná úschova Bitcoinu.`, [countryName(lang, a.country)]),
+          tv(lang, `Simple start for newcomers in {0}: a Bitcoin-only app.`, `Jednoduchý štart pre začiatočníkov ({0}): aplikácia len pre Bitcoin.`, `Jednoduchý start pro začátečníky ({0}): aplikace jen pro Bitcoin.`, [countryName(lang, a.country)]),
           t(lang,
-            'Auto-Invest savings plan with 0% fees; 100,000+ European users.',
-            'Sporiaci plán Auto-Invest s 0 % poplatkami; 100 000+ európskych používateľov.',
-            'Spořicí plán Auto-Invest s 0 % poplatky; 100 000+ evropských uživatelů.'),
+            'Auto-Invest savings plan with 0% fees.',
+            'Sporiaci plán Auto-Invest s 0 % poplatkami.',
+            'Spořicí plán Auto-Invest s 0 % poplatky.'),
         ]);
       } else {
         push('kraken', 93, [
-          tv(lang, `Veteran EU exchange with deep EUR liquidity for {0}.`, `Skúsená EÚ burza s hlbokou EUR likviditou pre sumu {0}.`, `Zkušená EU burza s hlubokou EUR likviditou pro částku {0}.`, [amountLabel(lang, a.amount)]),
+          tv(lang, `Exchange with EUR trading pairs for {0}.`, `Burza s obchodnými pármi v EUR pre sumu {0}.`, `Burza s obchodními páry v EUR pro částku {0}.`, [amountLabel(lang, a.amount)]),
           t(lang,
-            'Founded 2011 — MiCA licensed via the Central Bank of Ireland.',
-            'Založená v roku 2011 — licencia MiCA cez Írsku centrálnu banku.',
-            'Založená v roce 2011 — licence MiCA přes Irskou centrální banku.'),
+            'Founded in 2011.',
+            'Založená v roku 2011.',
+            'Založená v roce 2011.'),
         ]);
       }
       if (a.custody !== 'self') {
@@ -402,24 +414,24 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
             'Aplikácia len pre Bitcoin: nakúpte jednorazovo alebo cez Auto Buy a kedykoľvek si ho vyberte do vlastnej peňaženky, alebo ho tam automaticky presunie Auto Send.',
             'Aplikace jen pro Bitcoin: nakupte jednorázově nebo přes Auto Buy a kdykoli si ho vyberte do vlastní peněženky, nebo ho tam automaticky přesune Auto Send.'),
           t(lang,
-            'Licensed by the Czech National Bank as a CASP under MiCA; part of the SatoshiLabs group, the makers of Trezor.',
-            'Licencia Českej národnej banky (CASP podľa MiCA); súčasť skupiny SatoshiLabs, tvorcov Trezoru.',
-            'Licence České národní banky (CASP podle MiCA); součást skupiny SatoshiLabs, tvůrců Trezoru.'),
+            'Your Bitcoin is held with BitGo until you withdraw it.',
+            'Váš Bitcoin je u správcu BitGo, kým ho nevyberiete.',
+            'Váš Bitcoin je u správce BitGo, dokud ho nevyberete.'),
         ]);
       }
       if (a.amount === 'l' || a.amount === 'xl') {
         push('bybit-eu', 84, [
           t(lang,
-            'For larger amounts, a top-3 global exchange gives you deeper order books and tighter spreads.',
-            'Pri väčších sumách vám burza v top 3 celosvetovo ponúkne hlbšie orderbooky a nižšie spready.',
-            'U větších částek vám burza v top 3 celosvětově nabídne hlubší orderbooky a nižší spready.'),
+            'For larger amounts, a spot order book exchange with EUR pairs.',
+            'Pri väčších sumách burza so spotovým orderbookom a pármi v EUR.',
+            'U větších částek burza se spotovým orderbookem a páry v EUR.'),
         ]);
       } else if (a.custody !== 'self') {
         push('crypto-com', 78, [
           t(lang,
-            'A large global platform with full EEA passporting if you want more than spot buying — card, wider asset coverage.',
-            'Veľká globálna platforma s plným EHP passportingom, ak chcete viac než len spotový nákup — karta, širšia ponuka aktív.',
-            'Velká globální platforma s plným EHP passportingem, pokud chcete víc než jen spotový nákup — karta, širší nabídka aktiv.'),
+            'If you want more than spot buying: card and wider asset coverage.',
+            'Ak chcete viac než len spotový nákup: karta a širšia ponuka aktív.',
+            'Pokud chcete víc než jen spotový nákup: karta a širší nabídka aktiv.'),
         ]);
       }
       if (a.custody === 'self' && a.experience !== 'new') {
@@ -436,9 +448,9 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.custody === 'assisted') {
         push('firefish', 80, [
           t(lang,
-            'Bitcoin-backed P2P loans, market-driven rates — but note: Firefish assumes self-custody via multisig escrow.',
-            'P2P pôžičky kryté Bitcoinom, trhové úrokové sadzby — pozor: Firefish predpokladá vlastnú úschovu cez multisig escrow.',
-            'P2P půjčky kryté Bitcoinem, tržní úrokové sazby — pozor: Firefish předpokládá vlastní úschovu přes multisig escrow.'),
+            'Bitcoin-backed P2P loans, market-driven rates. Note: Firefish assumes self-custody via multisig escrow.',
+            'P2P pôžičky kryté Bitcoinom, trhové úrokové sadzby. Pozor: Firefish predpokladá vlastnú úschovu cez multisig escrow.',
+            'P2P půjčky kryté Bitcoinem, tržní úrokové sazby. Pozor: Firefish předpokládá vlastní úschovu přes multisig escrow.'),
           t(lang,
             'If you prefer assisted custody, set that up first, then come back for the loan.',
             'Ak preferujete asistovanú úschovu, najprv si ju zariaďte a potom sa vráťte k pôžičke.',
@@ -446,7 +458,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         ]);
       } else {
         push('firefish', 97, [
-          t(lang, 'Borrow EUR against your bitcoin — keep 100% of the upside.', 'Požičajte si EUR oproti svojmu bitcoinu — ponechajte si 100 % potenciálneho zisku.', 'Půjčte si EUR oproti svému bitcoinu — ponechte si 100 % potenciálního zisku.'),
+          t(lang, 'Borrow EUR against your bitcoin and keep 100% of the upside.', 'Požičajte si EUR oproti svojmu bitcoinu a ponechajte si 100 % potenciálneho zisku.', 'Půjčte si EUR oproti svému bitcoinu a ponechte si 100 % potenciálního zisku.'),
           t(lang, 'No credit checks, no sale, no taxable event in most EU jurisdictions.', 'Bez kontroly bonity, bez predaja, vo väčšine jurisdikcií EÚ bez zdaniteľnej udalosti.', 'Bez kontroly bonity, bez prodeje, ve většině jurisdikcí EU bez zdanitelné události.'),
           tv(lang, `Works for {0} in {1} via multisig-secured P2P.`, `Funguje pre sumu {0} ({1}) cez P2P zabezpečené multisigom.`, `Funguje pro částku {0} ({1}) přes P2P zabezpečené multisigem.`, [amountLabel(lang, a.amount), countryName(lang, a.country)]),
         ]);
@@ -457,9 +469,9 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.experience === 'new') {
         push('cryptohopper', 90, [
           t(lang,
-            'The most beginner-friendly bot platform — copy trading, paper trading, and a 30-day free trial before you commit.',
-            'Platforma botov najprívetivejšia pre začiatočníkov — copy trading, papierové obchodovanie a 30-dňová skúšobná verzia zadarmo.',
-            'Platforma botů nejpřívětivější pro začátečníky — copy trading, papírové obchodování a 30denní zkušební verze zdarma.'),
+            'Copy trading, paper trading and a 30-day free trial before you commit.',
+            'Copy trading, papierové obchodovanie a 30-dňová skúšobná verzia zdarma, kým sa rozhodnete.',
+            'Copy trading, papírové obchodování a 30denní zkušební verze zdarma, než se rozhodnete.'),
         ]);
         push('coinrule', 80, [
           t(lang,
@@ -470,37 +482,36 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       } else {
         push('coinrule', 90, [
           t(lang,
-            'Explicitly non-custodial — trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.',
-            'Výslovne nekustodiálne — API kľúče len na obchodovanie, bez oprávnenia na výber, váš Bitcoin nikdy neopustí burzu.',
-            'Výslovně nekustodiální — API klíče jen pro obchodování, bez oprávnění k výběru, váš Bitcoin nikdy neopustí burzu.'),
+            'Explicitly non-custodial: trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.',
+            'Výslovne nekustodiálne: API kľúče len na obchodovanie, bez oprávnenia na výber, váš Bitcoin nikdy neopustí burzu.',
+            'Výslovně nekustodiální: API klíče jen pro obchodování, bez oprávnění k výběru, váš Bitcoin nikdy neopustí burzu.'),
           t(lang, '150+ strategy templates with a backtesting engine.', '150+ šablón stratégií s backtestovacím nástrojom.', '150+ šablon strategií s backtestovacím nástrojem.'),
         ]);
         push('revenuebot', 78, [
           t(lang,
-            'A simpler, Bitcoin-focused cloud DCA/grid setup — referral commissions even pay out in BTC.',
-            'Jednoduchšie cloudové DCA/grid riešenie zamerané na Bitcoin — referral provízie sa vyplácajú aj v BTC.',
-            'Jednodušší cloudové DCA/grid řešení zaměřené na Bitcoin — referral provize se vyplácejí i v BTC.'),
+            'A simpler, Bitcoin-focused cloud DCA/grid setup.',
+            'Jednoduchšie cloudové DCA/grid riešenie zamerané na Bitcoin.',
+            'Jednodušší cloudové DCA/grid řešení zaměřené na Bitcoin.'),
         ]);
       }
       break;
     }
     case 'treasury': {
       push('bitgo', 94, [
-        tv(lang, `MiCA CASP-licensed institutional custodian for {0} — $250M insurance coverage.`, `Inštitucionálny kustodián s licenciou MiCA CASP pre {0} — poistné krytie 250 mil. USD.`, `Institucionální kustodián s licencí MiCA CASP pro {0} — pojistné krytí 250 mil. USD.`, [countryName(lang, a.country)]),
-        t(lang, 'Already serves 21bitcoin; proven European infrastructure.', 'Už slúži 21bitcoin; overená európska infraštruktúra.', 'Už slouží 21bitcoin; ověřená evropská infrastruktura.'),
+        tv(lang, `Institutional custodian for companies in {0}.`, `Inštitucionálny kustodián pre firmy ({0}).`, `Institucionální kustodián pro firmy ({0}).`, [countryName(lang, a.country)]),
       ]);
       push('sygnum', 82, [
         t(lang,
-          "World's first regulated digital asset bank — discretionary treasury mandates, including rebalancing and hedging.",
-          'Prvá regulovaná banka pre digitálne aktíva na svete — diskrečné treasury mandáty vrátane rebalancovania a hedgingu.',
-          'První regulovaná banka pro digitální aktiva na světě — diskreční treasury mandáty včetně rebalancování a hedgingu.'),
+          'Digital asset bank with discretionary treasury mandates, including rebalancing and hedging.',
+          'Banka pre digitálne aktíva s diskrečnými treasury mandátmi vrátane rebalancovania a hedgingu.',
+          'Banka pro digitální aktiva s diskrečními treasury mandáty včetně rebalancování a hedgingu.'),
       ]);
       if (a.amount === 'xl') {
         push('coinbase-institutional', 74, [
           t(lang,
-            'For the largest allocations: the largest regulated crypto custodian globally, MiCA CASP via CSSF Luxembourg.',
-            'Pre najväčšie alokácie: najväčší regulovaný kryptokustodián na svete, MiCA CASP cez luxemburský CSSF.',
-            'Pro největší alokace: největší regulovaný kryptokustodián na světě, MiCA CASP přes lucemburský CSSF.'),
+            'For larger allocations: institutional custody and trading.',
+            'Pre väčšie alokácie: inštitucionálna úschova a obchodovanie.',
+            'Pro větší alokace: institucionální úschova a obchodování.'),
         ]);
       }
       break;
@@ -509,22 +520,22 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.experience === 'new') {
         push('oneminers', 92, [
           t(lang,
-            'Top 5 EU ASIC reseller with hosting in Norway, Finland, and Ethiopia — an easy first hosted contract.',
-            'Top 5 predajca ASIC v EÚ s hostingom v Nórsku, Fínsku a Etiópii — jednoduchá prvá hostovaná zmluva.',
-            'Top 5 prodejce ASIC v EU s hostingem v Norsku, Finsku a Etiopii — jednoduchá první hostovaná smlouva.'),
+            'ASIC reseller with hosting in Norway, Finland and Ethiopia: a simple first hosted contract.',
+            'Predajca ASIC s hostingom v Nórsku, Fínsku a Etiópii: jednoduchá prvá hostovaná zmluva.',
+            'Prodejce ASIC s hostingem v Norsku, Finsku a Etiopii: jednoduchá první hostovaná smlouva.'),
         ]);
       } else {
         push('abundant-mines', 90, [
           t(lang,
-            'Professionally managed, renewable-energy mining infrastructure — built for mid-to-large scale miners.',
-            'Profesionálne spravovaná ťažobná infraštruktúra na obnoviteľnú energiu — pre stredných a veľkých ťažiarov.',
-            'Profesionálně spravovaná těžební infrastruktura na obnovitelnou energii — pro střední a velké těžaře.'),
+            'Professionally managed, renewable-energy mining infrastructure for mid-to-large scale miners.',
+            'Profesionálne spravovaná ťažobná infraštruktúra na obnoviteľnú energiu pre stredných a veľkých ťažiarov.',
+            'Profesionálně spravovaná těžební infrastruktura na obnovitelnou energii pro střední a velké těžaře.'),
         ]);
       }
       push('power-mining', 72, [
         t(lang,
           'For Bitcoin purists: open-source mining hardware (Bitaxe), EU warehouse for fast shipping.',
-          'Pre bitcoinových purstov: open-source ťažobný hardvér (Bitaxe), sklad v EÚ pre rýchle doručenie.',
+          'Pre bitcoinových puristov: open-source ťažobný hardvér (Bitaxe), sklad v EÚ pre rýchle doručenie.',
           'Pro bitcoinové puristy: open-source těžební hardware (Bitaxe), sklad v EU pro rychlé doručení.'),
       ]);
       break;
@@ -533,49 +544,49 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.experience === 'new') {
         push('trezor', 97, [
           t(lang,
-            'The original Bitcoin hardware wallet, since 2013 — fully open-source hardware and firmware, easiest to start with.',
-            'Pôvodná hardvérová peňaženka pre Bitcoin, od roku 2013 — plne open-source hardvér aj firmvér, najjednoduchší začiatok.',
-            'Původní hardwarová peněženka pro Bitcoin, od roku 2013 — plně open-source hardware i firmware, nejjednodušší začátek.'),
+            'Bitcoin hardware wallet since 2013, with open-source hardware and firmware: a simple place to start.',
+            'Hardvérová peňaženka pre Bitcoin od roku 2013, s open-source hardvérom aj firmvérom: jednoduchý začiatok.',
+            'Hardwarová peněženka pro Bitcoin od roku 2013, s open-source hardwarem i firmwarem: jednoduchý začátek.'),
         ]);
       } else {
         push('blockstream', 95, [
           t(lang,
-            'Native support for multisig and collaborative custody vaults — the setup that answers "what happens to my bitcoin".',
-            'Natívna podpora multisigu a kolaboratívnych custody trezorov — riešenie na otázku „čo sa stane s mojím bitcoinom".',
-            'Nativní podpora multisigu a kolaborativních custody trezorů — řešení na otázku „co se stane s mým bitcoinem".'),
+            'Native support for multisig and collaborative custody vaults: the setup that answers "what happens to my bitcoin".',
+            'Natívna podpora multisigu a kolaboratívnych custody trezorov: riešenie na otázku „čo sa stane s mojím bitcoinom".',
+            'Nativní podpora multisigu a kolaborativních custody trezorů: řešení na otázku „co se stane s mým bitcoinem".'),
         ]);
       }
       push('ledger', 76, [
         t(lang,
-          "World's most popular hardware wallet — 7M+ devices sold, certified Secure Element chip.",
-          'Najpopulárnejšia hardvérová peňaženka na svete — predaných 7M+ kusov, certifikovaný čip Secure Element.',
-          'Nejpopulárnější hardwarová peněženka na světě — prodáno 7M+ kusů, certifikovaný čip Secure Element.'),
+          'Hardware wallet with a certified Secure Element chip and the Ledger Live app.',
+          'Hardvérová peňaženka s certifikovaným čipom Secure Element a aplikáciou Ledger Live.',
+          'Hardwarová peněženka s certifikovaným čipem Secure Element a aplikací Ledger Live.'),
       ]);
       break;
     }
     case 'tax': {
       if (['de', 'at', 'nl', 'es'].includes(a.country ?? '')) {
         push('blockpit', 95, [
-          tv(lang, `Country-specific reports built for {0} — Austrian-built, 700+ integrations.`, `Výkazy šité na mieru pre {0} — rakúsky nástroj, 700+ integrácií.`, `Výkazy šité na míru pro {0} — rakouský nástroj, 700+ integrací.`, [countryName(lang, a.country)]),
+          tv(lang, `Country-specific reports built for {0}: Austrian-built, 700+ integrations.`, `Výkazy šité na mieru pre {0}: rakúsky nástroj, 700+ integrácií.`, `Výkazy šité na míru pro {0}: rakouský nástroj, 700+ integrací.`, [countryName(lang, a.country)]),
           t(lang, 'Free portfolio tracking tier.', 'Bezplatná úroveň sledovania portfólia.', 'Bezplatná úroveň sledování portfolia.'),
         ]);
       } else {
         push('koinly', 92, [
           tv(lang, `Covers 100+ countries including {0}, across 400+ exchanges and wallets.`, `Pokrýva 100+ krajín vrátane {0}, naprieč 400+ burzami a peňaženkami.`, `Pokrývá 100+ zemí včetně {0}, napříč 400+ burzami a peněženkami.`, [countryName(lang, a.country)]),
-          t(lang, 'Free to track — you only pay when you download the report.', 'Sledovanie zdarma — platíte len pri stiahnutí výkazu.', 'Sledování zdarma — platíte jen při stažení výkazu.'),
+          t(lang, 'Free to track: you only pay when you download the report.', 'Sledovanie zdarma: platíte len pri stiahnutí výkazu.', 'Sledování zdarma: platíte jen při stažení výkazu.'),
         ]);
       }
       push('cointracking', 74, [
         t(lang,
-          'The veteran option — tracking crypto tax since 2013, 300+ exchange integrations.',
-          'Skúsená voľba — sleduje kryptodane od roku 2013, 300+ integrácií búrz.',
-          'Zkušená volba — sleduje kryptoDaně od roku 2013, 300+ integrací burz.'),
+          'Tracking crypto tax since 2013, 300+ exchange integrations.',
+          'Sleduje kryptodane od roku 2013, 300+ integrácií búrz.',
+          'Sleduje kryptodaně od roku 2013, 300+ integrací burz.'),
       ]);
       push('divly', 66, [
         t(lang,
-          'Privacy-first and no KYC required, if that matters more to you than breadth of integrations.',
-          'Dôraz na súkromie a bez potreby KYC, ak je to pre vás dôležitejšie než šírka integrácií.',
-          'Důraz na soukromí a bez nutnosti KYC, pokud je to pro vás důležitější než šířka integrací.'),
+          'A short import-to-report flow, if speed matters more to you than breadth of integrations.',
+          'Krátky postup od importu k výkazu, ak je pre vás rýchlosť dôležitejšia než šírka integrácií.',
+          'Krátký postup od importu k výkazu, pokud je pro vás rychlost důležitější než šířka integrací.'),
       ]);
       break;
     }

@@ -108,7 +108,6 @@ export default function Loan() {
                 VIRTUSE <span className="text-zinc-500">·</span>{' '}
                 <span className="text-bitcoin">{t(lang, 'Loan & Liquidity Copilot', 'Pôžičkový a likviditný asistent', 'Půjčkový a likviditní asistent')}</span>
               </div>
-              <div className="text-xs text-zinc-500">{t(lang, 'Layer 2 · Module 04', 'Layer 2 · Modul 04', 'Layer 2 · Modul 04')}</div>
             </div>
           </div>
           <a href="concierge.html">
@@ -404,9 +403,9 @@ export default function Loan() {
 
         <footer className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-zinc-600">
           {t(lang,
-            'Loan & Liquidity Copilot – Virtuse Layer 2, Module 04. Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.',
-            'Pôžičkový a likviditný asistent – Virtuse Layer 2, Modul 04. Zjednodušený vzdelávací model s ilustratívnymi sadzbami a fixným prahom margin callu – reálne podmienky pôžičky závisia od poskytovateľa. Nejde o finančné, daňové ani právne poradenstvo. Virtuse nikdy nedrží vaše kľúče; kolaterál ostáva v multisig escrow.',
-            'Půjčkový a likviditní asistent – Virtuse Layer 2, Modul 04. Zjednodušený vzdělávací model s ilustrativními sazbami a fixním prahem margin callu – reálné podmínky půjčky závisí na poskytovateli. Nejde o finanční, daňové ani právní poradenství. Virtuse nikdy nedrží vaše klíče; kolaterál zůstává v multisig escrow.')}
+            'Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.',
+            'Zjednodušený vzdelávací model s ilustratívnymi sadzbami a fixným prahom margin callu – reálne podmienky pôžičky závisia od poskytovateľa. Nejde o finančné, daňové ani právne poradenstvo. Virtuse nikdy nedrží vaše kľúče; kolaterál ostáva v multisig escrow.',
+            'Zjednodušený vzdělávací model s ilustrativními sazbami a fixním prahem margin callu – reálné podmínky půjčky závisí na poskytovateli. Nejde o finanční, daňové ani právní poradenství. Virtuse nikdy nedrží vaše klíče; kolaterál zůstává v multisig escrow.')}
         </footer>
       </main>
     </div>

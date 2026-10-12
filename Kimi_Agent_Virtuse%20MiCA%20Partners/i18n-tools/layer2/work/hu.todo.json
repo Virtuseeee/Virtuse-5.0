@@ -1,7 +1,47 @@
 [
  {
-  "en": "Ahoj! I’m the Virtuse Bitcoin Concierge — the Layer 2 advisor on top of the Virtuse hub. I don’t hold keys or funds; I find the right vetted partner for your situation. Let’s start: what brings you here today?",
-  "tr": "Üdvözlöm! A Virtuse Bitcoin Concierge vagyok, a Virtuse hub Layer 2 tanácsadója. Nem kezelek kulcsokat és pénzt: megkeresem az Ön helyzetéhez illő ellenőrzött partnert. Kezdjük: mi hozta ma ide?"
+  "en": "Sent. It should be in your inbox within a minute.",
+  "tr": "Elküldve. Egy percen belül meg kell érkeznie a postafiókjába."
+ },
+ {
+  "en": "Please enter a valid email address.",
+  "tr": "Adjon meg egy érvényes e-mail-címet."
+ },
+ {
+  "en": "Too many attempts. Please try again later.",
+  "tr": "Túl sok próbálkozás. Próbálja újra később."
+ },
+ {
+  "en": "Something went wrong. Please try again.",
+  "tr": "Hiba történt. Próbálja újra."
+ },
+ {
+  "en": "Your email",
+  "tr": "E-mail-cím"
+ },
+ {
+  "en": "Sending…",
+  "tr": "Küldés…"
+ },
+ {
+  "en": "Send",
+  "tr": "Elküldöm"
+ },
+ {
+  "en": "Also send me the Virtuse Brief every Monday (unsubscribe anytime).",
+  "tr": "Kérem a Virtuse Briefet is minden hétfőn (bármikor leiratkozhat)."
+ },
+ {
+  "en": "Get this result by email",
+  "tr": "Az eredmény elküldése e-mailben"
+ },
+ {
+  "en": "One email with your inputs and these numbers. We add you to no list unless you tick the box.",
+  "tr": "Egyetlen e-mail a megadott adataival és ezekkel a számokkal. Semmilyen listára nem vesszük fel, hacsak be nem jelöli a négyzetet."
+ },
+ {
+  "en": "Hi! This is Virtuse Partner Finder. Answer a few quick questions and I’ll filter our vetted partners down to the ones that fit your criteria. You compare and choose. I never hold keys or funds. What brings you here today?",
+  "tr": "Üdvözlöm! Ez a Virtuse Partner Finder. Válaszoljon néhány rövid kérdésre, és ellenőrzött partnereink közül kiszűröm azokat, amelyek megfelelnek a feltételeinek. Ön hasonlít össze és dönt. Soha nem őrzök kulcsokat vagy pénzt. Mi szél hozta ma?"
  },
  {
   "en": "What brings you here today?",
@@ -24,32 +64,36 @@
   "tr": "Nagyjából milyen összegről van szó?"
  },
  {
-  "en": "Here’s my routing for you:\n{0}\nPick a partner — you’ll finish onboarding on their regulated platform, and your bitcoin never touches Virtuse.",
-  "tr": "Ezt javaslom Önnek:\n{0}\nVálasszon partnert: a regisztrációt a partner szabályozott platformján fejezi be, a Bitcoinja pedig soha nem halad át a Virtuse-on."
+  "en": "Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.",
+  "tr": "Az Ön feltételei:\n{0}\nEzek a partnerek megfelelnek nekik. Hasonlítsa össze őket, és válasszon egyet: a regisztrációt a partner platformján fejezi be, a bitcoinja pedig soha nem kerül a Virtuse-hoz."
  },
  {
-  "en": "Bitcoin Concierge",
-  "tr": "Bitcoin Concierge"
+  "en": "Partner Finder",
+  "tr": "Partner Finder"
  },
  {
-  "en": "Routes to {0} vetted partners · never holds your keys",
-  "tr": "{0} ellenőrzött partnerhez irányít · soha nem kezeli a kulcsait"
+  "en": "Filters {0} vetted partners · never holds your keys",
+  "tr": "{0} ellenőrzött partnert szűr · soha nem őrzi a kulcsait"
  },
  {
   "en": "Start over",
   "tr": "Újrakezdés"
  },
  {
-  "en": "Non-custodial routing only. Onboarding & KYC happen on the partner’s regulated platform. Not financial advice.",
-  "tr": "Kizárólag nem letétkezelő irányítás. A regisztráció és a KYC a partner szabályozott platformján történik. Nem pénzügyi tanácsadás."
+  "en": "A comparison, not advice. Virtuse never holds your keys. Onboarding & KYC happen on the partner’s platform.",
+  "tr": "Összehasonlítás, nem tanácsadás. A Virtuse soha nem őrzi a kulcsait. A regisztráció és a KYC a partner platformján történik."
  },
  {
-  "en": "Best match",
-  "tr": "Legjobb találat"
+  "en": "MiCA licensed ({0})",
+  "tr": "MiCA-engedély ({0})"
  },
  {
-  "en": "match",
-  "tr": "egyezés"
+  "en": "Source",
+  "tr": "Forrás"
+ },
+ {
+  "en": "Virtuse may earn a referral fee. It doesn't change the results.",
+  "tr": "A Virtuse ajánlói díjat kaphat. Ez nem változtat az eredményeken."
  },
  {
   "en": "Adjust answers",
@@ -68,6 +112,14 @@
   "tr": "Az országom szabályai"
  },
  {
+  "en": "Get this list by email",
+  "tr": "A lista elküldése e-mailben"
+ },
+ {
+  "en": "One email with your criteria and these partners. We add you to no list unless you tick the box.",
+  "tr": "Egyetlen e-mail az Ön szempontjaival és ezekkel a partnerekkel. Semmilyen listára nem vesszük fel, hacsak be nem jelöli a négyzetet."
+ },
+ {
   "en": "your country",
   "tr": "az Ön országa"
  },
@@ -80,51 +132,51 @@
   "tr": "Tovább a partnerhez"
  },
  {
-  "en": "Compares vetted EU exchanges in real time and routes your purchase straight to your own wallet — funds never sit on Invity itself.",
-  "tr": "Valós időben hasonlítja össze az ellenőrzött uniós tőzsdéket, és a vásárlást egyenesen az Ön saját tárcájába küldi: a pénz soha nem az Invitynél van."
+  "en": "Simple start for newcomers in {0}: a Bitcoin-only app.",
+  "tr": "Egyszerű kezdés újoncoknak (ország: {0}): csak Bitcoinos app."
  },
  {
-  "en": "Licensed by the Czech National Bank; built by SatoshiLabs, the makers of Trezor.",
-  "tr": "A Cseh Nemzeti Bank engedélyével; a SatoshiLabs, a Trezor készítője fejlesztette."
+  "en": "Auto-Invest savings plan with 0% fees.",
+  "tr": "Auto-Invest megtakarítási terv 0% díjjal."
  },
  {
-  "en": "Simplest start for newcomers in {0} — FMA MiCAR licensed, insured Bitcoin custody.",
-  "tr": "A legegyszerűbb kezdés újoncoknak (ország: {0}): FMA MiCAR-engedély, biztosított Bitcoin-letétkezelés."
+  "en": "Exchange with EUR trading pairs for {0}.",
+  "tr": "Tőzsde EUR-kereskedési párokkal (összeg: {0})."
  },
  {
-  "en": "Auto-Invest savings plan with 0% fees; 100,000+ European users.",
-  "tr": "Díjmentes Auto-Invest megtakarítási terv; több mint 100 000 európai felhasználó."
+  "en": "Founded in 2011.",
+  "tr": "2011-ben alapították."
  },
  {
-  "en": "Veteran EU exchange with deep EUR liquidity for {0}.",
-  "tr": "Tapasztalt uniós tőzsde nagy EUR-likviditással (ország: {0})."
+  "en": "Bitcoin-only app: buy once or with Auto Buy, then withdraw to your own wallet at any time or let Auto Send move it automatically.",
+  "tr": "Csak Bitcoinra épülő alkalmazás: vásároljon egyszer vagy Auto Buy-jal, és bármikor vegye ki a saját tárcájába, vagy az Auto Send automatikusan átküldi."
  },
  {
-  "en": "Founded 2011 — MiCA licensed via the Central Bank of Ireland.",
-  "tr": "2011-ben alapították: MiCA-engedély az Ír Központi Banktól."
+  "en": "Your Bitcoin is held with BitGo until you withdraw it.",
+  "tr": "A Bitcoint a BitGo őrzi, amíg ki nem veszi."
  },
  {
-  "en": "For larger amounts, a top-3 global exchange gives you deeper order books and tighter spreads.",
-  "tr": "Nagyobb összegeknél a világ három legnagyobb tőzsdéjének egyike mélyebb ajánlati könyvet és szűkebb árréseket kínál."
+  "en": "For larger amounts, a spot order book exchange with EUR pairs.",
+  "tr": "Nagyobb összegekhez: spot ajánlati könyves tőzsde EUR-párokkal."
  },
  {
-  "en": "A large global platform with full EEA passporting if you want more than spot buying — card, wider asset coverage.",
-  "tr": "Nagy globális platform teljes EGT-útlevéllel, ha a spot vásárlásnál többet szeretne: kártya, szélesebb eszközkínálat."
+  "en": "If you want more than spot buying: card and wider asset coverage.",
+  "tr": "Ha többet szeretne a spot vásárlásnál: kártya és szélesebb eszközkínálat."
  },
  {
   "en": "Since you want self-custody: move your Bitcoin off any exchange onto your own hardware wallet as soon as you buy.",
   "tr": "Mivel saját őrzést szeretne: vásárlás után azonnal vigye át a Bitcoint a tőzsdéről a saját hardvertárcájára."
  },
  {
-  "en": "Bitcoin-backed P2P loans, market-driven rates — but note: Firefish assumes self-custody via multisig escrow.",
-  "tr": "Bitcoin-fedezetű P2P hitelek piaci kamattal. Fontos: a Firefish multisig escrow-n keresztüli saját őrzést feltételez."
+  "en": "Bitcoin-backed P2P loans, market-driven rates. Note: Firefish assumes self-custody via multisig escrow.",
+  "tr": "Bitcoin-fedezetű P2P hitelek piaci kamatokkal. Figyelem: a Firefish saját őrzést feltételez multisig letéten keresztül."
  },
  {
   "en": "If you prefer assisted custody, set that up first, then come back for the loan.",
   "tr": "Ha inkább segített letétkezelést szeretne, először azt állítsa be, és utána térjen vissza a hitelért."
  },
  {
-  "en": "Borrow EUR against your bitcoin — keep 100% of the upside.",
+  "en": "Borrow EUR against your bitcoin and keep 100% of the upside.",
   "tr": "Euróhitel Bitcoin-fedezetre, miközben a teljes, 100%-os árfolyam-emelkedés az Öné marad."
  },
  {
@@ -136,15 +188,15 @@
   "tr": "Működik ekkora összegre: {0}, ebben az országban: {1}, multisig-védelemmel biztosított P2P hitelekkel."
  },
  {
-  "en": "The most beginner-friendly bot platform — copy trading, paper trading, and a 30-day free trial before you commit.",
-  "tr": "A kezdők számára legbarátságosabb botplatform: copy trading, paper trading és 30 napos ingyenes próbaidő az elköteleződés előtt."
+  "en": "Copy trading, paper trading and a 30-day free trial before you commit.",
+  "tr": "Copy trading, paper trading és 30 napos ingyenes próba, mielőtt elköteleződik."
  },
  {
   "en": "150+ ready-made strategy templates for when you want to graduate to building your own rules.",
   "tr": "Több mint 150 kész stratégiasablon arra az időre, amikor már saját szabályokat szeretne írni."
  },
  {
-  "en": "Explicitly non-custodial — trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.",
+  "en": "Explicitly non-custodial: trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.",
   "tr": "Kifejezetten nem letétkezelő: csak kereskedésre jogosult API-kulcsok, kifizetési jog nélkül; a Bitcoin soha nem hagyja el a tőzsdét."
  },
  {
@@ -152,51 +204,47 @@
   "tr": "Több mint 150 stratégiasablon backtesting-motorral."
  },
  {
-  "en": "A simpler, Bitcoin-focused cloud DCA/grid setup — referral commissions even pay out in BTC.",
-  "tr": "Egyszerűbb, Bitcoinra fókuszáló felhőalapú DCA- és grid-beállítás: az ajánlói jutalékot is BTC-ben fizetik."
+  "en": "A simpler, Bitcoin-focused cloud DCA/grid setup.",
+  "tr": "Egyszerűbb, Bitcoinra összpontosító felhőalapú DCA/grid megoldás."
  },
  {
-  "en": "MiCA CASP-licensed institutional custodian for {0} — $250M insurance coverage.",
-  "tr": "MiCA szerinti CASP-engedéllyel rendelkező intézményi letétkezelő (ország: {0}): 250 millió USD biztosítási fedezet."
+  "en": "Institutional custodian for companies in {0}.",
+  "tr": "Intézményi letétkezelő vállalatoknak (ország: {0})."
  },
  {
-  "en": "Already serves 21bitcoin; proven European infrastructure.",
-  "tr": "Már a 21bitcoint is kiszolgálja; bevált európai infrastruktúra."
+  "en": "Digital asset bank with discretionary treasury mandates, including rebalancing and hedging.",
+  "tr": "Digitáliseszköz-bank diszkrecionális treasury-megbízásokkal, beleértve az újrasúlyozást és a fedezeti ügyleteket."
  },
  {
-  "en": "World's first regulated digital asset bank — discretionary treasury mandates, including rebalancing and hedging.",
-  "tr": "A világ első szabályozott digitáliseszköz-bankja: diszkrecionális treasury-megbízások, újrasúlyozással és fedezeti ügyletekkel."
+  "en": "For larger allocations: institutional custody and trading.",
+  "tr": "Nagyobb allokációkhoz: intézményi letétkezelés és kereskedés."
  },
  {
-  "en": "For the largest allocations: the largest regulated crypto custodian globally, MiCA CASP via CSSF Luxembourg.",
-  "tr": "A legnagyobb allokációkhoz: a világ legnagyobb szabályozott kriptoletétkezelője, MiCA szerinti CASP a luxemburgi CSSF-en keresztül."
+  "en": "ASIC reseller with hosting in Norway, Finland and Ethiopia: a simple first hosted contract.",
+  "tr": "ASIC-viszonteladó tárhellyel Norvégiában, Finnországban és Etiópiában: egyszerű első hosting-szerződés."
  },
  {
-  "en": "Top 5 EU ASIC reseller with hosting in Norway, Finland, and Ethiopia — an easy first hosted contract.",
-  "tr": "Az öt legnagyobb uniós ASIC-viszonteladó egyike, hostinggal Norvégiában, Finnországban és Etiópiában: egyszerű első hostingszerződés."
- },
- {
-  "en": "Professionally managed, renewable-energy mining infrastructure — built for mid-to-large scale miners.",
-  "tr": "Professzionálisan üzemeltetett, megújuló energiával működő bányászati infrastruktúra közepes és nagy bányászoknak."
+  "en": "Professionally managed, renewable-energy mining infrastructure for mid-to-large scale miners.",
+  "tr": "Szakszerűen üzemeltetett, megújuló energiás bányászati infrastruktúra közepes és nagy bányászoknak."
  },
  {
   "en": "For Bitcoin purists: open-source mining hardware (Bitaxe), EU warehouse for fast shipping.",
   "tr": "Bitcoin-puristáknak: nyílt forráskódú bányászhardver (Bitaxe), uniós raktár és gyors szállítás."
  },
  {
-  "en": "The original Bitcoin hardware wallet, since 2013 — fully open-source hardware and firmware, easiest to start with.",
-  "tr": "Az eredeti Bitcoin-hardvertárca 2013 óta: teljesen nyílt forráskódú hardver és firmware, a legkönnyebb kezdés."
+  "en": "Bitcoin hardware wallet since 2013, with open-source hardware and firmware: a simple place to start.",
+  "tr": "Bitcoin-hardvertárca 2013 óta, nyílt forráskódú hardverrel és firmware-rel: egyszerű kezdés."
  },
  {
-  "en": "Native support for multisig and collaborative custody vaults — the setup that answers \"what happens to my bitcoin\".",
+  "en": "Native support for multisig and collaborative custody vaults: the setup that answers \"what happens to my bitcoin\".",
   "tr": "Natív támogatás a multisighoz és a közös letétkezelésű trezorokhoz: ez a beállítás felel arra, hogy „mi lesz a Bitcoinommal?”."
  },
  {
-  "en": "World's most popular hardware wallet — 7M+ devices sold, certified Secure Element chip.",
-  "tr": "A világ legnépszerűbb hardvertárcája: több mint 7 millió eladott eszköz, tanúsított Secure Element chip."
+  "en": "Hardware wallet with a certified Secure Element chip and the Ledger Live app.",
+  "tr": "Hardvertárca tanúsított Secure Element chippel és Ledger Live appal."
  },
  {
-  "en": "Country-specific reports built for {0} — Austrian-built, 700+ integrations.",
+  "en": "Country-specific reports built for {0}: Austrian-built, 700+ integrations.",
   "tr": "Országspecifikus jelentések (ország: {0}): osztrák fejlesztés, több mint 700 integráció."
  },
  {
@@ -208,16 +256,16 @@
   "tr": "Több mint 100 országot fed le (köztük: {0}), több mint 400 tőzsdén és tárcán."
  },
  {
-  "en": "Free to track — you only pay when you download the report.",
-  "tr": "A követés ingyenes: csak a jelentés letöltésekor kell fizetni."
+  "en": "Free to track: you only pay when you download the report.",
+  "tr": "Ingyenes követés: csak a jelentés letöltésekor fizet."
  },
  {
-  "en": "The veteran option — tracking crypto tax since 2013, 300+ exchange integrations.",
-  "tr": "A tapasztalt választás: 2013 óta követi a kriptoadózást, több mint 300 tőzsdei integrációval."
+  "en": "Tracking crypto tax since 2013, 300+ exchange integrations.",
+  "tr": "Kriptoadó-követés 2013 óta, több mint 300 tőzsdei integráció."
  },
  {
-  "en": "Privacy-first and no KYC required, if that matters more to you than breadth of integrations.",
-  "tr": "Adatvédelem elsősorban, KYC nélkül, ha ez fontosabb Önnek, mint az integrációk száma."
+  "en": "A short import-to-report flow, if speed matters more to you than breadth of integrations.",
+  "tr": "Rövid út az importtól a jelentésig, ha a gyorsaság fontosabb Önnek, mint az integrációk száma."
  },
  {
   "en": "your goal",
@@ -348,6 +396,14 @@
   "tr": "Hollandia"
  },
  {
+  "en": "France",
+  "tr": "Franciaország"
+ },
+ {
+  "en": "Spain",
+  "tr": "Spanyolország"
+ },
+ {
   "en": "First purchase, learning the ropes",
   "tr": "Első vásárlás, most tanulom"
  },
@@ -380,8 +436,8 @@
   "tr": "Még nincs preferenciám"
  },
  {
-  "en": "Advise me",
-  "tr": "Kérem, tanácsoljon"
+  "en": "Show all options",
+  "tr": "Minden lehetőség mutatása"
  },
  {
   "en": "< €1,000",
@@ -400,72 +456,92 @@
   "tr": "> 100 000 €"
  },
  {
-  "en": "Bitcoin-only app, FMA MiCAR licensed — insured custody",
-  "tr": "Csak Bitcoinos app, FMA MiCAR-engedély: biztosított letétkezelés"
+  "en": "checked 12 Oct 2026",
+  "tr": "ellenőrizve: 2026. 10. 12."
+ },
+ {
+  "en": "Bitcoin-only app for buying and saving",
+  "tr": "Csak Bitcoinos app vásárláshoz és megtakarításhoz"
  },
  {
   "en": "Auto-Invest savings plan with 0% fees",
   "tr": "Díjmentes Auto-Invest megtakarítási terv"
  },
  {
-  "en": "MiCA-licensed",
-  "tr": "MiCA-engedélyes"
+  "en": "FMA Austria",
+  "tr": "FMA Ausztria"
  },
  {
-  "en": "Veteran EU exchange — deep EUR liquidity since 2011",
-  "tr": "Tapasztalt uniós tőzsde: nagy EUR-likviditás 2011 óta"
+  "en": "Exchange with EUR trading, founded in 2011",
+  "tr": "Tőzsde EUR-kereskedéssel, alapítva 2011-ben"
  },
  {
-  "en": "Pro trading fees from 0.16%",
-  "tr": "Pro kereskedési díjak 0,16%-tól"
+  "en": "Pro trading fees from 0.8%",
+  "tr": "Pro kereskedési díjak 0,8%-tól"
  },
  {
-  "en": "Top-3 global exchange, EU-licensed in Vienna",
-  "tr": "A világ három legnagyobb tőzsdéjének egyike, uniós engedéllyel Bécsben"
+  "en": "Central Bank of Ireland",
+  "tr": "Ír Központi Bank"
  },
  {
-  "en": "Spot trading fees from 0.1%",
-  "tr": "Spot kereskedési díjak 0,1%-tól"
+  "en": "Bybit's EU exchange, based in Vienna",
+  "tr": "A Bybit uniós tőzsdéje, bécsi székhellyel"
  },
  {
-  "en": "Rate-comparison engine that routes straight to self-custody",
-  "tr": "Árfolyam-összehasonlító, amely egyenesen saját őrzésbe irányít"
+  "en": "Spot trading fees from 0.25%",
+  "tr": "Spot kereskedési díjak 0,25%-tól"
  },
  {
-  "en": "Built by SatoshiLabs; funds never held on Invity itself",
-  "tr": "A SatoshiLabs fejlesztése; a pénz soha nem az Invitynél van"
+  "en": "Bitcoin-only app with Auto Buy and Auto Send to your own wallet",
+  "tr": "Csak Bitcoinra épülő alkalmazás Auto Buy és Auto Send funkcióval a saját tárcába"
  },
  {
-  "en": "Large global platform with full EEA passporting",
-  "tr": "Nagy globális platform teljes EGT-útlevéllel"
+  "en": "Bitcoin held with BitGo until you withdraw it",
+  "tr": "Bitcoin a BitGo őrzésében, amíg ki nem veszi"
  },
  {
-  "en": "Deep liquidity; Crypto.com Visa Card supported",
-  "tr": "Nagy likviditás; Crypto.com Visa kártya támogatott"
+  "en": "Bitcoin only",
+  "tr": "Csak Bitcoin"
  },
  {
-  "en": "The original Bitcoin hardware wallet, since 2013",
-  "tr": "Az eredeti Bitcoin-hardvertárca, 2013 óta"
+  "en": "Czech National Bank",
+  "tr": "Cseh Nemzeti Bank"
  },
  {
-  "en": "Fully open-source hardware and firmware",
-  "tr": "Teljesen nyílt forráskódú hardver és firmware"
+  "en": "Platform with spot buying and the Crypto.com Visa Card",
+  "tr": "Platform spot vásárlással és Crypto.com Visa kártyával"
  },
  {
-  "en": "World's most popular hardware wallet — 7M+ sold",
-  "tr": "A világ legnépszerűbb hardvertárcája: több mint 7 millió eladott"
+  "en": "Card and wider asset coverage",
+  "tr": "Kártya és szélesebb eszközkínálat"
  },
  {
-  "en": "Certified Secure Element chip; Ledger Live app",
-  "tr": "Tanúsított Secure Element chip; Ledger Live app"
+  "en": "MFSA Malta",
+  "tr": "MFSA Málta"
  },
  {
-  "en": "Bitcoin Core-grade infra — multisig & collaborative custody",
-  "tr": "Bitcoin Core szintű infrastruktúra: multisig és közös letétkezelés"
+  "en": "Bitcoin hardware wallet, since 2013",
+  "tr": "Bitcoin-hardvertárca, 2013 óta"
  },
  {
-  "en": "Blockstream Jade — fully open-source, no secure element",
-  "tr": "Blockstream Jade: teljesen nyílt forráskódú, Secure Element nélkül"
+  "en": "Open-source hardware and firmware",
+  "tr": "Nyílt forráskódú hardver és firmware"
+ },
+ {
+  "en": "Hardware wallet with the Ledger Live app",
+  "tr": "Hardvertárca Ledger Live appal"
+ },
+ {
+  "en": "Certified Secure Element chip",
+  "tr": "Tanúsított Secure Element chip"
+ },
+ {
+  "en": "Multisig and collaborative custody tools",
+  "tr": "Eszközök multisighoz és közös letétkezeléshez"
+ },
+ {
+  "en": "Blockstream Jade: open-source, no secure element",
+  "tr": "Blockstream Jade: nyílt forráskódú, Secure Element nélkül"
  },
  {
   "en": "Bitcoin-backed P2P loans, multisig-secured",
@@ -476,8 +552,8 @@
   "tr": "Piaci kamat; nincs hitelbírálat"
  },
  {
-  "en": "Bitcoin-native",
-  "tr": "Bitcoin-natív"
+  "en": "NBS Slovakia",
+  "tr": "NBS Szlovákia"
  },
  {
   "en": "Austrian-built tax tool, country-specific EU reports",
@@ -496,68 +572,76 @@
   "tr": "Ingyenes követés; fizetés csak a jelentés letöltésekor"
  },
  {
-  "en": "The veteran crypto tax tracker, since 2013",
-  "tr": "A tapasztalt kriptoadó-követő, 2013 óta"
+  "en": "Crypto tax tracker, since 2013",
+  "tr": "Kriptoadó-követő, 2013 óta"
  },
  {
   "en": "300+ exchange integrations; free up to 200 transactions",
   "tr": "Több mint 300 tőzsdei integráció; 200 tranzakcióig ingyenes"
  },
  {
-  "en": "Privacy-first tax tool, no KYC required",
-  "tr": "Adatvédelmet előtérbe helyező adóeszköz, KYC nélkül"
+  "en": "Crypto tax report tool",
+  "tr": "Kriptoadó-jelentéskészítő eszköz"
  },
  {
   "en": "14-minute import-to-report",
   "tr": "Importtól a jelentésig 14 perc alatt"
  },
  {
-  "en": "Institutional custodian, MiCA CASP via BaFin Germany",
-  "tr": "Intézményi letétkezelő, MiCA szerinti CASP a németországi BaFin-en keresztül"
+  "en": "Institutional custodian",
+  "tr": "Intézményi letétkezelő"
  },
  {
-  "en": "$250M insurance coverage; already serves 21bitcoin",
-  "tr": "250 millió USD biztosítási fedezet; már a 21bitcoint is kiszolgálja"
+  "en": "Custody for companies and funds",
+  "tr": "Letétkezelés vállalatoknak és alapoknak"
  },
  {
-  "en": "World's first regulated digital asset bank",
-  "tr": "A világ első szabályozott digitáliseszköz-bankja"
+  "en": "BaFin Germany",
+  "tr": "BaFin Németország"
  },
  {
-  "en": "FINMA banking license; discretionary treasury mandates",
-  "tr": "FINMA banki engedély; diszkrecionális treasury-megbízások"
+  "en": "Digital asset bank",
+  "tr": "Digitáliseszköz-bank"
  },
  {
-  "en": "Regulated bank",
-  "tr": "Szabályozott bank"
+  "en": "Discretionary treasury mandates",
+  "tr": "Diszkrecionális treasury-megbízások"
  },
  {
-  "en": "Largest regulated crypto custodian globally",
-  "tr": "A világ legnagyobb szabályozott kriptoletétkezelője"
+  "en": "FMA Liechtenstein",
+  "tr": "FMA Liechtenstein"
  },
  {
-  "en": "MiCA CASP via CSSF Luxembourg; SOC 2 Type II",
-  "tr": "MiCA szerinti CASP a luxemburgi CSSF-en keresztül; SOC 2 Type II"
+  "en": "Institutional custody and trading",
+  "tr": "Intézményi letétkezelés és kereskedés"
+ },
+ {
+  "en": "For larger company allocations",
+  "tr": "Nagyobb vállalati allokációkhoz"
+ },
+ {
+  "en": "CSSF Luxembourg",
+  "tr": "CSSF Luxemburg"
  },
  {
   "en": "Explicitly non-custodial, trade-only API bots",
   "tr": "Kifejezetten nem letétkezelő, csak kereskedésre jogosult API-botok"
  },
  {
-  "en": "150+ strategy templates; Y Combinator backed",
-  "tr": "Több mint 150 stratégiasablon; a Y Combinator támogatásával"
+  "en": "150+ strategy templates",
+  "tr": "Több mint 150 stratégiasablon"
  },
  {
   "en": "Non-custodial",
   "tr": "Nem letétkezelő"
  },
  {
-  "en": "The most beginner-friendly bot platform",
-  "tr": "A kezdők számára legbarátságosabb botplatform"
+  "en": "Bot platform with copy trading and paper trading",
+  "tr": "Botplatform copy tradinggel és paper tradinggel"
  },
  {
-  "en": "Copy trading, paper trading, 30-day free trial",
-  "tr": "Copy trading, paper trading, 30 napos ingyenes próba"
+  "en": "30-day free trial",
+  "tr": "30 napos ingyenes próba"
  },
  {
   "en": "Cloud DCA and grid bots, Bitcoin-focused",
@@ -568,8 +652,8 @@
   "tr": "Ajánlói jutalék BTC-ben"
  },
  {
-  "en": "Top 5 EU ASIC reseller with EU/Nordic hosting",
-  "tr": "Az öt legnagyobb uniós ASIC-viszonteladó egyike, uniós és északi hostinggal"
+  "en": "ASIC reseller with EU/Nordic hosting",
+  "tr": "ASIC-viszonteladó uniós és északi tárhellyel"
  },
  {
   "en": "Hosting in Norway, Finland, and Ethiopia",
@@ -580,80 +664,44 @@
   "tr": "Professzionálisan üzemeltetett bányászat megújuló energiával"
  },
  {
-  "en": "Enterprise-grade facilities for mid-to-large miners",
-  "tr": "Vállalati szintű létesítmények közepes és nagy bányászoknak"
+  "en": "Hosting for mid-to-large miners",
+  "tr": "Tárhely közepes és nagy bányászoknak"
  },
  {
   "en": "Open-source mining hardware specialist (Bitaxe)",
   "tr": "Nyílt forráskódú bányászhardverek specialistája (Bitaxe)"
  },
  {
-  "en": "EU warehouse, fast shipping; 22,000+ products sold",
-  "tr": "Uniós raktár, gyors szállítás; több mint 22 000 eladott termék"
+  "en": "EU warehouse, fast shipping",
+  "tr": "Uniós raktár, gyors szállítás"
  },
  {
-  "en": "Headroom to the margin call is only {0} % – a moderate drawdown puts your collateral at risk. Lower the LTV or the amount.",
-  "tr": "A fedezetkiegészítési felhívásig csak {0}% a mozgástér: egy mérsékelt esés is veszélyezteti a fedezetet. Csökkentse az LTV-t vagy az összeget."
+  "en": "Headroom to the margin call is only {0} % – a moderate drawdown puts the collateral at risk. A lower LTV or amount increases the headroom.",
+  "tr": "A margin callig csak {0}% a tartalék – egy mérsékelt esés is veszélybe sodorja a fedezetet. Alacsonyabb LTV vagy összeg növeli a tartalékot."
  },
  {
-  "en": "Liquidation risk is the story here",
-  "tr": "Itt a likvidációs kockázat a döntő"
+  "en": "In {0} of {1} price scenarios the borrow column ends higher; in {2} the sell column does.",
+  "tr": "{1} árforgatókönyvből {0} esetben a hitel oszlop végez magasabban, {2} esetben az eladásé."
  },
  {
-  "en": "Talk to a loan specialist",
-  "tr": "Beszélgetés egy hitelszakértővel"
+  "en": "Selling now: {0} tax on the gain, and {1} BTC leave your stack.",
+  "tr": "Eladás most: {0} adó a nyereség után, és {1} BTC kikerül az állományából."
  },
  {
-  "en": "Borrowing wins in {0} of {1} scenarios – you keep 100 % of the upside on your full stack.",
-  "tr": "A hitel {1} forgatókönyvből {0} esetben nyer: a teljes Bitcoin-állomány árfolyam-emelkedése 100%-ban az Öné marad."
+  "en": "Borrowing: {0} interest over {1} years ({2} % p.a.), with {3} BTC locked as collateral.",
+  "tr": "Hitel: {0} kamat {1} év alatt (évi {2}%), {3} BTC fedezetként zárolva."
  },
  {
-  "en": "Interest costs {0} over {1}y ({2} % p.a.) – vs. an immediate {3} tax bill plus giving up future gains on {4} BTC if you sell.",
-  "tr": "A kamat {0} {1} év alatt (évi {2}%), szemben az azonnali {3} adóval és {4} BTC jövőbeli hozamának elvesztésével eladás esetén."
+  "en": "The borrow column catches up with the sell column only if BTC rises by about {0} % per year or more.",
+  "tr": "A hitel oszlop csak akkor éri utol az eladás oszlopát, ha a BTC évente nagyjából {0}%-kal vagy jobban emelkedik."
  },
  {
-  "en": "In your jurisdiction, selling triggers ~{0} % tax on the gain portion. Loans defer that decision.",
-  "tr": "Az Ön joghatóságában az eladás kb. {0}% adót jelent a nyereségrészre. A hitel elhalasztja ezt a döntést."
+  "en": "Liquidation risk is high at these settings",
+  "tr": "Ezekkel a beállításokkal magas a likvidálási kockázat"
  },
  {
-  "en": "Your assumed tax rate is 0 % – selling is cheaper tax-wise, but still caps your upside.",
-  "tr": "A feltételezett adókulcs 0%: adó szempontjából olcsóbb eladni, de ez így is korlátozza az árfolyam-emelkedésből való részesedést."
- },
- {
-  "en": "Break-even requires BTC to appreciate ≈ {0} %/year – demanding; size the loan conservatively.",
-  "tr": "A megtérüléshez a BTC-nek évente kb. {0}%-kal kell drágulnia: ez igényes, óvatosan méretezze a hitelt."
- },
- {
-  "en": "Liquidity without selling fits better",
-  "tr": "Az eladás nélküli likviditás jobban illik Önhöz"
- },
- {
-  "en": "Get a Bitcoin-backed loan via Firefish",
-  "tr": "Bitcoin-fedezetű hitel a Firefishnél"
- },
- {
-  "en": "Selling wins in {0} of {1} scenarios at your assumptions.",
-  "tr": "Az Ön feltételezései mellett az eladás {1} forgatókönyvből {0} esetben nyer."
- },
- {
-  "en": "With a {0} % gain share, tax is only {1} – cheap exit liquidity.",
-  "tr": "Ha a nyereség aránya {0}%, az adó csak {1}: olcsó kiszállás."
- },
- {
-  "en": "You give up upside only on {0} BTC; the rest of your stack stays exposed.",
-  "tr": "Csak {0} BTC árfolyam-emelkedéséről mond le; a Bitcoin többi része továbbra is kitett marad."
- },
- {
-  "en": "Tiny break-even appreciation needed – the loan case is weak here.",
-  "tr": "A megtérüléshez szükséges drágulás minimális: itt gyenge érv szól a hitel mellett."
- },
- {
-  "en": "Selling is the rational move at these numbers",
-  "tr": "Ezekkel a számokkal az eladás a racionális döntés"
- },
- {
-  "en": "Discuss options with Virtuse",
-  "tr": "Lehetőségek megbeszélése a Virtuse-szal"
+  "en": "What the numbers show",
+  "tr": "Amit a számok mutatnak"
  },
  {
   "en": "Germany (<1y held)",
@@ -662,6 +710,26 @@
  {
   "en": "0 % after 1-year holding",
   "tr": "0% 1 év tartás után"
+ },
+ {
+  "en": "Austria (bought from Mar 2021)",
+  "tr": "Ausztria (2021 márciusától vett)"
+ },
+ {
+  "en": "0 % after 1-year holding if bought before Mar 2021",
+  "tr": "0% 1 év tartás után, ha 2021 márciusa előtt vette"
+ },
+ {
+  "en": "Croatia (<2y held)",
+  "tr": "Horvátország (2 évnél rövidebb tartás)"
+ },
+ {
+  "en": "0 % after 2-year holding",
+  "tr": "0% 2 év tartás után"
+ },
+ {
+  "en": "Spain (gains €6k–50k)",
+  "tr": "Spanyolország (6–50 ezer € nyereség)"
  },
  {
   "en": "Custom",
@@ -728,8 +796,8 @@
   "tr": "Auto-Invest terv"
  },
  {
-  "en": "0 % fees on the built-in Auto-Invest savings plan – FMA MiCAR licensed, insured custody, and already automated: set the schedule once and it runs itself.",
-  "tr": "0% díj a beépített Auto-Invest megtakarítási tervben: FMA MiCAR-engedély, biztosított letétkezelés, és már automatizált; az ütemezést egyszer kell beállítani."
+  "en": "0 % fees on the built-in Auto-Invest savings plan, already automated: set the schedule once and it runs itself.",
+  "tr": "0% díj a beépített Auto-Invest megtakarítási tervben, már automatizálva: az ütemezést egyszer kell beállítani."
  },
  {
   "en": "Automated",
@@ -740,8 +808,8 @@
   "tr": "Spot kereskedés"
  },
  {
-  "en": "Spot trading fees from 0.1 % – EU-licensed in Vienna, deep order books for a manual recurring buy.",
-  "tr": "Spot kereskedési díjak 0,1%-tól: uniós engedély Bécsben, mély ajánlati könyvek a rendszeres kézi vásárláshoz."
+  "en": "Spot trading fees from 0.25 %, EU company in Vienna, for a manual recurring buy.",
+  "tr": "Spot kereskedési díjak 0,25%-tól, uniós társaság Bécsben, rendszeres kézi vásárláshoz."
  },
  {
   "en": "Same day",
@@ -752,20 +820,8 @@
   "tr": "Pro kereskedés"
  },
  {
-  "en": "Pro trading fees from 0.16 % – veteran EU exchange, deep EUR liquidity since 2011.",
-  "tr": "Pro kereskedési díjak 0,16%-tól: tapasztalt uniós tőzsde, nagy EUR-likviditás 2011 óta."
- },
- {
-  "en": "Automated DCA bot",
-  "tr": "Automatizált DCA-bot"
- },
- {
-  "en": "Cloud DCA & grid bots built specifically for Bitcoin – set the rhythm once and it runs itself. Fee shown here is illustrative pending RevenueBot’s own published schedule; check their site for current pricing.",
-  "tr": "Kifejezetten Bitcoinra készült felhőalapú DCA- és grid-botok: a ritmust egyszer kell beállítani. A feltüntetett díj tájékoztató jellegű, amíg a RevenueBot nem teszi közzé saját díjszabását; az aktuális árakat a honlapjukon találja."
- },
- {
-  "en": "Set & forget",
-  "tr": "Beállítod és elfelejted"
+  "en": "Pro trading fees from 0.8 %, exchange with EUR trading since 2011.",
+  "tr": "Pro kereskedési díjak 0,8%-tól, tőzsde EUR-kereskedéssel 2011 óta."
  },
  {
   "en": "At risk – coins may be lost",
@@ -796,48 +852,48 @@
   "tr": "Minden elidegenítés (a kripto-kripto csere is) adóköteles esemény: már az első naptól vezessen teljes nyilvántartást."
  },
  {
-  "en": "19 % income tax (25 % above threshold)",
-  "tr": "19% jövedelemadó (a küszöb felett 25%)"
- },
- {
-  "en": "Tax-free after 1-year holding; occasional-income allowance €500/yr",
-  "tr": "1 év tartás után adómentes; alkalmi jövedelemre évi 500 € mentesség"
- },
- {
-  "en": "Separate bank account for crypto activity makes reporting dramatically easier.",
-  "tr": "A kriptotevékenységhez külön bankszámla sokkal egyszerűbbé teszi a bevallást."
- },
- {
-  "en": "19 % flat capital gains tax",
-  "tr": "19% egykulcsos tőkenyereségadó"
+  "en": "19–35 % income tax + 16 % health contributions",
+  "tr": "19–35% jövedelemadó + 16% egészségbiztosítási járulék"
  },
  {
   "en": "No holding-period exemption",
   "tr": "Nincs tartási idő utáni mentesség"
  },
  {
+  "en": "Annual personal tax return (type B), due 31 March",
+  "tr": "Éves személyi jövedelemadó-bevallás (B típus), március 31-ig"
+ },
+ {
+  "en": "Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.",
+  "tr": "Minden elidegenítés (a kripto–kripto csere is) adóköteles. A tervezett 7%-os kulcsot és az 1 év utáni mentességet hatálybalépés előtt eltörölték."
+ },
+ {
+  "en": "19 % flat capital gains tax",
+  "tr": "19% egykulcsos tőkenyereségadó"
+ },
+ {
   "en": "Annual PIT-38",
   "tr": "Éves PIT-38"
  },
  {
-  "en": "Crypto-to-crypto swaps are taxable – calculate each disposal’s PLN gain/loss.",
-  "tr": "A kripto-kripto csere adóköteles: minden elidegenítésnél ki kell számolni a PLN-ben mért nyereséget vagy veszteséget."
+  "en": "Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
+  "tr": "A kripto-kripto csere nem adóköteles – csak a pénzért, áruért vagy szolgáltatásért történő eladás az. Minden eladásnál ki kell számolni a PLN-ben mért nyereséget."
  },
  {
   "en": "27.5 % KESt (capital gains tax)",
   "tr": "27,5% KESt (tőkenyereségadó)"
  },
  {
-  "en": "Gains tax-free after 1-year holding (private investors)",
-  "tr": "1 év tartás után adómentes nyereség (magánbefektetők)"
+  "en": "Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption",
+  "tr": "1 év után csak a 2021 márciusa előtt vett kripto adómentes; a későbbi vételekre nincs mentesség"
  },
  {
-  "en": "Annual tax return",
-  "tr": "Éves adóbevallás"
+  "en": "Annual return for gains via foreign exchanges; Austrian providers withhold the tax",
+  "tr": "Bevallás a külföldi tőzsdéken elért nyereségre; az osztrák szolgáltatók levonják az adót"
  },
  {
-  "en": "Staking and lending rewards are taxed when received, not when sold.",
-  "tr": "A staking- és kölcsönzési jutalmak a megszerzéskor adókötelesek, nem az eladáskor."
+  "en": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.",
+  "tr": "A kripto-kripto csere adósemleges. A kölcsönzés és a bányászat jóváíráskor adózik, a staking és az airdrop csak eladáskor (nulla bekerülési értékkel)."
  },
  {
   "en": "Up to 45 % income tax (progressive)",
@@ -846,6 +902,10 @@
  {
   "en": "0 % after 1-year holding (private-sale exemption)",
   "tr": "0% 1 év tartás után (magánértékesítési mentesség)"
+ },
+ {
+  "en": "Annual tax return",
+  "tr": "Éves adóbevallás"
  },
  {
   "en": "Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical.",
@@ -864,36 +924,48 @@
   "tr": "A dokumentált beszerzési költségek levonhatók: őrizzen meg minden számlát."
  },
  {
-  "en": "Progressive, up to ~50 % on disposal gains",
-  "tr": "Progresszív, az elidegenítési nyereség után legfeljebb kb. 50%"
+  "en": "No tax on private disposal gains (business trading is taxed)",
+  "tr": "A magánszemélyek elidegenítési nyeresége nem adózik (az üzletszerű kereskedés igen)"
  },
  {
-  "en": "No general holding exemption",
-  "tr": "Nincs általános tartási idő utáni mentesség"
+  "en": "Private gains are not taxed; a proposed 25% tax was withdrawn in 2025",
+  "tr": "A magánnyereség adómentes; a tervezett 25%-os adót 2025-ben visszavonták"
  },
  {
-  "en": "Cryptocurrency gains are treated as income; verify current guidance with a local advisor.",
-  "tr": "A kriptovaluta-nyereség jövedelemnek számít; az aktuális szabályokat egyeztesse helyi tanácsadóval."
+  "en": "None for private gains; business and mining income in the annual return",
+  "tr": "Magánnyereségnél nincs; üzleti és bányászati jövedelem az éves bevallásban"
  },
  {
-  "en": "12 % on digital-asset gains (2025; 10 % in 2024)",
-  "tr": "12% a digitáliseszköz-nyereségre (2025; 2024-ben 10%)"
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity.",
+  "tr": "A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet."
  },
  {
-  "en": "Digital-asset regime is new (2024+) – rules are still being interpreted in practice.",
-  "tr": "A digitális eszközökre vonatkozó szabályozás új (2024 óta): a gyakorlati értelmezés még alakul."
+  "en": "12% on crypto gains (since 2024)",
+  "tr": "12% a kriptonyereségre (2024 óta)"
  },
  {
-  "en": "10 % income tax on crypto gains",
-  "tr": "10% jövedelemadó a kriptonyereségre"
+  "en": "Tax-free after a 2-year holding period",
+  "tr": "2 év tartás után adómentes"
+ },
+ {
+  "en": "JOPPD form by the end of February (not the annual return)",
+  "tr": "JOPPD nyomtatvány február végéig (nem az éves bevallás)"
+ },
+ {
+  "en": "File JOPPD even for exempt sales. Losses offset gains only within the same year.",
+  "tr": "JOPPD-t mentes eladásnál is be kell adni. A veszteség csak ugyanabban az évben számolható el."
+ },
+ {
+  "en": "16% income tax on crypto gains (10% until 2025)",
+  "tr": "16% jövedelemadó a kriptonyereségre (2025-ig 10%)"
  },
  {
   "en": "Annual return (income from other sources)",
   "tr": "Éves bevallás (egyéb forrásból származó jövedelem)"
  },
  {
-  "en": "10 % is among the lowest flat rates in the EU – deduct your cost basis.",
-  "tr": "A 10% az EU egyik legalacsonyabb egykulcsos adója: a beszerzési ár levonható."
+  "en": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year.",
+  "tr": "A 2026-tól elért nyereség adója 10%-ról 16%-ra nőtt. A tranzakciónként 200 lej alatti nyereség évi 600 lejig adómentes."
  },
  {
   "en": "10 % flat tax on gains",
@@ -908,8 +980,8 @@
   "tr": "Box 3 vagyonadó a vélelmezett hozam után (a fiktív hozam kb. 36%-a)"
  },
  {
-  "en": "Tax-free allowance (~€57k per person, 2025)",
-  "tr": "Adómentes keret (kb. 57 000 € személyenként, 2025)"
+  "en": "Tax-free allowance (€59,357 per person, 2026)",
+  "tr": "Adómentes keret (59 357 € személyenként, 2026)"
  },
  {
   "en": "Annual Box 3 declaration",
@@ -918,6 +990,34 @@
  {
   "en": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.",
   "tr": "Tőkenyereségadó mint olyan nincs: a vagyon vélelmezett hozama után kell adózni. A Box 3 reform alatt áll, ellenőrizze a tárgyévi szabályokat."
+ },
+ {
+  "en": "31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026)",
+  "tr": "31,4% egykulcsos adó (PFU: 12,8% jövedelemadó + 18,6% szociális hozzájárulás, 2026)"
+ },
+ {
+  "en": "No holding-period exemption; total disposals up to €305 a year are exempt",
+  "tr": "Nincs tartási idő utáni mentesség; az évi összesen 305 €-ig terjedő eladások adómentesek"
+ },
+ {
+  "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
+  "tr": "Éves bevallás a 2086-os nyomtatványon; külföldi számlák a 3916-bis nyomtatványon"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
+  "tr": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
+ },
+ {
+  "en": "19–30% progressive tax on savings income",
+  "tr": "19–30% progresszív adó a megtakarítási jövedelemre"
+ },
+ {
+  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
+  "tr": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldön tartott kriptóra"
+ },
+ {
+  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
+  "tr": "A kripto-kripto csere adóköteles elidegenítés: azonos érméknél FIFO szerint kell számolni."
  },
  {
   "en": "Do your heirs have written instructions (a \"letter of instruction\")?",
@@ -1024,108 +1124,8 @@
   "tr": "C kulcs"
  },
  {
-  "en": "Tell the concierge your goal",
-  "tr": "A cél megosztása a concierge-dzsel"
- },
- {
-  "en": "Buy, borrow, earn, mine, secure or report — a short conversation replaces an hour of comparing sites.",
-  "tr": "Vásárlás, hitel, gyarapítás, bányászat, védelem vagy bevallás: egy rövid beszélgetés egy óra oldalösszehasonlítást vált ki."
- },
- {
-  "en": "Get matched to a vetted partner",
-  "tr": "Párosítás egy ellenőrzött partnerrel"
- },
- {
-  "en": "Every recommendation is one of {0} partners pre-screened by Virtuse, matched to your country and custody style.",
-  "tr": "Minden ajánlás a Virtuse által előre ellenőrzött {0} partner egyike, az Ön országa és letétkezelési módja szerint kiválasztva."
- },
- {
-  "en": "Finish on their regulated platform",
-  "tr": "Befejezés a partner szabályozott platformján"
- },
- {
-  "en": "KYC and onboarding happen at the partner. Virtuse never holds your keys, funds or data — ever.",
-  "tr": "A KYC és a regisztráció a partnernél történik. A Virtuse soha nem kezeli a kulcsait, a pénzét vagy az adatait."
- },
- {
-  "en": "Vetted partners",
-  "tr": "Ellenőrzött partner"
- },
- {
-  "en": "Service categories",
-  "tr": "Szolgáltatási kategória"
- },
- {
-  "en": "EU countries",
-  "tr": "Uniós ország"
- },
- {
-  "en": "Weekly readers",
-  "tr": "Heti olvasó"
- },
- {
-  "en": "Step",
-  "tr": "Lépés"
- },
- {
-  "en": "Get matched",
-  "tr": "Partnert keresek"
- },
- {
-  "en": "Bitcoin Concierge · Layer 2",
-  "tr": "Bitcoin Concierge · Layer 2"
- },
- {
-  "en": "One trusted hub.",
-  "tr": "Egy megbízható hub."
- },
- {
-  "en": "Every Bitcoin service.",
-  "tr": "Minden Bitcoin-szolgáltatás."
- },
- {
-  "en": "The concierge interviews you like an advisor, compares the Virtuse partner network for your country and custody style, and routes you to the right regulated platform.",
-  "tr": "A concierge tanácsadóként kérdez, összeveti a Virtuse partnerhálózatát az Ön országával és letétkezelési módjával, majd a megfelelő szabályozott platformhoz irányítja."
- },
- {
-  "en": "How",
-  "tr": "Hogyan működik"
- },
- {
-  "en": "routing works",
-  "tr": "az irányítás"
- },
- {
-  "en": "Partner",
-  "tr": "Partner"
- },
- {
-  "en": "ecosystem",
-  "tr": "ökoszisztéma"
- },
- {
-  "en": "Every name here has a live, vetted card on virtuse.com — the concierge only ever routes to one of them.",
-  "tr": "Minden itt szereplő névnek élő, ellenőrzött kártyája van a virtuse.com-on: a concierge csak ezek egyikéhez irányít."
- },
- {
-  "en": "Your keys, always",
-  "tr": "Az Ön kulcsai, mindig"
- },
- {
-  "en": "The concierge only advises and routes. It cannot move funds, and Virtuse never takes custody. That is what keeps Layer 2 light on regulation — and your sats in your hands.",
-  "tr": "A concierge csak tanácsot ad és irányít. Nem tud pénzt mozgatni, és a Virtuse soha nem vesz át letétet. Ettől marad a Layer 2 szabályozása könnyű, a satok pedig az Ön kezében."
- },
- {
-  "en": "Routing engine is rule-based — a production version plugs in a conversational agent over the same data and guardrails. Educational routing only; not financial, tax or legal advice. KYC & onboarding are completed on each partner’s regulated platform.",
-  "tr": "Az irányítási motor szabályalapú: egy éles verzió ugyanazokra az adatokra és biztosítékokra épülő beszélgető ügynököt kapcsol be. Kizárólag oktatási célú irányítás; nem pénzügyi, adó- vagy jogi tanácsadás. A KYC és a regisztráció minden partner saját szabályozott platformján történik."
- },
- {
   "en": "Loan & Liquidity Copilot",
   "tr": "Loan & Liquidity Copilot"
- },
- {
-  "en": "Layer 2 · Module 04",
-  "tr": "Layer 2 · 04. modul"
  },
  {
   "en": "Sell your bitcoin, or",
@@ -1136,8 +1136,8 @@
   "tr": "vagy hitelt vesz fel rá?"
  },
  {
-  "en": "The core question of the Virtuse thesis – answered with your numbers. Compare the tax bill and lost upside of selling against the interest and liquidation risk of a Bitcoin-backed loan.",
-  "tr": "A Virtuse-tézis központi kérdése, az Ön számaival. Hasonlítsa össze az eladás adóját és az elmaradó árfolyam-emelkedést egy Bitcoin-fedezetű hitel kamatával és likvidációs kockázatával."
+  "en": "Both options side by side, with your own numbers. Compare the tax bill and lost upside of selling against the interest and liquidation risk of a Bitcoin-backed loan.",
+  "tr": "A két lehetőség egymás mellett, az Ön saját számaival. Vesse össze az eladással járó adót és elmaradt árfolyamnyereséget a Bitcoin-fedezetű hitel kamataival és likvidálási kockázatával."
  },
  {
   "en": "Cash needed",
@@ -1170,6 +1170,10 @@
  {
   "en": "Tax jurisdiction (gain rate)",
   "tr": "Adójoghatóság (nyereségadókulcs)"
+ },
+ {
+  "en": "Your tax rate on gains",
+  "tr": "Az Ön nyereségadókulcsa"
  },
  {
   "en": "Untaxed cost basis share",
@@ -1276,8 +1280,8 @@
   "tr": "Nettó hitellel"
  },
  {
-  "en": "Winner",
-  "tr": "Nyertes"
+  "en": "Difference",
+  "tr": "Különbség"
  },
  {
   "en": "Borrow",
@@ -1288,12 +1292,20 @@
   "tr": "Eladás"
  },
  {
-  "en": "Loan & Liquidity Copilot – Virtuse Layer 2, Module 04. Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.",
-  "tr": "Loan & Liquidity Copilot: Virtuse Layer 2, 04. modul. Egyszerűsített oktatási modell tájékoztató kamatokkal és rögzített fedezetkiegészítési küszöbbel: a valós feltételek a hitelezőtől függnek. Nem pénzügyi, adó- vagy jogi tanácsadás. A Virtuse soha nem kezeli a kulcsait; a fedezet multisig escrow-ban marad."
+  "en": "This calculator shows both outcomes and does not recommend either. The decision is yours.",
+  "tr": "A kalkulátor mindkét eredményt megmutatja, és egyiket sem ajánlja. A döntés az Öné."
  },
  {
-  "en": "Layer 2 · Module 03",
-  "tr": "Layer 2 · 03. modul"
+  "en": "Compare loan partners",
+  "tr": "Hitelpartnerek összehasonlítása"
+ },
+ {
+  "en": "Check your country's tax rules",
+  "tr": "Az ország adószabályainak ellenőrzése"
+ },
+ {
+  "en": "Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.",
+  "tr": "Egyszerűsített oktatási modell tájékoztató kamatokkal és rögzített fedezetkiegészítési küszöbbel: a valós feltételek a hitelezőtől függnek. Nem pénzügyi, adó- vagy jogi tanácsadás. A Virtuse soha nem kezeli a kulcsait; a fedezet multisig escrow-ban marad."
  },
  {
   "en": "Your DCA plan,",
@@ -1384,8 +1396,8 @@
   "tr": "„BTC 1 000 €-ért” = mennyi Bitcoin érkezik ténylegesen a tárcájába minden befektetett 1 000 € után, minden díj levonásával. Tájékoztató díjszabás: az éles verzió a partnerek élő árajánlataival dolgozik."
  },
  {
-  "en": "Recommended route",
-  "tr": "Ajánlott út"
+  "en": "Lowest fee at your amount",
+  "tr": "Legalacsonyabb díj az Ön összegénél"
  },
  {
   "en": "eff.",
@@ -1400,32 +1412,20 @@
   "tr": "évente díjakon a többi út átlagához képest."
  },
  {
-  "en": "Every route above costs the same or more than this one — there is nothing left to save by switching.",
+  "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
   "tr": "A fenti utak mindegyike ugyanannyiba vagy többe kerül: váltással semmit sem takarítana meg."
  },
  {
-  "en": "Automate with RevenueBot",
-  "tr": "Automatizálás RevenueBottal"
+  "en": "Open {0}",
+  "tr": "{0} megnyitása"
  },
  {
-  "en": "Start Auto-Invest",
-  "tr": "Auto-Invest indítása"
- },
- {
-  "en": "Start this route",
-  "tr": "Ezt az utat választom"
- },
- {
-  "en": "Stacking Strategist – Virtuse Layer 2, Module 03. Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
-  "tr": "Stacking Strategist: Virtuse Layer 2, 03. modul. A prototípus díjai tájékoztató jellegűek; az előrejelzések matematikai forgatókönyvek, nem ígéretek. Nem pénzügyi tanácsadás. A Virtuse soha nem kezeli a kulcsait: a vásárlások az Ön által választott tárcába érkeznek."
+  "en": "Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.",
+  "tr": "A prototípus díjai tájékoztató jellegűek; az előrejelzések matematikai forgatókönyvek, nem ígéretek. Nem pénzügyi tanácsadás. A Virtuse soha nem kezeli a kulcsait: a vásárlások az Ön által választott tárcába érkeznek."
  },
  {
   "en": "Tax & Inheritance Agent",
   "tr": "Tax & Inheritance Agent"
- },
- {
-  "en": "Layer 2 · Module 06",
-  "tr": "Layer 2 · 06. modul"
  },
  {
   "en": "Two questions every bitcoiner avoids:",
@@ -1458,6 +1458,10 @@
  {
   "en": "Good to know",
   "tr": "Jó tudni"
+ },
+ {
+  "en": "Choose your country above to see its rules.",
+  "tr": "Válasszon fent országot a szabályok megtekintéséhez."
  },
  {
   "en": "Indicative 2025 overview.",
@@ -1524,55 +1528,7 @@
   "tr": "Öröklési protokoll"
  },
  {
-  "en": "Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
-  "tr": "Tax & Inheritance Agent: Virtuse Layer 2, 06. modul. Az adóadatok tájékoztató 2025-ös áttekintést jelentenek és elavultak lehetnek; nem adó-, jogi vagy pénzügyi tanácsadás. Az öröklési eszközök oktatási célúak; a hagyatéktervezéshez forduljon szakemberhez. A Virtuse soha nem kezeli a kulcsait."
- },
- {
-  "en": "France",
-  "tr": "Franciaország"
- },
- {
-  "en": "Spain",
-  "tr": "Spanyolország"
- },
- {
-  "en": "Spain (gains €6k–50k)",
-  "tr": "Spanyolország (6–50 ezer € nyereség)"
- },
- {
-  "en": "30 % flat tax (PFU: 12.8 % income tax + 17.2 % social charges)",
-  "tr": "30% egykulcsos adó (PFU: 12,8% jövedelemadó + 17,2% szociális hozzájárulás)"
- },
- {
-  "en": "No holding-period exemption; total disposals up to €305 a year are exempt",
-  "tr": "Nincs tartási idő utáni mentesség; az évi összesen 305 €-ig terjedő eladások adómentesek"
- },
- {
-  "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
-  "tr": "Éves bevallás a 2086-os nyomtatványon; külföldi számlák a 3916-bis nyomtatványon"
- },
- {
-  "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
-  "tr": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
- },
- {
-  "en": "19–28 % progressive tax on savings income",
-  "tr": "19–28% progresszív adó a megtakarítási jövedelemre"
- },
- {
-  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
-  "tr": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldön tartott kriptóra"
- },
- {
-  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
-  "tr": "A kripto-kripto csere adóköteles elidegenítés: azonos érméknél FIFO szerint kell számolni."
- },
- {
-  "en": "Choose your country above to see its rules.",
-  "tr": "Válasszon fent országot a szabályok megtekintéséhez."
- },
- {
-  "en": "Your tax rate on gains",
-  "tr": "Az Ön nyereségadókulcsa"
+  "en": "Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
+  "tr": "Az adóadatok tájékoztató 2025-ös áttekintést jelentenek és elavultak lehetnek; nem adó-, jogi vagy pénzügyi tanácsadás. Az öröklési eszközök oktatási célúak; a hagyatéktervezéshez forduljon szakemberhez. A Virtuse soha nem kezeli a kulcsait."
  }
 ]

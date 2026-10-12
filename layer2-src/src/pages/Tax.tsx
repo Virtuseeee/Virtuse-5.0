@@ -102,7 +102,6 @@ export default function Tax() {
                 VIRTUSE <span className="text-zinc-500">·</span>{' '}
                 <span className="text-bitcoin">{t(lang, 'Tax & Inheritance Agent', 'Daňový a dedičský agent', 'Daňový a dědický agent')}</span>
               </div>
-              <div className="text-xs text-zinc-500">{t(lang, 'Layer 2 · Module 06', 'Layer 2 · Modul 06', 'Layer 2 · Modul 06')}</div>
             </div>
           </div>
           <a href="concierge.html">
@@ -366,9 +365,9 @@ export default function Tax() {
 
         <footer className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-zinc-600">
           {t(lang,
-            'Tax & Inheritance Agent – Virtuse Layer 2, Module 06. Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.',
-            'Daňový a dedičský agent – Virtuse Layer 2, Modul 06. Daňové údaje sú indikatívny prehľad za rok 2025 a môžu byť zastarané – nejde o daňové, právne ani finančné poradenstvo. Nástroje na dedenie sú vzdelávacie; pre plánovanie dedičstva sa poraďte s odborníkom. Virtuse nikdy nedrží vaše kľúče.',
-            'Daňový a dědický agent – Virtuse Layer 2, Modul 06. Daňové údaje jsou indikativní přehled za rok 2025 a mohou být zastaralé – nejde o daňové, právní ani finanční poradenství. Nástroje pro dědění jsou vzdělávací; pro plánování dědictví se poraďte s odborníkem. Virtuse nikdy nedrží vaše klíče.')}
+            'Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.',
+            'Daňové údaje sú indikatívny prehľad za rok 2025 a môžu byť zastarané – nejde o daňové, právne ani finančné poradenstvo. Nástroje na dedenie sú vzdelávacie; pre plánovanie dedičstva sa poraďte s odborníkom. Virtuse nikdy nedrží vaše kľúče.',
+            'Daňové údaje jsou indikativní přehled za rok 2025 a mohou být zastaralé – nejde o daňové, právní ani finanční poradenství. Nástroje pro dědění jsou vzdělávací; pro plánování dědictví se poraďte s odborníkem. Virtuse nikdy nedrží vaše klíče.')}
         </footer>
       </main>
     </div>
