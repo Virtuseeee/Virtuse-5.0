@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Partner Finder (concierge.html) redesign + claims cleanup (branch `feat/partner-finder-v2`, PR open; **staging only, not on production**)
+
+- Handover `HANDOVER-claude-partner-finder`/`concierge.md`. The 10 `concierge.html` shells are now built by `i18n-tools/partner-finder/build_partner_finder.py` (texts `<lang>.json`; reuses the Fee Index builder's head/chrome/Brief helpers): v2 nav/footer, centred hero, the app in `#root`, How it works, partner ecosystem grid (from `data/partners.json`, links to each category page), FAQ, Brief card, related tools. Counts 22/7/13 are read from `layer2-src/src/lib/concierge.ts` at build time.
+- The React app (`layer2-src`) now renders only the chat on the concierge page. Inside the launcher iframe (`window.top!==self` or `utm_medium=launcher`) the shell adds `html.vc-embed` and CSS hides everything but the chat.
+- **Run order after any app change:** `cd layer2-src && npm run build` → `i18n-tools/layer2/deploy.py` → `build_partner_finder.py` (it keeps the asset lines deploy.py wrote; deploy.py only touches lines containing `concierge-assets/`, so never put that string anywhere else in a shell).
+- The app's Tailwind defines `--card`/`--muted` (HSL parts) on `:root`, colliding with site-v2.css; `.page-pf` resets them on everything outside `.pf-app`.
+- Claims: licence lines only with the ESMA MiCA page link + "checked 12 Oct 2026" (21bitcoin + Bybit EU FMA AT, Kraken CBI, Invity CNB, Crypto.com MFSA, BitGo BaFin, Coinbase CSSF, Sygnum FMA LI, Firefish NBS). Removed: insured custody, top-3, largest, world's first, $250M, already serves 21bitcoin, SOC 2, SatoshiLabs, 7M+, Y Combinator, 100,000+ users, veteran, "never from commission". Links `rel="sponsored noopener"`, disclosure "Virtuse may earn a referral fee. It doesn't change the results." No em dashes in any concierge-assets bundle; "Bybit EU" in the app (stacking too). `gen_chrome.py` no longer parses the v2 homepages (fails): chrome.ts was hand-patched.
+
 ## Session status (2026-10-12) — Bitcoin Fee Index redesign, ranked by total cost (main `a52f4b3e`, PR #76; **live on production** — user ran `deploy_site.sh 248abb81 a52f4b3e` + an sftp put of `partner-capture.js`, 43/43 md5-verified on virtuse.com)
 
 - Handover `HANDOVER-claude-fee-index.md`. All Fee Index pages are now built by `i18n-tools/fee-index/build_fee_index.py` (10 languages + EN methodology, `print.html` (current), `2026-q3/` + print, `embed/`) from `seo-build/data/fee-index.json`. **seo-build no longer writes them** (`FEE_INDEX_EXTERNAL` in generate.mjs) but keeps them in the sitemap; run generate.mjs first, then the builder.

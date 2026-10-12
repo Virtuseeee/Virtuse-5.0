@@ -22,7 +22,7 @@ def keys():
 def existing():
     if not os.path.exists(dst): return {}
     t = open(dst, encoding='utf-8').read()
-    return json.loads(t[t.index('{'):t.rindex('}') + 1])
+    return json.loads(re.sub(r',\s*}$', '}', t[t.index('{'):t.rindex('}') + 1]))  # tolerate a hand-edited trailing comma
 ph = lambda s: sorted(re.findall(r'\{\d+\}', s))
 if cmd == 'template':
     old = existing()

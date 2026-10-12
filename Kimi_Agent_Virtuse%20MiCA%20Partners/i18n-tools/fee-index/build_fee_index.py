@@ -145,8 +145,8 @@ def i18n_script(L):
     return '<script>window.VB_I18N = %s;</script>\n' % json.dumps(obj, ensure_ascii=False)
 
 
-def head(L, title, desc, page_url, alts, ld, og_title=None, og_alt=None, robots='index, follow', gtm=True, og_type='website'):
-    assert len(title) <= 60, (L, len(title), title)
+def head(L, title, desc, page_url, alts, ld, og_title=None, og_alt=None, robots='index, follow', gtm=True, og_type='website', title_max=60):
+    assert len(title) <= title_max, (L, len(title), title)
     assert len(desc) <= 155, (L, len(desc), desc)
     og_title = og_title or title
     alt_links = ''.join('<link rel="alternate" hreflang="%s" href="%s%s">\n' % (h, ORIGIN, u) for h, u in alts)
@@ -276,9 +276,9 @@ def write(rel, out):
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
-def brief_card(L, t):
+def brief_card(L, t, source='fee_index_brief'):
     """Shared Brief card; its cover image comes from virtuse.com (the issue's og_image), not blog.virtuse.com."""
-    b = absolutize(C.brief(L, lambda k: t[k], '', 'fee_index_brief'), L).replace('data-root=""', 'data-root="/"')
+    b = absolutize(C.brief(L, lambda k: t[k], '', source), L).replace('data-root=""', 'data-root="/"')
     iss = [x for x in json.load(open(os.path.join(SITE, 'news', 'issues.json')))['issues'] if x.get('slug') and not x.get('essay')][0]
     if iss.get('og_image'):
         b = re.sub(r'(<img id="briefImg" src=")[^"]*', lambda m: m.group(1) + iss['og_image'], b)

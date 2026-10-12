@@ -4,7 +4,9 @@ import sys, os
 sys.path.insert(0, os.path.dirname(__file__)); from _paths import SITE, PROJECT
 OUT=os.path.join(PROJECT, "src/lib/chrome.ts")
 LANGS=['en','sk','cs','uk','ru','de','fr','es','pl','hu']
-def txt(x): return re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>','',x))).strip()
+# No em dashes in the module chrome: " — " / " &mdash; " become ", ".
+def nodash(x): return re.sub(r'\s*\u2014\s*',', ',x)
+def txt(x): return nodash(re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>','',x))).strip())
 def one(pat,s,flags=re.S):
     m=re.search(pat,s,flags); assert m,pat; return m
 data={}
@@ -17,8 +19,8 @@ for l in LANGS:
         if m: nav.append({'href':html.unescape(m.group(1)),'label':txt(m.group(2))})
     assert len(nav)==11,(l,len(nav))
     cta=txt(one(r'<div class="nav-actions">.*?<button class="nav-cta">(.*?)</button>',s).group(1))
-    ham=html.unescape(one(r'id="navHamburger" aria-label="([^"]+)"',s).group(1))
-    lang_aria=html.unescape(one(r'id="langMenuBtn"[^>]*aria-label="([^"]+)"',s).group(1))
+    ham=nodash(html.unescape(one(r'id="navHamburger" aria-label="([^"]+)"',s).group(1)))
+    lang_aria=nodash(html.unescape(one(r'id="langMenuBtn"[^>]*aria-label="([^"]+)"',s).group(1)))
     cols=[]
     for h,body in re.findall(r'<div class="footer-col">\s*<h4>(.*?)</h4>(.*?)</div>',s,re.S):
         links=[{'href':html.unescape(a),'label':txt(b)} for a,b in re.findall(r'<a href="([^"]+)"[^>]*>(.*?)</a>',body,re.S)]

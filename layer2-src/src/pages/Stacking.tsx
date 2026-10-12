@@ -65,7 +65,10 @@ function readAmountBucket(): { initial: number; contribution: number } | null {
 // with (?utm_medium=page|concierge, set by virtuse.com or by the
 // Concierge deep link), so a route click always carries where the
 // visitor entered Stacking from.
+// 21bitcoin, Bybit EU and Kraken referral links stay as issued (see ConciergeChat.tsx NO_UTM).
+const NO_UTM = new Set(['21bitcoin', 'bybit-eu', 'kraken']);
 function withUtm(url: string, routeId: string): string {
+  if (NO_UTM.has(routeId)) return url;
   try {
     const target = new URL(url, window.location.href);
     const here = new URLSearchParams(window.location.search);
@@ -135,7 +138,6 @@ export default function Stacking() {
                 VIRTUSE <span className="text-zinc-500">·</span>{' '}
                 <span className="text-bitcoin">Stacking Strategist</span>
               </div>
-              <div className="text-xs text-zinc-500">{t(lang, 'Layer 2 · Module 03', 'Layer 2 · Modul 03', 'Layer 2 · Modul 03')}</div>
             </div>
           </div>
           <a href="concierge.html">
@@ -387,9 +389,9 @@ export default function Stacking() {
               ) : (
                 <>
                   {t(lang,
-                    'Every route above costs the same or more than this one — there is nothing left to save by switching.',
-                    'Každá trasa vyššie stojí rovnako alebo viac než táto — zmenou už nič neušetríte.',
-                    'Každá trasa výše stojí stejně nebo víc než tato — změnou už nic neušetříte.')}
+                    'Every route above costs the same or more than this one: there is nothing left to save by switching.',
+                    'Každá trasa vyššie stojí rovnako alebo viac než táto: zmenou už nič neušetríte.',
+                    'Každá trasa výše stojí stejně nebo víc než tato: změnou už nic neušetříte.')}
                 </>
               )}
             </div>
@@ -423,9 +425,9 @@ export default function Stacking() {
 
         <footer className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-zinc-600">
           {t(lang,
-            'Stacking Strategist – Virtuse Layer 2, Module 03. Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.',
-            'Stacking Strategist – Virtuse Layer 2, Modul 03. Poplatky sú v prototype ilustratívne; projekcie sú matematické scenáre, nie sľuby. Nejde o finančné poradenstvo. Virtuse nikdy nedrží vaše kľúče – nákupy smerujú do peňaženky podľa vášho výberu.',
-            'Stacking Strategist – Virtuse Layer 2, Modul 03. Poplatky jsou v prototypu ilustrativní; projekce jsou matematické scénáře, ne sliby. Nejde o finanční poradenství. Virtuse nikdy nedrží vaše klíče – nákupy směřují do peněženky podle vašeho výběru.')}
+            'Fees are illustrative for the prototype; projections are mathematical scenarios, not promises. Not financial advice. Virtuse never holds your keys – purchases settle to the wallet you choose.',
+            'Poplatky sú v prototype ilustratívne; projekcie sú matematické scenáre, nie sľuby. Nejde o finančné poradenstvo. Virtuse nikdy nedrží vaše kľúče – nákupy smerujú do peňaženky podľa vášho výberu.',
+            'Poplatky jsou v prototypu ilustrativní; projekce jsou matematické scénáře, ne sliby. Nejde o finanční poradenství. Virtuse nikdy nedrží vaše klíče – nákupy směřují do peněženky podle vašeho výběru.')}
         </footer>
       </main>
     </div>
