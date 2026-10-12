@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="bd-stack"><div class="bd-m " data-k="mcap"><span class="bd-l">Kapitalizacja rynkowa</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="mcap">Cena × podaż w obiegu</span></div><div class="bd-m " data-k="sats"><span class="bd-l">Satoshi za 1 €</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div></div>
     </div>
-    <p class="bd-src" data-g="price"><i class="bd-dot"></i><span class="bd-time"></span> · Źródła <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a> · <a href="https://www.binance.com" target="_blank" rel="noopener noreferrer">Binance</a> (zapasowe) <button type="button" class="bd-retry" hidden>Ponów</button></p>
+    <p class="bd-src" data-g="price"><i class="bd-dot"></i><span class="bd-time"></span> · Źródła <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a> <button type="button" class="bd-retry" hidden>Ponów</button></p>
     <p class="bd-links"><span>Więcej wykresów rynkowych:</span> <a href="btc-monthly-returns.html">Miesięczne zwroty</a> · <a href="trading-volume.html">Wolumen obrotu</a> · <a href="fear-greed.html">Strach i chciwość</a></p>
   </section>
 
@@ -147,6 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="bd-card bd-block"><span class="bd-l">Ostatni blok</span><b class="bd-v" data-k="bheight"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-k="bago"></span>
         <dl><div><dt>Transakcje</dt><dd data-k="btx"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>Rozmiar</dt><dd data-k="bsize"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>Wydobywca</dt><dd data-k="bminer"><span class="sk" aria-hidden="true"></span></dd></div></dl></div>
       <div class="bd-card bd-fees"><span class="bd-l">Opłaty w tej chwili</span>
+        <p class="bd-feeseq" data-k="feeseq" hidden></p>
         <dl><div><dt>Następny blok</dt><dd data-k="ffast"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>~30 minut</dt><dd data-k="f30"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>~1 godzina</dt><dd data-k="f60"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>Minimalna opłata relay</dt><dd data-k="fmin"><span class="sk" aria-hidden="true"></span></dd></div></dl></div>
     </div>
     <p class="bd-src" data-g="net"><i class="bd-dot"></i><span class="bd-time"></span> · Źródła <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> <button type="button" class="bd-retry" hidden>Ponów</button></p>
@@ -191,10 +192,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </a>
       <div class="signup">
-        <div class="btc-spark" id="btcSpark" hidden>
-          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
-          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
-        </div>
         <h3>Brief w każdy poniedziałek. <span>Bezpłatnie.</span></h3>
         <p>Rynek, regulacje, kopanie. Bez tokenów. Bez PR-u. Jeden e-mail w każdy poniedziałek.</p>
         <form class="brief-form" id="briefForm" data-brief-form data-source="data_brief" novalidate>
@@ -227,8 +224,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </footer>
 </main>
-<script type="application/json" id="bdI18n">{"updated": "Aktualizacja", "your_time": "Twój czas", "stale": "Opóźnione", "unavailable": "Dane niedostępne", "retry": "Ponów", "n_block_ago": "wydobyty {t} temu", "n_unknown": "Nieznana pula", "s_halving_sub": "bloków do końca · szac. {d}", "p_chart": "Cena z ostatnich {n} dni", "p_sats": "Satoshi za 1 $", "p_sats_eur": "Satoshi za 1 €", "u_s": "s", "u_min": "min", "u_h": "godz.", "u_days": "dni", "u_years": "lat", "locale": "pl-PL", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json"}</script>
-<script src="../btc-data.js?v=1" defer></script>
+<script type="application/json" id="bdI18n">{"updated": "Aktualizacja", "fees_equal": "Opłaty: {n} sat/vB dla wszystkich priorytetów", "stale": "Opóźnione", "unavailable": "Dane niedostępne", "retry": "Ponów", "n_block_ago": "wydobyty {t} temu", "n_unknown": "Nieznana pula", "s_halving_sub": "bloków do końca · szac. {d}", "p_chart": "Cena z ostatnich {n} dni", "p_sats": "Satoshi za 1 $", "p_sats_eur": "Satoshi za 1 €", "u_s": "s", "u_min": "min", "u_h": "godz.", "u_days": "dni", "u_years": "lat", "locale": "pl-PL", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json"}</script>
+<script src="../btc-data.js?v=2" defer></script>
 <script src="../site-v2.js?v=5" defer></script>
 <script src="../consultation-widget.js?v=20261007b" defer></script>
 <script src="../concierge-launcher.js" defer></script>

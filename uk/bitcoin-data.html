@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="bd-stack"><div class="bd-m " data-k="mcap"><span class="bd-l">Ринкова капіталізація</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="mcap">Ціна × пропозиція в обігу</span></div><div class="bd-m " data-k="sats"><span class="bd-l">Сатоші за €1</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div></div>
     </div>
-    <p class="bd-src" data-g="price"><i class="bd-dot"></i><span class="bd-time"></span> · Джерела <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a> · <a href="https://www.binance.com" target="_blank" rel="noopener noreferrer">Binance</a> (резерв) <button type="button" class="bd-retry" hidden>Повторити</button></p>
+    <p class="bd-src" data-g="price"><i class="bd-dot"></i><span class="bd-time"></span> · Джерела <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a> <button type="button" class="bd-retry" hidden>Повторити</button></p>
     <p class="bd-links"><span>Більше ринкових графіків:</span> <a href="btc-monthly-returns.html">Місячна прибутковість</a> · <a href="../trading-volume.html">Обсяг торгів</a> · <a href="../fear-greed.html">Страх і жадібність</a></p>
   </section>
 
@@ -147,6 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="bd-card bd-block"><span class="bd-l">Останній блок</span><b class="bd-v" data-k="bheight"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-k="bago"></span>
         <dl><div><dt>Транзакцій</dt><dd data-k="btx"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>Розмір</dt><dd data-k="bsize"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>Майнер</dt><dd data-k="bminer"><span class="sk" aria-hidden="true"></span></dd></div></dl></div>
       <div class="bd-card bd-fees"><span class="bd-l">Комісії зараз</span>
+        <p class="bd-feeseq" data-k="feeseq" hidden></p>
         <dl><div><dt>Наступний блок</dt><dd data-k="ffast"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>~30 хвилин</dt><dd data-k="f30"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>~1 година</dt><dd data-k="f60"><span class="sk" aria-hidden="true"></span></dd></div><div><dt>Мінімальний релей</dt><dd data-k="fmin"><span class="sk" aria-hidden="true"></span></dd></div></dl></div>
     </div>
     <p class="bd-src" data-g="net"><i class="bd-dot"></i><span class="bd-time"></span> · Джерела <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> <button type="button" class="bd-retry" hidden>Повторити</button></p>
@@ -191,10 +192,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </a>
       <div class="signup">
-        <div class="btc-spark" id="btcSpark" hidden>
-          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
-          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
-        </div>
         <h3>Отримайте Brief. <span>Безкоштовно.</span></h3>
         <p>Ринок, регулювання, майнінг. Жодних токенів. Жодного PR. Один лист щопонеділка.</p>
         <form class="brief-form" id="briefForm" data-brief-form data-source="data_brief" novalidate>
@@ -227,8 +224,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </footer>
 </main>
-<script type="application/json" id="bdI18n">{"updated": "Оновлено", "your_time": "ваш час", "stale": "Із затримкою", "unavailable": "Дані недоступні", "retry": "Повторити", "n_block_ago": "видобуто {t} тому", "n_unknown": "Невідомий пул", "s_halving_sub": "блоків залишилось · орієнтовно {d}", "p_chart": "Ціна за останні {n} днів", "p_sats": "Сатоші за $1", "p_sats_eur": "Сатоші за €1", "u_s": "с", "u_min": "хв", "u_h": "год", "u_days": "днів", "u_years": "років", "locale": "uk-UA", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json"}</script>
-<script src="../btc-data.js?v=1" defer></script>
+<script type="application/json" id="bdI18n">{"updated": "Оновлено", "fees_equal": "Комісії: {n} sat/vB для всіх пріоритетів", "stale": "Із затримкою", "unavailable": "Дані недоступні", "retry": "Повторити", "n_block_ago": "видобуто {t} тому", "n_unknown": "Невідомий пул", "s_halving_sub": "блоків залишилось · орієнтовно {d}", "p_chart": "Ціна за останні {n} днів", "p_sats": "Сатоші за $1", "p_sats_eur": "Сатоші за €1", "u_s": "с", "u_min": "хв", "u_h": "год", "u_days": "днів", "u_years": "років", "locale": "uk-UA", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json"}</script>
+<script src="../btc-data.js?v=2" defer></script>
 <script src="../site-v2.js?v=5" defer></script>
 <script src="../consultation-widget.js?v=20261007b" defer></script>
 <script src="../concierge-launcher.js" defer></script>

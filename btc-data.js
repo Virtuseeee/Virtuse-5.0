@@ -1,12 +1,12 @@
 /* Virtuse Bitcoin Data (bitcoin-data.html, design v2): live values with loading, stale and error states.
    Sources: mempool.space (price, blocks, fees, hashrate, difficulty), CoinGecko (24 h change, market cap,
-   price history), data/asset-returns.json (year-to-date comparison). Strings come from #bdI18n. */
+   price history); no other exchange APIs, data/asset-returns.json (year-to-date comparison). Strings come from #bdI18n. */
 (function () {
   'use strict';
   var I = {};
   try { I = JSON.parse(document.getElementById('bdI18n').textContent); } catch (e) { return; }
-  var MP = 'https://mempool.space/api', CG = 'https://api.coingecko.com/api/v3', BN = 'https://api.binance.com/api/v3';
-  var cgNext = 0; // CoinGecko's free API is rate-limited: at most one price call every 5 minutes, Binance as fallback
+  var MP = 'https://mempool.space/api', CG = 'https://api.coingecko.com/api/v3';
+  var cgNext = 0; // CoinGecko's free API is rate-limited: at most one call every 5 minutes; on failure the change/chart just stay empty
   var LOC = I.locale || 'en-GB', STALE = 5 * 60 * 1000, HALVING = 210000;
   var cur = I.cur || 'USD';
   try { var saved = localStorage.getItem('vb-bd-cur'); if (saved === 'USD' || saved === 'EUR') cur = saved; } catch (e) {}
@@ -33,7 +33,7 @@
       var t = q('.bd-time', p), btn = q('.bd-retry', p);
       p.classList.toggle('is-stale', !!last && now - last > STALE);
       p.classList.toggle('is-err', anyFail && !last);
-      if (last) t.textContent = I.updated + ' ' + new Date(last).toLocaleTimeString(LOC, { hour: '2-digit', minute: '2-digit' }) + ' (' + I.your_time + ')' + (now - last > STALE ? ' · ' + I.stale : '');
+      if (last) t.textContent = I.updated + ' ' + clock(last) + (now - last > STALE ? ' · ' + I.stale : '');
       else if (anyFail) t.textContent = I.unavailable;
       if (btn) btn.hidden = !(anyFail && (!last || now - last > STALE));
     });
@@ -43,6 +43,12 @@
       var gs = (box.getAttribute('data-g') || sectionGroup(box)).split(' ');
       if (gs.some(function (g) { return groups[g] && groups[g].fail && !groups[g].ok; })) s.outerHTML = '<span class="bd-na">' + I.unavailable + '</span>';
     });
+  }
+  // 24-hour clock with the browser's short time-zone name, e.g. "14:05 CEST"
+  function clock(ms) {
+    // English: en-GB names the zone (CEST); en-US would print GMT+2 outside the US
+    try { return new Intl.DateTimeFormat(/^en/.test(LOC) ? 'en-GB' : LOC, { hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short' }).format(new Date(ms)); }
+    catch (e) { return new Date(ms).toLocaleTimeString(LOC, { hour: '2-digit', minute: '2-digit', hour12: false }); }
   }
   function sectionGroup(sec) { return { market: 'price', network: 'net', supply: 'supply', macro: 'macro' }[sec.id] || 'price'; }
 
@@ -77,13 +83,7 @@
         st.chg = { USD: x.usd_24h_change, EUR: x.eur_24h_change }; st.mcap = { USD: x.usd_market_cap, EUR: x.eur_market_cap };
         if (!st.price && x.usd) st.price = { USD: x.usd, EUR: x.eur };
         renderPrice();
-      }).catch(function () {
-        return Promise.all([j(BN + '/ticker/24hr?symbol=BTCUSDT'), j(BN + '/ticker/24hr?symbol=BTCEUR')]).then(function (t) {
-          st.chg = { USD: +t[0].priceChangePercent, EUR: +t[1].priceChangePercent };
-          if (!st.price) st.price = { USD: +t[0].lastPrice, EUR: +t[1].lastPrice };
-          renderPrice();
-        });
-      });
+      }).catch(function () { cgNext = Date.now() + 60 * 1000; });
     }
     Promise.all([a.catch(function () { return 'x'; }), b.catch(function () { return 'x'; })]).then(function (r) {
       if (st.price) ok('price'); else fail('price');
@@ -98,9 +98,7 @@
         var key = cur + st.days, c = cur, days = st.days;
         j(CG + '/coins/bitcoin/market_chart?vs_currency=' + c.toLowerCase() + '&days=' + days + '&interval=daily').then(function (d) {
           var v = (d.prices || []).map(function (x) { return x[1]; }); if (v.length < 2) throw new Error('cg'); return v;
-        }).catch(function () {
-          return j(BN + '/klines?symbol=BTC' + (c === 'USD' ? 'USDT' : 'EUR') + '&interval=1d&limit=' + days).then(function (k) { return k.map(function (x) { return +x[4]; }); });
-        }).then(function (v) { st.hist[key] = v; chart(); }).catch(function () { delete st.hist[key]; });
+        }).then(function (v) { st.hist[key] = v; chart(); }).catch(function () { setTimeout(function () { delete st.hist[key]; }, 5 * 60 * 1000); });
       }
       return;
     }
@@ -132,6 +130,9 @@
       j(MP + '/v1/fees/recommended').then(function (f) {
         set('fee', nf(f.fastestFee)); set('ffast', nf(f.fastestFee) + ' sat/vB'); set('f30', nf(f.halfHourFee) + ' sat/vB');
         set('f60', nf(f.hourFee) + ' sat/vB'); set('fmin', nf(f.minimumFee) + ' sat/vB');
+        // an empty mempool gives the same fee for every priority: one line instead of four equal rows
+        var eq = f.fastestFee === f.halfHourFee && f.halfHourFee === f.hourFee && f.hourFee === f.minimumFee;
+        qa('.bd-fees').forEach(function (c) { var p = q('.bd-feeseq', c), dl = q('dl', c); p.textContent = I.fees_equal.replace('{n}', nf(f.fastestFee)); p.hidden = !eq; dl.hidden = eq; });
       }),
       j(MP + '/v1/mining/hashrate/3d').then(function (m) {
         set('hash', nf(m.currentHashrate / 1e18) + ' EH/s');
