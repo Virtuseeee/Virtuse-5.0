@@ -1,0 +1,65 @@
+{
+  "checked": "2026-10-12",
+  "about": "Source of truth for the Bitcoin Fee Index pages (built by Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/fee-index/build_fee_index.py). fee_pct must equal 100 x pct in fee-schedule-live.json (the builder checks). Spreads: measure_spreads.py --write for the exchanges; 21bitcoin from its app price vs Kraken mid at the same minute.",
+  "rows": [
+    {
+      "id": "21bitcoin",
+      "name": "21bitcoin",
+      "logo": "logo-21bitcoin-app.png",
+      "logo_class": "",
+      "fee_pct": 0,
+      "fee_fact": "Auto-Invest savings plan: 0% service fee from day 8; the first 7 days carry the regular 0.99% (0.79% with a referral code). Instant buy (Smash Buy) 1.49%.",
+      "url": "https://21bitcoin.app.link/invite/?code=VIRTUSE",
+      "source": "https://21bitcoin.app/en/fees"
+    },
+    {
+      "id": "bybit-eu",
+      "name": "Bybit EU",
+      "logo": "logo-bybit.png",
+      "logo_class": "dark",
+      "fee_pct": 0.25,
+      "fee_fact": "Spot trading fee 0.25% at VIP 0, maker and taker alike (bybit.eu fee page, new fee structure for trades from 5 Oct 2026; page last updated 5 Oct 2026, checked on bybit.eu 12 Oct 2026, 14:16 UTC).",
+      "url": "https://partner.bybit.eu/b/VIRTUSE",
+      "source": "https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure"
+    },
+    {
+      "id": "kraken",
+      "name": "Kraken Pro",
+      "logo": "logo-kraken.png",
+      "logo_class": "cover",
+      "fee_pct": 0.8,
+      "fee_fact": "Kraken Pro spot, Tier 1 ($0+ 30-day volume): 0.40% maker, 0.80% taker. Instant Buy in the Kraken app is a separate 1% fee plus a spread.",
+      "url": "https://proinvite.kraken.com/9f1e/lj72d37e",
+      "source": "https://www.kraken.com/features/fee-schedule"
+    }
+  ],
+  "spread_21bitcoin": {
+    "pct": null,
+    "measured": [],
+    "method": "21bitcoin buy price shown in the app before confirming, against Kraken BTC/EUR mid price (1-minute OHLC close) at the same minute."
+  },
+  "spreads": {
+    "measured": [
+      "2026-10-12T12:26:11Z",
+      "2026-10-12T12:26:27Z",
+      "2026-10-12T12:26:42Z"
+    ],
+    "method": "market buy against the public BTC/EUR order book, average fill vs mid price",
+    "pct": {
+      "kraken": {
+        "50": 0.0001,
+        "100": 0.0001,
+        "250": 0.0001,
+        "500": 0.0001,
+        "1000": 0.0001
+      },
+      "bybit-eu": {
+        "50": 0.0001,
+        "100": 0.0001,
+        "250": 0.0001,
+        "500": 0.0001,
+        "1000": 0.0001
+      }
+    }
+  }
+}

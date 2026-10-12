@@ -4483,13 +4483,32 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
 }
 
 // ---------- llms.txt ----------
+// The Fee Index pages are built by i18n-tools/fee-index/build_fee_index.py from
+// data/fee-index.json and rank by total cost (listed fee + estimated spread).
+// seo-build keeps them in the sitemap but no longer writes them (see writeAll).
+const FEE_INDEX_EXTERNAL = /^(bitcoin-fee-index|de\/bitcoin-gebuehrenindex|sk\/bitcoin-index-poplatkov|cs\/bitcoin-index-poplatku|pl\/bitcoin-indeks-oplat|hu\/bitcoin-dijindex|uk\/bitcoin-indeks-komisii|ru\/bitcoin-indeks-komissiy|fr\/bitcoin-indice-frais|es\/bitcoin-indice-comisiones)\//;
+
+function feeIndexLines() {
+  const fi = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-index.json'), 'utf8'));
+  let s21 = fi.spread_21bitcoin && fi.spread_21bitcoin.pct;
+  if (s21 == null && process.env.FEE_INDEX_PREVIEW_21_SPREAD) s21 = Number(process.env.FEE_INDEX_PREVIEW_21_SPREAD); // local preview only
+  // A route whose spread isn't measured yet is listed last, without a rank (same as the pages).
+  const rows = fi.rows.map((r) => {
+    const sp = r.id === '21bitcoin' ? s21 : fi.spreads.pct[r.id]['100'];
+    return { name: r.name, fee: r.fee_pct, sp, total: sp == null ? null : r.fee_pct + sp };
+  }).sort((a, b) => (a.total == null) - (b.total == null) || a.total - b.total || a.name.localeCompare(b.name));
+  const f = (v) => (v > 0 && v < 0.005 ? '<0.01' : String(+v.toFixed(2))) + '%';
+  return rows.map((r, i) => r.total == null
+    ? `- ${r.name}: fee ${f(r.fee)}, spread being measured (not ranked yet)`
+    : `- ${i + 1}. ${r.name}: fee ${f(r.fee)}, est. spread ${f(r.sp)}, total cost ${f(r.total)} at €100/month`).join('\n') +
+    `\n- Fees checked ${fi.checked}; ranked by total cost (listed fee + estimated spread). Network, withdrawal and currency fees not included.`;
+}
+
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
     `- [${c.name}](${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/): ${c.gainTax}. ${c.exemption}. As of ${asOfEn}.`
   ).join('\n');
-  const feeLines = rankRoutes(FEE_ROWS, 100).map((r, i) =>
-    `- ${i + 1}. ${r.partner} (${r.method}): ${formatPct(r.pct)}, annual fee drag at €100/month ${formatEur(r.annualDrag)}`
-  ).join('\n');
+  const feeLines = feeIndexLines();
   return `# Virtuse
 
 > Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys.
@@ -4735,6 +4754,7 @@ function writeAll() {
 
   const files = [];
   for (const p of generated) {
+    if (FEE_INDEX_EXTERNAL.test(p.relFile)) continue;
     const fp = path.join(SITE, p.relFile);
     fs.mkdirSync(path.dirname(fp), { recursive: true });
     fs.writeFileSync(fp, p.html, 'utf8');
