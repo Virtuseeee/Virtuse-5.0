@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Brief article SEO on /stories/ (PR #72, main `8f085fed`; **live on production**, `.htaccess` + 2 blog mu-plugin files uploaded by the user)
+
+- Ras chose to keep `/stories/<slug>/` (+ `sk/stories/`) as the canonical static copy instead of the handover's new `/a/` set.
+- `stories-build/build.mjs`:
+  - head: `<title>Post | Virtuse Brief</title>`, description ≤ 160 chars, JSON-LD `Article` + `BreadcrumbList` (home `/` or `/sk/` → `/news.html` → article), hreflang self + x-default.
+  - EN↔SK pairs come from `"slug_sk"` on an issue in `news/issues.json`; none exist yet, and `vsetko-okrem-bitcoinu` isn't on the SK blog.
+  - Sitemap alternates for pairs only.
+  - 405 pages, incl. `everything-but-bitcoin`.
+- `.htaccess`: `/a/<slug>` and `/sk/a/<slug>` 301 to the story page when `%{DOCUMENT_ROOT}/…/index.html` exists, else 302 to `article.html?slug=`. `article.html?slug=X[&lang=sk]` also 301s to the story page when it exists (slug read via `E=VB_SLUG`). Live: `/a/everything-but-bitcoin` and `article.html?slug=everything-but-bitcoin` → 301 `/stories/everything-but-bitcoin/`; an unbuilt slug → 302 to the reader.
+- `article.js?v=20261012` sets article.html's canonical to the story page when it exists. news.js cards still link `article.html?slug=` on purpose, so a new issue doesn't 404 before the next build.
+- WordPress: `virtuse-story-canonical.json` updated (live canonical of the new post = virtuse.com/stories/…). New `virtuse-brief-link.php` uploaded, **but the bar does not show**: the old theme apparently doesn't call `wp_body_open`. Option B (301) is in the file as a comment.
+
 ## Session status (2026-10-12) — SEO/GA hygiene (PR #71, main `cd595392` + stories `d5bf6abf`; **live on production**, `.htaccess` uploaded by the user and verified)
 
 - `.htaccess` (live = `seo-ops/virtuse.com.htaccess`, rollback `.before`): www (any scheme) and http go to `https://virtuse.com/$1` in one 301 hop. "https" = Apache `HTTPS=on` or nginx `X-Forwarded-Proto: https`, no loop on Webglobe. `/sk/news.html` 301s to `/news.html` (no source in the repo; external links). Live checks: https 200, http/www 301 to https, HSTS kept, legacy 410/301 rules and the blog fallback unchanged.
