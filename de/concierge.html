@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<!-- Note: frame-ancestors (restricting who may embed this page) only works via an HTTP response header, not a <meta> tag. If/when this page moves behind a server that can set custom headers, add:
-     Content-Security-Policy: frame-ancestors 'self' https://virtuse.com https://virtuse.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Partner Finder – Bitcoin-Partner in 60 Sekunden | Virtuse</title>
-<meta name="description" content="Beantworten Sie ein paar Fragen und sehen Sie, welche von 22 geprüften Bitcoin-Partnern Ihre Kriterien erfüllen. Non-custodial, kostenlos, ohne Anmeldung.">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="shortcut icon" href="../favicon.ico">
+<title>Partner Finder: Bitcoin-Partner in 60 Sekunden vergleichen | Virtuse</title>
+<meta name="description" content="Beantworten Sie ein paar Fragen, und Partner Finder filtert 22 Bitcoin-Partner auf die passenden. Sie vergleichen und wählen. Kostenlos.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/de/concierge.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/concierge.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/concierge.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/concierge.html">
@@ -33,32 +31,272 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/concierge.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/concierge.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/concierge.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Partner Finder – Bitcoin-Partner in 60 Sekunden | Virtuse">
-<meta property="og:description" content="Beantworten Sie ein paar Fragen und sehen Sie, welche von 22 geprüften Bitcoin-Partnern Ihre Kriterien erfüllen. Non-custodial, kostenlos, ohne Anmeldung.">
+<meta property="og:title" content="Partner Finder: Bitcoin-Partner in 60 Sekunden vergleichen">
+<meta property="og:description" content="Beantworten Sie ein paar Fragen, und Partner Finder filtert 22 Bitcoin-Partner auf die passenden. Sie vergleichen und wählen. Kostenlos.">
 <meta property="og:url" content="https://virtuse.com/de/concierge.html">
-<link rel="canonical" href="https://virtuse.com/de/concierge.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Partner Finder: Bitcoin-Partner in 60 Sekunden vergleichen">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Partner Finder – Bitcoin-Partner in 60 Sekunden | Virtuse">
-<meta name="twitter:description" content="Beantworten Sie ein paar Fragen und sehen Sie, welche von 22 geprüften Bitcoin-Partnern Ihre Kriterien erfüllen. Non-custodial, kostenlos, ohne Anmeldung.">
+<meta name="twitter:title" content="Partner Finder: Bitcoin-Partner in 60 Sekunden vergleichen">
+<meta name="twitter:description" content="Beantworten Sie ein paar Fragen, und Partner Finder filtert 22 Bitcoin-Partner auf die passenden. Sie vergleichen und wählen. Kostenlos.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="robots" content="index, follow">
-<style id="tool-static-css">.tool-static{max-width:720px;margin:0 auto;padding:48px 20px 64px;line-height:1.6}.tool-static h1{font-size:28px;line-height:1.25;margin:0 0 16px}.tool-static h2{font-size:18px;margin:28px 0 6px}.tool-static p{margin:0 0 12px}html.js .tool-static{display:none}</style>
-<script>document.documentElement.classList.add('js')</script>
+<meta name="twitter:image:alt" content="Partner Finder: Bitcoin-Partner in 60 Sekunden vergleichen">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://virtuse.com/de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Partner Finder",
+          "item": "https://virtuse.com/de/concierge.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Partner Finder",
+      "url": "https://virtuse.com/de/concierge.html",
+      "inLanguage": "de",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "dateModified": "2026-10-12"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ist Partner Finder kostenlos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Er ist kostenlos und ohne Registrierung. Virtuse kann eine Vermittlungsprovision erhalten, wenn Sie sich bei einem Partner anmelden, ohne Mehrkosten für Sie, und sie ändert die Ergebnisse nicht."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Verwahrt Virtuse meinen Bitcoin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Sie eröffnen ein Konto direkt beim Partner Ihrer Wahl. Virtuse verwahrt nie Ihre Schlüssel oder Gelder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist das eine Anlageberatung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Partner Finder filtert Partner nach Ihren Kriterien. Er sagt Ihnen nicht, was Sie kaufen oder welchen Partner Sie wählen sollen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie werden Lizenzen angezeigt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nur mit einem Link zum offiziellen Register und dem Datum unserer Prüfung. Partner ohne belegte Lizenz tragen kein Lizenz-Abzeichen."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+<meta name="vb-cfo-stage" content="wait">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<script type="module" crossorigin src="../concierge-assets/button-DRO6gyq4.js"></script>
-<script type="module" crossorigin src="../concierge-assets/shield-check-FrCjixBa.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-Cew7e9SC.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/button-DBEtnXyS.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script>window.VB_I18N = {"openMenu": "Menü öffnen", "closeMenu": "Menü schließen", "soon": "Bald", "new": "Neu", "latestBrief": "Neuester Brief · ", "min": " Min.", "coverImage": "Titelbild: ", "badEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.", "sending": "Wird gesendet...", "subscribed": "Sie sind dabei. Der Brief kommt am Montag.", "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.", "netError": "Netzwerkfehler. Bitte versuchen Sie es erneut.", "briefLangNote": " (auf Englisch)"};</script>
+<script>try{if(window.top!==window.self||/[?&]utm_medium=launcher(&|$)/.test(location.search))document.documentElement.classList.add('vc-embed')}catch(e){document.documentElement.classList.add('vc-embed')}</script>
+<script type="module" crossorigin src="../concierge-assets/button-bTprY2pV.js"></script>
+<script type="module" crossorigin src="../concierge-assets/shield-check-CAT6Pmqb.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-COt4Hivc.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/button-kb_De07j.css">
 </head>
-<body>
-<div id="root"><main class="tool-static"><h1>Partner Finder: Bitcoin-Partner in 60 Sekunden vergleichen</h1><p>Beantworten Sie ein paar kurze Fragen: was Sie vorhaben, wo Sie leben, wie Sie Ihre Bitcoin halten möchten und um welchen Betrag es ungefähr geht. Partner Finder filtert aus 22 geprüften Partnern diejenigen heraus, die Ihre Kriterien erfüllen, und zeigt sie nebeneinander.</p><p>Sie vergleichen und entscheiden selbst. Virtuse verwahrt nie Ihre Schlüssel oder Ihr Geld.</p><h2>Wobei hilft Partner Finder?</h2><p>Bitcoin kaufen, Wallets zur Selbstverwahrung, bitcoinbesicherte Kredite, Krypto-Steuerberichte, Mining, Trading-Bots und Unternehmens-Treasury.</p><h2>Ist es kostenlos?</h2><p>Ja. Partner Finder ist kostenlos und ohne Registrierung. Virtuse erhält von Partnern eine Vermittlungsprovision, wenn Sie sich anmelden, ohne Mehrkosten für Sie.</p><h2>Verwahrt Virtuse meine Bitcoin?</h2><p>Nein. Sie eröffnen Ihr Konto direkt beim gewählten Partner. Virtuse verwahrt nie Ihre Schlüssel oder Ihr Geld.</p><h2>Ist das eine Anlageberatung?</h2><p>Nein. Partner Finder filtert Partner nach Ihren Kriterien. Er sagt Ihnen nicht, was Sie kaufen oder welchen Partner Sie wählen sollen.</p></main></div>
+<body class="page-buy page-fee page-pf no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/de/index.html" aria-label="Virtuse Startseite">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Hauptmenü">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Dienstleistungen</button>
+        <div class="nav-drop" id="nd-services"><a href="/de/buy-bitcoin.html">Bitcoin kaufen</a><a href="/de/secure.html">Verwahrung</a><a href="/de/lending.html">Kredite</a><a href="/de/mining.html">Mining</a><a href="/de/treasury.html">Treasury</a><a href="/de/tax.html">Steuern</a><a href="/de/bots.html">Bots</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Wissen</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/de/blog.html">Blog</a><a href="/de/bitcoin-data.html">Bitcoin-Daten</a><a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
+        <div class="nav-drop" id="nd-tools"><a href="/de/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Bald</span></a><a href="/de/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/de/stacking.html">Stacking Strategist</a><a href="/de/loan.html">Loan &amp; Liquidity Copilot</a><a href="/de/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/de/retirement-calculator.html">Ruhestandsrechner</a></div>
+      </div>
+      <a class="nav-top" href="/de/about.html">Über uns</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Sprache der Seite: Deutsch"><span aria-hidden="true">&#127465;&#127466;</span><span class="lang-code">DE</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/concierge.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/concierge.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/concierge.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/concierge.html" aria-current="page" class="lang-opt active" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/concierge.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/concierge.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/concierge.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/concierge.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/concierge.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/concierge.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menü öffnen"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/de/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner finden</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO + the app -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Partner Finder</div>
+    <h1>Finden Sie den passenden Bitcoin-Partner <span class="h1-or">in 60 Sekunden.</span></h1>
+    <p class="sp-lead">Beantworten Sie ein paar Fragen zu Ihrem Ziel, Ihrem Land und dazu, wie Sie Ihren Bitcoin halten möchten. Partner Finder filtert 22 Partner auf die passenden. Sie vergleichen und wählen.</p>
+    <p class="pf-counts">22 Partner · 7 Kategorien · 13 EU-Länder mit passenden Ergebnissen</p>
+  </div>
+  <div class="pf-app" id="finder">
+    <div id="root"><noscript><p class="pf-noscript">Partner Finder benötigt JavaScript. Sie können Partner auch auf den Kategorieseiten vergleichen, zum Beispiel unter Bitcoin kaufen.</p></noscript></div>
+    <p class="pf-disc">Virtuse kann eine Vermittlungsprovision erhalten. Sie ändert die Ergebnisse nicht.</p>
+  </div>
+
+  <!-- 2. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>So <span>funktioniert Partner Finder</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 01</span>
+          <h3>Kriterien festlegen</h3>
+          <p>Kaufen, leihen, automatisieren, minen, sichern oder Steuern erledigen: Wählen Sie ein Ziel, Ihr Land, wie Sie Ihre Schlüssel halten und ungefähr welchen Betrag.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 02</span>
+          <h3>Passende Partner vergleichen</h3>
+          <p>Sie sehen bis zu drei der 22 Partner, die zu Ihren Antworten passen, mit Gebühren und Fakten direkt nebeneinander.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Schritt 03</span>
+          <h3>Auf deren Plattform abschließen</h3>
+          <p>Sie registrieren sich und schließen das KYC beim Partner ab. Virtuse verwahrt nie Ihre Schlüssel, Gelder oder Daten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PARTNER ECOSYSTEM -->
+  <section id="partners">
+    <div class="sec-head one"><div class="sec-copy"><h2>Das <span>Partner-Ökosystem</span></h2><p>Partner Finder zeigt nur diese Partner. Jeder hat eine eigene Karte auf virtuse.com.</p></div></div>
+    <div class="pf-grid"><a class="pf-card" href="/de/buy-bitcoin.html"><img src="/logo-21bitcoin-app.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>21bitcoin</b><small>Bitcoin kaufen</small></span></a><a class="pf-card" href="/de/buy-bitcoin.html"><img src="/logo-bybit.png" alt="" width="36" height="36" class="dark" loading="lazy"><span><b>Bybit EU</b><small>Bitcoin kaufen</small></span></a><a class="pf-card" href="/de/buy-bitcoin.html"><img src="/logo-kraken.png" alt="" width="36" height="36" class="cover" loading="lazy"><span><b>Kraken</b><small>Bitcoin kaufen</small></span></a><a class="pf-card" href="/de/buy-bitcoin.html"><img src="/logo-crypto-com.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Crypto.com</b><small>Bitcoin kaufen</small></span></a><a class="pf-card" href="/de/buy-bitcoin.html"><img src="/logo-invity.svg" alt="" width="36" height="36" class="pad" loading="lazy"><span><b>Invity</b><small>Bitcoin kaufen</small></span></a><a class="pf-card" href="/de/secure.html"><img src="/logo-blockstream.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Blockstream</b><small>Verwahrung</small></span></a><a class="pf-card" href="/de/secure.html"><img src="/logo-ledger.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Ledger</b><small>Verwahrung</small></span></a><a class="pf-card" href="/de/secure.html"><img src="/logo-trezor.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Trezor</b><small>Verwahrung</small></span></a><a class="pf-card" href="/de/lending.html"><img src="/logo-firefish.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Firefish</b><small>Kredite</small></span></a><a class="pf-card" href="/de/tax.html"><img src="/logo-koinly.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Koinly</b><small>Steuern</small></span></a><a class="pf-card" href="/de/tax.html"><img src="/logo-blockpit.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Blockpit</b><small>Steuern</small></span></a><a class="pf-card" href="/de/tax.html"><img src="/logo-cointracking.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>CoinTracking</b><small>Steuern</small></span></a><a class="pf-card" href="/de/tax.html"><img src="/logo-divly.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Divly</b><small>Steuern</small></span></a><a class="pf-card" href="/de/bots.html"><img src="/logo-coinrule.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Coinrule</b><small>Bots</small></span></a><a class="pf-card" href="/de/bots.html"><img src="/logo-cryptohopper.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Cryptohopper</b><small>Bots</small></span></a><a class="pf-card" href="/de/bots.html"><img src="/logo-revenuebot.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>RevenueBot</b><small>Bots</small></span></a><a class="pf-card" href="/de/mining.html"><img src="/logo-abundantmines.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Abundant Mines</b><small>Mining</small></span></a><a class="pf-card" href="/de/mining.html"><img src="/logo-oneminers.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>OneMiners</b><small>Mining</small></span></a><a class="pf-card" href="/de/mining.html"><img src="/logo-powermining.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Power Mining</b><small>Mining</small></span></a><a class="pf-card" href="/de/treasury.html"><img src="/logo-bitgo.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>BitGo</b><small>Treasury</small></span></a><a class="pf-card" href="/de/treasury.html"><img src="/logo-coinbase.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Coinbase</b><small>Treasury</small></span></a><a class="pf-card" href="/de/treasury.html"><img src="/logo-sygnum.png" alt="" width="36" height="36" class="" loading="lazy"><span><b>Sygnum</b><small>Treasury</small></span></a></div>
+  </section>
+
+  <!-- 4. FAQ -->
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Fragen <span>und Antworten</span></h2></div></div>
+    <details open><summary>Ist Partner Finder kostenlos?</summary><p>Ja. Er ist kostenlos und ohne Registrierung. Virtuse kann eine Vermittlungsprovision erhalten, wenn Sie sich bei einem Partner anmelden, ohne Mehrkosten für Sie, und sie ändert die Ergebnisse nicht.</p></details>
+    <details><summary>Verwahrt Virtuse meinen Bitcoin?</summary><p>Nein. Sie eröffnen ein Konto direkt beim Partner Ihrer Wahl. Virtuse verwahrt nie Ihre Schlüssel oder Gelder.</p></details>
+    <details><summary>Ist das eine Anlageberatung?</summary><p>Nein. Partner Finder filtert Partner nach Ihren Kriterien. Er sagt Ihnen nicht, was Sie kaufen oder welchen Partner Sie wählen sollen.</p></details>
+    <details><summary>Wie werden Lizenzen angezeigt?</summary><p>Nur mit einem Link zum offiziellen Register und dem Datum unserer Prüfung. Partner ohne belegte Lizenz tragen kein Lizenz-Abzeichen.</p></details>
+  </section>
+
+  <!-- 5. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Nur Bitcoin, jeden Montag.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=de">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurier des Virtuse Brief auf einem Roller bringt die Ausgabe vom 5. Okt. 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Neuester Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (auf Englisch)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Ausgabe lesen →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Holen Sie sich den Brief. <span>Kostenlos.</span></h3>
+        <p>Markt, Politik, Mining. Keine Token. Keine PR. Eine E-Mail, jeden Montag.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="partner_finder_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">E-Mail-Adresse</label>
+          <input id="email" name="email" type="email" placeholder="E-Mail-Adresse" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Brief erhalten</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Jederzeit abbestellbar. Keine Anlageberatung. <a href="/news.html?utm_source=brief&amp;utm_medium=partner_finder_brief" style="color:var(--muted)">Alle Ausgaben und der Blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. RELATED TOOLS -->
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Verwandte <span>Tools</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/de/buy-bitcoin.html"><b>Bitcoin kaufen</b><span>Kaufpartner und ihre Gebühren direkt nebeneinander.</span></a><a class="gcard" href="/de/bitcoin-gebuehrenindex/"><b>Gebührenindex</b><span>Gesamtkosten, wenn Sie jeden Monat Bitcoin kaufen.</span></a><a class="gcard" href="/de/stacking.html"><b>Stacking Strategist</b><span>Planen Sie einen Betrag und einen Rhythmus.</span></a><a class="gcard" href="/de/loan.html"><b>Loan & Liquidity Copilot</b><span>Verkaufen oder einen Kredit gegen Bitcoin aufnehmen.</span></a><a class="gcard" href="/de/cfo.html"><b>Virtuse CFO</b><span>Bitcoin-Treasury für Unternehmen.</span></a><a class="gcard" href="/de/bitcoin-data.html"><b>Bitcoin-Daten</b><span>Preis-, Gebühren- und Netzwerkdaten, live.</span></a></div>
+    <p class="tx-fine fi-disc">Virtuse kann eine Vermittlungsprovision erhalten. Sie ändert die Ergebnisse nicht. Keine Anlageberatung. Virtuse verwahrt nie Ihre Schlüssel oder Gelder. KYC und Onboarding erfolgen auf der Plattform des jeweiligen Partners.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Dienstleistungen</h4><a href="/de/buy-bitcoin.html">Bitcoin kaufen</a><a href="/de/secure.html">Verwahrung</a><a href="/de/mining.html">Mining</a><a href="/de/lending.html">Kredite</a><a href="/de/treasury.html">Treasury</a><a href="/de/tax.html">Steuern</a><a href="/de/bots.html">Bots</a></div><div class="footer-col"><h4>Unternehmen</h4><a href="/de/about.html">Über uns</a><a href="/de/faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="/de/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Bald</span></a><a href="/de/concierge.html">Partner Finder</a><a href="/de/stacking.html">Stacking Strategist</a><a href="/de/loan.html">Loan &amp; Liquidity Copilot</a><a href="/de/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/de/retirement-calculator.html">Ruhestandsrechner</a></div><div class="footer-col"><h4>Ratgeber</h4><a href="/news.html">Virtuse Brief</a><a href="/de/blog.html">Blog</a><a href="/de/bitcoin-data.html">Bitcoin-Daten</a><a href="/de/bitcoin-steuern/">Bitcoin-Steuern</a><a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a><a href="/de/bitcoin-dca-rechner/">DCA-Rechner</a><a href="/de/bitcoin-verkaufen-oder-beleihen/">Verkaufen oder beleihen</a><a href="/de/bitcoin-erbrecht/">Erbschaft</a></div><div class="footer-col"><h4>Rechtliches</h4><a href="/de/terms-and-conditions.html">AGB</a><a href="/de/privacy-policy.html">Datenschutzerklärung</a><a href="/de/aml-compliance.html">AML und Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. Alle Rechte vorbehalten.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, der wöchentliche Überblick von Virtuse. <a href="/news.html">Lesen &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Sprachen"><a href="/concierge.html" hreflang="en">English</a><a href="/sk/concierge.html" hreflang="sk">Slovenčina</a><a href="/cs/concierge.html" hreflang="cs">Čeština</a><a href="/de/concierge.html" hreflang="de" aria-current="page">Deutsch</a><a href="/pl/concierge.html" hreflang="pl">Polski</a><a href="/hu/concierge.html" hreflang="hu">Magyar</a><a href="/fr/concierge.html" hreflang="fr">Français</a><a href="/es/concierge.html" hreflang="es">Español</a><a href="/uk/concierge.html" hreflang="uk">Українська</a><a href="/ru/concierge.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse ist ein unabhängiger Vergleichs-Hub. Virtuse verwahrt keine Kundengelder oder Schlüssel, führt keine Aufträge aus und erteilt keine Anlageberatung. Die Dienste werden von den gelisteten Partnern unter deren eigenen Lizenzen erbracht. Die Gebühren sind wie von jedem Partner veröffentlicht und können sich ändern.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
 </body>
 </html>
