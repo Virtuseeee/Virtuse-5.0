@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Brief card links straight to /stories/<slug>/ (main `b73e45b4`, PR #79; **live on production**, 11/11 md5-verified)
+
+- Homepages (inline script, also in `i18n-tools/home/build_lang.py`) and `site-v2.js`: the card starts with the reader link `article.html?slug=…`, then a HEAD request swaps in `/stories/<slug>/` when it exists (a new issue without a built story page still works). Slovak only with `slug_sk` in issues.json (`/sk/stories/<slug_sk>/`), else the reader, same as the .htaccess rule. Homepage cards also use the issue's `og_image` (virtuse.com).
+
 ## Session status (2026-10-12) — Partner Finder (concierge.html) redesign + claims cleanup (main `ebab04a2`, PR #77; **live on production** — user ran `deploy_site.sh 29535b4d ebab04a2`, 58/58 md5-verified on virtuse.com, 17 old asset hashes gone)
 
 - Handover `HANDOVER-claude-partner-finder`/`concierge.md`. The 10 `concierge.html` shells are now built by `i18n-tools/partner-finder/build_partner_finder.py` (texts `<lang>.json`; reuses the Fee Index builder's head/chrome/Brief helpers): v2 nav/footer, centred hero, the app in `#root`, How it works, partner ecosystem grid (from `data/partners.json`, links to each category page), FAQ, Brief card, related tools. Counts 22/7/13 are read from `layer2-src/src/lib/concierge.ts` at build time.
