@@ -2,6 +2,16 @@
   "sponsor": null,
   "issues": [
     {
+      "date": "2026-10-12",
+      "title": "Everything But Bitcoin",
+      "excerpt": "Stocks hit a record. Gold rose. Yields eased. Bitcoin still fell. Why crypto’s own buyers stepped back, and what has to change before they return.",
+      "slug": "everything-but-bitcoin",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-2026-10-12-hero.jpg",
+      "read_min": 5,
+      "author": "Ras Vasilisin",
+      "og_image": "/news/og/brief-20261012.jpg"
+    },
+    {
       "date": "2026-10-05",
       "title": "Bitcoin Beat the War. November Still Gets a Vote.",
       "excerpt": "Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.",

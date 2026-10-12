@@ -6,7 +6,7 @@
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
-  var FEATURED_SLUG = 'bitcoin-beat-the-war-november-still-gets-a-vote';
+  var FEATURED_SLUG = 'everything-but-bitcoin';
   var THEME_KEY = 'vb-theme';
   var THEME_DARK = '#111110';
   var THEME_LIGHT = '#FBFBFA';
@@ -873,7 +873,7 @@
     section.hidden = false;
   }
 
-  j('news/issues.json?v=20261005a').then(function (data) {
+  j('news/issues.json?v=20261012a').then(function (data) {
     var list = (data && data.issues) || [];
     var latest = latestIssue(list);
     if (latest) {
