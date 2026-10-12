@@ -161,7 +161,7 @@ function srcsetOf(post, url) {
 function descriptionOf(post) {
   const y = post.yoast_head_json && (post.yoast_head_json.og_description || post.yoast_head_json.description);
   const d = y ? decode(y).trim() : text(post.excerpt && post.excerpt.rendered).replace(/\s*\[…\]\s*$/, '');
-  return clip(d || 'Bitcoin analysis from the Virtuse Brief desk.', 200);
+  return clip(d || 'Bitcoin analysis from the Virtuse Brief desk.', 160);
 }
 
 // ---- story body ------------------------------------------------------------
@@ -320,6 +320,23 @@ function stamp(date, locale) {
   return `${d} · ${p2(date.getUTCHours())}:${p2(date.getUTCMinutes())} UTC`;
 }
 
+// EN<->SK pairs for hreflang: an issue in news/issues.json may carry "slug_sk" next to its EN "slug".
+// Unpaired stories list only themselves (+ x-default).
+const PAIRS = (() => {
+  const m = {};
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join(SITE, 'news/issues.json'), 'utf8'));
+    for (const i of d.issues || []) if (i.slug && i.slug_sk) { m['en:' + i.slug] = 'sk/stories/' + i.slug_sk + '/'; m['sk:' + i.slug_sk] = 'stories/' + i.slug + '/'; }
+  } catch (e) { /* no pairs */ }
+  return m;
+})();
+function alternates(feed, post, storyPath) {
+  const other = PAIRS[feed.lang + ':' + post.slug];
+  if (!other) return [[feed.lang, storyPath], ['x-default', storyPath]];
+  const en = feed.lang === 'en' ? storyPath : other, sk = feed.lang === 'sk' ? storyPath : other;
+  return [['en', en], ['sk', sk], ['x-default', en]];
+}
+
 function render(template, feed, post, inferDesk) {
   const key = storyKey(post);
   const storyPath = `${feed.dir}stories/${key}/`;
@@ -355,7 +372,7 @@ function render(template, feed, post, inferDesk) {
     `<html lang="${feed.lang}" data-root="${root}" data-slug="${esc(post.slug)}" data-lang="${feed.lang}" data-story="${esc(storyPath)}" `, 'html');
 
   const ld = {
-    '@context': 'https://schema.org', '@type': 'BlogPosting',
+    '@context': 'https://schema.org', '@type': 'Article',
     headline: title, description, inLanguage: feed.lang,
     datePublished: published, dateModified: modified,
     mainEntityOfPage: url, url,
@@ -363,10 +380,21 @@ function render(template, feed, post, inferDesk) {
     author: { '@type': 'Person', name: 'Ras Vasilisin', url: ORIGIN + '/about.html' },
     publisher: { '@type': 'Organization', name: 'Virtuse', url: ORIGIN + '/', logo: { '@type': 'ImageObject', url: ORIGIN + '/news/brief-nav-logo.png' } },
   };
+  const homeUrl = ORIGIN + '/' + (feed.lang === 'en' ? '' : feed.lang + '/');
+  const crumbs = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Virtuse', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: 'Virtuse Brief', item: ORIGIN + '/news.html' },
+      { '@type': 'ListItem', position: 3, name: title, item: url },
+    ],
+  };
+  const alts = alternates(feed, post, storyPath);
   const head = [
-    `<title>${esc(title)} · Virtuse Brief</title>`,
+    `<title>${esc(title)} | Virtuse Brief</title>`,
     `<meta name="description" content="${esc(description)}">`,
     `<link rel="canonical" href="${url}">`,
+    ...alts.map(([l, p]) => `<link rel="alternate" hreflang="${l}" href="${ORIGIN}/${p}">`),
     `<meta name="author" content="Ras Vasilisin">`,
     `<meta property="og:type" content="article">`,
     `<meta property="og:site_name" content="Virtuse Brief">`,
@@ -387,6 +415,7 @@ function render(template, feed, post, inferDesk) {
     `<meta name="twitter:description" content="${esc(description)}">`,
     `<meta name="twitter:image" content="${esc(ogImg.url)}">`,
     `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
+    `<script type="application/ld+json">${JSON.stringify(crumbs).replace(/</g, '\\u003c')}</script>`,
   ].filter(Boolean).join('\n');
   // Replace the generic head block (title .. twitter:image) in one go.
   sub(/<title>[\s\S]*?<meta name="description"[^>]*>/, () => '<!--HEAD-->', 'title/description');
@@ -416,7 +445,7 @@ function render(template, feed, post, inferDesk) {
   // keeps it instead of re-inserting the same HTML (no flash, no reload).
   sub(/<div class="story-body" id="articleBody">[\s\S]*?<\/div>/, () =>
     `<div class="story-body" id="articleBody" data-modified="${esc(post.modified_gmt || '')}">\n${body}\n</div>`, 'body');
-  return { storyPath, html: h, lastmod: modified.slice(0, 10) };
+  return { storyPath, html: h, lastmod: modified.slice(0, 10), alts };
 }
 
 // ---- main ------------------------------------------------------------------
@@ -425,14 +454,14 @@ async function main() {
   const inferDesk = loadDeskInference();
   const previous = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).stories || [] : [];
   const written = [];
-  const lastmods = {};
+  const lastmods = {}, altsOf = {};
   const wpCanonical = {};
 
   for (const feed of FEEDS) {
     const posts = await fetchFeed(feed);
     const seen = new Set();
     for (const post of posts) {
-      const { storyPath, html, lastmod } = render(template, feed, post, inferDesk);
+      const { storyPath, html, lastmod, alts } = render(template, feed, post, inferDesk);
       if (seen.has(storyPath)) continue; // WP cross-posts can repeat a slug
       seen.add(storyPath);
       const file = path.join(SITE, storyPath, 'index.html');
@@ -441,6 +470,7 @@ async function main() {
       if (old !== html) fs.writeFileSync(file, html);
       written.push(storyPath);
       lastmods[storyPath] = lastmod;
+      altsOf[storyPath] = alts;
       wpCanonical[post.id] = ORIGIN + '/' + storyPath;
     }
     console.log(`${feed.lang}: ${seen.size} stories`);
@@ -465,9 +495,11 @@ async function main() {
   // each generator only ever rewrites the text between its own markers).
   const sitemapFile = path.join(SITE, 'sitemap.xml');
   const xml = fs.readFileSync(sitemapFile, 'utf8');
+  // hreflang alternates only for EN/SK pairs (an unpaired page has nothing to announce)
   const block = [SITEMAP_START, ...written.map((p) => `  <url>
     <loc>${ORIGIN}/${p}</loc>
-    <lastmod>${lastmods[p]}</lastmod>
+    <lastmod>${lastmods[p]}</lastmod>${(altsOf[p] || []).length > 2 ? altsOf[p].map(([l, q]) => `
+    <xhtml:link rel="alternate" hreflang="${l}" href="${ORIGIN}/${q}"/>`).join('') : ''}
   </url>`), SITEMAP_END].join('\n');
   let nextXml;
   if (xml.includes(SITEMAP_START) && xml.includes(SITEMAP_END)) {
