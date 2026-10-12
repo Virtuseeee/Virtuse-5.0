@@ -207,7 +207,7 @@ const sampleUrls = [
   `${ORIGIN}/bitcoin-fee-index/`,
   `${ORIGIN}/bitcoin-dca-calculator/`,
   `${ORIGIN}/sell-vs-borrow-bitcoin/`,
-  `${ORIGIN}/index.html`
+  `${ORIGIN}/`
 ];
 for (const u of sampleUrls) {
   if (!sitemap.includes(`<loc>${u}</loc>`)) fail(`sitemap missing ${u}`);
