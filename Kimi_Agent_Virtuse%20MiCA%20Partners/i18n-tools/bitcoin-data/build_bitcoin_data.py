@@ -21,13 +21,15 @@ def build(L):
     old, home = open(page_path).read(), open(home_path).read()
     head = C.head(L, old, home, root)
     head = head.replace("connect-src 'self'", "connect-src 'self' https://raw.githubusercontent.com", 1)
+    # bitcoin-only sources on this page: mempool.space + CoinGecko (Binance not allowed)
+    head = head.replace(' https://api.binance.com', '')
     nav, foot = C.chrome(home, 'bitcoin-data.html')
     # this page lives under Learn, not Services
     nav = nav.replace('<div class="nav-group current" id="ng-services">', '<div class="nav-group" id="ng-services">')
     nav = nav.replace('<div class="nav-group" id="ng-learn">', '<div class="nav-group current" id="ng-learn">')
     cur = 'USD' if L == 'en' else 'EUR'
     fees = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, C.B.GUIDES[L][1])
-    i18n = {k: T[k] for k in ('updated', 'your_time', 'stale', 'unavailable', 'retry', 'n_block_ago', 'n_unknown', 's_halving_sub',
+    i18n = {k: T[k] for k in ('updated', 'fees_equal', 'stale', 'unavailable', 'retry', 'n_block_ago', 'n_unknown', 's_halving_sub',
                               'p_chart', 'p_sats', 'p_sats_eur', 'u_s', 'u_min', 'u_h', 'u_days', 'u_years')}
     i18n.update(locale=C.B.LOCALE.get(L, 'en-US'), pct=' %' if L in C.PCT_SPACE else '%', cur=cur, raw=AR_RAW, local=root + 'data/asset-returns.json')
     i18n = {k: (v if not isinstance(v, str) else html.unescape(v)) for k, v in i18n.items()}  # the script sets textContent
@@ -45,7 +47,6 @@ def build(L):
 
     mp = '<a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a>'
     cg = '<a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>'
-    bn = '<a href="https://www.binance.com" target="_blank" rel="noopener noreferrer">Binance</a> (%s)' % t('fallback')
 
     keys = '''<div class="bd-keys" data-g="price net">
       <div class="bd-m bd-key bd-price" data-k="price"><span class="bd-l">{k_price}
@@ -68,7 +69,7 @@ def build(L):
     {src}
     {links}'''.format(chart=t('p_chart').replace('{n}', '90'), p30=t('p_30'), p90=t('p_90'),
                       mcap=card('mcap', t('p_mcap'), t('p_mcap_sub')), sats=card('sats', t('p_sats_eur' if cur == 'EUR' else 'p_sats'), None),
-                      src=src('price', mp + ' · ' + cg + ' · ' + bn),
+                      src=src('price', mp + ' · ' + cg),
                       links=links(t('p_links'), [('btc-monthly-returns.html', t('c_monthly')), ('trading-volume.html', t('c_volume')), ('fear-greed.html', t('c_fear'))]))
 
     net = '''<div class="bd-grid bd-net">
@@ -79,6 +80,7 @@ def build(L):
       <div class="bd-card bd-block"><span class="bd-l">{n_block}</span><b class="bd-v" data-k="bheight">{sk}</b><span class="bd-s" data-k="bago"></span>
         <dl><div><dt>{n_block_tx}</dt><dd data-k="btx">{sk}</dd></div><div><dt>{n_block_size}</dt><dd data-k="bsize">{sk}</dd></div><div><dt>{n_block_miner}</dt><dd data-k="bminer">{sk}</dd></div></dl></div>
       <div class="bd-card bd-fees"><span class="bd-l">{n_fees}</span>
+        <p class="bd-feeseq" data-k="feeseq" hidden></p>
         <dl><div><dt>{n_fee_fast}</dt><dd data-k="ffast">{sk}</dd></div><div><dt>{n_fee_30}</dt><dd data-k="f30">{sk}</dd></div><div><dt>{n_fee_60}</dt><dd data-k="f60">{sk}</dd></div><div><dt>{n_fee_min}</dt><dd data-k="fmin">{sk}</dd></div></dl></div>
     </div>
     {src}
@@ -158,11 +160,11 @@ def build(L):
   {foot}
 </main>
 <script type="application/json" id="bdI18n">{i18n}</script>
-<script src="{root}btc-data.js?v=1" defer></script>
+<script src="{root}btc-data.js?v=2" defer></script>
 '''.format(nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), lead=t('lead'), keys=keys, loading=t('loading'), sources=t('sources'),
            mp=mp, cg=cg, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), market=market, nh2a=t('n_h2_a'), nh2b=t('n_h2_b'), net=net,
            sh2a=t('s_h2_a'), sh2b=t('s_h2_b'), supply=supply, mh2a=t('m_h2_a'), mh2b=t('m_h2_b'), macro=macro,
-           ch2a=t('c_h2_a'), ch2b=t('c_h2_b'), grid=grid, brief=C.brief(L, t, root, 'data_brief'), disclaimer=t('disclaimer'),
+           ch2a=t('c_h2_a'), ch2b=t('c_h2_b'), grid=grid, brief=re.sub(r'\s*<div class="btc-spark" id="btcSpark" hidden>.*?</svg>\s*</div>', '', C.brief(L, t, root, 'data_brief'), flags=re.S), disclaimer=t('disclaimer'),
            foot=foot, i18n=json.dumps(i18n, ensure_ascii=False).replace('</', '<\\/'), root=root)
     out = C.fix_links(L, head + body + C.scripts(root))
     open(page_path, 'w').write(out)

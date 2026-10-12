@@ -1590,3 +1590,4 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
   .bd-macro .bd-v { font-size: 22px; }
   .bd-card { padding: 16px; }
 }
+.bd-feeseq { margin: 6px 0 0; font-size: 15px; font-weight: 600; } .bd-feeseq[hidden], .bd-fees dl[hidden] { display: none; }
