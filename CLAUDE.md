@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Brief share preview per edition (news.html og:/twitter:)
+
+- **New edition → update `news/issues.json` → run `python3 i18n-tools/set_news_og.py --image` → deploy** (`news.html`, `news/issues.json`, `news/og/brief-YYYYMMDD.jpg`).
+  - The script takes the newest non-essay issue.
+  - It crops its `image` to a 1200×630 JPG `news/og/brief-YYYYMMDD.jpg` (a quarter of the cut comes off the top), stores it as `og_image`, and rewrites only the og:/twitter: tags in news.html. Title "Virtuse Brief · Oct 12, 2026 · Everything But Bitcoin", description = `dek` or `excerpt` ≤ 160, image `?v=YYYYMMDD`.
+  - Without `og_image` the generic `/news/og-card.png?v=20260921` is used. `--check` exits 1 if news.html is stale.
+- news.html / issues.json / news.js are desk-owned and the desk deploys them **straight to production**. On 2026-10-12 production was ahead of main (Oct 12 edition), so this change started from the production copies. Always diff production before editing them. There is no SK news page.
+
 ## Session status (2026-10-12) — Brief article SEO on /stories/ (PR #72, main `8f085fed`; **live on production**, `.htaccess` + 2 blog mu-plugin files uploaded by the user)
 
 - Ras chose to keep `/stories/<slug>/` (+ `sk/stories/`) as the canonical static copy instead of the handover's new `/a/` set.
