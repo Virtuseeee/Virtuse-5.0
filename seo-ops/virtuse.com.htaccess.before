@@ -8,11 +8,20 @@
 
 RewriteEngine On
 
-# Canonicalize to non-www (this site's OG tags/sitemap already use the
-# bare domain). Runs first so it applies to real files too, not just
-# the old-post fallback below.
-RewriteCond %{HTTP_HOST} ^www\.virtuse\.com$ [NC]
+# Canonical host: https://virtuse.com (one 301 hop for http, www and http+www).
+# Runs first so it applies to real files too, not just the fallback below.
+# nginx sits in front of Apache here: a request counts as https if Apache
+# sees HTTPS=on OR the proxy sends X-Forwarded-Proto: https. If the proxy
+# does neither, https://virtuse.com/ would redirect to itself: check it right
+# after the upload and restore virtuse.com.htaccess.before if it loops.
+RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
+
+# No Slovak Brief page exists (the Brief is EN-only): old /sk/news.html hits go to /news.html
+RewriteRule ^sk/news\.html$ https://virtuse.com/news.html [R=301,L]
 
 # BEGIN legacy-exchange (seo-ops/legacy_redirects.py)
 # Old Virtuse Exchange paths: 301 to the new page or 410 Gone, before the blog fallback.

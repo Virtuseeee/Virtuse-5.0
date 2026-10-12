@@ -130,3 +130,10 @@ Use `<` (stdin), not `sftp -b`: batch mode disables password login. It
 uploads all pages (about 5 MB), so it is safe to re-run. Folders of
 stories removed from WordPress are listed as comments at the end of the file
 and have to be deleted on the server by hand.
+
+## Brief article SEO (2026-10-12)
+
+- `/stories/<slug>/` (and `sk/stories/<slug>/`) are the canonical, static copies of Brief/blog articles. Head: `<title>Post | Virtuse Brief</title>`, description ≤ 160 chars, canonical, hreflang (self + x-default; `en`/`sk`/`x-default` when paired), OG + Twitter large image, JSON-LD `Article` + `BreadcrumbList` (Virtuse home `/` or `/sk/` → `/news.html` → article).
+- EN↔SK pairs: add `"slug_sk": "<sk-slug>"` to the issue in `news/issues.json` next to its EN `slug`; the next build writes the hreflang pair into both pages and the sitemap.
+- `.htaccess` (seo-ops): `/a/<slug>` and `article.html?slug=<slug>[&lang=sk]` 301 to the story page when it exists, otherwise the reader (302). `article.js` also points article.html's canonical at the story page.
+- WordPress: `virtuse-story-canonical.php` points each post's canonical at its virtuse.com copy (reads `stories/wp-canonical.json`); `virtuse-brief-link.php` adds a "Read the Brief on virtuse.com" bar on those posts (themes with `wp_body_open`).

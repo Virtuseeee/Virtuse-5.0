@@ -23,6 +23,26 @@ RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
 # No Slovak Brief page exists (the Brief is EN-only): old /sk/news.html hits go to /news.html
 RewriteRule ^sk/news\.html$ https://virtuse.com/news.html [R=301,L]
 
+# Brief articles. The static page /stories/<slug>/ (sk/stories/) is the canonical copy.
+# Short links /a/<slug> and the old reader URL article.html?slug=<slug>[&lang=sk] 301 there
+# when the page exists; a story published after the last build goes to the reader (302).
+RewriteCond %{DOCUMENT_ROOT}/stories/$1/index.html -f
+RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/stories/$1/ [R=301,L]
+RewriteCond %{DOCUMENT_ROOT}/sk/stories/$1/index.html -f
+RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/sk/stories/$1/ [R=301,L]
+RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/article.html?slug=$1 [R=302,L]
+RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/article.html?slug=$1&lang=sk [R=302,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=([a-z0-9-]+)(?:&|$)
+RewriteRule ^article\.html$ - [E=VB_SLUG:%1]
+RewriteCond %{QUERY_STRING} (?:^|&)lang=sk(?:&|$)
+RewriteCond %{ENV:VB_SLUG} .
+RewriteCond %{DOCUMENT_ROOT}/sk/stories/%{ENV:VB_SLUG}/index.html -f
+RewriteRule ^article\.html$ https://virtuse.com/sk/stories/%{ENV:VB_SLUG}/? [R=301,L]
+RewriteCond %{QUERY_STRING} !(?:^|&)lang=(?:sk|ru)(?:&|$)
+RewriteCond %{ENV:VB_SLUG} .
+RewriteCond %{DOCUMENT_ROOT}/stories/%{ENV:VB_SLUG}/index.html -f
+RewriteRule ^article\.html$ https://virtuse.com/stories/%{ENV:VB_SLUG}/? [R=301,L]
+
 # BEGIN legacy-exchange (seo-ops/legacy_redirects.py)
 # Old Virtuse Exchange paths: 301 to the new page or 410 Gone, before the blog fallback.
 # Source: partnerships/legacy-wp-redirects.csv. Commented lines wait for Ras.
