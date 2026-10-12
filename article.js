@@ -528,7 +528,11 @@
     buildToc(body);      // before sources, so footnote numbers stay out of TOC labels
     buildSources(body);
     setService(desk);
-    resolveSharePath(post).then(function (path) { setupShare(title, path); });
+    resolveSharePath(post).then(function (path) {
+      setupShare(title, path);
+      // article.html?slug=…: point the canonical at the story's static page once it exists
+      if (path && !STORY) { var c = document.querySelector('link[rel="canonical"]'); if (c) c.href = 'https://virtuse.com/' + path; }
+    });
   }
 
   // Share. Links always point at production (never localhost), keep the
