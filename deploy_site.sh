@@ -132,8 +132,11 @@ echo "== 3/5 staging (gh-pages)"
 git worktree prune
 if [ ! -d "$WT/.git" ] && [ ! -f "$WT/.git" ]; then rm -rf "$WT"; git fetch -q origin gh-pages && git worktree add -q --detach "$WT" origin/gh-pages || fail "gh-pages worktree"; fi
 git -C "$WT" fetch -q origin gh-pages && git -C "$WT" checkout -q --detach origin/gh-pages || fail "gh-pages checkout"
-while IFS= read -r f; do mkdir -p "$WT/$(dirname "$f")"; cp "$SITE/$f" "$WT/$f"; git -C "$WT" add -- "$f"; done < "$LIST"
-while IFS= read -r f; do [ -e "$WT/$f" ] && git -C "$WT" rm -q -- "$f"; done < "$DEL"
+# robots.txt is the one file that differs on staging: GitHub Pages can't send X-Robots-Tag, so staging
+# blocks all crawlers here and the production robots.txt is never copied over it.
+while IFS= read -r f; do [ "$f" = robots.txt ] && continue; mkdir -p "$WT/$(dirname "$f")"; cp "$SITE/$f" "$WT/$f"; git -C "$WT" add -- "$f"; done < "$LIST"
+while IFS= read -r f; do [ "$f" = robots.txt ] && continue; [ -e "$WT/$f" ] && git -C "$WT" rm -q -- "$f"; done < "$DEL"
+printf 'User-agent: *\nDisallow: /\n' > "$WT/robots.txt"; git -C "$WT" add -- robots.txt
 if git -C "$WT" diff --cached --quiet; then echo "   gh-pages already up to date"
 else git -C "$WT" commit -q -m "Sync from main ${TO:0:7}: $(git log -1 --format=%s "$TO")" && git -C "$WT" push -q origin HEAD:gh-pages || fail "gh-pages push failed"; fi
 
@@ -157,7 +160,7 @@ echo "   production: $N/$N match"
 
 # ---- 5/5 staging check (GitHub Pages rebuilds in 1-5 min) ----
 echo "== 5/5 checking md5 on staging.virtuse.com (waits up to 8 min for GitHub Pages)"
-cp "$LIST" "$TMP/stg.txt"
+grep -vx 'robots.txt' "$LIST" > "$TMP/stg.txt" || true
 for i in 1 2 3 4 5 6 7 8 9; do
   md5_check "$TMP/stg.txt" "$TMP/stgbad.txt" "https://staging.virtuse.com" "-H Cache-Control:no-cache"
   [ -s "$TMP/stgbad.txt" ] || break

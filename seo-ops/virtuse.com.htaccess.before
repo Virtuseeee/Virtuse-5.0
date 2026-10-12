@@ -14,6 +14,110 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.virtuse\.com$ [NC]
 RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
 
+# BEGIN legacy-exchange (seo-ops/legacy_redirects.py)
+# Old Virtuse Exchange paths: 301 to the new page or 410 Gone, before the blog fallback.
+# Source: partnerships/legacy-wp-redirects.csv. Commented lines wait for Ras.
+RewriteRule ^about-us/?$ https://virtuse.com/about.html [R=301,L]
+RewriteRule ^account/?$ - [G,L]
+RewriteRule ^accounts/?$ - [G,L]
+RewriteRule ^affiliate-program-details/?$ - [G,L]
+RewriteRule ^affiliates/?$ - [G,L]
+RewriteRule ^an-exchange-like-no-other/?$ - [G,L]
+RewriteRule ^career/?$ - [G,L]
+RewriteRule ^coffee/?$ - [G,L]
+RewriteRule ^commodities/?$ https://virtuse.com/asset-returns.html [R=301,L]
+RewriteRule ^compound-interest-calculator/?$ https://virtuse.com/stacking.html [R=301,L]
+RewriteRule ^cryptocurrency-exchange-development/?$ - [G,L]
+RewriteRule ^dashboard/?$ https://virtuse.com/bitcoin-data.html [R=301,L]
+RewriteRule ^digital-wealth-management/?$ https://virtuse.com/index.html [R=301,L]
+RewriteRule ^e-shop/?$ https://virtuse.com/secure.html [R=301,L]
+RewriteRule ^etfs/?$ - [G,L]
+RewriteRule ^faq/?$ https://virtuse.com/faq.html [R=301,L]
+RewriteRule ^fees/?$ https://virtuse.com/bitcoin-fee-index/ [R=301,L]
+RewriteRule ^glossary/?$ - [G,L]
+RewriteRule ^gold/?$ https://virtuse.com/asset-returns.html [R=301,L]
+RewriteRule ^home-2/?$ - [G,L]
+RewriteRule ^institutions/?$ https://virtuse.com/treasury.html [R=301,L]
+RewriteRule ^invite/?$ - [G,L]
+RewriteRule ^login/?$ - [G,L]
+RewriteRule ^oil/?$ - [G,L]
+RewriteRule ^platinum/?$ - [G,L]
+RewriteRule ^pozicky/?$ https://virtuse.com/sk/lending.html [R=301,L]
+RewriteRule ^privacy-policy/?$ https://virtuse.com/privacy-policy.html [R=301,L]
+RewriteRule ^private-section/?$ - [G,L]
+RewriteRule ^products/?$ - [G,L]
+RewriteRule ^referral/?$ - [G,L]
+RewriteRule ^registration/?$ - [G,L]
+RewriteRule ^request-a-loan/?$ https://virtuse.com/lending.html [R=301,L]
+RewriteRule ^silver/?$ - [G,L]
+RewriteRule ^sk/affiliate-program-details/?$ - [G,L]
+RewriteRule ^sk/affiliates/?$ - [G,L]
+RewriteRule ^sk/burza-ako-ziadna-ina/?$ - [G,L]
+RewriteRule ^sk/compound-interest-calculator/?$ https://virtuse.com/sk/stacking.html [R=301,L]
+RewriteRule ^sk/dakujeme-za-priazen/?$ - [G,L]
+RewriteRule ^sk/dakujeme/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^sk/dashboard/?$ https://virtuse.com/sk/bitcoin-data.html [R=301,L]
+RewriteRule ^sk/etfs/?$ - [G,L]
+RewriteRule ^sk/faq/?$ https://virtuse.com/sk/faq.html [R=301,L]
+RewriteRule ^sk/home-2/?$ - [G,L]
+RewriteRule ^sk/institucie/?$ https://virtuse.com/sk/treasury.html [R=301,L]
+RewriteRule ^sk/invite/?$ - [G,L]
+RewriteRule ^sk/kariera/?$ - [G,L]
+RewriteRule ^sk/kava/?$ - [G,L]
+RewriteRule ^sk/komodity/?$ - [G,L]
+RewriteRule ^sk/krypto/?$ - [G,L]
+RewriteRule ^sk/krypto/ethereum/?$ - [G,L]
+RewriteRule ^sk/krypto/vas-najlepsi-sprievodca-pre-bitcoin/?$ https://virtuse.com/sk/buy-bitcoin.html [R=301,L]
+RewriteRule ^sk/login/?$ - [G,L]
+RewriteRule ^sk/mate-zaujem-o-konzultaciu/?$ https://virtuse.com/sk/index.html [R=301,L]
+RewriteRule ^sk/o-nas/?$ https://virtuse.com/sk/about.html [R=301,L]
+RewriteRule ^sk/obchodne-podmienky/?$ https://virtuse.com/sk/terms-and-conditions.html [R=301,L]
+RewriteRule ^sk/penazenka/?$ https://virtuse.com/sk/secure.html [R=301,L]
+RewriteRule ^sk/platina/?$ - [G,L]
+RewriteRule ^sk/podmienky-kotovania-tokenov-na-virtuse/?$ - [G,L]
+RewriteRule ^sk/poplatky/?$ https://virtuse.com/sk/bitcoin-index-poplatkov/ [R=301,L]
+RewriteRule ^sk/pozicky/?$ https://virtuse.com/sk/lending.html [R=301,L]
+RewriteRule ^sk/private-section/?$ - [G,L]
+RewriteRule ^sk/product/?$ https://virtuse.com/sk/index.html [R=301,L]
+RewriteRule ^sk/produkty/?$ - [G,L]
+RewriteRule ^sk/referral/?$ - [G,L]
+RewriteRule ^sk/registracia/?$ - [G,L]
+RewriteRule ^sk/request-a-loan/?$ https://virtuse.com/sk/lending.html [R=301,L]
+RewriteRule ^sk/ropa/?$ - [G,L]
+RewriteRule ^sk/slovnik-pojmov/?$ - [G,L]
+RewriteRule ^sk/striebro/?$ - [G,L]
+RewriteRule ^sk/test-popup/?$ - [G,L]
+RewriteRule ^sk/typy-uctov/?$ - [G,L]
+RewriteRule ^sk/ucet/?$ - [G,L]
+RewriteRule ^sk/uhlik/?$ - [G,L]
+RewriteRule ^sk/umiestnovanie-tokenov/?$ - [G,L]
+RewriteRule ^sk/virtu-token/?$ - [G,L]
+RewriteRule ^sk/virtuse-news/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^sk/virtuse-report/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^sk/virtusex-platformy/?$ - [G,L]
+RewriteRule ^sk/vyvoj-krypto-burzy/?$ - [G,L]
+RewriteRule ^sk/wealth-management/?$ https://virtuse.com/sk/index.html [R=301,L]
+RewriteRule ^sk/withdrawal-confirmation/?$ - [G,L]
+RewriteRule ^sk/xmas-greetings/?$ - [G,L]
+RewriteRule ^sk/zasady-ochrany-osobnych-udajov/?$ https://virtuse.com/sk/privacy-policy.html [R=301,L]
+RewriteRule ^sk/zlato/?$ - [G,L]
+RewriteRule ^sk/zostante-s-nami/?$ - [G,L]
+RewriteRule ^stay-with-us/?$ - [G,L]
+RewriteRule ^terms-of-service/?$ https://virtuse.com/terms-and-conditions.html [R=301,L]
+RewriteRule ^test-popup/?$ - [G,L]
+RewriteRule ^thank-you-page/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^thank-you/?$ - [G,L]
+RewriteRule ^the-virtuse-report/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^token-listing/?$ - [G,L]
+RewriteRule ^virtu-token/?$ - [G,L]
+RewriteRule ^virtuse-exchange-token-listing-guidelines/?$ - [G,L]
+RewriteRule ^virtuse-news/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^virtusex-platform/?$ - [G,L]
+RewriteRule ^wallet/?$ https://virtuse.com/secure.html [R=301,L]
+RewriteRule ^withdrawal-confirmation/?$ - [G,L]
+RewriteRule ^xmas-greetings/?$ - [G,L]
+# END legacy-exchange
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ https://blog.virtuse.com/$1 [R=301,L]
@@ -25,4 +129,19 @@ RewriteRule ^(.*)$ https://blog.virtuse.com/$1 [R=301,L]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Browser caching (2026-10-08, Lighthouse "Use efficient cache lifetimes"). Before this
+# no Cache-Control was sent, so browsers guessed lifetimes from Last-Modified (an old
+# page could be served from cache for days without asking). Files keep their names
+# when they change, so lifetimes stay short except for the hashed module files.
+<IfModule mod_headers.c>
+  # Pages and data: always revalidate (cheap 304 when unchanged).
+  Header set Cache-Control "no-cache" "expr=%{CONTENT_TYPE} =~ m#^(text/html|application/json)#"
+  # Unversioned CSS/JS (styles.css, cookie-consent.js, ...): 1 hour.
+  Header set Cache-Control "public, max-age=3600" "expr=%{CONTENT_TYPE} =~ m#^(text/css|application/javascript|text/javascript)#"
+  # Images and fonts: 7 days (some images are replaced under the same name).
+  Header set Cache-Control "public, max-age=604800" "expr=%{CONTENT_TYPE} =~ m#^(image/|font/|application/font)#"
+  # Layer 2 module bundles have a content hash in the name: 1 year.
+  Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/concierge-assets/#"
 </IfModule>

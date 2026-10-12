@@ -262,3 +262,16 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
     zakladateľa Virtuse, len o Bitcoine: trhy, makroekonómia, úschova a pôžičky so
     zábezpekou v Bitcoine."
   - Live: no "Virtuse Exchange" left in the HTML of the home pages, /blog/, posts, 404.
+
+## Canonical host + SEO hygiene (2026-10-12)
+
+- `virtuse.com.htaccess`: one 301 hop to `https://virtuse.com/` for http, www and http+www (https = Apache `HTTPS=on`
+  or nginx `X-Forwarded-Proto: https`), plus `/sk/news.html` → `/news.html`. Tested on a local Apache 2.4.67.
+  `virtuse.com.htaccess.before` is the previous live file (rollback). Upload by hand (download the live file first and
+  diff it against `.before`; if they differ, merge). Right after the upload check that `https://virtuse.com/` answers 200
+  (no redirect loop) and `http://virtuse.com/` answers 301 → https; if https loops, upload `.before` again.
+- Homepages: canonical, og:url and hreflang use `https://virtuse.com/` and `https://virtuse.com/<lang>/` (sitemap too).
+  JSON-LD breadcrumbs still name `/index.html` (same page, canonical wins).
+- Staging (`gh-pages`): `deploy_site.sh` writes a staging-only `robots.txt` (`Disallow: /`) and never copies or md5-checks
+  the production one; the GTM loader on every page is wrapped in `if(location.hostname!=='staging.virtuse.com')`.
+- `audit_canonical.py`: every indexable page has one self-canonical and reciprocal hreflang (0 problems on 2026-10-12).
