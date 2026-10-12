@@ -50,6 +50,8 @@ export interface Partner {
   badge?: LocalizedText;
   // MiCA licence: shown as "MiCA licensed (<regulator>)" + source link.
   licence?: { regulator: LocalizedText; source: string };
+  // partner's own page for the feeNote fact; shown as "Source, checked …" (LICENCE_CHECKED date)
+  feeSource?: string;
 }
 
 export interface Recommendation {
@@ -131,7 +133,8 @@ export const PARTNERS: Partner[] = [
     goals: ['buy'],
     custody: ['any', 'assisted'],
     url: 'https://21bitcoin.app.link/invite/?code=VIRTUSE',
-    feeNote: { en: 'Auto-Invest savings plan with 0% fees', sk: 'Sporiaci plán Auto-Invest s 0 % poplatkami', cs: 'Spořicí plán Auto-Invest s 0 % poplatky' },
+    feeNote: { en: 'Auto-Invest savings plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)', sk: 'Sporiaci plán Auto-Invest: 0 % poplatky od 8. dňa (prvých 7 dní 0,99 % alebo 0,79 % s odporúčacím kódom)', cs: 'Spořicí plán Auto-Invest: 0 % poplatky od 8. dne (prvních 7 dní 0,99 % nebo 0,79 % s doporučujícím kódem)' },
+    feeSource: 'https://21bitcoin.app/en/fees',
     countries: ['ALL'],
     licence: lic({ en: 'FMA Austria', sk: 'FMA Rakúsko', cs: 'FMA Rakousko' }),
   },
@@ -164,7 +167,8 @@ export const PARTNERS: Partner[] = [
     goals: ['buy'],
     custody: ['any'],
     url: 'https://invity.onelink.me/yIY4/j44d7awx',
-    feeNote: { en: 'Bitcoin held with BitGo until you withdraw it', sk: 'Bitcoin u správcu BitGo, kým ho nevyberiete', cs: 'Bitcoin u správce BitGo, dokud ho nevyberete' },
+    feeNote: { en: 'Customer Bitcoin held in BitGo institutional custody', sk: 'Bitcoin klientov v inštitucionálnej úschove BitGo', cs: 'Bitcoin klientů v institucionální úschově BitGo' },
+    feeSource: 'https://www.invity.io/',
     countries: ['ALL'],
     badge: { en: 'Bitcoin only', sk: 'Iba Bitcoin', cs: 'Jen Bitcoin' },
     licence: lic({ en: 'Czech National Bank', sk: 'Česká národná banka', cs: 'Česká národní banka' }),
@@ -392,10 +396,6 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.experience === 'new') {
         push('21bitcoin', 96, [
           tv(lang, `Simple start for newcomers in {0}: a Bitcoin-only app.`, `Jednoduchý štart pre začiatočníkov ({0}): aplikácia len pre Bitcoin.`, `Jednoduchý start pro začátečníky ({0}): aplikace jen pro Bitcoin.`, [countryName(lang, a.country)]),
-          t(lang,
-            'Auto-Invest savings plan with 0% fees.',
-            'Sporiaci plán Auto-Invest s 0 % poplatkami.',
-            'Spořicí plán Auto-Invest s 0 % poplatky.'),
         ]);
       } else {
         push('kraken', 93, [
@@ -407,16 +407,12 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         ]);
       }
       if (a.custody !== 'self') {
-        // Not for self-custody: Invity holds Bitcoin with BitGo until withdrawal.
+        // Not for self-custody: Invity keeps customer Bitcoin in BitGo custody.
         push('invity', 80, [
           t(lang,
             'Bitcoin-only app: buy once or with Auto Buy, then withdraw to your own wallet at any time or let Auto Send move it automatically.',
             'Aplikácia len pre Bitcoin: nakúpte jednorazovo alebo cez Auto Buy a kedykoľvek si ho vyberte do vlastnej peňaženky, alebo ho tam automaticky presunie Auto Send.',
             'Aplikace jen pro Bitcoin: nakupte jednorázově nebo přes Auto Buy a kdykoli si ho vyberte do vlastní peněženky, nebo ho tam automaticky přesune Auto Send.'),
-          t(lang,
-            'Your Bitcoin is held with BitGo until you withdraw it.',
-            'Váš Bitcoin je u správcu BitGo, kým ho nevyberiete.',
-            'Váš Bitcoin je u správce BitGo, dokud ho nevyberete.'),
         ]);
       }
       if (a.amount === 'l' || a.amount === 'xl') {
