@@ -38,6 +38,7 @@
 -mkdir public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin
 -mkdir public_html/stories/bitcoin-is-a-paradigm-shift-of-a-decade
 -mkdir public_html/stories/bitcoin-is-an-antidote-against-cbdcs
+-mkdir public_html/stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag
 -mkdir public_html/stories/bitcoin-is-now-the-largest-financial-service-company
 -mkdir public_html/stories/bitcoin-ordinals-about-to-flip-ethereum-nfts
 -mkdir public_html/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds
@@ -661,6 +662,7 @@ put stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html public_html/
 put stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html
 put stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html public_html/stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html
 put stories/bitcoin-is-an-antidote-against-cbdcs/index.html public_html/stories/bitcoin-is-an-antidote-against-cbdcs/index.html
+put stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag/index.html public_html/stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag/index.html
 put stories/bitcoin-is-now-the-largest-financial-service-company/index.html public_html/stories/bitcoin-is-now-the-largest-financial-service-company/index.html
 put stories/bitcoin-ordinals-about-to-flip-ethereum-nfts/index.html public_html/stories/bitcoin-ordinals-about-to-flip-ethereum-nfts/index.html
 put stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html public_html/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html
