@@ -1591,3 +1591,57 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
   .bd-card { padding: 16px; }
 }
 .bd-feeseq { margin: 6px 0 0; font-size: 15px; font-weight: 600; } .bd-feeseq[hidden], .bd-fees dl[hidden] { display: none; }
+
+/* FEE INDEX: one panel, amount switch, fee / spread / total per partner; rows become cards on phones */
+.h1-or { color: var(--orange); }
+.fi-amount { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; }
+.fi-amount > span { font-size: 15px; color: var(--muted); }
+.fi-amount .seg { margin: 0; flex-wrap: wrap; }
+.fi-row { display: grid; grid-template-columns: minmax(0, 2.4fr) 0.7fr 0.9fr 0.9fr 0.7fr 170px; gap: 16px; align-items: center; min-height: 64px; padding: 10px 4px; border-top: 1px solid rgba(255,255,255,.06); font-size: 16px; font-variant-numeric: tabular-nums; }
+.fi-row[hidden] { display: none; }
+.fi-row.head { min-height: 0; padding: 0 4px 12px; border-top: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.fi-row .hc-name img { width: 36px; height: 36px; border-radius: 9px; }
+.fi-row .hc-name b { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fi-row .hc-name small, .page-fee .fi-row .hc-name small { display: block; font-size: 12px; color: var(--muted); white-space: normal; }
+.fi-row .hc-name small a { color: var(--muted); text-underline-offset: 2px; }
+.fi-row .hc-name small a:hover { color: var(--text); }
+.fi-row em { display: none; font-style: normal; }
+.fi-tot b { font-weight: 600; font-size: 18px; }
+.fi-yr { text-align: right; }
+.fi-row.head .fi-yr { text-align: right; }
+.fi-row .hp-get { justify-self: end; }
+.fi-pend { font-size: 13px; font-weight: 500; color: var(--muted); }
+.fi-finding { color: var(--text) !important; font-size: 15px !important; }
+section.fi-press { padding-top: 0; }
+.fi-press summary { font-size: 17px; }
+.fi-press h3 { margin: 22px 0 0; font-size: 15px; font-weight: 600; }
+.fi-code { margin: 12px 0 0; padding: 14px; background: var(--inset); border: 1px solid var(--line); border-radius: 10px; font: 12px/1.6 var(--mono); color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; }
+.fi-btns { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.fi-cards { grid-template-columns: repeat(5, 1fr); }
+.fi-disc { margin-top: 28px; }
+.fi-list { margin: 0; padding-left: 20px; display: grid; gap: 10px; color: var(--muted); max-width: 860px; }
+.fi-list b { color: var(--text); }
+.fi-list a { color: var(--text); }
+.fi-sub { padding-bottom: 8px; }
+.fi-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.fi-table th, .fi-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.fi-table th { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.page-fee .table-wrap { overflow-x: auto; margin-top: 8px; }
+@media (max-width: 1100px) { .fi-cards { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) {
+  .fi-row.head { display: none; }
+  .fi-row { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; grid-template-areas: "name name name name" "fee sp tot get" "yr yr yr get"; gap: 6px 12px; padding: 14px 2px; }
+  .fi-row .hc-name { grid-area: name; margin-bottom: 6px; }
+  .fi-fee { grid-area: fee; } .fi-sp { grid-area: sp; } .fi-tot { grid-area: tot; } .fi-yr { grid-area: yr; text-align: left; font-size: 13px; color: var(--muted); }
+  .fi-row em { display: block; font: 500 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); margin-bottom: 2px; }
+  .fi-yr em { display: inline; margin-right: 6px; }
+  .fi-row .hp-get { grid-area: get; align-self: center; }
+  .fi-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .fi-row .hp-get { margin: 0; padding: 0; width: 40px; height: 40px; justify-content: center; font-size: 0; gap: 0; }
+  .fi-row .hp-get svg { width: 15px; height: 15px; }
+  .fi-amount .seg-btn { padding: 8px 10px; }
+  .fi-cards { grid-template-columns: 1fr; }
+}
+@media print { .nav, .footer-main, #brief, .fi-noprint, .vc-bubble, #vbConsent { display: none !important; } body { background: #fff; color: #111; } .fi-table th, .fi-table td { color: #111; border-color: #ccc; } }

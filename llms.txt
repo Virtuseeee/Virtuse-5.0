@@ -24,9 +24,10 @@ Hub: https://virtuse.com/bitcoin-tax/
 
 ## Buy routes / Fee Index
 
-- 1. 21bitcoin (Auto-Invest plan): 0%, annual fee drag at €100/month €0
-- 2. ByBit EU (Spot trading): 0.25%, annual fee drag at €100/month €3
-- 3. Kraken (Pro trading): 0.8%, annual fee drag at €100/month €10
+- 1. Bybit EU: fee 0.25%, est. spread <0.01%, total cost 0.25% at €100/month
+- 2. Kraken Pro: fee 0.8%, est. spread <0.01%, total cost 0.8% at €100/month
+- 21bitcoin: fee 0%, spread being measured (not ranked yet)
+- Fees checked 2026-10-12; ranked by total cost (listed fee + estimated spread). Network, withdrawal and currency fees not included.
 
 Index: https://virtuse.com/bitcoin-fee-index/
 Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
