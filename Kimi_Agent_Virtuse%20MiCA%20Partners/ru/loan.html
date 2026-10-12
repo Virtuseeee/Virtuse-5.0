@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<!-- Note: frame-ancestors (restricting who may embed this page) only works via an HTTP response header, not a <meta> tag. If/when this page moves behind a server that can set custom headers, add:
-     Content-Security-Policy: frame-ancestors 'self' https://virtuse.com https://virtuse.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Loan &amp; Liquidity Copilot: продать или занять | Virtuse</title>
-<meta name="description" content="Сравните продажу Биткоина с займом под его залог: налог при продаже, проценты по займу и цена, при которой заём ликвидируют.">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="shortcut icon" href="../favicon.ico">
+<title>Loan &amp; Liquidity Copilot: продать Биткоин или занять | Virtuse</title>
+<meta name="description" content="Сравните продажу Биткоина с займом под его залог: налог, проценты, цена ликвидации и остаток в пяти ценовых сценариях. Не является финансовым советом.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/ru/loan.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/loan.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/loan.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/loan.html">
@@ -33,34 +31,266 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/loan.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/loan.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/loan.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Loan &amp; Liquidity Copilot: продать или занять | Virtuse">
-<meta property="og:description" content="Сравните продажу Биткоина с займом под его залог: налог при продаже, проценты по займу и цена, при которой заём ликвидируют.">
+<meta property="og:title" content="Loan &amp; Liquidity Copilot: продать Биткоин или занять">
+<meta property="og:description" content="Сравните продажу Биткоина с займом под его залог: налог, проценты, цена ликвидации и остаток в пяти ценовых сценариях. Не является финансовым советом.">
 <meta property="og:url" content="https://virtuse.com/ru/loan.html">
-<link rel="canonical" href="https://virtuse.com/ru/loan.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Loan &amp; Liquidity Copilot: продать Биткоин или занять">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loan &amp; Liquidity Copilot: продать или занять | Virtuse">
-<meta name="twitter:description" content="Сравните продажу Биткоина с займом под его залог: налог при продаже, проценты по займу и цена, при которой заём ликвидируют.">
+<meta name="twitter:title" content="Loan &amp; Liquidity Copilot: продать Биткоин или занять">
+<meta name="twitter:description" content="Сравните продажу Биткоина с займом под его залог: налог, проценты, цена ликвидации и остаток в пяти ценовых сценариях. Не является финансовым советом.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="robots" content="index, follow">
-<style id="tool-static-css">.tool-static{max-width:720px;margin:0 auto;padding:48px 20px 64px;line-height:1.6}.tool-static h1{font-size:28px;line-height:1.25;margin:0 0 16px}.tool-static h2{font-size:18px;margin:28px 0 6px}.tool-static p{margin:0 0 12px}html.js .tool-static{display:none}</style>
-<script>document.documentElement.classList.add('js')</script>
+<meta name="twitter:image:alt" content="Loan &amp; Liquidity Copilot: продать Биткоин или занять">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://virtuse.com/ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Loan & Liquidity Copilot",
+          "item": "https://virtuse.com/ru/loan.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Loan & Liquidity Copilot",
+      "url": "https://virtuse.com/ru/loan.html",
+      "inLanguage": "ru",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "dateModified": "2026-10-12"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое ликвидация?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Если цена Биткоина упадёт достаточно сильно, кредитор может продать часть или весь ваш залог, чтобы погасить заём. Вы можете потерять Биткоин, переданный в залог."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Откуда берутся налоговые ставки?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для каждой страны указана ставка со ссылкой на официальный источник и дата нашей проверки. Освобождения по сроку владения отмечены. Это не налоговая консультация."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Кто хранит залог?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Это зависит от кредитора. Прежде чем передать Биткоин в залог, проверьте собственные условия кредитора."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Это финансовый совет?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Это калькулятор для ваших собственных цифр. Он не говорит, продавать или занимать."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+<meta name="vb-cfo-stage" content="wait">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<script type="module" crossorigin src="../concierge-assets/badge-CZeCODiB.js"></script>
-<script type="module" crossorigin src="../concierge-assets/button-7SGobdtK.js"></script>
-<script type="module" crossorigin src="../concierge-assets/slider-Dngn6XJ0.js"></script>
-<script type="module" crossorigin src="../concierge-assets/triangle-alert-BONPnrVh.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-loan-T9bqUK0y.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/badge-Cv8WXJDB.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script>window.VB_I18N = {"openMenu": "Открыть меню", "closeMenu": "Закрыть меню", "soon": "Скоро", "new": "Новое", "latestBrief": "Последний Brief · ", "min": " мин", "coverImage": "Обложка: ", "badEmail": "Введите действительный адрес электронной почты.", "sending": "Отправка...", "subscribed": "Готово. Brief выходит в понедельник.", "error": "Что-то пошло не так. Попробуйте ещё раз.", "netError": "Ошибка сети. Попробуйте ещё раз.", "briefLangNote": " (на английском)"};</script>
+<script type="module" crossorigin src="../concierge-assets/utils-D_cZ8W0F.js"></script>
+<script type="module" crossorigin src="../concierge-assets/slider-CUc0BTl2.js"></script>
+<script type="module" crossorigin src="../concierge-assets/triangle-alert-D4ven5Z5.js"></script>
+<script type="module" crossorigin src="../concierge-assets/arrow-right-evfikLw8.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-loan-Cc9uHaCd.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/utils-CKEVrtYH.css">
 </head>
-<body>
-<div id="root"><main class="tool-static"><h1>Loan &amp; Liquidity Copilot: продать Биткоин или взять заём под его залог?</h1><p>Укажите, сколько у вас биткоинов, сколько денег нужно, соотношение займа к стоимости (LTV) и процентную ставку. Copilot ставит оба пути рядом: налог, который вы заплатили бы при продаже, и проценты, которые заплатите, если вместо этого возьмёте заём под залог биткоина.</p><p>Также показывает цену биткоина, при которой заём доходит до маржин-колла и может быть ликвидирован, и таблицу для разных ценовых сценариев. Цифры — это оценки, а не совет.</p><h2>Что он сравнивает?</h2><p>Продажу биткоина ради денег или заём под залог Биткоина: налог на прибыль при продаже, проценты за срок займа и сколько биткоина у вас останется.</p><h2>Что такое цена ликвидации?</h2><p>Цена биткоина, при которой кредитор может продать залог, чтобы погасить заём. Более низкий LTV отодвигает её дальше.</p><h2>Какую налоговую ставку он использует?</h2><p>Вы выбираете настройку для своей страны или вводите собственную ставку. Настройки — это ориентировочный обзор, а не налоговая консультация; проверьте их у налогового консультанта.</p><h2>Это финансовый совет?</h2><p>Нет. Copilot показывает цифры для обоих путей. Решение за вами, а Virtuse никогда не хранит ваш биткоин.</p></main></div>
+<body class="page-buy page-fee page-pf page-loan no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/ru/index.html" aria-label="Главная Virtuse">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Услуги</button>
+        <div class="nav-drop" id="nd-services"><a href="/ru/buy-bitcoin.html">Купить Биткоин</a><a href="/ru/secure.html">Хранение</a><a href="/ru/lending.html">Займы</a><a href="/ru/mining.html">Майнинг</a><a href="/ru/treasury.html">Treasury</a><a href="/ru/tax.html">Налоги</a><a href="/ru/bots.html">Боты</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Материалы</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/ru/blog.html">Блог</a><a href="/ru/bitcoin-data.html">Данные о Биткоине</a><a href="/ru/bitcoin-indeks-komissiy/">Индекс комиссий</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Инструменты</button>
+        <div class="nav-drop" id="nd-tools"><a href="/ru/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Скоро</span></a><a href="/ru/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/ru/stacking.html">Stacking Strategist</a><a href="/ru/loan.html" aria-current="page">Loan &amp; Liquidity Copilot</a><a href="/ru/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/ru/retirement-calculator.html">Пенсионный калькулятор</a></div>
+      </div>
+      <a class="nav-top" href="/ru/about.html">О нас</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Язык страницы: русский"><span aria-hidden="true">&#127479;&#127482;</span><span class="lang-code">RU</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/loan.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/loan.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/loan.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/loan.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/loan.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/loan.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/loan.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/loan.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/loan.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/loan.html" class="lang-opt active" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/ru/concierge.html?utm_source=concierge&amp;utm_medium=nav">Найти партнёров</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO + the calculator -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Loan & Liquidity Copilot</div>
+    <h1>Продать свой Биткоин <span class="h1-or">или занять под его залог?</span></h1>
+    <p class="sp-lead">Введите нужную сумму и Биткоин, который у вас есть. Вы увидите налог с продажи, стоимость займа, цену, при которой заём оказывается под угрозой, и что останется в пяти ценовых сценариях.</p>
+  </div>
+  <div class="pf-app st-app" id="plan">
+    <div id="root"><noscript><p class="pf-noscript">Для Loan & Liquidity Copilot нужен JavaScript. Вместо этого можно прочитать справочник «Продать или занять».</p></noscript></div>
+  </div>
+
+  <!-- 2. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>Как <span>это работает</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Шаг 01</span>
+          <h3>Введите свои цифры</h3>
+          <p>Нужная сумма, ваш Биткоин, условия займа и страна налогообложения.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Шаг 02</span>
+          <h3>Сравните оба пути</h3>
+          <p>Продажа означает налог сейчас. Заём означает проценты, и залог могут ликвидировать, если цена упадёт.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Шаг 03</span>
+          <h3>Посмотрите сценарии</h3>
+          <p>Пять ценовых траекторий показывают, что останется от вашего Биткоина в обоих случаях. Обе колонки исходят из того, что вы тратите деньги.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FAQ -->
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Вопросы <span>и ответы</span></h2></div></div>
+    <details open><summary>Что такое ликвидация?</summary><p>Если цена Биткоина упадёт достаточно сильно, кредитор может продать часть или весь ваш залог, чтобы погасить заём. Вы можете потерять Биткоин, переданный в залог.</p></details>
+    <details><summary>Откуда берутся налоговые ставки?</summary><p>Для каждой страны указана ставка со ссылкой на официальный источник и дата нашей проверки. Освобождения по сроку владения отмечены. Это не налоговая консультация.</p></details>
+    <details><summary>Кто хранит залог?</summary><p>Это зависит от кредитора. Прежде чем передать Биткоин в залог, проверьте собственные условия кредитора.</p></details>
+    <details><summary>Это финансовый совет?</summary><p>Нет. Это калькулятор для ваших собственных цифр. Он не говорит, продавать или занимать.</p></details>
+  </section>
+
+  <!-- 4. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Только Биткоин, каждый понедельник.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=ru">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Курьер Virtuse Brief на скутере доставляет выпуск от 5 октября 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Последний Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (на английском)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Читать выпуск →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Получите Brief. <span>Бесплатно.</span></h3>
+        <p>Рынок, регулирование, майнинг. Без токенов. Без пиара. Одно письмо каждый понедельник.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="loan_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Электронная почта</label>
+          <input id="email" name="email" type="email" placeholder="Электронная почта" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Получить Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Отписаться можно в любой момент. Не является советом. <a href="/news.html?utm_source=brief&amp;utm_medium=loan_brief" style="color:var(--muted)">Все выпуски и блог →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RELATED TOOLS -->
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Связанные <span>инструменты</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/ru/lending.html"><b>Займы под залог Биткоина</b><span>Партнёры по займам и их условия.</span></a><a class="gcard" href="/ru/bitcoin-nalogi/"><b>Налоговые справочники по Биткоину</b><span>Правила для 13 стран ЕС.</span></a><a class="gcard" href="/ru/bitcoin-prodat-ili-zanyat/"><b>Справочник «Продать или занять»</b><span>Плюсы и минусы простыми словами.</span></a><a class="gcard" href="/ru/stacking.html"><b>Stacking Strategist</b><span>Спланируйте сумму и ритм.</span></a><a class="gcard" href="/ru/concierge.html"><b>Partner Finder</b><span>Партнёры, которые подходят под ваши критерии.</span></a><a class="gcard" href="/ru/cfo.html"><b>Virtuse CFO</b><span>Биткоин-Treasury для компаний.</span></a></div>
+    <p class="tx-fine fi-disc">Залог по займу под Биткоин могут ликвидировать, если цена упадёт. Не является финансовым, налоговым или юридическим советом. Virtuse никогда не хранит ваши ключи или средства.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Услуги</h4><a href="/ru/buy-bitcoin.html">Купить Биткоин</a><a href="/ru/secure.html">Хранение</a><a href="/ru/mining.html">Майнинг</a><a href="/ru/lending.html">Займы</a><a href="/ru/treasury.html">Treasury</a><a href="/ru/tax.html">Налоги</a><a href="/ru/bots.html">Боты</a></div><div class="footer-col"><h4>Компания</h4><a href="/ru/about.html">О нас</a><a href="/ru/faq.html">FAQ</a></div><div class="footer-col"><h4>Инструменты</h4><a href="/ru/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Скоро</span></a><a href="/ru/concierge.html">Partner Finder</a><a href="/ru/stacking.html">Stacking Strategist</a><a href="/ru/loan.html">Loan &amp; Liquidity Copilot</a><a href="/ru/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/ru/retirement-calculator.html">Пенсионный калькулятор</a></div><div class="footer-col"><h4>Материалы</h4><a href="/news.html">Virtuse Brief</a><a href="/ru/blog.html">Блог</a><a href="/ru/bitcoin-data.html">Данные о Биткоине</a><a href="/ru/bitcoin-nalogi/">Налоги на Биткоин</a><a href="/ru/bitcoin-indeks-komissiy/">Индекс комиссий</a><a href="/ru/bitcoin-kalkulyator-dca/">DCA-калькулятор</a><a href="/ru/bitcoin-prodat-ili-zanyat/">Продать или занять</a><a href="/ru/bitcoin-nasledstvo/">Наследование</a></div><div class="footer-col"><h4>Информация</h4><a href="/ru/terms-and-conditions.html">Условия использования</a><a href="/ru/privacy-policy.html">Политика конфиденциальности</a><a href="/ru/aml-compliance.html">AML и комплаенс</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. Все права защищены.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, еженедельный дайджест от Virtuse. <a href="/news.html">Читать &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Языки"><a href="/loan.html" hreflang="en">English</a><a href="/sk/loan.html" hreflang="sk">Slovenčina</a><a href="/cs/loan.html" hreflang="cs">Čeština</a><a href="/de/loan.html" hreflang="de">Deutsch</a><a href="/pl/loan.html" hreflang="pl">Polski</a><a href="/hu/loan.html" hreflang="hu">Magyar</a><a href="/fr/loan.html" hreflang="fr">Français</a><a href="/es/loan.html" hreflang="es">Español</a><a href="/uk/loan.html" hreflang="uk">Українська</a><a href="/ru/loan.html" hreflang="ru" aria-current="page">Русский</a></nav>
+      <p class="legal">Virtuse, независимый хаб для сравнения. Он не хранит средства или ключи клиентов, не исполняет ордера и не даёт инвестиционных советов. Услуги предоставляют указанные партнёры по собственным лицензиям. Комиссии указаны так, как их публикует каждый партнёр, и могут меняться.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
+<script src="/concierge-launcher.js" defer></script>
 </body>
 </html>

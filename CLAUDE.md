@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-12) — Loan & Liquidity Copilot: math fixes, limits, sourced tax rates, redesign (branch `feat/loan-v2`, PR open; **staging only, not on production**)
+
+- Handover `HANDOVER-claude-loan.md`. Shells by `i18n-tools/loan/build_loan.py` (Partner Finder pattern; run after deploy.py); the app (`Loan.tsx`, `lib/loan.ts`) renders only the calculator.
+- Math (Ras decision 1): cash is spent in both columns; Sell net = remaining BTC value, Borrow net = all BTC value − loan − interest; sale grossed up so proceeds − tax = cash needed; warnings + max loan / max cash when holdings are too small; true minus "−€".
+- **Tax rates come only from `seo-build/data/tax-sources.json`** (official source + quote per country, checked 12 Oct 2026; `layer2-src/scripts/gen-tax-sources.mjs` → `src/lib/tax-sources.gen.ts` at build). Only `verified` countries show. **Slovakia is 19% there** (only income tax is officially sourced; the old 35% included a 16% health levy without an official source). Findings for the tax advisor in the JSON notes (CZ CZK 100k/40M rules, DE €1,000 allowance, BG 10% deemed expenses, AT pre-2021 rule unverified).
+- Limits: cash €1k–5M typed (slider to €1M), BTC 0.01–1,000, price ±70% around live mempool.space EUR price (fallback €74,000, 12 Oct 2026), LTV 10–70, APR 0–20, threshold 50–90 (default 70 "Example threshold. Each provider sets its own."). URL `?cash=&btc=&price=&ltv=&apr=&years=&country=&threshold=`.
+- Firefish CTA (no UTM) + NBS licence line with ESMA source + disclosure; risk warning above results; CFO card at cash ≥ €100k or ≥ 5 BTC (same wording as Stacking, utm_source=loan).
+
 ## Session status (2026-10-12) — Stacking Strategist redesign + limits up to €1,000,000 (main `837b6751`, PR #80; **live on production** — user ran `deploy_site.sh f532f3f0 837b6751`, 59/59 md5-verified, 17 old asset hashes gone)
 
 - Handover `HANDOVER-claude-stacking.md`. Shells built by `i18n-tools/stacking/build_stacking.py` (same pattern as Partner Finder; run after deploy.py). App (`layer2-src/src/pages/Stacking.tsx`, `lib/stacking.ts`) renders only the calculator.

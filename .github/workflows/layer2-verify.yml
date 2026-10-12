@@ -12,6 +12,7 @@ on:
     paths:
       - 'layer2-src/**'
       - 'seo-build/data/fee-schedule-live.json'
+      - 'seo-build/data/tax-sources.json'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-assets/**'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/**'
       - '.github/workflows/layer2-verify.yml'
@@ -19,6 +20,7 @@ on:
     paths:
       - 'layer2-src/**'
       - 'seo-build/data/fee-schedule-live.json'
+      - 'seo-build/data/tax-sources.json'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/concierge-assets/**'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/layer2/**'
   workflow_dispatch:

@@ -668,24 +668,28 @@
   "tr": "Склад у ЄС, швидка доставка"
  },
  {
-  "en": "Headroom to the margin call is only {0} % – a moderate drawdown puts the collateral at risk. A lower LTV or amount increases the headroom.",
-  "tr": "Запас до маржин-колу лише {0}%: помірне падіння ставить заставу під загрозу. Нижчий LTV або менша сума збільшують запас."
+  "en": "Headroom to the margin call is only {0} %. A moderate price drop puts the collateral at risk. A lower LTV or amount increases the headroom.",
+  "tr": "Запас до маржин-колу лише {0}%. Помірне падіння ціни ставить заставу під загрозу. Нижчий LTV або менша сума збільшують запас."
  },
  {
-  "en": "In {0} of {1} price scenarios the borrow column ends higher; in {2} the sell column does.",
-  "tr": "У {0} з {1} цінових сценаріїв вище завершується стовпець позики; у {2} – стовпець продажу."
+  "en": "In {0} of {1} price scenarios borrowing leaves more; in {2} selling does.",
+  "tr": "У {0} з {1} цінових сценаріїв більше залишає позика; у {2} більше залишає продаж."
  },
  {
-  "en": "Selling now: {0} tax on the gain, and {1} BTC leave your stack.",
-  "tr": "Продаж зараз: {0} податку з прибутку, і {1} BTC залишають ваш стек."
+  "en": "Selling now: {0} BTC leave your stack, and {1} of the proceeds goes to tax on the gain.",
+  "tr": "Продаж зараз: {0} BTC залишають ваш стек, а {1} виручки йде на податок з прибутку."
  },
  {
   "en": "Borrowing: {0} interest over {1} years ({2} % p.a.), with {3} BTC locked as collateral.",
   "tr": "Позика: {0} відсотків за {1} р. ({2}% річних), {3} BTC заблоковано як заставу."
  },
  {
-  "en": "The borrow column catches up with the sell column only if BTC rises by about {0} % per year or more.",
-  "tr": "Стовпець позики наздоганяє стовпець продажу, лише якщо BTC зростає приблизно на {0}% на рік або більше."
+  "en": "Borrowing leaves more only if BTC rises by about {0} % per year or more.",
+  "tr": "Позика залишає більше, лише якщо BTC зростає приблизно на {0}% на рік або більше."
+ },
+ {
+  "en": "Borrowing leaves more unless BTC falls by more than about {0} % per year.",
+  "tr": "Позика залишає більше, якщо тільки BTC не падає більш ніж приблизно на {0}% на рік."
  },
  {
   "en": "Liquidation risk is high at these settings",
@@ -696,36 +700,60 @@
   "tr": "Що показують цифри"
  },
  {
-  "en": "Germany (<1y held)",
-  "tr": "Німеччина (володіння < 1 року)"
+  "en": "as of 12 Oct 2026",
+  "tr": "станом на 12.10.2026"
  },
  {
-  "en": "0 % after 1-year holding",
-  "tr": "0% після 1 року володіння"
+  "en": "15% income tax (23% on the part of the tax base above 36x the average wage); exempt if held more than 3 years, or if total crypto sale proceeds in the year do not exceed CZK 100,000.",
+  "tr": "Податок на доходи 15% (23% з частини бази оподаткування понад 36 середніх зарплат); звільнення, якщо актив утримувався понад 3 роки або якщо загальний дохід від продажу криптоактивів за рік не перевищує 100 000 CZK."
  },
  {
-  "en": "Austria (bought from Mar 2021)",
-  "tr": "Австрія (куплено з березня 2021)"
+  "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
+  "tr": "Продаж криптовалюти = інший дохід (§ 8(1)(t)); прогресивно 19% до 43 983,32 €, 25% до 60 349,21 €, 30% до 75 010,32 €, 35% понад цю суму (2026); без звільнення за строком володіння; збитки не враховуються."
  },
  {
-  "en": "0 % after 1-year holding if bought before Mar 2021",
-  "tr": "0% після 1 року володіння, якщо куплено до березня 2021"
+  "en": "19% on income from paid disposal of virtual currency (PIT-38); no holding-period exemption; crypto-to-crypto swaps not taxed.",
+  "tr": "19% з доходу від платного відчуження віртуальної валюти (PIT-38); без звільнення за строком володіння; обмін криптовалюти на криптовалюту не оподатковується."
  },
  {
-  "en": "Croatia (<2y held)",
-  "tr": "Хорватія (володіння < 2 років)"
+  "en": "27.5% special rate for crypto acquired after 28 February 2021 (no holding exemption); crypto acquired up to 28 Feb 2021 ('Altbestand') stays under the old regime.",
+  "tr": "Спеціальна ставка 27,5% для криптоактивів, набутих після 28 лютого 2021 року (без звільнення за строком володіння); криптоактиви, набуті до 28 лютого 2021 року («Altbestand»), залишаються у старому режимі."
  },
  {
-  "en": "0 % after 2-year holding",
-  "tr": "0% після 2 років володіння"
+  "en": "Private sale taxed at the personal progressive rate (0–45%; 42% band for taxable income €69,879–277,825) if held 1 year or less; tax-free after more than 1 year; total private-sale gains under €1,000 a year are tax-free.",
+  "tr": "Приватний продаж оподатковується за особистою прогресивною ставкою (від 0 до 45%; ставка 42% для оподатковуваного доходу від 69 879 до 277 825 €), якщо актив утримувався 1 рік або менше; після понад 1 року звільнено; загальний прибуток від приватних продажів до 1 000 € на рік не оподатковується."
  },
  {
-  "en": "Spain (gains €6k–50k)",
-  "tr": "Іспанія (прибуток 6–50 тис. €)"
+  "en": "15% personal income tax on the annual net gain from crypto transactions; no holding-period exemption; small transactions exempt under minimum-wage-linked limits.",
+  "tr": "Податок на доходи фізичних осіб 15% з річного чистого прибутку від криптотранзакцій; без звільнення за строком володіння; дрібні транзакції звільнені в межах лімітів, прив'язаних до мінімальної зарплати."
  },
  {
-  "en": "Custom",
-  "tr": "Власний"
+  "en": "No income tax on capital gains from selling virtual currencies by a private individual, unless trading is carried on as a business activity.",
+  "tr": "Без податку на доходи з приросту капіталу від продажу віртуальних валют фізичною особою, якщо торгівля не ведеться як підприємницька діяльність."
+ },
+ {
+  "en": "12% tax on capital gains; gains on crypto acquired more than 2 years before the sale are not taxed (still reported on JOPPD).",
+  "tr": "Податок 12% на приріст капіталу; прибуток від криптоактивів, набутих більш ніж за 2 роки до продажу, не оподатковується (але все одно зазначається в JOPPD)."
+ },
+ {
+  "en": "16% on the gain from transfers of virtual currency made from 1 Jan 2026 (10% before); gains under 200 lei per transaction are exempt if annual gains do not exceed 600 lei; no holding exemption.",
+  "tr": "16% з прибутку від переказів віртуальної валюти, здійснених з 1 січня 2026 року (раніше 10%); прибуток до 200 леїв на транзакцію звільнений, якщо річний прибуток не перевищує 600 леїв; без звільнення за строком володіння."
+ },
+ {
+  "en": "10% tax on the annual tax base; crypto gains (net of the year's losses) are reduced by 10% deemed expenses, so the effective rate on the gain is about 9%; no holding-period exemption.",
+  "tr": "Податок 10% з річної бази оподаткування; прибуток від криптоактивів (за вирахуванням збитків за рік) зменшується на 10% нормативних витрат, тож ефективна ставка на прибуток становить близько 9%; без звільнення за строком володіння."
+ },
+ {
+  "en": "No tax on the sale itself; crypto is a Box 3 asset taxed at 36% on a deemed return (6.00% for 'other assets' in the 2026 provisional assessment), above a €59,357 tax-free allowance per person (2026).",
+  "tr": "Сам продаж не оподатковується; криптовалюта є активом Box 3, що оподатковується за ставкою 36% з умовного доходу (6,00% для «інших активів» у попередньому нарахуванні за 2026 рік) понад неоподатковувану суму 59 357 € на особу (2026)."
+ },
+ {
+  "en": "Flat tax (PFU) 31.4% = 12.8% income tax + 18.6% social charges on private-wealth crypto gains; option for the progressive scale; exempt if total disposal proceeds in the year are €305 or less; no holding exemption.",
+  "tr": "Фіксований податок (PFU) 31,4% = 12,8% податку на доходи + 18,6% соціальних внесків з прибутку від криптоактивів у приватному майні; можливий вибір прогресивної шкали; звільнення, якщо загальна виручка від продажів за рік становить 305 € або менше; без звільнення за строком володіння."
+ },
+ {
+  "en": "Gains go to the savings base: combined state + regional scale 19% to €6,000, 21% €6,000–50,000, 23% €50,000–200,000, 27% €200,000–300,000, 30% above; no holding exemption.",
+  "tr": "Прибуток належить до бази заощаджень: комбінована державна та регіональна шкала 19% до 6 000 €, 21% від 6 000 до 50 000 €, 23% від 50 000 до 200 000 €, 27% від 200 000 до 300 000 €, 30% понад цю суму; без звільнення за строком володіння."
  },
  {
   "en": "now",
@@ -1084,22 +1112,6 @@
   "tr": "Ключ C"
  },
  {
-  "en": "Loan & Liquidity Copilot",
-  "tr": "Loan & Liquidity Copilot"
- },
- {
-  "en": "Sell your bitcoin, or",
-  "tr": "Продати свій Біткоїн"
- },
- {
-  "en": "borrow against it?",
-  "tr": "чи позичити під його заставу?"
- },
- {
-  "en": "Both options side by side, with your own numbers. Compare the tax bill and lost upside of selling against the interest and liquidation risk of a Bitcoin-backed loan.",
-  "tr": "Обидва варіанти поруч, з вашими власними цифрами. Порівняйте податок і втрачене зростання при продажу з відсотками та ризиком ліквідації позики під заставу Біткоїна."
- },
- {
   "en": "Cash needed",
   "tr": "Потрібна готівка"
  },
@@ -1120,6 +1132,66 @@
   "tr": "Відсоткова ставка (річна)"
  },
  {
+  "en": "Horizon in years",
+  "tr": "Горизонт у роках"
+ },
+ {
+  "en": "Margin-call threshold (LTV)",
+  "tr": "Поріг маржин-колу (LTV)"
+ },
+ {
+  "en": "Your tax rate on gains",
+  "tr": "Ваша ставка податку на прибуток"
+ },
+ {
+  "en": "Taxable share of the sale (gain)",
+  "tr": "Оподатковувана частка продажу (прибуток)"
+ },
+ {
+  "en": "Not enough BTC",
+  "tr": "Недостатньо BTC"
+ },
+ {
+  "en": "BTC price change",
+  "tr": "Зміна ціни BTC"
+ },
+ {
+  "en": "If you sell",
+  "tr": "Якщо продати"
+ },
+ {
+  "en": "If you borrow",
+  "tr": "Якщо позичити"
+ },
+ {
+  "en": "Difference",
+  "tr": "Різниця"
+ },
+ {
+  "en": "Selling all your {0} raises at most {1} after tax.",
+  "tr": "Продаж усіх ваших {0} дасть після податку щонайбільше {1}."
+ },
+ {
+  "en": "Your {0} isn't enough for {1} at {2} % LTV. Max loan: {3}.",
+  "tr": "Ваших {0} недостатньо для {1} при LTV {2}%. Максимальна позика: {3}."
+ },
+ {
+  "en": "Live price {0}, as of {1}",
+  "tr": "Поточна ціна {0}, станом на {1}"
+ },
+ {
+  "en": "Live price unavailable. Default {0}, {1}.",
+  "tr": "Поточна ціна недоступна. Типове значення {0}, {1}."
+ },
+ {
+  "en": "Loading the live price…",
+  "tr": "Завантаження поточної ціни…"
+ },
+ {
+  "en": "Use live price",
+  "tr": "Використати поточну ціну"
+ },
+ {
   "en": "Horizon",
   "tr": "Горизонт"
  },
@@ -1128,20 +1200,80 @@
   "tr": "років"
  },
  {
-  "en": "Tax jurisdiction (gain rate)",
-  "tr": "Податкова юрисдикція (ставка на прибуток)"
+  "en": "Example threshold. Each provider sets its own.",
+  "tr": "Приклад порогу. Кожен постачальник встановлює власний."
  },
  {
-  "en": "Your tax rate on gains",
-  "tr": "Ваша ставка податку на прибуток"
+  "en": "Tax on the gain when you sell",
+  "tr": "Податок з прибутку під час продажу"
  },
  {
-  "en": "Untaxed cost basis share",
-  "tr": "Неоподатковувана частка собівартості"
+  "en": "Custom rate",
+  "tr": "Власна ставка"
  },
  {
-  "en": "Share of the sold value that is profit (taxed), vs. your original purchase price (not taxed).",
-  "tr": "Частка вартості продажу, що є прибутком (оподатковується), порівняно з початковою ціною купівлі (не оподатковується)."
+  "en": "Share of the sale price that is profit (taxed). The rest is your original purchase price (not taxed).",
+  "tr": "Частка ціни продажу, яка є прибутком (оподатковується). Решта є вашою початковою ціною купівлі (не оподатковується)."
+ },
+ {
+  "en": "A Bitcoin-backed loan can be liquidated if the price falls. You can lose part or all of your collateral. Interest and fees apply. Not financial, tax or legal advice.",
+  "tr": "Позику під заставу Біткоїна можуть ліквідувати, якщо ціна впаде. Ви можете втратити частину або всю заставу. Стягуються відсотки та комісії. Не є фінансовою, податковою чи юридичною порадою."
+ },
+ {
+  "en": "BTC left, at today's price",
+  "tr": "Залишок BTC за сьогоднішньою ціною"
+ },
+ {
+  "en": "Sell {0} at {1}",
+  "tr": "Продати {0} за {1}"
+ },
+ {
+  "en": "Tax on the gain: {0}",
+  "tr": "Податок з прибутку: {0}"
+ },
+ {
+  "en": "Cash left: {0}",
+  "tr": "Залишок готівки: {0}"
+ },
+ {
+  "en": "BTC left: {0}",
+  "tr": "Залишок BTC: {0}"
+ },
+ {
+  "en": "Future upside lost on the sold coins",
+  "tr": "Втрачене майбутнє зростання проданих монет"
+ },
+ {
+  "en": "If you borrow (Bitcoin-backed loan)",
+  "tr": "Якщо позичити (позика під заставу Біткоїна)"
+ },
+ {
+  "en": "All BTC minus loan and interest, at today's price",
+  "tr": "Усі BTC мінус позика й відсотки, за сьогоднішньою ціною"
+ },
+ {
+  "en": "Receive {0} and keep all {1}",
+  "tr": "Отримуєте {0} і зберігаєте всі {1}"
+ },
+ {
+  "en": "{0} locked as collateral at {1} % LTV",
+  "tr": "{0} заблоковано як заставу при LTV {1}%"
+ },
+ {
+  "en": "No sale, so no tax on a sale now",
+  "tr": "Без продажу, тож зараз немає податку з продажу"
+ },
+ {
+  "en": "Interest: {0} per year, {1} in total",
+  "tr": "Відсотки: {0} на рік, усього {1}"
+ },
+ {
+  "en": "To repay at the end: {0}",
+  "tr": "Повернути наприкінці: {0}"
+ },
+ {
+  "en": "Margin call if BTC falls to {0}",
+  "tr": "Маржин-кол, якщо BTC впаде до {0}"
  },
  {
   "en": "Liquidation watch",
@@ -1160,8 +1292,8 @@
   "tr": "Ціна маржин-колу"
  },
  {
-  "en": "at {0} % LTV threshold",
-  "tr": "при порозі LTV {0}%"
+  "en": "at a {0} % threshold",
+  "tr": "при порозі {0}%"
  },
  {
   "en": "Headroom",
@@ -1180,80 +1312,44 @@
   "tr": "до маржин-колу"
  },
  {
-  "en": "Bar: margin-call price relative to current price. Illustrative {0} % threshold – real terms depend on the loan provider.",
-  "tr": "Смуга: ціна маржин-колу відносно поточної ціни. Орієнтовний поріг {0}%: реальні умови залежать від кредитора."
+  "en": "Bar: margin-call price relative to today's price. The threshold is an example; each provider sets its own.",
+  "tr": "Смуга: ціна маржин-колу відносно сьогоднішньої ціни. Поріг наведено як приклад; кожен постачальник встановлює власний."
  },
  {
-  "en": "If you sell",
-  "tr": "Якщо продати"
+  "en": "Net position after 1 year",
+  "tr": "Чиста позиція через 1 рік"
  },
  {
-  "en": "Sell {0} BTC → {1}",
-  "tr": "Продаж {0} BTC → {1}"
+  "en": "Net position after {0} years",
+  "tr": "Чиста позиція через {0} р."
  },
  {
-  "en": "Tax on gains: −{0}",
-  "tr": "Податок на прибуток: −{0}"
+  "en": "Both columns assume you spend the cash.",
+  "tr": "Обидва стовпці припускають, що ви витрачаєте готівку."
  },
  {
-  "en": "Cash left: {0}",
-  "tr": "Залишок готівки: {0}"
+  "en": "Borrowing leaves {0} more",
+  "tr": "Позика: на {0} більше"
  },
  {
-  "en": "Future upside lost on the sold coins",
-  "tr": "Втрачене майбутнє зростання проданих монет"
+  "en": "Selling leaves {0} more",
+  "tr": "Продаж: на {0} більше"
  },
  {
-  "en": "If you borrow (Firefish-style)",
-  "tr": "Якщо позичити (як у Firefish)"
+  "en": "Not comparable",
+  "tr": "Не порівнюється"
  },
  {
-  "en": "Receive {0} – keep all {1} BTC",
-  "tr": "Отримайте {0} і збережіть усі {1} BTC"
- },
- {
-  "en": "No sale, no immediate capital-gains tax",
-  "tr": "Без продажу, без негайного податку на приріст капіталу"
- },
- {
-  "en": "Interest: {0}/yr → {1} total",
-  "tr": "Відсотки: {0} на рік → {1} загалом"
- },
- {
-  "en": "Margin call if BTC falls to {0}",
-  "tr": "Маржин-кол, якщо BTC впаде до {0}"
- },
- {
-  "en": "Scenario matrix · net position after {0}y",
-  "tr": "Матриця сценаріїв · чиста позиція через {0} р."
- },
- {
-  "en": "BTC change",
-  "tr": "Зміна BTC"
- },
- {
-  "en": "Sell net",
-  "tr": "Чисто при продажу"
- },
- {
-  "en": "Borrow net",
-  "tr": "Чисто при позиці"
- },
- {
-  "en": "Difference",
-  "tr": "Різниця"
- },
- {
-  "en": "Borrow",
-  "tr": "Позика"
- },
- {
-  "en": "Sell",
-  "tr": "Продаж"
+  "en": "If you sell: value of the BTC you keep. If you borrow: value of all your BTC minus the loan and the total interest.",
+  "tr": "Якщо продати: вартість BTC, які ви зберігаєте. Якщо позичити: вартість усіх ваших BTC мінус позика й загальні відсотки."
  },
  {
   "en": "This calculator shows both outcomes and does not recommend either. The decision is yours.",
   "tr": "Калькулятор показує обидва результати й не рекомендує жоден. Рішення за вами."
+ },
+ {
+  "en": "Open {0}",
+  "tr": "Відкрити {0}"
  },
  {
   "en": "Compare loan partners",
@@ -1264,8 +1360,12 @@
   "tr": "Перевірити податкові правила вашої країни"
  },
  {
-  "en": "Simplified educational model with illustrative rates and a fixed margin-call threshold – real loan terms depend on the provider. Not financial, tax or legal advice. Virtuse never holds your keys; collateral stays in multisig escrow.",
-  "tr": "Спрощена освітня модель з орієнтовними ставками і фіксованим порогом маржин-колу: реальні умови залежать від кредитора. Це не фінансова, податкова чи юридична порада. Virtuse ніколи не зберігає ваші ключі; застава залишається в ескроу на мультипідписі."
+  "en": "Managing a larger Bitcoin position? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
+  "tr": "Керуєте більшою позицією в Біткоїні? Virtuse CFO допомагає вести Біткоїн-казначейство: планувати, відстежувати й звітувати. Запуск 1 листопада; платні плани з січня: {0}/міс. або {1}/рік."
+ },
+ {
+  "en": "Get notified",
+  "tr": "Повідомити мене"
  },
  {
   "en": "Route",
@@ -1298,10 +1398,6 @@
  {
   "en": "Frequency",
   "tr": "Частота"
- },
- {
-  "en": "Horizon in years",
-  "tr": "Горизонт у роках"
  },
  {
   "en": "Annual return assumption",
@@ -1344,16 +1440,8 @@
   "tr": "Плануєте більшу суму? Virtuse CFO допомагає вести Біткоїн-казначейство: планувати, відстежувати й звітувати. Запуск 1 листопада; платні плани з січня: {0}/міс. або {1}/рік."
  },
  {
-  "en": "Get notified",
-  "tr": "Повідомити мене"
- },
- {
   "en": "Fee arbitrage",
   "tr": "Арбітраж комісій"
- },
- {
-  "en": "Open {0}",
-  "tr": "Відкрити {0}"
  },
  {
   "en": "\"Invested after fees per €1,000\" = how many euros of every €1,000 actually buy Bitcoin after the route's fee.",
@@ -1494,5 +1582,9 @@
  {
   "en": "Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
   "tr": "Податкові дані є орієнтовним оглядом на 2025 рік, і вони можуть бути застарілими; це не податкова, юридична чи фінансова порада. Інструменти спадкування мають освітній характер; для планування спадщини зверніться до фахівця. Virtuse ніколи не зберігає ваші ключі."
+ },
+ {
+  "en": "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.",
+  "tr": "Ваших BTC не вистачає на цю суму в жодному з варіантів. Зменште потрібну суму або додайте BTC, щоб порівняти обидва варіанти."
  }
 ]

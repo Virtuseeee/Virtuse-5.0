@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<!-- Note: frame-ancestors (restricting who may embed this page) only works via an HTTP response header, not a <meta> tag. If/when this page moves behind a server that can set custom headers, add:
-     Content-Security-Policy: frame-ancestors 'self' https://virtuse.com https://virtuse.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Loan &amp; Liquidity Copilot — prodat, nebo půjčit | Virtuse</title>
-<meta name="description" content="Porovnejte prodej Bitcoinu s půjčkou krytou Bitcoinem: daň při prodeji, úroky při půjčce a cenu, při které se půjčka likviduje.">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="shortcut icon" href="../favicon.ico">
+<title>Loan &amp; Liquidity Copilot: prodat Bitcoin, nebo si půjčit | Virtuse</title>
+<meta name="description" content="Porovnejte prodej Bitcoinu s půjčkou se zajištěním Bitcoinem: daň, úrok, likvidační cena a co zbude v pěti scénářích. Nejde o poradenství.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/cs/loan.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/loan.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/loan.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/loan.html">
@@ -33,34 +31,266 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/loan.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/loan.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/loan.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Loan &amp; Liquidity Copilot — prodat, nebo půjčit | Virtuse">
-<meta property="og:description" content="Porovnejte prodej Bitcoinu s půjčkou krytou Bitcoinem: daň při prodeji, úroky při půjčce a cenu, při které se půjčka likviduje.">
+<meta property="og:title" content="Loan &amp; Liquidity Copilot: prodat Bitcoin, nebo si proti němu půjčit">
+<meta property="og:description" content="Porovnejte prodej Bitcoinu s půjčkou se zajištěním Bitcoinem: daň, úrok, likvidační cena a co zbude v pěti scénářích. Nejde o poradenství.">
 <meta property="og:url" content="https://virtuse.com/cs/loan.html">
-<link rel="canonical" href="https://virtuse.com/cs/loan.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Loan &amp; Liquidity Copilot: prodat Bitcoin, nebo si proti němu půjčit">
 <meta property="og:locale" content="cs_CZ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loan &amp; Liquidity Copilot — prodat, nebo půjčit | Virtuse">
-<meta name="twitter:description" content="Porovnejte prodej Bitcoinu s půjčkou krytou Bitcoinem: daň při prodeji, úroky při půjčce a cenu, při které se půjčka likviduje.">
+<meta name="twitter:title" content="Loan &amp; Liquidity Copilot: prodat Bitcoin, nebo si proti němu půjčit">
+<meta name="twitter:description" content="Porovnejte prodej Bitcoinu s půjčkou se zajištěním Bitcoinem: daň, úrok, likvidační cena a co zbude v pěti scénářích. Nejde o poradenství.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="robots" content="index, follow">
-<style id="tool-static-css">.tool-static{max-width:720px;margin:0 auto;padding:48px 20px 64px;line-height:1.6}.tool-static h1{font-size:28px;line-height:1.25;margin:0 0 16px}.tool-static h2{font-size:18px;margin:28px 0 6px}.tool-static p{margin:0 0 12px}html.js .tool-static{display:none}</style>
-<script>document.documentElement.classList.add('js')</script>
+<meta name="twitter:image:alt" content="Loan &amp; Liquidity Copilot: prodat Bitcoin, nebo si proti němu půjčit">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Domů",
+          "item": "https://virtuse.com/cs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Loan & Liquidity Copilot",
+          "item": "https://virtuse.com/cs/loan.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Loan & Liquidity Copilot",
+      "url": "https://virtuse.com/cs/loan.html",
+      "inLanguage": "cs",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "dateModified": "2026-10-12"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Co je likvidace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pokud cena Bitcoinu klesne dostatečně nízko, věřitel může prodat část nebo celou vaši zástavu, aby splatil půjčku. Můžete přijít o Bitcoin, který jste dali do zástavy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Odkud pocházejí daňové sazby?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "U každé země je sazba s odkazem na oficiální zdroj a datem, kdy jsme ji ověřili. Osvobození podle doby držení jsou uvedena. Nejde o daňové poradenství."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kdo drží zástavu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To závisí na věřiteli. Než dáte Bitcoin do zástavy, ověřte si podmínky věřitele."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Je to investiční poradenství?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ne. Je to kalkulačka pro vaše vlastní čísla. Nedoporučuje vám, zda máte prodat, nebo si půjčit."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+<meta name="vb-cfo-stage" content="wait">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<script type="module" crossorigin src="../concierge-assets/badge-CZeCODiB.js"></script>
-<script type="module" crossorigin src="../concierge-assets/button-7SGobdtK.js"></script>
-<script type="module" crossorigin src="../concierge-assets/slider-Dngn6XJ0.js"></script>
-<script type="module" crossorigin src="../concierge-assets/triangle-alert-BONPnrVh.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-loan-T9bqUK0y.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/badge-Cv8WXJDB.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script>window.VB_I18N = {"openMenu": "Otevřít menu", "closeMenu": "Zavřít menu", "soon": "Brzy", "new": "Nové", "latestBrief": "Nejnovější Brief · ", "min": " min", "coverImage": "Titulní obrázek: ", "badEmail": "Zadejte platnou e-mailovou adresu.", "sending": "Odesílání...", "subscribed": "Jste přihlášeni. Brief vychází v pondělí.", "error": "Něco se pokazilo. Zkuste to prosím znovu.", "netError": "Chyba sítě. Zkuste to prosím znovu.", "briefLangNote": " (v angličtině)"};</script>
+<script type="module" crossorigin src="../concierge-assets/utils-D_cZ8W0F.js"></script>
+<script type="module" crossorigin src="../concierge-assets/slider-CUc0BTl2.js"></script>
+<script type="module" crossorigin src="../concierge-assets/triangle-alert-D4ven5Z5.js"></script>
+<script type="module" crossorigin src="../concierge-assets/arrow-right-evfikLw8.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-loan-Cc9uHaCd.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/utils-CKEVrtYH.css">
 </head>
-<body>
-<div id="root"><main class="tool-static"><h1>Loan &amp; Liquidity Copilot: prodat Bitcoin, nebo si na něj půjčit?</h1><p>Zadejte, kolik bitcoinu držíte, kolik hotovosti potřebujete, poměr úvěru k hodnotě (LTV) a úrokovou sazbu. Copilot postaví obě cesty vedle sebe: daň, kterou byste zaplatili při prodeji, a úroky, které byste zaplatili, pokud si místo toho půjčíte s bitcoinem jako zajištěním.</p><p>Ukáže také cenu bitcoinu, při které půjčka dosáhne margin callu a může být likvidována, a tabulku pro různé cenové scénáře. Čísla jsou odhady, ne poradenství.</p><h2>Co porovnává?</h2><p>Prodej bitcoinu pro získání hotovosti oproti půjčce kryté Bitcoinem: daň ze zisku při prodeji, úroky za dobu půjčky a kolik bitcoinu si ponecháte.</p><h2>Co je likvidační cena?</h2><p>Cena bitcoinu, při které může věřitel prodat vaše zajištění na splacení půjčky. Nižší LTV ji posouvá dál.</p><h2>Jakou daňovou sazbu používá?</h2><p>Vyberete si předvolbu pro svou zemi nebo zadáte vlastní sazbu. Předvolby jsou orientační přehled, ne daňové poradenství; ověřte si je u daňového poradce.</p><h2>Je to finanční poradenství?</h2><p>Ne. Copilot ukáže čísla pro obě cesty. Rozhodnutí je na vás a Virtuse nikdy nedrží váš bitcoin.</p></main></div>
+<body class="page-buy page-fee page-pf page-loan no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/cs/index.html" aria-label="Virtuse – domů">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Hlavní navigace">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Služby</button>
+        <div class="nav-drop" id="nd-services"><a href="/cs/buy-bitcoin.html">Koupit Bitcoin</a><a href="/cs/secure.html">Úschova</a><a href="/cs/lending.html">Půjčky</a><a href="/cs/mining.html">Těžba</a><a href="/cs/treasury.html">Treasury</a><a href="/cs/tax.html">Daně</a><a href="/cs/bots.html">Boti</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Vzdělávání</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/cs/blog.html">Blog</a><a href="/cs/bitcoin-data.html">Bitcoin data</a><a href="/cs/bitcoin-index-poplatku/">Index poplatků</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Nástroje</button>
+        <div class="nav-drop" id="nd-tools"><a href="/cs/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Brzy</span></a><a href="/cs/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/cs/stacking.html">Stacking Strategist</a><a href="/cs/loan.html" aria-current="page">Loan &amp; Liquidity Copilot</a><a href="/cs/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/cs/retirement-calculator.html">Důchodová kalkulačka</a></div>
+      </div>
+      <a class="nav-top" href="/cs/about.html">O nás</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky: čeština"><span aria-hidden="true">&#127464;&#127487;</span><span class="lang-code">CS</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/loan.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/loan.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/loan.html" class="lang-opt active" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/loan.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/loan.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/loan.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/loan.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/loan.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/loan.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/loan.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Otevřít menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/cs/concierge.html?utm_source=concierge&amp;utm_medium=nav">Najít partnery</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO + the calculator -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Loan & Liquidity Copilot</div>
+    <h1>Prodat svůj Bitcoin, <span class="h1-or">nebo si proti němu půjčit?</span></h1>
+    <p class="sp-lead">Zadejte, kolik peněz potřebujete a kolik Bitcoinu máte. Uvidíte daň při prodeji, náklady půjčky, cenu, při které se půjčka dostane do potíží, a co zbude v pěti cenových scénářích.</p>
+  </div>
+  <div class="pf-app st-app" id="plan">
+    <div id="root"><noscript><p class="pf-noscript">Loan & Liquidity Copilot potřebuje JavaScript. Místo toho si můžete přečíst průvodce Prodat, nebo si půjčit.</p></noscript></div>
+  </div>
+
+  <!-- 2. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>Jak <span>to funguje</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 01</span>
+          <h3>Zadejte svá čísla</h3>
+          <p>Kolik peněz potřebujete, kolik Bitcoinu máte, podmínky půjčky a zemi, ve které platíte daně.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 02</span>
+          <h3>Porovnejte obě cesty</h3>
+          <p>Prodej stojí daň hned. Půjčka stojí úrok a při poklesu ceny může být zástava zlikvidována.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Krok 03</span>
+          <h3>Prohlédněte si scénáře</h3>
+          <p>Pět cenových vývojů ukazuje, co vám v obou případech zbude z Bitcoinu. Oba sloupce předpokládají, že peníze utratíte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FAQ -->
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Otázky <span>a odpovědi</span></h2></div></div>
+    <details open><summary>Co je likvidace?</summary><p>Pokud cena Bitcoinu klesne dostatečně nízko, věřitel může prodat část nebo celou vaši zástavu, aby splatil půjčku. Můžete přijít o Bitcoin, který jste dali do zástavy.</p></details>
+    <details><summary>Odkud pocházejí daňové sazby?</summary><p>U každé země je sazba s odkazem na oficiální zdroj a datem, kdy jsme ji ověřili. Osvobození podle doby držení jsou uvedena. Nejde o daňové poradenství.</p></details>
+    <details><summary>Kdo drží zástavu?</summary><p>To závisí na věřiteli. Než dáte Bitcoin do zástavy, ověřte si podmínky věřitele.</p></details>
+    <details><summary>Je to investiční poradenství?</summary><p>Ne. Je to kalkulačka pro vaše vlastní čísla. Nedoporučuje vám, zda máte prodat, nebo si půjčit.</p></details>
+  </section>
+
+  <!-- 4. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Jen Bitcoin, každé pondělí.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=cs">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurýr Virtuse Brief na skútru doručuje vydání z 5. 10. 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Nejnovější Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (v angličtině)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Číst vydání →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Získejte Brief. <span>Zdarma.</span></h3>
+        <p>Trh, regulace, těžba. Žádné tokeny. Žádné PR. Jeden e-mail každé pondělí.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="loan_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">E-mailová adresa</label>
+          <input id="email" name="email" type="email" placeholder="E-mailová adresa" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Získat Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Odhlásit se můžete kdykoli. Nejde o poradenství. <a href="/news.html?utm_source=brief&amp;utm_medium=loan_brief" style="color:var(--muted)">Všechna vydání a blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RELATED TOOLS -->
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Související <span>nástroje</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/cs/lending.html"><b>Půjčky</b><span>Partneři pro půjčky a jejich podmínky.</span></a><a class="gcard" href="/cs/bitcoin-dane/"><b>Daně z Bitcoinu</b><span>Pravidla pro 13 zemí EU.</span></a><a class="gcard" href="/cs/bitcoin-prodat-nebo-pujcit/"><b>Prodat, nebo si půjčit</b><span>Výhody a nevýhody vysvětlené.</span></a><a class="gcard" href="/cs/stacking.html"><b>Stacking Strategist</b><span>Naplánujte si částku a rytmus.</span></a><a class="gcard" href="/cs/concierge.html"><b>Partner Finder</b><span>Partneři, kteří odpovídají vašim kritériím.</span></a><a class="gcard" href="/cs/cfo.html"><b>Virtuse CFO</b><span>Bitcoin treasury pro firmy.</span></a></div>
+    <p class="tx-fine fi-disc">Půjčka se zajištěním Bitcoinem může být při poklesu ceny zlikvidována. Nejde o finanční, daňové ani právní poradenství. Virtuse nikdy nedrží vaše klíče ani prostředky.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="/cs/buy-bitcoin.html">Koupit Bitcoin</a><a href="/cs/secure.html">Úschova</a><a href="/cs/mining.html">Těžba</a><a href="/cs/lending.html">Půjčky</a><a href="/cs/treasury.html">Treasury</a><a href="/cs/tax.html">Daně</a><a href="/cs/bots.html">Boti</a></div><div class="footer-col"><h4>Společnost</h4><a href="/cs/about.html">O nás</a><a href="/cs/faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="/cs/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Brzy</span></a><a href="/cs/concierge.html">Partner Finder</a><a href="/cs/stacking.html">Stacking Strategist</a><a href="/cs/loan.html">Loan &amp; Liquidity Copilot</a><a href="/cs/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/cs/retirement-calculator.html">Důchodová kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="/news.html">Virtuse Brief</a><a href="/cs/blog.html">Blog</a><a href="/cs/bitcoin-data.html">Bitcoin data</a><a href="/cs/bitcoin-dane/">Daně z Bitcoinu</a><a href="/cs/bitcoin-index-poplatku/">Index poplatků</a><a href="/cs/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/cs/bitcoin-prodat-nebo-pujcit/">Prodat, nebo si půjčit</a><a href="/cs/bitcoin-dedictvi/">Dědění</a></div><div class="footer-col"><h4>Právní informace</h4><a href="/cs/terms-and-conditions.html">Obchodní podmínky</a><a href="/cs/privacy-policy.html">Ochrana osobních údajů</a><a href="/cs/aml-compliance.html">AML a Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. Všechna práva vyhrazena.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, týdenní přehled od Virtuse. <a href="/news.html">Číst &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Jazyky"><a href="/loan.html" hreflang="en">English</a><a href="/sk/loan.html" hreflang="sk">Slovenčina</a><a href="/cs/loan.html" hreflang="cs" aria-current="page">Čeština</a><a href="/de/loan.html" hreflang="de">Deutsch</a><a href="/pl/loan.html" hreflang="pl">Polski</a><a href="/hu/loan.html" hreflang="hu">Magyar</a><a href="/fr/loan.html" hreflang="fr">Français</a><a href="/es/loan.html" hreflang="es">Español</a><a href="/uk/loan.html" hreflang="uk">Українська</a><a href="/ru/loan.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse je nezávislé srovnávací centrum. Nedrží prostředky ani klíče klientů, neprovádí pokyny a neposkytuje investiční poradenství. Služby poskytují uvedení partneři na základě vlastních licencí. Poplatky jsou uvedeny tak, jak je zveřejňuje každý partner, a mohou se změnit.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
+<script src="/concierge-launcher.js" defer></script>
 </body>
 </html>
