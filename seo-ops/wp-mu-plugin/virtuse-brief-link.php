@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Virtuse Brief link
  * Description: On WordPress stories that have a virtuse.com copy (listed in virtuse-story-canonical.json, see virtuse-story-canonical.php), shows a fixed bar at the top of the page: "Read the Brief on virtuse.com" linking to the story's virtuse.com page. Rollback: delete this file.
- * Version: 2.0
+ * Version: 2.1
  *
  * Must-use plugin (wp-content/mu-plugins/). No database writes, front end only
  * (never in wp-admin). Printed from wp_footer, which every theme calls, then
@@ -12,7 +12,8 @@
  * menus, reading-progress bars) down by the same amount, including ones that
  * only become fixed while scrolling. If the WordPress admin bar is shown, the
  * bar sits below it. The canonical link is handled by virtuse-story-canonical.php
- * and is not touched here. Needs virtuse-story-canonical.php (for the map).
+ * and is not touched here. Styles are inline style attributes: LiteSpeed Cache's
+ * CSS optimisation strips <style> blocks printed in the footer. Needs virtuse-story-canonical.php (for the map).
  *
  * Option B, not active (Ras decides): 301 the listed posts to virtuse.com.
  * add_action( 'template_redirect', function () {
@@ -42,13 +43,7 @@ add_action(
 		$sk    = ( false !== strpos( $map[ $id ], '://virtuse.com/sk/' ) );
 		$label = $sk ? 'Čítajte Brief na virtuse.com' : 'Read the Brief on virtuse.com';
 		?>
-<style id="vb-brief-bar-css">
-#vb-brief-bar{position:fixed;left:0;right:0;top:0;z-index:2147483000;margin:0;padding:10px 16px;background:#08090a;border-bottom:1px solid rgba(255,255,255,.12);text-align:center;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;box-sizing:border-box}
-#vb-brief-bar a{color:#f7931a;text-decoration:none}
-#vb-brief-bar a:hover,#vb-brief-bar a:focus{text-decoration:underline}
-@media print{#vb-brief-bar{display:none}}
-</style>
-<div id="vb-brief-bar" role="complementary" aria-label="Virtuse Brief"><a href="<?php echo esc_url( $map[ $id ] ); ?>"><?php echo esc_html( $label ); ?> &rarr;</a></div>
+<div id="vb-brief-bar" role="complementary" aria-label="Virtuse Brief" style="position:fixed;left:0;right:0;top:0;z-index:2147483000;margin:0;padding:10px 16px;background:#08090a;border-bottom:1px solid rgba(255,255,255,.12);text-align:center;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;box-sizing:border-box"><a href="<?php echo esc_url( $map[ $id ] ); ?>" style="color:#f7931a;text-decoration:none;font:inherit"><?php echo esc_html( $label ); ?> &rarr;</a></div>
 <script id="vb-brief-bar-js">
 (function () {
 	var bar = document.getElementById('vb-brief-bar');
