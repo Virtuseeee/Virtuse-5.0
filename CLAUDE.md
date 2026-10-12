@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-12) — Brief share preview per edition (news.html og:/twitter:)
+## Session status (2026-10-12) — Brief share preview per edition (news.html og:/twitter:) (main `f78545b9`; **live on production** — user ran `deploy_site.sh 3acfa833 f78545b9`, news.html + issues.json + og image md5-verified on virtuse.com)
 
 - **New edition → update `news/issues.json` → run `python3 i18n-tools/set_news_og.py --image` → deploy** (`news.html`, `news/issues.json`, `news/og/brief-YYYYMMDD.jpg`).
   - The script takes the newest non-essay issue.
