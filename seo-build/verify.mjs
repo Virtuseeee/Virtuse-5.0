@@ -237,7 +237,8 @@ const seoOutputs = [
 ];
 if (ORIGIN !== 'https://staging.virtuse.com') {
   for (const rel of seoOutputs) {
-    const t = fs.readFileSync(path.join(SITE, rel), 'utf8');
+    // the GTM loader skips staging on purpose (location.hostname!=='staging.virtuse.com')
+    const t = fs.readFileSync(path.join(SITE, rel), 'utf8').replace("location.hostname!=='staging.virtuse.com'", '');
     if (t.includes('staging.virtuse.com')) fail(`${rel} still contains staging.virtuse.com`);
   }
 }
@@ -254,8 +255,13 @@ if (!canonicalSample.includes(`property="og:url" content="${ORIGIN}/bitcoin-dca-
 const feeIndex = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'), 'utf8');
 if (!feeIndex.includes('Dataset')) fail('Fee Index missing Dataset schema');
 if (!feeIndex.includes('Article')) fail('Fee Index missing Article schema');
-const feeAsOfLabel = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'fee-schedule-live.json'), 'utf8')).asOf.replace(/^(\d{4})-Q(\d)$/, 'Q$2 $1');
-if (!feeIndex.includes(feeAsOfLabel)) fail(`Fee Index missing as-of date (${feeAsOfLabel})`);
+// The Fee Index pages are built by i18n-tools/fee-index/build_fee_index.py (not by generate.mjs).
+const feeChecked = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'fee-index.json'), 'utf8')).checked;
+const [fy, fm, fd] = feeChecked.split('-').map(Number);
+const feeCheckedLabel = `${fd} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][fm - 1]} ${fy}`;
+if (!feeIndex.includes(`Fees checked ${feeCheckedLabel}`)) fail(`Fee Index missing check date (${feeCheckedLabel}); run build_fee_index.py`);
+if ((feeIndex.match(/GTM-KXX4Q6WH/g) || []).length !== 1) fail('Fee Index must load GTM-KXX4Q6WH exactly once');
+if (fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/embed/index.html'), 'utf8').includes('GTM-')) fail('Fee Index embed must not load GTM');
 const feeArchive = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/2026-q3/index.html'), 'utf8');
 if (!feeArchive.includes('0.16%')) fail('Q3 archive must keep the frozen Q3 fees (Kraken 0.16%)');
 if (/RevenueBot/.test(feeIndex.replace(/Why is RevenueBot not ranked\?|RevenueBot charges no fee per purchase/g, ''))) fail('RevenueBot must not appear in the live Fee Index ranking');
@@ -320,12 +326,12 @@ if (!checaEs.includes('bitcoin-tax/czechia') || !checaEs.includes('fr/bitcoin-fi
 if (/\d [%€]/.test(stripTags(checaEs))) fail('ES republica-checa has a plain space before % or €');
 
 // Determinism: second generate should not change bytes of one page
-const before = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
+const before = fs.readFileSync(path.join(SITE, 'bitcoin-dca-calculator/index.html'));
 const { spawnSync } = await import('node:child_process');
 const rerun = spawnSync(process.execPath, ['generate.mjs'], { cwd: ROOT, encoding: 'utf8' });
 if (rerun.status !== 0) fail(`re-generate failed: ${rerun.stderr || rerun.stdout}`);
-const after = fs.readFileSync(path.join(SITE, 'bitcoin-fee-index/index.html'));
-if (!before.equals(after)) fail('generate is not deterministic (fee-index HTML changed)');
+const after = fs.readFileSync(path.join(SITE, 'bitcoin-dca-calculator/index.html'));
+if (!before.equals(after)) fail('generate is not deterministic (DCA HTML changed)');
 
 console.log(JSON.stringify({
   origin: ORIGIN,

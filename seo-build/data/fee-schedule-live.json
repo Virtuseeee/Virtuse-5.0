@@ -17,7 +17,7 @@
     },
     {
       "id": "bybit-eu",
-      "partner": "ByBit EU",
+      "partner": "Bybit EU",
       "method": "Spot trading",
       "pct": 0.0025,
       "fixed": 0,
