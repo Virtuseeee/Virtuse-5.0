@@ -1518,3 +1518,76 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
 @media (max-width: 1100px) { .bt-row { grid-template-columns: minmax(150px, 1.2fr) 1.4fr 1.6fr 100px; } }
 @media (max-width: 860px) { .bt-row { grid-template-columns: minmax(150px, 1.3fr) 1.5fr 100px; } }
 @media (max-width: 640px) { .bt-row { grid-template-columns: minmax(0, 1fr) auto; } }
+
+/* ===== BITCOIN DATA v2 (bitcoin-data.html, handover 2026-10-11d): live dashboard, one accent (orange) ===== */
+.page-data .buy-hero2 .eyebrow i { background: var(--orange); box-shadow: 0 0 0 4px rgba(247,147,26,.15); }
+.bd-keys { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 12px; width: min(1040px, 100%); margin: 40px auto 0; text-align: left; }
+.bd-m { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.bd-key { min-height: 128px; }
+.bd-l { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.bd-v { font-size: 28px; font-weight: 700; letter-spacing: -.01em; font-variant-numeric: tabular-nums; line-height: 1.15; overflow-wrap: anywhere; }
+.bd-price .bd-v { font-size: 34px; }
+.bd-s { font-size: 13px; color: #9aa3ad; }
+.bd-chg { font-style: normal; font-weight: 600; }
+.up { color: #3fb950; } .down { color: #f85149; }
+.bd-cur { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 999px; }
+.bd-cur button { background: none; border: 0; color: var(--muted); font: 600 11px var(--mono); padding: 3px 8px; border-radius: 999px; cursor: pointer; }
+.bd-cur button.on { background: rgba(255,255,255,.10); color: var(--text); }
+.sk { display: inline-block; width: 7ch; height: .9em; border-radius: 6px; background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.12), rgba(255,255,255,.05)); background-size: 200% 100%; animation: bdSk 1.2s linear infinite; vertical-align: middle; }
+@keyframes bdSk { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .sk { animation: none; } }
+.bd-na { font-size: 14px; font-weight: 500; color: #d29922; }
+.bd-src { margin: 14px 0 0; font-size: 13px; color: #9aa3ad; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.bd-src a { color: #c9d1d9; }
+.bd-src-top { justify-content: center; margin-top: 16px; }
+.bd-dot { width: 7px; height: 7px; border-radius: 50%; background: #3fb950; box-shadow: 0 0 0 3px rgba(63,185,80,.15); display: inline-block; }
+.bd-src.is-stale .bd-dot { background: #d29922; box-shadow: 0 0 0 3px rgba(210,153,34,.18); }
+.bd-src.is-stale .bd-time { color: #d29922; }
+.bd-src.is-err .bd-dot { background: #f85149; box-shadow: 0 0 0 3px rgba(248,81,73,.18); }
+.bd-retry { margin-left: 6px; background: none; border: 1px solid var(--line-strong); color: var(--text); border-radius: 999px; font: 600 12px var(--sans); padding: 3px 10px; cursor: pointer; }
+.bd-grid { display: grid; gap: 12px; }
+.bd-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.bd-market { grid-template-columns: 2fr 1fr; }
+.bd-stack { display: grid; gap: 12px; }
+.bd-chead { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.bd-chead .seg { margin: 0; }
+.bd-spark { width: 100%; height: 170px; display: block; }
+.bd-axis { display: flex; justify-content: space-between; font: 500 12px var(--mono); color: #9aa3ad; }
+.bd-net { grid-template-columns: 1fr 1.3fr 1.3fr 1.2fr; }
+.bd-card dl { margin: 6px 0 0; display: grid; gap: 8px; }
+.bd-card dl div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; border-top: 1px solid var(--line); padding-top: 8px; }
+.bd-card dt { color: #9aa3ad; } .bd-card dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.bd-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+.bd-bar i { display: block; height: 100%; width: 0; background: var(--orange); border-radius: inherit; transition: width .6s ease-out; }
+.bd-supply { grid-template-columns: 1.4fr 1fr; }
+.bd-links { margin: 14px 0 0; font-size: 14px; color: #9aa3ad; }
+.bd-links a { color: var(--text); text-underline-offset: 3px; }
+.bd-macro { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.bd-macro .bd-v { font-size: 30px; }
+.bd-note { margin: 14px 0 0; font-size: 13px; color: #9aa3ad; }
+.page-data #macro .hp-cta { margin-top: 24px; }
+.bd-charts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.bd-chart { position: relative; display: grid; gap: 6px; padding: 20px 52px 20px 22px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-decoration: none; color: var(--text); transition: border-color .15s, background .15s; }
+.bd-chart:hover { border-color: rgba(247,147,26,.4); background: var(--card-hover); }
+.bd-chart b { font-size: 16px; font-weight: 600; }
+.bd-chart span { font-size: 14px; color: #9aa3ad; }
+.bd-chart i { position: absolute; right: 20px; top: 22px; color: var(--muted); }
+.bd-chart i svg { width: 16px; height: 16px; }
+.bd-chart em { font: 500 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; font-style: normal; color: var(--orange); }
+.bd-disclaimer { margin: 24px 0 0; font-size: 13px; color: #9aa3ad; text-align: center; }
+.page-data section[id] { scroll-margin-top: calc(var(--nav-h, 64px) + 16px); }
+@media (min-width: 961px) { .page-data .buy-hero2 { padding-top: 48px; } .page-data .buy-hero2 h1 { margin-top: 14px; } .page-data .sp-lead { margin-top: 12px; } }
+@media (max-width: 1100px) { .bd-net { grid-template-columns: 1fr 1fr; } .bd-charts { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) { .bd-keys { grid-template-columns: 1fr 1fr; } .bd-market, .bd-supply { grid-template-columns: 1fr; } .bd-macro { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .page-data .buy-hero2 { padding-top: 28px; }
+  .bd-keys { margin-top: 24px; gap: 8px; }
+  .bd-m { padding: 14px; border-radius: 14px; }
+  .bd-key { min-height: 0; }
+  .bd-v, .bd-price .bd-v { font-size: 22px; }
+  .bd-l { font-size: 10.5px; flex-wrap: wrap; }
+  .bd-net, .bd-charts { grid-template-columns: 1fr; }
+  .bd-macro .bd-v { font-size: 22px; }
+  .bd-card { padding: 16px; }
+}
+.bd-feeseq { margin: 6px 0 0; font-size: 15px; font-weight: 600; } .bd-feeseq[hidden], .bd-fees dl[hidden] { display: none; }
