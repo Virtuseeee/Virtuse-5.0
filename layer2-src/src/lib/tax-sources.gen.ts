@@ -22,8 +22,8 @@ export const TAX_SOURCES: { checked: string; countries: TaxSourceRow[] } = {
     {
       "id": "sk",
       "name": "Slovakia",
-      "loanRate": 0.19,
-      "condition": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
+      "loanRate": 0.35,
+      "condition": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
       "source": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
       "verified": true
     },

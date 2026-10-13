@@ -43,13 +43,13 @@
     {
       "id": "sk",
       "name": "Slovakia",
-      "loanRate": 0.19,
-      "condition": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
+      "loanRate": 0.35,
+      "condition": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
       "source": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
       "sourceTitle": "Finančná správa: Sadzba dane z príjmov fyzickej osoby za rok 2026 (+ podpora.financnasprava.sk/293880 Príjmy z predaja kryptoaktív u nepodnikateľa)",
       "quote": "z ostatných príjmov (§ 8) 19 % z tej časti základu dane, ktorá nepresiahne sumu 43 983,32 eura vrátane",
       "verified": true,
-      "notes": "Update 2026-10-13: the 16% health insurance contribution is now verified separately in fields.healthLevy (VšZP + Act 580/2004 § 13(7), § 38ezk). Verified for the income tax part only. The crypto page (293880) confirms taxation under § 8(1)(t), that expenses above income are ignored, and that health/social insurance 'which the taxpayer must pay from this type of income' is deductible, but it does not state the health levy rate. The site's calculator uses 0.35 (19% + 16% health contributions); the 16% health levy was NOT verified from an official source (only press). Site's gainTax '19–35%' matches the 2026 bands; consider 0.19 (income tax) or 0.35 only once the health-insurance rate is confirmed (zákon 580/2004, VšZP/ÚDZS).",
+      "notes": "Update 2026-10-13: loanRate 0.35 = 19% lowest income tax band + 16% health insurance (fields.healthLevy, VšZP). Update 2026-10-13: the 16% health insurance contribution is now verified separately in fields.healthLevy (VšZP + Act 580/2004 § 13(7), § 38ezk). Verified for the income tax part only. The crypto page (293880) confirms taxation under § 8(1)(t), that expenses above income are ignored, and that health/social insurance 'which the taxpayer must pay from this type of income' is deductible, but it does not state the health levy rate. The site's calculator uses 0.35 (19% + 16% health contributions); the 16% health levy was NOT verified from an official source (only press). Site's gainTax '19–35%' matches the 2026 bands; consider 0.19 (income tax) or 0.35 only once the health-insurance rate is confirmed (zákon 580/2004, VšZP/ÚDZS).",
       "fields": {
         "gainTax": {
           "text": "19 to 35% income tax",
