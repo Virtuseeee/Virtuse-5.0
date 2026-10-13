@@ -352,6 +352,7 @@ const pl: Record<string, string> = {
   "Every route above costs the same or more than this one: there is nothing left to save by switching.": "Każda z powyższych dróg kosztuje tyle samo lub więcej: zmiana niczego by nie zaoszczędziła.",
   "Tax overview · 13 EU countries": "Przegląd podatkowy · 13 krajów UE",
   "Gain tax": "Podatek od zysku",
+  "Health insurance": "Ubezpieczenie zdrowotne",
   "Holding exemption": "Zwolnienie za posiadanie",
   "Filing": "Rozliczenie",
   "Good to know": "Warto wiedzieć",
@@ -367,6 +368,7 @@ const pl: Record<string, string> = {
   "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.": "Państwa BTC nie wystarczą na tę kwotę w żadnym z wariantów. Proszę zmniejszyć potrzebną kwotę lub dodać BTC, aby porównać obie opcje.",
   "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000": "Zwolnienie po 3 latach posiadania (do 40 mln CZK rocznie) lub gdy łączny przychód ze sprzedaży kryptowalut w roku nie przekracza 100 000 CZK",
   "19 to 35% income tax": "Od 19 do 35% podatku dochodowego",
+  "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer": "Składka zdrowotna 16% od zysku (8% przy niepełnosprawności), rozliczana co roku przez ubezpieczyciela zdrowotnego",
   "0% after a 1-year holding period; total gains under €1,000 a year are tax-free": "0% po roku posiadania; łączne zyski poniżej 1000 € rocznie są zwolnione z podatku",
   "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)": "Brak zwolnienia za okres posiadania; drobne transakcje do 10% płacy minimalnej każda są zwolnione (łącznie do jednej płacy minimalnej rocznie)",
   "Private gains are not taxed": "Prywatne zyski są wolne od podatku",
@@ -394,7 +396,7 @@ const pl: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "Stan na Q3 2026, sprawdzono {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Przepisy podatkowe szybko się zmieniają, a każda sytuacja jest indywidualna: warto skonsultować się z lokalnym doradcą podatkowym. Do raportów podatkowych z kryptowalut jedną z opcji jest Lukka.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "Virtuse może otrzymać wynagrodzenie za polecenie. Nie zmienia to przeglądu.",
-  "Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.": "Virtuse CFO startuje 1 listopada; płatne plany od stycznia: {0}/mies. lub {1}/rok.",
+  "Launches 1 November: {0}/month or {1}/year.": "Start 1 listopada: {0}/mies. lub {1}/rok.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Trzy klucze, dowolne dwa przenoszą środki. Brak pojedynczego punktu awarii: spadkobiercy odzyskają środki kluczem C i jednym z Państwa kluczy.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "W układzie 2 z 3 dwa klucze zostają u Państwa. Trzeci może przechowywać dostawca wspólnego przechowywania, np. Unchained."
 };

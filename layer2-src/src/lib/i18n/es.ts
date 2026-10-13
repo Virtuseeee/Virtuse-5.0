@@ -352,6 +352,7 @@ const es: Record<string, string> = {
   "Every route above costs the same or more than this one: there is nothing left to save by switching.": "Todas las opciones anteriores cuestan lo mismo o más que esta: cambiar no le ahorraría nada.",
   "Tax overview · 13 EU countries": "Resumen fiscal · 13 países de la UE",
   "Gain tax": "Impuesto sobre ganancias",
+  "Health insurance": "Seguro de salud",
   "Holding exemption": "Exención por tenencia",
   "Filing": "Declaración",
   "Good to know": "Conviene saber",
@@ -367,6 +368,7 @@ const es: Record<string, string> = {
   "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.": "Sus BTC no bastan para este importe en ninguno de los dos casos. Reduzca el efectivo necesario o añada BTC para comparar ambas opciones.",
   "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000": "Exento tras 3 años de tenencia (hasta 40 millones de CZK al año), o si el total de ingresos por ventas de cripto en el año no supera 100.000 CZK",
   "19 to 35% income tax": "Impuesto sobre la renta del 19 al 35 %",
+  "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer": "Cotizaciones al seguro de salud del 16 % sobre la ganancia (8 % con discapacidad), liquidadas cada año por la aseguradora de salud",
   "0% after a 1-year holding period; total gains under €1,000 a year are tax-free": "0 % tras 1 año de tenencia; las ganancias totales inferiores a 1000 € al año están exentas",
   "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)": "Sin exención por periodo de tenencia; las operaciones pequeñas de hasta el 10 % del salario mínimo cada una están exentas (hasta un salario mínimo al año en total)",
   "Private gains are not taxed": "Las ganancias privadas están exentas",
@@ -394,7 +396,7 @@ const es: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "Datos del T3 2026, verificados el {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Las normas fiscales cambian rápido y su situación es individual: consúltelo con un asesor fiscal local. Para informes fiscales cripto, Lukka es una opción.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "Virtuse puede recibir una comisión por recomendación. Eso no cambia el resumen.",
-  "Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.": "Virtuse CFO se lanza el 1 de noviembre; planes de pago desde enero: {0}/mes o {1}/año.",
+  "Launches 1 November: {0}/month or {1}/year.": "Se lanza el 1 de noviembre: {0}/mes o {1}/año.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Tres claves y cualquier par de ellas mueve los fondos. Sin punto único de fallo: sus herederos pueden recuperar los fondos con la clave C y una de las suyas.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "En una configuración 2 de 3, usted conserva dos claves. Un proveedor de custodia colaborativa como Unchained puede tener la tercera."
 };

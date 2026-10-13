@@ -118,15 +118,17 @@ export const TAX_SOURCES: { checked: string; countries: TaxSourceRow[] } = {
   ]
 };
 
-// Tax Agent: official source per card (gain tax / holding exemption / filing).
+// Tax Agent: official source per card (gain tax / holding exemption / filing,
+// plus optional health insurance for countries that have it).
 // checked = fieldsChecked (YYYY-MM-DD). An empty source means "no source".
 export type TaxField = 'gainTax' | 'exemption' | 'filing';
+export type TaxOptionalField = 'healthLevy';
 export interface TaxFieldSource {
   source: string;
   checked: string;
 }
 
-export const TAX_FIELD_SOURCES: { checked: string; countries: Record<string, Record<TaxField, TaxFieldSource>> } = {
+export const TAX_FIELD_SOURCES: { checked: string; countries: Record<string, Record<TaxField, TaxFieldSource> & Partial<Record<TaxOptionalField, TaxFieldSource>>> } = {
   "checked": "2026-10-13",
   "countries": {
     "cz": {
@@ -154,6 +156,10 @@ export const TAX_FIELD_SOURCES: { checked: string; countries: Record<string, Rec
       },
       "filing": {
         "source": "https://podpora.financnasprava.sk/516395-Povinnos%C5%A5-poda%C5%A5-da%C5%88ov%C3%A9-priznanie-k-dani-z-pr%C3%ADjmov-FO-za-rok-2026",
+        "checked": "2026-10-13"
+      },
+      "healthLevy": {
+        "source": "https://www.vszp.sk/platitelia/platenie-poistneho/oznamenia-zmeny/zmeny-od-01-01.2026/",
         "checked": "2026-10-13"
       }
     },

@@ -387,6 +387,8 @@
     },
     "sk": {
       "gainTax": "19 bis 35 % Einkommensteuer",
+      "healthLevy": "16 % Krankenversicherungsbeiträge auf den Gewinn (8 % bei Behinderung), jährlich von der Krankenkasse abgerechnet",
+      "healthLevyShort": "16 % Krankenversicherungsbeiträge",
       "exemption": "Keine Befreiung nach Haltedauer; jeder Verkauf und Krypto-Tausch ist steuerpflichtig",
       "filing": "Jährliche Einkommensteuererklärung (Typ B), fällig am 31. März",
       "note": "Ein Satz von 7 % und eine Befreiung nach 1 Jahr wurden vor Inkrafttreten gestrichen. Ein Nettoverlust aus Krypto mindert keine anderen Einkünfte."
@@ -519,6 +521,8 @@
     },
     "sk": {
       "gainTax": "19 až 35 % daň z príjmov",
+      "healthLevy": "Zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí), zúčtuje ich zdravotná poisťovňa v ročnom zúčtovaní",
+      "healthLevyShort": "16 % zdravotné odvody",
       "exemption": "Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje",
       "filing": "Daňové priznanie fyzickej osoby typ B, do 31. marca",
       "note": "Sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť. Celková strata z kryptomien neznižuje iné príjmy."
@@ -649,6 +653,8 @@
     },
     "sk": {
       "gainTax": "19 až 35 % daň z příjmů",
+      "healthLevy": "Zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení), vyúčtuje ho zdravotní pojišťovna v ročním zúčtování",
+      "healthLevyShort": "16 % zdravotní pojištění",
       "exemption": "Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní",
       "filing": "Daňové přiznání fyzické osoby typu B, do 31. března",
       "note": "Sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti. Celková ztráta z kryptoměn nesnižuje jiné příjmy."
@@ -791,6 +797,8 @@
     },
     "sk": {
       "gainTax": "Od 19 do 35% podatku dochodowego",
+      "healthLevy": "Składka zdrowotna 16% od zysku (8% przy niepełnosprawności), rozliczana co roku przez ubezpieczyciela zdrowotnego",
+      "healthLevyShort": "16% składki zdrowotnej",
       "exemption": "Brak zwolnienia za okres posiadania; każda sprzedaż i wymiana krypto na krypto jest opodatkowana",
       "filing": "Roczne zeznanie podatkowe typu B, do 31 marca",
       "note": "Stawkę 7% i zwolnienie po roku zniesiono przed wejściem w życie. Strata netto z kryptowalut nie pomniejsza innych dochodów."
@@ -918,6 +926,8 @@
     },
     "sk": {
       "gainTax": "19 és 35% közötti jövedelemadó",
+      "healthLevy": "16% egészségbiztosítási járulék a nyereség után (fogyatékosság esetén 8%), az egészségbiztosító évente számolja el",
+      "healthLevyShort": "16% egészségbiztosítási járulék",
       "exemption": "Nincs tartási idő utáni mentesség; minden eladás és kripto-kripto csere adóköteles",
       "filing": "Éves személyi jövedelemadó-bevallás (B típus), március 31-ig",
       "note": "A 7%-os kulcsot és az 1 év utáni mentességet hatálybalépés előtt eltörölték. A kriptóból származó nettó veszteség nem csökkenti az egyéb jövedelmet."
@@ -1060,6 +1070,8 @@
     },
     "sk": {
       "gainTax": "Від 19 до 35% податку на доходи",
+      "healthLevy": "Внески на медичне страхування 16% з прибутку (8% для осіб з інвалідністю), щорічний розрахунок проводить медична страхова компанія",
+      "healthLevyShort": "16% внесків на медичне страхування",
       "exemption": "Звільнення за строком володіння немає; кожен продаж і обмін криптовалюти на криптовалюту оподатковується",
       "filing": "Щорічна декларація фізичної особи (тип B), до 31 березня",
       "note": "Ставку 7% і звільнення після 1 року скасували до набрання чинності. Чистий збиток від криптовалют не зменшує інші доходи."
@@ -1202,6 +1214,8 @@
     },
     "sk": {
       "gainTax": "Подоходный налог от 19 до 35%",
+      "healthLevy": "Взносы на медицинское страхование 16% с прибыли (8% для лиц с инвалидностью), ежегодный расчёт проводит медицинская страховая компания",
+      "healthLevyShort": "16% взносов на медицинское страхование",
       "exemption": "Освобождения по сроку владения нет; каждая продажа и обмен криптовалюты на криптовалюту облагаются налогом",
       "filing": "Ежегодная декларация физического лица (тип B), до 31 марта",
       "note": "Ставку 7% и освобождение после 1 года отменили до вступления в силу. Чистый убыток от криптовалют не уменьшает другие доходы."
@@ -1344,6 +1358,8 @@
     },
     "sk": {
       "gainTax": "Impôt sur le revenu de 19 à 35 %",
+      "healthLevy": "Cotisations d'assurance maladie de 16 % sur le gain (8 % en cas de handicap), régularisées chaque année par l'assureur santé",
+      "healthLevyShort": "16 % de cotisations d'assurance maladie",
       "exemption": "Aucune exonération liée à la durée de détention ; chaque vente et chaque échange crypto contre crypto est imposable",
       "filing": "Déclaration annuelle de revenus (type B), avant le 31 mars",
       "note": "Le taux de 7 % et l'exonération après 1 an ont été supprimés avant leur entrée en vigueur. Une perte nette sur crypto ne réduit pas les autres revenus."
@@ -1475,6 +1491,8 @@
     },
     "sk": {
       "gainTax": "Impuesto sobre la renta del 19 al 35 %",
+      "healthLevy": "Cotizaciones al seguro de salud del 16 % sobre la ganancia (8 % con discapacidad), liquidadas cada año por la aseguradora de salud",
+      "healthLevyShort": "16 % de cotizaciones al seguro de salud",
       "exemption": "Sin exención por tiempo de tenencia; cada venta y cada permuta entre criptoactivos tributa",
       "filing": "Declaración anual de la renta (tipo B), hasta el 31 de marzo",
       "note": "El tipo del 7 % y la exención tras 1 año se suprimieron antes de entrar en vigor. Una pérdida neta en cripto no reduce otras rentas."

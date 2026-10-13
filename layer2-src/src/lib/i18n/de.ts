@@ -352,6 +352,7 @@ const de: Record<string, string> = {
   "Every route above costs the same or more than this one: there is nothing left to save by switching.": "Jeder andere Weg oben kostet gleich viel oder mehr: Ein Wechsel spart hier nichts mehr.",
   "Tax overview · 13 EU countries": "Steuerübersicht · 13 EU-Länder",
   "Gain tax": "Steuer auf Gewinne",
+  "Health insurance": "Krankenversicherung",
   "Holding exemption": "Befreiung nach Haltedauer",
   "Filing": "Erklärung",
   "Good to know": "Gut zu wissen",
@@ -367,6 +368,7 @@ const de: Record<string, string> = {
   "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.": "Ihre BTC reichen für diesen Betrag in keinem der beiden Fälle. Verringern Sie den benötigten Betrag oder erhöhen Sie den Bestand, um beide Optionen zu vergleichen.",
   "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000": "Steuerfrei nach 3 Jahren Haltedauer (bis 40 Mio. CZK pro Jahr) oder wenn die gesamten Krypto-Veräußerungserlöse im Jahr höchstens 100.000 CZK betragen",
   "19 to 35% income tax": "19 bis 35 % Einkommensteuer",
+  "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer": "16 % Krankenversicherungsbeiträge auf den Gewinn (8 % bei Behinderung), jährlich von der Krankenkasse abgerechnet",
   "0% after a 1-year holding period; total gains under €1,000 a year are tax-free": "0 % nach 1 Jahr Haltedauer; Gewinne unter 1.000 € im Jahr insgesamt sind steuerfrei (Freigrenze)",
   "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)": "Keine Befreiung nach Haltedauer; Kleintransaktionen bis je 10 % des Mindestlohns sind steuerfrei (insgesamt bis zu einem Mindestlohn pro Jahr)",
   "Private gains are not taxed": "Private Gewinne sind steuerfrei",
@@ -394,7 +396,7 @@ const de: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "Stand Q3 2026, geprüft am {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Steuerregeln ändern sich schnell, und Ihre Situation ist individuell. Prüfen Sie sie daher mit einem Steuerberater vor Ort. Für Krypto-Steuerberichte ist Lukka eine Möglichkeit.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "Virtuse kann eine Empfehlungsprovision erhalten. Die Übersicht ändert das nicht.",
-  "Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.": "Virtuse CFO startet am 1. November; kostenpflichtige Pläne ab Januar: {0}/Monat oder {1}/Jahr.",
+  "Launches 1 November: {0}/month or {1}/year.": "Startet am 1. November: {0}/Monat oder {1}/Jahr.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Drei Schlüssel, zwei beliebige bewegen die Gelder. Kein Single Point of Failure, und Ihre Erben können mit Schlüssel C plus einem Ihrer Schlüssel wiederherstellen.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "Bei einem 2-von-3-Setup behalten Sie zwei Schlüssel. Den dritten kann ein Anbieter für kollaborative Verwahrung wie Unchained halten."
 };

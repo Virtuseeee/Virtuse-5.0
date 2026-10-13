@@ -20,7 +20,7 @@ import {
 } from '@/lib/tax';
 import type { CountryTax } from '@/lib/tax';
 import { TAX_FIELD_SOURCES } from '@/lib/tax-sources.gen';
-import type { TaxField } from '@/lib/tax-sources.gen';
+import type { TaxField, TaxOptionalField } from '@/lib/tax-sources.gen';
 import { fmtDate, fmtEur, getLang, t, tv, L } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
 import { ResultCaptureForm } from '@/components/CaptureForm';
@@ -118,8 +118,14 @@ export default function Tax() {
         ? { border: 'border-line-strong', bg: 'bg-white/5', text: 'text-bitcoin', bar: '#F7931A' }
         : { border: 'border-emerald-400/30', bg: 'bg-emerald-400/5', text: 'text-emerald-400', bar: '#34d399' };
 
-  const fieldLabel: Record<TaxField, string> = {
+  // Cards: gain tax, then health insurance where the country has it (Slovakia), exemption, filing.
+  const cards: (TaxField | TaxOptionalField)[] =
+    country && sources && country.healthLevy && sources.healthLevy?.source
+      ? ['gainTax', 'healthLevy', 'exemption', 'filing']
+      : FIELDS;
+  const fieldLabel: Record<TaxField | TaxOptionalField, string> = {
     gainTax: t(lang, 'Gain tax', 'Daň zo zisku', 'Daň ze zisku'),
+    healthLevy: t(lang, 'Health insurance', 'Zdravotné odvody', 'Zdravotní pojištění'),
     exemption: t(lang, 'Holding exemption', 'Oslobodenie podľa držania', 'Osvobození podle držení'),
     filing: t(lang, 'Filing', 'Priznanie', 'Přiznání'),
   };
@@ -150,21 +156,26 @@ export default function Tax() {
         </div>
 
         {country && sources ? (
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {FIELDS.map((f) => (
+          <div className={`mt-5 grid gap-4 sm:grid-cols-2 ${cards.length > 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}>
+            {cards.map((f) => {
+              const text = country[f];
+              const src = sources[f];
+              if (!text || !src) return null;
+              return (
               <div key={f} className="flex min-w-0 flex-col rounded-xl border border-line bg-white/5 p-4">
                 <div className="text-[11px] uppercase tracking-wide text-ink-muted">{fieldLabel[f]}</div>
-                <div className="mt-1 break-words text-sm font-semibold leading-snug text-ink">{L(country[f], lang)}</div>
+                <div className="mt-1 break-words text-sm font-semibold leading-snug text-ink">{L(text, lang)}</div>
                 <div className="mt-auto pt-3 text-[11px] text-ink-muted">
-                  <a href={sources[f].source} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
+                  <a href={src.source} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
                     {t(lang, 'Source', 'Zdroj', 'Zdroj')}
                   </a>
                   {', '}
-                  {tv(lang, 'checked {0}', 'overené {0}', 'ověřeno {0}', [fmtDate(sources[f].checked, lang)])}
+                  {tv(lang, 'checked {0}', 'overené {0}', 'ověřeno {0}', [fmtDate(src.checked, lang)])}
                 </div>
               </div>
-            ))}
-            <div className="min-w-0 rounded-xl border border-line bg-white/5 p-4">
+              );
+            })}
+            <div className={`min-w-0 rounded-xl border border-line bg-white/5 p-4 ${cards.length > 3 ? 'sm:col-span-2' : ''}`}>
               <div className="text-[11px] uppercase tracking-wide text-ink-muted">{t(lang, 'Good to know', 'Dobré vedieť', 'Dobré vědět')}</div>
               <div className="mt-1 break-words text-xs leading-relaxed text-ink">{L(country.note, lang)}</div>
             </div>
@@ -203,10 +214,12 @@ export default function Tax() {
       {/* ── VIRTUSE CFO ── */}
       <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="min-w-0 text-sm leading-relaxed text-ink">
+          <span className="font-semibold">Virtuse CFO</span>
+          <br />
           {tv(lang,
-            'Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.',
-            'Virtuse CFO sa spúšťa 1. novembra; platené plány od januára: {0}/mesiac alebo {1}/rok.',
-            'Virtuse CFO se spouští 1. listopadu; placené plány od ledna: {0}/měsíc nebo {1}/rok.',
+            'Launches 1 November: {0}/month or {1}/year.',
+            'Spúšťa sa 1. novembra: {0}/mesiac alebo {1}/rok.',
+            'Spouští se 1. listopadu: {0}/měsíc nebo {1}/rok.',
             [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
         </p>
         <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>

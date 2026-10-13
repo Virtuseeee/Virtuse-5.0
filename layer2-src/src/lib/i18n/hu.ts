@@ -352,6 +352,7 @@ const hu: Record<string, string> = {
   "Every route above costs the same or more than this one: there is nothing left to save by switching.": "A fenti utak mindegyike ugyanannyiba vagy többe kerül: váltással semmit sem takarítana meg.",
   "Tax overview · 13 EU countries": "Adóáttekintés · 13 uniós ország",
   "Gain tax": "Nyereségadó",
+  "Health insurance": "Egészségbiztosítás",
   "Holding exemption": "Tartási mentesség",
   "Filing": "Bevallás",
   "Good to know": "Jó tudni",
@@ -367,6 +368,7 @@ const hu: Record<string, string> = {
   "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.": "A BTC-állománya egyik esetben sem elég ehhez az összeghez. Csökkentse a szükséges összeget, vagy növelje az állományt a két lehetőség összehasonlításához.",
   "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000": "3 év tartás után adómentes (évi 40 millió CZK-ig), vagy ha a kriptoeladások éves bevétele összesen legfeljebb 100 000 CZK",
   "19 to 35% income tax": "19 és 35% közötti jövedelemadó",
+  "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer": "16% egészségbiztosítási járulék a nyereség után (fogyatékosság esetén 8%), az egészségbiztosító évente számolja el",
   "0% after a 1-year holding period; total gains under €1,000 a year are tax-free": "0% 1 év tartás után; az évi összesen 1000 € alatti nyereség adómentes",
   "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)": "Nincs tartási idő utáni mentesség; a minimálbér 10%-át egyenként meg nem haladó kisértékű ügyletek adómentesek (évente összesen legfeljebb egy havi minimálbérig)",
   "Private gains are not taxed": "A magánnyereség adómentes",
@@ -394,7 +396,7 @@ const hu: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "Állapot: 2026 Q3, ellenőrizve: {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Az adószabályok gyorsan változnak, és minden helyzet egyedi: egyeztessen helyi adótanácsadóval. Kriptoadó-jelentésekhez az egyik lehetőség a Lukka.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "A Virtuse ajánlói díjat kaphat. Ez nem változtat az áttekintésen.",
-  "Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.": "A Virtuse CFO november 1-jén indul; fizetős csomagok januártól: {0}/hó vagy {1}/év.",
+  "Launches 1 November: {0}/month or {1}/year.": "November 1-jén indul: {0}/hó vagy {1}/év.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Három kulcs, bármelyik kettő mozgatja a pénzt. Nincs egyetlen hibapont: az örökösök a C kulccsal és az Ön egyik kulcsával hozzáférnek.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "A 2 a 3-ból felállásban két kulcs Önnél marad. A harmadikat egy közös letétkezelési szolgáltató, például az Unchained őrizheti."
 };

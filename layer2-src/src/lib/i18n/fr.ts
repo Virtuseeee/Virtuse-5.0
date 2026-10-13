@@ -352,6 +352,7 @@ const fr: Record<string, string> = {
   "Every route above costs the same or more than this one: there is nothing left to save by switching.": "Toutes les options ci-dessus coûtent autant ou plus que celle-ci : changer ne vous ferait rien économiser.",
   "Tax overview · 13 EU countries": "Aperçu fiscal · 13 pays de l'UE",
   "Gain tax": "Impôt sur les gains",
+  "Health insurance": "Assurance maladie",
   "Holding exemption": "Exonération liée à la détention",
   "Filing": "Déclaration",
   "Good to know": "Bon à savoir",
@@ -367,6 +368,7 @@ const fr: Record<string, string> = {
   "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.": "Vos BTC ne suffisent pour ce montant dans aucun des deux cas. Réduisez le montant nécessaire ou ajoutez des BTC pour comparer les deux options.",
   "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000": "Exonéré après 3 ans de détention (jusqu'à 40 millions de CZK par an), ou si le total des cessions de cryptoactifs de l'année ne dépasse pas 100 000 CZK",
   "19 to 35% income tax": "Impôt sur le revenu de 19 à 35 %",
+  "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer": "Cotisations d’assurance maladie de 16 % sur le gain (8 % en cas de handicap), régularisées chaque année par l’assureur santé",
   "0% after a 1-year holding period; total gains under €1,000 a year are tax-free": "0 % après 1 an de détention ; les gains totaux inférieurs à 1 000 € par an sont exonérés",
   "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)": "Aucune exonération liée à la durée de détention ; les petites transactions jusqu'à 10 % du salaire minimum chacune sont exonérées (au total jusqu'à un salaire minimum par an)",
   "Private gains are not taxed": "Les gains privés ne sont pas imposés",
@@ -394,7 +396,7 @@ const fr: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "Données du T3 2026, vérifiées le {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Les règles fiscales évoluent vite et votre situation est individuelle : vérifiez auprès d'un conseiller fiscal local. Pour les rapports fiscaux crypto, Lukka est une option parmi d'autres.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "Virtuse peut percevoir une commission d'apport. Cela ne change pas l'aperçu.",
-  "Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.": "Virtuse CFO sera lancé le 1er novembre ; offres payantes à partir de janvier : {0}/mois ou {1}/an.",
+  "Launches 1 November: {0}/month or {1}/year.": "Lancement le 1er novembre : {0}/mois ou {1}/an.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Trois clés, deux suffisent pour déplacer les fonds. Aucun point de défaillance unique : vos héritiers peuvent récupérer les fonds avec la clé C plus l'une des vôtres.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "Dans un montage 2 sur 3, vous gardez deux clés. Un prestataire de conservation collaborative comme Unchained peut détenir la troisième."
 };

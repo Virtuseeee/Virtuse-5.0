@@ -1,6 +1,7 @@
 // Generates src/lib/tax-sources.gen.ts from seo-build/data/tax-sources.json, the
 // single source of truth for the tax rates the Loan Copilot shows and for the
-// sources of the Tax Agent's gain tax / holding exemption / filing cards. Only the
+// sources of the Tax Agent's gain tax / health insurance (optional) / holding
+// exemption / filing cards. Only the
 // fields the modules need are copied (no quotes/notes in the bundle). It also fails
 // if the English texts in src/lib/tax.ts (COUNTRY_TAX) differ from
 // fields.<field>.text in the JSON. Runs before every
@@ -35,6 +36,8 @@ const countries = data.countries.map((c) => {
 
 // ── Tax Agent: per-field sources + text check ──────────────────
 const FIELDS = ['gainTax', 'exemption', 'filing'];
+// Optional fields: only for countries whose tax-sources.json has them (Slovakia's healthLevy).
+const OPTIONAL = ['healthLevy'];
 const fieldsChecked = String(data.fieldsChecked ?? '');
 if (!/^\d{4}-\d{2}-\d{2}$/.test(fieldsChecked)) throw new Error(`tax-sources.json: fieldsChecked "${fieldsChecked}" is not YYYY-MM-DD`);
 const fieldSources = {};
@@ -44,6 +47,12 @@ for (const c of data.countries) {
   for (const k of FIELDS) {
     const src = typeof f[k]?.source === 'string' ? f[k].source : '';
     if (src && !/^https:\/\//.test(src)) throw new Error(`tax-sources.json: ${c.id}.fields.${k}.source is not an https URL`);
+    row[k] = { source: src, checked: fieldsChecked };
+  }
+  for (const k of OPTIONAL) {
+    if (!f[k]) continue;
+    const src = typeof f[k].source === 'string' ? f[k].source : '';
+    if (!/^https:\/\//.test(src)) throw new Error(`tax-sources.json: ${c.id}.fields.${k}.source is not an https URL`);
     row[k] = { source: src, checked: fieldsChecked };
   }
   fieldSources[c.id] = row;
@@ -79,6 +88,16 @@ for (const b of blocks) {
     if (typeof want !== 'string') { mismatches.push(`${id}.${k}: no fields.${k}.text in tax-sources.json`); continue; }
     if (norm(en) !== norm(want)) mismatches.push(`${id}.${k}:\n    tax.ts: ${en}\n    json  : ${want}`);
   }
+  for (const k of OPTIONAL) {
+    const m = b.match(new RegExp(`\\b${k}: \\{ en: ('(?:\\\\.|[^'\\\\])*'|"(?:\\\\.|[^"\\\\])*")`));
+    const want = src.fields?.[k]?.text;
+    if (!m && typeof want !== 'string') continue;
+    if (!m) { mismatches.push(`${id}.${k}: in tax-sources.json but not in tax.ts`); continue; }
+    if (typeof want !== 'string') { mismatches.push(`${id}.${k}: in tax.ts but no fields.${k}.text in tax-sources.json`); continue; }
+    // eslint-disable-next-line no-new-func
+    const en = Function(`"use strict";return ${m[1]}`)();
+    if (norm(en) !== norm(want)) mismatches.push(`${id}.${k}:\n    tax.ts: ${en}\n    json  : ${want}`);
+  }
 }
 if (seen.size === 0) throw new Error('tax.ts: no countries parsed from COUNTRY_TAX');
 if (mismatches.length) {
@@ -97,15 +116,17 @@ export interface TaxSourceRow {
 
 export const TAX_SOURCES: { checked: string; countries: TaxSourceRow[] } = ${JSON.stringify({ checked: String(data.checked ?? ''), countries }, null, 2)};
 
-// Tax Agent: official source per card (gain tax / holding exemption / filing).
+// Tax Agent: official source per card (gain tax / holding exemption / filing,
+// plus optional health insurance for countries that have it).
 // checked = fieldsChecked (YYYY-MM-DD). An empty source means "no source".
 export type TaxField = 'gainTax' | 'exemption' | 'filing';
+export type TaxOptionalField = 'healthLevy';
 export interface TaxFieldSource {
   source: string;
   checked: string;
 }
 
-export const TAX_FIELD_SOURCES: { checked: string; countries: Record<string, Record<TaxField, TaxFieldSource>> } = ${JSON.stringify({ checked: fieldsChecked, countries: fieldSources }, null, 2)};
+export const TAX_FIELD_SOURCES: { checked: string; countries: Record<string, Record<TaxField, TaxFieldSource> & Partial<Record<TaxOptionalField, TaxFieldSource>>> } = ${JSON.stringify({ checked: fieldsChecked, countries: fieldSources }, null, 2)};
 `;
 writeFileSync(outPath, body);
 const shown = countries.filter((c) => c.verified && c.loanRate !== null).map((c) => `${c.id} ${Math.round(c.loanRate * 1000) / 10}%`);

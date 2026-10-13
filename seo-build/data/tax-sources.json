@@ -49,7 +49,7 @@
       "sourceTitle": "Finančná správa: Sadzba dane z príjmov fyzickej osoby za rok 2026 (+ podpora.financnasprava.sk/293880 Príjmy z predaja kryptoaktív u nepodnikateľa)",
       "quote": "z ostatných príjmov (§ 8) 19 % z tej časti základu dane, ktorá nepresiahne sumu 43 983,32 eura vrátane",
       "verified": true,
-      "notes": "Verified for the income tax part only. The crypto page (293880) confirms taxation under § 8(1)(t), that expenses above income are ignored, and that health/social insurance 'which the taxpayer must pay from this type of income' is deductible, but it does not state the health levy rate. The site's calculator uses 0.35 (19% + 16% health contributions); the 16% health levy was NOT verified from an official source (only press). Site's gainTax '19–35%' matches the 2026 bands; consider 0.19 (income tax) or 0.35 only once the health-insurance rate is confirmed (zákon 580/2004, VšZP/ÚDZS).",
+      "notes": "Update 2026-10-13: the 16% health insurance contribution is now verified separately in fields.healthLevy (VšZP + Act 580/2004 § 13(7), § 38ezk). Verified for the income tax part only. The crypto page (293880) confirms taxation under § 8(1)(t), that expenses above income are ignored, and that health/social insurance 'which the taxpayer must pay from this type of income' is deductible, but it does not state the health levy rate. The site's calculator uses 0.35 (19% + 16% health contributions); the 16% health levy was NOT verified from an official source (only press). Site's gainTax '19–35%' matches the 2026 bands; consider 0.19 (income tax) or 0.35 only once the health-insurance rate is confirmed (zákon 580/2004, VšZP/ÚDZS).",
       "fields": {
         "gainTax": {
           "text": "19 to 35% income tax",
@@ -57,7 +57,15 @@
           "sourceTitle": "Finančná správa: Sadzba dane z príjmov fyzickej osoby za rok 2026",
           "quote": "z ostatných príjmov (§ 8) 19 % z tej časti základu dane, ktorá nepresiahne sumu 43 983,32 eura vrátane",
           "verified": false,
-          "notes": "Text updated 2026-10-13 to the sourced facts. Only partly verified: the 19/25/30/35% bands for § 8 income in 2026 are on this page (crypto = § 8(1)(t) per podpora.financnasprava.sk/293880). The '16% health contributions' part is NOT on any official page checked; the crypto page only says health/social insurance due on this income is deductible. Needs an official source (zákon 580/2004 / VšZP / ÚDZS) before marking verified."
+          "notes": "Update 2026-10-13: the 16% health insurance contribution is now verified separately in fields.healthLevy (VšZP + Act 580/2004 § 13(7), § 38ezk). Text updated 2026-10-13 to the sourced facts. Only partly verified: the 19/25/30/35% bands for § 8 income in 2026 are on this page (crypto = § 8(1)(t) per podpora.financnasprava.sk/293880). The '16% health contributions' part is NOT on any official page checked; the crypto page only says health/social insurance due on this income is deductible. Needs an official source (zákon 580/2004 / VšZP / ÚDZS) before marking verified."
+        },
+        "healthLevy": {
+          "text": "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer",
+          "source": "https://www.vszp.sk/platitelia/platenie-poistneho/oznamenia-zmeny/zmeny-od-01-01.2026/",
+          "sourceTitle": "VšZP: Zmeny od 01. 01. 2026",
+          "quote": "zamestnanec, samostatne zárobkovo činná osoba, samoplatiteľ a poistenec štátu bez zdravotného postihnutia, ktorý má príjem z kapitálového majetku a ostatných príjmov, z pôvodných 15 % na 16 %",
+          "verified": true,
+          "notes": "Legal basis: Act 580/2004 § 10b(1)(d), § 13(7), § 38ezk (16% for 2026 and 2027; 15% in 2024 and 2025), https://static.slov-lex.sk/static/SK/ZZ/2004/580/20260701.html. Crypto sale and swap income is § 8(1)(t) ZDP (https://static.slov-lex.sk/static/SK/ZZ/2003/595/20260101.html). Base = § 8 tax base (gain after costs), no cap. Applies to employees, self-employed, self-payers and state-insured. Annual settlement by the insurer by 30 Sep of the following year; arrears due within 45 days. Contributions are deductible against this income (Finančná správa 293880). No official page names crypto together with the rate."
         },
         "exemption": {
           "text": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
@@ -485,5 +493,5 @@
       }
     }
   ],
-  "fieldsAbout": "fields = the three facts shown on /bitcoin-tax/<country>/ (seo-data.json gainTax/exemption/filing), each with an official source checked 2026-10-13. text = the site's current text (unchanged). verified = true only if the official source itself states the fact; notes starting with 'CORRECTION:' mean the site text is wrong or incomplete per the source."
+  "fieldsAbout": "fields = the three facts shown on /bitcoin-tax/<country>/ (seo-data.json gainTax/exemption/filing), each with an official source checked 2026-10-13. Optional fourth field healthLevy (Slovakia only): health insurance contributions due on the gain, shown as its own card in the Tax Agent and its own row on the guide, with its own source. text = the site's current text (unchanged). verified = true only if the official source itself states the fact; notes starting with 'CORRECTION:' mean the site text is wrong or incomplete per the source."
 }

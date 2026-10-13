@@ -137,6 +137,10 @@ for (const rel of htmlFiles) {
   if (bytes > 100 * 1024) fail(`${rel} is ${bytes} bytes (>100KB)`);
 
   const lang = attr(html, /<html lang="([^"]+)"/);
+  // Slovakia's guide (every language) shows the health insurance row with its own official source.
+  if (/^(bitcoin-tax\/slovakia|de\/bitcoin-steuern\/slowakei|sk\/bitcoin-dane\/slovensko|cs\/bitcoin-dane\/slovensko|pl\/bitcoin-podatki\/slowacja|hu\/bitcoin-adozas\/szlovakia|uk\/bitcoin-podatky\/slovachchyna|ru\/bitcoin-nalogi\/slovakiya|fr\/bitcoin-fiscalite\/slovaquie|es\/bitcoin-impuestos\/eslovaquia)\/index\.html$/.test(rel)) {
+    if ((html.match(/https:\/\/www\.vszp\.sk\//g) || []).length < 2) fail(`${rel}: health insurance row or its JSON-LD citation (vszp.sk) missing`);
+  }
   if (lang === 'en') en += 1;
   if (lang === 'de') de += 1;
   if (lang === 'sk') sk += 1;

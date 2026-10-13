@@ -58,6 +58,8 @@ const DAC8 = JSON.parse(fs.readFileSync(path.join(DATA, 'dac8.json'), 'utf8'));
 const TAX_SOURCES = JSON.parse(fs.readFileSync(path.join(DATA, 'tax-sources.json'), 'utf8'));
 const TAX_FIELDS = ['gainTax', 'exemption', 'filing'];
 const SOURCES_BY_ID = Object.fromEntries(TAX_SOURCES.countries.map((c) => [c.id, c.fields || {}]));
+// Optional fields (e.g. Slovakia's healthLevy): shown only where tax-sources.json has them.
+const TAX_OPTIONAL_FIELDS = ['healthLevy'];
 // A country is published only if all three fields carry an official source URL.
 function hasSources(id) {
   const f = SOURCES_BY_ID[id];
@@ -70,6 +72,25 @@ const LASTMOD = seoData.lastmod;
 const CTAS = seoData.moduleCtas;
 const COUNTRIES = seoData.countries.filter((c) => hasSources(c.id));
 const HIDDEN_COUNTRIES = seoData.countries.filter((c) => !hasSources(c.id)).map((c) => c.id);
+// Optional fields: a source in tax-sources.json needs the text in every language, and vice versa.
+{
+  const TAX_LANG_KEYS = ['taxDe', 'taxSk', 'taxCs', 'taxPl', 'taxHu', 'taxUk', 'taxRu', 'taxFr', 'taxEs'];
+  for (const c of COUNTRIES) {
+    for (const k of TAX_OPTIONAL_FIELDS) {
+      const f = SOURCES_BY_ID[c.id][k];
+      const texts = [['seo-data.json', c], ...TAX_LANG_KEYS.map((m) => [`meta.json ${m}`, meta[m][c.id]])];
+      if (f) {
+        if (!/^https:\/\//.test(f.source || '')) throw new Error(`tax-sources.json: ${c.id}.fields.${k}.source is not an https URL`);
+        if (c[k] !== f.text) throw new Error(`seo-data.json ${c.id}.${k} differs from tax-sources.json fields.${k}.text`);
+        for (const [where, t] of texts) {
+          if (!t || !t[k] || !t[`${k}Short`]) throw new Error(`${where} ${c.id}: ${k} / ${k}Short missing (tax-sources.json has fields.${k})`);
+        }
+      } else {
+        for (const [where, t] of texts) if (t && (t[k] || t[`${k}Short`])) throw new Error(`${where} ${c.id}.${k} has no source in tax-sources.json`);
+      }
+    }
+  }
+}
 if (HIDDEN_COUNTRIES.length) console.warn(`tax guides hidden (no official source): ${HIDDEN_COUNTRIES.join(', ')}`);
 DAC8.countries = DAC8.countries.filter((d) => COUNTRIES.some((c) => c.id === d.id));
 const N = COUNTRIES.length; // country count shown in copy (was hardcoded 11)
@@ -143,6 +164,17 @@ function srcTag(id, field, lang) {
   const g = GUIDE[lang];
   return `<br><small>${esc(g.src)}${lang === 'fr' ? ' ' : ''}: <a href="${esc(f.source)}" rel="noopener" target="_blank">${esc(srcDomain(f.source))}</a> (${esc(g.checked)} ${esc(formatChecked(CHECKED, lang))})</small>`;
 }
+/** Gain tax plus the optional health insurance contribution (healthLevyShort, Slovakia), for answers, FAQs, descriptions and hub tables. */
+function gainFull(t) { return t.healthLevyShort ? `${t.gainTax} + ${t.healthLevyShort}` : t.gainTax; }
+const HEALTH_LABEL = {
+  en: 'Health insurance', de: 'Krankenversicherung', sk: 'Zdravotné odvody', cs: 'Zdravotní pojištění', pl: 'Ubezpieczenie zdrowotne',
+  hu: 'Egészségbiztosítás', uk: 'Медичне страхування', ru: 'Медицинское страхование', fr: 'Assurance maladie', es: 'Seguro de salud'
+};
+/** Optional country-table row for the health insurance contribution, with its own source (tax-sources.json fields.healthLevy). */
+function healthRows(id, t, lang) {
+  if (!t.healthLevy) return [];
+  return [[HEALTH_LABEL[lang], esc(t.healthLevy) + srcTag(id, 'healthLevy', lang)]];
+}
 /** "Checked 13 Oct 2026." for meta descriptions. */
 function checkedSentence(lang) {
   const c = GUIDE[lang].checked;
@@ -153,9 +185,9 @@ function checkedSentence(lang) {
 function sourcesLd(id, relFile, lang) {
   const seen = new Set();
   const citation = [];
-  for (const k of TAX_FIELDS) {
+  for (const k of [...TAX_FIELDS, ...TAX_OPTIONAL_FIELDS]) {
     const f = SOURCES_BY_ID[id][k];
-    if (seen.has(f.source)) continue;
+    if (!f || seen.has(f.source)) continue;
     seen.add(f.source);
     citation.push({ '@type': 'CreativeWork', name: f.sourceTitle || srcDomain(f.source), url: f.source });
   }
@@ -563,7 +595,7 @@ function finalizeAnswer(parts, lang, kind = 'tax') {
 
 function taxAnswerEn(c) {
   return finalizeAnswer([
-    `Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${c.gainTax}.`,
+    `Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`,
     `Exemption: ${c.exemption}.`,
     `Filing: ${c.filing}.`,
     c.note,
@@ -574,7 +606,7 @@ function taxAnswerEn(c) {
 function taxAnswerDe(c) {
   const d = meta.taxDe[c.id];
   return finalizeAnswer([
-    `Bitcoin-Steuern ${inDe(c.id)}, Stand ${asOfDe}: ${d.gainTax}.`,
+    `Bitcoin-Steuern ${inDe(c.id)}, Stand ${asOfDe}: ${gainFull(d)}.`,
     `Befreiung: ${d.exemption}.`,
     `Veranlagung: ${d.filing}.`,
     d.note,
@@ -604,7 +636,7 @@ function taxFaqsEn(c) {
   return [
     {
       q: `What is the bitcoin tax rate in ${theEn(c)}?`,
-      a: `As of ${asOfEn}, bitcoin gains in ${theEn(c)} are taxed as follows: ${c.gainTax}. Checked ${formatChecked(CHECKED, 'en')} against the official source linked on this page. Not tax advice.`
+      a: `As of ${asOfEn}, bitcoin gains in ${theEn(c)} are taxed as follows: ${gainFull(c)}. Checked ${formatChecked(CHECKED, 'en')} against the official source linked on this page. Not tax advice.`
     },
     {
       q: `Is there a holding-period exemption in ${theEn(c)}?`,
@@ -627,7 +659,7 @@ function taxFaqsDe(c) {
   return [
     {
       q: `Wie werden Bitcoin-Gewinne ${inN} besteuert?`,
-      a: `Stand ${asOfDe}: ${d.gainTax}. ${checkedSentence('de')} ${GUIDE.de.notAdvice}.`
+      a: `Stand ${asOfDe}: ${gainFull(d)}. ${checkedSentence('de')} ${GUIDE.de.notAdvice}.`
     },
     {
       q: `Gibt es eine Spekulationsfrist oder Haltedauer-Befreiung ${inN}?`,
@@ -654,7 +686,7 @@ function buyFaqsEn(c, winner) {
     {
       q: `Does buying bitcoin trigger tax in ${theEn(c)}?`,
       a: c.id === 'nl'
-        ? `The Netherlands does not use a classic capital gains tax. Box 3 wealth tax on a deemed return still applies to holdings (as of ${feeAsOfEn}: ${c.gainTax}).`
+        ? `The Netherlands does not use a classic capital gains tax. Box 3 wealth tax on a deemed return still applies to holdings (as of ${feeAsOfEn}: ${gainFull(c)}).`
         : `No. In this overview, tax arises when you sell or swap (a disposal), not when you buy. Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}. Indicative 2026 overview, not tax advice.`
     },
     {
@@ -707,7 +739,7 @@ function dac8Box(id, lang, relFile) {
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">${esc(c.name)}</a>`,
-    esc(c.gainTax),
+    esc(gainFull(c)),
     esc(c.exemption)
   ]);
   const faqs = [
@@ -755,7 +787,7 @@ ${faqHtml(faqs, 'FAQ')}
   const enFile = 'bitcoin-tax/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `de/bitcoin-steuern/${slugDe(c.id)}/`))}">${esc(nameDe(c.id))}</a>`,
-    esc(meta.taxDe[c.id].gainTax),
+    esc(gainFull(meta.taxDe[c.id])),
     esc(meta.taxDe[c.id].exemption)
   ]);
   const faqs = [
@@ -808,6 +840,7 @@ for (const c of COUNTRIES) {
 <h2>Rates and filing</h2>
 ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Gain tax', esc(c.gainTax) + srcTag(c.id, 'gainTax', 'en')],
+  ...healthRows(c.id, c, 'en'),
   ['Exemption', esc(c.exemption) + srcTag(c.id, 'exemption', 'en')],
   ['Filing', esc(c.filing) + srcTag(c.id, 'filing', 'en')],
   ['Note', esc(c.note)]
@@ -822,7 +855,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile: enRel, lang: 'en', guide: true,
     title: assertTitle(`Bitcoin tax in ${theEn(c)} (${asOfEn})`),
-    description: assertDescription(descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${c.gainTax}.`, checkedSentence('en'), 'Not tax advice.')),
+    description: assertDescription(descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -848,7 +881,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile: deRel, lang: 'de', guide: true,
     title: assertTitle(`Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
-    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${d.gainTax}. Keine Steuerberatung.`),
+    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${gainFull(d)}. Keine Steuerberatung.`),
     h1: `Bitcoin-Steuern ${inDe(c.id)}`,
     answerHtml: esc(answerDe),
     breadcrumbs: [
@@ -869,6 +902,7 @@ ${faqHtml(faqs, 'FAQ')}
 <h2>Sätze und Steuererklärung</h2>
 ${tableHtml(['Feld', 'Stand ' + asOfDe], [
   ['Gewinnsteuer', esc(d.gainTax) + srcTag(c.id, 'gainTax', 'de')],
+  ...healthRows(c.id, d, 'de'),
   ['Befreiung', esc(d.exemption) + srcTag(c.id, 'exemption', 'de')],
   ['Steuererklärung', esc(d.filing) + srcTag(c.id, 'filing', 'de')],
   ['Hinweis', esc(d.note)]
@@ -921,7 +955,7 @@ for (const c of COUNTRIES) {
 ${tableHtml(['Rank', 'Partner', 'Method', 'Variable fee', 'Annual fee drag', 'Speed'], rows)}
 <p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription.${ranked.some((r) => r.illustrative) ? ' RevenueBot’s percentage is marked as illustrative in the source schedule.' : ''}</p>
 <h2>Tax in ${esc(theEn(c))}</h2>
-<p>Gain tax: ${esc(c.gainTax)}. Exemption: ${esc(c.exemption)}.</p>
+<p>Gain tax: ${esc(gainFull(c))}. Exemption: ${esc(c.exemption)}.</p>
 <p>Read the dedicated guide: <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">Bitcoin tax in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -1106,7 +1140,7 @@ ${faqHtml(faqs, 'FAQ')}
   ], 'en');
   const rows = COUNTRIES.map((c) => [
     `<a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">${esc(c.name)}</a>`,
-    esc(c.gainTax),
+    esc(gainFull(c)),
     esc(c.exemption)
   ]);
   pushPage({
@@ -1200,7 +1234,7 @@ ${faqHtml(faqs, 'FAQ')}
 <h2>Steuer beim Verkauf</h2>
 ${tableHtml(['Land', 'Gewinnsteuer', 'Befreiung'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `de/bitcoin-steuern/${slugDe(c.id)}/`))}">${esc(nameDe(c.id))}</a>`,
-  esc(meta.taxDe[c.id].gainTax),
+  esc(gainFull(meta.taxDe[c.id])),
   esc(meta.taxDe[c.id].exemption)
 ]))}
 <h2>Risiko beim Kredit</h2>
@@ -1859,7 +1893,7 @@ function skHome(relFile) { return { ...SK_HOME, href: toRoot(relFile, 'sk/index.
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(c.id)}/`))}">${esc(nameSk(c.id))}</a>`,
-    esc(meta.taxSk[c.id].gainTax),
+    esc(gainFull(meta.taxSk[c.id])),
     esc(meta.taxSk[c.id].exemption)
   ]);
   const faqs = [
@@ -1907,13 +1941,13 @@ for (const c of COUNTRIES) {
   const inN = inSk(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Aká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfSk}: ${t.gainTax}. ${checkedSentence('sk')} ${GUIDE.sk.notAdvice}.` },
+    { q: `Aká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfSk}: ${gainFull(t)}. ${checkedSentence('sk')} ${GUIDE.sk.notAdvice}.` },
     { q: `Existuje ${inN} oslobodenie podľa doby držby?`, a: `${t.exemption}. Pred podaním priznania si pravidlá pre aktuálny rok overte u miestneho daňového poradcu.` },
     { q: `Ako sa ${inN} podáva daňové priznanie?`, a: `${t.filing}. ${t.note}` },
     { q: 'Drží Virtuse môj Bitcoin alebo podáva moje daňové priznanie?', a: `Nie. Virtuse nikdy nedrží vaše kľúče. KYC a registrácia prebiehajú u partnera. Tax Agent porovná prehľad ${N} krajín; daňové priznanie pripraví kvalifikovaný daňový poradca.` }
   ];
   const answer = finalizeAnswer([
-    `Dane z Bitcoinu ${inN}, stav ${asOfSk}: ${t.gainTax}.`,
+    `Dane z Bitcoinu ${inN}, stav ${asOfSk}: ${gainFull(t)}.`,
     `Oslobodenie: ${t.exemption}.`,
     `Priznanie: ${t.filing}.`,
     t.note,
@@ -1922,7 +1956,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'sk', guide: true,
     title: assertTitle(`Dane z Bitcoinu ${inN} (${asOfSk})`),
-    description: assertDescription(`Dane z Bitcoinu ${inN} (${asOfSk}): ${t.gainTax}. Nejde o daňové poradenstvo.`),
+    description: assertDescription(`Dane z Bitcoinu ${inN} (${asOfSk}): ${gainFull(t)}. Nejde o daňové poradenstvo.`),
     h1: `Dane z Bitcoinu ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1943,6 +1977,7 @@ for (const c of COUNTRIES) {
 <h2>Sadzby a daňové priznanie</h2>
 ${tableHtml(['Údaj', 'Stav ' + asOfSk], [
   ['Daň zo ziskov', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'sk')],
+  ...healthRows(c.id, t, 'sk'),
   ['Oslobodenie', esc(t.exemption) + srcTag(c.id, 'exemption', 'sk')],
   ['Daňové priznanie', esc(t.filing) + srcTag(c.id, 'filing', 'sk')],
   ['Poznámka', esc(t.note)]
@@ -2157,7 +2192,7 @@ ${faqHtml(faqs, 'Časté otázky')}
 <h2>Daň pri predaji</h2>
 ${tableHtml(['Krajina', 'Daň zo ziskov', 'Oslobodenie'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(c.id)}/`))}">${esc(nameSk(c.id))}</a>`,
-  esc(meta.taxSk[c.id].gainTax),
+  esc(gainFull(meta.taxSk[c.id])),
   esc(meta.taxSk[c.id].exemption)
 ]))}
 <h2>Riziko pri pôžičke</h2>
@@ -2286,7 +2321,7 @@ function csHome(relFile) { return { name: 'Domů', href: toRoot(relFile, 'cs/ind
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(c.id)}/`))}">${esc(nameCs(c.id))}</a>`,
-    esc(meta.taxCs[c.id].gainTax),
+    esc(gainFull(meta.taxCs[c.id])),
     esc(meta.taxCs[c.id].exemption)
   ]);
   const faqs = [
@@ -2334,13 +2369,13 @@ for (const c of COUNTRIES) {
   const inN = inCs(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Jaká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfCs}: ${t.gainTax}. ${checkedSentence('cs')} ${GUIDE.cs.notAdvice}.` },
+    { q: `Jaká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfCs}: ${gainFull(t)}. ${checkedSentence('cs')} ${GUIDE.cs.notAdvice}.` },
     { q: `Existuje ${inN} osvobození podle doby držení?`, a: `${t.exemption}. Před podáním přiznání si pravidla pro aktuální rok ověřte u místního daňového poradce.` },
     { q: `Jak se ${inN} podává daňové přiznání?`, a: `${t.filing}. ${t.note}` },
     { q: 'Drží Virtuse můj Bitcoin nebo podává moje daňové přiznání?', a: `Ne. Virtuse nikdy nedrží vaše klíče. KYC a registrace probíhají u partnera. Tax Agent porovná přehled ${N} zemí; daňové přiznání připraví kvalifikovaný daňový poradce.` }
   ];
   const answer = finalizeAnswer([
-    `Daně z Bitcoinu ${inN}, stav ${asOfCs}: ${t.gainTax}.`,
+    `Daně z Bitcoinu ${inN}, stav ${asOfCs}: ${gainFull(t)}.`,
     `Osvobození: ${t.exemption}.`,
     `Přiznání: ${t.filing}.`,
     t.note,
@@ -2349,7 +2384,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'cs', guide: true,
     title: assertTitle(`Daně z Bitcoinu ${inN} (${asOfCs})`),
-    description: assertDescription(`Daně z Bitcoinu ${inN} (${asOfCs}): ${t.gainTax}. Nejde o daňové poradenství.`),
+    description: assertDescription(`Daně z Bitcoinu ${inN} (${asOfCs}): ${gainFull(t)}. Nejde o daňové poradenství.`),
     h1: `Daně z Bitcoinu ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2370,6 +2405,7 @@ for (const c of COUNTRIES) {
 <h2>Sazby a daňové přiznání</h2>
 ${tableHtml(['Údaj', 'Stav ' + asOfCs], [
   ['Daň ze zisků', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'cs')],
+  ...healthRows(c.id, t, 'cs'),
   ['Osvobození', esc(t.exemption) + srcTag(c.id, 'exemption', 'cs')],
   ['Daňové přiznání', esc(t.filing) + srcTag(c.id, 'filing', 'cs')],
   ['Poznámka', esc(t.note)]
@@ -2483,7 +2519,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
 <h2>Daň při prodeji</h2>
 ${tableHtml(['Země', 'Daň ze zisků', 'Osvobození'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(c.id)}/`))}">${esc(nameCs(c.id))}</a>`,
-  esc(meta.taxCs[c.id].gainTax),
+  esc(gainFull(meta.taxCs[c.id])),
   esc(meta.taxCs[c.id].exemption)
 ]))}
 <h2>Riziko při půjčce</h2>
@@ -2614,7 +2650,7 @@ function descFit(main, tail) { return (main + ' ' + tail).length <= 155 ? `${mai
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(c.id)}/`))}">${esc(namePl(c.id))}</a>`,
-    esc(meta.taxPl[c.id].gainTax),
+    esc(gainFull(meta.taxPl[c.id])),
     esc(meta.taxPl[c.id].exemption)
   ]);
   const faqs = [
@@ -2662,13 +2698,13 @@ for (const c of COUNTRIES) {
   const inN = inPl(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Ile wynosi podatek od Bitcoina ${inN}?`, a: `Stan na ${asOfPl}: ${t.gainTax}. ${checkedSentence('pl')} ${GUIDE.pl.notAdvice}.` },
+    { q: `Ile wynosi podatek od Bitcoina ${inN}?`, a: `Stan na ${asOfPl}: ${gainFull(t)}. ${checkedSentence('pl')} ${GUIDE.pl.notAdvice}.` },
     { q: `Czy ${inN} jest zwolnienie za okres posiadania?`, a: `${t.exemption}. Przed złożeniem zeznania warto potwierdzić zasady na bieżący rok z lokalnym doradcą podatkowym.` },
     { q: `Jak ${inN} rozlicza się podatek od Bitcoina?`, a: `${t.filing}. ${t.note}` },
     { q: 'Czy Virtuse przechowuje mój Bitcoin albo składa za mnie zeznanie?', a: `Nie. Virtuse nigdy nie przechowuje Państwa kluczy. KYC i rejestracja odbywają się u partnera. Tax Agent porówna przegląd ${N} krajów; zeznanie przygotuje wykwalifikowany doradca podatkowy.` }
   ];
   const answer = finalizeAnswer([
-    `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${t.gainTax}.`,
+    `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${gainFull(t)}.`,
     `Zwolnienie: ${t.exemption}.`,
     `Zeznanie: ${t.filing}.`,
     t.note,
@@ -2677,7 +2713,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'pl', guide: true,
     title: assertTitle(`Podatek od Bitcoina ${inN} (${asOfPl})`),
-    description: assertDescription(descFit(`Podatek od Bitcoina ${inN} (${asOfPl}): ${t.gainTax}.`, 'Nie stanowi porady podatkowej.')),
+    description: assertDescription(descFit(`Podatek od Bitcoina ${inN} (${asOfPl}): ${gainFull(t)}.`, 'Nie stanowi porady podatkowej.')),
     h1: `Podatek od Bitcoina ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2698,6 +2734,7 @@ for (const c of COUNTRIES) {
 <h2>Stawki i zeznanie podatkowe</h2>
 ${tableHtml(['Pole', 'Stan na ' + asOfPl], [
   ['Podatek od zysków', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'pl')],
+  ...healthRows(c.id, t, 'pl'),
   ['Zwolnienie', esc(t.exemption) + srcTag(c.id, 'exemption', 'pl')],
   ['Zeznanie podatkowe', esc(t.filing) + srcTag(c.id, 'filing', 'pl')],
   ['Uwaga', esc(t.note)]
@@ -2811,7 +2848,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
 <h2>Podatek przy sprzedaży</h2>
 ${tableHtml(['Kraj', 'Podatek od zysków', 'Zwolnienie'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(c.id)}/`))}">${esc(namePl(c.id))}</a>`,
-  esc(meta.taxPl[c.id].gainTax),
+  esc(gainFull(meta.taxPl[c.id])),
   esc(meta.taxPl[c.id].exemption)
 ]))}
 <h2>Ryzyko przy pożyczce</h2>
@@ -2940,7 +2977,7 @@ function huHome(relFile) { return { name: 'Főoldal', href: toRoot(relFile, 'hu/
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(c.id)}/`))}">${esc(nameHu(c.id))}</a>`,
-    esc(meta.taxHu[c.id].gainTax),
+    esc(gainFull(meta.taxHu[c.id])),
     esc(meta.taxHu[c.id].exemption)
   ]);
   const faqs = [
@@ -2988,13 +3025,13 @@ for (const c of COUNTRIES) {
   const inN = inHu(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Mennyi a Bitcoin adója ${inN}?`, a: `${asOfHu} állapot szerint: ${t.gainTax}. ${checkedSentence('hu')} ${GUIDE.hu.notAdvice}.` },
+    { q: `Mennyi a Bitcoin adója ${inN}?`, a: `${asOfHu} állapot szerint: ${gainFull(t)}. ${checkedSentence('hu')} ${GUIDE.hu.notAdvice}.` },
     { q: `Van ${inN} tartási idő utáni mentesség?`, a: `${t.exemption}. A bevallás előtt érdemes a tárgyévi szabályokat helyi adótanácsadóval egyeztetni.` },
     { q: `Hogyan kell ${inN} bevallani a Bitcoin-nyereséget?`, a: `${t.filing}. ${t.note}` },
     { q: 'A Virtuse kezeli a Bitcoinomat, vagy beadja helyettem a bevallást?', a: `Nem. A Virtuse soha nem kezeli az Ön kulcsait. A KYC és a regisztráció a partnernél történik. A Tax Agent összeveti a ${N} ország adatait; a bevallást képzett adótanácsadó készíti el.` }
   ];
   const answer = finalizeAnswer([
-    `Bitcoin-adózás ${inN} (${asOfHu} állapot szerint): ${t.gainTax}.`,
+    `Bitcoin-adózás ${inN} (${asOfHu} állapot szerint): ${gainFull(t)}.`,
     `Mentesség: ${t.exemption}.`,
     `Bevallás: ${t.filing}.`,
     t.note,
@@ -3003,7 +3040,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'hu', guide: true,
     title: assertTitle(`Bitcoin-adózás ${inN} (${asOfHu})`),
-    description: assertDescription(descFit(`Bitcoin-adózás ${inN} (${asOfHu}): ${t.gainTax}.`, 'Nem adótanácsadás.')),
+    description: assertDescription(descFit(`Bitcoin-adózás ${inN} (${asOfHu}): ${gainFull(t)}.`, 'Nem adótanácsadás.')),
     h1: `Bitcoin-adózás ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3024,6 +3061,7 @@ for (const c of COUNTRIES) {
 <h2>Adókulcsok és bevallás</h2>
 ${tableHtml(['Adat', asOfHu + ' állapot'], [
   ['Nyereségadó', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'hu')],
+  ...healthRows(c.id, t, 'hu'),
   ['Mentesség', esc(t.exemption) + srcTag(c.id, 'exemption', 'hu')],
   ['Bevallás', esc(t.filing) + srcTag(c.id, 'filing', 'hu')],
   ['Megjegyzés', esc(t.note)]
@@ -3137,7 +3175,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
 <h2>Adó eladáskor</h2>
 ${tableHtml(['Ország', 'Nyereségadó', 'Mentesség'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(c.id)}/`))}">${esc(nameHu(c.id))}</a>`,
-  esc(meta.taxHu[c.id].gainTax),
+  esc(gainFull(meta.taxHu[c.id])),
   esc(meta.taxHu[c.id].exemption)
 ]))}
 <h2>Kockázat hitel esetén</h2>
@@ -3266,7 +3304,7 @@ function ukHome(relFile) { return { name: 'Головна', href: toRoot(relFile
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(c.id)}/`))}">${esc(nameUk(c.id))}</a>`,
-    esc(meta.taxUk[c.id].gainTax),
+    esc(gainFull(meta.taxUk[c.id])),
     esc(meta.taxUk[c.id].exemption)
   ]);
   const faqs = [
@@ -3314,13 +3352,13 @@ for (const c of COUNTRIES) {
   const inN = inUk(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Який податок на Біткоїн ${inN}?`, a: `Станом на ${asOfUk}: ${t.gainTax}. ${checkedSentence('uk')} ${GUIDE.uk.notAdvice}.` },
+    { q: `Який податок на Біткоїн ${inN}?`, a: `Станом на ${asOfUk}: ${gainFull(t)}. ${checkedSentence('uk')} ${GUIDE.uk.notAdvice}.` },
     { q: `Чи є ${inN} звільнення за строк володіння?`, a: `${t.exemption}. Перед поданням декларації уточніть правила поточного року в місцевого податкового консультанта.` },
     { q: `Як ${inN} декларують прибуток від Біткоїна?`, a: `${t.filing}. ${t.note}` },
     { q: 'Чи зберігає Virtuse мій Біткоїн або подає за мене декларацію?', a: `Ні. Virtuse ніколи не зберігає ваші ключі. KYC і реєстрація відбуваються в партнера. Tax Agent порівняє огляд ${N} країн; декларацію підготує кваліфікований податковий консультант.` }
   ];
   const answer = finalizeAnswer([
-    `Податки на Біткоїн ${inN} станом на ${asOfUk}: ${t.gainTax}.`,
+    `Податки на Біткоїн ${inN} станом на ${asOfUk}: ${gainFull(t)}.`,
     `Звільнення: ${t.exemption}.`,
     `Декларування: ${t.filing}.`,
     t.note,
@@ -3329,7 +3367,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'uk', guide: true,
     title: assertTitle(`Податки на Біткоїн ${inN} (${asOfUk})`),
-    description: assertDescription(descFit(`Податки на Біткоїн ${inN} (${asOfUk}): ${t.gainTax}.`, 'Не є податковою консультацією.')),
+    description: assertDescription(descFit(`Податки на Біткоїн ${inN} (${asOfUk}): ${gainFull(t)}.`, 'Не є податковою консультацією.')),
     h1: `Податки на Біткоїн ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3350,6 +3388,7 @@ for (const c of COUNTRIES) {
 <h2>Ставки й декларування</h2>
 ${tableHtml(['Поле', 'Станом на ' + asOfUk], [
   ['Податок на прибуток', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'uk')],
+  ...healthRows(c.id, t, 'uk'),
   ['Звільнення', esc(t.exemption) + srcTag(c.id, 'exemption', 'uk')],
   ['Декларування', esc(t.filing) + srcTag(c.id, 'filing', 'uk')],
   ['Примітка', esc(t.note)]
@@ -3463,7 +3502,7 @@ ${faqHtml(faqs, 'Часті запитання')}
 <h2>Податок при продажу</h2>
 ${tableHtml(['Країна', 'Податок на прибуток', 'Звільнення'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(c.id)}/`))}">${esc(nameUk(c.id))}</a>`,
-  esc(meta.taxUk[c.id].gainTax),
+  esc(gainFull(meta.taxUk[c.id])),
   esc(meta.taxUk[c.id].exemption)
 ]))}
 <h2>Ризик при позиці</h2>
@@ -3594,7 +3633,7 @@ function ruHome(relFile) { return { name: 'Главная', href: toRoot(relFile
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(c.id)}/`))}">${esc(nameRu(c.id))}</a>`,
-    esc(meta.taxRu[c.id].gainTax),
+    esc(gainFull(meta.taxRu[c.id])),
     esc(meta.taxRu[c.id].exemption)
   ]);
   const faqs = [
@@ -3642,13 +3681,13 @@ for (const c of COUNTRIES) {
   const inN = inRu(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Какой налог на Биткоин ${inN}?`, a: `По состоянию на ${asOfRu}: ${lcRu(t.gainTax)}. ${checkedSentence('ru')} ${GUIDE.ru.notAdvice}.` },
+    { q: `Какой налог на Биткоин ${inN}?`, a: `По состоянию на ${asOfRu}: ${lcRu(gainFull(t))}. ${checkedSentence('ru')} ${GUIDE.ru.notAdvice}.` },
     { q: `Есть ли ${inN} освобождение по сроку владения?`, a: `${t.exemption}. Перед подачей декларации уточните правила текущего года у местного налогового консультанта.` },
     { q: `Как ${inN} декларируют прибыль от Биткоина?`, a: `${t.filing}. ${t.note}` },
     { q: 'Хранит ли Virtuse мой Биткоин или подаёт за меня декларацию?', a: `Нет. Virtuse никогда не хранит ваши ключи. KYC и регистрация проходят у партнёра. Tax Agent покажет обзор ${N} стран; декларацию подготовит квалифицированный налоговый консультант.` }
   ];
   const answer = finalizeAnswer([
-    `Налоги на Биткоин ${inN} по состоянию на ${asOfRu}: ${lcRu(t.gainTax)}.`,
+    `Налоги на Биткоин ${inN} по состоянию на ${asOfRu}: ${lcRu(gainFull(t))}.`,
     /^Без /.test(t.exemption) ? `${t.exemption}.` : `Освобождение: ${lcRu(t.exemption)}.`,
     `Порядок подачи: ${lcRu(t.filing)}.`,
     t.note,
@@ -3657,7 +3696,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'ru', guide: true,
     title: assertTitle(`Налоги на Биткоин ${inN} (${asOfRu})`),
-    description: assertDescription(descFit(`Налоги на Биткоин ${inN} (${asOfRu}): ${lcRu(t.gainTax)}.`, 'Не является налоговой консультацией.')),
+    description: assertDescription(descFit(`Налоги на Биткоин ${inN} (${asOfRu}): ${lcRu(gainFull(t))}.`, 'Не является налоговой консультацией.')),
     h1: `Налоги на Биткоин ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3678,6 +3717,7 @@ for (const c of COUNTRIES) {
 <h2>Ставки и декларирование</h2>
 ${tableHtml(['Поле', 'По состоянию на ' + asOfRu], [
   ['Налог на прибыль', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'ru')],
+  ...healthRows(c.id, t, 'ru'),
   ['Освобождение', esc(t.exemption) + srcTag(c.id, 'exemption', 'ru')],
   ['Декларирование', esc(t.filing) + srcTag(c.id, 'filing', 'ru')],
   ['Примечание', esc(t.note)]
@@ -3791,7 +3831,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
 <h2>Налог при продаже</h2>
 ${tableHtml(['Страна', 'Налог на прибыль', 'Освобождение'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(c.id)}/`))}">${esc(nameRu(c.id))}</a>`,
-  esc(meta.taxRu[c.id].gainTax),
+  esc(gainFull(meta.taxRu[c.id])),
   esc(meta.taxRu[c.id].exemption)
 ]))}
 <h2>Риск при займе</h2>
@@ -3923,7 +3963,7 @@ function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/i
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(c.id)}/`))}">${esc(nameFr(c.id))}</a>`,
-    esc(meta.taxFr[c.id].gainTax),
+    esc(gainFull(meta.taxFr[c.id])),
     esc(meta.taxFr[c.id].exemption)
   ]);
   const faqs = [
@@ -3971,13 +4011,13 @@ for (const c of COUNTRIES) {
   const inN = inFr(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${lcFr(t.gainTax)}. ${checkedSentence('fr')} ${GUIDE.fr.notAdvice}.` },
+    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${lcFr(gainFull(t))}. ${checkedSentence('fr')} ${GUIDE.fr.notAdvice}.` },
     { q: `Existe-t-il ${inN} une exonération liée à la durée de détention ?`, a: `${t.exemption}. Avant de déclarer, vérifiez les règles de l'année en cours auprès d'un conseiller fiscal local.` },
     { q: `Comment déclarer ses plus-values en Bitcoin ${inN} ?`, a: `${t.filing}. ${t.note}` },
     { q: 'Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent présente l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
   ];
   const answer = finalizeAnswer([
-    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(t.gainTax)}.`,
+    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(gainFull(t))}.`,
     /^Aucune exonération/.test(t.exemption) ? `${t.exemption}.` : `Exonération : ${lcFr(t.exemption)}.`,
     `Modalités : ${lcFr(t.filing)}.`,
     t.note,
@@ -3986,7 +4026,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'fr', guide: true,
     title: assertTitle(`Fiscalité du Bitcoin ${inN} (${asOfFr})`),
-    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(t.gainTax)}.`, 'Pas un conseil fiscal.')),
+    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(gainFull(t))}.`, 'Pas un conseil fiscal.')),
     h1: `Fiscalité du Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -4007,6 +4047,7 @@ for (const c of COUNTRIES) {
 <h2>Taux et déclaration</h2>
 ${tableHtml(['Champ', 'Au ' + asOfFr], [
   ['Impôt sur les plus-values', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'fr')],
+  ...healthRows(c.id, t, 'fr'),
   ['Exonération', esc(t.exemption) + srcTag(c.id, 'exemption', 'fr')],
   ['Déclaration', esc(t.filing) + srcTag(c.id, 'filing', 'fr')],
   ['Remarque', esc(t.note)]
@@ -4120,7 +4161,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
 <h2>Impôt en cas de vente</h2>
 ${tableHtml(['Pays', 'Impôt sur les plus-values', 'Exonération'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(c.id)}/`))}">${esc(nameFr(c.id))}</a>`,
-  esc(meta.taxFr[c.id].gainTax),
+  esc(gainFull(meta.taxFr[c.id])),
   esc(meta.taxFr[c.id].exemption)
 ]))}
 <h2>Risque en cas de prêt</h2>
@@ -4252,7 +4293,7 @@ function esHome(relFile) { return { name: 'Inicio', href: toRoot(relFile, 'es/in
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `es/bitcoin-impuestos/${slugEs(c.id)}/`))}">${esc(nameEs(c.id))}</a>`,
-    esc(meta.taxEs[c.id].gainTax),
+    esc(gainFull(meta.taxEs[c.id])),
     esc(meta.taxEs[c.id].exemption)
   ]);
   const faqs = [
@@ -4300,13 +4341,13 @@ for (const c of COUNTRIES) {
   const inN = inEs(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${lcEs(t.gainTax)}. ${checkedSentence('es')} ${GUIDE.es.notAdvice}.` },
+    { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${lcEs(gainFull(t))}. ${checkedSentence('es')} ${GUIDE.es.notAdvice}.` },
     { q: `¿Existe ${inN} una exención por periodo de tenencia?`, a: `${t.exemption}. Antes de declarar, confirme las normas del año en curso con un asesor fiscal local.` },
     { q: `¿Cómo se declaran las ganancias de Bitcoin ${inN}?`, a: `${t.filing}. ${t.note}` },
     { q: '¿Guarda Virtuse mi Bitcoin o presenta mi declaración?', a: `No. Virtuse nunca guarda sus claves. El KYC y el registro se hacen con el partner. El Tax Agent muestra el resumen de ${N} países; la declaración la prepara un asesor fiscal cualificado.` }
   ];
   const answer = finalizeAnswer([
-    `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(t.gainTax)}.`,
+    `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(gainFull(t))}.`,
     /^Sin exención/.test(t.exemption) ? `${t.exemption}.` : `Exención: ${lcEs(t.exemption)}.`,
     `Presentación: ${lcEs(t.filing)}.`,
     t.note,
@@ -4315,7 +4356,7 @@ for (const c of COUNTRIES) {
   pushPage({
     relFile, lang: 'es', guide: true,
     title: assertTitle(`Impuestos sobre Bitcoin ${inN} (${asOfEs})`),
-    description: assertDescription(descFit(`Impuestos sobre Bitcoin ${inN} (${asOfEs}): ${lcEs(t.gainTax)}.`, 'No es asesoramiento fiscal.')),
+    description: assertDescription(descFit(`Impuestos sobre Bitcoin ${inN} (${asOfEs}): ${lcEs(gainFull(t))}.`, 'No es asesoramiento fiscal.')),
     h1: `Impuestos sobre Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -4336,6 +4377,7 @@ for (const c of COUNTRIES) {
 <h2>Tipos y declaración</h2>
 ${tableHtml(['Campo', 'Datos del ' + asOfEs], [
   ['Impuesto sobre las ganancias', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'es')],
+  ...healthRows(c.id, t, 'es'),
   ['Exención', esc(t.exemption) + srcTag(c.id, 'exemption', 'es')],
   ['Declaración', esc(t.filing) + srcTag(c.id, 'filing', 'es')],
   ['Nota', esc(t.note)]
@@ -4449,7 +4491,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
 <h2>Impuesto al vender</h2>
 ${tableHtml(['País', 'Impuesto sobre las ganancias', 'Exención'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `es/bitcoin-impuestos/${slugEs(c.id)}/`))}">${esc(nameEs(c.id))}</a>`,
-  esc(meta.taxEs[c.id].gainTax),
+  esc(gainFull(meta.taxEs[c.id])),
   esc(meta.taxEs[c.id].exemption)
 ]))}
 <h2>Riesgo al pedir prestado</h2>
@@ -4592,7 +4634,7 @@ function feeIndexLines() {
 
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
-    `- [${c.name}](${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/): ${c.gainTax}. ${c.exemption}. As of ${asOfEn}.`
+    `- [${c.name}](${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/): ${gainFull(c)}. ${c.exemption}. As of ${asOfEn}.`
   ).join('\n');
   const feeLines = feeIndexLines();
   return `# Virtuse
@@ -4705,7 +4747,7 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 
 function llmsFull() {
   const tax = COUNTRIES.map((c) => `### ${c.flag} ${c.name} (\`${c.id}\`)
-- Gain tax: ${c.gainTax}
+- Gain tax: ${gainFull(c)}
 - Exemption: ${c.exemption}
 - Filing: ${c.filing}
 - Note: ${c.note}

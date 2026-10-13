@@ -16,6 +16,8 @@
       "name": "Slovakia",
       "flag": "🇸🇰",
       "gainTax": "19 to 35% income tax",
+      "healthLevy": "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer",
+      "healthLevyShort": "16% health insurance contributions",
       "exemption": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
       "filing": "Annual personal tax return (type B), due 31 March",
       "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income."

@@ -20,6 +20,8 @@ export interface CountryTax {
   name: LocalizedText;
   flag: string;
   gainTax: LocalizedText;
+  /** Optional: health insurance contributions due on the gain (Slovakia). */
+  healthLevy?: LocalizedText;
   exemption: LocalizedText;
   filing: LocalizedText;
   note: LocalizedText;
@@ -40,6 +42,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     name: { en: 'Slovakia', sk: 'Slovensko', cs: 'Slovensko' },
     flag: '🇸🇰',
     gainTax: { en: '19 to 35% income tax', sk: '19 až 35 % daň z príjmov', cs: '19 až 35 % daň z příjmů' },
+    healthLevy: { en: '16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer', sk: 'Zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí), zúčtuje ich zdravotná poisťovňa v ročnom zúčtovaní', cs: 'Zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení), vyúčtuje ho zdravotní pojišťovna v ročním zúčtování' },
     exemption: { en: 'No holding-period exemption; every sale or crypto-to-crypto swap is taxed', sk: 'Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje', cs: 'Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní' },
     filing: { en: 'Annual personal tax return (type B), due 31 March', sk: 'Daňové priznanie fyzickej osoby typ B, do 31. marca', cs: 'Daňové přiznání fyzické osoby typu B, do 31. března' },
     note: { en: 'Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.', sk: 'Každý predaj aj výmena krypto za krypto sa zdaňuje. Plánovanú sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť.', cs: 'Každý prodej i směna krypto za krypto se daní. Plánovanou sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti.' },

@@ -352,6 +352,7 @@ const ru: Record<string, string> = {
   "Every route above costs the same or more than this one: there is nothing left to save by switching.": "Каждый путь выше стоит столько же или больше: переход ничего не сэкономит.",
   "Tax overview · 13 EU countries": "Налоговый обзор · 13 стран ЕС",
   "Gain tax": "Налог на прибыль",
+  "Health insurance": "Медицинское страхование",
   "Holding exemption": "Освобождение за владение",
   "Filing": "Декларирование",
   "Good to know": "Полезно знать",
@@ -367,6 +368,7 @@ const ru: Record<string, string> = {
   "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.": "Ваших BTC не хватает на эту сумму ни в одном из вариантов. Уменьшите нужную сумму или добавьте BTC, чтобы сравнить оба варианта.",
   "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000": "Освобождение после 3 лет владения (до 40 млн CZK в год) или если общая выручка от продажи криптовалют за год не превышает 100 000 CZK",
   "19 to 35% income tax": "Подоходный налог от 19 до 35%",
+  "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer": "Взносы на медицинское страхование 16% с прибыли (8% для лиц с инвалидностью), ежегодный расчёт проводит медицинская страховая компания",
   "0% after a 1-year holding period; total gains under €1,000 a year are tax-free": "0% после 1 года владения; общая прибыль менее 1000 € в год освобождена от налога",
   "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)": "Без освобождения за срок владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)",
   "Private gains are not taxed": "Частная прибыль освобождена от налога",
@@ -394,7 +396,7 @@ const ru: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "По состоянию на Q3 2026, проверено {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Налоговые правила быстро меняются, а ваша ситуация индивидуальна: уточните у местного налогового консультанта. Для криптоналоговых отчётов можно использовать, например, Lukka.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "Virtuse может получить вознаграждение за рекомендацию. На обзор это не влияет.",
-  "Virtuse CFO launches 1 November; paid plans from January: {0}/month or {1}/year.": "Virtuse CFO запускается 1 ноября; платные планы с января: {0}/мес. или {1}/год.",
+  "Launches 1 November: {0}/month or {1}/year.": "Запуск 1 ноября: {0}/мес. или {1}/год.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Три ключа, любые два перемещают средства. Никакой единой точки отказа: наследники восстановят доступ ключом C и одним из ваших.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "В схеме 2 из 3 два ключа остаются у вас. Третий может хранить провайдер совместного хранения, например Unchained."
 };
