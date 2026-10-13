@@ -142,9 +142,9 @@ def build(L, n, c, k, partners):
            cards=''.join(cards), qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, brief=F.brief_card(L, t, 'partner_finder_brief'),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
     # the page is the Partner Finder itself: no launcher bubble here
-    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6').replace('<script src="/concierge-launcher.js" defer></script>\n', '')
+    out += C.scripts('/').replace('<script src="/concierge-launcher.js" defer></script>\n', '')
     F.check_text(out, L)
-    open(shell, 'w').write(out)
+    open(shell, 'w').write(C.finalize(out, shell))
     print('%-20s %6d bytes' % (page, len(out)))
 
 

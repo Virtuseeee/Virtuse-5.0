@@ -9,6 +9,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'home'))
 from strings import apply
 import build_lang as B
+sys.path.insert(0, os.path.dirname(HERE))
+import csp_tight
 
 SITE = B.SITE
 TITLE = "Virtuse CFO: Your AI CFO for Bitcoin | Virtuse"
@@ -93,7 +95,7 @@ def build(L):
         if bad in h:
             sys.exit('%s: leftover %s' % (L, bad))
     out = os.environ.get('OUT') or os.path.join(SITE, L)
-    open(os.path.join(out, 'cfo.html'), 'w').write(h)
+    open(os.path.join(out, 'cfo.html'), 'w').write(csp_tight.tighten(h, os.path.join(out, 'cfo.html')))
     print('%s: written %d bytes' % (L, len(h)))
 
 

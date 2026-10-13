@@ -11,6 +11,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(HERE, 'home'))
 import build_lang as B
+sys.path.insert(0, HERE)
+import csp_tight
 
 ARROW = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 OUT = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -124,8 +126,13 @@ def fix_links(L, out):
     return out[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix, out[b:])
 
 
+def finalize(out, page_path):
+    """Last step before writing a page: CSP lists only the origins the page uses."""
+    return csp_tight.tighten(out, page_path)
+
+
 def scripts(root):
-    return '''<script src="{r}site-v2.js?v=5" defer></script>
+    return '''<script src="{r}site-v2.js?v=7" defer></script>
 <script src="{r}consultation-widget.js?v=20261007b" defer></script>
 <script src="{r}concierge-launcher.js" defer></script>
 </body>

@@ -152,7 +152,7 @@ def build(L):
            inh=inh, inh_t=t('inh_t'), inh_p=t('inh_p'), inh_cta=t('inh_cta'), arrow=C.ARROW,
            qh2a=t('q_h2_a'), qh2b=t('q_h2_b'), faq=faq, brief=C.brief(L, t, root, 'tax_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

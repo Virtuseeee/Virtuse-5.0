@@ -167,7 +167,7 @@ def build(L):
            ch2a=t('c_h2_a'), ch2b=t('c_h2_b'), grid=grid, brief=re.sub(r'\s*<div class="btc-spark" id="btcSpark" hidden>.*?</svg>\s*</div>', '', C.brief(L, t, root, 'data_brief'), flags=re.S), disclaimer=t('disclaimer'),
            foot=foot, i18n=json.dumps(i18n, ensure_ascii=False).replace('</', '<\\/'), root=root)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

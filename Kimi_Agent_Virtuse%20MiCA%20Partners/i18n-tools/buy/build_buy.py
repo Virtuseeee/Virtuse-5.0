@@ -11,6 +11,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'home'))
 import build_lang as B
+sys.path.insert(0, os.path.dirname(HERE))
+import csp_tight
 
 # partners in published-fee order (same order in the hero table and the cards)
 PARTNERS = [
@@ -251,7 +253,7 @@ def build(L):
   {foot}
 </main>
 
-<script src="{root}site-v2.js?v=5" defer></script>
+<script src="{root}site-v2.js?v=7" defer></script>
 <script src="{root}consultation-widget.js?v=20261007b" defer></script>
 <script src="{root}concierge-launcher.js" defer></script>
 </body>
@@ -278,7 +280,7 @@ def build(L):
             return '%s="../%s"' % (attr, url)
         b = out.index('<body')
         out = out[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix, out[b:])
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(csp_tight.tighten(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 
