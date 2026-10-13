@@ -181,7 +181,7 @@ function checkedSentence(lang) {
   const d = formatChecked(CHECKED, lang);
   return `${c.charAt(0).toUpperCase()}${c.slice(1)} ${d}${d.endsWith('.') ? '' : '.'}`;
 }
-/** WebPage node with the official sources as citations (JSON-LD). */
+/** WebPage node with the official sources as citations (JSON-LD); pushPage turns it into an Article for the tax guides. */
 function sourcesLd(id, relFile, lang) {
   const seen = new Set();
   const citation = [];
@@ -710,9 +710,54 @@ function isFeePage(relFile) {
   return /(^|\/)buy-bitcoin\/|dca|fee-index|gebuehrenindex|index-poplatk|indeks-oplat|dijindex|indeks-komis|indice-frais|indice-comisiones/.test(relFile);
 }
 
+// --- Tax guides (hubs + country pages, spec.guide): Article JSON-LD + visible "Updated" line ---
+// datePublished = first publication of that language's guides (git history of the
+// generated pages; FR/ES country pages in EN/DE were added on 2026-09-29). Fixed
+// constants, so the CI regenerate (shallow clone) stays deterministic.
+const GUIDE_PUBLISHED = {
+  en: '2026-09-14', de: '2026-09-14',
+  sk: '2026-09-29', cs: '2026-09-29', pl: '2026-09-29', hu: '2026-09-29', uk: '2026-09-29',
+  ru: '2026-09-30', fr: '2026-09-30', es: '2026-09-30'
+};
+const GUIDE_UPDATED = {
+  en: 'Updated', de: 'Aktualisiert', sk: 'Aktualizované', cs: 'Aktualizováno', pl: 'Zaktualizowano',
+  hu: 'Frissítve', uk: 'Оновлено', ru: 'Обновлено', fr: 'Mis à jour le', es: 'Actualizado el'
+};
+const GUIDE_AUTHOR = { '@type': 'Person', name: 'Rastislav Vasilisin', url: 'https://virtuse.com/about.html#founder' };
+const GUIDE_IMAGE = () => `${ORIGIN}/og-cover.jpg`;
+function guidePublished(spec) {
+  if ((spec.lang === 'en' || spec.lang === 'de') && /\/(france|spain|frankreich|spanien)\//.test(spec.relFile)) return '2026-09-29';
+  return GUIDE_PUBLISHED[spec.lang];
+}
+/** Replace the WebPage node (sourcesLd) with an Article that keeps its citation list. */
+function guideArticle(spec) {
+  const canonical = ORIGIN + canonicalPath(spec.relFile);
+  const web = spec.schemas.find((x) => x['@type'] === 'WebPage');
+  const article = {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: spec.h1,
+    inLanguage: spec.lang,
+    datePublished: guidePublished(spec),
+    dateModified: CHECKED,
+    author: GUIDE_AUTHOR,
+    publisher: { '@id': `${ORIGIN}/#org` },
+    image: GUIDE_IMAGE(),
+    mainEntityOfPage: canonical
+  };
+  if (web && web.citation && web.citation.length) article.citation = web.citation;
+  return {
+    ...spec,
+    ogImage: GUIDE_IMAGE(),
+    updated: { label: GUIDE_UPDATED[spec.lang], text: formatChecked(CHECKED, spec.lang), iso: CHECKED },
+    schemas: [...spec.schemas.filter((x) => x !== web), article]
+  };
+}
+
 function pushPage(spec) {
   if (spec.lang === 'fr') spec = typoSpec(spec, nbspFr);
   if (spec.lang === 'es') spec = typoSpec(spec, nbspEs);
+  if (spec.guide) spec = guideArticle(spec);
   const html = renderPage({
     ...spec,
     origin: ORIGIN,
@@ -4794,6 +4839,18 @@ ${inh}
 const SEO_MARK_START = '<!-- SEO-BUILD:START -->';
 const SEO_MARK_END = '<!-- SEO-BUILD:END -->';
 
+// lastmod per URL = the date its HTML last changed, never the run time:
+// unchanged output keeps the lastmod already in sitemap.xml (set from git by
+// seo-ops/sitemap_lastmod.py); changed or new output gets today's date.
+// Deterministic for a clean regenerate, so the CI diff check stays green.
+const CHANGED_FILES = new Set();
+let PREV_LASTMOD = {};
+const TODAY = new Date().toISOString().slice(0, 10);
+function lastmodFor(p, loc) {
+  if (!CHANGED_FILES.has(p.relFile) && PREV_LASTMOD[loc]) return PREV_LASTMOD[loc];
+  return TODAY;
+}
+
 function sitemapEntries() {
   const indexable = generated.filter((p) => !p.noindex);
   const byCanon = new Map();
@@ -4806,11 +4863,11 @@ function sitemapEntries() {
     for (const m of hrefs) {
       links.push(`    <xhtml:link rel="alternate" hreflang="${m[1]}" href="${m[2]}"/>`);
     }
-    byCanon.set(loc, { loc, links: links.join('\n'), lang: p.lang });
+    byCanon.set(loc, { loc, links: links.join('\n'), lang: p.lang, lastmod: lastmodFor(p, loc) });
   }
   return [...byCanon.values()].map((e) => `  <url>
     <loc>${e.loc}</loc>
-    <lastmod>${LASTMOD}</lastmod>
+    <lastmod>${e.lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${e.lang === 'en' ? '0.7' : '0.6'}</priority>
 ${e.links}
@@ -4818,6 +4875,10 @@ ${e.links}
 }
 
 function patchSitemap(xml) {
+  const old = xml.match(new RegExp(`${SEO_MARK_START}[\\s\\S]*?${SEO_MARK_END}`));
+  PREV_LASTMOD = Object.fromEntries(
+    [...(old ? old[0] : '').matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map((m) => [m[1], m[2]])
+  );
   const block = `${SEO_MARK_START}\n${sitemapEntries()}\n${SEO_MARK_END}`;
   if (xml.includes(SEO_MARK_START) && xml.includes(SEO_MARK_END)) {
     return xml.replace(new RegExp(`${SEO_MARK_START}[\\s\\S]*?${SEO_MARK_END}`), block);
@@ -4872,6 +4933,13 @@ function rewritePublishedOrigins() {
 
 function writeAll() {
   const manifestPath = path.join(ROOT, 'manifest.json');
+  for (const p of generated) {
+    const fp = path.join(SITE, p.relFile);
+    const before = fs.existsSync(fp) ? fs.readFileSync(fp, 'utf8') : null;
+    // fee-index pages are maintained outside this build (not written below): keep their date
+    if (FEE_INDEX_EXTERNAL.test(p.relFile)) continue;
+    if (before !== rewriteKnownOrigins(p.html, ORIGIN)) CHANGED_FILES.add(p.relFile);
+  }
   if (fs.existsSync(manifestPath)) {
     const prev = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
     for (const rel of prev.files || []) {

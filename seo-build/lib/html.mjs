@@ -134,7 +134,9 @@ export function renderPage({
   noCapture = false,
   origin,
   asOfLabel,
-  chrome
+  chrome,
+  ogImage = null,
+  updated = null
 }) {
   const canonical = origin + canonicalPath(relFile);
   const robots = noindex ? 'noindex, follow' : 'index, follow';
@@ -253,7 +255,10 @@ ${hreflangTags}
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:locale" content="${esc(chrome.locale)}">
-<link rel="icon" type="image/svg+xml" href="${esc(toRoot(relFile, 'favicon.svg'))}">
+${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+` : ''}<link rel="icon" type="image/svg+xml" href="${esc(toRoot(relFile, 'favicon.svg'))}">
 <style>${CSS}</style>
 ${extraHead}
 <script type="application/ld+json">${jsonLd(graph)}</script>
@@ -274,7 +279,8 @@ ${extraHead}
   <nav class="crumbs" aria-label="Breadcrumb">${crumbHtml}</nav>
   <p class="asof">${esc(chrome.asOfPrefix)} ${esc(asOfLabel)}</p>
   <h1>${esc(h1)}</h1>
-  <div class="answer"><p>${answerHtml}</p></div>
+${updated ? `  <p class="asof updated">${esc(updated.label)} <time datetime="${esc(updated.iso)}">${esc(updated.text)}</time></p>
+` : ''}  <div class="answer"><p>${answerHtml}</p></div>
   ${bodyHtml}
   ${ctaHtml}
   ${relatedHtml}
