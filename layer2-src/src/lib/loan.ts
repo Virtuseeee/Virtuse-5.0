@@ -138,9 +138,9 @@ export const TAX_CONDITIONS: Record<string, LocalizedText> = {
     cs: "15 % daň z příjmů (23 % z části základu daně nad 36násobek průměrné mzdy); osvobozeno při držbě déle než 3 roky nebo pokud celkový příjem z prodeje kryptoaktiv za rok nepřesáhne 100 000 Kč.",
   },
   sk: {
-    en: "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
-    sk: "Predaj kryptomien = ostatný príjem (§ 8 ods. 1 písm. t); progresívne 19 % do 43 983,32 €, 25 % do 60 349,21 €, 30 % do 75 010,32 €, 35 % nad túto sumu (2026); bez oslobodenia podľa doby držby; straty sa nezohľadňujú.",
-    cs: "Prodej kryptoměn = ostatní příjem (§ 8 odst. 1 písm. t); progresivně 19 % do 43 983,32 €, 25 % do 60 349,21 €, 30 % do 75 010,32 €, 35 % nad tuto částku (2026); bez osvobození podle doby držby; ztráty se nezohledňují.",
+    en: "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
+    sk: "Predaj kryptomien = ostatný príjem (§ 8 ods. 1 písm. t); progresívne 19 % do 43 983,32 €, 25 % do 60 349,21 €, 30 % do 75 010,32 €, 35 % nad túto sumu (2026); bez oslobodenia podľa doby držby; straty sa nezohľadňujú. K tomu zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí); predvoľba počíta 19 % + 16 % = 35 %.",
+    cs: "Prodej kryptoměn = ostatní příjem (§ 8 odst. 1 písm. t); progresivně 19 % do 43 983,32 €, 25 % do 60 349,21 €, 30 % do 75 010,32 €, 35 % nad tuto částku (2026); bez osvobození podle doby držby; ztráty se nezohledňují. K tomu zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení); předvolba počítá 19 % + 16 % = 35 %.",
   },
   pl: {
     en: "19% on income from paid disposal of virtual currency (PIT-38); no holding-period exemption; crypto-to-crypto swaps not taxed.",

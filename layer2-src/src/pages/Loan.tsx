@@ -37,6 +37,7 @@ import {
 import { getLang, t, tv, L, fmtEur, fmtNum, fmtNumShort, pct } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
 import { ResultCaptureForm } from '@/components/CaptureForm';
+import { TAX_FIELD_SOURCES } from '@/lib/tax-sources.gen';
 
 // ── State from the URL ───────────────────────────────────────
 // ?amount=<bucket>: Partner Finder's loan-flow card links here with one of its
@@ -470,6 +471,14 @@ export default function Loan() {
                   <a href={selected.source} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
                     {t(lang, 'Source', 'Zdroj', 'Zdroj')}
                   </a>
+                  {TAX_FIELD_SOURCES.countries[selected.id]?.healthLevy ? (
+                    <>
+                      {' · '}
+                      <a href={TAX_FIELD_SOURCES.countries[selected.id]!.healthLevy!.source} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
+                        {t(lang, 'Source (health insurance)', 'Zdroj (zdravotné odvody)', 'Zdroj (zdravotní pojištění)')}
+                      </a>
+                    </>
+                  ) : null}
                   , {L(TAX_CHECKED, lang)}
                 </span>
               </p>
