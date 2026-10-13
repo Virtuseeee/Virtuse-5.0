@@ -358,8 +358,8 @@ def build_main(L, fi, s21, extra_pages):
       </div>
 '''.format(step=t['step'], n=n, tt=t['s%d_t' % n], pp=t['s%d_p' % n]) for n in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
-    rel = [('/bitcoin-fee-index/methodology/', 'rel_method'), (dca, 'rel_dca'), (loc('stacking.html'), 'rel_stack'),
-           (loc('buy-bitcoin.html'), 'rel_buy'), (loc('bitcoin-data.html'), 'rel_data')]
+    rel = [(loc('stacking.html'), 'rel_stack'), (loc('retirement-calculator.html'), 'rel_ret'), (loc('concierge.html'), 'rel_pf'),
+           ('/bitcoin-fee-index/methodology/', 'rel_method'), (dca, 'rel_dca'), (loc('buy-bitcoin.html'), 'rel_buy')]
     cards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[k + '_t'], t[k + '_p']) for u, k in rel)
     blurb = t['press_blurb'].format(amount=eur(DEFAULT, L), w=rk[0]['name'], wt=pct(rk[0]['total'], L))
     embed = esc('<iframe src="%s/bitcoin-fee-index/embed/" title="Virtuse Bitcoin Fee Index" width="100%%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>\n'

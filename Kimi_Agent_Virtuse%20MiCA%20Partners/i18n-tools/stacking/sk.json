@@ -42,5 +42,7 @@
   "rel_cfo_p": "Bitcoin treasury pre firmy.",
   "rel_data_t": "Bitcoin dáta",
   "rel_data_p": "Cena, poplatky a dáta siete naživo.",
+  "rel_ret_t": "Dôchodková kalkulačka Bitcoinu",
+  "rel_ret_p": "Kedy môžu úspory v Bitcoine financovať váš dôchodok.",
   "disclaimer": "Scenáre, nie predpovede. Nejde o investičné poradenstvo. Virtuse nikdy nedrží vaše kľúče ani prostriedky. Nakupujete na platforme každého partnera."
 }

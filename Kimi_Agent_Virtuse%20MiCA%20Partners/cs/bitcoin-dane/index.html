@@ -134,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -258,6 +267,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Časté dotazy</h2><h3>Které země tento přehled pokrývá?</h3><p>13 zemí EU: Česko, Slovensko, Polsko, Rakousko, Německo, Maďarsko, Slovinsko, Chorvatsko, Rumunsko, Bulharsko, Nizozemsko, Francie, Španělsko. Stav Q3 2026; stránka každé země uvádí oficiální zdroje (ověřeno 13. 10. 2026).</p><h3>Jde o daňové poradenství?</h3><p>Ne. Stav Q3 2026, ověřeno 13. 10. 2026. Nejde o daňové poradenství. Pravidla pro aktuální rok si ověřte u místního poradce.</p><h3>Hlásí Virtuse moje držby finančnímu úřadu?</h3><p>Ne. Virtuse nikdy nedrží vaše klíče ani historii vašich transakcí. KYC provádějí partneři sami.</p><h3>Kde si kromě daní prověřím i dědění?</h3><p>V modulu Tax &amp; Inheritance Agent (živý modul) se stejnými 13 zeměmi a kontrolou připravenosti na multisig.</p>
 
   <p><a class="cta" href="../../cs/tax-agent.html">Otevřít Tax &amp; Inheritance Agent →</a></p>
+  <h2>Související nástroje</h2><div class="tools"><a href="../../cs/tax-agent.html"><b>Tax &amp; Inheritance Agent</b><span>Daňová pravidla podle země a kontrola připravenosti na dědictví.</span></a><a href="../../cs/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Prodej versus půjčka se zajištěním v Bitcoinu.</span></a><a href="../../cs/concierge.html"><b>Partner Finder</b><span>Partneři, kteří odpovídají vašim kritériím.</span></a><a href="../../cs/buy-bitcoin.html"><b>Koupit Bitcoin</b><span>Partneři pro nákup a jejich poplatky vedle sebe.</span></a></div>
   <h2>Související návody</h2><div class="related"><a href="../../cs/bitcoin-dane/cesko/">Daně z Bitcoinu v Česku</a><a href="../../cs/bitcoin-dedictvi/">Bitcoin a dědění</a><a href="../../cs/bitcoin-index-poplatku/">Index poplatků za Bitcoin</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Odebírat <span>Brief</span></h2>

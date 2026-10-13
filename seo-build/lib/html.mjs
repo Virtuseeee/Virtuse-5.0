@@ -6,6 +6,19 @@ import {
   wordCount
 } from './util.mjs';
 
+// Only pages with a "Related tools" block (tax guides) carry these rules.
+const TOOLS_CSS = `
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }
+`.trim();
+
 const CSS = `
 :root {
   --btc-orange: #f7931a;
@@ -128,6 +141,7 @@ export function renderPage({
   hreflang,
   schemas,
   related,
+  tools = null,
   moduleCta,
   extraHead = '',
   noindex = false,
@@ -187,6 +201,13 @@ export function renderPage({
   const relatedHtml = related.length
     ? `<h2>${esc(chrome.relatedHeading)}</h2><div class="related">${related.map((r) =>
       `<a href="${esc(r.href)}">${esc(r.label)}</a>`
+    ).join('')}</div>`
+    : '';
+
+  // "Related tools" cards (tax guides): descriptive anchors to the same-language tools.
+  const toolsHtml = tools && tools.items.length
+    ? `<h2>${esc(tools.heading)}</h2><div class="tools">${tools.items.map((x) =>
+      `<a href="${esc(x.href)}"><b>${esc(x.title)}</b><span>${esc(x.text)}</span></a>`
     ).join('')}</div>`
     : '';
 
@@ -261,7 +282,7 @@ ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 ` : ''}<link rel="icon" type="image/svg+xml" href="${esc(toRoot(relFile, 'favicon.svg'))}">
-<style>${CSS}</style>
+<style>${CSS}${toolsHtml ? '\n' + TOOLS_CSS : ''}</style>
 ${extraHead}
 <script type="application/ld+json">${jsonLd(graph)}</script>
 </head>
@@ -285,7 +306,7 @@ ${updated ? `  <p class="asof updated">${esc(updated.label)} <time datetime="${e
 ` : ''}  <div class="answer"><p>${answerHtml}</p></div>
   ${bodyHtml}
   ${ctaHtml}
-  ${relatedHtml}
+  ${toolsHtml ? toolsHtml + '\n  ' : ''}${relatedHtml}
   ${briefHtml}
   <aside class="disclaimers">
     <p>${esc(chrome.disclaimerTax)}</p>

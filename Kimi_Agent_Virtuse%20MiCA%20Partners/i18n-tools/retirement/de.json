@@ -42,6 +42,8 @@
   "rel_cfo_p": "Bitcoin-Treasury für Unternehmen.",
   "rel_data_t": "Bitcoin-Daten",
   "rel_data_p": "Preis-, Gebühren- und Netzwerkdaten, live.",
+  "rel_fee_t": "Gebührenindex",
+  "rel_fee_p": "Gesamtkosten, wenn Sie jeden Monat Bitcoin kaufen.",
   "disclaimer": "Nur zur Information. Keine Anlageberatung. Die Projektionen verwenden konstante Wachstums- und Inflationsraten; reale Bitcoin-Renditen sind volatil, und vergangene Wertentwicklung garantiert keine künftigen Ergebnisse. Alle Beträge sind nominal.",
   "c_plan": "Ihr Plan",
   "c_age": "Aktuelles Alter",

@@ -240,8 +240,9 @@ def build(L):
       </div>
 '''.format(step=t['step'], i=i, tt=t['s%d_t' % i], pp=t['s%d_p' % i]) for i in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', esc(q).replace('&#x27;', "'"), a) for i, (q, a) in enumerate(faq))
-    rel = [(dca, 'rel_dca'), (page_url('stacking.html'), 'rel_stack'), (page_url('concierge.html'), 'rel_pf'), (tax, 'rel_tax'),
-           (page_url('cfo.html'), 'rel_cfo'), (page_url('bitcoin-data.html'), 'rel_data')]
+    fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
+    rel = [(page_url('stacking.html'), 'rel_stack'), (fee, 'rel_fee'), (page_url('concierge.html'), 'rel_pf'), (dca, 'rel_dca'),
+           (tax, 'rel_tax'), (page_url('cfo.html'), 'rel_cfo')]
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     strings = {k: v for k, v in t.items() if k.startswith('c_')}

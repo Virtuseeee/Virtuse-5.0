@@ -339,6 +339,7 @@ function typoSpec(spec, fn) {
     bodyHtml: fn(spec.bodyHtml),
     breadcrumbs: spec.breadcrumbs.map((b) => ({ ...b, name: fn(b.name) })),
     related: spec.related.map((r) => ({ ...r, label: fn(r.label) })),
+    tools: spec.tools && { heading: fn(spec.tools.heading), items: spec.tools.items.map((x) => ({ ...x, title: fn(x.title), text: fn(x.text) })) },
     moduleCta: spec.moduleCta && { ...spec.moduleCta, label: fn(spec.moduleCta.label) },
     schemas: typoDeep(spec.schemas, '', fn)
   };
@@ -754,7 +755,47 @@ function guideArticle(spec) {
   };
 }
 
+// --- "Related tools" cards on the tax guides (hubs + country pages, all languages) ---
+// Same-language tool pages: Tax & Inheritance Agent (?country=<id> on country pages),
+// Loan & Liquidity Copilot (sell vs borrow), Partner Finder, and buying: EN country pages
+// link buy-bitcoin/<country>/ (only EN has those), every other page the language's
+// buy-bitcoin.html. Card texts reuse the tool pages' own related-tools wording
+// (i18n-tools/<tool>/<lang>.json); the Tax Agent line is new.
+const GUIDE_TOOLS = {
+  en: { h: 'Related tools', tax: 'Tax rules by country and an inheritance readiness check.', loanP: 'Selling versus borrowing against Bitcoin.', pfP: 'Partners that fit your criteria.', buyT: 'Buy Bitcoin', buyP: 'Buy partners and their fees, side by side.' },
+  sk: { h: 'Súvisiace nástroje', tax: 'Daňové pravidlá podľa krajiny a kontrola pripravenosti na dedičstvo.', loanP: 'Predaj verzus pôžička so zábezpekou v Bitcoine.', pfP: 'Partneri, ktorí zodpovedajú vašim kritériám.', buyT: 'Kúpiť Bitcoin', buyP: 'Partneri na nákup a ich poplatky vedľa seba.' },
+  cs: { h: 'Související nástroje', tax: 'Daňová pravidla podle země a kontrola připravenosti na dědictví.', loanP: 'Prodej versus půjčka se zajištěním v Bitcoinu.', pfP: 'Partneři, kteří odpovídají vašim kritériím.', buyT: 'Koupit Bitcoin', buyP: 'Partneři pro nákup a jejich poplatky vedle sebe.' },
+  uk: { h: 'Пов’язані інструменти', tax: 'Податкові правила за країною та перевірка готовності до спадщини.', loanP: 'Продаж чи позика під заставу Біткоїна.', pfP: 'Партнери, які відповідають вашим критеріям.', buyT: 'Купити Біткоїн', buyP: 'Партнери для купівлі та їхні комісії поруч.' },
+  ru: { h: 'Связанные инструменты', tax: 'Налоговые правила по странам и проверка готовности к наследованию.', loanP: 'Продажа или заём под залог Биткоина.', pfP: 'Партнёры, которые подходят под ваши критерии.', buyT: 'Купить Биткоин', buyP: 'Партнёры для покупки и их комиссии рядом.' },
+  de: { h: 'Verwandte Tools', tax: 'Steuerregeln je Land und ein Check zur Nachlassplanung.', loanP: 'Verkaufen oder einen Kredit gegen Bitcoin aufnehmen.', pfP: 'Partner, die zu Ihren Kriterien passen.', buyT: 'Bitcoin kaufen', buyP: 'Kaufpartner und ihre Gebühren direkt nebeneinander.' },
+  fr: { h: 'Outils associés', tax: 'Les règles fiscales par pays et un contrôle de préparation successorale.', loanP: 'Vendre ou emprunter en garantie de votre Bitcoin.', pfP: 'Les partenaires adaptés à vos critères.', buyT: 'Acheter du Bitcoin', buyP: 'Les partenaires d\'achat et leurs frais, côte à côte.' },
+  es: { h: 'Herramientas relacionadas', tax: 'Normas fiscales por país y una revisión de la preparación sucesoria.', loanP: 'Vender o pedir prestado con Bitcoin como garantía.', pfP: 'Partners que encajan con sus criterios.', buyT: 'Comprar Bitcoin', buyP: 'Partners de compra y sus comisiones, uno junto a otro.' },
+  pl: { h: 'Powiązane narzędzia', tax: 'Zasady podatkowe według kraju i sprawdzenie gotowości spadkowej.', loanP: 'Sprzedaż a pożyczka pod zastaw Bitcoina.', pfP: 'Partnerzy pasujący do kryteriów.', buyT: 'Kup Bitcoin', buyP: 'Partnerzy do zakupu i ich opłaty obok siebie.' },
+  hu: { h: 'Kapcsolódó eszközök', tax: 'Adószabályok országonként és öröklési felkészültségi ellenőrzés.', loanP: 'Eladás vagy hitelfelvétel Bitcoin fedezetére.', pfP: 'Az Ön szempontjaihoz illő partnerek.', buyT: 'Bitcoin-vásárlás', buyP: 'Vásárlási partnerek és díjaik egymás mellett.' }
+};
+function guideTools(spec) {
+  const L = spec.lang;
+  const T = GUIDE_TOOLS[L];
+  const pre = L === 'en' ? '' : `${L}/`;
+  const m = spec.moduleCta && /\?country=([a-z]{2})\b/.exec(spec.moduleCta.href);
+  const c = m ? countryById(m[1]) : null;
+  const to = (p) => toRoot(spec.relFile, p);
+  const buy = L === 'en' && c
+    ? { href: to(`buy-bitcoin/${slugEn(c.id)}/`), title: `Buy Bitcoin in ${theEn(c)}`, text: T.buyP }
+    : { href: to(`${pre}buy-bitcoin.html`), title: T.buyT, text: T.buyP };
+  return {
+    heading: T.h,
+    items: [
+      { href: to(`${pre}${TAX_AGENT}${c ? `?country=${c.id}` : ''}`), title: 'Tax & Inheritance Agent', text: T.tax },
+      { href: to(`${pre}loan.html`), title: 'Loan & Liquidity Copilot', text: T.loanP },
+      { href: to(`${pre}concierge.html`), title: 'Partner Finder', text: T.pfP },
+      buy
+    ]
+  };
+}
+
 function pushPage(spec) {
+  if (spec.guide && !spec.tools) spec = { ...spec, tools: guideTools(spec) };
   if (spec.lang === 'fr') spec = typoSpec(spec, nbspFr);
   if (spec.lang === 'es') spec = typoSpec(spec, nbspEs);
   if (spec.guide) spec = guideArticle(spec);

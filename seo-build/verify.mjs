@@ -232,6 +232,23 @@ for (const rel of htmlFiles) {
     if (!graph.some((n) => n['@type'] === 'FAQPage')) fail(`${rel} missing FAQPage`);
     const upd = html.match(/<p class="asof updated">[^<]*<time datetime="([^"]+)">([^<]+)<\/time><\/p>/);
     if (!upd || upd[1] !== FIELDS_CHECKED || upd[2] !== checkedLabel(lang)) fail(`${rel} missing visible "Updated ${checkedLabel(lang)}" line under the H1`);
+    // "Related tools" block: Tax Agent (?country= on country pages), Loan Copilot, Partner Finder
+    // and a buy page, all in the page's own language and all existing files.
+    const toolsBlock = (html.match(/<div class="tools">([\s\S]*?)<\/div>/) || [, ''])[1];
+    const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)">/g)].map((x) => x[1].replace(/&amp;/g, '&'));
+    if (toolHrefs.length < 3 || toolHrefs.length > 4) fail(`${rel} related tools block has ${toolHrefs.length} cards (need 3-4)`);
+    const agentHref = toolHrefs.find((h) => /tax-agent\.html/.test(h)) || '';
+    if (!agentHref) fail(`${rel} related tools miss the Tax & Inheritance Agent`);
+    if (isCountry && !/\?country=[a-z]{2}$/.test(agentHref)) fail(`${rel} Tax Agent card has no ?country= (${agentHref})`);
+    for (const want of ['loan.html', 'concierge.html', 'buy-bitcoin']) {
+      if (!toolHrefs.some((h) => h.includes(want))) fail(`${rel} related tools miss ${want}`);
+    }
+    for (const h of toolHrefs) {
+      const target = path.posix.normalize(path.posix.join(path.posix.dirname(rel), h.split(/[?#]/)[0]));
+      const file = target.endsWith('/') ? target + 'index.html' : target;
+      if (!fs.existsSync(path.join(SITE, file))) fail(`${rel} related tool link ${h} -> missing ${file}`);
+      if (lang !== 'en' && !file.startsWith(`${lang}/`)) fail(`${rel} related tool link ${h} is not a ${lang} page`);
+    }
     if (/Virtuse[- ]Tax[- ]?(module|Modul)|modul[ua]? Virtuse Tax|Indicative 2026|Unverbindlicher Überblick/.test(visible)) fail(`${rel} still cites the Virtuse module or an indicative overview`);
   }
 
