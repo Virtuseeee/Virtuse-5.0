@@ -5,10 +5,17 @@ Usage (from anywhere):
     python3 seo-ops/sitemap_lastmod.py            # rewrite sitemap.xml in place
     python3 seo-ops/sitemap_lastmod.py --check    # report only, exit 1 if anything would change
 
-lastmod = the real last content change of the page's file:
-  * `git log -1 --format=%cs -- <file>` (one git log pass for the whole site),
-  * the file has uncommitted changes (modified / untracked) -> today's date
-    (the content really changed; after the commit, the commit date takes over),
+lastmod = the date of the commit that last changed the page's CONTENT:
+  * content fingerprint = <title> + meta description + visible text of the
+    body without <nav>, <footer>, <header>, the shared Brief card
+    (<section id="brief">), scripts, styles, svg, noscript and comments;
+  * the file's history is walked newest -> oldest (git log --follow is not
+    needed: paths are stable) and lastmod is the date of the oldest commit in
+    the newest run of versions with the current fingerprint. So sitewide
+    mechanical commits (GTM swap, CSP, asset hashes, nav/footer/Brief card
+    changes, JSON-LD) do not move lastmod; a text change in the page (or in
+    its locale strings, which end up in the page's HTML) does;
+  * the working copy differs in content from HEAD -> today's date,
   * news.html -> date of the newest non-essay Brief in news/issues.json.
 Never the build time. URLs inside <!-- STORIES-BUILD:START/END --> keep their
 lastmod (stories-build/build.mjs writes the WordPress modified date).
@@ -67,6 +74,59 @@ def news_date():
     return max(dates) if dates else None
 
 
+_STRIP = [re.compile(p, re.S | re.I) for p in (
+    r'<!--.*?-->', r'<script\b.*?</script>', r'<style\b.*?</style>', r'<noscript\b.*?</noscript>',
+    r'<svg\b.*?</svg>', r'<nav\b.*?</nav>', r'<footer\b.*?</footer>', r'<header\b.*?</header>',
+    r'<section id="brief".*?</section>')]
+
+
+def fingerprint(html):
+    if html is None:
+        return None
+    title = re.search(r'<title>(.*?)</title>', html, re.S | re.I)
+    desc = re.search(r'<meta name="description" content="([^"]*)"', html, re.I)
+    body = html.split('<body', 1)[-1]
+    for rx in _STRIP:
+        body = rx.sub(' ', body)
+    text = re.sub(r'<[^>]+>', ' ', body)
+    text = ' '.join(text.split())
+    return ((title.group(1).strip() if title else ''), (desc.group(1) if desc else ''), text)
+
+
+_cache = {}
+
+
+def _history(key):
+    """[(date, sha)] newest first for one file."""
+    out = _git('log', '--format=%H %cs', '--', key)
+    return [tuple(l.split(' ')[::-1]) for l in out.splitlines() if l]
+
+
+def _show(sha, key):
+    try:
+        return subprocess.run(['git', 'show', f'{sha}:{key}'], cwd=REPO, capture_output=True,
+                              check=True).stdout.decode('utf-8', 'replace')
+    except subprocess.CalledProcessError:
+        return None
+
+
+def content_date(key):
+    if key in _cache:
+        return _cache[key]
+    hist = _history(key)
+    if not hist:
+        _cache[key] = None
+        return None
+    cur = fingerprint(_show(hist[0][1], key))
+    date = hist[0][0]
+    for d, sha in hist[1:]:
+        if fingerprint(_show(sha, key)) != cur:
+            break
+        date = d
+    _cache[key] = date
+    return date
+
+
 def lastmod_for(rel):
     """rel = path relative to the site folder, e.g. 'about.html' or 'sk/index.html'."""
     _load()
@@ -76,8 +136,14 @@ def lastmod_for(rel):
             return d
     key = f'{SITE_DIR}/{rel}'
     if key in _dirty:
-        return datetime.date.today().isoformat()
-    return _dates.get(key)
+        path = os.path.join(SITE, rel)
+        now = open(path, encoding='utf-8', errors='replace').read() if os.path.exists(path) else None
+        head = _show('HEAD', key)
+        if head is None or fingerprint(now) != fingerprint(head):
+            return datetime.date.today().isoformat()
+    if key not in _dates:
+        return None
+    return content_date(key)
 
 
 def url_to_rel(loc):
