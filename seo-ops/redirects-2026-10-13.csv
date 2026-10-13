@@ -23,7 +23,7 @@ old_pattern,target,note,status
 /delisting-announcement/,/concierge.html,table row 3 (was forwarded to the blog post),ready
 /sk/oznamenie-o-delistovani/,/concierge.html,table row 3,ready
 /hummingbot-integration/,/concierge.html,table row 3 (was forwarded to the blog post),ready
-/bots.html,/concierge.html,"table row 3 says bots.html (+lang) but bots.html is a live 200 category page in the nav of ~270 pages and in sitemap.xml: HELD, needs Ras to confirm (enable by setting status=ready)",hold
+/bots.html,/concierge.html,"Ras 13 Oct 2026: keep live, no redirect. table row 3 says bots.html (+lang) but bots.html is a live 200 category page in the nav of ~270 pages and in sitemap.xml",hold
 /sk/product/,/concierge.html,table row 3 (was 301 to /sk/index.html),ready
 /sk/institucie/,/concierge.html,table row 3 (was 301 to /sk/treasury.html),ready
 /about-us/,/about.html,table row 4,ready
@@ -44,6 +44,6 @@ old_pattern,target,note,status
 /sk/virtuse-report/,BLOG_HUB,table row 9 (was 301 to /news.html),ready
 /home/,BLOG_HUB,extension: old blog front page (legacy CSV 'keep' on the blog; would 404 without the blog catch-all),ready
 /sk/bitcoin-vo-vasom-vrecku/,BLOG_HUB,extension: old Slovak blog front page (legacy CSV 'keep'),ready
-/blog-sk.html,/blog.html,"table row 9 lists /blog-sk.html, but it is the live Slovak blog hub (200, in sitemap, the sk target of every other blog-hub rule): HELD",hold
-/contact/,https://blog.virtuse.com/contact/,"extension: legacy CSV 'keep' (Nick 2026-10-07: only contact for former exchange users); explicit forward so it survives the catch-all removal",ready
+/blog-sk.html,/blog.html,"Ras 13 Oct 2026: keep live, no redirect. table row 9 lists /blog-sk.html, but it is the live Slovak blog hub (200, in sitemap, the sk target of every other blog-hub rule)",hold
+/contact/,https://blog.virtuse.com/contact/,extension: legacy CSV 'keep' (Nick 2026-10-07: only contact for former exchange users); explicit forward so it survives the catch-all removal,ready
 /sk/contact/,https://blog.virtuse.com/sk/contact/,extension: as /contact/,ready
