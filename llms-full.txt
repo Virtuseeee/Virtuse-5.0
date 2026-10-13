@@ -21,7 +21,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/republica-checa/
 
 ### 🇸🇰 Slovakia (`sk`)
-- Gain tax: 19 to 35% income tax
+- Gain tax: 19 to 35% income tax + 16% health insurance contributions
 - Exemption: No holding-period exemption; every sale or crypto-to-crypto swap is taxed
 - Filing: Annual personal tax return (type B), due 31 March
 - Note: A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income.
