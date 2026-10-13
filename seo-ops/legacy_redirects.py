@@ -77,13 +77,18 @@ def merge_virtuse(src, out):
     (www → apex → target) and 410s are answered on virtuse.com itself. Re-running replaces
     the block between the BEGIN/END markers."""
     s = open(src, encoding='utf-8').read()
-    s = re.sub(re.escape(BEGIN) + r'.*?' + re.escape(END) + r'\n\n?', '', s, flags=re.S)
-    if s.count(CATCH_ALL) != 1: sys.exit('catch-all rule to blog.virtuse.com not found exactly once')
+    # Since 13 Oct 2026 the catch-all is gone (unknown paths 404): replace the block in place.
+    SLOT = '#@@legacy-slot@@'
+    if BEGIN in s:
+        s = re.sub(re.escape(BEGIN) + r'.*?' + re.escape(END) + r'\n\n?', SLOT, s, count=1, flags=re.S)
+    elif s.count(CATCH_ALL) == 1:
+        s = s.replace(CATCH_ALL, SLOT + CATCH_ALL, 1)
+    if s.count(SLOT) != 1: sys.exit('legacy block or catch-all rule to blog.virtuse.com not found exactly once')
     rules = [l for l in open(os.path.join(OUT, 'legacy-wp-htaccess.txt'), encoding='utf-8').read().splitlines()
              if l.startswith('RewriteRule ') or l.startswith('#   RewriteRule ')]
     block = '\n'.join([BEGIN, '# Old Virtuse Exchange paths: 301 to the new page or 410 Gone, before the blog fallback.',
                        '# Source: partnerships/legacy-wp-redirects.csv. Commented lines wait for Ras.'] + rules + [END, '', ''])
-    s = s.replace(CATCH_ALL, block + CATCH_ALL, 1)
+    s = s.replace(SLOT, block, 1)
     open(out, 'w', encoding='utf-8').write(s)
     print(f'{out}: {sum(1 for r in rules if r.startswith("RewriteRule"))} active rules before the blog fallback')
 
