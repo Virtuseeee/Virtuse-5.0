@@ -22,13 +22,15 @@
     "invity.onelink.me": ["Invity", "buy"],
     "koinly.io": ["Koinly", "tax"],
     "kraken.com": ["Kraken", "buy"],
+    "lukka.tech": ["Lukka", "tax"],
     "oneminers.com": ["OneMiners", "mining"],
     "partner.bybit.eu": ["ByBit EU", "buy"],
     "proinvite.kraken.com": ["Kraken", "buy"],
     "rewards.blockstream.com": ["Blockstream", "custody"],
     "shop.ledger.com": ["Ledger", "custody"],
     "shop.powermining.io": ["PowerMining", "mining"],
-    "sygnum.com": ["Sygnum", "treasury"]
+    "sygnum.com": ["Sygnum", "treasury"],
+    "unchained.com": ["Unchained", "custody"]
   };
   // END PARTNER HOSTS
 

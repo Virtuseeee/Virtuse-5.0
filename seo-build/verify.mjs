@@ -78,6 +78,33 @@ const DISCLAIMERS_ES = [
   'KYC'
 ];
 
+// Tax guides (hubs + country pages, all languages): the page states its as-of quarter and
+// check date instead of "Indicative 2026 overview", links an official source for gain tax,
+// exemption and filing, and still says it is not tax advice.
+const GUIDE_RE = /^(bitcoin-tax|de\/bitcoin-steuern|sk\/bitcoin-dane|cs\/bitcoin-dane|pl\/bitcoin-podatki|hu\/bitcoin-adozas|uk\/bitcoin-podatky|ru\/bitcoin-nalogi|fr\/bitcoin-fiscalite|es\/bitcoin-impuestos)\/([a-z-]+\/)?index\.html$/;
+const NOT_ADVICE = {
+  en: 'Not tax advice', de: 'Keine Steuerberatung', sk: 'Nejde o daňové poradenstvo', cs: 'Nejde o daňové poradenství',
+  pl: 'To nie jest porada podatkowa', hu: 'Nem adótanácsadás', uk: 'Це не податкова консультація',
+  ru: 'Это не налоговая консультация', fr: 'Pas un conseil fiscal', es: 'No es asesoramiento fiscal'
+};
+const KEYS = {
+  en: 'Virtuse never holds your keys', de: 'Virtuse verwahrt niemals Ihre Schlüssel', sk: 'Virtuse nikdy nedrží vaše kľúče',
+  cs: 'Virtuse nikdy nedrží vaše klíče', pl: 'Virtuse nigdy nie przechowuje Państwa kluczy', hu: 'A Virtuse soha nem kezeli az Ön kulcsait',
+  uk: 'Virtuse ніколи не зберігає ваші ключі', ru: 'Virtuse никогда не хранит ваши ключи', fr: 'Virtuse ne détient jamais vos clés',
+  es: 'Virtuse nunca guarda sus claves'
+};
+const FIELDS_CHECKED = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/tax-sources.json'), 'utf8')).fieldsChecked;
+function checkedLabel(lang) {
+  const [y, m, d] = FIELDS_CHECKED.split('-').map(Number);
+  const mm = String(m).padStart(2, '0');
+  const dd = String(d).padStart(2, '0');
+  if (lang === 'en') return `${d} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m - 1]} ${y}`;
+  if (lang === 'sk' || lang === 'cs') return `${d}. ${m}. ${y}`;
+  if (lang === 'hu') return `${y}. ${mm}. ${dd}.`;
+  if (lang === 'fr' || lang === 'es') return `${dd}/${mm}/${y}`;
+  return `${dd}.${mm}.${y}`;
+}
+
 function stripTags(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
 }
@@ -156,9 +183,23 @@ for (const rel of htmlFiles) {
   const robots = attr(html, /name="robots" content="([^"]+)"/);
   const noindex = robots.includes('noindex');
 
-  const dis = lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : lang === 'fr' ? DISCLAIMERS_FR : lang === 'es' ? DISCLAIMERS_ES : DISCLAIMERS_EN;
+  const guidePage = GUIDE_RE.test(rel);
+  const dis = guidePage ? [NOT_ADVICE[lang], KEYS[lang], 'KYC', checkedLabel(lang)] : lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : lang === 'fr' ? DISCLAIMERS_FR : lang === 'es' ? DISCLAIMERS_ES : DISCLAIMERS_EN;
   for (const d of dis) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
+  }
+
+  if (guidePage) {
+    const visible = stripTags(html);
+    if (/[\u2013\u2014]/.test(visible) || /[\u2013\u2014]/.test(title) || /[\u2013\u2014]/.test(desc)) {
+      const m = (visible.match(/.{0,30}[\u2013\u2014].{0,30}/) || [title])[0];
+      fail(`${rel} has an en/em dash in visible text or meta: ${m.trim()}`);
+    }
+    const isCountry = rel.split('/').length > (rel.startsWith('bitcoin-tax/') ? 2 : 3);
+    const srcLinks = (html.match(/rel="noopener" target="_blank"/g) || []).length;
+    if (isCountry && srcLinks < 3) fail(`${rel} has ${srcLinks} official source links (need 3)`);
+    if (isCountry && !html.includes('"citation"')) fail(`${rel} missing JSON-LD citation`);
+    if (/Virtuse[- ]Tax[- ]?(module|Modul)|modul[ua]? Virtuse Tax|Indicative 2026|Unverbindlicher Überblick/.test(visible)) fail(`${rel} still cites the Virtuse module or an indicative overview`);
   }
 
   const related = (html.match(/<div class="related">([\s\S]*?)<\/div>/) || [,''])[1];

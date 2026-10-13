@@ -7,15 +7,15 @@
       "name": "Czechia",
       "flag": "🇨🇿",
       "gainTax": "15% income tax (23% above threshold)",
-      "exemption": "Tax-free after a 3-year holding period (time test)",
+      "exemption": "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000",
       "filing": "Annual personal tax return",
-      "note": "Every disposal (including crypto-to-crypto swaps) is a taxable event – keep complete records from day one."
+      "note": "Every disposal (including crypto-to-crypto swaps) is a taxable event, so keep complete records from day one."
     },
     {
       "id": "sk",
       "name": "Slovakia",
       "flag": "🇸🇰",
-      "gainTax": "19–35% income tax plus 16% health contributions",
+      "gainTax": "19 to 35% income tax",
       "exemption": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
       "filing": "Annual personal tax return (type B), due 31 March",
       "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income."
@@ -27,7 +27,7 @@
       "gainTax": "19% flat capital gains tax",
       "exemption": "No holding-period exemption",
       "filing": "Annual PIT-38",
-      "note": "Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss."
+      "note": "Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss."
     },
     {
       "id": "at",
@@ -43,7 +43,7 @@
       "name": "Germany",
       "flag": "🇩🇪",
       "gainTax": "Up to 45% income tax (progressive)",
-      "exemption": "0% after a 1-year holding period (private-sale exemption)",
+      "exemption": "0% after a 1-year holding period; total gains under €1,000 a year are tax-free",
       "filing": "Annual tax return",
       "note": "Crypto-to-crypto swaps are taxable within the first year. FIFO record-keeping is critical."
     },
@@ -52,17 +52,17 @@
       "name": "Hungary",
       "flag": "🇭🇺",
       "gainTax": "15% capital gains tax",
-      "exemption": "No holding-period exemption",
+      "exemption": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
       "filing": "Annual personal income tax return",
-      "note": "Documented acquisition costs are deductible – keep every invoice."
+      "note": "Documented acquisition costs are deductible, so keep every invoice."
     },
     {
       "id": "si",
       "name": "Slovenia",
       "flag": "🇸🇮",
       "gainTax": "No tax on private disposal gains (business trading is taxed)",
-      "exemption": "Private gains are not taxed; a proposed 25% tax was withdrawn in 2025",
-      "filing": "None for private gains; business and mining income in the annual return",
+      "exemption": "Private gains are not taxed",
+      "filing": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
       "note": "Mining is taxed as other income. Frequent trading can count as a business activity."
     },
     {
@@ -99,7 +99,7 @@
       "gainTax": "Box 3 wealth tax on a deemed return (about 36% of the assumed yield)",
       "exemption": "Tax-free allowance (€59,357 per person, 2026)",
       "filing": "Annual Box 3 declaration",
-      "note": "No capital gains tax as such – you are taxed on an assumed return on your holdings. Box 3 is being reformed – check the current year’s rules."
+      "note": "No capital gains tax as such: you are taxed on an assumed return on your holdings. Box 3 is being reformed, so check the current year’s rules."
     },
     {
       "id": "fr",
@@ -114,10 +114,10 @@
       "id": "es",
       "name": "Spain",
       "flag": "🇪🇸",
-      "gainTax": "19–30% progressive tax on savings income",
+      "gainTax": "19 to 30% progressive tax on savings income",
       "exemption": "No holding-period exemption",
-      "filing": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
-      "note": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins."
+      "filing": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+      "note": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins."
     }
   ],
   "feeSchedule": [

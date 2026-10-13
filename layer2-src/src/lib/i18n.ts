@@ -90,6 +90,21 @@ export function fmtNumShort(n: number, max: number, lang: Lang = getLang()): str
   return new Intl.NumberFormat(LOCALES[lang] ?? 'en-IE', { maximumFractionDigits: max, useGrouping: false }).format(n);
 }
 
+// Calendar date "YYYY-MM-DD" in the page language, short month:
+// "13 Oct 2026" (en), "13. Okt. 2026" (de), "2026. okt. 13." (hu), …
+export function fmtDate(iso: string, lang: Lang = getLang()): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!m) return iso;
+  const d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+  try {
+    return new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : LOCALES[lang] ?? 'en-GB', {
+      day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC',
+    }).format(d);
+  } catch {
+    return iso;
+  }
+}
+
 export function getLang(): Lang {
   if (typeof document === 'undefined') return 'en';
   const l = document.documentElement.lang;

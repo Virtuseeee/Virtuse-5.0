@@ -19,7 +19,8 @@ SKIP_DIRS = {'.git', 'node_modules', 'concierge-assets', 'i18n-tools', 'data'}
 
 data = json.load(open(os.path.join(SITE, 'data', 'partners.json'), encoding='utf-8'))
 hosts = {}
-for p in data['partners']:
+# partners (category-page cards) + tracked (other partner links, e.g. Lukka/Unchained in the Tax Agent)
+for p in data['partners'] + data.get('tracked', []):
     for h in p['hosts']:
         assert h not in hosts, f'duplicate host {h}'
         hosts[h] = [p['name'], p['category']]
