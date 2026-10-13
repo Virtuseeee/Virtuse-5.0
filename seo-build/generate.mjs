@@ -54,12 +54,45 @@ const liveFees = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-schedule-live.j
 const FEE_ROWS_Q3 = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-schedule-2026-q3.json'), 'utf8')).rows;
 // DAC8 reporting pages (country-specific content, not a translation template).
 const DAC8 = JSON.parse(fs.readFileSync(path.join(DATA, 'dac8.json'), 'utf8'));
+// Official sources per country and field (shared with the Tax Agent / Loan Copilot).
+const TAX_SOURCES = JSON.parse(fs.readFileSync(path.join(DATA, 'tax-sources.json'), 'utf8'));
+const TAX_FIELDS = ['gainTax', 'exemption', 'filing'];
+const SOURCES_BY_ID = Object.fromEntries(TAX_SOURCES.countries.map((c) => [c.id, c.fields || {}]));
+// Optional fields (e.g. Slovakia's healthLevy): shown only where tax-sources.json has them.
+const TAX_OPTIONAL_FIELDS = ['healthLevy'];
+// A country is published only if all three fields carry an official source URL.
+function hasSources(id) {
+  const f = SOURCES_BY_ID[id];
+  return !!f && TAX_FIELDS.every((k) => f[k] && /^https:\/\//.test(f[k].source || ''));
+}
 
 const ORIGIN = resolveSiteOrigin(meta.site.origin);
 const AS_OF = seoData.asOf;
 const LASTMOD = seoData.lastmod;
 const CTAS = seoData.moduleCtas;
-const COUNTRIES = seoData.countries;
+const COUNTRIES = seoData.countries.filter((c) => hasSources(c.id));
+const HIDDEN_COUNTRIES = seoData.countries.filter((c) => !hasSources(c.id)).map((c) => c.id);
+// Optional fields: a source in tax-sources.json needs the text in every language, and vice versa.
+{
+  const TAX_LANG_KEYS = ['taxDe', 'taxSk', 'taxCs', 'taxPl', 'taxHu', 'taxUk', 'taxRu', 'taxFr', 'taxEs'];
+  for (const c of COUNTRIES) {
+    for (const k of TAX_OPTIONAL_FIELDS) {
+      const f = SOURCES_BY_ID[c.id][k];
+      const texts = [['seo-data.json', c], ...TAX_LANG_KEYS.map((m) => [`meta.json ${m}`, meta[m][c.id]])];
+      if (f) {
+        if (!/^https:\/\//.test(f.source || '')) throw new Error(`tax-sources.json: ${c.id}.fields.${k}.source is not an https URL`);
+        if (c[k] !== f.text) throw new Error(`seo-data.json ${c.id}.${k} differs from tax-sources.json fields.${k}.text`);
+        for (const [where, t] of texts) {
+          if (!t || !t[k] || !t[`${k}Short`]) throw new Error(`${where} ${c.id}: ${k} / ${k}Short missing (tax-sources.json has fields.${k})`);
+        }
+      } else {
+        for (const [where, t] of texts) if (t && (t[k] || t[`${k}Short`])) throw new Error(`${where} ${c.id}.${k} has no source in tax-sources.json`);
+      }
+    }
+  }
+}
+if (HIDDEN_COUNTRIES.length) console.warn(`tax guides hidden (no official source): ${HIDDEN_COUNTRIES.join(', ')}`);
+DAC8.countries = DAC8.countries.filter((d) => COUNTRIES.some((c) => c.id === d.id));
 const N = COUNTRIES.length; // country count shown in copy (was hardcoded 11)
 const FEE_ROWS = meta.feeSource === 'live' ? liveFees.rows : seoData.feeSchedule.map((row, i) => ({
   id: `brief-${i}`,
@@ -91,6 +124,89 @@ const feeAsOfUk = formatAsOf(FEE_AS_OF, 'uk');
 const feeAsOfRu = formatAsOf(FEE_AS_OF, 'ru');
 const feeAsOfFr = formatAsOf(FEE_AS_OF, 'fr');
 const feeAsOfEs = formatAsOf(FEE_AS_OF, 'es');
+
+// --- Official sources + check date on the tax guides (hubs + country pages) ---
+const CHECKED = TAX_SOURCES.fieldsChecked; // YYYY-MM-DD
+function formatChecked(iso, lang) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const mm = String(m).padStart(2, '0');
+  const dd = String(d).padStart(2, '0');
+  switch (lang) {
+    case 'en': return `${d} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m - 1]} ${y}`;
+    case 'sk': case 'cs': return `${d}. ${m}. ${y}`;
+    case 'hu': return `${y}. ${mm}. ${dd}.`;
+    case 'fr': case 'es': return `${dd}/${mm}/${y}`;
+    default: return `${dd}.${mm}.${y}`; // de, pl, uk, ru
+  }
+}
+const asOfByLang = (lang) => formatAsOf(AS_OF, lang);
+// Localized strings for the guide pages. {a} = as-of quarter, {d} = check date.
+const GUIDE = {
+  en: { src: 'Source', checked: 'checked', line: 'As of {a}, checked {d}. Not tax advice.', notAdvice: 'Not tax advice', pad: 'Figures come from official sources linked in the country guides.', intro: 'The figures below come from the official sources linked in the table, as of {a} (checked {d}).', hubSrc: 'Rates, exemptions and filing notes come from official sources, linked on each country page.', hubFaq: 'Figures are as of {a}; each country page links its official sources (checked {d}).' },
+  de: { src: 'Quelle', checked: 'geprüft am', line: 'Stand {a}, geprüft am {d}. Keine Steuerberatung.', notAdvice: 'Keine Steuerberatung', pad: 'Die Angaben stammen aus offiziellen Quellen, die auf den Länderseiten verlinkt sind.', intro: 'Zahlen Stand {a} aus den in der Tabelle verlinkten offiziellen Quellen, geprüft am {d}.', hubSrc: 'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus offiziellen Quellen, verlinkt auf jeder Länderseite.', hubFaq: 'Stand {a}; jede Länderseite verlinkt ihre offiziellen Quellen (geprüft am {d}).' },
+  sk: { src: 'Zdroj', checked: 'overené', line: 'Stav {a}, overené {d}. Nejde o daňové poradenstvo.', notAdvice: 'Nejde o daňové poradenstvo', pad: 'Údaje pochádzajú z oficiálnych zdrojov, ktoré sú uvedené na stránkach krajín.', intro: 'Údaje so stavom {a} pochádzajú z oficiálnych zdrojov uvedených v tabuľke, overené {d}.', hubSrc: 'Sadzby, oslobodenia a poznámky k daňovému priznaniu pochádzajú z oficiálnych zdrojov, uvedených na stránke každej krajiny.', hubFaq: 'Stav {a}; stránka každej krajiny uvádza oficiálne zdroje (overené {d}).' },
+  cs: { src: 'Zdroj', checked: 'ověřeno', line: 'Stav {a}, ověřeno {d}. Nejde o daňové poradenství.', notAdvice: 'Nejde o daňové poradenství', pad: 'Údaje pocházejí z oficiálních zdrojů, které jsou uvedené na stránkách zemí.', intro: 'Údaje ke stavu {a} pocházejí z oficiálních zdrojů uvedených v tabulce, ověřeno {d}.', hubSrc: 'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z oficiálních zdrojů, uvedených na stránce každé země.', hubFaq: 'Stav {a}; stránka každé země uvádí oficiální zdroje (ověřeno {d}).' },
+  pl: { src: 'Źródło', checked: 'sprawdzono', line: 'Stan na {a}, sprawdzono {d}. To nie jest porada podatkowa.', notAdvice: 'To nie jest porada podatkowa', pad: 'Dane pochodzą z oficjalnych źródeł podlinkowanych na stronach krajów.', intro: 'Dane według stanu na {a} pochodzą z oficjalnych źródeł podanych w tabeli, sprawdzono {d}.', hubSrc: 'Stawki, zwolnienia i uwagi dotyczące zeznania pochodzą z oficjalnych źródeł, podlinkowanych na stronie każdego kraju.', hubFaq: 'Stan na {a}; strona każdego kraju podaje oficjalne źródła (sprawdzono {d}).' },
+  hu: { src: 'Forrás', checked: 'ellenőrizve', line: '{a} állapot szerint, ellenőrizve {d} Nem adótanácsadás.', notAdvice: 'Nem adótanácsadás', pad: 'Az adatok az országoldalakon linkelt hivatalos forrásokból származnak.', intro: 'Adatok {a} állapot szerint, a táblázatban linkelt hivatalos forrásokból, ellenőrizve {d}', hubSrc: 'Az adókulcsok, a mentességek és a bevallási tudnivalók hivatalos forrásokból származnak, minden országoldalon linkelve.', hubFaq: '{a} állapot szerint; minden országoldal linkeli a hivatalos forrásokat (ellenőrizve {d}).' },
+  uk: { src: 'Джерело', checked: 'перевірено', line: 'Станом на {a}, перевірено {d}. Це не податкова консультація.', notAdvice: 'Це не податкова консультація', pad: 'Дані взято з офіційних джерел, посилання на які є на сторінках країн.', intro: 'Дані станом на {a} взято з офіційних джерел, наведених у таблиці; перевірено {d}.', hubSrc: 'Ставки, звільнення і примітки щодо декларування взято з офіційних джерел, посилання на які є на сторінці кожної країни.', hubFaq: 'Станом на {a}; сторінка кожної країни містить посилання на офіційні джерела (перевірено {d}).' },
+  ru: { src: 'Источник', checked: 'проверено', line: 'По состоянию на {a}, проверено {d}. Это не налоговая консультация.', notAdvice: 'Это не налоговая консультация', pad: 'Данные взяты из официальных источников, ссылки на которые есть на страницах стран.', intro: 'Данные по состоянию на {a} взяты из официальных источников, указанных в таблице; проверено {d}.', hubSrc: 'Ставки, освобождения и примечания по декларированию взяты из официальных источников, ссылки на которые есть на странице каждой страны.', hubFaq: 'По состоянию на {a}; на странице каждой страны есть ссылки на официальные источники (проверено {d}).' },
+  fr: { src: 'Source', checked: 'vérifiée le', line: 'Situation au {a}, vérifiée le {d}. Pas un conseil fiscal.', notAdvice: 'Pas un conseil fiscal', pad: 'Les données proviennent des sources officielles citées sur les pages pays.', intro: 'Données au {a}, issues des sources officielles citées dans le tableau, vérifiées le {d}.', hubSrc: 'Les taux, exonérations et notes de déclaration proviennent de sources officielles, citées sur chaque page pays.', hubFaq: 'Situation au {a} ; chaque page pays cite ses sources officielles (vérifiées le {d}).' },
+  es: { src: 'Fuente', checked: 'comprobada el', line: 'Datos del {a}, comprobados el {d}. No es asesoramiento fiscal.', notAdvice: 'No es asesoramiento fiscal', pad: 'Los datos proceden de las fuentes oficiales enlazadas en la página de cada país.', intro: 'Datos del {a}, tomados de las fuentes oficiales enlazadas en la tabla, comprobados el {d}.', hubSrc: 'Los tipos, las exenciones y las notas sobre la declaración proceden de fuentes oficiales, enlazadas en la página de cada país.', hubFaq: 'Datos del {a}; la página de cada país enlaza sus fuentes oficiales (comprobados el {d}).' }
+};
+function gfill(t, lang) { return t.replace('{a}', asOfByLang(lang)).replace('{d}', formatChecked(CHECKED, lang)); }
+/** "As of Q3 2026, checked 13 Oct 2026. Not tax advice." in the page language. */
+function guideLine(lang) { return gfill(GUIDE[lang].line, lang); }
+function guideText(lang, key) { return gfill(GUIDE[lang][key], lang); }
+function srcDomain(url) { return new URL(url).hostname.replace(/^www\./, ''); }
+/** Source link + check date, appended inside a table cell (HTML). */
+function srcTag(id, field, lang) {
+  const f = SOURCES_BY_ID[id][field];
+  const g = GUIDE[lang];
+  return `<br><small>${esc(g.src)}${lang === 'fr' ? ' ' : ''}: <a href="${esc(f.source)}" rel="noopener" target="_blank">${esc(srcDomain(f.source))}</a> (${esc(g.checked)} ${esc(formatChecked(CHECKED, lang))})</small>`;
+}
+/** Gain tax plus the optional health insurance contribution (healthLevyShort, Slovakia), for answers, FAQs, descriptions and hub tables. */
+function gainFull(t) { return t.healthLevyShort ? `${t.gainTax} + ${t.healthLevyShort}` : t.gainTax; }
+const HEALTH_LABEL = {
+  en: 'Health insurance', de: 'Krankenversicherung', sk: 'Zdravotné odvody', cs: 'Zdravotní pojištění', pl: 'Ubezpieczenie zdrowotne',
+  hu: 'Egészségbiztosítás', uk: 'Медичне страхування', ru: 'Медицинское страхование', fr: 'Assurance maladie', es: 'Seguro de salud'
+};
+/** Optional country-table row for the health insurance contribution, with its own source (tax-sources.json fields.healthLevy). */
+function healthRows(id, t, lang) {
+  if (!t.healthLevy) return [];
+  return [[HEALTH_LABEL[lang], esc(t.healthLevy) + srcTag(id, 'healthLevy', lang)]];
+}
+/** "Checked 13 Oct 2026." for meta descriptions. */
+function checkedSentence(lang) {
+  const c = GUIDE[lang].checked;
+  const d = formatChecked(CHECKED, lang);
+  return `${c.charAt(0).toUpperCase()}${c.slice(1)} ${d}${d.endsWith('.') ? '' : '.'}`;
+}
+/** WebPage node with the official sources as citations (JSON-LD). */
+function sourcesLd(id, relFile, lang) {
+  const seen = new Set();
+  const citation = [];
+  for (const k of [...TAX_FIELDS, ...TAX_OPTIONAL_FIELDS]) {
+    const f = SOURCES_BY_ID[id][k];
+    if (!f || seen.has(f.source)) continue;
+    seen.add(f.source);
+    citation.push({ '@type': 'CreativeWork', name: f.sourceTitle || srcDomain(f.source), url: f.source });
+  }
+  return { '@type': 'WebPage', '@id': abs(relFile), url: abs(relFile), inLanguage: lang, dateModified: CHECKED, citation };
+}
+/** Page chrome for the tax guides: check date instead of "Indicative 2026 overview", no dashes. */
+const GUIDE_KYC = {
+  uk: 'KYC і реєстрація відбуваються на регульованій платформі відповідного партнера. Virtuse є некастодіальним хабом і не зберігає кошти чи дані клієнтів цих платформ.',
+  ru: 'KYC и регистрация проходят на регулируемой платформе соответствующего партнёра. Virtuse является некастодиальным хабом и не хранит средства или данные клиентов этих платформ.'
+};
+function guideChrome(lang) {
+  return { ...CHROME[lang], disclaimerTax: guideLine(lang), ...(GUIDE_KYC[lang] ? { disclaimerKyc: GUIDE_KYC[lang] } : {}) };
+}
+/** Join description parts while they fit in 155 characters (first part required). */
+function descParts(...parts) {
+  let out = parts[0];
+  for (const p of parts.slice(1)) if ((out + ' ' + p).length <= 155) out += ' ' + p;
+  return out;
+}
 
 function slugEn(id) {
   const s = meta.slugs.en[id];
@@ -411,6 +527,7 @@ function neighborsOf(id) {
 
 function finalizeAnswer(parts, lang, kind = 'tax') {
   const fee = kind === 'fee';
+  const guide = kind === 'guide';
   const pads = lang === 'de'
     ? [
       `Angaben aus den Live-Modulen von Virtuse, Stand ${fee ? feeAsOfDe : asOfDe}.`,
@@ -462,6 +579,7 @@ function finalizeAnswer(parts, lang, kind = 'tax') {
       'Virtuse never holds your keys.',
       'Check local rules; not tax advice.'
     ];
+  if (guide) pads[0] = GUIDE[lang].pad;
   let text = fitWords(parts, 1, 60);
   for (const pad of pads) {
     if (wordCount(text) >= 40) break;
@@ -477,23 +595,23 @@ function finalizeAnswer(parts, lang, kind = 'tax') {
 
 function taxAnswerEn(c) {
   return finalizeAnswer([
-    `Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${c.gainTax}.`,
+    `Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`,
     `Exemption: ${c.exemption}.`,
     `Filing: ${c.filing}.`,
     c.note,
-    'Indicative 2026 overview, not tax advice.'
-  ], 'en');
+    guideLine('en')
+  ], 'en', 'guide');
 }
 
 function taxAnswerDe(c) {
   const d = meta.taxDe[c.id];
   return finalizeAnswer([
-    `Bitcoin-Steuern ${inDe(c.id)}, Stand ${asOfDe}: ${d.gainTax}.`,
+    `Bitcoin-Steuern ${inDe(c.id)}, Stand ${asOfDe}: ${gainFull(d)}.`,
     `Befreiung: ${d.exemption}.`,
     `Veranlagung: ${d.filing}.`,
     d.note,
-    'Unverbindlicher Überblick 2026, keine Steuerberatung.'
-  ], 'de');
+    guideLine('de')
+  ], 'de', 'guide');
 }
 
 function buyAnswerEn(c, winner) {
@@ -518,7 +636,7 @@ function taxFaqsEn(c) {
   return [
     {
       q: `What is the bitcoin tax rate in ${theEn(c)}?`,
-      a: `As of ${asOfEn}, bitcoin gains in ${theEn(c)} are taxed as follows: ${c.gainTax}. This is an indicative 2026 overview, not tax advice.`
+      a: `As of ${asOfEn}, bitcoin gains in ${theEn(c)} are taxed as follows: ${gainFull(c)}. Checked ${formatChecked(CHECKED, 'en')} against the official source linked on this page. Not tax advice.`
     },
     {
       q: `Is there a holding-period exemption in ${theEn(c)}?`,
@@ -541,7 +659,7 @@ function taxFaqsDe(c) {
   return [
     {
       q: `Wie werden Bitcoin-Gewinne ${inN} besteuert?`,
-      a: `Stand ${asOfDe}: ${d.gainTax}. Unverbindlicher Überblick 2026, keine Steuerberatung.`
+      a: `Stand ${asOfDe}: ${gainFull(d)}. ${checkedSentence('de')} ${GUIDE.de.notAdvice}.`
     },
     {
       q: `Gibt es eine Spekulationsfrist oder Haltedauer-Befreiung ${inN}?`,
@@ -568,7 +686,7 @@ function buyFaqsEn(c, winner) {
     {
       q: `Does buying bitcoin trigger tax in ${theEn(c)}?`,
       a: c.id === 'nl'
-        ? `The Netherlands does not use a classic capital gains tax. Box 3 wealth tax on a deemed return still applies to holdings (as of ${feeAsOfEn}: ${c.gainTax}).`
+        ? `The Netherlands does not use a classic capital gains tax. Box 3 wealth tax on a deemed return still applies to holdings (as of ${feeAsOfEn}: ${gainFull(c)}).`
         : `No. In this overview, tax arises when you sell or swap (a disposal), not when you buy. Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}. Indicative 2026 overview, not tax advice.`
     },
     {
@@ -601,7 +719,7 @@ function pushPage(spec) {
     asOfLabel: spec.asOfLabel || (isFeePage(spec.relFile)
       ? (spec.lang === 'fr' ? feeAsOfFr : spec.lang === 'es' ? feeAsOfEs : spec.lang === 'de' ? feeAsOfDe : feeAsOfEn)
       : (spec.lang === 'fr' ? asOfFr : spec.lang === 'es' ? asOfEs : spec.lang === 'de' ? asOfDe : asOfEn)),
-    chrome: CHROME[spec.lang]
+    chrome: spec.guide ? guideChrome(spec.lang) : CHROME[spec.lang]
   });
   generated.push({ relFile: spec.relFile, html, lang: spec.lang, noindex: !!spec.noindex, title: spec.title });
 }
@@ -621,25 +739,25 @@ function dac8Box(id, lang, relFile) {
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">${esc(c.name)}</a>`,
-    esc(c.gainTax),
+    esc(gainFull(c)),
     esc(c.exemption)
   ]);
   const faqs = [
-    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ')}. Figures are as of ${asOfEn}, taken from the Virtuse Tax module.` },
-    { q: 'Is this tax advice?', a: 'No. Indicative 2026 overview – not tax advice. Confirm current-year rules with a local advisor.' },
+    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ')}. ${guideText('en', 'hubFaq')}` },
+    { q: 'Is this tax advice?', a: `No. ${guideLine('en')} Confirm current-year rules with a local advisor.` },
     { q: 'Does Virtuse report my holdings to tax authorities?', a: 'No. Virtuse never holds your keys or your transaction history. Partners complete their own KYC.' },
     { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N} countries plus a multisig readiness check.` }
   ];
   const answer = finalizeAnswer([
     `This hub compares bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
-    'Rates, exemptions and filing notes come from the Virtuse Tax module.',
+    guideText('en', 'hubSrc'),
     'Germany exempts gains after a 1-year holding period, Croatia after 2 years and Czechia after 3; Slovenia does not tax private gains; the Netherlands taxes a deemed return under Box 3.',
-    'Indicative 2026 overview, not tax advice.'
-  ], 'en');
+    guideLine('en')
+  ], 'en', 'guide');
   pushPage({
-    relFile, lang: 'en',
+    relFile, lang: 'en', guide: true,
     title: assertTitle(`Bitcoin tax in ${N} EU countries (2026)`),
-    description: assertDescription(`Compare bitcoin tax rates, holding exemptions and filing notes for ${N} EU countries as of ${asOfEn}. Indicative overview, not tax advice.`),
+    description: assertDescription(descParts(`Compare bitcoin tax rates, holding exemptions and filing notes for ${N} EU countries as of ${asOfEn}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${N} EU countries`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -669,25 +787,25 @@ ${faqHtml(faqs, 'FAQ')}
   const enFile = 'bitcoin-tax/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `de/bitcoin-steuern/${slugDe(c.id)}/`))}">${esc(nameDe(c.id))}</a>`,
-    esc(meta.taxDe[c.id].gainTax),
+    esc(gainFull(meta.taxDe[c.id])),
     esc(meta.taxDe[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Welche Länder umfasst dieser Überblick?', a: `${N} EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. Stand ${asOfDe}, Zahlen aus dem Virtuse-Tax-Modul.` },
-    { q: 'Ist das Steuerberatung?', a: 'Nein. Unverbindlicher Überblick 2026 – keine Steuerberatung.' },
+    { q: 'Welche Länder umfasst dieser Überblick?', a: `${N} EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. ${guideText('de', 'hubFaq')}` },
+    { q: 'Ist das Steuerberatung?', a: `Nein. ${guideLine('de')}` },
     { q: 'Meldet Virtuse Bestände an Finanzämter?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel und führt keine Transaktionshistorie.' },
     { q: 'Wo prüfe ich neben der Steuer auch die Nachlassplanung?', a: `Im Tax- & Inheritance-Agent (Live-Modul) mit denselben ${N} Ländern plus Multisig-Check.` }
   ];
   const answer = finalizeAnswer([
     `Dieser Hub vergleicht die Bitcoin-Besteuerung in ${N} EU-Ländern, Stand ${asOfDe}.`,
-    'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus dem Virtuse-Tax-Modul.',
+    guideText('de', 'hubSrc'),
     'Deutschland: Spekulationsfrist 1 Jahr. Kroatien: 2 Jahre. Tschechien: 3-Jahres-Zeittest. Slowenien: private Gewinne steuerfrei. Niederlande: Box 3 statt Kapitalertragsteuer.',
-    'Unverbindlicher Überblick 2026, keine Steuerberatung.'
-  ], 'de');
+    guideLine('de')
+  ], 'de', 'guide');
   pushPage({
-    relFile, lang: 'de',
+    relFile, lang: 'de', guide: true,
     title: assertTitle(`Bitcoin-Steuern in ${N} EU-Ländern (2026)`),
-    description: assertDescription(`Bitcoin-Steuersätze, Spekulationsfrist und Steuererklärung in ${N} EU-Ländern, Stand ${asOfDe}. Unverbindlich, keine Steuerberatung.`),
+    description: assertDescription(descParts(`Bitcoin-Steuersätze, Spekulationsfrist und Steuererklärung in ${N} EU-Ländern, Stand ${asOfDe}.`, checkedSentence('de'), 'Keine Steuerberatung.')),
     h1: `Bitcoin-Steuern in ${N} EU-Ländern`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -718,12 +836,13 @@ for (const c of COUNTRIES) {
   const faqs = taxFaqsEn(c);
   const answer = taxAnswerEn(c);
   const body = `
-<p>${esc(c.flag)} <strong>${esc(TheEn(c))}</strong> is one of the ${N} EU countries in the Virtuse Tax module. The figures below are taken from that module as of ${esc(asOfEn)}.</p>
+<p>${esc(c.flag)} <strong>${esc(TheEn(c))}</strong> is one of the ${N} EU countries in this overview. ${esc(guideText('en', 'intro'))}</p>
 <h2>Rates and filing</h2>
 ${tableHtml(['Field', 'As of ' + asOfEn], [
-  ['Gain tax', esc(c.gainTax)],
-  ['Exemption', esc(c.exemption)],
-  ['Filing', esc(c.filing)],
+  ['Gain tax', esc(c.gainTax) + srcTag(c.id, 'gainTax', 'en')],
+  ...healthRows(c.id, c, 'en'),
+  ['Exemption', esc(c.exemption) + srcTag(c.id, 'exemption', 'en')],
+  ['Filing', esc(c.filing) + srcTag(c.id, 'filing', 'en')],
   ['Note', esc(c.note)]
 ])}
 ${dac8Box(c.id, 'en', enRel)}<h2>What usually creates a taxable event</h2>
@@ -734,9 +853,9 @@ ${dac8Box(c.id, 'en', enRel)}<h2>What usually creates a taxable event</h2>
 ${faqHtml(faqs, 'FAQ')}
 `;
   pushPage({
-    relFile: enRel, lang: 'en',
+    relFile: enRel, lang: 'en', guide: true,
     title: assertTitle(`Bitcoin tax in ${theEn(c)} (${asOfEn})`),
-    description: assertDescription(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${c.gainTax}. Indicative overview, not tax advice.`),
+    description: assertDescription(descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -751,7 +870,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(enRel, nbs[0] ? `bitcoin-tax/${slugEn(nbs[0].id)}/` : 'bitcoin-tax/'), label: nbs[0] ? `Bitcoin tax in ${theEn(nbs[0])}` : 'All country tax guides' }
     ],
     moduleCta: { href: toRoot(enRel, TAX_AGENT + `?country=${c.id}`), label: `Check ${theEn(c)} in the Tax Agent →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, enRel, 'en')],
     bodyHtml: body
   });
 
@@ -760,9 +879,9 @@ ${faqHtml(faqs, 'FAQ')}
   const answerDe = taxAnswerDe(c);
   // d.review is an internal note for content ops / the tax advisor; never published.
   pushPage({
-    relFile: deRel, lang: 'de',
+    relFile: deRel, lang: 'de', guide: true,
     title: assertTitle(`Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
-    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${d.gainTax}. Keine Steuerberatung.`),
+    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${gainFull(d)}. Keine Steuerberatung.`),
     h1: `Bitcoin-Steuern ${inDe(c.id)}`,
     answerHtml: esc(answerDe),
     breadcrumbs: [
@@ -777,14 +896,15 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern ${inDe(nbs[0].id)}` : 'Alle Länder' }
     ],
     moduleCta: { href: toRoot(deRel, TAX_AGENT + `?country=${c.id}`), label: `${nameDe(c.id)} im Tax-Agent prüfen →` },
-    schemas: [faqLd(faqsDe)],
+    schemas: [faqLd(faqsDe), sourcesLd(c.id, deRel, 'de')],
     bodyHtml: `
-<p>${esc(c.flag)} Zahlen Stand ${esc(asOfDe)}, übernommen aus dem Virtuse-Tax-Modul.</p>
+<p>${esc(c.flag)} ${esc(guideText('de', 'intro'))}</p>
 <h2>Sätze und Steuererklärung</h2>
 ${tableHtml(['Feld', 'Stand ' + asOfDe], [
-  ['Gewinnsteuer', esc(d.gainTax)],
-  ['Befreiung', esc(d.exemption)],
-  ['Steuererklärung', esc(d.filing)],
+  ['Gewinnsteuer', esc(d.gainTax) + srcTag(c.id, 'gainTax', 'de')],
+  ...healthRows(c.id, d, 'de'),
+  ['Befreiung', esc(d.exemption) + srcTag(c.id, 'exemption', 'de')],
+  ['Steuererklärung', esc(d.filing) + srcTag(c.id, 'filing', 'de')],
   ['Hinweis', esc(d.note)]
 ])}
 ${dac8Box(c.id, 'de', deRel)}<h2>Wann entsteht typischerweise Steuer?</h2>
@@ -835,7 +955,7 @@ for (const c of COUNTRIES) {
 ${tableHtml(['Rank', 'Partner', 'Method', 'Variable fee', 'Annual fee drag', 'Speed'], rows)}
 <p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription.${ranked.some((r) => r.illustrative) ? ' RevenueBot’s percentage is marked as illustrative in the source schedule.' : ''}</p>
 <h2>Tax in ${esc(theEn(c))}</h2>
-<p>Gain tax: ${esc(c.gainTax)}. Exemption: ${esc(c.exemption)}.</p>
+<p>Gain tax: ${esc(gainFull(c))}. Exemption: ${esc(c.exemption)}.</p>
 <p>Read the dedicated guide: <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">Bitcoin tax in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -1020,7 +1140,7 @@ ${faqHtml(faqs, 'FAQ')}
   ], 'en');
   const rows = COUNTRIES.map((c) => [
     `<a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">${esc(c.name)}</a>`,
-    esc(c.gainTax),
+    esc(gainFull(c)),
     esc(c.exemption)
   ]);
   pushPage({
@@ -1114,7 +1234,7 @@ ${faqHtml(faqs, 'FAQ')}
 <h2>Steuer beim Verkauf</h2>
 ${tableHtml(['Land', 'Gewinnsteuer', 'Befreiung'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `de/bitcoin-steuern/${slugDe(c.id)}/`))}">${esc(nameDe(c.id))}</a>`,
-  esc(meta.taxDe[c.id].gainTax),
+  esc(gainFull(meta.taxDe[c.id])),
   esc(meta.taxDe[c.id].exemption)
 ]))}
 <h2>Risiko beim Kredit</h2>
@@ -1773,25 +1893,25 @@ function skHome(relFile) { return { ...SK_HOME, href: toRoot(relFile, 'sk/index.
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(c.id)}/`))}">${esc(nameSk(c.id))}</a>`,
-    esc(meta.taxSk[c.id].gainTax),
+    esc(gainFull(meta.taxSk[c.id])),
     esc(meta.taxSk[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Ktoré krajiny tento prehľad pokrýva?', a: `${N} krajín EÚ: ${COUNTRIES.map((c) => nameSk(c.id)).join(', ')}. Stav ${asOfSk}, údaje z modulu Virtuse Tax.` },
-    { q: 'Ide o daňové poradenstvo?', a: 'Nie. Orientačný prehľad 2026 – nejde o daňové poradenstvo. Pravidlá pre aktuálny rok si overte u miestneho poradcu.' },
+    { q: 'Ktoré krajiny tento prehľad pokrýva?', a: `${N} krajín EÚ: ${COUNTRIES.map((c) => nameSk(c.id)).join(', ')}. ${guideText('sk', 'hubFaq')}` },
+    { q: 'Ide o daňové poradenstvo?', a: `Nie. ${guideLine('sk')} Pravidlá pre aktuálny rok si overte u miestneho poradcu.` },
     { q: 'Hlási Virtuse moje držby daňovým úradom?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče ani históriu vašich transakcií. KYC robia partneri sami.' },
     { q: 'Kde si okrem daní preverím aj dedenie?', a: `V module Tax & Inheritance Agent (live modul) s rovnakými ${N} krajinami a kontrolou pripravenosti na multisig.` }
   ];
   const answer = finalizeAnswer([
     `Tento prehľad porovnáva zdanenie Bitcoinu v ${N} krajinách EÚ, stav ${asOfSk}.`,
-    'Sadzby, oslobodenia a poznámky k daňovému priznaniu pochádzajú z modulu Virtuse Tax.',
+    guideText('sk', 'hubSrc'),
     'Nemecko oslobodzuje zisky po 1 roku držby, Chorvátsko po 2 rokoch a Česko po 3 rokoch; Slovinsko súkromné zisky nezdaňuje a Holandsko zdaňuje predpokladaný výnos (Box 3).',
-    'Orientačný prehľad 2026, nejde o daňové poradenstvo.'
-  ], 'sk');
+    guideLine('sk')
+  ], 'sk', 'guide');
   pushPage({
-    relFile, lang: 'sk',
+    relFile, lang: 'sk', guide: true,
     title: assertTitle(`Dane z Bitcoinu v ${N} krajinách EÚ (2026)`),
-    description: assertDescription(`Sadzby dane z Bitcoinu, oslobodenia podľa doby držby a daňové priznanie v ${N} krajinách EÚ, stav ${asOfSk}. Orientačný prehľad.`),
+    description: assertDescription(descParts(`Sadzby dane z Bitcoinu, oslobodenia podľa doby držby a daňové priznanie v ${N} krajinách EÚ, stav ${asOfSk}.`, checkedSentence('sk'))),
     h1: `Dane z Bitcoinu v ${N} krajinách EÚ`,
     answerHtml: esc(answer),
     breadcrumbs: [skHome(relFile), { name: 'Dane z Bitcoinu', abs: abs(relFile) }],
@@ -1821,22 +1941,22 @@ for (const c of COUNTRIES) {
   const inN = inSk(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Aká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfSk}: ${t.gainTax}. Orientačný prehľad 2026, nejde o daňové poradenstvo.` },
+    { q: `Aká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfSk}: ${gainFull(t)}. ${checkedSentence('sk')} ${GUIDE.sk.notAdvice}.` },
     { q: `Existuje ${inN} oslobodenie podľa doby držby?`, a: `${t.exemption}. Pred podaním priznania si pravidlá pre aktuálny rok overte u miestneho daňového poradcu.` },
     { q: `Ako sa ${inN} podáva daňové priznanie?`, a: `${t.filing}. ${t.note}` },
     { q: 'Drží Virtuse môj Bitcoin alebo podáva moje daňové priznanie?', a: `Nie. Virtuse nikdy nedrží vaše kľúče. KYC a registrácia prebiehajú u partnera. Tax Agent porovná prehľad ${N} krajín; daňové priznanie pripraví kvalifikovaný daňový poradca.` }
   ];
   const answer = finalizeAnswer([
-    `Dane z Bitcoinu ${inN}, stav ${asOfSk}: ${t.gainTax}.`,
+    `Dane z Bitcoinu ${inN}, stav ${asOfSk}: ${gainFull(t)}.`,
     `Oslobodenie: ${t.exemption}.`,
     `Priznanie: ${t.filing}.`,
     t.note,
-    'Orientačný prehľad 2026, nejde o daňové poradenstvo.'
-  ], 'sk');
+    guideLine('sk')
+  ], 'sk', 'guide');
   pushPage({
-    relFile, lang: 'sk',
+    relFile, lang: 'sk', guide: true,
     title: assertTitle(`Dane z Bitcoinu ${inN} (${asOfSk})`),
-    description: assertDescription(`Dane z Bitcoinu ${inN} (${asOfSk}): ${t.gainTax}. Nejde o daňové poradenstvo.`),
+    description: assertDescription(`Dane z Bitcoinu ${inN} (${asOfSk}): ${gainFull(t)}. Nejde o daňové poradenstvo.`),
     h1: `Dane z Bitcoinu ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1851,14 +1971,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' }
     ],
     moduleCta: { href: toRoot(relFile, `sk/${TAX_AGENT}?country=${c.id}`), label: `Skontrolovať ${nameSk(c.id)} v Tax Agentovi →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'sk')],
     bodyHtml: `
-<p>${esc(c.flag)} Údaje so stavom ${esc(asOfSk)}, prevzaté z modulu Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('sk', 'intro'))}</p>
 <h2>Sadzby a daňové priznanie</h2>
 ${tableHtml(['Údaj', 'Stav ' + asOfSk], [
-  ['Daň zo ziskov', esc(t.gainTax)],
-  ['Oslobodenie', esc(t.exemption)],
-  ['Daňové priznanie', esc(t.filing)],
+  ['Daň zo ziskov', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'sk')],
+  ...healthRows(c.id, t, 'sk'),
+  ['Oslobodenie', esc(t.exemption) + srcTag(c.id, 'exemption', 'sk')],
+  ['Daňové priznanie', esc(t.filing) + srcTag(c.id, 'filing', 'sk')],
   ['Poznámka', esc(t.note)]
 ])}
 ${dac8Box(c.id, 'sk', relFile)}<h2>Kedy zvyčajne vzniká daň?</h2>
@@ -2071,7 +2192,7 @@ ${faqHtml(faqs, 'Časté otázky')}
 <h2>Daň pri predaji</h2>
 ${tableHtml(['Krajina', 'Daň zo ziskov', 'Oslobodenie'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `sk/bitcoin-dane/${slugSk(c.id)}/`))}">${esc(nameSk(c.id))}</a>`,
-  esc(meta.taxSk[c.id].gainTax),
+  esc(gainFull(meta.taxSk[c.id])),
   esc(meta.taxSk[c.id].exemption)
 ]))}
 <h2>Riziko pri pôžičke</h2>
@@ -2200,25 +2321,25 @@ function csHome(relFile) { return { name: 'Domů', href: toRoot(relFile, 'cs/ind
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(c.id)}/`))}">${esc(nameCs(c.id))}</a>`,
-    esc(meta.taxCs[c.id].gainTax),
+    esc(gainFull(meta.taxCs[c.id])),
     esc(meta.taxCs[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Které země tento přehled pokrývá?', a: `${N} zemí EU: ${COUNTRIES.map((c) => nameCs(c.id)).join(', ')}. Stav ${asOfCs}, údaje z modulu Virtuse Tax.` },
-    { q: 'Jde o daňové poradenství?', a: 'Ne. Orientační přehled 2026 – nejde o daňové poradenství. Pravidla pro aktuální rok si ověřte u místního poradce.' },
+    { q: 'Které země tento přehled pokrývá?', a: `${N} zemí EU: ${COUNTRIES.map((c) => nameCs(c.id)).join(', ')}. ${guideText('cs', 'hubFaq')}` },
+    { q: 'Jde o daňové poradenství?', a: `Ne. ${guideLine('cs')} Pravidla pro aktuální rok si ověřte u místního poradce.` },
     { q: 'Hlásí Virtuse moje držby finančnímu úřadu?', a: 'Ne. Virtuse nikdy nedrží vaše klíče ani historii vašich transakcí. KYC provádějí partneři sami.' },
     { q: 'Kde si kromě daní prověřím i dědění?', a: `V modulu Tax & Inheritance Agent (živý modul) se stejnými ${N} zeměmi a kontrolou připravenosti na multisig.` }
   ];
   const answer = finalizeAnswer([
     `Tento přehled porovnává zdanění Bitcoinu v ${N} zemích EU, stav ${asOfCs}.`,
-    'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z modulu Virtuse Tax.',
+    guideText('cs', 'hubSrc'),
     'Německo osvobozuje zisky po 1 roce držení, Chorvatsko po 2 letech a Česko po 3 letech; Slovinsko soukromé zisky nedaní a Nizozemsko daní předpokládaný výnos (Box 3).',
-    'Orientační přehled 2026, nejde o daňové poradenství.'
-  ], 'cs');
+    guideLine('cs')
+  ], 'cs', 'guide');
   pushPage({
-    relFile, lang: 'cs',
+    relFile, lang: 'cs', guide: true,
     title: assertTitle(`Daně z Bitcoinu v ${N} zemích EU (2026)`),
-    description: assertDescription(`Sazby daně z Bitcoinu, osvobození podle doby držení a daňové přiznání v ${N} zemích EU, stav ${asOfCs}. Orientační přehled.`),
+    description: assertDescription(descParts(`Sazby daně z Bitcoinu, osvobození podle doby držení a daňové přiznání v ${N} zemích EU, stav ${asOfCs}.`, checkedSentence('cs'))),
     h1: `Daně z Bitcoinu v ${N} zemích EU`,
     answerHtml: esc(answer),
     breadcrumbs: [csHome(relFile), { name: 'Daně z Bitcoinu', abs: abs(relFile) }],
@@ -2248,22 +2369,22 @@ for (const c of COUNTRIES) {
   const inN = inCs(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Jaká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfCs}: ${t.gainTax}. Orientační přehled 2026, nejde o daňové poradenství.` },
+    { q: `Jaká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfCs}: ${gainFull(t)}. ${checkedSentence('cs')} ${GUIDE.cs.notAdvice}.` },
     { q: `Existuje ${inN} osvobození podle doby držení?`, a: `${t.exemption}. Před podáním přiznání si pravidla pro aktuální rok ověřte u místního daňového poradce.` },
     { q: `Jak se ${inN} podává daňové přiznání?`, a: `${t.filing}. ${t.note}` },
     { q: 'Drží Virtuse můj Bitcoin nebo podává moje daňové přiznání?', a: `Ne. Virtuse nikdy nedrží vaše klíče. KYC a registrace probíhají u partnera. Tax Agent porovná přehled ${N} zemí; daňové přiznání připraví kvalifikovaný daňový poradce.` }
   ];
   const answer = finalizeAnswer([
-    `Daně z Bitcoinu ${inN}, stav ${asOfCs}: ${t.gainTax}.`,
+    `Daně z Bitcoinu ${inN}, stav ${asOfCs}: ${gainFull(t)}.`,
     `Osvobození: ${t.exemption}.`,
     `Přiznání: ${t.filing}.`,
     t.note,
-    'Orientační přehled 2026, nejde o daňové poradenství.'
-  ], 'cs');
+    guideLine('cs')
+  ], 'cs', 'guide');
   pushPage({
-    relFile, lang: 'cs',
+    relFile, lang: 'cs', guide: true,
     title: assertTitle(`Daně z Bitcoinu ${inN} (${asOfCs})`),
-    description: assertDescription(`Daně z Bitcoinu ${inN} (${asOfCs}): ${t.gainTax}. Nejde o daňové poradenství.`),
+    description: assertDescription(`Daně z Bitcoinu ${inN} (${asOfCs}): ${gainFull(t)}. Nejde o daňové poradenství.`),
     h1: `Daně z Bitcoinu ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2278,14 +2399,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `cs/bitcoin-dane/${slugCs(nbs[0].id)}/` : 'cs/bitcoin-dane/'), label: nbs[0] ? `Daně z Bitcoinu ${inCs(nbs[0].id)}` : 'Všechny země' }
     ],
     moduleCta: { href: toRoot(relFile, `cs/${TAX_AGENT}?country=${c.id}`), label: `Zkontrolovat ${accCs(c.id)} v Tax Agentovi →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'cs')],
     bodyHtml: `
-<p>${esc(c.flag)} Údaje ke stavu ${esc(asOfCs)}, převzaté z modulu Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('cs', 'intro'))}</p>
 <h2>Sazby a daňové přiznání</h2>
 ${tableHtml(['Údaj', 'Stav ' + asOfCs], [
-  ['Daň ze zisků', esc(t.gainTax)],
-  ['Osvobození', esc(t.exemption)],
-  ['Daňové přiznání', esc(t.filing)],
+  ['Daň ze zisků', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'cs')],
+  ...healthRows(c.id, t, 'cs'),
+  ['Osvobození', esc(t.exemption) + srcTag(c.id, 'exemption', 'cs')],
+  ['Daňové přiznání', esc(t.filing) + srcTag(c.id, 'filing', 'cs')],
   ['Poznámka', esc(t.note)]
 ])}
 ${dac8Box(c.id, 'cs', relFile)}<h2>Kdy obvykle vzniká daň?</h2>
@@ -2397,7 +2519,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
 <h2>Daň při prodeji</h2>
 ${tableHtml(['Země', 'Daň ze zisků', 'Osvobození'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `cs/bitcoin-dane/${slugCs(c.id)}/`))}">${esc(nameCs(c.id))}</a>`,
-  esc(meta.taxCs[c.id].gainTax),
+  esc(gainFull(meta.taxCs[c.id])),
   esc(meta.taxCs[c.id].exemption)
 ]))}
 <h2>Riziko při půjčce</h2>
@@ -2528,25 +2650,25 @@ function descFit(main, tail) { return (main + ' ' + tail).length <= 155 ? `${mai
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(c.id)}/`))}">${esc(namePl(c.id))}</a>`,
-    esc(meta.taxPl[c.id].gainTax),
+    esc(gainFull(meta.taxPl[c.id])),
     esc(meta.taxPl[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Jakie kraje obejmuje ten przegląd?', a: `${N} krajów UE: ${COUNTRIES.map((c) => namePl(c.id)).join(', ')}. Stan na ${asOfPl}, dane z modułu Virtuse Tax.` },
-    { q: 'Czy to porada podatkowa?', a: 'Nie. Przegląd orientacyjny 2026, nie stanowi porady podatkowej. Zasady na bieżący rok warto potwierdzić z lokalnym doradcą.' },
+    { q: 'Jakie kraje obejmuje ten przegląd?', a: `${N} krajów UE: ${COUNTRIES.map((c) => namePl(c.id)).join(', ')}. ${guideText('pl', 'hubFaq')}` },
+    { q: 'Czy to porada podatkowa?', a: `Nie. ${guideLine('pl')} Zasady na bieżący rok warto potwierdzić z lokalnym doradcą.` },
     { q: 'Czy Virtuse zgłasza moje aktywa do urzędu skarbowego?', a: 'Nie. Virtuse nigdy nie przechowuje Państwa kluczy ani historii transakcji. KYC przeprowadzają sami partnerzy.' },
     { q: 'Gdzie oprócz podatków sprawdzę też dziedziczenie?', a: `W module Tax & Inheritance Agent, z tymi samymi ${N} krajami i oceną gotowości do multisig.` }
   ];
   const answer = finalizeAnswer([
     `Ten przegląd porównuje opodatkowanie Bitcoina w ${N} krajach UE, stan na ${asOfPl}.`,
-    'Stawki, zwolnienia i uwagi dotyczące zeznania pochodzą z modułu Virtuse Tax.',
+    guideText('pl', 'hubSrc'),
     'Niemcy zwalniają zyski po roku posiadania, Chorwacja po 2 latach, a Czechy po 3 latach; Słowenia nie opodatkowuje prywatnych zysków, a Holandia opodatkowuje domniemany zwrot (Box 3).',
-    'Przegląd orientacyjny 2026, nie stanowi porady podatkowej.'
-  ], 'pl');
+    guideLine('pl')
+  ], 'pl', 'guide');
   pushPage({
-    relFile, lang: 'pl',
+    relFile, lang: 'pl', guide: true,
     title: assertTitle(`Podatek od Bitcoina w ${N} krajach UE (2026)`),
-    description: assertDescription(`Stawki podatku od Bitcoina, zwolnienia za okres posiadania i zeznanie podatkowe w ${N} krajach UE, stan na ${asOfPl}. Przegląd orientacyjny.`),
+    description: assertDescription(descParts(`Stawki podatku od Bitcoina, zwolnienia za okres posiadania i zeznanie podatkowe w ${N} krajach UE, stan na ${asOfPl}.`, checkedSentence('pl'))),
     h1: `Podatek od Bitcoina w ${N} krajach UE`,
     answerHtml: esc(answer),
     breadcrumbs: [plHome(relFile), { name: 'Podatek od Bitcoina', abs: abs(relFile) }],
@@ -2576,22 +2698,22 @@ for (const c of COUNTRIES) {
   const inN = inPl(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Ile wynosi podatek od Bitcoina ${inN}?`, a: `Stan na ${asOfPl}: ${t.gainTax}. Przegląd orientacyjny 2026, nie stanowi porady podatkowej.` },
+    { q: `Ile wynosi podatek od Bitcoina ${inN}?`, a: `Stan na ${asOfPl}: ${gainFull(t)}. ${checkedSentence('pl')} ${GUIDE.pl.notAdvice}.` },
     { q: `Czy ${inN} jest zwolnienie za okres posiadania?`, a: `${t.exemption}. Przed złożeniem zeznania warto potwierdzić zasady na bieżący rok z lokalnym doradcą podatkowym.` },
     { q: `Jak ${inN} rozlicza się podatek od Bitcoina?`, a: `${t.filing}. ${t.note}` },
     { q: 'Czy Virtuse przechowuje mój Bitcoin albo składa za mnie zeznanie?', a: `Nie. Virtuse nigdy nie przechowuje Państwa kluczy. KYC i rejestracja odbywają się u partnera. Tax Agent porówna przegląd ${N} krajów; zeznanie przygotuje wykwalifikowany doradca podatkowy.` }
   ];
   const answer = finalizeAnswer([
-    `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${t.gainTax}.`,
+    `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${gainFull(t)}.`,
     `Zwolnienie: ${t.exemption}.`,
     `Zeznanie: ${t.filing}.`,
     t.note,
-    'Przegląd orientacyjny 2026, nie stanowi porady podatkowej.'
-  ], 'pl');
+    guideLine('pl')
+  ], 'pl', 'guide');
   pushPage({
-    relFile, lang: 'pl',
+    relFile, lang: 'pl', guide: true,
     title: assertTitle(`Podatek od Bitcoina ${inN} (${asOfPl})`),
-    description: assertDescription(descFit(`Podatek od Bitcoina ${inN} (${asOfPl}): ${t.gainTax}.`, 'Nie stanowi porady podatkowej.')),
+    description: assertDescription(descFit(`Podatek od Bitcoina ${inN} (${asOfPl}): ${gainFull(t)}.`, 'Nie stanowi porady podatkowej.')),
     h1: `Podatek od Bitcoina ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2606,14 +2728,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `pl/bitcoin-podatki/${slugPl(nbs[0].id)}/` : 'pl/bitcoin-podatki/'), label: nbs[0] ? `Podatek od Bitcoina ${inPl(nbs[0].id)}` : 'Wszystkie kraje' }
     ],
     moduleCta: { href: toRoot(relFile, `pl/${TAX_AGENT}?country=${c.id}`), label: `Sprawdź ${accPl(c.id)} w Tax Agencie →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'pl')],
     bodyHtml: `
-<p>${esc(c.flag)} Dane według stanu na ${esc(asOfPl)}, przejęte z modułu Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('pl', 'intro'))}</p>
 <h2>Stawki i zeznanie podatkowe</h2>
 ${tableHtml(['Pole', 'Stan na ' + asOfPl], [
-  ['Podatek od zysków', esc(t.gainTax)],
-  ['Zwolnienie', esc(t.exemption)],
-  ['Zeznanie podatkowe', esc(t.filing)],
+  ['Podatek od zysków', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'pl')],
+  ...healthRows(c.id, t, 'pl'),
+  ['Zwolnienie', esc(t.exemption) + srcTag(c.id, 'exemption', 'pl')],
+  ['Zeznanie podatkowe', esc(t.filing) + srcTag(c.id, 'filing', 'pl')],
   ['Uwaga', esc(t.note)]
 ])}
 ${dac8Box(c.id, 'pl', relFile)}<h2>Kiedy zwykle powstaje podatek?</h2>
@@ -2725,7 +2848,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
 <h2>Podatek przy sprzedaży</h2>
 ${tableHtml(['Kraj', 'Podatek od zysków', 'Zwolnienie'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `pl/bitcoin-podatki/${slugPl(c.id)}/`))}">${esc(namePl(c.id))}</a>`,
-  esc(meta.taxPl[c.id].gainTax),
+  esc(gainFull(meta.taxPl[c.id])),
   esc(meta.taxPl[c.id].exemption)
 ]))}
 <h2>Ryzyko przy pożyczce</h2>
@@ -2854,25 +2977,25 @@ function huHome(relFile) { return { name: 'Főoldal', href: toRoot(relFile, 'hu/
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(c.id)}/`))}">${esc(nameHu(c.id))}</a>`,
-    esc(meta.taxHu[c.id].gainTax),
+    esc(gainFull(meta.taxHu[c.id])),
     esc(meta.taxHu[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Mely országokra terjed ki az áttekintés?', a: `${N} EU-ország: ${COUNTRIES.map((c) => nameHu(c.id)).join(', ')}. ${asOfHu} állapot szerint, adatok a Virtuse Tax modulból.` },
-    { q: 'Adótanácsadásnak számít ez?', a: 'Nem. Tájékoztató áttekintés 2026, nem adótanácsadás. A tárgyévi szabályokat érdemes helyi tanácsadóval egyeztetni.' },
+    { q: 'Mely országokra terjed ki az áttekintés?', a: `${N} EU-ország: ${COUNTRIES.map((c) => nameHu(c.id)).join(', ')}. ${guideText('hu', 'hubFaq')}` },
+    { q: 'Adótanácsadásnak számít ez?', a: `Nem. ${guideLine('hu')} A tárgyévi szabályokat érdemes helyi tanácsadóval egyeztetni.` },
     { q: 'Jelenti a Virtuse az eszközeimet az adóhatóságnak?', a: 'Nem. A Virtuse soha nem kezeli az Ön kulcsait és a tranzakciós előzményeit sem. A KYC-t a partnerek végzik.' },
     { q: 'Hol nézhetem meg az adók mellett az öröklést is?', a: `A Tax & Inheritance Agent modulban, ugyanazzal a ${N} országgal és multisig-felkészültségi ellenőrzéssel.` }
   ];
   const answer = finalizeAnswer([
     `Ez az áttekintés ${N} EU-ország Bitcoin-adózását hasonlítja össze, ${asOfHu} állapot szerint.`,
-    'Az adókulcsok, a mentességek és a bevallási tudnivalók a Virtuse Tax modulból származnak.',
+    guideText('hu', 'hubSrc'),
     'Németország 1 év, Horvátország 2 év, Csehország 3 év tartás után mentesíti a nyereséget; Szlovénia nem adóztatja a magánszemélyek nyereségét, Hollandia a vélelmezett hozamot adóztatja (Box 3).',
-    'Tájékoztató áttekintés 2026, nem adótanácsadás.'
-  ], 'hu');
+    guideLine('hu')
+  ], 'hu', 'guide');
   pushPage({
-    relFile, lang: 'hu',
+    relFile, lang: 'hu', guide: true,
     title: assertTitle(`Bitcoin-adózás ${N} EU-országban (2026)`),
-    description: assertDescription(`Bitcoin-adókulcsok, tartási idő utáni mentességek és bevallás ${N} EU-országban, ${asOfHu} állapot szerint. Tájékoztató áttekintés.`),
+    description: assertDescription(descParts(`Bitcoin-adókulcsok, tartási idő utáni mentességek és bevallás ${N} EU-országban, ${asOfHu} állapot szerint.`, checkedSentence('hu'))),
     h1: `Bitcoin-adózás ${N} EU-országban`,
     answerHtml: esc(answer),
     breadcrumbs: [huHome(relFile), { name: 'Bitcoin-adózás', abs: abs(relFile) }],
@@ -2902,22 +3025,22 @@ for (const c of COUNTRIES) {
   const inN = inHu(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Mennyi a Bitcoin adója ${inN}?`, a: `${asOfHu} állapot szerint: ${t.gainTax}. Tájékoztató áttekintés 2026, nem adótanácsadás.` },
+    { q: `Mennyi a Bitcoin adója ${inN}?`, a: `${asOfHu} állapot szerint: ${gainFull(t)}. ${checkedSentence('hu')} ${GUIDE.hu.notAdvice}.` },
     { q: `Van ${inN} tartási idő utáni mentesség?`, a: `${t.exemption}. A bevallás előtt érdemes a tárgyévi szabályokat helyi adótanácsadóval egyeztetni.` },
     { q: `Hogyan kell ${inN} bevallani a Bitcoin-nyereséget?`, a: `${t.filing}. ${t.note}` },
     { q: 'A Virtuse kezeli a Bitcoinomat, vagy beadja helyettem a bevallást?', a: `Nem. A Virtuse soha nem kezeli az Ön kulcsait. A KYC és a regisztráció a partnernél történik. A Tax Agent összeveti a ${N} ország adatait; a bevallást képzett adótanácsadó készíti el.` }
   ];
   const answer = finalizeAnswer([
-    `Bitcoin-adózás ${inN} (${asOfHu} állapot szerint): ${t.gainTax}.`,
+    `Bitcoin-adózás ${inN} (${asOfHu} állapot szerint): ${gainFull(t)}.`,
     `Mentesség: ${t.exemption}.`,
     `Bevallás: ${t.filing}.`,
     t.note,
-    'Tájékoztató áttekintés 2026, nem adótanácsadás.'
-  ], 'hu');
+    guideLine('hu')
+  ], 'hu', 'guide');
   pushPage({
-    relFile, lang: 'hu',
+    relFile, lang: 'hu', guide: true,
     title: assertTitle(`Bitcoin-adózás ${inN} (${asOfHu})`),
-    description: assertDescription(descFit(`Bitcoin-adózás ${inN} (${asOfHu}): ${t.gainTax}.`, 'Nem adótanácsadás.')),
+    description: assertDescription(descFit(`Bitcoin-adózás ${inN} (${asOfHu}): ${gainFull(t)}.`, 'Nem adótanácsadás.')),
     h1: `Bitcoin-adózás ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2932,14 +3055,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `hu/bitcoin-adozas/${slugHu(nbs[0].id)}/` : 'hu/bitcoin-adozas/'), label: nbs[0] ? `Bitcoin-adózás ${inHu(nbs[0].id)}` : 'Minden ország' }
     ],
     moduleCta: { href: toRoot(relFile, `hu/${TAX_AGENT}?country=${c.id}`), label: `${nameHu(c.id)} ellenőrzése a Tax Agentben →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'hu')],
     bodyHtml: `
-<p>${esc(c.flag)} Adatok ${esc(asOfHu)} állapot szerint, a Virtuse Tax modulból.</p>
+<p>${esc(c.flag)} ${esc(guideText('hu', 'intro'))}</p>
 <h2>Adókulcsok és bevallás</h2>
 ${tableHtml(['Adat', asOfHu + ' állapot'], [
-  ['Nyereségadó', esc(t.gainTax)],
-  ['Mentesség', esc(t.exemption)],
-  ['Bevallás', esc(t.filing)],
+  ['Nyereségadó', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'hu')],
+  ...healthRows(c.id, t, 'hu'),
+  ['Mentesség', esc(t.exemption) + srcTag(c.id, 'exemption', 'hu')],
+  ['Bevallás', esc(t.filing) + srcTag(c.id, 'filing', 'hu')],
   ['Megjegyzés', esc(t.note)]
 ])}
 ${dac8Box(c.id, 'hu', relFile)}<h2>Mikor keletkezik általában adó?</h2>
@@ -3051,7 +3175,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
 <h2>Adó eladáskor</h2>
 ${tableHtml(['Ország', 'Nyereségadó', 'Mentesség'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `hu/bitcoin-adozas/${slugHu(c.id)}/`))}">${esc(nameHu(c.id))}</a>`,
-  esc(meta.taxHu[c.id].gainTax),
+  esc(gainFull(meta.taxHu[c.id])),
   esc(meta.taxHu[c.id].exemption)
 ]))}
 <h2>Kockázat hitel esetén</h2>
@@ -3180,25 +3304,25 @@ function ukHome(relFile) { return { name: 'Головна', href: toRoot(relFile
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(c.id)}/`))}">${esc(nameUk(c.id))}</a>`,
-    esc(meta.taxUk[c.id].gainTax),
+    esc(gainFull(meta.taxUk[c.id])),
     esc(meta.taxUk[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Які країни охоплює цей огляд?', a: `${N} країн ЄС: ${COUNTRIES.map((c) => nameUk(c.id)).join(', ')}. Станом на ${asOfUk}, дані з модуля Virtuse Tax.` },
-    { q: 'Це податкова консультація?', a: 'Ні. Довідковий огляд 2026, не є податковою консультацією. Правила поточного року уточніть у місцевого консультанта.' },
+    { q: 'Які країни охоплює цей огляд?', a: `${N} країн ЄС: ${COUNTRIES.map((c) => nameUk(c.id)).join(', ')}. ${guideText('uk', 'hubFaq')}` },
+    { q: 'Це податкова консультація?', a: `Ні. ${guideLine('uk')} Правила поточного року уточніть у місцевого консультанта.` },
     { q: 'Чи повідомляє Virtuse про мої активи податковій службі?', a: 'Ні. Virtuse ніколи не зберігає ваші ключі чи історію транзакцій. KYC проводять самі партнери.' },
     { q: 'Де, крім податків, перевірити й спадкування?', a: `У модулі Tax & Inheritance Agent, з тими самими ${N} країнами та перевіркою готовності до мультипідпису.` }
   ];
   const answer = finalizeAnswer([
     `Цей огляд порівнює оподаткування Біткоїна в ${N} країнах ЄС станом на ${asOfUk}.`,
-    'Ставки, звільнення і примітки щодо декларування взято з модуля Virtuse Tax.',
-    'Німеччина звільняє прибуток після 1 року володіння, Хорватія — після 2 років, Чехія — після 3; Словенія не оподатковує приватний прибуток, а Нідерланди оподатковують умовний дохід (Box 3).',
-    'Довідковий огляд 2026, не є податковою консультацією.'
-  ], 'uk');
+    guideText('uk', 'hubSrc'),
+    'Німеччина звільняє прибуток після 1 року володіння, Хорватія після 2 років, Чехія після 3; Словенія не оподатковує приватний прибуток, а Нідерланди оподатковують умовний дохід (Box 3).',
+    guideLine('uk')
+  ], 'uk', 'guide');
   pushPage({
-    relFile, lang: 'uk',
+    relFile, lang: 'uk', guide: true,
     title: assertTitle(`Податки на Біткоїн у ${N} країнах ЄС (2026)`),
-    description: assertDescription(`Ставки податку на Біткоїн, звільнення за строк володіння і декларування в ${N} країнах ЄС станом на ${asOfUk}. Довідковий огляд.`),
+    description: assertDescription(descParts(`Ставки податку на Біткоїн, звільнення за строк володіння і декларування в ${N} країнах ЄС станом на ${asOfUk}.`, checkedSentence('uk'))),
     h1: `Податки на Біткоїн у ${N} країнах ЄС`,
     answerHtml: esc(answer),
     breadcrumbs: [ukHome(relFile), { name: 'Податки на Біткоїн', abs: abs(relFile) }],
@@ -3228,22 +3352,22 @@ for (const c of COUNTRIES) {
   const inN = inUk(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Який податок на Біткоїн ${inN}?`, a: `Станом на ${asOfUk}: ${t.gainTax}. Довідковий огляд 2026, не є податковою консультацією.` },
+    { q: `Який податок на Біткоїн ${inN}?`, a: `Станом на ${asOfUk}: ${gainFull(t)}. ${checkedSentence('uk')} ${GUIDE.uk.notAdvice}.` },
     { q: `Чи є ${inN} звільнення за строк володіння?`, a: `${t.exemption}. Перед поданням декларації уточніть правила поточного року в місцевого податкового консультанта.` },
     { q: `Як ${inN} декларують прибуток від Біткоїна?`, a: `${t.filing}. ${t.note}` },
     { q: 'Чи зберігає Virtuse мій Біткоїн або подає за мене декларацію?', a: `Ні. Virtuse ніколи не зберігає ваші ключі. KYC і реєстрація відбуваються в партнера. Tax Agent порівняє огляд ${N} країн; декларацію підготує кваліфікований податковий консультант.` }
   ];
   const answer = finalizeAnswer([
-    `Податки на Біткоїн ${inN} станом на ${asOfUk}: ${t.gainTax}.`,
+    `Податки на Біткоїн ${inN} станом на ${asOfUk}: ${gainFull(t)}.`,
     `Звільнення: ${t.exemption}.`,
     `Декларування: ${t.filing}.`,
     t.note,
-    'Довідковий огляд 2026, не є податковою консультацією.'
-  ], 'uk');
+    guideLine('uk')
+  ], 'uk', 'guide');
   pushPage({
-    relFile, lang: 'uk',
+    relFile, lang: 'uk', guide: true,
     title: assertTitle(`Податки на Біткоїн ${inN} (${asOfUk})`),
-    description: assertDescription(descFit(`Податки на Біткоїн ${inN} (${asOfUk}): ${t.gainTax}.`, 'Не є податковою консультацією.')),
+    description: assertDescription(descFit(`Податки на Біткоїн ${inN} (${asOfUk}): ${gainFull(t)}.`, 'Не є податковою консультацією.')),
     h1: `Податки на Біткоїн ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3258,14 +3382,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `uk/bitcoin-podatky/${slugUk(nbs[0].id)}/` : 'uk/bitcoin-podatky/'), label: nbs[0] ? `Податки на Біткоїн ${inUk(nbs[0].id)}` : 'Усі країни' }
     ],
     moduleCta: { href: toRoot(relFile, `uk/${TAX_AGENT}?country=${c.id}`), label: `Перевірити ${accUk(c.id)} у Tax Agent →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'uk')],
     bodyHtml: `
-<p>${esc(c.flag)} Дані станом на ${esc(asOfUk)}, взято з модуля Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('uk', 'intro'))}</p>
 <h2>Ставки й декларування</h2>
 ${tableHtml(['Поле', 'Станом на ' + asOfUk], [
-  ['Податок на прибуток', esc(t.gainTax)],
-  ['Звільнення', esc(t.exemption)],
-  ['Декларування', esc(t.filing)],
+  ['Податок на прибуток', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'uk')],
+  ...healthRows(c.id, t, 'uk'),
+  ['Звільнення', esc(t.exemption) + srcTag(c.id, 'exemption', 'uk')],
+  ['Декларування', esc(t.filing) + srcTag(c.id, 'filing', 'uk')],
   ['Примітка', esc(t.note)]
 ])}
 <h2>Коли зазвичай виникає податок?</h2>
@@ -3377,7 +3502,7 @@ ${faqHtml(faqs, 'Часті запитання')}
 <h2>Податок при продажу</h2>
 ${tableHtml(['Країна', 'Податок на прибуток', 'Звільнення'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `uk/bitcoin-podatky/${slugUk(c.id)}/`))}">${esc(nameUk(c.id))}</a>`,
-  esc(meta.taxUk[c.id].gainTax),
+  esc(gainFull(meta.taxUk[c.id])),
   esc(meta.taxUk[c.id].exemption)
 ]))}
 <h2>Ризик при позиці</h2>
@@ -3508,25 +3633,25 @@ function ruHome(relFile) { return { name: 'Главная', href: toRoot(relFile
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(c.id)}/`))}">${esc(nameRu(c.id))}</a>`,
-    esc(meta.taxRu[c.id].gainTax),
+    esc(gainFull(meta.taxRu[c.id])),
     esc(meta.taxRu[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Какие страны охватывает этот обзор?', a: `Обзор охватывает ${N} стран ЕС: ${COUNTRIES.map((c) => nameRu(c.id)).join(', ')}. По состоянию на ${asOfRu}, данные из модуля Virtuse Tax.` },
-    { q: 'Это налоговая консультация?', a: 'Нет. Справочный обзор 2026, не является налоговой консультацией. Правила текущего года уточните у местного консультанта.' },
+    { q: 'Какие страны охватывает этот обзор?', a: `Обзор охватывает ${N} стран ЕС: ${COUNTRIES.map((c) => nameRu(c.id)).join(', ')}. ${guideText('ru', 'hubFaq')}` },
+    { q: 'Это налоговая консультация?', a: `Нет. ${guideLine('ru')} Правила текущего года уточните у местного консультанта.` },
     { q: 'Сообщает ли Virtuse о моих активах в налоговую службу?', a: 'Нет. Virtuse никогда не хранит ваши ключи и историю транзакций. KYC проводят сами партнёры.' },
     { q: 'Где проверить готовность к наследованию?', a: `В модуле Tax & Inheritance Agent, с теми же ${N} странами и проверкой готовности к мультиподписи.` }
   ];
   const answer = finalizeAnswer([
     `Этот обзор сравнивает налогообложение Биткоина в ${N} странах ЕС по состоянию на ${asOfRu}.`,
-    'Ставки, освобождения и примечания по декларированию взяты из модуля Virtuse Tax.',
-    'Германия освобождает прибыль после 1 года владения, Хорватия — после 2 лет, Чехия — после 3; Словения не облагает частную прибыль, а Нидерланды облагают условный доход (Box 3).',
-    'Справочный обзор 2026, не является налоговой консультацией.'
-  ], 'ru');
+    guideText('ru', 'hubSrc'),
+    'Германия освобождает прибыль после 1 года владения, Хорватия после 2 лет, Чехия после 3; Словения не облагает частную прибыль, а Нидерланды облагают условный доход (Box 3).',
+    guideLine('ru')
+  ], 'ru', 'guide');
   pushPage({
-    relFile, lang: 'ru',
+    relFile, lang: 'ru', guide: true,
     title: assertTitle(`Налоги на Биткоин в ${N} странах ЕС (2026)`),
-    description: assertDescription(`Ставки налога на Биткоин, освобождения по сроку владения и декларирование в ${N} странах ЕС по состоянию на ${asOfRu}. Справочный обзор.`),
+    description: assertDescription(descParts(`Ставки налога на Биткоин, освобождения по сроку владения и декларирование в ${N} странах ЕС по состоянию на ${asOfRu}.`, checkedSentence('ru'))),
     h1: `Налоги на Биткоин в ${N} странах ЕС`,
     answerHtml: esc(answer),
     breadcrumbs: [ruHome(relFile), { name: 'Налоги на Биткоин', abs: abs(relFile) }],
@@ -3556,22 +3681,22 @@ for (const c of COUNTRIES) {
   const inN = inRu(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Какой налог на Биткоин ${inN}?`, a: `По состоянию на ${asOfRu}: ${lcRu(t.gainTax)}. Справочный обзор 2026, не является налоговой консультацией.` },
+    { q: `Какой налог на Биткоин ${inN}?`, a: `По состоянию на ${asOfRu}: ${lcRu(gainFull(t))}. ${checkedSentence('ru')} ${GUIDE.ru.notAdvice}.` },
     { q: `Есть ли ${inN} освобождение по сроку владения?`, a: `${t.exemption}. Перед подачей декларации уточните правила текущего года у местного налогового консультанта.` },
     { q: `Как ${inN} декларируют прибыль от Биткоина?`, a: `${t.filing}. ${t.note}` },
     { q: 'Хранит ли Virtuse мой Биткоин или подаёт за меня декларацию?', a: `Нет. Virtuse никогда не хранит ваши ключи. KYC и регистрация проходят у партнёра. Tax Agent покажет обзор ${N} стран; декларацию подготовит квалифицированный налоговый консультант.` }
   ];
   const answer = finalizeAnswer([
-    `Налоги на Биткоин ${inN} по состоянию на ${asOfRu}: ${lcRu(t.gainTax)}.`,
+    `Налоги на Биткоин ${inN} по состоянию на ${asOfRu}: ${lcRu(gainFull(t))}.`,
     /^Без /.test(t.exemption) ? `${t.exemption}.` : `Освобождение: ${lcRu(t.exemption)}.`,
     `Порядок подачи: ${lcRu(t.filing)}.`,
     t.note,
-    'Справочный обзор 2026, не является налоговой консультацией.'
-  ], 'ru');
+    guideLine('ru')
+  ], 'ru', 'guide');
   pushPage({
-    relFile, lang: 'ru',
+    relFile, lang: 'ru', guide: true,
     title: assertTitle(`Налоги на Биткоин ${inN} (${asOfRu})`),
-    description: assertDescription(descFit(`Налоги на Биткоин ${inN} (${asOfRu}): ${lcRu(t.gainTax)}.`, 'Не является налоговой консультацией.')),
+    description: assertDescription(descFit(`Налоги на Биткоин ${inN} (${asOfRu}): ${lcRu(gainFull(t))}.`, 'Не является налоговой консультацией.')),
     h1: `Налоги на Биткоин ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3586,14 +3711,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `ru/bitcoin-nalogi/${slugRu(nbs[0].id)}/` : 'ru/bitcoin-nalogi/'), label: nbs[0] ? `Налоги на Биткоин ${inRu(nbs[0].id)}` : 'Все страны' }
     ],
     moduleCta: { href: toRoot(relFile, `ru/${TAX_AGENT}?country=${c.id}`), label: `Проверить ${accRu(c.id)} в Tax Agent →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'ru')],
     bodyHtml: `
-<p>${esc(c.flag)} Данные по состоянию на ${esc(asOfRu)}, взяты из модуля Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('ru', 'intro'))}</p>
 <h2>Ставки и декларирование</h2>
 ${tableHtml(['Поле', 'По состоянию на ' + asOfRu], [
-  ['Налог на прибыль', esc(t.gainTax)],
-  ['Освобождение', esc(t.exemption)],
-  ['Декларирование', esc(t.filing)],
+  ['Налог на прибыль', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'ru')],
+  ...healthRows(c.id, t, 'ru'),
+  ['Освобождение', esc(t.exemption) + srcTag(c.id, 'exemption', 'ru')],
+  ['Декларирование', esc(t.filing) + srcTag(c.id, 'filing', 'ru')],
   ['Примечание', esc(t.note)]
 ])}
 <h2>Когда обычно возникает налог?</h2>
@@ -3705,7 +3831,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
 <h2>Налог при продаже</h2>
 ${tableHtml(['Страна', 'Налог на прибыль', 'Освобождение'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `ru/bitcoin-nalogi/${slugRu(c.id)}/`))}">${esc(nameRu(c.id))}</a>`,
-  esc(meta.taxRu[c.id].gainTax),
+  esc(gainFull(meta.taxRu[c.id])),
   esc(meta.taxRu[c.id].exemption)
 ]))}
 <h2>Риск при займе</h2>
@@ -3837,25 +3963,25 @@ function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/i
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(c.id)}/`))}">${esc(nameFr(c.id))}</a>`,
-    esc(meta.taxFr[c.id].gainTax),
+    esc(gainFull(meta.taxFr[c.id])),
     esc(meta.taxFr[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Quels pays couvre cet aperçu ?', a: `Il couvre ${N} pays de l'UE : ${COUNTRIES.map((c) => nameFr(c.id)).join(', ')}. Situation au ${asOfFr}, données du module Virtuse Tax.` },
-    { q: 'Est-ce un conseil fiscal ?', a: "Non. Aperçu indicatif 2026, pas un conseil fiscal. Vérifiez les règles de l'année en cours auprès d'un conseiller local." },
+    { q: 'Quels pays couvre cet aperçu ?', a: `Il couvre ${N} pays de l'UE : ${COUNTRIES.map((c) => nameFr(c.id)).join(', ')}. ${guideText('fr', 'hubFaq')}` },
+    { q: 'Est-ce un conseil fiscal ?', a: `Non. ${guideLine('fr')} Vérifiez les règles de l'année en cours auprès d'un conseiller local.` },
     { q: "Virtuse déclare-t-il mes avoirs à l'administration fiscale ?", a: 'Non. Virtuse ne détient jamais vos clés ni votre historique de transactions. Les partenaires effectuent eux-mêmes le KYC.' },
     { q: 'Où vérifier aussi la succession ?', a: `Dans le module Tax & Inheritance Agent, avec les mêmes ${N} pays et une vérification de préparation au multisig.` }
   ];
   const answer = finalizeAnswer([
     `Cet aperçu compare la fiscalité du Bitcoin dans ${N} pays de l'UE, situation au ${asOfFr}.`,
-    'Les taux, exonérations et notes de déclaration proviennent du module Virtuse Tax.',
+    guideText('fr', 'hubSrc'),
     "L'Allemagne exonère les plus-values après 1 an de détention, la Croatie après 2 ans et la Tchéquie après 3 ; la Slovénie n'impose pas les gains des particuliers ; les Pays-Bas imposent un rendement présumé (Box 3).",
-    'Aperçu indicatif 2026, pas un conseil fiscal.'
-  ], 'fr');
+    guideLine('fr')
+  ], 'fr', 'guide');
   pushPage({
-    relFile, lang: 'fr',
+    relFile, lang: 'fr', guide: true,
     title: assertTitle(`Fiscalité du Bitcoin dans ${N} pays de l'UE (2026)`),
-    description: assertDescription(`Taux d'imposition du Bitcoin, exonérations liées à la durée de détention et déclaration dans ${N} pays de l'UE, situation au ${asOfFr}.`),
+    description: assertDescription(descParts(`Taux d'imposition du Bitcoin, exonérations liées à la durée de détention et déclaration dans ${N} pays de l'UE, situation au ${asOfFr}.`, checkedSentence('fr'))),
     h1: `Fiscalité du Bitcoin dans ${N} pays de l'UE`,
     answerHtml: esc(answer),
     breadcrumbs: [frHome(relFile), { name: 'Fiscalité du Bitcoin', abs: abs(relFile) }],
@@ -3885,22 +4011,22 @@ for (const c of COUNTRIES) {
   const inN = inFr(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${lcFr(t.gainTax)}. Aperçu indicatif 2026, pas un conseil fiscal.` },
+    { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${lcFr(gainFull(t))}. ${checkedSentence('fr')} ${GUIDE.fr.notAdvice}.` },
     { q: `Existe-t-il ${inN} une exonération liée à la durée de détention ?`, a: `${t.exemption}. Avant de déclarer, vérifiez les règles de l'année en cours auprès d'un conseiller fiscal local.` },
     { q: `Comment déclarer ses plus-values en Bitcoin ${inN} ?`, a: `${t.filing}. ${t.note}` },
     { q: 'Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent présente l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
   ];
   const answer = finalizeAnswer([
-    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(t.gainTax)}.`,
+    `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(gainFull(t))}.`,
     /^Aucune exonération/.test(t.exemption) ? `${t.exemption}.` : `Exonération : ${lcFr(t.exemption)}.`,
     `Modalités : ${lcFr(t.filing)}.`,
     t.note,
-    'Aperçu indicatif 2026, pas un conseil fiscal.'
-  ], 'fr');
+    guideLine('fr')
+  ], 'fr', 'guide');
   pushPage({
-    relFile, lang: 'fr',
+    relFile, lang: 'fr', guide: true,
     title: assertTitle(`Fiscalité du Bitcoin ${inN} (${asOfFr})`),
-    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(t.gainTax)}.`, 'Pas un conseil fiscal.')),
+    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(gainFull(t))}.`, 'Pas un conseil fiscal.')),
     h1: `Fiscalité du Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -3915,14 +4041,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `fr/bitcoin-fiscalite/${slugFr(nbs[0].id)}/` : 'fr/bitcoin-fiscalite/'), label: nbs[0] ? `Fiscalité du Bitcoin ${inFr(nbs[0].id)}` : 'Tous les pays' }
     ],
     moduleCta: { href: toRoot(relFile, `fr/${TAX_AGENT}?country=${c.id}`), label: `Vérifier ${defFr(c.id)} dans le Tax Agent →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'fr')],
     bodyHtml: `
-<p>${esc(c.flag)} Données au ${esc(asOfFr)}, reprises du module Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('fr', 'intro'))}</p>
 <h2>Taux et déclaration</h2>
 ${tableHtml(['Champ', 'Au ' + asOfFr], [
-  ['Impôt sur les plus-values', esc(t.gainTax)],
-  ['Exonération', esc(t.exemption)],
-  ['Déclaration', esc(t.filing)],
+  ['Impôt sur les plus-values', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'fr')],
+  ...healthRows(c.id, t, 'fr'),
+  ['Exonération', esc(t.exemption) + srcTag(c.id, 'exemption', 'fr')],
+  ['Déclaration', esc(t.filing) + srcTag(c.id, 'filing', 'fr')],
   ['Remarque', esc(t.note)]
 ])}
 ${dac8Box(c.id, 'fr', relFile)}<h2>Quand l'impôt est-il généralement dû ?</h2>
@@ -4034,7 +4161,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
 <h2>Impôt en cas de vente</h2>
 ${tableHtml(['Pays', 'Impôt sur les plus-values', 'Exonération'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `fr/bitcoin-fiscalite/${slugFr(c.id)}/`))}">${esc(nameFr(c.id))}</a>`,
-  esc(meta.taxFr[c.id].gainTax),
+  esc(gainFull(meta.taxFr[c.id])),
   esc(meta.taxFr[c.id].exemption)
 ]))}
 <h2>Risque en cas de prêt</h2>
@@ -4166,25 +4293,25 @@ function esHome(relFile) { return { name: 'Inicio', href: toRoot(relFile, 'es/in
   const deFile = 'de/bitcoin-steuern/index.html';
   const rows = COUNTRIES.map((c) => [
     `${c.flag} <a href="${esc(toRoot(relFile, `es/bitcoin-impuestos/${slugEs(c.id)}/`))}">${esc(nameEs(c.id))}</a>`,
-    esc(meta.taxEs[c.id].gainTax),
+    esc(gainFull(meta.taxEs[c.id])),
     esc(meta.taxEs[c.id].exemption)
   ]);
   const faqs = [
-    { q: '¿Qué países cubre este resumen?', a: `Cubre ${N} países de la UE: ${COUNTRIES.map((c) => nameEs(c.id)).join(', ')}. Datos del ${asOfEs}, procedentes del módulo Virtuse Tax.` },
-    { q: '¿Es asesoramiento fiscal?', a: 'No. Resumen orientativo 2026, no es asesoramiento fiscal. Confirme las normas del año en curso con un asesor local.' },
+    { q: '¿Qué países cubre este resumen?', a: `Cubre ${N} países de la UE: ${COUNTRIES.map((c) => nameEs(c.id)).join(', ')}. ${guideText('es', 'hubFaq')}` },
+    { q: '¿Es asesoramiento fiscal?', a: `No. ${guideLine('es')} Confirme las normas del año en curso con un asesor local.` },
     { q: '¿Informa Virtuse de mis activos a la administración tributaria?', a: 'No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los partners realizan su propio KYC.' },
     { q: '¿Dónde puedo revisar también la herencia?', a: `En el módulo Tax & Inheritance Agent, con los mismos ${N} países y una comprobación de preparación para la multifirma.` }
   ];
   const answer = finalizeAnswer([
     `Este resumen compara la tributación de Bitcoin en ${N} países de la UE, con datos del ${asOfEs}.`,
-    'Los tipos, las exenciones y las notas sobre la declaración proceden del módulo Virtuse Tax.',
+    guideText('es', 'hubSrc'),
     'Alemania exime las ganancias tras 1 año de tenencia, Croacia tras 2 y la República Checa tras 3; Eslovenia no grava las ganancias privadas y los Países Bajos gravan un rendimiento presunto (Box 3).',
-    'Resumen orientativo 2026, no es asesoramiento fiscal.'
-  ], 'es');
+    guideLine('es')
+  ], 'es', 'guide');
   pushPage({
-    relFile, lang: 'es',
+    relFile, lang: 'es', guide: true,
     title: assertTitle(`Impuestos sobre Bitcoin en ${N} países de la UE (2026)`),
-    description: assertDescription(`Tipos impositivos de Bitcoin, exenciones por periodo de tenencia y declaración en ${N} países de la UE, datos del ${asOfEs}. Resumen orientativo.`),
+    description: assertDescription(descParts(`Tipos impositivos de Bitcoin, exenciones por periodo de tenencia y declaración en ${N} países de la UE, datos del ${asOfEs}.`, checkedSentence('es'))),
     h1: `Impuestos sobre Bitcoin en ${N} países de la UE`,
     answerHtml: esc(answer),
     breadcrumbs: [esHome(relFile), { name: 'Impuestos sobre Bitcoin', abs: abs(relFile) }],
@@ -4214,22 +4341,22 @@ for (const c of COUNTRIES) {
   const inN = inEs(c.id);
   const nbs = neighborsOf(c.id);
   const faqs = [
-    { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${lcEs(t.gainTax)}. Resumen orientativo 2026, no es asesoramiento fiscal.` },
+    { q: `¿Cuál es el impuesto sobre Bitcoin ${inN}?`, a: `Datos del ${asOfEs}: ${lcEs(gainFull(t))}. ${checkedSentence('es')} ${GUIDE.es.notAdvice}.` },
     { q: `¿Existe ${inN} una exención por periodo de tenencia?`, a: `${t.exemption}. Antes de declarar, confirme las normas del año en curso con un asesor fiscal local.` },
     { q: `¿Cómo se declaran las ganancias de Bitcoin ${inN}?`, a: `${t.filing}. ${t.note}` },
     { q: '¿Guarda Virtuse mi Bitcoin o presenta mi declaración?', a: `No. Virtuse nunca guarda sus claves. El KYC y el registro se hacen con el partner. El Tax Agent muestra el resumen de ${N} países; la declaración la prepara un asesor fiscal cualificado.` }
   ];
   const answer = finalizeAnswer([
-    `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(t.gainTax)}.`,
+    `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(gainFull(t))}.`,
     /^Sin exención/.test(t.exemption) ? `${t.exemption}.` : `Exención: ${lcEs(t.exemption)}.`,
     `Presentación: ${lcEs(t.filing)}.`,
     t.note,
-    'Resumen orientativo 2026, no es asesoramiento fiscal.'
-  ], 'es');
+    guideLine('es')
+  ], 'es', 'guide');
   pushPage({
-    relFile, lang: 'es',
+    relFile, lang: 'es', guide: true,
     title: assertTitle(`Impuestos sobre Bitcoin ${inN} (${asOfEs})`),
-    description: assertDescription(descFit(`Impuestos sobre Bitcoin ${inN} (${asOfEs}): ${lcEs(t.gainTax)}.`, 'No es asesoramiento fiscal.')),
+    description: assertDescription(descFit(`Impuestos sobre Bitcoin ${inN} (${asOfEs}): ${lcEs(gainFull(t))}.`, 'No es asesoramiento fiscal.')),
     h1: `Impuestos sobre Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -4244,14 +4371,15 @@ for (const c of COUNTRIES) {
       { href: toRoot(relFile, nbs[0] ? `es/bitcoin-impuestos/${slugEs(nbs[0].id)}/` : 'es/bitcoin-impuestos/'), label: nbs[0] ? `Impuestos sobre Bitcoin ${inEs(nbs[0].id)}` : 'Todos los países' }
     ],
     moduleCta: { href: toRoot(relFile, `es/${TAX_AGENT}?country=${c.id}`), label: `Consultar ${defEs(c.id)} en el Tax Agent →` },
-    schemas: [faqLd(faqs)],
+    schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'es')],
     bodyHtml: `
-<p>${esc(c.flag)} Datos del ${esc(asOfEs)}, tomados del módulo Virtuse Tax.</p>
+<p>${esc(c.flag)} ${esc(guideText('es', 'intro'))}</p>
 <h2>Tipos y declaración</h2>
 ${tableHtml(['Campo', 'Datos del ' + asOfEs], [
-  ['Impuesto sobre las ganancias', esc(t.gainTax)],
-  ['Exención', esc(t.exemption)],
-  ['Declaración', esc(t.filing)],
+  ['Impuesto sobre las ganancias', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'es')],
+  ...healthRows(c.id, t, 'es'),
+  ['Exención', esc(t.exemption) + srcTag(c.id, 'exemption', 'es')],
+  ['Declaración', esc(t.filing) + srcTag(c.id, 'filing', 'es')],
   ['Nota', esc(t.note)]
 ])}
 ${dac8Box(c.id, 'es', relFile)}<h2>¿Cuándo suele generarse el impuesto?</h2>
@@ -4363,7 +4491,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
 <h2>Impuesto al vender</h2>
 ${tableHtml(['País', 'Impuesto sobre las ganancias', 'Exención'], COUNTRIES.map((c) => [
   `<a href="${esc(toRoot(relFile, `es/bitcoin-impuestos/${slugEs(c.id)}/`))}">${esc(nameEs(c.id))}</a>`,
-  esc(meta.taxEs[c.id].gainTax),
+  esc(gainFull(meta.taxEs[c.id])),
   esc(meta.taxEs[c.id].exemption)
 ]))}
 <h2>Riesgo al pedir prestado</h2>
@@ -4506,7 +4634,7 @@ function feeIndexLines() {
 
 function llmsShort() {
   const taxLines = COUNTRIES.map((c) =>
-    `- [${c.name}](${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/): ${c.gainTax}. ${c.exemption}. As of ${asOfEn}.`
+    `- [${c.name}](${ORIGIN}/bitcoin-tax/${slugEn(c.id)}/): ${gainFull(c)}. ${c.exemption}. As of ${asOfEn}.`
   ).join('\n');
   const feeLines = feeIndexLines();
   return `# Virtuse
@@ -4619,7 +4747,7 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 
 function llmsFull() {
   const tax = COUNTRIES.map((c) => `### ${c.flag} ${c.name} (\`${c.id}\`)
-- Gain tax: ${c.gainTax}
+- Gain tax: ${gainFull(c)}
 - Exemption: ${c.exemption}
 - Filing: ${c.filing}
 - Note: ${c.note}

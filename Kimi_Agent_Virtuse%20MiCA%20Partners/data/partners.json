@@ -201,5 +201,23 @@
       ]
     }
   ],
-  "memberships": []
+  "memberships": [],
+  "tracked": [
+    {
+      "name": "Lukka",
+      "category": "tax",
+      "hosts": [
+        "lukka.tech"
+      ],
+      "note": "Linked from the Tax & Inheritance Agent (plain site, no referral ref yet). Tracked for partner_click only: not one of the category-page partners, not on the rail or in the partner counts."
+    },
+    {
+      "name": "Unchained",
+      "category": "custody",
+      "hosts": [
+        "unchained.com"
+      ],
+      "note": "Linked from the Tax & Inheritance Agent (plain site, no referral ref yet). Tracked for partner_click only: not one of the category-page partners, not on the rail or in the partner counts."
+    }
+  ]
 }

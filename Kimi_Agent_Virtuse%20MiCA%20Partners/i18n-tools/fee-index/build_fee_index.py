@@ -145,7 +145,7 @@ def i18n_script(L):
     return '<script>window.VB_I18N = %s;</script>\n' % json.dumps(obj, ensure_ascii=False)
 
 
-def head(L, title, desc, page_url, alts, ld, og_title=None, og_alt=None, robots='index, follow', gtm=True, og_type='website', title_max=60):
+def head(L, title, desc, page_url, alts, ld, og_title=None, og_alt=None, robots='index, follow', gtm=True, og_type='website', title_max=60, og_image=None):
     assert len(title) <= title_max, (L, len(title), title)
     assert len(desc) <= 155, (L, len(desc), desc)
     og_title = og_title or title
@@ -192,7 +192,7 @@ def head(L, title, desc, page_url, alts, ld, og_title=None, og_alt=None, robots=
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 {i18n}</head>
 '''.format(L=L, csp=csp(), std=standard_block() if gtm else '', title=esc(title, False), desc=esc(desc), robots=robots, origin=ORIGIN,
-           url=page_url, alts=alt_links, og_type=og_type, og_title=esc(og_title), img=OG_IMAGE, og_alt=esc(og_alt or og_title),
+           url=page_url, alts=alt_links, og_type=og_type, og_title=esc(og_title), img=og_image or OG_IMAGE, og_alt=esc(og_alt or og_title),
            locale=LOCALE[L], ld=json.dumps(ld, ensure_ascii=False, indent=2), v=CSS_V, i18n=i18n_script(L))
     if not gtm:
         meta = meta.replace('<meta name="vb-cfo-stage" content="wait">\n', '')

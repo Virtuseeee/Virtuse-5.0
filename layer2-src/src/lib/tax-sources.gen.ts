@@ -117,3 +117,205 @@ export const TAX_SOURCES: { checked: string; countries: TaxSourceRow[] } = {
     }
   ]
 };
+
+// Tax Agent: official source per card (gain tax / holding exemption / filing,
+// plus optional health insurance for countries that have it).
+// checked = fieldsChecked (YYYY-MM-DD). An empty source means "no source".
+export type TaxField = 'gainTax' | 'exemption' | 'filing';
+export type TaxOptionalField = 'healthLevy';
+export interface TaxFieldSource {
+  source: string;
+  checked: string;
+}
+
+export const TAX_FIELD_SOURCES: { checked: string; countries: Record<string, Record<TaxField, TaxFieldSource> & Partial<Record<TaxOptionalField, TaxFieldSource>>> } = {
+  "checked": "2026-10-13",
+  "countries": {
+    "cz": {
+      "gainTax": {
+        "source": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://financnisprava.gov.cz/assets/cs/prilohy/d-placeni-dani/Krypto-29_4_2026.pdf",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/fyzicke-osoby/obecne-informace",
+        "checked": "2026-10-13"
+      }
+    },
+    "sk": {
+      "gainTax": {
+        "source": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://podpora.financnasprava.sk/293880-Pr%C3%ADjmy-z-predaja-kryproakt%C3%ADv--u-nepodnikate%C4%BEa-",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://podpora.financnasprava.sk/516395-Povinnos%C5%A5-poda%C5%A5-da%C5%88ov%C3%A9-priznanie-k-dani-z-pr%C3%ADjmov-FO-za-rok-2026",
+        "checked": "2026-10-13"
+      },
+      "healthLevy": {
+        "source": "https://www.vszp.sk/platitelia/platenie-poistneho/oznamenia-zmeny/zmeny-od-01-01.2026/",
+        "checked": "2026-10-13"
+      }
+    },
+    "pl": {
+      "gainTax": {
+        "source": "https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut",
+        "checked": "2026-10-13"
+      }
+    },
+    "at": {
+      "gainTax": {
+        "source": "https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/steuerliche-behandlung-von-kryptowaehrungen.html",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://ris.bka.gv.at/Dokumente/Bundesnormen/NOR40137548/NOR40137548.html",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://formulare.bmf.gv.at/service/formulare/inter-Steuern/pdfs/2024/E1kv.pdf?open=download",
+        "checked": "2026-10-13"
+      }
+    },
+    "de": {
+      "gainTax": {
+        "source": "https://www.gesetze-im-internet.de/estg/__32a.html",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Einkommensteuer/2025-03-06-einzelfragen-kryptowerte-bmf-schreiben.pdf",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://www.elster.de/eportal/helpGlobal?themaGlobal=help_est_ufa_12_2025",
+        "checked": "2026-10-13"
+      }
+    },
+    "hu": {
+      "gainTax": {
+        "source": "https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa",
+        "checked": "2026-10-13"
+      }
+    },
+    "si": {
+      "gainTax": {
+        "source": "https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://www.fu.gov.si/fileadmin/Internet/Davki_in_druge_dajatve/Podrocja/Dohodnina/Drugi_dohodki/Opis/Davcna_obravnava_poslovanja_z_virtualnimi_valutami_po_ZDoh-2_ZDDPO-2_ZDDV-1_in_ZDFS.docx",
+        "checked": "2026-10-13"
+      }
+    },
+    "hr": {
+      "gainTax": {
+        "source": "https://porezna-uprava.gov.hr/hr/dohodak-od-kapitala-po-osnovi-kapitalnih-dobitaka/4653",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://porezna-uprava.gov.hr/hr/primjer-podnosenja-obrasca-joppd-za-primitke-po-osnovi-trgovanja-kriptoimovinom/8342",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://porezna-uprava.gov.hr/hr/primjer-podnosenja-obrasca-joppd-za-primitke-po-osnovi-trgovanja-kriptoimovinom/8342",
+        "checked": "2026-10-13"
+      }
+    },
+    "ro": {
+      "gainTax": {
+        "source": "https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf",
+        "checked": "2026-10-13"
+      }
+    },
+    "bg": {
+      "gainTax": {
+        "source": "https://nra.bg/wps/portal/nra/taxes/danak-vurhu-dohodite-na-fizicheski-lica",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://nra.bg/wps/portal/nra/taxes/godishen-danak-varhu-dohdite/virtualni-valuti",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://nra.bg/wps/portal/nra/taxes/godishen-danak-varhu-dohdite/virtualni-valuti",
+        "checked": "2026-10-13"
+      }
+    },
+    "nl": {
+      "gainTax": {
+        "source": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/cryptovaluta",
+        "checked": "2026-10-13"
+      }
+    },
+    "fr": {
+      "gainTax": {
+        "source": "https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques",
+        "checked": "2026-10-13"
+      }
+    },
+    "es": {
+      "gainTax": {
+        "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+        "checked": "2026-10-13"
+      },
+      "exemption": {
+        "source": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c11-ganancias-perdidas-patrimoniales/monedas-virtuales/compra-venta-monedas-virtuales-tributacion-inversor.html",
+        "checked": "2026-10-13"
+      },
+      "filing": {
+        "source": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c11-ganancias-perdidas-patrimoniales/monedas-virtuales/compra-venta-monedas-virtuales-tributacion-inversor.html",
+        "checked": "2026-10-13"
+      }
+    }
+  }
+};

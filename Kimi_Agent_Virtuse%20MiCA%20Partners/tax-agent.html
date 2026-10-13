@@ -1,27 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<!-- Note: frame-ancestors (restricting who may embed this page) only works via an HTTP response header, not a <meta> tag. If/when this page moves behind a server that can set custom headers, add:
-     Content-Security-Policy: frame-ancestors 'self' https://virtuse.com https://virtuse.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Tax &amp; Inheritance Agent — 13 EU Countries | Virtuse</title>
-<meta name="description" content="Bitcoin tax overview for 13 EU countries: tax on gains, holding-period exemptions, filing. Plus a six-question inheritance readiness check.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<title>Tax &amp; Inheritance Agent: 13 EU Countries | Virtuse</title>
+<meta name="description" content="Bitcoin tax rules for 13 EU countries with official sources, and a check of how ready your Bitcoin is for your heirs. As of Q3 2026. Not tax advice.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/tax-agent.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/tax-agent.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/tax-agent.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/tax-agent.html">
@@ -33,54 +31,265 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/tax-agent.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/tax-agent.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax-agent.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Tax &amp; Inheritance Agent — 13 EU Countries | Virtuse">
-<meta property="og:description" content="Bitcoin tax overview for 13 EU countries: tax on gains, holding-period exemptions, filing. Plus a six-question inheritance readiness check.">
-<link rel="canonical" href="https://virtuse.com/tax-agent.html">
+<meta property="og:title" content="Tax &amp; Inheritance Agent: Bitcoin tax in 13 EU countries">
+<meta property="og:description" content="Bitcoin tax rules for 13 EU countries with official sources, and a check of how ready your Bitcoin is for your heirs. As of Q3 2026. Not tax advice.">
 <meta property="og:url" content="https://virtuse.com/tax-agent.html">
-<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image" content="https://virtuse.com/og/tax-agent.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tax &amp; Inheritance Agent: Bitcoin tax in 13 EU countries">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tax &amp; Inheritance Agent — 13 EU Countries | Virtuse">
-<meta name="twitter:description" content="Bitcoin tax overview for 13 EU countries: tax on gains, holding-period exemptions, filing. Plus a six-question inheritance readiness check.">
-<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<meta name="robots" content="index, follow">
-<style id="tool-static-css">.tool-static{max-width:720px;margin:0 auto;padding:48px 20px 64px;line-height:1.6}.tool-static h1{font-size:28px;line-height:1.25;margin:0 0 16px}.tool-static h2{font-size:18px;margin:28px 0 6px}.tool-static p{margin:0 0 12px}html.js .tool-static{display:none}</style>
-<script>document.documentElement.classList.add('js')</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<script type="application/ld+json" id="virtuse-ld">
-{
+<meta name="twitter:title" content="Tax &amp; Inheritance Agent: Bitcoin tax in 13 EU countries">
+<meta name="twitter:description" content="Bitcoin tax rules for 13 EU countries with official sources, and a check of how ready your Bitcoin is for your heirs. As of Q3 2026. Not tax advice.">
+<meta name="twitter:image" content="https://virtuse.com/og/tax-agent.jpg">
+<meta name="twitter:image:alt" content="Tax &amp; Inheritance Agent: Bitcoin tax in 13 EU countries">
+<script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://virtuse.com/index.html"
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "url": "https://virtuse.com/",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://virtuse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tax & Inheritance Agent",
+          "item": "https://virtuse.com/tax-agent.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
       "name": "Tax & Inheritance Agent",
-      "item": "https://virtuse.com/tax-agent.html"
+      "url": "https://virtuse.com/tax-agent.html",
+      "inLanguage": "en",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "dateModified": "2026-10-12"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where do the tax rules come from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the tax authority or the law of each country, linked next to every rule with the date we checked it. As of Q3 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this tax advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is an overview to help you ask the right questions. Rules change; confirm your case with a local tax advisor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Virtuse see my answers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The inheritance check runs in your browser and nothing you answer is sent to Virtuse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries are covered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "13 EU countries. A country is shown only when its rules have an official source."
+          }
+        }
+      ]
     }
   ]
-}
-</script>
-<script type="module" crossorigin src="./concierge-assets/utils-D_cZ8W0F.js"></script>
-<script type="module" crossorigin src="./concierge-assets/badge-DXGJD4h9.js"></script>
-<script type="module" crossorigin src="./concierge-assets/button-BxITaxS4.js"></script>
-<script type="module" crossorigin src="./concierge-assets/triangle-alert-D4ven5Z5.js"></script>
-<script type="module" crossorigin src="./concierge-assets/main-tax-4QYXufmv.js"></script>
-<link rel="stylesheet" crossorigin href="./concierge-assets/utils-CKEVrtYH.css">
+}</script>
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script type="module" crossorigin src="./concierge-assets/utils-Dqegeuil.js"></script>
+<script type="module" crossorigin src="./concierge-assets/badge-BBM-cQUG.js"></script>
+<script type="module" crossorigin src="./concierge-assets/tax-sources.gen-CbfTjQAI.js"></script>
+<script type="module" crossorigin src="./concierge-assets/shield-check-BCJnlPDU.js"></script>
+<script type="module" crossorigin src="./concierge-assets/main-tax-7A1ypAK-.js"></script>
+<link rel="stylesheet" crossorigin href="./concierge-assets/utils-Bsf9RqkB.css">
 </head>
-<body>
-<div id="root"><main class="tool-static"><h1>Tax &amp; Inheritance Agent: Bitcoin tax in 13 EU countries and an inheritance check</h1><p>Choose your country to see an indicative overview of how bitcoin gains are taxed: the rate, any holding-period exemption and how gains are reported.</p><p>The inheritance check asks six yes/no questions and scores how recoverable your bitcoin would be for your heirs. Indicative overview, not tax advice: verify with a local tax advisor.</p><h2>Which countries are covered?</h2><p>Thirteen: Czechia, Slovakia, Poland, Austria, Germany, Hungary, Slovenia, Croatia, Romania, Bulgaria, the Netherlands, France and Spain.</p><h2>Is this tax advice?</h2><p>No. It is an indicative overview. Tax rules change and every situation is individual, so verify with a local tax advisor.</p><h2>What does the inheritance check ask?</h2><p>Whether your heirs have written instructions and know your bitcoin exists, whether your keys are separated, whether you use multisig, whether you have tested recovery, and whether accounts and loans are documented.</p><h2>Is it free?</h2><p>Yes. The Tax &amp; Inheritance Agent is free and needs no registration.</p></main></div>
+<body class="page-buy page-fee page-pf page-tax no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/index.html" aria-label="Virtuse home">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Services</button>
+        <div class="nav-drop" id="nd-services"><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/lending.html">Loans</a><a href="/mining.html">Mining</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Learn</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-fee-index/">Fee Index</a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
+        <div class="nav-drop" id="nd-tools"><a href="/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Soon</span></a><a href="/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/stacking.html">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html" aria-current="page">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div>
+      </div>
+      <a class="nav-top" href="/about.html">About</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language: English"><span aria-hidden="true">&#127468;&#127463;</span><span class="lang-code">EN</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/tax-agent.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/tax-agent.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/tax-agent.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/tax-agent.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/tax-agent.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/tax-agent.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/tax-agent.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/tax-agent.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/tax-agent.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/tax-agent.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/concierge.html?utm_source=concierge&amp;utm_medium=nav">Find partners</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO + the calculator -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Tax & Inheritance Agent</div>
+    <h1>Bitcoin tax in 13 EU countries, <span class="h1-or">and a plan for your heirs.</span></h1>
+    <p class="sp-lead">Pick your country to see how a Bitcoin sale is taxed, with a link to the official source. Then check how ready your Bitcoin is if something happens to you.</p>
+  </div>
+  <div class="pf-app st-app" id="plan">
+    <div id="root"><noscript><p class="pf-noscript">Tax & Inheritance Agent needs JavaScript. You can read the Bitcoin tax guides instead.</p></noscript></div>
+  </div>
+
+  <!-- 2. HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>How <span>it works</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Step 01</span>
+          <h3>Choose your country</h3>
+          <p>Gain tax, holding-period exemption and how to file, each with its official source and the date we checked it.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Step 02</span>
+          <h3>Check inheritance readiness</h3>
+          <p>Six short questions show whether your heirs could reach your Bitcoin. The score is out of 100.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Step 03</span>
+          <h3>Fix the gaps</h3>
+          <p>The weakest points come first, with what to do about each. Confirm tax questions with a local advisor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FAQ -->
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Questions <span>and answers</span></h2></div></div>
+    <details open><summary>Where do the tax rules come from?</summary><p>From the tax authority or the law of each country, linked next to every rule with the date we checked it. As of Q3 2026.</p></details>
+    <details><summary>Is this tax advice?</summary><p>No. It is an overview to help you ask the right questions. Rules change; confirm your case with a local tax advisor.</p></details>
+    <details><summary>Does Virtuse see my answers?</summary><p>No. The inheritance check runs in your browser and nothing you answer is sent to Virtuse.</p></details>
+    <details><summary>Which countries are covered?</summary><p>13 EU countries. A country is shown only when its rules have an official source.</p></details>
+  </section>
+
+  <!-- 4. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Latest Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Read the issue →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Get the Brief. <span>Free.</span></h3>
+        <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="tax_agent_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Get the Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Unsubscribe anytime. Not advice. <a href="/news.html?utm_source=brief&amp;utm_medium=tax_agent_brief" style="color:var(--muted)">All issues and the blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RELATED TOOLS -->
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Related <span>tools</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/bitcoin-tax/"><b>Bitcoin tax guides</b><span>Country guides with official sources.</span></a><a class="gcard" href="/tax.html"><b>Tax reporting</b><span>Tools that build your tax report.</span></a><a class="gcard" href="/secure.html"><b>Custody</b><span>Hardware wallets and multisig.</span></a><a class="gcard" href="/loan.html"><b>Loan & Liquidity Copilot</b><span>Selling versus borrowing against Bitcoin.</span></a><a class="gcard" href="/concierge.html"><b>Partner Finder</b><span>Partners that fit your criteria.</span></a><a class="gcard" href="/cfo.html"><b>Virtuse CFO</b><span>Bitcoin treasury for companies.</span></a></div>
+    <p class="tx-fine fi-disc">As of Q3 2026. Not tax or legal advice. Virtuse never holds your keys or funds.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/mining.html">Mining</a><a href="/lending.html">Loans</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Soon</span></a><a href="/concierge.html">Partner Finder</a><a href="/stacking.html">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="/news.html">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/aml-compliance.html">AML &amp; Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, the weekly desk from Virtuse. <a href="/news.html">Read it &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Languages"><a href="/tax-agent.html" hreflang="en" aria-current="page">English</a><a href="/sk/tax-agent.html" hreflang="sk">Slovenčina</a><a href="/cs/tax-agent.html" hreflang="cs">Čeština</a><a href="/de/tax-agent.html" hreflang="de">Deutsch</a><a href="/pl/tax-agent.html" hreflang="pl">Polski</a><a href="/hu/tax-agent.html" hreflang="hu">Magyar</a><a href="/fr/tax-agent.html" hreflang="fr">Français</a><a href="/es/tax-agent.html" hreflang="es">Español</a><a href="/uk/tax-agent.html" hreflang="uk">Українська</a><a href="/ru/tax-agent.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse is an independent comparison hub. It does not hold client funds or keys, does not execute orders and does not give investment advice. Services are provided by the listed partners under their own licences. Fees are as published by each partner and can change.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
+<script src="/concierge-launcher.js" defer></script>
 </body>
 </html>

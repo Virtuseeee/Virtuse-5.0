@@ -1,12 +1,14 @@
 // ─────────────────────────────────────────────────────────────
-// Tax & Inheritance Agent – country tax overviews + inheritance
+// Tax & Inheritance Agent: country tax overviews + inheritance
 // readiness scoring. Virtuse Layer 2 (Module: Tax)
-// IMPORTANT: figures are an INDICATIVE 2025 overview for
-// education – tax law changes fast. Not tax advice.
 //
-// Trilingual (en/sk/cs): display strings are {en, sk, cs} triples.
-// Scoring math (tiers, points, thresholds) is 100% unchanged from the
-// English-only version — do not rework it.
+// The gain tax / holding exemption / filing texts are the facts of
+// seo-build/data/tax-sources.json (fields.<field>.text), each with an
+// official source. scripts/gen-tax-sources.mjs fails the build if the
+// English text here differs from that file. Not tax advice.
+//
+// Trilingual inline (en/sk/cs); every other language is a dictionary
+// in src/lib/i18n/<lang>.ts keyed by the English text.
 // ─────────────────────────────────────────────────────────────
 
 import { t } from './i18n';
@@ -18,6 +20,8 @@ export interface CountryTax {
   name: LocalizedText;
   flag: string;
   gainTax: LocalizedText;
+  /** Optional: health insurance contributions due on the gain (Slovakia). */
+  healthLevy?: LocalizedText;
   exemption: LocalizedText;
   filing: LocalizedText;
   note: LocalizedText;
@@ -29,16 +33,17 @@ export const COUNTRY_TAX: CountryTax[] = [
     name: { en: 'Czechia', sk: 'Česko', cs: 'Česko' },
     flag: '🇨🇿',
     gainTax: { en: '15 % income tax (23 % above threshold)', sk: '15 % daň z príjmu (23 % nad prahovou hodnotou)', cs: '15 % daň z příjmu (23 % nad prahovou hodnotou)' },
-    exemption: { en: 'Tax-free after 3-year holding (time test)', sk: 'Bez dane po 3-ročnom držaní (časový test)', cs: 'Bez daně po 3letém držení (časový test)' },
+    exemption: { en: 'Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000', sk: 'Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč', cs: 'Bez daně po 3 letech držení (do 40 milionů Kč ročně) nebo pokud úhrn příjmů z prodeje kryptoaktiv v roce nepřesáhne 100 000 Kč' },
     filing: { en: 'Annual personal tax return', sk: 'Ročné daňové priznanie fyzickej osoby', cs: 'Roční daňové přiznání fyzické osoby' },
-    note: { en: 'Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one.', sk: 'Každé zbavenie sa (vrátane krypto-krypto) je zdaniteľná udalosť – veďte si kompletnú evidenciu od prvého dňa.', cs: 'Každé zbavení se (včetně krypto-krypto) je zdanitelná událost – veďte si kompletní evidenci od prvního dne.' },
+    note: { en: 'Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.', sk: 'Každé zbavenie sa (vrátane krypto-krypto) je zdaniteľná udalosť. Veďte si kompletnú evidenciu od prvého dňa.', cs: 'Každé zbavení se (včetně krypto-krypto) je zdanitelná událost. Veďte si kompletní evidenci od prvního dne.' },
   },
   {
     id: 'sk',
     name: { en: 'Slovakia', sk: 'Slovensko', cs: 'Slovensko' },
     flag: '🇸🇰',
-    gainTax: { en: '19–35 % income tax + 16 % health contributions', sk: '19–35 % daň z príjmov + 16 % zdravotné odvody', cs: '19–35 % daň z příjmů + 16 % zdravotní pojištění' },
-    exemption: { en: 'No holding-period exemption', sk: 'Bez oslobodenia podľa doby držania', cs: 'Bez osvobození podle doby držení' },
+    gainTax: { en: '19 to 35% income tax', sk: '19 až 35 % daň z príjmov', cs: '19 až 35 % daň z příjmů' },
+    healthLevy: { en: '16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer', sk: 'Zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí), zúčtuje ich zdravotná poisťovňa v ročnom zúčtovaní', cs: 'Zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení), vyúčtuje ho zdravotní pojišťovna v ročním zúčtování' },
+    exemption: { en: 'No holding-period exemption; every sale or crypto-to-crypto swap is taxed', sk: 'Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje', cs: 'Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní' },
     filing: { en: 'Annual personal tax return (type B), due 31 March', sk: 'Daňové priznanie fyzickej osoby typ B, do 31. marca', cs: 'Daňové přiznání fyzické osoby typu B, do 31. března' },
     note: { en: 'Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.', sk: 'Každý predaj aj výmena krypto za krypto sa zdaňuje. Plánovanú sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť.', cs: 'Každý prodej i směna krypto za krypto se daní. Plánovanou sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti.' },
   },
@@ -49,7 +54,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     gainTax: { en: '19 % flat capital gains tax', sk: '19 % jednotná daň z kapitálových výnosov', cs: '19 % jednotná daň z kapitálových výnosů' },
     exemption: { en: 'No holding-period exemption', sk: 'Bez oslobodenia podľa doby držania', cs: 'Bez osvobození podle doby držení' },
     filing: { en: 'Annual PIT-38', sk: 'Ročné priznanie PIT-38', cs: 'Roční přiznání PIT-38' },
-    note: { en: 'Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.', sk: 'Výmeny krypto za krypto sa nezdaňujú – zdaňuje sa len predaj za peniaze, tovar alebo služby. Pri každom predaji vypočítajte zisk v PLN.', cs: 'Výměny kryptoměny za kryptoměnu se nedaní – daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk v PLN.' },
+    note: { en: 'Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.', sk: 'Výmeny krypto za krypto sa nezdaňujú; zdaňuje sa len predaj za peniaze, tovar alebo služby. Pri každom predaji vypočítajte zisk v PLN.', cs: 'Výměny kryptoměny za kryptoměnu se nedaní; daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk v PLN.' },
   },
   {
     id: 'at',
@@ -65,7 +70,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     name: { en: 'Germany', sk: 'Nemecko', cs: 'Německo' },
     flag: '🇩🇪',
     gainTax: { en: 'Up to 45 % income tax (progressive)', sk: 'Až 45 % daň z príjmu (progresívna)', cs: 'Až 45 % daň z příjmu (progresivní)' },
-    exemption: { en: '0 % after 1-year holding (private-sale exemption)', sk: '0 % po 1-ročnom držaní (oslobodenie súkromného predaja)', cs: '0 % po ročním držení (osvobození soukromého prodeje)' },
+    exemption: { en: '0% after a 1-year holding period; total gains under €1,000 a year are tax-free', sk: '0 % po 1-ročnej dobe držby; zisky spolu pod 1 000 € ročne sú bez dane', cs: '0 % po roční době držení; zisky celkem pod 1 000 € ročně jsou bez daně' },
     filing: { en: 'Annual tax return', sk: 'Ročné daňové priznanie', cs: 'Roční daňové přiznání' },
     note: { en: 'Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical.', sk: 'Krypto-krypto je zdaniteľné počas prvého roka. Evidencia metódou FIFO je kľúčová.', cs: 'Krypto-krypto je zdanitelné během prvního roku. Evidence metodou FIFO je klíčová.' },
   },
@@ -74,17 +79,17 @@ export const COUNTRY_TAX: CountryTax[] = [
     name: { en: 'Hungary', sk: 'Maďarsko', cs: 'Maďarsko' },
     flag: '🇭🇺',
     gainTax: { en: '15 % capital gains tax', sk: '15 % daň z kapitálových výnosov', cs: '15 % daň z kapitálových výnosů' },
-    exemption: { en: 'No holding-period exemption', sk: 'Bez oslobodenia podľa doby držania', cs: 'Bez osvobození podle doby držení' },
+    exemption: { en: 'No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)', sk: 'Bez oslobodenia podľa doby držby; malé transakcie do 10 % minimálnej mzdy sú bez dane (spolu najviac jedna minimálna mzda ročne)', cs: 'Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)' },
     filing: { en: 'Annual personal income tax return', sk: 'Ročné priznanie dane z príjmu fyzickej osoby', cs: 'Roční přiznání daně z příjmu fyzické osoby' },
-    note: { en: 'Documented acquisition costs are deductible – keep every invoice.', sk: 'Doložené obstarávacie náklady sú odpočítateľné – uchovávajte každú faktúru.', cs: 'Doložené pořizovací náklady jsou odečitatelné – uchovávejte každou fakturu.' },
+    note: { en: 'Documented acquisition costs are deductible, so keep every invoice.', sk: 'Doložené obstarávacie náklady sú odpočítateľné, preto uchovávajte každú faktúru.', cs: 'Doložené pořizovací náklady jsou odečitatelné, proto uchovávejte každou fakturu.' },
   },
   {
     id: 'si',
     name: { en: 'Slovenia', sk: 'Slovinsko', cs: 'Slovinsko' },
     flag: '🇸🇮',
     gainTax: { en: 'No tax on private disposal gains (business trading is taxed)', sk: 'Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)', cs: 'Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)' },
-    exemption: { en: 'Private gains are not taxed; a proposed 25% tax was withdrawn in 2025', sk: 'Súkromné zisky sú bez dane; navrhovaná 25 % daň bola v roku 2025 stiahnutá', cs: 'Soukromé zisky jsou bez daně; navrhovaná 25% daň byla v roce 2025 stažena' },
-    filing: { en: 'None for private gains; business and mining income in the annual return', sk: 'Pri súkromných ziskoch žiadne; podnikateľské príjmy a ťažba v ročnom priznaní', cs: 'U soukromých zisků žádné; podnikatelské příjmy a těžba v ročním přiznání' },
+    exemption: { en: 'Private gains are not taxed', sk: 'Súkromné zisky sú bez dane', cs: 'Soukromé zisky jsou bez daně' },
+    filing: { en: 'None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return', sk: 'Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania', cs: 'U soukromých zisků žádné; příjem z těžby vyžaduje přiznání k záloze na daň do 15 dnů; podnikatelské příjmy patří do daňového přiznání z podnikání' },
     note: { en: 'Mining is taxed as other income. Frequent trading can count as a business activity.', sk: 'Ťažba sa zdaňuje ako iný príjem. Časté obchodovanie môže byť podnikaním.', cs: 'Těžba se daní jako jiný příjem. Časté obchodování může být podnikáním.' },
   },
   {
@@ -118,10 +123,10 @@ export const COUNTRY_TAX: CountryTax[] = [
     id: 'nl',
     name: { en: 'Netherlands', sk: 'Holandsko', cs: 'Nizozemsko' },
     flag: '🇳🇱',
-    gainTax: { en: 'Box 3 wealth tax on deemed return (~36 % on fictional yield)', sk: 'Majetková daň Box 3 z predpokladaného výnosu (~36 % z fiktívneho výnosu)', cs: 'Majetková daň Box 3 z předpokládaného výnosu (~36 % z fiktivního výnosu)' },
+    gainTax: { en: 'Box 3 wealth tax on a deemed return (about 36% of the assumed yield)', sk: 'Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)', cs: 'Majetková daň Box 3 (přibližně 36 % z předpokládaného výnosu)' },
     exemption: { en: 'Tax-free allowance (€59,357 per person, 2026)', sk: 'Nezdaniteľná časť (59 357 € na osobu, 2026)', cs: 'Nezdanitelná část (59 357 € na osobu, 2026)' },
     filing: { en: 'Annual Box 3 declaration', sk: 'Ročné priznanie Box 3', cs: 'Roční přiznání Box 3' },
-    note: { en: 'No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.', sk: 'Neexistuje priama daň z kapitálových výnosov – zdaňuje sa predpokladaný výnos z vášho majetku. Box 3 prechádza reformou – overte si aktuálne pravidlá pre daný rok.', cs: 'Neexistuje přímá daň z kapitálových výnosů – zdaňuje se předpokládaný výnos z vašeho majetku. Box 3 prochází reformou – ověřte si aktuální pravidla pro daný rok.' },
+    note: { en: 'No capital-gains tax as such: you are taxed on an assumed return of your holdings. Box 3 is under reform, so verify the current year’s rules.', sk: 'Neexistuje priama daň z kapitálových výnosov: zdaňuje sa predpokladaný výnos z vášho majetku. Box 3 prechádza reformou, preto si overte aktuálne pravidlá pre daný rok.', cs: 'Neexistuje přímá daň z kapitálových výnosů: daní se předpokládaný výnos z vašeho majetku. Box 3 prochází reformou, proto si ověřte aktuální pravidla pro daný rok.' },
   },
   {
     id: 'fr',
@@ -136,10 +141,10 @@ export const COUNTRY_TAX: CountryTax[] = [
     id: 'es',
     name: { en: 'Spain', sk: 'Španielsko', cs: 'Španělsko' },
     flag: '🇪🇸',
-    gainTax: { en: '19–30% progressive tax on savings income', sk: '19–30 % progresívna daň z kapitálových príjmov', cs: '19–30 % progresivní daň z kapitálových příjmů' },
+    gainTax: { en: '19 to 30% progressive tax on savings income', sk: '19 až 30 % progresívna daň z kapitálových príjmov', cs: '19 až 30 % progresivní daň z kapitálových příjmů' },
     exemption: { en: 'No holding-period exemption', sk: 'Bez oslobodenia podľa doby držania', cs: 'Bez osvobození podle doby držení' },
-    filing: { en: 'Annual IRPF return; Modelo 721 for crypto held abroad over €50,000', sk: 'Ročné priznanie IRPF; Modelo 721 pre krypto v zahraničí nad 50 000 €', cs: 'Roční přiznání IRPF; Modelo 721 pro krypto v zahraničí nad 50 000 €' },
-    note: { en: 'Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.', sk: 'Výmeny krypto-krypto sú zdaniteľné prevody – pre rovnaké mince použite FIFO.', cs: 'Výměny krypto-krypto jsou zdanitelné převody – pro stejné mince použijte FIFO.' },
+    filing: { en: 'Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000', sk: 'Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva u zahraničných správcov nad 50 000 €', cs: 'Roční přiznání IRPF; Modelo 721 pro kryptoaktiva u zahraničních správců nad 50 000 €' },
+    note: { en: 'Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins.', sk: 'Výmeny krypto-krypto sú zdaniteľné prevody. Pre rovnaké mince použite FIFO.', cs: 'Výměny krypto-krypto jsou zdanitelné převody. Pro stejné mince použijte FIFO.' },
   },
 ];
 
@@ -153,13 +158,14 @@ export interface ChecklistItem {
   action: LocalizedText;
 }
 
+// Points add up to 100 (20 + 20 + 15 + 15 + 15 + 15).
 export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
   {
     id: 'letter',
     question: { en: 'Do your heirs have written instructions (a "letter of instruction")?', sk: 'Majú vaši dedičia písomné pokyny („list s pokynmi")?', cs: 'Mají vaši dědicové písemné pokyny („dopis s pokyny")?' },
-    detail: { en: 'A document that says what exists, where things are, and what to do – without containing any seed words itself.', sk: 'Dokument, ktorý hovorí, čo existuje, kde sa to nachádza a čo robiť – bez toho, aby sám obsahoval seed frázu.', cs: 'Dokument, který říká, co existuje, kde se to nachází a co dělat – aniž by sám obsahoval seed frázi.' },
+    detail: { en: 'A document that says what exists, where things are and what to do, without containing any seed words itself.', sk: 'Dokument, ktorý hovorí, čo existuje, kde sa to nachádza a čo robiť, bez toho, aby sám obsahoval seed frázu.', cs: 'Dokument, který říká, co existuje, kde se to nachází a co dělat, aniž by sám obsahoval seed frázi.' },
     points: 20,
-    action: { en: 'Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney.', sk: 'Napíšte list s pokynmi: zoznam, umiestnenia, kontakty – nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.', cs: 'Napište dopis s pokyny: seznam, umístění, kontakty – nikdy ne seed fráze. Uložte ho spolu se závětí nebo u právníka.' },
+    action: { en: 'Write a letter of instruction: inventory, locations, contacts, never seed phrases. Store it with your will or attorney.', sk: 'Napíšte list s pokynmi: zoznam, umiestnenia, kontakty, nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.', cs: 'Napište dopis s pokyny: seznam, umístění, kontakty, nikdy ne seed fráze. Uložte ho spolu se závětí nebo u právníka.' },
   },
   {
     id: 'separation',
@@ -178,9 +184,9 @@ export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
   {
     id: 'multisig',
     question: { en: 'Do you use multisig (2-of-3) instead of a single seed phrase?', sk: 'Používate multisig (2 z 3) namiesto jedinej seed frázy?', cs: 'Používáte multisig (2 ze 3) místo jediné seed fráze?' },
-    detail: { en: 'A single seed is a single point of failure – for you and for your heirs.', sk: 'Jediná seed fráza je jediný bod zlyhania – pre vás aj pre vašich dedičov.', cs: 'Jediná seed fráze je jediný bod selhání – pro vás i pro vaše dědice.' },
-    points: 20,
-    action: { en: 'Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one.', sk: 'Prejdite na multisig 2 z 3: dva kľúče držíte vy, jeden partner (napr. trezor v štýle Unchained) alebo právnik.', cs: 'Přejděte na multisig 2 ze 3: dva klíče držíte vy, jeden partner (např. trezor ve stylu Unchained) nebo právník.' },
+    detail: { en: 'A single seed is a single point of failure, for you and for your heirs.', sk: 'Jediná seed fráza je jediný bod zlyhania, pre vás aj pre vašich dedičov.', cs: 'Jediná seed fráze je jediný bod selhání, pro vás i pro vaše dědice.' },
+    points: 15,
+    action: { en: 'Upgrade to 2-of-3 multisig: you hold two keys; a collaborative custody provider such as Unchained or an attorney holds the third.', sk: 'Prejdite na multisig 2 z 3: dva kľúče držíte vy; tretí drží poskytovateľ kolaboratívnej úschovy, napríklad Unchained, alebo právnik.', cs: 'Přejděte na multisig 2 ze 3: dva klíče držíte vy; třetí drží poskytovatel kolaborativní úschovy, například Unchained, nebo právník.' },
   },
   {
     id: 'tested',
@@ -194,7 +200,7 @@ export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
     question: { en: 'Are exchange accounts, loans and automated plans documented?', sk: 'Sú účty na burzách, pôžičky a automatizované plány zdokumentované?', cs: 'Jsou účty na burzách, půjčky a automatizované plány zdokumentované?' },
     detail: { en: 'Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.', sk: 'Kustodiálne zostatky, pôžičky kryté Bitcoinom a DCA boty zanikajú so zabudnutými prihláseniami.', cs: 'Kustodiální zůstatky, půjčky kryté Bitcoinem a DCA boti zanikají se zapomenutými přihlášeními.' },
     points: 15,
-    action: { en: 'Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.', sk: 'Veďte si zoznam platforiem, identifikátorov účtov a postupu na uplatnenie zostatkov – v liste s pokynmi.', cs: 'Veďte si seznam platforem, identifikátorů účtů a postupu pro uplatnění zůstatků – v dopise s pokyny.' },
+    action: { en: 'Maintain an inventory of platforms, account IDs and how balances should be claimed, inside your letter of instruction.', sk: 'V liste s pokynmi veďte zoznam platforiem, identifikátorov účtov a postupu na uplatnenie zostatkov.', cs: 'V dopise s pokyny veďte seznam platforem, identifikátorů účtů a postupu pro uplatnění zůstatků.' },
   },
 ];
 
@@ -217,7 +223,7 @@ export function scoreInheritance(answered: Record<string, boolean>, lang: Lang =
   const tier = score < 40 ? 'at-risk' : score < 70 ? 'partial' : 'ready';
   const label =
     tier === 'at-risk'
-      ? t(lang, 'At risk – coins may be lost', 'Rizikové – mince môžu byť stratené', 'Rizikové – mince mohou být ztraceny')
+      ? t(lang, 'At risk: coins may be lost', 'Rizikové: mince môžu byť stratené', 'Rizikové: mince mohou být ztraceny')
       : tier === 'partial'
         ? t(lang, 'Partially protected', 'Čiastočne chránené', 'Částečně chráněno')
         : t(lang, 'Inheritance-ready', 'Pripravené na dedenie', 'Připraveno na dědění');
@@ -239,21 +245,16 @@ export const MULTISIG_KEYS = [
   },
   {
     id: 'C',
-    holder: { en: 'Partner / attorney', sk: 'Partner / právnik', cs: 'Partner / právník' },
-    location: { en: 'Unchained-style vault service · releases on inheritance event', sk: 'Trezorová služba v štýle Unchained · uvoľní pri dedičskej udalosti', cs: 'Trezorová služba ve stylu Unchained · uvolní při dědické události' },
+    holder: { en: 'Collaborative custody provider or attorney', sk: 'Poskytovateľ kolaboratívnej úschovy alebo právnik', cs: 'Poskytovatel kolaborativní úschovy nebo právník' },
+    location: { en: 'Third location, outside your home', sk: 'Tretie miesto, mimo vášho domova', cs: 'Třetí místo, mimo váš domov' },
     share: { en: 'Key C', sk: 'Kľúč C', cs: 'Klíč C' },
   },
 ];
 
+// Partner links (Ras decision 2026-10-13: shown as sponsored partner CTAs
+// with a referral-fee disclosure; no partner facts without a source).
 export const PARTNER_LINKS = {
-  // Real plain company sites (no Virtuse affiliate/referral relationship
-  // exists yet for either — neither is a featured partner anywhere on
-  // virtuse.com, so these are placeholder links to the real companies,
-  // not a claim of partnership). Verified live 2026-09-09.
   unchained: 'https://www.unchained.com/',
-  // Was "Coinfirm" — coinfirm.com now redirects to lukka.tech; Coinfirm
-  // appears to have been absorbed into Lukka and no longer exists as an
-  // independent brand, so this page now names and links to Lukka
-  // instead (per explicit user decision, 2026-09-09).
+  // coinfirm.com redirects to lukka.tech; the page names Lukka.
   lukka: 'https://lukka.tech/',
 };
