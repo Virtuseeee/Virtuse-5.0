@@ -406,6 +406,23 @@ ul { list-style: none; }
   margin: 0;
 }
 .hero-claim { white-space: nowrap; }
+/* Page H1: modest, sits in the edition strip next to the date. */
+.edition-lead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35em 1.1em;
+}
+.brief-h1 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: inherit;
+  color: var(--text);
+  margin: 0;
+}
 
 /* —— Hero: Pulse | weekly cover | numbers + Atlantic capture —— */
 .hero { padding: 22px 0 40px; }
@@ -465,7 +482,7 @@ ul { list-style: none; }
   object-fit: cover;
   object-position: center;
 }
-.hero-feature h1 {
+.hero-feature .featured-title {
   font-family: var(--font-display);
   font-size: var(--t-display);
   font-weight: 600;
@@ -473,7 +490,7 @@ ul { list-style: none; }
   letter-spacing: -0.02em;
   margin: 0 0 16px;
 }
-.hero-feature h1 a:hover { color: var(--accent-hot); }
+.hero-feature .featured-title a:hover { color: var(--accent-hot); }
 
 .featured-brief-facts { margin: 0 0 22px; }
 .featured-brief-facts li {
@@ -1216,7 +1233,7 @@ ul { list-style: none; }
 @media (max-width: 720px) {
   :root { --gutter: 16px; }
   .brief-logo { height: 21px; }
-  .hero-feature h1 { font-size: clamp(1.63rem, 7vw, 2rem); }
+  .hero-feature .featured-title { font-size: clamp(1.63rem, 7vw, 2rem); }
   .hero-claim { white-space: normal; }
   .archive,
   .blog-grid { grid-template-columns: 1fr; }
