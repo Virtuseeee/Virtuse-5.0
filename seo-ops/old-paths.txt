@@ -402,11 +402,11 @@
 /hu/category/news/	301	/hu/blog.html
 /cs/stories/	301	/cs/blog.html
 /cs/category/news/	301	/cs/blog.html
-/sk/stories/	301	/sk/stories/
+/sk/stories/	200	
 /sk/category/news/	301	/sk/stories/
 /uk/stories/	301	/uk/blog.html
 /uk/category/news/	301	/uk/blog.html
-/ru/stories/	301	/ru/blog.html
+/ru/stories/	200	
 /ru/category/news/	301	/ru/blog.html
 /it/stories/	301	/stories/
 /it/category/news/	301	/stories/

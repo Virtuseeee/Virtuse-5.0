@@ -350,7 +350,10 @@ def old_paths(rows, ps):
         if os.path.isdir(os.path.join(SITE, 'bitcoin-tax', d)):
             add(f'/sk/bitcoin-tax/{d}/', 301, ''); add(f'/de/bitcoin-tax/{d}', 301, '')
     for L in LANGS:
-        add(f'/{L}/stories/', 301, hub_static(L))
+        if os.path.exists(os.path.join(SITE, L, 'stories', 'index.html')):
+            add(f'/{L}/stories/', 200, '')
+        else:
+            add(f'/{L}/stories/', 301, hub_static(L))
         add(f'/{L}/blog/', 301, hub_static(L))
         add(f'/{L}/category/news/', 301, hub_static(L))
     add('/sk/blog.html', 301, hub_static('sk')); add('/it/blog.html', 301, hub_static(''))
