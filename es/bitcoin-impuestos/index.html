@@ -134,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -258,6 +267,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Preguntas frecuentes</h2><h3>¿Qué países cubre este resumen?</h3><p>Cubre 13 países de la UE: República Checa, Eslovaquia, Polonia, Austria, Alemania, Hungría, Eslovenia, Croacia, Rumanía, Bulgaria, Países Bajos, Francia, España. Datos del T3 2026; la página de cada país enlaza sus fuentes oficiales (comprobados el 13/10/2026).</p><h3>¿Es asesoramiento fiscal?</h3><p>No. Datos del T3 2026, comprobados el 13/10/2026. No es asesoramiento fiscal. Confirme las normas del año en curso con un asesor local.</p><h3>¿Informa Virtuse de mis activos a la administración tributaria?</h3><p>No. Virtuse nunca guarda sus claves ni su historial de transacciones. Los partners realizan su propio KYC.</p><h3>¿Dónde puedo revisar también la herencia?</h3><p>En el módulo Tax &amp; Inheritance Agent, con los mismos 13 países y una comprobación de preparación para la multifirma.</p>
 
   <p><a class="cta" href="../../es/tax-agent.html">Abrir Tax &amp; Inheritance Agent →</a></p>
+  <h2>Herramientas relacionadas</h2><div class="tools"><a href="../../es/tax-agent.html"><b>Tax &amp; Inheritance Agent</b><span>Normas fiscales por país y una revisión de la preparación sucesoria.</span></a><a href="../../es/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Vender o pedir prestado con Bitcoin como garantía.</span></a><a href="../../es/concierge.html"><b>Partner Finder</b><span>Partners que encajan con sus criterios.</span></a><a href="../../es/buy-bitcoin.html"><b>Comprar Bitcoin</b><span>Partners de compra y sus comisiones, uno junto a otro.</span></a></div>
   <h2>Guías relacionadas</h2><div class="related"><a href="../../es/bitcoin-impuestos/espana/">Impuestos sobre Bitcoin en España</a><a href="../../es/bitcoin-herencia/">Bitcoin y herencia</a><a href="../../es/bitcoin-indice-comisiones/">Índice de comisiones de Bitcoin</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Reciba <span>el Brief</span></h2>

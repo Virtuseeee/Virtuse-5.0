@@ -134,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -280,6 +289,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Gyakori kérdések</h2><h3>Mennyi a Bitcoin adója Szlovéniában?</h3><p>Q3 2026 állapot szerint: A magánszemélyek elidegenítési nyeresége nem adózik (az üzletszerű kereskedés igen). Ellenőrizve 2026. 10. 13. Nem adótanácsadás.</p><h3>Van Szlovéniában tartási idő utáni mentesség?</h3><p>A magánnyereség adómentes. A bevallás előtt érdemes a tárgyévi szabályokat helyi adótanácsadóval egyeztetni.</p><h3>Hogyan kell Szlovéniában bevallani a Bitcoin-nyereséget?</h3><p>Magánnyereségnél nincs; a bányászati jövedelemről 15 napon belül adóelőleg-bevallást kell beadni; az üzleti jövedelem a vállalkozási adóbevallásba kerül. A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet.</p><h3>A Virtuse kezeli a Bitcoinomat, vagy beadja helyettem a bevallást?</h3><p>Nem. A Virtuse soha nem kezeli az Ön kulcsait. A KYC és a regisztráció a partnernél történik. A Tax Agent összeveti a 13 ország adatait; a bevallást képzett adótanácsadó készíti el.</p>
 
   <p><a class="cta" href="../../../hu/tax-agent.html?country=si">Szlovénia ellenőrzése a Tax Agentben →</a></p>
+  <h2>Kapcsolódó eszközök</h2><div class="tools"><a href="../../../hu/tax-agent.html?country=si"><b>Tax &amp; Inheritance Agent</b><span>Adószabályok országonként és öröklési felkészültségi ellenőrzés.</span></a><a href="../../../hu/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Eladás vagy hitelfelvétel Bitcoin fedezetére.</span></a><a href="../../../hu/concierge.html"><b>Partner Finder</b><span>Az Ön szempontjaihoz illő partnerek.</span></a><a href="../../../hu/buy-bitcoin.html"><b>Bitcoin-vásárlás</b><span>Vásárlási partnerek és díjaik egymás mellett.</span></a></div>
   <h2>Kapcsolódó útmutatók</h2><div class="related"><a href="../../../hu/bitcoin-eladas-vagy-hitel/">Bitcoin: eladás vagy hitel</a><a href="../../../hu/bitcoin-orokles/">Bitcoin és öröklés</a><a href="../../../hu/bitcoin-adozas/ausztria/">Bitcoin-adózás Ausztriában</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Iratkozzon fel <span>a Briefre</span></h2>

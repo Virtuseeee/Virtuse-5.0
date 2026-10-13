@@ -134,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -275,6 +284,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Частые вопросы</h2><h3>Какой налог на Биткоин в Польше?</h3><p>По состоянию на Q3 2026: единый налог 19% на прирост капитала. Проверено 13.10.2026. Это не налоговая консультация.</p><h3>Есть ли в Польше освобождение по сроку владения?</h3><p>Без освобождения по сроку владения. Перед подачей декларации уточните правила текущего года у местного налогового консультанта.</p><h3>Как в Польше декларируют прибыль от Биткоина?</h3><p>Ежегодная декларация PIT-38. Обмен криптовалюты на криптовалюту не облагается налогом: налог платится только с продажи за деньги, товары или услуги. Для каждой продажи рассчитайте прибыль в PLN.</p><h3>Хранит ли Virtuse мой Биткоин или подаёт за меня декларацию?</h3><p>Нет. Virtuse никогда не хранит ваши ключи. KYC и регистрация проходят у партнёра. Tax Agent покажет обзор 13 стран; декларацию подготовит квалифицированный налоговый консультант.</p>
 
   <p><a class="cta" href="../../../ru/tax-agent.html?country=pl">Проверить Польшу в Tax Agent →</a></p>
+  <h2>Связанные инструменты</h2><div class="tools"><a href="../../../ru/tax-agent.html?country=pl"><b>Tax &amp; Inheritance Agent</b><span>Налоговые правила по странам и проверка готовности к наследованию.</span></a><a href="../../../ru/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Продажа или заём под залог Биткоина.</span></a><a href="../../../ru/concierge.html"><b>Partner Finder</b><span>Партнёры, которые подходят под ваши критерии.</span></a><a href="../../../ru/buy-bitcoin.html"><b>Купить Биткоин</b><span>Партнёры для покупки и их комиссии рядом.</span></a></div>
   <h2>Связанные гиды</h2><div class="related"><a href="../../../ru/bitcoin-prodat-ili-zanyat/">Биткоин: продать или занять</a><a href="../../../ru/bitcoin-nasledstvo/">Биткоин и наследство</a><a href="../../../ru/bitcoin-nalogi/chekhiya/">Налоги на Биткоин в Чехии</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Получите <span>Brief</span></h2>
