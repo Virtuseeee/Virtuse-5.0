@@ -24,6 +24,9 @@
 <meta property="og:description" content="Dane z Bitcoinu v Rakúsku (Q3 2026): 27,5 % KESt (daň z kapitálových výnosov). Nejde o daňové poradenstvo.">
 <meta property="og:url" content="https://virtuse.com/sk/bitcoin-dane/rakusko/">
 <meta property="og:locale" content="sk_SK">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
 <style>:root {
   --btc-orange: #f7931a;
@@ -131,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -140,6 +152,8 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
+      "legalName": "Virtuse Group Pte. Ltd.",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
       "url": "https://virtuse.com/",
       "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
     },
@@ -214,11 +228,22 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://virtuse.com/sk/bitcoin-dane/rakusko/",
-      "url": "https://virtuse.com/sk/bitcoin-dane/rakusko/",
+      "@type": "Article",
+      "@id": "https://virtuse.com/sk/bitcoin-dane/rakusko/#article",
+      "headline": "Dane z Bitcoinu v Rakúsku",
       "inLanguage": "sk",
+      "datePublished": "2026-09-29",
       "dateModified": "2026-10-13",
+      "author": {
+        "@type": "Person",
+        "name": "Rastislav Vasilisin",
+        "url": "https://virtuse.com/about.html#founder"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "image": "https://virtuse.com/og-cover.jpg",
+      "mainEntityOfPage": "https://virtuse.com/sk/bitcoin-dane/rakusko/",
       "citation": [
         {
           "@type": "CreativeWork",
@@ -256,6 +281,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../sk/index.html">Domov</a> <span aria-hidden="true">/</span> <a href="../../../sk/bitcoin-dane/">Dane z Bitcoinu</a> <span aria-hidden="true">/</span> <span>Rakúsko</span></nav>
   <p class="asof">Stav údajov Q3 2026</p>
   <h1>Dane z Bitcoinu v Rakúsku</h1>
+  <p class="asof updated">Aktualizované <time datetime="2026-10-13">13. 10. 2026</time></p>
   <div class="answer"><p>Dane z Bitcoinu v Rakúsku, stav Q3 2026: 27,5 % KESt (daň z kapitálových výnosov). Oslobodenie: Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia. Priznanie: Priznanie pre zisky cez zahraničné burzy; rakúski poskytovatelia daň zrážajú. Stav Q3 2026, overené 13. 10. 2026. Nejde o daňové poradenstvo.</p></div>
   
 <p>🇦🇹 Údaje so stavom Q3 2026 pochádzajú z oficiálnych zdrojov uvedených v tabuľke, overené 13. 10. 2026.</p>
@@ -268,6 +294,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Časté otázky</h2><h3>Aká je daň z Bitcoinu v Rakúsku?</h3><p>Stav Q3 2026: 27,5 % KESt (daň z kapitálových výnosov). Overené 13. 10. 2026. Nejde o daňové poradenstvo.</p><h3>Existuje v Rakúsku oslobodenie podľa doby držby?</h3><p>Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia. Pred podaním priznania si pravidlá pre aktuálny rok overte u miestneho daňového poradcu.</p><h3>Ako sa v Rakúsku podáva daňové priznanie?</h3><p>Priznanie pre zisky cez zahraničné burzy; rakúski poskytovatelia daň zrážajú. Výmeny krypto za krypto sú daňovo neutrálne. Požičiavanie a ťažba sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou cenou).</p><h3>Drží Virtuse môj Bitcoin alebo podáva moje daňové priznanie?</h3><p>Nie. Virtuse nikdy nedrží vaše kľúče. KYC a registrácia prebiehajú u partnera. Tax Agent porovná prehľad 13 krajín; daňové priznanie pripraví kvalifikovaný daňový poradca.</p>
 
   <p><a class="cta" href="../../../sk/tax-agent.html?country=at">Skontrolovať Rakúsko v Tax Agentovi →</a></p>
+  <h2>Súvisiace nástroje</h2><div class="tools"><a href="../../../sk/tax-agent.html?country=at"><b>Tax &amp; Inheritance Agent</b><span>Daňové pravidlá podľa krajiny a kontrola pripravenosti na dedičstvo.</span></a><a href="../../../sk/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Predaj verzus pôžička so zábezpekou v Bitcoine.</span></a><a href="../../../sk/concierge.html"><b>Partner Finder</b><span>Partneri, ktorí zodpovedajú vašim kritériám.</span></a><a href="../../../sk/buy-bitcoin.html"><b>Kúpiť Bitcoin</b><span>Partneri na nákup a ich poplatky vedľa seba.</span></a></div>
   <h2>Súvisiace návody</h2><div class="related"><a href="../../../sk/bitcoin-predat-alebo-pozicat/">Bitcoin: predať alebo požičať</a><a href="../../../sk/bitcoin-dedicstvo/">Bitcoin a dedičstvo</a><a href="../../../sk/bitcoin-dane/nemecko/">Dane z Bitcoinu v Nemecku</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Odoberať <span>Brief</span></h2>

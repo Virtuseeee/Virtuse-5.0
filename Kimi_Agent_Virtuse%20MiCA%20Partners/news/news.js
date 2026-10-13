@@ -1,4 +1,4 @@
-/* Virtuse Brief — ticker, theme, pulse, issues, blog, subscribe. */
+/* Virtuse Brief: ticker, theme, pulse, issues, blog, subscribe. */
 (function () {
   'use strict';
 
@@ -15,6 +15,8 @@
   var BLOG_CATS = '13,15';
   var BLOG_MAX = 3;
   var ISSUES_MAX = 4;
+  /* Placeholder for a missing figure (no em/en dashes in page text). */
+  var NA = '\u2026';
 
   function $(id) { return document.getElementById(id); }
   function j(url, ms) {
@@ -27,20 +29,28 @@
       return r.json();
     });
   }
+  /* No em/en dashes in page text: number ranges get a hyphen, other dashes a comma. */
+  function undash(s) {
+    return String(s == null ? '' : s)
+      .replace(/(\d)\s*[\u2013\u2014]\s*(\d)/g, '$1-$2')
+      .replace(/\s*[\u2013\u2014]\s*/g, ', ')
+      .replace(/^,\s*/, '')
+      .replace(/,\s*([.,;:!?])/g, '$1');
+  }
   function strip(s) {
     var doc = new DOMParser().parseFromString(s || '', 'text/html');
-    return (doc.body.textContent || '').replace('[…]', '…').trim();
+    return undash((doc.body.textContent || '').replace('[…]', '…').trim());
   }
   function num(n, d) {
-    if (n == null || isNaN(n)) return '—';
+    if (n == null || isNaN(n)) return NA;
     return n.toLocaleString('en-US', { maximumFractionDigits: d == null ? 0 : d });
   }
   function usd(n) {
-    if (n == null || isNaN(n)) return '—';
+    if (n == null || isNaN(n)) return NA;
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
   }
   function compact(n) {
-    if (n == null || isNaN(n)) return '—';
+    if (n == null || isNaN(n)) return NA;
     return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 }).format(n);
   }
   function fmtDate(iso) {
@@ -51,6 +61,38 @@
   function articleUrl(slug) {
     return 'article.html?slug=' + encodeURIComponent(slug);
   }
+  /* Edition links go straight to the static story page /stories/<slug>/ (no redirect hop).
+     A link starts on article.html and is switched once a HEAD request confirms the story
+     page exists here (production sends a missing path to the blog with a 301, so a
+     redirected answer counts as missing). Every such link carries data-issue-slug. */
+  var STORY = {};
+  function storyPath(slug) {
+    return '/stories/' + encodeURIComponent(slug) + '/';
+  }
+  function issueLink(slug) {
+    return STORY[slug] === true ? storyPath(slug) : articleUrl(slug);
+  }
+  function linkStories() {
+    var links = document.querySelectorAll('a[data-issue-slug]');
+    var seen = {};
+    [].forEach.call(links, function (a) {
+      var slug = a.getAttribute('data-issue-slug');
+      if (!slug || seen[slug]) return;
+      seen[slug] = 1;
+      var apply = function () {
+        [].forEach.call(document.querySelectorAll('a[data-issue-slug]'), function (x) {
+          if (x.getAttribute('data-issue-slug') === slug) x.setAttribute('href', storyPath(slug));
+        });
+      };
+      if (STORY[slug] === true) { apply(); return; }
+      if (STORY[slug] === false || STORY[slug] === 'pending') return;
+      STORY[slug] = 'pending';
+      fetch(storyPath(slug), { method: 'HEAD' }).then(function (r) {
+        STORY[slug] = !!(r.ok && !r.redirected);
+        if (STORY[slug]) apply();
+      }).catch(function () { STORY[slug] = false; });
+    });
+  }
   function setText(id, v) {
     var el = $(id);
     if (el) el.textContent = v;
@@ -60,24 +102,24 @@
     return n > 0 ? 'up' : 'down';
   }
   function signedPct(n) {
-    if (n == null || isNaN(n)) return '—';
+    if (n == null || isNaN(n)) return NA;
     return (n > 0 ? '+' : '') + n.toFixed(2) + '%';
   }
   function compactBtcK(n) {
-    if (n == null || isNaN(n)) return '—';
+    if (n == null || isNaN(n)) return NA;
     var k = n / 1000;
     var s = k.toFixed(1).replace(/\.0$/, '');
     return '$' + s + 'k';
   }
   function feeBand(satVb) {
-    if (satVb == null || isNaN(satVb)) return '—';
+    if (satVb == null || isNaN(satVb)) return NA;
     if (satVb <= 5) return 'low';
     if (satVb <= 20) return 'normal';
     return 'high';
   }
   function formatPulseUpdated(iso) {
     var d = new Date(iso);
-    if (isNaN(d.getTime())) return 'Updated today · —';
+    if (isNaN(d.getTime())) return 'Updated today · ' + NA;
     var hhmm = d.toLocaleTimeString('en-GB', {
       timeZone: 'Europe/Paris',
       hour: '2-digit',
@@ -130,14 +172,14 @@
     a.href = qm.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.textContent = qm.title;
+    a.textContent = undash(qm.title);
     item.appendChild(a);
     section.hidden = false;
   }
   function compactArchiveTitle(it) {
     var title = ((it && it.title) || '').replace(/\s+/g, ' ').trim();
     if (title.length > 72) title = title.slice(0, 69).replace(/\s+\S*$/, '') + '…';
-    return title || 'Story';
+    return undash(title) || 'Story';
   }
   function renderArchive(archive) {
     var host = $('pulseArchive');
@@ -239,7 +281,7 @@
     apply(current(), false);
   })();
 
-  /* Subscribe — existing Worker, ENG list. */
+  /* Subscribe: existing Worker, ENG list. */
   function bindSubscribe(form, msg) {
     if (!form) return;
     var btn = form.querySelector('button[type="submit"]');
@@ -301,12 +343,12 @@
     if (!host) return;
     lastTickerStats = stats;
     var parts = [
-      ['BTC/USD', stats.price || '—', ''],
-      ['24h', stats.chg || '—', stats.chgClass || ''],
-      ['Hashrate', stats.hash || '—', ''],
-      ['Fees', stats.fee || '—', ''],
-      ['Sats/$', stats.sats || '—', ''],
-      ['Block', stats.height || '—', '']
+      ['BTC/USD', stats.price || NA, ''],
+      ['24h', stats.chg || NA, stats.chgClass || ''],
+      ['Hashrate', stats.hash || NA, ''],
+      ['Fees', stats.fee || NA, ''],
+      ['Sats/$', stats.sats || NA, ''],
+      ['Block', stats.height || NA, '']
     ];
     function row() {
       var frag = document.createDocumentFragment();
@@ -363,14 +405,14 @@
 
   function refreshMarket() {
     var stats = {
-      price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—',
+      price: NA, sats: NA, chg: NA, chgClass: '', hash: NA, fee: NA, height: NA,
       priceRaw: null, chgRaw: null, feeRaw: null
     };
 
     j(MP + '/v1/prices').then(function (p) {
       stats.priceRaw = p.USD;
       stats.price = usd(p.USD);
-      stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : '—';
+      stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : NA;
       setText('tilePrice', stats.price);
       setText('tileSats', stats.sats);
       renderTicker(stats);
@@ -422,7 +464,7 @@
 
     j(MP + '/v1/fees/recommended').then(function (f) {
       stats.feeRaw = f.fastestFee;
-      var feeTxt = f.fastestFee != null ? f.fastestFee + ' sat/vB · ' + feeBand(f.fastestFee) : '—';
+      var feeTxt = f.fastestFee != null ? f.fastestFee + ' sat/vB · ' + feeBand(f.fastestFee) : NA;
       stats.fee = feeTxt;
       setText('tileFee', feeTxt);
       renderTicker(stats);
@@ -434,7 +476,7 @@
       renderTicker(stats);
     }).catch(function () {});
   }
-  renderTicker({ price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' });
+  renderTicker({ price: NA, sats: NA, chg: NA, chgClass: '', hash: NA, fee: NA, height: NA });
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
@@ -519,7 +561,7 @@
       tag.appendChild(document.createTextNode(tagName));
       var copy = document.createElement('p');
       copy.className = 'pulse-copy';
-      copy.textContent = twoSentences(it);
+      copy.textContent = undash(twoSentences(it));
       var read = document.createElement('a');
       read.className = 'read';
       read.href = it.url || '#';
@@ -576,26 +618,30 @@
 
   /* Latest issues with cover images. */
   function issueHref(issue) {
-    return issue.slug ? articleUrl(issue.slug) : (issue.url || '#');
+    return issue.slug ? issueLink(issue.slug) : (issue.url || '#');
+  }
+  function markIssue(a, slug) {
+    if (slug) a.setAttribute('data-issue-slug', slug);
   }
   function archiveCard(issue) {
     var a = document.createElement('a');
     a.className = 'archive-card';
     a.href = issueHref(issue);
+    markIssue(a, issue.slug);
     if (issue.image) {
       var img = document.createElement('img');
       img.loading = 'lazy';
       sizedImg(img, issue.image, CARD_SIZES);
-      img.alt = issue.title || '';
+      img.alt = undash(issue.title || '');
       a.appendChild(img);
     }
     var t = document.createElement('time');
     t.dateTime = issue.date;
     t.textContent = fmtDate(issue.date);
     var h = document.createElement('h3');
-    h.textContent = issue.title;
+    h.textContent = undash(issue.title);
     var p = document.createElement('p');
-    p.textContent = issue.excerpt || '';
+    p.textContent = undash(issue.excerpt || '');
     a.appendChild(t);
     a.appendChild(h);
     a.appendChild(p);
@@ -610,6 +656,7 @@
     }).slice(0, ISSUES_MAX).forEach(function (issue) {
       grid.appendChild(archiveCard(issue));
     });
+    linkStories();
     alignDataDesk();
     [].forEach.call(grid.querySelectorAll('img'), function (img) {
       if (!img.complete) img.addEventListener('load', alignDataDesk);
@@ -670,7 +717,7 @@
     }
   }
 
-  /* Blog / Ras Take — essay + related WP posts, no empty placeholders. */
+  /* Blog / Ras Take: essay + related WP posts, no empty placeholders. */
   function imgOf(post) {
     try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
   }
@@ -719,11 +766,12 @@
     var a = document.createElement('a');
     a.className = 'blog-card';
     a.href = issueHref(issue);
+    markIssue(a, issue.slug);
     if (issue.image) {
       var img = document.createElement('img');
       img.loading = 'lazy';
       sizedImg(img, issue.image, CARD_SIZES);
-      img.alt = issue.title || '';
+      img.alt = undash(issue.title || '');
       a.appendChild(img);
     }
     var body = document.createElement('div');
@@ -732,7 +780,7 @@
     meta.className = 'blog-card-meta';
     meta.textContent = [issue.author || 'Ras Vasilisin', fmtDate(issue.date)].filter(Boolean).join(' · ');
     var h = document.createElement('h3');
-    h.textContent = issue.title;
+    h.textContent = undash(issue.title);
     var read = document.createElement('span');
     read.className = 'read';
     read.textContent = 'Read essay';
@@ -745,7 +793,8 @@
   function blogCardFromWp(post) {
     var a = document.createElement('a');
     a.className = 'blog-card';
-    a.href = articleUrl(post.slug);
+    a.href = issueLink(post.slug);
+    markIssue(a, post.slug);
     var imgUrl = imgOf(post);
     if (imgUrl) {
       var img = document.createElement('img');
@@ -789,18 +838,19 @@
     return d.toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
   }
   function issueFacts(issue) {
-    if (issue.facts && issue.facts.length) return issue.facts.slice(0, 3);
-    var parts = String(issue.excerpt || '').match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) || [];
+    if (issue.facts && issue.facts.length) return issue.facts.slice(0, 3).map(undash);
+    var parts = undash(issue.excerpt || '').match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) || [];
     return parts.map(function (x) { return x.trim().replace(/[.]$/, ''); }).filter(Boolean).slice(0, 3);
   }
   /* The static HTML card is a fallback. If issues.json has a newer issue, rewrite the card from it
-     (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry. */
+     (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry.
+     The headline stays the card's H2 (.featured-title); the page H1 is "Virtuse Brief". */
   function paintFeatured(issue) {
     var card = $('featured');
     if (!card || !issue) return;
-    var href = articleUrl(issue.slug);
-    var head = card.querySelector('h1 a');
-    if (head && head.getAttribute('href') === href) return;
+    var href = issueLink(issue.slug);
+    var head = card.querySelector('.featured-title a');
+    if (head && head.getAttribute('data-issue-slug') === issue.slug) return;
 
     var t = card.querySelector('.featured-eyebrow time');
     var label = fmtEditionDate(issue.date);
@@ -813,11 +863,12 @@
       img.removeAttribute('width');
       img.removeAttribute('height');
       sizedImg(img, issue.image, FEATURED_SIZES);
-      img.alt = issue.title;
+      img.alt = undash(issue.title);
     }
     if (head) {
-      head.textContent = issue.title;
+      head.textContent = undash(issue.title);
       head.setAttribute('href', href);
+      markIssue(head, issue.slug);
     }
     var list = card.querySelector('.featured-brief-facts');
     if (list) {
@@ -831,7 +882,11 @@
       list.hidden = !facts.length;
     }
     var read = card.querySelector('.featured-brief-actions .btn');
-    if (read) read.setAttribute('href', href);
+    if (read) {
+      read.setAttribute('href', href);
+      markIssue(read, issue.slug);
+    }
+    linkStories();
   }
   function applyFeaturedCover(post) {
     var img = document.querySelector('#featured .featured-cover img');
@@ -871,6 +926,7 @@
     }
     cards.forEach(function (card) { grid.appendChild(card); });
     section.hidden = false;
+    linkStories();
   }
 
   j('news/issues.json?v=20261012a').then(function (data) {
@@ -900,10 +956,10 @@
     paintBlog([], []);
   });
 
-  /* Treasury ledger — CoinGecko live, last-known JSON fallback. No invented figures. */
+  /* Treasury ledger: CoinGecko live, last-known JSON fallback. No invented figures. */
   var TREASURY_MAX = 6;
   function fmtHoldings(n) {
-    if (n == null || isNaN(n)) return '—';
+    if (n == null || isNaN(n)) return NA;
     var digits = n >= 100 ? 0 : 2;
     return n.toLocaleString('en-US', { maximumFractionDigits: digits }) + ' BTC';
   }
@@ -911,7 +967,7 @@
     var li = document.createElement('li');
     var nm = document.createElement('span');
     nm.className = 'treasury-name';
-    nm.textContent = name || '—';
+    nm.textContent = name || NA;
     var track = document.createElement('span');
     track.className = 'treasury-bar-track';
     var bar = document.createElement('span');
@@ -930,7 +986,7 @@
   function emptyTreasuryRows() {
     var frag = document.createDocumentFragment();
     for (var i = 0; i < TREASURY_MAX; i++) {
-      frag.appendChild(treasuryRow('—', null, 0));
+      frag.appendChild(treasuryRow(NA, null, 0));
     }
     return frag;
   }

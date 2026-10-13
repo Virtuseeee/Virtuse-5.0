@@ -42,6 +42,8 @@
   "rel_cfo_p": "La trésorerie Bitcoin des entreprises.",
   "rel_data_t": "Données Bitcoin",
   "rel_data_p": "Prix, frais et données du réseau, en direct.",
+  "rel_fee_t": "Indice des frais",
+  "rel_fee_p": "Le coût total d'un achat mensuel de Bitcoin.",
   "disclaimer": "À titre informatif uniquement. Pas un conseil financier. Les projections utilisent des taux de croissance et d'inflation constants ; les rendements réels du Bitcoin sont volatils et les performances passées ne garantissent pas les résultats futurs. Les montants sont nominaux.",
   "c_plan": "Votre plan",
   "c_age": "Âge actuel",

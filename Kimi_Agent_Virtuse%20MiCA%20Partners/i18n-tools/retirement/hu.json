@@ -42,6 +42,8 @@
   "rel_cfo_p": "Bitcoin-treasury cégeknek.",
   "rel_data_t": "Bitcoin-adatok",
   "rel_data_p": "Árfolyam, díjak és hálózati adatok, élőben.",
+  "rel_fee_t": "Díjindex",
+  "rel_fee_p": "A havi Bitcoin-vásárlás teljes költsége.",
   "disclaimer": "Csak oktatási célra. Nem befektetési tanács. A kivetítések állandó növekedési és inflációs rátával számolnak; a Bitcoin valós hozamai ingadozók, és a múltbeli teljesítmény nem garantálja a jövőbeli eredményeket. Az összegek nominálisak.",
   "c_plan": "Az Ön terve",
   "c_age": "Jelenlegi életkor",

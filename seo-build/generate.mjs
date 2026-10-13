@@ -181,7 +181,7 @@ function checkedSentence(lang) {
   const d = formatChecked(CHECKED, lang);
   return `${c.charAt(0).toUpperCase()}${c.slice(1)} ${d}${d.endsWith('.') ? '' : '.'}`;
 }
-/** WebPage node with the official sources as citations (JSON-LD). */
+/** WebPage node with the official sources as citations (JSON-LD); pushPage turns it into an Article for the tax guides. */
 function sourcesLd(id, relFile, lang) {
   const seen = new Set();
   const citation = [];
@@ -339,6 +339,7 @@ function typoSpec(spec, fn) {
     bodyHtml: fn(spec.bodyHtml),
     breadcrumbs: spec.breadcrumbs.map((b) => ({ ...b, name: fn(b.name) })),
     related: spec.related.map((r) => ({ ...r, label: fn(r.label) })),
+    tools: spec.tools && { heading: fn(spec.tools.heading), items: spec.tools.items.map((x) => ({ ...x, title: fn(x.title), text: fn(x.text) })) },
     moduleCta: spec.moduleCta && { ...spec.moduleCta, label: fn(spec.moduleCta.label) },
     schemas: typoDeep(spec.schemas, '', fn)
   };
@@ -710,9 +711,94 @@ function isFeePage(relFile) {
   return /(^|\/)buy-bitcoin\/|dca|fee-index|gebuehrenindex|index-poplatk|indeks-oplat|dijindex|indeks-komis|indice-frais|indice-comisiones/.test(relFile);
 }
 
+// --- Tax guides (hubs + country pages, spec.guide): Article JSON-LD + visible "Updated" line ---
+// datePublished = first publication of that language's guides (git history of the
+// generated pages; FR/ES country pages in EN/DE were added on 2026-09-29). Fixed
+// constants, so the CI regenerate (shallow clone) stays deterministic.
+const GUIDE_PUBLISHED = {
+  en: '2026-09-14', de: '2026-09-14',
+  sk: '2026-09-29', cs: '2026-09-29', pl: '2026-09-29', hu: '2026-09-29', uk: '2026-09-29',
+  ru: '2026-09-30', fr: '2026-09-30', es: '2026-09-30'
+};
+const GUIDE_UPDATED = {
+  en: 'Updated', de: 'Aktualisiert', sk: 'Aktualizované', cs: 'Aktualizováno', pl: 'Zaktualizowano',
+  hu: 'Frissítve', uk: 'Оновлено', ru: 'Обновлено', fr: 'Mis à jour le', es: 'Actualizado el'
+};
+const GUIDE_AUTHOR = { '@type': 'Person', name: 'Rastislav Vasilisin', url: 'https://virtuse.com/about.html#founder' };
+const GUIDE_IMAGE = () => `${ORIGIN}/og-cover.jpg`;
+function guidePublished(spec) {
+  if ((spec.lang === 'en' || spec.lang === 'de') && /\/(france|spain|frankreich|spanien)\//.test(spec.relFile)) return '2026-09-29';
+  return GUIDE_PUBLISHED[spec.lang];
+}
+/** Replace the WebPage node (sourcesLd) with an Article that keeps its citation list. */
+function guideArticle(spec) {
+  const canonical = ORIGIN + canonicalPath(spec.relFile);
+  const web = spec.schemas.find((x) => x['@type'] === 'WebPage');
+  const article = {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: spec.h1,
+    inLanguage: spec.lang,
+    datePublished: guidePublished(spec),
+    dateModified: CHECKED,
+    author: GUIDE_AUTHOR,
+    publisher: { '@id': `${ORIGIN}/#org` },
+    image: GUIDE_IMAGE(),
+    mainEntityOfPage: canonical
+  };
+  if (web && web.citation && web.citation.length) article.citation = web.citation;
+  return {
+    ...spec,
+    ogImage: GUIDE_IMAGE(),
+    updated: { label: GUIDE_UPDATED[spec.lang], text: formatChecked(CHECKED, spec.lang), iso: CHECKED },
+    schemas: [...spec.schemas.filter((x) => x !== web), article]
+  };
+}
+
+// --- "Related tools" cards on the tax guides (hubs + country pages, all languages) ---
+// Same-language tool pages: Tax & Inheritance Agent (?country=<id> on country pages),
+// Loan & Liquidity Copilot (sell vs borrow), Partner Finder, and buying: EN country pages
+// link buy-bitcoin/<country>/ (only EN has those), every other page the language's
+// buy-bitcoin.html. Card texts reuse the tool pages' own related-tools wording
+// (i18n-tools/<tool>/<lang>.json); the Tax Agent line is new.
+const GUIDE_TOOLS = {
+  en: { h: 'Related tools', tax: 'Tax rules by country and an inheritance readiness check.', loanP: 'Selling versus borrowing against Bitcoin.', pfP: 'Partners that fit your criteria.', buyT: 'Buy Bitcoin', buyP: 'Buy partners and their fees, side by side.' },
+  sk: { h: 'Súvisiace nástroje', tax: 'Daňové pravidlá podľa krajiny a kontrola pripravenosti na dedičstvo.', loanP: 'Predaj verzus pôžička so zábezpekou v Bitcoine.', pfP: 'Partneri, ktorí zodpovedajú vašim kritériám.', buyT: 'Kúpiť Bitcoin', buyP: 'Partneri na nákup a ich poplatky vedľa seba.' },
+  cs: { h: 'Související nástroje', tax: 'Daňová pravidla podle země a kontrola připravenosti na dědictví.', loanP: 'Prodej versus půjčka se zajištěním v Bitcoinu.', pfP: 'Partneři, kteří odpovídají vašim kritériím.', buyT: 'Koupit Bitcoin', buyP: 'Partneři pro nákup a jejich poplatky vedle sebe.' },
+  uk: { h: 'Пов’язані інструменти', tax: 'Податкові правила за країною та перевірка готовності до спадщини.', loanP: 'Продаж чи позика під заставу Біткоїна.', pfP: 'Партнери, які відповідають вашим критеріям.', buyT: 'Купити Біткоїн', buyP: 'Партнери для купівлі та їхні комісії поруч.' },
+  ru: { h: 'Связанные инструменты', tax: 'Налоговые правила по странам и проверка готовности к наследованию.', loanP: 'Продажа или заём под залог Биткоина.', pfP: 'Партнёры, которые подходят под ваши критерии.', buyT: 'Купить Биткоин', buyP: 'Партнёры для покупки и их комиссии рядом.' },
+  de: { h: 'Verwandte Tools', tax: 'Steuerregeln je Land und ein Check zur Nachlassplanung.', loanP: 'Verkaufen oder einen Kredit gegen Bitcoin aufnehmen.', pfP: 'Partner, die zu Ihren Kriterien passen.', buyT: 'Bitcoin kaufen', buyP: 'Kaufpartner und ihre Gebühren direkt nebeneinander.' },
+  fr: { h: 'Outils associés', tax: 'Les règles fiscales par pays et un contrôle de préparation successorale.', loanP: 'Vendre ou emprunter en garantie de votre Bitcoin.', pfP: 'Les partenaires adaptés à vos critères.', buyT: 'Acheter du Bitcoin', buyP: 'Les partenaires d\'achat et leurs frais, côte à côte.' },
+  es: { h: 'Herramientas relacionadas', tax: 'Normas fiscales por país y una revisión de la preparación sucesoria.', loanP: 'Vender o pedir prestado con Bitcoin como garantía.', pfP: 'Partners que encajan con sus criterios.', buyT: 'Comprar Bitcoin', buyP: 'Partners de compra y sus comisiones, uno junto a otro.' },
+  pl: { h: 'Powiązane narzędzia', tax: 'Zasady podatkowe według kraju i sprawdzenie gotowości spadkowej.', loanP: 'Sprzedaż a pożyczka pod zastaw Bitcoina.', pfP: 'Partnerzy pasujący do kryteriów.', buyT: 'Kup Bitcoin', buyP: 'Partnerzy do zakupu i ich opłaty obok siebie.' },
+  hu: { h: 'Kapcsolódó eszközök', tax: 'Adószabályok országonként és öröklési felkészültségi ellenőrzés.', loanP: 'Eladás vagy hitelfelvétel Bitcoin fedezetére.', pfP: 'Az Ön szempontjaihoz illő partnerek.', buyT: 'Bitcoin-vásárlás', buyP: 'Vásárlási partnerek és díjaik egymás mellett.' }
+};
+function guideTools(spec) {
+  const L = spec.lang;
+  const T = GUIDE_TOOLS[L];
+  const pre = L === 'en' ? '' : `${L}/`;
+  const m = spec.moduleCta && /\?country=([a-z]{2})\b/.exec(spec.moduleCta.href);
+  const c = m ? countryById(m[1]) : null;
+  const to = (p) => toRoot(spec.relFile, p);
+  const buy = L === 'en' && c
+    ? { href: to(`buy-bitcoin/${slugEn(c.id)}/`), title: `Buy Bitcoin in ${theEn(c)}`, text: T.buyP }
+    : { href: to(`${pre}buy-bitcoin.html`), title: T.buyT, text: T.buyP };
+  return {
+    heading: T.h,
+    items: [
+      { href: to(`${pre}${TAX_AGENT}${c ? `?country=${c.id}` : ''}`), title: 'Tax & Inheritance Agent', text: T.tax },
+      { href: to(`${pre}loan.html`), title: 'Loan & Liquidity Copilot', text: T.loanP },
+      { href: to(`${pre}concierge.html`), title: 'Partner Finder', text: T.pfP },
+      buy
+    ]
+  };
+}
+
 function pushPage(spec) {
+  if (spec.guide && !spec.tools) spec = { ...spec, tools: guideTools(spec) };
   if (spec.lang === 'fr') spec = typoSpec(spec, nbspFr);
   if (spec.lang === 'es') spec = typoSpec(spec, nbspEs);
+  if (spec.guide) spec = guideArticle(spec);
   const html = renderPage({
     ...spec,
     origin: ORIGIN,
@@ -4794,6 +4880,18 @@ ${inh}
 const SEO_MARK_START = '<!-- SEO-BUILD:START -->';
 const SEO_MARK_END = '<!-- SEO-BUILD:END -->';
 
+// lastmod per URL = the date its HTML last changed, never the run time:
+// unchanged output keeps the lastmod already in sitemap.xml (set from git by
+// seo-ops/sitemap_lastmod.py); changed or new output gets today's date.
+// Deterministic for a clean regenerate, so the CI diff check stays green.
+const CHANGED_FILES = new Set();
+let PREV_LASTMOD = {};
+const TODAY = new Date().toISOString().slice(0, 10);
+function lastmodFor(p, loc) {
+  if (!CHANGED_FILES.has(p.relFile) && PREV_LASTMOD[loc]) return PREV_LASTMOD[loc];
+  return TODAY;
+}
+
 function sitemapEntries() {
   const indexable = generated.filter((p) => !p.noindex);
   const byCanon = new Map();
@@ -4806,11 +4904,11 @@ function sitemapEntries() {
     for (const m of hrefs) {
       links.push(`    <xhtml:link rel="alternate" hreflang="${m[1]}" href="${m[2]}"/>`);
     }
-    byCanon.set(loc, { loc, links: links.join('\n'), lang: p.lang });
+    byCanon.set(loc, { loc, links: links.join('\n'), lang: p.lang, lastmod: lastmodFor(p, loc) });
   }
   return [...byCanon.values()].map((e) => `  <url>
     <loc>${e.loc}</loc>
-    <lastmod>${LASTMOD}</lastmod>
+    <lastmod>${e.lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${e.lang === 'en' ? '0.7' : '0.6'}</priority>
 ${e.links}
@@ -4818,6 +4916,10 @@ ${e.links}
 }
 
 function patchSitemap(xml) {
+  const old = xml.match(new RegExp(`${SEO_MARK_START}[\\s\\S]*?${SEO_MARK_END}`));
+  PREV_LASTMOD = Object.fromEntries(
+    [...(old ? old[0] : '').matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map((m) => [m[1], m[2]])
+  );
   const block = `${SEO_MARK_START}\n${sitemapEntries()}\n${SEO_MARK_END}`;
   if (xml.includes(SEO_MARK_START) && xml.includes(SEO_MARK_END)) {
     return xml.replace(new RegExp(`${SEO_MARK_START}[\\s\\S]*?${SEO_MARK_END}`), block);
@@ -4872,6 +4974,13 @@ function rewritePublishedOrigins() {
 
 function writeAll() {
   const manifestPath = path.join(ROOT, 'manifest.json');
+  for (const p of generated) {
+    const fp = path.join(SITE, p.relFile);
+    const before = fs.existsSync(fp) ? fs.readFileSync(fp, 'utf8') : null;
+    // fee-index pages are maintained outside this build (not written below): keep their date
+    if (FEE_INDEX_EXTERNAL.test(p.relFile)) continue;
+    if (before !== rewriteKnownOrigins(p.html, ORIGIN)) CHANGED_FILES.add(p.relFile);
+  }
   if (fs.existsSync(manifestPath)) {
     const prev = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
     for (const rel of prev.files || []) {

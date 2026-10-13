@@ -122,9 +122,7 @@ def build(L):
         F.crumbs_ld([(t['crumb_home'], '/' if L == 'en' else '/%s/' % L), (t['crumb_page'], page)]), person]}
     out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70,
                  og_image=ORIGIN + '/og/about.jpg')
-    # This page loads nothing from cdn.jsdelivr.net (site-v2.js's Brief chart still needs api.binance.com).
-    assert out.count(' https://cdn.jsdelivr.net') == 1
-    out = out.replace(' https://cdn.jsdelivr.net', '', 1)
+    # CSP: C.finalize() keeps only the third-party origins this page uses.
     out = out.replace('</head>', CSS + '</head>', 1)
     nav, foot = F.chrome(L, url)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
@@ -243,13 +241,13 @@ def build(L):
            brief=F.brief_card(L, t, 'about_brief'),
            xh2a=t['explore_h2_a'], xh2b=t['explore_h2_b'], xtools=t['explore_tools'], tools=tools, xserv=t['explore_services'],
            services=services, cfo=cfo, foot=foot)
-    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    out += C.scripts('/')
     F.check_text(out, L)
     check_own(out, t, L)
     for bad in ('lang-detect.js', 'anime', 'cdn.jsdelivr.net', 'GTM-M4C5VRD'):
         assert bad not in out, (L, bad)
     assert out.count("'GTM-KXX4Q6WH'") == 1, L
-    open(shell, 'w').write(out)
+    open(shell, 'w').write(C.finalize(out, shell))
     print('%-20s %6d bytes, %d partners as of %s' % (page, len(out), n, date))
 
 

@@ -42,5 +42,7 @@
   "rel_cfo_p": "Bitcoin treasury for companies.",
   "rel_data_t": "Bitcoin Data",
   "rel_data_p": "Price, fees and network data, live.",
+  "rel_ret_t": "Bitcoin Retirement Calculator",
+  "rel_ret_p": "When Bitcoin savings could fund your retirement.",
   "disclaimer": "Scenarios, not forecasts. Not investment advice. Virtuse never holds your keys or funds; you buy on each partner's platform."
 }

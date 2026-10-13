@@ -24,6 +24,9 @@
 <meta property="og:description" content="Ставки налога на Биткоин, освобождения по сроку владения и декларирование в 13 странах ЕС по состоянию на Q3 2026. Проверено 13.10.2026.">
 <meta property="og:url" content="https://virtuse.com/ru/bitcoin-nalogi/">
 <meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <style>:root {
   --btc-orange: #f7931a;
@@ -131,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -140,6 +152,8 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
+      "legalName": "Virtuse Group Pte. Ltd.",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
       "url": "https://virtuse.com/",
       "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
     },
@@ -206,6 +220,24 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
           }
         }
       ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://virtuse.com/ru/bitcoin-nalogi/#article",
+      "headline": "Налоги на Биткоин в 13 странах ЕС",
+      "inLanguage": "ru",
+      "datePublished": "2026-09-30",
+      "dateModified": "2026-10-13",
+      "author": {
+        "@type": "Person",
+        "name": "Rastislav Vasilisin",
+        "url": "https://virtuse.com/about.html#founder"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "image": "https://virtuse.com/og-cover.jpg",
+      "mainEntityOfPage": "https://virtuse.com/ru/bitcoin-nalogi/"
     }
   ]
 }</script>
@@ -226,6 +258,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../../ru/index.html">Главная</a> <span aria-hidden="true">/</span> <span>Налоги на Биткоин</span></nav>
   <p class="asof">Данные по состоянию на Q3 2026</p>
   <h1>Налоги на Биткоин в 13 странах ЕС</h1>
+  <p class="asof updated">Обновлено <time datetime="2026-10-13">13.10.2026</time></p>
   <div class="answer"><p>Этот обзор сравнивает налогообложение Биткоина в 13 странах ЕС по состоянию на Q3 2026. Ставки, освобождения и примечания по декларированию взяты из официальных источников, ссылки на которые есть на странице каждой страны. Германия освобождает прибыль после 1 года владения, Хорватия после 2 лет, Чехия после 3; Словения не облагает частную прибыль, а Нидерланды облагают условный доход (Box 3).</p></div>
   
 <p>Каждая страница страны показывает налог на прибыль, возможное освобождение по сроку владения и порядок декларирования по состоянию на Q3 2026. Модуль Tax & Inheritance Agent использует те же данные и добавляет оценку готовности к наследованию.</p>
@@ -234,6 +267,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Частые вопросы</h2><h3>Какие страны охватывает этот обзор?</h3><p>Обзор охватывает 13 стран ЕС: Чехия, Словакия, Польша, Австрия, Германия, Венгрия, Словения, Хорватия, Румыния, Болгария, Нидерланды, Франция, Испания. По состоянию на Q3 2026; на странице каждой страны есть ссылки на официальные источники (проверено 13.10.2026).</p><h3>Это налоговая консультация?</h3><p>Нет. По состоянию на Q3 2026, проверено 13.10.2026. Это не налоговая консультация. Правила текущего года уточните у местного консультанта.</p><h3>Сообщает ли Virtuse о моих активах в налоговую службу?</h3><p>Нет. Virtuse никогда не хранит ваши ключи и историю транзакций. KYC проводят сами партнёры.</p><h3>Где проверить готовность к наследованию?</h3><p>В модуле Tax &amp; Inheritance Agent, с теми же 13 странами и проверкой готовности к мультиподписи.</p>
 
   <p><a class="cta" href="../../ru/tax-agent.html">Открыть Tax &amp; Inheritance Agent →</a></p>
+  <h2>Связанные инструменты</h2><div class="tools"><a href="../../ru/tax-agent.html"><b>Tax &amp; Inheritance Agent</b><span>Налоговые правила по странам и проверка готовности к наследованию.</span></a><a href="../../ru/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Продажа или заём под залог Биткоина.</span></a><a href="../../ru/concierge.html"><b>Partner Finder</b><span>Партнёры, которые подходят под ваши критерии.</span></a><a href="../../ru/buy-bitcoin.html"><b>Купить Биткоин</b><span>Партнёры для покупки и их комиссии рядом.</span></a></div>
   <h2>Связанные гиды</h2><div class="related"><a href="../../ru/bitcoin-nalogi/germaniya/">Налоги на Биткоин в Германии</a><a href="../../ru/bitcoin-nasledstvo/">Биткоин и наследство</a><a href="../../ru/bitcoin-indeks-komissiy/">Индекс комиссий за Биткоин</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Получите <span>Brief</span></h2>

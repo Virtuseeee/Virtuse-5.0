@@ -24,6 +24,9 @@
 <meta property="og:description" content="Podatek od Bitcoina w Niemczech (Q3 2026): Do 45% podatku dochodowego (progresywny). Nie stanowi porady podatkowej.">
 <meta property="og:url" content="https://virtuse.com/pl/bitcoin-podatki/niemcy/">
 <meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
 <style>:root {
   --btc-orange: #f7931a;
@@ -131,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -140,6 +152,8 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
+      "legalName": "Virtuse Group Pte. Ltd.",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
       "url": "https://virtuse.com/",
       "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
     },
@@ -214,11 +228,22 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://virtuse.com/pl/bitcoin-podatki/niemcy/",
-      "url": "https://virtuse.com/pl/bitcoin-podatki/niemcy/",
+      "@type": "Article",
+      "@id": "https://virtuse.com/pl/bitcoin-podatki/niemcy/#article",
+      "headline": "Podatek od Bitcoina w Niemczech",
       "inLanguage": "pl",
+      "datePublished": "2026-09-29",
       "dateModified": "2026-10-13",
+      "author": {
+        "@type": "Person",
+        "name": "Rastislav Vasilisin",
+        "url": "https://virtuse.com/about.html#founder"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "image": "https://virtuse.com/og-cover.jpg",
+      "mainEntityOfPage": "https://virtuse.com/pl/bitcoin-podatki/niemcy/",
       "citation": [
         {
           "@type": "CreativeWork",
@@ -256,6 +281,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../pl/index.html">Strona główna</a> <span aria-hidden="true">/</span> <a href="../../../pl/bitcoin-podatki/">Podatek od Bitcoina</a> <span aria-hidden="true">/</span> <span>Niemcy</span></nav>
   <p class="asof">Stan danych Q3 2026</p>
   <h1>Podatek od Bitcoina w Niemczech</h1>
+  <p class="asof updated">Zaktualizowano <time datetime="2026-10-13">13.10.2026</time></p>
   <div class="answer"><p>Podatek od Bitcoina w Niemczech, stan na Q3 2026: Do 45% podatku dochodowego (progresywny). Zwolnienie: 0% po roku posiadania; łączne zyski poniżej 1000 € rocznie są zwolnione z podatku. Zeznanie: Roczne zeznanie podatkowe. Wymiana krypto na krypto jest opodatkowana w pierwszym roku. Kluczowa jest ewidencja metodą FIFO. Stan na Q3 2026, sprawdzono 13.10.2026. To nie jest porada podatkowa.</p></div>
   
 <p>🇩🇪 Dane według stanu na Q3 2026 pochodzą z oficjalnych źródeł podanych w tabeli, sprawdzono 13.10.2026.</p>
@@ -268,6 +294,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Najczęstsze pytania</h2><h3>Ile wynosi podatek od Bitcoina w Niemczech?</h3><p>Stan na Q3 2026: Do 45% podatku dochodowego (progresywny). Sprawdzono 13.10.2026. To nie jest porada podatkowa.</p><h3>Czy w Niemczech jest zwolnienie za okres posiadania?</h3><p>0% po roku posiadania; łączne zyski poniżej 1000 € rocznie są zwolnione z podatku. Przed złożeniem zeznania warto potwierdzić zasady na bieżący rok z lokalnym doradcą podatkowym.</p><h3>Jak w Niemczech rozlicza się podatek od Bitcoina?</h3><p>Roczne zeznanie podatkowe. Wymiana krypto na krypto jest opodatkowana w pierwszym roku. Kluczowa jest ewidencja metodą FIFO.</p><h3>Czy Virtuse przechowuje mój Bitcoin albo składa za mnie zeznanie?</h3><p>Nie. Virtuse nigdy nie przechowuje Państwa kluczy. KYC i rejestracja odbywają się u partnera. Tax Agent porówna przegląd 13 krajów; zeznanie przygotuje wykwalifikowany doradca podatkowy.</p>
 
   <p><a class="cta" href="../../../pl/tax-agent.html?country=de">Sprawdź Niemcy w Tax Agencie →</a></p>
+  <h2>Powiązane narzędzia</h2><div class="tools"><a href="../../../pl/tax-agent.html?country=de"><b>Tax &amp; Inheritance Agent</b><span>Zasady podatkowe według kraju i sprawdzenie gotowości spadkowej.</span></a><a href="../../../pl/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Sprzedaż a pożyczka pod zastaw Bitcoina.</span></a><a href="../../../pl/concierge.html"><b>Partner Finder</b><span>Partnerzy pasujący do kryteriów.</span></a><a href="../../../pl/buy-bitcoin.html"><b>Kup Bitcoin</b><span>Partnerzy do zakupu i ich opłaty obok siebie.</span></a></div>
   <h2>Powiązane poradniki</h2><div class="related"><a href="../../../pl/bitcoin-sprzedac-czy-pozyczyc/">Bitcoin: sprzedać czy pożyczyć</a><a href="../../../pl/bitcoin-dziedziczenie/">Bitcoin i dziedziczenie</a><a href="../../../pl/bitcoin-podatki/austria/">Podatek od Bitcoina w Austrii</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Zapisz się <span>na Brief</span></h2>

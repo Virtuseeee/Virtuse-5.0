@@ -144,7 +144,7 @@ def build(L):
            wh2a=t('w_h2_a'), wh2b=t('w_h2_b'), ways=ways, wself=t('w_self'), ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), cards='\n'.join(cards),
            qh2a=t('q_h2_a'), qh2b=t('q_h2_b'), faq=faq, brief=C.brief(L, t, root, 'bots_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

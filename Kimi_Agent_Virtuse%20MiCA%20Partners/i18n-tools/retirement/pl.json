@@ -42,6 +42,8 @@
   "rel_cfo_p": "Bitcoin treasury dla firm.",
   "rel_data_t": "Dane o Bitcoinie",
   "rel_data_p": "Cena, opłaty i dane sieci na żywo.",
+  "rel_fee_t": "Indeks opłat",
+  "rel_fee_p": "Całkowity koszt comiesięcznego zakupu Bitcoina.",
   "disclaimer": "Wyłącznie w celach edukacyjnych. To nie jest porada finansowa. Projekcje zakładają stałe tempo wzrostu i inflacji; rzeczywiste zwroty z Bitcoina są zmienne, a wyniki historyczne nie gwarantują przyszłych. Kwoty są nominalne.",
   "c_plan": "Plan",
   "c_age": "Obecny wiek",

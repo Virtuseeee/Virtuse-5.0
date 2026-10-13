@@ -1,0 +1,49 @@
+old_pattern,target,note,status
+/gold/,/asset-returns.html,table row 1 (was 301 in legacy-exchange),ready
+/silver/,/asset-returns.html,table row 1 (was 410),ready
+/platinum/,/asset-returns.html,table row 1 (was 410),ready
+/commodities/,/asset-returns.html,table row 1 (was 301 in legacy-exchange),ready
+/crypto-commodities-what-are-they/,/asset-returns.html,table row 1 (a /stories/ page exists for this slug; the table wins),ready
+/sk/zlato/,/asset-returns.html,table row 1 (was 410),ready
+/sk/striebro/,/asset-returns.html,table row 1 (was 410),ready
+/sk/platina/,/asset-returns.html,table row 1 (was 410),ready
+/sk/komodity/,/asset-returns.html,extension: Slovak twin of /commodities/ (was 410),ready
+/pax-gold-prospectus/,/asset-returns.html,table row 1 (was forwarded to the blog post),ready
+/etfs/,/asset-returns.html,table row 1 (was 410),ready
+/oil/,/asset-returns.html,table row 2 (was 410),ready
+/crude-oil/,/asset-returns.html,table row 2,ready
+/sk/ropa/,/asset-returns.html,table row 2 (was 410),ready
+/*oil*/,/asset-returns.html,"table row 2: any other first path segment containing ""oil""; runs after the post rules and never on real files",ready
+/virtusex-platform/,/concierge.html,table row 3 (was 410),ready
+/sk/virtusex-platformy/,/concierge.html,extension: Slovak twin of /virtusex-platform/ (was 410),ready
+/vex*,/concierge.html,"table row 3: first segment starting with ""vex""; never on real files",ready
+/token-listing/,/concierge.html,table row 3 (was 410),ready
+/sk/umiestnovanie-tokenov/,/concierge.html,table row 3 (was 410),ready
+/virtu-token/,/concierge.html,table row 3 (was 410),ready
+/delisting-announcement/,/concierge.html,table row 3 (was forwarded to the blog post),ready
+/sk/oznamenie-o-delistovani/,/concierge.html,table row 3,ready
+/hummingbot-integration/,/concierge.html,table row 3 (was forwarded to the blog post),ready
+/bots.html,/concierge.html,"Ras 13 Oct 2026: keep live, no redirect. table row 3 says bots.html (+lang) but bots.html is a live 200 category page in the nav of ~270 pages and in sitemap.xml",hold
+/sk/product/,/concierge.html,table row 3 (was 301 to /sk/index.html),ready
+/sk/institucie/,/concierge.html,table row 3 (was 301 to /sk/treasury.html),ready
+/about-us/,/about.html,table row 4,ready
+/the-meaning-of-virtuse-to-our-company-people-and-investors/,/about.html,table row 4 (a /stories/ page exists for this slug; the table wins),ready
+/2-the-meaning-of-virtuse-to-our-company*,/about.html,table row 4: prefix,ready
+/sk/home-2/,/about.html,table row 4 (was 410),ready
+/save-a-life-changing-amount-of-money-with-our-recurring-trades-feature/,/stacking.html,table row 5,ready
+/arm-yourself-with-this-strategy-and-become-a-millionaire/,/stacking.html,table row 5 (a /stories/ page exists for this slug; the table wins),ready
+/what-is-a-bitcoin-treasury/,/treasury.html,table row 6 (a /stories/ page exists for this slug; the table wins),ready
+/sk/zdanovanie-kryptomien/,/sk/bitcoin-dane/slovensko/,table row 7,ready
+/blog/,BLOG_HUB,table row 9: /blog/ and subpaths (/blog/page/N/); /xx/blog/ → that language's hub,ready
+/category/,BLOG_HUB,table row 9: /category/* (+ /tag/ /author/ /page/N below),ready
+/tag/,BLOG_HUB,task: tag archives,ready
+/author/,BLOG_HUB,table row 9 (/sk/author/*) + task (/author/*),ready
+/page/[0-9]+,BLOG_HUB,task: /page/N,ready
+/sk/novinky/,BLOG_HUB,table row 9,ready
+/sk/virtuse-news/,BLOG_HUB,table row 9 (was 301 to /news.html),ready
+/sk/virtuse-report/,BLOG_HUB,table row 9 (was 301 to /news.html),ready
+/home/,BLOG_HUB,extension: old blog front page (legacy CSV 'keep' on the blog; would 404 without the blog catch-all),ready
+/sk/bitcoin-vo-vasom-vrecku/,BLOG_HUB,extension: old Slovak blog front page (legacy CSV 'keep'),ready
+/blog-sk.html,/blog.html,"Ras 13 Oct 2026: keep live, no redirect. table row 9 lists /blog-sk.html, but it is the live Slovak blog hub (200, in sitemap, the sk target of every other blog-hub rule)",hold
+/contact/,https://blog.virtuse.com/contact/,extension: legacy CSV 'keep' (Nick 2026-10-07: only contact for former exchange users); explicit forward so it survives the catch-all removal,ready
+/sk/contact/,https://blog.virtuse.com/sk/contact/,extension: as /contact/,ready

@@ -187,7 +187,7 @@ def build(L):
            oh2a=t('who_h2_a'), oh2b=t('who_h2_b'), who=who, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), cards='\n'.join(cards),
            qh2a=t('q_h2_a'), qh2b=t('q_h2_b'), faq=faq, brief=C.brief(L, t, root, 'treasury_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

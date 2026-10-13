@@ -203,6 +203,52 @@ for (const rel of htmlFiles) {
     const srcLinks = (html.match(/rel="noopener" target="_blank"/g) || []).length;
     if (isCountry && srcLinks < 3) fail(`${rel} has ${srcLinks} official source links (need 3)`);
     if (isCountry && !html.includes('"citation"')) fail(`${rel} missing JSON-LD citation`);
+    // Article JSON-LD (replaces the old WebPage node): headline = H1, author with URL,
+    // dateModified = fieldsChecked, image = og:image, mainEntityOfPage = canonical.
+    let graph = [];
+    try {
+      const ld = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+      graph = ld ? (JSON.parse(ld[1])['@graph'] || []) : [];
+    } catch (e) { fail(`${rel} JSON-LD does not parse: ${e.message}`); }
+    const art = graph.find((n) => n['@type'] === 'Article');
+    const canon = attr(html, /<link rel="canonical" href="([^"]+)"/);
+    const ogImg = attr(html, /<meta property="og:image" content="([^"]+)"/);
+    const h1 = (html.match(/<h1>([\s\S]*?)<\/h1>/) || [, ''])[1]
+      .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    if (!art) fail(`${rel} missing Article JSON-LD`);
+    else {
+      if (art.headline !== h1) fail(`${rel} Article headline != H1`);
+      if (!art.author || art.author['@type'] !== 'Person' || art.author.url !== 'https://virtuse.com/about.html#founder') fail(`${rel} Article author/url missing or wrong`);
+      if (art.dateModified !== FIELDS_CHECKED) fail(`${rel} Article dateModified ${art.dateModified} != fieldsChecked ${FIELDS_CHECKED}`);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(art.datePublished || '') || art.datePublished > art.dateModified) fail(`${rel} Article datePublished invalid`);
+      if (!art.publisher || !/\/#org$/.test(art.publisher['@id'] || '')) fail(`${rel} Article publisher is not the #org node`);
+      if (!ogImg || art.image !== ogImg) fail(`${rel} Article image != og:image`);
+      if (art.mainEntityOfPage !== canon) fail(`${rel} Article mainEntityOfPage != canonical`);
+      if (art.inLanguage !== lang) fail(`${rel} Article inLanguage ${art.inLanguage} != ${lang}`);
+      if (isCountry && !(art.citation && art.citation.length >= 1)) fail(`${rel} Article has no citation list`);
+    }
+    if (graph.some((n) => n['@type'] === 'WebPage')) fail(`${rel} still has a WebPage node`);
+    if (!graph.some((n) => n['@type'] === 'BreadcrumbList')) fail(`${rel} missing BreadcrumbList`);
+    if (!graph.some((n) => n['@type'] === 'FAQPage')) fail(`${rel} missing FAQPage`);
+    const upd = html.match(/<p class="asof updated">[^<]*<time datetime="([^"]+)">([^<]+)<\/time><\/p>/);
+    if (!upd || upd[1] !== FIELDS_CHECKED || upd[2] !== checkedLabel(lang)) fail(`${rel} missing visible "Updated ${checkedLabel(lang)}" line under the H1`);
+    // "Related tools" block: Tax Agent (?country= on country pages), Loan Copilot, Partner Finder
+    // and a buy page, all in the page's own language and all existing files.
+    const toolsBlock = (html.match(/<div class="tools">([\s\S]*?)<\/div>/) || [, ''])[1];
+    const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)">/g)].map((x) => x[1].replace(/&amp;/g, '&'));
+    if (toolHrefs.length < 3 || toolHrefs.length > 4) fail(`${rel} related tools block has ${toolHrefs.length} cards (need 3-4)`);
+    const agentHref = toolHrefs.find((h) => /tax-agent\.html/.test(h)) || '';
+    if (!agentHref) fail(`${rel} related tools miss the Tax & Inheritance Agent`);
+    if (isCountry && !/\?country=[a-z]{2}$/.test(agentHref)) fail(`${rel} Tax Agent card has no ?country= (${agentHref})`);
+    for (const want of ['loan.html', 'concierge.html', 'buy-bitcoin']) {
+      if (!toolHrefs.some((h) => h.includes(want))) fail(`${rel} related tools miss ${want}`);
+    }
+    for (const h of toolHrefs) {
+      const target = path.posix.normalize(path.posix.join(path.posix.dirname(rel), h.split(/[?#]/)[0]));
+      const file = target.endsWith('/') ? target + 'index.html' : target;
+      if (!fs.existsSync(path.join(SITE, file))) fail(`${rel} related tool link ${h} -> missing ${file}`);
+      if (lang !== 'en' && !file.startsWith(`${lang}/`)) fail(`${rel} related tool link ${h} is not a ${lang} page`);
+    }
     if (/Virtuse[- ]Tax[- ]?(module|Modul)|modul[ua]? Virtuse Tax|Indicative 2026|Unverbindlicher Überblick/.test(visible)) fail(`${rel} still cites the Virtuse module or an indicative overview`);
   }
 

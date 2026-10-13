@@ -42,6 +42,8 @@
   "rel_cfo_p": "Bitcoin treasury for companies.",
   "rel_data_t": "Bitcoin Data",
   "rel_data_p": "Price, fees and network data, live.",
+  "rel_fee_t": "Fee Index",
+  "rel_fee_p": "Total cost of buying Bitcoin every month.",
   "disclaimer": "For education only. Not financial advice. Projections use constant growth and inflation rates; real Bitcoin returns are volatile and past performance doesn't guarantee future results. Figures are nominal.",
   "c_plan": "Your plan",
   "c_age": "Current age",

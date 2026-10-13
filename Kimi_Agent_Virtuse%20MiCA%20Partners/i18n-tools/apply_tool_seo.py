@@ -495,7 +495,11 @@ for lang in LANGS:
 
 # sitemap: one <url> per tool page with all 10 hreflang alternates, inside its own markers
 # (outside SEO-BUILD and STORIES-BUILD, which other generators own)
+# lastmod = real last content change of the page (git log, or today if the file has
+# uncommitted changes), same rule as seo-ops/sitemap_lastmod.py; never the run time.
 import datetime
+sys.path.insert(0, os.path.join(os.path.dirname(SITE), 'seo-ops'))
+from sitemap_lastmod import lastmod_for
 sm = os.path.join(SITE, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
 today = datetime.date.today().isoformat()
 old = re.search(r'<!-- TOOLS:START -->.*?<!-- TOOLS:END -->\n', s, re.S)
@@ -506,7 +510,7 @@ for tool in TOOLS:
     alts += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{url("en", tool)}"/>'
     for lang in LANGS:
         u = url(lang, tool)
-        rows.append(f'  <url>\n    <loc>{u}</loc>\n    <lastmod>{prev.get(u, today)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>{alts}\n  </url>')
+        rows.append(f'  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod_for(f"{tool}.html" if lang == "en" else f"{lang}/{tool}.html") or prev.get(u, today)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>{alts}\n  </url>')
 rows.append('<!-- TOOLS:END -->\n')
 block = '\n'.join(rows)
 n = s[:old.start()] + block + s[old.end():] if old else s.replace('<!-- SEO-BUILD:START -->', block + '<!-- SEO-BUILD:START -->', 1)

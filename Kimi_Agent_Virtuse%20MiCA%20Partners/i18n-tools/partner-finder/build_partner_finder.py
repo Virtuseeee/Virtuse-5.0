@@ -57,7 +57,7 @@ def build(L, n, c, k, partners):
          'operatingSystem': 'Web', 'isAccessibleForFree': True, 'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'},
          'publisher': {'@id': ORIGIN + '/#org'}, 'dateModified': '2026-10-12'},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
-    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70)
+    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70, og_image=F.ORIGIN + '/og/concierge.jpg')
     # inside the site's launcher iframe only the chat is shown (decided before first paint)
     embed = "<script>try{if(window.top!==window.self||/[?&]utm_medium=launcher(&|$)/.test(location.search))document.documentElement.classList.add('vc-embed')}catch(e){document.documentElement.classList.add('vc-embed')}</script>\n"
     out = out.replace('</head>', embed + assets + '\n</head>', 1)
@@ -84,8 +84,8 @@ def build(L, n, c, k, partners):
                 u=page_url(p['page']), logo=p['logo'], lc=LOGO_CLASS.get(p['logo'], ''), name=name, cat=t['cat_' + cat]))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
     fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
-    rel = [(page_url('buy-bitcoin.html'), 'rel_buy'), (fee, 'rel_fee'), (page_url('stacking.html'), 'rel_stack'), (page_url('loan.html'), 'rel_loan'),
-           (page_url('cfo.html'), 'rel_cfo'), (page_url('bitcoin-data.html'), 'rel_data')]
+    rel = [(page_url('stacking.html'), 'rel_stack'), (page_url('retirement-calculator.html'), 'rel_ret'), (fee, 'rel_fee'), (page_url('buy-bitcoin.html'), 'rel_buy'),
+           (page_url('loan.html'), 'rel_loan'), (page_url('cfo.html'), 'rel_cfo')]
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     out += '''<body class="page-buy page-fee page-pf no-split">
@@ -142,9 +142,9 @@ def build(L, n, c, k, partners):
            cards=''.join(cards), qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, brief=F.brief_card(L, t, 'partner_finder_brief'),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
     # the page is the Partner Finder itself: no launcher bubble here
-    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6').replace('<script src="/concierge-launcher.js" defer></script>\n', '')
+    out += C.scripts('/').replace('<script src="/concierge-launcher.js" defer></script>\n', '')
     F.check_text(out, L)
-    open(shell, 'w').write(out)
+    open(shell, 'w').write(C.finalize(out, shell))
     print('%-20s %6d bytes' % (page, len(out)))
 
 

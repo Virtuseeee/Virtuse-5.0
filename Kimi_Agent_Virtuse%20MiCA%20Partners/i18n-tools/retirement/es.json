@@ -42,6 +42,8 @@
   "rel_cfo_p": "Treasury en Bitcoin para empresas.",
   "rel_data_t": "Datos de Bitcoin",
   "rel_data_p": "Precio, comisiones y datos de la red, en directo.",
+  "rel_fee_t": "Índice de comisiones",
+  "rel_fee_p": "Coste total de comprar Bitcoin cada mes.",
   "disclaimer": "Solo con fines educativos. No es asesoramiento financiero. Las proyecciones usan tasas de crecimiento e inflación constantes; la rentabilidad real de Bitcoin es volátil y la rentabilidad pasada no garantiza resultados futuros. Las cifras son nominales.",
   "c_plan": "Su plan",
   "c_age": "Edad actual",

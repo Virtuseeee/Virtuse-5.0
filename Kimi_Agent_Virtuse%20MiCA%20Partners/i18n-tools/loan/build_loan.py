@@ -41,8 +41,10 @@ def build(L):
          'operatingSystem': 'Web', 'isAccessibleForFree': True, 'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'},
          'publisher': {'@id': ORIGIN + '/#org'}, 'dateModified': '2026-10-12'},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
-    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70)
-    out = out.replace('</head>', assets + '\n</head>', 1)
+    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70, og_image=F.ORIGIN + '/og/loan.jpg')
+    # reserve room for the React app (it is taller than the screen at every width), so the sections
+    # below don't jump down when it mounts (Lighthouse CLS 0.59 -> 0)
+    out = out.replace('</head>', '<style>.st-app #root { min-height: min(100vh, 1000px); }</style>\n' + assets + '\n</head>', 1)
     nav, foot = F.chrome(L, url)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
 
@@ -109,9 +111,9 @@ def build(L):
 '''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1o=t['h1_or'], lead=t['lead'], noscript=t['noscript'],
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
            brief=F.brief_card(L, t, 'loan_brief'), rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
-    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    out += C.scripts('/')
     F.check_text(out, L)
-    open(shell, 'w').write(out)
+    open(shell, 'w').write(C.finalize(out, shell))
     print('%-20s %6d bytes' % (page, len(out)))
 
 

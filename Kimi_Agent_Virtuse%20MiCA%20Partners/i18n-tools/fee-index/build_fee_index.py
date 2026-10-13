@@ -241,7 +241,7 @@ def chrome(L, lang_url):
 
 
 def org_ld():
-    return [{'@type': 'Organization', '@id': ORIGIN + '/#org', 'name': 'Virtuse', 'url': ORIGIN + '/',
+    return [{'@type': 'Organization', '@id': ORIGIN + '/#org', 'name': 'Virtuse', 'legalName': 'Virtuse Group Pte. Ltd.', 'url': ORIGIN + '/',
              'logo': ORIGIN + '/email-virtuse-v-mark.png'}]
 
 
@@ -272,7 +272,7 @@ def check_text(out, where):
 def write(rel, out):
     fp = os.path.join(SITE, rel)
     os.makedirs(os.path.dirname(fp), exist_ok=True)
-    open(fp, 'w').write(out)
+    open(fp, 'w').write(C.finalize(out, fp))
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
@@ -343,7 +343,7 @@ def build_main(L, fi, s21, extra_pages):
         {'@type': 'Article', 'headline': plain(t['og_title']), 'inLanguage': L, 'dateModified': fi['checked'],
          'author': {'@id': ORIGIN + '/#org'}, 'publisher': {'@id': ORIGIN + '/#org'}, 'mainEntityOfPage': ORIGIN + page},
         faq_ld([(plain(q), plain(a)) for q, a in faq])]}
-    out = head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_alt'])
+    out = head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_alt'], og_image=ORIGIN + '/og/fee-index.jpg')
     nav, foot = chrome(L, url)
 
     loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p
@@ -358,8 +358,8 @@ def build_main(L, fi, s21, extra_pages):
       </div>
 '''.format(step=t['step'], n=n, tt=t['s%d_t' % n], pp=t['s%d_p' % n]) for n in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
-    rel = [('/bitcoin-fee-index/methodology/', 'rel_method'), (dca, 'rel_dca'), (loc('stacking.html'), 'rel_stack'),
-           (loc('buy-bitcoin.html'), 'rel_buy'), (loc('bitcoin-data.html'), 'rel_data')]
+    rel = [(loc('stacking.html'), 'rel_stack'), (loc('retirement-calculator.html'), 'rel_ret'), (loc('concierge.html'), 'rel_pf'),
+           ('/bitcoin-fee-index/methodology/', 'rel_method'), (dca, 'rel_dca'), (loc('buy-bitcoin.html'), 'rel_buy')]
     cards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[k + '_t'], t[k + '_p']) for u, k in rel)
     blurb = t['press_blurb'].format(amount=eur(DEFAULT, L), w=rk[0]['name'], wt=pct(rk[0]['total'], L))
     embed = esc('<iframe src="%s/bitcoin-fee-index/embed/" title="Virtuse Bitcoin Fee Index" width="100%%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>\n'
@@ -430,7 +430,7 @@ def build_main(L, fi, s21, extra_pages):
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
            brief=brief_card(L, t),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
-    out += body + C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    out += body + C.scripts('/')
     check_text(out, L)
     write(out_file(L)[len(SITE) + 1:], out)
 
@@ -461,7 +461,7 @@ def simple_page(rel, title, desc, page_url, crumbs, h1, h1o, lead, sections, faq
 </main>
 
 '''.format(nav=nav, crumb=' · '.join(esc(n) for n, _ in crumbs[1:]), h1=h1, h1o=h1o, lead=lead, sections=sections, faq=faq_html, foot=foot)
-    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    out += C.scripts('/')
     check_text(out, rel)
     write(rel, out)
 

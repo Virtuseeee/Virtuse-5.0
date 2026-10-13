@@ -211,9 +211,7 @@ def build(L):
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
     out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70,
                  og_image=ORIGIN + '/og/retirement-calculator.jpg')
-    # This page loads nothing from cdn.jsdelivr.net (site-v2.js's Brief chart still needs api.binance.com).
-    assert out.count(' https://cdn.jsdelivr.net') == 1
-    out = out.replace(' https://cdn.jsdelivr.net', '', 1)
+    # CSP: C.finalize() keeps only the third-party origins this page uses.
     assert 'https://api.coingecko.com' in out
     out = out.replace('</head>', CSS + '</head>', 1)
     nav, foot = F.chrome(L, url)
@@ -240,8 +238,9 @@ def build(L):
       </div>
 '''.format(step=t['step'], i=i, tt=t['s%d_t' % i], pp=t['s%d_p' % i]) for i in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', esc(q).replace('&#x27;', "'"), a) for i, (q, a) in enumerate(faq))
-    rel = [(dca, 'rel_dca'), (page_url('stacking.html'), 'rel_stack'), (page_url('concierge.html'), 'rel_pf'), (tax, 'rel_tax'),
-           (page_url('cfo.html'), 'rel_cfo'), (page_url('bitcoin-data.html'), 'rel_data')]
+    fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
+    rel = [(page_url('stacking.html'), 'rel_stack'), (fee, 'rel_fee'), (page_url('concierge.html'), 'rel_pf'), (dca, 'rel_dca'),
+           (tax, 'rel_tax'), (page_url('cfo.html'), 'rel_cfo')]
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     strings = {k: v for k, v in t.items() if k.startswith('c_')}
@@ -292,11 +291,11 @@ def build(L):
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
            brief=F.brief_card(L, t, 'retirement_brief'), rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'],
            foot=foot, i18n=i18n)
-    sc = C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    sc = C.scripts('/')
     out += sc.replace('<script src="/site-v2.js', '<script src="/retirement-calc.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     check_dashes(out, strings, L)
-    open(shell, 'w').write(out)
+    open(shell, 'w').write(C.finalize(out, shell))
     print('%-34s %6d bytes' % (page, len(out)))
 
 
