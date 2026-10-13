@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 import {
   AlertTriangle,
-  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
   Circle,
@@ -223,7 +222,7 @@ export default function Tax() {
             [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
         </p>
         <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>
-          {t(lang, 'Get notified', 'Dajte mi vedieť', 'Dejte mi vědět')} <ArrowRight className="h-4 w-4" />
+          {t(lang, 'Get notified', 'Dajte mi vedieť', 'Dejte mi vědět')} →
         </a>
       </div>
 
