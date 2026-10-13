@@ -57,7 +57,7 @@ def build(L, n, c, k, partners):
          'operatingSystem': 'Web', 'isAccessibleForFree': True, 'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'},
          'publisher': {'@id': ORIGIN + '/#org'}, 'dateModified': '2026-10-12'},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
-    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70)
+    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70, og_image=F.ORIGIN + '/og/concierge.jpg')
     # inside the site's launcher iframe only the chat is shown (decided before first paint)
     embed = "<script>try{if(window.top!==window.self||/[?&]utm_medium=launcher(&|$)/.test(location.search))document.documentElement.classList.add('vc-embed')}catch(e){document.documentElement.classList.add('vc-embed')}</script>\n"
     out = out.replace('</head>', embed + assets + '\n</head>', 1)

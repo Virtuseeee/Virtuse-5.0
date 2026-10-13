@@ -343,7 +343,7 @@ def build_main(L, fi, s21, extra_pages):
         {'@type': 'Article', 'headline': plain(t['og_title']), 'inLanguage': L, 'dateModified': fi['checked'],
          'author': {'@id': ORIGIN + '/#org'}, 'publisher': {'@id': ORIGIN + '/#org'}, 'mainEntityOfPage': ORIGIN + page},
         faq_ld([(plain(q), plain(a)) for q, a in faq])]}
-    out = head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_alt'])
+    out = head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_alt'], og_image=ORIGIN + '/og/fee-index.jpg')
     nav, foot = chrome(L, url)
 
     loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p

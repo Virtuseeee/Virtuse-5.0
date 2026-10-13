@@ -41,7 +41,7 @@ def build(L):
          'operatingSystem': 'Web', 'isAccessibleForFree': True, 'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'},
          'publisher': {'@id': ORIGIN + '/#org'}, 'dateModified': '2026-10-12'},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
-    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70)
+    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=70, og_image=F.ORIGIN + '/og/stacking.jpg')
     out = out.replace('</head>', assets + '\n</head>', 1)
     nav, foot = F.chrome(L, url)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
