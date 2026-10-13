@@ -54,5 +54,7 @@
   "rel_cfo_p": "Bitcoin-Treasury für Unternehmen.",
   "rel_data_t": "Bitcoin-Daten",
   "rel_data_p": "Preis-, Gebühren- und Netzwerkdaten, live.",
+  "rel_ret_t": "Bitcoin Rentenrechner",
+  "rel_ret_p": "Wann Bitcoin-Ersparnisse Ihren Ruhestand finanzieren können.",
   "disclaimer": "Keine Anlageberatung. Virtuse verwahrt nie Ihre Schlüssel oder Gelder. KYC und Onboarding erfolgen auf der Plattform des jeweiligen Partners."
 }

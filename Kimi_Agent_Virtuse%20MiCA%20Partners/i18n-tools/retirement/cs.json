@@ -42,6 +42,8 @@
   "rel_cfo_p": "Bitcoin treasury pro firmy.",
   "rel_data_t": "Bitcoin data",
   "rel_data_p": "Cena, poplatky a data sítě živě.",
+  "rel_fee_t": "Index poplatků",
+  "rel_fee_p": "Celkové náklady pravidelného měsíčního nákupu Bitcoinu.",
   "disclaimer": "Pouze pro vzdělávací účely. Nejde o finanční poradenství. Projekce počítají se stálou mírou růstu a inflace; skutečné výnosy Bitcoinu kolísají a minulé výsledky nezaručují budoucí. Částky jsou nominální.",
   "c_plan": "Váš plán",
   "c_age": "Současný věk",

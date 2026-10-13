@@ -54,5 +54,7 @@
   "rel_cfo_p": "Bitcoin-treasury cégeknek.",
   "rel_data_t": "Bitcoin-adatok",
   "rel_data_p": "Árfolyam, díjak és hálózati adatok, élőben.",
+  "rel_ret_t": "Bitcoin nyugdíjkalkulátor",
+  "rel_ret_p": "Mikor fedezheti a Bitcoin-megtakarítás a nyugdíját.",
   "disclaimer": "Nem befektetési tanács. A Virtuse soha nem őrzi a kulcsait vagy a pénzét. A KYC és a regisztráció az egyes partnerek platformján történik."
 }

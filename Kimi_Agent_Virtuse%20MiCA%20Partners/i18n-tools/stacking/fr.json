@@ -42,5 +42,7 @@
   "rel_cfo_p": "La trésorerie Bitcoin des entreprises.",
   "rel_data_t": "Données Bitcoin",
   "rel_data_p": "Prix, frais et données du réseau, en direct.",
+  "rel_ret_t": "Simulateur de retraite Bitcoin",
+  "rel_ret_p": "Quand votre épargne en Bitcoin peut financer votre retraite.",
   "disclaimer": "Des scénarios, pas des prévisions. Pas un conseil en investissement. Virtuse ne détient jamais vos clés ni vos fonds ; vous achetez sur la plateforme de chaque partenaire."
 }

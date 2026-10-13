@@ -63,8 +63,8 @@ def build(L):
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
     fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
     dca = '/bitcoin-dca-calculator/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][2])
-    rel = [(fee, 'rel_fee'), (dca, 'rel_dca'), (page_url('concierge.html'), 'rel_pf'), (page_url('buy-bitcoin.html'), 'rel_buy'),
-           (page_url('cfo.html'), 'rel_cfo'), (page_url('bitcoin-data.html'), 'rel_data')]
+    rel = [(fee, 'rel_fee'), (page_url('retirement-calculator.html'), 'rel_ret'), (page_url('concierge.html'), 'rel_pf'), (dca, 'rel_dca'),
+           (page_url('buy-bitcoin.html'), 'rel_buy'), (page_url('cfo.html'), 'rel_cfo')]
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     out += '''<body class="page-buy page-fee page-pf page-stack no-split">

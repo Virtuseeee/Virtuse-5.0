@@ -54,5 +54,7 @@
   "rel_cfo_p": "Bitcoin treasury dla firm.",
   "rel_data_t": "Dane o Bitcoinie",
   "rel_data_p": "Cena, opłaty i dane sieci na żywo.",
+  "rel_ret_t": "Kalkulator emerytalny Bitcoin",
+  "rel_ret_p": "Kiedy oszczędności w Bitcoinie mogą sfinansować emeryturę.",
   "disclaimer": "To nie jest porada inwestycyjna. Virtuse nigdy nie przechowuje kluczy ani środków. KYC i rejestracja odbywają się na platformie każdego partnera."
 }

@@ -54,5 +54,7 @@
   "rel_cfo_p": "Treasury en Bitcoin para empresas.",
   "rel_data_t": "Datos de Bitcoin",
   "rel_data_p": "Precio, comisiones y datos de la red, en directo.",
+  "rel_ret_t": "Calculadora de jubilación con Bitcoin",
+  "rel_ret_p": "Cuándo sus ahorros en Bitcoin pueden financiar su jubilación.",
   "disclaimer": "No es asesoramiento de inversión. Virtuse nunca custodia sus claves ni sus fondos. El KYC y el alta se realizan en la plataforma de cada partner."
 }

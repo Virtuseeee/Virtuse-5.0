@@ -134,7 +134,16 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   body { background: #fff; color: #111; }
   a { color: #111; }
   .answer { background: #f4f4f4; border-color: #ccc; }
-}</style>
+}
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.tools a {
+  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
+}
+.tools a:hover { border-color: var(--border-hover); }
+.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.tools span { display: block; font-size: 14px; color: var(--text-muted); }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -285,6 +294,7 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
 <h2>Questions fréquentes</h2><h3>Quel est l'impôt sur le Bitcoin en Allemagne ?</h3><p>Situation au T3 2026 : impôt sur le revenu jusqu'à 45 % (progressif). Vérifiée le 13/10/2026. Pas un conseil fiscal.</p><h3>Existe-t-il en Allemagne une exonération liée à la durée de détention ?</h3><p>0 % après 1 an de détention ; les gains totaux inférieurs à 1 000 € par an sont exonérés. Avant de déclarer, vérifiez les règles de l'année en cours auprès d'un conseiller fiscal local.</p><h3>Comment déclarer ses plus-values en Bitcoin en Allemagne ?</h3><p>Déclaration fiscale annuelle. Les échanges crypto contre crypto sont imposables la première année. Une comptabilité FIFO est essentielle.</p><h3>Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?</h3><p>Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent présente l'aperçu des 13 pays ; la déclaration est préparée par un conseiller fiscal qualifié.</p>
 
   <p><a class="cta" href="../../../fr/tax-agent.html?country=de">Vérifier l'Allemagne dans le Tax Agent →</a></p>
+  <h2>Outils associés</h2><div class="tools"><a href="../../../fr/tax-agent.html?country=de"><b>Tax &amp; Inheritance Agent</b><span>Les règles fiscales par pays et un contrôle de préparation successorale.</span></a><a href="../../../fr/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Vendre ou emprunter en garantie de votre Bitcoin.</span></a><a href="../../../fr/concierge.html"><b>Partner Finder</b><span>Les partenaires adaptés à vos critères.</span></a><a href="../../../fr/buy-bitcoin.html"><b>Acheter du Bitcoin</b><span>Les partenaires d'achat et leurs frais, côte à côte.</span></a></div>
   <h2>Guides associés</h2><div class="related"><a href="../../../fr/bitcoin-vendre-ou-emprunter/">Bitcoin : vendre ou emprunter</a><a href="../../../fr/bitcoin-succession/">Bitcoin et succession</a><a href="../../../fr/bitcoin-fiscalite/autriche/">Fiscalité du Bitcoin en Autriche</a></div>
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Recevez <span>le Brief</span></h2>
