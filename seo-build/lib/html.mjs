@@ -166,6 +166,8 @@ export function renderPage({
         '@type': 'Organization',
         '@id': `${origin}/#org`,
         name: 'Virtuse',
+        legalName: 'Virtuse Group Pte. Ltd.',
+        logo: `${origin}/email-virtuse-v-mark.png`,
         url: `${origin}/`,
         description: 'Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys.'
       },

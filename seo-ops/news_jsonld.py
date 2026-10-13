@@ -8,7 +8,7 @@ after the stories build has made /stories/<slug>/):
     python3 seo-ops/news_jsonld.py --check    # exit 1 if news.html is out of date
 
 What it writes, between <!-- news-jsonld:start ... --> and <!-- news-jsonld:end --> in news.html:
-  - Organization  @id https://virtuse.com/#org (Virtuse Group, logo email-virtuse-v-mark.png)
+  - Organization  @id https://virtuse.com/#org (Virtuse, legalName Virtuse Group Pte. Ltd., logo email-virtuse-v-mark.png)
   - CollectionPage https://virtuse.com/news.html (mainEntity = the ItemList)
   - ItemList of the editions, newest first. Essays ("essay": true) are left out; they are
     not Brief editions. Each ListItem holds a NewsArticle:
@@ -96,7 +96,8 @@ def build():
             {
                 "@type": "Organization",
                 "@id": ORG_ID,
-                "name": "Virtuse Group",
+                "name": "Virtuse",
+                "legalName": "Virtuse Group Pte. Ltd.",
                 "url": BASE + "/",
                 "logo": BASE + "/email-virtuse-v-mark.png",
             },

@@ -241,7 +241,7 @@ def chrome(L, lang_url):
 
 
 def org_ld():
-    return [{'@type': 'Organization', '@id': ORIGIN + '/#org', 'name': 'Virtuse', 'url': ORIGIN + '/',
+    return [{'@type': 'Organization', '@id': ORIGIN + '/#org', 'name': 'Virtuse', 'legalName': 'Virtuse Group Pte. Ltd.', 'url': ORIGIN + '/',
              'logo': ORIGIN + '/email-virtuse-v-mark.png'}]
 
 
