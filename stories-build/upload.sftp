@@ -813,6 +813,43 @@ put stories/you-dont-need-millions-to-start-investing/index.html public_html/sto
 put stories/you-need-to-know-how-currency-is-created-and-how-it-dies/index.html public_html/stories/you-need-to-know-how-currency-is-created-and-how-it-dies/index.html
 put stories/you-still-solvent-maintain-it/index.html public_html/stories/you-still-solvent-maintain-it/index.html
 put stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/index.html public_html/stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/index.html
+# hubs:start
+-mkdir public_html/stories/page
+-mkdir public_html/sk/stories/page
+-mkdir public_html/stories/page/2
+-mkdir public_html/stories/page/3
+-mkdir public_html/stories/page/4
+-mkdir public_html/stories/page/5
+-mkdir public_html/stories/page/6
+-mkdir public_html/stories/page/7
+-mkdir public_html/stories/page/8
+-mkdir public_html/sk/stories/page/2
+-mkdir public_html/sk/stories/page/3
+-mkdir public_html/sk/stories/page/4
+-mkdir public_html/sk/stories/page/5
+-mkdir public_html/sk/stories/page/6
+-mkdir public_html/sk/stories/page/7
+-mkdir public_html/sk/stories/page/8
+-mkdir public_html/sk/stories/page/9
+put stories/index.html public_html/stories/index.html
+put stories/page/2/index.html public_html/stories/page/2/index.html
+put stories/page/3/index.html public_html/stories/page/3/index.html
+put stories/page/4/index.html public_html/stories/page/4/index.html
+put stories/page/5/index.html public_html/stories/page/5/index.html
+put stories/page/6/index.html public_html/stories/page/6/index.html
+put stories/page/7/index.html public_html/stories/page/7/index.html
+put stories/page/8/index.html public_html/stories/page/8/index.html
+put sk/stories/index.html public_html/sk/stories/index.html
+put sk/stories/page/2/index.html public_html/sk/stories/page/2/index.html
+put sk/stories/page/3/index.html public_html/sk/stories/page/3/index.html
+put sk/stories/page/4/index.html public_html/sk/stories/page/4/index.html
+put sk/stories/page/5/index.html public_html/sk/stories/page/5/index.html
+put sk/stories/page/6/index.html public_html/sk/stories/page/6/index.html
+put sk/stories/page/7/index.html public_html/sk/stories/page/7/index.html
+put sk/stories/page/8/index.html public_html/sk/stories/page/8/index.html
+put sk/stories/page/9/index.html public_html/sk/stories/page/9/index.html
+put ru/stories/index.html public_html/ru/stories/index.html
+# hubs:end
 put sitemap.xml public_html/sitemap.xml
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
 bye

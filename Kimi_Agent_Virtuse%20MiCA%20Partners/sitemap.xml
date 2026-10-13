@@ -8001,6 +8001,92 @@
   </url>
 <!-- SEO-BUILD:END -->
 <!-- STORIES-BUILD:START -->
+<!-- STORIES-HUBS:START -->
+  <url>
+    <loc>https://virtuse.com/stories/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/2/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/3/</loc>
+    <lastmod>2022-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/4/</loc>
+    <lastmod>2022-02-23</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/5/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/6/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/7/</loc>
+    <lastmod>2020-08-05</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/page/8/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/2/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/3/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/4/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/5/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/6/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/7/</loc>
+    <lastmod>2026-03-11</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/8/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/page/9/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ru/stories/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/"/>
+  </url>
+<!-- STORIES-HUBS:END -->
   <url>
     <loc>https://virtuse.com/ru/stories/15034/</loc>
     <lastmod>2026-09-03</lastmod>
