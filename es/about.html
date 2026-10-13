@@ -3,30 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
-<script src="../lang-detect.js"></script>
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Sobre Virtuse: hub solo de Bitcoin desde 2018</title>
-<meta name="description" content="Fundada en 2018, solo Bitcoin desde 2022, hub desde 2024. 22 partners, clientes en más de 100 países. Oficinas en Singapur y Bratislava.">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="shortcut icon" href="../favicon.ico">
+<title>Sobre nosotros: hub de Bitcoin independiente | Virtuse</title>
+<meta name="description" content="Virtuse es un comparador independiente de servicios de Bitcoin, fundado en 2018 por Rastislav Vasilisin. Solo Bitcoin. No custodiamos fondos ni claves.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/es/about.html">
 <link rel="alternate" hreflang="en" href="https://virtuse.com/about.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/about.html">
-<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/about.html">
 <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/about.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/about.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/about.html">
 <link rel="alternate" hreflang="de" href="https://virtuse.com/de/about.html">
 <link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/about.html">
@@ -34,1646 +31,292 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/about.html">
 <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/about.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/about.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Sobre Virtuse: hub solo de Bitcoin desde 2018">
-<meta property="og:description" content="Fundada en 2018, solo Bitcoin desde 2022, hub desde 2024. 22 partners, clientes en más de 100 países. Oficinas en Singapur y Bratislava.">
-<link rel="canonical" href="https://virtuse.com/es/about.html">
+<meta property="og:title" content="Sobre Virtuse: un hub independiente de servicios de Bitcoin">
+<meta property="og:description" content="Virtuse es un comparador independiente de servicios de Bitcoin, fundado en 2018 por Rastislav Vasilisin. Solo Bitcoin. No custodiamos fondos ni claves.">
 <meta property="og:url" content="https://virtuse.com/es/about.html">
-<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image" content="https://virtuse.com/og/about.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sobre Virtuse: un hub independiente de servicios de Bitcoin">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sobre Virtuse: hub solo de Bitcoin desde 2018">
-<meta name="twitter:description" content="Fundada en 2018, solo Bitcoin desde 2022, hub desde 2024. 22 partners, clientes en más de 100 países. Oficinas en Singapur y Bratislava.">
-<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css">
-<style>
-
-/* Neutral-gray dark palette, matched to the homepage's own redesign —
-   overrides styles.css's older navy-tinted tokens for this page only. */
-:root {
-  color-scheme: dark;
-  --dark: #08090a;
-  --dark-lighter: #0e0e0e;
-  --dark-card: #141414;
-  --dark-card-hover: #1c1c1c;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.12);
-  --nav-bg: rgba(8, 9, 10, 0.95);
-  --nav-bg-strong: rgba(8, 9, 10, 0.98);
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--dark);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { max-width: 100%; }
-
-/* ===== NAVIGATION ===== */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 48px;
-  border-bottom: 1px solid var(--border);
-  background: var(--nav-bg);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav.nav-scrolled { background: var(--nav-bg-strong); backdrop-filter: blur(20px); }
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.nav-logo-img { height: 32px; width: auto; display: block; }
-
-/* Desktop nav link size/weight matched to linear.app's own nav, same
-   as the homepage — :not(.lang-opt) so it doesn't leak onto the
-   language pills nested inside .nav-links (a real bug found there). */
-.nav-links a:not(.lang-opt) {
-  font-size: 13px;
-  font-weight: 400;
-  padding: 6px 12px;
-}
-
-.nav-links a:hover:not(.lang-opt) { color: var(--text); background: var(--dark-card); }
-
-.nav-links a.active:not(.lang-opt) {
-  color: var(--text);
-  background: var(--dark-card);
-}
-
-/* ===== HERO ===== */
-.hero {
-  padding: 80px 48px 64px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.hero-label {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--btc-orange);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.hero h1 {
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  margin-bottom: 20px;
-}
-
-/* Orange is a rare stamp now, not a highlight color — matches the
-   homepage's own hero. */
-.hero h1 .highlight { color: var(--text); }
-
-.hero-desc {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 680px;
-  margin-bottom: 40px;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 880px;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-box {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 24px;
-  text-align: center;
-  transition: border-color 0.2s;
-}
-
-.stat-box:hover { border-color: var(--border-hover); }
-
-.stat-value {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* ===== SECTION SCAFFOLD ===== */
-.section {
-  padding: 0 48px var(--section-spacing);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.sec-label {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 32px;
-}
-
-.sec-title h2 {
-  font-size: 42px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-
-.sec-title h2 span { font-weight: 400; color: var(--text-muted); }
-
-.sec-title h2:only-child { margin-bottom: 32px; }
-
-.sec-title p {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--text-muted);
-  max-width: 620px;
-  line-height: 1.55;
-  margin-bottom: 40px;
-}
-
-/* ===== STORY TIMELINE ===== */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 16px;
-}
-
-.step {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 26px 26px;
-  position: relative;
-  transition: border-color 0.2s;
-}
-
-.step:hover { border-color: var(--border-hover); }
-
-.step-num {
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--dark-card-hover);
-  border: 1px solid var(--border-hover);
-  border-radius: 100px;
-  font-weight: 800;
-  font-size: 13px;
-  color: var(--text);
-  padding: 6px 16px;
-  z-index: 2;
-}
-
-.step h3 {
-  font-size: 17px;
-  font-weight: 700;
-  margin: 10px 0 10px;
-}
-
-.step p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* ===== MISSION CARDS ===== */
-.value-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.value-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 30px 26px;
-  transition: border-color 0.3s, transform 0.3s;
-}
-
-.value-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-4px);
-}
-
-.value-card h3 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.value-card p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* ===== WHAT IS VIRTUSE ===== */
-.name-section {
-  background: var(--dark-lighter);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: var(--section-spacing) 48px;
-  margin-bottom: var(--section-spacing);
-}
-
-.name-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 55% 45%;
-  align-items: center;
-  gap: 60px;
-}
-
-.name-quote {
-  border-left: 3px solid var(--btc-orange);
-  background: rgba(247, 147, 26, 0.05);
-  border-radius: 0 12px 12px 0;
-  padding: 18px 24px;
-  margin-top: 24px;
-  font-size: 15px;
-  font-style: italic;
-  color: var(--text);
-}
-
-.name-text p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-}
-
-.name-text p:last-child { margin-bottom: 0; }
-
-.name-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow-x: clip; /* the 380px glow below is wider than a phone */
-}
-
-.name-visual::before {
-  content: '';
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(247, 147, 26, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.name-visual img {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  width: 100%;
-}
-
-/* ===== VETTING CRITERIA ===== */
-.vet-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-/* ===== GLOBAL PRESENCE ===== */
-.presence-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.presence-card {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 26px;
-  transition: border-color 0.2s;
-}
-
-.presence-card:hover { border-color: var(--border-hover); }
-
-.presence-flag { font-size: 26px; margin-bottom: 14px; }
-
-.presence-card h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.presence-card .presence-role {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.presence-card p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* ===== EXPLORE THE HUB ===== */
-.hub-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.hub-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px 24px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 700;
-  transition: all 0.2s;
-}
-
-.hub-link .arrow {
-  color: var(--text-dim);
-  transition: all 0.2s;
-}
-
-.hub-link:hover {
-  border-color: var(--btc-orange);
-  transform: translateY(-2px);
-}
-
-.hub-link:hover .arrow {
-  color: var(--btc-orange);
-  transform: translateX(3px);
-}
-
-.hub-link small {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  margin-top: 3px;
-}
-
-/* ===== NEWSLETTER ===== */
-.newsletter {
-  background: var(--dark-lighter);
-  border-top: 1px solid var(--border);
-  padding: 80px 48px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.newsletter h2 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter h2 span { font-weight: 400; color: var(--text-muted); }
-
-.newsletter p {
-  color: var(--text-muted);
-  font-size: 16px;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter-form {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  max-width: 520px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 14px 20px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--dark);
-  color: var(--text);
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.newsletter-form input:focus { border-color: var(--btc-orange); }
-.newsletter-form input::placeholder { color: var(--text-dim); }
-
-.newsletter-form button {
-  padding: 14px 28px;
-  background: var(--text);
-  color: var(--dark);
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.brief-card {
-  max-width: 480px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.brief-card-poster h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.brief-card-poster p { font-size: 15px; }
-
-.newsletter-form-stacked.newsletter-form {
-  flex-direction: column;
-  max-width: 100%;
-  gap: 12px;
-}
-
-.newsletter-form-stacked input {
-  width: 100%;
-  padding: 16px 18px;
-  font-size: 15px;
-}
-
-.newsletter-form-stacked button {
-  width: 100%;
-  padding: 16px;
-  font-size: 15px;
-}
-
-.brief-card .newsletter-form button {
-  background: #ffffff;
-  color: #0d0d0d;
-}
-
-.brief-card .newsletter-form button:hover {
-  background: #e8e8e8;
-  color: #0d0d0d;
-}
-
-.brief-form-msg {
-  margin: 10px auto 0;
-  font-size: 13px;
-  min-height: 18px;
-  color: var(--text-muted);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.brief-card .brief-fineprint {
-  margin: 6px auto 0;
-  font-size: 12px;
-  color: var(--text-muted);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-
-
-/* ===== FOOTER ===== */
-.footer-main {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
-  padding: 60px 0 30px;
-}
-
-.footer-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.footer-logo { flex-shrink: 0; }
-
-.footer-col h4 {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-.footer-col a {
-  display: block;
-  color: var(--text-muted);
-  font-size: 13px;
-  text-decoration: none;
-  margin-bottom: 12px;
-  line-height: 1.4;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover { color: var(--text); }
-
-.footer-bottom {
-  padding-left: 48px;
-  padding-right: 48px;
-}
-
-.footer-bottom p {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.footer-bottom-brief { margin-top: 6px; }
-.footer-bottom-brief a { color: var(--text); text-decoration: none; }
-.footer-bottom-brief a:hover { text-decoration: underline; }
-
-.footer-wordmark {
-  overflow: hidden;
-  height: 138px;
-  margin-top: 40px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 8px;
-  pointer-events: none;
-  user-select: none;
-  opacity: 0.14;
-}
-
-.footer-wordmark-icon-wrap {
-  flex-shrink: 0;
-  animation: footerWordmarkPulse 6s ease-in-out infinite;
-}
-
-.footer-wordmark-icon {
-  height: 210px;
-  width: auto;
-  display: block;
-}
-
-@keyframes footerWordmarkShimmer {
-  0%, 100% { background-position: 200% 0; }
-  50% { background-position: -200% 0; }
-}
-
-@keyframes footerWordmarkPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.035); }
-}
-
-.footer-wordmark-text {
-  display: inline-block;
-  font-size: 288px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  background: linear-gradient(100deg, #e6edf3 35%, #5FAEDE 50%, #e6edf3 65%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: footerWordmarkShimmer 7s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-
-  .hero { padding: 60px 24px 48px; }
-  .hero h1 { font-size: 38px; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
-
-  .section { padding: 0 24px 64px; }
-
-  .steps { grid-template-columns: 1fr; gap: 32px; }
-
-  .value-grid { grid-template-columns: 1fr; }
-
-  .name-section { padding: 64px 24px; margin-bottom: 64px; }
-  .name-inner { grid-template-columns: 1fr; gap: 40px; }
-  .name-visual { order: 2; }
-
-  .vet-grid { grid-template-columns: 1fr; }
-
-  .presence-grid { grid-template-columns: 1fr; }
-
-  .hub-grid { grid-template-columns: 1fr; }
-
-  .newsletter { padding: 60px 24px; }
-  .newsletter h2 { font-size: 28px; }
-  .newsletter-form { flex-direction: column; }
-  .newsletter-form button { width: 100%; }
-
-  .footer-main { padding: 40px 24px 20px; }
-  .footer-inner { flex-direction: column; gap: 30px; padding: 0; }
-  .footer-bottom { padding-left: 0; padding-right: 0; }
-  .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 24px; }
-  .footer-wordmark { height: 110px; opacity: 0.32; }
-  .footer-wordmark-icon { height: 140px; }
-  .footer-wordmark-text { font-size: 184px; }
-}
-
-/* ===== UNIFIED CTA SYSTEM ===== */
-
-a.nav-logo, .nav-logo {
-  display: inline-flex !important;
-  align-items: flex-end;
-  gap: 1px;
-  font-weight: 800;
-  font-size: 19px;
-  color: #e6edf3 !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-}
-
-.nav-cta, .newsletter-form button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-weight: 700;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-/* nav-cta stays the one sitewide orange stamp — every other button is an
-   inverted neutral, hardcoded (not var()) per the real Safari bug found
-   on the homepage. */
-.nav-cta { background: var(--btc-orange, #f7931a); color: #0d0902; padding: 7px 14px; font-size: 12px; }
-.nav-cta:hover {
-  background: #ffffff;
-  color: #0d0902;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(247, 147, 26, 0.25);
-}
-
-.newsletter-form button { background: #e6edf3; color: #08090a; }
-.newsletter-form button:hover { opacity: 0.85; transform: translateY(-1px); }
-
-/* ===== MOBILE MENU ===== */
-/* Rebuilt as an inline SVG (two stroked <line>s) instead of two <span>
-   divs with a CSS background-color — a real device screenshot on the
-   homepage showed the span version fully invisible on mobile Safari. */
-.nav-hamburger svg { width: 20px; height: 20px; overflow: visible; }
-
-.ham-line {
-  stroke: var(--text, #e6edf3);
-  stroke-width: 2;
-  stroke-linecap: round;
-  transform-origin: 10px 10px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.nav-open .ham-line-1 { transform: translateY(4px) rotate(45deg); }
-body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
-
-.nav-hamburger {
-  display: none;
-  -webkit-appearance: none;
-  appearance: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  position: fixed;
-  top: 18px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-  transition: background 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-@media (max-width: 1024px) {
-  .nav-hamburger { display: flex; }
-  .nav-cta {
-    position: fixed;
-    top: 16px;
-    right: 60px;
-    z-index: 1001;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: left;
-    list-style: none;
-    margin: 0;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background:
-      radial-gradient(ellipse 620px 420px at 100% 0%, rgba(247, 147, 26, 0.14), transparent 60%),
-      linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 55%, var(--dark) 100%);
-    padding: calc(88px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom));
-    gap: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    z-index: 1000;
-    overflow-y: auto;
-  }
-
-  .nav-links::before {
-    content: 'MENU';
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--text-dim, #484f58);
-    margin-bottom: 18px;
-    padding: 0 4px;
-  }
-
-  body.nav-open .nav-links {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .nav-links li {
-    list-style: none;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  body.nav-open .nav-links li { opacity: 1; transform: translateY(0); }
-
-  .nav-links li:nth-child(1)  { transition-delay: 0.04s; }
-  .nav-links li:nth-child(2)  { transition-delay: 0.07s; }
-  .nav-links li:nth-child(3)  { transition-delay: 0.10s; }
-  .nav-links li:nth-child(4)  { transition-delay: 0.13s; }
-  .nav-links li:nth-child(5)  { transition-delay: 0.16s; }
-  .nav-links li:nth-child(6)  { transition-delay: 0.19s; }
-  .nav-links li:nth-child(7)  { transition-delay: 0.22s; }
-  .nav-links li:nth-child(8)  { transition-delay: 0.25s; }
-  .nav-links li:nth-child(9)  { transition-delay: 0.28s; }
-  .nav-links li:nth-child(10) { transition-delay: 0.31s; }
-  .nav-links li:nth-child(11) { transition-delay: 0.34s; }
-
-  .nav-links a:not(.lang-opt) {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: #e6edf3;
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    padding: 15px 6px;
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.2s ease, padding-left 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .nav-links a:active { padding-left: 10px; }
-
-  .nav-link-num {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-dim, #484f58);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
-  }
-
-  .nav-link-label { flex: 1; }
-
-  .nav-link-arrow {
-    display: block;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: var(--text-dim, #484f58);
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
-  }
-
-  .nav-links a:active .nav-link-arrow,
-  .nav-links a.active .nav-link-arrow {
-    opacity: 1;
-    transform: translateX(0);
-    color: var(--btc-orange, #f7931a);
-  }
-
-  .nav-links a.active:not(.lang-opt) { color: var(--btc-orange, #f7931a); }
-  .nav-links a.active .nav-link-num { color: var(--btc-orange, #f7931a); }
-
-  .nav-links a.active:not(.lang-opt)::before {
-    content: '';
-    position: absolute;
-    left: -24px;
-    top: 0; bottom: 0;
-    width: 3px;
-    background: var(--btc-orange, #f7931a);
-  }
-
-  .nav-links-cta-item {
-    display: block;
-    margin-top: 22px;
-  }
-
-  .nav-links-cta {
-    position: static !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 16px;
-    border-radius: 12px;
-    background: #e6edf3;
-    color: #08090a;
-    box-shadow: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .nav-links-cta svg { width: 16px; height: 16px; }
-
-  .nav-links-tagline {
-    margin-top: 16px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-dim, #484f58);
-  }
-
-  body.nav-open { overflow: hidden; }
-}
-
-/* ===== Compact language dropdown (desktop) =====
-   Replaces the old 3-pill .nav-lang-switch with a single compact button
-   that opens a small dropdown, so the nav row has room regardless of how
-   many languages exist. .nav-actions groups it with the CTA button into
-   one flex item so the nav's space-between doesn't spread them apart. */
-.nav-actions { display: flex; align-items: center; gap: 12px; }
-
-.lang-menu { position: relative; }
-
-.lang-menu-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 6px 11px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--text);
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.lang-menu-btn:hover { border-color: var(--border-hover); }
-
-.lang-menu-caret {
-  opacity: 0.6;
-  transition: transform 0.2s ease;
-}
-
-.lang-menu.open .lang-menu-caret { transform: rotate(180deg); }
-
-.lang-menu-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 130px;
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 6px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  z-index: 200;
-}
-
-.lang-menu.open .lang-menu-panel {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.lang-menu-panel .lang-opt {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.lang-menu-panel .lang-opt:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
-
-.lang-menu-panel .lang-opt.active {
-  background: var(--text);
-  color: var(--dark);
-}
-
-@media (max-width: 1024px) {
-  .lang-menu:not(.lang-menu-mobile) { display: none; }
-  .lang-menu-mobile { margin-top: 4px; }
-  .lang-menu-mobile .lang-menu-panel { right: auto; left: 0; }
-}
-
-/* ===== ES: compact nav text =====
-   Spanish nav labels can run longer than other languages' (e.g. "Datos
-   de Bitcoin", "Sobre nosotros"), so at the default per-item padding/
-   font-size they wrap onto two lines at common desktop widths. Inserted
-   UNCONDITIONALLY (not gated behind whether the page already had the
-   compact dropdown) -- see scaffold_fr.py's own docstring for why that
-   gate was wrong when the DE-era script first did it. */
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav-links a {
-    font-size: 13px;
-    padding: 8px 9px;
-    white-space: nowrap;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1300px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-
-/* ===== Compact nav at 1025-1300px =====
-   Eleven nav items plus the language menu and CTA did not fit around
-   1100px in most languages (labels wrapped, the CTA ran off-screen). Same
-   block as pl/hu (scaffold_pl.py); the .nav prefix out-ranks the page's
-   own .nav-links a:not(.lang-opt) rule. */
-@media (min-width: 1025px) {
-  .nav-links { gap: 2px; }
-  .nav .nav-links a:not(.lang-opt) { font-size: 13px; padding: 8px 9px; white-space: nowrap; }
-}
-@media (min-width: 1025px) and (max-width: 1300px) {
-  .nav { padding: 20px 16px; }
-  .nav-links { gap: 0; }
-  .nav .nav-links a:not(.lang-opt) { padding: 7px 4px; font-size: 12px; }
-  .nav-actions { gap: 8px; }
-  .nav-cta { padding: 10px 12px; }
-}
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .nav { padding: 18px 12px; }
-  .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
-  .nav-logo span { font-size: 18px !important; }
-}
-</style>
-<script type="application/ld+json" id="virtuse-ld">
-{
+<meta name="twitter:title" content="Sobre Virtuse: un hub independiente de servicios de Bitcoin">
+<meta name="twitter:description" content="Virtuse es un comparador independiente de servicios de Bitcoin, fundado en 2018 por Rastislav Vasilisin. Solo Bitcoin. No custodiamos fondos ni claves.">
+<meta name="twitter:image" content="https://virtuse.com/og/about.jpg">
+<meta name="twitter:image:alt" content="Sobre Virtuse: un hub independiente de servicios de Bitcoin">
+<script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Inicio",
-      "item": "https://virtuse.com/es/index.html"
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://virtuse.com/es/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Sobre nosotros",
+          "item": "https://virtuse.com/es/about.html"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Sobre nosotros",
-      "item": "https://virtuse.com/es/about.html"
+      "@type": "Person",
+      "name": "Rastislav Vasilisin",
+      "alternateName": "Ras Vasilisin",
+      "jobTitle": "Founder",
+      "image": "https://virtuse.com/img/team/ras-vasilisin-400.webp",
+      "url": "https://virtuse.com/es/about.html#founder",
+      "sameAs": [
+        "https://www.linkedin.com/in/rastislav-vasilisin-11bb5819/",
+        "https://hackernoon.com/u/ras",
+        "https://x.com/RasVasilisin"
+      ]
     }
   ]
+}</script>
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=6">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<script>window.VB_I18N = {"openMenu": "Abrir menú", "closeMenu": "Cerrar menú", "soon": "Pronto", "new": "Nuevo", "latestBrief": "Último Brief · ", "min": " min", "coverImage": "Imagen de portada: ", "badEmail": "Introduzca un correo electrónico válido.", "sending": "Enviando...", "subscribed": "Listo. El Brief sale el lunes.", "error": "Algo salió mal. Inténtelo de nuevo.", "netError": "Error de red. Inténtelo de nuevo.", "briefLangNote": " (en inglés)"};</script>
+<style>
+/* ABOUT (page-about) */
+.ab-stats { display: flex; justify-content: center; gap: 16px; margin: 28px auto 0; flex-wrap: wrap; }
+.ab-stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 26px; min-width: 200px; text-align: center; }
+.ab-stat b { display: block; font-size: 34px; font-weight: 700; letter-spacing: -.02em; }
+.ab-stat span { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); }
+.page-about .how-log-num { order: 0; margin: 0 0 10px; color: var(--orange); }
+.ab-founder { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 36px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+.ab-founder picture, .ab-founder img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.ab-founder h3 { font-size: 24px; font-weight: 700; margin: 0; }
+.ab-role { margin: 4px 0 16px; font-size: 14px; color: var(--muted); }
+.ab-bio { margin: 0; font-size: 17px; line-height: 1.65; color: var(--text); max-width: 720px; }
+.ab-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.ab-links a { border: 1px solid var(--line-strong); border-radius: 10px; padding: 8px 14px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; }
+.ab-links a:hover { background: var(--card-hover); }
+.ab-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ab-cards.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ab-card { background: var(--card); border-radius: 16px; padding: 22px 24px; min-width: 0; }
+.ab-card b { display: block; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+.ab-card p { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.6; }
+.ab-name { max-width: 760px; }
+.ab-name p { font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 14px; }
+.ab-name p:last-child { color: var(--text); font-weight: 600; }
+.ab-label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ab-intro { font-size: 17px; color: var(--muted); max-width: 760px; margin: 0 0 24px; line-height: 1.6; }
+.ab-licence { margin: 24px 0 0; font-size: 15px; color: var(--text); line-height: 1.6; max-width: 760px; }
+.ab-licence a { color: var(--text); }
+.ab-sub { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.ab-sub ~ .gcards { margin-bottom: 32px; }
+.ab-cfo { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
+.ab-cfo p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
+.ab-cfo b { font-weight: 600; }
+.ab-cfo a { flex: none; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
+.ab-cfo a:hover { background: var(--card-hover); }
+@media (max-width: 900px) {
+  .ab-cards, .ab-cards.four { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .ab-founder { grid-template-columns: 180px minmax(0, 1fr); gap: 24px; }
 }
-</script>
+@media (max-width: 600px) {
+  .ab-cards, .ab-cards.four { grid-template-columns: minmax(0, 1fr); }
+  .ab-founder { grid-template-columns: minmax(0, 1fr); padding: 20px; }
+  .ab-founder picture { max-width: 220px; }
+  .ab-stat { min-width: 0; flex: 1 1 140px; padding: 16px; }
+  .ab-cfo { flex-direction: column; align-items: stretch; }
+  .ab-cfo a { text-align: center; }
+}
+</style>
 </head>
-<body>
-
-<!-- Navigation -->
-<nav class="nav">
-  <button class="nav-hamburger" id="navHamburger" aria-label="Alternar menú" aria-expanded="false">
-    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <line class="ham-line ham-line-1" x1="2" y1="6" x2="18" y2="6"/>
-      <line class="ham-line ham-line-2" x1="2" y1="14" x2="18" y2="14"/>
-    </svg>
-  </button>
-  <a href="/es/" class="nav-logo">
-    <svg viewBox="0 0 760 483" style="height:26px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:21px;letter-spacing:0.01em;line-height:1;position:relative;top:3px;">Virtuse</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="buy-bitcoin.html"><span class="nav-link-num">01</span><span class="nav-link-label">Comprar Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="mining.html"><span class="nav-link-num">02</span><span class="nav-link-label">Minería</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="lending.html"><span class="nav-link-num">03</span><span class="nav-link-label">Préstamos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="secure.html"><span class="nav-link-num">04</span><span class="nav-link-label">Custodia</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="treasury.html"><span class="nav-link-num">05</span><span class="nav-link-label">Treasury</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="tax.html"><span class="nav-link-num">06</span><span class="nav-link-label">Impuestos</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bots.html"><span class="nav-link-num">07</span><span class="nav-link-label">Bots</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="blog.html"><span class="nav-link-num">08</span><span class="nav-link-label">Blog</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nav-link-num">09</span><span class="nav-link-label">Brief</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="bitcoin-data.html"><span class="nav-link-num">10</span><span class="nav-link-label">Datos de Bitcoin</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li><a href="about.html" class="active"><span class="nav-link-num">11</span><span class="nav-link-label">Sobre nosotros</span><svg class="nav-link-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-    <li class="nav-links-cta-item"><button type="button" class="nav-cta nav-links-cta">Comenzar<svg viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-    <li class="nav-links-lang-item">
-      <div class="lang-menu lang-menu-mobile" id="langMenuMobile">
-        <button type="button" class="lang-menu-btn" id="langMenuBtnMobile" aria-haspopup="true" aria-expanded="false" aria-label="Idioma de la página">
-          <span class="lang-flag">🇪🇸</span>ES
-          <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="lang-menu-panel" id="langMenuPanelMobile" role="menu">
-        <a role="menuitem" href="../about.html" class="lang-opt" lang="en"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a role="menuitem" href="../sk/about.html" class="lang-opt" lang="sk"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a role="menuitem" href="../uk/about.html" class="lang-opt" lang="uk"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a role="menuitem" href="../cs/about.html" class="lang-opt" lang="cs"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a role="menuitem" href="../ru/about.html" class="lang-opt" lang="ru"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a role="menuitem" href="../de/about.html" class="lang-opt" lang="de"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a role="menuitem" href="../fr/about.html" class="lang-opt" lang="fr"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a role="menuitem" href="about.html" class="lang-opt active" lang="es"><span class="lang-flag">🇪🇸</span>ES</a>
-        <a role="menuitem" href="../pl/about.html" class="lang-opt" lang="pl"><span class="lang-flag">🇵🇱</span>PL</a>
-        <a role="menuitem" href="../hu/about.html" class="lang-opt" lang="hu"><span class="lang-flag">🇭🇺</span>HU</a>
+<body class="page-buy page-fee page-pf page-about no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/es/index.html" aria-label="Inicio de Virtuse">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Servicios</button>
+        <div class="nav-drop" id="nd-services"><a href="/es/buy-bitcoin.html">Comprar Bitcoin</a><a href="/es/secure.html">Custodia</a><a href="/es/lending.html">Préstamos</a><a href="/es/mining.html">Minería</a><a href="/es/treasury.html">Treasury</a><a href="/es/tax.html">Impuestos</a><a href="/es/bots.html">Bots</a></div>
       </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Aprender</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/es/blog.html">Blog</a><a href="/es/bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a></div>
       </div>
-    </li>
-  </ul>
-  <div class="nav-actions">
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Herramientas</button>
+        <div class="nav-drop" id="nd-tools"><a href="/es/cfo.html" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Pronto</span></a><a href="/es/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/es/stacking.html">Stacking Strategist</a><a href="/es/loan.html">Loan &amp; Liquidity Copilot</a><a href="/es/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/es/retirement-calculator.html">Calculadora de jubilación</a></div>
+      </div>
+      <a class="nav-top" href="/es/about.html">Sobre nosotros</a>
+    </nav>
     <div class="lang-menu" id="langMenu">
-      <button type="button" class="lang-menu-btn" id="langMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma de la página">
-        <span class="lang-flag">🇪🇸</span>ES
-        <svg class="lang-menu-caret" width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="lang-menu-panel" id="langMenuPanel" role="menu">
-        <a href="../about.html" class="lang-opt" lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span>EN</a>
-        <a href="../sk/about.html" class="lang-opt" lang="sk" role="menuitem"><span class="lang-flag">🇸🇰</span>SK</a>
-        <a href="../uk/about.html" class="lang-opt" lang="uk" role="menuitem"><span class="lang-flag">🇺🇦</span>UA</a>
-        <a href="../cs/about.html" class="lang-opt" lang="cs" role="menuitem"><span class="lang-flag">🇨🇿</span>CS</a>
-        <a href="../ru/about.html" class="lang-opt" lang="ru" role="menuitem"><span class="lang-flag">🇷🇺</span>RU</a>
-        <a href="../de/about.html" class="lang-opt" lang="de" role="menuitem"><span class="lang-flag">🇩🇪</span>DE</a>
-        <a href="../fr/about.html" class="lang-opt" lang="fr" role="menuitem"><span class="lang-flag">🇫🇷</span>FR</a>
-        <a href="about.html" class="lang-opt active" lang="es" role="menuitem"><span class="lang-flag">🇪🇸</span>ES</a>
-        <a href="../pl/about.html" class="lang-opt" lang="pl" role="menuitem"><span class="lang-flag">🇵🇱</span>PL</a>
-        <a href="../hu/about.html" class="lang-opt" lang="hu" role="menuitem"><span class="lang-flag">🇭🇺</span>HU</a>
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma de la página: español"><span aria-hidden="true">&#127466;&#127480;</span><span class="lang-code">ES</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/about.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/about.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/about.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/about.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/about.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/about.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/about.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/about.html" aria-current="page" class="lang-opt active" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/about.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/about.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/es/concierge.html?utm_source=concierge&amp;utm_medium=nav">Encontrar partners</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- 1. HERO -->
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>Sobre Virtuse</div>
+    <h1>Un hub independiente <span class="h1-or">de servicios de Bitcoin.</span></h1>
+    <p class="sp-lead">Virtuse compara servicios de Bitcoin de sus partners y le dirige a ellos. Usted compra, guarda y pide prestado en la plataforma del propio partner, bajo su licencia. Virtuse está operada por Virtuse Wealth Management, a.s.</p>
+    <div class="ab-stats"><div class="ab-stat"><b>2018</b><span>Fundación</span></div><div class="ab-stat"><b>22</b><span>partners, a 13/10/2026</span></div></div>
+  </div>
+
+  <!-- 2. STORY -->
+  <section id="story">
+    <div class="sec-head one"><div class="sec-copy"><h2>Nuestra <span>historia</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">2018</span>
+          <h3>Una plataforma de activos digitales</h3>
+          <p>Virtuse nació como plataforma de activos digitales y materias primas.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">2022</span>
+          <h3>Un exchange solo de Bitcoin</h3>
+          <p>Virtuse dejó todo excepto Bitcoin y se convirtió en un exchange solo de Bitcoin.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">2024</span>
+          <h3>Un comparador</h3>
+          <p>Virtuse se convirtió en un comparador independiente de servicios de Bitcoin.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Hoy</span>
+          <h3>Un hub, no un exchange</h3>
+          <p>Comparamos partners para comprar, custodiar, pedir préstamos, minar, declarar impuestos y más. Virtuse ya no opera un exchange y no custodia fondos ni claves de clientes.</p>
+        </div>
       </div>
     </div>
-    <button class="nav-cta">Comenzar</button>
-  </div>
-</nav>
+  </section>
 
-<script>
-// ===== LANGUAGE DROPDOWN =====
-// Handles both the desktop instance (#langMenu) and the mobile drawer's
-// own copy (#langMenuMobile) — each .lang-menu wires up independently,
-// and opening one closes any other.
-(function () {
-  var menus = Array.prototype.slice.call(document.querySelectorAll('.lang-menu'));
-  if (!menus.length) return;
-  function closeAll() {
-    menus.forEach(function (wrap) {
-      wrap.classList.remove('open');
-      var b = wrap.querySelector('.lang-menu-btn');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    });
-  }
-  menus.forEach(function (wrap) {
-    var btn = wrap.querySelector('.lang-menu-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var willOpen = !wrap.classList.contains('open');
-      closeAll();
-      if (willOpen) {
-        wrap.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-  document.addEventListener('click', function (e) {
-    var stillInside = menus.some(function (wrap) { return wrap.contains(e.target); });
-    if (!stillInside) closeAll();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeAll();
-  });
-})();
-</script>
-
-
-<!-- Hero -->
-<section class="hero">
-  <h1>El hub de infraestructura<br><span class="highlight">exclusivo para Bitcoin</span></h1>
-  <p class="hero-desc">
-    Fundada en 2018, Virtuse sienta las bases de la economía monetaria sin fronteras. Ayudamos a los inversores a construir y proteger un patrimonio generacional a través de un compromiso sin concesiones con Bitcoin, la soberanía financiera y una libertad monetaria segura.
-  </p>
-  <div class="hero-stats">
-    <div class="stat-box">
-      <div class="stat-value">2018</div>
-      <div class="stat-label">Fundada en</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">100+</div>
-      <div class="stat-label">Países atendidos</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">22</div>
-      <div class="stat-label">Partners verificados</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">2</div>
-      <div class="stat-label">Oficinas en el mundo</div>
-    </div>
-  </div>
-</section>
-
-<!-- Our Story -->
-<section class="section">
-  <div class="sec-title"><h2>Nuestra <span>historia</span></h2></div>
-  <div class="steps">
-    <div class="step">
-      <span class="step-num">2018</span>
-      <h3>Raíces europeas, alcance en Singapur</h3>
-      <p>Fundada como plataforma de activos digitales y materias primas con raíces en los mercados energéticos europeos, Virtuse se expandió a Singapur para tender un puente entre las finanzas tradicionales, las criptomonedas y los activos reales tokenizados.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">2022</span>
-      <h3>La transición a un modelo solo Bitcoin</h3>
-      <p>Una transición estratégica convirtió a Virtuse en un exchange dedicado en exclusiva a Bitcoin: cambió amplitud por profundidad y se comprometió por completo con el dinero más sólido jamás creado.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">2024</span>
-      <h3>De exchange a hub</h3>
-      <p>Virtuse pasó de operar como exchange a seleccionar los mejores: conecta a los inversores directamente con partners verificados y autorizados bajo MiCA en cada servicio de Bitcoin, en lugar de custodiar ella misma los activos.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">Hoy</span>
-      <h3>Una red global</h3>
-      <p>Virtuse opera hoy como un hub de infraestructura global, ofreciendo una gama completa de servicios de Bitcoin a clientes en más de 100 países a través de una red segura y de nivel institucional.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Mission & Values -->
-<section class="section">
-  <div class="sec-title"><h2>Lo que <span>defendemos</span></h2></div>
-  <div class="value-grid">
-    <div class="value-card">
-      <h3>Enfoque exclusivo en Bitcoin</h3>
-      <p>Sin altcoins, sin distracciones. Un compromiso sin concesiones con Bitcoin como base de la economía monetaria sin fronteras.</p>
-    </div>
-    <div class="value-card">
-      <h3>Seguridad y confianza</h3>
-      <p>Una red de 22 partners verificados en Europa y fuera de ella, seleccionados por su seguridad, sus licencias y su liquidez.</p>
-    </div>
-    <div class="value-card">
-      <h3>Soberanía financiera</h3>
-      <p>Ayudamos a los inversores no solo a construir, sino también a proteger de forma efectiva un patrimonio generacional, actuando como un puente de confianza hacia la economía de Bitcoin.</p>
-    </div>
-  </div>
-</section>
-
-<!-- What is Virtuse? -->
-<section class="name-section">
-  <div class="name-inner">
-    <div>
-      <div class="sec-label">Nuestro nombre</div>
-      <div class="sec-title">
-        <h2>¿Qué <span>es Virtuse?</span></h2>
-      </div>
-      <div class="name-text">
-        <p>Nuestro nombre se inspira en Virt&ugrave;, un concepto introducido por Niccol&ograve; Maquiavelo. Para él, la virt&ugrave; no tenía que ver con la moral convencional: se trataba de fuerza, control y la capacidad de dominar la propia realidad.</p>
-        <p>Bitcoin es la encarnación moderna de la virt&ugrave;. Ofrece la forma definitiva de poder financiero y autonomía, permitiéndole asegurar su futuro sin interferencias externas.</p>
-      </div>
-      <div class="name-quote">Es un poder que usted controla.</div>
-    </div>
-    <div class="name-visual">
-      <img src="../bull-virtuse.png" alt="Virtuse Bull">
-    </div>
-  </div>
-</section>
-
-<!-- How We Vet Partners -->
-<section class="section">
-  <div class="sec-label">Nuestros estándares</div>
-  <div class="sec-title">
-    <h2>Cómo <span>seleccionamos a nuestros partners</span></h2>
-    <p>Todos los nombres de este sitio superan el mismo listón antes de que los recomendemos</p>
-  </div>
-  <div class="vet-grid">
-    <div class="value-card">
-      <h3>Autorización regulatoria</h3>
-      <p>CASP autorizados bajo MiCA o una licencia reconocida equivalente en su jurisdicción de origen: nunca plataformas sin regular.</p>
-    </div>
-    <div class="value-card">
-      <h3>Custodia y seguridad de los activos</h3>
-      <p>Retirada a autocustodia por defecto, y custodia asegurada y segregada allí donde un partner sí retiene fondos.</p>
-    </div>
-    <div class="value-card">
-      <h3>Trayectoria</h3>
-      <p>Años en operación, volumen y número de usuarios, y un historial de incidentes limpio: ser nuevo no descalifica, no estar probado sí.</p>
-    </div>
-    <div class="value-card">
-      <h3>Transparencia de comisiones</h3>
-      <p>Estructuras de comisiones publicadas y comparables: sin diferenciales ocultos ni condiciones que solo aparecen después de registrarse.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Global Presence -->
-<section class="section">
-  <div class="sec-title"><h2>Presencia <span>global</span></h2></div>
-  <div class="presence-grid">
-    <div class="presence-card">
-      <h3>Singapur</h3>
-      <div class="presence-role">Sede global</div>
-      <p>Sede de nuestras operaciones globales en uno de los principales hubs tecnológicos y financieros del mundo.</p>
-    </div>
-    <div class="presence-card">
-      <h3>Bratislava</h3>
-      <div class="presence-role">Operaciones europeas</div>
-      <p>Raíces profundas y experiencia local a través de nuestra oficina operativa europea.</p>
-    </div>
-    <div class="presence-card">
-      <h3>UE y Asia</h3>
-      <div class="presence-role">Virtuse Group</div>
-      <p>Virtuse Group está presente en dos continentes, con oficinas en Singapur y Bratislava.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Explore the Hub -->
-<section class="section">
-  <div class="sec-title"><h2>Explore <span>el Hub</span></h2></div>
-  <div class="hub-grid">
-    <a href="buy-bitcoin.html" class="hub-link"><span>Comprar Bitcoin<small>Partners autorizados bajo MiCA</small></span><span class="arrow">&#8594;</span></a>
-    <a href="secure.html" class="hub-link"><span>Custodia<small>Autocustodia y custodia colaborativa</small></span><span class="arrow">&#8594;</span></a>
-    <a href="lending.html" class="hub-link"><span>Préstamos<small>Préstamos respaldados por Bitcoin</small></span><span class="arrow">&#8594;</span></a>
-    <a href="mining.html" class="hub-link"><span>Minería<small>Minería alojada y en la nube</small></span><span class="arrow">&#8594;</span></a>
-    <a href="treasury.html" class="hub-link"><span>Treasury<small>Estrategia corporativa de Bitcoin</small></span><span class="arrow">&#8594;</span></a>
-    <a href="blog.html" class="hub-link"><span>Blog<small>Reflexiones de nuestro CEO</small></span><span class="arrow">&#8594;</span></a>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<section class="newsletter">
-  <div class="brief-card brief-card-poster">
-  <h2>Reciba <span>el Brief</span></h2>
-  <p>Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.</p>
-  <form class="newsletter-form newsletter-form-stacked" id="newsletterForm" novalidate>
-    <input type="email" name="email" placeholder="Correo electrónico" required>
-    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-    <button type="submit">Recibir el Brief</button>
-  </form>
-  <p id="newsletterMsg" role="status" aria-live="polite" class="brief-form-msg"></p>
-  <p class="brief-fineprint">Cada lunes. Cancele cuando quiera.</p>
-  </div>
-  <script>
-  (function () {
-    var form = document.getElementById('newsletterForm');
-    if (!form) return;
-    var msg = document.getElementById('newsletterMsg');
-    var btn = form.querySelector('button[type="submit"]');
-    var btnLabel = btn.textContent;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = form.elements['email'].value.trim();
-      var hp = form.elements['website'].value;
-      msg.textContent = '';
-      msg.style.color = 'var(--text-muted)';
-      btn.disabled = true;
-      btn.textContent = 'ENVIANDO...';
-      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp, lang: 'es' })
-      }).then(function (res) {
-        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
-      }).then(function (result) {
-        if (result.ok) {
-          form.reset();
-          msg.textContent = "Listo: revise su correo para ver el mensaje de bienvenida.";
-          msg.style.color = 'var(--green, #3fb950)';
-        } else {
-          msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Inténtalo de nuevo.';
-          msg.style.color = '#f85149';
-        }
-      }).catch(function () {
-        msg.textContent = 'Error de red — inténtalo de nuevo.';
-        msg.style.color = '#f85149';
-      }).then(function () {
-        btn.disabled = false;
-        btn.textContent = btnLabel;
-      });
-    });
-  })();
-  </script>
-</section>
-
-<!-- Footer -->
-<footer class="footer-main">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div>
-    </div>
-    <div class="footer-columns">
-      <div class="footer-col">
-        <h4>Servicios</h4>
-        <a href="buy-bitcoin.html">Comprar Bitcoin</a>
-        <a href="secure.html">Custodia</a>
-        <a href="mining.html">Minería</a>
-        <a href="lending.html">Préstamos</a>
-        <a href="treasury.html">Treasury</a>
-        <a href="tax.html">Impuestos</a>
-        <a href="bots.html">Bots</a>
-      </div>
-      <div class="footer-col">
-        <h4>Empresa</h4>
-        <a href="about.html">Sobre nosotros</a>
-        <a href="faq.html">Preguntas frecuentes</a>
-      </div>
-      <div class="footer-col">
-        <h4>Herramientas</h4>
-        <a href="concierge.html?utm_source=concierge&amp;utm_medium=footer">Partner Finder</a>
-        <a href="stacking.html?utm_source=stacking&amp;utm_medium=footer">Stacking Strategist</a>
-        <a href="loan.html?utm_source=loan&amp;utm_medium=footer">Loan &amp; Liquidity Copilot</a>
-        <a href="tax-agent.html?utm_source=tax-agent&amp;utm_medium=footer">Tax &amp; Inheritance Agent</a>
-        <a href="retirement-calculator.html">Calculadora de jubilación</a>
-      </div>
-      <div class="footer-col">
-        <h4>Recursos</h4>
-        <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Virtuse Brief</a>
-        <a href="blog.html">Blog</a>
-        <a href="bitcoin-data.html">Datos de Bitcoin</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="terms-and-conditions.html">Términos y condiciones</a>
-        <a href="privacy-policy.html">Política de privacidad</a>
-        <a href="aml-compliance.html">AML y cumplimiento</a>
+  <!-- 3. FOUNDER -->
+  <section id="founder">
+    <div class="sec-head one"><div class="sec-copy"><h2>El <span>fundador</span></h2></div></div>
+    <div class="ab-founder">
+      <picture><source srcset="/img/team/ras-vasilisin-400.webp" type="image/webp"><img src="/img/team/ras-vasilisin-400.jpg" width="400" height="496" alt="Rastislav Vasilisin, fundador de Virtuse" loading="lazy"></picture>
+      <div>
+        <h3>Rastislav (Ras) Vasilisin</h3>
+        <p class="ab-role">Fundador</p>
+        <p class="ab-bio">Rastislav (Ras) Vasilisin fundó Virtuse en 2018 y la ha llevado de una plataforma de activos digitales a un exchange solo de Bitcoin y, hoy, a un hub independiente de servicios de Bitcoin. Escribe el boletín semanal Virtuse Brief y la columna Ras Vasilisin's Take, y publica en HackerNoon.</p>
+        <nav class="ab-links" aria-label="Ras Vasilisin en otros sitios"><a href="https://www.linkedin.com/in/rastislav-vasilisin-11bb5819/" rel="me noopener" target="_blank">LinkedIn</a><a href="https://hackernoon.com/u/ras" rel="me noopener" target="_blank">HackerNoon</a><a href="https://x.com/RasVasilisin" rel="me noopener" target="_blank">X</a></nav>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
-    <p class="footer-bottom-brief">Virtuse Brief — el resumen semanal de Virtuse. <a href="../news.html?utm_source=brief&amp;utm_medium=footer">Leerlo &rarr;</a></p>
-  </div>
-  <div class="footer-wordmark" aria-hidden="true">
-    <span class="footer-wordmark-icon-wrap">
-      <svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="vlgFooterA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient>
-          <linearGradient id="vlgFooterB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient>
-        </defs>
-        <path fill="url(#vlgFooterA)" d="M30 0h220l250 483H280Z"/>
-        <path fill="url(#vlgFooterB)" d="M510 0h245L645 205H400Z"/>
-      </svg>
-    </span>
-    <span class="footer-wordmark-text">Virtuse</span>
-  </div>
-</footer>
+  </section>
 
+  <!-- 4. HOW WE WORK -->
+  <section id="values">
+    <div class="sec-head one"><div class="sec-copy"><h2>Cómo <span>trabajamos</span></h2></div></div>
+    <div class="ab-cards"><div class="ab-card"><b>Solo Bitcoin</b><p>Solo cubrimos servicios de Bitcoin. Sin altcoins y sin tokens.</p></div><div class="ab-card"><b>Sus fondos se quedan con usted</b><p>No custodiamos fondos ni claves de clientes y no ejecutamos órdenes. Cada servicio funciona en la plataforma del propio partner.</p></div><div class="ab-card"><b>Reglas fijas, no comisiones</b><p>Partner Finder ordena a los partners según reglas fijas basadas en sus respuestas, no según las comisiones de referido que algunos partners nos pagan.</p></div></div>
+  </section>
 
+  <!-- 5. OUR NAME -->
+  <section id="name">
+    <div class="sec-head one"><div class="sec-copy"><span class="ab-label">Nuestro nombre</span><h2>¿Qué <span>es Virtuse?</span></h2></div></div>
+    <div class="ab-name"><p>Nuestro nombre se inspira en la virtù, un concepto introducido por Niccolò Maquiavelo. Para él, la virtù no tenía que ver con la moral convencional. Se trataba de fuerza, control y la capacidad de moldear las propias circunstancias.</p><p>Así vemos Bitcoin: dinero que usted puede tener y controlar por sí mismo, sin pedir permiso a nadie.</p><p>Esa es la idea detrás del nombre.</p></div>
+  </section>
 
-<!-- ===== STAT COUNTERS (anime.js) ===== -->
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  <!-- 6. HOW WE LOOK AT PARTNERS -->
+  <section id="vetting">
+    <div class="sec-head one"><div class="sec-copy"><h2>Cómo <span>evaluamos a los partners</span></h2></div></div>
+    <p class="ab-intro">Antes de que un partner aparezca en Virtuse, revisamos los mismos puntos. Le ayudan a comparar. No son una garantía.</p>
+    <div class="ab-cards four"><div class="ab-card"><b>Licencia o registro</b><p>Qué licencia o registro tiene el partner y en qué registro figura.</p></div><div class="ab-card"><b>Custodia y retiradas</b><p>Si puede retirar su Bitcoin a su propio monedero y quién lo custodia mientras está en la plataforma.</p></div><div class="ab-card"><b>Trayectoria</b><p>Cuánto tiempo lleva operando el partner y qué se sabe públicamente de su historia.</p></div><div class="ab-card"><b>Comisiones</b><p>Si las comisiones están publicadas y cómo se comparan con las de otros partners.</p></div></div>
+    <p class="ab-licence">La licencia de cada partner se muestra en Partner Finder con la fuente oficial del registro y la fecha en que la comprobamos. <a href="/es/concierge.html">Abrir Partner Finder</a></p>
+  </section>
 
-  var animate = anime.animate;
-  var candidates = document.querySelectorAll('[class*="stat-number"], [class*="stat-value"], .num');
-  var counters = [];
+  <!-- 7. BRIEF -->
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Solo Bitcoin, cada lunes.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=es">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Último Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (en inglés)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Leer el número →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Reciba el Brief. <span>Gratis.</span></h3>
+        <p>Mercado, regulación, minería. Sin tokens. Sin publirreportajes. Un correo, cada lunes.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="about_brief" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="Correo electrónico" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Recibir el Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Puede darse de baja cuando quiera. No es asesoramiento. <a href="/news.html?utm_source=brief&amp;utm_medium=about_brief" style="color:var(--muted)">Todos los números y el blog →</a></div>
+      </div>
+    </div>
+  </section>
 
-  candidates.forEach(function (el) {
-    var raw = el.textContent.trim();
-    var m = raw.match(/^([0-9][0-9,]*)(\+|%|K|M)?$/);
-    if (!m) return;
-    counters.push({
-      el: el,
-      target: parseInt(m[1].replace(/,/g, ''), 10),
-      suffix: m[2] || ''
-    });
-  });
-  if (!counters.length) return;
+  <!-- 8. EXPLORE THE HUB -->
+  <section id="explore">
+    <div class="sec-head one"><div class="sec-copy"><h2>Explore <span>el hub</span></h2></div></div>
+    <p class="ab-sub">Herramientas</p>
+    <div class="gcards"><a class="gcard" href="/es/concierge.html"><b>Partner Finder</b><span>Partners que encajan con sus respuestas.</span></a><a class="gcard" href="/es/stacking.html"><b>Stacking Strategist</b><span>Planifique compras periódicas y compare comisiones.</span></a><a class="gcard" href="/es/loan.html"><b>Loan & Liquidity Copilot</b><span>Compare vender con pedir prestado con Bitcoin como garantía.</span></a><a class="gcard" href="/es/tax-agent.html"><b>Tax & Inheritance Agent</b><span>Reglas fiscales de Bitcoin y preparación para la herencia.</span></a><a class="gcard" href="/es/retirement-calculator.html"><b>Calculadora de jubilación</b><span>¿Puede su Bitcoin financiar su jubilación?</span></a><a class="gcard" href="/news.html"><b>Virtuse Brief</b><span>Nuestro boletín semanal de Bitcoin.</span></a></div>
+    <p class="ab-sub">Servicios</p>
+    <div class="gcards"><a class="gcard" href="/es/buy-bitcoin.html"><b>Comprar Bitcoin</b><span>Exchanges y apps comparados.</span></a><a class="gcard" href="/es/secure.html"><b>Custodia</b><span>Autocustodia y custodia colaborativa.</span></a><a class="gcard" href="/es/lending.html"><b>Préstamos</b><span>Préstamos respaldados por Bitcoin.</span></a><a class="gcard" href="/es/mining.html"><b>Minería</b><span>Minería alojada y en la nube.</span></a><a class="gcard" href="/es/treasury.html"><b>Treasury</b><span>Bitcoin para empresas.</span></a><a class="gcard" href="/es/tax.html"><b>Declaración fiscal</b><span>Software para informes fiscales de Bitcoin.</span></a><a class="gcard" href="/es/bots.html"><b>Bots</b><span>Trading automatizado y DCA.</span></a></div>
+    <div class="ab-cfo"><p><b>Virtuse CFO</b><br>Se lanza el 1 de noviembre: 9 €/mes o 90 €/año.</p><a href="/es/cfo.html?utm_source=about&utm_medium=cta&utm_campaign=cfo#waitForm" data-cta="cfo">Avisarme →</a></div>
+  </section>
 
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var c = null;
-      for (var i = 0; i < counters.length; i++) {
-        if (counters[i].el === entry.target) { c = counters[i]; break; }
-      }
-      if (!c) return;
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Servicios</h4><a href="/es/buy-bitcoin.html">Comprar Bitcoin</a><a href="/es/secure.html">Custodia</a><a href="/es/mining.html">Minería</a><a href="/es/lending.html">Préstamos</a><a href="/es/treasury.html">Treasury</a><a href="/es/tax.html">Impuestos</a><a href="/es/bots.html">Bots</a></div><div class="footer-col"><h4>Empresa</h4><a href="/es/about.html">Sobre nosotros</a><a href="/es/faq.html">Preguntas frecuentes</a></div><div class="footer-col"><h4>Herramientas</h4><a href="/es/cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Pronto</span></a><a href="/es/concierge.html">Partner Finder</a><a href="/es/stacking.html">Stacking Strategist</a><a href="/es/loan.html">Loan &amp; Liquidity Copilot</a><a href="/es/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/es/retirement-calculator.html">Calculadora de jubilación</a></div><div class="footer-col"><h4>Recursos</h4><a href="/news.html">Virtuse Brief</a><a href="/es/blog.html">Blog</a><a href="/es/bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-impuestos/">Impuestos sobre Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a><a href="/es/bitcoin-calculadora-dca/">Calculadora DCA</a><a href="/es/bitcoin-vender-o-pedir-prestado/">Vender o pedir prestado</a><a href="/es/bitcoin-herencia/">Herencia</a></div><div class="footer-col"><h4>Legal</h4><a href="/es/terms-and-conditions.html">Términos y condiciones</a><a href="/es/privacy-policy.html">Política de privacidad</a><a href="/es/aml-compliance.html">AML y cumplimiento</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
+      <p class="footer-bottom-brief">Virtuse Brief, el resumen semanal de Virtuse. <a href="/news.html">Leerlo &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Idiomas"><a href="/about.html" hreflang="en">English</a><a href="/sk/about.html" hreflang="sk">Slovenčina</a><a href="/cs/about.html" hreflang="cs">Čeština</a><a href="/de/about.html" hreflang="de">Deutsch</a><a href="/pl/about.html" hreflang="pl">Polski</a><a href="/hu/about.html" hreflang="hu">Magyar</a><a href="/fr/about.html" hreflang="fr">Français</a><a href="/es/about.html" hreflang="es" aria-current="page">Español</a><a href="/uk/about.html" hreflang="uk">Українська</a><a href="/ru/about.html" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse es un hub de comparación independiente. No custodia fondos ni claves de clientes, no ejecuta órdenes y no presta asesoramiento de inversión. Los servicios los prestan los partners incluidos bajo sus propias licencias. Las comisiones son las publicadas por cada partner y pueden cambiar.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
 
-      var obj = { val: 0 };
-      animate(obj, {
-        val: c.target,
-        duration: 1600,
-        ease: 'outCubic',
-        onUpdate: function () {
-          c.el.textContent = Math.floor(obj.val).toLocaleString() + c.suffix;
-        },
-        onComplete: function () {
-          c.el.textContent = c.target.toLocaleString() + c.suffix;
-        }
-      });
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(function (c) { io.observe(c.el); });
-})();
-</script>
-
-<!-- ===== SCROLL REVEAL (anime.js) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
-<script>
-(function () {
-  if (typeof anime === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var animate = anime.animate;
-  var stagger = anime.stagger;
-  var sections = Array.prototype.slice.call(document.querySelectorAll('section'), 1);
-  if (!sections.length) return;
-
-  sections.forEach(function (sec) {
-    sec.style.opacity = '0';
-    sec.style.transform = 'translateY(24px)';
-  });
-
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || seen.has(entry.target)) return;
-      seen.add(entry.target);
-      var sec = entry.target;
-
-      animate(sec, {
-        opacity: [0, 1],
-        translateY: [24, 0],
-        duration: 700,
-        ease: 'outQuad'
-      });
-
-      var groups = sec.querySelectorAll('[class*="grid"], .steps');
-      groups.forEach(function (group) {
-        var items = Array.prototype.slice.call(group.children);
-        if (!items.length) return;
-        items.forEach(function (it) { it.style.opacity = '0'; });
-        animate(items, {
-          opacity: [0, 1],
-          translateY: [16, 0],
-          delay: stagger(80, { start: 150 }),
-          duration: 600,
-          ease: 'outQuad'
-        });
-      });
-
-      io.unobserve(sec);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-  sections.forEach(function (sec) { io.observe(sec); });
-})();
-</script>
-
-<!-- ===== MOBILE MENU TOGGLE ===== -->
-<script>
-(function () {
-  var btn = document.getElementById('navHamburger');
-  var links = document.querySelector('.nav-links');
-  if (!btn || !links) return;
-
-  function closeMenu() {
-    document.body.classList.remove('nav-open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-
-  btn.addEventListener('click', function () {
-    var open = document.body.classList.toggle('nav-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-
-  links.querySelectorAll('a, button').forEach(function (el) {
-    if (el.classList.contains('lang-menu-btn')) return;
-    el.addEventListener('click', closeMenu);
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1024) closeMenu();
-  });
-})();
-
-// ===== NAV BACKGROUND ON SCROLL =====
-(function () {
-  var nav = document.querySelector('.nav');
-  if (!nav) return;
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
-  });
-})();
-</script>
-
-<!-- ===== GET STARTED: CONTEXTUAL SCROLL ===== -->
-<script>
-(function () {
-  var btns = document.querySelectorAll('.nav-cta');
-  if (!btns.length) return;
-  var conciergeUrl = 'concierge.html?utm_source=concierge&utm_medium=nav';
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.href = conciergeUrl;
-    });
-  });
-})();
-</script>
-
-<script src="../concierge-launcher.js" defer></script>
+<script src="/site-v2.js?v=6" defer></script>
+<script src="/consultation-widget.js?v=20261007b" defer></script>
+<script src="/concierge-launcher.js" defer></script>
 </body>
 </html>
