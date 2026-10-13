@@ -1,12 +1,12 @@
 {
   "title": "Bitcoin Retirement Calculator | Virtuse",
-  "description": "Can your Bitcoin fund your retirement? Enter your stack, savings and spending in euros and test a growth scenario year by year. Free, no sign-up.",
+  "description": "Bitcoin Retirement Calculator: enter your stack, savings and spending in euros, pick a growth scenario and see year by year if it lasts. Free.",
   "og_title": "Bitcoin Retirement Calculator: can your Bitcoin fund your retirement?",
   "crumb_home": "Home",
   "crumb_page": "Retirement Calculator",
   "eyebrow": "Retirement Calculator",
-  "h1": "Can your Bitcoin",
-  "h1_or": "fund your retirement?",
+  "h1": "Bitcoin Retirement Calculator",
+  "h1_q": "Can your Bitcoin fund your retirement?",
   "lead": "Enter your stack, your monthly savings and what you want to spend. The calculator projects your saving years, then checks year by year whether your Bitcoin covers your spending for life.",
   "noscript": "The Retirement Calculator needs JavaScript. You can plan a regular buy with the DCA calculator guide.",
   "how_h2_a": "How",
@@ -43,7 +43,6 @@
   "rel_data_t": "Bitcoin Data",
   "rel_data_p": "Price, fees and network data, live.",
   "disclaimer": "For education only. Not financial advice. Projections use constant growth and inflation rates; real Bitcoin returns are volatile and past performance doesn't guarantee future results. Figures are nominal.",
-
   "c_plan": "Your plan",
   "c_age": "Current age",
   "c_ret_age": "Retirement age",

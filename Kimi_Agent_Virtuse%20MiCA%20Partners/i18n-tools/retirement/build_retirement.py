@@ -30,6 +30,7 @@ FIELDS = {
 }
 
 CSS = '''<style>
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -254,7 +255,8 @@ def build(L):
   <!-- 1. HERO + the calculator -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1}</h1>
+    <p class="rc-q">{h1o}</p>
     <p class="sp-lead">{lead}</p>
   </div>
   <noscript><p class="pf-noscript">{noscript}</p></noscript>
@@ -286,7 +288,7 @@ def build(L):
 </main>
 
 <script type="application/json" id="rc-i18n">{i18n}</script>
-'''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1o=t['h1_or'], lead=t['lead'], noscript=t['noscript'], calc=calculator(L, t, links),
+'''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1o=t['h1_q'], lead=t['lead'], noscript=t['noscript'], calc=calculator(L, t, links),
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
            brief=F.brief_card(L, t, 'retirement_brief'), rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'],
            foot=foot, i18n=i18n)
