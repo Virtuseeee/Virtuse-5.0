@@ -10,7 +10,7 @@
      color-scheme to trust — producing unreadable dark-text-on-dark-
      background exactly like this page's own dark design, just doubled). -->
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="../lang-detect.js"></script>
 <!-- vb-consent -->
@@ -129,6 +129,11 @@ footer { border-top: 1px solid var(--line); padding-block: 40px 0; overflow: hid
 .hero-poster { position: absolute; inset: 0; display: none; }
 .hero-visual.no-webgl .hero-poster { display: block; }
 .hero-visual.no-webgl canvas { display: none; }
+/* static poster first; the WebGL cube fades in over it once it has rendered (wide screens, motion allowed) */
+.hero-cube-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; z-index: 1; transition: opacity .6s ease; }
+#cube { opacity: 0; transition: opacity .6s ease; }
+.hero-visual.live #cube { opacity: 1; }
+.hero-visual.live .hero-cube-img, .hero-visual.no-webgl .hero-cube-img { opacity: 0; }
 .goals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .goal { background: var(--card); border: 1px solid transparent; border-radius: 14px; padding: 20px; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 140px; transition: background .15s, border-color .15s; position: relative; overflow: hidden; }
 .goal:hover, .goal:focus-visible { background: var(--card-hover); border-color: var(--line-strong); }
@@ -1027,6 +1032,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <p class="alt">Wolą Państwo porozmawiać? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="pl">Bezpłatna 15-minutowa rozmowa</button> (po angielsku).</p>
     </div>
     <div class="hero-visual" aria-hidden="true">
+      <img class="hero-cube-img" src="../img/hero-cube.webp" alt="" width="1168" height="960" decoding="async">
       <canvas id="cube"></canvas>
       <div class="hero-poster"><div class="cube-stage var-purpose"><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
     </div>
@@ -1376,19 +1382,28 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 <script type="importmap">
 {
   "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    "three": "/vendor/three-0.160.0/build/three.module.min.js",
+    "three/addons/": "/vendor/three-0.160.0/examples/jsm/"
   }
 }
 </script>
 <script type="module">
-import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+// The WebGL cube (self-hosted three.js) loads only on screens >= 768px without reduced motion,
+// after the page has loaded and the browser is idle. Phones and reduced-motion visitors keep the
+// static poster (img/hero-cube.webp), which has the same size, so nothing moves.
+const cubeHost = document.getElementById('cube');
+if (cubeHost && window.matchMedia('(min-width: 768px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const go = () => Promise.all([
+    import('three'),
+    import('three/addons/geometries/RoundedBoxGeometry.js'),
+    import('three/addons/environments/RoomEnvironment.js')
+  ]).then(([THREE, geo, env]) => initCube(THREE, geo.RoundedBoxGeometry, env.RoomEnvironment)).catch(() => {});
+  const idle = () => (window.requestIdleCallback ? window.requestIdleCallback(go, { timeout: 3000 }) : setTimeout(go, 300));
+  if (document.readyState === 'complete') idle(); else window.addEventListener('load', idle, { once: true });
+}
 
-(function () {
-  const host = document.getElementById('cube');
-  if (!host || typeof THREE === 'undefined') return;
+function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
+  const host = cubeHost;
 
   const CUBIE_SIZE = 0.84;
   const SPACING = 1.0;
@@ -1566,10 +1581,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
       root.rotation.x += 0.0006;
     }
     renderer.render(scene, camera);
+    if (!shown) { shown = true; host.parentElement.classList.add('live'); }
     requestAnimationFrame(render);
   }
+  let shown = false;
   requestAnimationFrame(render);
-})();
+}
 </script>
 <script>
 /* MOTION v1 (see CSS). Reveals, word-by-word headline, count-ups, bar growth, spotlight. */
@@ -1698,11 +1715,18 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { wm.classList.add('in'); io.disconnect(); } }); }, { threshold: 0.2 });
   io.observe(wm);
 })();
-// Brief: live BTC/EUR sparkline (Binance daily closes, 90 days); hidden if the fetch fails
+// Brief: live BTC/EUR sparkline (CoinGecko daily prices, 90 days); hidden if the fetch fails
 (function () {
-  var box = document.getElementById('btcSpark'); if (!box) return;
-  fetch('https://api.binance.com/api/v3/klines?symbol=BTCEUR&interval=1d&limit=90').then(function (r) { return r.json(); }).then(function (k) {
-    var c = k.map(function (x) { return Number(x[4]); }).filter(function (v) { return v > 0; }); if (c.length < 10) return;
+  var box = document.getElementById('btcSpark'); if (!box || !window.fetch) return;
+  // one request per tab every 10 minutes (CoinGecko's free API is rate-limited per IP)
+  var KEY = 'vb-btceur90', cached = null;
+  try { var sv = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (sv && Date.now() - sv.t < 600000) cached = sv.c; } catch (err) {}
+  (cached ? Promise.resolve(cached) : fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=eur&days=90&interval=daily').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (k) {
+    var v = ((k && k.prices) || []).map(function (x) { return Number(x[1]); }).filter(function (n) { return n > 0; });
+    if (v.length >= 10) try { sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), c: v })); } catch (err) {}
+    return v;
+  })).then(function (c) {
+    if (!c || c.length < 10) return;
     var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c), W = 300, H = 56;
     var pts = c.map(function (v, i) { return [i / (c.length - 1) * W, H - 4 - (v - lo) / (hi - lo || 1) * (H - 8)]; });
     var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');

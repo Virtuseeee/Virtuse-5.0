@@ -272,7 +272,7 @@ def check_text(out, where):
 def write(rel, out):
     fp = os.path.join(SITE, rel)
     os.makedirs(os.path.dirname(fp), exist_ok=True)
-    open(fp, 'w').write(out)
+    open(fp, 'w').write(C.finalize(out, fp))
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
@@ -430,7 +430,7 @@ def build_main(L, fi, s21, extra_pages):
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
            brief=brief_card(L, t),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
-    out += body + C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    out += body + C.scripts('/')
     check_text(out, L)
     write(out_file(L)[len(SITE) + 1:], out)
 
@@ -461,7 +461,7 @@ def simple_page(rel, title, desc, page_url, crumbs, h1, h1o, lead, sections, faq
 </main>
 
 '''.format(nav=nav, crumb=' · '.join(esc(n) for n, _ in crumbs[1:]), h1=h1, h1o=h1o, lead=lead, sections=sections, faq=faq_html, foot=foot)
-    out += C.scripts('/').replace('site-v2.js?v=5', 'site-v2.js?v=6')
+    out += C.scripts('/')
     check_text(out, rel)
     write(rel, out)
 

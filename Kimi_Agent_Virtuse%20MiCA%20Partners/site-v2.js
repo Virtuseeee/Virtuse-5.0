@@ -126,11 +126,18 @@
     apply(); if (mq.addEventListener) mq.addEventListener('change', apply);
   })();
 
-  // Brief: live BTC/EUR sparkline (Binance daily closes, 90 days); hidden if the fetch fails
+  // Brief: live BTC/EUR sparkline (CoinGecko daily prices, 90 days); hidden if the fetch fails
   (function () {
-    var box = document.getElementById('btcSpark'); if (!box) return;
-    fetch('https://api.binance.com/api/v3/klines?symbol=BTCEUR&interval=1d&limit=90').then(function (r) { return r.json(); }).then(function (k) {
-      var c = k.map(function (x) { return Number(x[4]); }).filter(function (v) { return v > 0; }); if (c.length < 10) return;
+    var box = document.getElementById('btcSpark'); if (!box || !window.fetch) return;
+    // one request per tab every 10 minutes (CoinGecko's free API is rate-limited per IP)
+    var KEY = 'vb-btceur90', cached = null;
+    try { var sv = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (sv && Date.now() - sv.t < 600000) cached = sv.c; } catch (err) {}
+    (cached ? Promise.resolve(cached) : fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=eur&days=90&interval=daily').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (k) {
+      var v = ((k && k.prices) || []).map(function (x) { return Number(x[1]); }).filter(function (n) { return n > 0; });
+      if (v.length >= 10) try { sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), c: v })); } catch (err) {}
+      return v;
+    })).then(function (c) {
+      if (!c || c.length < 10) return;
       var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c), W = 300, H = 56;
       var pts = c.map(function (v, i) { return [i / (c.length - 1) * W, H - 4 - (v - lo) / (hi - lo || 1) * (H - 8)]; });
       var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');

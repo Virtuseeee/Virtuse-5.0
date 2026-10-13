@@ -128,7 +128,7 @@ def build(L):
            hh2b=t('h_h2_b'), steps=steps, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), cards='\n'.join(cards),
            brief=C.brief(L, t, root, 'secure_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

@@ -114,7 +114,7 @@ def build(L):
            call=t('call'), suffix=suffix, trust=trust, hh2a=t('h_h2_a'), hh2b=t('h_h2_b'), steps=steps, wh2a=t('w_h2_a'),
            wh2b=t('w_h2_b'), ways=ways, fh2a=t('f_h2_a'), fh2b=t('f_h2_b'), faq=faq, brief=C.brief(L, t, root, 'lending_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(out)
+    open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

@@ -12,6 +12,8 @@ import html as html_mod
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from strings import segments, apply
+sys.path.insert(0, os.path.dirname(HERE))
+import csp_tight
 
 SITE = os.environ.get('VIRTUSE_SITE') or os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -223,7 +225,7 @@ def build(L):
             sys.exit('%s: leftover %s' % (L, bad))
     out = os.environ.get('OUT') or os.path.join(SITE, L)
     os.makedirs(out, exist_ok=True)
-    open(os.path.join(out, 'index.html'), 'w').write(h)
+    open(os.path.join(out, 'index.html'), 'w').write(csp_tight.tighten(h, os.path.join(out, 'index.html')))
     print('%s: written %d bytes' % (L, len(h)))
 
 
