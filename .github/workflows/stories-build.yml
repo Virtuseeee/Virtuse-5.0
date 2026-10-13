@@ -28,6 +28,9 @@ on:
     branches: [main]
     paths:
       - 'stories-build/build.mjs'
+      - 'stories-build/hubs.mjs'
+      - 'stories-build/common.mjs'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/article.js'
       - '.github/workflows/stories-build.yml'
       - '.github/workflows/stories-build-run.yml'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/article.html'

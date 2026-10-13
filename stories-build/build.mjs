@@ -24,20 +24,20 @@
  * Stories that disappear from WordPress get their folders removed; the list
  * of generated folders lives in stories-build/manifest.json.
  *
+ * At the end it runs hubs.mjs (offline): hub pages stories/, sk/stories/,
+ * ru/stories/ (+ /page/<n>/), the hub breadcrumb and "Related tools and
+ * guides" on every story (applied here while rendering, too).
+ *
  * Usage (from the repo root):  node stories-build/build.mjs
  * Needs Node 18+ (global fetch) and network access to blog.virtuse.com.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { fileURLToPath } from 'node:url';
-
-const HERE = path.dirname(fileURLToPath(import.meta.url));
-const SITE = path.resolve(HERE, '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners');
-const ORIGIN = 'https://virtuse.com';
-const MANIFEST = path.join(HERE, 'manifest.json');
-const SITEMAP_START = '<!-- STORIES-BUILD:START -->';
-const SITEMAP_END = '<!-- STORIES-BUILD:END -->';
+import { HERE, SITE, ORIGIN, MANIFEST, SITEMAP_START, SITEMAP_END, DESK_NAMES, decode, text, esc } from './common.mjs';
+// Hub pages (stories/, sk/stories/, ru/stories/), the hub breadcrumb and the
+// "Related tools and guides" block on every story: see hubs.mjs.
+import { applyStoryExtras, storyCrumbsLd, buildHubs, HUBS_START, HUBS_END } from './hubs.mjs';
 // Post ID -> story URL for the WordPress must-use plugin virtuse-story-canonical.php
 // (seo-ops/wp-mu-plugin/), which points each WordPress original's canonical at the
 // virtuse.com copy. upload.sftp puts it next to the plugin, after the pages.
@@ -54,14 +54,6 @@ const FEEDS = [
   { lang: 'sk', api: WP_BASE + '/sk/wp-json/wp/v2/posts', category: 26, wpLang: null, dir: 'sk/', locale: 'sk_SK' },
   { lang: 'ru', api: WP_BASE + '/wp-json/wp/v2/posts', category: 57, wpLang: 'ru', dir: 'ru/', locale: 'ru_RU' },
 ];
-// Desk names for the pre-rendered kicker (article.js replaces it on load
-// with the same value). Taken from article.js's LANGS.
-const DESK_NAMES = {
-  en: { mining: 'Mining', treasury: 'Treasury', custody: 'Custody', policy: 'Policy', macro: 'Macro', markets: 'Markets' },
-  sk: { mining: 'Ťažba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulácia', macro: 'Makro', markets: 'Trhy' },
-  ru: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
-};
-
 // Byline strings and date locale, from article.js's LANGS (article.js
 // re-renders the byline on load, with the reader's own time zone).
 const BYLINE = {
@@ -71,16 +63,6 @@ const BYLINE = {
 };
 
 // ---- helpers ---------------------------------------------------------------
-const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0', hellip: '…', ndash: '–', mdash: '—',
-  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', laquo: '«', raquo: '»', bull: '•' };
-function decode(s) {
-  return String(s || '').replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
-    if (e[0] === '#') return String.fromCodePoint(e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10));
-    return ENTITIES[e.toLowerCase()] ?? m;
-  });
-}
-const text = (html) => decode(String(html || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 function clip(s, n) {
   if (s.length <= n) return s;
   const cut = s.slice(0, n - 1);
@@ -348,7 +330,8 @@ function render(template, feed, post, inferDesk) {
   const ogImg = img || FALLBACK_IMAGE;
   const published = new Date(post.date_gmt + 'Z').toISOString();
   const modified = new Date((post.modified_gmt || post.date_gmt) + 'Z').toISOString();
-  const desk = DESK_NAMES[feed.lang][inferDesk(post).id];
+  const deskId = inferDesk(post).id;
+  const desk = DESK_NAMES[feed.lang][deskId];
   // Dek only from a hand-written excerpt, as in article.js: WordPress
   // auto-excerpts (ending in [&hellip;]) repeat the body's first lines.
   const rawEx = (post.excerpt && post.excerpt.rendered) || '';
@@ -380,15 +363,6 @@ function render(template, feed, post, inferDesk) {
     author: { '@type': 'Person', name: 'Ras Vasilisin', url: ORIGIN + '/about.html' },
     publisher: { '@type': 'Organization', name: 'Virtuse', url: ORIGIN + '/', logo: { '@type': 'ImageObject', url: ORIGIN + '/news/brief-nav-logo.png' } },
   };
-  const homeUrl = ORIGIN + '/' + (feed.lang === 'en' ? '' : feed.lang + '/');
-  const crumbs = {
-    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Virtuse', item: homeUrl },
-      { '@type': 'ListItem', position: 2, name: 'Virtuse Brief', item: ORIGIN + '/news.html' },
-      { '@type': 'ListItem', position: 3, name: title, item: url },
-    ],
-  };
   const alts = alternates(feed, post, storyPath);
   const head = [
     `<title>${esc(title)} | Virtuse Brief</title>`,
@@ -415,7 +389,7 @@ function render(template, feed, post, inferDesk) {
     `<meta name="twitter:description" content="${esc(description)}">`,
     `<meta name="twitter:image" content="${esc(ogImg.url)}">`,
     `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
-    `<script type="application/ld+json">${JSON.stringify(crumbs).replace(/</g, '\\u003c')}</script>`,
+    storyCrumbsLd(feed.lang, title, storyPath),
   ].filter(Boolean).join('\n');
   // Replace the generic head block (title .. twitter:image) in one go.
   sub(/<title>[\s\S]*?<meta name="description"[^>]*>/, () => '<!--HEAD-->', 'title/description');
@@ -445,6 +419,8 @@ function render(template, feed, post, inferDesk) {
   // keeps it instead of re-inserting the same HTML (no flash, no reload).
   sub(/<div class="story-body" id="articleBody">[\s\S]*?<\/div>/, () =>
     `<div class="story-body" id="articleBody" data-modified="${esc(post.modified_gmt || '')}">\n${body}\n</div>`, 'body');
+  // Hub breadcrumb + "Related tools and guides" (the same function the offline hubs.mjs run uses).
+  h = applyStoryExtras(h, { lang: feed.lang, storyPath, title, description, bodyText: text(body), deskId }, template);
   return { storyPath, html: h, lastmod: modified.slice(0, 10), alts };
 }
 
@@ -452,7 +428,8 @@ function render(template, feed, post, inferDesk) {
 async function main() {
   const template = fs.readFileSync(path.join(SITE, 'article.html'), 'utf8');
   const inferDesk = loadDeskInference();
-  const previous = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).stories || [] : [];
+  const prevManifest = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : {};
+  const previous = prevManifest.stories || [];
   const written = [];
   const lastmods = {}, altsOf = {};
   const wpCanonical = {};
@@ -486,7 +463,8 @@ async function main() {
   }
   // No build date in here: the scheduled Action should only commit when the
   // set of stories (or a page) actually changed.
-  fs.writeFileSync(MANIFEST, JSON.stringify({ stories: written.sort() }, null, 2) + '\n');
+  // Other keys (hubs.mjs's "hubs") are kept.
+  fs.writeFileSync(MANIFEST, JSON.stringify({ ...prevManifest, stories: written.sort() }, null, 2) + '\n');
   // Integer keys keep ascending order, so the file only changes with the story set.
   fs.writeFileSync(path.join(SITE, WP_CANONICAL),
     JSON.stringify({ count: Object.keys(wpCanonical).length, posts: wpCanonical }, null, 1) + '\n');
@@ -496,7 +474,10 @@ async function main() {
   const sitemapFile = path.join(SITE, 'sitemap.xml');
   const xml = fs.readFileSync(sitemapFile, 'utf8');
   // hreflang alternates only for EN/SK pairs (an unpaired page has nothing to announce)
-  const block = [SITEMAP_START, ...written.map((p) => `  <url>
+  // hubs.mjs keeps its own sub-block right after SITEMAP_START; carried over
+  // here, then refreshed by buildHubs() below.
+  const hubBlock = (xml.match(new RegExp(`${HUBS_START}[\\s\\S]*?${HUBS_END}`)) || [])[0];
+  const block = [SITEMAP_START, ...(hubBlock ? [hubBlock] : []), ...written.map((p) => `  <url>
     <loc>${ORIGIN}/${p}</loc>
     <lastmod>${lastmods[p]}</lastmod>${(altsOf[p] || []).length > 2 ? altsOf[p].map(([l, q]) => `
     <xhtml:link rel="alternate" hreflang="${l}" href="${ORIGIN}/${q}"/>`).join('') : ''}
@@ -530,6 +511,9 @@ async function main() {
   lines.push('bye');
   fs.writeFileSync(path.join(HERE, 'upload.sftp'), lines.join('\n') + '\n');
   console.log(`total ${written.length} pages; removed ${removed.length}`);
+
+  // Hub pages, sitemap hub URLs, upload.sftp hub lines (offline, from the pages above).
+  buildHubs();
 }
 
 main().catch((e) => {

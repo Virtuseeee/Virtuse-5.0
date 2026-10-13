@@ -62,6 +62,47 @@ markers, so they coexist.
 `manifest.json` lists every generated folder; stories removed from WordPress
 get their folder deleted on the next run (only folders from the manifest).
 
+## Hubs and related links (`hubs.mjs`, 2026-10-13)
+
+`build.mjs` ends by calling `buildHubs()` from `hubs.mjs`. It needs no
+network: everything comes from the story pages just written, so it can also
+run on its own after a template or wording change:
+
+```bash
+node stories-build/hubs.mjs       # from the repo root; offline, idempotent
+```
+
+- **Hub pages**, newest first, 24 stories per page: `stories/`,
+  `stories/page/<n>/`, `sk/stories/`, `sk/stories/page/<n>/`, `ru/stories/`.
+  Only for languages with stories (en, sk, ru); no hub for uk/de/... and
+  no hreflang pointing at one. Each page: self canonical, `CollectionPage` +
+  `ItemList` + `BreadcrumbList` JSON-LD, prev/next links, cards with image,
+  date, title and description, the Brief chrome of the story pages (same
+  head, consent and GTM block as `article.html`; nav/footer in the hub's
+  language from `article.js`'s `LANGS`). Page 1 hubs list each other in
+  hreflang (en, sk, ru, x-default = en); later pages are self-canonical
+  only. Pagination pages that are no longer needed are deleted on the next
+  run (`manifest.json` → `hubs`).
+- **Story pages**: breadcrumb `Virtuse Brief / Stories` (Články, Статьи)
+  links the story's own hub, as do "All stories" and the back link
+  (`article.js` keeps them there); the BreadcrumbList JSON-LD gets the hub
+  as level 3; a "Related tools and guides" block (2-3 links, same language)
+  between `<!-- STORIES-RELATED:START/END -->` after the body. Links are
+  picked from the story's words (title x4, description x2, body x0.5,
+  max 8 body hits) plus the desk: tax → tax guide + Tax Agent;
+  inheritance → inheritance checklist + Tax Agent + wallets; loans → Loan
+  Copilot + sell-or-borrow guide; custody → wallets + Tax Agent; mining →
+  mining; treasury → treasury + CFO; buy/DCA → Stacking + fee index + buy;
+  nothing clear → Partner Finder + news.html. Wording and topic words:
+  `LINKS` / `TOPICS` in hubs.mjs. `build.mjs` applies the same function
+  (`applyStoryExtras`) while rendering, so a WordPress build and an
+  offline run give byte-identical pages (checked 2026-10-13).
+- `sitemap.xml`: hub URLs between `<!-- STORIES-HUBS:START/END -->` inside
+  the STORIES-BUILD block (lastmod = newest story change on that page).
+- `upload.sftp`: hub pages between `# hubs:start` / `# hubs:end`
+  (pagination folders are created first).
+
+
 ## Sharing
 
 `article.js` shares the clean URL: a story page shares itself; on

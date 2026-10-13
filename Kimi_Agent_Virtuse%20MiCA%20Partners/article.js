@@ -10,7 +10,7 @@
       desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Custody', policy: 'Policy', macro: 'Macro', markets: 'Markets' },
       ui: {
         navIssues: 'Latest issues', navBlog: 'Blog', navData: 'Data', navHub: 'Virtuse hub', navGet: 'Get the Brief',
-        crumbList: 'Blog', by: 'By', desk: ' desk', block: 'Block', readTime: ' min',
+        crumbList: 'Blog', crumbStories: 'Stories', by: 'By', desk: ' desk', block: 'Block', readTime: ' min',
         image: 'Image', sources: 'Sources', aboutAuthor: 'About the author',
         authorBio: 'Founder & CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.',
         share: 'Share', shareOn: 'Share on', copyLink: 'Copy link', copied: 'Link copied', copyFailed: 'Could not copy. Copy the address from the browser bar.', moreShare: 'More sharing options',
@@ -39,7 +39,7 @@
       desks: { mining: 'Ťažba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulácia', macro: 'Makro', markets: 'Trhy' },
       ui: {
         navIssues: 'Posledné vydania', navBlog: 'Blog', navData: 'Dáta', navHub: 'Virtuse hub', navGet: 'Získať Brief',
-        crumbList: 'Blog', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
+        crumbList: 'Blog', crumbStories: 'Články', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
         image: 'Obrázok', sources: 'Zdroje', aboutAuthor: 'O autorovi',
         authorBio: 'Zakladateľ a CEO Virtuse. Píše o Bitcoine, makroekonomike a budúcnosti peňazí.',
         share: 'Zdieľať', shareOn: 'Zdieľať na', copyLink: 'Kopírovať odkaz', copied: 'Odkaz skopírovaný', copyFailed: 'Kopírovanie zlyhalo. Skopírujte adresu z prehliadača.', moreShare: 'Ďalšie možnosti zdieľania',
@@ -70,7 +70,7 @@
       desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
         navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные', navHub: 'Virtuse', navGet: 'Получить Brief',
-        crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
+        crumbList: 'Блог', crumbStories: 'Статьи', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
         image: 'Фото', sources: 'Источники', aboutAuthor: 'Об авторе',
         authorBio: 'Основатель и CEO Virtuse. Пишет о Биткоине, макроэкономике и будущем денег.',
         share: 'Поделиться', shareOn: 'Поделиться в', copyLink: 'Копировать ссылку', copied: 'Ссылка скопирована', copyFailed: 'Не удалось скопировать. Скопируйте адрес из браузера.', moreShare: 'Другие способы поделиться',
@@ -315,6 +315,7 @@
   var HTML = document.documentElement;
   var ROOT = HTML.getAttribute('data-root') || '';
   var STORY = HTML.getAttribute('data-story') || '';
+  var HUB = /^(?:(?:sk|ru)\/)?stories\/[^\/]+\/$/.test(STORY) ? STORY.replace(/[^\/]+\/$/, '') : '';
   var langCode = new URLSearchParams(location.search).get('lang') || HTML.getAttribute('data-lang');
   if (!LANGS[langCode]) langCode = 'en';
   var L = LANGS[langCode];
@@ -332,7 +333,10 @@
       if (v != null) n.textContent = v;
     });
     $('authorBio').textContent = L.ui.authorBio;
-    ['crumbList', 'backLink', 'moreAll', 'navBlog', 'footBlog'].forEach(function (id) { $(id).href = ROOT + L.listPage; });
+    ['navBlog', 'footBlog'].forEach(function (id) { $(id).href = ROOT + L.listPage; });
+    // Story pages: breadcrumb, back and "all stories" go to the story's own
+    // language hub (stories/, sk/stories/, ru/stories/); article.html to the blog.
+    ['crumbList', 'backLink', 'moreAll'].forEach(function (id) { $(id).href = ROOT + (HUB || L.listPage); });
     // Hub, legal pages and the service card point at the page language.
     [].forEach.call(document.querySelectorAll('[data-hub]'), function (a) { a.href = ROOT + L.dir + a.getAttribute('data-hub'); });
     $('ovAlt').href = ROOT + (L.concierge ? L.dir : '') + 'concierge.html?utm_source=concierge&utm_medium=article';
