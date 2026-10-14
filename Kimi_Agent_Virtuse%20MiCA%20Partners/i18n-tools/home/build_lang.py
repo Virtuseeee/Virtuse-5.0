@@ -128,7 +128,7 @@ def build(L):
         h, k = re.subn(pat, lambda m: new.group(0), h, count=1, flags=re.S)
         if k != 1:
             sys.exit('%s: new page has no %s' % (L, pat))
-    h = one(h, '<script src="lang-detect.js"></script>', '<script src="../lang-detect.js"></script>')
+    h = one(h, '<script src="lang-detect.js" defer></script>', '<script src="../lang-detect.js" defer></script>')
     h = re.sub(r'href="(favicon[^"]*|apple-touch-icon\.png)"', r'href="../\1"', h)
 
     # 3. language menus (nav + footer): EN -> ../, others -> ../xx/, this one -> index.html

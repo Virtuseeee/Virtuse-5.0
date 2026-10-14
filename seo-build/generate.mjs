@@ -725,7 +725,9 @@ const GUIDE_UPDATED = {
   hu: 'Frissítve', uk: 'Оновлено', ru: 'Обновлено', fr: 'Mis à jour le', es: 'Actualizado el'
 };
 const GUIDE_AUTHOR = { '@type': 'Person', name: 'Rastislav Vasilisin', url: 'https://virtuse.com/about.html#founder' };
-const GUIDE_IMAGE = () => `${ORIGIN}/og-cover.jpg`;
+// Own share image for the tax guides (hubs + countries, all languages); source in the
+// lead's og-tax template, rendered 1200x630 with headless Chrome.
+const GUIDE_IMAGE = () => `${ORIGIN}/og/bitcoin-tax.jpg`;
 function guidePublished(spec) {
   if ((spec.lang === 'en' || spec.lang === 'de') && /\/(france|spain|frankreich|spanien)\//.test(spec.relFile)) return '2026-09-29';
   return GUIDE_PUBLISHED[spec.lang];

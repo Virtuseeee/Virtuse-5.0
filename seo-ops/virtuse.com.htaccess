@@ -23,13 +23,14 @@ RewriteRule ^sk/news\.html$ https://virtuse.com/news.html [R=301,L]
 
 # Brief articles. The static page /stories/<slug>/ (sk/stories/) is the canonical copy.
 # Short links /a/<slug> and the old reader URL article.html?slug=<slug>[&lang=sk] 301 there
-# when the page exists; a story published after the last build goes to the reader (302).
+# when the page exists; otherwise to the stories hub (301). A story published after the
+# last build lands on the hub until the daily Stories build has made its page.
 RewriteCond %{DOCUMENT_ROOT}/stories/$1/index.html -f
 RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/stories/$1/ [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/sk/stories/$1/index.html -f
 RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/sk/stories/$1/ [R=301,L]
-RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/article.html?slug=$1 [R=302,L]
-RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/article.html?slug=$1&lang=sk [R=302,L]
+RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/stories/ [R=301,L]
+RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/sk/stories/ [R=301,L]
 # article.html?slug=… rules: see the approved-redirects block below.
 
 # BEGIN approved-redirects-2026-10-13
@@ -87,9 +88,19 @@ RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtu
 RewriteCond %{ENV:VB_SLUG} .
 RewriteCond %{DOCUMENT_ROOT}/sk/stories/%{ENV:VB_SLUG}/index.html -f
 RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/sk/stories/%{ENV:VB_SLUG}/? [R=301,L]
-# 4. /xx/article.html (no such file) without a story → that language's blog hub.
-#    The root /article.html reader stays for slugs without a story page (posts newer
-#    than the last stories build, and the /a/<slug> 302 fallback above).
+# 4. any slug without a story page → the stories hub of its language (sk → /sk/stories/,
+#    ru → /ru/stories/, everything else → /stories/), query string dropped. Posts newer
+#    than the last stories build land on the hub until the daily Stories build runs.
+RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]
+RewriteCond %{ENV:VB_AL} ^sk$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com%{ENV:VB_HUB_SK}? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]
+RewriteCond %{ENV:VB_AL} ^ru$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/ru/stories/? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+# 5. /xx/article.html without a slug (no such file) → that language's blog hub.
+#    The bare root /article.html (no slug) stays the reader page (200).
 RewriteRule ^de/article\.html$ https://virtuse.com/de/blog.html? [R=301,L]
 RewriteRule ^es/article\.html$ https://virtuse.com/es/blog.html? [R=301,L]
 RewriteRule ^fr/article\.html$ https://virtuse.com/fr/blog.html? [R=301,L]
@@ -644,26 +655,27 @@ RewriteRule ^uk/bitcoin-fee-index\/methodology/?$ https://virtuse.com/bitcoin-fe
 RewriteRule ^ru/bitcoin-fee-index\/methodology/?$ https://virtuse.com/bitcoin-fee-index/methodology/ [R=301,L]
 RewriteRule ^it/bitcoin-fee-index\/methodology/?$ https://virtuse.com/bitcoin-fee-index/methodology/ [R=301,L]
 
-# /xx/stories/ without its own index → language blog hub; /xx/stories/S/ that only
-# exists as an EN or SK story → that story. /stories/ itself is left to the hub page.
+# /xx/stories/ without its own index → the EN stories hub; /xx/stories/S/ that only
+# exists as an EN or SK story → that story, else (languages without a stories hub)
+# → the EN hub. /stories/ itself is left to the hub page.
 RewriteCond %{DOCUMENT_ROOT}/de/stories/index.html !-f
-RewriteRule ^de/stories/?$ https://virtuse.com/de/blog.html [R=301,L]
+RewriteRule ^de/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/es/stories/index.html !-f
-RewriteRule ^es/stories/?$ https://virtuse.com/es/blog.html [R=301,L]
+RewriteRule ^es/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/fr/stories/index.html !-f
-RewriteRule ^fr/stories/?$ https://virtuse.com/fr/blog.html [R=301,L]
+RewriteRule ^fr/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/pl/stories/index.html !-f
-RewriteRule ^pl/stories/?$ https://virtuse.com/pl/blog.html [R=301,L]
+RewriteRule ^pl/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/hu/stories/index.html !-f
-RewriteRule ^hu/stories/?$ https://virtuse.com/hu/blog.html [R=301,L]
+RewriteRule ^hu/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/cs/stories/index.html !-f
-RewriteRule ^cs/stories/?$ https://virtuse.com/cs/blog.html [R=301,L]
+RewriteRule ^cs/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/sk/stories/index.html !-f
-RewriteRule ^sk/stories/?$ https://virtuse.com%{ENV:VB_HUB_SK} [R=301,L]
+RewriteRule ^sk/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/uk/stories/index.html !-f
-RewriteRule ^uk/stories/?$ https://virtuse.com/uk/blog.html [R=301,L]
+RewriteRule ^uk/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/ru/stories/index.html !-f
-RewriteRule ^ru/stories/?$ https://virtuse.com/ru/blog.html [R=301,L]
+RewriteRule ^ru/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/it/stories/index.html !-f
 RewriteRule ^it/stories/?$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/$1/stories/$2/index.html !-f
@@ -672,6 +684,9 @@ RewriteRule ^(de|es|fr|pl|hu|cs|sk|uk|ru|it)/stories/([a-z0-9-]+)/?$ https://vir
 RewriteCond %{DOCUMENT_ROOT}/$1/stories/$2/index.html !-f
 RewriteCond %{DOCUMENT_ROOT}/sk/stories/$2/index.html -f
 RewriteRule ^(de|es|fr|pl|hu|cs|sk|uk|ru|it)/stories/([a-z0-9-]+)/?$ https://virtuse.com/sk/stories/$2/ [R=301,L]
+RewriteCond %{DOCUMENT_ROOT}/$1/stories/$2 !-f
+RewriteCond %{DOCUMENT_ROOT}/$1/stories/$2 !-d
+RewriteRule ^(de|es|fr|pl|hu|cs|uk|it)/stories/(.+)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 # /xx/blog.html where that language has none → its blog hub
 RewriteRule ^sk/blog\.html$ https://virtuse.com%{ENV:VB_HUB_SK} [R=301,L]
 RewriteRule ^it/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]

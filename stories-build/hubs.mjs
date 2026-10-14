@@ -242,11 +242,19 @@ export function applyStoryExtras(html, info, template) {
   const hub = root + hubPathOf(storyPath);
   let h = html;
   // ?v= of article.js / article.css as in article.html (asset cache busting).
-  for (const f of ['article.js', 'article.css']) {
+  for (const f of ['article.js', 'article.css', 'brief-chrome.js']) {
     const re = new RegExp(reEsc(f) + '(\\?v=[^"]*)?"', 'g');
     const m = template.match(new RegExp(reEsc(f) + '(\\?v=[^"]*)?"'));
     if (m) h = h.replace(re, f + (m[1] || '') + '"');
   }
+  // Script attributes (defer) as in article.html.
+  for (const f of ['lang-detect.js', 'brief-chrome.js', 'article.js']) {
+    const m = template.match(new RegExp('<script src="[^"]*' + reEsc(f) + '[^"]*"([^>]*)>'));
+    if (m) h = h.replace(new RegExp('(<script src="[^"]*' + reEsc(f) + '[^"]*")[^>]*>', 'g'), (x, a) => a + m[1] + '>');
+  }
+  // CSP as in article.html (story pages copy the template's head).
+  const csp = template.match(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/);
+  if (csp) h = h.replace(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/, () => csp[0]);
   h = must(h, /<a href="[^"]*" id="crumbList" data-ui="[^"]*">[^<]*<\/a>/,
     () => `<a href="${hub}" id="crumbList" data-ui="crumbStories">${esc(STRINGS[lang].crumb)}</a>`, 'crumbList');
   h = must(h, /(<a class="text-link" href=")[^"]*(" id="backLink")/, (m, a, b) => a + hub + b, 'backLink');
@@ -485,7 +493,7 @@ ${pager.length ? `      <nav class="hub-pager" aria-label="${esc(S.pager)}">
   h = h.replace(/<div class="read-progress"[^>]*><\/div>\n/, '');
   sub(/<main id="main">[\s\S]*?<\/main>/, () => main, 'main');
   h = h.replace(/<div class="share-toast"[^>]*><\/div>\n/, '');
-  sub(/\n*<!-- ===== Story reader[^>]*-->\n<script src="[^"]*article\.js[^"]*"><\/script>/, () => '', 'article.js');
+  sub(/\n*<!-- ===== Story reader[^>]*-->\n<script src="[^"]*article\.js[^"]*"[^>]*><\/script>/, () => '', 'article.js');
   // Chrome in the hub's language (article.js does this on story pages).
   h = h.replace(/(<([a-z]+)\b[^>]*\bdata-ui="(\w+)"[^>]*>)([^<]*)(<\/\2>)/g, (m, open, tag, key, t, close) =>
     (L.ui[key] != null ? open + esc(L.ui[key]) + close : m));
@@ -493,9 +501,49 @@ ${pager.length ? `      <nav class="hub-pager" aria-label="${esc(S.pager)}">
   h = h.replace(/href="[^"]*"(\s+id="(?:navBlog|footBlog)")/g, (m, id) => `href="${root}${L.listPage}"${id}`);
   const ui = {};
   for (const k of ['emailReq', 'sending', 'subOk', 'subErr', 'netErr']) ui[k] = L.ui[k];
-  sub(/(<script src="[^"]*brief-chrome\.js"><\/script>)/, (m) =>
+  sub(/(<script src="[^"]*brief-chrome\.js[^"]*"[^>]*><\/script>)/, (m) =>
     `<script>window.VB_LANG = ${JSON.stringify(L.worker)}; window.VB_UI = ${JSON.stringify(ui).replace(/</g, '\\u003c')};</script>\n${m}`, 'brief-chrome');
+  h = tightenCsp(h, pagePath);
   return { pagePath, html: h, lastmod: items.reduce((a, s) => (s.modified > a ? s.modified : a), '').slice(0, 10), alts };
+}
+
+// Per-page CSP for the hubs, same rule as i18n-tools/csp_tight.py (hubs run no
+// WordPress HTML, so they are not skipped there): an optional third-party origin
+// stays only if a script the page runs mentions it. Keep OPTIONAL in step.
+const CSP_OPTIONAL = {
+  'script-src': ['https://cdn.jsdelivr.net'],
+  'connect-src': ['https://blog.virtuse.com', 'https://api.coingecko.com', 'https://api.binance.com', 'https://mempool.space',
+    'https://virtuse-newsletter.virtuse-ai.workers.dev'],
+  'frame-src': ['https://widget.firefish.io', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://open.spotify.com',
+    'https://platform.twitter.com', 'https://twitter.com', 'https://x.com'],
+};
+function tightenCsp(h, pagePath) {
+  const csp = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/;
+  const m = h.match(csp);
+  if (!m) return h;
+  const used = [];
+  for (const t of h.matchAll(/<(script|iframe)\b([^>]*)>([\s\S]*?)<\/\1>/gi)) {
+    const src = /\bsrc="([^"]*)"/.exec(t[2]);
+    if (src) {
+      used.push(src[1]);
+      if (t[1].toLowerCase() === 'script' && !/^(https?:)?\/\/|^data:/.test(src[1])) {
+        const rel = src[1].split(/[?#]/)[0];
+        const file = rel.startsWith('/') ? path.join(SITE, rel) : path.join(SITE, pagePath, rel);
+        if (fs.existsSync(file)) used.push(fs.readFileSync(file, 'utf8'));
+      }
+    }
+    if (t[1].toLowerCase() === 'script' && !/application\/ld\+json/.test(t[2])) used.push(t[3]);
+  }
+  const text = used.join('\n');
+  const dirs = m[1].split(';').map((d) => d.trim()).filter(Boolean).map((d) => {
+    let toks = d.split(/\s+/);
+    const opt = CSP_OPTIONAL[toks[0]];
+    if (!opt) return d;
+    toks = toks.filter((x) => !opt.includes(x));
+    for (const o of opt) if (new RegExp('(?<![\\w.-])' + reEsc(o.split('//')[1]) + '(?![\\w-])').test(text)) toks.push(o);
+    return toks.join(' ');
+  });
+  return h.replace(csp, () => `<meta http-equiv="Content-Security-Policy" content="${dirs.join('; ')}">`);
 }
 
 // ---- main --------------------------------------------------------------------

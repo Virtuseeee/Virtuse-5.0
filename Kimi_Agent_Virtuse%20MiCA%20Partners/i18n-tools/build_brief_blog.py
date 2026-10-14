@@ -214,6 +214,11 @@ def build(lang, src_path, out_path):
         out = out.replace(k, v)
     left = re.findall(r'\{\{[A-Z_]+\}\}', out)
     assert not left, left
+    # Per-page CSP: only the third-party origins this blog actually uses
+    # (brief-chrome.js: mempool.space + CoinGecko; no Binance, no jsdelivr).
+    sys.path.insert(0, HERE)
+    import csp_tight
+    out = csp_tight.tighten(out, os.path.abspath(out_path))
     open(out_path, 'w', encoding='utf-8').write(out)
     print('%-16s %s: lead + %d cards, total %s, prefix %r, hub %s'
           % (out_path, lang, len(d['cards']), cfg['total'], d['p'], d['hub']))
