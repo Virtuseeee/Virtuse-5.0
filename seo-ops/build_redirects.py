@@ -258,9 +258,20 @@ def article_rules(ps):
         'RewriteCond %{ENV:VB_SLUG} .',
         'RewriteCond %{DOCUMENT_ROOT}/sk/stories/%{ENV:VB_SLUG}/index.html -f',
         f'RewriteRule ^{L}article\\.html$ {HOST}/sk/stories/%{{ENV:VB_SLUG}}/? [R=301,L]',
-        '# 4. /xx/article.html (no such file) without a story → that language\'s blog hub.',
-        '#    The root /article.html reader stays for slugs without a story page (posts newer',
-        '#    than the last stories build, and the /a/<slug> 302 fallback above).']
+        '# 4. any slug without a story page → the stories hub of its language (sk → /sk/stories/,',
+        '#    ru → /ru/stories/, everything else → /stories/), query string dropped. Posts newer',
+        '#    than the last stories build land on the hub until the daily Stories build runs.',
+        'RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
+        'RewriteCond %{ENV:VB_AL} ^sk$',
+        f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_SK}}? [R=301,L]']
+    if exists('/ru/stories/index.html'):
+        lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
+                  'RewriteCond %{ENV:VB_AL} ^ru$',
+                  f'RewriteRule ^{L}article\\.html$ {HOST}/ru/stories/? [R=301,L]']
+    lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
+              f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_EN}}? [R=301,L]',
+              '# 5. /xx/article.html without a slug (no such file) → that language\'s blog hub.',
+              '#    The bare root /article.html (no slug) stays the reader page (200).']
     for lg in LANGS:
         if exists(f'/{lg}/article.html'): continue
         lines.append(f'RewriteRule ^{lg}/article\\.html$ {url(hub_rule(lg))}? [R=301,L]')
@@ -268,15 +279,20 @@ def article_rules(ps):
 
 
 def lang_hub_rules():
-    lines = ['# /xx/stories/ without its own index → language blog hub; /xx/stories/S/ that only',
-             '# exists as an EN or SK story → that story. /stories/ itself is left to the hub page.']
+    lines = ['# /xx/stories/ without its own index → the EN stories hub; /xx/stories/S/ that only',
+             '# exists as an EN or SK story → that story, else (languages without a stories hub)',
+             '# → the EN hub. /stories/ itself is left to the hub page.']
     for lg in LANGS:
         lines += [f'RewriteCond %{{DOCUMENT_ROOT}}/{lg}/stories/index.html !-f',
-                  f'RewriteRule ^{lg}/stories/?$ {url(hub_rule(lg))} [R=301,L]']
+                  f'RewriteRule ^{lg}/stories/?$ {HOST}%{{ENV:VB_HUB_EN}} [R=301,L]']
     for base in ('stories', 'sk/stories'):
         lines += [f'RewriteCond %{{DOCUMENT_ROOT}}/$1/stories/$2/index.html !-f',
                   f'RewriteCond %{{DOCUMENT_ROOT}}/{base}/$2/index.html -f',
                   f'RewriteRule ^({LANG_ALT})/stories/([a-z0-9-]+)/?$ {HOST}/{base}/$2/ [R=301,L]']
+    nohub = [lg for lg in LANGS if not exists(f'/{lg}/stories/index.html')]
+    lines += [f'RewriteCond %{{DOCUMENT_ROOT}}/$1/stories/$2 !-f',
+              f'RewriteCond %{{DOCUMENT_ROOT}}/$1/stories/$2 !-d',
+              f'RewriteRule ^({"|".join(nohub)})/stories/(.+)$ {HOST}%{{ENV:VB_HUB_EN}} [R=301,L]']
     lines.append('# /xx/blog.html where that language has none → its blog hub')
     for lg in LANGS:
         if not exists(f'/{lg}/blog.html'):
@@ -353,7 +369,8 @@ def old_paths(rows, ps):
         if os.path.exists(os.path.join(SITE, L, 'stories', 'index.html')):
             add(f'/{L}/stories/', 200, '')
         else:
-            add(f'/{L}/stories/', 301, hub_static(L))
+            add(f'/{L}/stories/', 301, hub_static(''))
+            add(f'/{L}/stories/no-such-story-xyz/', 301, hub_static(''))
         add(f'/{L}/blog/', 301, hub_static(L))
         add(f'/{L}/category/news/', 301, hub_static(L))
     add('/sk/blog.html', 301, hub_static('sk')); add('/it/blog.html', 301, hub_static(''))
@@ -386,8 +403,20 @@ def old_paths(rows, ps):
         ('/uk/article.html?slug=what-is-a-bitcoin-treasury&lang=uk', '/stories/what-is-a-bitcoin-treasury/'),
         ('/sk/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin', '/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/'),
         ('/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin&lang=sk', '/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/'),
-        ('/fr/article.html?slug=no-such-story-xyz&lang=fr', '/fr/blog.html'),
+        ('/fr/article.html?slug=no-such-story-xyz&lang=fr', hub_static('')),
         ('/sk/article.html?slug=no-such-story-xyz', hub_static('sk')),
+        ('/article.html?slug=no-such-story-xyz', hub_static('')),
+        ('/article.html?slug=no-such-story-xyz&lang=en', hub_static('')),
+        ('/article.html?slug=no-such-story-xyz&lang=sk', hub_static('sk')),
+        ('/article.html?slug=no-such-story-xyz&lang=ru', '/ru/stories/'),
+        ('/article.html?slug=no-such-story-xyz&lang=de', hub_static('')),
+        ('/de/article.html?slug=no-such-story-xyz', hub_static('')),
+        ('/de/article.html?slug=no-such-story-xyz&lang=de', hub_static('')),
+        ('/ru/article.html?slug=no-such-story-xyz', '/ru/stories/'),
+        ('/ru/article.html?slug=%25d0%25bd%25d0%25b5%25d1%2582&lang=ru', '/ru/stories/'),
+        ('/a/no-such-story-xyz', hub_static('')),
+        ('/sk/a/no-such-story-xyz/', hub_static('sk')),
+        ('/a/what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
         ('/it/article.html?slug=what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
     ):
         add(s, 301, t)
@@ -396,7 +425,8 @@ def old_paths(rows, ps):
         add(f'/ru/article.html?slug={dbl}&lang=ru', 301, p['story'])
         add(f'/article.html?slug={dbl}&lang=ru', 301, p['story'])
         add(f'/article.html?slug={p["raw"].upper()}&lang=ru', 301, p['story'])
-    add('/article.html?slug=a-story-newer-than-the-last-build', 200, '')
+    add('/article.html?slug=a-story-newer-than-the-last-build', 301, hub_static(''))
+    add('/article.html', 200, '')
     # must stay 200 / 404
     for s in ('/', '/index.html', '/bots.html', '/blog-sk.html', '/blog.html', '/sk/about.html',
               '/stories/what-is-a-bitcoin-treasury/', '/sk/bitcoin-dane/slovensko/', '/bitcoin-tax/slovakia/',

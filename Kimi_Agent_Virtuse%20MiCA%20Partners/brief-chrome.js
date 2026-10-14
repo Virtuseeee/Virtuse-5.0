@@ -107,12 +107,26 @@
     host.textContent = ''; host.appendChild(group(n)); host.appendChild(group(n));
   }
   window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(function () { if (last) renderTicker(last); }, 150); });
+  /* 24h change from CoinGecko (free, no key); cached 2 minutes per tab to stay under its rate limit. */
+  var CG = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true';
+  function cg() {
+    try {
+      var c = JSON.parse(sessionStorage.getItem('vb-cg-btc') || 'null');
+      if (c && c.b && Date.now() - c.t < 120000) return Promise.resolve(c.b);
+    } catch (e) {}
+    return j(CG).then(function (d) {
+      var b = d && d.bitcoin; if (!b) throw new Error('no data');
+      try { sessionStorage.setItem('vb-cg-btc', JSON.stringify({ t: Date.now(), b: b })); } catch (e) {}
+      return b;
+    });
+  }
   function refresh() {
     var s = { price: '—', sats: '—', chg: '—', chgClass: '', hash: '—', fee: '—', height: '—' };
     renderTicker(s);
     j(MP + '/v1/prices').then(function (p) { s.price = usd(p.USD); s.sats = p.USD ? num(Math.round(1e8 / p.USD)) : '—'; renderTicker(s); }).catch(function () {});
-    j('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT').then(function (t) {
-      var n = parseFloat(t.priceChangePercent);
+    cg().then(function (b) {
+      var n = parseFloat(b.usd_24h_change);
+      if (s.price === '—' && b.usd) { s.price = usd(b.usd); s.sats = num(Math.round(1e8 / b.usd)); }
       s.chg = isNaN(n) ? '—' : (n > 0 ? '+' : '') + n.toFixed(2) + '%'; s.chgClass = n > 0 ? 'up' : (n < 0 ? 'down' : ''); renderTicker(s);
     }).catch(function () {});
     j(MP + '/blocks/tip/height').then(function (h) { s.height = num(h); renderTicker(s); }).catch(function () {});

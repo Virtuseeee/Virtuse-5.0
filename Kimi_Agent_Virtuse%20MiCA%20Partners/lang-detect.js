@@ -24,6 +24,10 @@
  * Include as the FIRST <script> in <head>, right after the CSP/referrer
  * meta tags and before the GTM snippet, so the redirect (if any) happens
  * before the page paints. Root pages: <script src="lang-detect.js">.
+ * Homepages, story pages and the stories hubs load it with `defer` (since
+ * 2026-10-14: no render-blocking request); it only reads navigator/storage
+ * and location, so it works the same after parsing, the redirect just comes
+ * a moment later for the few visitors it applies to.
  * Pages under sk//uk//cs//ru/: <script src="../lang-detect.js">.
  *
  * Update TRANSLATED below whenever a new page gets a translated
@@ -86,6 +90,11 @@
     var path = window.location.pathname;
     // Already on any translated section? No-op regardless of which one.
     if (path.indexOf('/sk/') !== -1 || path.indexOf('/uk/') !== -1 || path.indexOf('/cs/') !== -1 || path.indexOf('/ru/') !== -1 || path.indexOf('/de/') !== -1 || path.indexOf('/fr/') !== -1 || path.indexOf('/es/') !== -1 || path.indexOf('/pl/') !== -1 || path.indexOf('/hu/') !== -1) return;
+
+    // Story pages and stories hubs (/stories/<slug>/, /stories/page/2/) are
+    // directory URLs with no per-language counterpart: without this, file ''
+    // below was read as the homepage and sent visitors to /stories/<slug>/sk/index.html (404).
+    if (path.indexOf('/stories/') !== -1) return;
 
     var TRANSLATED = [
       'index.html', 'about.html', 'buy-bitcoin.html', 'mining.html', 'lending.html',

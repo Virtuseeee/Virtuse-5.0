@@ -390,25 +390,33 @@
 /de/bitcoin-tax/slovenia	301	
 /sk/bitcoin-tax/spain/	301	
 /de/bitcoin-tax/spain	301	
-/de/stories/	301	/de/blog.html
+/de/stories/	301	/stories/
+/de/stories/no-such-story-xyz/	301	/stories/
 /de/category/news/	301	/de/blog.html
-/es/stories/	301	/es/blog.html
+/es/stories/	301	/stories/
+/es/stories/no-such-story-xyz/	301	/stories/
 /es/category/news/	301	/es/blog.html
-/fr/stories/	301	/fr/blog.html
+/fr/stories/	301	/stories/
+/fr/stories/no-such-story-xyz/	301	/stories/
 /fr/category/news/	301	/fr/blog.html
-/pl/stories/	301	/pl/blog.html
+/pl/stories/	301	/stories/
+/pl/stories/no-such-story-xyz/	301	/stories/
 /pl/category/news/	301	/pl/blog.html
-/hu/stories/	301	/hu/blog.html
+/hu/stories/	301	/stories/
+/hu/stories/no-such-story-xyz/	301	/stories/
 /hu/category/news/	301	/hu/blog.html
-/cs/stories/	301	/cs/blog.html
+/cs/stories/	301	/stories/
+/cs/stories/no-such-story-xyz/	301	/stories/
 /cs/category/news/	301	/cs/blog.html
 /sk/stories/	200	
 /sk/category/news/	301	/sk/stories/
-/uk/stories/	301	/uk/blog.html
+/uk/stories/	301	/stories/
+/uk/stories/no-such-story-xyz/	301	/stories/
 /uk/category/news/	301	/uk/blog.html
 /ru/stories/	200	
 /ru/category/news/	301	/ru/blog.html
 /it/stories/	301	/stories/
+/it/stories/no-such-story-xyz/	301	/stories/
 /it/category/news/	301	/stories/
 /sk/blog.html	301	/sk/stories/
 /it/blog.html	301	/stories/
@@ -872,8 +880,20 @@
 /uk/article.html?slug=what-is-a-bitcoin-treasury&lang=uk	301	/stories/what-is-a-bitcoin-treasury/
 /sk/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin	301	/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/
 /article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin&lang=sk	301	/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/
-/fr/article.html?slug=no-such-story-xyz&lang=fr	301	/fr/blog.html
+/fr/article.html?slug=no-such-story-xyz&lang=fr	301	/stories/
 /sk/article.html?slug=no-such-story-xyz	301	/sk/stories/
+/article.html?slug=no-such-story-xyz	301	/stories/
+/article.html?slug=no-such-story-xyz&lang=en	301	/stories/
+/article.html?slug=no-such-story-xyz&lang=sk	301	/sk/stories/
+/article.html?slug=no-such-story-xyz&lang=ru	301	/ru/stories/
+/article.html?slug=no-such-story-xyz&lang=de	301	/stories/
+/de/article.html?slug=no-such-story-xyz	301	/stories/
+/de/article.html?slug=no-such-story-xyz&lang=de	301	/stories/
+/ru/article.html?slug=no-such-story-xyz	301	/ru/stories/
+/ru/article.html?slug=%25d0%25bd%25d0%25b5%25d1%2582&lang=ru	301	/ru/stories/
+/a/no-such-story-xyz	301	/stories/
+/sk/a/no-such-story-xyz/	301	/sk/stories/
+/a/what-is-a-bitcoin-treasury	301	/stories/what-is-a-bitcoin-treasury/
 /it/article.html?slug=what-is-a-bitcoin-treasury	301	/stories/what-is-a-bitcoin-treasury/
 /ru/article.html?slug=%25d0%25be%25d0%25bd%25d0%25b8-%25d0%25bd%25d0%25b5-%25d0%25bf%25d0%25b5%25d1%2580%25d0%25b5%25d1%2581%25d1%2582%25d0%25b0%25d0%25bd%25d1%2583%25d1%2582-%25d0%25bf%25d0%25b5%25d1%2587%25d0%25b0%25d1%2582%25d0%25b0%25d1%2582%25d1%258c-%25d0%25b4%25d0%25b5%25d0%25bd%25d1%258c%25d0%25b3%25d0%25b8-%25d0%25bf&lang=ru	301	/ru/stories/15058/
 /article.html?slug=%25d0%25be%25d0%25bd%25d0%25b8-%25d0%25bd%25d0%25b5-%25d0%25bf%25d0%25b5%25d1%2580%25d0%25b5%25d1%2581%25d1%2582%25d0%25b0%25d0%25bd%25d1%2583%25d1%2582-%25d0%25bf%25d0%25b5%25d1%2587%25d0%25b0%25d1%2582%25d0%25b0%25d1%2582%25d1%258c-%25d0%25b4%25d0%25b5%25d0%25bd%25d1%258c%25d0%25b3%25d0%25b8-%25d0%25bf&lang=ru	301	/ru/stories/15058/
@@ -884,7 +904,8 @@
 /ru/article.html?slug=%25d0%25bf%25d0%25be%25d1%2587%25d0%25b5%25d0%25bc%25d1%2583-%25d0%25bf%25d0%25be%25d0%25bc%25d0%25bf-%25d0%25bc%25d0%25be%25d1%2583-%25d0%25b8-%25d1%2581%25d1%258d%25d0%25b9%25d0%25bb%25d0%25be%25d1%2580-%25d0%25b4%25d0%25b0%25d1%258e%25d1%2582-%25d1%2582%25d0%25b0%25d0%25ba%25d0%25b8%25d0%25b5-%25d1%2580%25d0%25b0%25d0%25b7&lang=ru	301	/ru/stories/15054/
 /article.html?slug=%25d0%25bf%25d0%25be%25d1%2587%25d0%25b5%25d0%25bc%25d1%2583-%25d0%25bf%25d0%25be%25d0%25bc%25d0%25bf-%25d0%25bc%25d0%25be%25d1%2583-%25d0%25b8-%25d1%2581%25d1%258d%25d0%25b9%25d0%25bb%25d0%25be%25d1%2580-%25d0%25b4%25d0%25b0%25d1%258e%25d1%2582-%25d1%2582%25d0%25b0%25d0%25ba%25d0%25b8%25d0%25b5-%25d1%2580%25d0%25b0%25d0%25b7&lang=ru	301	/ru/stories/15054/
 /article.html?slug=%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%BF%D0%BE%D0%BC%D0%BF-%D0%BC%D0%BE%D1%83-%D0%B8-%D1%81%D1%8D%D0%B9%D0%BB%D0%BE%D1%80-%D0%B4%D0%B0%D1%8E%D1%82-%D1%82%D0%B0%D0%BA%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7&lang=ru	301	/ru/stories/15054/
-/article.html?slug=a-story-newer-than-the-last-build	200	
+/article.html?slug=a-story-newer-than-the-last-build	301	/stories/
+/article.html	200	
 /	200	
 /index.html	200	
 /bots.html	200	

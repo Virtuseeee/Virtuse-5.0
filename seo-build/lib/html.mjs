@@ -281,6 +281,8 @@ ${hreflangTags}
 ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${esc(ogImage)}">
 ` : ''}<link rel="icon" type="image/svg+xml" href="${esc(toRoot(relFile, 'favicon.svg'))}">
 <style>${CSS}${toolsHtml ? '\n' + TOOLS_CSS : ''}</style>
 ${extraHead}
