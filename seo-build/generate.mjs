@@ -621,7 +621,8 @@ function buyAnswerEn(c, winner) {
     ? `In the Netherlands, Box 3 still applies to holdings after you buy, because tax is on a deemed return rather than on disposal gains.`
     : `Tax usually arises only when you sell or swap later; exemption in ${theEn(c)}: ${lcFirst(c.exemption)}.`;
   return finalizeAnswer([
-    `As of ${feeAsOfEn}, the cheapest buy route on the Virtuse Fee Index at €100/month is ${winner.partner} (${winner.method}): ${formatPct(winner.pct)} variable fee, ${formatEur(winner.annualDrag)} annual fee drag.`,
+    `As of ${feeAsOfEn}, the lowest published fee at €100/month is ${winner.partner} (${winner.method}): ${formatPct(winner.pct)} variable fee, ${formatEur(winner.annualDrag)} annual fee drag.`,
+    `The lowest total cost incl. spread on the Virtuse Bitcoin Fee Index is ${FI_TOP.name} (${formatPct(FI_TOP.pct)}).`,
     extra,
     cur === 'EUR' ? '' : `From ${theEn(c)}, you usually fund a EUR account by SEPA transfer after converting ${cur}; partner KYC applies.`,
     'Virtuse never holds your keys.'
@@ -629,7 +630,12 @@ function buyAnswerEn(c, winner) {
 }
 
 const DEFAULT_MONTHLY = 100;
+// Two labelled metrics: "lowest published fee" ranks the fee schedule only (winnerDefault);
+// "lowest total cost incl. spread" is the Bitcoin Fee Index leader (fee + estimated spread).
 const winnerDefault = cheapest(FEE_ROWS, DEFAULT_MONTHLY);
+const FI_RANKED = feeIndexRanked().rows;
+const FI_TOP = { name: FI_RANKED[0].name, pct: FI_RANKED[0].total / 100 };
+const FI_PENDING = FI_RANKED.filter((r) => r.total == null).map((r) => r.name);
 const rankedDefault = rankRoutes(FEE_ROWS, DEFAULT_MONTHLY);
 const be = breakEvenBotsVsManual(FEE_ROWS);
 
@@ -681,8 +687,8 @@ function buyFaqsEn(c, winner) {
   const cur = meta.currency[c.id];
   return [
     {
-      q: `What is the cheapest way to buy bitcoin in ${theEn(c)} as of ${feeAsOfEn}?`,
-      a: `On the Virtuse Fee Index, ${winner.partner} (${winner.method}) has the lowest annual fee drag at €100/month: a ${formatPct(winner.pct)} variable fee and ${formatEur(winner.annualDrag)} a year. Rankings use the published partner fee schedule, not spreads or currency conversion.`
+      q: `How do bitcoin buy fees compare in ${theEn(c)} as of ${feeAsOfEn}?`,
+      a: `Lowest published fee at €100/month: ${winner.partner} (${winner.method}), a ${formatPct(winner.pct)} variable fee and ${formatEur(winner.annualDrag)} a year. That ranking uses the published partner fee schedule, not spreads or currency conversion. Lowest total cost incl. spread on the Virtuse Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)})${FI_PENDING.length ? `; ${FI_PENDING.join(', ')} is not ranked there until its spread is measured` : ''}.`
     },
     {
       q: `Does buying bitcoin trigger tax in ${theEn(c)}?`,
@@ -692,8 +698,9 @@ function buyFaqsEn(c, winner) {
     },
     {
       q: 'Are these fees the full cost of buying?',
-      a: 'No. The index ranks the percentage fee plus any listed monthly subscription from the Stacking Strategist fee schedule. ' +
-        (cur === 'EUR' ? 'Spreads and network (miner) fees are not included.' : `Spreads, currency conversion from ${cur} and network (miner) fees are not included.`)
+      a: 'No. This ranking uses the published percentage fee plus any listed monthly subscription from the Stacking Strategist fee schedule. ' +
+        (cur === 'EUR' ? 'Spreads and network (miner) fees are not included.' : `Spreads, currency conversion from ${cur} and network (miner) fees are not included.`) +
+        ' The Bitcoin Fee Index adds the estimated spread.'
     },
     {
       q: 'Does Virtuse execute the buy?',
@@ -937,7 +944,7 @@ ${dac8Box(c.id, 'en', enRel)}<h2>What usually creates a taxable event</h2>
 <p>${esc(c.note)} Buying bitcoin is not treated as a disposal in this overview; check local rules before you spend, swap, gift or lend coins.</p>
 <h2>Nearby country guides</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(enRel, `bitcoin-tax/${slugEn(n.id)}/`))}">Bitcoin tax in ${esc(theEn(n))}</a></li>`).join('')}</ul>
-<p>Cheapest ways to buy here: <a href="${esc(toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`))}">Buy bitcoin in ${esc(theEn(c))}</a>.</p>
+<p>Buy routes and fees here: <a href="${esc(toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`))}">Buy bitcoin in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `;
   pushPage({
@@ -1020,8 +1027,8 @@ for (const c of COUNTRIES) {
   ]);
   pushPage({
     relFile, lang: 'en',
-    title: assertTitle(`Buy bitcoin in ${theEn(c)}: cheapest route`),
-    description: assertDescription(`Cheapest EU bitcoin buy route for ${theEn(c)} as of ${feeAsOfEn}: ${winner.partner} at ${formatPct(winner.pct)}. Fee Index ranking, not a quote.`),
+    title: assertTitle(`Buy bitcoin in ${theEn(c)}: fees compared`),
+    description: assertDescription(`Bitcoin buy fees in ${theEn(c)}, ${feeAsOfEn}: lowest published fee ${winner.partner} (${formatPct(winner.pct)}), lowest total cost incl. spread ${FI_TOP.name}.`),
     h1: `Buy bitcoin in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1039,9 +1046,9 @@ for (const c of COUNTRIES) {
     schemas: [faqLd(faqs)],
     bodyHtml: `
 <p>Local currency: <strong>${esc(meta.currency[c.id])}</strong>. The table shows the partners’ EUR-denominated fees from the Stacking Strategist schedule as of ${esc(feeAsOfEn)}.${meta.currency[c.id] === 'EUR' ? '' : ` Currency conversion from ${esc(meta.currency[c.id])} is not included in the ranking.`}</p>
-<h2>Ranked buy routes at €${DEFAULT_MONTHLY}/month</h2>
+<h2>Buy routes by published fee at €${DEFAULT_MONTHLY}/month</h2>
 ${tableHtml(['Rank', 'Partner', 'Method', 'Variable fee', 'Annual fee drag', 'Speed'], rows)}
-<p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription.${ranked.some((r) => r.illustrative) ? ' RevenueBot’s percentage is marked as illustrative in the source schedule.' : ''}</p>
+<p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription.${ranked.some((r) => r.illustrative) ? ' RevenueBot’s percentage is marked as illustrative in the source schedule.' : ''} Total cost incl. spread: <a href="${esc(toRoot(relFile, 'bitcoin-fee-index/'))}">Bitcoin Fee Index</a> (lowest: ${esc(FI_TOP.name)}, ${esc(formatPct(FI_TOP.pct))}).</p>
 <h2>Tax in ${esc(theEn(c))}</h2>
 <p>Gain tax: ${esc(gainFull(c))}. Exemption: ${esc(c.exemption)}.</p>
 <p>Read the dedicated guide: <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">Bitcoin tax in ${esc(theEn(c))}</a>.</p>
@@ -1067,11 +1074,11 @@ ${faqHtml(faqs, 'FAQ')}
   const faqs = [
     { q: 'Does this calculator forecast bitcoin’s price?', a: 'No. It isolates partner fees from the published fee schedule. Price returns are not modelled.' },
     { q: `What default plan is shown as of ${feeAsOfEn}?`, a: `€${initial} upfront plus €${monthly}/month for 12 months (${formatEur(invested)} invested), ranked by first-year fees using the Stacking Strategist formula.` },
-    { q: 'Which route is cheapest on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: about ${formatEur(win.yearOneFees)} in first-year fees in this fee-only example.` },
+    { q: 'Which route has the lowest published fee on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: about ${formatEur(win.yearOneFees)} in first-year fees in this fee-only example. Lowest total cost incl. spread on the Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)}) at €100/month.` },
     { q: 'Is this financial advice?', a: 'No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${feeAsOfEn}, a fee-only DCA example of €${initial} plus €${monthly} per month for 12 months (${formatEur(invested)} invested) ranks ${win.partner} first.`,
+    `As of ${feeAsOfEn}, a fee-only DCA example of €${initial} plus €${monthly} per month for 12 months (${formatEur(invested)} invested) ranks ${win.partner} first by published fee.`,
     `Variable fee: ${formatPct(win.pct)}; first-year fees about ${formatEur(win.yearOneFees)}, using the live Stacking Strategist formula.`,
     'This is not a return forecast. Indicative 2026 overview.'
   ], 'en', 'fee');
@@ -1089,7 +1096,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Bitcoin DCA calculator (EU fees 2026)'),
-    description: assertDescription(`Fee-only bitcoin DCA calculator using Q4 2026 partner fees. Default €500 + €100/month ranks ${win.partner} first. Not a return forecast.`),
+    description: assertDescription(`Fee-only bitcoin DCA calculator using Q4 2026 partner fees. Lowest published fee on €500 + €100/month: ${win.partner}. Not a return forecast.`),
     h1: 'Bitcoin DCA calculator',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1162,11 +1169,11 @@ ${faqHtml(faqs, 'FAQ')}
   const faqs = [
     { q: 'Prognostiziert dieser Rechner den Bitcoin-Preis?', a: 'Nein. Er isoliert die Partnergebühren laut Gebührenplan. Keine Renditeannahme.' },
     { q: `Was ist der Standardplan Stand ${feeAsOfDe}?`, a: '500 € Einmalbetrag plus 100 €/Monat über 12 Monate. Sortierung nach Gebührenlast im ersten Jahr.' },
-    { q: 'Welche Route ist in diesem Plan am günstigsten?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel.` },
+    { q: 'Welche Route hat in diesem Plan die niedrigste veröffentlichte Gebühr?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin Fee Index: ${FI_TOP.name} (${formatPctDe(FI_TOP.pct)}) bei 100 €/Monat.` },
     { q: 'Ist das eine Anlageberatung?', a: 'Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.' }
   ];
   const answer = finalizeAnswer([
-    `Stand ${feeAsOfDe} liegt im gebührenbasierten DCA-Beispiel (500 € plus 100 €/Monat über 12 Monate) ${win.partner} auf Platz 1.`,
+    `Stand ${feeAsOfDe} liegt im gebührenbasierten DCA-Beispiel (500 € plus 100 €/Monat über 12 Monate) ${win.partner} nach veröffentlichter Gebühr auf Platz 1.`,
     `Variable Gebühr ${formatPctDe(win.pct)}. Keine Kursprognose.`,
     'Zahlen aus dem Live-Stacking-Modul. Unverbindlicher Überblick 2026.'
   ], 'de', 'fee');
@@ -1174,7 +1181,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'de',
     title: assertTitle('Bitcoin-DCA-Rechner (EU-Gebühren 2026)'),
-    description: assertDescription(`Gebührenbasierter Bitcoin-DCA-Rechner, Stand ${feeAsOfDe}. Standard 500 € + 100 €/Monat, günstigste Route ${win.partner}. Keine Kursprognose.`),
+    description: assertDescription(`Gebührenbasierter Bitcoin-DCA-Rechner, Stand ${feeAsOfDe}. Niedrigste veröffentlichte Gebühr bei 500 € + 100 €/Monat: ${win.partner}. Keine Kursprognose.`),
     h1: 'Bitcoin-DCA-Rechner',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2189,11 +2196,11 @@ ${faqHtml(faqs, 'Časté otázky')}
   const faqs = [
     { q: 'Predpovedá táto kalkulačka cenu Bitcoinu?', a: 'Nie. Porovnáva len poplatky partnerov podľa zverejneného cenníka. Výnos z ceny Bitcoinu nemodeluje.' },
     { q: `Aký je štandardný plán, stav ${feeAsOfSk}?`, a: 'Jednorazovo 500 € a potom 100 € mesačne počas 12 mesiacov. Poradie podľa poplatkov za prvý rok.' },
-    { q: 'Ktorá cesta je v tomto pláne najlacnejšia?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist.` },
+    { q: 'Ktorá cesta má v tomto pláne najnižší zverejnený poplatok?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist. Najnižšie celkové náklady vrátane spreadu v Bitcoin Fee Index: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) pri 100 € mesačne.` },
     { q: 'Ide o investičné poradenstvo?', a: 'Nie. Slúži len na vzdelávacie účely. KYC prebieha u partnera. Virtuse nikdy nedrží vaše kľúče.' }
   ];
   const answer = finalizeAnswer([
-    `V príklade DCA, ktorý počíta len s poplatkami (500 € a potom 100 € mesačne počas 12 mesiacov), je k stavu ${feeAsOfSk} na prvom mieste ${win.partner}.`,
+    `V príklade DCA, ktorý počíta len s poplatkami (500 € a potom 100 € mesačne počas 12 mesiacov), je k stavu ${feeAsOfSk} podľa zverejneného poplatku na prvom mieste ${win.partner}.`,
     `Variabilný poplatok ${formatPctSk(win.pct)}. Nejde o predpoveď ceny.`,
     'Údaje z live modulu Stacking Strategist. Orientačný prehľad 2026.'
   ], 'sk', 'fee');
@@ -2201,7 +2208,7 @@ ${faqHtml(faqs, 'Časté otázky')}
   pushPage({
     relFile, lang: 'sk',
     title: assertTitle('Bitcoin DCA kalkulačka (poplatky v EÚ 2026)'),
-    description: assertDescription(`DCA kalkulačka pre Bitcoin, ktorá počíta len s poplatkami, stav ${feeAsOfSk}. Štandard 500 € + 100 € mesačne, najlacnejšia cesta ${win.partner}.`),
+    description: assertDescription(`DCA kalkulačka pre Bitcoin, ktorá počíta len s poplatkami, stav ${feeAsOfSk}. Najnižší zverejnený poplatok pri 500 € + 100 € mesačne: ${win.partner}.`),
     h1: 'Bitcoin DCA kalkulačka',
     answerHtml: esc(answer),
     breadcrumbs: [skHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
@@ -2516,11 +2523,11 @@ ${faqHtml(faqs, 'Časté dotazy')}
   const faqs = [
     { q: 'Předpovídá tato kalkulačka cenu Bitcoinu?', a: 'Ne. Porovnává jen poplatky partnerů podle zveřejněného ceníku. Výnos z ceny Bitcoinu nemodeluje.' },
     { q: `Jaký je standardní plán, stav ${feeAsOfCs}?`, a: 'Jednorázově 500 € a poté 100 € měsíčně po dobu 12 měsíců. Pořadí podle poplatků za první rok.' },
-    { q: 'Která cesta je v tomto plánu nejlevnější?', a: `${win.partner} (${methodCs(win.method)}) s variabilním poplatkem ${formatPctSk(win.pct)} podle vzorce Stacking Strategist.` },
+    { q: 'Která cesta má v tomto plánu nejnižší zveřejněný poplatek?', a: `${win.partner} (${methodCs(win.method)}) s variabilním poplatkem ${formatPctSk(win.pct)} podle vzorce Stacking Strategist. Nejnižší celkové náklady včetně spreadu v Bitcoin Fee Index: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) při 100 € měsíčně.` },
     { q: 'Jde o investiční poradenství?', a: 'Ne. Slouží jen ke vzdělávacím účelům. KYC probíhá u partnera. Virtuse nikdy nedrží vaše klíče.' }
   ];
   const answer = finalizeAnswer([
-    `V příkladu DCA, který počítá jen s poplatky (500 € a poté 100 € měsíčně po dobu 12 měsíců), je ke stavu ${feeAsOfCs} na prvním místě ${win.partner}.`,
+    `V příkladu DCA, který počítá jen s poplatky (500 € a poté 100 € měsíčně po dobu 12 měsíců), je ke stavu ${feeAsOfCs} podle zveřejněného poplatku na prvním místě ${win.partner}.`,
     `Variabilní poplatek ${formatPctSk(win.pct)}. Nejde o předpověď ceny.`,
     'Údaje z živého modulu Stacking Strategist. Orientační přehled 2026.'
   ], 'cs', 'fee');
@@ -2528,7 +2535,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   pushPage({
     relFile, lang: 'cs',
     title: assertTitle('Bitcoin DCA kalkulačka (poplatky v EU 2026)'),
-    description: assertDescription(`DCA kalkulačka pro Bitcoin, která počítá jen s poplatky, stav ${feeAsOfCs}. Standard 500 € + 100 € měsíčně, nejlevnější cesta ${win.partner}.`),
+    description: assertDescription(`DCA kalkulačka pro Bitcoin, která počítá jen s poplatky, stav ${feeAsOfCs}. Nejnižší zveřejněný poplatek při 500 € + 100 € měsíčně: ${win.partner}.`),
     h1: 'Bitcoin DCA kalkulačka',
     answerHtml: esc(answer),
     breadcrumbs: [csHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
@@ -2845,11 +2852,11 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   const faqs = [
     { q: 'Czy ten kalkulator prognozuje cenę Bitcoina?', a: 'Nie. Porównuje tylko opłaty partnerów według opublikowanego cennika. Nie modeluje zwrotu z ceny Bitcoina.' },
     { q: `Jaki jest plan standardowy, stan na ${feeAsOfPl}?`, a: 'Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku.' },
-    { q: 'Która ścieżka jest w tym planie najtańsza?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist.` },
+    { q: 'Która ścieżka ma w tym planie najniższą opublikowaną opłatę?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist. Najniższy łączny koszt ze spreadem w Bitcoin Fee Index: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) przy 100 € miesięcznie.` },
     { q: 'Czy to porada inwestycyjna?', a: 'Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.' }
   ];
   const answer = finalizeAnswer([
-    `Według stanu na ${feeAsOfPl} w przykładzie DCA uwzględniającym tylko opłaty (500 €, a potem 100 € miesięcznie przez 12 miesięcy) na pierwszym miejscu jest ${win.partner}.`,
+    `Według stanu na ${feeAsOfPl} w przykładzie DCA uwzględniającym tylko opłaty (500 €, a potem 100 € miesięcznie przez 12 miesięcy) według opublikowanej opłaty na pierwszym miejscu jest ${win.partner}.`,
     `Opłata zmienna ${formatPctPl(win.pct)}. To nie jest prognoza ceny.`,
     'Dane z modułu Stacking Strategist. Przegląd orientacyjny 2026.'
   ], 'pl', 'fee');
@@ -2857,7 +2864,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   pushPage({
     relFile, lang: 'pl',
     title: assertTitle('Kalkulator DCA dla Bitcoina (opłaty w UE 2026)'),
-    description: assertDescription(`Kalkulator DCA dla Bitcoina uwzględniający tylko opłaty, stan na ${feeAsOfPl}. Standard 500 € + 100 € miesięcznie, najtańsza ścieżka: ${win.partner}.`),
+    description: assertDescription(`Kalkulator DCA dla Bitcoina uwzględniający tylko opłaty, stan na ${feeAsOfPl}. Najniższa opublikowana opłata przy 500 € + 100 € miesięcznie: ${win.partner}.`),
     h1: 'Kalkulator DCA dla Bitcoina',
     answerHtml: esc(answer),
     breadcrumbs: [plHome(relFile), { name: 'Kalkulator DCA', abs: abs(relFile) }],
@@ -3172,11 +3179,11 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   const faqs = [
     { q: 'Előre jelzi a kalkulátor a Bitcoin árfolyamát?', a: 'Nem. Csak a partnerek díjait hasonlítja össze a közzétett díjtáblázat alapján. A Bitcoin árfolyamából származó hozamot nem modellezi.' },
     { q: `Mi az alapterv, ${feeAsOfHu} állapot szerint?`, a: 'Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjai alapján.' },
-    { q: 'Melyik út a legolcsóbb ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint.` },
+    { q: 'Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin Fee Indexben: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) havi 100 € esetén.` },
     { q: 'Befektetési tanácsadásnak számít ez?', a: 'Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.' }
   ];
   const answer = finalizeAnswer([
-    `${feeAsOfHu} állapot szerint a csak díjakkal számoló DCA-példában (500 €, majd havi 100 € 12 hónapon át) ${win.partner} áll az első helyen.`,
+    `${feeAsOfHu} állapot szerint a csak díjakkal számoló DCA-példában (500 €, majd havi 100 € 12 hónapon át) a közzétett díj alapján ${win.partner} áll az első helyen.`,
     `Változó díj: ${formatPctPl(win.pct)}. Ez nem árfolyam-előrejelzés.`,
     'A díjak a Stacking Strategist modul díjtáblázatából származnak, ugyanazzal a képlettel számolva. Tájékoztató áttekintés 2026.'
   ], 'hu', 'fee');
@@ -3184,7 +3191,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   pushPage({
     relFile, lang: 'hu',
     title: assertTitle('Bitcoin DCA-kalkulátor (EU-díjak 2026)'),
-    description: assertDescription(`Csak a díjakkal számoló Bitcoin DCA-kalkulátor, ${feeAsOfHu} állapot szerint. Alapeset 500 € + havi 100 €, a legolcsóbb út: ${win.partner}.`),
+    description: assertDescription(`Csak a díjakkal számoló Bitcoin DCA-kalkulátor, ${feeAsOfHu} állapot szerint. Legalacsonyabb közzétett díj 500 € + havi 100 € esetén: ${win.partner}.`),
     h1: 'Bitcoin DCA-kalkulátor',
     answerHtml: esc(answer),
     breadcrumbs: [huHome(relFile), { name: 'DCA-kalkulátor', abs: abs(relFile) }],
@@ -3499,11 +3506,11 @@ ${faqHtml(faqs, 'Часті запитання')}
   const faqs = [
     { q: 'Чи прогнозує цей калькулятор ціну Біткоїна?', a: 'Ні. Він порівнює лише комісії партнерів за опублікованою тарифною таблицею. Дохідність від ціни Біткоїна не моделюється.' },
     { q: `Який стандартний план станом на ${feeAsOfUk}?`, a: 'Одноразово 500 €, потім 100 € на місяць протягом 12 місяців. Порядок за комісіями першого року.' },
-    { q: 'Який шлях у цьому плані найдешевший?', a: `${win.partner} (${methodUk(win.method)}) зі змінною комісією ${formatPctPl(win.pct)} за формулою Stacking Strategist.` },
+    { q: 'Який шлях у цьому плані має найнижчу опубліковану комісію?', a: `${win.partner} (${methodUk(win.method)}) зі змінною комісією ${formatPctPl(win.pct)} за формулою Stacking Strategist. Найнижча загальна вартість зі спредом у Bitcoin Fee Index: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € на місяць.` },
     { q: 'Це інвестиційна консультація?', a: 'Ні. Лише для освітніх цілей. KYC відбувається в партнера. Virtuse ніколи не зберігає ваші ключі.' }
   ];
   const answer = finalizeAnswer([
-    `Станом на ${feeAsOfUk} у DCA-прикладі лише з комісіями (500 €, потім 100 € на місяць протягом 12 місяців) перше місце посідає ${win.partner}.`,
+    `Станом на ${feeAsOfUk} у DCA-прикладі лише з комісіями (500 €, потім 100 € на місяць протягом 12 місяців) за опублікованою комісією перше місце посідає ${win.partner}.`,
     `Змінна комісія: ${formatPctPl(win.pct)}. Це не прогноз ціни.`,
     'Комісії взято з тарифної таблиці модуля Stacking Strategist і пораховано за тією самою формулою. Довідковий огляд 2026.'
   ], 'uk', 'fee');
@@ -3511,7 +3518,7 @@ ${faqHtml(faqs, 'Часті запитання')}
   pushPage({
     relFile, lang: 'uk',
     title: assertTitle('DCA-калькулятор для Біткоїна (комісії ЄС 2026)'),
-    description: assertDescription(`DCA-калькулятор для Біткоїна лише з урахуванням комісій, станом на ${feeAsOfUk}. Стандарт 500 € + 100 € на місяць, найдешевший шлях: ${win.partner}.`),
+    description: assertDescription(`DCA-калькулятор для Біткоїна лише з урахуванням комісій, станом на ${feeAsOfUk}. Найнижча опублікована комісія при 500 € + 100 € на місяць: ${win.partner}.`),
     h1: 'DCA-калькулятор для Біткоїна',
     answerHtml: esc(answer),
     breadcrumbs: [ukHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
@@ -3828,11 +3835,11 @@ ${faqHtml(faqs, 'Частые вопросы')}
   const faqs = [
     { q: 'Прогнозирует ли этот калькулятор цену Биткоина?', a: 'Нет. Он сравнивает только комиссии партнёров по опубликованной тарифной таблице. Доходность от цены Биткоина не моделируется.' },
     { q: 'Какой типовой план используется?', a: `Единоразово 500 €, затем 100 € в месяц в течение 12 месяцев, по состоянию на ${feeAsOfRu}. Рейтинг составлен по комиссиям первого года.` },
-    { q: 'Какой способ в этом плане самый дешёвый?', a: `${win.partner} (${methodRu(win.method)}) с переменной комиссией ${formatPctPl(win.pct)} по формуле Stacking Strategist.` },
+    { q: 'У какого способа в этом плане самая низкая опубликованная комиссия?', a: `${win.partner} (${methodRu(win.method)}) с переменной комиссией ${formatPctPl(win.pct)} по формуле Stacking Strategist. Самая низкая общая стоимость со спредом в Bitcoin Fee Index: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € в месяц.` },
     { q: 'Это инвестиционная консультация?', a: 'Нет. Только для образовательных целей. KYC проходит у партнёра. Virtuse никогда не хранит ваши ключи.' }
   ];
   const answer = finalizeAnswer([
-    `По состоянию на ${feeAsOfRu} в DCA-примере с учётом только комиссий (500 €, затем 100 € в месяц в течение 12 месяцев) первое место занимает ${win.partner}.`,
+    `По состоянию на ${feeAsOfRu} в DCA-примере с учётом только комиссий (500 €, затем 100 € в месяц в течение 12 месяцев) по опубликованной комиссии первое место занимает ${win.partner}.`,
     `Переменная комиссия: ${formatPctPl(win.pct)}. Это не прогноз цены.`,
     'Комиссии взяты из тарифной таблицы модуля Stacking Strategist и рассчитаны по той же формуле. Справочный обзор 2026.'
   ], 'ru', 'fee');
@@ -3840,7 +3847,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
   pushPage({
     relFile, lang: 'ru',
     title: assertTitle('DCA-калькулятор для Биткоина (комиссии ЕС 2026)'),
-    description: assertDescription(`DCA-калькулятор для Биткоина только с учётом комиссий, по состоянию на ${feeAsOfRu}. Типовой план: 500 € + 100 € в месяц; самый дешёвый способ — ${win.partner}.`),
+    description: assertDescription(`DCA-калькулятор для Биткоина только с учётом комиссий, по состоянию на ${feeAsOfRu}. Самая низкая опубликованная комиссия при 500 € + 100 € в месяц: ${win.partner}.`),
     h1: 'DCA-калькулятор для Биткоина',
     answerHtml: esc(answer),
     breadcrumbs: [ruHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
@@ -4158,11 +4165,11 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const faqs = [
     { q: 'Ce calculateur prévoit-il le cours du Bitcoin ?', a: "Non. Il compare uniquement les frais des partenaires selon le barème publié. Le rendement lié au cours du Bitcoin n'est pas modélisé." },
     { q: 'Quel plan type est utilisé ?', a: `Un versement initial de 500 €, puis 100 € par mois pendant 12 mois, situation au ${feeAsOfFr}. Le classement repose sur les frais de la première année.` },
-    { q: 'Quelle voie est la moins chère pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist.` },
+    { q: 'Quelle voie a les frais publiés les plus bas pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist. Coût total le plus bas, spread compris, dans le Bitcoin Fee Index : ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) à 100 € par mois.` },
     { q: 'Est-ce un conseil en investissement ?', a: 'Non. À des fins éducatives uniquement. Le KYC se fait chez le partenaire. Virtuse ne détient jamais vos clés.' }
   ];
   const answer = finalizeAnswer([
-    `Au ${feeAsOfFr}, dans un exemple DCA fondé uniquement sur les frais (500 €, puis 100 € par mois pendant 12 mois), ${win.partner} arrive en tête.`,
+    `Au ${feeAsOfFr}, dans un exemple DCA fondé uniquement sur les frais (500 €, puis 100 € par mois pendant 12 mois), ${win.partner} arrive en tête selon les frais publiés.`,
     `Frais variables : ${formatPctSk(win.pct)}. Ce n'est pas une prévision de cours.`,
     'Les frais proviennent du barème du module Stacking Strategist et sont calculés avec la même formule. Aperçu indicatif 2026.'
   ], 'fr', 'fee');
@@ -4170,7 +4177,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   pushPage({
     relFile, lang: 'fr',
     title: assertTitle('Calculateur DCA Bitcoin (frais UE 2026)'),
-    description: assertDescription(`Calculateur DCA Bitcoin fondé uniquement sur les frais, situation au ${feeAsOfFr}. Scénario type : 500 € + 100 € par mois ; voie la moins chère : ${win.partner}.`),
+    description: assertDescription(`Calculateur DCA Bitcoin fondé uniquement sur les frais, situation au ${feeAsOfFr}. Frais publiés les plus bas sur 500 € + 100 € par mois : ${win.partner}.`),
     h1: 'Calculateur DCA Bitcoin',
     answerHtml: esc(answer),
     breadcrumbs: [frHome(relFile), { name: 'Calculateur DCA', abs: abs(relFile) }],
@@ -4488,11 +4495,11 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const faqs = [
     { q: '¿Predice esta calculadora el precio de Bitcoin?', a: 'No. Solo compara las comisiones de los partners según el baremo publicado. No modela la rentabilidad del precio de Bitcoin.' },
     { q: '¿Qué plan tipo se usa?', a: `Una aportación inicial de 500 € y después 100 € al mes durante 12 meses, con datos del ${feeAsOfEs}. La clasificación se basa en las comisiones del primer año.` },
-    { q: '¿Qué vía es la más barata en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist.` },
+    { q: '¿Qué vía tiene la comisión publicada más baja en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist. Coste total más bajo con spread incluido en el Bitcoin Fee Index: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) con 100 € al mes.` },
     { q: '¿Es asesoramiento de inversión?', a: 'No. Solo con fines educativos. El KYC se realiza con el partner. Virtuse nunca guarda sus claves.' }
   ];
   const answer = finalizeAnswer([
-    `Con datos del ${feeAsOfEs}, en un ejemplo de DCA basado solo en comisiones (500 € y después 100 € al mes durante 12 meses), ${win.partner} queda en primer lugar.`,
+    `Con datos del ${feeAsOfEs}, en un ejemplo de DCA basado solo en comisiones (500 € y después 100 € al mes durante 12 meses), ${win.partner} queda en primer lugar por comisión publicada.`,
     `Comisión variable: ${formatPctSk(win.pct)}. No es una previsión de precio.`,
     'Las comisiones proceden del baremo del módulo Stacking Strategist y se calculan con la misma fórmula. Resumen orientativo 2026.'
   ], 'es', 'fee');
@@ -4500,7 +4507,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   pushPage({
     relFile, lang: 'es',
     title: assertTitle('Calculadora DCA de Bitcoin (comisiones UE 2026)'),
-    description: assertDescription(`Calculadora DCA de Bitcoin basada solo en comisiones, datos del ${feeAsOfEs}. Caso tipo: 500 € + 100 € al mes; la vía más barata es ${win.partner}.`),
+    description: assertDescription(`Calculadora DCA de Bitcoin basada solo en comisiones, datos del ${feeAsOfEs}. Comisión publicada más baja con 500 € + 100 € al mes: ${win.partner}.`),
     h1: 'Calculadora DCA de Bitcoin',
     answerHtml: esc(answer),
     breadcrumbs: [esHome(relFile), { name: 'Calculadora DCA', abs: abs(relFile) }],
@@ -4704,15 +4711,21 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
 // seo-build keeps them in the sitemap but no longer writes them (see writeAll).
 const FEE_INDEX_EXTERNAL = /^(bitcoin-fee-index|de\/bitcoin-gebuehrenindex|sk\/bitcoin-index-poplatkov|cs\/bitcoin-index-poplatku|pl\/bitcoin-indeks-oplat|hu\/bitcoin-dijindex|uk\/bitcoin-indeks-komisii|ru\/bitcoin-indeks-komissiy|fr\/bitcoin-indice-frais|es\/bitcoin-indice-comisiones)\//;
 
-function feeIndexLines() {
+// Fee Index ranking at €100/month (percent units): fee + estimated spread; a route whose
+// spread isn't measured yet is listed last, without a rank (same as the pages).
+function feeIndexRanked() {
   const fi = JSON.parse(fs.readFileSync(path.join(DATA, 'fee-index.json'), 'utf8'));
   let s21 = fi.spread_21bitcoin && fi.spread_21bitcoin.pct;
   if (s21 == null && process.env.FEE_INDEX_PREVIEW_21_SPREAD) s21 = Number(process.env.FEE_INDEX_PREVIEW_21_SPREAD); // local preview only
-  // A route whose spread isn't measured yet is listed last, without a rank (same as the pages).
   const rows = fi.rows.map((r) => {
     const sp = r.id === '21bitcoin' ? s21 : fi.spreads.pct[r.id]['100'];
     return { name: r.name, fee: r.fee_pct, sp, total: sp == null ? null : r.fee_pct + sp };
   }).sort((a, b) => (a.total == null) - (b.total == null) || a.total - b.total || a.name.localeCompare(b.name));
+  return { fi, rows };
+}
+
+function feeIndexLines() {
+  const { fi, rows } = feeIndexRanked();
   const f = (v) => (v > 0 && v < 0.005 ? '<0.01' : String(+v.toFixed(2))) + '%';
   return rows.map((r, i) => r.total == null
     ? `- ${r.name}: fee ${f(r.fee)}, spread being measured (not ranked yet)`

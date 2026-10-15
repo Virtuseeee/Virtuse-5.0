@@ -24,7 +24,7 @@
  "year0": "rok 0",
  "year10": "rok 10",
  "src": "Poplatky zveřejněné jednotlivými partnery, Q4 2026: poplatek takera při běžném tržním nákupu. 21bitcoin účtuje během prvních 7 dní plánu svůj běžný poplatek. Invity a Crypto.com zveřejňují své poplatky na vlastních webech. Spready a poplatky za výběr nejsou zahrnuté.",
- "fee_index": "Celý Index poplatků",
+ "fee_index": "Celkové náklady včetně spreadu: Index poplatků",
  "earn": "<b>Co vyděláváme:</b> někteří partneři platí Virtuse provizi za doporučení, když se zaregistrujete přes náš odkaz. Platíte stejnou cenu a provize nikdy nemění pořadí ani fakta.",
  "trust_partners": "partnerů",
  "trust_lowest": "nejnižší zveřejněný poplatek",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Karta Crypto.com Visa",
  "pr_cryptocom_f4": "Web i mobilní aplikace",
  "pr_cryptocom_get": "Získat Crypto.com",
- "lowest_pill": "Nejnižší poplatek",
+ "lowest_pill": "Nejnižší zveřejněný poplatek",
  "cta_details": "Zobrazit všechny údaje o partnerech",
  "b_img_alt": "Kurýr Virtuse Brief na skútru doručuje vydání z 5. 10. 2026"
 }

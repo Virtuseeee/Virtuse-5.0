@@ -75,7 +75,7 @@ def build(L):
     head = head.rstrip() + '\n<meta name="vb-cfo-stage" content="wait">\n' \
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' \
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">\n' \
-        '<link rel="stylesheet" href="%ssite-v2.css?v=5">\n' % root + \
+        '<link rel="stylesheet" href="%ssite-v2.css?v=7">\n' % root + \
         "<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>\n" + i18n + '</head>\n'
 
     # ---------- nav + footer from this language's homepage ----------

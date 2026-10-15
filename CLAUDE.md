@@ -2,14 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-15) — FAQ cleanup, 10 languages (checklist 1.1, branch `fix/faq-cleanup-1-1`, not merged, not deployed)
+## Session status (2026-10-15) — Buy cost: two labelled metrics (checklist 1.2, branch `fix/buy-cost-metrics-1-2`, staging only, not merged)
 
-- Source: audit `docs/audit-2026-10-15/content.md` P0-1. `faq.html` + 9 translations are old-template, hand-edited pages (no generator yet; the v2 rebuild is checklist 2.1).
-- Rewritten answers (same position in all 10 files): What is Virtuse (no "world's first", no Singapore / "100+ countries"; operator line copied from about.html), Is Virtuse an exchange (no "vet the best"), Why Bitcoin only (no "fiduciary alignment"), Does Virtuse hold my keys (false "no client data" replaced: we store what visitors give us, link to privacy-policy.html), How should I store (no "we recommend", no Ledger "7M+"), What does Virtuse charge (disclosure = homepage "Some partners pay…" string per language), Partner fees (unsourced prices replaced by a link to the localized Bitcoin Fee Index), Altcoins (no "recommendations"), Recurring purchases and Withdrawals (no "zero fees" / "we recommend").
-- EN, DE, UK: em/en dashes used as punctuation removed from FAQ answers and the EN intro. The shared footer line "Virtuse Brief — …" still has one (sitewide chrome).
-- Not touched: meta descriptions (still list Kraken/ByBit EU/mining prices, see checklist 1.3), the other answers' partner facts.
-- `sitemap_lastmod.py` also moved 60 other URLs (homepage, tools) to 2026-10-15: their content changed in PRs #89/#90 but the sitemap was not rerun.
-- New texts in 9 languages need the native-speaker review (checklist 3.4).
+- Audit P0-2. Rule now: **"lowest published fee"** = fee schedule only (21bitcoin, homepage + buy-bitcoin + DCA + buy-by-country tables); **"lowest total cost incl. spread"** = Bitcoin Fee Index (Bybit EU while 21bitcoin's spread is unmeasured). Never "cheapest" in titles/meta (scan: 0 pages).
+- `seo-build/generate.mjs`: shared `feeIndexRanked()` (also used by llms.txt); `FI_TOP` / `FI_PENDING` = Fee Index leader and unranked routes, so the SEO pages follow fee-index.json automatically. Buy-by-country (13 EN): title "Buy bitcoin in <country>: fees compared", lead/FAQ/meta name both metrics, h2 "Buy routes by published fee". DCA (10 languages): FAQ "lowest published fee" + Fee Index sentence, meta without "cheapest". Tax guides: "Buy routes and fees here". The seo-build Fee Index page code (not written any more) was left alone.
+- Homepage (`index.html` + `i18n-tools/home/*.json`): h2 "Buy Bitcoin with published fees from 0%.", table head "By published fee" (was "Top 3 by fee"), link "Total cost incl. spread: Fee Index".
+- Buy page (`i18n-tools/buy/*.json`): pill = "Lowest published fee", link "Total cost incl. spread: Fee Index". The long pill wraps inside the name column (`site-v2.css`: `.hp-row .lowest-pill`, `.hp-row .hc-name > span`); build_buy.py now links `site-v2.css?v=7`. Checked 320/375/1440 px in 10 languages: no overlap.
+- Left: CFO texts "cheapest route" (the visitor's own cheapest option in the audit, not a ranking claim); Stacking app wording in layer2-src; fr nav CTA is 2 px wider than 375 px (old).
 
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 

@@ -24,7 +24,7 @@
  "year0": "year 0",
  "year10": "year 10",
  "src": "Fees as published by each partner, Q4 2026: taker fee for a plain market buy. 21bitcoin charges its regular fee for the first 7 days of a plan. Invity and Crypto.com publish their fees on their own sites. Spreads and withdrawal fees not included.",
- "fee_index": "Full Fee Index",
+ "fee_index": "Total cost incl. spread: Fee Index",
  "earn": "<b>What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.",
  "trust_partners": "partners",
  "trust_lowest": "lowest published fee",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Crypto.com Visa Card",
  "pr_cryptocom_f4": "Web and mobile app",
  "pr_cryptocom_get": "Get Crypto.com",
- "lowest_pill": "Lowest fee",
+ "lowest_pill": "Lowest published fee",
  "cta_details": "See full partner details",
  "b_img_alt": "Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue"
 }

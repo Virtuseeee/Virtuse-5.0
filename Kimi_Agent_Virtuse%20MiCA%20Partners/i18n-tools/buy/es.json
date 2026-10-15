@@ -24,7 +24,7 @@
  "year0": "año 0",
  "year10": "año 10",
  "src": "Comisiones según las publica cada partner, T4 2026: comisión taker de una compra simple a mercado. 21bitcoin cobra su comisión habitual durante los primeros 7 días de un plan. Invity y Crypto.com publican sus comisiones en sus propios sitios. No incluye spreads ni comisiones de retirada.",
- "fee_index": "Índice de comisiones completo",
+ "fee_index": "Coste total con spread: Índice de comisiones",
  "earn": "<b>Lo que ganamos:</b> algunos partners pagan a Virtuse una comisión por referido cuando usted se registra a través de nuestro enlace. Usted paga el mismo precio, y la comisión nunca cambia el orden ni los datos.",
  "trust_partners": "partners",
  "trust_lowest": "comisión publicada más baja",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Crypto.com Visa Card",
  "pr_cryptocom_f4": "Web y app móvil",
  "pr_cryptocom_get": "Obtener Crypto.com",
- "lowest_pill": "Comisión más baja",
+ "lowest_pill": "Comisión publicada más baja",
  "cta_details": "Ver todos los detalles de los partners",
  "b_img_alt": "Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026"
 }

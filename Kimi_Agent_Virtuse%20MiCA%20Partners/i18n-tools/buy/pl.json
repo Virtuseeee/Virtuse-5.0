@@ -24,7 +24,7 @@
  "year0": "rok 0",
  "year10": "rok 10",
  "src": "Opłaty według danych opublikowanych przez partnerów, Q4 2026: opłata takera przy zwykłym zakupie rynkowym. 21bitcoin pobiera standardową opłatę przez pierwsze 7 dni planu. Invity i Crypto.com publikują swoje opłaty na własnych stronach. Spready i opłaty za wypłatę nie są uwzględnione.",
- "fee_index": "Pełny Indeks opłat",
+ "fee_index": "Łączny koszt ze spreadem: Indeks opłat",
  "earn": "<b>Na czym zarabiamy:</b> niektórzy partnerzy płacą Virtuse prowizję polecającą, gdy rejestrują się Państwo przez nasz link. Cena pozostaje taka sama, a prowizja nigdy nie zmienia kolejności ani faktów.",
  "trust_partners": "partnerów",
  "trust_lowest": "najniższa opublikowana opłata",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Karta Crypto.com Visa",
  "pr_cryptocom_f4": "Strona i aplikacja mobilna",
  "pr_cryptocom_get": "Przejście do Crypto.com",
- "lowest_pill": "Najniższa opłata",
+ "lowest_pill": "Najniższa opublikowana opłata",
  "cta_details": "Pełne informacje o partnerach",
  "b_img_alt": "Kurier Virtuse Brief na skuterze dostarcza wydanie z 5 października 2026"
 }

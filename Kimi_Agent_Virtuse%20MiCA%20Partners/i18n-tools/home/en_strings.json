@@ -515,9 +515,9 @@
   "context": "<!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by publi"
  },
  {
-  "en": "Buy Bitcoin from 0% fees.",
+  "en": "Buy Bitcoin with published fees from 0%.",
   "kind": "text",
-  "context": "redit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly "
+  "context": "redit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin with published fees from 0%. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly "
  },
  {
   "en": "See what each route costs you.",
@@ -550,9 +550,9 @@
   "context": " <a class=\"btn btn-primary only-wait\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> <a class=\"btn btn-primary only-audit\" href=\"cfo.html\">Check your real fees</a> <a class=\"btn btn-ghost only-audit\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> "
  },
  {
-  "en": "Top 3 by fee",
+  "en": "By published fee",
   "kind": "text",
-  "context": ">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin<"
+  "context": ">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>By published fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin<"
  },
  {
   "en": "Fee",
@@ -610,9 +610,9 @@
   "context": "t-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> </div> <p class=\"src\">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <sec"
  },
  {
-  "en": "Full Fee Index",
+  "en": "Total cost incl. spread: Fee Index",
   "kind": "text",
-  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
+  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Total cost incl. spread: Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
  },
  {
   "en": "Virtuse CFO · Free Verdict and fee audit",
