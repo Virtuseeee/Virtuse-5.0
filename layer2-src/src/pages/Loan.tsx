@@ -748,9 +748,9 @@ export default function Loan() {
         <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm leading-relaxed text-ink">
             {tv(lang,
-              'Managing a larger Bitcoin position? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.',
-              'Spravujete väčšiu bitcoinovú pozíciu? Virtuse CFO vám pomôže viesť bitcoinovú treasury: plánovať, sledovať a reportovať. Spúšťa sa 1. novembra; platené plány od januára: {0}/mesiac alebo {1}/rok.',
-              'Spravujete větší bitcoinovou pozici? Virtuse CFO vám pomůže vést bitcoinovou treasury: plánovat, sledovat a reportovat. Spouští se 1. listopadu; placené plány od ledna: {0}/měsíc nebo {1}/rok.',
+              'Managing a larger Bitcoin position? Virtuse CFO · Verdict: test a decision for free; the CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.',
+              'Spravujete väčšiu bitcoinovú pozíciu? Virtuse CFO · Verdict: overte rozhodnutie zadarmo, CFO potom sleduje poplatky a riziká. Verdict aj audit poplatkov sú zadarmo od 1. novembra. Platené plány od januára: {0}/mesiac alebo {1}/rok.',
+              'Spravujete větší bitcoinovou pozici? Virtuse CFO · Verdict: ověřte rozhodnutí zdarma, CFO pak sleduje poplatky a rizika. Verdict i audit poplatků jsou zdarma od 1. listopadu. Placené plány od ledna: {0}/měsíc nebo {1}/rok.',
               [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
           </p>
           <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>
