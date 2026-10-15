@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Brief, stories and blog linked; SK/RU stories with their own menu (checklist 2.3, branch `fix/brief-links-2-3`, built on `fix/menu-2-5`, staging only, not merged)
+
+- Audit design P1-3 + code P0-2. **One Brief theme:** news.html now uses `data-theme-key="vb-theme-blog"`, default dark, same hub palette as blog/stories (news.js `THEME_KEY`, `?v=20261015brief`); a reader's old `vb-theme` choice on news is dropped. "Fix the Money, Fix the World" removed; the date line under the H1 is hidden ≤720 px (the featured eyebrow shows it).
+- **Hub + CFO in the Brief nav:** news (Virtuse hub + Virtuse CFO), article.html/stories/hubs (Virtuse CFO), 9 blogs (Virtuse CFO, `data-nav="cfo"`). CFO card: news sidebar above the Firefish promo (`utm_medium=news`) and at the end of every story between `<!-- cfo-end:start/end -->` (`utm_medium=story`), text = approved 1.4 CFO strings per language.
+- **Shared strings:** strict-JSON block `/*CHROME-I18N*/` in `brief-chrome.js` (skip link, Dark/Light, toggle aria, navCfo, CFO card) for 10 languages. Read by brief-chrome.js (theme label via `window.VB_CHROME_T`, re-applied by article.js for `?lang=` readers), `stories-build/hubs.mjs` and `i18n-tools/brief_chrome.py`.
+- **Static localization:** `hubs.mjs` `applyStoryExtras()` now copies the skip link, nav, theme toggle and CFO card from article.html and `localizeStatic()` fills data-ui texts, data-hub links, blog link, author bio, the desk service card and the toggle in the story's language. sk/ru stories and hubs show their own menu without JavaScript (were English until article.js ran). Offline `node stories-build/hubs.mjs`: 406 stories updated, second run 0. `i18n-tools/brief_chrome.py` patches the 9 built blogs (idempotent); `build_brief_blog.py` calls it on new builds.
+- Also: sk service card "exekúcia" → "vykonávanie obchodov" (article.js).
+- Checked: sk/ru story, en story, `article.html?lang=sk`, news, blog-sk, sk hub at 1024/375; toggle switches label in the page language; no overflow; tagcheck 0 on 435 files; every CFO/hub link resolves. Not done: P2-1 (`article.html?slug=` links on news cards), CFO card on hub pages.
+
 ## Session status (2026-10-15) — Learn / Tools menu with one-line descriptions (checklist 2.5, branch `fix/menu-2-5`, built on `feat/v2-port-2-1`, staging only, not merged)
 
 - Audit design P1-6. Learn = Virtuse Brief, Stories, Blog, Bitcoin Data, Country tax guides, FAQ. Tools = Virtuse CFO · Verdict (Free), Partner Finder, Fee Index (moved from Learn), Stacking, Loan, Tax & Inheritance, Retirement. Each item = `<span class="nd-t">` title + `<span class="nd-d">` description; descriptions show from 1181 px, hidden in the phone drawer. `#navCfo` nowrap now on `.nd-t`.
