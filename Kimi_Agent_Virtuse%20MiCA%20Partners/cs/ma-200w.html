@@ -1384,6 +1384,15 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   });
 
   function updateStatus() {
+    if (!live) {
+      // No live weekly series: live price only, no 200 WMA and no zone verdict.
+      document.getElementById('statusPrice').textContent = fmtUsd(currentPrice);
+      document.getElementById('statusWma').textContent = '—';
+      var c0 = document.getElementById('bandChip');
+      c0.textContent = chartMsg.style.display === 'flex' ? T_UNAVAILABLE : c0.textContent;
+      c0.style.background = 'var(--border)';
+      return;
+    }
     var pts = series.filter(function (s) { return s.wma != null; });
     if (!pts.length) return;
     var last = pts[pts.length - 1];
@@ -1397,21 +1406,52 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     chip.style.background = z.color;
   }
 
+  // Live weekly series only: the 2011-2017 seed alone is never shown as "today" (audit 2026-10-15, P0-1).
+  var live = false;
+  var T_UNAVAILABLE = "Data nejsou dostupná", T_RETRY = "Zkusit znovu";
+  var chartMsg = document.createElement('div');
+  chartMsg.setAttribute('role', 'status');
+  chartMsg.style.cssText = 'position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;color:var(--text);font-size:15px';
+  var chartMsgText = document.createElement('span');
+  chartMsgText.textContent = T_UNAVAILABLE;
+  var retryBtn = document.createElement('button');
+  retryBtn.type = 'button';
+  retryBtn.textContent = T_RETRY;
+  retryBtn.style.cssText = 'font:inherit;font-weight:600;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 18px;cursor:pointer';
+  chartMsg.appendChild(chartMsgText);
+  chartMsg.appendChild(retryBtn);
+  canvas.parentNode.appendChild(chartMsg);
+  canvas.style.visibility = 'hidden';
+
+  function showUnavailable(on) {
+    chartMsg.style.display = on ? 'flex' : 'none';
+    canvas.style.visibility = on || !live ? 'hidden' : 'visible';
+  }
+
+  function loadWeekly() {
+    showUnavailable(false);
+    retryBtn.disabled = true;
+    // Weekly candles since 2017 from Binance (public, CORS-enabled)
+    fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1w&limit=1000')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (rows) {
+        var recent = rows.map(function (c) { return { ts: c[0], price: parseFloat(c[4]) }; });
+        var cut = recent[0].ts;
+        weekly = monthlyToWeekly(EARLY).filter(function (s) { return s.ts < cut; }).concat(recent);
+        live = true;
+        buildSeries();
+        showUnavailable(false);
+        updateStatus();
+        draw();
+      })
+      .catch(function () { if (!live) { showUnavailable(true); updateStatus(); } })
+      .then(function () { retryBtn.disabled = false; });
+  }
+  retryBtn.addEventListener('click', loadWeekly);
+
   buildSeries();
   draw();
-
-  // Weekly candles since 2017 from Binance (public, CORS-enabled)
-  fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1w&limit=1000')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (rows) {
-      var recent = rows.map(function (c) { return { ts: c[0], price: parseFloat(c[4]) }; });
-      var cut = recent[0].ts;
-      weekly = monthlyToWeekly(EARLY).filter(function (s) { return s.ts < cut; }).concat(recent);
-      buildSeries();
-      updateStatus();
-      draw();
-    })
-    .catch(function () { updateStatus(); });
+  loadWeekly();
 
   // Live price for the status card
   fetch('https://mempool.space/api/v1/prices')
