@@ -1450,15 +1450,7 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
 .page-buy .ts-logos img.invert:hover { filter: invert(1); }
 /* anchored sections clear the sticky header */
 .page-buy [id] { scroll-margin-top: calc(var(--nav-h, 64px) + 16px); }
-/* cookie banner as a compact bottom sheet on phones (styles only; consent logic untouched) */
-@media (max-width: 640px) {
-  body .vb-cc { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px; max-height: 30vh; overflow-y: auto; border-radius: 14px; }
-  body .vb-cc:has(.vb-cc-cats) { max-height: calc(100vh - 16px); }
-  body .vb-cc h2 { font-size: 14px; margin: 0 0 4px; }
-  body .vb-cc p { font-size: 12.5px; line-height: 1.4; }
-  body .vb-cc:not(:has(.vb-cc-cats)) .vb-cc-row { flex-wrap: nowrap; gap: 6px; margin-top: 10px; }
-  body .vb-cc:not(:has(.vb-cc-cats)) .vb-cc-row button { flex: 1 1 0; min-width: 0; padding: 8px 6px; font-size: 12.5px; white-space: normal; line-height: 1.2; }
-}
+/* cookie banner on phones: compact sheet now lives in cookie-consent.js (every page loads it) */
 /* card heads: room on the right only where a price badge sits there */
 .pcard2:not(:has(.pc-badge)) .pc-head { padding-right: 0; }
 .pcard2:has(.pc-badge) .pc-head { padding-right: 64px; }

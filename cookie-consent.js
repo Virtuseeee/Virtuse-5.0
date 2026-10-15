@@ -195,8 +195,13 @@
     '.vb-cc-link:hover{opacity:1}' +
     '.cookie-settings-btn{font:inherit;font-weight:600;cursor:pointer;margin-top:12px;padding:9px 16px;border-radius:8px;' +
     'background:transparent;color:inherit;border:1px solid currentColor;-webkit-appearance:none;appearance:none}' +
-    '@media (max-width:560px){.vb-cc{left:8px;right:8px;bottom:8px;padding:18px 16px;max-height:calc(100vh - 16px);overflow-y:auto}' +
-    '.vb-cc-row button{flex:1 1 100%}}' +
+    // phones: a compact bottom sheet (was only in site-v2.css, so ~470 pages without it showed a 326 px banner)
+    '@media (max-width:640px){body .vb-cc{left:8px;right:8px;bottom:8px;padding:12px 14px;max-height:30vh;overflow-y:auto;border-radius:14px}' +
+    'body .vb-cc:has(.vb-cc-cats){max-height:calc(100vh - 16px)}' +
+    'body .vb-cc h2{font-size:14px;margin:0 0 4px}body .vb-cc p{font-size:12.5px;line-height:1.4}' +
+    'body .vb-cc:not(:has(.vb-cc-cats)) .vb-cc-row{flex-wrap:nowrap;gap:6px;margin-top:10px}' +
+    'body .vb-cc:not(:has(.vb-cc-cats)) .vb-cc-row button{flex:1 1 0;min-width:0;padding:8px 6px;font-size:12.5px;white-space:normal;line-height:1.2}' +
+    'body .vb-cc:has(.vb-cc-cats) .vb-cc-row button{flex:1 1 100%}}' +
     // desktop: a compact card in the bottom-left corner, so it never covers centered page content
     '@media (min-width:1024px){.vb-cc{left:16px;right:auto;bottom:16px;width:calc(100% - 32px);max-width:420px;margin:0;' +
     'padding:16px 18px;max-height:calc(100vh - 32px);overflow-y:auto}' +
