@@ -199,7 +199,6 @@ def build(L):
         h, k = re.subn(r'(data-consultation-trigger data-consultation-lang="%s">[^<]*</button>)\.</p>' % L, r'\1 (%s).</p>' % IN_EN[L], h)
         if k != 1:
             sys.exit('%s: consultation line not found' % L)
-    h = one(h, "b.textContent = audit ? 'New' : 'Soon';", "b.textContent = audit ? '%s' : '%s';" % (js_lit(tr['New'], "'"), js_lit(tr['Soon'], "'")))
     # longer labels than English: let them fit on small phones
     h = one(h, '</head>', '<style>.spot, .shelf6 > * { min-width: 0; } .spot h3 { hyphens: auto; overflow-wrap: break-word; }\n@media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>\n</head>')
     # the Brief is published in English: say so after the headline (static + script)

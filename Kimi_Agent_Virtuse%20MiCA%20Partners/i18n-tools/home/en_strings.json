@@ -85,14 +85,14 @@
   "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"conci"
  },
  {
-  "en": "Virtuse CFO",
+  "en": "Virtuse CFO · Verdict",
   "kind": "text",
-  "context": " class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Sta"
+  "context": " class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Sta"
  },
  {
-  "en": "Soon",
+  "en": "Free",
   "kind": "text",
-  "context": "ria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\""
+  "context": "ls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\""
  },
  {
   "en": "Partner Finder",
