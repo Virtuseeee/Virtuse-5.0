@@ -84,6 +84,7 @@ const SCHEMA = {
     declined: { type: 'boolean' },
     is_loan: { type: 'boolean' },
     drawdown_tested: { type: 'boolean' },
+    tax_rule_wrong: { type: 'boolean' },
     country: { type: 'string', enum: [...COUNTRY_IDS, 'other', 'unknown'] },
     signals: {
       type: 'array',
@@ -100,7 +101,7 @@ const SCHEMA = {
     },
     missing: { type: 'array', items: { type: 'string' } },
   },
-  required: ['declined', 'is_loan', 'drawdown_tested', 'country', 'signals', 'missing'],
+  required: ['declined', 'is_loan', 'drawdown_tested', 'tax_rule_wrong', 'country', 'signals', 'missing'],
   additionalProperties: false,
 };
 
@@ -132,7 +133,7 @@ Rubric (anchors 0 / 5 / 10):${RUBRIC}
 
 Rules for specific signals:
 - worst_case: set drawdown_tested to true only if the text states what a fall of about 70% would mean for this plan. If false, worst_case is at most 4.
-- tax: judge the stated rule against these facts (as of ${TAX.asOf}); a rule that contradicts them scores at most 2. Set country to the person's tax residence if stated, "other" for a country not listed, "unknown" if not stated.
+- tax: judge the stated rule against these facts (as of ${TAX.asOf}); a rule that contradicts them scores at most 2 and sets tax_rule_wrong to true (otherwise false). Set country to the person's tax residence if stated, "other" for a country not listed, "unknown" if not stated.
 ${taxFacts()}
 - is_loan: true if the decision involves borrowing against Bitcoin.
 
@@ -173,11 +174,16 @@ export function scoreVerdict(out, lang) {
     let points = clampInt(s.points, 0, 10);
     if (def.id === 'worst_case' && !out.drawdown_tested) points = Math.min(points, 4);
     if (def.id === 'tax' && out.country === 'other') points = Math.min(points, 5);
+    if (def.id === 'tax' && out.tax_rule_wrong) points = Math.min(points, 2);
     return { id: def.id, name: def[L], priority: def.priority, points, reason: String(s.reason || '').slice(0, 200) };
   });
   const score = signals.reduce((a, s) => a + s.points, 0);
   const band = BANDS.find((b) => score >= b.min);
-  const weakest = [...signals].sort((a, b) => a.points - b.points || a.priority - b.priority)[0];
+  // A tax rule that contradicts Virtuse's sourced data is shown first: a
+  // wrong fact costs more than a missing one (Ras, 2026-10-15).
+  const weakest = out.tax_rule_wrong
+    ? signals.find((s) => s.id === 'tax')
+    : [...signals].sort((a, b) => a.points - b.points || a.priority - b.priority)[0];
   const def = SIGNALS.find((d) => d.id === weakest.id);
   const toolKey = out.is_loan && def.loanTool ? def.loanTool : def.tool;
   const tool = TOOLS[toolKey];

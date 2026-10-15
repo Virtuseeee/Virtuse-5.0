@@ -27,7 +27,7 @@ const POINTS = { worst_case: 3, liquidity: 8, tax: 4, custody: 6, plan_b: 5, goa
 
 function modelOut(over = {}) {
   return {
-    declined: false, is_loan: false, drawdown_tested: true, country: 'sk',
+    declined: false, is_loan: false, drawdown_tested: true, tax_rule_wrong: false, country: 'sk',
     signals: SIGNALS.map((s) => ({ id: s.id, points: POINTS[s.id], reason: `Text o ${s.id}.` })),
     missing: ['Aký je váš plán pri poklese o 70 %?'],
     ...over,
@@ -83,6 +83,13 @@ test('a country outside the 13 caps tax at 5 and asks to check with an adviser',
   const r = scoreVerdict(modelOut({ country: 'other', signals: SIGNALS.map((s) => ({ id: s.id, points: 10, reason: 'x' })) }), 'sk');
   assert.equal(r.signals.find((s) => s.id === 'tax').points, 5);
   assert.ok(r.missing.some((m) => /daňovým poradcom/.test(m)));
+});
+
+test('a tax rule that contradicts the data is always the weakest point', () => {
+  const r = scoreVerdict(modelOut({ tax_rule_wrong: true, signals: SIGNALS.map((s) => ({ id: s.id, points: s.id === 'tax' ? 6 : (s.id === 'worst_case' ? 0 : 8), reason: 'x' })) }), 'sk');
+  assert.equal(r.weakest.id, 'tax');
+  assert.equal(r.signals.find((s) => s.id === 'tax').points, 2);
+  assert.equal(r.weakest.tool.page, 'tax-agent.html');
 });
 
 test('points are clamped, missing is capped at 3, wrong signal count throws', () => {

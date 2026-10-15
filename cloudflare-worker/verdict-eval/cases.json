@@ -6,11 +6,20 @@
    "lang": "sk",
    "text": "Každý mesiac kúpim BTC za 200 € automatickým nákupom, 10 rokov, cieľ 60 000 € na dôchodok v roku 2036. Rezerva 6 mesačných výdavkov. Pri poklese o 70 % by som bol asi 8 400 € v strate, nákupy nezastavím. Som rezident SR: zisk pri predaji zdaním 19 až 35 % plus 16 % odvod, odkladám si 35 %. Kľúče na hardvérovej peňaženke, manželka má postup u notára. Ak prídem o prácu, nákupy pozastavím. Porovnal som jednorazový nákup a akciový ETF. Je to 10 % môjho majetku.",
    "score": [
-    85,
-    98
+    80,
+    95
    ],
    "band": "complete",
-   "weakest": null
+   "weakest": "horizon",
+   "was": {
+    "score": [
+     85,
+     98
+    ],
+    "band": "complete",
+    "weakest": null
+   },
+   "why": "nothing says what would force an earlier sale; ties at 6 go to horizon (priority 7)"
   },
   {
    "id": "2",
@@ -28,77 +37,140 @@
    "lang": "sk",
    "text": "Požičiam si 30 000 € na rekonštrukciu proti 1 BTC pri LTV 30 %, cena likvidácie podľa Loan Copilota okolo 32 000 €. Splácam 700 € mesačne zo mzdy 4 roky. Alternatíva: predať 0,5 BTC a zaplatiť daň 19 až 35 % plus odvod. Pri poklese o 70 % by cena padla pod likvidáciu: mám 0,3 BTC na doplnenie zábezpeky a rezervu 5 000 €. Pod 50 000 € doplním zábezpeku, pod 40 000 € časť splatím. Pôžička je 15 % majetku.",
    "score": [
-    70,
-    88
+    50,
+    64
    ],
-   "band": "complete",
-   "weakest": "custody"
+   "band": "add",
+   "weakest": "custody",
+   "was": {
+    "score": [
+     70,
+     88
+    ],
+    "band": "complete",
+    "weakest": "custody"
+   },
+   "why": "no custody or inheritance in the text"
   },
   {
    "id": "4",
    "lang": "en",
    "text": "Our Slovak company plans to put 10% of cash reserves (€80k) into BTC for 5 years. The board approved a written policy: 4 tranches, rebalance if BTC exceeds 20% of reserves, no sales for 2 years. Runway 14 months without BTC; a 70% fall cuts reserves by €56k and runway stays 12 months. Tax and accounting checked with our auditor. Qualified custodian, 2-of-3 multisig, two directors hold keys, succession in board minutes. Alternatives: money market fund, gold.",
    "score": [
-    80,
-    95
+    60,
+    75
    ],
    "band": "complete",
-   "weakest": "goal"
+   "weakest": "goal",
+   "was": {
+    "score": [
+     80,
+     95
+    ],
+    "band": "complete",
+    "weakest": "goal"
+   },
+   "why": "no measurable goal (number and date)"
   },
   {
    "id": "5",
    "lang": "sk",
    "text": "Predám 0,4 BTC kúpené v roku 2019 a splatím hypotéku 25 000 €, cieľ je byť bez dlhu do konca roka. Na Slovensku nie je oslobodenie podľa doby držby, zisk zdaním 19 až 35 % a 16 % odvod, sumu mám odloženú. Alternatívu pôžičku proti BTC som zamietol pre riziko likvidácie. Zvyšných 0,6 BTC držím 10 rokov na hardvérovej peňaženke, dedičia majú postup u notára. Rezerva 4 mesiace.",
    "score": [
-    70,
-    88
+    45,
+    60
    ],
-   "band": "complete",
-   "weakest": "worst_case"
+   "band": "add",
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     70,
+     88
+    ],
+    "band": "complete",
+    "weakest": "worst_case"
+   },
+   "why": "no worst case, plan B, rule or position size for the remaining 0.6 BTC"
   },
   {
    "id": "6",
    "lang": "en",
    "text": "Polish resident, 45. €300 a month into BTC until 65 to cover about 15% of retirement income, checked in the retirement calculator. 8 months of expenses in cash. A 70% fall halfway would set the target back about 6 years; I keep buying. Tax: 19% on gains when I sell, crypto-to-crypto I avoid. If income drops I halve the amount. Compared with my pension fund contributions. BTC is 12% of net worth.",
    "score": [
-    70,
-    88
+    55,
+    70
    ],
-   "band": "complete",
-   "weakest": "custody"
+   "band": "add",
+   "weakest": "custody",
+   "was": {
+    "score": [
+     70,
+     88
+    ],
+    "band": "complete",
+    "weakest": "custody"
+   },
+   "why": "no custody or inheritance"
   },
   {
    "id": "7",
    "lang": "en",
    "text": "Austrian resident holding 1.5 BTC bought before March 2021 as a long-term reserve, no sales before 2035; gains on these old coins are tax-free. 2-of-3 multisig, heirs have a letter with the steps. BTC is 12% of net worth, a 70% fall changes nothing in daily life. Rule: sell 10% each time the price is above 5x my average cost. Compared with holding gold.",
    "score": [
-    70,
-    85
+    50,
+    64
    ],
-   "band": "complete",
-   "weakest": "liquidity"
+   "band": "add",
+   "weakest": "liquidity",
+   "was": {
+    "score": [
+     70,
+     85
+    ],
+    "band": "complete",
+    "weakest": "liquidity"
+   },
+   "why": "no reserve, no plan B, goal without a number"
   },
   {
    "id": "8",
    "lang": "sk",
    "text": "Každý mesiac kúpim BTC za 100 €, aspoň 10 rokov, na dôchodok. Rezervu mám 6 mesiacov. Pri poklese o 70 % pokračujem. Kľúče prenesiem na hardvérovú peňaženku. Daň neriešim, nebudem predať.",
    "score": [
-    50,
-    64
+    35,
+    50
    ],
-   "band": "add",
-   "weakest": "tax"
+   "band": "missing",
+   "weakest": "alternatives",
+   "was": {
+    "score": [
+     50,
+     64
+    ],
+    "band": "add",
+    "weakest": "tax"
+   },
+   "why": "no alternative compared"
   },
   {
    "id": "9",
    "lang": "en",
    "text": "Borrow €20k against 1 BTC at 40% LTV for a car, repay over 3 years from salary. Liquidation is around €33k. The alternative was selling, but I would pay tax. Emergency fund 3 months.",
    "score": [
-    45,
-    60
+    35,
+    50
    ],
-   "band": "add",
-   "weakest": "worst_case"
+   "band": "missing",
+   "weakest": "custody",
+   "was": {
+    "score": [
+     45,
+     60
+    ],
+    "band": "add",
+    "weakest": "worst_case"
+   },
+   "why": "no custody; worst case capped at 4 without the 70% test"
   },
   {
    "id": "10",
@@ -116,33 +188,60 @@
    "lang": "en",
    "text": "I will buy €500 of BTC every month for 5 years and move it to a hardware wallet each quarter. Goal: €40k for my kids' education in 2031. Lithuanian resident. I have 4 months saved.",
    "score": [
-    45,
-    60
+    25,
+    40
    ],
-   "band": "add",
-   "weakest": "worst_case"
+   "band": "missing",
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     45,
+     60
+    ],
+    "band": "add",
+    "weakest": "worst_case"
+   },
+   "why": "no worst case, plan B, alternatives or tax"
   },
   {
    "id": "12",
    "lang": "sk",
    "text": "Firma chce dať 5 % hotovosti do BTC. Konateľ a spoločník súhlasia, držíme 3 roky, úschova u licencovaného custodiana. Prevádzkové náklady na 18 mesiacov máme mimo BTC.",
    "score": [
-    45,
-    60
+    25,
+    40
    ],
-   "band": "add",
-   "weakest": "worst_case"
+   "band": "missing",
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     45,
+     60
+    ],
+    "band": "add",
+    "weakest": "worst_case"
+   },
+   "why": "no goal, worst case, plan B or tax"
   },
   {
    "id": "13",
    "lang": "en",
    "text": "Selling half my BTC (bought 2018) to put a deposit on a flat. Spanish resident, I know gains are taxed 19–28%. The other half stays on Ledger long term.",
    "score": [
-    40,
-    55
+    30,
+    45
    ],
    "band": "missing",
-   "weakest": "liquidity"
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     40,
+     55
+    ],
+    "band": "missing",
+    "weakest": "liquidity"
+   },
+   "why": "worst case and liquidity both 0, priority decides"
   },
   {
    "id": "14",
@@ -325,22 +424,40 @@
    "lang": "sk",
    "text": "Kupujem 20 € denne, horizont 20 rokov, cieľ dôchodok, rezerva 6 mesiacov, kľúče doma, daň podľa slovenských pravidiel odkladaná.",
    "score": [
-    45,
-    60
+    30,
+    45
    ],
-   "band": "add",
-   "weakest": "worst_case"
+   "band": "missing",
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     45,
+     60
+    ],
+    "band": "add",
+    "weakest": "worst_case"
+   },
+   "why": "no worst case, plan B or alternatives"
   },
   {
    "id": "31",
    "lang": "en",
    "text": "Selling 10% of my BTC every time it doubles from my last sale, rest held 10+ years. French resident, 30% flat tax on gains.",
    "score": [
-    40,
-    55
+    30,
+    45
    ],
    "band": "missing",
-   "weakest": "liquidity"
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     40,
+     55
+    ],
+    "band": "missing",
+    "weakest": "liquidity"
+   },
+   "why": "worst case and liquidity both 0, priority decides"
   },
   {
    "id": "32",
@@ -351,7 +468,16 @@
     10
    ],
    "band": "missing",
-   "weakest": "worst_case"
+   "weakest": "liquidity",
+   "was": {
+    "score": [
+     0,
+     10
+    ],
+    "band": "missing",
+    "weakest": "worst_case"
+   },
+   "why": "a fall is mentioned (worst case up to 4); no reserve"
   },
   {
    "id": "33",
@@ -402,11 +528,20 @@
    "lang": "en",
    "text": "Borrow €50k at 25% LTV, liquidation at roughly a 75% fall, repay in 12 months from a property sale already signed; if the sale fails I sell 0.5 BTC. 6 months reserve. Slovak resident, tax 19–35% + 16% levy if I must sell.",
    "score": [
-    55,
-    70
+    40,
+    55
    ],
-   "band": "add",
-   "weakest": "custody"
+   "band": "missing",
+   "weakest": "custody",
+   "was": {
+    "score": [
+     55,
+     70
+    ],
+    "band": "add",
+    "weakest": "custody"
+   },
+   "why": "no custody, alternatives or measurable goal"
   },
   {
    "id": "38",
@@ -479,11 +614,20 @@
    "lang": "sk",
    "text": "Plán: 70 % portfólia BTC, 30 % akcie, rebalancujem raz ročne, horizont 15 rokov, rezerva 1 rok v hotovosti, úschova multisig, dedičský list u advokáta. Rakúsko.",
    "score": [
-    55,
-    70
+    30,
+    45
    ],
-   "band": "add",
-   "weakest": "worst_case"
+   "band": "missing",
+   "weakest": "worst_case",
+   "was": {
+    "score": [
+     55,
+     70
+    ],
+    "band": "add",
+    "weakest": "worst_case"
+   },
+   "why": "no worst case and no tax rule for Austria"
   },
   {
    "id": "45",
@@ -560,5 +704,6 @@
    "text": "Mám dať BTC do daňového raja, aby som neplatil daň?",
    "declined": true
   }
- ]
+ ],
+ "changed": "2026-10-15: expectations recalibrated to the rubric after the first run (approved by Ras); old values in \"was\""
 }
