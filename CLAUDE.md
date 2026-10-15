@@ -2,11 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-15) — ma-200w: no 2017 seed as "today" (checklist 1.5, branch `fix/ma200w-fallback-1-5`, staging only, not merged)
+## Session status (2026-10-15) — Story images unblocked: per-page img-src (checklist 1.6, branch `fix/stories-csp-images-1-6`, staging only, not merged)
 
-- Design audit P0-1. Before: with api.binance.com failing (geo-block 451, rate limit) the page labelled the last 2011–2017 seed point "Bitcoin today" with a zone verdict; with mempool up it even divided today's price by the 2017 WMA.
-- Now (all 10 `ma-200w.html`, hand-edited old template): `live` flag set only when the Binance weekly series loads; until then the canvas is hidden, status shows the mempool price only, 200 WMA "—", chip "Data unavailable"; on failure a message + Retry button over the chart (`loadWeekly()` again). Strings reused from each language's `bitcoin-data.html` bdI18n. No CSP change.
-- Tested in the browser with Binance blocked (EN, DE, RU): message + Retry, no verdict; Retry with Binance allowed restores chart and zone. Not done: daily JSON snapshot / second weekly source (audit "M" option).
+- Code audit P0-1: 447 body images on ~102 story pages were blocked by the template CSP (img-src only blog.virtuse.com). Option (b) chosen: `stories-build/hubs.mjs` `applyStoryExtras()` (used by build.mjs and the offline hubs run) now adds the page's own https image origins to img-src (`imgOrigins()`, `widenImgSrc()`); `buildHubs()` throws if any `<img>` origin is still not covered (`uncoveredImgOrigins()`). Option (a), copying giphy/medium/cloudfront images into the repo, was not done (third-party content, link rot remains).
+- Offline run `node stories-build/hubs.mjs`: 104 story pages updated; all 406 pages / 2,591 images covered, 0 http images. 25 extra origins (giphy 68 pages, cloudfront 16, satosi.sk 12, medium, googleusercontent, cointelegraph …).
+- **Nightly `stories-build` Action (05:00 UTC) syncs staging from main**, so until this is merged the next run puts the old story pages back on staging.
 
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 

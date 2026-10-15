@@ -252,9 +252,10 @@ export function applyStoryExtras(html, info, template) {
     const m = template.match(new RegExp('<script src="[^"]*' + reEsc(f) + '[^"]*"([^>]*)>'));
     if (m) h = h.replace(new RegExp('(<script src="[^"]*' + reEsc(f) + '[^"]*")[^>]*>', 'g'), (x, a) => a + m[1] + '>');
   }
-  // CSP as in article.html (story pages copy the template's head).
+  // CSP as in article.html (story pages copy the template's head), plus the page's own image hosts.
   const csp = template.match(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/);
   if (csp) h = h.replace(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/, () => csp[0]);
+  h = widenImgSrc(h);
   h = must(h, /<a href="[^"]*" id="crumbList" data-ui="[^"]*">[^<]*<\/a>/,
     () => `<a href="${hub}" id="crumbList" data-ui="crumbStories">${esc(STRINGS[lang].crumb)}</a>`, 'crumbList');
   h = must(h, /(<a class="text-link" href=")[^"]*(" id="backLink")/, (m, a, b) => a + hub + b, 'backLink');
@@ -268,6 +269,53 @@ export function applyStoryExtras(html, info, template) {
     h = must(h, /<div class="story-end">/, () => `${block}\n\n        <div class="story-end">`, 'story-end');
   }
   return h;
+}
+
+// Story bodies embed images from other hosts (giphy, medium, cloudfront, satosi.sk ...), while the
+// template's img-src only allows blog.virtuse.com: add each page's own https image origins
+// (audit 2026-10-15, code P0-1). buildHubs() fails if an <img> host is still not covered.
+const CSP_RE = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/;
+
+export function imgOrigins(h) {
+  const out = new Set();
+  const add = (u) => {
+    try {
+      const x = new URL(decode(u).trim(), ORIGIN + '/');
+      if (x.protocol === 'https:' && x.origin !== ORIGIN) out.add(x.origin);
+    } catch { /* not a URL */ }
+  };
+  for (const [tag] of h.matchAll(/<img\b[^>]*>/g)) {
+    const src = tag.match(/\ssrc="([^"]*)"/);
+    if (src) add(src[1]);
+    const set = tag.match(/\ssrcset="([^"]*)"/);
+    if (set) set[1].split(',').forEach((c) => c.trim() && add(c.trim().split(/\s+/)[0]));
+  }
+  return [...out].sort();
+}
+
+function covered(tokens, origin) {
+  return tokens.some((t) => t === origin ||
+    (t.startsWith('https://*.') && origin.startsWith('https://') && origin.endsWith(t.slice('https://*'.length))));
+}
+
+function widenImgSrc(h) {
+  const m = h.match(CSP_RE);
+  if (!m) return h;
+  const dirs = m[1].split(';').map((d) => d.trim()).filter(Boolean);
+  const i = dirs.findIndex((d) => d.split(/\s+/)[0] === 'img-src');
+  if (i < 0) return h;
+  const toks = dirs[i].split(/\s+/);
+  const extra = imgOrigins(h).filter((o) => !covered(toks.slice(1), o));
+  if (!extra.length) return h;
+  dirs[i] = toks.concat(extra).join(' ');
+  return h.replace(CSP_RE, () => `<meta http-equiv="Content-Security-Policy" content="${dirs.join('; ')}">`);
+}
+
+export function uncoveredImgOrigins(h) {
+  const m = h.match(CSP_RE);
+  const d = m ? m[1].split(';').map((x) => x.trim()).find((x) => x.split(/\s+/)[0] === 'img-src') : null;
+  const toks = d ? d.split(/\s+/).slice(1) : [];
+  return imgOrigins(h).filter((o) => !covered(toks, o));
 }
 
 const attr = (h, re) => { const m = h.match(re); return m ? decode(m[1]) : ''; };
@@ -560,6 +608,8 @@ export function buildHubs({ log = console.log } = {}) {
     if (/^(?:(?:sk|ru)\/)?stories\/page\/$/.test(p)) throw new Error('a story slug "page" would collide with hub pagination: ' + p);
     const s = readStory(p);
     const next = applyStoryExtras(s.html, s, template);
+    const bad = uncoveredImgOrigins(next);
+    if (bad.length) throw new Error(`${p}: <img> hosts not in img-src: ${bad.join(' ')}`);
     if (next !== s.html) { fs.writeFileSync(s.file, next); changed++; }
     (byLang[s.lang] = byLang[s.lang] || []).push(s);
   }
