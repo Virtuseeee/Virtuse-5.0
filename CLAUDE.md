@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Story images unblocked: per-page img-src (checklist 1.6, branch `fix/stories-csp-images-1-6`, staging only, not merged)
+
+- Code audit P0-1: 447 body images on ~102 story pages were blocked by the template CSP (img-src only blog.virtuse.com). Option (b) chosen: `stories-build/hubs.mjs` `applyStoryExtras()` (used by build.mjs and the offline hubs run) now adds the page's own https image origins to img-src (`imgOrigins()`, `widenImgSrc()`); `buildHubs()` throws if any `<img>` origin is still not covered (`uncoveredImgOrigins()`). Option (a), copying giphy/medium/cloudfront images into the repo, was not done (third-party content, link rot remains).
+- Offline run `node stories-build/hubs.mjs`: 104 story pages updated; all 406 pages / 2,591 images covered, 0 http images. 25 extra origins (giphy 68 pages, cloudfront 16, satosi.sk 12, medium, googleusercontent, cointelegraph …).
+- **Nightly `stories-build` Action (05:00 UTC) syncs staging from main**, so until this is merged the next run puts the old story pages back on staging.
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).
