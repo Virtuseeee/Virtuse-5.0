@@ -2,13 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-15) — Buy cost: two labelled metrics (checklist 1.2, branch `fix/buy-cost-metrics-1-2`, staging only, not merged)
+## Session status (2026-10-15) — Unsourced partner claims removed (checklist 1.3, branch `fix/unsourced-claims-1-3`, staging only, not merged)
 
-- Audit P0-2. Rule now: **"lowest published fee"** = fee schedule only (21bitcoin, homepage + buy-bitcoin + DCA + buy-by-country tables); **"lowest total cost incl. spread"** = Bitcoin Fee Index (Bybit EU while 21bitcoin's spread is unmeasured). Never "cheapest" in titles/meta (scan: 0 pages).
-- `seo-build/generate.mjs`: shared `feeIndexRanked()` (also used by llms.txt); `FI_TOP` / `FI_PENDING` = Fee Index leader and unranked routes, so the SEO pages follow fee-index.json automatically. Buy-by-country (13 EN): title "Buy bitcoin in <country>: fees compared", lead/FAQ/meta name both metrics, h2 "Buy routes by published fee". DCA (10 languages): FAQ "lowest published fee" + Fee Index sentence, meta without "cheapest". Tax guides: "Buy routes and fees here". The seo-build Fee Index page code (not written any more) was left alone.
-- Homepage (`index.html` + `i18n-tools/home/*.json`): h2 "Buy Bitcoin with published fees from 0%.", table head "By published fee" (was "Top 3 by fee"), link "Total cost incl. spread: Fee Index".
-- Buy page (`i18n-tools/buy/*.json`): pill = "Lowest published fee", link "Total cost incl. spread: Fee Index". The long pill wraps inside the name column (`site-v2.css`: `.hp-row .lowest-pill`, `.hp-row .hc-name > span`); build_buy.py now links `site-v2.css?v=7`. Checked 320/375/1440 px in 10 languages: no overlap.
-- Left: CFO texts "cheapest route" (the visitor's own cheapest option in the audit, not a ranking claim); Stacking app wording in layer2-src; fr nav CTA is 2 px wider than 375 px (old).
+- Audit P0-3, same rule as Partner Finder (12 Oct): a figure needs a source link and a check date, or it goes. Removed in 10 languages via the builders' `<lang>.json`: 21bitcoin "insured custody" + "100,000+ users" (buy), Invity "from the SatoshiLabs group" (buy), Ledger "7M+ / over 7 million devices" (secure), Coinbase "$320M" and BitGo "$250M" coverage (treasury), Firefish "EUR 22.5M funded" / "8,600 investors" (lending trust row), CoinTracking "1.9M+ users" and Blockpit "official partner of Bitpanda and BISON" / "7+ EU" (tax), Power Mining "22,000+ products sold" (mining).
+- Feature lists have a fixed 4 items, so removed items were replaced with facts the same card already states (e.g. 21bitcoin "Bitcoin-only app", "Auto-Invest, 0% from day 8"; Blockpit "6 country reports"); no new facts added.
+- `fee-schedule-2026-q3.json` / `-live.json` notes: "insured custody" removed (numbers untouched); Q3 archive rebuilt with build_fee_index.py.
+- Still unsourced, not in the audit list: Sygnum "CHF 4B+ AuA", Blockpit "700+ integrations", CoinTracking "300+ integrations / 25+ report types", tax-tool country counts and prices. Ledger 7M+ in faq.html is fixed on branch fix/faq-cleanup-1-1.
 
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
