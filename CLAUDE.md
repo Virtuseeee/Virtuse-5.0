@@ -2,12 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-15) — One CFO offer line everywhere (checklist 1.4, branch `fix/cfo-one-offer-1-4`, staging only, not merged)
+## Session status (2026-10-15) — ma-200w: no 2017 seed as "today" (checklist 1.5, branch `fix/ma200w-fallback-1-5`, staging only, not merged)
 
-- Audit P0-4. **The line** (from cfo.html's own FAQ, translations reused from `i18n-tools/cfo/<lang>.json`): "Verdict and the fee audit are free from 1 November. Paid plans from January: €9/month or €90/year." Replaces "Launches 1 November: €9/month or €90/year." (implied paid from 1 Nov) in `about/<lang>.json` `cfo_text`, `retirement/<lang>.json` `c_cfo_text` and the Tax Agent app card.
-- "Bitcoin treasury: plan, track and report" (company positioning) gone: Stacking/Loan app cards for large amounts now say "Planning a larger allocation? / Managing a larger Bitcoin position? Virtuse CFO · Verdict: test a decision for free; the CFO then tracks fees and risks." + the line (tool-card wording from PR #90); stacking shell FAQ a3 the same.
-- App rebuilt the documented way (npm ci, i18n-check 0/0/0, npm run build, layer2/deploy.py, all tool shells); 17 asset hashes replaced.
-- The hardcoded "136 on the waitlist" was already gone (PR #89). Rule in the handover doc "Launches 1 November: €9/month or €90/year. Get notified →" is outdated; use the line above.
+- Design audit P0-1. Before: with api.binance.com failing (geo-block 451, rate limit) the page labelled the last 2011–2017 seed point "Bitcoin today" with a zone verdict; with mempool up it even divided today's price by the 2017 WMA.
+- Now (all 10 `ma-200w.html`, hand-edited old template): `live` flag set only when the Binance weekly series loads; until then the canvas is hidden, status shows the mempool price only, 200 WMA "—", chip "Data unavailable"; on failure a message + Retry button over the chart (`loadWeekly()` again). Strings reused from each language's `bitcoin-data.html` bdI18n. No CSP change.
+- Tested in the browser with Binance blocked (EN, DE, RU): message + Retry, no verdict; Retry with Binance allowed restores chart and zone. Not done: daily JSON snapshot / second weekly source (audit "M" option).
 
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
