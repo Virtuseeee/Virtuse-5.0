@@ -166,6 +166,8 @@ def build(L):
     h = h[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix_url, h[b:])
     for en_slug, slug in zip(EN_GUIDES, GUIDES[L]):
         h = h.replace('href="/%s/"' % en_slug, 'href="/%s/%s/"' % (L, slug))
+    if os.path.isdir(os.path.join(SITE, L, 'stories')):   # stories hub exists only for en, sk, ru
+        h = h.replace('href="/stories/"', 'href="/%s/stories/"' % L)
 
     # 5. scripts: paths, language, number and date formats, messages
     loc = LOCALE[L]

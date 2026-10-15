@@ -808,8 +808,14 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
 /* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
-@media (min-width: 1181px) { #navCfo { white-space: nowrap; } }
+@media (min-width: 1181px) { #navCfo .nd-t { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
+/* Menu items with a one-line description on desktop (checklist 2.5) */
+.nav-drop { min-width: 280px; }
+.nav-links .nav-drop a { display: flex; flex-direction: column; gap: 3px; }
+.nav-drop .nd-d { font-size: 12px; line-height: 1.35; color: var(--dim); white-space: normal; }
+.nav-links .nav-drop a:hover .nd-d, .nav-links .nav-drop a:focus-visible .nd-d { color: var(--muted); }
+@media (max-width: 1180px) { .nav-drop .nd-d { display: none; } }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-top { font-size: 13px; }
 .nav-badge { margin-left: 4px; }
@@ -1003,11 +1009,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Wissen</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin-Daten</a><a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Bitcoin-News jede Woche, montags</span></a><a href="/stories/"><span class="nd-t">Artikel</span><span class="nd-d">Lange Artikel und Analysen</span></a><a href="blog.html"><span class="nd-t">Blog</span><span class="nd-d">Neueste Beiträge von Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Bitcoin-Daten</span><span class="nd-d">Live-Kurs, Netzwerk und Charts</span></a><a href="/de/bitcoin-steuern/"><span class="nd-t">Steuerratgeber nach Land</span><span class="nd-d">Steuerregeln in 13 EU-Ländern</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Antworten zu Virtuse und Partnern</span></a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Kostenlos</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Ruhestandsrechner</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Kostenlos</span></span><span class="nd-d">Verdict und Gebührenprüfung, ab 1. November kostenlos</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partner passend zu Ihren Antworten</span></a><a href="/de/bitcoin-gebuehrenindex/"><span class="nd-t">Gebührenindex</span><span class="nd-d">Gesamtkosten beim Kauf im Vergleich</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Sparplan planen, Gebühren vergleichen</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Verkaufen oder mit Bitcoin beleihen</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Länderregeln und Erbschafts-Check</span></a><a href="retirement-calculator.html"><span class="nd-t">Ruhestandsrechner</span><span class="nd-d">Wie viel Bitcoin für die Rente</span></a></div>
       </div>
       <a class="nav-top" href="about.html">Über uns</a>
     </nav>

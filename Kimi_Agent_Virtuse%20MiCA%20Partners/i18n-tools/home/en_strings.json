@@ -1213,5 +1213,80 @@
   "en": " min",
   "kind": "js",
   "context": "string shown by the page script"
+ },
+ {
+  "en": "Stories",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Country tax guides",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Weekly Bitcoin news, every Monday",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Long reads and analysis",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Latest posts from Virtuse",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Live price, network and charts",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Tax rules in 13 EU countries",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Answers about Virtuse and partners",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Verdict and fee audit, free from 1 November",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Partners that match your answers",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Total cost of buying, compared",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Plan regular buys, compare fees",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Sell or borrow against your Bitcoin",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Country rules and an inheritance check",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "How much Bitcoin for retirement",
+  "kind": "text",
+  "context": "nav menu (2.5)"
  }
 ]

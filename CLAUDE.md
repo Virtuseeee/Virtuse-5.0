@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Learn / Tools menu with one-line descriptions (checklist 2.5, branch `fix/menu-2-5`, built on `feat/v2-port-2-1`, staging only, not merged)
+
+- Audit design P1-6. Learn = Virtuse Brief, Stories, Blog, Bitcoin Data, Country tax guides, FAQ. Tools = Virtuse CFO · Verdict (Free), Partner Finder, Fee Index (moved from Learn), Stacking, Loan, Tax & Inheritance, Retirement. Each item = `<span class="nd-t">` title + `<span class="nd-d">` description; descriptions show from 1181 px, hidden in the phone drawer. `#navCfo` nowrap now on `.nd-t`.
+- Source: `i18n-tools/nav_menu_2_5.py` (one-off, idempotent) rewrote the dropdowns in `index.html` + `cfo.html`, added the CSS there and to `site-v2.css`, and added 15 strings to `home/` + `cfo/` `<lang>.json` and `en_strings.json` (FAQ already existed). Rebuilt homepages, CFO and every v2 builder + legacy: 288 pages carry the new menu, none the old one; tagcheck 0, 3,744 menu links resolve.
+- `build_lang.py` / `build_cfo.py`: `/stories/` → `/sk/stories/`, `/ru/stories/` (only languages with a hub; others link the English hub). Tax guides and Fee Index go to each language's own seo-build pages (existing GUIDES map).
+- Checked in Chromium at 1440 (all 10 languages: no overflow, descriptions ≤ 2 lines, Tools panel ≤ 479 px tall) and 375 (sk drawer: items, no descriptions, no sideways scroll).
+- Not done: breadcrumbs (also in P1-6), the menus in seo-build / stories / news pages (2.2, 2.3). Translations of the new strings are AI drafts.
+
 ## Session status (2026-10-15) — 114 old-template pages on the v2 shell (checklist 2.1, branch `feat/v2-port-2-1`, built on top of the block-1 branches, staging only, not merged)
 
 - Audit code.md / design.md P1-1. New `i18n-tools/legacy/build_legacy.py` (+ README): faq, 8 dashboards (fear-greed, ma-200w, rainbow-chart, root-cycles, btc-dominance, trading-volume, asset-returns, btc-monthly-returns), privacy-policy, terms-and-conditions, aml-compliance × their languages = 114 pages. Each keeps its hero, content sections and chart script; nav/footer/Brief card/language menu come from the language's homepage (v2common); anime.js, old menu/dropdown/nav-CTA/Brief scripts dropped.
