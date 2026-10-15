@@ -20,8 +20,9 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Virtuse CFO: Your AI CFO for Bitcoin | Virtuse</title>
-<meta name="description" content="Virtuse CFO reads your exchange export in your browser and shows what your Bitcoin buying really cost. Free audit planned from 1 November 2026.">
+<script src="/partner-click.js" defer></script>
+<title>Virtuse CFO · Verdict: test your Bitcoin decision | Virtuse</title>
+<meta name="description" content="Verdict scores how complete your Bitcoin decision is, free from 1 November 2026. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch 2026-11-01): remove noindex, add to sitemap + hreflang (docs/LAUNCH-CFO.md) -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -32,8 +33,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://virtuse.com/cfo.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Virtuse CFO: Your AI CFO for Bitcoin | Virtuse">
-<meta property="og:description" content="Virtuse CFO reads your exchange export in your browser and shows what your Bitcoin buying really cost. Free audit planned from 1 November 2026.">
+<meta property="og:title" content="Virtuse CFO · Verdict: test your Bitcoin decision | Virtuse">
+<meta property="og:description" content="Verdict scores how complete your Bitcoin decision is, free from 1 November 2026. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.">
 <meta property="og:url" content="https://virtuse.com/cfo.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -594,6 +595,42 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .ic-blue b::before { background: var(--blue); box-shadow: 0 0 0 4px rgba(95,174,222,.15); }
 .ic-muted b::before { background: var(--muted); }
 </style>
+<style>
+/* Verdict (free entry into Virtuse CFO) */
+#audit .c-hero { padding-block: 24px 40px; }
+#audit .c-hero::before { display: none; }
+.vd-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: grid; gap: 16px; min-width: 0; }
+.vd-card .top { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.vd-card .q { color: var(--muted); margin: 0; }
+.vd-score { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.vd-score b { font-size: 72px; line-height: 0.9; letter-spacing: -0.04em; }
+.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; }
+.vd-pill { display: inline-block; background: rgba(247,147,26,0.14); color: var(--orange); font-weight: 600; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
+.vd-sigs { display: grid; gap: 9px; }
+.vd-sig { display: grid; grid-template-columns: minmax(0, 150px) 1fr 24px; gap: 12px; align-items: center; font-size: 13px; color: var(--muted); }
+.vd-sig .bar { height: 6px; background: var(--line-strong); border-radius: 3px; overflow: hidden; }
+.vd-sig .bar i { display: block; height: 6px; border-radius: 3px; }
+.vd-sig .v { text-align: right; font-variant-numeric: tabular-nums; }
+.vd-weak { border-top: 1px solid var(--line); padding-top: 14px; font-size: 14px; color: var(--muted); margin: 0; }
+.vd-weak a { color: var(--text); }
+.vd-bands { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+.vd-band { border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+.vd-band.hl { border-color: var(--orange); }
+.vd-band b { font-size: 17px; display: block; }
+.vd-band span { color: var(--muted); font-size: 13px; }
+.vd-band p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+.vd-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.vd-tools a { border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 14px; font-size: 14px; text-decoration: none; color: var(--text); }
+.audit-h { font-size: clamp(26px, 3.4vw, 34px); line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0; }
+.audit-h span { color: var(--muted); font-weight: 500; }
+.plan .layer { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.vd-more summary { list-style: none; cursor: pointer; } .vd-more summary::-webkit-details-marker { display: none; }
+.vd-more summary h2::after { content: ' +'; color: var(--muted); font-weight: 400; } .vd-more[open] summary h2::after { content: ' \2212'; }
+.vd-more summary + * { margin-top: 32px; }
+.vd-limits h2 { font-size: 24px; }
+.vd-limits ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; }
+.vd-limits li { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15px; } .vd-limits li b { color: var(--text); }
+</style>
 </head>
 <body>
 <script>document.body.classList.toggle('stage-wait', (document.querySelector('meta[name="vb-cfo-stage"]') || {}).content !== 'audit');</script>
@@ -614,7 +651,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" aria-current="page" id="navCfo">Virtuse CFO <span class="nav-badge cfo-badge">Soon</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" aria-current="page" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Free</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div>
       </div>
       <a class="nav-top" href="about.html">About</a>
     </nav>
@@ -629,23 +666,66 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 
 <main class="wrap" id="top">
 
-  <!-- 1. HERO = THE PRODUCT -->
-  <div class="c-hero">
+  <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO -->
+  <div class="c-hero vd-hero" id="verdict">
     <div>
-      <div class="eyebrow"><span class="stage-k only-audit">Free audit · live from 1 Nov</span><span class="stage-k only-wait">Free audit · opens 1 Nov</span></div>
-      <h1>Your AI <span class="grad">CFO</span> for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h1>
-      <p class="sub">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p>
-      <div class="only-audit">
-        <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Try it with a sample export</button></div>
-      </div>
-      <form class="wait only-wait" id="waitForm" novalidate>
+      <div class="eyebrow">Virtuse CFO · Verdict · free from 1 November</div>
+      <h1>Test your Bitcoin decision. <span>Then your <span class="grad">CFO</span> keeps track of it.</span></h1>
+      <p class="sub">Describe what you plan to do. Verdict scores your thinking on 10 signals and shows its weakest point. It doesn't rate Bitcoin or our partners. It rates whether you've thought it through.</p>
+      <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn btn-primary" type="submit">Tell me 1 Nov</button>
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
-        <p class="wait-note">One email when the audit opens, nothing else. Leave any time from that email. <a href="privacy-policy.html" style="color:inherit">Privacy</a></p>
-        <p class="wait-count" id="waitCount"><b>136</b> people on the waitlist</p>
+        <p class="wait-note">One email on 1 November, when Verdict and the free fee audit open. Nothing else. Leave any time from that email. <a href="privacy-policy.html" style="color:inherit">Privacy</a></p>
       </form>
+    </div>
+    <div class="vd-card" aria-label="Sample verdict">
+      <div class="top"><span>Sample verdict</span><span>illustrative figures</span></div>
+      <p class="q">"I want to borrow against my BTC to buy a flat."</p>
+      <div class="vd-score"><b>55<small>/100</small></b><span class="vd-pill">Add 2 or 3 assumptions</span></div>
+      <div class="vd-sigs">
+        <div class="vd-sig"><span>Goal</span><span class="bar"><i style="width:80%;background:var(--text)"></i></span><span class="v">8</span></div>
+        <div class="vd-sig"><span>Time horizon</span><span class="bar"><i style="width:70%;background:var(--text)"></i></span><span class="v">7</span></div>
+        <div class="vd-sig"><span>Alternatives</span><span class="bar"><i style="width:50%;background:var(--muted)"></i></span><span class="v">5</span></div>
+        <div class="vd-sig"><span>Worst case</span><span class="bar"><i style="width:40%;background:var(--orange)"></i></span><span class="v">4</span></div>
+        <div class="vd-sig"><span>Liquidity</span><span class="bar"><i style="width:50%;background:var(--muted)"></i></span><span class="v">5</span></div>
+        <div class="vd-sig"><span>Custody and inheritance</span><span class="bar"><i style="width:60%;background:var(--muted)"></i></span><span class="v">6</span></div>
+        <div class="vd-sig"><span>Tax</span><span class="bar"><i style="width:30%;background:var(--orange)"></i></span><span class="v">3</span></div>
+        <div class="vd-sig"><span>Rule, not emotion</span><span class="bar"><i style="width:70%;background:var(--text)"></i></span><span class="v">7</span></div>
+        <div class="vd-sig"><span>Plan B</span><span class="bar"><i style="width:40%;background:var(--orange)"></i></span><span class="v">4</span></div>
+        <div class="vd-sig"><span>Asymmetry</span><span class="bar"><i style="width:60%;background:var(--muted)"></i></span><span class="v">6</span></div>
+      </div>
+      <p class="vd-weak">Weakest point: you don't know at what price the lender would sell your collateral. <a href="loan.html">Check it in Loan Copilot</a></p>
+    </div>
+  </div>
+
+  <section id="verdict-how">
+    <div class="sec-head">
+      <h2>The score is about your thinking. <span>Not about whether to buy.</span></h2>
+      <p class="sec-sub">Every plan also gets a 70% drawdown test. If it can't survive one, you know before you start.</p>
+    </div>
+    <div class="vd-bands">
+      <div class="vd-band"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div>
+      <div class="vd-band hl"><b>Add 2 or 3 assumptions</b><span>50 to 64</span><p>Check them with the tools below, then decide.</p></div>
+      <div class="vd-band"><b>Key pieces are missing</b><span>0 to 49</span><p>Verdict names them and why they can be costly.</p></div>
+    </div>
+    <div class="vd-tools" aria-label="Tools to check your assumptions">
+      <a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="stacking.html">Stacking Strategist</a><a href="retirement-calculator.html">Retirement Calculator</a>
+    </div>
+  </section>
+
+  <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit -->
+  <section id="audit">
+  <div class="c-hero">
+    <div>
+      <div class="eyebrow">Virtuse CFO · free fee audit from 1 November</div>
+      <h2 class="audit-h">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2>
+      <p class="sub">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p>
+      <div class="only-audit">
+        <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Try it with a sample export</button></div>
+      </div>
+      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Tell me 1 Nov</a></div>
     </div>
 
     <div class="demo" id="demo" aria-label="Fee audit demo">
@@ -670,10 +750,61 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <div class="bar"><span>ByBit EU 0.25%</span><div class="t"><div class="f y" data-w="24"></div></div><b>€108</b></div>
           <div class="bar"><span>21bitcoin Auto-Invest 0%*</span><div class="t"><div class="f g" data-w="1"></div></div><b>€0</b></div>
         </div>
-        <p class="sample">Sample export and figures for illustration. Published taker fees for a plain market buy; spreads and withdrawal fees not included. *0% from day 8 of Auto-Invest. Not investment advice.</p>
+        <p class="sample">Sample export and figures for illustration. Published taker fees for a plain market buy, from the partners' own pages: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">ByBit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, checked 12 Oct 2026 as in the <a href="/bitcoin-fee-index/">Fee Index</a>. Spreads and withdrawal fees not included; we have not measured 21bitcoin's spread yet. *0% from day 8 of Auto-Invest. Not investment advice.</p>
       </div>
     </div>
   </div>
+
+  </section>
+
+  <!-- 6. PRICING -->
+  <section id="pricing">
+    <div class="sec-head">
+      <h2>One product, three levels. <span>Start with a free verdict.</span></h2>
+      <p class="sec-sub">Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel anytime. The same read-only, local-first design on every plan.</p>
+    </div>
+    <div class="billing" role="tablist" aria-label="Billing period">
+      <button type="button" role="tab" aria-selected="true" data-bill="m">Monthly</button>
+      <button type="button" role="tab" aria-selected="false" data-bill="y">Yearly <i>2 months free</i></button>
+    </div>
+    <div class="plans3">
+      <div class="plan">
+        <span class="layer">Entry</span>
+        <h3>Verdict</h3>
+        <div class="price">€0 <small>no account</small></div>
+        <p class="for">A score for your thinking, 0 to 100, its band and the weakest point.</p>
+        <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul>
+        <a class="btn btn-ghost" href="#waitForm">Tell me 1 Nov</a>
+      </div>
+      <div class="plan">
+        <span class="layer">One-off</span>
+        <h3>Full report</h3>
+        <div class="price">€14 <small>once</small></div>
+        <p class="for">For one decision you want to think through in depth.</p>
+        <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul>
+        <a class="btn btn-ghost" href="#verdict">Start with a verdict</a>
+      </div>
+      <div class="plan pro">
+        <span class="founding">Founding price, when paid plans open in January</span>
+        <h3>Virtuse CFO</h3>
+        <div class="price"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div>
+        <p class="for"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p>
+        <ul><li>Free fee audit from your export, from 1 November</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul>
+        <button class="btn btn-primary only-audit" type="button" data-run>Start with the free audit</button>
+        <a class="btn btn-primary only-wait" href="#waitForm">Let me know</a>
+      </div>
+    </div>
+    <div class="terms">
+      <p class="terms-k">Terms that apply when paid plans open in January</p>
+      <div class="assure-row">
+        <span class="ic ic-green"><b>30-day refund</b>No questions, no form.</span>
+        <span class="ic ic-muted"><b>Cancel in one click</b>From your account page.</span>
+        <span class="ic ic-orange"><b>Pay with Lightning or card</b>No card needed for the free audit.</span>
+        <span class="ic ic-blue"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
+      </div>
+      <p class="terms-fine">Prices include VAT where applicable. Same price in all 10 languages.</p>
+    </div>
+  </section>
 
 
   <!-- ASK YOUR CFO -->
@@ -700,20 +831,16 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </section>
 
-  <!-- 2. FIRST PRINCIPLES -->
+  <!-- 4. AFTER THE AUDIT -->
   <section>
     <div class="sec-head">
-      <h2>A buy has three costs. <span>Most people only look at one.</span></h2>
+      <h2>After the number, the CFO keeps watching. <span>Four jobs, nothing else.</span></h2>
     </div>
-    <div class="tiles t3">
-      <div class="tile" style="--c: var(--orange)"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class="meta"><span>On your receipt</span><b class="mark yes">Yes</b></div></div>
-      <div class="tile" style="--c: var(--yellow)"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class="meta"><span>On your receipt</span><b class="mark no">No</b></div></div>
-      <div class="tile" style="--c: var(--red)"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class="meta"><span>On your receipt</span><b class="mark rarely">Rarely</b></div></div>
-    </div>
-    <div class="cost-split" aria-label="What the sample's EUR 449 is made of">
-      <div class="cs-top"><span>The sample's €449, split</span><b>€449</b></div>
-      <div class="cs-bar"><i class="cs-fee" style="width:76.6%"></i><i class="cs-wd" style="width:23.4%"></i></div>
-      <div class="cs-key"><span><i class="cs-fee"></i>Fee €344</span><span><i class="cs-wd"></i>Withdrawals €105</span><span class="cs-hidden"><i class="cs-sp"></i>Spread: hidden in the price, on top</span></div>
+    <div class="tiles t2">
+      <div class="tile" style="--c: var(--orange)"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class="meta"><span>Checks</span><b>Every month</b></div></div>
+      <div class="tile" style="--c: var(--purple)"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class="meta"><span>Checks</span><b>Every day</b></div></div>
+      <div class="tile" style="--c: var(--blue)"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class="meta"><span>Countries</span><b>13</b></div></div>
+      <div class="tile" style="--c: var(--teal)"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class="meta"><span>Seed phrases stored</span><b>None</b></div></div>
     </div>
   </section>
 
@@ -737,87 +864,39 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </section>
 
-  <!-- 4. AFTER THE AUDIT -->
+  <!-- 2. FIRST PRINCIPLES -->
   <section>
-    <div class="sec-head">
-      <h2>After the number, the CFO keeps watching. <span>Four jobs, nothing else.</span></h2>
-    </div>
-    <div class="tiles t2">
-      <div class="tile" style="--c: var(--orange)"><h3>Fee alerts</h3><p>A message when what you pay drifts above the cheapest route again.</p><div class="meta"><span>Checks</span><b>Every month</b></div></div>
-      <div class="tile" style="--c: var(--purple)"><h3>Loan LTV alerts</h3><p>A warning before a Bitcoin-backed loan gets close to liquidation.</p><div class="meta"><span>Checks</span><b>Every day</b></div></div>
-      <div class="tile" style="--c: var(--blue)"><h3>Tax report</h3><p>A summary of your sales and swaps, for you or your accountant. Indicative.</p><div class="meta"><span>Countries</span><b>13</b></div></div>
-      <div class="tile" style="--c: var(--teal)"><h3>Inheritance kit</h3><p>A checklist and a letter for your heirs. No keys or seed phrases, ever.</p><div class="meta"><span>Seed phrases stored</span><b>None</b></div></div>
-    </div>
-  </section>
-
-  <!-- 5. HARD LIMITS -->
-  <section>
-    <div class="sec-head">
-      <h2>What it can't do. <span>By design, not by policy.</span></h2>
-    </div>
+    <details class="vd-more"><summary class="sec-head"><h2>A buy has three costs. <span>Most people only look at one.</span></h2></summary>
     <div class="tiles t3">
-      <div class="tile never"><h3>Move money</h3><p>No keys, no coins, no euros. Read-only, always.</p><div class="meta"><span>Tools that can move funds</span><b>0</b></div></div>
-      <div class="tile never"><h3>Place orders</h3><p>Buying happens on the partner's own licensed platform.</p><div class="meta"><span>Orders sent by Virtuse</span><b>0</b></div></div>
-      <div class="tile never"><h3>Tell you to buy or sell</h3><p>The AI explains your numbers and declines timing questions.</p><div class="meta"><span>Buy or sell answers</span><b>Declined</b></div></div>
+      <div class="tile" style="--c: var(--orange)"><h3>The fee</h3><p>The percentage on your receipt, from 0% to 0.8% at our partners.</p><div class="meta"><span>On your receipt</span><b class="mark yes">Yes</b></div></div>
+      <div class="tile" style="--c: var(--yellow)"><h3>The spread</h3><p>The gap between your price and the market price at that minute.</p><div class="meta"><span>On your receipt</span><b class="mark no">No</b></div></div>
+      <div class="tile" style="--c: var(--red)"><h3>The withdrawal</h3><p>Moving coins to your own wallet. Small each time, large over a year.</p><div class="meta"><span>On your receipt</span><b class="mark rarely">Rarely</b></div></div>
     </div>
+    <div class="cost-split" aria-label="What the sample's EUR 449 is made of">
+      <div class="cs-top"><span>The sample's €449, split</span><b>€449</b></div>
+      <div class="cs-bar"><i class="cs-fee" style="width:76.6%"></i><i class="cs-wd" style="width:23.4%"></i></div>
+      <div class="cs-key"><span><i class="cs-fee"></i>Fee €344</span><span><i class="cs-wd"></i>Withdrawals €105</span><span class="cs-hidden"><i class="cs-sp"></i>Spread: hidden in the price, on top</span></div>
+    </div>
+  </details>
   </section>
 
-  <!-- 6. PRICING -->
-  <section id="pricing">
-    <div class="sec-head">
-      <h2>Free to start. <span>Upgrade only if it works.</span></h2>
-      <p class="sec-sub">Cancel anytime. No card needed for the free audit. The same read-only, local-first design on every plan.</p>
-    </div>
-    <div class="billing" role="tablist" aria-label="Billing period">
-      <button type="button" role="tab" aria-selected="true" data-bill="m">Monthly</button>
-      <button type="button" role="tab" aria-selected="false" data-bill="y">Yearly <i>2 months free</i></button>
-    </div>
-    <div class="plans3">
-      <div class="plan">
-        <h3>Hub</h3>
-        <div class="price">€0 <small>forever</small></div>
-        <p class="for">For anyone choosing where to buy, store or borrow.</p>
-        <ul><li>Compare 22 vetted partners</li><li>Fee Index, Partner Finder, all tools</li><li>Virtuse Brief every Monday</li></ul>
-        <a class="btn btn-ghost" href="index.html">Open the hub</a>
-      </div>
-      <div class="plan">
-        <h3>Free audit</h3>
-        <div class="price">€0 <small>no account</small></div>
-        <p class="for">For checking what your buying has cost you.</p>
-        <ul><li>12-month fee audit from your export</li><li>Cheapest licensed route for how you buy</li><li>Ask your CFO, 10 questions</li><li>Runs in your browser; nothing uploaded</li></ul>
-        <button class="btn btn-ghost only-audit" type="button" data-run>Run the free audit</button>
-        <a class="btn btn-ghost only-wait" href="#waitForm">Tell me 1 Nov</a>
-      </div>
-      <div class="plan pro">
-        <span class="founding">Founding price, when paid plans open in January</span>
-        <h3>Virtuse CFO</h3>
-        <div class="price"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div>
-        <p class="for"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p>
-        <ul><li>Unlimited exports and wallets</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries</li><li>Inheritance kit with heir letter</li><li>Ask your CFO, no limit</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Start with the free audit</button>
-        <a class="btn btn-primary only-wait" href="#waitForm">Tell me 1 Nov</a>
-      </div>
-    </div>
-    <div class="terms">
-      <p class="terms-k">Terms that apply when paid plans open in January</p>
-      <div class="assure-row">
-        <span class="ic ic-green"><b>30-day refund</b>No questions, no form.</span>
-        <span class="ic ic-muted"><b>Cancel in one click</b>From your account page.</span>
-        <span class="ic ic-orange"><b>Pay with Lightning or card</b>No card needed for the free audit.</span>
-        <span class="ic ic-blue"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
-      </div>
-      <p class="terms-fine">Prices include VAT where applicable. Same price in all 10 languages.</p>
-    </div>
+  <!-- 5. HARD LIMITS (compact) -->
+  <section class="vd-limits">
+    <h2>What it can't do. <span>By design.</span></h2>
+    <ul><li><b>Move money.</b> No keys, no coins, no euros. Read-only, always.</li><li><b>Place orders.</b> Buying happens on the partner's own licensed platform.</li><li><b>Tell you to buy or sell.</b> Verdict and your CFO decline buy, sell and timing questions.</li></ul>
   </section>
-
 
   <!-- 7. QUESTIONS: where people drop off during the audit -->
   <section id="faq">
     <div class="sec-head faq-head">
-      <h2>Questions. <span>Before you export anything.</span></h2>
+      <h2>Customer <span>questions.</span></h2>
     </div>
     <div class="faq">
-      <details open><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. Choose Ledgers rather than Trades: it includes every fee and your instant buys. If you use Kraken Pro and don't see Documents, look under Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Kraken's guide</a></p></details>
+      <details open><summary>Will Verdict tell me whether to buy Bitcoin?</summary><p>No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details>
+      <details><summary>What does it cost?</summary><p>Verdict and the fee audit are free from 1 November. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details>
+      <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13 countries, each with the date it was checked. When a fact is missing, Verdict asks you.</p></details>
+      <details><summary>What happens to what I write?</summary><p>Without an account, nothing is stored. With a Virtuse CFO account you can keep your decision history and delete it at any time.</p></details>
+      <details><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. Choose Ledgers rather than Trades: it includes every fee and your instant buys. If you use Kraken Pro and don't see Documents, look under Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Kraken's guide</a></p></details>
       <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.</p></details>
       <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details>
       <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details>
@@ -829,7 +908,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="cfo.html">Virtuse CFO <span class="soon cfo-foot-badge">Soon</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
@@ -1025,11 +1104,6 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Stage badges
-(function () {
-  var audit = !document.body.classList.contains('stage-wait');
-  document.querySelectorAll('.nav-badge, .cfo-foot-badge').forEach(function (b) { b.textContent = audit ? 'New' : 'Soon'; });
-})();
 // Waitlist -> Worker /waitlist (source cfo_page)
 (function () {
   var form = document.getElementById('waitForm'), msg = document.getElementById('waitMsg'); if (!form) return;
@@ -1045,7 +1119,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = "You're on the list. We'll email you once, when the free audit opens.";
+          form.reset(); msg.textContent = "You're on the list. We'll email you once, on 1 November, when Verdict and the free audit open.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Something went wrong. Please try again.'; }
       })

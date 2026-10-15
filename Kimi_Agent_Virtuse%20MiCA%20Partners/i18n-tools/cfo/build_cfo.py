@@ -13,10 +13,10 @@ sys.path.insert(0, os.path.dirname(HERE))
 import csp_tight
 
 SITE = B.SITE
-TITLE = "Virtuse CFO: Your AI CFO for Bitcoin | Virtuse"
-DESC = "Virtuse CFO reads your exchange export in your browser and shows what your Bitcoin buying really cost. Free audit planned from 1 November 2026."
+TITLE = "Virtuse CFO · Verdict: test your Bitcoin decision | Virtuse"
+DESC = "Verdict scores how complete your Bitcoin decision is, free from 1 November 2026. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice."
 JS = [" · read locally", "Open menu", "Close menu", "Please enter a valid email address.", "Sending...",
-      "You're on the list. We'll email you once, when the free audit opens.", "Something went wrong. Please try again.",
+      "You're on the list. We'll email you once, on 1 November, when Verdict and the free audit open.", "Something went wrong. Please try again.",
       "Network error. Please try again."]
 OG_LOCALE = {'sk': 'sk_SK', 'cs': 'cs_CZ', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES', 'pl': 'pl_PL', 'hu': 'hu_HU', 'uk': 'uk_UA', 'ru': 'ru_RU'}
 
@@ -75,7 +75,6 @@ def build(L):
     loc = B.LOCALE[L]
     h = one(h, "toLocaleString('en-IE')", "toLocaleString('%s')" % loc)
     h = one(h, '<div class="big">€<span id="over">341</span>', '<div class="big"><span id="over">341</span>&nbsp;€')
-    h = one(h, "b.textContent = audit ? 'New' : 'Soon';", "b.textContent = audit ? '%s' : '%s';" % (B.js_lit(tr['New'], "'"), B.js_lit(tr['Soon'], "'")))
     for key in JS:
         v = html_mod.unescape(tr[key])
         for q in ("'", '"'):
@@ -91,7 +90,7 @@ def build(L):
         h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 359px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
     h = B.localise_numbers(h, L)
 
-    for bad in ('<html lang="en"', "'en-IE'", 'Your AI CFO for Bitcoin |'):
+    for bad in ('<html lang="en"', "'en-IE'", 'test your Bitcoin decision |'):
         if bad in h:
             sys.exit('%s: leftover %s' % (L, bad))
     out = os.environ.get('OUT') or os.path.join(SITE, L)
