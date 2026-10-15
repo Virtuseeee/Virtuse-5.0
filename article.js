@@ -55,7 +55,7 @@
       },
       services: {
         mining: ['Ťažte Bitcoin s overenými partnermi', 'Hosting, cloud a hardvér porovnané podľa nákladov a výplat.', 'Porovnať partnerov'],
-        treasury: ['Bitcoin v súvahe firmy', 'Úschova, exekúcia a reporting pre firmy a family offices.', 'Treasury partneri'],
+        treasury: ['Bitcoin v súvahe firmy', 'Úschova, vykonávanie obchodov a reporting pre firmy a family offices.', 'Treasury partneri'],
         custody: ['Majte vlastné kľúče', 'Hardvérové peňaženky a multi-sig od overených partnerov.', 'Porovnať úschovu'],
         policy: ['Zdaňte Bitcoin správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
         macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 5 % p. a.', 'Porovnať pôžičky'],
@@ -324,6 +324,13 @@
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
   function stripHtml(s) { var d = new DOMParser().parseFromString(s || '', 'text/html'); return (d.body.textContent || '').replace(/\s*\[…\]\s*$/, '…').trim(); }
 
+  // Theme toggle, skip link and the CFO nav item / card come from brief-chrome.js
+  // (one table for every Brief page); the reader's own strings win.
+  var CHROME = window.VB_CHROME_ALL || {};
+  var CTL = CHROME[langCode] || CHROME.en || {};
+  for (var ck in CTL) if (L.ui[ck] == null) L.ui[ck] = CTL[ck];
+  window.VB_CHROME_T = CTL;
+
   function localizeChrome() {
     document.documentElement.lang = langCode;
     window.VB_UI = L.ui;
@@ -340,6 +347,7 @@
     // Hub, legal pages and the service card point at the page language.
     [].forEach.call(document.querySelectorAll('[data-hub]'), function (a) { a.href = ROOT + L.dir + a.getAttribute('data-hub'); });
     $('ovAlt').href = ROOT + (L.concierge ? L.dir : '') + 'concierge.html?utm_source=concierge&utm_medium=article';
+    if (window.VB_THEME_LABEL) window.VB_THEME_LABEL();
   }
   localizeChrome();
 

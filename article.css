@@ -169,3 +169,6 @@
   .story-byline > span + span::before{content:none}
   .story-body table{display:block;overflow-x:auto}
 }
+/* Virtuse CFO card at the end of every story (checklist 2.3) */
+.story-end .cfo-end{margin:28px 0;max-width:560px}
+.story-end .cfo-end .btn{width:auto}
