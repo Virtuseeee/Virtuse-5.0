@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
+
+- Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).
+- `cfo.html` (EN source) + `i18n-tools/cfo/<lang>.json` → `build_cfo.py`: hero `#verdict` (sample 55/100, 10 signals, `#waitForm`), `#verdict-how` bands, `#audit` (CFO + fee demo, sources Kraken/ByBit EU/21bitcoin "checked 12 Oct 2026", 21bitcoin spread unmeasured), `#pricing` right after (Verdict 0 € / Full report 14 € / Virtuse CFO 9 €·90 € from January), three costs folded, limits compact, `#faq`. Hardcoded "136 on the waitlist" removed. `/partner-click.js` after GTM; inline stage-badge script gone. Still noindex, no `/verdict.html`.
+- Split with session "SEO Fix" (PR #90): nav/footer "Virtuse CFO · Verdict" + Free badge sitewide, homepage CFO panel ("…Verdict a audit poplatkov zadarmo" + "Získať verdikt zadarmo" → cfo.html#verdict), tool-guide cards, stories Related tools; checker `seo-ops/check_cfo_pages.py [--staging|--live]`.
+- Mockups (not on main): `feat/cfo-verdict` (`sk/cfo-mockup.html`, also on staging only), `feat/verdict-mockup` (`sk/verdict.html`).
+- **Deploy gotcha again:** `deploy_site.sh` deploys its own folder's HEAD, and the OneDrive folder's `main` is ~180 commits behind → run the copy inside a worktree checked out at origin/main. A stale 0-byte `.git/refs/remotes/origin/HEAD.lock` (8 Oct) made `git fetch` fail; removed.
+- Open: lawyer review of the CFO/Verdict texts; working Verdict backend + payments before the January paid plans; waitlist email could mention Verdict (Worker deploy).
+
 ## Session status (2026-10-12) — Loan & Liquidity Copilot: math fixes, limits, sourced tax rates, redesign (main `1d75e57c`, PR #81; **live on production** — user ran `deploy_site.sh 33753a53 1d75e57c`, 58/58 md5-verified, 18 old asset hashes gone)
 
 - Handover `HANDOVER-claude-loan.md`. Shells by `i18n-tools/loan/build_loan.py` (Partner Finder pattern; run after deploy.py); the app (`Loan.tsx`, `lib/loan.ts`) renders only the calculator.
