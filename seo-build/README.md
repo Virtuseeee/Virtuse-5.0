@@ -23,6 +23,16 @@ npm run build:verify
 
 Same input JSON always produces the same HTML. Numbers are not invented at generate time.
 
+### Page chrome (v2 nav, footer, Brief card)
+
+The pages use the site's v2 header, footer and Brief card, read from
+`data/chrome-v2.json`. That file is exported from the v2 homepages by
+`python3 Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/seo_chrome.py` (links are
+root-absolute, the language menus are filled with each page's hreflang alternates).
+Re-run it after a homepage nav/footer change or a new Brief issue, then regenerate;
+`seo_chrome.py --check` exits 1 when the JSON is stale. Styles: `/site-v2.css` plus
+the `.seo` article styles in `lib/html.mjs` (tables stack into cards below 640 px).
+
 ## Data sources (do not invent rates)
 
 | File | What |

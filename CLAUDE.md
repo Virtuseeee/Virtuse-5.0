@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — seo-build pages on the v2 chrome; German SEO pages link German pages (checklist 2.2, branch `fix/seo-v2-2-2`, built on `fix/brief-links-2-3`, staging only, not merged)
+
+- Audit code P1-2, design P1-2, content (174 German links). The ~204 seo-build pages (tax guides, buy-bitcoin/<country>, DCA, sell vs borrow, inheritance, DAC8; 10 languages) now carry the v2 header (Services/Learn/Tools menus, language menu, Find partners CTA), the v2 footer and the v2 Brief card, load Inter + `/site-v2.css?v=7` + `/site-v2.js?v=7`. The article body is unchanged; its styles are scoped to `article.seo` in `seo-build/lib/html.mjs`.
+- **Chrome source:** `seo-build/data/chrome-v2.json`, exported from the v2 homepages by `i18n-tools/seo_chrome.py` (reuses the Fee Index builder's `chrome()`/`absolutize()`; links root-absolute; language-menu links are `{{ALT:xx}}` placeholders that html.mjs fills with the page's hreflang alternates, else the language home). **Re-run it after a homepage nav/footer change or a new Brief issue**, then `node seo-build/generate.mjs`; `--check` exits 1 when stale. CI keeps regenerating from the committed JSON.
+- German pages: breadcrumbs "Start" → `/de/`, Tax Agent / Stacking / Loan CTAs → `de/…`; with the v2 chrome nav/footer/legal links are German too. Links from translated SEO pages to an English page that has a translation: 129 → 0 (all 9 languages). 17,582 internal links on the 204 pages, 0 broken.
+- Default `og:image` when a page sets none: buy-bitcoin/<country> `og/fee-index.jpg`, DAC8 `og/bitcoin-tax.jpg`, else by CTA (stacking/loan/tax-agent image), else `og-cover.jpg` (was missing on 64 pages).
+- Mobile: tables stack into labelled cards below 640 px (`data-label` from `tableHtml`), related links/tool cards are 44 px+ tap targets, no old 16 px nav row. verify.mjs ignores the shared nav/footer/Brief for the no-dash rule and reads `.seo-tools`.
+- Not added on purpose: consent banner + GTM (the pages had no analytics before; decide separately), CSP (none before). Old `CHROME[lang]` href fields in html.mjs are now unused except texts.
+
 ## Session status (2026-10-15) — Brief, stories and blog linked; SK/RU stories with their own menu (checklist 2.3, branch `fix/brief-links-2-3`, built on `fix/menu-2-5`, staging only, not merged)
 
 - Audit design P1-3 + code P0-2. **One Brief theme:** news.html now uses `data-theme-key="vb-theme-blog"`, default dark, same hub palette as blog/stories (news.js `THEME_KEY`, `?v=20261015brief`); a reader's old `vb-theme` choice on news is dropped. "Fix the Money, Fix the World" removed; the date line under the H1 is hidden ≤720 px (the featured eyebrow shows it).

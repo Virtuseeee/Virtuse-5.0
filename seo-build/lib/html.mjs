@@ -5,127 +5,72 @@ import {
   canonicalPath,
   wordCount
 } from './util.mjs';
+import fs from 'node:fs';
 
-// Only pages with a "Related tools" block (tax guides) carry these rules.
-const TOOLS_CSS = `
-.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
-.tools a {
-  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
-  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
-}
-.tools a:hover { border-color: var(--border-hover); }
-.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
-.tools span { display: block; font-size: 14px; color: var(--text-muted); }
-@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }
-`.trim();
+// v2 nav, footer, Brief card and site-v2.js strings per language, exported from the v2
+// homepages by i18n-tools/seo_chrome.py (committed, so builds stay deterministic).
+const CHROME_V2 = JSON.parse(fs.readFileSync(new URL('../data/chrome-v2.json', import.meta.url), 'utf8'));
+const SITE_V2 = '7';
 
+// Page body styles, scoped to the article (nav, footer, Brief card and tokens come
+// from /site-v2.css; the v2 chrome itself comes from data/chrome-v2.json).
 const CSS = `
-:root {
-  --btc-orange: #f7931a;
-  --dark: #08090a;
-  --dark-card: #141414;
-  --dark-card-hover: #1c1c1c;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(255,255,255,0.12);
-  --green: #3fb950;
-  --max: 820px;
-}
-* { box-sizing: border-box; }
-html { color-scheme: dark; }
-body {
-  margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
-  background: var(--dark);
-  color: var(--text);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: var(--btc-orange); }
-.nav {
-  display: flex; flex-wrap: wrap; gap: 10px 18px;
-  align-items: center; justify-content: space-between;
-  padding: 16px 20px; border-bottom: 1px solid var(--border);
-  background: rgba(8,9,10,.96); position: sticky; top: 0;
-}
-.nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; }
-.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
-.brand { font-weight: 700; color: var(--text) !important; font-size: 16px; }
-.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 64px; }
-.crumbs { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
-.crumbs a { color: var(--text-muted); }
-.answer {
-  background: var(--dark-card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 18px; margin: 16px 0 28px;
-}
-.answer p { margin: 0; }
-h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
-h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
-h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-th { color: var(--text-muted); font-weight: 600; }
-.cta {
-  display: inline-block; background: var(--text); color: var(--dark) !important;
-  text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
-  transition: opacity 0.2s;
-}
-.cta:hover { opacity: 0.85; }
-.cta-secondary {
-  display: inline-block; border: 1px solid var(--border); color: var(--text) !important;
-  text-decoration: none; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
-  transition: border-color 0.2s;
-}
-.cta-secondary:hover { border-color: var(--border-hover); }
-.muted { color: var(--text-muted); font-size: 14px; }
-.disclaimers { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
-.related { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 16px; }
-.lang { font-size: 13px; }
-.flag { font-weight: 600; }
-.review { font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--border-hover); padding: 6px 10px; margin: 12px 0; }
-code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
-pre {
-  background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
-  padding: 12px; overflow: auto; white-space: pre-wrap;
-}
-.asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
-.brief {
-  background: var(--dark-card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 22px 20px; margin: 36px 0 8px;
-}
-.brief h2 { margin: 0 0 6px; font-size: 1.25rem; }
-.brief h2 span { font-weight: 400; color: var(--text-muted); }
-.brief .line { margin: 0 0 14px; color: var(--text-muted); font-size: 15px; }
-.brief form { display: flex; flex-wrap: wrap; gap: 8px; }
-.brief input[type="email"] {
-  flex: 1 1 220px; min-width: 0; background: var(--dark); color: var(--text);
-  border: 1px solid var(--border-hover); border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 15px;
-}
-.brief input[type="email"]:focus { outline: none; border-color: var(--text-muted); }
-.brief button {
-  flex: 0 0 auto; background: var(--text); color: var(--dark); border: 0; border-radius: 8px;
-  padding: 10px 16px; font: inherit; font-weight: 700; cursor: pointer;
-}
-.brief button:disabled { opacity: 0.6; cursor: default; }
-.brief .msg { margin: 10px 0 0; font-size: 14px; min-height: 1px; }
-.brief .fine { margin: 8px 0 0; font-size: 12px; color: var(--text-muted); }
-.brief .fine a { color: var(--text-muted); }
-@media (max-width: 480px) { .brief button { flex: 1 1 100%; } }
-footer.site-footer {
-  border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
-}
-footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
+.seo { max-width: 820px; margin: 0 auto; padding: 36px 0 24px; }
+.seo a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.seo a:hover { text-decoration-color: var(--text); }
+.seo p, .seo li { color: #c9d1d9; }
+.seo h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 10px; }
+.seo h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 40px 0 12px; }
+.seo h3 { font-size: 1.08rem; font-weight: 700; margin: 24px 0 8px; }
+.seo .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
+.seo .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
+.seo .crumbs a:hover { color: var(--text); }
+.seo .asof { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+.seo .answer { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin: 18px 0 30px; }
+.seo .answer p { margin: 0; color: var(--text); }
+.seo .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0 22px; }
+.seo table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.seo th, .seo td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.seo th { color: var(--muted); font-weight: 600; font-size: 13px; }
+.seo .cta { display: inline-flex; align-items: center; min-height: 44px; background: var(--text); color: var(--dark); text-decoration: none; font-weight: 600; font-size: 14px; padding: 12px 18px; border-radius: 10px; margin: 8px 8px 8px 0; }
+.seo .cta:hover { background: #fff; }
+.seo .cta-secondary { display: inline-flex; align-items: center; min-height: 44px; border: 1px solid var(--line-strong); color: var(--text); text-decoration: none; padding: 12px 18px; border-radius: 10px; margin: 8px 8px 8px 0; }
+.seo .cta-secondary:hover { background: var(--card); }
+.seo .muted { color: var(--muted); font-size: 14px; }
+.seo .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
+.seo .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; }
+.seo .related a:hover { border-color: var(--line-strong); }
+.seo .seo-tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.seo .seo-tools a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; text-decoration: none; }
+.seo .seo-tools a:hover { border-color: var(--line-strong); }
+.seo .seo-tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.seo .seo-tools span { display: block; font-size: 14px; color: var(--muted); }
+.seo li > a { display: inline-block; padding-block: 11px; }
+.seo details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+.seo summary { cursor: pointer; font-weight: 600; }
+.seo .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.seo .disclaimers p { color: var(--muted); }
+.seo .review { font-size: 12px; color: var(--muted); border-left: 2px solid var(--line-strong); padding: 6px 10px; margin: 12px 0; }
+.seo code, .seo pre { font-family: var(--mono); font-size: 12px; }
+.seo pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; white-space: pre-wrap; }
+.page-seo #brief { max-width: 820px; margin: 0 auto; padding-block: 48px; }
 @media (max-width: 640px) {
-  h1 { font-size: 1.45rem; }
-  .nav { padding: 12px 14px; }
+  .seo { padding-top: 24px; }
+  .seo .related, .seo .seo-tools { grid-template-columns: 1fr; }
+  .seo .table-wrap { overflow: visible; }
+  .seo table, .seo tbody, .seo tr, .seo td { display: block; width: 100%; }
+  .seo thead { display: none; }
+  .seo tr { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px 14px; margin: 0 0 10px; }
+  .seo td { border: 0; padding: 7px 0; display: grid; grid-template-columns: minmax(96px, 38%) 1fr; gap: 12px; }
+  .seo td + td { border-top: 1px solid var(--line); }
+  .seo td[data-label]::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
+  .seo td:not([data-label]) { display: block; }
 }
 @media print {
-  .nav, .cta, .cta-secondary, .brief, footer.site-footer { display: none !important; }
-  body { background: #fff; color: #111; }
-  a { color: #111; }
-  .answer { background: #f4f4f4; border-color: #ccc; }
+  .nav, .footer-main, #brief, .seo .cta, .seo .cta-secondary { display: none !important; }
+  body { background: #fff; color: #111; padding: 0; }
+  .seo a, .seo p, .seo li { color: #111; }
+  .seo .answer { background: #f4f4f4; border-color: #ccc; }
 }
 `.trim();
 
@@ -206,7 +151,7 @@ export function renderPage({
 
   // "Related tools" cards (tax guides): descriptive anchors to the same-language tools.
   const toolsHtml = tools && tools.items.length
-    ? `<h2>${esc(tools.heading)}</h2><div class="tools">${tools.items.map((x) =>
+    ? `<h2>${esc(tools.heading)}</h2><div class="seo-tools">${tools.items.map((x) =>
       `<a href="${esc(x.href)}"><b>${esc(x.title)}</b><span>${esc(x.text)}</span></a>`
     ).join('')}</div>`
     : '';
@@ -215,58 +160,24 @@ export function renderPage({
     ? `<p><a class="cta" href="${esc(moduleCta.href)}">${esc(moduleCta.label)}</a></p>`
     : '';
 
-  const switchLangs = hreflang.filter((h) => h.lang === 'en' || h.lang === 'de' || h.lang === 'sk' || h.lang === 'cs' || h.lang === 'pl' || h.lang === 'hu' || h.lang === 'uk' || h.lang === 'ru' || h.lang === 'fr' || h.lang === 'es');
-  const langSwitch = switchLangs.length >= 2
-    ? `<nav class="lang" aria-label="Language">${switchLangs
-      .map((h) => `<a href="${esc(toRoot(relFile, h.path || h.href.replace(origin, '')))}"${h.lang === lang ? ' aria-current="page"' : ''}>${h.lang.toUpperCase()}</a>`)
-      .join(' · ')}</nav>`
-    : '';
-
-
-  const b = chrome.brief;
-  const briefHtml = (!b || noindex || noCapture) ? '' : `<section class="brief" aria-labelledby="brief-h">
-    <h2 id="brief-h">${b.heading}</h2>
-    <p class="line">${esc(b.line)}</p>
-    <form data-brief-form novalidate>
-      <input type="email" name="email" placeholder="${esc(b.placeholder)}" aria-label="${esc(b.placeholder)}" autocomplete="email" required>
-      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button type="submit">${esc(b.button)}</button>
-    </form>
-    <p class="msg" role="status" aria-live="polite"></p>
-    <p class="fine">${esc(b.fine)} <a href="${esc(toRoot(relFile, chrome.privacyHref))}">${esc(chrome.privacy)}</a></p>
-  </section>
-<script>
-(function () {
-  var f = document.querySelector('.brief form'); if (!f) return;
-  var m = f.parentNode.querySelector('.msg'), btn = f.querySelector('button'), label = btn.textContent;
-  var T = ${JSON.stringify({ sending: b.sending, ok: b.ok, fail: b.fail, network: b.network }).replace(/</g, '\\u003c')};
-  f.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var email = f.elements.email.value.trim();
-    m.textContent = ''; btn.disabled = true; btn.textContent = T.sending;
-    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: f.elements.website.value, lang: ${JSON.stringify(lang)} })
-    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
-      .then(function (x) {
-        if (x.ok) {
-          f.reset(); m.textContent = T.ok; m.style.color = 'var(--green)';
-          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'seo_page', capture_brief: true });
-        } else { m.textContent = (x.d && x.d.error) || T.fail; m.style.color = '#f85149'; }
-      })
-      .catch(function () { m.textContent = T.network; m.style.color = '#f85149'; })
-      .then(function () { btn.disabled = false; btn.textContent = label; });
-  });
-})();
-</script>` ;
+  const v2 = CHROME_V2[lang] || CHROME_V2.en;
+  // Language menus (nav + footer) point at this page in each language, else that language's home.
+  const alt = {};
+  for (const h of hreflang) if (h.lang !== 'x-default') alt[h.lang] = h.path ? '/' + h.path.replace(/^\/+/, '') : h.href.replace(origin, '');
+  const fill = (frag) => frag.replace(/\{\{ALT:([a-z]{2})\}\}/g, (_, x) => alt[x] || (x === 'en' ? '/' : `/${x}/`));
+  const nav = fill(v2.nav);
+  const foot = fill(v2.foot);
+  const briefHtml = (noindex || noCapture) ? '' : v2.brief;
 
   const wc = wordCount(answerHtml.replace(/<[^>]+>/g, ' '));
+  const og = ogImage || defaultOgImage(relFile, moduleCta, origin);
 
   return `<!DOCTYPE html>
 <html lang="${esc(lang)}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="${robots}">
@@ -278,29 +189,29 @@ ${hreflangTags}
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:locale" content="${esc(chrome.locale)}">
-${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">
+<meta property="og:image" content="${esc(og)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${esc(ogImage)}">
-` : ''}<link rel="icon" type="image/svg+xml" href="${esc(toRoot(relFile, 'favicon.svg'))}">
-<style>${CSS}${toolsHtml ? '\n' + TOOLS_CSS : ''}</style>
+<meta name="twitter:image" content="${esc(og)}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=${SITE_V2}">
+<style>${CSS}</style>
 ${extraHead}
 <script type="application/ld+json">${jsonLd(graph)}</script>
-</head>
-<body>
+${v2.i18n ? v2.i18n + '\n' : ''}</head>
+<body class="page-seo no-split">
 <!-- generated by seo-build; do not edit by hand. answerWords=${wc} -->
-<header class="nav">
-  <a class="brand" href="${esc(toRoot(relFile, chrome.homeHref))}">Virtuse</a>
-  <nav aria-label="Primary">
-    <a href="${esc(toRoot(relFile, chrome.taxHref))}">${esc(chrome.navTax)}</a>
-    <a href="${esc(toRoot(relFile, chrome.feesHref))}">${esc(chrome.navFees)}</a>
-    <a href="${esc(toRoot(relFile, chrome.dcaHref))}">${esc(chrome.navDca)}</a>
-    <a href="${esc(toRoot(relFile, chrome.conciergeHref))}">${esc(chrome.navConcierge)}</a>
-  </nav>
-  ${langSwitch}
-</header>
-<main class="wrap">
+${nav}
+
+<main class="wrap" id="top">
+<article class="seo">
   <nav class="crumbs" aria-label="Breadcrumb">${crumbHtml}</nav>
   <p class="asof">${esc(chrome.asOfPrefix)} ${esc(asOfLabel)}</p>
   <h1>${esc(h1)}</h1>
@@ -309,19 +220,32 @@ ${updated ? `  <p class="asof updated">${esc(updated.label)} <time datetime="${e
   ${bodyHtml}
   ${ctaHtml}
   ${toolsHtml ? toolsHtml + '\n  ' : ''}${relatedHtml}
-  ${briefHtml}
   <aside class="disclaimers">
     <p>${esc(chrome.disclaimerTax)}</p>
     <p>${esc(chrome.disclaimerKeys)}</p>
     <p>${esc(chrome.disclaimerKyc)}</p>
   </aside>
+</article>
+${briefHtml ? '\n  ' + briefHtml + '\n' : ''}
+  ${foot}
 </main>
-<footer class="site-footer"><div class="inner">
-  <p>©2018 - 2026 Virtuse Group. <a href="${esc(toRoot(relFile, chrome.privacyHref))}">${esc(chrome.privacy)}</a> · <a href="${esc(toRoot(relFile, chrome.termsHref))}">${esc(chrome.terms)}</a></p>
-</div></footer>
+
+<script src="/site-v2.js?v=${SITE_V2}" defer></script>
 </body>
 </html>
 `;
+}
+
+/** Default share image per page type when a page sets none. */
+function defaultOgImage(relFile, moduleCta, origin) {
+  const href = moduleCta ? moduleCta.href : '';
+  let img = 'og-cover.jpg';
+  if (/(^|\/)buy-bitcoin\//.test(relFile)) img = 'og/fee-index.jpg';
+  else if (/dac8/.test(relFile)) img = 'og/bitcoin-tax.jpg';
+  else if (/stacking\.html/.test(href)) img = 'og/stacking.jpg';
+  else if (/loan\.html/.test(href)) img = 'og/loan.jpg';
+  else if (/tax-agent\.html/.test(href)) img = 'og/tax-agent.jpg';
+  return `${origin}/${img}`;
 }
 
 export const CHROME = {

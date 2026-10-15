@@ -517,7 +517,7 @@ function faqHtml(items, heading) {
 
 function tableHtml(headers, rows) {
   const thead = `<tr>${headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr>`;
-  const body = rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('');
+  const body = rows.map((r) => `<tr>${r.map((c, i) => `<td data-label="${esc(headers[i] || '')}">${c}</td>`).join('')}</tr>`).join('');
   return `<div class="table-wrap"><table><thead>${thead}</thead><tbody>${body}</tbody></table></div>`;
 }
 
@@ -904,7 +904,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: `Bitcoin-Steuern in ${N} EU-Ländern`,
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
+      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Bitcoin-Steuern', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -913,7 +913,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' },
       { href: toRoot(relFile, 'de/bitcoin-gebuehrenindex/'), label: 'Bitcoin-Gebührenindex' }
     ],
-    moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Tax-Agent öffnen →' },
+    moduleCta: { href: toRoot(relFile, 'de/' + TAX_AGENT), label: 'Tax-Agent öffnen →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
 <p>Pro Land: Gewinnbesteuerung, etwaige Haltedauer-Befreiung und Steuererklärung, Stand ${esc(asOfDe)}.</p>
@@ -980,7 +980,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: `Bitcoin-Steuern ${inDe(c.id)}`,
     answerHtml: esc(answerDe),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(deRel, 'index.html'), abs: abs('index.html') },
+      { name: 'Start', href: toRoot(deRel, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Bitcoin-Steuern', href: toRoot(deRel, 'de/bitcoin-steuern/'), abs: abs('de/bitcoin-steuern/index.html') },
       { name: nameDe(c.id), abs: abs(deRel) }
     ],
@@ -990,7 +990,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(deRel, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' },
       { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern ${inDe(nbs[0].id)}` : 'Alle Länder' }
     ],
-    moduleCta: { href: toRoot(deRel, TAX_AGENT + `?country=${c.id}`), label: `${nameDe(c.id)} im Tax-Agent prüfen →` },
+    moduleCta: { href: toRoot(deRel, `de/${TAX_AGENT}?country=${c.id}`), label: `${nameDe(c.id)} im Tax-Agent prüfen →` },
     schemas: [faqLd(faqsDe), sourcesLd(c.id, deRel, 'de')],
     bodyHtml: `
 <p>${esc(c.flag)} ${esc(guideText('de', 'intro'))}</p>
@@ -1185,7 +1185,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin-DCA-Rechner',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
+      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'DCA-Rechner', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1194,7 +1194,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-verkaufen-oder-beleihen/'), label: 'Verkaufen oder beleihen' },
       { href: toRoot(relFile, 'de/bitcoin-steuern/deutschland/'), label: 'Bitcoin-Steuern Deutschland' }
     ],
-    moduleCta: { href: toRoot(relFile, CTAS.stacking.replace(/^\//, '')), label: 'Stacking Strategist öffnen →' },
+    moduleCta: { href: toRoot(relFile, 'de/stacking.html'), label: 'Stacking Strategist öffnen →' },
     schemas: [
       faqLd(faqs),
       {
@@ -1304,7 +1304,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin verkaufen oder beleihen',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
+      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Verkaufen oder beleihen', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1313,7 +1313,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-dca-rechner/'), label: 'DCA-Rechner' },
       { href: toRoot(relFile, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' }
     ],
-    moduleCta: { href: toRoot(relFile, CTAS.loan.replace(/^\//, '')), label: 'Im Loan-Copilot vergleichen →' },
+    moduleCta: { href: toRoot(relFile, 'de/loan.html'), label: 'Im Loan-Copilot vergleichen →' },
     schemas: [
       faqLd(faqs),
       {
@@ -1429,7 +1429,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin-Erbfolge: Checkliste',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
+      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Erbrecht', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1438,7 +1438,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-steuern/'), label: `${N}-Länder-Steuerhub` },
       { href: toRoot(relFile, 'de/bitcoin-verkaufen-oder-beleihen/'), label: 'Verkaufen oder beleihen' }
     ],
-    moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Checkliste im Tax-Agent bewerten →' },
+    moduleCta: { href: toRoot(relFile, 'de/' + TAX_AGENT), label: 'Checkliste im Tax-Agent bewerten →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
 <p>Inhalt entspricht der Checkliste des Tax-Moduls. Keine Rechtsberatung.</p>
@@ -1733,7 +1733,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin-Gebührenindex',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
+      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Gebührenindex', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1742,7 +1742,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-steuern/deutschland/'), label: 'Bitcoin-Steuern Deutschland' },
       { href: toRoot(relFile, 'bitcoin-fee-index/methodology/'), label: 'Methodik (EN)' }
     ],
-    moduleCta: { href: toRoot(relFile, CTAS.stacking.replace(/^\//, '')), label: 'Stacking Strategist öffnen →' },
+    moduleCta: { href: toRoot(relFile, 'de/stacking.html'), label: 'Stacking Strategist öffnen →' },
     schemas: [
       faqLd(faqs),
       {

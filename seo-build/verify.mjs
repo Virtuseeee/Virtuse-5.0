@@ -194,7 +194,8 @@ for (const rel of htmlFiles) {
   }
 
   if (guidePage) {
-    const visible = stripTags(html);
+    // the shared v2 nav, footer and Brief card come from the homepages as they are
+    const visible = stripTags(html.replace(/<header class="nav">[\s\S]*?<\/header>|<footer\b[\s\S]*?<\/footer>|<section id="brief">[\s\S]*?<\/section>/g, ''));
     if (/[\u2013\u2014]/.test(visible) || /[\u2013\u2014]/.test(title) || /[\u2013\u2014]/.test(desc)) {
       const m = (visible.match(/.{0,30}[\u2013\u2014].{0,30}/) || [title])[0];
       fail(`${rel} has an en/em dash in visible text or meta: ${m.trim()}`);
@@ -234,7 +235,7 @@ for (const rel of htmlFiles) {
     if (!upd || upd[1] !== FIELDS_CHECKED || upd[2] !== checkedLabel(lang)) fail(`${rel} missing visible "Updated ${checkedLabel(lang)}" line under the H1`);
     // "Related tools" block: Tax Agent (?country= on country pages), Loan Copilot, Partner Finder
     // and a buy page, all in the page's own language and all existing files.
-    const toolsBlock = (html.match(/<div class="tools">([\s\S]*?)<\/div>/) || [, ''])[1];
+    const toolsBlock = (html.match(/<div class="seo-tools">([\s\S]*?)<\/div>/) || [, ''])[1];
     const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)">/g)].map((x) => x[1].replace(/&amp;/g, '&'));
     if (toolHrefs.length < 3 || toolHrefs.length > 4) fail(`${rel} related tools block has ${toolHrefs.length} cards (need 3-4)`);
     const agentHref = toolHrefs.find((h) => /tax-agent\.html/.test(h)) || '';
