@@ -615,19 +615,9 @@
   "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
  },
  {
-  "en": "Virtuse CFO ·",
+  "en": "Virtuse CFO · Free Verdict and fee audit",
   "kind": "text",
-  "context": " the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exp"
- },
- {
-  "en": "Free audit from 1 Nov",
-  "kind": "text",
-  "context": "ection id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> "
- },
- {
-  "en": "New",
-  "kind": "text",
-  "context": "iv> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit from 1 Nov</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculat"
+  "context": " the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · Free Verdict and fee audit</span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator abov"
  },
  {
   "en": "Your AI CFO for Bitcoin.",
@@ -653,6 +643,11 @@
   "en": "Run the free audit",
   "kind": "text",
   "context": "free audit opens on 1 November.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> "
+ },
+ {
+  "en": "Get a free verdict",
+  "kind": "text",
+  "context": "t\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html#verdict\">Get a free verdict</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> "
  },
  {
   "en": "How it works",

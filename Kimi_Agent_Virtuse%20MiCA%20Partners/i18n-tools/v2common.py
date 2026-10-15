@@ -44,7 +44,7 @@ def head(L, old, home, root, version='5'):
     i18n = ''
     if L != 'en':
         H = json.load(open(os.path.join(HERE, 'home', L + '.json')))
-        keys = {'openMenu': 'Open menu', 'closeMenu': 'Close menu', 'soon': 'Soon', 'new': 'New', 'latestBrief': 'Latest Brief · ',
+        keys = {'openMenu': 'Open menu', 'closeMenu': 'Close menu', 'latestBrief': 'Latest Brief · ',
                 'min': ' min', 'coverImage': 'Cover image: ', 'badEmail': 'Please enter a valid email address.', 'sending': 'Sending...',
                 'subscribed': "You're in. Brief goes out Monday.", 'error': 'Something went wrong. Please try again.', 'netError': 'Network error. Please try again.'}
         obj = {k: html_mod.unescape(H[v]) for k, v in keys.items()}

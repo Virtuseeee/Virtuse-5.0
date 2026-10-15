@@ -137,7 +137,7 @@ def i18n_script(L):
     if L == 'en':
         return ''
     H = json.load(open(os.path.join(TOOLS, 'home', L + '.json')))
-    keys = {'openMenu': 'Open menu', 'closeMenu': 'Close menu', 'soon': 'Soon', 'new': 'New', 'latestBrief': 'Latest Brief · ',
+    keys = {'openMenu': 'Open menu', 'closeMenu': 'Close menu', 'latestBrief': 'Latest Brief · ',
             'min': ' min', 'coverImage': 'Cover image: ', 'badEmail': 'Please enter a valid email address.', 'sending': 'Sending...',
             'subscribed': "You're in. Brief goes out Monday.", 'error': 'Something went wrong. Please try again.', 'netError': 'Network error. Please try again.'}
     obj = {k: html.unescape(H[v]) for k, v in keys.items()}

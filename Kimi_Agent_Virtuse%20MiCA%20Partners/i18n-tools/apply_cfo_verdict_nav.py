@@ -19,6 +19,7 @@ FREE = {'Soon': 'Free', 'Čoskoro': 'Zadarmo', 'Brzy': 'Zdarma', 'Bald': 'Kosten
 WORD = '|'.join(map(re.escape, FREE))
 NAV = re.compile(r'(id="navCfo">)Virtuse CFO (<span class="nav-badge cfo-badge">)(%s)(</span></a>)' % WORD)
 FOOT = re.compile(r'(<a href="[^"]*cfo\.html">)Virtuse CFO (<span class="soon cfo-foot-badge">)(%s)(</span></a>)' % WORD)
+VB_SOON_NEW = re.compile(r'"soon": "[^"]*", "new": "[^"]*", ')
 # cfo.html's own inline copy of the old badge script ("Soon"/"New" by stage)
 STAGE_JS = re.compile(r"// Stage badges[^\n]*\n\(function \(\) \{\n  var audit = !document\.body\.classList\.contains\('stage-wait'\);\n"
                       r"  document\.querySelectorAll\('\.nav-badge, \.cfo-foot-badge'\)\.forEach\(function \(b\) \{ b\.textContent = audit \? '[^']*' : '[^']*'; \}\);\n\}\)\(\);\n")
@@ -36,6 +37,8 @@ def main():
         s = FOOT.sub(lambda m: m.group(1) + 'Virtuse CFO · Verdict ' + m.group(2) + FREE[m.group(3)] + m.group(4), s)
         if os.path.basename(rel) == 'cfo.html':
             s = STAGE_JS.sub('', s)
+        # site-v2.js no longer reads "soon"/"new"; the page builders stopped writing them
+        s = VB_SOON_NEW.sub('', s)
         if s != s0:
             open(path, 'w', encoding='utf-8').write(s)
             n += 1
