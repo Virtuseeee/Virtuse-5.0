@@ -630,7 +630,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .vd-tools a { border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 14px; font-size: 14px; text-decoration: none; color: var(--text); }
 .plan .layer { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.price-var { font-family: ui-monospace, Menlo, monospace; font-size: 0.6em; color: var(--orange); }
+.vd-more summary { list-style: none; cursor: pointer; } .vd-more summary::-webkit-details-marker { display: none; } .vd-more summary h2::after { content: ' +'; color: var(--muted); font-weight: 400; } .vd-more[open] summary h2::after { content: ' −'; } .vd-more summary + * { margin-top: 32px; }
+.vd-limits ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; } .vd-limits li { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15px; } .vd-limits li b { color: var(--text); }
 </style>
 </head>
 <body>
@@ -721,7 +722,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   <div class="c-hero">
     <div>
-      <div class="eyebrow"><span class="stage-k only-audit">Bezplatný audit · spustený od 1. nov.</span><span class="stage-k only-wait">Bezplatný audit · otvára sa 1. nov.</span></div>
+      <div class="eyebrow">Bezplatný audit · od 1. novembra</div>
       <h2 style="font-size:34px;line-height:1.15">Koľko vás nákupy naozaj stáli? <span style="color:var(--muted);font-weight:500">Číta vaše exporty, nikdy nevidí peňaženku.</span></h2>
       <p class="sub">Začnite číslom, ktoré väčšina držiteľov nikdy nevidela: koľko vás nákupy naozaj stáli. Virtuse CFO prečíta váš export z burzy priamo vo vašom prehliadači, nájde každý poplatok a odpovedá na otázky na základe vašich vlastných čísel.</p>
       <div class="only-audit">
@@ -733,7 +734,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <button class="btn btn-primary" type="submit">Upozorniť 1. novembra</button>
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
         <p class="wait-note">Jeden e-mail, keď sa audit otvorí, nič viac. Odhlásiť sa môžete kedykoľvek priamo z neho. <a href="privacy-policy.html" style="color:inherit">Súkromie</a></p>
-        <p class="wait-count" id="waitCount"><b>136</b> ľudí na čakacej listine</p>
+        
       </form>
     </div>
 
@@ -759,12 +760,61 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <div class="bar"><span>ByBit EU 0,25 %</span><div class="t"><div class="f y" data-w="24"></div></div><b>108 €</b></div>
           <div class="bar"><span>21bitcoin Auto-Invest 0 %*</span><div class="t"><div class="f g" data-w="1"></div></div><b>0 €</b></div>
         </div>
-        <p class="sample">Ukážkový export a čísla na ilustráciu. Zverejnené poplatky typu taker pri bežnom trhovom nákupe; spready a poplatky za výber nie sú zahrnuté. *0 % od 8. dňa Auto-Invest. Nejde o investičné poradenstvo.</p>
+        <p class="sample">Ukážkový export a čísla na ilustráciu. Zverejnené poplatky typu taker pri bežnom trhovom nákupe podľa stránok partnerov: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">ByBit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, overené 12. 10. 2026 ako v <a href="bitcoin-index-poplatkov/">Indexe poplatkov</a>. Spready a poplatky za výber nie sú zahrnuté; spread 21bitcoinu zatiaľ nemáme zmeraný. *0 % od 8. dňa Auto-Invest. Nejde o investičné poradenstvo.</p>
       </div>
     </div>
   </div>
 
   </section>
+
+  <!-- 6. PRICING -->
+  <section id="pricing">
+    <div class="sec-head">
+      <h2>Jeden produkt, tri úrovne. <span>Začnite verdiktom zadarmo.</span></h2>
+      <p class="sec-sub">Verdict aj audit poplatkov sú zadarmo a bez karty. Zrušiť môžete kedykoľvek. Rovnaký dizajn iba na čítanie, ktorý beží lokálne, v každom pláne.</p>
+    </div>
+    <div class="billing" role="tablist" aria-label="Obdobie platby">
+      <button type="button" role="tab" aria-selected="true" data-bill="m">Mesačne</button>
+      <button type="button" role="tab" aria-selected="false" data-bill="y">Ročne <i>2 mesiace zadarmo</i></button>
+    </div>
+    <div class="plans3">
+      <div class="plan">
+        <span class="layer">Vstup</span>
+        <h3>Verdict</h3>
+        <div class="price">0 € <small>bez registrácie</small></div>
+        <p class="for">Skóre úvahy 0 až 100, pásmo a najslabšie miesto.</p>
+        <ul><li>Hodnotenie rozhodnutia v 10 signáloch</li><li>Najslabšie miesto a odkaz na nástroj, kde ho overíte</li><li>Bezplatný audit poplatkov z exportu</li><li>Nie je to poradenstvo, nič neodporúča</li></ul>
+        <a class="btn btn-ghost" href="#verdict">Získať verdikt zadarmo</a>
+      </div>
+      <div class="plan">
+        <span class="layer">Jednorazovo</span>
+        <h3>Plný report</h3>
+        <div class="price">14 € <small>raz</small></div>
+        <p class="for">Pre jedno rozhodnutie, ktoré chcete premyslieť do hĺbky.</p>
+        <ul><li>Všetkých 10 signálov so zdôvodnením</li><li>Predpoklady, riziká a plán B</li><li>Otázky na zajtra</li><li>Bez predplatného</li></ul>
+        <a class="btn btn-ghost" href="#verdict">Začať verdiktom</a>
+      </div>
+      <div class="plan pro">
+        <span class="founding">Platené plány od januára, zakladateľská cena</span>
+        <h3>Virtuse CFO</h3>
+        <div class="price"><span data-m>9 € <small>/ mesiac</small></span><span data-y hidden>90 € <small>/ rok</small></span></div>
+        <p class="for"><span data-m>Alebo 90 € ročne, 2 mesiace zadarmo.</span><span data-y hidden>To je 7,50 € mesačne pri ročnej platbe.</span></p>
+        <ul><li>Neobmedzené verdikty a plné reporty</li><li>História rozhodnutí v čase</li><li>Rozhodnutia o Bitcoin treasury firmy</li><li>Upozornenia na poplatky a LTV pôžičky</li><li>Daňový prehľad, 13 krajín EÚ, a dedičský balík</li></ul>
+        <a class="btn btn-primary" href="#waitForm">Dajte mi vedieť</a>
+      </div>
+    </div>
+    <div class="terms">
+      <p class="terms-k">Podmienky, ktoré platia od otvorenia platených plánov v januári</p>
+      <div class="assure-row">
+        <span class="ic ic-green"><b>Vrátenie peňazí do 30 dní</b>Bez otázok, bez formulára.</span>
+        <span class="ic ic-muted"><b>Zrušenie jedným kliknutím</b>Na stránke vášho účtu.</span>
+        <span class="ic ic-orange"><b>Platba cez Lightning alebo kartou</b>Na bezplatný audit nepotrebujete kartu.</span>
+        <span class="ic ic-blue"><b>14-dňové právo na odstúpenie v EÚ</b>Vaše zákonné právo na odstúpenie od zmluvy platí navyše.</span>
+      </div>
+      <p class="terms-fine">Ceny zahŕňajú DPH, ak sa uplatňuje. Rovnaká cena vo všetkých 10 jazykoch.</p>
+    </div>
+  </section>
+
 
   <!-- ASK YOUR CFO -->
   <section id="ask">
@@ -790,20 +840,16 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </section>
 
-  <!-- 2. FIRST PRINCIPLES -->
+  <!-- 4. AFTER THE AUDIT -->
   <section>
     <div class="sec-head">
-      <h2>Nákup má tri náklady. <span>Väčšina ľudí sa pozerá len na jeden.</span></h2>
+      <h2>Po prvom čísle CFO sleduje ďalej. <span>Štyri úlohy, nič viac.</span></h2>
     </div>
-    <div class="tiles t3">
-      <div class="tile" style="--c: var(--orange)"><h3>Poplatok</h3><p>Percento na vašom doklade, od 0 % do 0,8 % u našich partnerov.</p><div class="meta"><span>Na doklade</span><b class="mark yes">Áno</b></div></div>
-      <div class="tile" style="--c: var(--yellow)"><h3>Spread</h3><p>Rozdiel medzi vašou cenou a trhovou cenou v danej minúte.</p><div class="meta"><span>Na doklade</span><b class="mark no">Nie</b></div></div>
-      <div class="tile" style="--c: var(--red)"><h3>Výber</h3><p>Presun mincí do vlastnej peňaženky. Zakaždým málo, za rok veľa.</p><div class="meta"><span>Na doklade</span><b class="mark rarely">Zriedka</b></div></div>
-    </div>
-    <div class="cost-split" aria-label="Z čoho sa skladá 449 EUR v ukážke">
-      <div class="cs-top"><span>449 € z ukážky, rozpísané</span><b>449 €</b></div>
-      <div class="cs-bar"><i class="cs-fee" style="width:76.6%"></i><i class="cs-wd" style="width:23.4%"></i></div>
-      <div class="cs-key"><span><i class="cs-fee"></i>Poplatok 344 €</span><span><i class="cs-wd"></i>Výbery 105 €</span><span class="cs-hidden"><i class="cs-sp"></i>Spread: skrytý v cene, navyše</span></div>
+    <div class="tiles t2">
+      <div class="tile" style="--c: var(--orange)"><h3>Upozornenia na poplatky</h3><p>Správa, keď to, čo platíte, opäť stúpne nad najlacnejšiu cestu.</p><div class="meta"><span>Kontroluje</span><b>Každý mesiac</b></div></div>
+      <div class="tile" style="--c: var(--purple)"><h3>Upozornenia na LTV pôžičky</h3><p>Varovanie skôr, než sa pôžička so zábezpekou v Bitcoine priblíži k likvidácii.</p><div class="meta"><span>Kontroluje</span><b>Každý deň</b></div></div>
+      <div class="tile" style="--c: var(--blue)"><h3>Daňový prehľad</h3><p>Súhrn vašich predajov a výmen pre vás alebo vášho účtovníka. Orientačný.</p><div class="meta"><span>Krajiny</span><b>13</b></div></div>
+      <div class="tile" style="--c: var(--teal)"><h3>Dedičský balík</h3><p>Kontrolný zoznam a list pre vašich dedičov. Nikdy žiadne kľúče ani seed frázy.</p><div class="meta"><span>Uložené seed frázy</span><b>Žiadne</b></div></div>
     </div>
   </section>
 
@@ -827,79 +873,27 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </section>
 
-  <!-- 4. AFTER THE AUDIT -->
-  <section>
-    <div class="sec-head">
-      <h2>Po prvom čísle CFO sleduje ďalej. <span>Štyri úlohy, nič viac.</span></h2>
-    </div>
-    <div class="tiles t2">
-      <div class="tile" style="--c: var(--orange)"><h3>Upozornenia na poplatky</h3><p>Správa, keď to, čo platíte, opäť stúpne nad najlacnejšiu cestu.</p><div class="meta"><span>Kontroluje</span><b>Každý mesiac</b></div></div>
-      <div class="tile" style="--c: var(--purple)"><h3>Upozornenia na LTV pôžičky</h3><p>Varovanie skôr, než sa pôžička so zábezpekou v Bitcoine priblíži k likvidácii.</p><div class="meta"><span>Kontroluje</span><b>Každý deň</b></div></div>
-      <div class="tile" style="--c: var(--blue)"><h3>Daňový prehľad</h3><p>Súhrn vašich predajov a výmen pre vás alebo vášho účtovníka. Orientačný.</p><div class="meta"><span>Krajiny</span><b>13</b></div></div>
-      <div class="tile" style="--c: var(--teal)"><h3>Dedičský balík</h3><p>Kontrolný zoznam a list pre vašich dedičov. Nikdy žiadne kľúče ani seed frázy.</p><div class="meta"><span>Uložené seed frázy</span><b>Žiadne</b></div></div>
-    </div>
-  </section>
-
-  <!-- 5. HARD LIMITS -->
-  <section>
-    <div class="sec-head">
-      <h2>Čo nedokáže. <span>Zámerne, nie len podľa pravidiel.</span></h2>
-    </div>
+  <!-- 2. FIRST PRINCIPLES -->
+  <section class="vd-fold">
+    <details class="vd-more"><summary><h2>Nákup má tri náklady. <span>Väčšina ľudí sa pozerá len na jeden.</span></h2></summary>
     <div class="tiles t3">
-      <div class="tile never"><h3>Presúvať peniaze</h3><p>Žiadne kľúče, žiadne mince, žiadne eurá. Vždy iba na čítanie.</p><div class="meta"><span>Nástroje, ktoré môžu presúvať prostriedky</span><b>0</b></div></div>
-      <div class="tile never"><h3>Zadávať príkazy</h3><p>Nákup prebieha na vlastnej licencovanej platforme partnera.</p><div class="meta"><span>Príkazy odoslané cez Virtuse</span><b>0</b></div></div>
-      <div class="tile never"><h3>Hovoriť vám, či kúpiť alebo predať</h3><p>AI vysvetľuje vaše čísla a otázky na načasovanie odmieta.</p><div class="meta"><span>Odpovede typu kúpiť alebo predať</span><b>Odmietnuté</b></div></div>
+      <div class="tile" style="--c: var(--orange)"><h3>Poplatok</h3><p>Percento na vašom doklade, od 0 % do 0,8 % u našich partnerov.</p><div class="meta"><span>Na doklade</span><b class="mark yes">Áno</b></div></div>
+      <div class="tile" style="--c: var(--yellow)"><h3>Spread</h3><p>Rozdiel medzi vašou cenou a trhovou cenou v danej minúte.</p><div class="meta"><span>Na doklade</span><b class="mark no">Nie</b></div></div>
+      <div class="tile" style="--c: var(--red)"><h3>Výber</h3><p>Presun mincí do vlastnej peňaženky. Zakaždým málo, za rok veľa.</p><div class="meta"><span>Na doklade</span><b class="mark rarely">Zriedka</b></div></div>
     </div>
-  </section>
+    <div class="cost-split" aria-label="Z čoho sa skladá 449 EUR v ukážke">
+      <div class="cs-top"><span>449 € z ukážky, rozpísané</span><b>449 €</b></div>
+      <div class="cs-bar"><i class="cs-fee" style="width:76.6%"></i><i class="cs-wd" style="width:23.4%"></i></div>
+      <div class="cs-key"><span><i class="cs-fee"></i>Poplatok 344 €</span><span><i class="cs-wd"></i>Výbery 105 €</span><span class="cs-hidden"><i class="cs-sp"></i>Spread: skrytý v cene, navyše</span></div>
+    </div>
+  </details>
+</section>
 
-  <!-- 6. PRICING -->
-  <section id="pricing">
-    <div class="sec-head">
-      <h2>Jeden produkt, tri úrovne. <span>Začnite verdiktom zadarmo.</span></h2>
-      <p class="sec-sub">Verdict aj audit poplatkov sú zadarmo a bez karty. Zrušiť môžete kedykoľvek. Rovnaký dizajn iba na čítanie, ktorý beží lokálne, v každom pláne.</p>
-    </div>
-    <div class="billing" role="tablist" aria-label="Obdobie platby">
-      <button type="button" role="tab" aria-selected="true" data-bill="m">Mesačne</button>
-      <button type="button" role="tab" aria-selected="false" data-bill="y">Ročne <i>2 mesiace zadarmo</i></button>
-    </div>
-    <div class="plans3">
-      <div class="plan">
-        <span class="layer">Vstup</span>
-        <h3>Verdict</h3>
-        <div class="price">0 € <small>bez registrácie</small></div>
-        <p class="for">Skóre úvahy 0 až 100, pásmo a najslabšie miesto.</p>
-        <ul><li>Hodnotenie rozhodnutia v 10 signáloch</li><li>Najslabšie miesto a odkaz na nástroj, kde ho overíte</li><li>Bezplatný audit poplatkov z exportu</li><li>Nie je to poradenstvo, nič neodporúča</li></ul>
-        <a class="btn btn-ghost" href="#verdict">Získať verdikt zadarmo</a>
-      </div>
-      <div class="plan">
-        <span class="layer">Jednorazovo</span>
-        <h3>Plný report</h3>
-        <div class="price"><span class="price-var" data-var="REPORT_PRICE">{{REPORT_PRICE}}</span> <small>raz</small></div>
-        <p class="for">Pre jedno rozhodnutie, ktoré chcete premyslieť do hĺbky.</p>
-        <ul><li>Všetkých 10 signálov so zdôvodnením</li><li>Predpoklady, riziká a plán B</li><li>Otázky na zajtra</li><li>Bez predplatného</li></ul>
-        <a class="btn btn-ghost" href="#verdict">Začať verdiktom</a>
-      </div>
-      <div class="plan pro">
-        <span class="founding">Spúšťa sa 1. novembra</span>
-        <h3>Virtuse CFO</h3>
-        <div class="price"><span data-m>9 € <small>/ mesiac</small></span><span data-y hidden>90 € <small>/ rok</small></span></div>
-        <p class="for"><span data-m>Alebo 90 € ročne, 2 mesiace zadarmo.</span><span data-y hidden>To je 7,50 € mesačne pri ročnej platbe.</span></p>
-        <ul><li>Neobmedzené verdikty a plné reporty</li><li>História rozhodnutí v čase</li><li>Rozhodnutia o Bitcoin treasury firmy</li><li>Upozornenia na poplatky a LTV pôžičky</li><li>Daňový prehľad, 13 krajín EÚ, a dedičský balík</li></ul>
-        <a class="btn btn-primary" href="#waitForm">Dajte mi vedieť</a>
-      </div>
-    </div>
-    <div class="terms">
-      <p class="terms-k">Podmienky, ktoré platia od otvorenia platených plánov v januári</p>
-      <div class="assure-row">
-        <span class="ic ic-green"><b>Vrátenie peňazí do 30 dní</b>Bez otázok, bez formulára.</span>
-        <span class="ic ic-muted"><b>Zrušenie jedným kliknutím</b>Na stránke vášho účtu.</span>
-        <span class="ic ic-orange"><b>Platba cez Lightning alebo kartou</b>Na bezplatný audit nepotrebujete kartu.</span>
-        <span class="ic ic-blue"><b>14-dňové právo na odstúpenie v EÚ</b>Vaše zákonné právo na odstúpenie od zmluvy platí navyše.</span>
-      </div>
-      <p class="terms-fine">Ceny zahŕňajú DPH, ak sa uplatňuje. Rovnaká cena vo všetkých 10 jazykoch.</p>
-    </div>
+  <!-- 5. HARD LIMITS (compact) -->
+  <section class="vd-limits">
+    <h2 style="font-size:24px">Čo nedokáže, zámerne.</h2>
+    <ul><li><b>Presúvať peniaze.</b> Žiadne kľúče, mince ani eurá, iba na čítanie.</li><li><b>Zadávať príkazy.</b> Nákup prebieha na licencovanej platforme partnera.</li><li><b>Hovoriť vám, či kúpiť alebo predať.</b> Verdict aj CFO otázky na nákup, predaj a načasovanie odmietnu.</li></ul>
   </section>
-
 
   <!-- 7. QUESTIONS: where people drop off during the audit -->
   <section id="faq">
@@ -908,7 +902,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="faq">
       <details open><summary>Povie mi Verdict, či mám kúpiť Bitcoin?</summary><p>Nie. Hodnotí, či je vaša úvaha úplná. Čo urobíte, je vaše rozhodnutie. Verdict neodporúča nákup, predaj, pôžičku ani partnera.</p></details>
-      <details><summary>Koľko to stojí?</summary><p>Verdict je zadarmo. Plný report stojí <span class="price-var">{{REPORT_PRICE}}</span> jednorazovo. Virtuse CFO sa spúšťa 1. novembra: 9 € mesačne alebo 90 € ročne a obsahuje neobmedzené verdikty aj reporty.</p></details>
+      <details><summary>Koľko to stojí?</summary><p>Verdict je zadarmo. Plný report stojí 14 € jednorazovo. Verdict aj bezplatný audit poplatkov sú zadarmo od 1. novembra. Platený Virtuse CFO sa otvára v januári: 9 € mesačne alebo 90 € ročne a obsahuje neobmedzené verdikty aj reporty.</p></details>
       <details><summary>Odkiaľ Verdict berie fakty?</summary><p>Z oficiálnych zdrojov, ktoré Virtuse už používa, napríklad daňové pravidlá 13 krajín s dátumom kontroly. Keď fakt chýba, Verdict sa opýta.</p></details>
       <details><summary>Čo sa stane s tým, čo napíšem?</summary><p>Bez účtu sa nič neukladá. S účtom Virtuse CFO si históriu rozhodnutí uložíte a môžete ju kedykoľvek vymazať.</p></details>
       <details><summary>Ako získam export z Krakenu?</summary><p>Na kraken.com kliknite vpravo hore na ikonu profilu a vyberte <b>Documents</b>. V časti Exports kliknite na <b>Create export</b>, vyberte <b>Ledgers</b>, nastavte dátum začiatku a konca, zvoľte <b>CSV</b> a kliknite na Generate. Súbor sa objaví v tom istom zozname, keď bude pripravený. Môže to trvať niekoľko minút aj niekoľko dní a Kraken vám nepošle e-mail. Vyberte Ledgers, nie Trades: obsahuje každý poplatok aj vaše okamžité nákupy. Ak používate Kraken Pro a Documents nevidíte, pozrite sa do časti Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Návod od Krakenu</a></p></details>

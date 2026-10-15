@@ -43,7 +43,8 @@ CSS = '''<style>
 .vd-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .vd-tools a { border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 14px; font-size: 14px; text-decoration: none; color: var(--text); }
 .plan .layer { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.price-var { font-family: ui-monospace, Menlo, monospace; font-size: 0.6em; color: var(--orange); }
+.vd-more summary { list-style: none; cursor: pointer; } .vd-more summary::-webkit-details-marker { display: none; } .vd-more summary h2::after { content: ' +'; color: var(--muted); font-weight: 400; } .vd-more[open] summary h2::after { content: ' −'; } .vd-more summary + * { margin-top: 32px; }
+.vd-limits ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; } .vd-limits li { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15px; } .vd-limits li b { color: var(--text); }
 </style>
 '''
 s = one(s, '</head>', CSS + '</head>')
@@ -124,13 +125,13 @@ plans_new = '''    <div class="plans3">
       <div class="plan">
         <span class="layer">Jednorazovo</span>
         <h3>Plný report</h3>
-        <div class="price"><span class="price-var" data-var="REPORT_PRICE">{{REPORT_PRICE}}</span> <small>raz</small></div>
+        <div class="price">14 € <small>raz</small></div>
         <p class="for">Pre jedno rozhodnutie, ktoré chcete premyslieť do hĺbky.</p>
         <ul><li>Všetkých 10 signálov so zdôvodnením</li><li>Predpoklady, riziká a plán B</li><li>Otázky na zajtra</li><li>Bez predplatného</li></ul>
         <a class="btn btn-ghost" href="#verdict">Začať verdiktom</a>
       </div>
       <div class="plan pro">
-        <span class="founding">Spúšťa sa 1. novembra</span>
+        <span class="founding">Platené plány od januára, zakladateľská cena</span>
         <h3>Virtuse CFO</h3>
         <div class="price"><span data-m>9 € <small>/ mesiac</small></span><span data-y hidden>90 € <small>/ rok</small></span></div>
         <p class="for"><span data-m>Alebo 90 € ročne, 2 mesiace zadarmo.</span><span data-y hidden>To je 7,50 € mesačne pri ročnej platbe.</span></p>
@@ -145,13 +146,40 @@ s = one(s, 'Zrušiť môžete kedykoľvek. Na bezplatný audit nepotrebujete kar
 
 # FAQ: verdict questions first, unified prices
 FAQ = '''<details open><summary>Povie mi Verdict, či mám kúpiť Bitcoin?</summary><p>Nie. Hodnotí, či je vaša úvaha úplná. Čo urobíte, je vaše rozhodnutie. Verdict neodporúča nákup, predaj, pôžičku ani partnera.</p></details>
-      <details><summary>Koľko to stojí?</summary><p>Verdict je zadarmo. Plný report stojí <span class="price-var">{{REPORT_PRICE}}</span> jednorazovo. Virtuse CFO sa spúšťa 1. novembra: 9 € mesačne alebo 90 € ročne a obsahuje neobmedzené verdikty aj reporty.</p></details>
+      <details><summary>Koľko to stojí?</summary><p>Verdict je zadarmo. Plný report stojí 14 € jednorazovo. Verdict aj bezplatný audit poplatkov sú zadarmo od 1. novembra. Platený Virtuse CFO sa otvára v januári: 9 € mesačne alebo 90 € ročne a obsahuje neobmedzené verdikty aj reporty.</p></details>
       <details><summary>Odkiaľ Verdict berie fakty?</summary><p>Z oficiálnych zdrojov, ktoré Virtuse už používa, napríklad daňové pravidlá 13 krajín s dátumom kontroly. Keď fakt chýba, Verdict sa opýta.</p></details>
       <details><summary>Čo sa stane s tým, čo napíšem?</summary><p>Bez účtu sa nič neukladá. S účtom Virtuse CFO si históriu rozhodnutí uložíte a môžete ju kedykoľvek vymazať.</p></details>
       '''
 s = one(s, '<h2>Otázky. <span>Skôr než niečo exportujete.</span></h2>', '<h2>Otázky <span>zákazníkov.</span></h2>')
 s = one(s, '<details open><summary>Ako získam export z Krakenu?</summary>', FAQ + '<details><summary>Ako získam export z Krakenu?</summary>')
 s = s.replace('<link rel="canonical" href="https://virtuse.com/sk/cfo.html">', '<link rel="canonical" href="https://virtuse.com/sk/cfo.html">')
+# 1. one stage label in the audit section
+s = one(s, '<div class="eyebrow"><span class="stage-k only-audit">Bezplatný audit · spustený od 1. nov.</span><span class="stage-k only-wait">Bezplatný audit · otvára sa 1. nov.</span></div>',
+        '<div class="eyebrow">Bezplatný audit · od 1. novembra</div>')
+# 2. no hardcoded waitlist count
+s = one(s, '<p class="wait-count" id="waitCount"><b>136</b> ľudí na čakacej listine</p>', '')
+# 4. fee sources + date, like the Fee Index
+s = one(s, 'Ukážkový export a čísla na ilustráciu. Zverejnené poplatky typu taker pri bežnom trhovom nákupe; spready a poplatky za výber nie sú zahrnuté. *0 % od 8. dňa Auto-Invest. Nejde o investičné poradenstvo.',
+        'Ukážkový export a čísla na ilustráciu. Zverejnené poplatky typu taker pri bežnom trhovom nákupe podľa stránok partnerov: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">ByBit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, overené 12. 10. 2026 ako v <a href="bitcoin-index-poplatkov/">Indexe poplatkov</a>. Spready a poplatky za výber nie sú zahrnuté; spread 21bitcoinu zatiaľ nemáme zmeraný. *0 % od 8. dňa Auto-Invest. Nejde o investičné poradenstvo.')
+# 5. shorter page, pricing higher
+def cut(a, b):
+    i, j = s.index(a), s.index(b)
+    return s[i:j]
+ask = cut('  <!-- ASK YOUR CFO -->', '  <!-- 2. FIRST PRINCIPLES -->')
+costs = cut('  <!-- 2. FIRST PRINCIPLES -->', '  <!-- 3. PROOF, NOT PROMISE -->')
+proof = cut('  <!-- 3. PROOF, NOT PROMISE -->', '  <!-- 4. AFTER THE AUDIT -->')
+after = cut('  <!-- 4. AFTER THE AUDIT -->', '  <!-- 5. HARD LIMITS -->')
+limits = cut('  <!-- 5. HARD LIMITS -->', '  <!-- 6. PRICING -->')
+pricing = cut('  <!-- 6. PRICING -->', '  <!-- 7. QUESTIONS')
+block = ask + costs + proof + after + limits + pricing
+costs2 = costs.replace('<section>\n    <div class="sec-head">\n      <h2>Nákup má tri náklady. <span>Väčšina ľudí sa pozerá len na jeden.</span></h2>\n    </div>',
+    '<section class="vd-fold">\n    <details class="vd-more"><summary><h2>Nákup má tri náklady. <span>Väčšina ľudí sa pozerá len na jeden.</span></h2></summary>', 1)
+assert costs2 != costs
+costs2 = costs2[::-1].replace('>noitces/<', '>noitces/<\n>sliated/<', 1)[::-1]
+limits2 = ('  <!-- 5. HARD LIMITS (compact) -->\n  <section class="vd-limits">\n    <h2 style="font-size:24px">Čo nedokáže, zámerne.</h2>\n'
+           '    <ul><li><b>Presúvať peniaze.</b> Žiadne kľúče, mince ani eurá, iba na čítanie.</li><li><b>Zadávať príkazy.</b> Nákup prebieha na licencovanej platforme partnera.</li>'
+           '<li><b>Hovoriť vám, či kúpiť alebo predať.</b> Verdict aj CFO otázky na nákup, predaj a načasovanie odmietnu.</li></ul>\n  </section>\n\n')
+s = s.replace(block, pricing + ask + after + proof + costs2 + limits2)
 assert 'Layer 2' not in s and '[CENA]' not in s
 open(SITE + '/sk/cfo-mockup.html', 'w').write(s)
 print('ok', len(s))
