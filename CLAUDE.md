@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — One CFO offer line everywhere (checklist 1.4, branch `fix/cfo-one-offer-1-4`, staging only, not merged)
+
+- Audit P0-4. **The line** (from cfo.html's own FAQ, translations reused from `i18n-tools/cfo/<lang>.json`): "Verdict and the fee audit are free from 1 November. Paid plans from January: €9/month or €90/year." Replaces "Launches 1 November: €9/month or €90/year." (implied paid from 1 Nov) in `about/<lang>.json` `cfo_text`, `retirement/<lang>.json` `c_cfo_text` and the Tax Agent app card.
+- "Bitcoin treasury: plan, track and report" (company positioning) gone: Stacking/Loan app cards for large amounts now say "Planning a larger allocation? / Managing a larger Bitcoin position? Virtuse CFO · Verdict: test a decision for free; the CFO then tracks fees and risks." + the line (tool-card wording from PR #90); stacking shell FAQ a3 the same.
+- App rebuilt the documented way (npm ci, i18n-check 0/0/0, npm run build, layer2/deploy.py, all tool shells); 17 asset hashes replaced.
+- The hardcoded "136 on the waitlist" was already gone (PR #89). Rule in the handover doc "Launches 1 November: €9/month or €90/year. Get notified →" is outdated; use the line above.
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).

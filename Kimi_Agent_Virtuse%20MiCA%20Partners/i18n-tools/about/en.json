@@ -5,16 +5,13 @@
   "description": "Virtuse is an independent comparison hub for Bitcoin services, founded in 2018 by Rastislav Vasilisin. Bitcoin-only. We don't hold client funds or keys.",
   "crumb_home": "Home",
   "crumb_page": "About us",
-
   "eyebrow": "About Virtuse",
   "h1": "An independent hub",
   "h1_or": "for Bitcoin services.",
   "lead": "Virtuse compares Bitcoin services from partners and links you to them. You buy, store and borrow on the partner's own platform, under its licence. Virtuse is operated by Virtuse Wealth Management, a.s.",
-
   "stat_founded_n": "2018",
   "stat_founded": "Founded",
   "stat_partners": "partners, as of {date}",
-
   "story_h2_a": "Our",
   "story_h2_b": "story",
   "t1_year": "2018",
@@ -29,7 +26,6 @@
   "t4_year": "Today",
   "t4_t": "A hub, not an exchange",
   "t4_p": "We compare partners for buying, custody, loans, mining, tax and more. Virtuse no longer operates an exchange and does not hold client funds or keys.",
-
   "founder_h2_a": "The",
   "founder_h2_b": "founder",
   "founder_name": "Rastislav (Ras) Vasilisin",
@@ -40,7 +36,6 @@
   "link_linkedin": "LinkedIn",
   "link_hackernoon": "HackerNoon",
   "link_x": "X",
-
   "values_h2_a": "How",
   "values_h2_b": "we work",
   "v1_t": "Bitcoin only",
@@ -49,14 +44,12 @@
   "v2_p": "We don't hold client funds or keys and we don't execute orders. Every service runs on the partner's own platform.",
   "v3_t": "Fixed rules, not commission",
   "v3_p": "Partner Finder orders partners by fixed rules based on your answers, not by the referral fees some partners pay us.",
-
   "name_label": "Our name",
   "name_h2_a": "What",
   "name_h2_b": "is Virtuse?",
   "name_p1": "Our name is inspired by virtù, a concept introduced by Niccolò Machiavelli. To him, virtù wasn't about conventional morality. It was about strength, control and the ability to shape your own circumstances.",
   "name_p2": "We see Bitcoin in the same way: money you can hold and control yourself, without asking anyone's permission.",
   "name_p3": "That is the idea behind the name.",
-
   "vet_h2_a": "How we",
   "vet_h2_b": "look at partners",
   "vet_intro": "Before a partner appears on Virtuse, we look at the same points. They help you compare. They are not a guarantee.",
@@ -70,7 +63,6 @@
   "k4_p": "Whether fees are published and how they compare with other partners.",
   "vet_licence": "Each partner's licence is shown in Partner Finder with its official register source and the date we checked it.",
   "vet_link": "Open Partner Finder",
-
   "explore_h2_a": "Explore",
   "explore_h2_b": "the hub",
   "explore_tools": "Tools",
@@ -102,6 +94,6 @@
   "x_bots_t": "Bots",
   "x_bots_p": "Automated trading and DCA.",
   "cfo_label": "Virtuse CFO",
-  "cfo_text": "Launches 1 November: €9/month or €90/year.",
+  "cfo_text": "Verdict and the fee audit are free from 1 November. Paid plans from January: €9/month or €90/year.",
   "cfo_link": "Get notified →"
 }
