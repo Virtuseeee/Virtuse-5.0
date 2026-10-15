@@ -1,9 +1,9 @@
 // POST /waitlist  { email, hp, source }
 //
-// The Virtuse CFO waitlist. A sign-up joins its own Resend audience
+// The Virtuse CFO · Verdict waitlist. A sign-up joins its own Resend audience
 // (secret RESEND_CFO_AUDIENCE_ID), never the Brief list, and gets one short
 // confirmation email with a link to leave the waitlist. Nothing else is sent
-// until the free audit opens.
+// until Verdict and the free fee audit open (1 November 2026).
 //
 // Contacts are created audience-scoped (POST /audiences/{id}/contacts), so
 // someone who already reads the Brief can still join the waitlist: the
@@ -14,7 +14,7 @@
 
 export const WAITLIST_SOURCES = ['cfo_page', 'home_buy', 'home_cfo'];
 
-const SUBJECT = "You're on the Virtuse CFO waitlist";
+const SUBJECT = "You're on the Virtuse CFO · Verdict waitlist";
 
 export function renderWaitlistEmail(leaveUrl) {
   return `<!DOCTYPE html>
@@ -27,7 +27,9 @@ export function renderWaitlistEmail(leaveUrl) {
 <tr><td style="padding:36px 32px;">
 <p style="margin:0 0 20px 0;font-size:22px;font-weight:800;"><span style="color:#5FAEDE;">V</span><span style="color:#e6edf3;">irtuse</span> <span style="color:#8b949e;font-weight:400;">CFO</span></p>
 <p style="margin:0 0 14px 0;font-size:20px;line-height:28px;font-weight:700;color:#e6edf3;">You're on the list.</p>
-<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email when the free fee audit opens, planned from 1 November 2026. It reads your exchange export in your browser and shows what your buying really cost you. Nothing is uploaded.</p>
+<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email on 1 November 2026, when Verdict and the free fee audit open.</p>
+<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;"><b style="color:#e6edf3;">Verdict</b> scores how complete your Bitcoin decision is on 10 signals and shows its weakest point. It rates your thinking, not Bitcoin, and never tells you to buy or sell.</p>
+<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">The <b style="color:#e6edf3;">fee audit</b> reads your exchange export in your browser and shows what your buying really cost you. Nothing is uploaded.</p>
 <p style="margin:0 0 24px 0;font-size:15px;line-height:24px;color:#c3ccd6;">Until then we won't email you about anything else.</p>
 <p style="margin:0;font-size:12px;line-height:20px;color:#8b949e;">You joined the waitlist on virtuse.com. Virtuse never holds your keys or funds and gives no investment advice. <a href="${leaveUrl}" style="color:#8b949e;">Leave the waitlist</a></p>
 </td></tr></table>

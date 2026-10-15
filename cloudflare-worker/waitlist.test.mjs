@@ -54,10 +54,18 @@ test('new sign-up joins the CFO audience, not the Brief, and gets one confirmati
   assert.ok(!calls.some((c) => c.url.includes('seg-brief')));
   assert.equal(calls[1].url, 'https://api.resend.com/emails');
   assert.equal(calls[1].body.from, 'Virtuse <plan@virtuse.com>');
-  assert.equal(calls[1].body.subject, "You're on the Virtuse CFO waitlist");
+  assert.equal(calls[1].body.subject, "You're on the Virtuse CFO · Verdict waitlist");
   assert.match(calls[1].body.html, /list=cfo/);
   assert.match(calls[1].body.html, /1 November 2026/);
 }));
+
+test('confirmation email mentions Verdict and the fee audit', () => {
+  const h = renderWaitlistEmail('https://x/leave');
+  assert.match(h, /Verdict<\/b> scores how complete your Bitcoin decision is/);
+  assert.match(h, /1 November 2026, when Verdict and the free fee audit open/);
+  assert.match(h, /fee audit<\/b> reads your exchange export/);
+  assert.doesNotMatch(h, /recommend/i);
+});
 
 test('already on the waitlist: 200, no second email', withFetch(async (calls) => {
   const res = await worker.fetch(req({ email: 'a@b.co' }), env());
@@ -109,7 +117,7 @@ test('leave link with &list=cfo only touches the CFO audience', withFetch(async 
   calls.length = 0;
   const res = await worker.fetch(new Request('https://w.example' + link.pathname + link.search), e);
   assert.equal(res.status, 200);
-  assert.match(await res.text(), /left the Virtuse CFO waitlist/);
+  assert.match(await res.text(), /left the Virtuse CFO · Verdict waitlist/);
   assert.equal(calls.length, 1);
   assert.equal(calls[0].url, 'https://api.resend.com/audiences/aud-cfo/contacts/a%40b.co');
   assert.equal(calls[0].method, 'PATCH');
