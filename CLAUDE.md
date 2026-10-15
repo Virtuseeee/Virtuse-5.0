@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — 114 old-template pages on the v2 shell (checklist 2.1, branch `feat/v2-port-2-1`, built on top of the block-1 branches, staging only, not merged)
+
+- Audit code.md / design.md P1-1. New `i18n-tools/legacy/build_legacy.py` (+ README): faq, 8 dashboards (fear-greed, ma-200w, rainbow-chart, root-cycles, btc-dominance, trading-volume, asset-returns, btc-monthly-returns), privacy-policy, terms-and-conditions, aml-compliance × their languages = 114 pages. Each keeps its hero, content sections and chart script; nav/footer/Brief card/language menu come from the language's homepage (v2common); anime.js, old menu/dropdown/nav-CTA/Brief scripts dropped.
+- **Edit these pages in `i18n-tools/legacy/src/<lang>/<page>`** (copies of the old files, written on the first run) and re-run the builder. The stage script runs it after the homepage builder.
+- CSS: old inline CSS + styles.css with every selector prefixed `.legacy` (own small parser, no native nesting); old navy palette → v2 surfaces; `--text-dim` raised to #9aa3ad (old #484f58 failed contrast); navigation/decoration orange (sec labels, open accordion border, summary icon, chart-title icon, root-cycles credit) → neutral; orange kept for BTC price, BTC table row, chart tooltip. Sub-nav = centered `.bd-links.lg-sub` row. On ≤700 px old sections lose their side padding (main.wrap pads) → charts 281 px wide at 375 (old 263).
+- fear-greed/trading-volume exist in 7 languages: menu entries for cs/uk/ru go to that language's bitcoin-data.html (were 404s).
+- Checked: 228 iframe loads (114 pages × 375/1440) — v2 nav/footer/Brief on all, no old hamburger, canvases drawn, no JS errors after load, no horizontal scroll except the known fr nav CTA (2 px, sitewide, from the homepage chrome); 0 missing local links; csp_tight clean; ma-200w live chart + 1.5 fallback work; root-cycles iframe loads.
+- Not done: shared stylesheet for the legacy CSS (pages still carry ~20 KB inline), styles.css removal, the fr nav CTA width, privacy-policy content (waits for the lawyer, 1.7).
+
 ## Session status (2026-10-15) — Story images unblocked: per-page img-src (checklist 1.6, branch `fix/stories-csp-images-1-6`, staging only, not merged)
 
 - Code audit P0-1: 447 body images on ~102 story pages were blocked by the template CSP (img-src only blog.virtuse.com). Option (b) chosen: `stories-build/hubs.mjs` `applyStoryExtras()` (used by build.mjs and the offline hubs run) now adds the page's own https image origins to img-src (`imgOrigins()`, `widenImgSrc()`); `buildHubs()` throws if any `<img>` origin is still not covered (`uncoveredImgOrigins()`). Option (a), copying giphy/medium/cloudfront images into the repo, was not done (third-party content, link rot remains).
