@@ -48,11 +48,8 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   })();
 
-  // Stage badges
-  (function () {
-    var audit = !document.body.classList.contains('stage-wait');
-    document.querySelectorAll('.nav-badge, .cfo-foot-badge').forEach(function (b) { b.textContent = audit ? t('new', 'New') : t('soon', 'Soon'); });
-  })();
+  // The CFO badge in nav and footer keeps its HTML text ("Free": the Verdict is free,
+  // 2026-10-15); the stage only changes its colour (CSS body.stage-wait).
 
   // Footer wordmark: letters rise in once when the footer comes into view
   (function () {

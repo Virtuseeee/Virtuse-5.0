@@ -735,6 +735,8 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .nav-group.open .nav-drop { display: flex; }
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
+/* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
+@media (min-width: 1181px) { #navCfo { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-top { font-size: 13px; }
