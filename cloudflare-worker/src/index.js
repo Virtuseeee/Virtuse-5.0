@@ -297,7 +297,7 @@ async function handleUnsubscribe(env, url) {
     );
   }
 
-  if (cfoOnly) return htmlResponse(200, unsubscribePage("You've left the Virtuse CFO waitlist. We won't email you about it again."));
+  if (cfoOnly) return htmlResponse(200, unsubscribePage("You've left the Virtuse CFO · Verdict waitlist. We won't email you about it again."));
   return htmlResponse(200, unsubscribePage("You've been unsubscribed from the Virtuse Brief. Sorry to see you go."));
 }
 
