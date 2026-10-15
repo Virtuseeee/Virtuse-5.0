@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Compact cookie banner on every page (checklist 2.6, branch `fix/cookie-compact-2-6`, staging only, not merged); 2.4 closed by 2.1
+
+- Audit design P2: the compact phone banner (165 px, buttons in one row) lived only in `site-v2.css`, so ~470 pages without it (homepages, CFO, stories, hubs, blog, news, 404) showed the 326 px stacked one. The ≤640 px rules now live in `cookie-consent.js`'s own CSS string (every page loads it; unversioned, 1 h cache, so no page edits), and were removed from site-v2.css (one source). Consent logic untouched; desktop corner card unchanged.
+- Checked at 375 px: homepage, story, news.html, sk/buy-bitcoin all 182–197 px with one button row; "Settings" panel opens full with 2 toggles and fits 812 px. The banner never renders inside iframes (Concierge guard), so measure it in a real tab, not an iframe sweep.
+- 2.4 (Brief signup without `lang` on 36 old pages) is fixed by PR #99: those pages now use site-v2.js, which sends `lang` from `<html lang>`; site scan: 0 of 478 signup pages post without a language.
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).
