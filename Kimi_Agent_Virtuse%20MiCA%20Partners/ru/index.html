@@ -1762,7 +1762,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     document.getElementById('briefMeta').textContent = 'Последний Brief · ' + when + ' · ' + (iss.read_min || 3) + ' мин';
     document.getElementById('briefTitle').textContent = iss.title + ' (на английском)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = 'Обложка: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Обложка: ' + iss.title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)

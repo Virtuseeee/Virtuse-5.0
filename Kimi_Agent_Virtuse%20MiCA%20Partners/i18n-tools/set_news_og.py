@@ -3,15 +3,16 @@
 
 usage:
   python3 i18n-tools/set_news_og.py            # rewrite news.html from the newest non-essay issue
-  python3 i18n-tools/set_news_og.py --image    # first make news/og/brief-YYYYMMDD.jpg (1200x630) from the
+  python3 i18n-tools/set_news_og.py --image    # first make news/og/brief-YYYYMMDD.jpg (1200x630, + 800 px WebP) from the
                                                # issue's "image" and store it as "og_image" in issues.json
   python3 i18n-tools/set_news_og.py --check    # exit 1 if news.html is not up to date
 
 Edition flow: new issue in news/issues.json -> run with --image -> deploy (news.html, news/issues.json,
-news/og/brief-YYYYMMDD.jpg). Without og_image the generic /news/og-card.png is used.
+news/og/brief-YYYYMMDD.jpg + brief-YYYYMMDD-800.webp). Without og_image the generic /news/og-card.png is used.
 Only the meta tags listed below change; the head order, GTM and consent snippet are left alone.
 """
 import html, io, json, os, re, sys, urllib.request
+from PIL import Image
 from datetime import date
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,7 +36,6 @@ def clip(s, n=160):
 
 
 def make_image(issue):
-    from PIL import Image
     ymd = issue['date'].replace('-', '')
     req = urllib.request.Request(issue['image'], headers={'User-Agent': 'Mozilla/5.0 virtuse-og'})
     im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=30).read())).convert('RGB')
@@ -47,7 +47,15 @@ def make_image(issue):
     rel = 'news/og/brief-%s.jpg' % ymd
     os.makedirs(os.path.join(SITE, 'news', 'og'), exist_ok=True)
     im.save(os.path.join(SITE, rel), 'JPEG', quality=85, optimize=True, progressive=True)
+    small(im, ymd)
     return '/' + rel
+
+
+def small(im, ymd):
+    # 800 px WebP for the Brief cards (site-v2.js and the homepages load it, the JPG stays the og:image and
+    # the fallback). Audit 2026-10-15, code P2-8: the 213 KB JPG was the cover on every service page.
+    im.resize((800, round(800 * H / W)), Image.LANCZOS).save(
+        os.path.join(SITE, 'news', 'og', 'brief-%s-800.webp' % ymd), 'WEBP', quality=78, method=6)
 
 
 def tags_for(issue):

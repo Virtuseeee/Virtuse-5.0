@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Page weight: minified site-v2 CSS, smaller Brief cover, consultation widget only where a button exists (checklist 2.8, branch `fix/speed-2-8`, staging only, not merged)
+
+- Audit code P2-8. **Edit `site-v2.css` (readable source), then run `python3 i18n-tools/minify_css.py`**: it writes `site-v2.min.css` (117.6 KB → 97.4 KB, gzip 22.9 → 18.8 KB; `--check` exits 1 when stale). Conservative: comments and whitespace only, strings and calc() untouched. Checked in Chromium: all 2,727 parsed rules identical to the source (only whitespace inside custom-property values differs), computed styles on buy-bitcoin identical.
+- New `i18n-tools/speed.py`, called from `csp_tight.tighten()` (so every builder gets it without builder edits): pages link `site-v2.min.css`, and `consultation-widget.js` (72 KB) is dropped when the page has no `[data-consultation-trigger]` → 104 pages lose it, 60 keep it. 154 pages on the min CSS, 0 left on the source file.
+- Brief cover: `set_news_og.py --image` also writes `news/og/brief-YYYYMMDD-800.webp` (Oct 12: 80 KB vs the 213 KB JPG; card shows it 480 px wide). `site-v2.js` and the homepage inline script (all 10 homepages via build_lang) load the WebP and fall back to the JPG if it is missing; og:image stays the JPG. issues.json (desk) untouched.
+- Merging with other branches: built pages and `site-v2.min.css` conflict on the CSS link line (e.g. #93's `?v=7`); take either side, rerun `minify_css.py` and the builders.
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).

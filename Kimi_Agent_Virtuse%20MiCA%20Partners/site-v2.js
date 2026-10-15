@@ -162,7 +162,13 @@
       document.getElementById('briefMeta').textContent = t('latestBrief', 'Latest Brief · ') + when + ' · ' + (iss.read_min || 3) + t('min', ' min');
       document.getElementById('briefTitle').textContent = iss.title + t('briefLangNote', '');
       document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-      var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = t('coverImage', 'Cover image: ') + iss.title; }
+      var img = document.getElementById('briefImg'), src = iss.og_image || iss.image;
+      if (img && src) {
+        // 800 px WebP next to the edition's 1200 px OG JPG (set_news_og.py --image writes both); JPG if the WebP is missing
+        var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp');
+        if (sm !== src) img.onerror = function () { img.onerror = null; img.src = src; };
+        img.src = sm; img.alt = t('coverImage', 'Cover image: ') + iss.title;
+      }
     }).catch(function () {});
   })();
 
