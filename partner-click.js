@@ -24,7 +24,7 @@
     "kraken.com": ["Kraken", "buy"],
     "lukka.tech": ["Lukka", "tax"],
     "oneminers.com": ["OneMiners", "mining"],
-    "partner.bybit.eu": ["ByBit EU", "buy"],
+    "partner.bybit.eu": ["Bybit EU", "buy"],
     "proinvite.kraken.com": ["Kraken", "buy"],
     "rewards.blockstream.com": ["Blockstream", "custody"],
     "shop.ledger.com": ["Ledger", "custody"],
