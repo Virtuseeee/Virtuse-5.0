@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Unsourced partner claims removed (checklist 1.3, branch `fix/unsourced-claims-1-3`, staging only, not merged)
+
+- Audit P0-3, same rule as Partner Finder (12 Oct): a figure needs a source link and a check date, or it goes. Removed in 10 languages via the builders' `<lang>.json`: 21bitcoin "insured custody" + "100,000+ users" (buy), Invity "from the SatoshiLabs group" (buy), Ledger "7M+ / over 7 million devices" (secure), Coinbase "$320M" and BitGo "$250M" coverage (treasury), Firefish "EUR 22.5M funded" / "8,600 investors" (lending trust row), CoinTracking "1.9M+ users" and Blockpit "official partner of Bitpanda and BISON" / "7+ EU" (tax), Power Mining "22,000+ products sold" (mining).
+- Feature lists have a fixed 4 items, so removed items were replaced with facts the same card already states (e.g. 21bitcoin "Bitcoin-only app", "Auto-Invest, 0% from day 8"; Blockpit "6 country reports"); no new facts added.
+- `fee-schedule-2026-q3.json` / `-live.json` notes: "insured custody" removed (numbers untouched); Q3 archive rebuilt with build_fee_index.py.
+- Still unsourced, not in the audit list: Sygnum "CHF 4B+ AuA", Blockpit "700+ integrations", CoinTracking "300+ integrations / 25+ report types", tax-tool country counts and prices. Ledger 7M+ in faq.html is fixed on branch fix/faq-cleanup-1-1.
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).
