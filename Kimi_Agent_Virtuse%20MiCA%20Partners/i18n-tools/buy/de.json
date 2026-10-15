@@ -24,7 +24,7 @@
  "year0": "Jahr 0",
  "year10": "Jahr 10",
  "src": "Gebühren wie von jedem Partner veröffentlicht, Q4 2026: Taker-Gebühr für einen einfachen Marktkauf. 21bitcoin berechnet in den ersten 7 Tagen eines Plans seine reguläre Gebühr. Invity und Crypto.com veröffentlichen ihre Gebühren auf ihren eigenen Websites. Spreads und Auszahlungsgebühren nicht enthalten.",
- "fee_index": "Vollständiger Gebührenindex",
+ "fee_index": "Gesamtkosten inkl. Spread: Gebührenindex",
  "earn": "<b>Was wir verdienen:</b> Einige Partner zahlen Virtuse eine Vermittlungsprovision, wenn Sie sich über unseren Link anmelden. Sie zahlen denselben Preis, und die Provision ändert nie die Reihenfolge oder die Fakten.",
  "trust_partners": "Partner",
  "trust_lowest": "niedrigste veröffentlichte Gebühr",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Crypto.com Visa Card",
  "pr_cryptocom_f4": "Web und mobile App",
  "pr_cryptocom_get": "Crypto.com öffnen",
- "lowest_pill": "Niedrigste Gebühr",
+ "lowest_pill": "Niedrigste veröffentlichte Gebühr",
  "cta_details": "Alle Partnerdetails ansehen",
  "b_img_alt": "Kurier des Virtuse Brief auf einem Roller bringt die Ausgabe vom 5. Okt. 2026"
 }

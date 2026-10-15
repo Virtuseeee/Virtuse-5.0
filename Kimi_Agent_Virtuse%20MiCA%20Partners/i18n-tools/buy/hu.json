@@ -24,7 +24,7 @@
  "year0": "0. év",
  "year10": "10. év",
  "src": "Az egyes partnerek által közzétett díjak, 2026. IV. negyedév: taker-díj egyszerű piaci vásárlásnál. A 21bitcoin a terv első 7 napjában a szokásos díját számítja fel. Az Invity és a Crypto.com a saját oldalán teszi közzé a díjait. A spreadek és a kivételi díjak nincsenek benne.",
- "fee_index": "Teljes díjindex",
+ "fee_index": "Teljes költség spreaddel: díjindex",
  "earn": "<b>Amit mi keresünk:</b> egyes partnerek ajánlói jutalékot fizetnek a Virtuse-nak, ha a linkünkön keresztül regisztrál. Ön ugyanannyit fizet, és a jutalék soha nem változtat a sorrenden vagy a tényeken.",
  "trust_partners": "partner",
  "trust_lowest": "legalacsonyabb közzétett díj",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Crypto.com Visa kártya",
  "pr_cryptocom_f4": "Webes és mobilalkalmazás",
  "pr_cryptocom_get": "Tovább: Crypto.com",
- "lowest_pill": "Legalacsonyabb díj",
+ "lowest_pill": "Legalacsonyabb közzétett díj",
  "cta_details": "Az összes partner részletei",
  "b_img_alt": "A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot"
 }

@@ -24,7 +24,7 @@
  "year0": "année 0",
  "year10": "année 10",
  "src": "Frais tels que publiés par chaque partenaire, T4 2026&nbsp;: frais taker pour un simple achat au marché. 21bitcoin applique ses frais habituels pendant les 7 premiers jours d'un plan. Invity et Crypto.com publient leurs frais sur leurs propres sites. Spreads et frais de retrait non inclus.",
- "fee_index": "Indice des frais complet",
+ "fee_index": "Coût total, spread compris&nbsp;: Indice des frais",
  "earn": "<b>Ce que nous gagnons&nbsp;:</b> certains partenaires versent à Virtuse une commission de parrainage lorsque vous vous inscrivez via notre lien. Vous payez le même prix, et cette commission ne modifie jamais l'ordre ni les faits.",
  "trust_partners": "partenaires",
  "trust_lowest": "frais publiés les plus bas",
@@ -109,7 +109,7 @@
  "pr_cryptocom_f3": "Crypto.com Visa Card",
  "pr_cryptocom_f4": "Web et application mobile",
  "pr_cryptocom_get": "Obtenir Crypto.com",
- "lowest_pill": "Frais les plus bas",
+ "lowest_pill": "Frais publiés les plus bas",
  "cta_details": "Voir le détail des partenaires",
  "b_img_alt": "Coursier du Virtuse Brief à scooter livrant l'édition du 5&nbsp;oct. 2026"
 }
