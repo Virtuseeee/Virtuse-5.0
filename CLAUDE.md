@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — FAQ cleanup, 10 languages (checklist 1.1, branch `fix/faq-cleanup-1-1`, not merged, not deployed)
+
+- Source: audit `docs/audit-2026-10-15/content.md` P0-1. `faq.html` + 9 translations are old-template, hand-edited pages (no generator yet; the v2 rebuild is checklist 2.1).
+- Rewritten answers (same position in all 10 files): What is Virtuse (no "world's first", no Singapore / "100+ countries"; operator line copied from about.html), Is Virtuse an exchange (no "vet the best"), Why Bitcoin only (no "fiduciary alignment"), Does Virtuse hold my keys (false "no client data" replaced: we store what visitors give us, link to privacy-policy.html), How should I store (no "we recommend", no Ledger "7M+"), What does Virtuse charge (disclosure = homepage "Some partners pay…" string per language), Partner fees (unsourced prices replaced by a link to the localized Bitcoin Fee Index), Altcoins (no "recommendations"), Recurring purchases and Withdrawals (no "zero fees" / "we recommend").
+- EN, DE, UK: em/en dashes used as punctuation removed from FAQ answers and the EN intro. The shared footer line "Virtuse Brief — …" still has one (sitewide chrome).
+- Not touched: meta descriptions (still list Kraken/ByBit EU/mining prices, see checklist 1.3), the other answers' partner facts.
+- `sitemap_lastmod.py` also moved 60 other URLs (homepage, tools) to 2026-10-15: their content changed in PRs #89/#90 but the sitemap was not rerun.
+- New texts in 9 languages need the native-speaker review (checklist 3.4).
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).
