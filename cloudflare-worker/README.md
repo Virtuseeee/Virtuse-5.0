@@ -241,7 +241,7 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
 - Claude (`claude-opus-5-5`, structured JSON output, `fallbacks: "default"`) rates each signal 0 to 10 with one sentence; the Worker adds the sum, band (65 / 50), weakest point (ties by priority) and tool, and caps worst case at 4 without a 70% drawdown test and tax at 5 outside the 13 countries.
 - Never advice: the prompt forbids it, the output has no free text field, and `BANNED` drops any answer that still reads like advice (502). Advice requests come back as `declined` with a fixed sentence. A model refusal is shown as declined.
 - Tax facts come from `seo-build/data/seo-data.json` via `build.mjs` -> `src/tax-facts.js` (committed), so Verdict states only rules the site states.
-- Nothing is stored. Email, IBAN, Bitcoin addresses and xpubs are removed before the text leaves the Worker; text is cut to 1,200 characters.
+- Virtuse stores no decision text. Email, IBAN, Bitcoin addresses and xpubs are removed before it leaves the Worker (cut to 1,200 characters); it is processed by Anthropic (USA), which may retain API data under its terms unless zero data retention is agreed. Only the per-IP counter and the month's spend are kept in KV. Every result carries `aiLabel` (AI Act art. 50) and `scoreNote`.
 - Limits: 10 per IP per day; monthly spend in `RATE_LIMIT_KV` (`verdict:spend:YYYY-MM`) against `VERDICT_MONTHLY_CAP_EUR` (default 50), then 429 until the next month.
 - Closed (503) until `ANTHROPIC_API_KEY` is set **and** `VERDICT_ENABLED` = `"1"`; requests from staging.virtuse.com work without `VERDICT_ENABLED`, for testing.
 
