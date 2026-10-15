@@ -9,7 +9,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Split with session "SEO Fix" (PR #90): nav/footer "Virtuse CFO · Verdict" + Free badge sitewide, homepage CFO panel ("…Verdict a audit poplatkov zadarmo" + "Získať verdikt zadarmo" → cfo.html#verdict), tool-guide cards, stories Related tools; checker `seo-ops/check_cfo_pages.py [--staging|--live]`.
 - Mockups (not on main): `feat/cfo-verdict` (`sk/cfo-mockup.html`, also on staging only), `feat/verdict-mockup` (`sk/verdict.html`).
 - **Deploy gotcha again:** `deploy_site.sh` deploys its own folder's HEAD, and the OneDrive folder's `main` is ~180 commits behind → run the copy inside a worktree checked out at origin/main. A stale 0-byte `.git/refs/remotes/origin/HEAD.lock` (8 Oct) made `git fetch` fail; removed.
-- Open: lawyer review of the CFO/Verdict texts; working Verdict backend + payments before the January paid plans; waitlist email could mention Verdict (Worker deploy).
+- Waitlist confirmation email now mentions Verdict (PR #91, `e387820a`; subject "You're on the Virtuse CFO · Verdict waitlist", English only): **Worker deployed** by the user (`deploy_worker.sh`, WORKER DEPLOY OK), live `GET /version` = `e387820a`, `/waitlist` answers 400 to a bad email.
+- Open: lawyer review of the CFO/Verdict texts; working Verdict backend + payments before the January paid plans.
 
 ## Session status (2026-10-12) — Loan & Liquidity Copilot: math fixes, limits, sourced tax rates, redesign (main `1d75e57c`, PR #81; **live on production** — user ran `deploy_site.sh 33753a53 1d75e57c`, 58/58 md5-verified, 18 old asset hashes gone)
 
