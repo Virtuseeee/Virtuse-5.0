@@ -32,7 +32,7 @@ def build(L):
         i = p['id']
         rows.append('<div class="row bt-row" data-kind="{kind}"><span class="hc-name"><img src="{root}{logo}" alt="" width="36" height="36" loading="lazy"><span><b>{name}</b><small>{types}{avail}</small></span></span>'
                     '<span class="bt-types">{types}</span><span class="bt-ex">{ex}{avail}</span><span class="bt-use">{use}</span>'
-                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{cta}">{get} {arrow}</a></div>'.format(
+                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="sponsored noopener" aria-label="{cta}">{get} {arrow}</a></div>'.format(
                         kind=p['kind'], root=root, logo=p['logo'], name=p['name'], types=t('pr_%s_types' % i), ex=t('pr_%s_ex' % i),
                         avail=('<em class="bt-avail">%s</em>' % T['pr_%s_avail' % i]) if ('pr_%s_avail' % i) in T else '', use=t('pr_%s_use' % i), url=p['url'], cta=t('pr_%s_cta' % i), get=t('get'), arrow=C.ARROW))
     panel = '''<div class="hpanel pink bt-panel">
@@ -76,7 +76,7 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>{avail}
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
       </article>'''.format(i=i, root=root, logo=p['logo'], name=p['name'], types=t('pr_%s_use' % i), details=t('details'),
                            body=t('pr_%s_body' % i), feats=feats, avail=('\n        <p class="pc-avail">%s</p>' % T['pr_%s_avail' % i]) if ('pr_%s_avail' % i) in T else '', url=p['url'], cta=t('pr_%s_cta' % i), out=C.OUT))
 

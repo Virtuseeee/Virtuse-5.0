@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-15) — Partner links rel="sponsored", "Bybit EU" spelling (checklist 2.7, branch `fix/sponsored-2-7`, built on top of 2.1, staging only, not merged)
+
+- All partner CTAs on the category pages (buy, secure, treasury, lending, tax, mining, bots builders) now carry `rel="sponsored noopener"` (was `noopener noreferrer`; dropping noreferrer also lets partners see virtuse.com as referrer). 686 partner links sponsored; the 84 left without it are source citations (Kraken fee schedule / support on cfo and the fee index) and editorial links in 3 stories, on purpose.
+- "ByBit" → "Bybit" everywhere on the site: buy/cfo/home JSON + EN sources (index.html, cfo.html, buy-bitcoin.html head metadata, which build_buy keeps from the page), legacy src (faq, privacy, aml), partners.json, phase4_titles.json, apply_tool_seo.py, seo-build/generate.mjs. 0 "ByBit" left in HTML except the frozen 2026-q3 fee archive. **GA4 `partner` value changes from "ByBit EU" to "Bybit EU"** (partner-click.js map + partner-capture.js lookup changed together). Not changed: cloudflare-worker checklists/send (needs a Worker deploy), docs/BRIEF files.
+
 ## Session status (2026-10-15) — 114 old-template pages on the v2 shell (checklist 2.1, branch `feat/v2-port-2-1`, built on top of the block-1 branches, staging only, not merged)
 
 - Audit code.md / design.md P1-1. New `i18n-tools/legacy/build_legacy.py` (+ README): faq, 8 dashboards (fear-greed, ma-200w, rainbow-chart, root-cycles, btc-dominance, trading-volume, asset-returns, btc-monthly-returns), privacy-policy, terms-and-conditions, aml-compliance × their languages = 114 pages. Each keeps its hero, content sections and chart script; nav/footer/Brief card/language menu come from the language's homepage (v2common); anime.js, old menu/dropdown/nav-CTA/Brief scripts dropped.

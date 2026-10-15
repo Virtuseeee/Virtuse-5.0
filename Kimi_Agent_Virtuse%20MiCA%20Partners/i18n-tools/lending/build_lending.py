@@ -55,11 +55,11 @@ def build(L):
     ways = ''.join('''      <article class="pcard2 purple way-card">
         <h3>{tt}</h3>
         <p>{pp}</p>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
       </article>
 '''.format(tt=t('w_%s_t' % w), pp=t('w_%s_p' % w), url=SIGNUP, cta=t('w_%s_cta' % w), out=C.OUT) for w in ('b', 'i'))
 
-    faq = '''<details open><summary>{q1}</summary><p>{a1} <a href="{borrow}" target="_blank" rel="noopener noreferrer">{a1l} ↗</a></p></details>
+    faq = '''<details open><summary>{q1}</summary><p>{a1} <a href="{borrow}" target="_blank" rel="sponsored noopener">{a1l} ↗</a></p></details>
     <details><summary>{q2}</summary><p>{a2}</p></details>
     <details><summary>{q3}</summary><p>{a3} <a href="{tax}">{a3l} →</a></p></details>'''.format(
         q1=t('q1'), a1=t('a1'), borrow=BORROW, a1l=t('a1_link'), q2=t('q2'), a2=t('a2'), q3=t('q3'), a3=t('a3'), tax=tax, a3l=t('a3_link'))
@@ -74,7 +74,7 @@ def build(L):
     <div class="eyebrow purple"><i></i>{eyebrow}</div>
     <h1>{h1} <span class="h1-grey">{h1g}</span></h1>
     {panel}
-    <a class="hp-cta btn-primary" href="{signup}" target="_blank" rel="noopener noreferrer">{cta} <span aria-hidden="true">↗</span></a>
+    <a class="hp-cta btn-primary" href="{signup}" target="_blank" rel="sponsored noopener">{cta} <span aria-hidden="true">↗</span></a>
     <a class="tlink lend-compare" href="{svb}">{compare} {arrow}</a>
     <div class="hp-fine">
       <p>{fine_ref} {fine_risk}</p>

@@ -237,32 +237,32 @@
  {
   "en": "21bitcoin logo",
   "kind": "attr:alt",
-  "context": "tners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" "
+  "context": "tners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" "
  },
  {
   "en": "21bitcoin",
   "kind": "text",
-  "context": "v class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</s"
+  "context": "v class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</s"
  },
  {
-  "en": "ByBit EU logo",
+  "en": "Bybit EU logo",
   "kind": "attr:alt",
-  "context": "\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" wi"
+  "context": "\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" wi"
  },
  {
-  "en": "ByBit EU",
+  "en": "Bybit EU",
   "kind": "text",
-  "context": "\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span"
+  "context": "\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span"
  },
  {
   "en": "Kraken logo",
   "kind": "attr:alt",
-  "context": "=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com lo"
+  "context": "=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com lo"
  },
  {
   "en": "Kraken",
   "kind": "text",
-  "context": "ue\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryp"
+  "context": "ue\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryp"
  },
  {
   "en": "Crypto.com logo",
@@ -572,7 +572,7 @@
  {
   "en": "Spot, taker fee",
   "kind": "text",
-  "context": " class=\"track\"><div class=\"fill low\"></div></div></span><span class=\"yr\">€0</span></div> <div class=\"row\" data-pct=\"0.25\"><span><b>ByBit EU</b><small>Spot, taker fee</small></span><span class=\"pct\">0.25%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€15</span></div> "
+  "context": " class=\"track\"><div class=\"fill low\"></div></div></span><span class=\"yr\">€0</span></div> <div class=\"row\" data-pct=\"0.25\"><span><b>Bybit EU</b><small>Spot, taker fee</small></span><span class=\"pct\">0.25%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€15</span></div> "
  },
  {
   "en": "Pro, tier 1 taker fee",

@@ -1875,7 +1875,7 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'bitcoin-fee-index/methodology/index.html';
   const faqs = [
     { q: 'Where do the percentages come from?', a: meta.feeSource === 'live'
-      ? 'From the partners’ published fee pages, checked on 2 October 2026: 21bitcoin Auto-Invest 0% (from day 8), ByBit EU 0.25% and Kraken Pro 0.8% (taker fee for a plain market buy at the entry tier).'
+      ? 'From the partners’ published fee pages, checked on 2 October 2026: 21bitcoin Auto-Invest 0% (from day 8), Bybit EU 0.25% and Kraken Pro 0.8% (taker fee for a plain market buy at the entry tier).'
       : 'From seo-data.json feeSchedule.' },
     { q: 'What is the annual-drag formula?', a: 'costPerPurchase = contribution × pct + fixed + monthly / (periodsPerYear / 12); annualDrag = costPerPurchase × periodsPerYear. The same formula as the live Stacking Strategist.' },
     { q: 'How often will this change?', a: 'When a partner changes its published fees, the schedule is updated and a new quarterly snapshot is published. Archive URLs stay stable.' }

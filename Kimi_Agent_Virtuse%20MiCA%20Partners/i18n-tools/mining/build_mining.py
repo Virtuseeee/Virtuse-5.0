@@ -35,7 +35,7 @@ def build(L):
         i = p['id']
         rows.append('<div class="row mp-row" data-kind="{kind}"><span class="hc-name"><img src="{root}{logo}" alt="" width="36" height="36" class="{cls}" loading="lazy"><span><b>{name}</b><small>{type}</small></span></span>'
                     '<span class="mp-type">{type}</span><span class="mp-loc">{loc}</span><span class="mp-fact">{fact}</span>'
-                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{cta}">{visit} {arrow}</a></div>'.format(
+                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="sponsored noopener" aria-label="{cta}">{visit} {arrow}</a></div>'.format(
                         kind=p['kind'], root=root, logo=p['logo'], cls=p['cls'], name=p['name'], type=t('pr_%s_type' % i), loc=t('pr_%s_loc' % i),
                         fact=t('pr_%s_fact' % i), url=p['url'], cta=t('pr_%s_cta' % i), visit=t('visit'), arrow=C.ARROW))
     panel = '''<div class="hpanel yellow mp-panel" id="mpPanel">
@@ -69,7 +69,7 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
       </article>'''.format(i=i, root=root, logo=p['logo'], cls=p['cls'], name=p['name'], base=t('pr_%s_base' % i), details=t('details'),
                            body=t('pr_%s_body' % i), feats=feats, url=p['url'], cta=t('pr_%s_cta' % i), out=C.OUT))
 

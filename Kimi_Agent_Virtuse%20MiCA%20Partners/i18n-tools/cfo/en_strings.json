@@ -417,22 +417,22 @@
  {
   "en": "Choose an exchange export (CSV)",
   "kind": "attr:aria-label",
-  "context": "\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"met"
+  "context": "\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, Bybit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"met"
  },
  {
   "en": "Drop your exchange export here",
   "kind": "text",
-  "context": "on> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026."
+  "context": "on> <label class=\"drop only-audit\" id=\"drop\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, Bybit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026."
  },
  {
-  "en": "Kraken, ByBit EU or 21bitcoin CSV · or use the sample",
+  "en": "Kraken, Bybit EU or 21bitcoin CSV · or use the sample",
   "kind": "text",
-  "context": "\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> "
+  "context": "\"> <input type=\"file\" accept=\".csv\" id=\"file\" aria-label=\"Choose an exchange export (CSV)\"> <b>Drop your exchange export here</b> <span>Kraken, Bybit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> "
  },
  {
   "en": "kraken-ledgers-2026.csv · 214 rows",
   "kind": "text",
-  "context": "exchange export here</b> <span>Kraken, ByBit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Findin"
+  "context": "exchange export here</b> <span>Kraken, Bybit EU or 21bitcoin CSV · or use the sample</span> </label> <div class=\"meter\"><span id=\"fileName\">kraken-ledgers-2026.csv · 214 rows</span><span><b id=\"bytes\">0</b> bytes sent</span></div> <ol class=\"steps\" id=\"steps\"> <li>Reading 214 rows on this device</li> <li>Findin"
  },
  {
   "en": "bytes sent",
@@ -467,17 +467,17 @@
  {
   "en": "You paid · Kraken Pro 0.8%",
   "kind": "text",
-  "context": "</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>ByBit EU 0.25%</span><div class=\"t\"><div clas"
+  "context": "</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div clas"
  },
  {
-  "en": "ByBit EU 0.25%",
+  "en": "Bybit EU 0.25%",
   "kind": "text",
-  "context": " class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>ByBit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\""
+  "context": " class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\""
  },
  {
   "en": "21bitcoin Auto-Invest 0%*",
   "kind": "text",
-  "context": " <div class=\"bar\"><span>ByBit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\"><div class=\"f g\" data-w=\"1\"></div></div><b>€0</b></div> </div> <p class=\"sample\">Sample export and figures for illustratio"
+  "context": " <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\"><div class=\"f g\" data-w=\"1\"></div></div><b>€0</b></div> </div> <p class=\"sample\">Sample export and figures for illustratio"
  },
  {
   "en": "Sample export and figures for illustration. Published taker fees for a plain market buy, from the partners' own pages:",
@@ -487,22 +487,22 @@
  {
   "en": "Kraken",
   "kind": "text",
-  "context": "ublished taker fees for a plain market buy, from the partners' own pages: <a href=\"https://www.kraken.com/features/fee-schedule\" target=\"_blank\" rel=\"noopener\">Kraken</a>, <a href=\"https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">ByBit EU</a>, <a href=\"https://21bitcoin.app"
+  "context": "ublished taker fees for a plain market buy, from the partners' own pages: <a href=\"https://www.kraken.com/features/fee-schedule\" target=\"_blank\" rel=\"noopener\">Kraken</a>, <a href=\"https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">Bybit EU</a>, <a href=\"https://21bitcoin.app"
  },
  {
-  "en": "ByBit EU",
+  "en": "Bybit EU",
   "kind": "text",
-  "context": "edule\" target=\"_blank\" rel=\"noopener\">Kraken</a>, <a href=\"https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">ByBit EU</a>, <a href=\"https://21bitcoin.app/en/fees\" target=\"_blank\" rel=\"noopener\">21bitcoin</a>, checked 12 Oct 2026 as in the <a href=\"/bitcoin-fee-index/\">Fee Inde"
+  "context": "edule\" target=\"_blank\" rel=\"noopener\">Kraken</a>, <a href=\"https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">Bybit EU</a>, <a href=\"https://21bitcoin.app/en/fees\" target=\"_blank\" rel=\"noopener\">21bitcoin</a>, checked 12 Oct 2026 as in the <a href=\"/bitcoin-fee-index/\">Fee Inde"
  },
  {
   "en": "21bitcoin",
   "kind": "text",
-  "context": "/help-center/article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">ByBit EU</a>, <a href=\"https://21bitcoin.app/en/fees\" target=\"_blank\" rel=\"noopener\">21bitcoin</a>, checked 12 Oct 2026 as in the <a href=\"/bitcoin-fee-index/\">Fee Index</a>. Spreads and withdrawal fees not included; we have not measured 21bitcoin's spre"
+  "context": "/help-center/article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">Bybit EU</a>, <a href=\"https://21bitcoin.app/en/fees\" target=\"_blank\" rel=\"noopener\">21bitcoin</a>, checked 12 Oct 2026 as in the <a href=\"/bitcoin-fee-index/\">Fee Index</a>. Spreads and withdrawal fees not included; we have not measured 21bitcoin's spre"
  },
  {
   "en": ", checked 12 Oct 2026 as in the",
   "kind": "text",
-  "context": "article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">ByBit EU</a>, <a href=\"https://21bitcoin.app/en/fees\" target=\"_blank\" rel=\"noopener\">21bitcoin</a>, checked 12 Oct 2026 as in the <a href=\"/bitcoin-fee-index/\">Fee Index</a>. Spreads and withdrawal fees not included; we have not measured 21bitcoin's spread yet. *0% from day 8 of Auto-Inve"
+  "context": "article/Trading-Fee-Structure\" target=\"_blank\" rel=\"noopener\">Bybit EU</a>, <a href=\"https://21bitcoin.app/en/fees\" target=\"_blank\" rel=\"noopener\">21bitcoin</a>, checked 12 Oct 2026 as in the <a href=\"/bitcoin-fee-index/\">Fee Index</a>. Spreads and withdrawal fees not included; we have not measured 21bitcoin's spread yet. *0% from day 8 of Auto-Inve"
  },
  {
   "en": ". Spreads and withdrawal fees not included; we have not measured 21bitcoin's spread yet. *0% from day 8 of Auto-Invest. Not investment advice.",
@@ -1207,17 +1207,17 @@
  {
   "en": "Kraken's guide",
   "kind": "text",
-  "context": "see Documents, look under Statements. <a href=\"https://support.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer "
+  "context": "see Documents, look under Statements. <a href=\"https://support.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from Bybit EU or 21bitcoin?</summary><p>Bybit EU: export your spot trade history from the Orders section. Longer "
  },
  {
-  "en": "And from ByBit EU or 21bitcoin?",
+  "en": "And from Bybit EU or 21bitcoin?",
   "kind": "text",
-  "context": "pport.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity "
+  "context": "pport.kraken.com/articles/208267878-how-to-export-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from Bybit EU or 21bitcoin?</summary><p>Bybit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity "
  },
  {
-  "en": "ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.",
+  "en": "Bybit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.",
   "kind": "text",
-  "context": "xport-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from ByBit EU or 21bitcoin?</summary><p>ByBit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You "
+  "context": "xport-your-account-history\" rel=\"noopener\" target=\"_blank\">Kraken's guide</a></p></details> <details><summary>And from Bybit EU or 21bitcoin?</summary><p>Bybit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You "
  },
  {
   "en": "Is my file uploaded anywhere?",
@@ -1237,27 +1237,27 @@
  {
   "en": "No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.",
   "kind": "text",
-  "context": " nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></deta"
+  "context": " nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></deta"
  },
  {
   "en": "Which exchanges work at launch?",
   "kind": "text",
-  "context": "ount or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summar"
+  "context": "ount or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summar"
  },
  {
-  "en": "Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.",
+  "en": "Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.",
   "kind": "text",
-  "context": "it needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partne"
+  "context": "it needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partne"
  },
  {
   "en": "Is this investment or tax advice?",
   "kind": "text",
-  "context": "><summary>Which exchanges work at launch?</summary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax a"
+  "context": "><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax a"
  },
  {
   "en": "No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax adviser.",
   "kind": "text",
-  "context": "mary><p>Kraken, ByBit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax adviser.</p></details> </div> </section> <footer class=\"footer-main\"> <div class=\"footer-inner\"> <div class=\"footer-logo\"><div style=\"display:flex;al"
+  "context": "mary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax adviser.</p></details> </div> </section> <footer class=\"footer-main\"> <div class=\"footer-inner\"> <div class=\"footer-logo\"><div style=\"display:flex;al"
  },
  {
   "en": "Company",

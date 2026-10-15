@@ -21,7 +21,7 @@
   // partner name (as partner-click.js reports it) -> Worker partner id.
   // Only partners with verified steps in data/partner-checklists.json.
   var IDS = {
-    '21bitcoin': '21bitcoin', 'ByBit EU': 'bybit-eu', 'Kraken': 'kraken', 'Crypto.com': 'crypto-com',
+    '21bitcoin': '21bitcoin', 'Bybit EU': 'bybit-eu', 'Kraken': 'kraken', 'Crypto.com': 'crypto-com',
     'Invity': 'invity', 'Blockstream': 'blockstream', 'Ledger': 'ledger', 'Trezor': 'trezor',
     'BitGo': 'bitgo', 'Coinbase': 'coinbase-institutional', 'Sygnum': 'sygnum', 'Firefish': 'firefish',
     'Koinly': 'koinly', 'Blockpit': 'blockpit', 'CoinTracking': 'cointracking', 'Divly': 'divly',

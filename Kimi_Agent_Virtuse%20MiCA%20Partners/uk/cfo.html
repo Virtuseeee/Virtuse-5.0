@@ -513,7 +513,7 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
 /* ===== COLOR v1: one accent per section, colour in the product, not the frame ===== */
 :root { --orange: #f7931a; --blue: #5faede; --green: #3fb950; --red: #f85149; --yellow: #f2c94c; --teal: #2dd4bf; --purple: #a78bfa; --pink: #f472b6; --indigo: #818cf8; }
 
-/* demo: colour in the product (paid red, ByBit yellow, 21bitcoin green) */
+/* demo: colour in the product (paid red, Bybit yellow, 21bitcoin green) */
 .bar .f.r { background: var(--red); box-shadow: 0 0 12px rgba(248,81,73,.45); }
 .bar .f.y { background: var(--yellow); }
 .bar .f.g { background: var(--green); min-width: 6px; }
@@ -737,7 +737,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <label class="drop only-audit" id="drop">
         <input type="file" accept=".csv" id="file" aria-label="Виберіть експорт із біржі (CSV)">
         <b>Перетягніть сюди експорт із біржі</b>
-        <span>CSV з Kraken, ByBit EU або 21bitcoin · або скористайтеся прикладом</span>
+        <span>CSV з Kraken, Bybit EU або 21bitcoin · або скористайтеся прикладом</span>
       </label>
       <div class="meter"><span id="fileName">kraken-ledgers-2026.csv · 214 рядків</span><span><b id="bytes">0</b> байтів надіслано</span></div>
       <ol class="steps" id="steps">
@@ -750,10 +750,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="big"><span id="over">341</span>&nbsp;€ <small>з покупок на 43 000 €</small></div>
         <div class="bars">
           <div class="bar"><span>Ви заплатили · Kraken Pro 0,8%</span><div class="t"><div class="f r" data-w="100"></div></div><b>449 €</b></div>
-          <div class="bar"><span>ByBit EU 0,25%</span><div class="t"><div class="f y" data-w="24"></div></div><b>108 €</b></div>
+          <div class="bar"><span>Bybit EU 0,25%</span><div class="t"><div class="f y" data-w="24"></div></div><b>108 €</b></div>
           <div class="bar"><span>21bitcoin Auto-Invest 0%*</span><div class="t"><div class="f g" data-w="1"></div></div><b>0 €</b></div>
         </div>
-        <p class="sample">Приклад експорту та цифри для ілюстрації. Опубліковані taker-комісії за звичайну ринкову покупку, зі сторінок самих партнерів: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">ByBit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, перевірено 12 жовтня 2026 року; див. також <a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a>. Спред і комісії за виведення не враховано; спред 21bitcoin ми ще не вимірювали. *0% з 8-го дня Auto-Invest. Не є інвестиційною порадою.</p>
+        <p class="sample">Приклад експорту та цифри для ілюстрації. Опубліковані taker-комісії за звичайну ринкову покупку, зі сторінок самих партнерів: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">Bybit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, перевірено 12 жовтня 2026 року; див. також <a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a>. Спред і комісії за виведення не враховано; спред 21bitcoin ми ще не вимірювали. *0% з 8-го дня Auto-Invest. Не є інвестиційною порадою.</p>
       </div>
     </div>
   </div>
@@ -900,10 +900,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Звідки Verdict бере факти?</summary><p>З офіційних джерел, якими Virtuse вже користується, наприклад податкових правил 13 країн, кожне з датою перевірки. Коли якогось факту бракує, Verdict запитує вас.</p></details>
       <details><summary>Що відбувається з тим, що я пишу?</summary><p>Без акаунта нічого не зберігається. З акаунтом Virtuse CFO ви можете зберігати історію своїх рішень і будь-коли її видалити.</p></details>
       <details><summary>Як отримати експорт із Kraken?</summary><p>На kraken.com натисніть значок профілю вгорі праворуч і виберіть <b>Documents</b>. У розділі Exports натисніть <b>Create export</b>, виберіть <b>Ledgers</b>, задайте дату початку й кінця, виберіть <b>CSV</b> і натисніть Generate. Коли файл буде готовий, він з'явиться в тому самому списку. Це може тривати від кількох хвилин до кількох днів, і Kraken не надсилає листа. Вибирайте Ledgers, а не Trades: там є всі комісії та ваші миттєві покупки. Якщо ви користуєтеся Kraken Pro і не бачите Documents, пошукайте в розділі Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Інструкція Kraken</a></p></details>
-      <details><summary>А з ByBit EU чи 21bitcoin?</summary><p>ByBit EU: експортуйте історію спотових угод у розділі Orders. Для довших періодів може знадобитися кілька файлів. 21bitcoin: у застосунку відкрийте свою активність і скористайтеся значком завантаження, щоб експортувати всі транзакції. Біржі час від часу змінюють меню, тож якщо крок виглядає інакше, перегляньте їхні довідкові сторінки.</p></details>
+      <details><summary>А з Bybit EU чи 21bitcoin?</summary><p>Bybit EU: експортуйте історію спотових угод у розділі Orders. Для довших періодів може знадобитися кілька файлів. 21bitcoin: у застосунку відкрийте свою активність і скористайтеся значком завантаження, щоб експортувати всі транзакції. Біржі час від часу змінюють меню, тож якщо крок виглядає інакше, перегляньте їхні довідкові сторінки.</p></details>
       <details><summary>Чи завантажується мій файл кудись?</summary><p>Ні. Аудит читає файл у вашому браузері й нічого не надсилає Virtuse. Ви можете самі перевірити це на вкладці «Мережа» у браузері.</p></details>
       <details><summary>Чи потрібні акаунт або картка?</summary><p>Ні. Для безкоштовного аудиту не потрібно ні того, ні іншого. Акаунт ви створюєте, лише якщо згодом оберете Virtuse CFO.</p></details>
-      <details><summary>Які біржі працюють на старті?</summary><p>Kraken, ByBit EU та 21bitcoin. Інші біржі додамо після запуску.</p></details>
+      <details><summary>Які біржі працюють на старті?</summary><p>Kraken, Bybit EU та 21bitcoin. Інші біржі додамо після запуску.</p></details>
       <details><summary>Це інвестиційна чи податкова порада?</summary><p>Ні. Аудит показує, скільки ви заплатили, та опубліковані комісії ліцензованих партнерів. Що з цим робити, вирішуєте ви. З податковими питаннями звертайтеся до податкового консультанта.</p></details>
     </div>
   </section>

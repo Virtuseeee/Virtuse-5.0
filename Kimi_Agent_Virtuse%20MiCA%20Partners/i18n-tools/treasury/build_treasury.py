@@ -41,7 +41,7 @@ def build(L):
         i = p['id']
         rows.append('<div class="row tp-row"><span class="hc-name"><img src="{root}{logo}" alt="" width="36" height="36" loading="lazy"><span><b>{name}</b><small>{reg}</small></span></span>'
                     '<span class="tp-reg">{reg}</span><span class="tp-model">{model}</span><span class="tp-scale">{scale}</span><span class="tp-use">{use}</span>'
-                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{cta}">{contact} {arrow}</a></div>'.format(
+                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="sponsored noopener" aria-label="{cta}">{contact} {arrow}</a></div>'.format(
                         root=root, logo=p['logo'], name=p['short'], reg=t('pr_%s_reg' % i), model=t('pr_%s_model' % i), scale=t('pr_%s_scale' % i),
                         use=t('pr_%s_use' % i), url=p['url'], cta=t('pr_%s_cta' % i), contact=t('contact'), arrow=C.ARROW))
     panel = '''<div class="hpanel indigo tp-panel">
@@ -115,7 +115,7 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
       </article>'''.format(i=i, root=root, logo=p['logo'], name=p['name'], tag=tag, loc=t('pr_%s_loc' % i), details=t('details'),
                            body=t('pr_%s_body' % i), feats=feats, url=p['url'], cta=t('pr_%s_cta' % i), out=C.OUT))
 
