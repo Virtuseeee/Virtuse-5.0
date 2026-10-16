@@ -104,5 +104,16 @@
  "email": "E-mail-cím",
  "b_btn": "Feliratkozás",
  "b_fine": "Bármikor leiratkozhat. Nem befektetési tanács.",
- "b_img_alt": "A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot"
+ "b_img_alt": "A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot",
+ "g_h2_a": "Bitcoin és arany.",
+ "g_h2_b": "Uncia arany egy bitcoinért, hozamok 2016 óta.",
+ "g_ytd": "Év elejétől",
+ "g_1y": "1 év",
+ "g_ratio": "1 BTC aranyban",
+ "g_sub": "Bitcoin · arany",
+ "g_oz": "uncia",
+ "g_note": "Teljes hozam USD-ben (arany a GLD ETF-en keresztül); az arány az arany határidős árát használja. Naponta frissül.",
+ "g_cta": "Bitcoin vs arany, ezüst és nyersanyagok",
+ "c_gold": "Bitcoin vs arany",
+ "c_gold_p": "Arany, ezüst, olaj és réz évről évre, plusz a BTC/arany arány."
 }

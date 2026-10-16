@@ -1,19 +1,19 @@
 old_pattern,target,note,status
-/gold/,/asset-returns.html,table row 1 (was 301 in legacy-exchange),ready
-/silver/,/asset-returns.html,table row 1 (was 410),ready
-/platinum/,/asset-returns.html,table row 1 (was 410),ready
-/commodities/,/asset-returns.html,table row 1 (was 301 in legacy-exchange),ready
-/crypto-commodities-what-are-they/,/asset-returns.html,table row 1 (a /stories/ page exists for this slug; the table wins),ready
-/sk/zlato/,/asset-returns.html,table row 1 (was 410),ready
-/sk/striebro/,/asset-returns.html,table row 1 (was 410),ready
-/sk/platina/,/asset-returns.html,table row 1 (was 410),ready
-/sk/komodity/,/asset-returns.html,extension: Slovak twin of /commodities/ (was 410),ready
-/pax-gold-prospectus/,/asset-returns.html,table row 1 (was forwarded to the blog post),ready
+/gold/,/bitcoin-vs-gold.html,table row 1 (was 301 in legacy-exchange); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/silver/,/bitcoin-vs-gold.html,table row 1 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/platinum/,/bitcoin-vs-gold.html,table row 1 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/commodities/,/bitcoin-vs-gold.html,table row 1 (was 301 in legacy-exchange); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/crypto-commodities-what-are-they/,/bitcoin-vs-gold.html,table row 1 (a /stories/ page exists for this slug; the table wins); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/sk/zlato/,/bitcoin-vs-gold.html,table row 1 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/sk/striebro/,/bitcoin-vs-gold.html,table row 1 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/sk/platina/,/bitcoin-vs-gold.html,table row 1 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/sk/komodity/,/bitcoin-vs-gold.html,extension: Slovak twin of /commodities/ (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/pax-gold-prospectus/,/bitcoin-vs-gold.html,table row 1 (was forwarded to the blog post); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
 /etfs/,/asset-returns.html,table row 1 (was 410),ready
-/oil/,/asset-returns.html,table row 2 (was 410),ready
-/crude-oil/,/asset-returns.html,table row 2,ready
-/sk/ropa/,/asset-returns.html,table row 2 (was 410),ready
-/*oil*/,/asset-returns.html,"table row 2: any other first path segment containing ""oil""; runs after the post rules and never on real files",ready
+/oil/,/bitcoin-vs-gold.html,table row 2 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/crude-oil/,/bitcoin-vs-gold.html,table row 2; 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/sk/ropa/,/bitcoin-vs-gold.html,table row 2 (was 410); 16 Oct 2026: target moved to bitcoin-vs-gold.html,ready
+/*oil*/,/bitcoin-vs-gold.html,"table row 2: any other first path segment containing ""oil""; runs after the post rules and never on real files; 16 Oct 2026: target moved to bitcoin-vs-gold.html",ready
 /virtusex-platform/,/concierge.html,table row 3 (was 410),ready
 /sk/virtusex-platformy/,/concierge.html,extension: Slovak twin of /virtusex-platform/ (was 410),ready
 /vex*,/concierge.html,"table row 3: first segment starting with ""vex""; never on real files",ready

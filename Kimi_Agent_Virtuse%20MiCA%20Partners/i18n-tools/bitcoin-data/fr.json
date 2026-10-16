@@ -104,5 +104,16 @@
  "email": "Adresse e-mail",
  "b_btn": "Recevoir le Brief",
  "b_fine": "Désabonnement à tout moment. Ceci n'est pas un conseil en investissement.",
- "b_img_alt": "Coursier du Virtuse Brief à scooter livrant l'édition du 5&nbsp;oct. 2026"
+ "b_img_alt": "Coursier du Virtuse Brief à scooter livrant l'édition du 5&nbsp;oct. 2026",
+ "g_h2_a": "Bitcoin vs or.",
+ "g_h2_b": "Onces d'or par bitcoin, rendements depuis 2016.",
+ "g_ytd": "Depuis le début de l'année",
+ "g_1y": "1 an",
+ "g_ratio": "1 BTC en or",
+ "g_sub": "Bitcoin · or",
+ "g_oz": "oz",
+ "g_note": "Rendement total en USD (or via l'ETF GLD) ; le ratio utilise le prix des contrats à terme sur l'or. Mise à jour quotidienne.",
+ "g_cta": "Bitcoin vs or, argent et matières premières",
+ "c_gold": "Bitcoin vs or",
+ "c_gold_p": "Or, argent, pétrole et cuivre année par année, plus le ratio BTC/or."
 }

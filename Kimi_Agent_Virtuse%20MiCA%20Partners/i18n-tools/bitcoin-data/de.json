@@ -104,5 +104,16 @@
  "email": "E-Mail-Adresse",
  "b_btn": "Brief erhalten",
  "b_fine": "Jederzeit abbestellbar. Keine Anlageberatung.",
- "b_img_alt": "Kurier des Virtuse Brief auf einem Roller bringt die Ausgabe vom 5. Okt. 2026"
+ "b_img_alt": "Kurier des Virtuse Brief auf einem Roller bringt die Ausgabe vom 5. Okt. 2026",
+ "g_h2_a": "Bitcoin vs. Gold.",
+ "g_h2_b": "Unzen Gold je Bitcoin, Renditen seit 2016.",
+ "g_ytd": "Seit Jahresbeginn",
+ "g_1y": "1 Jahr",
+ "g_ratio": "1 BTC in Gold",
+ "g_sub": "Bitcoin · Gold",
+ "g_oz": "oz",
+ "g_note": "Gesamtrendite in USD (Gold über den ETF GLD); das Verhältnis nutzt den Gold-Futures-Preis. Täglich aktualisiert.",
+ "g_cta": "Bitcoin vs. Gold, Silber und Rohstoffe",
+ "c_gold": "Bitcoin vs. Gold",
+ "c_gold_p": "Gold, Silber, Öl und Kupfer Jahr für Jahr, plus das BTC/Gold-Verhältnis."
 }

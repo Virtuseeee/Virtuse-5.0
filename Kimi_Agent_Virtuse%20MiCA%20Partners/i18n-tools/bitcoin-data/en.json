@@ -104,5 +104,16 @@
  "email": "Email address",
  "b_btn": "Get the Brief",
  "b_fine": "Unsubscribe anytime. Not advice.",
- "b_img_alt": "Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue"
+ "b_img_alt": "Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue",
+ "g_h2_a": "Bitcoin vs gold.",
+ "g_h2_b": "Ounces of gold per bitcoin, returns since 2016.",
+ "g_ytd": "Year to date",
+ "g_1y": "1 year",
+ "g_ratio": "1 BTC in gold",
+ "g_sub": "Bitcoin · gold",
+ "g_oz": "oz",
+ "g_note": "Total return in USD (gold via the GLD ETF); the ratio uses the gold futures price. Updated daily.",
+ "g_cta": "Bitcoin vs gold, silver and commodities",
+ "c_gold": "Bitcoin vs gold",
+ "c_gold_p": "Gold, silver, oil and copper year by year, plus the BTC/gold ratio."
 }

@@ -1,6 +1,6 @@
 /* Virtuse Bitcoin Data (bitcoin-data.html, design v2): live values with loading, stale and error states.
    Sources: mempool.space (price, blocks, fees, hashrate, difficulty), CoinGecko (24 h change, market cap,
-   price history); no other exchange APIs, data/asset-returns.json (year-to-date comparison). Strings come from #bdI18n. */
+   price history); no other exchange APIs, data/asset-returns.json (year-to-date comparison), data/bitcoin-vs-commodities.json (Bitcoin vs gold teaser). Strings come from #bdI18n. */
 (function () {
   'use strict';
   var I = {};
@@ -11,7 +11,7 @@
   var cur = I.cur || 'USD';
   try { var saved = localStorage.getItem('vb-bd-cur'); if (saved === 'USD' || saved === 'EUR') cur = saved; } catch (e) {}
   var st = { price: null, chg: null, mcap: null, height: null, days: 90, hist: {} };
-  var groups = { price: { ok: 0, fail: false }, net: { ok: 0, fail: false }, supply: { ok: 0, fail: false }, macro: { ok: 0, fail: false } };
+  var groups = { price: { ok: 0, fail: false }, net: { ok: 0, fail: false }, supply: { ok: 0, fail: false }, macro: { ok: 0, fail: false }, gold: { ok: 0, fail: false } };
 
   function q(s, r) { return (r || document).querySelector(s); }
   function qa(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -162,6 +162,21 @@
     }).catch(function () { fail('macro'); });
   }
 
+  // Bitcoin vs gold teaser: data/bitcoin-vs-commodities.json (commodities-build, daily)
+  function loadGold() {
+    var box = q('[data-g="gold"]'); if (!box) return;
+    j(I.goldRaw).catch(function () { return j(I.goldLocal); }).then(function (d) {
+      var by = {}; (d.assets || []).forEach(function (a) { by[a.id] = a; });
+      var pair = function (k) {
+        var b = by.btc.periods[k].usd * 100, g = by.gold.periods[k].usd * 100;
+        return '<span class="' + (b >= 0 ? 'up' : 'down') + '">' + pct(b, 1, true) + '</span> <span class="bd-vs">·</span> <span class="' + (g >= 0 ? 'up' : 'down') + '">' + pct(g, 1, true) + '</span>';
+      };
+      set('g-ytd', pair('ytd')); set('g-1y', pair('y1'));
+      set('g-ratio', nf(d.ratio.gold.current, 1) + ' <small>' + I.g_oz + '</small>');
+      ok('gold');
+    }).catch(function () { fail('gold'); });
+  }
+
   qa('.bd-cur button').forEach(function (b) { b.addEventListener('click', function () { cur = b.getAttribute('data-cur'); try { localStorage.setItem('vb-bd-cur', cur); } catch (e) {} renderPrice(); }); });
   qa('.bd-range [data-days]').forEach(function (b) { b.addEventListener('click', function () {
     st.days = +b.getAttribute('data-days'); qa('.bd-range [data-days]').forEach(function (x) { x.classList.toggle('on', x === b); }); chart();
@@ -169,7 +184,7 @@
   qa('.bd-retry').forEach(function (b) { b.addEventListener('click', function () { refresh(); }); });
 
   function refresh() { loadPrice(); loadNet(); }
-  refresh(); loadMacro();
+  refresh(); loadMacro(); loadGold();
   setInterval(refresh, 60000);
   setInterval(paint, 30000);
 })();

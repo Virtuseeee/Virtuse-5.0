@@ -3,7 +3,7 @@
 
 usage: python3 build_bitcoin_data.py en [sk cs ...]   (texts: <lang>.json next to this file)
 Live values are filled by btc-data.js (mempool.space + CoinGecko, asset-returns.json for the
-macro teaser); the page only carries labels, empty slots and the strings the script needs.
+macro teaser, bitcoin-vs-commodities.json for the gold teaser); the page only carries labels, empty slots and the strings the script needs.
 """
 import html, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 import v2common as C
 
 AR_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json'
+GOLD_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json'
 SKEL = '<span class="sk" aria-hidden="true"></span>'
 
 
@@ -31,7 +32,7 @@ def build(L):
     fees = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, C.B.GUIDES[L][1])
     i18n = {k: T[k] for k in ('updated', 'fees_equal', 'stale', 'unavailable', 'retry', 'n_block_ago', 'n_unknown', 's_halving_sub',
                               'p_chart', 'p_sats', 'p_sats_eur', 'u_s', 'u_min', 'u_h', 'u_days', 'u_years')}
-    i18n.update(locale=C.B.LOCALE.get(L, 'en-US'), pct=' %' if L in C.PCT_SPACE else '%', cur=cur, raw=AR_RAW, local=root + 'data/asset-returns.json')
+    i18n.update(locale=C.B.LOCALE.get(L, 'en-US'), pct=' %' if L in C.PCT_SPACE else '%', cur=cur, raw=AR_RAW, local=root + 'data/asset-returns.json', goldRaw=GOLD_RAW, goldLocal=root + 'data/bitcoin-vs-commodities.json', g_oz=T['g_oz'])
     i18n = {k: (v if not isinstance(v, str) else html.unescape(v)) for k, v in i18n.items()}  # the script sets textContent
 
     def card(key, label, sub='', cls=''):
@@ -109,7 +110,16 @@ def build(L):
                       for tk, k in (('BTC', 'm_btc'), ('GLD', 'm_gold'), ('SPY', 'm_spx'), ('BND', 'm_bonds'))),
         note=t('m_note'), cta=t('m_cta'))
 
-    charts = [('btc-monthly-returns.html', 'c_monthly'), ('asset-returns.html', 'c_assets'), ('trading-volume.html', 'c_volume'), ('fear-greed.html', 'c_fear'),
+    gold = '''<div class="bd-macro bd-gold" data-g="gold">
+      {tiles}
+    </div>
+    <p class="bd-note">{note}</p>
+    <a class="hp-cta" href="bitcoin-vs-gold.html">{cta} <span aria-hidden="true">→</span></a>'''.format(
+        tiles=''.join('<div class="bd-m" data-k="%s"><span class="bd-l">%s</span><b class="bd-v">%s</b><span class="bd-s">%s</span></div>' % (k, t(lab), SKEL, sub)
+                      for k, lab, sub in (('g-ytd', 'g_ytd', t('g_sub')), ('g-1y', 'g_1y', t('g_sub')), ('g-ratio', 'g_ratio', 'GC=F'))),
+        note=t('g_note'), cta=t('g_cta'))
+
+    charts = [('btc-monthly-returns.html', 'c_monthly'), ('asset-returns.html', 'c_assets'), ('bitcoin-vs-gold.html', 'c_gold'), ('trading-volume.html', 'c_volume'), ('fear-greed.html', 'c_fear'),
               ('rainbow-chart.html', 'c_rainbow'), ('ma-200w.html', 'c_wma'), ('root-cycles.html', 'c_root'), ('btc-dominance.html', 'c_dom')]
     grid = ''.join('<a class="bd-chart" href="%s"><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (h, t(k), t(k + '_p'), C.ARROW) for h, k in charts)
     grid += '<a class="bd-chart bd-tool" href="retirement-calculator.html"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
@@ -149,6 +159,11 @@ def build(L):
     {macro}
   </section>
 
+  <section id="gold">
+    <div class="sec-head one"><div class="sec-copy"><h2>{gh2a} <span>{gh2b}</span></h2></div></div>
+    {gold}
+  </section>
+
   <section id="charts">
     <div class="sec-head one"><div class="sec-copy"><h2>{ch2a} <span>{ch2b}</span></h2></div></div>
     <div class="bd-charts">{grid}</div>
@@ -160,10 +175,10 @@ def build(L):
   {foot}
 </main>
 <script type="application/json" id="bdI18n">{i18n}</script>
-<script src="{root}btc-data.js?v=2" defer></script>
+<script src="{root}btc-data.js?v=3" defer></script>
 '''.format(nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), lead=t('lead'), keys=keys, loading=t('loading'), sources=t('sources'),
            mp=mp, cg=cg, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), market=market, nh2a=t('n_h2_a'), nh2b=t('n_h2_b'), net=net,
-           sh2a=t('s_h2_a'), sh2b=t('s_h2_b'), supply=supply, mh2a=t('m_h2_a'), mh2b=t('m_h2_b'), macro=macro,
+           sh2a=t('s_h2_a'), sh2b=t('s_h2_b'), supply=supply, mh2a=t('m_h2_a'), mh2b=t('m_h2_b'), macro=macro, gh2a=t('g_h2_a'), gh2b=t('g_h2_b'), gold=gold,
            ch2a=t('c_h2_a'), ch2b=t('c_h2_b'), grid=grid, brief=re.sub(r'\s*<div class="btc-spark" id="btcSpark" hidden>.*?</svg>\s*</div>', '', C.brief(L, t, root, 'data_brief'), flags=re.S), disclaimer=t('disclaimer'),
            foot=foot, i18n=json.dumps(i18n, ensure_ascii=False).replace('</', '<\\/'), root=root)
     out = C.fix_links(L, head + body + C.scripts(root))

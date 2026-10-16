@@ -104,5 +104,16 @@
  "email": "Correo electrónico",
  "b_btn": "Recibir el Brief",
  "b_fine": "Puede darse de baja cuando quiera. No es asesoramiento.",
- "b_img_alt": "Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026"
+ "b_img_alt": "Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026",
+ "g_h2_a": "Bitcoin vs oro.",
+ "g_h2_b": "Onzas de oro por bitcoin, rentabilidades desde 2016.",
+ "g_ytd": "En lo que va de año",
+ "g_1y": "1 año",
+ "g_ratio": "1 BTC en oro",
+ "g_sub": "Bitcoin · oro",
+ "g_oz": "oz",
+ "g_note": "Rentabilidad total en USD (oro a través del ETF GLD); el ratio usa el precio de los futuros del oro. Actualizado a diario.",
+ "g_cta": "Bitcoin vs oro, plata y materias primas",
+ "c_gold": "Bitcoin vs oro",
+ "c_gold_p": "Oro, plata, petróleo y cobre año a año, más el ratio BTC/oro."
 }

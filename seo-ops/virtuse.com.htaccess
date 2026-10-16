@@ -113,17 +113,28 @@ RewriteRule ^ru/article\.html$ https://virtuse.com/ru/blog.html? [R=301,L]
 RewriteRule ^it/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
 
 # The table (all languages: /xx/<old>/ → /xx/<target> if it exists, else EN)
-RewriteRule ^(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/asset-returns.html [R=301,L]
-RewriteRule ^de/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/de/asset-returns.html [R=301,L]
-RewriteRule ^es/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/es/asset-returns.html [R=301,L]
-RewriteRule ^fr/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/fr/asset-returns.html [R=301,L]
-RewriteRule ^pl/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/pl/asset-returns.html [R=301,L]
-RewriteRule ^hu/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/hu/asset-returns.html [R=301,L]
-RewriteRule ^cs/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/cs/asset-returns.html [R=301,L]
-RewriteRule ^sk/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|zlato(?:/.*)?|striebro(?:/.*)?|platina(?:/.*)?|komodity(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?|ropa(?:/.*)?)$ https://virtuse.com/sk/asset-returns.html [R=301,L]
-RewriteRule ^uk/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/uk/asset-returns.html [R=301,L]
-RewriteRule ^ru/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/ru/asset-returns.html [R=301,L]
-RewriteRule ^it/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|etfs(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/asset-returns.html [R=301,L]
+RewriteRule ^(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^de/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^es/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^fr/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^pl/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^hu/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^cs/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^sk/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|zlato(?:/.*)?|striebro(?:/.*)?|platina(?:/.*)?|komodity(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?|ropa(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^uk/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^ru/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^it/(?:gold(?:/.*)?|silver(?:/.*)?|platinum(?:/.*)?|commodities(?:/.*)?|crypto-commodities-what-are-they(?:/.*)?|pax-gold-prospectus(?:/.*)?|oil(?:/.*)?|crude-oil(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
+RewriteRule ^(?:etfs(?:/.*)?)$ https://virtuse.com/asset-returns.html [R=301,L]
+RewriteRule ^de/(?:etfs(?:/.*)?)$ https://virtuse.com/de/asset-returns.html [R=301,L]
+RewriteRule ^es/(?:etfs(?:/.*)?)$ https://virtuse.com/es/asset-returns.html [R=301,L]
+RewriteRule ^fr/(?:etfs(?:/.*)?)$ https://virtuse.com/fr/asset-returns.html [R=301,L]
+RewriteRule ^pl/(?:etfs(?:/.*)?)$ https://virtuse.com/pl/asset-returns.html [R=301,L]
+RewriteRule ^hu/(?:etfs(?:/.*)?)$ https://virtuse.com/hu/asset-returns.html [R=301,L]
+RewriteRule ^cs/(?:etfs(?:/.*)?)$ https://virtuse.com/cs/asset-returns.html [R=301,L]
+RewriteRule ^sk/(?:etfs(?:/.*)?)$ https://virtuse.com/sk/asset-returns.html [R=301,L]
+RewriteRule ^uk/(?:etfs(?:/.*)?)$ https://virtuse.com/uk/asset-returns.html [R=301,L]
+RewriteRule ^ru/(?:etfs(?:/.*)?)$ https://virtuse.com/ru/asset-returns.html [R=301,L]
+RewriteRule ^it/(?:etfs(?:/.*)?)$ https://virtuse.com/asset-returns.html [R=301,L]
 RewriteRule ^(?:virtusex-platform(?:/.*)?|token-listing(?:/.*)?|virtu-token(?:/.*)?|delisting-announcement(?:/.*)?|hummingbot-integration(?:/.*)?)$ https://virtuse.com/concierge.html [R=301,L]
 RewriteRule ^de/(?:virtusex-platform(?:/.*)?|token-listing(?:/.*)?|virtu-token(?:/.*)?|delisting-announcement(?:/.*)?|hummingbot-integration(?:/.*)?)$ https://virtuse.com/de/concierge.html [R=301,L]
 RewriteRule ^es/(?:virtusex-platform(?:/.*)?|token-listing(?:/.*)?|virtu-token(?:/.*)?|delisting-announcement(?:/.*)?|hummingbot-integration(?:/.*)?)$ https://virtuse.com/es/concierge.html [R=301,L]
@@ -734,37 +745,37 @@ RewriteRule ^sk/(?:uruguaj-ma-svoj-prvy-bitomat|usa-pouziju-blockchain-na-boj-pr
 # Wildcards from the table (after the posts, never on real files)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/asset-returns.html [R=301,L]
+RewriteRule ^(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^de/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/de/asset-returns.html [R=301,L]
+RewriteRule ^de/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^es/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/es/asset-returns.html [R=301,L]
+RewriteRule ^es/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^fr/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/fr/asset-returns.html [R=301,L]
+RewriteRule ^fr/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^pl/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/pl/asset-returns.html [R=301,L]
+RewriteRule ^pl/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^hu/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/hu/asset-returns.html [R=301,L]
+RewriteRule ^hu/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^cs/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/cs/asset-returns.html [R=301,L]
+RewriteRule ^cs/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^sk/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/sk/asset-returns.html [R=301,L]
+RewriteRule ^sk/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^uk/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/uk/asset-returns.html [R=301,L]
+RewriteRule ^uk/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ru/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/ru/asset-returns.html [R=301,L]
+RewriteRule ^ru/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^it/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/asset-returns.html [R=301,L]
+RewriteRule ^it/(?:[^/]*oil[^/]*(?:/.*)?)$ https://virtuse.com/bitcoin-vs-gold.html [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(?:vex[^/]*(?:/.*)?)$ https://virtuse.com/concierge.html [R=301,L]

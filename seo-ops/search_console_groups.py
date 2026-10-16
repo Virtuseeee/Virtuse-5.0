@@ -24,10 +24,10 @@ GROUPS = {
     'categories': P + r'(?:buy-bitcoin|mining|lending|secure|treasury|tax|bots)\.html' + END,
     'seo': P + r'(?:bitcoin-[a-z0-9-]+|sell-vs-borrow-bitcoin|buy-bitcoin)/',
     'data': P + r'(?:bitcoin-data|ma-200w|rainbow-chart|root-cycles|fear-greed|trading-volume|btc-dominance'
-                r'|retirement-calculator|asset-returns|btc-monthly-returns)\.html' + END,
+                r'|retirement-calculator|asset-returns|btc-monthly-returns|bitcoin-vs-gold)\.html' + END,
     'stories': P + r'stories/',
     'tools': P + r'(?:concierge|stacking|loan|tax-agent)\.html' + END,
-    'info': P + r'(?:about|faq|privacy-policy|terms-and-conditions|aml-compliance|blog|blog-sk|news|article)\.html' + END,
+    'info': P + r'(?:about|faq|privacy-policy|terms-and-conditions|aml-compliance|operator|how-we-earn|blog|blog-sk|news|article)\.html' + END,
 }
 NEW_SITE = '|'.join(f'(?:{r})' for r in GROUPS.values())
 

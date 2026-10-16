@@ -104,5 +104,16 @@
  "email": "Adres e-mail",
  "b_btn": "Zapisuję się",
  "b_fine": "Rezygnacja w dowolnym momencie. To nie jest porada inwestycyjna.",
- "b_img_alt": "Kurier Virtuse Brief na skuterze dostarcza wydanie z 5 października 2026"
+ "b_img_alt": "Kurier Virtuse Brief na skuterze dostarcza wydanie z 5 października 2026",
+ "g_h2_a": "Bitcoin a złoto.",
+ "g_h2_b": "Uncje złota za jednego bitcoina, stopy zwrotu od 2016 r.",
+ "g_ytd": "Od początku roku",
+ "g_1y": "1 rok",
+ "g_ratio": "1 BTC w złocie",
+ "g_sub": "Bitcoin · złoto",
+ "g_oz": "oz",
+ "g_note": "Całkowita stopa zwrotu w USD (złoto przez ETF GLD); wskaźnik używa ceny kontraktów terminowych na złoto. Aktualizacja codziennie.",
+ "g_cta": "Bitcoin vs złoto, srebro i surowce",
+ "c_gold": "Bitcoin vs złoto",
+ "c_gold_p": "Złoto, srebro, ropa i miedź rok po roku, plus wskaźnik BTC/złoto."
 }

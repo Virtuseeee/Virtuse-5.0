@@ -104,5 +104,16 @@
  "email": "E-mailová adresa",
  "b_btn": "Získať Brief",
  "b_fine": "Odhlásiť sa môžete kedykoľvek. Nie je to poradenstvo.",
- "b_img_alt": "Kuriér Virtuse Brief na skútri doručuje vydanie z 5. 10. 2026"
+ "b_img_alt": "Kuriér Virtuse Brief na skútri doručuje vydanie z 5. 10. 2026",
+ "g_h2_a": "Bitcoin a zlato.",
+ "g_h2_b": "Unce zlata za jeden bitcoin, výnosy od roku 2016.",
+ "g_ytd": "Od začiatku roka",
+ "g_1y": "1 rok",
+ "g_ratio": "1 BTC v zlate",
+ "g_sub": "Bitcoin · zlato",
+ "g_oz": "oz",
+ "g_note": "Celkový výnos v USD (zlato cez ETF GLD); pomer používa cenu zlata na futures. Aktualizované denne.",
+ "g_cta": "Bitcoin vs. zlato, striebro a komodity",
+ "c_gold": "Bitcoin vs. zlato",
+ "c_gold_p": "Zlato, striebro, ropa a meď rok po roku, plus pomer BTC/zlato."
 }
