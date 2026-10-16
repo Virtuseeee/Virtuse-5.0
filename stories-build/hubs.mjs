@@ -163,8 +163,9 @@ const TOPICS = [
   { id: 'treasury', links: ['treasury', 'cfo'],
     words: ['treasury', 'treasuries', 'balance sheet', 'microstrategy', 'saylor', 'corporate treasury', 'corporations', 'firemn*',
       'korporác*', 'казначейств*', 'корпорац*', 'баланс компании'] },
-  // gold: only when the title or description is about it ("digital gold" in a body is too common)
-  { id: 'gold', links: ['gold'], titleOnly: true,
+  // gold: only when the title or description is about it ("digital gold" in a body is too common).
+  // extra: added in front of the links the other topics pick, never instead of them (max 4 links).
+  { id: 'gold', links: ['gold'], titleOnly: true, extra: true,
     words: ['gold', 'silver', 'commodity', 'commodities', 'precious metal', 'precious metals', 'zlat*', 'striebr*', 'komodit*',
       'золот*', 'серебр*', 'сырьев*', 'сырь*'] },
   { id: 'buy', links: ['stacking', 'feeIndex', 'buy'],
@@ -181,13 +182,21 @@ for (const t of TOPICS) {
 }
 const hits = (re, s) => (String(s || '').toLowerCase().match(re) || []).length;
 
-/** Keys of LINKS for a story: 2-3 links, best topic first, Partner Finder to fill. */
-export function relatedKeys({ title, description, bodyText, deskId }) {
-  const scored = TOPICS.map((t, i) => {
-    let score = 4 * hits(t.re, title) + 2 * hits(t.re, description) + (t.titleOnly ? 0 : 0.5 * Math.min(hits(t.re, bodyText), 8));
-    if (DESK_TOPIC[deskId] === t.id) score += 1;
-    return { t, i, score };
-  }).filter((x) => x.score >= 2).sort((a, b) => b.score - a.score || a.i - b.i);
+const topicScore = (t, { title, description, bodyText, deskId }) =>
+  4 * hits(t.re, title) + 2 * hits(t.re, description) + (t.titleOnly ? 0 : 0.5 * Math.min(hits(t.re, bodyText), 8))
+  + (DESK_TOPIC[deskId] === t.id ? 1 : 0);
+
+/** Keys of LINKS for a story: 2-3 links from the topics (best first, Partner Finder to fill),
+ *  plus the links of matching `extra` topics in front (so at most 4; nothing from the 2-3 drops). */
+export function relatedKeys(info) {
+  const base = baseKeys(info);
+  const extra = TOPICS.filter((t) => t.extra && topicScore(t, info) >= 2).flatMap((t) => t.links).filter((k) => !base.includes(k));
+  return [...new Set(extra), ...base];
+}
+
+function baseKeys(info) {
+  const scored = TOPICS.filter((t) => !t.extra).map((t, i) => ({ t, i, score: topicScore(t, info) }))
+    .filter((x) => x.score >= 2).sort((a, b) => b.score - a.score || a.i - b.i);
   const out = [];
   for (const { t } of scored) {
     for (const k of t.links) if (!out.includes(k) && out.length < 3) out.push(k);
