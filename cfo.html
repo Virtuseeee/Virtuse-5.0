@@ -652,6 +652,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-card .vd-again { justify-self: start; }
 .vd-card.busy { opacity: .55; transition: opacity .2s; }
 </style>
+<style>
+.plan .wait-plan { margin-top: auto; max-width: none; }
+.plan .wait-plan input { flex-basis: 100%; }
+.plan .wait-plan .btn { width: 100%; }
+</style>
 </head>
 <body>
 <script>document.body.classList.toggle('stage-wait', (document.querySelector('meta[name="vb-cfo-stage"]') || {}).content !== 'audit');</script>
@@ -823,7 +828,14 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <p class="for"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p>
         <ul><li>Free fee audit from your export, from 1 November</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul>
         <button class="btn btn-primary only-audit" type="button" data-run>Start with the free audit</button>
-        <a class="btn btn-primary only-wait" href="#waitForm">Let me know</a>
+        <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Let me know</button>
+          <div class="wait-msg" aria-live="polite"></div>
+          <p class="wait-note">One email when paid plans open in January. Nothing else.</p>
+          <span class="wait-ok" hidden>You're on the list. We'll email you once, when paid plans open in January.</span>
+        </form>
       </div>
     </div>
     <div class="terms">
@@ -1136,9 +1148,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Waitlist -> Worker /waitlist (source cfo_page)
-(function () {
-  var form = document.getElementById('waitForm'), msg = document.getElementById('waitMsg'); if (!form) return;
+// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans in January).
+document.querySelectorAll('form.wait').forEach(function (form) {
+  var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1147,18 +1160,18 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Sending...';
     fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, source: 'cfo_page' })
+      body: JSON.stringify({ email: email, hp: hp, source: source })
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = "You're on the list. We'll email you once, on 1 November, when Verdict and the free audit open.";
-          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist' });
+          form.reset(); msg.textContent = ok ? ok.textContent : "You're on the list. We'll email you once, on 1 November, when Verdict and the free audit open.";
+          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Something went wrong. Please try again.'; }
       })
       .catch(function () { msg.textContent = 'Network error. Please try again.'; })
       .then(function () { sub.disabled = false; sub.textContent = label; });
   });
-})();
+});
 document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   a.addEventListener('click', function () { setTimeout(function () { var i = document.querySelector('#waitForm input[name="email"]'); if (i) i.focus(); }, 400); });
 });
