@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Consent banner + GTM on the 204 seo-build pages (branch `fix/seo-gtm` on main `50f1e57c`, not merged)
+
+- User decision: seo-build pages get the same head block as the Fee Index and the rest of the site (consent default → `/cookie-consent.js` → `/partner-click.js` → `/partner-capture.js` → GTM-KXX4Q6WH with the staging guard). Exported from `buy-bitcoin.html` by `i18n-tools/seo_chrome.py` into `seo-build/data/chrome-v2.json` `_head`; `lib/html.mjs` renders it after `color-scheme` on every page except embeds (`noCapture`). `verify.mjs` fails if a non-embed page lacks it or has the GTM id twice.
+- Checked: 204/204 pages carry it once; generate + verify 0 errors; the de Austria guide shows the cookie banner; no cookies before consent.
+- **Found, not changed (sitewide, GTM container):** before any consent GA4 still receives one cookieless `page_view` (`gcs=G100`, Consent Mode advanced pings) on every page with GTM, e.g. the live Fee Index. Earlier notes said "before consent no GA request". If only basic mode is wanted, the Google tags in GTM need to stop firing on Initialization until `consent_update` (container change, Ras/GTM owner).
+
 ## Session status (2026-10-16) — fr nav button fits on 375 px phones; Brief card links checked (PR #109, branch `fix/tails-p2` on main `21cf4ebd`, not merged)
 
 - fr nav CTA "Trouver des partenaires" was 2 px too wide at 375 px on every fr page. The short label "Partenaires" now shows up to 389 px (was 359): new media query in `site-v2.css` (+ `site-v2.min.css` regenerated), breakpoint in `home/build_lang.py` and `cfo/build_cfo.py`; fr/index + fr/cfo rebuilt. Other languages unchanged. Deploy = site-v2.css, site-v2.min.css, fr/index.html, fr/cfo.html.
