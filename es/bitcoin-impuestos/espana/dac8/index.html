@@ -69,6 +69,8 @@
 .seo code, .seo pre { font-family: var(--mono); font-size: 12px; }
 .seo pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; white-space: pre-wrap; }
 .page-seo #brief { max-width: 820px; margin: 0 auto; padding-block: 48px; }
+.seo .aff-note { margin: 8px 0 16px; font-size: 12px; line-height: 1.45; color: var(--muted); }
+.seo .aff-note a { color: var(--muted); }
 @media (max-width: 640px) {
   .seo { padding-top: 24px; }
   .seo .related, .seo .seo-tools { grid-template-columns: 1fr; }
@@ -95,8 +97,17 @@
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      },
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
       "url": "https://virtuse.com/",
       "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
     },
@@ -224,7 +235,7 @@
 <h2>Calendario</h2><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Qué ocurre</th></tr></thead><tbody><tr><td data-label="Fecha">1 ene. 2026</td><td data-label="Qué ocurre">Los exchanges de otros países de la UE empiezan a registrar operaciones</td></tr><tr><td data-label="Fecha">Ene. 2027</td><td data-label="Qué ocurre">Plazo previsto para los proveedores que informan en España (modelo 175, aún en proyecto)</td></tr><tr><td data-label="Fecha">Primavera 2027</td><td data-label="Qué ocurre">Declaración de la renta 2026 (IRPF), normalmente de abril al 30 de junio</td></tr><tr><td data-label="Fecha">30 sept. 2027</td><td data-label="Qué ocurre">Los datos de exchanges de otros países de la UE llegan a España</td></tr></tbody></table></div><p>La AEAT ya recibe información sobre saldos en proveedores españoles, y su plan de control de 2026 se centra en los criptoactivos.</p>
 <h2>Cómo tributa el Bitcoin en España</h2><ul><li>Las ganancias por la venta de criptomonedas son ganancias patrimoniales de la base del ahorro del IRPF.</li><li>La base del ahorro tributa al 19 % hasta 6.000 €, 21 % hasta 50.000 €, 23 % hasta 200.000 €, 27 % hasta 300.000 € y 30 % por encima.</li><li>Cambiar un criptoactivo por otro es una permuta sujeta a tributación: cada intercambio genera una ganancia o pérdida.</li><li>Hacienda aplica el método FIFO: las primeras monedas compradas son las primeras que se venden.</li><li>No existe exención por tiempo de tenencia.</li><li>Una pérdida neta compensa otras ganancias de la base del ahorro y hasta el 25 % de los rendimientos del ahorro; el resto se arrastra cuatro años.</li><li>Si sus criptomonedas en proveedores fuera de España superan 50.000 € a 31 de diciembre, debe presentar el modelo 721 entre el 1 de enero y el 31 de marzo.</li></ul>
 <h2>Qué hacer ahora</h2><ol><li>Descargue el historial completo de todos los exchanges que haya usado, incluidas las cuentas cerradas.</li><li>Calcule cada venta y cada permuta entre criptomonedas con el método FIFO.</li><li>Compruebe si sus criptomonedas en el extranjero superaban 50.000 € a 31 de diciembre de 2026 y necesita el modelo 721.</li><li>Si omitió ganancias de años anteriores, consulte con un asesor fiscal una declaración complementaria. Presentarla antes de que Hacienda le contacte evita sanciones, aunque se aplican recargos.</li><li>Al retirar a su propio monedero, conserve una prueba de que la dirección es suya.</li></ol>
-<h2>Software fiscal</h2><p>Estas herramientas importan el historial de sus exchanges y calculan las ganancias. Compruebe que admiten las normas españolas antes de pagar. Virtuse puede recibir una comisión si se registra.</p><ul><li><a href="https://app.blockpit.io/register?fpr=virtuse" rel="sponsored noopener" target="_blank">Blockpit</a></li><li><a href="https://koinly.io/?via=C7DEBFCF&amp;utm_source=affiliate" rel="sponsored noopener" target="_blank">Koinly</a></li><li><a href="https://cointracking.info/?ref=V328565" rel="sponsored noopener" target="_blank">CoinTracking</a></li><li><a href="https://divly.com/?ref=otfkzmf" rel="sponsored noopener" target="_blank">Divly</a></li></ul>
+<h2>Software fiscal</h2><p>Estas herramientas importan el historial de sus exchanges y calculan las ganancias. Compruebe que admiten las normas españolas antes de pagar. Virtuse puede recibir una comisión si se registra.</p><ul><li><a href="https://app.blockpit.io/register?fpr=virtuse" rel="sponsored noopener" target="_blank">Blockpit</a></li><li><a href="https://koinly.io/?via=C7DEBFCF&amp;utm_source=affiliate" rel="sponsored noopener" target="_blank">Koinly</a></li><li><a href="https://cointracking.info/?ref=V328565" rel="sponsored noopener" target="_blank">CoinTracking</a></li><li><a href="https://divly.com/?ref=otfkzmf" rel="sponsored noopener" target="_blank">Divly</a></li></ul><p class="aff-note">Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia. <a href="../../../../es/how-we-earn.html">Cómo ganamos dinero</a></p>
 <h2>Preguntas frecuentes</h2><h3>España aún no tiene ley DAC8. ¿Se comunican mis datos?</h3><p>Sí, por los exchanges de otros países de la UE, que registran sus operaciones de 2026 y deben enviarlas a España antes del 30 de septiembre de 2027.</p><h3>¿Tributa cambiar Bitcoin por otra criptomoneda?</h3><p>Sí. En España una permuta entre criptomonedas genera una ganancia o pérdida en ese año.</p><h3>¿Se comunica mi monedero físico?</h3><p>No. El saldo de su monedero no se comunica, pero las retiradas del exchange hacia él sí.</p><h3>¿Cuántos años puede revisar Hacienda?</h3><p>En general, cuatro años desde el final del plazo de declaración de cada ejercicio.</p>
 
   <p><a class="cta" href="../../../../es/tax-agent.html?country=es">Consultar España en el Tax Agent →</a></p>
@@ -273,7 +284,8 @@
       <div class="footer-columns"><div class="footer-col"><h4>Servicios</h4><a href="/es/buy-bitcoin.html">Comprar Bitcoin</a><a href="/es/secure.html">Custodia</a><a href="/es/mining.html">Minería</a><a href="/es/lending.html">Préstamos</a><a href="/es/treasury.html">Treasury</a><a href="/es/tax.html">Impuestos</a><a href="/es/bots.html">Bots</a></div><div class="footer-col"><h4>Empresa</h4><a href="/es/about.html">Sobre nosotros</a><a href="/es/faq.html">Preguntas frecuentes</a></div><div class="footer-col"><h4>Herramientas</h4><a href="/es/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Gratis</span></a><a href="/es/concierge.html">Partner Finder</a><a href="/es/stacking.html">Stacking Strategist</a><a href="/es/loan.html">Loan &amp; Liquidity Copilot</a><a href="/es/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/es/retirement-calculator.html">Calculadora de jubilación</a></div><div class="footer-col"><h4>Recursos</h4><a href="/news.html">Virtuse Brief</a><a href="/es/blog.html">Blog</a><a href="/es/bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-impuestos/">Impuestos sobre Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a><a href="/es/bitcoin-calculadora-dca/">Calculadora DCA</a><a href="/es/bitcoin-vender-o-pedir-prestado/">Vender o pedir prestado</a><a href="/es/bitcoin-herencia/">Herencia</a></div><div class="footer-col"><h4>Legal</h4><a href="/es/terms-and-conditions.html">Términos y condiciones</a><a href="/es/privacy-policy.html">Política de privacidad</a><a href="/es/aml-compliance.html">AML y cumplimiento</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Todos los derechos reservados.</p>
+<p class="footer-operator"><a href="/es/operator.html">Titular</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Eslovaquia · N.º de identificación (IČO) 36 709 042 · NIF-IVA SK2022293042 · inscrita en el Registro Mercantil del Tribunal Municipal de Bratislava III, sección Sa, n.º 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief, el resumen semanal de Virtuse. <a href="/news.html">Leerlo &rarr;</a></p>
       <nav class="footer-langs" aria-label="Idiomas"><a href="/bitcoin-tax/spain/dac8/" hreflang="en">English</a><a href="/sk/" hreflang="sk">Slovenčina</a><a href="/cs/" hreflang="cs">Čeština</a><a href="/de/" hreflang="de">Deutsch</a><a href="/pl/" hreflang="pl">Polski</a><a href="/hu/" hreflang="hu">Magyar</a><a href="/fr/" hreflang="fr">Français</a><a href="/es/bitcoin-impuestos/espana/dac8/" hreflang="es" aria-current="page">Español</a><a href="/uk/" hreflang="uk">Українська</a><a href="/ru/" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse es un hub de comparación independiente. No custodia fondos ni claves de clientes, no ejecuta órdenes y no presta asesoramiento de inversión. Los servicios los prestan los partners incluidos bajo sus propias licencias. Las comisiones son las publicadas por cada partner y pueden cambiar.</p>

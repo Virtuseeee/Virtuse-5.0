@@ -69,6 +69,8 @@
 .seo code, .seo pre { font-family: var(--mono); font-size: 12px; }
 .seo pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; white-space: pre-wrap; }
 .page-seo #brief { max-width: 820px; margin: 0 auto; padding-block: 48px; }
+.seo .aff-note { margin: 8px 0 16px; font-size: 12px; line-height: 1.45; color: var(--muted); }
+.seo .aff-note a { color: var(--muted); }
 @media (max-width: 640px) {
   .seo { padding-top: 24px; }
   .seo .related, .seo .seo-tools { grid-template-columns: 1fr; }
@@ -95,8 +97,17 @@
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      },
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
       "url": "https://virtuse.com/",
       "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
     },
@@ -223,7 +234,7 @@
 <h2>Timeline</h2><div class="table-wrap"><table><thead><tr><th>Date</th><th>What happens</th></tr></thead><tbody><tr><td data-label="Date">1 Jan 2026</td><td data-label="What happens">Exchanges start recording transactions</td></tr><tr><td data-label="Date">Spring 2027</td><td data-label="What happens">Your 2026 income tax return; online deadlines usually fall from late May to early June, by département</td></tr><tr><td data-label="Date">Before 15 Jun 2027</td><td data-label="What happens">Providers reporting in France send 2026 data to the DGFiP</td></tr><tr><td data-label="Date">30 Sep 2027</td><td data-label="What happens">Data from exchanges in other EU countries reaches France</td></tr></tbody></table></div><p>Most of the data arrives after you file. A missing gain or an undeclared foreign account can surface months later.</p>
 <h2>How Bitcoin is taxed in France</h2><ul><li>Gains on selling crypto for euros, or using it to pay for goods and services, are taxed under article 150 VH bis of the General Tax Code.</li><li>For 2026 gains the flat tax (PFU) is 31.4%: 12.8% income tax plus 18.6% social charges, after the 2026 social security budget raised the CSG. You can opt for the progressive income tax scale instead; social charges still apply.</li><li>Swapping one crypto-asset for another, stablecoins included, is not taxed. Tax arises when you convert to euros, goods or services.</li><li>If your total disposals in the year are €305 or less, the gains are exempt. The limit is on the sale amounts, not on the gains.</li><li>There is no holding-period exemption.</li><li>Gains are calculated on form 2086. Every crypto account held abroad, including on exchanges, must be listed on form 3916-bis, even if it was closed during the year.</li><li>Since the 2025 Finance Act, the tax office can go back 10 years for undeclared foreign crypto accounts.</li></ul>
 <h2>What to do now</h2><ol><li>Export your full trade history from every exchange you have used, including closed accounts.</li><li>List every foreign exchange account on form 3916-bis; a missing account is fined per account.</li><li>Calculate your gains on form 2086 and budget for the 31.4% rate on 2026 gains.</li><li>If you left out gains or accounts in earlier years, talk to a tax advisor about a corrected return (déclaration rectificative).</li><li>When you withdraw to your own wallet, keep proof that the address belongs to you.</li></ol>
-<h2>Tax software</h2><p>These tools import your exchange history and calculate gains. Check that the tool supports French rules before you pay. Virtuse may receive a commission if you sign up.</p><ul><li><a href="https://app.blockpit.io/register?fpr=virtuse" rel="sponsored noopener" target="_blank">Blockpit</a></li><li><a href="https://koinly.io/?via=C7DEBFCF&amp;utm_source=affiliate" rel="sponsored noopener" target="_blank">Koinly</a></li><li><a href="https://cointracking.info/?ref=V328565" rel="sponsored noopener" target="_blank">CoinTracking</a></li><li><a href="https://divly.com/?ref=otfkzmf" rel="sponsored noopener" target="_blank">Divly</a></li></ul>
+<h2>Tax software</h2><p>These tools import your exchange history and calculate gains. Check that the tool supports French rules before you pay. Virtuse may receive a commission if you sign up.</p><ul><li><a href="https://app.blockpit.io/register?fpr=virtuse" rel="sponsored noopener" target="_blank">Blockpit</a></li><li><a href="https://koinly.io/?via=C7DEBFCF&amp;utm_source=affiliate" rel="sponsored noopener" target="_blank">Koinly</a></li><li><a href="https://cointracking.info/?ref=V328565" rel="sponsored noopener" target="_blank">CoinTracking</a></li><li><a href="https://divly.com/?ref=otfkzmf" rel="sponsored noopener" target="_blank">Divly</a></li></ul><p class="aff-note">Partner link – if you sign up, Virtuse may receive a commission. Your price does not change. <a href="../../../how-we-earn.html">How we earn</a></p>
 <h2>FAQ</h2><h3>Do I pay tax when I swap Bitcoin for another crypto-asset?</h3><p>No. In France only a conversion to euros, goods or services is taxed. The swap still appears in the DAC8 report.</p><h3>Is the flat tax still 30%?</h3><p>Not for 2026 gains. The CSG increase raised social charges to 18.6%, so the flat tax is 31.4%.</p><h3>Is my hardware wallet reported?</h3><p>No. Your wallet's balance is not reported, but transfers from an exchange to it are.</p><h3>Does it help to hold Bitcoin longer?</h3><p>No. France has no holding-period exemption for crypto gains.</p>
 
   <p><a class="cta" href="../../../tax-agent.html?country=fr">Check France in the Tax Agent →</a></p>
@@ -272,7 +283,8 @@
       <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/mining.html">Mining</a><a href="/lending.html">Loans</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="/concierge.html">Partner Finder</a><a href="/stacking.html">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="/news.html">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p>
+<p class="footer-operator"><a href="/operator.html">Operator</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief, the weekly desk from Virtuse. <a href="/news.html">Read it &rarr;</a></p>
       <nav class="footer-langs" aria-label="Languages"><a href="/bitcoin-tax/france/dac8/" hreflang="en" aria-current="page">English</a><a href="/sk/" hreflang="sk">Slovenčina</a><a href="/cs/" hreflang="cs">Čeština</a><a href="/de/" hreflang="de">Deutsch</a><a href="/pl/" hreflang="pl">Polski</a><a href="/hu/" hreflang="hu">Magyar</a><a href="/fr/bitcoin-fiscalite/france/dac8/" hreflang="fr">Français</a><a href="/es/" hreflang="es">Español</a><a href="/uk/" hreflang="uk">Українська</a><a href="/ru/" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse is an independent comparison hub. It does not hold client funds or keys, does not execute orders and does not give investment advice. Services are provided by the listed partners under their own licences. Fees are as published by each partner and can change.</p>
