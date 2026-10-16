@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'home'))
 import build_lang as B
 sys.path.insert(0, os.path.dirname(HERE))
 import csp_tight
+import cf_analytics
 import aff_note as A
 
 # partners in published-fee order (same order in the hero table and the cards)
@@ -259,9 +260,10 @@ def build(L):
 <script src="{root}site-v2.js?v=7" defer></script>
 <script src="{root}consultation-widget.js?v=20261007b" defer></script>
 <script src="{root}concierge-launcher.js" defer></script>
+{cf}
 </body>
 </html>
-'''.format(nav=nav, eyebrow=t('eyebrow'), h1a=t('h1_a'), h1g=t('h1_grad'), cta_details=t('cta_details'), h1b=(t('h1_b') if t('h1_b')[:1] in '.!?' else ' ' + t('h1_b')), sub=t('sub'), lead=t('lead'), cta=t('cta'),
+'''.format(cf=cf_analytics.SNIPPET, nav=nav, eyebrow=t('eyebrow'), h1a=t('h1_a'), h1g=t('h1_grad'), cta_details=t('cta_details'), h1b=(t('h1_b') if t('h1_b')[:1] in '.!?' else ' ' + t('h1_b')), sub=t('sub'), lead=t('lead'), cta=t('cta'),
            plan=t('plan'), arrow=ARROW, talk=t('talk'), L=L, call=t('call'), suffix=call_suffix, cube=CUBE, hero_card=hero_card, diff=diff,
            src=t('src'), fidx=fidx, fee_index=t('fee_index'), earn=t('earn'), trust=trust, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'),
            cards='\n'.join(cards), hh2a=t('h_h2_a'), hh2b=t('h_h2_b'), steps=steps, gh2a=t('g_h2_a'), gh2b=t('g_h2_b'),

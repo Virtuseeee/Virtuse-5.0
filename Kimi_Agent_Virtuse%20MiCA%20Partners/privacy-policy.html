@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://blog.virtuse.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://blog.virtuse.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
@@ -853,7 +853,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <details>
     <summary>What we set</summary>
-    <div class="faq-answer"><strong>Necessary storage</strong> (always on): your language, theme and cookie choice, kept in your browser so the site works. It needs no consent. <strong>Analytics</strong> (only with your consent): Google Analytics, loaded through Google Tag Manager, sets cookies (such as <code>_ga</code>, kept for up to 2 years) to count visits and show us which pages are useful. <strong>Marketing</strong> (only with your consent): Google Ads cookies to measure campaigns and show our ads to people who visited the site. Until you choose, both stay off. We use Google Consent Mode, so before consent Google receives only cookieless signals without cookies or advertising identifiers. Legal basis: your consent (Art. 6(1)(a) GDPR and the ePrivacy Directive). Google may process this data outside the EEA under the safeguards described in section 6.</div>
+    <div class="faq-answer"><strong>Necessary storage</strong> (always on): your language, theme and cookie choice, kept in your browser so the site works. It needs no consent. <strong>Visit statistics without cookies</strong> (always on): Cloudflare Web Analytics counts page views without cookies and without any identifier, and stores nothing in your browser, so it needs no consent. <strong>Analytics</strong> (only with your consent): Google Analytics, loaded through Google Tag Manager, sets cookies (such as <code>_ga</code>, kept for up to 2 years) to count visits and show us which pages are useful. <strong>Marketing</strong> (only with your consent): Google Ads cookies to measure campaigns and show our ads to people who visited the site. Until you choose, both stay off. We use Google Consent Mode, so before consent Google receives only cookieless signals without cookies or advertising identifiers. Legal basis: your consent (Art. 6(1)(a) GDPR and the ePrivacy Directive). Google may process this data outside the EEA under the safeguards described in section 6.</div>
   </details>
 
   <details>
@@ -867,7 +867,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <details>
     <summary>Services your browser talks to on our pages</summary>
-    <div class="faq-answer">Some features load content or data directly from third parties. When they do, those providers technically receive your IP address as part of the request, under their own privacy policies: <strong>Google Fonts</strong> (typefaces), <strong>jsDelivr</strong> (animation library), <strong>WordPress/virtuse.com</strong> (blog articles and images — our own service), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, <strong>Binance</strong>, and <strong>Alternative.me</strong> (live, read-only market and network data for our Bitcoin Data tools), and <strong>bitcoinwave.net</strong> (the embedded Root-Scale Cycles chart). These requests carry no identifiers from us — no login, no cookie of ours, nothing beyond what any webpage request contains.</div>
+    <div class="faq-answer">Some features load content or data directly from third parties. When they do, those providers technically receive your IP address as part of the request, under their own privacy policies: <strong>Google Fonts</strong> (typefaces), <strong>Cloudflare Web Analytics</strong> (visit statistics without cookies, see section 4), <strong>jsDelivr</strong> (animation library), <strong>WordPress/virtuse.com</strong> (blog articles and images — our own service), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, <strong>Binance</strong>, and <strong>Alternative.me</strong> (live, read-only market and network data for our Bitcoin Data tools), and <strong>bitcoinwave.net</strong> (the embedded Root-Scale Cycles chart). These requests carry no identifiers from us — no login, no cookie of ours, nothing beyond what any webpage request contains.</div>
   </details>
 
   <details>
@@ -1020,5 +1020,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="site-v2.js?v=7" defer></script>
 <script src="concierge-launcher.js" defer></script>
+<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

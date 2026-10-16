@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.join(HERE, 'home'))
 import build_lang as B
 sys.path.insert(0, HERE)
 import csp_tight
+import cf_analytics
 
 ARROW = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 OUT = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -135,6 +136,7 @@ def scripts(root):
     return '''<script src="{r}site-v2.js?v=7" defer></script>
 <script src="{r}consultation-widget.js?v=20261007b" defer></script>
 <script src="{r}concierge-launcher.js" defer></script>
+{cf}
 </body>
 </html>
-'''.format(r=root)
+'''.format(r=root, cf=cf_analytics.SNIPPET)
