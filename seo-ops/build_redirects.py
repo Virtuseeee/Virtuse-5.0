@@ -300,6 +300,20 @@ def lang_hub_rules():
     return lines
 
 
+def cleanup_rules():
+    """Story cleanup 2026-10-16 (stories-build/cleanup.json): duplicate story → its original,
+    for the story URL and the old WordPress post URL (/<slug>/, /sk/<slug>/)."""
+    c = json.load(open(os.path.join(ROOT, 'stories-build/cleanup.json'), encoding='utf-8'))
+    lines = ['# Story cleanup 2026-10-16 (stories-build/cleanup.json): duplicate → original']
+    for src, t in c['redirect'].items():
+        assert exists('/' + t), t
+        assert not exists('/' + src), ('still built', src)
+        pre, slug = re.match(r'^((?:sk/)?)stories/([a-z0-9-]+)/$', src).groups()
+        lines.append(f'RewriteRule ^{pre}stories/{rx(slug)}/?$ {url("/" + t)} [R=301,L]')
+        lines.append(f'RewriteRule ^{pre}{rx(slug)}(?:/.*)?$ {url("/" + t)} [R=301,L]')
+    return lines
+
+
 def block():
     rows = read_map()
     ps = posts()
@@ -322,6 +336,7 @@ def block():
               'RewriteRule ^ - [E=VB_HUB_EN:/stories/]',
               'RewriteCond %{DOCUMENT_ROOT}/sk/stories/index.html -f',
               'RewriteRule ^ - [E=VB_HUB_SK:/sk/stories/]', '']
+    lines += cleanup_rules() + ['']
     lines += article_rules(ps) + ['']
     lines += ['# The table (all languages: /xx/<old>/ → /xx/<target> if it exists, else EN)']
     lines += table_rules(rows, wildcard=False) + ['']
@@ -340,6 +355,11 @@ def old_paths(rows, ps):
     """Every mapped path (+ language and slash-less variants) with its expected result."""
     out = []
     add = lambda p, code, t='': out.append(f'{p}\t{code}\t{t}')
+    c = json.load(open(os.path.join(ROOT, 'stories-build/cleanup.json'), encoding='utf-8'))
+    for src, t in c['redirect'].items():   # story cleanup 2026-10-16
+        pre, slug = re.match(r'^((?:sk/)?)stories/([a-z0-9-]+)/$', src).groups()
+        add('/' + src, 301, '/' + t)
+        add(f'/{pre}{slug}/', 301, '/' + t)
     for r in rows:
         lang, body, kind = parse(r['old_pattern'])
         pat = r['old_pattern']
