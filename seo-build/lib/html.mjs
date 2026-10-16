@@ -12,6 +12,9 @@ import {
 // homepages by i18n-tools/seo_chrome.py (committed, so builds stay deterministic).
 const CHROME_V2 = JSON.parse(fs.readFileSync(new URL('../data/chrome-v2.json', import.meta.url), 'utf8'));
 const SITE_V2 = '7';
+// Cloudflare Web Analytics (cookieless, no consent, never on staging). Same string as
+// SNIPPET in Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/cf_analytics.py; its --check compares the pages.
+const CF_SNIPPET = `<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>`;
 
 // Footer operator line (legal pack 2026-10-16, 3.1); label links to <lang>/operator.html.
 const OPERATOR = JSON.parse(fs.readFileSync(new URL('../data/footer-operator.json', import.meta.url), 'utf8'));
@@ -274,6 +277,7 @@ ${briefHtml ? '\n  ' + briefHtml + '\n' : ''}
 </main>
 
 <script src="/site-v2.js?v=${SITE_V2}" defer></script>
+${CF_SNIPPET}
 </body>
 </html>
 `;

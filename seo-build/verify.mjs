@@ -329,8 +329,8 @@ const seoOutputs = [
 ];
 if (ORIGIN !== 'https://staging.virtuse.com') {
   for (const rel of seoOutputs) {
-    // the GTM loader skips staging on purpose (location.hostname!=='staging.virtuse.com')
-    const t = fs.readFileSync(path.join(SITE, rel), 'utf8').replace("location.hostname!=='staging.virtuse.com'", '');
+    // the GTM loader and the Cloudflare Web Analytics snippet skip staging on purpose (location.hostname!=='staging.virtuse.com')
+    const t = fs.readFileSync(path.join(SITE, rel), 'utf8').replaceAll("location.hostname!=='staging.virtuse.com'", '');
     if (t.includes('staging.virtuse.com')) fail(`${rel} still contains staging.virtuse.com`);
   }
 }
