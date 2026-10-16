@@ -43,6 +43,10 @@ import { applyStoryExtras, storyCrumbsLd, buildHubs, HUBS_START, HUBS_END } from
 // virtuse.com copy. upload.sftp puts it next to the plugin, after the pages.
 const WP_CANONICAL = 'stories/wp-canonical.json';
 const WP_CANONICAL_REMOTE = '/_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json';
+// Story cleanup (decided 2026-10-16, see cleanup.json's note): duplicates that 301 to
+// their original (not built; the rule lives in seo-ops/build_redirects.py), off-topic
+// stories kept readable but noindex and out of the sitemap/hubs.
+const CLEANUP = JSON.parse(fs.readFileSync(path.join(HERE, 'cleanup.json'), 'utf8'));
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
 // WordPress base URL. Defaults to the blog itself; the GitHub Action sets
@@ -368,6 +372,7 @@ function render(template, feed, post, inferDesk) {
     `<title>${esc(title)} | Virtuse Brief</title>`,
     `<meta name="description" content="${esc(description)}">`,
     `<link rel="canonical" href="${url}">`,
+    CLEANUP.noindex[storyPath] ? '<meta name="robots" content="noindex, follow">' : '',
     ...alts.map(([l, p]) => `<link rel="alternate" hreflang="${l}" href="${ORIGIN}/${p}">`),
     `<meta name="author" content="Ras Vasilisin">`,
     `<meta property="og:type" content="article">`,
@@ -441,6 +446,8 @@ async function main() {
       const { storyPath, html, lastmod, alts } = render(template, feed, post, inferDesk);
       if (seen.has(storyPath)) continue; // WP cross-posts can repeat a slug
       seen.add(storyPath);
+      const target = CLEANUP.redirect[storyPath];
+      if (target) { wpCanonical[post.id] = ORIGIN + '/' + target; continue; } // 301 in .htaccess
       const file = path.join(SITE, storyPath, 'index.html');
       fs.mkdirSync(path.dirname(file), { recursive: true });
       const old = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
@@ -448,7 +455,8 @@ async function main() {
       written.push(storyPath);
       lastmods[storyPath] = lastmod;
       altsOf[storyPath] = alts;
-      wpCanonical[post.id] = ORIGIN + '/' + storyPath;
+      // noindex stories: their WordPress original goes to the noindex list instead
+      if (!CLEANUP.noindex[storyPath]) wpCanonical[post.id] = ORIGIN + '/' + storyPath;
     }
     console.log(`${feed.lang}: ${seen.size} stories`);
   }
@@ -477,7 +485,7 @@ async function main() {
   // hubs.mjs keeps its own sub-block right after SITEMAP_START; carried over
   // here, then refreshed by buildHubs() below.
   const hubBlock = (xml.match(new RegExp(`${HUBS_START}[\\s\\S]*?${HUBS_END}`)) || [])[0];
-  const block = [SITEMAP_START, ...(hubBlock ? [hubBlock] : []), ...written.map((p) => `  <url>
+  const block = [SITEMAP_START, ...(hubBlock ? [hubBlock] : []), ...written.filter((p) => !CLEANUP.noindex[p]).map((p) => `  <url>
     <loc>${ORIGIN}/${p}</loc>
     <lastmod>${lastmods[p]}</lastmod>${(altsOf[p] || []).length > 2 ? altsOf[p].map(([l, q]) => `
     <xhtml:link rel="alternate" hreflang="${l}" href="${ORIGIN}/${q}"/>`).join('') : ''}

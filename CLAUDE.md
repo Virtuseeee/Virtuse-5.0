@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Story cleanup: 5 duplicates 301, 16 off-topic stories noindex (checklist 3.1 + 3.2, branch `fix/stories-cleanup` on main `50f1e57c`, not merged)
+
+- User decision 2026-10-16: both CSVs "as proposed". Source of truth `stories-build/cleanup.json` (README section "Cleanup"). `build.mjs`: redirect sources not built (5 folders deleted), their WP originals' canonical → the original story; noindex stories get `robots noindex, follow`, leave the sitemap block, hubs (`hubs.mjs` skips noindex pages) and `wp-canonical.json` (406 → 390). `seo-ops/build_redirects.py` `cleanup_rules()`: 301 for `/stories/<dup>/` and the old post URL `/<dup>/` (+ `sk/`) before the generic rules; `old-paths.txt` 929 paths. `crypto_news_noindex.py` adds the 16 WP originals (1108 → 1124).
+- Not done: the 9 WordPress copies the CSVs propose to 301 (empty/duplicate blog posts) are already noindex since 2026-10-08 (blog-leftover-posts.csv); a real 301 on the blog needs the Redirection plugin (WP login).
+- Checked: local Apache with the new .htaccess, `check_redirects.py`: 929 paths, 0 failures; the 5 duplicates 301 to their originals; build + hubs rerun stable; no site page links a removed story; sitemap: only the 21 stories + 1 hub page removed.
+- **Deploy needs three uploads:** `deploy_site.sh` (pages, deleted folders, sitemap), the guarded `.htaccess` upload (seo-ops/virtuse.com.htaccess), and on the blog `virtuse-story-canonical.json` (= stories/wp-canonical.json) + `virtuse-crypto-news-noindex.json` into `/_sub/blog/wp-content/mu-plugins/`.
+
 ## Session status (2026-10-16) — fr nav button fits on 375 px phones; Brief card links checked (PR #109, branch `fix/tails-p2` on main `21cf4ebd`, not merged)
 
 - fr nav CTA "Trouver des partenaires" was 2 px too wide at 375 px on every fr page. The short label "Partenaires" now shows up to 389 px (was 359): new media query in `site-v2.css` (+ `site-v2.min.css` regenerated), breakpoint in `home/build_lang.py` and `cfo/build_cfo.py`; fr/index + fr/cfo rebuilt. Other languages unchanged. Deploy = site-v2.css, site-v2.min.css, fr/index.html, fr/cfo.html.

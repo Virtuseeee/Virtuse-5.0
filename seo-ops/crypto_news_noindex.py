@@ -61,10 +61,15 @@ missing = [i for i in extra if i not in seen]
 if missing: sys.exit(f'leftover posts not found in WordPress: {missing}')
 clash = [i for i in extra if i in stories]
 if clash: sys.exit(f'leftover posts marked noindex are stories: {clash}')
-allp = sorted(set(old) | set(extra))
+# Story cleanup 2026-10-16: off-topic stories are noindex on virtuse.com, so their originals too
+CLEANUP = os.path.join(ROOT, 'stories-build/cleanup.json')
+offtopic = sorted(set(json.load(open(CLEANUP))['noindex'].values()))
+clash = [i for i in offtopic if i in stories]
+if clash: sys.exit(f'noindex stories still in wp-canonical.json: {clash}')
+allp = sorted(set(old) | set(extra) | set(offtopic))
 data = {'generated': datetime.date.today().isoformat(),
-        'rule': f'category 38 or 40, published before {CUTOFF}, not a story; plus blog-leftover-posts.csv decision noindex',
-        'terms': TERMS, 'count': len(allp), 'crypto_news': len(old), 'leftover': len(extra), 'posts': allp}
+        'rule': f'category 38 or 40, published before {CUTOFF}, not a story; plus blog-leftover-posts.csv decision noindex; plus stories-build/cleanup.json noindex',
+        'terms': TERMS, 'count': len(allp), 'crypto_news': len(old), 'leftover': len(extra), 'offtopic_stories': len(offtopic), 'posts': allp}
 with open(OUT, 'w', encoding='utf-8') as f:
     json.dump(data, f, indent=1)
     f.write('\n')

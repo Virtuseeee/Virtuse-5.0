@@ -1,4 +1,14 @@
 # path	expected_code	expected_target (empty = any 200 page on the same host)
+/sk/stories/sedem-vzorcov-exponencialneho-zisku/	301	/sk/stories/7-vzorcov-exponencialneho-zisku/
+/sk/sedem-vzorcov-exponencialneho-zisku/	301	/sk/stories/7-vzorcov-exponencialneho-zisku/
+/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/	301	/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value/
+/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/	301	/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value/
+/stories/how-to-prepare-for-recession/	301	/stories/how-to-prepare-for-a-recession/
+/how-to-prepare-for-recession/	301	/stories/how-to-prepare-for-a-recession/
+/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/	301	/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/
+/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/	301	/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/
+/stories/three-ways-how-media-downplays-inflation/	301	/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/
+/three-ways-how-media-downplays-inflation/	301	/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/
 /gold/	301	/asset-returns.html
 /gold	301	/asset-returns.html
 /de/gold/	301	/de/asset-returns.html
@@ -492,7 +502,6 @@
 /how-taoist-philosophy-deals-with-volatile-markets/	301	/stories/how-taoist-philosophy-deals-with-volatile-markets/
 /bitcoin-price-could-hit-4-8m-if-btc-becomes-the-global-reserve-currency/	301	/stories/bitcoin-price-could-hit-4-8m-if-btc-becomes-the-global-reserve-currency/
 /why-bitcoin-skyrocketed-on-sunday/	301	/stories/why-bitcoin-skyrocketed-on-sunday/
-/how-to-prepare-for-recession/	301	/stories/how-to-prepare-for-recession/
 /how-to-prepare-for-a-recession/	301	/stories/how-to-prepare-for-a-recession/
 /after-this-war-is-over-money-will-never-be-the-same/	301	/stories/after-this-war-is-over-money-will-never-be-the-same/
 /how-does-russia-benefit-from-the-invasion/	301	/stories/how-does-russia-benefit-from-the-invasion/
@@ -518,11 +527,9 @@
 /the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin/	301	/stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin/
 /keep-your-assets-parked-with-stablecoins-ras-vasilisin/	301	/stories/keep-your-assets-parked-with-stablecoins-ras-vasilisin/
 /nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/	301	/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/
-/three-ways-how-media-downplays-inflation/	301	/stories/three-ways-how-media-downplays-inflation/
 /the-most-important-lessons-ive-learned-from-chinas-crackdown-on-everything-ras-vasilisin/	301	/stories/the-most-important-lessons-ive-learned-from-chinas-crackdown-on-everything-ras-vasilisin/
 /why-you-should-start-investing-in-bitcoin-now-ras-vasilisin/	301	/stories/why-you-should-start-investing-in-bitcoin-now-ras-vasilisin/
 /three-ways-how-media-downplays-inflation-ras-vasilisin/	301	/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/
-/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/	301	/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/
 /consequences-of-absolute-power-ras-vasilisin/	301	/stories/consequences-of-absolute-power-ras-vasilisin/
 /western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population/	301	/stories/western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population/
 /gold-vs-bitcoin-which-was-better-inflation-hedge/	301	/stories/gold-vs-bitcoin-which-was-better-inflation-hedge/
@@ -602,7 +609,6 @@
 /dont-applaud-the-disaster-named-bitcoin-etf/	301	/stories/dont-applaud-the-disaster-named-bitcoin-etf/
 /old-financial-model-is-about-to-be-disrupted/	301	/stories/old-financial-model-is-about-to-be-disrupted/
 /when-will-we-travel-to-the-moon-despite-everything-crypto-is-still-more-popular/	301	/stories/when-will-we-travel-to-the-moon-despite-everything-crypto-is-still-more-popular/
-/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/	301	/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/
 /nasdaq-bitcoin-futures-dont-get-your-hopes-up/	301	/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/
 /bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/	301	/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/
 /understanding-stablecoins-from-an-economists-perspective/	301	/stories/understanding-stablecoins-from-an-economists-perspective/
@@ -778,7 +784,6 @@
 /sk/heres-what-will-happen-to-your-money-soon/	301	/sk/stories/heres-what-will-happen-to-your-money-soon/
 /sk/top-8-powerful-lessons-lockdown-has-taught-me/	301	/sk/stories/top-8-powerful-lessons-lockdown-has-taught-me/
 /sk/bankovy-system-je-navrhnuty-tak-aby-vas-z-investovania-vylucil-2/	301	/sk/stories/bankovy-system-je-navrhnuty-tak-aby-vas-z-investovania-vylucil-2/
-/sk/sedem-vzorcov-exponencialneho-zisku/	301	/sk/stories/sedem-vzorcov-exponencialneho-zisku/
 /sk/ruky-prec-od-dlhopisov/	301	/sk/stories/ruky-prec-od-dlhopisov/
 /sk/do-roku-2023-mozete-na-akciach-zarabat-aj-so-zatvorenymi-ocami/	301	/sk/stories/do-roku-2023-mozete-na-akciach-zarabat-aj-so-zatvorenymi-ocami/
 /sk/pat-investicnych-lekcii-ktore-som-si-vzal-z-minuleho-desatrocia/	301	/sk/stories/pat-investicnych-lekcii-ktore-som-si-vzal-z-minuleho-desatrocia/
@@ -820,57 +825,58 @@
 /sk/bitcoin-etf-ako-chvost-ktory-vrti-psom-dufajme-ze-nie/	301	/sk/stories/bitcoin-etf-ako-chvost-ktory-vrti-psom-dufajme-ze-nie/
 /sk/krypto-otvara-nove-moznosti-pre-obchodovanie-s-komoditami/	301	/sk/stories/krypto-otvara-nove-moznosti-pre-obchodovanie-s-komoditami/
 /sk/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti/	301	/sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti/
-/emerging-economies-dominate-chainalysis-2021-global-crypto-adoption-index/	301	
-/bitcoin-ether-now-down-50-from-last-months-aths-as-rout-resumes/	301	
-/bitcoin-can-hit-333k-parabolically-if-this-btc-price-fractal-plays-out/	301	
-/chinas-ban-made-bitcoin-even-stronger-says-edward-snowden/	301	
-/bitcoin-jumps-10-after-treasury-imposes-new-sanctions-against-russian-central-bank/	301	
-/wall-street-may-get-four-bitcoin-futures-etfs-in-a-few-weeks/	301	
-/defi-sector-tokens-offer-shelter-as-bitcoin-falls-below-48-5k/	301	
-/why-is-the-imf-so-afraid-of-cryptocurrency/	301	
+/eur-deposits-and-trading-now-available-on-the-virtuse-platform/	301	
+/after-market-wide-meltdown-elon-musk-voices-tepid-support-for-crypto/	301	
+/africas-poised-for-a-bitcoin-revolution-in-2022/	301	
+/bitcoins-hashrate-nears-all-time-high/	301	
+/market-wrap-bitcoin-drifts-lower-although-analysts-expect-bearish-sentiment-to-fade/	301	
+/bitmex-ceo-predicts-bitcoin-will-be-legal-tender-in-five-countries-by-2022v/	301	
+/5-ways-bitcoins-lightning-network-advanced-in-2021/	301	
+/bitcoin-supply-dynamics-are-looking-extremely-strong/	301	
 /mcdonalds-starts-to-accept-bitcoin-and-tether-in-swiss-town/	301	
-/sk/osem-investicnych-strategii-ktore-by-ste-si-mali-osvojit-este-dnes/	301	
-/happy-birthday-13-years-ago-satoshi-nakamoto-released-bitcoins-whitepaper/	301	
-/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities-2/	301	
+/sk/tri-dovody-preco-sa-nebat-dalsieho-padu-bitcoinu/	301	
+/the-united-states-will-become-the-global-crypto-and-blockchain-leader/	301	
+/bitcoin-privacy-feud-erupts-after-edward-snowden-pans-long-awaited-taproot-upgrade/	301	
 /upcoming-week-can-ignite-a-new-bitcoin-rally-heres-what-you-should-know/	301	
-/sk/kapacita-lightning-network-dosahuje-ath/	301	
+/sk/tesla-podla-novej-spravy-drzi-bitcoiny-v-hodnote-2-miliard-dolarov/	301	
 /russia-is-considering-selling-its-oil-and-gas-for-bitcoin-as-sanctions-intensify-from-the-west/	301	
 /bitcoin-price-prediction-can-bitcoin-reach-1000000-by-2025/	301	
-/usdc-assets-to-be-disclosed-in-sec-filings-circle-ceo-says/	301	
-/market-wrap-bitcoin-drifts-lower-although-analysts-expect-bearish-sentiment-to-fade/	301	
+/options-traders-aim-for-100k-bitcoin-by-the-end-of-2021-is-there-a-chance/	301	
+/bitcoin-declines-with-us-stocks-as-nuclear-threat-ripples-through-markets/	301	
 /michael-saylor-is-working-the-bitcoin-dream-job/	301	
-/crypto-market-retakes-2-trillion-market-cap-amid-bitcoin-gains-2/	301	
-/sk/estonske-ministerstvo-financii-tvrdi-ze-neplanuje-zakazat-kryptomeny/	301	
-/sk/10099/	301	
-/third-largest-bitcoin-whale-buys-btc-worth-28-million-at-38-4k/	301	
-/most-executives-see-digital-assets-as-strong-fiat-alternative-in-next-5-10-years-deloitte/	301	
-/sk/goldman-sachs-a-jpmorgan-tvrdia-ze-v-eurozone-nas-caka-recesia/	301	
-/sp-dow-jones-brings-bitcoin-ethereum-to-wall-st-with-cryptocurrency-indexes/	301	
-/sk/bitcoin-moze-chranit-pred-inflaciou-priznal-miliardar-icahn/	301	
-/sk/tesla-podla-novej-spravy-drzi-bitcoiny-v-hodnote-2-miliard-dolarov/	301	
-/sk/nayib-bukele-kupil-dalsich-80-bitcoinov/	301	
-/sk/michael-saylor-bitcoin-je-technicky-ekonomicky-a-politicky-spravna-platforma-a-ludia-to-zacinaju-chapat/	301	
-/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs/	301	
+/90-of-what-fidelitys-biggest-clients-are-asking-about-is-bitcoin/	301	
+/sk/televizory-samsung-s-funkciou-nft-trading-spolocnost-ohlasila-premieru-tento-rok/	301	
+/sk/prezident-salvadoru-bukele-giganticky-rast-ceny-btc-je-len-otazkou-casu/	301	
+/as-gold-nears-record-bitcoin-doesnt-shine-so-brightly/	301	
+/what-is-a-bitcoin-etf/	301	
+/sk/co-je-fear-greed-index/	301	
+/first-etf-combining-bitcoin-and-ethereum-launches-in-canada/	301	
+/sk/bitcoin-je-preferovane-zabezpecenie-inflacie-pred-zlatom/	301	
+/sk/pocet-bitcoinov-na-burzach-klesol-na-najnizsiu-uroven-za-poslednych-6-mesiacov/	301	
+/sk/twitter-chce-zazalovat-elona-muska/	301	
+/sk/jednotna-svetova-digitalna-mena-roztahuje-svoje-kridla/	301	
+/how-to-deal-with-getting-stopped-out/	301	
 /panama-is-poised-to-approve-the-use-of-bitcoin-and-8-other-cryptos-without-limitation/	301	
-/sk/microstrategy-oznamila-ze-planuje-nakupit-dalsie-bitcoiny/	301	
-/bitcoin-price-prediction-bulls-eye-48000-levels/	301	
-/sk/predajcovia-su-podla-tejto-metriky-vycerpani-zacne-bitcoin-znovu-rast/	301	
-/sec-rejects-nydig-global-x-spot-bitcoin-etf-applications/	301	
-/sk/ak-chcete-prosperovat-vypnite-media/	301	
-/sk/patnast-dovodov-preco-vlastnit-bitcoin-v-roku-2022/	301	
-/sk/tri-dovody-preco-nehnutelnosti-pojdu-po-lockdownoch-nahor/	301	
-/bitcoin-rises-above-43k-resistance-at-45k-48k/	301	
-/heres-an-investing-reality	301	/stories/heres-an-investing-reality/
-/heres-how-the-legends-view-volatility	301	/stories/heres-how-the-legends-view-volatility/
-/three-ways-how-media-downplays-inflation-ras-vasilisin	301	/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/
-/sk/blockfi-je-dalsou-obetou-ftx-kolapsu	301	/sk/stories/blockfi-je-dalsou-obetou-ftx-kolapsu/
-/the-elephant-chain-syndrome-in-cryptocurrencies-we-have-whales-and-now-elephants-too	301	/stories/the-elephant-chain-syndrome-in-cryptocurrencies-we-have-whales-and-now-elephants-too/
-/the-most-comprehensive-cold-wallet-guide	301	/stories/the-most-comprehensive-cold-wallet-guide/
-/sk/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000	301	/sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000/
-/sk/co-ak-financna-sloboda-neznamena-mat-viac-veci-ale-lepsie-ulozeny-cas	301	/sk/stories/co-ak-financna-sloboda-neznamena-mat-viac-veci-ale-lepsie-ulozeny-cas/
-/five-takeaways-from-ray-dalios-portfolio	301	/stories/five-takeaways-from-ray-dalios-portfolio/
-/sk/kto-vlastni-web3	301	/sk/stories/kto-vlastni-web3/
+/sk/existuje-jeden-zaruceny-sposob-ako-sa-dostat-na-mizinu/	301	
+/bitcoin-knocks-on-door-of-50000-after-rising-above-resistancer/	301	
+/sk/kriza-v-kazachstane-nemala-na-bitcoin-takmer-ziadny-vplyv-decentralizacia-taziarov-je-extremne-dolezita/	301	
+/inheriting-bitcoin-is-harder-than-it-sounds/	301	
+/sk/ethereum-2-0-moze-sposobit-revoluciu-vdaka-tymto-3-klucovym-funkciam/	301	
+/sk/oplati-sa-teraz-nakupovat-kryptomeny-dlhodoby-pohlad-na-trh/	301	
+/sk/stane-sa-z-defi-bankovy-predator-ktory-ohrozi-tradicne-bankovnictvo-a-poistovnictvo/	301	
+/today-in-bitcoin-history-13-year-anniversary-of-transaction-between-satoshi-and-hal-finney/	301	
+/corona-bitcoin-gold-and-hyperinflation	301	/stories/corona-bitcoin-gold-and-hyperinflation/
+/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities	301	/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities/
+/western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population	301	/stories/western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population/
+/sk/ako-jednoducho-profitovat-z-globalnej-recesie	301	/sk/stories/ako-jednoducho-profitovat-z-globalnej-recesie/
+/sk/bitcoin-vyhral-vojnu-november-este-len-rozhodne	301	/sk/stories/bitcoin-vyhral-vojnu-november-este-len-rozhodne/
+/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it	301	/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/
+/sk/preco-bitcoin-neudrzal-80000-a-co-piatok-naozaj-testuje	301	/sk/stories/preco-bitcoin-neudrzal-80000-a-co-piatok-naozaj-testuje/
+/sk/stav-krypto-trhov-za-prvy-polrok-2023	301	/sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/
+/buffett-bought-gold-and-sold-banks-and-you-should-too	301	/stories/buffett-bought-gold-and-sold-banks-and-you-should-too/
+/sk/ovplyvnia-nedavne-udalosti-v-kazachstane-tazbu-bitcoinu	301	/sk/stories/ovplyvnia-nedavne-udalosti-v-kazachstane-tazbu-bitcoinu/
 /sk/10732/	301	
+/sk/10099/	301	
 /sk/9280/	301	
 /12993-2/	301	
 /10764/	301	

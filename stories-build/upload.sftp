@@ -76,7 +76,6 @@
 -mkdir public_html/stories/gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026
 -mkdir public_html/stories/gold-vs-bitcoin-which-was-better-inflation-hedge
 -mkdir public_html/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value
--mkdir public_html/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin
 -mkdir public_html/stories/here-are-bitcoins-three-best-use-cases-right-now
 -mkdir public_html/stories/heres-an-investing-reality
 -mkdir public_html/stories/heres-how-americans-invested-in-bitcoin-in-2021-ras-vasilisin
@@ -92,7 +91,6 @@
 -mkdir public_html/stories/how-to-deal-with-bitcoin-crash
 -mkdir public_html/stories/how-to-deal-with-bitcoin-volatility-ras-vasilisin
 -mkdir public_html/stories/how-to-prepare-for-a-recession
--mkdir public_html/stories/how-to-prepare-for-recession
 -mkdir public_html/stories/how-to-see-why-10-million-bitcoin-stops-being-a-meme
 -mkdir public_html/stories/ignore-the-bearish-noise-and-invest-in-technologies-and-bitcoin
 -mkdir public_html/stories/implications-of-the-russia-ukraine-crisis-are-much-larger-than-people-realize
@@ -113,7 +111,6 @@
 -mkdir public_html/stories/money-printing-the-ugly-elephant-in-the-room-that-media-ignore-ras-vasilisin
 -mkdir public_html/stories/most-comprehensive-guide-to-cryptocurrency-terms
 -mkdir public_html/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up
--mkdir public_html/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2
 -mkdir public_html/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin
 -mkdir public_html/stories/nothing-can-stop-bitcoin-not-even-governments
 -mkdir public_html/stories/old-financial-model-is-about-to-be-disrupted
@@ -150,7 +147,6 @@
 -mkdir public_html/stories/three-lessons-from-the-terra-luna-collapse
 -mkdir public_html/stories/three-most-important-reasons-why-elon-musk-bought-twitter
 -mkdir public_html/stories/three-reasons-why-real-estate-prices-are-increasing-after-the-lockdowns
--mkdir public_html/stories/three-ways-how-media-downplays-inflation
 -mkdir public_html/stories/three-ways-how-media-downplays-inflation-ras-vasilisin
 -mkdir public_html/stories/top-8-powerful-lessons-lockdown-has-taught-me
 -mkdir public_html/stories/two-years-after-lockdowns-what-did-we-learn-ras-vasilisin
@@ -364,7 +360,6 @@
 -mkdir public_html/sk/stories/schopenhauerov-raj-blaznov-preco-si-hlupaci-myslia-ze-su-geniovia
 -mkdir public_html/sk/stories/schopenhauerov-recept-na-dusevne-zdravie-prestante-hadzat-perly-sviniam
 -mkdir public_html/sk/stories/sedem-dovodov-preco-bankovnictvo-konci
--mkdir public_html/sk/stories/sedem-vzorcov-exponencialneho-zisku
 -mkdir public_html/sk/stories/sest-veci-ktore-potrebujete-vediet-o-ftx
 -mkdir public_html/sk/stories/skuste-tieto-zivotne-triky-a-budete-mat-uspesny-rok
 -mkdir public_html/sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin
@@ -582,7 +577,6 @@ put sk/stories/sankcie-proti-rusku-su-pre-bitcoin-najlepsou-marketingovou-kampan
 put sk/stories/schopenhauerov-raj-blaznov-preco-si-hlupaci-myslia-ze-su-geniovia/index.html public_html/sk/stories/schopenhauerov-raj-blaznov-preco-si-hlupaci-myslia-ze-su-geniovia/index.html
 put sk/stories/schopenhauerov-recept-na-dusevne-zdravie-prestante-hadzat-perly-sviniam/index.html public_html/sk/stories/schopenhauerov-recept-na-dusevne-zdravie-prestante-hadzat-perly-sviniam/index.html
 put sk/stories/sedem-dovodov-preco-bankovnictvo-konci/index.html public_html/sk/stories/sedem-dovodov-preco-bankovnictvo-konci/index.html
-put sk/stories/sedem-vzorcov-exponencialneho-zisku/index.html public_html/sk/stories/sedem-vzorcov-exponencialneho-zisku/index.html
 put sk/stories/sest-veci-ktore-potrebujete-vediet-o-ftx/index.html public_html/sk/stories/sest-veci-ktore-potrebujete-vediet-o-ftx/index.html
 put sk/stories/skuste-tieto-zivotne-triky-a-budete-mat-uspesny-rok/index.html public_html/sk/stories/skuste-tieto-zivotne-triky-a-budete-mat-uspesny-rok/index.html
 put sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin/index.html public_html/sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin/index.html
@@ -699,7 +693,6 @@ put stories/gamestop-is-a-financial-protest-against-the-global-financial-system/
 put stories/gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard/index.html public_html/stories/gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard/index.html
 put stories/gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026/index.html public_html/stories/gold-is-the-smoke-alarm-bitcoin-is-the-exit-ramp-why-math-is-defeating-history-in-2026/index.html
 put stories/gold-vs-bitcoin-which-was-better-inflation-hedge/index.html public_html/stories/gold-vs-bitcoin-which-was-better-inflation-hedge/index.html
-put stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/index.html public_html/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/index.html
 put stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value/index.html public_html/stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value/index.html
 put stories/here-are-bitcoins-three-best-use-cases-right-now/index.html public_html/stories/here-are-bitcoins-three-best-use-cases-right-now/index.html
 put stories/heres-an-investing-reality/index.html public_html/stories/heres-an-investing-reality/index.html
@@ -716,7 +709,6 @@ put stories/how-taoist-philosophy-deals-with-volatile-markets/index.html public_
 put stories/how-to-deal-with-bitcoin-crash/index.html public_html/stories/how-to-deal-with-bitcoin-crash/index.html
 put stories/how-to-deal-with-bitcoin-volatility-ras-vasilisin/index.html public_html/stories/how-to-deal-with-bitcoin-volatility-ras-vasilisin/index.html
 put stories/how-to-prepare-for-a-recession/index.html public_html/stories/how-to-prepare-for-a-recession/index.html
-put stories/how-to-prepare-for-recession/index.html public_html/stories/how-to-prepare-for-recession/index.html
 put stories/how-to-see-why-10-million-bitcoin-stops-being-a-meme/index.html public_html/stories/how-to-see-why-10-million-bitcoin-stops-being-a-meme/index.html
 put stories/ignore-the-bearish-noise-and-invest-in-technologies-and-bitcoin/index.html public_html/stories/ignore-the-bearish-noise-and-invest-in-technologies-and-bitcoin/index.html
 put stories/implications-of-the-russia-ukraine-crisis-are-much-larger-than-people-realize/index.html public_html/stories/implications-of-the-russia-ukraine-crisis-are-much-larger-than-people-realize/index.html
@@ -736,7 +728,6 @@ put stories/michael-burrys-is-predicting-epic-crash-should-you-sell/index.html p
 put stories/michael-saylors-legacy-the-bitcoin-corporate-revolution/index.html public_html/stories/michael-saylors-legacy-the-bitcoin-corporate-revolution/index.html
 put stories/money-printing-the-ugly-elephant-in-the-room-that-media-ignore-ras-vasilisin/index.html public_html/stories/money-printing-the-ugly-elephant-in-the-room-that-media-ignore-ras-vasilisin/index.html
 put stories/most-comprehensive-guide-to-cryptocurrency-terms/index.html public_html/stories/most-comprehensive-guide-to-cryptocurrency-terms/index.html
-put stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/index.html public_html/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/index.html
 put stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/index.html public_html/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/index.html
 put stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/index.html public_html/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/index.html
 put stories/nothing-can-stop-bitcoin-not-even-governments/index.html public_html/stories/nothing-can-stop-bitcoin-not-even-governments/index.html
@@ -775,7 +766,6 @@ put stories/three-lessons-from-the-terra-luna-collapse/index.html public_html/st
 put stories/three-most-important-reasons-why-elon-musk-bought-twitter/index.html public_html/stories/three-most-important-reasons-why-elon-musk-bought-twitter/index.html
 put stories/three-reasons-why-real-estate-prices-are-increasing-after-the-lockdowns/index.html public_html/stories/three-reasons-why-real-estate-prices-are-increasing-after-the-lockdowns/index.html
 put stories/three-ways-how-media-downplays-inflation-ras-vasilisin/index.html public_html/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/index.html
-put stories/three-ways-how-media-downplays-inflation/index.html public_html/stories/three-ways-how-media-downplays-inflation/index.html
 put stories/top-8-powerful-lessons-lockdown-has-taught-me/index.html public_html/stories/top-8-powerful-lessons-lockdown-has-taught-me/index.html
 put stories/two-years-after-lockdowns-what-did-we-learn-ras-vasilisin/index.html public_html/stories/two-years-after-lockdowns-what-did-we-learn-ras-vasilisin/index.html
 put stories/understand-saylors-12-strc-in-10-minutes-and-buy-it-from-europe-without-the-mistake-i-made/index.html public_html/stories/understand-saylors-12-strc-in-10-minutes-and-buy-it-from-europe-without-the-mistake-i-made/index.html
@@ -830,7 +820,6 @@ put stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/ind
 -mkdir public_html/sk/stories/page/6
 -mkdir public_html/sk/stories/page/7
 -mkdir public_html/sk/stories/page/8
--mkdir public_html/sk/stories/page/9
 put stories/index.html public_html/stories/index.html
 put stories/page/2/index.html public_html/stories/page/2/index.html
 put stories/page/3/index.html public_html/stories/page/3/index.html
@@ -847,7 +836,6 @@ put sk/stories/page/5/index.html public_html/sk/stories/page/5/index.html
 put sk/stories/page/6/index.html public_html/sk/stories/page/6/index.html
 put sk/stories/page/7/index.html public_html/sk/stories/page/7/index.html
 put sk/stories/page/8/index.html public_html/sk/stories/page/8/index.html
-put sk/stories/page/9/index.html public_html/sk/stories/page/9/index.html
 put ru/stories/index.html public_html/ru/stories/index.html
 # hubs:end
 put sitemap.xml public_html/sitemap.xml
