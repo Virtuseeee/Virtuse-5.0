@@ -21,7 +21,7 @@
         subscribe: 'Subscribe', more: 'More from the desk', moreAll: 'All stories', readMore: 'Read',
         emailReq: 'Email is required.', sending: 'Sending', subOk: 'You are on the list. Check your inbox.',
         subErr: 'Could not join the list. Try again.', netErr: 'Network error. Try again.',
-        footAbout: 'About', footTerms: 'Terms', footPrivacy: 'Privacy', footCopy: '© 2018–2026 Virtuse Group. All rights reserved. Not financial advice.',
+        footAbout: 'About', footTerms: 'Terms', footPrivacy: 'Privacy', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. All rights reserved. Not financial advice.', footOpLabel: 'Operator', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com',
         errTitle: 'Story not found', errText: 'This story may have been moved or unpublished. Browse the full archive instead.', errCta: 'All stories'
       },
       services: {
@@ -50,12 +50,12 @@
         subscribe: 'Odoberať', more: 'Ďalšie články', moreAll: 'Všetky články', readMore: 'Čítať',
         emailReq: 'Zadajte e-mail.', sending: 'Odosielam', subOk: 'Hotovo. Skontrolujte si schránku.',
         subErr: 'Prihlásenie sa nepodarilo. Skúste to znova.', netErr: 'Chyba siete. Skúste to znova.',
-        footAbout: 'O nás', footTerms: 'Obchodné podmienky', footPrivacy: 'Ochrana osobných údajov', footCopy: '© 2018–2026 Virtuse Group. Všetky práva vyhradené.',
+        footAbout: 'O nás', footTerms: 'Obchodné podmienky', footPrivacy: 'Ochrana osobných údajov', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Všetky práva vyhradené.', footOpLabel: 'Prevádzkovateľ', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka · IČO 36 709 042 · IČ DPH SK2022293042 · zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sa, vložka č. 4452/B · info@virtuse.com',
         errTitle: 'Článok sa nenašiel', errText: 'Tento článok mohol byť presunutý alebo stiahnutý. Prezrite si celý archív.', errCta: 'Všetky články'
       },
       services: {
         mining: ['Ťažte Bitcoin s overenými partnermi', 'Hosting, cloud a hardvér porovnané podľa nákladov a výplat.', 'Porovnať partnerov'],
-        treasury: ['Bitcoin v súvahe firmy', 'Úschova, vykonávanie obchodov a reporting pre firmy a family offices.', 'Treasury partneri'],
+        treasury: ['Bitcoin v súvahe firmy', 'Úschova, exekúcia a reporting pre firmy a family offices.', 'Treasury partneri'],
         custody: ['Majte vlastné kľúče', 'Hardvérové peňaženky a multi-sig od overených partnerov.', 'Porovnať úschovu'],
         policy: ['Zdaňte Bitcoin správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
         macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 5 % p. a.', 'Porovnať pôžičky'],
@@ -81,7 +81,7 @@
         subscribe: 'Подписаться', more: 'Ещё статьи', moreAll: 'Все статьи', readMore: 'Читать',
         emailReq: 'Укажите e-mail.', sending: 'Отправка', subOk: 'Готово. Проверьте почту.',
         subErr: 'Не удалось подписаться. Попробуйте ещё раз.', netErr: 'Ошибка сети. Попробуйте ещё раз.',
-        footAbout: 'О нас', footTerms: 'Условия использования', footPrivacy: 'Политика конфиденциальности', footCopy: '© 2018–2026 Virtuse Group. Все права защищены.',
+        footAbout: 'О нас', footTerms: 'Условия использования', footPrivacy: 'Политика конфиденциальности', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Все права защищены.', footOpLabel: 'Оператор', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словакия · Идентификационный номер (IČO) 36 709 042 · Номер плательщика НДС SK2022293042 · зарегистрирована в Торговом реестре Городского суда Братислава III, раздел Sa, № 4452/B · info@virtuse.com',
         errTitle: 'Статья не найдена', errText: 'Возможно, статья перемещена или снята с публикации. Посмотрите полный архив.', errCta: 'Все статьи'
       },
       services: {
@@ -114,7 +114,7 @@
         subscribe: 'Отримати Brief', more: 'Ще статті', moreAll: 'Усі статті', readMore: 'Читати',
         emailReq: 'Вкажіть e-mail.', sending: 'Надсилання', subOk: 'Готово. Перевірте пошту.',
         subErr: 'Не вдалося підписатися. Спробуйте ще раз.', netErr: 'Помилка мережі. Спробуйте ще раз.',
-        footAbout: 'Про нас', footTerms: 'Умови використання', footPrivacy: 'Політика конфіденційності', footCopy: '© 2018–2026 Virtuse Group. Усі права захищені.',
+        footAbout: 'Про нас', footTerms: 'Умови використання', footPrivacy: 'Політика конфіденційності', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.', footOpLabel: 'Оператор', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словаччина · Ідентифікаційний номер (IČO) 36 709 042 · Номер платника ПДВ SK2022293042 · зареєстрована в Торговому реєстрі Міського суду Братислава III, розділ Sa, № 4452/B · info@virtuse.com',
         errTitle: 'Статтю не знайдено', errText: 'Можливо, статтю перенесено або знято з публікації. Перегляньте повний архів.', errCta: 'Усі статті'
       },
       services: {
@@ -144,7 +144,7 @@
         subscribe: 'Brief erhalten', more: 'Weitere Artikel', moreAll: 'Alle Artikel', readMore: 'Lesen',
         emailReq: 'Bitte geben Sie Ihre E-Mail-Adresse ein.', sending: 'Wird gesendet', subOk: 'Geschafft. Bitte prüfen Sie Ihr Postfach.',
         subErr: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.', netErr: 'Netzwerkfehler. Bitte erneut versuchen.',
-        footAbout: 'Über uns', footTerms: 'AGB', footPrivacy: 'Datenschutzerklärung', footCopy: '© 2018–2026 Virtuse Group. Alle Rechte vorbehalten.',
+        footAbout: 'Über uns', footTerms: 'AGB', footPrivacy: 'Datenschutzerklärung', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Alle Rechte vorbehalten.', footOpLabel: 'Betreiber', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slowakei · Firmennummer (IČO) 36 709 042 · USt-IdNr. SK2022293042 · eingetragen im Handelsregister des Stadtgerichts Bratislava III, Abteilung Sa, Einlage Nr. 4452/B · info@virtuse.com',
         errTitle: 'Artikel nicht gefunden', errText: 'Dieser Artikel wurde möglicherweise verschoben oder depubliziert. Durchsuchen Sie das Archiv.', errCta: 'Alle Artikel'
       },
       services: {
@@ -174,7 +174,7 @@
         subscribe: 'Recevoir le Brief', more: 'Autres articles', moreAll: 'Tous les articles', readMore: 'Lire',
         emailReq: 'Adresse e-mail requise.', sending: 'Envoi', subOk: 'C’est fait. Vérifiez votre boîte de réception.',
         subErr: 'Inscription impossible. Réessayez.', netErr: 'Erreur réseau. Réessayez.',
-        footAbout: 'À propos', footTerms: 'CGU', footPrivacy: 'Politique de confidentialité', footCopy: '© 2018–2026 Virtuse Group. Tous droits réservés.',
+        footAbout: 'À propos', footTerms: 'CGU', footPrivacy: 'Politique de confidentialité', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Tous droits réservés.', footOpLabel: 'Exploitant', footOpText: ' : Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovaquie · N° d’identification (IČO) 36 709 042 · N° TVA SK2022293042 · immatriculée au registre du commerce du tribunal municipal de Bratislava III, section Sa, n° 4452/B · info@virtuse.com',
         errTitle: 'Article introuvable', errText: 'Cet article a peut-être été déplacé ou dépublié. Parcourez les archives.', errCta: 'Tous les articles'
       },
       services: {
@@ -204,7 +204,7 @@
         subscribe: 'Recibir el Brief', more: 'Más artículos', moreAll: 'Todos los artículos', readMore: 'Leer',
         emailReq: 'Indique su correo electrónico.', sending: 'Enviando', subOk: 'Listo. Revise su correo.',
         subErr: 'No se pudo completar la suscripción. Inténtelo de nuevo.', netErr: 'Error de red. Inténtelo de nuevo.',
-        footAbout: 'Sobre nosotros', footTerms: 'Términos y condiciones', footPrivacy: 'Política de privacidad', footCopy: '© 2018–2026 Virtuse Group. Todos los derechos reservados.',
+        footAbout: 'Sobre nosotros', footTerms: 'Términos y condiciones', footPrivacy: 'Política de privacidad', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Todos los derechos reservados.', footOpLabel: 'Titular', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Eslovaquia · N.º de identificación (IČO) 36 709 042 · NIF-IVA SK2022293042 · inscrita en el Registro Mercantil del Tribunal Municipal de Bratislava III, sección Sa, n.º 4452/B · info@virtuse.com',
         errTitle: 'Artículo no encontrado', errText: 'Es posible que el artículo se haya movido o retirado. Consulte el archivo completo.', errCta: 'Todos los artículos'
       },
       services: {
@@ -234,7 +234,7 @@
         subscribe: 'Zapisz się', more: 'Więcej artykułów', moreAll: 'Wszystkie artykuły', readMore: 'Czytaj',
         emailReq: 'Podaj adres e-mail.', sending: 'Wysyłanie', subOk: 'Gotowe. Sprawdź skrzynkę.',
         subErr: 'Nie udało się zapisać. Spróbuj ponownie.', netErr: 'Błąd sieci. Spróbuj ponownie.',
-        footAbout: 'O nas', footTerms: 'Regulamin', footPrivacy: 'Polityka prywatności', footCopy: '© 2018–2026 Virtuse Group. Wszelkie prawa zastrzeżone.',
+        footAbout: 'O nas', footTerms: 'Regulamin', footPrivacy: 'Polityka prywatności', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Wszelkie prawa zastrzeżone.', footOpLabel: 'Operator', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Słowacja · Nr identyfikacyjny (IČO) 36 709 042 · NIP UE SK2022293042 · wpisana do rejestru handlowego Sądu Miejskiego Bratysława III, sekcja Sa, nr 4452/B · info@virtuse.com',
         errTitle: 'Nie znaleziono artykułu', errText: 'Artykuł mógł zostać przeniesiony lub wycofany. Przejrzyj całe archiwum.', errCta: 'Wszystkie artykuły'
       },
       services: {
@@ -264,7 +264,7 @@
         subscribe: 'Odebírat', more: 'Další články', moreAll: 'Všechny články', readMore: 'Číst',
         emailReq: 'Zadejte e-mailovou adresu.', sending: 'Odesílání', subOk: 'Hotovo. Zkontrolujte svou schránku.',
         subErr: 'Přihlášení se nezdařilo. Zkuste to znovu.', netErr: 'Chyba sítě. Zkuste to znovu.',
-        footAbout: 'O nás', footTerms: 'Obchodní podmínky', footPrivacy: 'Ochrana osobních údajů', footCopy: '© 2018–2026 Virtuse Group. Všechna práva vyhrazena.',
+        footAbout: 'O nás', footTerms: 'Obchodní podmínky', footPrivacy: 'Ochrana osobních údajů', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Všechna práva vyhrazena.', footOpLabel: 'Provozovatel', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com',
         errTitle: 'Článek nenalezen', errText: 'Článek byl možná přesunut nebo stažen. Projděte si celý archiv.', errCta: 'Všechny články'
       },
       services: {
@@ -294,7 +294,7 @@
         subscribe: 'Feliratkozás', more: 'További cikkek', moreAll: 'Összes cikk', readMore: 'Elolvasom',
         emailReq: 'Adja meg e-mail-címét.', sending: 'Küldés', subOk: 'Kész. Nézze meg a postafiókját.',
         subErr: 'A feliratkozás nem sikerült. Próbálja újra.', netErr: 'Hálózati hiba. Próbálja újra.',
-        footAbout: 'Rólunk', footTerms: 'Felhasználási feltételek', footPrivacy: 'Adatvédelmi tájékoztató', footCopy: '© 2018–2026 Virtuse Group. Minden jog fenntartva.',
+        footAbout: 'Rólunk', footTerms: 'Felhasználási feltételek', footPrivacy: 'Adatvédelmi tájékoztató', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.', footOpLabel: 'Üzemeltető', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Szlovákia · Cégazonosító (IČO) 36 709 042 · Közösségi adószám SK2022293042 · bejegyezve a Pozsonyi III. Városi Bíróság cégjegyzékébe, Sa szakasz, 4452/B szám · info@virtuse.com',
         errTitle: 'A cikk nem található', errText: 'Lehet, hogy a cikket áthelyezték vagy visszavonták. Böngéssze az archívumot.', errCta: 'Összes cikk'
       },
       services: {
@@ -324,13 +324,6 @@
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
   function stripHtml(s) { var d = new DOMParser().parseFromString(s || '', 'text/html'); return (d.body.textContent || '').replace(/\s*\[…\]\s*$/, '…').trim(); }
 
-  // Theme toggle, skip link and the CFO nav item / card come from brief-chrome.js
-  // (one table for every Brief page); the reader's own strings win.
-  var CHROME = window.VB_CHROME_ALL || {};
-  var CTL = CHROME[langCode] || CHROME.en || {};
-  for (var ck in CTL) if (L.ui[ck] == null) L.ui[ck] = CTL[ck];
-  window.VB_CHROME_T = CTL;
-
   function localizeChrome() {
     document.documentElement.lang = langCode;
     window.VB_UI = L.ui;
@@ -347,7 +340,6 @@
     // Hub, legal pages and the service card point at the page language.
     [].forEach.call(document.querySelectorAll('[data-hub]'), function (a) { a.href = ROOT + L.dir + a.getAttribute('data-hub'); });
     $('ovAlt').href = ROOT + (L.concierge ? L.dir : '') + 'concierge.html?utm_source=concierge&utm_medium=article';
-    if (window.VB_THEME_LABEL) window.VB_THEME_LABEL();
   }
   localizeChrome();
 

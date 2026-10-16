@@ -808,14 +808,8 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
 /* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
-@media (min-width: 1181px) { #navCfo .nd-t { white-space: nowrap; } }
+@media (min-width: 1181px) { #navCfo { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
-/* Menu items with a one-line description on desktop (checklist 2.5) */
-.nav-drop { min-width: 280px; }
-.nav-links .nav-drop a { display: flex; flex-direction: column; gap: 3px; }
-.nav-drop .nd-d { font-size: 12px; line-height: 1.35; color: var(--dim); white-space: normal; }
-.nav-links .nav-drop a:hover .nd-d, .nav-links .nav-drop a:focus-visible .nd-d { color: var(--muted); }
-@media (max-width: 1180px) { .nav-drop .nd-d { display: none; } }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-top { font-size: 13px; }
 .nav-badge { margin-left: 4px; }
@@ -948,7 +942,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "url": "https://virtuse.com/",
       "logo": {
         "@type": "ImageObject",
@@ -959,19 +953,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "image": "https://virtuse.com/og-cover.jpg",
       "description": "Некастодіальний хаб сервісів лише для Біткоїна. Virtuse ніколи не зберігає ваші ключі.",
       "foundingDate": "2018",
-      "email": "support@virtuse.com",
-      "address": [
-        {
-          "@type": "PostalAddress",
-          "addressLocality": "Singapore",
-          "addressCountry": "SG"
-        },
-        {
-          "@type": "PostalAddress",
-          "addressLocality": "Bratislava",
-          "addressCountry": "SK"
-        }
-      ],
+      "email": "info@virtuse.com",
+      "address": {"@type": "PostalAddress", "streetAddress": "Borinka 65", "postalCode": "900 32", "addressLocality": "Borinka", "addressCountry": "SK"},
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
       "sameAs": [
         "https://twitter.com/VirtuseExchange",
         "https://www.linkedin.com/company/virtuse-exchange/",
@@ -1009,11 +994,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Матеріали</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Новини про Біткоїн щопонеділка</span></a><a href="/stories/"><span class="nd-t">Статті</span><span class="nd-d">Великі статті та аналітика</span></a><a href="blog.html"><span class="nd-t">Блог</span><span class="nd-d">Найновіші дописи Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Біткоїн-дані</span><span class="nd-d">Поточна ціна, мережа та графіки</span></a><a href="/uk/bitcoin-podatky/"><span class="nd-t">Податкові гіди за країнами</span><span class="nd-d">Податкові правила у 13 країнах ЄС</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Відповіді про Virtuse і партнерів</span></a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Інструменти</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></span><span class="nd-d">Вердикт і аудит комісій, безкоштовно з 1 листопада</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Партнери за вашими відповідями</span></a><a href="/uk/bitcoin-indeks-komisii/"><span class="nd-t">Індекс комісій</span><span class="nd-d">Повна вартість купівлі в порівнянні</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">План регулярних покупок і комісії</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Продати чи позичити під заставу Біткоїна</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Правила країн і перевірка спадщини</span></a><a href="retirement-calculator.html"><span class="nd-t">Пенсійний калькулятор</span><span class="nd-d">Скільки Біткоїна на пенсію</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div>
       </div>
       <a class="nav-top" href="about.html">Про нас</a>
     </nav>
@@ -1052,7 +1037,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="co-ticker">
       <div class="co-row">
         <div class="co-set"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="21bitcoin логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="Bybit EU логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">Bybit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="ByBit EU логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">ByBit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="Kraken логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="Crypto.com логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="Invity логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">Invity</span></span>
@@ -1074,7 +1059,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 <span class="co-partner"><img src="../logo-oneminers.png" alt="OneMiners логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">OneMiners</span></span>
 <span class="co-partner"><img src="../logo-powermining.png" alt="PowerMining логотип" width="28" height="28" loading="lazy"><span aria-hidden="true">PowerMining</span></span></div>
         <div class="co-set" aria-hidden="true"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" loading="lazy"><span>21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>Bybit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>ByBit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="" width="28" height="28" loading="lazy"><span>Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="" width="28" height="28" loading="lazy"><span>Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="" width="28" height="28" loading="lazy"><span>Invity</span></span>
@@ -1133,7 +1118,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="feature">
       <div>
         <span class="k">Купити Біткоїн · більшість відвідувачів починає тут</span>
-        <h2>Купуйте Біткоїн з опублікованою комісією від 0%. <span>Подивіться, скільки коштує кожен шлях.</span></h2>
+        <h2>Купуйте Біткоїн з комісією від 0%. <span>Подивіться, скільки коштує кожен шлях.</span></h2>
         <p class="lead">Три шляхи з ліцензією в ЄС, упорядковані за опублікованою комісією. Посуньте повзунок, щоб побачити свої витрати за рік.</p>
         <div class="slider-box">
           <label for="amt">Ви купуєте щомісяця</label>
@@ -1149,9 +1134,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="panel">
         <div class="rows" id="feeRows">
-          <div class="row head"><span>За опублікованою комісією</span><span>Комісія</span><span class="bar"></span><span style="text-align:right">За рік</span></div>
+          <div class="row head"><span>Топ-3 за комісією</span><span>Комісія</span><span class="bar"></span><span style="text-align:right">За рік</span></div>
           <div class="row" data-pct="0"><span><b>21bitcoin</b><small>Auto-Invest, з 8-го дня</small></span><span class="pct">0%</span><span class="bar"><div class="track"><div class="fill low"></div></div></span><span class="yr">0 €</span></div>
-          <div class="row" data-pct="0.25"><span><b>Bybit EU</b><small>Spot, комісія тейкера</small></span><span class="pct">0,25%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
+          <div class="row" data-pct="0.25"><span><b>ByBit EU</b><small>Spot, комісія тейкера</small></span><span class="pct">0,25%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
           <div class="row" data-pct="0.8"><span><b>Kraken</b><small>Pro, рівень 1, комісія тейкера</small></span><span class="pct">0,8%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">48 €</span></div>
         </div>
         <div class="diff">
@@ -1171,7 +1156,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
             <text x="194" y="8" text-anchor="end" id="saveEnd">480 €</text>
           </svg>
         </div>
-        <p class="src">Комісії в тому вигляді, як їх публікує кожен партнер, Q4 2026. Перші 7 днів плану 21bitcoin стягує звичайну комісію. Спреди та комісії за виведення не враховано. <a href="/uk/bitcoin-indeks-komisii/">Загальна вартість зі спредом: індекс комісій</a></p>
+        <p class="src">Комісії в тому вигляді, як їх публікує кожен партнер, Q4 2026. Перші 7 днів плану 21bitcoin стягує звичайну комісію. Спреди та комісії за виведення не враховано. <a href="/uk/bitcoin-indeks-komisii/">Повний індекс комісій</a></p>
       </div>
     </div>
   </section>
@@ -1340,7 +1325,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="footer-columns"><div class="footer-col"><h4>Послуги</h4><a href="buy-bitcoin.html">Купити Біткоїн</a><a href="secure.html">Зберігання</a><a href="mining.html">Майнінг</a><a href="lending.html">Позики</a><a href="treasury.html">Казначейство</a><a href="tax.html">Податки</a><a href="bots.html">Боти</a></div><div class="footer-col"><h4>Компанія</h4><a href="about.html">Про нас</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Інструменти</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Безкоштовно</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div><div class="footer-col"><h4>Матеріали</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-podatky/">Податки на Біткоїн</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a><a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a><a href="/uk/bitcoin-prodaty-chy-pozychyty/">Продати чи позичити</a><a href="/uk/bitcoin-spadshchyna/">Спадкування</a></div><div class="footer-col"><h4>Правова інформація</h4><a href="terms-and-conditions.html">Умови використання</a><a href="privacy-policy.html">Політика конфіденційності</a><a href="aml-compliance.html">AML і комплаєнс</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.</p>
+<p class="footer-operator"><a href="operator.html">Оператор</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словаччина · Ідентифікаційний номер (IČO) 36 709 042 · Номер платника ПДВ SK2022293042 · зареєстрована в Торговому реєстрі Міського суду Братислава III, розділ Sa, № 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; щотижневий дайджест від Virtuse. <a href="../news.html">Читати &rarr;</a></p>
       <nav class="footer-langs" aria-label="Мови"><a href="../index.html" hreflang="en">English</a><a href="../sk/index.html" hreflang="sk">Slovenčina</a><a href="../cs/index.html" hreflang="cs">Čeština</a><a href="../de/index.html" hreflang="de">Deutsch</a><a href="../pl/index.html" hreflang="pl">Polski</a><a href="../hu/index.html" hreflang="hu">Magyar</a><a href="../fr/index.html" hreflang="fr">Français</a><a href="../es/index.html" hreflang="es">Español</a><a href="index.html" hreflang="uk" aria-current="page">Українська</a><a href="../ru/index.html" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse — незалежний хаб для порівняння. Він не зберігає кошти чи ключі клієнтів, не виконує ордери й не надає інвестиційних порад. Послуги надають зазначені партнери за власними ліцензіями. Комісії вказано так, як їх публікує кожен партнер, і вони можуть змінюватися.</p>
@@ -1768,7 +1754,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     document.getElementById('briefMeta').textContent = 'Останній Brief · ' + when + ' · ' + (iss.read_min || 3) + ' хв';
     document.getElementById('briefTitle').textContent = iss.title + ' (англійською)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Обкладинка: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = 'Обкладинка: ' + iss.title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)

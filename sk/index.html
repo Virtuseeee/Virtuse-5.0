@@ -808,14 +808,8 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
 /* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
-@media (min-width: 1181px) { #navCfo .nd-t { white-space: nowrap; } }
+@media (min-width: 1181px) { #navCfo { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
-/* Menu items with a one-line description on desktop (checklist 2.5) */
-.nav-drop { min-width: 280px; }
-.nav-links .nav-drop a { display: flex; flex-direction: column; gap: 3px; }
-.nav-drop .nd-d { font-size: 12px; line-height: 1.35; color: var(--dim); white-space: normal; }
-.nav-links .nav-drop a:hover .nd-d, .nav-links .nav-drop a:focus-visible .nd-d { color: var(--muted); }
-@media (max-width: 1180px) { .nav-drop .nd-d { display: none; } }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-top { font-size: 13px; }
 .nav-badge { margin-left: 4px; }
@@ -948,7 +942,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "url": "https://virtuse.com/",
       "logo": {
         "@type": "ImageObject",
@@ -959,19 +953,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "image": "https://virtuse.com/og-cover.jpg",
       "description": "Nekustodiálny hub pre služby zamerané výhradne na Bitcoin. Virtuse nikdy nedrží vaše kľúče.",
       "foundingDate": "2018",
-      "email": "support@virtuse.com",
-      "address": [
-        {
-          "@type": "PostalAddress",
-          "addressLocality": "Singapore",
-          "addressCountry": "SG"
-        },
-        {
-          "@type": "PostalAddress",
-          "addressLocality": "Bratislava",
-          "addressCountry": "SK"
-        }
-      ],
+      "email": "info@virtuse.com",
+      "address": {"@type": "PostalAddress", "streetAddress": "Borinka 65", "postalCode": "900 32", "addressLocality": "Borinka", "addressCountry": "SK"},
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
       "sameAs": [
         "https://twitter.com/VirtuseExchange",
         "https://www.linkedin.com/company/virtuse-exchange/",
@@ -1009,11 +994,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Vzdelávanie</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Týždenné správy o Bitcoine, každý pondelok</span></a><a href="/sk/stories/"><span class="nd-t">Príbehy</span><span class="nd-d">Dlhšie články a analýzy</span></a><a href="../blog-sk.html"><span class="nd-t">Blog</span><span class="nd-d">Najnovšie príspevky od Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Bitcoin dáta</span><span class="nd-d">Aktuálna cena, sieť a grafy</span></a><a href="/sk/bitcoin-dane/"><span class="nd-t">Daňové návody podľa krajín</span><span class="nd-d">Daňové pravidlá v 13 krajinách EÚ</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Odpovede o Virtuse a partneroch</span></a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="../blog-sk.html">Blog</a><a href="bitcoin-data.html">Bitcoin dáta</a><a href="/sk/bitcoin-index-poplatkov/">Index poplatkov</a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Nástroje</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Zadarmo</span></span><span class="nd-d">Verdikt a audit poplatkov, zadarmo od 1. novembra</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partneri podľa vašich odpovedí</span></a><a href="/sk/bitcoin-index-poplatkov/"><span class="nd-t">Index poplatkov</span><span class="nd-d">Celkové náklady nákupu v porovnaní</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plán pravidelných nákupov a poplatky</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Predať, alebo si požičať so zábezpekou v Bitcoine</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Pravidlá krajín a kontrola dedičstva</span></a><a href="retirement-calculator.html"><span class="nd-t">Dôchodková kalkulačka</span><span class="nd-d">Koľko Bitcoinu na dôchodok</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Zadarmo</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div>
       </div>
       <a class="nav-top" href="about.html">O nás</a>
     </nav>
@@ -1052,7 +1037,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="co-ticker">
       <div class="co-row">
         <div class="co-set"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="Logo 21bitcoin" width="28" height="28" loading="lazy"><span aria-hidden="true">21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="Logo Bybit EU" width="28" height="28" loading="lazy"><span aria-hidden="true">Bybit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="Logo ByBit EU" width="28" height="28" loading="lazy"><span aria-hidden="true">ByBit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="Logo Kraken" width="28" height="28" loading="lazy"><span aria-hidden="true">Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="Logo Crypto.com" width="28" height="28" loading="lazy"><span aria-hidden="true">Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="Logo Invity" width="28" height="28" loading="lazy"><span aria-hidden="true">Invity</span></span>
@@ -1074,7 +1059,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 <span class="co-partner"><img src="../logo-oneminers.png" alt="Logo OneMiners" width="28" height="28" loading="lazy"><span aria-hidden="true">OneMiners</span></span>
 <span class="co-partner"><img src="../logo-powermining.png" alt="Logo PowerMining" width="28" height="28" loading="lazy"><span aria-hidden="true">PowerMining</span></span></div>
         <div class="co-set" aria-hidden="true"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" loading="lazy"><span>21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>Bybit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>ByBit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="" width="28" height="28" loading="lazy"><span>Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="" width="28" height="28" loading="lazy"><span>Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="" width="28" height="28" loading="lazy"><span>Invity</span></span>
@@ -1133,7 +1118,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="feature">
       <div>
         <span class="k">Kúpiť Bitcoin · väčšina návštevníkov začína tu</span>
-        <h2>Kúpte Bitcoin so zverejnenými poplatkami od 0 %. <span>Pozrite sa, koľko vás stojí každá cesta.</span></h2>
+        <h2>Kúpte Bitcoin s poplatkami od 0 %. <span>Pozrite sa, koľko vás stojí každá cesta.</span></h2>
         <p class="lead">Tri cesty s licenciou v EÚ, zoradené podľa zverejneného poplatku. Posuňte posuvník a uvidíte svoje ročné náklady.</p>
         <div class="slider-box">
           <label for="amt">Mesačne nakupujete</label>
@@ -1149,9 +1134,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="panel">
         <div class="rows" id="feeRows">
-          <div class="row head"><span>Podľa zverejneného poplatku</span><span>Poplatok</span><span class="bar"></span><span style="text-align:right">Ročne</span></div>
+          <div class="row head"><span>Top 3 podľa poplatku</span><span>Poplatok</span><span class="bar"></span><span style="text-align:right">Ročne</span></div>
           <div class="row" data-pct="0"><span><b>21bitcoin</b><small>Auto-Invest, od 8. dňa</small></span><span class="pct">0 %</span><span class="bar"><div class="track"><div class="fill low"></div></div></span><span class="yr">0 €</span></div>
-          <div class="row" data-pct="0.25"><span><b>Bybit EU</b><small>Spot, poplatok takera</small></span><span class="pct">0,25 %</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
+          <div class="row" data-pct="0.25"><span><b>ByBit EU</b><small>Spot, poplatok takera</small></span><span class="pct">0,25 %</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
           <div class="row" data-pct="0.8"><span><b>Kraken</b><small>Pro, poplatok takera v úrovni 1</small></span><span class="pct">0,8 %</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">48 €</span></div>
         </div>
         <div class="diff">
@@ -1171,7 +1156,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
             <text x="194" y="8" text-anchor="end" id="saveEnd">480 €</text>
           </svg>
         </div>
-        <p class="src">Poplatky zverejnené jednotlivými partnermi, Q4 2026. 21bitcoin účtuje počas prvých 7 dní plánu svoj bežný poplatok. Spready a poplatky za výber nie sú zahrnuté. <a href="/sk/bitcoin-index-poplatkov/">Celkové náklady vrátane spreadu: Index poplatkov</a></p>
+        <p class="src">Poplatky zverejnené jednotlivými partnermi, Q4 2026. 21bitcoin účtuje počas prvých 7 dní plánu svoj bežný poplatok. Spready a poplatky za výber nie sú zahrnuté. <a href="/sk/bitcoin-index-poplatkov/">Celý Index poplatkov</a></p>
       </div>
     </div>
   </section>
@@ -1340,7 +1325,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="buy-bitcoin.html">Kúpiť Bitcoin</a><a href="secure.html">Úschova</a><a href="mining.html">Ťažba</a><a href="lending.html">Pôžičky</a><a href="treasury.html">Treasury</a><a href="tax.html">Dane</a><a href="bots.html">Boty</a></div><div class="footer-col"><h4>Spoločnosť</h4><a href="about.html">O nás</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Zadarmo</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="../news.html">Virtuse Brief</a><a href="../blog-sk.html">Blog</a><a href="bitcoin-data.html">Bitcoin dáta</a><a href="/sk/bitcoin-dane/">Dane z Bitcoinu</a><a href="/sk/bitcoin-index-poplatkov/">Index poplatkov</a><a href="/sk/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/sk/bitcoin-predat-alebo-pozicat/">Predať alebo požičať</a><a href="/sk/bitcoin-dedicstvo/">Dedenie</a></div><div class="footer-col"><h4>Právne informácie</h4><a href="terms-and-conditions.html">Obchodné podmienky</a><a href="privacy-policy.html">Ochrana osobných údajov</a><a href="aml-compliance.html">AML a Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Všetky práva vyhradené.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všetky práva vyhradené.</p>
+<p class="footer-operator"><a href="operator.html">Prevádzkovateľ</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka · IČO 36 709 042 · IČ DPH SK2022293042 · zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sa, vložka č. 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; týždenný výber od Virtuse. <a href="../news.html">Čítať &rarr;</a></p>
       <nav class="footer-langs" aria-label="Jazyky"><a href="../index.html" hreflang="en">English</a><a href="index.html" hreflang="sk" aria-current="page">Slovenčina</a><a href="../cs/index.html" hreflang="cs">Čeština</a><a href="../de/index.html" hreflang="de">Deutsch</a><a href="../pl/index.html" hreflang="pl">Polski</a><a href="../hu/index.html" hreflang="hu">Magyar</a><a href="../fr/index.html" hreflang="fr">Français</a><a href="../es/index.html" hreflang="es">Español</a><a href="../uk/index.html" hreflang="uk">Українська</a><a href="../ru/index.html" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse je nezávislé porovnávacie centrum. Nedrží prostriedky ani kľúče klientov, nevykonáva príkazy a neposkytuje investičné poradenstvo. Služby poskytujú uvedení partneri na základe vlastných licencií. Poplatky sú uvedené tak, ako ich zverejňuje každý partner, a môžu sa zmeniť.</p>
@@ -1768,7 +1754,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     document.getElementById('briefMeta').textContent = 'Najnovší Brief · ' + when + ' · ' + (iss.read_min || 3) + ' min';
     document.getElementById('briefTitle').textContent = iss.title + ' (v angličtine)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Titulný obrázok: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = 'Titulný obrázok: ' + iss.title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)

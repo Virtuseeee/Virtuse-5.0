@@ -74,9 +74,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.min.css?v=5">
+<link rel="stylesheet" href="../site-v2.css?v=5">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Ouvrir le menu", "closeMenu": "Fermer le menu", "latestBrief": "Dernier Brief · ", "min": " min", "coverImage": "Image de couverture : ", "badEmail": "Veuillez saisir une adresse e-mail valide.", "sending": "Envoi en cours...", "subscribed": "C'est fait. Le Brief arrive lundi.", "error": "Une erreur s'est produite. Veuillez réessayer.", "netError": "Erreur réseau. Veuillez réessayer.", "briefLangNote": " (en anglais)"};</script>
+<style>.aff-note{margin:14px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}.qa details p.aff-note{margin:8px 0 0;font-size:12px;color:var(--muted)}.pcard2 .aff-note{margin:-6px 0 0}.buy-hero2>.aff-note{max-width:760px;margin-top:12px}.lend-widget .aff-note{margin:0;padding:10px 4px 0;text-align:center}.aff-note a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}.aff-note a:hover{color:var(--text)}</style>
 </head>
 <body class="page-buy page-lend no-split">
 <header class="nav">
@@ -92,11 +93,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Apprendre</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">L’actualité Bitcoin, chaque lundi</span></a><a href="/stories/"><span class="nd-t">Articles</span><span class="nd-d">Articles de fond et analyses</span></a><a href="blog.html"><span class="nd-t">Blog</span><span class="nd-d">Les derniers billets de Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Données Bitcoin</span><span class="nd-d">Cours en direct, réseau et graphiques</span></a><a href="/fr/bitcoin-fiscalite/"><span class="nd-t">Guides fiscaux par pays</span><span class="nd-d">Règles fiscales dans 13 pays de l’UE</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Réponses sur Virtuse et les partenaires</span></a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Données Bitcoin</a><a href="/fr/bitcoin-indice-frais/">Indice des frais</a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Outils</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Gratuit</span></span><span class="nd-d">Verdict et audit des frais, gratuits dès le 1er novembre</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Les partenaires selon vos réponses</span></a><a href="/fr/bitcoin-indice-frais/"><span class="nd-t">Indice des frais</span><span class="nd-d">Le coût total d’achat comparé</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Planifier des achats réguliers</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Vendre ou emprunter sur vos Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Règles par pays et bilan successoral</span></a><a href="retirement-calculator.html"><span class="nd-t">Simulateur de retraite</span><span class="nd-d">Combien de Bitcoin pour la retraite</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Gratuit</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Simulateur de retraite</a></div>
       </div>
       <a class="nav-top" href="about.html">À propos</a>
     </nav>
@@ -117,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h1>Gardez votre Bitcoin. <span class="h1-grey">Empruntez en le mettant en garantie, à partir de 5&nbsp;% par an.</span></h1>
     <div class="hpanel purple lend-panel">
       <div class="lend-grid">
-        <div class="lend-widget"><iframe src="https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=rgba(0,0,0,0)&amp;borderCard=rgba(0,0,0,0)&amp;shadowCard=none&amp;widgetShadow=none" title="Calculateur de prêt Firefish" width="100%" height="560" style="border:0" allow="clipboard-write"></iframe></div>
+        <div class="lend-widget"><iframe src="https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=rgba(0,0,0,0)&amp;borderCard=rgba(0,0,0,0)&amp;shadowCard=none&amp;widgetShadow=none" title="Calculateur de prêt Firefish" width="100%" height="560" style="border:0" allow="clipboard-write"></iframe><p class="aff-note">Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas. <a href="how-we-earn.html">Comment nous gagnons de l’argent</a></p></div>
         <div class="lend-details">
           <h2 class="ld-title">Les conditions du prêt en un coup d'œil</h2>
           <div class="ld-row"><span>Taux d'intérêt</span><b>5–15&nbsp;% par an</b></div><div class="ld-row"><span>Ratio LTV</span><b>Jusqu'à 50&nbsp;%</b></div><div class="ld-row"><span>Durée</span><b>3, 6, 12, 18, 24 mois</b></div><div class="ld-row"><span>Devises</span><b>EUR, CHF, CZK, USDC</b></div><div class="ld-row"><span>Minimum</span><b>800&nbsp;EUR</b></div><div class="ld-row"><span>Conservation</span><b>Séquestre multisig non-custodial</b></div>
@@ -125,7 +126,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </div>
     </div>
-    <a class="hp-cta btn-primary" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener">Obtenir votre prêt chez Firefish <span aria-hidden="true">↗</span></a>
+    <a class="hp-cta btn-primary" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer">Obtenir votre prêt chez Firefish <span aria-hidden="true">↗</span></a>
+    <p class="aff-note">Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas. <a href="how-we-earn.html">Comment nous gagnons de l’argent</a></p>
     <a class="tlink lend-compare" href="/fr/bitcoin-vendre-ou-emprunter/">Comparer la vente et le prêt <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <div class="hp-fine">
       <p>Firefish peut verser à Virtuse une commission de parrainage. Vous payez le même prix. Les prêts sont fournis par Firefish sous sa propre licence ou son propre enregistrement. Ceci n'est pas un conseil en investissement. Si le prix du Bitcoin baisse, vous devrez peut-être ajouter des garanties, ou la garantie peut être liquidée.</p>
@@ -133,7 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </div>
   <div class="trust-strip ts-center">
-    <span class="ts-stats"><span class="ts-brand"><img src="../logo-firefish.png" alt="" width="32" height="32" loading="lazy"><b>Firefish</b></span><span>Séquestre multi-sig on-chain</span><span>Emprunteurs mis en relation avec des investisseurs</span><span>Répertorié dans le registre MiCA de l'ESMA</span><span>100&nbsp;% Bitcoin</span></span>
+    <span class="ts-stats"><span class="ts-brand"><img src="../logo-firefish.png" alt="" width="32" height="32" loading="lazy"><b>Firefish</b></span><span>22,5&nbsp;M€ financés</span><span>8&nbsp;600 investisseurs</span><span>Répertorié dans le registre MiCA de l'ESMA</span><span>100&nbsp;% Bitcoin</span></span>
   </div>
 
   <!-- 2. HOW IT WORKS -->
@@ -182,12 +184,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <article class="pcard2 purple way-card">
         <h3>Emprunteurs</h3>
         <p>Utilisez votre Bitcoin comme garantie pour emprunter des devises (EUR, CHF, CZK) ou des stablecoins (USDC). Conservez votre exposition au Bitcoin et accédez à des liquidités sans vendre. LTV jusqu'à 50&nbsp;%, durées de 3 à 24 mois, taux à partir de 5&nbsp;% par an.</p>
-        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">Emprunter chez Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">Emprunter chez Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <p class="aff-note">Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas. <a href="how-we-earn.html">Comment nous gagnons de l’argent</a></p>
       </article>
       <article class="pcard2 purple way-card">
         <h3>Investisseurs</h3>
         <p>Apportez des devises ou des stablecoins pour financer des prêts garantis par Bitcoin et percevez les intérêts versés par les emprunteurs. La garantie est bloquée dans un séquestre on-chain. Aucune réhypothécation, aucun altcoin. Minimum à partir de 800&nbsp;EUR.</p>
-        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">S'inscrire chez Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">S'inscrire chez Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <p class="aff-note">Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas. <a href="how-we-earn.html">Comment nous gagnons de l’argent</a></p>
       </article>
     </div>
   </section>
@@ -195,7 +199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- 4. RISKS / FAQ -->
   <section id="faq" class="qa">
     <div class="sec-head one"><div class="sec-copy"><h2>Risques et questions. <span>À lire avant d'emprunter.</span></h2></div></div>
-    <details open><summary>Que se passe-t-il si le prix du Bitcoin baisse&nbsp;?</summary><p>Si la valeur de votre garantie baisse, vous devrez peut-être ajouter du Bitcoin, ou la garantie peut être liquidée pour rembourser le prêt, comme le prévoient les conditions de Firefish. Vérifiez les seuils exacts chez Firefish avant d'emprunter. <a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener">Conditions et détails des prêts Firefish ↗</a></p></details>
+    <details open><summary>Que se passe-t-il si le prix du Bitcoin baisse&nbsp;?</summary><p>Si la valeur de votre garantie baisse, vous devrez peut-être ajouter du Bitcoin, ou la garantie peut être liquidée pour rembourser le prêt, comme le prévoient les conditions de Firefish. Vérifiez les seuils exacts chez Firefish avant d'emprunter. <a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer">Conditions et détails des prêts Firefish ↗</a></p><p class="aff-note">Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas. <a href="how-we-earn.html">Comment nous gagnons de l’argent</a></p></details>
     <details><summary>Qui détient mon Bitcoin&nbsp;?</summary><p>Votre Bitcoin est bloqué dans un séquestre multisig on-chain. Virtuse ne détient jamais de bitcoins, de clés ni d'argent&nbsp;; Firefish agit comme facilitateur technique entre emprunteurs et investisseurs.</p></details>
     <details><summary>Le prêt ou les intérêts sont-ils imposables&nbsp;?</summary><p>Cela dépend de votre pays. Nos guides fiscaux par pays résument les règles de 13 pays de l'UE. Il s'agit d'une information générale, et non d'un conseil fiscal. <a href="/fr/bitcoin-fiscalite/">Guides fiscaux Bitcoin →</a></p></details>
   </section>
@@ -238,7 +242,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Acheter du Bitcoin</a><a href="secure.html">Conservation</a><a href="mining.html">Minage</a><a href="lending.html">Prêts</a><a href="treasury.html">Treasury</a><a href="tax.html">Fiscalité</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Entreprise</h4><a href="about.html">À propos</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Outils</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Gratuit</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Simulateur de retraite</a></div><div class="footer-col"><h4>Ressources</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Données Bitcoin</a><a href="/fr/bitcoin-fiscalite/">Fiscalité du Bitcoin</a><a href="/fr/bitcoin-indice-frais/">Indice des frais</a><a href="/fr/bitcoin-calculateur-dca/">Calculateur DCA</a><a href="/fr/bitcoin-vendre-ou-emprunter/">Vendre ou emprunter</a><a href="/fr/bitcoin-succession/">Succession</a></div><div class="footer-col"><h4>Mentions légales</h4><a href="terms-and-conditions.html">CGU</a><a href="privacy-policy.html">Politique de confidentialité</a><a href="aml-compliance.html">AML et conformité</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Tous droits réservés.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Tous droits réservés.</p>
+<p class="footer-operator"><a href="operator.html">Exploitant</a>&nbsp;: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovaquie · N° d’identification (IČO) 36 709 042 · N° TVA SK2022293042 · immatriculée au registre du commerce du tribunal municipal de Bratislava III, section Sa, n° 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; le rendez-vous hebdomadaire de Virtuse. <a href="../news.html">Le lire &rarr;</a></p>
       <nav class="footer-langs" aria-label="Langues"><a href="../lending.html" hreflang="en">English</a><a href="../sk/lending.html" hreflang="sk">Slovenčina</a><a href="../cs/lending.html" hreflang="cs">Čeština</a><a href="../de/lending.html" hreflang="de">Deutsch</a><a href="../pl/lending.html" hreflang="pl">Polski</a><a href="../hu/lending.html" hreflang="hu">Magyar</a><a href="lending.html" hreflang="fr" aria-current="page">Français</a><a href="../es/lending.html" hreflang="es">Español</a><a href="../uk/lending.html" hreflang="uk">Українська</a><a href="../ru/lending.html" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse est un hub de comparaison indépendant. Virtuse ne détient ni fonds ni clés de clients, n'exécute pas d'ordres et ne fournit pas de conseil en investissement. Les services sont fournis par les partenaires référencés, sous leurs propres agréments. Les frais sont ceux publiés par chaque partenaire et peuvent changer.</p>

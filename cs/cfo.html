@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <script src="/partner-click.js" defer></script>
-<title>Virtuse CFO · Verdict: test rozhodnutí o Bitcoinu | Virtuse</title>
+<title>Virtuse CFO · Verdict: co jste vynechali | Virtuse</title>
 <meta name="description" content="Verdict ohodnotí, jak úplné je vaše rozhodnutí o Bitcoinu, zdarma od 1. 11. 2026. Virtuse CFO pak sleduje poplatky, půjčky a daně. Pouze pro čtení.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch 2026-11-01): remove noindex, add to sitemap + hreflang (docs/LAUNCH-CFO.md) -->
@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://virtuse.com/cs/cfo.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Virtuse CFO · Verdict: test rozhodnutí o Bitcoinu | Virtuse">
+<meta property="og:title" content="Virtuse CFO · Verdict: co jste vynechali | Virtuse">
 <meta property="og:description" content="Verdict ohodnotí, jak úplné je vaše rozhodnutí o Bitcoinu, zdarma od 1. 11. 2026. Virtuse CFO pak sleduje poplatky, půjčky a daně. Pouze pro čtení.">
 <meta property="og:locale" content="cs_CZ">
 <meta property="og:url" content="https://virtuse.com/cs/cfo.html">
@@ -612,6 +612,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-sig .bar { height: 6px; background: var(--line-strong); border-radius: 3px; overflow: hidden; }
 .vd-sig .bar i { display: block; height: 6px; border-radius: 3px; }
 .vd-sig .v { text-align: right; font-variant-numeric: tabular-nums; }
+.ai-note { font-size: 13px; color: var(--muted); margin: -14px 0 24px; max-width: 520px; }
+.vd-explain { font-size: 12px; line-height: 1.5; color: var(--muted); margin: 0; }
 .vd-weak { border-top: 1px solid var(--line); padding-top: 14px; font-size: 14px; color: var(--muted); margin: 0; }
 .vd-weak a { color: var(--text); }
 .vd-bands { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
@@ -699,8 +701,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <div class="c-hero vd-hero" id="verdict">
     <div>
       <div class="eyebrow">Virtuse CFO · Verdict · zdarma od 1. listopadu</div>
-      <h1>Ověřte své rozhodnutí o Bitcoinu. <span>Pak ho váš <span class="grad">CFO</span> sleduje za vás.</span></h1>
+      <h1>Zkontrolujte, co jste ve své úvaze o Bitcoinu vynechali. <span>Pak ho váš <span class="grad">CFO</span> sleduje za vás.</span></h1>
       <p class="sub">Popište, co chcete udělat. Verdict ohodnotí vaše uvažování v 10 signálech a ukáže nejslabší místo. Nehodnotí Bitcoin ani naše partnery. Hodnotí, zda jste to promysleli.</p>
+      <p class="ai-note">Hodnocení vytváří umělá inteligence (jazykový model společnosti Anthropic). Může se mýlit. Nejde o investiční, daňové ani právní poradenství.</p>
       <form class="vd-form" id="vdForm" hidden novalidate>
         <label for="vdText">Vaše rozhodnutí</label>
         <textarea id="vdText" name="text" rows="4" maxlength="1200" placeholder="Například: chci dát 20 % hotovosti firmy do Bitcoinu a držet ho 5 let."></textarea>
@@ -723,6 +726,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="top"><span>Ukázka verdiktu</span><span>ilustrační čísla</span></div>
       <p class="q">„Chci si půjčit proti svému BTC na koupi bytu.“</p>
       <div class="vd-score"><b>55<small>/100</small></b><span class="vd-pill">Doplňte 2 až 3 předpoklady</span></div>
+      <p class="vd-explain">Skóre 0 až 100 vypočítává umělá inteligence z 10 oblastí úvahy (např. nejhorší scénář, likvidita, daně). Měří, nakolik úplně je úvaha popsaná, ne zda je rozhodnutí správné nebo výhodné. Stejný text může při opakování dostat mírně odlišné skóre. Rozhodujete vy. Nejde o investiční, daňové ani právní poradenství.</p>
       <div class="vd-sigs">
         <div class="vd-sig"><span>Cíl</span><span class="bar"><i style="width:80%;background:var(--text)"></i></span><span class="v">8</span></div>
         <div class="vd-sig"><span>Časový horizont</span><span class="bar"><i style="width:70%;background:var(--text)"></i></span><span class="v">7</span></div>
@@ -780,7 +784,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <ol class="steps" id="steps">
         <li>Čtu 214 řádků na tomto zařízení</li>
         <li>Hledám každý nákup a jeho poplatek</li>
-        <li>Počítám stejné nákupy u každého partnera</li>
+        <li>Počítám stejné nákupy u každého poskytovatele</li>
       </ol>
       <div class="res" id="res">
         <div class="lbl">Za posledních 12 měsíců jste přeplatili</div>
@@ -790,7 +794,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <div class="bar"><span>ByBit EU 0,25 %</span><div class="t"><div class="f y" data-w="24"></div></div><b>108 €</b></div>
           <div class="bar"><span>21bitcoin Auto-Invest 0 %*</span><div class="t"><div class="f g" data-w="1"></div></div><b>0 €</b></div>
         </div>
-        <p class="sample">Ukázkový export a čísla pro ilustraci. Zveřejněné poplatky typu taker u běžného tržního nákupu podle stránek partnerů: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">ByBit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, ověřeno 12. 10. 2026, stejné údaje uvádí <a href="/cs/bitcoin-index-poplatku/">Index poplatků</a>. Spready a poplatky za výběr nejsou zahrnuty; spread 21bitcoinu zatím nemáme změřený. *0 % od 8. dne Auto-Invest. Nejde o investiční poradenství.</p>
+        <p class="sample">Ukázkový export a čísla pro ilustraci. Zveřejněné poplatky typu taker u běžného tržního nákupu podle stránek partnerů: <a href="https://www.kraken.com/features/fee-schedule" target="_blank" rel="noopener">Kraken</a>, <a href="https://www.bybit.eu/en-EU/help-center/article/Trading-Fee-Structure" target="_blank" rel="noopener">ByBit EU</a>, <a href="https://21bitcoin.app/en/fees" target="_blank" rel="noopener">21bitcoin</a>, ověřeno 12. 10. 2026, stejné údaje uvádí <a href="/cs/bitcoin-index-poplatku/">Index poplatků</a>. Spready a poplatky za výběr nejsou zahrnuty; spread 21bitcoinu zatím nemáme změřený. Virtuse má obchodní vztah s Krakenem, ByBit EU a 21bitcoinem; tento vztah nemá vliv na výpočet ani pořadí. *0 % od 8. dne Auto-Invest. Nejde o investiční poradenství.</p>
       </div>
     </div>
   </div>
@@ -868,7 +872,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <div class="msg q">Mám před koncem roku koupit víc?</div>
           <div class="msg a decline">To je rozhodnutí o tom, kdy nakoupit, takže vám to nemohu doporučit. Vaše čísla ukazují tohle: v roce 2026 jste nakupovali každý měsíc, v průměru za 3 580 €. S načasováním vám může pomoci licencovaný poradce.<small>Virtuse CFO vysvětluje vaše data. Neposkytuje investiční ani daňové poradenství.</small></div>
         </div>
-        <p class="disclose">Odpovědi píše AI z vašich součtů a označení. Vaše soubory, peněženka a adresy zůstávají ve vašem zařízení.</p>
+        <p class="disclose">Odpověď generuje umělá inteligence na základě vašich údajů. Může obsahovat chyby. Nedoporučuje, co udělat. Vaše soubory, peněženka a adresy zůstávají ve vašem zařízení.</p>
       </div>
       <div class="ask-side">
         <div><b>Podložené</b><p>Každá odpověď uvádí řádky a soubor, ze kterých pochází.</p></div>
@@ -884,7 +888,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Po prvním čísle CFO sleduje dál. <span>Čtyři úkoly, nic dalšího.</span></h2>
     </div>
     <div class="tiles t2">
-      <div class="tile" style="--c: var(--orange)"><h3>Upozornění na poplatky</h3><p>Zpráva, když to, co platíte, znovu stoupne nad nejlevnější cestu.</p><div class="meta"><span>Kontroluje</span><b>Každý měsíc</b></div></div>
+      <div class="tile" style="--c: var(--orange)"><h3>Upozornění na poplatky</h3><p>Zpráva s poplatky, které jste za období zaplatili, vedle zveřejněných poplatků jiných poskytovatelů.</p><div class="meta"><span>Kontroluje</span><b>Každý měsíc</b></div></div>
       <div class="tile" style="--c: var(--purple)"><h3>Upozornění na LTV půjčky</h3><p>Varování dřív, než se půjčka se zajištěním Bitcoinem přiblíží k likvidaci.</p><div class="meta"><span>Kontroluje</span><b>Každý den</b></div></div>
       <div class="tile" style="--c: var(--blue)"><h3>Daňový přehled</h3><p>Souhrn vašich prodejů a směn pro vás nebo vašeho účetního. Orientační.</p><div class="meta"><span>Země</span><b>13</b></div></div>
       <div class="tile" style="--c: var(--teal)"><h3>Dědický balíček</h3><p>Kontrolní seznam a dopis pro vaše dědice. Nikdy žádné klíče ani seed fráze.</p><div class="meta"><span>Uložené seed fráze</span><b>Žádné</b></div></div>
@@ -942,7 +946,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details open><summary>Řekne mi Verdict, zda mám koupit Bitcoin?</summary><p>Ne. Hodnotí, zda je vaše úvaha úplná. Co uděláte, je vaše rozhodnutí. Verdict nedoporučuje nákup, prodej, půjčku ani žádného partnera.</p></details>
       <details><summary>Kolik to stojí?</summary><p>Verdict i audit poplatků jsou zdarma od 1. listopadu. Plný report stojí 14 € jednorázově. Virtuse CFO se otevírá v lednu za 9 € měsíčně nebo 90 € ročně a zahrnuje neomezené verdikty i reporty.</p></details>
       <details><summary>Odkud Verdict bere fakta?</summary><p>Z oficiálních zdrojů, které Virtuse už používá, například z daňových pravidel 13 zemí, každé s datem kontroly. Když fakt chybí, Verdict se zeptá vás.</p></details>
-      <details><summary>Co se stane s tím, co napíšu?</summary><p>Bez účtu se nic neukládá. S účtem Virtuse CFO si historii rozhodnutí uložíte a můžete ji kdykoli smazat.</p></details>
+      <details><summary>Co se stane s tím, co napíšu?</summary><p>Bez účtu neukládáme text vaší úvahy. Na ochranu před zneužitím počítáme požadavky z IP adresy, uložené jen jako otisk (hash); počítadlo se maže po 24 hodinách. Podrobnosti najdete v dokumentu <a href="privacy-policy.html#verdict-cfo">Ochrana osobních údajů</a>. S účtem Virtuse CFO si historii rozhodnutí uložíte a můžete ji kdykoli smazat.</p></details>
       <details><summary>Jak získám export z Krakenu?</summary><p>Na kraken.com klikněte vpravo nahoře na ikonu profilu a vyberte <b>Documents</b>. V části Exports klikněte na <b>Create export</b>, vyberte <b>Ledgers</b>, nastavte datum začátku a konce, zvolte <b>CSV</b> a klikněte na Generate. Soubor se objeví ve stejném seznamu, až bude připraven. Může to trvat několik minut i několik dní a Kraken vám nepošle e-mail. Vyberte Ledgers, ne Trades: obsahuje každý poplatek i vaše okamžité nákupy. Pokud používáte Kraken Pro a Documents nevidíte, podívejte se do části Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Návod od Krakenu</a></p></details>
       <details><summary>A z ByBit EU nebo 21bitcoin?</summary><p>ByBit EU: exportujte historii spotových obchodů v sekci Orders. Delší období mohou vyžadovat více souborů. 21bitcoin: v aplikaci otevřete svou aktivitu a ikonou stahování exportujte všechny transakce. Burzy čas od času přesouvají menu, proto pokud krok vypadá jinak, podívejte se na jejich stránky nápovědy.</p></details>
       <details><summary>Nahrává se můj soubor někam?</summary><p>Ne. Audit čte soubor ve vašem prohlížeči a do Virtuse neodešle nic. Můžete si to sami ověřit na kartě Síť ve vašem prohlížeči.</p></details>
@@ -958,7 +962,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="buy-bitcoin.html">Koupit Bitcoin</a><a href="secure.html">Úschova</a><a href="mining.html">Těžba</a><a href="lending.html">Půjčky</a><a href="treasury.html">Treasury</a><a href="tax.html">Daně</a><a href="bots.html">Boti</a></div><div class="footer-col"><h4>Společnost</h4><a href="about.html">O nás</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Zdarma</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Důchodová kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin data</a><a href="/cs/bitcoin-dane/">Daně z Bitcoinu</a><a href="/cs/bitcoin-index-poplatku/">Index poplatků</a><a href="/cs/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/cs/bitcoin-prodat-nebo-pujcit/">Prodat, nebo si půjčit</a><a href="/cs/bitcoin-dedictvi/">Dědění</a></div><div class="footer-col"><h4>Právní informace</h4><a href="terms-and-conditions.html">Obchodní podmínky</a><a href="privacy-policy.html">Ochrana osobních údajů</a><a href="aml-compliance.html">AML a Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Všechna práva vyhrazena.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všechna práva vyhrazena.</p>
+<p class="footer-operator"><a href="operator.html">Provozovatel</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; týdenní přehled od Virtuse. <a href="../news.html">Číst &rarr;</a></p>
       <p class="legal">Virtuse CFO je software pouze pro čtení, který pracuje lokálně. Soubory se zpracovávají ve vašem zařízení. Virtuse nedrží soukromé klíče, bitcoin ani fiat peníze, nezadává ani nepředává pokyny a neposkytuje investiční ani daňové poradenství. Údaje o poplatcích jsou odhady podle zveřejněných poplatků partnerů; daňové údaje jsou orientační.</p>
     </div>
