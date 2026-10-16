@@ -103,6 +103,23 @@ node stories-build/hubs.mjs       # from the repo root; offline, idempotent
   (pagination folders are created first).
 
 
+## Cleanup: duplicates and off-topic stories (`cleanup.json`, 2026-10-16)
+
+Decided 2026-10-16 from `seo-ops/dash2-urls-2026-10-14.csv` and
+`seo-ops/sk-duplicates-2026-10-13.csv` ("as proposed"):
+
+- `redirect` (5): a duplicate story is not built; `seo-ops/build_redirects.py` writes a
+  301 for its story URL and its old WordPress post URL to the original, and its WordPress
+  original's canonical points at the original story.
+- `noindex` (16, SK posts about NFT, DeFi, Ethereum, FTX and similar): the page is still
+  built and readable, with `robots noindex, follow`, but left out of the sitemap and the
+  hubs; its WordPress original moves from `wp-canonical.json` to the blog's noindex list
+  (`seo-ops/crypto_news_noindex.py`).
+
+To change a decision, edit `cleanup.json`, run `node stories-build/build.mjs`,
+`python3 seo-ops/build_redirects.py` and `python3 seo-ops/crypto_news_noindex.py`, then
+upload the pages, `.htaccess` and both WordPress JSON files.
+
 ## Sharing
 
 `article.js` shares the clean URL: a story page shares itself; on

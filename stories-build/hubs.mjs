@@ -696,7 +696,8 @@ export function buildHubs({ log = console.log } = {}) {
     const bad = uncoveredImgOrigins(next);
     if (bad.length) throw new Error(`${p}: <img> hosts not in img-src: ${bad.join(' ')}`);
     if (next !== s.html) { fs.writeFileSync(s.file, next); changed++; }
-    (byLang[s.lang] = byLang[s.lang] || []).push(s);
+    // noindex stories (stories-build/cleanup.json) stay readable but are not listed on the hubs
+    if (!/<meta name="robots" content="noindex/.test(next)) (byLang[s.lang] = byLang[s.lang] || []).push(s);
   }
   log(`story pages: ${stories.length}, updated ${changed}`);
 
