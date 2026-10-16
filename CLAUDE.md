@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Verdict backend live but closed: `POST /verdict` in the newsletter Worker (PR #95, main `15d5a72a`; **Worker deployed** by the user, live `/version` = `15d5a72a`; `ANTHROPIC_API_KEY` set as a Wrangler secret; `VERDICT_ENABLED` NOT set → virtuse.com gets 503 "Verdict opens on 1 November", staging origin works)
+
+- Rubric + test set + legal pre-check checklist: Claude Doc "Verdict: rubrika a testovacia sada" https://claude.ai/code/artifact/496ecefe-5518-4394-9f39-ccce60bbd94d (Ras approved rubric, bands 65/50, decline list incl. tax evasion D11/D12, SK+EN only, cap 50 €/month, score rounded to 5, effort low).
+- `cloudflare-worker/src/verdict.js`: claude-opus-5-5, structured JSON, `fallbacks: "default"`; Worker computes score (rounded to 5, `scoreRaw` kept), band, weakest point (ties by priority; a tax rule contradicting Virtuse data is always weakest), tool (Virtuse tools only, never partners). Caps: worst case ≤4 without a 70% test, tax ≤5 outside the 13 countries, tax ≤2 if the rule is wrong. Advice-word filter (SK/EN) → 502. `aiLabel` (AI Act art. 50) + `scoreNote` in every result. Redacts email/IBAN/BTC address/xpub, 1,200 chars, 10/IP/day, monthly spend in RATE_LIMIT_KV vs `VERDICT_MONTHLY_CAP_EUR` (50). Tax facts generated from seo-data.json → `src/tax-facts.js`.
+- Test set: `verdict-eval/cases.json` (45 + 12 decline) + `run.mjs` (real API, user runs it with the key read via `read -s`). Run 2: band 41/43, weakest 40-41/43, declined 12/12, advice 0; low ≈ $0.014/verdict, 7 s median / 14 s max.
+- Live staging check 2026-10-16: an advice question → declined; a DCA plan → 40 "Chýbajú podstatné veci", weakest Dane → tax-agent.html, ~9 s.
+- **Key handling:** the user twice pasted an API key into chat by copying the terminal; those keys were to be deleted. Always give `read -s "ANTHROPIC_API_KEY?…"; export ANTHROPIC_API_KEY` and `wrangler secret put`, never `export KEY=`.
+- Open before 1 Nov (doc section "Pred spustením"): form on cfo.html#verdict (field warning, AI label, score explanation), Anthropic retention / ZDR and the cfo.html FAQ "nothing is stored" wording (10 languages), DPA/DPIA/privacy policy, "Affiliate" labels on tool pages Verdict links to, lawyer questions, tax advisor on SK rules (pre-check claims a 2025 holding benefit; sourced data says cancelled). Then `VERDICT_ENABLED=1`.
+
 ## Session status (2026-10-15) — Virtuse CFO + Verdict on one page, 10 languages (PR #89 `87800e9d` + SEO Fix's PR #90; main `71a54124`; **live on production** — user ran `wt-a1/deploy_site.sh 1521aa28 71a54124`, DEPLOY OK, 197/197 md5-verified on virtuse.com, `seo-ops/check_cfo_pages.py --live` 10/10)
 
 - Handover HANDOVER-claude-cfo-verdict-merge.md. Ras: report 14 € one-off; fee audit belongs to Virtuse CFO but stays free from 1 Nov; Verdict form = waitlist until 1 Nov (existing Worker `/waitlist`, source `cfo_page`, no Worker change; its confirmation email still only mentions the fee audit).
