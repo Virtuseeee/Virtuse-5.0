@@ -265,7 +265,9 @@ Results go to `verdict-eval/results-*.json` (gitignored). Pass: band right in >=
 
 ## POST /waitlist (Virtuse CFO waitlist)
 
-`src/waitlist.js`, tests in `waitlist.test.mjs`. Body `{ email, hp, source }`, where `source` is one of `cfo_page`, `home_buy`, `home_cfo` (optional).
+`src/waitlist.js`, tests in `waitlist.test.mjs`. Body `{ email, hp, source, lang }`, where `source` is one of `cfo_page`, `cfo_plan`, `home_buy`, `home_cfo` (optional) and `lang` one of the 10 site languages (anything else: English).
+
+- **Confirmation email in 10 languages (2026-10-16):** texts in `email/waitlist-strings.json` (EN approved, the rest AI translations), operator line per language from `seo-build/data/footer-operator.json`; `node build.mjs` writes `src/waitlist-strings.js` (committed). The English email is byte-identical to the earlier one. cfo.html sends `lang` already; the homepages send `document.documentElement.lang`.
 
 - A sign-up joins its **own Resend audience** (secret `RESEND_CFO_AUDIENCE_ID`), never the Brief segment. Contacts are created audience-scoped (`POST /audiences/{id}/contacts`), so a Brief reader can still join.
 - New sign-ups get one confirmation email (from `RESEND_SEND_FROM`, else `RESEND_FROM_EMAIL`) with a "Leave the waitlist" link: the normal signed unsubscribe link plus `&list=cfo`, which removes them from the CFO audience only and leaves any Brief subscription alone.
