@@ -20,7 +20,7 @@ const args = process.argv.slice(2);
 const opt = (name, dflt) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : dflt; };
 const runs = parseInt(opt('--runs', '1'), 10);
 const only = opt('--only', '') ? opt('--only', '').split(',') : null;
-const effort = opt('--effort', 'medium');
+const effort = opt('--effort', 'low');
 const concurrency = parseInt(opt('--parallel', '4'), 10);
 
 const { cases: all } = JSON.parse(readFileSync(path.join(here, 'cases.json'), 'utf8'));

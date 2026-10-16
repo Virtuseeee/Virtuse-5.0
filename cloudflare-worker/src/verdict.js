@@ -15,7 +15,7 @@
 //
 // Secrets: ANTHROPIC_API_KEY (no key -> 503). Vars: VERDICT_ENABLED = "1"
 // opens it to virtuse.com (staging.virtuse.com always works, for testing);
-// VERDICT_MONTHLY_CAP_EUR (default 50); VERDICT_EFFORT (default "medium").
+// VERDICT_MONTHLY_CAP_EUR (default 50); VERDICT_EFFORT (default "low": as accurate as medium in the test set, faster and cheaper; Ras 2026-10-16).
 // KV: RATE_LIMIT_KV holds the per-IP counter and the month's spend.
 
 import Anthropic from '@anthropic-ai/sdk';
@@ -228,7 +228,7 @@ export async function askClaude(env, text, lang) {
     max_tokens: 16000,
     betas: ['server-side-fallback-2026-07-01'],
     fallbacks: 'default',
-    output_config: { effort: env.VERDICT_EFFORT || 'medium', format: { type: 'json_schema', schema: SCHEMA } },
+    output_config: { effort: env.VERDICT_EFFORT || 'low', format: { type: 'json_schema', schema: SCHEMA } },
     system: [{ type: 'text', text: systemPrompt(lang), cache_control: { type: 'ephemeral' } }],
     messages: [{ role: 'user', content: `<decision>\n${text}\n</decision>` }],
   });

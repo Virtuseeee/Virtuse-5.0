@@ -251,7 +251,7 @@ Setup (Ras, own terminal; never paste the key anywhere else):
 npx wrangler secret put ANTHROPIC_API_KEY
 ```
 
-On launch day: `npx wrangler secret put VERDICT_ENABLED` and type `1` (or set it in the dashboard). Optional: `VERDICT_MONTHLY_CAP_EUR`, `VERDICT_EFFORT` (`low` / `medium` / `high`).
+On launch day: `npx wrangler secret put VERDICT_ENABLED` and type `1` (or set it in the dashboard). Optional: `VERDICT_MONTHLY_CAP_EUR`, `VERDICT_EFFORT` (default `low`; `medium` / `high`).
 
 Test set against the real API (costs money, about $0.05 a call; the runner prints an estimate and needs `--yes`):
 
