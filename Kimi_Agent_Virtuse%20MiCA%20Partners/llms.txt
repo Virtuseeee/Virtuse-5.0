@@ -43,6 +43,13 @@ Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 - Stacking (live): https://virtuse.com/stacking.html
 - Loan copilot (live): https://virtuse.com/loan.html
 
+## Bitcoin data (updated daily)
+
+- Bitcoin vs gold, silver and commodities: YTD, 1, 5 and 10-year returns, every year since 2016, BTC/gold ratio (10 languages, e.g. https://virtuse.com/sk/bitcoin-vs-gold.html): https://virtuse.com/bitcoin-vs-gold.html
+- Data behind it (JSON): https://virtuse.com/data/bitcoin-vs-commodities.json
+- Asset class returns since 2016: https://virtuse.com/asset-returns.html
+- Bitcoin data dashboard: https://virtuse.com/bitcoin-data.html
+
 ## German pilot
 
 - https://virtuse.com/de/bitcoin-steuern/

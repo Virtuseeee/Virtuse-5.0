@@ -106,6 +106,7 @@ const LINKS = {
     cfo: ['cfo.html', 'Virtuse CFO · Verdict', 'Test a decision for free; the CFO then tracks fees and risks.'],
     concierge: ['concierge.html', 'Partner Finder', 'Partners that fit your criteria, in 60 seconds.'],
     news: ['news.html', 'Virtuse Brief', 'The weekly Bitcoin newsletter for Europe.'],
+    gold: ['bitcoin-vs-gold.html', 'Bitcoin vs gold, silver and commodities', 'Returns by year and the BTC/gold ratio, updated daily.'],
   },
   sk: {
     taxGuide: ['sk/bitcoin-dane/', 'Dane z Bitcoinu v 13 krajinách EÚ', 'Sadzby, doba držania a podanie priznania podľa krajiny.'],
@@ -122,6 +123,7 @@ const LINKS = {
     cfo: ['sk/cfo.html', 'Virtuse CFO · Verdict', 'Overte rozhodnutie zadarmo, CFO potom sleduje poplatky a riziká.'],
     concierge: ['sk/concierge.html', 'Partner Finder', 'Partneri podľa vašich kritérií za 60 sekúnd.'],
     news: ['news.html', 'Virtuse Brief', 'Týždenný newsletter o Bitcoine pre Európu (v angličtine).'],
+    gold: ['sk/bitcoin-vs-gold.html', 'Bitcoin vs. zlato, striebro a komodity', 'Výnosy po rokoch a pomer BTC/zlato, denne aktualizované.'],
   },
   ru: {
     taxGuide: ['ru/bitcoin-nalogi/', 'Налоги на Биткоин в 13 странах ЕС', 'Ставки, срок владения и порядок подачи по странам.'],
@@ -138,6 +140,7 @@ const LINKS = {
     cfo: ['ru/cfo.html', 'Virtuse CFO · Verdict', 'Проверьте решение бесплатно, затем CFO следит за комиссиями и рисками.'],
     concierge: ['ru/concierge.html', 'Partner Finder', 'Партнёры по вашим критериям за 60 секунд.'],
     news: ['news.html', 'Virtuse Brief', 'Еженедельная рассылка о Биткоине для Европы (на английском).'],
+    gold: ['ru/bitcoin-vs-gold.html', 'Биткоин против золота, серебра и сырьевых товаров', 'Доходность по годам и соотношение BTC/золото, ежедневно.'],
   },
 };
 
@@ -160,6 +163,10 @@ const TOPICS = [
   { id: 'treasury', links: ['treasury', 'cfo'],
     words: ['treasury', 'treasuries', 'balance sheet', 'microstrategy', 'saylor', 'corporate treasury', 'corporations', 'firemn*',
       'korporác*', 'казначейств*', 'корпорац*', 'баланс компании'] },
+  // gold: only when the title or description is about it ("digital gold" in a body is too common)
+  { id: 'gold', links: ['gold'], titleOnly: true,
+    words: ['gold', 'silver', 'commodity', 'commodities', 'precious metal', 'precious metals', 'zlat*', 'striebr*', 'komodit*',
+      'золот*', 'серебр*', 'сырьев*', 'сырь*'] },
   { id: 'buy', links: ['stacking', 'feeIndex', 'buy'],
     words: ['buy', 'buying', 'dca', 'dollar-cost', 'stacking', 'stack sats', 'accumulat*', 'exchange', 'exchanges', 'kúp*', 'nakup*',
       'nákup*', 'sporen*', 'купи*', 'покуп*', 'накоплен*', 'бирж*',
@@ -177,7 +184,7 @@ const hits = (re, s) => (String(s || '').toLowerCase().match(re) || []).length;
 /** Keys of LINKS for a story: 2-3 links, best topic first, Partner Finder to fill. */
 export function relatedKeys({ title, description, bodyText, deskId }) {
   const scored = TOPICS.map((t, i) => {
-    let score = 4 * hits(t.re, title) + 2 * hits(t.re, description) + 0.5 * Math.min(hits(t.re, bodyText), 8);
+    let score = 4 * hits(t.re, title) + 2 * hits(t.re, description) + (t.titleOnly ? 0 : 0.5 * Math.min(hits(t.re, bodyText), 8));
     if (DESK_TOPIC[deskId] === t.id) score += 1;
     return { t, i, score };
   }).filter((x) => x.score >= 2).sort((a, b) => b.score - a.score || a.i - b.i);

@@ -4768,6 +4768,13 @@ Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
 - Stacking (live): ${ORIGIN}/stacking.html
 - Loan copilot (live): ${ORIGIN}/loan.html
 
+## Bitcoin data (updated daily)
+
+- Bitcoin vs gold, silver and commodities: YTD, 1, 5 and 10-year returns, every year since 2016, BTC/gold ratio (10 languages, e.g. ${ORIGIN}/sk/bitcoin-vs-gold.html): ${ORIGIN}/bitcoin-vs-gold.html
+- Data behind it (JSON): ${ORIGIN}/data/bitcoin-vs-commodities.json
+- Asset class returns since 2016: ${ORIGIN}/asset-returns.html
+- Bitcoin data dashboard: ${ORIGIN}/bitcoin-data.html
+
 ## German pilot
 
 - ${ORIGIN}/de/bitcoin-steuern/

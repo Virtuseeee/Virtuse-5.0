@@ -238,7 +238,7 @@ def build(L):
     # OG image: own Slovak image, every other language the English one (og/README in i18n-tools/bitcoin-vs-gold/og)
     og_file = 'bitcoin-vs-gold-sk.jpg' if L == 'sk' else 'bitcoin-vs-gold.jpg'
     assert os.path.exists(os.path.join(SITE, 'og', og_file)), og_file
-    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=OG_ALT['sk' if L == 'sk' else 'en'], title_max=60,
+    out = F.head(L, t['title'], t['description'], page, alts, ld, og_alt=OG_ALT['sk' if L == 'sk' else 'en'], title_max=60,
                  og_image=ORIGIN + '/og/' + og_file)
     out = out.replace("connect-src 'self'", "connect-src 'self' https://raw.githubusercontent.com", 1)
     out = out.replace('</head>', CSS + '</head>', 1)
