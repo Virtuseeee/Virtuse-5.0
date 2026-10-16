@@ -28,6 +28,9 @@ COLORS = {'btc': '#f7931a', 'silver': '#3987e5', 'gold': '#c98500', 'basket': '#
 LEGEND = ['btc', 'silver', 'gold', 'basket', 'oil', 'copper', 'platinum']
 DEFAULT_ON = ['btc', 'gold', 'silver', 'basket']
 AMOUNT = 10000
+# alt text = what the image shows (sk image in Slovak, the shared image in English)
+OG_ALT = {'en': 'Virtuse: Bitcoin vs Gold, Silver & Oil. Returns by year, updated daily.',
+          'sk': 'Virtuse: Bitcoin vs. zlato, striebro a ropa. Výnosy po rokoch, denne aktualizované.'}
 esc = html.escape
 
 CSS = '''<style>
@@ -232,8 +235,11 @@ def build(L):
          'creator': {'@id': ORIGIN + '/#org'}, 'isAccessibleForFree': True, 'inLanguage': L,
          'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': ORIGIN + '/data/bitcoin-vs-commodities.json'}]},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
-    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'], title_max=60,
-                 og_image=ORIGIN + '/og/bitcoin-vs-gold.jpg' if os.path.exists(os.path.join(SITE, 'og', 'bitcoin-vs-gold.jpg')) else None)
+    # OG image: own Slovak image, every other language the English one (og/README in i18n-tools/bitcoin-vs-gold/og)
+    og_file = 'bitcoin-vs-gold-sk.jpg' if L == 'sk' else 'bitcoin-vs-gold.jpg'
+    assert os.path.exists(os.path.join(SITE, 'og', og_file)), og_file
+    out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=OG_ALT['sk' if L == 'sk' else 'en'], title_max=60,
+                 og_image=ORIGIN + '/og/' + og_file)
     out = out.replace("connect-src 'self'", "connect-src 'self' https://raw.githubusercontent.com", 1)
     out = out.replace('</head>', CSS + '</head>', 1)
     nav, foot = F.chrome(L, lambda x: ('/' if x == 'en' else '/%s/' % x) + PAGE)
