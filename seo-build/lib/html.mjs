@@ -224,7 +224,7 @@ export function renderPage({
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
-<title>${esc(title)}</title>
+${noCapture ? '' : CHROME_V2._head + '\n'}<title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="${robots}">
 <link rel="canonical" href="${esc(canonical)}">
