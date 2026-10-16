@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — CFO card V-13 wording live (main `bd6ab368` merge of `feat/cfo-card-v13`; **live on production** — user ran `deploy_site.sh c5ca0bbb bd6ab368`, DEPLOY OK, 86/86 md5 re-checked on virtuse.com, the 17 old concierge-assets hashes 404)
+
+- Legal pack condition V-13 (no "check whether your decision is good" marketing): the CFO card sentence is now "Check for free what you left out of your decision. The CFO then tracks fees and risks." (SK "Skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká."), aligned per language with the cfo.html hero H1.
+- Where: `rel_cfo_p` in `i18n-tools/{partner-finder,loan,retirement,stacking,tax-agent}/<lang>.json` (50 tool pages), Stacking FAQ `a3` (10 languages, text + JSON-LD), `stories-build/hubs.mjs` cfo entry (19 treasury stories, EN/SK/RU), and the Loan + Stacking module CFO card ("Virtuse CFO · Verdict: check for free what you left out…"): `layer2-src/src/pages/{Loan,Stacking}.tsx` (en/sk/cs inline) + the 7 dictionaries (keys and values). Modules rebuilt: content changed only in main-loan, main-stacking and the 7 dictionary chunks; the other new hashes are the import cascade.
+- After the merge (branch was older than the gold page, #114 and Cloudflare): no old wording anywhere, generators and `npm ci && npm run build && deploy.py` reproduce main byte for byte, i18n-check 400/400, seo-build verify OK, audit_canonical 0, check_cfo_pages 10/10, Cloudflare snippet still on 968/968.
+- Live check: sk/loan (btc=10) and de/stacking (initial=200000) show the new card text; concierge, ru/tax-agent load with no failed asset and no console error.
+
 ## Session status (2026-10-16) — Cloudflare Web Analytics on every page (main `58d42bd7` merge + `60435104`; **live on production** — user ran `deploy_site.sh 0f62f76d 60435104`, DEPLOY OK, 968/968 md5 re-checked on virtuse.com)
 
 - Handover addendum `HANDOVERS/handover-2026-10-16-DOPLNOK.md` item 2 (items 1, 4 nothing to do; item 3 checked: http, www and http+www → one 301 to https://virtuse.com/, path and query kept, .htaccess unchanged).
@@ -11,7 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Privacy policy EN/SK (`i18n-tools/legacy/src/{en,sk}/privacy-policy.html`): section 4 "Visit statistics without cookies (always on)… needs no consent", section 5 lists Cloudflare Web Analytics. The other 8 languages unchanged (handover: SK/EN). Cookie banner unchanged.
 - Live check: beacon 200 and RUM `cdn-cgi/rum` 204 on sk/bitcoin-vs-gold, de/bitcoin-steuern, a story; no console errors; Cloudflare sets no cookie or storage. Visits show in the Cloudflare dashboard → Web Analytics → virtuse.com.
 - PR #109 (fr nav button): `fr/index.html` + `fr/cfo.html` went live in this range with #109's inline breakpoint (359 → 389 px, self-contained); its `site-v2.css` / `.min.css` part is still not on production.
-- Still open: `feat/cfo-card-v13` (CFO card V-13 wording, staging only).
+- `feat/cfo-card-v13` went live later the same day (entry above).
 
 ## Session status (2026-10-16) — Bitcoin vs gold SEO finished (PR #114, main `65a5ee1e`; **live on production** — user ran `deploy_site.sh 3235f862 65a5ee1e`, DEPLOY OK, 115/115 md5 re-checked on virtuse.com)
 
