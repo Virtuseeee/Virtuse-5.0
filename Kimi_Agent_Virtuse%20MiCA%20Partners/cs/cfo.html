@@ -632,6 +632,27 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-limits ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; }
 .vd-limits li { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15px; } .vd-limits li b { color: var(--text); }
 </style>
+<style>
+/* Verdict form (POST /verdict); hidden until switched on, see the script at the end */
+.wait[hidden], .vd-form[hidden] { display: none !important; }
+.vd-form { display: grid; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; max-width: 560px; }
+.vd-form label { font-weight: 600; font-size: 14px; }
+.vd-form textarea { resize: vertical; min-height: 110px; background: var(--inset); color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 12px 14px; font: 16px/1.45 var(--sans); }
+.vd-form textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+.vd-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.vd-form .vd-warn { margin: 0; font-size: 13px; color: var(--muted); }
+.vd-form .row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; }
+.vd-form .vd-ai { font-size: 12px; color: var(--dim); max-width: 300px; }
+.vd-form .vd-count { font-size: 12px; color: var(--dim); text-align: right; margin-top: -4px; }
+.vd-msg { font-size: 14px; color: var(--text); min-height: 20px; }
+.vd-how-note { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+.vd-card .vd-missing { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+.vd-card h4 { margin: 4px 0 0; font-size: 14px; }
+.vd-card .vd-small { margin: 0; font-size: 12px; color: var(--dim); }
+.vd-card .vd-note { margin: 0; font-size: 13px; color: var(--muted); }
+.vd-card .vd-again { justify-self: start; }
+.vd-card.busy { opacity: .55; transition: opacity .2s; }
+</style>
 <style>.spot, .tiles > * { min-width: 0; } .tile h3, .plan h3 { hyphens: auto; overflow-wrap: break-word; }
 @media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>
 </head>
@@ -675,6 +696,16 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="eyebrow">Virtuse CFO · Verdict · zdarma od 1. listopadu</div>
       <h1>Ověřte své rozhodnutí o Bitcoinu. <span>Pak ho váš <span class="grad">CFO</span> sleduje za vás.</span></h1>
       <p class="sub">Popište, co chcete udělat. Verdict ohodnotí vaše uvažování v 10 signálech a ukáže nejslabší místo. Nehodnotí Bitcoin ani naše partnery. Hodnotí, zda jste to promysleli.</p>
+      <form class="vd-form" id="vdForm" hidden novalidate>
+        <label for="vdText">Vaše rozhodnutí</label>
+        <textarea id="vdText" name="text" rows="4" maxlength="1200" placeholder="Například: chci dát 20 % hotovosti firmy do Bitcoinu a držet ho 5 let."></textarea>
+        <div class="vd-count"><span id="vdCount">0</span> / 1200</div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="vd-warn">Nepište jména, zdravotní údaje ani čísla účtů.</p>
+        <div class="row"><span class="vd-ai">Hodnocení generuje umělá inteligence (Anthropic). Může se mýlit. Zdarma, bez účtu, není to poradenství.</span><button class="btn btn-primary" type="submit">Získat verdikt zdarma</button></div>
+        <div class="vd-msg" id="vdMsg" aria-live="polite"></div>
+      </form>
+      <template id="vdStrings"><span data-k="your">Váš verdikt</span><span data-k="ai">Hodnocení AI</span><span data-k="weak">Nejslabší místo:</span><span data-k="check">Ověřit v nástroji</span><span data-k="missing">Co ve vaší úvaze chybí</span><span data-k="again">Ohodnotit jiné rozhodnutí</span><span data-k="loading">Ověřuji vaši úvahu. Obvykle to trvá 5 až 15 sekund.</span><span data-k="short">Popište rozhodnutí alespoň jednou větou.</span><span data-k="error">Něco se pokazilo. Zkuste to za chvíli.</span><span data-k="network">Chyba sítě. Zkuste to prosím znovu.</span><span data-k="declined">Tohle Verdict nehodnotí</span></template>
       <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -683,7 +714,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <p class="wait-note">Jeden e-mail 1. listopadu, až se Verdict a bezplatný audit poplatků otevřou. Nic dalšího. Odhlásit se můžete kdykoli přímo z něj. <a href="privacy-policy.html" style="color:inherit">Soukromí</a></p>
       </form>
     </div>
-    <div class="vd-card" aria-label="Ukázka verdiktu">
+    <div class="vd-card" id="vdCard" aria-live="polite" aria-label="Ukázka verdiktu">
       <div class="top"><span>Ukázka verdiktu</span><span>ilustrační čísla</span></div>
       <p class="q">„Chci si půjčit proti svému BTC na koupi bytu.“</p>
       <div class="vd-score"><b>55<small>/100</small></b><span class="vd-pill">Doplňte 2 až 3 předpoklady</span></div>
@@ -710,12 +741,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="vd-bands">
       <div class="vd-band"><b>Úvaha je úplná</b><span>65 až 100</span><p>Pokryli jste podstatné. Další krok je na vás.</p></div>
-      <div class="vd-band hl"><b>Doplňte 2 až 3 předpoklady</b><span>50 až 64</span><p>Ověřte je v nástrojích níže, pak se rozhodněte.</p></div>
-      <div class="vd-band"><b>Chybí podstatné věci</b><span>0 až 49</span><p>Verdict je vyjmenuje a uvede, proč mohou být drahé.</p></div>
+      <div class="vd-band hl"><b>Doplňte 2 až 3 předpoklady</b><span>50 až 60</span><p>Ověřte je v nástrojích níže, pak se rozhodněte.</p></div>
+      <div class="vd-band"><b>Chybí podstatné věci</b><span>0 až 45</span><p>Verdict je vyjmenuje a uvede, proč mohou být drahé.</p></div>
     </div>
     <div class="vd-tools" aria-label="Nástroje k ověření vašich předpokladů">
       <a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="stacking.html">Stacking Strategist</a><a href="retirement-calculator.html">Důchodová kalkulačka</a>
     </div>
+    <p class="vd-how-note">Jak vzniká skóre: AI ohodnotí každý z 10 signálů od 0 do 10, skóre je jejich součet zaokrouhlený na 5. Verdict odkazuje jen na nástroje Virtuse, nikdy na partnera.</p>
   </section>
 
   <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit -->
@@ -1133,6 +1165,77 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   a.addEventListener('click', function () { setTimeout(function () { var i = document.querySelector('#waitForm input[name="email"]'); if (i) i.focus(); }, 400); });
 });
+</script>
+<script>
+// Verdict: the working form (Worker POST /verdict). Off by default; on for en/sk on
+// staging, with ?verdict=1, or with <meta name="vb-verdict" content="on"> (launch).
+(function () {
+  var form = document.getElementById('vdForm'), card = document.getElementById('vdCard'); if (!form || !card) return;
+  var lang = document.documentElement.lang;
+  var meta = document.querySelector('meta[name="vb-verdict"]');
+  var on = (lang === 'en' || lang === 'sk') && (location.hostname === 'staging.virtuse.com' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on'));
+  if (!on) return;
+  var S = {}; var tpl = document.getElementById('vdStrings');
+  Array.prototype.forEach.call((tpl.content || tpl).querySelectorAll('[data-k]'), function (n) { S[n.getAttribute('data-k')] = n.textContent; });
+  form.hidden = false;
+  var wait = document.getElementById('waitForm'); if (wait) wait.hidden = true;
+  document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) { a.setAttribute('href', '#verdict'); });
+  var ta = form.elements['text'], msg = document.getElementById('vdMsg'), count = document.getElementById('vdCount');
+  var btn = form.querySelector('button[type="submit"]'), sample = card.innerHTML, sampleLabel = card.getAttribute('aria-label');
+  ta.addEventListener('input', function () { count.textContent = ta.value.length; });
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function color(p) { return p >= 7 ? 'var(--text)' : p >= 5 ? 'var(--muted)' : 'var(--orange)'; }
+  function render(r) {
+    card.innerHTML = ''; card.setAttribute('aria-label', S.your);
+    var top = el('div', 'top'); top.appendChild(el('span', null, S.your)); top.appendChild(el('span', null, S.ai)); card.appendChild(top);
+    if (r.declined) {
+      card.appendChild(el('h4', null, S.declined));
+      card.appendChild(el('p', 'q', r.message));
+    } else {
+      var sc = el('div', 'vd-score'), b = el('b', null, String(r.score)); b.appendChild(el('small', null, '/100'));
+      sc.appendChild(b); sc.appendChild(el('span', 'vd-pill', r.band.label)); card.appendChild(sc);
+      var sigs = el('div', 'vd-sigs');
+      r.signals.forEach(function (s) {
+        var row = el('div', 'vd-sig'); row.title = s.reason;
+        var bar = el('span', 'bar'), i = el('i'); i.style.width = (s.points * 10) + '%'; i.style.background = color(s.points); bar.appendChild(i);
+        row.appendChild(el('span', null, s.name)); row.appendChild(bar); row.appendChild(el('span', 'v', String(s.points))); sigs.appendChild(row);
+      });
+      card.appendChild(sigs);
+      var weak = el('p', 'vd-weak'); weak.appendChild(document.createTextNode(S.weak + ' ' + r.weakest.name + '. ' + r.weakest.reason + ' '));
+      var a = el('a', null, S.check + ' ' + r.weakest.tool.name); a.href = r.weakest.tool.page; weak.appendChild(a); card.appendChild(weak);
+      if (r.missing && r.missing.length) {
+        card.appendChild(el('h4', null, S.missing));
+        var ul = el('ul', 'vd-missing'); r.missing.forEach(function (m) { ul.appendChild(el('li', null, m)); }); card.appendChild(ul);
+      }
+      card.appendChild(el('p', 'vd-note', r.scoreNote));
+    }
+    card.appendChild(el('p', 'vd-small', r.aiLabel));
+    card.appendChild(el('p', 'vd-small', r.disclaimer));
+    var again = el('button', 'btn btn-ghost vd-again', S.again); again.type = 'button';
+    again.addEventListener('click', function () { card.innerHTML = sample; card.setAttribute('aria-label', sampleLabel); ta.focus(); });
+    card.appendChild(again);
+    if (window.innerWidth < 900) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = ta.value.trim();
+    if (text.length < 20) { msg.textContent = S.short; return; }
+    btn.disabled = true; msg.textContent = S.loading; card.classList.add('busy');
+    (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_submit', verdict_lang: lang });
+    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/verdict', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text, lang: lang, hp: form.elements['website'].value })
+    }).then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+      .then(function (x) {
+        if (x.ok && x.d && x.d.ok) {
+          msg.textContent = ''; render(x.d);
+          (window.dataLayer = window.dataLayer || []).push(x.d.declined ? { event: 'verdict_declined', verdict_lang: lang } : { event: 'verdict_result', verdict_lang: lang, verdict_band: x.d.band.id, verdict_weakest: x.d.weakest.id });
+        } else { msg.textContent = (x.d && x.d.error) || S.error; }
+      })
+      .catch(function () { msg.textContent = S.network; })
+      .then(function () { btn.disabled = false; card.classList.remove('busy'); });
+  });
+})();
 </script>
 </body>
 </html>

@@ -340,11 +340,6 @@
   "context": "e one, you know before you start.</p> </div> <div class=\"vd-bands\"> <div class=\"vd-band\"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 64</span><p>Check them with the tools below, then decide.</p></div> <div"
  },
  {
-  "en": "50 to 64",
-  "kind": "text",
-  "context": "ete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 64</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 49</span><p>Verdict names t"
- },
- {
   "en": "Check them with the tools below, then decide.",
   "kind": "text",
   "context": " 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 64</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 49</span><p>Verdict names them and why they can be costly.</p></div> </div> "
@@ -353,11 +348,6 @@
   "en": "Key pieces are missing",
   "kind": "text",
   "context": "v class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 64</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 49</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumpt"
- },
- {
-  "en": "0 to 49",
-  "kind": "text",
-  "context": " 3 assumptions</b><span>50 to 64</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 49</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumptions\"> <a h"
  },
  {
   "en": "Verdict names them and why they can be costly.",
@@ -1423,5 +1413,95 @@
   "en": "Virtuse CFO",
   "kind": "text",
   "context": " with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\">"
+ },
+ {
+  "en": "Your decision",
+  "kind": "text",
+  "context": "Bitcoin or our partners. It rates whether you've thought it through.</p> <form class=\"vd-form\" id=\"vdForm\" hidden novalidate> <label for=\"vdText\">Your decision</label> <textarea id=\"vdText\" name=\"text\" rows=\"4\" maxlength=\"1200\" placeholder=\"For example: I want to put 20% of my company's cash into Bitcoin and h"
+ },
+ {
+  "en": "For example: I want to put 20% of my company's cash into Bitcoin and hold it for 5 years.",
+  "kind": "attr:placeholder",
+  "context": "=\"vdForm\" hidden novalidate> <label for=\"vdText\">Your decision</label> <textarea id=\"vdText\" name=\"text\" rows=\"4\" maxlength=\"1200\" placeholder=\"For example: I want to put 20% of my company's cash into Bitcoin and hold it for 5 years.\"></textarea> <div class=\"vd-count\"><span id=\"vdCount\">0</span> / 1200</div> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomp"
+ },
+ {
+  "en": "Don't include names, health details or account numbers.",
+  "kind": "text",
+  "context": "unt\">0</span> / 1200</div> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <p class=\"vd-warn\">Don't include names, health details or account numbers.</p> <div class=\"row\"><span class=\"vd-ai\">Assessed by AI (Anthropic). It can be wrong. Free, no account, not advice.</span><button class=\"btn btn-primar"
+ },
+ {
+  "en": "Assessed by AI (Anthropic). It can be wrong. Free, no account, not advice.",
+  "kind": "text",
+  "context": "e=\"off\" aria-hidden=\"true\"> <p class=\"vd-warn\">Don't include names, health details or account numbers.</p> <div class=\"row\"><span class=\"vd-ai\">Assessed by AI (Anthropic). It can be wrong. Free, no account, not advice.</span><button class=\"btn btn-primary\" type=\"submit\">Get my free verdict</button></div> <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> <"
+ },
+ {
+  "en": "Get my free verdict",
+  "kind": "text",
+  "context": " class=\"row\"><span class=\"vd-ai\">Assessed by AI (Anthropic). It can be wrong. Free, no account, not advice.</span><button class=\"btn btn-primary\" type=\"submit\">Get my free verdict</button></div> <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</"
+ },
+ {
+  "en": "Your verdict",
+  "kind": "text",
+  "context": "y free verdict</button></div> <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your th"
+ },
+ {
+  "en": "AI assessment",
+  "kind": "text",
+  "context": " <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\""
+ },
+ {
+  "en": "Weakest point:",
+  "kind": "text",
+  "context": "e=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span "
+ },
+ {
+  "en": "Check it in",
+  "kind": "text",
+  "context": "plate id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking"
+ },
+ {
+  "en": "What your thinking is missing",
+  "kind": "text",
+  "context": "Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"s"
+ },
+ {
+  "en": "Rate another decision",
+  "kind": "text",
+  "context": "<span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sent"
+ },
+ {
+  "en": "Checking your thinking. This usually takes 5 to 15 seconds.",
+  "kind": "text",
+  "context": "-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</spa"
+ },
+ {
+  "en": "Describe your decision in at least one sentence.",
+  "kind": "text",
+  "context": "><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k"
+ },
+ {
+  "en": "Something went wrong. Please try again in a moment.",
+  "kind": "text",
+  "context": "cking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k=\"declined\">Verdict can't rate this</span></template> <form class=\"wait\" "
+ },
+ {
+  "en": "Verdict can't rate this",
+  "kind": "text",
+  "context": " data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k=\"declined\">Verdict can't rate this</span></template> <form class=\"wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" aria-label=\"Email add"
+ },
+ {
+  "en": "50 to 60",
+  "kind": "text",
+  "context": "ete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names t"
+ },
+ {
+  "en": "0 to 45",
+  "kind": "text",
+  "context": " 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumptions\"> <a h"
+ },
+ {
+  "en": "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.",
+  "kind": "text",
+  "context": "ce Agent</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"retirement-calculator.html\">Retirement Calculator</a> </div> <p class=\"vd-how-note\">How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.</p> </section> <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> "
  }
 ]
