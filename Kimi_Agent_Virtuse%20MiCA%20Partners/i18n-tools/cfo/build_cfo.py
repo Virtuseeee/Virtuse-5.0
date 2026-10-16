@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 import csp_tight
 
 SITE = B.SITE
-TITLE = "Virtuse CFO · Verdict: test your Bitcoin decision | Virtuse"
+TITLE = "Virtuse CFO · Verdict: check what you left out | Virtuse"
 DESC = "Verdict scores how complete your Bitcoin decision is, free from 1 November 2026. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice."
 JS = [" · read locally", "Open menu", "Close menu", "Please enter a valid email address.", "Sending...",
       "You're on the list. We'll email you once, on 1 November, when Verdict and the free audit open.", "Something went wrong. Please try again.",
@@ -70,6 +70,8 @@ def build(L):
     h = h[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix_url, h[b:])
     for en_slug, slug in zip(B.EN_GUIDES, B.GUIDES[L]):
         h = h.replace('href="/%s/"' % en_slug, 'href="/%s/%s/"' % (L, slug))
+    if os.path.isdir(os.path.join(SITE, L, 'stories')):   # stories hub exists only for en, sk, ru
+        h = h.replace('href="/stories/"', 'href="/%s/stories/"' % L)
 
     # scripts
     loc = B.LOCALE[L]
@@ -90,7 +92,7 @@ def build(L):
         h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 359px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
     h = B.localise_numbers(h, L)
 
-    for bad in ('<html lang="en"', "'en-IE'", 'test your Bitcoin decision |'):
+    for bad in ('<html lang="en"', "'en-IE'", 'check what you left out |'):
         if bad in h:
             sys.exit('%s: leftover %s' % (L, bad))
     out = os.environ.get('OUT') or os.path.join(SITE, L)

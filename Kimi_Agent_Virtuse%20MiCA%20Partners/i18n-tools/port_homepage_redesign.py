@@ -868,7 +868,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+    <p>&copy;2018 - 2026 Virtuse Wealth Management, a.s., All Rights Reserved.</p>
   </div>
 </footer>"""
     new_footer_html = """<footer class="footer-main">
@@ -916,7 +916,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>
+    <p>&copy;2018 - 2026 Virtuse Wealth Management, a.s., All Rights Reserved.</p>
     <p class="footer-bottom-brief">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href="news.html?utm_source=brief&amp;utm_medium=footer">Read it &rarr;</a></p>
   </div>
   <div class="footer-wordmark" aria-hidden="true">

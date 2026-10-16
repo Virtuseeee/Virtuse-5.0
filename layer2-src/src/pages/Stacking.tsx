@@ -35,6 +35,7 @@ import type { FrequencyId, ScenarioId } from '@/lib/stacking';
 import { getLang, t, tv, L, fmtEur, fmtNum, pct } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
 import { ResultCaptureForm } from '@/components/CaptureForm';
+import { PartnerLinkNote } from '@/components/PartnerLinkNote';
 
 // ── State from the URL ───────────────────────────────────────
 // ?amount=<bucket>: Partner Finder's buy-flow card links here with one of its
@@ -441,9 +442,9 @@ export default function Stacking() {
         <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm leading-relaxed text-ink">
             {tv(lang,
-              'Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.',
-              'Plánujete väčšiu alokáciu? Virtuse CFO vám pomôže viesť bitcoinovú treasury: plánovať, sledovať a reportovať. Spúšťa sa 1. novembra; platené plány od januára: {0}/mesiac alebo {1}/rok.',
-              'Plánujete větší alokaci? Virtuse CFO vám pomůže vést bitcoinovou treasury: plánovat, sledovat a reportovat. Spouští se 1. listopadu; placené plány od ledna: {0}/měsíc nebo {1}/rok.',
+              'Planning a larger allocation? Virtuse CFO · Verdict: test a decision for free; the CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.',
+              'Plánujete väčšiu alokáciu? Virtuse CFO · Verdict: overte rozhodnutie zadarmo, CFO potom sleduje poplatky a riziká. Verdict aj audit poplatkov sú zadarmo od 1. novembra. Platené plány od januára: {0}/mesiac alebo {1}/rok.',
+              'Plánujete větší alokaci? Virtuse CFO · Verdict: ověřte rozhodnutí zdarma, CFO pak sleduje poplatky a rizika. Verdict i audit poplatků jsou zdarma od 1. listopadu. Placené plány od ledna: {0}/měsíc nebo {1}/rok.',
               [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
           </p>
           <a
@@ -521,6 +522,7 @@ export default function Stacking() {
                     {tv(lang, `Open {0}`, `Otvoriť {0}`, `Otevřít {0}`, [f.partner])} <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 </div>
+                <PartnerLinkNote lang={lang} className="col-span-2 md:col-span-6 md:text-right" />
               </div>
             ))}
           </div>
@@ -591,6 +593,7 @@ export default function Stacking() {
           >
             {tv(lang, `Open {0}`, `Otvoriť {0}`, `Otevřít {0}`, [advice.winner.partner])} <ArrowUpRight className="h-4 w-4" />
           </a>
+          <PartnerLinkNote lang={lang} className="mt-2" />
         </div>
       </div>
 

@@ -2,7 +2,7 @@
   "site": {
     "origin": "https://virtuse.com",
     "name": "Virtuse",
-    "legalName": "Virtuse Group",
+    "legalName": "Virtuse Wealth Management, a.s.",
     "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
   },
   "feeSource": "live",

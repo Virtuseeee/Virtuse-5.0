@@ -74,9 +74,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.css?v=5">
+<link rel="stylesheet" href="../site-v2.min.css?v=5">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Відкрити меню", "closeMenu": "Закрити меню", "latestBrief": "Останній Brief · ", "min": " хв", "coverImage": "Обкладинка: ", "badEmail": "Введіть дійсну адресу електронної пошти.", "sending": "Надсилання...", "subscribed": "Готово! Brief вийде в понеділок.", "error": "Щось пішло не так. Спробуйте ще раз.", "netError": "Помилка мережі. Спробуйте ще раз.", "briefLangNote": " (англійською)"};</script>
+<style>.aff-note{margin:14px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}.qa details p.aff-note{margin:8px 0 0;font-size:12px;color:var(--muted)}.pcard2 .aff-note{margin:-6px 0 0}.buy-hero2>.aff-note{max-width:760px;margin-top:12px}.lend-widget .aff-note{margin:0;padding:10px 4px 0;text-align:center}.aff-note a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}.aff-note a:hover{color:var(--text)}</style>
 </head>
 <body class="page-buy page-lend no-split">
 <header class="nav">
@@ -92,11 +93,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Матеріали</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Новини про Біткоїн щопонеділка</span></a><a href="/stories/"><span class="nd-t">Статті</span><span class="nd-d">Великі статті та аналітика</span></a><a href="blog.html"><span class="nd-t">Блог</span><span class="nd-d">Найновіші дописи Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Біткоїн-дані</span><span class="nd-d">Поточна ціна, мережа та графіки</span></a><a href="/uk/bitcoin-podatky/"><span class="nd-t">Податкові гіди за країнами</span><span class="nd-d">Податкові правила у 13 країнах ЄС</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Відповіді про Virtuse і партнерів</span></a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Інструменти</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></span><span class="nd-d">Вердикт і аудит комісій, безкоштовно з 1 листопада</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Партнери за вашими відповідями</span></a><a href="/uk/bitcoin-indeks-komisii/"><span class="nd-t">Індекс комісій</span><span class="nd-d">Повна вартість купівлі в порівнянні</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">План регулярних покупок і комісії</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Продати чи позичити під заставу Біткоїна</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Правила країн і перевірка спадщини</span></a><a href="retirement-calculator.html"><span class="nd-t">Пенсійний калькулятор</span><span class="nd-d">Скільки Біткоїна на пенсію</span></a></div>
       </div>
       <a class="nav-top" href="about.html">Про нас</a>
     </nav>
@@ -117,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h1>Залиште Біткоїн собі. <span class="h1-grey">Позичайте під його заставу від 5% річних.</span></h1>
     <div class="hpanel purple lend-panel">
       <div class="lend-grid">
-        <div class="lend-widget"><iframe src="https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=rgba(0,0,0,0)&amp;borderCard=rgba(0,0,0,0)&amp;shadowCard=none&amp;widgetShadow=none" title="Калькулятор позики Firefish" width="100%" height="560" style="border:0" allow="clipboard-write"></iframe></div>
+        <div class="lend-widget"><iframe src="https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=rgba(0,0,0,0)&amp;borderCard=rgba(0,0,0,0)&amp;shadowCard=none&amp;widgetShadow=none" title="Калькулятор позики Firefish" width="100%" height="560" style="border:0" allow="clipboard-write"></iframe><p class="aff-note">Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється. <a href="how-we-earn.html">Як ми заробляємо</a></p></div>
         <div class="lend-details">
           <h2 class="ld-title">Умови позики коротко</h2>
           <div class="ld-row"><span>Відсоткова ставка</span><b>5–15% річних</b></div><div class="ld-row"><span>Співвідношення LTV</span><b>До 50%</b></div><div class="ld-row"><span>Термін</span><b>3, 6, 12, 18, 24 місяці</b></div><div class="ld-row"><span>Валюти</span><b>EUR, CHF, CZK, USDC</b></div><div class="ld-row"><span>Мінімум</span><b>800 євро</b></div><div class="ld-row"><span>Зберігання</span><b>Некастодіальний ескроу на мультипідписі</b></div>
@@ -125,7 +126,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </div>
     </div>
-    <a class="hp-cta btn-primary" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer">Отримати позику на Firefish <span aria-hidden="true">↗</span></a>
+    <a class="hp-cta btn-primary" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener">Отримати позику на Firefish <span aria-hidden="true">↗</span></a>
+    <p class="aff-note">Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється. <a href="how-we-earn.html">Як ми заробляємо</a></p>
     <a class="tlink lend-compare" href="/uk/bitcoin-prodaty-chy-pozychyty/">Порівняйте продаж і позику <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <div class="hp-fine">
       <p>Firefish може сплачувати Virtuse реферальну винагороду. Ви платите стільки ж. Позики надає Firefish на підставі власної ліцензії або реєстрації. Не є інвестиційною порадою. Якщо ціна Біткоїна впаде, можливо, доведеться додати заставу, або заставу може бути ліквідовано.</p>
@@ -133,7 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </div>
   <div class="trust-strip ts-center">
-    <span class="ts-stats"><span class="ts-brand"><img src="../logo-firefish.png" alt="" width="32" height="32" loading="lazy"><b>Firefish</b></span><span>Профінансовано 22,5 млн євро</span><span>8 600 інвесторів</span><span>У реєстрі ESMA MiCA</span><span>Лише Біткоїн</span></span>
+    <span class="ts-stats"><span class="ts-brand"><img src="../logo-firefish.png" alt="" width="32" height="32" loading="lazy"><b>Firefish</b></span><span>Мультипідписний ескроу в блокчейні</span><span>Позичальники та інвестори напряму</span><span>У реєстрі ESMA MiCA</span><span>Лише Біткоїн</span></span>
   </div>
 
   <!-- 2. HOW IT WORKS -->
@@ -182,12 +184,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <article class="pcard2 purple way-card">
         <h3>Позичальники</h3>
         <p>Використовуйте свій Біткоїн як заставу, щоб позичити фіат (EUR, CHF, CZK) або стейблкоїни (USDC). Зберігайте свою позицію в Біткоїні й отримуйте доступ до ліквідності без продажу. LTV до 50%, терміни від 3 до 24 місяців, ставки від 5% річних.</p>
-        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">Позичити на Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">Позичити на Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <p class="aff-note">Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється. <a href="how-we-earn.html">Як ми заробляємо</a></p>
       </article>
       <article class="pcard2 purple way-card">
         <h3>Інвестори</h3>
         <p>Надавайте фіат або стейблкоїни для фінансування позик під заставу Біткоїна й отримуйте відсотки, які сплачують позичальники. Застава заблокована в ончейн-ескроу. Без рехіпотекації, без альткоїнів. Мінімум від 800 євро.</p>
-        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">Зареєструватися на Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="pc-cta"><a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">Зареєструватися на Firefish <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12l8-8M5 4h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <p class="aff-note">Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється. <a href="how-we-earn.html">Як ми заробляємо</a></p>
       </article>
     </div>
   </section>
@@ -195,7 +199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- 4. RISKS / FAQ -->
   <section id="faq" class="qa">
     <div class="sec-head one"><div class="sec-copy"><h2>Ризики та запитання. <span>Прочитайте це, перш ніж позичати.</span></h2></div></div>
-    <details open><summary>Що буде, якщо ціна Біткоїна впаде?</summary><p>Якщо вартість вашої застави знизиться, можливо, доведеться додати Біткоїн, або заставу може бути ліквідовано для погашення позики, як визначено в умовах Firefish. Перевірте точні пороги на Firefish, перш ніж позичати. <a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer">Умови Firefish і деталі позики ↗</a></p></details>
+    <details open><summary>Що буде, якщо ціна Біткоїна впаде?</summary><p>Якщо вартість вашої застави знизиться, можливо, доведеться додати Біткоїн, або заставу може бути ліквідовано для погашення позики, як визначено в умовах Firefish. Перевірте точні пороги на Firefish, перш ніж позичати. <a href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="sponsored noopener">Умови Firefish і деталі позики ↗</a></p><p class="aff-note">Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється. <a href="how-we-earn.html">Як ми заробляємо</a></p></details>
     <details><summary>Хто зберігає мій Біткоїн?</summary><p>Ваш Біткоїн заблокований в ончейн-ескроу на мультипідписі. Virtuse ніколи не зберігає монети, ключі чи гроші; Firefish діє як технологічний посередник між позичальниками та інвесторами.</p></details>
     <details><summary>Чи оподатковуються позика або відсотки?</summary><p>Це залежить від вашої країни. Наші податкові довідники за країнами підсумовують правила для 13 країн ЄС. Це загальна інформація, а не податкова консультація. <a href="/uk/bitcoin-podatky/">Податкові довідники щодо Біткоїна →</a></p></details>
   </section>
@@ -238,7 +242,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="footer-columns"><div class="footer-col"><h4>Послуги</h4><a href="buy-bitcoin.html">Купити Біткоїн</a><a href="secure.html">Зберігання</a><a href="mining.html">Майнінг</a><a href="lending.html">Позики</a><a href="treasury.html">Казначейство</a><a href="tax.html">Податки</a><a href="bots.html">Боти</a></div><div class="footer-col"><h4>Компанія</h4><a href="about.html">Про нас</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Інструменти</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Безкоштовно</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div><div class="footer-col"><h4>Матеріали</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-podatky/">Податки на Біткоїн</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a><a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a><a href="/uk/bitcoin-prodaty-chy-pozychyty/">Продати чи позичити</a><a href="/uk/bitcoin-spadshchyna/">Спадкування</a></div><div class="footer-col"><h4>Правова інформація</h4><a href="terms-and-conditions.html">Умови використання</a><a href="privacy-policy.html">Політика конфіденційності</a><a href="aml-compliance.html">AML і комплаєнс</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.</p>
+<p class="footer-operator"><a href="operator.html">Оператор</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словаччина · Ідентифікаційний номер (IČO) 36 709 042 · Номер платника ПДВ SK2022293042 · зареєстрована в Торговому реєстрі Міського суду Братислава III, розділ Sa, № 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; щотижневий дайджест від Virtuse. <a href="../news.html">Читати &rarr;</a></p>
       <nav class="footer-langs" aria-label="Мови"><a href="../lending.html" hreflang="en">English</a><a href="../sk/lending.html" hreflang="sk">Slovenčina</a><a href="../cs/lending.html" hreflang="cs">Čeština</a><a href="../de/lending.html" hreflang="de">Deutsch</a><a href="../pl/lending.html" hreflang="pl">Polski</a><a href="../hu/lending.html" hreflang="hu">Magyar</a><a href="../fr/lending.html" hreflang="fr">Français</a><a href="../es/lending.html" hreflang="es">Español</a><a href="lending.html" hreflang="uk" aria-current="page">Українська</a><a href="../ru/lending.html" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse — незалежний хаб для порівняння. Він не зберігає кошти чи ключі клієнтів, не виконує ордери й не надає інвестиційних порад. Послуги надають зазначені партнери за власними ліцензіями. Комісії вказано так, як їх публікує кожен партнер, і вони можуть змінюватися.</p>

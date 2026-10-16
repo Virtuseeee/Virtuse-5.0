@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ArrowUpRight, Bitcoin, Check, RotateCcw, ShieldCheck } from 'lucide-react';
 import { CaptureForm, captureEnabled } from '@/components/CaptureForm';
+import { PartnerLinkNote } from '@/components/PartnerLinkNote';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -67,6 +68,9 @@ const phaseText = (lang: Lang): Record<Phase, string> => ({
 // AppsFlyer. Referral credit isn't verifiable from outside, so they stay exactly
 // as the partner issued them; the click is still counted by partner_click.
 const NO_UTM = new Set(['21bitcoin', 'bybit-eu', 'kraken']);
+// Partners linked to their plain site (no referral/commission link): no
+// partner-link label at their CTA. Every other partner URL is a referral link.
+const PLAIN_LINK = new Set(['bitgo', 'sygnum', 'coinbase-institutional']);
 function withUtm(url: string, partnerId: string): string {
   if (NO_UTM.has(partnerId)) return url;
   try {
@@ -433,6 +437,7 @@ function ResultCards({
           >
             {rec.actionLabel} <ArrowUpRight className="h-4 w-4" />
           </a>
+          {!PLAIN_LINK.has(rec.partner.id) && <PartnerLinkNote lang={lang} className="mt-2" />}
         </div>
       ))}
       <p className="w-full max-w-sm text-[11px] leading-relaxed text-ink-muted sm:w-96">

@@ -808,8 +808,14 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
 /* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
-@media (min-width: 1181px) { #navCfo { white-space: nowrap; } }
+@media (min-width: 1181px) { #navCfo .nd-t { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
+/* Menu items with a one-line description on desktop (checklist 2.5) */
+.nav-drop { min-width: 280px; }
+.nav-links .nav-drop a { display: flex; flex-direction: column; gap: 3px; }
+.nav-drop .nd-d { font-size: 12px; line-height: 1.35; color: var(--dim); white-space: normal; }
+.nav-links .nav-drop a:hover .nd-d, .nav-links .nav-drop a:focus-visible .nd-d { color: var(--muted); }
+@media (max-width: 1180px) { .nav-drop .nd-d { display: none; } }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-top { font-size: 13px; }
 .nav-badge { margin-left: 4px; }
@@ -942,7 +948,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "url": "https://virtuse.com/",
       "logo": {
         "@type": "ImageObject",
@@ -953,19 +959,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "image": "https://virtuse.com/og-cover.jpg",
       "description": "Nem letétkezelő hub kizárólag Bitcoin-szolgáltatásokhoz. A Virtuse soha nem őrzi a kulcsait.",
       "foundingDate": "2018",
-      "email": "support@virtuse.com",
-      "address": [
-        {
-          "@type": "PostalAddress",
-          "addressLocality": "Singapore",
-          "addressCountry": "SG"
-        },
-        {
-          "@type": "PostalAddress",
-          "addressLocality": "Bratislava",
-          "addressCountry": "SK"
-        }
-      ],
+      "email": "info@virtuse.com",
+      "address": {"@type": "PostalAddress", "streetAddress": "Borinka 65", "postalCode": "900 32", "addressLocality": "Borinka", "addressCountry": "SK"},
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
       "sameAs": [
         "https://twitter.com/VirtuseExchange",
         "https://www.linkedin.com/company/virtuse-exchange/",
@@ -1003,11 +1000,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Tudástár</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-dijindex/">Díjindex</a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Heti Bitcoin-hírek, minden hétfőn</span></a><a href="/stories/"><span class="nd-t">Cikkek</span><span class="nd-d">Hosszabb cikkek és elemzések</span></a><a href="blog.html"><span class="nd-t">Blog</span><span class="nd-d">A Virtuse legújabb bejegyzései</span></a><a href="bitcoin-data.html"><span class="nd-t">Bitcoin-adatok</span><span class="nd-d">Élő árfolyam, hálózat és grafikonok</span></a><a href="/hu/bitcoin-adozas/"><span class="nd-t">Adózási útmutatók országonként</span><span class="nd-d">Adószabályok 13 uniós országban</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Válaszok a Virtuse-ról és a partnerekről</span></a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Eszközök</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Nyugdíjkalkulátor</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></span><span class="nd-d">Verdikt és díjaudit, november 1-jétől ingyen</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerek a válaszai alapján</span></a><a href="/hu/bitcoin-dijindex/"><span class="nd-t">Díjindex</span><span class="nd-d">A vásárlás teljes költsége összevetve</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Rendszeres vásárlás tervezése</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Eladás vagy hitel Bitcoin-fedezettel</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Országos szabályok és öröklési ellenőrzés</span></a><a href="retirement-calculator.html"><span class="nd-t">Nyugdíjkalkulátor</span><span class="nd-d">Mennyi Bitcoin kell a nyugdíjhoz</span></a></div>
       </div>
       <a class="nav-top" href="about.html">Rólunk</a>
     </nav>
@@ -1046,7 +1043,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="co-ticker">
       <div class="co-row">
         <div class="co-set"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="21bitcoin logó" width="28" height="28" loading="lazy"><span aria-hidden="true">21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="ByBit EU logó" width="28" height="28" loading="lazy"><span aria-hidden="true">ByBit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="Bybit EU logó" width="28" height="28" loading="lazy"><span aria-hidden="true">Bybit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="Kraken logó" width="28" height="28" loading="lazy"><span aria-hidden="true">Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="Crypto.com logó" width="28" height="28" loading="lazy"><span aria-hidden="true">Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="Invity logó" width="28" height="28" loading="lazy"><span aria-hidden="true">Invity</span></span>
@@ -1068,7 +1065,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 <span class="co-partner"><img src="../logo-oneminers.png" alt="OneMiners logó" width="28" height="28" loading="lazy"><span aria-hidden="true">OneMiners</span></span>
 <span class="co-partner"><img src="../logo-powermining.png" alt="PowerMining logó" width="28" height="28" loading="lazy"><span aria-hidden="true">PowerMining</span></span></div>
         <div class="co-set" aria-hidden="true"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" loading="lazy"><span>21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>ByBit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>Bybit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="" width="28" height="28" loading="lazy"><span>Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="" width="28" height="28" loading="lazy"><span>Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="" width="28" height="28" loading="lazy"><span>Invity</span></span>
@@ -1127,7 +1124,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="feature">
       <div>
         <span class="k">Bitcoin-vásárlás · a legtöbb látogató itt kezdi</span>
-        <h2>Bitcoin-vásárlás 0% díjtól. <span>Nézze meg, mennyibe kerülnek az egyes utak.</span></h2>
+        <h2>Bitcoin-vásárlás 0%-tól induló közzétett díjjal. <span>Nézze meg, mennyibe kerülnek az egyes utak.</span></h2>
         <p class="lead">Három EU-engedéllyel működő út, közzétett díj szerint rendezve. Mozgassa a csúszkát, és látja az éves költségét.</p>
         <div class="slider-box">
           <label for="amt">Havonta ennyiért vásárol</label>
@@ -1143,9 +1140,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="panel">
         <div class="rows" id="feeRows">
-          <div class="row head"><span>Top 3 díj szerint</span><span>Díj</span><span class="bar"></span><span style="text-align:right">Évente</span></div>
+          <div class="row head"><span>Közzétett díj szerint</span><span>Díj</span><span class="bar"></span><span style="text-align:right">Évente</span></div>
           <div class="row" data-pct="0"><span><b>21bitcoin</b><small>Auto-Invest, a 8. naptól</small></span><span class="pct">0%</span><span class="bar"><div class="track"><div class="fill low"></div></div></span><span class="yr">0 €</span></div>
-          <div class="row" data-pct="0.25"><span><b>ByBit EU</b><small>Spot, taker-díj</small></span><span class="pct">0,25%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
+          <div class="row" data-pct="0.25"><span><b>Bybit EU</b><small>Spot, taker-díj</small></span><span class="pct">0,25%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
           <div class="row" data-pct="0.8"><span><b>Kraken</b><small>Pro, 1. szint, taker-díj</small></span><span class="pct">0,8%</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">48 €</span></div>
         </div>
         <div class="diff">
@@ -1165,7 +1162,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
             <text x="194" y="8" text-anchor="end" id="saveEnd">480 €</text>
           </svg>
         </div>
-        <p class="src">Az egyes partnerek által közzétett díjak, 2026. IV. negyedév. A 21bitcoin a terv első 7 napjában a szokásos díját számítja fel. A spreadek és a kivételi díjak nincsenek benne. <a href="/hu/bitcoin-dijindex/">Teljes díjindex</a></p>
+        <p class="src">Az egyes partnerek által közzétett díjak, 2026. IV. negyedév. A 21bitcoin a terv első 7 napjában a szokásos díját számítja fel. A spreadek és a kivételi díjak nincsenek benne. <a href="/hu/bitcoin-dijindex/">Teljes költség spreaddel: díjindex</a></p>
       </div>
     </div>
   </section>
@@ -1334,7 +1331,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="footer-columns"><div class="footer-col"><h4>Szolgáltatások</h4><a href="buy-bitcoin.html">Bitcoin-vásárlás</a><a href="secure.html">Letétkezelés</a><a href="mining.html">Bányászat</a><a href="lending.html">Hitelek</a><a href="treasury.html">Treasury</a><a href="tax.html">Adózás</a><a href="bots.html">Botok</a></div><div class="footer-col"><h4>Cég</h4><a href="about.html">Rólunk</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Eszközök</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Ingyenes</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Nyugdíjkalkulátor</a></div><div class="footer-col"><h4>Útmutatók</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-adozas/">Bitcoin-adózás</a><a href="/hu/bitcoin-dijindex/">Díjindex</a><a href="/hu/bitcoin-dca-kalkulator/">DCA-kalkulátor</a><a href="/hu/bitcoin-eladas-vagy-hitel/">Eladás vagy hitel</a><a href="/hu/bitcoin-orokles/">Öröklés</a></div><div class="footer-col"><h4>Jogi információk</h4><a href="terms-and-conditions.html">Felhasználási feltételek</a><a href="privacy-policy.html">Adatvédelmi tájékoztató</a><a href="aml-compliance.html">AML és megfelelés</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Minden jog fenntartva.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.</p>
+<p class="footer-operator"><a href="operator.html">Üzemeltető</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Szlovákia · Cégazonosító (IČO) 36 709 042 · Közösségi adószám SK2022293042 · bejegyezve a Pozsonyi III. Városi Bíróság cégjegyzékébe, Sa szakasz, 4452/B szám · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; a Virtuse heti összefoglalója. <a href="../news.html">Elolvasom &rarr;</a></p>
       <nav class="footer-langs" aria-label="Nyelvek"><a href="../index.html" hreflang="en">English</a><a href="../sk/index.html" hreflang="sk">Slovenčina</a><a href="../cs/index.html" hreflang="cs">Čeština</a><a href="../de/index.html" hreflang="de">Deutsch</a><a href="../pl/index.html" hreflang="pl">Polski</a><a href="index.html" hreflang="hu" aria-current="page">Magyar</a><a href="../fr/index.html" hreflang="fr">Français</a><a href="../es/index.html" hreflang="es">Español</a><a href="../uk/index.html" hreflang="uk">Українська</a><a href="../ru/index.html" hreflang="ru">Русский</a></nav>
       <p class="legal">A Virtuse független összehasonlító hub. Nem őriz ügyfélpénzt vagy kulcsokat, nem hajt végre megbízásokat, és nem ad befektetési tanácsot. A szolgáltatásokat a felsorolt partnerek nyújtják saját engedélyük alapján. A díjak az egyes partnerek által közzétett formában szerepelnek, és változhatnak.</p>
@@ -1762,7 +1760,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     document.getElementById('briefMeta').textContent = 'Legújabb Brief · ' + when + ' · ' + (iss.read_min || 3) + ' perc';
     document.getElementById('briefTitle').textContent = iss.title + ' (angol nyelven)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = 'Borítókép: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Borítókép: ' + iss.title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)

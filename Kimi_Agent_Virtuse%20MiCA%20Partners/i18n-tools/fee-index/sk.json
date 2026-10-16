@@ -76,5 +76,7 @@
   "disclaimer": "Nejde o investičné poradenstvo. Virtuse nikdy nedrží vaše kľúče ani prostriedky. KYC a registráciu vybavíte na regulovanej platforme každého partnera.",
   "sp_pending": "Meria sa",
   "spread_note_21_pending": "21bitcoin nemá verejnú knihu objednávok. Jeho spread meriame z cien v aplikácii, preto je 21bitcoin dovtedy uvedený bez poradia.",
-  "kraken_instant": "Okamžitý nákup (Instant Buy) v aplikácii Kraken je iný spôsob nákupu: poplatok 1 % plus spread."
+  "kraken_instant": "Okamžitý nákup (Instant Buy) v aplikácii Kraken je iný spôsob nákupu: poplatok 1 % plus spread.",
+  "aff_note": "Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
+  "aff_how": "Ako zarábame"
 }

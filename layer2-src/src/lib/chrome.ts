@@ -189,7 +189,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. All rights reserved.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.",
     "briefLine": "Virtuse Brief, the weekly desk from Virtuse.",
     "briefHref": "news.html?utm_source=brief&utm_medium=footer",
     "read": "Read it →"
@@ -371,7 +371,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Všetky práva vyhradené.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Všetky práva vyhradené.",
     "briefLine": "Virtuse Brief, týždenný výber od Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Čítať →"
@@ -553,7 +553,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Všechna práva vyhrazena.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Všechna práva vyhrazena.",
     "briefLine": "Virtuse Brief, týdenní přehled od Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Číst →"
@@ -735,7 +735,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Усі права захищені.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.",
     "briefLine": "Virtuse Brief, щотижневий дайджест від Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Читати →"
@@ -917,7 +917,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Все права защищены.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Все права защищены.",
     "briefLine": "Virtuse Brief, еженедельный дайджест от Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Читать →"
@@ -1099,7 +1099,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Alle Rechte vorbehalten.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Alle Rechte vorbehalten.",
     "briefLine": "Virtuse Brief – der wöchentliche Überblick von Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Lesen →"
@@ -1281,7 +1281,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Tous droits réservés.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Tous droits réservés.",
     "briefLine": "Virtuse Brief, le rendez-vous hebdomadaire de Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Le lire →"
@@ -1463,7 +1463,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Todos los derechos reservados.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Todos los derechos reservados.",
     "briefLine": "Virtuse Brief, el resumen semanal de Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Leerlo →"
@@ -1645,7 +1645,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Wszelkie prawa zastrzeżone.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Wszelkie prawa zastrzeżone.",
     "briefLine": "Virtuse Brief: cotygodniowy przegląd od Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Czytaj →"
@@ -1827,7 +1827,7 @@ export const CHROME: Record<Lang, Chrome> = {
         ]
       }
     ],
-    "copyright": "© 2018–2026 Virtuse Group. Minden jog fenntartva.",
+    "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.",
     "briefLine": "Virtuse Brief: a Virtuse heti összefoglalója.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Elolvasom →"

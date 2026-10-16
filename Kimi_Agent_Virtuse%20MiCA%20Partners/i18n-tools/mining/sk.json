@@ -85,12 +85,14 @@
  "pr_abundant_cta": "Kontaktovať Abundant",
  "pr_powermining_type": "Open-source domáce minery",
  "pr_powermining_loc": "Dánsko (sklad v EÚ)",
- "pr_powermining_fact": "Bitaxe; predaných viac ako 22 000 produktov",
+ "pr_powermining_fact": "Bitaxe; sklad v EÚ (Dánsko)",
  "pr_powermining_base": "Dánsko (sklad v EÚ)",
  "pr_powermining_body": "Open-source hardvér na domácu ťažbu (Bitaxe), odosielaný zo skladu v EÚ v Dánsku.",
  "pr_powermining_f1": "Open-source minery Bitaxe",
  "pr_powermining_f2": "Sklad v EÚ v Dánsku",
- "pr_powermining_f3": "Predaných viac ako 22 000 produktov",
+ "pr_powermining_f3": "Open-source hardvér aj firmvér",
  "pr_powermining_f4": "Na domácu ťažbu",
- "pr_powermining_cta": "Navštíviť Power Mining"
+ "pr_powermining_cta": "Navštíviť Power Mining",
+ "aff_note": "Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
+ "aff_how": "Ako zarábame"
 }

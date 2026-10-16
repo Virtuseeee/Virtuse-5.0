@@ -9,6 +9,7 @@ import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 import v2common as C
+import aff_note as A
 
 PARTNERS = [
     dict(id='divly', name='Divly', logo='logo-divly.png', url='https://divly.com/?ref=otfkzmf'),
@@ -51,7 +52,7 @@ def build(L):
         i = p['id']
         rows.append('<div class="row tx-row"><span class="hc-name"><img src="{root}{logo}" alt="" width="36" height="36" loading="lazy"><span><b>{name}</b><small>{price}</small></span></span>'
                     '<span class="tx-price">{price}</span><span class="tx-free">{free}</span><span class="tx-cty">{cty}</span><span class="tx-use">{use}</span>'
-                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{cta}">{get} {arrow}</a></div>'.format(
+                    '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="sponsored noopener" aria-label="{cta}">{get} {arrow}</a></div>'.format(
                         root=root, logo=p['logo'], name=p['name'], price=t('pr_%s_price' % i), free=t('pr_%s_free' % i), cty=t('pr_%s_countries' % i),
                         use=t('pr_%s_use' % i), url=p['url'], cta=t('pr_%s_cta' % i), get=t('get'), arrow=C.ARROW))
     panel = '''<div class="hpanel blue tx-panel">
@@ -64,8 +65,9 @@ def build(L):
         <div class="tx-label">{b_label}</div>
         <div class="row head tx-row"><span>{c1}</span><span class="tx-price">{c2}</span><span class="tx-free">{c3}</span><span class="tx-cty">{c4}</span><span class="tx-use">{c5}</span><span></span></div>
         {rows}
+        {aff}
       </div>
-    </div>'''.format(a_label=t('a_label'), pills=pills, root=root, agent=t('agent'), arrow=C.ARROW, de_link=de_link, b_label=t('b_label'),
+    </div>'''.format(aff=A.note(t), a_label=t('a_label'), pills=pills, root=root, agent=t('agent'), arrow=C.ARROW, de_link=de_link, b_label=t('b_label'),
                      c1=t('col_tool'), c2=t('col_price'), c3=t('col_free'), c4=t('col_countries'), c5=t('col_use'), rows='\n        '.join(rows))
 
     logos = ''.join('<img src="%s%s" alt="%s" width="22" height="22" loading="lazy">' % (root, p['logo'], p['name']) for p in PARTNERS)
@@ -94,9 +96,10 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        {aff}
       </article>'''.format(i=i, root=root, logo=p['logo'], name=p['name'], loc=t('pr_%s_loc' % i), details=t('details'),
-                           body=t('pr_%s_body' % i), feats=feats, url=p['url'], cta=t('pr_%s_cta' % i), out=C.OUT))
+                           body=t('pr_%s_body' % i), feats=feats, url=p['url'], cta=t('pr_%s_cta' % i), aff=A.note(t), out=C.OUT))
 
     faq = '''<details open><summary>{q1}</summary><p>{a1} <a href="{guides}">{a1l} →</a></p></details>
     <details><summary>{q2}</summary><p>{a2}</p></details>
@@ -152,7 +155,7 @@ def build(L):
            inh=inh, inh_t=t('inh_t'), inh_p=t('inh_p'), inh_cta=t('inh_cta'), arrow=C.ARROW,
            qh2a=t('q_h2_a'), qh2b=t('q_h2_b'), faq=faq, brief=C.brief(L, t, root, 'tax_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(C.finalize(out, page_path))
+    open(page_path, 'w').write(C.finalize(A.finish(out), page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

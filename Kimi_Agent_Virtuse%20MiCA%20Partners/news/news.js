@@ -7,8 +7,8 @@
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
   var FEATURED_SLUG = 'everything-but-bitcoin';
-  var THEME_KEY = 'vb-theme';
-  var THEME_DARK = '#111110';
+  var THEME_KEY = 'vb-theme-blog';
+  var THEME_DARK = '#08090a';
   var THEME_LIGHT = '#FBFBFA';
   var PULSE_MAX = 3;
   var PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
@@ -248,7 +248,7 @@
     });
   })();
 
-  /* Theme: default light, persist vb-theme, update theme-color. */
+  /* Theme: default dark (shared with blog + stories), persist vb-theme-blog, update theme-color. */
   (function () {
     var btn = $('themeToggle');
     var label = $('themeToggleLabel');
@@ -258,7 +258,7 @@
         var stored = localStorage.getItem(THEME_KEY);
         if (stored === 'light' || stored === 'dark') return stored;
       } catch (e) {}
-      return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
     }
     function apply(theme, persist) {
       document.documentElement.setAttribute('data-theme', theme);

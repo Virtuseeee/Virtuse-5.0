@@ -8,6 +8,7 @@ import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 import v2common as C
+import aff_note as A
 
 # sorted by published price (EUR 49 < USD 65 < EUR 79 at any plausible rate; no conversion shown)
 DEVICES = [
@@ -40,14 +41,15 @@ def build(L):
         usd = '<small class="cur-note">%s</small>' % t('usd_note') if d['cur'] == 'USD' else ''
         rows.append('<div class="row sp-row"><span class="hc-name"><img src="{root}{logo}" alt="" width="36" height="36" class="{cls}" loading="lazy"><span><b>{dev} {pill}</b><small>{feat}</small></span></span>'
                     '<span class="sp-made">{made}</span><span class="sp-open">{open}</span><span class="sp-feat">{feat}</span>'
-                    '<span class="sp-price">{p}{usd}</span><a class="hp-get btn-primary" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{getl}">{get} {arrow}</a></div>'.format(
+                    '<span class="sp-price">{p}{usd}</span><a class="hp-get btn-primary" href="{url}" target="_blank" rel="sponsored noopener" aria-label="{getl}">{get} {arrow}</a></div>'.format(
                         root=root, logo=d['logo'], cls=d['cls'], dev=t('pr_%s_device' % i), pill=pill, feat=t('pr_%s_feature' % i),
                         made=t('pr_%s_made' % i), open=t('yes') if d['open'] else t('not_stated'), p=p, usd=usd, url=d['url'],
                         getl=t('pr_%s_get' % i), get=t('get'), arrow=C.ARROW))
     panel = '''<div class="hpanel teal sp-panel">
       <div class="row head sp-row"><span>{c1}</span><span class="sp-made">{c2}</span><span class="sp-open">{c3}</span><span class="sp-feat">{c4}</span><span class="sp-price">{c5}</span><span></span></div>
       {rows}
-    </div>'''.format(c1=t('col_device'), c2=t('col_made'), c3=t('col_open'), c4=t('col_feature'), c5=t('col_price'), rows='\n      '.join(rows))
+      {aff}
+    </div>'''.format(aff=A.note(t), c1=t('col_device'), c2=t('col_made'), c3=t('col_open'), c4=t('col_feature'), c5=t('col_price'), rows='\n      '.join(rows))
 
     logos = ''.join('<img src="%s%s" alt="%s" width="22" height="22" class="%s" loading="lazy">' % (root, d['logo'], t('pr_%s_device' % d['id']), d['cls']) for d in DEVICES)
     trust = '''<div class="trust-strip ts-center">
@@ -67,9 +69,10 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{get} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{get} {out}</a></div>
+        {aff}
       </article>'''.format(i=i, badge=badge, root=root, logo=d['logo'], cls=d['cls'], dev=t('pr_%s_device' % i), made=t('pr_%s_made' % i),
-                           details=t('details'), body=t('pr_%s_body' % i), feats=feats, url=d['url'], get=t('pr_%s_get' % i), out=C.OUT))
+                           details=t('details'), body=t('pr_%s_body' % i), feats=feats, url=d['url'], get=t('pr_%s_get' % i), aff=A.note(t), out=C.OUT))
 
     steps = ''.join('''      <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
@@ -128,7 +131,7 @@ def build(L):
            hh2b=t('h_h2_b'), steps=steps, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), cards='\n'.join(cards),
            brief=C.brief(L, t, root, 'secure_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(C.finalize(out, page_path))
+    open(page_path, 'w').write(C.finalize(A.finish(out), page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

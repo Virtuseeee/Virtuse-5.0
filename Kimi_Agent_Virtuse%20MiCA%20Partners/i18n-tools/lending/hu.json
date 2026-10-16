@@ -23,8 +23,8 @@
  "fine_risk": "A hiteleket a Firefish nyújtja saját engedélye vagy nyilvántartásba vétele alapján. Nem befektetési tanács. Ha a Bitcoin árfolyama esik, előfordulhat, hogy további fedezetet kell biztosítania, vagy a fedezetet likvidálhatják.",
  "talk": "Inkább beszélne?",
  "call": "Ingyenes 15 perces hívás foglalása",
- "t_funded": "22,5 millió EUR finanszírozva",
- "t_investors": "8600 befektető",
+ "t_funded": "On-chain multi-sig letét",
+ "t_investors": "Hitelfelvevők és befektetők összekapcsolása",
  "t_esma": "Szerepel az ESMA MiCA-nyilvántartásában",
  "t_btc": "Csak Bitcoin",
  "h_h2_a": "Hogyan működik.",
@@ -67,5 +67,7 @@
  "email": "E-mail-cím",
  "b_btn": "Feliratkozás",
  "b_fine": "Bármikor leiratkozhat. Nem befektetési tanács.",
- "b_img_alt": "A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot"
+ "b_img_alt": "A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot",
+ "aff_note": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
+ "aff_how": "Hogyan szerzünk bevételt"
 }

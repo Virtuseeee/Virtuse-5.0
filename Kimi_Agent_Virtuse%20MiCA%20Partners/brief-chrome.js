@@ -1,5 +1,5 @@
 /* Virtuse Brief reader chrome, shared by article.html and blog.html:
-   nav toggle, light/dark theme (same vb-theme key as news.html), live ticker,
+   nav toggle, light/dark theme, live ticker,
    subscribe forms, reading progress, plus desk inference for stories.
    Mirrors the chrome parts of news/news.js (desk-owned) without the desk's
    Pulse / issues / archive fetches.
@@ -8,10 +8,15 @@
 (function () {
   'use strict';
   var MP = 'https://mempool.space/api';
-  // Storage key per section: news.html keeps 'vb-theme' (default light);
-  // blog + article set data-theme-key="vb-theme-blog" (default dark), so a
-  // choice made on one section doesn't override the other's default.
+  // All Brief pages (news, blog, stories, article) set data-theme-key="vb-theme-blog"
+  // and default to dark, so one choice applies to the whole Brief (checklist 2.3).
   var THEME_KEY = document.documentElement.getAttribute('data-theme-key') || 'vb-theme';
+  // Chrome strings per page language: theme toggle, skip link, CFO nav item and card.
+  // stories-build/hubs.mjs and i18n-tools/brief_chrome.py parse this block: keep it strict JSON.
+  var CHROME_T = /*CHROME-I18N*/{"en":{"skip":"Skip to content","dark":"Dark","light":"Light","toDark":"Switch to dark theme","toLight":"Switch to light theme","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Free Verdict and fee audit","cfoTitle":"Your AI CFO for Bitcoin.","cfoText":"Verdict and the fee audit are free from 1 November. Paid plans from January: €9/month or €90/year.","cfoCta":"Get a free verdict →"},"sk":{"skip":"Preskočiť na obsah","dark":"Tmavý","light":"Svetlý","toDark":"Prepnúť na tmavý motív","toLight":"Prepnúť na svetlý motív","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict a audit poplatkov zadarmo","cfoTitle":"Váš AI CFO pre Bitcoin.","cfoText":"Verdict aj audit poplatkov sú zadarmo od 1. novembra. Platené plány od januára: 9 €/mesiac alebo 90 €/rok.","cfoCta":"Získať verdikt zadarmo →"},"cs":{"skip":"Přeskočit na obsah","dark":"Tmavý","light":"Světlý","toDark":"Přepnout na tmavý motiv","toLight":"Přepnout na světlý motiv","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict a audit poplatků zdarma","cfoTitle":"Váš AI CFO pro Bitcoin.","cfoText":"Verdict i audit poplatků jsou zdarma od 1. listopadu. Placené plány od ledna: 9 €/měsíc nebo 90 €/rok.","cfoCta":"Získat verdikt zdarma →"},"de":{"skip":"Zum Inhalt springen","dark":"Dunkel","light":"Hell","toDark":"Zum dunklen Design wechseln","toLight":"Zum hellen Design wechseln","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict und Gebühren-Audit kostenlos","cfoTitle":"Ihr KI-CFO für Bitcoin.","cfoText":"Verdict und der Gebühren-Audit sind ab 1. November kostenlos. Bezahlte Pläne ab Januar: 9 €/Monat oder 90 €/Jahr.","cfoCta":"Kostenloses Verdict anfordern →"},"fr":{"skip":"Aller au contenu","dark":"Sombre","light":"Clair","toDark":"Passer au thème sombre","toLight":"Passer au thème clair","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict et audit des frais gratuits","cfoTitle":"Votre CFO IA pour le Bitcoin.","cfoText":"Verdict et l'audit des frais sont gratuits dès le 1er novembre. Offres payantes dès janvier : 9 €/mois ou 90 €/an.","cfoCta":"Obtenir un verdict gratuit →"},"es":{"skip":"Ir al contenido","dark":"Oscuro","light":"Claro","toDark":"Cambiar al tema oscuro","toLight":"Cambiar al tema claro","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict y auditoría de comisiones gratis","cfoTitle":"Su CFO con IA para Bitcoin.","cfoText":"Verdict y la auditoría de comisiones son gratuitos desde el 1 de noviembre. Planes de pago desde enero: 9 €/mes o 90 €/año.","cfoCta":"Obtener un veredicto gratis →"},"pl":{"skip":"Przejdź do treści","dark":"Ciemny","light":"Jasny","toDark":"Przełącz na ciemny motyw","toLight":"Przełącz na jasny motyw","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict i audyt opłat za darmo","cfoTitle":"Osobisty AI CFO dla Bitcoina.","cfoText":"Verdict i audyt opłat są bezpłatne od 1 listopada. Płatne plany od stycznia: 9 €/miesiąc lub 90 €/rok.","cfoCta":"Odbieram bezpłatny werdykt →"},"hu":{"skip":"Ugrás a tartalomra","dark":"Sötét","light":"Világos","toDark":"Váltás sötét témára","toLight":"Váltás világos témára","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Ingyenes Verdict és díjaudit","cfoTitle":"Az Ön AI CFO-ja Bitcoinhoz.","cfoText":"A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi 9 € vagy évi 90 €.","cfoCta":"Ingyenes verdikt kérése →"},"uk":{"skip":"Перейти до змісту","dark":"Темна","light":"Світла","toDark":"Увімкнути темну тему","toLight":"Увімкнути світлу тему","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict і аудит комісій безкоштовно","cfoTitle":"Ваш AI CFO для Біткоїна.","cfoText":"Verdict і аудит комісій безкоштовні з 1 листопада. Платні плани з січня: 9 €/міс. або 90 €/рік.","cfoCta":"Отримати вердикт безкоштовно →"},"ru":{"skip":"Перейти к содержанию","dark":"Тёмная","light":"Светлая","toDark":"Включить тёмную тему","toLight":"Включить светлую тему","navCfo":"Virtuse CFO","cfoKicker":"Virtuse CFO · Verdict и аудит комиссий бесплатно","cfoTitle":"Ваш AI CFO для Биткоина.","cfoText":"Verdict и аудит комиссий бесплатны с 1 ноября. Платные планы с января: 9 €/мес. или 90 €/год.","cfoCta":"Получить вердикт бесплатно →"}}/*END-CHROME-I18N*/;
+  var CT = CHROME_T[(document.documentElement.lang || 'en').slice(0, 2)] || CHROME_T.en;
+  window.VB_CHROME_T = CT;
+  window.VB_CHROME_ALL = CHROME_T;  // article.js swaps VB_CHROME_T for ?lang= readers
   function $(id) { return document.getElementById(id); }
   function j(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
   function num(n) { return (n == null || isNaN(n)) ? '—' : n.toLocaleString('en-US', { maximumFractionDigits: 0 }); }
@@ -29,7 +34,7 @@
     links.addEventListener('click', function (e) { if (e.target.closest('a')) document.body.classList.remove('nav-open'); });
   })();
 
-  /* Theme — same key and default as news.html */
+  /* Theme */
   (function () {
     var btn = $('themeToggle'), label = $('themeToggleLabel');
     if (!btn) return;
@@ -38,15 +43,15 @@
       try { var s = localStorage.getItem(THEME_KEY); if (s === 'light' || s === 'dark') return s; } catch (e) {}
       return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     }
+    window.VB_THEME_LABEL = function () { apply(current(), false); };
     function apply(theme, persist) {
       document.documentElement.setAttribute('data-theme', theme);
       if (meta) meta.setAttribute('content', theme === 'light' ? '#FBFBFA' : (THEME_KEY === 'vb-theme-blog' ? '#08090a' : '#111110'));
       if (persist) { try { localStorage.setItem(THEME_KEY, theme); } catch (e) {} }
-      var next = theme === 'dark' ? 'light' : 'dark';
-      var cap = next.charAt(0).toUpperCase() + next.slice(1);
-      btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
-      btn.setAttribute('title', cap + ' theme');
-      label.textContent = cap;
+      var T = window.VB_CHROME_T || CT, toLight = theme === 'dark';
+      btn.setAttribute('aria-label', toLight ? T.toLight : T.toDark);
+      btn.setAttribute('title', toLight ? T.toLight : T.toDark);
+      label.textContent = toLight ? T.light : T.dark;
     }
     btn.addEventListener('click', function () { apply(current() === 'dark' ? 'light' : 'dark', true); });
     apply(current(), false);

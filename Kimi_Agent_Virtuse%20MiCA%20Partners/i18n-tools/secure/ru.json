@@ -68,11 +68,13 @@
  "pr_ledger_device": "Ledger Nano S Plus",
  "pr_ledger_made": "Франция (ЕС)",
  "pr_ledger_feature": "Secure Element (CC EAL5+)",
- "pr_ledger_body": "Производится во Франции на базе сертифицированного чипа Secure Element, с приложением Ledger Live для управления вашим Биткоином. Продано более 7 миллионов устройств.",
+ "pr_ledger_body": "Производится во Франции на базе сертифицированного чипа Secure Element, с приложением Ledger Live для управления вашим Биткоином.",
  "pr_ledger_f1": "Сертифицированный чип Secure Element (CC EAL5+)",
- "pr_ledger_f2": "Более 7 млн устройств продано по всему миру",
+ "pr_ledger_f2": "Приватные ключи никогда не покидают устройство",
  "pr_ledger_f3": "Разработан и произведён во Франции",
  "pr_ledger_f4": "Приложение Ledger Live для покупки, отправки и получения",
  "pr_ledger_get": "Перейти на Ledger",
- "usd_fine": "Blockstream публикует цену Jade в USD."
+ "usd_fine": "Blockstream публикует цену Jade в USD.",
+ "aff_note": "Партнёрская ссылка – если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется.",
+ "aff_how": "Как мы зарабатываем"
 }

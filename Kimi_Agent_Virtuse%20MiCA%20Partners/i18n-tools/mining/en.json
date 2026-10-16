@@ -85,12 +85,14 @@
  "pr_abundant_cta": "Contact Abundant",
  "pr_powermining_type": "Open-source home miners",
  "pr_powermining_loc": "Denmark (EU warehouse)",
- "pr_powermining_fact": "Bitaxe; 22,000+ products sold",
+ "pr_powermining_fact": "Bitaxe; EU warehouse in Denmark",
  "pr_powermining_base": "Denmark (EU warehouse)",
  "pr_powermining_body": "Open-source home mining hardware (Bitaxe), shipped from an EU warehouse in Denmark.",
  "pr_powermining_f1": "Bitaxe open-source miners",
  "pr_powermining_f2": "EU warehouse in Denmark",
- "pr_powermining_f3": "22,000+ products sold",
+ "pr_powermining_f3": "Open-source hardware and firmware",
  "pr_powermining_f4": "For home mining",
- "pr_powermining_cta": "Visit Power Mining"
+ "pr_powermining_cta": "Visit Power Mining",
+ "aff_note": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
+ "aff_how": "How we earn"
 }

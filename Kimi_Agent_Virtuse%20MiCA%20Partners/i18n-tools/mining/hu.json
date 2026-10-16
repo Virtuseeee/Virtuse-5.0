@@ -85,12 +85,14 @@
  "pr_abundant_cta": "Kapcsolat: Abundant",
  "pr_powermining_type": "Nyílt forráskódú otthoni bányagépek",
  "pr_powermining_loc": "Dánia (uniós raktár)",
- "pr_powermining_fact": "Bitaxe; több mint 22 000 eladott termék",
+ "pr_powermining_fact": "Bitaxe; uniós raktár Dániában",
  "pr_powermining_base": "Dánia (uniós raktár)",
  "pr_powermining_body": "Nyílt forráskódú otthoni bányászati hardver (Bitaxe), dániai uniós raktárból szállítva.",
  "pr_powermining_f1": "Bitaxe nyílt forráskódú bányagépek",
  "pr_powermining_f2": "Uniós raktár Dániában",
- "pr_powermining_f3": "Több mint 22 000 eladott termék",
+ "pr_powermining_f3": "Nyílt forráskódú hardver és firmware",
  "pr_powermining_f4": "Otthoni bányászathoz",
- "pr_powermining_cta": "Tovább: Power Mining"
+ "pr_powermining_cta": "Tovább: Power Mining",
+ "aff_note": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
+ "aff_how": "Hogyan szerzünk bevételt"
 }

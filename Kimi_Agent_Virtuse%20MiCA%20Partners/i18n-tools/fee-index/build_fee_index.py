@@ -21,6 +21,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.dirname(HERE)
 sys.path.insert(0, TOOLS)
 import v2common as C
+import aff_note as A
 B = C.B
 SITE = C.SITE
 REPO = os.path.dirname(SITE)
@@ -241,8 +242,10 @@ def chrome(L, lang_url):
 
 
 def org_ld():
-    return [{'@type': 'Organization', '@id': ORIGIN + '/#org', 'name': 'Virtuse', 'legalName': 'Virtuse Group Pte. Ltd.', 'url': ORIGIN + '/',
-             'logo': ORIGIN + '/email-virtuse-v-mark.png'}]
+    return [{'@type': 'Organization', '@id': ORIGIN + '/#org', 'name': 'Virtuse', 'legalName': 'Virtuse Wealth Management, a.s.', 'url': ORIGIN + '/',
+             'logo': ORIGIN + '/email-virtuse-v-mark.png',
+             'address': {'@type': 'PostalAddress', 'streetAddress': 'Borinka 65', 'postalCode': '900 32', 'addressLocality': 'Borinka', 'addressCountry': 'SK'},
+             'vatID': 'SK2022293042', 'taxID': '36709042'}]
 
 
 def crumbs_ld(items):
@@ -272,7 +275,7 @@ def check_text(out, where):
 def write(rel, out):
     fp = os.path.join(SITE, rel)
     os.makedirs(os.path.dirname(fp), exist_ok=True)
-    open(fp, 'w').write(C.finalize(out, fp))
+    open(fp, 'w').write(C.finalize(A.finish(out), fp))
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
@@ -313,7 +316,8 @@ def panel(L, t, fi, s21, date):
       </div>
       <div class="row head fi-row"><span>{c1}</span><span class="fi-fee">{c2}</span><span class="fi-sp">{c3}</span><span class="fi-tot">{c4}</span><span class="fi-yr">{c5}</span><span></span></div>
       {rows}
-    </div>'''.format(lbl=t['amount_label'], seg=seg, c1=t['col_partner'], c2=t['col_fee'], c3=t['col_spread'], c4=t['col_total'],
+      {aff}
+    </div>'''.format(aff=A.note(lambda k: t[k], '/how-we-earn.html' if L == 'en' else '/%s/how-we-earn.html' % L), lbl=t['amount_label'], seg=seg, c1=t['col_partner'], c2=t['col_fee'], c3=t['col_spread'], c4=t['col_total'],
                      c5=t['col_year'], rows='\n      '.join(rows))
 
 
