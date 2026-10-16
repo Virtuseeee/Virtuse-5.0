@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Verdict form on cfo.html, live but switched off (PR #106, main `26cf0b1e`; **live on production** — user ran `wt-a1/deploy_site.sh 71a54124 26cf0b1e`, 12/12 md5-verified on virtuse.com; virtuse.com/sk/cfo.html shows the waitlist, no `vb-verdict` meta, Worker answers 503)
+
+- Form + result card in the hero (`#vdForm`, `#vdCard`, strings in `<template id="vdStrings">` so build_cfo.py translates them). On only for en/sk and only on staging.virtuse.com, with `?verdict=1`, or with `<meta name="vb-verdict" content="on">`; otherwise the waitlist stays. Bands shown 65–100 / 50–60 / 0–45 (rounded scores). dataLayer `verdict_submit` / `verdict_result` (band, weakest) / `verdict_declined`, never the text.
+- Staging check: a real SK loan decision → 25/100, weakest Dane → Tax & Inheritance Agent, 15 s.
+- **Launch (1 Nov) = two steps:** add `<meta name="vb-verdict" content="on">` to `cfo.html` + `sk/cfo.html` (deploy) and set Worker var/secret `VERDICT_ENABLED=1`. Before that: Anthropic retention/ZDR + FAQ wording, a place for the January CFO waitlist (the hero waitlist is hidden on en/sk once Verdict is on), lawyer + tax advisor items (doc "Verdict: rubrika a testovacia sada").
+
 ## Session status (2026-10-16) — Verdict backend live but closed: `POST /verdict` in the newsletter Worker (PR #95, main `15d5a72a`; **Worker deployed** by the user, live `/version` = `15d5a72a`; `ANTHROPIC_API_KEY` set as a Wrangler secret; `VERDICT_ENABLED` NOT set → virtuse.com gets 503 "Verdict opens on 1 November", staging origin works)
 
 - Rubric + test set + legal pre-check checklist: Claude Doc "Verdict: rubrika a testovacia sada" https://claude.ai/code/artifact/496ecefe-5518-4394-9f39-ccce60bbd94d (Ras approved rubric, bands 65/50, decline list incl. tax evasion D11/D12, SK+EN only, cap 50 €/month, score rounded to 5, effort low).
