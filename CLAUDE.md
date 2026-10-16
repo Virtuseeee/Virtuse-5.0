@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Bitcoin vs gold SEO finished (PR #114, main `65a5ee1e`; **live on production** — user ran `deploy_site.sh 3235f862 65a5ee1e`, DEPLOY OK, 115/115 md5 re-checked on virtuse.com)
+
+- og:title / twitter:title = `<title>` on all 10 bitcoin-vs-gold pages (handover rule; `og_title` keys removed from `i18n-tools/bitcoin-vs-gold/<lang>.json`).
+- Data sub-nav: every Bitcoin Data page links to Bitcoin vs gold (label `c_gold` from `bitcoin-data/<lang>.json`); translated Fear & Greed / Trading Volume also got the missing Asset Returns + Monthly Returns links. Edited in `i18n-tools/legacy/src/<lang>/` (74 files), then `build_legacy.py`.
+- Stories Related tools (`stories-build/hubs.mjs`): topic `gold` (`titleOnly`: gold/silver/commodities in title or description only; "digital gold" in bodies is too common) with `extra: true` = its link goes **in front of** the 2–3 links the other topics pick, nothing drops (max 4; Ras's review of #114). 30 stories (EN/SK/RU) link to the page; all other 394 unchanged vs before. The list is an auto-fit grid, 4 items need no CSS.
+- `llms.txt`: section "Bitcoin data (updated daily)" (page, `data/bitcoin-vs-commodities.json`, asset returns, dashboard), in `seo-build/generate.mjs` `llmsShort()`.
+- Checks: all generators rerun twice = identical, seo-build verify OK, `audit_canonical.py` 0 problems. Search Console group `data` already had the page.
+- **Still not on production:** PR #109 (fr nav button: `fr/index.html`, `fr/cfo.html`, `site-v2.css`, `site-v2.min.css`), left out on purpose as before.
+- Open PRs (staging only, not merged): `feat/cfo-card-v13` (CFO card V-13 wording, tool pages + Loan/Stacking modules) and `feat/cf-web-analytics` (Cloudflare Web Analytics snippet, `i18n-tools/cf_analytics.py`). The bitcoin-vs-gold pages came after the CF branch: after merging it, run `cf_analytics.py` once (and the generators) and commit. All three branches were test-merged together cleanly.
+- Gotcha: `deploy_site.sh` copies main's version of every range file to gh-pages, so staging previews of unmerged branches on those files disappear (here: the CF snippet on the 115 files, a staging-only `noindex` on `sk/stories/4216/`). Re-apply a preview after the deploy if it is still needed.
+
 ## Session status (2026-10-16) — Bitcoin vs gold, silver and commodities: new page in 10 languages + daily data (main `160c3e8b`; **live on production** — user ran `deploy_site.sh 50f1e57c` (DEPLOY OK, 34/34 md5, IndexNow 30 URLs); redirects live)
 
 - Handover `HANDOVERS/handover-2026-10-16-bitcoin-vs-commodities-tab.md` + Ras's decisions there (URL `/bitcoin-vs-gold.html`, USD default with EUR toggle, no gas/Brent, ETF returns + GC=F ratio, /commodities/ redirected too, no data licence, asset-returns stays in the sitemap).
