@@ -54,10 +54,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      own stylesheet so the reader and news.html can't drift apart. Everything
      below is story-page only. -->
 <link rel="stylesheet" href="../../news/news.css">
-<link rel="stylesheet" href="../../article.css?v=20261013">
+<link rel="stylesheet" href="../../article.css?v=20261015">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-ui="skip">Skip to content</a>
 <div class="read-progress" id="progressBar" aria-hidden="true"></div>
 
 <div class="ticker" role="status" aria-label="Live Bitcoin stats">
@@ -77,10 +77,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="../../blog.html" id="navBlog" data-ui="navBlog">Blog</a>
       <a href="../../news.html#data-desk" data-ui="navData">Data</a>
       <a href="../../index.html" id="navHub" data-hub="index.html" data-ui="navHub">Virtuse hub</a>
+      <a href="../../cfo.html?utm_source=brief&amp;utm_medium=nav" data-hub="cfo.html?utm_source=brief&amp;utm_medium=nav" data-ui="navCfo">Virtuse CFO</a>
       <a class="btn btn-accent-outline" href="#subscribe" data-ui="navGet">Get the Brief</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Dark theme">
-      <span class="theme-toggle-label" id="themeToggleLabel">Dark</span>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+      <span class="theme-toggle-label" id="themeToggleLabel">Light</span>
     </button>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -234,6 +235,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
 
+          <!-- cfo-end:start -->
+          <aside class="on-virtuse cfo-end" aria-label="Virtuse CFO">
+            <p class="ov-label" data-ui="cfoKicker">Virtuse CFO · Free Verdict and fee audit</p>
+            <p class="ov-title" data-ui="cfoTitle">Your AI CFO for Bitcoin.</p>
+            <p class="ov-dek" data-ui="cfoText">Verdict and the fee audit are free from 1 November. Paid plans from January: €9/month or €90/year.</p>
+            <a class="btn" href="../../cfo.html?utm_source=brief&amp;utm_medium=story#verdict" data-hub="cfo.html?utm_source=brief&amp;utm_medium=story#verdict" data-ui="cfoCta">Get a free verdict →</a>
+          </aside>
+          <!-- cfo-end:end -->
+
           <div class="share-row"><span class="share-label" data-ui="share">Share</span><div class="share-icons" data-share-slot></div></div>
           <p class="back-row"><a class="text-link" href="../../stories/" id="backLink" data-ui="back">← All stories</a></p>
         </div>
@@ -253,9 +263,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <div class="on-virtuse" id="onVirtuse">
             <p class="ov-label" data-ui="onVirtuse">On Virtuse</p>
-            <p class="ov-title" id="ovTitle">Compare where to buy Bitcoin</p>
-            <p class="ov-dek" id="ovDek">Vetted, regulated platforms side by side. Fees, custody and payout in one view.</p>
-            <a class="btn" id="ovCta" href="../../buy-bitcoin.html">Compare partners</a>
+            <p class="ov-title" id="ovTitle">Get your Bitcoin taxes right</p>
+            <p class="ov-dek" id="ovDek">Country-specific reports from tax software partners.</p>
+            <a class="btn" id="ovCta" href="../../tax.html?utm_source=brief&amp;utm_medium=article&amp;utm_content=policy">See tax partners</a>
             <a class="ov-alt" id="ovAlt" href="../../concierge.html?utm_source=concierge&amp;utm_medium=article" data-ui="ovAlt">Not sure? Compare partners in 60 seconds →</a>
             <p class="ov-note" data-ui="ovNote">Partner services. Not financial advice.</p>
           </div>
@@ -308,14 +318,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="../../terms-and-conditions.html" data-hub="terms-and-conditions.html" data-ui="footTerms">Terms</a>
       <a href="../../privacy-policy.html" data-hub="privacy-policy.html" data-ui="footPrivacy">Privacy</a>
     </nav>
-    <p class="footer-copy" data-ui="footCopy">© 2018–2026 Virtuse Wealth Management, a.s. All rights reserved. Not financial advice.</p>
-<p class="footer-copy footer-operator"><a href="../../operator.html" data-hub="operator.html" data-ui="footOpLabel">Operator</a><span data-ui="footOpText">: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com</span></p>
+    <p class="footer-copy" data-ui="footCopy">© 2018–2026 Virtuse Group. All rights reserved. Not financial advice.</p>
   </div>
 </footer>
 
-<script src="../../brief-chrome.js?v=20261014" defer></script>
+<script src="../../brief-chrome.js?v=20261015" defer></script>
 
 <!-- ===== Story reader: WordPress is the database, this page renders it ===== -->
-<script src="../../article.js?v=20261016" defer></script>
+<script src="../../article.js?v=20261015" defer></script>
 </body>
 </html>

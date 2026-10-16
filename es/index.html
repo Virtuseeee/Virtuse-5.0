@@ -808,8 +808,14 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
 /* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
-@media (min-width: 1181px) { #navCfo { white-space: nowrap; } }
+@media (min-width: 1181px) { #navCfo .nd-t { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
+/* Menu items with a one-line description on desktop (checklist 2.5) */
+.nav-drop { min-width: 280px; }
+.nav-links .nav-drop a { display: flex; flex-direction: column; gap: 3px; }
+.nav-drop .nd-d { font-size: 12px; line-height: 1.35; color: var(--dim); white-space: normal; }
+.nav-links .nav-drop a:hover .nd-d, .nav-links .nav-drop a:focus-visible .nd-d { color: var(--muted); }
+@media (max-width: 1180px) { .nav-drop .nd-d { display: none; } }
 .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-top { font-size: 13px; }
 .nav-badge { margin-left: 4px; }
@@ -942,7 +948,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Wealth Management, a.s.",
+      "legalName": "Virtuse Group Pte. Ltd.",
       "url": "https://virtuse.com/",
       "logo": {
         "@type": "ImageObject",
@@ -953,10 +959,19 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       "image": "https://virtuse.com/og-cover.jpg",
       "description": "Hub no custodial de servicios solo para Bitcoin. Virtuse nunca custodia sus claves.",
       "foundingDate": "2018",
-      "email": "info@virtuse.com",
-      "address": {"@type": "PostalAddress", "streetAddress": "Borinka 65", "postalCode": "900 32", "addressLocality": "Borinka", "addressCountry": "SK"},
-      "vatID": "SK2022293042",
-      "taxID": "36709042",
+      "email": "support@virtuse.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Singapore",
+          "addressCountry": "SG"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Bratislava",
+          "addressCountry": "SK"
+        }
+      ],
       "sameAs": [
         "https://twitter.com/VirtuseExchange",
         "https://www.linkedin.com/company/virtuse-exchange/",
@@ -994,11 +1009,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Aprender</button>
-        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a></div>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Noticias de Bitcoin, cada lunes</span></a><a href="/stories/"><span class="nd-t">Artículos</span><span class="nd-d">Artículos largos y análisis</span></a><a href="blog.html"><span class="nd-t">Blog</span><span class="nd-d">Últimas publicaciones de Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Datos de Bitcoin</span><span class="nd-d">Precio en directo, red y gráficos</span></a><a href="/es/bitcoin-impuestos/"><span class="nd-t">Guías fiscales por país</span><span class="nd-d">Normas fiscales en 13 países de la UE</span></a><a href="faq.html"><span class="nd-t">Preguntas frecuentes</span><span class="nd-d">Respuestas sobre Virtuse y los partners</span></a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Herramientas</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Gratis</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Calculadora de jubilación</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Gratis</span></span><span class="nd-d">Veredicto y auditoría de comisiones, gratis desde el 1 de noviembre</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners según sus respuestas</span></a><a href="/es/bitcoin-indice-comisiones/"><span class="nd-t">Índice de comisiones</span><span class="nd-d">Coste total de compra, comparado</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Planifique compras periódicas</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Vender o pedir prestado con su Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Normas por país y revisión de herencia</span></a><a href="retirement-calculator.html"><span class="nd-t">Calculadora de jubilación</span><span class="nd-d">Cuánto Bitcoin para la jubilación</span></a></div>
       </div>
       <a class="nav-top" href="about.html">Sobre nosotros</a>
     </nav>
@@ -1037,7 +1052,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="co-ticker">
       <div class="co-row">
         <div class="co-set"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="Logo de 21bitcoin" width="28" height="28" loading="lazy"><span aria-hidden="true">21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="Logo de ByBit EU" width="28" height="28" loading="lazy"><span aria-hidden="true">ByBit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="Logo de Bybit EU" width="28" height="28" loading="lazy"><span aria-hidden="true">Bybit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="Logo de Kraken" width="28" height="28" loading="lazy"><span aria-hidden="true">Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="Logo de Crypto.com" width="28" height="28" loading="lazy"><span aria-hidden="true">Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="Logo de Invity" width="28" height="28" loading="lazy"><span aria-hidden="true">Invity</span></span>
@@ -1059,7 +1074,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 <span class="co-partner"><img src="../logo-oneminers.png" alt="Logo de OneMiners" width="28" height="28" loading="lazy"><span aria-hidden="true">OneMiners</span></span>
 <span class="co-partner"><img src="../logo-powermining.png" alt="Logo de PowerMining" width="28" height="28" loading="lazy"><span aria-hidden="true">PowerMining</span></span></div>
         <div class="co-set" aria-hidden="true"><span class="co-partner"><img src="../logo-21bitcoin-app.png" alt="" width="28" height="28" loading="lazy"><span>21bitcoin</span></span>
-<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>ByBit EU</span></span>
+<span class="co-partner"><img src="../logo-bybit.png" alt="" width="28" height="28" loading="lazy"><span>Bybit EU</span></span>
 <span class="co-partner"><img src="../logo-kraken.png" alt="" width="28" height="28" loading="lazy"><span>Kraken</span></span>
 <span class="co-partner"><img src="../logo-crypto-com.png" alt="" width="28" height="28" loading="lazy"><span>Crypto.com</span></span>
 <span class="co-partner"><img src="../logo-invity.svg" alt="" width="28" height="28" loading="lazy"><span>Invity</span></span>
@@ -1118,7 +1133,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="feature">
       <div>
         <span class="k">Comprar Bitcoin · la mayoría de visitantes empieza aquí</span>
-        <h2>Compre Bitcoin desde 0 % de comisiones. <span>Vea cuánto le cuesta cada opción.</span></h2>
+        <h2>Compre Bitcoin con comisiones publicadas desde 0 %. <span>Vea cuánto le cuesta cada opción.</span></h2>
         <p class="lead">Tres opciones autorizadas en la UE, ordenadas por comisión publicada. Mueva el control deslizante para ver su coste anual.</p>
         <div class="slider-box">
           <label for="amt">Usted compra cada mes</label>
@@ -1134,9 +1149,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="panel">
         <div class="rows" id="feeRows">
-          <div class="row head"><span>Top 3 por comisión</span><span>Comisión</span><span class="bar"></span><span style="text-align:right">Al año</span></div>
+          <div class="row head"><span>Por comisión publicada</span><span>Comisión</span><span class="bar"></span><span style="text-align:right">Al año</span></div>
           <div class="row" data-pct="0"><span><b>21bitcoin</b><small>Auto-Invest, desde el día 8</small></span><span class="pct">0 %</span><span class="bar"><div class="track"><div class="fill low"></div></div></span><span class="yr">0 €</span></div>
-          <div class="row" data-pct="0.25"><span><b>ByBit EU</b><small>Spot, comisión taker</small></span><span class="pct">0,25 %</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
+          <div class="row" data-pct="0.25"><span><b>Bybit EU</b><small>Spot, comisión taker</small></span><span class="pct">0,25 %</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">15 €</span></div>
           <div class="row" data-pct="0.8"><span><b>Kraken</b><small>Pro, comisión taker nivel 1</small></span><span class="pct">0,8 %</span><span class="bar"><div class="track"><div class="fill"></div></div></span><span class="yr">48 €</span></div>
         </div>
         <div class="diff">
@@ -1156,7 +1171,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
             <text x="194" y="8" text-anchor="end" id="saveEnd">480 €</text>
           </svg>
         </div>
-        <p class="src">Comisiones según las publica cada partner, T4 2026. 21bitcoin cobra su comisión habitual durante los primeros 7 días de un plan. No incluye spreads ni comisiones de retirada. <a href="/es/bitcoin-indice-comisiones/">Índice de comisiones completo</a></p>
+        <p class="src">Comisiones según las publica cada partner, T4 2026. 21bitcoin cobra su comisión habitual durante los primeros 7 días de un plan. No incluye spreads ni comisiones de retirada. <a href="/es/bitcoin-indice-comisiones/">Coste total con spread: Índice de comisiones</a></p>
       </div>
     </div>
   </section>
@@ -1325,8 +1340,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="footer-columns"><div class="footer-col"><h4>Servicios</h4><a href="buy-bitcoin.html">Comprar Bitcoin</a><a href="secure.html">Custodia</a><a href="mining.html">Minería</a><a href="lending.html">Préstamos</a><a href="treasury.html">Treasury</a><a href="tax.html">Impuestos</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Empresa</h4><a href="about.html">Sobre nosotros</a><a href="faq.html">Preguntas frecuentes</a></div><div class="footer-col"><h4>Herramientas</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Gratis</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Calculadora de jubilación</a></div><div class="footer-col"><h4>Recursos</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Datos de Bitcoin</a><a href="/es/bitcoin-impuestos/">Impuestos sobre Bitcoin</a><a href="/es/bitcoin-indice-comisiones/">Índice de comisiones</a><a href="/es/bitcoin-calculadora-dca/">Calculadora DCA</a><a href="/es/bitcoin-vender-o-pedir-prestado/">Vender o pedir prestado</a><a href="/es/bitcoin-herencia/">Herencia</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Términos y condiciones</a><a href="privacy-policy.html">Política de privacidad</a><a href="aml-compliance.html">AML y cumplimiento</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Todos los derechos reservados.</p>
-<p class="footer-operator"><a href="operator.html">Titular</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Eslovaquia · N.º de identificación (IČO) 36 709 042 · NIF-IVA SK2022293042 · inscrita en el Registro Mercantil del Tribunal Municipal de Bratislava III, sección Sa, n.º 4452/B · info@virtuse.com</p>
+      <p>&copy; 2018–2026 Virtuse Group. Todos los derechos reservados.</p>
       <p class="footer-bottom-brief">Virtuse Brief &mdash; el resumen semanal de Virtuse. <a href="../news.html">Leerlo &rarr;</a></p>
       <nav class="footer-langs" aria-label="Idiomas"><a href="../index.html" hreflang="en">English</a><a href="../sk/index.html" hreflang="sk">Slovenčina</a><a href="../cs/index.html" hreflang="cs">Čeština</a><a href="../de/index.html" hreflang="de">Deutsch</a><a href="../pl/index.html" hreflang="pl">Polski</a><a href="../hu/index.html" hreflang="hu">Magyar</a><a href="../fr/index.html" hreflang="fr">Français</a><a href="index.html" hreflang="es" aria-current="page">Español</a><a href="../uk/index.html" hreflang="uk">Українська</a><a href="../ru/index.html" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse es un hub de comparación independiente. No custodia fondos ni claves de clientes, no ejecuta órdenes y no presta asesoramiento de inversión. Los servicios los prestan los partners incluidos bajo sus propias licencias. Las comisiones son las publicadas por cada partner y pueden cambiar.</p>
@@ -1754,7 +1768,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     document.getElementById('briefMeta').textContent = 'Último Brief · ' + when + ' · ' + (iss.read_min || 3) + ' min';
     document.getElementById('briefTitle').textContent = iss.title + ' (en inglés)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { img.src = src; img.alt = 'Imagen de portada: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Imagen de portada: ' + iss.title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)
