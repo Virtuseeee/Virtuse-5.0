@@ -1042,6 +1042,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 @media (max-width: 640px) { .bh-copy h1 .grad { white-space: normal; } .bh-copy h1 { overflow-wrap: break-word; hyphens: auto; } }
 @media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .nav-inner { gap: 10px; } .btn { white-space: normal; text-align: center; } }
 @media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } .cta-full { display: none; } .cta-short { display: inline; } }
+/* fr "Trouver des partenaires" is 2 px too wide at 375 px: short label up to 389 px */
+@media (max-width: 389px) { .cta-full { display: none; } .cta-short { display: inline; } }
 /* footer contrast (Lighthouse) */
 .footer-bottom .vb-cc-link { color: var(--muted) !important; }
 .footer-bottom-brief a { text-decoration: underline; text-underline-offset: 3px; }
