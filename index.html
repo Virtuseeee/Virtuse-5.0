@@ -1796,7 +1796,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Sending...';
     fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, source: 'home_cfo', lang: document.documentElement.lang })
+      body: JSON.stringify({ email: email, hp: hp, source: 'home_cfo' })
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
