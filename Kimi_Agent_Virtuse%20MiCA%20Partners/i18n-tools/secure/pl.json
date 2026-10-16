@@ -76,5 +76,9 @@
  "pr_ledger_get": "Przejście do Ledger",
  "usd_fine": "Blockstream publikuje cenę Jade w USD.",
  "aff_note": "Link partnerski – jeśli się Państwo zarejestrują, Virtuse może otrzymać prowizję. Państwa cena się przez to nie zmienia.",
- "aff_how": "Jak zarabiamy"
+ "aff_how": "Jak zarabiamy",
+ "i_h2_a": "Nie chcą Państwo przechowywać kluczy samodzielnie?",
+ "i_h2_b": "Regulowani powiernicy.",
+ "i_lead": "U powiernika klucze w Państwa imieniu przechowuje regulowany dostawca. To nie jest samodzielne przechowywanie: polegają Państwo na dostawcy. Każdy sam decyduje, kogo przyjmuje jako klienta; warto to sprawdzić na jego stronie.",
+ "i_treasury": "Bitcoin dla firm: Treasury"
 }

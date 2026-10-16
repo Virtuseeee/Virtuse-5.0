@@ -76,5 +76,9 @@
  "pr_ledger_get": "Ledger holen",
  "usd_fine": "Blockstream veröffentlicht den Preis der Jade in USD.",
  "aff_note": "Partnerlink – wenn Sie sich registrieren, kann Virtuse eine Provision erhalten. Ihr Preis ändert sich dadurch nicht.",
- "aff_how": "Wie wir verdienen"
+ "aff_how": "Wie wir verdienen",
+ "i_h2_a": "Schlüssel lieber nicht selbst verwahren?",
+ "i_h2_b": "Regulierte Verwahrer.",
+ "i_lead": "Bei einem Verwahrer hält ein regulierter Anbieter die Schlüssel für Sie. Das ist keine Selbstverwahrung: Sie verlassen sich auf den Anbieter. Jeder entscheidet selbst, wen er als Kunden aufnimmt; prüfen Sie das auf seiner Website.",
+ "i_treasury": "Bitcoin für Unternehmen: Treasury"
 }
