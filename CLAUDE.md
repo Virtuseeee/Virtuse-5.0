@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Cloudflare Web Analytics on every page (main `58d42bd7` merge + `60435104`; **live on production** — user ran `deploy_site.sh 0f62f76d 60435104`, DEPLOY OK, 968/968 md5 re-checked on virtuse.com)
+
+- Handover addendum `HANDOVERS/handover-2026-10-16-DOPLNOK.md` item 2 (items 1, 4 nothing to do; item 3 checked: http, www and http+www → one 301 to https://virtuse.com/, path and query kept, .htaccess unchanged).
+- Snippet (token `2ea6557e098f45879d87102065701564`, public) before `</body>` on 968 pages: all languages, stories, seo-build pages, modules, news, blogs. Injected as `type="module"` script inside `if(location.hostname!=='staging.virtuse.com'){…}` (same condition as GTM), so never on staging. Not on redirect stubs, the fee-index embed (shown on other sites) or `sk/cfo-mockup.html` (staging only).
+- **Source of truth `i18n-tools/cf_analytics.py`** (TOKEN, SNIPPET, CSP origins): inserts/updates the snippet and adds `https://static.cloudflareinsights.com` (script-src) + `https://cloudflareinsights.com` (connect-src) where a page has a CSP (csp_tight never removes them: not OPTIONAL). `--check` lists pages without it: **run it after any new page or template**. Generators carry it: `v2common.scripts()` (shared page end; build_bvg, legacy, tools…), `buy/build_buy.py`, `seo-build/lib/html.mjs` (`CF_SNIPPET`, a copy: `--check` catches drift), templates copied by other builds (`index.html`, `article.html` → stories, Layer 2 shells). Reads/writes with `newline=''`: 8 story pages have CRLF in WordPress text.
+- `seo-build/verify.mjs` strips every copy of the staging condition (`replaceAll`), since GTM and the snippet share it.
+- Privacy policy EN/SK (`i18n-tools/legacy/src/{en,sk}/privacy-policy.html`): section 4 "Visit statistics without cookies (always on)… needs no consent", section 5 lists Cloudflare Web Analytics. The other 8 languages unchanged (handover: SK/EN). Cookie banner unchanged.
+- Live check: beacon 200 and RUM `cdn-cgi/rum` 204 on sk/bitcoin-vs-gold, de/bitcoin-steuern, a story; no console errors; Cloudflare sets no cookie or storage. Visits show in the Cloudflare dashboard → Web Analytics → virtuse.com.
+- PR #109 (fr nav button): `fr/index.html` + `fr/cfo.html` went live in this range with #109's inline breakpoint (359 → 389 px, self-contained); its `site-v2.css` / `.min.css` part is still not on production.
+- Still open: `feat/cfo-card-v13` (CFO card V-13 wording, staging only).
+
 ## Session status (2026-10-16) — Bitcoin vs gold SEO finished (PR #114, main `65a5ee1e`; **live on production** — user ran `deploy_site.sh 3235f862 65a5ee1e`, DEPLOY OK, 115/115 md5 re-checked on virtuse.com)
 
 - og:title / twitter:title = `<title>` on all 10 bitcoin-vs-gold pages (handover rule; `og_title` keys removed from `i18n-tools/bitcoin-vs-gold/<lang>.json`).
@@ -10,7 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `llms.txt`: section "Bitcoin data (updated daily)" (page, `data/bitcoin-vs-commodities.json`, asset returns, dashboard), in `seo-build/generate.mjs` `llmsShort()`.
 - Checks: all generators rerun twice = identical, seo-build verify OK, `audit_canonical.py` 0 problems. Search Console group `data` already had the page.
 - **Still not on production:** PR #109 (fr nav button: `fr/index.html`, `fr/cfo.html`, `site-v2.css`, `site-v2.min.css`), left out on purpose as before.
-- Open PRs (staging only, not merged): `feat/cfo-card-v13` (CFO card V-13 wording, tool pages + Loan/Stacking modules) and `feat/cf-web-analytics` (Cloudflare Web Analytics snippet, `i18n-tools/cf_analytics.py`). The bitcoin-vs-gold pages came after the CF branch: after merging it, run `cf_analytics.py` once (and the generators) and commit. All three branches were test-merged together cleanly.
+- Open then: `feat/cfo-card-v13` (still open) and `feat/cf-web-analytics` (merged + live later the same day, see the entry above).
 - Gotcha: `deploy_site.sh` copies main's version of every range file to gh-pages, so staging previews of unmerged branches on those files disappear (here: the CF snippet on the 115 files, a staging-only `noindex` on `sk/stories/4216/`). Re-apply a preview after the deploy if it is still needed.
 
 ## Session status (2026-10-16) — Bitcoin vs gold, silver and commodities: new page in 10 languages + daily data (main `160c3e8b`; **live on production** — user ran `deploy_site.sh 50f1e57c` (DEPLOY OK, 34/34 md5, IndexNow 30 URLs); redirects live)
