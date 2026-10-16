@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — CFO waitlist confirmation email in 10 languages (branch `feat/waitlist-email-i18n` on main `50f1e57c`, not merged; **Worker not deployed**)
+
+- `POST /waitlist` now reads `lang` and sends the confirmation in that language (10 languages, else English). Texts: `email/waitlist-strings.json` (EN = the approved text, unchanged byte for byte; others AI translations, native review = checklist 3.4); operator line per language from `seo-build/data/footer-operator.json`; `build.mjs` generates `src/waitlist-strings.js` (committed). Tests 65/65 (2 new: sk email + fallback, every language complete).
+- Homepage CFO forms (`home_cfo`, 10 homepages) now send `lang: document.documentElement.lang`; cfo.html already sent `lang`. Harmless before the Worker deploy (old Worker ignores it).
+- After merge: user runs `deploy_worker.sh` (deploys origin/main) and `deploy_site.sh` for the 10 homepages.
+
 ## Session status (2026-10-16) — fr nav button fits on 375 px phones; Brief card links checked (PR #109, branch `fix/tails-p2` on main `21cf4ebd`, not merged)
 
 - fr nav CTA "Trouver des partenaires" was 2 px too wide at 375 px on every fr page. The short label "Partenaires" now shows up to 389 px (was 359): new media query in `site-v2.css` (+ `site-v2.min.css` regenerated), breakpoint in `home/build_lang.py` and `cfo/build_cfo.py`; fr/index + fr/cfo rebuilt. Other languages unchanged. Deploy = site-v2.css, site-v2.min.css, fr/index.html, fr/cfo.html.
