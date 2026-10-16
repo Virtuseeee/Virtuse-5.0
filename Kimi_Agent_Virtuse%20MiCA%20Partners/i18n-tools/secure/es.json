@@ -76,5 +76,9 @@
  "pr_ledger_get": "Obtener Ledger",
  "usd_fine": "Blockstream publica el precio de Jade en USD.",
  "aff_note": "Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
- "aff_how": "Cómo ganamos dinero"
+ "aff_how": "Cómo ganamos dinero",
+ "i_h2_a": "¿Prefiere no guardar las claves usted mismo?",
+ "i_h2_b": "Custodios regulados.",
+ "i_lead": "Con un custodio, un proveedor regulado guarda las claves por usted. No es autocustodia: depende del proveedor. Cada uno decide a quién acepta como cliente; compruébelo en su sitio web.",
+ "i_treasury": "Bitcoin para empresas: Treasury"
 }

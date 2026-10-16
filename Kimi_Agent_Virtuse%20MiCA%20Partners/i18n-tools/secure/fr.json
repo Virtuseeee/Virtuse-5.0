@@ -76,5 +76,9 @@
  "pr_ledger_get": "Obtenir Ledger",
  "usd_fine": "Blockstream publie le prix du Jade en USD.",
  "aff_note": "Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas.",
- "aff_how": "Comment nous gagnons de l’argent"
+ "aff_how": "Comment nous gagnons de l’argent",
+ "i_h2_a": "Vous ne voulez pas garder les clés vous-même&nbsp;?",
+ "i_h2_b": "Des dépositaires régulés.",
+ "i_lead": "Avec un dépositaire, un prestataire régulé détient les clés pour vous. Ce n'est pas de l'auto-conservation&nbsp;: vous dépendez du prestataire. Chacun décide qui il accepte comme client&nbsp;; vérifiez-le sur son site.",
+ "i_treasury": "Bitcoin pour les entreprises&nbsp;: Treasury"
 }

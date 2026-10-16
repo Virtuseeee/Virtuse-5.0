@@ -16,6 +16,12 @@ DEVICES = [
     dict(id='jade', logo='logo-blockstream.png', cls='', price=65, cur='USD', open=True, url='https://rewards.blockstream.com/qo0khs'),
     dict(id='ledger', logo='logo-ledger.png', cls='invert', price=79, cur='EUR', open=None, url='https://shop.ledger.com/?r=3256467ea813'),
 ]
+# Regulated custodians (not self-custody). Card texts are the Treasury page's (treasury/<lang>.json),
+# same facts and links as there; this page only adds the section heading and the caveat.
+CUSTODIANS = [
+    dict(id='bitgo', name='BitGo', logo='logo-bitgo.png', url='https://bitgo.com'),
+    dict(id='sygnum', name='Sygnum', logo='logo-sygnum.png', url='https://sygnum.com'),
+]
 
 
 def price(d, L, t):
@@ -26,6 +32,8 @@ def price(d, L, t):
 
 def build(L):
     T = json.load(open(os.path.join(HERE, L + '.json')))
+    Tr = json.load(open(os.path.join(os.path.dirname(HERE), 'treasury', L + '.json')))
+    T.update({k: v for k, v in Tr.items() if k.startswith(('pr_bitgo_', 'pr_sygnum_'))})
     t = lambda k: T[k]
     page_path, home_path, root = C.paths(L, 'secure.html')
     old, home = open(page_path).read(), open(home_path).read()
@@ -74,6 +82,20 @@ def build(L):
       </article>'''.format(i=i, badge=badge, root=root, logo=d['logo'], cls=d['cls'], dev=t('pr_%s_device' % i), made=t('pr_%s_made' % i),
                            details=t('details'), body=t('pr_%s_body' % i), feats=feats, url=d['url'], get=t('pr_%s_get' % i), aff=A.note(t), out=C.OUT))
 
+    inst = []
+    for d in CUSTODIANS:
+        i = d['id']
+        feats = ''.join('<li>%s</li>' % t('pr_%s_f%d' % (i, n)) for n in range(1, 5))
+        inst.append('''      <article class="pcard2 teal" id="p-{i}">
+        <div class="pc-head"><img src="{root}{logo}" alt="{name}" width="48" height="48" loading="lazy"><div><h3>{name}</h3><div class="pc-loc">{loc}</div></div></div>
+        <details class="pc-more" open><summary>{details}</summary>
+          <p>{body}</p>
+          <ul class="pc-feats">{feats}</ul>
+        </details>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+      </article>'''.format(i=i, root=root, logo=d['logo'], name=d['name'], loc=t('pr_%s_loc' % i), details=t('details'),
+                           body=t('pr_%s_body' % i), feats=feats, url=d['url'], cta=t('pr_%s_cta' % i), out=C.OUT))
+
     steps = ''.join('''      <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
@@ -120,6 +142,15 @@ def build(L):
     <p class="cat-note">{earn}</p>
   </section>
 
+  <!-- 3b. REGULATED CUSTODIANS (not self-custody) -->
+  <section id="custodians">
+    <div class="sec-head one"><div class="sec-copy"><h2>{ih2a} <span>{ih2b}</span></h2><p>{ilead}</p></div></div>
+    <div class="pgrid">
+{inst}
+    </div>
+    <p class="tools-line"><a class="tlink" href="treasury.html">{itr} {arrow}</a></p>
+  </section>
+
   <!-- 4. BRIEF -->
   {brief}
 
@@ -129,7 +160,8 @@ def build(L):
 '''.format(nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), lead=t('lead'), panel=panel, fine_prices=t('fine_prices') + ' ' + t('usd_fine'),
            earn=t('earn'), talk=t('talk'), L=L, call=t('call'), suffix=suffix, cta=t('cta_details'), trust=trust, hh2a=t('h_h2_a'),
            hh2b=t('h_h2_b'), steps=steps, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), cards='\n'.join(cards),
-           brief=C.brief(L, t, root, 'secure_brief'), foot=foot)
+           brief=C.brief(L, t, root, 'secure_brief'), foot=foot,
+           ih2a=t('i_h2_a'), ih2b=t('i_h2_b'), ilead=t('i_lead'), inst='\n'.join(inst), itr=t('i_treasury'), arrow=C.ARROW)
     out = C.fix_links(L, head + body + C.scripts(root))
     open(page_path, 'w').write(C.finalize(A.finish(out), page_path))
     print('%s: %d bytes' % (L, len(out)))
