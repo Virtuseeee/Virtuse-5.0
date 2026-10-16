@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — CFO waitlist moved into the Virtuse CFO pricing card (PR #107, main `36422112`; **live**: Worker deployed by the user, `/version` = `36422112`; `deploy_site.sh 26cf0b1e 36422112`, 10/10 cfo pages md5-verified on virtuse.com)
+
+- Card form `#cfoWaitForm` (`data-source="cfo_plan"`), visible in every stage, so the paid-plan waitlist stays when the hero switches to Verdict. Success text from a hidden `.wait-ok` span; page JS wires every `form.wait`; dataLayer `capture_source: cfo_plan_waitlist`.
+- Worker `/waitlist`: source `cfo_plan` → subject "You're on the Virtuse CFO list", one email when paid plans open in January. Hero `cfo_page` unchanged (Verdict + audit, 1 Nov). Same Resend CFO audience for both (no source stored on the contact).
+
 ## Session status (2026-10-16) — Verdict form on cfo.html, live but switched off (PR #106, main `26cf0b1e`; **live on production** — user ran `wt-a1/deploy_site.sh 71a54124 26cf0b1e`, 12/12 md5-verified on virtuse.com; virtuse.com/sk/cfo.html shows the waitlist, no `vb-verdict` meta, Worker answers 503)
 
 - Form + result card in the hero (`#vdForm`, `#vdCard`, strings in `<template id="vdStrings">` so build_cfo.py translates them). On only for en/sk and only on staging.virtuse.com, with `?verdict=1`, or with `<meta name="vb-verdict" content="on">`; otherwise the waitlist stays. Bands shown 65–100 / 50–60 / 0–45 (rounded scores). dataLayer `verdict_submit` / `verdict_result` (band, weakest) / `verdict_declined`, never the text.
