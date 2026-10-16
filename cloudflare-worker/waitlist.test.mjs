@@ -149,3 +149,30 @@ test('confirmation email names no partner and makes no advice claim', () => {
   assert.ok(!/recommend|best|should buy/i.test(html));
   assert.match(html, /no investment advice/);
 });
+
+test('confirmation email follows the form language (sk), unknown languages get English', withFetch(async (calls) => {
+  let res = await worker.fetch(req({ email: 'a@b.co', hp: '', source: 'cfo_page', lang: 'sk' }), env());
+  assert.equal(res.status, 200);
+  assert.equal(calls[1].body.subject, 'Ste na čakacej listine Virtuse CFO · Verdict');
+  assert.match(calls[1].body.html, /<html lang="sk">/);
+  assert.match(calls[1].body.html, /1\. novembra 2026/);
+  assert.match(calls[1].body.html, /Prevádzkovateľ: Virtuse Wealth Management/);
+  assert.match(calls[1].body.html, /list=cfo/);
+  res = await worker.fetch(req({ email: 'c@d.co', hp: '', source: 'cfo_plan', lang: 'xx' }, { ip: '5.6.7.8' }), env());
+  assert.equal(res.status, 200);
+  assert.equal(calls[3].body.subject, "You're on the Virtuse CFO list");
+}));
+
+test('every waitlist language has all texts and its operator line', async () => {
+  const { WAITLIST_LANGS, waitlistSubject } = await import('./src/waitlist.js');
+  assert.deepEqual([...WAITLIST_LANGS].sort(), ['cs', 'de', 'en', 'es', 'fr', 'hu', 'pl', 'ru', 'sk', 'uk']);
+  for (const L of WAITLIST_LANGS) {
+    for (const s of ['cfo_page', 'cfo_plan']) {
+      const h = renderWaitlistEmail('https://x/leave', s, L);
+      assert.match(h, new RegExp(`<html lang="${L}">`));
+      assert.match(h, /Virtuse Wealth Management, a\.s\./);
+      assert.doesNotMatch(h, /undefined/);
+      assert.ok(waitlistSubject(s, L).length > 10);
+    }
+  }
+});
