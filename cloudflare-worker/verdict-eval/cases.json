@@ -232,7 +232,7 @@
     45
    ],
    "band": "missing",
-   "weakest": "worst_case",
+   "weakest": "tax",
    "was": {
     "score": [
      40,
@@ -241,7 +241,7 @@
     "band": "missing",
     "weakest": "liquidity"
    },
-   "why": "worst case and liquidity both 0, priority decides"
+   "why": "the text says Spain taxes 19–28%; Virtuse data says 19 to 30%, so the tax rule is wrong and tax is the weakest point (run 2, 2026-10-15)"
   },
   {
    "id": "14",

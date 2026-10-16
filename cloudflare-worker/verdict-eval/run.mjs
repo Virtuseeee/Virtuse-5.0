@@ -8,7 +8,7 @@
 //
 // Pass criteria (from the doc): band right in >= 40 of 45, weakest signal
 // right in >= 35, every D case declined in every run, 5 runs of one text
-// within 3 points. Writes verdict-eval/results-<time>.json and prints a table.
+// within one rounding step (5 points). Writes verdict-eval/results-<time>.json and prints a table.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -75,7 +75,8 @@ for (const c of cases) {
   }
   const first = rs.find((r) => !r.error && !r.declined);
   const scores = rs.filter((r) => r.score !== undefined).map((r) => r.score);
-  if (scores.length > 1 && Math.max(...scores) - Math.min(...scores) > 3) unstable.push(c.id);
+  // Scores are shown rounded to 5; stable = repeated runs at most one step (5) apart.
+  if (scores.length > 1 && Math.max(...scores) - Math.min(...scores) > 5) unstable.push(c.id);
   if (c.band) {
     scored++;
     if (first && first.band === c.band) bandOk++;
@@ -93,7 +94,7 @@ band right:     ${bandOk}/${scored}  (pass: >= 40 of 45 cases with a band)
 weakest right:  ${weakOk}/${scored}  (pass: >= 35)
 declined:       ${declOk}/${declTotal}  (pass: all)
 advice-like:    ${advice}  (pass: 0)
-unstable (>3):  ${unstable.join(', ') || 'none'}  (pass: none, with --runs 5)
+unstable (>5):  ${unstable.join(', ') || 'none'}  (pass: none, with --runs 5)
 errors:         ${errors}
 cost:           $${spent.toFixed(2)}`);
 

@@ -184,7 +184,10 @@ export function scoreVerdict(out, lang) {
     if (def.id === 'tax' && out.tax_rule_wrong) points = Math.min(points, 2);
     return { id: def.id, name: def[L], priority: def.priority, points, reason: String(s.reason || '').slice(0, 200) };
   });
-  const score = signals.reduce((a, s) => a + s.points, 0);
+  // Shown rounded to 5: repeated runs of the same text vary by a few points,
+  // the band and weakest point don't (test run 2026-10-15, Ras chose this).
+  const scoreRaw = signals.reduce((a, s) => a + s.points, 0);
+  const score = Math.round(scoreRaw / 5) * 5;
   const band = BANDS.find((b) => score >= b.min);
   // A tax rule that contradicts Virtuse's sourced data is shown first: a
   // wrong fact costs more than a missing one (Ras, 2026-10-15).
@@ -201,6 +204,7 @@ export function scoreVerdict(out, lang) {
     ok: true,
     declined: false,
     score,
+    scoreRaw,
     band: { id: band.id, label: band[L] },
     weakest: { id: weakest.id, name: weakest.name, reason: weakest.reason, tool: { key: toolKey, page: tool.page, name: tool.name || tool[L] } },
     signals: signals.map(({ priority, ...s }) => s),

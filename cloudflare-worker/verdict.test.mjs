@@ -55,6 +55,7 @@ function withClaude(fn, out = modelOut(), { stop = 'end_turn' } = {}) {
 test('score is the sum, band and weakest point come from the rubric', () => {
   const r = scoreVerdict(modelOut(), 'sk');
   assert.equal(r.score, 55);
+  assert.equal(r.scoreRaw, 55);
   assert.equal(r.band.id, 'add');
   assert.equal(r.band.label, 'Doplňte 2 až 3 predpoklady');
   // worst_case and alternatives both have 3: priority 1 wins
@@ -63,12 +64,23 @@ test('score is the sum, band and weakest point come from the rubric', () => {
   assert.equal(r.signals.length, 10);
 });
 
+test('score is shown rounded to 5, the band follows the shown score', () => {
+  const pts = (n) => SIGNALS.map((s, i) => ({ id: s.id, points: i < n % 10 ? Math.ceil(n / 10) : Math.floor(n / 10), reason: 'x' }));
+  const r52 = scoreVerdict(modelOut({ signals: pts(52) }), 'en');
+  assert.equal(r52.scoreRaw, 52);
+  assert.equal(r52.score, 50);
+  const r63 = scoreVerdict(modelOut({ signals: pts(63) }), 'en');
+  assert.equal(r63.score, 65);
+  assert.equal(r63.band.id, 'complete');
+  assert.equal(scoreVerdict(modelOut({ signals: pts(48) }), 'en').band.id, 'add');
+});
+
 test('band thresholds 65 and 50', () => {
   const at = (n) => scoreVerdict(modelOut({ signals: SIGNALS.map((s, i) => ({ id: s.id, points: i < n % 10 ? Math.ceil(n / 10) : Math.floor(n / 10), reason: 'x' })) }), 'en');
   assert.equal(at(65).band.id, 'complete');
-  assert.equal(at(64).band.id, 'add');
+  assert.equal(at(62).band.id, 'add');
   assert.equal(at(50).band.id, 'add');
-  assert.equal(at(49).band.id, 'missing');
+  assert.equal(at(47).band.id, 'missing');
 });
 
 test('no 70% test caps worst case at 4; loans point to Loan Copilot', () => {
