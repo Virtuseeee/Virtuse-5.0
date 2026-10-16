@@ -76,5 +76,9 @@
  "pr_ledger_get": "Tovább: Ledger",
  "usd_fine": "A Blockstream a Jade árát USD-ben teszi közzé.",
  "aff_note": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
- "aff_how": "Hogyan szerzünk bevételt"
+ "aff_how": "Hogyan szerzünk bevételt",
+ "i_h2_a": "Nem saját maga őrizné a kulcsokat?",
+ "i_h2_b": "Szabályozott letétkezelők.",
+ "i_lead": "Letétkezelőnél egy szabályozott szolgáltató őrzi a kulcsokat Ön helyett. Ez nem saját őrzés: a szolgáltatóra támaszkodik. Mindegyik maga dönti el, kit fogad ügyfélként; ezt a honlapján ellenőrizheti.",
+ "i_treasury": "Bitcoin cégeknek: Treasury"
 }

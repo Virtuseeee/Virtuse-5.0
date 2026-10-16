@@ -76,5 +76,9 @@
  "pr_ledger_get": "Get Ledger",
  "usd_fine": "Blockstream publishes the Jade price in USD.",
  "aff_note": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
- "aff_how": "How we earn"
+ "aff_how": "How we earn",
+ "i_h2_a": "Not keeping the keys yourself?",
+ "i_h2_b": "Regulated custodians.",
+ "i_lead": "With a custodian, a regulated provider holds the keys for you. That is not self-custody: you rely on the provider. Each one decides who it accepts as a client; check on its site.",
+ "i_treasury": "Bitcoin for companies: Treasury"
 }

@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Custody page: regulated custodians BitGo + Sygnum (branch `feat/custody-institutional` on main `50f1e57c`, not merged)
+
+- User decision: add BitGo and Sygnum to Custody (open question from the 2026-10-10 secure.html rollout). New section `#custodians` after the hardware wallets in all 10 languages: heading "Not keeping the keys yourself? Regulated custodians." + caveat (a regulated provider holds the keys, not self-custody, each provider decides whom it accepts) + 2 cards + link to Treasury.
+- Card texts and links are the Treasury page's (`treasury/<lang>.json` keys `pr_bitgo_*`, `pr_sygnum_*`, read by `build_secure.py`), so no new partner claims; 4 new strings per language in `secure/<lang>.json` (AI translations). Rebuilt pages differ from main only by the new block.
+- Checked: check.py 0 problems ×10; sk/de at 1440 and 375: 2 cards, no overflow, link to the language's treasury.html.
+
 ## Session status (2026-10-16) — fr nav button fits on 375 px phones; Brief card links checked (PR #109, branch `fix/tails-p2` on main `21cf4ebd`, not merged)
 
 - fr nav CTA "Trouver des partenaires" was 2 px too wide at 375 px on every fr page. The short label "Partenaires" now shows up to 389 px (was 359): new media query in `site-v2.css` (+ `site-v2.min.css` regenerated), breakpoint in `home/build_lang.py` and `cfo/build_cfo.py`; fr/index + fr/cfo rebuilt. Other languages unchanged. Deploy = site-v2.css, site-v2.min.css, fr/index.html, fr/cfo.html.
