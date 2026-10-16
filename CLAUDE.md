@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — PR #109 fully live (fr nav button short label up to 389 px)
+
+- User ran `deploy_site.sh "0e540dcf^" 0e540dcf` from a checkout of main `99ee001d` (the script uploads the working-tree files; #109's files are unchanged on main since): `site-v2.css` + `site-v2.min.css` now live (`fr/index.html` + `fr/cfo.html` were already live with the Cloudflare deploy). 4/4 md5 = main. The rule only affects the 50 fr pages (only they have `.cta-short`).
+- Checked on virtuse.com/fr/buy-bitcoin.html at 375 px: label "Partenaires", button inside the viewport, no horizontal overflow. `site-v2.min.css?v=7` is served with `max-age=3600` + ETag, so returning visitors get it within an hour (no ?v= bump needed for a change like this).
+- With this, main == production for every site file touched today.
+
 ## Session status (2026-10-16) — CFO card V-13 wording live (main `bd6ab368` merge of `feat/cfo-card-v13`; **live on production** — user ran `deploy_site.sh c5ca0bbb bd6ab368`, DEPLOY OK, 86/86 md5 re-checked on virtuse.com, the 17 old concierge-assets hashes 404)
 
 - Legal pack condition V-13 (no "check whether your decision is good" marketing): the CFO card sentence is now "Check for free what you left out of your decision. The CFO then tracks fees and risks." (SK "Skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká."), aligned per language with the cfo.html hero H1.
@@ -17,7 +23,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `seo-build/verify.mjs` strips every copy of the staging condition (`replaceAll`), since GTM and the snippet share it.
 - Privacy policy EN/SK (`i18n-tools/legacy/src/{en,sk}/privacy-policy.html`): section 4 "Visit statistics without cookies (always on)… needs no consent", section 5 lists Cloudflare Web Analytics. The other 8 languages unchanged (handover: SK/EN). Cookie banner unchanged.
 - Live check: beacon 200 and RUM `cdn-cgi/rum` 204 on sk/bitcoin-vs-gold, de/bitcoin-steuern, a story; no console errors; Cloudflare sets no cookie or storage. Visits show in the Cloudflare dashboard → Web Analytics → virtuse.com.
-- PR #109 (fr nav button): `fr/index.html` + `fr/cfo.html` went live in this range with #109's inline breakpoint (359 → 389 px, self-contained); its `site-v2.css` / `.min.css` part is still not on production.
+- PR #109 (fr nav button): `fr/index.html` + `fr/cfo.html` went live in this range with #109's inline breakpoint (359 → 389 px, self-contained); its `site-v2.css` / `.min.css` part went live later the same day (entry at the top).
 - `feat/cfo-card-v13` went live later the same day (entry above).
 
 ## Session status (2026-10-16) — Bitcoin vs gold SEO finished (PR #114, main `65a5ee1e`; **live on production** — user ran `deploy_site.sh 3235f862 65a5ee1e`, DEPLOY OK, 115/115 md5 re-checked on virtuse.com)
@@ -27,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Stories Related tools (`stories-build/hubs.mjs`): topic `gold` (`titleOnly`: gold/silver/commodities in title or description only; "digital gold" in bodies is too common) with `extra: true` = its link goes **in front of** the 2–3 links the other topics pick, nothing drops (max 4; Ras's review of #114). 30 stories (EN/SK/RU) link to the page; all other 394 unchanged vs before. The list is an auto-fit grid, 4 items need no CSS.
 - `llms.txt`: section "Bitcoin data (updated daily)" (page, `data/bitcoin-vs-commodities.json`, asset returns, dashboard), in `seo-build/generate.mjs` `llmsShort()`.
 - Checks: all generators rerun twice = identical, seo-build verify OK, `audit_canonical.py` 0 problems. Search Console group `data` already had the page.
-- **Still not on production:** PR #109 (fr nav button: `fr/index.html`, `fr/cfo.html`, `site-v2.css`, `site-v2.min.css`), left out on purpose as before.
+- PR #109 (fr nav button) was left out of this deploy; it went live later the same day (entries above).
 - Open then: `feat/cfo-card-v13` (still open) and `feat/cf-web-analytics` (merged + live later the same day, see the entry above).
 - Gotcha: `deploy_site.sh` copies main's version of every range file to gh-pages, so staging previews of unmerged branches on those files disappear (here: the CF snippet on the 115 files, a staging-only `noindex` on `sk/stories/4216/`). Re-apply a preview after the deploy if it is still needed.
 
