@@ -299,5 +299,7 @@
  "Verdict can't rate this": "Verdict это не оценивает",
  "50 to 60": "50–60",
  "0 to 45": "0–45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Как получается балл: ИИ оценивает каждый из 10 сигналов от 0 до 10, балл равен их сумме, округлённой до 5. Verdict ссылается только на инструменты Virtuse, никогда на партнёра."
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Как получается балл: ИИ оценивает каждый из 10 сигналов от 0 до 10, балл равен их сумме, округлённой до 5. Verdict ссылается только на инструменты Virtuse, никогда на партнёра.",
+ "One email when paid plans open in January. Nothing else.": "Одно письмо, когда в январе откроются платные планы. Больше ничего.",
+ "You're on the list. We'll email you once, when paid plans open in January.": "Вы в списке. Мы напишем один раз, когда в январе откроются платные планы."
 }

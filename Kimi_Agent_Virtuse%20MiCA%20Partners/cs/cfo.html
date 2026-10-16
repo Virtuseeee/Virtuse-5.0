@@ -653,6 +653,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-card .vd-again { justify-self: start; }
 .vd-card.busy { opacity: .55; transition: opacity .2s; }
 </style>
+<style>
+.plan .wait-plan { margin-top: auto; max-width: none; }
+.plan .wait-plan input { flex-basis: 100%; }
+.plan .wait-plan .btn { width: 100%; }
+</style>
 <style>.spot, .tiles > * { min-width: 0; } .tile h3, .plan h3 { hyphens: auto; overflow-wrap: break-word; }
 @media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>
 </head>
@@ -826,7 +831,14 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <p class="for"><span data-m>Nebo 90 € ročně, 2 měsíce zdarma.</span><span data-y hidden>To je 7,50 € měsíčně při roční platbě.</span></p>
         <ul><li>Bezplatný audit poplatků z exportu, od 1. listopadu</li><li>Neomezené verdikty a plné reporty</li><li>Vaše rozhodnutí v čase včetně firemní treasury</li><li>Upozornění na poplatky a LTV půjčky</li><li>Daňový přehled, 13 zemí EU, a dědický balíček</li><li>Zeptejte se svého CFO, bez limitu</li></ul>
         <button class="btn btn-primary only-audit" type="button" data-run>Začít bezplatným auditem</button>
-        <a class="btn btn-primary only-wait" href="#waitForm">Dejte mi vědět</a>
+        <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
+          <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Dejte mi vědět</button>
+          <div class="wait-msg" aria-live="polite"></div>
+          <p class="wait-note">Jeden e-mail, až se v lednu otevřou placené plány. Nic jiného.</p>
+          <span class="wait-ok" hidden>Jste na seznamu. Napíšeme vám jednou, až se v lednu otevřou placené plány.</span>
+        </form>
       </div>
     </div>
     <div class="terms">
@@ -1139,9 +1151,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Waitlist -> Worker /waitlist (source cfo_page)
-(function () {
-  var form = document.getElementById('waitForm'), msg = document.getElementById('waitMsg'); if (!form) return;
+// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans in January).
+document.querySelectorAll('form.wait').forEach(function (form) {
+  var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1150,18 +1163,18 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Odesílání...';
     fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, source: 'cfo_page', lang: 'cs' })
+      body: JSON.stringify({ email: email, hp: hp, source: source, lang: 'cs' })
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = "Jste na seznamu. Napíšeme vám jednou, 1. listopadu, až se Verdict a bezplatný audit otevřou.";
-          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist' });
+          form.reset(); msg.textContent = ok ? ok.textContent : "Jste na seznamu. Napíšeme vám jednou, 1. listopadu, až se Verdict a bezplatný audit otevřou.";
+          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.'; }
       })
       .catch(function () { msg.textContent = 'Chyba sítě. Zkuste to prosím znovu.'; })
       .then(function () { sub.disabled = false; sub.textContent = label; });
   });
-})();
+});
 document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   a.addEventListener('click', function () { setTimeout(function () { var i = document.querySelector('#waitForm input[name="email"]'); if (i) i.focus(); }, 400); });
 });

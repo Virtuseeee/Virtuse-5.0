@@ -79,7 +79,7 @@ def build(L):
         v = html_mod.unescape(tr[key])
         for q in ("'", '"'):
             h = h.replace(q + B.js_lit(key, q) + q, q + B.js_lit(v, q) + q)
-    h = one(h, "source: 'cfo_page' })", "source: 'cfo_page', lang: '%s' })" % L)
+    h = one(h, "source: source })", "source: source, lang: '%s' })" % L)
     h = one(h, '</head>', '<style>.spot, .tiles > * { min-width: 0; } .tile h3, .plan h3 { hyphens: auto; overflow-wrap: break-word; }\n'
             '@media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }'
             '@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>\n</head>')

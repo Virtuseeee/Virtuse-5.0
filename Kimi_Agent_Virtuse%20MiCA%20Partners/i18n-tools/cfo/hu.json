@@ -299,5 +299,7 @@
  "Verdict can't rate this": "Ezt a Verdict nem értékeli",
  "50 to 60": "50–60",
  "0 to 45": "0–45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Így készül a pontszám: az AI mind a 10 jelzést 0 és 10 között pontozza, a pontszám ezek összege, 5-re kerekítve. A Verdict csak a Virtuse eszközeire hivatkozik, partnerre soha."
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Így készül a pontszám: az AI mind a 10 jelzést 0 és 10 között pontozza, a pontszám ezek összege, 5-re kerekítve. A Verdict csak a Virtuse eszközeire hivatkozik, partnerre soha.",
+ "One email when paid plans open in January. Nothing else.": "Egyetlen e-mail, amikor januárban elindulnak a fizetős csomagok. Semmi más.",
+ "You're on the list. We'll email you once, when paid plans open in January.": "Felkerült a listára. Egyszer írunk, amikor januárban elindulnak a fizetős csomagok."
 }
