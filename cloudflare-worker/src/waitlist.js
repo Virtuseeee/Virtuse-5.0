@@ -12,14 +12,17 @@
 // No RESEND_CFO_AUDIENCE_ID set -> 503, so the route can be deployed before
 // the audience exists without silently dropping sign-ups.
 
-export const WAITLIST_SOURCES = ['cfo_page', 'home_buy', 'home_cfo'];
+// cfo_plan = the Virtuse CFO card in the pricing table (paid plans, January).
+export const WAITLIST_SOURCES = ['cfo_page', 'cfo_plan', 'home_buy', 'home_cfo'];
 
 const SUBJECT = "You're on the Virtuse CFO · Verdict waitlist";
+const SUBJECT_PLAN = "You're on the Virtuse CFO list";
 
-export function renderWaitlistEmail(leaveUrl) {
+export function renderWaitlistEmail(leaveUrl, source) {
+  const plan = source === 'cfo_plan';
   return `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${SUBJECT}</title></head>
+<title>${plan ? SUBJECT_PLAN : SUBJECT}</title></head>
 <body style="margin:0;padding:0;background-color:#08090a;font-family:Arial,Helvetica,sans-serif;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#08090a;">
 <tr><td align="center" style="padding:48px 16px;">
@@ -27,7 +30,8 @@ export function renderWaitlistEmail(leaveUrl) {
 <tr><td style="padding:36px 32px;">
 <p style="margin:0 0 20px 0;font-size:22px;font-weight:800;"><span style="color:#5FAEDE;">V</span><span style="color:#e6edf3;">irtuse</span> <span style="color:#8b949e;font-weight:400;">CFO</span></p>
 <p style="margin:0 0 14px 0;font-size:20px;line-height:28px;font-weight:700;color:#e6edf3;">You're on the list.</p>
-<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email on 1 November 2026, when Verdict and the free fee audit open.</p>
+${plan ? `<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email when the paid Virtuse CFO plans open in January: unlimited verdicts and reports, fee and loan LTV alerts, a tax report for 13 EU countries and an inheritance kit.</p>
+<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">Verdict and the fee audit are free from 1 November 2026, with no account.</p>` : `<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">We'll send you one email on 1 November 2026, when Verdict and the free fee audit open.</p>`}
 <p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;"><b style="color:#e6edf3;">Verdict</b> scores how complete your Bitcoin decision is on 10 signals and shows its weakest point. It rates your thinking, not Bitcoin, and never tells you to buy or sell.</p>
 <p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">The <b style="color:#e6edf3;">fee audit</b> reads your exchange export in your browser and shows what your buying really cost you. Nothing is uploaded.</p>
 <p style="margin:0 0 24px 0;font-size:15px;line-height:24px;color:#c3ccd6;">Until then we won't email you about anything else.</p>
@@ -49,15 +53,15 @@ async function addToAudience(env, email) {
   throw new Error(`Resend waitlist add failed (status ${res.status}): ${text.slice(0, 300)}`);
 }
 
-async function sendConfirmation(env, email, leaveUrl) {
+async function sendConfirmation(env, email, leaveUrl, source) {
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
       to: [email],
-      subject: SUBJECT,
-      html: renderWaitlistEmail(leaveUrl),
+      subject: source === 'cfo_plan' ? SUBJECT_PLAN : SUBJECT,
+      html: renderWaitlistEmail(leaveUrl, source),
     }),
   });
   if (!res.ok) {
@@ -92,7 +96,7 @@ export async function handleWaitlist(request, env, origin, { json, isRateLimited
     const result = await addToAudience(env, email);
     if (result.created) {
       const leaveUrl = (await buildUnsubscribeUrl(env, email)) + '&list=cfo';
-      await sendConfirmation(env, email, leaveUrl);
+      await sendConfirmation(env, email, leaveUrl, source);
     }
     return json(200, { ok: true }, origin);
   } catch (e) {

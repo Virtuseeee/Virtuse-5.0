@@ -59,6 +59,16 @@ test('new sign-up joins the CFO audience, not the Brief, and gets one confirmati
   assert.match(calls[1].body.html, /1 November 2026/);
 }));
 
+test('pricing card sign-up (cfo_plan) gets the January wording', withFetch(async (calls) => {
+  const res = await worker.fetch(req({ email: 'a@b.co', hp: '', source: 'cfo_plan' }), env());
+  assert.equal(res.status, 200);
+  assert.equal(calls[0].url, 'https://api.resend.com/audiences/aud-cfo/contacts');
+  assert.equal(calls[1].body.subject, "You're on the Virtuse CFO list");
+  assert.match(calls[1].body.html, /paid Virtuse CFO plans open in January/);
+  assert.doesNotMatch(calls[1].body.html, /one email on 1 November/);
+  assert.match(calls[1].body.html, /list=cfo/);
+}));
+
 test('confirmation email mentions Verdict and the fee audit', () => {
   const h = renderWaitlistEmail('https://x/leave');
   assert.match(h, /Verdict<\/b> scores how complete your Bitcoin decision is/);

@@ -653,6 +653,11 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-card .vd-again { justify-self: start; }
 .vd-card.busy { opacity: .55; transition: opacity .2s; }
 </style>
+<style>
+.plan .wait-plan { margin-top: auto; max-width: none; }
+.plan .wait-plan input { flex-basis: 100%; }
+.plan .wait-plan .btn { width: 100%; }
+</style>
 <style>.spot, .tiles > * { min-width: 0; } .tile h3, .plan h3 { hyphens: auto; overflow-wrap: break-word; }
 @media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>
 <style>.cta-short { display: none; } @media (max-width: 359px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>
@@ -827,7 +832,14 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <p class="for"><span data-m>Ou 90&nbsp;€ par an, deux mois offerts.</span><span data-y hidden>Soit 7,50&nbsp;€ par mois, facturés annuellement.</span></p>
         <ul><li>Audit des frais gratuit à partir de votre export, dès le 1er novembre</li><li>Verdicts et rapports complets illimités</li><li>Vos décisions dans le temps, y compris la trésorerie d'entreprise</li><li>Alertes frais et LTV de prêt</li><li>Rapport fiscal pour 13 pays de l'UE et kit de succession</li><li>Interrogez votre CFO, sans limite</li></ul>
         <button class="btn btn-primary only-audit" type="button" data-run>Commencer par l'audit gratuit</button>
-        <a class="btn btn-primary only-wait" href="#waitForm">Prévenez-moi</a>
+        <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
+          <input type="email" name="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Prévenez-moi</button>
+          <div class="wait-msg" aria-live="polite"></div>
+          <p class="wait-note">Un seul e-mail, à l'ouverture des offres payantes en janvier. Rien d'autre.</p>
+          <span class="wait-ok" hidden>Vous êtes inscrit. Nous vous écrirons une seule fois, à l'ouverture des offres payantes en janvier.</span>
+        </form>
       </div>
     </div>
     <div class="terms">
@@ -1140,9 +1152,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Waitlist -> Worker /waitlist (source cfo_page)
-(function () {
-  var form = document.getElementById('waitForm'), msg = document.getElementById('waitMsg'); if (!form) return;
+// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans in January).
+document.querySelectorAll('form.wait').forEach(function (form) {
+  var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1151,18 +1164,18 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Envoi en cours...';
     fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, source: 'cfo_page', lang: 'fr' })
+      body: JSON.stringify({ email: email, hp: hp, source: source, lang: 'fr' })
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = "Vous êtes sur la liste. Nous vous écrirons une seule fois, le 1er novembre, à l'ouverture de Verdict et de l'audit gratuit.";
-          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist' });
+          form.reset(); msg.textContent = ok ? ok.textContent : "Vous êtes sur la liste. Nous vous écrirons une seule fois, le 1er novembre, à l'ouverture de Verdict et de l'audit gratuit.";
+          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Une erreur s\'est produite. Veuillez réessayer.'; }
       })
       .catch(function () { msg.textContent = 'Erreur réseau. Veuillez réessayer.'; })
       .then(function () { sub.disabled = false; sub.textContent = label; });
   });
-})();
+});
 document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   a.addEventListener('click', function () { setTimeout(function () { var i = document.querySelector('#waitForm input[name="email"]'); if (i) i.focus(); }, 400); });
 });

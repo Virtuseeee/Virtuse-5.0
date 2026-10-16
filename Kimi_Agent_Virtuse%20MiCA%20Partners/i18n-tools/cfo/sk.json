@@ -299,5 +299,7 @@
  "Verdict can't rate this": "Toto Verdict nehodnotí",
  "50 to 60": "50 až 60",
  "0 to 45": "0 až 45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Ako vzniká skóre: AI ohodnotí každý z 10 signálov od 0 do 10, skóre je ich súčet zaokrúhlený na 5. Verdict odkazuje len na nástroje Virtuse, nikdy na partnera."
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Ako vzniká skóre: AI ohodnotí každý z 10 signálov od 0 do 10, skóre je ich súčet zaokrúhlený na 5. Verdict odkazuje len na nástroje Virtuse, nikdy na partnera.",
+ "One email when paid plans open in January. Nothing else.": "Jeden e-mail, keď sa v januári otvoria platené plány. Nič iné.",
+ "You're on the list. We'll email you once, when paid plans open in January.": "Ste na zozname. Napíšeme vám raz, keď sa v januári otvoria platené plány."
 }

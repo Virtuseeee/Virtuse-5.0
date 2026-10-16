@@ -1503,5 +1503,15 @@
   "en": "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.",
   "kind": "text",
   "context": "ce Agent</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"retirement-calculator.html\">Retirement Calculator</a> </div> <p class=\"vd-how-note\">How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.</p> </section> <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> "
+ },
+ {
+  "en": "One email when paid plans open in January. Nothing else.",
+  "kind": "text",
+  "context": " <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open in January.</span> </form> </div> <"
+ },
+ {
+  "en": "You're on the list. We'll email you once, when paid plans open in January.",
+  "kind": "text",
+  "context": "g\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open in January.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div"
  }
 ]

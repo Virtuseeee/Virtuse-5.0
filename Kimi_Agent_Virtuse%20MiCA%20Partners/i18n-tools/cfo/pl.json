@@ -299,5 +299,7 @@
  "Verdict can't rate this": "Verdict tego nie ocenia",
  "50 to 60": "50 do 60",
  "0 to 45": "0 do 45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Jak powstaje wynik: AI ocenia każdy z 10 sygnałów od 0 do 10, wynik to ich suma zaokrąglona do 5. Verdict odsyła tylko do narzędzi Virtuse, nigdy do partnera."
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Jak powstaje wynik: AI ocenia każdy z 10 sygnałów od 0 do 10, wynik to ich suma zaokrąglona do 5. Verdict odsyła tylko do narzędzi Virtuse, nigdy do partnera.",
+ "One email when paid plans open in January. Nothing else.": "Jeden e-mail, gdy w styczniu ruszą płatne plany. Nic więcej.",
+ "You're on the list. We'll email you once, when paid plans open in January.": "Jesteś na liście. Napiszemy raz, gdy w styczniu ruszą płatne plany."
 }
