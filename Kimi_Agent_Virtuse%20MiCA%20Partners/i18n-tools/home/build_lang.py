@@ -217,7 +217,7 @@ def build(L):
         h, k = re.subn(r'(<a class="nav-cta"[^>]*>)([^<]+)(</a>)', lambda m: m.group(1) + '<span class="cta-full">' + m.group(2) + '</span><span class="cta-short">' + SHORT_CTA[L] + '</span>' + m.group(3), h)
         if k != 1:
             sys.exit('%s: nav-cta not found' % L)
-        h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 359px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
+        h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 389px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
     h = localise_numbers(h, L)
 
     # 6. sanity

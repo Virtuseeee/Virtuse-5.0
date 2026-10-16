@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — fr nav button fits on 375 px phones; Brief card links checked (PR #109, branch `fix/tails-p2` on main `21cf4ebd`, not merged)
+
+- fr nav CTA "Trouver des partenaires" was 2 px too wide at 375 px on every fr page. The short label "Partenaires" now shows up to 389 px (was 359): new media query in `site-v2.css` (+ `site-v2.min.css` regenerated), breakpoint in `home/build_lang.py` and `cfo/build_cfo.py`; fr/index + fr/cfo rebuilt. Other languages unchanged. Deploy = site-v2.css, site-v2.min.css, fr/index.html, fr/cfo.html.
+- Audit P2-1 (news cards link `article.html?slug=`): already solved in `news/news.js` (repo = production = staging): links start on the reader and switch to `/stories/<slug>/` after a HEAD check; on staging all 7 cards link `/stories/`. No change.
+
 ## Session status (2026-10-16) — Legal/tax pack (lawyer + tax adviser, Ras: "platí presne tento text"), web part + audit fixes #92–#105 (PR #108, main `b601d01b`; **live on production** — user ran `deploy_site.sh 8aa87db8 883909bc`, 990/990 md5-verified on virtuse.com, old asset hashes 404, check_cfo_pages --live 10/10; **Worker deployed**, `/version` = `883909bc`)
 
 - **Includes the audit-fix PRs #92–#105** (Ras: "ano, pozri tie PR a zlúč ich do svojej vetvy"; owner session not found): branch built as origin/main + fix/seo-v2-2-2 (contains #92–#99, #103, #104) + #102 sponsored + #101 speed + #100 cookie, then the legal pack ported onto it (sources 3-way merged; legacy pages edited in `i18n-tools/legacy/src/`, not in the built pages; every builder + legacy + seo-build + Layer 2 re-run; a second full rebuild changes 0 files). Merging #108 makes #92–#105 obsolete (close them).
