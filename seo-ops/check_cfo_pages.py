@@ -11,7 +11,7 @@ Checks per page: head order vb-consent snippet -> /cookie-consent.js -> GTM load
 <noscript> iframe), /partner-click.js loaded; robots noindex until the launch;
 canonical = the page's own virtuse.com URL; hreflang for all 10 languages + x-default
 pointing at the cfo pages once the page is indexable (docs/LAUNCH-CFO.md); title <= 60 and description <= 155 characters; no
-"[CENA]", "Layer 2" or a visible "{{REPORT_PRICE}}"; footer "© 2018–2026 Virtuse Group";
+"[CENA]", "Layer 2" or a visible "{{REPORT_PRICE}}"; footer "© 2018–2026 Virtuse Wealth Management, a.s.";
 Tools item "Virtuse CFO · Verdict"; the #verdict and #pricing anchors. Site-wide: no
 link to verdict.html, cfo pages not in sitemap.xml while noindex.
 """
@@ -90,7 +90,7 @@ def check(l):
     for needle in ('[CENA]', 'Layer 2', '{{REPORT_PRICE}}'):
         if needle.lower() in text.lower():
             bad.append(f'visible text contains {needle!r}')
-    if '© 2018–2026 Virtuse Group' not in H.unescape(s):
+    if '© 2018–2026 Virtuse Wealth Management, a.s.' not in H.unescape(s):
         bad.append('footer copyright changed')
     if 'Virtuse CFO · Verdict' not in s:
         bad.append('Tools item still "Virtuse CFO" (run i18n-tools/apply_cfo_verdict_nav.py --with-cfo)')

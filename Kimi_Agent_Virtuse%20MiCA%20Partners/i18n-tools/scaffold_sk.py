@@ -67,8 +67,8 @@ NEWSLETTER_FOOTER = [
     (">Terms &amp; Conditions<", ">Obchodné podmienky<"),
     (">Privacy Policy<", ">Ochrana osobných údajov<"),
     (">AML &amp; Compliance<", ">AML a Compliance<"),
-    ("<p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>",
-     "<p>&copy;2018 – 2026 Virtuse Group, všetky práva vyhradené.</p>"),
+    ("<p>&copy;2018 - 2026 Virtuse Wealth Management, a.s., All Rights Reserved.</p>",
+     "<p>&copy;2018 – 2026 Virtuse Wealth Management, a.s., všetky práva vyhradené.</p>"),
 ]
 
 

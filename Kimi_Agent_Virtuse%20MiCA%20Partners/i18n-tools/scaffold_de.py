@@ -117,8 +117,8 @@ NEWSLETTER_FOOTER = [
     (">Terms &amp; Conditions<", ">AGB<"),
     (">Privacy Policy<", ">Datenschutzerklärung<"),
     (">AML &amp; Compliance<", ">AML und Compliance<"),
-    ("<p>&copy;2018 - 2026 Virtuse Group, All Rights Reserved.</p>",
-     "<p>&copy;2018 – 2026 Virtuse Group, alle Rechte vorbehalten.</p>"),
+    ("<p>&copy;2018 - 2026 Virtuse Wealth Management, a.s., All Rights Reserved.</p>",
+     "<p>&copy;2018 – 2026 Virtuse Wealth Management, a.s., alle Rechte vorbehalten.</p>"),
 ]
 
 # ---- compact desktop nav + language-dropdown CSS, inserted before </style> ----

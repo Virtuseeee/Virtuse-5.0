@@ -216,9 +216,9 @@ export default function Tax() {
           <span className="font-semibold">Virtuse CFO</span>
           <br />
           {tv(lang,
-            'Launches 1 November: {0}/month or {1}/year.',
-            'Spúšťa sa 1. novembra: {0}/mesiac alebo {1}/rok.',
-            'Spouští se 1. listopadu: {0}/měsíc nebo {1}/rok.',
+            'Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.',
+            'Verdict aj audit poplatkov sú zadarmo od 1. novembra. Platené plány od januára: {0}/mesiac alebo {1}/rok.',
+            'Verdict i audit poplatků jsou zdarma od 1. listopadu. Placené plány od ledna: {0}/měsíc nebo {1}/rok.',
             [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
         </p>
         <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>

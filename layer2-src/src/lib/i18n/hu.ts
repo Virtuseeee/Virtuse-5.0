@@ -321,7 +321,7 @@ const hu: Record<string, string> = {
   "Open {0}": "{0} megnyitása",
   "Compare loan partners": "Hitelpartnerek összehasonlítása",
   "Check your country's tax rules": "Az ország adószabályainak ellenőrzése",
-  "Managing a larger Bitcoin position? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.": "Nagyobb Bitcoin-pozíciót kezel? A Virtuse CFO segít Bitcoin-treasuryt vezetni: tervezés, követés és jelentés. Indulás november 1-jén; fizetős csomagok januártól: {0}/hó vagy {1}/év.",
+  "Managing a larger Bitcoin position? Virtuse CFO · Verdict: test a decision for free; the CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.": "Nagyobb Bitcoin-pozíciót kezel? Virtuse CFO · Verdict: ellenőrizze döntését ingyen, utána a CFO követi a díjakat és a kockázatokat. A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi {0} vagy évi {1}.",
   "Get notified": "Értesítést kérek",
   "Route": "Út",
   "Fee / purchase": "Díj / vásárlás",
@@ -340,7 +340,7 @@ const hu: Record<string, string> = {
   "Multiple": "Szorzó",
   "Invested": "Befektetve",
   "Orange = projected value · dashed = your total invested": "Narancs = várható érték · szaggatott = összes befektetés",
-  "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.": "Nagyobb allokációt tervez? A Virtuse CFO segít Bitcoin-treasuryt vezetni: tervezés, követés és jelentés. Indulás november 1-jén; fizetős csomagok januártól: {0}/hó vagy {1}/év.",
+  "Planning a larger allocation? Virtuse CFO · Verdict: test a decision for free; the CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.": "Nagyobb allokációt tervez? Virtuse CFO · Verdict: ellenőrizze döntését ingyen, utána a CFO követi a díjakat és a kockázatokat. A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi {0} vagy évi {1}.",
   "Fee arbitrage": "Díjarbitrázs",
   "\"Invested after fees per €1,000\" = how many euros of every €1,000 actually buy Bitcoin after the route's fee.": "„Díjak után befektetett összeg 1000 €-ként” = minden 1000 €-ból hány euró vásárol ténylegesen Bitcoint az adott út díja után.",
   "Spreads are not included. For total cost (fee + estimated spread) see the {0}.": "A spreadek nincsenek benne. A teljes költséget (díj + becsült spread) lásd itt: {0}.",
@@ -396,10 +396,12 @@ const hu: Record<string, string> = {
   "As of Q3 2026, checked {0}.": "Állapot: 2026 Q3, ellenőrizve: {0}.",
   "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.": "Az adószabályok gyorsan változnak, és minden helyzet egyedi: egyeztessen helyi adótanácsadóval. Kriptoadó-jelentésekhez az egyik lehetőség a Lukka.",
   "Virtuse may earn a referral fee. It doesn't change the overview.": "A Virtuse ajánlói díjat kaphat. Ez nem változtat az áttekintésen.",
-  "Launches 1 November: {0}/month or {1}/year.": "November 1-jén indul: {0}/hó vagy {1}/év.",
+  "Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.": "A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi {0} vagy évi {1}.",
   "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.": "Három kulcs, bármelyik kettő mozgatja a pénzt. Nincs egyetlen hibapont: az örökösök a C kulccsal és az Ön egyik kulcsával hozzáférnek.",
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "A 2 a 3-ból felállásban két kulcs Önnél marad. A harmadikat egy közös letétkezelési szolgáltató, például az Unchained őrizheti.",
-  "Source (health insurance)": "Forrás (egészségbiztosítás)"
+  "Source (health insurance)": "Forrás (egészségbiztosítás)",
+  "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
+  "How we earn": "Hogyan szerzünk bevételt"
 };
 
 export default hu;

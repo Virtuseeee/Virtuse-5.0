@@ -19,6 +19,8 @@ can embed YouTube, Spotify or X players that no local file names, so they are sk
 """
 import os, re, sys
 
+import speed
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
 
@@ -80,6 +82,7 @@ def skipped(html):
 
 
 def tighten(html, page_path):
+    html = speed.apply(html)
     m = CSP_RE.search(html)
     if not m or skipped(html):
         return html

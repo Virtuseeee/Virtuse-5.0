@@ -76,5 +76,7 @@
   "disclaimer": "To nie jest porada inwestycyjna. Virtuse nigdy nie przechowuje Państwa kluczy ani środków. KYC i rejestracja odbywają się na regulowanej platformie każdego partnera.",
   "sp_pending": "W trakcie pomiaru",
   "spread_note_21_pending": "21bitcoin nie ma publicznego arkusza zleceń. Jego spread mierzymy na podstawie cen w aplikacji, dlatego do tego czasu 21bitcoin jest pokazany bez miejsca w rankingu.",
-  "kraken_instant": "Instant Buy w aplikacji Kraken to inny sposób zakupu: opłata 1% plus spread."
+  "kraken_instant": "Instant Buy w aplikacji Kraken to inny sposób zakupu: opłata 1% plus spread.",
+  "aff_note": "Link partnerski – jeśli się Państwo zarejestrują, Virtuse może otrzymać prowizję. Państwa cena się przez to nie zmienia.",
+  "aff_how": "Jak zarabiamy"
 }

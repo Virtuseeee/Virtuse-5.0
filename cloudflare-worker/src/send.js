@@ -383,8 +383,11 @@ ${body}
 </body></html>`;
 }
 
-function footerHtml(S, brief) {
-  return [S.disclaimer, S.why, brief ? S.whyBrief : '']
+// Operator identification (legal pack 2026-10-16, 3.1).
+const OPERATOR = {"en": "Operator: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com", "sk": "Prevádzkovateľ: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka · IČO 36 709 042 · IČ DPH SK2022293042 · zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sa, vložka č. 4452/B · info@virtuse.com", "cs": "Provozovatel: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com"};
+
+function footerHtml(S, brief, lang) {
+  return [S.disclaimer, S.why, brief ? S.whyBrief : '', OPERATOR[lang] || OPERATOR.en]
     .filter(Boolean)
     .map((p) => `<p style="margin:0 0 8px 0;">${esc(p)}</p>`)
     .join('');
@@ -415,7 +418,7 @@ ${button(withUtm(p.url, kind, payload.partner), fill(S.checklistOpen))}
 ${sources ? `<p style="margin:16px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#7a7366;">${esc(S.checklistSources)}: ${sources}</p>` : ''}`;
     return {
       subject: fill(S.checklistSubject),
-      html: layout({ lang: emailLang, title: fill(S.checklistTitle), intro: fill(S.checklistIntro), body, footer: footerHtml(S, brief) }),
+      html: layout({ lang: emailLang, title: fill(S.checklistTitle), intro: fill(S.checklistIntro), body, footer: footerHtml(S, brief, emailLang) }),
     };
   }
 
@@ -442,7 +445,7 @@ ${button(withUtm(p.url, kind, id), S.openPartner.replace('{0}', p.name))}
 <p style="margin:10px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#7a7366;">${esc(S.matchesNote)}</p>`;
     return {
       subject: S.planSubject,
-      html: layout({ lang: emailLang, title: S.planTitle, intro: S.planIntro, body, footer: footerHtml(S, brief) }),
+      html: layout({ lang: emailLang, title: S.planTitle, intro: S.planIntro, body, footer: footerHtml(S, brief, emailLang) }),
     };
   }
 
@@ -465,7 +468,7 @@ ${source === 'tax' ? `<p style="margin:0 0 16px 0;font-family:Arial,Helvetica,sa
 ${button(withUtm(toolUrl, kind, source), S.reopen)}`;
   return {
     subject: S.resultSubject[source],
-    html: layout({ lang: emailLang, title: S.resultTitle, intro: S.resultIntro, body, footer: footerHtml(S, brief) }),
+    html: layout({ lang: emailLang, title: S.resultTitle, intro: S.resultIntro, body, footer: footerHtml(S, brief, emailLang) }),
   };
 }
 

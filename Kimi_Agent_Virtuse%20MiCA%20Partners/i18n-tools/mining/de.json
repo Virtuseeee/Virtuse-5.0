@@ -85,12 +85,14 @@
  "pr_abundant_cta": "Abundant kontaktieren",
  "pr_powermining_type": "Open-Source-Miner für zu Hause",
  "pr_powermining_loc": "Dänemark (EU-Lager)",
- "pr_powermining_fact": "Bitaxe; über 22.000 verkaufte Produkte",
+ "pr_powermining_fact": "Bitaxe; EU-Lager in Dänemark",
  "pr_powermining_base": "Dänemark (EU-Lager)",
  "pr_powermining_body": "Open-Source-Mining-Hardware für zu Hause (Bitaxe), Versand aus einem EU-Lager in Dänemark.",
  "pr_powermining_f1": "Bitaxe Open-Source-Miner",
  "pr_powermining_f2": "EU-Lager in Dänemark",
- "pr_powermining_f3": "Über 22.000 verkaufte Produkte",
+ "pr_powermining_f3": "Open-Source-Hardware und -Firmware",
  "pr_powermining_f4": "Für Heim-Mining",
- "pr_powermining_cta": "Power Mining besuchen"
+ "pr_powermining_cta": "Power Mining besuchen",
+ "aff_note": "Partnerlink – wenn Sie sich registrieren, kann Virtuse eine Provision erhalten. Ihr Preis ändert sich dadurch nicht.",
+ "aff_how": "Wie wir verdienen"
 }

@@ -8,6 +8,7 @@ import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 import v2common as C
+import aff_note as A
 
 SIGNUP = 'https://app.firefish.io/auth/sign-up?ref=virtuseloan'
 WIDGET = 'https://widget.firefish.io/?ref=virtuseloan&amp;theme=dark&amp;bg=141414&amp;pageBg=rgba(0,0,0,0)&amp;borderCard=rgba(0,0,0,0)&amp;shadowCard=none&amp;widgetShadow=none'
@@ -29,14 +30,14 @@ def build(L):
                       for k in ('d_rate', 'd_ltv', 'd_dur', 'd_cur', 'd_min', 'd_cust'))
     panel = '''<div class="hpanel purple lend-panel">
       <div class="lend-grid">
-        <div class="lend-widget"><iframe src="{widget}" title="{wt}" width="100%" height="560" style="border:0" allow="clipboard-write"></iframe></div>
+        <div class="lend-widget"><iframe src="{widget}" title="{wt}" width="100%" height="560" style="border:0" allow="clipboard-write"></iframe>{aff}</div>
         <div class="lend-details">
           <h2 class="ld-title">{dt}</h2>
           {details}
           <p class="ld-note">{dn}</p>
         </div>
       </div>
-    </div>'''.format(widget=WIDGET, wt=t('widget_title'), dt=t('d_title'), details=details, dn=t('d_note'))
+    </div>'''.format(aff=A.note(t), widget=WIDGET, wt=t('widget_title'), dt=t('d_title'), details=details, dn=t('d_note'))
 
     trust = '''<div class="trust-strip ts-center">
     <span class="ts-stats"><span class="ts-brand"><img src="{root}logo-firefish.png" alt="" width="32" height="32" loading="lazy"><b>Firefish</b></span><span>{a}</span><span>{b}</span><span>{c}</span><span>{d}</span></span>
@@ -55,14 +56,15 @@ def build(L):
     ways = ''.join('''      <article class="pcard2 purple way-card">
         <h3>{tt}</h3>
         <p>{pp}</p>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{cta} {out}</a></div>
+        {aff}
       </article>
-'''.format(tt=t('w_%s_t' % w), pp=t('w_%s_p' % w), url=SIGNUP, cta=t('w_%s_cta' % w), out=C.OUT) for w in ('b', 'i'))
+'''.format(tt=t('w_%s_t' % w), pp=t('w_%s_p' % w), url=SIGNUP, cta=t('w_%s_cta' % w), aff=A.note(t), out=C.OUT) for w in ('b', 'i'))
 
-    faq = '''<details open><summary>{q1}</summary><p>{a1} <a href="{borrow}" target="_blank" rel="noopener noreferrer">{a1l} ↗</a></p></details>
+    faq = '''<details open><summary>{q1}</summary><p>{a1} <a href="{borrow}" target="_blank" rel="sponsored noopener">{a1l} ↗</a></p>{aff}</details>
     <details><summary>{q2}</summary><p>{a2}</p></details>
     <details><summary>{q3}</summary><p>{a3} <a href="{tax}">{a3l} →</a></p></details>'''.format(
-        q1=t('q1'), a1=t('a1'), borrow=BORROW, a1l=t('a1_link'), q2=t('q2'), a2=t('a2'), q3=t('q3'), a3=t('a3'), tax=tax, a3l=t('a3_link'))
+        aff=A.note(t), q1=t('q1'), a1=t('a1'), borrow=BORROW, a1l=t('a1_link'), q2=t('q2'), a2=t('a2'), q3=t('q3'), a3=t('a3'), tax=tax, a3l=t('a3_link'))
 
     body = '''<body class="page-buy page-lend no-split">
 {nav}
@@ -74,7 +76,8 @@ def build(L):
     <div class="eyebrow purple"><i></i>{eyebrow}</div>
     <h1>{h1} <span class="h1-grey">{h1g}</span></h1>
     {panel}
-    <a class="hp-cta btn-primary" href="{signup}" target="_blank" rel="noopener noreferrer">{cta} <span aria-hidden="true">↗</span></a>
+    <a class="hp-cta btn-primary" href="{signup}" target="_blank" rel="sponsored noopener">{cta} <span aria-hidden="true">↗</span></a>
+    {aff}
     <a class="tlink lend-compare" href="{svb}">{compare} {arrow}</a>
     <div class="hp-fine">
       <p>{fine_ref} {fine_risk}</p>
@@ -109,12 +112,12 @@ def build(L):
   {foot}
 </main>
 
-'''.format(nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), panel=panel, signup=SIGNUP, cta=t('cta'),
+'''.format(aff=A.note(t), nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), panel=panel, signup=SIGNUP, cta=t('cta'),
            svb=svb, compare=t('compare'), arrow=C.ARROW, fine_ref=t('fine_ref'), fine_risk=t('fine_risk'), talk=t('talk'), L=L,
            call=t('call'), suffix=suffix, trust=trust, hh2a=t('h_h2_a'), hh2b=t('h_h2_b'), steps=steps, wh2a=t('w_h2_a'),
            wh2b=t('w_h2_b'), ways=ways, fh2a=t('f_h2_a'), fh2b=t('f_h2_b'), faq=faq, brief=C.brief(L, t, root, 'lending_brief'), foot=foot)
     out = C.fix_links(L, head + body + C.scripts(root))
-    open(page_path, 'w').write(C.finalize(out, page_path))
+    open(page_path, 'w').write(C.finalize(A.finish(out), page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 

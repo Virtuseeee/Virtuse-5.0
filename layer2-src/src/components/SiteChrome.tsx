@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CHROME } from '@/lib/chrome';
+import { OPERATOR, OPERATOR_HREF } from '@/lib/operator';
 import { MODULE_LANGS } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
 
@@ -165,6 +166,7 @@ export function SiteFooter({ lang }: { lang: Lang }) {
       </div>
       <div className="mx-auto mt-8 max-w-[1400px] px-6 lg:px-12">
         <p className="text-[13px] text-ink-muted">{c.copyright}</p>
+        <p className="footer-operator mt-1.5 text-[13px] text-ink-muted"><a href={OPERATOR_HREF} className="text-ink-muted underline underline-offset-2 hover:text-ink">{OPERATOR[lang].label}</a>{OPERATOR[lang].text}</p>
         <p className="mt-1.5 text-[13px] text-ink-muted">{c.briefLine} <a href={c.briefHref} className="text-ink no-underline hover:underline">{c.read}</a></p>
       </div>
     </footer>

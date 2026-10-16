@@ -58,9 +58,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "url": "https://virtuse.com/",
-      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      },
+      "vatID": "SK2022293042",
+      "taxID": "36709042"
     },
     {
       "@type": "BreadcrumbList",
@@ -140,16 +149,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.css?v=6">
+<link rel="stylesheet" href="/site-v2.min.css?v=6">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 <style>.st-app #root { min-height: min(100vh, 1000px); }</style>
-<script type="module" crossorigin src="../concierge-assets/utils-V_wp-21w.js"></script>
-<script type="module" crossorigin src="../concierge-assets/slider-DSLqMvk8.js"></script>
-<script type="module" crossorigin src="../concierge-assets/tax-sources.gen-n3HRY76l.js"></script>
-<script type="module" crossorigin src="../concierge-assets/arrow-right-BGRd6ZOh.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-loan-DcNwZkjI.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/utils-Bsf9RqkB.css">
+<script type="module" crossorigin src="../concierge-assets/utils-Cc0D18YF.js"></script>
+<script type="module" crossorigin src="../concierge-assets/slider-D8suNU3s.js"></script>
+<script type="module" crossorigin src="../concierge-assets/tax-sources.gen-Cc7HYo94.js"></script>
+<script type="module" crossorigin src="../concierge-assets/PartnerLinkNote-CXry6k5T.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-loan-CZmd-w03.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/utils-BZ9ErpHg.css">
 </head>
 <body class="page-buy page-fee page-pf page-loan no-split">
 <header class="nav">
@@ -165,11 +174,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Tudástár</button>
-        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/hu/blog.html">Blog</a><a href="/hu/bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-dijindex/">Díjindex</a></div>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Heti Bitcoin-hírek, minden hétfőn</span></a><a href="/stories/"><span class="nd-t">Cikkek</span><span class="nd-d">Hosszabb cikkek és elemzések</span></a><a href="/hu/blog.html"><span class="nd-t">Blog</span><span class="nd-d">A Virtuse legújabb bejegyzései</span></a><a href="/hu/bitcoin-data.html"><span class="nd-t">Bitcoin-adatok</span><span class="nd-d">Élő árfolyam, hálózat és grafikonok</span></a><a href="/hu/bitcoin-adozas/"><span class="nd-t">Adózási útmutatók országonként</span><span class="nd-d">Adószabályok 13 uniós országban</span></a><a href="/hu/faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Válaszok a Virtuse-ról és a partnerekről</span></a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Eszközök</button>
-        <div class="nav-drop" id="nd-tools"><a href="/hu/cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></a><a href="/hu/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/hu/stacking.html">Stacking Strategist</a><a href="/hu/loan.html" aria-current="page">Loan &amp; Liquidity Copilot</a><a href="/hu/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/hu/retirement-calculator.html">Nyugdíjkalkulátor</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="/hu/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></span><span class="nd-d">Verdikt és díjaudit, november 1-jétől ingyen</span></a><a href="/hu/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerek a válaszai alapján</span></a><a href="/hu/bitcoin-dijindex/"><span class="nd-t">Díjindex</span><span class="nd-d">A vásárlás teljes költsége összevetve</span></a><a href="/hu/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Rendszeres vásárlás tervezése</span></a><a href="/hu/loan.html" aria-current="page"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Eladás vagy hitel Bitcoin-fedezettel</span></a><a href="/hu/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Országos szabályok és öröklési ellenőrzés</span></a><a href="/hu/retirement-calculator.html"><span class="nd-t">Nyugdíjkalkulátor</span><span class="nd-d">Mennyi Bitcoin kell a nyugdíjhoz</span></a></div>
       </div>
       <a class="nav-top" href="/hu/about.html">Rólunk</a>
     </nav>
@@ -279,7 +288,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="footer-columns"><div class="footer-col"><h4>Szolgáltatások</h4><a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás</a><a href="/hu/secure.html">Letétkezelés</a><a href="/hu/mining.html">Bányászat</a><a href="/hu/lending.html">Hitelek</a><a href="/hu/treasury.html">Treasury</a><a href="/hu/tax.html">Adózás</a><a href="/hu/bots.html">Botok</a></div><div class="footer-col"><h4>Cég</h4><a href="/hu/about.html">Rólunk</a><a href="/hu/faq.html">FAQ</a></div><div class="footer-col"><h4>Eszközök</h4><a href="/hu/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Ingyenes</span></a><a href="/hu/concierge.html">Partner Finder</a><a href="/hu/stacking.html">Stacking Strategist</a><a href="/hu/loan.html">Loan &amp; Liquidity Copilot</a><a href="/hu/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/hu/retirement-calculator.html">Nyugdíjkalkulátor</a></div><div class="footer-col"><h4>Útmutatók</h4><a href="/news.html">Virtuse Brief</a><a href="/hu/blog.html">Blog</a><a href="/hu/bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-adozas/">Bitcoin-adózás</a><a href="/hu/bitcoin-dijindex/">Díjindex</a><a href="/hu/bitcoin-dca-kalkulator/">DCA-kalkulátor</a><a href="/hu/bitcoin-eladas-vagy-hitel/">Eladás vagy hitel</a><a href="/hu/bitcoin-orokles/">Öröklés</a></div><div class="footer-col"><h4>Jogi információk</h4><a href="/hu/terms-and-conditions.html">Felhasználási feltételek</a><a href="/hu/privacy-policy.html">Adatvédelmi tájékoztató</a><a href="/hu/aml-compliance.html">AML és megfelelés</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Minden jog fenntartva.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.</p>
+<p class="footer-operator"><a href="/hu/operator.html">Üzemeltető</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Szlovákia · Cégazonosító (IČO) 36 709 042 · Közösségi adószám SK2022293042 · bejegyezve a Pozsonyi III. Városi Bíróság cégjegyzékébe, Sa szakasz, 4452/B szám · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief, a Virtuse heti összefoglalója. <a href="/news.html">Elolvasom &rarr;</a></p>
       <nav class="footer-langs" aria-label="Nyelvek"><a href="/loan.html" hreflang="en">English</a><a href="/sk/loan.html" hreflang="sk">Slovenčina</a><a href="/cs/loan.html" hreflang="cs">Čeština</a><a href="/de/loan.html" hreflang="de">Deutsch</a><a href="/pl/loan.html" hreflang="pl">Polski</a><a href="/hu/loan.html" hreflang="hu" aria-current="page">Magyar</a><a href="/fr/loan.html" hreflang="fr">Français</a><a href="/es/loan.html" hreflang="es">Español</a><a href="/uk/loan.html" hreflang="uk">Українська</a><a href="/ru/loan.html" hreflang="ru">Русский</a></nav>
       <p class="legal">A Virtuse független összehasonlító hub. Nem őriz ügyfélpénzt vagy kulcsokat, nem hajt végre megbízásokat, és nem ad befektetési tanácsot. A szolgáltatásokat a felsorolt partnerek nyújtják saját engedélyük alapján. A díjak az egyes partnerek által közzétett formában szerepelnek, és változhatnak.</p>
@@ -292,7 +302,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 
 <script src="/site-v2.js?v=7" defer></script>
-<script src="/consultation-widget.js?v=20261007b" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 </body>
 </html>

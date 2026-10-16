@@ -16,7 +16,7 @@ stay English because their pages are English-only.
 
 TEXT = {
     # ---------------------------------------------------------------- chrome
-    "© 2018–2026 Virtuse Group. All rights reserved.": "© 2018–2026 Virtuse Group. Wszelkie prawa zastrzeżone.",
+    "© 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.": "© 2018–2026 Virtuse Wealth Management, a.s. Wszelkie prawa zastrzeżone.",
     "AML & Compliance": "AML i zgodność",
     "About": "O nas",
     "About Us": "O nas",

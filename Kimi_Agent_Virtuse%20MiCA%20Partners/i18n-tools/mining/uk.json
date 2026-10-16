@@ -85,12 +85,14 @@
  "pr_abundant_cta": "Зв'язатися з Abundant",
  "pr_powermining_type": "Домашні майнери з відкритим кодом",
  "pr_powermining_loc": "Данія (склад у ЄС)",
- "pr_powermining_fact": "Bitaxe; продано понад 22 000 продуктів",
+ "pr_powermining_fact": "Bitaxe; склад у ЄС (Данія)",
  "pr_powermining_base": "Данія (склад у ЄС)",
  "pr_powermining_body": "Обладнання з відкритим кодом для домашнього майнінгу (Bitaxe), доставка зі складу в ЄС у Данії.",
  "pr_powermining_f1": "Майнери Bitaxe з відкритим кодом",
  "pr_powermining_f2": "Склад у ЄС, у Данії",
- "pr_powermining_f3": "Продано понад 22 000 продуктів",
+ "pr_powermining_f3": "Відкрите апаратне забезпечення та прошивка",
  "pr_powermining_f4": "Для домашнього майнінгу",
- "pr_powermining_cta": "Перейти на Power Mining"
+ "pr_powermining_cta": "Перейти на Power Mining",
+ "aff_note": "Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється.",
+ "aff_how": "Як ми заробляємо"
 }

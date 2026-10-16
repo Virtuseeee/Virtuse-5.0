@@ -252,9 +252,10 @@ export function applyStoryExtras(html, info, template) {
     const m = template.match(new RegExp('<script src="[^"]*' + reEsc(f) + '[^"]*"([^>]*)>'));
     if (m) h = h.replace(new RegExp('(<script src="[^"]*' + reEsc(f) + '[^"]*")[^>]*>', 'g'), (x, a) => a + m[1] + '>');
   }
-  // CSP as in article.html (story pages copy the template's head).
+  // CSP as in article.html (story pages copy the template's head), plus the page's own image hosts.
   const csp = template.match(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/);
   if (csp) h = h.replace(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/, () => csp[0]);
+  h = widenImgSrc(h);
   h = must(h, /<a href="[^"]*" id="crumbList" data-ui="[^"]*">[^<]*<\/a>/,
     () => `<a href="${hub}" id="crumbList" data-ui="crumbStories">${esc(STRINGS[lang].crumb)}</a>`, 'crumbList');
   h = must(h, /(<a class="text-link" href=")[^"]*(" id="backLink")/, (m, a, b) => a + hub + b, 'backLink');
@@ -267,7 +268,55 @@ export function applyStoryExtras(html, info, template) {
   } else {
     h = must(h, /<div class="story-end">/, () => `${block}\n\n        <div class="story-end">`, 'story-end');
   }
-  return h;
+  h = syncChrome(h, template, root);
+  return localizeStatic(h, lang, root, info.deskId);
+}
+
+// Story bodies embed images from other hosts (giphy, medium, cloudfront, satosi.sk ...), while the
+// template's img-src only allows blog.virtuse.com: add each page's own https image origins
+// (audit 2026-10-15, code P0-1). buildHubs() fails if an <img> host is still not covered.
+const CSP_RE = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/;
+
+export function imgOrigins(h) {
+  const out = new Set();
+  const add = (u) => {
+    try {
+      const x = new URL(decode(u).trim(), ORIGIN + '/');
+      if (x.protocol === 'https:' && x.origin !== ORIGIN) out.add(x.origin);
+    } catch { /* not a URL */ }
+  };
+  for (const [tag] of h.matchAll(/<img\b[^>]*>/g)) {
+    const src = tag.match(/\ssrc="([^"]*)"/);
+    if (src) add(src[1]);
+    const set = tag.match(/\ssrcset="([^"]*)"/);
+    if (set) set[1].split(',').forEach((c) => c.trim() && add(c.trim().split(/\s+/)[0]));
+  }
+  return [...out].sort();
+}
+
+function covered(tokens, origin) {
+  return tokens.some((t) => t === origin ||
+    (t.startsWith('https://*.') && origin.startsWith('https://') && origin.endsWith(t.slice('https://*'.length))));
+}
+
+function widenImgSrc(h) {
+  const m = h.match(CSP_RE);
+  if (!m) return h;
+  const dirs = m[1].split(';').map((d) => d.trim()).filter(Boolean);
+  const i = dirs.findIndex((d) => d.split(/\s+/)[0] === 'img-src');
+  if (i < 0) return h;
+  const toks = dirs[i].split(/\s+/);
+  const extra = imgOrigins(h).filter((o) => !covered(toks.slice(1), o));
+  if (!extra.length) return h;
+  dirs[i] = toks.concat(extra).join(' ');
+  return h.replace(CSP_RE, () => `<meta http-equiv="Content-Security-Policy" content="${dirs.join('; ')}">`);
+}
+
+export function uncoveredImgOrigins(h) {
+  const m = h.match(CSP_RE);
+  const d = m ? m[1].split(';').map((x) => x.trim()).find((x) => x.split(/\s+/)[0] === 'img-src') : null;
+  const toks = d ? d.split(/\s+/).slice(1) : [];
+  return imgOrigins(h).filter((o) => !covered(toks, o));
 }
 
 const attr = (h, re) => { const m = h.match(re); return m ? decode(m[1]) : ''; };
@@ -307,6 +356,77 @@ function readerLangs() {
   const a = src.indexOf('var LANGS = '), b = src.indexOf('// Pre-rendered /stories/');
   if (a < 0 || b < 0) throw new Error('LANGS not found in article.js');
   return vm.runInNewContext(src.slice(a, b) + '\nLANGS;', {});
+}
+
+// Chrome strings shared by every Brief page (theme toggle, skip link, CFO item and card):
+// the strict-JSON block in brief-chrome.js (checklist 2.3).
+function chromeTable() {
+  const src = fs.readFileSync(path.join(SITE, 'brief-chrome.js'), 'utf8');
+  const m = src.match(/\/\*CHROME-I18N\*\/([\s\S]*?)\/\*END-CHROME-I18N\*\//);
+  if (!m) throw new Error('CHROME-I18N block not found in brief-chrome.js');
+  return JSON.parse(m[1]);
+}
+let chromeCache = null;
+function chromeData() {
+  if (!chromeCache) chromeCache = { R: readerLangs(), CT: chromeTable() };
+  return chromeCache;
+}
+const rootify = (s, root) => s.replace(/\b(href|src)="(?!https?:|\/|#|data:|mailto:|javascript:)([^"]*)"/g, (m, a, v) => `${a}="${root}${v}"`);
+
+/**
+ * Chrome in the page language without JavaScript: what article.js and
+ * brief-chrome.js set on load (data-ui texts, data-hub links, blog link,
+ * theme toggle for the default dark theme). Story pages used to ship the
+ * English menu until the scripts ran (checklist 2.3).
+ */
+const DESK_HREF = { mining: 'mining.html', treasury: 'treasury.html', custody: 'secure.html', policy: 'tax.html', macro: 'lending.html', markets: 'buy-bitcoin.html' };
+
+export function localizeStatic(html, lang, root, deskId) {
+  const { R, CT } = chromeData();
+  const L = R[lang] || R.en;
+  const ui = { ...CT.en, ...(CT[lang] || {}), ...L.ui };
+  let h = html.replace(/(<([a-z]+)\b[^>]*\bdata-ui="(\w+)"[^>]*>)([^<]*)(<\/\2>)/g, (m, open, tag, key, t, close) =>
+    (ui[key] != null ? open + esc(ui[key]) + close : m));
+  h = h.replace(/href="[^"]*"([^>]*?)\sdata-hub="([^"]+)"/g, (m, mid, v) => `href="${root}${L.dir}${v}"${mid} data-hub="${v}"`);
+  h = h.replace(/href="[^"]*"(\s+id="(?:navBlog|footBlog)")/g, (m, id) => `href="${root}${L.listPage}"${id}`);
+  h = h.replace(/(<button class="theme-toggle" id="themeToggle"[^>]*?)aria-label="[^"]*" title="[^"]*"/,
+    (m, a) => `${a}aria-label="${esc(ui.toLight)}" title="${esc(ui.toLight)}"`);
+  h = h.replace(/(<span class="theme-toggle-label" id="themeToggleLabel">)[^<]*/, (m, a) => a + esc(ui.light));
+  // Story-page parts article.js fills per language: author bio, service card by desk.
+  if (ui.authorBio) h = h.replace(/(<p class="bio" id="authorBio">)[^<]*/, (m, a) => a + esc(ui.authorBio));
+  const s = deskId && L.services && L.services[deskId];
+  if (s && DESK_HREF[deskId]) {
+    h = h.replace(/(<p class="ov-title" id="ovTitle">)[^<]*/, (m, a) => a + esc(s[0]));
+    h = h.replace(/(<p class="ov-dek" id="ovDek">)[^<]*/, (m, a) => a + esc(s[1]));
+    h = h.replace(/<a class="btn" id="ovCta" href="[^"]*">[^<]*/, () =>
+      `<a class="btn" id="ovCta" href="${root}${L.dir}${DESK_HREF[deskId]}?utm_source=brief&amp;utm_medium=article&amp;utm_content=${deskId}">${esc(s[2])}`);
+  }
+  h = h.replace(/(<a class="ov-alt" id="ovAlt" href=")[^"]*/, (m, a) => `${a}${root}${L.concierge ? L.dir : ''}concierge.html?utm_source=concierge&amp;utm_medium=article`);
+  return h;
+}
+
+/** Header pieces and the end-of-story CFO card from article.html (rootified). */
+function syncChrome(h, template, root) {
+  const pick = (re, label) => {
+    const m = template.match(re);
+    if (!m) throw new Error('article.html anchor not found: ' + label);
+    return rootify(m[0], root);
+  };
+  for (const [re, label] of [
+    [/<a class="skip" href="#main"[^>]*>[^<]*<\/a>/, 'skip'],
+    [/<nav class="nav-links" id="navLinks"[\s\S]*?<\/nav>/, 'navLinks'],
+    [/<button class="theme-toggle" id="themeToggle"[\s\S]*?<\/button>/, 'themeToggle'],
+  ]) {
+    const block = pick(re, label);
+    h = must(h, re, () => block, label);
+  }
+  const cfo = pick(/<!-- cfo-end:start -->[\s\S]*?<!-- cfo-end:end -->/, 'cfo-end');
+  if (h.includes('<!-- cfo-end:start -->')) {
+    h = h.replace(/<!-- cfo-end:start -->[\s\S]*?<!-- cfo-end:end -->/, () => cfo);
+  } else {
+    h = must(h, /\n( *)<div class="share-row"><span/, (m, sp) => `\n${sp}${cfo}\n\n${sp}<div class="share-row"><span`, 'end share-row');
+  }
+  return h;
 }
 
 const hubPagePath = (lang, n) => `${HUB_LANGS[lang].dir}stories/${n > 1 ? `page/${n}/` : ''}`;
@@ -495,10 +615,7 @@ ${pager.length ? `      <nav class="hub-pager" aria-label="${esc(S.pager)}">
   h = h.replace(/<div class="share-toast"[^>]*><\/div>\n/, '');
   sub(/\n*<!-- ===== Story reader[^>]*-->\n<script src="[^"]*article\.js[^"]*"[^>]*><\/script>/, () => '', 'article.js');
   // Chrome in the hub's language (article.js does this on story pages).
-  h = h.replace(/(<([a-z]+)\b[^>]*\bdata-ui="(\w+)"[^>]*>)([^<]*)(<\/\2>)/g, (m, open, tag, key, t, close) =>
-    (L.ui[key] != null ? open + esc(L.ui[key]) + close : m));
-  h = h.replace(/href="[^"]*"([^>]*?)\sdata-hub="([^"]+)"/g, (m, mid, v) => `href="${root}${L.dir}${v}"${mid}`);
-  h = h.replace(/href="[^"]*"(\s+id="(?:navBlog|footBlog)")/g, (m, id) => `href="${root}${L.listPage}"${id}`);
+  h = localizeStatic(h, lang, root);
   const ui = {};
   for (const k of ['emailReq', 'sending', 'subOk', 'subErr', 'netErr']) ui[k] = L.ui[k];
   sub(/(<script src="[^"]*brief-chrome\.js[^"]*"[^>]*><\/script>)/, (m) =>
@@ -560,6 +677,8 @@ export function buildHubs({ log = console.log } = {}) {
     if (/^(?:(?:sk|ru)\/)?stories\/page\/$/.test(p)) throw new Error('a story slug "page" would collide with hub pagination: ' + p);
     const s = readStory(p);
     const next = applyStoryExtras(s.html, s, template);
+    const bad = uncoveredImgOrigins(next);
+    if (bad.length) throw new Error(`${p}: <img> hosts not in img-src: ${bad.join(' ')}`);
     if (next !== s.html) { fs.writeFileSync(s.file, next); changed++; }
     (byLang[s.lang] = byLang[s.lang] || []).push(s);
   }

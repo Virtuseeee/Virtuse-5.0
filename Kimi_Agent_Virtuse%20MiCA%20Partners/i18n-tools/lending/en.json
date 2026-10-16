@@ -23,8 +23,8 @@
  "fine_risk": "Loans are provided by Firefish under its own licence or registration. Not investment advice. If Bitcoin's price falls, you may need to add collateral or the collateral may be liquidated.",
  "talk": "Prefer to talk?",
  "call": "Book a free 15-minute call",
- "t_funded": "EUR 22.5M funded",
- "t_investors": "8,600 investors",
+ "t_funded": "On-chain multi-sig escrow",
+ "t_investors": "Borrowers matched with investors",
  "t_esma": "Listed in the ESMA MiCA register",
  "t_btc": "Bitcoin-only",
  "h_h2_a": "How it works.",
@@ -67,5 +67,7 @@
  "email": "Email address",
  "b_btn": "Get the Brief",
  "b_fine": "Unsubscribe anytime. Not advice.",
- "b_img_alt": "Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue"
+ "b_img_alt": "Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue",
+ "aff_note": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
+ "aff_how": "How we earn"
 }

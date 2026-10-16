@@ -36,6 +36,7 @@ ${plan ? `<p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3c
 <p style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;">The <b style="color:#e6edf3;">fee audit</b> reads your exchange export in your browser and shows what your buying really cost you. Nothing is uploaded.</p>
 <p style="margin:0 0 24px 0;font-size:15px;line-height:24px;color:#c3ccd6;">Until then we won't email you about anything else.</p>
 <p style="margin:0;font-size:12px;line-height:20px;color:#8b949e;">You joined the waitlist on virtuse.com. Virtuse never holds your keys or funds and gives no investment advice. <a href="${leaveUrl}" style="color:#8b949e;">Leave the waitlist</a></p>
+<p style="margin:12px 0 0 0;font-size:11px;line-height:18px;color:#8b949e;">Operator: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com</p>
 </td></tr></table>
 </td></tr></table>
 </body></html>`;

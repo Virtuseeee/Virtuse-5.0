@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>Daně z Bitcoinu v 13 zemích EU (2026)</title>
 <meta name="description" content="Sazby daně z Bitcoinu, osvobození podle doby držení a daňové přiznání v 13 zemích EU, stav Q3 2026. Ověřeno 13. 10. 2026.">
 <meta name="robots" content="index, follow">
@@ -29,123 +30,73 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://virtuse.com/og/bitcoin-tax.jpg">
-<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-<style>:root {
-  --btc-orange: #f7931a;
-  --dark: #08090a;
-  --dark-card: #141414;
-  --dark-card-hover: #1c1c1c;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(255,255,255,0.12);
-  --green: #3fb950;
-  --max: 820px;
-}
-* { box-sizing: border-box; }
-html { color-scheme: dark; }
-body {
-  margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
-  background: var(--dark);
-  color: var(--text);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: var(--btc-orange); }
-.nav {
-  display: flex; flex-wrap: wrap; gap: 10px 18px;
-  align-items: center; justify-content: space-between;
-  padding: 16px 20px; border-bottom: 1px solid var(--border);
-  background: rgba(8,9,10,.96); position: sticky; top: 0;
-}
-.nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; }
-.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
-.brand { font-weight: 700; color: var(--text) !important; font-size: 16px; }
-.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 64px; }
-.crumbs { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
-.crumbs a { color: var(--text-muted); }
-.answer {
-  background: var(--dark-card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 18px; margin: 16px 0 28px;
-}
-.answer p { margin: 0; }
-h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
-h2 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 10px; }
-h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 8px; }
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 20px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-th { color: var(--text-muted); font-weight: 600; }
-.cta {
-  display: inline-block; background: var(--text); color: var(--dark) !important;
-  text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
-  transition: opacity 0.2s;
-}
-.cta:hover { opacity: 0.85; }
-.cta-secondary {
-  display: inline-block; border: 1px solid var(--border); color: var(--text) !important;
-  text-decoration: none; padding: 10px 16px; border-radius: 8px; margin: 8px 8px 8px 0;
-  transition: border-color 0.2s;
-}
-.cta-secondary:hover { border-color: var(--border-hover); }
-.muted { color: var(--text-muted); font-size: 14px; }
-.disclaimers { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
-.related { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 16px; }
-.lang { font-size: 13px; }
-.flag { font-weight: 600; }
-.review { font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--border-hover); padding: 6px 10px; margin: 12px 0; }
-code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
-pre {
-  background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
-  padding: 12px; overflow: auto; white-space: pre-wrap;
-}
-.asof { font-size: 13px; color: var(--text-muted); margin: 0 0 8px; }
-.brief {
-  background: var(--dark-card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 22px 20px; margin: 36px 0 8px;
-}
-.brief h2 { margin: 0 0 6px; font-size: 1.25rem; }
-.brief h2 span { font-weight: 400; color: var(--text-muted); }
-.brief .line { margin: 0 0 14px; color: var(--text-muted); font-size: 15px; }
-.brief form { display: flex; flex-wrap: wrap; gap: 8px; }
-.brief input[type="email"] {
-  flex: 1 1 220px; min-width: 0; background: var(--dark); color: var(--text);
-  border: 1px solid var(--border-hover); border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 15px;
-}
-.brief input[type="email"]:focus { outline: none; border-color: var(--text-muted); }
-.brief button {
-  flex: 0 0 auto; background: var(--text); color: var(--dark); border: 0; border-radius: 8px;
-  padding: 10px 16px; font: inherit; font-weight: 700; cursor: pointer;
-}
-.brief button:disabled { opacity: 0.6; cursor: default; }
-.brief .msg { margin: 10px 0 0; font-size: 14px; min-height: 1px; }
-.brief .fine { margin: 8px 0 0; font-size: 12px; color: var(--text-muted); }
-.brief .fine a { color: var(--text-muted); }
-@media (max-width: 480px) { .brief button { flex: 1 1 100%; } }
-footer.site-footer {
-  border-top: 1px solid var(--border); padding: 24px 20px; color: var(--text-muted); font-size: 13px;
-}
-footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=7">
+<style>.seo { max-width: 820px; margin: 0 auto; padding: 36px 0 24px; }
+.seo a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.seo a:hover { text-decoration-color: var(--text); }
+.seo p, .seo li { color: #c9d1d9; }
+.seo h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 10px; }
+.seo h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 40px 0 12px; }
+.seo h3 { font-size: 1.08rem; font-weight: 700; margin: 24px 0 8px; }
+.seo .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
+.seo .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
+.seo .crumbs a:hover { color: var(--text); }
+.seo .asof { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+.seo .answer { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin: 18px 0 30px; }
+.seo .answer p { margin: 0; color: var(--text); }
+.seo .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0 22px; }
+.seo table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.seo th, .seo td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.seo th { color: var(--muted); font-weight: 600; font-size: 13px; }
+.seo .cta { display: inline-flex; align-items: center; min-height: 44px; background: var(--text); color: var(--dark); text-decoration: none; font-weight: 600; font-size: 14px; padding: 12px 18px; border-radius: 10px; margin: 8px 8px 8px 0; }
+.seo .cta:hover { background: #fff; }
+.seo .cta-secondary { display: inline-flex; align-items: center; min-height: 44px; border: 1px solid var(--line-strong); color: var(--text); text-decoration: none; padding: 12px 18px; border-radius: 10px; margin: 8px 8px 8px 0; }
+.seo .cta-secondary:hover { background: var(--card); }
+.seo .muted { color: var(--muted); font-size: 14px; }
+.seo .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
+.seo .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; }
+.seo .related a:hover { border-color: var(--line-strong); }
+.seo .seo-tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
+.seo .seo-tools a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; text-decoration: none; }
+.seo .seo-tools a:hover { border-color: var(--line-strong); }
+.seo .seo-tools b { display: block; font-size: 15px; margin-bottom: 4px; }
+.seo .seo-tools span { display: block; font-size: 14px; color: var(--muted); }
+.seo li > a { display: inline-block; padding-block: 11px; }
+.seo details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+.seo summary { cursor: pointer; font-weight: 600; }
+.seo .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.seo .disclaimers p { color: var(--muted); }
+.seo .review { font-size: 12px; color: var(--muted); border-left: 2px solid var(--line-strong); padding: 6px 10px; margin: 12px 0; }
+.seo code, .seo pre { font-family: var(--mono); font-size: 12px; }
+.seo pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; white-space: pre-wrap; }
+.page-seo #brief { max-width: 820px; margin: 0 auto; padding-block: 48px; }
+.seo .aff-note { margin: 8px 0 16px; font-size: 12px; line-height: 1.45; color: var(--muted); }
+.seo .aff-note a { color: var(--muted); }
 @media (max-width: 640px) {
-  h1 { font-size: 1.45rem; }
-  .nav { padding: 12px 14px; }
+  .seo { padding-top: 24px; }
+  .seo .related, .seo .seo-tools { grid-template-columns: 1fr; }
+  .seo .table-wrap { overflow: visible; }
+  .seo table, .seo tbody, .seo tr, .seo td { display: block; width: 100%; }
+  .seo thead { display: none; }
+  .seo tr { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px 14px; margin: 0 0 10px; }
+  .seo td { border: 0; padding: 7px 0; display: grid; grid-template-columns: minmax(96px, 38%) 1fr; gap: 12px; }
+  .seo td + td { border-top: 1px solid var(--line); }
+  .seo td[data-label]::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
+  .seo td:not([data-label]) { display: block; }
 }
 @media print {
-  .nav, .cta, .cta-secondary, .brief, footer.site-footer { display: none !important; }
-  body { background: #fff; color: #111; }
-  a { color: #111; }
-  .answer { background: #f4f4f4; border-color: #ccc; }
-}
-.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 8px 0 16px; }
-.tools a {
-  display: block; background: var(--dark-card); border: 1px solid var(--border); border-radius: 10px;
-  padding: 14px 16px; color: var(--text); text-decoration: none; transition: border-color 0.2s;
-}
-.tools a:hover { border-color: var(--border-hover); }
-.tools b { display: block; font-size: 15px; margin-bottom: 4px; }
-.tools span { display: block; font-size: 14px; color: var(--text-muted); }
-@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }</style>
+  .nav, .footer-main, #brief, .seo .cta, .seo .cta-secondary { display: none !important; }
+  body { background: #fff; color: #111; padding: 0; }
+  .seo a, .seo p, .seo li { color: #111; }
+  .seo .answer { background: #f4f4f4; border-color: #ccc; }
+}</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -154,8 +105,17 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      },
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
       "url": "https://virtuse.com/",
       "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."
     },
@@ -243,20 +203,42 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
     }
   ]
 }</script>
+<script>window.VB_I18N = {"openMenu": "Otevřít menu", "closeMenu": "Zavřít menu", "latestBrief": "Nejnovější Brief · ", "min": " min", "coverImage": "Titulní obrázek: ", "badEmail": "Zadejte platnou e-mailovou adresu.", "sending": "Odesílání...", "subscribed": "Jste přihlášeni. Brief vychází v pondělí.", "error": "Něco se pokazilo. Zkuste to prosím znovu.", "netError": "Chyba sítě. Zkuste to prosím znovu.", "briefLangNote": " (v angličtině)"};</script>
 </head>
-<body>
+<body class="page-seo no-split">
 <!-- generated by seo-build; do not edit by hand. answerWords=55 -->
 <header class="nav">
-  <a class="brand" href="../../cs/index.html">Virtuse</a>
-  <nav aria-label="Primary">
-    <a href="../../cs/bitcoin-dane/">Daňové návody</a>
-    <a href="../../cs/bitcoin-index-poplatku/">Index poplatků</a>
-    <a href="../../cs/bitcoin-dca-kalkulacka/">DCA</a>
-    <a href="../../cs/concierge.html">Partner Finder</a>
-  </nav>
-  <nav class="lang" aria-label="Language"><a href="../../bitcoin-tax/">EN</a> · <a href="../../de/bitcoin-steuern/">DE</a> · <a href="../../sk/bitcoin-dane/">SK</a> · <a href="../../cs/bitcoin-dane/" aria-current="page">CS</a> · <a href="../../pl/bitcoin-podatki/">PL</a> · <a href="../../hu/bitcoin-adozas/">HU</a> · <a href="../../uk/bitcoin-podatky/">UK</a> · <a href="../../ru/bitcoin-nalogi/">RU</a> · <a href="../../fr/bitcoin-fiscalite/">FR</a> · <a href="../../es/bitcoin-impuestos/">ES</a></nav>
+  <div class="nav-inner">
+    <a class="logo" href="/cs/index.html" aria-label="Virtuse – domů">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Hlavní navigace">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Služby</button>
+        <div class="nav-drop" id="nd-services"><a href="/cs/buy-bitcoin.html">Koupit Bitcoin</a><a href="/cs/secure.html">Úschova</a><a href="/cs/lending.html">Půjčky</a><a href="/cs/mining.html">Těžba</a><a href="/cs/treasury.html">Treasury</a><a href="/cs/tax.html">Daně</a><a href="/cs/bots.html">Boti</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Vzdělávání</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Týdenní zprávy o Bitcoinu, každé pondělí</span></a><a href="/stories/"><span class="nd-t">Příběhy</span><span class="nd-d">Delší články a analýzy</span></a><a href="/cs/blog.html"><span class="nd-t">Blog</span><span class="nd-d">Nejnovější příspěvky od Virtuse</span></a><a href="/cs/bitcoin-data.html"><span class="nd-t">Bitcoin data</span><span class="nd-d">Aktuální cena, síť a grafy</span></a><a href="/cs/bitcoin-dane/"><span class="nd-t">Daňové průvodce podle zemí</span><span class="nd-d">Daňová pravidla ve 13 zemích EU</span></a><a href="/cs/faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Odpovědi o Virtuse a partnerech</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Nástroje</button>
+        <div class="nav-drop" id="nd-tools"><a href="/cs/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Zdarma</span></span><span class="nd-d">Verdikt a audit poplatků, zdarma od 1. listopadu</span></a><a href="/cs/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partneři podle vašich odpovědí</span></a><a href="/cs/bitcoin-index-poplatku/"><span class="nd-t">Index poplatků</span><span class="nd-d">Celkové náklady nákupu ve srovnání</span></a><a href="/cs/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plán pravidelných nákupů a poplatky</span></a><a href="/cs/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Prodat, nebo si půjčit se zajištěním Bitcoinem</span></a><a href="/cs/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Pravidla zemí a kontrola dědictví</span></a><a href="/cs/retirement-calculator.html"><span class="nd-t">Důchodová kalkulačka</span><span class="nd-d">Kolik Bitcoinu na důchod</span></a></div>
+      </div>
+      <a class="nav-top" href="/cs/about.html">O nás</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky: čeština"><span aria-hidden="true">&#127464;&#127487;</span><span class="lang-code">CS</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/bitcoin-tax/" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/bitcoin-dane/" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/bitcoin-dane/" class="lang-opt active" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/bitcoin-steuern/" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/bitcoin-podatki/" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/bitcoin-adozas/" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/bitcoin-fiscalite/" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/bitcoin-impuestos/" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/bitcoin-podatky/" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/bitcoin-nalogi/" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Otevřít menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/cs/concierge.html?utm_source=concierge&amp;utm_medium=nav">Najít partnery</a>
+  </div>
 </header>
-<main class="wrap">
+
+<main class="wrap" id="top">
+<article class="seo">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="../../cs/index.html">Domů</a> <span aria-hidden="true">/</span> <span>Daně z Bitcoinu</span></nav>
   <p class="asof">Stav údajů Q3 2026</p>
   <h1>Daně z Bitcoinu v 13 zemích EU</h1>
@@ -265,55 +247,69 @@ footer.site-footer .inner { max-width: var(--max); margin: 0 auto; }
   
 <p>Každá stránka země uvádí daň ze zisků, případné osvobození podle doby držení a daňové přiznání, stav Q3 2026. Živý modul Tax & Inheritance Agent používá stejné údaje a přidává skóre připravenosti na dědění.</p>
 <h2>Srovnání zemí</h2>
-<div class="table-wrap"><table><thead><tr><th>Země</th><th>Daň ze zisků</th><th>Osvobození</th></tr></thead><tbody><tr><td>🇨🇿 <a href="../../cs/bitcoin-dane/cesko/">Česko</a></td><td>15 % daň z příjmů (23 % nad stanovenou hranicí)</td><td>Bez daně po 3 letech držení (do 40 milionů Kč ročně) nebo pokud úhrn příjmů z prodeje kryptoaktiv v roce nepřesáhne 100 000 Kč</td></tr><tr><td>🇸🇰 <a href="../../cs/bitcoin-dane/slovensko/">Slovensko</a></td><td>19 až 35 % daň z příjmů + 16 % zdravotní pojištění</td><td>Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní</td></tr><tr><td>🇵🇱 <a href="../../cs/bitcoin-dane/polsko/">Polsko</a></td><td>19 % jednotná daň z kapitálových výnosů</td><td>Bez osvobození podle doby držení</td></tr><tr><td>🇦🇹 <a href="../../cs/bitcoin-dane/rakousko/">Rakousko</a></td><td>27,5 % KESt (daň z kapitálových výnosů)</td><td>Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození</td></tr><tr><td>🇩🇪 <a href="../../cs/bitcoin-dane/nemecko/">Německo</a></td><td>Až 45 % daň z příjmů (progresivní)</td><td>0 % po roční době držení; zisky celkem pod 1 000 € ročně jsou bez daně</td></tr><tr><td>🇭🇺 <a href="../../cs/bitcoin-dane/madarsko/">Maďarsko</a></td><td>15 % daň z kapitálových výnosů</td><td>Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)</td></tr><tr><td>🇸🇮 <a href="../../cs/bitcoin-dane/slovinsko/">Slovinsko</a></td><td>Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)</td><td>Soukromé zisky jsou bez daně</td></tr><tr><td>🇭🇷 <a href="../../cs/bitcoin-dane/chorvatsko/">Chorvatsko</a></td><td>12 % ze zisků z kryptoměn (od roku 2024)</td><td>Bez daně po 2 letech držení</td></tr><tr><td>🇷🇴 <a href="../../cs/bitcoin-dane/rumunsko/">Rumunsko</a></td><td>16 % daň z příjmů ze zisků z kryptoměn (do 2025: 10 %)</td><td>Bez osvobození podle doby držení</td></tr><tr><td>🇧🇬 <a href="../../cs/bitcoin-dane/bulharsko/">Bulharsko</a></td><td>10 % jednotná daň ze zisků</td><td>Bez osvobození podle doby držení</td></tr><tr><td>🇳🇱 <a href="../../cs/bitcoin-dane/nizozemsko/">Nizozemsko</a></td><td>Majetková daň Box 3 (přibližně 36 % z předpokládaného výnosu)</td><td>Nezdanitelná část (59 357 € na osobu, 2026)</td></tr><tr><td>🇫🇷 <a href="../../cs/bitcoin-dane/francie/">Francie</a></td><td>31,4 % paušální daň (PFU: 12,8 % daň z příjmů + 18,6 % sociální odvody, 2026)</td><td>Bez osvobození podle doby držení; prodeje celkem do 305 € ročně jsou osvobozené</td></tr><tr><td>🇪🇸 <a href="../../cs/bitcoin-dane/spanelsko/">Španělsko</a></td><td>19 až 30 % progresivní daň z kapitálových příjmů</td><td>Bez osvobození podle doby držení</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Země</th><th>Daň ze zisků</th><th>Osvobození</th></tr></thead><tbody><tr><td data-label="Země">🇨🇿 <a href="../../cs/bitcoin-dane/cesko/">Česko</a></td><td data-label="Daň ze zisků">15 % daň z příjmů (23 % nad stanovenou hranicí)</td><td data-label="Osvobození">Bez daně po 3 letech držení (do 40 milionů Kč ročně) nebo pokud úhrn příjmů z prodeje kryptoaktiv v roce nepřesáhne 100 000 Kč</td></tr><tr><td data-label="Země">🇸🇰 <a href="../../cs/bitcoin-dane/slovensko/">Slovensko</a></td><td data-label="Daň ze zisků">19 až 35 % daň z příjmů + 16 % zdravotní pojištění</td><td data-label="Osvobození">Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní</td></tr><tr><td data-label="Země">🇵🇱 <a href="../../cs/bitcoin-dane/polsko/">Polsko</a></td><td data-label="Daň ze zisků">19 % jednotná daň z kapitálových výnosů</td><td data-label="Osvobození">Bez osvobození podle doby držení</td></tr><tr><td data-label="Země">🇦🇹 <a href="../../cs/bitcoin-dane/rakousko/">Rakousko</a></td><td data-label="Daň ze zisků">27,5 % KESt (daň z kapitálových výnosů)</td><td data-label="Osvobození">Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození</td></tr><tr><td data-label="Země">🇩🇪 <a href="../../cs/bitcoin-dane/nemecko/">Německo</a></td><td data-label="Daň ze zisků">Až 45 % daň z příjmů (progresivní)</td><td data-label="Osvobození">0 % po roční době držení; zisky celkem pod 1 000 € ročně jsou bez daně</td></tr><tr><td data-label="Země">🇭🇺 <a href="../../cs/bitcoin-dane/madarsko/">Maďarsko</a></td><td data-label="Daň ze zisků">15 % daň z kapitálových výnosů</td><td data-label="Osvobození">Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)</td></tr><tr><td data-label="Země">🇸🇮 <a href="../../cs/bitcoin-dane/slovinsko/">Slovinsko</a></td><td data-label="Daň ze zisků">Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)</td><td data-label="Osvobození">Soukromé zisky jsou bez daně</td></tr><tr><td data-label="Země">🇭🇷 <a href="../../cs/bitcoin-dane/chorvatsko/">Chorvatsko</a></td><td data-label="Daň ze zisků">12 % ze zisků z kryptoměn (od roku 2024)</td><td data-label="Osvobození">Bez daně po 2 letech držení</td></tr><tr><td data-label="Země">🇷🇴 <a href="../../cs/bitcoin-dane/rumunsko/">Rumunsko</a></td><td data-label="Daň ze zisků">16 % daň z příjmů ze zisků z kryptoměn (do 2025: 10 %)</td><td data-label="Osvobození">Bez osvobození podle doby držení</td></tr><tr><td data-label="Země">🇧🇬 <a href="../../cs/bitcoin-dane/bulharsko/">Bulharsko</a></td><td data-label="Daň ze zisků">10 % jednotná daň ze zisků</td><td data-label="Osvobození">Bez osvobození podle doby držení</td></tr><tr><td data-label="Země">🇳🇱 <a href="../../cs/bitcoin-dane/nizozemsko/">Nizozemsko</a></td><td data-label="Daň ze zisků">Majetková daň Box 3 (přibližně 36 % z předpokládaného výnosu)</td><td data-label="Osvobození">Nezdanitelná část (59 357 € na osobu, 2026)</td></tr><tr><td data-label="Země">🇫🇷 <a href="../../cs/bitcoin-dane/francie/">Francie</a></td><td data-label="Daň ze zisků">31,4 % paušální daň (PFU: 12,8 % daň z příjmů + 18,6 % sociální odvody, 2026)</td><td data-label="Osvobození">Bez osvobození podle doby držení; prodeje celkem do 305 € ročně jsou osvobozené</td></tr><tr><td data-label="Země">🇪🇸 <a href="../../cs/bitcoin-dane/spanelsko/">Španělsko</a></td><td data-label="Daň ze zisků">19 až 30 % progresivní daň z kapitálových příjmů</td><td data-label="Osvobození">Bez osvobození podle doby držení</td></tr></tbody></table></div>
 <h2>Časté dotazy</h2><h3>Které země tento přehled pokrývá?</h3><p>13 zemí EU: Česko, Slovensko, Polsko, Rakousko, Německo, Maďarsko, Slovinsko, Chorvatsko, Rumunsko, Bulharsko, Nizozemsko, Francie, Španělsko. Stav Q3 2026; stránka každé země uvádí oficiální zdroje (ověřeno 13. 10. 2026).</p><h3>Jde o daňové poradenství?</h3><p>Ne. Stav Q3 2026, ověřeno 13. 10. 2026. Nejde o daňové poradenství. Pravidla pro aktuální rok si ověřte u místního poradce.</p><h3>Hlásí Virtuse moje držby finančnímu úřadu?</h3><p>Ne. Virtuse nikdy nedrží vaše klíče ani historii vašich transakcí. KYC provádějí partneři sami.</p><h3>Kde si kromě daní prověřím i dědění?</h3><p>V modulu Tax &amp; Inheritance Agent (živý modul) se stejnými 13 zeměmi a kontrolou připravenosti na multisig.</p>
 
   <p><a class="cta" href="../../cs/tax-agent.html">Otevřít Tax &amp; Inheritance Agent →</a></p>
-  <h2>Související nástroje</h2><div class="tools"><a href="../../cs/tax-agent.html"><b>Tax &amp; Inheritance Agent</b><span>Daňová pravidla podle země a kontrola připravenosti na dědictví.</span></a><a href="../../cs/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Prodej versus půjčka se zajištěním v Bitcoinu.</span></a><a href="../../cs/concierge.html"><b>Partner Finder</b><span>Partneři, kteří odpovídají vašim kritériím.</span></a><a href="../../cs/buy-bitcoin.html"><b>Koupit Bitcoin</b><span>Partneři pro nákup a jejich poplatky vedle sebe.</span></a></div>
+  <h2>Související nástroje</h2><div class="seo-tools"><a href="../../cs/tax-agent.html"><b>Tax &amp; Inheritance Agent</b><span>Daňová pravidla podle země a kontrola připravenosti na dědictví.</span></a><a href="../../cs/loan.html"><b>Loan &amp; Liquidity Copilot</b><span>Prodej versus půjčka se zajištěním v Bitcoinu.</span></a><a href="../../cs/concierge.html"><b>Partner Finder</b><span>Partneři, kteří odpovídají vašim kritériím.</span></a><a href="../../cs/buy-bitcoin.html"><b>Koupit Bitcoin</b><span>Partneři pro nákup a jejich poplatky vedle sebe.</span></a></div>
   <h2>Související návody</h2><div class="related"><a href="../../cs/bitcoin-dane/cesko/">Daně z Bitcoinu v Česku</a><a href="../../cs/bitcoin-dedictvi/">Bitcoin a dědění</a><a href="../../cs/bitcoin-index-poplatku/">Index poplatků za Bitcoin</a></div>
-  <section class="brief" aria-labelledby="brief-h">
-    <h2 id="brief-h">Odebírat <span>Brief</span></h2>
-    <p class="line">Virtuse Brief. Jen Bitcoin. Žádné tokeny. Žádné PR.</p>
-    <form data-brief-form novalidate>
-      <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
-      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button type="submit">Odebírat</button>
-    </form>
-    <p class="msg" role="status" aria-live="polite"></p>
-    <p class="fine">Každé pondělí. Odhlášení kdykoli. <a href="../../cs/privacy-policy.html">Ochrana osobních údajů</a></p>
-  </section>
-<script>
-(function () {
-  var f = document.querySelector('.brief form'); if (!f) return;
-  var m = f.parentNode.querySelector('.msg'), btn = f.querySelector('button'), label = btn.textContent;
-  var T = {"sending":"Odesílání...","ok":"Hotovo. Brief vychází v pondělí.","fail":"Něco se pokazilo. Zkuste to znovu.","network":"Chyba sítě. Zkuste to znovu."};
-  f.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var email = f.elements.email.value.trim();
-    m.textContent = ''; btn.disabled = true; btn.textContent = T.sending;
-    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: f.elements.website.value, lang: "cs" })
-    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
-      .then(function (x) {
-        if (x.ok) {
-          f.reset(); m.textContent = T.ok; m.style.color = 'var(--green)';
-          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'seo_page', capture_brief: true });
-        } else { m.textContent = (x.d && x.d.error) || T.fail; m.style.color = '#f85149'; }
-      })
-      .catch(function () { m.textContent = T.network; m.style.color = '#f85149'; })
-      .then(function () { btn.disabled = false; btn.textContent = label; });
-  });
-})();
-</script>
   <aside class="disclaimers">
     <p>Stav Q3 2026, ověřeno 13. 10. 2026. Nejde o daňové poradenství.</p>
     <p>Virtuse nikdy nedrží vaše klíče.</p>
     <p>KYC a registrace probíhají na regulované platformě příslušného partnera. Virtuse je nekustodiální hub a nedrží prostředky ani údaje klientů těchto platforem.</p>
   </aside>
+</article>
+
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Jen Bitcoin, každé pondělí.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=cs">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurýr Virtuse Brief na skútru doručuje vydání z 5. 10. 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Nejnovější Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (v angličtině)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Číst vydání →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Získejte Brief. <span>Zdarma.</span></h3>
+        <p>Trh, regulace, těžba. Žádné tokeny. Žádné PR. Jeden e-mail každé pondělí.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="seo_page" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">E-mailová adresa</label>
+          <input id="email" name="email" type="email" placeholder="E-mailová adresa" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Získat Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Odhlásit se můžete kdykoli. Nejde o poradenství. <a href="/news.html?utm_source=brief&amp;utm_medium=seo_page" style="color:var(--muted)">Všechna vydání a blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="/cs/buy-bitcoin.html">Koupit Bitcoin</a><a href="/cs/secure.html">Úschova</a><a href="/cs/mining.html">Těžba</a><a href="/cs/lending.html">Půjčky</a><a href="/cs/treasury.html">Treasury</a><a href="/cs/tax.html">Daně</a><a href="/cs/bots.html">Boti</a></div><div class="footer-col"><h4>Společnost</h4><a href="/cs/about.html">O nás</a><a href="/cs/faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="/cs/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Zdarma</span></a><a href="/cs/concierge.html">Partner Finder</a><a href="/cs/stacking.html">Stacking Strategist</a><a href="/cs/loan.html">Loan &amp; Liquidity Copilot</a><a href="/cs/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/cs/retirement-calculator.html">Důchodová kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="/news.html">Virtuse Brief</a><a href="/cs/blog.html">Blog</a><a href="/cs/bitcoin-data.html">Bitcoin data</a><a href="/cs/bitcoin-dane/">Daně z Bitcoinu</a><a href="/cs/bitcoin-index-poplatku/">Index poplatků</a><a href="/cs/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/cs/bitcoin-prodat-nebo-pujcit/">Prodat, nebo si půjčit</a><a href="/cs/bitcoin-dedictvi/">Dědění</a></div><div class="footer-col"><h4>Právní informace</h4><a href="/cs/terms-and-conditions.html">Obchodní podmínky</a><a href="/cs/privacy-policy.html">Ochrana osobních údajů</a><a href="/cs/aml-compliance.html">AML a Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všechna práva vyhrazena.</p>
+<p class="footer-operator"><a href="/cs/operator.html">Provozovatel</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com</p>
+      <p class="footer-bottom-brief">Virtuse Brief, týdenní přehled od Virtuse. <a href="/news.html">Číst &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Jazyky"><a href="/bitcoin-tax/" hreflang="en">English</a><a href="/sk/bitcoin-dane/" hreflang="sk">Slovenčina</a><a href="/cs/bitcoin-dane/" hreflang="cs" aria-current="page">Čeština</a><a href="/de/bitcoin-steuern/" hreflang="de">Deutsch</a><a href="/pl/bitcoin-podatki/" hreflang="pl">Polski</a><a href="/hu/bitcoin-adozas/" hreflang="hu">Magyar</a><a href="/fr/bitcoin-fiscalite/" hreflang="fr">Français</a><a href="/es/bitcoin-impuestos/" hreflang="es">Español</a><a href="/uk/bitcoin-podatky/" hreflang="uk">Українська</a><a href="/ru/bitcoin-nalogi/" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse je nezávislé srovnávací centrum. Nedrží prostředky ani klíče klientů, neprovádí pokyny a neposkytuje investiční poradenství. Služby poskytují uvedení partneři na základě vlastních licencí. Poplatky jsou uvedeny tak, jak je zveřejňuje každý partner, a mohou se změnit.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
 </main>
-<footer class="site-footer"><div class="inner">
-  <p>©2018 - 2026 Virtuse Group. <a href="../../cs/privacy-policy.html">Ochrana osobních údajů</a> · <a href="../../cs/terms-and-conditions.html">Obchodní podmínky</a></p>
-</div></footer>
+
+<script src="/site-v2.js?v=7" defer></script>
 </body>
 </html>

@@ -219,6 +219,9 @@ def build(lang, src_path, out_path):
     sys.path.insert(0, HERE)
     import csp_tight
     out = csp_tight.tighten(out, os.path.abspath(out_path))
+    # Skip link, theme toggle and the Virtuse CFO nav item in the page language (checklist 2.3).
+    import brief_chrome
+    out = brief_chrome.patch(out, lang, d['hub'].replace('index.html', 'cfo.html'))
     open(out_path, 'w', encoding='utf-8').write(out)
     print('%-16s %s: lead + %d cards, total %s, prefix %r, hub %s'
           % (out_path, lang, len(d['cards']), cfg['total'], d['p'], d['hub']))

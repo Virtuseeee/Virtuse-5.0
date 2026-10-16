@@ -85,12 +85,14 @@
  "pr_abundant_cta": "Kontakt z Abundant",
  "pr_powermining_type": "Domowe koparki open source",
  "pr_powermining_loc": "Dania (magazyn w UE)",
- "pr_powermining_fact": "Bitaxe; ponad 22 000 sprzedanych produktów",
+ "pr_powermining_fact": "Bitaxe; magazyn w UE (Dania)",
  "pr_powermining_base": "Dania (magazyn w UE)",
  "pr_powermining_body": "Sprzęt open source do kopania w domu (Bitaxe), wysyłany z magazynu w UE w Danii.",
  "pr_powermining_f1": "Koparki open source Bitaxe",
  "pr_powermining_f2": "Magazyn w UE w Danii",
- "pr_powermining_f3": "Ponad 22 000 sprzedanych produktów",
+ "pr_powermining_f3": "Otwarty sprzęt i firmware",
  "pr_powermining_f4": "Do kopania w domu",
- "pr_powermining_cta": "Przejście do Power Mining"
+ "pr_powermining_cta": "Przejście do Power Mining",
+ "aff_note": "Link partnerski – jeśli się Państwo zarejestrują, Virtuse może otrzymać prowizję. Państwa cena się przez to nie zmienia.",
+ "aff_how": "Jak zarabiamy"
 }

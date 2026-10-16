@@ -58,9 +58,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "Organization",
       "@id": "https://virtuse.com/#org",
       "name": "Virtuse",
-      "legalName": "Virtuse Group Pte. Ltd.",
+      "legalName": "Virtuse Wealth Management, a.s.",
       "url": "https://virtuse.com/",
-      "logo": "https://virtuse.com/email-virtuse-v-mark.png"
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      },
+      "vatID": "SK2022293042",
+      "taxID": "36709042"
     },
     {
       "@type": "BreadcrumbList",
@@ -140,16 +149,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.css?v=6">
+<link rel="stylesheet" href="/site-v2.min.css?v=6">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Відкрити меню", "closeMenu": "Закрити меню", "latestBrief": "Останній Brief · ", "min": " хв", "coverImage": "Обкладинка: ", "badEmail": "Введіть дійсну адресу електронної пошти.", "sending": "Надсилання...", "subscribed": "Готово! Brief вийде в понеділок.", "error": "Щось пішло не так. Спробуйте ще раз.", "netError": "Помилка мережі. Спробуйте ще раз.", "briefLangNote": " (англійською)"};</script>
 <style>.st-app #root { min-height: min(100vh, 1000px); }</style>
-<script type="module" crossorigin src="../concierge-assets/utils-V_wp-21w.js"></script>
-<script type="module" crossorigin src="../concierge-assets/badge-3SFMHUjK.js"></script>
-<script type="module" crossorigin src="../concierge-assets/tax-sources.gen-n3HRY76l.js"></script>
-<script type="module" crossorigin src="../concierge-assets/shield-check-xVJmaNNr.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-tax-Dfp44Ufr.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/utils-Bsf9RqkB.css">
+<script type="module" crossorigin src="../concierge-assets/utils-Cc0D18YF.js"></script>
+<script type="module" crossorigin src="../concierge-assets/badge-li9jXQwn.js"></script>
+<script type="module" crossorigin src="../concierge-assets/tax-sources.gen-Cc7HYo94.js"></script>
+<script type="module" crossorigin src="../concierge-assets/shield-check-DnWcEGWb.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-tax-B9f-AsPu.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/utils-BZ9ErpHg.css">
 </head>
 <body class="page-buy page-fee page-pf page-tax no-split">
 <header class="nav">
@@ -165,11 +174,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="nav-group" id="ng-learn">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Матеріали</button>
-        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav">Virtuse Brief</a><a href="/uk/blog.html">Блог</a><a href="/uk/bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a></div>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Новини про Біткоїн щопонеділка</span></a><a href="/stories/"><span class="nd-t">Статті</span><span class="nd-d">Великі статті та аналітика</span></a><a href="/uk/blog.html"><span class="nd-t">Блог</span><span class="nd-d">Найновіші дописи Virtuse</span></a><a href="/uk/bitcoin-data.html"><span class="nd-t">Біткоїн-дані</span><span class="nd-d">Поточна ціна, мережа та графіки</span></a><a href="/uk/bitcoin-podatky/"><span class="nd-t">Податкові гіди за країнами</span><span class="nd-d">Податкові правила у 13 країнах ЄС</span></a><a href="/uk/faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Відповіді про Virtuse і партнерів</span></a></div>
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Інструменти</button>
-        <div class="nav-drop" id="nd-tools"><a href="/uk/cfo.html" id="navCfo">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></a><a href="/uk/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partner Finder</a><a href="/uk/stacking.html">Stacking Strategist</a><a href="/uk/loan.html">Loan &amp; Liquidity Copilot</a><a href="/uk/tax-agent.html" aria-current="page">Tax &amp; Inheritance Agent</a><a href="/uk/retirement-calculator.html">Пенсійний калькулятор</a></div>
+        <div class="nav-drop" id="nd-tools"><a href="/uk/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></span><span class="nd-d">Вердикт і аудит комісій, безкоштовно з 1 листопада</span></a><a href="/uk/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Партнери за вашими відповідями</span></a><a href="/uk/bitcoin-indeks-komisii/"><span class="nd-t">Індекс комісій</span><span class="nd-d">Повна вартість купівлі в порівнянні</span></a><a href="/uk/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">План регулярних покупок і комісії</span></a><a href="/uk/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Продати чи позичити під заставу Біткоїна</span></a><a href="/uk/tax-agent.html" aria-current="page"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Правила країн і перевірка спадщини</span></a><a href="/uk/retirement-calculator.html"><span class="nd-t">Пенсійний калькулятор</span><span class="nd-d">Скільки Біткоїна на пенсію</span></a></div>
       </div>
       <a class="nav-top" href="/uk/about.html">Про нас</a>
     </nav>
@@ -279,7 +288,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="footer-columns"><div class="footer-col"><h4>Послуги</h4><a href="/uk/buy-bitcoin.html">Купити Біткоїн</a><a href="/uk/secure.html">Зберігання</a><a href="/uk/mining.html">Майнінг</a><a href="/uk/lending.html">Позики</a><a href="/uk/treasury.html">Казначейство</a><a href="/uk/tax.html">Податки</a><a href="/uk/bots.html">Боти</a></div><div class="footer-col"><h4>Компанія</h4><a href="/uk/about.html">Про нас</a><a href="/uk/faq.html">FAQ</a></div><div class="footer-col"><h4>Інструменти</h4><a href="/uk/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Безкоштовно</span></a><a href="/uk/concierge.html">Partner Finder</a><a href="/uk/stacking.html">Stacking Strategist</a><a href="/uk/loan.html">Loan &amp; Liquidity Copilot</a><a href="/uk/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/uk/retirement-calculator.html">Пенсійний калькулятор</a></div><div class="footer-col"><h4>Матеріали</h4><a href="/news.html">Virtuse Brief</a><a href="/uk/blog.html">Блог</a><a href="/uk/bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-podatky/">Податки на Біткоїн</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a><a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a><a href="/uk/bitcoin-prodaty-chy-pozychyty/">Продати чи позичити</a><a href="/uk/bitcoin-spadshchyna/">Спадкування</a></div><div class="footer-col"><h4>Правова інформація</h4><a href="/uk/terms-and-conditions.html">Умови використання</a><a href="/uk/privacy-policy.html">Політика конфіденційності</a><a href="/uk/aml-compliance.html">AML і комплаєнс</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2018–2026 Virtuse Group. Усі права захищені.</p>
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.</p>
+<p class="footer-operator"><a href="/uk/operator.html">Оператор</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словаччина · Ідентифікаційний номер (IČO) 36 709 042 · Номер платника ПДВ SK2022293042 · зареєстрована в Торговому реєстрі Міського суду Братислава III, розділ Sa, № 4452/B · info@virtuse.com</p>
       <p class="footer-bottom-brief">Virtuse Brief, щотижневий дайджест від Virtuse. <a href="/news.html">Читати &rarr;</a></p>
       <nav class="footer-langs" aria-label="Мови"><a href="/tax-agent.html" hreflang="en">English</a><a href="/sk/tax-agent.html" hreflang="sk">Slovenčina</a><a href="/cs/tax-agent.html" hreflang="cs">Čeština</a><a href="/de/tax-agent.html" hreflang="de">Deutsch</a><a href="/pl/tax-agent.html" hreflang="pl">Polski</a><a href="/hu/tax-agent.html" hreflang="hu">Magyar</a><a href="/fr/tax-agent.html" hreflang="fr">Français</a><a href="/es/tax-agent.html" hreflang="es">Español</a><a href="/uk/tax-agent.html" hreflang="uk" aria-current="page">Українська</a><a href="/ru/tax-agent.html" hreflang="ru">Русский</a></nav>
       <p class="legal">Virtuse, незалежний хаб для порівняння. Він не зберігає кошти чи ключі клієнтів, не виконує ордери й не надає інвестиційних порад. Послуги надають зазначені партнери за власними ліцензіями. Комісії вказано так, як їх публікує кожен партнер, і вони можуть змінюватися.</p>
@@ -292,7 +302,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 
 <script src="/site-v2.js?v=7" defer></script>
-<script src="/consultation-widget.js?v=20261007b" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 </body>
 </html>

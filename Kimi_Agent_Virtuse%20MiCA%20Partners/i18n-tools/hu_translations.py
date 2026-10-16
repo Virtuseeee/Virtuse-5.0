@@ -20,7 +20,7 @@ Inheritance Agent) stay English because their pages are English-only.
 
 TEXT = {
     # ---------------------------------------------------------------- chrome
-    "© 2018–2026 Virtuse Group. All rights reserved.": "© 2018–2026 Virtuse Group. Minden jog fenntartva.",
+    "© 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.": "© 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.",
     "AML & Compliance": "AML és megfelelés",
     "About": "Rólunk",
     "About Us": "Rólunk",

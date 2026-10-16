@@ -49,18 +49,17 @@ def organization():
         "@type": "Organization",
         "@id": BASE + "#org",
         "name": "Virtuse",
-        "legalName": "Virtuse Group Pte. Ltd.",
+        "legalName": "Virtuse Wealth Management, a.s.",
         "url": BASE,
         "logo": {"@type": "ImageObject", "url": BASE + "email-virtuse-v-mark.png",
                  "width": 736, "height": 483},
         "image": BASE + "og-cover.jpg",
         "description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys.",
         "foundingDate": "2018",
-        "email": "support@virtuse.com",
-        "address": [
-            {"@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG"},
-            {"@type": "PostalAddress", "addressLocality": "Bratislava", "addressCountry": "SK"},
-        ],
+        "email": "info@virtuse.com",
+        "address": {"@type": "PostalAddress", "streetAddress": "Borinka 65", "postalCode": "900 32", "addressLocality": "Borinka", "addressCountry": "SK"},
+      "vatID": "SK2022293042",
+      "taxID": "36709042",
         "sameAs": SAME_AS,
     }
 

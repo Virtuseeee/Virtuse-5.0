@@ -237,32 +237,32 @@
  {
   "en": "21bitcoin logo",
   "kind": "attr:alt",
-  "context": "tners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" "
+  "context": "tners</span> <div class=\"co-ticker\"> <div class=\"co-row\"> <div class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" "
  },
  {
   "en": "21bitcoin",
   "kind": "text",
-  "context": "v class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</s"
+  "context": "v class=\"co-set\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</s"
  },
  {
-  "en": "ByBit EU logo",
+  "en": "Bybit EU logo",
   "kind": "attr:alt",
-  "context": "\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" wi"
+  "context": "\"21bitcoin logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" wi"
  },
  {
-  "en": "ByBit EU",
+  "en": "Bybit EU",
   "kind": "text",
-  "context": "\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span"
+  "context": "\">21bitcoin</span></span> <span class=\"co-partner\"><img src=\"logo-bybit.png\" alt=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span"
  },
  {
   "en": "Kraken logo",
   "kind": "attr:alt",
-  "context": "=\"ByBit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com lo"
+  "context": "=\"Bybit EU logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com lo"
  },
  {
   "en": "Kraken",
   "kind": "text",
-  "context": "ue\">ByBit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryp"
+  "context": "ue\">Bybit EU</span></span> <span class=\"co-partner\"><img src=\"logo-kraken.png\" alt=\"Kraken logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Kraken</span></span> <span class=\"co-partner\"><img src=\"logo-crypto-com.png\" alt=\"Crypto.com logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Cryp"
  },
  {
   "en": "Crypto.com logo",
@@ -515,9 +515,9 @@
   "context": "<!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by publi"
  },
  {
-  "en": "Buy Bitcoin from 0% fees.",
+  "en": "Buy Bitcoin with published fees from 0%.",
   "kind": "text",
-  "context": "redit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly "
+  "context": "redit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin with published fees from 0%. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly "
  },
  {
   "en": "See what each route costs you.",
@@ -550,9 +550,9 @@
   "context": " <a class=\"btn btn-primary only-wait\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> <a class=\"btn btn-primary only-audit\" href=\"cfo.html\">Check your real fees</a> <a class=\"btn btn-ghost only-audit\" href=\"buy-bitcoin.html\">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> "
  },
  {
-  "en": "Top 3 by fee",
+  "en": "By published fee",
   "kind": "text",
-  "context": ">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin<"
+  "context": ">See all 5 buy partners</a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>By published fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin<"
  },
  {
   "en": "Fee",
@@ -572,7 +572,7 @@
  {
   "en": "Spot, taker fee",
   "kind": "text",
-  "context": " class=\"track\"><div class=\"fill low\"></div></div></span><span class=\"yr\">€0</span></div> <div class=\"row\" data-pct=\"0.25\"><span><b>ByBit EU</b><small>Spot, taker fee</small></span><span class=\"pct\">0.25%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€15</span></div> "
+  "context": " class=\"track\"><div class=\"fill low\"></div></div></span><span class=\"yr\">€0</span></div> <div class=\"row\" data-pct=\"0.25\"><span><b>Bybit EU</b><small>Spot, taker fee</small></span><span class=\"pct\">0.25%</span><span class=\"bar\"><div class=\"track\"><div class=\"fill\"></div></div></span><span class=\"yr\">€15</span></div> "
  },
  {
   "en": "Pro, tier 1 taker fee",
@@ -610,9 +610,9 @@
   "context": "t-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> </div> <p class=\"src\">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <sec"
  },
  {
-  "en": "Full Fee Index",
+  "en": "Total cost incl. spread: Fee Index",
   "kind": "text",
-  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
+  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Total cost incl. spread: Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
  },
  {
   "en": "Virtuse CFO · Free Verdict and fee audit",
@@ -1097,22 +1097,22 @@
  {
   "en": "Privacy Policy",
   "kind": "text",
-  "context": "itance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All r"
+  "context": "itance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All r"
  },
  {
   "en": "AML &amp; Compliance",
   "kind": "text",
-  "context": "-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brie"
+  "context": "-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-bottom-brie"
  },
  {
-  "en": "&copy; 2018–2026 Virtuse Group. All rights reserved.",
+  "en": "&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.",
   "kind": "text",
-  "context": "=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"foote"
+  "context": "=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"foote"
  },
  {
   "en": "Virtuse Brief &mdash; the weekly desk from Virtuse.",
   "kind": "text",
-  "context": "></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">Englis"
+  "context": "></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">Englis"
  },
  {
   "en": "Read it &rarr;",
@@ -1213,5 +1213,85 @@
   "en": " min",
   "kind": "js",
   "context": "string shown by the page script"
+ },
+ {
+  "en": "Stories",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Country tax guides",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Weekly Bitcoin news, every Monday",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Long reads and analysis",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Latest posts from Virtuse",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Live price, network and charts",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Tax rules in 13 EU countries",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Answers about Virtuse and partners",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Verdict and fee audit, free from 1 November",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Partners that match your answers",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Total cost of buying, compared",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Plan regular buys, compare fees",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Sell or borrow against your Bitcoin",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Country rules and an inheritance check",
+  "kind": "text",
+  "context": "nav menu (2.5)"
+ },
+ {
+  "en": "Operator",
+  "kind": "text",
+  "context": "footer operator line (legal pack 2026-10-16)"
+ },
+ {
+  "en": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com",
+  "kind": "text",
+  "context": "footer operator line (legal pack 2026-10-16)"
  }
 ]

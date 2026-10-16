@@ -13,11 +13,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'home'))
 import build_lang as B
 sys.path.insert(0, os.path.dirname(HERE))
 import csp_tight
+import aff_note as A
 
 # partners in published-fee order (same order in the hero table and the cards)
 PARTNERS = [
     dict(id='21bitcoin', name='21bitcoin', logo='logo-21bitcoin-app.png', cls='', pct=0, url='https://21bitcoin.app.link/invite/?code=VIRTUSE'),
-    dict(id='bybit', name='ByBit EU', logo='logo-bybit.png', cls='dark', pct=0.25, url='https://partner.bybit.eu/b/VIRTUSE'),
+    dict(id='bybit', name='Bybit EU', logo='logo-bybit.png', cls='dark', pct=0.25, url='https://partner.bybit.eu/b/VIRTUSE'),
     dict(id='kraken', name='Kraken', logo='logo-kraken.png', cls='cover', pct=0.8, url='https://proinvite.kraken.com/9f1e/lj72d37e'),
     dict(id='invity', name='Invity', logo='logo-invity.svg', cls='pad', pct=None, url='https://invity.onelink.me/yIY4/j44d7awx'),
     dict(id='cryptocom', name='Crypto.com', logo='logo-crypto-com.png', cls='', pct=None, url='https://cryptocom.sjv.io/gRVPor'),
@@ -75,7 +76,7 @@ def build(L):
     head = head.rstrip() + '\n<meta name="vb-cfo-stage" content="wait">\n' \
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' \
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">\n' \
-        '<link rel="stylesheet" href="%ssite-v2.css?v=5">\n' % root + \
+        '<link rel="stylesheet" href="%ssite-v2.css?v=7">\n' % root + \
         "<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>\n" + i18n + '</head>\n'
 
     # ---------- nav + footer from this language's homepage ----------
@@ -108,7 +109,7 @@ def build(L):
             fee = '<span class="hc-fee">%s</span>' % pct(p['pct'], L)
             yr = '<span class="yr">%s</span>' % eur(500 * 12 * p['pct'] / 100, L)
             data = ' data-pct="%g"' % p['pct']
-        rows.append('<div class="row hp-row"%s><span class="hc-name"><img src="%s%s" alt="" width="36" height="36" class="%s" loading="lazy"><span><b>%s %s</b><small>%s</small></span></span>%s%s<a class="hp-get btn-primary" href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s">%s %s</a></div>'
+        rows.append('<div class="row hp-row"%s><span class="hc-name"><img src="%s%s" alt="" width="36" height="36" class="%s" loading="lazy"><span><b>%s %s</b><small>%s</small></span></span>%s%s<a class="hp-get btn-primary" href="%s" target="_blank" rel="sponsored noopener" aria-label="%s">%s %s</a></div>'
                     % (data, root, p['logo'], p['cls'], p['name'], pill, t('pr_%s_product' % pid), fee, yr, p['url'], t('pr_%s_get' % pid), t('get'), ARROW))
     diff_line = t('diff_line')
     for a_, b_ in (('€48', eur(48, L)), ('€6,000', eur(6000, L))):
@@ -122,11 +123,12 @@ def build(L):
       </div>
       <div class="row head hp-row"><span>{col_partner}</span><span>{col_fee}</span><span class="yr">{col_year}</span><span></span></div>
       {rows}
+      {aff}
       <p class="hp-diff">{diff_label}: <b class="hp-480" id="diff10">{e480}</b> <span class="hp-sep">·</span> {diff_line}</p>
     </div>""".format(amt_label=t('amt_label'), per_month=t('per_month'),
                   amt_html=('€<span id="amtOut">500</span>' if L == 'en' else '<span id="amtOut">500</span>&nbsp;€'),
                   e50=eur(50, L), e5000=eur(5000, L), col_partner=t('col_partner'), col_fee=t('col_fee'), col_year=t('col_year'),
-                  rows='\n      '.join(rows), diff_label=t('diff_label'), e480=eur(480, L), diff_line=diff_line)
+                  rows='\n      '.join(rows), aff=A.note(t), diff_label=t('diff_label'), e480=eur(480, L), diff_line=diff_line)
     diff = ''
 
     dca = '/%s%s/' % (pre, B.GUIDES[L][2]) if L != 'en' else '/bitcoin-dca-calculator/'
@@ -151,10 +153,11 @@ def build(L):
           <p>{body}</p>
           <ul class="pc-feats">{feats}</ul>
         </details>
-        <div class="pc-cta"><a href="{url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-primary">{get} {out}</a></div>
+        <div class="pc-cta"><a href="{url}" target="_blank" rel="sponsored noopener" class="btn btn-ghost btn-primary">{get} {out}</a></div>
+        {aff}
       </article>'''.format(pid=pid, na='' if p['pct'] is not None else ' na', badge=badge, root=root, logo=p['logo'], name=p['name'], cls=p['cls'],
                            lic=t('pr_%s_lic' % pid), details=t('details'), body=t('pr_%s_body' % pid), feats=feats, url=p['url'],
-                           get=t('pr_%s_get' % pid), out=OUT))
+                           get=t('pr_%s_get' % pid), aff=A.note(t), out=OUT))
     cards.append('''      <a class="pcard2 pc-finder" href="concierge.html?utm_source=concierge&amp;utm_medium=buy_grid">
         <h3>{h}</h3><p>{p}</p><span class="pc-finder-cta">{c} {a}</span>
       </a>'''.format(h=t('finder_h'), p=t('finder_p'), c=t('finder_cta'), a=ARROW))
@@ -280,7 +283,7 @@ def build(L):
             return '%s="../%s"' % (attr, url)
         b = out.index('<body')
         out = out[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix, out[b:])
-    open(page_path, 'w').write(csp_tight.tighten(out, page_path))
+    open(page_path, 'w').write(csp_tight.tighten(A.finish(out), page_path))
     print('%s: %d bytes' % (L, len(out)))
 
 
