@@ -234,6 +234,35 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
 - `kind=checklist` (step 2, after the partner click) is rejected until
   verified per-partner steps exist.
 
+## POST /verdict (Virtuse CFO · Verdict)
+
+`{ text, lang: "sk"|"en", hp }` -> a score 0 to 100 for how complete the visitor's Bitcoin decision is, its band, the weakest of 10 signals and the Virtuse tool to check it (`src/verdict.js`). Rubric and test set: the Claude Doc "Verdict: rubrika a testovacia sada" (approved by Ras 2026-10-15).
+
+- Claude (`claude-opus-5-5`, structured JSON output, `fallbacks: "default"`) rates each signal 0 to 10 with one sentence; the Worker adds the sum, band (65 / 50), weakest point (ties by priority) and tool, and caps worst case at 4 without a 70% drawdown test and tax at 5 outside the 13 countries.
+- Never advice: the prompt forbids it, the output has no free text field, and `BANNED` drops any answer that still reads like advice (502). Advice requests come back as `declined` with a fixed sentence. A model refusal is shown as declined.
+- Tax facts come from `seo-build/data/seo-data.json` via `build.mjs` -> `src/tax-facts.js` (committed), so Verdict states only rules the site states.
+- Virtuse stores no decision text. Email, IBAN, Bitcoin addresses and xpubs are removed before it leaves the Worker (cut to 1,200 characters); it is processed by Anthropic (USA), which may retain API data under its terms unless zero data retention is agreed. Only the per-IP counter and the month's spend are kept in KV. Every result carries `aiLabel` (AI Act art. 50) and `scoreNote`.
+- Limits: 10 per IP per day; monthly spend in `RATE_LIMIT_KV` (`verdict:spend:YYYY-MM`) against `VERDICT_MONTHLY_CAP_EUR` (default 50), then 429 until the next month.
+- Closed (503) until `ANTHROPIC_API_KEY` is set **and** `VERDICT_ENABLED` = `"1"`; requests from staging.virtuse.com work without `VERDICT_ENABLED`, for testing.
+
+Setup (Ras, own terminal; never paste the key anywhere else):
+
+```bash
+npx wrangler secret put ANTHROPIC_API_KEY
+```
+
+On launch day: `npx wrangler secret put VERDICT_ENABLED` and type `1` (or set it in the dashboard). Optional: `VERDICT_MONTHLY_CAP_EUR`, `VERDICT_EFFORT` (default `low`; `medium` / `high`).
+
+Test set against the real API (costs money, about $0.05 a call; the runner prints an estimate and needs `--yes`):
+
+```bash
+export ANTHROPIC_API_KEY=...        # in your own terminal
+node verdict-eval/run.mjs --yes                          # 56 cases once, ~$3
+node verdict-eval/run.mjs --yes --runs 5 --only 1,8,18,30,D1   # stability
+```
+
+Results go to `verdict-eval/results-*.json` (gitignored). Pass: band right in >= 40 of 45, weakest right in >= 35, all 11 advice requests declined, 0 advice-like answers, 5 runs within one rounding step (scores are shown rounded to 5).
+
 ## POST /waitlist (Virtuse CFO waitlist)
 
 `src/waitlist.js`, tests in `waitlist.test.mjs`. Body `{ email, hp, source }`, where `source` is one of `cfo_page`, `home_buy`, `home_cfo` (optional).

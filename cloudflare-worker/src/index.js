@@ -27,6 +27,7 @@
 // POST /send         { email, hp, lang, kind, source, payload, brief }
 //                                          -- one email the visitor asked for (Partner Finder
 //                                             criteria or a calculator result); see src/send.js
+// POST /verdict      { text, lang, hp }      -- Virtuse CFO · Verdict, see src/verdict.js
 // GET  /unsubscribe  ?email=...&token=...  -- clicked from the welcome email, see below
 // GET  /pulse.json                         -- current Brief pulse JSON (KV `current`)
 // OPTIONS /pulse.json                      -- CORS preflight for that GET
@@ -35,7 +36,7 @@
 //
 // Secrets (set via `wrangler secret put`, never in this file or wrangler.toml):
 //   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_SK_SEGMENT_ID, RESEND_FROM_EMAIL,
-//   UNSUB_SECRET, PULSE_PUBLISH_TOKEN
+//   UNSUB_SECRET, PULSE_PUBLISH_TOKEN, ANTHROPIC_API_KEY (POST /verdict)
 // KV bindings (see wrangler.toml): RATE_LIMIT_KV, PULSE_KV
 //
 // The welcome email HTML is inlined below (see WELCOME_EMAIL_HTML) rather
@@ -56,6 +57,7 @@
 import { handleSend } from '../src/send.js';
 import { handleWpProxy, WP_PREFIX } from '../src/wp-proxy.js';
 import { handleWaitlist, leaveWaitlist } from '../src/waitlist.js';
+import { handleVerdict } from '../src/verdict.js';
 
 const ALLOWED_ORIGINS = [
   'https://staging.virtuse.com',
@@ -682,6 +684,10 @@ export default {
         emailRe: EMAIL_RE,
         welcomeLangs: Object.keys(WELCOME_EMAIL_TEMPLATES),
       });
+    }
+
+    if (url.pathname === '/verdict') {
+      return handleVerdict(request, env, origin, { json });
     }
 
     if (url.pathname === '/waitlist') {
