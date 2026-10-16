@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-16) — Bitcoin vs gold, silver and commodities: new page in 10 languages + daily data (branch `feat/bitcoin-vs-gold`, **staging only**; production, redirects and GSC wait for Ras's "ano")
+
+- Handover `HANDOVERS/handover-2026-10-16-bitcoin-vs-commodities-tab.md` + Ras's decisions there (URL `/bitcoin-vs-gold.html`, USD default with EUR toggle, no gas/Brent, ETF returns + GC=F ratio, /commodities/ redirected too, no data licence, asset-returns stays in the sitemap).
+- Data: `commodities-build/build.mjs` → `data/bitcoin-vs-commodities.json` (Yahoo: GLD, SLV, USO, CPER, PPLT, DBC, BTC-USD for returns; GC=F, SI=F, CL=F, HG=F, PL=F for prices/ratios; Stooq fallback; no Binance). Writes only after its checks pass (BTC/gold 1–200, recent closes present, chained years = cumulative, asOf never older). Action `.github/workflows/commodities.yml` daily 23:30 UTC, commits to main + gh-pages; the page reads raw.githubusercontent first, so production needs no upload for fresh numbers.
+- Page: `i18n-tools/bitcoin-vs-gold/build_bvg.py` (texts `<lang>.json`, AI translations) builds all 10 + the sitemap block `<!-- BVG:START/END -->` (before TOOLS). Tables pre-rendered in USD for crawlers; `/bitcoin-vs-gold.js` re-renders from the JSON, SVG charts (log scale, tooltip, legend toggles; colours validated with the dataviz checker). JSON-LD Dataset + BreadcrumbList + FAQPage. Re-run the builder after a homepage nav/footer change.
+- Links: `bitcoin-data.html` × 10 teaser section `#gold` (BTC vs gold YTD / 1 y, BTC/gold; new keys `g_*`, `c_gold*` in `i18n-tools/bitcoin-data/<lang>.json`, `btc-data.js` `loadGold()`, `?v=3`) + card; asset-returns × 10 link above the table (in `i18n-tools/legacy/src/`).
+- Redirects prepared, **not live**: `/gold/` + `/commodities/` in `partnerships/legacy-wp-redirects.csv` (Redirection rules 80/70, CRLF file: edit with newline='') and the metals/oil rows of `seo-ops/redirects-2026-10-13.csv` (/etfs/ stays on asset-returns) → bitcoin-vs-gold.html; `virtuse.com.htaccess` + `old-paths.txt` regenerated. After "ano": deploy_site.sh, then Redirection rules 80/70, download live .htaccess, diff, upload, `legacy_redirects.py check --status ready` + `check_redirects.py https://virtuse.com`, GSC request indexing EN + SK.
+- Open: og image `og/bitcoin-vs-gold.jpg` (builder picks it up if present), Lighthouse on staging, native review of the 9 translations.
+
 ## Session status (2026-10-16) — fr nav button fits on 375 px phones; Brief card links checked (PR #109, branch `fix/tails-p2` on main `21cf4ebd`, not merged)
 
 - fr nav CTA "Trouver des partenaires" was 2 px too wide at 375 px on every fr page. The short label "Partenaires" now shows up to 389 px (was 359): new media query in `site-v2.css` (+ `site-v2.min.css` regenerated), breakpoint in `home/build_lang.py` and `cfo/build_cfo.py`; fr/index + fr/cfo rebuilt. Other languages unchanged. Deploy = site-v2.css, site-v2.min.css, fr/index.html, fr/cfo.html.
