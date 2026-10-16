@@ -632,6 +632,27 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-limits ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; }
 .vd-limits li { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15px; } .vd-limits li b { color: var(--text); }
 </style>
+<style>
+/* Verdict form (POST /verdict); hidden until switched on, see the script at the end */
+.wait[hidden], .vd-form[hidden] { display: none !important; }
+.vd-form { display: grid; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; max-width: 560px; }
+.vd-form label { font-weight: 600; font-size: 14px; }
+.vd-form textarea { resize: vertical; min-height: 110px; background: var(--inset); color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 12px 14px; font: 16px/1.45 var(--sans); }
+.vd-form textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+.vd-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.vd-form .vd-warn { margin: 0; font-size: 13px; color: var(--muted); }
+.vd-form .row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; }
+.vd-form .vd-ai { font-size: 12px; color: var(--dim); max-width: 300px; }
+.vd-form .vd-count { font-size: 12px; color: var(--dim); text-align: right; margin-top: -4px; }
+.vd-msg { font-size: 14px; color: var(--text); min-height: 20px; }
+.vd-how-note { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+.vd-card .vd-missing { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+.vd-card h4 { margin: 4px 0 0; font-size: 14px; }
+.vd-card .vd-small { margin: 0; font-size: 12px; color: var(--dim); }
+.vd-card .vd-note { margin: 0; font-size: 13px; color: var(--muted); }
+.vd-card .vd-again { justify-self: start; }
+.vd-card.busy { opacity: .55; transition: opacity .2s; }
+</style>
 <style>.spot, .tiles > * { min-width: 0; } .tile h3, .plan h3 { hyphens: auto; overflow-wrap: break-word; }
 @media (max-width: 400px) { .nav-cta { font-size: 12px; padding: 8px 10px; } .btn { white-space: normal; text-align: center; } }@media (max-width: 359px) { .nav-cta { white-space: normal; line-height: 1.15; text-align: center; max-width: 104px; padding: 6px 8px; } }</style>
 </head>
@@ -675,6 +696,16 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="eyebrow">Virtuse CFO · Verdict · kostenlos ab 1. November</div>
       <h1>Testen Sie Ihre Bitcoin-Entscheidung. <span>Danach behält Ihr <span class="grad">KI-CFO</span> sie im Blick.</span></h1>
       <p class="sub">Beschreiben Sie, was Sie vorhaben. Verdict bewertet Ihre Überlegungen anhand von 10 Signalen und zeigt den schwächsten Punkt. Es bewertet weder Bitcoin noch unsere Partner. Es bewertet, ob Sie die Entscheidung zu Ende gedacht haben.</p>
+      <form class="vd-form" id="vdForm" hidden novalidate>
+        <label for="vdText">Ihre Entscheidung</label>
+        <textarea id="vdText" name="text" rows="4" maxlength="1200" placeholder="Zum Beispiel: Ich möchte 20 % der liquiden Mittel meiner Firma in Bitcoin anlegen und 5 Jahre halten."></textarea>
+        <div class="vd-count"><span id="vdCount">0</span> / 1200</div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="vd-warn">Keine Namen, Gesundheitsdaten oder Kontonummern eingeben.</p>
+        <div class="row"><span class="vd-ai">Die Bewertung erstellt eine KI (Anthropic). Sie kann sich irren. Kostenlos, ohne Konto, keine Beratung.</span><button class="btn btn-primary" type="submit">Kostenlosen Verdict erhalten</button></div>
+        <div class="vd-msg" id="vdMsg" aria-live="polite"></div>
+      </form>
+      <template id="vdStrings"><span data-k="your">Ihr Verdict</span><span data-k="ai">KI-Bewertung</span><span data-k="weak">Schwächster Punkt:</span><span data-k="check">Prüfen mit</span><span data-k="missing">Was in Ihrer Überlegung fehlt</span><span data-k="again">Andere Entscheidung bewerten</span><span data-k="loading">Ihre Überlegung wird geprüft. Das dauert meist 5 bis 15 Sekunden.</span><span data-k="short">Beschreiben Sie Ihre Entscheidung in mindestens einem Satz.</span><span data-k="error">Etwas ist schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.</span><span data-k="network">Netzwerkfehler. Bitte versuchen Sie es erneut.</span><span data-k="declined">Das bewertet Verdict nicht</span></template>
       <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -683,7 +714,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <p class="wait-note">Eine E-Mail am 1. November, wenn Verdict und der kostenlose Gebühren-Audit starten. Sonst nichts. Abmelden jederzeit direkt aus dieser E-Mail. <a href="privacy-policy.html" style="color:inherit">Datenschutz</a></p>
       </form>
     </div>
-    <div class="vd-card" aria-label="Beispiel-Verdict">
+    <div class="vd-card" id="vdCard" aria-live="polite" aria-label="Beispiel-Verdict">
       <div class="top"><span>Beispiel-Verdict</span><span>Beispielzahlen</span></div>
       <p class="q">„Ich möchte mir gegen meine BTC Geld leihen, um eine Wohnung zu kaufen.“</p>
       <div class="vd-score"><b>55<small>/100</small></b><span class="vd-pill">2 oder 3 Annahmen ergänzen</span></div>
@@ -710,12 +741,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="vd-bands">
       <div class="vd-band"><b>Ihre Überlegungen sind vollständig</b><span>65 bis 100</span><p>Sie haben das Wesentliche abgedeckt. Der nächste Schritt liegt bei Ihnen.</p></div>
-      <div class="vd-band hl"><b>2 oder 3 Annahmen ergänzen</b><span>50 bis 64</span><p>Prüfen Sie sie mit den Tools unten, dann entscheiden Sie.</p></div>
-      <div class="vd-band"><b>Wichtige Teile fehlen</b><span>0 bis 49</span><p>Verdict benennt sie und erklärt, warum sie teuer werden können.</p></div>
+      <div class="vd-band hl"><b>2 oder 3 Annahmen ergänzen</b><span>50 bis 60</span><p>Prüfen Sie sie mit den Tools unten, dann entscheiden Sie.</p></div>
+      <div class="vd-band"><b>Wichtige Teile fehlen</b><span>0 bis 45</span><p>Verdict benennt sie und erklärt, warum sie teuer werden können.</p></div>
     </div>
     <div class="vd-tools" aria-label="Tools zum Prüfen Ihrer Annahmen">
       <a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="stacking.html">Stacking Strategist</a><a href="retirement-calculator.html">Ruhestandsrechner</a>
     </div>
+    <p class="vd-how-note">So entsteht der Score: Eine KI bewertet jedes der 10 Signale mit 0 bis 10 Punkten, der Score ist ihre Summe, auf 5 gerundet. Verdict verlinkt nur auf Virtuse-Tools, nie auf einen Partner.</p>
   </section>
 
   <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit -->
@@ -1133,6 +1165,77 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   a.addEventListener('click', function () { setTimeout(function () { var i = document.querySelector('#waitForm input[name="email"]'); if (i) i.focus(); }, 400); });
 });
+</script>
+<script>
+// Verdict: the working form (Worker POST /verdict). Off by default; on for en/sk on
+// staging, with ?verdict=1, or with <meta name="vb-verdict" content="on"> (launch).
+(function () {
+  var form = document.getElementById('vdForm'), card = document.getElementById('vdCard'); if (!form || !card) return;
+  var lang = document.documentElement.lang;
+  var meta = document.querySelector('meta[name="vb-verdict"]');
+  var on = (lang === 'en' || lang === 'sk') && (location.hostname === 'staging.virtuse.com' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on'));
+  if (!on) return;
+  var S = {}; var tpl = document.getElementById('vdStrings');
+  Array.prototype.forEach.call((tpl.content || tpl).querySelectorAll('[data-k]'), function (n) { S[n.getAttribute('data-k')] = n.textContent; });
+  form.hidden = false;
+  var wait = document.getElementById('waitForm'); if (wait) wait.hidden = true;
+  document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) { a.setAttribute('href', '#verdict'); });
+  var ta = form.elements['text'], msg = document.getElementById('vdMsg'), count = document.getElementById('vdCount');
+  var btn = form.querySelector('button[type="submit"]'), sample = card.innerHTML, sampleLabel = card.getAttribute('aria-label');
+  ta.addEventListener('input', function () { count.textContent = ta.value.length; });
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function color(p) { return p >= 7 ? 'var(--text)' : p >= 5 ? 'var(--muted)' : 'var(--orange)'; }
+  function render(r) {
+    card.innerHTML = ''; card.setAttribute('aria-label', S.your);
+    var top = el('div', 'top'); top.appendChild(el('span', null, S.your)); top.appendChild(el('span', null, S.ai)); card.appendChild(top);
+    if (r.declined) {
+      card.appendChild(el('h4', null, S.declined));
+      card.appendChild(el('p', 'q', r.message));
+    } else {
+      var sc = el('div', 'vd-score'), b = el('b', null, String(r.score)); b.appendChild(el('small', null, '/100'));
+      sc.appendChild(b); sc.appendChild(el('span', 'vd-pill', r.band.label)); card.appendChild(sc);
+      var sigs = el('div', 'vd-sigs');
+      r.signals.forEach(function (s) {
+        var row = el('div', 'vd-sig'); row.title = s.reason;
+        var bar = el('span', 'bar'), i = el('i'); i.style.width = (s.points * 10) + '%'; i.style.background = color(s.points); bar.appendChild(i);
+        row.appendChild(el('span', null, s.name)); row.appendChild(bar); row.appendChild(el('span', 'v', String(s.points))); sigs.appendChild(row);
+      });
+      card.appendChild(sigs);
+      var weak = el('p', 'vd-weak'); weak.appendChild(document.createTextNode(S.weak + ' ' + r.weakest.name + '. ' + r.weakest.reason + ' '));
+      var a = el('a', null, S.check + ' ' + r.weakest.tool.name); a.href = r.weakest.tool.page; weak.appendChild(a); card.appendChild(weak);
+      if (r.missing && r.missing.length) {
+        card.appendChild(el('h4', null, S.missing));
+        var ul = el('ul', 'vd-missing'); r.missing.forEach(function (m) { ul.appendChild(el('li', null, m)); }); card.appendChild(ul);
+      }
+      card.appendChild(el('p', 'vd-note', r.scoreNote));
+    }
+    card.appendChild(el('p', 'vd-small', r.aiLabel));
+    card.appendChild(el('p', 'vd-small', r.disclaimer));
+    var again = el('button', 'btn btn-ghost vd-again', S.again); again.type = 'button';
+    again.addEventListener('click', function () { card.innerHTML = sample; card.setAttribute('aria-label', sampleLabel); ta.focus(); });
+    card.appendChild(again);
+    if (window.innerWidth < 900) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = ta.value.trim();
+    if (text.length < 20) { msg.textContent = S.short; return; }
+    btn.disabled = true; msg.textContent = S.loading; card.classList.add('busy');
+    (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_submit', verdict_lang: lang });
+    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/verdict', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text, lang: lang, hp: form.elements['website'].value })
+    }).then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+      .then(function (x) {
+        if (x.ok && x.d && x.d.ok) {
+          msg.textContent = ''; render(x.d);
+          (window.dataLayer = window.dataLayer || []).push(x.d.declined ? { event: 'verdict_declined', verdict_lang: lang } : { event: 'verdict_result', verdict_lang: lang, verdict_band: x.d.band.id, verdict_weakest: x.d.weakest.id });
+        } else { msg.textContent = (x.d && x.d.error) || S.error; }
+      })
+      .catch(function () { msg.textContent = S.network; })
+      .then(function () { btn.disabled = false; card.classList.remove('busy'); });
+  });
+})();
 </script>
 </body>
 </html>
