@@ -8516,7 +8516,7 @@
 <!-- STORIES-HUBS:START -->
   <url>
     <loc>https://virtuse.com/stories/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -8552,7 +8552,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -8962,6 +8962,10 @@
   <url>
     <loc>https://virtuse.com/sk/stories/elon-musk-ocakava-recesiu-tu-su-3-sposoby-ako-sa-ochranit/</loc>
     <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/elonov-ai-sek-alebo-bitcoin/</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/ethereum-the-merge-vsetko-dobre-aj-zle/</loc>
@@ -9722,6 +9726,10 @@
   <url>
     <loc>https://virtuse.com/stories/elon-musk-sees-a-recession-coming-here-are-3-ways-to-protect-yourself/</loc>
     <lastmod>2022-06-08</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/elons-check-or-bitcoin/</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/embrace-the-fear/</loc>

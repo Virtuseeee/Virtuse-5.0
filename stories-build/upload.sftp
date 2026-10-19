@@ -64,6 +64,7 @@
 -mkdir public_html/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities
 -mkdir public_html/stories/education-and-bitcoin-are-key-to-wealth-protection
 -mkdir public_html/stories/elon-musk-sees-a-recession-coming-here-are-3-ways-to-protect-yourself
+-mkdir public_html/stories/elons-check-or-bitcoin
 -mkdir public_html/stories/embrace-the-fear
 -mkdir public_html/stories/every-hnwi-should-buy-bitcoin
 -mkdir public_html/stories/everything-but-bitcoin
@@ -280,6 +281,7 @@
 -mkdir public_html/sk/stories/dosledky-absolutnej-moci-centralnych-bank-ras-vasilisin
 -mkdir public_html/sk/stories/dosledky-rusko-ukrajinskej-vojny-su-ovela-vacsie-ako-si-ludia-uvedomuju
 -mkdir public_html/sk/stories/elon-musk-ocakava-recesiu-tu-su-3-sposoby-ako-sa-ochranit
+-mkdir public_html/sk/stories/elonov-ai-sek-alebo-bitcoin
 -mkdir public_html/sk/stories/ethereum-the-merge-vsetko-dobre-aj-zle
 -mkdir public_html/sk/stories/farmar-ktory-presne-predpovedal-100-rokov-trhovych-cyklov
 -mkdir public_html/sk/stories/fiat-je-mrtvy-zacal-sa-boj-o-buducnost-penazi
@@ -498,6 +500,7 @@ put sk/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential
 put sk/stories/dosledky-absolutnej-moci-centralnych-bank-ras-vasilisin/index.html public_html/sk/stories/dosledky-absolutnej-moci-centralnych-bank-ras-vasilisin/index.html
 put sk/stories/dosledky-rusko-ukrajinskej-vojny-su-ovela-vacsie-ako-si-ludia-uvedomuju/index.html public_html/sk/stories/dosledky-rusko-ukrajinskej-vojny-su-ovela-vacsie-ako-si-ludia-uvedomuju/index.html
 put sk/stories/elon-musk-ocakava-recesiu-tu-su-3-sposoby-ako-sa-ochranit/index.html public_html/sk/stories/elon-musk-ocakava-recesiu-tu-su-3-sposoby-ako-sa-ochranit/index.html
+put sk/stories/elonov-ai-sek-alebo-bitcoin/index.html public_html/sk/stories/elonov-ai-sek-alebo-bitcoin/index.html
 put sk/stories/ethereum-the-merge-vsetko-dobre-aj-zle/index.html public_html/sk/stories/ethereum-the-merge-vsetko-dobre-aj-zle/index.html
 put sk/stories/farmar-ktory-presne-predpovedal-100-rokov-trhovych-cyklov/index.html public_html/sk/stories/farmar-ktory-presne-predpovedal-100-rokov-trhovych-cyklov/index.html
 put sk/stories/fiat-je-mrtvy-zacal-sa-boj-o-buducnost-penazi/index.html public_html/sk/stories/fiat-je-mrtvy-zacal-sa-boj-o-buducnost-penazi/index.html
@@ -688,6 +691,7 @@ put stories/dont-fall-for-the-ai-danger-scare/index.html public_html/stories/don
 put stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities/index.html public_html/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities/index.html
 put stories/education-and-bitcoin-are-key-to-wealth-protection/index.html public_html/stories/education-and-bitcoin-are-key-to-wealth-protection/index.html
 put stories/elon-musk-sees-a-recession-coming-here-are-3-ways-to-protect-yourself/index.html public_html/stories/elon-musk-sees-a-recession-coming-here-are-3-ways-to-protect-yourself/index.html
+put stories/elons-check-or-bitcoin/index.html public_html/stories/elons-check-or-bitcoin/index.html
 put stories/embrace-the-fear/index.html public_html/stories/embrace-the-fear/index.html
 put stories/every-hnwi-should-buy-bitcoin/index.html public_html/stories/every-hnwi-should-buy-bitcoin/index.html
 put stories/everything-but-bitcoin/index.html public_html/stories/everything-but-bitcoin/index.html
