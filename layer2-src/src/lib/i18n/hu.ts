@@ -401,7 +401,8 @@ const hu: Record<string, string> = {
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "A 2 a 3-ból felállásban két kulcs Önnél marad. A harmadikat egy közös letétkezelési szolgáltató, például az Unchained őrizheti.",
   "Source (health insurance)": "Forrás (egészségbiztosítás)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
-  "How we earn": "Hogyan szerzünk bevételt"
+  "How we earn": "Hogyan szerzünk bevételt",
+  "Your answers from Verdict are already filled in.": "A Verdictben megadott válaszai már ki vannak töltve."
 };
 
 export default hu;

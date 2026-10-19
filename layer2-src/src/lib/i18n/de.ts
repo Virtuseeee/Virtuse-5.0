@@ -401,7 +401,8 @@ const de: Record<string, string> = {
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "Bei einem 2-von-3-Setup behalten Sie zwei Schlüssel. Den dritten kann ein Anbieter für kollaborative Verwahrung wie Unchained halten.",
   "Source (health insurance)": "Quelle (Krankenversicherung)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Partnerlink – wenn Sie sich registrieren, erhält Virtuse möglicherweise eine Provision. Ihr Preis ändert sich dadurch nicht.",
-  "How we earn": "Wie wir verdienen"
+  "How we earn": "Wie wir verdienen",
+  "Your answers from Verdict are already filled in.": "Ihre Antworten aus Verdict sind bereits ausgefüllt."
 };
 
 export default de;

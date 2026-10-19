@@ -401,7 +401,8 @@ const es: Record<string, string> = {
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "En una configuración 2 de 3, usted conserva dos claves. Un proveedor de custodia colaborativa como Unchained puede tener la tercera.",
   "Source (health insurance)": "Fuente (seguro de salud)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
-  "How we earn": "Cómo ganamos dinero"
+  "How we earn": "Cómo ganamos dinero",
+  "Your answers from Verdict are already filled in.": "Sus respuestas de Verdict ya están completadas."
 };
 
 export default es;
