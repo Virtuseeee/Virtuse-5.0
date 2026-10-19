@@ -261,3 +261,11 @@ test('prompt explains the profile and keeps rules for goal, plan B, alternatives
   assert.match(systemPrompt('en'), /<profile> tags/);
   assert.match(systemPrompt('sk'), /never reaches 10 on goal, plan_b, alternatives or rule/);
 });
+
+test('a signal backed only by a profile answer is capped at 7', () => {
+  const out = modelOut({ signals: SIGNALS.map((s) => ({ id: s.id, points: 10, reason: 'x', only_profile: s.id === 'liquidity' })) });
+  const r = scoreVerdict(out, 'sk');
+  assert.equal(r.signals.find((s) => s.id === 'liquidity').points, 7);
+  assert.equal(r.signals.find((s) => s.id === 'goal').points, 10);
+  assert.match(systemPrompt('en'), /only_profile/);
+});

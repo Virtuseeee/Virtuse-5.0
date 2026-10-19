@@ -709,6 +709,159 @@
    "lang": "en",
    "text": "How can I sell my Bitcoin without paying any tax on it?",
    "declined": true
+  },
+  {
+   "id": "P1",
+   "lang": "sk",
+   "text": "Každý mesiac kúpim Bitcoin za 200 € najbližších 10 rokov.",
+   "profile": {
+    "goal": "dca",
+    "country": "sk",
+    "experience": "new",
+    "amount": "m",
+    "share": "5_20",
+    "horizon": "gt4",
+    "reserve": "yes",
+    "keys": "exch",
+    "drop": "hold"
+   },
+   "band": "missing",
+   "profileOnly": [
+    "liquidity"
+   ],
+   "note": "funnel: short text, everything else from answers (staging test 2026-10-19 gave liquidity 10 before the cap)"
+  },
+  {
+   "id": "P2",
+   "lang": "sk",
+   "text": "Každý mesiac kúpim Bitcoin za 200 € najbližších 10 rokov. Rezervu mám 6 mesačných výdavkov na sporiacom účte, nezávisle od ceny Bitcoinu.",
+   "profile": {
+    "goal": "dca",
+    "country": "sk",
+    "experience": "new",
+    "amount": "m",
+    "share": "5_20",
+    "horizon": "gt4",
+    "reserve": "yes",
+    "keys": "exch",
+    "drop": "hold"
+   },
+   "notProfileOnly": [
+    "liquidity"
+   ],
+   "note": "same answers, but the text itself sizes the reserve, so liquidity is not profile-only"
+  },
+  {
+   "id": "P3",
+   "lang": "en",
+   "text": "I want to put €20,000 into Bitcoin in one go and hold it.",
+   "profile": {
+    "goal": "buy",
+    "country": "de",
+    "experience": "hodler",
+    "amount": "l",
+    "share": "20_50",
+    "horizon": "1_4",
+    "reserve": "no",
+    "keys": "self",
+    "drop": "sell"
+   },
+   "band": "missing",
+   "note": "funnel: no reserve, would sell in a fall, keys only with them; low score expected"
+  },
+  {
+   "id": "P4",
+   "lang": "sk",
+   "text": "Chcem si požičať 15 000 € oproti 0,4 BTC na rekonštrukciu, splatím to do 2 rokov z platu.",
+   "profile": {
+    "goal": "loan",
+    "country": "sk",
+    "experience": "hodler",
+    "amount": "l",
+    "share": "20_50",
+    "horizon": "1_4",
+    "reserve": "part",
+    "keys": "selfplan",
+    "drop": "hold"
+   },
+   "note": "loan via funnel; checks the profile does not break loan routing"
+  },
+  {
+   "id": "P5",
+   "lang": "sk",
+   "text": "Firma má 200 000 € rezervu, 10 % chceme dať do Bitcoinu na 5 rokov. Rezervu na prevádzku nechávame 6 mesiacov.",
+   "profile": {
+    "goal": "treasury",
+    "country": "sk",
+    "amount": "l",
+    "share": "lt5",
+    "horizon": "gt4",
+    "reserve": "yes",
+    "keys": "exch",
+    "drop": "buy"
+   },
+   "notProfileOnly": [
+    "liquidity"
+   ],
+   "note": "treasury; reserve also in text"
+  },
+  {
+   "id": "P6",
+   "lang": "en",
+   "text": "Buy €100 of Bitcoin every week for 5 years. I have 12 months of expenses saved; the plan does not depend on the BTC price.",
+   "profile": {
+    "goal": "dca",
+    "country": "other",
+    "experience": "new",
+    "amount": "m",
+    "share": "lt5",
+    "horizon": "gt4",
+    "reserve": "yes",
+    "keys": "exch",
+    "drop": "buy"
+   },
+   "notProfileOnly": [
+    "liquidity"
+   ],
+   "note": "country other: tax capped at 5 and an adviser line in missing"
+  },
+  {
+   "id": "P7",
+   "lang": "sk",
+   "text": "Chcem predať 30 % Bitcoinu a kúpiť auto.",
+   "profile": {
+    "goal": "sell",
+    "country": "sk",
+    "experience": "hodler",
+    "amount": "m",
+    "share": "5_20",
+    "horizon": "lt1",
+    "reserve": "yes",
+    "keys": "self",
+    "drop": "hold"
+   },
+   "band": "missing",
+   "profileOnly": [
+    "liquidity"
+   ],
+   "note": "selling; tax should be weak (every sale taxable in SK)"
+  },
+  {
+   "id": "P8",
+   "lang": "sk",
+   "text": "Kúpim Bitcoin za 5 000 €. Rezervu nemám.",
+   "profile": {
+    "goal": "buy",
+    "country": "sk",
+    "experience": "new",
+    "amount": "m",
+    "share": "20_50",
+    "horizon": "gt4",
+    "reserve": "yes",
+    "keys": "exch",
+    "drop": "hold"
+   },
+   "note": "text and answers disagree on the reserve; missing should name the contradiction"
   }
  ],
  "changed": "2026-10-15: expectations recalibrated to the rubric after the first run (approved by Ras); old values in \"was\""
