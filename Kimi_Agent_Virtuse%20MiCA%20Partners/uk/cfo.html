@@ -1204,59 +1204,17 @@ document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   var wait = document.getElementById('waitForm'); if (wait) wait.hidden = true;
   document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) { a.setAttribute('href', '#verdict'); });
   var ta = form.elements['text'], msg = document.getElementById('vdMsg'), count = document.getElementById('vdCount');
-  var btn = form.querySelector('button[type="submit"]'), sample = card.innerHTML, sampleLabel = card.getAttribute('aria-label');
   ta.addEventListener('input', function () { count.textContent = ta.value.length; });
-  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-  function color(p) { return p >= 7 ? 'var(--text)' : p >= 5 ? 'var(--muted)' : 'var(--orange)'; }
-  function render(r) {
-    card.innerHTML = ''; card.setAttribute('aria-label', S.your); card.setAttribute('data-ai-generated', 'true');
-    var top = el('div', 'top'); top.appendChild(el('span', null, S.your)); top.appendChild(el('span', null, S.ai)); card.appendChild(top);
-    if (r.declined) {
-      card.appendChild(el('h4', null, S.declined));
-      card.appendChild(el('p', 'q', r.message));
-    } else {
-      var sc = el('div', 'vd-score'), b = el('b', null, String(r.score)); b.appendChild(el('small', null, '/100'));
-      sc.appendChild(b); sc.appendChild(el('span', 'vd-pill', r.band.label)); card.appendChild(sc);
-      var sigs = el('div', 'vd-sigs');
-      r.signals.forEach(function (s) {
-        var row = el('div', 'vd-sig'); row.title = s.reason;
-        var bar = el('span', 'bar'), i = el('i'); i.style.width = (s.points * 10) + '%'; i.style.background = color(s.points); bar.appendChild(i);
-        row.appendChild(el('span', null, s.name)); row.appendChild(bar); row.appendChild(el('span', 'v', String(s.points))); sigs.appendChild(row);
-      });
-      card.appendChild(sigs);
-      var weak = el('p', 'vd-weak'); weak.appendChild(document.createTextNode(S.weak + ' ' + r.weakest.name + '. ' + r.weakest.reason + ' '));
-      var a = el('a', null, S.check + ' ' + r.weakest.tool.name); a.href = r.weakest.tool.page; weak.appendChild(a); card.appendChild(weak);
-      if (r.missing && r.missing.length) {
-        card.appendChild(el('h4', null, S.missing));
-        var ul = el('ul', 'vd-missing'); r.missing.forEach(function (m) { ul.appendChild(el('li', null, m)); }); card.appendChild(ul);
-      }
-      card.appendChild(el('p', 'vd-note', r.scoreNote));
-    }
-    card.appendChild(el('p', 'vd-small', r.aiLabel));
-    card.appendChild(el('p', 'vd-small', r.disclaimer));
-    var again = el('button', 'btn btn-ghost vd-again', S.again); again.type = 'button';
-    again.addEventListener('click', function () { card.removeAttribute('data-ai-generated'); card.innerHTML = sample; card.setAttribute('aria-label', sampleLabel); ta.focus(); });
-    card.appendChild(again);
-    if (window.innerWidth < 900) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  // The text opens the question funnel (verdict.html), which asks what the AI
+  // needs before it scores; the text travels in sessionStorage, never in the URL.
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var text = ta.value.trim();
     if (text.length < 20) { msg.textContent = S.short; return; }
-    btn.disabled = true; msg.textContent = S.loading; card.classList.add('busy');
-    (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_submit', verdict_lang: lang });
-    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/verdict', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text, lang: lang, hp: form.elements['website'].value })
-    }).then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
-      .then(function (x) {
-        if (x.ok && x.d && x.d.ok) {
-          msg.textContent = ''; render(x.d);
-          (window.dataLayer = window.dataLayer || []).push(x.d.declined ? { event: 'verdict_declined', verdict_lang: lang } : { event: 'verdict_result', verdict_lang: lang, verdict_band: x.d.band.id, verdict_weakest: x.d.weakest.id });
-        } else { msg.textContent = (x.d && x.d.error) || S.error; }
-      })
-      .catch(function () { msg.textContent = S.network; })
-      .then(function () { btn.disabled = false; card.classList.remove('busy'); });
+    if (form.elements['website'].value) return;
+    try { sessionStorage.setItem('vb-verdict-text', text); } catch (err) {}
+    (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_start', verdict_lang: lang });
+    location.href = 'verdict.html' + (/[?&]verdict=1\b/.test(location.search) ? '?verdict=1' : '');
   });
 })();
 </script>
