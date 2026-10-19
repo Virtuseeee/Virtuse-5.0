@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-19) — PRs #110–#113 merged and live (main `d5f714b4`; user ran `deploy_site.sh 7826dbac d5f714b4`: DEPLOY OK, 270/270 md5 on production, 6 deleted; `.htaccess` + 2 WordPress JSON uploaded with the guarded script; **Worker NOT deployed yet**)
+
+- #110 consent + GTM on the seo-build pages, #111 story cleanup (5 duplicates 301 one hop, 16 SK stories noindex on virtuse.com and on their blog originals, WP noindex list 1124, `sk/stories/page/9` 404), #112 BitGo + Sygnum on Custody, #113 waitlist email in 10 languages (homepages send `lang`). Merged as four merge commits on top of `c73e4c8b` (story "Elon's Check or Bitcoin" from another session went out in the same range). Audit report: https://claude.ai/code/artifact/b3718b69-101f-4639-947b-1b723fb73877
+- **Worker deploy failed on MACBOOK-PRO-3:** wrangler there is logged into Nick's personal Cloudflare account (`7de662f1…`), not the account that owns `virtuse-newsletter` (KV `fc6483f6…` not found). Nothing was deployed; live `/version` stays `883909bc` (ignores `lang`, sends English). Deploy from a wrangler session on the Virtuse account.
+- Gotchas: `deploy_site.sh` pushes with git's default credential (osxkeychain = `mospace7` on this Mac → 403); run it with `GIT_CONFIG_COUNT=2 GIT_CONFIG_KEY_0=credential.helper GIT_CONFIG_VALUE_0= GIT_CONFIG_KEY_1=credential.helper GIT_CONFIG_VALUE_1='!gh auth git-credential'`. Deleting a page with deploy_site.sh leaves its empty folder on Webglobe, which answers 403: `-rmdir` it.
+
 ## Session status (2026-10-16) — PR #109 fully live (fr nav button short label up to 389 px)
 
 - User ran `deploy_site.sh "0e540dcf^" 0e540dcf` from a checkout of main `99ee001d` (the script uploads the working-tree files; #109's files are unchanged on main since): `site-v2.css` + `site-v2.min.css` now live (`fr/index.html` + `fr/cfo.html` were already live with the Cloudflare deploy). 4/4 md5 = main. The rule only affects the 50 fr pages (only they have `.cta-short`).
