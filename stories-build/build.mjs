@@ -38,6 +38,8 @@ import { HERE, SITE, ORIGIN, MANIFEST, SITEMAP_START, SITEMAP_END, DESK_NAMES, d
 // Hub pages (stories/, sk/stories/, ru/stories/), the hub breadcrumb and the
 // "Related tools and guides" block on every story: see hubs.mjs.
 import { applyStoryExtras, storyCrumbsLd, buildHubs, HUBS_START, HUBS_END } from './hubs.mjs';
+// Static first view of the 10 blog list pages: see blogs.mjs.
+import { refreshBlogs, BLOG_PAGES } from './blogs.mjs';
 // Post ID -> story URL for the WordPress must-use plugin virtuse-story-canonical.php
 // (seo-ops/wp-mu-plugin/), which points each WordPress original's canonical at the
 // virtuse.com copy. upload.sftp puts it next to the plugin, after the pages.
@@ -433,9 +435,11 @@ async function main() {
   const written = [];
   const lastmods = {}, altsOf = {};
   const wpCanonical = {};
+  const feedPosts = {};
 
   for (const feed of FEEDS) {
     const posts = await fetchFeed(feed);
+    feedPosts[feed.category] = posts;
     const seen = new Set();
     for (const post of posts) {
       const { storyPath, html, lastmod, alts } = render(template, feed, post, inferDesk);
@@ -506,11 +510,15 @@ async function main() {
     .map((d) => `-mkdir public_html/${d}`);
   for (const p of written.sort()) lines.push(`put ${p}index.html public_html/${p}index.html`);
   lines.push('put sitemap.xml public_html/sitemap.xml');
+  for (const b of BLOG_PAGES) lines.push(`put ${b} public_html/${b}`);
   lines.push(`put ${WP_CANONICAL} ${WP_CANONICAL_REMOTE}`);
   for (const p of removed) lines.push(`# removed from WordPress, delete on the server: public_html/${p}`);
   lines.push('bye');
   fs.writeFileSync(path.join(HERE, 'upload.sftp'), lines.join('\n') + '\n');
   console.log(`total ${written.length} pages; removed ${removed.length}`);
+
+  // Blog list pages: first view = page 1 of the same feeds (no old-story flash).
+  refreshBlogs(feedPosts, inferDesk);
 
   // Hub pages, sitemap hub URLs, upload.sftp hub lines (offline, from the pages above).
   buildHubs();

@@ -178,3 +178,14 @@ and have to be deleted on the server by hand.
 - EN↔SK pairs: add `"slug_sk": "<sk-slug>"` to the issue in `news/issues.json` next to its EN `slug`; the next build writes the hreflang pair into both pages and the sitemap.
 - `.htaccess` (seo-ops): `/a/<slug>` and `article.html?slug=<slug>[&lang=sk]` 301 to the story page when it exists, otherwise the reader (302). `article.js` also points article.html's canonical at the story page.
 - WordPress: `virtuse-story-canonical.php` points each post's canonical at its virtuse.com copy (reads `stories/wp-canonical.json`); `virtuse-brief-link.php` adds a fixed "Read the Brief on virtuse.com" bar at the top of those posts (printed in `wp_footer`, front end only; it pads `<body>` and pushes the theme's pinned header/menu down by the bar height).
+
+## Blog list pages (blogs.mjs)
+
+The 10 blog list pages (`blog.html`, `blog-sk.html`, `<lang>/blog.html`) ship a
+pre-rendered lead story + cards that their own script replaces with page 1 of
+the WordPress feed. `build.mjs` now refreshes that static first view on every
+run (`blogs.mjs`, from the feeds it already fetched), with the same posts and
+markup the script renders, so visitors no longer see old stories first. The
+Action commits them with the story pages and copies them to gh-pages;
+`upload.sftp` puts them on production.
+

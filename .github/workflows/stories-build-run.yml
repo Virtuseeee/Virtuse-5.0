@@ -85,6 +85,8 @@ jobs:
         working-directory: main
         run: |
           git add -A "$SITE/stories" "$SITE/sk/stories" "$SITE/ru/stories" "$SITE/sitemap.xml" stories-build/manifest.json stories-build/upload.sftp
+          # blog list pages: their static first view (stories-build/blogs.mjs)
+          for b in blog.html blog-sk.html cs/blog.html de/blog.html es/blog.html fr/blog.html hu/blog.html pl/blog.html ru/blog.html uk/blog.html; do git add "$SITE/$b"; done
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No story changes." >> "$GITHUB_STEP_SUMMARY"
@@ -129,10 +131,12 @@ jobs:
             rsync -a --delete "main/$SITE/$d/" "pages/$d/"
           done
           cp "main/$SITE/sitemap.xml" pages/sitemap.xml
+          # The 10 blog list pages carry the same posts as their first view.
+          for b in blog.html blog-sk.html cs/blog.html de/blog.html es/blog.html fr/blog.html hu/blog.html pl/blog.html ru/blog.html uk/blog.html; do cp "main/$SITE/$b" "pages/$b"; done
           cd pages
           git config user.name "virtuse-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A stories sk/stories ru/stories sitemap.xml
+          git add -A stories sk/stories ru/stories sitemap.xml blog.html blog-sk.html cs/blog.html de/blog.html es/blog.html fr/blog.html hu/blog.html pl/blog.html ru/blog.html uk/blog.html
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Sync main $MAIN_SHA: pre-rendered story pages"
           git push origin gh-pages

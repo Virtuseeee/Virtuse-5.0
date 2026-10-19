@@ -855,5 +855,15 @@ put sk/stories/page/9/index.html public_html/sk/stories/page/9/index.html
 put ru/stories/index.html public_html/ru/stories/index.html
 # hubs:end
 put sitemap.xml public_html/sitemap.xml
+put blog.html public_html/blog.html
+put blog-sk.html public_html/blog-sk.html
+put cs/blog.html public_html/cs/blog.html
+put de/blog.html public_html/de/blog.html
+put es/blog.html public_html/es/blog.html
+put fr/blog.html public_html/fr/blog.html
+put hu/blog.html public_html/hu/blog.html
+put pl/blog.html public_html/pl/blog.html
+put ru/blog.html public_html/ru/blog.html
+put uk/blog.html public_html/uk/blog.html
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
 bye
