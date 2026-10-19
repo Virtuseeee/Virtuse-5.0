@@ -193,6 +193,11 @@ for (const rel of htmlFiles) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
   }
 
+  // same consent + GTM block as the rest of the site (the embed is shown on other sites: none there)
+  const gtm = (html.match(/GTM-KXX4Q6WH/g) || []).length;
+  const embed = /\/embed\//.test(rel);
+  if (!embed && (gtm !== 1 || !html.includes('/cookie-consent.js') || !html.includes('<!-- vb-consent -->'))) fail(`${rel} needs the consent + GTM block once (found ${gtm} GTM ids)`);
+
   if (guidePage) {
     // the shared v2 nav, footer and Brief card come from the homepages as they are
     const visible = stripTags(html.replace(/<header class="nav">[\s\S]*?<\/header>|<footer\b[\s\S]*?<\/footer>|<section id="brief">[\s\S]*?<\/section>/g, ''));
