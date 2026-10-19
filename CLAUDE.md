@@ -8,10 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `article.html` + all 403 story pages now load `article.js?v=20261019` (`node stories-build/hubs.mjs` offline; diff = the version line only).
 - Production: the user runs `deploy_site.sh` for this commit range (needs the SFTP password).
 
-## Session status (2026-10-19, second round) — Brief edition 19 Oct "A Billion Out, Bitcoin Holds $80K" on **staging only** (branch `brief/edition-2026-10-19`, not merged, not on production)
+## Session status (2026-10-19, second round) — Brief edition 19 Oct "A Billion Out, Bitcoin Holds $80K" (PR #117 merged as main `3d30c572`; **live on production** — user ran `deploy_site.sh 06643deb 3d30c572` in Terminal.app 2026-10-19, 5/5 md5-verified on virtuse.com)
 
 - Per the desk handover: `news/issues.json` top entry (WP featured chart media 15240, 4 min, `og_image`, 3 `facts`), featured card in `news.html` (date, cover, title, bullets, links), og/twitter description + `/news/og/brief-20261019.jpg?v=20261019` + alt (og:title/twitter:title stay generic per `13bd9870`, so `set_news_og.py --check` reports stale as before), JSON-LD regenerated with `seo-ops/news_jsonld.py` (12 editions), `news.js` FEATURED_SLUG fallback + cache-busters (`issues.json?v=20261019a`, `news.js?v=20261019brief`). The og JPG (1200x630) and 800 px WebP were supplied by the user, not generated.
 - Staging: the 5 files copied to the gh-pages root (`323fd6f4`), 5/5 md5-verified on staging.virtuse.com after ~75 s; desktop 1440 + mobile 375 checked (no overflow beyond the ticker marquee, no console errors). **Production untouched**: prod goes through Ship after Ras's "ano"; `deploy_site.sh` was not run.
+- **Deploy gotcha:** `deploy_site.sh` run via the app's Terminal panel tab never received the typed SFTP password (ssh stayed at the prompt, no control socket); the same command in the macOS Terminal app worked at once. Run password-prompting deploys in Terminal.app. `SFTP_USER=virtuse.com` skips the username prompt.
 - Not used: a third supplied image (scooter illustration "Virtuse Brief 80K", 1280x720). news.js repaints the featured cover from the WP featured image on load, so a different static cover would be replaced anyway; it would need the WP featured image changed first.
 
 ## Session status (2026-10-19) — PRs #110–#113 merged and live (main `d5f714b4`; user ran `deploy_site.sh 7826dbac d5f714b4`: DEPLOY OK, 270/270 md5 on production, 6 deleted; `.htaccess` + 2 WordPress JSON uploaded with the guarded script; **Worker NOT deployed yet**)
