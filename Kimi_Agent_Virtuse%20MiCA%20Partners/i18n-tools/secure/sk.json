@@ -76,5 +76,9 @@
  "pr_ledger_get": "Získať Ledger",
  "usd_fine": "Blockstream zverejňuje cenu Jade v USD.",
  "aff_note": "Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
- "aff_how": "Ako zarábame"
+ "aff_how": "Ako zarábame",
+ "i_h2_a": "Nechcete držať kľúče sami?",
+ "i_h2_b": "Regulovaní správcovia.",
+ "i_lead": "Pri úschove u správcu drží kľúče za vás regulovaný poskytovateľ. To nie je vlastná úschova: spoliehate sa na poskytovateľa. Každý sám rozhoduje, koho prijme za klienta; overte si to na jeho stránke.",
+ "i_treasury": "Bitcoin pre firmy: Treasury"
 }
