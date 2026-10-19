@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex, nofollow">
+<title>Verdict: návrh lievika | Virtuse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<!-- PROTOTYP (lokálny návrh, nie produkcia). Nič neposiela, výsledok je ukážka. -->
+<style>
+:root {
+  color-scheme: dark;
+  --dark: #08090a; --card: #141414; --card-hover: #1c1c1c; --inset: #0e0e0e;
+  --text: #e6edf3; --muted: #8b949e; --dim: #6e7681;
+  --line: rgba(255,255,255,0.07); --line-strong: rgba(255,255,255,0.14);
+  --orange: #f7931a; --orange-soft: rgba(247,147,26,0.12); --orange-line: rgba(247,147,26,0.45);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--dark); color: var(--text); font-family: Inter, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.5; min-height: 100vh; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.proto-bar { background: #2a1a05; color: #f3c88a; font-size: 13px; text-align: center; padding: 8px 16px; }
+.proto-bar a { color: #fff; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 80px; }
+.top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; min-height: 28px; }
+.brand { font-weight: 700; letter-spacing: .02em; font-size: 15px; }
+.brand span { color: var(--muted); font-weight: 400; }
+.back { background: none; border: 0; color: var(--muted); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.back:hover { color: var(--text); }
+.back[hidden] { display: none; }
+
+/* stepper */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+.step { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.step .lbl { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; white-space: nowrap; overflow: hidden; }
+.step .n { width: 22px; height: 22px; flex: none; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; font-size: 11px; }
+.step.on { color: var(--text); }
+.step.on .n { background: var(--orange); border-color: var(--orange); color: #0d0902; font-weight: 700; }
+.step.done { color: var(--muted); }
+.step.done .n { border-color: var(--orange-line); color: var(--orange); }
+.track { height: 5px; border-radius: 3px; background: var(--card-hover); overflow: hidden; }
+.track i { display: block; height: 100%; background: var(--orange); width: 0; transition: width .35s ease; }
+@media (max-width: 600px) { .step .t { display: none; } .step.on .t { display: inline; } }
+
+/* panel */
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+@media (max-width: 600px) { .panel { padding: 22px 18px; border-radius: 18px; } }
+.eyebrow { color: var(--orange); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+.chip-eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--orange-line); border-radius: 999px; padding: 6px 14px; color: var(--orange); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; }
+h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.12; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; }
+h1 span { color: var(--muted); font-weight: 400; }
+h2 { font-size: clamp(24px, 4.2vw, 32px); line-height: 1.15; font-weight: 700; margin-bottom: 10px; }
+.sub { color: var(--muted); font-size: 17px; margin-bottom: 6px; }
+.hint { color: var(--dim); font-size: 14px; margin-bottom: 22px; }
+.why { margin: 4px 0 20px; font-size: 13px; color: var(--dim); border-left: 2px solid var(--orange-line); padding-left: 10px; }
+
+/* options */
+.opts { display: grid; gap: 10px; margin-bottom: 16px; }
+.opts.two { grid-template-columns: 1fr 1fr; }
+@media (max-width: 600px) { .opts.two { grid-template-columns: 1fr; } }
+.opt { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; width: 100%; background: var(--inset); border: 1px solid var(--line-strong); border-radius: 999px; padding: 15px 22px; transition: border-color .15s, background .15s; }
+.opts.two .opt, .opt.box { border-radius: 16px; }
+.opt:hover { border-color: rgba(255,255,255,.28); }
+.opt small { display: block; color: var(--dim); font-size: 13px; margin-top: 2px; }
+.opt .ic { color: var(--dim); flex: none; }
+.opt.sel { border-color: var(--orange); background: var(--orange-soft); box-shadow: 0 0 0 1px var(--orange) inset; }
+.opt.sel .ic { color: var(--orange); }
+.alt { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; margin-bottom: 18px; }
+.ghost { background: none; border: 1px solid var(--line-strong); border-radius: 999px; padding: 10px 18px; font-size: 14px; color: var(--muted); }
+.ghost:hover { color: var(--text); border-color: rgba(255,255,255,.3); }
+.foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.foot .note { color: var(--dim); font-size: 14px; }
+.cta { background: var(--orange); color: #0d0902; border: 0; border-radius: 14px; padding: 15px 26px; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; }
+.cta[disabled] { opacity: .4; cursor: not-allowed; }
+.cta.light { background: #e6edf3; }
+textarea { width: 100%; min-height: 130px; resize: vertical; background: var(--inset); color: var(--text); border: 1px solid var(--line-strong); border-radius: 16px; padding: 14px 16px; font: 16px/1.5 inherit; font-family: inherit; }
+textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 1px; }
+.count { text-align: right; color: var(--dim); font-size: 12px; margin: 6px 0 14px; }
+.warn { color: var(--dim); font-size: 13px; margin-bottom: 14px; }
+.sugg { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.sugg button { background: none; border: 1px dashed var(--line-strong); border-radius: 999px; padding: 7px 14px; font-size: 13px; color: var(--muted); text-align: left; }
+.sugg button:hover { color: var(--text); border-color: var(--orange-line); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.chips .opt { width: auto; padding: 10px 16px; font-size: 15px; }
+
+/* interstitials */
+.tabs { display: flex; gap: 8px; margin: 18px 0 16px; flex-wrap: wrap; }
+.tabs button { border: 1px solid var(--line-strong); background: none; border-radius: 999px; padding: 8px 16px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.tabs button.on { background: var(--orange); border-color: var(--orange); color: #0d0902; }
+.inner { background: var(--inset); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.rings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+@media (max-width: 600px) { .rings { grid-template-columns: 1fr 1fr; } }
+.ring { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 10px; text-align: center; font-size: 13px; color: var(--muted); }
+.ring svg { display: block; margin: 0 auto 8px; }
+.dotfield { position: relative; height: 220px; margin: 10px 0 6px; }
+.dotfield span { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #3a3f46; transition: background .6s, transform .6s; }
+.dotfield span.hit { background: #f7931a; transform: scale(1.35); }
+.dotfield .halo { position: absolute; border: 1.5px dashed var(--orange-line); border-radius: 50%; width: 190px; height: 190px; right: 8%; top: 14px; }
+.ctx { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 8px; }
+@media (max-width: 600px) { .ctx { grid-template-columns: 1fr; } }
+.ctx b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 4px; }
+.ctx span { color: var(--muted); font-size: 14px; }
+
+/* review */
+.rv { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+.rv b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+.rv .edit { flex: none; }
+
+/* loading */
+.load { text-align: center; }
+.spin { width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--card-hover); border-top-color: var(--orange); margin: 6px auto 18px; animation: sp 1s linear infinite; }
+@keyframes sp { to { transform: rotate(360deg); } }
+.unlock { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 20px; text-align: left; display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center; }
+@media (max-width: 600px) { .unlock { grid-template-columns: 1fr; } }
+.mock { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; height: 150px; padding: 16px; display: grid; gap: 10px; align-content: end; }
+.mock i { display: block; height: 10px; border-radius: 5px; background: var(--card-hover); }
+.mock i.o { background: var(--orange); width: 60%; }
+.pager { display: flex; justify-content: center; gap: 6px; margin-top: 18px; }
+.pager i { width: 7px; height: 7px; border-radius: 50%; background: var(--card-hover); }
+.pager i.on { width: 22px; border-radius: 4px; background: var(--orange); }
+
+/* result */
+.res-head { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-bottom: 20px; }
+@media (max-width: 600px) { .res-head { grid-template-columns: 1fr; } }
+.score { text-align: center; }
+.score b { font-size: 46px; font-weight: 700; }
+.score small { color: var(--muted); font-size: 16px; }
+.pill { display: inline-block; border: 1px solid var(--orange-line); color: var(--orange); border-radius: 999px; padding: 4px 12px; font-size: 13px; margin-top: 6px; }
+.found { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 24px; }
+@media (max-width: 700px) { .found { grid-template-columns: 1fr; } }
+.found div { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.found b { display: block; margin-bottom: 6px; }
+.found p { color: var(--muted); font-size: 14px; }
+.sec { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 26px 0 12px; display: flex; align-items: center; gap: 12px; }
+.sec::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.sig2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .sig2 { grid-template-columns: 1fr; } }
+.sig { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+.sig .h { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.sig .h b { font-size: 18px; }
+.sig .h em { font-style: normal; font-size: 28px; font-weight: 700; }
+.sig .h em small { font-size: 13px; color: var(--muted); }
+.sig .tag { font-size: 13px; color: var(--muted); }
+.sig .bar { height: 6px; border-radius: 3px; background: var(--card-hover); margin: 10px 0 12px; overflow: hidden; }
+.sig .bar i { display: block; height: 100%; background: var(--orange); }
+.sig p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+.sig a, .route a { color: var(--text); font-size: 14px; display: inline-flex; gap: 6px; border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 14px; text-decoration: none; }
+.sig a:hover, .route a:hover { border-color: var(--orange-line); }
+.locked { background: var(--inset); border: 1px solid var(--orange-line); border-radius: 18px; padding: 18px; margin-top: 12px; }
+.locked .lh { display: flex; justify-content: space-between; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.locked .lh p { color: var(--muted); font-size: 14px; }
+.lgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 700px) { .lgrid { grid-template-columns: 1fr 1fr; } }
+.lgrid div { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; font-size: 13px; font-weight: 600; }
+.lgrid div i { display: block; height: 8px; border-radius: 4px; background: #2b2f35; margin-top: 10px; filter: blur(1.5px); }
+.lgrid div i + i { width: 60%; }
+.route { display: grid; gap: 10px; }
+.route .r { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+.route .r b { display: block; }
+.route .r span { color: var(--muted); font-size: 14px; }
+.price { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; margin-top: 12px; }
+@media (max-width: 700px) { .price { grid-template-columns: 1fr; } }
+.price > div { padding: 22px; }
+.price > div + div { background: var(--inset); border-left: 1px solid var(--line); }
+.price ul { list-style: none; display: grid; gap: 8px; margin-top: 12px; color: var(--muted); font-size: 14px; }
+.price ul li::before { content: "✓ "; color: var(--orange); }
+.price .amt { font-size: 40px; font-weight: 700; margin: 6px 0; }
+.small { font-size: 12px; color: var(--dim); margin-top: 14px; }
+.hidden { display: none !important; }
+
+/* architektúra */
+.arch { margin-top: 40px; }
+.arch .flow { display: grid; gap: 10px; }
+.arch .node { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.arch .node b { display: block; margin-bottom: 2px; }
+.arch .node span { color: var(--muted); font-size: 14px; }
+.arch .node.core { border-color: var(--orange-line); }
+.arch .arrow { text-align: center; color: var(--dim); font-size: 13px; }
+.arch .row3 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 700px) { .arch .row3 { grid-template-columns: 1fr 1fr; } }
+.arch table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+.arch td, .arch th { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.arch th { color: var(--muted); font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.arch td:first-child { white-space: nowrap; }
+.arch .wrapt { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="proto-bar">Prototyp lievika Verdict. Nič sa neodosiela, výsledok je ukážka. <a href="#arch">Ako to spája nástroje ↓</a></div>
+<div class="wrap">
+  <div class="top">
+    <button class="back" id="back" hidden>← Späť</button>
+    <div class="brand">Virtuse <span>· Verdict</span></div>
+  </div>
+  <div class="steps" id="steps"></div>
+  <div class="panel" id="panel"></div>
+
+  <section class="arch" id="arch">
+    <div class="sec">Architektúra: jeden profil pre všetky nástroje</div>
+    <div class="flow">
+      <div class="node core"><b>1. Spoločný profil (raz, 60 sekúnd)</b><span>Cieľ · krajina · skúsenosti · suma · podiel na majetku · horizont · rezerva · kto drží kľúče · reakcia na prepad. Uloží sa len v prehliadači návštevníka (localStorage <code>vb-profile</code>), kým sa nerozhodne poslať ho.</span></div>
+      <div class="arrow">↓ ten istý profil číta každý nástroj, nikto sa nepýta dvakrát</div>
+      <div class="row3">
+        <div class="node"><b>Verdict</b><span>Profil + vlastné slová → 10 signálov, skóre, najslabšie miesto</span></div>
+        <div class="node"><b>Partner Finder</b><span>Profil → partneri podľa kritérií (dnes 5 otázok, z profilu 0)</span></div>
+        <div class="node"><b>Stacking / Loan</b><span>Suma, horizont, rezerva → predvyplnené posuvníky</span></div>
+        <div class="node"><b>Tax Agent</b><span>Krajina → pravidlá krajiny, úschova → dedičský test</span></div>
+      </div>
+      <div class="arrow">↓ výsledok vždy končí jedným ďalším krokom, nie slepou uličkou</div>
+      <div class="node"><b>2. Ďalší krok podľa najslabšieho signálu</b><span>Najhorší scenár / horizont → Stacking · Likvidita / Plán B → Loan Copilot · Dane / Úschova → Tax Agent · keď je rozhodnutie pripravené → Partner Finder s predvyplneným profilom</span></div>
+      <div class="arrow">↓</div>
+      <div class="node core"><b>3. Monetizácia</b><span>Verdict zadarmo (skóre + 2 signály + najslabšie miesto) → Celý report 14 € (všetkých 10 signálov s dôvodmi, chýbajúce otázky, plán krokov) → Virtuse CFO 9 €/mes. (sledovanie rozhodnutí v čase). Partner Finder ostáva zadarmo.</span></div>
+    </div>
+
+    <div class="sec">Ktorá otázka napĺňa ktorý signál</div>
+    <div class="wrapt"><table>
+      <tr><th>Otázka v lieviku</th><th>Signál</th><th>Použije aj</th></tr>
+      <tr><td>Čo zvažujete</td><td>Cieľ, Alternatívy</td><td>Partner Finder (cieľ)</td></tr>
+      <tr><td>Koľko z majetku</td><td>Najhorší scenár, Asymetria</td><td>Stacking (suma)</td></tr>
+      <tr><td>Kedy môžete peniaze potrebovať</td><td>Časový horizont, Likvidita</td><td>Loan Copilot</td></tr>
+      <tr><td>Rezerva na 6 mesiacov</td><td>Likvidita, Plán B</td><td>Loan Copilot</td></tr>
+      <tr><td>Daňová rezidencia</td><td>Dane</td><td>Tax Agent, Partner Finder</td></tr>
+      <tr><td>Kto drží kľúče, kto vie o BTC</td><td>Úschova a dedičstvo</td><td>Tax Agent (dedičstvo), Partner Finder</td></tr>
+      <tr><td>Čo urobíte pri prepade −50 %</td><td>Pravidlo, nie emócia; Najhorší scenár</td><td>Stacking</td></tr>
+      <tr><td>Vlastné slová (voľný text)</td><td>všetkých 10, doplní detaily</td><td>len Verdict</td></tr>
+    </table></div>
+    <p class="small">Prečo: dnes AI dostane len voľný text a pri chýbajúcich údajoch hádže nízke body („nespomína rezervu“). Po štruktúrovaných otázkach má každý signál vstup, výsledok je konkrétny a stabilnejší, a odpovede sa dajú odovzdať ďalším nástrojom.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var A = { goal: null, text: '', country: null, share: null, horizon: null, reserve: null, keys: null, drop: null, focus: [] };
+  var STEPS = ['Rozhodnutie', 'O vás', 'Váš plán', 'Kontrola'];
+  var SV = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var CK = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+  var GOALS = [
+    ['buy', 'Kúpiť Bitcoin', 'Prvý nákup alebo väčšia jednorazová suma'],
+    ['dca', 'Pravidelne dokupovať', 'Mesačne alebo týždenne'],
+    ['loan', 'Pôžička krytá Bitcoinom', 'Hotovosť bez predaja'],
+    ['sell', 'Predať časť Bitcoinu', 'Výber zisku, nákup niečoho iného'],
+    ['treasury', 'Bitcoin vo firme', 'Časť hotovosti firmy do BTC'],
+    ['custody', 'Úschova a dedičstvo', 'Kľúče, multisig, kto sa k BTC dostane']
+  ];
+  var SUGG = {
+    buy: ['Chcem kúpiť Bitcoin za 10 000 € z úspor a držať ho 5 rokov.', 'Zvažujem dať do Bitcoinu polovicu peňazí z predaja bytu.'],
+    dca: ['Chcem každý mesiac kupovať Bitcoin za 200 € najbližších 10 rokov.', 'Chcem presunúť sporenie z ETF do Bitcoinu, 300 € mesačne.'],
+    loan: ['Chcem si požičať 20 000 € oproti 0,5 BTC na rekonštrukciu.', 'Zvažujem pôžičku krytú Bitcoinom namiesto hypotéky.'],
+    sell: ['Chcem predať 30 % Bitcoinu a kúpiť auto.', 'Rozmýšľam, či predať časť po raste o 80 %.'],
+    treasury: ['Chcem dať 20 % hotovosti firmy do Bitcoinu na 5 rokov.', 'Firma má 200 000 € rezervu, uvažujeme o 10 % v BTC.'],
+    custody: ['Chcem presunúť Bitcoin z burzy na hardvérovú peňaženku.', 'Chcem, aby sa manželka dostala k môjmu Bitcoinu, ak sa mi niečo stane.']
+  };
+  var COUNTRIES = ['Slovensko', 'Česko', 'Rakúsko', 'Nemecko', 'Poľsko', 'Maďarsko', 'Iná krajina'];
+
+  // each screen: step index, progress within step (0..1), render fn
+  var SCREENS = [
+    { s: 0, p: .2, r: start },
+    { s: 0, p: .45, r: goal },
+    { s: 0, p: .75, r: text },
+    { s: 0, p: 1, r: how },
+    { s: 1, p: .2, r: q('country') },
+    { s: 1, p: .4, r: q('share') },
+    { s: 1, p: .6, r: q('horizon') },
+    { s: 1, p: .8, r: q('reserve') },
+    { s: 1, p: 1, r: q('keys') },
+    { s: 2, p: .4, r: q('drop') },
+    { s: 2, p: .7, r: context },
+    { s: 2, p: 1, r: focus },
+    { s: 3, p: .6, r: review },
+    { s: 3, p: 1, r: loading },
+    { s: 3, p: 1, r: result }
+  ];
+  var QS = {
+    country: { eb: 'O vás', h: 'V ktorej krajine platíte dane?', sub: 'Pravidlá pre Bitcoin sa medzi krajinami výrazne líšia.', why: 'Napĺňa signál Dane. Rovnakú odpoveď použije Tax Agent a Partner Finder.', chips: COUNTRIES },
+    share: { eb: 'O vás', h: 'Koľko z vášho majetku to bude?', sub: 'Odhad stačí. Rátajte úspory a investície, nie bývanie.', why: 'Napĺňa signály Najhorší scenár a Asymetria.', opts: [['lt5', 'Menej ako 5 %'], ['5_20', '5 až 20 %'], ['20_50', '20 až 50 %'], ['gt50', 'Viac ako polovica'], ['na', 'Neviem odhadnúť']] },
+    horizon: { eb: 'O vás', h: 'Kedy môžete tieto peniaze potrebovať?', sub: 'Bitcoin môže padnúť o 70 % a roky sa nevrátiť.', why: 'Napĺňa signály Časový horizont a Likvidita.', opts: [['lt1', 'Do 1 roka'], ['1_4', 'O 1 až 4 roky'], ['gt4', 'O viac ako 4 roky'], ['never', 'Neplánujem ich minúť']] },
+    reserve: { eb: 'O vás', h: 'Máte bokom rezervu aspoň na 6 mesiacov výdavkov?', sub: 'Mimo Bitcoinu, v hotovosti alebo na účte.', why: 'Napĺňa signály Likvidita a Plán B. Loan Copilot ju použije v scenároch.', opts: [['yes', 'Áno'], ['part', 'Čiastočne'], ['no', 'Nie']] },
+    keys: { eb: 'O vás', h: 'Kto bude držať kľúče a kto o nich vie?', sub: 'Úschova je časť rozhodnutia, nie detail.', why: 'Napĺňa signál Úschova a dedičstvo.', opts: [['exch', 'Burza alebo aplikácia'], ['self', 'Ja, na vlastnej peňaženke'], ['selfplan', 'Ja, a blízky vie, ako sa k nim dostať'], ['na', 'Ešte neviem']] },
+    drop: { eb: 'Váš plán', h: 'Bitcoin padne o 50 %. Čo urobíte?', sub: 'Odpovedzte podľa toho, čo by ste naozaj urobili.', why: 'Napĺňa signály Pravidlo, nie emócia a Najhorší scenár.', opts: [['buy', 'Dokúpim podľa vopred daného pravidla'], ['hold', 'Podržím, nič nerobím'], ['sell', 'Predám časť alebo všetko'], ['na', 'Neviem']] }
+  };
+  var LABELS = {};
+  Object.keys(QS).forEach(function (k) { (QS[k].opts || []).forEach(function (o) { LABELS[k + ':' + o[0]] = o[1]; }); });
+
+  var i = 0, panel = document.getElementById('panel'), back = document.getElementById('back');
+  back.onclick = function () { if (i > 0) go(i === 14 ? 12 : i - 1); };
+
+  function stepper() {
+    var cur = SCREENS[i];
+    document.getElementById('steps').innerHTML = STEPS.map(function (t, k) {
+      var st = k < cur.s ? 'done' : k === cur.s ? 'on' : '';
+      var w = k < cur.s ? 100 : k === cur.s ? cur.p * 100 : 0;
+      return '<div class="step ' + st + '"><div class="lbl"><span class="n">' + (k < cur.s ? '✓' : k + 1) + '</span><span class="t">' + t + '</span></div><div class="track"><i style="width:' + w + '%"></i></div></div>';
+    }).join('');
+  }
+  function go(n) { i = n; back.hidden = i === 0 || i === 13; stepper(); SCREENS[i].r(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  function next() { go(i + 1); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function alt(skipTo) {
+    return '<div class="alt"><button class="ghost" data-own>✎ Napísať vlastnú odpoveď</button><button class="ghost" data-skip>? Zatiaľ neviem</button></div>';
+  }
+  function bindAlt(key) {
+    var own = panel.querySelector('[data-own]'), skip = panel.querySelector('[data-skip]');
+    if (skip) skip.onclick = function () { A[key] = 'na'; next(); };
+    if (own) own.onclick = function () {
+      var v = prompt('Vaša odpoveď:'); if (v) { A[key] = 'own:' + v; next(); }
+    };
+  }
+
+  function start() {
+    panel.innerHTML =
+      '<div class="chip-eyebrow">Verdict · zadarmo</div>' +
+      '<h1>Pomáhame investorom robiť <span>múdre rozhodnutia.</span></h1>' +
+      '<p class="sub">Skôr ako kúpite, predáte alebo si požičiate, otestujte svoje rozhodnutie na 10 signáloch. Najprv sa vás opýtame, čo AI potrebuje vedieť, potom dostanete verdikt.</p>' +
+      '<p class="hint">Asi 2 minúty · bez účtu · nie je to investičné poradenstvo</p>' +
+      '<div class="foot"><span class="note">8 krátkych otázok + vaše vlastné slová</span><button class="cta" id="go">Začať ' + SV + '</button></div>';
+    document.getElementById('go').onclick = next;
+  }
+  function goal() {
+    panel.innerHTML =
+      '<div class="eyebrow">Vaše rozhodnutie</div><h2>Čo zvažujete?</h2><p class="sub">Vyberte to, čo je najbližšie.</p><p class="hint">Rovnaké kategórie používa Partner Finder.</p>' +
+      '<div class="opts">' + GOALS.map(function (g) { return '<button class="opt' + (A.goal === g[0] ? ' sel' : '') + '" data-v="' + g[0] + '"><span>' + g[1] + '<small>' + g[2] + '</small></span>' + (A.goal === g[0] ? CK : SV) + '</button>'; }).join('') + '</div>' +
+      alt();
+    panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { A.goal = b.dataset.v; next(); }; });
+    bindAlt('goal');
+  }
+  function text() {
+    var s = SUGG[A.goal] || SUGG.buy;
+    panel.innerHTML =
+      '<div class="eyebrow">Vaše rozhodnutie</div><h2>Opíšte ho vlastnými slovami.</h2><p class="sub">Suma, čas, odkiaľ peniaze idú. Jedna až tri vety stačia.</p><p class="hint">Alebo začnite od príkladu a upravte ho.</p>' +
+      '<div class="sugg">' + s.map(function (t) { return '<button>' + esc(t) + '</button>'; }).join('') + '</div>' +
+      '<textarea id="tx" maxlength="1200" placeholder="Napríklad: Chcem kúpiť Bitcoin za 10 000 € z úspor a držať ho 5 rokov.">' + esc(A.text) + '</textarea>' +
+      '<div class="count"><span id="cn">' + A.text.length + '</span> / 1200</div>' +
+      '<p class="warn">Nepíšte mená, zdravotné údaje ani čísla účtov.</p>' +
+      '<div class="foot"><span class="note" id="tn"></span><button class="cta" id="c">Pokračovať ' + SV + '</button></div>';
+    var tx = document.getElementById('tx'), c = document.getElementById('c'), tn = document.getElementById('tn');
+    function upd() { A.text = tx.value; document.getElementById('cn').textContent = tx.value.length; var ok = tx.value.trim().length >= 20; c.disabled = !ok; tn.textContent = ok ? '' : 'Aspoň jedna veta'; }
+    panel.querySelectorAll('.sugg button').forEach(function (b) { b.onclick = function () { tx.value = b.textContent; upd(); tx.focus(); }; });
+    tx.oninput = upd; upd(); c.onclick = next;
+  }
+  function ringSvg(v) {
+    var r = 30, c = 2 * Math.PI * r;
+    return '<svg width="76" height="76" viewBox="0 0 76 76"><circle cx="38" cy="38" r="' + r + '" stroke="#2b2f35" stroke-width="5" fill="none"/><circle cx="38" cy="38" r="' + r + '" stroke="#f7931a" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * v / 10) + ' ' + c + '" transform="rotate(-90 38 38)"/><text x="38" y="44" text-anchor="middle" fill="#e6edf3" font-size="18" font-weight="700" font-family="Inter">' + v + '</text></svg>';
+  }
+  function how() {
+    var G = {
+      'Riziko': [['Najhorší scenár', 7], ['Likvidita', 5], ['Plán B', 4]],
+      'Dane a úschova': [['Dane', 6], ['Úschova a dedičstvo', 3], ['Alternatívy', 7]],
+      'Plán': [['Cieľ', 8], ['Časový horizont', 7], ['Pravidlo, nie emócia', 5]]
+    };
+    var keys = Object.keys(G), cur = 0;
+    function draw() {
+      panel.querySelector('.tabs').innerHTML = keys.map(function (k, n) { return '<button class="' + (n === cur ? 'on' : '') + '" data-n="' + n + '">' + k + '</button>'; }).join('');
+      panel.querySelector('.rings').innerHTML = G[keys[cur]].map(function (x) { return '<div class="ring">' + ringSvg(x[1]) + x[0] + '</div>'; }).join('');
+      panel.querySelectorAll('.tabs button').forEach(function (b) { b.onclick = function () { cur = +b.dataset.n; draw(); }; });
+    }
+    panel.innerHTML =
+      '<div class="chip-eyebrow">Ako to funguje</div><h2>10 signálov. Jeden poctivý obraz.</h2>' +
+      '<p class="sub">Každé rozhodnutie hodnotíme rovnako, aby ste videli, kde naozaj stojí. Ďalších 6 otázok dá AI údaje, ktoré by inak hádala.</p>' +
+      '<div class="inner"><div class="tabs"></div><div class="rings"></div><p class="small">Ukážkové body, nie vaše. Každý signál 0 až 10, skóre je ich súčet.</p></div>' +
+      '<div class="foot" style="margin-top:20px"><span></span><button class="cta" id="c">Pokračovať ' + SV + '</button></div>';
+    draw(); document.getElementById('c').onclick = next;
+  }
+  function q(key) {
+    return function () {
+      var Q = QS[key], h = '<div class="eyebrow">' + Q.eb + '</div><h2>' + Q.h + '</h2><p class="sub">' + Q.sub + '</p><p class="why">' + Q.why + '</p>';
+      if (Q.chips) {
+        h += '<div class="chips">' + Q.chips.map(function (c) { return '<button class="opt' + (A[key] === c ? ' sel' : '') + '" data-v="' + c + '">' + c + '</button>'; }).join('') + '</div>';
+      } else {
+        h += '<div class="opts">' + Q.opts.map(function (o) { return '<button class="opt' + (A[key] === o[0] ? ' sel' : '') + '" data-v="' + o[0] + '"><span>' + o[1] + '</span>' + (A[key] === o[0] ? CK : SV) + '</button>'; }).join('') + '</div>';
+      }
+      panel.innerHTML = h + alt();
+      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { A[key] = b.dataset.v; setTimeout(next, 160); b.classList.add('sel'); }; });
+      bindAlt(key);
+    };
+  }
+  function ans(key) {
+    var v = A[key]; if (!v) return 'Neuvedené';
+    if (v === 'na') return 'Zatiaľ neviem';
+    if (String(v).indexOf('own:') === 0) return v.slice(4);
+    return LABELS[key + ':' + v] || v;
+  }
+  function context() {
+    var g = GOALS.find(function (x) { return x[0] === A.goal; });
+    var dots = '', n = 70;
+    for (var k = 0; k < n; k++) {
+      var x = (k * 37) % 92 + 2, y = (k * 53) % 86 + 4;
+      dots += '<span style="left:' + x + '%;top:' + y + '%"' + (x > 62 && y < 90 && y > 6 && k % 2 ? ' class="hit"' : '') + '></span>';
+    }
+    panel.innerHTML =
+      '<div class="chip-eyebrow">Váš kontext</div><h2>Vaše rozhodnutie má teraz pevný rámec.</h2>' +
+      '<p class="sub">Väčšina rozhodnutí zlyhá na tom, čo sa nepovedalo nahlas: kedy budete peniaze potrebovať, čo urobíte pri prepade a kto sa k nim dostane. Teraz to AI vie a nemusí hádať.</p>' +
+      '<div class="inner" style="margin-top:16px"><div class="dotfield"><div class="halo"></div>' + dots + '</div>' +
+      '<div class="ctx"><div><b>Čo zvažujete</b><span>' + (g ? g[1] : ans('goal')) + '</span></div><div><b>Vaše hranice</b><span>' + ans('share') + ' majetku · ' + ans('horizon').toLowerCase() + ' · rezerva: ' + ans('reserve').toLowerCase() + '</span></div></div></div>' +
+      '<div class="foot" style="margin-top:20px"><span></span><button class="cta" id="c">Pokračovať ' + SV + '</button></div>';
+    document.getElementById('c').onclick = next;
+  }
+  function focus() {
+    var F = [['risk', 'Kde je najväčšie riziko?'], ['drop', 'Zvládnem to pri prepade?'], ['tax', 'Čo s daňami a úschovou?'], ['next', 'Čo mám urobiť ako ďalšie?']];
+    function draw() {
+      panel.innerHTML =
+        '<div class="eyebrow">Váš plán</div><h2>Čo chcete zistiť najviac?</h2><p class="sub">Na to sa vo verdikte zameriame.</p><p class="hint">Vyberte jedno alebo viac.</p>' +
+        '<div class="opts">' + F.map(function (f) { var s = A.focus.indexOf(f[0]) >= 0; return '<button class="opt' + (s ? ' sel' : '') + '" data-v="' + f[0] + '"><span>' + f[1] + '</span>' + (s ? CK : SV) + '</button>'; }).join('') + '</div>' +
+        '<div class="foot"><span class="note">' + (A.focus.length ? A.focus.length + ' vybrané' : 'Vyberte aspoň jedno') + '</span><button class="cta" id="c"' + (A.focus.length ? '' : ' disabled') + '>Pokračovať ' + SV + '</button></div>';
+      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { var v = b.dataset.v, p = A.focus.indexOf(v); if (p >= 0) A.focus.splice(p, 1); else A.focus.push(v); draw(); }; });
+      document.getElementById('c').onclick = next;
+    }
+    draw();
+  }
+  function review() {
+    var g = GOALS.find(function (x) { return x[0] === A.goal; });
+    var rows = [
+      ['Čo zvažujete', g ? g[1] : ans('goal'), 1], ['Vlastnými slovami', A.text || 'Neuvedené', 2], ['Krajina', ans('country'), 4],
+      ['Podiel na majetku', ans('share'), 5], ['Kedy peniaze potrebujete', ans('horizon'), 6], ['Rezerva na 6 mesiacov', ans('reserve'), 7],
+      ['Kľúče', ans('keys'), 8], ['Pri prepade o 50 %', ans('drop'), 9]
+    ];
+    panel.innerHTML =
+      '<div class="chip-eyebrow">Posledná kontrola</div><h2>Takto vaše rozhodnutie pochopíme.</h2><p class="sub">Opravte, čo nesedí. Presne toto pôjde do hodnotenia.</p><div style="margin-top:18px">' +
+      rows.map(function (r) { return '<div class="rv"><div><b>' + r[0] + '</b>' + esc(r[1]) + '</div><button class="ghost edit" data-to="' + r[2] + '">✎ Upraviť</button></div>'; }).join('') +
+      '</div><p class="warn" style="margin-top:12px">Hodnotí AI (Anthropic). Môže sa mýliť. Nie je to investičné poradenstvo.</p>' +
+      '<div class="foot"><span></span><button class="cta" id="c">Získať verdikt zadarmo ' + SV + '</button></div>';
+    panel.querySelectorAll('[data-to]').forEach(function (b) { b.onclick = function () { go(+b.dataset.to); }; });
+    document.getElementById('c').onclick = next;
+  }
+  function loading() {
+    var U = [
+      ['Všetkých 10 signálov', 'Každý signál s bodmi a dôvodom, napísaným pre vaše rozhodnutie.'],
+      ['Najslabšie miesto', 'Ktorý signál vás ťahá dole a čo s ním urobiť.'],
+      ['Chýbajúce otázky', 'Na čo ste nemysleli a čo by mal každý zvážiť predtým, ako koná.'],
+      ['Ďalší krok', 'Ktorý nástroj Virtuse použiť ďalej, s vašimi odpoveďami už vyplnenými.']
+    ], k = 0, steps = ['Čítame vaše rozhodnutie a profil…', 'Hodnotíme 10 signálov…', 'Hľadáme najslabšie miesto…'];
+    panel.innerHTML = '<div class="load"><div class="spin"></div><h2>Kontrolujeme vaše rozhodnutie</h2><p class="sub" id="ls">' + steps[0] + '</p>' +
+      '<div class="unlock"><div class="mock"><i style="width:40%"></i><i class="o"></i><i style="width:80%"></i><i style="width:55%"></i></div><div><div class="eyebrow">Čo dostanete</div><h3 id="ut" style="font-size:22px;margin-bottom:6px"></h3><p class="sub" id="ud" style="font-size:15px"></p></div></div>' +
+      '<div class="pager" id="pg"></div><p class="small">Zvyčajne 5 až 15 sekúnd. Nechajte stránku otvorenú.</p></div>';
+    function show() {
+      document.getElementById('ut').textContent = U[k][0]; document.getElementById('ud').textContent = U[k][1];
+      document.getElementById('pg').innerHTML = U.map(function (_, n) { return '<i class="' + (n === k ? 'on' : '') + '"></i>'; }).join('');
+      document.getElementById('ls').textContent = steps[Math.min(k, steps.length - 1)];
+    }
+    show();
+    var t = setInterval(function () { k++; if (k >= U.length) { clearInterval(t); next(); return; } show(); }, 1100);
+  }
+
+  function result() {
+    // ukážkový výsledok: najslabšie miesto odvodené z odpovedí, aby demo reagovalo
+    var weak = A.keys === 'exch' || A.keys === 'na' ? 'custody' : A.reserve === 'no' ? 'liquidity' : A.drop === 'sell' ? 'rule' : A.country === 'Slovensko' ? 'tax' : 'worst';
+    var W = {
+      custody: ['Úschova a dedičstvo', 3, 'Kľúče ostávajú na burze a nikto blízky nevie, ako sa k Bitcoinu dostať. Pri probléme burzy alebo pri úmrtí môže byť suma nedostupná.', 'tax-agent.html?utm_source=verdict', 'Tax & Inheritance Agent'],
+      liquidity: ['Likvidita', 3, 'Bez rezervy na 6 mesiacov vás nečakaný výdavok môže prinútiť predať v najhoršej chvíli.', 'loan.html?utm_source=verdict', 'Loan & Liquidity Copilot'],
+      rule: ['Pravidlo, nie emócia', 3, 'Pri prepade by ste predávali. Bez pravidla vopred je to najčastejší dôvod straty.', 'stacking.html?utm_source=verdict', 'Stacking Strategist'],
+      tax: ['Dane', 4, 'Na Slovensku je každý predaj aj výmena kryptomien zdaniteľná a oslobodenie po roku držby neexistuje. Rozhodnutie s tým zatiaľ nepočíta.', 'tax-agent.html?country=sk&utm_source=verdict', 'Tax & Inheritance Agent'],
+      worst: ['Najhorší scenár', 4, 'Pri prepade o 70 % by strata zasiahla veľkú časť majetku. Rozhodnutie nehovorí, či by ste to uniesli.', 'stacking.html?utm_source=verdict', 'Stacking Strategist']
+    }[weak];
+    var g = GOALS.find(function (x) { return x[0] === A.goal; });
+    var pfGoal = { buy: 'buy', dca: 'buy', loan: 'loan', sell: 'buy', treasury: 'treasury', custody: 'custody' }[A.goal] || 'buy';
+    var score = weak === 'custody' ? 55 : weak === 'tax' ? 60 : 50;
+    panel.innerHTML =
+      '<div class="res-head"><div><div class="eyebrow">Váš verdikt · ' + (g ? g[1] : 'Rozhodnutie') + '</div>' +
+      '<h2>Rozhodnutie dáva zmysel, ale jedna vec ho môže zhodiť.</h2><p class="sub" style="font-size:15px">„' + esc((A.text || '').slice(0, 140)) + ((A.text || '').length > 140 ? '…' : '') + '“</p></div>' +
+      '<div class="score"><b>' + score + '</b><small>/100</small><br><span class="pill">Premyslite ešte</span></div></div>' +
+
+      '<div class="sec">Čo Verdict našiel</div><div class="found">' +
+      '<div><b>Silné miesto</b><p>Máte jasný cieľ a horizont dlhší ako jeden cyklus. To je základ, na ktorom väčšina rozhodnutí stojí.</p></div>' +
+      '<div><b>Najslabšie miesto</b><p>' + W[0] + ': ' + W[2] + '</p></div>' +
+      '<div><b>Čo chýba</b><p>Pravidlo, kedy dokúpite alebo predáte, a kto sa k BTC dostane, ak vy nebudete môcť.</p></div></div>' +
+
+      '<div class="sec">Dva signály zadarmo</div><div class="sig2">' +
+      sig('Časový horizont', 8, 'Silné', 'Peniaze nebudete potrebovať skôr ako o 4 roky. Prežijete aj dlhší pokles bez nútenia predať.', 'stacking.html?utm_source=verdict', 'Stacking Strategist') +
+      sig(W[0], W[1], 'Najslabšie', W[2], W[3], W[4]) + '</div>' +
+
+      '<div class="locked"><div class="lh"><div><b style="font-size:18px">8 ďalších signálov je pripravených</b><p>Každý už má body a dôvod, napísaný pre vaše rozhodnutie.</p></div><button class="cta" id="u1">🔒 Celý report za 14 €</button></div>' +
+      '<div class="lgrid">' + ['Najhorší scenár', 'Likvidita', 'Dane', 'Plán B', 'Cieľ', 'Alternatívy', 'Pravidlo, nie emócia', 'Asymetria'].filter(function (n) { return n !== W[0]; }).slice(0, 8).map(function (n) { return '<div>🔒 ' + n + '<i></i><i></i></div>'; }).join('') + '</div></div>' +
+
+      '<div class="sec">Váš ďalší krok</div><div class="route">' +
+      '<div class="r"><div><b>Opravte najslabšie miesto</b><span>' + W[4] + ' s vašimi odpoveďami už vyplnenými</span></div><a href="' + W[3] + '">Otvoriť →</a></div>' +
+      '<div class="r"><div><b>Keď ste pripravení konať</b><span>Partner Finder ukáže partnerov podľa vašich kritérií, bez ďalších otázok</span></div><a href="concierge.html?goal=' + pfGoal + '&utm_source=verdict">Partner Finder →</a></div>' +
+      '</div>' +
+
+      '<div class="sec">Celý report</div><div class="price"><div><h3 style="font-size:24px">Viac istoty, kým konáte.</h3><p class="sub" style="font-size:15px">Nájdite slabé miesta skôr, ako vás budú stáť peniaze.</p><ul><li>Všetkých 10 signálov s dôvodmi</li><li>Chýbajúce otázky pre vaše rozhodnutie</li><li>Plán krokov s nástrojmi Virtuse</li><li>PDF na neskôr, ostáva vám natrvalo</li></ul></div>' +
+      '<div><div class="eyebrow">Jednorazovo</div><div class="amt">14 €</div><p class="sub" style="font-size:14px">Žiadne predplatné.</p><button class="cta" id="u2" style="width:100%;justify-content:center;margin-top:14px">Odomknúť celý report</button><p class="small">Do 1. novembra zbierame záujem: tlačidlo vás zapíše na zoznam, nič neplatíte.</p></div></div>' +
+
+      '<p class="small" style="margin-top:22px">Hodnotí AI (Anthropic), môže sa mýliť. Skóre je súčet 10 signálov, zaokrúhlený na 5. Verdict nie je investičné, daňové ani právne poradenstvo a neodporúča konkrétneho poskytovateľa.</p>' +
+      '<div class="foot" style="margin-top:18px"><button class="ghost" id="again">↺ Ohodnotiť ďalšie rozhodnutie</button></div>';
+    function lock() { alert('Prototyp: tu by bola čakacia listina (do 1. 11.) alebo platba 14 €.'); }
+    document.getElementById('u1').onclick = lock; document.getElementById('u2').onclick = lock;
+    document.getElementById('again').onclick = function () { A.text = ''; go(1); };
+  }
+  function sig(name, pts, lab, txt, href, tool) {
+    return '<div class="sig"><div class="h"><div><b>' + name + '</b><div class="tag">' + lab + '</div></div><em>' + pts + '<small>/10</small></em></div><div class="bar"><i style="width:' + pts * 10 + '%"></i></div><p>' + txt + '</p><a href="' + href + '">Zlepšiť v ' + tool + ' →</a></div>';
+  }
+  go(0);
+})();
+</script>
+</body>
+</html>
