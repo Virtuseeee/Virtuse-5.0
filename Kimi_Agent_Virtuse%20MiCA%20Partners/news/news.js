@@ -7,6 +7,9 @@
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
   var FEATURED_SLUG = 'a-billion-out-bitcoin-holds-80k';
+  /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
+     as the featured cover, the WordPress featured image does not replace it. */
+  var LATEST_ISSUE = null;
   var THEME_KEY = 'vb-theme-blog';
   var THEME_DARK = '#08090a';
   var THEME_LIGHT = '#FBFBFA';
@@ -888,9 +891,12 @@
     }
     linkStories();
   }
+  function ownCover(issue) {
+    return !!(issue && issue.image && !/^https?:\/\/blog\.virtuse\.com\//.test(issue.image));
+  }
   function applyFeaturedCover(post) {
     var img = document.querySelector('#featured .featured-cover img');
-    if (!img || !post) return;
+    if (!img || !post || ownCover(LATEST_ISSUE)) return;
     var url = imgOf(post);
     if (!url || img.getAttribute('src') === url) return;
     sizedImg(img, url, FEATURED_SIZES);
@@ -929,11 +935,12 @@
     linkStories();
   }
 
-  j('news/issues.json?v=20261019a').then(function (data) {
+  j('news/issues.json?v=20261019b').then(function (data) {
     var list = (data && data.issues) || [];
     var latest = latestIssue(list);
     if (latest) {
       FEATURED_SLUG = latest.slug;
+      LATEST_ISSUE = latest;
       paintFeatured(latest);
     }
     paintArchive(list);
