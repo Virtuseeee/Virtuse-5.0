@@ -21,6 +21,7 @@
 -mkdir public_html/stories/6-things-you-need-to-know-about-ftx-and-sam-bankman-fried
 -mkdir public_html/stories/7-new-crypto-billionaires-on-forbes-400-ras-vasilisin
 -mkdir public_html/stories/8-investment-strategies-to-embrace-right-now
+-mkdir public_html/stories/a-billion-out-bitcoin-holds-80k
 -mkdir public_html/stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022
 -mkdir public_html/stories/after-this-war-is-over-money-will-never-be-the-same
 -mkdir public_html/stories/are-you-using-these-3-life-hacks
@@ -642,6 +643,7 @@ put stories/5-reasons-why-you-should-own-bitcoin-in-2022-ras-vasilisin/index.htm
 put stories/6-things-you-need-to-know-about-ftx-and-sam-bankman-fried/index.html public_html/stories/6-things-you-need-to-know-about-ftx-and-sam-bankman-fried/index.html
 put stories/7-new-crypto-billionaires-on-forbes-400-ras-vasilisin/index.html public_html/stories/7-new-crypto-billionaires-on-forbes-400-ras-vasilisin/index.html
 put stories/8-investment-strategies-to-embrace-right-now/index.html public_html/stories/8-investment-strategies-to-embrace-right-now/index.html
+put stories/a-billion-out-bitcoin-holds-80k/index.html public_html/stories/a-billion-out-bitcoin-holds-80k/index.html
 put stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022/index.html public_html/stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022/index.html
 put stories/after-this-war-is-over-money-will-never-be-the-same/index.html public_html/stories/after-this-war-is-over-money-will-never-be-the-same/index.html
 put stories/are-you-using-these-3-life-hacks/index.html public_html/stories/are-you-using-these-3-life-hacks/index.html
