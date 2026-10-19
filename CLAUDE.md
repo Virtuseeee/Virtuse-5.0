@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-19, fourth round) — Reader ignores "Signature: …" image captions (article.js `?v=20261019`; on main, **production not uploaded yet**)
+
+- `article.js` hero credit: a WordPress media caption that starts with "Signature:" or is one token over 120 characters with no spaces is treated as empty, so AI-image JPEG metadata never shows as an "Image:" credit again (the 6 captions were cleared by hand earlier the same day). Normal credits ("Photo: Reuters", "Unsplash") still show; checked locally with injected fake captions.
+- `article.html` + all 403 story pages now load `article.js?v=20261019` (`node stories-build/hubs.mjs` offline; diff = the version line only).
+- Production: the user runs `deploy_site.sh` for this commit range (needs the SFTP password).
+
 ## Session status (2026-10-19) — PRs #110–#113 merged and live (main `d5f714b4`; user ran `deploy_site.sh 7826dbac d5f714b4`: DEPLOY OK, 270/270 md5 on production, 6 deleted; `.htaccess` + 2 WordPress JSON uploaded with the guarded script; **Worker NOT deployed yet**)
 
 - #110 consent + GTM on the seo-build pages, #111 story cleanup (5 duplicates 301 one hop, 16 SK stories noindex on virtuse.com and on their blog originals, WP noindex list 1124, `sk/stories/page/9` 404), #112 BitGo + Sygnum on Custody, #113 waitlist email in 10 languages (homepages send `lang`). Merged as four merge commits on top of `c73e4c8b` (story "Elon's Check or Bitcoin" from another session went out in the same range). Audit report: https://claude.ai/code/artifact/b3718b69-101f-4639-947b-1b723fb73877

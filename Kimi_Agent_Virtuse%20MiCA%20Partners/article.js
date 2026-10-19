@@ -525,6 +525,9 @@
       var m = mediaOf(post);
       // Only the media caption (credit line) -- alt text is a description, not a credit.
       var cap = m ? stripHtml(m.caption && m.caption.rendered) : '';
+      // WordPress fills the caption from embedded JPEG metadata; AI-generated
+      // images carry a ~1,000-char "Signature: …" string there. Not a credit.
+      if (/^signature\s*:/i.test(cap) || (cap.length > 120 && !/\s/.test(cap))) cap = '';
       if (cap) { $('heroCap').textContent = L.ui.image + ': ' + cap; $('heroCap').hidden = false; }
     }
 
