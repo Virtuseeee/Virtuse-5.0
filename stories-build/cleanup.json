@@ -1,0 +1,28 @@
+{
+ "_note": "Story cleanup decided 2026-10-16 (seo-ops/dash2-urls-2026-10-14.csv + sk-duplicates-2026-10-13.csv, \"as proposed\"). redirect: story page not built, 301 in .htaccess (build_redirects.py), its WP original canonical -> target. noindex: page built with robots noindex, left out of sitemap and hubs; its WP original (id) goes to the WP noindex list. The 9 WordPress copies in the CSVs (empty or duplicate blog posts) were already noindex since 2026-10-08 (seo-ops/blog-leftover-posts.csv), so nothing more is needed there.",
+ "redirect": {
+  "sk/stories/sedem-vzorcov-exponencialneho-zisku/": "sk/stories/7-vzorcov-exponencialneho-zisku/",
+  "stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value-ras-vasilisin/": "stories/half-of-the-worlds-wealth-is-about-to-lose-most-of-its-value/",
+  "stories/how-to-prepare-for-recession/": "stories/how-to-prepare-for-a-recession/",
+  "stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/": "stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/",
+  "stories/three-ways-how-media-downplays-inflation/": "stories/three-ways-how-media-downplays-inflation-ras-vasilisin/"
+ },
+ "noindex": {
+  "sk/stories/4216/": 4216,
+  "sk/stories/blockfi-je-dalsou-obetou-ftx-kolapsu/": 13548,
+  "sk/stories/ccc-podcast-s-rastislavom-vasilisinom-virtuse-ceo-cbdcs-budu-najvacsim-globalnym-porusenim-ludskych-prav/": 13599,
+  "sk/stories/ethereum-the-merge-vsetko-dobre-aj-zle/": 13086,
+  "sk/stories/investovanie-do-krypto-firiem-na-historickom-rekorde/": 10200,
+  "sk/stories/krypto-otvara-nove-moznosti-pre-obchodovanie-s-komoditami/": 4189,
+  "sk/stories/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa/": 13989,
+  "sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko/": 9636,
+  "sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt/": 13606,
+  "sk/stories/kto-vlastni-web3/": 10048,
+  "sk/stories/metaverse-moze-nastartovat-svetovu-ekonomiku-ras-vasilisin/": 9091,
+  "sk/stories/nft-budu-vacsie-ako-si-myslite-ras-vasilisin/": 8827,
+  "sk/stories/sest-veci-ktore-potrebujete-vediet-o-ftx/": 13524,
+  "sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/": 13980,
+  "sk/stories/stane-sa-z-defi-bankovy-predator/": 4786,
+  "sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/": 14204
+ }
+}
