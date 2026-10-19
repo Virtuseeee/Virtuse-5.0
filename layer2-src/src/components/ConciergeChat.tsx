@@ -98,6 +98,70 @@ function trackPartnerClick(partnerId: string) {
   }
 }
 
+const resultText = (a: Answers, lang: Lang) =>
+  tv(lang, `Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.`, `Vaše kritériá:\n{0}\nTíto partneri ich spĺňajú. Porovnajte ich a vyberte si: onboarding dokončíte na platforme partnera a váš bitcoin sa Virtuse nikdy nedotkne.`, `Vaše kritéria:\n{0}\nTito partneři je splňují. Porovnejte je a vyberte si: onboarding dokončíte na platformě partnera a váš bitcoin se Virtuse nikdy nedotkne.`, [summaryLine(a, lang)]);
+
+// Prefill from the URL (?pf_goal=buy&pf_country=sk&pf_experience=new&pf_custody=any&pf_amount=m),
+// sent by Verdict from the answers the visitor already gave there. Only known
+// ids are taken; the chat then asks only what is still missing.
+function readPrefill(): Answers {
+  const a: Answers = {};
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const pick = <T extends { id: string }>(key: string, list: T[]) => {
+      const v = p.get(key);
+      return v && list.some((o) => o.id === v) ? v : undefined;
+    };
+    a.goal = pick('pf_goal', GOALS) as GoalId | undefined;
+    if (!a.goal) return {};
+    a.country = pick('pf_country', COUNTRIES);
+    a.experience = pick('pf_experience', EXPERIENCE) as Answers['experience'];
+    a.custody = pick('pf_custody', CUSTODY) as Answers['custody'];
+    a.amount = pick('pf_amount', AMOUNTS) as Answers['amount'];
+  } catch {
+    return {};
+  }
+  return a;
+}
+
+function nextPhase(a: Answers): Phase {
+  if (!a.goal) return 'goal';
+  if (!a.country) return 'country';
+  if (needsCustodyStep(a.goal) && !a.experience) return 'experience';
+  if (needsCustodyStep(a.goal) && !a.custody) return 'custody';
+  if (!a.amount) return 'amount';
+  return 'done';
+}
+
+function phaseOptions(phase: Phase, lang: Lang): UiChip[] | undefined {
+  if (phase === 'goal') return toChips(GOALS, lang);
+  if (phase === 'country') return localizeChips(COUNTRIES, lang);
+  if (phase === 'experience') return localizeChips(EXPERIENCE, lang);
+  if (phase === 'custody') return localizeChips(CUSTODY, lang);
+  if (phase === 'amount') return localizeChips(AMOUNTS, lang);
+  return undefined;
+}
+
+function initialChat(lang: Lang): { messages: Message[]; phase: Phase; answers: Answers } {
+  const pre = readPrefill();
+  if (!pre.goal) {
+    return { messages: [{ id: nextId(), role: 'assistant', text: welcomeText(lang), options: toChips(GOALS, lang) }], phase: 'goal', answers: {} };
+  }
+  if (!needsCustodyStep(pre.goal)) { delete pre.experience; delete pre.custody; }
+  const phase = nextPhase(pre);
+  const intro = t(lang,
+    'Your answers from Verdict are already filled in.',
+    'Vaše odpovede z Verdictu sú už vyplnené.',
+    'Vaše odpovědi z Verdictu jsou už vyplněné.');
+  if (phase === 'done') {
+    return {
+      messages: [{ id: nextId(), role: 'assistant', text: `${intro}\n${resultText(pre, lang)}`, result: recommend(pre, lang), resultAnswers: pre }],
+      phase, answers: pre,
+    };
+  }
+  return { messages: [{ id: nextId(), role: 'assistant', text: `${intro}\n${phaseText(lang)[phase]}`, options: phaseOptions(phase, lang) }], phase, answers: pre };
+}
+
 function toChips(goals: typeof GOALS, lang: Lang): UiChip[] {
   return goals.map((g) => ({ id: g.id, label: L(g.label, lang), hint: L(g.hint, lang) }));
 }
@@ -108,11 +172,10 @@ function localizeChips(opts: { id: string; label: LocalizedText; hint?: Localize
 
 export default function ConciergeChat() {
   const [lang] = useState<Lang>(getLang);
-  const [messages, setMessages] = useState<Message[]>([
-    { id: nextId(), role: 'assistant', text: welcomeText(lang), options: toChips(GOALS, lang) },
-  ]);
-  const [phase, setPhase] = useState<Phase>('goal');
-  const [answers, setAnswers] = useState<Answers>({});
+  const [init] = useState(() => initialChat(lang));
+  const [messages, setMessages] = useState<Message[]>(init.messages);
+  const [phase, setPhase] = useState<Phase>(init.phase);
+  const [answers, setAnswers] = useState<Answers>(init.answers);
   const [typing, setTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -147,51 +210,18 @@ export default function ConciergeChat() {
 
     const next: Answers = { ...answers };
 
-    if (phase === 'goal') {
-      next.goal = opt.id as GoalId;
-      setAnswers(next);
-      setPhase('country');
-      say(PHASE_TEXT.country, localizeChips(COUNTRIES, lang));
-      return;
-    }
-    if (phase === 'country') {
-      next.country = opt.id;
-      setAnswers(next);
-      if (needsCustodyStep(next.goal)) {
-        setPhase('experience');
-        say(PHASE_TEXT.experience, localizeChips(EXPERIENCE, lang));
-      } else {
-        setPhase('amount');
-        say(PHASE_TEXT.amount, localizeChips(AMOUNTS, lang));
-      }
-      return;
-    }
-    if (phase === 'experience') {
-      next.experience = opt.id as Answers['experience'];
-      setAnswers(next);
-      setPhase('custody');
-      say(PHASE_TEXT.custody, localizeChips(CUSTODY, lang));
-      return;
-    }
-    if (phase === 'custody') {
-      next.custody = opt.id as Answers['custody'];
-      setAnswers(next);
-      setPhase('amount');
-      say(PHASE_TEXT.amount, localizeChips(AMOUNTS, lang));
-      return;
-    }
-    if (phase === 'amount') {
-      next.amount = opt.id as Answers['amount'];
-      setAnswers(next);
-      setPhase('done');
-      const recs = recommend(next, lang);
-      say(
-        tv(lang, `Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.`, `Vaše kritériá:\n{0}\nTíto partneri ich spĺňajú. Porovnajte ich a vyberte si: onboarding dokončíte na platforme partnera a váš bitcoin sa Virtuse nikdy nedotkne.`, `Vaše kritéria:\n{0}\nTito partneři je splňují. Porovnejte je a vyberte si: onboarding dokončíte na platformě partnera a váš bitcoin se Virtuse nikdy nedotkne.`, [summaryLine(next, lang)]),
-        undefined,
-        recs,
-        next,
-      );
-      return;
+    if (phase === 'goal') next.goal = opt.id as GoalId;
+    if (phase === 'country') next.country = opt.id;
+    if (phase === 'experience') next.experience = opt.id as Answers['experience'];
+    if (phase === 'custody') next.custody = opt.id as Answers['custody'];
+    if (phase === 'amount') next.amount = opt.id as Answers['amount'];
+    setAnswers(next);
+    const np = nextPhase(next);
+    setPhase(np);
+    if (np === 'done') {
+      say(resultText(next, lang), undefined, recommend(next, lang), next);
+    } else {
+      say(PHASE_TEXT[np], phaseOptions(np, lang));
     }
   };
 

@@ -401,7 +401,8 @@ const ru: Record<string, string> = {
   "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.": "В схеме 2 из 3 два ключа остаются у вас. Третий может хранить провайдер совместного хранения, например Unchained.",
   "Source (health insurance)": "Источник (медицинское страхование)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Партнёрская ссылка – если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется.",
-  "How we earn": "Как мы зарабатываем"
+  "How we earn": "Как мы зарабатываем",
+  "Your answers from Verdict are already filled in.": "Ваши ответы из Verdict уже заполнены."
 };
 
 export default ru;
