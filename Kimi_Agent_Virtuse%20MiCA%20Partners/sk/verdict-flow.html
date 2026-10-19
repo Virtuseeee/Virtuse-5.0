@@ -169,6 +169,7 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
 .price .amt { font-size: 40px; font-weight: 700; margin: 6px 0; }
 .small { font-size: 12px; color: var(--dim); margin-top: 14px; }
 .hidden { display: none !important; }
+.pf { width: 100%; height: 640px; border: 1px solid var(--line); border-radius: 18px; background: var(--dark); }
 
 /* architektúra */
 .arch { margin-top: 40px; }
@@ -188,7 +189,7 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
 </style>
 </head>
 <body>
-<div class="proto-bar">Prototyp lievika Verdict. Nič sa neodosiela, výsledok je ukážka. <a href="#arch">Ako to spája nástroje ↓</a></div>
+<div class="proto-bar">Prototyp lievika Verdict. Na staging.virtuse.com volá skutočný Verdict, inde ponúkne ukážku (alebo ?demo=1). <a href="#arch">Ako to spája nástroje ↓</a></div>
 <div class="wrap">
   <div class="top">
     <button class="back" id="back" hidden>← Späť</button>
@@ -200,24 +201,26 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
   <section class="arch" id="arch">
     <div class="sec">Architektúra: jeden profil pre všetky nástroje</div>
     <div class="flow">
-      <div class="node core"><b>1. Spoločný profil (raz, 60 sekúnd)</b><span>Cieľ · krajina · skúsenosti · suma · podiel na majetku · horizont · rezerva · kto drží kľúče · reakcia na prepad. Uloží sa len v prehliadači návštevníka (localStorage <code>vb-profile</code>), kým sa nerozhodne poslať ho.</span></div>
+      <div class="node core"><b>1. Spoločný profil (raz, 60 sekúnd)</b><span>Cieľ · krajina · skúsenosti · suma · podiel na majetku · horizont · rezerva · kto drží kľúče · reakcia na prepad. Len pevné hodnoty, žiadny voľný text; Worker prijme iba známe hodnoty (<code>PROFILE</code> vo verdict.js).</span></div>
       <div class="arrow">↓ ten istý profil číta každý nástroj, nikto sa nepýta dvakrát</div>
       <div class="row3">
         <div class="node"><b>Verdict</b><span>Profil + vlastné slová → 10 signálov, skóre, najslabšie miesto</span></div>
-        <div class="node"><b>Partner Finder</b><span>Profil → partneri podľa kritérií (dnes 5 otázok, z profilu 0)</span></div>
+        <div class="node"><b>Partner Finder</b><span>Profil → <code>?pf_goal=…&amp;pf_country=…</code> → partneri hneď, bez otázok (len chýbajúce sa doplnia)</span></div>
         <div class="node"><b>Stacking / Loan</b><span>Suma, horizont, rezerva → predvyplnené posuvníky</span></div>
         <div class="node"><b>Tax Agent</b><span>Krajina → pravidlá krajiny, úschova → dedičský test</span></div>
       </div>
       <div class="arrow">↓ výsledok vždy končí jedným ďalším krokom, nie slepou uličkou</div>
-      <div class="node"><b>2. Ďalší krok podľa najslabšieho signálu</b><span>Najhorší scenár / horizont → Stacking · Likvidita / Plán B → Loan Copilot · Dane / Úschova → Tax Agent · keď je rozhodnutie pripravené → Partner Finder s predvyplneným profilom</span></div>
+      <div class="node"><b>2. Ďalší krok podľa najslabšieho signálu</b><span>Najhorší scenár / horizont → Stacking · Likvidita / Plán B → Loan Copilot · Dane / Úschova → Tax Agent · a vo výsledku Partner Finder pre kategóriu rozhodnutia (pravidelný nákup → Kúpiť, pôžička → Pôžička, predaj → Dane, firma → Treasury, úschova → Úschova)</span></div>
       <div class="arrow">↓</div>
-      <div class="node core"><b>3. Monetizácia</b><span>Verdict zadarmo (skóre + 2 signály + najslabšie miesto) → Celý report 14 € (všetkých 10 signálov s dôvodmi, chýbajúce otázky, plán krokov) → Virtuse CFO 9 €/mes. (sledovanie rozhodnutí v čase). Partner Finder ostáva zadarmo.</span></div>
+      <div class="node core"><b>3. Monetizácia</b><span>Verdict zadarmo (skóre, najsilnejší a najslabší signál, 1 chýbajúca otázka, partneri; ostatných 8 signálov sa z Workera vôbec neodošle) → Celý report 14 € (všetkých 10 signálov s dôvodmi, chýbajúce otázky, plán krokov) → Virtuse CFO 9 €/mes. (sledovanie rozhodnutí v čase). Partner Finder ostáva zadarmo.</span></div>
     </div>
 
     <div class="sec">Ktorá otázka napĺňa ktorý signál</div>
     <div class="wrapt"><table>
       <tr><th>Otázka v lieviku</th><th>Signál</th><th>Použije aj</th></tr>
       <tr><td>Čo zvažujete</td><td>Cieľ, Alternatívy</td><td>Partner Finder (cieľ)</td></tr>
+      <tr><td>Vlastníte už Bitcoin</td><td>kontext</td><td>Partner Finder (skúsenosti)</td></tr>
+      <tr><td>O akú sumu ide</td><td>Najhorší scenár</td><td>Partner Finder, Stacking</td></tr>
       <tr><td>Koľko z majetku</td><td>Najhorší scenár, Asymetria</td><td>Stacking (suma)</td></tr>
       <tr><td>Kedy môžete peniaze potrebovať</td><td>Časový horizont, Likvidita</td><td>Loan Copilot</td></tr>
       <tr><td>Rezerva na 6 mesiacov</td><td>Likvidita, Plán B</td><td>Loan Copilot</td></tr>
@@ -253,7 +256,9 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
     treasury: ['Chcem dať 20 % hotovosti firmy do Bitcoinu na 5 rokov.', 'Firma má 200 000 € rezervu, uvažujeme o 10 % v BTC.'],
     custody: ['Chcem presunúť Bitcoin z burzy na hardvérovú peňaženku.', 'Chcem, aby sa manželka dostala k môjmu Bitcoinu, ak sa mi niečo stane.']
   };
-  var COUNTRIES = ['Slovensko', 'Česko', 'Rakúsko', 'Nemecko', 'Poľsko', 'Maďarsko', 'Iná krajina'];
+  // same ids as the Worker's PROFILE and Partner Finder
+  var COUNTRIES = [['sk', 'Slovensko'], ['cz', 'Česko'], ['at', 'Rakúsko'], ['de', 'Nemecko'], ['pl', 'Poľsko'], ['hu', 'Maďarsko'], ['si', 'Slovinsko'], ['hr', 'Chorvátsko'], ['ro', 'Rumunsko'], ['bg', 'Bulharsko'], ['nl', 'Holandsko'], ['fr', 'Francúzsko'], ['es', 'Španielsko'], ['other', 'Iná krajina']];
+  var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/verdict';
 
   // each screen: step index, progress within step (0..1), render fn
   var SCREENS = [
@@ -261,19 +266,24 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
     { s: 0, p: .45, r: goal },
     { s: 0, p: .75, r: text },
     { s: 0, p: 1, r: how },
-    { s: 1, p: .2, r: q('country') },
-    { s: 1, p: .4, r: q('share') },
-    { s: 1, p: .6, r: q('horizon') },
-    { s: 1, p: .8, r: q('reserve') },
-    { s: 1, p: 1, r: q('keys') },
-    { s: 2, p: .4, r: q('drop') },
+    { s: 1, p: .14, r: q('country'), k: 'country' },
+    { s: 1, p: .28, r: q('experience'), k: 'experience' },
+    { s: 1, p: .43, r: q('amount'), k: 'amount' },
+    { s: 1, p: .57, r: q('share'), k: 'share' },
+    { s: 1, p: .71, r: q('horizon'), k: 'horizon' },
+    { s: 1, p: .86, r: q('reserve'), k: 'reserve' },
+    { s: 1, p: 1, r: q('keys'), k: 'keys' },
+    { s: 2, p: .4, r: q('drop'), k: 'drop' },
     { s: 2, p: .7, r: context },
     { s: 2, p: 1, r: focus },
-    { s: 3, p: .6, r: review },
-    { s: 3, p: 1, r: loading },
-    { s: 3, p: 1, r: result }
+    { s: 3, p: .6, r: review, k: 'review' },
+    { s: 3, p: 1, r: loading, k: 'loading' },
+    { s: 3, p: 1, r: showResult, k: 'result' }
   ];
+  function at(k) { for (var n = 0; n < SCREENS.length; n++) if (SCREENS[n].k === k) return n; return 0; }
   var QS = {
+    experience: { eb: 'O vás', h: 'Vlastníte už Bitcoin?', sub: 'Podľa toho Partner Finder vyberie partnerov pre začiatočníkov alebo pokročilých.', why: 'Použije Partner Finder. AI to berie ako kontext.', opts: [['new', 'Ešte nie, bude to prvý nákup'], ['hodler', 'Áno, už nejaký mám']] },
+    amount: { eb: 'O vás', h: 'O akú sumu ide?', sub: 'Približne stačí.', why: 'Napĺňa signál Najhorší scenár (prepad v eurách). Použije Partner Finder a Stacking.', opts: [['s', 'Menej ako 1 000 €'], ['m', '1 000 až 10 000 €'], ['l', '10 000 až 100 000 €'], ['xl', 'Viac ako 100 000 €']] },
     country: { eb: 'O vás', h: 'V ktorej krajine platíte dane?', sub: 'Pravidlá pre Bitcoin sa medzi krajinami výrazne líšia.', why: 'Napĺňa signál Dane. Rovnakú odpoveď použije Tax Agent a Partner Finder.', chips: COUNTRIES },
     share: { eb: 'O vás', h: 'Koľko z vášho majetku to bude?', sub: 'Odhad stačí. Rátajte úspory a investície, nie bývanie.', why: 'Napĺňa signály Najhorší scenár a Asymetria.', opts: [['lt5', 'Menej ako 5 %'], ['5_20', '5 až 20 %'], ['20_50', '20 až 50 %'], ['gt50', 'Viac ako polovica'], ['na', 'Neviem odhadnúť']] },
     horizon: { eb: 'O vás', h: 'Kedy môžete tieto peniaze potrebovať?', sub: 'Bitcoin môže padnúť o 70 % a roky sa nevrátiť.', why: 'Napĺňa signály Časový horizont a Likvidita.', opts: [['lt1', 'Do 1 roka'], ['1_4', 'O 1 až 4 roky'], ['gt4', 'O viac ako 4 roky'], ['never', 'Neplánujem ich minúť']] },
@@ -282,10 +292,10 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
     drop: { eb: 'Váš plán', h: 'Bitcoin padne o 50 %. Čo urobíte?', sub: 'Odpovedzte podľa toho, čo by ste naozaj urobili.', why: 'Napĺňa signály Pravidlo, nie emócia a Najhorší scenár.', opts: [['buy', 'Dokúpim podľa vopred daného pravidla'], ['hold', 'Podržím, nič nerobím'], ['sell', 'Predám časť alebo všetko'], ['na', 'Neviem']] }
   };
   var LABELS = {};
-  Object.keys(QS).forEach(function (k) { (QS[k].opts || []).forEach(function (o) { LABELS[k + ':' + o[0]] = o[1]; }); });
+  Object.keys(QS).forEach(function (k) { (QS[k].opts || QS[k].chips || []).forEach(function (o) { LABELS[k + ':' + o[0]] = o[1]; }); });
 
   var i = 0, panel = document.getElementById('panel'), back = document.getElementById('back');
-  back.onclick = function () { if (i > 0) go(i === 14 ? 12 : i - 1); };
+  back.onclick = function () { if (i > 0) go(i === at('result') ? at('review') : i - 1); };
 
   function stepper() {
     var cur = SCREENS[i];
@@ -295,18 +305,16 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
       return '<div class="step ' + st + '"><div class="lbl"><span class="n">' + (k < cur.s ? '✓' : k + 1) + '</span><span class="t">' + t + '</span></div><div class="track"><i style="width:' + w + '%"></i></div></div>';
     }).join('');
   }
-  function go(n) { i = n; back.hidden = i === 0 || i === 13; stepper(); SCREENS[i].r(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  function go(n) { i = n; back.hidden = i === 0 || i === at('loading'); stepper(); SCREENS[i].r(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
   function next() { go(i + 1); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function alt(skipTo) {
-    return '<div class="alt"><button class="ghost" data-own>✎ Napísať vlastnú odpoveď</button><button class="ghost" data-skip>? Zatiaľ neviem</button></div>';
+  // Fixed answers only (the Worker accepts only known ids); details belong in the free text.
+  function alt(label) {
+    return '<div class="alt"><button class="ghost" data-skip>' + (label || '? Zatiaľ neviem') + '</button></div>';
   }
   function bindAlt(key) {
-    var own = panel.querySelector('[data-own]'), skip = panel.querySelector('[data-skip]');
+    var skip = panel.querySelector('[data-skip]');
     if (skip) skip.onclick = function () { A[key] = 'na'; next(); };
-    if (own) own.onclick = function () {
-      var v = prompt('Vaša odpoveď:'); if (v) { A[key] = 'own:' + v; next(); }
-    };
   }
 
   function start() {
@@ -322,7 +330,7 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
     panel.innerHTML =
       '<div class="eyebrow">Vaše rozhodnutie</div><h2>Čo zvažujete?</h2><p class="sub">Vyberte to, čo je najbližšie.</p><p class="hint">Rovnaké kategórie používa Partner Finder.</p>' +
       '<div class="opts">' + GOALS.map(function (g) { return '<button class="opt' + (A.goal === g[0] ? ' sel' : '') + '" data-v="' + g[0] + '"><span>' + g[1] + '<small>' + g[2] + '</small></span>' + (A.goal === g[0] ? CK : SV) + '</button>'; }).join('') + '</div>' +
-      alt();
+      alt('Niečo iné, opíšem to');
     panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { A.goal = b.dataset.v; next(); }; });
     bindAlt('goal');
   }
@@ -367,7 +375,7 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
     return function () {
       var Q = QS[key], h = '<div class="eyebrow">' + Q.eb + '</div><h2>' + Q.h + '</h2><p class="sub">' + Q.sub + '</p><p class="why">' + Q.why + '</p>';
       if (Q.chips) {
-        h += '<div class="chips">' + Q.chips.map(function (c) { return '<button class="opt' + (A[key] === c ? ' sel' : '') + '" data-v="' + c + '">' + c + '</button>'; }).join('') + '</div>';
+        h += '<div class="chips">' + Q.chips.map(function (c) { return '<button class="opt' + (A[key] === c[0] ? ' sel' : '') + '" data-v="' + c[0] + '">' + c[1] + '</button>'; }).join('') + '</div>';
       } else {
         h += '<div class="opts">' + Q.opts.map(function (o) { return '<button class="opt' + (A[key] === o[0] ? ' sel' : '') + '" data-v="' + o[0] + '"><span>' + o[1] + '</span>' + (A[key] === o[0] ? CK : SV) + '</button>'; }).join('') + '</div>';
       }
@@ -379,7 +387,6 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
   function ans(key) {
     var v = A[key]; if (!v) return 'Neuvedené';
     if (v === 'na') return 'Zatiaľ neviem';
-    if (String(v).indexOf('own:') === 0) return v.slice(4);
     return LABELS[key + ':' + v] || v;
   }
   function context() {
@@ -412,9 +419,10 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
   function review() {
     var g = GOALS.find(function (x) { return x[0] === A.goal; });
     var rows = [
-      ['Čo zvažujete', g ? g[1] : ans('goal'), 1], ['Vlastnými slovami', A.text || 'Neuvedené', 2], ['Krajina', ans('country'), 4],
-      ['Podiel na majetku', ans('share'), 5], ['Kedy peniaze potrebujete', ans('horizon'), 6], ['Rezerva na 6 mesiacov', ans('reserve'), 7],
-      ['Kľúče', ans('keys'), 8], ['Pri prepade o 50 %', ans('drop'), 9]
+      ['Čo zvažujete', g ? g[1] : 'Niečo iné', 1], ['Vlastnými slovami', A.text || 'Neuvedené', 2], ['Krajina', ans('country'), at('country')],
+      ['Bitcoin už vlastníte', ans('experience'), at('experience')], ['Suma', ans('amount'), at('amount')],
+      ['Podiel na majetku', ans('share'), at('share')], ['Kedy peniaze potrebujete', ans('horizon'), at('horizon')], ['Rezerva na 6 mesiacov', ans('reserve'), at('reserve')],
+      ['Kľúče', ans('keys'), at('keys')], ['Pri prepade o 50 %', ans('drop'), at('drop')]
     ];
     panel.innerHTML =
       '<div class="chip-eyebrow">Posledná kontrola</div><h2>Takto vaše rozhodnutie pochopíme.</h2><p class="sub">Opravte, čo nesedí. Presne toto pôjde do hodnotenia.</p><div style="margin-top:18px">' +
@@ -424,71 +432,125 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
     panel.querySelectorAll('[data-to]').forEach(function (b) { b.onclick = function () { go(+b.dataset.to); }; });
     document.getElementById('c').onclick = next;
   }
+  function profile() {
+    var p = {};
+    ['goal', 'country', 'experience', 'amount', 'share', 'horizon', 'reserve', 'keys', 'drop'].forEach(function (k) { if (A[k] && A[k] !== 'na') p[k] = A[k]; });
+    if (A.focus.length) p.focus = A.focus.slice();
+    return p;
+  }
+  var RESULT = null;
   function loading() {
     var U = [
       ['Všetkých 10 signálov', 'Každý signál s bodmi a dôvodom, napísaným pre vaše rozhodnutie.'],
       ['Najslabšie miesto', 'Ktorý signál vás ťahá dole a čo s ním urobiť.'],
       ['Chýbajúce otázky', 'Na čo ste nemysleli a čo by mal každý zvážiť predtým, ako koná.'],
-      ['Ďalší krok', 'Ktorý nástroj Virtuse použiť ďalej, s vašimi odpoveďami už vyplnenými.']
-    ], k = 0, steps = ['Čítame vaše rozhodnutie a profil…', 'Hodnotíme 10 signálov…', 'Hľadáme najslabšie miesto…'];
+      ['Partneri pre vašu kategóriu', 'Partner Finder s vašimi odpoveďami už vyplnenými.']
+    ], k = 0, steps = ['Čítame vaše rozhodnutie a profil…', 'Hodnotíme 10 signálov…', 'Hľadáme najslabšie miesto…', 'Pripravujeme ďalší krok…'];
     panel.innerHTML = '<div class="load"><div class="spin"></div><h2>Kontrolujeme vaše rozhodnutie</h2><p class="sub" id="ls">' + steps[0] + '</p>' +
       '<div class="unlock"><div class="mock"><i style="width:40%"></i><i class="o"></i><i style="width:80%"></i><i style="width:55%"></i></div><div><div class="eyebrow">Čo dostanete</div><h3 id="ut" style="font-size:22px;margin-bottom:6px"></h3><p class="sub" id="ud" style="font-size:15px"></p></div></div>' +
       '<div class="pager" id="pg"></div><p class="small">Zvyčajne 5 až 15 sekúnd. Nechajte stránku otvorenú.</p></div>';
     function show() {
-      document.getElementById('ut').textContent = U[k][0]; document.getElementById('ud').textContent = U[k][1];
-      document.getElementById('pg').innerHTML = U.map(function (_, n) { return '<i class="' + (n === k ? 'on' : '') + '"></i>'; }).join('');
+      document.getElementById('ut').textContent = U[k % U.length][0]; document.getElementById('ud').textContent = U[k % U.length][1];
+      document.getElementById('pg').innerHTML = U.map(function (_, n) { return '<i class="' + (n === k % U.length ? 'on' : '') + '"></i>'; }).join('');
       document.getElementById('ls').textContent = steps[Math.min(k, steps.length - 1)];
     }
     show();
-    var t = setInterval(function () { k++; if (k >= U.length) { clearInterval(t); next(); return; } show(); }, 1100);
+    var t = setInterval(function () { k++; show(); }, 1600), minWait = new Promise(function (r) { setTimeout(r, 3000); });
+    var demo = /[?&]demo=1\b/.test(location.search);
+    var call = demo ? Promise.resolve({ ok: true, d: demoResult() }) : fetch(WORKER, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: A.text, lang: 'sk', hp: '', profile: profile() })
+    }).then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+      .catch(function () { return { ok: false, d: { error: 'Chyba siete. Skúste to znova.' } }; });
+    Promise.all([call, minWait]).then(function (x) {
+      clearInterval(t);
+      var res = x[0];
+      if (res.ok && res.d && res.d.ok) { RESULT = res.d; next(); return; }
+      panel.innerHTML = '<h2>Verdict sa nepodarilo načítať.</h2><p class="sub">' + esc((res.d && res.d.error) || 'Niečo sa pokazilo.') + '</p>' +
+        '<p class="hint">Lokálne a na produkcii pred spustením Worker odpovie „otvára sa 1. novembra“. Naživo to funguje na staging.virtuse.com.</p>' +
+        '<div class="foot"><button class="ghost" id="rt">↺ Skúsiť znova</button><button class="cta" id="dm">Zobraziť ukážkový výsledok ' + SV + '</button></div>';
+      document.getElementById('rt').onclick = function () { go(at('loading')); };
+      document.getElementById('dm').onclick = function () { RESULT = demoResult(); go(at('result')); };
+    });
   }
 
-  function result() {
-    // ukážkový výsledok: najslabšie miesto odvodené z odpovedí, aby demo reagovalo
-    var weak = A.keys === 'exch' || A.keys === 'na' ? 'custody' : A.reserve === 'no' ? 'liquidity' : A.drop === 'sell' ? 'rule' : A.country === 'Slovensko' ? 'tax' : 'worst';
-    var W = {
-      custody: ['Úschova a dedičstvo', 3, 'Kľúče ostávajú na burze a nikto blízky nevie, ako sa k Bitcoinu dostať. Pri probléme burzy alebo pri úmrtí môže byť suma nedostupná.', 'tax-agent.html?utm_source=verdict', 'Tax & Inheritance Agent'],
-      liquidity: ['Likvidita', 3, 'Bez rezervy na 6 mesiacov vás nečakaný výdavok môže prinútiť predať v najhoršej chvíli.', 'loan.html?utm_source=verdict', 'Loan & Liquidity Copilot'],
-      rule: ['Pravidlo, nie emócia', 3, 'Pri prepade by ste predávali. Bez pravidla vopred je to najčastejší dôvod straty.', 'stacking.html?utm_source=verdict', 'Stacking Strategist'],
-      tax: ['Dane', 4, 'Na Slovensku je každý predaj aj výmena kryptomien zdaniteľná a oslobodenie po roku držby neexistuje. Rozhodnutie s tým zatiaľ nepočíta.', 'tax-agent.html?country=sk&utm_source=verdict', 'Tax & Inheritance Agent'],
-      worst: ['Najhorší scenár', 4, 'Pri prepade o 70 % by strata zasiahla veľkú časť majetku. Rozhodnutie nehovorí, či by ste to uniesli.', 'stacking.html?utm_source=verdict', 'Stacking Strategist']
-    }[weak];
+  // Same shape as the Worker's free view (cloudflare-worker/src/verdict.js freeView).
+  function demoResult() {
+    var weak = A.keys === 'exch' || A.keys === 'self' || !A.keys || A.keys === 'na' ? ['custody', 'Úschova a dedičstvo', 3, 'Text neuvádza, ako sa k Bitcoinu dostanú dedičia ani čo sa stane pri probléme burzy.', 'tax-agent.html', 'Tax & Inheritance Agent']
+      : A.reserve === 'no' ? ['liquidity', 'Likvidita', 2, 'Rezerva mimo Bitcoinu chýba, nečakaný výdavok môže vynútiť predaj.', 'loan.html', 'Loan & Liquidity Copilot']
+      : ['worst_case', 'Najhorší scenár', 4, 'Chýba, čo by prepad o 70 % znamenal v eurách pre tento plán.', 'stacking.html', 'Stacking Strategist'];
+    var all = [['worst_case', 'Najhorší scenár'], ['liquidity', 'Likvidita'], ['tax', 'Dane'], ['custody', 'Úschova a dedičstvo'], ['plan_b', 'Plán B'], ['goal', 'Cieľ'], ['horizon', 'Časový horizont'], ['alternatives', 'Alternatívy'], ['rule', 'Pravidlo, nie emócia'], ['asymmetry', 'Asymetria']];
+    var strong = weak[0] === 'horizon' ? ['goal', 'Cieľ', 8, 'Cieľ je pomenovaný sumou aj horizontom.'] : ['horizon', 'Časový horizont', 8, 'Peniaze nebudú potrebné skôr ako o 4 roky, čo pokryje aj dlhší pokles.'];
+    var pfGoal = { buy: 'buy', dca: 'buy', loan: 'loan', sell: 'tax', treasury: 'treasury', custody: 'custody' }[A.goal], pf = null;
+    if (pfGoal) {
+      pf = { pf_goal: pfGoal };
+      if (A.country && A.country !== 'other' && A.country !== 'na') pf.pf_country = A.country;
+      if (A.experience && A.experience !== 'na') pf.pf_experience = A.experience;
+      if (A.keys && A.keys !== 'na') pf.pf_custody = A.keys === 'exch' ? 'any' : 'self';
+      if (A.amount && A.amount !== 'na') pf.pf_amount = A.amount;
+    }
+    return {
+      ok: true, declined: false, demo: true, score: 55, band: { id: 'add', label: 'Doplňte 2 až 3 predpoklady' },
+      weakest: { id: weak[0], name: weak[1], reason: weak[3], tool: { page: weak[4], name: weak[5] } },
+      signals: [{ id: strong[0], name: strong[1], points: strong[2], reason: strong[3], role: 'strongest' }, { id: weak[0], name: weak[1], points: weak[2], reason: weak[3], role: 'weakest' }],
+      locked: all.filter(function (x) { return x[0] !== weak[0] && x[0] !== strong[0]; }).map(function (x) { return { id: x[0], name: x[1] }; }),
+      missing: ['Čo urobíte, ak budete peniaze potrebovať počas prepadu?'], missingMore: 2, partnerFinder: pf,
+      scoreNote: 'Skóre 0 až 100 vypočítava umelá inteligencia z 10 oblastí úvahy. Meria, nakoľko úplne je úvaha opísaná, nie či je rozhodnutie správne alebo výhodné. Rozhodujete vy.',
+      aiLabel: 'Vygenerované umelou inteligenciou. Skóre hodnotí úplnosť vašej úvahy, nie to, či je rozhodnutie správne. Rozhodujete vy.',
+      disclaimer: 'Nie je to investičné, daňové ani právne poradenstvo. Virtuse nedrží vaše kľúče ani peniaze.'
+    };
+  }
+
+  function showResult() {
+    var r = RESULT; if (!r) { go(at('review')); return; }
     var g = GOALS.find(function (x) { return x[0] === A.goal; });
-    var pfGoal = { buy: 'buy', dca: 'buy', loan: 'loan', sell: 'buy', treasury: 'treasury', custody: 'custody' }[A.goal] || 'buy';
-    var score = weak === 'custody' ? 55 : weak === 'tax' ? 60 : 50;
+    var again = '<div class="foot" style="margin-top:18px"><button class="ghost" id="again">↺ Ohodnotiť ďalšie rozhodnutie</button></div>';
+    if (r.declined) {
+      panel.innerHTML = '<div class="eyebrow">Váš verdikt</div><h2>Verdict to nevie ohodnotiť.</h2><p class="sub">' + esc(r.message) + '</p><p class="small">' + esc(r.aiLabel || '') + '</p>' + again;
+      document.getElementById('again').onclick = function () { go(2); };
+      return;
+    }
+    var strong = r.signals.find(function (x) { return x.role === 'strongest'; }), weak = r.signals.find(function (x) { return x.role === 'weakest'; });
+    var tool = r.weakest.tool, pfq = '';
+    if (r.partnerFinder) pfq = Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict&utm_medium=verdict';
     panel.innerHTML =
+      (r.demo ? '<p class="warn" style="color:#f3c88a">Ukážkový výsledok, nie hodnotenie AI.</p>' : '') +
       '<div class="res-head"><div><div class="eyebrow">Váš verdikt · ' + (g ? g[1] : 'Rozhodnutie') + '</div>' +
-      '<h2>Rozhodnutie dáva zmysel, ale jedna vec ho môže zhodiť.</h2><p class="sub" style="font-size:15px">„' + esc((A.text || '').slice(0, 140)) + ((A.text || '').length > 140 ? '…' : '') + '“</p></div>' +
-      '<div class="score"><b>' + score + '</b><small>/100</small><br><span class="pill">Premyslite ešte</span></div></div>' +
+      '<h2>' + esc(r.band.label) + '.</h2><p class="sub" style="font-size:15px">„' + esc(A.text.slice(0, 140)) + (A.text.length > 140 ? '…' : '') + '“</p></div>' +
+      '<div class="score"><b>' + r.score + '</b><small>/100</small><br><span class="pill">' + esc(r.band.label) + '</span></div></div>' +
 
       '<div class="sec">Čo Verdict našiel</div><div class="found">' +
-      '<div><b>Silné miesto</b><p>Máte jasný cieľ a horizont dlhší ako jeden cyklus. To je základ, na ktorom väčšina rozhodnutí stojí.</p></div>' +
-      '<div><b>Najslabšie miesto</b><p>' + W[0] + ': ' + W[2] + '</p></div>' +
-      '<div><b>Čo chýba</b><p>Pravidlo, kedy dokúpite alebo predáte, a kto sa k BTC dostane, ak vy nebudete môcť.</p></div></div>' +
+      '<div><b>Silné miesto</b><p>' + esc(strong.name) + ': ' + esc(strong.reason) + '</p></div>' +
+      '<div><b>Najslabšie miesto</b><p>' + esc(weak.name) + ': ' + esc(weak.reason) + '</p></div>' +
+      '<div><b>Čo chýba</b><p>' + esc(r.missing[0] || 'Nič podstatné.') + (r.missingMore ? ' <span style="color:var(--dim)">+' + r.missingMore + ' v reporte</span>' : '') + '</p></div></div>' +
 
       '<div class="sec">Dva signály zadarmo</div><div class="sig2">' +
-      sig('Časový horizont', 8, 'Silné', 'Peniaze nebudete potrebovať skôr ako o 4 roky. Prežijete aj dlhší pokles bez nútenia predať.', 'stacking.html?utm_source=verdict', 'Stacking Strategist') +
-      sig(W[0], W[1], 'Najslabšie', W[2], W[3], W[4]) + '</div>' +
+      sig(strong.name, strong.points, 'Najsilnejší', strong.reason, null, null) +
+      sig(weak.name, weak.points, 'Najslabší', weak.reason, tool.page + (tool.page.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict', tool.name) + '</div>' +
 
-      '<div class="locked"><div class="lh"><div><b style="font-size:18px">8 ďalších signálov je pripravených</b><p>Každý už má body a dôvod, napísaný pre vaše rozhodnutie.</p></div><button class="cta" id="u1">🔒 Celý report za 14 €</button></div>' +
-      '<div class="lgrid">' + ['Najhorší scenár', 'Likvidita', 'Dane', 'Plán B', 'Cieľ', 'Alternatívy', 'Pravidlo, nie emócia', 'Asymetria'].filter(function (n) { return n !== W[0]; }).slice(0, 8).map(function (n) { return '<div>🔒 ' + n + '<i></i><i></i></div>'; }).join('') + '</div></div>' +
+      '<div class="locked"><div class="lh"><div><b style="font-size:18px">' + r.locked.length + ' ďalších signálov je v reporte</b><p>Každý s bodmi a dôvodom, napísaným pre vaše rozhodnutie.</p></div><button class="cta" id="u1">🔒 Celý report za 14 €</button></div>' +
+      '<div class="lgrid">' + r.locked.map(function (x) { return '<div>🔒 ' + esc(x.name) + '<i></i><i></i></div>'; }).join('') + '</div></div>' +
 
       '<div class="sec">Váš ďalší krok</div><div class="route">' +
-      '<div class="r"><div><b>Opravte najslabšie miesto</b><span>' + W[4] + ' s vašimi odpoveďami už vyplnenými</span></div><a href="' + W[3] + '">Otvoriť →</a></div>' +
-      '<div class="r"><div><b>Keď ste pripravení konať</b><span>Partner Finder ukáže partnerov podľa vašich kritérií, bez ďalších otázok</span></div><a href="concierge.html?goal=' + pfGoal + '&utm_source=verdict">Partner Finder →</a></div>' +
-      '</div>' +
+      '<div class="r"><div><b>Doplňte najslabšie miesto</b><span>' + esc(weak.name) + ' · ' + esc(tool.name) + '</span></div><a href="' + tool.page + (tool.page.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict">Otvoriť →</a></div></div>' +
 
-      '<div class="sec">Celý report</div><div class="price"><div><h3 style="font-size:24px">Viac istoty, kým konáte.</h3><p class="sub" style="font-size:15px">Nájdite slabé miesta skôr, ako vás budú stáť peniaze.</p><ul><li>Všetkých 10 signálov s dôvodmi</li><li>Chýbajúce otázky pre vaše rozhodnutie</li><li>Plán krokov s nástrojmi Virtuse</li><li>PDF na neskôr, ostáva vám natrvalo</li></ul></div>' +
+      (r.partnerFinder ?
+        '<div class="sec">Partneri pre vašu kategóriu</div>' +
+        '<p class="sub" style="font-size:15px">Partner Finder už pozná vaše odpovede. Ukazuje partnerov, ktorí spĺňajú vaše kritériá. Poradie určujú pevné pravidlá, nie provízia, a vyberáte vy.</p>' +
+        '<iframe class="pf" src="concierge.html?' + pfq + '" title="Partner Finder" loading="lazy"></iframe>' +
+        '<p class="small">Partnerské odkazy: ak sa zaregistrujete, Virtuse môže dostať províziu, vaša cena sa nemení. <a href="concierge.html?' + pfq.replace('utm_medium=verdict', 'utm_medium=verdict_open') + '" style="color:var(--text)">Otvoriť Partner Finder na celej stránke →</a></p>'
+        : '') +
+
+      '<div class="sec">Celý report</div><div class="price"><div><h3 style="font-size:24px">Viac istoty, kým konáte.</h3><p class="sub" style="font-size:15px">Nájdite slabé miesta skôr, ako vás budú stáť peniaze.</p><ul><li>Všetkých 10 signálov s bodmi a dôvodmi</li><li>Všetky chýbajúce otázky pre vaše rozhodnutie</li><li>Plán krokov s nástrojmi Virtuse</li><li>PDF na neskôr, ostáva vám natrvalo</li></ul></div>' +
       '<div><div class="eyebrow">Jednorazovo</div><div class="amt">14 €</div><p class="sub" style="font-size:14px">Žiadne predplatné.</p><button class="cta" id="u2" style="width:100%;justify-content:center;margin-top:14px">Odomknúť celý report</button><p class="small">Do 1. novembra zbierame záujem: tlačidlo vás zapíše na zoznam, nič neplatíte.</p></div></div>' +
 
-      '<p class="small" style="margin-top:22px">Hodnotí AI (Anthropic), môže sa mýliť. Skóre je súčet 10 signálov, zaokrúhlený na 5. Verdict nie je investičné, daňové ani právne poradenstvo a neodporúča konkrétneho poskytovateľa.</p>' +
-      '<div class="foot" style="margin-top:18px"><button class="ghost" id="again">↺ Ohodnotiť ďalšie rozhodnutie</button></div>';
-    function lock() { alert('Prototyp: tu by bola čakacia listina (do 1. 11.) alebo platba 14 €.'); }
+      '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p>' + again;
+    function lock() { alert('Prototyp: tu bude čakacia listina (do 1. 11.) alebo platba 14 €.'); }
     document.getElementById('u1').onclick = lock; document.getElementById('u2').onclick = lock;
-    document.getElementById('again').onclick = function () { A.text = ''; go(1); };
+    document.getElementById('again').onclick = function () { A.text = ''; RESULT = null; go(1); };
   }
   function sig(name, pts, lab, txt, href, tool) {
-    return '<div class="sig"><div class="h"><div><b>' + name + '</b><div class="tag">' + lab + '</div></div><em>' + pts + '<small>/10</small></em></div><div class="bar"><i style="width:' + pts * 10 + '%"></i></div><p>' + txt + '</p><a href="' + href + '">Zlepšiť v ' + tool + ' →</a></div>';
+    return '<div class="sig"><div class="h"><div><b>' + esc(name) + '</b><div class="tag">' + lab + '</div></div><em>' + pts + '<small>/10</small></em></div><div class="bar"><i style="width:' + pts * 10 + '%"></i></div><p>' + esc(txt) + '</p>' + (href ? '<a href="' + href + '">Doplniť v ' + esc(tool) + ' →</a>' : '') + '</div>';
   }
   go(0);
 })();
