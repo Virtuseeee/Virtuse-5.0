@@ -1,0 +1,101 @@
+{
+  "about": "Home-country buy pages, one per language (\"Ako kúpiť Bitcoin na Slovensku\"). Texts only; fees come from fee-schedule-live.json and fee-index.json, tax lines from meta.json taxSk. Placeholders: {asof} fee quarter, {partner}/{method}/{pct}/{drag} lowest published fee at €100/month, {fi} lowest total cost incl. spread, {fipct} its total.",
+  "pages": {
+    "sk": {
+      "country": "sk",
+      "relFile": "sk/kupit-bitcoin/slovensko/index.html",
+      "enRel": "buy-bitcoin/slovakia/index.html",
+      "title": "Ako kúpiť Bitcoin na Slovensku (2026): poplatky",
+      "description": "Bitcoin na Slovensku kúpite u partnera regulovaného v EÚ cez SEPA v eurách. Poplatky {asof}: {partner} {pct}, Bybit EU, Kraken.",
+      "h1": "Ako kúpiť Bitcoin na Slovensku",
+      "breadcrumb": "Kúpiť Bitcoin na Slovensku",
+      "breadcrumbParent": "Kúpiť Bitcoin",
+      "answer": [
+        "Bitcoin na Slovensku kúpite u partnera regulovaného v EÚ: založíte si účet, overíte totožnosť, pošlete eurá cez SEPA, kúpite a Bitcoin vyberiete do vlastnej peňaženky.",
+        "Najnižší zverejnený poplatok pri 100 € mesačne má {partner} ({method}): {pct}, ročne {drag}, stav {asof}.",
+        "Najnižšie celkové náklady vrátane spreadu má podľa indexu poplatkov {fi} ({fipct}).",
+        "Samotný nákup na Slovensku daň nespúšťa; zdaňuje sa predaj a výmena.",
+        "Virtuse nikdy nedrží vaše kľúče."
+      ],
+      "intro": "Prehľad je pre ľudí s bydliskom na Slovensku, ktorí platia v eurách. Partnerov uvádzame podľa vašich kritérií a zverejnených poplatkov, nie ako odporúčanie.",
+      "tableHeading": "Partneri a poplatky pri 100 € mesačne",
+      "tableHeaders": [
+        "Poradie",
+        "Partner",
+        "Spôsob",
+        "Poplatok",
+        "Ročne pri 100 €/mes.",
+        "Rýchlosť"
+      ],
+      "speed": {
+        "Automated": "Automaticky",
+        "Same day": "V ten istý deň"
+      },
+      "tableNote": "Poplatky sú prevzaté z cenníkov partnerov, stav {asof}. 21bitcoin účtuje 0 % v pláne Auto-Invest od 8. dňa; prvých 7 dní platí bežný poplatok. Spread, poplatky siete Bitcoin a výber nie sú zahrnuté; celkové náklady vrátane spreadu ukazuje",
+      "tableNoteLink": "index poplatkov",
+      "stepsHeading": "Ako kúpiť Bitcoin na Slovensku v 4 krokoch",
+      "steps": [
+        [
+          "Účet a overenie totožnosti",
+          "Zaregistrujte sa u partnera a overte totožnosť (KYC) občianskym preukazom alebo pasom. Overenie robí partner, nie Virtuse."
+        ],
+        [
+          "Vklad cez SEPA v eurách",
+          "Pošlite eurá bežným SEPA prevodom zo slovenskej banky. Prevod zvyčajne dorazí do jedného pracovného dňa."
+        ],
+        [
+          "Nákup",
+          "Kúpte jednorazovo alebo si nastavte pravidelný nákup (DCA). Pri pravidelnom nákupe porovnajte ročné poplatky v tabuľke vyššie."
+        ],
+        [
+          "Výber do vlastnej peňaženky",
+          "Bitcoin presuňte do vlastnej peňaženky, kde kľúče máte len vy."
+        ]
+      ],
+      "walletLink": "Hardvérové peňaženky a úschova",
+      "taxHeading": "Dane pri nákupe a predaji",
+      "taxIntro": "Samotný nákup Bitcoinu sa v tomto prehľade nepovažuje za zdaniteľný prevod. Daň vzniká pri predaji alebo výmene:",
+      "taxGuideLink": "Dane z Bitcoinu na Slovensku",
+      "dac8Text": "Od roku 2026 burzy evidujú vaše obchody pre finančnú správu (DAC8):",
+      "dac8Link": "DAC8 na Slovensku",
+      "faqHeading": "Časté otázky",
+      "faqs": [
+        [
+          "Kde je najlacnejšie kúpiť Bitcoin na Slovensku?",
+          "Pri 100 € mesačne má najnižší zverejnený poplatok {partner} ({method}), {pct}, stav {asof}. Vrátane odhadovaného spreadu sú najlacnejšie celkové náklady u {fi} ({fipct}). Poradie vychádza z cenníkov, nie z provízie."
+        ],
+        [
+          "Musím pri kúpe Bitcoinu overiť totožnosť?",
+          "Áno. Partneri regulovaní v EÚ vyžadujú overenie totožnosti (KYC) pred prvým vkladom. Virtuse vaše doklady nedostáva ani neukladá."
+        ],
+        [
+          "Platím daň, keď si kúpim Bitcoin?",
+          "Nie. Samotný nákup daň nespúšťa. Zdaňuje sa predaj a výmena krypto za krypto: {gain}, bez oslobodenia podľa doby držby. Nejde o daňové poradenstvo."
+        ],
+        [
+          "Drží Virtuse môj Bitcoin?",
+          "Nie. Virtuse nikdy nedrží vaše kľúče ani peniaze. Nákup aj úschova prebiehajú u partnera alebo vo vašej vlastnej peňaženke."
+        ]
+      ],
+      "related": [
+        [
+          "sk/buy-bitcoin.html",
+          "Kúpiť Bitcoin v Európe"
+        ],
+        [
+          "sk/bitcoin-dane/slovensko/",
+          "Dane z Bitcoinu na Slovensku"
+        ],
+        [
+          "sk/bitcoin-index-poplatkov/",
+          "Index poplatkov za Bitcoin"
+        ]
+      ],
+      "cta": [
+        "sk/stacking.html",
+        "Nasimulovať pravidelný nákup →"
+      ],
+      "partnerCta": "Otvoriť"
+    }
+  }
+}

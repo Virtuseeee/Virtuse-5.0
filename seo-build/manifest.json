@@ -6,7 +6,7 @@
   "counts": {
     "enIndexable": 47,
     "deIndexable": 20,
-    "skIndexable": 19,
+    "skIndexable": 20,
     "csIndexable": 19,
     "plIndexable": 19,
     "huIndexable": 19,
@@ -15,7 +15,7 @@
     "frIndexable": 19,
     "esIndexable": 19,
     "noindex": 1,
-    "totalHtml": 218
+    "totalHtml": 219
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -103,6 +103,7 @@
     "sk/bitcoin-dca-kalkulacka/index.html",
     "sk/bitcoin-predat-alebo-pozicat/index.html",
     "sk/bitcoin-dedicstvo/index.html",
+    "sk/kupit-bitcoin/slovensko/index.html",
     "cs/bitcoin-dane/index.html",
     "cs/bitcoin-dane/cesko/index.html",
     "cs/bitcoin-dane/slovensko/index.html",

@@ -9,6 +9,7 @@ head metadata (title, description, hreflang, canonical, JSON-LD) from the page i
 import html as html_mod, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(os.path.dirname(HERE))
+BUY_COUNTRY = os.path.join(os.path.dirname(SITE), 'seo-build', 'data', 'buy-country.json')
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'home'))
 import build_lang as B
 sys.path.insert(0, os.path.dirname(HERE))
@@ -173,8 +174,13 @@ def build(L):
       </div>
 '''.format(step=t('step'), n=n, tt=t('s%d_t' % n), pp=t('s%d_p' % n)) for n in range(1, 5))
 
-    countries = ''.join('<a class="gcard" href="/buy-bitcoin/%s/"><span class="gflag" aria-hidden="true">%s</span><b>%s</b><span>%s</span></a>'
-                        % (slug, FLAGS[c], t('g_' + c), t('g_desc')) for c, slug in (('sk', 'slovakia'), ('cz', 'czechia'), ('de', 'germany')))
+    # A language's own home-country buy page (seo-build/data/buy-country.json) replaces the EN guide.
+    local = {}
+    for pg in json.load(open(BUY_COUNTRY, encoding='utf-8'))['pages'].values():
+        if pg['relFile'].startswith(L + '/'):
+            local[pg['country'] if pg['country'] != 'cs' else 'cz'] = '/' + pg['relFile'][:-len('index.html')]
+    countries = ''.join('<a class="gcard" href="%s"><span class="gflag" aria-hidden="true">%s</span><b>%s</b><span>%s</span></a>'
+                        % (local.get(c, '/buy-bitcoin/%s/' % slug), FLAGS[c], t('g_' + c), t('g_desc')) for c, slug in (('sk', 'slovakia'), ('cz', 'czechia'), ('de', 'germany')))
 
     brief = '''<section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>{h2a} <span>{h2b}</span></h2></div></div>

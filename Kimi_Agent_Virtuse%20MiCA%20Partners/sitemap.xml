@@ -5625,10 +5625,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/buy-bitcoin/slovakia/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/kupit-bitcoin/slovensko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
   </url>
   <url>
@@ -5915,7 +5916,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/bitcoin-dane/slovensko/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
@@ -6368,6 +6369,15 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-indice-frais/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-indice-comisiones/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/kupit-bitcoin/slovensko/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/kupit-bitcoin/slovensko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
   </url>
   <url>
     <loc>https://virtuse.com/cs/bitcoin-dane/</loc>

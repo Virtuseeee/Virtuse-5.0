@@ -377,6 +377,9 @@ const SK_ALT = {
 for (const c of COUNTRIES) {
   SK_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `sk/bitcoin-dane/${meta.slugs.sk[c.id]}/index.html`;
 }
+// Home-country buy pages (data/buy-country.json): EN buy-bitcoin/<country>/ <-> its local page.
+const BUY_COUNTRY = JSON.parse(fs.readFileSync(path.join(DATA, 'buy-country.json'), 'utf8')).pages;
+for (const pg of Object.values(BUY_COUNTRY)) SK_ALT[pg.enRel] = pg.relFile;
 /** EN page -> its Czech counterpart. */
 const CS_ALT = {
   'bitcoin-tax/index.html': 'cs/bitcoin-dane/index.html',
@@ -2063,7 +2066,8 @@ for (const c of COUNTRIES) {
     related: [
       { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' },
       { href: toRoot(relFile, 'sk/bitcoin-dedicstvo/'), label: 'Bitcoin a dedičstvo' },
-      { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' }
+      { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' },
+      ...(BUY_COUNTRY.sk.country === c.id ? [{ href: toRoot(relFile, BUY_COUNTRY.sk.relFile.replace(/index\.html$/, '')), label: BUY_COUNTRY.sk.h1 }] : [])
     ],
     moduleCta: { href: toRoot(relFile, `sk/${TAX_AGENT}?country=${c.id}`), label: `Skontrolovať ${nameSk(c.id)} v Tax Agentovi →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'sk')],
@@ -2402,6 +2406,65 @@ ${tables}
 <h2>Automatizovane, alebo manuálne?</h2>
 <p>${esc(beText)}</p>
 ${faqHtml(faqs, 'Časté otázky')}
+`
+  });
+}
+
+// SK home-country buy page (data/buy-country.json): how to buy in Slovakia, partners
+// ranked by published fee from fee-schedule-live.json, tax lines from meta.taxSk.
+{
+  const pg = BUY_COUNTRY.sk;
+  const relFile = pg.relFile;
+  const t = meta.taxSk[pg.country];
+  const winner = winnerDefault;
+  const fill = (x) => x
+    .replaceAll('{asof}', feeAsOfSk)
+    .replaceAll('{partner}', winner.partner)
+    .replaceAll('{method}', methodSk(winner.method))
+    .replaceAll('{pct}', formatPctSk(winner.pct))
+    .replaceAll('{drag}', formatEurSk(winner.annualDrag))
+    .replaceAll('{fi}', FI_TOP.name)
+    .replaceAll('{fipct}', formatPctSk(FI_TOP.pct))
+    .replaceAll('{gain}', gainFull(t));
+  const faqs = pg.faqs.map(([q, a]) => ({ q: fill(q), a: fill(a) }));
+  const answer = finalizeAnswer(pg.answer.map(fill), 'sk', 'fee');
+  const rows = rankedDefault.map((r, i) => [
+    esc(String(i + 1)),
+    `<a href="${esc(r.url)}" rel="sponsored noopener" target="_blank">${esc(r.partner)}</a>`,
+    esc(methodSk(r.method)),
+    esc(formatPctSk(r.pct)),
+    esc(formatEurSk(r.annualDrag)),
+    esc(pg.speed[r.speed] || r.speed)
+  ]);
+  const dac8 = DAC8.countries.find((x) => x.id === pg.country);
+  const dac8Href = dac8 && dac8.paths.sk ? toRoot(relFile, dac8.paths.sk.replace(/index\.html$/, '')) : null;
+  pushPage({
+    relFile, lang: 'sk', asOfLabel: feeAsOfSk,
+    title: assertTitle(pg.title),
+    description: assertDescription(fill(pg.description)),
+    h1: pg.h1,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      skHome(relFile),
+      { name: pg.breadcrumbParent, href: toRoot(relFile, 'sk/buy-bitcoin.html'), abs: abs('sk/buy-bitcoin.html') },
+      { name: pg.breadcrumb, abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(pg.enRel, null),
+    related: pg.related.map(([href, label]) => ({ href: toRoot(relFile, href), label })),
+    moduleCta: { href: toRoot(relFile, pg.cta[0]), label: pg.cta[1] },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(pg.intro)}</p>
+<h2>${esc(pg.tableHeading)}</h2>
+${tableHtml(pg.tableHeaders, rows)}
+<p class="muted">${esc(fill(pg.tableNote))} <a href="${esc(toRoot(relFile, 'sk/bitcoin-index-poplatkov/'))}">${esc(pg.tableNoteLink)}</a>.</p>
+${affNote(relFile, 'sk')}
+<h2>${esc(pg.stepsHeading)}</h2>
+<ol>${pg.steps.map(([h, p], i) => `<li><strong>${esc(h)}.</strong> ${esc(p)}${i === pg.steps.length - 1 ? ` <a href="${esc(toRoot(relFile, 'sk/secure.html'))}">${esc(pg.walletLink)}</a>.` : ''}</li>`).join('')}</ol>
+<h2>${esc(pg.taxHeading)}</h2>
+<p>${esc(pg.taxIntro)} ${esc(gainFull(t))}. ${esc(t.exemption)}. <a href="${esc(toRoot(relFile, 'sk/bitcoin-dane/slovensko/'))}">${esc(pg.taxGuideLink)}</a>.</p>
+${dac8Href ? `<p>${esc(pg.dac8Text)} <a href="${esc(dac8Href)}">${esc(pg.dac8Link)}</a>.</p>` : ''}
+${faqHtml(faqs, pg.faqHeading)}
 `
   });
 }
@@ -4756,6 +4819,7 @@ ${feeLines}
 
 Index: ${ORIGIN}/bitcoin-fee-index/
 Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
+Ako kúpiť Bitcoin na Slovensku (SK): ${ORIGIN}/${BUY_COUNTRY.sk.relFile.replace(/index\.html$/, '')}
 
 ## Tools
 
