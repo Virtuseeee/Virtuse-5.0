@@ -14,7 +14,7 @@ Layer 2 module shells) get it from this script.
   python3 cf_analytics.py           insert / update the snippet and the CSP origins on every page
   python3 cf_analytics.py --check   only report pages that are missing it or carry an old copy (exit 1)
 
-Pages without </body>, redirect stubs (meta refresh) and the fee-index embed (shown inside
+Pages without </body>, redirect stubs (meta refresh) and the embeds (fee index, bitcoin-vs-gold; shown inside
 other sites' iframes) are left alone. The CSP origins are added only where a page has a CSP;
 csp_tight.py never removes them (they are not in its OPTIONAL list).
 """
@@ -32,7 +32,7 @@ CSP_ORIGINS = {'script-src': 'https://static.cloudflareinsights.com', 'connect-s
 
 SNIPPET_RE = re.compile(re.escape(MARK) + r'<script>.*?</script>\n?', re.S)
 CSP_RE = re.compile(r'<meta http-equiv="Content-Security-Policy" content="([^"]*)">')
-SKIP_DIRS = ('i18n-tools/', 'email/', 'bitcoin-fee-index/embed/')
+SKIP_DIRS = ('i18n-tools/', 'email/', 'bitcoin-fee-index/embed/', 'bitcoin-vs-gold/embed/')
 
 
 def wanted(html):

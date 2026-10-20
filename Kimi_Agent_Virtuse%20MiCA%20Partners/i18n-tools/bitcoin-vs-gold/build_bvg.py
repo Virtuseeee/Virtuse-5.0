@@ -9,6 +9,9 @@ no-JS readers see real numbers; /bitcoin-vs-gold.js then re-renders everything f
 the live JSON (raw.githubusercontent first, the local copy as fallback), adds the
 charts and the EUR view. Strings the script needs are the "c_*" keys, inlined as JSON.
 Also maintains the page's <url> block in sitemap.xml (markers BVG:START/END).
+Also writes /bitcoin-vs-gold/embed/ (EN, the returns table for other sites' iframes; no GTM, no
+cookie banner, noindex) which re-renders from the same live JSON, so it stays current without
+a rebuild. The server .htaccess lets only the embed paths be framed by other sites.
 """
 import datetime, html, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +31,8 @@ COLORS = {'btc': '#f7931a', 'silver': '#3987e5', 'gold': '#c98500', 'basket': '#
 LEGEND = ['btc', 'silver', 'gold', 'basket', 'oil', 'copper', 'platinum']
 DEFAULT_ON = ['btc', 'gold', 'silver', 'basket']
 AMOUNT = 10000
+EMBED = 'bitcoin-vs-gold/embed/'
+EMBED_COLS = ['ytd', 'y1', 'y5', 'y10']
 # alt text = what the image shows (sk image in Slovak, the shared image in English)
 OG_ALT = {'en': 'Virtuse: Bitcoin vs Gold, Silver & Oil. Returns by year, updated daily.',
           'sk': 'Virtuse: Bitcoin vs. zlato, striebro a ropa. Výnosy po rokoch, denne aktualizované.'}
@@ -332,6 +337,9 @@ def build(L):
     <p class="bd-links"><a href="{assets_url}">{m_link_assets} →</a> · <a href="{data_url}">{m_link_data} →</a></p>
   </section>
 
+  <!-- 7b. EMBED -->
+  {embed}
+
   <!-- 8. BRIEF -->
   {brief}
 
@@ -356,13 +364,126 @@ def build(L):
            yearend=t['c_year_end'], xnote=t['ratio_note'], qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
            mh2a=t['method_h2_a'], mh2b=t['method_h2_b'], m1=t['method_p1'], m2=t['method_p2'], m3=t['method_p3'],
            assets_url=page_url('asset-returns.html'), m_link_assets=t['method_link_assets'], data_url=page_url('bitcoin-data.html'), m_link_data=t['method_link_data'],
-           brief=F.brief_card(L, t, 'bvg_brief'), relh2a=t['rel_h2_a'], relh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot,
+           embed=embed_section(L, page), brief=F.brief_card(L, t, 'bvg_brief'), relh2a=t['rel_h2_a'], relh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot,
            i18n=json.dumps(strings, ensure_ascii=False).replace('</', '<\\/'), cfg=json.dumps(cfg).replace('</', '<\\/'))
     sc = C.scripts('/')
     out += sc.replace('<script src="/site-v2.js', '<script src="/bitcoin-vs-gold.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     open(shell, 'w').write(C.finalize(out, shell))
     print('%-34s %6d bytes' % (page, len(out)))
+
+
+def embed_section(L, page):
+    """'For journalists and sites' block with the iframe code; wording shared with the Fee Index page."""
+    ft = json.load(open(os.path.join(TOOLS, 'fee-index', L + '.json')))
+    code = esc('<iframe src="%s/%s" title="Bitcoin vs gold, silver and oil: returns (Virtuse)" width="100%%" height="460" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>\n'
+               '<p>Source: <a href="%s%s">Virtuse, Bitcoin vs gold, silver and oil</a></p>' % (ORIGIN, EMBED, ORIGIN, page))
+    return '''<section id="embed" class="qa fi-press">
+    <details><summary>{sum}</summary>
+      <h3>{eh}</h3>
+      <p>{intro}</p>
+      <pre class="fi-code">{code}</pre>
+      <p class="fi-btns"><a class="tlink" href="/{embed}">{btn} →</a></p>
+    </details>
+  </section>'''.format(sum=ft['press_sum'], eh=ft['embed_h'], intro=ft['embed_intro'], code=code, embed=EMBED, btn=ft['btn_embed'])
+
+
+def embed_rows(t):
+    rows = sorted(DATA['assets'], key=lambda a: -(a['periods']['ytd']['usd'] if a['periods']['ytd']['usd'] is not None else -9))
+    return ''.join('<tr%s><td class="a">%s</td>%s</tr>' % (
+        ' class="btc"' if a['id'] == 'btc' else '', t['c_a_' + a['id']],
+        ''.join('<td%s>%s</td>' % (tint(a['periods'][k]['usd']), pct(a['periods'][k]['usd'], 'en')) for k in EMBED_COLS)) for a in rows)
+
+
+def build_embed():
+    """EN table for other sites' iframes. Static numbers for no-JS readers, then the inline
+    script re-renders from the live JSON (raw.githubusercontent first, the site copy as fallback)."""
+    t = json.load(open(os.path.join(HERE, 'en.json')))
+    cfg = {'src': [RAW, '/data/bitcoin-vs-commodities.json'], 'cols': EMBED_COLS, 'months': F.MONTHS['en'],
+           'names': {a: t['c_a_' + a] for a in ASSETS}}
+    utm = '?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=bitcoin_vs_gold'
+    head_cells = ''.join('<th>%s</th>' % t[c] for c in ('c_col_ytd', 'c_col_1y', 'c_col_5y', 'c_col_10y'))
+    out = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Bitcoin vs gold, silver and oil: returns (embed)</title>
+<meta name="description" content="Embeddable Virtuse table: total return of Bitcoin, gold, silver, oil, copper, platinum and a commodities basket, year to date, 1, 5 and 10 years. Updated daily. Attribution required.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="{origin}/{embed}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+body {{ margin: 0; background: #08090a; color: #e6edf3; font: 14px/1.5 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }}
+.w {{ padding: 16px; }}
+h1 {{ font-size: 16px; margin: 0 0 4px; }}
+p {{ margin: 0 0 10px; color: #8b949e; font-size: 12px; }}
+.tw {{ overflow-x: auto; margin-bottom: 10px; }}
+table {{ width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }}
+th, td {{ text-align: right; padding: 7px 7px; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; }}
+th {{ color: #8b949e; font-weight: 600; font-size: 12px; }}
+th.a, td.a {{ text-align: left; white-space: normal; min-width: 90px; }}
+@media (max-width: 480px) {{ body {{ font-size: 13px; }} .w {{ padding: 12px; }} th, td {{ padding: 6px 5px; }} }}
+@media (max-width: 360px) {{ body {{ font-size: 12px; }} .w {{ padding: 10px; }} th, td {{ padding: 5px 3px; }} th.a, td.a {{ min-width: 72px; }} }}
+tr.btc td.a {{ color: #f7931a; font-weight: 600; }}
+a {{ color: #f7931a; }}
+</style>
+</head>
+<body>
+<div class="w">
+  <h1>Bitcoin vs gold, silver and oil: total return</h1>
+  <p>Total return in USD, distributions reinvested. <span id="asof">Data as of {date}</span>.</p>
+  <div class="tw"><table><thead><tr><th class="a">{asset}</th>{head}</tr></thead><tbody id="rows">{rows}</tbody></table></div>
+  <p>Source: <a href="{origin}/bitcoin-vs-gold.html{utm}" target="_blank" rel="noopener">Virtuse, Bitcoin vs gold, silver and oil</a>. Updated daily. Past performance does not guarantee future results. Not investment advice.</p>
+</div>
+<script>
+(function () {{
+  var C = {cfg};
+  function pct(v) {{
+    if (v == null) return '\u2013';
+    var p = v * 100, d = Math.abs(p) < 100 ? 1 : 0;
+    return p.toLocaleString('en-US', {{ minimumFractionDigits: d, maximumFractionDigits: d }}) + '%';
+  }}
+  function tint(td, v) {{
+    if (v == null) return;
+    var k = Math.min(Math.abs(v) / 0.4, 1), a = 0.10 + 0.32 * k;
+    td.style.background = 'rgba(' + (v >= 0 ? '46,160,90' : '210,60,60') + ',' + a.toFixed(2) + ')';
+    td.style.color = v >= 0 ? '#b8f0c8' : '#ffc4c4';
+  }}
+  function render(d) {{
+    var tb = document.getElementById('rows'), rows = d.assets.slice().sort(function (x, y) {{
+      var a = x.periods.ytd.usd, b = y.periods.ytd.usd;
+      return (b == null ? -9 : b) - (a == null ? -9 : a);
+    }});
+    tb.textContent = '';
+    rows.forEach(function (r) {{
+      if (!C.names[r.id]) return;
+      var tr = document.createElement('tr'), td = document.createElement('td');
+      if (r.id === 'btc') tr.className = 'btc';
+      td.className = 'a'; td.textContent = C.names[r.id]; tr.appendChild(td);
+      C.cols.forEach(function (k) {{
+        var c = document.createElement('td'), v = r.periods[k] ? r.periods[k].usd : null;
+        c.textContent = pct(v); tint(c, v); tr.appendChild(c);
+      }});
+      tb.appendChild(tr);
+    }});
+    var p = d.asOf.split('-');
+    document.getElementById('asof').textContent = 'Data as of ' + (+p[2]) + ' ' + C.months[+p[1] - 1] + ' ' + p[0];
+  }}
+  (function next(i) {{
+    if (i >= C.src.length) return;
+    fetch(C.src[i], {{ cache: 'no-cache' }}).then(function (r) {{ if (!r.ok) throw new Error(r.status); return r.json(); }})
+      .then(render).catch(function () {{ next(i + 1); }});
+  }})(0);
+}})();
+</script>
+</body>
+</html>
+'''.format(origin=ORIGIN, embed=EMBED, date=date_str(DATA['asOf'], 'en'), asset=t['c_col_asset'], head=head_cells, rows=embed_rows(t),
+           utm=utm, cfg=json.dumps(cfg).replace('</', '<\\/'))
+    F.check_text(out, 'bvg embed')
+    F.write(EMBED + 'index.html', out)
 
 
 def sitemap():
@@ -396,6 +517,8 @@ def main():
             build(L)
         else:
             print('%s: no strings yet, skipped' % L)
+    if not sys.argv[1:]:
+        build_embed()
     sitemap()
 
 
