@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-20) — Fee Index embed can be framed by other sites (`.htaccess` **live on production**, uploaded by the user via scp; repo copy `seo-ops/virtuse.com.htaccess` updated in `286e473b`)
+
+- Found while writing Mykyta's handover (Docs artifact https://claude.ai/artifact/22my2AmLMjFuBLPCDjh2Y5): production sent `X-Frame-Options: SAMEORIGIN` on every page, so the iframe code offered on `/bitcoin-fee-index/` showed an empty frame on any other site. Staging (GitHub Pages) never sent the header, which is why it looked fine there.
+- Fix in the server `.htaccess` security block: `X-Frame-Options "SAMEORIGIN"` now carries `expr=%{REQUEST_URI} !~ m#^/bitcoin-fee-index/embed/#`, and that path gets `Content-Security-Policy: frame-ancestors *`. Every other page keeps SAMEORIGIN. New embeds (bitcoin-vs-gold, asset-returns) must be added to both regexes.
+- The live file was downloaded first and was byte-identical to the repo copy (md5 `ac220e81…`); new md5 `b8241d76…`. Tested on local Apache 2.4.67 (curl headers on embed, fee index, print, home, 404, 301) and in a browser from another origin (embed shows, buy-bitcoin.html refused); after the upload the same checks against virtuse.com passed, incl. a real cross-origin iframe of the live embed. Rollback = upload the previous git version of `seo-ops/virtuse.com.htaccess` to `public_html/.htaccess`.
+
 ## Session status (2026-10-19, fourth round) — Reader ignores "Signature: …" image captions (article.js `?v=20261019`; on main, **production not uploaded yet**)
 
 - `article.js` hero credit: a WordPress media caption that starts with "Signature:" or is one token over 120 characters with no spaces is treated as empty, so AI-image JPEG metadata never shows as an "Image:" credit again (the 6 captions were cleared by hand earlier the same day). Normal credits ("Photo: Reuters", "Unsplash") still show; checked locally with injected fake captions.
