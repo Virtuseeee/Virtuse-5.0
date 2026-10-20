@@ -1,5 +1,5 @@
-/* Virtuse Brief subscribe pop-up, shared by news.html and the story pages
-   (article.js loads it). Opens after 10 s of visible time on the page.
+/* Virtuse Brief subscribe pop-up on the story pages and article.html
+   (article.js loads it; news.html deliberately has none). Opens after 10 s of visible time on the page.
    Never for subscribers (the Brief forms set localStorage vb-brief-sub) or
    readers coming from the email (utm_medium=email); after a dismissal not
    again for 14 days; at most once per session. Waits while the cookie banner

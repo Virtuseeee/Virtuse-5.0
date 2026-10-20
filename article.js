@@ -707,7 +707,7 @@
   }).catch(showError);
 })();
 
-/* Brief subscribe pop-up (shared with news.html), loaded from the site root
+/* Brief subscribe pop-up (story pages only), loaded from the site root
    so the ~400 story pages need no new script tag. */
 (function () {
   var root = document.documentElement.getAttribute('data-root') || '';
