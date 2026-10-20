@@ -1,5 +1,5 @@
 /* Virtuse Brief subscribe pop-up on the story pages and article.html
-   (article.js loads it; news.html deliberately has none). Opens after 5 s of visible time on the page.
+   (article.js loads it; news.html deliberately has none). Opens after 6.5 s of visible time on the page.
    Never for subscribers (the Brief forms set localStorage vb-brief-sub) or
    readers coming from the email (utm_medium=email); after a dismissal not
    again for 14 days; at most once per session. Waits while the cookie banner
@@ -8,7 +8,7 @@
    ?brief_popup=1 ignores the stored flags (for testing). */
 (function () {
   'use strict';
-  var DELAY = 5, SNOOZE_DAYS = 14;
+  var DELAY_MS = 6500, SNOOZE_DAYS = 14;
   var SUB_KEY = 'vb-brief-sub', DISMISS_KEY = 'vb-brief-pop-dismissed', SESSION_KEY = 'vb-brief-pop-shown';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
 
@@ -48,16 +48,17 @@
     window.dataLayer.push({ event: name, capture_source: source, page_lang: lang });
   }
 
-  var seconds = 0;
+  var TICK = 250, elapsed = 0;
   var timer = setInterval(function () {
     if (document.visibilityState !== 'visible') return;
-    if (++seconds < DELAY) return;
+    elapsed += TICK;
+    if (elapsed < DELAY_MS) return;
     if (document.querySelector('.vb-cc')) return; /* cookie banner open */
     var a = document.activeElement;
     if (a && a.tagName === 'INPUT' && a.type === 'email') return; /* typing in a page form */
     clearInterval(timer);
     show();
-  }, 1000);
+  }, TICK);
 
 
   function injectCss() {
