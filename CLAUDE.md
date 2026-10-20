@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-20, second round) — Bitcoin vs Gold embed (main `7376bba3`; **live on production** — user ran `deploy_site.sh 0a8ac747 7376bba3`: DEPLOY OK, 12/12 md5 on virtuse.com; server `.htaccess` uploaded with the guarded script `scratchpad/htaccess_bvg.sh`, server md5 was still `b8241d76…` before, new `252660b0…`)
+
+- `/bitcoin-vs-gold/embed/` (EN, `noindex, follow`, no GTM / cookie banner / Cloudflare beacon, own tight CSP): total return of the 7 assets for YTD, 1, 5 and 10 years in USD, sorted by YTD like the page. Static numbers for no-JS, then an inline script re-renders from the same live JSON as the page (raw.githubusercontent first, `/data/bitcoin-vs-commodities.json` as fallback), so it stays current without a rebuild or upload. Built by `build_embed()` in `i18n-tools/bitcoin-vs-gold/build_bvg.py` (every full run). Fits 320–700 px; iframe height 460.
+- All 10 `bitcoin-vs-gold.html` pages: "For journalists and sites" block with the iframe code after the methodology (wording from `i18n-tools/fee-index/<lang>.json`: `press_sum`, `embed_h`, `embed_intro`, `btn_embed`, so no new translations); the source link in the code points to the page's own language.
+- `cf_analytics.py` SKIP_DIRS has the embed; the server `.htaccess` regex is now `^/(?:bitcoin-fee-index|bitcoin-vs-gold)/embed/` for both the SAMEORIGIN exception and `frame-ancestors *`. Checked live: both embeds `frame-ancestors *`, the pages, home, 301 and 404 keep SAMEORIGIN; a real iframe of the live embed from another origin renders with live data.
+- Deploy gotcha: the stories bot committed between merge and deploy (`2373c61c`), so `deploy_site.sh` stopped once ("origin/main has 1 newer commit"); re-run from a checkout of the new origin/main with the same range. That commit's sitemap entries (2 new stories, `sk/stories/page/9/`) went up with this sitemap; those pages were already 200 on production.
+
 ## Session status (2026-10-20) — Fee Index embed can be framed by other sites (`.htaccess` **live on production**, uploaded by the user via scp; repo copy `seo-ops/virtuse.com.htaccess` updated in `286e473b`)
 
 - Found while writing Mykyta's handover (Docs artifact https://claude.ai/artifact/22my2AmLMjFuBLPCDjh2Y5): production sent `X-Frame-Options: SAMEORIGIN` on every page, so the iframe code offered on `/bitcoin-fee-index/` showed an empty frame on any other site. Staging (GitHub Pages) never sent the header, which is why it looked fine there.
