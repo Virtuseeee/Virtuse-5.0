@@ -706,3 +706,13 @@
     showError();
   }).catch(showError);
 })();
+
+/* Brief subscribe pop-up (shared with news.html), loaded from the site root
+   so the ~400 story pages need no new script tag. */
+(function () {
+  var root = document.documentElement.getAttribute('data-root') || '';
+  var s = document.createElement('script');
+  s.src = root + 'brief-popup.js?v=20261020';
+  s.defer = true;
+  document.body.appendChild(s);
+})();
