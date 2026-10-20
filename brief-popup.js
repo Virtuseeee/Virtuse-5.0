@@ -64,7 +64,7 @@
     if (document.getElementById('brief-pop-css')) return;
     var st = document.createElement('style');
     st.id = 'brief-pop-css';
-    st.textContent = ".brief-pop {\n  width: min(460px, calc(100% - 32px));\n  max-width: none;\n  margin: auto;\n  padding: 28px 28px 22px;\n  border: 1px solid var(--line-strong);\n  border-radius: var(--radius-card);\n  background: var(--bg-card);\n  color: var(--text);\n  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);\n}\n.brief-pop[open] { animation: briefPopIn 0.22s ease-out; }\n.brief-pop::backdrop {\n  background: rgba(0, 0, 0, 0.62);\n  -webkit-backdrop-filter: blur(3px);\n  backdrop-filter: blur(3px);\n}\n@keyframes briefPopIn {\n  from { transform: translateY(8px); }\n  to { transform: none; }\n}\n.brief-pop .desk-label { padding-right: 32px; }\n.brief-pop-x {\n  position: absolute;\n  top: 12px;\n  right: 12px;\n  width: 32px;\n  height: 32px;\n  border: 0;\n  background: transparent;\n  color: var(--text-faint);\n  font-size: 24px;\n  line-height: 1;\n  cursor: pointer;\n}\n.brief-pop-x:hover { color: var(--text); }\n.brief-pop-title {\n  margin: 4px 0 8px;\n  font-family: var(--font-display);\n  font-size: var(--t-head-card);\n  font-weight: 600;\n  line-height: var(--lh-head);\n  letter-spacing: -0.01em;\n}\n.brief-pop-dek {\n  margin: 0 0 18px;\n  font-size: var(--t-deck);\n  line-height: var(--lh-deck);\n  color: var(--text-muted);\n}\n.brief-pop .lenny-form { max-width: none; }\n.brief-pop-fine {\n  margin: 14px 0 0;\n  font-size: 12px;\n  color: var(--text-faint);\n}\n.brief-pop-no {\n  margin-left: 6px;\n  padding: 0;\n  border: 0;\n  background: none;\n  color: var(--text-muted);\n  font: inherit;\n  text-decoration: underline;\n  cursor: pointer;\n}\n.brief-pop-no:hover { color: var(--text); }\n@media (max-width: 480px) {\n  .brief-pop { padding: 24px 18px 18px; }\n  .brief-pop .lenny-form input[type=\"email\"] { border-right: 1px solid var(--line-strong); }\n  .brief-pop .lenny-form .btn { width: 100%; margin-top: 8px; }\n}\n@media (prefers-reduced-motion: reduce) {\n  .brief-pop[open] { animation: none; }\n}";
+    st.textContent = ".brief-pop {\n  width: min(460px, calc(100% - 32px));\n  max-width: none;\n  margin: auto;\n  padding: 28px 28px 22px;\n  border: 1px solid var(--line-strong);\n  border-radius: var(--radius-card);\n  background: var(--bg-card);\n  color: var(--text);\n  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);\n}\n.brief-pop {\n  opacity: 0;\n  transform: translateY(28px) scale(0.97);\n  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);\n}\n.brief-pop.is-in { opacity: 1; transform: none; }\n.brief-pop.is-out {\n  opacity: 0;\n  transform: translateY(12px) scale(0.98);\n  transition-duration: 0.35s, 0.35s;\n  transition-timing-function: ease-in, ease-in;\n}\n.brief-pop::backdrop {\n  background: rgba(0, 0, 0, 0.62);\n  -webkit-backdrop-filter: blur(3px);\n  backdrop-filter: blur(3px);\n  animation: briefPopFadeIn 0.7s ease both;\n}\n.brief-pop.is-out::backdrop { animation: briefPopFadeOut 0.35s ease-in both; }\n@keyframes briefPopFadeIn { from { opacity: 0; } to { opacity: 1; } }\n@keyframes briefPopFadeOut { from { opacity: 1; } to { opacity: 0; } }\n.brief-pop .desk-label { padding-right: 32px; }\n.brief-pop-x {\n  position: absolute;\n  top: 12px;\n  right: 12px;\n  width: 32px;\n  height: 32px;\n  border: 0;\n  background: transparent;\n  color: var(--text-faint);\n  font-size: 24px;\n  line-height: 1;\n  cursor: pointer;\n}\n.brief-pop-x:hover { color: var(--text); }\n.brief-pop-title {\n  margin: 4px 0 8px;\n  font-family: var(--font-display);\n  font-size: var(--t-head-card);\n  font-weight: 600;\n  line-height: var(--lh-head);\n  letter-spacing: -0.01em;\n}\n.brief-pop-dek {\n  margin: 0 0 18px;\n  font-size: var(--t-deck);\n  line-height: var(--lh-deck);\n  color: var(--text-muted);\n}\n.brief-pop .lenny-form { max-width: none; }\n.brief-pop-fine {\n  margin: 14px 0 0;\n  font-size: 12px;\n  color: var(--text-faint);\n}\n.brief-pop-no {\n  margin-left: 6px;\n  padding: 0;\n  border: 0;\n  background: none;\n  color: var(--text-muted);\n  font: inherit;\n  text-decoration: underline;\n  cursor: pointer;\n}\n.brief-pop-no:hover { color: var(--text); }\n@media (max-width: 480px) {\n  .brief-pop { padding: 24px 18px 18px; }\n  .brief-pop .lenny-form input[type=\"email\"] { border-right: 1px solid var(--line-strong); }\n  .brief-pop .lenny-form .btn { width: 100%; margin-top: 8px; }\n}\n@media (prefers-reduced-motion: reduce) {\n  .brief-pop, .brief-pop.is-out { transition: none; transform: none; }\n  .brief-pop::backdrop, .brief-pop.is-out::backdrop { animation: none; }\n}";
     document.head.appendChild(st);
   }
 
@@ -96,14 +96,21 @@
     dlg.querySelector('.brief-pop-no').textContent = S.no;
     document.body.appendChild(dlg);
 
-    var done = false;
+    var done = false, closing = false;
     function close(dismissed) {
       if (dismissed && !done) {
         try { localStorage.setItem(DISMISS_KEY, String(Date.now())); } catch (err) {}
         track('brief_popup_dismiss');
       }
-      if (dlg.open) dlg.close();
-      dlg.remove();
+      if (closing) return;
+      closing = true;
+      dlg.classList.remove('is-in');
+      dlg.classList.add('is-out');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(function () {
+        if (dlg.open) dlg.close();
+        dlg.remove();
+      }, reduce ? 0 : 360);
     }
 
     var form = dlg.querySelector('form'), msg = form.querySelector('.subscribe-msg');
@@ -143,6 +150,10 @@
 
     try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (err) {}
     dlg.showModal();
+    /* Force a style flush so the hidden start state applies first, then transition in.
+       (No requestAnimationFrame: it can stall, which would leave the dialog invisible.) */
+    void dlg.offsetWidth;
+    dlg.classList.add('is-in');
     track('brief_popup_shown');
   }
 })();
