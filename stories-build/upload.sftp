@@ -21,6 +21,7 @@
 -mkdir public_html/stories/6-things-you-need-to-know-about-ftx-and-sam-bankman-fried
 -mkdir public_html/stories/7-new-crypto-billionaires-on-forbes-400-ras-vasilisin
 -mkdir public_html/stories/8-investment-strategies-to-embrace-right-now
+-mkdir public_html/stories/a-billion-out-bitcoin-holds-80k
 -mkdir public_html/stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022
 -mkdir public_html/stories/after-this-war-is-over-money-will-never-be-the-same
 -mkdir public_html/stories/are-you-using-these-3-life-hacks
@@ -315,6 +316,7 @@
 -mkdir public_html/sk/stories/media-v-soku-necakany-americky-zazrak-ktory-experti-predpovedali-ako-kolaps
 -mkdir public_html/sk/stories/metaverse-moze-nastartovat-svetovu-ekonomiku-ras-vasilisin
 -mkdir public_html/sk/stories/michael-burry-ocakava-epicky-krach
+-mkdir public_html/sk/stories/miliarda-von-bitcoin-drzi-80-tisicku
 -mkdir public_html/sk/stories/na-konci-tlacenia-penazi-pridu-nepokoje-a-vytrznosti
 -mkdir public_html/sk/stories/na-svete-je-uz-219-milionov-bitcoinerov
 -mkdir public_html/sk/stories/najdolezitejsia-lekcia-ktoru-som-sa-naucil-z-cinskeho-krypto-zakazu-ras-vasilisin
@@ -533,6 +535,7 @@ put sk/stories/matrix-ta-chce-unaveneho-preco-je-thoreauova-samota-tvojim-najvac
 put sk/stories/media-v-soku-necakany-americky-zazrak-ktory-experti-predpovedali-ako-kolaps/index.html public_html/sk/stories/media-v-soku-necakany-americky-zazrak-ktory-experti-predpovedali-ako-kolaps/index.html
 put sk/stories/metaverse-moze-nastartovat-svetovu-ekonomiku-ras-vasilisin/index.html public_html/sk/stories/metaverse-moze-nastartovat-svetovu-ekonomiku-ras-vasilisin/index.html
 put sk/stories/michael-burry-ocakava-epicky-krach/index.html public_html/sk/stories/michael-burry-ocakava-epicky-krach/index.html
+put sk/stories/miliarda-von-bitcoin-drzi-80-tisicku/index.html public_html/sk/stories/miliarda-von-bitcoin-drzi-80-tisicku/index.html
 put sk/stories/na-konci-tlacenia-penazi-pridu-nepokoje-a-vytrznosti/index.html public_html/sk/stories/na-konci-tlacenia-penazi-pridu-nepokoje-a-vytrznosti/index.html
 put sk/stories/na-svete-je-uz-219-milionov-bitcoinerov/index.html public_html/sk/stories/na-svete-je-uz-219-milionov-bitcoinerov/index.html
 put sk/stories/najdolezitejsia-lekcia-ktoru-som-sa-naucil-z-cinskeho-krypto-zakazu-ras-vasilisin/index.html public_html/sk/stories/najdolezitejsia-lekcia-ktoru-som-sa-naucil-z-cinskeho-krypto-zakazu-ras-vasilisin/index.html
@@ -642,6 +645,7 @@ put stories/5-reasons-why-you-should-own-bitcoin-in-2022-ras-vasilisin/index.htm
 put stories/6-things-you-need-to-know-about-ftx-and-sam-bankman-fried/index.html public_html/stories/6-things-you-need-to-know-about-ftx-and-sam-bankman-fried/index.html
 put stories/7-new-crypto-billionaires-on-forbes-400-ras-vasilisin/index.html public_html/stories/7-new-crypto-billionaires-on-forbes-400-ras-vasilisin/index.html
 put stories/8-investment-strategies-to-embrace-right-now/index.html public_html/stories/8-investment-strategies-to-embrace-right-now/index.html
+put stories/a-billion-out-bitcoin-holds-80k/index.html public_html/stories/a-billion-out-bitcoin-holds-80k/index.html
 put stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022/index.html public_html/stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022/index.html
 put stories/after-this-war-is-over-money-will-never-be-the-same/index.html public_html/stories/after-this-war-is-over-money-will-never-be-the-same/index.html
 put stories/are-you-using-these-3-life-hacks/index.html public_html/stories/are-you-using-these-3-life-hacks/index.html
@@ -824,6 +828,7 @@ put stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/ind
 -mkdir public_html/sk/stories/page/6
 -mkdir public_html/sk/stories/page/7
 -mkdir public_html/sk/stories/page/8
+-mkdir public_html/sk/stories/page/9
 put stories/index.html public_html/stories/index.html
 put stories/page/2/index.html public_html/stories/page/2/index.html
 put stories/page/3/index.html public_html/stories/page/3/index.html
@@ -840,8 +845,8 @@ put sk/stories/page/5/index.html public_html/sk/stories/page/5/index.html
 put sk/stories/page/6/index.html public_html/sk/stories/page/6/index.html
 put sk/stories/page/7/index.html public_html/sk/stories/page/7/index.html
 put sk/stories/page/8/index.html public_html/sk/stories/page/8/index.html
+put sk/stories/page/9/index.html public_html/sk/stories/page/9/index.html
 put ru/stories/index.html public_html/ru/stories/index.html
-# removed hub page, delete on the server: public_html/sk/stories/page/9/index.html
 # hubs:end
 put sitemap.xml public_html/sitemap.xml
 put blog.html public_html/blog.html
@@ -855,6 +860,4 @@ put pl/blog.html public_html/pl/blog.html
 put ru/blog.html public_html/ru/blog.html
 put uk/blog.html public_html/uk/blog.html
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
-# removed from WordPress, delete on the server: public_html/sk/stories/miliarda-von-bitcoin-drzi-80-tisicku/
-# removed from WordPress, delete on the server: public_html/stories/a-billion-out-bitcoin-holds-80k/
 bye
