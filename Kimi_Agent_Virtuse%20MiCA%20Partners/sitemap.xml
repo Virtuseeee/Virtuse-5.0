@@ -5294,7 +5294,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/bitcoin-steuern/oesterreich/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/austria/"/>
@@ -5328,7 +5328,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/bitcoin-steuern/deutschland/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/germany/"/>
@@ -5617,10 +5617,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/buy-bitcoin/czechia/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/czechia/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/koupit-bitcoin/cesko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/czechia/"/>
   </url>
   <url>
@@ -5642,18 +5643,20 @@
   </url>
   <url>
     <loc>https://virtuse.com/buy-bitcoin/austria/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/austria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-kaufen/oesterreich/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/austria/"/>
   </url>
   <url>
     <loc>https://virtuse.com/buy-bitcoin/germany/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/germany/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-kaufen/deutschland/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/germany/"/>
   </url>
   <url>
@@ -6371,15 +6374,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/"/>
   </url>
   <url>
-    <loc>https://virtuse.com/sk/kupit-bitcoin/slovensko/</loc>
-    <lastmod>2026-10-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/kupit-bitcoin/slovensko/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
-  </url>
-  <url>
     <loc>https://virtuse.com/cs/bitcoin-dane/</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -6398,7 +6392,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/cs/bitcoin-dane/cesko/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/czechia/"/>
@@ -8520,6 +8514,42 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/bitcoin-indice-frais/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/bitcoin-indice-comisiones/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-fee-index/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/kupit-bitcoin/slovensko/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/kupit-bitcoin/slovensko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/slovakia/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/cs/koupit-bitcoin/cesko/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/czechia/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/koupit-bitcoin/cesko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/czechia/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/bitcoin-kaufen/deutschland/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/germany/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-kaufen/deutschland/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/germany/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/bitcoin-kaufen/oesterreich/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/buy-bitcoin/austria/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/bitcoin-kaufen/oesterreich/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/austria/"/>
   </url>
 <!-- SEO-BUILD:END -->
 <!-- STORIES-BUILD:START -->

@@ -385,7 +385,7 @@ for (const pg of Object.values(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/
   if (!local.includes(`hreflang="en" href="https://virtuse.com/${enUrl}"`)) fail(`${pg.relFile} missing EN hreflang`);
   if (!/FAQPage/.test(local)) fail(`${pg.relFile} missing FAQPage JSON-LD`);
   for (const row of JSON.parse(fs.readFileSync(path.join(ROOT, 'data/fee-schedule-live.json'), 'utf8')).rows) if (!local.includes(row.partner)) fail(`${pg.relFile} missing partner ${row.partner}`);
-  if (pg.country === 'sk' && !fs.readFileSync(path.join(SITE, 'sk/bitcoin-dane/slovensko/index.html'), 'utf8').includes(localUrl)) fail('sk/bitcoin-dane/slovensko does not link the SK buy page');
+  if (!fs.readFileSync(path.join(SITE, pg.paths.taxGuide, 'index.html'), 'utf8').includes(localUrl)) fail(`${pg.paths.taxGuide} does not link ${localUrl}`);
 }
 
 // hreflang reciprocity EN tax <-> DE tax

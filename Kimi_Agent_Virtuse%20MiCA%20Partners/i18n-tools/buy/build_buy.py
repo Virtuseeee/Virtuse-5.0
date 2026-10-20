@@ -178,7 +178,7 @@ def build(L):
     local = {}
     for pg in json.load(open(BUY_COUNTRY, encoding='utf-8'))['pages'].values():
         if pg['relFile'].startswith(L + '/'):
-            local[pg['country'] if pg['country'] != 'cs' else 'cz'] = '/' + pg['relFile'][:-len('index.html')]
+            local[pg['country']] = '/' + pg['relFile'][:-len('index.html')]
     countries = ''.join('<a class="gcard" href="%s"><span class="gflag" aria-hidden="true">%s</span><b>%s</b><span>%s</span></a>'
                         % (local.get(c, '/buy-bitcoin/%s/' % slug), FLAGS[c], t('g_' + c), t('g_desc')) for c, slug in (('sk', 'slovakia'), ('cz', 'czechia'), ('de', 'germany')))
 

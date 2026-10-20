@@ -32,6 +32,9 @@ Hub: https://virtuse.com/bitcoin-tax/
 Index: https://virtuse.com/bitcoin-fee-index/
 Archive: https://virtuse.com/bitcoin-fee-index/2026-q3/
 Ako kúpiť Bitcoin na Slovensku (SK): https://virtuse.com/sk/kupit-bitcoin/slovensko/
+Jak koupit Bitcoin v Česku (CS): https://virtuse.com/cs/koupit-bitcoin/cesko/
+Bitcoin kaufen in Deutschland (DE): https://virtuse.com/de/bitcoin-kaufen/deutschland/
+Bitcoin kaufen in Österreich (DE): https://virtuse.com/de/bitcoin-kaufen/oesterreich/
 
 ## Tools
 
