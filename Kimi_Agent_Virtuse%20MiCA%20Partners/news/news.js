@@ -5,10 +5,8 @@
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
-  /* Subscribe pop-up state (see the pop-up block below). */
+  /* Set after a successful signup, so /brief-popup.js stops offering the Brief. */
   var POP_SUB_KEY = 'vb-brief-sub';
-  var POP_DISMISS_KEY = 'vb-brief-pop-dismissed';
-  var POP_SESSION_KEY = 'vb-brief-pop-shown';
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
   var FEATURED_SLUG = 'a-billion-out-bitcoin-holds-80k';
   /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
@@ -289,7 +287,7 @@
   })();
 
   /* Subscribe: existing Worker, ENG list. */
-  function bindSubscribe(form, msg, onOk) {
+  function bindSubscribe(form, msg) {
     if (!form) return;
     var btn = form.querySelector('button[type="submit"]');
     if (!btn) return;
@@ -325,7 +323,6 @@
             msg.textContent = 'You are on the list. Check your inbox.';
             msg.classList.add('ok');
           }
-          if (onOk) onOk();
         } else if (msg) {
           msg.textContent = (result.data && result.data.error) || 'Could not join the list. Try again.';
           msg.classList.add('err');
@@ -343,87 +340,6 @@
   }
   bindSubscribe($('subscribeStripForm'), $('subscribeStripMsg'));
   bindSubscribe($('subscribeForm'), $('subscribeMsg'));
-
-  /* Subscribe pop-up: after 10 s of visible time on the page. Never for
-     subscribers (any form on this page sets POP_SUB_KEY) or readers coming
-     from the email; after a dismissal, not again for 14 days; at most once
-     per session. Waits while the cookie banner is open.
-     ?brief_popup=1 ignores the stored flags (for testing). */
-  (function () {
-    var DELAY = 10, SNOOZE_DAYS = 14;
-    var params = new URLSearchParams(location.search);
-    var force = params.get('brief_popup') === '1';
-    if (!force && params.get('utm_medium') === 'email') return;
-    try {
-      if (!force) {
-        if (localStorage.getItem(POP_SUB_KEY) === '1') return;
-        var t = +localStorage.getItem(POP_DISMISS_KEY);
-        if (t && Date.now() - t < SNOOZE_DAYS * 864e5) return;
-        if (sessionStorage.getItem(POP_SESSION_KEY)) return;
-      }
-    } catch (err) {}
-    if (typeof HTMLDialogElement !== 'function') return;
-
-    function track(name) {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: name, capture_source: 'news_popup' });
-    }
-
-    var seconds = 0;
-    var timer = setInterval(function () {
-      if (document.visibilityState !== 'visible') return;
-      if (++seconds < DELAY) return;
-      if (document.querySelector('.vb-cc')) return; /* cookie banner open */
-      var a = document.activeElement;
-      if (a && a.tagName === 'INPUT' && a.type === 'email') return; /* typing in a page form */
-      clearInterval(timer);
-      show();
-    }, 1000);
-
-    function show() {
-      var dlg = document.createElement('dialog');
-      dlg.className = 'brief-pop';
-      dlg.setAttribute('aria-labelledby', 'briefPopTitle');
-      dlg.innerHTML =
-        '<button class="brief-pop-x" type="button" aria-label="Close">&times;</button>' +
-        '<p class="desk-label">Virtuse Brief</p>' +
-        '<h2 class="brief-pop-title" id="briefPopTitle">Enjoying the Brief?</h2>' +
-        '<p class="brief-pop-dek">Get the weekly issue in your inbox every Monday. Bitcoin-only. No tokens. No PR. Free.</p>' +
-        '<form class="lenny-form brief-pop-form" novalidate>' +
-          '<label class="sr-only" for="briefPopEmail">Email</label>' +
-          '<input id="briefPopEmail" type="email" name="email" placeholder="Email address" required autocomplete="email">' +
-          '<input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp">' +
-          '<button class="btn" type="submit">Subscribe</button>' +
-          '<p class="subscribe-msg" role="status" aria-live="polite"></p>' +
-        '</form>' +
-        '<p class="brief-pop-fine">Unsubscribe anytime. <button class="brief-pop-no" type="button">No thanks</button></p>';
-      document.body.appendChild(dlg);
-
-      var done = false;
-      function close(dismissed) {
-        if (dismissed && !done) {
-          try { localStorage.setItem(POP_DISMISS_KEY, String(Date.now())); } catch (err) {}
-          track('brief_popup_dismiss');
-        }
-        if (dlg.open) dlg.close();
-        dlg.remove();
-      }
-      var form = dlg.querySelector('form');
-      bindSubscribe(form, form.querySelector('.subscribe-msg'), function () {
-        done = true;
-        track('brief_popup_submit');
-        setTimeout(function () { close(false); }, 2500);
-      });
-      dlg.querySelector('.brief-pop-x').addEventListener('click', function () { close(true); });
-      dlg.querySelector('.brief-pop-no').addEventListener('click', function () { close(true); });
-      dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(true); }); /* Esc */
-      dlg.addEventListener('click', function (e) { if (e.target === dlg) close(true); }); /* backdrop */
-
-      try { sessionStorage.setItem(POP_SESSION_KEY, '1'); } catch (err) {}
-      dlg.showModal();
-      track('brief_popup_shown');
-    }
-  })();
 
   /* Ticker + by-the-numbers tiles. */
   var lastTickerStats = null;
