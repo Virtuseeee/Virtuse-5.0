@@ -402,7 +402,10 @@ const hu: Record<string, string> = {
   "Source (health insurance)": "Forrás (egészségbiztosítás)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
   "How we earn": "Hogyan szerzünk bevételt",
-  "Your answers from Verdict are already filled in.": "A Verdictben megadott válaszai már ki vannak töltve."
+  "Your answers from Verdict are already filled in.": "A Verdictben megadott válaszai már ki vannak töltve.",
+  "Copy link to this result": "Link másolása ehhez az eredményhez",
+  "Link copied": "Link kimásolva",
+  "Link to this result": "Link ehhez az eredményhez"
 };
 
 export default hu;

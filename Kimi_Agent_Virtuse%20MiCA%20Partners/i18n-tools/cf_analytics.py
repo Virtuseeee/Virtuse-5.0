@@ -32,7 +32,7 @@ CSP_ORIGINS = {'script-src': 'https://static.cloudflareinsights.com', 'connect-s
 
 SNIPPET_RE = re.compile(re.escape(MARK) + r'<script>.*?</script>\n?', re.S)
 CSP_RE = re.compile(r'<meta http-equiv="Content-Security-Policy" content="([^"]*)">')
-SKIP_DIRS = ('i18n-tools/', 'email/', 'bitcoin-fee-index/embed/', 'bitcoin-vs-gold/embed/')
+SKIP_DIRS = ('i18n-tools/', 'email/', 'bitcoin-fee-index/embed/', 'bitcoin-vs-gold/embed/', 'asset-returns/embed/')
 
 
 def wanted(html):

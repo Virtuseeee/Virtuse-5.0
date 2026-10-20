@@ -374,6 +374,20 @@ if (!dca.includes('"price": "0"')) fail('DCA offers price not 0');
 const czCta = fs.readFileSync(path.join(SITE, 'bitcoin-tax/czechia/index.html'), 'utf8');
 if (!czCta.includes('tax-agent.html')) fail('tax country CTA should point at tax-agent.html, not the tax.html category page');
 
+// Home-country buy pages (data/buy-country.json): hreflang both ways, linked from the
+// language's tax page for that country, fees only from the live schedule.
+for (const pg of Object.values(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/buy-country.json'), 'utf8')).pages)) {
+  const local = fs.readFileSync(path.join(SITE, pg.relFile), 'utf8');
+  const en = fs.readFileSync(path.join(SITE, pg.enRel), 'utf8');
+  const localUrl = pg.relFile.replace(/index\.html$/, '');
+  const enUrl = pg.enRel.replace(/index\.html$/, '');
+  if (!en.includes(`hreflang="${pg.relFile.split('/')[0]}" href="https://virtuse.com/${localUrl}"`)) fail(`${pg.enRel} missing hreflang to ${localUrl}`);
+  if (!local.includes(`hreflang="en" href="https://virtuse.com/${enUrl}"`)) fail(`${pg.relFile} missing EN hreflang`);
+  if (!/FAQPage/.test(local)) fail(`${pg.relFile} missing FAQPage JSON-LD`);
+  for (const row of JSON.parse(fs.readFileSync(path.join(ROOT, 'data/fee-schedule-live.json'), 'utf8')).rows) if (!local.includes(row.partner)) fail(`${pg.relFile} missing partner ${row.partner}`);
+  if (!fs.readFileSync(path.join(SITE, pg.paths.taxGuide, 'index.html'), 'utf8').includes(localUrl)) fail(`${pg.paths.taxGuide} does not link ${localUrl}`);
+}
+
 // hreflang reciprocity EN tax <-> DE tax
 const cz = fs.readFileSync(path.join(SITE, 'bitcoin-tax/czechia/index.html'), 'utf8');
 const tschechien = fs.readFileSync(path.join(SITE, 'de/bitcoin-steuern/tschechien/index.html'), 'utf8');

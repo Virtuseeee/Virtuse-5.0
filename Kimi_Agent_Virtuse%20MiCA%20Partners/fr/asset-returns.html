@@ -40,14 +40,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Rendements des classes d'actifs | Virtuse">
 <meta property="og:description" content="Rendements annuels calendaires du Bitcoin, des actions et obligations américaines et européennes, de l'or, des matières premières et du cash sur les 10 dernières années, mis à jour chaque jour. Meilleur et pire actif de chaque année, cumulé et annualisé.">
 <meta property="og:url" content="https://virtuse.com/fr/asset-returns.html">
-<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image" content="https://virtuse.com/og/asset-returns.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr-FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rendements des classes d'actifs | Virtuse">
 <meta name="twitter:description" content="Rendements annuels calendaires du Bitcoin, des actions et obligations américaines et européennes, de l'or, des matières premières et du cash sur les 10 dernières années, mis à jour chaque jour. Meilleur et pire actif de chaque année, cumulé et annualisé.">
-<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<meta name="twitter:image" content="https://virtuse.com/og/asset-returns.jpg">
 <script type="application/ld+json" id="virtuse-ld">
 {
   "@context": "https://schema.org",
@@ -791,6 +791,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .legacy .ar-table th,.legacy .ar-table td{padding: 7px 8px;}
 .legacy .ar-table .ar-asset{min-width: 0;}
 .legacy .ar-table td.ar-asset span{display: none;}}
+.legacy .ar-embed{max-width: 1200px; margin: 0 auto 48px; padding: 0 48px;}
+.legacy .ar-embed h2{font-size: 22px; margin: 0 0 8px;}
+.legacy .ar-embed pre{white-space: pre-wrap; word-break: break-all; background: #141414; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #e6edf3;}
+@media (max-width: 768px){.legacy .ar-embed{padding: 0 24px;}}
 .legacy .sec-label{color:var(--text-muted);background:rgba(255,255,255,.05)}
 .legacy details[open]{border-color:rgba(255,255,255,.14)}
 .legacy summary:hover{color:var(--text)}
@@ -865,6 +869,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
   <p class="ar-note" id="arNote">Rendement total dans la devise choisie. ETF sur la base des prix de clôture ajustés (dividendes et distributions réinvestis). Les lignes marquées EU sont des actifs européens ; les ETF obligataires en euros (EUNH, EUN5) sont cotés en EUR. La vue en EUR convertit chaque ligne au taux EUR/USD de fin d'année, c'est-à-dire ce qu'un investisseur en euros a gagné en détenant l'actif sans couverture. Les performances passées ne garantissent pas les performances futures. Ceci n'est pas un conseil en investissement.</p>
 </section>
+
+<!-- EMBED:START -->
+<section class="ar-embed"><style>.ar-embed { max-width: 1200px; margin: 0 auto 48px; padding: 0 48px; }.ar-embed h2 { font-size: 22px; margin: 0 0 8px; }.ar-embed pre { white-space: pre-wrap; word-break: break-all; background: #141414; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #e6edf3; }@media (max-width: 768px) { .ar-embed { padding: 0 24px; } }</style><h2>Code d&#x27;intégration</h2><p class="ar-note">Copiez et collez le code ci-dessous en conservant la ligne de source.</p><pre>&lt;iframe src=&quot;https://virtuse.com/asset-returns/embed/&quot; title=&quot;Virtuse: Asset class returns&quot; width=&quot;100%&quot; height=&quot;900&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot; style=&quot;border:0&quot;&gt;&lt;/iframe&gt;</pre><p class="ar-note"><a href="/asset-returns/embed/">Ouvrir le tableau intégrable →</a></p></section>
+<!-- EMBED:END -->
   </div>
 
   <section id="brief">

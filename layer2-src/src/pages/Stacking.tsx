@@ -36,6 +36,7 @@ import { getLang, t, tv, L, fmtEur, fmtNum, pct } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
 import { ResultCaptureForm } from '@/components/CaptureForm';
 import { PartnerLinkNote } from '@/components/PartnerLinkNote';
+import { ShareResult } from '@/components/ShareResult';
 
 // ── State from the URL ───────────────────────────────────────
 // ?amount=<bucket>: Partner Finder's buy-flow card links here with one of its
@@ -93,15 +94,20 @@ const stateKey = (s: PlanState) => `${s.initial}|${s.contribution}|${s.frequency
 
 // Once the visitor changes anything, the URL carries the full plan
 // (initial/contribution/freq/years/scenario); amount is dropped, utm_* etc. kept.
+function stateUrl(s: PlanState): URL {
+  const u = new URL(window.location.href);
+  u.searchParams.delete('amount');
+  u.searchParams.set('initial', String(s.initial));
+  u.searchParams.set('contribution', String(s.contribution));
+  u.searchParams.set('freq', s.frequency);
+  u.searchParams.set('years', String(s.years));
+  u.searchParams.set('scenario', s.scenario);
+  return u;
+}
+
 function writeUrlState(s: PlanState) {
   try {
-    const u = new URL(window.location.href);
-    u.searchParams.delete('amount');
-    u.searchParams.set('initial', String(s.initial));
-    u.searchParams.set('contribution', String(s.contribution));
-    u.searchParams.set('freq', s.frequency);
-    u.searchParams.set('years', String(s.years));
-    u.searchParams.set('scenario', s.scenario);
+    const u = stateUrl(s);
     window.history.replaceState(window.history.state, '', u.pathname + u.search + u.hash);
   } catch {
     /* no-op */
@@ -434,6 +440,12 @@ export default function Stacking() {
           <p className="mt-2 text-right text-[11px] text-ink-muted">
             {t(lang, 'Orange = projected value · dashed = your total invested', 'Oranžová = predpokladaná hodnota · prerušovaná = celkovo investované', 'Oranžová = předpokládaná hodnota · přerušovaná = celkově investováno')}
           </p>
+          <ShareResult
+            lang={lang}
+            tool="stacking"
+            className="mt-3 flex flex-col items-end"
+            getUrl={() => stateUrl({ initial, contribution, frequency, years, scenario: preset }).toString()}
+          />
         </div>
       </div>
 

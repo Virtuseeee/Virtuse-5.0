@@ -402,7 +402,10 @@ const es: Record<string, string> = {
   "Source (health insurance)": "Fuente (seguro de salud)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
   "How we earn": "Cómo ganamos dinero",
-  "Your answers from Verdict are already filled in.": "Sus respuestas de Verdict ya están completadas."
+  "Your answers from Verdict are already filled in.": "Sus respuestas de Verdict ya están completadas.",
+  "Copy link to this result": "Copiar el enlace a este resultado",
+  "Link copied": "Enlace copiado",
+  "Link to this result": "Enlace a este resultado"
 };
 
 export default es;

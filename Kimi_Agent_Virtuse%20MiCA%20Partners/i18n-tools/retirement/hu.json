@@ -99,5 +99,8 @@
   "c_cfo_text": "A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi 9 € vagy évi 90 €.",
   "c_cfo_link": "Értesítést kérek →",
   "c_cta_text": "A Partner Finder megmutatja az Ön szempontjaihoz illő vásárlási partnereket.",
-  "c_cta": "Kezdje el a gyűjtést →"
+  "c_cta": "Kezdje el a gyűjtést →",
+  "c_share": "Link másolása ehhez az eredményhez",
+  "c_share_done": "Link kimásolva",
+  "c_share_field": "Link ehhez az eredményhez"
 }

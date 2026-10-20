@@ -402,7 +402,10 @@ const uk: Record<string, string> = {
   "Source (health insurance)": "Джерело (медичне страхування)",
   "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.": "Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється.",
   "How we earn": "Як ми заробляємо",
-  "Your answers from Verdict are already filled in.": "Ваші відповіді з Verdict уже заповнені."
+  "Your answers from Verdict are already filled in.": "Ваші відповіді з Verdict уже заповнені.",
+  "Copy link to this result": "Скопіювати посилання на результат",
+  "Link copied": "Посилання скопійовано",
+  "Link to this result": "Посилання на цей результат"
 };
 
 export default uk;

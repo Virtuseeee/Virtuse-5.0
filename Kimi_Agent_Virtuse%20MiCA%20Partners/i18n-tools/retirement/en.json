@@ -1,6 +1,6 @@
 {
-  "title": "Bitcoin Retirement Calculator | Virtuse",
-  "description": "Bitcoin Retirement Calculator: enter your stack, savings and spending in euros, pick a growth scenario and see year by year if it lasts. Free.",
+  "title": "Bitcoin Retirement Calculator: Free, No Sign-up | Virtuse",
+  "description": "Free Bitcoin retirement calculator: enter your BTC stack, savings and spending in euros and see year by year whether your Bitcoin lasts for life.",
   "og_title": "Bitcoin Retirement Calculator: can your Bitcoin fund your retirement?",
   "crumb_home": "Home",
   "crumb_page": "Retirement Calculator",
@@ -99,5 +99,8 @@
   "c_cfo_text": "Verdict and the fee audit are free from 1 November. Paid plans from January: €9/month or €90/year.",
   "c_cfo_link": "Get notified →",
   "c_cta_text": "Partner Finder shows the buy partners that fit your criteria.",
-  "c_cta": "Start stacking →"
+  "c_cta": "Start stacking →",
+  "c_share": "Copy link to this result",
+  "c_share_done": "Link copied",
+  "c_share_field": "Link to this result"
 }

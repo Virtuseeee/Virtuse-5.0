@@ -38,6 +38,7 @@ import { getLang, t, tv, L, fmtEur, fmtNum, fmtNumShort, pct } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n';
 import { ResultCaptureForm } from '@/components/CaptureForm';
 import { PartnerLinkNote } from '@/components/PartnerLinkNote';
+import { ShareResult } from '@/components/ShareResult';
 import { TAX_FIELD_SOURCES } from '@/lib/tax-sources.gen';
 
 // ── State from the URL ───────────────────────────────────────
@@ -108,18 +109,23 @@ function readUrlState(lang: Lang): LoanState {
   return s;
 }
 
+function stateUrl(s: LoanState & { price: number }): URL {
+  const u = new URL(window.location.href);
+  u.searchParams.delete('amount');
+  u.searchParams.set('cash', String(s.cash));
+  u.searchParams.set('btc', String(s.btc));
+  u.searchParams.set('price', String(s.price));
+  u.searchParams.set('ltv', String(s.ltv));
+  u.searchParams.set('apr', String(s.apr));
+  u.searchParams.set('years', String(s.years));
+  u.searchParams.set('country', s.country);
+  u.searchParams.set('threshold', String(s.threshold));
+  return u;
+}
+
 function writeUrlState(s: LoanState & { price: number }) {
   try {
-    const u = new URL(window.location.href);
-    u.searchParams.delete('amount');
-    u.searchParams.set('cash', String(s.cash));
-    u.searchParams.set('btc', String(s.btc));
-    u.searchParams.set('price', String(s.price));
-    u.searchParams.set('ltv', String(s.ltv));
-    u.searchParams.set('apr', String(s.apr));
-    u.searchParams.set('years', String(s.years));
-    u.searchParams.set('country', s.country);
-    u.searchParams.set('threshold', String(s.threshold));
+    const u = stateUrl(s);
     window.history.replaceState(window.history.state, '', u.pathname + u.search + u.hash);
   } catch {
     /* no-op */
@@ -685,6 +691,12 @@ export default function Loan() {
                 'Ak predáte: hodnota BTC, ktoré si ponecháte. Ak si požičiate: hodnota všetkých vašich BTC mínus pôžička a celkový úrok.',
                 'Pokud prodáte: hodnota BTC, které si ponecháte. Pokud si půjčíte: hodnota všech vašich BTC minus půjčka a celkový úrok.')}
             </p>
+            <ShareResult
+              lang={lang}
+              tool="loan"
+              className="mt-3"
+              getUrl={() => stateUrl({ cash: cashNeeded, btc: btcHoldings, price: btcPrice, ltv: ltvPct, apr: aprPct, years, country, threshold: thresholdPct }).toString()}
+            />
           </div>
 
           {/* summary: facts only, no verdict */}

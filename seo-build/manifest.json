@@ -5,9 +5,9 @@
   "feeSource": "live",
   "counts": {
     "enIndexable": 47,
-    "deIndexable": 20,
-    "skIndexable": 19,
-    "csIndexable": 19,
+    "deIndexable": 22,
+    "skIndexable": 20,
+    "csIndexable": 20,
     "plIndexable": 19,
     "huIndexable": 19,
     "ukIndexable": 18,
@@ -15,7 +15,7 @@
     "frIndexable": 19,
     "esIndexable": 19,
     "noindex": 1,
-    "totalHtml": 218
+    "totalHtml": 222
   },
   "files": [
     "bitcoin-tax/index.html",
@@ -222,6 +222,10 @@
     "es/bitcoin-calculadora-dca/index.html",
     "es/bitcoin-vender-o-pedir-prestado/index.html",
     "es/bitcoin-herencia/index.html",
+    "sk/kupit-bitcoin/slovensko/index.html",
+    "cs/koupit-bitcoin/cesko/index.html",
+    "de/bitcoin-kaufen/deutschland/index.html",
+    "de/bitcoin-kaufen/oesterreich/index.html",
     "llms.txt",
     "llms-full.txt"
   ]

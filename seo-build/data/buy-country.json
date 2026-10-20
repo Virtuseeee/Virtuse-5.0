@@ -1,0 +1,406 @@
+{
+  "about": "Home-country buy pages, one per language (\"Ako kúpiť Bitcoin na Slovensku\"). Texts only; fees come from fee-schedule-live.json and fee-index.json, tax lines from meta.json tax<Lang>, DAC8 box from dac8.json. Placeholders: {asof} fee quarter, {partner}/{method}/{pct}/{drag} lowest published fee at €100/month, {fi} lowest total cost incl. spread, {fipct} its total. {gain} gain tax, {exemption} holding-period rule.",
+  "pages": {
+    "sk": {
+      "country": "sk",
+      "relFile": "sk/kupit-bitcoin/slovensko/index.html",
+      "enRel": "buy-bitcoin/slovakia/index.html",
+      "title": "Ako kúpiť Bitcoin na Slovensku (2026): poplatky",
+      "description": "Bitcoin na Slovensku kúpite u partnera regulovaného v EÚ cez SEPA v eurách. Poplatky {asof}: {partner} {pct}, Bybit EU, Kraken.",
+      "h1": "Ako kúpiť Bitcoin na Slovensku",
+      "breadcrumb": "Kúpiť Bitcoin na Slovensku",
+      "breadcrumbParent": "Kúpiť Bitcoin",
+      "answer": [
+        "Bitcoin na Slovensku kúpite u partnera regulovaného v EÚ: založíte si účet, overíte totožnosť, pošlete eurá cez SEPA, kúpite a Bitcoin vyberiete do vlastnej peňaženky.",
+        "Najnižší zverejnený poplatok pri 100 € mesačne má {partner} ({method}): {pct}, ročne {drag}, stav {asof}.",
+        "Najnižšie celkové náklady vrátane spreadu má podľa indexu poplatkov {fi} ({fipct}).",
+        "Samotný nákup na Slovensku daň nespúšťa; zdaňuje sa predaj a výmena.",
+        "Virtuse nikdy nedrží vaše kľúče."
+      ],
+      "intro": "Prehľad je pre ľudí s bydliskom na Slovensku, ktorí platia v eurách. Partnerov uvádzame podľa vašich kritérií a zverejnených poplatkov, nie ako odporúčanie.",
+      "tableHeading": "Partneri a poplatky pri 100 € mesačne",
+      "tableHeaders": [
+        "Poradie",
+        "Partner",
+        "Spôsob",
+        "Poplatok",
+        "Ročne pri 100 €/mes.",
+        "Rýchlosť"
+      ],
+      "speed": {
+        "Automated": "Automaticky",
+        "Same day": "V ten istý deň"
+      },
+      "tableNote": "Poplatky sú prevzaté z cenníkov partnerov, stav {asof}. 21bitcoin účtuje 0 % v pláne Auto-Invest od 8. dňa; prvých 7 dní platí bežný poplatok. Spread, poplatky siete Bitcoin a výber nie sú zahrnuté; celkové náklady vrátane spreadu ukazuje",
+      "tableNoteLink": "index poplatkov",
+      "stepsHeading": "Ako kúpiť Bitcoin na Slovensku v 4 krokoch",
+      "steps": [
+        [
+          "Účet a overenie totožnosti",
+          "Zaregistrujte sa u partnera a overte totožnosť (KYC) občianskym preukazom alebo pasom. Overenie robí partner, nie Virtuse."
+        ],
+        [
+          "Vklad cez SEPA v eurách",
+          "Pošlite eurá bežným SEPA prevodom zo slovenskej banky. Prevod zvyčajne dorazí do jedného pracovného dňa."
+        ],
+        [
+          "Nákup",
+          "Kúpte jednorazovo alebo si nastavte pravidelný nákup (DCA). Pri pravidelnom nákupe porovnajte ročné poplatky v tabuľke vyššie."
+        ],
+        [
+          "Výber do vlastnej peňaženky",
+          "Bitcoin presuňte do vlastnej peňaženky, kde kľúče máte len vy."
+        ]
+      ],
+      "walletLink": "Hardvérové peňaženky a úschova",
+      "taxHeading": "Dane pri nákupe a predaji",
+      "taxIntro": "Samotný nákup Bitcoinu sa v tomto prehľade nepovažuje za zdaniteľný prevod. Daň vzniká pri predaji alebo výmene:",
+      "taxGuideLink": "Dane z Bitcoinu na Slovensku",
+      "faqHeading": "Časté otázky",
+      "faqs": [
+        [
+          "Kde je najlacnejšie kúpiť Bitcoin na Slovensku?",
+          "Pri 100 € mesačne má najnižší zverejnený poplatok {partner} ({method}), {pct}, stav {asof}. Vrátane odhadovaného spreadu sú najlacnejšie celkové náklady u {fi} ({fipct}). Poradie vychádza z cenníkov, nie z provízie."
+        ],
+        [
+          "Musím pri kúpe Bitcoinu overiť totožnosť?",
+          "Áno. Partneri regulovaní v EÚ vyžadujú overenie totožnosti (KYC) pred prvým vkladom. Virtuse vaše doklady nedostáva ani neukladá."
+        ],
+        [
+          "Platím daň, keď si kúpim Bitcoin?",
+          "Nie. Samotný nákup daň nespúšťa. Zdaňuje sa predaj a výmena krypto za krypto: {gain}. {exemption}. Nejde o daňové poradenstvo."
+        ],
+        [
+          "Drží Virtuse môj Bitcoin?",
+          "Nie. Virtuse nikdy nedrží vaše kľúče ani peniaze. Nákup aj úschova prebiehajú u partnera alebo vo vašej vlastnej peňaženke."
+        ]
+      ],
+      "related": [
+        [
+          "sk/buy-bitcoin.html",
+          "Kúpiť Bitcoin v Európe"
+        ],
+        [
+          "sk/bitcoin-dane/slovensko/",
+          "Dane z Bitcoinu na Slovensku"
+        ],
+        [
+          "sk/bitcoin-index-poplatkov/",
+          "Index poplatkov za Bitcoin"
+        ]
+      ],
+      "cta": [
+        "sk/stacking.html",
+        "Nasimulovať pravidelný nákup →"
+      ],
+      "partnerCta": "Otvoriť",
+      "lang": "sk",
+      "paths": {
+        "buyPage": "sk/buy-bitcoin.html",
+        "taxGuide": "sk/bitcoin-dane/slovensko/",
+        "feeIndex": "sk/bitcoin-index-poplatkov/",
+        "secure": "sk/secure.html"
+      }
+    },
+    "cz": {
+      "lang": "cs",
+      "country": "cz",
+      "relFile": "cs/koupit-bitcoin/cesko/index.html",
+      "enRel": "buy-bitcoin/czechia/index.html",
+      "paths": {
+        "buyPage": "cs/buy-bitcoin.html",
+        "taxGuide": "cs/bitcoin-dane/cesko/",
+        "feeIndex": "cs/bitcoin-index-poplatku/",
+        "secure": "cs/secure.html"
+      },
+      "title": "Jak koupit Bitcoin v Česku (2026): poplatky",
+      "description": "Bitcoin v Česku koupíte u partnera regulovaného v EU, obvykle převodem eur přes SEPA. Poplatky {asof}: {partner} {pct}, Bybit EU, Kraken.",
+      "h1": "Jak koupit Bitcoin v Česku",
+      "breadcrumb": "Koupit Bitcoin v Česku",
+      "breadcrumbParent": "Koupit Bitcoin",
+      "answer": [
+        "Bitcoin v Česku koupíte u partnera regulovaného v EU: založíte si účet, ověříte totožnost, pošlete peníze převodem, nakoupíte a Bitcoin vyberete do vlastní peněženky.",
+        "Nejnižší zveřejněný poplatek při 100 € měsíčně má {partner} ({method}): {pct}, ročně {drag}, stav {asof}.",
+        "Nejnižší celkové náklady včetně spreadu má podle indexu poplatků {fi} ({fipct}).",
+        "Samotný nákup v Česku daň nespouští; daní se prodej a směna.",
+        "Virtuse nikdy nedrží vaše klíče."
+      ],
+      "intro": "Přehled je pro lidi s bydlištěm v Česku. Partneři vedou účty v eurech, proto počítejte s převodem korun na eura. Partnery uvádíme podle vašich kritérií a zveřejněných poplatků, ne jako doporučení.",
+      "tableHeading": "Partneři a poplatky při 100 € měsíčně",
+      "tableHeaders": [
+        "Pořadí",
+        "Partner",
+        "Způsob",
+        "Poplatek",
+        "Ročně při 100 €/měs.",
+        "Rychlost"
+      ],
+      "speed": {
+        "Automated": "Automaticky",
+        "Same day": "Ve stejný den"
+      },
+      "tableNote": "Poplatky jsou převzaty z ceníků partnerů, stav {asof}. 21bitcoin účtuje 0 % v plánu Auto-Invest od 8. dne; prvních 7 dní platí běžný poplatek. Spread, převod CZK na EUR, poplatky sítě Bitcoin a výběr nejsou zahrnuty; celkové náklady včetně spreadu ukazuje",
+      "tableNoteLink": "index poplatků",
+      "stepsHeading": "Jak koupit Bitcoin v Česku ve 4 krocích",
+      "steps": [
+        [
+          "Účet a ověření totožnosti",
+          "Zaregistrujte se u partnera a ověřte totožnost (KYC) občanským průkazem nebo pasem. Ověření provádí partner, ne Virtuse."
+        ],
+        [
+          "Vklad",
+          "Většina partnerů vede účet v eurech: pošlete eura převodem SEPA, případně nechte banku převést koruny na eura. Kurz a poplatek za převod určuje vaše banka."
+        ],
+        [
+          "Nákup",
+          "Nakupte jednorázově nebo si nastavte pravidelný nákup (DCA). U pravidelného nákupu porovnejte roční poplatky v tabulce výše."
+        ],
+        [
+          "Výběr do vlastní peněženky",
+          "Bitcoin převeďte do vlastní peněženky, ke které klíče máte jen vy."
+        ]
+      ],
+      "walletLink": "Hardwarové peněženky a úschova",
+      "taxHeading": "Daně při nákupu a prodeji",
+      "taxIntro": "Samotný nákup Bitcoinu se v tomto přehledu nepovažuje za zdanitelný převod. Daň vzniká při prodeji nebo směně:",
+      "taxGuideLink": "Daně z Bitcoinu v Česku",
+      "faqHeading": "Časté dotazy",
+      "faqs": [
+        [
+          "Kde je nejlevnější koupit Bitcoin v Česku?",
+          "Při 100 € měsíčně má nejnižší zveřejněný poplatek {partner} ({method}), {pct}, stav {asof}. Včetně odhadovaného spreadu jsou nejnižší celkové náklady u {fi} ({fipct}). Převod korun na eura není zahrnut. Pořadí vychází z ceníků, ne z provize."
+        ],
+        [
+          "Musím při nákupu Bitcoinu ověřit totožnost?",
+          "Ano. Partneři regulovaní v EU vyžadují ověření totožnosti (KYC) před prvním vkladem. Virtuse vaše doklady nedostává ani neukládá."
+        ],
+        [
+          "Platím daň, když si koupím Bitcoin?",
+          "Ne. Samotný nákup daň nespouští. Daní se prodej a směna kryptoměny za kryptoměnu: {gain}. {exemption}. Nejde o daňové poradenství."
+        ],
+        [
+          "Drží Virtuse můj Bitcoin?",
+          "Ne. Virtuse nikdy nedrží vaše klíče ani peníze. Nákup i úschova probíhají u partnera nebo ve vaší vlastní peněžence."
+        ]
+      ],
+      "related": [
+        [
+          "cs/buy-bitcoin.html",
+          "Koupit Bitcoin v Evropě"
+        ],
+        [
+          "cs/bitcoin-dane/cesko/",
+          "Daně z Bitcoinu v Česku"
+        ],
+        [
+          "cs/bitcoin-index-poplatku/",
+          "Index poplatků za Bitcoin"
+        ]
+      ],
+      "cta": [
+        "cs/stacking.html",
+        "Nasimulovat pravidelný nákup →"
+      ]
+    },
+    "de": {
+      "lang": "de",
+      "country": "de",
+      "relFile": "de/bitcoin-kaufen/deutschland/index.html",
+      "enRel": "buy-bitcoin/germany/index.html",
+      "paths": {
+        "buyPage": "de/buy-bitcoin.html",
+        "taxGuide": "de/bitcoin-steuern/deutschland/",
+        "feeIndex": "de/bitcoin-gebuehrenindex/",
+        "secure": "de/secure.html"
+      },
+      "title": "Bitcoin kaufen in Deutschland (2026): Gebühren",
+      "description": "Bitcoin kaufen in Deutschland bei einem in der EU regulierten Partner, per SEPA in Euro. Gebühren {asof}: {partner} {pct}, Bybit EU, Kraken.",
+      "h1": "Bitcoin kaufen in Deutschland",
+      "breadcrumb": "Bitcoin kaufen in Deutschland",
+      "breadcrumbParent": "Bitcoin kaufen",
+      "answer": [
+        "In Deutschland kaufen Sie Bitcoin bei einem in der EU regulierten Partner: Konto eröffnen, Identität bestätigen, Euro per SEPA überweisen, kaufen und den Bitcoin auf Ihre eigene Wallet auszahlen.",
+        "Die niedrigste veröffentlichte Gebühr bei 100 € im Monat hat {partner} ({method}): {pct}, {drag} im Jahr, Stand {asof}.",
+        "Die niedrigsten Gesamtkosten inklusive Spread hat laut Gebührenindex {fi} ({fipct}).",
+        "Der Kauf selbst löst in Deutschland keine Steuer aus; besteuert werden Verkauf und Tausch.",
+        "Virtuse hält nie Ihre Schlüssel."
+      ],
+      "intro": "Diese Übersicht richtet sich an Menschen mit Wohnsitz in Deutschland, die in Euro zahlen. Wir listen Partner nach Ihren Kriterien und veröffentlichten Gebühren, nicht als Empfehlung.",
+      "tableHeading": "Partner und Gebühren bei 100 € im Monat",
+      "tableHeaders": [
+        "Rang",
+        "Partner",
+        "Methode",
+        "Gebühr",
+        "Pro Jahr bei 100 €/Monat",
+        "Tempo"
+      ],
+      "speed": {
+        "Automated": "Automatisch",
+        "Same day": "Am selben Tag"
+      },
+      "tableNote": "Gebühren laut den Preislisten der Partner, Stand {asof}. Der Auto-Invest-Sparplan von 21bitcoin ist ab dem 8. Tag gebührenfrei; in den ersten 7 Tagen gilt die reguläre Gebühr. Spread, Netzwerkgebühren und Auszahlung sind nicht enthalten; die Gesamtkosten inklusive Spread zeigt der",
+      "tableNoteLink": "Gebührenindex",
+      "stepsHeading": "Bitcoin kaufen in Deutschland in 4 Schritten",
+      "steps": [
+        [
+          "Konto und Identitätsprüfung",
+          "Registrieren Sie sich beim Partner und bestätigen Sie Ihre Identität (KYC) mit Personalausweis oder Reisepass. Die Prüfung macht der Partner, nicht Virtuse."
+        ],
+        [
+          "Einzahlung per SEPA in Euro",
+          "Überweisen Sie Euro per SEPA von Ihrer Bank. Die Überweisung kommt in der Regel innerhalb eines Bankarbeitstags an."
+        ],
+        [
+          "Kauf",
+          "Kaufen Sie einmalig oder richten Sie einen Sparplan (DCA) ein. Beim Sparplan vergleichen Sie die Jahresgebühren in der Tabelle oben."
+        ],
+        [
+          "Auszahlung auf die eigene Wallet",
+          "Übertragen Sie den Bitcoin auf Ihre eigene Wallet, deren Schlüssel nur Sie haben."
+        ]
+      ],
+      "walletLink": "Hardware-Wallets und Verwahrung",
+      "taxHeading": "Steuern bei Kauf und Verkauf",
+      "taxIntro": "Der Kauf von Bitcoin gilt in dieser Übersicht nicht als steuerpflichtiger Vorgang. Steuer entsteht bei Verkauf oder Tausch:",
+      "taxGuideLink": "Bitcoin-Steuern in Deutschland",
+      "faqHeading": "FAQ",
+      "faqs": [
+        [
+          "Wo kauft man Bitcoin in Deutschland am günstigsten?",
+          "Bei 100 € im Monat hat {partner} ({method}) die niedrigste veröffentlichte Gebühr, {pct}, Stand {asof}. Inklusive geschätztem Spread hat {fi} die niedrigsten Gesamtkosten ({fipct}). Die Reihenfolge folgt den Preislisten, nicht der Provision."
+        ],
+        [
+          "Muss ich mich beim Bitcoin-Kauf ausweisen?",
+          "Ja. In der EU regulierte Partner verlangen vor der ersten Einzahlung eine Identitätsprüfung (KYC). Virtuse erhält und speichert Ihre Dokumente nicht."
+        ],
+        [
+          "Zahle ich Steuern, wenn ich Bitcoin kaufe?",
+          "Nein. Der Kauf selbst löst keine Steuer aus. Besteuert werden Verkauf und Krypto-zu-Krypto-Tausch: {gain}. {exemption}. Keine Steuerberatung."
+        ],
+        [
+          "Hält Virtuse meinen Bitcoin?",
+          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrer eigenen Wallet."
+        ]
+      ],
+      "related": [
+        [
+          "de/buy-bitcoin.html",
+          "Bitcoin kaufen in Europa"
+        ],
+        [
+          "de/bitcoin-steuern/deutschland/",
+          "Bitcoin-Steuern in Deutschland"
+        ],
+        [
+          "de/bitcoin-gebuehrenindex/",
+          "Bitcoin-Gebührenindex"
+        ]
+      ],
+      "cta": [
+        "de/stacking.html",
+        "Sparplan simulieren →"
+      ]
+    },
+    "at": {
+      "lang": "de",
+      "country": "at",
+      "relFile": "de/bitcoin-kaufen/oesterreich/index.html",
+      "enRel": "buy-bitcoin/austria/index.html",
+      "paths": {
+        "buyPage": "de/buy-bitcoin.html",
+        "taxGuide": "de/bitcoin-steuern/oesterreich/",
+        "feeIndex": "de/bitcoin-gebuehrenindex/",
+        "secure": "de/secure.html"
+      },
+      "title": "Bitcoin kaufen in Österreich (2026): Gebühren",
+      "description": "Bitcoin kaufen in Österreich bei einem in der EU regulierten Partner, per SEPA in Euro. Gebühren {asof}: {partner} {pct}, Bybit EU, Kraken.",
+      "h1": "Bitcoin kaufen in Österreich",
+      "breadcrumb": "Bitcoin kaufen in Österreich",
+      "breadcrumbParent": "Bitcoin kaufen",
+      "answer": [
+        "In Österreich kaufen Sie Bitcoin bei einem in der EU regulierten Partner: Konto eröffnen, Identität bestätigen, Euro per SEPA überweisen, kaufen und den Bitcoin auf Ihre eigene Wallet auszahlen.",
+        "Die niedrigste veröffentlichte Gebühr bei 100 € im Monat hat {partner} ({method}): {pct}, {drag} im Jahr, Stand {asof}.",
+        "Die niedrigsten Gesamtkosten inklusive Spread hat laut Gebührenindex {fi} ({fipct}).",
+        "Der Kauf selbst löst in Österreich keine Steuer aus; besteuert wird der Verkauf gegen Euro, Krypto-zu-Krypto-Tausch ist steuerneutral.",
+        "Virtuse hält nie Ihre Schlüssel."
+      ],
+      "intro": "Diese Übersicht richtet sich an Menschen mit Wohnsitz in Österreich, die in Euro zahlen. Wir listen Partner nach Ihren Kriterien und veröffentlichten Gebühren, nicht als Empfehlung.",
+      "tableHeading": "Partner und Gebühren bei 100 € im Monat",
+      "tableHeaders": [
+        "Rang",
+        "Partner",
+        "Methode",
+        "Gebühr",
+        "Pro Jahr bei 100 €/Monat",
+        "Tempo"
+      ],
+      "speed": {
+        "Automated": "Automatisch",
+        "Same day": "Am selben Tag"
+      },
+      "tableNote": "Gebühren laut den Preislisten der Partner, Stand {asof}. Der Auto-Invest-Sparplan von 21bitcoin ist ab dem 8. Tag gebührenfrei; in den ersten 7 Tagen gilt die reguläre Gebühr. Spread, Netzwerkgebühren und Auszahlung sind nicht enthalten; die Gesamtkosten inklusive Spread zeigt der",
+      "tableNoteLink": "Gebührenindex",
+      "stepsHeading": "Bitcoin kaufen in Österreich in 4 Schritten",
+      "steps": [
+        [
+          "Konto und Identitätsprüfung",
+          "Registrieren Sie sich beim Partner und bestätigen Sie Ihre Identität (KYC) mit Personalausweis oder Reisepass. Die Prüfung macht der Partner, nicht Virtuse."
+        ],
+        [
+          "Einzahlung per SEPA in Euro",
+          "Überweisen Sie Euro per SEPA von Ihrer Bank. Die Überweisung kommt in der Regel innerhalb eines Bankarbeitstags an."
+        ],
+        [
+          "Kauf",
+          "Kaufen Sie einmalig oder richten Sie einen Sparplan (DCA) ein. Beim Sparplan vergleichen Sie die Jahresgebühren in der Tabelle oben."
+        ],
+        [
+          "Auszahlung auf die eigene Wallet",
+          "Übertragen Sie den Bitcoin auf Ihre eigene Wallet, deren Schlüssel nur Sie haben."
+        ]
+      ],
+      "walletLink": "Hardware-Wallets und Verwahrung",
+      "taxHeading": "Steuern bei Kauf und Verkauf",
+      "taxIntro": "Der Kauf von Bitcoin gilt in dieser Übersicht nicht als steuerpflichtiger Vorgang. Steuer entsteht beim Verkauf gegen Euro; Krypto-zu-Krypto-Tausch ist steuerneutral:",
+      "taxGuideLink": "Bitcoin-Steuern in Österreich",
+      "faqHeading": "FAQ",
+      "faqs": [
+        [
+          "Wo kauft man Bitcoin in Österreich am günstigsten?",
+          "Bei 100 € im Monat hat {partner} ({method}) die niedrigste veröffentlichte Gebühr, {pct}, Stand {asof}. Inklusive geschätztem Spread hat {fi} die niedrigsten Gesamtkosten ({fipct}). Die Reihenfolge folgt den Preislisten, nicht der Provision."
+        ],
+        [
+          "Muss ich mich beim Bitcoin-Kauf ausweisen?",
+          "Ja. In der EU regulierte Partner verlangen vor der ersten Einzahlung eine Identitätsprüfung (KYC). Virtuse erhält und speichert Ihre Dokumente nicht."
+        ],
+        [
+          "Zahle ich Steuern, wenn ich Bitcoin kaufe?",
+          "Nein. Der Kauf selbst löst keine Steuer aus. Besteuert wird der Verkauf gegen Euro: {gain}. {exemption}. Keine Steuerberatung."
+        ],
+        [
+          "Hält Virtuse meinen Bitcoin?",
+          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrer eigenen Wallet."
+        ]
+      ],
+      "related": [
+        [
+          "de/buy-bitcoin.html",
+          "Bitcoin kaufen in Europa"
+        ],
+        [
+          "de/bitcoin-steuern/oesterreich/",
+          "Bitcoin-Steuern in Österreich"
+        ],
+        [
+          "de/bitcoin-gebuehrenindex/",
+          "Bitcoin-Gebührenindex"
+        ]
+      ],
+      "cta": [
+        "de/stacking.html",
+        "Sparplan simulieren →"
+      ]
+    }
+  }
+}

@@ -377,6 +377,9 @@ const SK_ALT = {
 for (const c of COUNTRIES) {
   SK_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `sk/bitcoin-dane/${meta.slugs.sk[c.id]}/index.html`;
 }
+// Home-country buy pages (data/buy-country.json): EN buy-bitcoin/<country>/ <-> its local page.
+const BUY_COUNTRY = JSON.parse(fs.readFileSync(path.join(DATA, 'buy-country.json'), 'utf8')).pages;
+const DE_BUY = {}; // EN buy page -> German home-country page (passed as hrefLangPair's dePath)
 /** EN page -> its Czech counterpart. */
 const CS_ALT = {
   'bitcoin-tax/index.html': 'cs/bitcoin-dane/index.html',
@@ -455,6 +458,16 @@ for (const c of COUNTRIES) {
   ES_ALT[`bitcoin-tax/${meta.slugs.en[c.id]}/index.html`] = `es/bitcoin-impuestos/${meta.slugs.es[c.id]}/index.html`;
 }
 
+for (const pg of Object.values(BUY_COUNTRY)) {
+  if (pg.lang === 'sk') SK_ALT[pg.enRel] = pg.relFile;
+  else if (pg.lang === 'cs') CS_ALT[pg.enRel] = pg.relFile;
+  else if (pg.lang === 'de') DE_BUY[pg.enRel] = pg.relFile;
+}
+/** Related-guide link from a language's tax page to its home-country buy page. */
+function buyCountryLink(lang, id, relFile) {
+  const pg = Object.values(BUY_COUNTRY).find((p) => p.lang === lang && p.country === id);
+  return pg ? [{ href: toRoot(relFile, pg.relFile.replace(/index\.html$/, '')), label: pg.h1 }] : [];
+}
 function hrefLangPair(enPath, dePath) {
   const tags = [
     { lang: 'en', href: abs(enPath), path: canonicalPath(enPath) },
@@ -988,7 +1001,8 @@ ${faqHtml(faqs, 'FAQ')}
     related: [
       { href: toRoot(deRel, 'de/bitcoin-verkaufen-oder-beleihen/'), label: 'Verkaufen oder beleihen' },
       { href: toRoot(deRel, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' },
-      { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern ${inDe(nbs[0].id)}` : 'Alle Länder' }
+      { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern ${inDe(nbs[0].id)}` : 'Alle Länder' },
+      ...buyCountryLink('de', c.id, deRel)
     ],
     moduleCta: { href: toRoot(deRel, `de/${TAX_AGENT}?country=${c.id}`), label: `${nameDe(c.id)} im Tax-Agent prüfen →` },
     schemas: [faqLd(faqsDe), sourcesLd(c.id, deRel, 'de')],
@@ -1036,7 +1050,7 @@ for (const c of COUNTRIES) {
       { name: 'Buy bitcoin', href: toRoot(relFile, 'buy-bitcoin.html'), abs: abs('buy-bitcoin.html') },
       { name: c.name, abs: abs(relFile) }
     ],
-    hreflang: hrefLangPair(relFile, null),
+    hreflang: hrefLangPair(relFile, DE_BUY[relFile] || null),
     related: [
       { href: toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`), label: `Bitcoin tax in ${theEn(c)}` },
       { href: toRoot(relFile, 'bitcoin-fee-index/'), label: 'Full Bitcoin Fee Index' },
@@ -2063,7 +2077,8 @@ for (const c of COUNTRIES) {
     related: [
       { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' },
       { href: toRoot(relFile, 'sk/bitcoin-dedicstvo/'), label: 'Bitcoin a dedičstvo' },
-      { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' }
+      { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' },
+      ...buyCountryLink('sk', c.id, relFile)
     ],
     moduleCta: { href: toRoot(relFile, `sk/${TAX_AGENT}?country=${c.id}`), label: `Skontrolovať ${nameSk(c.id)} v Tax Agentovi →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'sk')],
@@ -2491,7 +2506,8 @@ for (const c of COUNTRIES) {
     related: [
       { href: toRoot(relFile, 'cs/bitcoin-prodat-nebo-pujcit/'), label: 'Bitcoin: prodat, nebo si půjčit' },
       { href: toRoot(relFile, 'cs/bitcoin-dedictvi/'), label: 'Bitcoin a dědění' },
-      { href: toRoot(relFile, nbs[0] ? `cs/bitcoin-dane/${slugCs(nbs[0].id)}/` : 'cs/bitcoin-dane/'), label: nbs[0] ? `Daně z Bitcoinu ${inCs(nbs[0].id)}` : 'Všechny země' }
+      { href: toRoot(relFile, nbs[0] ? `cs/bitcoin-dane/${slugCs(nbs[0].id)}/` : 'cs/bitcoin-dane/'), label: nbs[0] ? `Daně z Bitcoinu ${inCs(nbs[0].id)}` : 'Všechny země' },
+      ...buyCountryLink('cs', c.id, relFile)
     ],
     moduleCta: { href: toRoot(relFile, `cs/${TAX_AGENT}?country=${c.id}`), label: `Zkontrolovat ${accCs(c.id)} v Tax Agentovi →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'cs')],
@@ -4705,6 +4721,73 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   });
 }
 
+// ---------- Home-country buy pages (data/buy-country.json) ----------
+// "Ako kúpiť Bitcoin na Slovensku" etc.: partners ranked by published fee from the live
+// schedule, buy steps, the country's tax lines (meta.tax<Lang>) and its DAC8 box.
+const BUY_LANG = {
+  sk: { home: skHome, pct: formatPctSk, eur: formatEurSk, method: methodSk, asOf: feeAsOfSk, tax: meta.taxSk },
+  cs: { home: csHome, pct: formatPctSk, eur: formatEurSk, method: methodCs, asOf: feeAsOfCs, tax: meta.taxCs },
+  de: { home: (rel) => ({ name: 'Start', href: toRoot(rel, 'de/index.html'), abs: abs('de/index.html') }), pct: formatPctDe, eur: formatEurDe, method: methodDe, asOf: feeAsOfDe, tax: meta.taxDe }
+};
+for (const pg of Object.values(BUY_COUNTRY)) {
+  const L = BUY_LANG[pg.lang];
+  const relFile = pg.relFile;
+  const t = L.tax[pg.country];
+  const winner = winnerDefault;
+  const fill = (x) => x
+    .replaceAll('{asof}', L.asOf)
+    .replaceAll('{partner}', winner.partner)
+    .replaceAll('{method}', L.method(winner.method))
+    .replaceAll('{pct}', L.pct(winner.pct))
+    .replaceAll('{drag}', L.eur(winner.annualDrag))
+    .replaceAll('{fi}', FI_TOP.name)
+    .replaceAll('{fipct}', L.pct(FI_TOP.pct))
+    .replaceAll('{gain}', gainFull(t))
+    .replaceAll('{exemption}', t.exemption);
+  const faqs = pg.faqs.map(([q, a]) => ({ q: fill(q), a: fill(a) }));
+  const answer = finalizeAnswer(pg.answer.map(fill), pg.lang, 'fee');
+  const rows = rankedDefault.map((r, i) => [
+    esc(String(i + 1)),
+    `<a href="${esc(r.url)}" rel="sponsored noopener" target="_blank">${esc(r.partner)}</a>`,
+    esc(L.method(r.method)),
+    esc(L.pct(r.pct)),
+    esc(L.eur(r.annualDrag)),
+    esc(pg.speed[r.speed] || r.speed)
+  ]);
+  const d8 = DAC8.countries.find((x) => x.id === pg.country);
+  const d8pg = d8 && d8.paths[pg.lang] && d8.pages[pg.lang];
+  const dac8Html = d8pg ? `<p>${esc(d8pg.boxText)} <a href="${esc(toRoot(relFile, d8.paths[pg.lang].replace(/index\.html$/, '')))}">${esc(d8pg.boxLink)}</a>.</p>` : '';
+  pushPage({
+    relFile, lang: pg.lang, asOfLabel: L.asOf,
+    title: assertTitle(pg.title),
+    description: assertDescription(fill(pg.description)),
+    h1: pg.h1,
+    answerHtml: esc(answer),
+    breadcrumbs: [
+      L.home(relFile),
+      { name: pg.breadcrumbParent, href: toRoot(relFile, pg.paths.buyPage), abs: abs(pg.paths.buyPage) },
+      { name: pg.breadcrumb, abs: abs(relFile) }
+    ],
+    hreflang: hrefLangPair(pg.enRel, pg.lang === 'de' ? relFile : (DE_BUY[pg.enRel] || null)),
+    related: pg.related.map(([href, label]) => ({ href: toRoot(relFile, href), label })),
+    moduleCta: { href: toRoot(relFile, pg.cta[0]), label: pg.cta[1] },
+    schemas: [faqLd(faqs)],
+    bodyHtml: `
+<p>${esc(pg.intro)}</p>
+<h2>${esc(pg.tableHeading)}</h2>
+${tableHtml(pg.tableHeaders, rows)}
+<p class="muted">${esc(fill(pg.tableNote))} <a href="${esc(toRoot(relFile, pg.paths.feeIndex))}">${esc(pg.tableNoteLink)}</a>.</p>
+${affNote(relFile, pg.lang)}
+<h2>${esc(pg.stepsHeading)}</h2>
+<ol>${pg.steps.map(([h, p], i) => `<li><strong>${esc(h)}.</strong> ${esc(p)}${i === pg.steps.length - 1 ? ` <a href="${esc(toRoot(relFile, pg.paths.secure))}">${esc(pg.walletLink)}</a>.` : ''}</li>`).join('')}</ol>
+<h2>${esc(pg.taxHeading)}</h2>
+<p>${esc(pg.taxIntro)} ${esc(gainFull(t))}. ${esc(t.exemption)}. <a href="${esc(toRoot(relFile, pg.paths.taxGuide))}">${esc(pg.taxGuideLink)}</a>.</p>
+${dac8Html}
+${faqHtml(faqs, pg.faqHeading)}
+`
+  });
+}
+
 // ---------- llms.txt ----------
 // The Fee Index pages are built by i18n-tools/fee-index/build_fee_index.py from
 // data/fee-index.json and rank by total cost (listed fee + estimated spread).
@@ -4756,6 +4839,7 @@ ${feeLines}
 
 Index: ${ORIGIN}/bitcoin-fee-index/
 Archive: ${ORIGIN}/bitcoin-fee-index/2026-q3/
+${Object.values(BUY_COUNTRY).map((pg) => `${pg.h1} (${pg.lang.toUpperCase()}): ${ORIGIN}/${pg.relFile.replace(/index\.html$/, '')}`).join('\n')}
 
 ## Tools
 
