@@ -269,3 +269,8 @@ test('a signal backed only by a profile answer is capped at 7', () => {
   assert.equal(r.signals.find((s) => s.id === 'goal').points, 10);
   assert.match(systemPrompt('en'), /only_profile/);
 });
+
+test('reasons call profile answers "your answers", never "profile"', () => {
+  assert.match(systemPrompt('sk'), /never "profile"/);
+  assert.match(systemPrompt('sk'), /vaše odpovede/);
+});
