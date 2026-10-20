@@ -1008,8 +1008,8 @@ ErrorDocument 410 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   # The embeds (Fee Index, Bitcoin vs Gold) are shown inside other sites' iframes, so they
   # are the only paths without SAMEORIGIN; they allow any parent page instead (2026-10-20).
-  Header always set X-Frame-Options "SAMEORIGIN" "expr=%{REQUEST_URI} !~ m#^/(?:bitcoin-fee-index|bitcoin-vs-gold)/embed/#"
-  Header always set Content-Security-Policy "frame-ancestors *" "expr=%{REQUEST_URI} =~ m#^/(?:bitcoin-fee-index|bitcoin-vs-gold)/embed/#"
+  Header always set X-Frame-Options "SAMEORIGIN" "expr=%{REQUEST_URI} !~ m#^/(?:bitcoin-fee-index|bitcoin-vs-gold|asset-returns)/embed/#"
+  Header always set Content-Security-Policy "frame-ancestors *" "expr=%{REQUEST_URI} =~ m#^/(?:bitcoin-fee-index|bitcoin-vs-gold|asset-returns)/embed/#"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
