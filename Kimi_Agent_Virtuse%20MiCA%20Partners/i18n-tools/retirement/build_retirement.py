@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
-JS_V = '1'
+JS_V = '2'
 FALLBACK_PRICE = 74649          # BTC/EUR, 13 Oct 2026 (CoinGecko); the JS replaces it with the live price
 
 # typed limits (data-min/max) and the smaller slider ranges
@@ -73,6 +73,8 @@ CSS = '''<style>
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
 .rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
+.rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
+.rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
 .rc-legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
 .rc-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
 .rc-simp { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.55; }

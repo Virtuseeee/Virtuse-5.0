@@ -153,7 +153,7 @@
     rng.addEventListener('input', function () { st[key] = +rng.value; recalc(); });
   }
 
-  bindTyped('stack', 'rc-stack'); bindTyped('lump', 'rc-lump'); bindTyped('dca', 'rc-dca'); bindTyped('spend', 'rc-spend');
+  var fStack = bindTyped('stack', 'rc-stack'), fLump = bindTyped('lump', 'rc-lump'), fDca = bindTyped('dca', 'rc-dca'), fSpend = bindTyped('spend', 'rc-spend');
   var customField = bindTyped('growth', 'rc-gc');
   var priceField = bindTyped('price', 'rc-price', function () { manualPrice = true; priceNote(); });
   bindAge('age'); bindAge('ret'); bindAge('life');
@@ -256,6 +256,108 @@
     phase(false, cText);
   }
 
+  // ---------- settings in the URL + "Copy link to this result" ----------
+  // Same idea as Stacking/Loan: after the first change the URL carries the plan
+  // (replaceState), and the share button copies it with utm_source=share.
+  var URL_KEYS = ['age', 'ret', 'life', 'stack', 'lump', 'dca', 'spend', 'growth', 'inf'];
+  function urlFor(s) {
+    var u = new URL(window.location.href);
+    for (var i = 0; i < URL_KEYS.length; i++) u.searchParams.set(URL_KEYS[i], String(+s[URL_KEYS[i]].toFixed(8)));
+    if (manualPrice) u.searchParams.set('price', String(Math.round(s.price))); else u.searchParams['delete']('price');
+    return u;
+  }
+  function stateKey() { return URL_KEYS.map(function (k) { return st[k]; }).join('|') + '|' + (manualPrice ? st.price : ''); }
+  var startKey = null, urlDirty = false, reading = false;
+  function writeUrl() {
+    if (reading) return;
+    if (startKey === null) { startKey = stateKey(); return; }
+    if (!urlDirty && stateKey() === startKey) return;
+    urlDirty = true;
+    try { var u = urlFor(st); window.history.replaceState(window.history.state, '', u.pathname + u.search + u.hash); } catch (e) {}
+  }
+  function readUrl() {
+    var q;
+    try { q = new URL(window.location.href).searchParams; } catch (e) { return; }
+    reading = true;
+    function num(k) { var v = q.get(k); if (v === null || v === '') return null; var n = +v; return isFinite(n) ? n : null; }
+    function clampTo(el, n) { return Math.min(+el.max, Math.max(+el.min, n)); }
+    var ages = ['age', 'ret', 'life'];
+    for (var i = 0; i < ages.length; i++) {
+      var n = num(ages[i]);
+      if (n !== null) { var el = $('rc-' + ages[i]); el.value = clampTo(el, Math.round(n)); st[ages[i]] = +el.value; }
+    }
+    var typed = { stack: ['rc-stack', fStack], lump: ['rc-lump', fLump], dca: ['rc-dca', fDca], spend: ['rc-spend', fSpend] };
+    for (var k in typed) {
+      var v = num(k);
+      if (v === null) continue;
+      var inp = $(typed[k][0]);
+      typed[k][1].set(Math.min(+inp.getAttribute('data-max'), Math.max(+inp.getAttribute('data-min'), v)));
+    }
+    var inf = num('inf');
+    if (inf !== null) { var ie = $('rc-inf'); ie.value = clampTo(ie, inf); st.inf = +ie.value; }
+    var g = num('growth');
+    if (g !== null) {
+      var gi = $('rc-gc'), gv = Math.min(+gi.getAttribute('data-max'), Math.max(+gi.getAttribute('data-min'), g));
+      var match = null;
+      for (var b = 0; b < btns.length; b++) if (btns[b].getAttribute('data-g') === String(gv)) match = btns[b];
+      if (match) press(match);
+      else {
+        for (var c = 0; c < btns.length; c++) if (btns[c].getAttribute('data-g') === 'custom') press(btns[c]);
+        customField.set(gv);
+      }
+    }
+    var pr = num('price');
+    if (pr !== null && pr > 0) {
+      var pi = $('rc-price');
+      manualPrice = true;
+      priceField.set(Math.min(+pi.getAttribute('data-max'), Math.max(+pi.getAttribute('data-min'), pr)));
+    }
+    reading = false;
+  }
+  function copyText(text, done) {
+    function legacy() {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand('copy'); document.body.removeChild(ta); return ok;
+      } catch (e) { return false; }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(legacy()); });
+    } else done(legacy());
+  }
+  function addShare() {
+    var chart = document.querySelector('.rc-chart');
+    if (!chart || !S.c_share) return;
+    var box = document.createElement('div'); box.className = 'rc-share';
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'rc-link'; btn.setAttribute('data-cta', 'tool_share');
+    btn.textContent = S.c_share;
+    var live = document.createElement('span'); live.setAttribute('aria-live', 'polite');
+    live.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap';
+    var field = document.createElement('input'); field.readOnly = true; field.hidden = true; field.setAttribute('aria-label', S.c_share_field || S.c_share);
+    field.addEventListener('focus', function () { field.select(); });
+    box.appendChild(btn); box.appendChild(live); box.appendChild(field);
+    chart.parentNode.insertBefore(box, chart.nextSibling);
+    var t;
+    btn.addEventListener('click', function () {
+      var u = urlFor(st);
+      var del = [];
+      u.searchParams.forEach(function (v, key) { if (key.indexOf('utm_') === 0) del.push(key); });
+      for (var i = 0; i < del.length; i++) u.searchParams['delete'](del[i]);
+      u.searchParams.set('utm_source', 'share'); u.searchParams.set('utm_medium', 'link'); u.searchParams.set('utm_campaign', 'tool_share_retirement');
+      u.hash = '';
+      var url = u.toString();
+      copyText(url, function (ok) {
+        try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'tool_share', tool: 'retirement', page_lang: lang, share_method: ok ? 'copy' : 'copy_failed' }); } catch (e) {}
+        if (ok) {
+          btn.textContent = S.c_share_done || S.c_share; live.textContent = S.c_share_done || '';
+          clearTimeout(t); t = setTimeout(function () { btn.textContent = S.c_share; live.textContent = ''; }, 2500);
+        } else { field.value = url; field.hidden = false; field.focus(); }
+      });
+    });
+  }
+
   // ---------- recalc ----------
   var last = null;
   function recalc() {
@@ -301,13 +403,16 @@
     }
     $('rc-cfo').hidden = !(p.stack >= 5 || p.spend >= 100000);
     drawChart(r.series, p.retAge);
+    writeUrl();
   }
   window.VBRetire.last = function () { return last; };
 
   var rt;
   window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (last) drawChart(last.r.series, last.p.retAge); }, 120); });
 
-  priceNote('loading');
+  readUrl();
+  addShare();
+  priceNote(manualPrice ? undefined : 'loading');
   recalc();
 
   // live BTC/EUR (CoinGecko); the typed price stays editable
