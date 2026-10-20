@@ -5,6 +5,8 @@
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
+  /* Set after a successful signup, so /brief-popup.js stops offering the Brief. */
+  var POP_SUB_KEY = 'vb-brief-sub';
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
   var FEATURED_SLUG = 'a-billion-out-bitcoin-holds-80k';
   /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
@@ -316,6 +318,7 @@
       }).then(function (result) {
         if (result.ok) {
           form.reset();
+          try { localStorage.setItem(POP_SUB_KEY, '1'); } catch (err) {}
           if (msg) {
             msg.textContent = 'You are on the list. Check your inbox.';
             msg.classList.add('ok');
