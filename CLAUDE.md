@@ -2,12 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-21, third round) — news.html logo loader **on staging only** (branch `feat/news-logo-loader` 62926b9f, gh-pages 9b2ae4a9); main and production untouched
+## Session status (2026-10-21, third round) — news.html logo loader: approved, **merged to main `167cedc6`** (range `ffd00851..167cedc6`, 6 site files); production deploy prepared, run by the user
 
 - `brand/logo-loader.js` (site folder) is loaded synchronously right after news.html's theme script. It covers the page (html::after in the theme colour, #08090a / #FBFBFA), plays the approved v2.2 V-mark intro (480 px MP4 + VP8 WebM fallback, ~90-135 kB, `brand/virtuse-logo-loader-{dark,light}.*`) once per tab session (`sessionStorage vb-logo-loader`), then fades out. Off with `prefers-reduced-motion` or `?noloader`; `?loader=1` forces it. Click/key/wheel/touch skips; video not playing within 900 ms reveals the page; hard cap 3.6 s.
 - Videos are rendered on pure black / white and blended with `screen` / `multiply`: a first version rendered on the page colour showed a visible disc around the mark (decoder shifts near-black/near-white). Pixel ring check now equals the page colour in both themes.
 - Verified on staging in real Chrome 155 and Chromium headless: dark + light, second load skipped, reduced motion skipped, mp4 blocked uses webm, both blocked reveals in ~150 ms, slow video reveals at ~1.1 s, click skip, 375 px. Pre-existing on staging, not caused by the loader (same with ?noloader): story-page HEAD checks fail (newest story `a-billion-out-bitcoin-holds-80k` is 404 on staging) and the CoinGecko treasury fetch is CORS-blocked.
-- To ship: merge `feat/news-logo-loader` into main, then `deploy_site.sh` with that range (news.html + 5 brand files). news.html is desk-owned: a desk deploy of an older copy drops the script line again.
+- Ship: `bash /private/tmp/deploy-logo-loader/deploy_site.sh ffd00851 167cedc6` from that origin/main worktree (the OneDrive checkout is ~315 commits behind and the script refuses to run there). DRY_RUN listed news.html + 5 `brand/` files, `-mkdir brand`, 0 deletions. news.html is desk-owned: a desk deploy of an older copy drops the script line again.
 
 ## Session status (2026-10-21, second round) — Logo animation v2: 3D metal mark only (no wordmark), Three.js, cube lighting — v2.2 **approved 2026-10-21 and committed**; staging preview page `brand/logo-animation.html` on gh-pages (noindex, autoplay); production untouched; `brand/logo-animation/` (v1 moved to `v1-2d-lockup/`)
 
