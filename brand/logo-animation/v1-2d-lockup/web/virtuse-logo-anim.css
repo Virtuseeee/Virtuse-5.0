@@ -1,0 +1,21 @@
+:root { --ease-out: cubic-bezier(.16,1,.3,1); }
+.vlogo { display:block; overflow:visible; }
+.vword { fill: var(--v-text, currentColor); }
+.vsub, .vurl { fill: var(--v-muted, #8b949e); }
+.vsheen { transform: translateX(0); }
+@media (prefers-reduced-motion: no-preference) {
+  .vlogo.anim .vm-a { animation: vm-in-a 680ms var(--ease-out) 0ms both; }
+  .vlogo.anim .vm-b { animation: vm-in-b 680ms var(--ease-out) 80ms both; }
+  .vlogo.anim .vsheen { animation: vsheen 560ms cubic-bezier(.45,0,.2,1) 560ms both; }
+  .vlogo.anim .vl { animation: vl-in 460ms var(--ease-out) calc(760ms + var(--i) * 26ms) both; }
+  .vlogo.anim .vs { animation: vs-in 520ms ease-out 1150ms both; }
+  .vlogo.anim .vu { animation: vs-in 450ms ease-out 1550ms both; }
+  .vlogo.anim.loop { animation: vfade 420ms ease-in 2320ms both; }
+  .vlogo.anim.out-only .vm-a, .vlogo.anim.out-only .vm-b, .vlogo.anim.out-only .vl, .vlogo.anim.out-only .vs, .vlogo.anim.out-only .vsheen { animation: none; }
+}
+@keyframes vm-in-a { from { opacity:0; transform: translate(-130px,-70px); } 55% { opacity:1; } to { opacity:1; transform: translate(0,0); } }
+@keyframes vm-in-b { from { opacity:0; transform: translate(130px,-70px); }  55% { opacity:1; } to { opacity:1; transform: translate(0,0); } }
+@keyframes vsheen  { from { transform: translateX(0); } to { transform: translateX(1420px); } }
+@keyframes vl-in   { from { opacity:0; transform: translateY(90px); } to { opacity:1; transform: translateY(0); } }
+@keyframes vs-in   { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+@keyframes vfade   { from { opacity:1; } to { opacity:0; } }
