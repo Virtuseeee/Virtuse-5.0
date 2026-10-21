@@ -9,6 +9,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 const q=new URLSearchParams(location.search); document.documentElement.dataset.theme=q.get('theme')||'dark';
 const VARIANT=q.get('variant')||'intro'; const SIZE=parseFloat(q.get('size')||'1');
 const P=(k,d)=>parseFloat(q.get(k)||d); const EXPO=P('expo',1.2),ENV=P('env',0.75),ROUGH=P('rough',0.16),SWEEP=P('sweep',45),FRONT=P('front',0.6),KEY=P('key',1.3),RIM=P('rim',0.08),CCR=P('ccr',0.45),ENVB=P('envb',0.4),CCB=P('ccb',0.1),METB=P('metb',0.85),ENV_A=P('enva',0.7),META=P('meta',0.8),SPEED=P('speed',0.8),CA=q.get('ca')||'74b0d2',CB=q.get('cb')||'263a68';
+const BGP=q.get('bg'); if(BGP){document.body.style.background='#'+BGP;}
 const host=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas:host,antialias:true,alpha:true,preserveDrawingBuffer:true});
 renderer.setClearColor(0x000000,0); renderer.outputColorSpace=THREE.SRGBColorSpace;
