@@ -3,7 +3,9 @@ name: Asset returns
 # Rebuilds data/asset-returns.json (the table on asset-returns.html) from
 # Yahoo Finance, and data/btc-monthly-returns.json (the heatmap on
 # btc-monthly-returns.html) from CoinMetrics, every weekday after the US close, commits it to main and
-# copies it to staging (gh-pages). The page reads the file from GitHub
+# copies it to staging (gh-pages). When a month has closed, it also rebuilds the
+# /bitcoin-returns/ month and year pages and the summary on btc-monthly-returns.html
+# (in between, btc-returns.js updates their numbers in the browser). The page reads the file from GitHub
 # (raw.githubusercontent.com), so production shows fresh numbers without an
 # upload; the page's own copy on the server is only the fallback.
 
@@ -32,6 +34,9 @@ jobs:
     env:
       SITE: Kimi_Agent_Virtuse%20MiCA%20Partners
       FILES: data/asset-returns.json data/btc-monthly-returns.json
+      # written by i18n-tools/btc-returns/build_returns.py; PUBLISH = the part that goes to gh-pages
+      PAGES: bitcoin-returns btc-monthly-returns.html sitemap.xml i18n-tools/legacy/src/en/btc-monthly-returns.html i18n-tools/btc-returns/state.json
+      PUBLISH: bitcoin-returns btc-monthly-returns.html sitemap.xml
     steps:
       - uses: actions/checkout@v4
         with:
@@ -53,11 +58,17 @@ jobs:
         continue-on-error: true
         run: node btc-monthly-build/build.mjs
 
+      # Month and year pages: only when a month has closed since the last build.
+      - name: Build Bitcoin returns pages
+        working-directory: main
+        continue-on-error: true
+        run: python3 "$SITE/i18n-tools/btc-returns/build_returns.py" --monthly
+
       - name: Commit to main
         id: commit
         working-directory: main
         run: |
-          for f in $FILES; do git add "$SITE/$f"; done
+          for f in $FILES $PAGES; do git add "$SITE/$f"; done
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
           git config user.name "virtuse-bot"
@@ -77,10 +88,11 @@ jobs:
         run: |
           mkdir -p pages/data
           for f in $FILES; do cp "main/$SITE/$f" "pages/$f"; done
+          for f in $PUBLISH; do cp -R "main/$SITE/$f" "pages/"; done
           cd pages
           git config user.name "virtuse-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add $FILES
+          git add $FILES $PUBLISH
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Update asset returns data"
           git push origin gh-pages
