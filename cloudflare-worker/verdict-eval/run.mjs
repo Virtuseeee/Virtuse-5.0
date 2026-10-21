@@ -106,7 +106,7 @@ if (batch) {
 console.log('\n');
 
 const rows = [];
-let bandOk = 0, weakOk = 0, scored = 0, declOk = 0, declTotal = 0, advice = 0, errors = 0, capOk = 0, capTotal = 0;
+let bandOk = 0, weakOk = 0, weakTotal = 0, scored = 0, declOk = 0, declTotal = 0, advice = 0, errors = 0, capOk = 0, capTotal = 0;
 const capFails = [];
 const unstable = [];
 for (const c of cases) {
@@ -130,9 +130,12 @@ for (const c of cases) {
   if (c.band) {
     scored++;
     if (first && first.band === c.band) bandOk++;
-    if (first && (c.weakest ? first.weakest === c.weakest : first.signals.every((x) => x.points >= 7))) weakOk++;
+    if ('weakest' in c) {
+      weakTotal++;
+      if (first && (c.weakest ? first.weakest === c.weakest : first.signals.every((x) => x.points >= 7))) weakOk++;
+    }
   }
-  rows.push([c.id, c.lang, c.band ? `${c.score[0]}-${c.score[1]} ${c.band}` : (c.note || ''),
+  rows.push([c.id, c.lang, c.band ? `${c.score ? `${c.score[0]}-${c.score[1]} ` : ''}${c.band}` : (c.note || ''),
     rs.map((r) => (r.error ? 'ERROR' : r.declined ? 'declined' : `${r.score} ${r.band}`)).join(' | '),
     c.weakest || 'none under 7', first?.weakest || '']);
 }
@@ -141,7 +144,7 @@ console.log('id  | lang | expected | got | weakest expected | weakest got');
 for (const r of rows) console.log(r.join(' | '));
 console.log(`
 band right:     ${bandOk}/${scored}  (pass: >= 40 of 45 cases with a band)
-weakest right:  ${weakOk}/${scored}  (pass: >= 35)
+weakest right:  ${weakOk}/${weakTotal}  (pass: >= 35)
 declined:       ${declOk}/${declTotal}  (pass: all)
 advice-like:    ${advice}  (pass: 0)
 profile flags:  ${capOk}/${capTotal}  ${capFails.join(', ')}  (pass: all)
