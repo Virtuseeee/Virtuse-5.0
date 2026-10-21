@@ -14,10 +14,10 @@
  * <div google-add-preferred-source-btn data-theme="light" data-lang="sk|en"></div>.
  * https://developers.google.com/search/docs/appearance/preferred-sources
  *
- * Domain: blog.virtuse.com (subdomains are eligible). Note that the posts that
- * have a virtuse.com story copy point their canonical there
- * (virtuse-story-canonical.php), so Google shows virtuse.com in Top Stories;
- * set VIRTUSE_PREF_SOURCE_DOMAIN to 'virtuse.com' if Ras prefers one source.
+ * Domain: blog.virtuse.com (subdomains are eligible; Ras decided 2026-10-21 to
+ * keep the blog's own domain). Posts that have a virtuse.com story copy point
+ * their canonical there (virtuse-story-canonical.php), so Google shows
+ * virtuse.com in Top Stories; virtuse.com has its own button on news.html.
  *
  * Clicks push dataLayer {event: 'preferred_source_click', link_type: 'deeplink',
  * page_lang} like virtuse.com; the blog loads no GTM today, so nothing is sent.

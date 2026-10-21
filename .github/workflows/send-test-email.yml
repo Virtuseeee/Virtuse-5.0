@@ -19,7 +19,7 @@ on:
         default: welcome
         options:
           - welcome
-          - virtuse-news
+          - welcome-sk
       subject:
         description: 'Subject line override (optional)'
         required: false
@@ -42,21 +42,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Render Virtuse News (only if that template was chosen)
-        if: ${{ github.event.inputs.template == 'virtuse-news' }}
-        run: node .github/scripts/render-virtuse-news.mjs
-
       - name: Send test email
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
         run: |
-          if [ "${{ github.event.inputs.template }}" = "virtuse-news" ]; then
-            TEMPLATE_PATH="dist/virtuse-news-email.html"
-            DEFAULT_SUBJECT="Virtuse News (test)"
+          if [ "${{ github.event.inputs.template }}" = "welcome-sk" ]; then
+            TEMPLATE_PATH="email/welcome-template-sk.html"
+            DEFAULT_SUBJECT="Vitajte vo Virtuse Brief (test)"
           else
             TEMPLATE_PATH="email/welcome-template.html"
-            DEFAULT_SUBJECT="Welcome to Virtuse (test)"
+            DEFAULT_SUBJECT="Welcome to Virtuse Brief (test)"
           fi
           SUBJECT="${{ github.event.inputs.subject }}"
           if [ -z "$SUBJECT" ]; then SUBJECT="$DEFAULT_SUBJECT"; fi
