@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Virtuse logo animation (preview)</title><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html,body{margin:0;height:100%;overflow:hidden;background:transparent}body{background:#08090a}html[data-theme=light] body{background:#fff}html[data-theme=transparent] body{background:transparent}
+canvas{display:block;width:100vw;height:100vh}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head><body><canvas id="c"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const q=new URLSearchParams(location.search); document.documentElement.dataset.theme=q.get('theme')||'dark';
+const VARIANT=q.get('variant')||'intro'; const SIZE=parseFloat(q.get('size')||(innerWidth<innerHeight?'0.5':'0.85'));
+const P=(k,d)=>parseFloat(q.get(k)||d); const EXPO=P('expo',1.2),ENV=P('env',0.75),ROUGH=P('rough',0.16),SWEEP=P('sweep',45),FRONT=P('front',0.6),KEY=P('key',1.3),RIM=P('rim',0.08),CCR=P('ccr',0.45),ENVB=P('envb',0.4),CCB=P('ccb',0.1),METB=P('metb',0.85),ENV_A=P('enva',0.7),META=P('meta',0.8),SPEED=P('speed',0.8),CA=q.get('ca')||'74b0d2',CB=q.get('cb')||'263a68';
+const host=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas:host,antialias:true,alpha:true,preserveDrawingBuffer:true});
+renderer.setClearColor(0x000000,0); renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=EXPO; renderer.setPixelRatio(1);
+const W=innerWidth,H=innerHeight; renderer.setSize(W,H,false);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(26,W/H,0.1,100); camera.position.set(0,0.15,13.5); camera.lookAt(0,0,0);
+// Studio environment: dark room with a few long soft-box strips, so glossy metal shows
+// distinct light bands that slide across the faces as the mark turns (chrome look).
+function StudioEnvironment(){
+  const sc=new THREE.Scene(); const box=new THREE.Mesh(new THREE.BoxGeometry(40,40,40),new THREE.MeshBasicMaterial({color:0x0b0c10,side:THREE.BackSide})); sc.add(box);
+  const strip=(w,h,pos,rot,i,c)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:c||0xffffff})); m.material.color.multiplyScalar(i); m.position.set(...pos); m.rotation.set(...rot); m.lookAt(0,0,0); sc.add(m);};
+  const TI=P('topi',3), SW=P('stripw',1.2);
+  strip(22,SW,[0,14,4],[0,0,0],TI);        // top strip (long key band)
+  strip(1.6,16,[-16,4,6],[0,0,0],5);       // left tall strip
+  strip(2.2,12,[15,-2,8],[0,0,0],3.5);     // right strip, lower
+  strip(18,0.5,[0,9,10],[0,0,0],3);        // thin high front line
+  strip(26,1.2,[0,-13,6],[0,0,0],1.6,0xbcd6ff);  // faint cool floor bounce
+  strip(10,6,[2,6,-16],[0,0,0],2.2,0xcfe4ff);    // back rim panel
+  return sc;
+}
+const ENVKIND=q.get('envkind')||'strips';
+const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(ENVKIND==='room'?new RoomEnvironment():StudioEnvironment(),0.04).texture; pmrem.dispose();
+// same rig as the homepage cube
+scene.add(new THREE.AmbientLight(0x1a1c22,0.5));
+const key=new THREE.DirectionalLight(0xf3f6ff,KEY); key.position.set(-3.2,4.2,6.4); scene.add(key);
+const fill=new THREE.DirectionalLight(0xffffff,0.3); fill.position.set(4,1,3); scene.add(fill);
+const rim=new THREE.DirectionalLight(0xffffff,RIM); rim.position.set(0,-4,-5); scene.add(rim);
+const front=new THREE.DirectionalLight(0xffffff,FRONT); front.position.set(1.2,0.8,8); scene.add(front);
+// sweeping glint: a hard, bright light that crosses the mark once
+const sweep=new THREE.SpotLight(0xffffff,0,60,0.5,0.85,1); sweep.position.set(-9,5,9); sweep.target.position.set(0,0,0); scene.add(sweep,sweep.target);
+// ---- geometry: the two strokes of the V (favicon.svg, 760x483) extruded ----
+const HM=3.0, s=HM/483, cx=380, cy=241.5;
+function shape(pts){const sh=new THREE.Shape(); pts.forEach(([x,y],i)=>{const X=(x-cx)*s,Y=-(y-cy)*s; i?sh.lineTo(X,Y):sh.moveTo(X,Y)}); sh.closePath(); return sh;}
+const A=shape([[30,0],[250,0],[500,483],[280,483]]);
+const B=shape([[510,0],[755,0],[645,205],[400,205]]);
+const BV=P('bevel',0.11); const ext={depth:0.42,bevelEnabled:true,bevelThickness:BV,bevelSize:BV,bevelOffset:-0.01,bevelSegments:10,curveSegments:4};
+const gA=new THREE.ExtrudeGeometry(A,ext); gA.translate(0,0,-0.21); const gB=new THREE.ExtrudeGeometry(B,ext); gB.translate(0,0,-0.21);
+const mA=new THREE.MeshPhysicalMaterial({color:parseInt(CA,16),metalness:META,roughness:ROUGH,clearcoat:1,clearcoatRoughness:CCR,envMapIntensity:ENV_A});
+const mB=new THREE.MeshPhysicalMaterial({color:parseInt(CB,16),metalness:METB,roughness:ROUGH+0.06,clearcoat:CCB,clearcoatRoughness:CCR,envMapIntensity:ENVB});
+const root=new THREE.Group(); scene.add(root); root.scale.setScalar(SIZE);
+const pA=new THREE.Group(), pB=new THREE.Group(); const meshA=new THREE.Mesh(gA,mA), meshB=new THREE.Mesh(gB,mB);
+pA.add(meshA); pB.add(meshB); root.add(pA,pB);
+// ---- choreography ----
+const eo=t=>1-Math.pow(1-t,5), ei=t=>t*t*t, clamp=(x,a,b)=>Math.max(a,Math.min(b,x)), seg=(t,a,b)=>clamp((t-a)/(b-a),0,1), lerp=(a,b,t)=>a+(b-a)*t, smooth=t=>t*t*(3-2*t);
+window.seek=function(ms){
+  const t=ms/1000*SPEED;
+  // 1) assembly 0-0.9s: A from left/behind rotating in, B from right
+  const ka=eo(seg(t,0.00,0.95)), kb=eo(seg(t,0.10,1.05));
+  pA.position.set(lerp(-3.2,0,ka),lerp(0.6,0,ka),lerp(-2.5,0,ka)); pA.rotation.set(lerp(-0.25,0,ka),lerp(-1.25,0,ka),lerp(-0.18,0,ka));
+  pB.position.set(lerp(3.0,0,kb),lerp(0.9,0,kb),lerp(-2.5,0,kb)); pB.rotation.set(lerp(0.2,0,kb),lerp(1.25,0,kb),lerp(0.15,0,kb));
+  meshA.material.opacity=1; 
+  // 2) whole mark: slow turn that slides the studio reflections across (the "metal" read), then settles facing camera
+  const kr=seg(t,0.0,1.9); const turn=lerp(-0.55,0.0,eo(kr));
+  const idle=(VARIANT==='loop'||VARIANT==='outro')? Math.sin((t-1.2)*0.9)*0.07*smooth(seg(t,1.0,2.0)) : 0.05*Math.sin((t-1.2)*1.1)*smooth(seg(t,1.0,2.0));
+  root.rotation.set(0.10*(1-eo(seg(t,0.3,1.8)))+P('tiltx',0.04), turn+idle, 0);
+  // 3) glint sweep 0.75-1.45s: spotlight crosses left->right, intensity bell
+  const ks=seg(t,0.72,1.50); sweep.position.set(lerp(-9,9,ks),lerp(5,2.5,ks),9); sweep.intensity=SWEEP*Math.sin(Math.PI*ks)**2;
+  // 4) subtle scale settle
+  const sc=1+0.04*(1-eo(seg(t,0.0,1.1))); root.scale.setScalar(SIZE*(1/1.04)*sc*1.04);
+  // loop variant: fade out via scale/opacity at the end (2.3-2.8s)
+  if(VARIANT==='loop'){const f=1-smooth(seg(t,2.35*0.8/SPEED*SPEED+0.0,2.8)); [mA,mB].forEach(m=>{m.transparent=true;m.opacity=f;}); if(f===0){root.visible=false}else{root.visible=true}}
+  renderer.render(scene,camera);
+};
+window.ready=true;
+if(q.get('play')!=='0'){ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduced){seek(1999);} else { const t0=performance.now(); const loop=()=>{seek(Math.min(performance.now()-t0, VARIANT==='outro'?60000:2600/SPEED)); requestAnimationFrame(loop);}; loop(); } } else { seek(1999); }
+</script></body></html>
