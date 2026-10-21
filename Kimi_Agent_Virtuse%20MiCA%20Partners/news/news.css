@@ -1286,3 +1286,9 @@ ul { list-style: none; }
   line-height: var(--lh-head);
 }
 .quick-media-item a:hover { color: var(--accent-hot); }
+
+/* —— Google preferred source (preferred-source.js): under Pulse and at the page end —— */
+.vb-pref { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.pulse-pref { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.pref-section { padding-top: 0; padding-bottom: 40px; }
+.pref-section .vb-pref { justify-content: center; }
