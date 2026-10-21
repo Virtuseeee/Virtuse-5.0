@@ -289,7 +289,7 @@ def build_hub(R):
   <script src="/btc-returns.js?v={v}" defer></script>
 <!-- /V2:AFTER-LEGACY -->
 '''.format(css=CSS[len('<style>\n'):-len('</style>\n')], asof=R['asOf'], html=H['html'], faq=faq_html, v=JS_V)
-    s = re.sub(r'<!-- V2:AFTER-LEGACY -->.*?<!-- /V2:AFTER-LEGACY -->\n', '', s, flags=re.S)
+    s = re.sub(r'<!-- V2:AFTER-LEGACY -->.*?<!-- /V2:AFTER-LEGACY -->\n\n?', '', s, flags=re.S)   # slot + the blank line added below
     i = s.index('<!-- ===== NEWSLETTER ===== -->')
     s = s[:i] + slot + '\n' + s[i:]
     open(HUB_SRC, 'w').write(s)
