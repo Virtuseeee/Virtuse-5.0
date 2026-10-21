@@ -190,8 +190,8 @@
       (sh > allShare + 0.05 ? 'more often than' : sh < allShare - 0.05 ? 'less often than' : 'about as often as') +
       ' the average month (' + share(M.allPos, M.allN) + ' of all months since August 2010).');
     var gap = X.avg - X.med;
-    if (gap >= 0.1) obs.push('The average of ' + pct(X.avg) + ' is lifted by ' + X.best.y + ' (' + pct(X.best.v) + '); the median of ' + pct(X.med) + ' is closer to a typical ' + name + '.');
-    else if (gap <= -0.1) obs.push('The average of ' + pct(X.avg) + ' is pulled down by ' + X.worst.y + ' (' + pct(X.worst.v) + '); the median of ' + pct(X.med) + ' is closer to a typical ' + name + '.');
+    if (gap >= 0.05) obs.push('The average of ' + pct(X.avg) + ' is lifted by ' + X.best.y + ' (' + pct(X.best.v) + '); the median of ' + pct(X.med) + ' is closer to a typical ' + name + '.');
+    else if (gap <= -0.05) obs.push('The average of ' + pct(X.avg) + ' is pulled down by ' + X.worst.y + ' (' + pct(X.worst.v) + '); the median of ' + pct(X.med) + ' is closer to a typical ' + name + '.');
     else obs.push('The average (' + pct(X.avg) + ') and the median (' + pct(X.med) + ') are close, so no single year dominates.');
     var rm = X.rank_med, ra = X.rank_avg;
     obs.push(rm === 1 ? 'By median it is the strongest of the 12 months' + (ra === 1 ? ', and by average too.' : '; by average it ranks ' + ordinal(ra) + '.') :
@@ -303,6 +303,14 @@
   function renderHub(M) {
     var by = function (k, dir) { return M.months.slice().sort(function (a, b) { return dir * (b[k] - a[k]); })[0]; };
     var bm = by('med', 1), wm = by('med', -1), ba = by('avg', 1), wa = by('avg', -1), bs = by('share', 1), ws = by('share', -1);
+    // Months that share the highest / lowest share of positive years (ties are common: 11 of 16).
+    var tie = function (x) {
+      var t = M.months.filter(function (o) { return o.pos === x.pos && o.n === x.n; }).map(function (o) { return o.name; });
+      var names = t.length < 2 ? t[0] : t.slice(0, -1).join(', ') + ' and ' + t[t.length - 1];
+      return names + (t.length < 2 ? ' was' : ' were') + ' up';
+    };
+    var often = tie(bs) + ' most often (' + bs.pos + ' of ' + bs.n + ' years' + (tie(bs).indexOf(' were ') > 0 ? ' each' : '') + '), ' +
+      tie(ws).replace(/ (was|were) up$/, '') + ' least often (' + ws.pos + ' of ' + ws.n + ')';
     var thru = MONTHS[M.lastM - 1] + ' ' + M.lastY;
     var html = '<div class="sec-head one"><div class="sec-copy"><h2>Best and worst months <span>for Bitcoin</span></h2></div></div>' +
       '<div class="bd-macro vbr-tiles">' +
@@ -312,7 +320,7 @@
       tile('Months closed higher', share(M.allPos, M.allN), M.allPos + ' of ' + M.allN + ' since Aug 2010') + '</div>' +
       '<p class="vbr-obs">By median, ' + bm.name + ' has been Bitcoin\'s strongest month (' + pct(bm.med) + ') and ' + wm.name + ' its weakest (' + pct(wm.med) + '). ' +
       'By average, ' + ba.name + ' leads (' + pct(ba.avg) + ')' + (ba.m !== bm.m ? ', lifted by ' + ba.best.y + ' (' + pct(ba.best.v) + ')' : '') + ', and ' + wa.name + ' trails (' + pct(wa.avg) + '). ' +
-      bs.name + ' closed higher most often (' + bs.pos + ' of ' + bs.n + ' years), ' + ws.name + ' least often (' + ws.pos + ' of ' + ws.n + '). Complete months through ' + thru + '.</p>';
+      often + '. Complete months through ' + thru + '.</p>';
     var cards = M.months.map(function (o) {
       return '<a class="vbr-card" href="' + monthUrl(o.m) + '"><b>' + o.name + '</b><span>Median ' + pct(o.med) + ' · higher ' + o.pos + '/' + o.n + '</span></a>';
     }).join('');
@@ -330,7 +338,7 @@
         'By median return, ' + wm.name + ' has been the weakest month (' + pct(wm.med) + ', higher in ' + wm.pos + ' of ' + wm.n + ' years). By average, ' + wa.name + ' is last with ' + pct(wa.avg) + '. Complete months through ' + thru + '.'],
       ['How often does Bitcoin finish a month higher?',
         'Of the ' + M.allN + ' complete months from August 2010 to ' + thru + ', Bitcoin closed higher in ' + M.allPos + ' (' + share(M.allPos, M.allN) + '). ' +
-        bs.name + ' was up most often (' + bs.pos + ' of ' + bs.n + ' years), ' + ws.name + ' least often (' + ws.pos + ' of ' + ws.n + ').'],
+        often + '.'],
       ['How are the monthly returns calculated?',
         'From the last daily close of the previous month to the last daily close of the month, using CoinMetrics\' Bitcoin reference rate in US dollars. The EUR view divides by the ECB EUR/USD rate at each month end. The running month uses the latest price and is left out of the averages.'],
       ['How often is the data updated?',
