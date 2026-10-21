@@ -3,11 +3,11 @@
 Report pre Rasa. Stav k 21. 10. 2026 (overené cez dig/DoH, Outlook connector,
 repo `Virtu AI`, Cloudflare Worker, dokumentácia Microsoft a Resend).
 
-**Krok 0 schválený Rasom 21. 10. 2026** (schránka dmarc@, DMARC TXT s `rua`,
-DKIM M365). Zmenu SPF (časť 5) a quarantine (časť 7) schválenie nezahŕňa.
-Aplikuje Ras / Grok Bot; stav aplikácie dopísať do časti 8.
+**Krok 0 schválený Rasom 21. 10. 2026 a v ten istý deň aplikovaný** (schránka
+dmarc@, DMARC TXT s `rua`, DKIM M365; detaily a overenie v časti 8). Zmenu SPF
+(časť 5) a quarantine (časť 7) schválenie nezahŕňa.
 
-**Nič v DNS nebolo zmenené touto session.** DNS virtuse.com
+DNS virtuse.com
 beží na Microsoft nameserveroch (`ns1-4.bdm.microsoftonline.com`), záznamy sa
 pridávajú v Microsoft 365 admin centre: Settings → Domains → virtuse.com →
 DNS records → Custom records. Bez BIMI/VMC, bez `p=quarantine`/`p=reject`.
@@ -279,13 +279,36 @@ budú úplne čisté a SPF je už vyčistený.
 |---|---|
 | Overenie DNS, tenant, Resend tok | hotovo (tento report) |
 | Audit SPF (repo, Worker, Mykytova pošta) | hotovo, s dvoma otvorenými kontrolami (Rasova pošta, Zoho Free) |
-| Schránka dmarc@virtuse.com | **schválené 21. 10.**, aplikuje Ras (postup v časti 2) |
-| DMARC TXT s `rua` | **schválené 21. 10.**, aplikuje Ras (hodnota v časti 3) |
-| DKIM M365 (2× CNAME + Enable) | **schválené 21. 10.**, aplikuje Ras (postup v časti 4) |
+| Schránka dmarc@virtuse.com | **hotovo 21. 10.** (zdieľaná schránka „DMARC reports“, člen Ras) |
+| DMARC TXT s `rua` | **hotovo 21. 10.**, overené cez 1.1.1.1 aj 8.8.8.8 |
+| DKIM M365 (2× CNAME + Enable) | **hotovo 21. 10.**, Defender: virtuse.com = Valid / Enabled |
 | Nový SPF | **čaká na „ano"**, odporúčam až po 2 týždňoch reportov |
-| mail-tester výsledok | nedá sa urobiť bez odoslania z Rasovej schránky; doplniť po kroku 0 |
+| mail-tester výsledok | **čaká na Rasa**: poslať test z Outlooku na mail-tester.com + jeden Brief test cez Resend (časť 6) |
 | BIMI/VMC, quarantine/reject, produkčný web | zámerne nič |
 
 Obmedzenia tohto overenia: Outlook connector = schránka Mykytu; port 25 z tejto
-siete blokovaný (SMTP sonda na dmarc@ nevyšla); Defender/Exchange admin portál
-nebol dostupný, preto sú CNAME hodnoty „očakávané", záväzné sú z portálu.
+siete blokovaný (SMTP sonda na dmarc@ nevyšla).
+
+### Čo sa reálne aplikovalo 21. 10. 2026 (cez Rasov Chrome, M365 admin center + Defender)
+
+- Zdieľaná schránka `dmarc@virtuse.com` („DMARC reports“, bez licencie), člen Ras Vasilisin.
+- `_dmarc.virtuse.com` TXT zmenené z `v=DMARC1; p=none;` na
+  `v=DMARC1; p=none; rua=mailto:dmarc@virtuse.com; adkim=r; aspf=r; fo=1` (TTL 1 h).
+- DKIM: kľúče v tenante už existovali (stav bol „CnameMissing“, starý formát cieľov), takže
+  „Create keys“ nebolo treba. Pridané 2 CNAME presne podľa Defender portálu:
+  `selector1._domainkey` → `selector1-virtuse-com._domainkey.virtuseenergy.onmicrosoft.com`,
+  `selector2._domainkey` → `selector2-virtuse-com._domainkey.virtuseenergy.onmicrosoft.com`.
+  Po propagácii (do 5 minút na 1.1.1.1 aj 8.8.8.8) zapnuté „Sign messages for this domain
+  with DKIM signatures“; po Refresh stav **Valid / Enabled**.
+- Poznámka: `selector2-…` cieľ zatiaľ nemá TXT (Microsoft ho publikuje až pri rotácii kľúča);
+  selector1 má platný `v=DKIM1` záznam. Je to normálne.
+- Ostatné domény v tenante (virtuse.eu, virtuse.exchange, virtuse.tech, virtuseexchange.com,
+  virtusegroup.com) majú DKIM stále „CnameMissing / Disabled“ – mimo rozsahu tohto kroku.
+
+### Čo zostáva na Rasovi
+
+1. Poslať testovací e-mail z Outlooku na adresu z mail-tester.com a skontrolovať DKIM=pass,
+   DMARC=pass (časť 6).
+2. Jeden testovací Brief cez Resend a v Gmaili pozrieť „Authentication-Results“ (časť 6).
+3. Do schránky dmarc@ začnú chodiť denné XML reporty; po 2 týždňoch (≈ 4. 11.) rozhodnúť
+   o novom SPF (časť 5) a neskôr o quarantine (časť 7).
