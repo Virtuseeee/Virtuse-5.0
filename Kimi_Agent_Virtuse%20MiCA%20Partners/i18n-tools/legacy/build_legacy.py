@@ -18,6 +18,9 @@ Keeps each page's own content and chart script; replaces the old shell:
 
 Re-running on an already ported page rebuilds from the copy kept in legacy/src/<lang>/<page>
 (written on the first run), so the result does not depend on how often it runs.
+v2 content in a source copy: markup between <!-- V2:AFTER-LEGACY --> and <!-- /V2:AFTER-LEGACY -->
+goes after the .legacy wrapper (v2 styles only, no legacy CSS), and <style data-v2> blocks go into
+<head> unprefixed. btc-monthly-returns.html uses both (i18n-tools/btc-returns/build_returns.py).
 Audit 2026-10-15: code.md P1-1, design.md P1-1.
 """
 import json, os, re, sys
@@ -88,8 +91,12 @@ def prefix_css(css, roots):
     return '\n'.join(out)
 
 
+V2_AFTER = re.compile(r'\s*<!-- V2:AFTER-LEGACY -->(.*?)<!-- /V2:AFTER-LEGACY -->', re.S)
+V2_STYLE = re.compile(r'<style data-v2>.*?</style>\n?', re.S)
+
+
 def legacy_css(old):
-    css = '\n'.join(re.findall(r'<style\b[^>]*>(.*?)</style>', old, re.S))
+    css = '\n'.join(re.findall(r'<style\b(?![^>]*data-v2)[^>]*>(.*?)</style>', old, re.S))
     styles = open(os.path.join(C.SITE, 'styles.css')).read() if '/styles.css' in old or 'styles.css' in old else ''
     roots = []
     body = prefix_css(styles + '\n' + css, roots)
@@ -187,7 +194,7 @@ def build(L, page):
     head = C.head(L, old, home, root, CSS_VERSION)
     old_csp, home_csp = CSP_RE.search(old).group(1), CSP_RE.search(home).group(1)
     head = CSP_RE.sub(lambda m: '<meta http-equiv="Content-Security-Policy" content="%s">' % csp_union(old_csp, home_csp), head, 1)
-    head = head.replace('</head>\n', legacy_css(old) + '</head>\n')
+    head = head.replace('</head>\n', legacy_css(old) + ''.join(V2_STYLE.findall(old)) + '</head>\n')
 
     nav, foot = C.chrome(home, page)
     nav = nav.replace('<div class="nav-group current" id="ng-services">', '<div class="nav-group" id="ng-services">')
@@ -200,6 +207,9 @@ def build(L, page):
     end = old.index('<section class="newsletter">')
     content = old[start:end].strip()
     content = re.sub(r'^\s*<!-- =+ [^>]*-->\s*$', '', content, flags=re.M).strip()
+    after = V2_AFTER.search(content)
+    content = V2_AFTER.sub('', content).strip()
+    after = '\n  ' + V2_STYLE.sub('', after.group(1)).strip() + '\n' if after else ''
 
     page_js = []
     tail = old[old.index('</footer>'):]
@@ -211,7 +221,7 @@ def build(L, page):
 
     body_tag = re.search(r'<body[^>]*>', old).group(0)
     out = head + body_tag + '\n' + nav + '\n\n<main class="wrap" id="top">\n  ' + hero + '\n  ' + sub + \
-        '\n  <div class="legacy">\n' + content + '\n  </div>\n\n  ' + C.brief(L, lambda k: T[k], root, 'legacy_' + page.split('.')[0].replace('-', '_')) + \
+        '\n  <div class="legacy">\n' + content + '\n  </div>\n' + after + '\n  ' + C.brief(L, lambda k: T[k], root, 'legacy_' + page.split('.')[0].replace('-', '_')) + \
         '\n</main>\n\n' + foot + '\n' + '\n'.join(page_js) + '\n' + C.scripts(root)
     out = C.fix_links(L, out)
     # fear-greed / trading-volume exist in 7 languages only: a language-menu entry for a missing
