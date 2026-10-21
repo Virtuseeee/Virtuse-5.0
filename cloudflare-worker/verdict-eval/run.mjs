@@ -7,6 +7,8 @@
 //   node verdict-eval/run.mjs --yes --runs 5 --only 1,8,18,D1   # stability check
 //   node verdict-eval/run.mjs --yes --batch                     # half price, results in minutes to an hour
 //   node verdict-eval/run.mjs --yes --batch --only P1,P2,P3     # only the funnel (profile) cases
+//   node verdict-eval/run.mjs --yes --batch --only P1,P2,P3 --resume msgbatch_...  # results of a batch already sent
+//     (same --only/--runs as when it was sent; nothing new is sent or paid)
 //
 // Cases with "profile" send the funnel answers too; "profileOnly" lists the
 // signals the model must flag only_profile (backed only by an answer, then
@@ -29,7 +31,8 @@ const runs = parseInt(opt('--runs', '1'), 10);
 const only = opt('--only', '') ? opt('--only', '').split(',') : null;
 const effort = opt('--effort', 'low');
 const concurrency = parseInt(opt('--parallel', '4'), 10);
-const batch = args.includes('--batch');
+const resume = opt('--resume', '');
+const batch = args.includes('--batch') || !!resume;
 
 const { cases: all } = JSON.parse(readFileSync(path.join(here, 'cases.json'), 'utf8'));
 const cases = only ? all.filter((c) => only.includes(c.id)) : all;
@@ -75,12 +78,20 @@ if (batch) {
   // Message Batches: 50% of the price, no fallback model; usually done within an hour.
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const requests = jobs.map(({ c, run }, n) => ({ custom_id: `j${n}`, params: verdictRequest(env, textOf(c), c.lang, cleanProfile(c.profile)) }));
-  const b = await client.beta.messages.batches.create({ requests });
-  console.log(`batch ${b.id} sent; checking every 30 s`);
+  const b = resume ? { id: resume, processing_status: 'in_progress' } : await client.beta.messages.batches.create({ requests });
+  console.log(resume ? `resuming batch ${b.id}` : `batch ${b.id} sent; checking every 30 s`);
+  console.log(`If this stops (network, closed terminal), get the results later with: --resume ${b.id}`);
   let st = b;
   while (st.processing_status !== 'ended') {
-    await new Promise((r) => setTimeout(r, 30_000));
-    st = await client.beta.messages.batches.retrieve(b.id);
+    if (!resume || st !== b) await new Promise((r) => setTimeout(r, 30_000));
+    try {
+      st = await client.beta.messages.batches.retrieve(b.id);
+    } catch (e) {
+      // A network blip must not lose the batch: keep waiting.
+      process.stdout.write(`\r(network: ${String(e.message || e).slice(0, 60)}; retrying)   `);
+      if (st === b) st = { ...b, retried: true };
+      continue;
+    }
     const k = st.request_counts;
     process.stdout.write(`\r${k.succeeded + k.errored + k.canceled + k.expired}/${jobs.length} done   `);
   }
