@@ -138,6 +138,8 @@
     (window.dataLayer = window.dataLayer || []).push({
       event: 'consent_update', consent_analytics: !!a, consent_marketing: !!m
     });
+    // for page scripts that wait for consent (preferred-source.js)
+    try { document.dispatchEvent(new CustomEvent('vb:consent', { detail: { analytics: !!a, marketing: !!m } })); } catch (e) {}
   }
 
   // Withdrawing consent also removes cookies set while it was granted.
