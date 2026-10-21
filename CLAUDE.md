@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-21, third round) — news.html logo loader **on staging only** (branch `feat/news-logo-loader` 62926b9f, gh-pages 9b2ae4a9); main and production untouched
+
+- `brand/logo-loader.js` (site folder) is loaded synchronously right after news.html's theme script. It covers the page (html::after in the theme colour, #08090a / #FBFBFA), plays the approved v2.2 V-mark intro (480 px MP4 + VP8 WebM fallback, ~90-135 kB, `brand/virtuse-logo-loader-{dark,light}.*`) once per tab session (`sessionStorage vb-logo-loader`), then fades out. Off with `prefers-reduced-motion` or `?noloader`; `?loader=1` forces it. Click/key/wheel/touch skips; video not playing within 900 ms reveals the page; hard cap 3.6 s.
+- Videos are rendered on pure black / white and blended with `screen` / `multiply`: a first version rendered on the page colour showed a visible disc around the mark (decoder shifts near-black/near-white). Pixel ring check now equals the page colour in both themes.
+- Verified on staging in real Chrome 155 and Chromium headless: dark + light, second load skipped, reduced motion skipped, mp4 blocked uses webm, both blocked reveals in ~150 ms, slow video reveals at ~1.1 s, click skip, 375 px. Pre-existing on staging, not caused by the loader (same with ?noloader): story-page HEAD checks fail (newest story `a-billion-out-bitcoin-holds-80k` is 404 on staging) and the CoinGecko treasury fetch is CORS-blocked.
+- To ship: merge `feat/news-logo-loader` into main, then `deploy_site.sh` with that range (news.html + 5 brand files). news.html is desk-owned: a desk deploy of an older copy drops the script line again.
+
 ## Session status (2026-10-21, second round) — Logo animation v2: 3D metal mark only (no wordmark), Three.js, cube lighting — v2.2 **approved 2026-10-21 and committed**; staging preview page `brand/logo-animation.html` on gh-pages (noindex, autoplay); production untouched; `brand/logo-animation/` (v1 moved to `v1-2d-lockup/`)
 
 - User asked for a glossy-metal look (MotionArray "Glossy Metal Logo" reference), closer to the homepage hero cube, no "Virtuse" text. Built `src/logo3d.html`: favicon V extruded (ExtrudeGeometry, bevel), MeshPhysicalMaterial metal+clearcoat in brand blues, the cube's light rig + a procedural strip-light studio env (PMREM) for chrome bands, one spotlight sweep; `window.seek(ms)` drives frames, `render3d.cjs` screenshots via Playwright headless shell with SwiftShader WebGL (`--use-gl=angle --use-angle=swiftshader`), `pipeline3d.sh` encodes with `encode.swift`. Added 4:5 and 16:9 outputs.
