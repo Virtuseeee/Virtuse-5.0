@@ -5308,6 +5308,104 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax-agent.html"/>
   </url>
 <!-- TOOLS:END -->
+<!-- ECOSYSTEM:START -->
+  <url>
+    <loc>https://virtuse.com/ecosystem/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/what-is-bitcoin/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/what-is-bitcoin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/what-is-bitcoin/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/books/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/books/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/books/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/podcasts/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/podcasts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/podcasts/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/videos/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/videos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/videos/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/privacy/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/privacy/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/spend-bitcoin/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/spend-bitcoin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/spend-bitcoin/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/store-tools/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/store-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/store-tools/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/dev-tools/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/dev-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/dev-tools/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/jobs/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/jobs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/jobs/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/peers/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/peers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/peers/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/promote/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/promote/"/>
+  </url>
+<!-- ECOSYSTEM:END -->
 <!-- SEO-BUILD:START -->
   <url>
     <loc>https://virtuse.com/bitcoin-tax/</loc>
