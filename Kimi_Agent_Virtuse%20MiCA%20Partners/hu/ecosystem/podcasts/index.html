@@ -47,88 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=7">
-<style>.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
-.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
-.eco-hero .eco-crumbs a:hover { color: var(--text); }
-.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
-main > section.eco-first { padding-top: 72px; }
-.eco-list { margin-top: 56px; }
-.eco-cat { align-items: flex-start; }
-.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
-.eco-more { margin: 28px 0 0; }
-.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
-.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
-.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
-.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
-.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
-.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
-.eco-related .gcard b { font-size: 16px; }
-.eco-panel { width: 100%; margin-top: 0; }
-.eco-panel::before { display: none; }
-.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
-.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
-.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
-.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
-.eco-prose { max-width: 760px; }
-.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
-.eco-prose h2:first-child { margin-top: 0; }
-.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
-.eco-prose strong { color: var(--text); }
-.eco-prose ul { padding-left: 20px; }
-.eco-notes { max-width: 860px; margin: 56px auto 0; }
-.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
-.eco-crit strong { color: var(--text); }
-.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
-.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
-.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
-.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
-.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
-.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
-.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
-.eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
-.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
-.eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
-.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
-.eco-all { color: var(--text) !important; font-weight: 600; }
-.eco-pick-countries { margin-top: 10px; }
-.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
-.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
-.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
-.eco-form-msg.ok { color: var(--text); }
-.eco-mail { margin-top: 24px; }
-@media (min-width: 1181px) {
-  #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
-  .nav-group.open #nd-eco { display: grid; }
-}
-@media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
-@media (max-width: 760px) {
-  .eco-panel { padding: 8px 16px; }
-  .eco-panel .row.head { display: none; }
-  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
-  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
-  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
-}
-@media (max-width: 640px) {
-  main > section.eco-first { padding-top: 48px; }
-  .eco-list { margin-top: 36px; }
-  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
-  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
-  .eco-ico { width: 32px; height: 32px; padding: 7px; }
-  .eco-cat b { font-size: 14px; }
-  .eco-2 { grid-template-columns: minmax(0, 1fr); }
-  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco-prose h2 { font-size: 24px; }
-}</style>
+<link rel="stylesheet" href="/site-v2.min.css?v=8">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -240,7 +159,7 @@ main > section.eco-first { padding-top: 72px; }
 }</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 </head>
-<body class="page-eco no-split">
+<body class="page-buy page-eco no-split">
 <!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
 <header class="nav">
   <div class="nav-inner">
@@ -276,59 +195,75 @@ main > section.eco-first { padding-top: 72px; }
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap eco-acc-purple" id="top">
   <div class="buy-hero2 eco-hero">
     <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/hu/">Főoldal</a> <span aria-hidden="true">/</span> <a href="/hu/ecosystem/">Ökoszisztéma</a> <span aria-hidden="true">/</span> <span>Podcastok</span></nav>
-    <div class="eyebrow"><i></i>Ökoszisztéma</div>
-    <h1>Bitcoin-podcastok<span class="h1-or">: ideálisak az ingázáshoz.</span></h1>
+    <div class="eyebrow purple"><i></i>Ökoszisztéma · Podcastok</div>
+    <h1>Bitcoin-podcastok. <span class="h1-grey">Ideálisak az ingázáshoz.</span></h1>
     <p class="sp-lead">Kizárólag Bitcoinról szóló műsorok, amelyek megérik az ingázás idejét, a hosszú interjúktól a mély technikai elemzésekig, európai hangokkal is. Mindegyikhez egysoros értékelés tartozik, hogy tudja, mire számíthat.</p>
     <p class="pf-counts">8 ajánlás · utoljára ellenőrizve: 2026. október 22.</p>
   </div>
-  <div class="eco-list">
-    <div class="gcards eco-entries">
-      <a class="gcard eco-entry" href="https://www.whatbitcoindid.com" target="_blank" rel="noopener"><b>What Bitcoin Did <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Long-form interviews from the UK on markets, politics and people in Bitcoin. A good weekly habit.</span><span class="eco-meta" lang="en">whatbitcoindid.com · Interviews · UK</span></a>
-      <a class="gcard eco-entry" href="https://www.tftc.io" target="_blank" rel="noopener"><b>TFTC <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Marty Bent's show and newsletter on Bitcoin, energy and the wider economy. Opinionated and frequent.</span><span class="eco-meta" lang="en">tftc.io · News · Commentary</span></a>
-      <a class="gcard eco-entry" href="https://www.bitcoinaudible.com" target="_blank" rel="noopener"><b>Bitcoin Audible <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Guy Swann reads the best Bitcoin essays aloud and discusses them. Ideal if you prefer listening to reading.</span><span class="eco-meta" lang="en">bitcoinaudible.com · Essays read aloud</span></a>
-      <a class="gcard eco-entry" href="https://www.stephanlivera.com" target="_blank" rel="noopener"><b>Stephan Livera Podcast <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Technical and economic deep dives with developers and builders. Best for listeners who want depth.</span><span class="eco-meta" lang="en">stephanlivera.com · Technical · Interviews</span></a>
-      <a class="gcard eco-entry" href="https://citadeldispatch.com" target="_blank" rel="noopener"><b>Citadel Dispatch <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Matt Odell's live show on privacy, self-custody and freedom tech. Practical and frank.</span><span class="eco-meta" lang="en">citadeldispatch.com · Privacy · Live</span></a>
-      <a class="gcard eco-entry" href="https://www.theinvestorspodcast.com/bitcoin-fundamentals/" target="_blank" rel="noopener"><b>Bitcoin Fundamentals (The Investor's Podcast) <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Investor-oriented conversations on Bitcoin's place in a portfolio and the macro picture.</span><span class="eco-meta" lang="en">theinvestorspodcast.com · Investing · Macro</span></a>
-      <a class="gcard eco-entry" href="https://einundzwanzig.space/podcast/" target="_blank" rel="noopener"><b>Einundzwanzig <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The leading German-language Bitcoin podcast, run by a community from Germany, Austria and Switzerland.</span><span class="eco-meta" lang="en">einundzwanzig.space · German · Community</span></a>
-      <a class="gcard eco-entry" href="https://fountain.fm" target="_blank" rel="noopener"><b>Fountain <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A podcast app with Lightning built in, so you can send sats directly to the shows you value.</span><span class="eco-meta" lang="en">fountain.fm · App · Lightning</span></a>
+  <section id="list">
+    <div class="sec-head one"><div class="sec-copy"><h2>Ajánlásaink. <span>Mindegyikhez egysoros értékelés tartozik.</span></h2></div></div>
+    <div class="eco-grid">
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">Interviews · UK</span>
+        <h3>What Bitcoin Did</h3>
+        <p lang="en">Long-form interviews from the UK on markets, politics and people in Bitcoin. A good weekly habit.</p>
+        <div class="eco-foot"><span class="eco-host">whatbitcoindid.com</span><a class="hp-get" href="https://www.whatbitcoindid.com" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">News · Commentary</span>
+        <h3>TFTC</h3>
+        <p lang="en">Marty Bent's show and newsletter on Bitcoin, energy and the wider economy. Opinionated and frequent.</p>
+        <div class="eco-foot"><span class="eco-host">tftc.io</span><a class="hp-get" href="https://www.tftc.io" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">Essays read aloud</span>
+        <h3>Bitcoin Audible</h3>
+        <p lang="en">Guy Swann reads the best Bitcoin essays aloud and discusses them. Ideal if you prefer listening to reading.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoinaudible.com</span><a class="hp-get" href="https://www.bitcoinaudible.com" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">Technical · Interviews</span>
+        <h3>Stephan Livera Podcast</h3>
+        <p lang="en">Technical and economic deep dives with developers and builders. Best for listeners who want depth.</p>
+        <div class="eco-foot"><span class="eco-host">stephanlivera.com</span><a class="hp-get" href="https://www.stephanlivera.com" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">Privacy · Live</span>
+        <h3>Citadel Dispatch</h3>
+        <p lang="en">Matt Odell's live show on privacy, self-custody and freedom tech. Practical and frank.</p>
+        <div class="eco-foot"><span class="eco-host">citadeldispatch.com</span><a class="hp-get" href="https://citadeldispatch.com" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">Investing · Macro</span>
+        <h3>Bitcoin Fundamentals (The Investor's Podcast)</h3>
+        <p lang="en">Investor-oriented conversations on Bitcoin's place in a portfolio and the macro picture.</p>
+        <div class="eco-foot"><span class="eco-host">theinvestorspodcast.com</span><a class="hp-get" href="https://www.theinvestorspodcast.com/bitcoin-fundamentals/" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">German · Community</span>
+        <h3>Einundzwanzig</h3>
+        <p lang="en">The leading German-language Bitcoin podcast, run by a community from Germany, Austria and Switzerland.</p>
+        <div class="eco-foot"><span class="eco-host">einundzwanzig.space</span><a class="hp-get" href="https://einundzwanzig.space/podcast/" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 purple eco-card">
+        <span class="eco-k" lang="en">App · Lightning</span>
+        <h3>Fountain</h3>
+        <p lang="en">A podcast app with Lightning built in, so you can send sats directly to the shows you value.</p>
+        <div class="eco-foot"><span class="eco-host">fountain.fm</span><a class="hp-get" href="https://fountain.fm" target="_blank" rel="noopener">Weboldal <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
     </div>
-  </div>
+  </section>
   <section id="pick">
-    <div class="sec-head one"><div class="sec-copy"><h2>Hogyan <span>válogatunk</span></h2></div></div>
-    <div class="how-log">
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Lépés 01</span>
-          <h3>Kézzel válogatva</h3>
-          <p>Minden bejegyzést csapatunk választ ki és ellenőriz, az értékelést pedig mindig mi magunk írjuk.</p>
-        </div>
-      </div>
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Lépés 02</span>
-          <h3>Európában releváns</h3>
-          <p>Kizárólag Bitcoinnal foglalkozó projektek, amelyek az EU, az EGT vagy Svájc felhasználóit szolgálják, működnek, karbantartottak és tisztességesek.</p>
-        </div>
-      </div>
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Lépés 03</span>
-          <h3>Jelölt szponzorok</h3>
-          <p>A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg a feltételeinket vagy az értékelésünket.</p>
-        </div>
-      </div>
-    </div>
-    <p class="eco-more"><a class="tlink" href="/hu/ecosystem/promote/#criteria">Felvételi feltételeink <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+    <div class="sec-head one"><div class="sec-copy"><h2>Hogyan válogatunk. <span>Három szabály minden bejegyzésre.</span></h2></div></div>
+    <ul class="tp-principles eco-principles"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Kézzel válogatva</b>Minden bejegyzést csapatunk választ ki és ellenőriz, az értékelést pedig mindig mi magunk írjuk.</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Európában releváns</b>Kizárólag Bitcoinnal foglalkozó projektek, amelyek az EU, az EGT vagy Svájc felhasználóit szolgálják, működnek, karbantartottak és tisztességesek.</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Jelölt szponzorok</b>A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg a feltételeinket vagy az értékelésünket.</span></li></ul>
+    <p class="eco-more"><a class="tlink" href="/hu/ecosystem/promote/#criteria">Felvételi feltételeink <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
   </section>
   <section id="related">
-    <div class="sec-head one"><div class="sec-copy"><h2>Kapcsolódó <span>tartalmak a Virtuse oldalán</span></h2></div></div>
-    <div class="gcards eco-related"><a class="gcard" href="/news.html"><b>Virtuse Brief: heti Bitcoin-hírek</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/hu/ecosystem/videos/"><b>Bitcoin-videók és -csatornák</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/hu/ecosystem/books/"><b>Bitcoin-könyvek</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+    <div class="sec-head one"><div class="sec-copy"><h2>Kapcsolódó tartalmak a Virtuse oldalán. <span>További tartalmak.</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/news.html"><b>Virtuse Brief: heti Bitcoin-hírek</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/hu/ecosystem/videos/"><b>Bitcoin-videók és -csatornák</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/hu/ecosystem/books/"><b>Bitcoin-könyvek</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
   </section>
   <p class="pf-disc eco-notes">A listázás tájékoztató jellegű, nem befektetési tanácsadás. A bejegyzések leírása angol nyelvű. Utoljára ellenőrizve: <time datetime="2026-10-22">2026. október 22.</time>.</p>
 

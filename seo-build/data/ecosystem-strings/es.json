@@ -56,7 +56,13 @@
         "t": "Patrocinios señalados",
         "d": "Las posiciones de pago siempre se marcan como \"Patrocinado\" y nunca cambian nuestros criterios ni nuestra valoración."
       }
-    ]
+    ],
+    "exploreSub": "Cada categoría revisada a mano.",
+    "pickSub": "Tres reglas para cada entrada.",
+    "relatedSub": "Más de Virtuse.",
+    "listH": "Nuestras recomendaciones.",
+    "listSub": "Cada una con una valoración de una línea.",
+    "faqSub": "Respuestas breves."
   },
   "promote": {
     "criteriaH": "Criterios",
@@ -97,7 +103,9 @@
     "mSending": "Enviando…",
     "mOk": "Gracias. Hemos recibido su solicitud y le hemos enviado una confirmación por correo electrónico. La revisión suele tardar hasta 30 días.",
     "mFail": "No se ha podido enviar. Envíe su solicitud por correo electrónico a <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
-    "mail": "¿Prefiere el correo electrónico? Escriba a <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+    "mail": "¿Prefiere el correo electrónico? Escriba a <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
+    "criteriaSub": "Lo que debe cumplir cada entrada.",
+    "applySub": "Revisada personalmente, nunca publicada de forma automática."
   },
   "pages": {
     "index": {

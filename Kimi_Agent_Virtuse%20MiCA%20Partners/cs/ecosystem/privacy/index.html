@@ -47,88 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=7">
-<style>.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
-.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
-.eco-hero .eco-crumbs a:hover { color: var(--text); }
-.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
-main > section.eco-first { padding-top: 72px; }
-.eco-list { margin-top: 56px; }
-.eco-cat { align-items: flex-start; }
-.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
-.eco-more { margin: 28px 0 0; }
-.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
-.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
-.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
-.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
-.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
-.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
-.eco-related .gcard b { font-size: 16px; }
-.eco-panel { width: 100%; margin-top: 0; }
-.eco-panel::before { display: none; }
-.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
-.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
-.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
-.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
-.eco-prose { max-width: 760px; }
-.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
-.eco-prose h2:first-child { margin-top: 0; }
-.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
-.eco-prose strong { color: var(--text); }
-.eco-prose ul { padding-left: 20px; }
-.eco-notes { max-width: 860px; margin: 56px auto 0; }
-.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
-.eco-crit strong { color: var(--text); }
-.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
-.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
-.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
-.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
-.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
-.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
-.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
-.eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
-.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
-.eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
-.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
-.eco-all { color: var(--text) !important; font-weight: 600; }
-.eco-pick-countries { margin-top: 10px; }
-.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
-.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
-.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
-.eco-form-msg.ok { color: var(--text); }
-.eco-mail { margin-top: 24px; }
-@media (min-width: 1181px) {
-  #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
-  .nav-group.open #nd-eco { display: grid; }
-}
-@media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
-@media (max-width: 760px) {
-  .eco-panel { padding: 8px 16px; }
-  .eco-panel .row.head { display: none; }
-  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
-  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
-  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
-}
-@media (max-width: 640px) {
-  main > section.eco-first { padding-top: 48px; }
-  .eco-list { margin-top: 36px; }
-  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
-  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
-  .eco-ico { width: 32px; height: 32px; padding: 7px; }
-  .eco-cat b { font-size: 14px; }
-  .eco-2 { grid-template-columns: minmax(0, 1fr); }
-  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco-prose h2 { font-size: 24px; }
-}</style>
+<link rel="stylesheet" href="/site-v2.min.css?v=8">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -246,7 +165,7 @@ main > section.eco-first { padding-top: 72px; }
 }</script>
 <script>window.VB_I18N = {"openMenu": "Otevřít menu", "closeMenu": "Zavřít menu", "latestBrief": "Nejnovější Brief · ", "min": " min", "coverImage": "Titulní obrázek: ", "badEmail": "Zadejte platnou e-mailovou adresu.", "sending": "Odesílání...", "subscribed": "Jste přihlášeni. Brief vychází v pondělí.", "error": "Něco se pokazilo. Zkuste to prosím znovu.", "netError": "Chyba sítě. Zkuste to prosím znovu.", "briefLangNote": " (v angličtině)"};</script>
 </head>
-<body class="page-eco no-split">
+<body class="page-buy page-eco no-split">
 <!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
 <header class="nav">
   <div class="nav-inner">
@@ -282,61 +201,82 @@ main > section.eco-first { padding-top: 72px; }
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap eco-acc-indigo" id="top">
   <div class="buy-hero2 eco-hero">
     <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/cs/">Domů</a> <span aria-hidden="true">/</span> <a href="/cs/ecosystem/">Ekosystém</a> <span aria-hidden="true">/</span> <span>Soukromí</span></nav>
-    <div class="eyebrow"><i></i>Ekosystém</div>
-    <h1>Soukromí v Bitcoinu<span class="h1-or">, v mezích zákona.</span></h1>
+    <div class="eyebrow indigo"><i></i>Ekosystém · Soukromí</div>
+    <h1>Soukromí v Bitcoinu. <span class="h1-grey">V mezích zákona.</span></h1>
     <p class="sp-lead">Soukromí vás chrání před krádeží, profilováním a cílenými podvody. Tyto nástroje a návody vám pomohou udržet vaši aktivitu s Bitcoinem i běžné prohlížení webu v soukromí, v mezích zákona.</p>
     <p class="pf-counts">9 doporučení · naposledy zkontrolováno 22. října 2026</p>
   </div>
-  <div class="eco-list">
+  <section id="list">
+    <div class="sec-head one"><div class="sec-copy"><h2>Naše doporučení. <span>Každé s hodnocením na jeden řádek.</span></h2></div></div>
     <p class="eco-note">Tato stránka se týká legálního soukromí: ochrany vašich osobních a finančních údajů před zločinci, obchodníky s daty a zbytečným odhalením. Nikomu nepomáhá obcházet pravidla proti praní peněz, sankce ani daňové povinnosti. Viz naše <a href="/cs/aml-compliance.html">stránka AML a compliance</a>. Zajímá vás, jak Virtuse nakládá s vašimi údaji? To popisují naše <a href="/cs/privacy-policy.html">zásady ochrany osobních údajů</a>.</p>
-    <div class="gcards eco-entries">
-      <a class="gcard eco-entry" href="https://bitcoincore.org" target="_blank" rel="noopener"><b>Bitcoin Core <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Running your own node means your wallet no longer reveals your addresses to someone else's server.</span><span class="eco-meta" lang="en">bitcoincore.org · Node · Open source</span></a>
-      <a class="gcard eco-entry" href="https://www.torproject.org" target="_blank" rel="noopener"><b>Tor Project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Hides your IP address when browsing or when your node talks to the network. Free and widely audited.</span><span class="eco-meta" lang="en">torproject.org · Network privacy · Open source</span></a>
-      <a class="gcard eco-entry" href="https://tails.net" target="_blank" rel="noopener"><b>Tails <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A portable operating system that runs from a USB stick and leaves no trace on the computer.</span><span class="eco-meta" lang="en">tails.net · Operating system · Open source</span></a>
-      <a class="gcard eco-entry" href="https://mullvad.net" target="_blank" rel="noopener"><b>Mullvad VPN <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A Swedish VPN that needs no email to sign up and accepts bitcoin. Simple, honest pricing.</span><span class="eco-meta" lang="en">mullvad.net · VPN · Sweden · Accepts bitcoin</span></a>
-      <a class="gcard eco-entry" href="https://proton.me" target="_blank" rel="noopener"><b>Proton <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Encrypted email and storage from Switzerland. Paid plans can be settled in bitcoin.</span><span class="eco-meta" lang="en">proton.me · Email · Switzerland · Accepts bitcoin</span></a>
-      <a class="gcard eco-entry" href="https://silentpayments.xyz" target="_blank" rel="noopener"><b>Silent Payments <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A reusable payment code that avoids address reuse when people pay you. Overview of the standard and supporting tools.</span><span class="eco-meta" lang="en">silentpayments.xyz · Standard · On-chain</span></a>
-      <a class="gcard eco-entry" href="https://payjoin.org" target="_blank" rel="noopener"><b>Payjoin <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A payment technique in which sender and receiver both contribute inputs, breaking common chain-analysis assumptions.</span><span class="eco-meta" lang="en">payjoin.org · Standard · On-chain</span></a>
-      <a class="gcard eco-entry" href="https://bitcoiner.guide/privacy" target="_blank" rel="noopener"><b>Bitcoiner.guide privacy <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A practical guide to everyday privacy habits for bitcoiners, from address reuse to KYC data.</span><span class="eco-meta" lang="en">bitcoiner.guide · Guide · Free</span></a>
-      <a class="gcard eco-entry" href="https://en.bitcoin.it/wiki/Privacy" target="_blank" rel="noopener"><b>Bitcoin Wiki: Privacy <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The most thorough reference on how Bitcoin privacy works and where it leaks. Dense but authoritative.</span><span class="eco-meta" lang="en">en.bitcoin.it · Reference · Technical</span></a>
+    <div class="eco-grid">
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Node · Open source</span>
+        <h3>Bitcoin Core</h3>
+        <p lang="en">Running your own node means your wallet no longer reveals your addresses to someone else's server.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoincore.org</span><a class="hp-get" href="https://bitcoincore.org" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Network privacy · Open source</span>
+        <h3>Tor Project</h3>
+        <p lang="en">Hides your IP address when browsing or when your node talks to the network. Free and widely audited.</p>
+        <div class="eco-foot"><span class="eco-host">torproject.org</span><a class="hp-get" href="https://www.torproject.org" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Operating system · Open source</span>
+        <h3>Tails</h3>
+        <p lang="en">A portable operating system that runs from a USB stick and leaves no trace on the computer.</p>
+        <div class="eco-foot"><span class="eco-host">tails.net</span><a class="hp-get" href="https://tails.net" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">VPN · Sweden · Accepts bitcoin</span>
+        <h3>Mullvad VPN</h3>
+        <p lang="en">A Swedish VPN that needs no email to sign up and accepts bitcoin. Simple, honest pricing.</p>
+        <div class="eco-foot"><span class="eco-host">mullvad.net</span><a class="hp-get" href="https://mullvad.net" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Email · Switzerland · Accepts bitcoin</span>
+        <h3>Proton</h3>
+        <p lang="en">Encrypted email and storage from Switzerland. Paid plans can be settled in bitcoin.</p>
+        <div class="eco-foot"><span class="eco-host">proton.me</span><a class="hp-get" href="https://proton.me" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Standard · On-chain</span>
+        <h3>Silent Payments</h3>
+        <p lang="en">A reusable payment code that avoids address reuse when people pay you. Overview of the standard and supporting tools.</p>
+        <div class="eco-foot"><span class="eco-host">silentpayments.xyz</span><a class="hp-get" href="https://silentpayments.xyz" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Standard · On-chain</span>
+        <h3>Payjoin</h3>
+        <p lang="en">A payment technique in which sender and receiver both contribute inputs, breaking common chain-analysis assumptions.</p>
+        <div class="eco-foot"><span class="eco-host">payjoin.org</span><a class="hp-get" href="https://payjoin.org" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Guide · Free</span>
+        <h3>Bitcoiner.guide privacy</h3>
+        <p lang="en">A practical guide to everyday privacy habits for bitcoiners, from address reuse to KYC data.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoiner.guide</span><a class="hp-get" href="https://bitcoiner.guide/privacy" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 indigo eco-card">
+        <span class="eco-k" lang="en">Reference · Technical</span>
+        <h3>Bitcoin Wiki: Privacy</h3>
+        <p lang="en">The most thorough reference on how Bitcoin privacy works and where it leaks. Dense but authoritative.</p>
+        <div class="eco-foot"><span class="eco-host">en.bitcoin.it</span><a class="hp-get" href="https://en.bitcoin.it/wiki/Privacy" target="_blank" rel="noopener">Web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
     </div>
-  </div>
+  </section>
   <section id="pick">
-    <div class="sec-head one"><div class="sec-copy"><h2>Jak <span>vybíráme</span></h2></div></div>
-    <div class="how-log">
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Krok 01</span>
-          <h3>Ruční výběr</h3>
-          <p>Každou položku vybírá a kontroluje náš tým a každé hodnocení píšeme sami.</p>
-        </div>
-      </div>
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Krok 02</span>
-          <h3>Relevantní pro Evropu</h3>
-          <p>Projekty zaměřené jen na Bitcoin, které slouží uživatelům v EU/EHP nebo ve Švýcarsku a jsou aktivní, udržované a poctivé.</p>
-        </div>
-      </div>
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Krok 03</span>
-          <h3>Označení sponzoři</h3>
-          <p>Placená umístění jsou vždy označena „Sponzorováno“ a nikdy nemění naše kritéria ani hodnocení.</p>
-        </div>
-      </div>
-    </div>
-    <p class="eco-more"><a class="tlink" href="/cs/ecosystem/promote/#criteria">Přečtěte si naše kritéria pro zařazení <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+    <div class="sec-head one"><div class="sec-copy"><h2>Jak vybíráme. <span>Tři pravidla pro každou položku.</span></h2></div></div>
+    <ul class="tp-principles eco-principles"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Ruční výběr</b>Každou položku vybírá a kontroluje náš tým a každé hodnocení píšeme sami.</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Relevantní pro Evropu</b>Projekty zaměřené jen na Bitcoin, které slouží uživatelům v EU/EHP nebo ve Švýcarsku a jsou aktivní, udržované a poctivé.</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Označení sponzoři</b>Placená umístění jsou vždy označena „Sponzorováno“ a nikdy nemění naše kritéria ani hodnocení.</span></li></ul>
+    <p class="eco-more"><a class="tlink" href="/cs/ecosystem/promote/#criteria">Přečtěte si naše kritéria pro zařazení <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
   </section>
   <section id="related">
-    <div class="sec-head one"><div class="sec-copy"><h2>Související <span>na Virtuse</span></h2></div></div>
-    <div class="gcards eco-related"><a class="gcard" href="/cs/secure.html"><b>Úschova: mějte svůj Bitcoin v bezpečí</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/cs/ecosystem/dev-tools/"><b>Bitcoinové nástroje pro vývojáře</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/cs/aml-compliance.html"><b>AML a compliance ve Virtuse</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+    <div class="sec-head one"><div class="sec-copy"><h2>Související na Virtuse. <span>Více od Virtuse.</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/cs/secure.html"><b>Úschova: mějte svůj Bitcoin v bezpečí</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/cs/ecosystem/dev-tools/"><b>Bitcoinové nástroje pro vývojáře</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/cs/aml-compliance.html"><b>AML a compliance ve Virtuse</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
   </section>
   <p class="pf-disc eco-notes">Položky mají informativní charakter a nejsou investičním poradenstvím. Popisy položek jsou v angličtině. Zajímá vás, jak Virtuse nakládá s vašimi údaji? Přečtěte si naše <a href="/cs/privacy-policy.html">zásady ochrany osobních údajů</a>. Naposledy zkontrolováno: <time datetime="2026-10-22">22. října 2026</time>.</p>
 

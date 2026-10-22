@@ -8,7 +8,8 @@
       "related": [
         "/news.html?utm_source=brief&utm_medium=ecosystem",
         "/ecosystem/what-is-bitcoin/"
-      ]
+      ],
+      "accent": "orange"
     },
     {
       "slug": "what-is-bitcoin",
@@ -96,7 +97,8 @@
           ]
         }
       ],
-      "icon": "btc"
+      "icon": "btc",
+      "accent": "orange"
     },
     {
       "slug": "books",
@@ -179,7 +181,8 @@
           ]
         }
       ],
-      "icon": "book"
+      "icon": "book",
+      "accent": "yellow"
     },
     {
       "slug": "podcasts",
@@ -261,7 +264,8 @@
           ]
         }
       ],
-      "icon": "mic"
+      "icon": "mic",
+      "accent": "purple"
     },
     {
       "slug": "videos",
@@ -352,7 +356,8 @@
           ]
         }
       ],
-      "icon": "play"
+      "icon": "play",
+      "accent": "pink"
     },
     {
       "slug": "conferences",
@@ -460,7 +465,8 @@
         }
       ],
       "index": true,
-      "icon": "calendar"
+      "icon": "calendar",
+      "accent": "blue"
     },
     {
       "slug": "privacy",
@@ -554,7 +560,8 @@
           ]
         }
       ],
-      "icon": "shield"
+      "icon": "shield",
+      "accent": "indigo"
     },
     {
       "slug": "spend-bitcoin",
@@ -639,7 +646,8 @@
           ]
         }
       ],
-      "icon": "bag"
+      "icon": "bag",
+      "accent": "green"
     },
     {
       "slug": "store-tools",
@@ -725,7 +733,8 @@
           ]
         }
       ],
-      "icon": "store"
+      "icon": "store",
+      "accent": "teal"
     },
     {
       "slug": "dev-tools",
@@ -832,7 +841,8 @@
           ]
         }
       ],
-      "icon": "code"
+      "icon": "code",
+      "accent": "blue"
     },
     {
       "slug": "jobs",
@@ -916,7 +926,8 @@
           ]
         }
       ],
-      "icon": "briefcase"
+      "icon": "briefcase",
+      "accent": "yellow"
     },
     {
       "slug": "peers",
@@ -998,11 +1009,13 @@
           ]
         }
       ],
-      "icon": "users"
+      "icon": "users",
+      "accent": "purple"
     },
     {
       "slug": "promote",
-      "icon": "megaphone"
+      "icon": "megaphone",
+      "accent": "orange"
     }
   ]
 }

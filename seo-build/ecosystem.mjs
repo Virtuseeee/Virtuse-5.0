@@ -164,26 +164,28 @@ function chrome(current, l) {
   return { nav: sub(nav), foot: sub(foot), brief };
 }
 
-// ---------- blocks (site-v2 components, as on the Services pages) ----------
-const ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
-const EXT = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg>';
+// ---------- blocks (Services system: pcard2 accents, hpanel, tp-principles, hp-get/hp-cta) ----------
+const ARROW = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHECK = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const end = (s) => (/[.!?…]$/.test(s.trim()) ? s.trim() : s.trim() + '.');
+const cap = (s) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
 
-// Two-tone section heading: first word white, the rest grey (".sec-head h2 span").
-function head2(text, id) {
-  const s = String(text).trim();
-  const i = s.indexOf(' ');
-  const html = i < 0 ? esc(s) : `${esc(s.slice(0, i))} <span>${esc(s.slice(i + 1))}</span>`;
-  return `<div class="sec-head one"><div class="sec-copy"><h2${id ? ` id="${id}"` : ''}>${html}</h2></div></div>`;
-}
+// Services heading: white sentence + grey continuation (".sec-head h2 span").
+const head2 = (white, grey, id) =>
+  `<div class="sec-head one"><div class="sec-copy"><h2${id ? ` id="${id}"` : ''}>${esc(end(white))} <span>${esc(grey)}</span></h2></div></div>`;
 
-function entryCard(e, l) {
+function entryCard(e, p, l) {
   const rel = e.sponsored ? 'sponsored noopener' : 'noopener';
   const en = l === 'en' ? '' : ' lang="en"';
-  const badge = e.sponsored ? ` <em class="eco-spons">${esc(S[l].ui.sponsored)}</em>` : '';
-  const meta = [host(e.url), ...(e.tags || [])].map(esc).join(' · ');
-  return `<a class="gcard eco-entry" href="${esc(e.url)}" target="_blank" rel="${rel}"><b>${esc(e.name)}${badge} ${EXT}</b><span${en}>${esc(e.verdict)}</span><span class="eco-meta"${en}>${meta}</span></a>`;
+  const spons = e.sponsored ? `<span class="eco-spons">${esc(S[l].ui.sponsored)}</span>` : '';
+  return `<article class="pcard2 ${p.accent} eco-card">
+        <span class="eco-k"${en}>${esc((e.tags || []).join(' · '))}</span>${spons}
+        <h3>${esc(e.name)}</h3>
+        <p${en}>${esc(e.verdict)}</p>
+        <div class="eco-foot"><span class="eco-host">${esc(host(e.url))}</span><a class="hp-get" href="${esc(e.url)}" target="_blank" rel="${rel}">${esc(S[l].ui.websiteButton)} ${ARROW}</a></div>
+      </article>`;
 }
-const entryGrid = (entries, l) => `<div class="gcards eco-entries">\n      ${entries.map((e) => entryCard(e, l)).join('\n      ')}\n    </div>`;
+const entryGrid = (entries, p, l) => `<div class="eco-grid">\n      ${entries.map((e) => entryCard(e, p, l)).join('\n      ')}\n    </div>`;
 
 function confDates(e, l) {
   if (!e.start) return /Sep/.test(e.dates) ? S[l].ui.confTbcSep2027 : S[l].ui.confTba2027;
@@ -193,37 +195,27 @@ function confDates(e, l) {
 const countryName = (cc, l) => new Intl.DisplayNames([LOCALE[l]], { type: 'region' }).of(cc);
 const city = (c, l) => S[l].ui.cities[c] || c;
 
-// Conferences: the Services comparison panel (.hpanel + .row), neutral.
-function conferencePanel(entries, l) {
+// Conferences: the Treasury comparison table (rounded panel, mono column headers, outlined buttons).
+function conferencePanel(entries, p, l) {
   const ui = S[l].ui;
   const en = l === 'en' ? '' : ' lang="en"';
-  const rows = entries.map((e) => `<div class="row eco-row">
-        <span class="hc-name"><span><b>${esc(e.name)}</b><small${en}>${esc(e.verdict)}</small></span></span>
-        <span class="eco-c" data-label="${esc(ui.tableCity)}">${esc(city(e.city, l))}, ${esc(countryName(e.country, l))}</span>
-        <span class="eco-c" data-label="${esc(ui.tableDates)}">${e.start ? `<time datetime="${e.start}">${esc(confDates(e, l))}</time>` : esc(confDates(e, l))}</span>
-        <a class="hp-get" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(ui.websiteButton)} ${EXT}</a>
+  const rows = entries.map((e) => `<div class="eco-trow">
+        <span><b>${esc(e.name)}</b><small${en}>${esc(e.verdict)}</small></span>
+        <span class="eco-c">${esc(city(e.city, l))}, ${esc(countryName(e.country, l))}</span>
+        <span class="eco-c">${e.start ? `<time datetime="${e.start}">${esc(confDates(e, l))}</time>` : esc(confDates(e, l))}</span>
+        <a class="hp-get" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(ui.websiteButton)} ${ARROW}</a>
       </div>`).join('\n      ');
-  return `<div class="hpanel eco-panel">
-      <div class="row head eco-row"><span>${esc(ui.tableEvent)}</span><span>${esc(ui.tableCity)}</span><span>${esc(ui.tableDates)}</span><span></span></div>
+  return `<div class="hpanel ${p.accent} eco-panel">
+      <div class="eco-trow head"><span>${esc(ui.tableEvent)}</span><span>${esc(ui.tableCity)}</span><span>${esc(ui.tableDates)}</span><span></span></div>
       ${rows}
     </div>`;
 }
 
 function pickSection(l) {
   const ui = S[l].ui;
-  const items = ui.steps.map((s, i) => `<div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">${esc(ui.step)} ${String(i + 1).padStart(2, '0')}</span>
-          <h3>${esc(s.t)}</h3>
-          <p>${esc(s.d)}</p>
-        </div>
-      </div>`).join('\n      ');
   return `<section id="pick">
-    ${head2(ui.howWePick)}
-    <div class="how-log">
-      ${items}
-    </div>
+    ${head2(ui.howWePick, ui.pickSub)}
+    <ul class="tp-principles eco-principles">${ui.steps.map((s) => `<li>${CHECK}<span><b>${esc(s.t)}</b>${esc(s.d)}</span></li>`).join('')}</ul>
     <p class="eco-more"><a class="tlink" href="${pathOf(PROMOTE, l)}#criteria">${esc(ui.criteriaLink)} ${ARROW}</a></p>
   </section>`;
 }
@@ -232,8 +224,8 @@ function relatedSection(p, l) {
   if (!p.related || !p.related.length) return '';
   const labels = p === INDEX ? S[l].ui.indexRelated : txt(l, p).related;
   return `<section id="related">
-    ${head2(S[l].ui.related)}
-    <div class="gcards eco-related">${p.related.map((h, i) => `<a class="gcard" href="${esc(loc(h, l))}"><b>${esc(labels[i])}</b><span class="tlink">${ARROW}</span></a>`).join('')}</div>
+    ${head2(S[l].ui.related, S[l].ui.relatedSub)}
+    <div class="gcards">${p.related.map((h, i) => `<a class="gcard" href="${esc(loc(h, l))}"><b>${esc(labels[i])}</b><span class="tlink">${ARROW}</span></a>`).join('')}</div>
   </section>`;
 }
 
@@ -249,11 +241,13 @@ function indexBody(l) {
   const ui = S[l].ui;
   const cards = SUBPAGES.map((p) => {
     const meta = p.slug === 'promote' ? ui.applyForListing : ui.picks.replace('{n}', liveEntries(p).length);
-    return `<a class="pf-card eco-cat" href="${pathOf(p, l)}">${icon(p.icon)}<span><b>${esc(txt(l, p).nav)}</b><small>${esc(txt(l, p).navDesc)}</small><small class="eco-n">${esc(meta)}</small></span></a>`;
-  }).join('');
-  return `<section id="explore" class="eco-first">
-    ${head2(ui.allPages)}
-    <div class="pf-grid eco-cats">${cards}</div>
+    return `<a class="pcard2 ${p.accent} eco-card eco-cat" href="${pathOf(p, l)}">${icon(p.icon)}<h3>${esc(txt(l, p).nav)}</h3><p>${esc(txt(l, p).navDesc)}</p><span class="eco-k">${esc(meta)}</span></a>`;
+  }).join('\n      ');
+  return `<section id="explore">
+    ${head2(ui.allPages, ui.exploreSub)}
+    <div class="eco-grid eco-cats">
+      ${cards}
+    </div>
     <p class="eco-more"><a class="tlink" href="${pathOf(PROMOTE, l)}">${esc(ui.promoteCta)} ${ARROW}</a></p>
   </section>
   ${pickSection(l)}
@@ -261,29 +255,25 @@ function indexBody(l) {
 }
 
 function listingBody(p, l) {
-  const t = txt(l, p), entries = liveEntries(p);
+  const t = txt(l, p), ui = S[l].ui, entries = liveEntries(p);
   const parts = [];
   const notes = [t.legalNote, t.partnerNote].filter(Boolean).map((n) => `<p class="eco-note">${locHtml(n, l)}</p>`).join('\n    ');
-  const list = p.slug === 'conferences' ? conferencePanel(entries, l) : entryGrid(entries, l);
+  const list = p.slug === 'conferences' ? conferencePanel(entries, p, l) : entryGrid(entries, p, l);
   if (p.slug === 'what-is-bitcoin') {
-    parts.push(`<section id="primer" class="eco-first">
+    parts.push(`<section id="primer">
     <div class="eco-prose">
     ${t.primer.map((h) => locHtml(h, l)).join('\n    ')}
     </div>
   </section>`);
     parts.push(`<section id="faq" class="qa">
-    ${head2(S[l].ui.faq)}
+    ${head2(ui.faq, ui.faqSub)}
     ${t.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('\n    ')}
   </section>`);
-    parts.push(`<section id="list">
-    ${head2(t.listHeading)}
-    ${list}
-  </section>`);
-  } else {
-    parts.push(`<div class="eco-list">
-    ${notes ? notes + '\n    ' : ''}${list}
-  </div>`);
   }
+  parts.push(`<section id="list">
+    ${head2(t.listHeading || ui.listH, ui.listSub)}
+    ${notes ? notes + '\n    ' : ''}${list}
+  </section>`);
   parts.push(pickSection(l));
   parts.push(relatedSection(p, l));
   return parts.join('\n  ');
@@ -297,19 +287,22 @@ function promoteBody(l) {
   const coll = new Intl.Collator(LOCALE[l]);
   const countries = COUNTRIES.map((c) => [c, countryName(c, l)]).sort((a, b) => coll.compare(a[1], b[1])).map(([c, n]) =>
     `<label class="eco-check"><input type="checkbox" name="countries" value="${c}" checked> ${esc(n)}</label>`).join('');
-  return `<section id="criteria" class="eco-first">
-    ${head2(m.criteriaH)}
-    <ol class="eco-crit">
-      ${m.criteria.map((c) => `<li>${c}</li>`).join('\n      ')}
-    </ol>
-    <div class="eco-two">
-      <div><h3 id="paid">${esc(m.paidH)}</h3><p>${fill(m.paid, l)}</p></div>
-      <div><h3 id="removal">${esc(m.removalH)}</h3><p>${esc(m.removal)}</p></div>
+  return `<section id="criteria">
+    ${head2(m.criteriaH, m.criteriaSub)}
+    <div class="eco-copy">
+      <ol>
+        ${m.criteria.map((c) => `<li>${c}</li>`).join('\n        ')}
+      </ol>
+      <div class="why-grid">
+        <div class="pcard2 orange eco-card"><span class="eco-k" id="paid">${esc(m.paidH)}</span><p>${fill(m.paid, l)}</p></div>
+        <div class="pcard2 blue eco-card"><span class="eco-k" id="removal">${esc(m.removalH)}</span><p>${esc(m.removal)}</p></div>
+      </div>
     </div>
   </section>
 
   <section id="apply">
-    ${head2(m.applyH, 'apply-h')}
+    ${head2(m.applyH, m.applySub, 'apply-h')}
+    <div class="hpanel eco-form-panel">
     <p class="eco-muted">${esc(m.required)}</p>
     <form id="ecoForm" class="eco-form" data-endpoint="${WORKER}/ecosystem-apply" novalidate>
       <div class="eco-2">
@@ -344,10 +337,11 @@ function promoteBody(l) {
       <label class="eco-check"><input type="checkbox" name="consent" required> <span>${fill(m.fConsent, l)}</span></label>
       <input class="hp" type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
       <!-- Cloudflare Turnstile widget goes here once the site key is set (keys are stored by Ras, never in the repo). -->
-      <div class="eco-submit-row"><button class="btn btn-primary" type="submit">${esc(m.fSubmit)}</button></div>
+      <button class="hp-cta eco-submit" type="submit">${esc(m.fSubmit)} ${ARROW}</button>
       <p class="eco-form-msg" id="ecoFormMsg" role="status" aria-live="polite"></p>
     </form>
-    <p class="eco-muted eco-mail">${m.mail}</p>
+    <p class="eco-mail">${m.mail}</p>
+    </div>
   </section>`;
 }
 
@@ -434,99 +428,20 @@ function schemas(p, l) {
 }
 
 // ---------- page ----------
-// Everything visual comes from /site-v2.min.css (the Services components). These few rules
-// only cover what those components have no equivalent for: the icon tile in the category
-// cards, entry-card meta, the neutral conference panel, the Promote form fields and prose.
-// No orange here: orange stays on the nav CTA, the eyebrow dot, the H1 accent and the
-// first how-log dot (component defaults).
-const CSS = `
-.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
-.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
-.eco-hero .eco-crumbs a:hover { color: var(--text); }
-.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
-main > section.eco-first { padding-top: 72px; }
-.eco-list { margin-top: 56px; }
-.eco-cat { align-items: flex-start; }
-.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
-.eco-more { margin: 28px 0 0; }
-.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
-.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
-.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
-.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
-.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
-.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
-.eco-related .gcard b { font-size: 16px; }
-.eco-panel { width: 100%; margin-top: 0; }
-.eco-panel::before { display: none; }
-.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
-.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
-.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
-.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
-.eco-prose { max-width: 760px; }
-.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
-.eco-prose h2:first-child { margin-top: 0; }
-.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
-.eco-prose strong { color: var(--text); }
-.eco-prose ul { padding-left: 20px; }
-.eco-notes { max-width: 860px; margin: 56px auto 0; }
-.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
-.eco-crit strong { color: var(--text); }
-.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
-.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
-.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
-.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
-.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
-.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
-.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
-.eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
-.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
-.eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
-.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
-.eco-all { color: var(--text) !important; font-weight: 600; }
-.eco-pick-countries { margin-top: 10px; }
-.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
-.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
-.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
-.eco-form-msg.ok { color: var(--text); }
-.eco-mail { margin-top: 24px; }
-@media (min-width: 1181px) {
-  #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
-  .nav-group.open #nd-eco { display: grid; }
-}
-@media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
-@media (max-width: 760px) {
-  .eco-panel { padding: 8px 16px; }
-  .eco-panel .row.head { display: none; }
-  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
-  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
-  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
-}
-@media (max-width: 640px) {
-  main > section.eco-first { padding-top: 48px; }
-  .eco-list { margin-top: 36px; }
-  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
-  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
-  .eco-ico { width: 32px; height: 32px; padding: 7px; }
-  .eco-cat b { font-size: 14px; }
-  .eco-2 { grid-template-columns: minmax(0, 1fr); }
-  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco-prose h2 { font-size: 24px; }
-}
-`.trim();
+// No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
+// site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
+const CSS_V = '8';
 
+// Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {
-  const a = t.h1Accent;
-  const sep = /^[,:;.?!]/.test(a) ? '' : ' ';
-  return `${esc(t.h1)}${sep}<span class="h1-or">${esc(a)}</span>`;
+  const line2 = cap(t.h1Accent.replace(/^[\s,:;.]+/, '').trim());
+  return `${esc(end(t.h1))} <span class="h1-grey">${esc(line2)}</span>`;
+}
+
+function eyebrow(p, l) {
+  const ui = S[l].ui;
+  const text = p === INDEX ? [ui.eyebrowIndex, ui.steps[0].t, ui.steps[1].t].join(' · ') : [ui.crumbEcosystem, p.slug === 'promote' ? ui.promoteCrumb : txt(l, p).nav].join(' · ');
+  return `<div class="eyebrow ${p.accent === 'orange' ? '' : p.accent}"><i></i>${esc(text)}</div>`.replace('class="eyebrow "', 'class="eyebrow"');
 }
 
 function stats(p, l) {
@@ -551,6 +466,8 @@ function render(p, l) {
     : `<a href="${home}">${esc(ui.home)}</a>${sep}<a href="${pathOf(INDEX, l)}">${esc(ui.crumbEcosystem)}</a>${sep}<span>${esc(p.slug === 'promote' ? ui.promoteCrumb : t.nav)}</span>`;
   const body = p === INDEX ? indexBody(l) : p.slug === 'promote' ? promoteBody(l) : listingBody(p, l);
   const st = stats(p, l);
+  const cta = p === INDEX ? `    <a class="hp-cta" href="${pathOf(PROMOTE, l)}">${esc(ui.applyForListing)} ${ARROW}</a>\n`
+    : p.slug === 'promote' ? `    <a class="hp-cta" href="#apply">${esc(S[l].promote.applyH)} ${ARROW}</a>\n` : '';
   const hreflang = [...LANGS.map((x) => `  <link rel="alternate" hreflang="${x}" href="${absOf(p, x)}">`), `  <link rel="alternate" hreflang="x-default" href="${absOf(p, 'en')}">`].join('\n');
   return `<!DOCTYPE html>
 <html lang="${l}">
@@ -582,21 +499,20 @@ ${hreflang}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=${SITE_V2}">
-<style>${CSS}</style>
+<link rel="stylesheet" href="/site-v2.min.css?v=${CSS_V}">
 <script type="application/ld+json">${jsonLd({ '@context': 'https://schema.org', '@graph': schemas(p, l) })}</script>
 ${CHROME[l].i18n ? CHROME[l].i18n + '\n' : ''}</head>
-<body class="page-eco no-split">
+<body class="page-buy page-eco no-split">
 <!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
 ${nav}
 
-<main class="wrap" id="top">
+<main class="wrap eco-acc-${p.accent}" id="top">
   <div class="buy-hero2 eco-hero">
     <nav class="eco-crumbs" aria-label="Breadcrumb">${crumbs}</nav>
-    <div class="eyebrow"><i></i>${esc(p === INDEX ? ui.eyebrowIndex : ui.crumbEcosystem)}</div>
+    ${eyebrow(p, l)}
     <h1>${heroH1(t)}</h1>
     <p class="sp-lead">${esc(t.intro)}</p>
-${st ? `    <p class="pf-counts">${esc(st)}</p>\n` : ''}  </div>
+${st ? `    <p class="pf-counts">${esc(st)}</p>\n` : ''}${cta}  </div>
   ${body}
   ${footNotes(p, l)}
 ${p.slug !== 'promote' ? '\n  ' + brief + '\n' : ''}

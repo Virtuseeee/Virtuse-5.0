@@ -56,7 +56,13 @@
         "t": "Jelölt szponzorok",
         "d": "A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg a feltételeinket vagy az értékelésünket."
       }
-    ]
+    ],
+    "exploreSub": "Minden kategóriát kézzel ellenőrzünk.",
+    "pickSub": "Három szabály minden bejegyzésre.",
+    "relatedSub": "További tartalmak.",
+    "listH": "Ajánlásaink.",
+    "listSub": "Mindegyikhez egysoros értékelés tartozik.",
+    "faqSub": "Rövid válaszok."
   },
   "promote": {
     "criteriaH": "Feltételek",
@@ -97,7 +103,9 @@
     "mSending": "Küldés…",
     "mOk": "Köszönjük. Megkaptuk jelentkezését, és visszaigazolást küldtünk e-mailben. Az elbírálás általában legfeljebb 30 napot vesz igénybe.",
     "mFail": "A küldés nem sikerült. Kérjük, küldje el jelentkezését e-mailben a következő címre: <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
-    "mail": "Inkább e-mailben írna? Címünk: <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+    "mail": "Inkább e-mailben írna? Címünk: <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
+    "criteriaSub": "Amit minden bejegyzésnek teljesítenie kell.",
+    "applySub": "Személyesen bíráljuk el, semmi sem jelenik meg automatikusan."
   },
   "pages": {
     "index": {

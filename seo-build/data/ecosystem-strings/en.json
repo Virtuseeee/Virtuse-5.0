@@ -56,7 +56,13 @@
         "t": "Sponsors labelled",
         "d": "Paid placements are always marked \"Sponsored\" and never change our criteria or our verdict."
       }
-    ]
+    ],
+    "exploreSub": "Every category reviewed by hand.",
+    "pickSub": "Three rules for every entry.",
+    "relatedSub": "More from Virtuse.",
+    "listH": "Our picks.",
+    "listSub": "Each with a one-line verdict.",
+    "faqSub": "Short answers."
   },
   "promote": {
     "criteriaH": "Criteria",
@@ -97,7 +103,9 @@
     "mSending": "Sending…",
     "mOk": "Thank you. We have received your application and sent a confirmation to your email. Reviews usually take up to 30 days.",
     "mFail": "Sending did not work. Please email your application to <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
-    "mail": "Prefer email? Write to <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+    "mail": "Prefer email? Write to <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
+    "criteriaSub": "What every listing must meet.",
+    "applySub": "Reviewed personally, never published automatically."
   },
   "pages": {
     "index": {

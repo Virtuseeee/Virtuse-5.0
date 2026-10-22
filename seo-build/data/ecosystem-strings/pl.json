@@ -56,7 +56,13 @@
         "t": "Oznaczeni sponsorzy",
         "d": "Płatne miejsca są zawsze oznaczone jako „Sponsorowane” i nigdy nie zmieniają naszych kryteriów ani oceny."
       }
-    ]
+    ],
+    "exploreSub": "Każda kategoria sprawdzona ręcznie.",
+    "pickSub": "Trzy zasady dla każdej pozycji.",
+    "relatedSub": "Więcej od Virtuse.",
+    "listH": "Nasze polecane pozycje.",
+    "listSub": "Każda z jednozdaniową oceną.",
+    "faqSub": "Krótkie odpowiedzi."
   },
   "promote": {
     "criteriaH": "Kryteria",
@@ -97,7 +103,9 @@
     "mSending": "Wysyłanie…",
     "mOk": "Dziękujemy. Otrzymaliśmy Państwa zgłoszenie i wysłaliśmy potwierdzenie na podany adres e-mail. Weryfikacja trwa zwykle do 30 dni.",
     "mFail": "Nie udało się wysłać zgłoszenia. Prosimy przesłać je e-mailem na adres <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
-    "mail": "Wolą Państwo e-mail? Prosimy pisać na adres <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+    "mail": "Wolą Państwo e-mail? Prosimy pisać na adres <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
+    "criteriaSub": "Co musi spełniać każda pozycja.",
+    "applySub": "Sprawdzane osobiście, nigdy nie publikowane automatycznie."
   },
   "pages": {
     "index": {

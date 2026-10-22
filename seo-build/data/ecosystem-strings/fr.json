@@ -56,7 +56,13 @@
         "t": "Sponsors signalés",
         "d": "Les placements payants portent toujours la mention « Sponsorisé » et ne modifient jamais nos critères ni notre avis."
       }
-    ]
+    ],
+    "exploreSub": "Chaque catégorie vérifiée à la main.",
+    "pickSub": "Trois règles pour chaque entrée.",
+    "relatedSub": "D'autres ressources de Virtuse.",
+    "listH": "Nos sélections.",
+    "listSub": "Chacune avec un avis d'une ligne.",
+    "faqSub": "Des réponses courtes."
   },
   "promote": {
     "criteriaH": "Critères",
@@ -97,7 +103,9 @@
     "mSending": "Envoi…",
     "mOk": "Merci. Nous avons bien reçu votre candidature et vous avons envoyé une confirmation par e-mail. L'examen prend généralement jusqu'à 30 jours.",
     "mFail": "L'envoi n'a pas fonctionné. Veuillez envoyer votre candidature par e-mail à <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
-    "mail": "Vous préférez l'e-mail ? Écrivez à <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+    "mail": "Vous préférez l'e-mail ? Écrivez à <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
+    "criteriaSub": "Ce que chaque entrée doit respecter.",
+    "applySub": "Examinée personnellement, jamais publiée automatiquement."
   },
   "pages": {
     "index": {

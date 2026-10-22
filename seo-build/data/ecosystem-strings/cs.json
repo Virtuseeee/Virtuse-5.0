@@ -56,7 +56,13 @@
         "t": "Označení sponzoři",
         "d": "Placená umístění jsou vždy označena „Sponzorováno“ a nikdy nemění naše kritéria ani hodnocení."
       }
-    ]
+    ],
+    "exploreSub": "Každou kategorii ověřujeme ručně.",
+    "pickSub": "Tři pravidla pro každou položku.",
+    "relatedSub": "Více od Virtuse.",
+    "listH": "Naše doporučení.",
+    "listSub": "Každé s hodnocením na jeden řádek.",
+    "faqSub": "Stručné odpovědi."
   },
   "promote": {
     "criteriaH": "Kritéria",
@@ -97,7 +103,9 @@
     "mSending": "Odesílání…",
     "mOk": "Děkujeme. Vaši žádost jsme přijali a na váš e-mail jsme poslali potvrzení. Posouzení obvykle trvá až 30 dní.",
     "mFail": "Odeslání se nepodařilo. Pošlete prosím žádost e-mailem na <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
-    "mail": "Dáváte přednost e-mailu? Napište na <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+    "mail": "Dáváte přednost e-mailu? Napište na <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
+    "criteriaSub": "Co musí splňovat každá položka.",
+    "applySub": "Posuzujeme osobně, nic se nezveřejňuje automaticky."
   },
   "pages": {
     "index": {
