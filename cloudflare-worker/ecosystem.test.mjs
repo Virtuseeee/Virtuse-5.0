@@ -89,16 +89,17 @@ test('ECOSYSTEM_TO / ECOSYSTEM_FROM overrides', withFetch(async (calls) => {
   assert.equal(team.body.from, 'Virtuse <listings@virtuse.com>');
 }));
 
-test('failed Turnstile -> 403, nothing sent', withFetch(async (calls) => {
+test('failed Turnstile -> 400 captcha, nothing sent', withFetch(async (calls) => {
   const res = await worker.fetch(req(app()), env());
-  assert.equal(res.status, 403);
+  assert.equal(res.status, 400);
   assert.deepEqual(await res.json(), { error: 'captcha' });
   assert.equal(resend(calls).length, 0);
 }, { captchaOk: false }));
 
-test('missing Turnstile token -> 403 without calling siteverify', withFetch(async (calls) => {
-  const res = await worker.fetch(req(app({ turnstile: '' })), env());
-  assert.equal(res.status, 403);
+test('missing Turnstile token -> 400 without calling siteverify, even before secrets exist', withFetch(async (calls) => {
+  const res = await worker.fetch(req(app({ turnstile: '' })), env({ TURNSTILE_SECRET_KEY: undefined }));
+  assert.equal(res.status, 400);
+  assert.deepEqual(await res.json(), { error: 'captcha' });
   assert.equal(calls.length, 0);
 }));
 

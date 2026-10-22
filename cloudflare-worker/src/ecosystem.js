@@ -181,11 +181,14 @@ export async function handleEcosystemApply(request, env, origin, { json, emailRe
   if (!v.ok) return json(400, { error: 'invalid', detail: v.error }, origin);
   const app = v.app;
 
+  // A missing or malformed Turnstile token is a 400 before anything else is spent on the request.
+  const token = body.turnstile;
+  if (!token || typeof token !== 'string' || token.length > 2048) return json(400, { error: 'captcha' }, origin);
   if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY) return json(503, { error: 'closed' }, origin);
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   if (await ipLimited(env, ip)) return json(429, { error: 'rate_limited' }, origin);
-  if (!(await verifyTurnstile(env, body.turnstile, ip))) return json(403, { error: 'captcha' }, origin);
+  if (!(await verifyTurnstile(env, token, ip))) return json(400, { error: 'captcha' }, origin);
 
   const test = origin === STAGING_ORIGIN;
   const testTo = env.ECOSYSTEM_TEST_TO || 'vasilisin@virtuse.com';

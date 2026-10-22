@@ -375,7 +375,7 @@ must be `true`), 3 requests per IP per hour (KV `eco:ip:*`), Cloudflare Turnstil
 the application to the team (Reply-To = applicant) and an auto-reply to the applicant in the page language
 (Reply-To = team), at most once per address per 24 h (KV `eco:reply:*`). Nothing is stored or published.
 
-Responses: 200 `{ok:true}`; 400 `invalid`; 403 `captcha`; 413 `too_large`; 429 `rate_limited`; 502 `send_failed`;
+Responses: 200 `{ok:true}`; 400 `invalid` (fields) or `captcha` (missing, malformed or failed Turnstile token); 413 `too_large`; 429 `rate_limited`; 502 `send_failed`;
 503 `closed` (no `TURNSTILE_SECRET_KEY` or `RESEND_API_KEY`).
 
 Secrets / settings (`wrangler secret put NAME`):
