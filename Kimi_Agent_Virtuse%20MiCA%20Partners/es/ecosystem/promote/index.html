@@ -47,122 +47,87 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.css?v=7">
-<style>.eco { max-width: 1040px; margin: 0 auto; padding: 36px 0 24px; min-width: 0; }
-.eco a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
-.eco a:hover { text-decoration-color: var(--text); }
-.eco p, .eco li { color: #c9d1d9; }
-.eco h1, .eco h2, .eco h3, .eco p, .eco li, .eco summary, .eco label, .eco b, .eco span { overflow-wrap: break-word; }
-.eco h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; hyphens: auto; }
-.eco h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 44px 0 14px; }
-.eco .lead { font-size: 1.1rem; line-height: 1.6; color: var(--muted); max-width: 760px; margin: 0; }
-.eco .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
-.eco .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
-.eco .crumbs a:hover { color: var(--text); }
-.eco-pick { background: var(--card); border: 1px solid var(--line); border-left: 3px solid #f7931a; border-radius: 12px; padding: 18px 20px; margin: 30px 0 8px; }
-.eco-pick h2 { margin: 0 0 6px; font-size: 1rem; }
-.eco-pick p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
-.eco-legal { font-size: 14px; line-height: 1.55; color: var(--muted) !important; border-left: 2px solid var(--line-strong); padding: 4px 0 4px 12px; margin: 18px 0; }
-.eco-grid, .eco-sections { list-style: none; padding: 0; margin: 18px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.eco-card { position: relative; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, background .15s; }
-.eco-card:hover { border-color: var(--line-strong); background: var(--card-hover); }
-.eco-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.eco-card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
-.eco-card h3 a { text-decoration: none; }
-.eco-card h3 a::after { content: ""; position: absolute; inset: 0; }
-.eco-card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); flex: 1; }
-.eco-card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; min-width: 0; }
-.eco-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
-.eco-tags li { font-size: 11px; line-height: 1; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 8px; }
-.eco-host { font: 500 11px/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-.eco-sponsored { font-size: 11px; font-weight: 600; color: #f7931a; border: 1px solid rgba(247,147,26,.4); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
-.eco-sections li { min-width: 0; }
-.eco-sections a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; min-height: 140px; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .15s, background .15s; }
-.eco-sections a:hover { border-color: rgba(247,147,26,.45); background: var(--card-hover); }
-.eco-ico { width: 32px; height: 32px; padding: 6px; box-sizing: border-box; border-radius: 9px; background: rgba(247,147,26,.12); fill: none; stroke: #f7931a; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; flex: none; }
-.eco-sections b { font-size: 17px; line-height: 1.25; }
-.eco-sections span { font-size: 14px; color: var(--muted); flex: 1; }
-.eco-sections em { font: normal 500 11px/1.3 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
-.eco-promote-line { margin: 18px 0 0; }
-.eco-primer { max-width: 760px; }
-.eco-primer p, .eco-primer li { font-size: 16px; line-height: 1.7; }
-.eco-primer ul { padding-left: 20px; }
-.eco details { border-bottom: 1px solid var(--line); padding: 14px 0; max-width: 760px; }
-.eco summary { cursor: pointer; font-weight: 600; }
-.eco details p { margin: 10px 0 0; line-height: 1.6; }
-.eco .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
-.eco .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; min-width: 0; }
-.eco .related a:hover { border-color: var(--line-strong); }
-.eco .table-wrap { overflow-x: auto; margin: 18px 0 8px; }
-.eco-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.eco-table th, .eco-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.eco-table th { color: var(--muted); font-weight: 600; font-size: 13px; }
-.eco-table td b { font-weight: 600; }
-.eco-verdict { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); }
-.eco-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none !important; font-weight: 600; font-size: 13px; white-space: nowrap; }
-.eco-btn:hover { border-color: #f7931a; color: #fff; }
-.eco .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
-.eco .disclaimers p { color: var(--muted); margin: 0 0 6px; }
-.eco .muted { color: var(--muted); font-size: 14px; }
-.eco-copy, .eco-apply { max-width: 760px; }
-.eco-copy li { margin: 0 0 8px; line-height: 1.55; }
-.eco-form { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; min-width: 0; }
-.eco-form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { font: 400 16px/1.4 var(--sans); color: var(--text); background: var(--card); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; min-height: 44px; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+<link rel="stylesheet" href="/site-v2.min.css?v=7">
+<style>.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
+.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
+.eco-hero .eco-crumbs a:hover { color: var(--text); }
+.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
+main > section.eco-first { padding-top: 72px; }
+.eco-list { margin-top: 56px; }
+.eco-cat { align-items: flex-start; }
+.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
+.eco-more { margin: 28px 0 0; }
+.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
+.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
+.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
+.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
+.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
+.eco-related .gcard b { font-size: 16px; }
+.eco-panel { width: 100%; margin-top: 0; }
+.eco-panel::before { display: none; }
+.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
+.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
+.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
+.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
+.eco-prose { max-width: 760px; }
+.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
+.eco-prose h2:first-child { margin-top: 0; }
+.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
+.eco-prose strong { color: var(--text); }
+.eco-prose ul { padding-left: 20px; }
+.eco-notes { max-width: 860px; margin: 56px auto 0; }
+.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
+.eco-crit strong { color: var(--text); }
+.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
+.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
+.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
+.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
+.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
+.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
 .eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: 2px solid var(--text); outline-offset: 1px; }
-.eco-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 0; min-width: 0; }
+.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
+.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
 .eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { flex-direction: row; align-items: flex-start; gap: 8px; color: #c9d1d9; line-height: 1.45; }
-.eco-check input { margin-top: 3px; accent-color: #f7931a; width: 16px; height: 16px; flex: none; }
-.eco-check-all { font-weight: 600; }
-.eco .eco-pick-countries { border: 0; padding: 8px 0 0; max-width: none; }
-.eco-pick-countries summary { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 6px 0; }
-.eco-check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 12px; margin-top: 10px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-.eco-count { font-size: 12px; color: var(--dim); align-self: flex-end; }
-.eco-form .hp { position: absolute; left: -9999px; }
-.eco-submit { align-self: flex-start; min-height: 44px; padding: 12px 22px; border: 0; border-radius: 10px; background: var(--text); color: #08090a; font: 600 15px/1 var(--sans); cursor: pointer; }
-.eco-submit:disabled { opacity: .6; cursor: wait; }
-.eco-form-msg { margin: 0; font-size: 14px; min-height: 1.2em; }
-.eco-form-msg.ok { color: #3fb950; }
-.eco-form-msg.err { color: #f0883e; }
-.eco-mail { margin-top: 18px; }
-.eco-sr { position: absolute !important; left: -9999px; }
-.eco-brief { max-width: 1040px; margin: 8px auto 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-sizing: border-box; }
-.eco-brief-row { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
-.eco-brief-h { margin: 0; font-size: 16px; font-weight: 600; color: var(--text); flex: 1 1 220px; }
-.eco-brief-h span { color: var(--muted); font-weight: 400; }
-.eco-brief-form { display: flex !important; gap: 8px; flex: 2 1 340px; min-width: 0; }
-.eco-brief-form input[type=email] { flex: 1; min-width: 0; padding: 11px 12px; font-size: 16px; }
-.eco-brief-form .btn { white-space: nowrap; flex: none; }
-.eco-brief .brief-msg { margin-top: 8px; font-size: 13px; }
-.eco-brief-fine { margin: 6px 0 0; font-size: 12px; color: var(--dim); }
-/* Ecosystem menu: 13 items in two columns on desktop */
+.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
+.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
+.eco-all { color: var(--text) !important; font-weight: 600; }
+.eco-pick-countries { margin-top: 10px; }
+.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
+.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
+.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
+.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
+.eco-form-msg.ok { color: var(--text); }
+.eco-mail { margin-top: 24px; }
 @media (min-width: 1181px) {
   #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
   .nav-group.open #nd-eco { display: grid; }
 }
 @media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 900px) { .eco-grid, .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .eco-panel { padding: 8px 16px; }
+  .eco-panel .row.head { display: none; }
+  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
+  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
+  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
+}
 @media (max-width: 640px) {
-  .eco { padding-top: 24px; }
-  .eco-grid, .eco .related, .eco-row { grid-template-columns: minmax(0, 1fr); }
-  .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .eco-sections a { min-height: 128px; padding: 14px 12px; gap: 4px; }
-  .eco-sections b { font-size: 15px; }
-  .eco-sections span { font-size: 13px; }
-  .eco-ico { width: 28px; height: 28px; padding: 5px; }
-  .eco-check-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco .table-wrap { overflow: visible; }
-  .eco-table, .eco-table tbody, .eco-table tr, .eco-table td { display: block; width: 100%; box-sizing: border-box; }
-  .eco-table thead { display: none; }
-  .eco-table tr { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px 14px; margin: 0 0 10px; }
-  .eco-table td { border: 0; padding: 8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
-  .eco-table td + td { border-top: 1px solid var(--line); }
-  .eco-table td::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
-  .eco-brief-form { flex-basis: 100%; }
+  main > section.eco-first { padding-top: 48px; }
+  .eco-list { margin-top: 36px; }
+  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
+  .eco-ico { width: 32px; height: 32px; padding: 7px; }
+  .eco-cat b { font-size: 14px; }
+  .eco-2 { grid-template-columns: minmax(0, 1fr); }
+  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .eco-prose h2 { font-size: 24px; }
 }</style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -257,30 +222,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 <main class="wrap" id="top">
-<article class="eco">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/es/">Inicio</a> <span aria-hidden="true">/</span> <a href="/es/ecosystem/">Ecosistema</a> <span aria-hidden="true">/</span> <span>Aparecer en el directorio</span></nav>
-  <h1>Haga que su proyecto aparezca</h1>
-  <p class="lead">El directorio Ecosistema Bitcoin de Virtuse se selecciona a mano. No aceptamos envíos automáticos. Si cree que su proyecto debería estar aquí, escríbanos por correo electrónico o envíe el formulario de solicitud que encontrará más abajo. Revisamos cada solicitud personalmente y podemos rechazar cualquier solicitud sin dar explicaciones.</p>
-  <section class="eco-copy">
-    <h2 id="criteria">Criterios</h2>
-    <ol>
+  <div class="buy-hero2 eco-hero">
+    <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/es/">Inicio</a> <span aria-hidden="true">/</span> <a href="/es/ecosystem/">Ecosistema</a> <span aria-hidden="true">/</span> <span>Aparecer en el directorio</span></nav>
+    <div class="eyebrow"><i></i>Ecosistema</div>
+    <h1>Haga que su proyecto aparezca <span class="h1-or">en el Ecosistema Bitcoin.</span></h1>
+    <p class="sp-lead">El directorio Ecosistema Bitcoin de Virtuse se selecciona a mano. No aceptamos envíos automáticos. Si cree que su proyecto debería estar aquí, escríbanos por correo electrónico o envíe el formulario de solicitud que encontrará más abajo. Revisamos cada solicitud personalmente y podemos rechazar cualquier solicitud sin dar explicaciones.</p>
+  </div>
+  <section id="criteria" class="eco-first">
+    <div class="sec-head one"><div class="sec-copy"><h2>Criterios</h2></div></div>
+    <ol class="eco-crit">
       <li><strong>Solo Bitcoin.</strong> Su proyecto admite bitcoin (on-chain y/o Lightning) y no lista, vende ni promociona otras criptomonedas o tokens.</li>
       <li><strong>Relevante para Europa.</strong> Presta servicio a usuarios de la UE/EEE o de Suiza.</li>
       <li><strong>Regulado cuando sea necesario.</strong> Si presta servicios de criptoactivos en la UE, dispone de una autorización MiCA (CASP) o de una licencia transitoria aplicable.</li>
       <li><strong>Activo y mantenido,</strong> con un sitio web público operativo.</li>
       <li><strong>Honesto:</strong> sin promesas de rentabilidad y sin custodia no declarada.</li>
     </ol>
-    <h2 id="paid">Posiciones de pago</h2>
-    <p>Algunas entradas están marcadas como "Patrocinado" o "Destacado". Son posiciones de pago, y algunos enlaces son enlaces de afiliado. El pago nunca cambia nuestros criterios ni nuestra valoración, y no garantiza la aceptación. Consulte <a href="/es/how-we-earn.html">Cómo obtenemos ingresos</a>.</p>
-    <h2 id="removal">Retirada</h2>
-    <p>Podemos retirar una ficha si deja de cumplir los criterios. Usted puede solicitar su retirada en cualquier momento.</p>
+    <div class="eco-two">
+      <div><h3 id="paid">Posiciones de pago</h3><p>Algunas entradas están marcadas como "Patrocinado" o "Destacado". Son posiciones de pago, y algunos enlaces son enlaces de afiliado. El pago nunca cambia nuestros criterios ni nuestra valoración, y no garantiza la aceptación. Consulte <a href="/es/how-we-earn.html">Cómo obtenemos ingresos</a>.</p></div>
+      <div><h3 id="removal">Retirada</h3><p>Podemos retirar una ficha si deja de cumplir los criterios. Usted puede solicitar su retirada en cualquier momento.</p></div>
+    </div>
   </section>
 
-  <section class="eco-apply" aria-labelledby="apply-h">
-    <h2 id="apply-h">Solicitud</h2>
-    <p class="muted">Los campos marcados con * son obligatorios. Revisamos cada solicitud personalmente; nada se publica de forma automática.</p>
+  <section id="apply">
+    <div class="sec-head one"><div class="sec-copy"><h2 id="apply-h">Solicitud</h2></div></div>
+    <p class="eco-muted">Los campos marcados con * son obligatorios. Revisamos cada solicitud personalmente; nada se publica de forma automática.</p>
     <form id="ecoForm" class="eco-form" data-endpoint="https://virtuse-newsletter.virtuse-ai.workers.dev/ecosystem-apply" novalidate>
-      <div class="eco-row">
+      <div class="eco-2">
         <label>Nombre del proyecto *<input name="project_name" required maxlength="120" autocomplete="organization"></label>
         <label>URL del sitio web *<input name="website" type="url" required maxlength="300" placeholder="https://"></label>
       </div>
@@ -288,18 +255,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <label>Descripción breve en inglés (máx. 300 caracteres) *<textarea name="description" required maxlength="300" rows="3"></textarea><span class="eco-count">0 / 300</span></label>
       <fieldset class="eco-countries">
         <legend>Países en los que opera *</legend>
-        <label class="eco-check eco-check-all"><input type="checkbox" data-all-countries checked> Todos los países de la UE/EEE y Suiza</label>
+        <label class="eco-check eco-all"><input type="checkbox" data-all-countries checked> Todos los países de la UE/EEE y Suiza</label>
         <details class="eco-pick-countries">
           <summary>Elegir países concretos</summary>
-          <div class="eco-check-grid"><label class="eco-check"><input type="checkbox" name="countries" value="DE" checked> Alemania</label><label class="eco-check"><input type="checkbox" name="countries" value="AT" checked> Austria</label><label class="eco-check"><input type="checkbox" name="countries" value="BE" checked> Bélgica</label><label class="eco-check"><input type="checkbox" name="countries" value="BG" checked> Bulgaria</label><label class="eco-check"><input type="checkbox" name="countries" value="CZ" checked> Chequia</label><label class="eco-check"><input type="checkbox" name="countries" value="CY" checked> Chipre</label><label class="eco-check"><input type="checkbox" name="countries" value="HR" checked> Croacia</label><label class="eco-check"><input type="checkbox" name="countries" value="DK" checked> Dinamarca</label><label class="eco-check"><input type="checkbox" name="countries" value="SK" checked> Eslovaquia</label><label class="eco-check"><input type="checkbox" name="countries" value="SI" checked> Eslovenia</label><label class="eco-check"><input type="checkbox" name="countries" value="ES" checked> España</label><label class="eco-check"><input type="checkbox" name="countries" value="EE" checked> Estonia</label><label class="eco-check"><input type="checkbox" name="countries" value="FI" checked> Finlandia</label><label class="eco-check"><input type="checkbox" name="countries" value="FR" checked> Francia</label><label class="eco-check"><input type="checkbox" name="countries" value="GR" checked> Grecia</label><label class="eco-check"><input type="checkbox" name="countries" value="HU" checked> Hungría</label><label class="eco-check"><input type="checkbox" name="countries" value="IE" checked> Irlanda</label><label class="eco-check"><input type="checkbox" name="countries" value="IS" checked> Islandia</label><label class="eco-check"><input type="checkbox" name="countries" value="IT" checked> Italia</label><label class="eco-check"><input type="checkbox" name="countries" value="LV" checked> Letonia</label><label class="eco-check"><input type="checkbox" name="countries" value="LI" checked> Liechtenstein</label><label class="eco-check"><input type="checkbox" name="countries" value="LT" checked> Lituania</label><label class="eco-check"><input type="checkbox" name="countries" value="LU" checked> Luxemburgo</label><label class="eco-check"><input type="checkbox" name="countries" value="MT" checked> Malta</label><label class="eco-check"><input type="checkbox" name="countries" value="NO" checked> Noruega</label><label class="eco-check"><input type="checkbox" name="countries" value="NL" checked> Países Bajos</label><label class="eco-check"><input type="checkbox" name="countries" value="PL" checked> Polonia</label><label class="eco-check"><input type="checkbox" name="countries" value="PT" checked> Portugal</label><label class="eco-check"><input type="checkbox" name="countries" value="RO" checked> Rumanía</label><label class="eco-check"><input type="checkbox" name="countries" value="SE" checked> Suecia</label><label class="eco-check"><input type="checkbox" name="countries" value="CH" checked> Suiza</label></div>
+          <div class="eco-cgrid"><label class="eco-check"><input type="checkbox" name="countries" value="DE" checked> Alemania</label><label class="eco-check"><input type="checkbox" name="countries" value="AT" checked> Austria</label><label class="eco-check"><input type="checkbox" name="countries" value="BE" checked> Bélgica</label><label class="eco-check"><input type="checkbox" name="countries" value="BG" checked> Bulgaria</label><label class="eco-check"><input type="checkbox" name="countries" value="CZ" checked> Chequia</label><label class="eco-check"><input type="checkbox" name="countries" value="CY" checked> Chipre</label><label class="eco-check"><input type="checkbox" name="countries" value="HR" checked> Croacia</label><label class="eco-check"><input type="checkbox" name="countries" value="DK" checked> Dinamarca</label><label class="eco-check"><input type="checkbox" name="countries" value="SK" checked> Eslovaquia</label><label class="eco-check"><input type="checkbox" name="countries" value="SI" checked> Eslovenia</label><label class="eco-check"><input type="checkbox" name="countries" value="ES" checked> España</label><label class="eco-check"><input type="checkbox" name="countries" value="EE" checked> Estonia</label><label class="eco-check"><input type="checkbox" name="countries" value="FI" checked> Finlandia</label><label class="eco-check"><input type="checkbox" name="countries" value="FR" checked> Francia</label><label class="eco-check"><input type="checkbox" name="countries" value="GR" checked> Grecia</label><label class="eco-check"><input type="checkbox" name="countries" value="HU" checked> Hungría</label><label class="eco-check"><input type="checkbox" name="countries" value="IE" checked> Irlanda</label><label class="eco-check"><input type="checkbox" name="countries" value="IS" checked> Islandia</label><label class="eco-check"><input type="checkbox" name="countries" value="IT" checked> Italia</label><label class="eco-check"><input type="checkbox" name="countries" value="LV" checked> Letonia</label><label class="eco-check"><input type="checkbox" name="countries" value="LI" checked> Liechtenstein</label><label class="eco-check"><input type="checkbox" name="countries" value="LT" checked> Lituania</label><label class="eco-check"><input type="checkbox" name="countries" value="LU" checked> Luxemburgo</label><label class="eco-check"><input type="checkbox" name="countries" value="MT" checked> Malta</label><label class="eco-check"><input type="checkbox" name="countries" value="NO" checked> Noruega</label><label class="eco-check"><input type="checkbox" name="countries" value="NL" checked> Países Bajos</label><label class="eco-check"><input type="checkbox" name="countries" value="PL" checked> Polonia</label><label class="eco-check"><input type="checkbox" name="countries" value="PT" checked> Portugal</label><label class="eco-check"><input type="checkbox" name="countries" value="RO" checked> Rumanía</label><label class="eco-check"><input type="checkbox" name="countries" value="SE" checked> Suecia</label><label class="eco-check"><input type="checkbox" name="countries" value="CH" checked> Suiza</label></div>
         </details>
       </fieldset>
       <label class="eco-check"><input type="checkbox" name="bitcoin_only" required> <span>Confirmo que el proyecto es solo Bitcoin (sin otras criptomonedas ni tokens) *</span></label>
-      <div class="eco-row">
+      <div class="eco-2">
         <label>Número de licencia MiCA u otra y autoridad competente (si procede)<input name="licence" maxlength="200"></label>
         <label>URL del repositorio de código abierto<input name="repo" type="url" maxlength="300" placeholder="https://"></label>
       </div>
-      <div class="eco-row">
+      <div class="eco-2">
         <label>Nombre de contacto *<input name="contact_name" required maxlength="120" autocomplete="name"></label>
         <label>Correo electrónico de contacto *<input name="contact_email" type="email" required maxlength="200" autocomplete="email"></label>
       </div>
@@ -312,16 +279,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <label class="eco-check"><input type="checkbox" name="consent" required> <span>Acepto que Virtuse trate estos datos para revisar la solicitud, tal como se describe en la <a href="/es/privacy-policy.html">política de privacidad</a>. *</span></label>
       <input class="hp" type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
       <!-- Cloudflare Turnstile widget goes here once the site key is set (keys are stored by Ras, never in the repo). -->
-      <button class="eco-submit" type="submit">Enviar solicitud</button>
+      <div class="eco-submit-row"><button class="btn btn-primary" type="submit">Enviar solicitud</button></div>
       <p class="eco-form-msg" id="ecoFormMsg" role="status" aria-live="polite"></p>
     </form>
-    <p class="eco-mail">¿Prefiere el correo electrónico? Escriba a <a href="mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application">info@virtuse.com</a>.</p>
+    <p class="eco-muted eco-mail">¿Prefiere el correo electrónico? Escriba a <a href="mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application">info@virtuse.com</a>.</p>
   </section>
-  <aside class="disclaimers">
-    <p>Las fichas son informativas y no constituyen asesoramiento de inversión.</p>
-    <p class="eco-reviewed">Última revisión: <time datetime="2026-10-22">22 de octubre de 2026</time></p>
-  </aside>
-</article>
+  <p class="pf-disc eco-notes">Las fichas son informativas y no constituyen asesoramiento de inversión. Última revisión: <time datetime="2026-10-22">22 de octubre de 2026</time>.</p>
 
   <footer class="footer-main">
     <div class="footer-inner">

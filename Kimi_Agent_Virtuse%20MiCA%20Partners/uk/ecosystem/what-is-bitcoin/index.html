@@ -47,122 +47,87 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.css?v=7">
-<style>.eco { max-width: 1040px; margin: 0 auto; padding: 36px 0 24px; min-width: 0; }
-.eco a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
-.eco a:hover { text-decoration-color: var(--text); }
-.eco p, .eco li { color: #c9d1d9; }
-.eco h1, .eco h2, .eco h3, .eco p, .eco li, .eco summary, .eco label, .eco b, .eco span { overflow-wrap: break-word; }
-.eco h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; hyphens: auto; }
-.eco h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 44px 0 14px; }
-.eco .lead { font-size: 1.1rem; line-height: 1.6; color: var(--muted); max-width: 760px; margin: 0; }
-.eco .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
-.eco .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
-.eco .crumbs a:hover { color: var(--text); }
-.eco-pick { background: var(--card); border: 1px solid var(--line); border-left: 3px solid #f7931a; border-radius: 12px; padding: 18px 20px; margin: 30px 0 8px; }
-.eco-pick h2 { margin: 0 0 6px; font-size: 1rem; }
-.eco-pick p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
-.eco-legal { font-size: 14px; line-height: 1.55; color: var(--muted) !important; border-left: 2px solid var(--line-strong); padding: 4px 0 4px 12px; margin: 18px 0; }
-.eco-grid, .eco-sections { list-style: none; padding: 0; margin: 18px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.eco-card { position: relative; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, background .15s; }
-.eco-card:hover { border-color: var(--line-strong); background: var(--card-hover); }
-.eco-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.eco-card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
-.eco-card h3 a { text-decoration: none; }
-.eco-card h3 a::after { content: ""; position: absolute; inset: 0; }
-.eco-card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); flex: 1; }
-.eco-card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; min-width: 0; }
-.eco-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
-.eco-tags li { font-size: 11px; line-height: 1; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 8px; }
-.eco-host { font: 500 11px/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-.eco-sponsored { font-size: 11px; font-weight: 600; color: #f7931a; border: 1px solid rgba(247,147,26,.4); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
-.eco-sections li { min-width: 0; }
-.eco-sections a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; min-height: 140px; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .15s, background .15s; }
-.eco-sections a:hover { border-color: rgba(247,147,26,.45); background: var(--card-hover); }
-.eco-ico { width: 32px; height: 32px; padding: 6px; box-sizing: border-box; border-radius: 9px; background: rgba(247,147,26,.12); fill: none; stroke: #f7931a; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; flex: none; }
-.eco-sections b { font-size: 17px; line-height: 1.25; }
-.eco-sections span { font-size: 14px; color: var(--muted); flex: 1; }
-.eco-sections em { font: normal 500 11px/1.3 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
-.eco-promote-line { margin: 18px 0 0; }
-.eco-primer { max-width: 760px; }
-.eco-primer p, .eco-primer li { font-size: 16px; line-height: 1.7; }
-.eco-primer ul { padding-left: 20px; }
-.eco details { border-bottom: 1px solid var(--line); padding: 14px 0; max-width: 760px; }
-.eco summary { cursor: pointer; font-weight: 600; }
-.eco details p { margin: 10px 0 0; line-height: 1.6; }
-.eco .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
-.eco .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; min-width: 0; }
-.eco .related a:hover { border-color: var(--line-strong); }
-.eco .table-wrap { overflow-x: auto; margin: 18px 0 8px; }
-.eco-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.eco-table th, .eco-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.eco-table th { color: var(--muted); font-weight: 600; font-size: 13px; }
-.eco-table td b { font-weight: 600; }
-.eco-verdict { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); }
-.eco-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none !important; font-weight: 600; font-size: 13px; white-space: nowrap; }
-.eco-btn:hover { border-color: #f7931a; color: #fff; }
-.eco .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
-.eco .disclaimers p { color: var(--muted); margin: 0 0 6px; }
-.eco .muted { color: var(--muted); font-size: 14px; }
-.eco-copy, .eco-apply { max-width: 760px; }
-.eco-copy li { margin: 0 0 8px; line-height: 1.55; }
-.eco-form { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; min-width: 0; }
-.eco-form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { font: 400 16px/1.4 var(--sans); color: var(--text); background: var(--card); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; min-height: 44px; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+<link rel="stylesheet" href="/site-v2.min.css?v=7">
+<style>.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
+.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
+.eco-hero .eco-crumbs a:hover { color: var(--text); }
+.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
+main > section.eco-first { padding-top: 72px; }
+.eco-list { margin-top: 56px; }
+.eco-cat { align-items: flex-start; }
+.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
+.eco-more { margin: 28px 0 0; }
+.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
+.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
+.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
+.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
+.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
+.eco-related .gcard b { font-size: 16px; }
+.eco-panel { width: 100%; margin-top: 0; }
+.eco-panel::before { display: none; }
+.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
+.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
+.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
+.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
+.eco-prose { max-width: 760px; }
+.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
+.eco-prose h2:first-child { margin-top: 0; }
+.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
+.eco-prose strong { color: var(--text); }
+.eco-prose ul { padding-left: 20px; }
+.eco-notes { max-width: 860px; margin: 56px auto 0; }
+.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
+.eco-crit strong { color: var(--text); }
+.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
+.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
+.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
+.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
+.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
+.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
 .eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: 2px solid var(--text); outline-offset: 1px; }
-.eco-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 0; min-width: 0; }
+.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
+.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
 .eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { flex-direction: row; align-items: flex-start; gap: 8px; color: #c9d1d9; line-height: 1.45; }
-.eco-check input { margin-top: 3px; accent-color: #f7931a; width: 16px; height: 16px; flex: none; }
-.eco-check-all { font-weight: 600; }
-.eco .eco-pick-countries { border: 0; padding: 8px 0 0; max-width: none; }
-.eco-pick-countries summary { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 6px 0; }
-.eco-check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 12px; margin-top: 10px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-.eco-count { font-size: 12px; color: var(--dim); align-self: flex-end; }
-.eco-form .hp { position: absolute; left: -9999px; }
-.eco-submit { align-self: flex-start; min-height: 44px; padding: 12px 22px; border: 0; border-radius: 10px; background: var(--text); color: #08090a; font: 600 15px/1 var(--sans); cursor: pointer; }
-.eco-submit:disabled { opacity: .6; cursor: wait; }
-.eco-form-msg { margin: 0; font-size: 14px; min-height: 1.2em; }
-.eco-form-msg.ok { color: #3fb950; }
-.eco-form-msg.err { color: #f0883e; }
-.eco-mail { margin-top: 18px; }
-.eco-sr { position: absolute !important; left: -9999px; }
-.eco-brief { max-width: 1040px; margin: 8px auto 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-sizing: border-box; }
-.eco-brief-row { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
-.eco-brief-h { margin: 0; font-size: 16px; font-weight: 600; color: var(--text); flex: 1 1 220px; }
-.eco-brief-h span { color: var(--muted); font-weight: 400; }
-.eco-brief-form { display: flex !important; gap: 8px; flex: 2 1 340px; min-width: 0; }
-.eco-brief-form input[type=email] { flex: 1; min-width: 0; padding: 11px 12px; font-size: 16px; }
-.eco-brief-form .btn { white-space: nowrap; flex: none; }
-.eco-brief .brief-msg { margin-top: 8px; font-size: 13px; }
-.eco-brief-fine { margin: 6px 0 0; font-size: 12px; color: var(--dim); }
-/* Ecosystem menu: 13 items in two columns on desktop */
+.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
+.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
+.eco-all { color: var(--text) !important; font-weight: 600; }
+.eco-pick-countries { margin-top: 10px; }
+.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
+.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
+.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
+.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
+.eco-form-msg.ok { color: var(--text); }
+.eco-mail { margin-top: 24px; }
 @media (min-width: 1181px) {
   #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
   .nav-group.open #nd-eco { display: grid; }
 }
 @media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 900px) { .eco-grid, .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .eco-panel { padding: 8px 16px; }
+  .eco-panel .row.head { display: none; }
+  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
+  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
+  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
+}
 @media (max-width: 640px) {
-  .eco { padding-top: 24px; }
-  .eco-grid, .eco .related, .eco-row { grid-template-columns: minmax(0, 1fr); }
-  .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .eco-sections a { min-height: 128px; padding: 14px 12px; gap: 4px; }
-  .eco-sections b { font-size: 15px; }
-  .eco-sections span { font-size: 13px; }
-  .eco-ico { width: 28px; height: 28px; padding: 5px; }
-  .eco-check-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco .table-wrap { overflow: visible; }
-  .eco-table, .eco-table tbody, .eco-table tr, .eco-table td { display: block; width: 100%; box-sizing: border-box; }
-  .eco-table thead { display: none; }
-  .eco-table tr { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px 14px; margin: 0 0 10px; }
-  .eco-table td { border: 0; padding: 8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
-  .eco-table td + td { border-top: 1px solid var(--line); }
-  .eco-table td::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
-  .eco-brief-form { flex-basis: 100%; }
+  main > section.eco-first { padding-top: 48px; }
+  .eco-list { margin-top: 36px; }
+  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
+  .eco-ico { width: 32px; height: 32px; padding: 7px; }
+  .eco-cat b { font-size: 14px; }
+  .eco-2 { grid-template-columns: minmax(0, 1fr); }
+  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .eco-prose h2 { font-size: 24px; }
 }</style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -364,110 +329,128 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 <main class="wrap" id="top">
-<article class="eco">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/uk/">Головна</a> <span aria-hidden="true">/</span> <a href="/uk/ecosystem/">Екосистема</a> <span aria-hidden="true">/</span> <span>Що таке Біткоїн?</span></nav>
-  <h1>Що таке Біткоїн?</h1>
-  <p class="lead">Біткоїн є грошима, які не випускає і не контролює жодна компанія чи держава. Цей вступ простою мовою пояснює, що це таке, чому його пропозиція фіксована, як він працює і які ризики варто розуміти, а далі пропонує безкоштовні ресурси, які ми радимо для поглиблення.</p>
-  <div class="eco-primer">
-  <h2>Гроші без емітента</h2>
-  <p>Біткоїн є цифровими грошима, що працюють у відкритій мережі, а не в реєстрі банку. Ніхто не випускає його на вимогу, і ніхто не може заморозити мережу чи переписати її історію. Ви володієте біткоїном, коли володієте секретним ключем, і той, хто контролює цей ключ, може переміщати монети. Від першого блоку в січні 2009 року мережа працює без центрального оператора, компанії чи правління.</p>
-  <p>Більшість грошей, якими ви користуєтеся, є зобов'язанням, записаним певною установою: залишок на вашому рахунку є боргом банку перед вами, а саму валюту регулює центральний банк, який може створювати її більше. Біткоїн працює інакше. Реєстр публічний, правила записані у відкритому програмному коді, і будь-хто може перевірити, чи їх дотримуються.</p>
-  <p>Такий дизайн був відповіддю на конкретну проблему. До Біткоїна кожна цифрова платіжна система потребувала довіреного посередника, щоб люди не могли витратити ті самі гроші двічі. Біткоїн розв'язав це без посередника: уся мережа погоджується на одну спільну історію транзакцій. У результаті з'явилися платіжна мережа й актив для заощаджень, якими може користуватися будь-хто з доступом до інтернету, без дозволу і без відкриття рахунку.</p>
-  <h2>Навіщо люди використовують Біткоїн</h2>
-  <p>Люди приходять до Біткоїна з різних причин. Одні шукають довгостроковий актив для заощаджень, пропозицію якого неможливо роздути. Інші хочуть переказувати кошти за кордон без затримок, часових обмежень і валютного контролю. Ще інші цінують те, що монети в самостійному зберіганні ніхто не може заморозити чи вилучити без доступу до ключів. Компанії тримають його як резерв, а в країнах із високою інфляцією його часто використовують просто для того, щоб захистити заробіток від знецінення.</p>
-  <p>Жоден із цих способів не вимагає торгівлі. Багато європейців щомісяця купують невелику фіксовану суму (усереднення вартості, DCA) і тримають роками, що згладжує вплив короткострокових коливань ціни. Наш <a href="/uk/bitcoin-kalkuliator-dca/">калькулятор DCA</a> показує, як це працювало в минулому, з урахуванням реальних комісій.</p>
-  <h2>Обмеженість: ліміт 21 мільйон</h2>
-  <p>Загальна кількість біткоїнів, які будь-коли існуватимуть, обмежена 21 мільйоном. Нові монети отримують майнери як винагороду за захист мережі, і ця винагорода зменшується вдвічі приблизно кожні чотири роки (кожні 210 000 блоків). Більшу частину пропозиції вже випущено; решта монет надходитиме дедалі повільніше приблизно до 2140 року.</p>
-  <p>Саме цей фіксований, передбачуваний графік є головною причиною, чому Біткоїн порівнюють із золотом. Більше монет не можна надрукувати лише тому, що зріс попит, і жоден центральний банк не може вирішити розмити частку наявних власників. Чи робить це Біткоїн добрим засобом збереження вартості на вашому часовому горизонті, вирішувати вам; історія знає тривалі періоди сильного зростання і глибокі падіння на 70% і більше.</p>
-  <h2>Біткоїн не є «криптою»</h2>
-  <p>Тисячі інших токенів скопіювали частини коду Біткоїна, але в більшості з них є компанія, фундація чи невелика група інсайдерів, які можуть змінювати правила, випускати нові одиниці або зупиняти мережу. Це інший профіль ризику. Саме тому Virtuse працює лише з Біткоїном: цінність Біткоїна полягає в тому, що в нього немає емітента і немає керівника, а це дуже важко відтворити, коли в проєкту є засновники, попередній продаж чи маркетинговий бюджет. Якщо вам пропонують нову монету з обіцяною прибутковістю, сприймайте це як комерційну пропозицію, а не як Біткоїн.</p>
-  <h2>Як це працює</h2>
-  <p>Кожна біткоїн-транзакція поширюється мережею і перевіряється незалежними комп'ютерами, які називають вузлами. Кожен вузол перевіряє, що монети існують, що їх ще не витратили і що підпис відправника дійсний. Будь-хто може запустити вузол на звичайному комп'ютері, і саме це тримає правила чесними: вузол просто ігнорує блоки, які їх порушують.</p>
-  <p>Майнери збирають дійсні транзакції в блоки, приблизно один блок кожні десять хвилин. Щоб додати блок, майнер має витратити реальну електроенергію на розв'язання криптографічної задачі (доказ виконаної роботи, proof of work). Саме ця вартість робить переписування історії непрактичним: щоб змінити стару транзакцію, довелося б повторити всю роботу, виконану відтоді, і зробити це швидше, ніж уся решта мережі.</p>
-  <p>Швидші й дешевші платежі працюють на рівнях, побудованих поверх Біткоїна, передусім у мережі Lightning, яка проводить дрібні платежі за секунди й водночас покладається на базовий блокчейн для остаточної безпеки.</p>
-  <p>У Lightning дві сторони блокують біткоїн у спільному каналі, а потім оновлюють баланс між собою скільки завгодно разів, майже миттєво і за частки цента. Канали з'єднуються в мережу, тож ви можете заплатити людині, з якою ніколи не відкривали каналу. Магазини по всій Європі вже приймають платежі через Lightning; див. <a href="/uk/ecosystem/spend-bitcoin/">де витрачати біткоїн</a> та <a href="/uk/ecosystem/store-tools/">інструменти для продавців</a>.</p>
-  <h2>Основи самостійного зберігання</h2>
-  <p>Володіти біткоїном означає контролювати його ключі. Якщо ви залишаєте монети на платформі, ви маєте лише вимогу до цієї платформи, а не самі монети. Самостійне зберігання усуває цей ризик контрагента, але покладає на вас відповідальність за резервні копії: ваша сід-фраза (зазвичай 12 або 24 слова) відновлює гаманець, і будь-хто, хто її побачить, може забрати ваші монети.</p>
-  <p>Існують три поширені моделі. Під час зберігання в регульованого провайдера ключі тримає провайдер, і ви покладаєтеся на його безпеку та платоспроможність; це просто, але несе ризик контрагента. Під час самостійного зберігання з одним ключем ви тримаєте ключ самі, зазвичай у застосунку-гаманці або на окремому пристрої. Під час мультипідписного (спільного) зберігання для переміщення коштів потрібні кілька ключів, тож втрата або компрометація одного ключа не означає втрати всього. Правильний вибір залежить від суми, вашої технічної впевненості та від того, хто має отримати доступ до монет, якщо з вами щось станеться.</p>
-  <p>Розумний шлях для більшості людей такий: почати з малого, провести пробне відновлення, зберігати сід-фразу офлайн і ніколи не вводити її на вебсайті. Для більших сум варто подумати про окремий апаратний пристрій і план для спадкоємців. Подробиці є на нашій <a href="/uk/secure.html">сторінці про зберігання</a>, у <a href="/stories/the-most-comprehensive-cold-wallet-guide/">посібнику з холодних гаманців</a> і в <a href="/uk/bitcoin-spadshchyna/">чеклісті зі спадщини</a>.</p>
-  <h2>Ризики, які варто розуміти</h2>
-  <ul><li><strong>Волатильність.</strong> Ціна може впасти вдвічі за кілька місяців. Тримайте лише стільки, скільки зможете втримати під час сильних коливань.</li><li><strong>Незворотність.</strong> Надіслані транзакції неможливо скасувати, а втрачений ключ зазвичай означає втрачені монети.</li><li><strong>Шахрайство.</strong> Жоден сумлінний учасник не проситиме вашу сід-фразу, не обіцятиме гарантованої прибутковості й не квапитиме вас. Будьте особливо обережні з «крипто»-пропозиціями, які не стосуються Біткоїна.</li><li><strong>Податки й правила.</strong> Прибуток оподатковується в більшості європейських країн, а провайдери мають дотримуватися MiCA та правил протидії відмиванню коштів. Див. наші <a href="/uk/bitcoin-podatky/">податкові посібники за країнами</a>.</li></ul>
-  <h2>Біткоїн у Європі</h2>
-  <p>Відколи набув чинності регламент ЄС про ринки криптоактивів (MiCA), компаніям, які надають послуги з криптоактивами в ЄС, потрібен дозвіл національного регулятора, і вони мають дотримуватися правил протидії відмиванню коштів, зокрема перевіряти особу клієнтів. З 2026 року директива DAC8 також зобов'язує цих провайдерів повідомляти податковим органам про транзакції клієнтів. Самостійне зберігання біткоїна законне в усьому ЄС, але податковий режим дуже різниться: одні країни звільняють від податку довгострокові активи, інші оподатковують кожен продаж чи обмін. Перевірте правила своєї країни, перш ніж продавати чи витрачати.</p>
-  <p>Коли будете готові купити, порівняйте регульованих партнерів на нашій <a href="/uk/buy-bitcoin.html">сторінці «Купити Біткоїн»</a>. Ця сторінка має освітній характер і не є інвестиційною порадою.</p>
+  <div class="buy-hero2 eco-hero">
+    <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/uk/">Головна</a> <span aria-hidden="true">/</span> <a href="/uk/ecosystem/">Екосистема</a> <span aria-hidden="true">/</span> <span>Що таке Біткоїн?</span></nav>
+    <div class="eyebrow"><i></i>Екосистема</div>
+    <h1>Що таке Біткоїн? <span class="h1-or">Простими словами.</span></h1>
+    <p class="sp-lead">Біткоїн є грошима, які не випускає і не контролює жодна компанія чи держава. Цей вступ простою мовою пояснює, що це таке, чому його пропозиція фіксована, як він працює і які ризики варто розуміти, а далі пропонує безкоштовні ресурси, які ми радимо для поглиблення.</p>
+    <p class="pf-counts">Записів: 8 · остання перевірка: 22 жовтня 2026 р.</p>
   </div>
-  <h2>Часті запитання</h2>
-  <details><summary>Хто контролює Біткоїн?</summary><p>Жодна окрема людина, компанія чи держава. Правила забезпечують десятки тисяч незалежних комп'ютерів (вузлів), кожен із яких перевіряє кожну транзакцію. Щоб змінити правила, потрібна широка згода серед людей, які запускають ці вузли.</p></details>
-  <details><summary>Чому пропозиція обмежена 21 мільйоном?</summary><p>Цей ліміт записаний у програмі, яку запускає кожен вузол. Нові біткоїни випускаються для майнерів за фіксованим графіком, який зменшується вдвічі приблизно кожні чотири роки, тож емісія наближається до нуля, а загальна кількість ніколи не перевищить 21 мільйон.</p></details>
-  <details><summary>Чи легальний Біткоїн у Європі?</summary><p>Так. Володіти біткоїном, купувати й продавати його законно в усьому ЄС. Компанії, які надають послуги з криптоактивами, мають отримати дозвіл за MiCA, а прибуток зазвичай оподатковується; правила в кожній країні різні.</p></details>
-  <details><summary>Які основні ризики?</summary><p>Ціна волатильна, помилки з ключами можуть бути непоправними, а шахрайство трапляється часто. Інвестуйте лише стільки, скільки можете тримати під час сильних цінових коливань, і розберіться, як працює зберігання, перш ніж зберігати значні суми.</p></details>
-  <section class="eco-pick" aria-labelledby="pick-h">
-    <h2 id="pick-h">Як ми обираємо</h2>
-    <p>Кожен запис ми обираємо вручну: він має стосуватися лише Біткоїна, бути актуальним для Європи, працювати та бути чесним. Кожен висновок ми пишемо самі. Платні розміщення завжди позначені «Спонсоровано» і ніколи не змінюють нашого висновку. <a href="/uk/ecosystem/promote/#criteria">Наші критерії розміщення</a>.</p>
-  </section>
-  <h2>Безкоштовні ресурси для поглиблення</h2>
-  <ul class="eco-grid">
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">The Bitcoin whitepaper</a></h3></div>
-      <p lang="en">Satoshi Nakamoto's nine-page original from 2008. Short, readable and still the best primary source.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Primary source</li><li>Free</li><li>PDF</li></ul><span class="eco-host">bitcoin.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://learn.saylor.org/course/view.php?id=468" target="_blank" rel="noopener">Bitcoin for Everybody (Saylor Academy)</a></h3></div>
-      <p lang="en">A free, self-paced beginner course with readings and a final exam. Good if you like structure.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free course</li><li>Beginner</li></ul><span class="eco-host">learn.saylor.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://planb.network" target="_blank" rel="noopener">Plan ₿ Network</a></h3></div>
-      <p lang="en">Free structured courses from first steps to advanced topics, available in many European languages.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free courses</li><li>Multilingual</li><li>Open source</li></ul><span class="eco-host">planb.network ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://21lessons.com" target="_blank" rel="noopener">21 Lessons</a></h3></div>
-      <p lang="en">Gigi's short essays on what Bitcoin teaches about money, technology and philosophy. Free to read online.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free</li><li>Essays</li></ul><span class="eco-host">21lessons.com ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://nakamotoinstitute.org" target="_blank" rel="noopener">Satoshi Nakamoto Institute</a></h3></div>
-      <p lang="en">The archive of Satoshi's emails and forum posts, plus the economic and cryptographic writing Bitcoin grew out of.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Archive</li><li>History</li></ul><span class="eco-host">nakamotoinstitute.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://www.lopp.net/bitcoin-information.html" target="_blank" rel="noopener">Lopp's Bitcoin resources</a></h3></div>
-      <p lang="en">Jameson Lopp's large, regularly updated index of Bitcoin information. Best used as a reference, not a starting point.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Reference</li><li>Free</li></ul><span class="eco-host">lopp.net ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://21ideas.org" target="_blank" rel="noopener">21ideas</a></h3></div>
-      <p lang="en">Translations of essential bitcoin essays and guides for Russian-speaking readers.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Russian</li><li>Free</li></ul><span class="eco-host">21ideas.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://learnmeabitcoin.com" target="_blank" rel="noopener">Learn Me A Bitcoin</a></h3></div>
-      <p lang="en">Clear, illustrated explanations of how transactions, keys and blocks work under the hood.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Technical</li><li>Free</li></ul><span class="eco-host">learnmeabitcoin.com ↗</span></div>
-    </li>
-  </ul>
-  <h2>Пов'язане на Virtuse</h2>
-  <div class="related"><a href="/uk/faq.html">Часті запитання Virtuse</a><a href="/stories/why-bitcoin-is-not-a-ponzi-scheme/">Чому Біткоїн не є фінансовою пірамідою</a><a href="/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/">23 причини мати Біткоїн</a><a href="/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/">П'ять способів зрозуміти Біткоїн</a><a href="/uk/buy-bitcoin.html">Купити Біткоїн: порівняння партнерів</a><a href="/uk/secure.html">Зберігання: як убезпечити свій Біткоїн</a></div>
-  <aside class="disclaimers">
-    <p>Записи мають інформаційний характер і не є інвестиційною порадою. Описи записів подано англійською.</p>
-    <p class="eco-reviewed">Остання перевірка: <time datetime="2026-10-22">22 жовтня 2026 р.</time></p>
-  </aside>
-</article>
-
-  <section id="brief" class="eco-brief" aria-label="Virtuse Brief">
-    <div class="eco-brief-row">
-      <p class="eco-brief-h">Отримайте Brief. <span>Безкоштовно.</span></p>
-      <form class="brief-form eco-brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
-        <label for="email" class="eco-sr">Електронна пошта</label>
-        <input id="email" name="email" type="email" placeholder="Електронна пошта" autocomplete="email" required>
-        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-ghost" type="submit">Отримати Brief</button>
-      </form>
+  <section id="primer" class="eco-first">
+    <div class="eco-prose">
+    <h2>Гроші без емітента</h2>
+    <p>Біткоїн є цифровими грошима, що працюють у відкритій мережі, а не в реєстрі банку. Ніхто не випускає його на вимогу, і ніхто не може заморозити мережу чи переписати її історію. Ви володієте біткоїном, коли володієте секретним ключем, і той, хто контролює цей ключ, може переміщати монети. Від першого блоку в січні 2009 року мережа працює без центрального оператора, компанії чи правління.</p>
+    <p>Більшість грошей, якими ви користуєтеся, є зобов'язанням, записаним певною установою: залишок на вашому рахунку є боргом банку перед вами, а саму валюту регулює центральний банк, який може створювати її більше. Біткоїн працює інакше. Реєстр публічний, правила записані у відкритому програмному коді, і будь-хто може перевірити, чи їх дотримуються.</p>
+    <p>Такий дизайн був відповіддю на конкретну проблему. До Біткоїна кожна цифрова платіжна система потребувала довіреного посередника, щоб люди не могли витратити ті самі гроші двічі. Біткоїн розв'язав це без посередника: уся мережа погоджується на одну спільну історію транзакцій. У результаті з'явилися платіжна мережа й актив для заощаджень, якими може користуватися будь-хто з доступом до інтернету, без дозволу і без відкриття рахунку.</p>
+    <h2>Навіщо люди використовують Біткоїн</h2>
+    <p>Люди приходять до Біткоїна з різних причин. Одні шукають довгостроковий актив для заощаджень, пропозицію якого неможливо роздути. Інші хочуть переказувати кошти за кордон без затримок, часових обмежень і валютного контролю. Ще інші цінують те, що монети в самостійному зберіганні ніхто не може заморозити чи вилучити без доступу до ключів. Компанії тримають його як резерв, а в країнах із високою інфляцією його часто використовують просто для того, щоб захистити заробіток від знецінення.</p>
+    <p>Жоден із цих способів не вимагає торгівлі. Багато європейців щомісяця купують невелику фіксовану суму (усереднення вартості, DCA) і тримають роками, що згладжує вплив короткострокових коливань ціни. Наш <a href="/uk/bitcoin-kalkuliator-dca/">калькулятор DCA</a> показує, як це працювало в минулому, з урахуванням реальних комісій.</p>
+    <h2>Обмеженість: ліміт 21 мільйон</h2>
+    <p>Загальна кількість біткоїнів, які будь-коли існуватимуть, обмежена 21 мільйоном. Нові монети отримують майнери як винагороду за захист мережі, і ця винагорода зменшується вдвічі приблизно кожні чотири роки (кожні 210 000 блоків). Більшу частину пропозиції вже випущено; решта монет надходитиме дедалі повільніше приблизно до 2140 року.</p>
+    <p>Саме цей фіксований, передбачуваний графік є головною причиною, чому Біткоїн порівнюють із золотом. Більше монет не можна надрукувати лише тому, що зріс попит, і жоден центральний банк не може вирішити розмити частку наявних власників. Чи робить це Біткоїн добрим засобом збереження вартості на вашому часовому горизонті, вирішувати вам; історія знає тривалі періоди сильного зростання і глибокі падіння на 70% і більше.</p>
+    <h2>Біткоїн не є «криптою»</h2>
+    <p>Тисячі інших токенів скопіювали частини коду Біткоїна, але в більшості з них є компанія, фундація чи невелика група інсайдерів, які можуть змінювати правила, випускати нові одиниці або зупиняти мережу. Це інший профіль ризику. Саме тому Virtuse працює лише з Біткоїном: цінність Біткоїна полягає в тому, що в нього немає емітента і немає керівника, а це дуже важко відтворити, коли в проєкту є засновники, попередній продаж чи маркетинговий бюджет. Якщо вам пропонують нову монету з обіцяною прибутковістю, сприймайте це як комерційну пропозицію, а не як Біткоїн.</p>
+    <h2>Як це працює</h2>
+    <p>Кожна біткоїн-транзакція поширюється мережею і перевіряється незалежними комп'ютерами, які називають вузлами. Кожен вузол перевіряє, що монети існують, що їх ще не витратили і що підпис відправника дійсний. Будь-хто може запустити вузол на звичайному комп'ютері, і саме це тримає правила чесними: вузол просто ігнорує блоки, які їх порушують.</p>
+    <p>Майнери збирають дійсні транзакції в блоки, приблизно один блок кожні десять хвилин. Щоб додати блок, майнер має витратити реальну електроенергію на розв'язання криптографічної задачі (доказ виконаної роботи, proof of work). Саме ця вартість робить переписування історії непрактичним: щоб змінити стару транзакцію, довелося б повторити всю роботу, виконану відтоді, і зробити це швидше, ніж уся решта мережі.</p>
+    <p>Швидші й дешевші платежі працюють на рівнях, побудованих поверх Біткоїна, передусім у мережі Lightning, яка проводить дрібні платежі за секунди й водночас покладається на базовий блокчейн для остаточної безпеки.</p>
+    <p>У Lightning дві сторони блокують біткоїн у спільному каналі, а потім оновлюють баланс між собою скільки завгодно разів, майже миттєво і за частки цента. Канали з'єднуються в мережу, тож ви можете заплатити людині, з якою ніколи не відкривали каналу. Магазини по всій Європі вже приймають платежі через Lightning; див. <a href="/uk/ecosystem/spend-bitcoin/">де витрачати біткоїн</a> та <a href="/uk/ecosystem/store-tools/">інструменти для продавців</a>.</p>
+    <h2>Основи самостійного зберігання</h2>
+    <p>Володіти біткоїном означає контролювати його ключі. Якщо ви залишаєте монети на платформі, ви маєте лише вимогу до цієї платформи, а не самі монети. Самостійне зберігання усуває цей ризик контрагента, але покладає на вас відповідальність за резервні копії: ваша сід-фраза (зазвичай 12 або 24 слова) відновлює гаманець, і будь-хто, хто її побачить, може забрати ваші монети.</p>
+    <p>Існують три поширені моделі. Під час зберігання в регульованого провайдера ключі тримає провайдер, і ви покладаєтеся на його безпеку та платоспроможність; це просто, але несе ризик контрагента. Під час самостійного зберігання з одним ключем ви тримаєте ключ самі, зазвичай у застосунку-гаманці або на окремому пристрої. Під час мультипідписного (спільного) зберігання для переміщення коштів потрібні кілька ключів, тож втрата або компрометація одного ключа не означає втрати всього. Правильний вибір залежить від суми, вашої технічної впевненості та від того, хто має отримати доступ до монет, якщо з вами щось станеться.</p>
+    <p>Розумний шлях для більшості людей такий: почати з малого, провести пробне відновлення, зберігати сід-фразу офлайн і ніколи не вводити її на вебсайті. Для більших сум варто подумати про окремий апаратний пристрій і план для спадкоємців. Подробиці є на нашій <a href="/uk/secure.html">сторінці про зберігання</a>, у <a href="/stories/the-most-comprehensive-cold-wallet-guide/">посібнику з холодних гаманців</a> і в <a href="/uk/bitcoin-spadshchyna/">чеклісті зі спадщини</a>.</p>
+    <h2>Ризики, які варто розуміти</h2>
+    <ul><li><strong>Волатильність.</strong> Ціна може впасти вдвічі за кілька місяців. Тримайте лише стільки, скільки зможете втримати під час сильних коливань.</li><li><strong>Незворотність.</strong> Надіслані транзакції неможливо скасувати, а втрачений ключ зазвичай означає втрачені монети.</li><li><strong>Шахрайство.</strong> Жоден сумлінний учасник не проситиме вашу сід-фразу, не обіцятиме гарантованої прибутковості й не квапитиме вас. Будьте особливо обережні з «крипто»-пропозиціями, які не стосуються Біткоїна.</li><li><strong>Податки й правила.</strong> Прибуток оподатковується в більшості європейських країн, а провайдери мають дотримуватися MiCA та правил протидії відмиванню коштів. Див. наші <a href="/uk/bitcoin-podatky/">податкові посібники за країнами</a>.</li></ul>
+    <h2>Біткоїн у Європі</h2>
+    <p>Відколи набув чинності регламент ЄС про ринки криптоактивів (MiCA), компаніям, які надають послуги з криптоактивами в ЄС, потрібен дозвіл національного регулятора, і вони мають дотримуватися правил протидії відмиванню коштів, зокрема перевіряти особу клієнтів. З 2026 року директива DAC8 також зобов'язує цих провайдерів повідомляти податковим органам про транзакції клієнтів. Самостійне зберігання біткоїна законне в усьому ЄС, але податковий режим дуже різниться: одні країни звільняють від податку довгострокові активи, інші оподатковують кожен продаж чи обмін. Перевірте правила своєї країни, перш ніж продавати чи витрачати.</p>
+    <p>Коли будете готові купити, порівняйте регульованих партнерів на нашій <a href="/uk/buy-bitcoin.html">сторінці «Купити Біткоїн»</a>. Ця сторінка має освітній характер і не є інвестиційною порадою.</p>
     </div>
-    <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
-    <p class="eco-brief-fine">Відписатися можна будь-коли. Не є порадою.</p>
+  </section>
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Часті <span>запитання</span></h2></div></div>
+    <details open><summary>Хто контролює Біткоїн?</summary><p>Жодна окрема людина, компанія чи держава. Правила забезпечують десятки тисяч незалежних комп'ютерів (вузлів), кожен із яких перевіряє кожну транзакцію. Щоб змінити правила, потрібна широка згода серед людей, які запускають ці вузли.</p></details>
+    <details><summary>Чому пропозиція обмежена 21 мільйоном?</summary><p>Цей ліміт записаний у програмі, яку запускає кожен вузол. Нові біткоїни випускаються для майнерів за фіксованим графіком, який зменшується вдвічі приблизно кожні чотири роки, тож емісія наближається до нуля, а загальна кількість ніколи не перевищить 21 мільйон.</p></details>
+    <details><summary>Чи легальний Біткоїн у Європі?</summary><p>Так. Володіти біткоїном, купувати й продавати його законно в усьому ЄС. Компанії, які надають послуги з криптоактивами, мають отримати дозвіл за MiCA, а прибуток зазвичай оподатковується; правила в кожній країні різні.</p></details>
+    <details><summary>Які основні ризики?</summary><p>Ціна волатильна, помилки з ключами можуть бути непоправними, а шахрайство трапляється часто. Інвестуйте лише стільки, скільки можете тримати під час сильних цінових коливань, і розберіться, як працює зберігання, перш ніж зберігати значні суми.</p></details>
+  </section>
+  <section id="list">
+    <div class="sec-head one"><div class="sec-copy"><h2>Безкоштовні <span>ресурси для поглиблення</span></h2></div></div>
+    <div class="gcards eco-entries">
+      <a class="gcard eco-entry" href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener"><b>The Bitcoin whitepaper <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Satoshi Nakamoto's nine-page original from 2008. Short, readable and still the best primary source.</span><span class="eco-meta" lang="en">bitcoin.org · Primary source · Free · PDF</span></a>
+      <a class="gcard eco-entry" href="https://learn.saylor.org/course/view.php?id=468" target="_blank" rel="noopener"><b>Bitcoin for Everybody (Saylor Academy) <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A free, self-paced beginner course with readings and a final exam. Good if you like structure.</span><span class="eco-meta" lang="en">learn.saylor.org · Free course · Beginner</span></a>
+      <a class="gcard eco-entry" href="https://planb.network" target="_blank" rel="noopener"><b>Plan ₿ Network <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Free structured courses from first steps to advanced topics, available in many European languages.</span><span class="eco-meta" lang="en">planb.network · Free courses · Multilingual · Open source</span></a>
+      <a class="gcard eco-entry" href="https://21lessons.com" target="_blank" rel="noopener"><b>21 Lessons <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Gigi's short essays on what Bitcoin teaches about money, technology and philosophy. Free to read online.</span><span class="eco-meta" lang="en">21lessons.com · Free · Essays</span></a>
+      <a class="gcard eco-entry" href="https://nakamotoinstitute.org" target="_blank" rel="noopener"><b>Satoshi Nakamoto Institute <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The archive of Satoshi's emails and forum posts, plus the economic and cryptographic writing Bitcoin grew out of.</span><span class="eco-meta" lang="en">nakamotoinstitute.org · Archive · History</span></a>
+      <a class="gcard eco-entry" href="https://www.lopp.net/bitcoin-information.html" target="_blank" rel="noopener"><b>Lopp's Bitcoin resources <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Jameson Lopp's large, regularly updated index of Bitcoin information. Best used as a reference, not a starting point.</span><span class="eco-meta" lang="en">lopp.net · Reference · Free</span></a>
+      <a class="gcard eco-entry" href="https://21ideas.org" target="_blank" rel="noopener"><b>21ideas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Translations of essential bitcoin essays and guides for Russian-speaking readers.</span><span class="eco-meta" lang="en">21ideas.org · Russian · Free</span></a>
+      <a class="gcard eco-entry" href="https://learnmeabitcoin.com" target="_blank" rel="noopener"><b>Learn Me A Bitcoin <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Clear, illustrated explanations of how transactions, keys and blocks work under the hood.</span><span class="eco-meta" lang="en">learnmeabitcoin.com · Technical · Free</span></a>
+    </div>
+  </section>
+  <section id="pick">
+    <div class="sec-head one"><div class="sec-copy"><h2>Як <span>ми обираємо</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 01</span>
+          <h3>Відібрано вручну</h3>
+          <p>Кожен запис обирає та перевіряє наша команда, і кожен висновок ми пишемо самі.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 02</span>
+          <h3>Актуально для Європи</h3>
+          <p>Проєкти лише про Біткоїн для користувачів у ЄС/ЄЕП або Швейцарії, які працюють, підтримуються та є чесними.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Крок 03</span>
+          <h3>Спонсорів позначено</h3>
+          <p>Платні розміщення завжди позначені «Спонсоровано» і ніколи не змінюють наших критеріїв чи висновку.</p>
+        </div>
+      </div>
+    </div>
+    <p class="eco-more"><a class="tlink" href="/uk/ecosystem/promote/#criteria">Наші критерії розміщення <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+  </section>
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Пов'язане <span>на Virtuse</span></h2></div></div>
+    <div class="gcards eco-related"><a class="gcard" href="/uk/faq.html"><b>Часті запитання Virtuse</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/stories/why-bitcoin-is-not-a-ponzi-scheme/"><b>Чому Біткоїн не є фінансовою пірамідою</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/"><b>23 причини мати Біткоїн</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/"><b>П'ять способів зрозуміти Біткоїн</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/uk/buy-bitcoin.html"><b>Купити Біткоїн: порівняння партнерів</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/uk/secure.html"><b>Зберігання: як убезпечити свій Біткоїн</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+  </section>
+  <p class="pf-disc eco-notes">Записи мають інформаційний характер і не є інвестиційною порадою. Описи записів подано англійською. Остання перевірка: <time datetime="2026-10-22">22 жовтня 2026 р.</time>.</p>
+
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Лише Біткоїн, щопонеділка.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=uk">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Кур'єр Virtuse Brief на скутері доставляє випуск від 5 жовтня 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Останній Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (англійською)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Читати випуск →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Отримайте Brief. <span>Безкоштовно.</span></h3>
+        <p>Ринок, регулювання, майнінг. Жодних токенів. Жодного PR. Один лист щопонеділка.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Електронна пошта</label>
+          <input id="email" name="email" type="email" placeholder="Електронна пошта" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Отримати Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Відписатися можна будь-коли. Не є порадою. <a href="/news.html?utm_source=brief&amp;utm_medium=ecosystem" style="color:var(--muted)">Усі випуски та блог →</a></div>
+      </div>
+    </div>
   </section>
 
   <footer class="footer-main">

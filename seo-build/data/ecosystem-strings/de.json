@@ -38,7 +38,25 @@
       "Virtuse Brief: wöchentliche Bitcoin-News",
       "Neu bei Bitcoin? Hier starten"
     ],
-    "promoteCrumb": "Aufnahme beantragen"
+    "promoteCrumb": "Aufnahme beantragen",
+    "eyebrowIndex": "Bitcoin-Ökosystem",
+    "stats": "{c} Kategorien · {n} Empfehlungen · von unserem Team geprüft",
+    "subStats": "{n} Empfehlungen · zuletzt geprüft am {date}",
+    "step": "Schritt",
+    "steps": [
+      {
+        "t": "Von Hand ausgewählt",
+        "d": "Jeder Eintrag wird von unserem Team ausgewählt und geprüft, und jede Einschätzung schreiben wir selbst."
+      },
+      {
+        "t": "Für Europa relevant",
+        "d": "Reine Bitcoin-Projekte für Nutzer in der EU, im EWR oder in der Schweiz, aktiv, gepflegt und seriös."
+      },
+      {
+        "t": "Sponsoren gekennzeichnet",
+        "d": "Bezahlte Platzierungen sind immer als „Gesponsert“ gekennzeichnet und ändern weder unsere Kriterien noch unsere Einschätzung."
+      }
+    ]
   },
   "promote": {
     "criteriaH": "Kriterien",
@@ -88,7 +106,8 @@
       "title": "Bitcoin-Ökosystem: kuratierte Ressourcen | Virtuse",
       "description": "Handverlesene Bücher, Podcasts, Datenschutz-Tools, Konferenzen und Jobs rund um Bitcoin für Europäer. Geprüft von Virtuse.",
       "intro": "Ein handverlesenes Verzeichnis von Ressourcen nur zu Bitcoin für Menschen in Europa: was Sie lesen, hören und ansehen können, wo Sie andere Bitcoiner treffen, wie Sie Ihre Privatsphäre schützen und wo Sie mit Bitcoin bezahlen, entwickeln und arbeiten können. Jeder Eintrag wird von unserem Team ausgewählt und geprüft.",
-      "navDesc": "Alle Ressourcen nur zu Bitcoin"
+      "navDesc": "Alle Ressourcen nur zu Bitcoin",
+      "h1Accent": ", handverlesen für Europa."
     },
     "what-is-bitcoin": {
       "nav": "Was ist Bitcoin?",
@@ -151,7 +170,8 @@
           "q": "Was sind die wichtigsten Risiken?",
           "a": "Der Kurs ist volatil, Fehler mit Schlüsseln können endgültig sein, und Betrug ist verbreitet. Investieren Sie nur, was Sie auch durch starke Kursschwankungen halten können, und lernen Sie, wie Verwahrung funktioniert, bevor Sie nennenswerte Beträge aufbewahren."
         }
-      ]
+      ],
+      "h1Accent": "Einfach erklärt."
     },
     "books": {
       "nav": "Bücher",
@@ -164,7 +184,8 @@
         "Was ist Bitcoin? Eine einfache Einführung",
         "Der Virtuse Blog",
         "Bitcoin-Podcasts"
-      ]
+      ],
+      "h1Accent": ": was Sie als Nächstes lesen sollten."
     },
     "podcasts": {
       "nav": "Podcasts",
@@ -177,7 +198,8 @@
         "Virtuse Brief: wöchentliche Bitcoin-News",
         "Bitcoin-Videos und Kanäle",
         "Bitcoin-Bücher"
-      ]
+      ],
+      "h1Accent": ": ideal für Ihren Arbeitsweg."
     },
     "videos": {
       "nav": "Videos",
@@ -190,7 +212,8 @@
         "Bitcoin-Podcasts",
         "Was ist Bitcoin? Eine einfache Einführung",
         "Bitcoin-Konferenzen in Europa"
-      ]
+      ],
+      "h1Accent": ": Kanäle, Vorträge und Dokumentationen."
     },
     "conferences": {
       "nav": "Konferenzen",
@@ -203,7 +226,8 @@
         "Befreundete Bitcoin-Projekte",
         "Virtuse Brief: wöchentliche Bitcoin-News",
         "Konferenzvorträge als Video"
-      ]
+      ],
+      "h1Accent": ": Termine und Tickets."
     },
     "privacy": {
       "nav": "Privatsphäre",
@@ -217,7 +241,8 @@
         "Verwahrung: Ihren Bitcoin sicher aufbewahren",
         "Bitcoin-Entwicklertools",
         "AML & Compliance bei Virtuse"
-      ]
+      ],
+      "h1Accent": ", im Rahmen des Gesetzes."
     },
     "spend-bitcoin": {
       "nav": "Mit Bitcoin bezahlen",
@@ -230,7 +255,8 @@
         "Bitcoin in Ihrem Geschäft akzeptieren",
         "Bitcoin-Steuerberichte",
         "Steuerratgeber nach Land"
-      ]
+      ],
+      "h1Accent": ": Geschäfte, Karten und Gutscheine."
     },
     "store-tools": {
       "nav": "Händler-Tools",
@@ -243,7 +269,8 @@
         "Bitcoin-Treasury für Unternehmen",
         "Bitcoin-Steuerberichte",
         "Wo Sie mit Bitcoin bezahlen können"
-      ]
+      ],
+      "h1Accent": ": Bitcoin in Ihrem Geschäft annehmen."
     },
     "dev-tools": {
       "nav": "Entwicklertools",
@@ -256,7 +283,8 @@
         "Bitcoin-Jobs und Förderungen",
         "Tools für Händler",
         "Privatsphäre bei Bitcoin"
-      ]
+      ],
+      "h1Accent": ": Bibliotheken und SDKs."
     },
     "jobs": {
       "nav": "Bitcoin-Jobs",
@@ -269,7 +297,8 @@
         "Bitcoin-Entwicklertools",
         "Bitcoin-Konferenzen in Europa",
         "Befreundete Bitcoin-Projekte"
-      ]
+      ],
+      "h1Accent": ": Stellen, Förderungen und Stipendien."
     },
     "peers": {
       "nav": "Bitcoin-Projekte",
@@ -283,7 +312,8 @@
         "Regulierte Partner gesucht? Nutzen Sie den Partner Finder",
         "Ihr Projekt aufnehmen lassen",
         "Bitcoin-Konferenzen in Europa"
-      ]
+      ],
+      "h1Accent": ", die sich ausschließlich Bitcoin widmen."
     },
     "promote": {
       "nav": "Aufnahme",
@@ -291,7 +321,8 @@
       "h1": "Aufnahme ins Ökosystem",
       "title": "Aufnahme ins Bitcoin-Ökosystem | Virtuse",
       "description": "So beantragen reine Bitcoin-Projekte die Aufnahme ins Bitcoin-Ökosystem von Virtuse. Manuelle Prüfung, klare Kriterien, bezahlte Platzierungen offengelegt.",
-      "intro": "Das Verzeichnis Bitcoin-Ökosystem von Virtuse wird von Hand kuratiert. Wir nehmen keine automatischen Einreichungen an. Wenn Sie glauben, dass Ihr Projekt hierher gehört, schreiben Sie uns eine E-Mail oder senden Sie das Antragsformular unten. Wir prüfen jeden Antrag persönlich und können jeden Antrag ohne Angabe von Gründen ablehnen."
+      "intro": "Das Verzeichnis Bitcoin-Ökosystem von Virtuse wird von Hand kuratiert. Wir nehmen keine automatischen Einreichungen an. Wenn Sie glauben, dass Ihr Projekt hierher gehört, schreiben Sie uns eine E-Mail oder senden Sie das Antragsformular unten. Wir prüfen jeden Antrag persönlich und können jeden Antrag ohne Angabe von Gründen ablehnen.",
+      "h1Accent": "für Ihr Bitcoin-Projekt."
     }
   }
 }

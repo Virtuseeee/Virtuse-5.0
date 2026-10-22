@@ -38,7 +38,25 @@
       "Virtuse Brief: heti Bitcoin-hírek",
       "Új a Bitcoin világában? Kezdje itt"
     ],
-    "promoteCrumb": "Bemutatkozás"
+    "promoteCrumb": "Bemutatkozás",
+    "eyebrowIndex": "Bitcoin-ökoszisztéma",
+    "stats": "{c} kategória · {n} ajánlás · csapatunk ellenőrzésével",
+    "subStats": "{n} ajánlás · utoljára ellenőrizve: {date}",
+    "step": "Lépés",
+    "steps": [
+      {
+        "t": "Kézzel válogatva",
+        "d": "Minden bejegyzést csapatunk választ ki és ellenőriz, az értékelést pedig mindig mi magunk írjuk."
+      },
+      {
+        "t": "Európában releváns",
+        "d": "Kizárólag Bitcoinnal foglalkozó projektek, amelyek az EU, az EGT vagy Svájc felhasználóit szolgálják, működnek, karbantartottak és tisztességesek."
+      },
+      {
+        "t": "Jelölt szponzorok",
+        "d": "A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg a feltételeinket vagy az értékelésünket."
+      }
+    ]
   },
   "promote": {
     "criteriaH": "Feltételek",
@@ -88,7 +106,8 @@
       "title": "Bitcoin-ökoszisztéma: válogatott források | Virtuse",
       "description": "Válogatott, kizárólag Bitcoinról szóló könyvek, podcastok, adatvédelmi eszközök, konferenciák és állások európaiaknak. A Virtuse ellenőrzésével.",
       "intro": "Kézzel válogatott, kizárólag Bitcoinról szóló források gyűjteménye európaiaknak: mit érdemes olvasni, hallgatni és nézni, hol találkozhat más bitcoinerekkel, hogyan védheti adatait, és hol költhet, fejleszthet és dolgozhat Bitcoinnal. Minden bejegyzést csapatunk választ ki és ellenőriz.",
-      "navDesc": "Minden Bitcoin-forrás egy helyen"
+      "navDesc": "Minden Bitcoin-forrás egy helyen",
+      "h1Accent": ", kézzel válogatva Európának."
     },
     "what-is-bitcoin": {
       "nav": "Mi a Bitcoin?",
@@ -151,7 +170,8 @@
           "q": "Melyek a fő kockázatok?",
           "a": "Az árfolyam ingadozó, a kulcsokkal elkövetett hibák véglegesek lehetnek, és gyakoriak a csalások. Csak annyit fektessen be, amennyit nagy árfolyam-ingadozások mellett is meg tud tartani, és mielőtt jelentős összeget tárol, ismerje meg a letétkezelés működését."
         }
-      ]
+      ],
+      "h1Accent": "Közérthetően elmagyarázva."
     },
     "books": {
       "nav": "Könyvek",
@@ -164,7 +184,8 @@
         "Mi a Bitcoin? Közérthető bevezető",
         "A Virtuse blog",
         "Bitcoin-podcastok"
-      ]
+      ],
+      "h1Accent": ": mit érdemes ezután elolvasni."
     },
     "podcasts": {
       "nav": "Podcastok",
@@ -177,7 +198,8 @@
         "Virtuse Brief: heti Bitcoin-hírek",
         "Bitcoin-videók és -csatornák",
         "Bitcoin-könyvek"
-      ]
+      ],
+      "h1Accent": ": ideálisak az ingázáshoz."
     },
     "videos": {
       "nav": "Videók",
@@ -190,7 +212,8 @@
         "Bitcoin-podcastok",
         "Mi a Bitcoin? Közérthető bevezető",
         "Bitcoin-konferenciák Európában"
-      ]
+      ],
+      "h1Accent": ": csatornák, előadások és dokumentumfilmek."
     },
     "conferences": {
       "nav": "Konferenciák",
@@ -203,7 +226,8 @@
         "Bitcoin-társak: más, kizárólag Bitcoinnal foglalkozó projektek",
         "Virtuse Brief: heti Bitcoin-hírek",
         "Konferencia-előadások videón"
-      ]
+      ],
+      "h1Accent": ": időpontok és jegyek."
     },
     "privacy": {
       "nav": "Adatvédelem",
@@ -217,7 +241,8 @@
         "Letétkezelés: tartsa biztonságban Bitcoinját",
         "Bitcoin-fejlesztői eszközök",
         "AML és megfelelőség a Virtuse-nál"
-      ]
+      ],
+      "h1Accent": ", a törvény keretein belül."
     },
     "spend-bitcoin": {
       "nav": "Fizetés bitcoinnal",
@@ -230,7 +255,8 @@
         "Fogadjon bitcoint üzletében",
         "Bitcoin-adóbevallás",
         "Országonkénti adóútmutatók"
-      ]
+      ],
+      "h1Accent": ": üzletek, térképek és ajándékkártyák."
     },
     "store-tools": {
       "nav": "Kereskedői eszközök",
@@ -243,7 +269,8 @@
         "Bitcoin-treasury vállalatoknak",
         "Bitcoin-adóbevallás",
         "Hol költhet bitcoint"
-      ]
+      ],
+      "h1Accent": ": fogadjon bitcoint az üzletében."
     },
     "dev-tools": {
       "nav": "Fejlesztői eszközök",
@@ -256,7 +283,8 @@
         "Bitcoin-állások és -ösztöndíjak",
         "Kereskedői eszközök",
         "Bitcoin és adatvédelem"
-      ]
+      ],
+      "h1Accent": ": könyvtárak és SDK-k."
     },
     "jobs": {
       "nav": "Bitcoin-állások",
@@ -269,7 +297,8 @@
         "Bitcoin-fejlesztői eszközök",
         "Bitcoin-konferenciák Európában",
         "Bitcoin-társak"
-      ]
+      ],
+      "h1Accent": ": munkahelyek, támogatások és ösztöndíjak."
     },
     "peers": {
       "nav": "Bitcoin-társak",
@@ -283,7 +312,8 @@
         "Szabályozott partnert keres? Használja a Partner Findert",
         "Jelentkezzen projektjével a bemutatásra",
         "Bitcoin-konferenciák Európában"
-      ]
+      ],
+      "h1Accent": ": rokon, kizárólag Bitcoinnal foglalkozó projektek."
     },
     "promote": {
       "nav": "Bemutatkozás",
@@ -291,7 +321,8 @@
       "h1": "Mutassa be projektjét",
       "title": "Kerüljön be a Bitcoin-ökoszisztémába | Virtuse",
       "description": "Így jelentkezhetnek a csak Bitcoinnal foglalkozó projektek a Virtuse Bitcoin-ökoszisztémába. Kézi elbírálás, világos feltételek, jelölt fizetett hely.",
-      "intro": "A Virtuse Bitcoin-ökoszisztéma gyűjteményét kézzel válogatjuk. Automatikus beküldést nem fogadunk el. Ha úgy gondolja, hogy projektjének itt a helye, írjon nekünk e-mailt, vagy küldje el az alábbi jelentkezési űrlapot. Minden jelentkezést személyesen bírálunk el, és indoklás nélkül is elutasíthatjuk."
+      "intro": "A Virtuse Bitcoin-ökoszisztéma gyűjteményét kézzel válogatjuk. Automatikus beküldést nem fogadunk el. Ha úgy gondolja, hogy projektjének itt a helye, írjon nekünk e-mailt, vagy küldje el az alábbi jelentkezési űrlapot. Minden jelentkezést személyesen bírálunk el, és indoklás nélkül is elutasíthatjuk.",
+      "h1Accent": "a Bitcoin-ökoszisztémában."
     }
   }
 }

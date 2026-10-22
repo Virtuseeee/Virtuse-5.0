@@ -38,7 +38,25 @@
       "Virtuse Brief: noticias semanales sobre Bitcoin",
       "¿Nuevo en Bitcoin? Empiece aquí"
     ],
-    "promoteCrumb": "Aparecer en el directorio"
+    "promoteCrumb": "Aparecer en el directorio",
+    "eyebrowIndex": "Ecosistema Bitcoin",
+    "stats": "{c} categorías · {n} recomendaciones · revisadas por nuestro equipo",
+    "subStats": "{n} recomendaciones · última revisión: {date}",
+    "step": "Paso",
+    "steps": [
+      {
+        "t": "Elegidas a mano",
+        "d": "Cada entrada la elige y revisa nuestro equipo, y cada valoración la escribimos nosotros."
+      },
+      {
+        "t": "Relevantes para Europa",
+        "d": "Proyectos solo Bitcoin que dan servicio a usuarios de la UE/EEE o Suiza, activos, mantenidos y honestos."
+      },
+      {
+        "t": "Patrocinios señalados",
+        "d": "Las posiciones de pago siempre se marcan como \"Patrocinado\" y nunca cambian nuestros criterios ni nuestra valoración."
+      }
+    ]
   },
   "promote": {
     "criteriaH": "Criterios",
@@ -88,7 +106,8 @@
       "title": "Ecosistema Bitcoin: recursos seleccionados | Virtuse",
       "description": "Libros, podcasts, herramientas de privacidad, conferencias y empleos solo Bitcoin, seleccionados para europeos. Revisado por Virtuse.",
       "intro": "Un directorio seleccionado a mano de recursos solo Bitcoin para personas en Europa: qué leer, escuchar y ver, dónde conocer a otros bitcoiners, cómo proteger su privacidad y dónde gastar, construir y trabajar con Bitcoin. Cada entrada la elige y revisa nuestro equipo.",
-      "navDesc": "Todos los recursos solo Bitcoin"
+      "navDesc": "Todos los recursos solo Bitcoin",
+      "h1Accent": ", seleccionado a mano para Europa."
     },
     "what-is-bitcoin": {
       "nav": "¿Qué es Bitcoin?",
@@ -151,7 +170,8 @@
           "q": "¿Cuáles son los principales riesgos?",
           "a": "El precio es volátil, los errores con las claves pueden ser definitivos y las estafas son frecuentes. Invierta solo lo que pueda mantener durante grandes oscilaciones de precio, y aprenda cómo funciona la custodia antes de guardar importes relevantes."
         }
-      ]
+      ],
+      "h1Accent": "Explicado de forma sencilla."
     },
     "books": {
       "nav": "Libros",
@@ -164,7 +184,8 @@
         "¿Qué es Bitcoin? Una introducción sencilla",
         "El blog de Virtuse",
         "Podcasts sobre Bitcoin"
-      ]
+      ],
+      "h1Accent": ": qué leer a continuación."
     },
     "podcasts": {
       "nav": "Podcasts",
@@ -177,7 +198,8 @@
         "Virtuse Brief: noticias semanales sobre Bitcoin",
         "Vídeos y canales sobre Bitcoin",
         "Libros sobre Bitcoin"
-      ]
+      ],
+      "h1Accent": ": para escuchar en sus trayectos."
     },
     "videos": {
       "nav": "Vídeos",
@@ -190,7 +212,8 @@
         "Podcasts sobre Bitcoin",
         "¿Qué es Bitcoin? Una introducción sencilla",
         "Conferencias de Bitcoin en Europa"
-      ]
+      ],
+      "h1Accent": ": canales, charlas y documentales."
     },
     "conferences": {
       "nav": "Conferencias",
@@ -203,7 +226,8 @@
         "Proyectos afines: otros proyectos solo Bitcoin",
         "Virtuse Brief: noticias semanales sobre Bitcoin",
         "Charlas de conferencias en vídeo"
-      ]
+      ],
+      "h1Accent": ": fechas y entradas."
     },
     "privacy": {
       "nav": "Privacidad",
@@ -217,7 +241,8 @@
         "Custodia: mantenga su Bitcoin a salvo",
         "Herramientas para desarrolladores de Bitcoin",
         "AML y cumplimiento en Virtuse"
-      ]
+      ],
+      "h1Accent": ", dentro de la ley."
     },
     "spend-bitcoin": {
       "nav": "Gastar bitcoin",
@@ -230,7 +255,8 @@
         "Acepte bitcoin en su comercio",
         "Informes fiscales de Bitcoin",
         "Guías fiscales por país"
-      ]
+      ],
+      "h1Accent": ": tiendas, mapas y tarjetas regalo."
     },
     "store-tools": {
       "nav": "Para comercios",
@@ -243,7 +269,8 @@
         "Tesorería en Bitcoin para empresas",
         "Informes fiscales de Bitcoin",
         "Dónde gastar bitcoin"
-      ]
+      ],
+      "h1Accent": ": acepte bitcoin en su tienda."
     },
     "dev-tools": {
       "nav": "Desarrollo",
@@ -256,7 +283,8 @@
         "Empleo y becas en Bitcoin",
         "Herramientas para comercios",
         "Privacidad en Bitcoin"
-      ]
+      ],
+      "h1Accent": ": bibliotecas y SDK."
     },
     "jobs": {
       "nav": "Empleo",
@@ -269,7 +297,8 @@
         "Herramientas para desarrolladores de Bitcoin",
         "Conferencias de Bitcoin en Europa",
         "Proyectos afines"
-      ]
+      ],
+      "h1Accent": ": ofertas, subvenciones y becas."
     },
     "peers": {
       "nav": "Proyectos afines",
@@ -283,7 +312,8 @@
         "¿Busca socios regulados? Use Partner Finder",
         "Haga que su proyecto aparezca",
         "Conferencias de Bitcoin en Europa"
-      ]
+      ],
+      "h1Accent": ": otros proyectos solo Bitcoin."
     },
     "promote": {
       "nav": "Aparecer aquí",
@@ -291,7 +321,8 @@
       "h1": "Haga que su proyecto aparezca",
       "title": "Aparezca en el Ecosistema Bitcoin | Virtuse",
       "description": "Cómo pueden los proyectos solo Bitcoin solicitar su inclusión o aparecer destacados en el Ecosistema Bitcoin de Virtuse. Revisión manual, pagos declarados.",
-      "intro": "El directorio Ecosistema Bitcoin de Virtuse se selecciona a mano. No aceptamos envíos automáticos. Si cree que su proyecto debería estar aquí, escríbanos por correo electrónico o envíe el formulario de solicitud que encontrará más abajo. Revisamos cada solicitud personalmente y podemos rechazar cualquier solicitud sin dar explicaciones."
+      "intro": "El directorio Ecosistema Bitcoin de Virtuse se selecciona a mano. No aceptamos envíos automáticos. Si cree que su proyecto debería estar aquí, escríbanos por correo electrónico o envíe el formulario de solicitud que encontrará más abajo. Revisamos cada solicitud personalmente y podemos rechazar cualquier solicitud sin dar explicaciones.",
+      "h1Accent": "en el Ecosistema Bitcoin."
     }
   }
 }

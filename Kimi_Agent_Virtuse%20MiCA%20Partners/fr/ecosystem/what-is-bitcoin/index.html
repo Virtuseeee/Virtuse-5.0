@@ -47,122 +47,87 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.css?v=7">
-<style>.eco { max-width: 1040px; margin: 0 auto; padding: 36px 0 24px; min-width: 0; }
-.eco a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
-.eco a:hover { text-decoration-color: var(--text); }
-.eco p, .eco li { color: #c9d1d9; }
-.eco h1, .eco h2, .eco h3, .eco p, .eco li, .eco summary, .eco label, .eco b, .eco span { overflow-wrap: break-word; }
-.eco h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; hyphens: auto; }
-.eco h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 44px 0 14px; }
-.eco .lead { font-size: 1.1rem; line-height: 1.6; color: var(--muted); max-width: 760px; margin: 0; }
-.eco .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
-.eco .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
-.eco .crumbs a:hover { color: var(--text); }
-.eco-pick { background: var(--card); border: 1px solid var(--line); border-left: 3px solid #f7931a; border-radius: 12px; padding: 18px 20px; margin: 30px 0 8px; }
-.eco-pick h2 { margin: 0 0 6px; font-size: 1rem; }
-.eco-pick p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
-.eco-legal { font-size: 14px; line-height: 1.55; color: var(--muted) !important; border-left: 2px solid var(--line-strong); padding: 4px 0 4px 12px; margin: 18px 0; }
-.eco-grid, .eco-sections { list-style: none; padding: 0; margin: 18px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.eco-card { position: relative; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, background .15s; }
-.eco-card:hover { border-color: var(--line-strong); background: var(--card-hover); }
-.eco-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.eco-card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
-.eco-card h3 a { text-decoration: none; }
-.eco-card h3 a::after { content: ""; position: absolute; inset: 0; }
-.eco-card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); flex: 1; }
-.eco-card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; min-width: 0; }
-.eco-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
-.eco-tags li { font-size: 11px; line-height: 1; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 8px; }
-.eco-host { font: 500 11px/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-.eco-sponsored { font-size: 11px; font-weight: 600; color: #f7931a; border: 1px solid rgba(247,147,26,.4); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
-.eco-sections li { min-width: 0; }
-.eco-sections a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; min-height: 140px; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .15s, background .15s; }
-.eco-sections a:hover { border-color: rgba(247,147,26,.45); background: var(--card-hover); }
-.eco-ico { width: 32px; height: 32px; padding: 6px; box-sizing: border-box; border-radius: 9px; background: rgba(247,147,26,.12); fill: none; stroke: #f7931a; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; flex: none; }
-.eco-sections b { font-size: 17px; line-height: 1.25; }
-.eco-sections span { font-size: 14px; color: var(--muted); flex: 1; }
-.eco-sections em { font: normal 500 11px/1.3 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
-.eco-promote-line { margin: 18px 0 0; }
-.eco-primer { max-width: 760px; }
-.eco-primer p, .eco-primer li { font-size: 16px; line-height: 1.7; }
-.eco-primer ul { padding-left: 20px; }
-.eco details { border-bottom: 1px solid var(--line); padding: 14px 0; max-width: 760px; }
-.eco summary { cursor: pointer; font-weight: 600; }
-.eco details p { margin: 10px 0 0; line-height: 1.6; }
-.eco .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
-.eco .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; min-width: 0; }
-.eco .related a:hover { border-color: var(--line-strong); }
-.eco .table-wrap { overflow-x: auto; margin: 18px 0 8px; }
-.eco-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.eco-table th, .eco-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.eco-table th { color: var(--muted); font-weight: 600; font-size: 13px; }
-.eco-table td b { font-weight: 600; }
-.eco-verdict { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); }
-.eco-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none !important; font-weight: 600; font-size: 13px; white-space: nowrap; }
-.eco-btn:hover { border-color: #f7931a; color: #fff; }
-.eco .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
-.eco .disclaimers p { color: var(--muted); margin: 0 0 6px; }
-.eco .muted { color: var(--muted); font-size: 14px; }
-.eco-copy, .eco-apply { max-width: 760px; }
-.eco-copy li { margin: 0 0 8px; line-height: 1.55; }
-.eco-form { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; min-width: 0; }
-.eco-form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { font: 400 16px/1.4 var(--sans); color: var(--text); background: var(--card); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; min-height: 44px; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+<link rel="stylesheet" href="/site-v2.min.css?v=7">
+<style>.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
+.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
+.eco-hero .eco-crumbs a:hover { color: var(--text); }
+.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
+main > section.eco-first { padding-top: 72px; }
+.eco-list { margin-top: 56px; }
+.eco-cat { align-items: flex-start; }
+.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
+.eco-more { margin: 28px 0 0; }
+.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
+.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
+.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
+.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
+.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
+.eco-related .gcard b { font-size: 16px; }
+.eco-panel { width: 100%; margin-top: 0; }
+.eco-panel::before { display: none; }
+.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
+.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
+.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
+.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
+.eco-prose { max-width: 760px; }
+.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
+.eco-prose h2:first-child { margin-top: 0; }
+.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
+.eco-prose strong { color: var(--text); }
+.eco-prose ul { padding-left: 20px; }
+.eco-notes { max-width: 860px; margin: 56px auto 0; }
+.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
+.eco-crit strong { color: var(--text); }
+.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
+.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
+.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
+.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
+.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
+.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
 .eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: 2px solid var(--text); outline-offset: 1px; }
-.eco-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 0; min-width: 0; }
+.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
+.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
 .eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { flex-direction: row; align-items: flex-start; gap: 8px; color: #c9d1d9; line-height: 1.45; }
-.eco-check input { margin-top: 3px; accent-color: #f7931a; width: 16px; height: 16px; flex: none; }
-.eco-check-all { font-weight: 600; }
-.eco .eco-pick-countries { border: 0; padding: 8px 0 0; max-width: none; }
-.eco-pick-countries summary { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 6px 0; }
-.eco-check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 12px; margin-top: 10px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-.eco-count { font-size: 12px; color: var(--dim); align-self: flex-end; }
-.eco-form .hp { position: absolute; left: -9999px; }
-.eco-submit { align-self: flex-start; min-height: 44px; padding: 12px 22px; border: 0; border-radius: 10px; background: var(--text); color: #08090a; font: 600 15px/1 var(--sans); cursor: pointer; }
-.eco-submit:disabled { opacity: .6; cursor: wait; }
-.eco-form-msg { margin: 0; font-size: 14px; min-height: 1.2em; }
-.eco-form-msg.ok { color: #3fb950; }
-.eco-form-msg.err { color: #f0883e; }
-.eco-mail { margin-top: 18px; }
-.eco-sr { position: absolute !important; left: -9999px; }
-.eco-brief { max-width: 1040px; margin: 8px auto 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-sizing: border-box; }
-.eco-brief-row { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
-.eco-brief-h { margin: 0; font-size: 16px; font-weight: 600; color: var(--text); flex: 1 1 220px; }
-.eco-brief-h span { color: var(--muted); font-weight: 400; }
-.eco-brief-form { display: flex !important; gap: 8px; flex: 2 1 340px; min-width: 0; }
-.eco-brief-form input[type=email] { flex: 1; min-width: 0; padding: 11px 12px; font-size: 16px; }
-.eco-brief-form .btn { white-space: nowrap; flex: none; }
-.eco-brief .brief-msg { margin-top: 8px; font-size: 13px; }
-.eco-brief-fine { margin: 6px 0 0; font-size: 12px; color: var(--dim); }
-/* Ecosystem menu: 13 items in two columns on desktop */
+.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
+.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
+.eco-all { color: var(--text) !important; font-weight: 600; }
+.eco-pick-countries { margin-top: 10px; }
+.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
+.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
+.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
+.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
+.eco-form-msg.ok { color: var(--text); }
+.eco-mail { margin-top: 24px; }
 @media (min-width: 1181px) {
   #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
   .nav-group.open #nd-eco { display: grid; }
 }
 @media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 900px) { .eco-grid, .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .eco-panel { padding: 8px 16px; }
+  .eco-panel .row.head { display: none; }
+  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
+  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
+  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
+}
 @media (max-width: 640px) {
-  .eco { padding-top: 24px; }
-  .eco-grid, .eco .related, .eco-row { grid-template-columns: minmax(0, 1fr); }
-  .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .eco-sections a { min-height: 128px; padding: 14px 12px; gap: 4px; }
-  .eco-sections b { font-size: 15px; }
-  .eco-sections span { font-size: 13px; }
-  .eco-ico { width: 28px; height: 28px; padding: 5px; }
-  .eco-check-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco .table-wrap { overflow: visible; }
-  .eco-table, .eco-table tbody, .eco-table tr, .eco-table td { display: block; width: 100%; box-sizing: border-box; }
-  .eco-table thead { display: none; }
-  .eco-table tr { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px 14px; margin: 0 0 10px; }
-  .eco-table td { border: 0; padding: 8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
-  .eco-table td + td { border-top: 1px solid var(--line); }
-  .eco-table td::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
-  .eco-brief-form { flex-basis: 100%; }
+  main > section.eco-first { padding-top: 48px; }
+  .eco-list { margin-top: 36px; }
+  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
+  .eco-ico { width: 32px; height: 32px; padding: 7px; }
+  .eco-cat b { font-size: 14px; }
+  .eco-2 { grid-template-columns: minmax(0, 1fr); }
+  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .eco-prose h2 { font-size: 24px; }
 }</style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -364,110 +329,128 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 <main class="wrap" id="top">
-<article class="eco">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/fr/">Accueil</a> <span aria-hidden="true">/</span> <a href="/fr/ecosystem/">Écosystème</a> <span aria-hidden="true">/</span> <span>Qu'est-ce que Bitcoin ?</span></nav>
-  <h1>Qu'est-ce que le Bitcoin ?</h1>
-  <p class="lead">Le Bitcoin est une monnaie qu'aucune entreprise ni aucun gouvernement n'émet ni ne contrôle. Cette introduction explique simplement ce qu'il est, pourquoi son offre est fixe, comment il fonctionne et quels risques vous devez comprendre, puis présente les ressources gratuites que nous recommandons pour aller plus loin.</p>
-  <div class="eco-primer">
-  <h2>Une monnaie sans émetteur</h2>
-  <p>Le Bitcoin est une monnaie numérique qui fonctionne sur un réseau ouvert plutôt que dans le registre d'une banque. Personne ne l'émet à la demande et personne ne peut geler le réseau ni réécrire son historique. Vous détenez des bitcoins en détenant une clé secrète, et quiconque contrôle cette clé peut déplacer les fonds. Depuis le premier bloc, en janvier 2009, le réseau fonctionne sans opérateur central, sans entreprise et sans conseil d'administration.</p>
-  <p>La plupart de l'argent que vous utilisez est une promesse enregistrée par une institution : le solde de votre compte est une dette de votre banque, et la monnaie elle-même est gérée par une banque centrale qui peut en créer davantage. Le Bitcoin fonctionne différemment. Le registre est public, les règles sont inscrites dans un logiciel open source, et chacun peut vérifier qu'elles sont respectées.</p>
-  <p>Cette conception répondait à un problème précis. Avant le Bitcoin, tout système de paiement numérique avait besoin d'un intermédiaire de confiance pour empêcher qu'une même somme soit dépensée deux fois. Le Bitcoin a résolu ce problème sans intermédiaire, en permettant à l'ensemble du réseau de s'accorder sur un historique unique des transactions. Le résultat est un réseau de paiement et un actif d'épargne que toute personne disposant d'une connexion internet peut utiliser, sans demander d'autorisation et sans ouvrir de compte.</p>
-  <h2>Pourquoi utiliser le Bitcoin</h2>
-  <p>Les raisons de venir au Bitcoin varient. Certains veulent un actif d'épargne à long terme dont l'offre ne peut pas être gonflée. D'autres veulent transférer de la valeur à l'étranger sans délais, sans heures limites et sans contrôle des changes. D'autres encore apprécient que personne ne puisse geler ni saisir des bitcoins détenus en auto-conservation sans accès aux clés. Des entreprises en détiennent comme réserve de trésorerie, et dans les pays à forte inflation, il sert souvent simplement à protéger des revenus contre la perte de valeur.</p>
-  <p>Aucun de ces usages ne vous oblige à faire du trading. De nombreux Européens achètent chaque mois un petit montant fixe (investissement programmé, ou DCA) et conservent pendant des années, ce qui lisse l'effet des variations de prix à court terme. Notre <a href="/fr/bitcoin-calculateur-dca/">calculateur DCA</a> montre ce que cela a donné historiquement, frais réels inclus.</p>
-  <h2>La rareté : la limite de 21 millions</h2>
-  <p>Le nombre total de bitcoins qui existeront jamais est plafonné à 21 millions. Les nouveaux bitcoins sont versés aux mineurs en récompense de la sécurisation du réseau, et cette récompense est divisée par deux environ tous les quatre ans (tous les 210 000 blocs). La plus grande partie de l'offre a déjà été émise ; les bitcoins restants arrivent de plus en plus lentement, jusqu'aux alentours de 2140.</p>
-  <p>Ce calendrier fixe et prévisible est la principale raison pour laquelle on compare le Bitcoin à l'or. Impossible d'en imprimer davantage parce que la demande augmente, et aucune banque centrale ne peut décider de diluer les détenteurs existants. C'est à vous de juger si cela fait du Bitcoin une bonne réserve de valeur sur votre propre horizon ; l'histoire montre de longues périodes de forte hausse et de profondes baisses de 70 % ou plus.</p>
-  <h2>Le Bitcoin n'est pas « la crypto »</h2>
-  <p>Des milliers d'autres tokens ont copié une partie du code du Bitcoin, mais la plupart ont une entreprise, une fondation ou un petit groupe d'initiés capable de changer les règles, d'émettre davantage d'unités ou de mettre le réseau en pause. Le profil de risque est différent. C'est pour cette raison que Virtuse est 100 % Bitcoin : la valeur du Bitcoin vient de l'absence d'émetteur et de dirigeant, et cela est très difficile à reproduire dès qu'un projet a des fondateurs, une prévente ou un budget marketing. Lorsque quelqu'un vous présente une nouvelle cryptomonnaie avec des rendements promis, considérez-la comme une offre commerciale, pas comme du Bitcoin.</p>
-  <h2>Comment ça fonctionne</h2>
-  <p>Chaque transaction bitcoin est diffusée sur le réseau et vérifiée par des ordinateurs indépendants appelés nœuds. Chaque nœud vérifie que les bitcoins existent, qu'ils n'ont pas déjà été dépensés et que la signature de l'expéditeur est valide. Tout le monde peut faire tourner un nœud sur un ordinateur ordinaire, et c'est ce qui garantit le respect des règles : un nœud ignore tout simplement les blocs qui les enfreignent.</p>
-  <p>Les mineurs regroupent les transactions valides en blocs, environ un toutes les dix minutes. Pour ajouter un bloc, un mineur doit dépenser de l'électricité bien réelle pour résoudre un problème cryptographique (preuve de travail). C'est ce coût qui rend la réécriture de l'historique irréaliste : modifier une ancienne transaction exigerait de refaire tout le travail effectué depuis, plus vite que l'ensemble du reste du réseau.</p>
-  <p>Des paiements plus rapides et moins chers passent par des couches construites au-dessus du Bitcoin, notamment le Lightning Network, qui règle de petits paiements en quelques secondes tout en s'appuyant sur la chaîne principale pour la sécurité finale.</p>
-  <p>Sur Lightning, deux parties bloquent des bitcoins dans un canal commun, puis mettent à jour le solde entre elles aussi souvent qu'elles le souhaitent, presque instantanément et pour des fractions de centime. Les canaux sont reliés en réseau, ce qui vous permet de payer quelqu'un avec qui vous n'avez jamais ouvert de canal. Des commerces de toute l'Europe acceptent déjà les paiements Lightning ; voir <a href="/fr/ecosystem/spend-bitcoin/">où dépenser du bitcoin</a> et les <a href="/fr/ecosystem/store-tools/">outils pour les commerçants</a>.</p>
-  <h2>Les bases de l'auto-conservation</h2>
-  <p>Posséder des bitcoins, c'est en contrôler les clés. Si vous laissez vos bitcoins sur une plateforme, vous détenez une créance sur cette plateforme, pas les bitcoins eux-mêmes. L'auto-conservation supprime ce risque de contrepartie, mais vous rend responsable de vos sauvegardes : votre phrase de récupération (généralement 12 ou 24 mots) restaure votre portefeuille, et toute personne qui la voit peut prendre vos bitcoins.</p>
-  <p>Il existe trois modèles courants. Avec la conservation chez un prestataire réglementé, celui-ci détient les clés et vous dépendez de sa sécurité et de sa solvabilité ; c'est simple, mais cela comporte un risque de contrepartie. Avec l'auto-conservation à clé unique, vous détenez vous-même une clé, généralement dans une application de portefeuille ou sur un appareil dédié. Avec la conservation multisignature (collaborative), plusieurs clés sont nécessaires pour déplacer les fonds : perdre une clé ou en voir une compromise ne signifie donc pas tout perdre. Le bon choix dépend du montant, de votre aisance technique et des personnes qui doivent pouvoir accéder aux bitcoins s'il vous arrive quelque chose.</p>
-  <p>Pour la plupart des gens, une démarche raisonnable consiste à commencer petit, à s'exercer à une restauration de test, à garder la phrase de récupération hors ligne et à ne jamais la saisir sur un site web. Pour des montants plus importants, envisagez un portefeuille matériel dédié et un plan pour vos héritiers. Notre <a href="/fr/secure.html">page conservation</a>, le <a href="/stories/the-most-comprehensive-cold-wallet-guide/">guide du portefeuille à froid</a> et la <a href="/fr/bitcoin-succession/">liste de contrôle pour la succession</a> entrent dans les détails.</p>
-  <h2>Les risques à comprendre</h2>
-  <ul><li><strong>Volatilité.</strong> Le prix peut être divisé par deux en quelques mois. Ne détenez que ce que vous pouvez conserver malgré de fortes variations.</li><li><strong>Irréversibilité.</strong> Une transaction envoyée ne peut pas être annulée, et une clé perdue signifie généralement des bitcoins perdus.</li><li><strong>Arnaques.</strong> Aucun acteur légitime ne vous demandera votre phrase de récupération, ne vous promettra de rendement garanti ni ne vous pressera. Soyez particulièrement prudent avec les offres « crypto » qui ne sont pas du Bitcoin.</li><li><strong>Fiscalité et réglementation.</strong> Les plus-values sont imposables dans la plupart des pays européens, et les prestataires doivent respecter MiCA et les règles de lutte contre le blanchiment. Consultez nos <a href="/fr/bitcoin-fiscalite/">guides fiscaux par pays</a>.</li></ul>
-  <h2>Le Bitcoin en Europe</h2>
-  <p>Depuis l'entrée en vigueur du règlement européen sur les marchés de crypto-actifs (MiCA), les entreprises qui proposent des services sur crypto-actifs dans l'UE doivent obtenir un agrément d'un régulateur national et respecter les règles de lutte contre le blanchiment, y compris la vérification d'identité. Depuis 2026, la directive DAC8 impose également à ces prestataires de déclarer les transactions de leurs clients aux autorités fiscales. Détenir des bitcoins en auto-conservation est légal partout dans l'UE, mais le traitement fiscal varie fortement : certains pays exonèrent la détention de long terme, d'autres imposent chaque vente ou échange. Vérifiez les règles de votre pays avant de vendre ou de dépenser.</p>
-  <p>Lorsque vous êtes prêt à acheter, comparez les partenaires réglementés sur notre <a href="/fr/buy-bitcoin.html">page Acheter du Bitcoin</a>. Cette page est pédagogique et ne constitue pas un conseil en investissement.</p>
+  <div class="buy-hero2 eco-hero">
+    <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/fr/">Accueil</a> <span aria-hidden="true">/</span> <a href="/fr/ecosystem/">Écosystème</a> <span aria-hidden="true">/</span> <span>Qu'est-ce que Bitcoin ?</span></nav>
+    <div class="eyebrow"><i></i>Écosystème</div>
+    <h1>Qu'est-ce que le Bitcoin ? <span class="h1-or">Expliqué simplement.</span></h1>
+    <p class="sp-lead">Le Bitcoin est une monnaie qu'aucune entreprise ni aucun gouvernement n'émet ni ne contrôle. Cette introduction explique simplement ce qu'il est, pourquoi son offre est fixe, comment il fonctionne et quels risques vous devez comprendre, puis présente les ressources gratuites que nous recommandons pour aller plus loin.</p>
+    <p class="pf-counts">8 sélections · dernière vérification le 22 octobre 2026</p>
   </div>
-  <h2>Questions fréquentes</h2>
-  <details><summary>Qui contrôle le Bitcoin ?</summary><p>Aucune personne, entreprise ou gouvernement en particulier. Les règles sont appliquées par des dizaines de milliers d'ordinateurs indépendants (les nœuds), qui vérifient chacun toutes les transactions. Changer les règles exige un large accord parmi les personnes qui font tourner ces nœuds.</p></details>
-  <details><summary>Pourquoi l'offre est-elle limitée à 21 millions ?</summary><p>La limite est inscrite dans le logiciel qu'utilise chaque nœud. Les nouveaux bitcoins sont versés aux mineurs selon un calendrier fixe qui est divisé par deux environ tous les quatre ans : l'émission tend donc vers zéro et le total ne dépasse jamais 21 millions.</p></details>
-  <details><summary>Le Bitcoin est-il légal en Europe ?</summary><p>Oui. Posséder, acheter et vendre des bitcoins est légal dans toute l'UE. Les entreprises qui fournissent des services sur crypto-actifs doivent être agréées au titre de MiCA, et les plus-values sont généralement imposables ; les règles varient selon les pays.</p></details>
-  <details><summary>Quels sont les principaux risques ?</summary><p>Le prix est volatil, les erreurs avec les clés peuvent être définitives et les arnaques sont fréquentes. N'investissez que ce que vous pouvez conserver malgré de fortes variations de prix, et apprenez comment fonctionne la conservation avant de stocker des montants importants.</p></details>
-  <section class="eco-pick" aria-labelledby="pick-h">
-    <h2 id="pick-h">Notre sélection</h2>
-    <p>Chaque entrée est choisie à la main et doit être 100 % Bitcoin, pertinente pour l'Europe, active et honnête. Nous rédigeons nous-mêmes chaque avis. Les placements payants portent toujours la mention « Sponsorisé » et ne modifient jamais notre avis. <a href="/fr/ecosystem/promote/#criteria">Lire nos critères de référencement</a>.</p>
-  </section>
-  <h2>Ressources gratuites pour aller plus loin</h2>
-  <ul class="eco-grid">
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">The Bitcoin whitepaper</a></h3></div>
-      <p lang="en">Satoshi Nakamoto's nine-page original from 2008. Short, readable and still the best primary source.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Primary source</li><li>Free</li><li>PDF</li></ul><span class="eco-host">bitcoin.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://learn.saylor.org/course/view.php?id=468" target="_blank" rel="noopener">Bitcoin for Everybody (Saylor Academy)</a></h3></div>
-      <p lang="en">A free, self-paced beginner course with readings and a final exam. Good if you like structure.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free course</li><li>Beginner</li></ul><span class="eco-host">learn.saylor.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://planb.network" target="_blank" rel="noopener">Plan ₿ Network</a></h3></div>
-      <p lang="en">Free structured courses from first steps to advanced topics, available in many European languages.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free courses</li><li>Multilingual</li><li>Open source</li></ul><span class="eco-host">planb.network ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://21lessons.com" target="_blank" rel="noopener">21 Lessons</a></h3></div>
-      <p lang="en">Gigi's short essays on what Bitcoin teaches about money, technology and philosophy. Free to read online.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free</li><li>Essays</li></ul><span class="eco-host">21lessons.com ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://nakamotoinstitute.org" target="_blank" rel="noopener">Satoshi Nakamoto Institute</a></h3></div>
-      <p lang="en">The archive of Satoshi's emails and forum posts, plus the economic and cryptographic writing Bitcoin grew out of.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Archive</li><li>History</li></ul><span class="eco-host">nakamotoinstitute.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://www.lopp.net/bitcoin-information.html" target="_blank" rel="noopener">Lopp's Bitcoin resources</a></h3></div>
-      <p lang="en">Jameson Lopp's large, regularly updated index of Bitcoin information. Best used as a reference, not a starting point.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Reference</li><li>Free</li></ul><span class="eco-host">lopp.net ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://21ideas.org" target="_blank" rel="noopener">21ideas</a></h3></div>
-      <p lang="en">Translations of essential bitcoin essays and guides for Russian-speaking readers.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Russian</li><li>Free</li></ul><span class="eco-host">21ideas.org ↗</span></div>
-    </li>
-    <li class="eco-card">
-      <div class="eco-card-top"><h3><a href="https://learnmeabitcoin.com" target="_blank" rel="noopener">Learn Me A Bitcoin</a></h3></div>
-      <p lang="en">Clear, illustrated explanations of how transactions, keys and blocks work under the hood.</p>
-      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Technical</li><li>Free</li></ul><span class="eco-host">learnmeabitcoin.com ↗</span></div>
-    </li>
-  </ul>
-  <h2>À voir aussi sur Virtuse</h2>
-  <div class="related"><a href="/fr/faq.html">FAQ Virtuse</a><a href="/stories/why-bitcoin-is-not-a-ponzi-scheme/">Pourquoi le Bitcoin n'est pas une pyramide de Ponzi</a><a href="/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/">23 raisons de détenir du Bitcoin</a><a href="/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/">Cinq façons de comprendre le Bitcoin</a><a href="/fr/buy-bitcoin.html">Acheter du Bitcoin : comparer les partenaires</a><a href="/fr/secure.html">Conservation : protéger vos bitcoins</a></div>
-  <aside class="disclaimers">
-    <p>Les fiches sont fournies à titre informatif et ne constituent pas un conseil en investissement. Les descriptions des entrées sont en anglais.</p>
-    <p class="eco-reviewed">Dernière vérification : <time datetime="2026-10-22">22 octobre 2026</time></p>
-  </aside>
-</article>
-
-  <section id="brief" class="eco-brief" aria-label="Virtuse Brief">
-    <div class="eco-brief-row">
-      <p class="eco-brief-h">Recevez le Brief. <span>Gratuit.</span></p>
-      <form class="brief-form eco-brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
-        <label for="email" class="eco-sr">Adresse e-mail</label>
-        <input id="email" name="email" type="email" placeholder="Adresse e-mail" autocomplete="email" required>
-        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-ghost" type="submit">Recevoir le Brief</button>
-      </form>
+  <section id="primer" class="eco-first">
+    <div class="eco-prose">
+    <h2>Une monnaie sans émetteur</h2>
+    <p>Le Bitcoin est une monnaie numérique qui fonctionne sur un réseau ouvert plutôt que dans le registre d'une banque. Personne ne l'émet à la demande et personne ne peut geler le réseau ni réécrire son historique. Vous détenez des bitcoins en détenant une clé secrète, et quiconque contrôle cette clé peut déplacer les fonds. Depuis le premier bloc, en janvier 2009, le réseau fonctionne sans opérateur central, sans entreprise et sans conseil d'administration.</p>
+    <p>La plupart de l'argent que vous utilisez est une promesse enregistrée par une institution : le solde de votre compte est une dette de votre banque, et la monnaie elle-même est gérée par une banque centrale qui peut en créer davantage. Le Bitcoin fonctionne différemment. Le registre est public, les règles sont inscrites dans un logiciel open source, et chacun peut vérifier qu'elles sont respectées.</p>
+    <p>Cette conception répondait à un problème précis. Avant le Bitcoin, tout système de paiement numérique avait besoin d'un intermédiaire de confiance pour empêcher qu'une même somme soit dépensée deux fois. Le Bitcoin a résolu ce problème sans intermédiaire, en permettant à l'ensemble du réseau de s'accorder sur un historique unique des transactions. Le résultat est un réseau de paiement et un actif d'épargne que toute personne disposant d'une connexion internet peut utiliser, sans demander d'autorisation et sans ouvrir de compte.</p>
+    <h2>Pourquoi utiliser le Bitcoin</h2>
+    <p>Les raisons de venir au Bitcoin varient. Certains veulent un actif d'épargne à long terme dont l'offre ne peut pas être gonflée. D'autres veulent transférer de la valeur à l'étranger sans délais, sans heures limites et sans contrôle des changes. D'autres encore apprécient que personne ne puisse geler ni saisir des bitcoins détenus en auto-conservation sans accès aux clés. Des entreprises en détiennent comme réserve de trésorerie, et dans les pays à forte inflation, il sert souvent simplement à protéger des revenus contre la perte de valeur.</p>
+    <p>Aucun de ces usages ne vous oblige à faire du trading. De nombreux Européens achètent chaque mois un petit montant fixe (investissement programmé, ou DCA) et conservent pendant des années, ce qui lisse l'effet des variations de prix à court terme. Notre <a href="/fr/bitcoin-calculateur-dca/">calculateur DCA</a> montre ce que cela a donné historiquement, frais réels inclus.</p>
+    <h2>La rareté : la limite de 21 millions</h2>
+    <p>Le nombre total de bitcoins qui existeront jamais est plafonné à 21 millions. Les nouveaux bitcoins sont versés aux mineurs en récompense de la sécurisation du réseau, et cette récompense est divisée par deux environ tous les quatre ans (tous les 210 000 blocs). La plus grande partie de l'offre a déjà été émise ; les bitcoins restants arrivent de plus en plus lentement, jusqu'aux alentours de 2140.</p>
+    <p>Ce calendrier fixe et prévisible est la principale raison pour laquelle on compare le Bitcoin à l'or. Impossible d'en imprimer davantage parce que la demande augmente, et aucune banque centrale ne peut décider de diluer les détenteurs existants. C'est à vous de juger si cela fait du Bitcoin une bonne réserve de valeur sur votre propre horizon ; l'histoire montre de longues périodes de forte hausse et de profondes baisses de 70 % ou plus.</p>
+    <h2>Le Bitcoin n'est pas « la crypto »</h2>
+    <p>Des milliers d'autres tokens ont copié une partie du code du Bitcoin, mais la plupart ont une entreprise, une fondation ou un petit groupe d'initiés capable de changer les règles, d'émettre davantage d'unités ou de mettre le réseau en pause. Le profil de risque est différent. C'est pour cette raison que Virtuse est 100 % Bitcoin : la valeur du Bitcoin vient de l'absence d'émetteur et de dirigeant, et cela est très difficile à reproduire dès qu'un projet a des fondateurs, une prévente ou un budget marketing. Lorsque quelqu'un vous présente une nouvelle cryptomonnaie avec des rendements promis, considérez-la comme une offre commerciale, pas comme du Bitcoin.</p>
+    <h2>Comment ça fonctionne</h2>
+    <p>Chaque transaction bitcoin est diffusée sur le réseau et vérifiée par des ordinateurs indépendants appelés nœuds. Chaque nœud vérifie que les bitcoins existent, qu'ils n'ont pas déjà été dépensés et que la signature de l'expéditeur est valide. Tout le monde peut faire tourner un nœud sur un ordinateur ordinaire, et c'est ce qui garantit le respect des règles : un nœud ignore tout simplement les blocs qui les enfreignent.</p>
+    <p>Les mineurs regroupent les transactions valides en blocs, environ un toutes les dix minutes. Pour ajouter un bloc, un mineur doit dépenser de l'électricité bien réelle pour résoudre un problème cryptographique (preuve de travail). C'est ce coût qui rend la réécriture de l'historique irréaliste : modifier une ancienne transaction exigerait de refaire tout le travail effectué depuis, plus vite que l'ensemble du reste du réseau.</p>
+    <p>Des paiements plus rapides et moins chers passent par des couches construites au-dessus du Bitcoin, notamment le Lightning Network, qui règle de petits paiements en quelques secondes tout en s'appuyant sur la chaîne principale pour la sécurité finale.</p>
+    <p>Sur Lightning, deux parties bloquent des bitcoins dans un canal commun, puis mettent à jour le solde entre elles aussi souvent qu'elles le souhaitent, presque instantanément et pour des fractions de centime. Les canaux sont reliés en réseau, ce qui vous permet de payer quelqu'un avec qui vous n'avez jamais ouvert de canal. Des commerces de toute l'Europe acceptent déjà les paiements Lightning ; voir <a href="/fr/ecosystem/spend-bitcoin/">où dépenser du bitcoin</a> et les <a href="/fr/ecosystem/store-tools/">outils pour les commerçants</a>.</p>
+    <h2>Les bases de l'auto-conservation</h2>
+    <p>Posséder des bitcoins, c'est en contrôler les clés. Si vous laissez vos bitcoins sur une plateforme, vous détenez une créance sur cette plateforme, pas les bitcoins eux-mêmes. L'auto-conservation supprime ce risque de contrepartie, mais vous rend responsable de vos sauvegardes : votre phrase de récupération (généralement 12 ou 24 mots) restaure votre portefeuille, et toute personne qui la voit peut prendre vos bitcoins.</p>
+    <p>Il existe trois modèles courants. Avec la conservation chez un prestataire réglementé, celui-ci détient les clés et vous dépendez de sa sécurité et de sa solvabilité ; c'est simple, mais cela comporte un risque de contrepartie. Avec l'auto-conservation à clé unique, vous détenez vous-même une clé, généralement dans une application de portefeuille ou sur un appareil dédié. Avec la conservation multisignature (collaborative), plusieurs clés sont nécessaires pour déplacer les fonds : perdre une clé ou en voir une compromise ne signifie donc pas tout perdre. Le bon choix dépend du montant, de votre aisance technique et des personnes qui doivent pouvoir accéder aux bitcoins s'il vous arrive quelque chose.</p>
+    <p>Pour la plupart des gens, une démarche raisonnable consiste à commencer petit, à s'exercer à une restauration de test, à garder la phrase de récupération hors ligne et à ne jamais la saisir sur un site web. Pour des montants plus importants, envisagez un portefeuille matériel dédié et un plan pour vos héritiers. Notre <a href="/fr/secure.html">page conservation</a>, le <a href="/stories/the-most-comprehensive-cold-wallet-guide/">guide du portefeuille à froid</a> et la <a href="/fr/bitcoin-succession/">liste de contrôle pour la succession</a> entrent dans les détails.</p>
+    <h2>Les risques à comprendre</h2>
+    <ul><li><strong>Volatilité.</strong> Le prix peut être divisé par deux en quelques mois. Ne détenez que ce que vous pouvez conserver malgré de fortes variations.</li><li><strong>Irréversibilité.</strong> Une transaction envoyée ne peut pas être annulée, et une clé perdue signifie généralement des bitcoins perdus.</li><li><strong>Arnaques.</strong> Aucun acteur légitime ne vous demandera votre phrase de récupération, ne vous promettra de rendement garanti ni ne vous pressera. Soyez particulièrement prudent avec les offres « crypto » qui ne sont pas du Bitcoin.</li><li><strong>Fiscalité et réglementation.</strong> Les plus-values sont imposables dans la plupart des pays européens, et les prestataires doivent respecter MiCA et les règles de lutte contre le blanchiment. Consultez nos <a href="/fr/bitcoin-fiscalite/">guides fiscaux par pays</a>.</li></ul>
+    <h2>Le Bitcoin en Europe</h2>
+    <p>Depuis l'entrée en vigueur du règlement européen sur les marchés de crypto-actifs (MiCA), les entreprises qui proposent des services sur crypto-actifs dans l'UE doivent obtenir un agrément d'un régulateur national et respecter les règles de lutte contre le blanchiment, y compris la vérification d'identité. Depuis 2026, la directive DAC8 impose également à ces prestataires de déclarer les transactions de leurs clients aux autorités fiscales. Détenir des bitcoins en auto-conservation est légal partout dans l'UE, mais le traitement fiscal varie fortement : certains pays exonèrent la détention de long terme, d'autres imposent chaque vente ou échange. Vérifiez les règles de votre pays avant de vendre ou de dépenser.</p>
+    <p>Lorsque vous êtes prêt à acheter, comparez les partenaires réglementés sur notre <a href="/fr/buy-bitcoin.html">page Acheter du Bitcoin</a>. Cette page est pédagogique et ne constitue pas un conseil en investissement.</p>
     </div>
-    <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
-    <p class="eco-brief-fine">Désabonnement à tout moment. Ceci n'est pas un conseil en investissement.</p>
+  </section>
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Questions <span>fréquentes</span></h2></div></div>
+    <details open><summary>Qui contrôle le Bitcoin ?</summary><p>Aucune personne, entreprise ou gouvernement en particulier. Les règles sont appliquées par des dizaines de milliers d'ordinateurs indépendants (les nœuds), qui vérifient chacun toutes les transactions. Changer les règles exige un large accord parmi les personnes qui font tourner ces nœuds.</p></details>
+    <details><summary>Pourquoi l'offre est-elle limitée à 21 millions ?</summary><p>La limite est inscrite dans le logiciel qu'utilise chaque nœud. Les nouveaux bitcoins sont versés aux mineurs selon un calendrier fixe qui est divisé par deux environ tous les quatre ans : l'émission tend donc vers zéro et le total ne dépasse jamais 21 millions.</p></details>
+    <details><summary>Le Bitcoin est-il légal en Europe ?</summary><p>Oui. Posséder, acheter et vendre des bitcoins est légal dans toute l'UE. Les entreprises qui fournissent des services sur crypto-actifs doivent être agréées au titre de MiCA, et les plus-values sont généralement imposables ; les règles varient selon les pays.</p></details>
+    <details><summary>Quels sont les principaux risques ?</summary><p>Le prix est volatil, les erreurs avec les clés peuvent être définitives et les arnaques sont fréquentes. N'investissez que ce que vous pouvez conserver malgré de fortes variations de prix, et apprenez comment fonctionne la conservation avant de stocker des montants importants.</p></details>
+  </section>
+  <section id="list">
+    <div class="sec-head one"><div class="sec-copy"><h2>Ressources <span>gratuites pour aller plus loin</span></h2></div></div>
+    <div class="gcards eco-entries">
+      <a class="gcard eco-entry" href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener"><b>The Bitcoin whitepaper <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Satoshi Nakamoto's nine-page original from 2008. Short, readable and still the best primary source.</span><span class="eco-meta" lang="en">bitcoin.org · Primary source · Free · PDF</span></a>
+      <a class="gcard eco-entry" href="https://learn.saylor.org/course/view.php?id=468" target="_blank" rel="noopener"><b>Bitcoin for Everybody (Saylor Academy) <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A free, self-paced beginner course with readings and a final exam. Good if you like structure.</span><span class="eco-meta" lang="en">learn.saylor.org · Free course · Beginner</span></a>
+      <a class="gcard eco-entry" href="https://planb.network" target="_blank" rel="noopener"><b>Plan ₿ Network <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Free structured courses from first steps to advanced topics, available in many European languages.</span><span class="eco-meta" lang="en">planb.network · Free courses · Multilingual · Open source</span></a>
+      <a class="gcard eco-entry" href="https://21lessons.com" target="_blank" rel="noopener"><b>21 Lessons <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Gigi's short essays on what Bitcoin teaches about money, technology and philosophy. Free to read online.</span><span class="eco-meta" lang="en">21lessons.com · Free · Essays</span></a>
+      <a class="gcard eco-entry" href="https://nakamotoinstitute.org" target="_blank" rel="noopener"><b>Satoshi Nakamoto Institute <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The archive of Satoshi's emails and forum posts, plus the economic and cryptographic writing Bitcoin grew out of.</span><span class="eco-meta" lang="en">nakamotoinstitute.org · Archive · History</span></a>
+      <a class="gcard eco-entry" href="https://www.lopp.net/bitcoin-information.html" target="_blank" rel="noopener"><b>Lopp's Bitcoin resources <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Jameson Lopp's large, regularly updated index of Bitcoin information. Best used as a reference, not a starting point.</span><span class="eco-meta" lang="en">lopp.net · Reference · Free</span></a>
+      <a class="gcard eco-entry" href="https://21ideas.org" target="_blank" rel="noopener"><b>21ideas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Translations of essential bitcoin essays and guides for Russian-speaking readers.</span><span class="eco-meta" lang="en">21ideas.org · Russian · Free</span></a>
+      <a class="gcard eco-entry" href="https://learnmeabitcoin.com" target="_blank" rel="noopener"><b>Learn Me A Bitcoin <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Clear, illustrated explanations of how transactions, keys and blocks work under the hood.</span><span class="eco-meta" lang="en">learnmeabitcoin.com · Technical · Free</span></a>
+    </div>
+  </section>
+  <section id="pick">
+    <div class="sec-head one"><div class="sec-copy"><h2>Notre <span>sélection</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 01</span>
+          <h3>Choisis à la main</h3>
+          <p>Chaque entrée est choisie et vérifiée par notre équipe, et nous rédigeons nous-mêmes chaque avis.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 02</span>
+          <h3>Pertinents pour l'Europe</h3>
+          <p>Des projets 100 % Bitcoin au service des utilisateurs de l'UE, de l'EEE ou de Suisse, actifs, maintenus et honnêtes.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Étape 03</span>
+          <h3>Sponsors signalés</h3>
+          <p>Les placements payants portent toujours la mention « Sponsorisé » et ne modifient jamais nos critères ni notre avis.</p>
+        </div>
+      </div>
+    </div>
+    <p class="eco-more"><a class="tlink" href="/fr/ecosystem/promote/#criteria">Lire nos critères de référencement <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+  </section>
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>À <span>voir aussi sur Virtuse</span></h2></div></div>
+    <div class="gcards eco-related"><a class="gcard" href="/fr/faq.html"><b>FAQ Virtuse</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/stories/why-bitcoin-is-not-a-ponzi-scheme/"><b>Pourquoi le Bitcoin n'est pas une pyramide de Ponzi</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/"><b>23 raisons de détenir du Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/"><b>Cinq façons de comprendre le Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/fr/buy-bitcoin.html"><b>Acheter du Bitcoin : comparer les partenaires</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/fr/secure.html"><b>Conservation : protéger vos bitcoins</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+  </section>
+  <p class="pf-disc eco-notes">Les fiches sont fournies à titre informatif et ne constituent pas un conseil en investissement. Les descriptions des entrées sont en anglais. Dernière vérification : <time datetime="2026-10-22">22 octobre 2026</time>.</p>
+
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>100&nbsp;% Bitcoin, chaque lundi.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=fr">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Coursier du Virtuse Brief à scooter livrant l'édition du 5&nbsp;oct. 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Dernier Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (en anglais)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Lire le numéro →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Recevez le Brief. <span>Gratuit.</span></h3>
+        <p>Marché, réglementation, minage. Pas de tokens. Pas de RP. Un e-mail, chaque lundi.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Adresse e-mail</label>
+          <input id="email" name="email" type="email" placeholder="Adresse e-mail" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Recevoir le Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Désabonnement à tout moment. Ceci n'est pas un conseil en investissement. <a href="/news.html?utm_source=brief&amp;utm_medium=ecosystem" style="color:var(--muted)">Tous les numéros et le blog →</a></div>
+      </div>
+    </div>
   </section>
 
   <footer class="footer-main">

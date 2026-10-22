@@ -38,7 +38,25 @@
       "Virtuse Brief : l'actualité Bitcoin de la semaine",
       "Vous découvrez Bitcoin ? Commencez ici"
     ],
-    "promoteCrumb": "Figurer dans l'annuaire"
+    "promoteCrumb": "Figurer dans l'annuaire",
+    "eyebrowIndex": "Écosystème Bitcoin",
+    "stats": "{c} catégories · {n} sélections · vérifiées par notre équipe",
+    "subStats": "{n} sélections · dernière vérification le {date}",
+    "step": "Étape",
+    "steps": [
+      {
+        "t": "Choisis à la main",
+        "d": "Chaque entrée est choisie et vérifiée par notre équipe, et nous rédigeons nous-mêmes chaque avis."
+      },
+      {
+        "t": "Pertinents pour l'Europe",
+        "d": "Des projets 100 % Bitcoin au service des utilisateurs de l'UE, de l'EEE ou de Suisse, actifs, maintenus et honnêtes."
+      },
+      {
+        "t": "Sponsors signalés",
+        "d": "Les placements payants portent toujours la mention « Sponsorisé » et ne modifient jamais nos critères ni notre avis."
+      }
+    ]
   },
   "promote": {
     "criteriaH": "Critères",
@@ -88,7 +106,8 @@
       "title": "Écosystème Bitcoin : ressources choisies | Virtuse",
       "description": "Livres, podcasts, outils de confidentialité, conférences et emplois 100 % Bitcoin, choisis à la main pour les Européens. Vérifiés par Virtuse.",
       "intro": "Un annuaire de ressources 100 % Bitcoin choisies à la main pour les personnes vivant en Europe : quoi lire, écouter et regarder, où rencontrer d'autres bitcoiners, comment protéger votre vie privée, et où dépenser, développer et travailler avec Bitcoin. Chaque entrée est choisie et vérifiée par notre équipe.",
-      "navDesc": "Toutes les ressources 100 % Bitcoin"
+      "navDesc": "Toutes les ressources 100 % Bitcoin",
+      "h1Accent": ", choisi à la main pour l'Europe."
     },
     "what-is-bitcoin": {
       "nav": "Qu'est-ce que Bitcoin ?",
@@ -151,7 +170,8 @@
           "q": "Quels sont les principaux risques ?",
           "a": "Le prix est volatil, les erreurs avec les clés peuvent être définitives et les arnaques sont fréquentes. N'investissez que ce que vous pouvez conserver malgré de fortes variations de prix, et apprenez comment fonctionne la conservation avant de stocker des montants importants."
         }
-      ]
+      ],
+      "h1Accent": "Expliqué simplement."
     },
     "books": {
       "nav": "Livres",
@@ -164,7 +184,8 @@
         "Qu'est-ce que le Bitcoin ? Une introduction simple",
         "Le blog Virtuse",
         "Podcasts Bitcoin"
-      ]
+      ],
+      "h1Accent": "pour vos prochaines lectures."
     },
     "podcasts": {
       "nav": "Podcasts",
@@ -177,7 +198,8 @@
         "Virtuse Brief : l'actualité Bitcoin de la semaine",
         "Vidéos et chaînes Bitcoin",
         "Livres sur le Bitcoin"
-      ]
+      ],
+      "h1Accent": "pour vos trajets quotidiens."
     },
     "videos": {
       "nav": "Vidéos",
@@ -190,7 +212,8 @@
         "Podcasts Bitcoin",
         "Qu'est-ce que le Bitcoin ? Une introduction simple",
         "Conférences Bitcoin en Europe"
-      ]
+      ],
+      "h1Accent": "à voir : chaînes, conférences et documentaires."
     },
     "conferences": {
       "nav": "Conférences",
@@ -203,7 +226,8 @@
         "Projets Bitcoin amis : d'autres projets 100 % Bitcoin",
         "Virtuse Brief : l'actualité Bitcoin de la semaine",
         "Conférences en vidéo"
-      ]
+      ],
+      "h1Accent": ", avec dates et billets."
     },
     "privacy": {
       "nav": "Confidentialité",
@@ -217,7 +241,8 @@
         "Conservation : protéger vos bitcoins",
         "Outils pour développeurs Bitcoin",
         "LCB-FT et conformité chez Virtuse"
-      ]
+      ],
+      "h1Accent": ", dans le respect de la loi."
     },
     "spend-bitcoin": {
       "nav": "Dépenser",
@@ -230,7 +255,8 @@
         "Accepter le bitcoin dans votre commerce",
         "Déclaration fiscale Bitcoin",
         "Guides fiscaux par pays"
-      ]
+      ],
+      "h1Accent": "au quotidien : commerces, cartes interactives et cartes cadeaux."
     },
     "store-tools": {
       "nav": "Outils marchands",
@@ -243,7 +269,8 @@
         "Trésorerie Bitcoin pour les entreprises",
         "Déclaration fiscale Bitcoin",
         "Où dépenser du bitcoin"
-      ]
+      ],
+      "h1Accent": "qui acceptent le bitcoin en boutique."
     },
     "dev-tools": {
       "nav": "Outils dev",
@@ -256,7 +283,8 @@
         "Emplois et bourses Bitcoin",
         "Outils pour commerçants",
         "Confidentialité et Bitcoin"
-      ]
+      ],
+      "h1Accent": ", des bibliothèques aux SDK."
     },
     "jobs": {
       "nav": "Emplois",
@@ -269,7 +297,8 @@
         "Outils pour développeurs Bitcoin",
         "Conférences Bitcoin en Europe",
         "Projets Bitcoin amis"
-      ]
+      ],
+      "h1Accent": ", subventions et bourses."
     },
     "peers": {
       "nav": "Projets amis",
@@ -283,7 +312,8 @@
         "Vous cherchez des partenaires réglementés ? Utilisez Partner Finder",
         "Faire figurer votre projet",
         "Conférences Bitcoin en Europe"
-      ]
+      ],
+      "h1Accent": ", 100 % Bitcoin comme nous."
     },
     "promote": {
       "nav": "Figurer ici",
@@ -291,7 +321,8 @@
       "h1": "Faites figurer votre projet",
       "title": "Figurer dans l'écosystème Bitcoin | Virtuse",
       "description": "Comment un projet 100 % Bitcoin peut demander à figurer dans l'écosystème Bitcoin de Virtuse. Examen manuel, critères clairs, placements payants signalés.",
-      "intro": "L'annuaire de l'écosystème Bitcoin de Virtuse est constitué à la main. Nous n'acceptons pas de soumissions automatiques. Si vous pensez que votre projet a sa place ici, écrivez-nous ou envoyez le formulaire de candidature ci-dessous. Nous examinons personnellement chaque candidature et pouvons refuser toute candidature sans en donner la raison."
+      "intro": "L'annuaire de l'écosystème Bitcoin de Virtuse est constitué à la main. Nous n'acceptons pas de soumissions automatiques. Si vous pensez que votre projet a sa place ici, écrivez-nous ou envoyez le formulaire de candidature ci-dessous. Nous examinons personnellement chaque candidature et pouvons refuser toute candidature sans en donner la raison.",
+      "h1Accent": "dans l'écosystème Bitcoin."
     }
   }
 }

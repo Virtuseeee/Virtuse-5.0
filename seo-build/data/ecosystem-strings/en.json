@@ -38,7 +38,25 @@
       "Virtuse Brief: weekly Bitcoin news",
       "New to Bitcoin? Start here"
     ],
-    "promoteCrumb": "Get featured"
+    "promoteCrumb": "Get featured",
+    "eyebrowIndex": "Bitcoin Ecosystem",
+    "stats": "{c} categories · {n} picks · reviewed by our team",
+    "subStats": "{n} picks · last reviewed {date}",
+    "step": "Step",
+    "steps": [
+      {
+        "t": "Hand-picked",
+        "d": "Every entry is chosen and reviewed by our team, and we write each verdict ourselves."
+      },
+      {
+        "t": "Relevant to Europe",
+        "d": "Bitcoin-only projects that serve users in the EU/EEA or Switzerland, live, maintained and honest."
+      },
+      {
+        "t": "Sponsors labelled",
+        "d": "Paid placements are always marked \"Sponsored\" and never change our criteria or our verdict."
+      }
+    ]
   },
   "promote": {
     "criteriaH": "Criteria",
@@ -88,7 +106,8 @@
       "title": "Bitcoin Ecosystem: Curated Bitcoin-Only Resources",
       "description": "Hand-picked bitcoin-only books, podcasts, privacy tools, conferences and jobs for Europeans. Reviewed by Virtuse.",
       "intro": "A hand-picked directory of bitcoin-only resources for people in Europe: what to read, listen to and watch, where to meet other bitcoiners, how to protect your privacy, and where to spend, build and work with Bitcoin. Every entry is chosen and reviewed by our team.",
-      "navDesc": "All bitcoin-only resources"
+      "navDesc": "All bitcoin-only resources",
+      "h1Accent": ", hand-picked for Europe."
     },
     "what-is-bitcoin": {
       "nav": "What is Bitcoin?",
@@ -151,7 +170,8 @@
           "q": "What are the main risks?",
           "a": "The price is volatile, mistakes with keys can be permanent, and scams are common. Only invest what you can afford to hold through large price swings, and learn how custody works before you store meaningful amounts."
         }
-      ]
+      ],
+      "h1Accent": "Explained in plain English."
     },
     "books": {
       "nav": "Books",
@@ -164,7 +184,8 @@
         "What is Bitcoin? A plain-English primer",
         "The Virtuse blog",
         "Bitcoin podcasts"
-      ]
+      ],
+      "h1Accent": ": what to read next."
     },
     "podcasts": {
       "nav": "Podcasts",
@@ -177,7 +198,8 @@
         "Virtuse Brief: weekly Bitcoin news",
         "Bitcoin videos and channels",
         "Bitcoin books"
-      ]
+      ],
+      "h1Accent": ": worth your commute."
     },
     "videos": {
       "nav": "Videos",
@@ -190,7 +212,8 @@
         "Bitcoin podcasts",
         "What is Bitcoin? A plain-English primer",
         "Bitcoin conferences in Europe"
-      ]
+      ],
+      "h1Accent": ": channels, talks and documentaries."
     },
     "conferences": {
       "nav": "Conferences",
@@ -203,7 +226,8 @@
         "Bitcoin peers: fellow bitcoin-only projects",
         "Virtuse Brief: weekly Bitcoin news",
         "Conference talks on video"
-      ]
+      ],
+      "h1Accent": ": dates and tickets."
     },
     "privacy": {
       "nav": "Privacy",
@@ -217,7 +241,8 @@
         "Custody: keep your Bitcoin safe",
         "Bitcoin developer tools",
         "AML & compliance at Virtuse"
-      ]
+      ],
+      "h1Accent": ", within the law."
     },
     "spend-bitcoin": {
       "nav": "Spend Bitcoin",
@@ -230,7 +255,8 @@
         "Accept bitcoin in your shop",
         "Bitcoin tax reporting",
         "Country tax guides"
-      ]
+      ],
+      "h1Accent": ": shops, maps and gift cards."
     },
     "store-tools": {
       "nav": "Store Tools",
@@ -243,7 +269,8 @@
         "Bitcoin treasury for companies",
         "Bitcoin tax reporting",
         "Where to spend bitcoin"
-      ]
+      ],
+      "h1Accent": ": accept bitcoin in your shop."
     },
     "dev-tools": {
       "nav": "Dev Tools",
@@ -256,7 +283,8 @@
         "Bitcoin jobs and grants",
         "Merchant tools",
         "Bitcoin privacy"
-      ]
+      ],
+      "h1Accent": ": libraries and SDKs."
     },
     "jobs": {
       "nav": "Bitcoin Jobs",
@@ -269,7 +297,8 @@
         "Bitcoin developer tools",
         "Bitcoin conferences in Europe",
         "Bitcoin peers"
-      ]
+      ],
+      "h1Accent": ": jobs, grants and fellowships."
     },
     "peers": {
       "nav": "Bitcoin Peers",
@@ -283,7 +312,8 @@
         "Looking for regulated partners? Use Partner Finder",
         "Get your project featured",
         "Bitcoin conferences in Europe"
-      ]
+      ],
+      "h1Accent": ": fellow bitcoin-only projects."
     },
     "promote": {
       "nav": "Promote",
@@ -291,7 +321,8 @@
       "h1": "Get your project featured",
       "title": "Get Featured in the Bitcoin Ecosystem | Virtuse",
       "description": "How bitcoin-only projects can apply to be listed or featured in the Virtuse Bitcoin Ecosystem. Manual review, clear criteria, paid placements disclosed.",
-      "intro": "The Virtuse Bitcoin Ecosystem directory is curated by hand. We do not accept automatic submissions. If you believe your project belongs here, please email us or send the application form below. We review every application personally and may decline any application without giving a reason."
+      "intro": "The Virtuse Bitcoin Ecosystem directory is curated by hand. We do not accept automatic submissions. If you believe your project belongs here, please email us or send the application form below. We review every application personally and may decline any application without giving a reason.",
+      "h1Accent": "in the Bitcoin Ecosystem."
     }
   }
 }

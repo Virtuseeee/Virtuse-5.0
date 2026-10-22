@@ -38,7 +38,25 @@
       "Virtuse Brief: týždenné správy o Bitcoine",
       "S Bitcoinom začínate? Začnite tu"
     ],
-    "promoteCrumb": "Zaradenie"
+    "promoteCrumb": "Zaradenie",
+    "eyebrowIndex": "Bitcoinový ekosystém",
+    "stats": "Kategórie: {c} · odporúčania: {n} · overuje náš tím",
+    "subStats": "Počet odporúčaní: {n} · naposledy skontrolované {date}",
+    "step": "Krok",
+    "steps": [
+      {
+        "t": "Ručný výber",
+        "d": "Každú položku vyberá a kontroluje náš tím a každé hodnotenie píšeme sami."
+      },
+      {
+        "t": "Relevantné pre Európu",
+        "d": "Projekty zamerané iba na Bitcoin, ktoré slúžia používateľom v EÚ/EHP alebo vo Švajčiarsku a sú aktívne, udržiavané a poctivé."
+      },
+      {
+        "t": "Označení sponzori",
+        "d": "Platené umiestnenia sú vždy označené ako \"Sponzorované\" a nikdy nemenia naše kritériá ani hodnotenie."
+      }
+    ]
   },
   "promote": {
     "criteriaH": "Kritériá",
@@ -88,7 +106,8 @@
       "title": "Bitcoinový ekosystém: overené zdroje | Virtuse",
       "description": "Ručne vybrané knihy, podcasty, nástroje na ochranu súkromia, konferencie a pracovné ponuky iba o Bitcoine pre Európanov. Overené tímom Virtuse.",
       "intro": "Ručne zostavený adresár zdrojov zameraných iba na Bitcoin pre ľudí v Európe: čo čítať, počúvať a pozerať, kde sa stretnúť s inými bitcoinermi, ako chrániť svoje súkromie a kde s Bitcoinom platiť, budovať a pracovať. Každú položku vyberá a kontroluje náš tím.",
-      "navDesc": "Všetky zdroje iba o Bitcoine"
+      "navDesc": "Všetky zdroje iba o Bitcoine",
+      "h1Accent": ", vybraný ručne pre Európu."
     },
     "what-is-bitcoin": {
       "nav": "Čo je Bitcoin?",
@@ -151,7 +170,8 @@
           "q": "Aké sú hlavné riziká?",
           "a": "Cena je volatilná, chyby s kľúčmi môžu byť nezvratné a podvody sú bežné. Investujte len toľko, koľko dokážete držať aj počas veľkých cenových výkyvov, a skôr než uložíte väčšie sumy, zistite si, ako funguje úschova."
         }
-      ]
+      ],
+      "h1Accent": "Vysvetlené jednoducho."
     },
     "books": {
       "nav": "Knihy",
@@ -164,7 +184,8 @@
         "Čo je Bitcoin? Základy jednoduchým jazykom",
         "Blog Virtuse",
         "Bitcoinové podcasty"
-      ]
+      ],
+      "h1Accent": ": čo čítať ďalej."
     },
     "podcasts": {
       "nav": "Podcasty",
@@ -177,7 +198,8 @@
         "Virtuse Brief: týždenné správy o Bitcoine",
         "Bitcoinové videá a kanály",
         "Knihy o Bitcoine"
-      ]
+      ],
+      "h1Accent": ": na cestu do práce."
     },
     "videos": {
       "nav": "Videá",
@@ -190,7 +212,8 @@
         "Bitcoinové podcasty",
         "Čo je Bitcoin? Základy jednoduchým jazykom",
         "Bitcoinové konferencie v Európe"
-      ]
+      ],
+      "h1Accent": ": kanály, prednášky a dokumenty."
     },
     "conferences": {
       "nav": "Konferencie",
@@ -203,7 +226,8 @@
         "Spriatelené projekty zamerané iba na Bitcoin",
         "Virtuse Brief: týždenné správy o Bitcoine",
         "Prednášky z konferencií na videu"
-      ]
+      ],
+      "h1Accent": ": termíny a vstupenky."
     },
     "privacy": {
       "nav": "Súkromie",
@@ -217,7 +241,8 @@
         "Úschova: majte svoj Bitcoin v bezpečí",
         "Nástroje pre vývojárov v Bitcoine",
         "AML a compliance vo Virtuse"
-      ]
+      ],
+      "h1Accent": ", v medziach zákona."
     },
     "spend-bitcoin": {
       "nav": "Platiť bitcoinom",
@@ -230,7 +255,8 @@
         "Prijímajte bitcoin vo svojom obchode",
         "Daňové výkazy pre Bitcoin",
         "Daňové návody podľa krajín"
-      ]
+      ],
+      "h1Accent": ": obchody, mapy a darčekové karty."
     },
     "store-tools": {
       "nav": "Pre obchodníkov",
@@ -243,7 +269,8 @@
         "Bitcoin treasury pre firmy",
         "Daňové výkazy pre Bitcoin",
         "Kde platiť bitcoinom"
-      ]
+      ],
+      "h1Accent": ": prijímajte bitcoin vo svojom obchode."
     },
     "dev-tools": {
       "nav": "Pre vývojárov",
@@ -256,7 +283,8 @@
         "Práca a granty v Bitcoine",
         "Nástroje pre obchodníkov",
         "Súkromie v Bitcoine"
-      ]
+      ],
+      "h1Accent": ": knižnice a SDK."
     },
     "jobs": {
       "nav": "Práca",
@@ -269,7 +297,8 @@
         "Nástroje pre vývojárov v Bitcoine",
         "Bitcoinové konferencie v Európe",
         "Spriatelené bitcoinové projekty"
-      ]
+      ],
+      "h1Accent": ": pracovné miesta, granty a štipendiá."
     },
     "peers": {
       "nav": "Spriatelené projekty",
@@ -283,7 +312,8 @@
         "Hľadáte regulovaných partnerov? Použite Partner Finder",
         "Zaraďte svoj projekt do ekosystému",
         "Bitcoinové konferencie v Európe"
-      ]
+      ],
+      "h1Accent": ": iba Bitcoin, rovnako ako my."
     },
     "promote": {
       "nav": "Zaradenie",
@@ -291,7 +321,8 @@
       "h1": "Zaradenie do ekosystému",
       "title": "Zaradenie do bitcoinového ekosystému | Virtuse",
       "description": "Ako môže projekt zameraný iba na Bitcoin požiadať o zaradenie do ekosystému Virtuse. Ručné posúdenie, jasné kritériá, označené platené miesta.",
-      "intro": "Adresár Bitcoinový ekosystém Virtuse zostavujeme ručne. Automatické prihlásenia neprijímame. Ak si myslíte, že sem váš projekt patrí, napíšte nám e-mail alebo pošlite formulár nižšie. Každú žiadosť posudzujeme osobne a môžeme ju zamietnuť aj bez uvedenia dôvodu."
+      "intro": "Adresár Bitcoinový ekosystém Virtuse zostavujeme ručne. Automatické prihlásenia neprijímame. Ak si myslíte, že sem váš projekt patrí, napíšte nám e-mail alebo pošlite formulár nižšie. Každú žiadosť posudzujeme osobne a môžeme ju zamietnuť aj bez uvedenia dôvodu.",
+      "h1Accent": ": predstavte svoj projekt."
     }
   }
 }
