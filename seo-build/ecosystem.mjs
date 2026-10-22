@@ -485,7 +485,7 @@ function schemas(p, l) {
 // ---------- page ----------
 // No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
 // site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
-const CSS_V = '8';
+const CSS_V = '9';
 
 // Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {
