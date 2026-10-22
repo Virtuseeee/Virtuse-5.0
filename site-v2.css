@@ -1831,3 +1831,13 @@ html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margi
   .eco-callout { padding: 20px; border-radius: 18px; }
   .eco-how { gap: 0; }
 }
+/* ECOSYSTEM · tighter rhythm on desktop (Ras 2026-10-22: half the gap between sections) */
+@media (min-width: 769px) {
+  .page-eco main > section { padding-block: 36px; }
+  .page-eco main > section:first-of-type { padding-top: 56px; }
+  .page-eco .sec-head { margin-bottom: 32px; }
+  .page-eco .pf-disc.eco-notes { margin-top: 32px; }
+  .page-eco .eco-facts { margin-top: 48px; }
+  .page-eco .eco-article { margin-top: 48px; }
+  .page-eco .eco-sec + .eco-sec { margin-top: 48px; }
+}
