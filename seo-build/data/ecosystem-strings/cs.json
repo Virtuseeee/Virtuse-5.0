@@ -1,0 +1,297 @@
+{
+  "_note": "English source for the Ecosystem pages. Translations in <lang>.json use exactly the same keys. Keep HTML tags, {placeholders} and href values unchanged.",
+  "ui": {
+    "navLabel": "Ekosystém",
+    "overview": "Přehled",
+    "home": "Domů",
+    "crumbEcosystem": "Ekosystém",
+    "howWePick": "Jak vybíráme",
+    "howWePickText": "Každou položku vybíráme ručně. Musí být zaměřená jen na Bitcoin, relevantní pro Evropu, aktivní a poctivá. Každé hodnocení píšeme sami. Placená umístění jsou vždy označena „Sponzorováno“ a naše hodnocení nikdy nemění.",
+    "criteriaLink": "Přečtěte si naše kritéria pro zařazení",
+    "related": "Související na Virtuse",
+    "reviewed": "Naposledy zkontrolováno:",
+    "notAdvice": "Položky mají informativní charakter a nejsou investičním poradenstvím.",
+    "privacyFootNote": "Zajímá vás, jak Virtuse nakládá s vašimi údaji? Přečtěte si naše <a href=\"{privacy}\">zásady ochrany osobních údajů</a>.",
+    "sponsored": "Sponzorováno",
+    "picks": "{n} doporučení",
+    "applyForListing": "Požádat o zařazení",
+    "promoteCta": "Znáte projekt zaměřený jen na Bitcoin, který sem patří? Nechte ho zařadit",
+    "allPages": "Prozkoumejte ekosystém",
+    "faq": "Časté otázky",
+    "entriesNote": "Popisy položek jsou v angličtině.",
+    "tableEvent": "Akce",
+    "tableCity": "Město",
+    "tableDates": "Termín",
+    "tableLink": "Web",
+    "websiteButton": "Web",
+    "confTbcSep2027": "září 2027, bude potvrzeno",
+    "confTba2027": "2027, termín bude oznámen",
+    "cities": {
+      "Amsterdam": "Amsterdam",
+      "Kreuzlingen": "Kreuzlingen",
+      "Prague": "Praha",
+      "Warsaw": "Varšava",
+      "Helsinki": "Helsinky",
+      "Riga": "Riga"
+    },
+    "indexRelated": [
+      "Virtuse Brief: týdenní zprávy o Bitcoinu",
+      "S Bitcoinem začínáte? Začněte zde"
+    ],
+    "promoteCrumb": "Zařazení"
+  },
+  "promote": {
+    "criteriaH": "Kritéria",
+    "criteria": [
+      "<strong>Jen Bitcoin.</strong> Podporujete bitcoin (on-chain a/nebo Lightning) a neuvádíte, neprodáváte ani nepropagujete jiné kryptoměny či tokeny.",
+      "<strong>Relevantní pro Evropu.</strong> Obsluhujete uživatele v EU/EHP nebo ve Švýcarsku.",
+      "<strong>Regulováno tam, kde je to nutné.</strong> Pokud v EU poskytujete služby spojené s kryptoaktivy, máte povolení podle MiCA (CASP) nebo platnou přechodnou licenci.",
+      "<strong>Aktivní a udržovaný projekt</strong> s funkčním veřejným webem.",
+      "<strong>Poctivost:</strong> žádné sliby výnosů a žádná nezveřejněná úschova."
+    ],
+    "paidH": "Placené umístění",
+    "paid": "Některé položky jsou označeny „Sponzorováno“ nebo „Doporučeno“. Jde o placená umístění a některé odkazy jsou affiliate odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href=\"{howWeEarn}\">Jak vyděláváme</a>.",
+    "removalH": "Odstranění",
+    "removal": "Položku můžeme odstranit, pokud přestane splňovat kritéria. O odstranění můžete kdykoli požádat.",
+    "applyH": "Žádost",
+    "required": "Pole označená * jsou povinná. Každou žádost posuzujeme osobně; nic se nezveřejňuje automaticky.",
+    "fProject": "Název projektu *",
+    "fWebsite": "URL webu *",
+    "fCategory": "Kategorie ekosystému *",
+    "fCategoryChoose": "Vyberte kategorii",
+    "fDesc": "Krátký popis v angličtině (max. 300 znaků) *",
+    "fCountries": "Obsluhované země *",
+    "fAllCountries": "Všechny země EU/EHP a Švýcarsko",
+    "fChooseCountries": "Vybrat konkrétní země",
+    "fBitcoinOnly": "Potvrzuji, že projekt je zaměřený jen na Bitcoin (žádné jiné kryptoměny ani tokeny) *",
+    "fLicence": "Číslo licence MiCA a orgán, který ji vydal (pokud se uplatní)",
+    "fRepo": "URL open-source repozitáře",
+    "fContactName": "Jméno kontaktní osoby *",
+    "fContactEmail": "Kontaktní e-mail *",
+    "fSponsored": "Máte zájem o doporučené nebo sponzorované umístění?",
+    "fYes": "Ano",
+    "fNo": "Ne",
+    "fMessage": "Zpráva",
+    "fConsent": "Souhlasím, že Virtuse zpracuje tyto údaje za účelem posouzení žádosti, jak je popsáno v <a href=\"{privacy}\">zásadách ochrany osobních údajů</a>. *",
+    "fSubmit": "Odeslat žádost",
+    "mRequired": "Vyplňte prosím všechna povinná pole.",
+    "mCountry": "Vyberte prosím alespoň jednu zemi.",
+    "mSending": "Odesílání…",
+    "mOk": "Děkujeme. Vaši žádost jsme přijali a na váš e-mail jsme poslali potvrzení. Posouzení obvykle trvá až 30 dní.",
+    "mFail": "Odeslání se nepodařilo. Pošlete prosím žádost e-mailem na <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
+    "mail": "Dáváte přednost e-mailu? Napište na <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+  },
+  "pages": {
+    "index": {
+      "nav": "Ekosystém",
+      "h1": "Bitcoinový ekosystém",
+      "title": "Bitcoinový ekosystém: ověřené zdroje | Virtuse",
+      "description": "Ručně vybrané knihy, podcasty, nástroje pro soukromí, konference a práce zaměřené jen na Bitcoin pro Evropany. Ověřuje Virtuse.",
+      "intro": "Ručně vybraný adresář zdrojů zaměřených jen na Bitcoin pro lidi v Evropě: co číst, poslouchat a sledovat, kde se potkat s dalšími bitcoinery, jak chránit své soukromí a kde s Bitcoinem platit, stavět a pracovat. Každou položku vybírá a kontroluje náš tým.",
+      "navDesc": "Všechny zdroje jen o Bitcoinu"
+    },
+    "what-is-bitcoin": {
+      "nav": "Co je Bitcoin?",
+      "navDesc": "Srozumitelný úvod",
+      "h1": "Co je Bitcoin?",
+      "title": "Co je Bitcoin? Srozumitelný průvodce | Virtuse",
+      "description": "Co je Bitcoin, proč je jeho množství pevně omezeno na 21 milionů a jak funguje, vysvětleno jednoduše, s nejlepšími bezplatnými zdroji.",
+      "intro": "Bitcoin jsou peníze, které nevydává ani nekontroluje žádná firma ani vláda. Tento úvod jednoduše vysvětluje, co Bitcoin je, proč je jeho množství pevné, jak funguje a jakým rizikům byste měli rozumět. Následují bezplatné zdroje, které doporučujeme pro hlubší studium.",
+      "listHeading": "Bezplatné zdroje pro hlubší studium",
+      "related": [
+        "Časté otázky Virtuse",
+        "Proč Bitcoin není Ponziho schéma",
+        "23 důvodů, proč vlastnit Bitcoin",
+        "Pět způsobů, jak pochopit Bitcoin",
+        "Koupit Bitcoin: porovnejte partnery",
+        "Úschova: mějte svůj Bitcoin v bezpečí"
+      ],
+      "primer": [
+        "<h2>Peníze bez vydavatele</h2>",
+        "<p>Bitcoin jsou digitální peníze, které běží na otevřené síti, ne v účetní knize banky. Nikdo je nevydává na požádání a nikdo nemůže síť zmrazit ani přepsat její historii. Bitcoin držíte tak, že držíte tajný klíč, a kdo tento klíč ovládá, může mince přesunout. Od prvního bloku v lednu 2009 síť běží bez centrálního provozovatele, firmy nebo vedení.</p>",
+        "<p>Většina peněz, které používáte, je slib zapsaný nějakou institucí: zůstatek na vašem účtu je závazkem vaší banky a samotnou měnu spravuje centrální banka, která jí může vytvořit více. Bitcoin funguje jinak. Účetní kniha je veřejná, pravidla jsou zapsaná v open-source softwaru a kdokoli si může ověřit, že se dodržují.</p>",
+        "<p>Tento návrh byl odpovědí na konkrétní problém. Před Bitcoinem potřeboval každý digitální platební systém důvěryhodného prostředníka, který bránil tomu, aby lidé utratili stejné peníze dvakrát. Bitcoin tento problém vyřešil bez prostředníka: celá síť se shodne na jediné historii transakcí. Výsledkem je platební síť a aktivum pro úspory, které může využít kdokoli s připojením k internetu, bez žádosti o povolení a bez zakládání účtu.</p>",
+        "<h2>Proč lidé používají Bitcoin</h2>",
+        "<p>Lidé přicházejí k Bitcoinu z různých důvodů. Někteří chtějí dlouhodobé aktivum pro úspory, jehož množství nelze nafouknout. Jiní chtějí posílat hodnotu přes hranice bez zpoždění, uzávěrek a devizových omezení. Další oceňují, že mince ve vlastní úschově nemůže nikdo bez přístupu ke klíčům zmrazit ani zabavit. Firmy ho drží jako rezervu v treasury a v zemích s vysokou inflací slouží často prostě k ochraně příjmů před ztrátou hodnoty.</p>",
+        "<p>Žádné z těchto využití nevyžaduje obchodování. Mnoho Evropanů nakupuje každý měsíc malou pevnou částku (pravidelné nákupy, DCA) a drží roky, což vyhlazuje dopad krátkodobých výkyvů ceny. Naše <a href=\"/bitcoin-dca-calculator/\">DCA kalkulačka</a> ukazuje, jak to fungovalo v minulosti, včetně skutečných poplatků.</p>",
+        "<h2>Vzácnost: limit 21 milionů</h2>",
+        "<p>Celkový počet bitcoinů, které kdy budou existovat, je omezen na 21 milionů. Nové mince dostávají těžaři jako odměnu za zabezpečení sítě a tato odměna se zhruba každé čtyři roky (každých 210 000 bloků) snižuje na polovinu. Většina zásoby už byla vydána; zbývající mince přibývají stále pomaleji, zhruba až do roku 2140.</p>",
+        "<p>Tento pevný a předvídatelný harmonogram je hlavní důvod, proč lidé srovnávají Bitcoin se zlatem. Kvůli rostoucí poptávce nelze vytisknout více a žádná centrální banka nemůže rozhodnout o zředění stávajících držitelů. Zda je Bitcoin dobrým uchovatelem hodnoty pro váš časový horizont, musíte posoudit sami; historie ukazuje dlouhá období silného růstu i hluboké propady o 70 % a více.</p>",
+        "<h2>Bitcoin není „krypto“</h2>",
+        "<p>Tisíce jiných tokenů převzaly části kódu Bitcoinu, ale většina z nich má firmu, nadaci nebo malou skupinu zasvěcených, kteří mohou měnit pravidla, vydávat další jednotky nebo síť pozastavit. To je jiný rizikový profil. Proto se Virtuse věnuje jen Bitcoinu: hodnota Bitcoinu vychází z toho, že nemá žádného vydavatele ani nikoho, kdo by o něm rozhodoval, a to se velmi těžko napodobuje, jakmile má projekt zakladatele, předprodej nebo marketingový rozpočet. Když vám někdo nabízí novou minci se slíbenými výnosy, berte to jako prodejní nabídku, ne jako Bitcoin.</p>",
+        "<h2>Jak to funguje</h2>",
+        "<p>Každá bitcoinová transakce se rozešle do sítě a zkontrolují ji nezávislé počítače zvané uzly (nodes). Každý uzel ověří, že mince existují, že ještě nebyly utraceny a že podpis odesílatele je platný. Uzel může provozovat kdokoli na běžném počítači, a to udržuje pravidla poctivá: uzel bloky, které je porušují, jednoduše ignoruje.</p>",
+        "<p>Těžaři shromažďují platné transakce do bloků, zhruba jeden každých deset minut. Aby těžař mohl přidat blok, musí vynaložit skutečnou elektřinu na vyřešení kryptografické úlohy (proof of work). Právě tento náklad dělá přepisování historie nepraktickým: změna staré transakce by vyžadovala zopakovat veškerou práci od té doby, a to rychleji než zbytek sítě dohromady.</p>",
+        "<p>Rychlejší a levnější platby běží na vrstvách postavených nad Bitcoinem, především na síti Lightning Network, která vypořádá malé platby během sekund a pro konečnou bezpečnost se stále opírá o základní blockchain.</p>",
+        "<p>Na Lightningu dvě strany uzamknou bitcoin do společného kanálu a pak mezi sebou aktualizují zůstatek, jak často chtějí, téměř okamžitě a za zlomky centu. Kanály se propojují do sítě, takže můžete zaplatit i někomu, s kým jste kanál nikdy neotevřeli. Obchody po celé Evropě už dnes platby přes Lightning přijímají; podívejte se, <a href=\"/ecosystem/spend-bitcoin/\">kde platit bitcoinem</a>, a na <a href=\"/ecosystem/store-tools/\">nástroje pro obchodníky</a>.</p>",
+        "<h2>Základy vlastní úschovy</h2>",
+        "<p>Vlastnit bitcoin znamená ovládat jeho klíče. Pokud necháte mince na platformě, máte pohledávku vůči této platformě, ne samotné mince. Vlastní úschova toto riziko protistrany odstraňuje, ale za zálohy odpovídáte vy: vaše obnovovací fráze (obvykle 12 nebo 24 slov) obnoví peněženku a kdokoli, kdo ji uvidí, vám může mince vzít.</p>",
+        "<p>Existují tři běžné modely. Při úschově u regulovaného poskytovatele drží klíče poskytovatel a vy se spoléháte na jeho zabezpečení a solventnost; je to jednoduché, ale nese to riziko protistrany. Při vlastní úschově s jedním klíčem držíte jeden klíč sami, obvykle v aplikaci peněženky nebo ve vyhrazeném zařízení. Při úschově s více podpisy (multisig, společná úschova) je k přesunu prostředků potřeba několik klíčů, takže ztráta nebo prozrazení jednoho klíče neznamená ztrátu všeho. Správná volba závisí na částce, vaší technické jistotě a na tom, kdo by měl mít k mincím přístup, kdyby se vám něco stalo.</p>",
+        "<p>Rozumný postup pro většinu lidí je začít s malou částkou, vyzkoušet si testovací obnovu, uchovávat obnovovací frázi offline a nikdy ji nezadávat na žádném webu. U větších částek zvažte vyhrazený hardware a plán pro dědice. Podrobnosti najdete na naší <a href=\"/secure.html\">stránce o úschově</a>, v <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">průvodci studenými peněženkami</a> a v <a href=\"/bitcoin-inheritance/\">kontrolním seznamu pro dědictví</a>.</p>",
+        "<h2>Rizika, kterým je třeba rozumět</h2>",
+        "<ul><li><strong>Volatilita.</strong> Cena může během několika měsíců klesnout na polovinu. Držte jen tolik, kolik dokážete držet i při velkých výkyvech.</li><li><strong>Nevratnost.</strong> Odeslané transakce nelze vrátit a ztracený klíč obvykle znamená ztracené mince.</li><li><strong>Podvody.</strong> Nikdo důvěryhodný po vás nebude chtít obnovovací frázi, slibovat zaručené výnosy ani vás tlačit ke spěchu. Buďte zvlášť opatrní u „krypto“ nabídek, které nejsou Bitcoin.</li><li><strong>Daně a pravidla.</strong> Zisky jsou ve většině evropských zemí zdanitelné a poskytovatelé musí dodržovat MiCA a pravidla proti praní peněz. Viz naše <a href=\"/bitcoin-tax/\">daňové průvodce podle zemí</a>.</li></ul>",
+        "<h2>Bitcoin v Evropě</h2>",
+        "<p>Od účinnosti nařízení EU o trzích s kryptoaktivy (MiCA) potřebují firmy, které v EU nabízejí služby spojené s kryptoaktivy, povolení od národního regulátora a musí dodržovat pravidla proti praní peněz, včetně ověření totožnosti. Od roku 2026 navíc směrnice DAC8 ukládá těmto poskytovatelům hlásit transakce zákazníků daňovým úřadům. Držet bitcoin ve vlastní úschově je legální v celé EU, daňové zacházení se ale výrazně liší: některé země osvobozují dlouhodobé držení, jiné zdaňují každý prodej nebo směnu. Než budete prodávat nebo platit, ověřte si pravidla ve své zemi.</p>",
+        "<p>Až budete připraveni nakoupit, porovnejte regulované partnery na naší <a href=\"/buy-bitcoin.html\">stránce Koupit Bitcoin</a>. Tato stránka je vzdělávací a nejde o investiční poradenství.</p>"
+      ],
+      "faq": [
+        {
+          "q": "Kdo Bitcoin ovládá?",
+          "a": "Žádná jednotlivá osoba, firma ani vláda. Pravidla vynucují desítky tisíc nezávislých počítačů (uzlů), z nichž každý kontroluje každou transakci. Změna pravidel vyžaduje širokou shodu mezi lidmi, kteří tyto uzly provozují."
+        },
+        {
+          "q": "Proč je množství omezeno na 21 milionů?",
+          "a": "Limit je zapsaný v softwaru, který běží na každém uzlu. Nové bitcoiny dostávají těžaři podle pevného harmonogramu, který se zhruba každé čtyři roky snižuje na polovinu. Vydávání se tak blíží k nule a celkové množství nikdy nepřekročí 21 milionů."
+        },
+        {
+          "q": "Je Bitcoin v Evropě legální?",
+          "a": "Ano. Vlastnit, kupovat a prodávat bitcoin je legální v celé EU. Firmy, které poskytují služby spojené s kryptoaktivy, musí mít povolení podle MiCA a zisky jsou obecně zdanitelné; pravidla se liší podle země."
+        },
+        {
+          "q": "Jaká jsou hlavní rizika?",
+          "a": "Cena je volatilní, chyby s klíči mohou být nevratné a podvody jsou časté. Investujte jen tolik, kolik dokážete držet i při velkých výkyvech ceny, a než začnete uchovávat větší částky, naučte se, jak funguje úschova."
+        }
+      ]
+    },
+    "books": {
+      "nav": "Knihy",
+      "navDesc": "Vybraný seznam četby",
+      "h1": "Knihy o Bitcoinu",
+      "title": "Nejlepší knihy o Bitcoinu: seznam četby | Virtuse",
+      "description": "Základní knihy o Bitcoinu, od prvních kroků po historii peněz, každá s krátkým hodnocením, pro koho je určena.",
+      "intro": "Knihy, které doporučujeme nejčastěji, od historie peněz po fungování protokolu. Ke každé přidáváme hodnocení na jeden řádek, pro koho je, abyste si snadno vybrali další četbu.",
+      "related": [
+        "Co je Bitcoin? Srozumitelný úvod",
+        "Blog Virtuse",
+        "Bitcoinové podcasty"
+      ]
+    },
+    "podcasts": {
+      "nav": "Podcasty",
+      "navDesc": "Pořady jen o Bitcoinu",
+      "h1": "Bitcoinové podcasty",
+      "title": "Nejlepší bitcoinové podcasty (jen Bitcoin) | Virtuse",
+      "description": "Podcasty jen o Bitcoinu o ekonomii, technologii a svobodě, včetně evropských hlasů, každý s krátkým hodnocením.",
+      "intro": "Pořady jen o Bitcoinu, které stojí za cestu do práce, od dlouhých rozhovorů po technické rozbory, včetně evropských hlasů. Ke každému přidáváme hodnocení na jeden řádek, abyste věděli, co čekat.",
+      "related": [
+        "Virtuse Brief: týdenní zprávy o Bitcoinu",
+        "Bitcoinová videa a kanály",
+        "Knihy o Bitcoinu"
+      ]
+    },
+    "videos": {
+      "nav": "Videa",
+      "navDesc": "Kanály a dokumenty",
+      "h1": "Bitcoinová videa",
+      "title": "Nejlepší bitcoinová videa a YouTube kanály | Virtuse",
+      "description": "Vybrané YouTube kanály, dokumenty a přednášky jen o Bitcoinu, od vysvětlení pro začátečníky po technické rozbory.",
+      "intro": "YouTube kanály, přednášky z konferencí a dokumenty, které doporučujeme, od vysvětlení pro začátečníky po technické návody. Vše jen o Bitcoinu, každé s krátkým hodnocením.",
+      "related": [
+        "Bitcoinové podcasty",
+        "Co je Bitcoin? Srozumitelný úvod",
+        "Bitcoinové konference v Evropě"
+      ]
+    },
+    "conferences": {
+      "nav": "Konference",
+      "navDesc": "Bitcoinové akce v Evropě",
+      "h1": "Bitcoinové konference v Evropě",
+      "title": "Bitcoinové konference v Evropě 2026–2027 | Virtuse",
+      "description": "Nadcházející bitcoinové konference v Evropě s termíny, městy a odkazy: Praha, Amsterdam, Kreuzlingen, Riga, Varšava a další.",
+      "intro": "Nadcházející bitcoinové konference po celé Evropě s termíny, městy a označením, zda jsou jen o Bitcoinu. Proběhlé akce po skončení odstraňujeme; termíny označené „bude potvrzeno“ organizátoři zatím nezveřejnili.",
+      "related": [
+        "Spřátelené projekty zaměřené jen na Bitcoin",
+        "Virtuse Brief: týdenní zprávy o Bitcoinu",
+        "Přednášky z konferencí na videu"
+      ]
+    },
+    "privacy": {
+      "nav": "Soukromí",
+      "navDesc": "Legální nástroje pro soukromí",
+      "h1": "Soukromí v Bitcoinu",
+      "title": "Soukromí v Bitcoinu: nástroje a návody | Virtuse",
+      "description": "Nástroje a návody, jak jako bitcoiner v Evropě chránit své soukromí, od soukromí v síti po opakované použití adres. Legálně a prakticky.",
+      "intro": "Soukromí vás chrání před krádeží, profilováním a cílenými podvody. Tyto nástroje a návody vám pomohou udržet vaši aktivitu s Bitcoinem i běžné prohlížení webu v soukromí, v mezích zákona.",
+      "legalNote": "Tato stránka se týká legálního soukromí: ochrany vašich osobních a finančních údajů před zločinci, obchodníky s daty a zbytečným odhalením. Nikomu nepomáhá obcházet pravidla proti praní peněz, sankce ani daňové povinnosti. Viz naše <a href=\"/aml-compliance.html\">stránka AML a compliance</a>. Zajímá vás, jak Virtuse nakládá s vašimi údaji? To popisují naše <a href=\"/privacy-policy.html\">zásady ochrany osobních údajů</a>.",
+      "related": [
+        "Úschova: mějte svůj Bitcoin v bezpečí",
+        "Bitcoinové nástroje pro vývojáře",
+        "AML a compliance ve Virtuse"
+      ]
+    },
+    "spend-bitcoin": {
+      "nav": "Platit bitcoinem",
+      "navDesc": "Obchody, mapy a dárkové karty",
+      "h1": "Kde platit bitcoinem",
+      "title": "Kde platit bitcoinem v Evropě | Virtuse",
+      "description": "Najděte obchody v Evropě, které přijímají bitcoin, a plaťte účty nebo kupujte dárkové karty bitcoinem či přes Lightning. Jen Bitcoin.",
+      "intro": "Kde v Evropě platit bitcoinem: mapy obchodů, které ho přijímají, dárkové karty pro běžné nákupy a online služby, které můžete zaplatit bitcoinem. Pamatujte, že v mnoha zemích se platba bitcoinem pro daňové účely považuje za zcizení.",
+      "related": [
+        "Přijímejte bitcoin ve svém obchodě",
+        "Daňové výkazy pro Bitcoin",
+        "Daňové průvodce podle zemí"
+      ]
+    },
+    "store-tools": {
+      "nav": "Pro obchodníky",
+      "navDesc": "Přijímejte bitcoin v obchodě",
+      "h1": "Nástroje pro obchodníky",
+      "title": "Přijímejte bitcoin v obchodě: nástroje | Virtuse",
+      "description": "Platební nástroje jen pro Bitcoin pro evropské obchody: vlastní platební brány, pokladny s Lightningem a pluginy pro e-shopy.",
+      "intro": "Nástroje pro přijímání bitcoinu v obchodě, kavárně nebo e-shopu: platební brány na vlastním serveru, pokladní terminály s Lightningem a pluginy pro běžné e-commerce platformy. Držení bitcoinu v rozvaze firmy je samostatné téma, kterému se věnujeme na stránce Treasury.",
+      "related": [
+        "Bitcoin treasury pro firmy",
+        "Daňové výkazy pro Bitcoin",
+        "Kde platit bitcoinem"
+      ]
+    },
+    "dev-tools": {
+      "nav": "Pro vývojáře",
+      "navDesc": "Knihovny a SDK",
+      "h1": "Nástroje pro vývojáře",
+      "title": "Bitcoinové nástroje a knihovny pro vývojáře | Virtuse",
+      "description": "Knihovny, SDK a newslettery pro vývoj na Bitcoinu a Lightningu, vybrané pro vývojáře a týmy v Evropě.",
+      "intro": "Knihovny, SDK, testovací prostředí a četba pro vývojáře, kteří stavějí na Bitcoinu a Lightningu. Především open source, přičemž několik projektů spravují evropské týmy.",
+      "related": [
+        "Práce a granty v Bitcoinu",
+        "Nástroje pro obchodníky",
+        "Soukromí v Bitcoinu"
+      ]
+    },
+    "jobs": {
+      "nav": "Práce v Bitcoinu",
+      "navDesc": "Práce, granty a stipendia",
+      "h1": "Práce v Bitcoinu",
+      "title": "Práce v Bitcoinu v Evropě: firmy jen pro Bitcoin | Virtuse",
+      "description": "Kde najít práci ve firmách zaměřených jen na Bitcoin v Evropě i na dálku, od vývoje po marketing a podporu.",
+      "intro": "Kde najít práci v Bitcoinu: pracovní portály firem zaměřených jen na Bitcoin a také granty, stipendia a vzdělávací programy pro vývojáře. Pracovní nabídky sami nezveřejňujeme; každý odkaz vede ke zdroji.",
+      "related": [
+        "Bitcoinové nástroje pro vývojáře",
+        "Bitcoinové konference v Evropě",
+        "Spřátelené bitcoinové projekty"
+      ]
+    },
+    "peers": {
+      "nav": "Spřátelené projekty",
+      "navDesc": "Další projekty jen o Bitcoinu",
+      "h1": "Spřátelené bitcoinové projekty",
+      "title": "Spřátelené bitcoinové projekty | Virtuse",
+      "description": "Nezávislé projekty, adresáře a vzdělavatelé zaměření jen na Bitcoin, kterých si vážíme a které doporučujeme. Nekomerční, ručně vybrané.",
+      "intro": "Nezávislé, nekomerční projekty zaměřené jen na Bitcoin, kterých si vážíme: adresáře, vzdělavatelé a komunity, které s námi sdílejí názor, že Bitcoin stačí. Komerční partneři zde nejsou; najdete je pouze v Partner Finder.",
+      "partnerNote": "Hledáte regulované partnery pro nákup, úschovu nebo půjčku? Použijte <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Finder</a>.",
+      "related": [
+        "Hledáte regulované partnery? Použijte Partner Finder",
+        "Nechte zařadit svůj projekt",
+        "Bitcoinové konference v Evropě"
+      ]
+    },
+    "promote": {
+      "nav": "Zařazení",
+      "navDesc": "Nechte zařadit svůj projekt",
+      "h1": "Zařazení do ekosystému",
+      "title": "Zařazení do bitcoinového ekosystému | Virtuse",
+      "description": "Jak mohou projekty zaměřené jen na Bitcoin požádat o zařazení do ekosystému Virtuse. Ruční kontrola, jasná kritéria, placená umístění označena.",
+      "intro": "Adresář Bitcoinový ekosystém Virtuse sestavujeme ručně. Automatické přihlášky nepřijímáme. Pokud si myslíte, že sem váš projekt patří, napište nám e-mail nebo odešlete formulář níže. Každou žádost posuzujeme osobně a můžeme ji odmítnout bez udání důvodu."
+    }
+  }
+}

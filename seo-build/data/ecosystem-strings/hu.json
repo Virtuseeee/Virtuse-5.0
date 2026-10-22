@@ -1,0 +1,297 @@
+{
+  "_note": "English source for the Ecosystem pages. Translations in <lang>.json use exactly the same keys. Keep HTML tags, {placeholders} and href values unchanged.",
+  "ui": {
+    "navLabel": "Ökoszisztéma",
+    "overview": "Áttekintés",
+    "home": "Főoldal",
+    "crumbEcosystem": "Ökoszisztéma",
+    "howWePick": "Hogyan válogatunk",
+    "howWePickText": "Minden bejegyzést kézzel választunk ki: csak Bitcoinnal foglalkozhat, Európában releváns, működő és tisztességes kell legyen. Az értékelést mindig mi magunk írjuk. A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg az értékelésünket.",
+    "criteriaLink": "Felvételi feltételeink",
+    "related": "Kapcsolódó tartalmak a Virtuse oldalán",
+    "reviewed": "Utoljára ellenőrizve:",
+    "notAdvice": "A listázás tájékoztató jellegű, nem befektetési tanácsadás.",
+    "privacyFootNote": "Kíváncsi, hogyan kezeli a Virtuse az Ön adatait? Olvassa el <a href=\"{privacy}\">adatvédelmi szabályzatunkat</a>.",
+    "sponsored": "Szponzorált",
+    "picks": "{n} ajánlás",
+    "applyForListing": "Jelentkezés listázásra",
+    "promoteCta": "Ismer egy kizárólag Bitcoinnal foglalkozó projektet, amelynek itt a helye? Jelentkezzen a bemutatásra",
+    "allPages": "Fedezze fel az ökoszisztémát",
+    "faq": "Gyakori kérdések",
+    "entriesNote": "A bejegyzések leírása angol nyelvű.",
+    "tableEvent": "Esemény",
+    "tableCity": "Város",
+    "tableDates": "Időpont",
+    "tableLink": "Weboldal",
+    "websiteButton": "Weboldal",
+    "confTbcSep2027": "2027. szeptember, megerősítésre vár",
+    "confTba2027": "2027, az időpontot később közlik",
+    "cities": {
+      "Amsterdam": "Amszterdam",
+      "Kreuzlingen": "Kreuzlingen",
+      "Prague": "Prága",
+      "Warsaw": "Varsó",
+      "Helsinki": "Helsinki",
+      "Riga": "Riga"
+    },
+    "indexRelated": [
+      "Virtuse Brief: heti Bitcoin-hírek",
+      "Új a Bitcoin világában? Kezdje itt"
+    ],
+    "promoteCrumb": "Bemutatkozás"
+  },
+  "promote": {
+    "criteriaH": "Feltételek",
+    "criteria": [
+      "<strong>Csak Bitcoin.</strong> A projekt a bitcoint támogatja (láncon és/vagy Lightningon), és nem listáz, nem értékesít és nem népszerűsít más kriptovalutákat vagy tokeneket.",
+      "<strong>Európában releváns.</strong> Az EU/EGT vagy Svájc felhasználóit szolgálja ki.",
+      "<strong>Ahol szükséges, szabályozott.</strong> Ha kriptoeszköz-szolgáltatást nyújt az EU-ban, MiCA (CASP) engedéllyel vagy érvényes átmeneti engedéllyel rendelkezik.",
+      "<strong>Működő és karbantartott,</strong> elérhető nyilvános weboldallal.",
+      "<strong>Tisztességes:</strong> nem ígér hozamot, és nem tart titkolt letétkezelést."
+    ],
+    "paidH": "Fizetett megjelenés",
+    "paid": "Egyes bejegyzések „Szponzorált” vagy „Kiemelt” jelölést kapnak. Ezek fizetett megjelenések, és egyes linkek partnerlinkek. A fizetés soha nem változtat a feltételeinken vagy az értékelésünkön, és nem garantálja a felvételt. Részletek: <a href=\"{howWeEarn}\">Miből élünk</a>.",
+    "removalH": "Eltávolítás",
+    "removal": "Egy bejegyzést eltávolíthatunk, ha már nem felel meg a feltételeknek. Az eltávolítást Ön bármikor kérheti.",
+    "applyH": "Jelentkezés",
+    "required": "A *-gal jelölt mezők kitöltése kötelező. Minden jelentkezést személyesen bírálunk el; semmi sem jelenik meg automatikusan.",
+    "fProject": "Projekt neve *",
+    "fWebsite": "Weboldal URL-je *",
+    "fCategory": "Ökoszisztéma-kategória *",
+    "fCategoryChoose": "Válasszon kategóriát",
+    "fDesc": "Rövid angol nyelvű leírás (legfeljebb 300 karakter) *",
+    "fCountries": "Kiszolgált országok *",
+    "fAllCountries": "Minden EU/EGT-ország és Svájc",
+    "fChooseCountries": "Konkrét országok kiválasztása",
+    "fBitcoinOnly": "Megerősítem, hogy a projekt kizárólag Bitcoinnal foglalkozik (más kriptovaluták vagy tokenek nélkül) *",
+    "fLicence": "MiCA-/engedélyszám és kiadó hatóság (ha van)",
+    "fRepo": "Nyílt forráskódú tároló URL-je",
+    "fContactName": "Kapcsolattartó neve *",
+    "fContactEmail": "Kapcsolattartó e-mail-címe *",
+    "fSponsored": "Érdekli a kiemelt vagy szponzorált megjelenés?",
+    "fYes": "Igen",
+    "fNo": "Nem",
+    "fMessage": "Üzenet",
+    "fConsent": "Hozzájárulok, hogy a Virtuse ezeket az adatokat a jelentkezés elbírálásához kezelje, az <a href=\"{privacy}\">adatvédelmi szabályzatban</a> leírtak szerint. *",
+    "fSubmit": "Jelentkezés elküldése",
+    "mRequired": "Kérjük, töltse ki az összes kötelező mezőt.",
+    "mCountry": "Kérjük, válasszon legalább egy országot.",
+    "mSending": "Küldés…",
+    "mOk": "Köszönjük. Megkaptuk jelentkezését, és visszaigazolást küldtünk e-mailben. Az elbírálás általában legfeljebb 30 napot vesz igénybe.",
+    "mFail": "A küldés nem sikerült. Kérjük, küldje el jelentkezését e-mailben a következő címre: <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
+    "mail": "Inkább e-mailben írna? Címünk: <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+  },
+  "pages": {
+    "index": {
+      "nav": "Ökoszisztéma",
+      "h1": "Bitcoin-ökoszisztéma",
+      "title": "Bitcoin-ökoszisztéma: válogatott források | Virtuse",
+      "description": "Válogatott, kizárólag Bitcoinról szóló könyvek, podcastok, adatvédelmi eszközök, konferenciák és állások európaiaknak. A Virtuse ellenőrzésével.",
+      "intro": "Kézzel válogatott, kizárólag Bitcoinról szóló források gyűjteménye európaiaknak: mit érdemes olvasni, hallgatni és nézni, hol találkozhat más bitcoinerekkel, hogyan védheti adatait, és hol költhet, fejleszthet és dolgozhat Bitcoinnal. Minden bejegyzést csapatunk választ ki és ellenőriz.",
+      "navDesc": "Minden Bitcoin-forrás egy helyen"
+    },
+    "what-is-bitcoin": {
+      "nav": "Mi a Bitcoin?",
+      "navDesc": "Közérthető bevezető",
+      "h1": "Mi a Bitcoin?",
+      "title": "Mi a Bitcoin? Közérthető útmutató | Virtuse",
+      "description": "Mi a Bitcoin, miért rögzített a kínálata 21 millióban és hogyan működik, egyszerűen elmagyarázva, a legjobb ingyenes forrásokkal.",
+      "intro": "A Bitcoin olyan pénz, amelyet sem vállalat, sem kormány nem bocsát ki és nem irányít. Ez a bevezető közérthetően elmagyarázza, mi a Bitcoin, miért rögzített a kínálata, hogyan működik és milyen kockázatokkal kell tisztában lennie, majd bemutatja az általunk ajánlott ingyenes forrásokat a további tájékozódáshoz.",
+      "listHeading": "Ingyenes források a további tájékozódáshoz",
+      "related": [
+        "Virtuse GYIK",
+        "Miért nem piramisjáték a Bitcoin",
+        "23 ok, amiért érdemes Bitcoint tartani",
+        "Öt módja annak, hogy megértse a Bitcoint",
+        "Bitcoin-vásárlás: partnerek összehasonlítása",
+        "Letétkezelés: tartsa biztonságban Bitcoinját"
+      ],
+      "primer": [
+        "<h2>Pénz kibocsátó nélkül</h2>",
+        "<p>A Bitcoin digitális pénz, amely nem egy bank főkönyvében, hanem egy nyílt hálózaton működik. Senki sem bocsáthat ki belőle tetszés szerint, és senki sem fagyaszthatja be a hálózatot vagy írhatja át a múltját. Bitcoint egy titkos kulcs birtoklásával tart, és aki ezt a kulcsot ellenőrzi, az mozgathatja az érméket. Az első, 2009 januárjában létrejött blokk óta a hálózat központi üzemeltető, vállalat vagy igazgatótanács nélkül működik.</p>",
+        "<p>A legtöbb pénz, amelyet használ, egy intézmény által nyilvántartott ígéret: bankszámlája egyenlege a bank kötelezettsége, magát a valutát pedig egy központi bank kezeli, amely többet is létrehozhat belőle. A Bitcoin másként működik. A főkönyv nyilvános, a szabályok nyílt forráskódú szoftverben vannak rögzítve, és bárki ellenőrizheti, hogy betartják-e őket.</p>",
+        "<p>Ez a felépítés egy konkrét problémára adott válasz. A Bitcoin előtt minden digitális fizetési rendszernek szüksége volt egy megbízható közvetítőre, hogy senki ne költhesse el ugyanazt a pénzt kétszer. A Bitcoin közvetítő nélkül oldotta meg ezt: a teljes hálózat egyetlen tranzakciótörténetben állapodik meg. Az eredmény egy fizetési hálózat és megtakarítási eszköz, amelyet internetkapcsolattal bárki használhat, engedélykérés és számlanyitás nélkül.</p>",
+        "<h2>Miért használják az emberek a Bitcoint</h2>",
+        "<p>Az emberek különböző okokból fordulnak a Bitcoin felé. Vannak, akik hosszú távú megtakarítási eszközt keresnek, amelynek kínálatát nem lehet felhígítani. Mások késedelem, határidők és devizakorlátozások nélkül szeretnének értéket küldeni határokon át. Megint mások azt értékelik, hogy a saját őrzésben tartott érméket senki sem fagyaszthatja be vagy foglalhatja le a kulcsok nélkül. Vállalatok tartalékként tartják, a magas inflációjú országokban pedig gyakran egyszerűen a jövedelem értékének megőrzésére használják.</p>",
+        "<p>Egyik felhasználási mód sem igényel kereskedést. Sok európai minden hónapban kis, fix összegért vásárol (átlagár-módszer, DCA), és évekig tartja, ami kisimítja a rövid távú árfolyam-ingadozások hatását. <a href=\"/bitcoin-dca-calculator/\">DCA-kalkulátorunk</a> megmutatja, hogyan működött ez a múltban, valós díjakkal számolva.</p>",
+        "<h2>Szűkösség: a 21 milliós korlát</h2>",
+        "<p>Az összes valaha létező bitcoin mennyisége 21 millióban van maximalizálva. Új érméket a bányászok kapnak jutalomként a hálózat biztosításáért, és ez a jutalom nagyjából négyévente (210 000 blokkonként) feleződik. A kínálat nagy része már kibocsátásra került; a maradék érmék egyre lassabban érkeznek, egészen 2140 körülig.</p>",
+        "<p>Ez a rögzített, kiszámítható ütemezés a fő oka annak, hogy a Bitcoint az aranyhoz hasonlítják. Nem lehet többet nyomtatni belőle, mert nő a kereslet, és egyetlen központi bank sem dönthet úgy, hogy felhígítja a meglévő tulajdonosok részesedését. Hogy ez saját időtávján jó értékmegőrzővé teszi-e a Bitcoint, azt Önnek kell eldöntenie; a múltban hosszú, erős növekedési időszakok és 70 %-os vagy nagyobb mély visszaesések egyaránt előfordultak.</p>",
+        "<h2>A Bitcoin nem „kripto”</h2>",
+        "<p>Több ezer más token másolta le a Bitcoin kódjának egyes részeit, de a legtöbb mögött áll egy vállalat, egy alapítvány vagy a bennfentesek egy szűk csoportja, amely megváltoztathatja a szabályokat, újabb egységeket bocsáthat ki vagy leállíthatja a hálózatot. Ez más kockázati profil. A Virtuse ezért foglalkozik kizárólag Bitcoinnal: a Bitcoin értéke abból fakad, hogy nincs kibocsátója és senki sem irányítja, és ezt nagyon nehéz megismételni, ha egy projektnek alapítói, előértékesítése vagy marketingkerete van. Ha valaki egy új érmét kínál Önnek ígért hozammal, kezelje értékesítési ajánlatként, ne Bitcoinként.</p>",
+        "<h2>Hogyan működik</h2>",
+        "<p>Minden bitcoin-tranzakció a hálózatra kerül, és független számítógépek, úgynevezett csomópontok (node-ok) ellenőrzik. Minden csomópont megvizsgálja, hogy az érmék léteznek-e, nem költötték-e el őket korábban, és érvényes-e a küldő aláírása. Csomópontot bárki futtathat egy átlagos számítógépen, és éppen ez tartja tisztességesen a szabályokat: a csomópont egyszerűen figyelmen kívül hagyja a szabályokat sértő blokkokat.</p>",
+        "<p>A bányászok az érvényes tranzakciókat blokkokba gyűjtik, nagyjából tízpercenként egyet. Egy blokk hozzáadásához a bányásznak valódi áramot kell felhasználnia egy kriptográfiai feladvány megoldására (proof of work, munkabizonyíték). Ez a költség teszi a múlt átírását gyakorlatilag lehetetlenné: egy régi tranzakció módosításához az azóta elvégzett összes munkát újra el kellene végezni, gyorsabban, mint a hálózat többi része együttvéve.</p>",
+        "<p>A gyorsabb és olcsóbb fizetések a Bitcoinra épülő rétegeken futnak, elsősorban a Lightning hálózaton, amely másodpercek alatt rendezi a kis összegű fizetéseket, miközben a végső biztonságot továbbra is az alapláncra bízza.</p>",
+        "<p>A Lightningon két fél bitcoint zár le egy közös csatornába, majd tetszőleges gyakorisággal frissíti a köztük lévő egyenleget, szinte azonnal és a cent töredékéért. A csatornák hálózattá kapcsolódnak, így olyasvalakinek is fizethet, akivel soha nem nyitott csatornát. Európa-szerte már ma is fogadnak Lightning-fizetést üzletek; lásd: <a href=\"/ecosystem/spend-bitcoin/\">hol költhet bitcoint</a> és <a href=\"/ecosystem/store-tools/\">eszközök kereskedőknek</a>.</p>",
+        "<h2>A saját őrzés alapjai</h2>",
+        "<p>Bitcoint birtokolni annyit jelent, mint ellenőrizni a kulcsait. Ha egy platformon hagyja az érméit, akkor egy követelése van a platformmal szemben, nem magukat az érméket birtokolja. A saját őrzés megszünteti ezt a partnerkockázatot, de Önt teszi felelőssé a biztonsági mentésért: a helyreállítási kifejezés (általában 12 vagy 24 szó) visszaállítja a tárcáját, és aki látja, elviheti az érméit.</p>",
+        "<p>Három elterjedt modell létezik. Szabályozott szolgáltatónál történő letétkezelés esetén a kulcsokat a szolgáltató tartja, és Ön annak biztonságára és fizetőképességére támaszkodik; ez egyszerű, de partnerkockázattal jár. Egykulcsos saját őrzésnél egy kulcsot Ön tart, általában tárcaalkalmazásban vagy erre szolgáló eszközön. Többaláírásos (multisig, együttműködő) őrzésnél több kulcs kell az összegek mozgatásához, így egy kulcs elvesztése vagy kompromittálódása nem jelenti mindennek az elvesztését. A helyes választás az összegtől, a technikai jártasságától és attól függ, kinek kell hozzáférnie az érmékhez, ha Önnel történik valami.</p>",
+        "<p>A legtöbb ember számára észszerű út, ha kis összeggel kezd, kipróbál egy próbavisszaállítást, a helyreállítási kifejezést offline tartja, és soha nem gépeli be egy weboldalra. Nagyobb összegeknél érdemes dedikált hardvert használni, és tervet készíteni az örökösök számára. <a href=\"/secure.html\">Letétkezelési oldalunk</a>, a <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">hidegtárca-útmutató</a> és az <a href=\"/bitcoin-inheritance/\">öröklési ellenőrzőlista</a> részletesen foglalkozik ezekkel.</p>",
+        "<h2>Kockázatok, amelyeket érdemes megérteni</h2>",
+        "<ul><li><strong>Volatilitás.</strong> Az árfolyam hónapok alatt a felére eshet. Csak annyit tartson, amennyit nagy ingadozások mellett is meg tud tartani.</li><li><strong>Visszafordíthatatlanság.</strong> Az elküldött tranzakciók nem vonhatók vissza, és egy elveszett kulcs általában elveszett érméket jelent.</li><li><strong>Csalások.</strong> Megbízható fél soha nem kéri el a helyreállítási kifejezését, nem ígér garantált hozamot és nem sürgeti. Legyen különösen óvatos a nem Bitcoinra vonatkozó „kripto” ajánlatokkal.</li><li><strong>Adók és szabályok.</strong> A nyereség a legtöbb európai országban adóköteles, a szolgáltatóknak pedig be kell tartaniuk a MiCA-t és a pénzmosás elleni szabályokat. Lásd <a href=\"/bitcoin-tax/\">országonkénti adóútmutatóinkat</a>.</li></ul>",
+        "<h2>Bitcoin Európában</h2>",
+        "<p>Mióta hatályba lépett az EU kriptoeszköz-piacokról szóló rendelete (MiCA), az EU-ban kriptoeszköz-szolgáltatást nyújtó vállalatoknak nemzeti szabályozói engedélyre van szükségük, és be kell tartaniuk a pénzmosás elleni szabályokat, beleértve a személyazonosság ellenőrzését is. 2026-tól a DAC8 irányelv azt is előírja, hogy ezek a szolgáltatók jelentsék az ügyfelek tranzakcióit az adóhatóságoknak. Bitcoint saját őrzésben tartani az EU-ban mindenhol legális, de az adózás országonként nagyon eltérő: egyes országok mentesítik a hosszú távú tartást, mások minden eladást vagy cserét megadóztatnak. Mielőtt elad vagy elkölt, nézze meg országa szabályait.</p>",
+        "<p>Ha készen áll a vásárlásra, hasonlítsa össze a szabályozott partnereket <a href=\"/buy-bitcoin.html\">Bitcoin-vásárlás oldalunkon</a>. Ez az oldal oktatási célú, és nem minősül befektetési tanácsadásnak.</p>"
+      ],
+      "faq": [
+        {
+          "q": "Ki irányítja a Bitcoint?",
+          "a": "Senki: sem egyetlen személy, sem vállalat, sem kormány. A szabályokat több tízezer független számítógép (csomópont) érvényesíti, amelyek mindegyike minden tranzakciót ellenőriz. A szabályok megváltoztatásához a csomópontokat futtatók széles körű egyetértése szükséges."
+        },
+        {
+          "q": "Miért korlátozott a kínálat 21 millióra?",
+          "a": "A korlát benne van abban a szoftverben, amelyet minden csomópont futtat. Új bitcoint a bányászok kapnak egy rögzített ütemezés szerint, amely nagyjából négyévente feleződik, így a kibocsátás a nullához közelít, és az összmennyiség soha nem haladja meg a 21 milliót."
+        },
+        {
+          "q": "Legális a Bitcoin Európában?",
+          "a": "Igen. A bitcoin birtoklása, vásárlása és eladása az egész EU-ban legális. A kriptoeszköz-szolgáltatást nyújtó vállalatoknak MiCA-engedéllyel kell rendelkezniük, a nyereség pedig általában adóköteles; a szabályok országonként eltérnek."
+        },
+        {
+          "q": "Melyek a fő kockázatok?",
+          "a": "Az árfolyam ingadozó, a kulcsokkal elkövetett hibák véglegesek lehetnek, és gyakoriak a csalások. Csak annyit fektessen be, amennyit nagy árfolyam-ingadozások mellett is meg tud tartani, és mielőtt jelentős összeget tárol, ismerje meg a letétkezelés működését."
+        }
+      ]
+    },
+    "books": {
+      "nav": "Könyvek",
+      "navDesc": "Válogatott olvasmánylista",
+      "h1": "Bitcoin-könyvek",
+      "title": "A legjobb Bitcoin-könyvek: válogatott lista | Virtuse",
+      "description": "A legfontosabb Bitcoin-könyvek az első lépésektől a pénztörténetig, mindegyikhez rövid értékeléssel arról, kinek szól.",
+      "intro": "Az általunk leggyakrabban ajánlott könyvek a pénztörténettől a protokoll működéséig. Mindegyikhez egysoros értékelés tartozik arról, kinek szól, így könnyen kiválaszthatja a következő olvasmányt.",
+      "related": [
+        "Mi a Bitcoin? Közérthető bevezető",
+        "A Virtuse blog",
+        "Bitcoin-podcastok"
+      ]
+    },
+    "podcasts": {
+      "nav": "Podcastok",
+      "navDesc": "Csak Bitcoinról szóló műsorok",
+      "h1": "Bitcoin-podcastok",
+      "title": "A legjobb Bitcoin-podcastok (csak Bitcoin) | Virtuse",
+      "description": "Kizárólag Bitcoinról szóló podcastok közgazdaságtanról, technológiáról és szabadságról, európai hangokkal, egysoros értékeléssel.",
+      "intro": "Kizárólag Bitcoinról szóló műsorok, amelyek megérik az ingázás idejét, a hosszú interjúktól a mély technikai elemzésekig, európai hangokkal is. Mindegyikhez egysoros értékelés tartozik, hogy tudja, mire számíthat.",
+      "related": [
+        "Virtuse Brief: heti Bitcoin-hírek",
+        "Bitcoin-videók és -csatornák",
+        "Bitcoin-könyvek"
+      ]
+    },
+    "videos": {
+      "nav": "Videók",
+      "navDesc": "Csatornák és dokumentumfilmek",
+      "h1": "Bitcoin-videók",
+      "title": "A legjobb Bitcoin-videók és YouTube-csatornák | Virtuse",
+      "description": "Válogatott, kizárólag Bitcoinról szóló YouTube-csatornák, dokumentumfilmek és előadások, a kezdő magyarázatoktól a mély technikai elemzésekig.",
+      "intro": "Általunk ajánlott YouTube-csatornák, konferencia-előadások és dokumentumfilmek, a kezdőknek szóló magyarázatoktól a technikai bemutatókig. Mind kizárólag Bitcoinról szól, mindegyikhez rövid értékeléssel.",
+      "related": [
+        "Bitcoin-podcastok",
+        "Mi a Bitcoin? Közérthető bevezető",
+        "Bitcoin-konferenciák Európában"
+      ]
+    },
+    "conferences": {
+      "nav": "Konferenciák",
+      "navDesc": "Bitcoin-események Európában",
+      "h1": "Bitcoin-konferenciák Európában",
+      "title": "Bitcoin-konferenciák Európában 2026–2027 | Virtuse",
+      "description": "Közelgő Bitcoin-konferenciák Európában időpontokkal, városokkal és linkekkel: Prága, Amszterdam, Kreuzlingen, Riga, Varsó és mások.",
+      "intro": "Közelgő Bitcoin-konferenciák Európa-szerte, időpontokkal, városokkal és „csak Bitcoin” jelöléssel. A lezajlott eseményeket eltávolítjuk; a „megerősítésre vár” jelölésű időpontokat a szervezők még nem tették közzé.",
+      "related": [
+        "Bitcoin-társak: más, kizárólag Bitcoinnal foglalkozó projektek",
+        "Virtuse Brief: heti Bitcoin-hírek",
+        "Konferencia-előadások videón"
+      ]
+    },
+    "privacy": {
+      "nav": "Adatvédelem",
+      "navDesc": "Törvényes adatvédelmi eszközök",
+      "h1": "Bitcoin és adatvédelem",
+      "title": "Bitcoin-adatvédelem: eszközök és útmutatók | Virtuse",
+      "description": "Eszközök és útmutatók európai bitcoinereknek magánszférájuk védelméhez, a hálózati adatvédelemtől a címek újrahasználatáig, legálisan és gyakorlatiasan.",
+      "intro": "Az adatvédelem megóvja a lopástól, a profilalkotástól és a célzott csalásoktól. Ezek az eszközök és útmutatók segítenek a törvényes keretek között privátként kezelni Bitcoin-tevékenységét és mindennapi böngészését.",
+      "legalNote": "Ez az oldal a törvényes adatvédelemről szól: arról, hogyan óvhatja meg személyes és pénzügyi adatait a bűnözőktől, az adatkereskedőktől és a szükségtelen kitettségtől. Nem segít senkinek kijátszani a pénzmosás elleni szabályokat, a szankciókat vagy az adókötelezettségeket. Lásd <a href=\"/aml-compliance.html\">AML &amp; megfelelőségi oldalunkat</a>. Kíváncsi, hogyan kezeli a Virtuse az Ön adatait? Erről szól <a href=\"/privacy-policy.html\">adatvédelmi szabályzatunk</a>.",
+      "related": [
+        "Letétkezelés: tartsa biztonságban Bitcoinját",
+        "Bitcoin-fejlesztői eszközök",
+        "AML és megfelelőség a Virtuse-nál"
+      ]
+    },
+    "spend-bitcoin": {
+      "nav": "Fizetés bitcoinnal",
+      "navDesc": "Üzletek, térképek, ajándékkártyák",
+      "h1": "Fizetés bitcoinnal",
+      "title": "Hol fizethet Bitcoinnal Európában? | Virtuse",
+      "description": "Bitcoint elfogadó üzletek Európa-szerte, számlafizetés és ajándékkártyák bitcoinnal vagy Lightninggal. Válogatott, kizárólag Bitcoin.",
+      "intro": "Hol költhet bitcoint Európában: bitcoint elfogadó üzletek térképei, ajándékkártyák a mindennapi vásárlásokhoz és bitcoinnal fizethető online szolgáltatások. Vegye figyelembe, hogy sok országban a bitcoin elköltése adózási szempontból elidegenítésnek minősül.",
+      "related": [
+        "Fogadjon bitcoint üzletében",
+        "Bitcoin-adóbevallás",
+        "Országonkénti adóútmutatók"
+      ]
+    },
+    "store-tools": {
+      "nav": "Kereskedői eszközök",
+      "navDesc": "Bitcoin-fogadás az üzletben",
+      "h1": "Kereskedői eszközök",
+      "title": "Bitcoin-fogadás az üzletben: kereskedői eszközök | Virtuse",
+      "description": "Kizárólag Bitcoint támogató fizetési eszközök európai üzleteknek: saját üzemeltetésű feldolgozók, Lightning POS és webáruház-bővítmények.",
+      "intro": "Eszközök bitcoin fogadásához üzletben, kávézóban vagy webáruházban: saját üzemeltetésű fizetésfeldolgozók, Lightning-alapú pénztárterminálok és bővítmények elterjedt e-kereskedelmi platformokhoz. A bitcoin vállalati mérlegben való tartása külön téma, ezzel Treasury oldalunk foglalkozik.",
+      "related": [
+        "Bitcoin-treasury vállalatoknak",
+        "Bitcoin-adóbevallás",
+        "Hol költhet bitcoint"
+      ]
+    },
+    "dev-tools": {
+      "nav": "Fejlesztői eszközök",
+      "navDesc": "Könyvtárak és SDK-k",
+      "h1": "Bitcoin-fejlesztői eszközök",
+      "title": "Bitcoin-fejlesztői eszközök és könyvtárak | Virtuse",
+      "description": "Könyvtárak, SDK-k és hírlevelek Bitcoinra és Lightningra épülő fejlesztéshez, európai fejlesztőknek és csapatoknak válogatva.",
+      "intro": "Könyvtárak, SDK-k, tesztkörnyezetek és olvasnivalók Bitcoinra és Lightningra fejlesztőknek. Elsősorban nyílt forráskód, több projektet európai csapatok tartanak karban.",
+      "related": [
+        "Bitcoin-állások és -ösztöndíjak",
+        "Kereskedői eszközök",
+        "Bitcoin és adatvédelem"
+      ]
+    },
+    "jobs": {
+      "nav": "Bitcoin-állások",
+      "navDesc": "Állások, támogatások, ösztöndíjak",
+      "h1": "Bitcoin-állások",
+      "title": "Bitcoin-állások Európában és távmunkában | Virtuse",
+      "description": "Hol találhat állást kizárólag Bitcoinnal foglalkozó cégeknél Európában és távmunkában, a fejlesztéstől a marketingen át az ügyféltámogatásig.",
+      "intro": "Hol találhat munkát a Bitcoin világában: állásportálok kizárólag Bitcoinnal foglalkozó cégeknek, valamint támogatások, ösztöndíjak és képzési programok fejlesztőknek. Álláshirdetéseket nem teszünk közzé; minden link a forráshoz vezet.",
+      "related": [
+        "Bitcoin-fejlesztői eszközök",
+        "Bitcoin-konferenciák Európában",
+        "Bitcoin-társak"
+      ]
+    },
+    "peers": {
+      "nav": "Bitcoin-társak",
+      "navDesc": "Rokon Bitcoin-projektek",
+      "h1": "Bitcoin-társak",
+      "title": "Bitcoin-társak: rokon, csak Bitcoin-projektek | Virtuse",
+      "description": "Független, kizárólag Bitcoinnal foglalkozó projektek, címtárak és oktatók, amelyeket tisztelünk és ajánlunk. Nem kereskedelmi, kézzel válogatott.",
+      "intro": "Független, nem kereskedelmi, kizárólag Bitcoinnal foglalkozó projektek, amelyeket tisztelünk: címtárak, oktatók és közösségek, amelyek osztják nézetünket, hogy a Bitcoin elég. Kereskedelmi partnereket itt nem listázunk; azok csak a Partner Finderben jelennek meg.",
+      "partnerNote": "Szabályozott partnert keres vásárláshoz, tároláshoz vagy hitelhez? Használja a <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Findert</a>.",
+      "related": [
+        "Szabályozott partnert keres? Használja a Partner Findert",
+        "Jelentkezzen projektjével a bemutatásra",
+        "Bitcoin-konferenciák Európában"
+      ]
+    },
+    "promote": {
+      "nav": "Bemutatkozás",
+      "navDesc": "Mutassa be projektjét",
+      "h1": "Mutassa be projektjét",
+      "title": "Kerüljön be a Bitcoin-ökoszisztémába | Virtuse",
+      "description": "Így jelentkezhetnek a csak Bitcoinnal foglalkozó projektek a Virtuse Bitcoin-ökoszisztémába. Kézi elbírálás, világos feltételek, jelölt fizetett hely.",
+      "intro": "A Virtuse Bitcoin-ökoszisztéma gyűjteményét kézzel válogatjuk. Automatikus beküldést nem fogadunk el. Ha úgy gondolja, hogy projektjének itt a helye, írjon nekünk e-mailt, vagy küldje el az alábbi jelentkezési űrlapot. Minden jelentkezést személyesen bírálunk el, és indoklás nélkül is elutasíthatjuk."
+    }
+  }
+}

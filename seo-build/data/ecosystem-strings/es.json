@@ -1,0 +1,297 @@
+{
+  "_note": "English source for the Ecosystem pages. Translations in <lang>.json use exactly the same keys. Keep HTML tags, {placeholders} and href values unchanged.",
+  "ui": {
+    "navLabel": "Ecosistema",
+    "overview": "Vista general",
+    "home": "Inicio",
+    "crumbEcosystem": "Ecosistema",
+    "howWePick": "Cómo seleccionamos",
+    "howWePickText": "Cada entrada se elige a mano y debe ser solo Bitcoin, relevante para Europa, estar activa y ser honesta. Cada valoración la escribimos nosotros. Las posiciones de pago siempre se marcan como \"Patrocinado\" y nunca cambian nuestra valoración.",
+    "criteriaLink": "Lea nuestros criterios de inclusión",
+    "related": "Relacionado en Virtuse",
+    "reviewed": "Última revisión:",
+    "notAdvice": "Las fichas son informativas y no constituyen asesoramiento de inversión.",
+    "privacyFootNote": "¿Quiere saber cómo trata Virtuse sus datos? Lea nuestra <a href=\"{privacy}\">política de privacidad</a>.",
+    "sponsored": "Patrocinado",
+    "picks": "{n} recomendaciones",
+    "applyForListing": "Solicitar la inclusión",
+    "promoteCta": "¿Conoce un proyecto solo Bitcoin que debería estar aquí? Consiga que aparezca",
+    "allPages": "Explore el ecosistema",
+    "faq": "Preguntas frecuentes",
+    "entriesNote": "Las descripciones de las entradas están en inglés.",
+    "tableEvent": "Evento",
+    "tableCity": "Ciudad",
+    "tableDates": "Fechas",
+    "tableLink": "Sitio web",
+    "websiteButton": "Sitio web",
+    "confTbcSep2027": "Sep 2027, pendiente de confirmar",
+    "confTba2027": "2027, fecha por anunciar",
+    "cities": {
+      "Amsterdam": "Ámsterdam",
+      "Kreuzlingen": "Kreuzlingen",
+      "Prague": "Praga",
+      "Warsaw": "Varsovia",
+      "Helsinki": "Helsinki",
+      "Riga": "Riga"
+    },
+    "indexRelated": [
+      "Virtuse Brief: noticias semanales sobre Bitcoin",
+      "¿Nuevo en Bitcoin? Empiece aquí"
+    ],
+    "promoteCrumb": "Aparecer en el directorio"
+  },
+  "promote": {
+    "criteriaH": "Criterios",
+    "criteria": [
+      "<strong>Solo Bitcoin.</strong> Su proyecto admite bitcoin (on-chain y/o Lightning) y no lista, vende ni promociona otras criptomonedas o tokens.",
+      "<strong>Relevante para Europa.</strong> Presta servicio a usuarios de la UE/EEE o de Suiza.",
+      "<strong>Regulado cuando sea necesario.</strong> Si presta servicios de criptoactivos en la UE, dispone de una autorización MiCA (CASP) o de una licencia transitoria aplicable.",
+      "<strong>Activo y mantenido,</strong> con un sitio web público operativo.",
+      "<strong>Honesto:</strong> sin promesas de rentabilidad y sin custodia no declarada."
+    ],
+    "paidH": "Posiciones de pago",
+    "paid": "Algunas entradas están marcadas como \"Patrocinado\" o \"Destacado\". Son posiciones de pago, y algunos enlaces son enlaces de afiliado. El pago nunca cambia nuestros criterios ni nuestra valoración, y no garantiza la aceptación. Consulte <a href=\"{howWeEarn}\">Cómo obtenemos ingresos</a>.",
+    "removalH": "Retirada",
+    "removal": "Podemos retirar una ficha si deja de cumplir los criterios. Usted puede solicitar su retirada en cualquier momento.",
+    "applyH": "Solicitud",
+    "required": "Los campos marcados con * son obligatorios. Revisamos cada solicitud personalmente; nada se publica de forma automática.",
+    "fProject": "Nombre del proyecto *",
+    "fWebsite": "URL del sitio web *",
+    "fCategory": "Categoría del ecosistema *",
+    "fCategoryChoose": "Elija una categoría",
+    "fDesc": "Descripción breve en inglés (máx. 300 caracteres) *",
+    "fCountries": "Países en los que opera *",
+    "fAllCountries": "Todos los países de la UE/EEE y Suiza",
+    "fChooseCountries": "Elegir países concretos",
+    "fBitcoinOnly": "Confirmo que el proyecto es solo Bitcoin (sin otras criptomonedas ni tokens) *",
+    "fLicence": "Número de licencia MiCA u otra y autoridad competente (si procede)",
+    "fRepo": "URL del repositorio de código abierto",
+    "fContactName": "Nombre de contacto *",
+    "fContactEmail": "Correo electrónico de contacto *",
+    "fSponsored": "¿Le interesa una posición destacada o patrocinada?",
+    "fYes": "Sí",
+    "fNo": "No",
+    "fMessage": "Mensaje",
+    "fConsent": "Acepto que Virtuse trate estos datos para revisar la solicitud, tal como se describe en la <a href=\"{privacy}\">política de privacidad</a>. *",
+    "fSubmit": "Enviar solicitud",
+    "mRequired": "Rellene todos los campos obligatorios.",
+    "mCountry": "Elija al menos un país.",
+    "mSending": "Enviando…",
+    "mOk": "Gracias. Hemos recibido su solicitud y le hemos enviado una confirmación por correo electrónico. La revisión suele tardar hasta 30 días.",
+    "mFail": "No se ha podido enviar. Envíe su solicitud por correo electrónico a <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
+    "mail": "¿Prefiere el correo electrónico? Escriba a <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>."
+  },
+  "pages": {
+    "index": {
+      "nav": "Ecosistema",
+      "h1": "Ecosistema Bitcoin",
+      "title": "Ecosistema Bitcoin: recursos seleccionados | Virtuse",
+      "description": "Libros, podcasts, herramientas de privacidad, conferencias y empleos solo Bitcoin, seleccionados para europeos. Revisado por Virtuse.",
+      "intro": "Un directorio seleccionado a mano de recursos solo Bitcoin para personas en Europa: qué leer, escuchar y ver, dónde conocer a otros bitcoiners, cómo proteger su privacidad y dónde gastar, construir y trabajar con Bitcoin. Cada entrada la elige y revisa nuestro equipo.",
+      "navDesc": "Todos los recursos solo Bitcoin"
+    },
+    "what-is-bitcoin": {
+      "nav": "¿Qué es Bitcoin?",
+      "navDesc": "Una introducción sencilla",
+      "h1": "¿Qué es Bitcoin?",
+      "title": "¿Qué es Bitcoin? Una guía en lenguaje claro | Virtuse",
+      "description": "Qué es Bitcoin, por qué su oferta está limitada a 21 millones y cómo funciona, explicado de forma sencilla, con los mejores recursos gratuitos.",
+      "intro": "Bitcoin es un dinero que ninguna empresa ni ningún gobierno emite o controla. Esta introducción explica en lenguaje claro qué es, por qué su oferta es fija, cómo funciona y qué riesgos debe conocer, y después recoge los recursos gratuitos que recomendamos para profundizar.",
+      "listHeading": "Recursos gratuitos para profundizar",
+      "related": [
+        "Preguntas frecuentes de Virtuse",
+        "Por qué Bitcoin no es un esquema Ponzi",
+        "23 razones para tener Bitcoin",
+        "Cinco formas de entender Bitcoin",
+        "Comprar Bitcoin: compare socios",
+        "Custodia: mantenga su Bitcoin a salvo"
+      ],
+      "primer": [
+        "<h2>Dinero sin emisor</h2>",
+        "<p>Bitcoin es un dinero digital que funciona en una red abierta y no en el registro contable de un banco. Nadie lo emite a demanda y nadie puede bloquear la red ni reescribir su historial. Usted posee bitcoin al poseer una clave secreta, y quien controla esa clave puede mover las monedas. Desde el primer bloque, en enero de 2009, la red ha seguido funcionando sin un operador central, una empresa ni un consejo de administración.</p>",
+        "<p>La mayor parte del dinero que usa es una promesa registrada por una institución: el saldo de su cuenta es una deuda de su banco, y la propia moneda la gestiona un banco central que puede crear más. Bitcoin funciona de otra manera. El registro es público, las reglas están escritas en software de código abierto y cualquiera puede comprobar que se cumplen.</p>",
+        "<p>Ese diseño respondía a un problema concreto. Antes de Bitcoin, todo sistema de pagos digital necesitaba un intermediario de confianza para impedir que alguien gastara el mismo dinero dos veces. Bitcoin lo resolvió sin intermediario, haciendo que toda la red se pusiera de acuerdo sobre un único historial de transacciones. El resultado es una red de pagos y un activo de ahorro que cualquier persona con conexión a internet puede usar, sin pedir permiso y sin abrir una cuenta.</p>",
+        "<h2>Por qué la gente usa Bitcoin</h2>",
+        "<p>Las personas llegan a Bitcoin por motivos distintos. Algunas buscan un activo de ahorro a largo plazo cuya oferta no se pueda inflar. Otras quieren enviar valor a otros países sin retrasos, horarios de corte ni controles de capitales. Otras valoran que nadie pueda bloquear ni incautar las monedas guardadas en autocustodia sin acceso a las claves. Las empresas lo mantienen como reserva de tesorería, y en países con inflación alta se usa a menudo simplemente para evitar que los ingresos pierdan valor.</p>",
+        "<p>Ninguno de estos usos le obliga a operar. Muchos europeos compran una pequeña cantidad fija cada mes (promediado del coste, o DCA) y la mantienen durante años, lo que suaviza el efecto de las oscilaciones de precio a corto plazo. Nuestra <a href=\"/bitcoin-dca-calculator/\">calculadora DCA</a> muestra cómo ha funcionado históricamente, con comisiones reales incluidas.</p>",
+        "<h2>Escasez: el límite de 21 millones</h2>",
+        "<p>El número total de bitcoin que existirá jamás está limitado a 21 millones. Las nuevas monedas se entregan a los mineros como recompensa por proteger la red, y esa recompensa se reduce a la mitad aproximadamente cada cuatro años (cada 210.000 bloques). La mayor parte de la oferta ya se ha emitido; las monedas restantes llegan cada vez más despacio hasta aproximadamente el año 2140.</p>",
+        "<p>Este calendario fijo y previsible es el principal motivo por el que se compara Bitcoin con el oro. No se puede imprimir más porque suba la demanda, y ningún banco central puede decidir diluir a los tenedores actuales. Si eso convierte a Bitcoin en una buena reserva de valor para su propio horizonte temporal es una valoración que debe hacer usted; la historia muestra largos periodos de fuerte crecimiento y caídas profundas del 70 % o más.</p>",
+        "<h2>Bitcoin no es \"cripto\"</h2>",
+        "<p>Miles de otros tokens han copiado partes del código de Bitcoin, pero la mayoría tiene una empresa, una fundación o un pequeño grupo de personas con información privilegiada que pueden cambiar las reglas, emitir más unidades o detener la red. Es un perfil de riesgo distinto. Por eso Virtuse es solo Bitcoin: el valor de Bitcoin procede de no tener emisor ni responsable, y eso es muy difícil de reproducir cuando un proyecto tiene fundadores, una preventa o un presupuesto de marketing. Si alguien le ofrece una nueva moneda con rentabilidades prometidas, trátelo como una oferta comercial, no como Bitcoin.</p>",
+        "<h2>Cómo funciona</h2>",
+        "<p>Cada transacción de bitcoin se difunde a la red y la comprueban ordenadores independientes llamados nodos. Cada nodo verifica que las monedas existen, que no se han gastado antes y que la firma del remitente es válida. Cualquiera puede ejecutar un nodo en un ordenador normal, y eso es lo que mantiene honestas las reglas: un nodo simplemente ignora los bloques que las incumplen.</p>",
+        "<p>Los mineros agrupan las transacciones válidas en bloques, aproximadamente uno cada diez minutos. Para añadir un bloque, un minero debe gastar electricidad real en resolver un acertijo criptográfico (prueba de trabajo). Este coste es lo que hace inviable reescribir el historial: cambiar una transacción antigua exigiría rehacer todo el trabajo realizado desde entonces, más rápido que el resto de la red en conjunto.</p>",
+        "<p>Los pagos más rápidos y baratos funcionan en capas construidas sobre Bitcoin, sobre todo la Lightning Network, que liquida pagos pequeños en segundos y sigue apoyándose en la cadena principal para la seguridad final.</p>",
+        "<p>En Lightning, dos partes bloquean bitcoin en un canal compartido y después actualizan el saldo entre ellas tantas veces como quieran, casi al instante y por fracciones de céntimo. Los canales se conectan en una red, de modo que puede pagar a alguien con quien nunca ha abierto un canal. Hoy en día hay comercios en toda Europa que aceptan pagos con Lightning; consulte <a href=\"/ecosystem/spend-bitcoin/\">dónde gastar bitcoin</a> y <a href=\"/ecosystem/store-tools/\">herramientas para comercios</a>.</p>",
+        "<h2>Nociones básicas de autocustodia</h2>",
+        "<p>Poseer bitcoin significa controlar sus claves. Si deja las monedas en una plataforma, lo que tiene es un derecho frente a esa plataforma, no las monedas en sí. La autocustodia elimina ese riesgo de contraparte, pero le hace responsable de las copias de seguridad: su frase de recuperación (normalmente de 12 o 24 palabras) restaura su monedero, y cualquiera que la vea puede llevarse sus monedas.</p>",
+        "<p>Hay tres modelos habituales. Con la custodia en un proveedor regulado, el proveedor guarda las claves y usted depende de su seguridad y solvencia; es sencillo, pero conlleva riesgo de contraparte. Con la autocustodia de clave única, usted guarda una clave, normalmente en una aplicación de monedero o en un dispositivo dedicado. Con la custodia multifirma (colaborativa), se necesitan varias claves para mover los fondos, de modo que perder una clave o que una se vea comprometida no significa perderlo todo. La opción adecuada depende del importe, de su soltura técnica y de quién debería poder acceder a las monedas si a usted le ocurriera algo.</p>",
+        "<p>Para la mayoría de las personas, lo sensato es empezar con poco, practicar una recuperación de prueba, guardar la frase de recuperación sin conexión y no escribirla nunca en un sitio web. Para importes mayores, considere un dispositivo dedicado y un plan para sus herederos. Nuestra <a href=\"/secure.html\">página de custodia</a>, la <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">guía de monederos fríos</a> y la <a href=\"/bitcoin-inheritance/\">lista de comprobación para la herencia</a> entran en detalle.</p>",
+        "<h2>Riesgos que debe conocer</h2>",
+        "<ul><li><strong>Volatilidad.</strong> El precio puede caer a la mitad en meses. Mantenga solo lo que pueda conservar durante grandes oscilaciones.</li><li><strong>Irreversibilidad.</strong> Las transacciones enviadas no se pueden revertir, y una clave perdida suele significar monedas perdidas.</li><li><strong>Estafas.</strong> Nadie legítimo le pedirá su frase de recuperación, le prometerá rentabilidades garantizadas ni le meterá prisa. Tenga especial cuidado con las ofertas \"cripto\" que no son Bitcoin.</li><li><strong>Impuestos y normas.</strong> Las ganancias tributan en la mayoría de los países europeos, y los proveedores deben cumplir MiCA y las normas contra el blanqueo de capitales. Consulte nuestras <a href=\"/bitcoin-tax/\">guías fiscales por país</a>.</li></ul>",
+        "<h2>Bitcoin en Europa</h2>",
+        "<p>Desde la entrada en vigor del Reglamento de la UE relativo a los mercados de criptoactivos (MiCA), las empresas que prestan servicios de criptoactivos en la UE necesitan una autorización de un regulador nacional y deben cumplir las normas contra el blanqueo de capitales, incluida la verificación de identidad. Desde 2026, la directiva DAC8 obliga además a estos proveedores a comunicar las transacciones de sus clientes a las autoridades fiscales. Mantener bitcoin en autocustodia es legal en toda la UE, pero el tratamiento fiscal varía mucho: algunos países eximen las tenencias a largo plazo y otros gravan cada venta o permuta. Compruebe las normas de su país antes de vender o gastar.</p>",
+        "<p>Cuando esté preparado para comprar, compare socios regulados en nuestra <a href=\"/buy-bitcoin.html\">página Comprar Bitcoin</a>. Esta página es educativa y no constituye asesoramiento de inversión.</p>"
+      ],
+      "faq": [
+        {
+          "q": "¿Quién controla Bitcoin?",
+          "a": "Ninguna persona, empresa ni gobierno en particular. Las reglas las hacen cumplir decenas de miles de ordenadores independientes (nodos), cada uno de los cuales comprueba todas las transacciones. Cambiar las reglas exige un amplio acuerdo entre quienes ejecutan esos nodos."
+        },
+        {
+          "q": "¿Por qué la oferta está limitada a 21 millones?",
+          "a": "El límite está escrito en el software que ejecuta cada nodo. Los nuevos bitcoin se entregan a los mineros según un calendario fijo que se reduce a la mitad aproximadamente cada cuatro años, de modo que la emisión tiende a cero y el total nunca supera los 21 millones."
+        },
+        {
+          "q": "¿Es legal Bitcoin en Europa?",
+          "a": "Sí. Poseer, comprar y vender bitcoin es legal en toda la UE. Las empresas que prestan servicios de criptoactivos deben estar autorizadas conforme a MiCA, y las ganancias suelen tributar; las normas varían según el país."
+        },
+        {
+          "q": "¿Cuáles son los principales riesgos?",
+          "a": "El precio es volátil, los errores con las claves pueden ser definitivos y las estafas son frecuentes. Invierta solo lo que pueda mantener durante grandes oscilaciones de precio, y aprenda cómo funciona la custodia antes de guardar importes relevantes."
+        }
+      ]
+    },
+    "books": {
+      "nav": "Libros",
+      "navDesc": "Una lista de lectura seleccionada",
+      "h1": "Libros sobre Bitcoin",
+      "title": "Libros sobre Bitcoin: lista de lecturas | Virtuse",
+      "description": "Los libros esenciales sobre Bitcoin, desde los primeros pasos hasta la historia monetaria, cada uno con una breve valoración de a quién va dirigido.",
+      "intro": "Los libros que más recomendamos, desde la historia monetaria hasta el funcionamiento del protocolo. Cada uno incluye una valoración de una línea sobre a quién va dirigido, para que elija bien su próxima lectura.",
+      "related": [
+        "¿Qué es Bitcoin? Una introducción sencilla",
+        "El blog de Virtuse",
+        "Podcasts sobre Bitcoin"
+      ]
+    },
+    "podcasts": {
+      "nav": "Podcasts",
+      "navDesc": "Programas solo Bitcoin",
+      "h1": "Podcasts sobre Bitcoin",
+      "title": "Los mejores podcasts de Bitcoin (solo Bitcoin) | Virtuse",
+      "description": "Podcasts solo Bitcoin sobre economía, tecnología y libertad, incluidas voces europeas, seleccionados con una valoración de una línea cada uno.",
+      "intro": "Programas solo Bitcoin que merecen su trayecto diario, desde entrevistas largas hasta análisis técnicos a fondo, incluidas voces europeas. Cada uno tiene una valoración de una línea para que sepa qué esperar.",
+      "related": [
+        "Virtuse Brief: noticias semanales sobre Bitcoin",
+        "Vídeos y canales sobre Bitcoin",
+        "Libros sobre Bitcoin"
+      ]
+    },
+    "videos": {
+      "nav": "Vídeos",
+      "navDesc": "Canales y documentales",
+      "h1": "Vídeos sobre Bitcoin",
+      "title": "Los mejores vídeos y canales sobre Bitcoin | Virtuse",
+      "description": "Canales de YouTube, documentales y charlas solo Bitcoin seleccionados, desde explicaciones para principiantes hasta análisis técnicos a fondo.",
+      "intro": "Canales de YouTube, charlas de conferencias y documentales que recomendamos, desde explicaciones para principiantes hasta recorridos técnicos. Todos solo Bitcoin, cada uno con una breve valoración.",
+      "related": [
+        "Podcasts sobre Bitcoin",
+        "¿Qué es Bitcoin? Una introducción sencilla",
+        "Conferencias de Bitcoin en Europa"
+      ]
+    },
+    "conferences": {
+      "nav": "Conferencias",
+      "navDesc": "Eventos de Bitcoin en Europa",
+      "h1": "Conferencias de Bitcoin en Europa",
+      "title": "Conferencias de Bitcoin en Europa 2026–2027 | Virtuse",
+      "description": "Próximas conferencias de Bitcoin en Europa con fechas, ciudades y enlaces: Praga, Ámsterdam, Kreuzlingen, Riga, Varsovia y más.",
+      "intro": "Próximas conferencias de Bitcoin en Europa, con fechas, ciudades y una indicación de si son solo Bitcoin. Los eventos pasados se retiran cuando terminan; las fechas marcadas como \"pendiente de confirmar\" aún no las han publicado los organizadores.",
+      "related": [
+        "Proyectos afines: otros proyectos solo Bitcoin",
+        "Virtuse Brief: noticias semanales sobre Bitcoin",
+        "Charlas de conferencias en vídeo"
+      ]
+    },
+    "privacy": {
+      "nav": "Privacidad",
+      "navDesc": "Herramientas legales de privacidad",
+      "h1": "Privacidad en Bitcoin",
+      "title": "Privacidad en Bitcoin: herramientas y guías | Virtuse",
+      "description": "Herramientas y guías para proteger su privacidad como bitcoiner en Europa, desde la privacidad en la red hasta la reutilización de direcciones.",
+      "intro": "La privacidad le protege frente a robos, perfilados y estafas dirigidas. Estas herramientas y guías le ayudan a mantener privada su actividad con Bitcoin y su navegación diaria, dentro de la ley.",
+      "legalNote": "Esta página trata sobre la privacidad lícita: mantener su información personal y financiera a salvo de delincuentes, intermediarios de datos y exposiciones innecesarias. No ayuda a nadie a eludir las normas contra el blanqueo de capitales, las sanciones ni las obligaciones fiscales. Consulte nuestra <a href=\"/aml-compliance.html\">página de AML y cumplimiento</a>. ¿Quiere saber cómo trata Virtuse sus datos? Eso es nuestra <a href=\"/privacy-policy.html\">política de privacidad</a>.",
+      "related": [
+        "Custodia: mantenga su Bitcoin a salvo",
+        "Herramientas para desarrolladores de Bitcoin",
+        "AML y cumplimiento en Virtuse"
+      ]
+    },
+    "spend-bitcoin": {
+      "nav": "Gastar bitcoin",
+      "navDesc": "Comercios, mapas y tarjetas regalo",
+      "h1": "Gastar bitcoin",
+      "title": "Dónde gastar Bitcoin en Europa | Virtuse",
+      "description": "Encuentre comercios que aceptan bitcoin en Europa, pague facturas y compre tarjetas regalo con bitcoin o Lightning. Seleccionado, solo Bitcoin.",
+      "intro": "Dónde gastar bitcoin en Europa: mapas de comercios que lo aceptan, tarjetas regalo para compras cotidianas y servicios en línea que puede pagar en bitcoin. Tenga en cuenta que en muchos países gastar bitcoin cuenta como una transmisión a efectos fiscales.",
+      "related": [
+        "Acepte bitcoin en su comercio",
+        "Informes fiscales de Bitcoin",
+        "Guías fiscales por país"
+      ]
+    },
+    "store-tools": {
+      "nav": "Para comercios",
+      "navDesc": "Acepte bitcoin en su comercio",
+      "h1": "Herramientas para comercios",
+      "title": "Acepte Bitcoin en su comercio: herramientas | Virtuse",
+      "description": "Herramientas de pago solo Bitcoin para comercios europeos: procesadores autoalojados, TPV Lightning y plugins para tiendas en línea.",
+      "intro": "Herramientas para aceptar bitcoin en una tienda, una cafetería o una tienda en línea: procesadores autoalojados, terminales de punto de venta Lightning y plugins para las plataformas de comercio electrónico más habituales. Mantener bitcoin en el balance de su empresa es otro tema, que tratamos en nuestra página de Tesorería.",
+      "related": [
+        "Tesorería en Bitcoin para empresas",
+        "Informes fiscales de Bitcoin",
+        "Dónde gastar bitcoin"
+      ]
+    },
+    "dev-tools": {
+      "nav": "Desarrollo",
+      "navDesc": "Bibliotecas y SDK",
+      "h1": "Herramientas para desarrolladores de Bitcoin",
+      "title": "Herramientas de desarrollo para Bitcoin | Virtuse",
+      "description": "Bibliotecas, SDK y boletines para construir sobre Bitcoin y Lightning, seleccionados para desarrolladores y equipos en Europa.",
+      "intro": "Bibliotecas, SDK, entornos de prueba y lecturas para desarrolladores que construyen sobre Bitcoin y Lightning. Primero el código abierto, con varios proyectos mantenidos por equipos europeos.",
+      "related": [
+        "Empleo y becas en Bitcoin",
+        "Herramientas para comercios",
+        "Privacidad en Bitcoin"
+      ]
+    },
+    "jobs": {
+      "nav": "Empleo",
+      "navDesc": "Empleo, becas y programas",
+      "h1": "Empleo en Bitcoin",
+      "title": "Empleo en Bitcoin en Europa: empresas solo Bitcoin | Virtuse",
+      "description": "Dónde encontrar empleo en empresas solo Bitcoin en Europa y en remoto, desde ingeniería hasta marketing y atención al cliente.",
+      "intro": "Dónde encontrar trabajo en Bitcoin: bolsas de empleo de empresas solo Bitcoin, además de becas, programas de formación y fellowships para desarrolladores. No publicamos ofertas de empleo; cada enlace lleva a la fuente original.",
+      "related": [
+        "Herramientas para desarrolladores de Bitcoin",
+        "Conferencias de Bitcoin en Europa",
+        "Proyectos afines"
+      ]
+    },
+    "peers": {
+      "nav": "Proyectos afines",
+      "navDesc": "Otros proyectos solo Bitcoin",
+      "h1": "Proyectos afines",
+      "title": "Proyectos afines: iniciativas solo Bitcoin | Virtuse",
+      "description": "Proyectos, directorios y divulgadores independientes y solo Bitcoin que respetamos y recomendamos. Sin fines comerciales, seleccionados a mano.",
+      "intro": "Proyectos independientes, sin fines comerciales y solo Bitcoin que respetamos: directorios, divulgadores y comunidades que comparten nuestra visión de que Bitcoin es suficiente. Los socios comerciales no aparecen aquí; solo figuran en Partner Finder.",
+      "partnerNote": "¿Busca socios regulados para comprar, guardar o pedir prestado? Use <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Finder</a>.",
+      "related": [
+        "¿Busca socios regulados? Use Partner Finder",
+        "Haga que su proyecto aparezca",
+        "Conferencias de Bitcoin en Europa"
+      ]
+    },
+    "promote": {
+      "nav": "Aparecer aquí",
+      "navDesc": "Haga que su proyecto aparezca",
+      "h1": "Haga que su proyecto aparezca",
+      "title": "Aparezca en el Ecosistema Bitcoin | Virtuse",
+      "description": "Cómo pueden los proyectos solo Bitcoin solicitar su inclusión o aparecer destacados en el Ecosistema Bitcoin de Virtuse. Revisión manual, pagos declarados.",
+      "intro": "El directorio Ecosistema Bitcoin de Virtuse se selecciona a mano. No aceptamos envíos automáticos. Si cree que su proyecto debería estar aquí, escríbanos por correo electrónico o envíe el formulario de solicitud que encontrará más abajo. Revisamos cada solicitud personalmente y podemos rechazar cualquier solicitud sin dar explicaciones."
+    }
+  }
+}
