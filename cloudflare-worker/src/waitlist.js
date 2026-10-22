@@ -13,7 +13,10 @@
 // the audience exists without silently dropping sign-ups.
 
 // cfo_plan = the Virtuse CFO card in the pricing table (paid plans, January).
-export const WAITLIST_SOURCES = ['cfo_page', 'cfo_plan', 'home_buy', 'home_cfo'];
+// verdict_report = "full report" button after a free verdict (verdict-flow.js).
+// It joins RESEND_REPORT_AUDIENCE_ID when that secret is set, else the CFO
+// audience. Only the email is kept, never the decision text.
+export const WAITLIST_SOURCES = ['cfo_page', 'cfo_plan', 'home_buy', 'home_cfo', 'verdict_report'];
 
 import STRINGS from './waitlist-strings.js';
 
@@ -22,6 +25,7 @@ export const WAITLIST_LANGS = Object.keys(STRINGS);
 
 export function waitlistSubject(source, lang = 'en') {
   const t = STRINGS[lang] || STRINGS.en;
+  if (source === 'verdict_report') return t.subjectReport;
   return source === 'cfo_plan' ? t.subjectPlan : t.subject;
 }
 
@@ -29,11 +33,12 @@ export function renderWaitlistEmail(leaveUrl, source, lang = 'en') {
   const L = STRINGS[lang] ? lang : 'en';
   const t = STRINGS[L];
   const plan = source === 'cfo_plan';
+  const report = source === 'verdict_report';
   const P = 'style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;"';
   const b = (s) => s.replace(/<b>/g, '<b style="color:#e6edf3;">');
   return `<!DOCTYPE html>
 <html lang="${L}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${plan ? t.subjectPlan : t.subject}</title></head>
+<title>${waitlistSubject(source, L)}</title></head>
 <body style="margin:0;padding:0;background-color:#08090a;font-family:Arial,Helvetica,sans-serif;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#08090a;">
 <tr><td align="center" style="padding:48px 16px;">
@@ -41,7 +46,8 @@ export function renderWaitlistEmail(leaveUrl, source, lang = 'en') {
 <tr><td style="padding:36px 32px;">
 <p style="margin:0 0 20px 0;font-size:22px;font-weight:800;"><span style="color:#5FAEDE;">V</span><span style="color:#e6edf3;">irtuse</span> <span style="color:#8b949e;font-weight:400;">CFO</span></p>
 <p style="margin:0 0 14px 0;font-size:20px;line-height:28px;font-weight:700;color:#e6edf3;">${t.onList}</p>
-${plan ? `<p ${P}>${t.plan1}</p>
+${report ? `<p ${P}>${t.report1}</p>
+<p ${P}>${t.report2}</p>` : plan ? `<p ${P}>${t.plan1}</p>
 <p ${P}>${t.plan2}</p>` : `<p ${P}>${t.wait}</p>`}
 <p ${P}>${b(t.verdict)}</p>
 <p ${P}>${b(t.audit)}</p>
@@ -53,8 +59,12 @@ ${plan ? `<p ${P}>${t.plan1}</p>
 </body></html>`;
 }
 
-async function addToAudience(env, email) {
-  const res = await fetch(`https://api.resend.com/audiences/${env.RESEND_CFO_AUDIENCE_ID}/contacts`, {
+export function audienceFor(env, source) {
+  return source === 'verdict_report' && env.RESEND_REPORT_AUDIENCE_ID ? env.RESEND_REPORT_AUDIENCE_ID : env.RESEND_CFO_AUDIENCE_ID;
+}
+
+async function addToAudience(env, email, audience) {
+  const res = await fetch(`https://api.resend.com/audiences/${audience}/contacts`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, unsubscribed: false }),
@@ -105,7 +115,7 @@ export async function handleWaitlist(request, env, origin, { json, isRateLimited
     return json(429, { error: 'Too many attempts. Please try again later.' }, origin);
   }
   try {
-    const result = await addToAudience(env, email);
+    const result = await addToAudience(env, email, audienceFor(env, source));
     if (result.created) {
       const leaveUrl = (await buildUnsubscribeUrl(env, email)) + '&list=cfo';
       await sendConfirmation(env, email, leaveUrl, source, typeof lang === 'string' && WAITLIST_LANGS.includes(lang) ? lang : 'en');
@@ -120,9 +130,12 @@ export async function handleWaitlist(request, env, origin, { json, isRateLimited
 // Leaving the waitlist: same signed link as the Brief unsubscribe plus
 // &list=cfo, and it only touches the CFO audience.
 export async function leaveWaitlist(env, email) {
-  if (!env.RESEND_CFO_AUDIENCE_ID) return;
+  for (const id of [env.RESEND_CFO_AUDIENCE_ID, env.RESEND_REPORT_AUDIENCE_ID]) if (id) await leaveAudience(env, email, id);
+}
+
+async function leaveAudience(env, email, audience) {
   const res = await fetch(
-    `https://api.resend.com/audiences/${env.RESEND_CFO_AUDIENCE_ID}/contacts/${encodeURIComponent(email)}`,
+    `https://api.resend.com/audiences/${audience}/contacts/${encodeURIComponent(email)}`,
     {
       method: 'PATCH',
       headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },

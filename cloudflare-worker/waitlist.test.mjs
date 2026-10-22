@@ -176,3 +176,25 @@ test('every waitlist language has all texts and its operator line', async () => 
     }
   }
 });
+
+test('verdict_report: own audience when set, else the CFO audience, report email', withFetch(async (calls) => {
+  let res = await worker.fetch(req({ email: 'r@b.co', hp: '', source: 'verdict_report', lang: 'sk' }), env({ RESEND_REPORT_AUDIENCE_ID: 'aud-rep' }));
+  assert.equal(res.status, 200);
+  assert.equal(calls[0].url, 'https://api.resend.com/audiences/aud-rep/contacts');
+  assert.equal(calls[1].body.subject, 'Ste na zozname pre celý report Verdict');
+  assert.match(calls[1].body.html, /14 € jednorazovo/);
+  assert.match(calls[1].body.html, /neuložili/);
+  res = await worker.fetch(req({ email: 's@b.co', hp: '', source: 'verdict_report' }, { ip: '5.5.5.5' }), env());
+  assert.equal(calls[2].url, 'https://api.resend.com/audiences/aud-cfo/contacts');
+  assert.match(calls[3].body.subject, /full Verdict report/);
+}));
+
+test('every waitlist language has the report email', async () => {
+  const { WAITLIST_LANGS, waitlistSubject } = await import('./src/waitlist.js');
+  for (const L of WAITLIST_LANGS) {
+    const h = renderWaitlistEmail('https://x/leave', 'verdict_report', L);
+    assert.doesNotMatch(h, /undefined/);
+    assert.match(h, /14/);
+    assert.ok(waitlistSubject('verdict_report', L).length > 10);
+  }
+});
