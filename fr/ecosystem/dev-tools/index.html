@@ -47,88 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=7">
-<style>.eco-hero .eco-crumbs { font-size: 12px; color: var(--dim); margin: 0 0 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
-.eco-hero .eco-crumbs a { color: var(--muted); text-decoration: none; }
-.eco-hero .eco-crumbs a:hover { color: var(--text); }
-.eco-hero h1 { overflow-wrap: break-word; hyphens: auto; }
-main > section.eco-first { padding-top: 72px; }
-.eco-list { margin-top: 56px; }
-.eco-cat { align-items: flex-start; }
-.eco-ico { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border-radius: 9px; background: var(--card-hover); border: 1px solid var(--line-strong); fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.eco-cat small.eco-n { margin-top: 6px; color: var(--dim); }
-.eco-more { margin: 28px 0 0; }
-.eco-entry b { display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
-.eco-entry b svg { width: 12px; height: 12px; color: var(--dim); flex: none; margin-left: auto; }
-.eco-entry > span:not(.eco-meta) { font-size: 14px; color: var(--muted); line-height: 1.5; }
-.gcard.eco-entry span.eco-meta { font: 500 11px/1.5 var(--mono); color: var(--dim); margin-top: 6px; }
-.eco-spons { font: normal 600 11px/1 var(--sans); color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 7px; }
-.eco-related .gcard { grid-template-columns: 1fr auto; align-items: center; }
-.eco-related .gcard b { font-size: 16px; }
-.eco-panel { width: 100%; margin-top: 0; }
-.eco-panel::before { display: none; }
-.eco-panel .eco-row { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr) auto; }
-.eco-panel .hc-name small { color: var(--muted); white-space: normal; margin-top: 2px; }
-.eco-note { margin: 0 0 18px; max-width: 860px; font-size: 14px; color: var(--muted); }
-.eco-note a, .eco-prose a, .eco-two a, .eco-crit a, .eco-form a, .eco-notes a, .eco-mail a { color: var(--text); text-underline-offset: 3px; }
-.eco-prose { max-width: 760px; }
-.eco-prose h2 { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
-.eco-prose h2:first-child { margin-top: 0; }
-.eco-prose p, .eco-prose li { font-size: 16px; line-height: 1.7; color: var(--muted); }
-.eco-prose strong { color: var(--text); }
-.eco-prose ul { padding-left: 20px; }
-.eco-notes { max-width: 860px; margin: 56px auto 0; }
-.eco-crit { max-width: 860px; margin: 0; padding-left: 20px; display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
-.eco-crit strong { color: var(--text); }
-.eco-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
-.eco-two > div { background: var(--card); border-radius: 16px; padding: 22px 24px; }
-.eco-two h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
-.eco-two p { margin: 0; font-size: 14px; color: var(--muted); }
-.eco-muted { color: var(--muted); font-size: 14px; max-width: 760px; }
-.eco-form { display: grid; gap: 16px; max-width: 760px; margin-top: 24px; }
-.eco-form label { display: grid; gap: 8px; font-size: 14px; color: var(--text); min-width: 0; }
-.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { width: 100%; min-width: 0; box-sizing: border-box; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 16px var(--sans); }
-.eco-form textarea { resize: vertical; }
-.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: none; border-color: var(--muted); }
-.eco-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
-.eco-form legend { font-size: 14px; padding: 0 6px; }
-.eco-form .eco-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); line-height: 1.45; }
-.eco-check input { margin-top: 2px; accent-color: var(--text); width: 16px; height: 16px; flex: none; }
-.eco-all { color: var(--text) !important; font-weight: 600; }
-.eco-pick-countries { margin-top: 10px; }
-.eco-pick-countries summary { font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; display: inline-block; padding: 4px 0; }
-.eco-cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin-top: 12px; }
-.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.eco-count { font-size: 12px; color: var(--dim); justify-self: end; }
-.eco-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.eco-form-msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.2em; }
-.eco-form-msg.ok { color: var(--text); }
-.eco-mail { margin-top: 24px; }
-@media (min-width: 1181px) {
-  #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
-  .nav-group.open #nd-eco { display: grid; }
-}
-@media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
-@media (max-width: 960px) { .eco-two { grid-template-columns: 1fr; } }
-@media (max-width: 760px) {
-  .eco-panel { padding: 8px 16px; }
-  .eco-panel .row.head { display: none; }
-  .eco-panel .eco-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
-  .eco-panel .eco-c::before { content: attr(data-label) ": "; color: var(--dim); }
-  .eco-panel .hp-get { justify-self: start; margin-top: 6px; }
-}
-@media (max-width: 640px) {
-  main > section.eco-first { padding-top: 48px; }
-  .eco-list { margin-top: 36px; }
-  .pf-grid.eco-cats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
-  .eco-cat { flex-direction: column; gap: 10px; padding: 14px 12px; }
-  .eco-ico { width: 32px; height: 32px; padding: 7px; }
-  .eco-cat b { font-size: 14px; }
-  .eco-2 { grid-template-columns: minmax(0, 1fr); }
-  .eco-cgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .eco-prose h2 { font-size: 24px; }
-}</style>
+<link rel="stylesheet" href="/site-v2.min.css?v=8">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -252,7 +171,7 @@ main > section.eco-first { padding-top: 72px; }
 }</script>
 <script>window.VB_I18N = {"openMenu": "Ouvrir le menu", "closeMenu": "Fermer le menu", "latestBrief": "Dernier Brief · ", "min": " min", "coverImage": "Image de couverture : ", "badEmail": "Veuillez saisir une adresse e-mail valide.", "sending": "Envoi en cours...", "subscribed": "C'est fait. Le Brief arrive lundi.", "error": "Une erreur s'est produite. Veuillez réessayer.", "netError": "Erreur réseau. Veuillez réessayer.", "briefLangNote": " (en anglais)"};</script>
 </head>
-<body class="page-eco no-split">
+<body class="page-buy page-eco no-split">
 <!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
 <header class="nav">
   <div class="nav-inner">
@@ -288,61 +207,87 @@ main > section.eco-first { padding-top: 72px; }
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap eco-acc-blue" id="top">
   <div class="buy-hero2 eco-hero">
     <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/fr/">Accueil</a> <span aria-hidden="true">/</span> <a href="/fr/ecosystem/">Écosystème</a> <span aria-hidden="true">/</span> <span>Outils dev</span></nav>
-    <div class="eyebrow"><i></i>Écosystème</div>
-    <h1>Outils pour développeurs Bitcoin<span class="h1-or">, des bibliothèques aux SDK.</span></h1>
+    <div class="eyebrow blue"><i></i>Écosystème · Outils dev</div>
+    <h1>Outils pour développeurs Bitcoin. <span class="h1-grey">Des bibliothèques aux SDK.</span></h1>
     <p class="sp-lead">Bibliothèques, SDK, environnements de test et lectures pour les développeurs qui construisent sur Bitcoin et Lightning. L'open source en priorité, avec plusieurs projets maintenus par des équipes européennes.</p>
     <p class="pf-counts">10 sélections · dernière vérification le 22 octobre 2026</p>
   </div>
-  <div class="eco-list">
-    <div class="gcards eco-entries">
-      <a class="gcard eco-entry" href="https://bitcoindevkit.org" target="_blank" rel="noopener"><b>Bitcoin Dev Kit (BDK) <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A modern Rust library for building on-chain wallets, with bindings for mobile and other languages.</span><span class="eco-meta" lang="en">bitcoindevkit.org · Rust · Open source · Wallet library</span></a>
-      <a class="gcard eco-entry" href="https://lightningdevkit.org" target="_blank" rel="noopener"><b>Lightning Dev Kit (LDK) <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A flexible Lightning implementation as a library, for teams that want Lightning inside their own app.</span><span class="eco-meta" lang="en">lightningdevkit.org · Rust · Lightning · Open source</span></a>
-      <a class="gcard eco-entry" href="https://breez.technology/sdk/" target="_blank" rel="noopener"><b>Breez SDK <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Add self-custodial Lightning payments to an app with a few calls.</span><span class="eco-meta" lang="en">breez.technology · SDK · Lightning</span></a>
-      <a class="gcard eco-entry" href="https://bitcoincore.org" target="_blank" rel="noopener"><b>Bitcoin Core <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The reference implementation. Its RPC interface and documentation are the base of most Bitcoin software.</span><span class="eco-meta" lang="en">bitcoincore.org · Reference · C++ · Open source</span></a>
-      <a class="gcard eco-entry" href="https://blockstream.com/lightning/" target="_blank" rel="noopener"><b>Core Lightning <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">A modular, plugin-friendly Lightning node implementation.</span><span class="eco-meta" lang="en">blockstream.com · Lightning · C · Open source</span></a>
-      <a class="gcard eco-entry" href="https://acinq.co" target="_blank" rel="noopener"><b>ACINQ (Eclair, Phoenix) <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The Paris-based team behind the Eclair node and the Lightning tooling that powers Phoenix.</span><span class="eco-meta" lang="en">acinq.co · Lightning · France · Open source</span></a>
-      <a class="gcard eco-entry" href="https://lightningpolar.com" target="_blank" rel="noopener"><b>Polar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Spin up local Lightning test networks in one click. The fastest way to prototype.</span><span class="eco-meta" lang="en">lightningpolar.com · Testing · Lightning</span></a>
-      <a class="gcard eco-entry" href="https://bitcoinops.org" target="_blank" rel="noopener"><b>Bitcoin Optech <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">The weekly technical newsletter that tracks protocol changes. Required reading for teams shipping Bitcoin software.</span><span class="eco-meta" lang="en">bitcoinops.org · Newsletter · Technical</span></a>
-      <a class="gcard eco-entry" href="https://mempool.space" target="_blank" rel="noopener"><b>mempool.space <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Open-source block explorer software and API that you can self-host for your own stack.</span><span class="eco-meta" lang="en">mempool.space · Explorer software · API · Self-hosted</span></a>
-      <a class="gcard eco-entry" href="https://bitcoin.stackexchange.com" target="_blank" rel="noopener"><b>Bitcoin Stack Exchange <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></b><span lang="en">Questions and answers from protocol developers. Search here before you ask.</span><span class="eco-meta" lang="en">bitcoin.stackexchange.com · Q&amp;A · Community</span></a>
+  <section id="list">
+    <div class="sec-head one"><div class="sec-copy"><h2>Nos sélections. <span>Chacune avec un avis d'une ligne.</span></h2></div></div>
+    <div class="eco-grid">
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Rust · Open source · Wallet library</span>
+        <h3>Bitcoin Dev Kit (BDK)</h3>
+        <p lang="en">A modern Rust library for building on-chain wallets, with bindings for mobile and other languages.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoindevkit.org</span><a class="hp-get" href="https://bitcoindevkit.org" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Rust · Lightning · Open source</span>
+        <h3>Lightning Dev Kit (LDK)</h3>
+        <p lang="en">A flexible Lightning implementation as a library, for teams that want Lightning inside their own app.</p>
+        <div class="eco-foot"><span class="eco-host">lightningdevkit.org</span><a class="hp-get" href="https://lightningdevkit.org" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">SDK · Lightning</span>
+        <h3>Breez SDK</h3>
+        <p lang="en">Add self-custodial Lightning payments to an app with a few calls.</p>
+        <div class="eco-foot"><span class="eco-host">breez.technology</span><a class="hp-get" href="https://breez.technology/sdk/" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Reference · C++ · Open source</span>
+        <h3>Bitcoin Core</h3>
+        <p lang="en">The reference implementation. Its RPC interface and documentation are the base of most Bitcoin software.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoincore.org</span><a class="hp-get" href="https://bitcoincore.org" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Lightning · C · Open source</span>
+        <h3>Core Lightning</h3>
+        <p lang="en">A modular, plugin-friendly Lightning node implementation.</p>
+        <div class="eco-foot"><span class="eco-host">blockstream.com</span><a class="hp-get" href="https://blockstream.com/lightning/" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Lightning · France · Open source</span>
+        <h3>ACINQ (Eclair, Phoenix)</h3>
+        <p lang="en">The Paris-based team behind the Eclair node and the Lightning tooling that powers Phoenix.</p>
+        <div class="eco-foot"><span class="eco-host">acinq.co</span><a class="hp-get" href="https://acinq.co" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Testing · Lightning</span>
+        <h3>Polar</h3>
+        <p lang="en">Spin up local Lightning test networks in one click. The fastest way to prototype.</p>
+        <div class="eco-foot"><span class="eco-host">lightningpolar.com</span><a class="hp-get" href="https://lightningpolar.com" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Newsletter · Technical</span>
+        <h3>Bitcoin Optech</h3>
+        <p lang="en">The weekly technical newsletter that tracks protocol changes. Required reading for teams shipping Bitcoin software.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoinops.org</span><a class="hp-get" href="https://bitcoinops.org" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Explorer software · API · Self-hosted</span>
+        <h3>mempool.space</h3>
+        <p lang="en">Open-source block explorer software and API that you can self-host for your own stack.</p>
+        <div class="eco-foot"><span class="eco-host">mempool.space</span><a class="hp-get" href="https://mempool.space" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Q&amp;A · Community</span>
+        <h3>Bitcoin Stack Exchange</h3>
+        <p lang="en">Questions and answers from protocol developers. Search here before you ask.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoin.stackexchange.com</span><a class="hp-get" href="https://bitcoin.stackexchange.com" target="_blank" rel="noopener">Site web <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
     </div>
-  </div>
+  </section>
   <section id="pick">
-    <div class="sec-head one"><div class="sec-copy"><h2>Notre <span>sélection</span></h2></div></div>
-    <div class="how-log">
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Étape 01</span>
-          <h3>Choisis à la main</h3>
-          <p>Chaque entrée est choisie et vérifiée par notre équipe, et nous rédigeons nous-mêmes chaque avis.</p>
-        </div>
-      </div>
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Étape 02</span>
-          <h3>Pertinents pour l'Europe</h3>
-          <p>Des projets 100 % Bitcoin au service des utilisateurs de l'UE, de l'EEE ou de Suisse, actifs, maintenus et honnêtes.</p>
-        </div>
-      </div>
-      <div class="how-log-item">
-        <div class="how-log-marker"><span class="how-log-dot"></span></div>
-        <div class="how-log-body">
-          <span class="how-log-num">Étape 03</span>
-          <h3>Sponsors signalés</h3>
-          <p>Les placements payants portent toujours la mention « Sponsorisé » et ne modifient jamais nos critères ni notre avis.</p>
-        </div>
-      </div>
-    </div>
-    <p class="eco-more"><a class="tlink" href="/fr/ecosystem/promote/#criteria">Lire nos critères de référencement <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+    <div class="sec-head one"><div class="sec-copy"><h2>Notre sélection. <span>Trois règles pour chaque entrée.</span></h2></div></div>
+    <ul class="tp-principles eco-principles"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Choisis à la main</b>Chaque entrée est choisie et vérifiée par notre équipe, et nous rédigeons nous-mêmes chaque avis.</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Pertinents pour l'Europe</b>Des projets 100 % Bitcoin au service des utilisateurs de l'UE, de l'EEE ou de Suisse, actifs, maintenus et honnêtes.</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Sponsors signalés</b>Les placements payants portent toujours la mention « Sponsorisé » et ne modifient jamais nos critères ni notre avis.</span></li></ul>
+    <p class="eco-more"><a class="tlink" href="/fr/ecosystem/promote/#criteria">Lire nos critères de référencement <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
   </section>
   <section id="related">
-    <div class="sec-head one"><div class="sec-copy"><h2>À <span>voir aussi sur Virtuse</span></h2></div></div>
-    <div class="gcards eco-related"><a class="gcard" href="/fr/ecosystem/jobs/"><b>Emplois et bourses Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/fr/ecosystem/store-tools/"><b>Outils pour commerçants</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard" href="/fr/ecosystem/privacy/"><b>Confidentialité et Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+    <div class="sec-head one"><div class="sec-copy"><h2>À voir aussi sur Virtuse. <span>D'autres ressources de Virtuse.</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/fr/ecosystem/jobs/"><b>Emplois et bourses Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/fr/ecosystem/store-tools/"><b>Outils pour commerçants</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/fr/ecosystem/privacy/"><b>Confidentialité et Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
   </section>
   <p class="pf-disc eco-notes">Les fiches sont fournies à titre informatif et ne constituent pas un conseil en investissement. Les descriptions des entrées sont en anglais. Dernière vérification : <time datetime="2026-10-22">22 octobre 2026</time>.</p>
 
