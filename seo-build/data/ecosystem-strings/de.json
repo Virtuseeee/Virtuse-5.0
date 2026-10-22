@@ -106,7 +106,9 @@
     "mFail": "Das Senden hat nicht funktioniert. Bitte schicken Sie Ihren Antrag per E-Mail an <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Lieber per E-Mail? Schreiben Sie an <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Was jeder Eintrag erfüllen muss.",
-    "applySub": "Persönlich geprüft, nie automatisch veröffentlicht."
+    "applySub": "Persönlich geprüft, nie automatisch veröffentlicht.",
+    "mCaptcha": "Bitte schließen Sie die Sicherheitsprüfung ab und senden Sie das Formular erneut.",
+    "mRate": "Zu viele Versuche von Ihrer Verbindung. Bitte versuchen Sie es in einer Stunde erneut."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ": Termine und Tickets."
     },
     "privacy": {
-      "nav": "Privatsphäre",
+      "nav": "Privatsphäre bei Bitcoin",
       "navDesc": "Legale Tools für Privatsphäre",
       "h1": "Privatsphäre bei Bitcoin",
       "title": "Privatsphäre bei Bitcoin: Tools und Ratgeber | Virtuse",

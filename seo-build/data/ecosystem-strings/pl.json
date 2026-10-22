@@ -106,7 +106,9 @@
     "mFail": "Nie udało się wysłać zgłoszenia. Prosimy przesłać je e-mailem na adres <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Wolą Państwo e-mail? Prosimy pisać na adres <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Co musi spełniać każda pozycja.",
-    "applySub": "Sprawdzane osobiście, nigdy nie publikowane automatycznie."
+    "applySub": "Sprawdzane osobiście, nigdy nie publikowane automatycznie.",
+    "mCaptcha": "Prosimy dokończyć weryfikację bezpieczeństwa i wysłać formularz ponownie.",
+    "mRate": "Zbyt wiele prób z tego połączenia. Prosimy spróbować ponownie za godzinę."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ": terminy i bilety."
     },
     "privacy": {
-      "nav": "Prywatność",
+      "nav": "Prywatność w Bitcoinie",
       "navDesc": "Legalne narzędzia prywatności",
       "h1": "Prywatność w Bitcoinie",
       "title": "Prywatność w Bitcoinie: narzędzia i poradniki | Virtuse",

@@ -150,8 +150,11 @@ function chrome(current, l) {
     if (!/<a class="nav-top"/.test(nav)) throw new Error(`${l}: nav anchor (About) not found`);
     nav = nav.replace(/<a class="nav-top"/, group + '<a class="nav-top"');
   }
+  // The shared menu already carries the group (i18n-tools/nav_ecosystem.py): mark it as the current one.
+  nav = nav.replace('<div class="nav-group" id="ng-eco">', '<div class="nav-group current" id="ng-eco">')
+    .replace(`<a href="${pathOf(current, l)}"><span class="nd-t">`, `<a href="${pathOf(current, l)}" aria-current="page"><span class="nd-t">`);
   let foot = v2.foot;
-  if (!foot.includes('data-eco-col')) {
+  if (!foot.includes(`href="${pathOf(INDEX, l)}"`)) {
     const col = `<div class="footer-col" data-eco-col><h4>${esc(ui.navLabel)}</h4>${[INDEX, ...SUBPAGES].map((p) =>
       `<a href="${pathOf(p, l)}">${esc(p === INDEX ? txt(l, p).h1 : txt(l, p).nav)}</a>`).join('')}</div>`;
     const i = foot.lastIndexOf('<div class="footer-col"><h4>');
@@ -391,7 +394,7 @@ function promoteBody(l) {
       <label>${esc(m.fMessage)}<textarea name="message" maxlength="1500" rows="4"></textarea></label>
       <label class="eco-check"><input type="checkbox" name="consent" required> <span>${fill(m.fConsent, l)}</span></label>
       <input class="hp" type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <!-- Cloudflare Turnstile widget goes here once the site key is set (keys are stored by Ras, never in the repo). -->
+      <div class="cf-turnstile eco-turnstile" data-sitekey="${esc(DATA.turnstileSiteKey)}" data-theme="dark" data-language="${l}" data-size="flexible"></div>
       <button class="hp-cta eco-submit" type="submit">${esc(m.fSubmit)} ${ARROW}</button>
       <p class="eco-form-msg" id="ecoFormMsg" role="status" aria-live="polite"></p>
     </form>
@@ -402,7 +405,7 @@ function promoteBody(l) {
 
 function formJs(l) {
   const m = S[l].promote;
-  const msgs = { required: m.mRequired, country: m.mCountry, sending: m.mSending, ok: m.mOk, fail: m.mFail };
+  const msgs = { required: m.mRequired, country: m.mCountry, sending: m.mSending, ok: m.mOk, fail: m.mFail, captcha: m.mCaptcha, rate: m.mRate };
   return `<script>
 (function () {
   var M = ${JSON.stringify(msgs).replace(/</g, '\\u003c')};
@@ -424,16 +427,25 @@ function formJs(l) {
     ['project_name','website','category','description','licence','repo','contact_name','contact_email','message'].forEach(function (k) { data[k] = f[k].value.trim(); });
     data.bitcoin_only = f.bitcoin_only.checked; data.consent = f.consent.checked;
     data.sponsored_interest = (f.querySelector('input[name="sponsored_interest"]:checked') || {}).value || 'no';
-    var t = f.querySelector('[name="cf-turnstile-response"]'); if (t) data.turnstile = t.value;
+    var t = f.querySelector('[name="cf-turnstile-response"]'); data.turnstile = t ? t.value : '';
+    if (!data.turnstile) { msg.className = 'eco-form-msg err'; msg.textContent = M.captcha; return; }
     var btn = f.querySelector('.eco-submit'); btn.disabled = true; msg.className = 'eco-form-msg'; msg.textContent = M.sending;
+    function reset() { if (window.turnstile) try { window.turnstile.reset(f.querySelector('.cf-turnstile')); } catch (x) {} }
     fetch(f.getAttribute('data-endpoint'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json().catch(function () { return {}; }); })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(r.status); e.code = j.error; throw e; } return j; }); })
       .then(function () {
-        f.reset(); cnt.textContent = '0 / 300';
-        msg.className = 'eco-form-msg ok'; msg.textContent = M.ok;
+        f.reset(); all.checked = true; boxes.forEach(function (b) { b.checked = true; }); cnt.textContent = '0 / 300';
+        f.hidden = true; msg.className = 'eco-form-msg ok'; msg.textContent = M.ok; f.parentNode.insertBefore(msg, f);
         (window.dataLayer = window.dataLayer || []).push({ event: 'ecosystem_apply', category: data.category });
       })
-      .catch(function () { msg.className = 'eco-form-msg err'; msg.innerHTML = M.fail; })
+      .catch(function (e) {
+        msg.className = 'eco-form-msg err';
+        if (e.code === 'captcha') msg.textContent = M.captcha;
+        else if (e.code === 'rate_limited') msg.textContent = M.rate;
+        else if (e.code === 'invalid') msg.textContent = M.required;
+        else msg.innerHTML = M.fail;
+        reset();
+      })
       .then(function () { btn.disabled = false; });
   });
 })();
@@ -485,7 +497,7 @@ function schemas(p, l) {
 // ---------- page ----------
 // No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
 // site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
-const CSS_V = '9';
+const CSS_V = '11';
 
 // Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {
@@ -575,7 +587,7 @@ ${p.slug !== 'promote' ? '\n  ' + brief + '\n' : ''}
 </main>
 
 <script src="/site-v2.js?v=${SITE_V2}" defer></script>
-${p.slug === 'promote' ? formJs(l) + '\n' : ''}${p.slug === 'what-is-bitcoin' ? TOC_JS + '\n' : ''}${CF_SNIPPET}
+${p.slug === 'promote' ? '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>\n' + formJs(l) + '\n' : ''}${p.slug === 'what-is-bitcoin' ? TOC_JS + '\n' : ''}${CF_SNIPPET}
 </body>
 </html>
 `;

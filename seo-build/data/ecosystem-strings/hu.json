@@ -106,7 +106,9 @@
     "mFail": "A küldés nem sikerült. Kérjük, küldje el jelentkezését e-mailben a következő címre: <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Inkább e-mailben írna? Címünk: <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Amit minden bejegyzésnek teljesítenie kell.",
-    "applySub": "Személyesen bíráljuk el, semmi sem jelenik meg automatikusan."
+    "applySub": "Személyesen bíráljuk el, semmi sem jelenik meg automatikusan.",
+    "mCaptcha": "Kérjük, végezze el a biztonsági ellenőrzést, és küldje el újra az űrlapot.",
+    "mRate": "Túl sok próbálkozás érkezett az Ön kapcsolatáról. Kérjük, próbálja újra egy óra múlva."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ": időpontok és jegyek."
     },
     "privacy": {
-      "nav": "Adatvédelem",
+      "nav": "Bitcoin és adatvédelem",
       "navDesc": "Törvényes adatvédelmi eszközök",
       "h1": "Bitcoin és adatvédelem",
       "title": "Bitcoin-adatvédelem: eszközök és útmutatók | Virtuse",

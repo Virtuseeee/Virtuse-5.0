@@ -106,7 +106,9 @@
     "mFail": "L'envoi n'a pas fonctionné. Veuillez envoyer votre candidature par e-mail à <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Vous préférez l'e-mail ? Écrivez à <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Ce que chaque entrée doit respecter.",
-    "applySub": "Examinée personnellement, jamais publiée automatiquement."
+    "applySub": "Examinée personnellement, jamais publiée automatiquement.",
+    "mCaptcha": "Veuillez terminer la vérification de sécurité et renvoyer le formulaire.",
+    "mRate": "Trop de tentatives depuis votre connexion. Veuillez réessayer dans une heure."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ", avec dates et billets."
     },
     "privacy": {
-      "nav": "Confidentialité",
+      "nav": "Confidentialité et Bitcoin",
       "navDesc": "Outils de confidentialité légaux",
       "h1": "Confidentialité et Bitcoin",
       "title": "Confidentialité Bitcoin : outils et guides | Virtuse",

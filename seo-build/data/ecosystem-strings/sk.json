@@ -106,7 +106,9 @@
     "mFail": "Odoslanie sa nepodarilo. Pošlite, prosím, žiadosť e-mailom na <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Radšej e-mailom? Napíšte na <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Čo musí spĺňať každá položka.",
-    "applySub": "Posudzujeme osobne, nič sa nezverejňuje automaticky."
+    "applySub": "Posudzujeme osobne, nič sa nezverejňuje automaticky.",
+    "mCaptcha": "Dokončite, prosím, bezpečnostnú kontrolu a formulár odošlite znova.",
+    "mRate": "Z vášho pripojenia prišlo priveľa pokusov. Skúste to, prosím, znova o hodinu."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ": termíny a vstupenky."
     },
     "privacy": {
-      "nav": "Súkromie",
+      "nav": "Súkromie v Bitcoine",
       "navDesc": "Legálne nástroje na súkromie",
       "h1": "Súkromie v Bitcoine",
       "title": "Súkromie v Bitcoine: nástroje a návody | Virtuse",

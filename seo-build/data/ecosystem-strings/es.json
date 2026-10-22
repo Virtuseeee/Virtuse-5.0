@@ -106,7 +106,9 @@
     "mFail": "No se ha podido enviar. Envíe su solicitud por correo electrónico a <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "¿Prefiere el correo electrónico? Escriba a <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Lo que debe cumplir cada entrada.",
-    "applySub": "Revisada personalmente, nunca publicada de forma automática."
+    "applySub": "Revisada personalmente, nunca publicada de forma automática.",
+    "mCaptcha": "Complete la verificación de seguridad y vuelva a enviar el formulario.",
+    "mRate": "Demasiados intentos desde su conexión. Vuelva a intentarlo dentro de una hora."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ": fechas y entradas."
     },
     "privacy": {
-      "nav": "Privacidad",
+      "nav": "Privacidad en Bitcoin",
       "navDesc": "Herramientas legales de privacidad",
       "h1": "Privacidad en Bitcoin",
       "title": "Privacidad en Bitcoin: herramientas y guías | Virtuse",

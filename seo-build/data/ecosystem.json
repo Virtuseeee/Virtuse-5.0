@@ -1017,5 +1017,7 @@
       "icon": "megaphone",
       "accent": "orange"
     }
-  ]
+  ],
+  "turnstileSiteKey": "1x00000000000000000000AA",
+  "_turnstileNote": "Public Turnstile site key for the Promote form. 1x00000000000000000000AA is Cloudflare's always-pass TEST key: replace it with the real widget's site key before production (its secret goes into the Worker secret TURNSTILE_SECRET_KEY)."
 }

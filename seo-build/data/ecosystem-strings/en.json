@@ -106,7 +106,9 @@
     "mFail": "Sending did not work. Please email your application to <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Prefer email? Write to <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "What every listing must meet.",
-    "applySub": "Reviewed personally, never published automatically."
+    "applySub": "Reviewed personally, never published automatically.",
+    "mCaptcha": "Please complete the security check and send the form again.",
+    "mRate": "Too many attempts from your connection. Please try again in an hour."
   },
   "pages": {
     "index": {
@@ -271,7 +273,7 @@
       "h1Accent": ": dates and tickets."
     },
     "privacy": {
-      "nav": "Privacy",
+      "nav": "Bitcoin Privacy",
       "navDesc": "Lawful privacy tools",
       "h1": "Bitcoin Privacy",
       "title": "Bitcoin Privacy Tools & Guides | Virtuse",
