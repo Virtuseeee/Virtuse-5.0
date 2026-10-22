@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<!-- vb-consent -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<title>Soukromí v Bitcoinu: nástroje a návody | Virtuse</title>
+<meta name="description" content="Nástroje a návody, jak jako bitcoiner v Evropě chránit své soukromí, od soukromí v síti po opakované použití adres. Legálně a prakticky.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/cs/ecosystem/privacy/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/privacy/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/privacy/">
+  <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/privacy/">
+  <link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/privacy/">
+  <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/privacy/">
+  <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/privacy/">
+  <link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/privacy/">
+  <link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/privacy/">
+  <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/privacy/">
+  <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/privacy/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/privacy/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Soukromí v Bitcoinu: nástroje a návody | Virtuse">
+<meta property="og:description" content="Nástroje a návody, jak jako bitcoiner v Evropě chránit své soukromí, od soukromí v síti po opakované použití adres. Legálně a prakticky.">
+<meta property="og:url" content="https://virtuse.com/cs/ecosystem/privacy/">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=7">
+<style>.eco { max-width: 1040px; margin: 0 auto; padding: 36px 0 24px; min-width: 0; }
+.eco a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.eco a:hover { text-decoration-color: var(--text); }
+.eco p, .eco li { color: #c9d1d9; }
+.eco h1, .eco h2, .eco h3, .eco p, .eco li, .eco summary, .eco label, .eco b, .eco span { overflow-wrap: break-word; }
+.eco h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; hyphens: auto; }
+.eco h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 44px 0 14px; }
+.eco .lead { font-size: 1.1rem; line-height: 1.6; color: var(--muted); max-width: 760px; margin: 0; }
+.eco .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
+.eco .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
+.eco .crumbs a:hover { color: var(--text); }
+.eco-pick { background: var(--card); border: 1px solid var(--line); border-left: 3px solid #f7931a; border-radius: 12px; padding: 18px 20px; margin: 30px 0 8px; }
+.eco-pick h2 { margin: 0 0 6px; font-size: 1rem; }
+.eco-pick p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.eco-legal { font-size: 14px; line-height: 1.55; color: var(--muted) !important; border-left: 2px solid var(--line-strong); padding: 4px 0 4px 12px; margin: 18px 0; }
+.eco-grid, .eco-sections { list-style: none; padding: 0; margin: 18px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.eco-card { position: relative; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, background .15s; }
+.eco-card:hover { border-color: var(--line-strong); background: var(--card-hover); }
+.eco-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.eco-card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
+.eco-card h3 a { text-decoration: none; }
+.eco-card h3 a::after { content: ""; position: absolute; inset: 0; }
+.eco-card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); flex: 1; }
+.eco-card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; min-width: 0; }
+.eco-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.eco-tags li { font-size: 11px; line-height: 1; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 8px; }
+.eco-host { font: 500 11px/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
+.eco-sponsored { font-size: 11px; font-weight: 600; color: #f7931a; border: 1px solid rgba(247,147,26,.4); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
+.eco-sections li { min-width: 0; }
+.eco-sections a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; min-height: 140px; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .15s, background .15s; }
+.eco-sections a:hover { border-color: rgba(247,147,26,.45); background: var(--card-hover); }
+.eco-ico { width: 32px; height: 32px; padding: 6px; box-sizing: border-box; border-radius: 9px; background: rgba(247,147,26,.12); fill: none; stroke: #f7931a; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; flex: none; }
+.eco-sections b { font-size: 17px; line-height: 1.25; }
+.eco-sections span { font-size: 14px; color: var(--muted); flex: 1; }
+.eco-sections em { font: normal 500 11px/1.3 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
+.eco-promote-line { margin: 18px 0 0; }
+.eco-primer { max-width: 760px; }
+.eco-primer p, .eco-primer li { font-size: 16px; line-height: 1.7; }
+.eco-primer ul { padding-left: 20px; }
+.eco details { border-bottom: 1px solid var(--line); padding: 14px 0; max-width: 760px; }
+.eco summary { cursor: pointer; font-weight: 600; }
+.eco details p { margin: 10px 0 0; line-height: 1.6; }
+.eco .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
+.eco .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; min-width: 0; }
+.eco .related a:hover { border-color: var(--line-strong); }
+.eco .table-wrap { overflow-x: auto; margin: 18px 0 8px; }
+.eco-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.eco-table th, .eco-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.eco-table th { color: var(--muted); font-weight: 600; font-size: 13px; }
+.eco-table td b { font-weight: 600; }
+.eco-verdict { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); }
+.eco-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none !important; font-weight: 600; font-size: 13px; white-space: nowrap; }
+.eco-btn:hover { border-color: #f7931a; color: #fff; }
+.eco .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.eco .disclaimers p { color: var(--muted); margin: 0 0 6px; }
+.eco .muted { color: var(--muted); font-size: 14px; }
+.eco-copy, .eco-apply { max-width: 760px; }
+.eco-copy li { margin: 0 0 8px; line-height: 1.55; }
+.eco-form { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; min-width: 0; }
+.eco-form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text); min-width: 0; }
+.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { font: 400 16px/1.4 var(--sans); color: var(--text); background: var(--card); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; min-height: 44px; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+.eco-form textarea { resize: vertical; }
+.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: 2px solid var(--text); outline-offset: 1px; }
+.eco-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 0; min-width: 0; }
+.eco-form legend { font-size: 14px; padding: 0 6px; }
+.eco-form .eco-check { flex-direction: row; align-items: flex-start; gap: 8px; color: #c9d1d9; line-height: 1.45; }
+.eco-check input { margin-top: 3px; accent-color: #f7931a; width: 16px; height: 16px; flex: none; }
+.eco-check-all { font-weight: 600; }
+.eco .eco-pick-countries { border: 0; padding: 8px 0 0; max-width: none; }
+.eco-pick-countries summary { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 6px 0; }
+.eco-check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 12px; margin-top: 10px; }
+.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.eco-count { font-size: 12px; color: var(--dim); align-self: flex-end; }
+.eco-form .hp { position: absolute; left: -9999px; }
+.eco-submit { align-self: flex-start; min-height: 44px; padding: 12px 22px; border: 0; border-radius: 10px; background: var(--text); color: #08090a; font: 600 15px/1 var(--sans); cursor: pointer; }
+.eco-submit:disabled { opacity: .6; cursor: wait; }
+.eco-form-msg { margin: 0; font-size: 14px; min-height: 1.2em; }
+.eco-form-msg.ok { color: #3fb950; }
+.eco-form-msg.err { color: #f0883e; }
+.eco-mail { margin-top: 18px; }
+.eco-sr { position: absolute !important; left: -9999px; }
+.eco-brief { max-width: 1040px; margin: 8px auto 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-sizing: border-box; }
+.eco-brief-row { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
+.eco-brief-h { margin: 0; font-size: 16px; font-weight: 600; color: var(--text); flex: 1 1 220px; }
+.eco-brief-h span { color: var(--muted); font-weight: 400; }
+.eco-brief-form { display: flex !important; gap: 8px; flex: 2 1 340px; min-width: 0; }
+.eco-brief-form input[type=email] { flex: 1; min-width: 0; padding: 11px 12px; font-size: 16px; }
+.eco-brief-form .btn { white-space: nowrap; flex: none; }
+.eco-brief .brief-msg { margin-top: 8px; font-size: 13px; }
+.eco-brief-fine { margin: 6px 0 0; font-size: 12px; color: var(--dim); }
+/* Ecosystem menu: 13 items in two columns on desktop */
+@media (min-width: 1181px) {
+  #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
+  .nav-group.open #nd-eco { display: grid; }
+}
+@media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
+@media (max-width: 900px) { .eco-grid, .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .eco { padding-top: 24px; }
+  .eco-grid, .eco .related, .eco-row { grid-template-columns: minmax(0, 1fr); }
+  .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .eco-sections a { min-height: 128px; padding: 14px 12px; gap: 4px; }
+  .eco-sections b { font-size: 15px; }
+  .eco-sections span { font-size: 13px; }
+  .eco-ico { width: 28px; height: 28px; padding: 5px; }
+  .eco-check-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .eco .table-wrap { overflow: visible; }
+  .eco-table, .eco-table tbody, .eco-table tr, .eco-table td { display: block; width: 100%; box-sizing: border-box; }
+  .eco-table thead { display: none; }
+  .eco-table tr { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px 14px; margin: 0 0 10px; }
+  .eco-table td { border: 0; padding: 8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
+  .eco-table td + td { border-top: 1px solid var(--line); }
+  .eco-table td::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
+  .eco-brief-form { flex-basis: 100%; }
+}</style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "legalName": "Virtuse Wealth Management, a.s.",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "url": "https://virtuse.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Domů",
+          "item": "https://virtuse.com/cs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bitcoinový ekosystém",
+          "item": "https://virtuse.com/cs/ecosystem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Soukromí",
+          "item": "https://virtuse.com/cs/ecosystem/privacy/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://virtuse.com/cs/ecosystem/privacy/",
+      "url": "https://virtuse.com/cs/ecosystem/privacy/",
+      "name": "Soukromí v Bitcoinu",
+      "description": "Nástroje a návody, jak jako bitcoiner v Evropě chránit své soukromí, od soukromí v síti po opakované použití adres. Legálně a prakticky.",
+      "inLanguage": "cs",
+      "dateModified": "2026-10-22",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 9,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Bitcoin Core",
+            "url": "https://bitcoincore.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tor Project",
+            "url": "https://www.torproject.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Tails",
+            "url": "https://tails.net"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Mullvad VPN",
+            "url": "https://mullvad.net"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Proton",
+            "url": "https://proton.me"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Silent Payments",
+            "url": "https://silentpayments.xyz"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Payjoin",
+            "url": "https://payjoin.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Bitcoiner.guide privacy",
+            "url": "https://bitcoiner.guide/privacy"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Bitcoin Wiki: Privacy",
+            "url": "https://en.bitcoin.it/wiki/Privacy"
+          }
+        ]
+      }
+    }
+  ]
+}</script>
+<script>window.VB_I18N = {"openMenu": "Otevřít menu", "closeMenu": "Zavřít menu", "latestBrief": "Nejnovější Brief · ", "min": " min", "coverImage": "Titulní obrázek: ", "badEmail": "Zadejte platnou e-mailovou adresu.", "sending": "Odesílání...", "subscribed": "Jste přihlášeni. Brief vychází v pondělí.", "error": "Něco se pokazilo. Zkuste to prosím znovu.", "netError": "Chyba sítě. Zkuste to prosím znovu.", "briefLangNote": " (v angličtině)"};</script>
+</head>
+<body class="page-eco no-split">
+<!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/cs/index.html" aria-label="Virtuse – domů">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Hlavní navigace">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Služby</button>
+        <div class="nav-drop" id="nd-services"><a href="/cs/buy-bitcoin.html">Koupit Bitcoin</a><a href="/cs/secure.html">Úschova</a><a href="/cs/lending.html">Půjčky</a><a href="/cs/mining.html">Těžba</a><a href="/cs/treasury.html">Treasury</a><a href="/cs/tax.html">Daně</a><a href="/cs/bots.html">Boti</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Vzdělávání</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Týdenní zprávy o Bitcoinu, každé pondělí</span></a><a href="/stories/"><span class="nd-t">Příběhy</span><span class="nd-d">Delší články a analýzy</span></a><a href="/cs/blog.html"><span class="nd-t">Blog</span><span class="nd-d">Nejnovější příspěvky od Virtuse</span></a><a href="/cs/bitcoin-data.html"><span class="nd-t">Bitcoin data</span><span class="nd-d">Aktuální cena, síť a grafy</span></a><a href="/cs/bitcoin-dane/"><span class="nd-t">Daňové průvodce podle zemí</span><span class="nd-d">Daňová pravidla ve 13 zemích EU</span></a><a href="/cs/faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Odpovědi o Virtuse a partnerech</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Nástroje</button>
+        <div class="nav-drop" id="nd-tools"><a href="/cs/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Zdarma</span></span><span class="nd-d">Verdikt a audit poplatků, zdarma od 1. listopadu</span></a><a href="/cs/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partneři podle vašich odpovědí</span></a><a href="/cs/bitcoin-index-poplatku/"><span class="nd-t">Index poplatků</span><span class="nd-d">Celkové náklady nákupu ve srovnání</span></a><a href="/cs/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plán pravidelných nákupů a poplatky</span></a><a href="/cs/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Prodat, nebo si půjčit se zajištěním Bitcoinem</span></a><a href="/cs/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Pravidla zemí a kontrola dědictví</span></a><a href="/cs/retirement-calculator.html"><span class="nd-t">Důchodová kalkulačka</span><span class="nd-d">Kolik Bitcoinu na důchod</span></a></div>
+      </div>
+      <div class="nav-group current" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ekosystém</button>
+        <div class="nav-drop" id="nd-eco"><a href="/cs/ecosystem/"><span class="nd-t">Přehled</span><span class="nd-d">Všechny zdroje jen o Bitcoinu</span></a><a href="/cs/ecosystem/what-is-bitcoin/"><span class="nd-t">Co je Bitcoin?</span><span class="nd-d">Srozumitelný úvod</span></a><a href="/cs/ecosystem/books/"><span class="nd-t">Knihy</span><span class="nd-d">Vybraný seznam četby</span></a><a href="/cs/ecosystem/podcasts/"><span class="nd-t">Podcasty</span><span class="nd-d">Pořady jen o Bitcoinu</span></a><a href="/cs/ecosystem/videos/"><span class="nd-t">Videa</span><span class="nd-d">Kanály a dokumenty</span></a><a href="/cs/ecosystem/conferences/"><span class="nd-t">Konference</span><span class="nd-d">Bitcoinové akce v Evropě</span></a><a href="/cs/ecosystem/privacy/" aria-current="page"><span class="nd-t">Soukromí</span><span class="nd-d">Legální nástroje pro soukromí</span></a><a href="/cs/ecosystem/spend-bitcoin/"><span class="nd-t">Platit bitcoinem</span><span class="nd-d">Obchody, mapy a dárkové karty</span></a><a href="/cs/ecosystem/store-tools/"><span class="nd-t">Pro obchodníky</span><span class="nd-d">Přijímejte bitcoin v obchodě</span></a><a href="/cs/ecosystem/dev-tools/"><span class="nd-t">Pro vývojáře</span><span class="nd-d">Knihovny a SDK</span></a><a href="/cs/ecosystem/jobs/"><span class="nd-t">Práce v Bitcoinu</span><span class="nd-d">Práce, granty a stipendia</span></a><a href="/cs/ecosystem/peers/"><span class="nd-t">Spřátelené projekty</span><span class="nd-d">Další projekty jen o Bitcoinu</span></a><a href="/cs/ecosystem/promote/"><span class="nd-t">Zařazení</span><span class="nd-d">Nechte zařadit svůj projekt</span></a></div>
+      </div>
+      <a class="nav-top" href="/cs/about.html">O nás</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky: čeština"><span aria-hidden="true">&#127464;&#127487;</span><span class="lang-code">CS</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/ecosystem/privacy/" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/ecosystem/privacy/" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/ecosystem/privacy/" class="lang-opt active" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/ecosystem/privacy/" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/ecosystem/privacy/" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/ecosystem/privacy/" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/ecosystem/privacy/" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/ecosystem/privacy/" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/ecosystem/privacy/" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/ecosystem/privacy/" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Otevřít menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/cs/concierge.html?utm_source=concierge&amp;utm_medium=nav">Najít partnery</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+<article class="eco">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/cs/">Domů</a> <span aria-hidden="true">/</span> <a href="/cs/ecosystem/">Ekosystém</a> <span aria-hidden="true">/</span> <span>Soukromí</span></nav>
+  <h1>Soukromí v Bitcoinu</h1>
+  <p class="lead">Soukromí vás chrání před krádeží, profilováním a cílenými podvody. Tyto nástroje a návody vám pomohou udržet vaši aktivitu s Bitcoinem i běžné prohlížení webu v soukromí, v mezích zákona.</p>
+  <section class="eco-pick" aria-labelledby="pick-h">
+    <h2 id="pick-h">Jak vybíráme</h2>
+    <p>Každou položku vybíráme ručně. Musí být zaměřená jen na Bitcoin, relevantní pro Evropu, aktivní a poctivá. Každé hodnocení píšeme sami. Placená umístění jsou vždy označena „Sponzorováno“ a naše hodnocení nikdy nemění. <a href="/cs/ecosystem/promote/#criteria">Přečtěte si naše kritéria pro zařazení</a>.</p>
+  </section>
+  <p class="eco-legal">Tato stránka se týká legálního soukromí: ochrany vašich osobních a finančních údajů před zločinci, obchodníky s daty a zbytečným odhalením. Nikomu nepomáhá obcházet pravidla proti praní peněz, sankce ani daňové povinnosti. Viz naše <a href="/cs/aml-compliance.html">stránka AML a compliance</a>. Zajímá vás, jak Virtuse nakládá s vašimi údaji? To popisují naše <a href="/cs/privacy-policy.html">zásady ochrany osobních údajů</a>.</p>
+  <ul class="eco-grid">
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://bitcoincore.org" target="_blank" rel="noopener">Bitcoin Core</a></h3></div>
+      <p lang="en">Running your own node means your wallet no longer reveals your addresses to someone else's server.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Node</li><li>Open source</li></ul><span class="eco-host">bitcoincore.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://www.torproject.org" target="_blank" rel="noopener">Tor Project</a></h3></div>
+      <p lang="en">Hides your IP address when browsing or when your node talks to the network. Free and widely audited.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Network privacy</li><li>Open source</li></ul><span class="eco-host">torproject.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://tails.net" target="_blank" rel="noopener">Tails</a></h3></div>
+      <p lang="en">A portable operating system that runs from a USB stick and leaves no trace on the computer.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Operating system</li><li>Open source</li></ul><span class="eco-host">tails.net ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://mullvad.net" target="_blank" rel="noopener">Mullvad VPN</a></h3></div>
+      <p lang="en">A Swedish VPN that needs no email to sign up and accepts bitcoin. Simple, honest pricing.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>VPN</li><li>Sweden</li><li>Accepts bitcoin</li></ul><span class="eco-host">mullvad.net ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://proton.me" target="_blank" rel="noopener">Proton</a></h3></div>
+      <p lang="en">Encrypted email and storage from Switzerland. Paid plans can be settled in bitcoin.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Email</li><li>Switzerland</li><li>Accepts bitcoin</li></ul><span class="eco-host">proton.me ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://silentpayments.xyz" target="_blank" rel="noopener">Silent Payments</a></h3></div>
+      <p lang="en">A reusable payment code that avoids address reuse when people pay you. Overview of the standard and supporting tools.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Standard</li><li>On-chain</li></ul><span class="eco-host">silentpayments.xyz ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://payjoin.org" target="_blank" rel="noopener">Payjoin</a></h3></div>
+      <p lang="en">A payment technique in which sender and receiver both contribute inputs, breaking common chain-analysis assumptions.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Standard</li><li>On-chain</li></ul><span class="eco-host">payjoin.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://bitcoiner.guide/privacy" target="_blank" rel="noopener">Bitcoiner.guide privacy</a></h3></div>
+      <p lang="en">A practical guide to everyday privacy habits for bitcoiners, from address reuse to KYC data.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Guide</li><li>Free</li></ul><span class="eco-host">bitcoiner.guide ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://en.bitcoin.it/wiki/Privacy" target="_blank" rel="noopener">Bitcoin Wiki: Privacy</a></h3></div>
+      <p lang="en">The most thorough reference on how Bitcoin privacy works and where it leaks. Dense but authoritative.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Reference</li><li>Technical</li></ul><span class="eco-host">en.bitcoin.it ↗</span></div>
+    </li>
+  </ul>
+  <h2>Související na Virtuse</h2>
+  <div class="related"><a href="/cs/secure.html">Úschova: mějte svůj Bitcoin v bezpečí</a><a href="/cs/ecosystem/dev-tools/">Bitcoinové nástroje pro vývojáře</a><a href="/cs/aml-compliance.html">AML a compliance ve Virtuse</a></div>
+  <aside class="disclaimers">
+    <p>Položky mají informativní charakter a nejsou investičním poradenstvím. Popisy položek jsou v angličtině. Zajímá vás, jak Virtuse nakládá s vašimi údaji? Přečtěte si naše <a href="/cs/privacy-policy.html">zásady ochrany osobních údajů</a>.</p>
+    <p class="eco-reviewed">Naposledy zkontrolováno: <time datetime="2026-10-22">22. října 2026</time></p>
+  </aside>
+</article>
+
+  <section id="brief" class="eco-brief" aria-label="Virtuse Brief">
+    <div class="eco-brief-row">
+      <p class="eco-brief-h">Získejte Brief. <span>Zdarma.</span></p>
+      <form class="brief-form eco-brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
+        <label for="email" class="eco-sr">E-mailová adresa</label>
+        <input id="email" name="email" type="email" placeholder="E-mailová adresa" autocomplete="email" required>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-ghost" type="submit">Získat Brief</button>
+      </form>
+    </div>
+    <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+    <p class="eco-brief-fine">Odhlásit se můžete kdykoli. Nejde o poradenství.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="/cs/buy-bitcoin.html">Koupit Bitcoin</a><a href="/cs/secure.html">Úschova</a><a href="/cs/mining.html">Těžba</a><a href="/cs/lending.html">Půjčky</a><a href="/cs/treasury.html">Treasury</a><a href="/cs/tax.html">Daně</a><a href="/cs/bots.html">Boti</a></div><div class="footer-col"><h4>Společnost</h4><a href="/cs/about.html">O nás</a><a href="/cs/faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="/cs/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Zdarma</span></a><a href="/cs/concierge.html">Partner Finder</a><a href="/cs/stacking.html">Stacking Strategist</a><a href="/cs/loan.html">Loan &amp; Liquidity Copilot</a><a href="/cs/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/cs/retirement-calculator.html">Důchodová kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="/news.html">Virtuse Brief</a><a href="/cs/blog.html">Blog</a><a href="/cs/bitcoin-data.html">Bitcoin data</a><a href="/cs/bitcoin-dane/">Daně z Bitcoinu</a><a href="/cs/bitcoin-index-poplatku/">Index poplatků</a><a href="/cs/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/cs/bitcoin-prodat-nebo-pujcit/">Prodat, nebo si půjčit</a><a href="/cs/bitcoin-dedictvi/">Dědění</a></div><div class="footer-col" data-eco-col><h4>Ekosystém</h4><a href="/cs/ecosystem/">Bitcoinový ekosystém</a><a href="/cs/ecosystem/what-is-bitcoin/">Co je Bitcoin?</a><a href="/cs/ecosystem/books/">Knihy</a><a href="/cs/ecosystem/podcasts/">Podcasty</a><a href="/cs/ecosystem/videos/">Videa</a><a href="/cs/ecosystem/conferences/">Konference</a><a href="/cs/ecosystem/privacy/">Soukromí</a><a href="/cs/ecosystem/spend-bitcoin/">Platit bitcoinem</a><a href="/cs/ecosystem/store-tools/">Pro obchodníky</a><a href="/cs/ecosystem/dev-tools/">Pro vývojáře</a><a href="/cs/ecosystem/jobs/">Práce v Bitcoinu</a><a href="/cs/ecosystem/peers/">Spřátelené projekty</a><a href="/cs/ecosystem/promote/">Zařazení</a></div><div class="footer-col"><h4>Právní informace</h4><a href="/cs/terms-and-conditions.html">Obchodní podmínky</a><a href="/cs/privacy-policy.html">Ochrana osobních údajů</a><a href="/cs/aml-compliance.html">AML a Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všechna práva vyhrazena.</p>
+<p class="footer-operator"><a href="/cs/operator.html">Provozovatel</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com</p>
+      <p class="footer-bottom-brief">Virtuse Brief, týdenní přehled od Virtuse. <a href="/news.html">Číst &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Jazyky"><a href="/ecosystem/privacy/" hreflang="en">English</a><a href="/sk/ecosystem/privacy/" hreflang="sk">Slovenčina</a><a href="/cs/ecosystem/privacy/" hreflang="cs" aria-current="page">Čeština</a><a href="/de/ecosystem/privacy/" hreflang="de">Deutsch</a><a href="/pl/ecosystem/privacy/" hreflang="pl">Polski</a><a href="/hu/ecosystem/privacy/" hreflang="hu">Magyar</a><a href="/fr/ecosystem/privacy/" hreflang="fr">Français</a><a href="/es/ecosystem/privacy/" hreflang="es">Español</a><a href="/uk/ecosystem/privacy/" hreflang="uk">Українська</a><a href="/ru/ecosystem/privacy/" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse je nezávislé srovnávací centrum. Nedrží prostředky ani klíče klientů, neprovádí pokyny a neposkytuje investiční poradenství. Služby poskytují uvedení partneři na základě vlastních licencí. Poplatky jsou uvedeny tak, jak je zveřejňuje každý partner, a mohou se změnit.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=7" defer></script>
+<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
+</body>
+</html>

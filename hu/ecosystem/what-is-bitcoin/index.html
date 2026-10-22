@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<!-- vb-consent -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<title>Mi a Bitcoin? Közérthető útmutató | Virtuse</title>
+<meta name="description" content="Mi a Bitcoin, miért rögzített a kínálata 21 millióban és hogyan működik, egyszerűen elmagyarázva, a legjobb ingyenes forrásokkal.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/hu/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/what-is-bitcoin/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/what-is-bitcoin/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Mi a Bitcoin? Közérthető útmutató | Virtuse">
+<meta property="og:description" content="Mi a Bitcoin, miért rögzített a kínálata 21 millióban és hogyan működik, egyszerűen elmagyarázva, a legjobb ingyenes forrásokkal.">
+<meta property="og:url" content="https://virtuse.com/hu/ecosystem/what-is-bitcoin/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.css?v=7">
+<style>.eco { max-width: 1040px; margin: 0 auto; padding: 36px 0 24px; min-width: 0; }
+.eco a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.eco a:hover { text-decoration-color: var(--text); }
+.eco p, .eco li { color: #c9d1d9; }
+.eco h1, .eco h2, .eco h3, .eco p, .eco li, .eco summary, .eco label, .eco b, .eco span { overflow-wrap: break-word; }
+.eco h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; hyphens: auto; }
+.eco h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 44px 0 14px; }
+.eco .lead { font-size: 1.1rem; line-height: 1.6; color: var(--muted); max-width: 760px; margin: 0; }
+.eco .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
+.eco .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
+.eco .crumbs a:hover { color: var(--text); }
+.eco-pick { background: var(--card); border: 1px solid var(--line); border-left: 3px solid #f7931a; border-radius: 12px; padding: 18px 20px; margin: 30px 0 8px; }
+.eco-pick h2 { margin: 0 0 6px; font-size: 1rem; }
+.eco-pick p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.eco-legal { font-size: 14px; line-height: 1.55; color: var(--muted) !important; border-left: 2px solid var(--line-strong); padding: 4px 0 4px 12px; margin: 18px 0; }
+.eco-grid, .eco-sections { list-style: none; padding: 0; margin: 18px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.eco-card { position: relative; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, background .15s; }
+.eco-card:hover { border-color: var(--line-strong); background: var(--card-hover); }
+.eco-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.eco-card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
+.eco-card h3 a { text-decoration: none; }
+.eco-card h3 a::after { content: ""; position: absolute; inset: 0; }
+.eco-card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); flex: 1; }
+.eco-card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; min-width: 0; }
+.eco-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.eco-tags li { font-size: 11px; line-height: 1; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 8px; }
+.eco-host { font: 500 11px/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
+.eco-sponsored { font-size: 11px; font-weight: 600; color: #f7931a; border: 1px solid rgba(247,147,26,.4); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
+.eco-sections li { min-width: 0; }
+.eco-sections a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; min-height: 140px; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .15s, background .15s; }
+.eco-sections a:hover { border-color: rgba(247,147,26,.45); background: var(--card-hover); }
+.eco-ico { width: 32px; height: 32px; padding: 6px; box-sizing: border-box; border-radius: 9px; background: rgba(247,147,26,.12); fill: none; stroke: #f7931a; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; flex: none; }
+.eco-sections b { font-size: 17px; line-height: 1.25; }
+.eco-sections span { font-size: 14px; color: var(--muted); flex: 1; }
+.eco-sections em { font: normal 500 11px/1.3 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
+.eco-promote-line { margin: 18px 0 0; }
+.eco-primer { max-width: 760px; }
+.eco-primer p, .eco-primer li { font-size: 16px; line-height: 1.7; }
+.eco-primer ul { padding-left: 20px; }
+.eco details { border-bottom: 1px solid var(--line); padding: 14px 0; max-width: 760px; }
+.eco summary { cursor: pointer; font-weight: 600; }
+.eco details p { margin: 10px 0 0; line-height: 1.6; }
+.eco .related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 16px; }
+.eco .related a { display: flex; align-items: center; min-height: 48px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 15px; min-width: 0; }
+.eco .related a:hover { border-color: var(--line-strong); }
+.eco .table-wrap { overflow-x: auto; margin: 18px 0 8px; }
+.eco-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.eco-table th, .eco-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.eco-table th { color: var(--muted); font-weight: 600; font-size: 13px; }
+.eco-table td b { font-weight: 600; }
+.eco-verdict { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); }
+.eco-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none !important; font-weight: 600; font-size: 13px; white-space: nowrap; }
+.eco-btn:hover { border-color: #f7931a; color: #fff; }
+.eco .disclaimers { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.eco .disclaimers p { color: var(--muted); margin: 0 0 6px; }
+.eco .muted { color: var(--muted); font-size: 14px; }
+.eco-copy, .eco-apply { max-width: 760px; }
+.eco-copy li { margin: 0 0 8px; line-height: 1.55; }
+.eco-form { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; min-width: 0; }
+.eco-form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text); min-width: 0; }
+.eco-form input:not([type=checkbox]):not([type=radio]), .eco-form select, .eco-form textarea { font: 400 16px/1.4 var(--sans); color: var(--text); background: var(--card); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; min-height: 44px; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+.eco-form textarea { resize: vertical; }
+.eco-form input:focus, .eco-form select:focus, .eco-form textarea:focus { outline: 2px solid var(--text); outline-offset: 1px; }
+.eco-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.eco-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 0; min-width: 0; }
+.eco-form legend { font-size: 14px; padding: 0 6px; }
+.eco-form .eco-check { flex-direction: row; align-items: flex-start; gap: 8px; color: #c9d1d9; line-height: 1.45; }
+.eco-check input { margin-top: 3px; accent-color: #f7931a; width: 16px; height: 16px; flex: none; }
+.eco-check-all { font-weight: 600; }
+.eco .eco-pick-countries { border: 0; padding: 8px 0 0; max-width: none; }
+.eco-pick-countries summary { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 6px 0; }
+.eco-check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 12px; margin-top: 10px; }
+.eco-radio { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.eco-count { font-size: 12px; color: var(--dim); align-self: flex-end; }
+.eco-form .hp { position: absolute; left: -9999px; }
+.eco-submit { align-self: flex-start; min-height: 44px; padding: 12px 22px; border: 0; border-radius: 10px; background: var(--text); color: #08090a; font: 600 15px/1 var(--sans); cursor: pointer; }
+.eco-submit:disabled { opacity: .6; cursor: wait; }
+.eco-form-msg { margin: 0; font-size: 14px; min-height: 1.2em; }
+.eco-form-msg.ok { color: #3fb950; }
+.eco-form-msg.err { color: #f0883e; }
+.eco-mail { margin-top: 18px; }
+.eco-sr { position: absolute !important; left: -9999px; }
+.eco-brief { max-width: 1040px; margin: 8px auto 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-sizing: border-box; }
+.eco-brief-row { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
+.eco-brief-h { margin: 0; font-size: 16px; font-weight: 600; color: var(--text); flex: 1 1 220px; }
+.eco-brief-h span { color: var(--muted); font-weight: 400; }
+.eco-brief-form { display: flex !important; gap: 8px; flex: 2 1 340px; min-width: 0; }
+.eco-brief-form input[type=email] { flex: 1; min-width: 0; padding: 11px 12px; font-size: 16px; }
+.eco-brief-form .btn { white-space: nowrap; flex: none; }
+.eco-brief .brief-msg { margin-top: 8px; font-size: 13px; }
+.eco-brief-fine { margin: 6px 0 0; font-size: 12px; color: var(--dim); }
+/* Ecosystem menu: 13 items in two columns on desktop */
+@media (min-width: 1181px) {
+  #nd-eco { min-width: 560px; grid-template-columns: 1fr 1fr; column-gap: 4px; left: auto; right: -12px; }
+  .nav-group.open #nd-eco { display: grid; }
+}
+@media (hover: hover) and (min-width: 1181px) { #ng-eco:hover #nd-eco { display: grid; } }
+@media (max-width: 900px) { .eco-grid, .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .eco { padding-top: 24px; }
+  .eco-grid, .eco .related, .eco-row { grid-template-columns: minmax(0, 1fr); }
+  .eco-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .eco-sections a { min-height: 128px; padding: 14px 12px; gap: 4px; }
+  .eco-sections b { font-size: 15px; }
+  .eco-sections span { font-size: 13px; }
+  .eco-ico { width: 28px; height: 28px; padding: 5px; }
+  .eco-check-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .eco .table-wrap { overflow: visible; }
+  .eco-table, .eco-table tbody, .eco-table tr, .eco-table td { display: block; width: 100%; box-sizing: border-box; }
+  .eco-table thead { display: none; }
+  .eco-table tr { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px 14px; margin: 0 0 10px; }
+  .eco-table td { border: 0; padding: 8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
+  .eco-table td + td { border-top: 1px solid var(--line); }
+  .eco-table td::before { content: attr(data-label); color: var(--muted); font-size: 12px; font-weight: 600; }
+  .eco-brief-form { flex-basis: 100%; }
+}</style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "legalName": "Virtuse Wealth Management, a.s.",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "url": "https://virtuse.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Főoldal",
+          "item": "https://virtuse.com/hu/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bitcoin-ökoszisztéma",
+          "item": "https://virtuse.com/hu/ecosystem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mi a Bitcoin?",
+          "item": "https://virtuse.com/hu/ecosystem/what-is-bitcoin/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://virtuse.com/hu/ecosystem/what-is-bitcoin/",
+      "url": "https://virtuse.com/hu/ecosystem/what-is-bitcoin/",
+      "name": "Mi a Bitcoin?",
+      "description": "Mi a Bitcoin, miért rögzített a kínálata 21 millióban és hogyan működik, egyszerűen elmagyarázva, a legjobb ingyenes forrásokkal.",
+      "inLanguage": "hu",
+      "dateModified": "2026-10-22",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 8,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "The Bitcoin whitepaper",
+            "url": "https://bitcoin.org/bitcoin.pdf"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bitcoin for Everybody (Saylor Academy)",
+            "url": "https://learn.saylor.org/course/view.php?id=468"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Plan ₿ Network",
+            "url": "https://planb.network"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "21 Lessons",
+            "url": "https://21lessons.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Satoshi Nakamoto Institute",
+            "url": "https://nakamotoinstitute.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Lopp's Bitcoin resources",
+            "url": "https://www.lopp.net/bitcoin-information.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "21ideas",
+            "url": "https://21ideas.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Learn Me A Bitcoin",
+            "url": "https://learnmeabitcoin.com"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "headline": "Mi a Bitcoin?",
+      "description": "Mi a Bitcoin, miért rögzített a kínálata 21 millióban és hogyan működik, egyszerűen elmagyarázva, a legjobb ingyenes forrásokkal.",
+      "inLanguage": "hu",
+      "dateModified": "2026-10-22",
+      "author": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "mainEntityOfPage": "https://virtuse.com/hu/ecosystem/what-is-bitcoin/"
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "hu",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ki irányítja a Bitcoint?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Senki: sem egyetlen személy, sem vállalat, sem kormány. A szabályokat több tízezer független számítógép (csomópont) érvényesíti, amelyek mindegyike minden tranzakciót ellenőriz. A szabályok megváltoztatásához a csomópontokat futtatók széles körű egyetértése szükséges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Miért korlátozott a kínálat 21 millióra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A korlát benne van abban a szoftverben, amelyet minden csomópont futtat. Új bitcoint a bányászok kapnak egy rögzített ütemezés szerint, amely nagyjából négyévente feleződik, így a kibocsátás a nullához közelít, és az összmennyiség soha nem haladja meg a 21 milliót."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Legális a Bitcoin Európában?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Igen. A bitcoin birtoklása, vásárlása és eladása az egész EU-ban legális. A kriptoeszköz-szolgáltatást nyújtó vállalatoknak MiCA-engedéllyel kell rendelkezniük, a nyereség pedig általában adóköteles; a szabályok országonként eltérnek."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Melyek a fő kockázatok?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Az árfolyam ingadozó, a kulcsokkal elkövetett hibák véglegesek lehetnek, és gyakoriak a csalások. Csak annyit fektessen be, amennyit nagy árfolyam-ingadozások mellett is meg tud tartani, és mielőtt jelentős összeget tárol, ismerje meg a letétkezelés működését."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+<script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
+</head>
+<body class="page-eco no-split">
+<!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/hu/index.html" aria-label="Virtuse főoldal">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Fő">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Szolgáltatások</button>
+        <div class="nav-drop" id="nd-services"><a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás</a><a href="/hu/secure.html">Letétkezelés</a><a href="/hu/lending.html">Hitelek</a><a href="/hu/mining.html">Bányászat</a><a href="/hu/treasury.html">Treasury</a><a href="/hu/tax.html">Adózás</a><a href="/hu/bots.html">Botok</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Tudástár</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Heti Bitcoin-hírek, minden hétfőn</span></a><a href="/stories/"><span class="nd-t">Cikkek</span><span class="nd-d">Hosszabb cikkek és elemzések</span></a><a href="/hu/blog.html"><span class="nd-t">Blog</span><span class="nd-d">A Virtuse legújabb bejegyzései</span></a><a href="/hu/bitcoin-data.html"><span class="nd-t">Bitcoin-adatok</span><span class="nd-d">Élő árfolyam, hálózat és grafikonok</span></a><a href="/hu/bitcoin-adozas/"><span class="nd-t">Adózási útmutatók országonként</span><span class="nd-d">Adószabályok 13 uniós országban</span></a><a href="/hu/faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Válaszok a Virtuse-ról és a partnerekről</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Eszközök</button>
+        <div class="nav-drop" id="nd-tools"><a href="/hu/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></span><span class="nd-d">Verdikt és díjaudit, november 1-jétől ingyen</span></a><a href="/hu/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerek a válaszai alapján</span></a><a href="/hu/bitcoin-dijindex/"><span class="nd-t">Díjindex</span><span class="nd-d">A vásárlás teljes költsége összevetve</span></a><a href="/hu/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Rendszeres vásárlás tervezése</span></a><a href="/hu/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Eladás vagy hitel Bitcoin-fedezettel</span></a><a href="/hu/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Országos szabályok és öröklési ellenőrzés</span></a><a href="/hu/retirement-calculator.html"><span class="nd-t">Nyugdíjkalkulátor</span><span class="nd-d">Mennyi Bitcoin kell a nyugdíjhoz</span></a></div>
+      </div>
+      <div class="nav-group current" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ökoszisztéma</button>
+        <div class="nav-drop" id="nd-eco"><a href="/hu/ecosystem/"><span class="nd-t">Áttekintés</span><span class="nd-d">Minden Bitcoin-forrás egy helyen</span></a><a href="/hu/ecosystem/what-is-bitcoin/" aria-current="page"><span class="nd-t">Mi a Bitcoin?</span><span class="nd-d">Közérthető bevezető</span></a><a href="/hu/ecosystem/books/"><span class="nd-t">Könyvek</span><span class="nd-d">Válogatott olvasmánylista</span></a><a href="/hu/ecosystem/podcasts/"><span class="nd-t">Podcastok</span><span class="nd-d">Csak Bitcoinról szóló műsorok</span></a><a href="/hu/ecosystem/videos/"><span class="nd-t">Videók</span><span class="nd-d">Csatornák és dokumentumfilmek</span></a><a href="/hu/ecosystem/conferences/"><span class="nd-t">Konferenciák</span><span class="nd-d">Bitcoin-események Európában</span></a><a href="/hu/ecosystem/privacy/"><span class="nd-t">Adatvédelem</span><span class="nd-d">Törvényes adatvédelmi eszközök</span></a><a href="/hu/ecosystem/spend-bitcoin/"><span class="nd-t">Fizetés bitcoinnal</span><span class="nd-d">Üzletek, térképek, ajándékkártyák</span></a><a href="/hu/ecosystem/store-tools/"><span class="nd-t">Kereskedői eszközök</span><span class="nd-d">Bitcoin-fogadás az üzletben</span></a><a href="/hu/ecosystem/dev-tools/"><span class="nd-t">Fejlesztői eszközök</span><span class="nd-d">Könyvtárak és SDK-k</span></a><a href="/hu/ecosystem/jobs/"><span class="nd-t">Bitcoin-állások</span><span class="nd-d">Állások, támogatások, ösztöndíjak</span></a><a href="/hu/ecosystem/peers/"><span class="nd-t">Bitcoin-társak</span><span class="nd-d">Rokon Bitcoin-projektek</span></a><a href="/hu/ecosystem/promote/"><span class="nd-t">Bemutatkozás</span><span class="nd-d">Mutassa be projektjét</span></a></div>
+      </div>
+      <a class="nav-top" href="/hu/about.html">Rólunk</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Az oldal nyelve: magyar"><span aria-hidden="true">&#127469;&#127482;</span><span class="lang-code">HU</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/ecosystem/what-is-bitcoin/" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/ecosystem/what-is-bitcoin/" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/ecosystem/what-is-bitcoin/" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/ecosystem/what-is-bitcoin/" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/ecosystem/what-is-bitcoin/" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/ecosystem/what-is-bitcoin/" class="lang-opt active" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/ecosystem/what-is-bitcoin/" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/ecosystem/what-is-bitcoin/" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/ecosystem/what-is-bitcoin/" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/ecosystem/what-is-bitcoin/" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menü megnyitása"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/hu/concierge.html?utm_source=concierge&amp;utm_medium=nav">Partnerek keresése</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+<article class="eco">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/hu/">Főoldal</a> <span aria-hidden="true">/</span> <a href="/hu/ecosystem/">Ökoszisztéma</a> <span aria-hidden="true">/</span> <span>Mi a Bitcoin?</span></nav>
+  <h1>Mi a Bitcoin?</h1>
+  <p class="lead">A Bitcoin olyan pénz, amelyet sem vállalat, sem kormány nem bocsát ki és nem irányít. Ez a bevezető közérthetően elmagyarázza, mi a Bitcoin, miért rögzített a kínálata, hogyan működik és milyen kockázatokkal kell tisztában lennie, majd bemutatja az általunk ajánlott ingyenes forrásokat a további tájékozódáshoz.</p>
+  <div class="eco-primer">
+  <h2>Pénz kibocsátó nélkül</h2>
+  <p>A Bitcoin digitális pénz, amely nem egy bank főkönyvében, hanem egy nyílt hálózaton működik. Senki sem bocsáthat ki belőle tetszés szerint, és senki sem fagyaszthatja be a hálózatot vagy írhatja át a múltját. Bitcoint egy titkos kulcs birtoklásával tart, és aki ezt a kulcsot ellenőrzi, az mozgathatja az érméket. Az első, 2009 januárjában létrejött blokk óta a hálózat központi üzemeltető, vállalat vagy igazgatótanács nélkül működik.</p>
+  <p>A legtöbb pénz, amelyet használ, egy intézmény által nyilvántartott ígéret: bankszámlája egyenlege a bank kötelezettsége, magát a valutát pedig egy központi bank kezeli, amely többet is létrehozhat belőle. A Bitcoin másként működik. A főkönyv nyilvános, a szabályok nyílt forráskódú szoftverben vannak rögzítve, és bárki ellenőrizheti, hogy betartják-e őket.</p>
+  <p>Ez a felépítés egy konkrét problémára adott válasz. A Bitcoin előtt minden digitális fizetési rendszernek szüksége volt egy megbízható közvetítőre, hogy senki ne költhesse el ugyanazt a pénzt kétszer. A Bitcoin közvetítő nélkül oldotta meg ezt: a teljes hálózat egyetlen tranzakciótörténetben állapodik meg. Az eredmény egy fizetési hálózat és megtakarítási eszköz, amelyet internetkapcsolattal bárki használhat, engedélykérés és számlanyitás nélkül.</p>
+  <h2>Miért használják az emberek a Bitcoint</h2>
+  <p>Az emberek különböző okokból fordulnak a Bitcoin felé. Vannak, akik hosszú távú megtakarítási eszközt keresnek, amelynek kínálatát nem lehet felhígítani. Mások késedelem, határidők és devizakorlátozások nélkül szeretnének értéket küldeni határokon át. Megint mások azt értékelik, hogy a saját őrzésben tartott érméket senki sem fagyaszthatja be vagy foglalhatja le a kulcsok nélkül. Vállalatok tartalékként tartják, a magas inflációjú országokban pedig gyakran egyszerűen a jövedelem értékének megőrzésére használják.</p>
+  <p>Egyik felhasználási mód sem igényel kereskedést. Sok európai minden hónapban kis, fix összegért vásárol (átlagár-módszer, DCA), és évekig tartja, ami kisimítja a rövid távú árfolyam-ingadozások hatását. <a href="/hu/bitcoin-dca-kalkulator/">DCA-kalkulátorunk</a> megmutatja, hogyan működött ez a múltban, valós díjakkal számolva.</p>
+  <h2>Szűkösség: a 21 milliós korlát</h2>
+  <p>Az összes valaha létező bitcoin mennyisége 21 millióban van maximalizálva. Új érméket a bányászok kapnak jutalomként a hálózat biztosításáért, és ez a jutalom nagyjából négyévente (210 000 blokkonként) feleződik. A kínálat nagy része már kibocsátásra került; a maradék érmék egyre lassabban érkeznek, egészen 2140 körülig.</p>
+  <p>Ez a rögzített, kiszámítható ütemezés a fő oka annak, hogy a Bitcoint az aranyhoz hasonlítják. Nem lehet többet nyomtatni belőle, mert nő a kereslet, és egyetlen központi bank sem dönthet úgy, hogy felhígítja a meglévő tulajdonosok részesedését. Hogy ez saját időtávján jó értékmegőrzővé teszi-e a Bitcoint, azt Önnek kell eldöntenie; a múltban hosszú, erős növekedési időszakok és 70 %-os vagy nagyobb mély visszaesések egyaránt előfordultak.</p>
+  <h2>A Bitcoin nem „kripto”</h2>
+  <p>Több ezer más token másolta le a Bitcoin kódjának egyes részeit, de a legtöbb mögött áll egy vállalat, egy alapítvány vagy a bennfentesek egy szűk csoportja, amely megváltoztathatja a szabályokat, újabb egységeket bocsáthat ki vagy leállíthatja a hálózatot. Ez más kockázati profil. A Virtuse ezért foglalkozik kizárólag Bitcoinnal: a Bitcoin értéke abból fakad, hogy nincs kibocsátója és senki sem irányítja, és ezt nagyon nehéz megismételni, ha egy projektnek alapítói, előértékesítése vagy marketingkerete van. Ha valaki egy új érmét kínál Önnek ígért hozammal, kezelje értékesítési ajánlatként, ne Bitcoinként.</p>
+  <h2>Hogyan működik</h2>
+  <p>Minden bitcoin-tranzakció a hálózatra kerül, és független számítógépek, úgynevezett csomópontok (node-ok) ellenőrzik. Minden csomópont megvizsgálja, hogy az érmék léteznek-e, nem költötték-e el őket korábban, és érvényes-e a küldő aláírása. Csomópontot bárki futtathat egy átlagos számítógépen, és éppen ez tartja tisztességesen a szabályokat: a csomópont egyszerűen figyelmen kívül hagyja a szabályokat sértő blokkokat.</p>
+  <p>A bányászok az érvényes tranzakciókat blokkokba gyűjtik, nagyjából tízpercenként egyet. Egy blokk hozzáadásához a bányásznak valódi áramot kell felhasználnia egy kriptográfiai feladvány megoldására (proof of work, munkabizonyíték). Ez a költség teszi a múlt átírását gyakorlatilag lehetetlenné: egy régi tranzakció módosításához az azóta elvégzett összes munkát újra el kellene végezni, gyorsabban, mint a hálózat többi része együttvéve.</p>
+  <p>A gyorsabb és olcsóbb fizetések a Bitcoinra épülő rétegeken futnak, elsősorban a Lightning hálózaton, amely másodpercek alatt rendezi a kis összegű fizetéseket, miközben a végső biztonságot továbbra is az alapláncra bízza.</p>
+  <p>A Lightningon két fél bitcoint zár le egy közös csatornába, majd tetszőleges gyakorisággal frissíti a köztük lévő egyenleget, szinte azonnal és a cent töredékéért. A csatornák hálózattá kapcsolódnak, így olyasvalakinek is fizethet, akivel soha nem nyitott csatornát. Európa-szerte már ma is fogadnak Lightning-fizetést üzletek; lásd: <a href="/hu/ecosystem/spend-bitcoin/">hol költhet bitcoint</a> és <a href="/hu/ecosystem/store-tools/">eszközök kereskedőknek</a>.</p>
+  <h2>A saját őrzés alapjai</h2>
+  <p>Bitcoint birtokolni annyit jelent, mint ellenőrizni a kulcsait. Ha egy platformon hagyja az érméit, akkor egy követelése van a platformmal szemben, nem magukat az érméket birtokolja. A saját őrzés megszünteti ezt a partnerkockázatot, de Önt teszi felelőssé a biztonsági mentésért: a helyreállítási kifejezés (általában 12 vagy 24 szó) visszaállítja a tárcáját, és aki látja, elviheti az érméit.</p>
+  <p>Három elterjedt modell létezik. Szabályozott szolgáltatónál történő letétkezelés esetén a kulcsokat a szolgáltató tartja, és Ön annak biztonságára és fizetőképességére támaszkodik; ez egyszerű, de partnerkockázattal jár. Egykulcsos saját őrzésnél egy kulcsot Ön tart, általában tárcaalkalmazásban vagy erre szolgáló eszközön. Többaláírásos (multisig, együttműködő) őrzésnél több kulcs kell az összegek mozgatásához, így egy kulcs elvesztése vagy kompromittálódása nem jelenti mindennek az elvesztését. A helyes választás az összegtől, a technikai jártasságától és attól függ, kinek kell hozzáférnie az érmékhez, ha Önnel történik valami.</p>
+  <p>A legtöbb ember számára észszerű út, ha kis összeggel kezd, kipróbál egy próbavisszaállítást, a helyreállítási kifejezést offline tartja, és soha nem gépeli be egy weboldalra. Nagyobb összegeknél érdemes dedikált hardvert használni, és tervet készíteni az örökösök számára. <a href="/hu/secure.html">Letétkezelési oldalunk</a>, a <a href="/stories/the-most-comprehensive-cold-wallet-guide/">hidegtárca-útmutató</a> és az <a href="/hu/bitcoin-orokles/">öröklési ellenőrzőlista</a> részletesen foglalkozik ezekkel.</p>
+  <h2>Kockázatok, amelyeket érdemes megérteni</h2>
+  <ul><li><strong>Volatilitás.</strong> Az árfolyam hónapok alatt a felére eshet. Csak annyit tartson, amennyit nagy ingadozások mellett is meg tud tartani.</li><li><strong>Visszafordíthatatlanság.</strong> Az elküldött tranzakciók nem vonhatók vissza, és egy elveszett kulcs általában elveszett érméket jelent.</li><li><strong>Csalások.</strong> Megbízható fél soha nem kéri el a helyreállítási kifejezését, nem ígér garantált hozamot és nem sürgeti. Legyen különösen óvatos a nem Bitcoinra vonatkozó „kripto” ajánlatokkal.</li><li><strong>Adók és szabályok.</strong> A nyereség a legtöbb európai országban adóköteles, a szolgáltatóknak pedig be kell tartaniuk a MiCA-t és a pénzmosás elleni szabályokat. Lásd <a href="/hu/bitcoin-adozas/">országonkénti adóútmutatóinkat</a>.</li></ul>
+  <h2>Bitcoin Európában</h2>
+  <p>Mióta hatályba lépett az EU kriptoeszköz-piacokról szóló rendelete (MiCA), az EU-ban kriptoeszköz-szolgáltatást nyújtó vállalatoknak nemzeti szabályozói engedélyre van szükségük, és be kell tartaniuk a pénzmosás elleni szabályokat, beleértve a személyazonosság ellenőrzését is. 2026-tól a DAC8 irányelv azt is előírja, hogy ezek a szolgáltatók jelentsék az ügyfelek tranzakcióit az adóhatóságoknak. Bitcoint saját őrzésben tartani az EU-ban mindenhol legális, de az adózás országonként nagyon eltérő: egyes országok mentesítik a hosszú távú tartást, mások minden eladást vagy cserét megadóztatnak. Mielőtt elad vagy elkölt, nézze meg országa szabályait.</p>
+  <p>Ha készen áll a vásárlásra, hasonlítsa össze a szabályozott partnereket <a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás oldalunkon</a>. Ez az oldal oktatási célú, és nem minősül befektetési tanácsadásnak.</p>
+  </div>
+  <h2>Gyakori kérdések</h2>
+  <details><summary>Ki irányítja a Bitcoint?</summary><p>Senki: sem egyetlen személy, sem vállalat, sem kormány. A szabályokat több tízezer független számítógép (csomópont) érvényesíti, amelyek mindegyike minden tranzakciót ellenőriz. A szabályok megváltoztatásához a csomópontokat futtatók széles körű egyetértése szükséges.</p></details>
+  <details><summary>Miért korlátozott a kínálat 21 millióra?</summary><p>A korlát benne van abban a szoftverben, amelyet minden csomópont futtat. Új bitcoint a bányászok kapnak egy rögzített ütemezés szerint, amely nagyjából négyévente feleződik, így a kibocsátás a nullához közelít, és az összmennyiség soha nem haladja meg a 21 milliót.</p></details>
+  <details><summary>Legális a Bitcoin Európában?</summary><p>Igen. A bitcoin birtoklása, vásárlása és eladása az egész EU-ban legális. A kriptoeszköz-szolgáltatást nyújtó vállalatoknak MiCA-engedéllyel kell rendelkezniük, a nyereség pedig általában adóköteles; a szabályok országonként eltérnek.</p></details>
+  <details><summary>Melyek a fő kockázatok?</summary><p>Az árfolyam ingadozó, a kulcsokkal elkövetett hibák véglegesek lehetnek, és gyakoriak a csalások. Csak annyit fektessen be, amennyit nagy árfolyam-ingadozások mellett is meg tud tartani, és mielőtt jelentős összeget tárol, ismerje meg a letétkezelés működését.</p></details>
+  <section class="eco-pick" aria-labelledby="pick-h">
+    <h2 id="pick-h">Hogyan válogatunk</h2>
+    <p>Minden bejegyzést kézzel választunk ki: csak Bitcoinnal foglalkozhat, Európában releváns, működő és tisztességes kell legyen. Az értékelést mindig mi magunk írjuk. A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg az értékelésünket. <a href="/hu/ecosystem/promote/#criteria">Felvételi feltételeink</a>.</p>
+  </section>
+  <h2>Ingyenes források a további tájékozódáshoz</h2>
+  <ul class="eco-grid">
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">The Bitcoin whitepaper</a></h3></div>
+      <p lang="en">Satoshi Nakamoto's nine-page original from 2008. Short, readable and still the best primary source.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Primary source</li><li>Free</li><li>PDF</li></ul><span class="eco-host">bitcoin.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://learn.saylor.org/course/view.php?id=468" target="_blank" rel="noopener">Bitcoin for Everybody (Saylor Academy)</a></h3></div>
+      <p lang="en">A free, self-paced beginner course with readings and a final exam. Good if you like structure.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free course</li><li>Beginner</li></ul><span class="eco-host">learn.saylor.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://planb.network" target="_blank" rel="noopener">Plan ₿ Network</a></h3></div>
+      <p lang="en">Free structured courses from first steps to advanced topics, available in many European languages.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free courses</li><li>Multilingual</li><li>Open source</li></ul><span class="eco-host">planb.network ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://21lessons.com" target="_blank" rel="noopener">21 Lessons</a></h3></div>
+      <p lang="en">Gigi's short essays on what Bitcoin teaches about money, technology and philosophy. Free to read online.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Free</li><li>Essays</li></ul><span class="eco-host">21lessons.com ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://nakamotoinstitute.org" target="_blank" rel="noopener">Satoshi Nakamoto Institute</a></h3></div>
+      <p lang="en">The archive of Satoshi's emails and forum posts, plus the economic and cryptographic writing Bitcoin grew out of.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Archive</li><li>History</li></ul><span class="eco-host">nakamotoinstitute.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://www.lopp.net/bitcoin-information.html" target="_blank" rel="noopener">Lopp's Bitcoin resources</a></h3></div>
+      <p lang="en">Jameson Lopp's large, regularly updated index of Bitcoin information. Best used as a reference, not a starting point.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Reference</li><li>Free</li></ul><span class="eco-host">lopp.net ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://21ideas.org" target="_blank" rel="noopener">21ideas</a></h3></div>
+      <p lang="en">Translations of essential bitcoin essays and guides for Russian-speaking readers.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Russian</li><li>Free</li></ul><span class="eco-host">21ideas.org ↗</span></div>
+    </li>
+    <li class="eco-card">
+      <div class="eco-card-top"><h3><a href="https://learnmeabitcoin.com" target="_blank" rel="noopener">Learn Me A Bitcoin</a></h3></div>
+      <p lang="en">Clear, illustrated explanations of how transactions, keys and blocks work under the hood.</p>
+      <div class="eco-card-foot"><ul class="eco-tags" lang="en"><li>Technical</li><li>Free</li></ul><span class="eco-host">learnmeabitcoin.com ↗</span></div>
+    </li>
+  </ul>
+  <h2>Kapcsolódó tartalmak a Virtuse oldalán</h2>
+  <div class="related"><a href="/hu/faq.html">Virtuse GYIK</a><a href="/stories/why-bitcoin-is-not-a-ponzi-scheme/">Miért nem piramisjáték a Bitcoin</a><a href="/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/">23 ok, amiért érdemes Bitcoint tartani</a><a href="/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/">Öt módja annak, hogy megértse a Bitcoint</a><a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás: partnerek összehasonlítása</a><a href="/hu/secure.html">Letétkezelés: tartsa biztonságban Bitcoinját</a></div>
+  <aside class="disclaimers">
+    <p>A listázás tájékoztató jellegű, nem befektetési tanácsadás. A bejegyzések leírása angol nyelvű.</p>
+    <p class="eco-reviewed">Utoljára ellenőrizve: <time datetime="2026-10-22">2026. október 22.</time></p>
+  </aside>
+</article>
+
+  <section id="brief" class="eco-brief" aria-label="Virtuse Brief">
+    <div class="eco-brief-row">
+      <p class="eco-brief-h">Iratkozzon fel a Briefre. <span>Ingyenes.</span></p>
+      <form class="brief-form eco-brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
+        <label for="email" class="eco-sr">E-mail-cím</label>
+        <input id="email" name="email" type="email" placeholder="E-mail-cím" autocomplete="email" required>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-ghost" type="submit">Feliratkozás</button>
+      </form>
+    </div>
+    <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+    <p class="eco-brief-fine">Bármikor leiratkozhat. Nem befektetési tanács.</p>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Szolgáltatások</h4><a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás</a><a href="/hu/secure.html">Letétkezelés</a><a href="/hu/mining.html">Bányászat</a><a href="/hu/lending.html">Hitelek</a><a href="/hu/treasury.html">Treasury</a><a href="/hu/tax.html">Adózás</a><a href="/hu/bots.html">Botok</a></div><div class="footer-col"><h4>Cég</h4><a href="/hu/about.html">Rólunk</a><a href="/hu/faq.html">FAQ</a></div><div class="footer-col"><h4>Eszközök</h4><a href="/hu/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Ingyenes</span></a><a href="/hu/concierge.html">Partner Finder</a><a href="/hu/stacking.html">Stacking Strategist</a><a href="/hu/loan.html">Loan &amp; Liquidity Copilot</a><a href="/hu/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/hu/retirement-calculator.html">Nyugdíjkalkulátor</a></div><div class="footer-col"><h4>Útmutatók</h4><a href="/news.html">Virtuse Brief</a><a href="/hu/blog.html">Blog</a><a href="/hu/bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-adozas/">Bitcoin-adózás</a><a href="/hu/bitcoin-dijindex/">Díjindex</a><a href="/hu/bitcoin-dca-kalkulator/">DCA-kalkulátor</a><a href="/hu/bitcoin-eladas-vagy-hitel/">Eladás vagy hitel</a><a href="/hu/bitcoin-orokles/">Öröklés</a></div><div class="footer-col" data-eco-col><h4>Ökoszisztéma</h4><a href="/hu/ecosystem/">Bitcoin-ökoszisztéma</a><a href="/hu/ecosystem/what-is-bitcoin/">Mi a Bitcoin?</a><a href="/hu/ecosystem/books/">Könyvek</a><a href="/hu/ecosystem/podcasts/">Podcastok</a><a href="/hu/ecosystem/videos/">Videók</a><a href="/hu/ecosystem/conferences/">Konferenciák</a><a href="/hu/ecosystem/privacy/">Adatvédelem</a><a href="/hu/ecosystem/spend-bitcoin/">Fizetés bitcoinnal</a><a href="/hu/ecosystem/store-tools/">Kereskedői eszközök</a><a href="/hu/ecosystem/dev-tools/">Fejlesztői eszközök</a><a href="/hu/ecosystem/jobs/">Bitcoin-állások</a><a href="/hu/ecosystem/peers/">Bitcoin-társak</a><a href="/hu/ecosystem/promote/">Bemutatkozás</a></div><div class="footer-col"><h4>Jogi információk</h4><a href="/hu/terms-and-conditions.html">Felhasználási feltételek</a><a href="/hu/privacy-policy.html">Adatvédelmi tájékoztató</a><a href="/hu/aml-compliance.html">AML és megfelelés</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.</p>
+<p class="footer-operator"><a href="/hu/operator.html">Üzemeltető</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Szlovákia · Cégazonosító (IČO) 36 709 042 · Közösségi adószám SK2022293042 · bejegyezve a Pozsonyi III. Városi Bíróság cégjegyzékébe, Sa szakasz, 4452/B szám · info@virtuse.com</p>
+      <p class="footer-bottom-brief">Virtuse Brief, a Virtuse heti összefoglalója. <a href="/news.html">Elolvasom &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Nyelvek"><a href="/ecosystem/what-is-bitcoin/" hreflang="en">English</a><a href="/sk/ecosystem/what-is-bitcoin/" hreflang="sk">Slovenčina</a><a href="/cs/ecosystem/what-is-bitcoin/" hreflang="cs">Čeština</a><a href="/de/ecosystem/what-is-bitcoin/" hreflang="de">Deutsch</a><a href="/pl/ecosystem/what-is-bitcoin/" hreflang="pl">Polski</a><a href="/hu/ecosystem/what-is-bitcoin/" hreflang="hu" aria-current="page">Magyar</a><a href="/fr/ecosystem/what-is-bitcoin/" hreflang="fr">Français</a><a href="/es/ecosystem/what-is-bitcoin/" hreflang="es">Español</a><a href="/uk/ecosystem/what-is-bitcoin/" hreflang="uk">Українська</a><a href="/ru/ecosystem/what-is-bitcoin/" hreflang="ru">Русский</a></nav>
+      <p class="legal">A Virtuse független összehasonlító hub. Nem őriz ügyfélpénzt vagy kulcsokat, nem hajt végre megbízásokat, és nem ad befektetési tanácsot. A szolgáltatásokat a felsorolt partnerek nyújtják saját engedélyük alapján. A díjak az egyes partnerek által közzétett formában szerepelnek, és változhatnak.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=7" defer></script>
+<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
+</body>
+</html>
