@@ -1018,6 +1018,6 @@
       "accent": "orange"
     }
   ],
-  "turnstileSiteKey": "1x00000000000000000000AA",
-  "_turnstileNote": "Public Turnstile site key for the Promote form. 1x00000000000000000000AA is Cloudflare's always-pass TEST key: replace it with the real widget's site key before production (its secret goes into the Worker secret TURNSTILE_SECRET_KEY)."
+  "turnstileSiteKey": "0x4AAAAAAFheOLDBd1DyVOhF",
+  "_turnstileNote": "Public site key of the Turnstile widget 'virtuse.com Ecosystem Promote form' (Managed; hostnames virtuse.com, staging.virtuse.com; created 2026-10-22 via the Cloudflare API). Its secret is the Worker secret TURNSTILE_SECRET_KEY (copy it from Cloudflare dashboard > Turnstile). Test keys: site 1x00000000000000000000AA, secret 1x0000000000000000000000000000000AA."
 }

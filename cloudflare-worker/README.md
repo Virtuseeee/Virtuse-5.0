@@ -389,5 +389,5 @@ Secrets / settings (`wrangler secret put NAME`):
 | `ECOSYSTEM_TEST_TO` | no | `vasilisin@virtuse.com` | Requests from `https://staging.virtuse.com` send **both** emails here only, subjects start with `[TEST]` |
 
 Turnstile test keys (always pass, Cloudflare docs): site key `1x00000000000000000000AA`, secret
-`1x0000000000000000000000000000000AA`. The pages ship with the test site key until the real widget exists;
+`1x0000000000000000000000000000000AA`. The widget "virtuse.com Ecosystem Promote form" (site key `0x4AAAAAAFheOLDBd1DyVOhF`, Managed, virtuse.com + staging.virtuse.com) exists since 2026-10-22;
 the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret into `TURNSTILE_SECRET_KEY`.
