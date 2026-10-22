@@ -62,7 +62,8 @@
     "relatedSub": "További tartalmak.",
     "listH": "Ajánlásaink.",
     "listSub": "Mindegyikhez egysoros értékelés tartozik.",
-    "faqSub": "Rövid válaszok."
+    "faqSub": "Rövid válaszok.",
+    "onThisPage": "Ezen az oldalon"
   },
   "promote": {
     "criteriaH": "Feltételek",
@@ -179,7 +180,39 @@
           "a": "Az árfolyam ingadozó, a kulcsokkal elkövetett hibák véglegesek lehetnek, és gyakoriak a csalások. Csak annyit fektessen be, amennyit nagy árfolyam-ingadozások mellett is meg tud tartani, és mielőtt jelentős összeget tárol, ismerje meg a letétkezelés működését."
         }
       ],
-      "h1Accent": "Közérthetően elmagyarázva."
+      "h1Accent": "Közérthetően elmagyarázva.",
+      "facts": [
+        {
+          "v": "21 000 000",
+          "l": "Maximális kínálat"
+        },
+        {
+          "v": "2009",
+          "l": "Január óta működik"
+        },
+        {
+          "v": "~10 perc",
+          "l": "Blokkonként"
+        },
+        {
+          "v": "Nincs kibocsátó",
+          "l": "Se cég, se kormány"
+        }
+      ],
+      "howSteps": [
+        {
+          "t": "Tranzakció",
+          "d": "A hálózatra kerül, és független csomópontok ellenőrzik."
+        },
+        {
+          "t": "Bányászat",
+          "d": "Nagyjából tízpercenként egy új blokk, amelyet a proof of work biztosít."
+        },
+        {
+          "t": "Lightning",
+          "d": "Gyors, olcsó fizetések egy, a Bitcoinra épülő rétegen."
+        }
+      ]
     },
     "books": {
       "nav": "Könyvek",

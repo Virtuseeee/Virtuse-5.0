@@ -255,43 +255,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="sp-lead">Bitcoin jsou peníze, které nevydává ani nekontroluje žádná firma ani vláda. Tento úvod jednoduše vysvětluje, co Bitcoin je, proč je jeho množství pevné, jak funguje a jakým rizikům byste měli rozumět. Následují bezplatné zdroje, které doporučujeme pro hlubší studium.</p>
     <p class="pf-counts">8 doporučení · naposledy zkontrolováno 22. října 2026</p>
   </div>
-  <section id="primer">
-    <div class="eco-prose">
-    <h2>Peníze bez vydavatele</h2>
-    <p>Bitcoin jsou digitální peníze, které běží na otevřené síti, ne v účetní knize banky. Nikdo je nevydává na požádání a nikdo nemůže síť zmrazit ani přepsat její historii. Bitcoin držíte tak, že držíte tajný klíč, a kdo tento klíč ovládá, může mince přesunout. Od prvního bloku v lednu 2009 síť běží bez centrálního provozovatele, firmy nebo vedení.</p>
-    <p>Většina peněz, které používáte, je slib zapsaný nějakou institucí: zůstatek na vašem účtu je závazkem vaší banky a samotnou měnu spravuje centrální banka, která jí může vytvořit více. Bitcoin funguje jinak. Účetní kniha je veřejná, pravidla jsou zapsaná v open-source softwaru a kdokoli si může ověřit, že se dodržují.</p>
-    <p>Tento návrh byl odpovědí na konkrétní problém. Před Bitcoinem potřeboval každý digitální platební systém důvěryhodného prostředníka, který bránil tomu, aby lidé utratili stejné peníze dvakrát. Bitcoin tento problém vyřešil bez prostředníka: celá síť se shodne na jediné historii transakcí. Výsledkem je platební síť a aktivum pro úspory, které může využít kdokoli s připojením k internetu, bez žádosti o povolení a bez zakládání účtu.</p>
-    <h2>Proč lidé používají Bitcoin</h2>
-    <p>Lidé přicházejí k Bitcoinu z různých důvodů. Někteří chtějí dlouhodobé aktivum pro úspory, jehož množství nelze nafouknout. Jiní chtějí posílat hodnotu přes hranice bez zpoždění, uzávěrek a devizových omezení. Další oceňují, že mince ve vlastní úschově nemůže nikdo bez přístupu ke klíčům zmrazit ani zabavit. Firmy ho drží jako rezervu v treasury a v zemích s vysokou inflací slouží často prostě k ochraně příjmů před ztrátou hodnoty.</p>
-    <p>Žádné z těchto využití nevyžaduje obchodování. Mnoho Evropanů nakupuje každý měsíc malou pevnou částku (pravidelné nákupy, DCA) a drží roky, což vyhlazuje dopad krátkodobých výkyvů ceny. Naše <a href="/cs/bitcoin-dca-kalkulacka/">DCA kalkulačka</a> ukazuje, jak to fungovalo v minulosti, včetně skutečných poplatků.</p>
-    <h2>Vzácnost: limit 21 milionů</h2>
-    <p>Celkový počet bitcoinů, které kdy budou existovat, je omezen na 21 milionů. Nové mince dostávají těžaři jako odměnu za zabezpečení sítě a tato odměna se zhruba každé čtyři roky (každých 210 000 bloků) snižuje na polovinu. Většina zásoby už byla vydána; zbývající mince přibývají stále pomaleji, zhruba až do roku 2140.</p>
-    <p>Tento pevný a předvídatelný harmonogram je hlavní důvod, proč lidé srovnávají Bitcoin se zlatem. Kvůli rostoucí poptávce nelze vytisknout více a žádná centrální banka nemůže rozhodnout o zředění stávajících držitelů. Zda je Bitcoin dobrým uchovatelem hodnoty pro váš časový horizont, musíte posoudit sami; historie ukazuje dlouhá období silného růstu i hluboké propady o 70 % a více.</p>
-    <h2>Bitcoin není „krypto“</h2>
-    <p>Tisíce jiných tokenů převzaly části kódu Bitcoinu, ale většina z nich má firmu, nadaci nebo malou skupinu zasvěcených, kteří mohou měnit pravidla, vydávat další jednotky nebo síť pozastavit. To je jiný rizikový profil. Proto se Virtuse věnuje jen Bitcoinu: hodnota Bitcoinu vychází z toho, že nemá žádného vydavatele ani nikoho, kdo by o něm rozhodoval, a to se velmi těžko napodobuje, jakmile má projekt zakladatele, předprodej nebo marketingový rozpočet. Když vám někdo nabízí novou minci se slíbenými výnosy, berte to jako prodejní nabídku, ne jako Bitcoin.</p>
-    <h2>Jak to funguje</h2>
-    <p>Každá bitcoinová transakce se rozešle do sítě a zkontrolují ji nezávislé počítače zvané uzly (nodes). Každý uzel ověří, že mince existují, že ještě nebyly utraceny a že podpis odesílatele je platný. Uzel může provozovat kdokoli na běžném počítači, a to udržuje pravidla poctivá: uzel bloky, které je porušují, jednoduše ignoruje.</p>
-    <p>Těžaři shromažďují platné transakce do bloků, zhruba jeden každých deset minut. Aby těžař mohl přidat blok, musí vynaložit skutečnou elektřinu na vyřešení kryptografické úlohy (proof of work). Právě tento náklad dělá přepisování historie nepraktickým: změna staré transakce by vyžadovala zopakovat veškerou práci od té doby, a to rychleji než zbytek sítě dohromady.</p>
-    <p>Rychlejší a levnější platby běží na vrstvách postavených nad Bitcoinem, především na síti Lightning Network, která vypořádá malé platby během sekund a pro konečnou bezpečnost se stále opírá o základní blockchain.</p>
-    <p>Na Lightningu dvě strany uzamknou bitcoin do společného kanálu a pak mezi sebou aktualizují zůstatek, jak často chtějí, téměř okamžitě a za zlomky centu. Kanály se propojují do sítě, takže můžete zaplatit i někomu, s kým jste kanál nikdy neotevřeli. Obchody po celé Evropě už dnes platby přes Lightning přijímají; podívejte se, <a href="/cs/ecosystem/spend-bitcoin/">kde platit bitcoinem</a>, a na <a href="/cs/ecosystem/store-tools/">nástroje pro obchodníky</a>.</p>
-    <h2>Základy vlastní úschovy</h2>
-    <p>Vlastnit bitcoin znamená ovládat jeho klíče. Pokud necháte mince na platformě, máte pohledávku vůči této platformě, ne samotné mince. Vlastní úschova toto riziko protistrany odstraňuje, ale za zálohy odpovídáte vy: vaše obnovovací fráze (obvykle 12 nebo 24 slov) obnoví peněženku a kdokoli, kdo ji uvidí, vám může mince vzít.</p>
-    <p>Existují tři běžné modely. Při úschově u regulovaného poskytovatele drží klíče poskytovatel a vy se spoléháte na jeho zabezpečení a solventnost; je to jednoduché, ale nese to riziko protistrany. Při vlastní úschově s jedním klíčem držíte jeden klíč sami, obvykle v aplikaci peněženky nebo ve vyhrazeném zařízení. Při úschově s více podpisy (multisig, společná úschova) je k přesunu prostředků potřeba několik klíčů, takže ztráta nebo prozrazení jednoho klíče neznamená ztrátu všeho. Správná volba závisí na částce, vaší technické jistotě a na tom, kdo by měl mít k mincím přístup, kdyby se vám něco stalo.</p>
-    <p>Rozumný postup pro většinu lidí je začít s malou částkou, vyzkoušet si testovací obnovu, uchovávat obnovovací frázi offline a nikdy ji nezadávat na žádném webu. U větších částek zvažte vyhrazený hardware a plán pro dědice. Podrobnosti najdete na naší <a href="/cs/secure.html">stránce o úschově</a>, v <a href="/stories/the-most-comprehensive-cold-wallet-guide/">průvodci studenými peněženkami</a> a v <a href="/cs/bitcoin-dedictvi/">kontrolním seznamu pro dědictví</a>.</p>
-    <h2>Rizika, kterým je třeba rozumět</h2>
-    <ul><li><strong>Volatilita.</strong> Cena může během několika měsíců klesnout na polovinu. Držte jen tolik, kolik dokážete držet i při velkých výkyvech.</li><li><strong>Nevratnost.</strong> Odeslané transakce nelze vrátit a ztracený klíč obvykle znamená ztracené mince.</li><li><strong>Podvody.</strong> Nikdo důvěryhodný po vás nebude chtít obnovovací frázi, slibovat zaručené výnosy ani vás tlačit ke spěchu. Buďte zvlášť opatrní u „krypto“ nabídek, které nejsou Bitcoin.</li><li><strong>Daně a pravidla.</strong> Zisky jsou ve většině evropských zemí zdanitelné a poskytovatelé musí dodržovat MiCA a pravidla proti praní peněz. Viz naše <a href="/cs/bitcoin-dane/">daňové průvodce podle zemí</a>.</li></ul>
-    <h2>Bitcoin v Evropě</h2>
-    <p>Od účinnosti nařízení EU o trzích s kryptoaktivy (MiCA) potřebují firmy, které v EU nabízejí služby spojené s kryptoaktivy, povolení od národního regulátora a musí dodržovat pravidla proti praní peněz, včetně ověření totožnosti. Od roku 2026 navíc směrnice DAC8 ukládá těmto poskytovatelům hlásit transakce zákazníků daňovým úřadům. Držet bitcoin ve vlastní úschově je legální v celé EU, daňové zacházení se ale výrazně liší: některé země osvobozují dlouhodobé držení, jiné zdaňují každý prodej nebo směnu. Než budete prodávat nebo platit, ověřte si pravidla ve své zemi.</p>
-    <p>Až budete připraveni nakoupit, porovnejte regulované partnery na naší <a href="/cs/buy-bitcoin.html">stránce Koupit Bitcoin</a>. Tato stránka je vzdělávací a nejde o investiční poradenství.</p>
+  <div class="eco-facts"><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">Maximální zásoba</span><b>21 000 000</b></div><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">V provozu od ledna</span><b>2009</b></div><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">Na jeden blok</span><b>~10 min</b></div><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">Žádná firma ani vláda</span><b>Bez vydavatele</b></div></div>
+  <div class="eco-article">
+    <div class="eco-body eco-prose">
+      <section class="eco-sec" id="s1">
+        <h2>Peníze <span>bez vydavatele</span></h2>
+        <p>Bitcoin jsou digitální peníze, které běží na otevřené síti, ne v účetní knize banky. Nikdo je nevydává na požádání a nikdo nemůže síť zmrazit ani přepsat její historii. Bitcoin držíte tak, že držíte tajný klíč, a kdo tento klíč ovládá, může mince přesunout. Od prvního bloku v lednu 2009 síť běží bez centrálního provozovatele, firmy nebo vedení.</p>
+        <p>Většina peněz, které používáte, je slib zapsaný nějakou institucí: zůstatek na vašem účtu je závazkem vaší banky a samotnou měnu spravuje centrální banka, která jí může vytvořit více. Bitcoin funguje jinak. Účetní kniha je veřejná, pravidla jsou zapsaná v open-source softwaru a kdokoli si může ověřit, že se dodržují.</p>
+        <p>Tento návrh byl odpovědí na konkrétní problém. Před Bitcoinem potřeboval každý digitální platební systém důvěryhodného prostředníka, který bránil tomu, aby lidé utratili stejné peníze dvakrát. Bitcoin tento problém vyřešil bez prostředníka: celá síť se shodne na jediné historii transakcí. Výsledkem je platební síť a aktivum pro úspory, které může využít kdokoli s připojením k internetu, bez žádosti o povolení a bez zakládání účtu.</p>
+      </section>
+      <section class="eco-sec" id="s2">
+        <h2>Proč <span>lidé používají Bitcoin</span></h2>
+        <p>Lidé přicházejí k Bitcoinu z různých důvodů. Někteří chtějí dlouhodobé aktivum pro úspory, jehož množství nelze nafouknout. Jiní chtějí posílat hodnotu přes hranice bez zpoždění, uzávěrek a devizových omezení. Další oceňují, že mince ve vlastní úschově nemůže nikdo bez přístupu ke klíčům zmrazit ani zabavit. Firmy ho drží jako rezervu v treasury a v zemích s vysokou inflací slouží často prostě k ochraně příjmů před ztrátou hodnoty.</p>
+        <p>Žádné z těchto využití nevyžaduje obchodování. Mnoho Evropanů nakupuje každý měsíc malou pevnou částku (pravidelné nákupy, DCA) a drží roky, což vyhlazuje dopad krátkodobých výkyvů ceny. Naše <a href="/cs/bitcoin-dca-kalkulacka/">DCA kalkulačka</a> ukazuje, jak to fungovalo v minulosti, včetně skutečných poplatků.</p>
+      </section>
+      <section class="eco-sec" id="s3">
+        <h2>Vzácnost: <span>limit 21 milionů</span></h2>
+        <p>Celkový počet bitcoinů, které kdy budou existovat, je omezen na 21 milionů. Nové mince dostávají těžaři jako odměnu za zabezpečení sítě a tato odměna se zhruba každé čtyři roky (každých 210 000 bloků) snižuje na polovinu. Většina zásoby už byla vydána; zbývající mince přibývají stále pomaleji, zhruba až do roku 2140.</p>
+        <div class="eco-notepanel"><p>Tento pevný a předvídatelný harmonogram je hlavní důvod, proč lidé srovnávají Bitcoin se zlatem. Kvůli rostoucí poptávce nelze vytisknout více a žádná centrální banka nemůže rozhodnout o zředění stávajících držitelů. Zda je Bitcoin dobrým uchovatelem hodnoty pro váš časový horizont, musíte posoudit sami; historie ukazuje dlouhá období silného růstu i hluboké propady o 70 % a více.</p></div>
+      </section>
+      <section class="eco-sec" id="s4">
+        <h2>Bitcoin <span>není „krypto“</span></h2>
+        <div class="hpanel orange eco-callout"><p>Tisíce jiných tokenů převzaly části kódu Bitcoinu, ale většina z nich má firmu, nadaci nebo malou skupinu zasvěcených, kteří mohou měnit pravidla, vydávat další jednotky nebo síť pozastavit. To je jiný rizikový profil. Proto se Virtuse věnuje jen Bitcoinu: hodnota Bitcoinu vychází z toho, že nemá žádného vydavatele ani nikoho, kdo by o něm rozhodoval, a to se velmi těžko napodobuje, jakmile má projekt zakladatele, předprodej nebo marketingový rozpočet. Když vám někdo nabízí novou minci se slíbenými výnosy, berte to jako prodejní nabídku, ne jako Bitcoin.</p></div>
+      </section>
+      <section class="eco-sec" id="s5">
+        <h2>Jak <span>to funguje</span></h2>
+        <div class="how-log eco-how"><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Krok 01</span><h3>Transakce</h3><p>Rozešle se do sítě a zkontrolují ji nezávislé uzly.</p></div></div><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Krok 02</span><h3>Těžba</h3><p>Nový blok zhruba každých deset minut, zabezpečený pomocí proof of work.</p></div></div><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Krok 03</span><h3>Lightning</h3><p>Rychlé a levné platby na vrstvě postavené nad Bitcoinem.</p></div></div></div>
+        <p>Každá bitcoinová transakce se rozešle do sítě a zkontrolují ji nezávislé počítače zvané uzly (nodes). Každý uzel ověří, že mince existují, že ještě nebyly utraceny a že podpis odesílatele je platný. Uzel může provozovat kdokoli na běžném počítači, a to udržuje pravidla poctivá: uzel bloky, které je porušují, jednoduše ignoruje.</p>
+        <p>Těžaři shromažďují platné transakce do bloků, zhruba jeden každých deset minut. Aby těžař mohl přidat blok, musí vynaložit skutečnou elektřinu na vyřešení kryptografické úlohy (proof of work). Právě tento náklad dělá přepisování historie nepraktickým: změna staré transakce by vyžadovala zopakovat veškerou práci od té doby, a to rychleji než zbytek sítě dohromady.</p>
+        <p>Rychlejší a levnější platby běží na vrstvách postavených nad Bitcoinem, především na síti Lightning Network, která vypořádá malé platby během sekund a pro konečnou bezpečnost se stále opírá o základní blockchain.</p>
+        <p>Na Lightningu dvě strany uzamknou bitcoin do společného kanálu a pak mezi sebou aktualizují zůstatek, jak často chtějí, téměř okamžitě a za zlomky centu. Kanály se propojují do sítě, takže můžete zaplatit i někomu, s kým jste kanál nikdy neotevřeli. Obchody po celé Evropě už dnes platby přes Lightning přijímají; podívejte se, <a href="/cs/ecosystem/spend-bitcoin/">kde platit bitcoinem</a>, a na <a href="/cs/ecosystem/store-tools/">nástroje pro obchodníky</a>.</p>
+      </section>
+      <section class="eco-sec" id="s6">
+        <h2>Základy <span>vlastní úschovy</span></h2>
+        <p>Vlastnit bitcoin znamená ovládat jeho klíče. Pokud necháte mince na platformě, máte pohledávku vůči této platformě, ne samotné mince. Vlastní úschova toto riziko protistrany odstraňuje, ale za zálohy odpovídáte vy: vaše obnovovací fráze (obvykle 12 nebo 24 slov) obnoví peněženku a kdokoli, kdo ji uvidí, vám může mince vzít.</p>
+        <p>Existují tři běžné modely. Při úschově u regulovaného poskytovatele drží klíče poskytovatel a vy se spoléháte na jeho zabezpečení a solventnost; je to jednoduché, ale nese to riziko protistrany. Při vlastní úschově s jedním klíčem držíte jeden klíč sami, obvykle v aplikaci peněženky nebo ve vyhrazeném zařízení. Při úschově s více podpisy (multisig, společná úschova) je k přesunu prostředků potřeba několik klíčů, takže ztráta nebo prozrazení jednoho klíče neznamená ztrátu všeho. Správná volba závisí na částce, vaší technické jistotě a na tom, kdo by měl mít k mincím přístup, kdyby se vám něco stalo.</p>
+        <p>Rozumný postup pro většinu lidí je začít s malou částkou, vyzkoušet si testovací obnovu, uchovávat obnovovací frázi offline a nikdy ji nezadávat na žádném webu. U větších částek zvažte vyhrazený hardware a plán pro dědice. Podrobnosti najdete na naší <a href="/cs/secure.html">stránce o úschově</a>, v <a href="/stories/the-most-comprehensive-cold-wallet-guide/">průvodci studenými peněženkami</a> a v <a href="/cs/bitcoin-dedictvi/">kontrolním seznamu pro dědictví</a>.</p>
+      </section>
+      <section class="eco-sec" id="s7">
+        <h2>Rizika, <span>kterým je třeba rozumět</span></h2>
+        <ul><li><strong>Volatilita.</strong> Cena může během několika měsíců klesnout na polovinu. Držte jen tolik, kolik dokážete držet i při velkých výkyvech.</li><li><strong>Nevratnost.</strong> Odeslané transakce nelze vrátit a ztracený klíč obvykle znamená ztracené mince.</li><li><strong>Podvody.</strong> Nikdo důvěryhodný po vás nebude chtít obnovovací frázi, slibovat zaručené výnosy ani vás tlačit ke spěchu. Buďte zvlášť opatrní u „krypto“ nabídek, které nejsou Bitcoin.</li><li><strong>Daně a pravidla.</strong> Zisky jsou ve většině evropských zemí zdanitelné a poskytovatelé musí dodržovat MiCA a pravidla proti praní peněz. Viz naše <a href="/cs/bitcoin-dane/">daňové průvodce podle zemí</a>.</li></ul>
+      </section>
+      <section class="eco-sec" id="s8">
+        <h2>Bitcoin <span>v Evropě</span></h2>
+        <p>Od účinnosti nařízení EU o trzích s kryptoaktivy (MiCA) potřebují firmy, které v EU nabízejí služby spojené s kryptoaktivy, povolení od národního regulátora a musí dodržovat pravidla proti praní peněz, včetně ověření totožnosti. Od roku 2026 navíc směrnice DAC8 ukládá těmto poskytovatelům hlásit transakce zákazníků daňovým úřadům. Držet bitcoin ve vlastní úschově je legální v celé EU, daňové zacházení se ale výrazně liší: některé země osvobozují dlouhodobé držení, jiné zdaňují každý prodej nebo směnu. Než budete prodávat nebo platit, ověřte si pravidla ve své zemi.</p>
+        <p>Až budete připraveni nakoupit, porovnejte regulované partnery na naší <a href="/cs/buy-bitcoin.html">stránce Koupit Bitcoin</a>. Tato stránka je vzdělávací a nejde o investiční poradenství.</p>
+      </section>
+      <section id="faq" class="qa eco-sec">
+        <h2>Časté <span>otázky</span></h2>
+        <details open><summary>Kdo Bitcoin ovládá?</summary><p>Žádná jednotlivá osoba, firma ani vláda. Pravidla vynucují desítky tisíc nezávislých počítačů (uzlů), z nichž každý kontroluje každou transakci. Změna pravidel vyžaduje širokou shodu mezi lidmi, kteří tyto uzly provozují.</p></details>
+        <details><summary>Proč je množství omezeno na 21 milionů?</summary><p>Limit je zapsaný v softwaru, který běží na každém uzlu. Nové bitcoiny dostávají těžaři podle pevného harmonogramu, který se zhruba každé čtyři roky snižuje na polovinu. Vydávání se tak blíží k nule a celkové množství nikdy nepřekročí 21 milionů.</p></details>
+        <details><summary>Je Bitcoin v Evropě legální?</summary><p>Ano. Vlastnit, kupovat a prodávat bitcoin je legální v celé EU. Firmy, které poskytují služby spojené s kryptoaktivy, musí mít povolení podle MiCA a zisky jsou obecně zdanitelné; pravidla se liší podle země.</p></details>
+        <details><summary>Jaká jsou hlavní rizika?</summary><p>Cena je volatilní, chyby s klíči mohou být nevratné a podvody jsou časté. Investujte jen tolik, kolik dokážete držet i při velkých výkyvech ceny, a než začnete uchovávat větší částky, naučte se, jak funguje úschova.</p></details>
+      </section>
     </div>
-  </section>
-  <section id="faq" class="qa">
-    <div class="sec-head one"><div class="sec-copy"><h2>Časté otázky. <span>Stručné odpovědi.</span></h2></div></div>
-    <details open><summary>Kdo Bitcoin ovládá?</summary><p>Žádná jednotlivá osoba, firma ani vláda. Pravidla vynucují desítky tisíc nezávislých počítačů (uzlů), z nichž každý kontroluje každou transakci. Změna pravidel vyžaduje širokou shodu mezi lidmi, kteří tyto uzly provozují.</p></details>
-    <details><summary>Proč je množství omezeno na 21 milionů?</summary><p>Limit je zapsaný v softwaru, který běží na každém uzlu. Nové bitcoiny dostávají těžaři podle pevného harmonogramu, který se zhruba každé čtyři roky snižuje na polovinu. Vydávání se tak blíží k nule a celkové množství nikdy nepřekročí 21 milionů.</p></details>
-    <details><summary>Je Bitcoin v Evropě legální?</summary><p>Ano. Vlastnit, kupovat a prodávat bitcoin je legální v celé EU. Firmy, které poskytují služby spojené s kryptoaktivy, musí mít povolení podle MiCA a zisky jsou obecně zdanitelné; pravidla se liší podle země.</p></details>
-    <details><summary>Jaká jsou hlavní rizika?</summary><p>Cena je volatilní, chyby s klíči mohou být nevratné a podvody jsou časté. Investujte jen tolik, kolik dokážete držet i při velkých výkyvech ceny, a než začnete uchovávat větší částky, naučte se, jak funguje úschova.</p></details>
-  </section>
+    <nav class="eco-toc" aria-label="Na této stránce">
+      <details open><summary>Na této stránce</summary>
+        <ol><li><a href="#s1">Peníze bez vydavatele</a></li><li><a href="#s2">Proč lidé používají Bitcoin</a></li><li><a href="#s3">Vzácnost: limit 21 milionů</a></li><li><a href="#s4">Bitcoin není „krypto“</a></li><li><a href="#s5">Jak to funguje</a></li><li><a href="#s6">Základy vlastní úschovy</a></li><li><a href="#s7">Rizika, kterým je třeba rozumět</a></li><li><a href="#s8">Bitcoin v Evropě</a></li><li><a href="#faq">Časté otázky</a></li><li><a href="#list">Bezplatné zdroje pro hlubší studium</a></li></ol>
+      </details>
+    </nav>
+  </div>
   <section id="list">
     <div class="sec-head one"><div class="sec-copy"><h2>Bezplatné zdroje pro hlubší studium. <span>Každé s hodnocením na jeden řádek.</span></h2></div></div>
     <div class="eco-grid">
@@ -407,6 +430,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 
 <script src="/site-v2.js?v=7" defer></script>
+<script>
+(function () {
+  var toc = document.querySelector('.eco-toc'); if (!toc) return;
+  var det = toc.querySelector('details'), mq = window.matchMedia('(min-width: 1024px)');
+  function fit() { det.open = mq.matches; } fit(); if (mq.addEventListener) mq.addEventListener('change', fit);
+  toc.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { if (!mq.matches) det.open = false; }); });
+  var links = [].slice.call(toc.querySelectorAll('a')), secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function mark() {
+    var cur = 0;
+    secs.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', mark, { passive: true });
+  mark();
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

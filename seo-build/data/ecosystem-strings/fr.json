@@ -62,7 +62,8 @@
     "relatedSub": "D'autres ressources de Virtuse.",
     "listH": "Nos sélections.",
     "listSub": "Chacune avec un avis d'une ligne.",
-    "faqSub": "Des réponses courtes."
+    "faqSub": "Des réponses courtes.",
+    "onThisPage": "Sur cette page"
   },
   "promote": {
     "criteriaH": "Critères",
@@ -179,7 +180,39 @@
           "a": "Le prix est volatil, les erreurs avec les clés peuvent être définitives et les arnaques sont fréquentes. N'investissez que ce que vous pouvez conserver malgré de fortes variations de prix, et apprenez comment fonctionne la conservation avant de stocker des montants importants."
         }
       ],
-      "h1Accent": "Expliqué simplement."
+      "h1Accent": "Expliqué simplement.",
+      "facts": [
+        {
+          "v": "21 000 000",
+          "l": "Offre maximale"
+        },
+        {
+          "v": "2009",
+          "l": "En service depuis janvier"
+        },
+        {
+          "v": "~10 min",
+          "l": "Par bloc"
+        },
+        {
+          "v": "Sans émetteur",
+          "l": "Ni entreprise ni État"
+        }
+      ],
+      "howSteps": [
+        {
+          "t": "Transaction",
+          "d": "Diffusée sur le réseau et vérifiée par des nœuds indépendants."
+        },
+        {
+          "t": "Minage",
+          "d": "Un nouveau bloc environ toutes les dix minutes, sécurisé par la preuve de travail."
+        },
+        {
+          "t": "Lightning",
+          "d": "Des paiements rapides et peu coûteux sur une couche construite au-dessus du Bitcoin."
+        }
+      ]
     },
     "books": {
       "nav": "Livres",

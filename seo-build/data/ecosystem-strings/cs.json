@@ -62,7 +62,8 @@
     "relatedSub": "Více od Virtuse.",
     "listH": "Naše doporučení.",
     "listSub": "Každé s hodnocením na jeden řádek.",
-    "faqSub": "Stručné odpovědi."
+    "faqSub": "Stručné odpovědi.",
+    "onThisPage": "Na této stránce"
   },
   "promote": {
     "criteriaH": "Kritéria",
@@ -179,7 +180,39 @@
           "a": "Cena je volatilní, chyby s klíči mohou být nevratné a podvody jsou časté. Investujte jen tolik, kolik dokážete držet i při velkých výkyvech ceny, a než začnete uchovávat větší částky, naučte se, jak funguje úschova."
         }
       ],
-      "h1Accent": "Vysvětleno srozumitelně."
+      "h1Accent": "Vysvětleno srozumitelně.",
+      "facts": [
+        {
+          "v": "21 000 000",
+          "l": "Maximální zásoba"
+        },
+        {
+          "v": "2009",
+          "l": "V provozu od ledna"
+        },
+        {
+          "v": "~10 min",
+          "l": "Na jeden blok"
+        },
+        {
+          "v": "Bez vydavatele",
+          "l": "Žádná firma ani vláda"
+        }
+      ],
+      "howSteps": [
+        {
+          "t": "Transakce",
+          "d": "Rozešle se do sítě a zkontrolují ji nezávislé uzly."
+        },
+        {
+          "t": "Těžba",
+          "d": "Nový blok zhruba každých deset minut, zabezpečený pomocí proof of work."
+        },
+        {
+          "t": "Lightning",
+          "d": "Rychlé a levné platby na vrstvě postavené nad Bitcoinem."
+        }
+      ]
     },
     "books": {
       "nav": "Knihy",

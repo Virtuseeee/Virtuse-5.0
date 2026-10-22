@@ -62,7 +62,8 @@
     "relatedSub": "Weiterführende Inhalte.",
     "listH": "Unsere Empfehlungen.",
     "listSub": "Jede mit einer Einschätzung in einer Zeile.",
-    "faqSub": "Kurze Antworten."
+    "faqSub": "Kurze Antworten.",
+    "onThisPage": "Auf dieser Seite"
   },
   "promote": {
     "criteriaH": "Kriterien",
@@ -179,7 +180,39 @@
           "a": "Der Kurs ist volatil, Fehler mit Schlüsseln können endgültig sein, und Betrug ist verbreitet. Investieren Sie nur, was Sie auch durch starke Kursschwankungen halten können, und lernen Sie, wie Verwahrung funktioniert, bevor Sie nennenswerte Beträge aufbewahren."
         }
       ],
-      "h1Accent": "Einfach erklärt."
+      "h1Accent": "Einfach erklärt.",
+      "facts": [
+        {
+          "v": "21.000.000",
+          "l": "Maximale Menge"
+        },
+        {
+          "v": "2009",
+          "l": "In Betrieb seit Januar"
+        },
+        {
+          "v": "~10 Min.",
+          "l": "Pro Block"
+        },
+        {
+          "v": "Kein Herausgeber",
+          "l": "Kein Unternehmen, kein Staat"
+        }
+      ],
+      "howSteps": [
+        {
+          "t": "Transaktion",
+          "d": "Wird an das Netzwerk gesendet und von unabhängigen Nodes geprüft."
+        },
+        {
+          "t": "Mining",
+          "d": "Etwa alle zehn Minuten ein neuer Block, gesichert durch Proof of Work."
+        },
+        {
+          "t": "Lightning",
+          "d": "Schnelle, günstige Zahlungen auf einer Schicht, die auf Bitcoin aufbaut."
+        }
+      ]
     },
     "books": {
       "nav": "Bücher",

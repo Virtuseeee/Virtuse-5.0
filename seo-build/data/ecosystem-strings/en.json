@@ -62,7 +62,8 @@
     "relatedSub": "More from Virtuse.",
     "listH": "Our picks.",
     "listSub": "Each with a one-line verdict.",
-    "faqSub": "Short answers."
+    "faqSub": "Short answers.",
+    "onThisPage": "On this page"
   },
   "promote": {
     "criteriaH": "Criteria",
@@ -179,7 +180,39 @@
           "a": "The price is volatile, mistakes with keys can be permanent, and scams are common. Only invest what you can afford to hold through large price swings, and learn how custody works before you store meaningful amounts."
         }
       ],
-      "h1Accent": "Explained in plain English."
+      "h1Accent": "Explained in plain English.",
+      "facts": [
+        {
+          "v": "21,000,000",
+          "l": "Maximum supply"
+        },
+        {
+          "v": "2009",
+          "l": "Running since January"
+        },
+        {
+          "v": "~10 min",
+          "l": "Per block"
+        },
+        {
+          "v": "No issuer",
+          "l": "No company or government"
+        }
+      ],
+      "howSteps": [
+        {
+          "t": "Transaction",
+          "d": "Broadcast to the network and checked by independent nodes."
+        },
+        {
+          "t": "Mining",
+          "d": "A new block about every ten minutes, secured by proof of work."
+        },
+        {
+          "t": "Lightning",
+          "d": "Fast, cheap payments on a layer built on top of Bitcoin."
+        }
+      ]
     },
     "books": {
       "nav": "Books",

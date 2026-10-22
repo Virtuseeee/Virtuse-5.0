@@ -259,17 +259,7 @@ function listingBody(p, l) {
   const parts = [];
   const notes = [t.legalNote, t.partnerNote].filter(Boolean).map((n) => `<p class="eco-note">${locHtml(n, l)}</p>`).join('\n    ');
   const list = p.slug === 'conferences' ? conferencePanel(entries, p, l) : entryGrid(entries, p, l);
-  if (p.slug === 'what-is-bitcoin') {
-    parts.push(`<section id="primer">
-    <div class="eco-prose">
-    ${t.primer.map((h) => locHtml(h, l)).join('\n    ')}
-    </div>
-  </section>`);
-    parts.push(`<section id="faq" class="qa">
-    ${head2(ui.faq, ui.faqSub)}
-    ${t.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('\n    ')}
-  </section>`);
-  }
+  if (p.slug === 'what-is-bitcoin') parts.push(whatIsArticle(p, l));
   parts.push(`<section id="list">
     ${head2(t.listHeading || ui.listH, ui.listSub)}
     ${notes ? notes + '\n    ' : ''}${list}
@@ -278,6 +268,71 @@ function listingBody(p, l) {
   parts.push(relatedSection(p, l));
   return parts.join('\n  ');
 }
+
+
+// What is Bitcoin?: facts row, two-column article with a sticky "On this page" list,
+// callout panels and the "How it works" steps. The primer has the same 26 items in every
+// language: H2s at 0, 4, 7, 10, 12, 17, 21, 23 (checked below).
+const PRIMER_H2 = [0, 4, 7, 10, 12, 17, 21, 23];
+const twoTone = (text) => { const s = text.trim(), i = s.indexOf(' '); return i < 0 ? esc(s) : `${esc(s.slice(0, i))} <span>${esc(s.slice(i + 1))}</span>`; };
+function whatIsArticle(p, l) {
+  const t = txt(l, p), ui = S[l].ui;
+  const pr = t.primer.map((h) => locHtml(h, l));
+  const h2s = pr.map((h, i) => (h.startsWith('<h2>') ? i : -1)).filter((i) => i >= 0);
+  if (pr.length !== 26 || h2s.join() !== PRIMER_H2.join()) throw new Error(`${l}: primer structure changed`);
+  const title = (i) => pr[i].replace(/<\/?h2>/g, '');
+  const toc = [];
+  const secs = PRIMER_H2.map((start, gi) => {
+    const stop = PRIMER_H2[gi + 1] || pr.length;
+    const id = `s${gi + 1}`;
+    toc.push([id, title(start)]);
+    let body = pr.slice(start + 1, stop);
+    if (start === 7) body = body.map((h, k) => (k === 1 ? `<div class="eco-notepanel">${h}</div>` : h));
+    if (start === 10) body = [`<div class="hpanel orange eco-callout">${body.join('')}</div>`];
+    if (start === 12) {
+      const steps = t.howSteps.map((s, k) => `<div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">${esc(ui.step)} ${String(k + 1).padStart(2, '0')}</span><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div></div>`).join('');
+      body = [`<div class="how-log eco-how">${steps}</div>`, ...body];
+    }
+    return `<section class="eco-sec" id="${id}">
+        <h2>${twoTone(title(start))}</h2>
+        ${body.join('\n        ')}
+      </section>`;
+  });
+  toc.push(['faq', ui.faq], ['list', t.listHeading]);
+  const facts = t.facts.map((f) => `<div class="pcard2 orange eco-card eco-fact"><span class="eco-k">${esc(f.l)}</span><b>${esc(f.v)}</b></div>`).join('');
+  return `<div class="eco-facts">${facts}</div>
+  <div class="eco-article">
+    <div class="eco-body eco-prose">
+      ${secs.join('\n      ')}
+      <section id="faq" class="qa eco-sec">
+        <h2>${twoTone(ui.faq)}</h2>
+        ${t.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('\n        ')}
+      </section>
+    </div>
+    <nav class="eco-toc" aria-label="${esc(ui.onThisPage)}">
+      <details open><summary>${esc(ui.onThisPage)}</summary>
+        <ol>${toc.map(([id, x]) => `<li><a href="#${id}">${esc(x)}</a></li>`).join('')}</ol>
+      </details>
+    </nav>
+  </div>`;
+}
+
+const TOC_JS = `<script>
+(function () {
+  var toc = document.querySelector('.eco-toc'); if (!toc) return;
+  var det = toc.querySelector('details'), mq = window.matchMedia('(min-width: 1024px)');
+  function fit() { det.open = mq.matches; } fit(); if (mq.addEventListener) mq.addEventListener('change', fit);
+  toc.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { if (!mq.matches) det.open = false; }); });
+  var links = [].slice.call(toc.querySelectorAll('a')), secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function mark() {
+    var cur = 0;
+    secs.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', mark, { passive: true });
+  mark();
+})();
+</script>`;
 
 const COUNTRIES = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'CH'];
 
@@ -448,7 +503,7 @@ function stats(p, l) {
   const ui = S[l].ui;
   if (p === INDEX) {
     const n = LISTING.reduce((s, x) => s + liveEntries(x).length, 0);
-    return ui.stats.replace('{c}', LISTING.length).replace('{n}', n);
+    return ui.stats.replace('{c}', SUBPAGES.length).replace('{n}', n);
   }
   if (p.entries) return ui.subStats.replace('{n}', liveEntries(p).length).replace('{date}', fmtDate(DATA.reviewed, l));
   return '';
@@ -520,7 +575,7 @@ ${p.slug !== 'promote' ? '\n  ' + brief + '\n' : ''}
 </main>
 
 <script src="/site-v2.js?v=${SITE_V2}" defer></script>
-${p.slug === 'promote' ? formJs(l) + '\n' : ''}${CF_SNIPPET}
+${p.slug === 'promote' ? formJs(l) + '\n' : ''}${p.slug === 'what-is-bitcoin' ? TOC_JS + '\n' : ''}${CF_SNIPPET}
 </body>
 </html>
 `;

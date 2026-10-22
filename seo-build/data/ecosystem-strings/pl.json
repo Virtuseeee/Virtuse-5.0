@@ -62,7 +62,8 @@
     "relatedSub": "Więcej od Virtuse.",
     "listH": "Nasze polecane pozycje.",
     "listSub": "Każda z jednozdaniową oceną.",
-    "faqSub": "Krótkie odpowiedzi."
+    "faqSub": "Krótkie odpowiedzi.",
+    "onThisPage": "Na tej stronie"
   },
   "promote": {
     "criteriaH": "Kryteria",
@@ -179,7 +180,39 @@
           "a": "Cena jest zmienna, błędy związane z kluczami mogą być nieodwracalne, a oszustwa są powszechne. Prosimy inwestować tylko tyle, ile są Państwo w stanie utrzymać mimo dużych wahań ceny, i przed przechowywaniem znaczących kwot dobrze poznać zasady przechowywania."
         }
       ],
-      "h1Accent": "Wyjaśnione prostym językiem."
+      "h1Accent": "Wyjaśnione prostym językiem.",
+      "facts": [
+        {
+          "v": "21 000 000",
+          "l": "Maksymalna podaż"
+        },
+        {
+          "v": "2009",
+          "l": "Działa od stycznia"
+        },
+        {
+          "v": "~10 min",
+          "l": "Na jeden blok"
+        },
+        {
+          "v": "Bez emitenta",
+          "l": "Żadna firma ani rząd"
+        }
+      ],
+      "howSteps": [
+        {
+          "t": "Transakcja",
+          "d": "Rozgłaszana w sieci i sprawdzana przez niezależne węzły."
+        },
+        {
+          "t": "Kopanie",
+          "d": "Nowy blok mniej więcej co dziesięć minut, zabezpieczony przez proof of work."
+        },
+        {
+          "t": "Lightning",
+          "d": "Szybkie i tanie płatności w warstwie zbudowanej nad Bitcoinem."
+        }
+      ]
     },
     "books": {
       "nav": "Książki",
