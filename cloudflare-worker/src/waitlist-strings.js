@@ -12,6 +12,9 @@ export default {
   "quiet": "Until then we won't email you about anything else.",
   "foot": "You joined the waitlist on virtuse.com. Virtuse never holds your keys or funds and gives no investment advice.",
   "leave": "Leave the waitlist",
+  "subjectReport": "You're on the list for the full Verdict report",
+  "report1": "We'll send you one email when the full Verdict report opens: all 10 signals with scores and reasons, every missing question for your decision and a step-by-step plan with Virtuse tools. €14 one-time, no subscription.",
+  "report2": "We did not keep the text of your decision. When the report opens, you'll describe it again.",
   "operator": "Operator: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com"
  },
  "sk": {
@@ -26,6 +29,9 @@ export default {
   "quiet": "Dovtedy vám o ničom inom písať nebudeme.",
   "foot": "Na čakaciu listinu ste sa prihlásili na virtuse.com. Virtuse nikdy nedrží vaše kľúče ani prostriedky a neposkytuje investičné poradenstvo.",
   "leave": "Odhlásiť sa z čakacej listiny",
+  "subjectReport": "Ste na zozname pre celý report Verdict",
+  "report1": "Keď sa otvorí celý report Verdict, pošleme vám jeden e-mail: všetkých 10 signálov s bodmi a dôvodmi, všetky chýbajúce otázky pre vaše rozhodnutie a plán krokov s nástrojmi Virtuse. 14 € jednorazovo, bez predplatného.",
+  "report2": "Text vášho rozhodnutia sme neuložili. Keď sa report otvorí, opíšete ho znova.",
   "operator": "Prevádzkovateľ: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka · IČO 36 709 042 · IČ DPH SK2022293042 · zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sa, vložka č. 4452/B · info@virtuse.com"
  },
  "cs": {
@@ -40,6 +46,9 @@ export default {
   "quiet": "Do té doby vám o ničem jiném psát nebudeme.",
   "foot": "Na čekací listinu jste se přihlásili na virtuse.com. Virtuse nikdy nedrží vaše klíče ani prostředky a neposkytuje investiční poradenství.",
   "leave": "Odhlásit se z čekací listiny",
+  "subjectReport": "Jste na seznamu pro celý report Verdict",
+  "report1": "Až se otevře celý report Verdict, pošleme vám jeden e-mail: všech 10 signálů s body a důvody, všechny chybějící otázky pro vaše rozhodnutí a plán kroků s nástroji Virtuse. 14 € jednorázově, bez předplatného.",
+  "report2": "Text vašeho rozhodnutí jsme neuložili. Až se report otevře, popíšete ho znovu.",
   "operator": "Provozovatel: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com"
  },
  "de": {
@@ -54,6 +63,9 @@ export default {
   "quiet": "Bis dahin schreiben wir Ihnen zu nichts anderem.",
   "foot": "Sie haben sich auf virtuse.com für die Warteliste eingetragen. Virtuse verwahrt niemals Ihre Schlüssel oder Ihr Geld und bietet keine Anlageberatung.",
   "leave": "Von der Warteliste abmelden",
+  "subjectReport": "Sie stehen auf der Liste für den vollständigen Verdict-Bericht",
+  "report1": "Sobald der vollständige Verdict-Bericht verfügbar ist, schicken wir Ihnen eine E-Mail: alle 10 Signale mit Punkten und Begründungen, alle offenen Fragen zu Ihrer Entscheidung und einen Schritt-für-Schritt-Plan mit den Tools von Virtuse. 14 € einmalig, kein Abo.",
+  "report2": "Den Text Ihrer Entscheidung haben wir nicht gespeichert. Sobald der Bericht verfügbar ist, beschreiben Sie sie erneut.",
   "operator": "Betreiber: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slowakei · Firmennummer (IČO) 36 709 042 · USt-IdNr. SK2022293042 · eingetragen im Handelsregister des Stadtgerichts Bratislava III, Abteilung Sa, Einlage Nr. 4452/B · info@virtuse.com"
  },
  "fr": {
@@ -68,6 +80,9 @@ export default {
   "quiet": "D'ici là, nous ne vous écrirons à aucun autre sujet.",
   "foot": "Vous vous êtes inscrit à la liste d'attente sur virtuse.com. Virtuse ne détient jamais vos clés ni vos fonds et ne fournit aucun conseil en investissement.",
   "leave": "Quitter la liste d'attente",
+  "subjectReport": "Vous êtes sur la liste pour le rapport complet Verdict",
+  "report1": "Nous vous enverrons un e-mail à l'ouverture du rapport complet Verdict : les 10 signaux avec leurs points et leurs raisons, toutes les questions manquantes pour votre décision et un plan étape par étape avec les outils Virtuse. 14 € en une fois, sans abonnement.",
+  "report2": "Nous n'avons pas conservé le texte de votre décision. À l'ouverture du rapport, vous la décrirez à nouveau.",
   "operator": "Exploitant : Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovaquie · N° d’identification (IČO) 36 709 042 · N° TVA SK2022293042 · immatriculée au registre du commerce du tribunal municipal de Bratislava III, section Sa, n° 4452/B · info@virtuse.com"
  },
  "es": {
@@ -82,6 +97,9 @@ export default {
   "quiet": "Hasta entonces no le escribiremos sobre nada más.",
   "foot": "Se apuntó a la lista de espera en virtuse.com. Virtuse nunca guarda sus claves ni sus fondos y no ofrece asesoramiento de inversión.",
   "leave": "Salir de la lista de espera",
+  "subjectReport": "Está en la lista para el informe completo de Verdict",
+  "report1": "Le enviaremos un correo cuando se abra el informe completo de Verdict: las 10 señales con puntos y motivos, todas las preguntas pendientes para su decisión y un plan paso a paso con las herramientas de Virtuse. 14 € en un solo pago, sin suscripción.",
+  "report2": "No hemos guardado el texto de su decisión. Cuando se abra el informe, la describirá de nuevo.",
   "operator": "Titular: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Eslovaquia · N.º de identificación (IČO) 36 709 042 · NIF-IVA SK2022293042 · inscrita en el Registro Mercantil del Tribunal Municipal de Bratislava III, sección Sa, n.º 4452/B · info@virtuse.com"
  },
  "pl": {
@@ -96,6 +114,9 @@ export default {
   "quiet": "Do tego czasu nie będziemy pisać w żadnej innej sprawie.",
   "foot": "Zapisali się Państwo na listę oczekujących na virtuse.com. Virtuse nigdy nie przechowuje Państwa kluczy ani środków i nie udziela porad inwestycyjnych.",
   "leave": "Wypisuję się z listy oczekujących",
+  "subjectReport": "Są Państwo na liście do pełnego raportu Verdict",
+  "report1": "Wyślemy jeden e-mail, gdy ruszy pełny raport Verdict: wszystkie 10 sygnałów z punktami i uzasadnieniem, wszystkie brakujące pytania do Państwa decyzji i plan kroków z narzędziami Virtuse. 14 € jednorazowo, bez subskrypcji.",
+  "report2": "Nie zapisaliśmy tekstu Państwa decyzji. Gdy raport ruszy, opiszą ją Państwo ponownie.",
   "operator": "Operator: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Słowacja · Nr identyfikacyjny (IČO) 36 709 042 · NIP UE SK2022293042 · wpisana do rejestru handlowego Sądu Miejskiego Bratysława III, sekcja Sa, nr 4452/B · info@virtuse.com"
  },
  "hu": {
@@ -110,6 +131,9 @@ export default {
   "quiet": "Addig semmi másról nem írunk Önnek.",
   "foot": "A virtuse.com oldalon iratkozott fel a várólistára. A Virtuse soha nem kezeli az Ön kulcsait vagy pénzét, és nem ad befektetési tanácsot.",
   "leave": "Leiratkozás a várólistáról",
+  "subjectReport": "Felkerült a teljes Verdict-jelentés listájára",
+  "report1": "Egy e-mailt küldünk, amikor elindul a teljes Verdict-jelentés: mind a 10 jelzés pontokkal és indoklással, a döntéséhez hiányzó összes kérdés és lépésenkénti terv a Virtuse eszközeivel. 14 € egyszeri díj, előfizetés nélkül.",
+  "report2": "A döntése szövegét nem mentettük el. Amikor a jelentés elindul, újra leírja.",
   "operator": "Üzemeltető: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Szlovákia · Cégazonosító (IČO) 36 709 042 · Közösségi adószám SK2022293042 · bejegyezve a Pozsonyi III. Városi Bíróság cégjegyzékébe, Sa szakasz, 4452/B szám · info@virtuse.com"
  },
  "uk": {
@@ -124,6 +148,9 @@ export default {
   "quiet": "До того часу ми не писатимемо вам ні про що інше.",
   "foot": "Ви приєдналися до списку очікування на virtuse.com. Virtuse ніколи не зберігає ваші ключі чи кошти й не надає інвестиційних порад.",
   "leave": "Вийти зі списку очікування",
+  "subjectReport": "Ви в списку на повний звіт Verdict",
+  "report1": "Ми надішлемо вам один лист, коли відкриється повний звіт Verdict: усі 10 сигналів з балами й поясненнями, усі відсутні питання до вашого рішення та покроковий план з інструментами Virtuse. 14 € одноразово, без підписки.",
+  "report2": "Ми не зберегли текст вашого рішення. Коли звіт відкриється, ви опишете його знову.",
   "operator": "Оператор: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словаччина · Ідентифікаційний номер (IČO) 36 709 042 · Номер платника ПДВ SK2022293042 · зареєстрована в Торговому реєстрі Міського суду Братислава III, розділ Sa, № 4452/B · info@virtuse.com"
  },
  "ru": {
@@ -138,6 +165,9 @@ export default {
   "quiet": "До тех пор мы не будем писать вам ни о чём другом.",
   "foot": "Вы присоединились к листу ожидания на virtuse.com. Virtuse никогда не хранит ваши ключи или средства и не даёт инвестиционных советов.",
   "leave": "Выйти из листа ожидания",
+  "subjectReport": "Вы в списке на полный отчёт Verdict",
+  "report1": "Мы пришлём вам одно письмо, когда откроется полный отчёт Verdict: все 10 сигналов с баллами и пояснениями, все недостающие вопросы к вашему решению и пошаговый план с инструментами Virtuse. 14 € единоразово, без подписки.",
+  "report2": "Мы не сохранили текст вашего решения. Когда отчёт откроется, вы опишете его заново.",
   "operator": "Оператор: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словакия · Идентификационный номер (IČO) 36 709 042 · Номер плательщика НДС SK2022293042 · зарегистрирована в Торговом реестре Городского суда Братислава III, раздел Sa, № 4452/B · info@virtuse.com"
  }
 };

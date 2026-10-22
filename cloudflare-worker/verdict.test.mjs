@@ -274,3 +274,20 @@ test('reasons call profile answers "your answers", never "profile"', () => {
   assert.match(systemPrompt('sk'), /never "profile"/);
   assert.match(systemPrompt('sk'), /vaše odpovede/);
 });
+
+test('report preview: all 10 signals and a plan on staging; virtuse.com still gets the free view', withClaude(async () => {
+  const text = 'Každý mesiac kúpim BTC za 100 €, 10 rokov, rezerva 6 mesiacov.';
+  let r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING }), env())).json();
+  assert.equal(r.report, true);
+  assert.equal(r.signals.length, 10);
+  assert.ok(r.signals.every((s) => s.reason && s.tool.page));
+  assert.equal(r.locked, undefined);
+  assert.deepEqual(r.plan.map((s) => s.id), ['worst_case', 'alternatives', 'tax', 'plan_b', 'custody', 'rule', 'asymmetry']);
+  assert.ok(r.plan.every((s) => s.points < 7 && s.tool.name));
+  r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { ip: '9.9.9.9' }), env())).json();
+  assert.equal(r.report, undefined);
+  assert.equal(r.signals.length, 2);
+  assert.equal(r.locked.length, 8);
+  r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { ip: '8.8.8.8' }), env({ VERDICT_REPORT_PREVIEW: '1' }))).json();
+  assert.equal(r.signals.length, 10);
+}));

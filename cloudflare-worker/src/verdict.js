@@ -1,4 +1,4 @@
-// POST /verdict  { text, lang, hp, profile? }
+// POST /verdict  { text, lang, hp, profile?, report? }  (report: full view, staging preview only)
 //
 // Virtuse CFO · Verdict: scores how complete a visitor's Bitcoin decision is
 // on 10 signals (rubric approved 2026-10-15, see the "Verdict: rubrika a
@@ -273,7 +273,9 @@ export function scoreVerdict(out, lang) {
     if (def.id === 'tax' && out.country === 'other') points = Math.min(points, 5);
     if (def.id === 'tax' && out.tax_rule_wrong) points = Math.min(points, 2);
     if (s.only_profile) points = Math.min(points, PROFILE_ONLY_MAX);
-    return { id: def.id, name: def[L], priority: def.priority, points, reason: String(s.reason || '').slice(0, 200) };
+    const tk = out.is_loan && def.loanTool ? def.loanTool : def.tool;
+    const tool = { key: tk, page: TOOLS[tk].page, name: TOOLS[tk].name || TOOLS[tk][L] };
+    return { id: def.id, name: def[L], priority: def.priority, points, reason: String(s.reason || '').slice(0, 200), tool };
   });
   // Shown rounded to 5: repeated runs of the same text vary by a few points,
   // the band and weakest point don't (test run 2026-10-15, Ras chose this).
@@ -325,6 +327,25 @@ export function freeView(full, profile = {}) {
     missingMore: Math.max(0, full.missing.length - 1),
     partnerFinder: partnerFinderQuery(profile),
   };
+}
+
+// The full report (14 EUR): all 10 signals with reasons, every missing
+// question and a plan: signals under 7 points, weakest first, each with the
+// Virtuse tool to work on it. No payment exists yet, so the Worker returns it
+// only as a preview: from staging, or anywhere with VERDICT_REPORT_PREVIEW=1.
+// Before the report is sold, this must require a paid token instead.
+export const PLAN_BELOW = 7;
+export function reportView(full, profile = {}) {
+  if (full.declined) return full;
+  const order = (s) => SIGNAL_IDS.indexOf(s.id);
+  const plan = full.signals.filter((s) => s.points < PLAN_BELOW)
+    .sort((a, b) => a.points - b.points || order(a) - order(b))
+    .map(({ id, name, points, tool }) => ({ id, name, points, tool }));
+  return { ...full, report: true, plan, partnerFinder: partnerFinderQuery(profile) };
+}
+
+export function reportPreviewAllowed(env, origin) {
+  return env.VERDICT_REPORT_PREVIEW === '1' || origin === 'https://staging.virtuse.com';
 }
 
 export function looksLikeAdvice(result) {
@@ -431,7 +452,8 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
       console.error('verdict: advice-like wording dropped');
       return json(502, { error: fail }, origin);
     }
-    return aiJson(json, freeView(result, profile), origin);
+    const report = body.report === true && reportPreviewAllowed(env, origin);
+    return aiJson(json, report ? reportView(result, profile) : freeView(result, profile), origin);
   } catch (e) {
     console.error(e);
     return json(502, { error: fail }, origin);
