@@ -254,43 +254,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="sp-lead">Bitcoin is money that no company or government issues or controls. This primer explains, in plain English, what it is, why its supply is fixed, how it works and what risks you should understand, followed by the free resources we recommend to go deeper.</p>
     <p class="pf-counts">8 picks · last reviewed 22 October 2026</p>
   </div>
-  <section id="primer">
-    <div class="eco-prose">
-    <h2>Money without an issuer</h2>
-    <p>Bitcoin is a digital money that runs on an open network rather than on a bank's ledger. Nobody issues it on demand and nobody can freeze the network or rewrite its history. You hold bitcoin by holding a secret key, and whoever controls that key can move the coins. Since the first block in January 2009, the network has kept running without a central operator, a company or a board.</p>
-    <p>Most money you use is a promise recorded by an institution: your bank balance is a liability of your bank, and the currency itself is managed by a central bank that can create more of it. Bitcoin works differently. The ledger is public, the rules are written in open-source software, and anyone can check that the rules are being followed.</p>
-    <p>That design was a response to a specific problem. Before Bitcoin, every digital payment system needed a trusted middleman to stop people from spending the same money twice. Bitcoin solved this without a middleman by letting the whole network agree on a single history of transactions. The result is a payment network and a savings asset that anyone with an internet connection can use, without asking permission and without opening an account.</p>
-    <h2>Why people use Bitcoin</h2>
-    <p>People come to Bitcoin for different reasons. Some want a long-term savings asset whose supply cannot be inflated. Some want to send value across borders without delays, cut-off times or currency controls. Others value the fact that nobody can freeze or seize coins held in self-custody without access to the keys. Companies hold it as a treasury reserve, and in countries with high inflation it is often used simply to protect earnings from losing value.</p>
-    <p>None of these uses requires you to trade. Many Europeans buy a small fixed amount every month (dollar-cost averaging) and hold for years, which smooths out the effect of short-term price swings. Our <a href="/bitcoin-dca-calculator/">DCA calculator</a> shows how that has worked historically, with real fees included.</p>
-    <h2>Scarcity: the 21 million limit</h2>
-    <p>The total number of bitcoin that will ever exist is capped at 21 million. New coins are issued to miners as a reward for securing the network, and that reward halves roughly every four years (every 210,000 blocks). Most of the supply has already been issued; the remaining coins arrive ever more slowly until around the year 2140.</p>
-    <p>This fixed, predictable schedule is the main reason people compare Bitcoin to gold. You cannot print more because demand rises, and no central bank can decide to dilute existing holders. Whether that makes Bitcoin a good store of value over your own time horizon is a judgement you have to make yourself; history shows long periods of strong growth and deep drawdowns of 70 % or more.</p>
-    <h2>Bitcoin is not "crypto"</h2>
-    <p>Thousands of other tokens have copied parts of Bitcoin's code, but most of them have a company, a foundation or a small group of insiders that can change the rules, issue more units or pause the network. That is a different risk profile. Virtuse is bitcoin-only for this reason: Bitcoin's value comes from having no issuer and no one in charge, and that is very hard to replicate once a project has founders, a pre-sale or a marketing budget. When someone pitches you a new coin with promised returns, treat it as a sales offer, not as Bitcoin.</p>
-    <h2>How it works</h2>
-    <p>Every bitcoin transaction is broadcast to the network and checked by independent computers called nodes. Each node verifies that the coins exist, that they have not been spent before and that the sender's signature is valid. Anyone can run a node on a normal computer, which is what keeps the rules honest: a node simply ignores blocks that break them.</p>
-    <p>Miners collect valid transactions into blocks, roughly one every ten minutes. To add a block, a miner must spend real electricity solving a cryptographic puzzle (proof of work). This cost is what makes rewriting history impractical: changing an old transaction would require redoing all the work since then, faster than the rest of the network combined.</p>
-    <p>Faster and cheaper payments run on layers built on top of Bitcoin, most notably the Lightning Network, which settles small payments in seconds while still relying on the base chain for final security.</p>
-    <p>On Lightning, two parties lock bitcoin into a shared channel and then update the balance between them as often as they like, almost instantly and for fractions of a cent. Channels connect into a network, so you can pay someone you have never opened a channel with. Shops across Europe accept Lightning payments today; see <a href="/ecosystem/spend-bitcoin/">where to spend bitcoin</a> and <a href="/ecosystem/store-tools/">tools for merchants</a>.</p>
-    <h2>Self-custody basics</h2>
-    <p>Owning bitcoin means controlling its keys. If you leave coins on a platform, you hold a claim on that platform, not the coins themselves. Self-custody removes that counterparty risk but makes you responsible for backups: your recovery phrase (usually 12 or 24 words) restores your wallet, and anyone who sees it can take your coins.</p>
-    <p>There are three common models. With custody at a regulated provider, the provider holds the keys and you rely on its security and solvency; this is simple but carries counterparty risk. With single-key self-custody, you hold one key yourself, usually in a wallet app or a dedicated device. With multi-signature (collaborative) custody, several keys are needed to move funds, so losing one key or having one compromised does not mean losing everything. The right choice depends on the amount, your technical comfort and who should be able to access the coins if something happens to you.</p>
-    <p>A sensible path for most people is to start small, practise a test recovery, keep the recovery phrase offline and never type it into a website. For larger amounts, consider dedicated hardware and a plan for your heirs. Our <a href="/secure.html">custody page</a>, the <a href="/stories/the-most-comprehensive-cold-wallet-guide/">cold wallet guide</a> and the <a href="/bitcoin-inheritance/">inheritance checklist</a> go into the details.</p>
-    <h2>Risks to understand</h2>
-    <ul><li><strong>Volatility.</strong> The price can fall by half in months. Only hold what you can keep through large swings.</li><li><strong>Irreversibility.</strong> Sent transactions cannot be reversed, and a lost key usually means lost coins.</li><li><strong>Scams.</strong> Nobody legitimate will ask for your recovery phrase, promise guaranteed returns or rush you. Be especially careful with "crypto" offers that are not Bitcoin.</li><li><strong>Taxes and rules.</strong> Gains are taxable in most European countries, and providers must follow MiCA and anti-money-laundering rules. See our <a href="/bitcoin-tax/">country tax guides</a>.</li></ul>
-    <h2>Bitcoin in Europe</h2>
-    <p>Since the EU's Markets in Crypto-Assets Regulation (MiCA) took effect, companies that offer crypto-asset services in the EU need an authorisation from a national regulator, and they must follow anti-money-laundering rules, including identity checks. From 2026, the DAC8 directive also requires these providers to report customer transactions to tax authorities. Holding bitcoin in self-custody is legal everywhere in the EU, but tax treatment differs widely: some countries exempt long-term holdings, others tax every sale or swap. Check the rules for your country before you sell or spend.</p>
-    <p>When you are ready to buy, compare regulated partners on our <a href="/buy-bitcoin.html">Buy Bitcoin page</a>. This page is educational and is not investment advice.</p>
+  <div class="eco-facts"><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">Maximum supply</span><b>21,000,000</b></div><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">Running since January</span><b>2009</b></div><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">Per block</span><b>~10 min</b></div><div class="pcard2 orange eco-card eco-fact"><span class="eco-k">No company or government</span><b>No issuer</b></div></div>
+  <div class="eco-article">
+    <div class="eco-body eco-prose">
+      <section class="eco-sec" id="s1">
+        <h2>Money <span>without an issuer</span></h2>
+        <p>Bitcoin is a digital money that runs on an open network rather than on a bank's ledger. Nobody issues it on demand and nobody can freeze the network or rewrite its history. You hold bitcoin by holding a secret key, and whoever controls that key can move the coins. Since the first block in January 2009, the network has kept running without a central operator, a company or a board.</p>
+        <p>Most money you use is a promise recorded by an institution: your bank balance is a liability of your bank, and the currency itself is managed by a central bank that can create more of it. Bitcoin works differently. The ledger is public, the rules are written in open-source software, and anyone can check that the rules are being followed.</p>
+        <p>That design was a response to a specific problem. Before Bitcoin, every digital payment system needed a trusted middleman to stop people from spending the same money twice. Bitcoin solved this without a middleman by letting the whole network agree on a single history of transactions. The result is a payment network and a savings asset that anyone with an internet connection can use, without asking permission and without opening an account.</p>
+      </section>
+      <section class="eco-sec" id="s2">
+        <h2>Why <span>people use Bitcoin</span></h2>
+        <p>People come to Bitcoin for different reasons. Some want a long-term savings asset whose supply cannot be inflated. Some want to send value across borders without delays, cut-off times or currency controls. Others value the fact that nobody can freeze or seize coins held in self-custody without access to the keys. Companies hold it as a treasury reserve, and in countries with high inflation it is often used simply to protect earnings from losing value.</p>
+        <p>None of these uses requires you to trade. Many Europeans buy a small fixed amount every month (dollar-cost averaging) and hold for years, which smooths out the effect of short-term price swings. Our <a href="/bitcoin-dca-calculator/">DCA calculator</a> shows how that has worked historically, with real fees included.</p>
+      </section>
+      <section class="eco-sec" id="s3">
+        <h2>Scarcity: <span>the 21 million limit</span></h2>
+        <p>The total number of bitcoin that will ever exist is capped at 21 million. New coins are issued to miners as a reward for securing the network, and that reward halves roughly every four years (every 210,000 blocks). Most of the supply has already been issued; the remaining coins arrive ever more slowly until around the year 2140.</p>
+        <div class="eco-notepanel"><p>This fixed, predictable schedule is the main reason people compare Bitcoin to gold. You cannot print more because demand rises, and no central bank can decide to dilute existing holders. Whether that makes Bitcoin a good store of value over your own time horizon is a judgement you have to make yourself; history shows long periods of strong growth and deep drawdowns of 70 % or more.</p></div>
+      </section>
+      <section class="eco-sec" id="s4">
+        <h2>Bitcoin <span>is not &quot;crypto&quot;</span></h2>
+        <div class="hpanel orange eco-callout"><p>Thousands of other tokens have copied parts of Bitcoin's code, but most of them have a company, a foundation or a small group of insiders that can change the rules, issue more units or pause the network. That is a different risk profile. Virtuse is bitcoin-only for this reason: Bitcoin's value comes from having no issuer and no one in charge, and that is very hard to replicate once a project has founders, a pre-sale or a marketing budget. When someone pitches you a new coin with promised returns, treat it as a sales offer, not as Bitcoin.</p></div>
+      </section>
+      <section class="eco-sec" id="s5">
+        <h2>How <span>it works</span></h2>
+        <div class="how-log eco-how"><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Step 01</span><h3>Transaction</h3><p>Broadcast to the network and checked by independent nodes.</p></div></div><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Step 02</span><h3>Mining</h3><p>A new block about every ten minutes, secured by proof of work.</p></div></div><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Step 03</span><h3>Lightning</h3><p>Fast, cheap payments on a layer built on top of Bitcoin.</p></div></div></div>
+        <p>Every bitcoin transaction is broadcast to the network and checked by independent computers called nodes. Each node verifies that the coins exist, that they have not been spent before and that the sender's signature is valid. Anyone can run a node on a normal computer, which is what keeps the rules honest: a node simply ignores blocks that break them.</p>
+        <p>Miners collect valid transactions into blocks, roughly one every ten minutes. To add a block, a miner must spend real electricity solving a cryptographic puzzle (proof of work). This cost is what makes rewriting history impractical: changing an old transaction would require redoing all the work since then, faster than the rest of the network combined.</p>
+        <p>Faster and cheaper payments run on layers built on top of Bitcoin, most notably the Lightning Network, which settles small payments in seconds while still relying on the base chain for final security.</p>
+        <p>On Lightning, two parties lock bitcoin into a shared channel and then update the balance between them as often as they like, almost instantly and for fractions of a cent. Channels connect into a network, so you can pay someone you have never opened a channel with. Shops across Europe accept Lightning payments today; see <a href="/ecosystem/spend-bitcoin/">where to spend bitcoin</a> and <a href="/ecosystem/store-tools/">tools for merchants</a>.</p>
+      </section>
+      <section class="eco-sec" id="s6">
+        <h2>Self-custody <span>basics</span></h2>
+        <p>Owning bitcoin means controlling its keys. If you leave coins on a platform, you hold a claim on that platform, not the coins themselves. Self-custody removes that counterparty risk but makes you responsible for backups: your recovery phrase (usually 12 or 24 words) restores your wallet, and anyone who sees it can take your coins.</p>
+        <p>There are three common models. With custody at a regulated provider, the provider holds the keys and you rely on its security and solvency; this is simple but carries counterparty risk. With single-key self-custody, you hold one key yourself, usually in a wallet app or a dedicated device. With multi-signature (collaborative) custody, several keys are needed to move funds, so losing one key or having one compromised does not mean losing everything. The right choice depends on the amount, your technical comfort and who should be able to access the coins if something happens to you.</p>
+        <p>A sensible path for most people is to start small, practise a test recovery, keep the recovery phrase offline and never type it into a website. For larger amounts, consider dedicated hardware and a plan for your heirs. Our <a href="/secure.html">custody page</a>, the <a href="/stories/the-most-comprehensive-cold-wallet-guide/">cold wallet guide</a> and the <a href="/bitcoin-inheritance/">inheritance checklist</a> go into the details.</p>
+      </section>
+      <section class="eco-sec" id="s7">
+        <h2>Risks <span>to understand</span></h2>
+        <ul><li><strong>Volatility.</strong> The price can fall by half in months. Only hold what you can keep through large swings.</li><li><strong>Irreversibility.</strong> Sent transactions cannot be reversed, and a lost key usually means lost coins.</li><li><strong>Scams.</strong> Nobody legitimate will ask for your recovery phrase, promise guaranteed returns or rush you. Be especially careful with "crypto" offers that are not Bitcoin.</li><li><strong>Taxes and rules.</strong> Gains are taxable in most European countries, and providers must follow MiCA and anti-money-laundering rules. See our <a href="/bitcoin-tax/">country tax guides</a>.</li></ul>
+      </section>
+      <section class="eco-sec" id="s8">
+        <h2>Bitcoin <span>in Europe</span></h2>
+        <p>Since the EU's Markets in Crypto-Assets Regulation (MiCA) took effect, companies that offer crypto-asset services in the EU need an authorisation from a national regulator, and they must follow anti-money-laundering rules, including identity checks. From 2026, the DAC8 directive also requires these providers to report customer transactions to tax authorities. Holding bitcoin in self-custody is legal everywhere in the EU, but tax treatment differs widely: some countries exempt long-term holdings, others tax every sale or swap. Check the rules for your country before you sell or spend.</p>
+        <p>When you are ready to buy, compare regulated partners on our <a href="/buy-bitcoin.html">Buy Bitcoin page</a>. This page is educational and is not investment advice.</p>
+      </section>
+      <section id="faq" class="qa eco-sec">
+        <h2>Frequently <span>asked questions</span></h2>
+        <details open><summary>Who controls Bitcoin?</summary><p>No single person, company or government. The rules are enforced by tens of thousands of independent computers (nodes) that each check every transaction. Changing the rules requires broad agreement among the people who run those nodes.</p></details>
+        <details><summary>Why is the supply limited to 21 million?</summary><p>The limit is written into the software every node runs. New bitcoin is issued to miners on a fixed schedule that halves roughly every four years, so issuance shrinks towards zero and the total never exceeds 21 million.</p></details>
+        <details><summary>Is Bitcoin legal in Europe?</summary><p>Yes. Owning, buying and selling bitcoin is legal across the EU. Companies that provide crypto-asset services must be authorised under MiCA, and gains are generally taxable; the rules differ by country.</p></details>
+        <details><summary>What are the main risks?</summary><p>The price is volatile, mistakes with keys can be permanent, and scams are common. Only invest what you can afford to hold through large price swings, and learn how custody works before you store meaningful amounts.</p></details>
+      </section>
     </div>
-  </section>
-  <section id="faq" class="qa">
-    <div class="sec-head one"><div class="sec-copy"><h2>Frequently asked questions. <span>Short answers.</span></h2></div></div>
-    <details open><summary>Who controls Bitcoin?</summary><p>No single person, company or government. The rules are enforced by tens of thousands of independent computers (nodes) that each check every transaction. Changing the rules requires broad agreement among the people who run those nodes.</p></details>
-    <details><summary>Why is the supply limited to 21 million?</summary><p>The limit is written into the software every node runs. New bitcoin is issued to miners on a fixed schedule that halves roughly every four years, so issuance shrinks towards zero and the total never exceeds 21 million.</p></details>
-    <details><summary>Is Bitcoin legal in Europe?</summary><p>Yes. Owning, buying and selling bitcoin is legal across the EU. Companies that provide crypto-asset services must be authorised under MiCA, and gains are generally taxable; the rules differ by country.</p></details>
-    <details><summary>What are the main risks?</summary><p>The price is volatile, mistakes with keys can be permanent, and scams are common. Only invest what you can afford to hold through large price swings, and learn how custody works before you store meaningful amounts.</p></details>
-  </section>
+    <nav class="eco-toc" aria-label="On this page">
+      <details open><summary>On this page</summary>
+        <ol><li><a href="#s1">Money without an issuer</a></li><li><a href="#s2">Why people use Bitcoin</a></li><li><a href="#s3">Scarcity: the 21 million limit</a></li><li><a href="#s4">Bitcoin is not &quot;crypto&quot;</a></li><li><a href="#s5">How it works</a></li><li><a href="#s6">Self-custody basics</a></li><li><a href="#s7">Risks to understand</a></li><li><a href="#s8">Bitcoin in Europe</a></li><li><a href="#faq">Frequently asked questions</a></li><li><a href="#list">Free resources to go deeper</a></li></ol>
+      </details>
+    </nav>
+  </div>
   <section id="list">
     <div class="sec-head one"><div class="sec-copy"><h2>Free resources to go deeper. <span>Each with a one-line verdict.</span></h2></div></div>
     <div class="eco-grid">
@@ -406,6 +429,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 
 <script src="/site-v2.js?v=7" defer></script>
+<script>
+(function () {
+  var toc = document.querySelector('.eco-toc'); if (!toc) return;
+  var det = toc.querySelector('details'), mq = window.matchMedia('(min-width: 1024px)');
+  function fit() { det.open = mq.matches; } fit(); if (mq.addEventListener) mq.addEventListener('change', fit);
+  toc.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { if (!mq.matches) det.open = false; }); });
+  var links = [].slice.call(toc.querySelectorAll('a')), secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function mark() {
+    var cur = 0;
+    secs.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', mark, { passive: true });
+  mark();
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

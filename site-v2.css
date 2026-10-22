@@ -1779,3 +1779,55 @@ html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margi
   .eco-grid:not(.eco-cats) { grid-template-columns: minmax(0, 1fr); }
   .eco-prose h2 { font-size: 24px; }
 }
+/* ECOSYSTEM · What is Bitcoin? (facts row, two-column article, sticky "On this page", callouts, steps) */
+.eco-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 64px; }
+.eco-fact { gap: 10px; padding: 22px 24px; }
+.eco-fact b { font-size: clamp(22px, 2.4vw, 32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.eco-article { margin-top: 88px; }
+.eco-body { max-width: 680px; }
+.eco-body p, .eco-body li { line-height: 1.7; }
+.eco-sec { padding: 0; }
+.eco-sec + .eco-sec { margin-top: 72px; }
+.eco-sec > h2, .eco-body .qa > h2 { font-size: 30px; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 18px; }
+.eco-sec > h2 span { color: var(--muted); font-weight: 400; }
+.eco-body a { color: var(--text); text-decoration-color: var(--line-strong); text-underline-offset: 3px; transition: color .15s; }
+.eco-body a:hover { color: var(--c); text-decoration-color: var(--c); }
+.eco-body .qa details, .eco-body details { max-width: none; }
+.eco-callout { width: 100%; margin: 8px 0 0; padding: 28px 32px; border-radius: 24px; }
+.eco-callout p { color: var(--text); margin: 0; font-size: 17px; }
+.eco-notepanel { margin: 20px 0 0; padding: 18px 22px; border: 1px solid rgba(95,174,222,.35); background: var(--note-bg); border-radius: 16px; }
+.eco-notepanel p { margin: 0; color: #b9d9ee; }
+.eco-how { margin: 8px 0 28px; gap: 24px; }
+.eco-how .how-log-body h3 { font-size: 15px; }
+.eco-how .how-log-body p { font-size: 14px; line-height: 1.55; }
+.eco-toc details > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 12px; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eco-toc details > summary::-webkit-details-marker { display: none; }
+.eco-toc details > summary::after { content: "+"; font-size: 16px; color: var(--muted); }
+.eco-toc details[open] > summary::after { content: "−"; }
+.eco-toc ol { list-style: none; margin: 0; padding: 12px 4px 0; display: grid; gap: 2px; }
+.eco-toc a { position: relative; display: block; padding: 7px 0 7px 18px; font: 500 12px/1.45 var(--mono); letter-spacing: .02em; color: var(--dim); text-decoration: none; transition: color .15s; }
+.eco-toc a::before { content: ""; position: absolute; left: 2px; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); transition: background .15s, box-shadow .15s; }
+.eco-toc a:hover { color: var(--text); }
+.eco-toc a.on { color: var(--text); }
+.eco-toc a.on::before { background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent); }
+@media (min-width: 1024px) {
+  .eco-article { display: grid; grid-template-columns: minmax(0, 680px) 240px; justify-content: space-between; gap: 64px; align-items: start; }
+  .eco-toc { position: sticky; top: 96px; order: 2; }
+  .eco-toc details > summary { pointer-events: none; padding: 0 0 6px; background: none; border: 0; border-radius: 0; }
+  .eco-toc details > summary::after { display: none; }
+}
+@media (max-width: 1023px) {
+  .eco-article { display: flex; flex-direction: column; gap: 32px; margin-top: 56px; }
+  .eco-toc { order: -1; position: sticky; top: 72px; z-index: 5; }
+  .eco-toc ol { background: var(--card); border: 1px solid var(--line-strong); border-top: 0; border-radius: 0 0 12px 12px; padding: 8px 12px 12px; margin-top: -8px; }
+  .eco-toc details[open] > summary { border-radius: 12px 12px 0 0; }
+}
+@media (max-width: 760px) {
+  .eco-facts { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-top: 40px; }
+  .eco-fact { padding: 16px; }
+  .eco-fact b { font-size: 20px; }
+  .eco-sec > h2, .eco-body .qa > h2 { font-size: 24px; }
+  .eco-sec + .eco-sec { margin-top: 56px; }
+  .eco-callout { padding: 20px; border-radius: 18px; }
+  .eco-how { gap: 0; }
+}
