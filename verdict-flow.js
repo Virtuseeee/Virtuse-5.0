@@ -4,10 +4,15 @@
 // score, strongest and weakest signal, 8 locked, Partner Finder prefilled.
 // Off until launch: on for staging, ?verdict=1 or <meta name="vb-verdict" content="on">.
 // cfo.html hands over the decision text in sessionStorage 'vb-verdict-text'.
+// Full report: no payment yet. Visitors leave an email (Worker POST /waitlist,
+// source verdict_report). On staging (or ?report=1 with the Worker's
+// VERDICT_REPORT_PREVIEW=1) the request asks for the report and shows it.
 (function () {
   var LANG = document.documentElement.lang === 'sk' ? 'sk' : 'en';
   var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/verdict';
+  var WAITLIST = 'https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist';
   var meta = document.querySelector('meta[name="vb-verdict"]');
+  var PREVIEW = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost' || /[?&]report=1\b/.test(location.search);
   var ON = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on');
 
   var STR = {
@@ -62,7 +67,11 @@
       pfH: 'Partneri pre vašu kategóriu', pfP: 'Partner Finder už pozná vaše odpovede a ukazuje partnerov, ktorí spĺňajú vaše kritériá. Poradie určujú pevné pravidlá, nie provízia. Vyberáte vy.',
       pfNote: 'Partnerské odkazy: ak sa zaregistrujete, Virtuse môže dostať províziu, vaša cena sa nemení.', pfOpen: 'Otvoriť Partner Finder na celej stránke →',
       repH: 'Celý report', repT: 'Viac istoty, kým konáte.', repP: 'Nájdite slabé miesta skôr, ako vás budú stáť peniaze.', repList: ['Všetkých 10 signálov s bodmi a dôvodmi', 'Všetky chýbajúce otázky pre vaše rozhodnutie', 'Plán krokov s nástrojmi Virtuse', 'PDF na neskôr, ostáva vám natrvalo'],
-      once: 'Jednorazovo', noSub: 'Žiadne predplatné.', unlockCta: 'Odomknúť celý report', waitNote: 'Do 1. novembra zbierame záujem na stránke Virtuse CFO.',
+      once: 'Jednorazovo', noSub: 'Žiadne predplatné.', unlockCta: 'Odomknúť celý report', waitNote: 'Platby ešte nespúšťame. Nechajte e-mail a dáme vám vedieť, keď sa report otvorí.',
+      wantPh: 'Váš e-mail', wantBtn: 'Dajte mi vedieť', wantOk: 'Ste na zozname. Napíšeme vám raz, keď sa report otvorí.', wantBad: 'Zadajte platný e-mail.',
+      wantNote: 'Uložíme len váš e-mail, text rozhodnutia nie. Odhlásiť sa môžete jedným kliknutím z e-mailu.', privacy: 'Súkromie',
+      prevBadge: 'Náhľad reportu', prevNote: 'Náhľad na testovanie. Na virtuse.com návštevník vidí 2 signály a formulár pre záujem o report.',
+      allH: 'Všetkých 10 signálov', missAllH: 'Chýbajúce otázky', planH: 'Plán krokov', planP: 'Signály pod 7 bodov, od najslabšieho. Každý s nástrojom, kde ho doplníte.', planNone: 'Všetky signály majú aspoň 7 bodov.', pdf: 'Uložiť ako PDF', pts: ' b.',
       declinedH: 'Verdict to nevie ohodnotiť.', again: '↺ Ohodnotiť ďalšie rozhodnutie', decision: 'Rozhodnutie'
     },
     en: {
@@ -116,7 +125,11 @@
       pfH: 'Partners for your category', pfP: 'Partner Finder already has your answers and shows the partners that meet your criteria. Fixed rules set the order, not commission. You choose.',
       pfNote: 'Partner links: if you sign up, Virtuse may receive a commission. Your price does not change.', pfOpen: 'Open Partner Finder full page →',
       repH: 'Full report', repT: 'More certainty before you act.', repP: 'Find the gaps before they cost you money.', repList: ['All 10 signals with scores and reasons', 'Every missing question for your decision', 'A step-by-step plan with Virtuse tools', 'A PDF to keep, yours permanently'],
-      once: 'One-time', noSub: 'No subscription.', unlockCta: 'Unlock the full report', waitNote: 'Until 1 November we collect interest on the Virtuse CFO page.',
+      once: 'One-time', noSub: 'No subscription.', unlockCta: 'Unlock the full report', waitNote: "Payments aren't open yet. Leave your email and we'll tell you when the report opens.",
+      wantPh: 'Your email', wantBtn: 'Let me know', wantOk: "You're on the list. We'll write once, when the report opens.", wantBad: 'Enter a valid email.',
+      wantNote: 'We keep only your email, not your decision text. Leave with one click from the email.', privacy: 'Privacy',
+      prevBadge: 'Report preview', prevNote: 'Preview for testing. On virtuse.com visitors see 2 signals and a form to register interest in the report.',
+      allH: 'All 10 signals', missAllH: 'Missing questions', planH: 'Step-by-step plan', planP: 'Signals under 7 points, weakest first. Each with the tool where you fill it in.', planNone: 'Every signal has at least 7 points.', pdf: 'Save as PDF', pts: ' pts',
       declinedH: "Verdict can't rate this.", again: '↺ Rate another decision', decision: 'Decision'
     }
   }[LANG];
@@ -264,7 +277,7 @@
     show();
     var t = setInterval(function () { k++; show(); }, 1600), minWait = new Promise(function (r) { setTimeout(r, 2500); });
     push({ event: 'verdict_submit', verdict_lang: LANG, verdict_goal: A.goal || 'other' });
-    var call = fetch(WORKER, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: A.text, lang: LANG, hp: A.hp || '', profile: profile() }) })
+    var call = fetch(WORKER, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: A.text, lang: LANG, hp: A.hp || '', profile: profile(), report: PREVIEW }) })
       .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
       .catch(function () { return { ok: false, d: { error: STR.network } }; });
     Promise.all([call, minWait]).then(function (x) {
@@ -290,6 +303,7 @@
       document.getElementById('again').onclick = function () { go(at('text')); };
       return;
     }
+    if (r.report) { showReport(r); return; }
     var strong = r.signals.filter(function (x) { return x.role === 'strongest'; })[0], weak = r.signals.filter(function (x) { return x.role === 'weakest'; })[0];
     var tool = r.weakest.tool, toolHref = tool.page + (tool.page.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict';
     var pfq = r.partnerFinder ? Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict' : '';
@@ -302,16 +316,70 @@
       '<div><b>' + STR.weakB + '</b><p>' + esc(weak.name) + ': ' + esc(weak.reason) + '</p></div>' +
       '<div><b>' + STR.missB + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span style="color:var(--dim)">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div></div>' +
       '<div class="sec">' + STR.free + '</div><div class="sig2">' + sig(strong, STR.strongest) + sig(weak, STR.weakest, toolHref, tool.name) + '</div>' +
-      '<div class="locked"><div class="lh"><div><b style="font-size:18px">' + r.locked.length + STR.lockedH + '</b><p>' + STR.lockedP + '</p></div><a class="cta" href="cfo.html#pricing" style="text-decoration:none">' + STR.lockedCta + '</a></div>' +
+      '<div class="locked"><div class="lh"><div><b style="font-size:18px">' + r.locked.length + STR.lockedH + '</b><p>' + STR.lockedP + '</p></div><button class="cta" data-want>' + STR.lockedCta + '</button></div>' +
       '<div class="lgrid">' + r.locked.map(function (x) { return '<div>🔒 ' + esc(x.name) + '<i></i><i></i></div>'; }).join('') + '</div></div>' +
       '<div class="sec">' + STR.nextH + '</div><div class="route"><div class="r"><div><b>' + STR.nextB + '</b><span>' + esc(weak.name) + ' · ' + esc(tool.name) + '</span></div><a href="' + toolHref + '">' + STR.open + '</a></div></div>' +
       (r.partnerFinder ? '<div class="sec">' + STR.pfH + '</div><p class="sub" style="font-size:15px">' + STR.pfP + '</p>' +
         '<iframe class="pf" src="concierge.html?' + pfq + '&utm_medium=verdict" title="Partner Finder" loading="lazy"></iframe>' +
         '<p class="small">' + STR.pfNote + ' <a href="concierge.html?' + pfq + '&utm_medium=verdict_open" style="color:var(--text)">' + STR.pfOpen + '</a></p>' : '') +
-      '<div class="sec">' + STR.repH + '</div><div class="price"><div><h3 style="font-size:24px">' + STR.repT + '</h3><p class="sub" style="font-size:15px">' + STR.repP + '</p><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
-      '<div><div class="eyebrow">' + STR.once + '</div><div class="amt">' + (LANG === 'sk' ? '14 €' : '€14') + '</div><p class="sub" style="font-size:14px">' + STR.noSub + '</p><a class="cta" href="cfo.html#pricing" style="width:100%;justify-content:center;margin-top:14px;text-decoration:none">' + STR.unlockCta + '</a><p class="small">' + STR.waitNote + '</p></div></div>' +
+      '<div class="sec" id="report">' + STR.repH + '</div><div class="price"><div><h3 style="font-size:24px">' + STR.repT + '</h3><p class="sub" style="font-size:15px">' + STR.repP + '</p><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
+      '<div><div class="eyebrow">' + STR.once + '</div><div class="amt">' + (LANG === 'sk' ? '14 €' : '€14') + '</div><p class="sub" style="font-size:14px">' + STR.noSub + '</p><p class="small" style="margin-top:6px">' + STR.waitNote + '</p>' + wantForm() + '</div></div>' +
       '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p></div>' + again;
     document.getElementById('again').onclick = function () { A.text = ''; RESULT = null; go(1); };
+    bindWant();
+  }
+
+  // Interest in the full report: email only, no decision text.
+  function wantForm() {
+    return '<form class="want" id="want" novalidate><input type="email" id="we" autocomplete="email" placeholder="' + STR.wantPh + '" aria-label="' + STR.wantPh + '" required>' +
+      '<input type="text" id="wh" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
+      '<button class="cta" type="submit">' + STR.wantBtn + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo" style="color:inherit">' + STR.privacy + '</a></p></form>';
+  }
+  function bindWant() {
+    var f = document.getElementById('want'); if (!f) return;
+    panel.querySelectorAll('[data-want]').forEach(function (b) {
+      b.onclick = function () { document.getElementById('report').scrollIntoView({ behavior: 'smooth' }); setTimeout(function () { document.getElementById('we').focus({ preventScroll: true }); }, 400); };
+    });
+    f.onsubmit = function (e) {
+      e.preventDefault();
+      var em = document.getElementById('we').value.trim(), msg = document.getElementById('wm'), btn = f.querySelector('button');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { msg.textContent = STR.wantBad; return; }
+      btn.disabled = true;
+      fetch(WAITLIST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: em, hp: document.getElementById('wh').value, source: 'verdict_report', lang: LANG }) })
+        .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+        .catch(function () { return { ok: false, d: { error: STR.network } }; })
+        .then(function (x) {
+          if (x.ok) {
+            f.innerHTML = '<p class="sub" style="font-size:15px;color:var(--text)">' + STR.wantOk + '</p>';
+            push({ event: 'capture_submit', capture_source: 'verdict_report', verdict_lang: LANG });
+          } else { btn.disabled = false; msg.textContent = (x.d && x.d.error) || STR.error; }
+        });
+    };
+  }
+
+  // Full report (preview only until payments exist; see the header comment).
+  function showReport(r) {
+    var ord = r.signals.slice().sort(function (a, b) { return a.id === r.weakest.id ? -1 : b.id === r.weakest.id ? 1 : 0; });
+    function href(t) { return t.page + (t.page.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict&utm_medium=report'; }
+    var pfq = r.partnerFinder ? Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict' : '';
+    panel.innerHTML = '<div data-ai-generated="true" class="report">' +
+      '<p class="warn no-print">' + STR.prevNote + '</p>' +
+      '<div class="res-head"><div><div class="eyebrow">' + STR.prevBadge + ' · ' + esc(goalLabel()) + '</div>' +
+      '<h2>' + STR.weakH + esc(r.weakest.name) + '</h2><p class="sub" style="font-size:15px">„' + esc(A.text) + '“</p></div>' +
+      '<div class="score"><b>' + r.score + '</b><small>/100</small><br><span class="pill">' + esc(r.band.label) + '</span></div></div>' +
+      '<div class="sec">' + STR.allH + '</div><div class="sig2">' + ord.map(function (s) {
+        return sig(s, s.id === r.weakest.id ? STR.weakest : '', s.points < 7 ? href(s.tool) : '', s.tool.name);
+      }).join('') + '</div>' +
+      '<div class="sec">' + STR.missAllH + '</div><div class="found">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<div><p>' + STR.nothing + '</p></div>') + '</div>' +
+      '<div class="sec">' + STR.planH + '</div><p class="sub" style="font-size:15px">' + STR.planP + '</p><div class="route">' +
+      (r.plan.length ? r.plan.map(function (s, n) { return '<div class="r"><div><b>' + (n + 1) + '. ' + esc(s.name) + ' · ' + s.points + STR.pts + '</b><span>' + esc(s.tool.name) + '</span></div><a href="' + href(s.tool) + '">' + STR.open + '</a></div>'; }).join('') : '<div class="r"><span>' + STR.planNone + '</span></div>') + '</div>' +
+      (r.partnerFinder ? '<div class="no-print"><div class="sec">' + STR.pfH + '</div><p class="sub" style="font-size:15px">' + STR.pfP + '</p>' +
+        '<iframe class="pf" src="concierge.html?' + pfq + '&utm_medium=verdict_report" title="Partner Finder" loading="lazy"></iframe>' +
+        '<p class="small">' + STR.pfNote + '</p></div>' : '') +
+      '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p></div>' +
+      '<div class="foot no-print" style="margin-top:18px"><button class="ghost" id="again">' + STR.again + '</button><button class="cta" id="pdf">' + STR.pdf + '</button></div>';
+    document.getElementById('again').onclick = function () { A.text = ''; RESULT = null; go(1); };
+    document.getElementById('pdf').onclick = function () { push({ event: 'verdict_report_pdf', verdict_lang: LANG }); window.print(); };
   }
 
   // Handed over from cfo.html: skip the start screen, text already filled in.

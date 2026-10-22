@@ -162,3 +162,18 @@ textarea:focus, input:focus { outline: 2px solid var(--orange); outline-offset: 
 .vf-foot { margin-top: 28px; text-align: center; color: var(--dim); font-size: 13px; }
 .vf-foot a { color: var(--muted); }
 .steps[hidden] { display: none; }
+
+/* Report interest form + report preview */
+.want { display: grid; gap: 10px; margin-top: 14px; }
+.want input[type=email] { width: 100%; background: var(--dark, #08090a); color: var(--text); border: 1px solid var(--line-strong); border-radius: 12px; padding: 13px 14px; font: 15px/1.4 inherit; font-family: inherit; }
+.want .cta { width: 100%; justify-content: center; }
+.sig .tag:empty { display: none; }
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  .top, .steps, .vf-foot, .no-print, .back { display: none !important; }
+  .panel, .sig, .found > div, .route .r, .res-head { background: #fff !important; border-color: #ccc !important; color: #000 !important; box-shadow: none !important; }
+  .report * { color: #000 !important; }
+  .sig, .route .r { break-inside: avoid; }
+  .sig .bar i { background: #555 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .sig2 { grid-template-columns: 1fr 1fr; }
+}
