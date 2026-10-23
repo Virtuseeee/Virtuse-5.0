@@ -47,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=13">
+<link rel="stylesheet" href="/site-v2.min.css?v=14">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -201,7 +201,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <label>Üzenet<textarea name="message" maxlength="1500" rows="4"></textarea></label>
       <label class="eco-check"><input type="checkbox" name="consent" required> <span>Hozzájárulok, hogy a Virtuse ezeket az adatokat a jelentkezés elbírálásához kezelje, az <a href="/hu/privacy-policy.html#ecosystem">adatvédelmi szabályzatban</a> leírtak szerint. *</span></label>
       <input class="hp" type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="cf-turnstile eco-turnstile" data-sitekey="0x4AAAAAAFheOLDBd1DyVOhF" data-theme="dark" data-language="hu" data-size="flexible"></div>
+      <div class="cf-turnstile eco-turnstile" data-sitekey="0x4AAAAAAFheOLDBd1DyVOhF" data-theme="dark" data-language="hu" data-size="flexible" data-appearance="interaction-only"></div>
       <button class="hp-cta eco-submit" type="submit">Jelentkezés elküldése <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <p class="eco-form-msg" id="ecoFormMsg" role="status" aria-live="polite"></p>
     </form>
@@ -233,7 +233,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function () {
-  var M = {"required":"Kérjük, töltse ki az összes kötelező mezőt.","country":"Kérjük, válasszon legalább egy országot.","sending":"Küldés…","ok":"Köszönjük. Megkaptuk jelentkezését, és visszaigazolást küldtünk e-mailben. Az elbírálás általában legfeljebb 30 napot vesz igénybe.","fail":"A küldés nem sikerült. Kérjük, küldje el jelentkezését e-mailben a következő címre: \u003ca href=\"mailto:info@virtuse.com\">info@virtuse.com\u003c/a>.","captcha":"Kérjük, végezze el a biztonsági ellenőrzést, és küldje el újra az űrlapot.","rate":"Túl sok próbálkozás érkezett az Ön kapcsolatáról. Kérjük, próbálja újra egy óra múlva."};
+  var M = {"required":"Kérjük, töltse ki az összes kötelező mezőt.","country":"Kérjük, válasszon legalább egy országot.","sending":"Küldés…","ok":"Köszönjük. Megkaptuk jelentkezését, és visszaigazolást küldtünk e-mailben. Az elbírálás általában legfeljebb 14 napot vesz igénybe.","fail":"A küldés nem sikerült. Kérjük, küldje el jelentkezését e-mailben a következő címre: \u003ca href=\"mailto:info@virtuse.com\">info@virtuse.com\u003c/a>.","captcha":"Kérjük, végezze el a biztonsági ellenőrzést, és küldje el újra az űrlapot.","rate":"Túl sok próbálkozás érkezett az Ön kapcsolatáról. Kérjük, próbálja újra egy óra múlva."};
   var f = document.getElementById('ecoForm'); if (!f) return;
   var msg = document.getElementById('ecoFormMsg');
   var all = f.querySelector('[data-all-countries]');
@@ -267,10 +267,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ['project_name','website','category','description','licence','repo','contact_name','contact_email','message'].forEach(function (k) { data[k] = f[k].value.trim(); });
     data.bitcoin_only = f.bitcoin_only.checked; data.consent = f.consent.checked;
     data.sponsored_interest = (f.querySelector('input[name="sponsored_interest"]:checked') || {}).value || 'no';
-    var t = f.querySelector('[name="cf-turnstile-response"]'); data.turnstile = t ? t.value : '';
-    if (!data.turnstile) { msg.className = 'eco-form-msg err'; msg.textContent = M.captcha; return; }
     var btn = f.querySelector('.eco-submit'); btn.disabled = true; msg.className = 'eco-form-msg'; msg.textContent = M.sending;
     function reset() { if (window.turnstile) try { window.turnstile.reset(f.querySelector('.cf-turnstile')); } catch (x) {} }
+    // The widget only shows itself when Cloudflare needs a click; otherwise the token arrives in the
+    // background, so a quick submit waits for it (up to 10 s) instead of failing.
+    var tries = 0;
+    (function waitToken() {
+      var t = f.querySelector('[name="cf-turnstile-response"]');
+      if (t && t.value) { data.turnstile = t.value; send(); return; }
+      if (++tries < 40) { setTimeout(waitToken, 250); return; }
+      msg.className = 'eco-form-msg err'; msg.textContent = M.captcha; btn.disabled = false;
+    })();
+    function send() {
     fetch(f.getAttribute('data-endpoint'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(r.status); e.code = j.error; throw e; } return j; }); })
       .then(function () {
@@ -287,6 +295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         reset();
       })
       .then(function () { btn.disabled = false; });
+    }
   });
 })();
 </script>
