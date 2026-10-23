@@ -535,7 +535,7 @@
   "context": "\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumptions\"> <a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"stacking.html\">Stacking Strategist"
  },
  {
-  "en": "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.",
+  "en": "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.",
   "kind": "text",
   "context": "ce Agent</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"retirement-calculator.html\">Retirement Calculator</a> </div> <p class=\"vd-how-note\">How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.</p> </section> <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> "
  },
@@ -775,22 +775,22 @@
   "context": "\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> "
  },
  {
-  "en": "All 10 signals, with reasons",
+  "en": "All 10 signals with scores and reasons",
   "kind": "text",
   "context": "t</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start w"
  },
  {
-  "en": "Assumptions, risks and plan B",
+  "en": "Every missing question for your decision",
   "kind": "text",
   "context": " <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <"
  },
  {
-  "en": "Questions for tomorrow",
+  "en": "A step-by-step plan with Virtuse tools",
   "kind": "text",
   "context": "class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <"
  },
  {
-  "en": "No subscription",
+  "en": "A PDF to keep, no subscription",
   "kind": "text",
   "context": "u want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Fo"
  },

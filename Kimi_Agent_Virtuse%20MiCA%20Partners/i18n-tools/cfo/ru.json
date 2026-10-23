@@ -247,10 +247,6 @@
  "Full report": "Полный отчёт",
  "once": "один раз",
  "For one decision you want to think through in depth.": "Для одного решения, которое вы хотите тщательно обдумать.",
- "All 10 signals, with reasons": "Все 10 сигналов с пояснениями",
- "Assumptions, risks and plan B": "Допущения, риски и план Б",
- "Questions for tomorrow": "Вопросы на завтра",
- "No subscription": "Без подписки",
  "Start with a verdict": "Начните с оценки",
  "Free fee audit from your export, from 1 November": "Бесплатный аудит комиссий по вашему экспорту, с 1 ноября",
  "Unlimited verdicts and full reports": "Неограниченные оценки и полные отчёты",
@@ -290,7 +286,6 @@
  "Verdict can't rate this": "Verdict это не оценивает",
  "50 to 60": "50–60",
  "0 to 45": "0–45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Как получается балл: ИИ оценивает каждый из 10 сигналов от 0 до 10, балл равен их сумме, округлённой до 5. Verdict ссылается только на инструменты Virtuse, никогда на партнёра.",
  "One email when paid plans open in January. Nothing else.": "Одно письмо, когда в январе откроются платные планы. Больше ничего.",
  "You're on the list. We'll email you once, when paid plans open in January.": "Вы в списке. Мы напишем один раз, когда в январе откроются платные планы.",
  "Stories": "Статьи",
@@ -320,5 +315,10 @@
  "Virtuse CFO · Verdict: check what you left out | Virtuse": "Virtuse CFO · Verdict: что вы упустили | Virtuse",
  "Operator": "Оператор",
  ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словакия · Идентификационный номер (IČO) 36 709 042 · Номер плательщика НДС SK2022293042 · зарегистрирована в Торговом реестре Городского суда Братислава III, раздел Sa, № 4452/B · info@virtuse.com",
- "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Не пишите имена, контактные данные, номера счетов, адреса кошельков или данные о здоровье. Мы не храним текст в базе данных Virtuse; для оценки его обрабатывает Anthropic (США)."
+ "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Не пишите имена, контактные данные, номера счетов, адреса кошельков или данные о здоровье. Мы не храним текст в базе данных Virtuse; для оценки его обрабатывает Anthropic (США).",
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.": "Как получается балл: ИИ оценивает каждый из 10 сигналов от 0 до 10, балл равен их сумме, округлённой до 5. Verdict сам не оценивает партнёров. При желании Partner Finder отберёт партнёров по вашим критериям; сравниваете и выбираете вы.",
+ "All 10 signals with scores and reasons": "Все 10 сигналов с баллами и пояснениями",
+ "Every missing question for your decision": "Все недостающие вопросы к вашему решению",
+ "A step-by-step plan with Virtuse tools": "Пошаговый план с инструментами Virtuse",
+ "A PDF to keep, no subscription": "PDF, который останется у вас, без подписки"
 }

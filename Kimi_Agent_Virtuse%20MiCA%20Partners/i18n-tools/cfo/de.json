@@ -247,10 +247,6 @@
  "Full report": "Vollständiger Bericht",
  "once": "einmalig",
  "For one decision you want to think through in depth.": "Für eine Entscheidung, die Sie gründlich durchdenken möchten.",
- "All 10 signals, with reasons": "Alle 10 Signale, mit Begründung",
- "Assumptions, risks and plan B": "Annahmen, Risiken und Plan B",
- "Questions for tomorrow": "Fragen für morgen",
- "No subscription": "Kein Abonnement",
  "Start with a verdict": "Mit einem Verdict beginnen",
  "Free fee audit from your export, from 1 November": "Kostenloser Gebühren-Audit aus Ihrem Export, ab 1. November",
  "Unlimited verdicts and full reports": "Unbegrenzt Verdicts und vollständige Berichte",
@@ -290,7 +286,6 @@
  "Verdict can't rate this": "Das bewertet Verdict nicht",
  "50 to 60": "50 bis 60",
  "0 to 45": "0 bis 45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "So entsteht der Score: Eine KI bewertet jedes der 10 Signale mit 0 bis 10 Punkten, der Score ist ihre Summe, auf 5 gerundet. Verdict verlinkt nur auf Virtuse-Tools, nie auf einen Partner.",
  "One email when paid plans open in January. Nothing else.": "Eine E-Mail, wenn im Januar die kostenpflichtigen Pläne starten. Sonst nichts.",
  "You're on the list. We'll email you once, when paid plans open in January.": "Sie sind auf der Liste. Wir schreiben Ihnen einmal, wenn im Januar die kostenpflichtigen Pläne starten.",
  "Stories": "Artikel",
@@ -320,5 +315,10 @@
  "Virtuse CFO · Verdict: check what you left out | Virtuse": "Virtuse CFO · Verdict: Was Sie ausgelassen haben | Virtuse",
  "Operator": "Betreiber",
  ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slowakei · Firmennummer (IČO) 36 709 042 · USt-IdNr. SK2022293042 · eingetragen im Handelsregister des Stadtgerichts Bratislava III, Abteilung Sa, Einlage Nr. 4452/B · info@virtuse.com",
- "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Schreiben Sie keine Namen, Kontaktdaten, Kontonummern, Wallet-Adressen oder Gesundheitsdaten. Wir speichern den Text nicht in der Datenbank von Virtuse; zur Auswertung verarbeitet ihn Anthropic (USA)."
+ "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Schreiben Sie keine Namen, Kontaktdaten, Kontonummern, Wallet-Adressen oder Gesundheitsdaten. Wir speichern den Text nicht in der Datenbank von Virtuse; zur Auswertung verarbeitet ihn Anthropic (USA).",
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.": "So entsteht der Score: Eine KI bewertet jedes der 10 Signale mit 0 bis 10 Punkten, der Score ist ihre Summe, auf 5 gerundet. Verdict selbst bewertet keine Partner. Wenn Sie möchten, filtert der Partner Finder Partner nach Ihren Kriterien; Sie vergleichen und entscheiden.",
+ "All 10 signals with scores and reasons": "Alle 10 Signale mit Punkten und Begründungen",
+ "Every missing question for your decision": "Alle offenen Fragen zu Ihrer Entscheidung",
+ "A step-by-step plan with Virtuse tools": "Ein Schritt-für-Schritt-Plan mit den Tools von Virtuse",
+ "A PDF to keep, no subscription": "Ein PDF zum Behalten, kein Abo"
 }

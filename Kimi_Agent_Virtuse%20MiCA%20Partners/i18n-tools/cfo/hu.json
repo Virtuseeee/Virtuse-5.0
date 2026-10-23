@@ -247,10 +247,6 @@
  "Full report": "Teljes riport",
  "once": "egyszer",
  "For one decision you want to think through in depth.": "Egy döntéshez, amelyet alaposan át szeretne gondolni.",
- "All 10 signals, with reasons": "Mind a 10 jelzés, indoklással",
- "Assumptions, risks and plan B": "Feltevések, kockázatok és B-terv",
- "Questions for tomorrow": "Kérdések holnapra",
- "No subscription": "Előfizetés nélkül",
  "Start with a verdict": "Kezdje egy értékeléssel",
  "Free fee audit from your export, from 1 November": "Ingyenes díjaudit az exportjából, november 1-jétől",
  "Unlimited verdicts and full reports": "Korlátlan értékelés és teljes riport",
@@ -290,7 +286,6 @@
  "Verdict can't rate this": "Ezt a Verdict nem értékeli",
  "50 to 60": "50–60",
  "0 to 45": "0–45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Így készül a pontszám: az AI mind a 10 jelzést 0 és 10 között pontozza, a pontszám ezek összege, 5-re kerekítve. A Verdict csak a Virtuse eszközeire hivatkozik, partnerre soha.",
  "One email when paid plans open in January. Nothing else.": "Egyetlen e-mail, amikor januárban elindulnak a fizetős csomagok. Semmi más.",
  "You're on the list. We'll email you once, when paid plans open in January.": "Felkerült a listára. Egyszer írunk, amikor januárban elindulnak a fizetős csomagok.",
  "Stories": "Cikkek",
@@ -320,5 +315,10 @@
  "Virtuse CFO · Verdict: check what you left out | Virtuse": "Virtuse CFO · Verdict: mit hagyott ki? | Virtuse",
  "Operator": "Üzemeltető",
  ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Szlovákia · Cégazonosító (IČO) 36 709 042 · Közösségi adószám SK2022293042 · bejegyezve a Pozsonyi III. Városi Bíróság cégjegyzékébe, Sa szakasz, 4452/B szám · info@virtuse.com",
- "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Ne írjon neveket, elérhetőségeket, számlaszámokat, tárcacímeket vagy egészségügyi adatokat. A szöveget nem tároljuk a Virtuse adatbázisában; az értékeléshez az Anthropic (USA) dolgozza fel."
+ "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Ne írjon neveket, elérhetőségeket, számlaszámokat, tárcacímeket vagy egészségügyi adatokat. A szöveget nem tároljuk a Virtuse adatbázisában; az értékeléshez az Anthropic (USA) dolgozza fel.",
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.": "Így készül a pontszám: az AI mind a 10 jelzést 0 és 10 között pontozza, a pontszám ezek összege, 5-re kerekítve. A Verdict maga nem értékeli a partnereket. Ha szeretné, a Partner Finder kiszűri a feltételeinek megfelelő partnereket; Ön hasonlít össze és dönt.",
+ "All 10 signals with scores and reasons": "Mind a 10 jelzés pontokkal és indoklással",
+ "Every missing question for your decision": "A döntéséhez hiányzó összes kérdés",
+ "A step-by-step plan with Virtuse tools": "Lépésenkénti terv a Virtuse eszközeivel",
+ "A PDF to keep, no subscription": "Megtartható PDF, előfizetés nélkül"
 }

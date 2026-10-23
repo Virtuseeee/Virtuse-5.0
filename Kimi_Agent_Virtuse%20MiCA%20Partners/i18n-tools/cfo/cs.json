@@ -247,10 +247,6 @@
  "Full report": "Plný report",
  "once": "jednou",
  "For one decision you want to think through in depth.": "Pro jedno rozhodnutí, které chcete promyslet do hloubky.",
- "All 10 signals, with reasons": "Všech 10 signálů se zdůvodněním",
- "Assumptions, risks and plan B": "Předpoklady, rizika a plán B",
- "Questions for tomorrow": "Otázky na zítra",
- "No subscription": "Bez předplatného",
  "Start with a verdict": "Začít verdiktem",
  "Free fee audit from your export, from 1 November": "Bezplatný audit poplatků z exportu, od 1. listopadu",
  "Unlimited verdicts and full reports": "Neomezené verdikty a plné reporty",
@@ -290,7 +286,6 @@
  "Verdict can't rate this": "Tohle Verdict nehodnotí",
  "50 to 60": "50 až 60",
  "0 to 45": "0 až 45",
- "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.": "Jak vzniká skóre: AI ohodnotí každý z 10 signálů od 0 do 10, skóre je jejich součet zaokrouhlený na 5. Verdict odkazuje jen na nástroje Virtuse, nikdy na partnera.",
  "One email when paid plans open in January. Nothing else.": "Jeden e-mail, až se v lednu otevřou placené plány. Nic jiného.",
  "You're on the list. We'll email you once, when paid plans open in January.": "Jste na seznamu. Napíšeme vám jednou, až se v lednu otevřou placené plány.",
  "Stories": "Příběhy",
@@ -320,5 +315,10 @@
  "Virtuse CFO · Verdict: check what you left out | Virtuse": "Virtuse CFO · Verdict: co jste vynechali | Virtuse",
  "Operator": "Provozovatel",
  ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovensko · IČO 36 709 042 · DIČ pro DPH SK2022293042 · zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl Sa, vložka č. 4452/B · info@virtuse.com",
- "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Nepište jména, kontaktní údaje, čísla účtů, adresy peněženek ani údaje o zdraví. Text neukládáme v databázi Virtuse; k vyhodnocení ho zpracuje Anthropic (USA)."
+ "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Nepište jména, kontaktní údaje, čísla účtů, adresy peněženek ani údaje o zdraví. Text neukládáme v databázi Virtuse; k vyhodnocení ho zpracuje Anthropic (USA).",
+ "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.": "Jak vzniká skóre: AI ohodnotí každý z 10 signálů od 0 do 10, skóre je jejich součet zaokrouhlený na 5. Verdict sám partnery nehodnotí. Pokud chcete, Partner Finder vyfiltruje partnery podle vašich kritérií; porovnáváte a vybíráte vy.",
+ "All 10 signals with scores and reasons": "Všech 10 signálů s body a důvody",
+ "Every missing question for your decision": "Všechny chybějící otázky k vašemu rozhodnutí",
+ "A step-by-step plan with Virtuse tools": "Plán kroků s nástroji Virtuse",
+ "A PDF to keep, no subscription": "PDF, které si ponecháte, bez předplatného"
 }
