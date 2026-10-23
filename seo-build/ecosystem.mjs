@@ -393,7 +393,7 @@ function promoteBody(l) {
       <label>${esc(m.fMessage)}<textarea name="message" maxlength="1500" rows="4"></textarea></label>
       <label class="eco-check"><input type="checkbox" name="consent" required> <span>${fill(m.fConsent, l)}</span></label>
       <input class="hp" type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="cf-turnstile eco-turnstile" data-sitekey="${esc(DATA.turnstileSiteKey)}" data-theme="dark" data-language="${l}" data-size="flexible"></div>
+      <div class="cf-turnstile eco-turnstile" data-sitekey="${esc(DATA.turnstileSiteKey)}" data-theme="dark" data-language="${l}" data-size="flexible" data-appearance="interaction-only"></div>
       <button class="hp-cta eco-submit" type="submit">${esc(m.fSubmit)} ${ARROW}</button>
       <p class="eco-form-msg" id="ecoFormMsg" role="status" aria-live="polite"></p>
     </form>
@@ -441,10 +441,18 @@ function formJs(l) {
     ['project_name','website','category','description','licence','repo','contact_name','contact_email','message'].forEach(function (k) { data[k] = f[k].value.trim(); });
     data.bitcoin_only = f.bitcoin_only.checked; data.consent = f.consent.checked;
     data.sponsored_interest = (f.querySelector('input[name="sponsored_interest"]:checked') || {}).value || 'no';
-    var t = f.querySelector('[name="cf-turnstile-response"]'); data.turnstile = t ? t.value : '';
-    if (!data.turnstile) { msg.className = 'eco-form-msg err'; msg.textContent = M.captcha; return; }
     var btn = f.querySelector('.eco-submit'); btn.disabled = true; msg.className = 'eco-form-msg'; msg.textContent = M.sending;
     function reset() { if (window.turnstile) try { window.turnstile.reset(f.querySelector('.cf-turnstile')); } catch (x) {} }
+    // The widget only shows itself when Cloudflare needs a click; otherwise the token arrives in the
+    // background, so a quick submit waits for it (up to 10 s) instead of failing.
+    var tries = 0;
+    (function waitToken() {
+      var t = f.querySelector('[name="cf-turnstile-response"]');
+      if (t && t.value) { data.turnstile = t.value; send(); return; }
+      if (++tries < 40) { setTimeout(waitToken, 250); return; }
+      msg.className = 'eco-form-msg err'; msg.textContent = M.captcha; btn.disabled = false;
+    })();
+    function send() {
     fetch(f.getAttribute('data-endpoint'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(r.status); e.code = j.error; throw e; } return j; }); })
       .then(function () {
@@ -461,6 +469,7 @@ function formJs(l) {
         reset();
       })
       .then(function () { btn.disabled = false; });
+    }
   });
 })();
 </script>`;
@@ -511,7 +520,7 @@ function schemas(p, l) {
 // ---------- page ----------
 // No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
 // site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
-const CSS_V = '13';
+const CSS_V = '14';
 
 // Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {

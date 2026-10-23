@@ -102,7 +102,7 @@
     "mRequired": "Please fill in all required fields.",
     "mCountry": "Please choose at least one country.",
     "mSending": "Sending…",
-    "mOk": "Thank you. We have received your application and sent a confirmation to your email. Reviews usually take up to 30 days.",
+    "mOk": "Thank you. We have received your application and sent a confirmation to your email. Reviews usually take up to 14 days.",
     "mFail": "Sending did not work. Please email your application to <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Prefer email? Write to <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "What every listing must meet.",

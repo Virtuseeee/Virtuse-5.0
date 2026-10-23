@@ -102,7 +102,7 @@
     "mRequired": "Bitte füllen Sie alle Pflichtfelder aus.",
     "mCountry": "Bitte wählen Sie mindestens ein Land.",
     "mSending": "Wird gesendet…",
-    "mOk": "Vielen Dank. Wir haben Ihren Antrag erhalten und Ihnen eine Bestätigung per E-Mail geschickt. Die Prüfung dauert in der Regel bis zu 30 Tage.",
+    "mOk": "Vielen Dank. Wir haben Ihren Antrag erhalten und Ihnen eine Bestätigung per E-Mail geschickt. Die Prüfung dauert in der Regel bis zu 14 Tage.",
     "mFail": "Das Senden hat nicht funktioniert. Bitte schicken Sie Ihren Antrag per E-Mail an <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Lieber per E-Mail? Schreiben Sie an <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Was jeder Eintrag erfüllen muss.",

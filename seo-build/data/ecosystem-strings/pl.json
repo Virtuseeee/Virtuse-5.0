@@ -102,7 +102,7 @@
     "mRequired": "Prosimy wypełnić wszystkie wymagane pola.",
     "mCountry": "Prosimy wybrać co najmniej jeden kraj.",
     "mSending": "Wysyłanie…",
-    "mOk": "Dziękujemy. Otrzymaliśmy Państwa zgłoszenie i wysłaliśmy potwierdzenie na podany adres e-mail. Weryfikacja trwa zwykle do 30 dni.",
+    "mOk": "Dziękujemy. Otrzymaliśmy Państwa zgłoszenie i wysłaliśmy potwierdzenie na podany adres e-mail. Weryfikacja trwa zwykle do 14 dni.",
     "mFail": "Nie udało się wysłać zgłoszenia. Prosimy przesłać je e-mailem na adres <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Wolą Państwo e-mail? Prosimy pisać na adres <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Co musi spełniać każda pozycja.",

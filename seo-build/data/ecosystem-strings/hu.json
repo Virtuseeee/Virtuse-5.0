@@ -102,7 +102,7 @@
     "mRequired": "Kérjük, töltse ki az összes kötelező mezőt.",
     "mCountry": "Kérjük, válasszon legalább egy országot.",
     "mSending": "Küldés…",
-    "mOk": "Köszönjük. Megkaptuk jelentkezését, és visszaigazolást küldtünk e-mailben. Az elbírálás általában legfeljebb 30 napot vesz igénybe.",
+    "mOk": "Köszönjük. Megkaptuk jelentkezését, és visszaigazolást küldtünk e-mailben. Az elbírálás általában legfeljebb 14 napot vesz igénybe.",
     "mFail": "A küldés nem sikerült. Kérjük, küldje el jelentkezését e-mailben a következő címre: <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Inkább e-mailben írna? Címünk: <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Amit minden bejegyzésnek teljesítenie kell.",

@@ -102,7 +102,7 @@
     "mRequired": "Vyplňte prosím všechna povinná pole.",
     "mCountry": "Vyberte prosím alespoň jednu zemi.",
     "mSending": "Odesílání…",
-    "mOk": "Děkujeme. Vaši žádost jsme přijali a na váš e-mail jsme poslali potvrzení. Posouzení obvykle trvá až 30 dní.",
+    "mOk": "Děkujeme. Vaši žádost jsme přijali a na váš e-mail jsme poslali potvrzení. Posouzení obvykle trvá až 14 dní.",
     "mFail": "Odeslání se nepodařilo. Pošlete prosím žádost e-mailem na <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Dáváte přednost e-mailu? Napište na <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Co musí splňovat každá položka.",

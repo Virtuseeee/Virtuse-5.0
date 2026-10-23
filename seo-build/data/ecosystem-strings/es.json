@@ -102,7 +102,7 @@
     "mRequired": "Rellene todos los campos obligatorios.",
     "mCountry": "Elija al menos un país.",
     "mSending": "Enviando…",
-    "mOk": "Gracias. Hemos recibido su solicitud y le hemos enviado una confirmación por correo electrónico. La revisión suele tardar hasta 30 días.",
+    "mOk": "Gracias. Hemos recibido su solicitud y le hemos enviado una confirmación por correo electrónico. La revisión suele tardar hasta 14 días.",
     "mFail": "No se ha podido enviar. Envíe su solicitud por correo electrónico a <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "¿Prefiere el correo electrónico? Escriba a <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Lo que debe cumplir cada entrada.",

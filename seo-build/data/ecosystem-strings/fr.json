@@ -102,7 +102,7 @@
     "mRequired": "Veuillez remplir tous les champs obligatoires.",
     "mCountry": "Veuillez choisir au moins un pays.",
     "mSending": "Envoi…",
-    "mOk": "Merci. Nous avons bien reçu votre candidature et vous avons envoyé une confirmation par e-mail. L'examen prend généralement jusqu'à 30 jours.",
+    "mOk": "Merci. Nous avons bien reçu votre candidature et vous avons envoyé une confirmation par e-mail. L'examen prend généralement jusqu'à 14 jours.",
     "mFail": "L'envoi n'a pas fonctionné. Veuillez envoyer votre candidature par e-mail à <a href=\"mailto:info@virtuse.com\">info@virtuse.com</a>.",
     "mail": "Vous préférez l'e-mail ? Écrivez à <a href=\"mailto:info@virtuse.com?subject=Bitcoin%20Ecosystem%20application\">info@virtuse.com</a>.",
     "criteriaSub": "Ce que chaque entrée doit respecter.",
