@@ -916,36 +916,36 @@
    "id": "A1",
    "lang": "sk",
    "band": "add",
-   "text": "Chcem kúpiť Bitcoin za 5 000 €, to je asi 10 % úspor, a držať ho aspoň 5 rokov na dôchodok. Rezervu mám na 6 mesiacov. Pri veľkom poklese by som nepredával. Kľúče budem mať na hardvérovej peňaženke. Porovnal som to s ETF.",
-   "why": "balance 2026-10-23: tax and inheritance missing, no 70% numbers"
+   "text": "Chcem kúpiť Bitcoin za 5 000 €, to je asi 10 % úspor, a držať ho aspoň 5 rokov na dôchodok. Rezervu mám na 6 mesiacov. Pri veľkom poklese by som nepredával. Kľúče budem mať na hardvérovej peňaženke. Porovnal som to s ETF. Som rezident SR, zisk pri predaji zdaním 19 až 35 % plus 16 % odvod a odkladám si 35 %.",
+   "why": "balance 2026-10-23: tax and inheritance missing, no 70% numbers; text enriched after run 2026-10-23 (scored 35-45, my first label was too high)"
   },
   {
    "id": "A2",
    "lang": "en",
    "band": "add",
-   "text": "I want to buy €200 of Bitcoin every month for 10 years. I have 6 months of expenses saved. A 70% fall would cost me a few thousand euros at most and I would keep buying. It is about 5% of my savings. I live in Slovakia and know gains are taxed when I sell.",
-   "why": "balance 2026-10-23: goal vague, custody and alternatives missing"
+   "text": "I want to buy €200 of Bitcoin every month for 10 years. I have 6 months of expenses saved. A 70% fall would cost me a few thousand euros at most and I would keep buying. It is about 5% of my savings. I live in Slovakia and know gains are taxed when I sell. The keys will be on a hardware wallet. I compared a world equity ETF.",
+   "why": "balance 2026-10-23: goal vague, custody and alternatives missing; text enriched after run 2026-10-23 (scored 35-45, my first label was too high)"
   },
   {
    "id": "A3",
    "lang": "sk",
    "band": "add",
-   "text": "Uvažujem o pôžičke 10 000 € oproti 0,5 BTC na auto, LTV okolo 30 %. Splácať budem z platu 2 roky. Rezervu mám na 4 mesiace. Viem, že pri veľkom poklese hrozí likvidácia, vtedy by som doplnil zábezpeku. Pôžička nie je predaj, takže daň nevznikne.",
-   "why": "balance 2026-10-23, loan: inheritance, alternatives, rule thin"
+   "text": "Uvažujem o pôžičke 10 000 € oproti 0,5 BTC na auto, LTV okolo 30 %. Splácať budem z platu 2 roky. Rezervu mám na 4 mesiace. Viem, že pri veľkom poklese hrozí likvidácia, vtedy by som doplnil zábezpeku. Pôžička nie je predaj, takže daň nevznikne. Ak cena klesne o 50 %, splatím časť istiny z rezervy. Bitcoin drží veriteľ v multisig escrow. Porovnal som spotrebný úver.",
+   "why": "balance 2026-10-23, loan: inheritance, alternatives, rule thin; text enriched after run 2026-10-23 (scored 35-45, my first label was too high)"
   },
   {
    "id": "A4",
    "lang": "en",
    "band": "add",
-   "text": "I plan to sell a third of my Bitcoin to buy a car next spring. I have held it for two years. I live in Germany, so after one year the sale is tax-free. The rest stays on my hardware wallet. I still have an emergency fund of 5 months.",
-   "why": "balance 2026-10-23, sell: worst case and rule thin"
+   "text": "I plan to sell a third of my Bitcoin to buy a car next spring. I have held it for two years. I live in Germany, so after one year the sale is tax-free. The rest stays on my hardware wallet. I still have an emergency fund of 5 months. If the rest fell 70% I would lose about €5,000 on paper, which I can carry. I compared a car lease and a loan.",
+   "why": "balance 2026-10-23, sell: worst case and rule thin; text enriched after run 2026-10-23 (scored 35-45, my first label was too high)"
   },
   {
    "id": "A5",
    "lang": "sk",
    "band": "add",
-   "text": "Firma chce dať 5 % hotovosti do Bitcoinu na 3 roky. Bez toho máme rezervu na 18 mesiacov. Pri poklese o 70 % stratíme asi 1 % tržieb. Schválenie od spoločníkov ešte čaká. Úschova u regulovaného správcu.",
-   "why": "balance 2026-10-23, treasury: tax, goal, alternatives missing"
+   "text": "Firma chce dať 5 % hotovosti do Bitcoinu na 3 roky. Bez toho máme rezervu na 18 mesiacov. Pri poklese o 70 % stratíme asi 1 % tržieb. Schválenie od spoločníkov ešte čaká. Úschova u regulovaného správcu. Zisk zdaní firma v daňovom priznaní, rezervujeme 21 %. Porovnali sme to so štátnymi dlhopismi. Cieľ: ochrana rezervy pred infláciou do roku 2029.",
+   "why": "balance 2026-10-23, treasury: tax, goal, alternatives missing; text enriched after run 2026-10-23 (scored 35-45, my first label was too high)"
   },
   {
    "id": "A6",
