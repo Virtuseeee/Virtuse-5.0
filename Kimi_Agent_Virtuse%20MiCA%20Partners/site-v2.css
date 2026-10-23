@@ -1846,3 +1846,6 @@ html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margi
 .eco-form-msg.ok { font-size: 16px; color: var(--text); padding: 16px 18px; border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); background: color-mix(in srgb, var(--green) 8%, transparent); border-radius: 12px; }
 .eco-form-msg.err { color: #f0b072; }
 .eco-form[hidden] { display: none; }
+/* ECOSYSTEM · Promote: after a submit attempt, mark the fields that still block it */
+.eco-form.tried input:invalid:not([type=checkbox]):not([type=radio]), .eco-form.tried select:invalid, .eco-form.tried textarea:invalid { border-color: #f0b072; }
+.eco-form.tried .eco-check input:invalid { outline: 2px solid #f0b072; outline-offset: 2px; }

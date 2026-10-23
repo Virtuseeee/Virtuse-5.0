@@ -415,13 +415,28 @@ function formJs(l) {
   var boxes = Array.prototype.slice.call(f.querySelectorAll('input[name="countries"]'));
   all.addEventListener('change', function () { boxes.forEach(function (b) { b.checked = all.checked; }); });
   boxes.forEach(function (b) { b.addEventListener('change', function () { all.checked = boxes.every(function (x) { return x.checked; }); }); });
+  // Addresses typed without a scheme ("www.example.org") are valid for people, so add https:// for them.
+  function normUrl(inp) { var v = inp.value.trim(); if (v && v.indexOf('://') < 0) inp.value = 'https://' + v.replace(/^[/]+/, ''); }
+  ['website', 'repo'].forEach(function (n) { f[n].addEventListener('blur', function () { normUrl(f[n]); }); });
+  // Name of the first invalid field, from its label (text before the input, or the checkbox text).
+  function fieldName(el) {
+    var lab = el.closest('label'); if (!lab) return '';
+    var span = lab.querySelector('span'); var t = (el.type === 'checkbox' && span) ? span.textContent : (lab.firstChild && lab.firstChild.nodeType === 3 ? lab.firstChild.textContent : lab.textContent);
+    t = t.replace(/[*][ ]*$/, '').trim(); return t.length > 80 ? t.slice(0, 77) + '…' : t;
+  }
   var ta = f.querySelector('textarea[name="description"]'), cnt = f.querySelector('.eco-count');
   ta.addEventListener('input', function () { cnt.textContent = ta.value.length + ' / 300'; });
   f.addEventListener('submit', function (e) {
     e.preventDefault();
     if (f.company_url.value) return;
     var countries = boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
-    if (!f.checkValidity()) { msg.className = 'eco-form-msg err'; msg.textContent = M.required; var bad = f.querySelector(':invalid'); if (bad) bad.focus(); return; }
+    normUrl(f.website); normUrl(f.repo);
+    if (!f.checkValidity()) {
+      f.classList.add('tried');
+      var bad = f.querySelector(':invalid'), name = bad ? fieldName(bad) : '';
+      msg.className = 'eco-form-msg err'; msg.textContent = M.required + (name ? ' ' + name : '');
+      if (bad) bad.focus(); return;
+    }
     if (!countries.length) { msg.className = 'eco-form-msg err'; msg.textContent = M.country; f.querySelector('.eco-pick-countries').open = true; return; }
     var data = { lang: document.documentElement.lang || 'en', countries: countries.length === boxes.length ? ['ALL'] : countries };
     ['project_name','website','category','description','licence','repo','contact_name','contact_email','message'].forEach(function (k) { data[k] = f[k].value.trim(); });
@@ -497,7 +512,7 @@ function schemas(p, l) {
 // ---------- page ----------
 // No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
 // site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
-const CSS_V = '11';
+const CSS_V = '12';
 
 // Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {
