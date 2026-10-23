@@ -97,7 +97,7 @@
     "fYes": "Ano",
     "fNo": "Ne",
     "fMessage": "Zpráva",
-    "fConsent": "Souhlasím, že Virtuse zpracuje tyto údaje za účelem posouzení žádosti, jak je popsáno v <a href=\"{privacy}\">zásadách ochrany osobních údajů</a>. *",
+    "fConsent": "Souhlasím, že Virtuse zpracuje tyto údaje za účelem posouzení žádosti, jak je popsáno v <a href=\"{privacyEco}\">zásadách ochrany osobních údajů</a>. *",
     "fSubmit": "Odeslat žádost",
     "mRequired": "Vyplňte prosím všechna povinná pole.",
     "mCountry": "Vyberte prosím alespoň jednu zemi.",

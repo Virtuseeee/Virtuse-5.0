@@ -97,7 +97,7 @@
     "fYes": "Igen",
     "fNo": "Nem",
     "fMessage": "Üzenet",
-    "fConsent": "Hozzájárulok, hogy a Virtuse ezeket az adatokat a jelentkezés elbírálásához kezelje, az <a href=\"{privacy}\">adatvédelmi szabályzatban</a> leírtak szerint. *",
+    "fConsent": "Hozzájárulok, hogy a Virtuse ezeket az adatokat a jelentkezés elbírálásához kezelje, az <a href=\"{privacyEco}\">adatvédelmi szabályzatban</a> leírtak szerint. *",
     "fSubmit": "Jelentkezés elküldése",
     "mRequired": "Kérjük, töltse ki az összes kötelező mezőt.",
     "mCountry": "Kérjük, válasszon legalább egy országot.",

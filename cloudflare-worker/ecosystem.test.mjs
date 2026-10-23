@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import worker from './src/index.js';
-import { renderAutoReply, ECO_LANGS } from './src/ecosystem.js';
+import { renderAutoReply, safeName, ECO_LANGS } from './src/ecosystem.js';
 
 const PROD = 'https://virtuse.com';
 const STAGING = 'https://staging.virtuse.com';
@@ -33,7 +33,7 @@ function req(body, { origin = PROD, ip = '1.2.3.4', raw } = {}) {
 }
 
 // Mocks Turnstile siteverify (success unless captchaOk=false) and Resend.
-function withFetch(fn, { captchaOk = true, resendStatus = 200 } = {}) {
+function withFetch(fn, { captchaOk = true, resendStatus = 200, hostname = 'virtuse.com' } = {}) {
   return async () => {
     const calls = [];
     const orig = globalThis.fetch;
@@ -42,7 +42,7 @@ function withFetch(fn, { captchaOk = true, resendStatus = 200 } = {}) {
       if (u.includes('turnstile')) {
         const f = init.body;
         calls.push({ url: u, secret: f.get('secret'), response: f.get('response'), remoteip: f.get('remoteip') });
-        return new Response(JSON.stringify({ success: captchaOk }), { status: 200 });
+        return new Response(JSON.stringify({ success: captchaOk, hostname }), { status: 200 });
       }
       calls.push({ url: u, body: JSON.parse(init.body) });
       return new Response('{}', { status: resendStatus });
@@ -66,9 +66,11 @@ test('valid application: Turnstile checked, team email + auto-reply sent', withF
   assert.match(team.body.text, /Countries: ALL/);
   assert.deepEqual(reply.body.to, ['ada@example.org']);
   assert.equal(reply.body.reply_to, 'info@virtuse.com');
-  assert.equal(reply.body.subject, 'Prijali sme vašu žiadosť: Satoshi Shop');
+  assert.equal(reply.body.subject, 'Prijali sme vašu žiadosť');
+  assert.ok(!reply.body.html.includes('Satoshi Shop') && !reply.body.text.includes('Satoshi Shop'));
+  assert.match(reply.body.html, /Dobrý deň, Ada Muster,/);
   assert.match(reply.body.html, /https:\/\/virtuse\.com\/sk\/ecosystem\/promote\/#criteria/);
-  assert.match(reply.body.html, /https:\/\/virtuse\.com\/sk\/privacy-policy\.html/);
+  assert.match(reply.body.html, /https:\/\/virtuse\.com\/sk\/privacy-policy\.html#ecosystem/);
 }));
 
 test('staging: both emails go only to the test inbox, marked [TEST]', withFetch(async (calls) => {
@@ -95,6 +97,13 @@ test('failed Turnstile -> 400 captcha, nothing sent', withFetch(async (calls) =>
   assert.deepEqual(await res.json(), { error: 'captcha' });
   assert.equal(resend(calls).length, 0);
 }, { captchaOk: false }));
+
+test('token issued on another hostname -> 400 captcha, nothing sent', withFetch(async (calls) => {
+  const res = await worker.fetch(req(app()), env());
+  assert.equal(res.status, 400);
+  assert.deepEqual(await res.json(), { error: 'captcha' });
+  assert.equal(resend(calls).length, 0);
+}, { hostname: 'evil.example' }));
 
 test('missing Turnstile token -> 400 without calling siteverify, even before secrets exist', withFetch(async (calls) => {
   const res = await worker.fetch(req(app({ turnstile: '' })), env({ TURNSTILE_SECRET_KEY: undefined }));
@@ -174,12 +183,26 @@ test('unknown origin -> 403 before anything else', withFetch(async (calls) => {
   assert.equal(calls.length, 0);
 }));
 
-test('auto-reply exists for all 10 page languages and escapes user input', () => {
+test('auto-reply exists for all 10 page languages and echoes no attacker text', () => {
   assert.deepEqual([...ECO_LANGS].sort(), ['cs', 'de', 'en', 'es', 'fr', 'hu', 'pl', 'ru', 'sk', 'uk']);
   for (const lang of ECO_LANGS) {
-    const r = renderAutoReply({ ...app({ lang }), project_name: '<b>X</b>', contact_name: 'A & B' }, { test: false });
-    assert.ok(r.html.includes('&lt;b&gt;X&lt;/b&gt;'), lang);
-    assert.ok(!r.html.includes('{'), lang + ' placeholder left');
-    assert.ok(r.text.includes('<b>X</b>'), lang);
+    const a = { ...app({ lang }), project_name: 'Claim BTC at https://scam.example', contact_name: 'Ada <b>x</b> www.scam.example scam.example a@b.c' };
+    const r = renderAutoReply(a, { test: false });
+    for (const out of [r.subject, r.html, r.text]) {
+      assert.ok(!/scam|Claim|<b>|@b\.c/.test(out), lang + ': ' + out.slice(0, 80));
+      assert.ok(!out.includes('{'), lang + ' placeholder left');
+    }
+    assert.ok(r.text.includes('Ada'), lang);
+    const anon = renderAutoReply({ ...a, contact_name: 'https://scam.example' }, { test: false });
+    assert.ok(!/scam/.test(anon.text) && !anon.text.includes('{'), lang + ' anon');
   }
+});
+
+test('safeName keeps plain words only', () => {
+  assert.equal(safeName('Ada Muster'), 'Ada Muster');
+  assert.equal(safeName('José-María O’Neil'), 'José-María O’Neil');
+  assert.equal(safeName('J. R. Tolkien'), 'J. R. Tolkien');
+  assert.equal(safeName('Visit bit.ly/x now'), 'Visit now');
+  assert.equal(safeName('mail me a@b.c'), 'mail me');
+  assert.equal(safeName('https://x.y'), '');
 });

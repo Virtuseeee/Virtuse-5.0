@@ -97,7 +97,7 @@
     "fYes": "Ja",
     "fNo": "Nein",
     "fMessage": "Nachricht",
-    "fConsent": "Ich bin damit einverstanden, dass Virtuse diese Angaben zur Prüfung des Antrags verarbeitet, wie in der <a href=\"{privacy}\">Datenschutzerklärung</a> beschrieben. *",
+    "fConsent": "Ich bin damit einverstanden, dass Virtuse diese Angaben zur Prüfung des Antrags verarbeitet, wie in der <a href=\"{privacyEco}\">Datenschutzerklärung</a> beschrieben. *",
     "fSubmit": "Antrag senden",
     "mRequired": "Bitte füllen Sie alle Pflichtfelder aus.",
     "mCountry": "Bitte wählen Sie mindestens ein Land.",

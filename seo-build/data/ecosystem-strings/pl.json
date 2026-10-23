@@ -97,7 +97,7 @@
     "fYes": "Tak",
     "fNo": "Nie",
     "fMessage": "Wiadomość",
-    "fConsent": "Wyrażam zgodę na przetwarzanie tych danych przez Virtuse w celu rozpatrzenia zgłoszenia, zgodnie z <a href=\"{privacy}\">polityką prywatności</a>. *",
+    "fConsent": "Wyrażam zgodę na przetwarzanie tych danych przez Virtuse w celu rozpatrzenia zgłoszenia, zgodnie z <a href=\"{privacyEco}\">polityką prywatności</a>. *",
     "fSubmit": "Wyślij zgłoszenie",
     "mRequired": "Prosimy wypełnić wszystkie wymagane pola.",
     "mCountry": "Prosimy wybrać co najmniej jeden kraj.",

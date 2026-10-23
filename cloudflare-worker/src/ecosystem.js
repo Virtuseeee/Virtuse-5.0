@@ -1,8 +1,8 @@
 // POST /ecosystem-apply
 //
 // The "Get your project featured" form on /ecosystem/promote/ (all 10 languages). Order of checks:
-//   size cap (5 KB) -> JSON -> honeypot -> server-side validation -> per-IP rate limit
-//   -> Cloudflare Turnstile siteverify -> email to the Virtuse team -> auto-reply to the applicant.
+//   size cap (5 KB) -> JSON -> honeypot -> server-side validation -> Cloudflare Turnstile siteverify
+//   (token issued on a virtuse.com page) -> per-IP rate limit -> email to the Virtuse team -> auto-reply to the applicant.
 // Nothing is stored or published: the application only travels by email and is reviewed by hand.
 //
 // Secrets (wrangler secret put):
@@ -63,6 +63,9 @@ export function validateApplication(body, emailRe) {
   return { ok: true, app };
 }
 
+// A token is accepted only when Turnstile issued it on one of our pages (the widget also allows these hosts).
+export const TURNSTILE_HOSTS = ['virtuse.com', 'www.virtuse.com', 'staging.virtuse.com'];
+
 export async function verifyTurnstile(env, token, ip) {
   if (!token || typeof token !== 'string' || token.length > 2048) return false;
   const form = new FormData();
@@ -72,8 +75,9 @@ export async function verifyTurnstile(env, token, ip) {
   try {
     const res = await fetch(SITEVERIFY, { method: 'POST', body: form });
     const out = await res.json();
-    if (!(out && out.success === true)) console.warn('turnstile rejected', JSON.stringify({ codes: out && out['error-codes'], hostname: out && out.hostname }));
-    return out && out.success === true;
+    const ok = !!(out && out.success === true && TURNSTILE_HOSTS.includes(out.hostname));
+    if (!ok) console.warn('turnstile rejected', JSON.stringify({ codes: out && out['error-codes'], hostname: out && out.hostname }));
+    return ok;
   } catch (e) {
     console.error('turnstile siteverify failed', e);
     return false;
@@ -117,19 +121,29 @@ export function renderTeamEmail(app, { test }) {
   return { subject, text, html };
 }
 
+// The auto-reply goes to an address the visitor typed, so it must not carry text an attacker could use
+// (a link or an address in the "name"). The project name is not echoed at all; the contact name keeps
+// only plain words (no URLs, domains, @, slashes or brackets), otherwise the greeting has no name.
+export function safeName(s) {
+  return String(s || '').split(/\s+/)
+    .filter((w) => w && !/[@/:\\<>]/.test(w) && !/^www\./i.test(w) && !/\.[a-z]{2,}/i.test(w))
+    .join(' ').slice(0, 60).trim();
+}
+
 export function renderAutoReply(app, { test }) {
   const L = STRINGS[app.lang] ? app.lang : 'en';
   const t = STRINGS[L];
   const criteria = siteUrl(L, 'ecosystem/promote/#criteria');
-  const privacy = siteUrl(L, 'privacy-policy.html');
+  const privacy = siteUrl(L, 'privacy-policy.html') + '#ecosystem';
+  const name = safeName(app.contact_name);
   const fill = (s, html) => s
-    .replace('{name}', html ? escHtml(app.contact_name) : app.contact_name)
-    .replace('{project}', html ? escHtml(app.project_name) : app.project_name)
+    .replace('{name}', html ? escHtml(name) : name)
     .replace('{criteria}', html ? `<a href="${criteria}" style="color:#e6edf3;">${criteria}</a>` : criteria)
     .replace('{privacy}', html ? `<a href="${privacy}" style="color:#8b949e;">${privacy}</a>` : privacy);
   const subject = (test ? '[TEST] ' : '') + fill(t.subject, false);
   const sign = 'Virtuse Wealth Management, a.s.\nhttps://virtuse.com';
-  const text = [fill(t.greeting, false), fill(t.received, false), fill(t.review, false), fill(t.reply, false),
+  const greeting = name ? t.greeting : t.greetingAnon;
+  const text = [fill(greeting, false), fill(t.received, false), fill(t.review, false), fill(t.reply, false),
     `${t.closing}\n${sign}`, fill(t.foot, false)].join('\n\n') + '\n';
   const P = 'style="margin:0 0 14px 0;font-size:15px;line-height:24px;color:#c3ccd6;"';
   const html = `<!DOCTYPE html>
@@ -138,7 +152,7 @@ export function renderAutoReply(app, { test }) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#08090a;"><tr><td align="center" style="padding:40px 16px;">
 <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="width:560px;max-width:100%;background-color:#141414;border:1px solid #2a2a2a;border-radius:16px;"><tr><td style="padding:32px;">
 <p style="margin:0 0 20px 0;font-size:22px;font-weight:800;"><span style="color:#5FAEDE;">V</span><span style="color:#e6edf3;">irtuse</span></p>
-<p ${P}>${fill(t.greeting, true)}</p>
+<p ${P}>${fill(greeting, true)}</p>
 <p ${P}>${fill(t.received, true)}</p>
 <p ${P}>${fill(t.review, true)}</p>
 <p ${P}>${fill(t.reply, true)}</p>

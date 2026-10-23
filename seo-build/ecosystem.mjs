@@ -96,7 +96,7 @@ function loc(href, l) {
   return fs.existsSync(file) ? cand + qs : href;
 }
 const locHtml = (html, l) => html.replace(/href="(\/[^"]*)"/g, (_, h) => `href="${esc(loc(h.replace(/&amp;/g, '&'), l))}"`);
-const fill = (s, l) => s.replace(/\{privacy\}/g, loc('/privacy-policy.html', l)).replace(/\{howWeEarn\}/g, loc('/how-we-earn.html', l));
+const fill = (s, l) => s.replace(/\{privacyEco\}/g, loc('/privacy-policy.html', l) + '#ecosystem').replace(/\{privacy\}/g, loc('/privacy-policy.html', l)).replace(/\{howWeEarn\}/g, loc('/how-we-earn.html', l));
 
 // ---------- checks ----------
 for (const l of LANGS) {
@@ -169,7 +169,6 @@ function chrome(current, l) {
 
 // ---------- blocks (Services system: pcard2 accents, hpanel, tp-principles, hp-get/hp-cta) ----------
 const ARROW = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const CHECK = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const end = (s) => (/[.!?…]$/.test(s.trim()) ? s.trim() : s.trim() + '.');
 const cap = (s) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
 
@@ -218,7 +217,7 @@ function pickSection(l) {
   const ui = S[l].ui;
   return `<section id="pick">
     ${head2(ui.howWePick, ui.pickSub)}
-    <ul class="tp-principles eco-principles">${ui.steps.map((s) => `<li>${CHECK}<span><b>${esc(s.t)}</b>${esc(s.d)}</span></li>`).join('')}</ul>
+    <div class="how-log">${ui.steps.map((s, k) => `<div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">${esc(ui.step)} ${String(k + 1).padStart(2, '0')}</span><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div></div>`).join('')}</div>
     <p class="eco-more"><a class="tlink" href="${pathOf(PROMOTE, l)}#criteria">${esc(ui.criteriaLink)} ${ARROW}</a></p>
   </section>`;
 }
@@ -512,7 +511,7 @@ function schemas(p, l) {
 // ---------- page ----------
 // No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
 // site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
-const CSS_V = '12';
+const CSS_V = '13';
 
 // Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {

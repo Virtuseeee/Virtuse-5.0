@@ -97,7 +97,7 @@
     "fYes": "Sí",
     "fNo": "No",
     "fMessage": "Mensaje",
-    "fConsent": "Acepto que Virtuse trate estos datos para revisar la solicitud, tal como se describe en la <a href=\"{privacy}\">política de privacidad</a>. *",
+    "fConsent": "Acepto que Virtuse trate estos datos para revisar la solicitud, tal como se describe en la <a href=\"{privacyEco}\">política de privacidad</a>. *",
     "fSubmit": "Enviar solicitud",
     "mRequired": "Rellene todos los campos obligatorios.",
     "mCountry": "Elija al menos un país.",
