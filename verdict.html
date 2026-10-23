@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev https://cloudflareinsights.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev https://cloudflareinsights.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
@@ -34,19 +34,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<link rel="stylesheet" href="/verdict-flow.css?v=20261019">
+<link rel="stylesheet" href="/site-v2.min.css?v=5">
+<link rel="stylesheet" href="/verdict-flow.css?v=20261023">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 </head>
-<body>
-<div class="wrap">
-  <div class="top">
-    <button class="back" id="back" hidden></button>
-    <div class="brand"><a href="cfo.html">Virtuse <span>· Verdict</span></a></div>
+<body class="page-verdict no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html" aria-label="Virtuse home">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Services</button>
+        <div class="nav-drop" id="nd-services"><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="lending.html">Loans</a><a href="mining.html">Mining</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Learn</button>
+        <div class="nav-drop" id="nd-learn"><a href="news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Weekly Bitcoin news, every Monday</span></a><a href="/stories/"><span class="nd-t">Stories</span><span class="nd-d">Long reads and analysis</span></a><a href="blog.html"><span class="nd-t">Blog</span><span class="nd-d">Latest posts from Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Bitcoin Data</span><span class="nd-d">Live price, network and charts</span></a><a href="/bitcoin-tax/"><span class="nd-t">Country tax guides</span><span class="nd-d">Tax rules in 13 EU countries</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Answers about Virtuse and partners</span></a></div>
+      </div>
+      <div class="nav-group current" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Free</span></span><span class="nd-d">Verdict and fee audit, free from 1 November</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="retirement-calculator.html"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
+      </div>
+      <a class="nav-top" href="about.html">About</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Page language: English"><span aria-hidden="true">&#127468;&#127463;</span><span class="lang-code">EN</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="verdict.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="sk/verdict.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Find partners</a>
   </div>
+</header>
+<main class="wrap" id="top">
+<div class="vf">
+  <div class="vf-top"><button class="back" id="back" hidden></button></div>
   <div class="steps" id="steps"></div>
-  <main class="panel" id="panel"></main>
-  <p class="vf-foot">Virtuse Group · <a href="cfo.html">Virtuse CFO</a> · <a href="privacy-policy.html">Privacy</a> · <a href="terms-and-conditions.html">Terms</a></p>
+  <div class="panel" id="panel"></div>
 </div>
-<script src="/verdict-flow.js?v=20261019"></script>
+<footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p>
+<p class="footer-operator"><a href="operator.html">Operator</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com</p>
+      <p class="footer-bottom-brief">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href="news.html">Read it &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Languages"><a href="verdict.html" hreflang="en" aria-current="page">English</a><a href="sk/verdict.html" hreflang="sk">Slovenčina</a></nav>
+      <p class="legal">Virtuse is an independent comparison hub. It does not hold client funds or keys, does not execute orders and does not give investment advice. Services are provided by the listed partners under their own licences. Fees are as published by each partner and can change.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+<script src="/verdict-flow.js?v=20261023"></script>
+<script src="/site-v2.js?v=7" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
