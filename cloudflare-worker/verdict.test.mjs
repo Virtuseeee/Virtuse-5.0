@@ -328,7 +328,7 @@ test('funnel answers guarantee minimum points; a sensible completed funnel reach
   let p = Object.fromEntries(r.signals.map((s) => [s.id, s.points]));
   assert.ok(p.worst_case >= 5 && p.worst_case <= 7);
   assert.equal(p.liquidity, 6);
-  const full = { goal: 'buy', country: 'sk', experience: 'new', amount: 'l', share: '5_20', horizon: 'gt4', reserve: 'yes', keys: 'exch', drop: 'hold', aim: 'grow', taxknow: 'yes', ruleset: 'yes' };
+  const full = { goal: 'buy', country: 'sk', experience: 'new', amount: 'l', share: '5_20', horizon: 'gt4', reserve: 'yes', keys: 'exch', drop: 'hold', aim: 'grow', tax_known: 'yes', ruleset: 'yes' };
   r = scoreVerdict(zero, 'sk', { text, profile: full });
   assert.ok(r.scoreRaw >= 40, 'scoreRaw ' + r.scoreRaw);
   assert.ok(r.signals.every((s) => s.points <= 7));
@@ -336,10 +336,12 @@ test('funnel answers guarantee minimum points; a sensible completed funnel reach
 
 test('new funnel ids pass cleanProfile; Partner Finder gets hodler for sell, loan and custody', async () => {
   const { cleanProfile, partnerFinderQuery } = await import('./src/verdict.js');
-  const p = cleanProfile({ goal: 'loan', ltv: 'lt30', liqprice: 'yes', heirs: 'maybe', keys: 'multisig', taxknow: 'roughly' });
-  assert.deepEqual(p, { goal: 'loan', keys: 'multisig', taxknow: 'roughly', ltv: 'lt30', liqprice: 'yes' });
+  const p = cleanProfile({ goal: 'loan', ltv: 'lt30', liqprice: 'yes', heirs: 'maybe', keys: 'multisig', tax_known: 'roughly' });
+  assert.deepEqual(p, { goal: 'loan', keys: 'multisig', tax_known: 'roughly', ltv: 'lt30', liqprice: 'yes' });
   assert.equal(partnerFinderQuery(p).pf_experience, 'hodler');
   assert.equal(partnerFinderQuery(p).pf_custody, 'assisted');
+  assert.equal(partnerFinderQuery({ goal: 'buy', keys: 'exch', custody_pref: 'self', freq: 'weekly' }).pf_custody, 'self');
+  assert.deepEqual(cleanProfile({ custody_pref: 'assisted', freq: 'weekly' }), { custody_pref: 'assisted', freq: 'weekly' });
   assert.match(systemPrompt('en'), /text_evidence/);
   assert.match(systemPrompt('en'), /70% fall/);
 });

@@ -66,7 +66,7 @@ export const PROFILE = {
   // Added 2026-10-23 (verdict-review A4, A7): feed the signals that stayed at 0,
   // and the goal-specific questions (sell, loan, treasury, custody).
   aim: ['retire', 'grow', 'purchase', 'family'],
-  taxknow: ['yes', 'roughly', 'no'],
+  tax_known: ['yes', 'roughly', 'no'],
   ruleset: ['yes', 'roughly', 'no'],
   holdtime: ['lt1', '1_3', 'gt3'],
   basis: ['yes', 'roughly', 'no'],
@@ -75,6 +75,9 @@ export const PROFILE = {
   runway: ['lt12', '12_24', 'gt24'],
   board: ['yes', 'pending', 'no'],
   heirs: ['yes', 'no'],
+  // verdict-architecture §4 (2026-10-23): shared with Partner Finder and Stacking.
+  custody_pref: ['self', 'assisted', 'any'],
+  freq: ['weekly', 'monthly'],
 };
 const FOCUS = ['risk', 'drop', 'tax', 'next'];
 // A signal backed only by a ticked answer, with nothing in the person's own
@@ -103,7 +106,7 @@ const PROFILE_TEXT = {
   keys: { _: 'Who holds the keys', exch: 'an exchange or app', self: 'they do, in their own wallet, nobody else knows how to reach it', selfplan: 'they do, and someone close knows how to reach it', multisig: 'a multisig with several keys' },
   drop: { _: 'What they would do if Bitcoin fell 70% (their amount worth about 30%)', buy: 'buy more by a rule set in advance', hold: 'hold and do nothing', sell: 'sell part or all' },
   aim: { _: 'What the decision should achieve', retire: 'money for retirement', grow: 'growing savings over the long term', purchase: 'a specific purchase or goal', family: 'something for children or heirs' },
-  taxknow: { _: 'Do they know how a sale is taxed in their country', yes: 'yes', roughly: 'roughly', no: 'no' },
+  tax_known: { _: 'Do they know how a sale is taxed in their country', yes: 'yes', roughly: 'roughly', no: 'no' },
   ruleset: { _: 'A written rule for when to buy more or sell', yes: 'yes', roughly: 'roughly, not written down', no: 'no' },
   holdtime: { _: 'How long they have held the Bitcoin they would sell', lt1: 'under 1 year', '1_3': '1 to 3 years', gt3: 'over 3 years' },
   basis: { _: 'Do they know their purchase price (cost basis)', yes: 'yes', roughly: 'roughly', no: 'no' },
@@ -112,6 +115,8 @@ const PROFILE_TEXT = {
   runway: { _: 'Company runway without the Bitcoin', lt12: 'under 12 months', '12_24': '12 to 24 months', gt24: 'over 24 months' },
   board: { _: 'Approved by the board or owners', yes: 'yes', pending: 'pending', no: 'no' },
   heirs: { _: 'Do their heirs know how to reach the Bitcoin', yes: 'yes', no: 'no' },
+  custody_pref: { _: 'Preferred custody', self: 'their own keys', assisted: 'assisted custody (help with keys and recovery)', any: 'no preference' },
+  freq: { _: 'How often they buy', weekly: 'weekly', monthly: 'monthly' },
   focus: { _: 'What they most want to find out', risk: 'the biggest risk', drop: 'whether they can get through a fall', tax: 'tax and custody', next: 'what to do next' },
 };
 
@@ -140,6 +145,7 @@ export function partnerFinderQuery(profile) {
   if (profile.experience) q.pf_experience = profile.experience;
   else if (['sell', 'loan', 'custody'].includes(profile.goal)) q.pf_experience = 'hodler';
   if (profile.keys) q.pf_custody = profile.keys === 'exch' ? 'any' : profile.keys === 'multisig' ? 'assisted' : 'self';
+  if (profile.custody_pref) q.pf_custody = profile.custody_pref; // the stated preference wins over who holds the keys today
   if (profile.amount) q.pf_amount = profile.amount;
   return q;
 }
@@ -295,7 +301,7 @@ export function profileFloors(p = {}) {
   if (p.reserve === 'yes') up('liquidity', 6); else if (p.reserve === 'part') up('liquidity', 3);
   if (p.runway === 'gt24') up('liquidity', 6); else if (p.runway === '12_24') up('liquidity', 4);
   const listed = p.country && p.country !== 'other';
-  if (p.taxknow === 'yes') up('tax', listed ? (p.basis === 'yes' ? 5 : 4) : 2); else if (p.taxknow === 'roughly') up('tax', 2);
+  if (p.tax_known === 'yes') up('tax', listed ? (p.basis === 'yes' ? 5 : 4) : 2); else if (p.tax_known === 'roughly') up('tax', 2);
   if (p.keys) up('custody', p.keys === 'exch' ? 3 : 4);
   if (p.keys === 'selfplan' || p.keys === 'multisig' || p.heirs === 'yes') up('custody', 6);
   if (p.reserve === 'yes' && DROP_OK.includes(p.drop)) up('plan_b', 3);

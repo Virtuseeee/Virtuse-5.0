@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -101,6 +101,19 @@ export default function Tax() {
     return COUNTRIES.some((c) => c.id === def) ? def : COUNTRIES[0]?.id ?? null;
   });
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
+
+  // Keep ?country= in the URL like Loan and Stacking keep their state: a reload
+  // or a shared link opens the same country, and the shared Verdict profile
+  // (vb-profile.js) learns the visitor's change.
+  useEffect(() => {
+    try {
+      const u = new URL(window.location.href);
+      if (countryId) u.searchParams.set('country', countryId); else u.searchParams.delete('country');
+      window.history.replaceState(window.history.state, '', u.pathname + u.search + u.hash);
+    } catch {
+      /* no-op */
+    }
+  }, [countryId]);
 
   const country = COUNTRIES.find((c) => c.id === countryId);
   const sources = country ? TAX_FIELD_SOURCES.countries[country.id] : undefined;

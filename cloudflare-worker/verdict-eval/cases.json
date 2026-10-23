@@ -970,7 +970,7 @@
     "keys": "selfplan",
     "drop": "hold",
     "aim": "retire",
-    "taxknow": "yes",
+    "tax_known": "yes",
     "ruleset": "yes"
    },
    "note": "profile only: no signal above 7"
@@ -991,7 +991,7 @@
     "keys": "multisig",
     "drop": "buy",
     "aim": "grow",
-    "taxknow": "yes",
+    "tax_known": "yes",
     "ruleset": "yes"
    },
    "note": "profile only"
@@ -1008,7 +1008,7 @@
     "share": "20_50",
     "holdtime": "gt3",
     "basis": "yes",
-    "taxknow": "yes",
+    "tax_known": "yes",
     "aim": "purchase",
     "keys": "self",
     "ruleset": "roughly"
@@ -1030,7 +1030,7 @@
     "reserve": "yes",
     "keys": "multisig",
     "drop": "hold",
-    "taxknow": "yes",
+    "tax_known": "yes",
     "ruleset": "yes"
    },
    "note": "profile only, loan"
@@ -1049,7 +1049,7 @@
     "horizon": "gt4",
     "keys": "multisig",
     "drop": "hold",
-    "taxknow": "yes",
+    "tax_known": "yes",
     "ruleset": "yes"
    },
    "note": "profile only, treasury"
@@ -1065,7 +1065,7 @@
     "amount": "l",
     "keys": "selfplan",
     "heirs": "yes",
-    "taxknow": "roughly",
+    "tax_known": "roughly",
     "aim": "family"
    },
    "note": "profile only, custody"

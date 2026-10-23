@@ -204,3 +204,9 @@
   .vf-card { break-inside: avoid; }
   .vf .vf-card .bar i, .vf .score circle { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
+
+/* personal consultation after Partner Finder (verdict-architecture §6.8) */
+.vf .consult { margin-top: 24px; --c: var(--green); }
+.vf .consult b { display: block; font-size: 17px; margin-bottom: 4px; }
+.vf .consult p { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.vf .warn a { color: var(--muted); }
