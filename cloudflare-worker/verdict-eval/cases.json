@@ -862,6 +862,213 @@
     "drop": "hold"
    },
    "note": "text and answers disagree on the reserve; missing should name the contradiction"
+  },
+  {
+   "id": "C1",
+   "lang": "sk",
+   "band": "complete",
+   "text": "Firma vloží 10 % hotovostnej rezervy, 50 000 €, do Bitcoinu na 5 rokov, schválilo to valné zhromaždenie 3. 9. 2026. Hotovosť bez BTC vystačí na 26 mesiacov prevádzky. Pri poklese o 70 % stratíme 35 000 €, to sú 4 % vlastného kapitálu a prevádzku to neohrozí. Pravidlo: nákup raz za štvrťrok, predaj iba ak rezerva klesne pod 12 mesiacov. Daňový dopad nám potvrdil daňový poradca, odkladáme 24 % zo zisku. Úschova multisig 2 z 3, kľúče má konateľ, prokurista a notár s postupom. Porovnali sme to so štátnymi dlhopismi a dlhopisovým ETF; BTC berieme pre ochranu pred infláciou. Cieľ: zachovať reálnu hodnotu rezervy, vyhodnotíme v roku 2031.",
+   "why": "balance 2026-10-23 (verdict-review A12): every signal covered"
+  },
+  {
+   "id": "C2",
+   "lang": "en",
+   "band": "complete",
+   "text": "I will buy €300 of Bitcoin every month for 12 years for my retirement, aiming for €80,000 by 2038. I keep 8 months of expenses in cash. A 70% fall would put me about €15,000 down at the worst point; I would keep buying and not sell. I live in Germany: a sale after one year of holding is tax-free, so I only sell lots held over a year. Keys are on a hardware wallet; my sister has a sealed letter at the notary with the recovery procedure, not the seed. If I lose my job I pause the plan. I compared a world equity ETF and a one-off purchase. Bitcoin will be about 8% of my savings, a loss I can carry.",
+   "why": "balance 2026-10-23"
+  },
+  {
+   "id": "C3",
+   "lang": "sk",
+   "band": "complete",
+   "text": "Chcem si požičať 15 000 € oproti 0,6 BTC (LTV 25 %) na rekonštrukciu, splatím z platu do 3 rokov. Likvidácia nastane pri cene približne 30 000 €, teda pri poklese o 70 %; vtedy doplním zábezpeku z rezervy 9 000 €, ktorá pokryje 6 mesiacov výdavkov. Som rezident SR; pôžička nie je predaj, takže daň teraz nevzniká, pri neskoršom predaji zdaním 19 až 35 % plus odvody. Bitcoin zostáva v multisig úschove veriteľa, po splatení ho vrátim na hardvérovú peňaženku, manželka má postup. Porovnal som spotrebný úver a predaj časti BTC. Ak LTV prekročí 50 %, splatím časť istiny. BTC je 20 % môjho majetku.",
+   "why": "balance 2026-10-23, loan"
+  },
+  {
+   "id": "C4",
+   "lang": "en",
+   "band": "complete",
+   "text": "I am selling 25% of my Bitcoin, worth about €40,000, to pay off my mortgage by December 2026. I have held it for over three years. I live in Austria: coins bought before March 2021 are not taxed on sale, and I have the purchase records showing that. After the sale I still hold 75%, which is 30% of my wealth; a further 70% fall would cost me about €84,000 on paper, which I can carry because the mortgage will be gone. I keep 6 months of expenses in cash. Rule: I sell only this tranche and nothing more unless the price doubles, then another 10%. Keys stay in a 2-of-3 multisig, my partner holds one key and knows the procedure. I compared refinancing the mortgage and a Bitcoin-backed loan.",
+   "why": "balance 2026-10-23, sell"
+  },
+  {
+   "id": "C5",
+   "lang": "sk",
+   "band": "complete",
+   "text": "Kúpim Bitcoin za 20 000 € z predaja chaty, je to 15 % môjho majetku. Cieľ: doplnok k dôchodku v roku 2040, aspoň 60 000 € v dnešných cenách. Pri poklese o 70 % by mi zostalo 6 000 €; peniaze nebudem potrebovať a mám rezervu 10 mesiacov výdavkov. Pravidlo: nič nepredám pred rokom 2035, potom predám štvrtinu pri každom zdvojnásobení. Som rezident SR, zisk pri predaji zdaním 19 až 35 % plus 16 % odvod, rátam s tým. Úschova: hardvérová peňaženka, záložná fráza v trezore banky, syn má u notára postup. Porovnal som ETF na svetové akcie a hypotéku na byt na prenájom. Ak by som prišiel o príjem, BTC nepredám, siahnem do rezervy.",
+   "why": "balance 2026-10-23"
+  },
+  {
+   "id": "C6",
+   "lang": "en",
+   "band": "complete",
+   "text": "My company will put 5% of its €400,000 cash, €20,000, into Bitcoin for at least 4 years, approved by the two owners in writing. Without it we have 30 months of runway. A 70% fall would cost €14,000, under one month of revenue. Rule: one purchase now, a review each January, a sale only if runway drops below 12 months. Our accountant confirmed corporate tax applies on a realised gain; we set aside 20% of any gain. Custody: a regulated custodian with two-person approval, the owners' agreement says how a successor gets access. We compared a money-market fund and paying down a loan. The goal is to keep the reserve's purchasing power; success means beating inflation over 4 years.",
+   "why": "balance 2026-10-23, treasury"
+  },
+  {
+   "id": "C7",
+   "lang": "sk",
+   "band": "complete",
+   "text": "Každý týždeň kúpim BTC za 50 € 8 rokov, cieľ 40 000 € na štúdium detí v roku 2034. Rezerva 6 mesiacov je na sporiacom účte. Pri poklese o 70 % by som bol v strate asi 9 000 €, čo unesiem, a nákupy nezastavím. Pravidlo je napísané: automatický nákup, žiadne predaje pred rokom 2033, potom postupný predaj počas 12 mesiacov. Som v Česku: pri držbe nad 3 roky je predaj oslobodený, preto predám až po troch rokoch. Kľúče na hardvérovej peňaženke, manželka má postup u notára. Porovnal som stavebné sporenie a akciový ETF. BTC bude 7 % majetku.",
+   "why": "balance 2026-10-23, cz"
+  },
+  {
+   "id": "A1",
+   "lang": "sk",
+   "band": "add",
+   "text": "Chcem kúpiť Bitcoin za 5 000 €, to je asi 10 % úspor, a držať ho aspoň 5 rokov na dôchodok. Rezervu mám na 6 mesiacov. Pri veľkom poklese by som nepredával. Kľúče budem mať na hardvérovej peňaženke. Porovnal som to s ETF.",
+   "why": "balance 2026-10-23: tax and inheritance missing, no 70% numbers"
+  },
+  {
+   "id": "A2",
+   "lang": "en",
+   "band": "add",
+   "text": "I want to buy €200 of Bitcoin every month for 10 years. I have 6 months of expenses saved. A 70% fall would cost me a few thousand euros at most and I would keep buying. It is about 5% of my savings. I live in Slovakia and know gains are taxed when I sell.",
+   "why": "balance 2026-10-23: goal vague, custody and alternatives missing"
+  },
+  {
+   "id": "A3",
+   "lang": "sk",
+   "band": "add",
+   "text": "Uvažujem o pôžičke 10 000 € oproti 0,5 BTC na auto, LTV okolo 30 %. Splácať budem z platu 2 roky. Rezervu mám na 4 mesiace. Viem, že pri veľkom poklese hrozí likvidácia, vtedy by som doplnil zábezpeku. Pôžička nie je predaj, takže daň nevznikne.",
+   "why": "balance 2026-10-23, loan: inheritance, alternatives, rule thin"
+  },
+  {
+   "id": "A4",
+   "lang": "en",
+   "band": "add",
+   "text": "I plan to sell a third of my Bitcoin to buy a car next spring. I have held it for two years. I live in Germany, so after one year the sale is tax-free. The rest stays on my hardware wallet. I still have an emergency fund of 5 months.",
+   "why": "balance 2026-10-23, sell: worst case and rule thin"
+  },
+  {
+   "id": "A5",
+   "lang": "sk",
+   "band": "add",
+   "text": "Firma chce dať 5 % hotovosti do Bitcoinu na 3 roky. Bez toho máme rezervu na 18 mesiacov. Pri poklese o 70 % stratíme asi 1 % tržieb. Schválenie od spoločníkov ešte čaká. Úschova u regulovaného správcu.",
+   "why": "balance 2026-10-23, treasury: tax, goal, alternatives missing"
+  },
+  {
+   "id": "A6",
+   "lang": "en",
+   "band": "add",
+   "text": "I will put €3,000 into Bitcoin, about 6% of my savings, and leave it for at least 6 years for retirement. If it fell 70% I would lose €2,100, which would not change my life, and I would hold. I keep 6 months of costs in cash. I compared it with a bond fund.",
+   "why": "balance 2026-10-23: tax, custody, rule missing"
+  },
+  {
+   "id": "Q1",
+   "lang": "sk",
+   "text": "Zvažujem kúpu Bitcoinu.",
+   "maxAll": 7,
+   "profile": {
+    "goal": "buy",
+    "country": "sk",
+    "experience": "new",
+    "amount": "m",
+    "share": "5_20",
+    "horizon": "gt4",
+    "reserve": "yes",
+    "keys": "selfplan",
+    "drop": "hold",
+    "aim": "retire",
+    "taxknow": "yes",
+    "ruleset": "yes"
+   },
+   "note": "profile only: no signal above 7"
+  },
+  {
+   "id": "Q2",
+   "lang": "en",
+   "text": "I am thinking about Bitcoin.",
+   "maxAll": 7,
+   "profile": {
+    "goal": "dca",
+    "country": "de",
+    "experience": "hodler",
+    "amount": "s",
+    "share": "lt5",
+    "horizon": "never",
+    "reserve": "yes",
+    "keys": "multisig",
+    "drop": "buy",
+    "aim": "grow",
+    "taxknow": "yes",
+    "ruleset": "yes"
+   },
+   "note": "profile only"
+  },
+  {
+   "id": "Q3",
+   "lang": "sk",
+   "text": "Chcem predať časť Bitcoinu.",
+   "maxAll": 7,
+   "profile": {
+    "goal": "sell",
+    "country": "cz",
+    "amount": "l",
+    "share": "20_50",
+    "holdtime": "gt3",
+    "basis": "yes",
+    "taxknow": "yes",
+    "aim": "purchase",
+    "keys": "self",
+    "ruleset": "roughly"
+   },
+   "note": "profile only, sell"
+  },
+  {
+   "id": "Q4",
+   "lang": "en",
+   "text": "Considering a loan against my Bitcoin.",
+   "maxAll": 7,
+   "profile": {
+    "goal": "loan",
+    "country": "at",
+    "amount": "l",
+    "ltv": "lt30",
+    "liqprice": "yes",
+    "horizon": "1_4",
+    "reserve": "yes",
+    "keys": "multisig",
+    "drop": "hold",
+    "taxknow": "yes",
+    "ruleset": "yes"
+   },
+   "note": "profile only, loan"
+  },
+  {
+   "id": "Q5",
+   "lang": "sk",
+   "text": "Firma uvažuje o Bitcoine.",
+   "maxAll": 7,
+   "profile": {
+    "goal": "treasury",
+    "country": "sk",
+    "amount": "xl",
+    "runway": "gt24",
+    "board": "yes",
+    "horizon": "gt4",
+    "keys": "multisig",
+    "drop": "hold",
+    "taxknow": "yes",
+    "ruleset": "yes"
+   },
+   "note": "profile only, treasury"
+  },
+  {
+   "id": "Q6",
+   "lang": "en",
+   "text": "I want to sort out custody of my Bitcoin.",
+   "maxAll": 7,
+   "profile": {
+    "goal": "custody",
+    "country": "nl",
+    "amount": "l",
+    "keys": "selfplan",
+    "heirs": "yes",
+    "taxknow": "roughly",
+    "aim": "family"
+   },
+   "note": "profile only, custody"
   }
  ],
  "changed": "2026-10-15: expectations recalibrated to the rubric after the first run (approved by Ras); old values in \"was\""

@@ -28,7 +28,7 @@ const POINTS = { worst_case: 3, liquidity: 8, tax: 4, custody: 6, plan_b: 5, goa
 function modelOut(over = {}) {
   return {
     declined: false, is_loan: false, drawdown_tested: true, tax_rule_wrong: false, country: 'sk',
-    signals: SIGNALS.map((s) => ({ id: s.id, points: POINTS[s.id], reason: `Text o ${s.id}.` })),
+    signals: SIGNALS.map((s) => ({ id: s.id, points: POINTS[s.id], reason: `Text o ${s.id}.`, text_evidence: 'BTC' })),
     missing: ['Aký je váš plán pri poklese o 70 %?'],
     ...over,
   };
@@ -166,13 +166,13 @@ test('POST /verdict calls Claude once with structured output and returns the res
   assert.ok([...e.RATE_LIMIT_KV.store.keys()].some((k) => k.startsWith('verdict:spend:')));
 }));
 
-test('closed without VERDICT_ENABLED on virtuse.com, open on staging', withClaude(async (calls) => {
+test('closed without VERDICT_ENABLED for every Origin (the header is never trusted)', withClaude(async (calls) => {
   const body = { text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' };
-  let res = await worker.fetch(req(body), env({ VERDICT_ENABLED: undefined }));
-  assert.equal(res.status, 503);
+  for (const origin of [ORIGIN, STAGING]) {
+    const res = await worker.fetch(req(body, { origin }), env({ VERDICT_ENABLED: undefined }));
+    assert.equal(res.status, 503);
+  }
   assert.equal(calls.length, 0);
-  res = await worker.fetch(req(body, { origin: STAGING }), env({ VERDICT_ENABLED: undefined }));
-  assert.equal(res.status, 200);
 }));
 
 test('no API key -> 503, short text -> 400, honeypot -> no call', withClaude(async (calls) => {
@@ -193,10 +193,24 @@ test('10 a day per IP, and the monthly cap stops calls', withClaude(async (calls
   assert.equal(calls.length, 10);
 }));
 
-test('advice-like model output is not shown', withClaude(async () => {
+test('advice-like model output is not shown: one retry, then a plain message', withClaude(async (calls) => {
   const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
   assert.equal(res.status, 502);
+  assert.equal(calls.length, 2);
+  assert.match((await res.json()).error, /other words/);
 }, modelOut({ missing: ['You should buy more now.'] })));
+
+test('advice-like wording on the first try, clean on the retry -> shown', async () => {
+  const outs = [modelOut({ missing: ['You should buy more now.'] }), modelOut()];
+  const orig = globalThis.fetch; let n = 0;
+  globalThis.fetch = async () => new Response(JSON.stringify({ id: 'm', type: 'message', role: 'assistant', model: 'claude-opus-5-5', stop_reason: 'end_turn', stop_sequence: null,
+    content: [{ type: 'text', text: JSON.stringify(outs[n++]) }], usage: { input_tokens: 1, output_tokens: 1 } }), { status: 200, headers: { 'content-type': 'application/json' } });
+  try {
+    const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
+    assert.equal(res.status, 200);
+    assert.equal(n, 2);
+  } finally { globalThis.fetch = orig; }
+});
 
 test('refusal stop reason is shown as declined', withClaude(async () => {
   const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
@@ -253,7 +267,7 @@ test('cleanProfile drops wrong types and "na"; selling maps to tax help', async 
   assert.deepEqual(cleanProfile(null), {});
   assert.deepEqual(cleanProfile(['goal']), {});
   assert.deepEqual(cleanProfile({ goal: 'na', country: 'other', keys: 5 }), { country: 'other' });
-  assert.deepEqual(partnerFinderQuery({ goal: 'sell', country: 'other', keys: 'selfplan' }), { pf_goal: 'tax', pf_custody: 'self' });
+  assert.deepEqual(partnerFinderQuery({ goal: 'sell', country: 'other', keys: 'selfplan' }), { pf_goal: 'tax', pf_experience: 'hodler', pf_custody: 'self' });
   assert.equal(partnerFinderQuery({}), null);
 });
 
@@ -275,9 +289,12 @@ test('reasons call profile answers "your answers", never "profile"', () => {
   assert.match(systemPrompt('sk'), /vaše odpovede/);
 });
 
-test('report preview: all 10 signals and a plan on staging; virtuse.com still gets the free view', withClaude(async () => {
+test('report preview only with VERDICT_REPORT_PREVIEW (staging Worker), never from the Origin header', withClaude(async () => {
   const text = 'Každý mesiac kúpim BTC za 100 €, 10 rokov, rezerva 6 mesiacov.';
-  let r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING }), env())).json();
+  let r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING, ip: '7.7.7.7' }), env())).json();
+  assert.equal(r.report, undefined);
+  assert.equal(r.signals.length, 2);
+  r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING }), env({ VERDICT_REPORT_PREVIEW: '1' }))).json();
   assert.equal(r.report, true);
   assert.equal(r.signals.length, 10);
   assert.ok(r.signals.every((s) => s.reason && s.tool.page));
@@ -291,3 +308,36 @@ test('report preview: all 10 signals and a plan on staging; virtuse.com still ge
   r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { ip: '8.8.8.8' }), env({ VERDICT_REPORT_PREVIEW: '1' }))).json();
   assert.equal(r.signals.length, 10);
 }));
+
+test('a signal whose quote is not in the text is capped at 7; a real quote keeps 10', () => {
+  const text = 'Kúpim BTC za 10 000 €, rezervu mám na 6 mesiacov.';
+  const out = modelOut({ signals: SIGNALS.map((s) => ({ id: s.id, points: 10, reason: 'x', only_profile: false,
+    text_evidence: s.id === 'liquidity' ? 'rezervu mám na 6 mesiacov' : s.id === 'goal' ? 'chcem zbohatnúť' : '' })) });
+  const r = scoreVerdict(out, 'sk', { text, profile: {} });
+  const p = Object.fromEntries(r.signals.map((s) => [s.id, s.points]));
+  assert.equal(p.liquidity, 10);
+  assert.equal(p.goal, 7);
+  assert.equal(p.tax, 7);
+});
+
+test('funnel answers guarantee minimum points; a sensible completed funnel reaches 40+', () => {
+  const zero = modelOut({ drawdown_tested: false, signals: SIGNALS.map((s) => ({ id: s.id, points: 0, reason: 'x', only_profile: true, text_evidence: '' })) });
+  const text = 'Chcem kúpiť Bitcoin za 10 000 € z úspor a držať ho 5 rokov.';
+  let r = scoreVerdict(zero, 'sk', { text, profile: { amount: 'l', drop: 'hold', reserve: 'yes' } });
+  let p = Object.fromEntries(r.signals.map((s) => [s.id, s.points]));
+  assert.ok(p.worst_case >= 5 && p.worst_case <= 7);
+  assert.equal(p.liquidity, 6);
+  const full = { goal: 'buy', country: 'sk', experience: 'new', amount: 'l', share: '5_20', horizon: 'gt4', reserve: 'yes', keys: 'exch', drop: 'hold', aim: 'grow', taxknow: 'yes', ruleset: 'yes' };
+  r = scoreVerdict(zero, 'sk', { text, profile: full });
+  assert.ok(r.scoreRaw >= 40, 'scoreRaw ' + r.scoreRaw);
+  assert.ok(r.signals.every((s) => s.points <= 7));
+});
+
+test('new funnel ids pass cleanProfile; Partner Finder gets hodler for sell, loan and custody', async () => {
+  const { cleanProfile, partnerFinderQuery } = await import('./src/verdict.js');
+  const p = cleanProfile({ goal: 'loan', ltv: 'lt30', liqprice: 'yes', heirs: 'maybe', keys: 'multisig', taxknow: 'roughly' });
+  assert.deepEqual(p, { goal: 'loan', keys: 'multisig', taxknow: 'roughly', ltv: 'lt30', liqprice: 'yes' });
+  assert.equal(partnerFinderQuery(p).pf_experience, 'hodler');
+  assert.match(systemPrompt('en'), /text_evidence/);
+  assert.match(systemPrompt('en'), /70% fall/);
+});
