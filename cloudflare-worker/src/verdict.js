@@ -139,7 +139,7 @@ export function partnerFinderQuery(profile) {
   if (profile.country && profile.country !== 'other') q.pf_country = profile.country;
   if (profile.experience) q.pf_experience = profile.experience;
   else if (['sell', 'loan', 'custody'].includes(profile.goal)) q.pf_experience = 'hodler';
-  if (profile.keys) q.pf_custody = profile.keys === 'exch' ? 'any' : 'self';
+  if (profile.keys) q.pf_custody = profile.keys === 'exch' ? 'any' : profile.keys === 'multisig' ? 'assisted' : 'self';
   if (profile.amount) q.pf_amount = profile.amount;
   return q;
 }
@@ -386,6 +386,8 @@ export function freeView(full, profile = {}) {
     locked: full.signals.filter((s) => !shown.has(s.id)).map(({ id, name }) => ({ id, name })),
     missing: full.missing.slice(0, 1),
     missingMore: Math.max(0, full.missing.length - 1),
+    // How many of the 10 areas are well described (7+), for "what 25/100 means".
+    covered: full.signals.filter((s) => s.points >= 7).length,
     partnerFinder: partnerFinderQuery(profile),
   };
 }
@@ -403,7 +405,7 @@ export function reportView(full, profile = {}) {
   const plan = full.signals.filter((s) => s.points < PLAN_BELOW)
     .sort((a, b) => a.points - b.points || order(a) - order(b))
     .map(({ id, name, points, tool }) => ({ id, name, points, tool }));
-  return { ...full, report: true, plan, partnerFinder: partnerFinderQuery(profile) };
+  return { ...full, report: true, plan, covered: full.signals.filter((s) => s.points >= 7).length, partnerFinder: partnerFinderQuery(profile) };
 }
 
 export function reportPreviewAllowed(env) {

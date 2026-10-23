@@ -244,6 +244,7 @@ test('free view: 2 signals with reasons, 8 only named, first missing question, n
   assert.equal(r.locked.length, 8);
   assert.ok(r.locked.every((s) => s.name && s.reason === undefined && s.points === undefined));
   assert.equal(r.missing.length, 1);
+  assert.equal(r.covered, 3);
   assert.equal(r.partnerFinder, null);
   const body = JSON.stringify(r);
   for (const id of r.locked.map((s) => s.id)) assert.ok(!body.includes(`Text o ${id}.`));
@@ -338,6 +339,7 @@ test('new funnel ids pass cleanProfile; Partner Finder gets hodler for sell, loa
   const p = cleanProfile({ goal: 'loan', ltv: 'lt30', liqprice: 'yes', heirs: 'maybe', keys: 'multisig', taxknow: 'roughly' });
   assert.deepEqual(p, { goal: 'loan', keys: 'multisig', taxknow: 'roughly', ltv: 'lt30', liqprice: 'yes' });
   assert.equal(partnerFinderQuery(p).pf_experience, 'hodler');
+  assert.equal(partnerFinderQuery(p).pf_custody, 'assisted');
   assert.match(systemPrompt('en'), /text_evidence/);
   assert.match(systemPrompt('en'), /70% fall/);
 });

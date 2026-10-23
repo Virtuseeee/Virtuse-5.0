@@ -25,7 +25,7 @@
     sk: {
       steps: ['Rozhodnutie', 'O vás', 'Váš plán', 'Kontrola'], back: '← Späť', cont: 'Pokračovať', start: 'Začať', skip: '? Zatiaľ neviem', other: 'Niečo iné, opíšem to',
       closedH: 'Verdict sa otvára 1. novembra.', closedP: 'Zapíšte sa a dáme vám vedieť.', closedCta: 'Na stránku Virtuse CFO',
-      startEb: 'Verdict · zadarmo', startH: 'Pomáhame investorom robiť <span>múdre rozhodnutia.</span>',
+      startEb: 'Verdict · zadarmo', startH: 'Otestujte svoje rozhodnutie o Bitcoine. <span>Pomáhame investorom robiť múdre rozhodnutia.</span>',
       startP: 'Skôr ako kúpite, predáte alebo si požičiate, otestujte svoje rozhodnutie na 10 signáloch. Najprv sa opýtame, čo AI potrebuje vedieť, potom dostanete verdikt.',
       startHint: 'Asi 2 minúty · bez účtu · nie je to investičné poradenstvo', startNote: 'Pár krátkych otázok + vaše vlastné slová',
       goalEb: 'Vaše rozhodnutie', goalH: 'Čo zvažujete?', goalP: 'Vyberte to, čo je najbližšie.', goalHint: 'Rovnaké kategórie používa Partner Finder.',
@@ -100,12 +100,30 @@
       wantNote: 'Uložíme len váš e-mail, text rozhodnutia nie. Odhlásiť sa môžete jedným kliknutím z e-mailu.', privacy: 'Súkromie',
       prevBadge: 'Náhľad reportu', prevNote: 'Náhľad na testovanie. Na virtuse.com návštevník vidí 2 signály a formulár pre záujem o report.',
       allH: 'Všetkých 10 signálov', missAllH: 'Chýbajúce otázky', planH: 'Plán krokov', planP: 'Signály pod 7 bodov, od najslabšieho. Každý s nástrojom, kde ho doplníte.', planNone: 'Všetky signály majú aspoň 7 bodov.', pdf: 'Uložiť ako PDF', pts: ' b.',
+      R: {
+        sentence: function (s, w) { return 'Vaša úvaha je najsilnejšia v oblasti ' + s + ' a najslabšia v oblasti ' + w + '.'; },
+        sentenceLow: function (w) { return 'Väčšina úvahy zatiaľ nie je opísaná. Najviac chýba oblasť ' + w + '.'; },
+        means: function (sc, n) { return 'Čo znamená ' + sc + '/100: dobre ste opísali ' + n + ' z 10 oblastí.'; },
+        nextH: 'Váš ďalší krok', again2: 'Ohodnotiť znova', open: 'Otvoriť',
+        next: { worst_case: 'Spočítajte, čo by pre váš plán znamenal pokles o 70 %.', liquidity: 'Určte, na koľko mesiacov výdavkov vám vystačí rezerva mimo Bitcoinu.', tax: function (c) { return 'Zistite, ako sa predaj zdaní ' + (c ? 'v krajine ' + c : 'vo vašej krajine') + '.'; }, custody: 'Opíšte, kto drží kľúče a ako sa k Bitcoinu dostanú dedičia.', plan_b: 'Napíšte, čo urobíte, ak hlavný predpoklad neplatí.', goal: 'Doplňte cieľ s číslom a dátumom.', horizon: 'Napíšte, ako dlho budete držať a čo by vás prinútilo predať skôr.', alternatives: 'Porovnajte aspoň dve iné možnosti a napíšte, prečo táto.', rule: 'Napíšte si pravidlo, kedy dokúpite, predáte alebo zmeníte plán.', asymmetry: 'Určte, akú stratu unesiete bez zmeny života, a podľa nej veľkosť.' },
+        improve: 'Ako zlepšiť toto skóre?',
+        tip: { worst_case: 'Na 10 bodov: dopad poklesu o 70 % v eurách a plán, ako ho prečkať.', liquidity: 'Na 10 bodov: rezerva v mesiacoch výdavkov, nezávislá od ceny Bitcoinu.', tax: 'Na 10 bodov: správne pravidlo pre vašu krajinu a odložená suma na daň.', custody: 'Na 10 bodov: úschova, obnova a postup pre dedičov bez zdieľania seed frázy.', plan_b: 'Na 10 bodov: konkrétny spúšťač a konkrétny krok, ak predpoklad neplatí.', goal: 'Na 10 bodov: cieľ s číslom a dátumom.', horizon: 'Na 10 bodov: horizont v súlade s cieľom a čo by vás prinútilo predať skôr.', alternatives: 'Na 10 bodov: aspoň dve porovnané možnosti s dôvodom voľby.', rule: 'Na 10 bodov: napísané pravidlo vrátane toho, kedy ho zmeníte.', asymmetry: 'Na 10 bodov: veľkosť odôvodnená stratou, ktorú unesiete.' },
+        openQ: 'Otázka, na ktorú zatiaľ nemáte odpoveď', lockedH: function (n) { return 'Ďalších ' + n + ' signálov je v reporte'; },
+        inside: 'Čo je v reporte', faqH: 'Pred odomknutím',
+        faq: [['Je to investičné poradenstvo?', 'Nie. Report hodnotí, nakoľko úplne je opísaná vaša úvaha. Nehovorí, či kúpiť, predať alebo počkať.'], ['Čo sa stane s mojím textom?', 'Text neukladáme v databáze Virtuse. Na vyhodnotenie ho spracúva Anthropic (USA). Pre report si necháme len váš e-mail.'], ['Kedy sa report otvorí?', 'Platby ešte nespúšťame. Kto nechá e-mail, dostane jednu správu, keď sa report otvorí.']],
+        pfH: 'Partneri pre vašu kategóriu',
+        pfP: 'Keď doplníte medzery: partneri v kategórii, ktorí spĺňajú vaše kritériá. Poradie určujú pevné pravidlá, nie provízia. Porovnávate a vyberáte vy.',
+        pfShow: 'Zobraziť partnerov', sticky: 'Zapísať sa na report',
+        group: { risk: 'Riziko', taxc: 'Dane a úschova', plan: 'Plán' }, planH: 'Plán krokov', pdfTitle: 'Verdict',
+        nameL: 'Názov rozhodnutia (nepovinné)', namePh: 'Napríklad: Bitcoin na dôchodok', nameNote: 'Uvidíte ho len vy, vo výsledku a v PDF. Neposielame ho.',
+        progress: 'Váš postup', of: ' z ', secs: ' s'
+      },
       declinedH: 'Verdict to nevie ohodnotiť.', again: '↺ Ohodnotiť ďalšie rozhodnutie', decision: 'Rozhodnutie'
     },
     en: {
       steps: ['Decision', 'About you', 'Your plan', 'Check'], back: '← Back', cont: 'Continue', start: 'Start', skip: '? Not sure yet', other: 'Something else, I will describe it',
       closedH: 'Verdict opens on 1 November.', closedP: 'Join the list and we will tell you.', closedCta: 'To the Virtuse CFO page',
-      startEb: 'Verdict · free', startH: 'Helping investors make <span>smart decisions.</span>',
+      startEb: 'Verdict · free', startH: 'Check your Bitcoin decision. <span>Empower investors to make smart decisions.</span>',
       startP: 'Before you buy, sell or borrow, test your decision on 10 signals. First we ask what the AI needs to know, then you get your verdict.',
       startHint: 'About 2 minutes · no account · not investment advice', startNote: 'A few short questions + your own words',
       goalEb: 'Your decision', goalH: 'What are you considering?', goalP: 'Pick the closest one.', goalHint: 'Partner Finder uses the same categories.',
@@ -180,6 +198,24 @@
       wantNote: 'We keep only your email, not your decision text. Leave with one click from the email.', privacy: 'Privacy',
       prevBadge: 'Report preview', prevNote: 'Preview for testing. On virtuse.com visitors see 2 signals and a form to register interest in the report.',
       allH: 'All 10 signals', missAllH: 'Missing questions', planH: 'Step-by-step plan', planP: 'Signals under 7 points, weakest first. Each with the tool where you fill it in.', planNone: 'Every signal has at least 7 points.', pdf: 'Save as PDF', pts: ' pts',
+      R: {
+        sentence: function (s, w) { return 'Your thinking is strongest on ' + s + ' and weakest on ' + w + '.'; },
+        sentenceLow: function (w) { return 'Most of your thinking is not described yet. ' + w + ' is missing most.'; },
+        means: function (sc, n) { return 'What ' + sc + '/100 means: you described ' + n + ' of 10 areas well.'; },
+        nextH: 'Your next step', again2: 'Rate again', open: 'Open',
+        next: { worst_case: 'Work out what a 70% fall would mean for your plan.', liquidity: 'Work out how many months of expenses your reserve outside Bitcoin covers.', tax: function (c) { return 'Find out how a sale is taxed in ' + (c || 'your country') + '.'; }, custody: 'Describe who holds the keys and how heirs would reach the Bitcoin.', plan_b: 'Write down what you will do if your main assumption fails.', goal: 'Add a goal with a number and a date.', horizon: 'Write down how long you will hold and what would force an earlier sale.', alternatives: 'Compare at least two other options and write down why this one.', rule: 'Write a rule for when you buy more, sell or change the plan.', asymmetry: 'Work out what loss you can carry without changing your life, and size from that.' },
+        improve: 'How can this score improve?',
+        tip: { worst_case: 'For 10 points: what a 70% fall means in euros and a plan to get through it.', liquidity: 'For 10 points: a reserve in months of expenses, independent of the Bitcoin price.', tax: 'For 10 points: the right rule for your country and the tax set aside.', custody: 'For 10 points: custody, recovery and a procedure for heirs without sharing the seed phrase.', plan_b: 'For 10 points: a concrete trigger and a concrete step if an assumption fails.', goal: 'For 10 points: a goal with a number and a date.', horizon: 'For 10 points: a horizon that fits the goal, and what would force an earlier sale.', alternatives: 'For 10 points: at least two options compared, with a reason for the choice.', rule: 'For 10 points: a written rule, including when you would change it.', asymmetry: 'For 10 points: a size justified by the loss you can carry.' },
+        openQ: "A question you haven't answered yet", lockedH: function (n) { return n + ' more signals are in the report'; },
+        inside: "What's in the report", faqH: 'Before you unlock',
+        faq: [['Is this investment advice?', 'No. The report rates how completely your thinking is described. It never says whether to buy, sell or wait.'], ['What happens to my text?', "We don't store it in the Virtuse database. Anthropic (USA) processes it to assess it. For the report we keep only your email."], ['When does the report open?', "Payments aren't open yet. If you leave your email, you get one message when the report opens."]],
+        pfH: 'Partners for your category',
+        pfP: "When you've filled the gaps: partners in this category that match your criteria. Fixed rules set the order, not commission. You compare and choose.",
+        pfShow: 'Show partners', sticky: 'Join the report waitlist',
+        group: { risk: 'Risk', taxc: 'Tax and custody', plan: 'Plan' }, planH: 'Step-by-step plan', pdfTitle: 'Verdict',
+        nameL: 'Decision name (optional)', namePh: 'For example: Bitcoin for retirement', nameNote: 'Only you see it, in the result and the PDF. We do not send it.',
+        progress: 'Your progress', of: ' of ', secs: ' s'
+      },
       declinedH: "Verdict can't rate this.", again: '↺ Rate another decision', decision: 'Decision'
     }
   }[LANG];
@@ -204,7 +240,7 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function quote(t) { return (LANG === 'sk' ? '„' : '“') + esc(t) + (LANG === 'sk' ? '“' : '”'); }
   function push(o) { (window.dataLayer = window.dataLayer || []).push(o); }
-  function foot(extra, btn, disabled) { return '<div class="foot"><span class="note" id="fn">' + (extra || '') + '</span><button class="cta" id="c"' + (disabled ? ' disabled' : '') + '>' + (btn || STR.cont) + ' ' + SV + '</button></div>'; }
+  function foot(extra, btn, disabled, solid) { return '<div class="foot"><span class="note" id="fn">' + (extra || '') + '</span><button class="cta' + (solid ? ' solid' : '') + '" id="c"' + (disabled ? ' disabled' : '') + '>' + (btn || STR.cont) + ' ' + SV + '</button></div>'; }
   function label(key, v) { var o = (STR.opts[key] || []).filter(function (x) { return x[0] === v; })[0]; return o ? o[1] : null; }
   function ans(key) { var v = A[key]; if (!v) return STR.none; if (v === 'na') return STR.notYet; return label(key, v) || v; }
   function goalLabel() { var g = STR.goals.filter(function (x) { return x[0] === A.goal; })[0]; return g ? g[1] : STR.otherGoal; }
@@ -231,13 +267,13 @@
   back.onclick = function () { if (i > 0) go(i === at('result') ? at('review') : i - 1); };
   function stepper() {
     var cur = SCREENS[i];
-    stepsEl.innerHTML = STR.steps.map(function (t, k) {
+    stepsEl.innerHTML = '<div class="prog">' + STR.R.progress + '</div>' + STR.steps.map(function (t, k) {
       var st = k < cur.s ? 'done' : k === cur.s ? 'on' : '', w = k < cur.s ? 100 : k === cur.s ? cur.p * 100 : 0;
       return '<div class="step ' + st + '"><div class="lbl"><span class="n">' + (k < cur.s ? '✓' : k + 1) + '</span><span class="t">' + t + '</span></div><div class="track"><i style="width:' + w + '%"></i></div></div>';
     }).join('');
   }
   function go(n) {
-    i = n; back.hidden = i === 0 || i === at('loading'); stepper(); SCREENS[i].r();
+    i = n; back.hidden = i === 0 || i === at('loading'); stepper(); SCREENS[i].r(); spot();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     push({ event: 'verdict_step', verdict_lang: LANG, verdict_step: SCREENS[i].k || SCREENS[i].r.name });
   }
@@ -273,7 +309,7 @@
   }
   function ring(v) {
     var r = 30, c = 2 * Math.PI * r;
-    return '<svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true"><circle cx="38" cy="38" r="' + r + '" stroke="#2b2f35" stroke-width="5" fill="none"/><circle cx="38" cy="38" r="' + r + '" stroke="#f7931a" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * v / 10) + ' ' + c + '" transform="rotate(-90 38 38)"/><text x="38" y="44" text-anchor="middle" fill="#e6edf3" font-size="18" font-weight="700" font-family="Inter">' + v + '</text></svg>';
+    return '<svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true"><circle cx="38" cy="38" r="' + r + '" stroke="rgba(255,255,255,.08)" stroke-width="5" fill="none"/><circle cx="38" cy="38" r="' + r + '" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * v / 10) + ' ' + c + '" transform="rotate(-90 38 38)"/><text x="38" y="44" text-anchor="middle" fill="var(--text)" font-size="18" font-weight="700" font-family="Inter">' + v + '</text></svg>';
   }
   function how() {
     var keys = Object.keys(STR.howTabs), cur = 0;
@@ -281,7 +317,9 @@
       '<div class="inner"><div class="tabs" role="tablist"></div><div class="rings"></div><p class="small">' + STR.howNote + '</p></div>' + foot();
     function draw() {
       panel.querySelector('.tabs').innerHTML = keys.map(function (k, n) { return '<button role="tab" aria-selected="' + (n === cur) + '" class="' + (n === cur ? 'on' : '') + '" data-n="' + n + '">' + k + '</button>'; }).join('');
-      panel.querySelector('.rings').innerHTML = STR.howTabs[keys[cur]].map(function (x) { return '<div class="ring">' + ring(x[1]) + x[0] + '</div>'; }).join('');
+      var col = ['var(--blue)', 'var(--teal)', 'var(--purple)'][cur];
+      panel.querySelector('.rings').innerHTML = STR.howTabs[keys[cur]].map(function (x) { return '<div class="ring vf-card spot" style="--c:' + col + ';color:' + col + '">' + ring(x[1]) + '<span>' + x[0] + '</span></div>'; }).join('');
+      spot();
       panel.querySelectorAll('.tabs button').forEach(function (b) { b.onclick = function () { cur = +b.dataset.n; draw(); }; });
     }
     draw(); document.getElementById('c').onclick = next;
@@ -327,8 +365,10 @@
   function review() {
     var rows = [['goal', goalLabel(), 'goal'], ['text', A.text || STR.none, 'text']].concat(KEYS().map(function (k) { return [k, ans(k), k]; }));
     panel.innerHTML = '<div class="chip-eyebrow">' + STR.revEb + '</div><h2>' + STR.revH + '</h2><p class="sub">' + STR.revP + '</p><div style="margin-top:18px">' +
-      rows.map(function (r) { return '<div class="rv"><div><b>' + STR.rev[r[0]] + '</b>' + esc(r[1]) + '</div><button class="ghost edit" data-to="' + r[2] + '">' + STR.edit + '</button></div>'; }).join('') +
-      '</div><p class="warn" style="margin-top:12px">' + STR.revAi + '</p>' + foot('', STR.getVerdict, A.text.trim().length < 20);
+      rows.map(function (r) { return '<div class="vfr"><div><b>' + STR.rev[r[0]] + '</b>' + esc(r[1]) + '</div><button class="ghost edit" data-to="' + r[2] + '">' + STR.edit + '</button></div>'; }).join('') +
+      '</div><label class="vf-name"><b>' + STR.R.nameL + '</b><input id="dn" maxlength="60" autocomplete="off" placeholder="' + esc(STR.R.namePh) + '" value="' + esc(A.name || '') + '"><span class="small">' + STR.R.nameNote + '</span></label>' +
+      '<p class="warn" style="margin-top:12px">' + STR.revAi + '</p>' + foot('', STR.getVerdict, A.text.trim().length < 20, true);
+    document.getElementById('dn').oninput = function () { A.name = this.value.trim(); };
     panel.querySelectorAll('[data-to]').forEach(function (b) { b.onclick = function () { RET = 'review'; go(at(b.dataset.to)); }; });
     document.getElementById('c').onclick = next;
   }
@@ -342,14 +382,17 @@
     var U = STR.unlock, k = 0;
     panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.loadH + '</h2><p class="sub" id="ls" aria-live="polite">' + STR.loadSteps[0] + '</p>' +
       '<div class="unlock"><div class="mock" aria-hidden="true"><i style="width:40%"></i><i class="o"></i><i style="width:80%"></i><i style="width:55%"></i></div><div><div class="eyebrow">' + STR.loadGet + '</div><h3 id="ut" style="font-size:22px;margin-bottom:6px"></h3><p class="sub" id="ud" style="font-size:15px"></p></div></div>' +
-      '<div class="pager" id="pg"></div><p class="small">' + STR.loadNote + '</p></div>';
+      '<div class="pager" id="pg"></div><p class="small" id="lt" aria-hidden="true"></p><p class="small">' + STR.loadNote + '</p></div>';
+    var t0 = Date.now();
     function show() {
       var u = U[k % U.length];
       document.getElementById('ut').textContent = u[0]; document.getElementById('ud').textContent = u[1];
       document.getElementById('pg').innerHTML = U.map(function (_, n) { return '<i class="' + (n === k % U.length ? 'on' : '') + '"></i>'; }).join('');
       document.getElementById('ls').textContent = STR.loadSteps[Math.min(k, STR.loadSteps.length - 1)];
+      document.getElementById('lt').textContent = (k % U.length + 1) + STR.R.of + U.length + ' · ' + Math.round((Date.now() - t0) / 1000) + STR.R.secs;
     }
     show();
+    var tick = setInterval(function () { var e = document.getElementById('lt'); if (e) e.textContent = (k % U.length + 1) + STR.R.of + U.length + ' · ' + Math.round((Date.now() - t0) / 1000) + STR.R.secs; else clearInterval(tick); }, 1000);
     var t = setInterval(function () { k++; show(); }, 1600), minWait = new Promise(function (r) { setTimeout(r, 2500); });
     push({ event: 'verdict_submit', verdict_lang: LANG, verdict_goal: A.goal || 'other' });
     // An unchanged payload (Back -> "Get my verdict" again) reuses the last
@@ -361,7 +404,7 @@
       .catch(function () { return { ok: false, d: { error: STR.network } }; });
     if (cached) minWait = Promise.resolve();
     Promise.all([call, minWait]).then(function (x) {
-      clearInterval(t);
+      clearInterval(t); clearInterval(tick);
       var res = x[0];
       if (res.ok && res.d && res.d.ok) {
         RESULT = res.d;
@@ -373,8 +416,60 @@
       document.getElementById('rt').onclick = function () { go(at('loading')); };
     });
   }
-  function sig(s, lab, href, tool) {
-    return '<div class="sig"><div class="h"><div><b>' + esc(s.name) + '</b><div class="tag">' + lab + '</div></div><em>' + s.points + '<small>/10</small></em></div><div class="bar"><i style="width:' + s.points * 10 + '%"></i></div><p>' + esc(s.reason) + '</p>' + (href ? '<a href="' + href + '">' + STR.fill + esc(tool) + ' →</a>' : '') + '</div>';
+  // Result (verdict-review D, 2026-10-23): verdict sentence + score ring in
+  // the band colour, one next step, two free signals with "how to improve",
+  // 8 locked, price card + waitlist + FAQ, Partner Finder last (MiCA, C17).
+  var GROUP = { worst_case: 'risk', liquidity: 'risk', plan_b: 'risk', tax: 'taxc', custody: 'taxc', goal: 'plan', horizon: 'plan', alternatives: 'plan', rule: 'plan', asymmetry: 'plan' };
+  var GCOL = { risk: 'blue', taxc: 'teal', plan: 'purple' };
+  var BANDCOL = { complete: 'var(--green)', add: 'var(--yellow)', missing: 'var(--orange)' };
+  var R = STR.R;
+  function nm(s) { return LANG === 'sk' ? '„' + s + '“' : s; }
+  function bigRing(score, col) {
+    var r = 44, c = 2 * Math.PI * r;
+    return '<svg class="vf-ring" width="112" height="112" viewBox="0 0 112 112" aria-hidden="true"><circle cx="56" cy="56" r="' + r + '" stroke="rgba(255,255,255,.08)" stroke-width="8" fill="none"/>' +
+      '<circle cx="56" cy="56" r="' + r + '" stroke="' + col + '" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * score / 100) + ' ' + c + '" transform="rotate(-90 56 56)"/></svg>';
+  }
+  // Handoff to the tool with what the funnel already knows (F37).
+  function toolHref(t, medium) {
+    var q = ['utm_source=verdict', 'utm_medium=' + (medium || 'result')];
+    if (t.key === 'tax' && A.country && A.country !== 'other' && A.country !== 'na') q.unshift('country=' + A.country);
+    if ((t.key === 'stacking' || t.key === 'loan') && /^(s|m|l|xl)$/.test(A.amount || '')) q.unshift('amount=' + A.amount);
+    return t.page + (t.page.indexOf('?') < 0 ? '?' : '&') + q.join('&');
+  }
+  function nextText(id) { var n = R.next[id]; return typeof n === 'function' ? n(A.country && A.country !== 'other' && A.country !== 'na' ? label('country', A.country) : '') : n; }
+  function sig(s, tag, href) {
+    var g = GROUP[s.id];
+    return '<div class="vf-card ' + GCOL[g] + ' spot"><div class="h"><div><b>' + esc(s.name) + '</b><div class="tag">' + (tag ? tag + ' · ' : '') + R.group[g] + '</div></div><em>' + s.points + '<small>/10</small></em></div>' +
+      '<div class="bar"><i style="width:' + s.points * 10 + '%"></i></div><p>' + esc(s.reason) + '</p>' +
+      '<details class="imp"><summary>' + R.improve + '</summary><p>' + R.tip[s.id] + '</p></details>' +
+      (href ? '<a class="vf-btn" href="' + href + '">' + STR.fill + esc(s.tool.name) + ' →</a>' : '') + '</div>';
+  }
+  function headBlock(r, strongName, weakName, strongPts) {
+    var col = BANDCOL[r.band.id] || 'var(--orange)';
+    return '<div class="res-head"><div><div class="eyebrow ' + (r.band.id === 'complete' ? 'green' : r.band.id === 'add' ? 'yellow' : '') + '"><i></i>' + (r.report ? R.pdfTitle + ' · ' + STR.prevBadge : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
+      '<h2>' + esc(strongPts < 5 ? R.sentenceLow(nm(weakName)) : R.sentence(nm(strongName), nm(weakName))) + '</h2>' +
+      '<p class="means">' + esc(R.means(r.score, r.covered == null ? '?' : r.covered)) + '</p><p class="quote">' + quote(A.text.slice(0, 160) + (A.text.length > 160 ? '…' : '')) + '</p></div>' +
+      '<div class="score" style="--b:' + col + '">' + bigRing(r.score, col) + '<b>' + r.score + '<small>/100</small></b><span class="pill">' + esc(r.band.label) + '</span></div></div>';
+  }
+  function nextBlock(weak, medium) {
+    return '<div class="sec">' + R.nextH + '</div><div class="vf-card next ' + GCOL[GROUP[weak.id]] + ' spot"><p class="act">' + esc(nextText(weak.id)) + '</p>' +
+      '<div class="row"><a class="vf-btn solid" href="' + toolHref(weak.tool, medium) + '">' + esc(weak.tool.name) + ' →</a><button class="vf-btn" data-again>↺ ' + R.again2 + '</button></div></div>';
+  }
+  function pfBlock(r, medium) {
+    if (!r.partnerFinder) return '';
+    var pfq = Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict';
+    var collapsed = r.band.id === 'missing';
+    return '<div class="no-print"><div class="sec">' + R.pfH + '</div><p class="sub sm">' + R.pfP + '</p>' +
+      (collapsed ? '<button class="vf-btn" id="pfShow">' + R.pfShow + '</button>' : '') +
+      '<div id="pfBox"' + (collapsed ? ' hidden' : '') + '><iframe class="pf" id="pfFrame" ' + (collapsed ? 'data-src' : 'src') + '="concierge.html?' + pfq + '&utm_medium=' + medium + '" title="Partner Finder" loading="lazy"></iframe>' +
+      '<p class="small">' + STR.pfNote + ' <a href="concierge.html?' + pfq + '&utm_medium=' + medium + '_open">' + STR.pfOpen + '</a></p></div></div>';
+  }
+  function legal(r) { return '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p>'; }
+  function bindCommon() {
+    panel.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
+    var sh = document.getElementById('pfShow');
+    if (sh) sh.onclick = function () { var f = document.getElementById('pfFrame'); f.src = f.getAttribute('data-src'); document.getElementById('pfBox').hidden = false; sh.hidden = true; push({ event: 'verdict_pf_show', verdict_lang: LANG }); };
+    spot();
   }
   function showResult() {
     var r = RESULT; if (!r) { go(at('review')); return; }
@@ -387,40 +482,29 @@
     if (r.report) { showReport(r); return; }
     var strong = r.signals.filter(function (x) { return x.role === 'strongest'; })[0], weak = r.signals.filter(function (x) { return x.role === 'weakest'; })[0];
     if (!strong || !weak) { panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + STR.error + '</p>' + again; document.getElementById('again').onclick = function () { go(at('review')); }; return; }
-    var tool = r.weakest.tool, toolHref = tool.page + (tool.page.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict';
-    var pfq = r.partnerFinder ? Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict' : '';
-    panel.innerHTML = '<div data-ai-generated="true">' +
-      '<div class="res-head"><div><div class="eyebrow">' + STR.resEb + ' · ' + esc(goalLabel()) + '</div>' +
-      '<h2>' + STR.weakH + esc(weak.name) + '</h2><p class="sub" style="font-size:15px">' + quote(A.text.slice(0, 140) + (A.text.length > 140 ? '…' : '')) + '</p></div>' +
-      '<div class="score"><b>' + r.score + '</b><small>/100</small><br><span class="pill">' + esc(r.band.label) + '</span></div></div>' +
-      '<div class="sec">' + STR.found + '</div><div class="found">' +
-      '<div><b>' + STR.strongB + '</b><p>' + esc(strong.name) + ': ' + esc(strong.reason) + '</p></div>' +
-      '<div><b>' + STR.weakB + '</b><p>' + esc(weak.name) + ': ' + esc(weak.reason) + '</p></div>' +
-      '<div><b>' + STR.missB + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span style="color:var(--dim)">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div></div>' +
-      '<div class="sec">' + STR.free + '</div><div class="sig2">' + sig(strong, STR.strongest) + sig(weak, STR.weakest, toolHref, tool.name) + '</div>' +
-      '<div class="locked"><div class="lh"><div><b style="font-size:18px">' + r.locked.length + STR.lockedH + '</b><p>' + STR.lockedP + '</p></div><button class="cta" data-want>' + STR.lockedCta + '</button></div>' +
-      '<div class="lgrid">' + r.locked.map(function (x) { return '<div>🔒 ' + esc(x.name) + '<i></i><i></i></div>'; }).join('') + '</div></div>' +
-      '<div class="sec">' + STR.nextH + '</div><div class="route"><div class="r"><div><b>' + STR.nextB + '</b><span>' + esc(weak.name) + ' · ' + esc(tool.name) + '</span></div><a href="' + toolHref + '">' + STR.open + '</a></div></div>' +
-      (r.partnerFinder ? '<div class="sec">' + STR.pfH + '</div><p class="sub" style="font-size:15px">' + STR.pfP + '</p>' +
-        '<iframe class="pf" src="concierge.html?' + pfq + '&utm_medium=verdict" title="Partner Finder" loading="lazy"></iframe>' +
-        '<p class="small">' + STR.pfNote + ' <a href="concierge.html?' + pfq + '&utm_medium=verdict_open" style="color:var(--text)">' + STR.pfOpen + '</a></p>' : '') +
-      '<div class="sec" id="report">' + STR.repH + '</div><div class="price"><div><h3 style="font-size:24px">' + STR.repT + '</h3><p class="sub" style="font-size:15px">' + STR.repP + '</p><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
-      '<div><div class="eyebrow">' + STR.once + '</div><div class="amt">' + (LANG === 'sk' ? '14 €' : '€14') + '</div><p class="sub" style="font-size:14px">' + STR.noSub + '</p><p class="small" style="margin-top:6px">' + STR.waitNote + '</p>' + wantForm() + '</div></div>' +
-      '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p></div>' + again;
-    document.getElementById('again').onclick = function () { A.text = ''; RESULT = null; go(1); };
-    bindWant();
+    weak.tool = weak.tool || r.weakest.tool;
+    panel.innerHTML = '<div data-ai-generated="true">' + headBlock(r, strong.name, weak.name, strong.points) + nextBlock(weak, 'result') +
+      '<div class="sec">' + STR.free + '</div><div class="sig2">' + sig(strong, STR.strongest) + sig(weak, STR.weakest, toolHref(weak.tool)) + '</div>' +
+      '<div class="vf-card q spot"><b>' + R.openQ + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span class="dim">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div>' +
+      '<div class="sec" id="report">' + R.lockedH(r.locked.length) + '</div><div class="lgrid">' + r.locked.map(function (x) { var g = GROUP[x.id]; return '<div class="' + GCOL[g] + '"><span>🔒 ' + esc(x.name) + '</span><small>' + R.group[g] + '</small><i></i><i></i></div>'; }).join('') + '</div>' +
+      '<div class="price vf-card spot"><div><div class="eyebrow"><i></i>' + R.inside + '</div><h3>' + STR.repT + '</h3><p class="sub sm">' + STR.repP + '</p><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
+      '<div><div class="eyebrow"><i></i>' + STR.once + '</div><div class="amt">' + (LANG === 'sk' ? '14 €' : '€14') + '</div><p class="sub sm">' + STR.noSub + '</p><p class="small" style="margin-top:6px">' + STR.waitNote + '</p>' + wantForm() + '</div></div>' +
+      '<div class="sec">' + R.faqH + '</div><div class="faq">' + R.faq.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
+      pfBlock(r, 'verdict') + legal(r) + '</div>' +
+      '<div class="vf-sticky"><button class="vf-btn" data-again>↺ ' + R.again2 + '</button><button class="vf-btn solid" data-want>' + R.sticky + '</button></div>';
+    bindCommon(); bindWant();
   }
 
   // Interest in the full report: email only, no decision text.
   function wantForm() {
     return '<form class="want" id="want" novalidate><input type="email" id="we" autocomplete="email" placeholder="' + STR.wantPh + '" aria-label="' + STR.wantPh + '" required>' +
       '<input type="text" id="wh" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
-      '<button class="cta" type="submit">' + STR.wantBtn + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo" style="color:inherit">' + STR.privacy + '</a></p></form>';
+      '<button class="vf-btn solid" type="submit">' + STR.wantBtn + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo">' + STR.privacy + '</a></p></form>';
   }
   function bindWant() {
     var f = document.getElementById('want'); if (!f) return;
     panel.querySelectorAll('[data-want]').forEach(function (b) {
-      b.onclick = function () { document.getElementById('report').scrollIntoView({ behavior: 'smooth' }); setTimeout(function () { document.getElementById('we').focus({ preventScroll: true }); }, 400); };
+      b.onclick = function () { document.getElementById('report').scrollIntoView({ behavior: 'smooth' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
     });
     f.onsubmit = function (e) {
       e.preventDefault();
@@ -432,7 +516,7 @@
         .catch(function () { return { ok: false, d: { error: STR.network } }; })
         .then(function (x) {
           if (x.ok) {
-            f.innerHTML = '<p class="sub" style="font-size:15px;color:var(--text)">' + STR.wantOk + '</p>';
+            f.innerHTML = '<p class="sub sm" style="color:var(--text)">' + STR.wantOk + '</p>';
             push({ event: 'capture_submit', capture_source: 'verdict_report', verdict_lang: LANG });
           } else { btn.disabled = false; msg.textContent = (x.d && x.d.error) || STR.error; }
         });
@@ -441,27 +525,36 @@
 
   // Full report (preview only until payments exist; see the header comment).
   function showReport(r) {
-    var ord = r.signals.slice().sort(function (a, b) { return a.id === r.weakest.id ? -1 : b.id === r.weakest.id ? 1 : 0; });
-    function href(t) { return t.page + (t.page.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict&utm_medium=report'; }
-    var pfq = r.partnerFinder ? Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict' : '';
+    var weak = r.signals.filter(function (s) { return s.id === r.weakest.id; })[0] || r.signals[0];
+    var strong = r.signals.filter(function (s) { return s.id !== weak.id; }).sort(function (a, b) { return b.points - a.points; })[0];
+    weak.tool = weak.tool || r.weakest.tool;
+    var groups = ['risk', 'taxc', 'plan'];
     panel.innerHTML = '<div data-ai-generated="true" class="report">' +
-      '<p class="warn no-print">' + STR.prevNote + '</p>' +
-      '<div class="res-head"><div><div class="eyebrow">' + STR.prevBadge + ' · ' + esc(goalLabel()) + '</div>' +
-      '<h2>' + STR.weakH + esc(r.weakest.name) + '</h2><p class="sub" style="font-size:15px">' + quote(A.text) + '</p></div>' +
-      '<div class="score"><b>' + r.score + '</b><small>/100</small><br><span class="pill">' + esc(r.band.label) + '</span></div></div>' +
-      '<div class="sec">' + STR.allH + '</div><div class="sig2">' + ord.map(function (s) {
-        return sig(s, s.id === r.weakest.id ? STR.weakest : '', s.points < 7 ? href(s.tool) : '', s.tool.name);
-      }).join('') + '</div>' +
-      '<div class="sec">' + STR.missAllH + '</div><div class="found">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<div><p>' + STR.nothing + '</p></div>') + '</div>' +
-      '<div class="sec">' + STR.planH + '</div><p class="sub" style="font-size:15px">' + STR.planP + '</p><div class="route">' +
-      (r.plan.length ? r.plan.map(function (s, n) { return '<div class="r"><div><b>' + (n + 1) + '. ' + esc(s.name) + ' · ' + s.points + STR.pts + '</b><span>' + esc(s.tool.name) + '</span></div><a href="' + href(s.tool) + '">' + STR.open + '</a></div>'; }).join('') : '<div class="r"><span>' + STR.planNone + '</span></div>') + '</div>' +
-      (r.partnerFinder ? '<div class="no-print"><div class="sec">' + STR.pfH + '</div><p class="sub" style="font-size:15px">' + STR.pfP + '</p>' +
-        '<iframe class="pf" src="concierge.html?' + pfq + '&utm_medium=verdict_report" title="Partner Finder" loading="lazy"></iframe>' +
-        '<p class="small">' + STR.pfNote + '</p></div>' : '') +
-      '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p></div>' +
-      '<div class="foot no-print" style="margin-top:18px"><button class="ghost" id="again">' + STR.again + '</button><button class="cta" id="pdf">' + STR.pdf + '</button></div>';
-    document.getElementById('again').onclick = function () { A.text = ''; RESULT = null; go(1); };
-    document.getElementById('pdf').onclick = function () { push({ event: 'verdict_report_pdf', verdict_lang: LANG }); window.print(); };
+      '<p class="warn no-print">' + STR.prevNote + '</p>' + headBlock(r, strong.name, weak.name, strong.points) + nextBlock(weak, 'report') +
+      '<div class="sec">' + R.planH + '</div><p class="sub sm">' + STR.planP + '</p><div class="route">' +
+      (r.plan.length ? r.plan.map(function (s, n) { return '<div class="r vf-card ' + GCOL[GROUP[s.id]] + ' spot"><div><b>' + (n + 1) + '. ' + esc(s.name) + ' · ' + s.points + STR.pts + '</b><span>' + esc(nextText(s.id)) + '</span></div><a class="vf-btn" href="' + toolHref(s.tool, 'report') + '">' + esc(s.tool.name) + ' →</a></div>'; }).join('') : '<div class="r vf-card"><span>' + STR.planNone + '</span></div>') + '</div>' +
+      groups.map(function (g) {
+        var ss = r.signals.filter(function (s) { return GROUP[s.id] === g; });
+        return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (s) { return sig(s, s.id === weak.id ? STR.weakest : '', s.points < 7 ? toolHref(s.tool, 'report') : ''); }).join('') + '</div>';
+      }).join('') +
+      '<div class="sec">' + STR.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
+      pfBlock(r, 'verdict_report') + legal(r) + '</div>' +
+      '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>↺ ' + R.again2 + '</button><button class="vf-btn solid" id="pdf">' + STR.pdf + '</button></div>';
+    bindCommon();
+    document.getElementById('pdf').onclick = function () {
+      push({ event: 'verdict_report_pdf', verdict_lang: LANG });
+      var t = document.title; document.title = R.pdfTitle + (A.name ? ' · ' + A.name : '');
+      window.print(); setTimeout(function () { document.title = t; }, 500);
+    };
+  }
+
+  // Cursor spotlight (same effect as site-v2.js, for cards rendered later).
+  function spot() {
+    panel.querySelectorAll('.spot, .opt').forEach(function (c) {
+      if (c.dataset.spot) return; c.dataset.spot = '1';
+      c.addEventListener('pointermove', function (e) { c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+      c.addEventListener('pointerleave', function () { c.classList.remove('pm'); });
+    });
   }
 
   // Handed over from cfo.html: skip the start screen, text already filled in.
