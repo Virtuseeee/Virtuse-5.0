@@ -69,7 +69,7 @@
     "criteriaH": "Kriterien",
     "criteria": [
       "<strong>Nur Bitcoin.</strong> Sie unterstützen Bitcoin (On-Chain und/oder Lightning) und listen, verkaufen oder bewerben keine anderen Kryptowährungen oder Token.",
-      "<strong>Relevant für Europa.</strong> Sie bedienen Nutzer in der EU/im EWR oder in der Schweiz.",
+      "<strong>Relevant für Europa.</strong> Ihr Angebot richtet sich an Nutzer in der EU/im EWR oder in der Schweiz.",
       "<strong>Reguliert, wo erforderlich.</strong> Wenn Sie in der EU Kryptowerte-Dienstleistungen erbringen, verfügen Sie über eine MiCA-Zulassung (CASP) oder eine geltende Übergangslizenz.",
       "<strong>Aktiv und gepflegt,</strong> mit einer funktionierenden öffentlichen Website.",
       "<strong>Seriös:</strong> keine Renditeversprechen und keine verschwiegene Verwahrung."
@@ -85,7 +85,7 @@
     "fCategory": "Kategorie im Ökosystem *",
     "fCategoryChoose": "Kategorie wählen",
     "fDesc": "Kurzbeschreibung auf Englisch (max. 300 Zeichen) *",
-    "fCountries": "Bediente Länder *",
+    "fCountries": "Länder, in denen Sie tätig sind *",
     "fAllCountries": "Alle Länder der EU/des EWR und die Schweiz",
     "fChooseCountries": "Bestimmte Länder wählen",
     "fBitcoinOnly": "Ich bestätige, dass sich das Projekt ausschließlich mit Bitcoin befasst (keine anderen Kryptowährungen oder Token) *",
@@ -138,15 +138,15 @@
       ],
       "primer": [
         "<h2>Geld ohne Herausgeber</h2>",
-        "<p>Bitcoin ist digitales Geld, das auf einem offenen Netzwerk läuft statt im Kontobuch einer Bank. Niemand gibt es nach Bedarf aus, und niemand kann das Netzwerk einfrieren oder seine Geschichte umschreiben. Sie besitzen Bitcoin, indem Sie einen geheimen Schlüssel besitzen, und wer diesen Schlüssel kontrolliert, kann die Coins bewegen. Seit dem ersten Block im Januar 2009 läuft das Netzwerk ohne zentralen Betreiber, ohne Unternehmen und ohne Vorstand.</p>",
-        "<p>Das meiste Geld, das Sie verwenden, ist ein Versprechen, das eine Institution verbucht: Ihr Kontoguthaben ist eine Verbindlichkeit Ihrer Bank, und die Währung selbst wird von einer Zentralbank gesteuert, die mehr davon schaffen kann. Bitcoin funktioniert anders. Das Kontobuch ist öffentlich, die Regeln stehen in Open-Source-Software, und jeder kann prüfen, ob die Regeln eingehalten werden.</p>",
+        "<p>Bitcoin ist digitales Geld, das auf einem offenen Netzwerk läuft statt im Hauptbuch einer Bank. Niemand gibt es nach Bedarf aus, und niemand kann das Netzwerk einfrieren oder seine Geschichte umschreiben. Sie besitzen Bitcoin, indem Sie einen geheimen Schlüssel besitzen, und wer diesen Schlüssel kontrolliert, kann die Coins bewegen. Seit dem ersten Block im Januar 2009 läuft das Netzwerk ohne zentralen Betreiber, ohne Unternehmen und ohne Vorstand.</p>",
+        "<p>Das meiste Geld, das Sie verwenden, ist ein Versprechen, das eine Institution verbucht: Ihr Kontoguthaben ist eine Verbindlichkeit Ihrer Bank, und die Währung selbst wird von einer Zentralbank gesteuert, die mehr davon schaffen kann. Bitcoin funktioniert anders. Das Hauptbuch ist öffentlich, die Regeln stehen in Open-Source-Software, und jeder kann prüfen, ob die Regeln eingehalten werden.</p>",
         "<p>Dieses Design war die Antwort auf ein bestimmtes Problem. Vor Bitcoin brauchte jedes digitale Zahlungssystem einen vertrauenswürdigen Mittelsmann, damit niemand dasselbe Geld zweimal ausgibt. Bitcoin löste das ohne Mittelsmann, indem sich das ganze Netzwerk auf eine einzige Transaktionsgeschichte einigt. Das Ergebnis ist ein Zahlungsnetzwerk und ein Sparvermögen, das jeder mit Internetzugang nutzen kann, ohne um Erlaubnis zu fragen und ohne ein Konto zu eröffnen.</p>",
         "<h2>Warum Menschen Bitcoin nutzen</h2>",
         "<p>Menschen kommen aus unterschiedlichen Gründen zu Bitcoin. Manche wollen ein langfristiges Sparvermögen, dessen Menge nicht aufgebläht werden kann. Manche wollen Werte über Grenzen schicken, ohne Verzögerungen, Annahmeschlusszeiten oder Devisenkontrollen. Andere schätzen, dass niemand Coins in Selbstverwahrung ohne Zugriff auf die Schlüssel einfrieren oder beschlagnahmen kann. Unternehmen halten Bitcoin als Treasury-Reserve, und in Ländern mit hoher Inflation wird es oft schlicht genutzt, um Einkommen vor Wertverlust zu schützen.</p>",
-        "<p>Keine dieser Nutzungen setzt voraus, dass Sie handeln. Viele Europäer kaufen jeden Monat einen kleinen festen Betrag (Durchschnittskosteneffekt, DCA) und halten über Jahre, was die Wirkung kurzfristiger Kursschwankungen glättet. Unser <a href=\"/bitcoin-dca-calculator/\">DCA-Rechner</a> zeigt, wie das in der Vergangenheit funktioniert hat, inklusive realer Gebühren.</p>",
+        "<p>Keine dieser Nutzungen setzt voraus, dass Sie handeln. Viele Europäer kaufen jeden Monat einen kleinen festen Betrag (Sparplan mit Cost-Average-Effekt, DCA) und halten über Jahre, was die Wirkung kurzfristiger Kursschwankungen glättet. Unser <a href=\"/bitcoin-dca-calculator/\">DCA-Rechner</a> zeigt, wie das in der Vergangenheit funktioniert hat, inklusive realer Gebühren.</p>",
         "<h2>Knappheit: die Grenze von 21 Millionen</h2>",
         "<p>Die Gesamtzahl der Bitcoin, die je existieren werden, ist auf 21 Millionen begrenzt. Neue Coins gehen als Belohnung für die Sicherung des Netzwerks an Miner, und diese Belohnung halbiert sich etwa alle vier Jahre (alle 210.000 Blöcke). Der Großteil der Menge ist bereits ausgegeben; die restlichen Coins kommen immer langsamer hinzu, bis etwa zum Jahr 2140.</p>",
-        "<p>Dieser feste, vorhersehbare Zeitplan ist der Hauptgrund, warum Bitcoin mit Gold verglichen wird. Man kann nicht mehr drucken, weil die Nachfrage steigt, und keine Zentralbank kann beschließen, bestehende Besitzer zu verwässern. Ob Bitcoin damit für Ihren eigenen Anlagehorizont ein guter Wertspeicher ist, müssen Sie selbst beurteilen; die Geschichte zeigt lange Phasen starken Wachstums und tiefe Rückgänge von 70 % oder mehr.</p>",
+        "<p>Dieser feste, vorhersehbare Zeitplan ist der Hauptgrund, warum Bitcoin mit Gold verglichen wird. Man kann nicht einfach mehr davon drucken, nur weil die Nachfrage steigt, und keine Zentralbank kann beschließen, bestehende Besitzer zu verwässern. Ob Bitcoin damit für Ihren eigenen Anlagehorizont ein guter Wertspeicher ist, müssen Sie selbst beurteilen; die Geschichte zeigt lange Phasen starken Wachstums und tiefe Rückgänge von 70 % oder mehr.</p>",
         "<h2>Bitcoin ist nicht „Krypto“</h2>",
         "<p>Tausende andere Token haben Teile des Bitcoin-Codes kopiert, doch die meisten haben ein Unternehmen, eine Stiftung oder eine kleine Gruppe von Insidern, die die Regeln ändern, mehr Einheiten ausgeben oder das Netzwerk anhalten können. Das ist ein anderes Risikoprofil. Deshalb konzentriert sich Virtuse ausschließlich auf Bitcoin: Der Wert von Bitcoin beruht darauf, dass es keinen Herausgeber und niemanden gibt, der das Sagen hat, und das lässt sich kaum nachbilden, sobald ein Projekt Gründer, einen Vorverkauf oder ein Marketingbudget hat. Wenn Ihnen jemand einen neuen Coin mit versprochenen Renditen anbietet, behandeln Sie das als Verkaufsangebot, nicht als Bitcoin.</p>",
         "<h2>So funktioniert es</h2>",
@@ -299,7 +299,7 @@
         "Bitcoin-Steuerberichte",
         "Steuerratgeber nach Land"
       ],
-      "h1Accent": ": Geschäfte, Karten und Gutscheine."
+      "h1Accent": ": Geschäfte, Händlerkarten und Gutscheine."
     },
     "store-tools": {
       "nav": "Händler-Tools",
@@ -332,7 +332,7 @@
     "jobs": {
       "nav": "Bitcoin-Jobs",
       "navDesc": "Jobs, Förderungen, Fellowships",
-      "h1": "Jobs bei Bitcoin",
+      "h1": "Jobs im Bitcoin-Bereich",
       "title": "Bitcoin-Jobs in Europa bei reinen Bitcoin-Firmen | Virtuse",
       "description": "Wo Sie Jobs bei reinen Bitcoin-Unternehmen in Europa und remote finden, von Entwicklung über Marketing bis Support.",
       "intro": "Wo Sie Arbeit im Bitcoin-Bereich finden: Jobbörsen für reine Bitcoin-Unternehmen sowie Förderungen, Fellowships und Ausbildungsprogramme für Entwickler. Wir veröffentlichen selbst keine Stellenanzeigen; jeder Link führt zur Quelle.",
@@ -341,7 +341,7 @@
         "Bitcoin-Konferenzen in Europa",
         "Befreundete Bitcoin-Projekte"
       ],
-      "h1Accent": ": Stellen, Förderungen und Stipendien."
+      "h1Accent": ": Stellen, Förderungen und Fellowships."
     },
     "peers": {
       "nav": "Bitcoin-Projekte",
@@ -356,7 +356,7 @@
         "Ihr Projekt aufnehmen lassen",
         "Bitcoin-Konferenzen in Europa"
       ],
-      "h1Accent": ", die sich ausschließlich Bitcoin widmen."
+      "h1Accent": ": nur Bitcoin, wie wir."
     },
     "promote": {
       "nav": "Aufnahme",

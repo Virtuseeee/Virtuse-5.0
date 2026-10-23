@@ -6,7 +6,7 @@
     "home": "Főoldal",
     "crumbEcosystem": "Ökoszisztéma",
     "howWePick": "Hogyan válogatunk",
-    "howWePickText": "Minden bejegyzést kézzel választunk ki: csak Bitcoinnal foglalkozhat, Európában releváns, működő és tisztességes kell legyen. Az értékelést mindig mi magunk írjuk. A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg az értékelésünket.",
+    "howWePickText": "Minden bejegyzést kézzel választunk ki: kizárólag Bitcoinnal foglalkozhat, és Európában relevánsnak, működőnek és tisztességesnek kell lennie. Az értékelést mindig mi magunk írjuk. A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg az értékelésünket.",
     "criteriaLink": "Felvételi feltételeink",
     "related": "Kapcsolódó tartalmak a Virtuse oldalán",
     "reviewed": "Utoljára ellenőrizve:",
@@ -138,7 +138,7 @@
       ],
       "primer": [
         "<h2>Pénz kibocsátó nélkül</h2>",
-        "<p>A Bitcoin digitális pénz, amely nem egy bank főkönyvében, hanem egy nyílt hálózaton működik. Senki sem bocsáthat ki belőle tetszés szerint, és senki sem fagyaszthatja be a hálózatot vagy írhatja át a múltját. Bitcoint egy titkos kulcs birtoklásával tart, és aki ezt a kulcsot ellenőrzi, az mozgathatja az érméket. Az első, 2009 januárjában létrejött blokk óta a hálózat központi üzemeltető, vállalat vagy igazgatótanács nélkül működik.</p>",
+        "<p>A Bitcoin digitális pénz, amely nem egy bank főkönyvében, hanem egy nyílt hálózaton működik. Senki sem bocsáthat ki belőle tetszés szerint, és senki sem fagyaszthatja be a hálózatot vagy írhatja át a múltját. Bitcoint egy titkos kulcs birtoklásával tart, és akinek ez a kulcs a birtokában van, az mozgathatja az érméket. Az első, 2009 januárjában létrejött blokk óta a hálózat központi üzemeltető, vállalat vagy igazgatótanács nélkül működik.</p>",
         "<p>A legtöbb pénz, amelyet használ, egy intézmény által nyilvántartott ígéret: bankszámlája egyenlege a bank kötelezettsége, magát a valutát pedig egy központi bank kezeli, amely többet is létrehozhat belőle. A Bitcoin másként működik. A főkönyv nyilvános, a szabályok nyílt forráskódú szoftverben vannak rögzítve, és bárki ellenőrizheti, hogy betartják-e őket.</p>",
         "<p>Ez a felépítés egy konkrét problémára adott válasz. A Bitcoin előtt minden digitális fizetési rendszernek szüksége volt egy megbízható közvetítőre, hogy senki ne költhesse el ugyanazt a pénzt kétszer. A Bitcoin közvetítő nélkül oldotta meg ezt: a teljes hálózat egyetlen tranzakciótörténetben állapodik meg. Az eredmény egy fizetési hálózat és megtakarítási eszköz, amelyet internetkapcsolattal bárki használhat, engedélykérés és számlanyitás nélkül.</p>",
         "<h2>Miért használják az emberek a Bitcoint</h2>",
@@ -146,7 +146,7 @@
         "<p>Egyik felhasználási mód sem igényel kereskedést. Sok európai minden hónapban kis, fix összegért vásárol (átlagár-módszer, DCA), és évekig tartja, ami kisimítja a rövid távú árfolyam-ingadozások hatását. <a href=\"/bitcoin-dca-calculator/\">DCA-kalkulátorunk</a> megmutatja, hogyan működött ez a múltban, valós díjakkal számolva.</p>",
         "<h2>Szűkösség: a 21 milliós korlát</h2>",
         "<p>Az összes valaha létező bitcoin mennyisége 21 millióban van maximalizálva. Új érméket a bányászok kapnak jutalomként a hálózat biztosításáért, és ez a jutalom nagyjából négyévente (210 000 blokkonként) feleződik. A kínálat nagy része már kibocsátásra került; a maradék érmék egyre lassabban érkeznek, egészen 2140 körülig.</p>",
-        "<p>Ez a rögzített, kiszámítható ütemezés a fő oka annak, hogy a Bitcoint az aranyhoz hasonlítják. Nem lehet többet nyomtatni belőle, mert nő a kereslet, és egyetlen központi bank sem dönthet úgy, hogy felhígítja a meglévő tulajdonosok részesedését. Hogy ez saját időtávján jó értékmegőrzővé teszi-e a Bitcoint, azt Önnek kell eldöntenie; a múltban hosszú, erős növekedési időszakok és 70 %-os vagy nagyobb mély visszaesések egyaránt előfordultak.</p>",
+        "<p>Ez a rögzített, kiszámítható ütemezés a fő oka annak, hogy a Bitcoint az aranyhoz hasonlítják. Attól, hogy nő a kereslet, nem lehet többet nyomtatni belőle, és egyetlen központi bank sem dönthet úgy, hogy felhígítja a meglévő tulajdonosok részesedését. Hogy ez saját időtávján jó értékmegőrzővé teszi-e a Bitcoint, azt Önnek kell eldöntenie; a múltban hosszú, erős növekedési időszakok és 70 %-os vagy nagyobb mély visszaesések egyaránt előfordultak.</p>",
         "<h2>A Bitcoin nem „kripto”</h2>",
         "<p>Több ezer más token másolta le a Bitcoin kódjának egyes részeit, de a legtöbb mögött áll egy vállalat, egy alapítvány vagy a bennfentesek egy szűk csoportja, amely megváltoztathatja a szabályokat, újabb egységeket bocsáthat ki vagy leállíthatja a hálózatot. Ez más kockázati profil. A Virtuse ezért foglalkozik kizárólag Bitcoinnal: a Bitcoin értéke abból fakad, hogy nincs kibocsátója és senki sem irányítja, és ezt nagyon nehéz megismételni, ha egy projektnek alapítói, előértékesítése vagy marketingkerete van. Ha valaki egy új érmét kínál Önnek ígért hozammal, kezelje értékesítési ajánlatként, ne Bitcoinként.</p>",
         "<h2>Hogyan működik</h2>",
@@ -155,7 +155,7 @@
         "<p>A gyorsabb és olcsóbb fizetések a Bitcoinra épülő rétegeken futnak, elsősorban a Lightning hálózaton, amely másodpercek alatt rendezi a kis összegű fizetéseket, miközben a végső biztonságot továbbra is az alapláncra bízza.</p>",
         "<p>A Lightningon két fél bitcoint zár le egy közös csatornába, majd tetszőleges gyakorisággal frissíti a köztük lévő egyenleget, szinte azonnal és a cent töredékéért. A csatornák hálózattá kapcsolódnak, így olyasvalakinek is fizethet, akivel soha nem nyitott csatornát. Európa-szerte már ma is fogadnak Lightning-fizetést üzletek; lásd: <a href=\"/ecosystem/spend-bitcoin/\">hol költhet bitcoint</a> és <a href=\"/ecosystem/store-tools/\">eszközök kereskedőknek</a>.</p>",
         "<h2>A saját őrzés alapjai</h2>",
-        "<p>Bitcoint birtokolni annyit jelent, mint ellenőrizni a kulcsait. Ha egy platformon hagyja az érméit, akkor egy követelése van a platformmal szemben, nem magukat az érméket birtokolja. A saját őrzés megszünteti ezt a partnerkockázatot, de Önt teszi felelőssé a biztonsági mentésért: a helyreállítási kifejezés (általában 12 vagy 24 szó) visszaállítja a tárcáját, és aki látja, elviheti az érméit.</p>",
+        "<p>Bitcoint birtokolni annyit jelent, mint rendelkezni a kulcsai felett. Ha egy platformon hagyja az érméit, akkor egy követelése van a platformmal szemben, nem magukat az érméket birtokolja. A saját őrzés megszünteti ezt a partnerkockázatot, de Önt teszi felelőssé a biztonsági mentésért: a helyreállítási kifejezés (általában 12 vagy 24 szó) visszaállítja a tárcáját, és aki látja, elviheti az érméit.</p>",
         "<p>Három elterjedt modell létezik. Szabályozott szolgáltatónál történő letétkezelés esetén a kulcsokat a szolgáltató tartja, és Ön annak biztonságára és fizetőképességére támaszkodik; ez egyszerű, de partnerkockázattal jár. Egykulcsos saját őrzésnél egy kulcsot Ön tart, általában tárcaalkalmazásban vagy erre szolgáló eszközön. Többaláírásos (multisig, együttműködő) őrzésnél több kulcs kell az összegek mozgatásához, így egy kulcs elvesztése vagy kompromittálódása nem jelenti mindennek az elvesztését. A helyes választás az összegtől, a technikai jártasságától és attól függ, kinek kell hozzáférnie az érmékhez, ha Önnel történik valami.</p>",
         "<p>A legtöbb ember számára észszerű út, ha kis összeggel kezd, kipróbál egy próbavisszaállítást, a helyreállítási kifejezést offline tartja, és soha nem gépeli be egy weboldalra. Nagyobb összegeknél érdemes dedikált hardvert használni, és tervet készíteni az örökösök számára. <a href=\"/secure.html\">Letétkezelési oldalunk</a>, a <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">hidegtárca-útmutató</a> és az <a href=\"/bitcoin-inheritance/\">öröklési ellenőrzőlista</a> részletesen foglalkozik ezekkel.</p>",
         "<h2>Kockázatok, amelyeket érdemes megérteni</h2>",
@@ -291,7 +291,7 @@
       "nav": "Fizetés bitcoinnal",
       "navDesc": "Üzletek, térképek, ajándékkártyák",
       "h1": "Fizetés bitcoinnal",
-      "title": "Hol fizethet Bitcoinnal Európában? | Virtuse",
+      "title": "Hol fizethet bitcoinnal Európában? | Virtuse",
       "description": "Bitcoint elfogadó üzletek Európa-szerte, számlafizetés és ajándékkártyák bitcoinnal vagy Lightninggal. Válogatott, kizárólag Bitcoin.",
       "intro": "Hol költhet bitcoint Európában: bitcoint elfogadó üzletek térképei, ajándékkártyák a mindennapi vásárlásokhoz és bitcoinnal fizethető online szolgáltatások. Vegye figyelembe, hogy sok országban a bitcoin elköltése adózási szempontból elidegenítésnek minősül.",
       "related": [
@@ -323,7 +323,7 @@
       "description": "Könyvtárak, SDK-k és hírlevelek Bitcoinra és Lightningra épülő fejlesztéshez, európai fejlesztőknek és csapatoknak válogatva.",
       "intro": "Könyvtárak, SDK-k, tesztkörnyezetek és olvasnivalók Bitcoinra és Lightningra fejlesztőknek. Elsősorban nyílt forráskód, több projektet európai csapatok tartanak karban.",
       "related": [
-        "Bitcoin-állások és -ösztöndíjak",
+        "Bitcoin-állások és -támogatások",
         "Kereskedői eszközök",
         "Bitcoin és adatvédelem"
       ],
@@ -347,7 +347,7 @@
       "nav": "Bitcoin-társak",
       "navDesc": "Rokon Bitcoin-projektek",
       "h1": "Bitcoin-társak",
-      "title": "Bitcoin-társak: rokon, csak Bitcoin-projektek | Virtuse",
+      "title": "Kizárólag Bitcoinnal foglalkozó társprojektek | Virtuse",
       "description": "Független, kizárólag Bitcoinnal foglalkozó projektek, címtárak és oktatók, amelyeket tisztelünk és ajánlunk. Nem kereskedelmi, kézzel válogatott.",
       "intro": "Független, nem kereskedelmi, kizárólag Bitcoinnal foglalkozó projektek, amelyeket tisztelünk: címtárak, oktatók és közösségek, amelyek osztják nézetünket, hogy a Bitcoin elég. Kereskedelmi partnereket itt nem listázunk; azok csak a Partner Finderben jelennek meg.",
       "partnerNote": "Szabályozott partnert keres vásárláshoz, tároláshoz vagy hitelhez? Használja a <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Findert</a>.",
@@ -363,7 +363,7 @@
       "navDesc": "Mutassa be projektjét",
       "h1": "Mutassa be projektjét",
       "title": "Kerüljön be a Bitcoin-ökoszisztémába | Virtuse",
-      "description": "Így jelentkezhetnek a csak Bitcoinnal foglalkozó projektek a Virtuse Bitcoin-ökoszisztémába. Kézi elbírálás, világos feltételek, jelölt fizetett hely.",
+      "description": "Így jelentkezhetnek a csak Bitcoinnal foglalkozó projektek a Bitcoin-ökoszisztémánkba. Kézi elbírálás, világos feltételek, a fizetett helyeket jelöljük.",
       "intro": "A Virtuse Bitcoin-ökoszisztéma gyűjteményét kézzel válogatjuk. Automatikus beküldést nem fogadunk el. Ha úgy gondolja, hogy projektjének itt a helye, írjon nekünk e-mailt, vagy küldje el az alábbi jelentkezési űrlapot. Minden jelentkezést személyesen bírálunk el, és indoklás nélkül is elutasíthatjuk.",
       "h1Accent": "a Bitcoin-ökoszisztémában."
     }

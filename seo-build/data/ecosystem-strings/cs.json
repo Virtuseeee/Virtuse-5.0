@@ -69,13 +69,13 @@
     "criteriaH": "Kritéria",
     "criteria": [
       "<strong>Jen Bitcoin.</strong> Podporujete bitcoin (on-chain a/nebo Lightning) a neuvádíte, neprodáváte ani nepropagujete jiné kryptoměny či tokeny.",
-      "<strong>Relevantní pro Evropu.</strong> Obsluhujete uživatele v EU/EHP nebo ve Švýcarsku.",
+      "<strong>Relevantní pro Evropu.</strong> Své služby nabízíte uživatelům v EU/EHP nebo ve Švýcarsku.",
       "<strong>Regulováno tam, kde je to nutné.</strong> Pokud v EU poskytujete služby spojené s kryptoaktivy, máte povolení podle MiCA (CASP) nebo platnou přechodnou licenci.",
       "<strong>Aktivní a udržovaný projekt</strong> s funkčním veřejným webem.",
       "<strong>Poctivost:</strong> žádné sliby výnosů a žádná nezveřejněná úschova."
     ],
     "paidH": "Placené umístění",
-    "paid": "Některé položky jsou označeny „Sponzorováno“ nebo „Doporučeno“. Jde o placená umístění a některé odkazy jsou affiliate odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href=\"{howWeEarn}\">Jak vyděláváme</a>.",
+    "paid": "Některé položky jsou označeny „Sponzorováno“ nebo „Zvýrazněno“. Jde o placená umístění a některé odkazy jsou affiliate odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href=\"{howWeEarn}\">Jak vyděláváme</a>.",
     "removalH": "Odstranění",
     "removal": "Položku můžeme odstranit, pokud přestane splňovat kritéria. O odstranění můžete kdykoli požádat.",
     "applyH": "Žádost",
@@ -85,15 +85,15 @@
     "fCategory": "Kategorie ekosystému *",
     "fCategoryChoose": "Vyberte kategorii",
     "fDesc": "Krátký popis v angličtině (max. 300 znaků) *",
-    "fCountries": "Obsluhované země *",
+    "fCountries": "Země, kde působíte *",
     "fAllCountries": "Všechny země EU/EHP a Švýcarsko",
     "fChooseCountries": "Vybrat konkrétní země",
     "fBitcoinOnly": "Potvrzuji, že projekt je zaměřený jen na Bitcoin (žádné jiné kryptoměny ani tokeny) *",
-    "fLicence": "Číslo licence MiCA a orgán, který ji vydal (pokud se uplatní)",
+    "fLicence": "Číslo licence MiCA a orgán, který ji vydal (pokud existuje)",
     "fRepo": "URL open-source repozitáře",
     "fContactName": "Jméno kontaktní osoby *",
     "fContactEmail": "Kontaktní e-mail *",
-    "fSponsored": "Máte zájem o doporučené nebo sponzorované umístění?",
+    "fSponsored": "Máte zájem o zvýrazněné nebo sponzorované umístění?",
     "fYes": "Ano",
     "fNo": "Ne",
     "fMessage": "Zpráva",
@@ -142,10 +142,10 @@
         "<p>Většina peněz, které používáte, je slib zapsaný nějakou institucí: zůstatek na vašem účtu je závazkem vaší banky a samotnou měnu spravuje centrální banka, která jí může vytvořit více. Bitcoin funguje jinak. Účetní kniha je veřejná, pravidla jsou zapsaná v open-source softwaru a kdokoli si může ověřit, že se dodržují.</p>",
         "<p>Tento návrh byl odpovědí na konkrétní problém. Před Bitcoinem potřeboval každý digitální platební systém důvěryhodného prostředníka, který bránil tomu, aby lidé utratili stejné peníze dvakrát. Bitcoin tento problém vyřešil bez prostředníka: celá síť se shodne na jediné historii transakcí. Výsledkem je platební síť a aktivum pro úspory, které může využít kdokoli s připojením k internetu, bez žádosti o povolení a bez zakládání účtu.</p>",
         "<h2>Proč lidé používají Bitcoin</h2>",
-        "<p>Lidé přicházejí k Bitcoinu z různých důvodů. Někteří chtějí dlouhodobé aktivum pro úspory, jehož množství nelze nafouknout. Jiní chtějí posílat hodnotu přes hranice bez zpoždění, uzávěrek a devizových omezení. Další oceňují, že mince ve vlastní úschově nemůže nikdo bez přístupu ke klíčům zmrazit ani zabavit. Firmy ho drží jako rezervu v treasury a v zemích s vysokou inflací slouží často prostě k ochraně příjmů před ztrátou hodnoty.</p>",
+        "<p>Lidé přicházejí k Bitcoinu z různých důvodů. Někteří chtějí dlouhodobé aktivum pro úspory, jehož množství nelze nafouknout. Jiní chtějí posílat hodnotu přes hranice bez zpoždění, uzávěrek a devizových omezení. Další oceňují, že mince ve vlastní úschově nemůže nikdo bez přístupu ke klíčům zmrazit ani zabavit. Firmy ho drží jako rezervu ve své rozvaze a v zemích s vysokou inflací slouží často prostě k ochraně příjmů před ztrátou hodnoty.</p>",
         "<p>Žádné z těchto využití nevyžaduje obchodování. Mnoho Evropanů nakupuje každý měsíc malou pevnou částku (pravidelné nákupy, DCA) a drží roky, což vyhlazuje dopad krátkodobých výkyvů ceny. Naše <a href=\"/bitcoin-dca-calculator/\">DCA kalkulačka</a> ukazuje, jak to fungovalo v minulosti, včetně skutečných poplatků.</p>",
         "<h2>Vzácnost: limit 21 milionů</h2>",
-        "<p>Celkový počet bitcoinů, které kdy budou existovat, je omezen na 21 milionů. Nové mince dostávají těžaři jako odměnu za zabezpečení sítě a tato odměna se zhruba každé čtyři roky (každých 210 000 bloků) snižuje na polovinu. Většina zásoby už byla vydána; zbývající mince přibývají stále pomaleji, zhruba až do roku 2140.</p>",
+        "<p>Celkový počet bitcoinů, které kdy budou existovat, je omezen na 21 milionů. Nové mince dostávají těžaři jako odměnu za zabezpečení sítě a tato odměna se zhruba každé čtyři roky (každých 210 000 bloků) snižuje na polovinu. Většina bitcoinů už byla vydána; zbývající mince přibývají stále pomaleji, zhruba až do roku 2140.</p>",
         "<p>Tento pevný a předvídatelný harmonogram je hlavní důvod, proč lidé srovnávají Bitcoin se zlatem. Kvůli rostoucí poptávce nelze vytisknout více a žádná centrální banka nemůže rozhodnout o zředění stávajících držitelů. Zda je Bitcoin dobrým uchovatelem hodnoty pro váš časový horizont, musíte posoudit sami; historie ukazuje dlouhá období silného růstu i hluboké propady o 70 % a více.</p>",
         "<h2>Bitcoin není „krypto“</h2>",
         "<p>Tisíce jiných tokenů převzaly části kódu Bitcoinu, ale většina z nich má firmu, nadaci nebo malou skupinu zasvěcených, kteří mohou měnit pravidla, vydávat další jednotky nebo síť pozastavit. To je jiný rizikový profil. Proto se Virtuse věnuje jen Bitcoinu: hodnota Bitcoinu vychází z toho, že nemá žádného vydavatele ani nikoho, kdo by o něm rozhodoval, a to se velmi těžko napodobuje, jakmile má projekt zakladatele, předprodej nebo marketingový rozpočet. Když vám někdo nabízí novou minci se slíbenými výnosy, berte to jako prodejní nabídku, ne jako Bitcoin.</p>",
@@ -186,7 +186,7 @@
       "facts": [
         {
           "v": "21 000 000",
-          "l": "Maximální zásoba"
+          "l": "Maximální množství"
         },
         {
           "v": "2009",
@@ -333,7 +333,7 @@
       "nav": "Práce v Bitcoinu",
       "navDesc": "Práce, granty a stipendia",
       "h1": "Práce v Bitcoinu",
-      "title": "Práce v Bitcoinu v Evropě: firmy jen pro Bitcoin | Virtuse",
+      "title": "Práce v bitcoinových firmách v Evropě | Virtuse",
       "description": "Kde najít práci ve firmách zaměřených jen na Bitcoin v Evropě i na dálku, od vývoje po marketing a podporu.",
       "intro": "Kde najít práci v Bitcoinu: pracovní portály firem zaměřených jen na Bitcoin a také granty, stipendia a vzdělávací programy pro vývojáře. Pracovní nabídky sami nezveřejňujeme; každý odkaz vede ke zdroji.",
       "related": [

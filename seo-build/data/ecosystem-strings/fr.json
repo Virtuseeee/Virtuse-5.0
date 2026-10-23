@@ -146,7 +146,7 @@
         "<p>Aucun de ces usages ne vous oblige à faire du trading. De nombreux Européens achètent chaque mois un petit montant fixe (investissement programmé, ou DCA) et conservent pendant des années, ce qui lisse l'effet des variations de prix à court terme. Notre <a href=\"/bitcoin-dca-calculator/\">calculateur DCA</a> montre ce que cela a donné historiquement, frais réels inclus.</p>",
         "<h2>La rareté : la limite de 21 millions</h2>",
         "<p>Le nombre total de bitcoins qui existeront jamais est plafonné à 21 millions. Les nouveaux bitcoins sont versés aux mineurs en récompense de la sécurisation du réseau, et cette récompense est divisée par deux environ tous les quatre ans (tous les 210 000 blocs). La plus grande partie de l'offre a déjà été émise ; les bitcoins restants arrivent de plus en plus lentement, jusqu'aux alentours de 2140.</p>",
-        "<p>Ce calendrier fixe et prévisible est la principale raison pour laquelle on compare le Bitcoin à l'or. Impossible d'en imprimer davantage parce que la demande augmente, et aucune banque centrale ne peut décider de diluer les détenteurs existants. C'est à vous de juger si cela fait du Bitcoin une bonne réserve de valeur sur votre propre horizon ; l'histoire montre de longues périodes de forte hausse et de profondes baisses de 70 % ou plus.</p>",
+        "<p>Ce calendrier fixe et prévisible est la principale raison pour laquelle on compare le Bitcoin à l'or. On ne peut pas en imprimer davantage simplement parce que la demande augmente, et aucune banque centrale ne peut décider de diluer les détenteurs existants. C'est à vous de juger si cela fait du Bitcoin une bonne réserve de valeur sur votre propre horizon ; l'histoire montre de longues périodes de forte hausse et de profondes baisses de 70 % ou plus.</p>",
         "<h2>Le Bitcoin n'est pas « la crypto »</h2>",
         "<p>Des milliers d'autres tokens ont copié une partie du code du Bitcoin, mais la plupart ont une entreprise, une fondation ou un petit groupe d'initiés capable de changer les règles, d'émettre davantage d'unités ou de mettre le réseau en pause. Le profil de risque est différent. C'est pour cette raison que Virtuse est 100 % Bitcoin : la valeur du Bitcoin vient de l'absence d'émetteur et de dirigeant, et cela est très difficile à reproduire dès qu'un projet a des fondateurs, une prévente ou un budget marketing. Lorsque quelqu'un vous présente une nouvelle cryptomonnaie avec des rendements promis, considérez-la comme une offre commerciale, pas comme du Bitcoin.</p>",
         "<h2>Comment ça fonctionne</h2>",
@@ -313,7 +313,7 @@
         "Déclaration fiscale Bitcoin",
         "Où dépenser du bitcoin"
       ],
-      "h1Accent": "qui acceptent le bitcoin en boutique."
+      "h1Accent": ": acceptez le bitcoin en boutique."
     },
     "dev-tools": {
       "nav": "Outils dev",
