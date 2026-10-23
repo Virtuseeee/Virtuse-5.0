@@ -1,12 +1,12 @@
 // Verdict question funnel (verdict.html, sk/verdict.html). Asks the questions the
 // AI would otherwise guess, then calls the Worker (POST /verdict with a profile of
 // fixed ids, see cloudflare-worker/src/verdict.js PROFILE) and shows the free view:
-// score, strongest and weakest signal, 8 locked, Partner Finder prefilled.
+// verdict line, 3 next steps, 2 areas, partners and pricing (verdict-result-v2).
 // Off until launch: on for staging, ?verdict=1 or <meta name="vb-verdict" content="on">.
 // cfo.html hands over the decision text in sessionStorage 'vb-verdict-text'.
 // Full report: no payment yet. Visitors leave an email (Worker POST /waitlist,
-// source verdict_report). On staging the request asks the staging Worker for
-// the report preview (?free=1 shows the free view instead).
+// source verdict_report). ?report=1 asks the staging Worker for the report
+// preview; without it staging shows the free view with the pricing block.
 // Questions depend on the goal (GOALSETS); hints only say an answer "affects"
 // a signal when the Worker's profileFloors() backs it.
 (function () {
@@ -17,8 +17,9 @@
   var WORKER = (STAGE ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/verdict';
   var WAITLIST = 'https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist';
   var meta = document.querySelector('meta[name="vb-verdict"]');
-  // ?free=1 shows the free view on staging too.
-  var PREVIEW = !/[?&]free=1\b/.test(location.search) && (STAGE || /[?&]report=1\b/.test(location.search));
+  // The report preview only with ?report=1 (staging Worker); the default on
+  // staging is the free view, as a visitor sees it (verdict-result-v2 §3).
+  var PREVIEW = /[?&]report=1\b/.test(location.search);
   var ON = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on');
 
   var STR = {
@@ -85,11 +86,11 @@
       ctxEb: 'Váš kontext', ctxH: 'Vaše rozhodnutie má teraz pevný rámec.', ctxP: 'Väčšina rozhodnutí zlyhá na tom, čo sa nepovedalo nahlas: kedy budete peniaze potrebovať, čo urobíte pri prepade a kto sa k nim dostane. AI vaše odpovede zohľadní. Čo napíšete vlastnými slovami, váži viac.',
       ctxWhat: 'Čo zvažujete', ctxLimits: 'Vaše hranice',
       focusH: 'Čo chcete zistiť najviac?', focusP: 'Na to sa vo verdikte zameriame.', focusHint: 'Vyberte jedno alebo viac.', picked: ' vybrané', pickOne: 'Vyberte aspoň jedno',
-      focus: [['risk', 'Kde je najväčšie riziko?'], ['drop', 'Zvládnem to pri prepade?'], ['tax', 'Čo s daňami a úschovou?'], ['next', 'Čo mám urobiť ako ďalšie?']],
+      focus: [['risk', 'Kde je najväčšie riziko?'], ['drop', 'Zvládnem to pri prepade?'], ['tax', 'Čo s daňami a úschovou?'], ['next', 'Čo mi v pláne chýba?']],
       revEb: 'Posledná kontrola', revH: 'Takto vaše rozhodnutie pochopíme.', revP: 'Opravte, čo nesedí. Presne toto pôjde do hodnotenia.', edit: '✎ Upraviť', none: 'Neuvedené', notYet: 'Zatiaľ neviem', otherGoal: 'Niečo iné',
       rev: { goal: 'Čo zvažujete', text: 'Vlastnými slovami', country: 'Krajina', experience: 'Bitcoin už vlastníte', amount: 'Suma', share: 'Podiel na majetku', horizon: 'Kedy peniaze potrebujete', reserve: 'Rezerva na 6 mesiacov', keys: 'Kľúče', drop: 'Pri prepade o 70 %', aim: 'Čo má dosiahnuť', tax_known: 'Zdanenie predaja', ruleset: 'Napísané pravidlo', holdtime: 'Čas držby', basis: 'Nákupná cena', ltv: 'LTV pôžičky', liqprice: 'Cena likvidácie', runway: 'Hotovosť firmy', board: 'Schválenie', heirs: 'Dedičia', custody_pref: 'Preferovaná úschova', freq: 'Ako často' },
       revAi: 'Hodnotí umelá inteligencia (jazykový model od Anthropic). Môže sa mýliť. Nie je to investičné, daňové ani právne poradenstvo.', getVerdict: 'Získať verdikt zadarmo',
-      loadH: 'Kontrolujeme vaše rozhodnutie', loadSteps: ['Čítame vaše rozhodnutie a odpovede…', 'Hodnotíme 10 signálov…', 'Hľadáme najslabšie miesto…', 'Pripravujeme ďalší krok…'], loadGet: 'Čo dostanete', loadNote: 'Zvyčajne 5 až 15 sekúnd. Nechajte stránku otvorenú.',
+      loadH: 'Kontrolujeme vaše rozhodnutie', loadSteps: ['Čítame vaše rozhodnutie a odpovede…', 'Hodnotíme 10 signálov…', 'Hľadáme najslabšie miesto…', 'Pripravujeme 3 ďalšie kroky…'], loadGet: 'Čo dostanete', loadNote: 'Zvyčajne 5 až 15 sekúnd. Nechajte stránku otvorenú.',
       unlock: [['Všetkých 10 signálov', 'Každý signál s bodmi a dôvodom, napísaným pre vaše rozhodnutie.'], ['Najslabšie miesto', 'Ktorý signál vás ťahá dole a kde ho doplniť.'], ['Chýbajúce otázky', 'Na čo ste nemysleli a čo zvážiť predtým, ako konáte.'], ['Partneri pre vašu kategóriu', 'Partner Finder s vašimi odpoveďami už vyplnenými.']],
       failH: 'Verdict sa nepodarilo načítať.', retry: '↺ Skúsiť znova', network: 'Chyba siete. Skúste to znova.', error: 'Niečo sa pokazilo. Skúste to o chvíľu.',
       resEb: 'Váš verdikt', weakH: 'Najslabšie miesto: ', found: 'Čo Verdict našiel', strongB: 'Silné miesto', weakB: 'Najslabšie miesto', missB: 'Čo chýba', nothing: 'Nič podstatné.', inReport: ' v reporte',
@@ -102,14 +103,10 @@
       once: 'Jednorazovo', noSub: 'Žiadne predplatné.', waitNote: 'Platby ešte nespúšťame. Nechajte e-mail a dáme vám vedieť, keď sa report otvorí.',
       wantPh: 'Váš e-mail', wantBtn: 'Dajte mi vedieť', wantOk: 'Ste na zozname. Napíšeme vám raz, keď sa report otvorí.', wantBad: 'Zadajte platný e-mail.',
       wantNote: 'Uložíme len váš e-mail, text rozhodnutia nie. Odhlásiť sa môžete jedným kliknutím z e-mailu.', privacy: 'Súkromie',
-      prevBadge: 'Náhľad reportu', prevNote: 'Náhľad na testovanie. Na virtuse.com návštevník vidí 2 signály a formulár pre záujem o report.',
+      prevBadge: 'Náhľad reportu', prevNote: 'Náhľad reportu na testovanie (?report=1). Bez ?report=1 vidíte to, čo návštevník: verdikt, 3 kroky, 2 oblasti, partnerov a ceny.',
       allH: 'Všetkých 10 signálov', missAllH: 'Chýbajúce otázky', planH: 'Plán krokov', planP: 'Signály pod 7 bodov, od najslabšieho. Každý s nástrojom, kde ho doplníte.', planNone: 'Všetky signály majú aspoň 7 bodov.', pdf: 'Uložiť ako PDF', pts: ' b.',
       R: {
-        sentence: function (s, w) { return 'Vaša úvaha je najsilnejšia v oblasti ' + s + ' a najslabšia v oblasti ' + w + '.'; },
-        sentenceLow: function (w) { return 'Väčšina úvahy zatiaľ nie je opísaná. Najviac chýba oblasť ' + w + '.'; },
-        means: function (sc, n) { return 'Čo znamená ' + sc + '/100: dobre ste opísali ' + n + ' z 10 oblastí.'; },
         nextH: 'Váš ďalší krok', again2: 'Ohodnotiť znova', open: 'Otvoriť',
-        next: { worst_case: 'Spočítajte, čo by pre váš plán znamenal pokles o 70 %.', liquidity: 'Určte, na koľko mesiacov výdavkov vám vystačí rezerva mimo Bitcoinu.', tax: function (c) { return 'Zistite, ako sa predaj zdaní ' + (c ? 'v krajine ' + c : 'vo vašej krajine') + '.'; }, custody: 'Opíšte, kto drží kľúče a ako sa k Bitcoinu dostanú dedičia.', plan_b: 'Napíšte, čo urobíte, ak hlavný predpoklad neplatí.', goal: 'Doplňte cieľ s číslom a dátumom.', horizon: 'Napíšte, ako dlho budete držať a čo by vás prinútilo predať skôr.', alternatives: 'Porovnajte aspoň dve iné možnosti a napíšte, prečo táto.', rule: 'Napíšte si pravidlo, kedy dokúpite, predáte alebo zmeníte plán.', asymmetry: 'Určte, akú stratu unesiete bez zmeny života, a podľa nej veľkosť.' },
         improve: 'Ako zlepšiť toto skóre?',
         tip: { worst_case: 'Na 10 bodov: dopad poklesu o 70 % v eurách a plán, ako ho prečkať.', liquidity: 'Na 10 bodov: rezerva v mesiacoch výdavkov, nezávislá od ceny Bitcoinu.', tax: 'Na 10 bodov: správne pravidlo pre vašu krajinu a odložená suma na daň.', custody: 'Na 10 bodov: úschova, obnova a postup pre dedičov bez zdieľania seed frázy.', plan_b: 'Na 10 bodov: konkrétny spúšťač a konkrétny krok, ak predpoklad neplatí.', goal: 'Na 10 bodov: cieľ s číslom a dátumom.', horizon: 'Na 10 bodov: horizont v súlade s cieľom a čo by vás prinútilo predať skôr.', alternatives: 'Na 10 bodov: aspoň dve porovnané možnosti s dôvodom voľby.', rule: 'Na 10 bodov: napísané pravidlo vrátane toho, kedy ho zmeníte.', asymmetry: 'Na 10 bodov: veľkosť odôvodnená stratou, ktorú unesiete.' },
         openQ: 'Otázka, na ktorú zatiaľ nemáte odpoveď', lockedH: function (n) { return 'Ďalších ' + n + ' signálov je v reporte'; },
@@ -189,11 +186,11 @@
       ctxEb: 'Your context', ctxH: 'Your decision now has a clear frame.', ctxP: "Most decisions fail on what was never said out loud: when you'll need the money, what you'll do in a fall and who can reach it. The AI takes your answers into account. What you write in your own words counts more.",
       ctxWhat: "What you're considering", ctxLimits: 'Your limits',
       focusH: 'What do you most want to find out?', focusP: "That's where the verdict will focus.", focusHint: 'Pick one or more.', picked: ' selected', pickOne: 'Pick at least one',
-      focus: [['risk', "Where's the biggest risk?"], ['drop', 'Can I get through a fall?'], ['tax', 'What about tax and custody?'], ['next', 'What should I do next?']],
+      focus: [['risk', "Where's the biggest risk?"], ['drop', 'Can I get through a fall?'], ['tax', 'What about tax and custody?'], ['next', "What's missing in my plan?"]],
       revEb: 'Final check', revH: "Here's how we understood your decision.", revP: "Change anything that doesn't sound right. This is exactly what gets assessed.", edit: '✎ Edit', none: 'Not given', notYet: 'Not sure yet', otherGoal: 'Something else',
       rev: { goal: "What you're considering", text: 'In your own words', country: 'Country', experience: 'Already own Bitcoin', amount: 'Amount', share: 'Share of wealth', horizon: 'When you need the money', reserve: '6-month reserve', keys: 'Keys', drop: 'In a 70% fall', aim: 'What it should achieve', tax_known: 'Tax on a sale', ruleset: 'Written rule', holdtime: 'Holding period', basis: 'Purchase price', ltv: 'Loan LTV', liqprice: 'Liquidation price', runway: 'Company cash runway', board: 'Approval', heirs: 'Heirs', custody_pref: 'Preferred custody', freq: 'How often' },
       revAi: 'This assessment is generated by artificial intelligence (a language model by Anthropic). It may be wrong. It is not investment, tax or legal advice.', getVerdict: 'Get my free verdict',
-      loadH: 'Checking your decision', loadSteps: ['Reading your decision and answers…', 'Scoring 10 signals…', 'Finding the weakest point…', 'Preparing your next step…'], loadGet: 'What you get', loadNote: 'Usually 5 to 15 seconds. Keep this page open.',
+      loadH: 'Checking your decision', loadSteps: ['Reading your decision and answers…', 'Scoring 10 signals…', 'Finding the weakest point…', 'Preparing your 3 next steps…'], loadGet: 'What you get', loadNote: 'Usually 5 to 15 seconds. Keep this page open.',
       unlock: [['All 10 signals', 'Each signal scored, with a reason written for your decision.'], ['The weakest point', 'Which signal pulls you down and where to fill it in.'], ['Missing questions', "What you haven't considered before you act."], ['Partners for your category', 'Partner Finder with your answers already filled in.']],
       failH: "Verdict couldn't load.", retry: '↺ Try again', network: 'Network error. Please try again.', error: 'Something went wrong. Please try again in a moment.',
       resEb: 'Your verdict', weakH: 'Weakest point: ', found: 'What Verdict found', strongB: 'Strong point', weakB: 'Weakest point', missB: "What's missing", nothing: 'Nothing major.', inReport: ' in the report',
@@ -206,14 +203,10 @@
       once: 'One-time', noSub: 'No subscription.', waitNote: "Payments aren't open yet. Leave your email and we'll tell you when the report opens.",
       wantPh: 'Your email', wantBtn: 'Let me know', wantOk: "You're on the list. We'll write once, when the report opens.", wantBad: 'Enter a valid email.',
       wantNote: 'We keep only your email, not your decision text. Leave with one click from the email.', privacy: 'Privacy',
-      prevBadge: 'Report preview', prevNote: 'Preview for testing. On virtuse.com visitors see 2 signals and a form to register interest in the report.',
+      prevBadge: 'Report preview', prevNote: 'Report preview for testing (?report=1). Without ?report=1 you see what a visitor sees: the verdict, 3 steps, 2 areas, partners and pricing.',
       allH: 'All 10 signals', missAllH: 'Missing questions', planH: 'Step-by-step plan', planP: 'Signals under 7 points, weakest first. Each with the tool where you fill it in.', planNone: 'Every signal has at least 7 points.', pdf: 'Save as PDF', pts: ' pts',
       R: {
-        sentence: function (s, w) { return 'Your thinking is strongest on ' + s + ' and weakest on ' + w + '.'; },
-        sentenceLow: function (w) { return 'Most of your thinking is not described yet. ' + w + ' is missing most.'; },
-        means: function (sc, n) { return 'What ' + sc + '/100 means: you described ' + n + ' of 10 areas well.'; },
         nextH: 'Your next step', again2: 'Rate again', open: 'Open',
-        next: { worst_case: 'Work out what a 70% fall would mean for your plan.', liquidity: 'Work out how many months of expenses your reserve outside Bitcoin covers.', tax: function (c) { return 'Find out how a sale is taxed in ' + (c || 'your country') + '.'; }, custody: 'Describe who holds the keys and how heirs would reach the Bitcoin.', plan_b: 'Write down what you will do if your main assumption fails.', goal: 'Add a goal with a number and a date.', horizon: 'Write down how long you will hold and what would force an earlier sale.', alternatives: 'Compare at least two other options and write down why this one.', rule: 'Write a rule for when you buy more, sell or change the plan.', asymmetry: 'Work out what loss you can carry without changing your life, and size from that.' },
         improve: 'How can this score improve?',
         tip: { worst_case: 'For 10 points: what a 70% fall means in euros and a plan to get through it.', liquidity: 'For 10 points: a reserve in months of expenses, independent of the Bitcoin price.', tax: 'For 10 points: the right rule for your country and the tax set aside.', custody: 'For 10 points: custody, recovery and a procedure for heirs without sharing the seed phrase.', plan_b: 'For 10 points: a concrete trigger and a concrete step if an assumption fails.', goal: 'For 10 points: a goal with a number and a date.', horizon: 'For 10 points: a horizon that fits the goal, and what would force an earlier sale.', alternatives: 'For 10 points: at least two options compared, with a reason for the choice.', rule: 'For 10 points: a written rule, including when you would change it.', asymmetry: 'For 10 points: a size justified by the loss you can carry.' },
         openQ: "A question you haven't answered yet", lockedH: function (n) { return n + ' more signals are in the report'; },
@@ -286,7 +279,9 @@
     }).join('');
   }
   function go(n) {
-    i = n; back.hidden = i === 0 || i === at('loading'); stepper(); SCREENS[i].r(); spot();
+    i = n; back.hidden = i === 0 || i === at('loading'); stepper();
+    var root = panel.closest('.vf'); if (root) root.classList.toggle('is-result', SCREENS[i].k === 'result');
+    SCREENS[i].r(); spot();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     push({ event: 'verdict_step', verdict_lang: LANG, verdict_step: SCREENS[i].k || SCREENS[i].r.name });
   }
@@ -428,75 +423,208 @@
       if (res.ok && res.d && res.d.ok) {
         RESULT = res.d;
         if (!cached) try { sessionStorage.setItem('vb-verdict-last', JSON.stringify({ k: payload, d: res.d })); } catch (e) {}
-        push(RESULT.declined ? { event: 'verdict_declined', verdict_lang: LANG } : { event: 'verdict_result', verdict_lang: LANG, verdict_band: RESULT.band.id, verdict_weakest: RESULT.weakest.id });
+        push(RESULT.declined ? { event: 'verdict_declined', verdict_lang: LANG } : { event: 'verdict_result', verdict_lang: LANG, verdict_band: RESULT.band.id, verdict_level: RESULT.level && RESULT.level.id, verdict_weakest: RESULT.weakest.id });
         next(); return;
       }
       panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + esc((res.d && res.d.error) || STR.error) + '</p><div class="foot"><span></span><button class="ghost" id="rt">' + STR.retry + '</button></div>';
       document.getElementById('rt').onclick = function () { go(at('loading')); };
     });
   }
-  // Result (verdict-review D, 2026-10-23): verdict sentence + score ring in
-  // the band colour, one next step, two free signals with "how to improve",
-  // 8 locked, price card + waitlist + FAQ, Partner Finder last (MiCA, C17).
+  // Result v2 (verdict-result-v2.md, 2026-10-23): verdict line → 3 next steps
+  // → two areas in plain language → one open question → 2-3 partners → pricing
+  // → legal. Level, steps, area texts and pricing come from the Worker (code,
+  // not the model); this file only lays them out.
+  var V = {
+    sk: {
+      levelPill: { ready: 'Premyslené', almost: 'Takmer hotové', basics: 'Chýbajú základy', redflag: 'Červená vlajka' },
+      more: function (n) { return '+' + n + ' ďalšie'; },
+      stepsH: 'Vaše 3 ďalšie kroky', why: 'Prečo: ', areasH: 'Dve oblasti vysvetlené',
+      role: { weakest: 'Najviac chýba', strongest: 'Čo už máte', furthest: 'Kde ste najďalej', second: 'Druhá vec na doplnenie' },
+      meaningL: 'Čo to pre vás znamená', todoL: 'Čo urobiť', inStep: function (n) { return 'Krok ' + n + ' vyššie.'; }, reasonL: 'Prečo toto hodnotenie', tipL: 'Ako získať 10 bodov',
+      filler: { partners: 'Pozrieť partnerov ↓', consult: 'Rezervovať 15 min', pdf: 'Uložiť ako PDF', recheck: '↺ Ohodnotiť znova' },
+      lockedStrip: function (n) { return 'Ďalších ' + n + ' oblastí je v reporte: '; },
+      partnersH: 'Kde to môžete urobiť',
+      partnersP: function (c) { return 'Partneri v kategórii ' + c.cat + ', ktorí spĺňajú vaše kritériá' + (c.crit ? ' (' + c.crit + ')' : '') + '. Poradie určujú pevné pravidlá, nie provízia. Porovnávate a vyberáte vy.'; },
+      partnersBasics: 'Najprv si prejdite 3 kroky vyššie. Partnerov tu máte, keď budete pripravení.',
+      partnersShow: 'Zobraziť partnerov', pfAll: 'Porovnať všetkých v Partner Finderi →', pfOpen: 'Otvoriť Partner Finder →',
+      licence: function (reg, chk) { return 'Licencia MiCA: ' + reg + ' · ' + chk + ' · zdroj ESMA'; },
+      feeSrc: function (chk) { return 'Zdroj, ' + chk; }, view: function (n) { return 'Pozrieť ' + n + ' →'; },
+      priceH: 'Čo môžete získať', freeT: 'Zadarmo', repT: 'Report', conT: 'Osobná konzultácia',
+      freePrice: '0 €', repPrice: '14 €', repOnce: 'jednorazovo, bez predplatného', conPrice: '15 min · zadarmo',
+      freeList: ['Verdikt a 3 ďalšie kroky', '2 oblasti vysvetlené', 'Partneri podľa vašich kritérií'],
+      repList: function (tax) { return ['Všetkých 10 oblastí s dôvodmi', 'Výpočty: poplatky, pôžička/stacking' + (tax ? ', dane' : ''), 'Všetky chýbajúce otázky', 'Plán krokov', 'PDF na uloženie']; },
+      conList: ['Prejdete si verdikt s človekom', 'Bez predaja', 'Odpovede z Verdictu sa zdieľajú len po vašom kliknutí'],
+      haveIt: '✓ Máte ho', repWait: 'Zapísať sa na report za 14 €', repBuy: 'Odomknúť report za 14 €', conBtn: 'Rezervovať 15 min',
+      cfo: 'Rozhodujete častejšie? <b>Virtuse CFO</b>: neobmedzené verdikty a reporty za 9 €/mesiac alebo 90 €/rok. Spúšťa sa 1. novembra.',
+      visitorBadge: 'Toto vidí návštevník bez reportu',
+      consultSmall: 'Chcete to prejsť s človekom?', consultLink: 'Osobná konzultácia',
+      stickySteps: '3 kroky ↑', stickyRep: 'Report 14 €', missAllH: 'Všetky chýbajúce otázky', partial: 'Niektoré oblasti AI tentoraz nevyhodnotila; ukazujeme ich ako nepopísané.'
+    },
+    en: {
+      levelPill: { ready: 'Thought through', almost: 'Almost there', basics: 'Basics missing', redflag: 'Red flag' },
+      more: function (n) { return '+' + n + ' more'; },
+      stepsH: 'Your 3 next steps', why: 'Why: ', areasH: 'Two areas explained',
+      role: { weakest: 'Missing most', strongest: 'What you already have', furthest: "Where you're furthest along", second: 'Second thing to add' },
+      meaningL: 'What it means for you', todoL: 'What to do', inStep: function (n) { return 'Step ' + n + ' above.'; }, reasonL: 'Why this rating', tipL: 'How to get 10 points',
+      filler: { partners: 'See the partners ↓', consult: 'Book 15 minutes', pdf: 'Save as PDF', recheck: '↺ Rate again' },
+      lockedStrip: function (n) { return n + ' more areas are in the report: '; },
+      partnersH: 'Where you can do it',
+      partnersP: function (c) { return 'Partners in the ' + c.cat + ' category that match your criteria' + (c.crit ? ' (' + c.crit + ')' : '') + '. Fixed rules set the order, not commission. You compare and choose.'; },
+      partnersBasics: "Go through the 3 steps above first. The partners are here when you're ready.",
+      partnersShow: 'Show partners', pfAll: 'Compare all in Partner Finder →', pfOpen: 'Open Partner Finder →',
+      licence: function (reg, chk) { return 'MiCA licence: ' + reg + ' · ' + chk + ' · source ESMA'; },
+      feeSrc: function (chk) { return 'Source, ' + chk; }, view: function (n) { return 'View ' + n + ' →'; },
+      priceH: 'What you can get', freeT: 'Free', repT: 'Full report', conT: 'Personal consultation',
+      freePrice: '€0', repPrice: '€14', repOnce: 'one-time, no subscription', conPrice: '15 min · free',
+      freeList: ['Verdict and 3 next steps', '2 areas explained', 'Partners that match your criteria'],
+      repList: function (tax) { return ['All 10 areas with reasons', 'Calculations: fees, loan/stacking' + (tax ? ', tax' : ''), 'Every missing question', 'Step plan', 'PDF to keep']; },
+      conList: ['Go through your verdict with a person', 'No sales pitch', 'Your Verdict answers are shared only after you click'],
+      haveIt: '✓ You have it', repWait: 'Join the waitlist for the €14 report', repBuy: 'Unlock the report for €14', conBtn: 'Book 15 minutes',
+      cfo: 'Deciding more often? <b>Virtuse CFO</b>: unlimited verdicts and reports for €9 a month or €90 a year. Opens on 1 November.',
+      visitorBadge: 'This is what a visitor without the report sees',
+      consultSmall: 'Want to go through it with a person?', consultLink: 'Personal consultation',
+      stickySteps: '3 steps ↑', stickyRep: 'Report €14', missAllH: 'All missing questions', partial: "The AI didn't rate some areas this time; they are shown as not described."
+    }
+  }[LANG];
   var GROUP = { worst_case: 'risk', liquidity: 'risk', plan_b: 'risk', tax: 'taxc', custody: 'taxc', goal: 'plan', horizon: 'plan', alternatives: 'plan', rule: 'plan', asymmetry: 'plan' };
   var GCOL = { risk: 'blue', taxc: 'teal', plan: 'purple' };
-  var BANDCOL = { complete: 'var(--green)', add: 'var(--yellow)', missing: 'var(--orange)' };
+  var LEVELCOL = { ready: 'var(--green)', almost: 'var(--blue)', basics: 'var(--yellow)', redflag: 'var(--orange)' };
   var R = STR.R;
-  function nm(s) { return LANG === 'sk' ? '„' + s + '“' : s; }
+  var FLAG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>';
   function bigRing(score, col) {
-    var r = 44, c = 2 * Math.PI * r;
-    return '<svg class="vf-ring" width="112" height="112" viewBox="0 0 112 112" aria-hidden="true"><circle cx="56" cy="56" r="' + r + '" stroke="rgba(255,255,255,.08)" stroke-width="8" fill="none"/>' +
-      '<circle cx="56" cy="56" r="' + r + '" stroke="' + col + '" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * score / 100) + ' ' + c + '" transform="rotate(-90 56 56)"/></svg>';
+    var r = 34, c = 2 * Math.PI * r;
+    return '<svg class="vf-ring" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true"><circle cx="44" cy="44" r="' + r + '" stroke="rgba(255,255,255,.08)" stroke-width="7" fill="none"/>' +
+      '<circle cx="44" cy="44" r="' + r + '" stroke="' + col + '" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * score / 100) + ' ' + c + '" transform="rotate(-90 44 44)"/></svg>';
   }
-  // Handoff to the tool with what the funnel already knows (F37).
+  // Handoff to the tool with what the funnel already knows (F37, v2 §3.1).
+  var VBTOOL = { tax: 'tax', loan: 'loan', stacking: 'stacking' };
   function toolHref(t, medium) {
-    var q = ['utm_source=verdict', 'utm_medium=' + (medium || 'result')];
-    if (t.key === 'tax' && A.country && A.country !== 'other' && A.country !== 'na') q.unshift('country=' + A.country);
-    if ((t.key === 'stacking' || t.key === 'loan') && /^(s|m|l|xl)$/.test(A.amount || '')) q.unshift('amount=' + A.amount);
-    return t.page + (t.page.indexOf('?') < 0 ? '?' : '&') + q.join('&');
+    var q = {}, k;
+    if (P && VBTOOL[t.key]) { var pp = P.toParams(VBTOOL[t.key]); for (k in pp) q[k] = pp[k]; }
+    for (k in (t.params || {})) q[k] = t.params[k];
+    q.utm_source = 'verdict'; q.utm_medium = medium || 'result';
+    return t.page + (t.page.indexOf('?') < 0 ? '?' : '&') + Object.keys(q).map(function (x) { return x + '=' + encodeURIComponent(q[x]); }).join('&');
   }
-  function nextText(id) { var n = R.next[id]; return typeof n === 'function' ? n(A.country && A.country !== 'other' && A.country !== 'na' ? label('country', A.country) : '') : n; }
-  function sig(s, tag, href) {
-    var g = GROUP[s.id];
-    return '<div class="vf-card ' + GCOL[g] + ' spot"><div class="h"><div><b>' + esc(s.name) + '</b><div class="tag">' + (tag ? tag + ' · ' : '') + R.group[g] + '</div></div><em>' + s.points + '<small>/10</small></em></div>' +
-      '<div class="bar"><i style="width:' + s.points * 10 + '%"></i></div><p>' + esc(s.reason) + '</p>' +
-      '<details class="imp"><summary>' + R.improve + '</summary><p>' + R.tip[s.id] + '</p></details>' +
-      (href ? '<a class="vf-btn" href="' + href + '">' + STR.fill + esc(s.tool.name) + ' →</a>' : '') + '</div>';
+  function headBlock(r) {
+    var L = r.level, col = LEVELCOL[L.id] || 'var(--orange)';
+    return '<div class="res-head lvl-' + L.id + '" style="--b:' + col + '"><div><div class="eyebrow"><i></i>' + (r.report ? R.pdfTitle + ' · ' + STR.prevBadge : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
+      '<span class="pill">' + (L.id === 'redflag' ? FLAG + ' ' : '') + esc(V.levelPill[L.id]) + '</span>' +
+      '<h2 class="verdict">' + esc(L.headline) + '</h2><p class="vwhy">' + esc(L.why) + (L.more ? ' <span class="dim">' + V.more(L.more) + '</span>' : '') + '</p>' +
+      '<p class="quote">' + quote(A.text.slice(0, 160) + (A.text.length > 160 ? '…' : '')) + '</p></div>' +
+      '<div class="score">' + bigRing(r.score, col) + '<b>' + r.score + '<small>/100</small></b></div></div>' +
+      '<p class="small scoreline">' + esc(L.scoreLine) + '</p>' + (r.partial ? '<p class="small">' + V.partial + '</p>' : '');
   }
-  function headBlock(r, strongName, weakName, strongPts) {
-    var col = BANDCOL[r.band.id] || 'var(--orange)';
-    return '<div class="res-head"><div><div class="eyebrow ' + (r.band.id === 'complete' ? 'green' : r.band.id === 'add' ? 'yellow' : '') + '"><i></i>' + (r.report ? R.pdfTitle + ' · ' + STR.prevBadge : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
-      '<h2>' + esc(strongPts < 5 ? R.sentenceLow(nm(weakName)) : R.sentence(nm(strongName), nm(weakName))) + '</h2>' +
-      '<p class="means">' + esc(R.means(r.score, r.covered == null ? '?' : r.covered)) + '</p><p class="quote">' + quote(A.text.slice(0, 160) + (A.text.length > 160 ? '…' : '')) + '</p></div>' +
-      '<div class="score" style="--b:' + col + '">' + bigRing(r.score, col) + '<b>' + r.score + '<small>/100</small></b><span class="pill">' + esc(r.band.label) + '</span></div></div>';
+  function stepBtn(s, medium) {
+    if (s.tool) return '<a class="vf-btn' + (s.n === 1 ? ' solid' : '') + '" href="' + toolHref(s.tool, medium) + '" data-step="' + s.id + '">' + esc(s.tool.name) + ' →</a>';
+    if (s.id === 'partners') return '<a class="vf-btn" href="#partners" data-step="partners">' + V.filler.partners + '</a>';
+    if (s.id === 'consult') return '<button class="vf-btn" data-consult data-step="consult">' + V.filler.consult + '</button>';
+    if (s.id === 'pdf') return '<button class="vf-btn" data-pdf data-step="pdf">' + V.filler.pdf + '</button>';
+    return '<button class="vf-btn" data-again data-step="recheck">' + V.filler.recheck + '</button>';
   }
-  function nextBlock(weak, medium) {
-    return '<div class="sec">' + R.nextH + '</div><div class="vf-card next ' + GCOL[GROUP[weak.id]] + ' spot"><p class="act">' + esc(nextText(weak.id)) + '</p>' +
-      '<div class="row"><a class="vf-btn solid" href="' + toolHref(weak.tool, medium) + '">' + esc(weak.tool.name) + ' →</a><button class="vf-btn" data-again>↺ ' + R.again2 + '</button></div></div>';
+  function stepsBlock(r, medium) {
+    return '<div class="sec" id="steps3">' + V.stepsH + '</div><ol class="vf-steps">' + r.steps.map(function (s) {
+      var g = s.signal ? GCOL[GROUP[s.signal]] : s.kind === 'flag' ? 'orange' : '';
+      return '<li class="vf-card spot ' + g + (s.n === 1 ? ' first' : '') + '"><span class="num">' + s.n + '</span><div><p class="act">' + esc(s.action) + '</p>' +
+        (s.why ? '<p class="whyl">' + V.why + esc(s.why) + '</p>' : '') + '<div class="vrow">' + stepBtn(s, medium) + '</div></div></li>';
+    }).join('') + '</ol>';
   }
-  function pfBlock(r, medium) {
-    if (!r.partnerFinder) return '';
-    var pfq = Object.keys(r.partnerFinder).map(function (k) { return k + '=' + encodeURIComponent(r.partnerFinder[k]); }).join('&') + '&utm_source=verdict';
-    var collapsed = r.band.id === 'missing';
-    return '<div class="no-print"><div class="sec">' + R.pfH + '</div><p class="sub sm">' + R.pfP + '</p>' +
-      (collapsed ? '<button class="vf-btn" id="pfShow">' + R.pfShow + '</button>' : '') +
-      '<div id="pfBox"' + (collapsed ? ' hidden' : '') + '><iframe class="pf" id="pfFrame" ' + (collapsed ? 'data-src' : 'src') + '="concierge.html?' + pfq + '&utm_medium=' + medium + '" title="Partner Finder" loading="lazy"></iframe>' +
-      '<p class="small">' + STR.pfNote + ' <a href="concierge.html?' + pfq + '&utm_medium=' + medium + '_open">' + STR.pfOpen + '</a></p></div></div>';
+  function roleLabel(a) {
+    if (a.role === 'strongest') return a.points >= 7 ? V.role.strongest : V.role.furthest;
+    return V.role[a.role] || '';
   }
-  function consultBlock() {
-    return '<div class="vf-card consult spot no-print"><b>' + STR.R.consultH + '</b><p>' + STR.R.consultP + '</p><button class="vf-btn" data-consult>' + STR.R.consultBtn + '</button></div>';
+  // An area that is already one of the 3 steps points there instead of
+  // repeating the same action and button (keeps the free view short).
+  function areaCard(a, medium, steps) {
+    var g = GROUP[a.id], st = (steps || []).filter(function (s) { return s.signal === a.id; })[0];
+    return '<div class="vf-card area ' + GCOL[g] + ' spot"><div class="h"><div>' + (roleLabel(a) ? '<div class="role">' + roleLabel(a) + '</div>' : '') + '<b>' + esc(a.title) + '</b><div class="tag">' + esc(a.name) + ' · ' + R.group[g] + '</div></div><em>' + a.points + '<small>/10</small></em></div>' +
+      '<div class="bar"><i style="width:' + a.points * 10 + '%"></i></div>' +
+      '<p><b class="albl">' + V.meaningL + ':</b> ' + esc(a.meaning) + '</p><p><b class="albl">' + V.todoL + ':</b> ' + (st ? '<a href="#steps3">' + V.inStep(st.n) + '</a>' : esc(a.todo)) + '</p>' +
+      (!st && a.points < 7 && a.tool ? '<a class="vf-btn" href="' + toolHref(a.tool, medium) + '">' + esc(a.tool.name) + ' →</a>' : '') +
+      '<div class="dets"><details class="imp"><summary>' + V.reasonL + '</summary><p>' + esc(a.reason) + '</p></details>' +
+      '<details class="imp"><summary>' + V.tipL + '</summary><p>' + R.tip[a.id] + '</p></details></div></div>';
+  }
+  // Partners from the Partner Finder engine itself (pf-recommend.js, §6).
+  var NO_UTM = { '21bitcoin': 1, 'bybit-eu': 1, kraken: 1 };
+  function pfQuery(r, medium) {
+    var q = r.partnerFinder || {};
+    return Object.keys(q).map(function (k) { return k + '=' + encodeURIComponent(q[k]); }).join('&') + (Object.keys(q).length ? '&' : '') + 'utm_source=verdict&utm_medium=' + medium;
+  }
+  function partnersBlock(r, medium) {
+    var collapsed = r.level.id === 'redflag';
+    return '<div class="no-print" id="partners"><div class="sec">' + V.partnersH + '</div><div id="pfCards"></div>' +
+      (r.level.id === 'basics' ? '<p class="sub sm gate">' + V.partnersBasics + '</p>' : '') +
+      (collapsed ? '<p class="sub sm gate">' + esc(r.level.flags[0].text) + '</p><button class="vf-btn" id="pfShow">' + V.partnersShow + '</button>' : '') +
+      '<div id="pfBox"' + (collapsed ? ' hidden' : '') + '><div class="vpgrid" id="pfGrid"></div>' +
+      '<p class="small">' + STR.pfNote + ' <a href="concierge.html?' + pfQuery(r, medium) + '">' + (r.partnerFinder ? V.pfAll : V.pfOpen) + '</a></p></div></div>';
+  }
+  function partnerUrl(p, medium) {
+    if (NO_UTM[p.id]) return p.url;
+    try { var u = new URL(p.url); u.searchParams.set('utm_source', 'verdict'); u.searchParams.set('utm_medium', medium); u.searchParams.set('utm_campaign', 'partner_finder'); u.searchParams.set('utm_content', p.id); return u.toString(); } catch (e) { return p.url; }
+  }
+  function loadPartners(r, medium) {
+    var grid = document.getElementById('pfGrid'); if (!grid || !r.partnerFinder) return;
+    function draw() {
+      var VB = window.VBPartners; if (!VB || !document.getElementById('pfGrid')) return;
+      var q = r.partnerFinder, a = { goal: q.pf_goal, country: q.pf_country, experience: q.pf_experience, custody: q.pf_custody, amount: q.pf_amount };
+      var recs = VB.recommend(a, LANG);
+      if (!recs.length) return;
+      function lab(list, id) { var x = list.filter(function (o) { return o.id === id; })[0]; return x ? (x.label[LANG] || x.label.en) : ''; }
+      var crit = [lab(VB.COUNTRIES, a.country), lab(VB.EXPERIENCE, a.experience), lab(VB.CUSTODY, a.custody)].filter(Boolean).join(', ').toLowerCase();
+      var head = '<p class="sub sm">' + esc(V.partnersP({ cat: lab(VB.GOALS, a.goal), crit: crit })) + '</p>';
+      var chk = VB.LICENCE_CHECKED[LANG] || VB.LICENCE_CHECKED.en;
+      document.getElementById('pfCards').innerHTML = head;
+      grid.innerHTML = recs.map(function (x) {
+        var p = x.partner, T = function (o) { return o ? (o[LANG] || o.en) : ''; };
+        return '<div class="vf-card pcard spot"><b>' + esc(p.name) + '</b><p class="tl">' + esc(T(p.tagline)) + '</p>' +
+          (p.licence ? '<p class="lic"><a href="' + VB.ESMA_MICA_URL + '" target="_blank" rel="noopener">' + esc(V.licence(T(p.licence.regulator), chk)) + '</a></p>' : (p.badge ? '<p class="lic">' + esc(T(p.badge)) + '</p>' : '')) +
+          '<p class="fee">' + esc(T(p.feeNote)) + (p.feeSource ? ' · <a href="' + esc(p.feeSource) + '" target="_blank" rel="noopener">' + esc(V.feeSrc(chk)) + '</a>' : '') + '</p>' +
+          (x.reasons[0] ? '<p class="rs">' + esc(x.reasons[0]) + '</p>' : '') +
+          '<a class="vf-btn" href="' + esc(partnerUrl(p, medium)) + '" target="_blank" rel="sponsored noopener" data-pid="' + p.id + '" data-pname="' + esc(p.name) + '">' + esc(V.view(p.name)) + '</a></div>';
+      }).join('');
+      grid.querySelectorAll('[data-pid]').forEach(function (b) { b.onclick = function () {
+        push({ event: 'partner_click', partner: b.dataset.pname, partner_id: b.dataset.pid, partner_category: a.goal, link_type: 'cta', link_host: b.hostname.replace(/^www\./, ''), page_lang: LANG, goal: A.goal || 'other', source: 'verdict' });
+      }; });
+      spot();
+    }
+    if (window.VBPartners) return draw();
+    var s = document.createElement('script'); s.src = '/pf-recommend.js?v=1'; s.async = true; s.onload = draw; document.head.appendChild(s);
+  }
+  function pricingBlock(r, badge) {
+    var pr = r.pricing || { report: { mode: 'waitlist' } }, wait = pr.report.mode !== 'checkout';
+    function li(xs) { return '<ul>' + xs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
+    var locked = r.locked && r.locked.length ? '<p class="lstrip">🔒 ' + V.lockedStrip(r.locked.length) + r.locked.map(function (x) { return esc(x.title || x.name); }).join(' · ') + '</p>' : '';
+    return '<div class="no-print" id="report">' + (badge ? '<div class="sec badge">' + V.visitorBadge + '</div>' : '<div class="sec">' + V.priceH + '</div>') + locked +
+      '<div class="tiers">' +
+      '<div class="vf-card tier spot"><div class="eyebrow">' + V.freeT + '</div><div class="amt">' + V.freePrice + '</div>' + li(V.freeList) + '<span class="vf-btn have" aria-disabled="true">' + V.haveIt + '</span></div>' +
+      '<div class="vf-card tier main spot"><div class="eyebrow">' + V.repT + '</div><div class="amt">' + V.repPrice + '</div><p class="small">' + V.repOnce + '</p>' + li(V.repList(pr.report.taxModule)) +
+      (wait ? '<p class="small wn">' + STR.waitNote + '</p>' + wantForm(V.repWait) : '<button class="vf-btn solid" data-checkout>' + V.repBuy + '</button>') + '</div>' +
+      '<div class="vf-card tier spot"><div class="eyebrow">' + V.conT + '</div><div class="amt sm">' + V.conPrice + '</div>' + li(V.conList) + '<button class="vf-btn" data-consult>' + V.conBtn + '</button></div>' +
+      '</div><p class="small cfo">' + V.cfo.replace('<b>Virtuse CFO</b>', '<a href="cfo.html#pricing"><b>Virtuse CFO</b></a>') + '</p></div>';
   }
   function legal(r) { return '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p>'; }
+  function againFoot(pdf) { return '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>' + V.filler.recheck + '</button>' + (pdf ? '<button class="vf-btn solid" data-pdf>' + STR.pdf + '</button>' : '') + '</div>'; }
+  function sticky() { return '<div class="vf-sticky"><a class="vf-btn" href="#steps3">' + V.stickySteps + '</a><button class="vf-btn solid" data-want>' + V.stickyRep + '</button></div>'; }
   function bindCommon() {
     var r = RESULT || {};
-    push({ event: 'verdict_complete', verdict_lang: LANG, tier: r.report ? 'report' : 'free', verdict_band: r.band && r.band.id, verdict_score: r.score, verdict_goal: A.goal || 'other' });
+    push({ event: 'verdict_complete', verdict_lang: LANG, tier: r.report ? 'report' : 'free', verdict_band: r.band && r.band.id, verdict_level: r.level && r.level.id, verdict_score: r.score, verdict_goal: A.goal || 'other' });
     panel.querySelectorAll('[data-consult]').forEach(function (b) { b.onclick = function () {
-      push({ event: 'consultation_click', verdict_lang: LANG, verdict_band: r.band && r.band.id, tier: r.report ? 'report' : 'free' });
+      push({ event: 'consultation_click', verdict_lang: LANG, verdict_band: r.band && r.band.id, verdict_level: r.level && r.level.id, tier: r.report ? 'report' : 'free' });
       if (window.VirtuseConsultation) window.VirtuseConsultation.open(LANG);
     }; });
-    panel.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
+    panel.parentNode.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
+    panel.querySelectorAll('[data-step]').forEach(function (b) { b.addEventListener('click', function () { push({ event: 'verdict_step_click', verdict_lang: LANG, step: b.dataset.step, verdict_level: r.level && r.level.id }); }); });
+    panel.querySelectorAll('[data-pdf]').forEach(function (b) { b.onclick = function () {
+      push({ event: 'verdict_report_pdf', verdict_lang: LANG });
+      var t = document.title; document.title = R.pdfTitle + (A.name ? ' · ' + A.name : '');
+      window.print(); setTimeout(function () { document.title = t; }, 500);
+    }; });
     var sh = document.getElementById('pfShow');
-    if (sh) sh.onclick = function () { var f = document.getElementById('pfFrame'); f.src = f.getAttribute('data-src'); document.getElementById('pfBox').hidden = false; sh.hidden = true; push({ event: 'verdict_pf_show', verdict_lang: LANG }); };
+    if (sh) sh.onclick = function () { document.getElementById('pfBox').hidden = false; sh.hidden = true; push({ event: 'verdict_pf_show', verdict_lang: LANG }); };
+    var pb = document.getElementById('report');
+    if (pb && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); push({ event: 'pricing_view', verdict_lang: LANG, verdict_level: r.level && r.level.id }); } }, { threshold: .3 });
+      io.observe(pb);
+    }
     spot();
   }
   function showResult() {
@@ -507,38 +635,32 @@
       document.getElementById('again').onclick = function () { go(at('text')); };
       return;
     }
+    if (!r.level || !r.steps || !r.areas) { panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + STR.error + '</p>' + again; document.getElementById('again').onclick = function () { go(at('review')); }; return; }
     if (r.report) { showReport(r); return; }
-    var strong = r.signals.filter(function (x) { return x.role === 'strongest'; })[0], weak = r.signals.filter(function (x) { return x.role === 'weakest'; })[0];
-    if (!strong || !weak) { panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + STR.error + '</p>' + again; document.getElementById('again').onclick = function () { go(at('review')); }; return; }
-    weak.tool = weak.tool || r.weakest.tool;
-    panel.innerHTML = '<div data-ai-generated="true">' + headBlock(r, strong.name, weak.name, strong.points) + nextBlock(weak, 'result') +
-      '<div class="sec">' + STR.free + '</div><div class="sig2">' + sig(strong, STR.strongest) + sig(weak, STR.weakest, toolHref(weak.tool)) + '</div>' +
+    panel.innerHTML = '<div data-ai-generated="true">' + headBlock(r) + stepsBlock(r, 'result') +
+      '<div class="sec">' + V.areasH + '</div><div class="sig2">' + r.areas.map(function (a) { return areaCard(a, 'result', r.steps); }).join('') + '</div>' +
       '<div class="vf-card q spot"><b>' + R.openQ + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span class="dim">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div>' +
-      '<div class="sec" id="report">' + R.lockedH(r.locked.length) + '</div><div class="lgrid">' + r.locked.map(function (x) { var g = GROUP[x.id]; return '<div class="' + GCOL[g] + '"><span>🔒 ' + esc(x.name) + '</span><small>' + R.group[g] + '</small><i></i><i></i></div>'; }).join('') + '</div>' +
-      '<div class="price vf-card spot"><div><div class="eyebrow"><i></i>' + R.inside + '</div><h3>' + STR.repT + '</h3><p class="sub sm">' + STR.repP + '</p><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
-      '<div><div class="eyebrow"><i></i>' + STR.once + '</div><div class="amt">' + (LANG === 'sk' ? '14 €' : '€14') + '</div><p class="sub sm">' + STR.noSub + '</p><p class="small" style="margin-top:6px">' + STR.waitNote + '</p>' + wantForm() + '</div></div>' +
-      '<div class="sec">' + R.faqH + '</div><div class="faq">' + R.faq.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
-      pfBlock(r, 'verdict') + consultBlock() + legal(r) + '</div>' +
-      '<div class="vf-sticky"><button class="vf-btn" data-again>↺ ' + R.again2 + '</button><button class="vf-btn solid" data-want>' + R.sticky + '</button></div>';
-    bindCommon(); bindWant();
+      partnersBlock(r, 'verdict') + pricingBlock(r, false) + legal(r) + againFoot(false) + '</div>' + sticky();
+    bindCommon(); bindWant(); loadPartners(r, 'verdict');
   }
 
   // Interest in the full report: email only, no decision text.
-  function wantForm() {
+  function wantForm(btn) {
     return '<form class="want" id="want" novalidate><input type="email" id="we" autocomplete="email" placeholder="' + STR.wantPh + '" aria-label="' + STR.wantPh + '" required>' +
       '<input type="text" id="wh" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
-      '<button class="vf-btn solid" type="submit">' + STR.wantBtn + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo">' + STR.privacy + '</a></p></form>';
+      '<button class="vf-btn solid" type="submit">' + (btn || STR.wantBtn) + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo">' + STR.privacy + '</a></p></form>';
   }
   function bindWant() {
     var f = document.getElementById('want'); if (!f) return;
-    panel.querySelectorAll('[data-want]').forEach(function (b) {
-      b.onclick = function () { push({ event: 'unlock_click', verdict_lang: LANG, verdict_band: RESULT && RESULT.band && RESULT.band.id }); document.getElementById('report').scrollIntoView({ behavior: 'smooth' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
+    panel.parentNode.querySelectorAll('[data-want]').forEach(function (b) {
+      b.onclick = function () { push({ event: 'unlock_click', verdict_lang: LANG, verdict_band: RESULT && RESULT.band && RESULT.band.id, verdict_level: RESULT && RESULT.level && RESULT.level.id }); f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
     });
     f.onsubmit = function (e) {
       e.preventDefault();
       var em = document.getElementById('we').value.trim(), msg = document.getElementById('wm'), btn = f.querySelector('button');
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { msg.textContent = STR.wantBad; return; }
       btn.disabled = true;
+      push({ event: 'unlock_click', verdict_lang: LANG, verdict_level: RESULT && RESULT.level && RESULT.level.id, via: 'form' });
       fetch(WAITLIST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: em, hp: document.getElementById('wh').value, source: 'verdict_report', lang: LANG }) })
         .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
         .catch(function () { return { ok: false, d: { error: STR.network } }; })
@@ -551,29 +673,22 @@
     };
   }
 
-  // Full report (preview only until payments exist; see the header comment).
+  // Full report (preview only until payments exist; see the header comment):
+  // verdict, steps, all 10 areas by group, every missing question, partners,
+  // PDF; the staging preview also shows the free view's pricing block.
   function showReport(r) {
-    var weak = r.signals.filter(function (s) { return s.id === r.weakest.id; })[0] || r.signals[0];
-    var strong = r.signals.filter(function (s) { return s.id !== weak.id; }).sort(function (a, b) { return b.points - a.points; })[0];
-    weak.tool = weak.tool || r.weakest.tool;
     var groups = ['risk', 'taxc', 'plan'];
     panel.innerHTML = '<div data-ai-generated="true" class="report">' +
-      '<p class="warn no-print">' + STR.prevNote + '</p>' + headBlock(r, strong.name, weak.name, strong.points) + nextBlock(weak, 'report') +
-      '<div class="sec">' + R.planH + '</div><p class="sub sm">' + STR.planP + '</p><div class="route">' +
-      (r.plan.length ? r.plan.map(function (s, n) { return '<div class="r vf-card ' + GCOL[GROUP[s.id]] + ' spot"><div><b>' + (n + 1) + '. ' + esc(s.name) + ' · ' + s.points + STR.pts + '</b><span>' + esc(nextText(s.id)) + '</span></div><a class="vf-btn" href="' + toolHref(s.tool, 'report') + '">' + esc(s.tool.name) + ' →</a></div>'; }).join('') : '<div class="r vf-card"><span>' + STR.planNone + '</span></div>') + '</div>' +
+      '<p class="warn no-print">' + STR.prevNote + '</p>' + headBlock(r) + stepsBlock(r, 'report') +
       groups.map(function (g) {
-        var ss = r.signals.filter(function (s) { return GROUP[s.id] === g; });
-        return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (s) { return sig(s, s.id === weak.id ? STR.weakest : '', s.points < 7 ? toolHref(s.tool, 'report') : ''); }).join('') + '</div>';
+        var ss = r.areas.filter(function (a) { return GROUP[a.id] === g; });
+        return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (a) { return areaCard(a, 'report', r.steps); }).join('') + '</div>';
       }).join('') +
-      '<div class="sec">' + STR.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
-      pfBlock(r, 'verdict_report') + consultBlock() + legal(r) + '</div>' +
-      '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>↺ ' + R.again2 + '</button><button class="vf-btn solid" id="pdf">' + STR.pdf + '</button></div>';
-    bindCommon();
-    document.getElementById('pdf').onclick = function () {
-      push({ event: 'verdict_report_pdf', verdict_lang: LANG });
-      var t = document.title; document.title = R.pdfTitle + (A.name ? ' · ' + A.name : '');
-      window.print(); setTimeout(function () { document.title = t; }, 500);
-    };
+      '<div class="sec">' + V.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
+      partnersBlock(r, 'verdict_report') +
+      '<p class="sub sm no-print consult-line">' + V.consultSmall + ' <a href="#" data-consult>' + V.consultLink + '</a></p>' +
+      pricingBlock(r, true) + legal(r) + againFoot(true) + '</div>';
+    bindCommon(); bindWant(); loadPartners(r, 'verdict_report');
   }
 
   // Cursor spotlight (same effect as site-v2.js, for cards rendered later).

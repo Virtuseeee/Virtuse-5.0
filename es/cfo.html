@@ -810,7 +810,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="pricing">
     <div class="sec-head">
       <h2>Un producto, tres niveles. <span>Empiece con un veredicto gratuito.</span></h2>
-      <p class="sec-sub">Verdict y la auditoría de comisiones son gratuitos, sin tarjeta. Los planes de pago abren en enero; puede darse de baja cuando quiera. El mismo diseño en todos los planes: solo lectura y procesamiento local.</p>
+      <p class="sec-sub">Verdict y la auditoría de comisiones son gratuitos, sin tarjeta. Los planes de pago abren el 1 de noviembre; puede darse de baja cuando quiera. El mismo diseño en todos los planes: solo lectura y procesamiento local.</p>
     </div>
     <div class="billing" role="tablist" aria-label="Periodo de facturación">
       <button type="button" role="tab" aria-selected="true" data-bill="m">Mensual</button>
@@ -834,7 +834,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <a class="btn btn-ghost" href="#verdict">Empezar con un veredicto</a>
       </div>
       <div class="plan pro">
-        <span class="founding">Precio fundador, cuando abran los planes de pago en enero</span>
+        <span class="founding">Precio fundador, cuando abran los planes de pago el 1 de noviembre</span>
         <h3>Virtuse CFO</h3>
         <div class="price"><span data-m>9 € <small>/ mes</small></span><span data-y hidden>90 € <small>/ año</small></span></div>
         <p class="for"><span data-m>O 90 € al año, dos meses gratis.</span><span data-y hidden>Son 7,50 € al mes, facturados anualmente.</span></p>
@@ -845,13 +845,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-primary" type="submit">Avísenme</button>
           <div class="wait-msg" aria-live="polite"></div>
-          <p class="wait-note">Un solo correo cuando se abran los planes de pago en enero. Nada más.</p>
-          <span class="wait-ok" hidden>Está en la lista. Le escribiremos una sola vez, cuando se abran los planes de pago en enero.</span>
+          <p class="wait-note">Un solo correo cuando se abran los planes de pago el 1 de noviembre. Nada más.</p>
+          <span class="wait-ok" hidden>Está en la lista. Le escribiremos una sola vez, cuando se abran los planes de pago el 1 de noviembre.</span>
         </form>
       </div>
     </div>
     <div class="terms">
-      <p class="terms-k">Condiciones que se aplican cuando abran los planes de pago en enero</p>
+      <p class="terms-k">Condiciones que se aplican cuando abran los planes de pago el 1 de noviembre</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>Reembolso en 30 días</b>Sin preguntas ni formularios.</span>
         <span class="ic ic-muted"><b>Cancele con un clic</b>Desde la página de su cuenta.</span>
@@ -949,7 +949,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="faq">
       <details open><summary>¿Me dirá Verdict si debo comprar Bitcoin?</summary><p>No. Valora si su razonamiento está completo. Lo que haga es decisión suya. Verdict no sugiere comprar, vender, pedir prestado ni ningún partner.</p></details>
-      <details><summary>¿Cuánto cuesta?</summary><p>Verdict y la auditoría de comisiones son gratuitos desde el 1 de noviembre. Un informe completo cuesta 14 €, una sola vez. Virtuse CFO abre en enero por 9 € al mes o 90 € al año e incluye veredictos e informes ilimitados.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Verdict y la auditoría de comisiones son gratuitos desde el 1 de noviembre. Un informe completo cuesta 14 €, una sola vez. Virtuse CFO abre el 1 de noviembre por 9 € al mes o 90 € al año e incluye veredictos e informes ilimitados.</p></details>
       <details><summary>¿De dónde saca Verdict sus datos?</summary><p>De las fuentes oficiales que Virtuse ya utiliza, como las normas fiscales de 13 países, cada una con la fecha en que se comprobó. Cuando falta un dato, Verdict se lo pregunta.</p></details>
       <details><summary>¿Qué pasa con lo que escribo?</summary><p>Sin cuenta, no guardamos el texto de su razonamiento. Para evitar abusos, contamos las solicitudes por dirección IP, guardada solo como huella (hash); el contador se borra a las 24 horas. Más detalles en la <a href="privacy-policy.html#verdict-cfo">Política de privacidad</a>. Con una cuenta de Virtuse CFO puede conservar el historial de sus decisiones y borrarlo en cualquier momento.</p></details>
       <details><summary>¿Cómo obtengo mi exportación de Kraken?</summary><p>En kraken.com, haga clic en el icono de su perfil arriba a la derecha y elija <b>Documents</b>. En Exports, haga clic en <b>Create export</b>, elija <b>Ledgers</b>, indique una fecha de inicio y de fin, seleccione <b>CSV</b> y haga clic en Generate. El archivo aparece en la misma lista cuando está listo. Puede tardar unos minutos o varios días, y Kraken no le avisa por correo. Elija Ledgers en lugar de Trades: incluye todas las comisiones y sus compras instantáneas. Si usa Kraken Pro y no ve Documents, busque en Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Guía de Kraken</a></p></details>
@@ -1162,7 +1162,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
 // Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
-// and the Virtuse CFO pricing card (source cfo_plan: paid plans in January).
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans from 1 November).
 document.querySelectorAll('form.wait').forEach(function (form) {
   var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
