@@ -59,12 +59,12 @@ test('new sign-up joins the CFO audience, not the Brief, and gets one confirmati
   assert.match(calls[1].body.html, /1 November 2026/);
 }));
 
-test('pricing card sign-up (cfo_plan) gets the January wording', withFetch(async (calls) => {
+test('pricing card sign-up (cfo_plan) gets the 1 November wording (Ras 2026-10-23)', withFetch(async (calls) => {
   const res = await worker.fetch(req({ email: 'a@b.co', hp: '', source: 'cfo_plan' }), env());
   assert.equal(res.status, 200);
   assert.equal(calls[0].url, 'https://api.resend.com/audiences/aud-cfo/contacts');
   assert.equal(calls[1].body.subject, "You're on the Virtuse CFO list");
-  assert.match(calls[1].body.html, /paid Virtuse CFO plans open in January/);
+  assert.match(calls[1].body.html, /paid Virtuse CFO plans open on 1 November/);
   assert.doesNotMatch(calls[1].body.html, /one email on 1 November/);
   assert.match(calls[1].body.html, /list=cfo/);
 }));

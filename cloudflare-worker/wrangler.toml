@@ -29,7 +29,7 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 #   npx wrangler secret put ANTHROPIC_API_KEY --env staging   (and UNSUB_SECRET, RESEND_* if /waitlist is tested here)
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"

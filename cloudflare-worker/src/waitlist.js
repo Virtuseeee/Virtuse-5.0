@@ -12,7 +12,7 @@
 // No RESEND_CFO_AUDIENCE_ID set -> 503, so the route can be deployed before
 // the audience exists without silently dropping sign-ups.
 
-// cfo_plan = the Virtuse CFO card in the pricing table (paid plans, January).
+// cfo_plan = the Virtuse CFO card in the pricing table (paid plans, from 1 November 2026).
 // verdict_report = "full report" button after a free verdict (verdict-flow.js).
 // It joins RESEND_REPORT_AUDIENCE_ID when that secret is set, else the CFO
 // audience. Only the email is kept, never the decision text.

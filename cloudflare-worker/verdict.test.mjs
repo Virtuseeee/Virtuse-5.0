@@ -60,7 +60,8 @@ test('score is the sum, band and weakest point come from the rubric', () => {
   assert.equal(r.band.label, 'Doplňte 2 až 3 predpoklady');
   // worst_case and alternatives both have 3: priority 1 wins
   assert.equal(r.weakest.id, 'worst_case');
-  assert.equal(r.weakest.tool.page, 'stacking.html');
+  // v2 remap: worst_case → Loan & Liquidity Copilot
+  assert.equal(r.weakest.tool.page, 'loan.html');
   assert.equal(r.signals.length, 10);
 });
 
@@ -104,11 +105,12 @@ test('a tax rule that contradicts the data is always the weakest point', () => {
   assert.equal(r.weakest.tool.page, 'tax-agent.html');
 });
 
-test('points are clamped, missing is capped at 3, wrong signal count throws', () => {
+test('points are clamped, missing is capped at 3, 9 signals render as partial, under 7 throws', () => {
   const r = scoreVerdict(modelOut({ signals: SIGNALS.map((s) => ({ id: s.id, points: 14, reason: 'x' })), missing: ['a', 'b', 'c', 'd'] }), 'en');
   assert.equal(r.score, 100);
   assert.equal(r.missing.length, 3);
-  assert.throws(() => scoreVerdict(modelOut({ signals: modelOut().signals.slice(0, 9) }), 'en'));
+  assert.equal(scoreVerdict(modelOut({ signals: modelOut().signals.slice(0, 9) }), 'en').partial, true);
+  assert.throws(() => scoreVerdict(modelOut({ signals: modelOut().signals.slice(0, 6) }), 'en'));
 });
 
 test('every result carries the AI label (AI Act art. 50) and the score note', () => {
@@ -238,9 +240,9 @@ test('free view: 2 signals with reasons, 8 only named, first missing question, n
   const r = await res.json();
   assert.equal(r.score, 55);
   assert.equal(r.signals.length, 2);
-  assert.deepEqual(r.signals.map((s) => s.role), ['strongest', 'weakest']);
-  assert.equal(r.signals[0].id, 'liquidity');
-  assert.equal(r.signals[1].id, r.weakest.id);
+  assert.deepEqual(r.signals.map((s) => s.role), ['weakest', 'strongest']);
+  assert.equal(r.signals[1].id, 'liquidity');
+  assert.equal(r.signals[0].id, r.weakest.id);
   assert.equal(r.locked.length, 8);
   assert.ok(r.locked.every((s) => s.name && s.reason === undefined && s.points === undefined));
   assert.equal(r.missing.length, 1);

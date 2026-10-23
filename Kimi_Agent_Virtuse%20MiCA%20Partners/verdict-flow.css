@@ -210,3 +210,113 @@
 .vf .consult b { display: block; font-size: 17px; margin-bottom: 4px; }
 .vf .consult p { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
 .vf .warn a { color: var(--muted); }
+
+/* result v2 (verdict-result-v2.md): level pill + verdict line, 3 numbered
+   steps, plain area cards, partner cards, 3 pricing tiers. site-v2 tokens only. */
+.vf .res-head { grid-template-columns: 1fr 88px; align-items: start; }
+.vf .res-head .pill { margin: 2px 0 10px; display: inline-flex; align-items: center; gap: 6px; }
+.vf .res-head h2.verdict { font-size: clamp(26px, 4.4vw, 36px); line-height: 1.12; margin: 0 0 10px; }
+.vf .res-head .vwhy { font-size: 17px; color: var(--text); margin: 0 0 10px; }
+.vf .res-head .vwhy .dim { color: var(--muted); font-size: 14px; }
+.vf .score { width: 88px; }
+.vf .score b { top: 25px; font-size: 24px; }
+.vf .score b small { font-size: 11px; }
+.vf .scoreline { margin: 4px 0 0; }
+@media (max-width: 600px) { .vf .res-head { grid-template-columns: 1fr 72px; gap: 12px; } .vf .score { width: 72px; } .vf .score .vf-ring { width: 72px; height: 72px; } .vf .score b { top: 20px; font-size: 20px; } .vf .res-head .quote { display: none; } }
+.vf .vf-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.vf .vf-steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 16px 18px; }
+.vf .vf-steps li.orange { --c: var(--orange); }
+.vf .vf-steps .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; border: 1px solid var(--line-strong); color: var(--text); }
+.vf .vf-steps li.first .num { background: color-mix(in srgb, var(--c) 22%, transparent); border-color: color-mix(in srgb, var(--c) 60%, transparent); }
+.vf .vf-steps .act { font-size: 16px; font-weight: 600; margin: 3px 0 4px; color: var(--text); }
+.vf .vf-steps .whyl { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
+.vf .vf-steps .vrow { display: flex; gap: 10px; flex-wrap: wrap; }
+.vf .area .role { font: 500 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.vf .area .albl { color: var(--text); font-weight: 600; }
+.vf .area > p { margin: 0 0 8px; }
+.vf .area .vf-btn { margin: 4px 0 12px; }
+.vf .gate { margin: 4px 0 12px; }
+.vf .vpgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 10px; }
+@media (max-width: 760px) { .vf .vpgrid { grid-template-columns: 1fr; } }
+.vf .pcard { --c: var(--teal); display: flex; flex-direction: column; }
+.vf .pcard b { font-size: 17px; }
+.vf .pcard p { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+.vf .pcard p.tl { color: var(--text); font-size: 14px; }
+.vf .pcard .lic a, .vf .pcard .fee a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.vf .pcard .vf-btn { margin-top: auto; align-self: flex-start; }
+.vf .pcard .rs { margin-bottom: 14px; }
+.vf .lstrip { color: var(--muted); font-size: 13px; margin: 0 0 12px; line-height: 1.6; }
+.vf .tiers { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; }
+@media (max-width: 760px) { .vf .tiers { grid-template-columns: 1fr; } }
+.vf .tier { display: flex; flex-direction: column; --c: var(--text); }
+.vf .tier.main { --c: var(--blue); border-color: color-mix(in srgb, var(--blue) 55%, transparent); }
+.vf .tier .amt { font-size: 32px; font-weight: 700; margin: 4px 0 2px; }
+.vf .tier .amt.sm { font-size: 22px; }
+.vf .tier ul { list-style: none; padding: 0; display: grid; gap: 7px; margin: 10px 0 14px; color: var(--muted); font-size: 14px; }
+.vf .tier ul li::before { content: "✓ "; color: var(--teal); }
+.vf .tier > .vf-btn { margin-top: auto; justify-content: center; }
+.vf .tier .have { opacity: .6; cursor: default; }
+.vf .cfo { margin-top: 12px; }
+.vf .cfo a { color: var(--text); }
+.vf .sec.badge { color: var(--yellow); }
+.vf .consult-line a { color: var(--text); }
+.vf .area a[href="#steps3"] { color: var(--text); }
+/* mobile v2: progress hidden on the result, compact steps, partners and
+   pricing as swipeable rows (the report card first) so the free view stays
+   about 3,000 px (verdict-result-v2 §3, Mobile). */
+@media (max-width: 600px) {
+  .vf.is-result .steps { display: none; }
+  .vf .sec { margin: 22px 0 10px; }
+  .vf .res-head h2.verdict { font-size: 25px; }
+  .vf .res-head .vwhy { font-size: 15px; }
+  .vf .vf-steps li { grid-template-columns: 26px 1fr; gap: 10px; padding: 12px 14px; }
+  .vf .vf-steps .num { width: 24px; height: 24px; font-size: 12px; }
+  .vf .vf-steps .act { font-size: 15px; line-height: 1.35; }
+  .vf .vf-steps .whyl { font-size: 13px; margin-bottom: 8px; }
+  .vf .vf-steps .vf-btn { font-size: 13px; padding: 7px 12px; }
+  .vf .area > p { font-size: 13px; }
+  .vf .area .bar { margin: 8px 0; }
+  .vf .vpgrid, .vf .tiers { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 0 -16px 10px; padding: 0 16px 6px; scrollbar-width: none; }
+  .vf .vpgrid::-webkit-scrollbar, .vf .tiers::-webkit-scrollbar { display: none; }
+  .vf .vpgrid > .pcard { flex: 0 0 82%; scroll-snap-align: start; }
+  .vf .tiers > .tier { flex: 0 0 84%; scroll-snap-align: start; }
+  .vf .tiers > .tier.main { order: -1; }
+  .vf .tier ul { margin: 8px 0 10px; font-size: 13px; gap: 5px; }
+  .vf .tier .amt { font-size: 26px; }
+  .vf .vf-card.q { padding: 14px 16px; }
+  .vf .vf-card.q p { font-size: 14px; }
+  .vf p.small { font-size: 11px; }
+}
+@media (max-width: 600px) {
+  .vf .clamp2, .vf .pcard .tl, .vf .pcard .rs { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .vf .vf-steps .whyl { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .vf .area .bar { display: none; }
+  .vf .area .imp { display: inline-block; margin: 0 14px 6px 0; font-size: 13px; vertical-align: top; }
+  .vf .area .imp[open] { display: block; }
+  .vf .tier .wn { display: none; }
+  .vf .pcard p { margin-top: 4px; }
+  .vf .pcard .rs { margin-bottom: 10px; }
+  .vf .lstrip { font-size: 12px; }
+}
+@media (max-width: 600px) {
+  .vf.is-result .panel { padding: 18px 14px; }
+  .vf .vf-steps .vrow .vf-btn, .vf .area .vf-btn { margin: 0; }
+  .vf .vf-steps .act { margin-top: 1px; }
+}
+.vf .area .dets { display: flex; flex-wrap: wrap; gap: 0 16px; }
+.vf .area .dets .imp { flex: 0 0 auto; }
+.vf .area .dets .imp[open] { flex-basis: 100%; }
+@media (max-width: 600px) {
+  .vf.is-result .vf-card { padding: 14px 15px; }
+  .vf .area .imp { display: block; margin: 0 0 6px; }
+}
+@media (max-width: 600px) {
+  .vf.is-result .vf-steps li { padding: 12px 14px; }
+  .vf.is-result .sec { margin: 18px 0 8px; }
+  .vf .vpgrid .pcard .tl { display: none; }
+  .vf .tier ul { display: block; }
+  .vf .tier ul li { display: inline; }
+  .vf .tier ul li::before { content: "✓ "; }
+  .vf .tier ul li::after { content: "  "; white-space: pre; }
+  .vf .lstrip { margin-bottom: 8px; }
+}

@@ -690,7 +690,7 @@
   "context": " </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel anytime. The same read-only, local-"
  },
  {
-  "en": "Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel anytime. The same read-only, local-first design on every plan.",
+  "en": "Verdict and the fee audit are free, no card needed. Paid plans open on 1 November; cancel anytime. The same read-only, local-first design on every plan.",
   "kind": "text",
   "context": " <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">M"
  },
@@ -800,7 +800,7 @@
   "context": "reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3"
  },
  {
-  "en": "Founding price, when paid plans open in January",
+  "en": "Founding price, when paid plans open on 1 November",
   "kind": "text",
   "context": "on</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span"
  },
@@ -870,17 +870,17 @@
   "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> "
  },
  {
-  "en": "One email when paid plans open in January. Nothing else.",
+  "en": "One email when paid plans open on 1 November. Nothing else.",
   "kind": "text",
   "context": " <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open in January.</span> </form> </div> <"
  },
  {
-  "en": "You're on the list. We'll email you once, when paid plans open in January.",
+  "en": "You're on the list. We'll email you once, when paid plans open on 1 November.",
   "kind": "text",
   "context": "g\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open in January.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div"
  },
  {
-  "en": "Terms that apply when paid plans open in January",
+  "en": "Terms that apply when paid plans open on 1 November",
   "kind": "text",
   "context": "he list. We'll email you once, when paid plans open in January.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Can"
  },
@@ -1315,7 +1315,7 @@
   "context": " thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict and the fee audit are free from 1 November. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and inc"
  },
  {
-  "en": "Verdict and the fee audit are free from 1 November. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.",
+  "en": "Verdict and the fee audit are free from 1 November. A full report costs €14, once. Virtuse CFO opens on 1 November at €9 a month or €90 a year and includes unlimited verdicts and reports.",
   "kind": "text",
   "context": " do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict and the fee audit are free from 1 November. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13"
  },
