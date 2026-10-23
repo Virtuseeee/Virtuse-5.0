@@ -428,7 +428,11 @@ export function validSummary(t, lang, BANNED, signalNames) {
   const s = t.trim();
   if (s.length < 20 || s.length > 160) return false;
   if (BANNED.some((re) => re.test(s)) || JARGON.test(s) || !langOk(s, L)) return false;
-  if (signalNames.some((n) => s.toLowerCase().includes(n.toLowerCase()))) return false;
+  // A signal used as a label: an id (worst_case, plan_b) or a display name
+  // written with its capital mid-sentence ("v oblasti Dane"). Ordinary words
+  // like "daň", "cieľ" or "tax" are allowed (live test 2026-10-23: a plain
+  // substring check rejected every model summary).
+  if (signalNames.some((n) => /_/.test(n) ? s.includes(n) : new RegExp('(^|[^\\p{L}])' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\p{L}])', 'u').test(s.slice(1)))) return false;
   return true;
 }
 export function validFix(t, lang, BANNED) {

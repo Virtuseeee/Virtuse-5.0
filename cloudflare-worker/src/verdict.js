@@ -331,7 +331,7 @@ function norm(t) { return String(t || '').toLowerCase().replace(/[\u201e\u201c\u
 // ctx: { text, profile } of the request. Without ctx.text (old eval results)
 // the quote check is skipped.
 export const MIN_SIGNALS = 7;
-const SIGNAL_NAMES = SIGNALS.flatMap((d) => [d.sk, d.en, d.id]);
+const SIGNAL_NAMES = SIGNALS.flatMap((d) => [d.sk, d.en, ...(d.id.includes('_') ? [d.id] : [])]);
 export function scoreVerdict(out, lang, ctx = {}) {
   const L = LANGS.includes(lang) ? lang : 'en';
   const profile = ctx.profile || {};

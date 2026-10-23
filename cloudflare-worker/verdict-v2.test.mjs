@@ -244,3 +244,11 @@ test('prompt asks for summary and fix with the verb list; schema requires them',
   assert.match(p, new RegExp(VERBS.sk[0]));
   assert.match(p, /never a request for advice/);
 });
+
+test('summary: ordinary words like daň, cieľ, tax pass; a signal used as a label fails', () => {
+  const ok = 'Máte rezervu na 6 mesiacov, ale neviete, akú daň zaplatíte a nemáte cieľ s dátumom.';
+  assert.equal(t1({ summary: ok }).level.why, ok);
+  const en = scoreVerdict(out(T1_PTS, { summary: "You have a 6-month reserve, but you haven't worked out the tax on a sale." }), 'en', { text: T1_TEXT, profile: T1 });
+  assert.equal(en.copySource.summary, 'model');
+  assert.equal(t1({ summary: 'Vaša úvaha je slabá v časti Dane, zvyšok je opísaný celkom dobre.' }).copySource.summary, 'template');
+});
