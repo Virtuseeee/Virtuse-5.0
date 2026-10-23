@@ -1613,5 +1613,145 @@
   "en": "Verdict scores how complete your Bitcoin decision is, free from 1 November 2026. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.",
   "kind": "head",
   "context": "description"
+ },
+ {
+  "en": "Ecosystem",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Overview",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "All bitcoin-only resources",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Bitcoin Ecosystem",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "A plain-English primer",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "What is Bitcoin?",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "A curated reading list",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Books",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Bitcoin-only shows",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Podcasts",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Channels and documentaries",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Videos",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Bitcoin events in Europe",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Conferences",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Lawful privacy tools",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Bitcoin Privacy",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Shops, maps and gift cards",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Spend Bitcoin",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Accept bitcoin in your shop",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Store Tools",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Libraries and SDKs",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Dev Tools",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Jobs, grants and fellowships",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Bitcoin Jobs",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Fellow bitcoin-only projects",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Bitcoin Peers",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Get your project featured",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Promote",
+  "kind": "text",
+  "context": "Ecosystem menu"
  }
 ]

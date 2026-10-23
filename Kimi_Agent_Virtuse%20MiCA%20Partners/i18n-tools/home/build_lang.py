@@ -168,6 +168,7 @@ def build(L):
         h = h.replace('href="/%s/"' % en_slug, 'href="/%s/%s/"' % (L, slug))
     if os.path.isdir(os.path.join(SITE, L, 'stories')):   # stories hub exists only for en, sk, ru
         h = h.replace('href="/stories/"', 'href="/%s/stories/"' % L)
+    h = h.replace('href="/ecosystem/', 'href="/%s/ecosystem/' % L)   # Ecosystem menu + footer column
 
     # 5. scripts: paths, language, number and date formats, messages
     loc = LOCALE[L]

@@ -363,3 +363,31 @@ to blog.virtuse.com directly if the proxy is unreachable.
 - Tests: `npm test` (`wp-proxy.test.mjs`).
 - Check after a deploy:
   `curl -sI https://virtuse-newsletter.virtuse-ai.workers.dev/wp/wp-json/` → 200.
+
+## POST /ecosystem-apply (Bitcoin Ecosystem "Get your project featured" form)
+
+Code: `src/ecosystem.js`, auto-reply texts in 10 languages `src/ecosystem-strings.js`, tests `ecosystem.test.mjs`.
+The form lives on `/ecosystem/promote/` and `/<lang>/ecosystem/promote/` (built by `seo-build/ecosystem.mjs`).
+
+Checks, in order: allowed Origin, body ≤ 5 KB, honeypot (`company_url`), server-side validation (required fields,
+http(s) URLs, category from the 11 listing pages, countries = `["ALL"]` or EU/EEA/CH codes, bitcoin-only and consent
+must be `true`), 3 requests per IP per hour (KV `eco:ip:*`), Cloudflare Turnstile siteverify. Then two Resend emails:
+the application to the team (Reply-To = applicant) and an auto-reply to the applicant in the page language
+(Reply-To = team), at most once per address per 24 h (KV `eco:reply:*`). Nothing is stored or published.
+
+Responses: 200 `{ok:true}`; 400 `invalid` (fields) or `captcha` (missing, malformed or failed Turnstile token); 413 `too_large`; 429 `rate_limited`; 502 `send_failed`;
+503 `closed` (no `TURNSTILE_SECRET_KEY` or `RESEND_API_KEY`).
+
+Secrets / settings (`wrangler secret put NAME`):
+
+| Name | Required | Default | What |
+|---|---|---|---|
+| `TURNSTILE_SECRET_KEY` | yes (new) | none, route answers 503 | Secret key of the Turnstile widget whose site key is in `seo-build/data/ecosystem.json` (`turnstileSiteKey`) |
+| `RESEND_API_KEY` | yes (already set) | | Same key as the newsletter |
+| `ECOSYSTEM_TO` | no | `info@virtuse.com` | Team inbox |
+| `ECOSYSTEM_FROM` | no | `Virtuse <info@virtuse.com>` | Sender (virtuse.com is verified in Resend) |
+| `ECOSYSTEM_TEST_TO` | no | `vasilisin@virtuse.com` | Requests from `https://staging.virtuse.com` send **both** emails here only, subjects start with `[TEST]` |
+
+Turnstile test keys (always pass, Cloudflare docs): site key `1x00000000000000000000AA`, secret
+`1x0000000000000000000000000000000AA`. The widget "virtuse.com Ecosystem Promote form" (site key `0x4AAAAAAFheOLDBd1DyVOhF`, Managed, virtuse.com + staging.virtuse.com) exists since 2026-10-22;
+the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret into `TURNSTILE_SECRET_KEY`.
