@@ -47,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=12">
+<link rel="stylesheet" href="/site-v2.min.css?v=13">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -153,13 +153,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="eco-copy">
       <ol>
         <li><strong>Jen Bitcoin.</strong> Podporujete bitcoin (on-chain a/nebo Lightning) a neuvádíte, neprodáváte ani nepropagujete jiné kryptoměny či tokeny.</li>
-        <li><strong>Relevantní pro Evropu.</strong> Obsluhujete uživatele v EU/EHP nebo ve Švýcarsku.</li>
+        <li><strong>Relevantní pro Evropu.</strong> Své služby nabízíte uživatelům v EU/EHP nebo ve Švýcarsku.</li>
         <li><strong>Regulováno tam, kde je to nutné.</strong> Pokud v EU poskytujete služby spojené s kryptoaktivy, máte povolení podle MiCA (CASP) nebo platnou přechodnou licenci.</li>
         <li><strong>Aktivní a udržovaný projekt</strong> s funkčním veřejným webem.</li>
         <li><strong>Poctivost:</strong> žádné sliby výnosů a žádná nezveřejněná úschova.</li>
       </ol>
       <div class="why-grid">
-        <div class="pcard2 orange eco-card"><span class="eco-k" id="paid">Placené umístění</span><p>Některé položky jsou označeny „Sponzorováno“ nebo „Doporučeno“. Jde o placená umístění a některé odkazy jsou affiliate odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href="/cs/how-we-earn.html">Jak vyděláváme</a>.</p></div>
+        <div class="pcard2 orange eco-card"><span class="eco-k" id="paid">Placené umístění</span><p>Některé položky jsou označeny „Sponzorováno“ nebo „Zvýrazněno“. Jde o placená umístění a některé odkazy jsou affiliate odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href="/cs/how-we-earn.html">Jak vyděláváme</a>.</p></div>
         <div class="pcard2 blue eco-card"><span class="eco-k" id="removal">Odstranění</span><p>Položku můžeme odstranit, pokud přestane splňovat kritéria. O odstranění můžete kdykoli požádat.</p></div>
       </div>
     </div>
@@ -177,7 +177,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <label>Kategorie ekosystému *<select name="category" required><option value="">Vyberte kategorii</option><option value="what-is-bitcoin">Co je Bitcoin?</option><option value="books">Knihy</option><option value="podcasts">Podcasty</option><option value="videos">Videa</option><option value="conferences">Konference</option><option value="privacy">Soukromí v Bitcoinu</option><option value="spend-bitcoin">Platit bitcoinem</option><option value="store-tools">Pro obchodníky</option><option value="dev-tools">Pro vývojáře</option><option value="jobs">Práce v Bitcoinu</option><option value="peers">Spřátelené projekty</option></select></label>
       <label>Krátký popis v angličtině (max. 300 znaků) *<textarea name="description" required maxlength="300" rows="3"></textarea><span class="eco-count">0 / 300</span></label>
       <fieldset class="eco-countries">
-        <legend>Obsluhované země *</legend>
+        <legend>Země, kde působíte *</legend>
         <label class="eco-check eco-all"><input type="checkbox" data-all-countries checked> Všechny země EU/EHP a Švýcarsko</label>
         <details class="eco-pick-countries">
           <summary>Vybrat konkrétní země</summary>
@@ -186,7 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </fieldset>
       <label class="eco-check"><input type="checkbox" name="bitcoin_only" required> <span>Potvrzuji, že projekt je zaměřený jen na Bitcoin (žádné jiné kryptoměny ani tokeny) *</span></label>
       <div class="eco-2">
-        <label>Číslo licence MiCA a orgán, který ji vydal (pokud se uplatní)<input name="licence" maxlength="200"></label>
+        <label>Číslo licence MiCA a orgán, který ji vydal (pokud existuje)<input name="licence" maxlength="200"></label>
         <label>URL open-source repozitáře<input name="repo" type="url" maxlength="300" placeholder="https://"></label>
       </div>
       <div class="eco-2">
@@ -194,12 +194,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <label>Kontaktní e-mail *<input name="contact_email" type="email" required maxlength="200" autocomplete="email"></label>
       </div>
       <fieldset class="eco-radio">
-        <legend>Máte zájem o doporučené nebo sponzorované umístění?</legend>
+        <legend>Máte zájem o zvýrazněné nebo sponzorované umístění?</legend>
         <label class="eco-check"><input type="radio" name="sponsored_interest" value="yes"> Ano</label>
         <label class="eco-check"><input type="radio" name="sponsored_interest" value="no" checked> Ne</label>
       </fieldset>
       <label>Zpráva<textarea name="message" maxlength="1500" rows="4"></textarea></label>
-      <label class="eco-check"><input type="checkbox" name="consent" required> <span>Souhlasím, že Virtuse zpracuje tyto údaje za účelem posouzení žádosti, jak je popsáno v <a href="/cs/privacy-policy.html">zásadách ochrany osobních údajů</a>. *</span></label>
+      <label class="eco-check"><input type="checkbox" name="consent" required> <span>Souhlasím, že Virtuse zpracuje tyto údaje za účelem posouzení žádosti, jak je popsáno v <a href="/cs/privacy-policy.html#ecosystem">zásadách ochrany osobních údajů</a>. *</span></label>
       <input class="hp" type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="cf-turnstile eco-turnstile" data-sitekey="0x4AAAAAAFheOLDBd1DyVOhF" data-theme="dark" data-language="cs" data-size="flexible"></div>
       <button class="hp-cta eco-submit" type="submit">Odeslat žádost <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
