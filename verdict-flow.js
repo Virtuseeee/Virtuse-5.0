@@ -46,7 +46,7 @@
         keys: ['Kto bude držať kľúče a kto o nich vie?', 'Úschova je časť rozhodnutia, nie detail.', 'Ovplyvní signál Úschova a dedičstvo.'],
         drop: ['Bitcoin padne o 70 %. Čo urobíte?', 'Odpovedzte podľa toho, čo by ste naozaj urobili.', 'Ovplyvní signály Najhorší scenár a Pravidlo, nie emócia.'],
         aim: ['Čo má toto rozhodnutie dosiahnuť?', 'Vyberte, čo je najbližšie. Číslo a termín môžete dopísať do vlastného textu.', 'Ovplyvní signál Cieľ.'],
-        taxknow: ['Viete, ako sa vo vašej krajine zdaní predaj?', 'Napríklad sadzba, oslobodenie po čase držby alebo či sa zdaňuje aj výmena kryptomien.', 'Ovplyvní signál Dane.'],
+        tax_known: ['Viete, ako sa vo vašej krajine zdaní predaj?', 'Napríklad sadzba, oslobodenie po čase držby alebo či sa zdaňuje aj výmena kryptomien.', 'Ovplyvní signál Dane.'],
         ruleset: ['Máte napísané pravidlo, kedy dokúpite alebo predáte?', 'Napríklad: dokúpim pri poklese o 30 %, predám desatinu pri dvojnásobku.', 'Ovplyvní signál Pravidlo, nie emócia.'],
         holdtime: ['Ako dlho Bitcoin, ktorý chcete predať, držíte?', 'V niektorých krajinách závisí daň od času držby.', 'Ovplyvní signál Časový horizont a pomôže posúdiť Dane.'],
         basis: ['Viete, za koľko ste ho kúpili?', 'Nákupná cena je základ pre výpočet dane.', 'Pomôže AI posúdiť signál Dane.'],
@@ -54,7 +54,9 @@
         liqprice: ['Viete, pri akej cene Bitcoinu by pôžičku zlikvidovali?', 'Pri tejto cene veriteľ predá zábezpeku.', 'Ovplyvní signál Najhorší scenár.'],
         runway: ['Na koľko mesiacov vystačí firme hotovosť bez Bitcoinu?', 'Bežné náklady firmy bez predaja BTC.', 'Ovplyvní signál Likvidita.'],
         board: ['Schválilo to predstavenstvo alebo vlastníci?', 'Pravidlá pre Bitcoin vo firme by mali byť písomne schválené.', 'Ovplyvní signál Pravidlo, nie emócia.'],
-        heirs: ['Vedia vaši dedičia, ako sa k Bitcoinu dostať?', 'Bez toho, aby dopredu poznali seed frázu.', 'Ovplyvní signál Úschova a dedičstvo.']
+        heirs: ['Vedia vaši dedičia, ako sa k Bitcoinu dostať?', 'Bez toho, aby dopredu poznali seed frázu.', 'Ovplyvní signál Úschova a dedičstvo.'],
+        custody_pref: ['Ako chcete mať Bitcoin v úschove?', 'Podľa toho Partner Finder ukáže partnerov, ktorí spĺňajú vaše kritériá.', 'Použije Partner Finder. AI to berie ako kontext.'],
+        freq: ['Ako často chcete nakupovať?', 'Rovnakú odpoveď použije Stacking Strategist.', 'Použije Stacking Strategist. AI to berie ako kontext.']
       },
       dropAmt: { s: ['menej ako 1 000 €', 'menej ako 300 €'], m: ['1 000 až 10 000 €', 'asi 300 až 3 000 €'], l: ['10 000 až 100 000 €', 'asi 3 000 až 30 000 €'], xl: ['viac ako 100 000 €', 'viac ako 30 000 €'] },
       dropSub: function (a) { return a ? 'Pri sume ' + a[0] + ' by zostalo ' + a[1] + '. Odpovedzte podľa toho, čo by ste naozaj urobili.' : 'Z každých 1 000 € by zostalo asi 300 €. Odpovedzte podľa toho, čo by ste naozaj urobili.'; },
@@ -68,7 +70,7 @@
         keys: [['exch', 'Burza alebo aplikácia'], ['self', 'Ja, na vlastnej peňaženke'], ['selfplan', 'Ja, a blízky vie, ako sa k nim dostať'], ['multisig', 'Multisig s viacerými kľúčmi']],
         drop: [['buy', 'Dokúpim podľa vopred daného pravidla'], ['hold', 'Podržím, nič nerobím'], ['sell', 'Predám časť alebo všetko']],
         aim: [['retire', 'Peniaze na dôchodok'], ['grow', 'Dlhodobo zhodnotiť úspory'], ['purchase', 'Konkrétny nákup alebo cieľ'], ['family', 'Niečo pre deti alebo dedičov']],
-        taxknow: [['yes', 'Áno, poznám pravidlo'], ['roughly', 'Približne'], ['no', 'Nie']],
+        tax_known: [['yes', 'Áno, poznám pravidlo'], ['roughly', 'Približne'], ['no', 'Nie']],
         ruleset: [['yes', 'Áno, mám ho napísané'], ['roughly', 'Približne, mám ho v hlave'], ['no', 'Nie']],
         holdtime: [['lt1', 'Menej ako rok'], ['1_3', '1 až 3 roky'], ['gt3', 'Viac ako 3 roky']],
         basis: [['yes', 'Áno, mám záznamy'], ['roughly', 'Približne'], ['no', 'Nie']],
@@ -76,14 +78,16 @@
         liqprice: [['yes', 'Áno, poznám ju'], ['no', 'Nie']],
         runway: [['lt12', 'Menej ako 12 mesiacov'], ['12_24', '12 až 24 mesiacov'], ['gt24', 'Viac ako 24 mesiacov']],
         board: [['yes', 'Áno'], ['pending', 'Čaká na schválenie'], ['no', 'Nie']],
-        heirs: [['yes', 'Áno, majú postup'], ['no', 'Nie']]
+        heirs: [['yes', 'Áno, majú postup'], ['no', 'Nie']],
+        custody_pref: [['self', 'Vlastné kľúče'], ['assisted', 'Asistovaná úschova (pomoc s kľúčmi a obnovou)'], ['any', 'Je mi to jedno']],
+        freq: [['weekly', 'Týždenne'], ['monthly', 'Mesačne']]
       },
       ctxEb: 'Váš kontext', ctxH: 'Vaše rozhodnutie má teraz pevný rámec.', ctxP: 'Väčšina rozhodnutí zlyhá na tom, čo sa nepovedalo nahlas: kedy budete peniaze potrebovať, čo urobíte pri prepade a kto sa k nim dostane. AI vaše odpovede zohľadní. Čo napíšete vlastnými slovami, váži viac.',
       ctxWhat: 'Čo zvažujete', ctxLimits: 'Vaše hranice',
       focusH: 'Čo chcete zistiť najviac?', focusP: 'Na to sa vo verdikte zameriame.', focusHint: 'Vyberte jedno alebo viac.', picked: ' vybrané', pickOne: 'Vyberte aspoň jedno',
       focus: [['risk', 'Kde je najväčšie riziko?'], ['drop', 'Zvládnem to pri prepade?'], ['tax', 'Čo s daňami a úschovou?'], ['next', 'Čo mám urobiť ako ďalšie?']],
       revEb: 'Posledná kontrola', revH: 'Takto vaše rozhodnutie pochopíme.', revP: 'Opravte, čo nesedí. Presne toto pôjde do hodnotenia.', edit: '✎ Upraviť', none: 'Neuvedené', notYet: 'Zatiaľ neviem', otherGoal: 'Niečo iné',
-      rev: { goal: 'Čo zvažujete', text: 'Vlastnými slovami', country: 'Krajina', experience: 'Bitcoin už vlastníte', amount: 'Suma', share: 'Podiel na majetku', horizon: 'Kedy peniaze potrebujete', reserve: 'Rezerva na 6 mesiacov', keys: 'Kľúče', drop: 'Pri prepade o 70 %', aim: 'Čo má dosiahnuť', taxknow: 'Zdanenie predaja', ruleset: 'Napísané pravidlo', holdtime: 'Čas držby', basis: 'Nákupná cena', ltv: 'LTV pôžičky', liqprice: 'Cena likvidácie', runway: 'Hotovosť firmy', board: 'Schválenie', heirs: 'Dedičia' },
+      rev: { goal: 'Čo zvažujete', text: 'Vlastnými slovami', country: 'Krajina', experience: 'Bitcoin už vlastníte', amount: 'Suma', share: 'Podiel na majetku', horizon: 'Kedy peniaze potrebujete', reserve: 'Rezerva na 6 mesiacov', keys: 'Kľúče', drop: 'Pri prepade o 70 %', aim: 'Čo má dosiahnuť', tax_known: 'Zdanenie predaja', ruleset: 'Napísané pravidlo', holdtime: 'Čas držby', basis: 'Nákupná cena', ltv: 'LTV pôžičky', liqprice: 'Cena likvidácie', runway: 'Hotovosť firmy', board: 'Schválenie', heirs: 'Dedičia', custody_pref: 'Preferovaná úschova', freq: 'Ako často' },
       revAi: 'Hodnotí umelá inteligencia (jazykový model od Anthropic). Môže sa mýliť. Nie je to investičné, daňové ani právne poradenstvo.', getVerdict: 'Získať verdikt zadarmo',
       loadH: 'Kontrolujeme vaše rozhodnutie', loadSteps: ['Čítame vaše rozhodnutie a odpovede…', 'Hodnotíme 10 signálov…', 'Hľadáme najslabšie miesto…', 'Pripravujeme ďalší krok…'], loadGet: 'Čo dostanete', loadNote: 'Zvyčajne 5 až 15 sekúnd. Nechajte stránku otvorenú.',
       unlock: [['Všetkých 10 signálov', 'Každý signál s bodmi a dôvodom, napísaným pre vaše rozhodnutie.'], ['Najslabšie miesto', 'Ktorý signál vás ťahá dole a kde ho doplniť.'], ['Chýbajúce otázky', 'Na čo ste nemysleli a čo zvážiť predtým, ako konáte.'], ['Partneri pre vašu kategóriu', 'Partner Finder s vašimi odpoveďami už vyplnenými.']],
@@ -116,7 +120,9 @@
         pfShow: 'Zobraziť partnerov', sticky: 'Zapísať sa na report',
         group: { risk: 'Riziko', taxc: 'Dane a úschova', plan: 'Plán' }, planH: 'Plán krokov', pdfTitle: 'Verdict',
         nameL: 'Názov rozhodnutia (nepovinné)', namePh: 'Napríklad: Bitcoin na dôchodok', nameNote: 'Uvidíte ho len vy, vo výsledku a v PDF. Neposielame ho.',
-        progress: 'Váš postup', of: ' z ', secs: ' s'
+        progress: 'Váš postup', of: ' z ', secs: ' s',
+        stored: 'Odpovede si pamätá len tento prehliadač, aby ste ich v ďalších nástrojoch nemuseli písať znova.', forget: 'Zabudnúť moje odpovede',
+        consultH: 'Chcete si rozhodnutie prejsť s človekom?', consultP: 'Osobná konzultácia: 15 minút, zadarmo, bez predaja.', consultBtn: 'Rezervovať konzultáciu'
       },
       declinedH: 'Verdict to nevie ohodnotiť.', again: '↺ Ohodnotiť ďalšie rozhodnutie', decision: 'Rozhodnutie'
     },
@@ -144,7 +150,7 @@
         keys: ['Who will hold the keys, and who knows about them?', 'Custody is part of the decision, not a detail.', 'Affects the Custody and inheritance signal.'],
         drop: ['Bitcoin falls 70%. What do you do?', 'Answer with what you would really do.', 'Affects the Worst case and Rule, not emotion signals.'],
         aim: ['What should this decision achieve?', 'Pick the closest. You can add a number and a date in your own words.', 'Affects the Goal signal.'],
-        taxknow: ['Do you know how a sale is taxed in your country?', 'For example the rate, an exemption after a holding period, or whether swapping coins is taxed.', 'Affects the Tax signal.'],
+        tax_known: ['Do you know how a sale is taxed in your country?', 'For example the rate, an exemption after a holding period, or whether swapping coins is taxed.', 'Affects the Tax signal.'],
         ruleset: ['Do you have a written rule for when to buy more or sell?', 'For example: buy more after a 30% fall, sell a tenth when the price doubles.', 'Affects the Rule, not emotion signal.'],
         holdtime: ['How long have you held the Bitcoin you want to sell?', 'In some countries the tax depends on the holding period.', 'Affects the Time horizon signal and helps judge Tax.'],
         basis: ['Do you know what you paid for it?', 'The purchase price is the basis for the tax.', 'Helps the AI judge the Tax signal.'],
@@ -152,7 +158,9 @@
         liqprice: ['Do you know the Bitcoin price at which the loan would be liquidated?', 'At that price the lender sells the collateral.', 'Affects the Worst case signal.'],
         runway: ['How many months can the company run on cash without the Bitcoin?', 'Normal company costs without selling BTC.', 'Affects the Liquidity signal.'],
         board: ['Has the board or have the owners approved it?', 'Rules for Bitcoin in a company should be approved in writing.', 'Affects the Rule, not emotion signal.'],
-        heirs: ['Do your heirs know how to reach the Bitcoin?', 'Without knowing the seed phrase in advance.', 'Affects the Custody and inheritance signal.']
+        heirs: ['Do your heirs know how to reach the Bitcoin?', 'Without knowing the seed phrase in advance.', 'Affects the Custody and inheritance signal.'],
+        custody_pref: ['How do you want your Bitcoin held?', 'Partner Finder uses this to show partners that meet your criteria.', 'Used by Partner Finder. The AI takes it as context.'],
+        freq: ['How often do you want to buy?', 'Stacking Strategist uses the same answer.', 'Used by Stacking Strategist. The AI takes it as context.']
       },
       dropAmt: { s: ['under €1,000', 'under €300'], m: ['€1,000 to 10,000', 'about €300 to 3,000'], l: ['€10,000 to 100,000', 'about €3,000 to 30,000'], xl: ['over €100,000', 'over €30,000'] },
       dropSub: function (a) { return a ? 'An amount of ' + a[0] + ' would be worth ' + a[1] + '. Answer with what you would really do.' : 'Every €1,000 would be worth about €300. Answer with what you would really do.'; },
@@ -166,7 +174,7 @@
         keys: [['exch', 'An exchange or app'], ['self', 'Me, in my own wallet'], ['selfplan', 'Me, and someone close knows how to reach them'], ['multisig', 'A multisig with several keys']],
         drop: [['buy', 'Buy more by a rule set in advance'], ['hold', 'Hold, do nothing'], ['sell', 'Sell some or all']],
         aim: [['retire', 'Money for retirement'], ['grow', 'Grow savings over the long term'], ['purchase', 'A specific purchase or goal'], ['family', 'Something for children or heirs']],
-        taxknow: [['yes', 'Yes, I know the rule'], ['roughly', 'Roughly'], ['no', 'No']],
+        tax_known: [['yes', 'Yes, I know the rule'], ['roughly', 'Roughly'], ['no', 'No']],
         ruleset: [['yes', 'Yes, written down'], ['roughly', 'Roughly, in my head'], ['no', 'No']],
         holdtime: [['lt1', 'Under a year'], ['1_3', '1 to 3 years'], ['gt3', 'Over 3 years']],
         basis: [['yes', 'Yes, I have records'], ['roughly', 'Roughly'], ['no', 'No']],
@@ -174,14 +182,16 @@
         liqprice: [['yes', 'Yes, I know it'], ['no', 'No']],
         runway: [['lt12', 'Under 12 months'], ['12_24', '12 to 24 months'], ['gt24', 'Over 24 months']],
         board: [['yes', 'Yes'], ['pending', 'Pending'], ['no', 'No']],
-        heirs: [['yes', 'Yes, they have a procedure'], ['no', 'No']]
+        heirs: [['yes', 'Yes, they have a procedure'], ['no', 'No']],
+        custody_pref: [['self', 'My own keys'], ['assisted', 'Assisted custody (help with keys and recovery)'], ['any', 'No preference']],
+        freq: [['weekly', 'Weekly'], ['monthly', 'Monthly']]
       },
       ctxEb: 'Your context', ctxH: 'Your decision now has a clear frame.', ctxP: "Most decisions fail on what was never said out loud: when you'll need the money, what you'll do in a fall and who can reach it. The AI takes your answers into account. What you write in your own words counts more.",
       ctxWhat: "What you're considering", ctxLimits: 'Your limits',
       focusH: 'What do you most want to find out?', focusP: "That's where the verdict will focus.", focusHint: 'Pick one or more.', picked: ' selected', pickOne: 'Pick at least one',
       focus: [['risk', "Where's the biggest risk?"], ['drop', 'Can I get through a fall?'], ['tax', 'What about tax and custody?'], ['next', 'What should I do next?']],
       revEb: 'Final check', revH: "Here's how we understood your decision.", revP: "Change anything that doesn't sound right. This is exactly what gets assessed.", edit: '✎ Edit', none: 'Not given', notYet: 'Not sure yet', otherGoal: 'Something else',
-      rev: { goal: "What you're considering", text: 'In your own words', country: 'Country', experience: 'Already own Bitcoin', amount: 'Amount', share: 'Share of wealth', horizon: 'When you need the money', reserve: '6-month reserve', keys: 'Keys', drop: 'In a 70% fall', aim: 'What it should achieve', taxknow: 'Tax on a sale', ruleset: 'Written rule', holdtime: 'Holding period', basis: 'Purchase price', ltv: 'Loan LTV', liqprice: 'Liquidation price', runway: 'Company cash runway', board: 'Approval', heirs: 'Heirs' },
+      rev: { goal: "What you're considering", text: 'In your own words', country: 'Country', experience: 'Already own Bitcoin', amount: 'Amount', share: 'Share of wealth', horizon: 'When you need the money', reserve: '6-month reserve', keys: 'Keys', drop: 'In a 70% fall', aim: 'What it should achieve', tax_known: 'Tax on a sale', ruleset: 'Written rule', holdtime: 'Holding period', basis: 'Purchase price', ltv: 'Loan LTV', liqprice: 'Liquidation price', runway: 'Company cash runway', board: 'Approval', heirs: 'Heirs', custody_pref: 'Preferred custody', freq: 'How often' },
       revAi: 'This assessment is generated by artificial intelligence (a language model by Anthropic). It may be wrong. It is not investment, tax or legal advice.', getVerdict: 'Get my free verdict',
       loadH: 'Checking your decision', loadSteps: ['Reading your decision and answers…', 'Scoring 10 signals…', 'Finding the weakest point…', 'Preparing your next step…'], loadGet: 'What you get', loadNote: 'Usually 5 to 15 seconds. Keep this page open.',
       unlock: [['All 10 signals', 'Each signal scored, with a reason written for your decision.'], ['The weakest point', 'Which signal pulls you down and where to fill it in.'], ['Missing questions', "What you haven't considered before you act."], ['Partners for your category', 'Partner Finder with your answers already filled in.']],
@@ -214,7 +224,9 @@
         pfShow: 'Show partners', sticky: 'Join the report waitlist',
         group: { risk: 'Risk', taxc: 'Tax and custody', plan: 'Plan' }, planH: 'Step-by-step plan', pdfTitle: 'Verdict',
         nameL: 'Decision name (optional)', namePh: 'For example: Bitcoin for retirement', nameNote: 'Only you see it, in the result and the PDF. We do not send it.',
-        progress: 'Your progress', of: ' of ', secs: ' s'
+        progress: 'Your progress', of: ' of ', secs: ' s',
+        stored: 'Only this browser remembers your answers, so other tools need not ask again.', forget: 'Forget my answers',
+        consultH: 'Would you like to go through your decision with a person?', consultP: 'Personal consultation: 15 minutes, free, no sales pitch.', consultBtn: 'Book a 15-minute call'
       },
       declinedH: "Verdict can't rate this.", again: '↺ Rate another decision', decision: 'Decision'
     }
@@ -223,13 +235,14 @@
   var A = { goal: null, text: '', focus: [] };
   var SV = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var CK = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  var BUYSET = { about: ['country', 'experience', 'amount', 'share', 'horizon', 'reserve'], plan: ['keys', 'drop', 'aim', 'taxknow', 'ruleset'] };
+  var BUYSET = { about: ['country', 'experience', 'amount', 'share', 'horizon', 'reserve'], plan: ['keys', 'custody_pref', 'drop', 'aim', 'tax_known', 'ruleset'] };
   var GOALSETS = {
-    buy: BUYSET, dca: BUYSET,
-    sell: { about: ['country', 'amount', 'share', 'holdtime', 'basis'], plan: ['taxknow', 'aim', 'keys', 'ruleset'] },
-    loan: { about: ['country', 'amount', 'ltv', 'liqprice', 'horizon', 'reserve'], plan: ['keys', 'drop', 'taxknow', 'ruleset'] },
-    treasury: { about: ['country', 'amount', 'runway', 'board', 'horizon'], plan: ['keys', 'drop', 'taxknow', 'ruleset'] },
-    custody: { about: ['country', 'amount', 'keys', 'heirs'], plan: ['taxknow', 'aim'] }
+    buy: BUYSET,
+    dca: { about: ['country', 'experience', 'amount', 'freq', 'share', 'horizon', 'reserve'], plan: BUYSET.plan },
+    sell: { about: ['country', 'amount', 'share', 'holdtime', 'basis'], plan: ['tax_known', 'aim', 'keys', 'ruleset'] },
+    loan: { about: ['country', 'amount', 'ltv', 'liqprice', 'horizon', 'reserve'], plan: ['keys', 'drop', 'tax_known', 'ruleset'] },
+    treasury: { about: ['country', 'amount', 'runway', 'board', 'horizon'], plan: ['keys', 'drop', 'tax_known', 'ruleset'] },
+    custody: { about: ['country', 'amount', 'keys', 'custody_pref', 'heirs'], plan: ['tax_known', 'aim'] }
   };
   function SET() { return GOALSETS[A.goal] || BUYSET; }
   function KEYS() { return SET().about.concat(SET().plan); }
@@ -281,9 +294,13 @@
   function skipBtn(lbl, key) {
     return '<div class="alt"><button class="ghost" data-skip="' + key + '">' + (lbl || STR.skip) + '</button></div>';
   }
-  function bindSkip() { var b = panel.querySelector('[data-skip]'); if (b) b.onclick = function () { if (b.dataset.skip === 'goal') return setGoal('na'); A[b.dataset.skip] = 'na'; next(); }; }
+  function bindSkip() { var b = panel.querySelector('[data-skip]'); if (b) b.onclick = function () { if (b.dataset.skip === 'goal') return setGoal('na'); A[b.dataset.skip] = 'na'; save(b.dataset.skip); next(); }; }
+  // Shared profile (vb-profile.js): fixed ids to localStorage, text and name to sessionStorage only.
+  var P = window.VBProfile;
+  function save(key) { if (!P) return; var o = {}; o[key] = A[key]; P.set(o); }
+  function saveText() { if (P) P.setText({ text: A.text || '', name: A.name || '' }); }
   // A new goal brings its own questions, so an edit then walks through them.
-  function setGoal(v) { if (v !== A.goal) RET = null; A.goal = v; build(); next(); }
+  function setGoal(v) { if (v !== A.goal) RET = null; A.goal = v; save('goal'); build(); next(); }
 
   function start() {
     panel.innerHTML = '<div class="chip-eyebrow">' + STR.startEb + '</div><h1>' + STR.startH + '</h1><p class="sub">' + STR.startP + '</p><p class="hint">' + STR.startHint + '</p>' + foot(STR.startNote, STR.start);
@@ -303,7 +320,7 @@
       '<div class="count"><span id="cn">0</span> / 1200</div><input class="hp" id="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
       '<p class="warn">' + STR.textWarn + '</p>' + foot();
     var tx = document.getElementById('tx'), c = document.getElementById('c');
-    function upd() { A.text = tx.value; document.getElementById('cn').textContent = tx.value.length; var ok = tx.value.trim().length >= 20; c.disabled = !ok; document.getElementById('fn').textContent = ok ? '' : STR.textShort; }
+    function upd() { A.text = tx.value; saveText(); document.getElementById('cn').textContent = tx.value.length; var ok = tx.value.trim().length >= 20; c.disabled = !ok; document.getElementById('fn').textContent = ok ? '' : STR.textShort; }
     panel.querySelectorAll('.sugg button').forEach(function (b) { b.onclick = function () { tx.value = b.textContent; upd(); tx.focus(); }; });
     tx.oninput = upd; upd(); c.onclick = function () { A.hp = document.getElementById('hp').value; next(); };
   }
@@ -333,7 +350,7 @@
         ? '<div class="chips">' + O.map(function (c) { return '<button class="opt' + (A[key] === c[0] ? ' sel' : '') + '" data-v="' + c[0] + '">' + c[1] + '</button>'; }).join('') + '</div>'
         : '<div class="opts">' + O.map(function (o) { return '<button class="opt' + (A[key] === o[0] ? ' sel' : '') + '" data-v="' + o[0] + '"><span>' + o[1] + '</span>' + (A[key] === o[0] ? CK : SV) + '</button>'; }).join('') + '</div>';
       panel.innerHTML = h + skipBtn(null, key);
-      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { A[key] = b.dataset.v; b.classList.add('sel'); setTimeout(next, 160); }; });
+      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { A[key] = b.dataset.v; save(key); b.classList.add('sel'); setTimeout(next, 160); }; });
       bindSkip();
     };
   }
@@ -357,7 +374,7 @@
       panel.innerHTML = '<div class="eyebrow">' + STR.plan + '</div><h2>' + STR.focusH + '</h2><p class="sub">' + STR.focusP + '</p><p class="hint">' + STR.focusHint + '</p>' +
         '<div class="opts">' + STR.focus.map(function (f) { var s = A.focus.indexOf(f[0]) >= 0; return '<button class="opt' + (s ? ' sel' : '') + '" aria-pressed="' + s + '" data-v="' + f[0] + '"><span>' + f[1] + '</span>' + (s ? CK : SV) + '</button>'; }).join('') + '</div>' +
         foot(A.focus.length ? A.focus.length + STR.picked : STR.pickOne, null, !A.focus.length);
-      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { var v = b.dataset.v, p = A.focus.indexOf(v); if (p >= 0) A.focus.splice(p, 1); else A.focus.push(v); draw(); }; });
+      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { var v = b.dataset.v, p = A.focus.indexOf(v); if (p >= 0) A.focus.splice(p, 1); else A.focus.push(v); save('focus'); draw(); }; });
       document.getElementById('c').onclick = next;
     }
     draw();
@@ -367,8 +384,10 @@
     panel.innerHTML = '<div class="chip-eyebrow">' + STR.revEb + '</div><h2>' + STR.revH + '</h2><p class="sub">' + STR.revP + '</p><div style="margin-top:18px">' +
       rows.map(function (r) { return '<div class="vfr"><div><b>' + STR.rev[r[0]] + '</b>' + esc(r[1]) + '</div><button class="ghost edit" data-to="' + r[2] + '">' + STR.edit + '</button></div>'; }).join('') +
       '</div><label class="vf-name"><b>' + STR.R.nameL + '</b><input id="dn" maxlength="60" autocomplete="off" placeholder="' + esc(STR.R.namePh) + '" value="' + esc(A.name || '') + '"><span class="small">' + STR.R.nameNote + '</span></label>' +
-      '<p class="warn" style="margin-top:12px">' + STR.revAi + '</p>' + foot('', STR.getVerdict, A.text.trim().length < 20, true);
-    document.getElementById('dn').oninput = function () { A.name = this.value.trim(); };
+      '<p class="warn" style="margin-top:12px">' + STR.revAi + ' ' + STR.R.stored + ' <a href="#" id="vfForget">' + STR.R.forget + '</a></p>' + foot('', STR.getVerdict, A.text.trim().length < 20, true);
+    document.getElementById('dn').oninput = function () { A.name = this.value.trim(); saveText(); };
+    var fg = document.getElementById('vfForget');
+    if (fg) fg.onclick = function (e) { e.preventDefault(); if (P) P.clear(); A = { goal: null, text: '', focus: [] }; RESULT = null; build(); push({ event: 'verdict_profile_forget', page_lang: LANG }); go(0); };
     panel.querySelectorAll('[data-to]').forEach(function (b) { b.onclick = function () { RET = 'review'; go(at(b.dataset.to)); }; });
     document.getElementById('c').onclick = next;
   }
@@ -464,8 +483,17 @@
       '<div id="pfBox"' + (collapsed ? ' hidden' : '') + '><iframe class="pf" id="pfFrame" ' + (collapsed ? 'data-src' : 'src') + '="concierge.html?' + pfq + '&utm_medium=' + medium + '" title="Partner Finder" loading="lazy"></iframe>' +
       '<p class="small">' + STR.pfNote + ' <a href="concierge.html?' + pfq + '&utm_medium=' + medium + '_open">' + STR.pfOpen + '</a></p></div></div>';
   }
+  function consultBlock() {
+    return '<div class="vf-card consult spot no-print"><b>' + STR.R.consultH + '</b><p>' + STR.R.consultP + '</p><button class="vf-btn" data-consult>' + STR.R.consultBtn + '</button></div>';
+  }
   function legal(r) { return '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p>'; }
   function bindCommon() {
+    var r = RESULT || {};
+    push({ event: 'verdict_complete', verdict_lang: LANG, tier: r.report ? 'report' : 'free', verdict_band: r.band && r.band.id, verdict_score: r.score, verdict_goal: A.goal || 'other' });
+    panel.querySelectorAll('[data-consult]').forEach(function (b) { b.onclick = function () {
+      push({ event: 'consultation_click', verdict_lang: LANG, verdict_band: r.band && r.band.id, tier: r.report ? 'report' : 'free' });
+      if (window.VirtuseConsultation) window.VirtuseConsultation.open(LANG);
+    }; });
     panel.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
     var sh = document.getElementById('pfShow');
     if (sh) sh.onclick = function () { var f = document.getElementById('pfFrame'); f.src = f.getAttribute('data-src'); document.getElementById('pfBox').hidden = false; sh.hidden = true; push({ event: 'verdict_pf_show', verdict_lang: LANG }); };
@@ -490,7 +518,7 @@
       '<div class="price vf-card spot"><div><div class="eyebrow"><i></i>' + R.inside + '</div><h3>' + STR.repT + '</h3><p class="sub sm">' + STR.repP + '</p><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
       '<div><div class="eyebrow"><i></i>' + STR.once + '</div><div class="amt">' + (LANG === 'sk' ? '14 €' : '€14') + '</div><p class="sub sm">' + STR.noSub + '</p><p class="small" style="margin-top:6px">' + STR.waitNote + '</p>' + wantForm() + '</div></div>' +
       '<div class="sec">' + R.faqH + '</div><div class="faq">' + R.faq.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
-      pfBlock(r, 'verdict') + legal(r) + '</div>' +
+      pfBlock(r, 'verdict') + consultBlock() + legal(r) + '</div>' +
       '<div class="vf-sticky"><button class="vf-btn" data-again>↺ ' + R.again2 + '</button><button class="vf-btn solid" data-want>' + R.sticky + '</button></div>';
     bindCommon(); bindWant();
   }
@@ -504,7 +532,7 @@
   function bindWant() {
     var f = document.getElementById('want'); if (!f) return;
     panel.querySelectorAll('[data-want]').forEach(function (b) {
-      b.onclick = function () { document.getElementById('report').scrollIntoView({ behavior: 'smooth' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
+      b.onclick = function () { push({ event: 'unlock_click', verdict_lang: LANG, verdict_band: RESULT && RESULT.band && RESULT.band.id }); document.getElementById('report').scrollIntoView({ behavior: 'smooth' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
     });
     f.onsubmit = function (e) {
       e.preventDefault();
@@ -538,7 +566,7 @@
         return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (s) { return sig(s, s.id === weak.id ? STR.weakest : '', s.points < 7 ? toolHref(s.tool, 'report') : ''); }).join('') + '</div>';
       }).join('') +
       '<div class="sec">' + STR.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
-      pfBlock(r, 'verdict_report') + legal(r) + '</div>' +
+      pfBlock(r, 'verdict_report') + consultBlock() + legal(r) + '</div>' +
       '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>↺ ' + R.again2 + '</button><button class="vf-btn solid" id="pdf">' + STR.pdf + '</button></div>';
     bindCommon();
     document.getElementById('pdf').onclick = function () {
@@ -557,8 +585,23 @@
     });
   }
 
-  // Handed over from cfo.html: skip the start screen, text already filled in.
-  var handed = '';
+  // Startup: earlier answers from the shared profile, text from this session;
+  // cfo.html hands over a fresh text (sessionStorage 'vb-verdict-text').
+  var handed = '', src = (location.search.match(/[?&]utm_source=([\w-]+)/) || [])[1] || 'direct';
   try { handed = sessionStorage.getItem('vb-verdict-text') || ''; sessionStorage.removeItem('vb-verdict-text'); } catch (e) {}
-  if (handed) { A.text = handed.slice(0, 1200); go(1); } else go(0);
+  if (P) {
+    var pf = P.get(), pt = P.getText();
+    Object.keys(pf).forEach(function (k) { A[k] = k === 'focus' ? pf[k].slice() : pf[k]; });
+    if (pt.text) A.text = pt.text; if (pt.name) A.name = pt.name;
+  }
+  if (handed) { A.text = handed.slice(0, 1200); src = 'cfo'; saveText(); }
+  build();
+  push({ event: 'verdict_start', verdict_lang: LANG, source: src });
+  if (A.goal) {
+    // Prefilled: the final check when everything is answered, else the first gap.
+    var gap = KEYS().filter(function (k) { return !A[k]; })[0];
+    if (A.text.trim().length < 20) go(at('text'));
+    else if (gap) go(at(gap));
+    else go(at('review'));
+  } else if (handed) go(1); else go(0);
 })();
