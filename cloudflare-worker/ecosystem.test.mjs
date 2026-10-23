@@ -150,6 +150,19 @@ test('auto-reply at most once per address per 24 h (team copy always)', withFetc
   assert.equal(sent.filter((c) => c.body.to[0] === 'ada@example.org').length, 1);
 }));
 
+test('failed Turnstile does not use up the IP quota', withFetch(async () => {
+  const e = env();
+  let ok = true;
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => (String(url).includes('turnstile') && !ok)
+    ? new Response(JSON.stringify({ success: false }), { status: 200 }) : realFetch(url, init);
+  ok = false;
+  for (let i = 0; i < 5; i++) assert.equal((await worker.fetch(req(app()), e)).status, 400);
+  ok = true;
+  assert.equal((await worker.fetch(req(app()), e)).status, 200);
+  globalThis.fetch = realFetch;
+}));
+
 test('Resend failure -> 502', withFetch(async () => {
   const res = await worker.fetch(req(app()), env());
   assert.equal(res.status, 502);

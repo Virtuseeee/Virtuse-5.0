@@ -72,6 +72,7 @@ export async function verifyTurnstile(env, token, ip) {
   try {
     const res = await fetch(SITEVERIFY, { method: 'POST', body: form });
     const out = await res.json();
+    if (!(out && out.success === true)) console.warn('turnstile rejected', JSON.stringify({ codes: out && out['error-codes'], hostname: out && out.hostname }));
     return out && out.success === true;
   } catch (e) {
     console.error('turnstile siteverify failed', e);
@@ -187,8 +188,9 @@ export async function handleEcosystemApply(request, env, origin, { json, emailRe
   if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY) return json(503, { error: 'closed' }, origin);
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  if (await ipLimited(env, ip)) return json(429, { error: 'rate_limited' }, origin);
+  // Turnstile first, so failed or retried checks do not use up the visitor's hourly quota.
   if (!(await verifyTurnstile(env, token, ip))) return json(400, { error: 'captcha' }, origin);
+  if (await ipLimited(env, ip)) return json(429, { error: 'rate_limited' }, origin);
 
   const test = origin === STAGING_ORIGIN;
   const testTo = env.ECOSYSTEM_TEST_TO || 'vasilisin@virtuse.com';
