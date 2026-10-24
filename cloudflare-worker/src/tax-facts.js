@@ -11,6 +11,10 @@ export default {
    "sk": {
     "gainTax": "15 % daň z príjmov (23 % nad stanovenou hranicou)",
     "exemption": "Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог 15% (23% сверх порога)",
+    "exemption": "Освобождение после 3 лет владения (до 40 млн CZK в год) или если общая выручка от продажи криптовалют за год не превышает 100 000 CZK"
    }
   },
   {
@@ -24,6 +28,11 @@ export default {
     "gainTax": "19 až 35 % daň z príjmov",
     "healthLevyShort": "16 % zdravotné odvody",
     "exemption": "Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог от 19 до 35%",
+    "healthLevyShort": "16% взносов на медицинское страхование",
+    "exemption": "Освобождения по сроку владения нет; каждая продажа и обмен криптовалюты на криптовалюту облагаются налогом"
    }
   },
   {
@@ -35,6 +44,10 @@ export default {
    "sk": {
     "gainTax": "19 % jednotná daň z kapitálových výnosov",
     "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Единый налог 19% на прирост капитала",
+    "exemption": "Без освобождения по сроку владения"
    }
   },
   {
@@ -46,6 +59,10 @@ export default {
    "sk": {
     "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
     "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia"
+   },
+   "ru": {
+    "gainTax": "KESt 27,5% (налог на прирост капитала)",
+    "exemption": "Освобождение через 1 год только для крипты, купленной до марта 2021 года; более поздние покупки без освобождения"
    }
   },
   {
@@ -57,6 +74,10 @@ export default {
    "sk": {
     "gainTax": "Až 45 % daň z príjmov (progresívna)",
     "exemption": "0 % po 1-ročnej dobe držby; zisky spolu pod 1 000 € ročne sú bez dane"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог до 45% (прогрессивная шкала)",
+    "exemption": "0% после 1 года владения; общая прибыль менее 1000 € в год освобождена от налога"
    }
   },
   {
@@ -68,6 +89,10 @@ export default {
    "sk": {
     "gainTax": "15 % daň z kapitálových výnosov",
     "exemption": "Bez oslobodenia podľa doby držby; malé transakcie do 10 % minimálnej mzdy sú bez dane (spolu najviac jedna minimálna mzda ročne)"
+   },
+   "ru": {
+    "gainTax": "Налог 15% на прирост капитала",
+    "exemption": "Без освобождения за срок владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)"
    }
   },
   {
@@ -79,6 +104,10 @@ export default {
    "sk": {
     "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
     "exemption": "Súkromné zisky sú bez dane"
+   },
+   "ru": {
+    "gainTax": "Частная прибыль от продажи не облагается (предпринимательская торговля облагается)",
+    "exemption": "Частная прибыль освобождена от налога"
    }
   },
   {
@@ -90,6 +119,10 @@ export default {
    "sk": {
     "gainTax": "12 % zo ziskov z kryptomien (od roku 2024)",
     "exemption": "Bez dane po 2 rokoch držby"
+   },
+   "ru": {
+    "gainTax": "12% с криптоприбыли (с 2024 года)",
+    "exemption": "Освобождение после 2 лет владения"
    }
   },
   {
@@ -101,6 +134,10 @@ export default {
    "sk": {
     "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do 2025: 10 %)",
     "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог 16% с криптоприбыли (до 2025 года 10%)",
+    "exemption": "Без освобождения по сроку владения"
    }
   },
   {
@@ -112,6 +149,10 @@ export default {
    "sk": {
     "gainTax": "10 % jednotná daň zo ziskov",
     "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Фиксированный налог 10% на прибыль",
+    "exemption": "Без освобождения по сроку владения"
    }
   },
   {
@@ -123,6 +164,10 @@ export default {
    "sk": {
     "gainTax": "Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)",
     "exemption": "Nezdaniteľná časť (59 357 € na osobu, 2026)"
+   },
+   "ru": {
+    "gainTax": "Налог на имущество Box 3: примерно 36% от условной доходности",
+    "exemption": "Необлагаемый минимум (59 357 € на человека, 2026)"
    }
   },
   {
@@ -134,6 +179,10 @@ export default {
    "sk": {
     "gainTax": "31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026)",
     "exemption": "Bez oslobodenia podľa doby držby; predaje spolu do 305 € ročne sú oslobodené"
+   },
+   "ru": {
+    "gainTax": "Фиксированный налог 31,4% (PFU: 12,8% подоходного налога + 18,6% социальных взносов, 2026)",
+    "exemption": "Без освобождения по сроку владения; продажи в сумме до 305 € в год освобождены"
    }
   },
   {
@@ -145,6 +194,10 @@ export default {
    "sk": {
     "gainTax": "19 až 30 % progresívna daň z kapitálových príjmov",
     "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Прогрессивный налог от 19 до 30% на доходы от сбережений",
+    "exemption": "Без освобождения по сроку владения"
    }
   }
  ]

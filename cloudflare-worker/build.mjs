@@ -46,11 +46,16 @@ if (existsSync(SEO_DATA)) {
   // Slovak wording of the same facts (seo-build meta.json taxSk), for the
   // one-line country rule in the result (verdict-result-v2 §4).
   const META = path.join(ROOT, 'seo-build', 'data', 'meta.json');
-  const taxSk = existsSync(META) ? JSON.parse(readFileSync(META, 'utf8')).taxSk || {} : {};
+  const meta = existsSync(META) ? JSON.parse(readFileSync(META, 'utf8')) : {};
+  const taxSk = meta.taxSk || {};
+  // Russian wording (meta.json taxRu, same text as the ru/ tax pages) for the ru Verdict.
+  const taxRu = meta.taxRu || {};
+  const short = (t) => t ? { gainTax: t.gainTax, ...(t.healthLevyShort ? { healthLevyShort: t.healthLevyShort } : {}), exemption: t.exemption } : null;
   const countries = seo.countries.map(({ id, name, gainTax, healthLevy, exemption, note }) => {
-    const sk = taxSk[id];
+    const sk = short(taxSk[id]);
+    const ru = short(taxRu[id]);
     return { id, name, gainTax, ...(healthLevy ? { healthLevy } : {}), exemption, note,
-      ...(sk ? { sk: { gainTax: sk.gainTax, ...(sk.healthLevyShort ? { healthLevyShort: sk.healthLevyShort } : {}), exemption: sk.exemption } } : {}) };
+      ...(sk ? { sk } : {}), ...(ru ? { ru } : {}) };
   });
   writeFileSync(
     path.join(__dirname, 'src', 'tax-facts.js'),

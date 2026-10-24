@@ -10,24 +10,34 @@
 import TAX from './tax-facts.js';
 
 const SK_CHARS = /[áäčďéíĺľňóôŕšťúýž]/i;
+const RU_CHARS = /[а-яё]/i;
+
+// Verdict languages (verdict.js LANGS); anything else is English.
+export const VERDICT_LANGS = ['sk', 'en', 'ru'];
+export function lk(lang) { return VERDICT_LANGS.includes(lang) ? lang : 'en'; }
 
 // Locative after the preposition (SK) / "in X" (EN), for "{country}".
 export const COUNTRY_LOC = {
   sk: { sk: 'na Slovensku', cz: 'v Česku', at: 'v Rakúsku', de: 'v Nemecku', pl: 'v Poľsku', hu: 'v Maďarsku', si: 'v Slovinsku', hr: 'v Chorvátsku', ro: 'v Rumunsku', bg: 'v Bulharsku', nl: 'v Holandsku', fr: 'vo Francúzsku', es: 'v Španielsku' },
   en: { sk: 'in Slovakia', cz: 'in Czechia', at: 'in Austria', de: 'in Germany', pl: 'in Poland', hu: 'in Hungary', si: 'in Slovenia', hr: 'in Croatia', ro: 'in Romania', bg: 'in Bulgaria', nl: 'in the Netherlands', fr: 'in France', es: 'in Spain' },
+  // Same as seo-build meta.json inRu (the ru/ tax pages).
+  ru: { sk: 'в Словакии', cz: 'в Чехии', at: 'в Австрии', de: 'в Германии', pl: 'в Польше', hu: 'в Венгрии', si: 'в Словении', hr: 'в Хорватии', ro: 'в Румынии', bg: 'в Болгарии', nl: 'в Нидерландах', fr: 'во Франции', es: 'в Испании' },
 };
 // Nominative, for "for {countryName}" / "pre {countryName}".
 export const COUNTRY_NAME = {
   sk: { sk: 'Slovensko', cz: 'Česko', at: 'Rakúsko', de: 'Nemecko', pl: 'Poľsko', hu: 'Maďarsko', si: 'Slovinsko', hr: 'Chorvátsko', ro: 'Rumunsko', bg: 'Bulharsko', nl: 'Holandsko', fr: 'Francúzsko', es: 'Španielsko' },
   en: { sk: 'Slovakia', cz: 'Czechia', at: 'Austria', de: 'Germany', pl: 'Poland', hu: 'Hungary', si: 'Slovenia', hr: 'Croatia', ro: 'Romania', bg: 'Bulgaria', nl: 'the Netherlands', fr: 'France', es: 'Spain' },
+  // RU: genitive, for "для {countryName}" (the only place it is used).
+  ru: { sk: 'Словакии', cz: 'Чехии', at: 'Австрии', de: 'Германии', pl: 'Польши', hu: 'Венгрии', si: 'Словении', hr: 'Хорватии', ro: 'Румынии', bg: 'Болгарии', nl: 'Нидерландов', fr: 'Франции', es: 'Испании' },
 };
-const NO_COUNTRY = { sk: { loc: 'vo vašej krajine', name: 'vašu krajinu' }, en: { loc: 'in your country', name: 'your country' } };
+const NO_COUNTRY = { sk: { loc: 'vo vašej krajine', name: 'vašu krajinu' }, en: { loc: 'in your country', name: 'your country' }, ru: { loc: 'в вашей стране', name: 'вашей страны' } };
 
 // What is left after a 70% fall, by amount bucket (same figures as the
 // funnel's drop question, verdict-flow.js dropAmt).
 const DROP = {
   sk: { s: 'z menej ako 1 000 € by zostalo menej ako 300 €', m: 'z 1 000 až 10 000 € by zostalo asi 300 až 3 000 €', l: 'z 10 000 až 100 000 € by zostalo asi 3 000 až 30 000 €', xl: 'z viac ako 100 000 € by zostalo viac ako 30 000 €' },
   en: { s: 'under €1,000 would be worth under €300', m: '€1,000 to 10,000 would be worth about €300 to 3,000', l: '€10,000 to 100,000 would be worth about €3,000 to 30,000', xl: 'over €100,000 would be worth over €30,000' },
+  ru: { s: 'из суммы меньше 1 000 € осталось бы меньше 300 €', m: 'из суммы от 1 000 до 10 000 € осталось бы примерно от 300 до 3 000 €', l: 'из суммы от 10 000 до 100 000 € осталось бы примерно от 3 000 до 30 000 €', xl: 'из суммы больше 100 000 € осталось бы больше 30 000 €' },
 };
 
 // Verb-first actions: the model's fix must start with one of these (§3.1).
@@ -36,6 +46,7 @@ const DROP = {
 export const VERBS = {
   sk: ['Spočítajte', 'Zistite', 'Napíšte', 'Určte', 'Porovnajte', 'Overte', 'Doplňte', 'Pripravte', 'Nastavte', 'Uložte', 'Prejdite si'],
   en: ['Work out', 'Find out', 'Write down', 'Write', 'Set', 'Compare', 'Check', 'Add', 'Prepare', 'Save', 'Go through', 'Complete'],
+  ru: ['Посчитайте', 'Узнайте', 'Запишите', 'Определите', 'Сравните', 'Проверьте', 'Добавьте', 'Дополните', 'Подготовьте', 'Настройте', 'Сохраните', 'Обсудите'],
 };
 
 // Same names as layer2-src/src/lib/concierge.ts PARTNERS (a test keeps them in
@@ -232,6 +243,202 @@ export const AREA_COPY = {
   },
 };
 
+// Russian texts of AREA_COPY (same structure; merged below). Formal «вы»,
+// "%" without a space like the ru/ pages. Needs a native-speaker review.
+const AREA_RU = {
+  worst_case: {
+    title: 'Что вы сделаете при обвале',
+    q: 'Что вы сделаете, если Биткоин упадёт на 70%?',
+    low: {
+      short: 'вы не знаете, что сделаете, если Биткоин упадёт на 70%',
+      meaning: 'Биткоин уже несколько раз падал на 70% и больше. Без плана при таком падении решения принимаются в стрессе.',
+      todo: 'Посчитайте, что у вас останется при падении на 70% ({drop}), и запишите, что вы тогда сделаете.',
+    },
+    mid: {
+      meaning: 'Вы знаете, как поступите, но не посчитали это в евро.',
+      todo: 'Добавьте сумму в евро и срок, который вы продержитесь без продажи.',
+    },
+    high: {
+      short: 'вы знаете, что сделаете при падении на 70%',
+      meaning: 'Падение на 70% у вас посчитано вместе с планом, как его пережить.',
+      todo: 'Ничего не нужно. Сохраните план, чтобы при обвале он был под рукой.',
+    },
+  },
+  liquidity: {
+    title: 'Резерв вне Биткоина',
+    q: 'На сколько месяцев расходов хватит ваших денег вне Биткоина?',
+    low: {
+      short: 'у вас нет чёткого резерва вне Биткоина',
+      meaning: 'Если во время падения возникнет непредвиденный расход, вам, возможно, придётся продать Биткоин с убытком.',
+      todo: 'Определите, на сколько месяцев расходов хватит ваших денег вне Биткоина. Обычно указывают не меньше 6.',
+    },
+    mid: {
+      meaning: 'Резерв у вас есть, но неясно, на сколько месяцев его хватит.',
+      todo: 'Запишите, на сколько месяцев расходов хватит резерва.',
+    },
+    high: {
+      short: 'у вас есть резерв вне Биткоина',
+      meaning: 'Обычные и непредвиденные расходы вы покроете без продажи Биткоина.',
+      todo: 'Ничего не нужно. Оставьте резерв вне Биткоина.',
+    },
+  },
+  tax: {
+    title: 'Налог при продаже',
+    q: 'Какой налог вы заплатите при продаже и сколько отложите на него?',
+    low: {
+      short: 'вы не знаете, какой налог заплатите при продаже',
+      meaning: 'Налог может забрать значительную часть прибыли. {country_rule}',
+      todo: 'Узнайте в Tax & Inheritance Agent, как облагается продажа {country} и сколько отложить на налог.',
+    },
+    mid: {
+      meaning: 'Вы знаете, что налог возникнет, но не знаете ни правила, ни суммы.',
+      todo: 'Проверьте ставку и правило {country} и посчитайте налог при прибыли 50%.',
+    },
+    high: {
+      short: 'вы знаете, как облагается продажа {country}',
+      meaning: 'Вы знаете правило для своей страны и отложили сумму на налог.',
+      todo: 'Ничего не нужно. Сохраняйте записи о покупках.',
+    },
+  },
+  custody: {
+    title: 'Ключи и наследники',
+    q: 'Кто будет хранить ключи и как ваши близкие получат доступ к Биткоину?',
+    low: {
+      short: 'неясно, кто хранит ключи и как близкие получат доступ к Биткоину',
+      meaning: 'Если биржа обанкротится или с вами что-то случится, Биткоин может оказаться недоступным.',
+      todo: 'Запишите, где будет Биткоин и кто получит к нему доступ, не зная заранее сид-фразу.',
+    },
+    mid: {
+      meaning: 'Способ хранения выбран, но нет порядка действий для наследников.',
+      todo: 'Подготовьте простой порядок действий для наследников в Tax & Inheritance Agent.',
+    },
+    high: {
+      short: 'у вас решены хранение и доступ для наследников',
+      meaning: 'Хранение, восстановление и доступ для наследников описаны.',
+      todo: 'Ничего не нужно. Раз в год проверяйте порядок действий.',
+    },
+  },
+  plan_b: {
+    title: 'План Б',
+    q: 'Что вы сделаете, если главное предположение не оправдается?',
+    low: {
+      short: 'у вас нет плана на случай, если главное предположение не оправдается',
+      meaning: 'Если что-то изменится (работа, доход, цена), у вас не будет готового шага.',
+      todo: 'Запишите одно предложение: «Если случится X, я сделаю Y».',
+    },
+    mid: {
+      meaning: 'Запасной вариант у вас есть только в общих чертах.',
+      todo: 'Добавьте конкретный триггер (сумма, дата, событие) и конкретный шаг.',
+    },
+    high: {
+      short: 'у вас есть план Б с конкретным триггером',
+      meaning: 'Вы знаете, что сделаете, если предположение не оправдается.',
+      todo: 'Ничего не нужно.',
+    },
+  },
+  goal: {
+    title: 'Цель с суммой и датой',
+    q: 'Какой суммы вы хотите достичь и к какому сроку?',
+    low: {
+      short: 'неясно, чего должно достичь решение',
+      meaning: 'Без цели вы не можете оценить, работает ли план.',
+      todo: 'Запишите цель с суммой и датой, например «30 000 € к 2035 году».',
+    },
+    mid: {
+      meaning: 'Цель у вас есть, но без суммы или срока.',
+      todo: 'Добавьте к цели сумму и год.',
+    },
+    high: {
+      short: 'у вас есть цель с суммой и датой',
+      meaning: 'Вы знаете, чего хотите достичь и к какому сроку.',
+      todo: 'Ничего не нужно.',
+    },
+  },
+  horizon: {
+    title: 'Когда вам понадобятся деньги',
+    q: 'Как долго вы будете держать Биткоин и что может заставить вас продать раньше?',
+    low: {
+      short: 'вы не знаете, когда вам понадобятся эти деньги',
+      meaning: 'Биткоин может годами стоить ниже цены покупки. Если деньги понадобятся раньше, возможно, придётся продавать с убытком.',
+      todo: 'Запишите, как долго вы будете держать Биткоин и что может заставить вас продать раньше.',
+    },
+    mid: {
+      meaning: 'Горизонт у вас есть, но не указано, что может заставить вас продать раньше.',
+      todo: 'Добавьте одно событие, при котором вы продали бы раньше.',
+    },
+    high: {
+      short: 'вы знаете, как долго будете держать Биткоин',
+      meaning: 'Горизонт согласуется с целью, и вы знаете, что может его изменить.',
+      todo: 'Ничего не нужно.',
+    },
+  },
+  alternatives: {
+    title: 'Сравнение с другими вариантами',
+    q: 'С каким другим вариантом вы это сравнили и почему выбрали этот?',
+    low: {
+      short: 'вы не сравнили это с другим вариантом',
+      meaning: 'Вы не знаете, могли бы те же деньги достичь цели иначе или дешевле.',
+      todo: 'Сравните как минимум два варианта (например, ETF, погашение долга, другой способ покупки) и запишите, почему выбрали этот. Комиссии сравните в Индексе комиссий.',
+    },
+    mid: {
+      meaning: 'Один другой вариант вы назвали, но без сравнения.',
+      todo: 'Добавьте второй вариант и причину выбора.',
+    },
+    high: {
+      short: 'вы сравнили как минимум два варианта',
+      meaning: 'Вы знаете, почему выбрали именно это.',
+      todo: 'Ничего не нужно.',
+    },
+  },
+  rule: {
+    title: 'Правило вместо эмоций',
+    q: 'По какому правилу вы будете докупать или продавать и когда его измените?',
+    low: {
+      short: 'у вас нет записанного правила, когда докупать или продавать',
+      meaning: 'Без правила легко принимать решения под влиянием новостей и настроения рынка.',
+      todo: 'Запишите правило, например «Покупаю на 200 € в месяц и ничего не меняю при падении». Настроить его можно в Stacking Strategist.',
+    },
+    mid: {
+      meaning: 'Правило у вас в голове, но оно не записано и в нём нет условия, когда его менять.',
+      todo: 'Запишите правило, включая то, когда вы его измените.',
+    },
+    high: {
+      short: 'у вас есть записанное правило',
+      meaning: 'Вы принимаете решения по заранее заданному правилу.',
+      todo: 'Ничего не нужно.',
+    },
+  },
+  asymmetry: {
+    title: 'Размер, который вы выдержите',
+    q: 'Какую потерю вы выдержите, не меняя свою жизнь?',
+    low: {
+      short: 'вы не знаете, какую потерю выдержите без изменений в жизни',
+      meaning: 'Если сумма слишком велика, падение может изменить вашу жизнь.',
+      todo: 'Определите, какую потерю вы выдержите без изменений в жизни, и по ней выберите сумму.',
+    },
+    mid: {
+      meaning: 'Долю в своём капитале вы знаете, но она не обоснована потерей, которую вы выдержите.',
+      todo: 'Дополните предложение: «Если бы я потерял всю сумму, …»',
+    },
+    high: {
+      short: 'сумма соответствует потере, которую вы выдержите',
+      meaning: 'Размер обоснован потерей, которую вы выдержите.',
+      todo: 'Ничего не нужно.',
+    },
+  },
+  fees: {
+    title: 'Комиссии',
+    meaning: 'Комиссии при покупке у разных провайдеров отличаются; при регулярных покупках они суммируются каждый год.',
+    todo: 'Сравните комиссии для вашей суммы в Индексе комиссий.',
+  },
+};
+(function mergeRu(dst, src) {
+  for (const [k, v] of Object.entries(src)) {
+    if (typeof v === 'string') dst[k].ru = v;
+    else mergeRu(dst[k], v);
+  }
+})(AREA_COPY, AREA_RU);
+
 export function areaLevel(points) { return points >= 7 ? 'high' : points >= 4 ? 'mid' : 'low'; }
 
 // The fixed one-line tax fact for the person's country, from the same data as
@@ -239,7 +446,14 @@ export function areaLevel(points) { return points >= 7 ? 'high' : points >= 4 ? 
 export function countryRule(country, lang) {
   const c = TAX.countries.find((x) => x.id === country);
   if (!c) return '';
-  const L = lang === 'sk' ? 'sk' : 'en';
+  const L = lk(lang);
+  if (L === 'ru') {
+    if (!c.ru) return '';
+    const loc = COUNTRY_LOC.ru[country];
+    // Lower-case first letter after the colon (ru/ pages' style), but keep acronyms.
+    const lc = (t) => /^\p{Lu}\p{Lu}/u.test(t) ? t : t[0].toLowerCase() + t.slice(1);
+    return `${cap(loc)}: ${lc(c.ru.gainTax)}${c.ru.healthLevyShort ? ', ' + c.ru.healthLevyShort : ''}. ${c.ru.exemption}. (По состоянию на ${TAX.asOf.split('-').reverse().join(' ')})`;
+  }
   if (L === 'sk') {
     if (!c.sk) return '';
     const loc = COUNTRY_LOC.sk[country];
@@ -250,7 +464,7 @@ export function countryRule(country, lang) {
 
 // ctx: { lang, profile, taxModule }
 export function fill(str, ctx) {
-  const L = ctx.lang === 'sk' ? 'sk' : 'en';
+  const L = lk(ctx.lang);
   const p = ctx.profile || {};
   const listed = p.country && p.country !== 'other' && COUNTRY_LOC[L][p.country];
   const drop = DROP[L][p.amount];
@@ -268,20 +482,20 @@ function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : s; }
 // ── Red flags (§2.2): facts in the answers or the code only. Table order.
 export const RED_FLAGS = [
   { id: 'rf_reserve', test: (p) => p.reserve === 'no' && p.horizon === 'lt1',
-    text: { sk: 'Peniaze môžete potrebovať do roka a nemáte rezervu mimo Bitcoinu.', en: 'You may need the money within a year and have no reserve outside Bitcoin.' },
-    action: { sk: 'Určte rezervu aspoň na 6 mesiacov výdavkov mimo Bitcoinu, skôr než budete pokračovať.', en: 'Set aside a reserve of at least 6 months of expenses outside Bitcoin before you go on.' }, tool: 'loan' },
+    text: { sk: 'Peniaze môžete potrebovať do roka a nemáte rezervu mimo Bitcoinu.', en: 'You may need the money within a year and have no reserve outside Bitcoin.', ru: 'Деньги могут понадобиться вам в течение года, а резерва вне Биткоина у вас нет.' },
+    action: { sk: 'Určte rezervu aspoň na 6 mesiacov výdavkov mimo Bitcoinu, skôr než budete pokračovať.', en: 'Set aside a reserve of at least 6 months of expenses outside Bitcoin before you go on.', ru: 'Определите резерв не меньше чем на 6 месяцев расходов вне Биткоина, прежде чем продолжать.' }, tool: 'loan' },
   { id: 'rf_share', test: (p) => p.share === 'gt50',
-    text: { sk: 'Do Bitcoinu má ísť viac ako polovica vašich úspor a investícií.', en: 'More than half of your savings and investments would be in Bitcoin.' },
-    action: { sk: 'Spočítajte, čo by pokles o 70 % urobil s celým vaším majetkom, nie len s touto sumou.', en: 'Work out what a 70% fall would do to your whole wealth, not just this amount.' }, tool: 'retirement' },
+    text: { sk: 'Do Bitcoinu má ísť viac ako polovica vašich úspor a investícií.', en: 'More than half of your savings and investments would be in Bitcoin.', ru: 'В Биткоин должно пойти больше половины ваших сбережений и инвестиций.' },
+    action: { sk: 'Spočítajte, čo by pokles o 70 % urobil s celým vaším majetkom, nie len s touto sumou.', en: 'Work out what a 70% fall would do to your whole wealth, not just this amount.', ru: 'Посчитайте, что падение на 70% сделает со всем вашим капиталом, а не только с этой суммой.' }, tool: 'retirement' },
   { id: 'rf_ltv', test: (p) => p.goal === 'loan' && (p.ltv === 'gt50' || p.liqprice === 'no'),
-    text: { sk: 'Pri pôžičke nepoznáte cenu likvidácie alebo je LTV nad 50 %.', en: "For the loan, you don't know the liquidation price or the LTV is above 50%." },
-    action: { sk: 'Zistite cenu likvidácie a spočítajte LTV pri poklese o 50 %.', en: 'Find out the liquidation price and work out the LTV after a 50% fall.' }, tool: 'loan' },
+    text: { sk: 'Pri pôžičke nepoznáte cenu likvidácie alebo je LTV nad 50 %.', en: "For the loan, you don't know the liquidation price or the LTV is above 50%.", ru: 'По займу вы не знаете цену ликвидации, или LTV выше 50%.' },
+    action: { sk: 'Zistite cenu likvidácie a spočítajte LTV pri poklese o 50 %.', en: 'Find out the liquidation price and work out the LTV after a 50% fall.', ru: 'Узнайте цену ликвидации и посчитайте LTV при падении на 50%.' }, tool: 'loan' },
   { id: 'rf_tax', test: (p, full) => !!full.taxRuleWrong,
-    text: { sk: 'Pravidlo zdanenia, ktoré uvádzate, nesedí s verejnými pravidlami {country}.', en: "The tax rule you state doesn't match the public rules {country}." },
-    action: { sk: 'Overte pravidlo zdanenia pre {countryName} v Tax & Inheritance Agent.', en: 'Check the tax rule for {countryName} in the Tax & Inheritance Agent.' }, tool: 'tax' },
+    text: { sk: 'Pravidlo zdanenia, ktoré uvádzate, nesedí s verejnými pravidlami {country}.', en: "The tax rule you state doesn't match the public rules {country}.", ru: 'Правило налогообложения, которое вы указываете, не совпадает с публичными правилами {country}.' },
+    action: { sk: 'Overte pravidlo zdanenia pre {countryName} v Tax & Inheritance Agent.', en: 'Check the tax rule for {countryName} in the Tax & Inheritance Agent.', ru: 'Проверьте правило налогообложения для {countryName} в Tax & Inheritance Agent.' }, tool: 'tax' },
   { id: 'rf_runway', test: (p) => p.goal === 'treasury' && p.runway === 'lt12',
-    text: { sk: 'Firma bez Bitcoinu vydrží menej ako 12 mesiacov.', en: 'The company can run for less than 12 months without the Bitcoin.' },
-    action: { sk: 'Spočítajte, na koľko mesiacov vystačí firme hotovosť bez Bitcoinu.', en: "Work out how many months the company's cash lasts without the Bitcoin." }, tool: 'treasury' },
+    text: { sk: 'Firma bez Bitcoinu vydrží menej ako 12 mesiacov.', en: 'The company can run for less than 12 months without the Bitcoin.', ru: 'Компания без Биткоина продержится меньше 12 месяцев.' },
+    action: { sk: 'Spočítajte, na koľko mesiacov vystačí firme hotovosť bez Bitcoinu.', en: "Work out how many months the company's cash lasts without the Bitcoin.", ru: 'Посчитайте, на сколько месяцев компании хватит денег без Биткоина.' }, tool: 'treasury' },
 ];
 
 export function redFlags(full, profile = {}) {
@@ -289,10 +503,10 @@ export function redFlags(full, profile = {}) {
 }
 
 const HEAD = {
-  ready: { sk: 'Plán je premyslený.', en: 'Your plan is thought through.' },
-  almost: { sk: (n) => `Takmer hotové: doplňte ${n} ${n === 1 ? 'vec' : 'veci'}.`, en: (n) => `Almost there: add ${n} ${n === 1 ? 'thing' : 'things'}.` },
-  basics: { sk: 'Ešte nie: najprv doplňte základy.', en: 'Not yet: fill in the basics first.' },
-  redflag: { sk: 'Stop: v pláne je červená vlajka.', en: 'Stop: there is a red flag in your plan.' },
+  ready: { sk: 'Plán je premyslený.', en: 'Your plan is thought through.', ru: 'План продуман.' },
+  almost: { sk: (n) => `Takmer hotové: doplňte ${n} ${n === 1 ? 'vec' : 'veci'}.`, en: (n) => `Almost there: add ${n} ${n === 1 ? 'thing' : 'things'}.`, ru: (n) => `Почти готово: дополните ${n} ${n === 1 ? 'пункт' : 'пункта'}.` },
+  basics: { sk: 'Ešte nie: najprv doplňte základy.', en: 'Not yet: fill in the basics first.', ru: 'Пока нет: сначала дополните основу плана.' },
+  redflag: { sk: 'Stop: v pláne je červená vlajka.', en: 'Stop: there is a red flag in your plan.', ru: 'Стоп: в плане есть красный флаг.' },
 };
 export const LEVEL_HEADLINES = HEAD;
 
@@ -300,19 +514,19 @@ function byWeak(a, b) { return a.points - b.points || a.priority - b.priority; }
 
 // The template "why" (§2.4): strongest high phrase + weakest low phrase.
 export function whyTemplate(full, ctx) {
-  const L = ctx.lang === 'sk' ? 'sk' : 'en';
+  const L = lk(ctx.lang);
   const sigs = full.signals;
   const weak = sigs.find((s) => s.id === full.weakest.id) || [...sigs].sort(byWeak)[0];
   const strong = [...sigs].filter((s) => s.points >= 7 && s.id !== weak.id).sort((a, b) => b.points - a.points || a.priority - b.priority)[0];
   const lo = (s) => fill(AREA_COPY[s.id].low.short[L], ctx);
-  if (strong) return cap(`${fill(AREA_COPY[strong.id].high.short[L], ctx)}${L === 'sk' ? ', ale ' : ', but '}${lo(weak)}.`);
+  if (strong) return cap(`${fill(AREA_COPY[strong.id].high.short[L], ctx)}${{ sk: ', ale ', en: ', but ', ru: ', но ' }[L]}${lo(weak)}.`);
   const weak2 = [...sigs].filter((s) => s.id !== weak.id).sort(byWeak)[0];
-  return cap(`${lo(weak)}${L === 'sk' ? ' a ' : ' and '}${lo(weak2)}.`);
+  return cap(`${lo(weak)}${{ sk: ' a ', en: ' and ', ru: ' и ' }[L]}${lo(weak2)}.`);
 }
 
 // §2.1: level computed in code, never by the model.
 export function verdictLevel(full, profile = {}, ctx = {}) {
-  const L = ctx.lang === 'sk' ? 'sk' : 'en';
+  const L = lk(ctx.lang);
   const c = { ...ctx, lang: L, profile };
   const flags = redFlags(full, profile);
   const below7 = full.signals.filter((s) => s.points < 7).length;
@@ -330,22 +544,24 @@ export function verdictLevel(full, profile = {}, ctx = {}) {
     why,
     flags: flags.map((f) => ({ id: f.id, text: fill(f.text[L], c) })),
     more: Math.max(0, flags.length - 1),
-    scoreLine: L === 'sk'
-      ? `Skóre ${full.score}/100 meria, nakoľko úplne je plán opísaný, nie či je Bitcoin dobrá voľba.`
-      : `The ${full.score}/100 score measures how complete the plan is, not whether Bitcoin is a good choice.`,
+    scoreLine: {
+      sk: `Skóre ${full.score}/100 meria, nakoľko úplne je plán opísaný, nie či je Bitcoin dobrá voľba.`,
+      en: `The ${full.score}/100 score measures how complete the plan is, not whether Bitcoin is a good choice.`,
+      ru: `Оценка ${full.score}/100 показывает, насколько полно описан план, а не то, хороший ли выбор Биткоин.`,
+    }[L],
   };
 }
 
 // Tool of a signal for this person (§3.1 remap): worst_case → Loan Copilot,
 // alternatives → Fee Index (buy, dca) or sell vs borrow.
 export const TOOL_PAGES = {
-  loan: { page: 'loan.html', name: { sk: 'Loan & Liquidity Copilot', en: 'Loan & Liquidity Copilot' } },
-  tax: { page: 'tax-agent.html', name: { sk: 'Tax & Inheritance Agent', en: 'Tax & Inheritance Agent' } },
-  stacking: { page: 'stacking.html', name: { sk: 'Stacking Strategist', en: 'Stacking Strategist' } },
-  retirement: { page: 'retirement-calculator.html', name: { sk: 'Dôchodková kalkulačka', en: 'Retirement Calculator' } },
-  treasury: { page: 'treasury.html', name: { sk: 'Bitcoin vo firme', en: 'Bitcoin treasury' } },
-  fees: { page: { sk: '/sk/bitcoin-index-poplatkov/', en: '/bitcoin-fee-index/' }, name: { sk: 'Index poplatkov', en: 'Bitcoin Fee Index' } },
-  svb: { page: { sk: '/sk/bitcoin-predat-alebo-pozicat/', en: '/sell-vs-borrow-bitcoin/' }, name: { sk: 'Predať, alebo požičať', en: 'Sell or borrow' } },
+  loan: { page: 'loan.html', name: { sk: 'Loan & Liquidity Copilot', en: 'Loan & Liquidity Copilot', ru: 'Loan & Liquidity Copilot' } },
+  tax: { page: 'tax-agent.html', name: { sk: 'Tax & Inheritance Agent', en: 'Tax & Inheritance Agent', ru: 'Tax & Inheritance Agent' } },
+  stacking: { page: 'stacking.html', name: { sk: 'Stacking Strategist', en: 'Stacking Strategist', ru: 'Stacking Strategist' } },
+  retirement: { page: 'retirement-calculator.html', name: { sk: 'Dôchodková kalkulačka', en: 'Retirement Calculator', ru: 'Пенсионный калькулятор' } },
+  treasury: { page: 'treasury.html', name: { sk: 'Bitcoin vo firme', en: 'Bitcoin treasury', ru: 'Биткоин в компании' } },
+  fees: { page: { sk: '/sk/bitcoin-index-poplatkov/', en: '/bitcoin-fee-index/', ru: '/ru/bitcoin-indeks-komissiy/' }, name: { sk: 'Index poplatkov', en: 'Bitcoin Fee Index', ru: 'Индекс комиссий' } },
+  svb: { page: { sk: '/sk/bitcoin-predat-alebo-pozicat/', en: '/sell-vs-borrow-bitcoin/', ru: '/ru/bitcoin-prodat-ili-zanyat/' }, name: { sk: 'Predať, alebo požičať', en: 'Sell or borrow', ru: 'Продать или занять' } },
 };
 const SIGNAL_TOOL = { worst_case: 'loan', liquidity: 'loan', tax: 'tax', custody: 'tax', plan_b: 'loan', goal: 'retirement', horizon: 'stacking', rule: 'stacking', asymmetry: 'retirement' };
 
@@ -354,7 +570,7 @@ export function toolKeyFor(id, profile = {}) {
   return SIGNAL_TOOL[id];
 }
 export function tool(key, lang, profile = {}) {
-  const L = lang === 'sk' ? 'sk' : 'en';
+  const L = lk(lang);
   const t = TOOL_PAGES[key];
   const params = {};
   if (key === 'tax' && profile.country && profile.country !== 'other') params.country = profile.country;
@@ -364,7 +580,7 @@ export function tool(key, lang, profile = {}) {
 
 // What the area card says (§4): plain title, meaning, what to do.
 export function areaView(s, role, ctx) {
-  const L = ctx.lang === 'sk' ? 'sk' : 'en';
+  const L = lk(ctx.lang);
   const lvl = areaLevel(s.points);
   const C = AREA_COPY[s.id][lvl];
   return {
@@ -377,15 +593,15 @@ export function areaView(s, role, ctx) {
 }
 
 const FILLERS = {
-  pdf: { sk: 'Uložte si verdikt a vráťte sa k nemu pred nákupom.', en: 'Save this verdict and come back to it before you act.' },
-  partners: { sk: 'Porovnajte partnerov nižšie podľa poplatkov a úschovy.', en: 'Compare the partners below by fees and custody.' },
-  consult: { sk: 'Prejdite si plán 15 minút s človekom.', en: 'Go through the plan with a person for 15 minutes.' },
-  recheck: { sk: 'Prejdite si verdikt znova, keď sa vo vašom pláne niečo zmení.', en: 'Go through the verdict again when something in your plan changes.' },
+  pdf: { sk: 'Uložte si verdikt a vráťte sa k nemu pred nákupom.', en: 'Save this verdict and come back to it before you act.', ru: 'Сохраните вердикт и вернитесь к нему, прежде чем действовать.' },
+  partners: { sk: 'Porovnajte partnerov nižšie podľa poplatkov a úschovy.', en: 'Compare the partners below by fees and custody.', ru: 'Сравните партнёров ниже по комиссиям и способу хранения.' },
+  consult: { sk: 'Prejdite si plán 15 minút s človekom.', en: 'Go through the plan with a person for 15 minutes.', ru: 'Обсудите план за 15 минут с человеком.' },
+  recheck: { sk: 'Prejdite si verdikt znova, keď sa vo vašom pláne niečo zmení.', en: 'Go through the verdict again when something in your plan changes.', ru: 'Проверьте вердикт заново, когда в вашем плане что-то изменится.' },
 };
 
 // §3.1: always exactly 3 steps. ctx.report: the PDF filler is report-only.
 export function nextSteps(full, profile = {}, level, ctx = {}) {
-  const L = ctx.lang === 'sk' ? 'sk' : 'en';
+  const L = lk(ctx.lang);
   const c = { ...ctx, lang: L, profile };
   const steps = [];
   const used = new Set();
@@ -412,22 +628,27 @@ export function nextSteps(full, profile = {}, level, ctx = {}) {
 
 // ── Validation of the model's free sentences (§5.3). Invalid → template.
 export function startsWithVerb(t, lang) {
-  return VERBS[lang === 'sk' ? 'sk' : 'en'].some((v) => t.startsWith(v + ' ') || t.startsWith(v + ','));
+  return VERBS[lk(lang)].some((v) => t.startsWith(v + ' ') || t.startsWith(v + ','));
 }
 function langOk(t, L) {
+  if (L === 'ru') return RU_CHARS.test(t) && !SK_CHARS.test(t);
+  if (RU_CHARS.test(t)) return false;
   if (L === 'sk') return SK_CHARS.test(t) || /\b(a|ale|že|sa|je|nie|ste|máte|pri|na|do|ako)\b/i.test(t);
   return !SK_CHARS.test(t);
 }
+// \b is ASCII-only in JS, so Russian words get their own letter-boundary patterns.
+const JARGON_RU = /(^|[^\p{L}])(сигнал|област|рубрик|профил|балл)\p{L}*/iu;
+const IMPERATIVE_RU = /(^|[^\p{L}])(купите|докупите|продайте|займите|подождите|держите|переведите|выберите)(?![\p{L}])/iu;
 const JARGON = /\b(signal|signál\w*|area|oblas\w*|score|skóre|rubric|rubrik\w*|profile|profil\w*)\b|\/10|\bbod(y|ov|u|ami)?\b/i;
 const PARTNER_RE = new RegExp('\\b(' + PARTNER_NAMES.map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
 const IMPERATIVE_ACT = /\b(kúpte|nakúpte|dokúpte|predajte|požičajte|počkajte|držte|presuňte|vyberte si)\b|\b(buy|sell|borrow|hold) (now|more|some|all|it|part|half|your|the|bitcoin|btc)\b/i;
 
 export function validSummary(t, lang, BANNED, signalNames) {
-  const L = lang === 'sk' ? 'sk' : 'en';
+  const L = lk(lang);
   if (typeof t !== 'string') return false;
   const s = t.trim();
   if (s.length < 20 || s.length > 160) return false;
-  if (BANNED.some((re) => re.test(s)) || JARGON.test(s) || !langOk(s, L)) return false;
+  if (BANNED.some((re) => re.test(s)) || JARGON.test(s) || JARGON_RU.test(s) || !langOk(s, L)) return false;
   // A signal used as a label: an id (worst_case, plan_b) or a display name
   // written with its capital mid-sentence ("v oblasti Dane"). Ordinary words
   // like "daň", "cieľ" or "tax" are allowed (live test 2026-10-23: a plain
@@ -436,21 +657,21 @@ export function validSummary(t, lang, BANNED, signalNames) {
   return true;
 }
 export function validFix(t, lang, BANNED) {
-  const L = lang === 'sk' ? 'sk' : 'en';
+  const L = lk(lang);
   if (typeof t !== 'string') return false;
   const s = t.trim();
   if (s.length < 15 || s.length > 120) return false;
   if (!startsWithVerb(s, L) || !langOk(s, L)) return false;
-  if (BANNED.some((re) => re.test(s)) || PARTNER_RE.test(s) || IMPERATIVE_ACT.test(s)) return false;
+  if (BANNED.some((re) => re.test(s)) || PARTNER_RE.test(s) || IMPERATIVE_ACT.test(s) || IMPERATIVE_RU.test(s)) return false;
   return true;
 }
 
 // "Whether to act is your own decision" belongs in missing only when the text
 // itself asked whether to act (prompt rule); the funnel's focus answers are
 // topics, not a request for advice.
-export const OWN_DECISION = /(vaše vlastné rozhodnutie|vaším vlastným rozhodnutím|your own decision)/i;
+export const OWN_DECISION = /(vaše vlastné rozhodnutie|vaším vlastným rozhodnutím|your own decision|ваше собственное решение|ваше личное решение|решать вам)/i;
 export function asksWhetherToAct(text) {
-  return /\?/.test(text || '') && /(mám|mal[a]? by som|oplatí sa|kúpiť alebo|predať alebo|alebo počkať|should i|is it (a good|worth)|or wait|buy or|sell or)/i.test(text || '');
+  return /\?/.test(text || '') && /(mám|mal[a]? by som|oplatí sa|kúpiť alebo|predať alebo|alebo počkať|should i|is it (a good|worth)|or wait|buy or|sell or|стоит ли|мне (купить|продать|подождать)|купить или|продать или|или подождать)/i.test(text || '');
 }
 
 // The pricing block data (§7). mode: waitlist until Stripe is live.

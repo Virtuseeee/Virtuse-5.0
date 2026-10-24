@@ -217,10 +217,10 @@ test('pricing: checkout only with VERDICT_CHECKOUT; tax line flag passes through
 });
 
 test('copy: templates start with an allowed verb, contain no advice or ranking words', () => {
-  const RANK = /\bbest\b|najlepš|odporúč|recommend|\btop\b/i;
+  const RANK = /\bbest\b|najlepš|odporúč|recommend|\btop\b|лучш|рекоменд|(^|[^\p{L}])топ(?![\p{L}])/iu;
   for (const [id, c] of Object.entries(AREA_COPY)) {
     if (id === 'fees') continue;
-    for (const lvl of ['low', 'mid']) for (const L of ['sk', 'en']) assert.ok(startsWithVerb(c[lvl].todo[L], L), `${id}.${lvl}.${L}`);
+    for (const lvl of ['low', 'mid']) for (const L of ['sk', 'en', 'ru']) assert.ok(startsWithVerb(c[lvl].todo[L], L), `${id}.${lvl}.${L}`);
   }
   const all = JSON.stringify(AREA_COPY);
   assert.ok(!RANK.test(all));
@@ -251,4 +251,92 @@ test('summary: ordinary words like daň, cieľ, tax pass; a signal used as a lab
   const en = scoreVerdict(out(T1_PTS, { summary: "You have a 6-month reserve, but you haven't worked out the tax on a sale." }), 'en', { text: T1_TEXT, profile: T1 });
   assert.equal(en.copySource.summary, 'model');
   assert.equal(t1({ summary: 'Vaša úvaha je slabá v časti Dane, zvyšok je opísaný celkom dobre.' }).copySource.summary, 'template');
+});
+
+// ── Russian (2026-10-24): same structure as SK/EN, Russian copy only.
+const SK_OR_EN = /[áäčďéíĺľňóôŕšťúýž]|\b(the|and|you|your|Not yet|Almost|Stop:)\b/;
+function noLeftovers(r) {
+  const texts = [r.level.headline, r.level.why, r.level.scoreLine, ...r.level.flags.map((f) => f.text),
+    ...r.steps.flatMap((s) => [s.action, s.why]), ...r.areas.flatMap((a) => [a.title, a.meaning, a.todo]), ...r.locked.map((l) => l.title)];
+  for (const t of texts) {
+    if (!t) continue;
+    const plain = t.replace(/Tax & Inheritance Agent|Loan & Liquidity Copilot|Stacking Strategist|Bitcoin|Verdict|Virtuse|LTV|ETF|\bX\b|\bY\b/g, '');
+    assert.doesNotMatch(plain, SK_OR_EN, t);
+  }
+}
+
+test('RU T1: basics headline, template why, 3 verb-first steps, no SK/EN leftovers', () => {
+  const r = t1({}, 'ru');
+  assert.equal(r.level.id, 'basics');
+  assert.equal(r.level.headline, 'Пока нет: сначала дополните основу плана.');
+  assert.equal(r.level.why, 'У вас есть резерв вне Биткоина, но вы не знаете, какой налог заплатите при продаже.');
+  assert.match(r.level.scoreLine, /^Оценка \d+\/100 показывает, насколько полно описан план/);
+  assert.deepEqual(r.steps.map((s) => s.signal), ['tax', 'alternatives', 'rule']);
+  for (const s of r.steps) assert.ok(startsWithVerb(s.action, 'ru'), s.action);
+  assert.match(r.steps[0].action, /в Словакии/);
+  assert.equal(r.steps[1].tool.page, '/ru/bitcoin-indeks-komissiy/');
+  assert.equal(r.areas[0].title, 'Налог при продаже');
+  assert.match(r.areas[0].meaning, /^Налог может забрать значительную часть прибыли\. В Словакии: подоходный налог от 19 до 35%/);
+  assert.equal(r.band.label, 'Не хватает важного');
+  assert.match(r.aiLabel, /искусственным интеллектом/);
+  noLeftovers(r);
+});
+
+test('RU T2: loan red flag headline and flag text in Russian', () => {
+  const p = { goal: 'loan', country: 'sk', amount: 'l', ltv: 'gt50', liqprice: 'no', horizon: 'lt1', reserve: 'no', keys: 'exch', drop: 'sell', tax_known: 'no', ruleset: 'no' };
+  const full = scoreVerdict(out(T1_PTS, { is_loan: true }), 'ru', { text: 'Хочу занять 20 000 € под залог 0,5 BTC на ремонт.', profile: p });
+  const r = freeView(full, p, { lang: 'ru' });
+  assert.equal(r.level.headline, 'Стоп: в плане есть красный флаг.');
+  assert.deepEqual(r.level.flags.map((f) => f.id), ['rf_reserve', 'rf_ltv']);
+  assert.equal(r.level.why, 'Деньги могут понадобиться вам в течение года, а резерва вне Биткоина у вас нет.');
+  assert.equal(r.steps.length, 3);
+  for (const s of r.steps) assert.ok(startsWithVerb(s.action, 'ru'), s.action);
+  noLeftovers(r);
+});
+
+test('RU T4: wrong tax rule names the country in Russian (locative + genitive)', () => {
+  const p = { goal: 'sell', country: 'at', amount: 'l', tax_known: 'yes', keys: 'exch' };
+  const full = scoreVerdict(out({ ...T1_PTS, tax: 8 }, { tax_rule_wrong: true, country: 'at' }), 'ru', { profile: p });
+  const r = freeView(full, p, { lang: 'ru' });
+  assert.match(r.level.why, /публичными правилами в Австрии/);
+  assert.match(r.steps[0].action, /для Австрии/);
+  assert.equal(full.signals.find((s) => s.id === 'alternatives').tool.page, '/ru/bitcoin-prodat-ili-zanyat/');
+});
+
+test('RU almost headline: 1 пункт / 2 пункта; T3 ready', () => {
+  const two = { worst_case: 9, liquidity: 9, tax: 8, custody: 8, plan_b: 7, goal: 9, horizon: 8, alternatives: 3, rule: 9, asymmetry: 6 };
+  assert.equal(freeView(scoreVerdict(out(two, { drawdown_tested: true }), 'ru'), {}, { lang: 'ru' }).level.headline, 'Почти готово: дополните 2 пункта.');
+  assert.equal(freeView(scoreVerdict(out({ ...two, asymmetry: 8 }, { drawdown_tested: true }), 'ru'), {}, { lang: 'ru' }).level.headline, 'Почти готово: дополните 1 пункт.');
+  const ready = freeView(scoreVerdict(out({ ...two, alternatives: 8 }, { drawdown_tested: true }), 'ru'), { goal: 'dca', reserve: 'yes', drop: 'buy' }, { lang: 'ru' });
+  assert.equal(ready.level.headline, 'План продуман.');
+  noLeftovers(ready);
+});
+
+test('RU model copy: valid Russian summary/fix used; advice, SK text or jargon fall back', () => {
+  const sigs = out(T1_PTS).signals.map((s) => s.id === 'tax' ? { ...s, fix: 'Узнайте, какой налог вы заплатите с прибыли при продаже в Словакии.' } : s);
+  const okSum = 'У вас есть резерв на 6 месяцев, но не посчитан налог с прибыли при продаже 10 000 €.';
+  const r = t1({ signals: sigs, summary: okSum }, 'ru');
+  assert.equal(r.level.why, okSum);
+  assert.equal(r.copySource.fixes.tax, 'model');
+  for (const bad of ['Лучше всего купите сейчас, у вас есть резерв и горизонт.', 'Máte rezervu, ale neviete, akú daň zaplatíte pri predaji.', 'Сигнал «Налоги» у вас слабый, остальное описано хорошо.']) {
+    assert.equal(t1({ summary: bad }, 'ru').copySource.summary, 'template', bad);
+  }
+  for (const fix of ['Купите ещё при падении на 70%, если цена упадёт.', 'Держите Биткоин не меньше 5 лет и запишите это.', 'Сравните комиссии в Kraken и выберите меньшую.']) {
+    const s2 = out(T1_PTS).signals.map((s) => s.id === 'tax' ? { ...s, fix } : s);
+    assert.equal(t1({ signals: s2 }, 'ru').copySource.fixes.tax, 'template', fix);
+  }
+  assert.ok(BANNED.some((re) => re.test('Мы рекомендуем этот вариант.')));
+  assert.ok(BANNED.some((re) => re.test('Это лучший выбор.')));
+  assert.ok(!BANNED.some((re) => re.test('Чтобы лучше понять риск, посчитайте падение.')));
+});
+
+test('RU prompt and errors', async () => {
+  const p = systemPrompt('ru');
+  assert.match(p, /Russian \(formal «вы»\)/);
+  assert.match(p, new RegExp(VERBS.ru[0]));
+  const kv = new Map();
+  const res = await worker.fetch(new Request('https://w.example/verdict', { method: 'POST', headers: { Origin: 'https://virtuse.com', 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'коротко', lang: 'ru' }) }),
+    { RATE_LIMIT_KV: { async get(k) { return kv.get(k) ?? null; }, async put(k, v) { kv.set(k, v); } } });
+  assert.equal(res.status, 400);
+  assert.equal((await res.json()).error, 'Опишите решение хотя бы одним предложением.');
 });
