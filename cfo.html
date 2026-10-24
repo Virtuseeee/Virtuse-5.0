@@ -1187,13 +1187,13 @@ document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
 });
 </script>
 <script>
-// Verdict: the working form (Worker POST /verdict). Off by default; on for en/sk on
+// Verdict: the working form (Worker POST /verdict). Off by default; on for en/sk/ru on
 // staging, with ?verdict=1, or with <meta name="vb-verdict" content="on"> (launch).
 (function () {
   var form = document.getElementById('vdForm'), card = document.getElementById('vdCard'); if (!form || !card) return;
   var lang = document.documentElement.lang;
   var meta = document.querySelector('meta[name="vb-verdict"]');
-  var on = (lang === 'en' || lang === 'sk') && (location.hostname === 'staging.virtuse.com' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on'));
+  var on = (lang === 'en' || lang === 'sk' || lang === 'ru') && (location.hostname === 'staging.virtuse.com' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on'));
   if (!on) return;
   var S = {}; var tpl = document.getElementById('vdStrings');
   Array.prototype.forEach.call((tpl.content || tpl).querySelectorAll('[data-k]'), function (n) { S[n.getAttribute('data-k')] = n.textContent; });
