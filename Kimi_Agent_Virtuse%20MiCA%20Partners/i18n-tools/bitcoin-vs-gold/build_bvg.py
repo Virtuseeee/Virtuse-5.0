@@ -231,7 +231,7 @@ def build(L):
     shell = os.path.join(SITE, PAGE if L == 'en' else os.path.join(L, PAGE))
     alts = [(x, ('/' if x == 'en' else '/%s/' % x) + PAGE) for x in LANGS] + [('x-default', '/' + PAGE)]
     amt = money(AMOUNT, L, 'USD')
-    faq = [(t['q%d' % i], t['a%d' % i]) for i in range(1, 5)]
+    faq = [(t['q%d' % i], t['a%d' % i]) for i in range(1, 10) if 'q%d' % i in t]   # q1..q4 in every language, more where a language has them
     ld = {'@context': 'https://schema.org', '@graph': F.org_ld() + [
         F.crumbs_ld([(t['crumb_home'], loc), (t['crumb_data'], loc + 'bitcoin-data.html'), (t['crumb_page'], page)]),
         {'@type': 'Dataset', 'name': t['ds_name'], 'description': t['ds_desc'], 'url': ORIGIN + page,
