@@ -1211,10 +1211,10 @@ document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
     if (form.elements['website'].value) return;
     try { sessionStorage.setItem('vb-verdict-text', text); } catch (err) {}
     (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_start', verdict_lang: lang });
-    // Verdict exists in EN and SK only (2026-10-24); the other languages open
+    // Verdict exists in EN, SK and RU (2026-10-24); the other languages open
     // the English Verdict instead of a missing <lang>/verdict.html.
     var vl = document.documentElement.lang;
-    location.href = (vl === 'en' || vl === 'sk' ? 'verdict.html' : '/verdict.html') + (/[?&]verdict=1\b/.test(location.search) ? '?verdict=1' : '');
+    location.href = (vl === 'en' || vl === 'sk' || vl === 'ru' ? 'verdict.html' : '/verdict.html') + (/[?&]verdict=1\b/.test(location.search) ? '?verdict=1' : '');
   });
 })();
 </script>
