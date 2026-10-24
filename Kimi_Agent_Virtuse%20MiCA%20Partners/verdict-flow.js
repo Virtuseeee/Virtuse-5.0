@@ -699,7 +699,9 @@
       var recs = VB.recommend(a, LANG);
       if (!recs.length) return;
       function lab(list, id) { var x = list.filter(function (o) { return o.id === id; })[0]; return x ? Lx(x.label) : ''; }
-      var crit = [lab(VB.COUNTRIES, a.country), lab(VB.EXPERIENCE, a.experience), lab(VB.CUSTODY, a.custody)].filter(Boolean).join(', ').toLowerCase();
+      // Russian keeps the capital of country names ("Словакия"); the rest is lower case.
+      var lc = function (x) { return x.toLowerCase(); };
+      var crit = [LANG === 'ru' ? lab(VB.COUNTRIES, a.country) : lc(lab(VB.COUNTRIES, a.country)), lc(lab(VB.EXPERIENCE, a.experience)), lc(lab(VB.CUSTODY, a.custody))].filter(Boolean).join(', ');
       var head = '<p class="sub sm">' + esc(V.partnersP({ cat: lab(VB.GOALS, a.goal), crit: crit })) + '</p>';
       var chk = Lx(VB.LICENCE_CHECKED);
       document.getElementById('pfCards').innerHTML = head;
