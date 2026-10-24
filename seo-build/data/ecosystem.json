@@ -381,7 +381,9 @@
           "verdict": "Two days of talks and networking in Amsterdam, with a strong business and institutional track.",
           "tags": [
             "Netherlands"
-          ]
+          ],
+          "organizer": "BTC Inc.",
+          "organizerUrl": "https://www.bitcoin.amsterdam/"
         },
         {
           "name": "Swiss Bitcoin Conference",
@@ -397,7 +399,9 @@
           "tags": [
             "Switzerland",
             "German"
-          ]
+          ],
+          "organizer": "FIWENT GmbH",
+          "organizerUrl": "https://www.fiwent.com/"
         },
         {
           "name": "BTC Prague",
@@ -413,7 +417,9 @@
           "tags": [
             "Czechia",
             "Largest"
-          ]
+          ],
+          "organizer": "Twenty one million s.r.o.",
+          "organizerUrl": "https://btcprague.com/"
         },
         {
           "name": "Bitcoin FilmFest",
@@ -1019,5 +1025,6 @@
     }
   ],
   "turnstileSiteKey": "0x4AAAAAAFheOLDBd1DyVOhF",
-  "_turnstileNote": "Public site key of the Turnstile widget 'virtuse.com Ecosystem Promote form' (Managed; hostnames virtuse.com, staging.virtuse.com; created 2026-10-22 via the Cloudflare API). Its secret is the Worker secret TURNSTILE_SECRET_KEY (copy it from Cloudflare dashboard > Turnstile). Test keys: site 1x00000000000000000000AA, secret 1x0000000000000000000000000000000AA."
+  "_turnstileNote": "Public site key of the Turnstile widget 'virtuse.com Ecosystem Promote form' (Managed; hostnames virtuse.com, staging.virtuse.com; created 2026-10-22 via the Cloudflare API). Its secret is the Worker secret TURNSTILE_SECRET_KEY (copy it from Cloudflare dashboard > Turnstile). Test keys: site 1x00000000000000000000AA, secret 1x0000000000000000000000000000000AA.",
+  "_organizerNote": "Event JSON-LD organizer per conference, checked on each official site on 2026-10-24: Bitcoin Amsterdam: footer and the site's own Event JSON-LD; Swiss Bitcoin Conference: Impressum: Veranstalter FIWENT GmbH, Bottighofen; BTC Prague: General terms: \"the Organizer\", ID 17259444; Bitcoin FilmFest: no legal organizer named on the site; conference name + website used. Without organizer the conference name and website are used. No prices or performers in the markup (not shown on the page, handover event-structured-data.md)."
 }

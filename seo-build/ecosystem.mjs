@@ -505,11 +505,17 @@ function schemas(p, l) {
     graph.push({ '@type': 'FAQPage', inLanguage: l, mainEntity: t.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
   }
   if (p.slug === 'conferences') {
-    for (const e of liveEntries(p).filter((x) => x.start)) {
+    // Third-party conferences: Virtuse is neither organizer nor performer. The organizer is the one named
+    // on the event's own site (data: organizer/organizerUrl, else the conference itself); offers carry
+    // only the ticket URL, never a price (none is shown on the page). Only events that have not started.
+    for (const e of liveEntries(p).filter((x) => x.start && x.start >= TODAY)) {
       graph.push({
         '@type': 'Event', name: e.name, startDate: e.start, endDate: e.end, url: e.url,
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', eventStatus: 'https://schema.org/EventScheduled',
+        image: [e.image || `${ORIGIN}/og-cover.jpg`],
         location: { '@type': 'Place', name: e.venue || e.city, address: { '@type': 'PostalAddress', addressLocality: e.city, addressCountry: e.country } },
+        organizer: { '@type': 'Organization', name: e.organizer || e.name, url: e.organizerUrl || e.url },
+        offers: { '@type': 'Offer', url: e.tickets || e.url, availability: 'https://schema.org/InStock' },
         description: e.verdict
       });
     }
