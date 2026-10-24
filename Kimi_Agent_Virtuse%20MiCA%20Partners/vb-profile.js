@@ -92,7 +92,7 @@
     ru: ['Полный Verdict: 10 сигналов для вашего решения', 'Продолжить Verdict', 'Открыть Verdict', ' (на английском)', 'Заполнено по вашим ответам в Verdict', 'Изменить', 'Забыть мои ответы', 'Ваши ответы удалены из этого браузера.']
   }[LANG] || null;
   var inFrame = false; try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
-  function verdictUrl(resume) { return '/' + (LANG === 'sk' ? 'sk/' : '') + 'verdict.html?utm_source=' + encodeURIComponent(TOOL || 'page') + (resume ? '&resume=1' : ''); }
+  function verdictUrl(resume) { return '/' + (LANG === 'sk' || LANG === 'ru' ? LANG + '/' : '') + 'verdict.html?utm_source=' + encodeURIComponent(TOOL || 'page') + (resume ? '&resume=1' : ''); }
   function forget(a) {
     a.addEventListener('click', function (e) {
       e.preventDefault(); clear();

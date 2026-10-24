@@ -125,6 +125,12 @@ export async function initI18n(): Promise<void> {
 
 const lookup = (lang: Lang, en: string): string => DICTS[lang]?.[en] ?? en;
 
+// For the plain-JS Verdict page (pf-public.ts): add a dictionary that was
+// loaded as a separate file (pf-dict-<lang>.js) instead of through initI18n().
+export function registerDict(lang: Lang, dict: Dict): void {
+  DICTS[lang] = { ...(DICTS[lang] || {}), ...dict };
+}
+
 // Space before "%" follows each language's site pages: "6%" in en/pl/hu/uk/ru,
 // "6 %" (non-breaking) in sk/cs/de/fr/es. Applied to every string t/tv/L
 // return, so source strings and dictionaries can be written either way.
