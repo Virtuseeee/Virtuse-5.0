@@ -1013,7 +1013,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     // Grid + labels
-    var css = getComputedStyle(document.documentElement);
+    var css = getComputedStyle(document.querySelector('.legacy') || document.documentElement);
     var cBorder = css.getPropertyValue('--border').trim();
     var cDim = css.getPropertyValue('--text-dim').trim();
     ctx.font = '10px Inter, sans-serif';

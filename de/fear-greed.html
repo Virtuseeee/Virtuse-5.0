@@ -940,7 +940,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     function y(v) { return padT + (1 - v / 100) * (hpx - padT - padB); }
     view = { x: x, y: y, w: w, h: hpx };
 
-    var css = getComputedStyle(document.documentElement);
+    var css = getComputedStyle(document.querySelector('.legacy') || document.documentElement);
     var cDim = css.getPropertyValue('--text-dim').trim();
 
     // Zone shading bands
