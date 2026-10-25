@@ -864,5 +864,4 @@ put pl/blog.html public_html/pl/blog.html
 put ru/blog.html public_html/ru/blog.html
 put uk/blog.html public_html/uk/blog.html
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
-# removed from WordPress, delete on the server: public_html/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/
 bye
