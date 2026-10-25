@@ -1607,16 +1607,18 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
 .bd-v3 .buy-hero2 .eyebrow i { background: var(--c, var(--orange)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c, var(--orange)) 15%, transparent); }
 /* cards: pcard2 language */
 .bd-v3 :is(.bd-m, .bd-card, .bd-chart) { position: relative; border-color: transparent;
-  background: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c, var(--orange)) 8%, transparent), transparent 62%), var(--card);
-  transition: background-color .2s, border-color .2s, box-shadow .2s; }
-.bd-v3 :is(.bd-m, .bd-card, .bd-chart)::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 1px; pointer-events: none;
-  background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.12), rgba(255,255,255,.05)); }
+  background: var(--card); transition: background-color .2s, border-color .2s, box-shadow .2s; }
+.bd-v3 :is(.bd-m, .bd-card, .bd-chart)::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
 .bd-v3 :is(.bd-m, .bd-card, .bd-chart).pm:hover, .bd-v3 .bd-chart:focus-visible { background-color: var(--card-hover);
   border-color: color-mix(in srgb, var(--c, var(--orange)) 35%, transparent); box-shadow: 0 18px 50px -28px color-mix(in srgb, var(--c, var(--orange)) 55%, transparent); }
 .bd-v3 .bd-l { color: var(--c, var(--orange)); }
 .bd-v3 .bd-cur button { font-weight: 600; }
 .bd-v3 .bd-bar i { background: var(--c, var(--orange)); }
 .bd-v3 .bd-links a:hover { color: var(--c, var(--orange)); }
+/* Bitcoin vs gold: three tiles fill the row (the 4-column macro grid left a gap) */
+.bd-v3 .bd-gold { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 860px) { .bd-v3 .bd-gold { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bd-v3 .bd-gold > :last-child { grid-column: 1 / -1; } }
 /* key numbers: one panel with an accent glow, like tp-panel / tx-panel */
 .bd-panel { position: relative; width: min(1080px, 100%); margin: 40px auto 0; padding: 14px; border-radius: 24px; background: #101010; border: 1px solid rgba(255,255,255,.06); overflow: hidden; text-align: left; }
 .bd-panel::before { content: ""; position: absolute; left: 50%; top: -170px; width: 720px; height: 320px; transform: translateX(-50%); pointer-events: none;

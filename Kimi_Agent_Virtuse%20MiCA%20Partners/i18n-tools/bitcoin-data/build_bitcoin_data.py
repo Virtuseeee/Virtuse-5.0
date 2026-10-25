@@ -181,7 +181,7 @@ def build(L):
   {foot}
 </main>
 <script type="application/json" id="bdI18n">{i18n}</script>
-<script src="{root}btc-data.js?v=3" defer></script>
+<script src="{root}btc-data.js?v=4" defer></script>
 '''.format(nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), lead=t('lead'), keys=keys, loading=t('loading'), sources=t('sources'),
            mp=mp, cg=cg, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), market=market, nh2a=t('n_h2_a'), nh2b=t('n_h2_b'), net=net,
            sh2a=t('s_h2_a'), sh2b=t('s_h2_b'), supply=supply, mh2a=t('m_h2_a'), mh2b=t('m_h2_b'), macro=macro, gh2a=t('g_h2_a'), gh2b=t('g_h2_b'), gold=gold,
