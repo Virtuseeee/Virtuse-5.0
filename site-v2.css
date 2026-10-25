@@ -1597,6 +1597,70 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
 }
 .bd-feeseq { margin: 6px 0 0; font-size: 15px; font-weight: 600; } .bd-feeseq[hidden], .bd-fees dl[hidden] { display: none; }
 
+/* ===== BITCOIN DATA v3 (handover 2026-10-25): Services accent system on the hub + its chart/tool pages =====
+   Opt-in with .bd-v3 on <main> (the bitcoin-returns/* pages also use .bd-m and keep the v2 look).
+   Accent per section / card / page via --c (.bd-acc-*): accent mono label, metallic top sheen, accent glow on
+   hover, .spot cursor spotlight (site-v2.js), panels with an accent glow. Retry / stale colours unchanged. */
+.bd-acc-orange { --c: var(--orange); } .bd-acc-blue { --c: var(--blue); } .bd-acc-yellow { --c: var(--yellow); }
+.bd-acc-purple { --c: var(--purple); } .bd-acc-pink { --c: var(--pink); } .bd-acc-indigo { --c: var(--indigo); }
+.bd-acc-green { --c: var(--green); } .bd-acc-teal { --c: var(--teal); }
+.bd-v3 .buy-hero2 .eyebrow i { background: var(--c, var(--orange)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c, var(--orange)) 15%, transparent); }
+/* cards: pcard2 language */
+.bd-v3 :is(.bd-m, .bd-card, .bd-chart) { position: relative; border-color: transparent;
+  background: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c, var(--orange)) 8%, transparent), transparent 62%), var(--card);
+  transition: background-color .2s, border-color .2s, box-shadow .2s; }
+.bd-v3 :is(.bd-m, .bd-card, .bd-chart)::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.12), rgba(255,255,255,.05)); }
+.bd-v3 :is(.bd-m, .bd-card, .bd-chart).pm:hover, .bd-v3 .bd-chart:focus-visible { background-color: var(--card-hover);
+  border-color: color-mix(in srgb, var(--c, var(--orange)) 35%, transparent); box-shadow: 0 18px 50px -28px color-mix(in srgb, var(--c, var(--orange)) 55%, transparent); }
+.bd-v3 .bd-l { color: var(--c, var(--orange)); }
+.bd-v3 .bd-cur button { font-weight: 600; }
+.bd-v3 .bd-bar i { background: var(--c, var(--orange)); }
+.bd-v3 .bd-links a:hover { color: var(--c, var(--orange)); }
+/* key numbers: one panel with an accent glow, like tp-panel / tx-panel */
+.bd-panel { position: relative; width: min(1080px, 100%); margin: 40px auto 0; padding: 14px; border-radius: 24px; background: #101010; border: 1px solid rgba(255,255,255,.06); overflow: hidden; text-align: left; }
+.bd-panel::before { content: ""; position: absolute; left: 50%; top: -170px; width: 720px; height: 320px; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c, var(--orange)) 11%, transparent), transparent); }
+.bd-panel > * { position: relative; }
+.bd-panel .bd-keys { margin: 0; width: 100%; }
+/* the price chart card is a small panel: glow from the top, line + area in the section accent */
+.bd-v3 .bd-chartcard { border-radius: 20px; background: radial-gradient(60% 70% at 50% 0%, color-mix(in srgb, var(--c, var(--orange)) 11%, transparent), transparent 70%), var(--card); }
+.bd-v3 .bd-spark #bdLine { stroke: var(--c, var(--orange)); }
+.bd-v3 .bd-spark stop { stop-color: var(--c, var(--orange)); }
+/* chart & tool cards: accent tag, accent arrow */
+.bd-v3 .bd-chart { gap: 6px; padding: 20px 52px 22px 22px; }
+.bd-v3 .bd-chart em { color: var(--c, var(--orange)); }
+.bd-v3 .bd-chart i { color: var(--c, var(--orange)); transition: transform .15s; }
+.bd-v3 .bd-chart:hover i { transform: translateX(3px); }
+/* sub-pages: hero eyebrow + accent, chart panel with glow, current sub-nav link in the accent */
+.bd-sub .lg-hero .eyebrow { margin-bottom: 18px; }
+.bd-sub .lg-sub a[aria-current] { color: var(--c, var(--orange)); }
+.bd-sub .legacy .chart-panel, .bd-sub .legacy .status-card, .bd-sub .legacy .ar-wrap, .bd-v3 .bvg-wrap, .bd-v3 .bvg-chartbox, .bd-v3 .rc-panel { position: relative; border-radius: 24px; border-color: rgba(255,255,255,.06);
+  background: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--c, var(--orange)) 10%, transparent), transparent 72%), var(--card); }
+.bd-sub .legacy .chart-panel::before, .bd-sub .legacy .status-card::before, .bd-v3 .bvg-chartbox::before, .bd-v3 .rc-panel::before { content: ""; position: absolute; left: 24px; right: 24px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.12), rgba(255,255,255,.05)); }
+.bd-sub .legacy .chart-panel h3 .ico { color: var(--c, var(--orange)); }
+.bd-sub .legacy .tooltip, .bd-v3 .bvg-tip { border-radius: 12px; border-color: color-mix(in srgb, var(--c, var(--orange)) 30%, rgba(255,255,255,.08));
+  background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 40%), #161616; box-shadow: 0 14px 40px -18px rgba(0,0,0,.8); }
+/* tables: Treasury comparison style (rounded panel, mono headers, tabular numbers) */
+.bd-v3 .bvg-table th, .bd-sub .legacy .ar-table th { font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; font-size: 11px; font-weight: 500; }
+.bd-v3 .bvg-table td, .bd-sub .legacy .ar-table td { font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) {
+  .bd-v3 .spot::after { display: none; }
+  .bd-v3 .bd-chart i, .bd-v3 :is(.bd-m, .bd-card, .bd-chart) { transition: none; }
+}
+@media (max-width: 640px) {
+  .bd-panel { margin-top: 24px; padding: 8px; border-radius: 18px; }
+  .bd-v3 .bd-charts { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .bd-v3 .bd-chart { padding: 14px 12px 16px; border-radius: 14px; align-content: start; }
+  .bd-v3 .bd-chart em { padding-right: 20px; }
+  .bd-v3 .bd-chart i { right: 12px; top: 14px; }
+  .bd-v3 .bd-chart i svg { width: 14px; height: 14px; }
+  .bd-v3 .bd-chart b { font-size: 15px; line-height: 1.3; }
+  .bd-v3 .bd-chart span { font-size: 13px; line-height: 1.4; }
+  .bd-sub .legacy .chart-panel, .bd-sub .legacy .status-card, .bd-sub .legacy .ar-wrap, .bd-v3 .bvg-wrap, .bd-v3 .bvg-chartbox, .bd-v3 .rc-panel { border-radius: 18px; }
+}
+
 /* FEE INDEX: one panel, amount switch, fee / spread / total per partner; rows become cards on phones */
 .h1-or { color: var(--orange); }
 .fi-amount { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; }

@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.min.css?v=5">
+<link rel="stylesheet" href="../site-v2.min.css?v=15">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Otvoriť menu", "closeMenu": "Zavrieť menu", "latestBrief": "Najnovší Brief · ", "min": " min", "coverImage": "Titulný obrázok: ", "badEmail": "Zadajte platnú e-mailovú adresu.", "sending": "Odosielam...", "subscribed": "Hotovo, odber je aktívny. Brief vychádza v pondelok.", "error": "Niečo sa pokazilo. Skúste to prosím znova.", "netError": "Chyba siete. Skúste to prosím znova.", "briefLangNote": " (v angličtine)"};</script>
 </head>
@@ -111,23 +111,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3" id="top">
 
   <!-- 1. HERO + key metrics -->
   <div class="buy-hero2">
     <div class="eyebrow"><i></i>Naživo · sieť a trh Bitcoinu</div>
     <h1>Bitcoin naživo. <span class="h1-grey">Cena, sieť a ponuka na jednom mieste.</span></h1>
     <p class="sp-lead">Verejné dáta zo siete a trhu Bitcoinu, obnovované každú minútu. Bez registrácie.</p>
-    <div class="bd-keys" data-g="price net">
-      <div class="bd-m bd-key bd-price" data-k="price"><span class="bd-l">Cena
+    <div class="bd-panel"><div class="bd-keys" data-g="price net">
+      <div class="bd-m bd-key bd-price bd-acc-orange" data-k="price"><span class="bd-l">Cena
         <span class="bd-cur" role="group" aria-label="USD / EUR"><button type="button" data-cur="USD">USD</button><button type="button" data-cur="EUR">EUR</button></span></span>
         <b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s"><em class="bd-chg" data-k="chg"></em> 24 h</span></div>
-      <div class="bd-m bd-key" data-k="height"><span class="bd-l">Výška bloku</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Posledný blok</span></div><div class="bd-m bd-key" data-k="fee"><span class="bd-l">Rýchly poplatok</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Ďalší blok, sat/vB</span></div><div class="bd-m bd-key" data-k="hash"><span class="bd-l">Hashrate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">3-dňový priemer</span></div>
-    </div>
+      <div class="bd-m bd-key bd-acc-blue" data-k="height"><span class="bd-l">Výška bloku</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Posledný blok</span></div><div class="bd-m bd-key bd-acc-blue" data-k="fee"><span class="bd-l">Rýchly poplatok</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Ďalší blok, sat/vB</span></div><div class="bd-m bd-key bd-acc-blue" data-k="hash"><span class="bd-l">Hashrate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">3-dňový priemer</span></div>
+    </div></div>
     <p class="bd-src bd-src-top" data-g="price net"><i class="bd-dot"></i><span class="bd-time">Načítava sa…</span> · Zdroje <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a></p>
   </div>
 
-  <section id="market">
+  <section id="market" class="bd-acc-orange">
     <div class="sec-head one"><div class="sec-copy"><h2>Cena a trh. <span>Koľko dnes stojí jeden bitcoin.</span></h2></div></div>
     <div class="bd-grid bd-market">
       <div class="bd-card bd-chartcard">
@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Ďalšie trhové grafy:</span> <a href="btc-monthly-returns.html">Mesačné výnosy</a> · <a href="trading-volume.html">Objem obchodovania</a> · <a href="fear-greed.html">Strach a chamtivosť</a></p>
   </section>
 
-  <section id="network">
+  <section id="network" class="bd-acc-blue">
     <div class="sec-head one"><div class="sec-copy"><h2>Sieť a ťažba. <span>Bezpečnosť, poplatky a posledný blok.</span></h2></div></div>
     <div class="bd-grid bd-net">
       <div class="bd-m bd-card" data-k="diff"><span class="bd-l">Náročnosť siete</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="diff">Aktuálna epocha</span></div>
@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Súvisiace:</span> <a href="mining.html">Partneri pre ťažbu</a> · <a href="/sk/bitcoin-index-poplatkov/">Index poplatkov za Bitcoin</a></p>
   </section>
 
-  <section id="supply">
+  <section id="supply" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Ponuka a halving. <span>21 miliónov podľa pevného harmonogramu.</span></h2></div></div>
     <div class="bd-grid bd-supply">
       <div class="bd-card"><span class="bd-l">Ponuka v obehu</span><b class="bd-v" data-k="supply"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">z 21 000 000 BTC, vypočítané z výšky bloku</span>
@@ -169,7 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Dlhodobé grafy:</span> <a href="rainbow-chart.html">Dúhový graf</a> · <a href="ma-200w.html">200-týždňový kĺzavý priemer</a> · <a href="root-cycles.html">Odmocninové cykly</a></p>
   </section>
 
-  <section id="macro">
+  <section id="macro" class="bd-acc-purple">
     <div class="sec-head one"><div class="sec-copy"><h2>Bitcoin a iné aktíva. <span>Od začiatku roka, v USD.</span></h2></div></div>
     <div class="bd-macro" data-g="macro">
       <div class="bd-m" data-k="ytd-BTC"><span class="bd-l">Bitcoin</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-GLD"><span class="bd-l">Zlato</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-SPY"><span class="bd-l">Veľké americké firmy (S&amp;P 500)</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-BND"><span class="bd-l">Americké dlhopisy</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div>
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="hp-cta" href="asset-returns.html">Pozrieť výnosy všetkých tried aktív <span aria-hidden="true">→</span></a>
   </section>
 
-  <section id="gold">
+  <section id="gold" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Bitcoin a zlato. <span>Unce zlata za jeden bitcoin, výnosy od roku 2016.</span></h2></div></div>
     <div class="bd-macro bd-gold" data-g="gold">
       <div class="bd-m" data-k="g-ytd"><span class="bd-l">Od začiatku roka</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Bitcoin · zlato</span></div><div class="bd-m" data-k="g-1y"><span class="bd-l">1 rok</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Bitcoin · zlato</span></div><div class="bd-m" data-k="g-ratio"><span class="bd-l">1 BTC v zlate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">GC=F</span></div>
@@ -189,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section id="charts">
     <div class="sec-head one"><div class="sec-copy"><h2>Grafy a nástroje. <span>Pozrite sa hlbšie.</span></h2></div></div>
-    <div class="bd-charts"><a class="bd-chart" href="btc-monthly-returns.html"><b>Mesačné výnosy</b><span>Výnos Bitcoinu za každý mesiac od roku 2010.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="asset-returns.html"><b>Výnosy aktív</b><span>Bitcoin v porovnaní s 22 triedami aktív, rok po roku.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="bitcoin-vs-gold.html"><b>Bitcoin vs. zlato</b><span>Zlato, striebro, ropa a meď rok po roku, plus pomer BTC/zlato.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="trading-volume.html"><b>Objem obchodovania</b><span>Denný spotový objem na hlavných burzách.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="fear-greed.html"><b>Strach a chamtivosť</b><span>Index nálady na trhu, aktualizovaný denne.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="rainbow-chart.html"><b>Dúhový graf</b><span>Dlhodobé cenové pásma v logaritmickej mierke.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="ma-200w.html"><b>200-týždňový kĺzavý priemer</b><span>Cena v porovnaní s jej 200-týždňovým priemerom.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="root-cycles.html"><b>Odmocninové cykly</b><span>Halvingové cykly v grafe s odmocninovou mierkou.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="btc-dominance.html"><b>Trhový podiel Bitcoinu</b><span>Podiel Bitcoinu na celkovej trhovej kapitalizácii kryptomien, pre kontext.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool" href="retirement-calculator.html"><em>Nástroj</em><b>Dôchodková kalkulačka</b><span>Ako by sa mesačný plán nákupu Bitcoinu mohol časom nasčítať.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
+    <div class="bd-charts"><a class="bd-chart bd-acc-teal" href="btc-monthly-returns.html"><em>Dáta</em><b>Mesačné výnosy</b><span>Výnos Bitcoinu za každý mesiac od roku 2010.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-purple" href="asset-returns.html"><em>Dáta</em><b>Výnosy aktív</b><span>Bitcoin v porovnaní s 22 triedami aktív, rok po roku.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-yellow" href="bitcoin-vs-gold.html"><em>Dáta</em><b>Bitcoin vs. zlato</b><span>Zlato, striebro, ropa a meď rok po roku, plus pomer BTC/zlato.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="trading-volume.html"><em>Dáta</em><b>Objem obchodovania</b><span>Denný spotový objem na hlavných burzách.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-pink" href="fear-greed.html"><em>Dáta</em><b>Strach a chamtivosť</b><span>Index nálady na trhu, aktualizovaný denne.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-indigo" href="rainbow-chart.html"><em>Dáta</em><b>Dúhový graf</b><span>Dlhodobé cenové pásma v logaritmickej mierke.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-green" href="ma-200w.html"><em>Dáta</em><b>200-týždňový kĺzavý priemer</b><span>Cena v porovnaní s jej 200-týždňovým priemerom.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-orange" href="root-cycles.html"><em>Dáta</em><b>Odmocninové cykly</b><span>Halvingové cykly v grafe s odmocninovou mierkou.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="btc-dominance.html"><em>Dáta</em><b>Trhový podiel Bitcoinu</b><span>Podiel Bitcoinu na celkovej trhovej kapitalizácii kryptomien, pre kontext.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool bd-acc-teal" href="retirement-calculator.html"><em>Nástroj</em><b>Dôchodková kalkulačka</b><span>Ako by sa mesačný plán nákupu Bitcoinu mohol časom nasčítať.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
   </section>
 
   <section id="brief">
@@ -240,7 +240,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 <script type="application/json" id="bdI18n">{"updated": "Aktualizované", "fees_equal": "Poplatky: {n} sat/vB pri všetkých prioritách", "stale": "Oneskorené", "unavailable": "Dáta nie sú dostupné", "retry": "Skúsiť znova", "n_block_ago": "vyťažený pred {t}", "n_unknown": "Neznámy pool", "s_halving_sub": "zostávajúcich blokov · odhad {d}", "p_chart": "Cena za posledných {n} dní", "p_sats": "Satoshi za 1 $", "p_sats_eur": "Satoshi za 1 €", "u_s": "s", "u_min": "min", "u_h": "h", "u_days": "dní", "u_years": "rokov", "locale": "sk-SK", "pct": " %", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json", "goldRaw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "goldLocal": "../data/bitcoin-vs-commodities.json", "g_oz": "oz"}</script>
 <script src="../btc-data.js?v=3" defer></script>
-<script src="../site-v2.js?v=7" defer></script>
+<script src="../site-v2.js?v=8" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

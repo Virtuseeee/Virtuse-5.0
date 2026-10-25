@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.min.css?v=5">
+<link rel="stylesheet" href="../site-v2.min.css?v=15">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Menü öffnen", "closeMenu": "Menü schließen", "latestBrief": "Neuester Brief · ", "min": " Min.", "coverImage": "Titelbild: ", "badEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.", "sending": "Wird gesendet...", "subscribed": "Sie sind dabei. Der Brief kommt am Montag.", "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.", "netError": "Netzwerkfehler. Bitte versuchen Sie es erneut.", "briefLangNote": " (auf Englisch)"};</script>
 </head>
@@ -111,23 +111,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3" id="top">
 
   <!-- 1. HERO + key metrics -->
   <div class="buy-hero2">
     <div class="eyebrow"><i></i>Live · Bitcoin-Netzwerk &amp; Markt</div>
     <h1>Bitcoin, live. <span class="h1-grey">Preis, Netzwerk und Umlaufmenge an einem Ort.</span></h1>
     <p class="sp-lead">Öffentliche Daten aus dem Bitcoin-Netzwerk und vom Markt, jede Minute aktualisiert. Kein Konto erforderlich.</p>
-    <div class="bd-keys" data-g="price net">
-      <div class="bd-m bd-key bd-price" data-k="price"><span class="bd-l">Preis
+    <div class="bd-panel"><div class="bd-keys" data-g="price net">
+      <div class="bd-m bd-key bd-price bd-acc-orange" data-k="price"><span class="bd-l">Preis
         <span class="bd-cur" role="group" aria-label="USD / EUR"><button type="button" data-cur="USD">USD</button><button type="button" data-cur="EUR">EUR</button></span></span>
         <b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s"><em class="bd-chg" data-k="chg"></em> 24 h</span></div>
-      <div class="bd-m bd-key" data-k="height"><span class="bd-l">Blockhöhe</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Neuester Block</span></div><div class="bd-m bd-key" data-k="fee"><span class="bd-l">Schnelle Gebühr</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Nächster Block, sat/vB</span></div><div class="bd-m bd-key" data-k="hash"><span class="bd-l">Hashrate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">3-Tage-Durchschnitt</span></div>
-    </div>
+      <div class="bd-m bd-key bd-acc-blue" data-k="height"><span class="bd-l">Blockhöhe</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Neuester Block</span></div><div class="bd-m bd-key bd-acc-blue" data-k="fee"><span class="bd-l">Schnelle Gebühr</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Nächster Block, sat/vB</span></div><div class="bd-m bd-key bd-acc-blue" data-k="hash"><span class="bd-l">Hashrate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">3-Tage-Durchschnitt</span></div>
+    </div></div>
     <p class="bd-src bd-src-top" data-g="price net"><i class="bd-dot"></i><span class="bd-time">Wird geladen…</span> · Quellen <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a></p>
   </div>
 
-  <section id="market">
+  <section id="market" class="bd-acc-orange">
     <div class="sec-head one"><div class="sec-copy"><h2>Preis und Markt. <span>Was ein Bitcoin heute kostet.</span></h2></div></div>
     <div class="bd-grid bd-market">
       <div class="bd-card bd-chartcard">
@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Weitere Markt-Charts:</span> <a href="btc-monthly-returns.html">Monatliche Renditen</a> · <a href="trading-volume.html">Handelsvolumen</a> · <a href="fear-greed.html">Angst &amp; Gier</a></p>
   </section>
 
-  <section id="network">
+  <section id="network" class="bd-acc-blue">
     <div class="sec-head one"><div class="sec-copy"><h2>Netzwerk und Mining. <span>Sicherheit, Gebühren und der neueste Block.</span></h2></div></div>
     <div class="bd-grid bd-net">
       <div class="bd-m bd-card" data-k="diff"><span class="bd-l">Netzwerk-Schwierigkeit</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="diff">Aktuelle Epoche</span></div>
@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Verwandt:</span> <a href="mining.html">Mining-Partner</a> · <a href="/de/bitcoin-gebuehrenindex/">Bitcoin-Gebührenindex</a></p>
   </section>
 
-  <section id="supply">
+  <section id="supply" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Umlaufmenge und Halving. <span>21 Millionen, nach festem Zeitplan.</span></h2></div></div>
     <div class="bd-grid bd-supply">
       <div class="bd-card"><span class="bd-l">Umlaufmenge</span><b class="bd-v" data-k="supply"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">von 21.000.000 BTC, berechnet aus der Blockhöhe</span>
@@ -169,7 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Langfristige Charts:</span> <a href="rainbow-chart.html">Regenbogen-Chart</a> · <a href="ma-200w.html">200-Wochen-GD</a> · <a href="root-cycles.html">Wurzelzyklen-Modell</a></p>
   </section>
 
-  <section id="macro">
+  <section id="macro" class="bd-acc-purple">
     <div class="sec-head one"><div class="sec-copy"><h2>Bitcoin im Vergleich zu anderen Anlagen. <span>Seit Jahresbeginn, in USD.</span></h2></div></div>
     <div class="bd-macro" data-g="macro">
       <div class="bd-m" data-k="ytd-BTC"><span class="bd-l">Bitcoin</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-GLD"><span class="bd-l">Gold</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-SPY"><span class="bd-l">US-Standardwerte (S&amp;P 500)</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-BND"><span class="bd-l">US-Anleihen</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div>
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="hp-cta" href="asset-returns.html">Alle Renditen nach Anlageklasse ansehen <span aria-hidden="true">→</span></a>
   </section>
 
-  <section id="gold">
+  <section id="gold" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Bitcoin vs. Gold. <span>Unzen Gold je Bitcoin, Renditen seit 2016.</span></h2></div></div>
     <div class="bd-macro bd-gold" data-g="gold">
       <div class="bd-m" data-k="g-ytd"><span class="bd-l">Seit Jahresbeginn</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Bitcoin · Gold</span></div><div class="bd-m" data-k="g-1y"><span class="bd-l">1 Jahr</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Bitcoin · Gold</span></div><div class="bd-m" data-k="g-ratio"><span class="bd-l">1 BTC in Gold</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">GC=F</span></div>
@@ -189,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section id="charts">
     <div class="sec-head one"><div class="sec-copy"><h2>Charts und Tools. <span>Tiefer einsteigen.</span></h2></div></div>
-    <div class="bd-charts"><a class="bd-chart" href="btc-monthly-returns.html"><b>Monatliche Renditen</b><span>Die Rendite von Bitcoin für jeden Monat seit 2010.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="asset-returns.html"><b>Anlagerenditen</b><span>Bitcoin im Vergleich zu 22 Anlageklassen, Jahr für Jahr.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="bitcoin-vs-gold.html"><b>Bitcoin vs. Gold</b><span>Gold, Silber, Öl und Kupfer Jahr für Jahr, plus das BTC/Gold-Verhältnis.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="trading-volume.html"><b>Handelsvolumen</b><span>Tägliches Spot-Volumen der großen Börsen.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="fear-greed.html"><b>Angst &amp; Gier</b><span>Index der Marktstimmung, täglich aktualisiert.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="rainbow-chart.html"><b>Regenbogen-Chart</b><span>Langfristige Preisbänder auf logarithmischer Skala.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="ma-200w.html"><b>200-Wochen-GD</b><span>Der Preis im Vergleich zu seinem 200-Wochen-Durchschnitt.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="root-cycles.html"><b>Wurzelzyklen-Modell</b><span>Halving-Zyklen auf einem Chart mit Wurzelskala.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="btc-dominance.html"><b>Marktanteil von Bitcoin</b><span>Der Anteil von Bitcoin an der gesamten Krypto-Marktkapitalisierung, zur Einordnung.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool" href="retirement-calculator.html"><em>Tool</em><b>Ruhestandsrechner</b><span>Wie sich ein monatlicher Bitcoin-Plan über die Zeit summieren könnte.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
+    <div class="bd-charts"><a class="bd-chart bd-acc-teal" href="btc-monthly-returns.html"><em>Daten</em><b>Monatliche Renditen</b><span>Die Rendite von Bitcoin für jeden Monat seit 2010.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-purple" href="asset-returns.html"><em>Daten</em><b>Anlagerenditen</b><span>Bitcoin im Vergleich zu 22 Anlageklassen, Jahr für Jahr.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-yellow" href="bitcoin-vs-gold.html"><em>Daten</em><b>Bitcoin vs. Gold</b><span>Gold, Silber, Öl und Kupfer Jahr für Jahr, plus das BTC/Gold-Verhältnis.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="trading-volume.html"><em>Daten</em><b>Handelsvolumen</b><span>Tägliches Spot-Volumen der großen Börsen.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-pink" href="fear-greed.html"><em>Daten</em><b>Angst &amp; Gier</b><span>Index der Marktstimmung, täglich aktualisiert.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-indigo" href="rainbow-chart.html"><em>Daten</em><b>Regenbogen-Chart</b><span>Langfristige Preisbänder auf logarithmischer Skala.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-green" href="ma-200w.html"><em>Daten</em><b>200-Wochen-GD</b><span>Der Preis im Vergleich zu seinem 200-Wochen-Durchschnitt.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-orange" href="root-cycles.html"><em>Daten</em><b>Wurzelzyklen-Modell</b><span>Halving-Zyklen auf einem Chart mit Wurzelskala.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="btc-dominance.html"><em>Daten</em><b>Marktanteil von Bitcoin</b><span>Der Anteil von Bitcoin an der gesamten Krypto-Marktkapitalisierung, zur Einordnung.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool bd-acc-teal" href="retirement-calculator.html"><em>Tool</em><b>Ruhestandsrechner</b><span>Wie sich ein monatlicher Bitcoin-Plan über die Zeit summieren könnte.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
   </section>
 
   <section id="brief">
@@ -240,7 +240,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 <script type="application/json" id="bdI18n">{"updated": "Aktualisiert", "fees_equal": "Gebühren: {n} sat/vB für alle Prioritäten", "stale": "Verzögert", "unavailable": "Daten nicht verfügbar", "retry": "Erneut versuchen", "n_block_ago": "vor {t} geschürft", "n_unknown": "Unbekannter Pool", "s_halving_sub": "Blöcke verbleibend · ca. {d}", "p_chart": "Preis, letzte {n} Tage", "p_sats": "Sats pro $1", "p_sats_eur": "Sats pro 1 €", "u_s": "s", "u_min": "Min.", "u_h": "Std.", "u_days": "Tage", "u_years": "Jahre", "locale": "de-DE", "pct": " %", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json", "goldRaw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "goldLocal": "../data/bitcoin-vs-commodities.json", "g_oz": "oz"}</script>
 <script src="../btc-data.js?v=3" defer></script>
-<script src="../site-v2.js?v=7" defer></script>
+<script src="../site-v2.js?v=8" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

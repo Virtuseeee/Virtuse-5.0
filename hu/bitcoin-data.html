@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.min.css?v=5">
+<link rel="stylesheet" href="../site-v2.min.css?v=15">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 </head>
@@ -111,23 +111,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3" id="top">
 
   <!-- 1. HERO + key metrics -->
   <div class="buy-hero2">
     <div class="eyebrow"><i></i>Élő · Bitcoin-hálózat és piac</div>
     <h1>Bitcoin, élőben. <span class="h1-grey">Ár, hálózat és kínálat egy helyen.</span></h1>
     <p class="sp-lead">Nyilvános adatok a Bitcoin-hálózatról és a piacról, percenkénti frissítéssel. Fiók nélkül.</p>
-    <div class="bd-keys" data-g="price net">
-      <div class="bd-m bd-key bd-price" data-k="price"><span class="bd-l">Ár
+    <div class="bd-panel"><div class="bd-keys" data-g="price net">
+      <div class="bd-m bd-key bd-price bd-acc-orange" data-k="price"><span class="bd-l">Ár
         <span class="bd-cur" role="group" aria-label="USD / EUR"><button type="button" data-cur="USD">USD</button><button type="button" data-cur="EUR">EUR</button></span></span>
         <b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s"><em class="bd-chg" data-k="chg"></em> 24 ó</span></div>
-      <div class="bd-m bd-key" data-k="height"><span class="bd-l">Blokkmagasság</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Legutóbbi blokk</span></div><div class="bd-m bd-key" data-k="fee"><span class="bd-l">Gyors díj</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Következő blokk, sat/vB</span></div><div class="bd-m bd-key" data-k="hash"><span class="bd-l">Hashrate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">3 napos átlag</span></div>
-    </div>
+      <div class="bd-m bd-key bd-acc-blue" data-k="height"><span class="bd-l">Blokkmagasság</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Legutóbbi blokk</span></div><div class="bd-m bd-key bd-acc-blue" data-k="fee"><span class="bd-l">Gyors díj</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Következő blokk, sat/vB</span></div><div class="bd-m bd-key bd-acc-blue" data-k="hash"><span class="bd-l">Hashrate</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">3 napos átlag</span></div>
+    </div></div>
     <p class="bd-src bd-src-top" data-g="price net"><i class="bd-dot"></i><span class="bd-time">Betöltés…</span> · Források <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a></p>
   </div>
 
-  <section id="market">
+  <section id="market" class="bd-acc-orange">
     <div class="sec-head one"><div class="sec-copy"><h2>Ár és piac. <span>Mennyibe kerül ma egy bitcoin.</span></h2></div></div>
     <div class="bd-grid bd-market">
       <div class="bd-card bd-chartcard">
@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>További piaci grafikonok:</span> <a href="btc-monthly-returns.html">Havi hozamok</a> · <a href="trading-volume.html">Kereskedési volumen</a> · <a href="fear-greed.html">Félelem és kapzsiság</a></p>
   </section>
 
-  <section id="network">
+  <section id="network" class="bd-acc-blue">
     <div class="sec-head one"><div class="sec-copy"><h2>Hálózat és bányászat. <span>Biztonság, díjak és a legutóbbi blokk.</span></h2></div></div>
     <div class="bd-grid bd-net">
       <div class="bd-m bd-card" data-k="diff"><span class="bd-l">Hálózati nehézség</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="diff">Aktuális epocha</span></div>
@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Kapcsolódó:</span> <a href="mining.html">Bányászati partnerek</a> · <a href="/hu/bitcoin-dijindex/">Bitcoin-díjindex</a></p>
   </section>
 
-  <section id="supply">
+  <section id="supply" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Kínálat és felezés. <span>21 millió, rögzített ütemezés szerint.</span></h2></div></div>
     <div class="bd-grid bd-supply">
       <div class="bd-card"><span class="bd-l">Forgalomban lévő mennyiség</span><b class="bd-v" data-k="supply"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">a 21 000 000 BTC-ből, a blokkmagasságból számítva</span>
@@ -169,7 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Hosszú távú grafikonok:</span> <a href="rainbow-chart.html">Szivárványgrafikon</a> · <a href="ma-200w.html">200 hetes mozgóátlag</a> · <a href="root-cycles.html">Gyökérskálás ciklusok</a></p>
   </section>
 
-  <section id="macro">
+  <section id="macro" class="bd-acc-purple">
     <div class="sec-head one"><div class="sec-copy"><h2>Bitcoin és más eszközök. <span>Év elejétől, USD-ben.</span></h2></div></div>
     <div class="bd-macro" data-g="macro">
       <div class="bd-m" data-k="ytd-BTC"><span class="bd-l">Bitcoin</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-GLD"><span class="bd-l">Arany</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-SPY"><span class="bd-l">Amerikai nagyvállalatok (S&amp;P 500)</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-BND"><span class="bd-l">Amerikai kötvények</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div>
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="hp-cta" href="asset-returns.html">Az összes eszközosztály hozama <span aria-hidden="true">→</span></a>
   </section>
 
-  <section id="gold">
+  <section id="gold" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Bitcoin és arany. <span>Uncia arany egy bitcoinért, hozamok 2016 óta.</span></h2></div></div>
     <div class="bd-macro bd-gold" data-g="gold">
       <div class="bd-m" data-k="g-ytd"><span class="bd-l">Év elejétől</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Bitcoin · arany</span></div><div class="bd-m" data-k="g-1y"><span class="bd-l">1 év</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Bitcoin · arany</span></div><div class="bd-m" data-k="g-ratio"><span class="bd-l">1 BTC aranyban</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">GC=F</span></div>
@@ -189,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section id="charts">
     <div class="sec-head one"><div class="sec-copy"><h2>Grafikonok és eszközök. <span>Részletesebben.</span></h2></div></div>
-    <div class="bd-charts"><a class="bd-chart" href="btc-monthly-returns.html"><b>Havi hozamok</b><span>A Bitcoin hozama minden hónapban 2010 óta.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="asset-returns.html"><b>Eszközhozamok</b><span>Bitcoin és 22 eszközosztály, évről évre.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="bitcoin-vs-gold.html"><b>Bitcoin vs arany</b><span>Arany, ezüst, olaj és réz évről évre, plusz a BTC/arany arány.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="trading-volume.html"><b>Kereskedési volumen</b><span>Napi spot volumen a nagy tőzsdéken.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="fear-greed.html"><b>Félelem és kapzsiság</b><span>Piaci hangulatindex, naponta frissítve.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="rainbow-chart.html"><b>Szivárványgrafikon</b><span>Hosszú távú ársávok logaritmikus skálán.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="ma-200w.html"><b>200 hetes mozgóátlag</b><span>Az ár a 200 hetes átlagához képest.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="root-cycles.html"><b>Gyökérskálás ciklusok</b><span>Felezési ciklusok gyökérskálás grafikonon.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="btc-dominance.html"><b>A Bitcoin piaci részesedése</b><span>A Bitcoin részesedése a teljes kriptopiaci kapitalizációból, tájékoztatásként.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool" href="retirement-calculator.html"><em>Eszköz</em><b>Nyugdíjkalkulátor</b><span>Hogyan gyűlhet fel idővel egy havi Bitcoin-terv.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
+    <div class="bd-charts"><a class="bd-chart bd-acc-teal" href="btc-monthly-returns.html"><em>Adat</em><b>Havi hozamok</b><span>A Bitcoin hozama minden hónapban 2010 óta.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-purple" href="asset-returns.html"><em>Adat</em><b>Eszközhozamok</b><span>Bitcoin és 22 eszközosztály, évről évre.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-yellow" href="bitcoin-vs-gold.html"><em>Adat</em><b>Bitcoin vs arany</b><span>Arany, ezüst, olaj és réz évről évre, plusz a BTC/arany arány.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="trading-volume.html"><em>Adat</em><b>Kereskedési volumen</b><span>Napi spot volumen a nagy tőzsdéken.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-pink" href="fear-greed.html"><em>Adat</em><b>Félelem és kapzsiság</b><span>Piaci hangulatindex, naponta frissítve.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-indigo" href="rainbow-chart.html"><em>Adat</em><b>Szivárványgrafikon</b><span>Hosszú távú ársávok logaritmikus skálán.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-green" href="ma-200w.html"><em>Adat</em><b>200 hetes mozgóátlag</b><span>Az ár a 200 hetes átlagához képest.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-orange" href="root-cycles.html"><em>Adat</em><b>Gyökérskálás ciklusok</b><span>Felezési ciklusok gyökérskálás grafikonon.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="btc-dominance.html"><em>Adat</em><b>A Bitcoin piaci részesedése</b><span>A Bitcoin részesedése a teljes kriptopiaci kapitalizációból, tájékoztatásként.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool bd-acc-teal" href="retirement-calculator.html"><em>Eszköz</em><b>Nyugdíjkalkulátor</b><span>Hogyan gyűlhet fel idővel egy havi Bitcoin-terv.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
   </section>
 
   <section id="brief">
@@ -240,7 +240,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 <script type="application/json" id="bdI18n">{"updated": "Frissítve", "fees_equal": "Díjak: {n} sat/vB minden prioritásnál", "stale": "Késleltetett", "unavailable": "Az adatok nem érhetők el", "retry": "Újra", "n_block_ago": "{t} ezelőtt bányászva", "n_unknown": "Ismeretlen pool", "s_halving_sub": "blokk van hátra · becslés: {d}", "p_chart": "Ár, utolsó {n} nap", "p_sats": "Satoshi 1 $-ért", "p_sats_eur": "Satoshi 1 €-ért", "u_s": "mp", "u_min": "perc", "u_h": "ó", "u_days": "nap", "u_years": "év", "locale": "hu-HU", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json", "goldRaw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "goldLocal": "../data/bitcoin-vs-commodities.json", "g_oz": "uncia"}</script>
 <script src="../btc-data.js?v=3" defer></script>
-<script src="../site-v2.js?v=7" defer></script>
+<script src="../site-v2.js?v=8" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
