@@ -116,6 +116,7 @@
 -mkdir public_html/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin
 -mkdir public_html/stories/nothing-can-stop-bitcoin-not-even-governments
 -mkdir public_html/stories/old-financial-model-is-about-to-be-disrupted
+-mkdir public_html/stories/online-gambling-machine-vs-bitcoin
 -mkdir public_html/stories/preco-sa-mmf-boji-kryptoizacie
 -mkdir public_html/stories/r-vasilisin-bitcoin-appreciation-is-inevitable-as-is-the-disruption-of-the-current-financial-system
 -mkdir public_html/stories/rome-wokeism-and-the-rise-of-the-bitcoin-standard
@@ -123,7 +124,6 @@
 -mkdir public_html/stories/sec-delays-decisions-on-spot-bitcoin-etfs
 -mkdir public_html/stories/sedem-dovodov-preco-sucasne-bankovnictvo-konci
 -mkdir public_html/stories/simple-investing-strategy-for-the-global-recession
--mkdir public_html/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom
 -mkdir public_html/stories/smart-money-arent-selling-bitcoin-so-who-is
 -mkdir public_html/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it
 -mkdir public_html/stories/stop-following-the-media-if-you-want-to-get-rich
@@ -370,6 +370,7 @@
 -mkdir public_html/sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin
 -mkdir public_html/sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti
 -mkdir public_html/sk/stories/slova-maju-svoje-definicie-a-manipulacia-a-zmena-vyznamu-sa-nazyva-jednoducho-klamstvom
+-mkdir public_html/sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom
 -mkdir public_html/sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov
 -mkdir public_html/sk/stories/stane-sa-z-defi-bankovy-predator
 -mkdir public_html/sk/stories/stav-krypto-trhov-za-prvy-polrok-2023
@@ -589,6 +590,7 @@ put sk/stories/skuste-tieto-zivotne-triky-a-budete-mat-uspesny-rok/index.html pu
 put sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin/index.html public_html/sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin/index.html
 put sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti/index.html public_html/sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti/index.html
 put sk/stories/slova-maju-svoje-definicie-a-manipulacia-a-zmena-vyznamu-sa-nazyva-jednoducho-klamstvom/index.html public_html/sk/stories/slova-maju-svoje-definicie-a-manipulacia-a-zmena-vyznamu-sa-nazyva-jednoducho-klamstvom/index.html
+put sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html public_html/sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html
 put sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/index.html public_html/sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/index.html
 put sk/stories/stane-sa-z-defi-bankovy-predator/index.html public_html/sk/stories/stane-sa-z-defi-bankovy-predator/index.html
 put sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/index.html public_html/sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/index.html
@@ -741,6 +743,7 @@ put stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/index.html public_html
 put stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/index.html public_html/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/index.html
 put stories/nothing-can-stop-bitcoin-not-even-governments/index.html public_html/stories/nothing-can-stop-bitcoin-not-even-governments/index.html
 put stories/old-financial-model-is-about-to-be-disrupted/index.html public_html/stories/old-financial-model-is-about-to-be-disrupted/index.html
+put stories/online-gambling-machine-vs-bitcoin/index.html public_html/stories/online-gambling-machine-vs-bitcoin/index.html
 put stories/preco-sa-mmf-boji-kryptoizacie/index.html public_html/stories/preco-sa-mmf-boji-kryptoizacie/index.html
 put stories/r-vasilisin-bitcoin-appreciation-is-inevitable-as-is-the-disruption-of-the-current-financial-system/index.html public_html/stories/r-vasilisin-bitcoin-appreciation-is-inevitable-as-is-the-disruption-of-the-current-financial-system/index.html
 put stories/rome-wokeism-and-the-rise-of-the-bitcoin-standard/index.html public_html/stories/rome-wokeism-and-the-rise-of-the-bitcoin-standard/index.html
@@ -748,7 +751,6 @@ put stories/sanctions-against-russia-are-a-marketing-campaign-for-bitcoin/index.
 put stories/sec-delays-decisions-on-spot-bitcoin-etfs/index.html public_html/stories/sec-delays-decisions-on-spot-bitcoin-etfs/index.html
 put stories/sedem-dovodov-preco-sucasne-bankovnictvo-konci/index.html public_html/stories/sedem-dovodov-preco-sucasne-bankovnictvo-konci/index.html
 put stories/simple-investing-strategy-for-the-global-recession/index.html public_html/stories/simple-investing-strategy-for-the-global-recession/index.html
-put stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html public_html/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html
 put stories/smart-money-arent-selling-bitcoin-so-who-is/index.html public_html/stories/smart-money-arent-selling-bitcoin-so-who-is/index.html
 put stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/index.html public_html/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/index.html
 put stories/stop-following-the-media-if-you-want-to-get-rich/index.html public_html/stories/stop-following-the-media-if-you-want-to-get-rich/index.html
@@ -862,4 +864,5 @@ put pl/blog.html public_html/pl/blog.html
 put ru/blog.html public_html/ru/blog.html
 put uk/blog.html public_html/uk/blog.html
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
+# removed from WordPress, delete on the server: public_html/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/
 bye
