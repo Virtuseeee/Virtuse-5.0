@@ -123,6 +123,7 @@
 -mkdir public_html/stories/sec-delays-decisions-on-spot-bitcoin-etfs
 -mkdir public_html/stories/sedem-dovodov-preco-sucasne-bankovnictvo-konci
 -mkdir public_html/stories/simple-investing-strategy-for-the-global-recession
+-mkdir public_html/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom
 -mkdir public_html/stories/smart-money-arent-selling-bitcoin-so-who-is
 -mkdir public_html/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it
 -mkdir public_html/stories/stop-following-the-media-if-you-want-to-get-rich
@@ -747,6 +748,7 @@ put stories/sanctions-against-russia-are-a-marketing-campaign-for-bitcoin/index.
 put stories/sec-delays-decisions-on-spot-bitcoin-etfs/index.html public_html/stories/sec-delays-decisions-on-spot-bitcoin-etfs/index.html
 put stories/sedem-dovodov-preco-sucasne-bankovnictvo-konci/index.html public_html/stories/sedem-dovodov-preco-sucasne-bankovnictvo-konci/index.html
 put stories/simple-investing-strategy-for-the-global-recession/index.html public_html/stories/simple-investing-strategy-for-the-global-recession/index.html
+put stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html public_html/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html
 put stories/smart-money-arent-selling-bitcoin-so-who-is/index.html public_html/stories/smart-money-arent-selling-bitcoin-so-who-is/index.html
 put stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/index.html public_html/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/index.html
 put stories/stop-following-the-media-if-you-want-to-get-rich/index.html public_html/stories/stop-following-the-media-if-you-want-to-get-rich/index.html
