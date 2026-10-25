@@ -226,7 +226,11 @@ def build(L, page):
     for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', tail, re.S):
         if 'json' in m.group(1) or any(k in m.group(2) for k in SHELL_JS):
             continue
-        page_js.append('<script%s>%s</script>' % (m.group(1), m.group(2)))
+        # the old :root colour variables now live on .legacy (legacy_css), so chart scripts that read them from
+        # <html> got '' and drew with the last canvas colour (the 7% grid line): e.g. the 200 WMA line was invisible
+        js = m.group(2).replace('getComputedStyle(document.documentElement)',
+                                "getComputedStyle(document.querySelector('.legacy') || document.documentElement)")
+        page_js.append('<script%s>%s</script>' % (m.group(1), js))
     # page scripts placed inside the body before the footer (rare) stay where they are, inside content
 
     body_tag = re.search(r'<body[^>]*>', old).group(0)
