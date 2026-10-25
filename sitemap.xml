@@ -10938,7 +10938,7 @@
 <!-- STORIES-HUBS:START -->
   <url>
     <loc>https://virtuse.com/stories/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -10974,7 +10974,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -11698,6 +11698,10 @@
     <lastmod>2026-03-11</lastmod>
   </url>
   <url>
+    <loc>https://virtuse.com/sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
     <loc>https://virtuse.com/sk/stories/studia-ktora-spaja-fanusikov-bitcoinu-so-psychopatmi-je-prilis-povrchna/</loc>
     <lastmod>2022-04-24</lastmod>
   </url>
@@ -12294,6 +12298,10 @@
     <lastmod>2020-06-22</lastmod>
   </url>
   <url>
+    <loc>https://virtuse.com/stories/online-gambling-machine-vs-bitcoin/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
     <loc>https://virtuse.com/stories/preco-sa-mmf-boji-kryptoizacie/</loc>
     <lastmod>2022-05-18</lastmod>
   </url>
@@ -12320,10 +12328,6 @@
   <url>
     <loc>https://virtuse.com/stories/simple-investing-strategy-for-the-global-recession/</loc>
     <lastmod>2022-10-27</lastmod>
-  </url>
-  <url>
-    <loc>https://virtuse.com/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/</loc>
-    <lastmod>2026-10-24</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/smart-money-arent-selling-bitcoin-so-who-is/</loc>
