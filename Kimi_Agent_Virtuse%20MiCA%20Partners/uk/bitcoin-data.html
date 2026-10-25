@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.min.css?v=5">
+<link rel="stylesheet" href="../site-v2.min.css?v=15">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Відкрити меню", "closeMenu": "Закрити меню", "latestBrief": "Останній Brief · ", "min": " хв", "coverImage": "Обкладинка: ", "badEmail": "Введіть дійсну адресу електронної пошти.", "sending": "Надсилання...", "subscribed": "Готово! Brief вийде в понеділок.", "error": "Щось пішло не так. Спробуйте ще раз.", "netError": "Помилка мережі. Спробуйте ще раз.", "briefLangNote": " (англійською)"};</script>
 </head>
@@ -111,23 +111,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3" id="top">
 
   <!-- 1. HERO + key metrics -->
   <div class="buy-hero2">
     <div class="eyebrow"><i></i>Наживо · мережа та ринок Біткоїна</div>
     <h1>Біткоїн наживо. <span class="h1-grey">Ціна, мережа та пропозиція в одному місці.</span></h1>
     <p class="sp-lead">Публічні дані мережі та ринку Біткоїна, оновлення щохвилини. Реєстрація не потрібна.</p>
-    <div class="bd-keys" data-g="price net">
-      <div class="bd-m bd-key bd-price" data-k="price"><span class="bd-l">Ціна
+    <div class="bd-panel"><div class="bd-keys" data-g="price net">
+      <div class="bd-m bd-key bd-price bd-acc-orange" data-k="price"><span class="bd-l">Ціна
         <span class="bd-cur" role="group" aria-label="USD / EUR"><button type="button" data-cur="USD">USD</button><button type="button" data-cur="EUR">EUR</button></span></span>
         <b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s"><em class="bd-chg" data-k="chg"></em> 24 год</span></div>
-      <div class="bd-m bd-key" data-k="height"><span class="bd-l">Висота блоку</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Останній блок</span></div><div class="bd-m bd-key" data-k="fee"><span class="bd-l">Швидка комісія</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Наступний блок, sat/vB</span></div><div class="bd-m bd-key" data-k="hash"><span class="bd-l">Хешрейт</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">Середнє за 3 дні</span></div>
-    </div>
+      <div class="bd-m bd-key bd-acc-blue" data-k="height"><span class="bd-l">Висота блоку</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="height">Останній блок</span></div><div class="bd-m bd-key bd-acc-blue" data-k="fee"><span class="bd-l">Швидка комісія</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="fee">Наступний блок, sat/vB</span></div><div class="bd-m bd-key bd-acc-blue" data-k="hash"><span class="bd-l">Хешрейт</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="hash">Середнє за 3 дні</span></div>
+    </div></div>
     <p class="bd-src bd-src-top" data-g="price net"><i class="bd-dot"></i><span class="bd-time">Завантаження…</span> · Джерела <a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a></p>
   </div>
 
-  <section id="market">
+  <section id="market" class="bd-acc-orange">
     <div class="sec-head one"><div class="sec-copy"><h2>Ціна та ринок. <span>Скільки сьогодні коштує один біткоїн.</span></h2></div></div>
     <div class="bd-grid bd-market">
       <div class="bd-card bd-chartcard">
@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Більше ринкових графіків:</span> <a href="btc-monthly-returns.html">Місячна прибутковість</a> · <a href="../trading-volume.html">Обсяг торгів</a> · <a href="../fear-greed.html">Страх і жадібність</a></p>
   </section>
 
-  <section id="network">
+  <section id="network" class="bd-acc-blue">
     <div class="sec-head one"><div class="sec-copy"><h2>Мережа та майнінг. <span>Безпека, комісії та останній блок.</span></h2></div></div>
     <div class="bd-grid bd-net">
       <div class="bd-m bd-card" data-k="diff"><span class="bd-l">Складність мережі</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s" data-s="diff">Поточна епоха</span></div>
@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Пов'язане:</span> <a href="mining.html">Партнери з майнінгу</a> · <a href="/uk/bitcoin-indeks-komisii/">Індекс комісій Біткоїна</a></p>
   </section>
 
-  <section id="supply">
+  <section id="supply" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Пропозиція та халвінг. <span>21 мільйон за фіксованим графіком.</span></h2></div></div>
     <div class="bd-grid bd-supply">
       <div class="bd-card"><span class="bd-l">Пропозиція в обігу</span><b class="bd-v" data-k="supply"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">з 21 000 000 BTC, обчислено з висоти блоку</span>
@@ -169,7 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="bd-links"><span>Довгострокові графіки:</span> <a href="rainbow-chart.html">Райдужний графік</a> · <a href="ma-200w.html">200-тижнева ковзна середня</a> · <a href="root-cycles.html">Кореневі цикли</a></p>
   </section>
 
-  <section id="macro">
+  <section id="macro" class="bd-acc-purple">
     <div class="sec-head one"><div class="sec-copy"><h2>Біткоїн та інші активи. <span>З початку року, у USD.</span></h2></div></div>
     <div class="bd-macro" data-g="macro">
       <div class="bd-m" data-k="ytd-BTC"><span class="bd-l">Біткоїн</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-GLD"><span class="bd-l">Золото</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-SPY"><span class="bd-l">Великі компанії США (S&amp;P 500)</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div><div class="bd-m" data-k="ytd-BND"><span class="bd-l">Облігації США</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b></div>
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="hp-cta" href="asset-returns.html">Прибутковість усіх класів активів <span aria-hidden="true">→</span></a>
   </section>
 
-  <section id="gold">
+  <section id="gold" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>Біткоїн і золото. <span>Унцій золота за один біткоїн, дохідність з 2016 року.</span></h2></div></div>
     <div class="bd-macro bd-gold" data-g="gold">
       <div class="bd-m" data-k="g-ytd"><span class="bd-l">З початку року</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Біткоїн · золото</span></div><div class="bd-m" data-k="g-1y"><span class="bd-l">1 рік</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">Біткоїн · золото</span></div><div class="bd-m" data-k="g-ratio"><span class="bd-l">1 BTC у золоті</span><b class="bd-v"><span class="sk" aria-hidden="true"></span></b><span class="bd-s">GC=F</span></div>
@@ -189,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section id="charts">
     <div class="sec-head one"><div class="sec-copy"><h2>Графіки та інструменти. <span>Детальніше.</span></h2></div></div>
-    <div class="bd-charts"><a class="bd-chart" href="btc-monthly-returns.html"><b>Місячна прибутковість</b><span>Прибутковість Біткоїна за кожен місяць з 2010 року.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="asset-returns.html"><b>Прибутковість активів</b><span>Біткоїн проти 22 класів активів, рік за роком.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="bitcoin-vs-gold.html"><b>Біткоїн vs золото</b><span>Золото, срібло, нафта і мідь рік за роком, плюс співвідношення BTC/золото.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="../trading-volume.html"><b>Обсяг торгів</b><span>Щоденний спотовий обсяг на основних біржах.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="../fear-greed.html"><b>Страх і жадібність</b><span>Індекс настроїв ринку, оновлюється щодня.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="rainbow-chart.html"><b>Райдужний графік</b><span>Довгострокові цінові смуги в логарифмічному масштабі.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="ma-200w.html"><b>200-тижнева ковзна середня</b><span>Ціна відносно її 200-тижневої середньої.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="root-cycles.html"><b>Кореневі цикли</b><span>Цикли халвінгу на графіку з кореневою шкалою.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart" href="btc-dominance.html"><b>Частка Біткоїна на ринку</b><span>Частка Біткоїна в загальній капіталізації крипторинку, для контексту.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool" href="retirement-calculator.html"><em>Інструмент</em><b>Пенсійний калькулятор</b><span>Як щомісячний план купівлі Біткоїна може накопичуватися з часом.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
+    <div class="bd-charts"><a class="bd-chart bd-acc-teal" href="btc-monthly-returns.html"><em>Дані</em><b>Місячна прибутковість</b><span>Прибутковість Біткоїна за кожен місяць з 2010 року.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-purple" href="asset-returns.html"><em>Дані</em><b>Прибутковість активів</b><span>Біткоїн проти 22 класів активів, рік за роком.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-yellow" href="bitcoin-vs-gold.html"><em>Дані</em><b>Біткоїн vs золото</b><span>Золото, срібло, нафта і мідь рік за роком, плюс співвідношення BTC/золото.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="../trading-volume.html"><em>Дані</em><b>Обсяг торгів</b><span>Щоденний спотовий обсяг на основних біржах.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-pink" href="../fear-greed.html"><em>Дані</em><b>Страх і жадібність</b><span>Індекс настроїв ринку, оновлюється щодня.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-indigo" href="rainbow-chart.html"><em>Дані</em><b>Райдужний графік</b><span>Довгострокові цінові смуги в логарифмічному масштабі.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-green" href="ma-200w.html"><em>Дані</em><b>200-тижнева ковзна середня</b><span>Ціна відносно її 200-тижневої середньої.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-orange" href="root-cycles.html"><em>Дані</em><b>Кореневі цикли</b><span>Цикли халвінгу на графіку з кореневою шкалою.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-acc-blue" href="btc-dominance.html"><em>Дані</em><b>Частка Біткоїна на ринку</b><span>Частка Біткоїна в загальній капіталізації крипторинку, для контексту.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a><a class="bd-chart bd-tool bd-acc-teal" href="retirement-calculator.html"><em>Інструмент</em><b>Пенсійний калькулятор</b><span>Як щомісячний план купівлі Біткоїна може накопичуватися з часом.</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
   </section>
 
   <section id="brief">
@@ -240,7 +240,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </main>
 <script type="application/json" id="bdI18n">{"updated": "Оновлено", "fees_equal": "Комісії: {n} sat/vB для всіх пріоритетів", "stale": "Із затримкою", "unavailable": "Дані недоступні", "retry": "Повторити", "n_block_ago": "видобуто {t} тому", "n_unknown": "Невідомий пул", "s_halving_sub": "блоків залишилось · орієнтовно {d}", "p_chart": "Ціна за останні {n} днів", "p_sats": "Сатоші за $1", "p_sats_eur": "Сатоші за €1", "u_s": "с", "u_min": "хв", "u_h": "год", "u_days": "днів", "u_years": "років", "locale": "uk-UA", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json", "goldRaw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "goldLocal": "../data/bitcoin-vs-commodities.json", "g_oz": "унц."}</script>
 <script src="../btc-data.js?v=3" defer></script>
-<script src="../site-v2.js?v=7" defer></script>
+<script src="../site-v2.js?v=8" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

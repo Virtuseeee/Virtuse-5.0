@@ -251,7 +251,7 @@ def build(L):
     out += '''<body class="page-buy page-fee page-pf page-stack page-ret no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3 bd-acc-teal" id="top">
 
   <!-- 1. HERO + the calculator -->
   <div class="buy-hero2 pf-hero">
@@ -293,7 +293,9 @@ def build(L):
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
            brief=F.brief_card(L, t, 'retirement_brief'), rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'],
            foot=foot, i18n=i18n)
-    sc = C.scripts('/')
+    # Bitcoin Data v3 accent system (handover 2026-10-25): accent = this page's card on the hub; newer site-v2 css/js
+    out = re.sub(r'site-v2\.css\?v=\d+', 'site-v2.css?v=15', out)
+    sc = C.scripts('/', '8')
     out += sc.replace('<script src="/site-v2.js', '<script src="/retirement-calc.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     check_dashes(out, strings, L)

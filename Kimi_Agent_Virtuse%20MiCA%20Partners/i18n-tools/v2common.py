@@ -132,11 +132,11 @@ def finalize(out, page_path):
     return csp_tight.tighten(out, page_path)
 
 
-def scripts(root):
-    return '''<script src="{r}site-v2.js?v=7" defer></script>
+def scripts(root, js_version='7'):
+    return '''<script src="{r}site-v2.js?v={v}" defer></script>
 <script src="{r}consultation-widget.js?v=20261007b" defer></script>
 <script src="{r}concierge-launcher.js" defer></script>
 {cf}
 </body>
 </html>
-'''.format(r=root, cf=cf_analytics.SNIPPET)
+'''.format(r=root, v=js_version, cf=cf_analytics.SNIPPET)
