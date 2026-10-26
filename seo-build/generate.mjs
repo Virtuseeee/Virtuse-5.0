@@ -68,6 +68,8 @@ function hasSources(id) {
 
 const ORIGIN = resolveSiteOrigin(meta.site.origin);
 const AS_OF = seoData.asOf;
+// Year for the 2026-style search titles (titleHook in seo-data.json / meta.taxSk); tax figures stay "as of" AS_OF.
+const AS_OF_YEAR = String(AS_OF).slice(0, 4);
 const LASTMOD = seoData.lastmod;
 const CTAS = seoData.moduleCtas;
 const COUNTRIES = seoData.countries.filter((c) => hasSources(c.id));
@@ -666,6 +668,8 @@ function taxFaqsEn(c) {
       q: `How do you file bitcoin taxes in ${theEn(c)}?`,
       a: `${c.filing}. ${c.note}`
     },
+    // optional per-country questions (seo-data.json extraFaq), worded only from the fields above
+    ...(c.extraFaq || []),
     {
       q: 'Does Virtuse hold my bitcoin or file my tax return?',
       a: `No. Virtuse never holds your keys. KYC and onboarding happen on each partner’s regulated platform. Use the Tax & Inheritance Agent to compare the ${N}-country overview, then file with a qualified advisor.`
@@ -962,8 +966,10 @@ ${faqHtml(faqs, 'FAQ')}
 `;
   pushPage({
     relFile: enRel, lang: 'en', guide: true,
-    title: assertTitle(`Bitcoin tax in ${theEn(c)} (${asOfEn})`),
-    description: assertDescription(descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`, checkedSentence('en'), 'Not tax advice.')),
+    // titleHook / seoDescription (seo-data.json) = search-led title and meta for countries with GSC demand; the rest keep the template
+    title: assertTitle(c.titleHook ? `Bitcoin Tax in ${theEn(c)} ${AS_OF_YEAR}: ${c.titleHook} | Virtuse` : `Bitcoin tax in ${theEn(c)} (${asOfEn})`),
+    description: assertDescription(c.seoDescription ? `${c.seoDescription} ${checkedSentence('en')} Not tax advice.`
+      : descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -2064,8 +2070,8 @@ for (const c of COUNTRIES) {
   ], 'sk', 'guide');
   pushPage({
     relFile, lang: 'sk', guide: true,
-    title: assertTitle(`Dane z Bitcoinu ${inN} (${asOfSk})`),
-    description: assertDescription(`Dane z Bitcoinu ${inN} (${asOfSk}): ${gainFull(t)}. Nejde o daňové poradenstvo.`),
+    title: assertTitle(t.titleHook ? `Daň z Bitcoinu ${inN} ${AS_OF_YEAR}: ${t.titleHook} | Virtuse` : `Dane z Bitcoinu ${inN} (${asOfSk})`),
+    description: assertDescription(t.seoDescription || `Dane z Bitcoinu ${inN} (${asOfSk}): ${gainFull(t)}. Nejde o daňové poradenstvo.`),
     h1: `Dane z Bitcoinu ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
