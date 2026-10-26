@@ -314,14 +314,3 @@
   setTimeout(function () { document.querySelectorAll('.rv:not(.in)').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight * 1.5) el.classList.add('in'); }); }, 1200);
   } catch (err) { root.classList.remove('anim'); }
 })();
-
-/* Verdict card ("Get the full Verdict") on the SEO guides and the retirement calculator:
-   loads vb-profile.js (verdict-architecture §7). Tool shells and Verdict load it themselves. */
-(function () {
-  if (window.VBProfile || document.querySelector('script[src*="vb-profile.js"]')) return;
-  if (!document.querySelector('main .seo, #rc-form')) return;
-  var s = document.createElement('script');
-  s.src = '/vb-profile.js?v=1';
-  s.setAttribute('data-tool', (location.pathname.replace(/^\/(sk|cs|de|fr|es|pl|hu|uk|ru)\//, '/').split('/')[1] || 'page').replace(/\.html$/, ''));
-  document.head.appendChild(s);
-})();
