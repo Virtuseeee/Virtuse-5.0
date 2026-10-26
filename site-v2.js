@@ -207,7 +207,7 @@
   var CARDS = '.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .promises > *, .ask-side > div, .audit-card, #buy .panel, .demo, .chat-panel, .code';
 
   // spotlight works with or without motion
-  document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card').forEach(function (c) {
+  document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card, .acc .seo .seo-tools a, .acc .seo .related a').forEach(function (c) {
     c.classList.add('spot');
     // .pm = the pointer really moved over the card: no glow on a card that a scroll or anchor jump slid under a still cursor
     c.addEventListener('pointermove', function (e) { c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });

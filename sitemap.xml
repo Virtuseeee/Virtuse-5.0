@@ -1532,7 +1532,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/btc-dominance.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-dominance.html"/>
@@ -1617,7 +1617,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/btc-dominance.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-dominance.html"/>
@@ -1702,7 +1702,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ma-200w.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ma-200w.html"/>
@@ -1787,7 +1787,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/ma-200w.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ma-200w.html"/>
@@ -3508,7 +3508,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/asset-returns.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/asset-returns.html"/>
@@ -3678,7 +3678,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/btc-monthly-returns.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
@@ -3763,7 +3763,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/btc-monthly-returns.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
@@ -7591,7 +7591,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-tax/slovakia/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
@@ -7795,7 +7795,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-tax/croatia/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/croatia/"/>
@@ -7829,7 +7829,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-tax/romania/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/romania/"/>
@@ -8301,7 +8301,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/bitcoin-dane/slovensko/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax/slovakia/"/>
@@ -10938,7 +10938,7 @@
 <!-- STORIES-HUBS:START -->
   <url>
     <loc>https://virtuse.com/stories/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -10950,7 +10950,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/3/</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-15</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/4/</loc>
@@ -10974,7 +10974,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -11196,10 +11196,6 @@
   <url>
     <loc>https://virtuse.com/sk/stories/banks-adopt-bitcoin-for-all-wrong-reasons/</loc>
     <lastmod>2026-03-11</lastmod>
-  </url>
-  <url>
-    <loc>https://virtuse.com/sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch/</loc>
-    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven/</loc>
@@ -11952,10 +11948,6 @@
   <url>
     <loc>https://virtuse.com/stories/banks-adopt-bitcoin-for-all-wrong-reasons/</loc>
     <lastmod>2021-08-02</lastmod>
-  </url>
-  <url>
-    <loc>https://virtuse.com/stories/banks-fall-to-passwords-bitcoin-falls-to-people/</loc>
-    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits/</loc>
