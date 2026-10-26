@@ -545,8 +545,10 @@
     setService(desk);
     resolveSharePath(post).then(function (path) {
       setupShare(title, path);
-      // article.html?slug=…: point the canonical at the story's static page once it exists
-      if (path && !STORY) { var c = document.querySelector('link[rel="canonical"]'); if (c) c.href = 'https://virtuse.com/' + path; }
+      // article.html?slug=…: point the canonical at the story's static page once it exists,
+      // else at the WordPress original (the server sends noindex for this temporary copy)
+      var c = !STORY && document.querySelector('link[rel="canonical"]');
+      if (c) c.href = path ? 'https://virtuse.com/' + path : post.link;
     });
   }
 
@@ -696,14 +698,23 @@
       });
   }
 
+  // article.html?slug=… is what the server answers while a story has no static page yet
+  // (seo-ops/virtuse.com.htaccess): render the WordPress post. A slug WordPress does not
+  // know either goes to the stories hub of the requested language, as the server did
+  // before 2026-10-26. Story pages and network errors keep the error box.
+  var askedLang = langCode;
+  function notFound() {
+    if (STORY) { showError(); return; }
+    location.replace(ROOT + (askedLang === 'sk' || askedLang === 'ru' ? askedLang + '/' : '') + 'stories/');
+  }
   fetchAndRender().then(function (found) {
     if (found) return;
     // Not translated yet: fall back to the English original.
     if (L.lang !== 'en') {
       langCode = 'en'; L = LANGS.en; localizeChrome();
-      return fetchAndRender().then(function (ok) { if (!ok) showError(); });
+      return fetchAndRender().then(function (ok) { if (!ok) notFound(); });
     }
-    showError();
+    notFound();
   }).catch(showError);
 })();
 
