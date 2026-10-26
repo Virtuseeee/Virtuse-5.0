@@ -258,19 +258,31 @@ def article_rules(ps):
         'RewriteCond %{ENV:VB_SLUG} .',
         'RewriteCond %{DOCUMENT_ROOT}/sk/stories/%{ENV:VB_SLUG}/index.html -f',
         f'RewriteRule ^{L}article\\.html$ {HOST}/sk/stories/%{{ENV:VB_SLUG}}/? [R=301,L]',
-        '# 4. any slug without a story page → the stories hub of its language (sk → /sk/stories/,',
-        '#    ru → /ru/stories/, everything else → /stories/), query string dropped. Posts newer',
-        '#    than the last stories build land on the hub until the daily Stories build runs.',
-        'RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
-        'RewriteCond %{ENV:VB_AL} ^sk$',
-        f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_SK}}? [R=301,L]']
+        '# 4. old WordPress posts that never got a story page (wp-posts-inventory.csv: Crypto News',
+        '#    and other old categories) → the stories hub of the language (sk → /sk/stories/,',
+        '#    ru → /ru/stories/, else /stories/), query string dropped, as since 2026-10-14.']
+    old = sorted({p['slug'] for p in ps
+                  if p['lang'] != 'ru' and not p['story'] and re.fullmatch(r'[A-Za-z0-9-]+', p['slug'])})
+    for line in chunks('^', old, '$'):
+        lines += [f'RewriteCond %{{ENV:VB_SLUG}} {line}', f'RewriteRule ^{L}article\\.html$ - [E=VB_OLD:1]']
+    lines += ['RewriteCond %{ENV:VB_OLD} =1', 'RewriteCond %{ENV:VB_AL} ^sk$',
+              f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_SK}}? [R=301,L]']
     if exists('/ru/stories/index.html'):
-        lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
-                  'RewriteCond %{ENV:VB_AL} ^ru$',
+        lines += ['RewriteCond %{ENV:VB_OLD} =1', 'RewriteCond %{ENV:VB_AL} ^ru$',
                   f'RewriteRule ^{L}article\\.html$ {HOST}/ru/stories/? [R=301,L]']
-    lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
+    lines += ['RewriteCond %{ENV:VB_OLD} =1',
               f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_EN}}? [R=301,L]',
-              '# 5. /xx/article.html without a slug (no such file) → that language\'s blog hub.',
+              '# 5. any other slug without a story page here: a post newer than the last Stories upload,',
+              '#    or no post at all. /article.html?slug=S is served as the reader, which renders the',
+              '#    WordPress post and sends slugs WordPress does not know on to the stories hub',
+              '#    (article.js); the headers block marks it noindex. /xx/article.html?slug=S (no such',
+              '#    file) → 302 to the reader with lang=xx (302: once the story page exists, rules 1-3',
+              '#    answer directly). 2026-10-14 to 2026-10-26 these went to the hub, so new posts did too.',
+              'RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
+              r'RewriteRule ^article\.html$ - [L]',
+              'RewriteCond %{QUERY_STRING} (?:^|&)(slug=[^&]+)',
+              f'RewriteRule ^({LANG_ALT})/article\\.html$ {HOST}/article.html?%1&lang=$1 [NE,R=302,L]',
+              '# 6. /xx/article.html without a slug (no such file) → that language\'s blog hub.',
               '#    The bare root /article.html (no slug) stays the reader page (200).']
     for lg in LANGS:
         if exists(f'/{lg}/article.html'): continue
@@ -423,29 +435,32 @@ def old_paths(rows, ps):
         ('/uk/article.html?slug=what-is-a-bitcoin-treasury&lang=uk', '/stories/what-is-a-bitcoin-treasury/'),
         ('/sk/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin', '/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/'),
         ('/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin&lang=sk', '/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/'),
-        ('/fr/article.html?slug=no-such-story-xyz&lang=fr', hub_static('')),
-        ('/sk/article.html?slug=no-such-story-xyz', hub_static('sk')),
-        ('/article.html?slug=no-such-story-xyz', hub_static('')),
-        ('/article.html?slug=no-such-story-xyz&lang=en', hub_static('')),
-        ('/article.html?slug=no-such-story-xyz&lang=sk', hub_static('sk')),
-        ('/article.html?slug=no-such-story-xyz&lang=ru', '/ru/stories/'),
-        ('/article.html?slug=no-such-story-xyz&lang=de', hub_static('')),
-        ('/de/article.html?slug=no-such-story-xyz', hub_static('')),
-        ('/de/article.html?slug=no-such-story-xyz&lang=de', hub_static('')),
-        ('/ru/article.html?slug=no-such-story-xyz', '/ru/stories/'),
-        ('/ru/article.html?slug=%25d0%25bd%25d0%25b5%25d1%2582&lang=ru', '/ru/stories/'),
-        ('/a/no-such-story-xyz', hub_static('')),
-        ('/sk/a/no-such-story-xyz/', hub_static('sk')),
+        ('/fr/article.html?slug=no-such-story-xyz&lang=fr', '/article.html?slug=no-such-story-xyz&lang=fr'),
+        ('/sk/article.html?slug=no-such-story-xyz', '/article.html?slug=no-such-story-xyz&lang=sk'),
+        ('/de/article.html?slug=no-such-story-xyz', '/article.html?slug=no-such-story-xyz&lang=de'),
+        ('/ru/article.html?slug=%25d0%25bd%25d0%25b5%25d1%2582&lang=ru', '/article.html?slug=%d0%bd%d0%b5%d1%82&lang=ru'),
+        ('/a/no-such-story-xyz', '/article.html?slug=no-such-story-xyz'),
+        ('/sk/a/no-such-story-xyz/', '/article.html?slug=no-such-story-xyz&lang=sk'),
         ('/a/what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
         ('/it/article.html?slug=what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
     ):
-        add(s, 301, t)
+        add(s, 302 if t.startswith('/article.html?') else 301, t)
+    # no story page here → the reader answers (200, X-Robots-Tag noindex); article.js renders
+    # the WordPress post or sends a slug that exists nowhere on to the stories hub
+    for s in ('/article.html?slug=no-such-story-xyz', '/article.html?slug=no-such-story-xyz&lang=en',
+              '/article.html?slug=no-such-story-xyz&lang=sk', '/article.html?slug=no-such-story-xyz&lang=ru',
+              '/article.html?slug=no-such-story-xyz&lang=de', '/article.html?slug=a-story-newer-than-the-last-build'):
+        add(s, 200, '')
+    old_en = sorted(p['slug'] for p in ps if p['lang'] == 'en' and not p['story'] and re.fullmatch(r'[a-z0-9-]+', p['slug']))
+    old_sk = sorted(p['slug'] for p in ps if p['lang'] == 'sk' and not p['story'] and re.fullmatch(r'[a-z0-9-]+', p['slug']))
+    for s, t in ((f'/article.html?slug={old_en[0]}', hub_static('')), (f'/article.html?slug={old_en[-1]}&lang=de', hub_static('')),
+                 (f'/article.html?slug={old_sk[0]}&lang=sk', hub_static('sk')), (f'/sk/article.html?slug={old_sk[-1]}', hub_static('sk'))):
+        add(s, 302 if t.startswith('/article.html?') else 301, t)
     for p in [p for p in ps if p['lang'] == 'ru'][:3]:
         dbl = p['raw'].replace('%', '%25')
         add(f'/ru/article.html?slug={dbl}&lang=ru', 301, p['story'])
         add(f'/article.html?slug={dbl}&lang=ru', 301, p['story'])
         add(f'/article.html?slug={p["raw"].upper()}&lang=ru', 301, p['story'])
-    add('/article.html?slug=a-story-newer-than-the-last-build', 301, hub_static(''))
     add('/article.html', 200, '')
     # must stay 200 / 404
     for s in ('/', '/index.html', '/bots.html', '/blog-sk.html', '/blog.html', '/sk/about.html',
