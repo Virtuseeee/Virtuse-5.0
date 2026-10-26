@@ -33,8 +33,8 @@ PAGES = ['faq.html', 'fear-greed.html', 'ma-200w.html', 'rainbow-chart.html', 'r
          'privacy-policy.html', 'terms-and-conditions.html', 'aml-compliance.html']
 DATA_PAGES = set(PAGES[1:9])            # live under Learn > Bitcoin Data
 LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru']
-CSS_VERSION = '7'
-DATA_CSS_VERSION, DATA_JS_VERSION = '15', '8'   # Bitcoin Data v3 accent system (handover 2026-10-25)
+CSS_VERSION = DATA_CSS_VERSION = C.csp_tight.speed.SITE_CSS_V   # one sitewide cache-buster (i18n-tools/speed.py)
+DATA_JS_VERSION = C.csp_tight.speed.SITE_JS_V
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'bitcoin-data'))
 from build_bitcoin_data import CHART_ACC     # each data page carries the accent of its card on the hub
 SRC = os.path.join(HERE, 'src')
@@ -236,7 +236,7 @@ def build(L, page):
     body_tag = re.search(r'<body[^>]*>', old).group(0)
     out = head + body_tag + '\n' + nav + '\n\n<main class="%s" id="top">\n  ' % main_cls + hero + '\n  ' + sub + \
         '\n  <div class="legacy">\n' + content + '\n  </div>\n' + after + '\n  ' + C.brief(L, lambda k: T[k], root, 'legacy_' + page.split('.')[0].replace('-', '_')) + \
-        '\n</main>\n\n' + foot + '\n' + '\n'.join(page_js) + '\n' + C.scripts(root, DATA_JS_VERSION if data else '7')
+        '\n</main>\n\n' + foot + '\n' + '\n'.join(page_js) + '\n' + C.scripts(root)
     out = C.fix_links(L, out)
     # fear-greed / trading-volume exist in 7 languages only: a language-menu entry for a missing
     # translation goes to that language's Bitcoin Data page instead of a 404.

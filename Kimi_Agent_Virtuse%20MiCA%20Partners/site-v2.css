@@ -1913,3 +1913,32 @@ html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margi
 /* ECOSYSTEM · Promote: after a submit attempt, mark the fields that still block it */
 .eco-form.tried input:invalid:not([type=checkbox]):not([type=radio]), .eco-form.tried select:invalid, .eco-form.tried textarea:invalid { border-color: #f0b072; }
 .eco-form.tried .eco-check input:invalid { outline: 2px solid #f0b072; outline-offset: 2px; }
+
+/* ===== DESIGN-ALIGN Batch A Part 1 (2026-10-26): shared base for the Services accent system =====
+   One cache-buster for this file and site-v2.js on every page: SITE_CSS_V / SITE_JS_V in i18n-tools/speed.py
+   (seo-build/lib/html.mjs imports the same numbers; i18n-tools/site_v2_version.py --check finds strays).
+
+   ACCENT MAP (--c on <main>, a section or the card; orange is one accent, never a page default)
+     live      treasury indigo · lending purple · mining yellow · tax + tax-agent blue · secure teal · bots pink
+               ecosystem: one per category (.eco-acc-*, seo-build/ecosystem.mjs)
+               Bitcoin Data hub: price orange · network blue · supply yellow · vs assets purple · vs gold yellow
+               chart/tool pages = their hub card (.bd-acc-*, CHART_ACC in i18n-tools/bitcoin-data/build_bitcoin_data.py):
+               monthly returns teal · asset returns purple · vs gold yellow · trading volume blue · fear & greed pink ·
+               rainbow indigo · 200 WMA green · root-scale cycles orange · BTC dominance blue · retirement teal
+     proposed  (Part 2, shown on staging, not final until Ras approves)
+               loan orange · stacking green · concierge pink or teal (not next to secure in the nav) ·
+               buy-bitcoin green · cfo orange · operator indigo/purple variant
+   Classes: .pcard2.<accent>, .eyebrow.<accent>, .hpanel.<accent>, .eco-acc-<accent>, .bd-acc-<accent>.
+
+   LEGACY CARD ALIAS: .gcard, .pf-card, .lg-card get the pcard2 look (flat card at rest, metallic top edge,
+   cursor spotlight bound in site-v2.js, accent border + glow when the pointer really moves over the card).
+   On a page with no accent (--c unset) the hover glow stays neutral. .tile (cfo) and .status-card (chart
+   pages) are not here: cfo does not load site-v2, chart pages use the Bitcoin Data v3 panels above. */
+body :is(.gcard, .pf-card, .lg-card) { position: relative; border-color: transparent; background-color: var(--card); transition: background-color .2s, border-color .2s, box-shadow .2s; }
+body :is(.gcard, .pf-card, .lg-card)::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
+body :is(.gcard, .pf-card, .lg-card).pm:hover, body :is(.gcard, .pf-card):focus-visible { background-color: var(--card-hover);
+  border-color: color-mix(in srgb, var(--c, #c9d1d9) 35%, transparent); box-shadow: 0 18px 50px -28px color-mix(in srgb, var(--c, #c9d1d9) 55%, transparent); }
+@media (hover: none) { body :is(.gcard, .pf-card, .lg-card):hover { background-color: var(--card); border-color: transparent; box-shadow: none; } }
+/* the cursor spotlight follows the pointer: off for visitors who ask for reduced motion (all pages) */
+@media (prefers-reduced-motion: reduce) { .spot::after { display: none; } body :is(.gcard, .pf-card, .lg-card) { transition: none; } }

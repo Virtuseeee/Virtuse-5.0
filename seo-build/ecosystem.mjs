@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, jsonLd, nbspFr, SITE_DIR_NAME, DEFAULT_ORIGIN } from './lib/util.mjs';
-import { SITE_V2, CF_SNIPPET } from './lib/html.mjs';
+import { SITE_V2, SITE_CSS_V, CF_SNIPPET } from './lib/html.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(HERE, '..', SITE_DIR_NAME);
@@ -526,7 +526,7 @@ function schemas(p, l) {
 // ---------- page ----------
 // No page CSS: everything comes from /site-v2.min.css (the "ECOSYSTEM" block at the end of
 // site-v2.css builds on the Services eyebrow/pcard2/hpanel accent system).
-const CSS_V = '14';
+const CSS_V = SITE_CSS_V;
 
 // Two-line Services H1: white line (the page H1) + grey line (the accent, as its own sentence).
 function heroH1(t) {

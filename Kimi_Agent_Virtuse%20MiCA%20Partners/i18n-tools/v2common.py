@@ -32,7 +32,7 @@ def eur(n, L):
     return B.num(int(round(n)), L) + ' €'
 
 
-def head(L, old, home, root, version='5'):
+def head(L, old, home, root, version=csp_tight.speed.SITE_CSS_V):
     h = old[:old.index('</head>')]
     h = re.sub(r'<style\b.*?</style>\s*', '', h, flags=re.S)
     h = re.sub(r'<link rel="(?:stylesheet|preconnect)"[^>]*>\s*', '', h)
@@ -132,7 +132,7 @@ def finalize(out, page_path):
     return csp_tight.tighten(out, page_path)
 
 
-def scripts(root, js_version='7'):
+def scripts(root, js_version=csp_tight.speed.SITE_JS_V):
     return '''<script src="{r}site-v2.js?v={v}" defer></script>
 <script src="{r}consultation-widget.js?v=20261007b" defer></script>
 <script src="{r}concierge-launcher.js" defer></script>

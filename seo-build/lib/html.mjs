@@ -11,7 +11,11 @@ import {
 // v2 nav, footer, Brief card and site-v2.js strings per language, exported from the v2
 // homepages by i18n-tools/seo_chrome.py (committed, so builds stay deterministic).
 const CHROME_V2 = JSON.parse(fs.readFileSync(new URL('../data/chrome-v2.json', import.meta.url), 'utf8'));
-export const SITE_V2 = '7';
+// ONE cache-buster for the shared site-v2 files on every page; same numbers as SITE_CSS_V / SITE_JS_V in
+// Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/speed.py (design-align Batch A Part 1, 2026-10-26).
+export const SITE_CSS_V = '16';
+export const SITE_JS_V = '9';
+export const SITE_V2 = SITE_JS_V;
 // Cloudflare Web Analytics (cookieless, no consent, never on staging). Same string as
 // SNIPPET in Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/cf_analytics.py; its --check compares the pages.
 export const CF_SNIPPET = `<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>`;
@@ -247,7 +251,7 @@ ${hreflangTags}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.css?v=${SITE_V2}">
+<link rel="stylesheet" href="/site-v2.min.css?v=${SITE_CSS_V}">
 <style>${CSS}</style>
 ${extraHead}
 <script type="application/ld+json">${jsonLd(graph)}</script>

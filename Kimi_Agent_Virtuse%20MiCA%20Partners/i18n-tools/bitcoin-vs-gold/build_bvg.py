@@ -367,8 +367,7 @@ def build(L):
            embed=embed_section(L, page), brief=F.brief_card(L, t, 'bvg_brief'), relh2a=t['rel_h2_a'], relh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot,
            i18n=json.dumps(strings, ensure_ascii=False).replace('</', '<\\/'), cfg=json.dumps(cfg).replace('</', '<\\/'))
     # Bitcoin Data v3 accent system (handover 2026-10-25): accent = this page's card on the hub; newer site-v2 css/js
-    out = re.sub(r'site-v2\.css\?v=\d+', 'site-v2.css?v=15', out)
-    sc = C.scripts('/', '8')
+    sc = C.scripts('/')   # css/js cache-busters: one sitewide value, set in C.finalize (speed.py)
     out += sc.replace('<script src="/site-v2.js', '<script src="/bitcoin-vs-gold.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     open(shell, 'w').write(C.finalize(out, shell))

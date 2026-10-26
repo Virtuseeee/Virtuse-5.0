@@ -13,7 +13,7 @@ import v2common as C
 AR_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json'
 GOLD_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json'
 SKEL = '<span class="sk" aria-hidden="true"></span>'
-CSS_VERSION, JS_VERSION = '15', '8'   # site-v2.min.css / site-v2.js cache-busters (v3 accent system, 2026-10-25)
+CSS_VERSION, JS_VERSION = C.csp_tight.speed.SITE_CSS_V, C.csp_tight.speed.SITE_JS_V   # one sitewide cache-buster (i18n-tools/speed.py)
 # accent per chart/tool page (Services colours); each sub-page carries the same accent (legacy/build_legacy.py PAGE_ACC)
 CHART_ACC = {'btc-monthly-returns.html': 'teal', 'asset-returns.html': 'purple', 'bitcoin-vs-gold.html': 'yellow', 'trading-volume.html': 'blue',
              'fear-greed.html': 'pink', 'rainbow-chart.html': 'indigo', 'ma-200w.html': 'green', 'root-cycles.html': 'orange',
