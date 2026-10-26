@@ -7,6 +7,7 @@
   // BEGIN PARTNER HOSTS (generated)
   var HOSTS = {
     "21bitcoin.app.link": ["21bitcoin", "buy"],
+    "a.umbrel.com": ["Umbrel", "custody"],
     "abundantmines.com": ["Abundant Mines", "mining"],
     "affil.trezor.io": ["Trezor", "custody"],
     "app.blockpit.io": ["Blockpit", "tax"],
@@ -29,6 +30,7 @@
     "rewards.blockstream.com": ["Blockstream", "custody"],
     "shop.ledger.com": ["Ledger", "custody"],
     "shop.powermining.io": ["PowerMining", "mining"],
+    "solosatoshi.com": ["Solo Satoshi", "mining"],
     "sygnum.com": ["Sygnum", "treasury"],
     "unchained.com": ["Unchained", "custody"]
   };
