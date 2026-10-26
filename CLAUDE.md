@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-26) — New posts open as the article before the production upload (branch `fix/missing-story-fallback`, **not deployed**)
+
+- Bug: since the 14 Oct SEO fix, `article.html?slug=<new post>` 301'd to the stories hub until the Stories build was uploaded to production (EN 15276 / SK 15278 on 26 Oct). Chosen fix (c) of three: the reader already renders WordPress posts, so the server now serves it instead of the hub. (a) WordPress original = old design, off-site, 404 for junk; (b) listing links = only fixes internal links, not emails/shares.
+- `.htaccess` (`build_redirects.py` step 4–5): story page exists → 301 as before; old post from `wp-posts-inventory.csv` without a story page → hub 301 as before; any other slug → reader 200 + `X-Robots-Tag: noindex, follow`; `/a/<slug>` and `/xx/article.html?slug=` → 302 to the reader. `article.js`: unknown slug → `location.replace` to the hub; canonical → WordPress original while no story page exists. `check_redirects.py` accepts expected 302.
+- Verified: local Apache 1084 paths incl. legacy, 0 failures; browser EN/SK post without story renders, unknown slug → /stories/ or /sk/stories/.
+- Deploy = merge, wait for the Stories Action it triggers, `deploy_site.sh` (article.js), then the .htaccess by hand (download live, diff with the previous repo copy, put). Steps in the PR.
+
 ## Session status (2026-10-26) — Brief nav slimmed (handover "news-nav-slim"), Data → Bitcoin Data everywhere; **live on production** (`deploy_site.sh 5d834de1 16368e3a`, DEPLOY OK)
 
 - news.html nav: Pulse · Latest issues · Bitcoin Data · Virtuse hub · Get the Brief. Data desk = label "Bitcoin data" + one "Open Bitcoin Data →" button + treasury ledger (`id="data-desk"` kept). Footer: Archive · Bitcoin Data · Virtuse CFO · Hub · Unsubscribe. `.data-tablist` CSS removed, news.css `?v=20261026nav`.
