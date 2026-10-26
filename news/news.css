@@ -798,43 +798,7 @@ ul { list-style: none; }
   overflow: hidden;
 }
 .data-desk .desk-label { margin-bottom: 8px; }
-.data-tablist {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 6px;
-  border: 0;
-  background: transparent;
-}
-.data-tablist a {
-  appearance: none;
-  margin: 0;
-  width: auto;
-  max-width: 100%;
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: var(--t-scale);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: left;
-  padding: 5px 8px 4px;
-  cursor: pointer;
-  line-height: 1.25;
-  min-height: 0;
-  white-space: nowrap;
-}
-.data-tablist a:hover { color: var(--text); background: var(--bg); }
-.data-tablist a:focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: -1px;
-  z-index: 1;
-}
+.data-desk .desk-cta { align-self: flex-start; margin-bottom: 18px; }
 
 /* —— Treasury ledger (Gazette stamp + compressed bars) —— */
 .treasury-ledger {
