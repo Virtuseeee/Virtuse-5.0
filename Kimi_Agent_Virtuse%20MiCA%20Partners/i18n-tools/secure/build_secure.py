@@ -15,6 +15,8 @@ DEVICES = [
     dict(id='trezor', logo='logo-trezor.png', cls='', price=49, cur='EUR', open=True, url='https://affil.trezor.io/aff_c?offer_id=133&aff_id=846427'),
     dict(id='jade', logo='logo-blockstream.png', cls='', price=65, cur='USD', open=True, url='https://rewards.blockstream.com/qo0khs'),
     dict(id='ledger', logo='logo-ledger.png', cls='invert', price=79, cur='EUR', open=None, url='https://shop.ledger.com/?r=3256467ea813'),
+    # Umbrel Home: a Bitcoin node, not a wallet (says so in its feature cell); price as published for Italy incl. duties/taxes
+    dict(id='umbrel', logo='logo-umbrel.png', cls='', price=479, cur='EUR', open=None, url='https://a.umbrel.com/virtuse'),
 ]
 # Regulated custodians (not self-custody). Card texts are the Treasury page's (treasury/<lang>.json),
 # same facts and links as there; this page only adds the section heading and the caveat.
@@ -136,7 +138,7 @@ def build(L):
   <!-- 3. DEVICES -->
   <section id="partners">
     <div class="sec-head one"><div class="sec-copy"><h2>{ph2a} <span>{ph2b}</span></h2></div></div>
-    <div class="pgrid pgrid3">
+    <div class="pgrid">
 {cards}
     </div>
     <p class="cat-note">{earn}</p>

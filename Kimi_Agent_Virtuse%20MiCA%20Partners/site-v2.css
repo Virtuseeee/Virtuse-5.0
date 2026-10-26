@@ -1140,7 +1140,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .lowest-pill.teal { color: var(--teal); background: rgba(45,212,191,.12); border-color: rgba(45,212,191,.38); }
 .sp-lead { margin: 18px 0 0; max-width: 620px; font-size: 16px; color: var(--muted); }
 .sp-panel { padding: 28px 36px; }
-.sp-row { display: grid; grid-template-columns: minmax(0, 1.9fr) 0.9fr 0.8fr 1.3fr 0.9fr 100px; gap: 16px; align-items: center; min-height: 64px; padding: 10px 4px; border-top: 1px solid rgba(255,255,255,.06); font-size: 14px; }
+.sp-row { display: grid; grid-template-columns: minmax(0, 1.9fr) 0.9fr 0.8fr 1.3fr 0.9fr minmax(100px, auto); gap: 16px; align-items: center; min-height: 64px; padding: 10px 4px; border-top: 1px solid rgba(255,255,255,.06); font-size: 14px; }
 .sp-row.head { min-height: 0; padding: 0 4px 12px; border-top: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
 .sp-row .hc-name img { width: 36px; height: 36px; border-radius: 9px; }
 .sp-row .hc-name b { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -1159,9 +1159,9 @@ img.invert { filter: invert(1); }
 .page-secure .how-log-item:first-child .how-log-dot::before { background: var(--teal); }
 .page-secure .how-log-body p { color: #8b949e; }
 @media (max-width: 960px) {
-  .sp-row { grid-template-columns: minmax(0, 1.6fr) 1fr 0.8fr 100px; }
+  .sp-row { grid-template-columns: minmax(0, 1.6fr) 1fr 0.8fr minmax(100px, auto); }
   .sp-row .sp-feat, .sp-row .sp-open { display: none; }
-  .sp-row .hc-name small { display: block; font-size: 13px; color: var(--muted); }
+  .sp-row .hc-name small { display: block; font-size: 13px; color: var(--muted); white-space: normal; }
 }
 @media (max-width: 640px) {
   .sp-lead { font-size: 15px; margin-top: 12px; }

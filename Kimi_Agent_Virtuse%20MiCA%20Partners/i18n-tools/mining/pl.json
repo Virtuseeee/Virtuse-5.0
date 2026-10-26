@@ -1,5 +1,5 @@
 {
- "eyebrow": "Kopanie Bitcoina · Hosting i sprzęt · 3&nbsp;partnerów",
+ "eyebrow": "Kopanie Bitcoina · Hosting i sprzęt · 4&nbsp;partnerzy",
  "h1": "Kopanie Bitcoina bez własnego centrum danych.",
  "h1_grey": "Partnerzy od hostingu i sprzętu w porównaniu.",
  "lead": "Od Bitaxe na biurku po koparki ASIC hostowane w krajach nordyckich.",
@@ -39,7 +39,7 @@
  "pm3_p": "Adres poola wpisuje się w ustawieniach urządzenia.",
  "pm4_t": "Wypłaty do portfela",
  "pm4_p": "Wypłaty z poola trafiają na adres Bitcoina pod Państwa kontrolą.",
- "p_h2_a": "Wszystkich 3 partnerów.",
+ "p_h2_a": "Wszyscy 4 partnerzy.",
  "p_h2_b": "Hosting, zarządzana infrastruktura i sprzęt do domu.",
  "details": "Szczegóły",
  "q_h2_a": "Pytania.",
@@ -94,5 +94,15 @@
  "pr_powermining_f4": "Do kopania w domu",
  "pr_powermining_cta": "Przejście do Power Mining",
  "aff_note": "Link partnerski – jeśli się Państwo zarejestrują, Virtuse może otrzymać prowizję. Państwa cena się przez to nie zmienia.",
- "aff_how": "Jak zarabiamy"
+ "aff_how": "Jak zarabiamy",
+ "pr_solosatoshi_type": "Domowe koparki open source",
+ "pr_solosatoshi_loc": "USA (Conroe, Teksas)",
+ "pr_solosatoshi_fact": "Bitaxe i NerdQaxe; wysyłka na cały świat",
+ "pr_solosatoshi_base": "USA (Conroe, Teksas)",
+ "pr_solosatoshi_body": "Amerykański sprzedawca domowych koparek open source (Bitaxe, NerdQaxe) z wysyłką na cały świat z Conroe w Teksasie.",
+ "pr_solosatoshi_f1": "Koparki open source Bitaxe i NerdQaxe",
+ "pr_solosatoshi_f2": "Wysyłka na cały świat z Teksasu (USA)",
+ "pr_solosatoshi_f3": "Ponad 60 000 sprzedanych urządzeń (według sprzedawcy)",
+ "pr_solosatoshi_f4": "Poza USA mogą obowiązywać VAT importowy i cło",
+ "pr_solosatoshi_cta": "Przejście do Solo Satoshi"
 }

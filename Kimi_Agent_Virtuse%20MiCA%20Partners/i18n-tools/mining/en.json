@@ -1,5 +1,5 @@
 {
- "eyebrow": "Bitcoin mining · Hosting &amp; hardware · 3&nbsp;partners",
+ "eyebrow": "Bitcoin mining · Hosting &amp; hardware · 4&nbsp;partners",
  "h1": "Mine Bitcoin without a data centre.",
  "h1_grey": "Hosting and hardware partners, compared.",
  "lead": "From a Bitaxe on your desk to ASICs hosted in the Nordics.",
@@ -39,7 +39,7 @@
  "pm3_p": "Enter a mining pool address in the device settings.",
  "pm4_t": "Payouts to your wallet",
  "pm4_p": "Pool payouts go to a Bitcoin address you control.",
- "p_h2_a": "All 3 partners.",
+ "p_h2_a": "All 4 partners.",
  "p_h2_b": "Hosting, managed infrastructure and home hardware.",
  "details": "Details",
  "q_h2_a": "Questions.",
@@ -94,5 +94,15 @@
  "pr_powermining_f4": "For home mining",
  "pr_powermining_cta": "Visit Power Mining",
  "aff_note": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
- "aff_how": "How we earn"
+ "aff_how": "How we earn",
+ "pr_solosatoshi_type": "Open-source home miners",
+ "pr_solosatoshi_loc": "USA (Conroe, Texas)",
+ "pr_solosatoshi_fact": "Bitaxe and NerdQaxe; ships worldwide",
+ "pr_solosatoshi_base": "USA (Conroe, Texas)",
+ "pr_solosatoshi_body": "US retailer of open-source home miners (Bitaxe, NerdQaxe), shipping worldwide from Conroe, Texas.",
+ "pr_solosatoshi_f1": "Bitaxe and NerdQaxe open-source miners",
+ "pr_solosatoshi_f2": "Worldwide shipping from Texas, USA",
+ "pr_solosatoshi_f3": "60,000+ devices sold (as published)",
+ "pr_solosatoshi_f4": "Outside the US, import VAT and duties may apply",
+ "pr_solosatoshi_cta": "Visit Solo Satoshi"
 }
