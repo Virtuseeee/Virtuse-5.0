@@ -1,5 +1,5 @@
 {
- "eyebrow": "Těžba Bitcoinu · Hosting a hardware · 3&nbsp;partneři",
+ "eyebrow": "Těžba Bitcoinu · Hosting a hardware · 4&nbsp;partneři",
  "h1": "Těžte Bitcoin bez vlastního datového centra.",
  "h1_grey": "Partneři pro hosting a hardware v porovnání.",
  "lead": "Od zařízení Bitaxe na vašem stole až po ASIC zařízení hostovaná v severských zemích.",
@@ -39,7 +39,7 @@
  "pm3_p": "V nastavení zařízení zadejte adresu těžebního poolu.",
  "pm4_t": "Výplaty do vaší peněženky",
  "pm4_p": "Výplaty z poolu přicházejí na bitcoinovou adresu, kterou máte pod kontrolou vy.",
- "p_h2_a": "Všichni 3 partneři.",
+ "p_h2_a": "Všichni 4 partneři.",
  "p_h2_b": "Hosting, spravovaná infrastruktura a domácí hardware.",
  "details": "Podrobnosti",
  "q_h2_a": "Otázky.",
@@ -94,5 +94,15 @@
  "pr_powermining_f4": "Pro domácí těžbu",
  "pr_powermining_cta": "Navštívit Power Mining",
  "aff_note": "Partnerský odkaz – pokud se zaregistrujete, Virtuse může získat provizi. Vaše cena se tím nemění.",
- "aff_how": "Jak vyděláváme"
+ "aff_how": "Jak vyděláváme",
+ "pr_solosatoshi_type": "Open-source domácí minery",
+ "pr_solosatoshi_loc": "USA (Conroe, Texas)",
+ "pr_solosatoshi_fact": "Bitaxe a NerdQaxe; doručení do celého světa",
+ "pr_solosatoshi_base": "USA (Conroe, Texas)",
+ "pr_solosatoshi_body": "Americký prodejce open-source domácích minerů (Bitaxe, NerdQaxe) s doručením do celého světa z Conroe v Texasu.",
+ "pr_solosatoshi_f1": "Open-source minery Bitaxe a NerdQaxe",
+ "pr_solosatoshi_f2": "Doručení do celého světa z Texasu (USA)",
+ "pr_solosatoshi_f3": "Více než 60 000 prodaných zařízení (dle prodejce)",
+ "pr_solosatoshi_f4": "Mimo USA může být účtováno dovozní DPH a clo",
+ "pr_solosatoshi_cta": "Navštívit Solo Satoshi"
 }

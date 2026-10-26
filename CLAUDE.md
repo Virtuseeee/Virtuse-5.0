@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-26) — Partners Solo Satoshi (Mining) + Umbrel Home (Custody) added (branch `feat/partners-solosatoshi-umbrel`; NOT yet merged/deployed)
+- mining.html ×10: Solo Satoshi row + card, kind `home`, `https://www.solosatoshi.com/aff/8822/`; eyebrow/"All N partners" 3 → 4 (pl: "4 partnerzy"/"Wszyscy 4 partnerzy"). Keys `pr_solosatoshi_*` in `i18n-tools/mining/<lang>.json`.
+- secure.html ×10: Umbrel Home is a 4th row of `DEVICES` (price €479 as published for Italy incl. duties/taxes; made/open = "Not stated"; feature cell "Your own Bitcoin node (not a wallet)"); `https://a.umbrel.com/virtuse`; device cards grid `pgrid` (2×2). Keys `pr_umbrel_*` in `i18n-tools/secure/<lang>.json`.
+- `data/partners.json` 22 → 24 partners (hosts `solosatoshi.com`, `a.umbrel.com`); `build_partner_click.py` re-run. `build_partner_rail.py` NOT run: it targets the old homepage rail markup (asserts 22 and `co-ticker-1`) — the current homepage ticker ("Our 22 partners") is hand-made in EN index.html and still lists 22.
+- site-v2.css: `.sp-row` last column `minmax(100px, auto)` (pl "Przechodzę" overlapped the price); tablet `.sp-row .hc-name small` wraps. SITE_CSS_V 18 → 19 (speed.py + seo-build/lib/html.mjs, `site_v2_version.py` rewrote 664 pages; seo-build generate+verify clean).
+- Checked in Chrome: 10 languages × 1440/1100/768/375/320 on both pages — no horizontal overflow, no overlapping cells, no clipped text; Inter everywhere.
+- Open: `logo-solosatoshi.png` is a TEMPORARY "SS" placeholder (official logo not downloadable from the session); "22 partners" counts sitewide (homepage ticker + titles + About AS_OF + Partner Finder `concierge.ts`, whose builder exits on a partners.json mismatch) not updated yet.
+- Deploy: merge, then `bash deploy_site.sh <merge>^ <merge>` (range = only this change).
+
 ## Session status (2026-10-26) — New posts open as the article before the production upload (PR #126, merge `ca6eb9c1`; **live on production** — Ras ran `deploy_site.sh ca6eb9c1^ ca6eb9c1` (article.js md5 = main on production and staging) and uploaded `.htaccess` after the live file matched `16368e3a`; `check_redirects.py https://virtuse.com` 931 paths, 0 failures)
 
 - Bug: since the 14 Oct SEO fix, `article.html?slug=<new post>` 301'd to the stories hub until the Stories build was uploaded to production (EN 15276 / SK 15278 on 26 Oct). Chosen fix (c) of three: the reader already renders WordPress posts, so the server now serves it instead of the hub. (a) WordPress original = old design, off-site, 404 for junk; (b) listing links = only fixes internal links, not emails/shares.

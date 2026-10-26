@@ -1,5 +1,5 @@
 {
- "eyebrow": "Minage Bitcoin · Hébergement et matériel · 3&nbsp;partenaires",
+ "eyebrow": "Minage Bitcoin · Hébergement et matériel · 4&nbsp;partenaires",
  "h1": "Minez du Bitcoin sans data center.",
  "h1_grey": "Partenaires d'hébergement et de matériel, comparés.",
  "lead": "D'un Bitaxe sur votre bureau aux ASIC hébergés dans les pays nordiques.",
@@ -39,7 +39,7 @@
  "pm3_p": "Saisissez l'adresse d'un pool de minage dans les réglages de l'appareil.",
  "pm4_t": "Paiements vers votre portefeuille",
  "pm4_p": "Les paiements du pool arrivent sur une adresse Bitcoin que vous contrôlez.",
- "p_h2_a": "Les 3 partenaires.",
+ "p_h2_a": "Les 4 partenaires.",
  "p_h2_b": "Hébergement, infrastructure gérée et matériel domestique.",
  "details": "Détails",
  "q_h2_a": "Questions.",
@@ -94,5 +94,15 @@
  "pr_powermining_f4": "Pour le minage à domicile",
  "pr_powermining_cta": "Visiter Power Mining",
  "aff_note": "Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas.",
- "aff_how": "Comment nous gagnons de l’argent"
+ "aff_how": "Comment nous gagnons de l’argent",
+ "pr_solosatoshi_type": "Mineurs domestiques open source",
+ "pr_solosatoshi_loc": "États-Unis (Conroe, Texas)",
+ "pr_solosatoshi_fact": "Bitaxe et NerdQaxe ; livraison dans le monde entier",
+ "pr_solosatoshi_base": "États-Unis (Conroe, Texas)",
+ "pr_solosatoshi_body": "Revendeur américain de mineurs domestiques open source (Bitaxe, NerdQaxe), livrant dans le monde entier depuis Conroe, au Texas.",
+ "pr_solosatoshi_f1": "Mineurs open source Bitaxe et NerdQaxe",
+ "pr_solosatoshi_f2": "Livraison dans le monde entier depuis le Texas (États-Unis)",
+ "pr_solosatoshi_f3": "Plus de 60 000 appareils vendus (selon le vendeur)",
+ "pr_solosatoshi_f4": "Hors des États-Unis, TVA à l’importation et droits de douane possibles",
+ "pr_solosatoshi_cta": "Visiter Solo Satoshi"
 }
