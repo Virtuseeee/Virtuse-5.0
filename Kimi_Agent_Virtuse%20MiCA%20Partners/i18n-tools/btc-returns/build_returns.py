@@ -103,6 +103,13 @@ RELATED = [
     ('/asset-returns.html', 'Asset returns', 'Bitcoin against stocks, bonds and gold, year by year.'),
     ('/bitcoin-vs-gold.html', 'Bitcoin vs gold', 'Returns against gold, silver and oil since 2016.'),
 ]
+# related block on the heatmap page (handover HANDOVER-seo-quickwins-2026-10-26.md)
+HUB_RELATED = [
+    ('/asset-returns.html', 'Asset returns', 'Bitcoin against stocks, bonds and gold, year by year.'),
+    ('/ma-200w.html', '200-week moving average', "Bitcoin's long-term average price, updated daily."),
+    ('/rainbow-chart.html', 'Rainbow chart', 'Price history on a log scale in nine colour bands.'),
+    ('/stacking.html', 'Stacking Strategist', 'Plan a regular buy (DCA) and compare fees.'),
+]
 DISCLAIMER = ('Prices: CoinMetrics daily Bitcoin reference rate in US dollars. Past performance does not guarantee future results. '
               'Not investment advice. Virtuse never holds your keys or funds.')
 
@@ -126,8 +133,8 @@ def last_day(y, m):
     return '%d-%02d-%02d' % (y, m, calendar.monthrange(y, m)[1])
 
 
-def related():
-    cards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, esc(t), esc(p)) for u, t, p in RELATED)
+def related(items=RELATED):
+    cards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, esc(t), esc(p)) for u, t, p in items)
     return '''<section id="related">
     <div class="sec-head one"><div class="sec-copy"><h2>Related <span>tools and data</span></h2></div></div>
     <div class="gcards">%s</div>
@@ -254,6 +261,14 @@ def build_hub(R):
     for prop in ('og:title', 'twitter:title'):
         attr = 'property' if prop.startswith('og') else 'name'
         s = re.sub(r'(<meta %s="%s" content=")[^"]*' % (attr, prop), lambda m: m.group(1) + esc(title), s, count=1)
+    # meta description with the month facts people search for; same numbers as the tiles and FAQ
+    Mt = H['meta']
+    desc = ('Bitcoin monthly returns since %s in one heatmap, in USD or EUR. %s is the strongest month by median (%s), '
+            'up in %d of %d years. Updated daily.' % (R['firstMonth'][:4], Mt['name'], Mt['med'], Mt['pos'], Mt['n']))
+    if not 140 <= len(desc) <= 160:
+        desc = 'Bitcoin monthly returns for every month since %s as a heatmap, in USD or EUR. Average and median return per month and quarter, updated daily.' % R['firstMonth'][:4]
+    for name, attr in (('description', 'name'), ('og:description', 'property'), ('twitter:description', 'name')):
+        s = re.sub(r'(<meta %s="%s" content=")[^"]*' % (attr, name), lambda m: m.group(1) + esc(desc), s, count=1)
 
     url = '/' + HUB
     faq = H['faq']
@@ -286,9 +301,11 @@ def build_hub(R):
     <div class="sec-head one"><div class="sec-copy"><h2>Questions <span>and answers</span></h2></div></div>
     {faq}
   </section>
+
+  {related}
   <script src="/btc-returns.js?v={v}" defer></script>
 <!-- /V2:AFTER-LEGACY -->
-'''.format(css=CSS[len('<style>\n'):-len('</style>\n')], asof=R['asOf'], html=H['html'], faq=faq_html, v=JS_V)
+'''.format(css=CSS[len('<style>\n'):-len('</style>\n')], asof=R['asOf'], html=H['html'], faq=faq_html, related=related(HUB_RELATED), v=JS_V)
     s = re.sub(r'<!-- V2:AFTER-LEGACY -->.*?<!-- /V2:AFTER-LEGACY -->\n\n?', '', s, flags=re.S)   # slot + the blank line added below
     i = s.index('<!-- ===== NEWSLETTER ===== -->')
     s = s[:i] + slot + '\n' + s[i:]
