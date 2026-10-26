@@ -20,7 +20,15 @@
       "healthLevyShort": "16% health insurance contributions",
       "exemption": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
       "filing": "Annual personal tax return (type B), due 31 March",
-      "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income."
+      "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income.",
+      "titleHook": "19-35% + Health Levy",
+      "seoDescription": "How bitcoin is taxed in Slovakia in 2026: 19 to 35% income tax plus 16% health levy, no holding-period exemption.",
+      "extraFaq": [
+        {
+          "q": "Is swapping crypto to crypto taxable in Slovakia?",
+          "a": "Yes. There is no holding-period exemption; every sale or crypto-to-crypto swap is taxed. A net crypto loss cannot offset other income."
+        }
+      ]
     },
     {
       "id": "pl",
@@ -74,7 +82,15 @@
       "gainTax": "12% on crypto gains (since 2024)",
       "exemption": "Tax-free after a 2-year holding period",
       "filing": "JOPPD form by the end of February (not the annual return)",
-      "note": "File JOPPD even for exempt sales. Losses offset gains only within the same year."
+      "note": "File JOPPD even for exempt sales. Losses offset gains only within the same year.",
+      "titleHook": "12% Rate Explained",
+      "seoDescription": "How bitcoin is taxed in Croatia in 2026: 12% on gains, tax-free after 2 years, JOPPD form by end of February.",
+      "extraFaq": [
+        {
+          "q": "Is bitcoin tax-free after two years in Croatia?",
+          "a": "Yes. Gains are tax-free after a 2-year holding period; otherwise 12% applies. File the JOPPD form even for exempt sales."
+        }
+      ]
     },
     {
       "id": "ro",
@@ -83,7 +99,15 @@
       "gainTax": "16% income tax on crypto gains (10% until 2025)",
       "exemption": "No holding-period exemption",
       "filing": "Annual return (income from other sources)",
-      "note": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year."
+      "note": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year.",
+      "titleHook": "16% Rate & Rules",
+      "seoDescription": "How bitcoin is taxed in Romania in 2026: 16% on crypto gains (10% until 2025), no holding-period exemption.",
+      "extraFaq": [
+        {
+          "q": "Is there a tax-free threshold for bitcoin in Romania?",
+          "a": "Gains under 200 lei per transaction are exempt up to 600 lei a year. Above that, gains are taxed at 16% (10% until 2025), and there is no holding-period exemption."
+        }
+      ]
     },
     {
       "id": "bg",

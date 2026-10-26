@@ -172,7 +172,8 @@ for (const rel of htmlFiles) {
 
   const faqHeading = lang === 'sk' ? '<h2>Časté otázky</h2>' : lang === 'cs' ? '<h2>Časté dotazy</h2>' : lang === 'pl' ? '<h2>Najczęstsze pytania</h2>' : lang === 'hu' ? '<h2>Gyakori kérdések</h2>' : lang === 'uk' ? '<h2>Часті запитання</h2>' : lang === 'ru' ? '<h2>Частые вопросы</h2>' : lang === 'fr' ? '<h2>Questions fréquentes</h2>' : lang === 'es' ? '<h2>Preguntas frecuentes</h2>' : '<h2>FAQ</h2>';
   const faqH3 = (html.split(faqHeading)[1] || '');
-  const faqCount = (html.split(faqHeading)[1] || '').match(/<h3>/g)?.length || 0;
+  // only the FAQ block: the Brief card after it has its own <h3>, which used to count as a sixth question
+  const faqCount = (html.split(faqHeading)[1] || '').split(/<h2[\s>]|<section[\s>]|<\/section>/)[0].match(/<h3>/g)?.length || 0;
   if (faqCount < 3 || faqCount > 5) fail(`${rel} FAQ count ${faqCount} (need 3–5)`);
 
   if (!html.includes('BreadcrumbList')) fail(`${rel} missing BreadcrumbList`);
