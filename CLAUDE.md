@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-26, second round) — Design-align Batch B **live on production** (main `5d834de1`; Ras ran `deploy_site.sh 44b6909c 5d834de1`, DEPLOY OK, 667/667 md5-verified on virtuse.com; Verdict loader restored on gh-pages afterwards)
+
+- Chart/tool pages + hub were already aligned (Bitcoin Data v3); Ras kept their live accents and Bratislava time over the Batch B handover's proposals.
+- seo-build guides (208 pages): `<main class="wrap acc acc-x">` from the folder via `ACCENTS` in `seo-build/generate.mjs` (tax + DAC8 blue, sell vs borrow purple, inheritance teal, DCA green, buy-bitcoin/<country> green). site-v2.css "DESIGN-ALIGN Batch B" block styles the template's answer box, facts table, tools/related links (spotlight bound in site-v2.js); the template's own inline CSS stays.
+- Fee index (`fee-index/build_fee_index.py`) blue + `.h1-grey`; bitcoin-returns/* (28) `bd-v3 bd-acc-teal` (class only; `btc-returns/build_returns.py` writes it now).
+- site-v2 css v18 / js v11 on all 664 pages. **seo-build sitemap lastmod:** a page gets today's date only when its HTML on disk changes; for a design-only change run `i18n-tools/site_v2_version.py` / write the pages first, then `node generate.mjs`, so dates stay (revert sitemap.xml if a builder bumped them).
+
 ## Session status (2026-10-26) — SEO quick wins (handover HANDOVER-seo-quickwins-2026-10-26.md) **live on production** (Ras's "ano"; main `5f7b1625`; Ras ran `deploy_site.sh 9c48a6cb 5f7b1625`: DEPLOY OK, 13/13 md5 on virtuse.com and staging, IndexNow 11 URLs; GSC 2026-10-26: indexing requested for the 6 pages, sitemap resubmitted)
 
 - **Tax guides SK/RO/HR** (GSC position 6-9, 0 clicks): Ras chose English titles on the English pages plus a Slovak title on the existing `/sk/bitcoin-dane/slovensko/` (no RO/HR language pages). `seo-data.json` countries sk/ro/hr carry optional `titleHook`, `seoDescription`, `extraFaq`; `meta.json` `taxSk.sk` `titleHook` + `seoDescription`; generate.mjs uses them only when present (other 10 countries byte-identical). Titles "Bitcoin Tax in <Country> 2026: <hook> | Virtuse" (year from asOf); Slovakia has no holding-period exemption, so its title names "19-35% + Health Levy", not "exemptions"; SK page "Daň z Bitcoinu na Slovensku 2026: sadzby a odvody | Virtuse". One extra FAQ each, worded only from existing fields. Rates, "as of Q3 2026", "Checked 13 Oct 2026", "Not tax advice" unchanged. **verify.mjs fix:** it counted the Brief card's `<h3>` after the FAQ as a question (FAQ limit was effectively 4); it now counts only the FAQ block.
