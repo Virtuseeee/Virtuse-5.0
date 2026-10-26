@@ -310,7 +310,7 @@ def panel(L, t, fi, s21, date):
                     url=r['url'], open=t['open'].replace('{name}', r['name']), arrow=C.ARROW))
     seg = ''.join('<button type="button" class="seg-btn{on}" data-filter="a{a}" aria-pressed="{p}">{v}</button>'.format(
         on=' on' if a == DEFAULT else '', a=a, p='true' if a == DEFAULT else 'false', v=eur(a, L)) for a in AMOUNTS)
-    return '''<div class="hpanel fi-panel">
+    return '''<div class="hpanel blue fi-panel">
       <div class="fi-amount"><span>{lbl}</span>
         <div class="seg" role="group" aria-label="{lbl}">{seg}</div>
       </div>
@@ -371,12 +371,12 @@ def build_main(L, fi, s21, extra_pages):
     body = '''<body class="page-buy page-fee no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap acc acc-blue" id="top">
 
   <!-- 1. HERO + comparison panel -->
   <div class="buy-hero2">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
     {panel}
     <div class="hp-fine">
@@ -449,10 +449,10 @@ def simple_page(rel, title, desc, page_url, crumbs, h1, h1o, lead, sections, faq
     out += '''<body class="page-buy page-fee no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap acc acc-blue" id="top">
   <div class="buy-hero2 fi-sub">
     <div class="eyebrow"><i></i>{crumb}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
   </div>
 {sections}

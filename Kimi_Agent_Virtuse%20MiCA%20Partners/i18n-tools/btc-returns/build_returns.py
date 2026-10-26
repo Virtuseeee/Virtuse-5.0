@@ -156,7 +156,7 @@ def page(rel, url, title, desc, crumbs, h1, h1_grey, lead, block, robots, datase
     out += '''<body class="page-buy page-data page-vbr no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3 bd-acc-teal" id="top">
   <div class="buy-hero2 pf-hero">
     <nav class="vbr-crumbs" aria-label="Breadcrumb">{trail}</nav>
     <h1>{h1} <span class="h1-grey">{h1g}</span></h1>

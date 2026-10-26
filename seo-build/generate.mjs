@@ -820,6 +820,18 @@ function guideTools(spec) {
   };
 }
 
+// Page accent (design-align Batch B, 2026-10-26; accent map in site-v2.css): one colour per guide family,
+// matched on the folder in every language. Tax + DAC8 blue (= tax.html), sell vs borrow purple (= lending),
+// inheritance teal (= secure), DCA green (= stacking), buy-bitcoin/<country> green (= buy-bitcoin.html).
+const ACCENTS = [
+  [/(^|\/)bitcoin-(tax|steuern|dane|podatki|podatky|nalogi|impuestos|fiscalite|adozas)\//, 'blue'],
+  [/(^|\/)(sell-vs-borrow-bitcoin|bitcoin-(verkaufen-oder-beleihen|vendre-ou-emprunter|sprzedac-czy-pozyczyc|predat-alebo-pozicat|prodat-nebo-pujcit|vender-o-pedir-prestado|eladas-vagy-hitel|prodat-ili-zanyat|prodaty-chy-pozychyty))\//, 'purple'],
+  [/(^|\/)bitcoin-(inheritance|erbrecht|succession|dedicstvo|dedictvi|nasledstvo|herencia|orokles|dziedziczenie|spadshchyna)\//, 'teal'],
+  [/(^|\/)bitcoin-(dca-calculator|dca-rechner|calculateur-dca|kalkulator-dca|dca-kalkulacka|kalkulyator-dca|kalkuliator-dca|calculadora-dca|dca-kalkulator)\//, 'green'],
+  [/(^|\/)(buy-bitcoin|bitcoin-kaufen|kupit-bitcoin|koupit-bitcoin)\//, 'green']
+];
+const accentFor = (relFile) => (ACCENTS.find(([re]) => re.test(relFile)) || [null, null])[1];
+
 function pushPage(spec) {
   if (spec.guide && !spec.tools) spec = { ...spec, tools: guideTools(spec) };
   if (spec.lang === 'fr') spec = typoSpec(spec, nbspFr);
@@ -827,6 +839,7 @@ function pushPage(spec) {
   if (spec.guide) spec = guideArticle(spec);
   const html = renderPage({
     ...spec,
+    accent: spec.accent || accentFor(spec.relFile),
     origin: ORIGIN,
     asOfLabel: spec.asOfLabel || (isFeePage(spec.relFile)
       ? (spec.lang === 'fr' ? feeAsOfFr : spec.lang === 'es' ? feeAsOfEs : spec.lang === 'de' ? feeAsOfDe : feeAsOfEn)
