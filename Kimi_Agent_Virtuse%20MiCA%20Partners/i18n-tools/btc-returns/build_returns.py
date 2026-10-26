@@ -109,6 +109,8 @@ HUB_RELATED = [
     ('/ma-200w.html', '200-week moving average', "Bitcoin's long-term average price, updated daily."),
     ('/rainbow-chart.html', 'Rainbow chart', 'Price history on a log scale in nine colour bands.'),
     ('/stacking.html', 'Stacking Strategist', 'Plan a regular buy (DCA) and compare fees.'),
+    ('/bitcoin-dca-calculator/', 'DCA calculator', 'What regular weekly or monthly buys would have returned.'),
+    ('/bitcoin-vs-gold.html', 'Bitcoin vs gold', 'Returns against gold, silver and oil since 2016.'),
 ]
 DISCLAIMER = ('Prices: CoinMetrics daily Bitcoin reference rate in US dollars. Past performance does not guarantee future results. '
               'Not investment advice. Virtuse never holds your keys or funds.')
