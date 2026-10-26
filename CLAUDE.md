@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-26) — Design-align Batch A Part 1 + 2 on **staging only** (branch `feat/design-align-a`, 5a384225 + 90094d5e; gh-pages 0ae9ced3, 667/667 md5 on staging). Not on main/prod until Ras says "ano".
+
+- **One cache-buster for site-v2 on every page:** `SITE_CSS_V` / `SITE_JS_V` in `i18n-tools/speed.py` (now css 17, js 10). `C.finalize()` rewrites whatever a builder wrote; `seo-build/lib/html.mjs` exports the same numbers (ecosystem.mjs imports them); `i18n-tools/site_v2_version.py [--check]` rewrites/finds strays (hand-made pages: operator, how-we-earn). The 228 SEO pages now load `site-v2.min.css` (were on unminified `site-v2.css?v=7`). **After any site-v2.css/js change: bump both files' numbers, run site_v2_version.py + seo-build.** All builders and seo-build reproduce the pages unchanged (verified).
+- site-v2.css: accent map table (live + proposed) and legacy-card alias `.gcard, .pf-card, .lg-card, .ab-card` → pcard2 look (no grey outline, metal top edge, spotlight via site-v2.js, accent glow on real pointer hover, neutral without `--c`). Generic `.acc-<colour>` classes next to `.bd-acc-*`; `<main class="wrap acc acc-x">` sets the page accent. Reduced motion hides the spotlight sitewide.
+- Part 2 accents (proposals): loan orange, partner finder pink, stacking green, tax agent blue, buy-bitcoin green (its pcard2/hpanel too), operator indigo (hand-edited, 10 langs); about none. Hero `.h1-or` → `.h1-grey` on those builders. Glow behind the React apps; tables inside `#root` untouched (layer2-src).
+- Not done: homepage (Ras: no site-v2), **cfo** (adding site-v2 rearranges its layout; tiles not changed, decision open), FAQ accordion accent dot, Batch B (waits for approval of A).
+- gh-pages carries staging-only edits of 12 files (Verdict loader in site-v2.js, other branches' SEO/chart pages): sync by copying only files whose gh-pages blob equals main's, patch the rest (`git ls-tree` blob compare is fast; `git show` per file is not).
+
 ## Session status (2026-10-25, second round) — Bitcoin Data v3: Services accent system on the hub + 10 chart/tool pages, 10 languages (**live on production** — Ras ran `deploy_site.sh 9a7d3117 4d0be940`, DEPLOY OK, 110/110 md5-verified on virtuse.com)
 
 - Handover `HANDOVER-bitcoin-data-design-2026-10-25.md` (iCloud VWM 5.0/HANDOVERS). Layout only: data sources, numbers, texts, consent/GTM, SEO tags unchanged.
