@@ -178,7 +178,7 @@ def build(L):
   <!-- 1. HERO -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
     {stats}
   </div>

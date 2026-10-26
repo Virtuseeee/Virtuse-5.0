@@ -1601,9 +1601,9 @@ html.anim .rv.rv-now, html.anim .rv-now .how-log-dot, html.anim .how-log.rv-now:
    Opt-in with .bd-v3 on <main> (the bitcoin-returns/* pages also use .bd-m and keep the v2 look).
    Accent per section / card / page via --c (.bd-acc-*): accent mono label, metallic top sheen, accent glow on
    hover, .spot cursor spotlight (site-v2.js), panels with an accent glow. Retry / stale colours unchanged. */
-.bd-acc-orange { --c: var(--orange); } .bd-acc-blue { --c: var(--blue); } .bd-acc-yellow { --c: var(--yellow); }
-.bd-acc-purple { --c: var(--purple); } .bd-acc-pink { --c: var(--pink); } .bd-acc-indigo { --c: var(--indigo); }
-.bd-acc-green { --c: var(--green); } .bd-acc-teal { --c: var(--teal); }
+.bd-acc-orange, .acc-orange { --c: var(--orange); } .bd-acc-blue, .acc-blue { --c: var(--blue); } .bd-acc-yellow, .acc-yellow { --c: var(--yellow); }
+.bd-acc-purple, .acc-purple { --c: var(--purple); } .bd-acc-pink, .acc-pink { --c: var(--pink); } .bd-acc-indigo, .acc-indigo { --c: var(--indigo); }
+.bd-acc-green, .acc-green { --c: var(--green); } .bd-acc-teal, .acc-teal { --c: var(--teal); }
 .bd-v3 .buy-hero2 .eyebrow i { background: var(--c, var(--orange)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c, var(--orange)) 15%, transparent); }
 /* cards: pcard2 language */
 .bd-v3 :is(.bd-m, .bd-card, .bd-chart) { position: relative; border-color: transparent;
@@ -1930,15 +1930,26 @@ html.vc-embed .wrap, html.vc-embed .pf-app { max-width: none; width: 100%; margi
                buy-bitcoin green · cfo orange · operator indigo/purple variant
    Classes: .pcard2.<accent>, .eyebrow.<accent>, .hpanel.<accent>, .eco-acc-<accent>, .bd-acc-<accent>.
 
-   LEGACY CARD ALIAS: .gcard, .pf-card, .lg-card get the pcard2 look (flat card at rest, metallic top edge,
+   LEGACY CARD ALIAS: .gcard, .pf-card, .lg-card (+ .ab-card, about) get the pcard2 look (flat card at rest, metallic top edge,
    cursor spotlight bound in site-v2.js, accent border + glow when the pointer really moves over the card).
    On a page with no accent (--c unset) the hover glow stays neutral. .tile (cfo) and .status-card (chart
    pages) are not here: cfo does not load site-v2, chart pages use the Bitcoin Data v3 panels above. */
-body :is(.gcard, .pf-card, .lg-card) { position: relative; border-color: transparent; background-color: var(--card); transition: background-color .2s, border-color .2s, box-shadow .2s; }
-body :is(.gcard, .pf-card, .lg-card)::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
+body :is(.gcard, .pf-card, .lg-card, .ab-card) { position: relative; border-color: transparent; background-color: var(--card); transition: background-color .2s, border-color .2s, box-shadow .2s; }
+body :is(.gcard, .pf-card, .lg-card, .ab-card)::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
   background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
-body :is(.gcard, .pf-card, .lg-card).pm:hover, body :is(.gcard, .pf-card):focus-visible { background-color: var(--card-hover);
+body :is(.gcard, .pf-card, .lg-card, .ab-card).pm:hover, body :is(.gcard, .pf-card):focus-visible { background-color: var(--card-hover);
   border-color: color-mix(in srgb, var(--c, #c9d1d9) 35%, transparent); box-shadow: 0 18px 50px -28px color-mix(in srgb, var(--c, #c9d1d9) 55%, transparent); }
-@media (hover: none) { body :is(.gcard, .pf-card, .lg-card):hover { background-color: var(--card); border-color: transparent; box-shadow: none; } }
+@media (hover: none) { body :is(.gcard, .pf-card, .lg-card, .ab-card):hover { background-color: var(--card); border-color: transparent; box-shadow: none; } }
 /* the cursor spotlight follows the pointer: off for visitors who ask for reduced motion (all pages) */
-@media (prefers-reduced-motion: reduce) { .spot::after { display: none; } body :is(.gcard, .pf-card, .lg-card) { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .spot::after { display: none; } body :is(.gcard, .pf-card, .lg-card, .ab-card) { transition: none; } }
+
+/* ===== DESIGN-ALIGN Batch A Part 2 (2026-10-26): page accents on the remaining Services / tool pages =====
+   <main class="wrap acc acc-<colour>"> sets --c for the page (accent map above): eyebrow dot, legacy-card
+   hover glow, panel glow. Hero: white sentence + grey continuation (.h1-grey) like Treasury.
+   Layer 2 tools (loan, partner finder, stacking, tax agent): an accent glow behind the React app; the app
+   itself (cards, tables inside #root) comes from layer2-src and is not restyled here. */
+.acc .buy-hero2 .eyebrow i { background: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 15%, transparent); }
+.acc .pf-app { position: relative; isolation: isolate; }
+.acc .pf-app::before { content: ""; position: absolute; left: 50%; top: -150px; width: min(820px, 100%); height: 340px; transform: translateX(-50%); z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c) 13%, transparent), transparent); }
+html.vc-embed .acc .pf-app::before { display: none; }

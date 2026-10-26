@@ -116,7 +116,7 @@ def build(L):
     diff_line = t('diff_line')
     for a_, b_ in (('€48', eur(48, L)), ('€6,000', eur(6000, L))):
         diff_line = diff_line.replace(a_, b_)
-    hero_card = """<div class="hpanel" id="feeRows">
+    hero_card = """<div class="hpanel green" id="feeRows">
       <div class="hp-slider">
         <label for="amt">{amt_label}</label>
         <div class="amount">{amt_html} <small>{per_month}</small></div>
@@ -148,7 +148,7 @@ def build(L):
         pid = p['id']
         badge = pct(p['pct'], L) if p['pct'] is not None else t('fee_badge_site')
         feats = ''.join('<li>%s</li>' % t('pr_%s_f%d' % (pid, n)) for n in range(1, 5))
-        cards.append('''      <article class="pcard2" id="p-{pid}">
+        cards.append('''      <article class="pcard2 green" id="p-{pid}">
         <span class="pc-badge{na}">{badge}</span>
         <div class="pc-head"><img src="{root}{logo}" alt="{name}" class="{cls}" width="48" height="48" loading="lazy"><div><h3>{name}</h3><div class="pc-lic">{lic}</div></div></div>
         <details class="pc-more" open><summary>{details}</summary>
@@ -160,7 +160,7 @@ def build(L):
       </article>'''.format(pid=pid, na='' if p['pct'] is not None else ' na', badge=badge, root=root, logo=p['logo'], name=p['name'], cls=p['cls'],
                            lic=t('pr_%s_lic' % pid), details=t('details'), body=t('pr_%s_body' % pid), feats=feats, url=p['url'],
                            get=t('pr_%s_get' % pid), aff=A.note(t), out=OUT))
-    cards.append('''      <a class="pcard2 pc-finder" href="concierge.html?utm_source=concierge&amp;utm_medium=buy_grid">
+    cards.append('''      <a class="pcard2 green pc-finder" href="concierge.html?utm_source=concierge&amp;utm_medium=buy_grid">
         <h3>{h}</h3><p>{p}</p><span class="pc-finder-cta">{c} {a}</span>
       </a>'''.format(h=t('finder_h'), p=t('finder_p'), c=t('finder_cta'), a=ARROW))
 
@@ -218,7 +218,7 @@ def build(L):
     body = '''<body class="page-buy no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap acc acc-green" id="top">
 
   <!-- 1. HERO v2: centered headline + one comparison panel -->
   <div class="buy-hero2">
