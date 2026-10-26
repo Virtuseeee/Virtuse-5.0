@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-26) — Brief nav slimmed (handover "news-nav-slim"), Data → Bitcoin Data everywhere; **live on production** (`deploy_site.sh 5d834de1 16368e3a`, DEPLOY OK)
+
+- news.html nav: Pulse · Latest issues · Bitcoin Data · Virtuse hub · Get the Brief. Data desk = label "Bitcoin data" + one "Open Bitcoin Data →" button + treasury ledger (`id="data-desk"` kept). Footer: Archive · Bitcoin Data · Virtuse CFO · Hub · Unsubscribe. `.data-tablist` CSS removed, news.css `?v=20261026nav`.
+- **The handover was wrong about `#blog`:** the section ("Ras Vasilisin's Take") is `hidden` in markup but news.js shows it whenever WP returns posts, so it is visible live. Ras decided: keep the section, no nav item.
+- The "Data → news.html#data-desk" item on the 10 blog pages, article.html (now `data-hub`, so `?lang=xx` localizes it), article.js labels (`?v=20261026nav`) and all story pages/hubs is now "Bitcoin Data" in each language's hub term → `<lang>/bitcoin-data.html?utm_source=brief&utm_medium=nav`. Template/generator updated (`{{DATA}}` in brief_blog_template.html / build_brief_blog.py).
+- Gotcha: the Stories Action that my article.html push triggered read WordPress through the Worker proxy's ~5 min cache and committed blogs/hubs without a post published minutes earlier (eeb7da95). Fixed by a local rebuild (16368e3a). After publishing a post, don't trust a build that ran within a few minutes of it.
+- Gotcha: deploy_site.sh failed at the gh-pages push because another session had pushed to gh-pages meanwhile; a re-run starts from the current gh-pages and works.
+
 ## Session status (2026-10-26, second round) — Design-align Batch B **live on production** (main `5d834de1`; Ras ran `deploy_site.sh 44b6909c 5d834de1`, DEPLOY OK, 667/667 md5-verified on virtuse.com; Verdict loader restored on gh-pages afterwards)
 
 - Chart/tool pages + hub were already aligned (Bitcoin Data v3); Ras kept their live accents and Bratislava time over the Batch B handover's proposals.
