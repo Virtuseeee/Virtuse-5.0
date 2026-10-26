@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-26) — Design-align Batch A Part 1 + 2 on **staging only** (branch `feat/design-align-a`, 5a384225 + 90094d5e; gh-pages 0ae9ced3, 667/667 md5 on staging). Not on main/prod until Ras says "ano".
+## Session status (2026-10-26) — Design-align Batch A Part 1 + 2 **live on production** (Ras approved the accents; main `955d2730`; Ras ran `deploy_site.sh 284a9b5a 955d2730`, DEPLOY OK, 667/667 md5-verified on virtuse.com). Staging-only edits of 12 files restored on gh-pages afterwards (d6ede8d3).
 
 - **One cache-buster for site-v2 on every page:** `SITE_CSS_V` / `SITE_JS_V` in `i18n-tools/speed.py` (now css 17, js 10). `C.finalize()` rewrites whatever a builder wrote; `seo-build/lib/html.mjs` exports the same numbers (ecosystem.mjs imports them); `i18n-tools/site_v2_version.py [--check]` rewrites/finds strays (hand-made pages: operator, how-we-earn). The 228 SEO pages now load `site-v2.min.css` (were on unminified `site-v2.css?v=7`). **After any site-v2.css/js change: bump both files' numbers, run site_v2_version.py + seo-build.** All builders and seo-build reproduce the pages unchanged (verified).
 - site-v2.css: accent map table (live + proposed) and legacy-card alias `.gcard, .pf-card, .lg-card, .ab-card` → pcard2 look (no grey outline, metal top edge, spotlight via site-v2.js, accent glow on real pointer hover, neutral without `--c`). Generic `.acc-<colour>` classes next to `.bd-acc-*`; `<main class="wrap acc acc-x">` sets the page accent. Reduced motion hides the spotlight sitewide.
