@@ -38,6 +38,10 @@ const PRICE_OUT = 20 / 1e6;
 
 export const MAX_CHARS = 1200;
 const PER_IP_PER_DAY = 10;
+// "Rate my verdict again" after adding to the plan (P0.3, Ras 2026-10-27)
+// has its own counter, so fixing gaps does not use up new verdicts. The
+// monthly cost cap still covers both.
+export const PER_IP_RECALC_PER_DAY = 20;
 export const LANGS = ['sk', 'en', 'ru'];
 
 // Priority 1 = most important; it breaks ties for the weakest point.
@@ -631,9 +635,10 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
   // and the counter expires after 24 hours.
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const day = new Date(now).toISOString().slice(0, 10);
-  const ipKey = `verdict:ip:${await ipHash(ip, day, env)}`;
+  const recalc = body.recalc === true;
+  const ipKey = `verdict:${recalc ? 'ipr' : 'ip'}:${await ipHash(ip, day, env)}`;
   const count = parseInt((await env.RATE_LIMIT_KV.get(ipKey)) || '0', 10);
-  if (count >= PER_IP_PER_DAY) return json(429, { error: busy }, origin);
+  if (count >= (recalc ? PER_IP_RECALC_PER_DAY : PER_IP_PER_DAY)) return json(429, { error: busy }, origin);
   await env.RATE_LIMIT_KV.put(ipKey, String(count + 1), { expirationTtl: 60 * 60 * 24 });
 
   const clean = redact(text.trim().slice(0, MAX_CHARS));

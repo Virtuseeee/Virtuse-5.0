@@ -195,6 +195,17 @@ test('10 a day per IP, and the monthly cap stops calls', withClaude(async (calls
   assert.equal(calls.length, 10);
 }));
 
+test('re-rating after additions has its own 20 a day per IP', withClaude(async (calls) => {
+  const e = env();
+  const body = { text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' };
+  for (let i = 0; i < 10; i++) assert.equal((await worker.fetch(req(body), e)).status, 200);
+  assert.equal((await worker.fetch(req(body), e)).status, 429);
+  const re = { ...body, recalc: true };
+  for (let i = 0; i < 20; i++) assert.equal((await worker.fetch(req(re), e)).status, 200);
+  assert.equal((await worker.fetch(req(re), e)).status, 429);
+  assert.equal(calls.length, 30);
+}));
+
 test('advice-like model output is not shown: one retry, then a plain message', withClaude(async (calls) => {
   const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
   assert.equal(res.status, 502);
