@@ -467,3 +467,12 @@
 .vx .vx-done .vx-ic { vertical-align: -3px; margin-right: 4px; }
 .vx .vx-done .linkish { margin-left: 6px; color: var(--green); }
 .vx .vx-done[hidden] { display: none; }
+/* P0.4: refine instead of re-ask; insert the example in one tap. */
+.vf-echo { margin: 6px 0 12px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--inset); color: var(--muted); font-size: 15px; line-height: 1.5; }
+.vf-echo b { color: var(--text); }
+.vf-match { font-style: normal; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--blue); border: 1px solid color-mix(in srgb, var(--blue) 40%, transparent); border-radius: 999px; padding: 3px 7px; margin-left: 6px; vertical-align: 2px; white-space: nowrap; }
+.vx-eg { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 8px; padding: 10px 12px; border-radius: 10px; border: 1px dashed var(--line-strong); font-size: 14px; color: var(--muted); }
+.vx-eg span { flex: 1; }
+.vx-eg .vf-btn { flex: none; padding: 6px 12px; font-size: 13px; }
+@media (max-width: 600px) { .vx-eg { flex-direction: column; } }
+.foot .note:empty { border: 0; padding: 0; background: none; box-shadow: none; }
