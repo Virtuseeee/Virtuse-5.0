@@ -359,10 +359,12 @@
   // person, never to change an answer on its own.
   function plain(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
   var INTENT = {
-    buy: /(\bkup|nakup|dokup|\bbuy|purchas|\bdca\b|купит|покуп|докуп)/,
+    buy: /(\bkup|nakup|dokup|\bbuy|purchas|\bdca\b|investova|\binvest|vloz|\bdat\b.{0,30}\bdo (bitcoin|btc)|\bput\b.{0,30}\binto (bitcoin|btc)|купит|покуп|докуп|вложит|инвест)/,
     custody: /(dedi|deden|dedic|inherit|\bheir|seed|klu?c|custody|uschov|multisig|наслед|ключ|хранен|сид)/,
     loan: /(poziC|pozic|pujc|\bloan|borrow|\buver|заём|заем|займ|кредит)/i,
-    sell: /(preda[tj]|prodat|\bsell|продат|продаж)/
+    sell: /(preda[tj]|prodat|\bsell|продат|продаж)/,
+    dca: /(mesacn|tyzdenn|pravideln|kazdy mesiac|monthly|weekly|every month|ежемесяч|еженедел|каждый месяц)/,
+    treasury: /(firm|spolocnost|company|corporate|treasury|компани|фирм)/
   };
   function intents(t) { var x = plain(t), o = []; for (var k in INTENT) if (INTENT[k].test(x)) o.push(k); return o; }
   // The clarifying screen: "Something else" with a text that names goals, or
@@ -479,16 +481,39 @@
     panel.innerHTML = '<div class="chip-eyebrow">' + STR.startEb + '</div><h1>' + STR.startH + '</h1><p class="sub">' + STR.startP + '</p><p class="hint">' + STR.startHint + '</p>' + foot(STR.startNote, STR.start);
     document.getElementById('c').onclick = next;
   }
+  // P0.4 (review 2026-10-27): with a text already written (hero, cfo.html or
+  // an earlier pass) this screen refines it: the text is echoed, the closest
+  // tile is preselected, and buy + inheritance can be picked as "Both" here,
+  // so the intent question is not asked a third time.
+  function guessGoal() {
+    var f = intents(A.text), order = ['loan', 'sell', 'treasury', 'dca', 'buy', 'custody'];
+    if (f.indexOf('buy') >= 0 && f.indexOf('custody') >= 0 && f.indexOf('loan') < 0 && f.indexOf('sell') < 0) return { pick: f.indexOf('dca') >= 0 ? 'dca' : 'buy', both: true, all: f };
+    return { pick: order.filter(function (k) { return f.indexOf(k) >= 0; })[0] || null, both: false, all: f };
+  }
   function goal() {
-    panel.innerHTML = '<div class="eyebrow">' + STR.goalEb + '</div><h2>' + STR.goalH + '</h2><p class="sub">' + STR.goalP + '</p><p class="hint">' + STR.goalHint + '</p>' +
-      '<div class="opts">' + STR.goals.map(function (g) { return '<button class="opt' + (A.goal === g[0] ? ' sel' : '') + '" data-v="' + g[0] + '"><span>' + g[1] + '<small>' + g[2] + '</small></span>' + (A.goal === g[0] ? CK : SV) + '</button>'; }).join('') + '</div>' + skipBtn(STR.other, 'goal');
-    panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { setGoal(b.dataset.v); }; });
+    var has = A.text.trim().length >= 20, G = has ? guessGoal() : { all: [] };
+    var cur = A.also && A.goal ? 'both' : (A.goal && A.goal !== 'na' ? A.goal : (has ? (G.both ? 'both' : G.pick) : null));
+    var list = STR.goals.slice(); if (has && G.both) list.push(V.intentBoth);
+    var curL = (list.filter(function (g) { return g[0] === cur; })[0] || [])[1];
+    panel.innerHTML = '<div class="eyebrow">' + STR.goalEb + '</div><h2>' + (has ? V.refineH : STR.goalH) + '</h2>' +
+      (has ? '<div class="vf-echo"><b>' + V.echoL + ':</b> ' + quote(A.text.length > 140 ? A.text.slice(0, 137).trim() + '…' : A.text) + '</div><p class="sub">' + V.refineP(curL) + '</p>' : '<p class="sub">' + STR.goalP + '</p><p class="hint">' + STR.goalHint + '</p>') +
+      '<div class="opts">' + list.map(function (g) {
+        var m = has && (G.all.indexOf(g[0]) >= 0 || (g[0] === 'both' && G.both));
+        return '<button class="opt' + (cur === g[0] ? ' sel' : '') + '" data-v="' + g[0] + '"><span>' + g[1] + (m ? ' <em class="vf-match">' + V.fromText + '</em>' : '') + '<small>' + g[2] + '</small></span>' + (cur === g[0] ? CK : SV) + '</button>';
+      }).join('') + '</div>' + (has && curL ? foot('', V.refineGo(curL), false, true) : '') + skipBtn(STR.other, 'goal');
+    function pick(v) {
+      if (v === 'both') { var base = G.pick === 'dca' ? 'dca' : 'buy'; if (base !== A.goal) RET = null; A.goal = base; save('goal'); A.also = 'custody'; A.alsoAsked = 1; build(); next(); return; }
+      if (has && G.both) { if (v !== A.goal) RET = null; A.goal = v; save('goal'); A.also = null; A.alsoAsked = 1; build(); next(); return; }
+      setGoal(v);
+    }
+    panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { pick(b.dataset.v); }; });
+    var c = document.getElementById('c'); if (c) c.onclick = function () { pick(cur); };
     bindSkip();
   }
   function text() {
-    var s = STR.sugg[A.goal] || STR.sugg.buy;
-    panel.innerHTML = '<div class="eyebrow">' + STR.goalEb + '</div><h2>' + STR.textH + '</h2><p class="sub">' + STR.textP + '</p><p class="hint">' + STR.textHint + '</p>' +
-      '<div class="sugg">' + s.map(function (t) { return '<button>' + esc(t) + '</button>'; }).join('') + '</div>' +
+    var s = STR.sugg[A.goal] || STR.sugg.buy, had = A.text.trim().length >= 20;
+    panel.innerHTML = '<div class="eyebrow">' + STR.goalEb + '</div><h2>' + (had ? V.text2H : STR.textH) + '</h2><p class="sub">' + (had ? V.text2P : STR.textP) + '</p>' +
+      (had ? '' : '<p class="hint">' + STR.textHint + '</p><div class="sugg">' + s.map(function (t) { return '<button>' + esc(t) + '</button>'; }).join('') + '</div>') +
       '<textarea id="tx" maxlength="1200" aria-label="' + esc(STR.rev.text) + '" placeholder="' + esc(STR.textPh) + '">' + esc(A.text) + '</textarea>' +
       '<div class="count"><span id="cn">0</span> / 1200</div><input class="hp" id="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
       '<p class="warn">' + STR.textWarn + '</p>' + foot();
@@ -629,6 +654,8 @@
       partnersP: function (c) { return 'Partneri v kategórii ' + c.cat + ', ktorí spĺňajú vaše kritériá' + (c.crit ? ' (' + c.crit + ')' : '') + '. Poradie určujú pevné pravidlá, nie provízia. Porovnávate a vyberáte vy.'; },
       partnersBasics: 'Najprv si prejdite 3 kroky vyššie. Partnerov tu máte, keď budete pripravení.',
       alsoH: 'Na úschovu a dedenie',
+      echoL: 'Váš text', refineH: 'Spresnite kategóriu.', refineP: function (x) { return x ? 'Podľa vášho textu je najbližšie „' + x + '“. Potvrďte ju alebo vyberte inú. Podľa nej Partner Finder vyberie partnerov.' : 'Vyberte kategóriu, ktorá je vášmu textu najbližšie. Podľa nej Partner Finder vyberie partnerov.'; }, refineGo: function (x) { return 'Pokračovať: ' + x; }, fromText: 'podľa textu',
+      text2H: 'Doplňte alebo upravte zadanie.', text2P: 'Váš text je už vložený, netreba písať od nuly. Doplňte sumu, čas a odkiaľ peniaze idú.', insert: 'Vložiť',
       intentEb: 'Váš zámer', intentH: 'Čo je hlavný cieľ?', intentP: 'Váš text spomína viac vecí. Podľa toho vyberieme otázky, nástroje a partnerov.', intentBoth: ['both', 'Oboje', 'Kúpiť Bitcoin a nastaviť úschovu a dedenie'], intentNone: 'Ani jedno, nechám „Niečo iné“',
       cfH: function (n) { return n === 1 ? 'Text a odpovede si v 1 bode odporujú.' : 'Text a odpovede si odporujú v ' + n + ' bodoch.'; }, cfP: 'Opravte odpoveď alebo text. Inak verdikt zohľadní oboje a môže byť menej presný.',
       cf: { share: function (n, a) { return 'Text hovorí asi ' + n + ' %, vybrali ste „' + a + '“.'; }, amount: function (n, a) { return 'Text hovorí asi ' + n + ', vybrali ste „' + a + '“.'; }, horizon: function (n, a) { return 'Text hovorí o ' + n + ', vybrali ste „' + a + '“.'; }, aim: function (n, a) { return 'Text spomína dôchodok, vybrali ste „' + a + '“.'; }, retireSoon: 'Dôchodok ako cieľ a peniaze potrebné do 1 roka si odporujú.' },
@@ -657,6 +684,8 @@
       partnersP: function (c) { return 'Partners in the ' + c.cat + ' category that match your criteria' + (c.crit ? ' (' + c.crit + ')' : '') + '. Fixed rules set the order, not commission. You compare and choose.'; },
       partnersBasics: "Go through the 3 steps above first. The partners are here when you're ready.",
       alsoH: 'For custody and inheritance',
+      echoL: 'Your text', refineH: 'Confirm the category.', refineP: function (x) { return x ? 'From your text, the closest is "' + x + '". Confirm it or pick another. Partner Finder uses it to pick partners.' : 'Pick the category closest to your text. Partner Finder uses it to pick partners.'; }, refineGo: function (x) { return 'Continue: ' + x; }, fromText: 'from your text',
+      text2H: 'Add to or edit your decision.', text2P: 'Your text is already here, no need to start over. Add the amount, timing and where the money comes from.', insert: 'Insert',
       intentEb: 'Your intent', intentH: 'What is the main goal?', intentP: 'Your text mentions more than one thing. We pick the questions, tools and partners from it.', intentBoth: ['both', 'Both', 'Buy Bitcoin and set up custody and inheritance'], intentNone: 'Neither, keep "Something else"',
       cfH: function (n) { return n === 1 ? 'Your text and answers disagree on 1 point.' : 'Your text and answers disagree on ' + n + ' points.'; }, cfP: 'Fix the answer or the text. Otherwise the verdict weighs both and may be less precise.',
       cf: { share: function (n, a) { return 'Your text says about ' + n + '%, you picked "' + a + '".'; }, amount: function (n, a) { return 'Your text says about ' + n + ', you picked "' + a + '".'; }, horizon: function (n, a) { return 'Your text says ' + n + ', you picked "' + a + '".'; }, aim: function (n, a) { return 'Your text mentions retirement, you picked "' + a + '".'; }, retireSoon: 'Retirement as the aim and needing the money within 1 year contradict each other.' },
@@ -685,6 +714,8 @@
       partnersP: function (c) { return 'Партнёры в категории «' + c.cat + '», которые соответствуют вашим критериям' + (c.crit ? ' (' + c.crit + ')' : '') + '. Порядок определяют фиксированные правила, а не комиссия. Сравниваете и выбираете вы.'; },
       partnersBasics: 'Сначала пройдите 3 шага выше. Партнёры будут здесь, когда вы будете готовы.',
       alsoH: 'Для хранения и наследства',
+      echoL: 'Ваш текст', refineH: 'Уточните категорию.', refineP: function (x) { return x ? 'По вашему тексту ближе всего «' + x + '». Подтвердите или выберите другую. По ней Partner Finder подберёт партнёров.' : 'Выберите категорию, ближайшую к вашему тексту. По ней Partner Finder подберёт партнёров.'; }, refineGo: function (x) { return 'Продолжить: ' + x; }, fromText: 'по тексту',
+      text2H: 'Дополните или измените описание.', text2P: 'Ваш текст уже здесь, начинать заново не нужно. Добавьте сумму, сроки и откуда деньги.', insert: 'Вставить',
       intentEb: 'Ваша цель', intentH: 'Что главное?', intentP: 'В вашем тексте несколько тем. По ответу мы подберём вопросы, инструменты и партнёров.', intentBoth: ['both', 'И то, и другое', 'Купить Биткоин и настроить хранение и наследство'], intentNone: 'Ни то, ни другое, оставить «Другое»',
       cfH: function (n) { return n === 1 ? 'Текст и ответы расходятся в 1 пункте.' : 'Текст и ответы расходятся в пунктах: ' + n + '.'; }, cfP: 'Исправьте ответ или текст. Иначе вердикт учтёт и то, и другое и может быть менее точным.',
       cf: { share: function (n, a) { return 'В тексте около ' + n + ' %, а выбрано «' + a + '».'; }, amount: function (n, a) { return 'В тексте около ' + n + ', а выбрано «' + a + '».'; }, horizon: function (n, a) { return 'В тексте: ' + n + ', а выбрано «' + a + '».'; }, aim: function (n, a) { return 'В тексте упоминается пенсия, а выбрано «' + a + '».'; }, retireSoon: 'Пенсия как цель и деньги, нужные в течение года, противоречат друг другу.' },
@@ -939,7 +970,8 @@
       '<button class="vf-btn solid vx-addb" data-addopen' + (done ? ' hidden' : '') + '>' + (q ? A2.btnQ : A2.btn) + '</button>' +
       '<div class="vx-add" hidden>' + (why ? '<p><b>' + A2.miss + ':</b> ' + esc(why) + '</p>' : '') +
       '<p><b>' + A2.write + ':</b> ' + esc(a[0]) + '</p>' +
-      '<textarea maxlength="400" placeholder="' + esc(a[1] ? A2.eg + a[1] : '') + '">' + esc(done || '') + '</textarea>' +
+      (a[1] ? '<div class="vx-eg"><span>' + A2.eg + esc(a[1]) + '</span><button class="vf-btn" data-insert="' + esc(a[1]) + '">' + V.insert + ' →</button></div>' : '') +
+      '<textarea maxlength="400">' + esc(done || '') + '</textarea>' +
       '<p class="small"><b>' + A2.what + ':</b> ' + A2.happen + '</p><p class="small vx-adderr" hidden></p>' +
       '<div class="vrow"><button class="vf-btn solid" data-addsave>' + A2.save + '</button><button class="ghost" data-addcancel>' + A2.cancel + '</button></div></div></div>';
   }
@@ -962,6 +994,8 @@
         push({ event: 'verdict_add_open', verdict_lang: LANG, signal: w.dataset.addw });
       }; });
       box.querySelector('[data-addcancel]').onclick = function () { box.hidden = true; refresh(); };
+      var ins = box.querySelector('[data-insert]');
+      if (ins) ins.onclick = function () { ta.value = ins.dataset.insert; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); push({ event: 'verdict_add_insert', verdict_lang: LANG, signal: w.dataset.addw }); };
       box.querySelector('[data-addsave]').onclick = function () {
         var v = ta.value.trim().replace(/\s+/g, ' ');
         if (v.length < 8) { err.textContent = W.add.empty; err.hidden = false; return; }

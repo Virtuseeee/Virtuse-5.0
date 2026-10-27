@@ -15,6 +15,8 @@ test('intent from text: buy + inheritance in sk/en/ru', () => {
   assert.deepEqual(textIntents('I want to buy Bitcoin and sort out inheritance for my heirs').sort(), ['buy', 'custody']);
   assert.deepEqual(textIntents('Хочу купить Биткоин и настроить наследство').sort(), ['buy', 'custody']);
   assert.deepEqual(textIntents('Chcem si požičať 20 000 € oproti BTC'), ['loan']);
+  assert.deepEqual(textIntents('Chcem dať 50 % hotovosti do bitcoinu a nastaviť multisig, aby ho zdedili deti').sort(), ['buy', 'custody']);
+  assert.deepEqual(textIntents('I want to put 50% of my cash into bitcoin and set up multisig').sort(), ['buy', 'custody']);
 });
 
 test('"Something else" + buy/inheritance text: buy goal, custody also, two partner categories', () => {

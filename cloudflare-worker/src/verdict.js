@@ -163,7 +163,7 @@ const plain = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀
 export const INTENT = {
   loan: /(pozic|pujc|\bloan|borrow|\buver|заём|заем|займ|кредит)/,
   sell: /(preda[tj]|prodat|\bsell|продат|продаж)/,
-  buy: /(\bkup|nakup|dokup|\bbuy|purchas|\bdca\b|купит|покуп|докуп)/,
+  buy: /(\bkup|nakup|dokup|\bbuy|purchas|\bdca\b|investova|\binvest|vloz|\bdat\b.{0,30}\bdo (bitcoin|btc)|\bput\b.{0,30}\binto (bitcoin|btc)|купит|покуп|докуп|вложит|инвест)/,
   custody: /(dedi|deden|dedic|inherit|\bheir|seed|klu?c|custody|uschov|multisig|наслед|ключ|хранен|сид)/,
 };
 export function textIntents(text) { const x = plain(text); return Object.keys(INTENT).filter((k) => INTENT[k].test(x)); }
