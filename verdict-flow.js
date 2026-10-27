@@ -1314,4 +1314,7 @@
     else if (gap) go(at(gap));
     else go(at('review'));
   } else go(0);
+  // The Verdict landing above the funnel already says what the intro says:
+  // its CTA skips the intro screen (verdict-landing build.py).
+  window.vfSkipIntro = function () { if (i === 0) next(); };
 })();
