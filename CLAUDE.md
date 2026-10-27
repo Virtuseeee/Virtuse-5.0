@@ -2,6 +2,26 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27, night 3) — Verdict landing (approved mockup) + Verdict/CFO split, PR #134; **staging only**, staging /version fcadef38
+
+- **verdict.html + sk/verdict.html = landing + funnel on one page.** The landing (`.vl`) sits above the funnel (`#start`).
+  - The funnel opens directly (`html.vl-app`) for the CTAs (`data-vl-start`), `#start`, `?flow=1`, `?report=1`, sessionStorage `vb-verdict-text` and a reload during a run (`vb-vl-app`).
+  - The landing CTA calls `window.vfSkipIntro()` (verdict-flow.js) so the funnel's intro screen is skipped.
+  - RU = funnel only.
+- **Source:** `i18n-tools/verdict-landing/` (`mockup-approved.html`, `landing.en.html`, `sk.json` DRAFT, `extra.css`).
+  - `build.py` regenerates `verdict-landing.css`: `scope_css.py` prefixes every mockup rule with `.vl` and drops nav/footer/mockup-bar rules.
+  - Pricing is copied from each language's cfo.html at build time. **Run `cfo_split.py` before `build.py`.**
+- **cfo_split.py** (10 cfo.html, edited directly because `cfo/*.json` lags): Verdict hero/form/sample/scoring removed, CFO section = h1 hero with waitlist + Verdict link.
+- **nav_split.py** (~1,120 files):
+  - Nav "Virtuse CFO · Verdict" becomes `navVerdict` + `navCfo`; the same split in the footer.
+  - Guide/story cards and `cfo.html#verdict` links now go to verdict.html.
+  - Excludes the Worker, whose waitlist e-mail subject stays "Virtuse CFO · Verdict waitlist" (the CFO list).
+  - `nav_menu_2_5.py` and `home/` `cfo/` json still carry the old label.
+- **Checks:**
+  - Staging E2E SK + EN passed (result, PDF button).
+  - 375 px has no horizontal scroll; the mockup's hero did, so `extra.css` stacks it.
+  - Report tiles are equal (167 px).
+
 ## Session status (2026-10-27, night 2) — Ship prep: final check, prod Worker PR #132 (draft), "free fee audit" claim removed (PR #133); **staging only**, staging /version dbc19d98
 
 - **Final check against `CHECKLIST-ship-verdict-free-2026-10-27.md`:**
