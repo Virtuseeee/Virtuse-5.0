@@ -25,7 +25,7 @@
 
   var STR = {
     sk: {
-      steps: ['Rozhodnutie', 'O vás', 'Váš plán', 'Kontrola'], back: '← Späť', cont: 'Pokračovať', start: 'Začať', skip: '? Zatiaľ neviem', other: 'Niečo iné, opíšem to',
+      steps: ['Rozhodnutie', 'O vás', 'Váš plán', 'Verdikt'], back: '← Späť', cont: 'Pokračovať', start: 'Začať', skip: '? Zatiaľ neviem', other: 'Niečo iné, opíšem to',
       closedH: 'Verdict sa otvára 1. novembra.', closedP: 'Zapíšte sa a dáme vám vedieť.', closedCta: 'Na stránku Virtuse CFO',
       startEb: 'Verdict · zadarmo', startH: 'Otestujte svoje rozhodnutie o Bitcoine. <span>Pomáhame investorom robiť múdre rozhodnutia.</span>',
       startP: 'Skôr ako kúpite, predáte alebo si požičiate, otestujte svoje rozhodnutie na 10 signáloch. Najprv sa opýtame, čo AI potrebuje vedieť, potom dostanete verdikt.',
@@ -125,7 +125,7 @@
       declinedH: 'Verdict to nevie ohodnotiť.', again: '↺ Ohodnotiť ďalšie rozhodnutie', decision: 'Rozhodnutie'
     },
     en: {
-      steps: ['Decision', 'About you', 'Your plan', 'Check'], back: '← Back', cont: 'Continue', start: 'Start', skip: '? Not sure yet', other: 'Something else, I will describe it',
+      steps: ['Decision', 'About you', 'Your plan', 'Verdict'], back: '← Back', cont: 'Continue', start: 'Start', skip: '? Not sure yet', other: 'Something else, I will describe it',
       closedH: 'Verdict opens on 1 November.', closedP: 'Join the list and we will tell you.', closedCta: 'To the Virtuse CFO page',
       startEb: 'Verdict · free', startH: 'Check your Bitcoin decision. <span>Empower investors to make smart decisions.</span>',
       startP: 'Before you buy, sell or borrow, test your decision on 10 signals. First we ask what the AI needs to know, then you get your verdict.',
@@ -225,7 +225,7 @@
       declinedH: "Verdict can't rate this.", again: '↺ Rate another decision', decision: 'Decision'
     },
     ru: {
-      steps: ['Решение', 'О вас', 'Ваш план', 'Проверка'], back: '← Назад', cont: 'Продолжить', start: 'Начать', skip: '? Пока не знаю', other: 'Другое, опишу сам',
+      steps: ['Решение', 'О вас', 'Ваш план', 'Вердикт'], back: '← Назад', cont: 'Продолжить', start: 'Начать', skip: '? Пока не знаю', other: 'Другое, опишу сам',
       closedH: 'Verdict открывается 1 ноября.', closedP: 'Запишитесь, и мы сообщим вам.', closedCta: 'На страницу Virtuse CFO',
       startEb: 'Verdict · бесплатно', startH: 'Проверьте своё решение о Биткоине. <span>Помогаем инвесторам принимать обдуманные решения.</span>',
       startP: 'Прежде чем покупать, продавать или брать заём, проверьте своё решение по 10 сигналам. Сначала мы спросим то, что нужно знать ИИ, затем вы получите вердикт.',
@@ -724,17 +724,150 @@
     if (window.VBPartners) return go2();
     load('/pf-recommend.js?v=2', go2);
   }
-  function pricingBlock(r, badge) {
-    var pr = r.pricing || { report: { mode: 'waitlist' } }, wait = pr.report.mode !== 'checkout';
-    function li(xs) { return '<ul>' + xs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
-    var locked = r.locked && r.locked.length ? '<p class="lstrip">🔒 ' + V.lockedStrip(r.locked.length) + r.locked.map(function (x) { return esc(x.title || x.name); }).join(' · ') + '</p>' : '';
-    return '<div class="no-print" id="report">' + (badge ? '<div class="sec badge">' + V.visitorBadge + '</div>' : '<div class="sec">' + V.priceH + '</div>') + locked +
-      '<div class="tiers">' +
-      '<div class="vf-card tier spot"><div class="eyebrow">' + V.freeT + '</div><div class="amt">' + V.freePrice + '</div>' + li(V.freeList) + '<span class="vf-btn have" aria-disabled="true">' + V.haveIt + '</span></div>' +
-      '<div class="vf-card tier main spot"><div class="eyebrow">' + V.repT + '</div><div class="amt">' + V.repPrice + '</div><p class="small">' + V.repOnce + '</p>' + li(V.repList(pr.report.taxModule)) +
-      (wait ? '<p class="small wn">' + STR.waitNote + '</p>' + wantForm(V.repWait) : '<button class="vf-btn solid" data-checkout>' + V.repBuy + '</button>') + '</div>' +
-      '<div class="vf-card tier spot"><div class="eyebrow">' + V.conT + '</div><div class="amt sm">' + V.conPrice + '</div>' + li(V.conList) + '<button class="vf-btn" data-consult>' + V.conBtn + '</button></div>' +
-      '</div><p class="small cfo">' + V.cfo.replace('<b>Virtuse CFO</b>', '<a href="cfo.html#pricing"><b>Virtuse CFO</b></a>') + '</p></div>';
+  // Result layout after Skoora's structure (Ras, 2026-10-27): your decision →
+  // what Verdict found → two areas behind the verdict → 8 more waiting →
+  // partners → everything inside the verdict → unlock → why trust it → FAQ.
+  // Our design and rules stay: no invented reviews, no discounts, MiCA wording.
+  var W = {
+    sk: {
+      secDecision: 'Vaše rozhodnutie', secFound: 'Čo Verdict našiel', secTwo: 'Dve oblasti za vaším verdiktom', secFull: 'Chcete celý verdikt?', secTrust: 'Prečo Verdictu veriť', secFaq: 'Pred odomknutím',
+      ringNote: 'Kruh ukazuje skóre úplnosti plánu (0 až 100), štítok pod ním úroveň verdiktu.',
+      cardTitle: { flag: 'Červená vlajka', partners: 'Partneri', consult: 'Osobná konzultácia', recheck: 'Ohodnotiť znova', pdf: 'PDF' },
+      stepN: function (n) { return 'Krok ' + n; },
+      improve: 'Ako zlepšiť toto skóre?',
+      waitH: function (n) { return 'Ďalších ' + n + ' oblastí čaká'; }, waitP: 'Každá je už ohodnotená a vysvetlená vo vašom verdikte.', waitCta: 'Zobraziť všetky oblasti',
+      fullH: 'Všetko vo vašom verdikte', fullP: 'Celý verdikt sa otvorí ako report: všetkých 10 oblastí, otázky a plán krokov na jednom mieste. Jedna platba, bez predplatného.', locked: 'Zamknuté',
+      feats: function (tax) { return [['Celý report', 'Každá oblasť rozpísaná: čo máte, čo chýba a čo urobiť.'], ['Všetkých 10 oblastí', 'Body a dôvod pre každú oblasť, napísaný pre vaše rozhodnutie.'], ['Plán krokov', 'Oblasti pod 7 bodov od najslabšej, každá s nástrojom Virtuse.'], ['Výpočty', 'Poplatky a pôžička alebo stacking' + (tax ? ', dane vo vašej krajine' : '') + ' pre vašu sumu.'], ['Všetky chýbajúce otázky', 'Na čo ste nemysleli, skôr ako budete konať.'], ['PDF na uloženie', 'Celý verdikt ako PDF, ktoré si ponecháte.']]; },
+      payH: 'Viac istoty. <span>Od rozhodnutia k ďalším krokom.</span>', payP: 'Nájdite medzery v pláne skôr, ako vás budú stáť peniaze, a pokračujte podľa jasných krokov.',
+      barToday: 'Dobre opísané oblasti dnes', barReport: 'V reporte vysvetlené', of10: function (n) { return n + ' z 10'; },
+      payT: 'Váš report', payRow: 'Celý verdikt', once: 'Jednorazová cena', onceNote: 'Bez predplatného a bez obnovy. Report si ponecháte.',
+      plusT: 'K tomu: osobná konzultácia', plusP: '15 minút s človekom, zadarmo, bez predaja.', plusBtn: 'Rezervovať',
+      waitBtn: 'Zapísať sa na report za 14 €', buyBtn: 'Odomknúť verdikt', stripe: 'Bezpečná platba cez Stripe', opens: 'Otvorí sa hneď po platbe',
+      trust: [['22 overených partnerov', 'Licencie MiCA overujeme v registri ESMA, s dátumom overenia pri každom partnerovi.'], ['Daňové pravidlá 13 krajín EÚ', 'Z rovnakých zdrojov ako naše daňové stránky, s uvedeným dátumom.'], ['Rovnaké hodnotenie pre každého', '10 oblastí podľa pevnej rubriky. Poradie partnerov určujú pevné pravidlá, nie provízia.'], ['Vaše peniaze ani kľúče nedržíme', 'Text rozhodnutia neukladáme v databáze Virtuse. Virtuse od roku 2018.']],
+      faq: [['Čo sa stane, keď sa zapíšem?', 'Uložíme len váš e-mail. Keď sa report otvorí, pošleme vám jednu správu. Nič iné.'], ['Čo presne dostanem za 14 €?', 'Všetkých 10 oblastí s bodmi a dôvodmi, všetky chýbajúce otázky, plán krokov s nástrojmi Virtuse a PDF na uloženie.'], ['Prečo platiť, keď sa môžem opýtať ChatGPT?', 'Verdict hodnotí každé rozhodnutie na rovnakých 10 oblastiach podľa pevnej rubriky, pracuje s vašimi odpoveďami a s daňovými pravidlami 13 krajín, ktoré uvádzame so zdrojom. Partnerov ukazuje len overených.'], ['Čo ak verdikt povie, že plán nie je pripravený?', 'Verdict meria, nakoľko úplne je plán opísaný, nie či kúpiť alebo predať. Ukáže, čo doplniť, a môžete ho ohodnotiť znova.'], ['Ponechám si ho?', 'Áno. Report si uložíte ako PDF, bez predplatného.'], ['Je to investičné poradenstvo?', 'Nie. Verdict hodnotí úplnosť vašej úvahy. Nehovorí, či kúpiť, predať alebo počkať.'], ['Čo sa stane s mojím textom?', 'Text neukladáme v databáze Virtuse. Na vyhodnotenie ho spracúva Anthropic (USA).']],
+      ctaFinal: 'Zapísať sa', ctaNote: 'Report za 14 € · jednorazovo, bez predplatného'
+    },
+    en: {
+      secDecision: 'Your decision', secFound: 'What Verdict found', secTwo: 'Two areas behind your verdict', secFull: 'Want the full verdict?', secTrust: 'Why trust Verdict', secFaq: 'Before you unlock',
+      ringNote: 'The ring shows how complete your plan is (0 to 100); the chip below shows the verdict level.',
+      cardTitle: { flag: 'Red flag', partners: 'Partners', consult: 'Personal consultation', recheck: 'Rate again', pdf: 'PDF' },
+      stepN: function (n) { return 'Step ' + n; },
+      improve: 'How can this score improve?',
+      waitH: function (n) { return n + ' more areas are waiting'; }, waitP: 'Each one is already scored and explained inside your verdict.', waitCta: 'See every area',
+      fullH: 'Everything inside your verdict', fullP: 'The full verdict opens as a report: all 10 areas, the questions and a step plan in one place. One payment, no subscription.', locked: 'Locked',
+      feats: function (tax) { return [['The full report', 'Every area written out: what you have, what is missing and what to do.'], ['All 10 areas', 'Points and a reason for each area, written for your decision.'], ['Step plan', 'Areas under 7 points, weakest first, each with a Virtuse tool.'], ['Calculations', 'Fees and loan or stacking' + (tax ? ', tax in your country' : '') + ' for your amount.'], ['Every missing question', "What you haven't considered before you act."], ['PDF to keep', 'Your whole verdict as a PDF to keep.']]; },
+      payH: 'More certainty. <span>From decision to next steps.</span>', payP: 'Find the gaps in your plan before they cost you money, and follow clear steps.',
+      barToday: 'Areas described well today', barReport: 'Explained in the report', of10: function (n) { return n + ' of 10'; },
+      payT: 'Your report', payRow: 'Full verdict', once: 'One-time price', onceNote: 'No subscription or renewal. The report is yours to keep.',
+      plusT: 'Plus: personal consultation', plusP: '15 minutes with a person, free, no sales pitch.', plusBtn: 'Book',
+      waitBtn: 'Join the waitlist for the €14 report', buyBtn: 'Unlock my verdict', stripe: 'Secure checkout with Stripe', opens: 'Opens right after payment',
+      trust: [['22 vetted partners', 'We check MiCA licences in the ESMA register, with the check date on every partner.'], ['Tax rules for 13 EU countries', 'From the same sources as our tax pages, with the date shown.'], ['The same rating for everyone', '10 areas on a fixed rubric. Fixed rules set the partner order, not commission.'], ["We don't hold your money or keys", "We don't store your decision text in the Virtuse database. Virtuse since 2018."]],
+      faq: [['What happens after I join?', 'We keep only your email. When the report opens, we send you one message. Nothing else.'], ['What exactly do I get for €14?', 'All 10 areas with points and reasons, every missing question, a step plan with Virtuse tools and a PDF to keep.'], ['Why pay when I can just ask ChatGPT?', 'Verdict rates every decision on the same 10 areas with a fixed rubric, uses your answers and the tax rules of 13 countries we cite with sources. It shows only vetted partners.'], ['What if the verdict says my plan is not ready?', 'Verdict measures how completely your plan is described, not whether to buy or sell. It shows what to add, and you can rate it again.'], ['Do I keep it?', 'Yes. You save the report as a PDF, with no subscription.'], ['Is this investment advice?', 'No. Verdict rates how complete your thinking is. It never says whether to buy, sell or wait.'], ['What happens to my text?', "We don't store it in the Virtuse database. Anthropic (USA) processes it to assess it."]],
+      ctaFinal: 'Join the waitlist', ctaNote: '€14 report · one-time, no subscription'
+    },
+    ru: {
+      secDecision: 'Ваше решение', secFound: 'Что нашёл Verdict', secTwo: 'Две области за вашим вердиктом', secFull: 'Хотите полный вердикт?', secTrust: 'Почему Verdict можно доверять', secFaq: 'Перед тем как открыть',
+      ringNote: 'Кольцо показывает, насколько полно описан план (от 0 до 100), метка под ним — уровень вердикта.',
+      cardTitle: { flag: 'Красный флаг', partners: 'Партнёры', consult: 'Личная консультация', recheck: 'Оценить снова', pdf: 'PDF' },
+      stepN: function (n) { return 'Шаг ' + n; },
+      improve: 'Как улучшить эту оценку?',
+      waitH: function (n) { return 'Ещё ' + n + ' областей ждут вас'; }, waitP: 'Каждая уже оценена и объяснена в вашем вердикте.', waitCta: 'Показать все области',
+      fullH: 'Всё в вашем вердикте', fullP: 'Полный вердикт откроется как отчёт: все 10 областей, вопросы и план шагов в одном месте. Один платёж, без подписки.', locked: 'Закрыто',
+      feats: function (tax) { return [['Полный отчёт', 'Каждая область расписана: что у вас есть, чего не хватает и что сделать.'], ['Все 10 областей', 'Баллы и пояснение по каждой области для вашего решения.'], ['План шагов', 'Области ниже 7 баллов, от самой слабой, каждая с инструментом Virtuse.'], ['Расчёты', 'Комиссии и заём или stacking' + (tax ? ', налоги в вашей стране' : '') + ' для вашей суммы.'], ['Все недостающие вопросы', 'О чём вы не подумали, прежде чем действовать.'], ['PDF для сохранения', 'Весь вердикт в PDF, который останется у вас.']]; },
+      payH: 'Больше уверенности. <span>От решения к следующим шагам.</span>', payP: 'Найдите пробелы в плане раньше, чем они будут стоить вам денег, и двигайтесь по понятным шагам.',
+      barToday: 'Хорошо описанные области сейчас', barReport: 'Объяснено в отчёте', of10: function (n) { return n + ' из 10'; },
+      payT: 'Ваш отчёт', payRow: 'Полный вердикт', once: 'Разовая цена', onceNote: 'Без подписки и продления. Отчёт остаётся у вас.',
+      plusT: 'Плюс: личная консультация', plusP: '15 минут с человеком, бесплатно, без продаж.', plusBtn: 'Записаться',
+      waitBtn: 'Записаться на отчёт за 14 €', buyBtn: 'Открыть вердикт', stripe: 'Безопасная оплата через Stripe', opens: 'Откроется сразу после оплаты',
+      trust: [['22 проверенных партнёра', 'Лицензии MiCA мы проверяем в реестре ESMA, с датой проверки у каждого партнёра.'], ['Налоговые правила 13 стран ЕС', 'Из тех же источников, что и наши налоговые страницы, с указанием даты.'], ['Одинаковая оценка для всех', '10 областей по фиксированной методике. Порядок партнёров определяют фиксированные правила, а не комиссия.'], ['Мы не храним ваши деньги и ключи', 'Текст решения мы не сохраняем в базе данных Virtuse. Virtuse с 2018 года.']],
+      faq: [['Что будет, когда я запишусь?', 'Мы сохраним только ваш e-mail. Когда отчёт откроется, отправим одно письмо. Ничего больше.'], ['Что именно я получу за 14 €?', 'Все 10 областей с баллами и пояснениями, все недостающие вопросы, план шагов с инструментами Virtuse и PDF для сохранения.'], ['Зачем платить, если можно спросить ChatGPT?', 'Verdict оценивает каждое решение по одним и тем же 10 областям по фиксированной методике, учитывает ваши ответы и налоговые правила 13 стран, которые мы приводим с источниками. Он показывает только проверенных партнёров.'], ['Что если вердикт скажет, что план не готов?', 'Verdict измеряет, насколько полно описан план, а не то, покупать или продавать. Он покажет, что дополнить, и вы сможете оценить снова.'], ['Отчёт останется у меня?', 'Да. Вы сохраняете отчёт в PDF, без подписки.'], ['Это инвестиционная консультация?', 'Нет. Verdict оценивает полноту вашего размышления. Он не говорит, покупать, продавать или ждать.'], ['Что будет с моим текстом?', 'Мы не сохраняем его в базе данных Virtuse. Для оценки его обрабатывает Anthropic (США).']],
+      ctaFinal: 'Записаться', ctaNote: 'Отчёт за 14 € · разово, без подписки'
+    }
+  }[LANG];
+  var ICON = {
+    bulb: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-1.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
+    gauge: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-5"/>',
+    box: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    quote: '<rect x="3" y="4" width="18" height="15" rx="3"/><path d="M8 10h2v3H8zM14 10h2v3h-2z"/>',
+    help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.1"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    up: '<path d="M4 16l6-6 4 4 6-6M15 8h5v5"/>', alert: '<path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.1"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>', shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>'
+  };
+  function ic(n, s) { return '<svg class="vx-ic" width="' + (s || 20) + '" height="' + (s || 20) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[n] + '</svg>'; }
+  function vsec(icon, label, id) { return '<div class="vx-sec"' + (id ? ' id="' + id + '"' : '') + '>' + ic(icon) + '<span>' + label + '</span></div>'; }
+
+  function decisionBlock(r) {
+    var L = r.level, col = LEVELCOL[L.id] || 'var(--orange)';
+    return '<section class="vx-decision" style="--b:' + col + '">' + vsec('bulb', W.secDecision) +
+      '<div class="vx-dgrid"><div><h1 class="vx-title">' + esc(A.name || goalLabel()) + '</h1><p class="vx-text">' + esc(A.text) + '</p><p class="small">' + W.ringNote + '</p></div>' +
+      '<div class="vx-score"><div class="score">' + bigRing(r.score, col) + '<b>' + r.score + '<small>/100</small></b></div><span class="pill">' + (L.id === 'redflag' ? FLAG + ' ' : '') + esc(V.levelPill[L.id]) + '</span></div></div></section>';
+  }
+  function stepTitle(s) {
+    if (s.kind === 'flag') return W.cardTitle.flag;
+    if (s.kind === 'filler') return W.cardTitle[s.id] || '';
+    var pick = function (list) { return (list || []).filter(function (x) { return x.id === s.signal; })[0]; };
+    var a = pick(RESULT.areas) || pick(RESULT.locked) || pick(RESULT.signals);
+    return a ? (a.title || a.name) : '';
+  }
+  function foundBlock(r, medium) {
+    var L = r.level;
+    return '<section class="vx-found" id="steps3">' + vsec('search', W.secFound) +
+      '<h2 class="vx-lead">' + esc(L.headline) + ' <span>' + esc(L.why) + (L.more ? ' ' + V.more(L.more) : '') + '</span></h2>' +
+      '<p class="small scoreline">' + esc(L.scoreLine) + '</p>' + (r.partial ? '<p class="small">' + V.partial + '</p>' : '') +
+      '<div class="vx-cards">' + r.steps.map(function (s) {
+        var g = s.signal ? GCOL[GROUP[s.signal]] : s.kind === 'flag' ? 'orange' : '';
+        return '<div class="vf-card vx-step spot ' + g + '"><div class="vx-kicker">' + W.stepN(s.n) + '</div><b>' + esc(stepTitle(s)) + '</b><p>' + esc(s.action) + '</p>' +
+          (s.why ? '<p class="whyl">' + V.why + esc(s.why) + '</p>' : '') + '<div class="vrow">' + stepBtn(s, medium) + '</div></div>';
+      }).join('') + '</div></section>';
+  }
+  function twoBlock(r, medium) {
+    return '<section class="vx-two">' + vsec('gauge', W.secTwo) + '<div class="sig2">' + r.areas.map(function (a) {
+      var g = GROUP[a.id], st = r.steps.filter(function (s) { return s.signal === a.id; })[0];
+      return '<div class="vf-card vx-area ' + GCOL[g] + ' spot"><span class="vx-badge">' + ic(a.points >= 7 ? 'up' : 'alert', 18) + '</span>' +
+        '<div class="h"><div><b>' + esc(a.title) + '</b><div class="role">' + esc(roleLabel(a)) + ' · ' + esc(a.name) + '</div></div><em>' + a.points + '<small>/10</small></em></div>' +
+        '<div class="bar"><i style="width:' + a.points * 10 + '%"></i></div>' +
+        '<p>' + esc(a.meaning) + '</p><p><b class="albl">' + V.todoL + ':</b> ' + (st ? '<a href="#steps3">' + V.inStep(st.n) + '</a>' : esc(a.todo)) + '</p>' +
+        '<details class="vx-improve"><summary>' + W.improve + ic('arrow', 18) + '</summary><p>' + R.tip[a.id] + '</p><p class="dim">' + esc(a.reason) + '</p></details></div>';
+    }).join('') + '</div></section>';
+  }
+  function waitingBlock(r) {
+    var n = (r.locked || []).length; if (!n) return '';
+    return '<section class="vf-card vx-wait">' + '<div class="vx-whead"><span class="vx-lockc">' + ic('lock') + '</span><div><b>' + W.waitH(n) + '</b><p>' + W.waitP + '</p></div>' +
+      '<a class="vf-btn solid" href="#unlock" data-want>' + ic('lock', 16) + ' ' + W.waitCta + ' ' + ic('arrow', 16) + '</a></div>' +
+      '<div class="vx-lgrid">' + r.locked.map(function (x) {
+        return '<div class="vx-lcard ' + GCOL[GROUP[x.id]] + '"><div><b>' + esc(x.title || x.name) + '</b>' + ic('lock', 16) + '</div><i></i><i></i><i></i></div>';
+      }).join('') + '</div>' +
+      '<div class="vx-q"><b>' + R.openQ + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span class="dim">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div></section>';
+  }
+  function fullBlock(r) {
+    var tax = r.pricing && r.pricing.report && r.pricing.report.taxModule;
+    var mocks = ['<i class="l"></i><i class="l s"></i><i class="l"></i><i class="l s"></i>', '<i class="hex"></i><i class="l r"></i><i class="l r s"></i>', '<i class="dot"></i><i class="l"></i><i class="dot"></i><i class="l s"></i>', '<i class="bars"></i>', '<i class="l"></i><i class="l s"></i><i class="l"></i>', '<i class="doc"></i>'];
+    return '<section class="vx-full">' + vsec('box', W.secFull) + '<h2 class="vx-h">' + W.fullH + '</h2><p class="sub">' + W.fullP + '</p>' +
+      '<div class="vx-fgrid">' + W.feats(tax).map(function (f, i) {
+        return '<div class="vf-card vx-feat"><div class="vx-mock">' + mocks[i] + '<span class="vx-lk">' + ic('lock', 14) + ' ' + W.locked + '</span><span class="vx-lockc big">' + ic('lock', 26) + '</span></div><b>' + f[0] + '</b><p>' + f[1] + '</p></div>';
+      }).join('') + '</div></section>';
+  }
+  function payBlock(r) {
+    var pr = r.pricing || { report: { mode: 'waitlist' } }, wait = pr.report.mode !== 'checkout', cov = r.covered == null ? 0 : r.covered;
+    return '<section class="vf-card vx-pay no-print" id="unlock"><div class="vx-pl"><h2>' + W.payH + '</h2><p class="sub">' + W.payP + '</p>' +
+      '<div class="vx-bars"><div><span>' + W.barToday + '</span><b>' + W.of10(cov) + '</b><i><em style="width:' + cov * 10 + '%"></em></i></div>' +
+      '<div class="hi"><span>' + W.barReport + '</span><b>' + W.of10(10) + '</b><i><em style="width:100%"></em></i></div></div></div>' +
+      '<div class="vx-pr" id="report"><b class="vx-pt">' + W.payT + '</b><div class="vx-row"><span>' + W.payRow + '</span><span>' + V.repPrice + '</span></div>' +
+      '<div class="vx-row big"><span>' + W.once + '</span><strong>' + V.repPrice + '</strong></div><p class="small">' + W.onceNote + '</p>' +
+      '<div class="vx-plus"><span class="vx-lockc">' + ic('shield') + '</span><div><b>' + W.plusT + '</b><p>' + W.plusP + '</p></div><button class="vf-btn" data-consult>' + W.plusBtn + '</button></div>' +
+      (wait ? '<p class="small">' + STR.waitNote + '</p>' + wantForm(W.waitBtn)
+        : '<button class="vf-btn solid vx-buy" data-checkout>' + W.buyBtn + ' ' + ic('arrow', 18) + '</button><p class="small c">' + W.opens + '</p><p class="small c">' + ic('shield', 16) + ' ' + W.stripe + '</p>') +
+      '<p class="small cfo">' + V.cfo.replace('<b>Virtuse CFO</b>', '<a href="cfo.html#pricing"><b>Virtuse CFO</b></a>') + '</p></div></section>';
+  }
+  function trustBlock() {
+    return '<section class="vx-trust">' + vsec('quote', W.secTrust) + '<div class="vx-tgrid">' + W.trust.map(function (t) { return '<div class="vf-card vx-tcard"><b>' + t[0] + '</b><p>' + t[1] + '</p></div>'; }).join('') + '</div></section>';
+  }
+  function faqBlock(r) {
+    var wait = !(r.pricing && r.pricing.report && r.pricing.report.mode === 'checkout');
+    return '<section class="vx-faq no-print">' + vsec('help', W.secFaq) + '<div class="vf-card vx-acc">' + W.faq.map(function (f) { return '<details><summary>' + f[0] + ic('arrow', 18) + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
+      '<div class="vx-final"><button class="vf-btn solid" data-want>' + (wait ? W.ctaFinal : W.buyBtn) + ' <span>|</span> ' + V.repPrice + '</button><p class="small">' + W.ctaNote + '</p></div></section>';
   }
   function legal(r) { return '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p>'; }
   function againFoot(pdf) { return '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>' + V.filler.recheck + '</button>' + (pdf ? '<button class="vf-btn solid" data-pdf>' + STR.pdf + '</button>' : '') + '</div>'; }
@@ -772,10 +905,8 @@
     }
     if (!r.level || !r.steps || !r.areas) { panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + STR.error + '</p>' + again; document.getElementById('again').onclick = function () { go(at('review')); }; return; }
     if (r.report) { showReport(r); return; }
-    panel.innerHTML = '<div data-ai-generated="true">' + headBlock(r) + stepsBlock(r, 'result') +
-      '<div class="sec">' + V.areasH + '</div><div class="sig2">' + r.areas.map(function (a) { return areaCard(a, 'result', r.steps); }).join('') + '</div>' +
-      '<div class="vf-card q spot"><b>' + R.openQ + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span class="dim">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div>' +
-      partnersBlock(r, 'verdict') + pricingBlock(r, false) + legal(r) + againFoot(false) + '</div>' + sticky();
+    panel.innerHTML = '<div data-ai-generated="true" class="vx">' + decisionBlock(r) + foundBlock(r, 'result') + twoBlock(r, 'result') + waitingBlock(r) +
+      partnersBlock(r, 'verdict') + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(false) + '</div>' + sticky();
     bindCommon(); bindWant(); loadPartners(r, 'verdict');
   }
 
@@ -786,9 +917,10 @@
       '<button class="vf-btn solid" type="submit">' + (btn || STR.wantBtn) + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo">' + STR.privacy + '</a></p></form>';
   }
   function bindWant() {
-    var f = document.getElementById('want'); if (!f) return;
+    var f = document.getElementById('want');
+    if (!f) { panel.parentNode.querySelectorAll('[data-want]').forEach(function (b) { b.onclick = function (e) { e.preventDefault(); var u = document.getElementById('unlock'); if (u) u.scrollIntoView({ behavior: 'smooth' }); }; }); return; }
     panel.parentNode.querySelectorAll('[data-want]').forEach(function (b) {
-      b.onclick = function () { push({ event: 'unlock_click', verdict_lang: LANG, verdict_band: RESULT && RESULT.band && RESULT.band.id, verdict_level: RESULT && RESULT.level && RESULT.level.id }); f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
+      b.onclick = function (e) { if (e) e.preventDefault(); push({ event: 'unlock_click', verdict_lang: LANG, verdict_band: RESULT && RESULT.band && RESULT.band.id, verdict_level: RESULT && RESULT.level && RESULT.level.id }); f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
     });
     f.onsubmit = function (e) {
       e.preventDefault();
@@ -822,7 +954,7 @@
       '<div class="sec">' + V.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
       partnersBlock(r, 'verdict_report') +
       '<p class="sub sm no-print consult-line">' + V.consultSmall + ' <a href="#" data-consult>' + V.consultLink + '</a></p>' +
-      pricingBlock(r, true) + legal(r) + againFoot(true) + '</div>';
+      '<div class="sec badge">' + V.visitorBadge + '</div>' + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(true) + '</div>';
     bindCommon(); bindWant(); loadPartners(r, 'verdict_report');
   }
 
