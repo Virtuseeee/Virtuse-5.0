@@ -1428,8 +1428,8 @@
   "tr": "Sprawdź przepisy podatkowe w swoim kraju"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Zarządzanie większą pozycją w Bitcoinie? Virtuse CFO · Verdict: proszę bezpłatnie sprawdzić, co pominięto w decyzji. Potem CFO śledzi opłaty i ryzyka. Verdict i audyt opłat są bezpłatne. Płatne plany po uruchomieniu: {0}/miesiąc lub {1}/rok."
+  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Zarządzanie większą pozycją w Bitcoinie? Virtuse CFO · Verdict: proszę bezpłatnie sprawdzić, co pominięto w decyzji. Potem CFO śledzi opłaty i ryzyka. Verdict jest bezpłatny; audyt opłat pojawi się w Virtuse CFO. Płatne plany po uruchomieniu: {0}/miesiąc lub {1}/rok."
  },
  {
   "en": "Get notified",
@@ -1504,8 +1504,8 @@
   "tr": "Pomarańczowa = prognozowana wartość · przerywana = łącznie zainwestowano"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Planowana jest większa alokacja? Virtuse CFO · Verdict: proszę bezpłatnie sprawdzić, co pominięto w decyzji. Potem CFO śledzi opłaty i ryzyka. Verdict i audyt opłat są bezpłatne. Płatne plany po uruchomieniu: {0}/miesiąc lub {1}/rok."
+  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Planowana jest większa alokacja? Virtuse CFO · Verdict: proszę bezpłatnie sprawdzić, co pominięto w decyzji. Potem CFO śledzi opłaty i ryzyka. Verdict jest bezpłatny; audyt opłat pojawi się w Virtuse CFO. Płatne plany po uruchomieniu: {0}/miesiąc lub {1}/rok."
  },
  {
   "en": "Fee arbitrage",
@@ -1592,8 +1592,8 @@
   "tr": "Raporty podatkowe przez Lukka"
  },
  {
-  "en": "Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Verdict i audyt opłat są bezpłatne. Płatne plany po uruchomieniu: {0}/miesiąc lub {1}/rok."
+  "en": "Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Verdict jest bezpłatny; audyt opłat pojawi się w Virtuse CFO. Płatne plany po uruchomieniu: {0}/miesiąc lub {1}/rok."
  },
  {
   "en": "What happens to my sats? · Readiness check",

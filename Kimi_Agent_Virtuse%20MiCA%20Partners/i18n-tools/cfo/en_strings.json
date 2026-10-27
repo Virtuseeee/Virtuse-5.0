@@ -127,22 +127,22 @@
  {
   "en": "Virtuse CFO · Verdict",
   "kind": "text",
-  "context": "tn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Verdict and fee audit, free</span></a><a href=\"concierge.html?utm_source"
+  "context": "tn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source"
  },
  {
   "en": "Free",
   "kind": "text",
-  "context": "</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Verdict and fee audit, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span cl"
+  "context": "</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span cl"
  },
  {
-  "en": "Verdict and fee audit, free",
+  "en": "Rate your decision, free",
   "kind": "text",
-  "context": "p\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Verdict and fee audit, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your "
+  "context": "p\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your "
  },
  {
   "en": "Partner Finder",
   "kind": "text",
-  "context": "an><span class=\"nd-d\">Verdict and fee audit, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total c"
+  "context": "an><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total c"
  },
  {
   "en": "Partners that match your answers",
@@ -385,14 +385,14 @@
   "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email on 1 November, when Verdict and the free f"
  },
  {
-  "en": "One email when Verdict and the free fee audit open. Nothing else. Leave any time from that email.",
+  "en": "One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email.",
   "kind": "text",
-  "context": " class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when Verdict and the free fee audit open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label"
+  "context": " class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label"
  },
  {
   "en": "Privacy",
   "kind": "text",
-  "context": "mail on 1 November, when Verdict and the free fee audit open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label=\"Sample verdict\"> <div class=\"top\"><span>Sample verdi"
+  "context": "mail on 1 November, when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label=\"Sample verdict\"> <div class=\"top\"><span>Sample verdi"
  },
  {
   "en": "Sample verdict",
@@ -540,19 +540,19 @@
   "context": "ce Agent</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"retirement-calculator.html\">Retirement Calculator</a> </div> <p class=\"vd-how-note\">How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.</p> </section> <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> "
  },
  {
-  "en": "Virtuse CFO · free fee audit",
+  "en": "Virtuse CFO · fee audit, coming soon",
   "kind": "text",
-  "context": "!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · free fee audit</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> "
+  "context": "!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> "
  },
  {
   "en": "After the decision, Virtuse CFO tracks your numbers.",
   "kind": "text",
-  "context": " <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · free fee audit</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buyi"
+  "context": " <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buyi"
  },
  {
   "en": "It reads your own exports and never sees your wallet.",
   "kind": "text",
-  "context": " <div class=\"eyebrow\">Virtuse CFO · free fee audit</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export i"
+  "context": " <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export i"
  },
  {
   "en": "Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.",
@@ -682,17 +682,17 @@
  {
   "en": "One product, three levels.",
   "kind": "text",
-  "context": " Not investment advice.</p> </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel an"
+  "context": " Not investment advice.</p> </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. Paid plans open in January; cancel an"
  },
  {
   "en": "Start with a free verdict.",
   "kind": "text",
-  "context": " </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel anytime. The same read-only, local-"
+  "context": " </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. Paid plans open in January; cancel anytime. The same read-only, local-"
  },
  {
-  "en": "Verdict and the fee audit are free, no card needed. We'll tell you when paid plans open; cancel anytime. The same read-only, local-first design on every plan.",
+  "en": "Verdict is free, no card needed; the fee audit comes with Virtuse CFO. We'll tell you when paid plans open; cancel anytime. The same read-only, local-first design on every plan.",
   "kind": "text",
-  "context": " <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict and the fee audit are free, no card needed. Paid plans open in January; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">M"
+  "context": " <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. Paid plans open in January; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">M"
  },
  {
   "en": "Billing period",
@@ -822,32 +822,32 @@
  {
   "en": "Or €90 a year, two months free.",
   "kind": "text",
-  "context": " <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Free fee audit from your export</li><li>Unlimited ve"
+  "context": " <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited ve"
  },
  {
   "en": "That's €7.50 a month, billed yearly.",
   "kind": "text",
-  "context": "</span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Free fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl."
+  "context": "</span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl."
  },
  {
-  "en": "Free fee audit from your export",
+  "en": "Fee audit from your export",
   "kind": "text",
-  "context": "> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Free fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU "
+  "context": "> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU "
  },
  {
   "en": "Unlimited verdicts and full reports",
   "kind": "text",
-  "context": "months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Free fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask y"
+  "context": "months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask y"
  },
  {
   "en": "Your decisions over time, incl. company treasury",
   "kind": "text",
-  "context": "s €7.50 a month, billed yearly.</span></p> <ul><li>Free fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn bt"
+  "context": "s €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn bt"
  },
  {
   "en": "Fee and loan LTV alerts",
   "kind": "text",
-  "context": "i>Free fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"butt"
+  "context": "i>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"butt"
  },
  {
   "en": "Tax report, 13 EU countries, and inheritance kit",
@@ -1307,17 +1307,17 @@
  {
   "en": "No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.",
   "kind": "text",
-  "context": "h2>Customer <span>questions.</span></h2> </div> <div class=\"faq\"> <details open><summary>Will Verdict tell me whether to buy Bitcoin?</summary><p>No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict and the fee audit are free. A full report costs €14, once. Virtuse"
+  "context": "h2>Customer <span>questions.</span></h2> </div> <div class=\"faq\"> <details open><summary>Will Verdict tell me whether to buy Bitcoin?</summary><p>No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse"
  },
  {
   "en": "What does it cost?",
   "kind": "text",
-  "context": " thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict and the fee audit are free. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and inc"
+  "context": " thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and inc"
  },
  {
-  "en": "Verdict and the fee audit are free. A full report costs €14, once. Virtuse CFO is planned at €9 a month or €90 a year, with unlimited verdicts and reports. Join the waitlist and we'll tell you when it opens.",
+  "en": "Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO is planned at €9 a month or €90 a year, with unlimited verdicts and reports. Join the waitlist and we'll tell you when it opens.",
   "kind": "text",
-  "context": " do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict and the fee audit are free. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13"
+  "context": " do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13"
  },
  {
   "en": "Where does Verdict get its facts?",

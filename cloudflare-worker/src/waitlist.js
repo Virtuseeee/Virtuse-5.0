@@ -3,7 +3,7 @@
 // The Virtuse CFO · Verdict waitlist. A sign-up joins its own Resend audience
 // (secret RESEND_CFO_AUDIENCE_ID), never the Brief list, and gets one short
 // confirmation email with a link to leave the waitlist. Nothing else is sent
-// until Verdict and the free fee audit open.
+// until the fee audit and Virtuse CFO open.
 //
 // Contacts are created audience-scoped (POST /audiences/{id}/contacts), so
 // someone who already reads the Brief can still join the waitlist: the

@@ -56,7 +56,7 @@ test('new sign-up joins the CFO audience, not the Brief, and gets one confirmati
   assert.equal(calls[1].body.from, 'Virtuse <plan@virtuse.com>');
   assert.equal(calls[1].body.subject, "You're on the Virtuse CFO · Verdict waitlist");
   assert.match(calls[1].body.html, /list=cfo/);
-  assert.match(calls[1].body.html, /when Verdict and the free fee audit open/);
+  assert.match(calls[1].body.html, /when the fee audit and Virtuse CFO open/);
   assert.doesNotMatch(calls[1].body.html, /1 November|January/);
 }));
 
@@ -73,7 +73,7 @@ test('pricing card sign-up (cfo_plan) gets the paid-plans wording, no launch dat
 test('confirmation email mentions Verdict and the fee audit', () => {
   const h = renderWaitlistEmail('https://x/leave');
   assert.match(h, /Verdict<\/b> scores how complete your Bitcoin decision is/);
-  assert.match(h, /one email when Verdict and the free fee audit open/);
+  assert.match(h, /one email when the fee audit and Virtuse CFO open/);
   assert.doesNotMatch(h, /1 November|January/);
   assert.match(h, /fee audit<\/b> reads your exchange export/);
   assert.doesNotMatch(h, /recommend/i);
@@ -157,7 +157,7 @@ test('confirmation email follows the form language (sk), unknown languages get E
   assert.equal(res.status, 200);
   assert.equal(calls[1].body.subject, 'Ste na čakacej listine Virtuse CFO · Verdict');
   assert.match(calls[1].body.html, /<html lang="sk">/);
-  assert.match(calls[1].body.html, /keď sa otvorí Verdict a bezplatný audit poplatkov/);
+  assert.match(calls[1].body.html, /keď sa otvorí audit poplatkov a Virtuse CFO/);
   assert.doesNotMatch(calls[1].body.html, /novembra|januára/);
   assert.match(calls[1].body.html, /Prevádzkovateľ: Virtuse Wealth Management/);
   assert.match(calls[1].body.html, /list=cfo/);

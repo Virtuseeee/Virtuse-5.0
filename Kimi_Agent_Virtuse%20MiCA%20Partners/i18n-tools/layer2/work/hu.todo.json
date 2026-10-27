@@ -1428,8 +1428,8 @@
   "tr": "Az ország adószabályainak ellenőrzése"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Nagyobb Bitcoin-pozíciót kezel? Virtuse CFO · Verdict: nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat. A Verdict és a díjaudit ingyenes. Fizetős csomagok indulás után: havi {0} vagy évi {1}."
+  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Nagyobb Bitcoin-pozíciót kezel? Virtuse CFO · Verdict: nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat. A Verdict ingyenes; a díjaudit a Virtuse CFO-val érkezik. Fizetős csomagok indulás után: havi {0} vagy évi {1}."
  },
  {
   "en": "Get notified",
@@ -1504,8 +1504,8 @@
   "tr": "Narancs = várható érték · szaggatott = összes befektetés"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Nagyobb allokációt tervez? Virtuse CFO · Verdict: nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat. A Verdict és a díjaudit ingyenes. Fizetős csomagok indulás után: havi {0} vagy évi {1}."
+  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Nagyobb allokációt tervez? Virtuse CFO · Verdict: nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat. A Verdict ingyenes; a díjaudit a Virtuse CFO-val érkezik. Fizetős csomagok indulás után: havi {0} vagy évi {1}."
  },
  {
   "en": "Fee arbitrage",
@@ -1592,8 +1592,8 @@
   "tr": "Adójelentések a Lukkával"
  },
  {
-  "en": "Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "A Verdict és a díjaudit ingyenes. Fizetős csomagok indulás után: havi {0} vagy évi {1}."
+  "en": "Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "A Verdict ingyenes; a díjaudit a Virtuse CFO-val érkezik. Fizetős csomagok indulás után: havi {0} vagy évi {1}."
  },
  {
   "en": "What happens to my sats? · Readiness check",
