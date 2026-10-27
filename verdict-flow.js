@@ -844,14 +844,18 @@
     Object.keys(pf).forEach(function (k) { A[k] = k === 'focus' ? pf[k].slice() : pf[k]; });
     if (pt.text) A.text = pt.text; if (pt.name) A.name = pt.name;
   }
-  if (handed) { A.text = handed.slice(0, 1200); src = 'cfo'; saveText(); }
+  // A new decision from cfo.html is a new verdict: drop the old decision's
+  // name and walk through the questions again from the goal; earlier answers
+  // only stay preselected (bug 2026-10-27: it jumped straight to the check).
+  if (handed) { A.text = handed.slice(0, 1200); A.name = ''; src = 'cfo'; saveText(); }
   build();
   push({ event: 'verdict_start', verdict_lang: LANG, source: src });
-  if (A.goal) {
+  if (handed) go(at('goal'));
+  else if (A.goal) {
     // Prefilled: the final check when everything is answered, else the first gap.
     var gap = KEYS().filter(function (k) { return !A[k]; })[0];
     if (A.text.trim().length < 20) go(at('text'));
     else if (gap) go(at(gap));
     else go(at('review'));
-  } else if (handed) go(1); else go(0);
+  } else go(0);
 })();
