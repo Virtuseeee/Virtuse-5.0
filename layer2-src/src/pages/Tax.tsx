@@ -229,9 +229,9 @@ export default function Tax() {
           <span className="font-semibold">Virtuse CFO</span>
           <br />
           {tv(lang,
-            'Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.',
-            'Verdict aj audit poplatkov sú zadarmo. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
-            'Verdict i audit poplatků jsou zdarma. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
+            'Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.',
+            'Verdict je zadarmo, audit poplatkov príde s Virtuse CFO. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
+            'Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
             [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
         </p>
         <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>
