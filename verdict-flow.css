@@ -434,3 +434,10 @@
   .vx-fgrid > .vx-feat { flex: 0 0 78%; scroll-snap-align: start; }
 }
 @media print { .vx-wait, .vx-full, .vx-trust { display: none !important; } }
+/* Review 2026-10-27: text vs answers warnings, intent, second partner strip. */
+.vf-cf { margin: 4px 0 14px; padding: 14px 16px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--yellow) 45%, transparent); background: color-mix(in srgb, var(--yellow) 9%, transparent); }
+.vf-cf b { display: block; color: var(--yellow); } .vf-cf p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.vfr.cf { border-color: color-mix(in srgb, var(--yellow) 45%, transparent); }
+.vfr .cfw { display: block; margin-top: 6px; color: var(--yellow); font-size: 14px; }
+.vfr .cfw::before { content: "⚠ "; }
+.vx-also { margin-top: 26px; }
