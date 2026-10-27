@@ -56,23 +56,25 @@ test('new sign-up joins the CFO audience, not the Brief, and gets one confirmati
   assert.equal(calls[1].body.from, 'Virtuse <plan@virtuse.com>');
   assert.equal(calls[1].body.subject, "You're on the Virtuse CFO · Verdict waitlist");
   assert.match(calls[1].body.html, /list=cfo/);
-  assert.match(calls[1].body.html, /1 November 2026/);
+  assert.match(calls[1].body.html, /when Verdict and the free fee audit open/);
+  assert.doesNotMatch(calls[1].body.html, /1 November|January/);
 }));
 
-test('pricing card sign-up (cfo_plan) gets the January wording', withFetch(async (calls) => {
+test('pricing card sign-up (cfo_plan) gets the paid-plans wording, no launch date (Ras 2026-10-27)', withFetch(async (calls) => {
   const res = await worker.fetch(req({ email: 'a@b.co', hp: '', source: 'cfo_plan' }), env());
   assert.equal(res.status, 200);
   assert.equal(calls[0].url, 'https://api.resend.com/audiences/aud-cfo/contacts');
   assert.equal(calls[1].body.subject, "You're on the Virtuse CFO list");
-  assert.match(calls[1].body.html, /paid Virtuse CFO plans open in January/);
-  assert.doesNotMatch(calls[1].body.html, /one email on 1 November/);
+  assert.match(calls[1].body.html, /when the paid Virtuse CFO plans open:/);
+  assert.doesNotMatch(calls[1].body.html, /1 November|January/);
   assert.match(calls[1].body.html, /list=cfo/);
 }));
 
 test('confirmation email mentions Verdict and the fee audit', () => {
   const h = renderWaitlistEmail('https://x/leave');
   assert.match(h, /Verdict<\/b> scores how complete your Bitcoin decision is/);
-  assert.match(h, /1 November 2026, when Verdict and the free fee audit open/);
+  assert.match(h, /one email when Verdict and the free fee audit open/);
+  assert.doesNotMatch(h, /1 November|January/);
   assert.match(h, /fee audit<\/b> reads your exchange export/);
   assert.doesNotMatch(h, /recommend/i);
 });
@@ -155,7 +157,8 @@ test('confirmation email follows the form language (sk), unknown languages get E
   assert.equal(res.status, 200);
   assert.equal(calls[1].body.subject, 'Ste na čakacej listine Virtuse CFO · Verdict');
   assert.match(calls[1].body.html, /<html lang="sk">/);
-  assert.match(calls[1].body.html, /1\. novembra 2026/);
+  assert.match(calls[1].body.html, /keď sa otvorí Verdict a bezplatný audit poplatkov/);
+  assert.doesNotMatch(calls[1].body.html, /novembra|januára/);
   assert.match(calls[1].body.html, /Prevádzkovateľ: Virtuse Wealth Management/);
   assert.match(calls[1].body.html, /list=cfo/);
   res = await worker.fetch(req({ email: 'c@d.co', hp: '', source: 'cfo_plan', lang: 'xx' }, { ip: '5.6.7.8' }), env());
@@ -198,3 +201,12 @@ test('every waitlist language has the report email', async () => {
     assert.ok(waitlistSubject('verdict_report', L).length > 10);
   }
 });
+
+test('staging dry run: a valid sign-up answers ok and nothing is sent', withFetch(async (calls) => {
+  const res = await worker.fetch(req({ email: 'a@b.co', hp: '', source: 'cfo_page' }), env({ WAITLIST_DRY_RUN: '1' }));
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true, dryRun: true });
+  assert.equal(calls.length, 0);
+  const bad = await worker.fetch(req({ email: 'nope', hp: '', source: 'cfo_page' }), env({ WAITLIST_DRY_RUN: '1' }));
+  assert.equal(bad.status, 400);
+}));

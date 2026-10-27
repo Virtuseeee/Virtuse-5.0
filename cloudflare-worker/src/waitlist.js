@@ -3,7 +3,7 @@
 // The Virtuse CFO · Verdict waitlist. A sign-up joins its own Resend audience
 // (secret RESEND_CFO_AUDIENCE_ID), never the Brief list, and gets one short
 // confirmation email with a link to leave the waitlist. Nothing else is sent
-// until Verdict and the free fee audit open (1 November 2026).
+// until Verdict and the free fee audit open.
 //
 // Contacts are created audience-scoped (POST /audiences/{id}/contacts), so
 // someone who already reads the Brief can still join the waitlist: the
@@ -12,7 +12,7 @@
 // No RESEND_CFO_AUDIENCE_ID set -> 503, so the route can be deployed before
 // the audience exists without silently dropping sign-ups.
 
-// cfo_plan = the Virtuse CFO card in the pricing table (paid plans, January).
+// cfo_plan = the Virtuse CFO card in the pricing table (paid plans).
 // verdict_report = "full report" button after a free verdict (verdict-flow.js).
 // It joins RESEND_REPORT_AUDIENCE_ID when that secret is set, else the CFO
 // audience. Only the email is kept, never the decision text.
@@ -107,6 +107,9 @@ export async function handleWaitlist(request, env, origin, { json, isRateLimited
   if (source !== undefined && !WAITLIST_SOURCES.includes(source)) {
     return json(400, { error: 'Unknown source.' }, origin);
   }
+  // Staging (WAITLIST_DRY_RUN=1): validate and answer like a real sign-up,
+  // but store nothing and send nothing, so tests never reach the real list.
+  if (env.WAITLIST_DRY_RUN === '1') return json(200, { ok: true, dryRun: true }, origin);
   if (!env.RESEND_CFO_AUDIENCE_ID) {
     return json(503, { error: 'The waitlist is not open yet. Please try again later.' }, origin);
   }

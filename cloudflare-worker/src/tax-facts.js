@@ -7,7 +7,15 @@ export default {
    "name": "Czechia",
    "gainTax": "15% income tax (23% above threshold)",
    "exemption": "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000",
-   "note": "Every disposal (including crypto-to-crypto swaps) is a taxable event, so keep complete records from day one."
+   "note": "Every disposal (including crypto-to-crypto swaps) is a taxable event, so keep complete records from day one.",
+   "sk": {
+    "gainTax": "15 % daň z príjmov (23 % nad stanovenou hranicou)",
+    "exemption": "Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог 15% (23% сверх порога)",
+    "exemption": "Освобождение после 3 лет владения (до 40 млн CZK в год) или если общая выручка от продажи криптовалют за год не превышает 100 000 CZK"
+   }
   },
   {
    "id": "sk",
@@ -15,84 +23,182 @@ export default {
    "gainTax": "19 to 35% income tax",
    "healthLevy": "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer",
    "exemption": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
-   "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income."
+   "note": "A 7% rate and a 1-year exemption were cancelled before taking effect. A net crypto loss cannot offset other income.",
+   "sk": {
+    "gainTax": "19 až 35 % daň z príjmov",
+    "healthLevyShort": "16 % zdravotné odvody",
+    "exemption": "Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог от 19 до 35%",
+    "healthLevyShort": "16% взносов на медицинское страхование",
+    "exemption": "Освобождения по сроку владения нет; каждая продажа и обмен криптовалюты на криптовалюту облагаются налогом"
+   }
   },
   {
    "id": "pl",
    "name": "Poland",
    "gainTax": "19% flat capital gains tax",
    "exemption": "No holding-period exemption",
-   "note": "Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss."
+   "note": "Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
+   "sk": {
+    "gainTax": "19 % jednotná daň z kapitálových výnosov",
+    "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Единый налог 19% на прирост капитала",
+    "exemption": "Без освобождения по сроку владения"
+   }
   },
   {
    "id": "at",
    "name": "Austria",
    "gainTax": "27.5% KESt (capital gains tax)",
    "exemption": "Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption",
-   "note": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost."
+   "note": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.",
+   "sk": {
+    "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
+    "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia"
+   },
+   "ru": {
+    "gainTax": "KESt 27,5% (налог на прирост капитала)",
+    "exemption": "Освобождение через 1 год только для крипты, купленной до марта 2021 года; более поздние покупки без освобождения"
+   }
   },
   {
    "id": "de",
    "name": "Germany",
    "gainTax": "Up to 45% income tax (progressive)",
    "exemption": "0% after a 1-year holding period; total gains under €1,000 a year are tax-free",
-   "note": "Crypto-to-crypto swaps are taxable within the first year. FIFO record-keeping is critical."
+   "note": "Crypto-to-crypto swaps are taxable within the first year. FIFO record-keeping is critical.",
+   "sk": {
+    "gainTax": "Až 45 % daň z príjmov (progresívna)",
+    "exemption": "0 % po 1-ročnej dobe držby; zisky spolu pod 1 000 € ročne sú bez dane"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог до 45% (прогрессивная шкала)",
+    "exemption": "0% после 1 года владения; общая прибыль менее 1000 € в год освобождена от налога"
+   }
   },
   {
    "id": "hu",
    "name": "Hungary",
    "gainTax": "15% capital gains tax",
    "exemption": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
-   "note": "Documented acquisition costs are deductible, so keep every invoice."
+   "note": "Documented acquisition costs are deductible, so keep every invoice.",
+   "sk": {
+    "gainTax": "15 % daň z kapitálových výnosov",
+    "exemption": "Bez oslobodenia podľa doby držby; malé transakcie do 10 % minimálnej mzdy sú bez dane (spolu najviac jedna minimálna mzda ročne)"
+   },
+   "ru": {
+    "gainTax": "Налог 15% на прирост капитала",
+    "exemption": "Без освобождения за срок владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)"
+   }
   },
   {
    "id": "si",
    "name": "Slovenia",
    "gainTax": "No tax on private disposal gains (business trading is taxed)",
    "exemption": "Private gains are not taxed",
-   "note": "Mining is taxed as other income. Frequent trading can count as a business activity."
+   "note": "Mining is taxed as other income. Frequent trading can count as a business activity.",
+   "sk": {
+    "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
+    "exemption": "Súkromné zisky sú bez dane"
+   },
+   "ru": {
+    "gainTax": "Частная прибыль от продажи не облагается (предпринимательская торговля облагается)",
+    "exemption": "Частная прибыль освобождена от налога"
+   }
   },
   {
    "id": "hr",
    "name": "Croatia",
    "gainTax": "12% on crypto gains (since 2024)",
    "exemption": "Tax-free after a 2-year holding period",
-   "note": "File JOPPD even for exempt sales. Losses offset gains only within the same year."
+   "note": "File JOPPD even for exempt sales. Losses offset gains only within the same year.",
+   "sk": {
+    "gainTax": "12 % zo ziskov z kryptomien (od roku 2024)",
+    "exemption": "Bez dane po 2 rokoch držby"
+   },
+   "ru": {
+    "gainTax": "12% с криптоприбыли (с 2024 года)",
+    "exemption": "Освобождение после 2 лет владения"
+   }
   },
   {
    "id": "ro",
    "name": "Romania",
    "gainTax": "16% income tax on crypto gains (10% until 2025)",
    "exemption": "No holding-period exemption",
-   "note": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year."
+   "note": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year.",
+   "sk": {
+    "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do 2025: 10 %)",
+    "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Подоходный налог 16% с криптоприбыли (до 2025 года 10%)",
+    "exemption": "Без освобождения по сроку владения"
+   }
   },
   {
    "id": "bg",
    "name": "Bulgaria",
    "gainTax": "10% flat tax on gains",
    "exemption": "No holding-period exemption",
-   "note": "Low flat rate; keep exchange statements so your records are audit-ready."
+   "note": "Low flat rate; keep exchange statements so your records are audit-ready.",
+   "sk": {
+    "gainTax": "10 % jednotná daň zo ziskov",
+    "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Фиксированный налог 10% на прибыль",
+    "exemption": "Без освобождения по сроку владения"
+   }
   },
   {
    "id": "nl",
    "name": "Netherlands",
    "gainTax": "Box 3 wealth tax on a deemed return (about 36% of the assumed yield)",
    "exemption": "Tax-free allowance (€59,357 per person, 2026)",
-   "note": "No capital gains tax as such: you are taxed on an assumed return on your holdings. Box 3 is being reformed, so check the current year’s rules."
+   "note": "No capital gains tax as such: you are taxed on an assumed return on your holdings. Box 3 is being reformed, so check the current year’s rules.",
+   "sk": {
+    "gainTax": "Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)",
+    "exemption": "Nezdaniteľná časť (59 357 € na osobu, 2026)"
+   },
+   "ru": {
+    "gainTax": "Налог на имущество Box 3: примерно 36% от условной доходности",
+    "exemption": "Необлагаемый минимум (59 357 € на человека, 2026)"
+   }
   },
   {
    "id": "fr",
    "name": "France",
    "gainTax": "31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026)",
    "exemption": "No holding-period exemption; total disposals up to €305 a year are exempt",
-   "note": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are."
+   "note": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
+   "sk": {
+    "gainTax": "31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026)",
+    "exemption": "Bez oslobodenia podľa doby držby; predaje spolu do 305 € ročne sú oslobodené"
+   },
+   "ru": {
+    "gainTax": "Фиксированный налог 31,4% (PFU: 12,8% подоходного налога + 18,6% социальных взносов, 2026)",
+    "exemption": "Без освобождения по сроку владения; продажи в сумме до 305 € в год освобождены"
+   }
   },
   {
    "id": "es",
    "name": "Spain",
    "gainTax": "19 to 30% progressive tax on savings income",
    "exemption": "No holding-period exemption",
-   "note": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins."
+   "note": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins.",
+   "sk": {
+    "gainTax": "19 až 30 % progresívna daň z kapitálových príjmov",
+    "exemption": "Bez oslobodenia podľa doby držby"
+   },
+   "ru": {
+    "gainTax": "Прогрессивный налог от 19 до 30% на доходы от сбережений",
+    "exemption": "Без освобождения по сроку владения"
+   }
   }
  ]
 };

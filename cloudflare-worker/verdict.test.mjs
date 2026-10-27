@@ -28,7 +28,7 @@ const POINTS = { worst_case: 3, liquidity: 8, tax: 4, custody: 6, plan_b: 5, goa
 function modelOut(over = {}) {
   return {
     declined: false, is_loan: false, drawdown_tested: true, tax_rule_wrong: false, country: 'sk',
-    signals: SIGNALS.map((s) => ({ id: s.id, points: POINTS[s.id], reason: `Text o ${s.id}.` })),
+    signals: SIGNALS.map((s) => ({ id: s.id, points: POINTS[s.id], reason: `Text o ${s.id}.`, text_evidence: 'BTC' })),
     missing: ['Aký je váš plán pri poklese o 70 %?'],
     ...over,
   };
@@ -60,7 +60,8 @@ test('score is the sum, band and weakest point come from the rubric', () => {
   assert.equal(r.band.label, 'Doplňte 2 až 3 predpoklady');
   // worst_case and alternatives both have 3: priority 1 wins
   assert.equal(r.weakest.id, 'worst_case');
-  assert.equal(r.weakest.tool.page, 'stacking.html');
+  // v2 remap: worst_case → Loan & Liquidity Copilot
+  assert.equal(r.weakest.tool.page, 'loan.html');
   assert.equal(r.signals.length, 10);
 });
 
@@ -104,11 +105,12 @@ test('a tax rule that contradicts the data is always the weakest point', () => {
   assert.equal(r.weakest.tool.page, 'tax-agent.html');
 });
 
-test('points are clamped, missing is capped at 3, wrong signal count throws', () => {
+test('points are clamped, missing is capped at 3, 9 signals render as partial, under 7 throws', () => {
   const r = scoreVerdict(modelOut({ signals: SIGNALS.map((s) => ({ id: s.id, points: 14, reason: 'x' })), missing: ['a', 'b', 'c', 'd'] }), 'en');
   assert.equal(r.score, 100);
   assert.equal(r.missing.length, 3);
-  assert.throws(() => scoreVerdict(modelOut({ signals: modelOut().signals.slice(0, 9) }), 'en'));
+  assert.equal(scoreVerdict(modelOut({ signals: modelOut().signals.slice(0, 9) }), 'en').partial, true);
+  assert.throws(() => scoreVerdict(modelOut({ signals: modelOut().signals.slice(0, 6) }), 'en'));
 });
 
 test('every result carries the AI label (AI Act art. 50) and the score note', () => {
@@ -166,13 +168,13 @@ test('POST /verdict calls Claude once with structured output and returns the res
   assert.ok([...e.RATE_LIMIT_KV.store.keys()].some((k) => k.startsWith('verdict:spend:')));
 }));
 
-test('closed without VERDICT_ENABLED on virtuse.com, open on staging', withClaude(async (calls) => {
+test('closed without VERDICT_ENABLED for every Origin (the header is never trusted)', withClaude(async (calls) => {
   const body = { text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' };
-  let res = await worker.fetch(req(body), env({ VERDICT_ENABLED: undefined }));
-  assert.equal(res.status, 503);
+  for (const origin of [ORIGIN, STAGING]) {
+    const res = await worker.fetch(req(body, { origin }), env({ VERDICT_ENABLED: undefined }));
+    assert.equal(res.status, 503);
+  }
   assert.equal(calls.length, 0);
-  res = await worker.fetch(req(body, { origin: STAGING }), env({ VERDICT_ENABLED: undefined }));
-  assert.equal(res.status, 200);
 }));
 
 test('no API key -> 503, short text -> 400, honeypot -> no call', withClaude(async (calls) => {
@@ -193,10 +195,43 @@ test('10 a day per IP, and the monthly cap stops calls', withClaude(async (calls
   assert.equal(calls.length, 10);
 }));
 
-test('advice-like model output is not shown', withClaude(async () => {
+test('staging boost raises new verdicts per IP only on its own UTC day', async () => {
+  const { perIpPerDay } = await import('./src/verdict.js');
+  assert.equal(perIpPerDay({}, '2026-10-27'), 10);
+  assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: '50:2026-10-27' }, '2026-10-27'), 50);
+  assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: '50:2026-10-27' }, '2026-10-28'), 10);
+  assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: 'x' }, '2026-10-27'), 10);
+});
+
+test('re-rating after additions has its own 20 a day per IP', withClaude(async (calls) => {
+  const e = env();
+  const body = { text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' };
+  for (let i = 0; i < 10; i++) assert.equal((await worker.fetch(req(body), e)).status, 200);
+  assert.equal((await worker.fetch(req(body), e)).status, 429);
+  const re = { ...body, recalc: true };
+  for (let i = 0; i < 20; i++) assert.equal((await worker.fetch(req(re), e)).status, 200);
+  assert.equal((await worker.fetch(req(re), e)).status, 429);
+  assert.equal(calls.length, 30);
+}));
+
+test('advice-like model output is not shown: one retry, then a plain message', withClaude(async (calls) => {
   const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
   assert.equal(res.status, 502);
+  assert.equal(calls.length, 2);
+  assert.match((await res.json()).error, /other words/);
 }, modelOut({ missing: ['You should buy more now.'] })));
+
+test('advice-like wording on the first try, clean on the retry -> shown', async () => {
+  const outs = [modelOut({ missing: ['You should buy more now.'] }), modelOut()];
+  const orig = globalThis.fetch; let n = 0;
+  globalThis.fetch = async () => new Response(JSON.stringify({ id: 'm', type: 'message', role: 'assistant', model: 'claude-opus-5-5', stop_reason: 'end_turn', stop_sequence: null,
+    content: [{ type: 'text', text: JSON.stringify(outs[n++]) }], usage: { input_tokens: 1, output_tokens: 1 } }), { status: 200, headers: { 'content-type': 'application/json' } });
+  try {
+    const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
+    assert.equal(res.status, 200);
+    assert.equal(n, 2);
+  } finally { globalThis.fetch = orig; }
+});
 
 test('refusal stop reason is shown as declined', withClaude(async () => {
   const res = await worker.fetch(req({ text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' }), env());
@@ -224,13 +259,15 @@ test('free view: 2 signals with reasons, 8 only named, first missing question, n
   const r = await res.json();
   assert.equal(r.score, 55);
   assert.equal(r.signals.length, 2);
-  assert.deepEqual(r.signals.map((s) => s.role), ['strongest', 'weakest']);
-  assert.equal(r.signals[0].id, 'liquidity');
-  assert.equal(r.signals[1].id, r.weakest.id);
+  assert.deepEqual(r.signals.map((s) => s.role), ['weakest', 'strongest']);
+  assert.equal(r.signals[1].id, 'liquidity');
+  assert.equal(r.signals[0].id, r.weakest.id);
   assert.equal(r.locked.length, 8);
   assert.ok(r.locked.every((s) => s.name && s.reason === undefined && s.points === undefined));
   assert.equal(r.missing.length, 1);
-  assert.equal(r.partnerFinder, null);
+  assert.equal(r.covered, 3);
+  // No goal tile, but the text says "kúpim": partners come from the text (review 2026-10-27).
+  assert.deepEqual(r.partnerFinder, { pf_goal: 'buy' });
   const body = JSON.stringify(r);
   for (const id of r.locked.map((s) => s.id)) assert.ok(!body.includes(`Text o ${id}.`));
 }));
@@ -253,7 +290,7 @@ test('cleanProfile drops wrong types and "na"; selling maps to tax help', async 
   assert.deepEqual(cleanProfile(null), {});
   assert.deepEqual(cleanProfile(['goal']), {});
   assert.deepEqual(cleanProfile({ goal: 'na', country: 'other', keys: 5 }), { country: 'other' });
-  assert.deepEqual(partnerFinderQuery({ goal: 'sell', country: 'other', keys: 'selfplan' }), { pf_goal: 'tax', pf_custody: 'self' });
+  assert.deepEqual(partnerFinderQuery({ goal: 'sell', country: 'other', keys: 'selfplan' }), { pf_goal: 'tax', pf_experience: 'hodler', pf_custody: 'self' });
   assert.equal(partnerFinderQuery({}), null);
 });
 
@@ -275,9 +312,12 @@ test('reasons call profile answers "your answers", never "profile"', () => {
   assert.match(systemPrompt('sk'), /vaše odpovede/);
 });
 
-test('report preview: all 10 signals and a plan on staging; virtuse.com still gets the free view', withClaude(async () => {
+test('report preview only with VERDICT_REPORT_PREVIEW (staging Worker), never from the Origin header', withClaude(async () => {
   const text = 'Každý mesiac kúpim BTC za 100 €, 10 rokov, rezerva 6 mesiacov.';
-  let r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING }), env())).json();
+  let r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING, ip: '7.7.7.7' }), env())).json();
+  assert.equal(r.report, undefined);
+  assert.equal(r.signals.length, 2);
+  r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { origin: STAGING }), env({ VERDICT_REPORT_PREVIEW: '1' }))).json();
   assert.equal(r.report, true);
   assert.equal(r.signals.length, 10);
   assert.ok(r.signals.every((s) => s.reason && s.tool.page));
@@ -291,3 +331,39 @@ test('report preview: all 10 signals and a plan on staging; virtuse.com still ge
   r = await (await worker.fetch(req({ text, lang: 'sk', report: true }, { ip: '8.8.8.8' }), env({ VERDICT_REPORT_PREVIEW: '1' }))).json();
   assert.equal(r.signals.length, 10);
 }));
+
+test('a signal whose quote is not in the text is capped at 7; a real quote keeps 10', () => {
+  const text = 'Kúpim BTC za 10 000 €, rezervu mám na 6 mesiacov.';
+  const out = modelOut({ signals: SIGNALS.map((s) => ({ id: s.id, points: 10, reason: 'x', only_profile: false,
+    text_evidence: s.id === 'liquidity' ? 'rezervu mám na 6 mesiacov' : s.id === 'goal' ? 'chcem zbohatnúť' : '' })) });
+  const r = scoreVerdict(out, 'sk', { text, profile: {} });
+  const p = Object.fromEntries(r.signals.map((s) => [s.id, s.points]));
+  assert.equal(p.liquidity, 10);
+  assert.equal(p.goal, 7);
+  assert.equal(p.tax, 7);
+});
+
+test('funnel answers guarantee minimum points; a sensible completed funnel reaches 40+', () => {
+  const zero = modelOut({ drawdown_tested: false, signals: SIGNALS.map((s) => ({ id: s.id, points: 0, reason: 'x', only_profile: true, text_evidence: '' })) });
+  const text = 'Chcem kúpiť Bitcoin za 10 000 € z úspor a držať ho 5 rokov.';
+  let r = scoreVerdict(zero, 'sk', { text, profile: { amount: 'l', drop: 'hold', reserve: 'yes' } });
+  let p = Object.fromEntries(r.signals.map((s) => [s.id, s.points]));
+  assert.ok(p.worst_case >= 5 && p.worst_case <= 7);
+  assert.equal(p.liquidity, 6);
+  const full = { goal: 'buy', country: 'sk', experience: 'new', amount: 'l', share: '5_20', horizon: 'gt4', reserve: 'yes', keys: 'exch', drop: 'hold', aim: 'grow', tax_known: 'yes', ruleset: 'yes' };
+  r = scoreVerdict(zero, 'sk', { text, profile: full });
+  assert.ok(r.scoreRaw >= 40, 'scoreRaw ' + r.scoreRaw);
+  assert.ok(r.signals.every((s) => s.points <= 7));
+});
+
+test('new funnel ids pass cleanProfile; Partner Finder gets hodler for sell, loan and custody', async () => {
+  const { cleanProfile, partnerFinderQuery } = await import('./src/verdict.js');
+  const p = cleanProfile({ goal: 'loan', ltv: 'lt30', liqprice: 'yes', heirs: 'maybe', keys: 'multisig', tax_known: 'roughly' });
+  assert.deepEqual(p, { goal: 'loan', keys: 'multisig', tax_known: 'roughly', ltv: 'lt30', liqprice: 'yes' });
+  assert.equal(partnerFinderQuery(p).pf_experience, 'hodler');
+  assert.equal(partnerFinderQuery(p).pf_custody, 'assisted');
+  assert.equal(partnerFinderQuery({ goal: 'buy', keys: 'exch', custody_pref: 'self', freq: 'weekly' }).pf_custody, 'self');
+  assert.deepEqual(cleanProfile({ custody_pref: 'assisted', freq: 'weekly' }), { custody_pref: 'assisted', freq: 'weekly' });
+  assert.match(systemPrompt('en'), /text_evidence/);
+  assert.match(systemPrompt('en'), /70% fall/);
+});

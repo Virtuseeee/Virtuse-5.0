@@ -1428,8 +1428,8 @@
   "tr": "Перевірити податкові правила вашої країни"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.",
-  "tr": "Керуєте більшою позицією в Біткоїні? Virtuse CFO · Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict і аудит комісій безкоштовні з 1 листопада. Платні плани з січня: {0}/міс. або {1}/рік."
+  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Керуєте більшою позицією в Біткоїні? Virtuse CFO · Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict і аудит комісій безкоштовні. Платні плани після запуску: {0}/міс. або {1}/рік."
  },
  {
   "en": "Get notified",
@@ -1504,8 +1504,8 @@
   "tr": "Помаранчева = прогнозована вартість · пунктир = усього інвестовано"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.",
-  "tr": "Плануєте більшу алокацію? Virtuse CFO · Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict і аудит комісій безкоштовні з 1 листопада. Платні плани з січня: {0}/міс. або {1}/рік."
+  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Плануєте більшу алокацію? Virtuse CFO · Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict і аудит комісій безкоштовні. Платні плани після запуску: {0}/міс. або {1}/рік."
  },
  {
   "en": "Fee arbitrage",
@@ -1592,8 +1592,8 @@
   "tr": "Податкові звіти через Lukka"
  },
  {
-  "en": "Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.",
-  "tr": "Verdict і аудит комісій безкоштовні з 1 листопада. Платні плани з січня: {0}/міс. або {1}/рік."
+  "en": "Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Verdict і аудит комісій безкоштовні. Платні плани після запуску: {0}/міс. або {1}/рік."
  },
  {
   "en": "What happens to my sats? · Readiness check",

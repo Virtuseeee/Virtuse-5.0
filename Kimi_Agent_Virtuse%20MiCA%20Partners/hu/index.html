@@ -10,7 +10,7 @@
      color-scheme to trust — producing unreadable dark-text-on-dark-
      background exactly like this page's own dark design, just doubled). -->
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="../lang-detect.js" defer></script>
 <!-- vb-consent -->
@@ -1004,7 +1004,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Eszközök</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></span><span class="nd-d">Verdikt és díjaudit, november 1-jétől ingyen</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerek a válaszai alapján</span></a><a href="/hu/bitcoin-dijindex/"><span class="nd-t">Díjindex</span><span class="nd-d">A vásárlás teljes költsége összevetve</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Rendszeres vásárlás tervezése</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Eladás vagy hitel Bitcoin-fedezettel</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Országos szabályok és öröklési ellenőrzés</span></a><a href="retirement-calculator.html"><span class="nd-t">Nyugdíjkalkulátor</span><span class="nd-d">Mennyi Bitcoin kell a nyugdíjhoz</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></span><span class="nd-d">Verdikt és díjaudit ingyen</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerek a válaszai alapján</span></a><a href="/hu/bitcoin-dijindex/"><span class="nd-t">Díjindex</span><span class="nd-d">A vásárlás teljes költsége összevetve</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Rendszeres vásárlás tervezése</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Eladás vagy hitel Bitcoin-fedezettel</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Országos szabályok és öröklési ellenőrzés</span></a><a href="retirement-calculator.html"><span class="nd-t">Nyugdíjkalkulátor</span><span class="nd-d">Mennyi Bitcoin kell a nyugdíjhoz</span></a></div>
       </div>
       <div class="nav-group" id="ng-eco">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ökoszisztéma</button>
@@ -1175,13 +1175,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </section>
 
-  <!-- 3b. VIRTUSE CFO (from the free-audit stage, 1 Nov) -->
+  <!-- 3b. VIRTUSE CFO (from the free-audit stage) -->
   <section id="cfo">
     <div class="cfo-panel">
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Virtuse CFO · Ingyenes Verdict és díjaudit</span>
         <h2>Az Ön AI CFO-ja Bitcoinhoz. <span>A saját exportjait olvassa, a tárcáját soha nem látja.</span></h2>
-        <p class="lead">A fenti kalkulátor közzétett díjakkal számol. A Virtuse CFO az Ön saját tőzsdei exportját olvassa be a böngészőjében, megmutatja, mennyit fizetett valójában, és az Ön saját számai alapján válaszol a kérdésekre.<span class="only-wait"> Az ingyenes audit november 1-jén indul.</span></p>
+        <p class="lead">A fenti kalkulátor közzétett díjakkal számol. A Virtuse CFO az Ön saját tőzsdei exportját olvassa be a böngészőjében, megmutatja, mennyit fizetett valójában, és az Ön saját számai alapján válaszol a kérdésekre.<span class="only-wait"> Iratkozzon fel, és szólunk, amikor az ingyenes audit elindul.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
           <a class="btn btn-primary" href="cfo.html">Ingyenes audit indítása</a>
           <a class="btn btn-ghost" href="cfo.html#verdict">Ingyenes verdikt kérése</a>
@@ -1191,7 +1191,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <label for="waitEmail" style="position:absolute;left:-9999px">E-mail-cím</label>
           <input id="waitEmail" name="email" type="email" placeholder="E-mail-cím" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-primary" type="submit">Szóljon nov. 1-jén</button>
+          <button class="btn btn-primary" type="submit">Feliratkozom</button>
           <a class="btn btn-ghost" href="cfo.html#verdict">Ingyenes verdikt kérése</a>
           <a class="btn btn-ghost" href="cfo.html">Hogyan működik</a>
         </form>
@@ -1804,7 +1804,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Kérjük, adjon meg érvényes e-mail-címet.'; return; }
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Küldés...';
-    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist', {
+    fetch((/^(staging\.virtuse\.com|localhost)$/.test(location.hostname) ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, hp: hp, source: 'home_cfo', lang: document.documentElement.lang })
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })

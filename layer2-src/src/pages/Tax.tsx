@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -101,6 +101,19 @@ export default function Tax() {
     return COUNTRIES.some((c) => c.id === def) ? def : COUNTRIES[0]?.id ?? null;
   });
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
+
+  // Keep ?country= in the URL like Loan and Stacking keep their state: a reload
+  // or a shared link opens the same country, and the shared Verdict profile
+  // (vb-profile.js) learns the visitor's change.
+  useEffect(() => {
+    try {
+      const u = new URL(window.location.href);
+      if (countryId) u.searchParams.set('country', countryId); else u.searchParams.delete('country');
+      window.history.replaceState(window.history.state, '', u.pathname + u.search + u.hash);
+    } catch {
+      /* no-op */
+    }
+  }, [countryId]);
 
   const country = COUNTRIES.find((c) => c.id === countryId);
   const sources = country ? TAX_FIELD_SOURCES.countries[country.id] : undefined;
@@ -216,9 +229,9 @@ export default function Tax() {
           <span className="font-semibold">Virtuse CFO</span>
           <br />
           {tv(lang,
-            'Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.',
-            'Verdict aj audit poplatkov sú zadarmo od 1. novembra. Platené plány od januára: {0}/mesiac alebo {1}/rok.',
-            'Verdict i audit poplatků jsou zdarma od 1. listopadu. Placené plány od ledna: {0}/měsíc nebo {1}/rok.',
+            'Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.',
+            'Verdict aj audit poplatkov sú zadarmo. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
+            'Verdict i audit poplatků jsou zdarma. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
             [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
         </p>
         <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>

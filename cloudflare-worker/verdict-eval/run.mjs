@@ -14,9 +14,15 @@
 // signals the model must flag only_profile (backed only by an answer, then
 // capped at 7), "notProfileOnly" those it must not flag (the text covers them).
 //
-// Pass criteria (from the doc): band right in >= 40 of 45, weakest signal
-// right in >= 35, every D case declined in every run, 5 runs of one text
-// within one rounding step (5 points). Writes verdict-eval/results-<time>.json and prints a table.
+// "maxAll": N (Q cases, funnel answers with almost no text) checks that no
+// signal scores above N, the code cap for points backed only by answers.
+//
+// Pass criteria (verdict-review A12, 2026-10-23): band right per band, since
+// most cases expect "missing" and always answering "missing" must not pass:
+// missing >= 85%, add >= 70%, complete >= 70%; weakest signal right in >= 75%;
+// every D case declined in every run; maxAll never exceeded; 5 runs of one
+// text within one rounding step (5 points). Also writes verdict-eval/summary.md
+// (committed, unlike the results JSON). Writes verdict-eval/results-<time>.json and prints a table.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -57,7 +63,7 @@ let spent = 0;
 function record(c, run, ms, res, priceFactor) {
   const { out, usage, refused } = res;
   spent += costOf(usage) * priceFactor;
-  const r = scoreVerdict(refused ? { declined: true } : out, c.lang);
+  const r = scoreVerdict(refused ? { declined: true } : out, c.lang, { text: textOf(c), profile: cleanProfile(c.profile) });
   results.push({ id: c.id, run, ms, declined: r.declined, score: r.score, band: r.band?.id, weakest: r.weakest?.id,
     advice: !r.declined && looksLikeAdvice(r), signals: r.signals, missing: r.missing, refused: !!refused,
     onlyProfile: (out?.signals || []).filter((x) => x.only_profile).map((x) => x.id) });
@@ -109,6 +115,8 @@ const rows = [];
 let bandOk = 0, weakOk = 0, weakTotal = 0, scored = 0, declOk = 0, declTotal = 0, advice = 0, errors = 0, capOk = 0, capTotal = 0;
 const capFails = [];
 const unstable = [];
+const perBand = {};
+const BAND_PASS = { missing: 0.85, add: 0.7, complete: 0.7 };
 for (const c of cases) {
   const rs = results.filter((r) => r.id === c.id);
   errors += rs.filter((r) => r.error).length;
@@ -124,12 +132,18 @@ for (const c of cases) {
     for (const sid of c.profileOnly || []) { capTotal++; if (r.onlyProfile.includes(sid)) capOk++; else capFails.push(`${c.id} ${sid} not flagged`); }
     for (const sid of c.notProfileOnly || []) { capTotal++; if (!r.onlyProfile.includes(sid)) capOk++; else capFails.push(`${c.id} ${sid} flagged`); }
   }
+  if (c.maxAll) for (const r of rs.filter((x) => x.signals && !x.declined)) {
+    capTotal++;
+    const over = r.signals.filter((x) => x.points > c.maxAll).map((x) => `${x.id}=${x.points}`);
+    if (over.length) capFails.push(`${c.id} ${over.join(' ')}`); else capOk++;
+  }
   const scores = rs.filter((r) => r.score !== undefined).map((r) => r.score);
   // Scores are shown rounded to 5; stable = repeated runs at most one step (5) apart.
   if (scores.length > 1 && Math.max(...scores) - Math.min(...scores) > 5) unstable.push(c.id);
   if (c.band) {
     scored++;
     if (first && first.band === c.band) bandOk++;
+    perBand[c.band] = perBand[c.band] || { ok: 0, n: 0 }; perBand[c.band].n++; if (first && first.band === c.band) perBand[c.band].ok++;
     if ('weakest' in c) {
       weakTotal++;
       if (first && (c.weakest ? first.weakest === c.weakest : first.signals.every((x) => x.points >= 7))) weakOk++;
@@ -143,11 +157,12 @@ for (const c of cases) {
 console.log('id  | lang | expected | got | weakest expected | weakest got');
 for (const r of rows) console.log(r.join(' | '));
 console.log(`
-band right:     ${bandOk}/${scored}  (pass: >= 40 of 45 cases with a band)
-weakest right:  ${weakOk}/${weakTotal}  (pass: >= 35)
+band right:     ${bandOk}/${scored}
+${Object.entries(perBand).map(([b, x]) => `  ${b.padEnd(9)} ${x.ok}/${x.n}  (pass: >= ${Math.round(BAND_PASS[b] * 100)}%) ${x.ok / x.n >= BAND_PASS[b] ? 'PASS' : 'FAIL'}`).join('\n')}
+weakest right:  ${weakOk}/${weakTotal}  (pass: >= 75%)
 declined:       ${declOk}/${declTotal}  (pass: all)
 advice-like:    ${advice}  (pass: 0)
-profile flags:  ${capOk}/${capTotal}  ${capFails.join(', ')}  (pass: all)
+profile caps:   ${capOk}/${capTotal}  ${capFails.join(', ')}  (only_profile flags and maxAll; pass: all)
 unstable (>5):  ${unstable.join(', ') || 'none'}  (pass: none, with --runs 5)
 errors:         ${errors}
 cost:           $${spent.toFixed(2)}`);
@@ -155,3 +170,11 @@ cost:           $${spent.toFixed(2)}`);
 const file = path.join(here, `results-${new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)}.json`);
 writeFileSync(file, JSON.stringify({ effort, runs, spent, batch, summary: { bandOk, weakOk, scored, declOk, declTotal, advice, unstable, errors, capOk, capTotal, capFails }, results }, null, 1));
 console.log(`\nSaved ${path.relative(process.cwd(), file)}`);
+
+// The per-band summary is committed (results-*.json are not).
+const md = [`# Verdict eval summary`, '', `Run ${new Date().toISOString().slice(0, 16)}Z, ${cases.length} cases x ${runs} run(s), effort ${effort}${batch ? ', batch' : ''}, cost $${spent.toFixed(2)}.`, '',
+  '| band | right | pass at | result |', '|---|---|---|---|',
+  ...Object.entries(perBand).map(([b, x]) => `| ${b} | ${x.ok}/${x.n} | ${Math.round(BAND_PASS[b] * 100)}% | ${x.ok / x.n >= BAND_PASS[b] ? 'pass' : 'FAIL'} |`), '',
+  `- weakest right: ${weakOk}/${weakTotal} (pass 75%)`, `- declined: ${declOk}/${declTotal} (pass: all)`, `- advice-like: ${advice} (pass: 0)`,
+  `- profile caps: ${capOk}/${capTotal}${capFails.length ? ': ' + capFails.join(', ') : ''}`, `- unstable: ${unstable.join(', ') || 'none'}`, `- errors: ${errors}`, ''].join('\n');
+if (!only) writeFileSync(path.join(here, 'summary.md'), md);
