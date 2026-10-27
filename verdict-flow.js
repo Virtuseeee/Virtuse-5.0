@@ -578,7 +578,7 @@
     draw();
   }
   function review() {
-    PREV = null; ADDED = {}; // a verdict started from the final check is a new one, not a re-rating
+    PREV = null; ADDED = {}; RERATED = false; SEEN = []; saveAdded(); // a verdict started from the final check is a new one, not a re-rating
     var rows = [['goal', goalLabel(), 'goal'], ['text', A.text || STR.none, 'text']].concat(KEYS().map(function (k) { return [k, ans(k), k]; }));
     var cfs = conflicts(); if (cfs.length) push({ event: 'verdict_conflict', verdict_lang: LANG, fields: cfs.map(function (c) { return c[0]; }).join(',') });
     panel.innerHTML = '<div class="chip-eyebrow">' + STR.revEb + '</div><h2>' + STR.revH + '</h2><p class="sub">' + STR.revP + '</p><div style="margin-top:18px">' +
@@ -653,7 +653,7 @@
       partnersH: 'Kde to môžete urobiť',
       partnersP: function (c) { return 'Partneri v kategórii ' + c.cat + ', ktorí spĺňajú vaše kritériá' + (c.crit ? ' (' + c.crit + ')' : '') + '. Poradie určujú pevné pravidlá, nie provízia. Porovnávate a vyberáte vy.'; },
       partnersBasics: 'Najprv si prejdite 3 kroky vyššie. Partnerov tu máte, keď budete pripravení.',
-      alsoH: 'Na úschovu a dedenie', wantDone: 'Ste na zozname', prevDone: 'Už ste doplnili', prevHint: 'Ak skóre ešte nestúplo, napíšte to konkrétnejšie: čísla, dátum, kto a kedy.', addMore: 'Doplniť ešte', pdfDl: 'Stiahnuť PDF', pdfPrint: 'Tlačiť',
+      alsoH: 'Na úschovu a dedenie', wantDone: 'Ste na zozname', newTag: 'nové', prevDone: 'Už ste doplnili', prevHint: 'Ak skóre ešte nestúplo, napíšte to konkrétnejšie: čísla, dátum, kto a kedy.', addMore: 'Doplniť ešte', pdfDl: 'Stiahnuť PDF', pdfPrint: 'Tlačiť',
       echoL: 'Váš text', refineH: 'Spresnite kategóriu.', refineP: function (x) { return x ? 'Podľa vášho textu je najbližšie „' + x + '“. Potvrďte ju alebo vyberte inú. Podľa nej Partner Finder vyberie partnerov.' : 'Vyberte kategóriu, ktorá je vášmu textu najbližšie. Podľa nej Partner Finder vyberie partnerov.'; }, refineGo: function (x) { return 'Pokračovať: ' + x; }, fromText: 'podľa textu',
       text2H: 'Doplňte alebo upravte zadanie.', sugHint: 'Návrh vložíte šípkou →', doneBtn: 'Doplnené do plánu', text2P: 'Váš text je už vložený, netreba písať od nuly. Ak chcete ešte niečo doplniť, pripíšte to.', insert: 'Vložiť',
       intentEb: 'Váš zámer', intentH: 'Čo je hlavný cieľ?', intentP: 'Váš text spomína viac vecí. Podľa toho vyberieme otázky, nástroje a partnerov.', intentBoth: ['both', 'Oboje', 'Kúpiť Bitcoin a nastaviť úschovu a dedenie'], intentNone: 'Ani jedno, nechám „Niečo iné“',
@@ -683,7 +683,7 @@
       partnersH: 'Where you can do it',
       partnersP: function (c) { return 'Partners in the ' + c.cat + ' category that match your criteria' + (c.crit ? ' (' + c.crit + ')' : '') + '. Fixed rules set the order, not commission. You compare and choose.'; },
       partnersBasics: "Go through the 3 steps above first. The partners are here when you're ready.",
-      alsoH: 'For custody and inheritance', wantDone: "You're on the list", prevDone: 'Already added', prevHint: 'If the score has not moved yet, be more specific: numbers, a date, who and when.', addMore: 'Add more', pdfDl: 'Download PDF', pdfPrint: 'Print',
+      alsoH: 'For custody and inheritance', wantDone: "You're on the list", newTag: 'new', prevDone: 'Already added', prevHint: 'If the score has not moved yet, be more specific: numbers, a date, who and when.', addMore: 'Add more', pdfDl: 'Download PDF', pdfPrint: 'Print',
       echoL: 'Your text', refineH: 'Confirm the category.', refineP: function (x) { return x ? 'From your text, the closest is "' + x + '". Confirm it or pick another. Partner Finder uses it to pick partners.' : 'Pick the category closest to your text. Partner Finder uses it to pick partners.'; }, refineGo: function (x) { return 'Continue: ' + x; }, fromText: 'from your text',
       text2H: 'Add to or edit your decision.', sugHint: 'Press → to use the suggestion', doneBtn: 'Added to your plan', text2P: 'Your text is already here, no need to start over. If there is anything else you want to add, write it in.', insert: 'Insert',
       intentEb: 'Your intent', intentH: 'What is the main goal?', intentP: 'Your text mentions more than one thing. We pick the questions, tools and partners from it.', intentBoth: ['both', 'Both', 'Buy Bitcoin and set up custody and inheritance'], intentNone: 'Neither, keep "Something else"',
@@ -713,7 +713,7 @@
       partnersH: 'Где это можно сделать',
       partnersP: function (c) { return 'Партнёры в категории «' + c.cat + '», которые соответствуют вашим критериям' + (c.crit ? ' (' + c.crit + ')' : '') + '. Порядок определяют фиксированные правила, а не комиссия. Сравниваете и выбираете вы.'; },
       partnersBasics: 'Сначала пройдите 3 шага выше. Партнёры будут здесь, когда вы будете готовы.',
-      alsoH: 'Для хранения и наследства', wantDone: 'Вы в списке', prevDone: 'Вы уже добавили', prevHint: 'Если оценка пока не выросла, напишите конкретнее: суммы, дату, кто и когда.', addMore: 'Добавить ещё', pdfDl: 'Скачать PDF', pdfPrint: 'Печать',
+      alsoH: 'Для хранения и наследства', wantDone: 'Вы в списке', newTag: 'новое', prevDone: 'Вы уже добавили', prevHint: 'Если оценка пока не выросла, напишите конкретнее: суммы, дату, кто и когда.', addMore: 'Добавить ещё', pdfDl: 'Скачать PDF', pdfPrint: 'Печать',
       echoL: 'Ваш текст', refineH: 'Уточните категорию.', refineP: function (x) { return x ? 'По вашему тексту ближе всего «' + x + '». Подтвердите или выберите другую. По ней Partner Finder подберёт партнёров.' : 'Выберите категорию, ближайшую к вашему тексту. По ней Partner Finder подберёт партнёров.'; }, refineGo: function (x) { return 'Продолжить: ' + x; }, fromText: 'по тексту',
       text2H: 'Дополните или измените описание.', sugHint: 'Нажмите →, чтобы вставить подсказку', doneBtn: 'Добавлено в план', text2P: 'Ваш текст уже здесь, начинать заново не нужно. Если хотите что-то добавить, допишите.', insert: 'Вставить',
       intentEb: 'Ваша цель', intentH: 'Что главное?', intentP: 'В вашем тексте несколько тем. По ответу мы подберём вопросы, инструменты и партнёров.', intentBoth: ['both', 'И то, и другое', 'Купить Биткоин и настроить хранение и наследство'], intentNone: 'Ни то, ни другое, оставить «Другое»',
@@ -961,7 +961,9 @@
   // Verdikt: a short addition to the person's own text. Additions collect in
   // ADDS; one button rates the verdict again with them (one Worker call).
   // Tool links stay, as a secondary "Then: …".
-  var ADDS = {}, PREV = null, ADDED = {}; // ADDED: what earlier re-ratings already took in
+  var ADDS = {}, PREV = null, ADDED = {}, RERATED = false, SEEN = []; // ADDED: what earlier re-ratings already took in
+  try { var _ad = JSON.parse(sessionStorage.getItem('vb-verdict-added') || 'null'); if (_ad && _ad.a) { ADDED = _ad.a; SEEN = _ad.s || []; RERATED = true; } } catch (e) {}
+  function saveAdded() { try { sessionStorage.setItem('vb-verdict-added', JSON.stringify({ a: ADDED, s: SEEN })); } catch (e) {} }
   function addKey(s) { return s.signal || (s.kind === 'flag' ? s.id : null); }
   function addBox(key, why, ask, q) {
     var A2 = W.add, a = A2.ask[key] || [ask || '', ''], done = ADDS[key];
@@ -1019,7 +1021,8 @@
       var add = Object.keys(ADDS).map(function (k) { return ADDS[k]; });
       if (!add.length) return;
       PREV = RESULT && RESULT.score; A.text = A.text.trim() + '\n' + add.join(' ');
-      Object.keys(ADDS).forEach(function (k) { ADDED[k] = (ADDED[k] ? ADDED[k] + ' ' : '') + ADDS[k]; }); ADDS = {}; saveText();
+      // The open question changes with every rating, so it is not carried over.
+      Object.keys(ADDS).forEach(function (k) { if (k !== 'q') ADDED[k] = (ADDED[k] ? ADDED[k] + ' ' : '') + ADDS[k]; }); ADDS = {}; RERATED = true; (RESULT.steps || []).forEach(function (st) { var k = addKey(st); if (k && SEEN.indexOf(k) < 0) SEEN.push(k); }); saveAdded(); saveText();
       push({ event: 'verdict_recalc', verdict_lang: LANG, additions: add.length });
       go(at('loading'));
     }; });
@@ -1031,7 +1034,7 @@
       '<p class="small scoreline">' + esc(L.scoreLine) + '</p>' + (r.partial ? '<p class="small">' + V.partial + '</p>' : '') +
       '<div class="vx-cards">' + r.steps.map(function (s) {
         var g = s.signal ? GCOL[GROUP[s.signal]] : s.kind === 'flag' ? 'orange' : '';
-        return '<div class="vf-card vx-step spot ' + g + '"><div class="vx-kicker">' + W.stepN(s.n) + '</div><b>' + esc(stepTitle(s)) + '</b><p>' + esc(s.action) + '</p>' +
+        return '<div class="vf-card vx-step spot ' + g + '"><div class="vx-kicker">' + W.stepN(s.n) + (RERATED && addKey(s) && !ADDED[addKey(s)] && SEEN.indexOf(addKey(s)) < 0 ? ' <span class="vx-new">' + V.newTag + '</span>' : '') + '</div><b>' + esc(stepTitle(s)) + '</b><p>' + esc(s.action) + '</p>' +
           (s.why ? '<p class="whyl">' + V.why + esc(s.why) + '</p>' : '') +
           (addKey(s) ? addBox(addKey(s), '', s.kind === 'flag' ? s.action : '') + (s.tool ? '<a class="vx-then" href="' + toolHref(s.tool, medium) + '" data-step="' + s.id + '">' + W.add.then + esc(s.tool.name) + ' →</a>' : '')
             : '<div class="vrow">' + stepBtn(s, medium) + '</div>') + '</div>';

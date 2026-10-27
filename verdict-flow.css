@@ -568,3 +568,5 @@
 .vf-sticky .vx-wantdone { color: var(--green); }
 .vx .vx-feat > b, .vx .vx-feat > p { padding-left: 22px; padding-right: 22px; margin-left: 0; margin-right: 0; }
 .vx .vx-prev b { display: inline; font-size: 14px; margin: 0; }
+.vx-new { margin-left: 6px; padding: 2px 8px; border-radius: 99px; border: 1px solid color-mix(in srgb, var(--yellow) 45%, transparent); color: var(--yellow); font-size: 10px; letter-spacing: .08em; }
+.vx-new { white-space: nowrap; }
