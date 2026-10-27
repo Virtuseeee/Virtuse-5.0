@@ -2,6 +2,20 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27, night 2) — Ship prep: final check, prod Worker PR #132 (draft), "free fee audit" claim removed (PR #133); **staging only**, staging /version dbc19d98
+
+- **Final check against `CHECKLIST-ship-verdict-free-2026-10-27.md`:**
+  - **Passed:** no launch date anywhere, staging Verdict API SK+EN OK, GTM guard, canonical, footer, privacy section 9.
+  - All CFO and Verdict pages are `noindex`.
+- **Blocker found and fixed (PR #133):** the not-yet-live fee audit was called free and available in every nav, on the CFO pages, on the Layer 2 CFO cards and in the waitlist e-mails (10 languages, 1169 files).
+  - Table `scratchpad/feeaudit/table.py` + `apply.py` (same applier as the no-date sweep).
+  - The new line is "Verdict is free; the fee audit comes with Virtuse CFO".
+  - Layer 2 rebuilt. Staging md5 1081/1081.
+- **Prod Worker (PR #132, draft, merge only with Ras's ship "áno"):** top-level `vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15" }`.
+  - Tax module, report preview, dry run, boost and checkout stay off.
+  - The prod Worker was still at `67cba346` with the closed message "otvára sa 1. novembra".
+- **Production is ~1,105 files behind main**, i.e. everything since 2026-10-25 including Bitcoin Data v3. Ship = `deploy_site.sh 1daee295 HEAD` from a fresh `origin/main` worktree, after `deploy_worker.sh`.
+
 ## Session status (2026-10-27, night) — Free Verdikt PDF design v2 + waiting-panel padding (handover H), branch `feat/verdict-pdf-v2`, PR #131; **staging only** (site /version a07cc8e9; Worker unchanged, still 9d804be2)
 
 - **Free PDF:** `printDocFree` in `verdict-flow.js` now builds the v2 page from `verdict-summary-v2.html`: white A4, `.p2-*` classes, Services tokens, V logo, score ring (SVG, r=32), step cards with TOOL line, orange/green area accents, purple question box, three partner cards (teal/blue/purple bars, pulled from `#pfBox .pcard`), dark €14 CTA band, footer "© 2018–2026 Virtuse Wealth Management, a.s. · 1 / 1".
