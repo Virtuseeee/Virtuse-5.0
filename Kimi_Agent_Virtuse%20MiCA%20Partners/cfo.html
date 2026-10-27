@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <script src="/partner-click.js" defer></script>
-<title>Virtuse CFO · Verdict: check what you left out | Virtuse</title>
+<title>Verdict: check what you left out | Virtuse</title>
 <meta name="description" content="Verdict scores how complete your Bitcoin decision is, for free. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch): remove noindex, add to sitemap + hreflang (docs/LAUNCH-CFO.md) -->
@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://virtuse.com/cfo.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Virtuse CFO · Verdict: check what you left out | Virtuse">
+<meta property="og:title" content="Verdict: check what you left out | Virtuse">
 <meta property="og:description" content="Verdict scores how complete your Bitcoin decision is, for free. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.">
 <meta property="og:url" content="https://virtuse.com/cfo.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
@@ -665,6 +665,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .plan .wait-plan input { flex-basis: 100%; }
 .plan .wait-plan .btn { width: 100%; }
 </style>
+<style>/* CFO alone (verdict-landing/cfo_split.py) */ .cfo-vlink{margin:14px 0 0;font-size:15px} .cfo-vlink a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(95,174,222,.4)} .cfo-vlink a:hover{border-color:var(--blue)} #audit .wait{margin-top:18px} .c-hero h1.audit-h{font-size:clamp(32px,4.2vw,48px);font-weight:700;line-height:1.1} .c-hero h1.audit-h > .w,.c-hero h1.audit-h > span.w{color:var(--text);font-weight:700} .c-hero h1.audit-h > span:not(.w){font-weight:400}</style>
 </head>
 <body>
 <script>document.body.classList.toggle('stage-wait', (document.querySelector('meta[name="vb-cfo-stage"]') || {}).content !== 'audit');</script>
@@ -685,7 +686,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Free</span></span><span class="nd-d">Rate your decision, free</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="retirement-calculator.html"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="verdict.html" id="navVerdict"><span class="nd-t">Verdict <span class="nav-badge cfo-badge">Free</span></span><span class="nd-d">Rate your decision, free</span></a><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO</span><span class="nd-d">Fees, loans and tax over time · planned</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="retirement-calculator.html"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
       </div>
       <div class="nav-group" id="ng-eco">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ecosystem</button>
@@ -704,22 +705,16 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 
 <main class="wrap" id="top">
 
-  <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO -->
-  <div class="c-hero vd-hero" id="verdict">
+  <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit -->
+  <section id="audit">
+  <div class="c-hero">
     <div>
-      <div class="eyebrow">Virtuse CFO · Verdict · free</div>
-      <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class="grad">CFO</span> keeps track of it.</span></h1>
-      <p class="sub">Describe what you plan to do. Verdict scores your thinking on 10 signals and shows its weakest point. It doesn't rate Bitcoin or our partners. It rates whether you've thought it through.</p>
-      <form class="vd-form" id="vdForm" hidden novalidate>
-        <label for="vdText">Your decision</label>
-        <textarea id="vdText" name="text" rows="4" maxlength="1200" placeholder="For example: I want to put 20% of my company's cash into Bitcoin and hold it for 5 years."></textarea>
-        <div class="vd-count"><span id="vdCount">0</span> / 1200</div>
-        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="vd-warn">Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</p>
-        <div class="row"><span class="vd-ai">This assessment is generated by artificial intelligence (a language model by Anthropic). It may be wrong. It is not investment, tax or legal advice.</span><button class="btn btn-primary" type="submit">Get my free verdict</button></div>
-        <div class="vd-msg" id="vdMsg" aria-live="polite"></div>
-      </form>
-      <template id="vdStrings"><span data-k="your">Your verdict</span><span data-k="ai">AI assessment</span><span data-k="weak">Weakest point:</span><span data-k="check">Check it in</span><span data-k="missing">What your thinking is missing</span><span data-k="again">Rate another decision</span><span data-k="loading">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k="short">Describe your decision in at least one sentence.</span><span data-k="error">Something went wrong. Please try again in a moment.</span><span data-k="network">Network error. Please try again.</span><span data-k="declined">Verdict can't rate this</span></template>
+      <div class="eyebrow">Virtuse CFO · fee audit, coming soon</div>
+      <h1 class="audit-h">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h1>
+      <p class="sub">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p>
+      <div class="only-audit">
+        <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Try it with a sample export</button></div>
+      </div>
       <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -727,55 +722,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
         <p class="wait-note">One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href="privacy-policy.html" style="color:inherit">Privacy</a></p>
       </form>
-    </div>
-    <div class="vd-card" id="vdCard" aria-live="polite" aria-label="Sample verdict">
-      <div class="top"><span>Sample verdict</span><span>illustrative figures</span></div>
-      <p class="q">"I want to borrow against my BTC to buy a flat."</p>
-      <div class="vd-score"><b>55<small>/100</small></b><span class="vd-pill">Add 2 or 3 assumptions</span></div>
-      <p class="vd-explain">The score from 0 to 100 is calculated by artificial intelligence from 10 areas of your thinking (for example the worst case, liquidity, tax). It measures how completely your thinking is described, not whether the decision is right or worthwhile. The same text can get a slightly different score when repeated. You decide. It is not investment, tax or legal advice.</p>
-      <div class="vd-sigs">
-        <div class="vd-sig"><span>Goal</span><span class="bar"><i style="width:80%;background:var(--text)"></i></span><span class="v">8</span></div>
-        <div class="vd-sig"><span>Time horizon</span><span class="bar"><i style="width:70%;background:var(--text)"></i></span><span class="v">7</span></div>
-        <div class="vd-sig"><span>Alternatives</span><span class="bar"><i style="width:50%;background:var(--muted)"></i></span><span class="v">5</span></div>
-        <div class="vd-sig"><span>Worst case</span><span class="bar"><i style="width:30%;background:var(--orange)"></i></span><span class="v">3</span></div>
-        <div class="vd-sig"><span>Liquidity</span><span class="bar"><i style="width:50%;background:var(--muted)"></i></span><span class="v">5</span></div>
-        <div class="vd-sig"><span>Custody and inheritance</span><span class="bar"><i style="width:60%;background:var(--muted)"></i></span><span class="v">6</span></div>
-        <div class="vd-sig"><span>Tax</span><span class="bar"><i style="width:40%;background:var(--orange)"></i></span><span class="v">4</span></div>
-        <div class="vd-sig"><span>Rule, not emotion</span><span class="bar"><i style="width:70%;background:var(--text)"></i></span><span class="v">7</span></div>
-        <div class="vd-sig"><span>Plan B</span><span class="bar"><i style="width:40%;background:var(--orange)"></i></span><span class="v">4</span></div>
-        <div class="vd-sig"><span>Asymmetry</span><span class="bar"><i style="width:60%;background:var(--muted)"></i></span><span class="v">6</span></div>
-      </div>
-      <p class="vd-weak">Weakest point: you don't know at what price the lender would sell your collateral. <a href="loan.html">Check it in Loan Copilot</a></p>
-    </div>
-  </div>
-
-  <section id="verdict-how">
-    <div class="sec-head">
-      <h2>The score is about your thinking. <span>Not about whether to buy.</span></h2>
-      <p class="sec-sub">Every plan also gets a 70% drawdown test. If it can't survive one, you know before you start.</p>
-    </div>
-    <div class="vd-bands">
-      <div class="vd-band"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div>
-      <div class="vd-band hl"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div>
-      <div class="vd-band"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div>
-    </div>
-    <div class="vd-tools" aria-label="Tools to check your assumptions">
-      <a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="stacking.html">Stacking Strategist</a><a href="retirement-calculator.html">Retirement Calculator</a>
-    </div>
-    <p class="vd-how-note">How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.</p>
-  </section>
-
-  <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit -->
-  <section id="audit">
-  <div class="c-hero">
-    <div>
-      <div class="eyebrow">Virtuse CFO · fee audit, coming soon</div>
-      <h2 class="audit-h">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2>
-      <p class="sub">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p>
-      <div class="only-audit">
-        <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Try it with a sample export</button></div>
-      </div>
-      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Join the waitlist</a></div>
+      <p class="cfo-vlink"><a href="verdict.html">Start with a free Verdict →</a></p>
     </div>
 
     <div class="demo" id="demo" aria-label="Fee audit demo">
@@ -824,7 +771,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price">€0 <small>no account</small></div>
         <p class="for">A score for your thinking, 0 to 100, its band and the weakest point.</p>
         <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul>
-        <a class="btn btn-ghost" href="#waitForm">Join the waitlist</a>
+        <a class="btn btn-ghost" href="verdict.html">Start with a free Verdict</a>
       </div>
       <div class="plan">
         <span class="layer">One-off</span>
@@ -832,7 +779,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price">€14 <small>once</small></div>
         <p class="for">For one decision you want to think through in depth.</p>
         <ul><li>All 10 signals with scores and reasons</li><li>Every missing question for your decision</li><li>A step-by-step plan with Virtuse tools</li><li>A PDF to keep, no subscription</li></ul>
-        <a class="btn btn-ghost" href="#verdict">Start with a verdict</a>
+        <a class="btn btn-ghost" href="verdict.html">Start with a verdict</a>
       </div>
       <div class="plan pro">
         <span class="founding">Founding price, when paid plans open</span>
@@ -965,7 +912,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Ecosystem</h4><a href="/ecosystem/">Bitcoin Ecosystem</a><a href="/ecosystem/what-is-bitcoin/">What is Bitcoin?</a><a href="/ecosystem/books/">Books</a><a href="/ecosystem/podcasts/">Podcasts</a><a href="/ecosystem/videos/">Videos</a><a href="/ecosystem/conferences/">Conferences</a><a href="/ecosystem/privacy/">Bitcoin Privacy</a><a href="/ecosystem/spend-bitcoin/">Spend Bitcoin</a><a href="/ecosystem/store-tools/">Store Tools</a><a href="/ecosystem/dev-tools/">Dev Tools</a><a href="/ecosystem/jobs/">Bitcoin Jobs</a><a href="/ecosystem/peers/">Bitcoin Peers</a><a href="/ecosystem/promote/">Promote</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="verdict.html">Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Ecosystem</h4><a href="/ecosystem/">Bitcoin Ecosystem</a><a href="/ecosystem/what-is-bitcoin/">What is Bitcoin?</a><a href="/ecosystem/books/">Books</a><a href="/ecosystem/podcasts/">Podcasts</a><a href="/ecosystem/videos/">Videos</a><a href="/ecosystem/conferences/">Conferences</a><a href="/ecosystem/privacy/">Bitcoin Privacy</a><a href="/ecosystem/spend-bitcoin/">Spend Bitcoin</a><a href="/ecosystem/store-tools/">Store Tools</a><a href="/ecosystem/dev-tools/">Dev Tools</a><a href="/ecosystem/jobs/">Bitcoin Jobs</a><a href="/ecosystem/peers/">Bitcoin Peers</a><a href="/ecosystem/promote/">Promote</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p>
@@ -1189,38 +1136,6 @@ document.querySelectorAll('form.wait').forEach(function (form) {
 document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) {
   a.addEventListener('click', function () { setTimeout(function () { var i = document.querySelector('#waitForm input[name="email"]'); if (i) i.focus(); }, 400); });
 });
-</script>
-<script>
-// Verdict: the working form (Worker POST /verdict). Off by default; on for en/sk/ru on
-// staging, with ?verdict=1, or with <meta name="vb-verdict" content="on"> (launch).
-(function () {
-  var form = document.getElementById('vdForm'), card = document.getElementById('vdCard'); if (!form || !card) return;
-  var lang = document.documentElement.lang;
-  var meta = document.querySelector('meta[name="vb-verdict"]');
-  var on = (lang === 'en' || lang === 'sk' || lang === 'ru') && (location.hostname === 'staging.virtuse.com' || /[?&]verdict=1\b/.test(location.search) || (meta && meta.content === 'on'));
-  if (!on) return;
-  var S = {}; var tpl = document.getElementById('vdStrings');
-  Array.prototype.forEach.call((tpl.content || tpl).querySelectorAll('[data-k]'), function (n) { S[n.getAttribute('data-k')] = n.textContent; });
-  form.hidden = false;
-  var wait = document.getElementById('waitForm'); if (wait) wait.hidden = true;
-  document.querySelectorAll('a[href="#waitForm"]').forEach(function (a) { a.setAttribute('href', '#verdict'); });
-  var ta = form.elements['text'], msg = document.getElementById('vdMsg'), count = document.getElementById('vdCount');
-  ta.addEventListener('input', function () { count.textContent = ta.value.length; });
-  // The text opens the question funnel (verdict.html), which asks what the AI
-  // needs before it scores; the text travels in sessionStorage, never in the URL.
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var text = ta.value.trim();
-    if (text.length < 20) { msg.textContent = S.short; return; }
-    if (form.elements['website'].value) return;
-    try { sessionStorage.setItem('vb-verdict-text', text); } catch (err) {}
-    (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_start', verdict_lang: lang });
-    // Verdict exists in EN, SK and RU (2026-10-24); the other languages open
-    // the English Verdict instead of a missing <lang>/verdict.html.
-    var vl = document.documentElement.lang;
-    location.href = (vl === 'en' || vl === 'sk' || vl === 'ru' ? 'verdict.html' : '/verdict.html') + (/[?&]verdict=1\b/.test(location.search) ? '?verdict=1' : '');
-  });
-})();
 </script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
