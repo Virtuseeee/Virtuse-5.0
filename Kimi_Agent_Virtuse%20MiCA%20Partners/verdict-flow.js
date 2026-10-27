@@ -829,6 +829,11 @@
   // Our design and rules stay: no invented reviews, no discounts, MiCA wording.
   var W = {
     sk: {
+      add: { btn: 'Doplniť do plánu', btnQ: 'Doplniť odpoveď', miss: 'Čo chýba', write: 'Čo napíšte', what: 'Čo sa stane', happen: 'Doplnenie pridáme k vášmu textu a verdikt prepočítame. Skóre tejto oblasti stúpne, ak doplnenie odpovedá na to, čo chýba.', eg: 'Napr.: ', save: 'Uložiť do plánu', cancel: 'Zrušiť', done: 'Doplnené. Čaká na prepočet.', edit: 'Upraviť', then: 'Potom: ', long: 'Text by mal viac ako 1 200 znakov. Skráťte doplnenie.', empty: 'Napíšte aspoň jednu vetu.',
+        recalc: function (n) { return 'Prepočítať verdikt (' + n + (n === 1 ? ' doplnenie' : n < 5 ? ' doplnenia' : ' doplnení') + ')'; }, recalcP: 'Doplnenia sa pridajú k vášmu textu. Prepočet je jedno nové hodnotenie (najviac 10 za deň).',
+        delta: function (a, b) { return 'Po doplnení: skóre ' + a + ' → ' + b + ' zo 100.'; },
+        ask: { worst_case: ['Koľko eur by ste stratili pri prepade o 70 % a čo vtedy urobíte.', 'Pri prepade o 70 % by som stratil asi 7 000 €. Vtedy nepredávam a plán nemením.'], liquidity: ['Koľko mesiacov výdavkov máte bokom mimo Bitcoinu.', 'Rezervu na 6 mesiacov výdavkov, asi 9 000 €, mám na sporiacom účte.'], tax: ['V ktorej krajine platíte dane a ako sa tam zdaní predaj.', 'Dane platím na Slovensku. Pri predaji si odložím časť zisku na daň a odvody.'], custody: ['Kde budú kľúče a ako sa k nim dostanú dedičia bez zdieľania seed frázy.', 'Bitcoin bude na hardvérovej peňaženke. Postup pre dedičov je uložený u notára, seed frázu nikomu nedávam.'], plan_b: ['Čo by vás prinútilo zmeniť plán a čo potom urobíte.', 'Ak prídem o príjem, prestanem dokupovať a žijem z rezervy.'], goal: ['Cieľ s číslom a dátumom.', 'Do roku 2035 chcem mať na dôchodok aspoň 50 000 €.'], horizon: ['Ako dlho budete držať a čo by vás prinútilo predať skôr.', 'Držím aspoň 10 rokov. Skôr by som predal len pri vážnej chorobe.'], alternatives: ['Aspoň dve iné možnosti, ktoré ste zvážili, a prečo práve táto.', 'Zvažoval som ETF a skoršie splatenie hypotéky. Vyberám Bitcoin, lebo…'], rule: ['Napísané pravidlo, kedy kúpite alebo predáte.', 'Kupujem 200 € mesačne, pri poklese nič nemením, predávam najskôr v roku 2035.'], asymmetry: ['Prečo práve táto suma: akú stratu unesiete.', 'Ide o 10 % úspor. Ak by išli na nulu, bývanie ani rezervu to neohrozí.'] }
+      },
       secDecision: 'Vaše rozhodnutie', secFound: 'Čo Verdikt našiel', secTwo: 'Dve oblasti za vaším verdiktom', secFull: 'Chcete celý verdikt?', secTrust: 'Prečo Verdiktu veriť', secFaq: 'Pred odomknutím',
       ringNote: 'Kruh ukazuje skóre úplnosti plánu (0 až 100), štítok pod ním úroveň verdiktu.',
       cardTitle: { flag: 'Červená vlajka', partners: 'Partneri', consult: 'Osobná konzultácia', recheck: 'Ohodnotiť znova', pdf: 'PDF' },
@@ -847,6 +852,11 @@
       ctaFinal: 'Zapísať sa', ctaNote: 'Report za 14 € · jednorazovo, bez predplatného'
     },
     en: {
+      add: { btn: 'Add to my plan', btnQ: 'Add an answer', miss: 'What is missing', write: 'What to write', what: 'What happens', happen: 'We add it to your text and rate the verdict again. The score in this area goes up if the addition answers what is missing.', eg: 'E.g.: ', save: 'Save to my plan', cancel: 'Cancel', done: 'Added. Waiting for the new rating.', edit: 'Edit', then: 'Then: ', long: 'The text would be longer than 1,200 characters. Shorten the addition.', empty: 'Write at least one sentence.',
+        recalc: function (n) { return 'Rate my verdict again (' + n + (n === 1 ? ' addition' : ' additions') + ')'; }, recalcP: 'Your additions are added to your text. Rating again is one new assessment (at most 10 a day).',
+        delta: function (a, b) { return 'After your additions: score ' + a + ' → ' + b + ' out of 100.'; },
+        ask: { worst_case: ['How many euros you would lose in a 70% fall and what you would do then.', 'In a 70% fall I would lose about €7,000. I would not sell and keep my plan.'], liquidity: ['How many months of expenses you keep outside Bitcoin.', 'I keep 6 months of expenses, about €9,000, in a savings account.'], tax: ['Where you pay tax and how a sale is taxed there.', 'I pay tax in Slovakia. When I sell, I set aside part of the gain for tax.'], custody: ['Where the keys will be and how heirs reach them without sharing the seed phrase.', 'The Bitcoin will be on a hardware wallet. Instructions for my heirs are with a notary; I share the seed phrase with no one.'], plan_b: ['What would make you change the plan and what you would do then.', 'If I lose my income, I stop buying and live from my reserve.'], goal: ['A goal with a number and a date.', 'By 2035 I want at least €50,000 for retirement.'], horizon: ['How long you will hold and what would force you to sell earlier.', 'I hold for at least 10 years. I would sell earlier only in a serious illness.'], alternatives: ['At least two other options you considered, and why this one.', 'I considered an ETF and paying off my mortgage early. I choose Bitcoin because…'], rule: ['A written rule for when you buy or sell.', 'I buy €200 a month, change nothing in a fall and sell no earlier than 2035.'], asymmetry: ['Why this amount: what loss you can carry.', 'It is 10% of my savings. If it went to zero, my home and reserve would be fine.'] }
+      },
       secDecision: 'Your decision', secFound: 'What Verdict found', secTwo: 'Two areas behind your verdict', secFull: 'Want the full verdict?', secTrust: 'Why trust Verdict', secFaq: 'Before you unlock',
       ringNote: 'The ring shows how complete your plan is (0 to 100); the chip below shows the verdict level.',
       cardTitle: { flag: 'Red flag', partners: 'Partners', consult: 'Personal consultation', recheck: 'Rate again', pdf: 'PDF' },
@@ -865,6 +875,11 @@
       ctaFinal: 'Join the waitlist', ctaNote: '€14 report · one-time, no subscription'
     },
     ru: {
+      add: { btn: 'Дополнить план', btnQ: 'Добавить ответ', miss: 'Чего не хватает', write: 'Что написать', what: 'Что будет дальше', happen: 'Мы добавим это к вашему тексту и оценим вердикт заново. Оценка этой области вырастет, если дополнение отвечает на то, чего не хватает.', eg: 'Например: ', save: 'Сохранить в план', cancel: 'Отмена', done: 'Добавлено. Ждёт новой оценки.', edit: 'Изменить', then: 'Затем: ', long: 'Текст будет длиннее 1200 знаков. Сократите дополнение.', empty: 'Напишите хотя бы одно предложение.',
+        recalc: function (n) { return 'Оценить вердикт заново (дополнений: ' + n + ')'; }, recalcP: 'Дополнения добавятся к вашему тексту. Новая оценка — это одна проверка (не больше 10 в день).',
+        delta: function (a, b) { return 'После дополнений: оценка ' + a + ' → ' + b + ' из 100.'; },
+        ask: { worst_case: ['Сколько евро вы потеряете при падении на 70 % и что тогда сделаете.', 'При падении на 70 % я потеряю около 7 000 €. Тогда я не продаю и план не меняю.'], liquidity: ['Сколько месяцев расходов у вас отложено вне Биткоина.', 'Резерв на 6 месяцев расходов, около 9 000 €, лежит на сберегательном счёте.'], tax: ['В какой стране вы платите налоги и как там облагается продажа.', 'Налоги я плачу в Словакии. При продаже откладываю часть прибыли на налог.'], custody: ['Где будут ключи и как наследники получат доступ без передачи сид-фразы.', 'Биткоин будет на аппаратном кошельке. Инструкция для наследников хранится у нотариуса, сид-фразу я никому не передаю.'], plan_b: ['Что заставит вас изменить план и что вы тогда сделаете.', 'Если я потеряю доход, перестану докупать и буду жить на резерв.'], goal: ['Цель с суммой и датой.', 'К 2035 году хочу иметь на пенсию не меньше 50 000 €.'], horizon: ['Как долго вы будете держать и что может заставить продать раньше.', 'Держу не меньше 10 лет. Раньше продам только при серьёзной болезни.'], alternatives: ['Как минимум два других варианта, которые вы сравнили, и почему этот.', 'Я рассматривал ETF и досрочное погашение ипотеки. Выбираю Биткоин, потому что…'], rule: ['Записанное правило, когда вы покупаете или продаёте.', 'Покупаю на 200 € в месяц, при падении ничего не меняю, продаю не раньше 2035 года.'], asymmetry: ['Почему именно эта сумма: какую потерю вы выдержите.', 'Это 10 % сбережений. Если они обнулятся, жильё и резерв не пострадают.'] }
+      },
       secDecision: 'Ваше решение', secFound: 'Что нашёл Verdict', secTwo: 'Две области за вашим вердиктом', secFull: 'Хотите полный вердикт?', secTrust: 'Почему Verdict можно доверять', secFaq: 'Перед тем как открыть',
       ringNote: 'Кольцо показывает, насколько полно описан план (от 0 до 100), метка под ним — уровень вердикта.',
       cardTitle: { flag: 'Красный флаг', partners: 'Партнёры', consult: 'Личная консультация', recheck: 'Оценить снова', pdf: 'PDF' },
@@ -910,6 +925,62 @@
     var a = pick(RESULT.areas) || pick(RESULT.locked) || pick(RESULT.signals);
     return a ? (a.title || a.name) : '';
   }
+  // P0.3 (review 2026-10-27): every gap gets one action that edits this
+  // Verdikt: a short addition to the person's own text. Additions collect in
+  // ADDS; one button rates the verdict again with them (one Worker call).
+  // Tool links stay, as a secondary "Then: …".
+  var ADDS = {}, PREV = null;
+  function addKey(s) { return s.signal || (s.kind === 'flag' ? s.id : null); }
+  function addBox(key, why, ask, q) {
+    var A2 = W.add, a = A2.ask[key] || [ask || '', ''], done = ADDS[key];
+    return '<div class="vx-addw" data-addw="' + esc(key) + '">' +
+      '<div class="vx-done"' + (done ? '' : ' hidden') + '>' + ic('up', 16) + ' <span>' + A2.done + '</span> <button class="linkish" data-addopen>' + A2.edit + '</button></div>' +
+      '<button class="vf-btn solid vx-addb" data-addopen' + (done ? ' hidden' : '') + '>' + (q ? A2.btnQ : A2.btn) + '</button>' +
+      '<div class="vx-add" hidden>' + (why ? '<p><b>' + A2.miss + ':</b> ' + esc(why) + '</p>' : '') +
+      '<p><b>' + A2.write + ':</b> ' + esc(a[0]) + '</p>' +
+      '<textarea maxlength="400" placeholder="' + esc(a[1] ? A2.eg + a[1] : '') + '">' + esc(done || '') + '</textarea>' +
+      '<p class="small"><b>' + A2.what + ':</b> ' + A2.happen + '</p><p class="small vx-adderr" hidden></p>' +
+      '<div class="vrow"><button class="vf-btn solid" data-addsave>' + A2.save + '</button><button class="ghost" data-addcancel>' + A2.cancel + '</button></div></div></div>';
+  }
+  function recalcBar() {
+    var n = Object.keys(ADDS).length;
+    return '<div class="vx-re no-print"' + (n ? '' : ' hidden') + '><button class="vf-btn solid" data-recalc>' + W.add.recalc(n) + ' ' + ic('arrow', 16) + '</button><p class="small">' + W.add.recalcP + '</p></div>';
+  }
+  function bindAdds() {
+    function refresh() {
+      var n = Object.keys(ADDS).length;
+      panel.querySelectorAll('.vx-re').forEach(function (b) { b.hidden = !n; b.querySelector('[data-recalc]').innerHTML = W.add.recalc(n) + ' ' + ic('arrow', 16); });
+      panel.querySelectorAll('[data-addw]').forEach(function (w) {
+        var d = !!ADDS[w.dataset.addw]; w.querySelector('.vx-done').hidden = !d; w.querySelector('.vx-addb').hidden = d || !w.querySelector('.vx-add').hidden;
+      });
+    }
+    panel.querySelectorAll('[data-addw]').forEach(function (w) {
+      var box = w.querySelector('.vx-add'), ta = box.querySelector('textarea'), err = box.querySelector('.vx-adderr');
+      w.querySelectorAll('[data-addopen]').forEach(function (b) { b.onclick = function () {
+        box.hidden = false; w.querySelector('.vx-addb').hidden = true; w.querySelector('.vx-done').hidden = true; ta.value = ADDS[w.dataset.addw] || ''; ta.focus();
+        push({ event: 'verdict_add_open', verdict_lang: LANG, signal: w.dataset.addw });
+      }; });
+      box.querySelector('[data-addcancel]').onclick = function () { box.hidden = true; refresh(); };
+      box.querySelector('[data-addsave]').onclick = function () {
+        var v = ta.value.trim().replace(/\s+/g, ' ');
+        if (v.length < 8) { err.textContent = W.add.empty; err.hidden = false; return; }
+        var others = Object.keys(ADDS).filter(function (k) { return k !== w.dataset.addw; }).map(function (k) { return ADDS[k]; }).concat([v]);
+        if ((A.text.trim() + ' ' + others.join(' ')).length > 1200) { err.textContent = W.add.long; err.hidden = false; return; }
+        err.hidden = true; ADDS[w.dataset.addw] = v; box.hidden = true;
+        // The same gap can sit in a step and in an area card: both show it.
+        panel.querySelectorAll('[data-addw="' + w.dataset.addw + '"] textarea').forEach(function (t) { t.value = v; });
+        push({ event: 'verdict_add_save', verdict_lang: LANG, signal: w.dataset.addw });
+        refresh();
+      };
+    });
+    panel.querySelectorAll('[data-recalc]').forEach(function (b) { b.onclick = function () {
+      var add = Object.keys(ADDS).map(function (k) { return ADDS[k]; });
+      if (!add.length) return;
+      PREV = RESULT && RESULT.score; A.text = A.text.trim() + '\n' + add.join(' '); ADDS = {}; saveText();
+      push({ event: 'verdict_recalc', verdict_lang: LANG, additions: add.length });
+      go(at('loading'));
+    }; });
+  }
   function foundBlock(r, medium) {
     var L = r.level;
     return '<section class="vx-found" id="steps3">' + vsec('search', W.secFound) +
@@ -918,8 +989,10 @@
       '<div class="vx-cards">' + r.steps.map(function (s) {
         var g = s.signal ? GCOL[GROUP[s.signal]] : s.kind === 'flag' ? 'orange' : '';
         return '<div class="vf-card vx-step spot ' + g + '"><div class="vx-kicker">' + W.stepN(s.n) + '</div><b>' + esc(stepTitle(s)) + '</b><p>' + esc(s.action) + '</p>' +
-          (s.why ? '<p class="whyl">' + V.why + esc(s.why) + '</p>' : '') + '<div class="vrow">' + stepBtn(s, medium) + '</div></div>';
-      }).join('') + '</div></section>';
+          (s.why ? '<p class="whyl">' + V.why + esc(s.why) + '</p>' : '') +
+          (addKey(s) ? addBox(addKey(s), '', s.kind === 'flag' ? s.action : '') + (s.tool ? '<a class="vx-then" href="' + toolHref(s.tool, medium) + '" data-step="' + s.id + '">' + W.add.then + esc(s.tool.name) + ' →</a>' : '')
+            : '<div class="vrow">' + stepBtn(s, medium) + '</div>') + '</div>';
+      }).join('') + '</div>' + (PREV != null && r.score != null ? '<p class="vx-delta">' + W.add.delta(PREV, r.score) + '</p>' : '') + recalcBar() + '</section>';
   }
   function twoBlock(r, medium) {
     return '<section class="vx-two">' + vsec('gauge', W.secTwo) + '<div class="sig2">' + r.areas.map(function (a) {
@@ -927,9 +1000,10 @@
       return '<div class="vf-card vx-area ' + GCOL[g] + ' spot"><span class="vx-badge">' + ic(a.points >= 7 ? 'up' : 'alert', 18) + '</span>' +
         '<div class="h"><div><b>' + esc(a.title) + '</b><div class="role">' + esc(roleLabel(a)) + ' · ' + esc(a.name) + '</div></div><em>' + a.points + '<small>/10</small></em></div>' +
         '<div class="bar"><i style="width:' + a.points * 10 + '%"></i></div>' +
-        '<p>' + esc(a.meaning) + '</p><p><b class="albl">' + V.todoL + ':</b> ' + (st ? '<a href="#steps3">' + V.inStep(st.n) + '</a>' : esc(a.todo)) + '</p>' +
+        '<p>' + esc(a.meaning) + '</p><p><b class="albl">' + V.todoL + ':</b> ' + esc(st ? st.action : a.todo) + '</p>' +
+        (a.points < 10 ? addBox(a.id, a.meaning) : '') +
         '<details class="vx-improve"><summary>' + W.improve + ic('arrow', 18) + '</summary><p>' + R.tip[a.id] + '</p><p class="dim">' + esc(a.reason) + '</p></details></div>';
-    }).join('') + '</div></section>';
+    }).join('') + '</div>' + recalcBar() + '</section>';
   }
   function waitingBlock(r) {
     var n = (r.locked || []).length; if (!n) return '';
@@ -938,7 +1012,8 @@
       '<div class="vx-lgrid">' + r.locked.map(function (x) {
         return '<div class="vx-lcard ' + GCOL[GROUP[x.id]] + '"><div><b>' + esc(x.title || x.name) + '</b>' + ic('lock', 16) + '</div><i></i><i></i><i></i></div>';
       }).join('') + '</div>' +
-      '<div class="vx-q"><b>' + R.openQ + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span class="dim">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p></div></section>';
+      '<div class="vx-q"><b>' + R.openQ + '</b><p>' + esc(r.missing[0] || STR.nothing) + (r.missingMore ? ' <span class="dim">+' + r.missingMore + STR.inReport + '</span>' : '') + '</p>' +
+      (r.missing[0] && !r.report ? addBox('q', '', r.missing[0], true) : '') + '</div></section>';
   }
   function fullBlock(r) {
     var tax = r.pricing && r.pricing.report && r.pricing.report.taxModule, cn = A.country && A.country !== 'other' && A.country !== 'na' ? label('country', A.country) : '';
@@ -1006,7 +1081,7 @@
     if (r.report) { showReport(r); return; }
     panel.innerHTML = '<div data-ai-generated="true" class="vx">' + decisionBlock(r) + foundBlock(r, 'result') + twoBlock(r, 'result') + waitingBlock(r) +
       partnersBlock(r, 'verdict') + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(false) + '</div>' + sticky();
-    bindCommon(); bindWant(); loadPartners(r, 'verdict');
+    bindCommon(); bindWant(); bindAdds(); PREV = null; loadPartners(r, 'verdict');
   }
 
   // Interest in the full report: email only, no decision text.
