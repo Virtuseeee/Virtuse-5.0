@@ -564,7 +564,7 @@
     panel.innerHTML = '<div class="chip-eyebrow">' + STR.ctxEb + '</div><h2>' + STR.ctxH + '</h2><p class="sub">' + STR.ctxP + '</p>' +
       '<div class="inner" style="margin-top:16px"><div class="dotfield" aria-hidden="true"><div class="halo"></div>' + dots + '</div>' +
       '<div class="ctx"><div><b>' + STR.ctxWhat + '</b><span>' + esc(goalLabel()) + '</span></div><div><b>' + STR.ctxLimits + '</b><span>' + esc(limits()) + '</span></div></div></div>' +
-      '<div style="margin-top:20px">' + foot() + '</div>';
+      '<div style="margin-top:12px">' + foot() + '</div>';
     document.getElementById('c').onclick = next;
   }
   function focus() {
@@ -655,7 +655,7 @@
       partnersBasics: 'Najprv si prejdite 3 kroky vyššie. Partnerov tu máte, keď budete pripravení.',
       alsoH: 'Na úschovu a dedenie',
       echoL: 'Váš text', refineH: 'Spresnite kategóriu.', refineP: function (x) { return x ? 'Podľa vášho textu je najbližšie „' + x + '“. Potvrďte ju alebo vyberte inú. Podľa nej Partner Finder vyberie partnerov.' : 'Vyberte kategóriu, ktorá je vášmu textu najbližšie. Podľa nej Partner Finder vyberie partnerov.'; }, refineGo: function (x) { return 'Pokračovať: ' + x; }, fromText: 'podľa textu',
-      text2H: 'Doplňte alebo upravte zadanie.', text2P: 'Váš text je už vložený, netreba písať od nuly. Doplňte sumu, čas a odkiaľ peniaze idú.', insert: 'Vložiť',
+      text2H: 'Doplňte alebo upravte zadanie.', sugHint: 'Návrh vložíte šípkou →', doneBtn: 'Doplnené do plánu', text2P: 'Váš text je už vložený, netreba písať od nuly. Ak chcete ešte niečo doplniť, pripíšte to.', insert: 'Vložiť',
       intentEb: 'Váš zámer', intentH: 'Čo je hlavný cieľ?', intentP: 'Váš text spomína viac vecí. Podľa toho vyberieme otázky, nástroje a partnerov.', intentBoth: ['both', 'Oboje', 'Kúpiť Bitcoin a nastaviť úschovu a dedenie'], intentNone: 'Ani jedno, nechám „Niečo iné“',
       cfH: function (n) { return n === 1 ? 'Text a odpovede si v 1 bode odporujú.' : 'Text a odpovede si odporujú v ' + n + ' bodoch.'; }, cfP: 'Opravte odpoveď alebo text. Inak verdikt zohľadní oboje a môže byť menej presný.',
       cf: { share: function (n, a) { return 'Text hovorí asi ' + n + ' %, vybrali ste „' + a + '“.'; }, amount: function (n, a) { return 'Text hovorí asi ' + n + ', vybrali ste „' + a + '“.'; }, horizon: function (n, a) { return 'Text hovorí o ' + n + ', vybrali ste „' + a + '“.'; }, aim: function (n, a) { return 'Text spomína dôchodok, vybrali ste „' + a + '“.'; }, retireSoon: 'Dôchodok ako cieľ a peniaze potrebné do 1 roka si odporujú.' },
@@ -685,7 +685,7 @@
       partnersBasics: "Go through the 3 steps above first. The partners are here when you're ready.",
       alsoH: 'For custody and inheritance',
       echoL: 'Your text', refineH: 'Confirm the category.', refineP: function (x) { return x ? 'From your text, the closest is "' + x + '". Confirm it or pick another. Partner Finder uses it to pick partners.' : 'Pick the category closest to your text. Partner Finder uses it to pick partners.'; }, refineGo: function (x) { return 'Continue: ' + x; }, fromText: 'from your text',
-      text2H: 'Add to or edit your decision.', text2P: 'Your text is already here, no need to start over. Add the amount, timing and where the money comes from.', insert: 'Insert',
+      text2H: 'Add to or edit your decision.', sugHint: 'Press → to use the suggestion', doneBtn: 'Added to your plan', text2P: 'Your text is already here, no need to start over. If there is anything else you want to add, write it in.', insert: 'Insert',
       intentEb: 'Your intent', intentH: 'What is the main goal?', intentP: 'Your text mentions more than one thing. We pick the questions, tools and partners from it.', intentBoth: ['both', 'Both', 'Buy Bitcoin and set up custody and inheritance'], intentNone: 'Neither, keep "Something else"',
       cfH: function (n) { return n === 1 ? 'Your text and answers disagree on 1 point.' : 'Your text and answers disagree on ' + n + ' points.'; }, cfP: 'Fix the answer or the text. Otherwise the verdict weighs both and may be less precise.',
       cf: { share: function (n, a) { return 'Your text says about ' + n + '%, you picked "' + a + '".'; }, amount: function (n, a) { return 'Your text says about ' + n + ', you picked "' + a + '".'; }, horizon: function (n, a) { return 'Your text says ' + n + ', you picked "' + a + '".'; }, aim: function (n, a) { return 'Your text mentions retirement, you picked "' + a + '".'; }, retireSoon: 'Retirement as the aim and needing the money within 1 year contradict each other.' },
@@ -715,7 +715,7 @@
       partnersBasics: 'Сначала пройдите 3 шага выше. Партнёры будут здесь, когда вы будете готовы.',
       alsoH: 'Для хранения и наследства',
       echoL: 'Ваш текст', refineH: 'Уточните категорию.', refineP: function (x) { return x ? 'По вашему тексту ближе всего «' + x + '». Подтвердите или выберите другую. По ней Partner Finder подберёт партнёров.' : 'Выберите категорию, ближайшую к вашему тексту. По ней Partner Finder подберёт партнёров.'; }, refineGo: function (x) { return 'Продолжить: ' + x; }, fromText: 'по тексту',
-      text2H: 'Дополните или измените описание.', text2P: 'Ваш текст уже здесь, начинать заново не нужно. Добавьте сумму, сроки и откуда деньги.', insert: 'Вставить',
+      text2H: 'Дополните или измените описание.', sugHint: 'Нажмите →, чтобы вставить подсказку', doneBtn: 'Добавлено в план', text2P: 'Ваш текст уже здесь, начинать заново не нужно. Если хотите что-то добавить, допишите.', insert: 'Вставить',
       intentEb: 'Ваша цель', intentH: 'Что главное?', intentP: 'В вашем тексте несколько тем. По ответу мы подберём вопросы, инструменты и партнёров.', intentBoth: ['both', 'И то, и другое', 'Купить Биткоин и настроить хранение и наследство'], intentNone: 'Ни то, ни другое, оставить «Другое»',
       cfH: function (n) { return n === 1 ? 'Текст и ответы расходятся в 1 пункте.' : 'Текст и ответы расходятся в пунктах: ' + n + '.'; }, cfP: 'Исправьте ответ или текст. Иначе вердикт учтёт и то, и другое и может быть менее точным.',
       cf: { share: function (n, a) { return 'В тексте около ' + n + ' %, а выбрано «' + a + '».'; }, amount: function (n, a) { return 'В тексте около ' + n + ', а выбрано «' + a + '».'; }, horizon: function (n, a) { return 'В тексте: ' + n + ', а выбрано «' + a + '».'; }, aim: function (n, a) { return 'В тексте упоминается пенсия, а выбрано «' + a + '».'; }, retireSoon: 'Пенсия как цель и деньги, нужные в течение года, противоречат друг другу.' },
@@ -861,7 +861,7 @@
   // Our design and rules stay: no invented reviews, no discounts, MiCA wording.
   var W = {
     sk: {
-      add: { btn: 'Doplniť do plánu', btnQ: 'Doplniť odpoveď', miss: 'Čo chýba', write: 'Čo napíšte', what: 'Čo sa stane', happen: 'Doplnenie pridáme k vášmu textu a verdikt prepočítame. Skóre tejto oblasti stúpne, ak doplnenie odpovedá na to, čo chýba.', eg: 'Napr.: ', save: 'Uložiť do plánu', cancel: 'Zrušiť', done: 'Doplnené. Čaká na prepočet.', edit: 'Upraviť', then: 'Potom: ', long: 'Text by mal viac ako 1 200 znakov. Skráťte doplnenie.', empty: 'Napíšte aspoň jednu vetu.',
+      add: { btn: 'Doplniť do plánu', btnQ: 'Doplniť odpoveď', miss: 'Čo chýba', write: 'Čo napíšte', what: 'Čo sa stane', happen: 'Doplnenie pridáme k vášmu textu a verdikt prepočítame. Skóre tejto oblasti stúpne, ak doplnenie odpovedá na to, čo chýba.', eg: 'Napr.: ', save: 'Uložiť do plánu', cancel: 'Zrušiť', done: 'Čaká na prepočet.', edit: 'Upraviť', then: 'Potom: ', long: 'Text by mal viac ako 1 200 znakov. Skráťte doplnenie.', empty: 'Napíšte aspoň jednu vetu.',
         recalc: function (n) { return 'Prepočítať verdikt (' + n + (n === 1 ? ' doplnenie' : n < 5 ? ' doplnenia' : ' doplnení') + ')'; }, recalcP: 'Doplnenia sa pridajú k vášmu textu. Prepočet je jedno nové hodnotenie (najviac 20 prepočtov za deň).',
         delta: function (a, b) { return 'Po doplnení: skóre ' + a + ' → ' + b + ' zo 100.'; },
         ask: { worst_case: ['Koľko eur by ste stratili pri prepade o 70 % a čo vtedy urobíte.', 'Pri prepade o 70 % by som stratil asi 7 000 €. Vtedy nepredávam a plán nemením.'], liquidity: ['Koľko mesiacov výdavkov máte bokom mimo Bitcoinu.', 'Rezervu na 6 mesiacov výdavkov, asi 9 000 €, mám na sporiacom účte.'], tax: ['V ktorej krajine platíte dane a ako sa tam zdaní predaj.', 'Dane platím na Slovensku. Pri predaji si odložím časť zisku na daň a odvody.'], custody: ['Kde budú kľúče a ako sa k nim dostanú dedičia bez zdieľania seed frázy.', 'Bitcoin bude na hardvérovej peňaženke. Postup pre dedičov je uložený u notára, seed frázu nikomu nedávam.'], plan_b: ['Čo by vás prinútilo zmeniť plán a čo potom urobíte.', 'Ak prídem o príjem, prestanem dokupovať a žijem z rezervy.'], goal: ['Cieľ s číslom a dátumom.', 'Do roku 2035 chcem mať na dôchodok aspoň 50 000 €.'], horizon: ['Ako dlho budete držať a čo by vás prinútilo predať skôr.', 'Držím aspoň 10 rokov. Skôr by som predal len pri vážnej chorobe.'], alternatives: ['Aspoň dve iné možnosti, ktoré ste zvážili, a prečo práve táto.', 'Zvažoval som ETF a skoršie splatenie hypotéky. Vyberám Bitcoin, lebo…'], rule: ['Napísané pravidlo, kedy kúpite alebo predáte.', 'Kupujem 200 € mesačne, pri poklese nič nemením, predávam najskôr v roku 2035.'], asymmetry: ['Prečo práve táto suma: akú stratu unesiete.', 'Ide o 10 % úspor. Ak by išli na nulu, bývanie ani rezervu to neohrozí.'] }
@@ -884,7 +884,7 @@
       ctaFinal: 'Zapísať sa', ctaNote: 'Report za 14 € · jednorazovo, bez predplatného'
     },
     en: {
-      add: { btn: 'Add to my plan', btnQ: 'Add an answer', miss: 'What is missing', write: 'What to write', what: 'What happens', happen: 'We add it to your text and rate the verdict again. The score in this area goes up if the addition answers what is missing.', eg: 'E.g.: ', save: 'Save to my plan', cancel: 'Cancel', done: 'Added. Waiting for the new rating.', edit: 'Edit', then: 'Then: ', long: 'The text would be longer than 1,200 characters. Shorten the addition.', empty: 'Write at least one sentence.',
+      add: { btn: 'Add to my plan', btnQ: 'Add an answer', miss: 'What is missing', write: 'What to write', what: 'What happens', happen: 'We add it to your text and rate the verdict again. The score in this area goes up if the addition answers what is missing.', eg: 'E.g.: ', save: 'Save to my plan', cancel: 'Cancel', done: 'Waiting for the new rating.', edit: 'Edit', then: 'Then: ', long: 'The text would be longer than 1,200 characters. Shorten the addition.', empty: 'Write at least one sentence.',
         recalc: function (n) { return 'Rate my verdict again (' + n + (n === 1 ? ' addition' : ' additions') + ')'; }, recalcP: 'Your additions are added to your text. Rating again is one new assessment (at most 20 a day).',
         delta: function (a, b) { return 'After your additions: score ' + a + ' → ' + b + ' out of 100.'; },
         ask: { worst_case: ['How many euros you would lose in a 70% fall and what you would do then.', 'In a 70% fall I would lose about €7,000. I would not sell and keep my plan.'], liquidity: ['How many months of expenses you keep outside Bitcoin.', 'I keep 6 months of expenses, about €9,000, in a savings account.'], tax: ['Where you pay tax and how a sale is taxed there.', 'I pay tax in Slovakia. When I sell, I set aside part of the gain for tax.'], custody: ['Where the keys will be and how heirs reach them without sharing the seed phrase.', 'The Bitcoin will be on a hardware wallet. Instructions for my heirs are with a notary; I share the seed phrase with no one.'], plan_b: ['What would make you change the plan and what you would do then.', 'If I lose my income, I stop buying and live from my reserve.'], goal: ['A goal with a number and a date.', 'By 2035 I want at least €50,000 for retirement.'], horizon: ['How long you will hold and what would force you to sell earlier.', 'I hold for at least 10 years. I would sell earlier only in a serious illness.'], alternatives: ['At least two other options you considered, and why this one.', 'I considered an ETF and paying off my mortgage early. I choose Bitcoin because…'], rule: ['A written rule for when you buy or sell.', 'I buy €200 a month, change nothing in a fall and sell no earlier than 2035.'], asymmetry: ['Why this amount: what loss you can carry.', 'It is 10% of my savings. If it went to zero, my home and reserve would be fine.'] }
@@ -907,7 +907,7 @@
       ctaFinal: 'Join the waitlist', ctaNote: '€14 report · one-time, no subscription'
     },
     ru: {
-      add: { btn: 'Дополнить план', btnQ: 'Добавить ответ', miss: 'Чего не хватает', write: 'Что написать', what: 'Что будет дальше', happen: 'Мы добавим это к вашему тексту и оценим вердикт заново. Оценка этой области вырастет, если дополнение отвечает на то, чего не хватает.', eg: 'Например: ', save: 'Сохранить в план', cancel: 'Отмена', done: 'Добавлено. Ждёт новой оценки.', edit: 'Изменить', then: 'Затем: ', long: 'Текст будет длиннее 1200 знаков. Сократите дополнение.', empty: 'Напишите хотя бы одно предложение.',
+      add: { btn: 'Дополнить план', btnQ: 'Добавить ответ', miss: 'Чего не хватает', write: 'Что написать', what: 'Что будет дальше', happen: 'Мы добавим это к вашему тексту и оценим вердикт заново. Оценка этой области вырастет, если дополнение отвечает на то, чего не хватает.', eg: 'Например: ', save: 'Сохранить в план', cancel: 'Отмена', done: 'Ждёт новой оценки.', edit: 'Изменить', then: 'Затем: ', long: 'Текст будет длиннее 1200 знаков. Сократите дополнение.', empty: 'Напишите хотя бы одно предложение.',
         recalc: function (n) { return 'Оценить вердикт заново (дополнений: ' + n + ')'; }, recalcP: 'Дополнения добавятся к вашему тексту. Новая оценка — это одна проверка (не больше 20 в день).',
         delta: function (a, b) { return 'После дополнений: оценка ' + a + ' → ' + b + ' из 100.'; },
         ask: { worst_case: ['Сколько евро вы потеряете при падении на 70 % и что тогда сделаете.', 'При падении на 70 % я потеряю около 7 000 €. Тогда я не продаю и план не меняю.'], liquidity: ['Сколько месяцев расходов у вас отложено вне Биткоина.', 'Резерв на 6 месяцев расходов, около 9 000 €, лежит на сберегательном счёте.'], tax: ['В какой стране вы платите налоги и как там облагается продажа.', 'Налоги я плачу в Словакии. При продаже откладываю часть прибыли на налог.'], custody: ['Где будут ключи и как наследники получат доступ без передачи сид-фразы.', 'Биткоин будет на аппаратном кошельке. Инструкция для наследников хранится у нотариуса, сид-фразу я никому не передаю.'], plan_b: ['Что заставит вас изменить план и что вы тогда сделаете.', 'Если я потеряю доход, перестану докупать и буду жить на резерв.'], goal: ['Цель с суммой и датой.', 'К 2035 году хочу иметь на пенсию не меньше 50 000 €.'], horizon: ['Как долго вы будете держать и что может заставить продать раньше.', 'Держу не меньше 10 лет. Раньше продам только при серьёзной болезни.'], alternatives: ['Как минимум два других варианта, которые вы сравнили, и почему этот.', 'Я рассматривал ETF и досрочное погашение ипотеки. Выбираю Биткоин, потому что…'], rule: ['Записанное правило, когда вы покупаете или продаёте.', 'Покупаю на 200 € в месяц, при падении ничего не меняю, продаю не раньше 2035 года.'], asymmetry: ['Почему именно эта сумма: какую потерю вы выдержите.', 'Это 10 % сбережений. Если они обнулятся, жильё и резерв не пострадают.'] }
@@ -966,12 +966,12 @@
   function addBox(key, why, ask, q) {
     var A2 = W.add, a = A2.ask[key] || [ask || '', ''], done = ADDS[key];
     return '<div class="vx-addw" data-addw="' + esc(key) + '">' +
-      '<div class="vx-done"' + (done ? '' : ' hidden') + '>' + ic('up', 16) + ' <span>' + A2.done + '</span> <button class="linkish" data-addopen>' + A2.edit + '</button></div>' +
+      '<div class="vx-done"' + (done ? '' : ' hidden') + '><button class="vf-btn vx-donebtn" disabled aria-disabled="true">' + CK + ' ' + V.doneBtn + '</button><p class="small">' + A2.done + ' <button class="linkish" data-addopen>' + A2.edit + '</button></p></div>' +
       '<button class="vf-btn solid vx-addb" data-addopen' + (done ? ' hidden' : '') + '>' + (q ? A2.btnQ : A2.btn) + '</button>' +
       '<div class="vx-add" hidden>' + (why ? '<p><b>' + A2.miss + ':</b> ' + esc(why) + '</p>' : '') +
       '<p><b>' + A2.write + ':</b> ' + esc(a[0]) + '</p>' +
-      (a[1] ? '<div class="vx-eg"><span>' + A2.eg + esc(a[1]) + '</span><button class="vf-btn" data-insert="' + esc(a[1]) + '">' + V.insert + ' →</button></div>' : '') +
-      '<textarea maxlength="400">' + esc(done || '') + '</textarea>' +
+      '<div class="vx-ta"><textarea maxlength="400" placeholder="' + esc(a[1] ? A2.eg + a[1] : '') + '"' + (a[1] ? ' data-sug="' + esc(a[1]) + '"' : '') + '>' + esc(done || '') + '</textarea>' +
+      (a[1] ? '<button class="vx-sugk" type="button" data-insert title="' + esc(V.sugHint) + '" aria-label="' + esc(V.sugHint) + '"><kbd>→</kbd></button>' : '') + '</div>' +
       '<p class="small"><b>' + A2.what + ':</b> ' + A2.happen + '</p><p class="small vx-adderr" hidden></p>' +
       '<div class="vrow"><button class="vf-btn solid" data-addsave>' + A2.save + '</button><button class="ghost" data-addcancel>' + A2.cancel + '</button></div></div></div>';
   }
@@ -990,12 +990,18 @@
     panel.querySelectorAll('[data-addw]').forEach(function (w) {
       var box = w.querySelector('.vx-add'), ta = box.querySelector('textarea'), err = box.querySelector('.vx-adderr');
       w.querySelectorAll('[data-addopen]').forEach(function (b) { b.onclick = function () {
-        box.hidden = false; w.querySelector('.vx-addb').hidden = true; w.querySelector('.vx-done').hidden = true; ta.value = ADDS[w.dataset.addw] || ''; ta.focus();
+        box.hidden = false; w.querySelector('.vx-addb').hidden = true; w.querySelector('.vx-done').hidden = true; ta.value = ADDS[w.dataset.addw] || ''; var k2 = box.querySelector('[data-insert]'); if (k2) k2.hidden = !!ta.value; ta.focus();
         push({ event: 'verdict_add_open', verdict_lang: LANG, signal: w.dataset.addw });
       }; });
       box.querySelector('[data-addcancel]').onclick = function () { box.hidden = true; refresh(); };
-      var ins = box.querySelector('[data-insert]');
-      if (ins) ins.onclick = function () { ta.value = ins.dataset.insert; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); push({ event: 'verdict_add_insert', verdict_lang: LANG, signal: w.dataset.addw }); };
+      // The suggestion sits in the empty field as a placeholder; → (or Tab)
+      // in the empty field, or the small → key on touch screens, writes it in.
+      var ins = box.querySelector('[data-insert]'), sug = ta.dataset.sug;
+      function fill() { if (!sug) return; ta.value = sug; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); syncK(); push({ event: 'verdict_add_insert', verdict_lang: LANG, signal: w.dataset.addw }); }
+      function syncK() { if (ins) ins.hidden = !!ta.value; }
+      if (ins) ins.onclick = fill;
+      ta.addEventListener('keydown', function (e) { if (sug && !ta.value && (e.key === 'ArrowRight' || e.key === 'Tab') && !e.shiftKey) { e.preventDefault(); fill(); } });
+      ta.addEventListener('input', syncK);
       box.querySelector('[data-addsave]').onclick = function () {
         var v = ta.value.trim().replace(/\s+/g, ' ');
         if (v.length < 8) { err.textContent = W.add.empty; err.hidden = false; return; }
