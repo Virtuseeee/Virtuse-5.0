@@ -653,7 +653,7 @@
       partnersH: 'Kde to môžete urobiť',
       partnersP: function (c) { return 'Partneri v kategórii ' + c.cat + ', ktorí spĺňajú vaše kritériá' + (c.crit ? ' (' + c.crit + ')' : '') + '. Poradie určujú pevné pravidlá, nie provízia. Porovnávate a vyberáte vy.'; },
       partnersBasics: 'Najprv si prejdite 3 kroky vyššie. Partnerov tu máte, keď budete pripravení.',
-      alsoH: 'Na úschovu a dedenie',
+      alsoH: 'Na úschovu a dedenie', pdfDl: 'Stiahnuť PDF', pdfPrint: 'Tlačiť',
       echoL: 'Váš text', refineH: 'Spresnite kategóriu.', refineP: function (x) { return x ? 'Podľa vášho textu je najbližšie „' + x + '“. Potvrďte ju alebo vyberte inú. Podľa nej Partner Finder vyberie partnerov.' : 'Vyberte kategóriu, ktorá je vášmu textu najbližšie. Podľa nej Partner Finder vyberie partnerov.'; }, refineGo: function (x) { return 'Pokračovať: ' + x; }, fromText: 'podľa textu',
       text2H: 'Doplňte alebo upravte zadanie.', sugHint: 'Návrh vložíte šípkou →', doneBtn: 'Doplnené do plánu', text2P: 'Váš text je už vložený, netreba písať od nuly. Ak chcete ešte niečo doplniť, pripíšte to.', insert: 'Vložiť',
       intentEb: 'Váš zámer', intentH: 'Čo je hlavný cieľ?', intentP: 'Váš text spomína viac vecí. Podľa toho vyberieme otázky, nástroje a partnerov.', intentBoth: ['both', 'Oboje', 'Kúpiť Bitcoin a nastaviť úschovu a dedenie'], intentNone: 'Ani jedno, nechám „Niečo iné“',
@@ -683,7 +683,7 @@
       partnersH: 'Where you can do it',
       partnersP: function (c) { return 'Partners in the ' + c.cat + ' category that match your criteria' + (c.crit ? ' (' + c.crit + ')' : '') + '. Fixed rules set the order, not commission. You compare and choose.'; },
       partnersBasics: "Go through the 3 steps above first. The partners are here when you're ready.",
-      alsoH: 'For custody and inheritance',
+      alsoH: 'For custody and inheritance', pdfDl: 'Download PDF', pdfPrint: 'Print',
       echoL: 'Your text', refineH: 'Confirm the category.', refineP: function (x) { return x ? 'From your text, the closest is "' + x + '". Confirm it or pick another. Partner Finder uses it to pick partners.' : 'Pick the category closest to your text. Partner Finder uses it to pick partners.'; }, refineGo: function (x) { return 'Continue: ' + x; }, fromText: 'from your text',
       text2H: 'Add to or edit your decision.', sugHint: 'Press → to use the suggestion', doneBtn: 'Added to your plan', text2P: 'Your text is already here, no need to start over. If there is anything else you want to add, write it in.', insert: 'Insert',
       intentEb: 'Your intent', intentH: 'What is the main goal?', intentP: 'Your text mentions more than one thing. We pick the questions, tools and partners from it.', intentBoth: ['both', 'Both', 'Buy Bitcoin and set up custody and inheritance'], intentNone: 'Neither, keep "Something else"',
@@ -713,7 +713,7 @@
       partnersH: 'Где это можно сделать',
       partnersP: function (c) { return 'Партнёры в категории «' + c.cat + '», которые соответствуют вашим критериям' + (c.crit ? ' (' + c.crit + ')' : '') + '. Порядок определяют фиксированные правила, а не комиссия. Сравниваете и выбираете вы.'; },
       partnersBasics: 'Сначала пройдите 3 шага выше. Партнёры будут здесь, когда вы будете готовы.',
-      alsoH: 'Для хранения и наследства',
+      alsoH: 'Для хранения и наследства', pdfDl: 'Скачать PDF', pdfPrint: 'Печать',
       echoL: 'Ваш текст', refineH: 'Уточните категорию.', refineP: function (x) { return x ? 'По вашему тексту ближе всего «' + x + '». Подтвердите или выберите другую. По ней Partner Finder подберёт партнёров.' : 'Выберите категорию, ближайшую к вашему тексту. По ней Partner Finder подберёт партнёров.'; }, refineGo: function (x) { return 'Продолжить: ' + x; }, fromText: 'по тексту',
       text2H: 'Дополните или измените описание.', sugHint: 'Нажмите →, чтобы вставить подсказку', doneBtn: 'Добавлено в план', text2P: 'Ваш текст уже здесь, начинать заново не нужно. Если хотите что-то добавить, допишите.', insert: 'Вставить',
       intentEb: 'Ваша цель', intentH: 'Что главное?', intentP: 'В вашем тексте несколько тем. По ответу мы подберём вопросы, инструменты и партнёров.', intentBoth: ['both', 'И то, и другое', 'Купить Биткоин и настроить хранение и наследство'], intentNone: 'Ни то, ни другое, оставить «Другое»',
@@ -1084,6 +1084,67 @@
     return '<section class="vx-faq no-print">' + vsec('help', W.secFaq) + '<div class="vf-card vx-acc">' + W.faq.map(function (f) { return '<details><summary>' + f[0] + ic('arrow', 18) + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
       '<div class="vx-final"><button class="vf-btn solid" data-want>' + (wait ? W.ctaFinal : W.buyBtn) + ' <span>|</span> ' + V.repPrice + '</button><p class="small">' + W.ctaNote + '</p></div></section>';
   }
+  // PDF report v1 (HANDOVER-verdict-pdf-ux-2026-10-27, phase 1): a separate,
+  // print-only A4 document built from the report data at click time; the
+  // browser saves it as PDF. White paper, no site chrome, page numbers.
+  var PD = {
+    sk: { doc: 'Verdikt · report', date: 'Dátum', goal: 'Čo zvažujete', country: 'Krajina', score: 'Skóre úplnosti plánu', scoreNote: 'Meria úplnosť plánu, nie či je Bitcoin dobrá voľba.', steps: 'Tri ďalšie kroky', tool: 'Nástroj', signals: 'Všetkých 10 oblastí', todo: 'Čo urobiť', gaps: 'Otázky, na ktoré ešte nemáte odpoveď', plan: 'Plán krokov', planP: 'Oblasti pod 7 bodov, od najslabšej.', planNone: 'Všetky oblasti majú aspoň 7 bodov.', covered: function (n) { return 'Dobre opísané oblasti: ' + n + ' z 10.'; }, partners: 'Kde to môžete urobiť', partnersP: 'Partneri, ktorí spĺňajú vaše kritériá. Poradie určujú pevné pravidlá, nie provízia. Porovnáte a vyberiete vy.', disclose: 'Partnerské odkazy: ak sa zaregistrujete, Virtuse môže dostať províziu, vaša cena sa nemení.', notes: 'Poznámky k daniam, úschove a poplatkom', taxNote: 'Nie je to daňové poradenstvo. Pravidlá si overte s daňovým poradcom.', fees: 'Poplatky porovnáte v Indexe poplatkov', links: 'Užitočné odkazy', appendix: 'Príloha: vaše odpovede', again: 'Ohodnotiť znova', consult: 'Osobná konzultácia, 15 minút, zadarmo', legal: 'Vygenerované umelou inteligenciou. Nie je to investičné, daňové ani právne poradenstvo. Virtuse nedrží vaše kľúče ani peniaze.', id: 'ID reportu', file: 'Virtuse-Verdikt' },
+    en: { doc: 'Verdict · report', date: 'Date', goal: 'What you are considering', country: 'Country', score: 'Plan completeness score', scoreNote: 'Measures how complete the plan is, not whether Bitcoin is a good choice.', steps: 'Three next steps', tool: 'Tool', signals: 'All 10 areas', todo: 'What to do', gaps: 'Questions you have not answered yet', plan: 'Step plan', planP: 'Areas under 7 points, weakest first.', planNone: 'Every area has at least 7 points.', covered: function (n) { return 'Areas well described: ' + n + ' of 10.'; }, partners: 'Where you can do it', partnersP: 'Partners that match your criteria. Fixed rules set the order, not commission. You compare and choose.', disclose: 'Partner links: if you sign up, Virtuse may receive a commission; your price does not change.', notes: 'Notes on tax, custody and fees', taxNote: 'This is not tax advice. Check the rules with a tax adviser.', fees: 'Compare fees in the Bitcoin Fee Index', links: 'Useful links', appendix: 'Appendix: your answers', again: 'Rate again', consult: 'Personal consultation, 15 minutes, free', legal: 'Generated by artificial intelligence. Not investment, tax or legal advice. Virtuse holds no keys or funds.', id: 'Report ID', file: 'Virtuse-Verdict' },
+    ru: { doc: 'Вердикт · отчёт', date: 'Дата', goal: 'Что вы рассматриваете', country: 'Страна', score: 'Оценка полноты плана', scoreNote: 'Измеряет полноту плана, а не то, хорош ли Биткоин.', steps: 'Три следующих шага', tool: 'Инструмент', signals: 'Все 10 областей', todo: 'Что сделать', gaps: 'Вопросы, на которые у вас пока нет ответа', plan: 'План шагов', planP: 'Области ниже 7 баллов, от самой слабой.', planNone: 'У всех областей не меньше 7 баллов.', covered: function (n) { return 'Хорошо описанных областей: ' + n + ' из 10.'; }, partners: 'Где это можно сделать', partnersP: 'Партнёры, которые соответствуют вашим критериям. Порядок определяют фиксированные правила, а не комиссия. Сравниваете и выбираете вы.', disclose: 'Партнёрские ссылки: если вы зарегистрируетесь, Virtuse может получить комиссию, ваша цена не меняется.', notes: 'Заметки о налогах, хранении и комиссиях', taxNote: 'Это не налоговая консультация. Проверьте правила у налогового консультанта.', fees: 'Комиссии сравните в Индексе комиссий', links: 'Полезные ссылки', appendix: 'Приложение: ваши ответы', again: 'Оценить снова', consult: 'Личная консультация, 15 минут, бесплатно', legal: 'Создано искусственным интеллектом. Не является инвестиционной, налоговой или юридической консультацией. Virtuse не хранит ваши ключи и деньги.', id: 'ID отчёта', file: 'Virtuse-Verdict' }
+  }[LANG];
+  function absUrl(h) { try { var u = new URL(h, location.href); ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) { u.searchParams.delete(k); }); return 'virtuse.com' + u.pathname + u.search; } catch (e) { return h; } }
+  function shortId(r) { var t = (A.text || '') + '|' + (r.score || 0) + '|' + new Date().toISOString().slice(0, 10), h = 5381; for (var k = 0; k < t.length; k++) h = ((h * 33) ^ t.charCodeAt(k)) >>> 0; return ('00000' + h.toString(16)).slice(-6).toUpperCase(); }
+  function printDoc(r) {
+    var ds = new Date().toLocaleDateString({ sk: 'sk-SK', ru: 'ru-RU' }[LANG] || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }), id = shortId(r);
+    var cn = A.country && A.country !== 'na' && A.country !== 'other' ? (label('country', A.country) || '') : '';
+    var areas = r.areas || [], col = { risk: '#2563eb', taxc: '#0f8f7d', plan: '#7c3aed' }, groups = ['risk', 'taxc', 'plan'];
+    var stepRow = function (s) { return '<li><b>' + esc(stepTitle(s)) + '</b><span>' + esc(s.action) + '</span>' + (s.tool ? '<em>' + PD.tool + ': ' + esc(s.tool.name) + ' · ' + esc(absUrl(toolHref(s.tool, 'pdf'))) + '</em>' : '') + '</li>'; };
+    var cards = [].slice.call(document.querySelectorAll('#pfBox .pcard')).map(function (c) {
+      var g = function (q) { var e = c.querySelector(q); return e ? e.textContent.trim() : ''; };
+      return '<div class="pp"><b>' + esc(g('b')) + '</b><span>' + esc(g('.tl')) + '</span>' + (g('.lic') ? '<i>' + esc(g('.lic')) + '</i>' : '') + (g('.fee') ? '<i>' + esc(g('.fee')) + '</i>' : '') + '</div>';
+    }).join('');
+    var tax = areas.filter(function (a) { return a.id === 'tax'; })[0], cus = areas.filter(function (a) { return a.id === 'custody'; })[0];
+    var rows = [['goal', goalLabel()]].concat(KEYS().map(function (k) { return [k, ans(k)]; }));
+    var plan = r.plan || [], pre = LANG === 'en' ? '' : '/' + LANG;
+    var feeUrl = 'virtuse.com' + ({ sk: '/sk/bitcoin-index-poplatkov/', ru: '/ru/bitcoin-indeks-komissiy/' }[LANG] || '/bitcoin-fee-index/');
+    return '<div class="pd" lang="' + LANG + '">' +
+      '<section class="pd-cover"><div class="pd-brand"><img src="/email-virtuse-v-mark.png" alt="" width="34" height="22"><b>Virtuse</b><span>' + PD.doc + '</span></div>' +
+      '<p class="pd-meta">' + PD.date + ': ' + esc(ds) + (A.name ? ' · ' + esc(A.name) : '') + ' · ' + PD.id + ' ' + id + '</p>' +
+      '<blockquote>' + quote(A.text || '') + '</blockquote><p class="pd-meta">' + PD.goal + ': ' + esc(goalLabel()) + (cn ? ' · ' + PD.country + ': ' + esc(cn) : '') + '</p>' +
+      '<div class="pd-score"><div class="pd-num">' + (r.score == null ? '–' : r.score) + '<small>/100</small></div><div><span class="pd-pill">' + esc((V.levelPill || {})[r.level.id] || '') + '</span><h1>' + esc(r.level.headline) + '</h1><p>' + esc(r.level.why) + '</p><p class="pd-note">' + PD.score + '. ' + PD.scoreNote + '</p></div></div>' +
+      '<h2>' + PD.steps + '</h2><ol class="pd-steps">' + (r.steps || []).map(stepRow).join('') + '</ol>' +
+      '<p class="pd-legal">' + PD.legal + '</p></section>' +
+      '<section class="pd-page"><h2>' + PD.signals + '</h2><div class="pd-sgrid">' + groups.map(function (gk) {
+        return '<h3 style="color:' + col[gk] + '">' + R.group[gk] + '</h3>' + areas.filter(function (a) { return GROUP[a.id] === gk; }).map(function (a) {
+          return '<div class="pd-sig"><div class="pd-sh"><b>' + esc(a.title) + '</b><em>' + a.points + '/10</em></div><div class="pd-bar"><i style="width:' + a.points * 10 + '%;background:' + col[gk] + '"></i></div><p>' + esc(a.reason || a.meaning) + '</p><p><b>' + PD.todo + ':</b> ' + esc(a.todo) + '</p></div>';
+        }).join('');
+      }).join('') + '</div></section>' +
+      '<section class="pd-page"><h2>' + PD.gaps + '</h2><ol class="pd-list">' + (r.missing || []).map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ol>' +
+      '<h2>' + PD.plan + '</h2><p class="pd-note">' + (plan.length ? PD.planP : PD.planNone) + ' ' + PD.covered(r.covered || 0) + '</p>' +
+      '<table class="pd-tab">' + plan.map(function (s) { return '<tr><td><b>' + esc(s.title) + '</b></td><td>' + s.points + '/10</td><td>' + esc(s.tool.name) + '<br><span>' + esc(absUrl(toolHref(s.tool, 'pdf'))) + '</span></td></tr>'; }).join('') + '</table></section>' +
+      '<section class="pd-page"><h2>' + PD.partners + '</h2><p class="pd-note">' + PD.partnersP + '</p><div class="pd-pgrid">' + cards + '</div><p class="pd-note">' + PD.disclose + '</p>' +
+      '<h2>' + PD.notes + '</h2>' + (tax ? '<div class="pd-sig"><b>' + esc(tax.title) + '</b><p>' + esc(tax.meaning) + '</p><p class="pd-note">' + PD.taxNote + '</p></div>' : '') +
+      (cus ? '<div class="pd-sig"><b>' + esc(cus.title) + '</b><p>' + esc(cus.meaning) + '</p><p>' + esc(R.tip.custody) + '</p></div>' : '') +
+      '<div class="pd-sig"><b>' + PD.fees + '</b><p>' + esc(feeUrl) + '</p></div></section>' +
+      '<section class="pd-page"><h2>' + PD.appendix + '</h2><table class="pd-tab">' + rows.map(function (x) { return '<tr><td>' + esc(STR.rev[x[0]] || x[0]) + '</td><td>' + esc(x[1]) + '</td></tr>'; }).join('') + '</table>' +
+      '<h2>' + PD.links + '</h2><ul class="pd-list"><li>Partner Finder · virtuse.com' + pre + '/concierge.html</li><li>Tax &amp; Inheritance Agent · virtuse.com' + pre + '/tax-agent.html</li><li>' + PD.again + ' · virtuse.com' + pre + '/verdict.html</li><li>' + PD.consult + ' · virtuse.com' + pre + '/verdict.html</li></ul>' +
+      '<p class="pd-legal">' + esc(r.scoreNote || '') + '</p><p class="pd-legal">' + PD.legal + '</p></section></div>';
+  }
+  function downloadPdf() {
+    var r = RESULT; if (!r) return;
+    push({ event: 'verdict_report_pdf', verdict_lang: LANG });
+    var old = document.getElementById('vxPrint'); if (old) old.remove();
+    var box = document.createElement('div'); box.id = 'vxPrint'; box.className = 'vx-printdoc'; box.innerHTML = printDoc(r);
+    document.body.appendChild(box);
+    var st = document.createElement('style'); st.id = 'vxPrintPage';
+    st.textContent = '@media print { :root { color-scheme: light !important; } html, body { background: #fff !important; background-image: none !important; } } @page { size: A4; margin: 16mm 15mm 18mm; @bottom-left { content: "© 2018–2026 Virtuse Wealth Management, a.s."; font: 8pt Inter, Arial, sans-serif; color: #666; } @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Inter, Arial, sans-serif; color: #666; } }';
+    document.head.appendChild(st);
+    var t = document.title; document.title = PD.file + '-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + shortId(r);
+    document.body.classList.add('vf-print');
+    function done() { document.body.classList.remove('vf-print'); document.title = t; box.remove(); st.remove(); window.removeEventListener('afterprint', done); }
+    window.addEventListener('afterprint', done);
+    window.print();
+  }
   function legal(r) { return '<p class="small" style="margin-top:22px">' + esc(r.scoreNote) + '</p><p class="small">' + esc(r.aiLabel) + ' ' + esc(r.disclaimer) + '</p>'; }
   function againFoot(pdf) { return '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>' + V.filler.recheck + '</button>' + (pdf ? '<button class="vf-btn solid" data-pdf>' + STR.pdf + '</button>' : '') + '</div>'; }
   function sticky() { return '<div class="vf-sticky"><a class="vf-btn" href="#steps3">' + V.stickySteps + '</a><button class="vf-btn solid" data-want>' + V.stickyRep + '</button></div>'; }
@@ -1096,11 +1157,7 @@
     }; });
     panel.parentNode.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
     panel.querySelectorAll('[data-step]').forEach(function (b) { b.addEventListener('click', function () { push({ event: 'verdict_step_click', verdict_lang: LANG, step: b.dataset.step, verdict_level: r.level && r.level.id }); }); });
-    panel.querySelectorAll('[data-pdf]').forEach(function (b) { b.onclick = function () {
-      push({ event: 'verdict_report_pdf', verdict_lang: LANG });
-      var t = document.title; document.title = R.pdfTitle + (A.name ? ' · ' + A.name : '');
-      window.print(); setTimeout(function () { document.title = t; }, 500);
-    }; });
+    panel.querySelectorAll('[data-pdf]').forEach(function (b) { b.onclick = downloadPdf; });
     var sh = document.getElementById('pfShow');
     if (sh) sh.onclick = function () { document.getElementById('pfBox').hidden = false; sh.hidden = true; push({ event: 'verdict_pf_show', verdict_lang: LANG }); };
     var pb = document.getElementById('report');
@@ -1161,7 +1218,7 @@
   function showReport(r) {
     var groups = ['risk', 'taxc', 'plan'];
     panel.innerHTML = '<div data-ai-generated="true" class="report">' +
-      '<p class="warn no-print">' + STR.prevNote + '</p>' + headBlock(r) + stepsBlock(r, 'report') +
+      '<p class="warn no-print">' + STR.prevNote + '</p><div class="vx-pdfbar no-print"><button class="vf-btn solid" data-pdf>' + V.pdfDl + '</button><button class="vf-btn" data-pdf>' + V.pdfPrint + '</button><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>' + headBlock(r) + stepsBlock(r, 'report') +
       groups.map(function (g) {
         var ss = r.areas.filter(function (a) { return GROUP[a.id] === g; });
         return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (a) { return areaCard(a, 'report', r.steps); }).join('') + '</div>';
