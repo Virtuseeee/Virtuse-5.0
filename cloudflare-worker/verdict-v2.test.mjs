@@ -69,7 +69,7 @@ test('T1 sensible beginner: basics, template why, 3 steps tax → fees → rule'
   assert.equal(r.areas[0].title, 'Dane pri predaji');
   assert.match(r.areas[0].meaning, /^Daň môže zobrať výraznú časť zisku\. Na Slovensku: 19 až 35 %/);
   assert.equal(r.pricing.report.mode, 'waitlist');
-  assert.equal(r.pricing.cfo.opens, '2026-11-01');
+  assert.equal(r.pricing.cfo.opens, null);
   assert.equal(r.locked.length, 8);
   assert.equal(r.copySource.summary, 'template');
 });

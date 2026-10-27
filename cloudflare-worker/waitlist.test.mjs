@@ -201,3 +201,12 @@ test('every waitlist language has the report email', async () => {
     assert.ok(waitlistSubject('verdict_report', L).length > 10);
   }
 });
+
+test('staging dry run: a valid sign-up answers ok and nothing is sent', withFetch(async (calls) => {
+  const res = await worker.fetch(req({ email: 'a@b.co', hp: '', source: 'cfo_page' }), env({ WAITLIST_DRY_RUN: '1' }));
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true, dryRun: true });
+  assert.equal(calls.length, 0);
+  const bad = await worker.fetch(req({ email: 'nope', hp: '', source: 'cfo_page' }), env({ WAITLIST_DRY_RUN: '1' }));
+  assert.equal(bad.status, 400);
+}));

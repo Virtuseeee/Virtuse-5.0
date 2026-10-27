@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27, evening) — Numeric launch date + staging waitlist split (PROMPT meta/og + smoke), branch `feat/verdict-ru`; **staging only**
+
+- The no-date pass missed numeric dates: sk/cs/de cfo.html description + og/twitter ("zadarmo od 1. 11. 2026", "gratis ab 1.11.2026") and the i18n-tools/cfo jsons; fixed (table entries added). HTML comments "TODO(launch 2026-11-01)" → "TODO(launch)". Worker pricing `cfo.opens` → null. Kept: legal "Účinné od / Aktualizované 1. 11. 2026".
+- Staging waitlist no longer reaches the production list: 20 pages (cfo + index, 10 languages) and verdict-flow.js call the staging Worker when the host is staging.virtuse.com or localhost (CSP connect-src gained the staging Worker); the staging Worker has `WAITLIST_DRY_RUN = "1"` → valid sign-ups answer `{ok:true, dryRun:true}` and nothing is stored or e-mailed. Production pages keep the production Worker. Worker tests 128/128.
+
 ## Session status (2026-10-27, late) — Verdikt PDF report v1 (HANDOVER-verdict-pdf-ux phase 1), branch `feat/verdict-ru`; **staging only**
 
 - Report view (`?report=1`, later the paid report) has a bar "Stiahnuť PDF / Tlačiť / Ohodnotiť znova". Click → `downloadPdf()` in verdict-flow.js builds a separate print-only `#vxPrint` document from the report data (SK/EN/RU strings in `PD`), appends it to body, adds `body.vf-print` and an injected `@page` style (A4, footer "© 2018–2026 Virtuse Wealth Management, a.s." + "n / N"), sets the title to `Virtuse-Verdikt-YYYYMMDD-ID` (the saved file name) and calls `print()`; `afterprint` removes it. GA `verdict_report_pdf`.

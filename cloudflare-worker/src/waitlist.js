@@ -107,6 +107,9 @@ export async function handleWaitlist(request, env, origin, { json, isRateLimited
   if (source !== undefined && !WAITLIST_SOURCES.includes(source)) {
     return json(400, { error: 'Unknown source.' }, origin);
   }
+  // Staging (WAITLIST_DRY_RUN=1): validate and answer like a real sign-up,
+  // but store nothing and send nothing, so tests never reach the real list.
+  if (env.WAITLIST_DRY_RUN === '1') return json(200, { ok: true, dryRun: true }, origin);
   if (!env.RESEND_CFO_AUDIENCE_ID) {
     return json(503, { error: 'The waitlist is not open yet. Please try again later.' }, origin);
   }

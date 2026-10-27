@@ -16,7 +16,8 @@
   // report preview); production calls the production Worker.
   var STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
   var WORKER = (STAGE ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/verdict';
-  var WAITLIST = 'https://virtuse-newsletter.virtuse-ai.workers.dev/waitlist';
+  // Staging and local testing sign up on the staging Worker (dry run, nothing stored or sent).
+  var WAITLIST = (STAGE ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist';
   var meta = document.querySelector('meta[name="vb-verdict"]');
   // The report preview only with ?report=1 (staging Worker); the default on
   // staging is the free view, as a visitor sees it (verdict-result-v2 §3).

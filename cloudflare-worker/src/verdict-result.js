@@ -691,6 +691,6 @@ export function pricing(opts = {}) {
   return {
     report: { price_eur: 14, mode: opts.checkout ? 'checkout' : 'waitlist', taxModule: !!opts.taxModule },
     consult: { price_eur: 0 },
-    cfo: { price_eur_month: 9, price_eur_year: 90, opens: '2026-11-01' },
+    cfo: { price_eur_month: 9, price_eur_year: 90, opens: null }, // no launch date (Ras 2026-10-27)
   };
 }
