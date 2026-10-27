@@ -220,6 +220,17 @@ export const PARTNERS: Partner[] = [
     badge: { en: 'Self-custody', sk: 'Vlastná úschova', cs: 'Vlastní úschova' },
   },
 
+  {
+    id: 'umbrel',
+    name: 'Umbrel',
+    tagline: { en: 'Home server for running your own Bitcoin node', sk: 'Domáci server na prevádzku vlastného Bitcoin uzla', cs: 'Domácí server pro provoz vlastního Bitcoin uzlu' },
+    goals: ['custody'],
+    custody: ['self'],
+    url: 'https://a.umbrel.com/virtuse',
+    feeNote: { en: 'Umbrel Home: your own Bitcoin node, not a wallet', sk: 'Umbrel Home: váš vlastný Bitcoin uzol, nie peňaženka', cs: 'Umbrel Home: váš vlastní Bitcoin uzel, ne peněženka' },
+    countries: ['ALL'],
+  },
+
   // ── Loans (lending.html) ──
   {
     id: 'firefish',
@@ -362,6 +373,15 @@ export const PARTNERS: Partner[] = [
     goals: ['mining'],
     url: 'https://shop.powermining.io/?ref=Virtuse',
     feeNote: { en: 'EU warehouse, fast shipping', sk: 'Sklad v EÚ, rýchle doručenie', cs: 'Sklad v EU, rychlé doručení' },
+    countries: ['ALL'],
+  },
+  {
+    id: 'solo-satoshi',
+    name: 'Solo Satoshi',
+    tagline: { en: 'Open-source home miners (Bitaxe, NerdQaxe)', sk: 'Open-source domáce ťažobné zariadenia (Bitaxe, NerdQaxe)', cs: 'Open-source domácí těžební zařízení (Bitaxe, NerdQaxe)' },
+    goals: ['mining'],
+    url: 'https://www.solosatoshi.com/aff/8822/',
+    feeNote: { en: 'Based in Texas, USA; ships worldwide', sk: 'Sídlo v Texase (USA), doručenie do celého sveta', cs: 'Sídlo v Texasu (USA), doručení do celého světa' },
     countries: ['ALL'],
   },
 ];
@@ -534,6 +554,12 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
           'Pre bitcoinových puristov: open-source ťažobný hardvér (Bitaxe), sklad v EÚ pre rýchle doručenie.',
           'Pro bitcoinové puristy: open-source těžební hardware (Bitaxe), sklad v EU pro rychlé doručení.'),
       ]);
+      push('solo-satoshi', 70, [
+        t(lang,
+          'Open-source home miners (Bitaxe and NerdQaxe) from Texas, shipped worldwide.',
+          'Open-source domáce ťažobné zariadenia (Bitaxe a NerdQaxe) z Texasu, s doručením do celého sveta.',
+          'Open-source domácí těžební zařízení (Bitaxe a NerdQaxe) z Texasu, s doručením do celého světa.'),
+      ]);
       break;
     }
     case 'custody': {
@@ -557,6 +583,12 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
           'Hardware wallet with a certified Secure Element chip and the Ledger Live app.',
           'Hardvérová peňaženka s certifikovaným čipom Secure Element a aplikáciou Ledger Live.',
           'Hardwarová peněženka s certifikovaným čipem Secure Element a aplikací Ledger Live.'),
+      ]);
+      push('umbrel', 68, [
+        t(lang,
+          'Your own Bitcoin node at home: check your own transactions instead of trusting someone else\'s server. Works alongside any hardware wallet.',
+          'Vlastný Bitcoin uzol doma: overujte si vlastné transakcie namiesto dôvery v cudzí server. Funguje s akoukoľvek hardvérovou peňaženkou.',
+          'Vlastní Bitcoin uzel doma: ověřujte si vlastní transakce místo důvěry v cizí server. Funguje s jakoukoli hardwarovou peněženkou.'),
       ]);
       break;
     }

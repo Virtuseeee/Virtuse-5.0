@@ -68,6 +68,10 @@
   "tr": "Az Ön feltételei:\n{0}\nEzek a partnerek megfelelnek nekik. Hasonlítsa össze őket, és válasszon egyet: a regisztrációt a partner platformján fejezi be, a bitcoinja pedig soha nem kerül a Virtuse-hoz."
  },
  {
+  "en": "Your answers from Verdict are already filled in.",
+  "tr": "A Verdictben megadott válaszai már ki vannak töltve."
+ },
+ {
   "en": "Partner Finder",
   "tr": "Partner Finder"
  },
@@ -118,6 +122,26 @@
  {
   "en": "One email with your criteria and these partners. We add you to no list unless you tick the box.",
   "tr": "Egyetlen e-mail az Ön szempontjaival és ezekkel a partnerekkel. Semmilyen listára nem vesszük fel, hacsak be nem jelöli a négyzetet."
+ },
+ {
+  "en": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
+  "tr": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik."
+ },
+ {
+  "en": "How we earn",
+  "tr": "Hogyan szerzünk bevételt"
+ },
+ {
+  "en": "Link copied",
+  "tr": "Link kimásolva"
+ },
+ {
+  "en": "Copy link to this result",
+  "tr": "Link másolása ehhez az eredményhez"
+ },
+ {
+  "en": "Link to this result",
+  "tr": "Link ehhez az eredményhez"
  },
  {
   "en": "your country",
@@ -224,6 +248,10 @@
   "tr": "Bitcoin-puristáknak: nyílt forráskódú bányászhardver (Bitaxe), uniós raktár és gyors szállítás."
  },
  {
+  "en": "Open-source home miners (Bitaxe and NerdQaxe) from Texas, shipped worldwide.",
+  "tr": "Nyílt forráskódú otthoni bányászgépek (Bitaxe és NerdQaxe) Texasból, világszerte szállítva."
+ },
+ {
   "en": "Bitcoin hardware wallet since 2013, with open-source hardware and firmware: a simple place to start.",
   "tr": "Bitcoin-hardvertárca 2013 óta, nyílt forráskódú hardverrel és firmware-rel: egyszerű kezdés."
  },
@@ -234,6 +262,10 @@
  {
   "en": "Hardware wallet with a certified Secure Element chip and the Ledger Live app.",
   "tr": "Hardvertárca tanúsított Secure Element chippel és Ledger Live appal."
+ },
+ {
+  "en": "Your own Bitcoin node at home: check your own transactions instead of trusting someone else's server. Works alongside any hardware wallet.",
+  "tr": "Saját Bitcoin-csomópont otthon: a tranzakcióit maga ellenőrzi, ahelyett hogy más szerverében bízna. Bármilyen hardvertárcával működik."
  },
  {
   "en": "Country-specific reports built for {0}: Austrian-built, 700+ integrations.",
@@ -536,6 +568,14 @@
   "tr": "Blockstream Jade: nyílt forráskódú, Secure Element nélkül"
  },
  {
+  "en": "Home server for running your own Bitcoin node",
+  "tr": "Otthoni szerver saját Bitcoin-csomópont futtatásához"
+ },
+ {
+  "en": "Umbrel Home: your own Bitcoin node, not a wallet",
+  "tr": "Umbrel Home: saját Bitcoin-csomópont, nem tárca"
+ },
+ {
   "en": "Bitcoin-backed P2P loans, multisig-secured",
   "tr": "Bitcoin-fedezetű P2P hitelek multisig-védelemmel"
  },
@@ -668,6 +708,14 @@
   "tr": "Uniós raktár, gyors szállítás"
  },
  {
+  "en": "Open-source home miners (Bitaxe, NerdQaxe)",
+  "tr": "Nyílt forráskódú otthoni bányászgépek (Bitaxe, NerdQaxe)"
+ },
+ {
+  "en": "Based in Texas, USA; ships worldwide",
+  "tr": "Székhely: Texas, USA; világszerte szállít"
+ },
+ {
   "en": "Headroom to the margin call is only {0} %. A moderate price drop puts the collateral at risk. A lower LTV or amount increases the headroom.",
   "tr": "A fedezetkiegészítésig csak {0}% a mozgástér. Egy mérsékelt áresés is veszélybe sodorja a fedezetet. Alacsonyabb LTV vagy összeg növeli a mozgásteret."
  },
@@ -692,6 +740,10 @@
   "tr": "A hitel többet hagy, hacsak a BTC nem esik évente nagyjából {0}%-nál többet."
  },
  {
+  "en": "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.",
+  "tr": "A BTC-állománya egyik esetben sem elég ehhez az összeghez. Csökkentse a szükséges összeget, vagy növelje az állományt a két lehetőség összehasonlításához."
+ },
+ {
   "en": "Liquidation risk is high at these settings",
   "tr": "Ezekkel a beállításokkal magas a likvidálási kockázat"
  },
@@ -708,8 +760,8 @@
   "tr": "15% személyi jövedelemadó (23% az adóalap átlagbér 36-szorosát meghaladó részére); mentes, ha a tartás több mint 3 év, vagy ha az éves kriptoeladási bevétel nem haladja meg a 100 000 CZK-t."
  },
  {
-  "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
-  "tr": "Kriptoeladás = egyéb jövedelem (8. § (1) t)); progresszív: 19% 43 983,32 €-ig, 25% 60 349,21 €-ig, 30% 75 010,32 €-ig, felette 35% (2026); nincs tartási idő szerinti mentesség; a veszteség nem vehető figyelembe."
+  "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
+  "tr": "Kriptoeladás = egyéb jövedelem (8. § (1) t)); progresszív: 19% 43 983,32 €-ig, 25% 60 349,21 €-ig, 30% 75 010,32 €-ig, felette 35% (2026); nincs tartási idő szerinti mentesség; a veszteség nem vehető figyelembe. Ezen felül 16% egészségbiztosítási járulék a nyereség után (fogyatékosság esetén 8%); az előbeállítás 19% + 16% = 35%-kal számol."
  },
  {
   "en": "19% on income from paid disposal of virtual currency (PIT-38); no holding-period exemption; crypto-to-crypto swaps not taxed.",
@@ -812,7 +864,7 @@
   "tr": "Kraken Pro (spot taker, 1. szint): 0,8%"
  },
  {
-  "en": "At risk – coins may be lost",
+  "en": "At risk: coins may be lost",
   "tr": "Veszélyben: az érmék elveszhetnek"
  },
  {
@@ -828,24 +880,28 @@
   "tr": "15% jövedelemadó (a küszöb felett 23%)"
  },
  {
-  "en": "Tax-free after 3-year holding (time test)",
-  "tr": "3 év tartás után adómentes (időteszt)"
+  "en": "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000",
+  "tr": "3 év tartás után adómentes (évi 40 millió CZK-ig), vagy ha a kriptoeladások éves bevétele összesen legfeljebb 100 000 CZK"
  },
  {
   "en": "Annual personal tax return",
   "tr": "Éves személyi jövedelemadó-bevallás"
  },
  {
-  "en": "Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one.",
+  "en": "Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.",
   "tr": "Minden elidegenítés (a kripto-kripto csere is) adóköteles esemény: már az első naptól vezessen teljes nyilvántartást."
  },
  {
-  "en": "19–35 % income tax + 16 % health contributions",
-  "tr": "19–35% jövedelemadó + 16% egészségbiztosítási járulék"
+  "en": "19 to 35% income tax",
+  "tr": "19 és 35% közötti jövedelemadó"
  },
  {
-  "en": "No holding-period exemption",
-  "tr": "Nincs tartási idő utáni mentesség"
+  "en": "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer",
+  "tr": "16% egészségbiztosítási járulék a nyereség után (fogyatékosság esetén 8%), az egészségbiztosító évente számolja el"
+ },
+ {
+  "en": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
+  "tr": "Nincs tartási idő utáni mentesség; minden eladás és kripto-kripto csere adóköteles"
  },
  {
   "en": "Annual personal tax return (type B), due 31 March",
@@ -853,19 +909,23 @@
  },
  {
   "en": "Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.",
-  "tr": "Minden elidegenítés (a kripto–kripto csere is) adóköteles. A tervezett 7%-os kulcsot és az 1 év utáni mentességet hatálybalépés előtt eltörölték."
+  "tr": "Minden elidegenítés (a kripto-kripto csere is) adóköteles. A tervezett 7%-os kulcsot és az 1 év utáni mentességet hatálybalépés előtt eltörölték."
  },
  {
   "en": "19 % flat capital gains tax",
   "tr": "19% egykulcsos tőkenyereségadó"
  },
  {
+  "en": "No holding-period exemption",
+  "tr": "Nincs tartási idő utáni mentesség"
+ },
+ {
   "en": "Annual PIT-38",
   "tr": "Éves PIT-38"
  },
  {
-  "en": "Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
-  "tr": "A kripto-kripto csere nem adóköteles – csak a pénzért, áruért vagy szolgáltatásért történő eladás az. Minden eladásnál ki kell számolni a PLN-ben mért nyereséget."
+  "en": "Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
+  "tr": "A kripto-kripto csere nem adóköteles, csak a pénzért, áruért vagy szolgáltatásért történő eladás az. Minden eladásnál ki kell számolni a PLN-ben mért nyereséget."
  },
  {
   "en": "27.5 % KESt (capital gains tax)",
@@ -888,8 +948,8 @@
   "tr": "Legfeljebb 45% jövedelemadó (progresszív)"
  },
  {
-  "en": "0 % after 1-year holding (private-sale exemption)",
-  "tr": "0% 1 év tartás után (magánértékesítési mentesség)"
+  "en": "0% after a 1-year holding period; total gains under €1,000 a year are tax-free",
+  "tr": "0% 1 év tartás után; az évi összesen 1000 € alatti nyereség adómentes"
  },
  {
   "en": "Annual tax return",
@@ -904,11 +964,15 @@
   "tr": "15% tőkenyereségadó"
  },
  {
+  "en": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
+  "tr": "Nincs tartási idő utáni mentesség; a minimálbér 10%-át egyenként meg nem haladó kisértékű ügyletek adómentesek (évente összesen legfeljebb egy havi minimálbérig)"
+ },
+ {
   "en": "Annual personal income tax return",
   "tr": "Éves személyi jövedelemadó-bevallás"
  },
  {
-  "en": "Documented acquisition costs are deductible – keep every invoice.",
+  "en": "Documented acquisition costs are deductible, so keep every invoice.",
   "tr": "A dokumentált beszerzési költségek levonhatók: őrizzen meg minden számlát."
  },
  {
@@ -916,12 +980,12 @@
   "tr": "A magánszemélyek elidegenítési nyeresége nem adózik (az üzletszerű kereskedés igen)"
  },
  {
-  "en": "Private gains are not taxed; a proposed 25% tax was withdrawn in 2025",
-  "tr": "A magánnyereség adómentes; a tervezett 25%-os adót 2025-ben visszavonták"
+  "en": "Private gains are not taxed",
+  "tr": "A magánnyereség adómentes"
  },
  {
-  "en": "None for private gains; business and mining income in the annual return",
-  "tr": "Magánnyereségnél nincs; üzleti és bányászati jövedelem az éves bevallásban"
+  "en": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+  "tr": "Magánnyereségnél nincs; a bányászati jövedelemről 15 napon belül adóelőleg-bevallást kell beadni; az üzleti jövedelem a vállalkozási adóbevallásba kerül"
  },
  {
   "en": "Mining is taxed as other income. Frequent trading can count as a business activity.",
@@ -964,7 +1028,7 @@
   "tr": "Alacsony egykulcsos adó; a tőzsdei kivonatokat őrizze meg ellenőrzésre kész nyilvántartásként."
  },
  {
-  "en": "Box 3 wealth tax on deemed return (~36 % on fictional yield)",
+  "en": "Box 3 wealth tax on a deemed return (about 36% of the assumed yield)",
   "tr": "Box 3 vagyonadó a vélelmezett hozam után (a fiktív hozam kb. 36%-a)"
  },
  {
@@ -976,7 +1040,7 @@
   "tr": "Éves Box 3 bevallás"
  },
  {
-  "en": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.",
+  "en": "No capital-gains tax as such: you are taxed on an assumed return of your holdings. Box 3 is under reform, so verify the current year’s rules.",
   "tr": "Tőkenyereségadó mint olyan nincs: a vagyon vélelmezett hozama után kell adózni. A Box 3 reform alatt áll, ellenőrizze a tárgyévi szabályokat."
  },
  {
@@ -996,15 +1060,15 @@
   "tr": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
  },
  {
-  "en": "19–30% progressive tax on savings income",
-  "tr": "19–30% progresszív adó a megtakarítási jövedelemre"
+  "en": "19 to 30% progressive tax on savings income",
+  "tr": "19 és 30% közötti progresszív adó a megtakarítási jövedelemre"
  },
  {
-  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
-  "tr": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldön tartott kriptóra"
+  "en": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+  "tr": "Éves IRPF-bevallás; Modelo 721 az 50 000 € feletti, külföldi letétkezelőnél tartott kriptóra"
  },
  {
-  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
+  "en": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins.",
   "tr": "A kripto-kripto csere adóköteles elidegenítés: azonos érméknél FIFO szerint kell számolni."
  },
  {
@@ -1012,11 +1076,11 @@
   "tr": "Vannak az örökösöknek írásos utasításai (egy „utasítólevél”)?"
  },
  {
-  "en": "A document that says what exists, where things are, and what to do – without containing any seed words itself.",
+  "en": "A document that says what exists, where things are and what to do, without containing any seed words itself.",
   "tr": "Egy dokumentum, amely leírja, mi létezik, hol található és mit kell tenni, anélkül hogy a helyreállítási kifejezés bármely szavát tartalmazná."
  },
  {
-  "en": "Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney.",
+  "en": "Write a letter of instruction: inventory, locations, contacts, never seed phrases. Store it with your will or attorney.",
   "tr": "Írjon utasítólevelet: leltár, helyszínek, kapcsolattartók, de soha ne helyreállítási kifejezés. A végrendelettel együtt vagy ügyvédnél tárolja."
  },
  {
@@ -1048,12 +1112,12 @@
   "tr": "Multisiget (2 a 3-ból) használ egyetlen helyreállítási kifejezés helyett?"
  },
  {
-  "en": "A single seed is a single point of failure – for you and for your heirs.",
+  "en": "A single seed is a single point of failure, for you and for your heirs.",
   "tr": "Egyetlen helyreállítási kifejezés egyetlen hibapont, Önnek és az örökösöknek is."
  },
  {
-  "en": "Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one.",
-  "tr": "Váltson 2 a 3-ból multisigre: két kulcs Önnél van, a harmadik egy partnernél (pl. Unchained-típusú trezor) vagy ügyvédnél."
+  "en": "Upgrade to 2-of-3 multisig: you hold two keys; a collaborative custody provider such as Unchained or an attorney holds the third.",
+  "tr": "Váltson 2 a 3-ból multisigre: két kulcs Önnél van; a harmadikat egy közös letétkezelési szolgáltató, például az Unchained, vagy egy ügyvéd őrzi."
  },
  {
   "en": "Have you tested recovery with a small amount?",
@@ -1076,7 +1140,7 @@
   "tr": "A letétkezelőnél lévő egyenlegek, a Bitcoin-fedezetű hitelek és a DCA-botok az elfelejtett belépési adatokkal együtt vesznek el."
  },
  {
-  "en": "Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.",
+  "en": "Maintain an inventory of platforms, account IDs and how balances should be claimed, inside your letter of instruction.",
   "tr": "Az utasítólevélben vezessen listát a platformokról, a fiókazonosítókról és arról, hogyan igényelhetők az egyenlegek."
  },
  {
@@ -1100,12 +1164,12 @@
   "tr": "B kulcs"
  },
  {
-  "en": "Partner / attorney",
-  "tr": "Partner / ügyvéd"
+  "en": "Collaborative custody provider or attorney",
+  "tr": "Közös letétkezelési szolgáltató vagy ügyvéd"
  },
  {
-  "en": "Unchained-style vault service · releases on inheritance event",
-  "tr": "Unchained-típusú trezorszolgáltatás · öröklés esetén kiadja a kulcsot"
+  "en": "Third location, outside your home",
+  "tr": "Harmadik helyszín, az otthonán kívül"
  },
  {
   "en": "Key C",
@@ -1210,6 +1274,10 @@
  {
   "en": "Custom rate",
   "tr": "Saját kulcs"
+ },
+ {
+  "en": "Source (health insurance)",
+  "tr": "Forrás (egészségbiztosítás)"
  },
  {
   "en": "Share of the sale price that is profit (taxed). The rest is your original purchase price (not taxed).",
@@ -1360,8 +1428,8 @@
   "tr": "Az ország adószabályainak ellenőrzése"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
-  "tr": "Nagyobb Bitcoin-pozíciót kezel? A Virtuse CFO segít Bitcoin-treasuryt vezetni: tervezés, követés és jelentés. Indulás november 1-jén; fizetős csomagok januártól: {0}/hó vagy {1}/év."
+  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.",
+  "tr": "Nagyobb Bitcoin-pozíciót kezel? Virtuse CFO · Verdict: nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat. A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi {0} vagy évi {1}."
  },
  {
   "en": "Get notified",
@@ -1436,8 +1504,8 @@
   "tr": "Narancs = várható érték · szaggatott = összes befektetés"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
-  "tr": "Nagyobb allokációt tervez? A Virtuse CFO segít Bitcoin-treasuryt vezetni: tervezés, követés és jelentés. Indulás november 1-jén; fizetős csomagok januártól: {0}/hó vagy {1}/év."
+  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.",
+  "tr": "Nagyobb allokációt tervez? Virtuse CFO · Verdict: nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat. A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi {0} vagy évi {1}."
  },
  {
   "en": "Fee arbitrage",
@@ -1476,28 +1544,16 @@
   "tr": "A fenti utak mindegyike ugyanannyiba vagy többe kerül: váltással semmit sem takarítana meg."
  },
  {
-  "en": "Tax & Inheritance Agent",
-  "tr": "Tax & Inheritance Agent"
- },
- {
-  "en": "Two questions every bitcoiner avoids:",
-  "tr": "Két kérdés, amelyet minden bitcoines kerül:"
- },
- {
-  "en": "taxes and death.",
-  "tr": "az adók és a halál."
- },
- {
-  "en": "A country-by-country overview of how bitcoin gains are treated across the 13 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
-  "tr": "Országonkénti áttekintés arról, hogyan adózik a Bitcoin-nyereség a Virtuse által kiszolgált 13 uniós országban, és egy öröklési felkészültségi teszt, amely megválaszolja: „mi lesz a satjaimmal, ha már nem leszek?”."
- },
- {
-  "en": "Tax overview · 13 EU countries",
-  "tr": "Adóáttekintés · 13 uniós ország"
+  "en": "Virtuse may earn a referral fee. It doesn't change the overview.",
+  "tr": "A Virtuse ajánlói díjat kaphat. Ez nem változtat az áttekintésen."
  },
  {
   "en": "Gain tax",
   "tr": "Nyereségadó"
+ },
+ {
+  "en": "Health insurance",
+  "tr": "Egészségbiztosítás"
  },
  {
   "en": "Holding exemption",
@@ -1508,6 +1564,14 @@
   "tr": "Bevallás"
  },
  {
+  "en": "Tax overview · 13 EU countries",
+  "tr": "Adóáttekintés · 13 uniós ország"
+ },
+ {
+  "en": "checked {0}",
+  "tr": "ellenőrizve: {0}"
+ },
+ {
   "en": "Good to know",
   "tr": "Jó tudni"
  },
@@ -1516,23 +1580,27 @@
   "tr": "Válasszon fent országot a szabályok megtekintéséhez."
  },
  {
-  "en": "Indicative 2025 overview.",
-  "tr": "Tájékoztató áttekintés, 2025."
+  "en": "As of Q3 2026, checked {0}.",
+  "tr": "Állapot: 2026 Q3, ellenőrizve: {0}."
  },
  {
-  "en": "Tax rules change fast and your situation is individual – verify with a local tax advisor. For audit-ready crypto tax reports, Virtuse partners with Lukka.",
-  "tr": "Az adószabályok gyorsan változnak, és minden helyzet egyedi: egyeztessen helyi adótanácsadóval. Ellenőrzésre kész kriptoadó-jelentésekhez a Virtuse a Lukkával működik együtt."
+  "en": "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.",
+  "tr": "Az adószabályok gyorsan változnak, és minden helyzet egyedi: egyeztessen helyi adótanácsadóval. Kriptoadó-jelentésekhez az egyik lehetőség a Lukka."
  },
  {
   "en": "Tax reports via Lukka",
   "tr": "Adójelentések a Lukkával"
  },
  {
+  "en": "Verdict and the fee audit are free from 1 November. Paid plans from January: {0}/month or {1}/year.",
+  "tr": "A Verdict és a díjaudit november 1-jétől ingyenes. Fizetős csomagok januártól: havi {0} vagy évi {1}."
+ },
+ {
   "en": "What happens to my sats? · Readiness check",
   "tr": "Mi lesz a satjaimmal? · Felkészültségi teszt"
  },
  {
-  "en": "Six yes/no questions. Answer honestly – the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
+  "en": "Six yes/no questions. Answer honestly: the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
   "tr": "Hat igen/nem kérdés. Válaszoljon őszintén: a pontszám megmutatja, mennyire tudnák az örökösei már holnap reggel visszaszerezni a Bitcoinját."
  },
  {
@@ -1552,39 +1620,23 @@
   "tr": "A 2 a 3-ból multisig öröklési beállítás"
  },
  {
-  "en": "Three keys, any two move funds. No single point of failure – and your heirs can recover with the partner key plus one of yours.",
-  "tr": "Három kulcs, bármelyik kettő mozgatja a pénzt. Nincs egyetlen hibapont: az örökösök a partner kulcsával és az Ön egyik kulcsával hozzáférnek."
+  "en": "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.",
+  "tr": "Három kulcs, bármelyik kettő mozgatja a pénzt. Nincs egyetlen hibapont: az örökösök a C kulccsal és az Ön egyik kulcsával hozzáférnek."
  },
  {
-  "en": "Any 2 of 3 keys can move funds – 1 lost key never means lost coins.",
-  "tr": "A 3 kulcsból bármely 2 mozgatja a pénzt: 1 elveszett kulcs soha nem jelent elveszett érméket."
+  "en": "Any 2 of 3 keys can move funds; 1 lost key never means lost coins.",
+  "tr": "A 3 kulcsból bármely 2 mozgatja a pénzt; 1 elveszett kulcs soha nem jelent elveszett érméket."
  },
  {
   "en": "Set it up properly",
   "tr": "Helyes beállítás"
  },
  {
-  "en": "Multisig vaults with a formal inheritance protocol – you always hold the majority of keys. Vetted by Virtuse, settled to wallets you control.",
-  "tr": "Multisig trezorok formális öröklési protokollal: a kulcsok többsége mindig Önnél van. A Virtuse által ellenőrizve, az Ön által kezelt tárcákba teljesítve."
- },
- {
-  "en": "Explore multisig inheritance",
-  "tr": "Multisig öröklés megismerése"
+  "en": "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.",
+  "tr": "A 2 a 3-ból felállásban két kulcs Önnél marad. A harmadikat egy közös letétkezelési szolgáltató, például az Unchained őrizheti."
  },
  {
   "en": "2-of-3 multisig",
   "tr": "2 a 3-ból multisig"
- },
- {
-  "en": "Inheritance protocol",
-  "tr": "Öröklési protokoll"
- },
- {
-  "en": "Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
-  "tr": "Az adóadatok tájékoztató 2025-ös áttekintést jelentenek és elavultak lehetnek; nem adó-, jogi vagy pénzügyi tanácsadás. Az öröklési eszközök oktatási célúak; a hagyatéktervezéshez forduljon szakemberhez. A Virtuse soha nem kezeli a kulcsait."
- },
- {
-  "en": "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.",
-  "tr": "A BTC-állománya egyik esetben sem elég ehhez az összeghez. Csökkentse a szükséges összeget, vagy növelje az állományt a két lehetőség összehasonlításához."
  }
 ]

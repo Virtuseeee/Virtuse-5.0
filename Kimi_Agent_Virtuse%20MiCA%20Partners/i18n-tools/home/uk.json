@@ -36,7 +36,7 @@
  "Español": "Español",
  "Open menu": "Відкрити меню",
  "Find partners": "Знайти партнерів",
- "22 vetted partners · 7 categories · Bitcoin only": "22 перевірені партнери · 7 категорій · лише Біткоїн",
+ "24 vetted partners · 7 categories · Bitcoin only": "24 перевірені партнери · 7 категорій · лише Біткоїн",
  "Every Bitcoin service,": "Кожен Біткоїн-сервіс,",
  "compared.": "порівняно.",
  "Published prices, side by side.": "Опубліковані ціни поруч.",
@@ -45,7 +45,7 @@
  "Prefer to talk?": "Хочете поговорити?",
  "Book a free 15-minute call": "Записатися на безкоштовний 15-хвилинний дзвінок",
  "Partners": "Партнери",
- "Our 22 partners": "Наші 22 партнери",
+ "Our 24 partners": "Наші 24 партнери",
  "21bitcoin logo": "21bitcoin логотип",
  "21bitcoin": "21bitcoin",
  "Bybit EU logo": "Bybit EU логотип",
@@ -61,6 +61,7 @@
  "Ledger logo": "Ledger логотип",
  "Ledger": "Ledger",
  "Trezor logo": "Trezor логотип",
+ "Umbrel logo": "Umbrel логотип",
  "Trezor": "Trezor",
  "BitGo logo": "BitGo логотип",
  "BitGo": "BitGo",
@@ -89,6 +90,7 @@
  "OneMiners logo": "OneMiners логотип",
  "OneMiners": "OneMiners",
  "PowerMining logo": "PowerMining логотип",
+ "Solo Satoshi logo": "Solo Satoshi логотип",
  "PowerMining": "PowerMining",
  "What we promise.": "Що ми обіцяємо.",
  "Read it before you trust us.": "Прочитайте це, перш ніж нам довіряти.",
@@ -286,5 +288,7 @@
  "Fellow bitcoin-only projects": "Інші проєкти лише про Біткоїн",
  "Bitcoin Peers": "Однодумці",
  "Get your project featured": "Розмістіть свій проєкт",
- "Promote": "Розміщення"
+ "Promote": "Розміщення",
+ "Umbrel": "Umbrel",
+ "Solo Satoshi": "Solo Satoshi"
 }
