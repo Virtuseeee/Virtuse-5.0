@@ -247,7 +247,8 @@ test('free view: 2 signals with reasons, 8 only named, first missing question, n
   assert.ok(r.locked.every((s) => s.name && s.reason === undefined && s.points === undefined));
   assert.equal(r.missing.length, 1);
   assert.equal(r.covered, 3);
-  assert.equal(r.partnerFinder, null);
+  // No goal tile, but the text says "kúpim": partners come from the text (review 2026-10-27).
+  assert.deepEqual(r.partnerFinder, { pf_goal: 'buy' });
   const body = JSON.stringify(r);
   for (const id of r.locked.map((s) => s.id)) assert.ok(!body.includes(`Text o ${id}.`));
 }));

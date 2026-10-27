@@ -87,6 +87,8 @@ export const PROFILE = {
   // verdict-architecture §4 (2026-10-23): shared with Partner Finder and Stacking.
   custody_pref: ['self', 'assisted', 'any'],
   freq: ['weekly', 'monthly'],
+  // Review 2026-10-27 (P1.1): buy + custody/inheritance chosen together.
+  also: ['custody'],
 };
 const FOCUS = ['risk', 'drop', 'tax', 'next'];
 // A signal backed only by a ticked answer, with nothing in the person's own
@@ -99,6 +101,7 @@ export function cleanProfile(p) {
   // B0 (verdict-result-v2): 'taxknow' was renamed to 'tax_known'; accepted for one release.
   if (p.tax_known === undefined && typeof p.taxknow === 'string') p = { ...p, tax_known: p.taxknow };
   for (const [k, ids] of Object.entries(PROFILE)) if (typeof p[k] === 'string' && ids.includes(p[k])) out[k] = p[k];
+  if (out.also && !['buy', 'dca'].includes(out.goal)) delete out.also;
   if (Array.isArray(p.focus)) {
     const f = [...new Set(p.focus.filter((x) => FOCUS.includes(x)))];
     if (f.length) out.focus = f;
@@ -128,6 +131,7 @@ const PROFILE_TEXT = {
   heirs: { _: 'Do their heirs know how to reach the Bitcoin', yes: 'yes', no: 'no' },
   custody_pref: { _: 'Preferred custody', self: 'their own keys', assisted: 'assisted custody (help with keys and recovery)', any: 'no preference' },
   freq: { _: 'How often they buy', weekly: 'weekly', monthly: 'monthly' },
+  also: { _: 'They also want to settle', custody: 'custody and inheritance of the Bitcoin' },
   focus: { _: 'What they most want to find out', risk: 'the biggest risk', drop: 'whether they can get through a fall', tax: 'tax and custody', next: 'what is missing in their plan' },
 };
 
@@ -148,6 +152,30 @@ export function profileLines(profile) {
 // Partner Finder prefill (concierge.html ?pf_*): the funnel goal mapped to
 // the Partner Finder category that fits it; selling maps to tax help.
 const PF_GOAL = { buy: 'buy', dca: 'buy', loan: 'loan', sell: 'tax', treasury: 'treasury', custody: 'custody' };
+// What the free text is about, when no goal tile was picked ("Something
+// else", review 2026-10-27 P1.1). Used only for tools, steps and partners,
+// never sent to the model as the person's answer. Same stems as the page.
+const plain = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+export const INTENT = {
+  loan: /(pozic|pujc|\bloan|borrow|\buver|заём|заем|займ|кредит)/,
+  sell: /(preda[tj]|prodat|\bsell|продат|продаж)/,
+  buy: /(\bkup|nakup|dokup|\bbuy|purchas|\bdca\b|купит|покуп|докуп)/,
+  custody: /(dedi|deden|dedic|inherit|\bheir|seed|klu?c|custody|uschov|multisig|наслед|ключ|хранен|сид)/,
+};
+export function textIntents(text) { const x = plain(text); return Object.keys(INTENT).filter((k) => INTENT[k].test(x)); }
+export function effectiveProfile(profile = {}, text = '') {
+  const found = textIntents(text);
+  const p = { ...profile };
+  if (!p.goal) {
+    const g = ['loan', 'sell', 'buy', 'custody'].find((k) => found.includes(k));
+    if (g) { p.goal = g; p.goalFromText = true; }
+  }
+  if (['buy', 'dca'].includes(p.goal) && !p.also && found.includes('custody') && p.goalFromText) p.also = 'custody';
+  return p;
+}
+export function partnerFinderAlsoQuery(profile) {
+  return profile.also ? partnerFinderQuery({ ...profile, goal: profile.also, experience: profile.experience || undefined }) : null;
+}
 export function partnerFinderQuery(profile) {
   const goal = PF_GOAL[profile.goal];
   if (!goal) return null;
@@ -481,6 +509,7 @@ export function freeView(full, profile = {}, opts = {}) {
     covered: full.signals.filter((s) => s.points >= 7).length,
     level, steps, pricing: price,
     partnerFinder: partnerFinderQuery(profile),
+    partnerFinderAlso: partnerFinderAlsoQuery(profile),
   };
 }
 
@@ -507,6 +536,7 @@ export function reportView(full, profile = {}, opts = {}) {
     freeAreas: free.areas,
     covered: full.signals.filter((s) => s.points >= 7).length,
     partnerFinder: partnerFinderQuery(profile),
+    partnerFinderAlso: partnerFinderAlsoQuery(profile),
   };
 }
 
@@ -608,6 +638,9 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
 
   const clean = redact(text.trim().slice(0, MAX_CHARS));
   const profile = cleanProfile(body.profile);
+  // The model gets only what the person answered; tools, steps and partners
+  // also use the goal read from the text (effectiveProfile).
+  const eff = effectiveProfile(profile, clean);
   const fail = ERR.fail[lang];
   const adviceFail = ERR.advice[lang];
   try {
@@ -617,7 +650,7 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
       const { out, usage, refused } = await askClaude(env, clean, lang, profile);
       cost += costOf(usage);
       if (refused) { result = scoreVerdict({ declined: true }, lang); break; }
-      result = scoreVerdict(out, lang, { text: clean, profile });
+      result = scoreVerdict(out, lang, { text: clean, profile: eff });
       if (result.declined || !looksLikeAdvice(result)) break;
       console.error('verdict: advice-like wording dropped, attempt ' + (attempt + 1));
       result = null;
@@ -627,7 +660,7 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
     if (result.declined) return aiJson(json, result, origin);
     const report = body.report === true && reportPreviewAllowed(env);
     const opts = { lang, taxModule: env.VERDICT_TAX_MODULE === '1', checkout: env.VERDICT_CHECKOUT === '1' };
-    return aiJson(json, report ? reportView(result, profile, opts) : freeView(result, profile, opts), origin);
+    return aiJson(json, report ? reportView(result, eff, opts) : freeView(result, eff, opts), origin);
   } catch (e) {
     console.error(e);
     return json(502, { error: fail }, origin);

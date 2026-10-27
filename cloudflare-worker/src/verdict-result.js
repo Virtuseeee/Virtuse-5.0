@@ -565,8 +565,15 @@ export const TOOL_PAGES = {
 };
 const SIGNAL_TOOL = { worst_case: 'loan', liquidity: 'loan', tax: 'tax', custody: 'tax', plan_b: 'loan', goal: 'retirement', horizon: 'stacking', rule: 'stacking', asymmetry: 'retirement' };
 
+// Review 2026-10-27 (P1.3): the Loan Copilot only for a loan or a sale
+// (sell vs borrow); a buy, regular buying or custody case works on its
+// worst case, plan B and reserve in the Stacking Strategist (amount, rhythm,
+// what to do in a fall), a company in the treasury page. No goal known:
+// unchanged (Loan Copilot).
+const LOAN_PATH = ['loan', 'sell'];
 export function toolKeyFor(id, profile = {}) {
   if (id === 'alternatives') return ['buy', 'dca'].includes(profile.goal) || !profile.goal ? 'fees' : 'svb';
+  if (['worst_case', 'plan_b', 'liquidity'].includes(id) && profile.goal && !LOAN_PATH.includes(profile.goal)) return profile.goal === 'treasury' ? 'treasury' : 'stacking';
   return SIGNAL_TOOL[id];
 }
 export function tool(key, lang, profile = {}) {
@@ -613,10 +620,15 @@ export function nextSteps(full, profile = {}, level, ctx = {}) {
     add({ id: f.id, kind: 'flag', signal: null, action: fill(f.action[L], c), why: fill(f.text[L], c), tool: tool(f.tool, L, profile) });
   }
   const weak = full.signals.filter((s) => s.points < 7).sort(byWeak);
+
   const signalStep = (s) => {
     const lvl = areaLevel(s.points);
     return { id: s.id, kind: 'signal', signal: s.id, action: s.fix || fill(AREA_COPY[s.id][lvl].todo[L], c), why: fill(AREA_COPY[s.id][lvl].meaning[L], { ...c, taxModule: false }), tool: tool(toolKeyFor(s.id, profile), L, profile) };
   };
+  // Buy + custody/inheritance (P1.1): the custody gap gets one of the 3 steps,
+  // right after the weakest one, even when its tool is already used.
+  const cust = weak.find((s) => s.id === 'custody');
+  if (profile.also === 'custody' && cust) { if (weak[0] !== cust) add(signalStep(weak[0])); add(signalStep(cust)); }
   for (const s of weak) { const st = signalStep(s); if (!used.has(st.tool.key)) add(st); }
   for (const s of weak) add(signalStep(s));
   // Free view: no PDF (report only), so "rate again" is the third filler.
