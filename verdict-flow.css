@@ -558,3 +558,13 @@
   .pd-page > h2:first-child { margin-top: 0; }
   .pd-sgrid h3 { margin: 6pt 0 1pt; }
 }
+/* Ras 2026-10-27: earlier additions stay visible after a re-rating; one
+   waitlist sign-up marks every call to action; feature card text padding. */
+.vx-prev { margin: 4px 0 10px; padding: 10px 12px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--green) 35%, transparent); background: color-mix(in srgb, var(--green) 7%, transparent); font-size: 14px; color: var(--muted); }
+.vx-prev b { color: var(--green); }
+.vx-prev p.small { margin: 6px 0 0; }
+.vx .vf-btn.vx-wantdone { color: var(--green); background: color-mix(in srgb, var(--green) 10%, transparent); border-color: color-mix(in srgb, var(--green) 45%, transparent); cursor: default; pointer-events: none; }
+.vx-wantdone .ic { color: var(--green); }
+.vf-sticky .vx-wantdone { color: var(--green); }
+.vx .vx-feat > b, .vx .vx-feat > p { padding-left: 22px; padding-right: 22px; margin-left: 0; margin-right: 0; }
+.vx .vx-prev b { display: inline; font-size: 14px; margin: 0; }
