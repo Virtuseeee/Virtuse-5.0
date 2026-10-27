@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27) — Partner count 22 → 24 sitewide (branch `fix/partner-count-24`)
+- Homepage ×10: eyebrow "24 vetted partners · 7 categories · Bitcoin only", ticker "Our 24 partners" + Umbrel (after Trezor) and Solo Satoshi (after PowerMining) in both ticker sets; title/description/og/twitter 24 (`i18n-tools/data/phase4_titles.json` index entries + `apply_phase4_titles.py`, then `home/build_lang.py`). Home dicts got `Umbrel logo` / `Solo Satoshi logo`; `en_strings.json` updated; pl `HEAD_FIX` now matches "24".
+- **Gotcha:** `apply_phase4_titles.py` rewrites ALL 13 hubs from stale data and reverted newer titles on about/bots/buy-bitcoin/mining/btc-dominance/ma-200w; those were restored with `git checkout`. Don't run it without reverting everything except the pages you meant to change.
+- Partner Finder: `concierge.ts` PARTNERS 22 → 24 (`umbrel` custody, push 68 after Ledger; `solo-satoshi` mining, push 70 after Power Mining; links from secure.html / mining.html). 6 new strings in 7 dictionaries (`layer2/dict.py`); RU/UK "Filters {0} vetted partners" reworded to "Подбирает из {0}…" / "Підбирає з {0}…" (number-agnostic). Rebuilt app → `deploy.py` → `build_partner_finder.py` (24 / 7 / 13).
+- About ×10: `build_about.py` AS_OF 2026-10-27 (24 partners); ru/uk `stat_partners` "партнёра" / "партнери".
+- Worker: `send.js` PARTNERS + `umbrel`, `solo-satoshi` (plan emails would otherwise reject them); draft checklists (`approved: false`) for both in `data/partner-checklists.json`, `src/checklists.js` rebuilt; `npm test` 91/91 (main had 1 failing test since PR #128: 22 !== 24, which blocked `deploy_worker.sh`). Worker deploy = `bash deploy_worker.sh` after merge.
+- `apply_tool_seo.py` T map texts 22 → 24 (source only, not re-run; concierge heads come from `build_partner_finder.py`).
+
 ## Session status (2026-10-26) — Partners Solo Satoshi (Mining) + Umbrel Home (Custody) added (branch `feat/partners-solosatoshi-umbrel`; NOT yet merged/deployed)
 - mining.html ×10: Solo Satoshi row + card, kind `home`, `https://www.solosatoshi.com/aff/8822/`; eyebrow/"All N partners" 3 → 4 (pl: "4 partnerzy"/"Wszyscy 4 partnerzy"). Keys `pr_solosatoshi_*` in `i18n-tools/mining/<lang>.json`.
 - secure.html ×10: Umbrel Home is a 4th row of `DEVICES` (price €479 as published for Italy incl. duties/taxes; made/open = "Not stated"; feature cell "Your own Bitcoin node (not a wallet)"); `https://a.umbrel.com/virtuse`; device cards grid `pgrid` (2×2). Keys `pr_umbrel_*` in `i18n-tools/secure/<lang>.json`.

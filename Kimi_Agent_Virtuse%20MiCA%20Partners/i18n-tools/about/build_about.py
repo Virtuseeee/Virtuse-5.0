@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
-AS_OF = '2026-10-13'
+AS_OF = '2026-10-27'
 PHOTO = '/img/team/ras-vasilisin-400'
 SAME_AS = [('link_linkedin', 'https://www.linkedin.com/in/rastislav-vasilisin-11bb5819/'),
            ('link_hackernoon', 'https://hackernoon.com/u/ras'),

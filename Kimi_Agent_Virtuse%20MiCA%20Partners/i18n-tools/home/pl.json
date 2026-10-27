@@ -36,7 +36,7 @@
  "Español": "Español",
  "Open menu": "Menu",
  "Find partners": "Szukam partnerów",
- "22 vetted partners · 7 categories · Bitcoin only": "22 sprawdzonych partnerów · 7 kategorii · tylko Bitcoin",
+ "24 vetted partners · 7 categories · Bitcoin only": "24 sprawdzonych partnerów · 7 kategorii · tylko Bitcoin",
  "Every Bitcoin service,": "Każda usługa bitcoinowa,",
  "compared.": "porównana.",
  "Published prices, side by side.": "Opublikowane ceny obok siebie.",
@@ -45,7 +45,7 @@
  "Prefer to talk?": "Wolą Państwo porozmawiać?",
  "Book a free 15-minute call": "Bezpłatna 15-minutowa rozmowa",
  "Partners": "Partnerzy",
- "Our 22 partners": "Naszych 22 partnerów",
+ "Our 24 partners": "Naszych 24 partnerów",
  "21bitcoin logo": "Logo 21bitcoin",
  "21bitcoin": "21bitcoin",
  "Bybit EU logo": "Logo Bybit EU",
@@ -61,6 +61,7 @@
  "Ledger logo": "Logo Ledger",
  "Ledger": "Ledger",
  "Trezor logo": "Logo Trezor",
+ "Umbrel logo": "Logo Umbrel",
  "Trezor": "Trezor",
  "BitGo logo": "Logo BitGo",
  "BitGo": "BitGo",
@@ -89,6 +90,7 @@
  "OneMiners logo": "Logo OneMiners",
  "OneMiners": "OneMiners",
  "PowerMining logo": "Logo PowerMining",
+ "Solo Satoshi logo": "Logo Solo Satoshi",
  "PowerMining": "PowerMining",
  "What we promise.": "Co obiecujemy.",
  "Read it before you trust us.": "Warto to przeczytać, zanim nam Państwo zaufają.",
@@ -286,5 +288,7 @@
  "Fellow bitcoin-only projects": "Inne projekty tylko o Bitcoinie",
  "Bitcoin Peers": "Pokrewne projekty",
  "Get your project featured": "Zgłoś projekt do wyróżnienia",
- "Promote": "Wyróżnienie"
+ "Promote": "Wyróżnienie",
+ "Umbrel": "Umbrel",
+ "Solo Satoshi": "Solo Satoshi"
 }

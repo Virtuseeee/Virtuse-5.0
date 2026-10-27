@@ -36,7 +36,7 @@
  "Español": "Español",
  "Open menu": "Menü megnyitása",
  "Find partners": "Partnerek keresése",
- "22 vetted partners · 7 categories · Bitcoin only": "22 ellenőrzött partner · 7 kategória · csak Bitcoin",
+ "24 vetted partners · 7 categories · Bitcoin only": "24 ellenőrzött partner · 7 kategória · csak Bitcoin",
  "Every Bitcoin service,": "Minden Bitcoin-szolgáltatás,",
  "compared.": "összehasonlítva.",
  "Published prices, side by side.": "Közzétett árak, egymás mellett.",
@@ -45,7 +45,7 @@
  "Prefer to talk?": "Inkább beszélne?",
  "Book a free 15-minute call": "Ingyenes 15 perces hívás foglalása",
  "Partners": "Partnerek",
- "Our 22 partners": "22 partnerünk",
+ "Our 24 partners": "24 partnerünk",
  "21bitcoin logo": "21bitcoin logó",
  "21bitcoin": "21bitcoin",
  "Bybit EU logo": "Bybit EU logó",
@@ -61,6 +61,7 @@
  "Ledger logo": "Ledger logó",
  "Ledger": "Ledger",
  "Trezor logo": "Trezor logó",
+ "Umbrel logo": "Umbrel logó",
  "Trezor": "Trezor",
  "BitGo logo": "BitGo logó",
  "BitGo": "BitGo",
@@ -89,6 +90,7 @@
  "OneMiners logo": "OneMiners logó",
  "OneMiners": "OneMiners",
  "PowerMining logo": "PowerMining logó",
+ "Solo Satoshi logo": "Solo Satoshi logó",
  "PowerMining": "PowerMining",
  "What we promise.": "Amit vállalunk.",
  "Read it before you trust us.": "Olvassa el, mielőtt megbízik bennünk.",
@@ -286,5 +288,7 @@
  "Fellow bitcoin-only projects": "Rokon Bitcoin-projektek",
  "Bitcoin Peers": "Bitcoin-társak",
  "Get your project featured": "Mutassa be projektjét",
- "Promote": "Bemutatkozás"
+ "Promote": "Bemutatkozás",
+ "Umbrel": "Umbrel",
+ "Solo Satoshi": "Solo Satoshi"
 }

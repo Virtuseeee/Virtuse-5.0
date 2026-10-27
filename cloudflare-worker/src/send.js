@@ -33,7 +33,7 @@ const SEND_LIMIT_PER_ADDRESS = 3;
 const SEND_LIMIT_WINDOW_SECONDS = 60 * 60;
 const SITE = 'https://virtuse.com';
 
-// Same 22 partners as the category pages (data/partners.json) and the
+// Same 24 partners as the category pages (data/partners.json) and the
 // Partner Finder catalog; urls are the tracked links from the cards.
 // send.test.mjs fails if a host here is missing from data/partners.json.
 export const PARTNERS = {
@@ -45,6 +45,7 @@ export const PARTNERS = {
   trezor: { name: 'Trezor', page: 'secure.html', url: 'https://affil.trezor.io/aff_c?offer_id=133&aff_id=846427' },
   ledger: { name: 'Ledger', page: 'secure.html', url: 'https://shop.ledger.com/?r=3256467ea813' },
   blockstream: { name: 'Blockstream', page: 'secure.html', url: 'https://rewards.blockstream.com/qo0khs' },
+  umbrel: { name: 'Umbrel', page: 'secure.html', url: 'https://a.umbrel.com/virtuse' },
   firefish: { name: 'Firefish', page: 'lending.html', url: 'https://app.firefish.io/auth/sign-up?ref=virtuseloan' },
   blockpit: { name: 'Blockpit', page: 'tax.html', url: 'https://app.blockpit.io/register?fpr=virtuse' },
   koinly: { name: 'Koinly', page: 'tax.html', url: 'https://koinly.io/?via=C7DEBFCF&utm_source=affiliate' },
@@ -59,6 +60,7 @@ export const PARTNERS = {
   oneminers: { name: 'OneMiners', page: 'mining.html', url: 'https://oneminers.com/products/?discount=virtuse_buy' },
   'abundant-mines': { name: 'Abundant Mines', page: 'mining.html', url: 'https://abundantmines.com/ref/76/' },
   'power-mining': { name: 'PowerMining', page: 'mining.html', url: 'https://shop.powermining.io/?ref=Virtuse' },
+  'solo-satoshi': { name: 'Solo Satoshi', page: 'mining.html', url: 'https://www.solosatoshi.com/aff/8822/' },
 };
 
 const GOALS = ['buy', 'loan', 'earn', 'treasury', 'mining', 'custody', 'tax'];
