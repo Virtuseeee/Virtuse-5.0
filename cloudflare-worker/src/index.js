@@ -28,6 +28,8 @@
 //                                          -- one email the visitor asked for (Partner Finder
 //                                             criteria or a calculator result); see src/send.js
 // POST /verdict      { text, lang, hp }      -- Virtuse CFO · Verdict, see src/verdict.js
+// POST /verdict/checkout, /verdict/report, /verdict/stripe-webhook
+//                                          -- paid full report (Stripe), see src/verdict-pay.js
 // GET  /unsubscribe  ?email=...&token=...  -- clicked from the welcome email, see below
 // GET  /pulse.json                         -- current Brief pulse JSON (KV `current`)
 // OPTIONS /pulse.json                      -- CORS preflight for that GET
@@ -36,7 +38,8 @@
 //
 // Secrets (set via `wrangler secret put`, never in this file or wrangler.toml):
 //   RESEND_API_KEY, RESEND_SEGMENT_ID, RESEND_SK_SEGMENT_ID, RESEND_FROM_EMAIL,
-//   UNSUB_SECRET, PULSE_PUBLISH_TOKEN, ANTHROPIC_API_KEY (POST /verdict)
+//   UNSUB_SECRET, PULSE_PUBLISH_TOKEN, ANTHROPIC_API_KEY (POST /verdict),
+//   STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_VERDICT (staging Worker only for now)
 // KV bindings (see wrangler.toml): RATE_LIMIT_KV, PULSE_KV
 //
 // The welcome email HTML is inlined below (see WELCOME_EMAIL_HTML) rather
@@ -58,7 +61,8 @@ import { handleSend } from '../src/send.js';
 import { handleWpProxy, WP_PREFIX } from '../src/wp-proxy.js';
 import { handleWaitlist, leaveWaitlist } from '../src/waitlist.js';
 import { handleEcosystemApply } from '../src/ecosystem.js';
-import { handleVerdict } from '../src/verdict.js';
+import { handleVerdict, aiJson, freeView, reportView, verdictOpts } from '../src/verdict.js';
+import { handleCheckout, handleReport, handleStripeWebhook } from '../src/verdict-pay.js';
 
 const ALLOWED_ORIGINS = [
   'https://staging.virtuse.com',
@@ -656,6 +660,11 @@ export default {
       return handleWpProxy(request, url);
     }
 
+    // Called by Stripe, not browsers: no Origin; the Stripe-Signature is the check.
+    if (url.pathname === '/verdict/stripe-webhook') {
+      return handleStripeWebhook(request, env);
+    }
+
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders(origin) });
     }
@@ -689,6 +698,14 @@ export default {
 
     if (url.pathname === '/verdict') {
       return handleVerdict(request, env, origin, { json });
+    }
+
+    if (url.pathname === '/verdict/checkout') {
+      return handleCheckout(request, env, origin, { json });
+    }
+
+    if (url.pathname === '/verdict/report') {
+      return handleReport(request, env, origin, { json, aiJson, freeView, reportView, verdictOpts });
     }
 
     if (url.pathname === '/ecosystem-apply') {

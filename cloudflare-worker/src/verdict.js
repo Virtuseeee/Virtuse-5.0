@@ -1,4 +1,4 @@
-// POST /verdict  { text, lang, hp, profile?, report? }  (report: full view, staging preview only)
+// POST /verdict  { text, lang, hp, profile?, report? }  (report: full view, VERDICT_REPORT_PREVIEW=1 only)
 //
 // Virtuse CFO · Verdict: scores how complete a visitor's Bitcoin decision is
 // on 10 signals (rubric approved 2026-10-15, see the "Verdict: rubrika a
@@ -7,7 +7,8 @@
 // are always the same for the same points. Virtuse stores no decision text;
 // it goes to Anthropic (USA) for processing, which may retain it under its
 // API terms unless zero data retention is agreed (see the legal pre-check,
-// 2026-10-15). Only the per-IP counter and the month's spend are kept in KV.
+// 2026-10-15). Only the per-IP counter and the month's spend are kept in KV;
+// with payments on (src/verdict-pay.js) also the scored result, for 24 h.
 //
 // It never advises (MiCA): the model's prompt forbids it, the output is a
 // fixed JSON shape with no free text field, and a word filter below drops any
@@ -29,6 +30,7 @@ import {
   validSummary, validFix, OWN_DECISION, asksWhetherToAct,
 } from './verdict-result.js';
 export { AREA_COPY, COUNTRY_LOC, verdictLevel, nextSteps, PARTNER_NAMES, VERBS, redFlags } from './verdict-result.js';
+import { paymentsOn, newRid, storeResult } from '../src/verdict-pay.js';
 
 export const VERDICT_MODEL = 'claude-opus-5-5';
 // USD per token for claude-opus-5-5 ($4 / $20 per million). Counted as EUR
@@ -526,10 +528,9 @@ export function freeView(full, profile = {}, opts = {}) {
 
 // The full report (14 EUR): all 10 signals with reasons, every missing
 // question and a plan: signals under 7 points, weakest first, each with the
-// Virtuse tool to work on it. No payment exists yet, so the Worker returns it
-// only as a preview, on the staging Worker (VERDICT_REPORT_PREVIEW=1). The
-// Origin header is never trusted: any script can set it. Before the report is
-// sold, the production path must require a server-verified paid token.
+// Virtuse tool to work on it. With payments on, only a paid Checkout Session
+// opens it (POST /verdict/report, src/verdict-pay.js); otherwise only as a
+// preview with VERDICT_REPORT_PREVIEW=1. Never by Origin: anyone can send it.
 export const PLAN_BELOW = 7;
 export function reportView(full, profile = {}, opts = {}) {
   if (full.declined) return full;
@@ -551,8 +552,14 @@ export function reportView(full, profile = {}, opts = {}) {
   };
 }
 
+// View options from the Worker's vars. With payments on, the report card
+// offers checkout, whatever VERDICT_CHECKOUT says.
+export function verdictOpts(env, lang) {
+  return { lang, taxModule: env.VERDICT_TAX_MODULE === '1', checkout: env.VERDICT_CHECKOUT === '1' || paymentsOn(env) };
+}
+
 export function reportPreviewAllowed(env) {
-  return env.VERDICT_REPORT_PREVIEW === '1';
+  return env.VERDICT_REPORT_PREVIEW === '1' && !paymentsOn(env);
 }
 
 export function looksLikeAdvice(result) {
@@ -603,7 +610,7 @@ function monthKey(now) {
 }
 
 // AI Act art. 50(2) / legal pack 8.2.4: machine-readable marking of AI output.
-function aiJson(json, body, origin) {
+export function aiJson(json, body, origin) {
   const r = json(200, { ...body, ai_generated: true }, origin);
   r.headers.set('X-AI-Generated', 'true');
   return r;
@@ -670,9 +677,14 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
     await env.RATE_LIMIT_KV.put(spentKey, String(spent + cost), { expirationTtl: 60 * 60 * 24 * 40 });
     if (!result) return json(502, { error: adviceFail }, origin);
     if (result.declined) return aiJson(json, result, origin);
-    const report = body.report === true && reportPreviewAllowed(env);
-    const opts = { lang, taxModule: env.VERDICT_TAX_MODULE === '1', checkout: env.VERDICT_CHECKOUT === '1' };
-    return aiJson(json, report ? reportView(result, eff, opts) : freeView(result, eff, opts), origin);
+    const opts = verdictOpts(env, lang);
+    if (body.report === true && reportPreviewAllowed(env)) return aiJson(json, reportView(result, eff, opts), origin);
+    if (!paymentsOn(env)) return aiJson(json, freeView(result, eff, opts), origin);
+    // Paid path: the scored result waits 24 h under a random rid; only a paid
+    // Checkout Session for that rid opens the report (src/verdict-pay.js).
+    const rid = newRid();
+    await storeResult(env, rid, result, eff, lang);
+    return aiJson(json, { ...freeView(result, eff, opts), pay: true, rid }, origin);
   } catch (e) {
     console.error(e);
     return json(502, { error: fail }, origin);

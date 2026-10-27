@@ -5,8 +5,9 @@
   "scripts": {
     "build": "node build.mjs",
     "deploy": "node build.mjs && wrangler deploy",
+    "deploy:staging": "node build.mjs && wrangler deploy --env staging",
     "dev": "node build.mjs && wrangler dev",
-    "test": "node build.mjs > /dev/null && node --test pulse.test.mjs send.test.mjs wp-proxy.test.mjs version.test.mjs waitlist.test.mjs verdict.test.mjs verdict-v2.test.mjs verdict-review27.test.mjs ecosystem.test.mjs"
+    "test": "node build.mjs > /dev/null && node --test pulse.test.mjs send.test.mjs wp-proxy.test.mjs version.test.mjs waitlist.test.mjs verdict.test.mjs verdict-v2.test.mjs verdict-review27.test.mjs verdict-pay.test.mjs ecosystem.test.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"

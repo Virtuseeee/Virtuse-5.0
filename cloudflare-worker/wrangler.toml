@@ -23,15 +23,20 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 
 # Staging Worker for Verdict (verdict-review A1, 2026-10-23): staging.virtuse.com
 # calls https://virtuse-newsletter-staging.virtuse-ai.workers.dev, never the
-# production Worker. Verdict is open here and returns the full report preview;
-# production decides both by its own vars, never by the Origin header.
-#   npx wrangler deploy --env staging
+# production Worker. Verdict is open here; production decides by its own vars,
+# never by the Origin header.
+#   npm run deploy:staging   (= node build.mjs && wrangler deploy --env staging)
 #   npx wrangler secret put ANTHROPIC_API_KEY --env staging   (and UNSUB_SECRET, RESEND_* if /waitlist is tested here)
 # WAITLIST_DRY_RUN: staging sign-ups are validated but not stored or e-mailed (2026-10-27).
 # VERDICT_PER_IP_BOOST: 50 new verdicts per IP on that UTC day only (Ras, testing); ends by itself.
+# VERDICT_PAYMENTS + STRIPE_TEST_ONLY: the full report needs a paid Stripe TEST
+# Checkout session (EUR 14); with payments on, VERDICT_REPORT_PREVIEW is ignored.
+# Stripe secrets, each with --env staging (never in chat, git or this file):
+#   STRIPE_SECRET_KEY (sk_test_/rk_test_), STRIPE_WEBHOOK_SECRET (whsec_), STRIPE_PRICE_ID_VERDICT (price_)
+# Stripe webhook endpoint: <worker URL>/verdict/stripe-webhook
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"
