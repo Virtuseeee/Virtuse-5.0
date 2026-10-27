@@ -23,7 +23,7 @@
     holdtime: ['lt1', '1_3', 'gt3'], basis: ['yes', 'roughly', 'no'], ltv: ['lt30', '30_50', 'gt50'], liqprice: ['yes', 'no'],
     runway: ['lt12', '12_24', 'gt24'], board: ['yes', 'pending', 'no'], heirs: ['yes', 'no']
   };
-  // Verdict is open on staging and locally; on virtuse.com from launch (1 November).
+  // Verdict is open on staging and locally; on virtuse.com from launch.
   var LIVE = false;
   var ON = LIVE || location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
 

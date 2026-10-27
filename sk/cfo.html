@@ -296,7 +296,7 @@ section { padding-block: 100px; border-top: 0; }
 .cant div { border: 1px dashed var(--line-strong); border-radius: 16px; padding: 28px; display: grid; gap: 10px; align-content: start; }
 .cant b::before { content: "×"; color: var(--dim); margin-right: 10px; }
 .proof { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; }
-.code { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 22px; overflow-x: auto; font: 13px/1.7 var(--mono); color: var(--muted); margin: 0; }
+.code { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 22px; overflow-x: auto; font: 13px/1.7 var(--mono); color: var(--muted); margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .code .k2 { color: var(--text); }
 .code .c { color: var(--dim); }
 .close { text-align: center; }
@@ -375,7 +375,7 @@ section { padding-block: 100px; border-top: 0; }
   .tile, .tiles.t2 .tile { min-height: 230px; }
   .assure-row { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 640px) { .tile h3 { font-size: 28px; } .billing { display: flex; } .billing button { flex: 1; } }
+@media (max-width: 640px) { .tile h3 { font-size: 28px; } .billing { display: flex; } .billing button { flex: 1; } .billing i { display: block; margin: 4px 0 0; } }
 /* ===== MOTION v1: live-site reveals, pushed toward firefish.io =====
    firefish (checked live): blocks start at opacity 0 + translateY(100px) and
    ease up on scroll. Ours: 64px rise + slight blur + scale on cards, long
@@ -611,7 +611,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-card .q { color: var(--muted); margin: 0; }
 .vd-score { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .vd-score b { font-size: 72px; line-height: 0.9; letter-spacing: -0.04em; }
-.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; }
+.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; letter-spacing: 0; margin-left: 4px; }
 .vd-pill { display: inline-block; background: rgba(247,147,26,0.14); color: var(--orange); font-weight: 600; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
 .vd-sigs { display: grid; gap: 9px; }
 .vd-sig { display: grid; grid-template-columns: minmax(0, 150px) 1fr 24px; gap: 12px; align-items: center; font-size: 13px; color: var(--muted); }
@@ -688,13 +688,17 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Nástroje</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Zadarmo</span></span><span class="nd-d">Verdikt a audit poplatkov, zadarmo od 1. novembra</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partneri podľa vašich odpovedí</span></a><a href="/sk/bitcoin-index-poplatkov/"><span class="nd-t">Index poplatkov</span><span class="nd-d">Celkové náklady nákupu v porovnaní</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plán pravidelných nákupov a poplatky</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Predať, alebo si požičať so zábezpekou v Bitcoine</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Pravidlá krajín a kontrola dedičstva</span></a><a href="retirement-calculator.html"><span class="nd-t">Dôchodková kalkulačka</span><span class="nd-d">Koľko Bitcoinu na dôchodok</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Zadarmo</span></span><span class="nd-d">Verdikt a audit poplatkov zadarmo</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partneri podľa vašich odpovedí</span></a><a href="/sk/bitcoin-index-poplatkov/"><span class="nd-t">Index poplatkov</span><span class="nd-d">Celkové náklady nákupu v porovnaní</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plán pravidelných nákupov a poplatky</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Predať, alebo si požičať so zábezpekou v Bitcoine</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Pravidlá krajín a kontrola dedičstva</span></a><a href="retirement-calculator.html"><span class="nd-t">Dôchodková kalkulačka</span><span class="nd-d">Koľko Bitcoinu na dôchodok</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ekosystém</button>
+        <div class="nav-drop" id="nd-eco"><a href="/sk/ecosystem/"><span class="nd-t">Prehľad</span><span class="nd-d">Všetky zdroje iba o Bitcoine</span></a><a href="/sk/ecosystem/what-is-bitcoin/"><span class="nd-t">Čo je Bitcoin?</span><span class="nd-d">Základy jednoduchým jazykom</span></a><a href="/sk/ecosystem/books/"><span class="nd-t">Knihy</span><span class="nd-d">Vybraný zoznam kníh</span></a><a href="/sk/ecosystem/podcasts/"><span class="nd-t">Podcasty</span><span class="nd-d">Relácie iba o Bitcoine</span></a><a href="/sk/ecosystem/videos/"><span class="nd-t">Videá</span><span class="nd-d">Kanály a dokumenty</span></a><a href="/sk/ecosystem/conferences/"><span class="nd-t">Konferencie</span><span class="nd-d">Bitcoinové podujatia v Európe</span></a><a href="/sk/ecosystem/privacy/"><span class="nd-t">Súkromie v Bitcoine</span><span class="nd-d">Legálne nástroje na súkromie</span></a><a href="/sk/ecosystem/spend-bitcoin/"><span class="nd-t">Platiť bitcoinom</span><span class="nd-d">Obchody, mapy a darčekové karty</span></a><a href="/sk/ecosystem/store-tools/"><span class="nd-t">Pre obchodníkov</span><span class="nd-d">Prijímajte bitcoin v obchode</span></a><a href="/sk/ecosystem/dev-tools/"><span class="nd-t">Pre vývojárov</span><span class="nd-d">Knižnice a SDK</span></a><a href="/sk/ecosystem/jobs/"><span class="nd-t">Práca</span><span class="nd-d">Práca, granty a štipendiá</span></a><a href="/sk/ecosystem/peers/"><span class="nd-t">Spriatelené projekty</span><span class="nd-d">Projekty zamerané iba na Bitcoin</span></a><a href="/sk/ecosystem/promote/"><span class="nd-t">Zaradenie</span><span class="nd-d">Zaraďte svoj projekt</span></a></div>
       </div>
       <a class="nav-top" href="about.html">O nás</a>
     </nav>
     <div class="lang-menu" id="langMenu">
       <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Jazyk stránky: slovenčina"><span aria-hidden="true">&#127480;&#127472;</span><span class="lang-code">SK</span></button>
-      <div class="lang-menu-panel" role="menu"><a href="cfo.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/cfo.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/cfo.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/cfo.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/cfo.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/cfo.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="../fr/cfo.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/cfo.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="../uk/cfo.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/cfo.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+      <div class="lang-menu-panel" role="menu"><a href="../cfo.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="cfo.html" class="lang-opt active" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/cfo.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/cfo.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/cfo.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/cfo.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="../fr/cfo.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/cfo.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="../uk/cfo.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/cfo.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
     </div>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Otvoriť menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
     <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Nájsť partnerov</a>
@@ -706,7 +710,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO -->
   <div class="c-hero vd-hero" id="verdict">
     <div>
-      <div class="eyebrow">Virtuse CFO · Verdict · zadarmo od 1. novembra</div>
+      <div class="eyebrow">Virtuse CFO · Verdict · zadarmo</div>
       <h1>Skontrolujte, čo ste vo svojej úvahe o Bitcoine vynechali. <span>Potom ho váš <span class="grad">CFO</span> sleduje za vás.</span></h1>
       <p class="sub">Popíšte, čo chcete urobiť. Verdict ohodnotí vaše uvažovanie v 10 signáloch a ukáže najslabšie miesto. Nehodnotí Bitcoin ani našich partnerov. Hodnotí, či ste to premysleli.</p>
       <form class="vd-form" id="vdForm" hidden novalidate>
@@ -722,9 +726,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-primary" type="submit">Upozorniť 1. novembra</button>
+        <button class="btn btn-primary" type="submit">Zapísať sa</button>
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
-        <p class="wait-note">Jeden e-mail 1. novembra, keď sa Verdict a bezplatný audit poplatkov otvoria. Nič viac. Odhlásiť sa môžete kedykoľvek priamo z neho. <a href="privacy-policy.html" style="color:inherit">Súkromie</a></p>
+        <p class="wait-note">Jeden e-mail, keď sa Verdict a bezplatný audit poplatkov otvoria. Nič viac. Odhlásiť sa môžete kedykoľvek priamo z neho. <a href="privacy-policy.html" style="color:inherit">Súkromie</a></p>
       </form>
     </div>
     <div class="vd-card" id="vdCard" aria-live="polite" aria-label="Ukážka verdiktu">
@@ -768,13 +772,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="audit">
   <div class="c-hero">
     <div>
-      <div class="eyebrow">Virtuse CFO · bezplatný audit poplatkov od 1. novembra</div>
+      <div class="eyebrow">Virtuse CFO · bezplatný audit poplatkov</div>
       <h2 class="audit-h">Po rozhodnutí sleduje Virtuse CFO vaše čísla. <span>Číta vaše vlastné exporty a nikdy nevidí vašu peňaženku.</span></h2>
       <p class="sub">Začnite číslom, ktoré väčšina držiteľov nikdy nevidela: koľko vás nákupy naozaj stáli. Virtuse CFO prečíta váš export z burzy priamo vo vašom prehliadači, nájde každý poplatok a odpovedá na otázky na základe vašich vlastných čísel.</p>
       <div class="only-audit">
         <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Vyskúšajte to na ukážkovom exporte</button></div>
       </div>
-      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Upozorniť 1. novembra</a></div>
+      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Zapísať sa</a></div>
     </div>
 
     <div class="demo" id="demo" aria-label="Ukážka auditu poplatkov">
@@ -810,7 +814,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="pricing">
     <div class="sec-head">
       <h2>Jeden produkt, tri úrovne. <span>Začnite verdiktom zadarmo.</span></h2>
-      <p class="sec-sub">Verdict aj audit poplatkov sú zadarmo a bez karty. Platené plány sa otvoria 1. novembra; zrušiť ich môžete kedykoľvek. Rovnaký dizajn iba na čítanie, ktorý beží lokálne, v každom pláne.</p>
+      <p class="sec-sub">Verdict aj audit poplatkov sú zadarmo a bez karty. Keď sa platené plány otvoria, dáme vám vedieť; zrušiť ich môžete kedykoľvek. Rovnaký dizajn iba na čítanie, ktorý beží lokálne, v každom pláne.</p>
     </div>
     <div class="billing" role="tablist" aria-label="Obdobie platby">
       <button type="button" role="tab" aria-selected="true" data-bill="m">Mesačne</button>
@@ -823,7 +827,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price">0 € <small>bez účtu</small></div>
         <p class="for">Skóre úvahy 0 až 100, pásmo a najslabšie miesto.</p>
         <ul><li>Hodnotenie rozhodnutia v 10 signáloch</li><li>Najslabšie miesto a nástroj, kde ho overíte</li><li>Test poklesu o 70 %</li><li>Nie je to poradenstvo, nič neodporúča</li></ul>
-        <a class="btn btn-ghost" href="#waitForm">Upozorniť 1. novembra</a>
+        <a class="btn btn-ghost" href="#waitForm">Zapísať sa</a>
       </div>
       <div class="plan">
         <span class="layer">Jednorazovo</span>
@@ -834,24 +838,24 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <a class="btn btn-ghost" href="#verdict">Začať verdiktom</a>
       </div>
       <div class="plan pro">
-        <span class="founding">Zakladateľská cena, keď sa 1. novembra otvoria platené plány</span>
+        <span class="founding">Zakladateľská cena, keď sa otvoria platené plány</span>
         <h3>Virtuse CFO</h3>
         <div class="price"><span data-m>9 € <small>/ mesiac</small></span><span data-y hidden>90 € <small>/ rok</small></span></div>
         <p class="for"><span data-m>Alebo 90 € ročne, 2 mesiace zadarmo.</span><span data-y hidden>To je 7,50 € mesačne pri ročnej platbe.</span></p>
-        <ul><li>Bezplatný audit poplatkov z exportu, od 1. novembra</li><li>Neobmedzené verdikty a plné reporty</li><li>Vaše rozhodnutia v čase vrátane firemnej treasury</li><li>Upozornenia na poplatky a LTV pôžičky</li><li>Daňový prehľad, 13 krajín EÚ, a dedičský balík</li><li>Opýtajte sa svojho CFO, bez limitu</li></ul>
+        <ul><li>Bezplatný audit poplatkov z exportu</li><li>Neobmedzené verdikty a plné reporty</li><li>Vaše rozhodnutia v čase vrátane firemnej treasury</li><li>Upozornenia na poplatky a LTV pôžičky</li><li>Daňový prehľad, 13 krajín EÚ, a dedičský balík</li><li>Opýtajte sa svojho CFO, bez limitu</li></ul>
         <button class="btn btn-primary only-audit" type="button" data-run>Začať bezplatným auditom</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-primary" type="submit">Dajte mi vedieť</button>
           <div class="wait-msg" aria-live="polite"></div>
-          <p class="wait-note">Jeden e-mail, keď sa 1. novembra otvoria platené plány. Nič iné.</p>
-          <span class="wait-ok" hidden>Ste na zozname. Napíšeme vám raz, keď sa 1. novembra otvoria platené plány.</span>
+          <p class="wait-note">Jeden e-mail, keď sa otvoria platené plány. Nič iné.</p>
+          <span class="wait-ok" hidden>Ste na zozname. Napíšeme vám raz, keď sa otvoria platené plány.</span>
         </form>
       </div>
     </div>
     <div class="terms">
-      <p class="terms-k">Podmienky, ktoré platia od otvorenia platených plánov 1. novembra</p>
+      <p class="terms-k">Podmienky, ktoré platia od otvorenia platených plánov</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>Vrátenie peňazí do 30 dní</b>Bez otázok, bez formulára.</span>
         <span class="ic ic-muted"><b>Zrušenie jedným kliknutím</b>Na stránke vášho účtu.</span>
@@ -949,7 +953,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="faq">
       <details open><summary>Povie mi Verdict, či mám kúpiť Bitcoin?</summary><p>Nie. Hodnotí, či je vaša úvaha úplná. Čo urobíte, je vaše rozhodnutie. Verdict neodporúča nákup, predaj, pôžičku ani žiadneho partnera.</p></details>
-      <details><summary>Koľko to stojí?</summary><p>Verdict aj audit poplatkov sú zadarmo od 1. novembra. Plný report stojí 14 € jednorazovo. Virtuse CFO sa otvára 1. novembra za 9 € mesačne alebo 90 € ročne a obsahuje neobmedzené verdikty aj reporty.</p></details>
+      <details><summary>Koľko to stojí?</summary><p>Verdict aj audit poplatkov sú zadarmo. Plný report stojí 14 € jednorazovo. Virtuse CFO plánujeme za 9 € mesačne alebo 90 € ročne, s neobmedzenými verdiktmi aj reportmi. Zapíšte sa, dáme vám vedieť, keď Virtuse CFO spustíme.</p></details>
       <details><summary>Odkiaľ Verdict berie fakty?</summary><p>Z oficiálnych zdrojov, ktoré Virtuse už používa, napríklad z daňových pravidiel 13 krajín, každé s dátumom kontroly. Keď fakt chýba, Verdict sa opýta vás.</p></details>
       <details><summary>Čo sa stane s tým, čo napíšem?</summary><p>Bez účtu neukladáme text vašej úvahy. Na ochranu pred zneužitím počítame požiadavky z IP adresy, uloženej len ako odtlačok (hash); počítadlo sa maže po 24 hodinách. Podrobnosti nájdete v dokumente <a href="privacy-policy.html#verdict-cfo">Ochrana osobných údajov</a>. S účtom Virtuse CFO si históriu rozhodnutí uložíte a môžete ju kedykoľvek vymazať.</p></details>
       <details><summary>Ako získam export z Krakenu?</summary><p>Na kraken.com kliknite vpravo hore na ikonu profilu a vyberte <b>Documents</b>. V časti Exports kliknite na <b>Create export</b>, vyberte <b>Ledgers</b>, nastavte dátum začiatku a konca, zvoľte <b>CSV</b> a kliknite na Generate. Súbor sa objaví v tom istom zozname, keď bude pripravený. Môže to trvať niekoľko minút aj niekoľko dní a Kraken vám nepošle e-mail. Vyberte Ledgers, nie Trades: obsahuje každý poplatok aj vaše okamžité nákupy. Ak používate Kraken Pro a Documents nevidíte, pozrite sa do časti Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Návod od Krakenu</a></p></details>
@@ -964,7 +968,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="buy-bitcoin.html">Kúpiť Bitcoin</a><a href="secure.html">Úschova</a><a href="mining.html">Ťažba</a><a href="lending.html">Pôžičky</a><a href="treasury.html">Treasury</a><a href="tax.html">Dane</a><a href="bots.html">Boty</a></div><div class="footer-col"><h4>Spoločnosť</h4><a href="about.html">O nás</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Zadarmo</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="../news.html">Virtuse Brief</a><a href="../blog-sk.html">Blog</a><a href="bitcoin-data.html">Bitcoin dáta</a><a href="/sk/bitcoin-dane/">Dane z Bitcoinu</a><a href="/sk/bitcoin-index-poplatkov/">Index poplatkov</a><a href="/sk/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/sk/bitcoin-predat-alebo-pozicat/">Predať alebo požičať</a><a href="/sk/bitcoin-dedicstvo/">Dedenie</a></div><div class="footer-col"><h4>Právne informácie</h4><a href="terms-and-conditions.html">Obchodné podmienky</a><a href="privacy-policy.html">Ochrana osobných údajov</a><a href="aml-compliance.html">AML a Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="buy-bitcoin.html">Kúpiť Bitcoin</a><a href="secure.html">Úschova</a><a href="mining.html">Ťažba</a><a href="lending.html">Pôžičky</a><a href="treasury.html">Treasury</a><a href="tax.html">Dane</a><a href="bots.html">Boty</a></div><div class="footer-col"><h4>Spoločnosť</h4><a href="about.html">O nás</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Nástroje</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Zadarmo</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="../news.html">Virtuse Brief</a><a href="../blog-sk.html">Blog</a><a href="bitcoin-data.html">Bitcoin dáta</a><a href="/sk/bitcoin-dane/">Dane z Bitcoinu</a><a href="/sk/bitcoin-index-poplatkov/">Index poplatkov</a><a href="/sk/bitcoin-dca-kalkulacka/">Kalkulačka DCA</a><a href="/sk/bitcoin-predat-alebo-pozicat/">Predať alebo požičať</a><a href="/sk/bitcoin-dedicstvo/">Dedenie</a></div><div class="footer-col"><h4>Ekosystém</h4><a href="/sk/ecosystem/">Bitcoinový ekosystém</a><a href="/sk/ecosystem/what-is-bitcoin/">Čo je Bitcoin?</a><a href="/sk/ecosystem/books/">Knihy</a><a href="/sk/ecosystem/podcasts/">Podcasty</a><a href="/sk/ecosystem/videos/">Videá</a><a href="/sk/ecosystem/conferences/">Konferencie</a><a href="/sk/ecosystem/privacy/">Súkromie v Bitcoine</a><a href="/sk/ecosystem/spend-bitcoin/">Platiť bitcoinom</a><a href="/sk/ecosystem/store-tools/">Pre obchodníkov</a><a href="/sk/ecosystem/dev-tools/">Pre vývojárov</a><a href="/sk/ecosystem/jobs/">Práca</a><a href="/sk/ecosystem/peers/">Spriatelené projekty</a><a href="/sk/ecosystem/promote/">Zaradenie</a></div><div class="footer-col"><h4>Právne informácie</h4><a href="terms-and-conditions.html">Obchodné podmienky</a><a href="privacy-policy.html">Ochrana osobných údajov</a><a href="aml-compliance.html">AML a Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všetky práva vyhradené.</p>
@@ -1161,8 +1165,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
-// and the Virtuse CFO pricing card (source cfo_plan: paid plans from 1 November).
+// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit)
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans).
 document.querySelectorAll('form.wait').forEach(function (form) {
   var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
@@ -1177,7 +1181,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Ste na zozname. Napíšeme vám raz, 1. novembra, keď sa Verdict a bezplatný audit otvoria.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Ste na zozname. Napíšeme vám raz, keď sa Verdict a bezplatný audit otvoria.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Niečo sa pokazilo. Skúste to prosím znova.'; }
       })

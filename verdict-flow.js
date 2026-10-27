@@ -26,7 +26,7 @@
   var STR = {
     sk: {
       steps: ['Rozhodnutie', 'O vás', 'Váš plán', 'Verdikt'], back: '← Späť', cont: 'Pokračovať', start: 'Začať', skip: '? Zatiaľ neviem', other: 'Niečo iné, opíšem to',
-      closedH: 'Verdict sa otvára 1. novembra.', closedP: 'Zapíšte sa a dáme vám vedieť.', closedCta: 'Na stránku Virtuse CFO',
+      closedH: 'Verdict sa čoskoro otvorí.', closedP: 'Zapíšte sa a dáme vám vedieť.', closedCta: 'Na stránku Virtuse CFO',
       startEb: 'Verdict · zadarmo', startH: 'Otestujte svoje rozhodnutie o Bitcoine. <span>Pomáhame investorom robiť múdre rozhodnutia.</span>',
       startP: 'Skôr ako kúpite, predáte alebo si požičiate, otestujte svoje rozhodnutie na 10 signáloch. Najprv sa opýtame, čo AI potrebuje vedieť, potom dostanete verdikt.',
       startHint: 'Asi 2 minúty · bez účtu · nie je to investičné poradenstvo', startNote: 'Pár krátkych otázok + vaše vlastné slová',
@@ -126,7 +126,7 @@
     },
     en: {
       steps: ['Decision', 'About you', 'Your plan', 'Verdict'], back: '← Back', cont: 'Continue', start: 'Start', skip: '? Not sure yet', other: 'Something else, I will describe it',
-      closedH: 'Verdict opens on 1 November.', closedP: 'Join the list and we will tell you.', closedCta: 'To the Virtuse CFO page',
+      closedH: 'Verdict opens soon.', closedP: 'Join the list and we will tell you.', closedCta: 'To the Virtuse CFO page',
       startEb: 'Verdict · free', startH: 'Check your Bitcoin decision. <span>Empower investors to make smart decisions.</span>',
       startP: 'Before you buy, sell or borrow, test your decision on 10 signals. First we ask what the AI needs to know, then you get your verdict.',
       startHint: 'About 2 minutes · no account · not investment advice', startNote: 'A few short questions + your own words',
@@ -226,7 +226,7 @@
     },
     ru: {
       steps: ['Решение', 'О вас', 'Ваш план', 'Вердикт'], back: '← Назад', cont: 'Продолжить', start: 'Начать', skip: '? Пока не знаю', other: 'Другое, опишу сам',
-      closedH: 'Verdict открывается 1 ноября.', closedP: 'Запишитесь, и мы сообщим вам.', closedCta: 'На страницу Virtuse CFO',
+      closedH: 'Verdict скоро откроется.', closedP: 'Запишитесь, и мы сообщим вам.', closedCta: 'На страницу Virtuse CFO',
       startEb: 'Verdict · бесплатно', startH: 'Проверьте своё решение о Биткоине. <span>Помогаем инвесторам принимать обдуманные решения.</span>',
       startP: 'Прежде чем покупать, продавать или брать заём, проверьте своё решение по 10 сигналам. Сначала мы спросим то, что нужно знать ИИ, затем вы получите вердикт.',
       startHint: 'Около 2 минут · без аккаунта · не инвестиционная консультация', startNote: 'Несколько коротких вопросов + ваши собственные слова',
@@ -667,7 +667,7 @@
       freeList: ['Verdikt a 3 ďalšie kroky', '2 oblasti vysvetlené', 'Partneri podľa vašich kritérií'],
       conList: ['Prejdete si verdikt s človekom', 'Bez predaja', 'Odpovede z Verdictu sa zdieľajú len po vašom kliknutí'],
       haveIt: '✓ Máte ho', repWait: 'Zapísať sa na report za 14 €', repBuy: 'Odomknúť report za 14 €', conBtn: 'Rezervovať 15 min',
-      cfo: 'Rozhodujete častejšie? <b>Virtuse CFO</b>: neobmedzené verdikty a reporty za 9 €/mesiac alebo 90 €/rok. Spúšťa sa 1. novembra.',
+      cfo: 'Rozhodujete častejšie? <b>Virtuse CFO</b>: neobmedzené verdikty a reporty za 9 €/mesiac alebo 90 €/rok. Zapíšte sa, dáme vám vedieť, keď ho spustíme.',
       visitorBadge: 'Toto vidí návštevník bez reportu',
       consultSmall: 'Chcete to prejsť s človekom?', consultLink: 'Osobná konzultácia',
       stickySteps: '3 kroky ↑', stickyRep: 'Report 14 €', missAllH: 'Všetky chýbajúce otázky', partial: 'Niektoré oblasti AI tentoraz nevyhodnotila; ukazujeme ich ako nepopísané.'
@@ -697,7 +697,7 @@
       freeList: ['Verdict and 3 next steps', '2 areas explained', 'Partners that match your criteria'],
       conList: ['Go through your verdict with a person', 'No sales pitch', 'Your Verdict answers are shared only after you click'],
       haveIt: '✓ You have it', repWait: 'Join the waitlist for the €14 report', repBuy: 'Unlock the report for €14', conBtn: 'Book 15 minutes',
-      cfo: 'Deciding more often? <b>Virtuse CFO</b>: unlimited verdicts and reports for €9 a month or €90 a year. Opens on 1 November.',
+      cfo: 'Deciding more often? <b>Virtuse CFO</b>: unlimited verdicts and reports for €9 a month or €90 a year. Join the waitlist and we\'ll tell you when it opens.',
       visitorBadge: 'This is what a visitor without the report sees',
       consultSmall: 'Want to go through it with a person?', consultLink: 'Personal consultation',
       stickySteps: '3 steps ↑', stickyRep: 'Report €14', missAllH: 'All missing questions', partial: "The AI didn't rate some areas this time; they are shown as not described."
@@ -727,7 +727,7 @@
       freeList: ['Вердикт и 3 следующих шага', '2 области с пояснением', 'Партнёры по вашим критериям'],
       conList: ['Вы проходите вердикт вместе с человеком', 'Без продаж', 'Ответы из Verdict передаются только после вашего клика'],
       haveIt: '✓ У вас есть', repWait: 'Записаться на отчёт за 14 €', repBuy: 'Открыть отчёт за 14 €', conBtn: 'Записаться на 15 минут',
-      cfo: 'Принимаете решения чаще? <b>Virtuse CFO</b>: неограниченные вердикты и отчёты за 9 € в месяц или 90 € в год. Запуск 1 ноября.',
+      cfo: 'Принимаете решения чаще? <b>Virtuse CFO</b>: неограниченные вердикты и отчёты за 9 € в месяц или 90 € в год. Запишитесь, и мы сообщим о запуске.',
       visitorBadge: 'Это видит посетитель без отчёта',
       consultSmall: 'Хотите пройти это с человеком?', consultLink: 'Личная консультация',
       stickySteps: '3 шага ↑', stickyRep: 'Отчёт 14 €', missAllH: 'Все недостающие вопросы', partial: 'Некоторые области ИИ на этот раз не оценил; мы показываем их как неописанные.'
@@ -879,7 +879,7 @@
       payT: 'Váš report', payRow: 'Celý verdikt', once: 'Jednorazová cena', onceNote: 'Bez predplatného a bez obnovy. Report si ponecháte.',
       plusT: 'K tomu: osobná konzultácia', plusP: '15 minút s človekom, zadarmo, bez predaja.', plusBtn: 'Rezervovať',
       waitBtn: 'Zapísať sa na report za 14 €', buyBtn: 'Odomknúť verdikt', stripe: 'Bezpečná platba cez Stripe', opens: 'Otvorí sa hneď po platbe',
-      trust: [['22 overených partnerov', 'Licencie MiCA overujeme v registri ESMA, s dátumom overenia pri každom partnerovi.'], ['Daňové pravidlá 13 krajín EÚ', 'Z rovnakých zdrojov ako naše daňové stránky, s uvedeným dátumom.'], ['Rovnaké hodnotenie pre každého', '10 oblastí podľa pevnej rubriky. Poradie partnerov určujú pevné pravidlá, nie provízia.'], ['Vaše peniaze ani kľúče nedržíme', 'Text rozhodnutia neukladáme v databáze Virtuse. Virtuse od roku 2018.']],
+      trust: [['24 overených partnerov', 'Pri partneroch s licenciou MiCA uvádzame dátum overenia v registri ESMA.'], ['Daňové pravidlá 13 krajín EÚ', 'Z rovnakých zdrojov ako naše daňové stránky, s uvedeným dátumom.'], ['Rovnaké hodnotenie pre každého', '10 oblastí podľa pevnej rubriky. Poradie partnerov určujú pevné pravidlá, nie provízia.'], ['Vaše peniaze ani kľúče nedržíme', 'Text rozhodnutia neukladáme v databáze Virtuse. Virtuse od roku 2018.']],
       faq: [['Čo sa stane, keď sa zapíšem?', 'Uložíme len váš e-mail. Keď sa report otvorí, pošleme vám jednu správu. Nič iné.'], ['Čo presne dostanem za 14 €?', 'Všetkých 10 oblastí s bodmi a dôvodmi, všetky chýbajúce otázky, plán krokov s nástrojmi Virtuse a PDF na uloženie.'], ['Prečo platiť, keď sa môžem opýtať ChatGPT?', 'Verdict hodnotí každé rozhodnutie na rovnakých 10 oblastiach podľa pevnej rubriky, pracuje s vašimi odpoveďami a s daňovými pravidlami 13 krajín, ktoré uvádzame so zdrojom. Partnerov ukazuje len overených.'], ['Čo ak verdikt povie, že plán nie je pripravený?', 'Verdict meria, nakoľko úplne je plán opísaný, nie či kúpiť alebo predať. Ukáže, čo doplniť, a môžete ho ohodnotiť znova.'], ['Ponechám si ho?', 'Áno. Report si uložíte ako PDF, bez predplatného.'], ['Je to investičné poradenstvo?', 'Nie. Verdict hodnotí úplnosť vašej úvahy. Nehovorí, či kúpiť, predať alebo počkať.'], ['Čo sa stane s mojím textom?', 'Text neukladáme v databáze Virtuse. Na vyhodnotenie ho spracúva Anthropic (USA).']],
       ctaFinal: 'Zapísať sa', ctaNote: 'Report za 14 € · jednorazovo, bez predplatného'
     },
@@ -902,7 +902,7 @@
       payT: 'Your report', payRow: 'Full verdict', once: 'One-time price', onceNote: 'No subscription or renewal. The report is yours to keep.',
       plusT: 'Plus: personal consultation', plusP: '15 minutes with a person, free, no sales pitch.', plusBtn: 'Book',
       waitBtn: 'Join the waitlist for the €14 report', buyBtn: 'Unlock my verdict', stripe: 'Secure checkout with Stripe', opens: 'Opens right after payment',
-      trust: [['22 vetted partners', 'We check MiCA licences in the ESMA register, with the check date on every partner.'], ['Tax rules for 13 EU countries', 'From the same sources as our tax pages, with the date shown.'], ['The same rating for everyone', '10 areas on a fixed rubric. Fixed rules set the partner order, not commission.'], ["We don't hold your money or keys", "We don't store your decision text in the Virtuse database. Virtuse since 2018."]],
+      trust: [['24 vetted partners', 'For partners with a MiCA licence we show the date we checked the ESMA register.'], ['Tax rules for 13 EU countries', 'From the same sources as our tax pages, with the date shown.'], ['The same rating for everyone', '10 areas on a fixed rubric. Fixed rules set the partner order, not commission.'], ["We don't hold your money or keys", "We don't store your decision text in the Virtuse database. Virtuse since 2018."]],
       faq: [['What happens after I join?', 'We keep only your email. When the report opens, we send you one message. Nothing else.'], ['What exactly do I get for €14?', 'All 10 areas with points and reasons, every missing question, a step plan with Virtuse tools and a PDF to keep.'], ['Why pay when I can just ask ChatGPT?', 'Verdict rates every decision on the same 10 areas with a fixed rubric, uses your answers and the tax rules of 13 countries we cite with sources. It shows only vetted partners.'], ['What if the verdict says my plan is not ready?', 'Verdict measures how completely your plan is described, not whether to buy or sell. It shows what to add, and you can rate it again.'], ['Do I keep it?', 'Yes. You save the report as a PDF, with no subscription.'], ['Is this investment advice?', 'No. Verdict rates how complete your thinking is. It never says whether to buy, sell or wait.'], ['What happens to my text?', "We don't store it in the Virtuse database. Anthropic (USA) processes it to assess it."]],
       ctaFinal: 'Join the waitlist', ctaNote: '€14 report · one-time, no subscription'
     },
@@ -925,7 +925,7 @@
       payT: 'Ваш отчёт', payRow: 'Полный вердикт', once: 'Разовая цена', onceNote: 'Без подписки и продления. Отчёт остаётся у вас.',
       plusT: 'Плюс: личная консультация', plusP: '15 минут с человеком, бесплатно, без продаж.', plusBtn: 'Записаться',
       waitBtn: 'Записаться на отчёт за 14 €', buyBtn: 'Открыть вердикт', stripe: 'Безопасная оплата через Stripe', opens: 'Откроется сразу после оплаты',
-      trust: [['22 проверенных партнёра', 'Лицензии MiCA мы проверяем в реестре ESMA, с датой проверки у каждого партнёра.'], ['Налоговые правила 13 стран ЕС', 'Из тех же источников, что и наши налоговые страницы, с указанием даты.'], ['Одинаковая оценка для всех', '10 областей по фиксированной методике. Порядок партнёров определяют фиксированные правила, а не комиссия.'], ['Мы не храним ваши деньги и ключи', 'Текст решения мы не сохраняем в базе данных Virtuse. Virtuse с 2018 года.']],
+      trust: [['24 проверенных партнёра', 'Для партнёров с лицензией MiCA мы указываем дату проверки в реестре ESMA.'], ['Налоговые правила 13 стран ЕС', 'Из тех же источников, что и наши налоговые страницы, с указанием даты.'], ['Одинаковая оценка для всех', '10 областей по фиксированной методике. Порядок партнёров определяют фиксированные правила, а не комиссия.'], ['Мы не храним ваши деньги и ключи', 'Текст решения мы не сохраняем в базе данных Virtuse. Virtuse с 2018 года.']],
       faq: [['Что будет, когда я запишусь?', 'Мы сохраним только ваш e-mail. Когда отчёт откроется, отправим одно письмо. Ничего больше.'], ['Что именно я получу за 14 €?', 'Все 10 областей с баллами и пояснениями, все недостающие вопросы, план шагов с инструментами Virtuse и PDF для сохранения.'], ['Зачем платить, если можно спросить ChatGPT?', 'Verdict оценивает каждое решение по одним и тем же 10 областям по фиксированной методике, учитывает ваши ответы и налоговые правила 13 стран, которые мы приводим с источниками. Он показывает только проверенных партнёров.'], ['Что если вердикт скажет, что план не готов?', 'Verdict измеряет, насколько полно описан план, а не то, покупать или продавать. Он покажет, что дополнить, и вы сможете оценить снова.'], ['Отчёт останется у меня?', 'Да. Вы сохраняете отчёт в PDF, без подписки.'], ['Это инвестиционная консультация?', 'Нет. Verdict оценивает полноту вашего размышления. Он не говорит, покупать, продавать или ждать.'], ['Что будет с моим текстом?', 'Мы не сохраняем его в базе данных Virtuse. Для оценки его обрабатывает Anthropic (США).']],
       ctaFinal: 'Записаться', ctaNote: 'Отчёт за 14 € · разово, без подписки'
     }

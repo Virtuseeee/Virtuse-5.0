@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <script src="/partner-click.js" defer></script>
 <title>Virtuse CFO · Verdict&nbsp;: ce que vous avez omis | Virtuse</title>
-<meta name="description" content="Verdict évalue si votre décision Bitcoin est complète, gratuit dès le 1er novembre 2026. Virtuse CFO suit ensuite frais, prêts et impôts. Lecture seule.">
+<meta name="description" content="Verdict évalue gratuitement si votre décision Bitcoin est complète. Virtuse CFO suit ensuite frais, prêts et impôts. Lecture seule.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch 2026-11-01): remove noindex, add to sitemap + hreflang (docs/LAUNCH-CFO.md) -->
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Virtuse CFO · Verdict&nbsp;: ce que vous avez omis | Virtuse">
-<meta property="og:description" content="Verdict évalue si votre décision Bitcoin est complète, gratuit dès le 1er novembre 2026. Virtuse CFO suit ensuite frais, prêts et impôts. Lecture seule.">
+<meta property="og:description" content="Verdict évalue gratuitement si votre décision Bitcoin est complète. Virtuse CFO suit ensuite frais, prêts et impôts. Lecture seule.">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://virtuse.com/fr/cfo.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
@@ -296,7 +296,7 @@ section { padding-block: 100px; border-top: 0; }
 .cant div { border: 1px dashed var(--line-strong); border-radius: 16px; padding: 28px; display: grid; gap: 10px; align-content: start; }
 .cant b::before { content: "×"; color: var(--dim); margin-right: 10px; }
 .proof { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; }
-.code { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 22px; overflow-x: auto; font: 13px/1.7 var(--mono); color: var(--muted); margin: 0; }
+.code { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 22px; overflow-x: auto; font: 13px/1.7 var(--mono); color: var(--muted); margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .code .k2 { color: var(--text); }
 .code .c { color: var(--dim); }
 .close { text-align: center; }
@@ -375,7 +375,7 @@ section { padding-block: 100px; border-top: 0; }
   .tile, .tiles.t2 .tile { min-height: 230px; }
   .assure-row { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 640px) { .tile h3 { font-size: 28px; } .billing { display: flex; } .billing button { flex: 1; } }
+@media (max-width: 640px) { .tile h3 { font-size: 28px; } .billing { display: flex; } .billing button { flex: 1; } .billing i { display: block; margin: 4px 0 0; } }
 /* ===== MOTION v1: live-site reveals, pushed toward firefish.io =====
    firefish (checked live): blocks start at opacity 0 + translateY(100px) and
    ease up on scroll. Ours: 64px rise + slight blur + scale on cards, long
@@ -611,7 +611,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-card .q { color: var(--muted); margin: 0; }
 .vd-score { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .vd-score b { font-size: 72px; line-height: 0.9; letter-spacing: -0.04em; }
-.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; }
+.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; letter-spacing: 0; margin-left: 4px; }
 .vd-pill { display: inline-block; background: rgba(247,147,26,0.14); color: var(--orange); font-weight: 600; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
 .vd-sigs { display: grid; gap: 9px; }
 .vd-sig { display: grid; grid-template-columns: minmax(0, 150px) 1fr 24px; gap: 12px; align-items: center; font-size: 13px; color: var(--muted); }
@@ -689,13 +689,17 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Outils</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Gratuit</span></span><span class="nd-d">Verdict et audit des frais, gratuits dès le 1er novembre</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Les partenaires selon vos réponses</span></a><a href="/fr/bitcoin-indice-frais/"><span class="nd-t">Indice des frais</span><span class="nd-d">Le coût total d’achat comparé</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Planifier des achats réguliers</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Vendre ou emprunter sur vos Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Règles par pays et bilan successoral</span></a><a href="retirement-calculator.html"><span class="nd-t">Simulateur de retraite</span><span class="nd-d">Combien de Bitcoin pour la retraite</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Gratuit</span></span><span class="nd-d">Verdict et audit des frais gratuits</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Les partenaires selon vos réponses</span></a><a href="/fr/bitcoin-indice-frais/"><span class="nd-t">Indice des frais</span><span class="nd-d">Le coût total d’achat comparé</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Planifier des achats réguliers</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Vendre ou emprunter sur vos Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Règles par pays et bilan successoral</span></a><a href="retirement-calculator.html"><span class="nd-t">Simulateur de retraite</span><span class="nd-d">Combien de Bitcoin pour la retraite</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Écosystème</button>
+        <div class="nav-drop" id="nd-eco"><a href="/fr/ecosystem/"><span class="nd-t">Vue d'ensemble</span><span class="nd-d">Toutes les ressources 100 % Bitcoin</span></a><a href="/fr/ecosystem/what-is-bitcoin/"><span class="nd-t">Qu'est-ce que Bitcoin ?</span><span class="nd-d">Une introduction simple</span></a><a href="/fr/ecosystem/books/"><span class="nd-t">Livres</span><span class="nd-d">Une liste de lectures choisies</span></a><a href="/fr/ecosystem/podcasts/"><span class="nd-t">Podcasts</span><span class="nd-d">Émissions 100 % Bitcoin</span></a><a href="/fr/ecosystem/videos/"><span class="nd-t">Vidéos</span><span class="nd-d">Chaînes et documentaires</span></a><a href="/fr/ecosystem/conferences/"><span class="nd-t">Conférences</span><span class="nd-d">Événements Bitcoin en Europe</span></a><a href="/fr/ecosystem/privacy/"><span class="nd-t">Confidentialité et Bitcoin</span><span class="nd-d">Outils de confidentialité légaux</span></a><a href="/fr/ecosystem/spend-bitcoin/"><span class="nd-t">Dépenser</span><span class="nd-d">Commerces, cartes et bons d'achat</span></a><a href="/fr/ecosystem/store-tools/"><span class="nd-t">Outils marchands</span><span class="nd-d">Accepter le bitcoin en boutique</span></a><a href="/fr/ecosystem/dev-tools/"><span class="nd-t">Outils dev</span><span class="nd-d">Bibliothèques et SDK</span></a><a href="/fr/ecosystem/jobs/"><span class="nd-t">Emplois</span><span class="nd-d">Emplois, bourses et fellowships</span></a><a href="/fr/ecosystem/peers/"><span class="nd-t">Projets amis</span><span class="nd-d">D'autres projets 100 % Bitcoin</span></a><a href="/fr/ecosystem/promote/"><span class="nd-t">Figurer ici</span><span class="nd-d">Faire figurer votre projet</span></a></div>
       </div>
       <a class="nav-top" href="about.html">À propos</a>
     </nav>
     <div class="lang-menu" id="langMenu">
       <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Langue de la page&nbsp;: français"><span aria-hidden="true">&#127467;&#127479;</span><span class="lang-code">FR</span></button>
-      <div class="lang-menu-panel" role="menu"><a href="cfo.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/cfo.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/cfo.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/cfo.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/cfo.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/cfo.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="../fr/cfo.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/cfo.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="../uk/cfo.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/cfo.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+      <div class="lang-menu-panel" role="menu"><a href="../cfo.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/cfo.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/cfo.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/cfo.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/cfo.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/cfo.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="cfo.html" class="lang-opt active" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/cfo.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="../uk/cfo.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/cfo.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
     </div>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
     <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="cta-full">Trouver des partenaires</span><span class="cta-short">Partenaires</span></a>
@@ -707,7 +711,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO -->
   <div class="c-hero vd-hero" id="verdict">
     <div>
-      <div class="eyebrow">Virtuse CFO · Verdict · gratuit dès le 1er novembre</div>
+      <div class="eyebrow">Virtuse CFO · Verdict · gratuit</div>
       <h1>Vérifiez ce que vous avez omis dans votre décision Bitcoin. <span>Ensuite, votre <span class="grad">CFO</span> en assure le suivi.</span></h1>
       <p class="sub">Décrivez ce que vous comptez faire. Verdict évalue votre raisonnement sur 10 signaux et montre son point le plus faible. Il ne note ni le Bitcoin ni nos partenaires. Il évalue si vous avez bien réfléchi.</p>
       <form class="vd-form" id="vdForm" hidden novalidate>
@@ -723,9 +727,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-primary" type="submit">Prévenez-moi le 1er nov.</button>
+        <button class="btn btn-primary" type="submit">M'inscrire</button>
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
-        <p class="wait-note">Un seul e-mail le 1er novembre, à l'ouverture de Verdict et de l'audit des frais gratuit. Rien d'autre. Désinscription à tout moment depuis cet e-mail. <a href="privacy-policy.html" style="color:inherit">Confidentialité</a></p>
+        <p class="wait-note">Un seul e-mail, à l'ouverture de Verdict et de l'audit des frais gratuit. Rien d'autre. Désinscription à tout moment depuis cet e-mail. <a href="privacy-policy.html" style="color:inherit">Confidentialité</a></p>
       </form>
     </div>
     <div class="vd-card" id="vdCard" aria-live="polite" aria-label="Exemple de verdict">
@@ -769,13 +773,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="audit">
   <div class="c-hero">
     <div>
-      <div class="eyebrow">Virtuse CFO · audit des frais gratuit dès le 1er novembre</div>
+      <div class="eyebrow">Virtuse CFO · audit des frais gratuit</div>
       <h2 class="audit-h">Après la décision, Virtuse CFO suit vos chiffres. <span>Il lit vos propres exports et ne voit jamais votre portefeuille.</span></h2>
       <p class="sub">Commencez par le chiffre que la plupart des détenteurs n'ont jamais vu&nbsp;: ce que vos achats vous ont réellement coûté. Virtuse CFO lit l'export de votre plateforme dans votre navigateur, retrouve chaque frais et répond à vos questions à partir de vos propres chiffres.</p>
       <div class="only-audit">
         <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Essayer avec un export fictif</button></div>
       </div>
-      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Prévenez-moi le 1er nov.</a></div>
+      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">M'inscrire</a></div>
     </div>
 
     <div class="demo" id="demo" aria-label="Démo de l'audit des frais">
@@ -811,7 +815,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="pricing">
     <div class="sec-head">
       <h2>Un produit, trois niveaux. <span>Commencez par un verdict gratuit.</span></h2>
-      <p class="sec-sub">Verdict et l'audit des frais sont gratuits, sans carte. Les formules payantes ouvrent le 1er novembre&nbsp;; résiliables à tout moment. Le même principe sur chaque formule&nbsp;: lecture seule, traitement local.</p>
+      <p class="sec-sub">Verdict et l'audit des frais sont gratuits, sans carte. Nous vous préviendrons à l'ouverture des formules payantes&nbsp;; résiliables à tout moment. Le même principe sur chaque formule&nbsp;: lecture seule, traitement local.</p>
     </div>
     <div class="billing" role="tablist" aria-label="Période de facturation">
       <button type="button" role="tab" aria-selected="true" data-bill="m">Mensuel</button>
@@ -824,7 +828,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price">0 € <small>sans compte</small></div>
         <p class="for">Un score pour votre raisonnement, de 0 à 100, sa tranche et le point le plus faible.</p>
         <ul><li>Votre décision évaluée sur 10 signaux</li><li>Point le plus faible, avec l'outil pour le vérifier</li><li>Un test de baisse de 70&nbsp;%</li><li>Pas un conseil&nbsp;; il ne fait jamais de suggestion</li></ul>
-        <a class="btn btn-ghost" href="#waitForm">Prévenez-moi le 1er nov.</a>
+        <a class="btn btn-ghost" href="#waitForm">M'inscrire</a>
       </div>
       <div class="plan">
         <span class="layer">Ponctuel</span>
@@ -835,24 +839,24 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <a class="btn btn-ghost" href="#verdict">Commencer par un verdict</a>
       </div>
       <div class="plan pro">
-        <span class="founding">Prix de lancement, à l'ouverture des formules payantes le 1er novembre</span>
+        <span class="founding">Prix de lancement, à l'ouverture des formules payantes</span>
         <h3>Virtuse CFO</h3>
         <div class="price"><span data-m>9 € <small>/ mois</small></span><span data-y hidden>90 € <small>/ an</small></span></div>
         <p class="for"><span data-m>Ou 90&nbsp;€ par an, deux mois offerts.</span><span data-y hidden>Soit 7,50&nbsp;€ par mois, facturés annuellement.</span></p>
-        <ul><li>Audit des frais gratuit à partir de votre export, dès le 1er novembre</li><li>Verdicts et rapports complets illimités</li><li>Vos décisions dans le temps, y compris la trésorerie d'entreprise</li><li>Alertes frais et LTV de prêt</li><li>Rapport fiscal pour 13 pays de l'UE et kit de succession</li><li>Interrogez votre CFO, sans limite</li></ul>
+        <ul><li>Audit des frais gratuit à partir de votre export</li><li>Verdicts et rapports complets illimités</li><li>Vos décisions dans le temps, y compris la trésorerie d'entreprise</li><li>Alertes frais et LTV de prêt</li><li>Rapport fiscal pour 13 pays de l'UE et kit de succession</li><li>Interrogez votre CFO, sans limite</li></ul>
         <button class="btn btn-primary only-audit" type="button" data-run>Commencer par l'audit gratuit</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-primary" type="submit">Prévenez-moi</button>
           <div class="wait-msg" aria-live="polite"></div>
-          <p class="wait-note">Un seul e-mail, à l'ouverture des offres payantes le 1er novembre. Rien d'autre.</p>
-          <span class="wait-ok" hidden>Vous êtes inscrit. Nous vous écrirons une seule fois, à l'ouverture des offres payantes le 1er novembre.</span>
+          <p class="wait-note">Un seul e-mail, à l'ouverture des offres payantes. Rien d'autre.</p>
+          <span class="wait-ok" hidden>Vous êtes inscrit. Nous vous écrirons une seule fois, à l'ouverture des offres payantes.</span>
         </form>
       </div>
     </div>
     <div class="terms">
-      <p class="terms-k">Conditions applicables à l'ouverture des formules payantes le 1er novembre</p>
+      <p class="terms-k">Conditions applicables à l'ouverture des formules payantes</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>Remboursement sous 30 jours</b>Sans question ni formulaire.</span>
         <span class="ic ic-muted"><b>Résiliation en un clic</b>Depuis la page de votre compte.</span>
@@ -950,7 +954,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="faq">
       <details open><summary>Verdict me dira-t-il s'il faut acheter du Bitcoin&nbsp;?</summary><p>Non. Il évalue si votre raisonnement est complet. Ce que vous faites relève de votre décision. Verdict ne suggère ni d'acheter, ni de vendre, ni d'emprunter, ni aucun partenaire.</p></details>
-      <details><summary>Combien ça coûte&nbsp;?</summary><p>Verdict et l'audit des frais sont gratuits dès le 1er novembre. Un rapport complet coûte 14&nbsp;€, une seule fois. Virtuse CFO ouvre le 1er novembre à 9&nbsp;€ par mois ou 90&nbsp;€ par an et inclut des verdicts et rapports illimités.</p></details>
+      <details><summary>Combien ça coûte&nbsp;?</summary><p>Verdict et l'audit des frais sont gratuits. Un rapport complet coûte 14&nbsp;€, une seule fois. Virtuse CFO est prévu à 9&nbsp;€ par mois ou 90&nbsp;€ par an, avec verdicts et rapports illimités. Inscrivez-vous, nous vous préviendrons à son ouverture.</p></details>
       <details><summary>D'où Verdict tire-t-il ses faits&nbsp;?</summary><p>Des sources officielles que Virtuse utilise déjà, comme les règles fiscales de 13 pays, chacune avec sa date de vérification. Quand une information manque, Verdict vous la demande.</p></details>
       <details><summary>Que devient ce que j'écris&nbsp;?</summary><p>Sans compte, nous ne conservons pas le texte de votre raisonnement. Pour prévenir les abus, nous comptons les requêtes par adresse IP, enregistrée uniquement sous forme d'empreinte (hash)&nbsp;; le compteur est supprimé après 24&nbsp;heures. Plus de détails dans la <a href="privacy-policy.html#verdict-cfo">Politique de confidentialité</a>. Avec un compte Virtuse CFO, vous pouvez garder l'historique de vos décisions et le supprimer à tout moment.</p></details>
       <details><summary>Comment obtenir mon export Kraken&nbsp;?</summary><p>Sur kraken.com, cliquez sur l'icône de votre profil en haut à droite et choisissez <b>Documents</b>. Sous Exports, cliquez sur <b>Create export</b>, choisissez <b>Ledgers</b>, indiquez une date de début et de fin, sélectionnez <b>CSV</b> et cliquez sur Generate. Le fichier apparaît dans la même liste lorsqu'il est prêt. Cela peut prendre quelques minutes ou plusieurs jours, et Kraken ne vous envoie pas d'e-mail. Choisissez Ledgers plutôt que Trades&nbsp;: il inclut tous les frais et vos achats instantanés. Si vous utilisez Kraken Pro et ne voyez pas Documents, regardez sous Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Le guide de Kraken</a></p></details>
@@ -965,7 +969,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Acheter du Bitcoin</a><a href="secure.html">Conservation</a><a href="mining.html">Minage</a><a href="lending.html">Prêts</a><a href="treasury.html">Treasury</a><a href="tax.html">Fiscalité</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Entreprise</h4><a href="about.html">À propos</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Outils</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Gratuit</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Simulateur de retraite</a></div><div class="footer-col"><h4>Ressources</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Données Bitcoin</a><a href="/fr/bitcoin-fiscalite/">Fiscalité du Bitcoin</a><a href="/fr/bitcoin-indice-frais/">Indice des frais</a><a href="/fr/bitcoin-calculateur-dca/">Calculateur DCA</a><a href="/fr/bitcoin-vendre-ou-emprunter/">Vendre ou emprunter</a><a href="/fr/bitcoin-succession/">Succession</a></div><div class="footer-col"><h4>Mentions légales</h4><a href="terms-and-conditions.html">CGU</a><a href="privacy-policy.html">Politique de confidentialité</a><a href="aml-compliance.html">AML et conformité</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Acheter du Bitcoin</a><a href="secure.html">Conservation</a><a href="mining.html">Minage</a><a href="lending.html">Prêts</a><a href="treasury.html">Treasury</a><a href="tax.html">Fiscalité</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Entreprise</h4><a href="about.html">À propos</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Outils</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Gratuit</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Simulateur de retraite</a></div><div class="footer-col"><h4>Ressources</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Données Bitcoin</a><a href="/fr/bitcoin-fiscalite/">Fiscalité du Bitcoin</a><a href="/fr/bitcoin-indice-frais/">Indice des frais</a><a href="/fr/bitcoin-calculateur-dca/">Calculateur DCA</a><a href="/fr/bitcoin-vendre-ou-emprunter/">Vendre ou emprunter</a><a href="/fr/bitcoin-succession/">Succession</a></div><div class="footer-col"><h4>Écosystème</h4><a href="/fr/ecosystem/">Écosystème Bitcoin</a><a href="/fr/ecosystem/what-is-bitcoin/">Qu'est-ce que Bitcoin ?</a><a href="/fr/ecosystem/books/">Livres</a><a href="/fr/ecosystem/podcasts/">Podcasts</a><a href="/fr/ecosystem/videos/">Vidéos</a><a href="/fr/ecosystem/conferences/">Conférences</a><a href="/fr/ecosystem/privacy/">Confidentialité et Bitcoin</a><a href="/fr/ecosystem/spend-bitcoin/">Dépenser</a><a href="/fr/ecosystem/store-tools/">Outils marchands</a><a href="/fr/ecosystem/dev-tools/">Outils dev</a><a href="/fr/ecosystem/jobs/">Emplois</a><a href="/fr/ecosystem/peers/">Projets amis</a><a href="/fr/ecosystem/promote/">Figurer ici</a></div><div class="footer-col"><h4>Mentions légales</h4><a href="terms-and-conditions.html">CGU</a><a href="privacy-policy.html">Politique de confidentialité</a><a href="aml-compliance.html">AML et conformité</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Tous droits réservés.</p>
@@ -1162,8 +1166,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
-// and the Virtuse CFO pricing card (source cfo_plan: paid plans from 1 November).
+// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit)
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans).
 document.querySelectorAll('form.wait').forEach(function (form) {
   var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
@@ -1178,7 +1182,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Vous êtes sur la liste. Nous vous écrirons une seule fois, le 1er novembre, à l'ouverture de Verdict et de l'audit gratuit.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Vous êtes sur la liste. Nous vous écrirons une seule fois, à l'ouverture de Verdict et de l'audit gratuit.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Une erreur s\'est produite. Veuillez réessayer.'; }
       })

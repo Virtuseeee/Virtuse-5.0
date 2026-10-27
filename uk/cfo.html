@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <script src="/partner-click.js" defer></script>
 <title>Virtuse CFO · Verdict: що ви пропустили | Virtuse</title>
-<meta name="description" content="Verdict оцінює, наскільки продумане ваше рішення щодо Біткоїна, безкоштовно з 1 листопада 2026. Далі Virtuse CFO відстежує комісії, позики й податки.">
+<meta name="description" content="Verdict оцінює, наскільки продумане ваше рішення щодо Біткоїна, безкоштовно. Далі Virtuse CFO відстежує комісії, позики й податки.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch 2026-11-01): remove noindex, add to sitemap + hreflang (docs/LAUNCH-CFO.md) -->
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Virtuse CFO · Verdict: що ви пропустили | Virtuse">
-<meta property="og:description" content="Verdict оцінює, наскільки продумане ваше рішення щодо Біткоїна, безкоштовно з 1 листопада 2026. Далі Virtuse CFO відстежує комісії, позики й податки.">
+<meta property="og:description" content="Verdict оцінює, наскільки продумане ваше рішення щодо Біткоїна, безкоштовно. Далі Virtuse CFO відстежує комісії, позики й податки.">
 <meta property="og:locale" content="uk_UA">
 <meta property="og:url" content="https://virtuse.com/uk/cfo.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
@@ -296,7 +296,7 @@ section { padding-block: 100px; border-top: 0; }
 .cant div { border: 1px dashed var(--line-strong); border-radius: 16px; padding: 28px; display: grid; gap: 10px; align-content: start; }
 .cant b::before { content: "×"; color: var(--dim); margin-right: 10px; }
 .proof { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; }
-.code { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 22px; overflow-x: auto; font: 13px/1.7 var(--mono); color: var(--muted); margin: 0; }
+.code { background: var(--inset); border: 1px solid var(--line); border-radius: 16px; padding: 22px; overflow-x: auto; font: 13px/1.7 var(--mono); color: var(--muted); margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .code .k2 { color: var(--text); }
 .code .c { color: var(--dim); }
 .close { text-align: center; }
@@ -375,7 +375,7 @@ section { padding-block: 100px; border-top: 0; }
   .tile, .tiles.t2 .tile { min-height: 230px; }
   .assure-row { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 640px) { .tile h3 { font-size: 28px; } .billing { display: flex; } .billing button { flex: 1; } }
+@media (max-width: 640px) { .tile h3 { font-size: 28px; } .billing { display: flex; } .billing button { flex: 1; } .billing i { display: block; margin: 4px 0 0; } }
 /* ===== MOTION v1: live-site reveals, pushed toward firefish.io =====
    firefish (checked live): blocks start at opacity 0 + translateY(100px) and
    ease up on scroll. Ours: 64px rise + slight blur + scale on cards, long
@@ -611,7 +611,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .vd-card .q { color: var(--muted); margin: 0; }
 .vd-score { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .vd-score b { font-size: 72px; line-height: 0.9; letter-spacing: -0.04em; }
-.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; }
+.vd-score b small { font-size: 22px; color: var(--muted); font-weight: 500; letter-spacing: 0; margin-left: 4px; }
 .vd-pill { display: inline-block; background: rgba(247,147,26,0.14); color: var(--orange); font-weight: 600; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
 .vd-sigs { display: grid; gap: 9px; }
 .vd-sig { display: grid; grid-template-columns: minmax(0, 150px) 1fr 24px; gap: 12px; align-items: center; font-size: 13px; color: var(--muted); }
@@ -688,13 +688,17 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Інструменти</button>
-        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></span><span class="nd-d">Вердикт і аудит комісій, безкоштовно з 1 листопада</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Партнери за вашими відповідями</span></a><a href="/uk/bitcoin-indeks-komisii/"><span class="nd-t">Індекс комісій</span><span class="nd-d">Повна вартість купівлі в порівнянні</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">План регулярних покупок і комісії</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Продати чи позичити під заставу Біткоїна</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Правила країн і перевірка спадщини</span></a><a href="retirement-calculator.html"><span class="nd-t">Пенсійний калькулятор</span><span class="nd-d">Скільки Біткоїна на пенсію</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Безкоштовно</span></span><span class="nd-d">Вердикт і аудит комісій безкоштовно</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Партнери за вашими відповідями</span></a><a href="/uk/bitcoin-indeks-komisii/"><span class="nd-t">Індекс комісій</span><span class="nd-d">Повна вартість купівлі в порівнянні</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">План регулярних покупок і комісії</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Продати чи позичити під заставу Біткоїна</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Правила країн і перевірка спадщини</span></a><a href="retirement-calculator.html"><span class="nd-t">Пенсійний калькулятор</span><span class="nd-d">Скільки Біткоїна на пенсію</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Екосистема</button>
+        <div class="nav-drop" id="nd-eco"><a href="/uk/ecosystem/"><span class="nd-t">Огляд</span><span class="nd-d">Усі ресурси лише про Біткоїн</span></a><a href="/uk/ecosystem/what-is-bitcoin/"><span class="nd-t">Що таке Біткоїн?</span><span class="nd-d">Простий вступ</span></a><a href="/uk/ecosystem/books/"><span class="nd-t">Книги</span><span class="nd-d">Добірка для читання</span></a><a href="/uk/ecosystem/podcasts/"><span class="nd-t">Подкасти</span><span class="nd-d">Шоу лише про Біткоїн</span></a><a href="/uk/ecosystem/videos/"><span class="nd-t">Відео</span><span class="nd-d">Канали та документальні фільми</span></a><a href="/uk/ecosystem/conferences/"><span class="nd-t">Конференції</span><span class="nd-d">Біткоїн-події в Європі</span></a><a href="/uk/ecosystem/privacy/"><span class="nd-t">Приватність у Біткоїні</span><span class="nd-d">Законні інструменти приватності</span></a><a href="/uk/ecosystem/spend-bitcoin/"><span class="nd-t">Витрачати Біткоїн</span><span class="nd-d">Магазини, мапи та подарункові картки</span></a><a href="/uk/ecosystem/store-tools/"><span class="nd-t">Для магазинів</span><span class="nd-d">Приймайте біткоїн у магазині</span></a><a href="/uk/ecosystem/dev-tools/"><span class="nd-t">Для розробників</span><span class="nd-d">Бібліотеки та SDK</span></a><a href="/uk/ecosystem/jobs/"><span class="nd-t">Робота в Біткоїні</span><span class="nd-d">Вакансії, гранти та стипендії</span></a><a href="/uk/ecosystem/peers/"><span class="nd-t">Однодумці</span><span class="nd-d">Інші проєкти лише про Біткоїн</span></a><a href="/uk/ecosystem/promote/"><span class="nd-t">Розміщення</span><span class="nd-d">Розмістіть свій проєкт</span></a></div>
       </div>
       <a class="nav-top" href="about.html">Про нас</a>
     </nav>
     <div class="lang-menu" id="langMenu">
       <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Мова сторінки: українська"><span aria-hidden="true">&#127482;&#127462;</span><span class="lang-code">UA</span></button>
-      <div class="lang-menu-panel" role="menu"><a href="cfo.html" class="lang-opt active" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/cfo.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/cfo.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/cfo.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/cfo.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/cfo.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="../fr/cfo.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/cfo.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="../uk/cfo.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/cfo.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+      <div class="lang-menu-panel" role="menu"><a href="../cfo.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/cfo.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="../cs/cfo.html" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="../de/cfo.html" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="../pl/cfo.html" class="lang-opt" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="../hu/cfo.html" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="../fr/cfo.html" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="../es/cfo.html" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="cfo.html" class="lang-opt active" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="../ru/cfo.html" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
     </div>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Відкрити меню"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
     <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Знайти партнерів</a>
@@ -706,7 +710,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO -->
   <div class="c-hero vd-hero" id="verdict">
     <div>
-      <div class="eyebrow">Virtuse CFO · Verdict · безкоштовно з 1 листопада</div>
+      <div class="eyebrow">Virtuse CFO · Verdict · безкоштовно</div>
       <h1>Перевірте, що ви пропустили у своєму рішенні щодо Біткоїна. <span>Потім ваш <span class="grad">CFO</span> стежить за ним.</span></h1>
       <p class="sub">Опишіть, що ви плануєте зробити. Verdict оцінює ваше обдумування за 10 сигналами й показує найслабше місце. Він не оцінює Біткоїн чи наших партнерів. Він оцінює, чи ви все продумали.</p>
       <form class="vd-form" id="vdForm" hidden novalidate>
@@ -722,9 +726,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <form class="wait" id="waitForm" novalidate>
         <input type="email" name="email" placeholder="Електронна пошта" aria-label="Електронна пошта" autocomplete="email" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-primary" type="submit">Повідомте мене 1 листопада</button>
+        <button class="btn btn-primary" type="submit">Записатися</button>
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
-        <p class="wait-note">Один лист 1 листопада, коли відкриються Verdict і безкоштовний аудит комісій. І більше нічого. Відписатися можна будь-коли з того самого листа. <a href="privacy-policy.html" style="color:inherit">Конфіденційність</a></p>
+        <p class="wait-note">Один лист, коли відкриються Verdict і безкоштовний аудит комісій. І більше нічого. Відписатися можна будь-коли з того самого листа. <a href="privacy-policy.html" style="color:inherit">Конфіденційність</a></p>
       </form>
     </div>
     <div class="vd-card" id="vdCard" aria-live="polite" aria-label="Приклад оцінки">
@@ -768,13 +772,13 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="audit">
   <div class="c-hero">
     <div>
-      <div class="eyebrow">Virtuse CFO · безкоштовний аудит комісій з 1 листопада</div>
+      <div class="eyebrow">Virtuse CFO · безкоштовний аудит комісій</div>
       <h2 class="audit-h">Після рішення Virtuse CFO стежить за вашими цифрами. <span>Він читає ваші власні експорти й ніколи не бачить ваш гаманець.</span></h2>
       <p class="sub">Почніть із цифри, якої більшість власників ніколи не бачили: скільки насправді коштували ваші покупки. Virtuse CFO читає ваш експорт із біржі у вашому браузері, знаходить кожну комісію й відповідає на запитання за вашими власними цифрами.</p>
       <div class="only-audit">
         <div class="hero-ctas"><button class="btn btn-primary" type="button" id="heroRun">Спробуйте з прикладом експорту</button></div>
       </div>
-      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Повідомте мене 1 листопада</a></div>
+      <div class="hero-ctas only-wait"><a class="btn btn-primary" href="#waitForm">Записатися</a></div>
     </div>
 
     <div class="demo" id="demo" aria-label="Демо аудиту комісій">
@@ -810,7 +814,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <section id="pricing">
     <div class="sec-head">
       <h2>Один продукт, три рівні. <span>Почніть із безкоштовної оцінки.</span></h2>
-      <p class="sec-sub">Verdict і аудит комісій безкоштовні, картка не потрібна. Платні плани відкриються 1 листопада; скасування будь-коли. Та сама архітектура «лише читання, локально» в кожному плані.</p>
+      <p class="sec-sub">Verdict і аудит комісій безкоштовні, картка не потрібна. Ми повідомимо, коли відкриються платні плани; скасування будь-коли. Та сама архітектура «лише читання, локально» в кожному плані.</p>
     </div>
     <div class="billing" role="tablist" aria-label="Період оплати">
       <button type="button" role="tab" aria-selected="true" data-bill="m">Щомісячно</button>
@@ -823,7 +827,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price">0 € <small>без акаунта</small></div>
         <p class="for">Оцінка вашого обдумування від 0 до 100, її діапазон і найслабше місце.</p>
         <ul><li>Оцінка вашого рішення за 10 сигналами</li><li>Найслабше місце та інструмент для його перевірки</li><li>Тест на падіння на 70%</li><li>Не є порадою; нічого не рекомендує</li></ul>
-        <a class="btn btn-ghost" href="#waitForm">Повідомте мене 1 листопада</a>
+        <a class="btn btn-ghost" href="#waitForm">Записатися</a>
       </div>
       <div class="plan">
         <span class="layer">Разово</span>
@@ -834,24 +838,24 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <a class="btn btn-ghost" href="#verdict">Почніть з оцінки</a>
       </div>
       <div class="plan pro">
-        <span class="founding">Ціна для перших клієнтів, коли 1 листопада відкриються платні плани</span>
+        <span class="founding">Ціна для перших клієнтів, коли відкриються платні плани</span>
         <h3>Virtuse CFO</h3>
         <div class="price"><span data-m>9 € <small>/ місяць</small></span><span data-y hidden>90 € <small>/ рік</small></span></div>
         <p class="for"><span data-m>Або 90 € на рік, два місяці безкоштовно.</span><span data-y hidden>Це 7,50 € на місяць при оплаті за рік.</span></p>
-        <ul><li>Безкоштовний аудит комісій з вашого експорту, з 1 листопада</li><li>Необмежені оцінки та повні звіти</li><li>Ваші рішення в динаміці, зокрема казначейство компанії</li><li>Сповіщення про комісії та LTV позики</li><li>Податковий звіт, 13 країн ЄС, і набір для спадкування</li><li>Запитайте свого CFO без обмежень</li></ul>
+        <ul><li>Безкоштовний аудит комісій з вашого експорту</li><li>Необмежені оцінки та повні звіти</li><li>Ваші рішення в динаміці, зокрема казначейство компанії</li><li>Сповіщення про комісії та LTV позики</li><li>Податковий звіт, 13 країн ЄС, і набір для спадкування</li><li>Запитайте свого CFO без обмежень</li></ul>
         <button class="btn btn-primary only-audit" type="button" data-run>Почніть із безкоштовного аудиту</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="Електронна пошта" aria-label="Електронна пошта" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-primary" type="submit">Повідомте мене</button>
           <div class="wait-msg" aria-live="polite"></div>
-          <p class="wait-note">Один лист, коли 1 листопада відкриються платні плани. Більше нічого.</p>
-          <span class="wait-ok" hidden>Ви в списку. Ми напишемо один раз, коли 1 листопада відкриються платні плани.</span>
+          <p class="wait-note">Один лист, коли відкриються платні плани. Більше нічого.</p>
+          <span class="wait-ok" hidden>Ви в списку. Ми напишемо один раз, коли відкриються платні плани.</span>
         </form>
       </div>
     </div>
     <div class="terms">
-      <p class="terms-k">Умови, що діють після відкриття платних планів 1 листопада</p>
+      <p class="terms-k">Умови, що діють після відкриття платних планів</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>Повернення коштів протягом 30 днів</b>Без запитань і без форм.</span>
         <span class="ic ic-muted"><b>Скасування в один клік</b>На сторінці вашого акаунта.</span>
@@ -949,7 +953,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
     <div class="faq">
       <details open><summary>Чи скаже Verdict, купувати мені Біткоїн чи ні?</summary><p>Ні. Він оцінює, чи повне ваше обдумування. Що робити, вирішуєте ви. Verdict не рекомендує ні купівлю, ні продаж, ні позику, ні жодного партнера.</p></details>
-      <details><summary>Скільки це коштує?</summary><p>Verdict і аудит комісій безкоштовні з 1 листопада. Повний звіт коштує 14 €, один раз. Virtuse CFO відкривається 1 листопада за 9 € на місяць або 90 € на рік і включає необмежені оцінки та звіти.</p></details>
+      <details><summary>Скільки це коштує?</summary><p>Verdict і аудит комісій безкоштовні. Повний звіт коштує 14 €, один раз. Virtuse CFO плануємо за 9 € на місяць або 90 € на рік, з необмеженими оцінками та звітами. Запишіться, і ми повідомимо, коли Virtuse CFO відкриється.</p></details>
       <details><summary>Звідки Verdict бере факти?</summary><p>З офіційних джерел, якими Virtuse вже користується, наприклад податкових правил 13 країн, кожне з датою перевірки. Коли якогось факту бракує, Verdict запитує вас.</p></details>
       <details><summary>Що відбувається з тим, що я пишу?</summary><p>Без акаунта ми не зберігаємо текст ваших міркувань. Щоб запобігти зловживанням, ми рахуємо запити з IP-адреси, яка зберігається лише як відбиток (хеш); лічильник видаляється через 24 години. Докладніше в документі <a href="privacy-policy.html#verdict-cfo">Політика конфіденційності</a>. З акаунтом Virtuse CFO ви можете зберігати історію своїх рішень і будь-коли її видалити.</p></details>
       <details><summary>Як отримати експорт із Kraken?</summary><p>На kraken.com натисніть значок профілю вгорі праворуч і виберіть <b>Documents</b>. У розділі Exports натисніть <b>Create export</b>, виберіть <b>Ledgers</b>, задайте дату початку й кінця, виберіть <b>CSV</b> і натисніть Generate. Коли файл буде готовий, він з'явиться в тому самому списку. Це може тривати від кількох хвилин до кількох днів, і Kraken не надсилає листа. Вибирайте Ledgers, а не Trades: там є всі комісії та ваші миттєві покупки. Якщо ви користуєтеся Kraken Pro і не бачите Documents, пошукайте в розділі Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Інструкція Kraken</a></p></details>
@@ -964,7 +968,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Послуги</h4><a href="buy-bitcoin.html">Купити Біткоїн</a><a href="secure.html">Зберігання</a><a href="mining.html">Майнінг</a><a href="lending.html">Позики</a><a href="treasury.html">Казначейство</a><a href="tax.html">Податки</a><a href="bots.html">Боти</a></div><div class="footer-col"><h4>Компанія</h4><a href="about.html">Про нас</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Інструменти</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Безкоштовно</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div><div class="footer-col"><h4>Матеріали</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-podatky/">Податки на Біткоїн</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a><a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a><a href="/uk/bitcoin-prodaty-chy-pozychyty/">Продати чи позичити</a><a href="/uk/bitcoin-spadshchyna/">Спадкування</a></div><div class="footer-col"><h4>Правова інформація</h4><a href="terms-and-conditions.html">Умови використання</a><a href="privacy-policy.html">Політика конфіденційності</a><a href="aml-compliance.html">AML і комплаєнс</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Послуги</h4><a href="buy-bitcoin.html">Купити Біткоїн</a><a href="secure.html">Зберігання</a><a href="mining.html">Майнінг</a><a href="lending.html">Позики</a><a href="treasury.html">Казначейство</a><a href="tax.html">Податки</a><a href="bots.html">Боти</a></div><div class="footer-col"><h4>Компанія</h4><a href="about.html">Про нас</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Інструменти</h4><a href="cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Безкоштовно</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсійний калькулятор</a></div><div class="footer-col"><h4>Матеріали</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Біткоїн-дані</a><a href="/uk/bitcoin-podatky/">Податки на Біткоїн</a><a href="/uk/bitcoin-indeks-komisii/">Індекс комісій</a><a href="/uk/bitcoin-kalkuliator-dca/">DCA-калькулятор</a><a href="/uk/bitcoin-prodaty-chy-pozychyty/">Продати чи позичити</a><a href="/uk/bitcoin-spadshchyna/">Спадкування</a></div><div class="footer-col"><h4>Екосистема</h4><a href="/uk/ecosystem/">Екосистема Bitcoin</a><a href="/uk/ecosystem/what-is-bitcoin/">Що таке Біткоїн?</a><a href="/uk/ecosystem/books/">Книги</a><a href="/uk/ecosystem/podcasts/">Подкасти</a><a href="/uk/ecosystem/videos/">Відео</a><a href="/uk/ecosystem/conferences/">Конференції</a><a href="/uk/ecosystem/privacy/">Приватність у Біткоїні</a><a href="/uk/ecosystem/spend-bitcoin/">Витрачати Біткоїн</a><a href="/uk/ecosystem/store-tools/">Для магазинів</a><a href="/uk/ecosystem/dev-tools/">Для розробників</a><a href="/uk/ecosystem/jobs/">Робота в Біткоїні</a><a href="/uk/ecosystem/peers/">Однодумці</a><a href="/uk/ecosystem/promote/">Розміщення</a></div><div class="footer-col"><h4>Правова інформація</h4><a href="terms-and-conditions.html">Умови використання</a><a href="privacy-policy.html">Політика конфіденційності</a><a href="aml-compliance.html">AML і комплаєнс</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.</p>
@@ -1161,8 +1165,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
 })();
-// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit on 1 Nov)
-// and the Virtuse CFO pricing card (source cfo_plan: paid plans from 1 November).
+// Waitlists -> Worker /waitlist: the hero form (source cfo_page: Verdict + free audit)
+// and the Virtuse CFO pricing card (source cfo_plan: paid plans).
 document.querySelectorAll('form.wait').forEach(function (form) {
   var msg = form.querySelector('.wait-msg'), source = form.getAttribute('data-source') || 'cfo_page', ok = form.querySelector('.wait-ok');
   var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
@@ -1177,7 +1181,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Ви в списку. Ми напишемо один раз, 1 листопада, коли відкриються Verdict і безкоштовний аудит.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Ви в списку. Ми напишемо один раз, коли відкриються Verdict і безкоштовний аудит.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Щось пішло не так. Спробуйте ще раз.'; }
       })
