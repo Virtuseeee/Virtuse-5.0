@@ -1182,7 +1182,9 @@
   try { handed = sessionStorage.getItem('vb-verdict-text') || ''; sessionStorage.removeItem('vb-verdict-text'); } catch (e) {}
   if (P) {
     var pf = P.get(), pt = P.getText();
-    Object.keys(pf).forEach(function (k) { A[k] = k === 'focus' ? pf[k].slice() : pf[k]; });
+    // "What do you most want to find out" is asked fresh every time (Ras 2026-10-27:
+    // all four were ticked from an earlier run); the other answers stay preselected.
+    Object.keys(pf).forEach(function (k) { if (k !== 'focus') A[k] = pf[k]; });
     if (pt.text) A.text = pt.text; if (pt.name) A.name = pt.name;
   }
   // A new decision from cfo.html is a new verdict: drop the old decision's
