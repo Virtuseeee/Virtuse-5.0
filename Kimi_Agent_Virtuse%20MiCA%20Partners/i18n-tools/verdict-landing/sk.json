@@ -1,6 +1,5 @@
 {
 "Empower investors to make <em>smart decisions</em>": "Pomáhame investorom robiť <em>múdre rozhodnutia</em>",
-"Finding the best Bitcoin plan still means checking every provider yourself — and it's often worse than that. This is where Virtuse makes a difference. And we offer the best environment for talent to make that difference too.": "Nájsť najlepší bitcoinový plán stále znamená preveriť každého poskytovateľa sám — a často je to ešte horšie. Práve tu Virtuse robí rozdiel. A ponúkame aj najlepšie prostredie pre talenty, ktoré tento rozdiel tvoria.",
 ">Verdict</span>\n<h1>": ">Verdikt</span>\n<h1>",
 "Get your free Verdict →": "Získať verdikt zadarmo →",
 "See how it works": "Ako to funguje",
@@ -23,7 +22,6 @@
 "Video coming soon": "Video čoskoro",
 "Illustrative walkthrough · length TBA": "Ilustračná ukážka · dĺžka sa upresní",
 "><i></i>Proof</span>": "><i></i>Dôkaz</span>",
-"The decision check for Bitcoin investors": "Rozhodovací test pre bitcoinových investorov",
 "Investors across [10]+ markets use Verdict to turn a rough Bitcoin plan into a clear read — what's missing, what's weak, and what to do next.": "Investori z [10]+ trhov používajú Verdikt, aby z hrubého bitcoinového plánu získali jasný obraz — čo chýba, čo je slabé a čo urobiť ďalej.",
 "<div class=\"n\">1,000s</div>": "<div class=\"n\">1 000+</div>",
 "Signals scored": "Hodnotených signálov",
@@ -119,5 +117,7 @@
 "<summary>Do I need an account or a card?</summary><p>No. Verdict needs neither.</p>": "<summary>Potrebujem účet alebo kartu?</summary><p>Nie. Verdikt nepotrebuje ani jedno.</p>",
 "<summary>Is this investment or tax advice?</summary><p>No. Verdict rates how complete your thinking is. What you do with it is your decision. For tax questions, ask a tax adviser.</p>": "<summary>Je to investičné alebo daňové poradenstvo?</summary><p>Nie. Verdikt hodnotí, aká úplná je vaša úvaha. Čo s tým urobíte, je vaše rozhodnutie. S daňovými otázkami sa obráťte na daňového poradcu.</p>",
 "<span class=\"tag\">THE MISSING LAYER</span><h3>Decide</h3>": "<span class=\"tag\">CHÝBAJÚCA VRSTVA</span><h3>Rozhodnúť</h3>",
-"--c: var(--teal)\"><h3>Decide</h3>": "--c: var(--teal)\"><h3>Rozhodnite</h3>"
+"--c: var(--teal)\"><h3>Decide</h3>": "--c: var(--teal)\"><h3>Rozhodnite</h3>",
+"Finding the best Bitcoin plan still means checking every provider yourself — and it's often worse than that. This is where Virtuse makes a difference.": "Nájsť najlepší bitcoinový plán stále znamená preveriť každého poskytovateľa sám — a často je to ešte horšie. Práve tu Virtuse robí rozdiel.",
+"The #1 decision check for Bitcoin investors": "Rozhodovací test č. 1 pre bitcoinových investorov"
 }

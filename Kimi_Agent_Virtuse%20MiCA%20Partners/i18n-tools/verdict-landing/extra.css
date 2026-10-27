@@ -22,3 +22,6 @@ html.vl-app .vl-back:hover{color:var(--text)}
 .vl .hero>div{min-width:0}
 @media (max-width:900px){.vl .hero{grid-template-columns:minmax(0,1fr);gap:40px;padding:48px 0 56px}.vl .demo{min-height:420px}}
 @media (max-width:640px){.vl .demo{padding:20px;min-height:400px}.vl .st{left:20px;right:20px}.vl .q{font-size:19px}.vl .ring{gap:16px}.vl .ring svg{width:130px;height:130px}.vl .next p{font-size:17px}}
+/* Perex under its heading in every section (Ras 2026-10-27): site-v2 puts .sec-head in two columns */
+.vl .sec-head{grid-template-columns:minmax(0,1fr);align-items:start}
+.vl .sec-head .sec-sub{max-width:680px}
