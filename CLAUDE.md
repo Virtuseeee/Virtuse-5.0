@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27, night) — Free Verdikt PDF design v2 + waiting-panel padding (handover H), branch `feat/verdict-pdf-v2`, PR #131; **staging only** (site /version a07cc8e9; Worker unchanged, still 9d804be2)
+
+- **Free PDF:** `printDocFree` in `verdict-flow.js` now builds the v2 page from `verdict-summary-v2.html`: white A4, `.p2-*` classes, Services tokens, V logo, score ring (SVG, r=32), step cards with TOOL line, orange/green area accents, purple question box, three partner cards (teal/blue/purple bars, pulled from `#pfBox .pcard`), dark €14 CTA band, footer "© 2018–2026 Virtuse Wealth Management, a.s. · 1 / 1".
+- **Page setup:** `.p2-page` is 296mm with `overflow: hidden`, and `.p2-grow` uses space-between. The free page injects `@page { margin: 0 }` with no margin boxes; the 5-page report keeps its own `@page`. Every fixture prints as one page in sk/en/ru, including the longest (T4), with nothing cut off.
+- **Fonts:** JetBrains Mono added to the Google Fonts link of the 3 verdict pages.
+- **Waiting panel padding:** `.vx section {padding:0}` and `.vf.is-result .vf-card` (mobile 14px 15px) both outranked `.vx-wait`. The panel now uses `.vx section.vf-card.vx-wait` (26px, or 20px at 600px and below). **Check padding on any new `section.vf-card` in `.vx` the same way.**
+- **Gotcha:** the gh-pages worktree `scratchpad/ghp2` is on a detached HEAD, so push with `git push origin HEAD:gh-pages`.
+
 ## Session status (2026-10-27, evening) — Numeric launch date + staging waitlist split (PROMPT meta/og + smoke), branch `feat/verdict-ru`; **staging only**
 
 - The no-date pass missed numeric dates: sk/cs/de cfo.html description + og/twitter ("zadarmo od 1. 11. 2026", "gratis ab 1.11.2026") and the i18n-tools/cfo jsons; fixed (table entries added). HTML comments "TODO(launch 2026-11-01)" → "TODO(launch)". Worker pricing `cfo.opens` → null. Kept: legal "Účinné od / Aktualizované 1. 11. 2026".
