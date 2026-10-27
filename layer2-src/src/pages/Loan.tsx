@@ -762,9 +762,9 @@ export default function Loan() {
         <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm leading-relaxed text-ink">
             {tv(lang,
-              'Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.',
-              'Spravujete väčšiu bitcoinovú pozíciu? Virtuse CFO · Verdict: skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká. Verdict je zadarmo, audit poplatkov príde s Virtuse CFO. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
-              'Spravujete větší bitcoinovou pozici? Virtuse CFO · Verdict: zkontrolujte zdarma, co jste ve své úvaze vynechali. CFO pak sleduje poplatky a rizika. Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
+              'Managing a larger Bitcoin position? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.',
+              'Spravujete väčšiu bitcoinovú pozíciu? Verdict: skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká. Verdict je zadarmo, audit poplatkov príde s Virtuse CFO. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
+              'Spravujete větší bitcoinovou pozici? Verdict: zkontrolujte zdarma, co jste ve své úvaze vynechali. CFO pak sleduje poplatky a rizika. Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
               [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
           </p>
           <a href={cfoHref(lang)} data-cta="cfo" className={`${SECONDARY_CTA} shrink-0`}>

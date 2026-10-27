@@ -1,0 +1,27 @@
+/* Additions for the production page (not in the mockup) */
+.vl .dk{font-size:13px;color:var(--muted);margin-bottom:10px}
+.vl .wk{margin:14px 0 0}.vl .wk b{color:#f5b84a}
+.vl .next small{font:12px var(--mono,ui-monospace),monospace;color:var(--muted)}
+.vl .next p{font-size:20px;font-weight:600;margin:10px 0 16px}
+.vl .next a.chip{text-decoration:none}
+.vl .vid-ph{text-align:center}
+.vl a.tile{text-decoration:none;color:inherit}
+.vl .vl-cfo{margin:8px 0 72px;text-align:center}
+.vl .vl-cfo a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.vl .vl-cfo a:hover{color:var(--text)}
+.vl .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.vl .demo:focus-within,.vl .demo:hover{outline:none}
+/* One page, two states: the landing, and the Verdict funnel (#start). */
+.vl-back{display:none}
+html.vl-app .vl{display:none}
+html:not(.vl-app) #start{display:none}
+html.vl-app .vl-back{display:inline-flex;align-items:center;gap:6px;margin:18px 0 0;color:var(--muted);font-size:14px;text-decoration:none}
+html.vl-app .vl-back:hover{color:var(--text)}
+@media (max-width:640px){.vl .hero h1{font-size:40px}.vl .ctas{flex-wrap:wrap}}
+/* The mockup's hero stays two columns on phones; stack it (no horizontal scroll at 375px). */
+.vl .hero>div{min-width:0}
+@media (max-width:900px){.vl .hero{grid-template-columns:minmax(0,1fr);gap:40px;padding:48px 0 56px}.vl .demo{min-height:420px}}
+@media (max-width:640px){.vl .demo{padding:20px;min-height:400px}.vl .st{left:20px;right:20px}.vl .q{font-size:19px}.vl .ring{gap:16px}.vl .ring svg{width:130px;height:130px}.vl .next p{font-size:17px}}
+/* Perex under its heading in every section (Ras 2026-10-27): site-v2 puts .sec-head in two columns */
+.vl .sec-head{grid-template-columns:minmax(0,1fr);align-items:start}
+.vl .sec-head .sec-sub{max-width:680px}

@@ -454,9 +454,9 @@ export default function Stacking() {
         <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm leading-relaxed text-ink">
             {tv(lang,
-              'Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.',
-              'Plánujete väčšiu alokáciu? Virtuse CFO · Verdict: skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká. Verdict je zadarmo, audit poplatkov príde s Virtuse CFO. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
-              'Plánujete větší alokaci? Virtuse CFO · Verdict: zkontrolujte zdarma, co jste ve své úvaze vynechali. CFO pak sleduje poplatky a rizika. Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
+              'Planning a larger allocation? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.',
+              'Plánujete väčšiu alokáciu? Verdict: skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká. Verdict je zadarmo, audit poplatkov príde s Virtuse CFO. Platené plány po spustení: {0}/mesiac alebo {1}/rok.',
+              'Plánujete větší alokaci? Verdict: zkontrolujte zdarma, co jste ve své úvaze vynechali. CFO pak sleduje poplatky a rizika. Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: {0}/měsíc nebo {1}/rok.',
               [fmtEur(9, 0, lang), fmtEur(90, 0, lang)])}
           </p>
           <a
