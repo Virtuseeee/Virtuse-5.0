@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27, late) — Verdikt PDF report v1 (HANDOVER-verdict-pdf-ux phase 1), branch `feat/verdict-ru`; **staging only**
+
+- Report view (`?report=1`, later the paid report) has a bar "Stiahnuť PDF / Tlačiť / Ohodnotiť znova". Click → `downloadPdf()` in verdict-flow.js builds a separate print-only `#vxPrint` document from the report data (SK/EN/RU strings in `PD`), appends it to body, adds `body.vf-print` and an injected `@page` style (A4, footer "© 2018–2026 Virtuse Wealth Management, a.s." + "n / N"), sets the title to `Virtuse-Verdikt-YYYYMMDD-ID` (the saved file name) and calls `print()`; `afterprint` removes it. GA `verdict_report_pdf`.
+- 5 A4 pages for the sample: cover (quote, goal, country, score, level, 3 steps with tool + URL, AI/not-advice line) · 10 areas in 3 groups, two columns · open questions + step plan (signals under 7) + coverage · partners copied from the loaded cards (MiCA line) + disclosure + tax/custody/fee notes · appendix (answers) + links + legal. URLs printed as text without UTM. No "Výpočty", no lime, no charts beyond score bars.
+- Gotchas: the page has `color-scheme: dark`, which printed dark page margins; the injected style forces `color-scheme: light`. A CSS grid of the 10 signals jumped whole to the next page in Chrome's print, inline-blocks split fine. Test: `scratchpad/shots/pdf.mjs <lang> <fixture>` → page.pdf, rendered with PDFKit (`pdf/render.swift`).
+
 ## Session status (2026-10-27, Week 0) — No fixed launch date anywhere (PROMPT-claude-verdict-final A1), branch `feat/verdict-ru`; **staging only**
 
 - "1 November" (and "paid plans from January") removed from ~1,000 files in 10 languages: footer badge ("Verdict and fee audit, free"), chrome/module sentences ("Verdict and the fee audit are free. Paid plans, once they open: €9/month or €90/year."), all cfo.html strings (waitlist framing: "Join the waitlist and we'll tell you when…", notify buttons "Join the waitlist"/"Zapísať sa"…), home hero line, waitlist e-mails (email/waitlist-strings.json → Worker), Verdict closed message ("Verdict opens soon") and the CFO line on the result. Sources changed with the outputs (i18n-tools jsons, nav_menu_2_5.py, layer2-src dictionaries + Tax/Stacking.tsx, Worker), so regenerating keeps it. Table + applier: session scratchpad `nodate/table.py`, `nodate/apply.py` (exact strings, apostrophe/NBSP variants).
