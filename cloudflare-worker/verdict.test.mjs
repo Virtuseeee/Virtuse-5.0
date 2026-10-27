@@ -195,6 +195,14 @@ test('10 a day per IP, and the monthly cap stops calls', withClaude(async (calls
   assert.equal(calls.length, 10);
 }));
 
+test('staging boost raises new verdicts per IP only on its own UTC day', async () => {
+  const { perIpPerDay } = await import('./src/verdict.js');
+  assert.equal(perIpPerDay({}, '2026-10-27'), 10);
+  assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: '50:2026-10-27' }, '2026-10-27'), 50);
+  assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: '50:2026-10-27' }, '2026-10-28'), 10);
+  assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: 'x' }, '2026-10-27'), 10);
+});
+
 test('re-rating after additions has its own 20 a day per IP', withClaude(async (calls) => {
   const e = env();
   const body = { text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' };

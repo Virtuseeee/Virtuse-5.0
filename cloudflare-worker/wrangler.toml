@@ -27,9 +27,10 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # production decides both by its own vars, never by the Origin header.
 #   npx wrangler deploy --env staging
 #   npx wrangler secret put ANTHROPIC_API_KEY --env staging   (and UNSUB_SECRET, RESEND_* if /waitlist is tested here)
+# VERDICT_PER_IP_BOOST: 50 new verdicts per IP on that UTC day only (Ras, 2026-10-27, testing).
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"

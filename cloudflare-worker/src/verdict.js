@@ -42,6 +42,13 @@ const PER_IP_PER_DAY = 10;
 // has its own counter, so fixing gaps does not use up new verdicts. The
 // monthly cost cap still covers both.
 export const PER_IP_RECALC_PER_DAY = 20;
+// A higher limit for new verdicts on one UTC day only, for testing on
+// staging (VERDICT_PER_IP_BOOST = "50:2026-10-27"). It ends by itself when the
+// date passes; production does not set it.
+export function perIpPerDay(env, day) {
+  const m = /^(\d{1,3}):(\d{4}-\d{2}-\d{2})$/.exec(env.VERDICT_PER_IP_BOOST || '');
+  return m && m[2] === day ? Math.max(PER_IP_PER_DAY, +m[1]) : PER_IP_PER_DAY;
+}
 export const LANGS = ['sk', 'en', 'ru'];
 
 // Priority 1 = most important; it breaks ties for the weakest point.
@@ -638,7 +645,7 @@ export async function handleVerdict(request, env, origin, { json }, now = Date.n
   const recalc = body.recalc === true;
   const ipKey = `verdict:${recalc ? 'ipr' : 'ip'}:${await ipHash(ip, day, env)}`;
   const count = parseInt((await env.RATE_LIMIT_KV.get(ipKey)) || '0', 10);
-  if (count >= (recalc ? PER_IP_RECALC_PER_DAY : PER_IP_PER_DAY)) return json(429, { error: busy }, origin);
+  if (count >= (recalc ? PER_IP_RECALC_PER_DAY : perIpPerDay(env, day))) return json(429, { error: busy }, origin);
   await env.RATE_LIMIT_KV.put(ipKey, String(count + 1), { expirationTtl: 60 * 60 * 24 });
 
   const clean = redact(text.trim().slice(0, MAX_CHARS));
