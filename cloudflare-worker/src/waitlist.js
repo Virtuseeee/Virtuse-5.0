@@ -3,7 +3,7 @@
 // The Virtuse CFO · Verdict waitlist. A sign-up joins its own Resend audience
 // (secret RESEND_CFO_AUDIENCE_ID), never the Brief list, and gets one short
 // confirmation email with a link to leave the waitlist. Nothing else is sent
-// until Verdict and the free fee audit open (1 November 2026).
+// until Verdict and the free fee audit open.
 //
 // Contacts are created audience-scoped (POST /audiences/{id}/contacts), so
 // someone who already reads the Brief can still join the waitlist: the
@@ -12,7 +12,7 @@
 // No RESEND_CFO_AUDIENCE_ID set -> 503, so the route can be deployed before
 // the audience exists without silently dropping sign-ups.
 
-// cfo_plan = the Virtuse CFO card in the pricing table (paid plans, from 1 November 2026).
+// cfo_plan = the Virtuse CFO card in the pricing table (paid plans).
 // verdict_report = "full report" button after a free verdict (verdict-flow.js).
 // It joins RESEND_REPORT_AUDIENCE_ID when that secret is set, else the CFO
 // audience. Only the email is kept, never the decision text.

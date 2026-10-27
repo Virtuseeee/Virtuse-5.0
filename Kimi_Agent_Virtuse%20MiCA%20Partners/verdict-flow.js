@@ -26,7 +26,7 @@
   var STR = {
     sk: {
       steps: ['Rozhodnutie', 'O vás', 'Váš plán', 'Verdikt'], back: '← Späť', cont: 'Pokračovať', start: 'Začať', skip: '? Zatiaľ neviem', other: 'Niečo iné, opíšem to',
-      closedH: 'Verdict sa otvára 1. novembra.', closedP: 'Zapíšte sa a dáme vám vedieť.', closedCta: 'Na stránku Virtuse CFO',
+      closedH: 'Verdict sa čoskoro otvorí.', closedP: 'Zapíšte sa a dáme vám vedieť.', closedCta: 'Na stránku Virtuse CFO',
       startEb: 'Verdict · zadarmo', startH: 'Otestujte svoje rozhodnutie o Bitcoine. <span>Pomáhame investorom robiť múdre rozhodnutia.</span>',
       startP: 'Skôr ako kúpite, predáte alebo si požičiate, otestujte svoje rozhodnutie na 10 signáloch. Najprv sa opýtame, čo AI potrebuje vedieť, potom dostanete verdikt.',
       startHint: 'Asi 2 minúty · bez účtu · nie je to investičné poradenstvo', startNote: 'Pár krátkych otázok + vaše vlastné slová',
@@ -126,7 +126,7 @@
     },
     en: {
       steps: ['Decision', 'About you', 'Your plan', 'Verdict'], back: '← Back', cont: 'Continue', start: 'Start', skip: '? Not sure yet', other: 'Something else, I will describe it',
-      closedH: 'Verdict opens on 1 November.', closedP: 'Join the list and we will tell you.', closedCta: 'To the Virtuse CFO page',
+      closedH: 'Verdict opens soon.', closedP: 'Join the list and we will tell you.', closedCta: 'To the Virtuse CFO page',
       startEb: 'Verdict · free', startH: 'Check your Bitcoin decision. <span>Empower investors to make smart decisions.</span>',
       startP: 'Before you buy, sell or borrow, test your decision on 10 signals. First we ask what the AI needs to know, then you get your verdict.',
       startHint: 'About 2 minutes · no account · not investment advice', startNote: 'A few short questions + your own words',
@@ -226,7 +226,7 @@
     },
     ru: {
       steps: ['Решение', 'О вас', 'Ваш план', 'Вердикт'], back: '← Назад', cont: 'Продолжить', start: 'Начать', skip: '? Пока не знаю', other: 'Другое, опишу сам',
-      closedH: 'Verdict открывается 1 ноября.', closedP: 'Запишитесь, и мы сообщим вам.', closedCta: 'На страницу Virtuse CFO',
+      closedH: 'Verdict скоро откроется.', closedP: 'Запишитесь, и мы сообщим вам.', closedCta: 'На страницу Virtuse CFO',
       startEb: 'Verdict · бесплатно', startH: 'Проверьте своё решение о Биткоине. <span>Помогаем инвесторам принимать обдуманные решения.</span>',
       startP: 'Прежде чем покупать, продавать или брать заём, проверьте своё решение по 10 сигналам. Сначала мы спросим то, что нужно знать ИИ, затем вы получите вердикт.',
       startHint: 'Около 2 минут · без аккаунта · не инвестиционная консультация', startNote: 'Несколько коротких вопросов + ваши собственные слова',
@@ -667,7 +667,7 @@
       freeList: ['Verdikt a 3 ďalšie kroky', '2 oblasti vysvetlené', 'Partneri podľa vašich kritérií'],
       conList: ['Prejdete si verdikt s človekom', 'Bez predaja', 'Odpovede z Verdictu sa zdieľajú len po vašom kliknutí'],
       haveIt: '✓ Máte ho', repWait: 'Zapísať sa na report za 14 €', repBuy: 'Odomknúť report za 14 €', conBtn: 'Rezervovať 15 min',
-      cfo: 'Rozhodujete častejšie? <b>Virtuse CFO</b>: neobmedzené verdikty a reporty za 9 €/mesiac alebo 90 €/rok. Spúšťa sa 1. novembra.',
+      cfo: 'Rozhodujete častejšie? <b>Virtuse CFO</b>: neobmedzené verdikty a reporty za 9 €/mesiac alebo 90 €/rok. Zapíšte sa, dáme vám vedieť, keď ho spustíme.',
       visitorBadge: 'Toto vidí návštevník bez reportu',
       consultSmall: 'Chcete to prejsť s človekom?', consultLink: 'Osobná konzultácia',
       stickySteps: '3 kroky ↑', stickyRep: 'Report 14 €', missAllH: 'Všetky chýbajúce otázky', partial: 'Niektoré oblasti AI tentoraz nevyhodnotila; ukazujeme ich ako nepopísané.'
@@ -697,7 +697,7 @@
       freeList: ['Verdict and 3 next steps', '2 areas explained', 'Partners that match your criteria'],
       conList: ['Go through your verdict with a person', 'No sales pitch', 'Your Verdict answers are shared only after you click'],
       haveIt: '✓ You have it', repWait: 'Join the waitlist for the €14 report', repBuy: 'Unlock the report for €14', conBtn: 'Book 15 minutes',
-      cfo: 'Deciding more often? <b>Virtuse CFO</b>: unlimited verdicts and reports for €9 a month or €90 a year. Opens on 1 November.',
+      cfo: 'Deciding more often? <b>Virtuse CFO</b>: unlimited verdicts and reports for €9 a month or €90 a year. Join the waitlist and we\'ll tell you when it opens.',
       visitorBadge: 'This is what a visitor without the report sees',
       consultSmall: 'Want to go through it with a person?', consultLink: 'Personal consultation',
       stickySteps: '3 steps ↑', stickyRep: 'Report €14', missAllH: 'All missing questions', partial: "The AI didn't rate some areas this time; they are shown as not described."
@@ -727,7 +727,7 @@
       freeList: ['Вердикт и 3 следующих шага', '2 области с пояснением', 'Партнёры по вашим критериям'],
       conList: ['Вы проходите вердикт вместе с человеком', 'Без продаж', 'Ответы из Verdict передаются только после вашего клика'],
       haveIt: '✓ У вас есть', repWait: 'Записаться на отчёт за 14 €', repBuy: 'Открыть отчёт за 14 €', conBtn: 'Записаться на 15 минут',
-      cfo: 'Принимаете решения чаще? <b>Virtuse CFO</b>: неограниченные вердикты и отчёты за 9 € в месяц или 90 € в год. Запуск 1 ноября.',
+      cfo: 'Принимаете решения чаще? <b>Virtuse CFO</b>: неограниченные вердикты и отчёты за 9 € в месяц или 90 € в год. Запишитесь, и мы сообщим о запуске.',
       visitorBadge: 'Это видит посетитель без отчёта',
       consultSmall: 'Хотите пройти это с человеком?', consultLink: 'Личная консультация',
       stickySteps: '3 шага ↑', stickyRep: 'Отчёт 14 €', missAllH: 'Все недостающие вопросы', partial: 'Некоторые области ИИ на этот раз не оценил; мы показываем их как неописанные.'

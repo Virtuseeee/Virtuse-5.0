@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-27, Week 0) — No fixed launch date anywhere (PROMPT-claude-verdict-final A1), branch `feat/verdict-ru`; **staging only**
+
+- "1 November" (and "paid plans from January") removed from ~1,000 files in 10 languages: footer badge ("Verdict and fee audit, free"), chrome/module sentences ("Verdict and the fee audit are free. Paid plans, once they open: €9/month or €90/year."), all cfo.html strings (waitlist framing: "Join the waitlist and we'll tell you when…", notify buttons "Join the waitlist"/"Zapísať sa"…), home hero line, waitlist e-mails (email/waitlist-strings.json → Worker), Verdict closed message ("Verdict opens soon") and the CFO line on the result. Sources changed with the outputs (i18n-tools jsons, nav_menu_2_5.py, layer2-src dictionaries + Tax/Stacking.tsx, Worker), so regenerating keeps it. Table + applier: session scratchpad `nodate/table.py`, `nodate/apply.py` (exact strings, apostrophe/NBSP variants).
+- Kept on purpose: legal "Effective/Updated 1 November 2026" lines (privacy, terms, operator, how-we-earn: legal effective date, not a launch), story article texts, i18n-tools/layer2/work/*.todo.json and cfo/en_strings.json context snippets (not rendered).
+- Layer 2 modules rebuilt (17 new asset hashes, 40 shells). Gotcha: an EN replacement with an apostrophe ("we'll") broke a single-quoted JS string in verdict-flow.js; all changed JS and inline scripts were syntax-checked afterwards.
+- Staging `/version`: gh-pages gets `version.json` + `version/index.html` with the branch commit at sync time (not committed on the branch, so it always names the commit it was built from).
+
 ## Session status (2026-10-27, later) — Verdict review fixes (HANDOVER-verdict-skoora-review-2026-10-27), branch `feat/verdict-ru`; **staging only**
 
 - Site (`verdict-flow.js/.css` v=20261027c, gh-pages `eb7a1a73`, md5-verified): intent screen after the text when the goal is "Niečo iné" and the text names goals, or a buy goal whose text mentions inheritance (Kúpiť / Úschova a dedičstvo / Oboje); "Oboje" = goal buy + `also: custody`. Final check shows yellow warnings where text and answers disagree (share %, amount €, years, retirement; plus retirement vs money within 1 year), never changes answers. Second partner strip "Na úschovu a dedenie" (2 cards) from `partnerFinderAlso`. Unlock cards now name what the report really has (no "Výpočty"); SK body says "Verdikt". Loading note 15–30 s, line after 15 s. The answer cache (sessionStorage `vb-verdict-last`) already existed.

@@ -238,7 +238,7 @@ const TEXT = {
 // Short error texts in the request language.
 const ERR = {
   short: { sk: 'Popíšte rozhodnutie aspoň jednou vetou.', en: 'Describe your decision in at least one sentence.', ru: 'Опишите решение хотя бы одним предложением.' },
-  closed: { sk: 'Verdict sa otvára 1. novembra.', en: 'Verdict opens on 1 November.', ru: 'Verdict открывается 1 ноября.' },
+  closed: { sk: 'Verdict sa čoskoro otvorí.', en: 'Verdict opens soon.', ru: 'Verdict скоро откроется.' },
   busy: { sk: 'Verdict má teraz veľa požiadaviek. Skúste to neskôr.', en: 'Verdict is busy right now. Please try again later.', ru: 'Сейчас у Verdict много запросов. Попробуйте позже.' },
   fail: { sk: 'Niečo sa pokazilo. Skúste to o chvíľu.', en: 'Something went wrong. Please try again in a moment.', ru: 'Что-то пошло не так. Попробуйте через минуту.' },
   advice: {

@@ -14,9 +14,9 @@ import csp_tight
 
 SITE = B.SITE
 TITLE = "Virtuse CFO · Verdict: check what you left out | Virtuse"
-DESC = "Verdict scores how complete your Bitcoin decision is, free from 1 November 2026. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice."
+DESC = "Verdict scores how complete your Bitcoin decision is, for free. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice."
 JS = [" · read locally", "Open menu", "Close menu", "Please enter a valid email address.", "Sending...",
-      "You're on the list. We'll email you once, on 1 November, when Verdict and the free audit open.", "Something went wrong. Please try again.",
+      "You're on the list. We'll email you once, when Verdict and the free audit open.", "Something went wrong. Please try again.",
       "Network error. Please try again."]
 OG_LOCALE = {'sk': 'sk_SK', 'cs': 'cs_CZ', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES', 'pl': 'pl_PL', 'hu': 'hu_HU', 'uk': 'uk_UA', 'ru': 'ru_RU'}
 
