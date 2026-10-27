@@ -231,7 +231,7 @@ def build(L):
     shell = os.path.join(SITE, PAGE if L == 'en' else os.path.join(L, PAGE))
     alts = [(x, ('/' if x == 'en' else '/%s/' % x) + PAGE) for x in LANGS] + [('x-default', '/' + PAGE)]
     amt = money(AMOUNT, L, 'USD')
-    faq = [(t['q%d' % i], t['a%d' % i]) for i in range(1, 5)]
+    faq = [(t['q%d' % i], t['a%d' % i]) for i in range(1, 10) if 'q%d' % i in t]   # q1..q4 in every language, more where a language has them
     ld = {'@context': 'https://schema.org', '@graph': F.org_ld() + [
         F.crumbs_ld([(t['crumb_home'], loc), (t['crumb_data'], loc + 'bitcoin-data.html'), (t['crumb_page'], page)]),
         {'@type': 'Dataset', 'name': t['ds_name'], 'description': t['ds_desc'], 'url': ORIGIN + page,
@@ -275,7 +275,7 @@ def build(L):
     out += '''<body class="page-buy page-data page-bvg no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3 bd-acc-yellow" id="top">
 
   <!-- 1. HERO -->
   <div class="buy-hero2 pf-hero">
@@ -366,7 +366,8 @@ def build(L):
            assets_url=page_url('asset-returns.html'), m_link_assets=t['method_link_assets'], data_url=page_url('bitcoin-data.html'), m_link_data=t['method_link_data'],
            embed=embed_section(L, page), brief=F.brief_card(L, t, 'bvg_brief'), relh2a=t['rel_h2_a'], relh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot,
            i18n=json.dumps(strings, ensure_ascii=False).replace('</', '<\\/'), cfg=json.dumps(cfg).replace('</', '<\\/'))
-    sc = C.scripts('/')
+    # Bitcoin Data v3 accent system (handover 2026-10-25): accent = this page's card on the hub; newer site-v2 css/js
+    sc = C.scripts('/')   # css/js cache-busters: one sitewide value, set in C.finalize (speed.py)
     out += sc.replace('<script src="/site-v2.js', '<script src="/bitcoin-vs-gold.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     open(shell, 'w').write(C.finalize(out, shell))

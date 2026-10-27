@@ -344,7 +344,20 @@
       ['How often is the data updated?',
         'Every day. The heatmap and the month and year pages read the same data file, rebuilt daily from CoinMetrics and the ECB. Past returns do not predict future returns. This is not investment advice.']
     ];
-    return { html: html, faq: faq, thru: thru };
+    // Seasonal questions people search for (GSC 2026-10): October and November, complete years only.
+    var season = function (o) {
+      var running = o.cur ? ' ' + o.name + ' ' + M.cy + ' is still running and not included.' : '';
+      return o.name + ' has averaged ' + pct(o.avg) + ' (median ' + pct(o.med) + ') since ' + o.list[0].y + ' and closed higher in ' + o.pos + ' of ' + o.n + ' years. ' +
+        (o.m === ba.m && ba.m !== bm.m ? 'That is the highest average of any month, lifted mostly by ' + o.best.y + ' (' + pct(o.best.v) + '). ' : 'The best ' + o.name + ' was ' + o.best.y + ' (' + pct(o.best.v) + '). ') +
+        'The worst was ' + o.worst.y + ' (' + pct(o.worst.v) + ').' + running + ' Complete months through ' + thru + '.';
+    };
+    var oct = M.months[9], nov = M.months[10];
+    faq.splice(2, 0,
+      ["What is Bitcoin's average return in October?", season(oct)],
+      ['Is November historically good for Bitcoin?', season(nov) + ' Past returns do not predict future returns.']);
+    // Meta description facts (build_returns.py): the strongest month by median, the robust measure.
+    var meta = { name: bm.name, med: pct(bm.med), pos: bm.pos, n: bm.n };
+    return { html: html, faq: faq, thru: thru, meta: meta };
   }
 
   // ------------------------------------------------------------------ browser refresh

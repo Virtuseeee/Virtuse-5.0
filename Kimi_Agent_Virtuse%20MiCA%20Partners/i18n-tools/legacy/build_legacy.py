@@ -33,7 +33,10 @@ PAGES = ['faq.html', 'fear-greed.html', 'ma-200w.html', 'rainbow-chart.html', 'r
          'privacy-policy.html', 'terms-and-conditions.html', 'aml-compliance.html']
 DATA_PAGES = set(PAGES[1:9])            # live under Learn > Bitcoin Data
 LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru']
-CSS_VERSION = '7'
+CSS_VERSION = DATA_CSS_VERSION = C.csp_tight.speed.SITE_CSS_V   # one sitewide cache-buster (i18n-tools/speed.py)
+DATA_JS_VERSION = C.csp_tight.speed.SITE_JS_V
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'bitcoin-data'))
+from build_bitcoin_data import CHART_ACC     # each data page carries the accent of its card on the hub
 SRC = os.path.join(HERE, 'src')
 TEXT_DIM = '#9aa3ad'                    # v2 muted text (old #484f58 was ~2.2:1)
 
@@ -191,7 +194,8 @@ def build(L, page):
     home = open(home_path).read()
     T = json.load(open(os.path.join(os.path.dirname(HERE), 'bitcoin-data', L + '.json')))
 
-    head = C.head(L, old, home, root, CSS_VERSION)
+    data = page in DATA_PAGES
+    head = C.head(L, old, home, root, DATA_CSS_VERSION if data else CSS_VERSION)
     old_csp, home_csp = CSP_RE.search(old).group(1), CSP_RE.search(home).group(1)
     head = CSP_RE.sub(lambda m: '<meta http-equiv="Content-Security-Policy" content="%s">' % csp_union(old_csp, home_csp), head, 1)
     head = head.replace('</head>\n', legacy_css(old) + ''.join(V2_STYLE.findall(old)) + '</head>\n')
@@ -202,6 +206,12 @@ def build(L, page):
         nav = nav.replace('<div class="nav-group" id="ng-learn">', '<div class="nav-group current" id="ng-learn">')
 
     hero, after_hero = hero_v2(old)
+    main_cls = 'wrap'
+    if data:
+        # eyebrow = the section name ("Bitcoin Data"), same words as on Bitcoin vs gold; dot in the page accent
+        label = json.load(open(os.path.join(os.path.dirname(HERE), 'bitcoin-vs-gold', L + '.json')))['eyebrow'].split(' · ')[0]
+        hero = hero.replace('<div class="buy-hero2 lg-hero">', '<div class="buy-hero2 lg-hero"><div class="eyebrow"><i></i>%s</div>' % label, 1)
+        main_cls = 'wrap bd-v3 bd-sub bd-acc-' + CHART_ACC[page]
     sub, after_sub = subnav_v2(old, page)
     start = max(after_hero, after_sub or 0)
     end = old.index('<section class="newsletter">')
@@ -216,11 +226,15 @@ def build(L, page):
     for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', tail, re.S):
         if 'json' in m.group(1) or any(k in m.group(2) for k in SHELL_JS):
             continue
-        page_js.append('<script%s>%s</script>' % (m.group(1), m.group(2)))
+        # the old :root colour variables now live on .legacy (legacy_css), so chart scripts that read them from
+        # <html> got '' and drew with the last canvas colour (the 7% grid line): e.g. the 200 WMA line was invisible
+        js = m.group(2).replace('getComputedStyle(document.documentElement)',
+                                "getComputedStyle(document.querySelector('.legacy') || document.documentElement)")
+        page_js.append('<script%s>%s</script>' % (m.group(1), js))
     # page scripts placed inside the body before the footer (rare) stay where they are, inside content
 
     body_tag = re.search(r'<body[^>]*>', old).group(0)
-    out = head + body_tag + '\n' + nav + '\n\n<main class="wrap" id="top">\n  ' + hero + '\n  ' + sub + \
+    out = head + body_tag + '\n' + nav + '\n\n<main class="%s" id="top">\n  ' % main_cls + hero + '\n  ' + sub + \
         '\n  <div class="legacy">\n' + content + '\n  </div>\n' + after + '\n  ' + C.brief(L, lambda k: T[k], root, 'legacy_' + page.split('.')[0].replace('-', '_')) + \
         '\n</main>\n\n' + foot + '\n' + '\n'.join(page_js) + '\n' + C.scripts(root)
     out = C.fix_links(L, out)

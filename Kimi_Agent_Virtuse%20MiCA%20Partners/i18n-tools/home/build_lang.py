@@ -49,7 +49,7 @@ LD_DESC = {  # JSON-LD Organization/WebSite description
     'uk': 'Некастодіальний хаб сервісів лише для Біткоїна. Virtuse ніколи не зберігає ваші ключі.',
     'ru': 'Некастодиальный хаб сервисов только для Биткоина. Virtuse никогда не хранит ваши ключи.',
 }
-HEAD_FIX = {'pl': [('Kupuj, kop, pożyczaj i zabezpieczaj Bitcoin przez 22 sprawdzonych partnerów.', 'Zakup, kopanie, pożyczki i zabezpieczenie Bitcoina u 22 sprawdzonych partnerów.')],
+HEAD_FIX = {'pl': [('Kupuj, kop, pożyczaj i zabezpieczaj Bitcoin przez 24 sprawdzonych partnerów.', 'Zakup, kopanie, pożyczki i zabezpieczenie Bitcoina u 24 sprawdzonych partnerów.')],
             'hu': [('Bitcoin hub:', 'Bitcoin-hub:'), ('Bitcoin vásárlás', 'Bitcoin-vásárlás')]}
 SHORT_CTA = {'fr': 'Partenaires'}
 LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru']
@@ -168,6 +168,7 @@ def build(L):
         h = h.replace('href="/%s/"' % en_slug, 'href="/%s/%s/"' % (L, slug))
     if os.path.isdir(os.path.join(SITE, L, 'stories')):   # stories hub exists only for en, sk, ru
         h = h.replace('href="/stories/"', 'href="/%s/stories/"' % L)
+    h = h.replace('href="/ecosystem/', 'href="/%s/ecosystem/' % L)   # Ecosystem menu + footer column
 
     # 5. scripts: paths, language, number and date formats, messages
     loc = LOCALE[L]

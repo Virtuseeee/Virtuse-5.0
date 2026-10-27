@@ -14,6 +14,7 @@ PARTNERS = [
     dict(id='oneminers', name='OneMiners', logo='logo-oneminers.png', cls='', kind='host', url='https://oneminers.com/products/?discount=virtuse_buy'),
     dict(id='abundant', name='Abundant Mines', logo='logo-abundantmines.png', cls='invert', kind='host', url='https://abundantmines.com/ref/76/'),
     dict(id='powermining', name='Power Mining', logo='logo-powermining.png', cls='clear', kind='home', url='https://shop.powermining.io/?ref=Virtuse'),
+    dict(id='solosatoshi', name='Solo Satoshi', logo='logo-solosatoshi.png', cls='', kind='home', url='https://www.solosatoshi.com/aff/8822/'),
 ]
 EN_TITLE_OLD = 'Bitcoin Mining Hosting from $0.043/kWh | Virtuse'
 EN_TITLE_NEW = 'Bitcoin Mining Hosting &amp; Hardware Partners | Virtuse'

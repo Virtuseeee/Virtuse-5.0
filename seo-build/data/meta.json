@@ -525,7 +525,9 @@
       "healthLevyShort": "16 % zdravotné odvody",
       "exemption": "Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje",
       "filing": "Daňové priznanie fyzickej osoby typ B, do 31. marca",
-      "note": "Sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť. Celková strata z kryptomien neznižuje iné príjmy."
+      "note": "Sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť. Celková strata z kryptomien neznižuje iné príjmy.",
+      "titleHook": "sadzby a odvody",
+      "seoDescription": "Ako sa zdaňuje Bitcoin na Slovensku v roku 2026: 19 až 35 % daň z príjmov, 16 % zdravotné odvody, bez oslobodenia. Nejde o daňové poradenstvo."
     },
     "pl": {
       "gainTax": "19 % jednotná daň z kapitálových výnosov",

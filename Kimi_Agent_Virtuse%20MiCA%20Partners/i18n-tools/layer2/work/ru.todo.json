@@ -68,12 +68,16 @@
   "tr": "Ваши критерии:\n{0}\nЭти партнёры им соответствуют. Сравните и выберите одного: регистрацию вы завершите на платформе партнёра, а ваш Биткоин никогда не попадает в Virtuse."
  },
  {
+  "en": "Your answers from Verdict are already filled in.",
+  "tr": "Ваши ответы из Verdict уже заполнены."
+ },
+ {
   "en": "Partner Finder",
   "tr": "Partner Finder"
  },
  {
   "en": "Filters {0} vetted partners · never holds your keys",
-  "tr": "Фильтрует {0} проверенных партнёров · никогда не хранит ваши ключи"
+  "tr": "Подбирает из {0} проверенных партнёров · никогда не хранит ваши ключи"
  },
  {
   "en": "Start over",
@@ -118,6 +122,26 @@
  {
   "en": "One email with your criteria and these partners. We add you to no list unless you tick the box.",
   "tr": "Одно письмо с вашими критериями и этими партнёрами. Мы не добавляем вас ни в какие списки, если вы не отметите поле."
+ },
+ {
+  "en": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
+  "tr": "Партнёрская ссылка – если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется."
+ },
+ {
+  "en": "How we earn",
+  "tr": "Как мы зарабатываем"
+ },
+ {
+  "en": "Link copied",
+  "tr": "Ссылка скопирована"
+ },
+ {
+  "en": "Copy link to this result",
+  "tr": "Скопировать ссылку на результат"
+ },
+ {
+  "en": "Link to this result",
+  "tr": "Ссылка на этот результат"
  },
  {
   "en": "your country",
@@ -224,6 +248,10 @@
   "tr": "Для пуристов Биткоина: майнинговое оборудование с открытым кодом (Bitaxe), склад в ЕС и быстрая доставка."
  },
  {
+  "en": "Open-source home miners (Bitaxe and NerdQaxe) from Texas, shipped worldwide.",
+  "tr": "Домашние майнеры с открытым кодом (Bitaxe и NerdQaxe) из Техаса, доставка по всему миру."
+ },
+ {
   "en": "Bitcoin hardware wallet since 2013, with open-source hardware and firmware: a simple place to start.",
   "tr": "Аппаратный кошелёк для Биткоина с 2013 года, с открытыми аппаратной частью и прошивкой: простой старт."
  },
@@ -234,6 +262,10 @@
  {
   "en": "Hardware wallet with a certified Secure Element chip and the Ledger Live app.",
   "tr": "Аппаратный кошелёк с сертифицированным чипом Secure Element и приложением Ledger Live."
+ },
+ {
+  "en": "Your own Bitcoin node at home: check your own transactions instead of trusting someone else's server. Works alongside any hardware wallet.",
+  "tr": "Собственный узел Биткоина дома: проверяйте свои транзакции сами, а не доверяйте чужому серверу. Работает с любым аппаратным кошельком."
  },
  {
   "en": "Country-specific reports built for {0}: Austrian-built, 700+ integrations.",
@@ -536,6 +568,14 @@
   "tr": "Blockstream Jade: открытый код, без Secure Element"
  },
  {
+  "en": "Home server for running your own Bitcoin node",
+  "tr": "Домашний сервер для собственного узла Биткоина"
+ },
+ {
+  "en": "Umbrel Home: your own Bitcoin node, not a wallet",
+  "tr": "Umbrel Home: собственный узел Биткоина, а не кошелёк"
+ },
+ {
   "en": "Bitcoin-backed P2P loans, multisig-secured",
   "tr": "P2P-займы под залог Биткоина, защищённые мультиподписью"
  },
@@ -668,6 +708,14 @@
   "tr": "Склад в ЕС, быстрая доставка"
  },
  {
+  "en": "Open-source home miners (Bitaxe, NerdQaxe)",
+  "tr": "Домашние майнеры с открытым кодом (Bitaxe, NerdQaxe)"
+ },
+ {
+  "en": "Based in Texas, USA; ships worldwide",
+  "tr": "Расположение: Техас, США; доставка по всему миру"
+ },
+ {
   "en": "Headroom to the margin call is only {0} %. A moderate price drop puts the collateral at risk. A lower LTV or amount increases the headroom.",
   "tr": "Запас до маржин-колла всего {0}%. Умеренное падение цены ставит залог под угрозу. Более низкий LTV или меньшая сумма увеличивают запас."
  },
@@ -692,6 +740,10 @@
   "tr": "Заём оставляет больше, если только BTC не падает более чем примерно на {0}% в год."
  },
  {
+  "en": "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.",
+  "tr": "Ваших BTC не хватает на эту сумму ни в одном из вариантов. Уменьшите нужную сумму или добавьте BTC, чтобы сравнить оба варианта."
+ },
+ {
   "en": "Liquidation risk is high at these settings",
   "tr": "При этих настройках риск ликвидации высок"
  },
@@ -708,8 +760,8 @@
   "tr": "Подоходный налог 15% (23% с части налоговой базы свыше 36 средних зарплат); освобождение, если актив находился во владении более 3 лет или если общая выручка от продажи криптоактивов за год не превышает 100 000 CZK."
  },
  {
-  "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored.",
-  "tr": "Продажа криптовалюты = прочий доход (§ 8(1)(t)); прогрессивно 19% до 43 983,32 €, 25% до 60 349,21 €, 30% до 75 010,32 €, 35% свыше (2026); без освобождения по сроку владения; убытки не учитываются."
+  "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
+  "tr": "Продажа криптовалюты = прочий доход (§ 8(1)(t)); прогрессивно 19% до 43 983,32 €, 25% до 60 349,21 €, 30% до 75 010,32 €, 35% свыше (2026); без освобождения по сроку владения; убытки не учитываются. Кроме того, взносы на медицинское страхование 16% с прибыли (8% для лиц с инвалидностью); предустановка учитывает 19% + 16% = 35%."
  },
  {
   "en": "19% on income from paid disposal of virtual currency (PIT-38); no holding-period exemption; crypto-to-crypto swaps not taxed.",
@@ -812,7 +864,7 @@
   "tr": "Kraken Pro (спот, тейкер, уровень 1): 0,8%"
  },
  {
-  "en": "At risk – coins may be lost",
+  "en": "At risk: coins may be lost",
   "tr": "Под угрозой: монеты могут быть потеряны"
  },
  {
@@ -828,24 +880,28 @@
   "tr": "15% подоходного налога (23% сверх порога)"
  },
  {
-  "en": "Tax-free after 3-year holding (time test)",
-  "tr": "Освобождение после 3 лет владения (тест времени)"
+  "en": "Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000",
+  "tr": "Освобождение после 3 лет владения (до 40 млн CZK в год) или если общая выручка от продажи криптовалют за год не превышает 100 000 CZK"
  },
  {
   "en": "Annual personal tax return",
   "tr": "Ежегодная декларация о доходах физических лиц"
  },
  {
-  "en": "Every disposal (incl. crypto-to-crypto) is a taxable event – keep complete records from day one.",
+  "en": "Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.",
   "tr": "Каждое отчуждение (включая обмен крипто на крипто) является налогооблагаемым событием: ведите полный учёт с первого дня."
  },
  {
-  "en": "19–35 % income tax + 16 % health contributions",
-  "tr": "Подоходный налог 19–35% + 16% взносов на медицинское страхование"
+  "en": "19 to 35% income tax",
+  "tr": "Подоходный налог от 19 до 35%"
  },
  {
-  "en": "No holding-period exemption",
-  "tr": "Без освобождения за срок владения"
+  "en": "16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer",
+  "tr": "Взносы на медицинское страхование 16% с прибыли (8% для лиц с инвалидностью), ежегодный расчёт проводит медицинская страховая компания"
+ },
+ {
+  "en": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
+  "tr": "Освобождения по сроку владения нет; каждая продажа и обмен криптовалюты на криптовалюту облагаются налогом"
  },
  {
   "en": "Annual personal tax return (type B), due 31 March",
@@ -860,11 +916,15 @@
   "tr": "19% единого налога на прирост капитала"
  },
  {
+  "en": "No holding-period exemption",
+  "tr": "Без освобождения за срок владения"
+ },
+ {
   "en": "Annual PIT-38",
   "tr": "Ежегодная PIT-38"
  },
  {
-  "en": "Crypto-to-crypto swaps are not taxed – only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
+  "en": "Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
   "tr": "Обмен криптовалюты на криптовалюту не облагается налогом: налог платится только с продажи за деньги, товары или услуги. Для каждой продажи рассчитайте прибыль в PLN."
  },
  {
@@ -888,8 +948,8 @@
   "tr": "До 45% подоходного налога (прогрессивный)"
  },
  {
-  "en": "0 % after 1-year holding (private-sale exemption)",
-  "tr": "0% после 1 года владения (освобождение для частных продаж)"
+  "en": "0% after a 1-year holding period; total gains under €1,000 a year are tax-free",
+  "tr": "0% после 1 года владения; общая прибыль менее 1000 € в год освобождена от налога"
  },
  {
   "en": "Annual tax return",
@@ -904,11 +964,15 @@
   "tr": "15% налога на прирост капитала"
  },
  {
+  "en": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
+  "tr": "Без освобождения за срок владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)"
+ },
+ {
   "en": "Annual personal income tax return",
   "tr": "Ежегодная декларация по налогу на доходы физических лиц"
  },
  {
-  "en": "Documented acquisition costs are deductible – keep every invoice.",
+  "en": "Documented acquisition costs are deductible, so keep every invoice.",
   "tr": "Документально подтверждённые расходы на приобретение можно вычесть: сохраняйте каждый счёт."
  },
  {
@@ -916,12 +980,12 @@
   "tr": "Частная прибыль от продажи не облагается (предпринимательская торговля облагается)"
  },
  {
-  "en": "Private gains are not taxed; a proposed 25% tax was withdrawn in 2025",
-  "tr": "Частная прибыль освобождена; предложенный налог 25% отозвали в 2025 году"
+  "en": "Private gains are not taxed",
+  "tr": "Частная прибыль освобождена от налога"
  },
  {
-  "en": "None for private gains; business and mining income in the annual return",
-  "tr": "Для частной прибыли нет; предпринимательский доход и майнинг указываются в годовой декларации"
+  "en": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+  "tr": "Для частной прибыли нет; доход от майнинга требует декларации об авансовом налоге в течение 15 дней; предпринимательский доход указывается в декларации по предпринимательской деятельности"
  },
  {
   "en": "Mining is taxed as other income. Frequent trading can count as a business activity.",
@@ -964,8 +1028,8 @@
   "tr": "Низкая фиксированная ставка; сохраняйте выписки бирж, чтобы учёт был готов к проверке."
  },
  {
-  "en": "Box 3 wealth tax on deemed return (~36 % on fictional yield)",
-  "tr": "Налог на имущество Box 3 с условного дохода (~36% от фиктивной доходности)"
+  "en": "Box 3 wealth tax on a deemed return (about 36% of the assumed yield)",
+  "tr": "Налог на имущество Box 3: примерно 36% от условной доходности"
  },
  {
   "en": "Tax-free allowance (€59,357 per person, 2026)",
@@ -976,7 +1040,7 @@
   "tr": "Ежегодная декларация Box 3"
  },
  {
-  "en": "No capital-gains tax per se – you are taxed on assumed return of your holdings. Box 3 is under reform – verify the current year’s rules.",
+  "en": "No capital-gains tax as such: you are taxed on an assumed return of your holdings. Box 3 is under reform, so verify the current year’s rules.",
   "tr": "Налога на прирост капитала как такового нет: облагается условный доход от ваших активов. Box 3 реформируется, проверьте правила текущего года."
  },
  {
@@ -996,15 +1060,15 @@
   "tr": "Обмен крипто на крипто не облагается налогом: налог платится только с продажи за евро, товары или услуги."
  },
  {
-  "en": "19–30% progressive tax on savings income",
-  "tr": "Прогрессивный налог 19–30% на доходы от сбережений"
+  "en": "19 to 30% progressive tax on savings income",
+  "tr": "Прогрессивный налог от 19 до 30% на доходы от сбережений"
  },
  {
-  "en": "Annual IRPF return; Modelo 721 for crypto held abroad over €50,000",
-  "tr": "Ежегодная декларация IRPF; Modelo 721 для криптовалют за рубежом свыше 50 000 €"
+  "en": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+  "tr": "Ежегодная декларация IRPF; Modelo 721 для криптовалют у зарубежных кастодианов свыше 50 000 €"
  },
  {
-  "en": "Crypto-to-crypto swaps are taxable disposals – use FIFO for identical coins.",
+  "en": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins.",
   "tr": "Обмен крипто на крипто является налогооблагаемым отчуждением: для одинаковых монет применяйте FIFO."
  },
  {
@@ -1012,11 +1076,11 @@
   "tr": "Есть ли у ваших наследников письменные инструкции («письмо с инструкциями»)?"
  },
  {
-  "en": "A document that says what exists, where things are, and what to do – without containing any seed words itself.",
+  "en": "A document that says what exists, where things are and what to do, without containing any seed words itself.",
   "tr": "Документ, который описывает, что существует, где это лежит и что делать, не содержа ни одного слова сид-фразы."
  },
  {
-  "en": "Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney.",
+  "en": "Write a letter of instruction: inventory, locations, contacts, never seed phrases. Store it with your will or attorney.",
   "tr": "Составьте письмо с инструкциями: перечень, места, контакты, но никогда не сид-фразы. Храните его вместе с завещанием или у юриста."
  },
  {
@@ -1048,12 +1112,12 @@
   "tr": "Используете ли вы мультиподпись (2 из 3) вместо одной сид-фразы?"
  },
  {
-  "en": "A single seed is a single point of failure – for you and for your heirs.",
+  "en": "A single seed is a single point of failure, for you and for your heirs.",
   "tr": "Одна сид-фраза является единой точкой отказа, для вас и для ваших наследников."
  },
  {
-  "en": "Upgrade to 2-of-3 multisig: you hold two keys, a partner (e.g. Unchained-style vault) or attorney holds one.",
-  "tr": "Перейдите на мультиподпись 2 из 3: два ключа у вас, третий у партнёра (например, хранилище вроде Unchained) или юриста."
+  "en": "Upgrade to 2-of-3 multisig: you hold two keys; a collaborative custody provider such as Unchained or an attorney holds the third.",
+  "tr": "Перейдите на мультиподпись 2 из 3: два ключа у вас; третий у провайдера совместного хранения, например Unchained, или у юриста."
  },
  {
   "en": "Have you tested recovery with a small amount?",
@@ -1076,7 +1140,7 @@
   "tr": "Балансы у кастодианов, займы под залог Биткоина и DCA-боты исчезают вместе с забытыми данными для входа."
  },
  {
-  "en": "Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.",
+  "en": "Maintain an inventory of platforms, account IDs and how balances should be claimed, inside your letter of instruction.",
   "tr": "Ведите в письме с инструкциями перечень платформ, идентификаторов счетов и способов получить балансы."
  },
  {
@@ -1100,12 +1164,12 @@
   "tr": "Ключ B"
  },
  {
-  "en": "Partner / attorney",
-  "tr": "Партнёр / юрист"
+  "en": "Collaborative custody provider or attorney",
+  "tr": "Провайдер совместного хранения или юрист"
  },
  {
-  "en": "Unchained-style vault service · releases on inheritance event",
-  "tr": "Сервис хранилища вроде Unchained · выдаёт ключ в случае наследования"
+  "en": "Third location, outside your home",
+  "tr": "Третье место, вне вашего дома"
  },
  {
   "en": "Key C",
@@ -1210,6 +1274,10 @@
  {
   "en": "Custom rate",
   "tr": "Своя ставка"
+ },
+ {
+  "en": "Source (health insurance)",
+  "tr": "Источник (медицинское страхование)"
  },
  {
   "en": "Share of the sale price that is profit (taxed). The rest is your original purchase price (not taxed).",
@@ -1360,8 +1428,8 @@
   "tr": "Проверить налоговые правила вашей страны"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
-  "tr": "Управляете более крупной позицией в Биткоине? Virtuse CFO помогает вести Биткоин-Treasury: планировать, отслеживать и отчитываться. Запуск 1 ноября; платные планы с января: {0}/мес. или {1}/год."
+  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Управляете более крупной позицией в Биткоине? Virtuse CFO · Verdict: проверьте бесплатно, что вы упустили в своём решении. Затем CFO следит за комиссиями и рисками. Verdict и аудит комиссий бесплатны. Платные планы после запуска: {0}/мес. или {1}/год."
  },
  {
   "en": "Get notified",
@@ -1436,8 +1504,8 @@
   "tr": "Оранжевая = прогнозируемая стоимость · пунктир = всего инвестировано"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO helps you run Bitcoin treasury: plan, track and report. Launching 1 November; paid plans from January: {0}/month or {1}/year.",
-  "tr": "Планируете более крупную сумму? Virtuse CFO помогает вести Биткоин-Treasury: планировать, отслеживать и отчитываться. Запуск 1 ноября; платные планы с января: {0}/мес. или {1}/год."
+  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Планируете более крупную аллокацию? Virtuse CFO · Verdict: проверьте бесплатно, что вы упустили в своём решении. Затем CFO следит за комиссиями и рисками. Verdict и аудит комиссий бесплатны. Платные планы после запуска: {0}/мес. или {1}/год."
  },
  {
   "en": "Fee arbitrage",
@@ -1476,28 +1544,16 @@
   "tr": "Каждый путь выше стоит столько же или больше: переход ничего не сэкономит."
  },
  {
-  "en": "Tax & Inheritance Agent",
-  "tr": "Tax & Inheritance Agent"
- },
- {
-  "en": "Two questions every bitcoiner avoids:",
-  "tr": "Два вопроса, которых избегает каждый биткоинер:"
- },
- {
-  "en": "taxes and death.",
-  "tr": "налоги и смерть."
- },
- {
-  "en": "A country-by-country overview of how bitcoin gains are treated across the 13 EU countries Virtuse serves – plus an inheritance-readiness check that answers \"what happens to my sats when I'm gone\".",
-  "tr": "Обзор налогообложения прибыли от Биткоина в 13 странах ЕС, где работает Virtuse, страна за страной, а также тест готовности к наследованию, который отвечает на вопрос «что будет с моими сатоши, когда меня не станет?»."
- },
- {
-  "en": "Tax overview · 13 EU countries",
-  "tr": "Налоговый обзор · 13 стран ЕС"
+  "en": "Virtuse may earn a referral fee. It doesn't change the overview.",
+  "tr": "Virtuse может получить вознаграждение за рекомендацию. На обзор это не влияет."
  },
  {
   "en": "Gain tax",
   "tr": "Налог на прибыль"
+ },
+ {
+  "en": "Health insurance",
+  "tr": "Медицинское страхование"
  },
  {
   "en": "Holding exemption",
@@ -1508,6 +1564,14 @@
   "tr": "Декларирование"
  },
  {
+  "en": "Tax overview · 13 EU countries",
+  "tr": "Налоговый обзор · 13 стран ЕС"
+ },
+ {
+  "en": "checked {0}",
+  "tr": "проверено {0}"
+ },
+ {
   "en": "Good to know",
   "tr": "Полезно знать"
  },
@@ -1516,23 +1580,27 @@
   "tr": "Выберите страну выше, чтобы увидеть её правила."
  },
  {
-  "en": "Indicative 2025 overview.",
-  "tr": "Ориентировочный обзор на 2025 год."
+  "en": "As of Q3 2026, checked {0}.",
+  "tr": "По состоянию на Q3 2026, проверено {0}."
  },
  {
-  "en": "Tax rules change fast and your situation is individual – verify with a local tax advisor. For audit-ready crypto tax reports, Virtuse partners with Lukka.",
-  "tr": "Налоговые правила быстро меняются, а ваша ситуация индивидуальна: уточните у местного налогового консультанта. Для криптоналоговых отчётов, готовых к проверке, Virtuse сотрудничает с Lukka."
+  "en": "Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.",
+  "tr": "Налоговые правила быстро меняются, а ваша ситуация индивидуальна: уточните у местного налогового консультанта. Для криптоналоговых отчётов можно использовать, например, Lukka."
  },
  {
   "en": "Tax reports via Lukka",
   "tr": "Налоговые отчёты через Lukka"
  },
  {
+  "en": "Verdict and the fee audit are free. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Verdict и аудит комиссий бесплатны. Платные планы после запуска: {0}/мес. или {1}/год."
+ },
+ {
   "en": "What happens to my sats? · Readiness check",
   "tr": "Что будет с моими сатоши? · Тест готовности"
  },
  {
-  "en": "Six yes/no questions. Answer honestly – the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
+  "en": "Six yes/no questions. Answer honestly: the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
   "tr": "Шесть вопросов «да/нет». Отвечайте честно: оценка показывает, насколько ваши наследники смогли бы восстановить ваш Биткоин уже завтра утром."
  },
  {
@@ -1552,39 +1620,23 @@
   "tr": "Настройка наследования с мультиподписью 2 из 3"
  },
  {
-  "en": "Three keys, any two move funds. No single point of failure – and your heirs can recover with the partner key plus one of yours.",
-  "tr": "Три ключа, любые два перемещают средства. Никакой единой точки отказа: наследники восстановят доступ ключом партнёра и одним из ваших."
+  "en": "Three keys, any two move funds. No single point of failure, and your heirs can recover with Key C plus one of yours.",
+  "tr": "Три ключа, любые два перемещают средства. Никакой единой точки отказа: наследники восстановят доступ ключом C и одним из ваших."
  },
  {
-  "en": "Any 2 of 3 keys can move funds – 1 lost key never means lost coins.",
-  "tr": "Любые 2 из 3 ключей перемещают средства: 1 потерянный ключ никогда не означает потерянных монет."
+  "en": "Any 2 of 3 keys can move funds; 1 lost key never means lost coins.",
+  "tr": "Любые 2 из 3 ключей перемещают средства; 1 потерянный ключ никогда не означает потерянных монет."
  },
  {
   "en": "Set it up properly",
   "tr": "Настройте это правильно"
  },
  {
-  "en": "Multisig vaults with a formal inheritance protocol – you always hold the majority of keys. Vetted by Virtuse, settled to wallets you control.",
-  "tr": "Мультиподписные хранилища с формальным протоколом наследования: большинство ключей всегда у вас. Проверено Virtuse, расчёты на кошельки, которые вы контролируете."
- },
- {
-  "en": "Explore multisig inheritance",
-  "tr": "Узнать о наследовании с мультиподписью"
+  "en": "In a 2-of-3 setup you keep two keys. A collaborative custody provider such as Unchained can hold the third.",
+  "tr": "В схеме 2 из 3 два ключа остаются у вас. Третий может хранить провайдер совместного хранения, например Unchained."
  },
  {
   "en": "2-of-3 multisig",
   "tr": "Мультиподпись 2 из 3"
- },
- {
-  "en": "Inheritance protocol",
-  "tr": "Протокол наследования"
- },
- {
-  "en": "Tax figures are an indicative 2025 overview and may be outdated – not tax, legal or financial advice. Inheritance tools are educational; consult a professional for estate planning. Virtuse never holds your keys.",
-  "tr": "Налоговые данные являются ориентировочным обзором на 2025 год, и они могут быть устаревшими; это не налоговая, юридическая или финансовая консультация. Инструменты наследования носят образовательный характер; для планирования наследства обратитесь к специалисту. Virtuse никогда не хранит ваши ключи."
- },
- {
-  "en": "Your BTC holdings are too small for this amount either way. Lower the cash needed or add holdings to compare both options.",
-  "tr": "Ваших BTC не хватает на эту сумму ни в одном из вариантов. Уменьшите нужную сумму или добавьте BTC, чтобы сравнить оба варианта."
  }
 ]

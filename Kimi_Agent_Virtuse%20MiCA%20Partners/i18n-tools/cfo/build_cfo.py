@@ -45,8 +45,9 @@ def build(L):
     # language menu: each language's CFO page
     i = h.index('<div class="lang-menu-panel"'); j = h.index('</div>', i)
     seg = h[i:j]
-    seg = seg.replace('href="index.html"', 'href="../cfo.html"')
-    seg = re.sub(r'href="(sk|cs|de|fr|es|pl|hu|uk|ru)/index\.html"', r'href="../\1/cfo.html"', seg)
+    # English source links cfo.html / <lang>/cfo.html (older copies: index.html)
+    seg = re.sub(r'href="(?:index|cfo)\.html"', 'href="../cfo.html"', seg)
+    seg = re.sub(r'href="(sk|cs|de|fr|es|pl|hu|uk|ru)/(?:index|cfo)\.html"', r'href="../\1/cfo.html"', seg)
     seg = seg.replace('href="../%s/cfo.html"' % L, 'href="cfo.html"')
     seg = seg.replace('class="lang-opt active"', 'class="lang-opt"')
     seg = re.sub(r'(<a href="cfo\.html" class="lang-opt)"', r'\1 active"', seg)
@@ -72,6 +73,7 @@ def build(L):
         h = h.replace('href="/%s/"' % en_slug, 'href="/%s/%s/"' % (L, slug))
     if os.path.isdir(os.path.join(SITE, L, 'stories')):   # stories hub exists only for en, sk, ru
         h = h.replace('href="/stories/"', 'href="/%s/stories/"' % L)
+    h = h.replace('href="/ecosystem/', 'href="/%s/ecosystem/' % L)   # Ecosystem menu + footer column
 
     # scripts
     loc = B.LOCALE[L]

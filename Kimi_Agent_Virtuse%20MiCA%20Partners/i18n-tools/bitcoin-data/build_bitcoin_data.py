@@ -13,6 +13,11 @@ import v2common as C
 AR_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json'
 GOLD_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json'
 SKEL = '<span class="sk" aria-hidden="true"></span>'
+CSS_VERSION, JS_VERSION = C.csp_tight.speed.SITE_CSS_V, C.csp_tight.speed.SITE_JS_V   # one sitewide cache-buster (i18n-tools/speed.py)
+# accent per chart/tool page (Services colours); each sub-page carries the same accent (legacy/build_legacy.py PAGE_ACC)
+CHART_ACC = {'btc-monthly-returns.html': 'teal', 'asset-returns.html': 'purple', 'bitcoin-vs-gold.html': 'yellow', 'trading-volume.html': 'blue',
+             'fear-greed.html': 'pink', 'rainbow-chart.html': 'indigo', 'ma-200w.html': 'green', 'root-cycles.html': 'orange',
+             'btc-dominance.html': 'blue', 'retirement-calculator.html': 'teal'}
 
 
 def build(L):
@@ -20,7 +25,7 @@ def build(L):
     t = lambda k: T[k]
     page_path, home_path, root = C.paths(L, 'bitcoin-data.html')
     old, home = open(page_path).read(), open(home_path).read()
-    head = C.head(L, old, home, root)
+    head = C.head(L, old, home, root, CSS_VERSION)
     head = head.replace("connect-src 'self'", "connect-src 'self' https://raw.githubusercontent.com", 1)
     # bitcoin-only sources on this page: mempool.space + CoinGecko (Binance not allowed)
     head = head.replace(' https://api.binance.com', '')
@@ -49,15 +54,15 @@ def build(L):
     mp = '<a href="https://mempool.space" target="_blank" rel="noopener noreferrer">mempool.space</a>'
     cg = '<a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko</a>'
 
-    keys = '''<div class="bd-keys" data-g="price net">
-      <div class="bd-m bd-key bd-price" data-k="price"><span class="bd-l">{k_price}
+    keys = '''<div class="bd-panel"><div class="bd-keys" data-g="price net">
+      <div class="bd-m bd-key bd-price bd-acc-orange" data-k="price"><span class="bd-l">{k_price}
         <span class="bd-cur" role="group" aria-label="USD / EUR"><button type="button" data-cur="USD">USD</button><button type="button" data-cur="EUR">EUR</button></span></span>
         <b class="bd-v">{sk}</b><span class="bd-s"><em class="bd-chg" data-k="chg"></em> {k_24h}</span></div>
       {height}{fee}{hash}
-    </div>'''.format(k_price=t('k_price'), sk=SKEL, k_24h=t('k_24h'),
-                     height=card('height', t('k_height'), t('k_height_sub'), 'bd-key'),
-                     fee=card('fee', t('k_fee'), t('k_fee_sub'), 'bd-key'),
-                     hash=card('hash', t('k_hash'), t('k_hash_sub'), 'bd-key'))
+    </div></div>'''.format(k_price=t('k_price'), sk=SKEL, k_24h=t('k_24h'),
+                     height=card('height', t('k_height'), t('k_height_sub'), 'bd-key bd-acc-blue'),
+                     fee=card('fee', t('k_fee'), t('k_fee_sub'), 'bd-key bd-acc-blue'),
+                     hash=card('hash', t('k_hash'), t('k_hash_sub'), 'bd-key bd-acc-blue'))
 
     market = '''<div class="bd-grid bd-market">
       <div class="bd-card bd-chartcard">
@@ -121,14 +126,15 @@ def build(L):
 
     charts = [('btc-monthly-returns.html', 'c_monthly'), ('asset-returns.html', 'c_assets'), ('bitcoin-vs-gold.html', 'c_gold'), ('trading-volume.html', 'c_volume'), ('fear-greed.html', 'c_fear'),
               ('rainbow-chart.html', 'c_rainbow'), ('ma-200w.html', 'c_wma'), ('root-cycles.html', 'c_root'), ('btc-dominance.html', 'c_dom')]
-    grid = ''.join('<a class="bd-chart" href="%s"><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (h, t(k), t(k + '_p'), C.ARROW) for h, k in charts)
-    grid += '<a class="bd-chart bd-tool" href="retirement-calculator.html"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
-        t('c_tool'), t('c_retire'), t('c_retire_p'), C.ARROW)
+    grid = ''.join('<a class="bd-chart bd-acc-%s" href="%s"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
+        CHART_ACC[h], h, t('c_data'), t(k), t(k + '_p'), C.ARROW) for h, k in charts)
+    grid += '<a class="bd-chart bd-tool bd-acc-%s" href="retirement-calculator.html"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
+        CHART_ACC['retirement-calculator.html'], t('c_tool'), t('c_retire'), t('c_retire_p'), C.ARROW)
 
     body = '''<body class="page-buy page-data no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap bd-v3" id="top">
 
   <!-- 1. HERO + key metrics -->
   <div class="buy-hero2">
@@ -139,27 +145,27 @@ def build(L):
     <p class="bd-src bd-src-top" data-g="price net"><i class="bd-dot"></i><span class="bd-time">{loading}</span> · {sources} {mp} · {cg}</p>
   </div>
 
-  <section id="market">
+  <section id="market" class="bd-acc-orange">
     <div class="sec-head one"><div class="sec-copy"><h2>{ph2a} <span>{ph2b}</span></h2></div></div>
     {market}
   </section>
 
-  <section id="network">
+  <section id="network" class="bd-acc-blue">
     <div class="sec-head one"><div class="sec-copy"><h2>{nh2a} <span>{nh2b}</span></h2></div></div>
     {net}
   </section>
 
-  <section id="supply">
+  <section id="supply" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>{sh2a} <span>{sh2b}</span></h2></div></div>
     {supply}
   </section>
 
-  <section id="macro">
+  <section id="macro" class="bd-acc-purple">
     <div class="sec-head one"><div class="sec-copy"><h2>{mh2a} <span>{mh2b}</span></h2></div></div>
     {macro}
   </section>
 
-  <section id="gold">
+  <section id="gold" class="bd-acc-yellow">
     <div class="sec-head one"><div class="sec-copy"><h2>{gh2a} <span>{gh2b}</span></h2></div></div>
     {gold}
   </section>
@@ -175,13 +181,13 @@ def build(L):
   {foot}
 </main>
 <script type="application/json" id="bdI18n">{i18n}</script>
-<script src="{root}btc-data.js?v=3" defer></script>
+<script src="{root}btc-data.js?v=4" defer></script>
 '''.format(nav=nav, eyebrow=t('eyebrow'), h1=t('h1'), h1g=t('h1_grey'), lead=t('lead'), keys=keys, loading=t('loading'), sources=t('sources'),
            mp=mp, cg=cg, ph2a=t('p_h2_a'), ph2b=t('p_h2_b'), market=market, nh2a=t('n_h2_a'), nh2b=t('n_h2_b'), net=net,
            sh2a=t('s_h2_a'), sh2b=t('s_h2_b'), supply=supply, mh2a=t('m_h2_a'), mh2b=t('m_h2_b'), macro=macro, gh2a=t('g_h2_a'), gh2b=t('g_h2_b'), gold=gold,
            ch2a=t('c_h2_a'), ch2b=t('c_h2_b'), grid=grid, brief=re.sub(r'\s*<div class="btc-spark" id="btcSpark" hidden>.*?</svg>\s*</div>', '', C.brief(L, t, root, 'data_brief'), flags=re.S), disclaimer=t('disclaimer'),
            foot=foot, i18n=json.dumps(i18n, ensure_ascii=False).replace('</', '<\\/'), root=root)
-    out = C.fix_links(L, head + body + C.scripts(root))
+    out = C.fix_links(L, head + body + C.scripts(root, JS_VERSION))
     open(page_path, 'w').write(C.finalize(out, page_path))
     print('%s: %d bytes' % (L, len(out)))
 

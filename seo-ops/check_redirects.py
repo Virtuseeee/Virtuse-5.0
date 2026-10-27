@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Check old paths against a server: one 301 to a 200 page on the same host, or the expected code.
+"""Check old paths against a server: one 301 (or the expected 302) to a 200 page on the same host,
+or the expected code.
 
     python3 seo-ops/check_redirects.py BASE [-H 'Header: v' ...] [--paths FILE] [--legacy]
 
@@ -62,8 +63,8 @@ def main():
         print(f'{code} {loc}  <- {p}')
         err = None
         if code in (301, 302, 307, 308):
-            if want not in (301, -1): err = f'expected {want}'
-            elif code != 301: err = 'not a 301'
+            if want not in (301, 302, -1): err = f'expected {want}'
+            elif code != (302 if want == 302 else 301): err = f'not a {302 if want == 302 else 301}'
             elif '?' in loc and '?' not in (tgt or ''): err = 'query string kept'
             dest = loc[len(CANON):] if loc.startswith(CANON + '/') else (loc if loc.startswith('/') else None)
             if dest is None:

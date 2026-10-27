@@ -91,12 +91,12 @@ def build(L, n, c, k, partners):
     out += '''<body class="page-buy page-fee page-pf no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap acc acc-pink" id="top">
 
   <!-- 1. HERO + the app -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
     <p class="pf-counts">{counts}</p>
   </div>

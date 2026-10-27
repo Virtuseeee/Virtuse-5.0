@@ -6,6 +6,9 @@
 #   bash deploy_site.sh <from-commit> [to-commit, default HEAD]
 #   DRY_RUN=1 bash deploy_site.sh <from> [to]   # show files + sftp batch, change nothing
 #   LOGIN_ONLY=1 bash deploy_site.sh <from>     # only test the SFTP login
+#   EXCLUDE='(^|/)cfo\.html$' bash deploy_site.sh <from> [to]
+#                                               # leave site paths matching this extended regex
+#                                               # out of the deploy (upload, gh-pages, deletions)
 #
 # Run it from anywhere: it cds to its own folder (the repo root).
 # What it guards against (all happened before 2026-10-07):
@@ -45,6 +48,11 @@ if [ -n "$(git rev-list HEAD..origin/main)" ]; then
 fi
 git diff --name-only --no-renames --diff-filter=AM "$FROM" "$TO" -- "$SITE" | sed "s#^$SITE/##" | grep -v -E '^i18n-tools/|\.md$' > "$LIST" || true
 git diff --name-only --no-renames --diff-filter=D "$FROM" "$TO" -- "$SITE" | sed "s#^$SITE/##" | grep -v -E '^i18n-tools/|\.md$' > "$DEL" || true
+if [ -n "${EXCLUDE:-}" ]; then
+  NX=$(cat "$LIST" "$DEL" | grep -c -E "$EXCLUDE" || true)
+  for F in "$LIST" "$DEL"; do { grep -v -E "$EXCLUDE" "$F" || true; } > "$F.x"; mv "$F.x" "$F"; done
+  echo "== EXCLUDE '$EXCLUDE': $NX file(s) left out of this deploy"
+fi
 N=$(wc -l < "$LIST" | tr -d ' '); ND=$(wc -l < "$DEL" | tr -d ' ')
 echo "== $N site files to upload, $ND to delete, range ${FROM:0:7}..${TO:0:7}"
 [ "$N" -gt 0 ] || [ "$ND" -gt 0 ] || { echo "nothing to deploy"; exit 0; }

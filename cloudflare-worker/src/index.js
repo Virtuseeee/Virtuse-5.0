@@ -57,6 +57,7 @@
 import { handleSend } from '../src/send.js';
 import { handleWpProxy, WP_PREFIX } from '../src/wp-proxy.js';
 import { handleWaitlist, leaveWaitlist } from '../src/waitlist.js';
+import { handleEcosystemApply } from '../src/ecosystem.js';
 import { handleVerdict } from '../src/verdict.js';
 
 const ALLOWED_ORIGINS = [
@@ -688,6 +689,10 @@ export default {
 
     if (url.pathname === '/verdict') {
       return handleVerdict(request, env, origin, { json });
+    }
+
+    if (url.pathname === '/ecosystem-apply') {
+      return handleEcosystemApply(request, env, origin, { json, emailRe: EMAIL_RE });
     }
 
     if (url.pathname === '/waitlist') {

@@ -44,11 +44,12 @@
       if (gs.some(function (g) { return groups[g] && groups[g].fail && !groups[g].ok; })) s.outerHTML = '<span class="bd-na">' + I.unavailable + '</span>';
     });
   }
-  // 24-hour clock with the browser's short time-zone name, e.g. "14:05 CEST"
+  // times and dates in Bratislava time for every visitor (the box's own zone printed e.g. GMT-4); 24-hour clock + zone name, e.g. "14:05 CEST" / "14:05 SELČ"
+  var TZ = 'Europe/Bratislava';
   function clock(ms) {
     // English: en-GB names the zone (CEST); en-US would print GMT+2 outside the US
-    try { return new Intl.DateTimeFormat(/^en/.test(LOC) ? 'en-GB' : LOC, { hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short' }).format(new Date(ms)); }
-    catch (e) { return new Date(ms).toLocaleTimeString(LOC, { hour: '2-digit', minute: '2-digit', hour12: false }); }
+    try { return new Intl.DateTimeFormat(/^en/.test(LOC) ? 'en-GB' : LOC, { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: TZ, timeZoneName: 'short' }).format(new Date(ms)); }
+    catch (e) { return new Date(ms).toLocaleTimeString(LOC, { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: TZ }); }
   }
   function sectionGroup(sec) { return { market: 'price', network: 'net', supply: 'supply', macro: 'macro' }[sec.id] || 'price'; }
 
@@ -58,7 +59,7 @@
     return I.n_block_ago.replace('{t}', v);
   }
   function supplyAt(h) { var s = 0, sub = 50, r = h + 1; while (r > 0) { var b = Math.min(r, HALVING); s += b * sub; r -= b; sub /= 2; } return s; }
-  function dateIn(ms) { return new Date(Date.now() + ms).toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric' }); }
+  function dateIn(ms) { return new Date(Date.now() + ms).toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: TZ }); }
 
   function renderPrice() {
     if (!st.price) return;
@@ -141,7 +142,7 @@
       j(MP + '/v1/difficulty-adjustment').then(function (d) {
         set('adj', pct(d.difficultyChange, 2, true));
         set('adjpct', pct(d.progressPercent, 1)); set('adjleft', nf(d.remainingBlocks));
-        set('adjdate', new Date(d.estimatedRetargetDate).toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric' }));
+        set('adjdate', new Date(d.estimatedRetargetDate).toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: TZ }));
         qa('[data-k="adjbar"]').forEach(function (e) { e.style.width = Math.min(100, d.progressPercent).toFixed(1) + '%'; });
       })
     ];

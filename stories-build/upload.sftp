@@ -29,6 +29,7 @@
 -mkdir public_html/stories/assets-around-the-world-are-tumbling-except-bitcoin
 -mkdir public_html/stories/banking-system-is-designed-to-exclude-98-of-the-world-from-investing
 -mkdir public_html/stories/banks-adopt-bitcoin-for-all-wrong-reasons
+-mkdir public_html/stories/banks-fall-to-passwords-bitcoin-falls-to-people
 -mkdir public_html/stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits
 -mkdir public_html/stories/best-10-bitcoin-trading-strategies-for-2023
 -mkdir public_html/stories/bitcoin-and-gold-are-outperforming
@@ -116,6 +117,7 @@
 -mkdir public_html/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin
 -mkdir public_html/stories/nothing-can-stop-bitcoin-not-even-governments
 -mkdir public_html/stories/old-financial-model-is-about-to-be-disrupted
+-mkdir public_html/stories/online-gambling-machine-vs-bitcoin
 -mkdir public_html/stories/preco-sa-mmf-boji-kryptoizacie
 -mkdir public_html/stories/r-vasilisin-bitcoin-appreciation-is-inevitable-as-is-the-disruption-of-the-current-financial-system
 -mkdir public_html/stories/rome-wokeism-and-the-rise-of-the-bitcoin-standard
@@ -232,6 +234,7 @@
 -mkdir public_html/sk/stories/ako-sa-zbavit-syndromu-fomo-a-este-na-tom-zarobit
 -mkdir public_html/sk/stories/bankovy-system-je-navrhnuty-tak-aby-vas-z-investovania-vylucil-2
 -mkdir public_html/sk/stories/banks-adopt-bitcoin-for-all-wrong-reasons
+-mkdir public_html/sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch
 -mkdir public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven
 -mkdir public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti
 -mkdir public_html/sk/stories/bitcoin-a-zlato-proti-krize
@@ -369,6 +372,7 @@
 -mkdir public_html/sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin
 -mkdir public_html/sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti
 -mkdir public_html/sk/stories/slova-maju-svoje-definicie-a-manipulacia-a-zmena-vyznamu-sa-nazyva-jednoducho-klamstvom
+-mkdir public_html/sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom
 -mkdir public_html/sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov
 -mkdir public_html/sk/stories/stane-sa-z-defi-bankovy-predator
 -mkdir public_html/sk/stories/stav-krypto-trhov-za-prvy-polrok-2023
@@ -451,6 +455,7 @@ put sk/stories/ako-sa-vysporiadat-s-volatilitou-bitcoinu/index.html public_html/
 put sk/stories/ako-sa-zbavit-syndromu-fomo-a-este-na-tom-zarobit/index.html public_html/sk/stories/ako-sa-zbavit-syndromu-fomo-a-este-na-tom-zarobit/index.html
 put sk/stories/bankovy-system-je-navrhnuty-tak-aby-vas-z-investovania-vylucil-2/index.html public_html/sk/stories/bankovy-system-je-navrhnuty-tak-aby-vas-z-investovania-vylucil-2/index.html
 put sk/stories/banks-adopt-bitcoin-for-all-wrong-reasons/index.html public_html/sk/stories/banks-adopt-bitcoin-for-all-wrong-reasons/index.html
+put sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch/index.html public_html/sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch/index.html
 put sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven/index.html public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven/index.html
 put sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti/index.html public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti/index.html
 put sk/stories/bitcoin-a-zlato-proti-krize/index.html public_html/sk/stories/bitcoin-a-zlato-proti-krize/index.html
@@ -588,6 +593,7 @@ put sk/stories/skuste-tieto-zivotne-triky-a-budete-mat-uspesny-rok/index.html pu
 put sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin/index.html public_html/sk/stories/slon-v-miestnosti-centralne-banky-tlacia-neumerne-mnozstvo-penazi-ras-vasilisin/index.html
 put sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti/index.html public_html/sk/stories/sloni-syndrom-opantal-krypto-trhy-vymanime-sa-z-okov-minulosti/index.html
 put sk/stories/slova-maju-svoje-definicie-a-manipulacia-a-zmena-vyznamu-sa-nazyva-jednoducho-klamstvom/index.html public_html/sk/stories/slova-maju-svoje-definicie-a-manipulacia-a-zmena-vyznamu-sa-nazyva-jednoducho-klamstvom/index.html
+put sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html public_html/sk/stories/slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom/index.html
 put sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/index.html public_html/sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/index.html
 put sk/stories/stane-sa-z-defi-bankovy-predator/index.html public_html/sk/stories/stane-sa-z-defi-bankovy-predator/index.html
 put sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/index.html public_html/sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/index.html
@@ -653,6 +659,7 @@ put stories/arm-yourself-with-this-strategy-and-become-a-millionaire/index.html 
 put stories/assets-around-the-world-are-tumbling-except-bitcoin/index.html public_html/stories/assets-around-the-world-are-tumbling-except-bitcoin/index.html
 put stories/banking-system-is-designed-to-exclude-98-of-the-world-from-investing/index.html public_html/stories/banking-system-is-designed-to-exclude-98-of-the-world-from-investing/index.html
 put stories/banks-adopt-bitcoin-for-all-wrong-reasons/index.html public_html/stories/banks-adopt-bitcoin-for-all-wrong-reasons/index.html
+put stories/banks-fall-to-passwords-bitcoin-falls-to-people/index.html public_html/stories/banks-fall-to-passwords-bitcoin-falls-to-people/index.html
 put stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits/index.html public_html/stories/be-aware-of-these-correlations-between-tesla-and-bitcoin-they-will-make-you-huge-profits/index.html
 put stories/best-10-bitcoin-trading-strategies-for-2023/index.html public_html/stories/best-10-bitcoin-trading-strategies-for-2023/index.html
 put stories/bitcoin-and-gold-are-outperforming/index.html public_html/stories/bitcoin-and-gold-are-outperforming/index.html
@@ -740,6 +747,7 @@ put stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/index.html public_html
 put stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/index.html public_html/stories/nfts-are-going-to-be-bigger-than-you-think-ras-vasilisin/index.html
 put stories/nothing-can-stop-bitcoin-not-even-governments/index.html public_html/stories/nothing-can-stop-bitcoin-not-even-governments/index.html
 put stories/old-financial-model-is-about-to-be-disrupted/index.html public_html/stories/old-financial-model-is-about-to-be-disrupted/index.html
+put stories/online-gambling-machine-vs-bitcoin/index.html public_html/stories/online-gambling-machine-vs-bitcoin/index.html
 put stories/preco-sa-mmf-boji-kryptoizacie/index.html public_html/stories/preco-sa-mmf-boji-kryptoizacie/index.html
 put stories/r-vasilisin-bitcoin-appreciation-is-inevitable-as-is-the-disruption-of-the-current-financial-system/index.html public_html/stories/r-vasilisin-bitcoin-appreciation-is-inevitable-as-is-the-disruption-of-the-current-financial-system/index.html
 put stories/rome-wokeism-and-the-rise-of-the-bitcoin-standard/index.html public_html/stories/rome-wokeism-and-the-rise-of-the-bitcoin-standard/index.html

@@ -2,7 +2,6 @@
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
-<script src="/vb-profile.js?v=1" data-tool="tax"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -150,16 +149,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=6">
+<link rel="stylesheet" href="/site-v2.min.css?v=19">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 <style>.st-app #root { min-height: min(100vh, 1000px); }</style>
-<script type="module" crossorigin src="../concierge-assets/utils-0guWYjh0.js"></script>
-<script type="module" crossorigin src="../concierge-assets/badge-D4GW88qs.js"></script>
-<script type="module" crossorigin src="../concierge-assets/tax-sources.gen-RQtkreti.js"></script>
-<script type="module" crossorigin src="../concierge-assets/shield-check-BgLo98UC.js"></script>
-<script type="module" crossorigin src="../concierge-assets/main-tax-CHbFO0qB.js"></script>
-<link rel="stylesheet" crossorigin href="../concierge-assets/utils-BtinQfVX.css">
+<script type="module" crossorigin src="../concierge-assets/utils-BoNfsmKt.js"></script>
+<script type="module" crossorigin src="../concierge-assets/badge-z9g1c1am.js"></script>
+<script type="module" crossorigin src="../concierge-assets/tax-sources.gen-DVElr-93.js"></script>
+<script type="module" crossorigin src="../concierge-assets/shield-check-M1jTkqnm.js"></script>
+<script type="module" crossorigin src="../concierge-assets/main-tax-DuuG7Kjv.js"></script>
+<link rel="stylesheet" crossorigin href="../concierge-assets/utils-D3ChvCR-.css">
 </head>
 <body class="page-buy page-fee page-pf page-tax no-split">
 <header class="nav">
@@ -181,6 +180,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Eszközök</button>
         <div class="nav-drop" id="nd-tools"><a href="/hu/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Ingyenes</span></span><span class="nd-d">Verdikt és díjaudit ingyen</span></a><a href="/hu/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerek a válaszai alapján</span></a><a href="/hu/bitcoin-dijindex/"><span class="nd-t">Díjindex</span><span class="nd-d">A vásárlás teljes költsége összevetve</span></a><a href="/hu/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Rendszeres vásárlás tervezése</span></a><a href="/hu/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Eladás vagy hitel Bitcoin-fedezettel</span></a><a href="/hu/tax-agent.html" aria-current="page"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Országos szabályok és öröklési ellenőrzés</span></a><a href="/hu/retirement-calculator.html"><span class="nd-t">Nyugdíjkalkulátor</span><span class="nd-d">Mennyi Bitcoin kell a nyugdíjhoz</span></a></div>
       </div>
+      <div class="nav-group" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ökoszisztéma</button>
+        <div class="nav-drop" id="nd-eco"><a href="/hu/ecosystem/"><span class="nd-t">Áttekintés</span><span class="nd-d">Minden Bitcoin-forrás egy helyen</span></a><a href="/hu/ecosystem/what-is-bitcoin/"><span class="nd-t">Mi a Bitcoin?</span><span class="nd-d">Közérthető bevezető</span></a><a href="/hu/ecosystem/books/"><span class="nd-t">Könyvek</span><span class="nd-d">Válogatott olvasmánylista</span></a><a href="/hu/ecosystem/podcasts/"><span class="nd-t">Podcastok</span><span class="nd-d">Csak Bitcoinról szóló műsorok</span></a><a href="/hu/ecosystem/videos/"><span class="nd-t">Videók</span><span class="nd-d">Csatornák és dokumentumfilmek</span></a><a href="/hu/ecosystem/conferences/"><span class="nd-t">Konferenciák</span><span class="nd-d">Bitcoin-események Európában</span></a><a href="/hu/ecosystem/privacy/"><span class="nd-t">Bitcoin és adatvédelem</span><span class="nd-d">Törvényes adatvédelmi eszközök</span></a><a href="/hu/ecosystem/spend-bitcoin/"><span class="nd-t">Fizetés bitcoinnal</span><span class="nd-d">Üzletek, térképek, ajándékkártyák</span></a><a href="/hu/ecosystem/store-tools/"><span class="nd-t">Kereskedői eszközök</span><span class="nd-d">Bitcoin-fogadás az üzletben</span></a><a href="/hu/ecosystem/dev-tools/"><span class="nd-t">Fejlesztői eszközök</span><span class="nd-d">Könyvtárak és SDK-k</span></a><a href="/hu/ecosystem/jobs/"><span class="nd-t">Bitcoin-állások</span><span class="nd-d">Állások, támogatások, ösztöndíjak</span></a><a href="/hu/ecosystem/peers/"><span class="nd-t">Bitcoin-társak</span><span class="nd-d">Rokon Bitcoin-projektek</span></a><a href="/hu/ecosystem/promote/"><span class="nd-t">Bemutatkozás</span><span class="nd-d">Mutassa be projektjét</span></a></div>
+      </div>
       <a class="nav-top" href="/hu/about.html">Rólunk</a>
     </nav>
     <div class="lang-menu" id="langMenu">
@@ -192,12 +195,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main class="wrap" id="top">
+<main class="wrap acc acc-blue" id="top">
 
   <!-- 1. HERO + the calculator -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>Tax & Inheritance Agent</div>
-    <h1>Bitcoin-adózás 13 EU-országban, <span class="h1-or">és egy terv az örökösei számára.</span></h1>
+    <h1>Bitcoin-adózás 13 EU-országban, <span class="h1-grey">és egy terv az örökösei számára.</span></h1>
     <p class="sp-lead">Válassza ki az országát, és megnézheti, hogyan adózik egy Bitcoin-eladás, a hivatalos forrás linkjével. Utána ellenőrizze, mennyire felkészült a Bitcoinja arra az esetre, ha Önnel történne valami.</p>
   </div>
   <div class="pf-app st-app" id="plan">
@@ -286,7 +289,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Szolgáltatások</h4><a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás</a><a href="/hu/secure.html">Letétkezelés</a><a href="/hu/mining.html">Bányászat</a><a href="/hu/lending.html">Hitelek</a><a href="/hu/treasury.html">Treasury</a><a href="/hu/tax.html">Adózás</a><a href="/hu/bots.html">Botok</a></div><div class="footer-col"><h4>Cég</h4><a href="/hu/about.html">Rólunk</a><a href="/hu/faq.html">FAQ</a></div><div class="footer-col"><h4>Eszközök</h4><a href="/hu/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Ingyenes</span></a><a href="/hu/concierge.html">Partner Finder</a><a href="/hu/stacking.html">Stacking Strategist</a><a href="/hu/loan.html">Loan &amp; Liquidity Copilot</a><a href="/hu/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/hu/retirement-calculator.html">Nyugdíjkalkulátor</a></div><div class="footer-col"><h4>Útmutatók</h4><a href="/news.html">Virtuse Brief</a><a href="/hu/blog.html">Blog</a><a href="/hu/bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-adozas/">Bitcoin-adózás</a><a href="/hu/bitcoin-dijindex/">Díjindex</a><a href="/hu/bitcoin-dca-kalkulator/">DCA-kalkulátor</a><a href="/hu/bitcoin-eladas-vagy-hitel/">Eladás vagy hitel</a><a href="/hu/bitcoin-orokles/">Öröklés</a></div><div class="footer-col"><h4>Jogi információk</h4><a href="/hu/terms-and-conditions.html">Felhasználási feltételek</a><a href="/hu/privacy-policy.html">Adatvédelmi tájékoztató</a><a href="/hu/aml-compliance.html">AML és megfelelés</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Szolgáltatások</h4><a href="/hu/buy-bitcoin.html">Bitcoin-vásárlás</a><a href="/hu/secure.html">Letétkezelés</a><a href="/hu/mining.html">Bányászat</a><a href="/hu/lending.html">Hitelek</a><a href="/hu/treasury.html">Treasury</a><a href="/hu/tax.html">Adózás</a><a href="/hu/bots.html">Botok</a></div><div class="footer-col"><h4>Cég</h4><a href="/hu/about.html">Rólunk</a><a href="/hu/faq.html">FAQ</a></div><div class="footer-col"><h4>Eszközök</h4><a href="/hu/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Ingyenes</span></a><a href="/hu/concierge.html">Partner Finder</a><a href="/hu/stacking.html">Stacking Strategist</a><a href="/hu/loan.html">Loan &amp; Liquidity Copilot</a><a href="/hu/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/hu/retirement-calculator.html">Nyugdíjkalkulátor</a></div><div class="footer-col"><h4>Útmutatók</h4><a href="/news.html">Virtuse Brief</a><a href="/hu/blog.html">Blog</a><a href="/hu/bitcoin-data.html">Bitcoin-adatok</a><a href="/hu/bitcoin-adozas/">Bitcoin-adózás</a><a href="/hu/bitcoin-dijindex/">Díjindex</a><a href="/hu/bitcoin-dca-kalkulator/">DCA-kalkulátor</a><a href="/hu/bitcoin-eladas-vagy-hitel/">Eladás vagy hitel</a><a href="/hu/bitcoin-orokles/">Öröklés</a></div><div class="footer-col"><h4>Ökoszisztéma</h4><a href="/hu/ecosystem/">Bitcoin-ökoszisztéma</a><a href="/hu/ecosystem/what-is-bitcoin/">Mi a Bitcoin?</a><a href="/hu/ecosystem/books/">Könyvek</a><a href="/hu/ecosystem/podcasts/">Podcastok</a><a href="/hu/ecosystem/videos/">Videók</a><a href="/hu/ecosystem/conferences/">Konferenciák</a><a href="/hu/ecosystem/privacy/">Bitcoin és adatvédelem</a><a href="/hu/ecosystem/spend-bitcoin/">Fizetés bitcoinnal</a><a href="/hu/ecosystem/store-tools/">Kereskedői eszközök</a><a href="/hu/ecosystem/dev-tools/">Fejlesztői eszközök</a><a href="/hu/ecosystem/jobs/">Bitcoin-állások</a><a href="/hu/ecosystem/peers/">Bitcoin-társak</a><a href="/hu/ecosystem/promote/">Bemutatkozás</a></div><div class="footer-col"><h4>Jogi információk</h4><a href="/hu/terms-and-conditions.html">Felhasználási feltételek</a><a href="/hu/privacy-policy.html">Adatvédelmi tájékoztató</a><a href="/hu/aml-compliance.html">AML és megfelelés</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Minden jog fenntartva.</p>
@@ -302,7 +305,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </footer>
 </main>
 
-<script src="/site-v2.js?v=7" defer></script>
+<script src="/site-v2.js?v=11" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

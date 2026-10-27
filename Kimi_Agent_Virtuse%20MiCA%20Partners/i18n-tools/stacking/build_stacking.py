@@ -70,12 +70,12 @@ def build(L):
     out += '''<body class="page-buy page-fee page-pf page-stack no-split">
 {nav}
 
-<main class="wrap" id="top">
+<main class="wrap acc acc-green" id="top">
 
   <!-- 1. HERO + the calculator -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
   </div>
   <div class="pf-app st-app" id="plan">

@@ -51,7 +51,7 @@ export const VERBS = {
 
 // Same names as layer2-src/src/lib/concierge.ts PARTNERS (a test keeps them in
 // sync): a fix that names a partner is replaced by the template.
-export const PARTNER_NAMES = ['21bitcoin', 'Abundant Mines', 'BitGo', 'Blockpit', 'Blockstream', 'Bybit EU', 'CoinTracking', 'Coinbase Institutional', 'Coinrule', 'Crypto.com', 'Cryptohopper', 'Divly', 'Firefish', 'Invity', 'Koinly', 'Kraken', 'Ledger', 'OneMiners', 'Power Mining', 'RevenueBot', 'Sygnum', 'Trezor'];
+export const PARTNER_NAMES = ['21bitcoin', 'Abundant Mines', 'BitGo', 'Blockpit', 'Blockstream', 'Bybit EU', 'CoinTracking', 'Coinbase Institutional', 'Coinrule', 'Crypto.com', 'Cryptohopper', 'Divly', 'Firefish', 'Invity', 'Koinly', 'Kraken', 'Ledger', 'OneMiners', 'Power Mining', 'RevenueBot', 'Solo Satoshi', 'Sygnum', 'Trezor', 'Umbrel'];
 
 // Plain titles + texts per signal and level (low 0-3, mid 4-6, high 7-10).
 // Placeholders: {country} "na Slovensku" / "in Slovakia", {drop}, {country_rule}.

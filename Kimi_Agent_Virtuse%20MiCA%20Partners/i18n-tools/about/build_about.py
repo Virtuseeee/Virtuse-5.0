@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
-AS_OF = '2026-10-13'
+AS_OF = '2026-10-27'
 PHOTO = '/img/team/ras-vasilisin-400'
 SAME_AS = [('link_linkedin', 'https://www.linkedin.com/in/rastislav-vasilisin-11bb5819/'),
            ('link_hackernoon', 'https://hackernoon.com/u/ras'),
@@ -178,7 +178,7 @@ def build(L):
   <!-- 1. HERO -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-or">{h1o}</span></h1>
+    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
     {stats}
   </div>

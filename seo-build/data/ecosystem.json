@@ -1,0 +1,1030 @@
+{
+  "_note": "Bitcoin Ecosystem directory (handovers bitcoin-ecosystem.md + ecosystem-fixes.md, 22 Oct 2026). Built by seo-build/ecosystem.mjs. Structure, links and entries live here; all page text lives in ecosystem-strings/<lang>.json. Entries (names, verdicts, tags) stay English in every language. Every URL was checked by hand; re-check before changing 'reviewed'.",
+  "reviewed": "2026-10-22",
+  "minEntries": 8,
+  "pages": [
+    {
+      "slug": "",
+      "related": [
+        "/news.html?utm_source=brief&utm_medium=ecosystem",
+        "/ecosystem/what-is-bitcoin/"
+      ],
+      "accent": "orange"
+    },
+    {
+      "slug": "what-is-bitcoin",
+      "related": [
+        "/faq.html",
+        "/stories/why-bitcoin-is-not-a-ponzi-scheme/",
+        "/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/",
+        "/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/",
+        "/buy-bitcoin.html",
+        "/secure.html"
+      ],
+      "entries": [
+        {
+          "name": "The Bitcoin whitepaper",
+          "url": "https://bitcoin.org/bitcoin.pdf",
+          "verdict": "Satoshi Nakamoto's nine-page original from 2008. Short, readable and still the best primary source.",
+          "tags": [
+            "Primary source",
+            "Free",
+            "PDF"
+          ]
+        },
+        {
+          "name": "Bitcoin for Everybody (Saylor Academy)",
+          "url": "https://learn.saylor.org/course/view.php?id=468",
+          "verdict": "A free, self-paced beginner course with readings and a final exam. Good if you like structure.",
+          "tags": [
+            "Free course",
+            "Beginner"
+          ]
+        },
+        {
+          "name": "Plan ₿ Network",
+          "url": "https://planb.network",
+          "verdict": "Free structured courses from first steps to advanced topics, available in many European languages.",
+          "tags": [
+            "Free courses",
+            "Multilingual",
+            "Open source"
+          ]
+        },
+        {
+          "name": "21 Lessons",
+          "url": "https://21lessons.com",
+          "verdict": "Gigi's short essays on what Bitcoin teaches about money, technology and philosophy. Free to read online.",
+          "tags": [
+            "Free",
+            "Essays"
+          ]
+        },
+        {
+          "name": "Satoshi Nakamoto Institute",
+          "url": "https://nakamotoinstitute.org",
+          "verdict": "The archive of Satoshi's emails and forum posts, plus the economic and cryptographic writing Bitcoin grew out of.",
+          "tags": [
+            "Archive",
+            "History"
+          ]
+        },
+        {
+          "name": "Lopp's Bitcoin resources",
+          "url": "https://www.lopp.net/bitcoin-information.html",
+          "verdict": "Jameson Lopp's large, regularly updated index of Bitcoin information. Best used as a reference, not a starting point.",
+          "tags": [
+            "Reference",
+            "Free"
+          ]
+        },
+        {
+          "name": "21ideas",
+          "url": "https://21ideas.org",
+          "verdict": "Translations of essential bitcoin essays and guides for Russian-speaking readers.",
+          "tags": [
+            "Russian",
+            "Free"
+          ]
+        },
+        {
+          "name": "Learn Me A Bitcoin",
+          "url": "https://learnmeabitcoin.com",
+          "verdict": "Clear, illustrated explanations of how transactions, keys and blocks work under the hood.",
+          "tags": [
+            "Technical",
+            "Free"
+          ]
+        }
+      ],
+      "icon": "btc",
+      "accent": "orange"
+    },
+    {
+      "slug": "books",
+      "related": [
+        "/ecosystem/what-is-bitcoin/",
+        "/blog.html",
+        "/ecosystem/podcasts/"
+      ],
+      "entries": [
+        {
+          "name": "The Bitcoin Standard (Saifedean Ammous)",
+          "url": "https://saifedean.com/thebitcoinstandard",
+          "verdict": "The classic case for Bitcoin as sound money, told through the history of money. Opinionated and influential.",
+          "tags": [
+            "Economics",
+            "Beginner"
+          ]
+        },
+        {
+          "name": "Broken Money (Lyn Alden)",
+          "url": "https://www.lynalden.com/broken-money/",
+          "verdict": "A calm, well-researched history of money and banking that ends with Bitcoin. The best pick for sceptical readers.",
+          "tags": [
+            "Economics",
+            "History"
+          ]
+        },
+        {
+          "name": "The Fiat Standard (Saifedean Ammous)",
+          "url": "https://saifedean.com/thefiatstandard",
+          "verdict": "The companion to The Bitcoin Standard: how the current money system works and what it costs.",
+          "tags": [
+            "Economics"
+          ]
+        },
+        {
+          "name": "Layered Money (Nik Bhatia)",
+          "url": "https://www.layeredmoney.com",
+          "verdict": "A short, clear explanation of how money is built in layers, from gold to central banks to Bitcoin and Lightning.",
+          "tags": [
+            "Economics",
+            "Short read"
+          ]
+        },
+        {
+          "name": "The Price of Tomorrow (Jeff Booth)",
+          "url": "https://www.thepriceoftomorrow.com",
+          "verdict": "Why technology pushes prices down while the monetary system fights it. Not a Bitcoin book first, but a strong argument for one.",
+          "tags": [
+            "Economics",
+            "Technology"
+          ]
+        },
+        {
+          "name": "The Bullish Case for Bitcoin (Vijay Boyapati)",
+          "url": "https://www.bullishcaseforbitcoin.com",
+          "verdict": "The famous essay expanded into a book: why Bitcoin could become a global store of value, step by step.",
+          "tags": [
+            "Investment thesis"
+          ]
+        },
+        {
+          "name": "Mastering Bitcoin (Antonopoulos, Harding)",
+          "url": "https://github.com/bitcoinbook/bitcoinbook",
+          "verdict": "The standard technical reference for developers and curious engineers. Free to read on GitHub.",
+          "tags": [
+            "Technical",
+            "Free",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Grokking Bitcoin (Kalle Rosenbaum)",
+          "url": "https://github.com/kallerosenbaum/grokkingbitcoin",
+          "verdict": "A gentle, illustrated walk through how Bitcoin works, written by a Swedish developer. Free on GitHub.",
+          "tags": [
+            "Technical",
+            "Free",
+            "European author"
+          ]
+        }
+      ],
+      "icon": "book",
+      "accent": "yellow"
+    },
+    {
+      "slug": "podcasts",
+      "related": [
+        "/news.html",
+        "/ecosystem/videos/",
+        "/ecosystem/books/"
+      ],
+      "entries": [
+        {
+          "name": "What Bitcoin Did",
+          "url": "https://www.whatbitcoindid.com",
+          "verdict": "Long-form interviews from the UK on markets, politics and people in Bitcoin. A good weekly habit.",
+          "tags": [
+            "Interviews",
+            "UK"
+          ]
+        },
+        {
+          "name": "TFTC",
+          "url": "https://www.tftc.io",
+          "verdict": "Marty Bent's show and newsletter on Bitcoin, energy and the wider economy. Opinionated and frequent.",
+          "tags": [
+            "News",
+            "Commentary"
+          ]
+        },
+        {
+          "name": "Bitcoin Audible",
+          "url": "https://www.bitcoinaudible.com",
+          "verdict": "Guy Swann reads the best Bitcoin essays aloud and discusses them. Ideal if you prefer listening to reading.",
+          "tags": [
+            "Essays read aloud"
+          ]
+        },
+        {
+          "name": "Stephan Livera Podcast",
+          "url": "https://www.stephanlivera.com",
+          "verdict": "Technical and economic deep dives with developers and builders. Best for listeners who want depth.",
+          "tags": [
+            "Technical",
+            "Interviews"
+          ]
+        },
+        {
+          "name": "Citadel Dispatch",
+          "url": "https://citadeldispatch.com",
+          "verdict": "Matt Odell's live show on privacy, self-custody and freedom tech. Practical and frank.",
+          "tags": [
+            "Privacy",
+            "Live"
+          ]
+        },
+        {
+          "name": "Bitcoin Fundamentals (The Investor's Podcast)",
+          "url": "https://www.theinvestorspodcast.com/bitcoin-fundamentals/",
+          "verdict": "Investor-oriented conversations on Bitcoin's place in a portfolio and the macro picture.",
+          "tags": [
+            "Investing",
+            "Macro"
+          ]
+        },
+        {
+          "name": "Einundzwanzig",
+          "url": "https://einundzwanzig.space/podcast/",
+          "verdict": "The leading German-language Bitcoin podcast, run by a community from Germany, Austria and Switzerland.",
+          "tags": [
+            "German",
+            "Community"
+          ]
+        },
+        {
+          "name": "Fountain",
+          "url": "https://fountain.fm",
+          "verdict": "A podcast app with Lightning built in, so you can send sats directly to the shows you value.",
+          "tags": [
+            "App",
+            "Lightning"
+          ]
+        }
+      ],
+      "icon": "mic",
+      "accent": "purple"
+    },
+    {
+      "slug": "videos",
+      "related": [
+        "/ecosystem/podcasts/",
+        "/ecosystem/what-is-bitcoin/",
+        "/ecosystem/conferences/"
+      ],
+      "entries": [
+        {
+          "name": "BTC Sessions",
+          "url": "https://www.youtube.com/@BTCSessions",
+          "verdict": "Patient, step-by-step tutorials on Bitcoin and Lightning tools. The best channel for practical first steps.",
+          "tags": [
+            "Tutorials",
+            "Beginner"
+          ]
+        },
+        {
+          "name": "Bitcoin Magazine",
+          "url": "https://www.youtube.com/@bitcoinmagazine",
+          "verdict": "Conference talks, interviews and news from the largest Bitcoin media brand.",
+          "tags": [
+            "Talks",
+            "News"
+          ]
+        },
+        {
+          "name": "Plan ₿ Network",
+          "url": "https://www.youtube.com/@PlanBNetwork",
+          "verdict": "Recorded courses and conference talks from the Swiss-based education project, many in European languages.",
+          "tags": [
+            "Education",
+            "Multilingual"
+          ]
+        },
+        {
+          "name": "BTC Prague",
+          "url": "https://www.youtube.com/@BTCPrague",
+          "verdict": "Talks from Europe's largest Bitcoin conference. Useful if you could not attend in person.",
+          "tags": [
+            "Conference talks",
+            "Europe"
+          ]
+        },
+        {
+          "name": "Ministry of Nodes",
+          "url": "https://www.youtube.com/@MinistryofNodes",
+          "verdict": "UK-based guides to running your own node and taking responsibility for your own Bitcoin.",
+          "tags": [
+            "Nodes",
+            "UK"
+          ]
+        },
+        {
+          "name": "Simply Bitcoin",
+          "url": "https://www.youtube.com/@SimplyBitcoin",
+          "verdict": "A daily live show on Bitcoin news and adoption. Light in tone, consistent in schedule.",
+          "tags": [
+            "News",
+            "Live"
+          ]
+        },
+        {
+          "name": "The Bitcoin Layer",
+          "url": "https://www.youtube.com/@TheBitcoinLayer",
+          "verdict": "Nik Bhatia's analysis of bonds, rates and macro through a Bitcoin lens. For readers of Layered Money.",
+          "tags": [
+            "Macro",
+            "Markets"
+          ]
+        },
+        {
+          "name": "Natalie Brunell",
+          "url": "https://www.youtube.com/@NatalieBrunell",
+          "verdict": "A former journalist interviewing economists and builders in an accessible way. Good for newcomers.",
+          "tags": [
+            "Interviews",
+            "Beginner"
+          ]
+        },
+        {
+          "name": "God Bless Bitcoin",
+          "url": "https://www.godblessbitcoin.com",
+          "verdict": "A feature-length documentary on Bitcoin, money and faith. A thoughtful watch for a family evening.",
+          "tags": [
+            "Documentary"
+          ]
+        }
+      ],
+      "icon": "play",
+      "accent": "pink"
+    },
+    {
+      "slug": "conferences",
+      "related": [
+        "/ecosystem/peers/",
+        "/news.html",
+        "/ecosystem/videos/"
+      ],
+      "entries": [
+        {
+          "name": "Bitcoin Amsterdam",
+          "url": "https://www.bitcoin.amsterdam/",
+          "city": "Amsterdam",
+          "country": "NL",
+          "countryName": "Netherlands",
+          "venue": "SugarFactory",
+          "start": "2026-11-05",
+          "end": "2026-11-06",
+          "dates": "5–6 Nov 2026",
+          "bitcoinOnly": true,
+          "verdict": "Two days of talks and networking in Amsterdam, with a strong business and institutional track.",
+          "tags": [
+            "Netherlands"
+          ],
+          "organizer": "BTC Inc.",
+          "organizerUrl": "https://www.bitcoin.amsterdam/"
+        },
+        {
+          "name": "Swiss Bitcoin Conference",
+          "url": "https://swiss-bitcoin-conference.com",
+          "city": "Kreuzlingen",
+          "country": "CH",
+          "countryName": "Switzerland",
+          "start": "2027-04-23",
+          "end": "2027-04-25",
+          "dates": "23–25 Apr 2027",
+          "bitcoinOnly": true,
+          "verdict": "A bitcoin-only weekend on Lake Constance with a community feel and talks in German and English.",
+          "tags": [
+            "Switzerland",
+            "German"
+          ],
+          "organizer": "FIWENT GmbH",
+          "organizerUrl": "https://www.fiwent.com/"
+        },
+        {
+          "name": "BTC Prague",
+          "url": "https://btcprague.com/",
+          "city": "Prague",
+          "country": "CZ",
+          "countryName": "Czechia",
+          "start": "2027-05-06",
+          "end": "2027-05-08",
+          "dates": "6–8 May 2027",
+          "bitcoinOnly": true,
+          "verdict": "Europe's largest bitcoin-only conference: three days, several stages and a large expo.",
+          "tags": [
+            "Czechia",
+            "Largest"
+          ],
+          "organizer": "Twenty one million s.r.o.",
+          "organizerUrl": "https://btcprague.com/"
+        },
+        {
+          "name": "Bitcoin FilmFest",
+          "url": "https://bitcoinfilmfest.com",
+          "city": "Warsaw",
+          "country": "PL",
+          "countryName": "Poland",
+          "start": "2027-06-24",
+          "end": "2027-06-27",
+          "dates": "24–27 Jun 2027",
+          "bitcoinOnly": true,
+          "verdict": "A film festival about Bitcoin and freedom, with screenings, panels and a relaxed crowd.",
+          "tags": [
+            "Poland",
+            "Film"
+          ]
+        },
+        {
+          "name": "BTCHEL",
+          "url": "https://btchel.com/",
+          "city": "Helsinki",
+          "country": "FI",
+          "countryName": "Finland",
+          "start": null,
+          "end": null,
+          "dates": "Sep 2027, to be confirmed",
+          "bitcoinOnly": true,
+          "verdict": "The Nordic Bitcoin conference. The organisers have not yet confirmed the 2027 dates.",
+          "tags": [
+            "Finland",
+            "Nordics"
+          ]
+        },
+        {
+          "name": "Baltic Honeybadger",
+          "url": "https://baltichoneybadger.com",
+          "city": "Riga",
+          "country": "LV",
+          "countryName": "Latvia",
+          "start": null,
+          "end": null,
+          "dates": "2027, date to be announced",
+          "bitcoinOnly": true,
+          "verdict": "One of Europe's longest-running bitcoin-only conferences, known for technical depth and a hacker spirit.",
+          "tags": [
+            "Latvia",
+            "Technical"
+          ]
+        }
+      ],
+      "index": true,
+      "icon": "calendar",
+      "accent": "blue"
+    },
+    {
+      "slug": "privacy",
+      "related": [
+        "/secure.html",
+        "/ecosystem/dev-tools/",
+        "/aml-compliance.html"
+      ],
+      "entries": [
+        {
+          "name": "Bitcoin Core",
+          "url": "https://bitcoincore.org",
+          "verdict": "Running your own node means your wallet no longer reveals your addresses to someone else's server.",
+          "tags": [
+            "Node",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Tor Project",
+          "url": "https://www.torproject.org",
+          "verdict": "Hides your IP address when browsing or when your node talks to the network. Free and widely audited.",
+          "tags": [
+            "Network privacy",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Tails",
+          "url": "https://tails.net",
+          "verdict": "A portable operating system that runs from a USB stick and leaves no trace on the computer.",
+          "tags": [
+            "Operating system",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Mullvad VPN",
+          "url": "https://mullvad.net",
+          "verdict": "A Swedish VPN that needs no email to sign up and accepts bitcoin. Simple, honest pricing.",
+          "tags": [
+            "VPN",
+            "Sweden",
+            "Accepts bitcoin"
+          ]
+        },
+        {
+          "name": "Proton",
+          "url": "https://proton.me",
+          "verdict": "Encrypted email and storage from Switzerland. Paid plans can be settled in bitcoin.",
+          "tags": [
+            "Email",
+            "Switzerland",
+            "Accepts bitcoin"
+          ]
+        },
+        {
+          "name": "Silent Payments",
+          "url": "https://silentpayments.xyz",
+          "verdict": "A reusable payment code that avoids address reuse when people pay you. Overview of the standard and supporting tools.",
+          "tags": [
+            "Standard",
+            "On-chain"
+          ]
+        },
+        {
+          "name": "Payjoin",
+          "url": "https://payjoin.org",
+          "verdict": "A payment technique in which sender and receiver both contribute inputs, breaking common chain-analysis assumptions.",
+          "tags": [
+            "Standard",
+            "On-chain"
+          ]
+        },
+        {
+          "name": "Bitcoiner.guide privacy",
+          "url": "https://bitcoiner.guide/privacy",
+          "verdict": "A practical guide to everyday privacy habits for bitcoiners, from address reuse to KYC data.",
+          "tags": [
+            "Guide",
+            "Free"
+          ]
+        },
+        {
+          "name": "Bitcoin Wiki: Privacy",
+          "url": "https://en.bitcoin.it/wiki/Privacy",
+          "verdict": "The most thorough reference on how Bitcoin privacy works and where it leaks. Dense but authoritative.",
+          "tags": [
+            "Reference",
+            "Technical"
+          ]
+        }
+      ],
+      "icon": "shield",
+      "accent": "indigo"
+    },
+    {
+      "slug": "spend-bitcoin",
+      "related": [
+        "/ecosystem/store-tools/",
+        "/tax.html",
+        "/bitcoin-tax/"
+      ],
+      "entries": [
+        {
+          "name": "BTC Map",
+          "url": "https://btcmap.org",
+          "verdict": "A community-maintained map of places that accept bitcoin, with many European cities covered.",
+          "tags": [
+            "Map",
+            "Open source",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Bitrefill",
+          "url": "https://www.bitrefill.com",
+          "verdict": "Gift cards and phone top-ups for thousands of European brands, payable with bitcoin and Lightning.",
+          "tags": [
+            "Gift cards",
+            "Lightning",
+            "EU brands"
+          ]
+        },
+        {
+          "name": "The Bitcoin Company",
+          "url": "https://thebitcoincompany.com",
+          "verdict": "Gift cards paid in bitcoin, with sats back on everyday purchases.",
+          "tags": [
+            "Gift cards",
+            "Rewards"
+          ]
+        },
+        {
+          "name": "Lugano's Plan ₿",
+          "url": "https://planb.lugano.ch",
+          "verdict": "The Swiss city programme where hundreds of shops and the city itself accept bitcoin. A model for Europe.",
+          "tags": [
+            "City",
+            "Switzerland"
+          ]
+        },
+        {
+          "name": "Proton",
+          "url": "https://proton.me",
+          "verdict": "Pay for encrypted email, calendar and storage with bitcoin.",
+          "tags": [
+            "Online service",
+            "Switzerland"
+          ]
+        },
+        {
+          "name": "Mullvad VPN",
+          "url": "https://mullvad.net",
+          "verdict": "A VPN subscription you can pay in bitcoin without giving an email address.",
+          "tags": [
+            "Online service",
+            "Sweden"
+          ]
+        },
+        {
+          "name": "Njalla",
+          "url": "https://njal.la",
+          "verdict": "Domain names and servers with a privacy focus, payable in bitcoin.",
+          "tags": [
+            "Domains",
+            "Hosting"
+          ]
+        },
+        {
+          "name": "1984 Hosting",
+          "url": "https://1984.hosting",
+          "verdict": "Icelandic web hosting and domains with a long free-speech record, payable in bitcoin.",
+          "tags": [
+            "Hosting",
+            "Iceland"
+          ]
+        }
+      ],
+      "icon": "bag",
+      "accent": "green"
+    },
+    {
+      "slug": "store-tools",
+      "related": [
+        "/treasury.html",
+        "/tax.html",
+        "/ecosystem/spend-bitcoin/"
+      ],
+      "entries": [
+        {
+          "name": "BTCPay Server",
+          "url": "https://btcpayserver.org",
+          "verdict": "The free, self-hosted standard for accepting bitcoin. No fees and no middleman, with plugins for most shops.",
+          "tags": [
+            "Self-hosted",
+            "Open source",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Swiss Bitcoin Pay",
+          "url": "https://swiss-bitcoin-pay.ch",
+          "verdict": "Lightning payments for shops and restaurants from Switzerland, with a simple point-of-sale app.",
+          "tags": [
+            "POS",
+            "Switzerland",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Coinsnap",
+          "url": "https://coinsnap.io",
+          "verdict": "A German Lightning payment service with plugins for WooCommerce and other shop systems.",
+          "tags": [
+            "Plugins",
+            "Germany",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Bitcoinize",
+          "url": "https://bitcoinize.com",
+          "verdict": "Ready-made point-of-sale terminals for accepting Lightning payments at the counter.",
+          "tags": [
+            "POS hardware",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "OpenNode",
+          "url": "https://opennode.com",
+          "verdict": "A hosted bitcoin payment processor with an API and e-commerce integrations.",
+          "tags": [
+            "Hosted",
+            "API"
+          ]
+        },
+        {
+          "name": "Zaprite",
+          "url": "https://zaprite.com",
+          "verdict": "Invoicing and checkout that settles to your own wallet. Good for freelancers and B2B.",
+          "tags": [
+            "Invoicing",
+            "Self-custody"
+          ]
+        },
+        {
+          "name": "LNbits",
+          "url": "https://lnbits.com",
+          "verdict": "Free, open-source Lightning accounts and extensions, including point-of-sale and paywalls.",
+          "tags": [
+            "Open source",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Voltage",
+          "url": "https://voltage.cloud",
+          "verdict": "Managed Lightning node infrastructure for businesses that do not want to run servers themselves.",
+          "tags": [
+            "Infrastructure",
+            "Lightning"
+          ]
+        }
+      ],
+      "icon": "store",
+      "accent": "teal"
+    },
+    {
+      "slug": "dev-tools",
+      "related": [
+        "/ecosystem/jobs/",
+        "/ecosystem/store-tools/",
+        "/ecosystem/privacy/"
+      ],
+      "entries": [
+        {
+          "name": "Bitcoin Dev Kit (BDK)",
+          "url": "https://bitcoindevkit.org",
+          "verdict": "A modern Rust library for building on-chain wallets, with bindings for mobile and other languages.",
+          "tags": [
+            "Rust",
+            "Open source",
+            "Wallet library"
+          ]
+        },
+        {
+          "name": "Lightning Dev Kit (LDK)",
+          "url": "https://lightningdevkit.org",
+          "verdict": "A flexible Lightning implementation as a library, for teams that want Lightning inside their own app.",
+          "tags": [
+            "Rust",
+            "Lightning",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Breez SDK",
+          "url": "https://breez.technology/sdk/",
+          "verdict": "Add self-custodial Lightning payments to an app with a few calls.",
+          "tags": [
+            "SDK",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Bitcoin Core",
+          "url": "https://bitcoincore.org",
+          "verdict": "The reference implementation. Its RPC interface and documentation are the base of most Bitcoin software.",
+          "tags": [
+            "Reference",
+            "C++",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Core Lightning",
+          "url": "https://blockstream.com/lightning/",
+          "verdict": "A modular, plugin-friendly Lightning node implementation.",
+          "tags": [
+            "Lightning",
+            "C",
+            "Open source"
+          ]
+        },
+        {
+          "name": "ACINQ (Eclair, Phoenix)",
+          "url": "https://acinq.co",
+          "verdict": "The Paris-based team behind the Eclair node and the Lightning tooling that powers Phoenix.",
+          "tags": [
+            "Lightning",
+            "France",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Polar",
+          "url": "https://lightningpolar.com",
+          "verdict": "Spin up local Lightning test networks in one click. The fastest way to prototype.",
+          "tags": [
+            "Testing",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Bitcoin Optech",
+          "url": "https://bitcoinops.org",
+          "verdict": "The weekly technical newsletter that tracks protocol changes. Required reading for teams shipping Bitcoin software.",
+          "tags": [
+            "Newsletter",
+            "Technical"
+          ]
+        },
+        {
+          "name": "mempool.space",
+          "url": "https://mempool.space",
+          "verdict": "Open-source block explorer software and API that you can self-host for your own stack.",
+          "tags": [
+            "Explorer software",
+            "API",
+            "Self-hosted"
+          ]
+        },
+        {
+          "name": "Bitcoin Stack Exchange",
+          "url": "https://bitcoin.stackexchange.com",
+          "verdict": "Questions and answers from protocol developers. Search here before you ask.",
+          "tags": [
+            "Q&A",
+            "Community"
+          ]
+        }
+      ],
+      "icon": "code",
+      "accent": "blue"
+    },
+    {
+      "slug": "jobs",
+      "related": [
+        "/ecosystem/dev-tools/",
+        "/ecosystem/conferences/",
+        "/ecosystem/peers/"
+      ],
+      "entries": [
+        {
+          "name": "Bitcoiner Jobs",
+          "url": "https://bitcoinerjobs.com",
+          "verdict": "The main job board for bitcoin-only companies, with many remote and European roles across all functions.",
+          "tags": [
+            "Job board",
+            "Remote"
+          ]
+        },
+        {
+          "name": "Brink",
+          "url": "https://brink.dev",
+          "verdict": "London-based non-profit that funds and mentors Bitcoin Core developers through grants and fellowships.",
+          "tags": [
+            "Grants",
+            "UK",
+            "Developers"
+          ]
+        },
+        {
+          "name": "OpenSats",
+          "url": "https://opensats.org",
+          "verdict": "Grants and long-term support for open-source Bitcoin developers and projects.",
+          "tags": [
+            "Grants",
+            "Open source"
+          ]
+        },
+        {
+          "name": "HRF Bitcoin Development Fund",
+          "url": "https://hrf.org/program/financial-freedom/bitcoin-development-fund/",
+          "verdict": "Grants from the Human Rights Foundation for privacy and usability work on Bitcoin.",
+          "tags": [
+            "Grants",
+            "Non-profit"
+          ]
+        },
+        {
+          "name": "Spiral",
+          "url": "https://spiral.xyz",
+          "verdict": "Grants and full-time open-source work on Bitcoin and Lightning, funded by Block.",
+          "tags": [
+            "Grants",
+            "Open source"
+          ]
+        },
+        {
+          "name": "₿OSS Challenge (Chaincode)",
+          "url": "https://bosschallenge.xyz",
+          "verdict": "A free training programme for aspiring Bitcoin open-source developers, run by Chaincode Labs.",
+          "tags": [
+            "Training",
+            "Developers"
+          ]
+        },
+        {
+          "name": "Summer of Bitcoin",
+          "url": "https://www.summerofbitcoin.org",
+          "verdict": "A paid summer internship for university students working on Bitcoin open-source projects.",
+          "tags": [
+            "Internship",
+            "Students"
+          ]
+        },
+        {
+          "name": "The Bitcoin Dev Project",
+          "url": "https://bitcoindevs.xyz",
+          "verdict": "Curated paths and good first issues to start contributing to Bitcoin open source.",
+          "tags": [
+            "Career path",
+            "Developers"
+          ]
+        }
+      ],
+      "icon": "briefcase",
+      "accent": "yellow"
+    },
+    {
+      "slug": "peers",
+      "related": [
+        "/concierge.html?utm_source=concierge&utm_medium=ecosystem",
+        "/ecosystem/promote/",
+        "/ecosystem/conferences/"
+      ],
+      "entries": [
+        {
+          "name": "bitcoin-only.com",
+          "url": "https://bitcoin-only.com",
+          "verdict": "The long-running directory of bitcoin-only tools and resources that inspired this section.",
+          "tags": [
+            "Directory"
+          ]
+        },
+        {
+          "name": "Bitcoiner.guide",
+          "url": "https://bitcoiner.guide",
+          "verdict": "Clear, opinionated guides on self-custody, privacy and running your own infrastructure.",
+          "tags": [
+            "Guides",
+            "Education"
+          ]
+        },
+        {
+          "name": "Plan ₿ Network",
+          "url": "https://planb.network",
+          "verdict": "Swiss-based open education platform translating Bitcoin courses into dozens of languages.",
+          "tags": [
+            "Education",
+            "Multilingual"
+          ]
+        },
+        {
+          "name": "Einundzwanzig",
+          "url": "https://einundzwanzig.space",
+          "verdict": "The German-speaking Bitcoin community behind a podcast, education material and open-source tools.",
+          "tags": [
+            "Community",
+            "German"
+          ]
+        },
+        {
+          "name": "21ideas",
+          "url": "https://21ideas.org",
+          "verdict": "A volunteer project translating Bitcoin essays and guides for Russian-speaking readers.",
+          "tags": [
+            "Education",
+            "Russian"
+          ]
+        },
+        {
+          "name": "PlebNet",
+          "url": "https://plebnet.dev",
+          "verdict": "A community of Lightning node operators sharing knowledge on running routing nodes.",
+          "tags": [
+            "Community",
+            "Lightning"
+          ]
+        },
+        {
+          "name": "Bitcoin Design",
+          "url": "https://bitcoin.design",
+          "verdict": "An open community of designers improving the usability of Bitcoin products, with a free design guide.",
+          "tags": [
+            "Design",
+            "Open source"
+          ]
+        },
+        {
+          "name": "Satoshi Nakamoto Institute",
+          "url": "https://nakamotoinstitute.org",
+          "verdict": "Preserves the history and literature of Bitcoin, from Satoshi's writing to the cypherpunks before him.",
+          "tags": [
+            "Archive",
+            "History"
+          ]
+        }
+      ],
+      "icon": "users",
+      "accent": "purple"
+    },
+    {
+      "slug": "promote",
+      "icon": "megaphone",
+      "accent": "orange"
+    }
+  ],
+  "turnstileSiteKey": "0x4AAAAAAFheOLDBd1DyVOhF",
+  "_turnstileNote": "Public site key of the Turnstile widget 'virtuse.com Ecosystem Promote form' (Managed; hostnames virtuse.com, staging.virtuse.com; created 2026-10-22 via the Cloudflare API). Its secret is the Worker secret TURNSTILE_SECRET_KEY (copy it from Cloudflare dashboard > Turnstile). Test keys: site 1x00000000000000000000AA, secret 1x0000000000000000000000000000000AA.",
+  "_organizerNote": "Event JSON-LD organizer per conference, checked on each official site on 2026-10-24: Bitcoin Amsterdam: footer and the site's own Event JSON-LD; Swiss Bitcoin Conference: Impressum: Veranstalter FIWENT GmbH, Bottighofen; BTC Prague: General terms: \"the Organizer\", ID 17259444; Bitcoin FilmFest: no legal organizer named on the site; conference name + website used. Without organizer the conference name and website are used. No prices or performers in the markup (not shown on the page, handover event-structured-data.md)."
+}

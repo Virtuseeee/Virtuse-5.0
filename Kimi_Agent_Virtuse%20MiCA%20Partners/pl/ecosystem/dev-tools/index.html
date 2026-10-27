@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<!-- vb-consent -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/partner-click.js" defer></script>
+<script src="/partner-capture.js" defer></script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<title>Narzędzia i biblioteki dla deweloperów Bitcoina | Virtuse</title>
+<meta name="description" content="Biblioteki, SDK i newslettery do budowania na Bitcoinie i Lightning, wybrane dla deweloperów i zespołów w Europie.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://virtuse.com/pl/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/dev-tools/">
+  <link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/dev-tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Narzędzia i biblioteki dla deweloperów Bitcoina | Virtuse">
+<meta property="og:description" content="Biblioteki, SDK i newslettery do budowania na Bitcoinie i Lightning, wybrane dla deweloperów i zespołów w Europie.">
+<meta property="og:url" content="https://virtuse.com/pl/ecosystem/dev-tools/">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="vb-cfo-stage" content="wait">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-v2.min.css?v=19">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtuse.com/#org",
+      "name": "Virtuse",
+      "legalName": "Virtuse Wealth Management, a.s.",
+      "logo": "https://virtuse.com/email-virtuse-v-mark.png",
+      "url": "https://virtuse.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Borinka 65",
+        "postalCode": "900 32",
+        "addressLocality": "Borinka",
+        "addressCountry": "SK"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://virtuse.com/pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ekosystem Bitcoina",
+          "item": "https://virtuse.com/pl/ecosystem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dla deweloperów",
+          "item": "https://virtuse.com/pl/ecosystem/dev-tools/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://virtuse.com/pl/ecosystem/dev-tools/",
+      "url": "https://virtuse.com/pl/ecosystem/dev-tools/",
+      "name": "Narzędzia dla deweloperów Bitcoina",
+      "description": "Biblioteki, SDK i newslettery do budowania na Bitcoinie i Lightning, wybrane dla deweloperów i zespołów w Europie.",
+      "inLanguage": "pl",
+      "dateModified": "2026-10-22",
+      "publisher": {
+        "@id": "https://virtuse.com/#org"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 10,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Bitcoin Dev Kit (BDK)",
+            "url": "https://bitcoindevkit.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Lightning Dev Kit (LDK)",
+            "url": "https://lightningdevkit.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Breez SDK",
+            "url": "https://breez.technology/sdk/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Bitcoin Core",
+            "url": "https://bitcoincore.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Core Lightning",
+            "url": "https://blockstream.com/lightning/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "ACINQ (Eclair, Phoenix)",
+            "url": "https://acinq.co"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Polar",
+            "url": "https://lightningpolar.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Bitcoin Optech",
+            "url": "https://bitcoinops.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "mempool.space",
+            "url": "https://mempool.space"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "name": "Bitcoin Stack Exchange",
+            "url": "https://bitcoin.stackexchange.com"
+          }
+        ]
+      }
+    }
+  ]
+}</script>
+<script>window.VB_I18N = {"openMenu": "Menu", "closeMenu": "Zamknięcie menu", "latestBrief": "Najnowszy Brief · ", "min": " min", "coverImage": "Okładka: ", "badEmail": "Proszę podać prawidłowy adres e-mail.", "sending": "Wysyłanie...", "subscribed": "Gotowe. Brief ukazuje się w poniedziałki.", "error": "Coś poszło nie tak. Prosimy spróbować ponownie.", "netError": "Błąd sieci. Prosimy spróbować ponownie.", "briefLangNote": " (po angielsku)"};</script>
+</head>
+<body class="page-buy page-eco no-split">
+<!-- generated by seo-build/ecosystem.mjs; edit seo-build/data/ecosystem*.json, not this file -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/pl/index.html" aria-label="Virtuse – strona główna">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Główna nawigacja">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Usługi</button>
+        <div class="nav-drop" id="nd-services"><a href="/pl/buy-bitcoin.html">Kup Bitcoin</a><a href="/pl/secure.html">Przechowywanie</a><a href="/pl/lending.html">Pożyczki</a><a href="/pl/mining.html">Kopanie</a><a href="/pl/treasury.html">Treasury</a><a href="/pl/tax.html">Podatki</a><a href="/pl/bots.html">Boty</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Wiedza</button>
+        <div class="nav-drop" id="nd-learn"><a href="/news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Wiadomości o Bitcoinie, w każdy poniedziałek</span></a><a href="/stories/"><span class="nd-t">Artykuły</span><span class="nd-d">Dłuższe artykuły i analizy</span></a><a href="/pl/blog.html"><span class="nd-t">Blog</span><span class="nd-d">Najnowsze wpisy Virtuse</span></a><a href="/pl/bitcoin-data.html"><span class="nd-t">Dane o Bitcoinie</span><span class="nd-d">Bieżąca cena, sieć i wykresy</span></a><a href="/pl/bitcoin-podatki/"><span class="nd-t">Przewodniki podatkowe według krajów</span><span class="nd-d">Zasady podatkowe w 13 krajach UE</span></a><a href="/pl/faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Odpowiedzi o Virtuse i partnerach</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Narzędzia</button>
+        <div class="nav-drop" id="nd-tools"><a href="/pl/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO · Verdict <span class="nav-badge cfo-badge">Bezpłatnie</span></span><span class="nd-d">Werdykt i audyt opłat bezpłatnie</span></a><a href="/pl/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partnerzy dopasowani do odpowiedzi</span></a><a href="/pl/bitcoin-indeks-oplat/"><span class="nd-t">Indeks opłat</span><span class="nd-d">Całkowity koszt zakupu w porównaniu</span></a><a href="/pl/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regularnych zakupów i opłaty</span></a><a href="/pl/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sprzedać czy pożyczyć pod zastaw Bitcoina</span></a><a href="/pl/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Zasady krajów i sprawdzenie dziedziczenia</span></a><a href="/pl/retirement-calculator.html"><span class="nd-t">Kalkulator emerytalny</span><span class="nd-d">Ile Bitcoina na emeryturę</span></a></div>
+      </div>
+      <div class="nav-group current" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ekosystem</button>
+        <div class="nav-drop" id="nd-eco"><a href="/pl/ecosystem/"><span class="nd-t">Przegląd</span><span class="nd-d">Wszystkie zasoby o Bitcoinie</span></a><a href="/pl/ecosystem/what-is-bitcoin/"><span class="nd-t">Czym jest Bitcoin?</span><span class="nd-d">Przewodnik prostym językiem</span></a><a href="/pl/ecosystem/books/"><span class="nd-t">Książki</span><span class="nd-d">Starannie wybrana lista lektur</span></a><a href="/pl/ecosystem/podcasts/"><span class="nd-t">Podcasty</span><span class="nd-d">Audycje tylko o Bitcoinie</span></a><a href="/pl/ecosystem/videos/"><span class="nd-t">Filmy</span><span class="nd-d">Kanały i filmy dokumentalne</span></a><a href="/pl/ecosystem/conferences/"><span class="nd-t">Konferencje</span><span class="nd-d">Wydarzenia o Bitcoinie w Europie</span></a><a href="/pl/ecosystem/privacy/"><span class="nd-t">Prywatność w Bitcoinie</span><span class="nd-d">Legalne narzędzia prywatności</span></a><a href="/pl/ecosystem/spend-bitcoin/"><span class="nd-t">Płatności Bitcoinem</span><span class="nd-d">Sklepy, mapy i karty podarunkowe</span></a><a href="/pl/ecosystem/store-tools/"><span class="nd-t">Dla sklepów</span><span class="nd-d">Przyjmowanie Bitcoina w sklepie</span></a><a href="/pl/ecosystem/dev-tools/" aria-current="page"><span class="nd-t">Dla deweloperów</span><span class="nd-d">Biblioteki i SDK</span></a><a href="/pl/ecosystem/jobs/"><span class="nd-t">Praca</span><span class="nd-d">Praca, granty i stypendia</span></a><a href="/pl/ecosystem/peers/"><span class="nd-t">Pokrewne projekty</span><span class="nd-d">Inne projekty tylko o Bitcoinie</span></a><a href="/pl/ecosystem/promote/"><span class="nd-t">Wyróżnienie</span><span class="nd-d">Zgłoś projekt do wyróżnienia</span></a></div>
+      </div>
+      <a class="nav-top" href="/pl/about.html">O nas</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Język strony: polski"><span aria-hidden="true">&#127477;&#127473;</span><span class="lang-code">PL</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="/ecosystem/dev-tools/" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="/sk/ecosystem/dev-tools/" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="/cs/ecosystem/dev-tools/" class="lang-opt" lang="cs" hreflang="cs" role="menuitem">Čeština</a><a href="/de/ecosystem/dev-tools/" class="lang-opt" lang="de" hreflang="de" role="menuitem">Deutsch</a><a href="/pl/ecosystem/dev-tools/" class="lang-opt active" lang="pl" hreflang="pl" role="menuitem">Polski</a><a href="/hu/ecosystem/dev-tools/" class="lang-opt" lang="hu" hreflang="hu" role="menuitem">Magyar</a><a href="/fr/ecosystem/dev-tools/" class="lang-opt" lang="fr" hreflang="fr" role="menuitem">Français</a><a href="/es/ecosystem/dev-tools/" class="lang-opt" lang="es" hreflang="es" role="menuitem">Español</a><a href="/uk/ecosystem/dev-tools/" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a><a href="/ru/ecosystem/dev-tools/" class="lang-opt" lang="ru" hreflang="ru" role="menuitem">Русский</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="/pl/concierge.html?utm_source=concierge&amp;utm_medium=nav">Szukam partnerów</a>
+  </div>
+</header>
+
+<main class="wrap eco-acc-blue" id="top">
+  <div class="buy-hero2 eco-hero">
+    <nav class="eco-crumbs" aria-label="Breadcrumb"><a href="/pl/">Strona główna</a> <span aria-hidden="true">/</span> <a href="/pl/ecosystem/">Ekosystem</a> <span aria-hidden="true">/</span> <span>Dla deweloperów</span></nav>
+    <div class="eyebrow blue"><i></i>Ekosystem · Dla deweloperów</div>
+    <h1>Narzędzia dla deweloperów Bitcoina. <span class="h1-grey">Biblioteki i SDK.</span></h1>
+    <p class="sp-lead">Biblioteki, SDK, środowiska testowe i lektury dla deweloperów budujących na Bitcoinie i Lightning. Przede wszystkim open source, a kilka projektów utrzymują europejskie zespoły.</p>
+    <p class="pf-counts">Polecane: 10 · ostatnia weryfikacja 22 października 2026</p>
+  </div>
+  <section id="list">
+    <div class="sec-head one"><div class="sec-copy"><h2>Nasze polecane pozycje. <span>Każda z jednozdaniową oceną.</span></h2></div></div>
+    <div class="eco-grid">
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Rust · Open source · Wallet library</span>
+        <h3>Bitcoin Dev Kit (BDK)</h3>
+        <p lang="en">A modern Rust library for building on-chain wallets, with bindings for mobile and other languages.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoindevkit.org</span><a class="hp-get" href="https://bitcoindevkit.org" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Rust · Lightning · Open source</span>
+        <h3>Lightning Dev Kit (LDK)</h3>
+        <p lang="en">A flexible Lightning implementation as a library, for teams that want Lightning inside their own app.</p>
+        <div class="eco-foot"><span class="eco-host">lightningdevkit.org</span><a class="hp-get" href="https://lightningdevkit.org" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">SDK · Lightning</span>
+        <h3>Breez SDK</h3>
+        <p lang="en">Add self-custodial Lightning payments to an app with a few calls.</p>
+        <div class="eco-foot"><span class="eco-host">breez.technology</span><a class="hp-get" href="https://breez.technology/sdk/" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Reference · C++ · Open source</span>
+        <h3>Bitcoin Core</h3>
+        <p lang="en">The reference implementation. Its RPC interface and documentation are the base of most Bitcoin software.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoincore.org</span><a class="hp-get" href="https://bitcoincore.org" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Lightning · C · Open source</span>
+        <h3>Core Lightning</h3>
+        <p lang="en">A modular, plugin-friendly Lightning node implementation.</p>
+        <div class="eco-foot"><span class="eco-host">blockstream.com</span><a class="hp-get" href="https://blockstream.com/lightning/" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Lightning · France · Open source</span>
+        <h3>ACINQ (Eclair, Phoenix)</h3>
+        <p lang="en">The Paris-based team behind the Eclair node and the Lightning tooling that powers Phoenix.</p>
+        <div class="eco-foot"><span class="eco-host">acinq.co</span><a class="hp-get" href="https://acinq.co" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Testing · Lightning</span>
+        <h3>Polar</h3>
+        <p lang="en">Spin up local Lightning test networks in one click. The fastest way to prototype.</p>
+        <div class="eco-foot"><span class="eco-host">lightningpolar.com</span><a class="hp-get" href="https://lightningpolar.com" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Newsletter · Technical</span>
+        <h3>Bitcoin Optech</h3>
+        <p lang="en">The weekly technical newsletter that tracks protocol changes. Required reading for teams shipping Bitcoin software.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoinops.org</span><a class="hp-get" href="https://bitcoinops.org" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Explorer software · API · Self-hosted</span>
+        <h3>mempool.space</h3>
+        <p lang="en">Open-source block explorer software and API that you can self-host for your own stack.</p>
+        <div class="eco-foot"><span class="eco-host">mempool.space</span><a class="hp-get" href="https://mempool.space" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+      <article class="pcard2 blue eco-card">
+        <span class="eco-k" lang="en">Q&amp;A · Community</span>
+        <h3>Bitcoin Stack Exchange</h3>
+        <p lang="en">Questions and answers from protocol developers. Search here before you ask.</p>
+        <div class="eco-foot"><span class="eco-host">bitcoin.stackexchange.com</span><a class="hp-get" href="https://bitcoin.stackexchange.com" target="_blank" rel="noopener">Strona <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </article>
+    </div>
+  </section>
+  <section id="pick">
+    <div class="sec-head one"><div class="sec-copy"><h2>Jak wybieramy. <span>Trzy zasady dla każdej pozycji.</span></h2></div></div>
+    <div class="how-log"><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Krok 01</span><h3>Ręczny wybór</h3><p>Każdą pozycję wybiera i sprawdza nasz zespół, a każdą ocenę piszemy sami.</p></div></div><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Krok 02</span><h3>Istotne dla Europy</h3><p>Projekty wyłącznie o Bitcoinie, które obsługują użytkowników w UE/EOG lub Szwajcarii, są aktywne, utrzymywane i uczciwe.</p></div></div><div class="how-log-item"><div class="how-log-marker"><span class="how-log-dot"></span></div><div class="how-log-body"><span class="how-log-num">Krok 03</span><h3>Oznaczeni sponsorzy</h3><p>Płatne miejsca są zawsze oznaczone jako „Sponsorowane” i nigdy nie zmieniają naszych kryteriów ani oceny.</p></div></div></div>
+    <p class="eco-more"><a class="tlink" href="/pl/ecosystem/promote/#criteria">Poznaj nasze kryteria umieszczania na liście <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+  </section>
+  <section id="related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Powiązane w Virtuse. <span>Więcej od Virtuse.</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/pl/ecosystem/jobs/"><b>Praca i granty w branży Bitcoin</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/pl/ecosystem/store-tools/"><b>Narzędzia dla sprzedawców</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="gcard" href="/pl/ecosystem/privacy/"><b>Prywatność w Bitcoinie</b><span class="tlink"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+  </section>
+  <p class="pf-disc eco-notes">Wpisy mają charakter informacyjny i nie stanowią porady inwestycyjnej. Opisy pozycji są w języku angielskim. Ostatnia weryfikacja: <time datetime="2026-10-22">22 października 2026</time>.</p>
+
+  <section id="brief">
+    <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Tylko Bitcoin, w każdy poniedziałek.</span></h2></div></div>
+    <div class="brief brief-slim">
+      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=pl">
+        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurier Virtuse Brief na skuterze dostarcza wydanie z 5 października 2026" loading="lazy">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Najnowszy Brief</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (po angielsku)</h3>
+          <p id="briefExcerpt"></p>
+          <span class="more">Całe wydanie →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Brief w każdy poniedziałek. <span>Bezpłatnie.</span></h3>
+        <p>Rynek, regulacje, kopanie. Bez tokenów. Bez PR-u. Jeden e-mail w każdy poniedziałek.</p>
+        <form class="brief-form" id="briefForm" data-brief-form data-source="ecosystem" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Adres e-mail</label>
+          <input id="email" name="email" type="email" placeholder="Adres e-mail" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-ghost" type="submit">Zapisuję się</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Rezygnacja w dowolnym momencie. To nie jest porada inwestycyjna. <a href="/news.html?utm_source=brief&amp;utm_medium=ecosystem" style="color:var(--muted)">Wszystkie wydania i blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Usługi</h4><a href="/pl/buy-bitcoin.html">Kup Bitcoin</a><a href="/pl/secure.html">Przechowywanie</a><a href="/pl/mining.html">Kopanie</a><a href="/pl/lending.html">Pożyczki</a><a href="/pl/treasury.html">Treasury</a><a href="/pl/tax.html">Podatki</a><a href="/pl/bots.html">Boty</a></div><div class="footer-col"><h4>Firma</h4><a href="/pl/about.html">O nas</a><a href="/pl/faq.html">FAQ</a></div><div class="footer-col"><h4>Narzędzia</h4><a href="/pl/cfo.html">Virtuse CFO · Verdict <span class="soon cfo-foot-badge">Bezpłatnie</span></a><a href="/pl/concierge.html">Partner Finder</a><a href="/pl/stacking.html">Stacking Strategist</a><a href="/pl/loan.html">Loan &amp; Liquidity Copilot</a><a href="/pl/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/pl/retirement-calculator.html">Kalkulator emerytalny</a></div><div class="footer-col"><h4>Poradniki</h4><a href="/news.html">Virtuse Brief</a><a href="/pl/blog.html">Blog</a><a href="/pl/bitcoin-data.html">Dane o Bitcoinie</a><a href="/pl/bitcoin-podatki/">Podatek od Bitcoina</a><a href="/pl/bitcoin-indeks-oplat/">Indeks opłat</a><a href="/pl/bitcoin-kalkulator-dca/">Kalkulator DCA</a><a href="/pl/bitcoin-sprzedac-czy-pozyczyc/">Sprzedać czy pożyczyć</a><a href="/pl/bitcoin-dziedziczenie/">Dziedziczenie</a></div><div class="footer-col"><h4>Ekosystem</h4><a href="/pl/ecosystem/">Ekosystem Bitcoina</a><a href="/pl/ecosystem/what-is-bitcoin/">Czym jest Bitcoin?</a><a href="/pl/ecosystem/books/">Książki</a><a href="/pl/ecosystem/podcasts/">Podcasty</a><a href="/pl/ecosystem/videos/">Filmy</a><a href="/pl/ecosystem/conferences/">Konferencje</a><a href="/pl/ecosystem/privacy/">Prywatność w Bitcoinie</a><a href="/pl/ecosystem/spend-bitcoin/">Płatności Bitcoinem</a><a href="/pl/ecosystem/store-tools/">Dla sklepów</a><a href="/pl/ecosystem/dev-tools/">Dla deweloperów</a><a href="/pl/ecosystem/jobs/">Praca</a><a href="/pl/ecosystem/peers/">Pokrewne projekty</a><a href="/pl/ecosystem/promote/">Wyróżnienie</a></div><div class="footer-col"><h4>Informacje prawne</h4><a href="/pl/terms-and-conditions.html">Regulamin</a><a href="/pl/privacy-policy.html">Polityka prywatności</a><a href="/pl/aml-compliance.html">AML i zgodność</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Wszelkie prawa zastrzeżone.</p>
+<p class="footer-operator"><a href="/pl/operator.html">Operator</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Słowacja · Nr identyfikacyjny (IČO) 36 709 042 · NIP UE SK2022293042 · wpisana do rejestru handlowego Sądu Miejskiego Bratysława III, sekcja Sa, nr 4452/B · info@virtuse.com</p>
+      <p class="footer-bottom-brief">Virtuse Brief, cotygodniowy przegląd od Virtuse. <a href="/news.html">Więcej &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Języki"><a href="/ecosystem/dev-tools/" hreflang="en">English</a><a href="/sk/ecosystem/dev-tools/" hreflang="sk">Slovenčina</a><a href="/cs/ecosystem/dev-tools/" hreflang="cs">Čeština</a><a href="/de/ecosystem/dev-tools/" hreflang="de">Deutsch</a><a href="/pl/ecosystem/dev-tools/" hreflang="pl" aria-current="page">Polski</a><a href="/hu/ecosystem/dev-tools/" hreflang="hu">Magyar</a><a href="/fr/ecosystem/dev-tools/" hreflang="fr">Français</a><a href="/es/ecosystem/dev-tools/" hreflang="es">Español</a><a href="/uk/ecosystem/dev-tools/" hreflang="uk">Українська</a><a href="/ru/ecosystem/dev-tools/" hreflang="ru">Русский</a></nav>
+      <p class="legal">Virtuse to niezależny hub porównawczy. Nie przechowuje środków ani kluczy klientów, nie wykonuje zleceń i nie udziela porad inwestycyjnych. Usługi świadczą wymienieni partnerzy na podstawie własnych licencji. Opłaty podano zgodnie z danymi publikowanymi przez partnerów i mogą się one zmienić.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+
+<script src="/site-v2.js?v=11" defer></script>
+<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
+</body>
+</html>

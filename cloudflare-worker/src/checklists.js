@@ -312,6 +312,40 @@ export default {
    ]
   }
  },
+ "umbrel": {
+  "name": "Umbrel",
+  "approved": false,
+  "as_of": "2026-10-27",
+  "sources": [
+   "https://umbrel.com/umbrel-home",
+   "https://apps.umbrel.com/app/bitcoin"
+  ],
+  "open_questions": [
+   "Product page states free delivery to the United States only; EU shipping and import duties not stated on the page read (secure.html shows €479 for Italy incl. duties/taxes).",
+   "Account creation step after umbrel.local is not described on the product page.",
+   "Bitcoin Node sync time not stated."
+  ],
+  "steps": {
+   "en": [
+    {
+     "title": "Choose storage and order",
+     "text": "Order Umbrel Home on umbrel.com with 1TB, 2TB or 4TB NVMe SSD storage. The box contains the device, an Ethernet cable, a power adapter and an instruction manual."
+    },
+    {
+     "title": "Connect Ethernet and power",
+     "text": "Connect Umbrel Home to your router with the Ethernet cable, then plug in the power adapter."
+    },
+    {
+     "title": "Open umbrel.local",
+     "text": "On a computer or phone on the same network, open umbrel.local in a browser and follow the on-screen setup."
+    },
+    {
+     "title": "Install Bitcoin Node",
+     "text": "Install the Bitcoin Node app from the Umbrel App Store to verify every block yourself. Umbrel Home is a node, not a wallet: keep your keys on your own hardware wallet."
+    }
+   ]
+  }
+ },
  "firefish": {
   "name": "Firefish",
   "approved": false,
@@ -726,6 +760,45 @@ export default {
     {
      "title": "Set pool and payout address",
      "text": "Join a pool such as Braiins Pool for regular payouts, or solo mine by entering your own BTC address, e.g. on pool.powermining.io."
+    }
+   ]
+  }
+ },
+ "solo-satoshi": {
+  "name": "Solo Satoshi",
+  "approved": false,
+  "as_of": "2026-10-27",
+  "sources": [
+   "https://www.solosatoshi.com/",
+   "https://www.solosatoshi.com/how-to-set-up-bitaxe/"
+  ],
+  "open_questions": [
+   "Payment methods not stated on the pages read.",
+   "Shipping costs, EU import duties and destination list not stated (page says same-day shipping from Conroe, Texas and global shipping).",
+   "Warranty terms are on /return-policy/ (not read).",
+   "Example pool settings (public-pool.io, solo.ckpool.org) come from Solo Satoshi's guide; consider not naming pools in the email."
+  ],
+  "steps": {
+   "en": [
+    {
+     "title": "Choose a home miner",
+     "text": "Pick a device on solosatoshi.com, for example a Bitaxe or NerdQaxe. Orders placed before 12 PM CT ship the same day from Conroe, Texas."
+    },
+    {
+     "title": "Power on and join its hotspot",
+     "text": "Connect the provided power supply, press RESET, then join the miner's own Wi-Fi network (for example Bitaxe_0469). If no setup window opens, go to 192.168.4.1."
+    },
+    {
+     "title": "Connect to your 2.4 GHz Wi-Fi",
+     "text": "Choose your home network and enter its password. The miner connects to 2.4 GHz networks only. Save and restart; the screen then shows its IP address."
+    },
+    {
+     "title": "Set pool and payout address",
+     "text": "Open AxeOS at that IP address, enter your pool's stratum host and port, and put your own on-chain Bitcoin address in Stratum User. Lightning addresses do not work here."
+    },
+    {
+     "title": "Check the dashboard",
+     "text": "After a restart, AxeOS should show a hashrate above zero and the pool as connected. Accepted shares can take a while to appear."
     }
    ]
   }
