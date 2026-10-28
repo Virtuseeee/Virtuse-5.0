@@ -2,13 +2,25 @@
 // returns (dividends reinvested, via Yahoo Finance adjusted close) for a fixed
 // set of ETFs plus Bitcoin, from 2016 to today. Node 18+, no dependencies.
 // Run: node asset-returns-build/build.mjs
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'data', 'asset-returns.json');
 const START_YEAR = 2016;
+
+// `generated` = when the data last changed, not when the build last ran: a run
+// whose numbers equal the committed file leaves the file untouched, so the
+// Action has nothing to commit.
+function sameData(path, data) {
+  if (!existsSync(path)) return false;
+  try {
+    const { generated: _a, ...prev } = JSON.parse(readFileSync(path, 'utf8'));
+    const { generated: _b, ...next } = data;
+    return JSON.stringify(prev) === JSON.stringify(next);
+  } catch { return false; }
+}
 
 const ASSETS = [
   ['BTC-USD', 'BTC', 'Bitcoin'],
@@ -113,6 +125,7 @@ async function main() {
     source: 'Yahoo Finance adjusted close (total return, dividends reinvested), in USD. EUR-listed ETFs converted with EUR/USD; the page converts every row to EUR on request.',
     rows,
   };
+  if (sameData(OUT, data)) { console.log(`Unchanged: ${OUT} (as of ${data.asOf})`); return; }
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, JSON.stringify(data, null, 1) + '\n');
   console.log(`Wrote ${OUT} (as of ${data.asOf})`);

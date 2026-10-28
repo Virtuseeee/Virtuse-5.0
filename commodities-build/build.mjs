@@ -18,6 +18,18 @@ const START = '2016-01-01';          // first day of the comparison
 const BASE_DATE = '2015-12-31';      // index = 100 here
 const DAY = 864e5;
 
+// `generated` = when the data last changed, not when the build last ran: a run
+// whose numbers equal the committed file leaves the file untouched, so the
+// Action has nothing to commit.
+function sameData(path, data) {
+  if (!existsSync(path)) return false;
+  try {
+    const { generated: _a, ...prev } = JSON.parse(readFileSync(path, 'utf8'));
+    const { generated: _b, ...next } = data;
+    return JSON.stringify(prev) === JSON.stringify(next);
+  } catch { return false; }
+}
+
 // id, display name (English, the page translates by id), returns ticker (ETF),
 // spot/futures ticker for the price + ratios, unit of the spot price.
 const ASSETS = [
@@ -183,6 +195,7 @@ async function main() {
     const prev = JSON.parse(readFileSync(OUT, 'utf8'));
     if (prev.asOf > data.asOf) throw new Error(`new asOf ${data.asOf} is older than the current file (${prev.asOf})`);
   }
+  if (sameData(OUT, data)) { console.log(`Unchanged: ${OUT} (as of ${data.asOf})`); return; }
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, json);
   console.log(`Wrote ${OUT} (as of ${data.asOf}, ${(json.length / 1024).toFixed(0)} KB, BTC/gold ${ratio.gold.current} oz)`);
