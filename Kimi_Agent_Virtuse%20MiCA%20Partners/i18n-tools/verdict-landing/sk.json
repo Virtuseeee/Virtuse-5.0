@@ -16,7 +16,6 @@
 "From rough Bitcoin plan to decision-ready clarity.": "Od hrubého bitcoinového plánu k jasnému rozhodnutiu.",
 "Watch how Verdict scores a plan, names the weakest point, and points to the next step — without telling anyone to buy or sell.": "Pozrite sa, ako Verdikt ohodnotí plán, pomenuje najslabšie miesto a ukáže ďalší krok — bez toho, aby komukoľvek radil kúpiť či predať.",
 "Verdict walkthrough video": "Video ukážka Verdiktu",
-"Illustrative example · not advice · 1:38": "Ilustračný príklad · nie je to rada · 1:38 · video v angličtine",
 "><i></i>Proof</span>": "><i></i>Dôkaz</span>",
 "Investors across [10]+ markets use Verdict to turn a rough Bitcoin plan into a clear read — what's missing, what's weak, and what to do next.": "Investori z [10]+ trhov používajú Verdikt, aby z hrubého bitcoinového plánu získali jasný obraz — čo chýba, čo je slabé a čo urobiť ďalej.",
 "Signals scored": "Hodnotených signálov",
@@ -61,5 +60,9 @@
 "Each signal is scored 0 to 10; the score is their sum, shown rounded to 5. It measures how complete your written plan is, not whether Bitcoin is a good buy.": "Každý signál má 0 až 10 bodov; skóre je ich súčet zaokrúhlený na 5. Meria úplnosť vášho napísaného plánu, nie to, či je Bitcoin dobrý nákup.",
 "<i></i>Signal map</span><b>Sample plan · 55/100</b>": "<i></i>Mapa signálov</span><b>Ukážkový plán · 55/100</b>",
 "Scores shown are from a sample plan. Illustrative, not advice. Every plan also gets a 70% drawdown test.": "Skóre sú z ukážkového plánu. Ilustračné, nie poradenstvo. Každý plán prejde aj testom poklesu o 70 %.",
-"<summary>What can't Verdict do?</summary><p><b>Move money:</b> no keys, no coins, no euros; read-only, always. <b>Place orders:</b> buying happens on the partner's own licensed platform. <b>Tell you to buy or sell:</b> Verdict declines buy, sell and timing questions.</p>": "<summary>Čo Verdikt nedokáže?</summary><p><b>Hýbať peniazmi:</b> žiadne kľúče, mince ani eurá; vždy iba na čítanie. <b>Zadávať príkazy:</b> nákup prebieha na licencovanej platforme partnera. <b>Radiť kúpiť či predať:</b> Verdikt odmieta otázky na nákup, predaj a načasovanie.</p>"
+"<summary>What can't Verdict do?</summary><p><b>Move money:</b> no keys, no coins, no euros; read-only, always. <b>Place orders:</b> buying happens on the partner's own licensed platform. <b>Tell you to buy or sell:</b> Verdict declines buy, sell and timing questions.</p>": "<summary>Čo Verdikt nedokáže?</summary><p><b>Hýbať peniazmi:</b> žiadne kľúče, mince ani eurá; vždy iba na čítanie. <b>Zadávať príkazy:</b> nákup prebieha na licencovanej platforme partnera. <b>Radiť kúpiť či predať:</b> Verdikt odmieta otázky na nákup, predaj a načasovanie.</p>",
+"poster=\"/media/verdict-promo-poster.jpg\"": "poster=\"/media/verdict-promo-poster-sk.jpg\"",
+"<source src=\"/media/verdict-promo-en.mp4\"": "<source src=\"/media/verdict-promo-sk.mp4\"",
+"<track kind=\"captions\" src=\"/media/verdict-promo-en.vtt\" srclang=\"en\" label=\"English\"": "<track kind=\"captions\" src=\"/media/verdict-promo-sk.vtt\" srclang=\"sk\" label=\"Slovenčina\"",
+"Illustrative example · not advice · 1:38": "Ilustračný príklad · nie je to rada · 1:56"
 }
