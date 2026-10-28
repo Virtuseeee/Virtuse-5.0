@@ -125,14 +125,14 @@ SCRIPT = '''<script>
   });
   var f = document.getElementById('cfoWaitForm');
   if (f) {
-    var stage = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
-    var url = (stage ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist';
     var msg = f.querySelector('.wait-msg'), ok = f.querySelector('.wait-ok');
     f.addEventListener('submit', function (e) {
       e.preventDefault(); var em = f.email.value.trim();
       if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(em)) { msg.textContent = f.email.getAttribute('aria-label') + '?'; return; }
       f.querySelector('button[type=submit]').disabled = true;
-      fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: em, website: f.website.value, source: f.dataset.source, lang: root.lang || 'en' }) })
+      // Worker /waitlist through vb-api.js (staging and localhost: the staging Worker's dry run)
+      var body = JSON.stringify({ email: em, website: f.website.value, source: f.dataset.source, lang: root.lang || 'en' });
+      Promise.resolve().then(function () { return window.VB_API.fetchWithTimeout(window.VB_API.url('/waitlist'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body }, window.VB_API.TIMEOUT_MS); })
         .then(function (r) { if (!r.ok) throw 0; f.querySelectorAll('input,button,.wait-note').forEach(function (x) { x.hidden = true; }); msg.textContent = ''; ok.hidden = false;
           (window.dataLayer = window.dataLayer || []).push({ event: 'waitlist_signup', waitlist_source: f.dataset.source }); })
         .catch(function () { f.querySelector('button[type=submit]').disabled = false; msg.textContent = '×'; });
@@ -145,6 +145,8 @@ HREFLANG = ('<link rel="alternate" hreflang="en" href="https://virtuse.com/verdi
             '<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">\n'
             '<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html">\n'
             '<link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">')
+
+VB_API_TAG = '<script src="/vb-api.js?v=1" defer></script>'   # Worker client (vb-api.js) for the waitlist form
 
 HEAD_GATE = '''<script>/* Verdict landing: open the funnel directly for hand-overs, ?flow=1, ?report=1 and a reload during a run */
 (function(){try{var s=sessionStorage;if(location.hash==='#start'||/[?&](flow|report)=1\\b/.test(location.search)||s.getItem('vb-verdict-text')||s.getItem('vb-vl-app')==='1')document.documentElement.classList.add('vl-app');}catch(e){}})();</script>'''
@@ -166,7 +168,7 @@ def build_page(lang, cfg):
     # body: landing before the funnel, funnel gets id="start" and a way back
     s = s.replace('<div class="vf">', '<!-- VL:START -->\n' + landing(lang, cfg) + '\n<!-- VL:END -->\n<div class="vf" id="start">', 1)
     s = s.replace('<div class="vf-top">', '<a class="vl-back" href="#top">' + cfg['back'] + '</a>\n  <div class="vf-top">', 1)
-    s = s.replace('<script src="/vb-profile.js', '<!-- VLS:START -->\n' + SCRIPT + '\n<!-- VLS:END -->\n<script src="/vb-profile.js', 1)
+    s = s.replace('<script src="/vb-profile.js', '<!-- VLS:START -->\n' + VB_API_TAG + '\n' + SCRIPT + '\n<!-- VLS:END -->\n<script src="/vb-profile.js', 1)
     open(path, 'w', encoding='utf8').write(s)
     print('built', cfg['page'])
 

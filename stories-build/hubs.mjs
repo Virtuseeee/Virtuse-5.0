@@ -662,7 +662,12 @@ function tightenCsp(h, pagePath) {
       if (t[1].toLowerCase() === 'script' && !/^(https?:)?\/\/|^data:/.test(src[1])) {
         const rel = src[1].split(/[?#]/)[0];
         const file = rel.startsWith('/') ? path.join(SITE, rel) : path.join(SITE, pagePath, rel);
-        if (fs.existsSync(file)) used.push(fs.readFileSync(file, 'utf8'));
+        if (fs.existsSync(file)) {
+          const js = fs.readFileSync(file, 'utf8');
+          used.push(js);
+          // the shared Worker client, loaded on first use by the scripts that post to the Worker (same rule as csp_tight.py)
+          if (/["']\/vb-api\.js[?"']/.test(js)) used.push(fs.readFileSync(path.join(SITE, 'vb-api.js'), 'utf8'));
+        }
       }
     }
     if (t[1].toLowerCase() === 'script' && !/application\/ld\+json/.test(t[2])) used.push(t[3]);

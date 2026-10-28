@@ -225,6 +225,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </footer>
 </main>
 <!-- VLS:START -->
+<script src="/vb-api.js?v=1" defer></script>
 <script>
 /* Verdict landing: hero sample animation, billing switch, CFO waitlist, landing <-> funnel. */
 (function () {
@@ -292,14 +293,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
   var f = document.getElementById('cfoWaitForm');
   if (f) {
-    var stage = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
-    var url = (stage ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist';
     var msg = f.querySelector('.wait-msg'), ok = f.querySelector('.wait-ok');
     f.addEventListener('submit', function (e) {
       e.preventDefault(); var em = f.email.value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { msg.textContent = f.email.getAttribute('aria-label') + '?'; return; }
       f.querySelector('button[type=submit]').disabled = true;
-      fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: em, website: f.website.value, source: f.dataset.source, lang: root.lang || 'en' }) })
+      // Worker /waitlist through vb-api.js (staging and localhost: the staging Worker's dry run)
+      var body = JSON.stringify({ email: em, website: f.website.value, source: f.dataset.source, lang: root.lang || 'en' });
+      Promise.resolve().then(function () { return window.VB_API.fetchWithTimeout(window.VB_API.url('/waitlist'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body }, window.VB_API.TIMEOUT_MS); })
         .then(function (r) { if (!r.ok) throw 0; f.querySelectorAll('input,button,.wait-note').forEach(function (x) { x.hidden = true; }); msg.textContent = ''; ok.hidden = false;
           (window.dataLayer = window.dataLayer || []).push({ event: 'waitlist_signup', waitlist_source: f.dataset.source }); })
         .catch(function () { f.querySelector('button[type=submit]').disabled = false; msg.textContent = '×'; });

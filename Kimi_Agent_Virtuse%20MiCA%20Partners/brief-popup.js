@@ -10,7 +10,19 @@
   'use strict';
   var DELAY_MS = 6500, SNOOZE_DAYS = 14;
   var SUB_KEY = 'vb-brief-sub', DISMISS_KEY = 'vb-brief-pop-dismissed', SESSION_KEY = 'vb-brief-pop-shown';
-  var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
+
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
 
   var T = {
     en: { title: 'Enjoying the Brief?', dek: 'Get the weekly issue in your inbox every Monday. Bitcoin-only. No tokens. No PR. Free.', email: 'Email address', btn: 'Subscribe', fine: 'Unsubscribe anytime.', no: 'No thanks', close: 'Close' },
@@ -123,11 +135,9 @@
       msg.textContent = ''; msg.className = 'subscribe-msg';
       if (!email) { msg.textContent = ui.emailReq || 'Email is required.'; msg.classList.add('err'); return; }
       btn.disabled = true; btn.textContent = ui.sending || 'Sending';
-      fetch(WORKER, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: form.elements.website.value, lang: window.VB_LANG || lang })
-      }).then(function (res) {
-        return res.json().then(function (d) { return { ok: res.ok, data: d }; });
+      var hp = form.elements.website.value;
+      vbApi().then(function (api) {
+        return api.subscribe({ email: email, hp: hp, lang: window.VB_LANG || lang });
       }).then(function (r) {
         if (r.ok) {
           done = true;
