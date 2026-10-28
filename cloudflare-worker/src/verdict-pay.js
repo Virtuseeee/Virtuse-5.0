@@ -167,7 +167,7 @@ export async function handleCheckout(request, env, origin, { json }) {
   // return from cancel_url does not create a second one).
   const r = await stripeApi(env, 'POST', '/checkout/sessions', params, `verdict-checkout-${rid}-${page}`);
   if (!r.ok || !r.data.url) {
-    console.error('verdict checkout: stripe', r.status, r.data?.error?.type, r.data?.error?.code);
+    console.error('verdict checkout: stripe', r.status, r.data?.error?.type, r.data?.error?.code, r.data?.error?.param);
     return json(502, { error: lang === 'sk' ? 'Platbu sa nepodarilo otvoriť. Skúste to o chvíľu.' : 'Could not open the payment. Please try again in a moment.' }, origin);
   }
   return json(200, { ok: true, url: r.data.url }, origin);
