@@ -87,22 +87,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <form class="vl-ask" id="vlAsk" novalidate>
 <label for="vlText">Vaše rozhodnutie o Bitcoine</label>
 <textarea id="vlText" name="text" rows="3" maxlength="1200" placeholder="Napríklad: Požičiam si na byt so zábezpekou v BTC a zvyšok nechám deťom."></textarea>
-<div class="vl-ask-meta"><button class="vl-priv-btn" type="button" aria-expanded="false" aria-controls="vlPriv">ⓘ Súkromie</button><span class="vl-count"><span id="vlCount">0</span> / 1200</span></div>
-<p class="vl-warn" id="vlPriv" hidden>Nepíšte mená, kontakty, čísla účtov, adresy peňaženiek ani zdravotné údaje. Text neukladáme do databázy Virtuse; na vyhodnotenie ho spracuje Anthropic (USA).</p>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div class="ctas"><button class="b bp" type="submit">Získať verdikt zadarmo →</button></div>
-<a class="vl-how" href="#see">Ako to funguje ↓</a>
 <p class="vl-msg" id="vlMsg" aria-live="polite" data-short="Napíšte o svojom rozhodnutí aspoň jednu vetu (20 a viac znakov)."></p>
 </form>
-<p class="dis">Nejde o investičné poradenstvo.</p>
 </div><div>
 <div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDIKT · kontrola plánu</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
 <div class="st"><div class="q"><small>VÁŠ PLÁN</small>„Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom.“</div></div>
 <div class="st"><div class="ring"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="70" fill="none" stroke="#ffffff14" stroke-width="12"/><circle class="p" cx="85" cy="85" r="70" fill="none" stroke="#5faede" stroke-width="12" stroke-linecap="round" transform="rotate(-90 85 85)"/><text x="85" y="92" text-anchor="middle" fill="#e6edf3" font-size="38" font-weight="800" font-family="Inter">55</text><text x="85" y="116" text-anchor="middle" fill="#8b949e" font-size="13" font-family="Inter">/ 100</text></svg><div><div class="dk">Skóre verdiktu</div><span class="chip">Doplňte 2 – 3 predpoklady</span></div></div></div>
 <div class="st"><div class="dk">10 signálov</div><div class="bars" aria-hidden="true"><i style="height:80%"></i><i style="height:65%"></i><i style="height:90%"></i><i class="lo" style="height:18%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:48%"></i></div><p class="wk">Najslabšie miesto: <b>neznáma likvidačná cena</b></p></div>
 <div class="st"><div class="next"><small>ĎALŠÍ KROK</small><p>Zistite svoju likvidačnú cenu skôr, než podpíšete.</p><a class="chip bl" href="loan.html">Overte v Loan Copilot →</a></div></div>
-</div><div class="lbl">Ukážka · ilustračné čísla</div>
-<p class="sr-only" id="demoAlt">Ukážka, ilustračné čísla: plán „Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom“ má skóre 55 zo 100, pásmo „Doplňte 2 – 3 predpoklady“. Najslabší z 10 signálov je neznáma likvidačná cena a ďalší krok je zistiť ju v Loan Copilot.</p>
+</div><p class="sr-only" id="demoAlt">Ukážka, ilustračné čísla: plán „Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom“ má skóre 55 zo 100, pásmo „Doplňte 2 – 3 predpoklady“. Najslabší z 10 signálov je neznáma likvidačná cena a ďalší krok je zistiť ju v Loan Copilot.</p>
 </div></div>
 
 <section class="v1sec" id="see"><span class="eyebrow blue"><i></i>Pozrite sa</span><h2>Od hrubého bitcoinového plánu k jasnému rozhodnutiu.</h2>
@@ -272,12 +267,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
   var ask = document.getElementById('vlAsk');
   if (ask) {
-    var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
-    var pb = ask.querySelector('.vl-priv-btn'), pv = document.getElementById('vlPriv');
-    var priv = function (on) { if (!pb || !pv) return; pv.hidden = !on; pb.setAttribute('aria-expanded', on ? 'true' : 'false'); };
-    if (pb) pb.addEventListener('click', function () { priv(pv.hidden); });
-    askTa.addEventListener('focus', function () { priv(true); }, { once: true });
-    askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    var askTa = ask.elements.text, askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
     ask.addEventListener('submit', function (e) {
       e.preventDefault(); if (ask.elements.website.value) return;
       var text = askTa.value.trim();
