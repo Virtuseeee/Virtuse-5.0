@@ -210,3 +210,21 @@ test('staging dry run: a valid sign-up answers ok and nothing is sent', withFetc
   const bad = await worker.fetch(req({ email: 'nope', hp: '', source: 'cfo_page' }), env({ WAITLIST_DRY_RUN: '1' }));
   assert.equal(bad.status, 400);
 }));
+
+test('staging dry run for Brief sign-ups (/subscribe): ok, no contact, no email, no rate-limit count', withFetch(async (calls) => {
+  const e = env({ SUBSCRIBE_DRY_RUN: '1' });
+  const res = await worker.fetch(req({ email: 'a@b.co', hp: '', lang: 'sk' }, { path: '/subscribe' }), e);
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true, dryRun: true });
+  assert.equal(calls.length, 0);
+  const bad = await worker.fetch(req({ email: 'nope', hp: '' }, { path: '/subscribe' }), e);
+  assert.equal(bad.status, 400);
+  const evil = await worker.fetch(req({ email: 'a@b.co', hp: '' }, { path: '/subscribe', origin: 'https://evil.example' }), e);
+  assert.equal(evil.status, 403);
+}));
+
+test('without SUBSCRIBE_DRY_RUN a Brief sign-up still reaches Resend', withFetch(async (calls) => {
+  const res = await worker.fetch(req({ email: 'a@b.co', hp: '', lang: 'en' }, { path: '/subscribe' }), env());
+  assert.equal(res.status, 200);
+  assert.ok(calls.some((c) => /resend\.com/.test(c.url)), 'expected a Resend call');
+}));

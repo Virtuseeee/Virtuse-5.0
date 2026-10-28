@@ -1077,6 +1077,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   } catch (err) { root.classList.remove('anim'); }
 })();
 </script>
+<script src="/vb-api.js?v=1" defer></script>
 <script>
 // NAV v2: menu button, dropdown groups
 (function () {
@@ -1122,10 +1123,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'; return; }
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Wird gesendet...';
-    fetch((/^(staging\.virtuse\.com|localhost)$/.test(location.hostname) ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, source: source, lang: 'de' })
-    }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+    Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'de' }); })
       .then(function (r) {
         if (r.ok) {
           form.reset(); msg.textContent = ok ? ok.textContent : "Sie stehen auf der Liste. Wir schreiben Ihnen einmal, wenn Verdict und der kostenlose Audit starten.";

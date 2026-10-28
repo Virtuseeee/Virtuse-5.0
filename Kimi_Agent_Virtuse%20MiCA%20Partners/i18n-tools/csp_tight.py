@@ -27,7 +27,7 @@ SITE = os.path.dirname(HERE)
 OPTIONAL = {
     'script-src': ['https://cdn.jsdelivr.net'],
     'connect-src': ['https://blog.virtuse.com', 'https://api.coingecko.com', 'https://api.binance.com', 'https://mempool.space',
-                    'https://virtuse-newsletter.virtuse-ai.workers.dev'],
+                    'https://virtuse-newsletter.virtuse-ai.workers.dev', 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev'],
     'frame-src': ['https://widget.firefish.io', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://open.spotify.com',
                   'https://platform.twitter.com', 'https://twitter.com', 'https://x.com'],
 }
@@ -56,6 +56,9 @@ def _js_closure(paths):
             q = os.path.normpath(os.path.join(os.path.dirname(p), m.group(1)))
             if os.path.isfile(q):
                 todo.append(q)
+        # the shared Worker client, loaded on first use by the scripts that post to the Worker
+        if re.search(r'''["']/vb-api\.js[?"']''', s):
+            todo.append(os.path.join(SITE, 'vb-api.js'))
     return '\n'.join(text)
 
 

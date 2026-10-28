@@ -1,6 +1,6 @@
 /* Virtuse Brief subscribe pop-up on the story pages and article.html
    (article.js loads it; news.html deliberately has none). Opens after 6.5 s of visible time on the page.
-   Never for subscribers (the Brief forms set localStorage vb-brief-sub) or
+   Never for subscribers (vb-api.js sets localStorage vb-brief-sub after any Brief signup) or
    readers coming from the email (utm_medium=email); after a dismissal not
    again for 14 days; at most once per session. Waits while the cookie banner
    is open. Styles are injected below (uses the Brief tokens from news/news.css),
@@ -10,7 +10,19 @@
   'use strict';
   var DELAY_MS = 6500, SNOOZE_DAYS = 14;
   var SUB_KEY = 'vb-brief-sub', DISMISS_KEY = 'vb-brief-pop-dismissed', SESSION_KEY = 'vb-brief-pop-shown';
-  var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
+
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
 
   var T = {
     en: { title: 'Enjoying the Brief?', dek: 'Get the weekly issue in your inbox every Monday. Bitcoin-only. No tokens. No PR. Free.', email: 'Email address', btn: 'Subscribe', fine: 'Unsubscribe anytime.', no: 'No thanks', close: 'Close' },
@@ -123,15 +135,12 @@
       msg.textContent = ''; msg.className = 'subscribe-msg';
       if (!email) { msg.textContent = ui.emailReq || 'Email is required.'; msg.classList.add('err'); return; }
       btn.disabled = true; btn.textContent = ui.sending || 'Sending';
-      fetch(WORKER, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: form.elements.website.value, lang: window.VB_LANG || lang })
-      }).then(function (res) {
-        return res.json().then(function (d) { return { ok: res.ok, data: d }; });
+      var hp = form.elements.website.value;
+      vbApi().then(function (api) {
+        return api.subscribe({ email: email, hp: hp, lang: window.VB_LANG || lang });
       }).then(function (r) {
         if (r.ok) {
           done = true;
-          try { localStorage.setItem(SUB_KEY, '1'); } catch (err) {}
           form.reset();
           msg.textContent = ui.subOk || 'You are on the list. Check your inbox.'; msg.classList.add('ok');
           track('brief_popup_submit');

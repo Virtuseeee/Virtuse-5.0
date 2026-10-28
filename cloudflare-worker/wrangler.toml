@@ -5,7 +5,7 @@ compatibility_date = "2026-08-14"
 # Production Verdict (Ship, Ras's "ano" required before deploy_worker.sh).
 # Free Verdict open, monthly AI cost cap in EUR. Not here on purpose:
 # VERDICT_REPORT_PREVIEW (the 14 EUR report stays behind the waitlist),
-# VERDICT_TAX_MODULE (country tax line waits for the lawyer), WAITLIST_DRY_RUN,
+# VERDICT_TAX_MODULE (country tax line waits for the lawyer), WAITLIST_DRY_RUN, SUBSCRIBE_DRY_RUN,
 # VERDICT_PER_IP_BOOST (staging test only), VERDICT_CHECKOUT (Stripe).
 vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15" }
 
@@ -35,10 +35,11 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 #   npx wrangler deploy --env staging
 #   npx wrangler secret put ANTHROPIC_API_KEY --env staging   (and UNSUB_SECRET, RESEND_* if /waitlist is tested here)
 # WAITLIST_DRY_RUN: staging sign-ups are validated but not stored or e-mailed (2026-10-27).
+# SUBSCRIBE_DRY_RUN: the same for Brief sign-ups (POST /subscribe), 2026-10-28; staging.virtuse.com posts them here.
 # VERDICT_PER_IP_BOOST: 50 new verdicts per IP on that UTC day only (Ras, testing); ends by itself.
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"
