@@ -2,6 +2,13 @@ name = "virtuse-newsletter"
 main = "dist/worker.js"
 compatibility_date = "2026-08-14"
 
+# Production Verdict (Ship, Ras's "ano" required before deploy_worker.sh).
+# Free Verdict open, monthly AI cost cap in EUR. Not here on purpose:
+# VERDICT_REPORT_PREVIEW (the 14 EUR report stays behind the waitlist),
+# VERDICT_TAX_MODULE (country tax line waits for the lawyer), WAITLIST_DRY_RUN,
+# VERDICT_PER_IP_BOOST (staging test only), VERDICT_CHECKOUT (Stripe).
+vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15" }
+
 # Created via: npx wrangler kv namespace create RATE_LIMIT_KV
 # Then paste the id it prints below.
 [[kv_namespaces]]
