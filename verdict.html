@@ -83,19 +83,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="hero"><div>
 <span class="eyebrow blue"><i></i>Verdict</span>
 <h1>Empower investors to make <em>smart decisions</em></h1>
-<p class="px">Finding the best Bitcoin plan still means checking every provider yourself — and it's often worse than that. This is where Virtuse makes a difference.</p>
+<p class="px">Check how complete your Bitcoin plan is — score, weakest point, next step.</p>
 <form class="vl-ask" id="vlAsk" novalidate>
 <label for="vlText">Your Bitcoin decision</label>
 <textarea id="vlText" name="text" rows="3" maxlength="1200" placeholder="For example: I want to borrow against my BTC to buy a flat and keep the rest for my kids."></textarea>
-<div class="vl-ask-meta"><span class="vl-warn">Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</span><span class="vl-count"><span id="vlCount">0</span> / 1200</span></div>
+<div class="vl-ask-meta"><button class="vl-priv-btn" type="button" aria-expanded="false" aria-controls="vlPriv">ⓘ Privacy</button><span class="vl-count"><span id="vlCount">0</span> / 1200</span></div>
+<p class="vl-warn" id="vlPriv" hidden>Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</p>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-<div class="ctas"><button class="b bp" type="submit">Get your free Verdict →</button><a class="b bg" href="#see">See how it works</a></div>
+<div class="ctas"><button class="b bp" type="submit">Get your free Verdict →</button></div>
+<a class="vl-how" href="#see">See how it works ↓</a>
 <p class="vl-msg" id="vlMsg" aria-live="polite" data-short="Write at least one sentence about your decision (20 characters or more)."></p>
 </form>
-<p class="dis">Verdict rates how complete your thinking is — not whether to buy. Not investment advice.</p>
+<p class="dis">Not investment advice.</p>
 </div><div>
-<div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDICT · plan check</span><span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span></div>
-<div class="st on"><div class="q"><small>YOUR PLAN</small>"Borrow against my BTC to buy a flat, keep the rest for my kids."</div></div>
+<div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDICT · plan check</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+<div class="st"><div class="q"><small>YOUR PLAN</small>"Borrow against my BTC to buy a flat, keep the rest for my kids."</div></div>
 <div class="st"><div class="ring"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="70" fill="none" stroke="#ffffff14" stroke-width="12"/><circle class="p" cx="85" cy="85" r="70" fill="none" stroke="#5faede" stroke-width="12" stroke-linecap="round" transform="rotate(-90 85 85)"/><text x="85" y="92" text-anchor="middle" fill="#e6edf3" font-size="38" font-weight="800" font-family="Inter">55</text><text x="85" y="116" text-anchor="middle" fill="#8b949e" font-size="13" font-family="Inter">/ 100</text></svg><div><div class="dk">Verdict score</div><span class="chip">Add 2 or 3 assumptions</span></div></div></div>
 <div class="st"><div class="dk">10 signals</div><div class="bars" aria-hidden="true"><i style="height:80%"></i><i style="height:65%"></i><i style="height:90%"></i><i class="lo" style="height:18%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:48%"></i></div><p class="wk">Weakest point: <b>liquidation price unknown</b></p></div>
 <div class="st"><div class="next"><small>NEXT STEP</small><p>Find your liquidation price before you sign.</p><a class="chip bl" href="loan.html">Check it in Loan Copilot →</a></div></div>
@@ -271,6 +273,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var ask = document.getElementById('vlAsk');
   if (ask) {
     var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
+    var pb = ask.querySelector('.vl-priv-btn'), pv = document.getElementById('vlPriv');
+    var priv = function (on) { if (!pb || !pv) return; pv.hidden = !on; pb.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    if (pb) pb.addEventListener('click', function () { priv(pv.hidden); });
+    askTa.addEventListener('focus', function () { priv(true); }, { once: true });
     askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
     ask.addEventListener('submit', function (e) {
       e.preventDefault(); if (ask.elements.website.value) return;
@@ -282,17 +288,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     });
   }
   var back = document.querySelector('.vl-back');
-  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
+  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); reveal(); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
   window.addEventListener('hashchange', function () { if (location.hash === '#start') { app(true); window.scrollTo(0, 0); } });
+  // Hero sample: the four steps reveal one after another, then all stay visible
   var d = document.getElementById('demo');
-  if (d && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i'), i = 0, p = false;
-    d.addEventListener('mouseenter', function () { p = true; }); d.addEventListener('mouseleave', function () { p = false; });
-    d.addEventListener('focusin', function () { p = true; }); d.addEventListener('focusout', function () { p = false; });
-    var go = function (n) { s[i].classList.remove('on'); t[i].classList.remove('on'); i = n; s[i].classList.add('on'); t[i].classList.add('on'); };
-    var q = new URLSearchParams(location.search).get('step');
-    if (q !== null) go(+q % 4); else setInterval(function () { if (!p && !root.classList.contains('vl-app')) go((i + 1) % 4); }, 3500);
+  function reveal() {
+    if (!d || d.dataset.shown) return; d.dataset.shown = '1';
+    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i');
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches || !root.classList.contains('anim');
+    s.forEach(function (x, k) { var on = function () { x.classList.add('on'); if (t[k]) t[k].classList.add('on'); }; still ? on() : setTimeout(on, 200 + k * 650); });
   }
+  if (!root.classList.contains('vl-app')) reveal();
   document.querySelectorAll('.vl .billing [data-bill]').forEach(function (b) {
     b.addEventListener('click', function () { var y = b.dataset.bill === 'y';
       document.querySelectorAll('.vl .billing [data-bill]').forEach(function (x) { x.setAttribute('aria-selected', x === b); });
@@ -318,7 +324,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <!-- VLS:END -->
 <script src="/vb-profile.js?v=1" data-tool="verdict"></script>
-<script src="/verdict-flow.js?v=20261028p"></script>
+<script src="/verdict-flow.js?v=20261028a"></script>
 <script src="/pf-recommend.js?v=2" defer></script>
 <script src="/site-v2.js?v=7" defer></script>
 <script src="/consultation-widget.js?v=20261007b" defer></script>

@@ -588,3 +588,29 @@ html.vl-app .vl-back:hover{color:var(--text)}
 }
 .vl .demo .bars{display:flex;margin:0}  /* the CFO fee-demo rule .bars{display:grid} came along with the mockup CSS and flattened the 10 signal bars */
 .vl .bars i.lo{background:linear-gradient(#f59e0b,#a85d00)}  /* weakest signal; not .w, which the site word-split animation hides */
+/* Hero density (handover 2026-10-28): lighter left column, the sample card shows the whole story */
+.vl .hero h1{margin-bottom:28px}
+.vl .hero .px{margin:0 0 28px;max-width:560px}
+.vl .vl-ask{margin-top:0}
+.vl .vl-priv-btn{background:none;border:0;padding:0;font:500 12px/1.4 Inter,system-ui,sans-serif;color:var(--muted);cursor:pointer}
+.vl .vl-priv-btn:hover,.vl .vl-priv-btn[aria-expanded="true"]{color:var(--text)}
+.vl .vl-ask-meta{align-items:center}
+.vl .vl-warn{margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}
+.vl .vl-ask .ctas{margin:20px 0 0}
+.vl .vl-how{display:inline-block;margin:14px 0 0;font-size:14px;color:var(--muted);text-decoration:none}
+.vl .vl-how:hover{color:var(--text)}
+.vl .hero .dis{margin:10px 0 0;font-size:13px;color:var(--muted)}
+/* Sample card: the four steps reveal one after another on load, then stay (no blank card between steps) */
+.vl .hero .demo{display:flex;flex-direction:column;gap:14px}
+.vl .hero .demo .top{margin-bottom:0}
+.vl .hero .demo .st{position:static;left:auto;right:auto;top:auto;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.vl .hero .demo .st.on{opacity:1;transform:none}
+.vl .hero .demo .st:first-of-type{margin-top:auto}.vl .hero .demo .st:last-of-type{margin-bottom:auto}
+html:not(.anim) .vl .hero .demo .st{opacity:1;transform:none}
+.vl .hero .demo .q{font-size:17px;padding:16px 18px}
+.vl .hero .demo .ring{gap:18px}.vl .hero .demo .ring svg{width:104px;height:104px}
+.vl .hero .demo .dk{margin-bottom:6px}
+.vl .hero .demo .bars{height:84px;padding:4px 0 10px}
+.vl .hero .demo .wk{margin:10px 0 0;font-size:15px}
+.vl .hero .demo .next{padding:16px 18px}.vl .hero .demo .next p{font-size:16px;margin:8px 0 12px}
+@media (prefers-reduced-motion:reduce){.vl .hero .demo .st{opacity:1;transform:none;transition:none;margin-bottom:0}.vl .hero .demo .st:last-of-type{margin-bottom:auto}}
