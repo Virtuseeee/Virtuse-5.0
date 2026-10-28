@@ -79,3 +79,19 @@ html:not(.anim) .vl .hero .demo .st{opacity:1;transform:none}
 .vl .hero .demo .wk{margin:10px 0 0;font-size:15px}
 .vl .hero .demo .next{padding:16px 18px}.vl .hero .demo .next p{font-size:16px;margin:8px 0 12px}
 @media (prefers-reduced-motion:reduce){.vl .hero .demo .st{opacity:1;transform:none;transition:none;margin-bottom:0}.vl .hero .demo .st:last-of-type{margin-bottom:auto}}
+/* Hero trimmed (Ras 2026-10-28): no link/disclaimer under the CTA, no privacy toggle or counter, no sample label;
+   both columns end at the CTA's bottom edge */
+.vl .vl-ask .ctas{margin:16px 0 0}
+.vl .hero{padding-bottom:64px}
+.vl .hero .demo{gap:10px;padding:22px 24px}
+.vl .hero .demo .q{font-size:16px;padding:14px 16px}
+.vl .hero .demo .q small{margin-bottom:6px}
+.vl .hero .demo .ring svg{width:88px;height:88px}
+.vl .hero .demo .bars{height:64px;padding:2px 0 8px}
+.vl .hero .demo .wk{margin:8px 0 0;font-size:14px}
+.vl .hero .demo .next{padding:14px 16px}.vl .hero .demo .next p{font-size:15px;margin:6px 0 10px}
+.vl .hero .demo{gap:8px;padding:20px 24px}
+.vl .hero .demo .q{padding:12px 16px}
+.vl .hero .demo .bars{height:56px}
+.vl .hero .demo .top{min-height:0}
+.vl .vl-ask{position:relative}.vl .vl-ask .vl-msg{position:absolute;left:0;right:0;top:100%;margin:8px 0 0;font-size:13px;color:#f5b84a!important}  /* the short-text hint does not push the hero bottom */

@@ -87,22 +87,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <form class="vl-ask" id="vlAsk" novalidate>
 <label for="vlText">Your Bitcoin decision</label>
 <textarea id="vlText" name="text" rows="3" maxlength="1200" placeholder="For example: I want to borrow against my BTC to buy a flat and keep the rest for my kids."></textarea>
-<div class="vl-ask-meta"><button class="vl-priv-btn" type="button" aria-expanded="false" aria-controls="vlPriv">ⓘ Privacy</button><span class="vl-count"><span id="vlCount">0</span> / 1200</span></div>
-<p class="vl-warn" id="vlPriv" hidden>Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</p>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div class="ctas"><button class="b bp" type="submit">Get your free Verdict →</button></div>
-<a class="vl-how" href="#see">See how it works ↓</a>
 <p class="vl-msg" id="vlMsg" aria-live="polite" data-short="Write at least one sentence about your decision (20 characters or more)."></p>
 </form>
-<p class="dis">Not investment advice.</p>
 </div><div>
 <div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDICT · plan check</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
 <div class="st"><div class="q"><small>YOUR PLAN</small>"Borrow against my BTC to buy a flat, keep the rest for my kids."</div></div>
 <div class="st"><div class="ring"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="70" fill="none" stroke="#ffffff14" stroke-width="12"/><circle class="p" cx="85" cy="85" r="70" fill="none" stroke="#5faede" stroke-width="12" stroke-linecap="round" transform="rotate(-90 85 85)"/><text x="85" y="92" text-anchor="middle" fill="#e6edf3" font-size="38" font-weight="800" font-family="Inter">55</text><text x="85" y="116" text-anchor="middle" fill="#8b949e" font-size="13" font-family="Inter">/ 100</text></svg><div><div class="dk">Verdict score</div><span class="chip">Add 2 or 3 assumptions</span></div></div></div>
 <div class="st"><div class="dk">10 signals</div><div class="bars" aria-hidden="true"><i style="height:80%"></i><i style="height:65%"></i><i style="height:90%"></i><i class="lo" style="height:18%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:48%"></i></div><p class="wk">Weakest point: <b>liquidation price unknown</b></p></div>
 <div class="st"><div class="next"><small>NEXT STEP</small><p>Find your liquidation price before you sign.</p><a class="chip bl" href="loan.html">Check it in Loan Copilot →</a></div></div>
-</div><div class="lbl">Sample · illustrative figures</div>
-<p class="sr-only" id="demoAlt">Sample, illustrative figures: the plan "Borrow against my BTC to buy a flat, keep the rest for my kids" scores 55 out of 100, band "Add 2 or 3 assumptions". The weakest of the 10 signals is an unknown liquidation price, and the next step is to find it in Loan Copilot.</p>
+</div><p class="sr-only" id="demoAlt">Sample, illustrative figures: the plan "Borrow against my BTC to buy a flat, keep the rest for my kids" scores 55 out of 100, band "Add 2 or 3 assumptions". The weakest of the 10 signals is an unknown liquidation price, and the next step is to find it in Loan Copilot.</p>
 </div></div>
 
 <section class="v1sec" id="see"><span class="eyebrow blue"><i></i>See it</span><h2>From rough Bitcoin plan to decision-ready clarity.</h2>
@@ -272,12 +267,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
   var ask = document.getElementById('vlAsk');
   if (ask) {
-    var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
-    var pb = ask.querySelector('.vl-priv-btn'), pv = document.getElementById('vlPriv');
-    var priv = function (on) { if (!pb || !pv) return; pv.hidden = !on; pb.setAttribute('aria-expanded', on ? 'true' : 'false'); };
-    if (pb) pb.addEventListener('click', function () { priv(pv.hidden); });
-    askTa.addEventListener('focus', function () { priv(true); }, { once: true });
-    askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    var askTa = ask.elements.text, askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
     ask.addEventListener('submit', function (e) {
       e.preventDefault(); if (ask.elements.website.value) return;
       var text = askTa.value.trim();

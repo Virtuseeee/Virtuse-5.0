@@ -59,12 +59,8 @@ SCRIPT = '''<script>
   });
   var ask = document.getElementById('vlAsk');
   if (ask) {
-    var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
-    var pb = ask.querySelector('.vl-priv-btn'), pv = document.getElementById('vlPriv');
-    var priv = function (on) { if (!pb || !pv) return; pv.hidden = !on; pb.setAttribute('aria-expanded', on ? 'true' : 'false'); };
-    if (pb) pb.addEventListener('click', function () { priv(pv.hidden); });
-    askTa.addEventListener('focus', function () { priv(true); }, { once: true });
-    askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    var askTa = ask.elements.text, askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
     ask.addEventListener('submit', function (e) {
       e.preventDefault(); if (ask.elements.website.value) return;
       var text = askTa.value.trim();
