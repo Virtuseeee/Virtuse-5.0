@@ -7,12 +7,24 @@
 // high (max drawdown), used by the /bitcoin-returns/<year>/ pages.
 // Node 18+, no dependencies.
 // Run: node btc-monthly-build/build.mjs
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'data', 'btc-monthly-returns.json');
+
+// `generated` = when the data last changed, not when the build last ran: a run
+// whose numbers equal the committed file leaves the file untouched, so the
+// Action has nothing to commit.
+function sameData(path, data) {
+  if (!existsSync(path)) return false;
+  try {
+    const { generated: _a, ...prev } = JSON.parse(readFileSync(path, 'utf8'));
+    const { generated: _b, ...next } = data;
+    return JSON.stringify(prev) === JSON.stringify(next);
+  } catch { return false; }
+}
 
 async function getJSON(url) {
   let lastErr;
@@ -98,6 +110,7 @@ async function main() {
     years: yearStats(btc),
     source: 'CoinMetrics community data (PriceUSD, daily reference rate); EUR/USD from the ECB via Frankfurter.',
   };
+  if (sameData(OUT, data)) { console.log(`Unchanged: ${OUT} (as of ${asOf})`); return; }
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, JSON.stringify(data) + '\n');
   console.log(`Wrote ${OUT}: ${months.length} months, ${months[0]}..${months[months.length - 1]}, as of ${asOf}, last close ${closes[months[months.length - 1]]}`);
