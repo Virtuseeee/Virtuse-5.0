@@ -26,7 +26,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import TAX from '../src/tax-facts.js';
 import {
   AREA_COPY, VERBS, verdictLevel, nextSteps, areaView, toolKeyFor, tool as toolOf, pricing,
-  validSummary, validFix, OWN_DECISION, asksWhetherToAct,
+  validSummary, validFix, OWN_DECISION, asksWhetherToAct, areaLevel,
 } from './verdict-result.js';
 export { AREA_COPY, COUNTRY_LOC, verdictLevel, nextSteps, PARTNER_NAMES, VERBS, redFlags } from './verdict-result.js';
 
@@ -314,6 +314,12 @@ function taxFacts() {
     `- ${c.id} ${c.name}: ${c.gainTax}${c.healthLevy ? '; ' + c.healthLevy : ''}. ${c.exemption}. ${c.note || ''}`.trim()).join('\n');
 }
 
+// Tax figures stay out of the AI's own text until the lawyer signs off
+// (Ras 2026-10-28): a tax word plus a percentage falls back to the template.
+const TAX_WORD = /(da[ňňn]|odvod|tax|levy|налог|сбор|взнос)/i;
+const PERCENT = /\d\s*%/;
+export function mentionsTaxFigure(t) { return !!t && TAX_WORD.test(t) && PERCENT.test(t); }
+
 export function systemPrompt(lang) {
   const language = lang === 'sk' ? 'Slovak (formal "vy")' : lang === 'ru' ? 'Russian (formal «вы»)' : 'English';
   const example = { sk: '"Spočítajte, koľko by zostalo z 10 000 € pri poklese o 70 %."', ru: '"Посчитайте, что останется от 10 000 € при падении на 70%."' }[lang] || '"Work out what would be left of €10,000 after a 70% fall."';
@@ -327,6 +333,7 @@ Rules for specific signals:
 - worst_case: set drawdown_tested to true only if the text states what a fall of about 70% would mean for this plan, or the profile says what they would do in a 70% fall (hold, or buy more by a rule). If false, worst_case is at most 4.
 - tax: judge the stated rule against these facts (as of ${TAX.asOf}); a rule that contradicts them scores at most 2 and sets tax_rule_wrong to true (otherwise false). Set country to the person's tax residence if stated, "other" for a country not listed, "unknown" if not stated.
 ${taxFacts()}
+- These tax facts are only for judging. In summary, reasons, fix and missing never write a tax or levy rate, percentage, threshold, amount limit or deadline, not even one the person stated; say it in words instead (for example "how much tax a sale would create in your country"). Tax rules shown to people wait for a lawyer's review.
 - is_loan: true if the decision involves borrowing against Bitcoin.
 
 You never advise. Never say or imply that they should buy, sell, hold, borrow or wait; never name or rank a partner, product, amount, share or timing; never predict a price or return; never call the decision right, good, safe or smart. Each reason describes only what the person's text contains or lacks.
@@ -434,9 +441,10 @@ export function scoreVerdict(out, lang, ctx = {}) {
     if (def.id === 'tax' && out.country === 'other') points = Math.min(points, 5);
     if (def.id === 'tax' && out.tax_rule_wrong) points = Math.min(points, 2);
     if (s.only_profile) points = Math.min(points, PROFILE_ONLY_MAX);
-    const reason = String(s.reason || '').replace(/\s*(Či konať|Whether to act)[^.]*rozhodnutie\.?\s*$/i, '').replace(/\s*Whether to act is your own decision\.?\s*$/i, '').slice(0, 200);
+    let reason = String(s.reason || '').replace(/\s*(Či konať|Whether to act)[^.]*rozhodnutie\.?\s*$/i, '').replace(/\s*Whether to act is your own decision\.?\s*$/i, '').slice(0, 200);
+    if (mentionsTaxFigure(reason)) reason = AREA_COPY[def.id][areaLevel(points)].meaning[L].replace(/\s*\{[a-z_]+\}/g, '');
     let fix = null;
-    if (points < 7 && validFix(s.fix, L, BANNED)) fix = String(s.fix).trim();
+    if (points < 7 && validFix(s.fix, L, BANNED) && !mentionsTaxFigure(s.fix)) fix = String(s.fix).trim();
     fixes[def.id] = points >= 7 ? 'none' : fix ? 'model' : 'template';
     return { id: def.id, name: def[L], priority: def.priority, points, reason, fix, tool: toolOf(toolKeyFor(def.id, profile), L, profile) };
   });
@@ -451,10 +459,10 @@ export function scoreVerdict(out, lang, ctx = {}) {
     ? signals.find((s) => s.id === 'tax')
     : [...signals].sort((a, b) => a.points - b.points || a.priority - b.priority)[0];
   const keepOwn = asksWhetherToAct(ctx.text);
-  let missing = (out.missing || []).map(String).filter(Boolean).filter((m) => keepOwn || !OWN_DECISION.test(m)).slice(0, 3);
+  let missing = (out.missing || []).map(String).filter(Boolean).filter((m) => !mentionsTaxFigure(m)).filter((m) => keepOwn || !OWN_DECISION.test(m)).slice(0, 3);
   if (out.country === 'other') missing.splice(2, 1, TEXT[L].taxOther);
   if (!missing.length) missing = [AREA_COPY[weakest.id].q[L]];
-  const summary = validSummary(out.summary, L, BANNED, SIGNAL_NAMES) ? String(out.summary).trim() : null;
+  const summary = validSummary(out.summary, L, BANNED, SIGNAL_NAMES) && !mentionsTaxFigure(out.summary) ? String(out.summary).trim() : null;
 
   return {
     ok: true,
