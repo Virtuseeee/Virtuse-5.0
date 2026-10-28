@@ -11,7 +11,7 @@ Rebuilds verdict-landing.css and both pages; idempotent (markers VL:START/END)."
 import json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HERE, '..', '..'))
-V = '20261027a'
+V = '20261028a'
 
 LANGS = {
   'en': {'page': 'verdict.html', 'cfo': 'cfo.html',
@@ -57,6 +57,19 @@ SCRIPT = '''<script>
   document.querySelectorAll('[data-vl-start]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); app(true); history.replaceState(null, '', '#start'); if (window.vfSkipIntro) window.vfSkipIntro(); window.scrollTo(0, 0); var t = document.querySelector('#start textarea'); if (t) t.focus({ preventScroll: true }); });
   });
+  var ask = document.getElementById('vlAsk');
+  if (ask) {
+    var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    ask.addEventListener('submit', function (e) {
+      e.preventDefault(); if (ask.elements.website.value) return;
+      var text = askTa.value.trim();
+      if (text.length < 20) { askMsg.textContent = askMsg.dataset.short; askTa.focus(); return; }
+      app(true); history.replaceState(null, '', '#start');
+      if (window.vfStartWithText) window.vfStartWithText(text);
+      window.scrollTo(0, 0);
+    });
+  }
   var back = document.querySelector('.vl-back');
   if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
   window.addEventListener('hashchange', function () { if (location.hash === '#start') { app(true); window.scrollTo(0, 0); } });

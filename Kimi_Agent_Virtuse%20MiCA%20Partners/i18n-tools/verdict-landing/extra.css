@@ -25,3 +25,31 @@ html.vl-app .vl-back:hover{color:var(--text)}
 /* Perex under its heading in every section (Ras 2026-10-27): site-v2 puts .sec-head in two columns */
 .vl .sec-head{grid-template-columns:minmax(0,1fr);align-items:start}
 .vl .sec-head .sec-sub{max-width:680px}
+/* Hero question form (Ras 2026-10-28): the plan is typed in the hero, the funnel starts at the goal step */
+.vl .vl-ask{margin:26px 0 0;max-width:620px}
+.vl .vl-ask label{display:block;font:600 12px/1 var(--mono,ui-monospace),monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.vl .vl-ask textarea{display:block;width:100%;box-sizing:border-box;min-height:104px;resize:vertical;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);color:var(--text);font:400 16px/1.5 Inter,system-ui,sans-serif;transition:border-color .2s,box-shadow .2s}
+.vl .vl-ask textarea::placeholder{color:#6b7480}
+.vl .vl-ask textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(95,174,222,.2)}
+.vl .vl-ask-meta{display:flex;justify-content:space-between;gap:16px;margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}
+.vl .vl-count{flex:none;font-family:var(--mono,ui-monospace),monospace}
+.vl .vl-ask .ctas{margin:18px 0 0}
+.vl .vl-ask button.b{cursor:pointer;font-family:inherit}
+.vl .vl-msg{margin:10px 0 0;font-size:13px;color:#f5b84a}.vl .vl-msg:empty{display:none}
+.vl .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.vl .hero .dis{margin:16px 0 0}
+/* Left and right of the hero share the top and the bottom edge: the sample card stretches to the left column's height */
+@media (min-width:901px){
+  .vl .hero{align-items:stretch}
+  .vl .hero>div:last-child{position:relative;display:flex;flex-direction:column}
+  .vl .hero .demo{flex:1 1 auto}
+  .vl .hero .lbl{position:absolute;left:0;right:0;top:100%;margin-top:12px}
+}
+.vl .hero .eyebrow{display:flex!important;width:fit-content}  /* no inline line-box gap: its top lines up with the sample card */
+/* The sample steps sit in the middle of the stretched card (no empty lower half) */
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .vl .hero .demo .st{top:calc(50% + 20px);transform:translateY(calc(-50% + 10px))}
+  .vl .hero .demo .st.on{transform:translateY(-50%)}
+}
+.vl .demo .bars{display:flex;margin:0}  /* the CFO fee-demo rule .bars{display:grid} came along with the mockup CSS and flattened the 10 signal bars */
+.vl .bars i.lo{background:linear-gradient(#f59e0b,#a85d00)}  /* weakest signal; not .w, which the site word-split animation hides */

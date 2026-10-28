@@ -1,8 +1,6 @@
 {
 "Empower investors to make <em>smart decisions</em>": "Pomáhame investorom robiť <em>múdre rozhodnutia</em>",
 ">Verdict</span>\n<h1>": ">Verdikt</span>\n<h1>",
-"Get your free Verdict →": "Získať verdikt zadarmo →",
-"See how it works": "Ako to funguje",
 "Verdict rates how complete your thinking is — not whether to buy. Not investment advice.": "Verdikt hodnotí úplnosť vašej úvahy — nie to, či kúpiť. Nejde o investičné poradenstvo.",
 "VERDICT · plan check": "VERDIKT · kontrola plánu",
 "YOUR PLAN": "VÁŠ PLÁN",
@@ -119,5 +117,11 @@
 "<span class=\"tag\">THE MISSING LAYER</span><h3>Decide</h3>": "<span class=\"tag\">CHÝBAJÚCA VRSTVA</span><h3>Rozhodnúť</h3>",
 "--c: var(--teal)\"><h3>Decide</h3>": "--c: var(--teal)\"><h3>Rozhodnite</h3>",
 "Finding the best Bitcoin plan still means checking every provider yourself — and it's often worse than that. This is where Virtuse makes a difference.": "Nájsť najlepší bitcoinový plán stále znamená preveriť každého poskytovateľa sám — a často je to ešte horšie. Práve tu Virtuse robí rozdiel.",
-"The #1 decision check for Bitcoin investors": "Rozhodovací test č. 1 pre bitcoinových investorov"
+"The #1 decision check for Bitcoin investors": "Rozhodovací test č. 1 pre bitcoinových investorov",
+"Get your free Verdict →</button>": "Získať verdikt zadarmo →</button>",
+"href=\"#see\">See how it works</a>": "href=\"#see\">Ako to funguje</a>",
+">Your Bitcoin decision</label>": ">Vaše rozhodnutie o Bitcoine</label>",
+"placeholder=\"For example: I want to borrow against my BTC to buy a flat and keep the rest for my kids.\"": "placeholder=\"Napríklad: Požičiam si na byt so zábezpekou v BTC a zvyšok nechám deťom.\"",
+"Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.": "Nepíšte mená, kontakty, čísla účtov, adresy peňaženiek ani zdravotné údaje. Text neukladáme do databázy Virtuse; na vyhodnotenie ho spracuje Anthropic (USA).",
+"data-short=\"Write at least one sentence about your decision (20 characters or more).\"": "data-short=\"Napíšte o svojom rozhodnutí aspoň jednu vetu (20 a viac znakov).\""
 }
