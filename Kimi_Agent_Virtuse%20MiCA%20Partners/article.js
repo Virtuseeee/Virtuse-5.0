@@ -361,6 +361,10 @@
     var GLOBAL_ATTRS = ['class'];
     var ALLOWED_IFRAME_HOSTS = ['www.youtube.com', 'youtube.com', 'www.youtube-nocookie.com', 'open.spotify.com', 'platform.twitter.com', 'twitter.com', 'x.com'];
     function isSafeUrl(url) { try { var u = new URL(url, location.href); return u.protocol === 'http:' || u.protocol === 'https:' || u.protocol === 'mailto:'; } catch (e) { return false; } }
+    // Posts from before the blog moved to blog.virtuse.com point images (often only the
+    // srcset copies) at www.virtuse.com/wp-content/, which 404s there. Same rule as
+    // fixUploadUrls() in stories-build/build.mjs.
+    function fixUploadUrls(v) { return v.replace(/(^|,\s*|\s)(?:(?:https?:)?\/\/(?:www\.)?virtuse\.com)?(\/wp-content\/)/gi, '$1https://blog.virtuse.com$2'); }
     var doc = new DOMParser().parseFromString(html || '', 'text/html');
     function clean(node) {
       Array.prototype.slice.call(node.childNodes).forEach(function (child) {
@@ -377,7 +381,9 @@
         Array.prototype.slice.call(child.attributes).forEach(function (attr) {
           var name = attr.name.toLowerCase();
           if (allowed.indexOf(name) === -1) { child.removeAttribute(attr.name); return; }
-          if ((name === 'href' || name === 'src') && !isSafeUrl(attr.value)) child.removeAttribute(attr.name);
+          var value = attr.value;
+          if (name === 'href' || name === 'src' || name === 'srcset') { value = fixUploadUrls(value); if (value !== attr.value) child.setAttribute(attr.name, value); }
+          if ((name === 'href' || name === 'src') && !isSafeUrl(value)) child.removeAttribute(attr.name);
         });
         if (tag === 'A') child.setAttribute('rel', 'noopener noreferrer');
         clean(child);
