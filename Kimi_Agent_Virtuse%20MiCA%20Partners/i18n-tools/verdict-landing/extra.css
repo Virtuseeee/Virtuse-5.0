@@ -156,3 +156,4 @@ html.anim .vl .radar.in .ar{transform:none;opacity:1}
 .vl a.cd{display:block}.vl .g3>*{min-width:0}@media (max-width:640px){.vl .g3{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vl .g3 .n{font-size:34px}}
 .vl .radar figcaption{flex-wrap:wrap;row-gap:6px}
 @media (max-width:640px){.vl .radar{padding:16px 10px 6px}.vl .radar text{font-size:17px}.vl .radar text .sc{font-size:17px}.vl .radar .dt{r:5}}
+.vl .rep-col h3::before{content:none!important;display:none!important}.vl .rep-col h3{padding-left:0!important}
