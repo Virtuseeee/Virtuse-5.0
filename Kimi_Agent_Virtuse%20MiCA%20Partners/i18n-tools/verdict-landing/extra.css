@@ -103,3 +103,56 @@ html:not(.anim) .vl .hero .demo .st{opacity:1;transform:none}
 @media (max-width:900px){.vl .hero .demo .st{opacity:1!important;transform:none!important;transition:none!important}}
 .vl .hero .demo{padding:16px 24px}
 @media (max-width:640px){.vl .vl-ask textarea{height:96px}}
+/* Signals (Skoora-style, handover 2026-10-28): intro + signal map, three groups of scored rows, band legend */
+.vl #signals .sig-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:40px}
+.vl #signals .sig-top .sec-head{margin-bottom:0}
+.vl #signals .sig-how{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--muted);max-width:560px}
+.vl .radar{margin:0;padding:20px 20px 8px;border:1px solid var(--line,rgba(255,255,255,.08));border-radius:16px;background:radial-gradient(circle at 50% 55%,rgba(95,174,222,.10),transparent 65%),rgba(255,255,255,.015)}
+.vl .radar figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:4px}
+.vl .radar figcaption b{font:600 12px/1 var(--mono,ui-monospace),monospace;color:var(--muted);letter-spacing:.06em}
+.vl .radar svg{display:block;width:100%;height:auto;overflow:visible}
+.vl .radar .rg{fill:none;stroke:rgba(255,255,255,.07)}
+.vl .radar .sp{stroke:rgba(255,255,255,.06)}
+.vl .radar .ar{fill:rgba(95,174,222,.20);stroke:#5faede;stroke-width:2;stroke-linejoin:round}
+.vl .radar .dt{fill:#5faede}.vl .radar .dt.wk{fill:#f7931a}
+.vl .radar text{font:500 11.5px Inter,system-ui,sans-serif;fill:var(--muted)}
+.vl .radar text .sc{font:700 12px var(--mono,ui-monospace),monospace;fill:var(--text)}
+.vl .radar text.wk,.vl .radar text.wk .sc{fill:#f5b84a}
+html.anim .vl .radar .ar{transform-origin:230px 200px;transform:scale(.2);opacity:0;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .6s}
+html.anim .vl .radar.in .ar{transform:none;opacity:1}
+.vl .sig-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.vl .sig-group{border-top:2px solid var(--c);padding-top:16px}
+.vl .sig-group .k{font:600 12px/1 var(--mono,ui-monospace),monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
+.vl .sig-group h3{font-size:20px;margin:0 0 10px}
+.vl .sig-group ul{list-style:none;margin:0;padding:0}
+.vl .sig-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.06)}
+.vl .sig-row b{display:block;font-size:15px;font-weight:600}
+.vl .sig-row span{display:block;font-size:13px;line-height:1.4;color:var(--muted);margin-top:3px}
+.vl .sig-val{display:flex;align-items:center;gap:10px}
+.vl .sig-val i{display:block;width:64px;height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.vl .sig-val em{display:block;height:100%;border-radius:3px;background:#5faede}
+.vl .sig-val b{font:700 14px var(--mono,ui-monospace),monospace;min-width:14px;text-align:right}
+.vl .sig-row.weak > div:first-child b,.vl .sig-row.weak .sig-val b{color:#f5b84a}.vl .sig-row.weak .sig-val em{background:#f7931a}
+.vl .sig-legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:32px}
+.vl .sig-legend .vd-band{padding:14px 16px}
+.vl .sig-legend .vd-band b{font-size:14px}
+.vl .sig-note{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.vl a.vl-in{color:var(--blue,#5faede);text-decoration:none}
+/* Problem: two cards; Report: Free vs Full report in two columns */
+.vl .g4.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vl .rep2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.vl .rep-col .k{font:600 12px/1 var(--mono,ui-monospace),monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:10px}
+.vl .rep-col h3{font-size:30px;margin:0 0 14px}.vl .rep-col h3 small{font-size:14px;font-weight:500;color:var(--muted)}
+.vl .rep-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.vl .rep-col li{position:relative;padding-left:22px;font-size:15px;font-weight:600}
+.vl .rep-col li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.vl .rep-col li span{font-weight:400;color:var(--muted);margin-left:6px}
+.vl .plan-more{margin:6px 0 18px}.vl .plan-more a{color:var(--blue,#5faede);text-decoration:none}
+.vl a.cd{text-decoration:none;color:inherit}
+@media (max-width:900px){
+  .vl #signals .sig-top{grid-template-columns:minmax(0,1fr);gap:24px}
+  .vl .sig-groups,.vl .sig-legend,.vl .rep2,.vl .g4.g2{grid-template-columns:minmax(0,1fr)}
+}
+.vl a.cd{display:block}.vl .g3>*{min-width:0}@media (max-width:640px){.vl .g3{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vl .g3 .n{font-size:34px}}
+.vl .radar figcaption{flex-wrap:wrap;row-gap:6px}
+@media (max-width:640px){.vl .radar{padding:16px 10px 6px}.vl .radar text{font-size:17px}.vl .radar text .sc{font-size:17px}.vl .radar .dt{r:5}}

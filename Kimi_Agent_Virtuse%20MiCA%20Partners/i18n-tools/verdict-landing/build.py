@@ -9,6 +9,8 @@ funnel directly, so result and PDF links keep working.
 Usage (from the site folder): python3 i18n-tools/verdict-landing/build.py
 Rebuilds verdict-landing.css and both pages; idempotent (markers VL:START/END)."""
 import json, os, re, subprocess, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import signals as SG
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HERE, '..', '..'))
 V = '20261028a'
@@ -18,12 +20,12 @@ LANGS = {
          'title': 'Verdict: empower investors to make smart decisions | Virtuse',
          'desc': 'Verdict scores how complete your Bitcoin plan is on 10 signals, names the weakest point and gives one next step. Free. Not investment advice.',
          'pricing_eyebrow': 'Pricing', 'pricing_h2': 'Three levels. <span>Start with a free Verdict.</span>',
-         'cta': 'Get your free Verdict', 'back': '← About Verdict'},
+         'cta': 'Get your free Verdict', 'back': '← About Verdict', 'report_link': 'What the report contains ↑'},
   'sk': {'page': 'sk/verdict.html', 'cfo': 'sk/cfo.html',
          'title': 'Verdikt: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
          'desc': 'Verdikt ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',
          'pricing_eyebrow': 'Ceny', 'pricing_h2': 'Tri úrovne. <span>Začnite bezplatným verdiktom.</span>',
-         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte'},
+         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte', 'report_link': 'Čo obsahuje report ↑'},
 }
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;')
@@ -38,6 +40,10 @@ def pricing(lang, cfg):
     p, n1 = re.subn(r'href="(?:/)?verdict\.html"', 'href="#start" data-vl-start', p)
     p, n3 = re.subn(r'\s*<button class="btn btn-primary only-audit"[^>]*>[^<]*</button>', '', p)
     assert (n1, n3) == (2, 1), (lang, n1, n3)
+    i = p.index('<div class="plan">', p.index('<div class="plan">') + 1)   # the full-report plan
+    tail, n4 = re.subn(r'<ul>.*?</ul>', '<p class="plan-more"><a href="#report">' + cfg['report_link'] + '</a></p>', p[i:], count=1, flags=re.S)
+    assert n4 == 1, lang
+    p = p[:i] + tail
     return p
 
 def landing(lang, cfg):
@@ -47,6 +53,7 @@ def landing(lang, cfg):
         for k in sorted(d, key=len, reverse=True):
             assert k in t, (lang, 'missing', k[:80])
             t = t.replace(k, d[k])
+    t = t.replace('<!--HEROBARS-->', SG.hero_bars()).replace('<!--RADAR-->', SG.radar(lang)).replace('<!--GROUPS-->', SG.groups(lang))
     return t.replace('<!--PRICING-->', pricing(lang, cfg))
 
 SCRIPT = '''<script>
@@ -69,6 +76,22 @@ SCRIPT = '''<script>
       if (window.vfStartWithText) window.vfStartWithText(text);
       window.scrollTo(0, 0);
     });
+  }
+  // Signal map: draw the shape in when it comes into view
+  var rd = document.querySelector('.vl .radar');
+  if (rd) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rd.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rd); } else rd.classList.add('in'); }
+  // Proof numbers count up when the panel comes into view (final value without motion)
+  var nums = document.querySelectorAll('.vl [data-count]');
+  if (nums.length && 'IntersectionObserver' in window && root.classList.contains('anim') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var fmt = function (v, el) { return v.toLocaleString(root.lang === 'sk' ? 'sk-SK' : 'en-GB') + (el.dataset.suffix || ''); };
+    nums.forEach(function (el) { el.textContent = fmt(0, el); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) {
+      if (!en.isIntersecting) return; io.unobserve(en.target);
+      var el = en.target, to = +el.dataset.count, t0 = performance.now(), dur = 1600;
+      (function step(now) { var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        el.textContent = fmt(Math.round(to * e), el); if (k < 1) requestAnimationFrame(step); })(t0);
+    }); }, { threshold: 0.4 });
+    nums.forEach(function (el) { io.observe(el); });
   }
   var back = document.querySelector('.vl-back');
   if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); reveal(); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
