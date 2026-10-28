@@ -20,12 +20,14 @@ LANGS = {
          'title': 'Verdict: empower investors to make smart decisions | Virtuse',
          'desc': 'Verdict scores how complete your Bitcoin plan is on 10 signals, names the weakest point and gives one next step. Free. Not investment advice.',
          'pricing_eyebrow': 'Pricing', 'pricing_h2': 'Three levels. <span>Start with a free Verdict.</span>',
-         'cta': 'Get your free Verdict', 'back': '← About Verdict', 'report_link': 'What the report contains ↑'},
+         'cta': 'Get your free Verdict', 'back': '← About Verdict', 'free_items': ['Score 0–100 and band', 'Executive summary', 'The bottleneck: the signal that decides the score', 'What holds / what breaks, assumptions (headline)', 'Next steps, with the tool to check them'],
+         'report_items': ['All 10 signals with scores and reasons', 'Type 1 vs Type 2: reversible or not?', "Regret minimizer: what you'd wish you knew", 'Risks &amp; Plan B', 'What holds / what breaks and assumptions in full', 'Next steps with owner and deadline', 'A PDF to keep, no subscription']},
   'sk': {'page': 'sk/verdict.html', 'cfo': 'sk/cfo.html',
          'title': 'Verdikt: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
          'desc': 'Verdikt ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',
          'pricing_eyebrow': 'Ceny', 'pricing_h2': 'Tri úrovne. <span>Začnite bezplatným verdiktom.</span>',
-         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte', 'report_link': 'Čo obsahuje report ↑'},
+         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte', 'free_items': ['Skóre 0 – 100 a pásmo', 'Zhrnutie', 'Úzke miesto: signál, ktorý rozhoduje o skóre', 'Čo drží / čo sa zlomí, predpoklady (hlavná veta)', 'Ďalšie kroky s nástrojom na overenie'],
+         'report_items': ['Všetkých 10 signálov so skóre a dôvodmi', 'Typ 1 vs. Typ 2: vratné, alebo nie?', 'Minimalizácia ľútosti: čo by ste chceli vedieť', 'Riziká a plán B', 'Čo drží / čo sa zlomí a predpoklady celé', 'Ďalšie kroky s tým, kto a dokedy', 'PDF na uloženie, bez predplatného']},
 }
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;')
@@ -40,10 +42,10 @@ def pricing(lang, cfg):
     p, n1 = re.subn(r'href="(?:/)?verdict\.html"', 'href="#start" data-vl-start', p)
     p, n3 = re.subn(r'\s*<button class="btn btn-primary only-audit"[^>]*>[^<]*</button>', '', p)
     assert (n1, n3) == (2, 1), (lang, n1, n3)
-    i = p.index('<div class="plan">', p.index('<div class="plan">') + 1)   # the full-report plan
-    tail, n4 = re.subn(r'<ul>.*?</ul>', '<p class="plan-more"><a href="#report">' + cfg['report_link'] + '</a></p>', p[i:], count=1, flags=re.S)
-    assert n4 == 1, lang
-    p = p[:i] + tail
+    # The Report panel is gone (Ras 2026-10-28): its parts are the plan lists here
+    uls = list(re.finditer(r'<ul>.*?</ul>', p, flags=re.S)); assert len(uls) >= 2, lang
+    for m, items in reversed(list(zip(uls[:2], (cfg['free_items'], cfg['report_items'])))):
+        p = p[:m.start()] + '<ul>' + ''.join('<li>' + x + '</li>' for x in items) + '</ul>' + p[m.end():]
     return p
 
 def landing(lang, cfg):
