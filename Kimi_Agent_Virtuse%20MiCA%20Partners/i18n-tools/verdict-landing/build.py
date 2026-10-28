@@ -60,6 +60,10 @@ SCRIPT = '''<script>
   var ask = document.getElementById('vlAsk');
   if (ask) {
     var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
+    var pb = ask.querySelector('.vl-priv-btn'), pv = document.getElementById('vlPriv');
+    var priv = function (on) { if (!pb || !pv) return; pv.hidden = !on; pb.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    if (pb) pb.addEventListener('click', function () { priv(pv.hidden); });
+    askTa.addEventListener('focus', function () { priv(true); }, { once: true });
     askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
     ask.addEventListener('submit', function (e) {
       e.preventDefault(); if (ask.elements.website.value) return;
@@ -71,17 +75,17 @@ SCRIPT = '''<script>
     });
   }
   var back = document.querySelector('.vl-back');
-  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
+  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); reveal(); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
   window.addEventListener('hashchange', function () { if (location.hash === '#start') { app(true); window.scrollTo(0, 0); } });
+  // Hero sample: the four steps reveal one after another, then all stay visible
   var d = document.getElementById('demo');
-  if (d && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i'), i = 0, p = false;
-    d.addEventListener('mouseenter', function () { p = true; }); d.addEventListener('mouseleave', function () { p = false; });
-    d.addEventListener('focusin', function () { p = true; }); d.addEventListener('focusout', function () { p = false; });
-    var go = function (n) { s[i].classList.remove('on'); t[i].classList.remove('on'); i = n; s[i].classList.add('on'); t[i].classList.add('on'); };
-    var q = new URLSearchParams(location.search).get('step');
-    if (q !== null) go(+q % 4); else setInterval(function () { if (!p && !root.classList.contains('vl-app')) go((i + 1) % 4); }, 3500);
+  function reveal() {
+    if (!d || d.dataset.shown) return; d.dataset.shown = '1';
+    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i');
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches || !root.classList.contains('anim');
+    s.forEach(function (x, k) { var on = function () { x.classList.add('on'); if (t[k]) t[k].classList.add('on'); }; still ? on() : setTimeout(on, 200 + k * 650); });
   }
+  if (!root.classList.contains('vl-app')) reveal();
   document.querySelectorAll('.vl .billing [data-bill]').forEach(function (b) {
     b.addEventListener('click', function () { var y = b.dataset.bill === 'y';
       document.querySelectorAll('.vl .billing [data-bill]').forEach(function (x) { x.setAttribute('aria-selected', x === b); });
