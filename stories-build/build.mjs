@@ -243,6 +243,15 @@ function safeUrl(value, base) {
   } catch (e) { return null; }
 }
 
+// Posts written before the blog moved to blog.virtuse.com still point images (often
+// only the srcset copies) at www.virtuse.com/wp-content/, which 404s there. Uploads
+// always live on the blog itself, never behind WP_BASE (that can be the Worker proxy).
+// Only the start of a value or of a srcset candidate counts, so a URL quoted inside
+// another URL stays as it is. Same rule as fixUploadUrls() in article.js.
+const WP_UPLOADS_HOST = 'https://blog.virtuse.com';
+const fixUploadUrls = (v) => v.replace(
+  /(^|,\s*|\s)(?:(?:https?:)?\/\/(?:www\.)?virtuse\.com)?(\/wp-content\/)/gi, `$1${WP_UPLOADS_HOST}$2`);
+
 // Attribute values were decoded while parsing; entities decode() does not
 // know (&eacute; ...) stay as they are instead of becoming &amp;eacute;.
 const attrEsc = (v) => v.replace(/&(?!(#\d+|#x[0-9a-f]+|[a-z][a-z0-9]*);)/gi, '&amp;')
@@ -272,6 +281,7 @@ function sanitizeBody(html, base) {
       for (const k of (BODY_ATTRS[n.tag] || []).concat('class')) {
         if (!(k in a)) continue;
         let v = a[k];
+        if (k === 'href' || k === 'src' || k === 'srcset') v = fixUploadUrls(v);
         if (k === 'href' || k === 'src') { v = safeUrl(v, base); if (v === null) continue; }
         if (k === 'srcset' && /javascript:/i.test(v)) continue;
         if (n.tag === 'a' && k === 'rel') continue;
