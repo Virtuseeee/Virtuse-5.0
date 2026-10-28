@@ -728,6 +728,11 @@ export default {
       return json(400, { error: 'Please enter a valid email address.' }, origin);
     }
 
+    // Staging (SUBSCRIBE_DRY_RUN=1, like WAITLIST_DRY_RUN): validate and answer
+    // like a real sign-up, but add no contact and send no email, so test
+    // sign-ups on staging.virtuse.com never reach the real Brief list.
+    if (env.SUBSCRIBE_DRY_RUN === '1') return json(200, { ok: true, dryRun: true }, origin);
+
     const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
     if (await isRateLimited(env, ip)) {
       return json(429, { error: 'Too many attempts. Please try again later.' }, origin);
