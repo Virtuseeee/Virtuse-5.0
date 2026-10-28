@@ -35,14 +35,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="/site-v2.min.css?v=5">
-<link rel="stylesheet" href="/verdict-flow.css?v=20261027q">
+<link rel="stylesheet" href="/verdict-flow.css?v=20261028a">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <!-- VLH:START -->
 <link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
-<link rel="stylesheet" href="/verdict-landing.css?v=20261027a">
+<link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
 <script>/* Verdict landing: open the funnel directly for hand-overs, ?flow=1, ?report=1 and a reload during a run */
 (function(){try{var s=sessionStorage;if(location.hash==='#start'||/[?&](flow|report)=1\b/.test(location.search)||s.getItem('vb-verdict-text')||s.getItem('vb-vl-app')==='1')document.documentElement.classList.add('vl-app');}catch(e){}})();</script>
 <!-- VLH:END -->
@@ -84,13 +84,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="eyebrow blue"><i></i>Verdict</span>
 <h1>Empower investors to make <em>smart decisions</em></h1>
 <p class="px">Finding the best Bitcoin plan still means checking every provider yourself — and it's often worse than that. This is where Virtuse makes a difference.</p>
-<div class="ctas"><a class="b bp" href="#start" data-vl-start>Get your free Verdict →</a><a class="b bg" href="#see">See how it works</a></div>
+<form class="vl-ask" id="vlAsk" novalidate>
+<label for="vlText">Your Bitcoin decision</label>
+<textarea id="vlText" name="text" rows="3" maxlength="1200" placeholder="For example: I want to borrow against my BTC to buy a flat and keep the rest for my kids."></textarea>
+<div class="vl-ask-meta"><span class="vl-warn">Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</span><span class="vl-count"><span id="vlCount">0</span> / 1200</span></div>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="ctas"><button class="b bp" type="submit">Get your free Verdict →</button><a class="b bg" href="#see">See how it works</a></div>
+<p class="vl-msg" id="vlMsg" aria-live="polite" data-short="Write at least one sentence about your decision (20 characters or more)."></p>
+</form>
 <p class="dis">Verdict rates how complete your thinking is — not whether to buy. Not investment advice.</p>
 </div><div>
 <div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDICT · plan check</span><span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span></div>
 <div class="st on"><div class="q"><small>YOUR PLAN</small>"Borrow against my BTC to buy a flat, keep the rest for my kids."</div></div>
 <div class="st"><div class="ring"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="70" fill="none" stroke="#ffffff14" stroke-width="12"/><circle class="p" cx="85" cy="85" r="70" fill="none" stroke="#5faede" stroke-width="12" stroke-linecap="round" transform="rotate(-90 85 85)"/><text x="85" y="92" text-anchor="middle" fill="#e6edf3" font-size="38" font-weight="800" font-family="Inter">55</text><text x="85" y="116" text-anchor="middle" fill="#8b949e" font-size="13" font-family="Inter">/ 100</text></svg><div><div class="dk">Verdict score</div><span class="chip">Add 2 or 3 assumptions</span></div></div></div>
-<div class="st"><div class="dk">10 signals</div><div class="bars" aria-hidden="true"><i style="height:80%"></i><i style="height:65%"></i><i style="height:90%"></i><i class="w" style="height:18%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:48%"></i></div><p class="wk">Weakest point: <b>liquidation price unknown</b></p></div>
+<div class="st"><div class="dk">10 signals</div><div class="bars" aria-hidden="true"><i style="height:80%"></i><i style="height:65%"></i><i style="height:90%"></i><i class="lo" style="height:18%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:48%"></i></div><p class="wk">Weakest point: <b>liquidation price unknown</b></p></div>
 <div class="st"><div class="next"><small>NEXT STEP</small><p>Find your liquidation price before you sign.</p><a class="chip bl" href="loan.html">Check it in Loan Copilot →</a></div></div>
 </div><div class="lbl">Sample · illustrative figures</div>
 <p class="sr-only" id="demoAlt">Sample, illustrative figures: the plan "Borrow against my BTC to buy a flat, keep the rest for my kids" scores 55 out of 100, band "Add 2 or 3 assumptions". The weakest of the 10 signals is an unknown liquidation price, and the next step is to find it in Loan Copilot.</p>
@@ -261,6 +268,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   document.querySelectorAll('[data-vl-start]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); app(true); history.replaceState(null, '', '#start'); if (window.vfSkipIntro) window.vfSkipIntro(); window.scrollTo(0, 0); var t = document.querySelector('#start textarea'); if (t) t.focus({ preventScroll: true }); });
   });
+  var ask = document.getElementById('vlAsk');
+  if (ask) {
+    var askTa = ask.elements.text, askCnt = document.getElementById('vlCount'), askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { askCnt.textContent = askTa.value.length; if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    ask.addEventListener('submit', function (e) {
+      e.preventDefault(); if (ask.elements.website.value) return;
+      var text = askTa.value.trim();
+      if (text.length < 20) { askMsg.textContent = askMsg.dataset.short; askTa.focus(); return; }
+      app(true); history.replaceState(null, '', '#start');
+      if (window.vfStartWithText) window.vfStartWithText(text);
+      window.scrollTo(0, 0);
+    });
+  }
   var back = document.querySelector('.vl-back');
   if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
   window.addEventListener('hashchange', function () { if (location.hash === '#start') { app(true); window.scrollTo(0, 0); } });
@@ -298,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <!-- VLS:END -->
 <script src="/vb-profile.js?v=1" data-tool="verdict"></script>
-<script src="/verdict-flow.js?v=20261027q"></script>
+<script src="/verdict-flow.js?v=20261028a"></script>
 <script src="/pf-recommend.js?v=2" defer></script>
 <script src="/site-v2.js?v=7" defer></script>
 <script src="/consultation-widget.js?v=20261007b" defer></script>
