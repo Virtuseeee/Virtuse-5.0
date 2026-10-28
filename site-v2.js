@@ -9,6 +9,19 @@
   function eur(n) { var s = Math.round(n).toLocaleString(LOC); return EUR_AFTER ? s + ' €' : '€' + s; }
   window.VB = { t: t, LANG: LANG, LOC: LOC, eur: eur };
 
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
+
   // CFO stage (meta vb-cfo-stage: wait | audit)
   document.body.classList.toggle('stage-wait', (document.querySelector('meta[name="vb-cfo-stage"]') || {}).content !== 'audit');
 
@@ -172,7 +185,7 @@
     }).catch(function () {});
   })();
 
-  // Brief signup -> the newsletter Worker
+  // Brief signup -> the newsletter Worker (through vb-api.js)
   (function () {
     var form = document.getElementById('briefForm'), msg = document.getElementById('briefMsg'); if (!form) return;
     var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
@@ -181,10 +194,7 @@
       var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = t('badEmail', 'Please enter a valid email address.'); return; }
       msg.textContent = ''; btn.disabled = true; btn.textContent = t('sending', 'Sending...');
-      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp, lang: LANG })
-      }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      vbApi().then(function (api) { return api.subscribe({ email: email, hp: hp, lang: LANG }); })
         .then(function (r) {
           if (r.ok) {
             form.reset(); msg.textContent = t('subscribed', "You're in. Brief goes out Monday.");

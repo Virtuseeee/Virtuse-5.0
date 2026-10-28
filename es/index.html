@@ -1698,6 +1698,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   } catch (err) { root.classList.remove('anim'); }
 })();
 </script>
+<script src="/vb-api.js?v=1" defer></script>
 <script>
 // NAV v2: menu button, dropdown groups
 (function () {
@@ -1780,10 +1781,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Introduzca un correo electrónico válido.'; return; }
     msg.textContent = ''; btn.disabled = true; btn.textContent = 'Enviando...';
-    fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, lang: 'es' })
-    }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+    Promise.resolve().then(function () { return window.VB_API.subscribe({ email: email, hp: hp, lang: 'es' }); })
       .then(function (r) {
         if (r.ok) {
           form.reset(); msg.textContent = "Listo. El Brief sale el lunes.";
@@ -1804,10 +1802,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Introduzca un correo electrónico válido.'; return; }
     msg.textContent = ''; sub.disabled = true; sub.textContent = 'Enviando...';
-    fetch((/^(staging\.virtuse\.com|localhost)$/.test(location.hostname) ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hp: hp, source: 'home_cfo', lang: document.documentElement.lang })
-    }).then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+    Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: 'home_cfo', lang: document.documentElement.lang }); })
       .then(function (r) {
         if (r.ok) {
           form.reset();

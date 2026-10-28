@@ -12,12 +12,23 @@
 (function () {
   // Verdict languages: sk, en, ru (the Worker's LANGS); anything else is English.
   var LANG = ['sk', 'ru'].indexOf(document.documentElement.lang) >= 0 ? document.documentElement.lang : 'en';
-  // Staging and local testing call the staging Worker (Verdict open, full
-  // report preview); production calls the production Worker.
-  var STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
-  var WORKER = (STAGE ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/verdict';
-  // Staging and local testing sign up on the staging Worker (dry run, nothing stored or sent).
-  var WAITLIST = (STAGE ? 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev' : 'https://virtuse-newsletter.virtuse-ai.workers.dev') + '/waitlist';
+
+  // Worker calls go through vb-api.js: staging and local testing call the
+  // staging Worker for /verdict (Verdict open, full report preview) and
+  // /waitlist (dry run, nothing stored or sent); production calls production.
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
+
   var meta = document.querySelector('meta[name="vb-verdict"]');
   // The report preview only with ?report=1 (staging Worker); the default on
   // staging is the free view, as a visitor sees it (verdict-result-v2 §3).
@@ -621,8 +632,8 @@
     // answer instead of paying for and counting a new call.
     var payload = JSON.stringify({ text: A.text, lang: LANG, hp: A.hp || '', profile: profile(), report: PREVIEW, recalc: PREV != null }), cached = null;
     try { var c = JSON.parse(sessionStorage.getItem('vb-verdict-last') || 'null'); if (c && c.k === payload) cached = c.d; } catch (e) {}
-    var call = cached ? Promise.resolve({ ok: true, d: cached }) : fetch(WORKER, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload })
-      .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+    var call = cached ? Promise.resolve({ ok: true, d: cached }) : vbApi().then(function (api) { return api.postJson('/verdict', payload); })
+      .then(function (r) { return { ok: r.ok, d: r.data }; })
       .catch(function () { return { ok: false, d: { error: STR.network } }; });
     if (cached) minWait = Promise.resolve();
     Promise.all([call, minWait]).then(function (x) {
@@ -1258,8 +1269,9 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { msg.textContent = STR.wantBad; return; }
       btn.disabled = true;
       push({ event: 'unlock_click', verdict_lang: LANG, verdict_level: RESULT && RESULT.level && RESULT.level.id, via: 'form' });
-      fetch(WAITLIST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: em, hp: document.getElementById('wh').value, source: 'verdict_report', lang: LANG }) })
-        .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+      var body = { email: em, hp: document.getElementById('wh').value, source: 'verdict_report', lang: LANG };
+      vbApi().then(function (api) { return api.postJson('/waitlist', body); })
+        .then(function (r) { return { ok: r.ok, d: r.data }; })
         .catch(function () { return { ok: false, d: { error: STR.network } }; })
         .then(function (x) {
           if (x.ok) {

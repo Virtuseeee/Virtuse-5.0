@@ -57,7 +57,20 @@
     apply(current(), false);
   })();
 
-  /* Subscribe — same Worker, lang set by the story's language */
+  /* Subscribe — same Worker (vb-api.js), lang set by the story's language */
+
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
   function bindSubscribe(form, msg) {
     if (!form) return;
     var btn = form.querySelector('button[type="submit"]');
@@ -69,13 +82,11 @@
       msg.textContent = ''; msg.className = 'subscribe-msg';
       if (!email) { msg.textContent = ui.emailReq || 'Email is required.'; msg.classList.add('err'); return; }
       btn.disabled = true; btn.textContent = ui.sending || 'Sending';
-      fetch('https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: form.elements.website.value, lang: window.VB_LANG || 'en' })
-      }).then(function (res) {
-        return res.json().then(function (d) { return { ok: res.ok, data: d }; });
+      var hp = form.elements.website.value;
+      vbApi().then(function (api) {
+        return api.subscribe({ email: email, hp: hp, lang: window.VB_LANG || 'en' });
       }).then(function (r) {
-        if (r.ok) { form.reset(); try { localStorage.setItem('vb-brief-sub', '1'); } catch (e) {} msg.textContent = ui.subOk || 'You are on the list. Check your inbox.'; msg.classList.add('ok'); }
+        if (r.ok) { form.reset(); msg.textContent = ui.subOk || 'You are on the list. Check your inbox.'; msg.classList.add('ok'); }
         else { msg.textContent = (r.data && r.data.error) || ui.subErr || 'Could not join the list. Try again.'; msg.classList.add('err'); }
       }).catch(function () {
         msg.textContent = ui.netErr || 'Network error. Try again.'; msg.classList.add('err');

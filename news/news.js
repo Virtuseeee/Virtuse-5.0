@@ -4,9 +4,19 @@
 
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
-  var WORKER = 'https://virtuse-newsletter.virtuse-ai.workers.dev/subscribe';
-  /* Set after a successful signup, so /brief-popup.js stops offering the Brief. */
-  var POP_SUB_KEY = 'vb-brief-sub';
+
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
   var FEATURED_SLUG = 'a-billion-out-bitcoin-holds-80k';
   /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
@@ -309,16 +319,11 @@
       }
       btn.disabled = true;
       btn.textContent = 'Sending';
-      fetch(WORKER, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp, lang: 'en' })
-      }).then(function (res) {
-        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      vbApi().then(function (api) {
+        return api.subscribe({ email: email, hp: hp, lang: 'en' });
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          try { localStorage.setItem(POP_SUB_KEY, '1'); } catch (err) {}
           if (msg) {
             msg.textContent = 'You are on the list. Check your inbox.';
             msg.classList.add('ok');
@@ -582,21 +587,17 @@
       list.appendChild(article);
     });
   }
-  var PULSE_REMOTE = 'https://virtuse-newsletter.virtuse-ai.workers.dev/pulse.json';
   var PULSE_LOCAL = 'news/news-pulse.json?v=20260928b';
+  /* Worker GET /pulse.json, 3 s limit (the local copy is the fallback). */
   function fetchPulseRemote() {
-    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
-    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 3000) : null;
-    return fetch(PULSE_REMOTE, ctrl ? { signal: ctrl.signal } : {}).then(function (r) {
-      if (!r.ok) throw new Error(String(r.status));
-      return r.json();
+    return vbApi().then(function (api) {
+      return api.fetchWithTimeout(api.url('/pulse.json'), {}, 3000, function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      });
     }).then(function (data) {
-      if (timer) clearTimeout(timer);
       if (!data || !Array.isArray(data.items) || !data.items.length) throw new Error('bad remote pulse');
       return data;
-    }, function (err) {
-      if (timer) clearTimeout(timer);
-      throw err;
     });
   }
   function loadPulseData() {

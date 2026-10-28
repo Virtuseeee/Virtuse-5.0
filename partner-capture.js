@@ -14,9 +14,21 @@
   'use strict';
   if (window.top !== window.self) return;
 
-  var SEND_URL = 'https://virtuse-newsletter.virtuse-ai.workers.dev/send';
   var SEEN = 'vb-pc-seen';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
+  // sits in every shared script that posts to the Worker; see vb-api.js.
+  function vbApi() {
+    if (window.VB_API) return Promise.resolve(window.VB_API);
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=1';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
+  }
 
   // partner name (as partner-click.js reports it) -> Worker partner id.
   // Only partners with verified steps in data/partner-checklists.json.
@@ -122,10 +134,10 @@
       var email = input.value.trim();
       if (!EMAIL_RE.test(email)) { msg.textContent = s.invalid; return; }
       busy = true; btn.disabled = true; btn.textContent = s.sending; msg.textContent = '';
-      fetch(SEND_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, hp: hp.value, lang: lang, kind: 'checklist', source: 'partner_click', payload: { partner: id }, brief: cb.checked })
+      var body = JSON.stringify({ email: email, hp: hp.value, lang: lang, kind: 'checklist', source: 'partner_click', payload: { partner: id }, brief: cb.checked });
+      vbApi().then(function (api) {
+        // Worker POST /send; the answer is judged by its status alone
+        return api.fetchWithTimeout(api.url('/send'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body }, api.TIMEOUT_MS);
       }).then(function (r) {
         if (r.ok) {
           form.parentNode.removeChild(form);
