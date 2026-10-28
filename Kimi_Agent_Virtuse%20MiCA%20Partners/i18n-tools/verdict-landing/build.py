@@ -78,7 +78,7 @@ SCRIPT = '''<script>
   function reveal() {
     if (!d || d.dataset.shown) return; d.dataset.shown = '1';
     var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i');
-    var still = matchMedia('(prefers-reduced-motion: reduce)').matches || !root.classList.contains('anim');
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width: 900px)').matches || !root.classList.contains('anim');  // phones: final frame at once
     s.forEach(function (x, k) { var on = function () { x.classList.add('on'); if (t[k]) t[k].classList.add('on'); }; still ? on() : setTimeout(on, 200 + k * 650); });
   }
   if (!root.classList.contains('vl-app')) reveal();

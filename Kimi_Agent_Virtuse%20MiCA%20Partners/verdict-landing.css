@@ -630,3 +630,11 @@ html:not(.anim) .vl .hero .demo .st{opacity:1;transform:none}
 .vl .hero .demo .bars{height:56px}
 .vl .hero .demo .top{min-height:0}
 .vl .vl-ask{position:relative}.vl .vl-ask .vl-msg{position:absolute;left:0;right:0;top:100%;margin:8px 0 0;font-size:13px;color:#f5b84a!important}  /* the short-text hint does not push the hero bottom */
+/* Hero follow-up (2026-10-28): 3-row field, CTA as wide as the field, a little more air above the label;
+   phones show the sample card's final frame at once */
+.vl .hero .px{margin-bottom:38px}
+.vl .vl-ask textarea{min-height:0;height:80px}
+.vl .vl-ask .ctas .b{width:100%;justify-content:center;box-sizing:border-box}
+@media (max-width:900px){.vl .hero .demo .st{opacity:1!important;transform:none!important;transition:none!important}}
+.vl .hero .demo{padding:16px 24px}
+@media (max-width:640px){.vl .vl-ask textarea{height:96px}}
