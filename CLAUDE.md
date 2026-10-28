@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-28, evening) — Live-site audit: .webp served as "Content-Type: -e" (fixed, **.htaccess live**), legacy image hosts on 2 RU stories (fixed in code, needs deploy)
+
+- Audit: all 1095 sitemap URLs 200 without redirects, 106 extra internal refs checked, no console errors on the homepage.
+- **Webglobe maps .webp to the MIME type `-e`** server-wide (blog.virtuse.com too, so not our file; looks like an `echo -e` line in their mime.types). Browsers sniff images so nothing looked broken, but the Cache-Control rules in `.htaccess` key on CONTENT_TYPE, so every .webp (homepage hero, Brief covers) went out uncached. GitHub Pages staging sends `image/webp`, so staging could never show it. Fix in `seo-ops/virtuse.com.htaccess`: `AddType image/webp .webp` (+ avif) and the 7-day image rule also matches by extension. Reproduced on local Apache with a `-e image/webp webp` TypesConfig line; live .htaccess was byte-identical to the repo copy before upload. **Uploaded by the user 2026-10-28**: live webp = `image/webp`, `max-age=604800`; html/json/js/concierge-assets/redirects/404 unchanged. Rollback copy `~/htaccess.live` on Ras's Mac. Blog webp still `-e` (WordPress .htaccess not changed); ask Webglobe to fix the mapping.
+- RU posts 15048/15052 have srcset copies on the pre-migration `https://www.virtuse.com/wp-content/...` (404). `fixUploadUrls()` in `stories-build/build.mjs` and `article.js` rewrites legacy upload URLs (www/apex/http/protocol-relative/bare `/wp-content/`, only at the start of a value or srcset candidate) to `https://blog.virtuse.com`. A full stories rebuild changed only those 2 pages. article.js needs it too: it re-renders the body from WP whenever `modified_gmt` changes.
+- Not a bug: one cookieless GA4 `page_view` (`gcs=G100`) after Reject = Consent Mode advanced since GTM v4 (2026-10-12), disclosed in privacy section 4; after Accept, `_ga` is set and tracking upgrades (`gcs=G111`).
+
 ## Session status (2026-10-27, night 3) — Verdict landing (approved mockup) + Verdict/CFO split, PR #134; **staging only**, staging /version fcadef38
 
 - **verdict.html + sk/verdict.html = landing + funnel on one page.** The landing (`.vl`) sits above the funnel (`#start`).
