@@ -131,7 +131,7 @@ SCRIPT = '''<script>
       if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(em)) { msg.textContent = f.email.getAttribute('aria-label') + '?'; return; }
       f.querySelector('button[type=submit]').disabled = true;
       // Worker /waitlist through vb-api.js (staging and localhost: the staging Worker's dry run)
-      var body = JSON.stringify({ email: em, website: f.website.value, source: f.dataset.source, lang: root.lang || 'en' });
+      var body = JSON.stringify({ email: em, hp: f.website.value, source: f.dataset.source, lang: root.lang || 'en' });
       Promise.resolve().then(function () { return window.VB_API.fetchWithTimeout(window.VB_API.url('/waitlist'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body }, window.VB_API.TIMEOUT_MS); })
         .then(function (r) { if (!r.ok) throw 0; f.querySelectorAll('input,button,.wait-note').forEach(function (x) { x.hidden = true; }); msg.textContent = ''; ok.hidden = false;
           (window.dataLayer = window.dataLayer || []).push({ event: 'waitlist_signup', waitlist_source: f.dataset.source }); })
