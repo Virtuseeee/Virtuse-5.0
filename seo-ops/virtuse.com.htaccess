@@ -1053,6 +1053,17 @@ ErrorDocument 410 /404.html
   Header always set X-Robots-Tag "noindex, follow" "expr=%{REQUEST_URI} == '/article.html' && %{QUERY_STRING} =~ /(?:^|&)slug=/"
 </IfModule>
 
+# MIME types the host maps wrongly (2026-10-28). Webglobe's server-level mapping sends
+# "Content-Type: -e" for .webp (same on blog.virtuse.com, so it is not this file; it looks
+# like an `echo -e` line in their mime.types). Browsers sniff images and still show them,
+# but "-e" matched no Cache-Control rule below, so every .webp (homepage hero, Brief
+# covers) went out without caching. A per-directory AddType overrides the server mapping;
+# AllowOverride FileInfo is already required by the RewriteRules above.
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/avif .avif
+</IfModule>
+
 # Browser caching (2026-10-08, Lighthouse "Use efficient cache lifetimes"). Before this
 # no Cache-Control was sent, so browsers guessed lifetimes from Last-Modified (an old
 # page could be served from cache for days without asking). Files keep their names
@@ -1062,8 +1073,9 @@ ErrorDocument 410 /404.html
   Header set Cache-Control "no-cache" "expr=%{CONTENT_TYPE} =~ m#^(text/html|application/json)#"
   # Unversioned CSS/JS (styles.css, cookie-consent.js, ...): 1 hour.
   Header set Cache-Control "public, max-age=3600" "expr=%{CONTENT_TYPE} =~ m#^(text/css|application/javascript|text/javascript)#"
-  # Images and fonts: 7 days (some images are replaced under the same name).
-  Header set Cache-Control "public, max-age=604800" "expr=%{CONTENT_TYPE} =~ m#^(image/|font/|application/font)#"
+  # Images and fonts: 7 days (some images are replaced under the same name). The
+  # extension test keeps them cached even if the host's MIME mapping breaks again.
+  Header set Cache-Control "public, max-age=604800" "expr=%{CONTENT_TYPE} =~ m#^(image/|font/|application/font)# || %{REQUEST_URI} =~ m#\.(webp|avif|jpe?g|png|gif|svg|ico|woff2?)$#i"
   # Layer 2 module bundles have a content hash in the name: 1 year.
   Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/concierge-assets/#"
 </IfModule>
