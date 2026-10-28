@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T01:33:39.586Z",
+ "generated": "2026-10-28T21:11:36.703Z",
  "asOf": "2026-10-28",
  "years": [
   2016,
@@ -27,9 +27,9 @@
   "2023": 1.10682,
   "2024": 1.04062,
   "2025": 1.17473,
-  "2026": 1.11284
+  "2026": 1.11595
  },
- "yearsElapsed": 10.8255,
+ "yearsElapsed": 10.827,
  "source": "Yahoo Finance adjusted close (total return, dividends reinvested), in USD. EUR-listed ETFs converted with EUR/USD; the page converts every row to EUR on request.",
  "rows": [
   {
@@ -46,10 +46,10 @@
     1.5542,
     1.2105,
     -0.0634,
-    -0.0776
+    -0.0718
    ],
-   "cumulative": 186.4765,
-   "annualized": 0.6217
+   "cumulative": 187.6428,
+   "annualized": 0.6226
   },
   {
    "ticker": "DBC",
@@ -65,10 +65,10 @@
     -0.0619,
     0.0218,
     0.081,
-    0.5027
+    0.5112
    ],
-   "cumulative": 1.9748,
-   "annualized": 0.106
+   "cumulative": 1.9916,
+   "annualized": 0.1065
   },
   {
    "ticker": "QQQ",
@@ -84,10 +84,10 @@
     0.5486,
     0.2558,
     0.2077,
-    0.1781
+    0.1852
    ],
-   "cumulative": 5.956,
-   "annualized": 0.1962
+   "cumulative": 5.9981,
+   "annualized": 0.1969
   },
   {
    "ticker": "IWD",
@@ -103,10 +103,10 @@
     0.1134,
     0.1417,
     0.1568,
-    0.2421
+    0.2431
    ],
-   "cumulative": 2.3221,
-   "annualized": 0.1173
+   "cumulative": 2.3248,
+   "annualized": 0.1174
   },
   {
    "ticker": "CWB",
@@ -122,10 +122,10 @@
     0.145,
     0.1006,
     0.1661,
-    0.0924
+    0.1027
    ],
-   "cumulative": 2.0618,
-   "annualized": 0.1089
+   "cumulative": 2.0908,
+   "annualized": 0.1098
   },
   {
    "ticker": "IWM",
@@ -141,10 +141,10 @@
     0.1683,
     0.1138,
     0.1266,
-    0.1459
+    0.1505
    ],
-   "cumulative": 1.8514,
-   "annualized": 0.1016
+   "cumulative": 1.8627,
+   "annualized": 0.102
   },
   {
    "ticker": "SPY",
@@ -160,10 +160,10 @@
     0.2618,
     0.2489,
     0.1772,
-    0.1375
+    0.1414
    ],
-   "cumulative": 3.4892,
-   "annualized": 0.1488
+   "cumulative": 3.5046,
+   "annualized": 0.1491
   },
   {
    "ticker": "MDY",
@@ -179,10 +179,10 @@
     0.1607,
     0.1364,
     0.0719,
-    0.1153
+    0.117
    ],
-   "cumulative": 2.0038,
-   "annualized": 0.107
+   "cumulative": 2.0085,
+   "annualized": 0.1071
   },
   {
    "ticker": "VWO",
@@ -198,10 +198,10 @@
     0.0926,
     0.1059,
     0.2561,
-    0.0604
+    0.0639
    ],
-   "cumulative": 1.3369,
-   "annualized": 0.0816
+   "cumulative": 1.3448,
+   "annualized": 0.0819
   },
   {
    "ticker": "EFA",
@@ -217,9 +217,9 @@
     0.1836,
     0.0349,
     0.3155,
-    0.0958
+    0.0967
    ],
-   "cumulative": 1.4173,
+   "cumulative": 1.4194,
    "annualized": 0.085
   },
   {
@@ -236,10 +236,10 @@
     0.4259,
     0.3312,
     0.1833,
-    0.0359
+    0.0424
    ],
-   "cumulative": 4.3835,
-   "annualized": 0.1683
+   "cumulative": 4.417,
+   "annualized": 0.1689
   },
   {
    "ticker": "VNQ",
@@ -255,10 +255,10 @@
     0.1185,
     0.0481,
     0.0325,
-    0.0738
+    0.0668
    ],
-   "cumulative": 0.7728,
-   "annualized": 0.0543
+   "cumulative": 0.7613,
+   "annualized": 0.0537
   },
   {
    "ticker": "BIL",
@@ -293,9 +293,9 @@
     0.1154,
     0.0797,
     0.0859,
-    0.0061
+    0.006
    ],
-   "cumulative": 0.7071,
+   "cumulative": 0.7069,
    "annualized": 0.0506
   },
   {
@@ -312,10 +312,10 @@
     0.0922,
     0.0724,
     0.0487,
-    -0.0314
+    -0.0334
    ],
-   "cumulative": 0.3618,
-   "annualized": 0.0289
+   "cumulative": 0.359,
+   "annualized": 0.0287
   },
   {
    "ticker": "TIP",
@@ -331,10 +331,10 @@
     0.038,
     0.0165,
     0.0676,
-    0.0003
+    -0.0001
    ],
-   "cumulative": 0.3327,
-   "annualized": 0.0269
+   "cumulative": 0.332,
+   "annualized": 0.0268
   },
   {
    "ticker": "EMB",
@@ -350,10 +350,10 @@
     0.1062,
     0.0554,
     0.1386,
-    -0.0067
+    -0.0081
    ],
-   "cumulative": 0.4567,
-   "annualized": 0.0354
+   "cumulative": 0.4546,
+   "annualized": 0.0352
   },
   {
    "ticker": "BND",
@@ -369,10 +369,10 @@
     0.0565,
     0.0138,
     0.0708,
-    -0.0076
+    -0.0093
    ],
-   "cumulative": 0.2146,
-   "annualized": 0.0181
+   "cumulative": 0.2125,
+   "annualized": 0.018
   },
   {
    "ticker": "GLD",
@@ -388,10 +388,10 @@
     0.1269,
     0.2666,
     0.6368,
-    -0.0606
+    -0.0575
    ],
-   "cumulative": 2.6692,
-   "annualized": 0.1276
+   "cumulative": 2.6814,
+   "annualized": 0.1279
   },
   {
    "ticker": "FEZ",
@@ -408,10 +408,10 @@
     0.2716,
     0.0358,
     0.3781,
-    0.0349
+    0.0369
    ],
-   "cumulative": 1.5832,
-   "annualized": 0.0916
+   "cumulative": 1.5884,
+   "annualized": 0.0918
   },
   {
    "ticker": "VGK",
@@ -428,10 +428,10 @@
     0.2019,
     0.0187,
     0.3584,
-    0.0628
+    0.0661
    ],
-   "cumulative": 1.475,
-   "annualized": 0.0873
+   "cumulative": 1.4827,
+   "annualized": 0.0876
   },
   {
    "ticker": "EUNH",
@@ -448,10 +448,10 @@
     0.1092,
     -0.0434,
     0.1379,
-    -0.0716
+    -0.0771
    ],
-   "cumulative": 0.0035,
-   "annualized": 0.0003
+   "cumulative": -0.0024,
+   "annualized": -0.0002
   },
   {
    "ticker": "EUN5",
@@ -468,10 +468,10 @@
     0.116,
     -0.0164,
     0.1629,
-    -0.0571
+    -0.0607
    ],
-   "cumulative": 0.1558,
-   "annualized": 0.0135
+   "cumulative": 0.1513,
+   "annualized": 0.0131
   }
  ]
 }
