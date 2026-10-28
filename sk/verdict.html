@@ -274,6 +274,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     s.forEach(function (x, k) { var on = function () { x.classList.add('on'); if (t[k]) t[k].classList.add('on'); }; still ? on() : setTimeout(on, 200 + k * 650); });
   }
   if (!root.classList.contains('vl-app')) reveal();
+  // After the reveal, replay the bars and the score ring every ~5 s while the card is on screen and not hovered
+  if (d && root.classList.contains('anim') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var vis = true, hov = false;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(d);
+    d.addEventListener('mouseenter', function () { hov = true; }); d.addEventListener('mouseleave', function () { hov = false; });
+    setInterval(function () {
+      if (!vis || hov || !d.dataset.shown || root.classList.contains('vl-app') || matchMedia('(max-width: 900px)').matches) return;
+      d.classList.add('replay'); void d.offsetWidth; requestAnimationFrame(function () { d.classList.remove('replay'); });
+    }, 5200);
+  }
   document.querySelectorAll('.vl .billing [data-bill]').forEach(function (b) {
     b.addEventListener('click', function () { var y = b.dataset.bill === 'y';
       document.querySelectorAll('.vl .billing [data-bill]').forEach(function (x) { x.setAttribute('aria-selected', x === b); });

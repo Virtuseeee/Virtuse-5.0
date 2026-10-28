@@ -692,3 +692,17 @@ html.anim .vl .radar.in .ar{transform:none;opacity:1}
 .vl .radar figcaption{flex-wrap:wrap;row-gap:6px}
 @media (max-width:640px){.vl .radar{padding:16px 10px 6px}.vl .radar text{font-size:17px}.vl .radar text .sc{font-size:17px}.vl .radar .dt{r:5}}
 .vl .rep-col h3::before{content:none!important;display:none!important}.vl .rep-col h3{padding-left:0!important}
+/* Hero card stays alive (Ras 2026-10-28): after the reveal the bars regrow and the score ring redraws every few seconds,
+   the weakest bar pulses. Not on phones (final frame) and not with reduced motion. */
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  html.anim .vl .hero .demo .bars i{transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  html.anim .vl .hero .demo .bars i:nth-child(1){transition-delay:0s}html.anim .vl .hero .demo .bars i:nth-child(2){transition-delay:.06s}
+  html.anim .vl .hero .demo .bars i:nth-child(3){transition-delay:.12s}html.anim .vl .hero .demo .bars i:nth-child(4){transition-delay:.18s}
+  html.anim .vl .hero .demo .bars i:nth-child(5){transition-delay:.24s}html.anim .vl .hero .demo .bars i:nth-child(6){transition-delay:.3s}
+  html.anim .vl .hero .demo .bars i:nth-child(7){transition-delay:.36s}html.anim .vl .hero .demo .bars i:nth-child(8){transition-delay:.42s}
+  html.anim .vl .hero .demo .bars i:nth-child(9){transition-delay:.48s}html.anim .vl .hero .demo .bars i:nth-child(10){transition-delay:.54s}
+  html.anim .vl .hero .demo.replay .bars i{transform:scaleY(.1)!important;transition:none!important}
+  html.anim .vl .hero .demo.replay .ring circle.p{stroke-dashoffset:440!important;transition:none!important}
+  html.anim .vl .hero .demo .st.on .bars i.lo{animation:vlWeak 2.4s ease-in-out 1.2s infinite}
+}
+@keyframes vlWeak{0%,100%{filter:none;box-shadow:none}50%{filter:brightness(1.35);box-shadow:0 0 14px rgba(247,147,26,.7)}}
