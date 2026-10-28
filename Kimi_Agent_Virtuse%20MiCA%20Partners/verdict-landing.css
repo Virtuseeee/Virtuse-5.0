@@ -560,3 +560,151 @@ html.vl-app .vl-back:hover{color:var(--text)}
 /* Perex under its heading in every section (Ras 2026-10-27): site-v2 puts .sec-head in two columns */
 .vl .sec-head{grid-template-columns:minmax(0,1fr);align-items:start}
 .vl .sec-head .sec-sub{max-width:680px}
+/* Hero question form (Ras 2026-10-28): the plan is typed in the hero, the funnel starts at the goal step */
+.vl .vl-ask{margin:26px 0 0;max-width:620px}
+.vl .vl-ask label{display:block;font:600 12px/1 var(--mono,ui-monospace),monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.vl .vl-ask textarea{display:block;width:100%;box-sizing:border-box;min-height:104px;resize:vertical;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);color:var(--text);font:400 16px/1.5 Inter,system-ui,sans-serif;transition:border-color .2s,box-shadow .2s}
+.vl .vl-ask textarea::placeholder{color:#6b7480}
+.vl .vl-ask textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(95,174,222,.2)}
+.vl .vl-ask-meta{display:flex;justify-content:space-between;gap:16px;margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}
+.vl .vl-count{flex:none;font-family:var(--mono,ui-monospace),monospace}
+.vl .vl-ask .ctas{margin:18px 0 0}
+.vl .vl-ask button.b{cursor:pointer;font-family:inherit}
+.vl .vl-msg{margin:10px 0 0;font-size:13px;color:#f5b84a}.vl .vl-msg:empty{display:none}
+.vl .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.vl .hero .dis{margin:16px 0 0}
+/* Left and right of the hero share the top and the bottom edge: the sample card stretches to the left column's height */
+@media (min-width:901px){
+  .vl .hero{align-items:stretch}
+  .vl .hero>div:last-child{position:relative;display:flex;flex-direction:column}
+  .vl .hero .demo{flex:1 1 auto}
+  .vl .hero .lbl{position:absolute;left:0;right:0;top:100%;margin-top:12px}
+}
+.vl .hero .eyebrow{display:flex!important;width:fit-content}  /* no inline line-box gap: its top lines up with the sample card */
+/* The sample steps sit in the middle of the stretched card (no empty lower half) */
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .vl .hero .demo .st{top:calc(50% + 20px);transform:translateY(calc(-50% + 10px))}
+  .vl .hero .demo .st.on{transform:translateY(-50%)}
+}
+.vl .demo .bars{display:flex;margin:0}  /* the CFO fee-demo rule .bars{display:grid} came along with the mockup CSS and flattened the 10 signal bars */
+.vl .bars i.lo{background:linear-gradient(#f59e0b,#a85d00)}  /* weakest signal; not .w, which the site word-split animation hides */
+/* Hero density (handover 2026-10-28): lighter left column, the sample card shows the whole story */
+.vl .hero h1{margin-bottom:28px}
+.vl .hero .px{margin:0 0 28px;max-width:560px}
+.vl .vl-ask{margin-top:0}
+.vl .vl-priv-btn{background:none;border:0;padding:0;font:500 12px/1.4 Inter,system-ui,sans-serif;color:var(--muted);cursor:pointer}
+.vl .vl-priv-btn:hover,.vl .vl-priv-btn[aria-expanded="true"]{color:var(--text)}
+.vl .vl-ask-meta{align-items:center}
+.vl .vl-warn{margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}
+.vl .vl-ask .ctas{margin:20px 0 0}
+.vl .vl-how{display:inline-block;margin:14px 0 0;font-size:14px;color:var(--muted);text-decoration:none}
+.vl .vl-how:hover{color:var(--text)}
+.vl .hero .dis{margin:10px 0 0;font-size:13px;color:var(--muted)}
+/* Sample card: the four steps reveal one after another on load, then stay (no blank card between steps) */
+.vl .hero .demo{display:flex;flex-direction:column;gap:14px}
+.vl .hero .demo .top{margin-bottom:0}
+.vl .hero .demo .st{position:static;left:auto;right:auto;top:auto;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.vl .hero .demo .st.on{opacity:1;transform:none}
+.vl .hero .demo .st:first-of-type{margin-top:auto}.vl .hero .demo .st:last-of-type{margin-bottom:auto}
+html:not(.anim) .vl .hero .demo .st{opacity:1;transform:none}
+.vl .hero .demo .q{font-size:17px;padding:16px 18px}
+.vl .hero .demo .ring{gap:18px}.vl .hero .demo .ring svg{width:104px;height:104px}
+.vl .hero .demo .dk{margin-bottom:6px}
+.vl .hero .demo .bars{height:84px;padding:4px 0 10px}
+.vl .hero .demo .wk{margin:10px 0 0;font-size:15px}
+.vl .hero .demo .next{padding:16px 18px}.vl .hero .demo .next p{font-size:16px;margin:8px 0 12px}
+@media (prefers-reduced-motion:reduce){.vl .hero .demo .st{opacity:1;transform:none;transition:none;margin-bottom:0}.vl .hero .demo .st:last-of-type{margin-bottom:auto}}
+/* Hero trimmed (Ras 2026-10-28): no link/disclaimer under the CTA, no privacy toggle or counter, no sample label;
+   both columns end at the CTA's bottom edge */
+.vl .vl-ask .ctas{margin:16px 0 0}
+.vl .hero{padding-bottom:64px}
+.vl .hero .demo{gap:10px;padding:22px 24px}
+.vl .hero .demo .q{font-size:16px;padding:14px 16px}
+.vl .hero .demo .q small{margin-bottom:6px}
+.vl .hero .demo .ring svg{width:88px;height:88px}
+.vl .hero .demo .bars{height:64px;padding:2px 0 8px}
+.vl .hero .demo .wk{margin:8px 0 0;font-size:14px}
+.vl .hero .demo .next{padding:14px 16px}.vl .hero .demo .next p{font-size:15px;margin:6px 0 10px}
+.vl .hero .demo{gap:8px;padding:20px 24px}
+.vl .hero .demo .q{padding:12px 16px}
+.vl .hero .demo .bars{height:56px}
+.vl .hero .demo .top{min-height:0}
+.vl .vl-ask{position:relative}.vl .vl-ask .vl-msg{position:absolute;left:0;right:0;top:100%;margin:8px 0 0;font-size:13px;color:#f5b84a!important}  /* the short-text hint does not push the hero bottom */
+/* Hero follow-up (2026-10-28): 3-row field, CTA as wide as the field, a little more air above the label;
+   phones show the sample card's final frame at once */
+.vl .hero .px{margin-bottom:38px}
+.vl .vl-ask textarea{min-height:0;height:80px}
+.vl .vl-ask .ctas .b{width:100%;justify-content:center;box-sizing:border-box}
+@media (max-width:900px){.vl .hero .demo .st{opacity:1!important;transform:none!important;transition:none!important}}
+.vl .hero .demo{padding:16px 24px}
+@media (max-width:640px){.vl .vl-ask textarea{height:96px}}
+/* Signals (Skoora-style, handover 2026-10-28): intro + signal map, three groups of scored rows, band legend */
+.vl #signals .sig-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:40px}
+.vl #signals .sig-top .sec-head{margin-bottom:0}
+.vl #signals .sig-how{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--muted);max-width:560px}
+.vl .radar{margin:0;padding:20px 20px 8px;border:1px solid var(--line,rgba(255,255,255,.08));border-radius:16px;background:radial-gradient(circle at 50% 55%,rgba(95,174,222,.10),transparent 65%),rgba(255,255,255,.015)}
+.vl .radar figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:4px}
+.vl .radar figcaption b{font:600 12px/1 var(--mono,ui-monospace),monospace;color:var(--muted);letter-spacing:.06em}
+.vl .radar svg{display:block;width:100%;height:auto;overflow:visible}
+.vl .radar .rg{fill:none;stroke:rgba(255,255,255,.07)}
+.vl .radar .sp{stroke:rgba(255,255,255,.06)}
+.vl .radar .ar{fill:rgba(95,174,222,.20);stroke:#5faede;stroke-width:2;stroke-linejoin:round}
+.vl .radar .dt{fill:#5faede}.vl .radar .dt.wk{fill:#f7931a}
+.vl .radar text{font:500 11.5px Inter,system-ui,sans-serif;fill:var(--muted)}
+.vl .radar text .sc{font:700 12px var(--mono,ui-monospace),monospace;fill:var(--text)}
+.vl .radar text.wk,.vl .radar text.wk .sc{fill:#f5b84a}
+html.anim .vl .radar .ar{transform-origin:230px 200px;transform:scale(.2);opacity:0;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .6s}
+html.anim .vl .radar.in .ar{transform:none;opacity:1}
+.vl .sig-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.vl .sig-group{border-top:2px solid var(--c);padding-top:16px}
+.vl .sig-group .k{font:600 12px/1 var(--mono,ui-monospace),monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
+.vl .sig-group h3{font-size:20px;margin:0 0 10px}
+.vl .sig-group ul{list-style:none;margin:0;padding:0}
+.vl .sig-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.06)}
+.vl .sig-row b{display:block;font-size:15px;font-weight:600}
+.vl .sig-row span{display:block;font-size:13px;line-height:1.4;color:var(--muted);margin-top:3px}
+.vl .sig-val{display:flex;align-items:center;gap:10px}
+.vl .sig-val i{display:block;width:64px;height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.vl .sig-val em{display:block;height:100%;border-radius:3px;background:#5faede}
+.vl .sig-val b{font:700 14px var(--mono,ui-monospace),monospace;min-width:14px;text-align:right}
+.vl .sig-row.weak > div:first-child b,.vl .sig-row.weak .sig-val b{color:#f5b84a}.vl .sig-row.weak .sig-val em{background:#f7931a}
+.vl .sig-legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:32px}
+.vl .sig-legend .vd-band{padding:14px 16px}
+.vl .sig-legend .vd-band b{font-size:14px}
+.vl .sig-note{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.vl a.vl-in{color:var(--blue,#5faede);text-decoration:none}
+/* Problem: two cards; Report: Free vs Full report in two columns */
+.vl .g4.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vl .rep2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.vl .rep-col .k{font:600 12px/1 var(--mono,ui-monospace),monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:10px}
+.vl .rep-col h3{font-size:30px;margin:0 0 14px}.vl .rep-col h3 small{font-size:14px;font-weight:500;color:var(--muted)}
+.vl .rep-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.vl .rep-col li{position:relative;padding-left:22px;font-size:15px;font-weight:600}
+.vl .rep-col li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.vl .rep-col li span{font-weight:400;color:var(--muted);margin-left:6px}
+.vl .plan-more{margin:6px 0 18px}.vl .plan-more a{color:var(--blue,#5faede);text-decoration:none}
+.vl a.cd{text-decoration:none;color:inherit}
+@media (max-width:900px){
+  .vl #signals .sig-top{grid-template-columns:minmax(0,1fr);gap:24px}
+  .vl .sig-groups,.vl .sig-legend,.vl .rep2,.vl .g4.g2{grid-template-columns:minmax(0,1fr)}
+}
+.vl a.cd{display:block}.vl .g3>*{min-width:0}@media (max-width:640px){.vl .g3{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vl .g3 .n{font-size:34px}}
+.vl .radar figcaption{flex-wrap:wrap;row-gap:6px}
+@media (max-width:640px){.vl .radar{padding:16px 10px 6px}.vl .radar text{font-size:17px}.vl .radar text .sc{font-size:17px}.vl .radar .dt{r:5}}
+.vl .rep-col h3::before{content:none!important;display:none!important}.vl .rep-col h3{padding-left:0!important}
+/* Hero card stays alive (Ras 2026-10-28): after the reveal the bars regrow and the score ring redraws every few seconds,
+   the weakest bar pulses. Not on phones (final frame) and not with reduced motion. */
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  html.anim .vl .hero .demo .bars i{transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  html.anim .vl .hero .demo .bars i:nth-child(1){transition-delay:0s}html.anim .vl .hero .demo .bars i:nth-child(2){transition-delay:.06s}
+  html.anim .vl .hero .demo .bars i:nth-child(3){transition-delay:.12s}html.anim .vl .hero .demo .bars i:nth-child(4){transition-delay:.18s}
+  html.anim .vl .hero .demo .bars i:nth-child(5){transition-delay:.24s}html.anim .vl .hero .demo .bars i:nth-child(6){transition-delay:.3s}
+  html.anim .vl .hero .demo .bars i:nth-child(7){transition-delay:.36s}html.anim .vl .hero .demo .bars i:nth-child(8){transition-delay:.42s}
+  html.anim .vl .hero .demo .bars i:nth-child(9){transition-delay:.48s}html.anim .vl .hero .demo .bars i:nth-child(10){transition-delay:.54s}
+  html.anim .vl .hero .demo.replay .bars i{transform:scaleY(.1)!important;transition:none!important}
+  html.anim .vl .hero .demo.replay .ring circle.p{stroke-dashoffset:440!important;transition:none!important}
+  html.anim .vl .hero .demo .st.on .bars i.lo{animation:vlWeak 2.4s ease-in-out 1.2s infinite}
+}
+@keyframes vlWeak{0%,100%{filter:none;box-shadow:none}50%{filter:brightness(1.35);box-shadow:0 0 14px rgba(247,147,26,.7)}}
+.vl .vid.has-video{display:block;overflow:hidden;border-style:solid;background:#000!important;padding:0}
+.vl .vid.has-video video{display:block;width:100%;height:100%;object-fit:contain;background:#000}

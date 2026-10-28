@@ -35,14 +35,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="/site-v2.min.css?v=5">
-<link rel="stylesheet" href="/verdict-flow.css?v=20261027q">
+<link rel="stylesheet" href="/verdict-flow.css?v=20261028a">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <!-- VLH:START -->
 <link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
-<link rel="stylesheet" href="/verdict-landing.css?v=20261027a">
+<link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
 <script>/* Verdict landing: open the funnel directly for hand-overs, ?flow=1, ?report=1 and a reload during a run */
 (function(){try{var s=sessionStorage;if(location.hash==='#start'||/[?&](flow|report)=1\b/.test(location.search)||s.getItem('vb-verdict-text')||s.getItem('vb-vl-app')==='1')document.documentElement.classList.add('vl-app');}catch(e){}})();</script>
 <!-- VLH:END -->
@@ -83,73 +83,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="hero"><div>
 <span class="eyebrow blue"><i></i>Verdikt</span>
 <h1>Pomáhame investorom robiť <em>múdre rozhodnutia</em></h1>
-<p class="px">Nájsť najlepší bitcoinový plán stále znamená preveriť každého poskytovateľa sám — a často je to ešte horšie. Práve tu Virtuse robí rozdiel.</p>
-<div class="ctas"><a class="b bp" href="#start" data-vl-start>Získať verdikt zadarmo →</a><a class="b bg" href="#see">Ako to funguje</a></div>
-<p class="dis">Verdikt hodnotí úplnosť vašej úvahy — nie to, či kúpiť. Nejde o investičné poradenstvo.</p>
+<p class="px">Skontrolujte, ako úplný je váš bitcoinový plán — skóre, najslabší bod, ďalší krok.</p>
+<form class="vl-ask" id="vlAsk" novalidate>
+<label for="vlText">Vaše rozhodnutie o Bitcoine</label>
+<textarea id="vlText" name="text" rows="3" maxlength="1200" placeholder="napr. 200 € mesačne do bitcoinu, vo vlastnej peňaženke"></textarea>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="ctas"><button class="b bp" type="submit">Získať verdikt zadarmo →</button></div>
+<p class="vl-msg" id="vlMsg" aria-live="polite" data-short="Napíšte o svojom rozhodnutí aspoň jednu vetu (20 a viac znakov)."></p>
+</form>
 </div><div>
-<div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDIKT · kontrola plánu</span><span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span></div>
-<div class="st on"><div class="q"><small>VÁŠ PLÁN</small>„Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom.“</div></div>
+<div class="demo" id="demo" aria-live="off" aria-describedby="demoAlt"><div class="top"><span>VERDIKT · kontrola plánu</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+<div class="st"><div class="q"><small>VÁŠ PLÁN</small>„Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom.“</div></div>
 <div class="st"><div class="ring"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="70" fill="none" stroke="#ffffff14" stroke-width="12"/><circle class="p" cx="85" cy="85" r="70" fill="none" stroke="#5faede" stroke-width="12" stroke-linecap="round" transform="rotate(-90 85 85)"/><text x="85" y="92" text-anchor="middle" fill="#e6edf3" font-size="38" font-weight="800" font-family="Inter">55</text><text x="85" y="116" text-anchor="middle" fill="#8b949e" font-size="13" font-family="Inter">/ 100</text></svg><div><div class="dk">Skóre verdiktu</div><span class="chip">Doplňte 2 – 3 predpoklady</span></div></div></div>
-<div class="st"><div class="dk">10 signálov</div><div class="bars" aria-hidden="true"><i style="height:80%"></i><i style="height:65%"></i><i style="height:90%"></i><i class="w" style="height:18%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:48%"></i></div><p class="wk">Najslabšie miesto: <b>neznáma likvidačná cena</b></p></div>
+<div class="st"><div class="dk">10 signálov</div><div class="bars" aria-hidden="true"><i style="height:70%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:60%"></i><i class="lo" style="height:20%"></i><i style="height:70%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:70%"></i></div><p class="wk">Najslabšie miesto: <b>neznáma likvidačná cena</b></p></div>
 <div class="st"><div class="next"><small>ĎALŠÍ KROK</small><p>Zistite svoju likvidačnú cenu skôr, než podpíšete.</p><a class="chip bl" href="loan.html">Overte v Loan Copilot →</a></div></div>
-</div><div class="lbl">Ukážka · ilustračné čísla</div>
-<p class="sr-only" id="demoAlt">Ukážka, ilustračné čísla: plán „Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom“ má skóre 55 zo 100, pásmo „Doplňte 2 – 3 predpoklady“. Najslabší z 10 signálov je neznáma likvidačná cena a ďalší krok je zistiť ju v Loan Copilot.</p>
+</div><p class="sr-only" id="demoAlt">Ukážka, ilustračné čísla: plán „Požičiam si na byt so zábezpekou v BTC, zvyšok nechám deťom“ má skóre 55 zo 100, pásmo „Doplňte 2 – 3 predpoklady“. Najslabší z 10 signálov je neznáma likvidačná cena a ďalší krok je zistiť ju v Loan Copilot.</p>
 </div></div>
 
-<section class="v1sec" id="see"><span class="eyebrow blue"><i></i>Pozrite sa</span><h2>Od hrubého bitcoinového plánu k jasnému rozhodnutiu.</h2>
+<section class="v1sec" id="see"><span class="eyebrow blue"><i></i>Pozrite si Virtuse v akcii</span><h2>Od hrubého bitcoinového plánu k jasnému rozhodnutiu.</h2>
 <p class="sub">Pozrite sa, ako Verdikt ohodnotí plán, pomenuje najslabšie miesto a ukáže ďalší krok — bez toho, aby komukoľvek radil kúpiť či predať.</p>
-<div class="vid" data-video-src=""><div class="vid-ph"><div class="play" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#06121b"/></svg></div><b>Video čoskoro</b></div></div>
-<p class="cap">Ilustračná ukážka · dĺžka sa upresní</p></section>
+<div class="vid has-video"><video controls playsinline preload="none" poster="/media/verdict-promo-poster-sk.jpg" aria-label="Video ukážka Verdiktu"><source src="/media/verdict-promo-sk.mp4" type="video/mp4"><track kind="captions" src="/media/verdict-promo-sk.vtt" srclang="sk" label="Slovenčina" default></video></div>
+<p class="cap">Ilustračný príklad · nie je to rada · 1:56</p></section>
 
 <section class="v1sec" id="proof"><span class="eyebrow blue"><i></i>Dôkaz</span><h2>Rozhodovací test č. 1 pre bitcoinových investorov</h2>
 <p class="sub">Investori z [10]+ trhov používajú Verdikt, aby z hrubého bitcoinového plánu získali jasný obraz — čo chýba, čo je slabé a čo urobiť ďalej.</p>
-<div class="g3"><div class="cd"><div class="n">10</div><p>Hodnotených signálov</p></div><div class="cd"><div class="n">1 000+</div><p>Preverených plánov</p></div><div class="cd"><div class="n">13</div><p>Daňových krajín EÚ</p></div></div>
+<div class="g3"><a class="cd" href="#signals"><div class="n" data-count="10">10</div><p>Hodnotených signálov</p></a><div class="cd"><div class="n" data-count="1000" data-suffix="+">1 000+</div><p>Preverených plánov</p></div><div class="cd"><div class="n" data-count="13">13</div><p>Daňových krajín EÚ</p></div></div>
 <p class="cap">ILUSTRAČNÉ čísla — budú aktualizované</p></section>
 
 <section id="problem"><div class="sec-head"><div class="eyebrow orange"><i></i>Problém</div><h2>Kúpiť Bitcoin je ľahké. <span>Zvoliť dobrý plán nie.</span></h2>
 <p class="sec-sub">AI a aplikácie zjednodušili klik na Kúpiť. Nepovedia vám však, či váš plán prežije poplatky, dane, úschovu, pokles o 70 % — alebo nesprávneho partnera.</p></div>
-<div class="g4"><div class="tile" style="--c: var(--orange)"><h3>Každý plán znie dobre</h3><p>Povedzte ho dvakrát a zdá sa samozrejmý. Uveriteľné ešte neznamená úplné.</p></div><div class="tile" style="--c: var(--purple)"><h3>Chat nie je rámec</h3><p>Všeobecná AI súhlasí s tým, ako to podáte. Nehodnotí, čo ste vynechali.</p></div><div class="tile" style="--c: var(--blue)"><h3>Cena sa presunula do voľby</h3><p>Keď je nákup jeden klik, skutočná cena je zaviazať sa k zlému nastaveniu.</p></div><div class="tile" style="--c: var(--teal)"><h3>Súvislosti sa strácajú</h3><p>Poznámky v jednom chate, poplatky v CSV, dane v ďalšej karte. Rozhodnutie nikdy nie je na jednom mieste.</p></div></div></section>
+<div class="g4 g2"><div class="tile" style="--c: var(--orange)"><h3>Každý plán znie dobre</h3><p>Povedzte ho dvakrát a zdá sa samozrejmý. Uveriteľné ešte neznamená úplné.</p></div><div class="tile" style="--c: var(--blue)"><h3>Cena sa presunula do voľby</h3><p>Keď je nákup jeden klik, skutočná cena je zaviazať sa k zlému nastaveniu.</p></div></div></section>
 
-<section id="layer"><div class="sec-head"><div class="eyebrow purple"><i></i>Rozhodovacia vrstva</div><h2>Neskočte z dobrého chatu <span>rovno do nákupu.</span></h2></div>
-<div class="tiles t3"><div class="tile" style="--c: var(--muted)"><div class="k">01 · Chat</div><h3>Preskúmať</h3><p>ChatGPT a poznámky vám pomôžu premýšľať.</p><div class="meta"><span>Dá vám</span><b>Viac možností</b></div></div><div class="tile miss" style="--c: var(--blue)"><span class="tag">CHÝBAJÚCA VRSTVA</span><h3>Rozhodnúť</h3><p>Verdikt ohodnotí váš plán na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok.</p><div class="meta"><span>Dá vám</span><b>Jasné rozhodnutie</b></div></div><div class="tile" style="--c: var(--muted)"><div class="k">03 · Partner</div><h3>Konať</h3><p>Nakupujete, požičiavate si alebo nastavujete úschovu na platforme licencovaného partnera. Virtuse nikdy nedrží kľúče.</p><div class="meta"><span>Prebieha na</span><b>Platforme partnera</b></div></div></div></section>
-
-<section id="how"><div class="sec-head"><div class="eyebrow blue"><i></i>Ako to funguje</div><h2>Jedna cesta od hrubého plánu <span>k ďalšiemu kroku.</span></h2></div>
-<div class="tiles t3"><div class="tile" style="--c: var(--blue)"><h3>Opíšte</h3><p>Napíšte bitcoinové rozhodnutie vlastnými slovami alebo si vyberte cestu. Verdikt sa pýta len na to, čo chýba.</p><div class="meta"><span>Krok</span><b>1</b></div></div><div class="tile" style="--c: var(--purple)"><h3>Skóre</h3><p>10 signálov — cieľ, horizont, alternatívy, najhorší prípad, likvidita, úschova a dedičstvo, dane, pravidlo namiesto emócií, plán B, asymetria. Každý 0 – 10; spolu 0 – 100.</p><div class="meta"><span>Krok</span><b>2</b></div></div><div class="tile" style="--c: var(--teal)"><h3>Rozhodnite</h3><p>Pásmo, najslabšie miesto a čo doplniť. Voliteľne celý report, odkazy na nástroje Virtuse a partnerov. Nikdy rada kúpiť či predať.</p><div class="meta"><span>Krok</span><b>3</b></div></div></div></section>
-
-<section id="verdict-how">
-<div class="sec-head"><div class="eyebrow teal"><i></i>Skóre</div>
-<h2>Skóre hodnotí vašu úvahu. <span>Nie to, či kúpiť.</span></h2>
-<p class="sec-sub">Každý plán prejde aj testom poklesu o 70 %. Ak ho neprežije, viete to ešte predtým, než začnete.</p></div>
-<div class="vd-bands">
-<div class="vd-band"><b>Vaša úvaha je úplná</b><span>65 až 100</span><p>Pokryli ste, na čom záleží. Ďalší krok je na vás.</p></div>
-<div class="vd-band hl"><b>Doplňte 2 – 3 predpoklady</b><span>50 až 60</span><p>Overte ich nástrojmi nižšie a potom sa rozhodnite.</p></div>
-<div class="vd-band"><b>Chýbajú kľúčové časti</b><span>0 až 45</span><p>Verdikt ich pomenuje aj to, prečo môžu byť drahé.</p></div>
+<section id="signals"><div class="sig-top"><div class="sec-head"><div class="eyebrow blue"><i></i>Desať signálov</div><h2>Desať signálov. <span>Tri otázky.</span></h2>
+<p class="sec-sub">Každý plán hodnotíme na tých istých desiatich signáloch v troch otázkach: viete prečo, prežije to a vydržíte pri tom. Mapa signálov ukáže celý tvar na jeden pohľad.</p>
+<p class="sig-how">Každý signál má 0 až 10 bodov; skóre je ich súčet zaokrúhlený na 5. Meria úplnosť vášho napísaného plánu, nie to, či je Bitcoin dobrý nákup.</p></div>
+<figure class="radar"><figcaption><span class="eyebrow blue"><i></i>Mapa signálov</span><b>Ukážkový plán · 55/100</b></figcaption><svg viewBox="-40 -6 540 422" role="img" aria-label="Ukážkový plán, 55 zo 100. Skóre signálov z 10: Cieľ 7, Časový horizont 6, Alternatívy 5, Najhorší prípad 6, Likvidita 2 (najslabší), Úschova a dedičstvo 7, Dane 4, Pravidlo namiesto emócií 6, Plán B 5, Asymetria 7."><polygon class="rg" points="230.0,167.5 249.1,173.7 260.9,190.0 260.9,210.0 249.1,226.3 230.0,232.5 210.9,226.3 199.1,210.0 199.1,190.0 210.9,173.7"/><polygon class="rg" points="230.0,135.0 268.2,147.4 291.8,179.9 291.8,220.1 268.2,252.6 230.0,265.0 191.8,252.6 168.2,220.1 168.2,179.9 191.8,147.4"/><polygon class="rg" points="230.0,102.5 287.3,121.1 322.7,169.9 322.7,230.1 287.3,278.9 230.0,297.5 172.7,278.9 137.3,230.1 137.3,169.9 172.7,121.1"/><polygon class="rg" points="230.0,70.0 306.4,94.8 353.6,159.8 353.6,240.2 306.4,305.2 230.0,330.0 153.6,305.2 106.4,240.2 106.4,159.8 153.6,94.8"/><line class="sp" x1="230" y1="200" x2="230.0" y2="70.0"/><line class="sp" x1="230" y1="200" x2="306.4" y2="94.8"/><line class="sp" x1="230" y1="200" x2="353.6" y2="159.8"/><line class="sp" x1="230" y1="200" x2="353.6" y2="240.2"/><line class="sp" x1="230" y1="200" x2="306.4" y2="305.2"/><line class="sp" x1="230" y1="200" x2="230.0" y2="330.0"/><line class="sp" x1="230" y1="200" x2="153.6" y2="305.2"/><line class="sp" x1="230" y1="200" x2="106.4" y2="240.2"/><line class="sp" x1="230" y1="200" x2="106.4" y2="159.8"/><line class="sp" x1="230" y1="200" x2="153.6" y2="94.8"/><polygon class="ar" points="230.0,109.0 275.8,136.9 291.8,179.9 304.2,224.1 245.3,221.0 230.0,291.0 199.4,242.1 155.8,224.1 168.2,179.9 176.5,126.4"/><circle class="dt" cx="230.0" cy="109.0" r="4"/><circle class="dt" cx="275.8" cy="136.9" r="4"/><circle class="dt" cx="291.8" cy="179.9" r="4"/><circle class="dt" cx="304.2" cy="224.1" r="4"/><circle class="dt wk" cx="245.3" cy="221.0" r="4"/><circle class="dt" cx="230.0" cy="291.0" r="4"/><circle class="dt" cx="199.4" cy="242.1" r="4"/><circle class="dt" cx="155.8" cy="224.1" r="4"/><circle class="dt" cx="168.2" cy="179.9" r="4"/><circle class="dt" cx="176.5" cy="126.4" r="4"/><text class="lb" x="230.0" y="40.0" text-anchor="middle"><tspan>Cieľ</tspan><tspan class="sc" x="230.0" dy="15">7</tspan></text><text class="lb" x="321.7" y="69.8" text-anchor="start"><tspan>Horizont</tspan><tspan class="sc" x="321.7" dy="15">6</tspan></text><text class="lb" x="378.4" y="147.8" text-anchor="start"><tspan>Alternatívy</tspan><tspan class="sc" x="378.4" dy="15">5</tspan></text><text class="lb" x="378.4" y="244.2" text-anchor="start"><tspan>Najhorší prípad</tspan><tspan class="sc" x="378.4" dy="15">6</tspan></text><text class="lb wk" x="321.7" y="322.2" text-anchor="start"><tspan>Likvidita</tspan><tspan class="sc" x="321.7" dy="15">2</tspan></text><text class="lb" x="230.0" y="352.0" text-anchor="middle"><tspan>Úschova</tspan><tspan class="sc" x="230.0" dy="15">7</tspan></text><text class="lb" x="138.3" y="322.2" text-anchor="end"><tspan>Dane</tspan><tspan class="sc" x="138.3" dy="15">4</tspan></text><text class="lb" x="81.6" y="244.2" text-anchor="end"><tspan>Pravidlo</tspan><tspan class="sc" x="81.6" dy="15">6</tspan></text><text class="lb" x="81.6" y="147.8" text-anchor="end"><tspan>Plán B</tspan><tspan class="sc" x="81.6" dy="15">5</tspan></text><text class="lb" x="138.3" y="69.8" text-anchor="end"><tspan>Asymetria</tspan><tspan class="sc" x="138.3" dy="15">7</tspan></text></svg></figure></div>
+<div class="sig-groups">
+<div class="sig-group" style="--c: var(--blue)"><div class="k">Zámer</div><h3>Viete prečo?</h3><ul><li class="sig-row"><div><b>Cieľ</b><span>Viete, na čo je tento krok s Bitcoinom?</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7</b></div></li><li class="sig-row"><div><b>Časový horizont</b><span>Kedy budete peniaze opäť potrebovať?</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6</b></div></li><li class="sig-row"><div><b>Alternatívy</b><span>Čo iné ste zvažovali pred týmto plánom?</span></div><div class="sig-val"><i><em style="width:50%"></em></i><b>5</b></div></li></ul></div>
+<div class="sig-group" style="--c: var(--orange)"><div class="k">Prežitie</div><h3>Prežije to?</h3><ul><li class="sig-row"><div><b>Najhorší prípad</b><span>Čo sa stane, ak BTC padne asi o 70 %?</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6</b></div></li><li class="sig-row weak"><div><b>Likvidita</b><span>Poznáte svoju likvidačnú cenu a potrebu hotovosti?</span></div><div class="sig-val"><i><em style="width:20%"></em></i><b>2</b></div></li><li class="sig-row"><div><b>Úschova a dedičstvo</b><span>Kto drží kľúče a kto ich dostane?</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7</b></div></li><li class="sig-row"><div><b>Dane</b><span>Overili ste si daňový dopad vo vašej krajine?</span></div><div class="sig-val"><i><em style="width:40%"></em></i><b>4</b></div></li></ul></div>
+<div class="sig-group" style="--c: var(--teal)"><div class="k">Disciplína</div><h3>Vydržíte pri tom?</h3><ul><li class="sig-row"><div><b>Pravidlo namiesto emócií</b><span>Máte napísané pravidlo pre nákupy a predaje?</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6</b></div></li><li class="sig-row"><div><b>Plán B</b><span>Aký je východ, ak sa vaša téza nepotvrdí?</span></div><div class="sig-val"><i><em style="width:50%"></em></i><b>5</b></div></li><li class="sig-row"><div><b>Asymetria</b><span>Stojí možný zisk za riziko, ktoré beriete?</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7</b></div></li></ul></div>
 </div>
-<div class="vd-tools" aria-label="Nástroje na overenie predpokladov"><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="stacking.html">Stacking Strategist</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div>
-<p class="vd-how-note">Ako vzniká skóre: AI ohodnotí každý z 10 signálov od 0 do 10, skóre je ich súčet zaokrúhlený na 5. Verdikt sám partnerov nehodnotí. Ak chcete, Partner Finder vyfiltruje partnerov podľa vašich kritérií; porovnáte a vyberiete vy.</p>
+
+<p class="sig-note">Skóre sú z ukážkového plánu. Ilustračné, nie poradenstvo. Každý plán prejde aj testom poklesu o 70 %.</p>
 </section>
-
-<section id="report"><div class="sec-head"><div class="eyebrow orange"><i></i>Report</div><h2>Skóre ukáže, kde stojíte. <span>Verdikt ukáže, čo s tým urobiť.</span></h2>
-<p class="sec-sub">Zadarmo: skóre, pásmo, úzke miesto, čo drží / čo sa zlomí a ďalšie kroky. Celý report (14 €, jednorazovo) pridá Typ 1/2, ľútosť, riziká a plán B, všetky signály a PDF.</p></div>
-<div class="g4 report-grid">
-<div class="tile" style="--c: var(--blue)"><h3>Zhrnutie</h3><p>V bezplatnom verdikte</p></div>
-<div class="tile" style="--c: var(--blue)"><h3>Úzke miesto</h3><p>Zadarmo: jeden signál, ktorý rozhoduje o skóre</p></div>
-<div class="tile" style="--c: var(--blue)"><h3>Čo drží / čo sa zlomí</h3><p>Zadarmo: hlavná veta · Report: celé</p></div>
-<div class="tile" style="--c: var(--blue)"><h3>Predpoklady</h3><p>Zadarmo: hlavná veta · Report: celé</p></div>
-<div class="tile" style="--c: var(--blue)"><h3>Ďalšie kroky</h3><p>V bezplatnom verdikte · kto a dokedy v reporte</p></div>
-<div class="tile locked" style="--c: var(--orange)"><h3>Typ 1 vs. Typ 2</h3><p>Celý report · 14 € · vratné, alebo nie?</p></div>
-<div class="tile locked" style="--c: var(--orange)"><h3>Minimalizácia ľútosti</h3><p>Celý report · 14 € · čo by ste chceli vedieť</p></div>
-<div class="tile locked" style="--c: var(--orange)"><h3>Riziká a plán B</h3><p>Celý report · 14 €</p></div>
-<div class="tile locked" style="--c: var(--orange)"><h3>Všetkých 10 signálov s dôvodmi</h3><p>Celý report · 14 €</p></div>
-<div class="tile locked" style="--c: var(--orange)"><h3>PDF na uloženie</h3><p>Celý report · 14 €</p></div>
-</div></section>
-
-<section id="signals"><div class="sec-head"><div class="eyebrow blue"><i></i>Signály</div><h2>Desať signálov. <span>Tri otázky.</span></h2>
-<p class="sec-sub">Každý signál má 0 až 10 bodov; skóre je ich súčet zaokrúhlený na 5. Meria úplnosť vášho napísaného plánu, nie to, či je Bitcoin dobrý nákup.</p></div>
-<div class="tiles t3">
-<div class="tile" style="--c: var(--blue)"><div class="k">Zámer</div><h3>Viete prečo?</h3><div class="sig"><span>Cieľ</span><span>Časový horizont</span><span>Alternatívy</span></div></div>
-<div class="tile" style="--c: var(--orange)"><div class="k">Prežitie</div><h3>Prežije to?</h3><div class="sig"><span>Najhorší prípad</span><span>Likvidita</span><span>Úschova a dedičstvo</span><span>Dane</span></div></div>
-<div class="tile" style="--c: var(--teal)"><div class="k">Disciplína</div><h3>Vydržíte pri tom?</h3><div class="sig"><span>Pravidlo namiesto emócií</span><span>Plán B</span><span>Asymetria</span></div></div></div></section>
 
 <section id="tools"><div class="sec-head"><div class="eyebrow teal"><i></i>Nástroje</div><h2>Ďalší krok <span>zostáva vo Virtuse.</span></h2></div><div class="tiles t3"><a class="tile" href="/bitcoin-fee-index/" style="--c: var(--teal)"><h3>Index poplatkov</h3><p>Celkové náklady nákupu v porovnaní.</p><div class="meta"><span>Bezplatný nástroj</span><b>Otvoriť →</b></div></a><a class="tile" href="concierge.html" style="--c: var(--blue)"><h3>Partner Finder</h3><p>Partneri podľa vašich odpovedí.</p><div class="meta"><span>Bezplatný nástroj</span><b>Otvoriť →</b></div></a><a class="tile" href="loan.html" style="--c: var(--purple)"><h3>Loan &amp; Liquidity Copilot</h3><p>Predať, alebo si požičať na Bitcoin.</p><div class="meta"><span>Bezplatný nástroj</span><b>Otvoriť →</b></div></a><a class="tile" href="tax-agent.html" style="--c: var(--orange)"><h3>Tax &amp; Inheritance Agent</h3><p>Pravidlá krajín a kontrola dedičstva.</p><div class="meta"><span>Bezplatný nástroj</span><b>Otvoriť →</b></div></a><a class="tile" href="stacking.html" style="--c: var(--blue)"><h3>Stacking Strategist</h3><p>Plán pravidelných nákupov a poplatky.</p><div class="meta"><span>Bezplatný nástroj</span><b>Otvoriť →</b></div></a><a class="tile locked" href="cfo.html" style="--c: var(--purple)"><h3>Neskôr: Virtuse CFO</h3><p>Stráži poplatky, LTV a dane. Samostatný produkt.</p><div class="meta"><span>Samostatná stránka</span><b>Virtuse CFO →</b></div></a></div></section>
 
@@ -168,7 +144,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3>Verdict</h3>
         <div class="price">0 € <small>bez účtu</small></div>
         <p class="for">Skóre úvahy 0 až 100, pásmo a najslabšie miesto.</p>
-        <ul><li>Hodnotenie rozhodnutia v 10 signáloch</li><li>Najslabšie miesto a nástroj, kde ho overíte</li><li>Test poklesu o 70 %</li><li>Nie je to poradenstvo, nič neodporúča</li></ul>
+        <ul><li>Skóre 0 – 100 a pásmo</li><li>Zhrnutie</li><li>Úzke miesto: signál, ktorý rozhoduje o skóre</li><li>Čo drží / čo sa zlomí, predpoklady (hlavná veta)</li><li>Ďalšie kroky s nástrojom na overenie</li></ul>
         <a class="btn btn-ghost" href="#start" data-vl-start>Začnite bezplatným verdiktom</a>
       </div>
       <div class="plan">
@@ -176,7 +152,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3>Plný report</h3>
         <div class="price">14 € <small>raz</small></div>
         <p class="for">Pre jedno rozhodnutie, ktoré chcete premyslieť do hĺbky.</p>
-        <ul><li>Všetkých 10 signálov s bodmi a dôvodmi</li><li>Všetky chýbajúce otázky pre vaše rozhodnutie</li><li>Plán krokov s nástrojmi Virtuse</li><li>PDF, ktoré si ponecháte, bez predplatného</li></ul>
+        <ul><li>Všetkých 10 signálov so skóre a dôvodmi</li><li>Typ 1 vs. Typ 2: vratné, alebo nie?</li><li>Minimalizácia ľútosti: čo by ste chceli vedieť</li><li>Riziká a plán B</li><li>Čo drží / čo sa zlomí a predpoklady celé</li><li>Ďalšie kroky s tým, kto a dokedy</li><li>PDF na uloženie, bez predplatného</li></ul>
         <a class="btn btn-ghost" href="#start" data-vl-start>Začať verdiktom</a>
       </div>
       <div class="plan pro">
@@ -207,11 +183,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-<section class="vd-limits">
-<h2>Čo nedokáže. <span>Zámerne.</span></h2>
-<ul><li><b>Hýbať peniazmi.</b> Žiadne kľúče, mince ani eurá. Vždy iba na čítanie.</li><li><b>Zadávať príkazy.</b> Nákup prebieha na licencovanej platforme partnera.</li><li><b>Radiť kúpiť či predať.</b> Verdikt odmieta otázky na nákup, predaj a načasovanie.</li></ul>
-</section>
-
 <section id="faq">
 <div class="sec-head faq-head"><div class="eyebrow blue"><i></i>FAQ</div><h2>Časté <span>otázky.</span></h2></div>
 <div class="faq">
@@ -219,6 +190,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <details><summary>Koľko to stojí?</summary><p>Verdikt je zadarmo. Celý report stojí 14 € jednorazovo; zatiaľ sa naň môžete zapísať na čakací zoznam. Virtuse CFO plánujeme za 9 € mesačne alebo 90 € ročne, s neobmedzenými verdiktmi aj reportmi.</p></details>
 <details><summary>Odkiaľ berie Verdikt fakty?</summary><p>Z oficiálnych zdrojov, ktoré Virtuse už používa, napríklad z daňových pravidiel 13 krajín, každé s dátumom overenia. Keď fakt chýba, Verdikt sa spýta vás.</p></details>
 <details><summary>Čo sa stane s tým, čo napíšem?</summary><p>Bez účtu text vašej úvahy neukladáme. Aby sme zabránili zneužitiu, počítame požiadavky na IP adresu, uloženú len ako odtlačok (hash); počítadlo sa po 24 hodinách maže. Podrobnosti v <a href="privacy-policy.html#verdict-cfo">Zásadách ochrany súkromia</a>.</p></details>
+<details><summary>Čo Verdikt nedokáže?</summary><p><b>Hýbať peniazmi:</b> žiadne kľúče, mince ani eurá; vždy iba na čítanie. <b>Zadávať príkazy:</b> nákup prebieha na licencovanej platforme partnera. <b>Radiť kúpiť či predať:</b> Verdikt odmieta otázky na nákup, predaj a načasovanie.</p></details>
 <details><summary>Potrebujem účet alebo kartu?</summary><p>Nie. Verdikt nepotrebuje ani jedno.</p></details>
 <details><summary>Je to investičné alebo daňové poradenstvo?</summary><p>Nie. Verdikt hodnotí, aká úplná je vaša úvaha. Čo s tým urobíte, je vaše rozhodnutie. S daňovými otázkami sa obráťte na daňového poradcu.</p></details>
 </div>
@@ -261,17 +233,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   document.querySelectorAll('[data-vl-start]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); app(true); history.replaceState(null, '', '#start'); if (window.vfSkipIntro) window.vfSkipIntro(); window.scrollTo(0, 0); var t = document.querySelector('#start textarea'); if (t) t.focus({ preventScroll: true }); });
   });
+  var ask = document.getElementById('vlAsk');
+  if (ask) {
+    var askTa = ask.elements.text, askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    ask.addEventListener('submit', function (e) {
+      e.preventDefault(); if (ask.elements.website.value) return;
+      var text = askTa.value.trim();
+      if (text.length < 20) { askMsg.textContent = askMsg.dataset.short; askTa.focus(); return; }
+      app(true); history.replaceState(null, '', '#start');
+      if (window.vfStartWithText) window.vfStartWithText(text);
+      window.scrollTo(0, 0);
+    });
+  }
+  // Signal map: draw the shape in when it comes into view
+  var rd = document.querySelector('.vl .radar');
+  if (rd) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rd.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rd); } else rd.classList.add('in'); }
+  // Proof numbers count up when the panel comes into view (final value without motion)
+  var nums = document.querySelectorAll('.vl [data-count]');
+  if (nums.length && 'IntersectionObserver' in window && root.classList.contains('anim') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var fmt = function (v, el) { return v.toLocaleString(root.lang === 'sk' ? 'sk-SK' : 'en-GB') + (el.dataset.suffix || ''); };
+    nums.forEach(function (el) { el.textContent = fmt(0, el); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) {
+      if (!en.isIntersecting) return; io.unobserve(en.target);
+      var el = en.target, to = +el.dataset.count, t0 = performance.now(), dur = 1600;
+      (function step(now) { var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        el.textContent = fmt(Math.round(to * e), el); if (k < 1) requestAnimationFrame(step); })(t0);
+    }); }, { threshold: 0.4 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
   var back = document.querySelector('.vl-back');
-  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
+  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); reveal(); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
   window.addEventListener('hashchange', function () { if (location.hash === '#start') { app(true); window.scrollTo(0, 0); } });
+  // Hero sample: the four steps reveal one after another, then all stay visible
   var d = document.getElementById('demo');
-  if (d && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i'), i = 0, p = false;
-    d.addEventListener('mouseenter', function () { p = true; }); d.addEventListener('mouseleave', function () { p = false; });
-    d.addEventListener('focusin', function () { p = true; }); d.addEventListener('focusout', function () { p = false; });
-    var go = function (n) { s[i].classList.remove('on'); t[i].classList.remove('on'); i = n; s[i].classList.add('on'); t[i].classList.add('on'); };
-    var q = new URLSearchParams(location.search).get('step');
-    if (q !== null) go(+q % 4); else setInterval(function () { if (!p && !root.classList.contains('vl-app')) go((i + 1) % 4); }, 3500);
+  function reveal() {
+    if (!d || d.dataset.shown) return; d.dataset.shown = '1';
+    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i');
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width: 900px)').matches || !root.classList.contains('anim');  // phones: final frame at once
+    s.forEach(function (x, k) { var on = function () { x.classList.add('on'); if (t[k]) t[k].classList.add('on'); }; still ? on() : setTimeout(on, 200 + k * 650); });
+  }
+  if (!root.classList.contains('vl-app')) reveal();
+  // After the reveal, replay the bars and the score ring every ~5 s while the card is on screen and not hovered
+  if (d && root.classList.contains('anim') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var vis = true, hov = false;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(d);
+    d.addEventListener('mouseenter', function () { hov = true; }); d.addEventListener('mouseleave', function () { hov = false; });
+    setInterval(function () {
+      if (!vis || hov || !d.dataset.shown || root.classList.contains('vl-app') || matchMedia('(max-width: 900px)').matches) return;
+      d.classList.add('replay'); void d.offsetWidth; requestAnimationFrame(function () { d.classList.remove('replay'); });
+    }, 5200);
   }
   document.querySelectorAll('.vl .billing [data-bill]').forEach(function (b) {
     b.addEventListener('click', function () { var y = b.dataset.bill === 'y';
@@ -298,7 +309,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <!-- VLS:END -->
 <script src="/vb-profile.js?v=1" data-tool="verdict"></script>
-<script src="/verdict-flow.js?v=20261027q"></script>
+<script src="/verdict-flow.js?v=20261028a"></script>
 <script src="/pf-recommend.js?v=2" defer></script>
 <script src="/site-v2.js?v=7" defer></script>
 <script src="/consultation-widget.js?v=20261007b" defer></script>

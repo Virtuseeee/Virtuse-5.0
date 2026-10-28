@@ -620,8 +620,12 @@
 
 /* Free one-page PDF, design v2 (handover H, verdict-summary-v2.html):
    white A4, Services/Ecosystem tokens, fills the page, exactly one page. */
-@media print {
-  body.vf-print:has(.p2) { margin: 0 !important; padding: 0 !important; }
+@media print { body.vf-print:has(.p2) { margin: 0 !important; padding: 0 !important; } }
+/* Not print-only: downloadPdf() lays the page out off-screen first to measure it
+   (#vxPrint stays display:none on screen otherwise). */
+.vx-printdoc.vx-measure { display: block !important; position: absolute; left: -9999px; top: 0; width: 210mm; visibility: hidden; }
+.vx-printdoc.vx-measure .p2-page { height: auto !important; overflow: visible !important; }
+.vx-printdoc.vx-measure .p2-grow { flex: none !important; }
   .p2 {
     --p2-blue: #5faede; --p2-blue-deep: #2B62C0; --p2-teal: #2dd4bf; --p2-purple: #a78bfa;
     --p2-orange: #f7931a; --p2-green: #3fb950; --p2-ink: #0d1421; --p2-text: #1a2332;
@@ -691,4 +695,3 @@
   .p2-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 14pt; padding-top: 6pt; border-top: 1px solid var(--p2-line); font-size: 6.6pt; color: var(--p2-muted); }
   .p2-legal { max-width: 70%; }
   .p2-copy { font-family: var(--p2-mono); white-space: nowrap; }
-}

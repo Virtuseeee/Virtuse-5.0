@@ -9,21 +9,25 @@ funnel directly, so result and PDF links keep working.
 Usage (from the site folder): python3 i18n-tools/verdict-landing/build.py
 Rebuilds verdict-landing.css and both pages; idempotent (markers VL:START/END)."""
 import json, os, re, subprocess, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import signals as SG
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HERE, '..', '..'))
-V = '20261027a'
+V = '20261028a'
 
 LANGS = {
   'en': {'page': 'verdict.html', 'cfo': 'cfo.html',
          'title': 'Verdict: empower investors to make smart decisions | Virtuse',
          'desc': 'Verdict scores how complete your Bitcoin plan is on 10 signals, names the weakest point and gives one next step. Free. Not investment advice.',
          'pricing_eyebrow': 'Pricing', 'pricing_h2': 'Three levels. <span>Start with a free Verdict.</span>',
-         'cta': 'Get your free Verdict', 'back': '← About Verdict'},
+         'cta': 'Get your free Verdict', 'back': '← About Verdict', 'free_items': ['Score 0–100 and band', 'Executive summary', 'The bottleneck: the signal that decides the score', 'What holds / what breaks, assumptions (headline)', 'Next steps, with the tool to check them'],
+         'report_items': ['All 10 signals with scores and reasons', 'Type 1 vs Type 2: reversible or not?', "Regret minimizer: what you'd wish you knew", 'Risks &amp; Plan B', 'What holds / what breaks and assumptions in full', 'Next steps with owner and deadline', 'A PDF to keep, no subscription']},
   'sk': {'page': 'sk/verdict.html', 'cfo': 'sk/cfo.html',
          'title': 'Verdikt: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
          'desc': 'Verdikt ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',
          'pricing_eyebrow': 'Ceny', 'pricing_h2': 'Tri úrovne. <span>Začnite bezplatným verdiktom.</span>',
-         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte'},
+         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte', 'free_items': ['Skóre 0 – 100 a pásmo', 'Zhrnutie', 'Úzke miesto: signál, ktorý rozhoduje o skóre', 'Čo drží / čo sa zlomí, predpoklady (hlavná veta)', 'Ďalšie kroky s nástrojom na overenie'],
+         'report_items': ['Všetkých 10 signálov so skóre a dôvodmi', 'Typ 1 vs. Typ 2: vratné, alebo nie?', 'Minimalizácia ľútosti: čo by ste chceli vedieť', 'Riziká a plán B', 'Čo drží / čo sa zlomí a predpoklady celé', 'Ďalšie kroky s tým, kto a dokedy', 'PDF na uloženie, bez predplatného']},
 }
 
 def esc(s): return s.replace('&', '&amp;').replace('"', '&quot;')
@@ -38,6 +42,10 @@ def pricing(lang, cfg):
     p, n1 = re.subn(r'href="(?:/)?verdict\.html"', 'href="#start" data-vl-start', p)
     p, n3 = re.subn(r'\s*<button class="btn btn-primary only-audit"[^>]*>[^<]*</button>', '', p)
     assert (n1, n3) == (2, 1), (lang, n1, n3)
+    # The Report panel is gone (Ras 2026-10-28): its parts are the plan lists here
+    uls = list(re.finditer(r'<ul>.*?</ul>', p, flags=re.S)); assert len(uls) >= 2, lang
+    for m, items in reversed(list(zip(uls[:2], (cfg['free_items'], cfg['report_items'])))):
+        p = p[:m.start()] + '<ul>' + ''.join('<li>' + x + '</li>' for x in items) + '</ul>' + p[m.end():]
     return p
 
 def landing(lang, cfg):
@@ -47,6 +55,7 @@ def landing(lang, cfg):
         for k in sorted(d, key=len, reverse=True):
             assert k in t, (lang, 'missing', k[:80])
             t = t.replace(k, d[k])
+    t = t.replace('<!--HEROBARS-->', SG.hero_bars()).replace('<!--RADAR-->', SG.radar(lang)).replace('<!--GROUPS-->', SG.groups(lang))
     return t.replace('<!--PRICING-->', pricing(lang, cfg))
 
 SCRIPT = '''<script>
@@ -57,17 +66,56 @@ SCRIPT = '''<script>
   document.querySelectorAll('[data-vl-start]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); app(true); history.replaceState(null, '', '#start'); if (window.vfSkipIntro) window.vfSkipIntro(); window.scrollTo(0, 0); var t = document.querySelector('#start textarea'); if (t) t.focus({ preventScroll: true }); });
   });
+  var ask = document.getElementById('vlAsk');
+  if (ask) {
+    var askTa = ask.elements.text, askMsg = document.getElementById('vlMsg');
+    askTa.addEventListener('input', function () { if (askTa.value.trim().length >= 20) askMsg.textContent = ''; });
+    ask.addEventListener('submit', function (e) {
+      e.preventDefault(); if (ask.elements.website.value) return;
+      var text = askTa.value.trim();
+      if (text.length < 20) { askMsg.textContent = askMsg.dataset.short; askTa.focus(); return; }
+      app(true); history.replaceState(null, '', '#start');
+      if (window.vfStartWithText) window.vfStartWithText(text);
+      window.scrollTo(0, 0);
+    });
+  }
+  // Signal map: draw the shape in when it comes into view
+  var rd = document.querySelector('.vl .radar');
+  if (rd) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rd.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rd); } else rd.classList.add('in'); }
+  // Proof numbers count up when the panel comes into view (final value without motion)
+  var nums = document.querySelectorAll('.vl [data-count]');
+  if (nums.length && 'IntersectionObserver' in window && root.classList.contains('anim') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var fmt = function (v, el) { return v.toLocaleString(root.lang === 'sk' ? 'sk-SK' : 'en-GB') + (el.dataset.suffix || ''); };
+    nums.forEach(function (el) { el.textContent = fmt(0, el); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) {
+      if (!en.isIntersecting) return; io.unobserve(en.target);
+      var el = en.target, to = +el.dataset.count, t0 = performance.now(), dur = 1600;
+      (function step(now) { var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        el.textContent = fmt(Math.round(to * e), el); if (k < 1) requestAnimationFrame(step); })(t0);
+    }); }, { threshold: 0.4 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
   var back = document.querySelector('.vl-back');
-  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
+  if (back) back.addEventListener('click', function (e) { e.preventDefault(); app(false); reveal(); history.replaceState(null, '', location.pathname + location.search.replace(/[?&](flow|report)=1/g, '')); window.scrollTo(0, 0); });
   window.addEventListener('hashchange', function () { if (location.hash === '#start') { app(true); window.scrollTo(0, 0); } });
+  // Hero sample: the four steps reveal one after another, then all stay visible
   var d = document.getElementById('demo');
-  if (d && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i'), i = 0, p = false;
-    d.addEventListener('mouseenter', function () { p = true; }); d.addEventListener('mouseleave', function () { p = false; });
-    d.addEventListener('focusin', function () { p = true; }); d.addEventListener('focusout', function () { p = false; });
-    var go = function (n) { s[i].classList.remove('on'); t[i].classList.remove('on'); i = n; s[i].classList.add('on'); t[i].classList.add('on'); };
-    var q = new URLSearchParams(location.search).get('step');
-    if (q !== null) go(+q % 4); else setInterval(function () { if (!p && !root.classList.contains('vl-app')) go((i + 1) % 4); }, 3500);
+  function reveal() {
+    if (!d || d.dataset.shown) return; d.dataset.shown = '1';
+    var s = d.querySelectorAll('.st'), t = d.querySelectorAll('.dots i');
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width: 900px)').matches || !root.classList.contains('anim');  // phones: final frame at once
+    s.forEach(function (x, k) { var on = function () { x.classList.add('on'); if (t[k]) t[k].classList.add('on'); }; still ? on() : setTimeout(on, 200 + k * 650); });
+  }
+  if (!root.classList.contains('vl-app')) reveal();
+  // After the reveal, replay the bars and the score ring every ~5 s while the card is on screen and not hovered
+  if (d && root.classList.contains('anim') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var vis = true, hov = false;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(d);
+    d.addEventListener('mouseenter', function () { hov = true; }); d.addEventListener('mouseleave', function () { hov = false; });
+    setInterval(function () {
+      if (!vis || hov || !d.dataset.shown || root.classList.contains('vl-app') || matchMedia('(max-width: 900px)').matches) return;
+      d.classList.add('replay'); void d.offsetWidth; requestAnimationFrame(function () { d.classList.remove('replay'); });
+    }, 5200);
   }
   document.querySelectorAll('.vl .billing [data-bill]').forEach(function (b) {
     b.addEventListener('click', function () { var y = b.dataset.bill === 'y';

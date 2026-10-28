@@ -1176,6 +1176,15 @@
     var full = !!r.report;
     var box = document.createElement('div'); box.id = 'vxPrint'; box.className = 'vx-printdoc'; box.innerHTML = full ? printDoc(r) : printDocFree(r);
     document.body.appendChild(box);
+    // Free PDF: always exactly one A4 page. Lay it out off-screen at 210 mm, and
+    // when the content is taller than the page, zoom the whole page down so it fits.
+    if (!full) {
+      var pg = box.querySelector('.p2-page');
+      box.classList.add('vx-measure');
+      var A4 = 296 * 96 / 25.4, need = pg ? pg.scrollHeight : 0;
+      box.classList.remove('vx-measure');
+      if (pg && need > A4) { var z = Math.max(0.6, Math.floor(A4 / need * 1000) / 1000); pg.style.zoom = z; pg.style.height = 'calc(296mm / ' + z + ')'; }
+    }
     var st = document.createElement('style'); st.id = 'vxPrintPage';
     st.textContent = full ? '@media print { :root { color-scheme: light !important; } html, body { background: #fff !important; background-image: none !important; } } @page { size: A4; margin: 11mm 14mm 15mm; @bottom-left { content: "© 2018–2026 Virtuse Wealth Management, a.s."; font: 8pt Inter, Arial, sans-serif; color: #666; } @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Inter, Arial, sans-serif; color: #666; } }' : '@media print { :root { color-scheme: light !important; } html, body { background: #fff !important; background-image: none !important; } } @page { size: A4; margin: 0; }';
     document.head.appendChild(st);
@@ -1317,4 +1326,10 @@
   // The Verdict landing above the funnel already says what the intro says:
   // its CTA skips the intro screen (verdict-landing build.py).
   window.vfSkipIntro = function () { if (i === 0) next(); };
+  // The landing hero form hands its text straight in (same path as a hand-over from cfo.html).
+  window.vfStartWithText = function (text) {
+    A.text = String(text || '').slice(0, 1200); A.name = ''; saveText(); build();
+    push({ event: 'verdict_start', verdict_lang: LANG, source: 'hero' });
+    go(at('goal'));
+  };
 })();
