@@ -4,8 +4,6 @@
 
   var MP = 'https://mempool.space/api';
   var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
-  /* Set after a successful signup, so /brief-popup.js stops offering the Brief. */
-  var POP_SUB_KEY = 'vb-brief-sub';
 
   // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
   // sits in every shared script that posts to the Worker; see vb-api.js.
@@ -326,7 +324,6 @@
       }).then(function (result) {
         if (result.ok) {
           form.reset();
-          try { localStorage.setItem(POP_SUB_KEY, '1'); } catch (err) {}
           if (msg) {
             msg.textContent = 'You are on the list. Check your inbox.';
             msg.classList.add('ok');

@@ -10,11 +10,15 @@ concierge-assets/ excluded):
   2. every reference to vb-api.js uses the same ?v= (the vbApi() loaders in the shared
      scripts, the <script> tags on pages with inline form code, the Verdict builder);
   3. every page whose inline script calls window.VB_API also loads vb-api.js;
-  4. the vbApi() loader is the same text in every shared script that carries it.
+  4. the vbApi() loader is the same text in every shared script that carries it;
+  5. every page that can run vb-api.js allows both Workers in its CSP connect-src
+     (production, and staging: staging.virtuse.com posts there, see vb-api.js).
 """
 import os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import csp_tight
 SITE = os.path.dirname(HERE)
 WORKER_RE = re.compile(r'virtuse-newsletter(?:-staging)?\.virtuse-ai\.workers\.dev')
 VER_RE = re.compile(r'''/vb-api\.js\?v=([\w.-]+)''')
@@ -22,6 +26,7 @@ LOADER_RE = re.compile(r'^([ \t]*)function vbApi\(\) \{\n.*?^\1\}\n', re.S | re.
 SKIP = ('i18n-tools/', 'concierge-assets/')
 CSP_RE = re.compile(r'<meta http-equiv="Content-Security-Policy" content="[^"]*">')
 ENDPOINT_RE = re.compile(r'\bdata-endpoint="[^"]*"')
+WORKERS = ('https://virtuse-newsletter.virtuse-ai.workers.dev', 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev')
 
 
 def tracked(pattern):
@@ -49,6 +54,12 @@ def main():
             versions.setdefault(v, []).append(f)
         if 'window.VB_API.' in s and not re.search(r'<script src="/vb-api\.js\?v=[^"]*"', s):
             bad.append('%s: uses window.VB_API but does not load /vb-api.js' % f)
+        csp = CSP_RE.search(s)
+        if csp and '/vb-api.js' in csp_tight.used_text(s, os.path.join(SITE, f)):
+            conn = next((d.split() for d in csp.group(0).split(';') if d.strip().startswith('connect-src')), [])
+            for origin in WORKERS:
+                if origin not in conn:
+                    bad.append('%s: runs vb-api.js but its CSP connect-src lacks %s' % (f, origin))
     builder = os.path.join(HERE, 'verdict-landing', 'build.py')
     for v in VER_RE.findall(open(builder, encoding='utf-8').read()):
         versions.setdefault(v, []).append('i18n-tools/verdict-landing/build.py')

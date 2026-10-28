@@ -86,7 +86,7 @@
       vbApi().then(function (api) {
         return api.subscribe({ email: email, hp: hp, lang: window.VB_LANG || 'en' });
       }).then(function (r) {
-        if (r.ok) { form.reset(); try { localStorage.setItem('vb-brief-sub', '1'); } catch (e) {} msg.textContent = ui.subOk || 'You are on the list. Check your inbox.'; msg.classList.add('ok'); }
+        if (r.ok) { form.reset(); msg.textContent = ui.subOk || 'You are on the list. Check your inbox.'; msg.classList.add('ok'); }
         else { msg.textContent = (r.data && r.data.error) || ui.subErr || 'Could not join the list. Try again.'; msg.classList.add('err'); }
       }).catch(function () {
         msg.textContent = ui.netErr || 'Network error. Try again.'; msg.classList.add('err');

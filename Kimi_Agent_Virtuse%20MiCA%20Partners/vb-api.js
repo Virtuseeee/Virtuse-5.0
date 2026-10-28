@@ -23,10 +23,11 @@
   var STAGING = 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev';
   // staging.virtuse.com and local testing
   var IS_STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
-  // Routes that staging and localhost send to the staging Worker (Verdict open,
-  // WAITLIST_DRY_RUN: nothing stored or sent). Every other route, /subscribe
-  // included, goes to the production Worker from every host.
-  var STAGE_ROUTES = { '/verdict': true, '/waitlist': true };
+  // Routes that staging and localhost send to the staging Worker: Verdict open,
+  // and WAITLIST_DRY_RUN / SUBSCRIBE_DRY_RUN, so test sign-ups are validated
+  // but nothing is stored or e-mailed. /send and /pulse.json go to the
+  // production Worker from every host.
+  var STAGE_ROUTES = { '/verdict': true, '/waitlist': true, '/subscribe': true };
   // Requests give up after this long and reject like a network error. The
   // Worker answers /subscribe, /waitlist and /send within a few seconds;
   // /verdict waits for the model (60 s timeout, one retry on the Worker).
@@ -65,9 +66,15 @@
     });
   }
 
-  // Brief signup: POST /subscribe { email, hp, lang } (hp = honeypot).
+  // Brief signup: POST /subscribe { email, hp, lang } (hp = honeypot). After a
+  // successful signup it sets localStorage vb-brief-sub, so brief-popup.js no
+  // longer offers the Brief to this browser, whichever form was used.
+  var SUB_KEY = 'vb-brief-sub';
   function subscribe(o) {
-    return postJson('/subscribe', { email: o.email, hp: o.hp, lang: o.lang });
+    return postJson('/subscribe', { email: o.email, hp: o.hp, lang: o.lang }).then(function (r) {
+      if (r.ok) try { localStorage.setItem(SUB_KEY, '1'); } catch (e) {}
+      return r;
+    });
   }
 
   w.VB_API = { url: url, fetchWithTimeout: fetchWithTimeout, postJson: postJson, subscribe: subscribe, TIMEOUT_MS: TIMEOUT_MS };

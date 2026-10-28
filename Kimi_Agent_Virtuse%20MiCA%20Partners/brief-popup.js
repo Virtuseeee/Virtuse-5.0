@@ -1,6 +1,6 @@
 /* Virtuse Brief subscribe pop-up on the story pages and article.html
    (article.js loads it; news.html deliberately has none). Opens after 6.5 s of visible time on the page.
-   Never for subscribers (the Brief forms set localStorage vb-brief-sub) or
+   Never for subscribers (vb-api.js sets localStorage vb-brief-sub after any Brief signup) or
    readers coming from the email (utm_medium=email); after a dismissal not
    again for 14 days; at most once per session. Waits while the cookie banner
    is open. Styles are injected below (uses the Brief tokens from news/news.css),
@@ -141,7 +141,6 @@
       }).then(function (r) {
         if (r.ok) {
           done = true;
-          try { localStorage.setItem(SUB_KEY, '1'); } catch (err) {}
           form.reset();
           msg.textContent = ui.subOk || 'You are on the list. Check your inbox.'; msg.classList.add('ok');
           track('brief_popup_submit');
