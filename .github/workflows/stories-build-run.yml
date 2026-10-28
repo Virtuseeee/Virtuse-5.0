@@ -139,7 +139,14 @@ jobs:
           git add -A stories sk/stories ru/stories sitemap.xml blog.html blog-sk.html cs/blog.html de/blog.html es/blog.html fr/blog.html hu/blog.html pl/blog.html ru/blog.html uk/blog.html
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Sync main $MAIN_SHA: pre-rendered story pages"
-          git push origin gh-pages
+          # Another workflow (asset-returns, commodities, stories-build) may have pushed
+          # to gh-pages since the checkout: rebase onto it and retry, up to 3 times.
+          for i in 1 2 3; do
+            git pull --rebase origin gh-pages && git push origin gh-pages && break
+            git rebase --abort 2>/dev/null || true
+            [ "$i" = 3 ] && exit 1
+            sleep $((i * 10))
+          done
           {
             echo
             echo "Published to staging (gh-pages). **Production is manual:** run the two commands in stories-build/README.md → Upload."

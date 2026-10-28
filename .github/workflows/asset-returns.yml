@@ -19,6 +19,7 @@ on:
     paths:
       - 'asset-returns-build/build.mjs'
       - 'btc-monthly-build/build.mjs'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/btc-returns/build_returns.py'
       - '.github/workflows/asset-returns.yml'
 
 permissions:
@@ -95,4 +96,11 @@ jobs:
           git add $FILES $PUBLISH
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Update asset returns data"
-          git push origin gh-pages
+          # Another workflow (asset-returns, commodities, stories-build) may have pushed
+          # to gh-pages since the checkout: rebase onto it and retry, up to 3 times.
+          for i in 1 2 3; do
+            git pull --rebase origin gh-pages && git push origin gh-pages && break
+            git rebase --abort 2>/dev/null || true
+            [ "$i" = 3 ] && exit 1
+            sleep $((i * 10))
+          done

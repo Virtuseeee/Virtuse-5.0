@@ -75,4 +75,11 @@ jobs:
           git add "$FILE"
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Update Bitcoin vs commodities data"
-          git push origin gh-pages
+          # Another workflow (asset-returns, commodities, stories-build) may have pushed
+          # to gh-pages since the checkout: rebase onto it and retry, up to 3 times.
+          for i in 1 2 3; do
+            git pull --rebase origin gh-pages && git push origin gh-pages && break
+            git rebase --abort 2>/dev/null || true
+            [ "$i" = 3 ] && exit 1
+            sleep $((i * 10))
+          done
