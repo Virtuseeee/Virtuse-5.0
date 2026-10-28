@@ -30,6 +30,8 @@ on:
       - 'stories-build/build.mjs'
       - 'stories-build/hubs.mjs'
       - 'stories-build/common.mjs'
+      - 'stories-build/blogs.mjs'
+      - 'stories-build/cleanup.json'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/article.js'
       - '.github/workflows/stories-build.yml'
       - '.github/workflows/stories-build-run.yml'

@@ -22,6 +22,15 @@ on:
     paths:
       - 'seo-build/**'
 
+permissions:
+  contents: read
+
+# One run per branch/PR; a newer push to a PR cancels the older check, pushes
+# to a branch still each get their own result.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   verify:
     runs-on: ubuntu-latest
