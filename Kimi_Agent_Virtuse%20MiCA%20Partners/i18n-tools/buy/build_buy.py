@@ -265,7 +265,7 @@ def build(L):
 </main>
 
 <script src="{root}site-v2.js?v=7" defer></script>
-<script src="{root}consultation-widget.js?v=20261007b" defer></script>
+<script src="{root}consultation-widget.js?v=20261029d" defer></script>
 <script src="{root}concierge-launcher.js" defer></script>
 {cf}
 </body>

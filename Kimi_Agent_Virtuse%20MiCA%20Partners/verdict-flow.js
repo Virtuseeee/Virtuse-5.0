@@ -863,7 +863,7 @@
     }
     function load(src, cb) { var s = document.createElement('script'); s.src = src; s.async = true; s.onload = cb; s.onerror = cb; document.head.appendChild(s); }
     var dict = LANG === 'ru' && !(window.VBPartnersDict && window.VBPartnersDict.ru);
-    function go2() { if (dict) load('/pf-dict-' + LANG + '.js?v=1', draw); else draw(); }
+    function go2() { if (dict) load('/pf-dict-' + LANG + '.js?v=2', draw); else draw(); }
     if (window.VBPartners) return go2();
     load('/pf-recommend.js?v=2', go2);
   }
