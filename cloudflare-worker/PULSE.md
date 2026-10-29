@@ -42,8 +42,8 @@ id = "PASTE_THE_PRINTED_ID"
 
 Then set the publish secret (it prompts; do not pass the value as an
 argument) and deploy. `npm run deploy` is `node build.mjs && wrangler deploy`.
-The build step only embeds the welcome-email templates; it must still run
-so `dist/worker.js` exists.
+The build step writes `src/generated/` (welcome templates, build commit);
+it must still run before deploying.
 
 ```bash
 wrangler secret put PULSE_PUBLISH_TOKEN
@@ -74,7 +74,7 @@ Body must be valid JSON of at most 16 KB (16 × 1024 bytes). Otherwise
 `400` with `{ "error": "validation failed", "errors": [ ... ] }`.
 
 Checked against `news/news-pulse.json` on `gh-pages` (snapshot in
-`fixtures/news-pulse.sample.json`, which the local test accepts):
+`test/fixtures/news-pulse.sample.json`, which the local test accepts):
 
 - `updated`: ISO-8601 UTC timestamp `YYYY-MM-DDTHH:mm:ssZ` (optional
   milliseconds). Not more than 36 hours in the future.
@@ -123,13 +123,13 @@ BASE=https://virtuse-newsletter.virtuse-ai.workers.dev
 # GET — 404 JSON until the first publish, then the stored document.
 curl -sS -D - "$BASE/pulse.json" -H "Origin: https://virtuse.com"
 
-# PUT — a real draft, or fixtures/news-pulse.sample.json (its `updated`
+# PUT — a real draft, or test/fixtures/news-pulse.sample.json (its `updated`
 # is in the past, which is allowed; only a timestamp more than 36 hours
 # ahead is rejected).
 curl -sS -X PUT "$BASE/pulse.json" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
-  --data-binary @fixtures/news-pulse.sample.json
+  --data-binary @test/fixtures/news-pulse.sample.json
 
 # GET again — `updated` matches the file you put.
 curl -sS "$BASE/pulse.json?t=$(date +%s)"

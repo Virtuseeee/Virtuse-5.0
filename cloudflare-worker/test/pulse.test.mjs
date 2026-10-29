@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import worker, { handlePulse, pulseErrors } from './src/index.js';
+import worker, { handlePulse, pulseErrors } from '../src/index.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const LIVE = JSON.parse(readFileSync(path.join(HERE, 'fixtures', 'news-pulse.sample.json'), 'utf8'));

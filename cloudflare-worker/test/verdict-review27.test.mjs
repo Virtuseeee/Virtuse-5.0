@@ -2,7 +2,7 @@
 // text, buy + inheritance, Plan B tool for a buy case.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreVerdict, freeView, reportView, SIGNALS, effectiveProfile, textIntents, cleanProfile } from './src/verdict.js';
+import { scoreVerdict, freeView, reportView, SIGNALS, effectiveProfile, textIntents, cleanProfile } from '../src/features/verdict/index.js';
 
 const SAMPLE = 'Chcem kupit bitcoin za 10 percent hotovosti a nastavit dedenie';
 const out = (pts) => ({ declined: false, is_loan: false, drawdown_tested: false, tax_rule_wrong: false, country: 'sk', summary: '',

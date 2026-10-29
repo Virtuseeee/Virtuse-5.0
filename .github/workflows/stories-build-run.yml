@@ -6,7 +6,7 @@ name: Stories build (one attempt)
 # at all; retrying from the same runner doesn't help.
 #
 # Starts with a connection check: the Cloudflare Worker proxy first
-# (cloudflare-worker/src/wp-proxy.js), then blog.virtuse.com directly.
+# (cloudflare-worker/src/features/wp-proxy/handler.js), then blog.virtuse.com directly.
 # Unreachable both ways -> the job ends green with
 # reachable=false and skips everything else, so the caller tries the next
 # runner. Reachable -> build, commit and staging publish run exactly as they
@@ -37,7 +37,7 @@ jobs:
           WP_PROXY: https://virtuse-newsletter.virtuse-ai.workers.dev/wp
           WP_DIRECT: https://blog.virtuse.com
         run: |
-          # The Cloudflare Worker proxy (cloudflare-worker/src/wp-proxy.js)
+          # The Cloudflare Worker proxy (cloudflare-worker/src/features/wp-proxy/handler.js)
           # avoids Webglobe's drops of GitHub IPs. If the proxy itself is down,
           # fall back to blog.virtuse.com directly (works from some runners).
           ip=$(curl -s --max-time 10 https://api.ipify.org || echo unknown)

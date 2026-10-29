@@ -52,7 +52,7 @@ const CLEANUP = JSON.parse(fs.readFileSync(path.join(HERE, 'cleanup.json'), 'utf
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
 // WordPress base URL. Defaults to the blog itself; the GitHub Action sets
-// WP_BASE to the Cloudflare Worker proxy (cloudflare-worker/src/wp-proxy.js)
+// WP_BASE to the Cloudflare Worker proxy (cloudflare-worker/src/features/wp-proxy/handler.js)
 // because Webglobe drops connections from part of GitHub's runner IPs.
 const WP_BASE = (process.env.WP_BASE || 'https://blog.virtuse.com').replace(/\/+$/, '');
 const FEEDS = [

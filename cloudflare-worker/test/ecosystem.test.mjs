@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import worker from './src/index.js';
-import { renderAutoReply, safeName, ECO_LANGS } from './src/ecosystem.js';
+import worker from '../src/index.js';
+import { renderAutoReply, safeName, ECO_LANGS } from '../src/features/ecosystem/domain.js';
 
 const PROD = 'https://virtuse.com';
 const STAGING = 'https://staging.virtuse.com';

@@ -1,4 +1,5 @@
-// POST /ecosystem-apply
+// POST /ecosystem-apply, domain part: validating an application and the two
+// emails it produces. The request flow is in handler.js.
 //
 // The "Get your project featured" form on /ecosystem/promote/ (all 10 languages). Order of checks:
 //   size cap (5 KB) -> JSON -> honeypot -> server-side validation -> Cloudflare Turnstile siteverify
@@ -14,7 +15,7 @@
 //   ECOSYSTEM_TEST_TO     where every email goes for requests from staging.virtuse.com,
 //                         default vasilisin@virtuse.com (both the team copy and the auto-reply)
 
-import STRINGS from './ecosystem-strings.js';
+import STRINGS from './strings.js';
 
 export const ECO_CATEGORIES = ['what-is-bitcoin', 'books', 'podcasts', 'videos', 'conferences', 'privacy',
   'spend-bitcoin', 'store-tools', 'dev-tools', 'jobs', 'peers'];
@@ -22,11 +23,6 @@ export const ECO_COUNTRIES = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'F
   'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'CH'];
 export const ECO_LANGS = Object.keys(STRINGS);
 
-const MAX_BYTES = 5 * 1024;
-const IP_MAX_PER_HOUR = 3;
-const REPLY_WINDOW_SECONDS = 24 * 60 * 60;
-const STAGING_ORIGIN = 'https://staging.virtuse.com';
-const SITEVERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const URL_RE = /^https?:\/\/[^\s/$.?#][^\s]*$/i;
 const LIMITS = { project_name: 120, website: 300, description: 300, licence: 200, repo: 300, contact_name: 120, contact_email: 200, message: 1500 };
 
@@ -65,40 +61,6 @@ export function validateApplication(body, emailRe) {
 
 // A token is accepted only when Turnstile issued it on one of our pages (the widget also allows these hosts).
 export const TURNSTILE_HOSTS = ['virtuse.com', 'www.virtuse.com', 'staging.virtuse.com'];
-
-export async function verifyTurnstile(env, token, ip) {
-  if (!token || typeof token !== 'string' || token.length > 2048) return false;
-  const form = new FormData();
-  form.append('secret', env.TURNSTILE_SECRET_KEY);
-  form.append('response', token);
-  if (ip && ip !== 'unknown') form.append('remoteip', ip);
-  try {
-    const res = await fetch(SITEVERIFY, { method: 'POST', body: form });
-    const out = await res.json();
-    const ok = !!(out && out.success === true && TURNSTILE_HOSTS.includes(out.hostname));
-    if (!ok) console.warn('turnstile rejected', JSON.stringify({ codes: out && out['error-codes'], hostname: out && out.hostname }));
-    return ok;
-  } catch (e) {
-    console.error('turnstile siteverify failed', e);
-    return false;
-  }
-}
-
-async function ipLimited(env, ip) {
-  const key = `eco:ip:${ip}`;
-  const n = parseInt((await env.RATE_LIMIT_KV.get(key)) || '0', 10);
-  if (n >= IP_MAX_PER_HOUR) return true;
-  await env.RATE_LIMIT_KV.put(key, String(n + 1), { expirationTtl: 60 * 60 });
-  return false;
-}
-
-// At most one auto-reply per applicant address per 24 h (the team copy is always sent).
-async function mayAutoReply(env, email) {
-  const key = `eco:reply:${email.toLowerCase()}`;
-  if (await env.RATE_LIMIT_KV.get(key)) return false;
-  await env.RATE_LIMIT_KV.put(key, '1', { expirationTtl: REPLY_WINDOW_SECONDS });
-  return true;
-}
 
 const siteUrl = (lang, path) => `https://virtuse.com/${lang === 'en' ? '' : lang + '/'}${path}`;
 
@@ -160,66 +122,4 @@ export function renderAutoReply(app, { test }) {
 <p style="margin:16px 0 0 0;font-size:12px;line-height:19px;color:#8b949e;">${fill(t.foot, true)}</p>
 </td></tr></table></td></tr></table></body></html>`;
   return { subject, text, html };
-}
-
-async function resendSend(env, payload) {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  if (!res.ok) {
-    const t = await res.text();
-    throw new Error(`Resend ecosystem email failed (status ${res.status}): ${t.slice(0, 300)}`);
-  }
-}
-
-export async function handleEcosystemApply(request, env, origin, { json, emailRe }) {
-  const len = parseInt(request.headers.get('Content-Length') || '0', 10);
-  if (len > MAX_BYTES) return json(413, { error: 'too_large' }, origin);
-  let raw;
-  try {
-    raw = await request.text();
-  } catch {
-    return json(400, { error: 'invalid' }, origin);
-  }
-  if (new TextEncoder().encode(raw).length > MAX_BYTES) return json(413, { error: 'too_large' }, origin);
-  let body;
-  try {
-    body = JSON.parse(raw);
-  } catch {
-    return json(400, { error: 'invalid' }, origin);
-  }
-  if (body && body.company_url) return json(200, { ok: true }, origin); // honeypot: pretend success, do nothing
-
-  const v = validateApplication(body, emailRe);
-  if (!v.ok) return json(400, { error: 'invalid', detail: v.error }, origin);
-  const app = v.app;
-
-  // A missing or malformed Turnstile token is a 400 before anything else is spent on the request.
-  const token = body.turnstile;
-  if (!token || typeof token !== 'string' || token.length > 2048) return json(400, { error: 'captcha' }, origin);
-  if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY) return json(503, { error: 'closed' }, origin);
-
-  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  // Turnstile first, so failed or retried checks do not use up the visitor's hourly quota.
-  if (!(await verifyTurnstile(env, token, ip))) return json(400, { error: 'captcha' }, origin);
-  if (await ipLimited(env, ip)) return json(429, { error: 'rate_limited' }, origin);
-
-  const test = origin === STAGING_ORIGIN;
-  const testTo = env.ECOSYSTEM_TEST_TO || 'vasilisin@virtuse.com';
-  const from = env.ECOSYSTEM_FROM || 'Virtuse <info@virtuse.com>';
-  const team = env.ECOSYSTEM_TO || 'info@virtuse.com';
-  try {
-    const t = renderTeamEmail(app, { test });
-    await resendSend(env, { from, to: [test ? testTo : team], reply_to: app.contact_email, subject: t.subject, text: t.text, html: t.html });
-    if (await mayAutoReply(env, app.contact_email)) {
-      const r = renderAutoReply(app, { test });
-      await resendSend(env, { from, to: [test ? testTo : app.contact_email], reply_to: team, subject: r.subject, text: r.text, html: r.html });
-    }
-    return json(200, { ok: true }, origin);
-  } catch (e) {
-    console.error(e);
-    return json(502, { error: 'send_failed' }, origin);
-  }
 }

@@ -7,7 +7,7 @@
 // verdict-flow.js only by id; the Worker sends the final text in the request
 // language, so the page, the PDF, the eval and the tests show the same words.
 
-import TAX from './tax-facts.js';
+import TAX from '../../generated/tax-facts.js';
 
 const SK_CHARS = /[áäčďéíĺľňóôŕšťúýž]/i;
 const RU_CHARS = /[а-яё]/i;

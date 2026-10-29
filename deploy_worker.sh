@@ -31,8 +31,8 @@ echo "== 1/4 install + test (origin/main ${SHA:0:7})"
 npm ci --no-audit --no-fund >/dev/null || fail "npm ci failed"
 npm test 2>&1 | tail -n 12 | grep -E "^# (pass|fail)"
 npm test >/dev/null 2>&1 || fail "Worker tests fail on origin/main, not deploying"
-git diff --quiet -- src/checklists.js \
-  || fail "src/checklists.js is out of date with data/partner-checklists.json on origin/main. Run node build.mjs in cloudflare-worker/, commit src/checklists.js, push, re-run."
+git diff --quiet -- src/generated/checklists.js \
+  || fail "src/generated/checklists.js is out of date with data/partner-checklists.json on origin/main. Run node build.mjs in cloudflare-worker/, commit src/generated/checklists.js, push, re-run."
 
 if [ -n "${DRY_RUN:-}" ]; then
   BUILD_COMMIT=$SHA node build.mjs && npx wrangler deploy --dry-run --outdir "$TMP/dry" | tail -n 3

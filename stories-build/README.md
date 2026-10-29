@@ -154,7 +154,7 @@ staging publish happen at most once per run.
 
 **Through Cloudflare first (since 2026-10-07).** Each attempt now probes the
 Cloudflare Worker proxy `https://virtuse-newsletter.virtuse-ai.workers.dev/wp`
-first (`cloudflare-worker/src/wp-proxy.js`) and only then blog.virtuse.com
+first (`cloudflare-worker/src/features/wp-proxy/handler.js`) and only then blog.virtuse.com
 directly; the build gets whichever answered as `WP_BASE`. GitHub → Cloudflare
 → Webglobe avoids the dropped GitHub IPs, so the three attempts should rarely
 be needed. Locally `WP_BASE` is unset and the build talks to the blog directly.

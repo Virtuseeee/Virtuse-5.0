@@ -1,5 +1,5 @@
 name = "virtuse-newsletter"
-main = "dist/worker.js"
+main = "src/index.js"
 compatibility_date = "2026-08-14"
 
 # Production Verdict (Ship, Ras's "ano" required before deploy_worker.sh).

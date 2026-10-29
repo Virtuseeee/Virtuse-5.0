@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "deploy": "node build.mjs && wrangler deploy",
+    "test": "node build.mjs > /dev/null && node --test test/*.test.mjs",
     "dev": "node build.mjs && wrangler dev",
-    "test": "node build.mjs > /dev/null && node --test pulse.test.mjs send.test.mjs wp-proxy.test.mjs version.test.mjs waitlist.test.mjs verdict.test.mjs verdict-v2.test.mjs verdict-review27.test.mjs verdict-taxfig.test.mjs ecosystem.test.mjs"
+    "deploy": "node build.mjs && wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"
