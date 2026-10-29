@@ -1248,7 +1248,7 @@
         if (!msg) { msg = document.createElement('p'); msg.className = 'small vx-paymsg'; msg.setAttribute('aria-live', 'polite'); b.parentNode.appendChild(msg); }
         b.disabled = true; b.textContent = STR.payGo; msg.textContent = '';
         push({ event: 'verdict_checkout', verdict_lang: LANG, verdict_level: RESULT.level && RESULT.level.id });
-        fetch(WORKER + '/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rid: RESULT.rid, lang: LANG }) })
+        vbApi().then(function (api) { return fetch(api.url('/verdict') + '/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rid: RESULT.rid, lang: LANG }) }); })
           .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
           .catch(function () { return { ok: false, d: { error: STR.network } }; })
           .then(function (x) {
@@ -1273,7 +1273,7 @@
       return;
     }
     panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.repLoad + '</h2></div>';
-    fetch(WORKER + '/report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: PAID_SID, lang: LANG }) })
+    vbApi().then(function (api) { return fetch(api.url('/verdict') + '/report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: PAID_SID, lang: LANG }) }); })
       .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
       .catch(function () { return { ok: false, d: { error: STR.network } }; })
       .then(function (x) {
