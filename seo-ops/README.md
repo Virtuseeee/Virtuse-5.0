@@ -41,7 +41,7 @@ never fade, and they contradict "we are not an exchange / Bitcoin only, no token
 
 **virtuse.com .htaccess (live since 2026-10-07):** `virtuse.com.htaccess` is the server's
 public_html/.htaccess with the block inserted by `legacy_redirects.py merge-virtuse`
-(`virtuse.com.htaccess.before` = the original, for rollback). It is not deployed by
+(`virtuse.com.htaccess.before` = the live file before the last hand upload, for rollback). It is not deployed by
 deploy_site.sh: after changing rules, download the live file, run merge-virtuse on it, test,
 upload by hand. Test locally first (`httpd -t` + a throwaway Apache on a high port).
 
@@ -162,6 +162,10 @@ blog front page → 301 to lending.html (same Firefish widget), Ras confirms.
   issue slugs) + news.html's static cover. Browser caching headers in virtuse.com's
   `.htaccess` (`virtuse.com.htaccess`): HTML/JSON no-cache, CSS/JS 1 h, images/fonts
   7 days, `concierge-assets/` 1 year immutable; tested on a local Apache 2.4.
+  Since 2026-10-29 also 1 year immutable: `/vendor/` and any non-HTML/JSON file requested
+  with `?v=` (site-v2.min.css?v=20, site-v2.js?v=12, ...). **Bump `v` on every page that
+  loads a `?v=` file whenever that file changes**, or repeat visitors keep the old copy for
+  a year. JSON fetched with `?v=` (news/issues.json, news-pulse.json) stays no-cache.
 - **Local A/B (same machine, phone profile):** homepage EN 79 → 91 (LCP 3.9 → 3.2 s,
   CLS 0.144 → 0), SK 87 → 94 (LCP 3.7 → 2.7 s); blog.html 70 → 79-89 (LCP 6.7 →
   3.6-5.4 s, 3.9 → 1.7 MB); blog-sk 76 → 78 (3.5 → 1.5 MB); news.html 68 → 80 (LCP
