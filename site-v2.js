@@ -220,8 +220,8 @@
   document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card, .acc .seo .seo-tools a, .acc .seo .related a').forEach(function (c) {
     c.classList.add('spot');
     // .pm = the pointer really moved over the card: no glow on a card that a scroll or anchor jump slid under a still cursor
-    c.addEventListener('pointermove', function (e) { c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
-    c.addEventListener('pointerleave', function () { c.classList.remove('pm'); });
+    var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });
+    c.addEventListener('pointerleave', function () { if (raf) { cancelAnimationFrame(raf); raf = 0; } c.classList.remove('pm'); });
   });
   if (!on) return;
 

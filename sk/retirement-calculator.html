@@ -11,11 +11,7 @@
 <script src="/cookie-consent.js" defer></script>
 <script src="/partner-click.js" defer></script>
 <script src="/partner-capture.js" defer></script>
-<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Dôchodková kalkulačka Bitcoinu | Virtuse</title>
 <meta name="description" content="Dôchodková kalkulačka Bitcoinu: zadajte Bitcoin, úspory a výdavky v eurách, vyberte scenár rastu a pozrite sa rok po roku, či vystačí. Zadarmo.">
 <meta name="robots" content="index, follow">
@@ -149,7 +145,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=19">
+<link rel="stylesheet" href="/site-v2.min.css?v=20">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Otvoriť menu", "closeMenu": "Zavrieť menu", "latestBrief": "Najnovší Brief · ", "min": " min", "coverImage": "Titulný obrázok: ", "badEmail": "Zadajte platnú e-mailovú adresu.", "sending": "Odosielam...", "subscribed": "Hotovo, odber je aktívny. Brief vychádza v pondelok.", "error": "Niečo sa pokazilo. Skúste to prosím znova.", "netError": "Chyba siete. Skúste to prosím znova.", "briefLangNote": " (v angličtine)"};</script>
 <style>
@@ -440,7 +436,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script type="application/json" id="rc-i18n">{"c_plan": "Váš plán", "c_age": "Súčasný vek", "c_ret_age": "Vek odchodu do dôchodku", "c_life": "Očakávaný vek dožitia", "c_years": "{0} rokov", "c_stack": "Súčasný Bitcoin (BTC)", "c_lump": "Voliteľná hotovosť navyše (€)", "c_lump_note": "Prepočíta sa na BTC podľa dnešnej ceny a pripočíta k vášmu Bitcoinu.", "c_dca": "Mesačné úspory do Bitcoinu (€)", "c_spend": "Ročné výdavky na dôchodku (v dnešných €)", "c_growth": "Ročný rast ceny Bitcoinu", "c_conservative": "Konzervatívny", "c_base": "Základný", "c_optimistic": "Optimistický", "c_custom": "Vlastný", "c_hypothetical": "(hypotetický)", "c_custom_label": "Váš ročný rast (0 až 30 %)", "c_inflation": "Ročná inflácia", "c_inflation_src": "Predvolené 2 %: cieľ cenovej stability ECB, overené 13. 10. 2026", "c_price": "Dnešná cena Bitcoinu (€)", "c_price_loading": "Načítava sa aktuálna cena...", "c_price_live": "Cena k {0}", "c_price_fallback": "Záložná cena k 13. 10. 2026", "c_price_manual": "Používa sa vaša vlastná cena.", "c_price_reset": "Použiť aktuálnu cenu", "c_per_year": "{0}/rok", "c_err_number": "Zadajte číslo, napríklad 250k alebo 2,5M.", "c_err_max": "Maximum je {0}. Použili sme maximum.", "c_err_min": "Minimum je {0}. Použili sme minimum.", "c_ok_title": "Do dôchodku môžete ísť v {0} rokoch", "c_ok_sub": "V tomto scenári váš Bitcoin pokryje výdavky do veku {0} rokov.", "c_bad_title": "Bitcoin vám dôjde vo veku {0} rokov", "c_bad_sub": "Sporte viac, choďte do dôchodku neskôr alebo míňajte menej, aby plán vydržal do veku {0} rokov.", "c_res_btc": "BTC pri odchode do dôchodku", "c_res_btc_sub": "po {0} rokoch nakupovania", "c_res_btc_sub_now": "do dôchodku idete hneď, bez ďalších nákupov", "c_res_value": "Hodnota pri odchode do dôchodku", "c_res_value_sub": "projekcia, nominálne eurá", "c_res_spend": "Výdavky v prvom roku", "c_res_spend_sub": "vaše výdavky vo veku {0} rokov po inflácii", "c_res_needed": "BTC potrebné dnes na dôchodok v {0} rokoch bez ďalšieho sporenia", "c_res_needed_sub": "{0} pri dnešnej cene", "c_res_needed_more": "viac ako {0}", "c_chart": "Projekcia portfólia", "c_chart_aria": "Graf projekcie hodnoty vášho Bitcoinu podľa veku", "c_legend_acc": "Roky sporenia", "c_legend_ret": "Výbery na dôchodku", "c_age_axis": "Vek", "c_simplify": "Zjednodušený model: stály rast bez volatility a medvedích trhov. Bez dane z predaja. Výdavky sa vyberajú raz ročne na začiatku roka. Sumy sú nominálne.", "c_tax_link": "Dane z Bitcoinu", "c_cfo_label": "Virtuse CFO", "c_cfo_text": "Verdict je zadarmo, audit poplatkov príde s Virtuse CFO. Platené plány po spustení: 9 €/mesiac alebo 90 €/rok.", "c_cfo_link": "Dajte mi vedieť →", "c_cta_text": "Partner Finder ukáže partnerov na nákup, ktorí zodpovedajú vašim kritériám.", "c_cta": "Začnite nakupovať →", "c_share": "Kopírovať odkaz na výsledok", "c_share_done": "Odkaz skopírovaný", "c_share_field": "Odkaz na výsledok"}</script>
 <script src="/retirement-calc.js?v=2" defer></script>
-<script src="/site-v2.js?v=11" defer></script>
+<script src="/site-v2.js?v=12" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

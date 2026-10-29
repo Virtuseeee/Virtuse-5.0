@@ -16,11 +16,7 @@
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
-<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Bitcoin-hub: 24 partner, 13 uniós ország | Virtuse</title>
 <meta name="description" content="Vásároljon, bányásszon, vegyen fel hitelt és őrizze Bitcoinját 24 partnerrel. 13 uniós ország, hitel évi 5%-tól. Kulcsait nem tároljuk.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -489,7 +485,7 @@ input[type=range] { width: 100%; accent-color: var(--text); margin: 14px 0 6px; 
    visitor hasn't asked for reduced motion. */
 html.anim .rv { opacity: 0; transform: translateY(44px);
   transition: opacity .75s ease-out, transform 1s cubic-bezier(.16,1,.3,1);
-  transition-delay: var(--d, 0ms); will-change: transform, opacity; }
+  transition-delay: var(--d, 0ms); }
 html.anim .rv.rv-card { transform: translateY(64px) scale(.98); }
 html.anim .rv.in { opacity: 1; transform: none; filter: none; }
 html.anim .w { display: inline-block; opacity: 0; transform: translateY(.4em); filter: blur(8px);
@@ -689,6 +685,9 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .footer-bottom p { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
 .footer-bottom-brief a { color: var(--text); text-decoration: none; }
 .footer-bottom-brief a:hover { text-decoration: underline; }
+/* Language names (and "IČO") use the system font: drawing them in Inter made every
+   English visit download Inter's latin-ext (134 KB) and Cyrillic (30 KB) files. */
+.lang-opt, .footer-langs, .footer-operator { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
 .footer-langs { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 14px 0 0; font-size: 13px; }
 .footer-langs a { color: var(--muted); text-decoration: none; }
 .footer-langs a:hover, .footer-langs a[aria-current] { color: var(--text); }
@@ -1035,7 +1034,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <p class="alt">Inkább beszélne? <button type="button" class="link-btn" data-consultation-trigger data-consultation-lang="hu">Ingyenes 15 perces hívás foglalása</button> (angol nyelven).</p>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <img class="hero-cube-img" src="../img/hero-cube.webp" alt="" width="1168" height="960" decoding="async">
+      <img class="hero-cube-img" src="../img/hero-cube.webp" alt="" width="1168" height="960" decoding="async" fetchpriority="high">
       <canvas id="cube"></canvas>
       <div class="hero-poster"><div class="cube-stage var-purpose"><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
     </div>
@@ -1440,8 +1439,10 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   // Soft studio reflections (Resend-style): metallic faces need something to
   // reflect, otherwise they render near-black whatever the lights do.
   const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  const room = new RoomEnvironment();
+  scene.environment = pmrem.fromScene(room, 0.04).texture;
   pmrem.dispose();
+  room.dispose(); // the baked env map is all we keep; free the room's geometry/materials
 
   scene.add(new THREE.AmbientLight(0x1a1c22, 0.5));
   const key = new THREE.DirectionalLight(0xf3f6ff, 3.2);
@@ -1513,7 +1514,9 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     camera.updateProjectionMatrix();
     renderer.setSize(w, h, false);
   }
-  window.addEventListener('resize', resize);
+  // ResizeObserver fires at most once per frame and also catches layout changes
+  // that are not window resizes (fonts, panel width).
+  new ResizeObserver(resize).observe(host);
   resize();
 
   // ----- Layer twist: pick a random outer layer, rotate it 90 deg with
@@ -1567,9 +1570,6 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     requestAnimationFrame(step);
   }
 
-  if (!reduced) {
-    setInterval(twistLayer, 2300);
-  }
 
   // Goal buttons turn the cube to a fixed pose and trigger a layer twist.
   const TWO_PI = Math.PI * 2;
@@ -1580,22 +1580,50 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     release() { target = null; }
   };
 
-  function render() {
+  // Render only while the cube is on screen and the tab is visible. Before this the
+  // loop ran every frame for the whole visit (27 clear-coated meshes at up to 2x DPR),
+  // keeping the GPU busy while visitors read the rest of the page.
+  let raf = 0, twistTimer = 0, last = 0, onScreen = true, shown = false;
+  const running = () => onScreen && !document.hidden;
+  function start() {
+    if (raf || !running()) return;
+    last = performance.now();
+    raf = requestAnimationFrame(render);
+    if (!reduced && !twistTimer) twistTimer = setInterval(twistLayer, 2300);
+  }
+  function stop() {
+    cancelAnimationFrame(raf); raf = 0;
+    clearInterval(twistTimer); twistTimer = 0;
+  }
+  const sync = () => (running() ? start() : stop());
+
+  function render(now) {
+    raf = requestAnimationFrame(render);
+    // Steps are tuned for 60 fps; scale by elapsed time so 120 Hz screens don't spin twice as fast.
+    const f = Math.min((now - last) / 16.667, 4);
+    last = now;
     if (target) {
       const ty = target[1] + Math.round((root.rotation.y - target[1]) / TWO_PI) * TWO_PI;
       const tx = target[0] + Math.round((root.rotation.x - target[0]) / TWO_PI) * TWO_PI;
-      root.rotation.y += (ty - root.rotation.y) * (reduced ? 1 : 0.07);
-      root.rotation.x += (tx - root.rotation.x) * (reduced ? 1 : 0.07);
+      const k = reduced ? 1 : 1 - Math.pow(1 - 0.07, f);
+      root.rotation.y += (ty - root.rotation.y) * k;
+      root.rotation.x += (tx - root.rotation.x) * k;
     } else if (!reduced) {
-      root.rotation.y += 0.0026;
-      root.rotation.x += 0.0006;
+      root.rotation.y += 0.0026 * f;
+      root.rotation.x += 0.0006 * f;
     }
     renderer.render(scene, camera);
     if (!shown) { shown = true; host.parentElement.classList.add('live'); }
-    requestAnimationFrame(render);
   }
-  let shown = false;
-  requestAnimationFrame(render);
+
+  const begin = () => {
+    new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; sync(); }).observe(host);
+    document.addEventListener('visibilitychange', sync);
+    sync();
+  };
+  // Compile the three physical-material shaders off the main thread where the GPU driver
+  // supports it (KHR_parallel_shader_compile); otherwise this resolves at once.
+  renderer.compileAsync(scene, camera).then(begin, begin);
 }
 </script>
 <script>
@@ -1611,7 +1639,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   // spotlight works with or without motion
   document.querySelectorAll('.shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo').forEach(function (c) {
     c.classList.add('spot');
-    c.addEventListener('pointermove', function (e) { var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });
   });
   if (!on) return;
 
@@ -1819,7 +1847,7 @@ document.querySelectorAll('#cfo a, #buy .only-audit').forEach(function (a) {
   a.addEventListener('click', function () { (window.dataLayer = window.dataLayer || []).push({ event: 'cfo_cta_click', cta_text: a.textContent.trim() }); });
 });
 </script>
-<script src="../consultation-widget.js?v=20261007b" defer></script>
+<script src="../consultation-lazy.js?v=1" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
