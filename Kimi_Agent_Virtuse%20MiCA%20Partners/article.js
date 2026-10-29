@@ -99,7 +99,7 @@
     uk: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
       listPage: 'uk/blog.html', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: true,
-      desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Кастоді', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
+      desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Зберігання', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
       ui: {
         navIssues: 'Останні випуски', navBlog: 'Блог', navData: 'Біткоїн-дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
         crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' хв',

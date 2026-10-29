@@ -736,7 +736,7 @@ export const CHROME: Record<Lang, Chrome> = {
       }
     ],
     "copyright": "© 2018–2026 Virtuse Wealth Management, a.s. Усі права захищені.",
-    "briefLine": "Virtuse Brief, щотижневий дайджест від Virtuse.",
+    "briefLine": "Virtuse Brief — щотижневий дайджест від Virtuse.",
     "briefHref": "../news.html?utm_source=brief&utm_medium=footer",
     "read": "Читати →"
   },

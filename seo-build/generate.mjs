@@ -3474,7 +3474,7 @@ function ukHome(relFile) { return { name: 'Головна', href: toRoot(relFile
     related: [
       { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' },
       { href: toRoot(relFile, 'uk/bitcoin-spadshchyna/'), label: 'Біткоїн і спадкування' },
-      { href: toRoot(relFile, 'uk/bitcoin-indeks-komisii/'), label: 'Індекс комісій за Біткоїн' }
+      { href: toRoot(relFile, 'uk/bitcoin-indeks-komisii/'), label: 'Індекс комісій Біткоїна' }
     ],
     moduleCta: { href: toRoot(relFile, 'uk/' + TAX_AGENT), label: 'Відкрити Tax & Inheritance Agent →' },
     schemas: [faqLd(faqs)],
@@ -3555,7 +3555,7 @@ ${faqHtml(faqs, 'Часті запитання')}
   const faqs = [
     { q: 'Чи прогнозує цей калькулятор ціну Біткоїна?', a: 'Ні. Він порівнює лише комісії партнерів за опублікованою тарифною таблицею. Дохідність від ціни Біткоїна не моделюється.' },
     { q: `Який стандартний план станом на ${feeAsOfUk}?`, a: 'Одноразово 500 €, потім 100 € на місяць протягом 12 місяців. Порядок за комісіями першого року.' },
-    { q: 'Який шлях у цьому плані має найнижчу опубліковану комісію?', a: `${win.partner} (${methodUk(win.method)}) зі змінною комісією ${formatPctPl(win.pct)} за формулою Stacking Strategist. Найнижча загальна вартість зі спредом у Bitcoin Fee Index: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € на місяць.` },
+    { q: 'Який шлях у цьому плані має найнижчу опубліковану комісію?', a: `${win.partner} (${methodUk(win.method)}) зі змінною комісією ${formatPctPl(win.pct)} за формулою Stacking Strategist. Найнижча повна вартість зі спредом в Індексі комісій Біткоїна: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € на місяць.` },
     { q: 'Це інвестиційна консультація?', a: 'Ні. Лише для освітніх цілей. KYC відбувається в партнера. Virtuse ніколи не зберігає ваші ключі.' }
   ];
   const answer = finalizeAnswer([
@@ -3573,7 +3573,7 @@ ${faqHtml(faqs, 'Часті запитання')}
     breadcrumbs: [ukHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
     related: [
-      { href: toRoot(relFile, 'uk/bitcoin-indeks-komisii/'), label: 'Індекс комісій за Біткоїн' },
+      { href: toRoot(relFile, 'uk/bitcoin-indeks-komisii/'), label: 'Індекс комісій Біткоїна' },
       { href: toRoot(relFile, 'uk/bitcoin-prodaty-chy-pozychyty/'), label: 'Біткоїн: продати чи позичити' },
       { href: toRoot(relFile, 'uk/bitcoin-podatky/polshcha/'), label: 'Податки на Біткоїн у Польщі' }
     ],
@@ -3607,7 +3607,7 @@ ${faqHtml(faqs, 'Часті запитання')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Чи виникає податок при продажу в цих ${N} країнах?`, a: `Зазвичай так, при продажу за гроші. Обмін криптовалюти на криптовалюту оподатковується в одних країнах (Німеччина, Чехія, Іспанія), а в інших ні (Польща, Франція, Австрія, Угорщина). Звільнення різняться: Німеччина 0% після 1 року володіння, Чехія 3-річний тест часу, Польща без звільнення. Станом на ${asOfUk}. Не є податковою консультацією.` },
+    { q: `Чи виникає податок при продажу в цих ${N} країнах?`, a: `Зазвичай так, при продажу за гроші. Обмін криптовалюти на криптовалюту оподатковується в одних країнах (Німеччина, Чехія, Іспанія), а в інших ні (Польща, Франція, Австрія, Угорщина). Звільнення різняться: у Німеччині 0% після 1 року володіння, у Чехії звільнення після 3 років, у Польщі звільнення немає. Станом на ${asOfUk}. Не є податковою консультацією.` },
     { q: 'Чи є позика такою самою податковою подією, як продаж?', a: 'У цьому огляді ні. Відсотки, ризик ліквідації та KYC у партнера все одно залишаються. Конкретні цифри розрахує Loan & Liquidity Copilot.' },
     { q: 'Що таке ризик ліквідації?', a: 'Якщо вартість застави впаде до порогу партнера, партнер може продати заставу й погасити нею позику. Virtuse ніколи не зберігає ваші ключі чи заставу.' },
     { q: 'Де розрахувати конкретну суму?', a: 'У модулі Loan & Liquidity Copilot. Ця сторінка пояснює лише різницю між податком і ризиком на основі опублікованих податкових ставок.' }
@@ -3720,16 +3720,16 @@ ${faqHtml(faqs, 'Часті запитання')}
     { q: 'Чи можна цитувати таблицю?', a: `Так, із зазначенням джерела «Джерело: індекс комісій за Біткоїн від Virtuse, станом на ${feeAsOfUk}» і посиланням.` }
   ];
   const answer = finalizeAnswer([
-    `Індекс комісій за Біткоїн від Virtuse станом на ${feeAsOfUk} ранжує шляхи купівлі в ЄС за річними комісіями.`,
+    `Індекс комісій Біткоїна від Virtuse станом на ${feeAsOfUk} ранжує шляхи купівлі в ЄС за річними комісіями.`,
     `При 100 € на місяць лідирує ${winner.partner} (${methodUk(winner.method)}) з комісією ${formatPctPl(winner.pct)}, ${formatEurSk(winner.annualDrag)} на рік.`,
     beText,
     'Це не пропозиція. Virtuse ніколи не зберігає ваші ключі.'
   ], 'uk', 'fee');
   pushPage({
     relFile, lang: 'uk',
-    title: assertTitle('Індекс комісій за Біткоїн (ЄС) Q4 2026'),
+    title: assertTitle('Індекс комісій Біткоїна (ЄС) Q4 2026'),
     description: assertDescription(`Шляхи купівлі в ЄС за комісіями станом на ${feeAsOfUk}. Найдешевший шлях при 100 € на місяць: ${winner.partner}, ${formatPctPl(winner.pct)}.`),
-    h1: 'Індекс комісій за Біткоїн',
+    h1: 'Індекс комісій Біткоїна',
     answerHtml: esc(answer),
     breadcrumbs: [ukHome(relFile), { name: 'Індекс комісій', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
@@ -3743,14 +3743,14 @@ ${faqHtml(faqs, 'Часті запитання')}
       faqLd(faqs),
       {
         '@type': 'Article',
-        headline: 'Індекс комісій за Біткоїн від Virtuse',
+        headline: 'Індекс комісій Біткоїна від Virtuse',
         inLanguage: 'uk',
         datePublished: LASTMOD,
         author: { '@id': `${ORIGIN}/#org` }
       },
       {
         '@type': 'Dataset',
-        name: 'Індекс комісій за Біткоїн від Virtuse',
+        name: 'Індекс комісій Біткоїна від Virtuse',
         temporalCoverage: '2026-Q4',
         url: abs(relFile)
       }
