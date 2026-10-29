@@ -424,7 +424,7 @@ input[type=range] { width: 100%; accent-color: var(--text); margin: 14px 0 6px; 
    visitor hasn't asked for reduced motion. */
 html.anim .rv { opacity: 0; transform: translateY(44px);
   transition: opacity .75s ease-out, transform 1s cubic-bezier(.16,1,.3,1);
-  transition-delay: var(--d, 0ms); will-change: transform, opacity; }
+  transition-delay: var(--d, 0ms); }
 html.anim .rv.rv-card { transform: translateY(64px) scale(.98); }
 html.anim .rv.in { opacity: 1; transform: none; filter: none; }
 html.anim .w { display: inline-block; opacity: 0; transform: translateY(.4em); filter: blur(8px);
@@ -622,6 +622,9 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .footer-bottom p { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
 .footer-bottom-brief a { color: var(--text); text-decoration: none; }
 .footer-bottom-brief a:hover { text-decoration: underline; }
+/* Language names (and "IČO") use the system font: drawing them in Inter made every
+   English visit download Inter's latin-ext (134 KB) and Cyrillic (30 KB) files. */
+.lang-opt, .footer-langs, .footer-operator { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
 .footer-langs { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 14px 0 0; font-size: 13px; }
 .footer-langs a { color: var(--muted); text-decoration: none; }
 .footer-langs a:hover, .footer-langs a[aria-current] { color: var(--text); }

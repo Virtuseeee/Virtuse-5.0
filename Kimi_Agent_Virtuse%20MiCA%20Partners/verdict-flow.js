@@ -1305,8 +1305,8 @@
   function spot() {
     panel.querySelectorAll('.spot, .opt').forEach(function (c) {
       if (c.dataset.spot) return; c.dataset.spot = '1';
-      c.addEventListener('pointermove', function (e) { c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
-      c.addEventListener('pointerleave', function () { c.classList.remove('pm'); });
+      var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });
+      c.addEventListener('pointerleave', function () { if (raf) { cancelAnimationFrame(raf); raf = 0; } c.classList.remove('pm'); });
     });
   }
 

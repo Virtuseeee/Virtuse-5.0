@@ -15,11 +15,7 @@
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
-<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
 <script src="/partner-click.js" defer></script>
 <title>Virtuse CFO: sledujte poplatky, půjčky a daně | Virtuse</title>
 <meta name="description" content="Verdict ohodnotí, jak úplné je vaše rozhodnutí o Bitcoinu, zdarma. Virtuse CFO pak sleduje poplatky, půjčky a daně. Pouze pro čtení.">
@@ -383,7 +379,7 @@ section { padding-block: 100px; border-top: 0; }
    visitor hasn't asked for reduced motion. */
 html.anim .rv { opacity: 0; transform: translateY(44px);
   transition: opacity .75s ease-out, transform 1s cubic-bezier(.16,1,.3,1);
-  transition-delay: var(--d, 0ms); will-change: transform, opacity; }
+  transition-delay: var(--d, 0ms); }
 html.anim .rv.rv-card { transform: translateY(64px) scale(.98); }
 html.anim .rv.in { opacity: 1; transform: none; filter: none; }
 html.anim .w { display: inline-block; opacity: 0; transform: translateY(.4em); filter: blur(8px);
@@ -990,7 +986,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   // spotlight works with or without motion
   document.querySelectorAll('.shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo').forEach(function (c) {
     c.classList.add('spot');
-    c.addEventListener('pointermove', function (e) { var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });
   });
   if (!on) return;
 
