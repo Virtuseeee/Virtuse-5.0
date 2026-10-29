@@ -25,7 +25,7 @@
         errTitle: 'Story not found', errText: 'This story may have been moved or unpublished. Browse the full archive instead.', errCta: 'All stories'
       },
       services: {
-        mining: ['Mine Bitcoin with vetted partners', 'Hosting, cloud and hardware partners compared on cost and payout.', 'Compare mining partners'],
+        mining: ['Mine Bitcoin with vetted partners', 'Hosting and home-mining hardware partners compared on cost and payout.', 'Compare mining partners'],
         treasury: ['Bitcoin for your balance sheet', 'Custody, execution and reporting partners for companies and family offices.', 'See treasury partners'],
         custody: ['Hold your own keys', 'Hardware wallets and multi-sig tooling from vetted partners.', 'Compare custody options'],
         policy: ['Get your Bitcoin taxes right', 'Country-specific reports from tax software partners.', 'See tax partners'],
@@ -67,7 +67,7 @@
     ru: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 57, lang: 'ru',
       listPage: 'ru/blog.html', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: true,
-      desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
+      desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Хранение', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
         navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные о Биткоине', navHub: 'Virtuse', navGet: 'Получить Brief',
         crumbList: 'Блог', crumbStories: 'Статьи', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
@@ -99,7 +99,7 @@
     uk: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
       listPage: 'uk/blog.html', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: true,
-      desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Кастоді', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
+      desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Зберігання', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
       ui: {
         navIssues: 'Останні випуски', navBlog: 'Блог', navData: 'Біткоїн-дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
         crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' хв',
@@ -226,20 +226,20 @@
         image: 'Zdjęcie', sources: 'Źródła', aboutAuthor: 'O autorze',
         authorBio: 'Założyciel i CEO Virtuse. Pisze o Bitcoinie, makroekonomii i przyszłości pieniądza.',
         share: 'Udostępnij', shareOn: 'Udostępnij w', copyLink: 'Kopiuj link', copied: 'Link skopiowany',
-        copyFailed: 'Nie udało się skopiować. Skopiuj adres z paska przeglądarki.', moreShare: 'Więcej opcji udostępniania',
-        nostrCopied: 'Skopiowano. Wklej w swojej aplikacji Nostr.', openPrimal: 'Otwórz Primal', back: '← Wszystkie artykuły',
-        inStory: 'W tym artykule', onVirtuse: 'Na Virtuse', ovAlt: 'Nie wiesz, co wybrać? Porównaj partnerów w 60 sekund →',
+        copyFailed: 'Nie udało się skopiować. Proszę skopiować adres z paska przeglądarki.', moreShare: 'Więcej opcji udostępniania',
+        nostrCopied: 'Skopiowano. Można wkleić w aplikacji Nostr.', openPrimal: 'Otwórz Primal', back: '← Wszystkie artykuły',
+        inStory: 'W tym artykule', onVirtuse: 'Na Virtuse', ovAlt: 'Trudno wybrać? Porównanie partnerów w 60 sekund →',
         ovNote: 'Usługi partnerów. To nie jest porada finansowa.',
         capKicker: 'Zapisz się na Brief', capDek: 'Virtuse Brief. Tylko Bitcoin. Bez tokenów. Bez PR-u.', capBtn: 'Zapisz się',
         subscribe: 'Zapisz się', more: 'Więcej artykułów', moreAll: 'Wszystkie artykuły', readMore: 'Czytaj',
-        emailReq: 'Podaj adres e-mail.', sending: 'Wysyłanie', subOk: 'Gotowe. Sprawdź skrzynkę.',
-        subErr: 'Nie udało się zapisać. Spróbuj ponownie.', netErr: 'Błąd sieci. Spróbuj ponownie.',
+        emailReq: 'Proszę podać adres e-mail.', sending: 'Wysyłanie', subOk: 'Gotowe. Proszę sprawdzić skrzynkę.',
+        subErr: 'Nie udało się zapisać. Proszę spróbować ponownie.', netErr: 'Błąd sieci. Proszę spróbować ponownie.',
         footAbout: 'O nas', footTerms: 'Regulamin', footPrivacy: 'Polityka prywatności', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Wszelkie prawa zastrzeżone.', footOpLabel: 'Operator', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Słowacja · Nr identyfikacyjny (IČO) 36 709 042 · NIP UE SK2022293042 · wpisana do rejestru handlowego Sądu Miejskiego Bratysława III, sekcja Sa, nr 4452/B · info@virtuse.com',
-        errTitle: 'Nie znaleziono artykułu', errText: 'Artykuł mógł zostać przeniesiony lub wycofany. Przejrzyj całe archiwum.', errCta: 'Wszystkie artykuły'
+        errTitle: 'Nie znaleziono artykułu', errText: 'Artykuł mógł zostać przeniesiony lub wycofany. Całe archiwum jest dostępne na liście artykułów.', errCta: 'Wszystkie artykuły'
       },
       services: {
         mining: ['Kop Bitcoina ze sprawdzonymi partnerami', 'Hosting, chmura i sprzęt porównane pod kątem kosztów i wypłat.', 'Porównaj partnerów'],
-        treasury: ['Bitcoin w bilansie firmy', 'Przechowywanie, egzekucja zleceń i raportowanie dla firm i family offices.', 'Partnerzy treasury'],
+        treasury: ['Bitcoin w bilansie firmy', 'Przechowywanie, realizacja zleceń i raportowanie dla firm i family offices.', 'Partnerzy treasury'],
         custody: ['Trzymaj własne klucze', 'Portfele sprzętowe i multisig od sprawdzonych partnerów.', 'Porównaj przechowywanie'],
         policy: ['Rozlicz Bitcoina bez błędów', 'Raporty podatkowe dla każdego kraju od partnerów podatkowych.', 'Partnerzy podatkowi'],
         macro: ['Pożycz zamiast sprzedawać', 'Pożyczki pod zastaw Bitcoina od sprawdzonych pożyczkodawców, od 5% rocznie.', 'Porównaj pożyczki'],

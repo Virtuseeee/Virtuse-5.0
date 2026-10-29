@@ -225,7 +225,7 @@ Formula: costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYea
 
 - Do your heirs have written instructions (a "letter of instruction")? (20 pts): Write a letter of instruction: inventory, locations, contacts – never seed phrases. Store it with your will or attorney.
 - Are your keys geographically separated? (20 pts): Move one key or backup to a second location: a bank vault, a trusted family member or a professional key agent.
-- Does at least one heir know your bitcoin exists and where to start? (15 pts): Tell one trusted person that your bitcoin exists and whom to contact. Full details belong only in the letter of instruction.
+- Does at least one heir know your Bitcoin exists and where to start? (15 pts): Tell one trusted person that your Bitcoin exists and whom to contact. Full details belong only in the letter of instruction.
 - Do you use multisig (2-of-3) instead of a single seed phrase? (20 pts): Upgrade to 2-of-3 multisig: you hold two keys, and a partner (e.g. an Unchained-style vault) or an attorney holds the third.
 - Have you tested recovery with a small amount? (15 pts): Do a full recovery drill on a small UTXO, with your heir watching, once a year.
 - Are exchange accounts, loans and automated plans documented? (15 pts): Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.

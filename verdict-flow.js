@@ -116,7 +116,6 @@
       once: 'Jednorazovo', noSub: 'Žiadne predplatné.', waitNote: 'Platby ešte nespúšťame. Nechajte e-mail a dáme vám vedieť, keď sa report otvorí.',
       wantPh: 'Váš e-mail', wantBtn: 'Dajte mi vedieť', wantOk: 'Ste na zozname. Napíšeme vám raz, keď sa report otvorí.', wantBad: 'Zadajte platný e-mail.',
       wantNote: 'Uložíme len váš e-mail, text rozhodnutia nie. Odhlásiť sa môžete jedným kliknutím z e-mailu.', privacy: 'Súkromie',
-      payGo: 'Presmerúvame na platbu…', paidBadge: 'Celý report', paidNote: 'Uložte si report ako PDF. Táto stránka ho ukáže ešte 30 minút.', repLoad: 'Otvárame váš report…', usedNote: 'Tento report už bol otvorený. Každá platba otvorí jeden report, preto si ho pri otvorení uložte ako PDF.', payFailH: 'Report sa nepodarilo otvoriť', canceled: 'Platba bola zrušená. Výsledok máte stále tu.',
       prevBadge: 'Náhľad reportu', prevNote: 'Náhľad reportu na testovanie (?report=1). Bez ?report=1 vidíte to, čo návštevník: verdikt, 3 kroky, 2 oblasti, partnerov a ceny.',
       allH: 'Všetkých 10 signálov', missAllH: 'Chýbajúce otázky', planH: 'Plán krokov', planP: 'Signály pod 7 bodov, od najslabšieho. Každý s nástrojom, kde ho doplníte.', planNone: 'Všetky signály majú aspoň 7 bodov.', pdf: 'Uložiť ako PDF', pts: ' b.',
       R: {
@@ -217,7 +216,6 @@
       once: 'One-time', noSub: 'No subscription.', waitNote: "Payments aren't open yet. Leave your email and we'll tell you when the report opens.",
       wantPh: 'Your email', wantBtn: 'Let me know', wantOk: "You're on the list. We'll write once, when the report opens.", wantBad: 'Enter a valid email.',
       wantNote: 'We keep only your email, not your decision text. Leave with one click from the email.', privacy: 'Privacy',
-      payGo: 'Taking you to payment…', paidBadge: 'Full report', paidNote: 'Save the report as a PDF. This page shows it for 30 more minutes.', repLoad: 'Opening your report…', usedNote: 'This report has already been opened. Each payment opens one report, so save it as a PDF when you open it.', payFailH: 'We could not open the report', canceled: 'The payment was canceled. Your result is still here.',
       prevBadge: 'Report preview', prevNote: 'Report preview for testing (?report=1). Without ?report=1 you see what a visitor sees: the verdict, 3 steps, 2 areas, partners and pricing.',
       allH: 'All 10 signals', missAllH: 'Missing questions', planH: 'Step-by-step plan', planP: 'Signals under 7 points, weakest first. Each with the tool where you fill it in.', planNone: 'Every signal has at least 7 points.', pdf: 'Save as PDF', pts: ' pts',
       R: {
@@ -253,16 +251,16 @@
       howTabs: { 'Риск': [['Худший сценарий', 7], ['Ликвидность', 5], ['План Б', 4]], 'Налоги и хранение': [['Налоги', 6], ['Хранение и наследство', 3], ['Альтернативы', 7]], 'План': [['Цель', 8], ['Временной горизонт', 7], ['Правило, а не эмоция', 5]] },
       about: 'О вас', plan: 'Ваш план',
       q: {
-        country: ['В какой стране вы платите налоги?', 'Правила для Биткоина в разных странах сильно отличаются.', 'Поможет ИИ оценить сигнал «Налоги». Тот же ответ использует Tax Agent и Partner Finder.'],
+        country: ['В какой стране вы платите налоги?', 'Правила для Биткоина в разных странах сильно отличаются.', 'Поможет ИИ оценить сигнал «Налоги». Тот же ответ используют Tax Agent и Partner Finder.'],
         experience: ['У вас уже есть Биткоин?', 'По этому ответу Partner Finder покажет партнёров для новичков или опытных.', 'Использует Partner Finder. ИИ учитывает это как контекст.'],
-        amount: ['О какой сумме идёт речь?', 'Достаточно примерно.', 'Поможет ИИ оценить «Худший сценарий» (падение в евро). Использует Partner Finder и Stacking.'],
+        amount: ['О какой сумме идёт речь?', 'Достаточно примерно.', 'Поможет ИИ оценить «Худший сценарий» (падение в евро). Используют Partner Finder и Stacking.'],
         share: ['Какую долю вашего капитала это составит?', 'Достаточно оценки. Считайте сбережения и инвестиции, без жилья.', 'Влияет на сигнал «Асимметрия» и помогает оценить «Худший сценарий».'],
         horizon: ['Когда вам могут понадобиться эти деньги?', 'Биткоин может упасть на 70% и годами не восстанавливаться.', 'Влияет на сигнал «Временной горизонт» и помогает оценить ликвидность.'],
         reserve: ['Есть ли у вас резерв хотя бы на 6 месяцев расходов?', 'Вне Биткоина, наличными или на счёте.', 'Влияет на сигнал «Ликвидность» и помогает оценить «План Б».'],
         keys: ['Кто будет хранить ключи и кто о них знает?', 'Хранение является частью решения, а не деталью.', 'Влияет на сигнал «Хранение и наследство».'],
         drop: ['Биткоин упал на 70%. Что вы сделаете?', 'Отвечайте так, как поступили бы на самом деле.', 'Влияет на сигналы «Худший сценарий» и «Правило, а не эмоция».'],
         aim: ['Чего должно достичь это решение?', 'Выберите самый близкий вариант. Сумму и срок можно дописать в своём тексте.', 'Влияет на сигнал «Цель».'],
-        tax_known: ['Знаете ли вы, как в вашей стране облагается продажа?', 'Например, ставка, освобождение после срока владения или облагается ли обмен криптовалют.', 'Влияет на сигнал «Налоги».'],
+        tax_known: ['Знаете ли вы, как в вашей стране облагается налогом продажа?', 'Например, ставка, освобождение после срока владения или облагается ли обмен криптовалют.', 'Влияет на сигнал «Налоги».'],
         ruleset: ['Есть ли у вас записанное правило, когда докупать или продавать?', 'Например: докупаю при падении на 30%, продаю десятую часть при удвоении цены.', 'Влияет на сигнал «Правило, а не эмоция».'],
         holdtime: ['Как долго вы держите Биткоин, который хотите продать?', 'В некоторых странах налог зависит от срока владения.', 'Влияет на сигнал «Временной горизонт» и помогает оценить налоги.'],
         basis: ['Знаете ли вы, за сколько его купили?', 'Цена покупки является основой для расчёта налога.', 'Поможет ИИ оценить сигнал «Налоги».'],
@@ -318,7 +316,6 @@
       once: 'Разово', noSub: 'Без подписки.', waitNote: 'Платежи пока не запущены. Оставьте e-mail, и мы сообщим, когда отчёт откроется.',
       wantPh: 'Ваш e-mail', wantBtn: 'Сообщите мне', wantOk: 'Вы в списке. Мы напишем один раз, когда отчёт откроется.', wantBad: 'Введите действительный e-mail.',
       wantNote: 'Мы сохраним только ваш e-mail, но не текст решения. Отписаться можно одним кликом из письма.', privacy: 'Конфиденциальность',
-      payGo: 'Переходим к оплате…', paidBadge: 'Полный отчёт', paidNote: 'Сохраните отчёт в PDF. Эта страница покажет его ещё 30 минут.', repLoad: 'Открываем ваш отчёт…', usedNote: 'Этот отчёт уже был открыт. Каждая оплата открывает один отчёт, поэтому сохраните его в PDF при открытии.', payFailH: 'Не удалось открыть отчёт', canceled: 'Оплата отменена. Ваш результат по-прежнему здесь.',
       prevBadge: 'Предпросмотр отчёта', prevNote: 'Предпросмотр отчёта для тестирования (?report=1). Без ?report=1 вы видите то же, что посетитель: вердикт, 3 шага, 2 области, партнёров и цены.',
       allH: 'Все 10 сигналов', missAllH: 'Недостающие вопросы', planH: 'План шагов', planP: 'Сигналы ниже 7 баллов, от самого слабого. Каждый с инструментом, где его дополнить.', planNone: 'У всех сигналов не меньше 7 баллов.', pdf: 'Сохранить как PDF', pts: ' б.',
       R: {
@@ -358,8 +355,6 @@
   var RET = null; // edit from the final check: Continue returns there
   var panel = document.getElementById('panel'), back = document.getElementById('back'), stepsEl = document.getElementById('steps');
   var RESULT = null, i = 0;
-  // Return from Stripe Checkout (verdict-pay.js in the Worker).
-  var QS = new URLSearchParams(location.search), PAID_SID = QS.get('session_id'), CANCELED = QS.get('canceled') === '1';
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function quote(t) { var q = { sk: ['„', '“'], ru: ['«', '»'] }[LANG] || ['“', '”']; return q[0] + esc(t) + q[1]; }
@@ -692,11 +687,11 @@
     en: {
       levelPill: { ready: 'Thought through', almost: 'Almost there', basics: 'Basics missing', redflag: 'Red flag' },
       more: function (n) { return '+' + n + ' more'; },
-      stepsH: 'Your 3 next steps', why: 'Why: ', areasH: 'Two areas explained',
+      stepsH: 'Your 3 next steps', why: 'Why: ', areasH: 'Two signals explained',
       role: { weakest: 'Missing most', strongest: 'What you already have', furthest: "Where you're furthest along", second: 'Second thing to add' },
       meaningL: 'What it means for you', todoL: 'What to do', inStep: function (n) { return 'Step ' + n + ' above.'; }, reasonL: 'Why this rating', tipL: 'How to get 10 points',
       filler: { partners: 'See the partners ↓', consult: 'Book 15 minutes', pdf: 'Save as PDF', recheck: '↺ Rate again' },
-      lockedStrip: function (n) { return n + ' more areas are in the report: '; },
+      lockedStrip: function (n) { return n + ' more signals are in the report: '; },
       partnersH: 'Where you can do it',
       partnersP: function (c) { return 'Partners in the ' + c.cat + ' category that match your criteria' + (c.crit ? ' (' + c.crit + ')' : '') + '. Fixed rules set the order, not commission. You compare and choose.'; },
       partnersBasics: "Go through the 3 steps above first. The partners are here when you're ready.",
@@ -711,13 +706,13 @@
       feeSrc: function (chk) { return 'Source, ' + chk; }, view: function (n) { return 'View ' + n + ' →'; },
       priceH: 'What you can get', freeT: 'Free', repT: 'Full report', conT: 'Personal consultation',
       freePrice: '€0', repPrice: '€14', repOnce: 'one-time, no subscription', conPrice: '15 min · free',
-      freeList: ['Verdict and 3 next steps', '2 areas explained', 'Partners that match your criteria'],
+      freeList: ['Verdict and 3 next steps', '2 signals explained', 'Partners that match your criteria'],
       conList: ['Go through your verdict with a person', 'No sales pitch', 'Your Verdict answers are shared only after you click'],
       haveIt: '✓ You have it', repWait: 'Join the waitlist for the €14 report', repBuy: 'Unlock the report for €14', conBtn: 'Book 15 minutes',
       cfo: 'Deciding more often? <b>Virtuse CFO</b>: unlimited verdicts and reports for €9 a month or €90 a year. Join the waitlist and we\'ll tell you when it opens.',
       visitorBadge: 'This is what a visitor without the report sees',
       consultSmall: 'Want to go through it with a person?', consultLink: 'Personal consultation',
-      stickySteps: '3 steps ↑', stickyRep: 'Report €14', missAllH: 'All missing questions', partial: "The AI didn't rate some areas this time; they are shown as not described."
+      stickySteps: '3 steps ↑', stickyRep: 'Report €14', missAllH: 'All missing questions', partial: "The AI didn't rate some signals this time; they are shown as not described."
     },
     ru: {
       levelPill: { ready: 'Продумано', almost: 'Почти готово', basics: 'Не хватает основы', redflag: 'Красный флаг' },
@@ -771,7 +766,7 @@
   }
   function headBlock(r) {
     var L = r.level, col = LEVELCOL[L.id] || 'var(--orange)';
-    return '<div class="res-head lvl-' + L.id + '" style="--b:' + col + '"><div><div class="eyebrow"><i></i>' + (r.report ? R.pdfTitle + ' · ' + (r.paid ? STR.paidBadge : STR.prevBadge) : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
+    return '<div class="res-head lvl-' + L.id + '" style="--b:' + col + '"><div><div class="eyebrow"><i></i>' + (r.report ? R.pdfTitle + ' · ' + STR.prevBadge : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
       '<span class="pill">' + (L.id === 'redflag' ? FLAG + ' ' : '') + esc(V.levelPill[L.id]) + '</span>' +
       '<h2 class="verdict">' + esc(L.headline) + '</h2><p class="vwhy">' + esc(L.why) + (L.more ? ' <span class="dim">' + V.more(L.more) + '</span>' : '') + '</p>' +
       '<p class="quote">' + quote(A.text.slice(0, 160) + (A.text.length > 160 ? '…' : '')) + '</p></div>' +
@@ -868,7 +863,7 @@
     }
     function load(src, cb) { var s = document.createElement('script'); s.src = src; s.async = true; s.onload = cb; s.onerror = cb; document.head.appendChild(s); }
     var dict = LANG === 'ru' && !(window.VBPartnersDict && window.VBPartnersDict.ru);
-    function go2() { if (dict) load('/pf-dict-' + LANG + '.js?v=1', draw); else draw(); }
+    function go2() { if (dict) load('/pf-dict-' + LANG + '.js?v=2', draw); else draw(); }
     if (window.VBPartners) return go2();
     load('/pf-recommend.js?v=2', go2);
   }
@@ -901,33 +896,33 @@
       ctaFinal: 'Zapísať sa', ctaNote: 'Report za 14 € · jednorazovo, bez predplatného'
     },
     en: {
-      add: { btn: 'Add to my plan', btnQ: 'Add an answer', miss: 'What is missing', write: 'What to write', what: 'What happens', happen: 'We add it to your text and rate the verdict again. The score in this area goes up if the addition answers what is missing.', eg: 'E.g.: ', save: 'Save to my plan', cancel: 'Cancel', done: 'Waiting for the new rating.', edit: 'Edit', then: 'Then: ', long: 'The text would be longer than 1,200 characters. Shorten the addition.', empty: 'Write at least one sentence.',
+      add: { btn: 'Add to my plan', btnQ: 'Add an answer', miss: 'What is missing', write: 'What to write', what: 'What happens', happen: 'We add it to your text and rate the verdict again. The score in this signal goes up if the addition answers what is missing.', eg: 'E.g.: ', save: 'Save to my plan', cancel: 'Cancel', done: 'Waiting for the new rating.', edit: 'Edit', then: 'Then: ', long: 'The text would be longer than 1,200 characters. Shorten the addition.', empty: 'Write at least one sentence.',
         recalc: function (n) { return 'Rate my verdict again (' + n + (n === 1 ? ' addition' : ' additions') + ')'; }, recalcP: 'Your additions are added to your text. Rating again is one new assessment (at most 20 a day).',
         delta: function (a, b) { return 'After your additions: score ' + a + ' → ' + b + ' out of 100.'; },
         ask: { worst_case: ['How many euros you would lose in a 70% fall and what you would do then.', 'In a 70% fall I would lose about €7,000. I would not sell and keep my plan.'], liquidity: ['How many months of expenses you keep outside Bitcoin.', 'I keep 6 months of expenses, about €9,000, in a savings account.'], tax: ['Where you pay tax and how a sale is taxed there.', 'I pay tax in Slovakia. When I sell, I set aside part of the gain for tax.'], custody: ['Where the keys will be and how heirs reach them without sharing the seed phrase.', 'The Bitcoin will be on a hardware wallet. Instructions for my heirs are with a notary; I share the seed phrase with no one.'], plan_b: ['What would make you change the plan and what you would do then.', 'If I lose my income, I stop buying and live from my reserve.'], goal: ['A goal with a number and a date.', 'By 2035 I want at least €50,000 for retirement.'], horizon: ['How long you will hold and what would force you to sell earlier.', 'I hold for at least 10 years. I would sell earlier only in a serious illness.'], alternatives: ['At least two other options you considered, and why this one.', 'I considered an ETF and paying off my mortgage early. I choose Bitcoin because…'], rule: ['A written rule for when you buy or sell.', 'I buy €200 a month, change nothing in a fall and sell no earlier than 2035.'], asymmetry: ['Why this amount: what loss you can carry.', 'It is 10% of my savings. If it went to zero, my home and reserve would be fine.'] }
       },
-      secDecision: 'Your decision', secFound: 'What Verdict found', secTwo: 'Two areas behind your verdict', secFull: 'Want the full verdict?', secTrust: 'Why trust Verdict', secFaq: 'Before you unlock',
+      secDecision: 'Your decision', secFound: 'What Verdict found', secTwo: 'Two signals behind your verdict', secFull: 'Want the full verdict?', secTrust: 'Why trust Verdict', secFaq: 'Before you unlock',
       ringNote: 'The ring shows how complete your plan is (0 to 100); the chip below shows the verdict level.',
       cardTitle: { flag: 'Red flag', partners: 'Partners', consult: 'Personal consultation', recheck: 'Rate again', pdf: 'PDF' },
       stepN: function (n) { return 'Step ' + n; },
       improve: 'How can this score improve?',
-      waitH: function (n) { return n + ' more areas are waiting'; }, waitP: 'Each one is already scored and explained inside your verdict.', waitCta: 'See every area',
-      fullH: 'Everything inside your verdict', fullP: 'The full verdict opens as a report: all 10 areas, the questions and a step plan in one place. One payment, no subscription.', locked: 'Locked',
-      feats: function (tax, cn) { return [['Partners that match your criteria', 'Partners with a MiCA licence and the date it was checked. You compare and choose.'], [tax && cn ? 'Tax rules: ' + cn : 'Tax: what to check', tax && cn ? 'The rule for taxing a sale in your country, with source and date. No calculation from your amount.' : 'What to prepare for tax on a sale, with a link to the Tax & Inheritance Agent.'], ['Custody and inheritance: what to add', 'What is missing so heirs can reach the Bitcoin without sharing the seed phrase.'], ['Step plan with Virtuse tools', 'Areas under 7 points, weakest first, each with a link to a tool.'], ['All 10 areas with reasons', 'Points and a reason for each area, and every question still missing.'], ['PDF to keep', 'Your whole verdict as a PDF to keep.']]; },
+      waitH: function (n) { return n + ' more signals are waiting'; }, waitP: 'Each one is already scored and explained inside your verdict.', waitCta: 'See every signal',
+      fullH: 'Everything inside your verdict', fullP: 'The full verdict opens as a report: all 10 signals, the questions and a step plan in one place. One payment, no subscription.', locked: 'Locked',
+      feats: function (tax, cn) { return [['Partners that match your criteria', 'Partners with a MiCA licence and the date it was checked. You compare and choose.'], [tax && cn ? 'Tax rules: ' + cn : 'Tax: what to check', tax && cn ? 'The rule for taxing a sale in your country, with source and date. No calculation from your amount.' : 'What to prepare for tax on a sale, with a link to the Tax & Inheritance Agent.'], ['Custody and inheritance: what to add', 'What is missing so heirs can reach the Bitcoin without sharing the seed phrase.'], ['Step plan with Virtuse tools', 'Signals under 7 points, weakest first, each with a link to a tool.'], ['All 10 signals with reasons', 'Points and a reason for each signal, and every question still missing.'], ['PDF to keep', 'Your whole verdict as a PDF to keep.']]; },
       payH: 'More certainty. <span>From decision to next steps.</span>', payP: 'Find the gaps in your plan before they cost you money, and follow clear steps.',
-      barToday: 'Areas described well today', barReport: 'Explained in the report', of10: function (n) { return n + ' of 10'; },
+      barToday: 'Signals described well today', barReport: 'Explained in the report', of10: function (n) { return n + ' of 10'; },
       payT: 'Your report', payRow: 'Full verdict', once: 'One-time price', onceNote: 'No subscription or renewal. The report is yours to keep.',
       plusT: 'Plus: personal consultation', plusP: '15 minutes with a person, free, no sales pitch.', plusBtn: 'Book',
       waitBtn: 'Join the waitlist for the €14 report', buyBtn: 'Unlock my verdict', stripe: 'Secure checkout with Stripe', opens: 'Opens right after payment',
-      trust: [['24 vetted partners', 'For partners with a MiCA licence we show the date we checked the ESMA register.'], ['Tax rules for 13 EU countries', 'From the same sources as our tax pages, with the date shown.'], ['The same rating for everyone', '10 areas on a fixed rubric. Fixed rules set the partner order, not commission.'], ["We don't hold your money or keys", "We don't store your decision text in the Virtuse database. Virtuse since 2018."]],
-      faq: [['What happens after I join?', 'We keep only your email. When the report opens, we send you one message. Nothing else.'], ['What exactly do I get for €14?', 'All 10 areas with points and reasons, every missing question, a step plan with Virtuse tools and a PDF to keep.'], ['Why pay when I can just ask ChatGPT?', 'Verdict rates every decision on the same 10 areas with a fixed rubric, uses your answers and the tax rules of 13 countries we cite with sources. It shows only vetted partners.'], ['What if the verdict says my plan is not ready?', 'Verdict measures how completely your plan is described, not whether to buy or sell. It shows what to add, and you can rate it again.'], ['Do I keep it?', 'Yes. You save the report as a PDF, with no subscription.'], ['Is this investment advice?', 'No. Verdict rates how complete your thinking is. It never says whether to buy, sell or wait.'], ['What happens to my text?', "We don't store it in the Virtuse database. Anthropic (USA) processes it to assess it."]],
+      trust: [['24 vetted partners', 'For partners with a MiCA licence we show the date we checked the ESMA register.'], ['Tax rules for 13 EU countries', 'From the same sources as our tax pages, with the date shown.'], ['The same rating for everyone', '10 signals on a fixed rubric. Fixed rules set the partner order, not commission.'], ["We don't hold your money or keys", "We don't store your decision text in the Virtuse database. Virtuse since 2018."]],
+      faq: [['What happens after I join?', 'We keep only your email. When the report opens, we send you one message. Nothing else.'], ['What exactly do I get for €14?', 'All 10 signals with points and reasons, every missing question, a step plan with Virtuse tools and a PDF to keep.'], ['Why pay when I can just ask ChatGPT?', 'Verdict rates every decision on the same 10 signals with a fixed rubric, uses your answers and the tax rules of 13 countries we cite with sources. It shows only vetted partners.'], ['What if the verdict says my plan is not ready?', 'Verdict measures how completely your plan is described, not whether to buy or sell. It shows what to add, and you can rate it again.'], ['Do I keep it?', 'Yes. You save the report as a PDF, with no subscription.'], ['Is this investment advice?', 'No. Verdict rates how complete your thinking is. It never says whether to buy, sell or wait.'], ['What happens to my text?', "We don't store it in the Virtuse database. Anthropic (USA) processes it to assess it."]],
       ctaFinal: 'Join the waitlist', ctaNote: '€14 report · one-time, no subscription'
     },
     ru: {
       add: { btn: 'Дополнить план', btnQ: 'Добавить ответ', miss: 'Чего не хватает', write: 'Что написать', what: 'Что будет дальше', happen: 'Мы добавим это к вашему тексту и оценим вердикт заново. Оценка этой области вырастет, если дополнение отвечает на то, чего не хватает.', eg: 'Например: ', save: 'Сохранить в план', cancel: 'Отмена', done: 'Ждёт новой оценки.', edit: 'Изменить', then: 'Затем: ', long: 'Текст будет длиннее 1200 знаков. Сократите дополнение.', empty: 'Напишите хотя бы одно предложение.',
         recalc: function (n) { return 'Оценить вердикт заново (дополнений: ' + n + ')'; }, recalcP: 'Дополнения добавятся к вашему тексту. Новая оценка — это одна проверка (не больше 20 в день).',
         delta: function (a, b) { return 'После дополнений: оценка ' + a + ' → ' + b + ' из 100.'; },
-        ask: { worst_case: ['Сколько евро вы потеряете при падении на 70 % и что тогда сделаете.', 'При падении на 70 % я потеряю около 7 000 €. Тогда я не продаю и план не меняю.'], liquidity: ['Сколько месяцев расходов у вас отложено вне Биткоина.', 'Резерв на 6 месяцев расходов, около 9 000 €, лежит на сберегательном счёте.'], tax: ['В какой стране вы платите налоги и как там облагается продажа.', 'Налоги я плачу в Словакии. При продаже откладываю часть прибыли на налог.'], custody: ['Где будут ключи и как наследники получат доступ без передачи сид-фразы.', 'Биткоин будет на аппаратном кошельке. Инструкция для наследников хранится у нотариуса, сид-фразу я никому не передаю.'], plan_b: ['Что заставит вас изменить план и что вы тогда сделаете.', 'Если я потеряю доход, перестану докупать и буду жить на резерв.'], goal: ['Цель с суммой и датой.', 'К 2035 году хочу иметь на пенсию не меньше 50 000 €.'], horizon: ['Как долго вы будете держать и что может заставить продать раньше.', 'Держу не меньше 10 лет. Раньше продам только при серьёзной болезни.'], alternatives: ['Как минимум два других варианта, которые вы сравнили, и почему этот.', 'Я рассматривал ETF и досрочное погашение ипотеки. Выбираю Биткоин, потому что…'], rule: ['Записанное правило, когда вы покупаете или продаёте.', 'Покупаю на 200 € в месяц, при падении ничего не меняю, продаю не раньше 2035 года.'], asymmetry: ['Почему именно эта сумма: какую потерю вы выдержите.', 'Это 10 % сбережений. Если они обнулятся, жильё и резерв не пострадают.'] }
+        ask: { worst_case: ['Сколько евро вы потеряете при падении на 70 % и что тогда сделаете.', 'При падении на 70 % я потеряю около 7 000 €. Тогда я не продаю и план не меняю.'], liquidity: ['Сколько месяцев расходов у вас отложено вне Биткоина.', 'Резерв на 6 месяцев расходов, около 9 000 €, лежит на сберегательном счёте.'], tax: ['В какой стране вы платите налоги и как там облагается налогом продажа.', 'Налоги я плачу в Словакии. При продаже откладываю часть прибыли на налог.'], custody: ['Где будут ключи и как наследники получат доступ без передачи сид-фразы.', 'Биткоин будет на аппаратном кошельке. Инструкция для наследников хранится у нотариуса, сид-фразу я никому не передаю.'], plan_b: ['Что заставит вас изменить план и что вы тогда сделаете.', 'Если я потеряю доход, перестану докупать и буду жить на резерв.'], goal: ['Цель с суммой и датой.', 'К 2035 году хочу иметь на пенсию не меньше 50 000 €.'], horizon: ['Как долго вы будете держать и что может заставить продать раньше.', 'Держу не меньше 10 лет. Раньше продам только при серьёзной болезни.'], alternatives: ['Как минимум два других варианта, которые вы сравнили, и почему этот.', 'Я рассматривал ETF и досрочное погашение ипотеки. Выбираю Биткоин, потому что…'], rule: ['Записанное правило, когда вы покупаете или продаёте.', 'Покупаю на 200 € в месяц, при падении ничего не меняю, продаю не раньше 2035 года.'], asymmetry: ['Почему именно эта сумма: какую потерю вы выдержите.', 'Это 10 % сбережений. Если они обнулятся, жильё и резерв не пострадают.'] }
       },
       secDecision: 'Ваше решение', secFound: 'Что нашёл Verdict', secTwo: 'Две области за вашим вердиктом', secFull: 'Хотите полный вердикт?', secTrust: 'Почему Verdict можно доверять', secFaq: 'Перед тем как открыть',
       ringNote: 'Кольцо показывает, насколько полно описан план (от 0 до 100), метка под ним — уровень вердикта.',
@@ -1111,7 +1106,7 @@
   // browser saves it as PDF. White paper, no site chrome, page numbers.
   var PD = {
     sk: { moreB: 'Celý report za 14 €', moreR: 'obsahuje všetkých 10 oblastí s dôvodom, všetky chýbajúce otázky, plán krokov a 5-stranové PDF.', docFree: 'Verdict · zhrnutie', two: 'Dve oblasti za vaším verdiktom', openQ: 'Otázka, na ktorú zatiaľ nemáte odpoveď', more: 'Celý report za 14 € obsahuje všetkých 10 oblastí s dôvodom, všetky chýbajúce otázky, plán krokov a 5-stranové PDF.', pdfFree: 'Stiahnuť PDF zhrnutie', doc: 'Verdict · report', date: 'Dátum', goal: 'Čo zvažujete', country: 'Krajina', score: 'Skóre úplnosti plánu', scoreNote: 'Meria úplnosť plánu, nie či je Bitcoin dobrá voľba.', steps: 'Tri ďalšie kroky', tool: 'Nástroj', signals: 'Všetkých 10 oblastí', todo: 'Čo urobiť', gaps: 'Otázky, na ktoré ešte nemáte odpoveď', plan: 'Plán krokov', planP: 'Oblasti pod 7 bodov, od najslabšej.', planNone: 'Všetky oblasti majú aspoň 7 bodov.', covered: function (n) { return 'Dobre opísané oblasti: ' + n + ' z 10.'; }, partners: 'Kde to môžete urobiť', partnersP: 'Partneri, ktorí spĺňajú vaše kritériá. Poradie určujú pevné pravidlá, nie provízia. Porovnáte a vyberiete vy.', disclose: 'Partnerské odkazy: ak sa zaregistrujete, Virtuse môže dostať províziu, vaša cena sa nemení.', notes: 'Poznámky k daniam, úschove a poplatkom', taxNote: 'Nie je to daňové poradenstvo. Pravidlá si overte s daňovým poradcom.', fees: 'Poplatky porovnáte v Indexe poplatkov', links: 'Užitočné odkazy', appendix: 'Príloha: vaše odpovede', again: 'Ohodnotiť znova', consult: 'Osobná konzultácia, 15 minút, zadarmo', legal: 'Vygenerované umelou inteligenciou. Nie je to investičné, daňové ani právne poradenstvo. Virtuse nedrží vaše kľúče ani peniaze.', id: 'ID reportu', file: 'Virtuse-Verdict' },
-    en: { moreB: 'The full €14 report', moreR: 'has all 10 areas with reasons, every missing question, a step plan and a 5-page PDF.', docFree: 'Verdict · summary', two: 'Two areas behind your verdict', openQ: 'A question you have not answered yet', more: 'The full €14 report has all 10 areas with reasons, every missing question, a step plan and a 5-page PDF.', pdfFree: 'Download PDF summary', doc: 'Verdict · report', date: 'Date', goal: 'What you are considering', country: 'Country', score: 'Plan completeness score', scoreNote: 'Measures how complete the plan is, not whether Bitcoin is a good choice.', steps: 'Three next steps', tool: 'Tool', signals: 'All 10 areas', todo: 'What to do', gaps: 'Questions you have not answered yet', plan: 'Step plan', planP: 'Areas under 7 points, weakest first.', planNone: 'Every area has at least 7 points.', covered: function (n) { return 'Areas well described: ' + n + ' of 10.'; }, partners: 'Where you can do it', partnersP: 'Partners that match your criteria. Fixed rules set the order, not commission. You compare and choose.', disclose: 'Partner links: if you sign up, Virtuse may receive a commission; your price does not change.', notes: 'Notes on tax, custody and fees', taxNote: 'This is not tax advice. Check the rules with a tax adviser.', fees: 'Compare fees in the Bitcoin Fee Index', links: 'Useful links', appendix: 'Appendix: your answers', again: 'Rate again', consult: 'Personal consultation, 15 minutes, free', legal: 'Generated by artificial intelligence. Not investment, tax or legal advice. Virtuse holds no keys or funds.', id: 'Report ID', file: 'Virtuse-Verdict' },
+    en: { moreB: 'The full €14 report', moreR: 'has all 10 signals with reasons, every missing question, a step plan and a 5-page PDF.', docFree: 'Verdict · summary', two: 'Two signals behind your verdict', openQ: 'A question you have not answered yet', more: 'The full €14 report has all 10 signals with reasons, every missing question, a step plan and a 5-page PDF.', pdfFree: 'Download PDF summary', doc: 'Verdict · report', date: 'Date', goal: 'What you are considering', country: 'Country', score: 'Plan completeness score', scoreNote: 'Measures how complete the plan is, not whether Bitcoin is a good choice.', steps: 'Three next steps', tool: 'Tool', signals: 'All 10 signals', todo: 'What to do', gaps: 'Questions you have not answered yet', plan: 'Step plan', planP: 'Signals under 7 points, weakest first.', planNone: 'Every signal has at least 7 points.', covered: function (n) { return 'Signals well described: ' + n + ' of 10.'; }, partners: 'Where you can do it', partnersP: 'Partners that match your criteria. Fixed rules set the order, not commission. You compare and choose.', disclose: 'Partner links: if you sign up, Virtuse may receive a commission; your price does not change.', notes: 'Notes on tax, custody and fees', taxNote: 'This is not tax advice. Check the rules with a tax adviser.', fees: 'Compare fees in the Bitcoin Fee Index', links: 'Useful links', appendix: 'Appendix: your answers', again: 'Rate again', consult: 'Personal consultation, 15 minutes, free', legal: 'Generated by artificial intelligence. Not investment, tax or legal advice. Virtuse holds no keys or funds.', id: 'Report ID', file: 'Virtuse-Verdict' },
     ru: { moreB: 'Полный отчёт за 14 €', moreR: 'содержит все 10 областей с пояснениями, все недостающие вопросы, план шагов и PDF на 5 страниц.', docFree: 'Вердикт · краткая версия', two: 'Две области за вашим вердиктом', openQ: 'Вопрос, на который у вас пока нет ответа', more: 'Полный отчёт за 14 € содержит все 10 областей с пояснениями, все недостающие вопросы, план шагов и PDF на 5 страниц.', pdfFree: 'Скачать PDF (кратко)', doc: 'Вердикт · отчёт', date: 'Дата', goal: 'Что вы рассматриваете', country: 'Страна', score: 'Оценка полноты плана', scoreNote: 'Измеряет полноту плана, а не то, хорош ли Биткоин.', steps: 'Три следующих шага', tool: 'Инструмент', signals: 'Все 10 областей', todo: 'Что сделать', gaps: 'Вопросы, на которые у вас пока нет ответа', plan: 'План шагов', planP: 'Области ниже 7 баллов, от самой слабой.', planNone: 'У всех областей не меньше 7 баллов.', covered: function (n) { return 'Хорошо описанных областей: ' + n + ' из 10.'; }, partners: 'Где это можно сделать', partnersP: 'Партнёры, которые соответствуют вашим критериям. Порядок определяют фиксированные правила, а не комиссия. Сравниваете и выбираете вы.', disclose: 'Партнёрские ссылки: если вы зарегистрируетесь, Virtuse может получить комиссию, ваша цена не меняется.', notes: 'Заметки о налогах, хранении и комиссиях', taxNote: 'Это не налоговая консультация. Проверьте правила у налогового консультанта.', fees: 'Комиссии сравните в Индексе комиссий', links: 'Полезные ссылки', appendix: 'Приложение: ваши ответы', again: 'Оценить снова', consult: 'Личная консультация, 15 минут, бесплатно', legal: 'Создано искусственным интеллектом. Не является инвестиционной, налоговой или юридической консультацией. Virtuse не хранит ваши ключи и деньги.', id: 'ID отчёта', file: 'Virtuse-Verdict' }
   }[LANG];
   function absUrl(h) { try { var u = new URL(h, location.href); ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) { u.searchParams.delete(k); }); return 'virtuse.com' + u.pathname + u.search; } catch (e) { return h; } }
@@ -1220,7 +1215,7 @@
       push({ event: 'consultation_click', verdict_lang: LANG, verdict_band: r.band && r.band.id, verdict_level: r.level && r.level.id, tier: r.report ? 'report' : 'free' });
       if (window.VirtuseConsultation) window.VirtuseConsultation.open(LANG);
     }; });
-    panel.parentNode.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = startOver; });
+    panel.parentNode.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
     panel.querySelectorAll('[data-step]').forEach(function (b) { b.addEventListener('click', function () { push({ event: 'verdict_step_click', verdict_lang: LANG, step: b.dataset.step, verdict_level: r.level && r.level.id }); }); });
     panel.querySelectorAll('[data-pdf]').forEach(function (b) { b.onclick = downloadPdf; });
     var sh = document.getElementById('pfShow');
@@ -1232,61 +1227,6 @@
     }
     spot();
   }
-  function startOver() {
-    try { sessionStorage.removeItem('vb-verdict-pay'); } catch (e) {}
-    if (PAID_SID || CANCELED) { history.replaceState(null, '', location.pathname); PAID_SID = null; CANCELED = false; }
-    A.text = ''; RESULT = null; go(1);
-  }
-  // "Unlock" in checkout mode: the Worker creates a Stripe Checkout Session
-  // for this scored result (rid) and we go to Stripe's page.
-  function bindPay() {
-    panel.parentNode.querySelectorAll('[data-checkout]').forEach(function (b) {
-      b.onclick = function (e) {
-        if (e) e.preventDefault();
-        if (!RESULT || !RESULT.rid) return;
-        var label = b.innerHTML, msg = b.parentNode.querySelector('.vx-paymsg');
-        if (!msg) { msg = document.createElement('p'); msg.className = 'small vx-paymsg'; msg.setAttribute('aria-live', 'polite'); b.parentNode.appendChild(msg); }
-        b.disabled = true; b.textContent = STR.payGo; msg.textContent = '';
-        push({ event: 'verdict_checkout', verdict_lang: LANG, verdict_level: RESULT.level && RESULT.level.id });
-        vbApi().then(function (api) { return fetch(api.url('/verdict') + '/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rid: RESULT.rid, lang: LANG }) }); })
-          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
-          .catch(function () { return { ok: false, d: { error: STR.network } }; })
-          .then(function (x) {
-            if (x.ok && x.d && x.d.url) {
-              try { sessionStorage.setItem('vb-verdict-pay', JSON.stringify({ A: A, R: RESULT })); } catch (e) {}
-              location.href = x.d.url;
-            } else { b.disabled = false; b.innerHTML = label; msg.textContent = (x.d && x.d.error) || STR.error; }
-          });
-      };
-    });
-  }
-  // Back from Stripe: ?session_id=... asks the Worker for the paid report;
-  // ?canceled=1 shows the free result again.
-  function paidReturn() {
-    var saved = null;
-    try { saved = JSON.parse(sessionStorage.getItem('vb-verdict-pay') || 'null'); } catch (e) {}
-    if (saved && saved.A) Object.keys(saved.A).forEach(function (k) { A[k] = saved.A[k]; });
-    i = at('result'); stepper(); back.hidden = true;
-    if (CANCELED) {
-      push({ event: 'verdict_checkout_canceled', verdict_lang: LANG });
-      if (saved && saved.R) { RESULT = saved.R; showResult(); } else go(0);
-      return;
-    }
-    panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.repLoad + '</h2></div>';
-    vbApi().then(function (api) { return fetch(api.url('/verdict') + '/report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: PAID_SID, lang: LANG }) }); })
-      .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
-      .catch(function () { return { ok: false, d: { error: STR.network } }; })
-      .then(function (x) {
-        if (x.ok && x.d && x.d.level) {
-          RESULT = x.d;
-          push({ event: x.d.reportUsed ? 'verdict_report_used' : 'verdict_report_paid', verdict_lang: LANG });
-          showResult();
-        } else {
-          panel.innerHTML = '<h2>' + STR.payFailH + '</h2><p class="sub">' + esc((x.d && x.d.error) || STR.error) + '</p><div class="foot" style="margin-top:18px"><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>';
-          panel.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = startOver; });
-        }
-      });
-  }
   function showResult() {
     var r = RESULT; if (!r) { go(at('review')); return; }
     var again = '<div class="foot" style="margin-top:18px"><button class="ghost" id="again">' + STR.again + '</button></div>';
@@ -1297,10 +1237,9 @@
     }
     if (!r.level || !r.steps || !r.areas) { panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + STR.error + '</p>' + again; document.getElementById('again').onclick = function () { go(at('review')); }; return; }
     if (r.report) { showReport(r); return; }
-    var note = r.reportUsed ? STR.usedNote : CANCELED ? STR.canceled : '';
-    panel.innerHTML = '<div data-ai-generated="true" class="vx">' + (note ? '<p class="warn no-print">' + note + '</p>' : '') + decisionBlock(r) + foundBlock(r, 'result') + twoBlock(r, 'result') + waitingBlock(r) +
+    panel.innerHTML = '<div data-ai-generated="true" class="vx">' + decisionBlock(r) + foundBlock(r, 'result') + twoBlock(r, 'result') + waitingBlock(r) +
       partnersBlock(r, 'verdict') + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(false) + '</div>' + sticky();
-    bindCommon(); bindWant(); bindPay(); bindAdds(); PREV = null; loadPartners(r, 'verdict');
+    bindCommon(); bindWant(); bindAdds(); PREV = null; loadPartners(r, 'verdict');
   }
 
   // Interest in the full report: email only, no decision text.
@@ -1350,7 +1289,7 @@
   function showReport(r) {
     var groups = ['risk', 'taxc', 'plan'];
     panel.innerHTML = '<div data-ai-generated="true" class="report">' +
-      '<p class="warn no-print">' + (r.paid ? STR.paidNote : STR.prevNote) + '</p><div class="vx-pdfbar no-print"><button class="vf-btn solid" data-pdf>' + V.pdfDl + '</button><button class="vf-btn" data-pdf>' + V.pdfPrint + '</button><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>' + headBlock(r) + stepsBlock(r, 'report') +
+      '<p class="warn no-print">' + STR.prevNote + '</p><div class="vx-pdfbar no-print"><button class="vf-btn solid" data-pdf>' + V.pdfDl + '</button><button class="vf-btn" data-pdf>' + V.pdfPrint + '</button><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>' + headBlock(r) + stepsBlock(r, 'report') +
       groups.map(function (g) {
         var ss = r.areas.filter(function (a) { return GROUP[a.id] === g; });
         return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (a) { return areaCard(a, 'report', r.steps); }).join('') + '</div>';
@@ -1358,8 +1297,8 @@
       '<div class="sec">' + V.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
       partnersBlock(r, 'verdict_report') +
       '<p class="sub sm no-print consult-line">' + V.consultSmall + ' <a href="#" data-consult>' + V.consultLink + '</a></p>' +
-      (r.paid ? '' : '<div class="sec badge">' + V.visitorBadge + '</div>' + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r)) + legal(r) + againFoot(true) + '</div>';
-    bindCommon(); bindWant(); bindPay(); loadPartners(r, 'verdict_report');
+      '<div class="sec badge">' + V.visitorBadge + '</div>' + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(true) + '</div>';
+    bindCommon(); bindWant(); loadPartners(r, 'verdict_report');
   }
 
   // Cursor spotlight (same effect as site-v2.js, for cards rendered later).
@@ -1388,8 +1327,7 @@
   if (handed) { A.text = handed.slice(0, 1200); A.name = ''; src = 'cfo'; saveText(); }
   build();
   push({ event: 'verdict_start', verdict_lang: LANG, source: src });
-  if (PAID_SID || CANCELED) paidReturn();
-  else if (handed) go(at('goal'));
+  if (handed) go(at('goal'));
   else if (A.goal) {
     // Prefilled: the final check when everything is answered, else the first gap.
     var gap = KEYS().filter(function (k) { return !A[k]; })[0];
