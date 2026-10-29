@@ -229,7 +229,9 @@ def chrome(L, lang_url, comma=True):
     foot = home[home.index('<footer class="footer-main">'):home.index('</footer>') + len('</footer>')]
     nav, foot = absolutize(nav, L), absolutize(foot, L)
     if comma:
-        foot = foot.replace(' &mdash; ', ', ').replace(' \u2014 ', ', ')   # no long dash in the footer line
+        # no long dash in the footer Brief line (&mdash;); the literal dash in the uk/ru legal
+        # sentence ("Virtuse — незалежний хаб…") is its verb and stays
+        foot = foot.replace(' &mdash; ', ', ')
 
     def langs(seg):
         def one(m):
