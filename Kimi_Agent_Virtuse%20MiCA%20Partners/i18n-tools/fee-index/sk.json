@@ -1,6 +1,6 @@
 {
   "title": "Index poplatkov za Bitcoin (EÚ): celkové náklady nákupu",
-  "description": "Spôsoby nákupu Bitcoinu u partnerov s licenciou v EÚ podľa celkových nákladov (poplatok plus odhadovaný spread) pri mesačnom nákupe. Overené {date}.",
+  "description": "Nákup Bitcoinu u partnerov s licenciou v EÚ podľa celkových nákladov (poplatok a odhadovaný spread) pri mesačnom nákupe. Overené {date}.",
   "og_title": "Index poplatkov za Bitcoin: koľko nákup Bitcoinu naozaj stojí",
   "og_alt": "Virtuse Index poplatkov za Bitcoin",
   "crumb_home": "Domov",
