@@ -786,7 +786,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>9 € <small>/ hó</small></span><span data-y hidden>90 € <small>/ év</small></span></div>
         <p class="for"><span data-m>Vagy évi 90 €, két hónap ingyen.</span><span data-y hidden>Ez havi 7,50 €, éves számlázással.</span></p>
         <ul><li>Díjaudit az exportjából</li><li>Korlátlan értékelés és teljes riport</li><li>A döntései időben, a céges treasuryt is beleértve</li><li>Díj- és hitel LTV-riasztások</li><li>Adóriport, 13 uniós ország, és öröklési csomag</li><li>Kérdezze a CFO-ját, korlátlanul</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Kezdje az ingyenes audittal</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Kezdje a díjaudittal</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="E-mail-cím" aria-label="E-mail-cím" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -802,7 +802,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>30 napos visszatérítés</b>Kérdések és űrlap nélkül.</span>
         <span class="ic ic-muted"><b>Lemondás egy kattintással</b>A fiókoldaláról.</span>
-        <span class="ic ic-orange"><b>Fizetés Lightninggal vagy kártyával</b>Az ingyenes audithoz nem kell kártya.</span>
+        <span class="ic ic-orange"><b>Fizetés Lightninggal vagy kártyával</b>A díjaudithoz nem kell kártya.</span>
         <span class="ic ic-blue"><b>14 napos uniós elállási jog</b>A törvényes elállási jog ezen felül is megilleti.</span>
       </div>
       <p class="terms-fine">Az árak adott esetben tartalmazzák az áfát. Ugyanaz az ár mind a 10 nyelven.</p>
@@ -853,7 +853,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Ennyi hagyja el az eszközét. <span>Nyissa meg a hálózat fület, és ellenőrizze.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Ingyenes audit feltöltése"><span class="c">// ingyenes audit</span>
+<pre class="code code-free" aria-label="Díjaudit feltöltése"><span class="c">// ingyenes audit</span>
 <span class="c ok">// semmi. 0 bájt.</span></pre>
 <pre class="code code-paid" aria-label="Fizetős fiók feltöltése"><span class="c">// CFO-fiók · hogy a riasztásai működjenek</span>
 {
@@ -902,7 +902,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Hogyan kapom meg a Kraken exportomat?</summary><p>A kraken.com oldalon kattintson a jobb felső sarokban a profilikonra, és válassza ezt: <b>Documents</b>. Az Exports alatt kattintson erre: <b>Create export</b>, válassza ezt: <b>Ledgers</b>, adjon meg kezdő és záró dátumot, válassza ezt: <b>CSV</b> és kattintson a Generate gombra. A fájl ugyanabban a listában jelenik meg, amikor elkészül. Ez néhány perctől több napig is tarthat, és a Kraken nem küld e-mailt. A Trades helyett a Ledgers lehetőséget válassza: ez minden díjat és az azonnali vásárlásait is tartalmazza. Ha Kraken Prót használ, és nem látja a Documents menüt, nézze meg a Statements alatt. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">A Kraken útmutatója</a></p></details>
       <details><summary>És a Bybit EU-ról vagy a 21bitcoinról?</summary><p>Bybit EU: exportálja a spot kereskedési előzményeit az Orders részből. Hosszabb időszakhoz több fájl is kellhet. 21bitcoin: az alkalmazásban nyissa meg a tevékenységeit, és a letöltés ikonnal exportálja az összes tranzakciót. A tőzsdék időnként átrendezik a menüiket, ezért nézze meg a súgóoldalaikat, ha egy lépés másképp néz ki.</p></details>
       <details><summary>Feltöltődik valahova a fájlom?</summary><p>Nem. Az audit a böngészőjében olvassa be a fájlt, és semmit nem küld a Virtuse-nak. Ezt a böngészője hálózat fülén Ön is ellenőrizheti.</p></details>
-      <details><summary>Kell fiók vagy kártya?</summary><p>Nem. Az ingyenes audithoz egyik sem kell. Fiókot csak akkor hoz létre, ha később a Virtuse CFO mellett dönt.</p></details>
+      <details><summary>Kell fiók vagy kártya?</summary><p>Nem. A díjaudithoz egyik sem kell. Fiókot csak akkor hoz létre, ha később a Virtuse CFO mellett dönt.</p></details>
       <details><summary>Mely tőzsdék működnek induláskor?</summary><p>Kraken, Bybit EU és 21bitcoin. Az indulás után további tőzsdék jönnek.</p></details>
       <details><summary>Ez befektetési vagy adótanácsadás?</summary><p>Nem. Az audit megmutatja, mit fizetett, és az engedéllyel rendelkező partnerek közzétett díjait. Hogy mit kezd vele, az az Ön döntése. Adókérdésekben forduljon adótanácsadóhoz.</p></details>
     </div>
@@ -1122,7 +1122,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'hu' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Felírtuk. Egyszer írunk, amikor a Verdict és az ingyenes audit elindul.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Felírtuk. Egyszer írunk, amikor a Verdict és a díjaudit elindul.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Hiba történt. Kérjük, próbálja újra.'; }
       })

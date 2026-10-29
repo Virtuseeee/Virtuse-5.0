@@ -49,7 +49,7 @@
   "q4": "À quelle fréquence les chiffres sont-ils vérifiés ?",
   "a4": "Nous vérifions les pages de frais et mesurons les spreads chaque trimestre, ainsi qu'à chaque changement de prix d'un partenaire. La date en haut de la page indique la dernière vérification.",
   "press_sum": "Pour les journalistes et les sites",
-  "press_intro": "Vous pouvez citer et intégrer l'indice en indiquant la source : \"Source: Virtuse Bitcoin Fee Index, fees checked {date}\" et un lien vers cette page.",
+  "press_intro": "Vous pouvez citer et intégrer l'indice en indiquant la source : \"Source : Indice des frais Bitcoin de Virtuse, frais vérifiés le {date}\" et un lien vers cette page.",
   "press_blurb_h": "Texte pour la presse",
   "press_blurb": "Indice des frais Bitcoin de Virtuse (frais vérifiés le {date}) : pour {amount} par mois, {w} présente le coût total le plus bas parmi les voies d'achat de Bitcoin agréées dans l'UE répertoriées ({wt}, frais publiés plus spread estimé). Les frais de réseau, de retrait et de change ne sont pas inclus. Source : https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Code d'intégration",

@@ -786,7 +786,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>9 € <small>/ měsíc</small></span><span data-y hidden>90 € <small>/ rok</small></span></div>
         <p class="for"><span data-m>Nebo 90 € ročně, 2 měsíce zdarma.</span><span data-y hidden>To je 7,50 € měsíčně při roční platbě.</span></p>
         <ul><li>Audit poplatků z exportu</li><li>Neomezené verdikty a plné reporty</li><li>Vaše rozhodnutí v čase včetně firemní treasury</li><li>Upozornění na poplatky a LTV půjčky</li><li>Daňový přehled, 13 zemí EU, a dědický balíček</li><li>Zeptejte se svého CFO, bez limitu</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Začít bezplatným auditem</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Začít auditem poplatků</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -802,7 +802,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>Vrácení peněz do 30 dnů</b>Bez otázek, bez formuláře.</span>
         <span class="ic ic-muted"><b>Zrušení jedním kliknutím</b>Na stránce vašeho účtu.</span>
-        <span class="ic ic-orange"><b>Platba přes Lightning nebo kartou</b>Na bezplatný audit nepotřebujete kartu.</span>
+        <span class="ic ic-orange"><b>Platba přes Lightning nebo kartou</b>Na audit poplatků nepotřebujete kartu.</span>
         <span class="ic ic-blue"><b>14denní právo na odstoupení v EU</b>Vaše zákonné právo na odstoupení od smlouvy platí navíc.</span>
       </div>
       <p class="terms-fine">Ceny zahrnují DPH, pokud se uplatňuje. Stejná cena ve všech 10 jazycích.</p>
@@ -853,7 +853,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Tohle je vše, co opustí vaše zařízení. <span>Otevřete kartu Síť a zkontrolujte to.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Nahrání u bezplatného auditu"><span class="c">// bezplatný audit</span>
+<pre class="code code-free" aria-label="Nahrání u auditu poplatků"><span class="c">// bezplatný audit</span>
 <span class="c ok">// nic. 0 bajtů.</span></pre>
 <pre class="code code-paid" aria-label="Nahrání u placeného účtu"><span class="c">// účet CFO · aby upozornění běžela dál</span>
 {
@@ -902,7 +902,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Jak získám export z Krakenu?</summary><p>Na kraken.com klikněte vpravo nahoře na ikonu profilu a vyberte <b>Documents</b>. V části Exports klikněte na <b>Create export</b>, vyberte <b>Ledgers</b>, nastavte datum začátku a konce, zvolte <b>CSV</b> a klikněte na Generate. Soubor se objeví ve stejném seznamu, až bude připraven. Může to trvat několik minut i několik dní a Kraken vám nepošle e-mail. Vyberte Ledgers, ne Trades: obsahuje každý poplatek i vaše okamžité nákupy. Pokud používáte Kraken Pro a Documents nevidíte, podívejte se do části Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Návod od Krakenu</a></p></details>
       <details><summary>A z Bybit EU nebo 21bitcoin?</summary><p>Bybit EU: exportujte historii spotových obchodů v sekci Orders. Delší období mohou vyžadovat více souborů. 21bitcoin: v aplikaci otevřete svou aktivitu a ikonou stahování exportujte všechny transakce. Burzy čas od času přesouvají menu, proto pokud krok vypadá jinak, podívejte se na jejich stránky nápovědy.</p></details>
       <details><summary>Nahrává se můj soubor někam?</summary><p>Ne. Audit čte soubor ve vašem prohlížeči a do Virtuse neodešle nic. Můžete si to sami ověřit na kartě Síť ve vašem prohlížeči.</p></details>
-      <details><summary>Potřebuji účet nebo kartu?</summary><p>Ne. Bezplatný audit nepotřebuje ani jedno. Účet si vytvoříte, jen pokud si později zvolíte Virtuse CFO.</p></details>
+      <details><summary>Potřebuji účet nebo kartu?</summary><p>Ne. Audit poplatků nepotřebuje ani jedno. Účet si vytvoříte, jen pokud si později zvolíte Virtuse CFO.</p></details>
       <details><summary>Které burzy fungují při spuštění?</summary><p>Kraken, Bybit EU a 21bitcoin. Další burzy přibudou po spuštění.</p></details>
       <details><summary>Jde o investiční nebo daňové poradenství?</summary><p>Ne. Audit ukazuje, co jste zaplatili, a zveřejněné poplatky licencovaných partnerů. Co s tím uděláte, je vaše rozhodnutí. S daňovými otázkami se obraťte na daňového poradce.</p></details>
     </div>
@@ -1122,7 +1122,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'cs' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Jste na seznamu. Napíšeme vám jednou, až se Verdict a bezplatný audit otevřou.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Jste na seznamu. Napíšeme vám jednou, až se Verdict a audit poplatků otevřou.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.'; }
       })

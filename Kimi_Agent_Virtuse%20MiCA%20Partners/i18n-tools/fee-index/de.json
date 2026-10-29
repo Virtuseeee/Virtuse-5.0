@@ -49,7 +49,7 @@
   "q4": "Wie oft werden die Zahlen geprüft?",
   "a4": "Wir prüfen die Gebührenseiten und messen die Spreads jedes Quartal sowie immer dann, wenn ein Partner seine Preise ändert. Das Datum oben zeigt die letzte Prüfung.",
   "press_sum": "Für Journalisten und Websites",
-  "press_intro": "Sie dürfen den Index mit Quellenangabe zitieren und einbetten: \"Source: Virtuse Bitcoin Fee Index, fees checked {date}\" und ein Link auf diese Seite.",
+  "press_intro": "Sie dürfen den Index mit Quellenangabe zitieren und einbetten: \"Quelle: Virtuse Bitcoin-Gebührenindex, Gebühren geprüft am {date}\" und ein Link auf diese Seite.",
   "press_blurb_h": "Pressetext",
   "press_blurb": "Virtuse Bitcoin-Gebührenindex (Gebühren geprüft am {date}): Bei {amount} pro Monat hat {w} die niedrigsten Gesamtkosten unter den aufgeführten, in der EU lizenzierten Bitcoin-Kaufwegen ({wt}, veröffentlichte Gebühr plus geschätzter Spread). Netzwerk-, Auszahlungs- und Währungsgebühren sind nicht enthalten. Quelle: https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Einbettungscode",

@@ -783,7 +783,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div>
         <p class="for"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p>
         <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Start with the free audit</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Start with the fee audit</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -799,7 +799,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>30-day refund</b>No questions, no form.</span>
         <span class="ic ic-muted"><b>Cancel in one click</b>From your account page.</span>
-        <span class="ic ic-orange"><b>Pay with Lightning or card</b>No card needed for the free audit.</span>
+        <span class="ic ic-orange"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span>
         <span class="ic ic-blue"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
       </div>
       <p class="terms-fine">Prices include VAT where applicable. Same price in all 10 languages.</p>
@@ -850,7 +850,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Free audit upload"><span class="c">// free audit</span>
+<pre class="code code-free" aria-label="Fee audit upload"><span class="c">// free audit</span>
 <span class="c ok">// nothing. 0 bytes.</span></pre>
 <pre class="code code-paid" aria-label="Paid account upload"><span class="c">// CFO account · to keep your alerts running</span>
 {
@@ -899,7 +899,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>How do I get my Kraken export?</summary><p>On kraken.com, click your profile icon at the top right and choose <b>Documents</b>. Under Exports, click <b>Create export</b>, choose <b>Ledgers</b>, set a start and end date, pick <b>CSV</b> and click Generate. The file appears in the same list when it is ready. That can take a few minutes or several days, and Kraken does not email you. Choose Ledgers rather than Trades: it includes every fee and your instant buys. If you use Kraken Pro and don't see Documents, look under Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Kraken's guide</a></p></details>
       <details><summary>And from Bybit EU or 21bitcoin?</summary><p>Bybit EU: export your spot trade history from the Orders section. Longer periods may need several files. 21bitcoin: in the app, open your activity and use the download icon to export all transactions. Exchanges move their menus now and then, so check their help pages if a step looks different.</p></details>
       <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details>
-      <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details>
+      <details><summary>Do I need an account or a card?</summary><p>No. The fee audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details>
       <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details>
       <details><summary>Is this investment or tax advice?</summary><p>No. The audit shows what you paid and the published fees of licensed partners. What you do with it is your decision. For tax questions, ask a tax adviser.</p></details>
     </div>
@@ -1119,7 +1119,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "You're on the list. We'll email you once, when Verdict and the free audit open.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "You're on the list. We'll email you once, when Verdict and the fee audit open.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Something went wrong. Please try again.'; }
       })

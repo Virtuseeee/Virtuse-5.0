@@ -1178,9 +1178,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Virtuse CFO · Free Verdict</span>
         <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2>
-        <p class="lead">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class="only-wait"> Join the waitlist and we'll tell you when the free audit opens.</span></p>
+        <p class="lead">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class="only-wait"> Join the waitlist and we'll tell you when the fee audit opens.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Run the free audit</a>
+          <a class="btn btn-primary" href="cfo.html">Run the fee audit</a>
           <a class="btn btn-ghost" href="verdict.html">Get a free verdict</a>
           <a class="btn btn-ghost" href="cfo.html">How it works</a>
         </div>
@@ -1832,7 +1832,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "You're on the list. We'll email you once, when the free audit opens.";
+          msg.textContent = "You're on the list. We'll email you once, when the fee audit opens.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Something went wrong. Please try again.'; }
       })

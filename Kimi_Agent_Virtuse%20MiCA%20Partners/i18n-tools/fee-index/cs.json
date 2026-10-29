@@ -49,7 +49,7 @@
   "q4": "Jak často se čísla ověřují?",
   "a4": "Stránky s poplatky ověřujeme a spready měříme každé čtvrtletí a vždy, když partner změní své ceny. Datum v horní části ukazuje poslední ověření.",
   "press_sum": "Pro novináře a weby",
-  "press_intro": "Index můžete citovat a vkládat s uvedením zdroje: \"Source: Virtuse Bitcoin Fee Index, fees checked {date}\" a s odkazem na tuto stránku.",
+  "press_intro": "Index můžete citovat a vkládat s uvedením zdroje: \"Zdroj: Virtuse Index poplatků za Bitcoin, poplatky ověřené {date}\" a s odkazem na tuto stránku.",
   "press_blurb_h": "Text pro média",
   "press_blurb": "Virtuse Index poplatků za Bitcoin (poplatky ověřené {date}): při {amount} měsíčně má {w} nejnižší celkové náklady mezi uvedenými způsoby nákupu Bitcoinu s licencí v EU ({wt}, zveřejněný poplatek plus odhadovaný spread). Poplatky sítě, za výběr a za převod měny nejsou zahrnuté. Zdroj: https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Kód pro vložení",

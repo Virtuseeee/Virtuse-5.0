@@ -1180,9 +1180,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Verdict kostenlos</span>
         <h2>Ihr KI-CFO für Bitcoin. <span>Er liest Ihre eigenen Exporte und sieht nie Ihre Wallet.</span></h2>
-        <p class="lead">Der Rechner oben nutzt veröffentlichte Gebühren. Virtuse CFO liest den Export Ihrer eigenen Börse in Ihrem Browser, zeigt, was Sie tatsächlich bezahlt haben, und beantwortet Fragen anhand Ihrer eigenen Zahlen.<span class="only-wait"> Tragen Sie sich ein, wir sagen Ihnen Bescheid, wenn der kostenlose Audit startet.</span></p>
+        <p class="lead">Der Rechner oben nutzt veröffentlichte Gebühren. Virtuse CFO liest den Export Ihrer eigenen Börse in Ihrem Browser, zeigt, was Sie tatsächlich bezahlt haben, und beantwortet Fragen anhand Ihrer eigenen Zahlen.<span class="only-wait"> Tragen Sie sich ein, wir sagen Ihnen Bescheid, wenn der Gebühren-Audit startet.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Kostenlosen Audit starten</a>
+          <a class="btn btn-primary" href="cfo.html">Gebühren-Audit starten</a>
           <a class="btn btn-ghost" href="/verdict.html">Kostenloses Verdict anfordern</a>
           <a class="btn btn-ghost" href="cfo.html">So funktioniert's</a>
         </div>
@@ -1834,7 +1834,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "Sie stehen auf der Liste. Wir schreiben Ihnen einmal, wenn der kostenlose Audit startet.";
+          msg.textContent = "Sie stehen auf der Liste. Wir schreiben Ihnen einmal, wenn der Gebühren-Audit startet.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.'; }
       })

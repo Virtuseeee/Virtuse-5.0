@@ -49,7 +49,7 @@
   "q4": "Jak często dane są sprawdzane?",
   "a4": "Strony z opłatami sprawdzamy, a spready mierzymy co kwartał oraz za każdym razem, gdy partner zmienia ceny. Data na górze strony pokazuje ostatnie sprawdzenie.",
   "press_sum": "Dla dziennikarzy i serwisów",
-  "press_intro": "Indeks można cytować i osadzać z podaniem źródła: \"Source: Virtuse Bitcoin Fee Index, fees checked {date}\" oraz linkiem do tej strony.",
+  "press_intro": "Indeks można cytować i osadzać z podaniem źródła: \"Źródło: Virtuse Indeks opłat za Bitcoina, opłaty sprawdzone {date}\" oraz linkiem do tej strony.",
   "press_blurb_h": "Notka prasowa",
   "press_blurb": "Virtuse Indeks opłat za Bitcoina (opłaty sprawdzone {date}): przy {amount} miesięcznie najniższy całkowity koszt spośród wymienionych sposobów zakupu Bitcoina z licencją UE ma {w} ({wt}, opublikowana opłata plus szacowany spread). Opłaty sieciowe, za wypłatę i za przewalutowanie nie są uwzględnione. Źródło: https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Kod do osadzenia",

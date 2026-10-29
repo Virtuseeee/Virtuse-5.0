@@ -181,7 +181,7 @@ function entryCard(e, p, l) {
   const en = l === 'en' ? '' : ' lang="en"';
   const spons = e.sponsored ? `<span class="eco-spons">${esc(S[l].ui.sponsored)}</span>` : '';
   return `<article class="pcard2 ${p.accent} eco-card">
-        <span class="eco-k"${en}>${esc((e.tags || []).join(' · '))}</span>${spons}
+        <span class="eco-k">${esc((e.tags || []).map((x) => (S[l].tags && S[l].tags[x]) || x).join(' · '))}</span>${spons}
         <h3>${esc(e.name)}</h3>
         <p${en}>${esc(e.verdict)}</p>
         <div class="eco-foot"><span class="eco-host">${esc(host(e.url))}</span><a class="hp-get" href="${esc(e.url)}" target="_blank" rel="${rel}">${esc(S[l].ui.websiteButton)} ${ARROW}</a></div>

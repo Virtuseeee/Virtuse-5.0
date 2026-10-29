@@ -786,7 +786,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>9 € <small>/ mesiac</small></span><span data-y hidden>90 € <small>/ rok</small></span></div>
         <p class="for"><span data-m>Alebo 90 € ročne, 2 mesiace zadarmo.</span><span data-y hidden>To je 7,50 € mesačne pri ročnej platbe.</span></p>
         <ul><li>Audit poplatkov z exportu</li><li>Neobmedzené verdikty a plné reporty</li><li>Vaše rozhodnutia v čase vrátane firemnej treasury</li><li>Upozornenia na poplatky a LTV pôžičky</li><li>Daňový prehľad, 13 krajín EÚ, a dedičský balík</li><li>Opýtajte sa svojho CFO, bez limitu</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Začať bezplatným auditom</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Začať auditom poplatkov</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -802,7 +802,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>Vrátenie peňazí do 30 dní</b>Bez otázok, bez formulára.</span>
         <span class="ic ic-muted"><b>Zrušenie jedným kliknutím</b>Na stránke vášho účtu.</span>
-        <span class="ic ic-orange"><b>Platba cez Lightning alebo kartou</b>Na bezplatný audit nepotrebujete kartu.</span>
+        <span class="ic ic-orange"><b>Platba cez Lightning alebo kartou</b>Na audit poplatkov nepotrebujete kartu.</span>
         <span class="ic ic-blue"><b>14-dňové právo na odstúpenie v EÚ</b>Vaše zákonné právo na odstúpenie od zmluvy platí navyše.</span>
       </div>
       <p class="terms-fine">Ceny zahŕňajú DPH, ak sa uplatňuje. Rovnaká cena vo všetkých 10 jazykoch.</p>
@@ -853,7 +853,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Toto je všetko, čo opustí vaše zariadenie. <span>Otvorte kartu Sieť a skontrolujte to.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Nahratie pri bezplatnom audite"><span class="c">// bezplatný audit</span>
+<pre class="code code-free" aria-label="Nahratie pri audite poplatkov"><span class="c">// bezplatný audit</span>
 <span class="c ok">// nič. 0 bajtov.</span></pre>
 <pre class="code code-paid" aria-label="Nahratie pri platenom účte"><span class="c">// účet CFO · aby upozornenia bežali ďalej</span>
 {
@@ -902,7 +902,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Ako získam export z Krakenu?</summary><p>Na kraken.com kliknite vpravo hore na ikonu profilu a vyberte <b>Documents</b>. V časti Exports kliknite na <b>Create export</b>, vyberte <b>Ledgers</b>, nastavte dátum začiatku a konca, zvoľte <b>CSV</b> a kliknite na Generate. Súbor sa objaví v tom istom zozname, keď bude pripravený. Môže to trvať niekoľko minút aj niekoľko dní a Kraken vám nepošle e-mail. Vyberte Ledgers, nie Trades: obsahuje každý poplatok aj vaše okamžité nákupy. Ak používate Kraken Pro a Documents nevidíte, pozrite sa do časti Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Návod od Krakenu</a></p></details>
       <details><summary>A z Bybit EU alebo 21bitcoin?</summary><p>Bybit EU: exportujte históriu spotových obchodov v sekcii Orders. Dlhšie obdobia môžu vyžadovať viac súborov. 21bitcoin: v aplikácii otvorte svoju aktivitu a ikonou sťahovania exportujte všetky transakcie. Burzy z času na čas presúvajú menu, preto ak krok vyzerá inak, pozrite si ich stránky pomoci.</p></details>
       <details><summary>Nahráva sa môj súbor niekam?</summary><p>Nie. Audit číta súbor vo vašom prehliadači a do Virtuse neodošle nič. Môžete si to sami overiť na karte Sieť vo vašom prehliadači.</p></details>
-      <details><summary>Potrebujem účet alebo kartu?</summary><p>Nie. Bezplatný audit nepotrebuje ani jedno. Účet si vytvoríte, len ak si neskôr zvolíte Virtuse CFO.</p></details>
+      <details><summary>Potrebujem účet alebo kartu?</summary><p>Nie. Audit poplatkov nepotrebuje ani jedno. Účet si vytvoríte, len ak si neskôr zvolíte Virtuse CFO.</p></details>
       <details><summary>Ktoré burzy fungujú pri spustení?</summary><p>Kraken, Bybit EU a 21bitcoin. Ďalšie burzy pribudnú po spustení.</p></details>
       <details><summary>Ide o investičné alebo daňové poradenstvo?</summary><p>Nie. Audit ukazuje, čo ste zaplatili, a zverejnené poplatky licencovaných partnerov. Čo s tým urobíte, je vaše rozhodnutie. S daňovými otázkami sa obráťte na daňového poradcu.</p></details>
     </div>
@@ -916,7 +916,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všetky práva vyhradené.</p>
 <p class="footer-operator"><a href="operator.html">Prevádzkovateľ</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka · IČO 36 709 042 · IČ DPH SK2022293042 · zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sa, vložka č. 4452/B · info@virtuse.com</p>
-      <p class="footer-bottom-brief">Virtuse Brief &mdash; týždenný výber od Virtuse. <a href="../news.html">Čítať &rarr;</a></p>
+      <p class="footer-bottom-brief">Virtuse Brief, týždenný výber od Virtuse. <a href="../news.html">Čítať &rarr;</a></p>
       <p class="legal">Virtuse CFO je softvér iba na čítanie, ktorý pracuje lokálne. Súbory sa spracúvajú vo vašom zariadení. Virtuse nedrží súkromné kľúče, bitcoin ani fiat peniaze, nezadáva ani neposiela príkazy a neposkytuje investičné ani daňové poradenstvo. Údaje o poplatkoch sú odhady podľa zverejnených poplatkov partnerov; daňové údaje sú orientačné.</p>
     </div>
     <div class="footer-wordmark" aria-hidden="true">
@@ -1122,7 +1122,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'sk' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Ste na zozname. Napíšeme vám raz, keď sa Verdict a bezplatný audit otvoria.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Ste na zozname. Napíšeme vám raz, keď sa Verdict a audit poplatkov otvoria.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Niečo sa pokazilo. Skúste to prosím znova.'; }
       })

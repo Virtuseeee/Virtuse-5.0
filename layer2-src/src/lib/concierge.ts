@@ -333,7 +333,7 @@ export const PARTNERS: Partner[] = [
     goals: ['earn'],
     custody: ['self', 'any'],
     url: 'https://www.cryptohopper.com/?atid=40864',
-    feeNote: { en: '30-day free trial', sk: '30-dňová skúšobná verzia zdarma', cs: '30denní zkušební verze zdarma' },
+    feeNote: { en: '3-day free trial', sk: '3-dňová skúšobná verzia zdarma', cs: '3denní zkušební verze zdarma' },
     countries: ['ALL'],
   },
   {
@@ -485,9 +485,9 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.experience === 'new') {
         push('cryptohopper', 90, [
           t(lang,
-            'Copy trading, paper trading and a 30-day free trial before you commit.',
-            'Copy trading, papierové obchodovanie a 30-dňová skúšobná verzia zdarma, kým sa rozhodnete.',
-            'Copy trading, papírové obchodování a 30denní zkušební verze zdarma, než se rozhodnete.'),
+            'Copy trading, paper trading and a 3-day free trial before you commit.',
+            'Copy trading, papierové obchodovanie a 3-dňová skúšobná verzia zdarma, kým sa rozhodnete.',
+            'Copy trading, papírové obchodování a 3denní zkušební verze zdarma, než se rozhodnete.'),
         ]);
         push('coinrule', 80, [
           t(lang,

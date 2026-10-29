@@ -1181,9 +1181,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Verdict gratuit</span>
         <h2>Votre CFO IA pour le Bitcoin. <span>Il lit vos propres exports et ne voit jamais votre portefeuille.</span></h2>
-        <p class="lead">Le calculateur ci-dessus utilise les frais publiés. Virtuse CFO lit l'export de votre propre plateforme dans votre navigateur, montre ce que vous avez réellement payé et répond à vos questions à partir de vos propres chiffres.<span class="only-wait"> Inscrivez-vous, nous vous préviendrons à l'ouverture de l'audit gratuit.</span></p>
+        <p class="lead">Le calculateur ci-dessus utilise les frais publiés. Virtuse CFO lit l'export de votre propre plateforme dans votre navigateur, montre ce que vous avez réellement payé et répond à vos questions à partir de vos propres chiffres.<span class="only-wait"> Inscrivez-vous, nous vous préviendrons à l'ouverture de l'audit des frais.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Lancer l'audit gratuit</a>
+          <a class="btn btn-primary" href="cfo.html">Lancer l'audit des frais</a>
           <a class="btn btn-ghost" href="/verdict.html">Obtenir un verdict gratuit</a>
           <a class="btn btn-ghost" href="cfo.html">Comment ça marche</a>
         </div>
@@ -1835,7 +1835,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "Vous êtes sur la liste. Nous vous écrirons une seule fois, à l'ouverture de l'audit gratuit.";
+          msg.textContent = "Vous êtes sur la liste. Nous vous écrirons une seule fois, à l'ouverture de l'audit des frais.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Une erreur s\'est produite. Veuillez réessayer.'; }
       })

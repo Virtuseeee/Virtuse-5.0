@@ -1180,9 +1180,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Verdict za darmo</span>
         <h2>Osobisty AI CFO dla Bitcoina. <span>Czyta Państwa własne eksporty i nigdy nie widzi portfela.</span></h2>
-        <p class="lead">Kalkulator powyżej korzysta z opublikowanych opłat. Virtuse CFO odczytuje eksport z giełdy w Państwa przeglądarce, pokazuje, ile faktycznie Państwo zapłacili, i odpowiada na pytania na podstawie Państwa własnych liczb.<span class="only-wait"> Prosimy zapisać się na listę, damy znać, gdy ruszy bezpłatny audyt.</span></p>
+        <p class="lead">Kalkulator powyżej korzysta z opublikowanych opłat. Virtuse CFO odczytuje eksport z giełdy w Państwa przeglądarce, pokazuje, ile faktycznie Państwo zapłacili, i odpowiada na pytania na podstawie Państwa własnych liczb.<span class="only-wait"> Prosimy zapisać się na listę, damy znać, gdy ruszy audyt opłat.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Uruchamiam bezpłatny audyt</a>
+          <a class="btn btn-primary" href="cfo.html">Uruchamiam audyt opłat</a>
           <a class="btn btn-ghost" href="/verdict.html">Odbieram bezpłatny werdykt</a>
           <a class="btn btn-ghost" href="cfo.html">Jak to działa</a>
         </div>
@@ -1834,7 +1834,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "Zapisano. Wyślemy jeden e-mail, gdy bezpłatny audyt ruszy.";
+          msg.textContent = "Zapisano. Wyślemy jeden e-mail, gdy audyt opłat ruszy.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Coś poszło nie tak. Prosimy spróbować ponownie.'; }
       })

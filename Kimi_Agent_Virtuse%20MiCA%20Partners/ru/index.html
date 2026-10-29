@@ -1180,9 +1180,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Verdict бесплатно</span>
         <h2>Ваш AI CFO для Биткоина. <span>Он читает ваши собственные выгрузки и никогда не видит ваш кошелёк.</span></h2>
-        <p class="lead">Калькулятор выше использует опубликованные комиссии. Virtuse CFO читает вашу собственную выгрузку с биржи в вашем браузере, показывает, сколько вы на самом деле заплатили, и отвечает на вопросы по вашим собственным цифрам.<span class="only-wait"> Запишитесь, и мы сообщим, когда откроется бесплатный аудит.</span></p>
+        <p class="lead">Калькулятор выше использует опубликованные комиссии. Virtuse CFO читает вашу собственную выгрузку с биржи в вашем браузере, показывает, сколько вы на самом деле заплатили, и отвечает на вопросы по вашим собственным цифрам.<span class="only-wait"> Запишитесь, и мы сообщим, когда откроется аудит комиссий.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Запустить бесплатный аудит</a>
+          <a class="btn btn-primary" href="cfo.html">Запустить аудит комиссий</a>
           <a class="btn btn-ghost" href="verdict.html">Получить вердикт бесплатно</a>
           <a class="btn btn-ghost" href="cfo.html">Как это работает</a>
         </div>
@@ -1834,7 +1834,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "Вы в списке. Мы напишем один раз, когда откроется бесплатный аудит.";
+          msg.textContent = "Вы в списке. Мы напишем один раз, когда откроется аудит комиссий.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Что-то пошло не так. Попробуйте ещё раз.'; }
       })

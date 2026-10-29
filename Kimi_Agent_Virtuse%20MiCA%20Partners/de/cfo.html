@@ -786,7 +786,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>9 € <small>/ Monat</small></span><span data-y hidden>90 € <small>/ Jahr</small></span></div>
         <p class="for"><span data-m>Oder 90 € pro Jahr, zwei Monate gratis.</span><span data-y hidden>Das sind 7,50 € pro Monat, jährlich abgerechnet.</span></p>
         <ul><li>Gebühren-Audit aus Ihrem Export</li><li>Unbegrenzt Verdicts und vollständige Berichte</li><li>Ihre Entscheidungen im Zeitverlauf, inkl. Unternehmens-Treasury</li><li>Gebühren- und LTV-Warnungen</li><li>Steuerbericht für 13 EU-Länder und Erbschafts-Kit</li><li>Fragen Sie Ihren CFO, ohne Limit</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Mit dem kostenlosen Audit beginnen</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Mit dem Gebühren-Audit beginnen</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -802,7 +802,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>30 Tage Geld zurück</b>Ohne Rückfragen, ohne Formular.</span>
         <span class="ic ic-muted"><b>Mit einem Klick kündigen</b>Auf Ihrer Kontoseite.</span>
-        <span class="ic ic-orange"><b>Mit Lightning oder Karte bezahlen</b>Für den kostenlosen Audit ist keine Karte nötig.</span>
+        <span class="ic ic-orange"><b>Mit Lightning oder Karte bezahlen</b>Für den Gebühren-Audit ist keine Karte nötig.</span>
         <span class="ic ic-blue"><b>14-tägiges Widerrufsrecht</b>Ihr gesetzliches Widerrufsrecht gilt zusätzlich.</span>
       </div>
       <p class="terms-fine">Preise inklusive MwSt., sofern anwendbar. Derselbe Preis in allen 10 Sprachen.</p>
@@ -853,7 +853,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Das ist alles, was Ihr Gerät verlässt. <span>Öffnen Sie den Netzwerk-Tab und prüfen Sie es.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Upload beim kostenlosen Audit"><span class="c">// kostenloser Audit</span>
+<pre class="code code-free" aria-label="Upload beim Gebühren-Audit"><span class="c">// kostenloser Audit</span>
 <span class="c ok">// nichts. 0 Byte.</span></pre>
 <pre class="code code-paid" aria-label="Upload beim bezahlten Konto"><span class="c">// CFO-Konto · damit Ihre Warnungen weiterlaufen</span>
 {
@@ -902,7 +902,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Wie erhalte ich meinen Kraken-Export?</summary><p>Klicken Sie auf kraken.com oben rechts auf Ihr Profilsymbol und wählen Sie <b>Documents</b>. Klicken Sie unter Exports auf <b>Create export</b>, wählen Sie <b>Ledgers</b>, legen Sie Start- und Enddatum fest, wählen Sie <b>CSV</b> und klicken Sie auf Generate. Die Datei erscheint in derselben Liste, sobald sie fertig ist. Das kann einige Minuten oder mehrere Tage dauern, und Kraken schickt keine E-Mail. Wählen Sie Ledgers statt Trades: Dort sind alle Gebühren und Ihre Sofortkäufe enthalten. Wenn Sie Kraken Pro nutzen und Documents nicht sehen, schauen Sie unter Statements nach. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Anleitung von Kraken</a></p></details>
       <details><summary>Und bei Bybit EU oder 21bitcoin?</summary><p>Bybit EU: Exportieren Sie Ihre Spot-Handelshistorie im Bereich Orders. Für längere Zeiträume brauchen Sie eventuell mehrere Dateien. 21bitcoin: Öffnen Sie in der App Ihre Aktivität und exportieren Sie alle Transaktionen über das Download-Symbol. Börsen ändern ihre Menüs ab und zu; sieht ein Schritt anders aus, hilft die Hilfeseite der Börse.</p></details>
       <details><summary>Wird meine Datei irgendwo hochgeladen?</summary><p>Nein. Der Audit liest die Datei in Ihrem Browser und sendet nichts an Virtuse. Sie können das selbst im Netzwerk-Tab Ihres Browsers prüfen.</p></details>
-      <details><summary>Brauche ich ein Konto oder eine Karte?</summary><p>Nein. Der kostenlose Audit braucht beides nicht. Ein Konto legen Sie nur an, wenn Sie sich später für Virtuse CFO entscheiden.</p></details>
+      <details><summary>Brauche ich ein Konto oder eine Karte?</summary><p>Nein. Der Gebühren-Audit braucht beides nicht. Ein Konto legen Sie nur an, wenn Sie sich später für Virtuse CFO entscheiden.</p></details>
       <details><summary>Welche Börsen funktionieren zum Start?</summary><p>Kraken, Bybit EU und 21bitcoin. Weitere Börsen folgen nach dem Start.</p></details>
       <details><summary>Ist das Anlage- oder Steuerberatung?</summary><p>Nein. Der Audit zeigt, was Sie bezahlt haben, und die veröffentlichten Gebühren lizenzierter Partner. Was Sie daraus machen, entscheiden Sie. Bei Steuerfragen wenden Sie sich an einen Steuerberater.</p></details>
     </div>
@@ -1122,7 +1122,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'de' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Sie stehen auf der Liste. Wir schreiben Ihnen einmal, wenn Verdict und der kostenlose Audit starten.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Sie stehen auf der Liste. Wir schreiben Ihnen einmal, wenn Verdict und der Gebühren-Audit starten.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.'; }
       })
