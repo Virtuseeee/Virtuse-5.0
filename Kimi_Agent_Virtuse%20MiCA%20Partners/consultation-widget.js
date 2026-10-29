@@ -248,8 +248,8 @@
       skipLabel: 'Přeskočit',
       backLabel: '← Zpět',
       resultHeadline: 'Máme dost na to, abychom hovor připravili.',
-      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme affiliate partnerství — rozhodnutí o alokaci je vždy na tobě.',
-      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, custody, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Na hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
+      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme partnerské (provizní) vztahy. Rozhodnutí o alokaci je vždy na tobě.',
+      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, úschova, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Na hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
       bookLabel: 'Rezervovat 15min konzultaci',
       restartLabel: 'Vyplnit znovu',
       closeLabel: 'Zavřít',
@@ -263,7 +263,7 @@
             'Jen se chci informovat / rozumět tomu',
             'Chci diverzifikovat mimo tradiční aktiva',
             'Hledám dlouhodobý růst kapitálu',
-            'Zajímá mě pasivní příjem (staking a pod.)'
+            'Zajímá mě pasivní příjem (staking apod.)'
           ]
         },
         {
@@ -302,7 +302,7 @@
           options: [
             'Chci si to řídit úplně sám/sama, jen potřebuji informace',
             'Chci podporu a vysvětlení možností, rozhodnutí dělám sám/sama',
-            'Chci co nejvíc „hands-off" řešení'
+            'Chci řešení s co nejmenší vlastní prací'
           ]
         },
         {
@@ -312,8 +312,8 @@
           sublabel: 'Můžeš vybrat víc možností — nebo pokračuj bez výběru.',
           options: [
             'Nákup / prodej Bitcoinu',
-            'Mining',
-            'Custody / úschova aktiv',
+            'Těžba',
+            'Úschova aktiv',
             'Treasury management pro firmu',
             'Daňové aspekty',
             'Automatizovaní boti / algo-obchodování',

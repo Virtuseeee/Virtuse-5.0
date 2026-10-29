@@ -343,7 +343,7 @@ export const PARTNERS: Partner[] = [
     goals: ['earn'],
     custody: ['self', 'any'],
     url: 'https://app.revenuebot.io/external/r/90928',
-    feeNote: { en: 'Referral commissions paid in BTC', sk: 'Provízie za odporúčanie vyplácané v BTC', cs: 'Referral provize vyplácené v BTC' },
+    feeNote: { en: 'Referral commissions paid in BTC', sk: 'Provízie za odporúčanie vyplácané v BTC', cs: 'Provize za doporučení vyplácené v BTC' },
     countries: ['ALL'],
   },
 
@@ -474,7 +474,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         ]);
       } else {
         push('firefish', 97, [
-          t(lang, 'Borrow EUR against your bitcoin and keep 100% of the upside.', 'Požičajte si EUR oproti svojmu bitcoinu a ponechajte si 100 % potenciálneho zisku.', 'Půjčte si EUR oproti svému bitcoinu a ponechte si 100 % potenciálního zisku.'),
+          t(lang, 'Borrow EUR against your bitcoin and keep 100% of the upside.', 'Požičajte si EUR oproti svojmu bitcoinu a ponechajte si 100 % potenciálneho zisku.', 'Půjčte si EUR se zajištěním svým Bitcoinem a ponechte si 100 % potenciálního zisku.'),
           t(lang, 'No credit checks, no sale, no taxable event in most EU jurisdictions.', 'Bez kontroly bonity, bez predaja, vo väčšine jurisdikcií EÚ bez zdaniteľnej udalosti.', 'Bez kontroly bonity, bez prodeje, ve většině jurisdikcí EU bez zdanitelné události.'),
           tv(lang, `Works for {0} in {1} via multisig-secured P2P.`, `Funguje pre sumu {0} ({1}) cez P2P zabezpečené multisigom.`, `Funguje pro částku {0} ({1}) přes P2P zabezpečené multisigem.`, [amountLabel(lang, a.amount), countryName(lang, a.country)]),
         ]);
@@ -575,7 +575,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
           t(lang,
             'Native support for multisig and collaborative custody vaults: the setup that answers "what happens to my bitcoin".',
             'Natívna podpora multisigu a trezorov s kolaboratívnou úschovou: riešenie na otázku „čo sa stane s mojím bitcoinom“.',
-            'Nativní podpora multisigu a kolaborativních custody trezorů: řešení na otázku „co se stane s mým bitcoinem".'),
+            'Nativní podpora multisigu a trezorů s kolaborativní úschovou: odpověď na otázku „co se stane s mým Bitcoinem“.'),
         ]);
       }
       push('ledger', 76, [

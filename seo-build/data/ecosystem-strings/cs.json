@@ -61,7 +61,7 @@
     "pickSub": "Tři pravidla pro každou položku.",
     "relatedSub": "Více od Virtuse.",
     "listH": "Naše doporučení.",
-    "listSub": "Každé s hodnocením na jeden řádek.",
+    "listSub": "Každá položka s hodnocením na jeden řádek.",
     "faqSub": "Stručné odpovědi.",
     "onThisPage": "Na této stránce"
   },
@@ -297,7 +297,7 @@
       "related": [
         "Přijímejte bitcoin ve svém obchodě",
         "Daňové výkazy pro Bitcoin",
-        "Daňové průvodce podle zemí"
+        "Daňoví průvodci podle zemí"
       ],
       "h1Accent": ": obchody, mapy a dárkové karty."
     },

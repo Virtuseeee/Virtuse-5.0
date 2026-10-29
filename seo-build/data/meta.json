@@ -671,7 +671,7 @@
       "gainTax": "27,5 % KESt (daň z kapitálových výnosů)",
       "exemption": "Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození",
       "filing": "Přiznání pro zisky přes zahraniční burzy; rakouští poskytovatelé daň srážejí",
-      "note": "Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Půjčování a těžba se daní při přijetí, staking a airdropy až při prodeji (s nulovou cenou)."
+      "note": "Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Příjmy z půjčování a těžby se daní při přijetí, staking a airdropy až při prodeji (s nulovou pořizovací cenou)."
     },
     "de": {
       "gainTax": "Až 45 % daň z příjmů (progresivní)",
@@ -742,7 +742,7 @@
     {
       "id": "heir-aware",
       "name": "Informujte dědice",
-      "text": "Alespoň jedna důvěryhodná osoba musí vědět, že váš Bitcoin existuje a kde začít. Bitcoin, který se najde o roky později nebo vůbec, je nejčastější selhání při dědění."
+      "text": "Alespoň jedna důvěryhodná osoba musí vědět, že váš Bitcoin existuje a kde začít. Bitcoin, který se najde až po letech nebo vůbec ne, je nejčastější selhání při dědění."
     },
     {
       "id": "multisig",

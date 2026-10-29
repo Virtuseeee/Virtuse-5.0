@@ -803,7 +803,7 @@ function guideArticle(spec) {
 const GUIDE_TOOLS = {
   en: { h: 'Related tools', tax: 'Tax rules by country and an inheritance readiness check.', loanP: 'Selling versus borrowing against Bitcoin.', pfP: 'Partners that fit your criteria.', buyT: 'Buy Bitcoin', buyP: 'Buy partners and their fees, side by side.' },
   sk: { h: 'Súvisiace nástroje', tax: 'Daňové pravidlá podľa krajiny a kontrola pripravenosti na dedičstvo.', loanP: 'Predaj verzus pôžička so zábezpekou v Bitcoine.', pfP: 'Partneri, ktorí zodpovedajú vašim kritériám.', buyT: 'Kúpiť Bitcoin', buyP: 'Partneri na nákup a ich poplatky vedľa seba.' },
-  cs: { h: 'Související nástroje', tax: 'Daňová pravidla podle země a kontrola připravenosti na dědictví.', loanP: 'Prodej versus půjčka se zajištěním v Bitcoinu.', pfP: 'Partneři, kteří odpovídají vašim kritériím.', buyT: 'Koupit Bitcoin', buyP: 'Partneři pro nákup a jejich poplatky vedle sebe.' },
+  cs: { h: 'Související nástroje', tax: 'Daňová pravidla podle země a kontrola připravenosti na dědictví.', loanP: 'Prodej versus půjčka se zajištěním Bitcoinem.', pfP: 'Partneři, kteří odpovídají vašim kritériím.', buyT: 'Koupit Bitcoin', buyP: 'Partneři pro nákup a jejich poplatky vedle sebe.' },
   uk: { h: 'Пов’язані інструменти', tax: 'Податкові правила за країною та перевірка готовності до спадщини.', loanP: 'Продаж чи позика під заставу Біткоїна.', pfP: 'Партнери, які відповідають вашим критеріям.', buyT: 'Купити Біткоїн', buyP: 'Партнери для купівлі та їхні комісії поруч.' },
   ru: { h: 'Связанные инструменты', tax: 'Налоговые правила по странам и проверка готовности к наследованию.', loanP: 'Продажа или заём под залог Биткоина.', pfP: 'Партнёры, которые подходят под ваши критерии.', buyT: 'Купить Биткоин', buyP: 'Партнёры для покупки и их комиссии рядом.' },
   de: { h: 'Verwandte Tools', tax: 'Steuerregeln je Land und ein Check zur Nachlassplanung.', loanP: 'Verkaufen oder einen Kredit gegen Bitcoin aufnehmen.', pfP: 'Partner, die zu Ihren Kriterien passen.', buyT: 'Bitcoin kaufen', buyP: 'Kaufpartner und ihre Gebühren direkt nebeneinander.' },
@@ -2571,7 +2571,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   const faqs = [
     { q: 'Předpovídá tato kalkulačka cenu Bitcoinu?', a: 'Ne. Porovnává jen poplatky partnerů podle zveřejněného ceníku. Výnos z ceny Bitcoinu nemodeluje.' },
     { q: `Jaký je standardní plán, stav ${feeAsOfCs}?`, a: 'Jednorázově 500 € a poté 100 € měsíčně po dobu 12 měsíců. Pořadí podle poplatků za první rok.' },
-    { q: 'Která cesta má v tomto plánu nejnižší zveřejněný poplatek?', a: `${win.partner} (${methodCs(win.method)}) s variabilním poplatkem ${formatPctSk(win.pct)} podle vzorce Stacking Strategist. Nejnižší celkové náklady včetně spreadu v Bitcoin Fee Index: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) při 100 € měsíčně.` },
+    { q: 'Která cesta má v tomto plánu nejnižší zveřejněný poplatek?', a: `${win.partner} (${methodCs(win.method)}) s variabilním poplatkem ${formatPctSk(win.pct)} podle vzorce Stacking Strategist. Nejnižší celkové náklady včetně spreadu má podle Indexu poplatků za Bitcoin ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) při 100 € měsíčně.` },
     { q: 'Jde o investiční poradenství?', a: 'Ne. Slouží jen ke vzdělávacím účelům. KYC probíhá u partnera. Virtuse nikdy nedrží vaše klíče.' }
   ];
   const answer = finalizeAnswer([
@@ -2636,7 +2636,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   pushPage({
     relFile, lang: 'cs',
     title: assertTitle('Bitcoin: prodat, nebo si půjčit? (2026)'),
-    description: assertDescription(`Prodat Bitcoin a zaplatit daň, nebo si půjčit se zajištěním v Bitcoinu a zůstat investovaný? Sazby ${N} zemí EU, stav ${asOfCs}.`),
+    description: assertDescription(`Prodat Bitcoin a zaplatit daň, nebo si půjčit se zajištěním Bitcoinem a zůstat investovaný? Sazby ${N} zemí EU, stav ${asOfCs}.`),
     h1: 'Prodat Bitcoin, nebo si půjčit se zajištěním?',
     answerHtml: esc(answer),
     breadcrumbs: [csHome(relFile), { name: 'Prodat, nebo půjčit', abs: abs(relFile) }],
