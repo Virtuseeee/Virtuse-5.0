@@ -35,7 +35,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     gainTax: { en: '15 % income tax (23 % above threshold)', sk: '15 % daň z príjmu (23 % nad prahovou hodnotou)', cs: '15 % daň z příjmu (23 % nad prahovou hodnotou)' },
     exemption: { en: 'Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000', sk: 'Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč', cs: 'Bez daně po 3 letech držení (do 40 milionů Kč ročně) nebo pokud úhrn příjmů z prodeje kryptoaktiv v roce nepřesáhne 100 000 Kč' },
     filing: { en: 'Annual personal tax return', sk: 'Ročné daňové priznanie fyzickej osoby', cs: 'Roční daňové přiznání fyzické osoby' },
-    note: { en: 'Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.', sk: 'Každé zbavenie sa (vrátane krypto-krypto) je zdaniteľná udalosť. Veďte si kompletnú evidenciu od prvého dňa.', cs: 'Každé zbavení se (včetně krypto-krypto) je zdanitelná událost. Veďte si kompletní evidenci od prvního dne.' },
+    note: { en: 'Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.', sk: 'Každý predaj alebo výmena (vrátane krypto za krypto) je zdaniteľná udalosť. Veďte si kompletnú evidenciu od prvého dňa.', cs: 'Každé zbavení se (včetně krypto-krypto) je zdanitelná událost. Veďte si kompletní evidenci od prvního dne.' },
   },
   {
     id: 'sk',
@@ -44,7 +44,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     gainTax: { en: '19 to 35% income tax', sk: '19 až 35 % daň z príjmov', cs: '19 až 35 % daň z příjmů' },
     healthLevy: { en: '16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer', sk: 'Zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí), zúčtuje ich zdravotná poisťovňa v ročnom zúčtovaní', cs: 'Zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení), vyúčtuje ho zdravotní pojišťovna v ročním zúčtování' },
     exemption: { en: 'No holding-period exemption; every sale or crypto-to-crypto swap is taxed', sk: 'Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje', cs: 'Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní' },
-    filing: { en: 'Annual personal tax return (type B), due 31 March', sk: 'Daňové priznanie fyzickej osoby typ B, do 31. marca', cs: 'Daňové přiznání fyzické osoby typu B, do 31. března' },
+    filing: { en: 'Annual personal tax return (type B), due 31 March', sk: 'Daňové priznanie fyzickej osoby typu B, do 31. marca', cs: 'Daňové přiznání fyzické osoby typu B, do 31. března' },
     note: { en: 'Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.', sk: 'Každý predaj aj výmena krypto za krypto sa zdaňuje. Plánovanú sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť.', cs: 'Každý prodej i směna krypto za krypto se daní. Plánovanou sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti.' },
   },
   {
@@ -63,7 +63,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     gainTax: { en: '27.5 % KESt (capital gains tax)', sk: '27,5 % KESt (daň z kapitálových výnosov)', cs: '27,5 % KESt (daň z kapitálových výnosů)' },
     exemption: { en: 'Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption', sk: 'Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia', cs: 'Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození' },
     filing: { en: 'Annual return for gains via foreign exchanges; Austrian providers withhold the tax', sk: 'Priznanie pre zisky cez zahraničné burzy; rakúski poskytovatelia daň zrážajú', cs: 'Přiznání pro zisky přes zahraniční burzy; rakouští poskytovatelé daň srážejí' },
-    note: { en: 'Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.', sk: 'Výmeny krypto za krypto sú daňovo neutrálne. Požičiavanie a ťažba sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou cenou).', cs: 'Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Půjčování a těžba se daní při přijetí, staking a airdropy až při prodeji (s nulovou cenou).' },
+    note: { en: 'Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.', sk: 'Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou obstarávacou cenou).', cs: 'Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Půjčování a těžba se daní při přijetí, staking a airdropy až při prodeji (s nulovou cenou).' },
   },
   {
     id: 'de',
@@ -79,7 +79,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     name: { en: 'Hungary', sk: 'Maďarsko', cs: 'Maďarsko' },
     flag: '🇭🇺',
     gainTax: { en: '15 % capital gains tax', sk: '15 % daň z kapitálových výnosov', cs: '15 % daň z kapitálových výnosů' },
-    exemption: { en: 'No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)', sk: 'Bez oslobodenia podľa doby držby; malé transakcie do 10 % minimálnej mzdy sú bez dane (spolu najviac jedna minimálna mzda ročne)', cs: 'Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)' },
+    exemption: { en: 'No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)', sk: 'Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)', cs: 'Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)' },
     filing: { en: 'Annual personal income tax return', sk: 'Ročné priznanie dane z príjmu fyzickej osoby', cs: 'Roční přiznání daně z příjmu fyzické osoby' },
     note: { en: 'Documented acquisition costs are deductible, so keep every invoice.', sk: 'Doložené obstarávacie náklady sú odpočítateľné, preto uchovávajte každú faktúru.', cs: 'Doložené pořizovací náklady jsou odečitatelné, proto uchovávejte každou fakturu.' },
   },

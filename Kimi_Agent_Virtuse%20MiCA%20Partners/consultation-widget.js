@@ -145,8 +145,8 @@
       skipLabel: 'Preskočiť',
       backLabel: '← Späť',
       resultHeadline: 'Máme dosť na to, aby sme hovor pripravili.',
-      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investičné poradenstvo ani nedrží klientske aktíva. Sprostredkúvame affiliate partnerstvá — rozhodnutie o alokácii je vždy na tebe.',
-      riskNote: 'Vybral(a) si témy (nákup/predaj Bitcoinu, custody, treasury, automatizované boty), pri ktorých je dôležité vopred vedieť: Virtuse tieto služby priamo nevykonáva ani nezabezpečuje — sprostredkúva prístup k partnerským platformám, ktoré ich poskytujú. Na hovore ti transparentne vysvetlíme, kto a ako to reálne robí.',
+      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investičné poradenstvo ani nedrží klientske aktíva. Sprostredkúvame partnerské (provízne) vzťahy. Rozhodnutie o alokácii je vždy na tebe.',
+      riskNote: 'Vybral(a) si témy (nákup/predaj Bitcoinu, úschova, treasury, automatizované boty), pri ktorých je dôležité vopred vedieť: Virtuse tieto služby priamo nevykonáva ani nezabezpečuje — sprostredkúva prístup k partnerským platformám, ktoré ich poskytujú. Na hovore ti transparentne vysvetlíme, kto a ako to reálne robí.',
       bookLabel: 'Rezervovať 15-min konzultáciu',
       restartLabel: 'Vyplniť znova',
       closeLabel: 'Zavrieť',
@@ -199,7 +199,7 @@
           options: [
             'Chcem si to riadiť úplne sám, len potrebujem informácie',
             'Chcem podporu a vysvetlenie možností, rozhodnutia robím sám',
-            'Chcem čo najviac „hands-off“ riešenie'
+            'Chcem riešenie s čo najmenšou vlastnou prácou'
           ]
         },
         {
@@ -209,8 +209,8 @@
           sublabel: 'Môžeš vybrať viac možností — alebo pokračuj bez výberu.',
           options: [
             'Nákup / predaj Bitcoinu',
-            'Mining',
-            'Custody / úschova aktív',
+            'Ťažba',
+            'Úschova aktív',
             'Treasury manažment pre firmu',
             'Daňové aspekty',
             'Automatizované boty / algo-obchodovanie',

@@ -117,7 +117,7 @@ export function formatEurSk(n) {
 const METHOD_SK = {
   'Auto-Invest plan': 'Plán Auto-Invest',
   'Spot trading': 'Spotové obchodovanie',
-  'Pro trading': 'Pro trading',
+  'Pro trading': 'Obchodovanie Pro',
   'Automated DCA bot': 'Automatizovaný DCA bot'
 };
 /** Slovak label for a fee-schedule method (same terms as the Stacking module). */

@@ -599,7 +599,7 @@ function finalizeAnswer(parts, lang, kind = 'tax') {
       'Ověřte si místní pravidla; nejde o daňové poradenství.'
     ]
     : lang === 'sk' ? [
-      `Údaje z live modulov Virtuse, stav ${fee ? feeAsOfSk : asOfSk}.`,
+      `Údaje z modulov Virtuse, stav ${fee ? feeAsOfSk : asOfSk}.`,
       'Virtuse nikdy nedrží vaše kľúče.',
       'Overte si miestne pravidlá; nejde o daňové poradenstvo.'
     ]
@@ -2040,8 +2040,8 @@ function skHome(relFile) { return { ...SK_HOME, href: toRoot(relFile, 'sk/index.
   const faqs = [
     { q: 'Ktoré krajiny tento prehľad pokrýva?', a: `${N} krajín EÚ: ${COUNTRIES.map((c) => nameSk(c.id)).join(', ')}. ${guideText('sk', 'hubFaq')}` },
     { q: 'Ide o daňové poradenstvo?', a: `Nie. ${guideLine('sk')} Pravidlá pre aktuálny rok si overte u miestneho poradcu.` },
-    { q: 'Hlási Virtuse moje držby daňovým úradom?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče ani históriu vašich transakcií. KYC robia partneri sami.' },
-    { q: 'Kde si okrem daní preverím aj dedenie?', a: `V module Tax & Inheritance Agent (live modul) s rovnakými ${N} krajinami a kontrolou pripravenosti na multisig.` }
+    { q: 'Hlási Virtuse môj Bitcoin daňovým úradom?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče ani históriu vašich transakcií. KYC robia partneri sami.' },
+    { q: 'Kde si okrem daní preverím aj dedenie?', a: `V module Tax & Inheritance Agent s rovnakými ${N} krajinami a kontrolou pripravenosti na multisig.` }
   ];
   const answer = finalizeAnswer([
     `Tento prehľad porovnáva zdanenie Bitcoinu v ${N} krajinách EÚ, stav ${asOfSk}.`,
@@ -2065,7 +2065,7 @@ function skHome(relFile) { return { ...SK_HOME, href: toRoot(relFile, 'sk/index.
     moduleCta: { href: toRoot(relFile, 'sk/' + TAX_AGENT), label: 'Otvoriť Tax & Inheritance Agent →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
-<p>Každá stránka krajiny uvádza daň zo ziskov, prípadné oslobodenie podľa doby držby a daňové priznanie, stav ${esc(asOfSk)}. Live modul Tax & Inheritance Agent používa rovnaké údaje a pridáva skóre pripravenosti na dedenie.</p>
+<p>Každá stránka krajiny uvádza daň zo ziskov, prípadné oslobodenie podľa doby držby a daňové priznanie, stav ${esc(asOfSk)}. Modul Tax & Inheritance Agent používa rovnaké údaje a pridáva skóre pripravenosti na dedičstvo.</p>
 <h2>Porovnanie krajín</h2>
 ${tableHtml(['Krajina', 'Daň zo ziskov', 'Oslobodenie'], rows)}
 ${faqHtml(faqs, 'Časté otázky')}
@@ -2107,7 +2107,7 @@ for (const c of COUNTRIES) {
     ],
     hreflang: hrefLangPair(enRel, deRel),
     related: [
-      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' },
+      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať, alebo si požičať' },
       { href: toRoot(relFile, 'sk/bitcoin-dedicstvo/'), label: 'Bitcoin a dedičstvo' },
       { href: toRoot(relFile, nbs[0] ? `sk/bitcoin-dane/${slugSk(nbs[0].id)}/` : 'sk/bitcoin-dane/'), label: nbs[0] ? `Dane z Bitcoinu ${inSk(nbs[0].id)}` : 'Všetky krajiny' },
       ...buyCountryLink('sk', c.id, relFile)
@@ -2243,26 +2243,26 @@ ${faqHtml(faqs, 'Časté otázky')}
   const faqs = [
     { q: 'Predpovedá táto kalkulačka cenu Bitcoinu?', a: 'Nie. Porovnáva len poplatky partnerov podľa zverejneného cenníka. Výnos z ceny Bitcoinu nemodeluje.' },
     { q: `Aký je štandardný plán, stav ${feeAsOfSk}?`, a: 'Jednorazovo 500 € a potom 100 € mesačne počas 12 mesiacov. Poradie podľa poplatkov za prvý rok.' },
-    { q: 'Ktorá cesta má v tomto pláne najnižší zverejnený poplatok?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist. Najnižšie celkové náklady vrátane spreadu v Bitcoin Fee Index: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) pri 100 € mesačne.` },
+    { q: 'Ktorá cesta má v tomto pláne najnižší zverejnený poplatok?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist. Najnižšie celkové náklady vrátane spreadu podľa Indexu poplatkov za Bitcoin: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) pri 100 € mesačne.` },
     { q: 'Ide o investičné poradenstvo?', a: 'Nie. Slúži len na vzdelávacie účely. KYC prebieha u partnera. Virtuse nikdy nedrží vaše kľúče.' }
   ];
   const answer = finalizeAnswer([
     `V príklade DCA, ktorý počíta len s poplatkami (500 € a potom 100 € mesačne počas 12 mesiacov), je k stavu ${feeAsOfSk} podľa zverejneného poplatku na prvom mieste ${win.partner}.`,
     `Variabilný poplatok ${formatPctSk(win.pct)}. Nejde o predpoveď ceny.`,
-    'Údaje z live modulu Stacking Strategist. Orientačný prehľad 2026.'
+    'Údaje z modulu Stacking Strategist. Orientačný prehľad 2026.'
   ], 'sk', 'fee');
   const ranked = rankRoutes(FEE_ROWS, 100);
   pushPage({
     relFile, lang: 'sk',
-    title: assertTitle('Bitcoin DCA kalkulačka (poplatky v EÚ 2026)'),
+    title: assertTitle('DCA kalkulačka pre Bitcoin (poplatky v EÚ 2026)'),
     description: assertDescription(`DCA kalkulačka pre Bitcoin, ktorá počíta len s poplatkami, stav ${feeAsOfSk}. Najnižší zverejnený poplatok pri 500 € + 100 € mesačne: ${win.partner}.`),
-    h1: 'Bitcoin DCA kalkulačka',
+    h1: 'DCA kalkulačka pre Bitcoin',
     answerHtml: esc(answer),
     breadcrumbs: [skHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
     related: [
       { href: toRoot(relFile, 'sk/bitcoin-index-poplatkov/'), label: 'Index poplatkov za Bitcoin' },
-      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' },
+      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať, alebo si požičať' },
       { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' }
     ],
     moduleCta: { href: toRoot(relFile, 'sk/stacking.html'), label: 'Otvoriť Stacking Strategist →' },
@@ -2270,7 +2270,7 @@ ${faqHtml(faqs, 'Časté otázky')}
       faqLd(faqs),
       {
         '@type': 'WebApplication',
-        name: 'Bitcoin DCA kalkulačka',
+        name: 'DCA kalkulačka pre Bitcoin',
         url: abs(relFile),
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'All',
@@ -2279,7 +2279,7 @@ ${faqHtml(faqs, 'Časté otázky')}
       }
     ],
     bodyHtml: `
-<p>Štandardný príklad: 500 € a potom 100 € mesačne × 12. Rovnaký vzorec ako v live module Stacking Strategist.</p>
+<p>Štandardný príklad: 500 € a potom 100 € mesačne × 12. Rovnaký vzorec ako v module Stacking Strategist.</p>
 <h2>Poradie pri 100 € mesačne</h2>
 ${tableHtml(['Poradie', 'Partner', 'Metóda', 'Variabilný poplatok', 'Ročné poplatky'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodSk(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -2295,10 +2295,10 @@ ${faqHtml(faqs, 'Časté otázky')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Vzniká pri predaji v týchto ${N} krajinách daň?`, a: `Spravidla áno, pri predaji za peniaze. Výmena krypto za krypto sa v niektorých krajinách zdaňuje (Nemecko, Česko, Španielsko), v iných nie (Poľsko, Francúzsko, Rakúsko, Maďarsko). Oslobodenia sa líšia: Nemecko 0 % po 1 roku držby, Česko 3-ročný časový test, Poľsko bez oslobodenia. Stav ${asOfSk}. Nejde o daňové poradenstvo.` },
+    { q: `Vzniká pri predaji v týchto ${N} krajinách daň?`, a: `Spravidla áno, pri predaji za peniaze. Výmena krypto za krypto sa v niektorých krajinách zdaňuje (Nemecko, Česko, Španielsko), v iných nie (Poľsko, Francúzsko, Rakúsko, Maďarsko). Oslobodenia sa líšia: Nemecko 0 % po 1 roku držby, Česko po 3 rokoch držby, Poľsko bez oslobodenia. Stav ${asOfSk}. Nejde o daňové poradenstvo.` },
     { q: 'Je pôžička rovnaká daňová udalosť ako predaj?', a: 'V tomto prehľade nie. Úroky, riziko likvidácie a KYC u partnera však platia. Konkrétne čísla vypočíta Loan & Liquidity Copilot.' },
     { q: 'Čo je riziko likvidácie?', a: 'Ak hodnota zábezpeky klesne na hranicu partnera, partner môže zábezpeku predať a splatiť ňou pôžičku. Virtuse nikdy nedrží vaše kľúče ani zábezpeku.' },
-    { q: 'Kde si prepočítam konkrétnu sumu?', a: 'V live module Loan & Liquidity Copilot. Táto stránka vysvetľuje len rozdiel medzi daňou a rizikom na základe zverejnených daňových sadzieb.' }
+    { q: 'Kde si prepočítam konkrétnu sumu?', a: 'V module Loan & Liquidity Copilot. Táto stránka vysvetľuje len rozdiel medzi daňou a rizikom na základe zverejnených daňových sadzieb.' }
   ];
   const answer = finalizeAnswer([
     `K stavu ${asOfSk} môže predaj Bitcoinu vyvolať daň (napríklad v Nemecku až 45 % počas 1-ročnej lehoty držby, v Rumunsku 16 % od roku 2026).`,
@@ -2323,7 +2323,7 @@ ${faqHtml(faqs, 'Časté otázky')}
       faqLd(faqs),
       {
         '@type': 'WebApplication',
-        name: 'Bitcoin: predať alebo požičať',
+        name: 'Bitcoin: predať, alebo si požičať',
         url: abs(relFile),
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'All',
@@ -2350,7 +2350,7 @@ ${faqHtml(faqs, 'Časté otázky')}
   const enFile = 'bitcoin-inheritance/index.html';
   const deFile = 'de/bitcoin-erbrecht/index.html';
   const faqs = [
-    { q: 'Môže byť v liste s pokynmi seed fráza?', a: 'Nie. List uvádza zoznam, umiestnenia a kontakty – nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.' },
+    { q: 'Môže byť v liste s pokynmi seed fráza?', a: 'Nie. List uvádza zoznam, umiestnenia a kontakty, nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.' },
     { q: 'Prečo multisig 2 z 3?', a: 'Jediná seed fráza je jediný bod zlyhania pre vás aj pre vašich dedičov.' },
     { q: 'Drží Virtuse kľúče pre dedičov?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče.' },
     { q: 'Ide o právne poradenstvo?', a: `Nie. Je to kontrolný zoznam na vzdelávacie účely z modulu Tax, stav ${asOfSk}.` }
@@ -2382,7 +2382,7 @@ ${faqHtml(faqs, 'Časté otázky')}
     related: [
       { href: toRoot(relFile, 'sk/bitcoin-dane/slovensko/'), label: 'Dane z Bitcoinu na Slovensku' },
       { href: toRoot(relFile, 'sk/bitcoin-dane/'), label: `Dane v ${N} krajinách EÚ` },
-      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať alebo požičať' }
+      { href: toRoot(relFile, 'sk/bitcoin-predat-alebo-pozicat/'), label: 'Bitcoin: predať, alebo si požičať' }
     ],
     moduleCta: { href: toRoot(relFile, 'sk/' + TAX_AGENT), label: 'Ohodnotiť zoznam v Tax Agentovi →' },
     schemas: [faqLd(faqs), howto],

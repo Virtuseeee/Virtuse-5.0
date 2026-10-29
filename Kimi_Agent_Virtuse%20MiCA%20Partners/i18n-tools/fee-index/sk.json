@@ -1,6 +1,6 @@
 {
   "title": "Index poplatkov za Bitcoin (EÚ): celkové náklady nákupu",
-  "description": "Nákup Bitcoinu s licenciou v EÚ zoradený podľa celkových nákladov, poplatok plus odhadovaný spread, pri mesačnom nákupe. Overené {date}.",
+  "description": "Spôsoby nákupu Bitcoinu u partnerov s licenciou v EÚ podľa celkových nákladov (poplatok plus odhadovaný spread) pri mesačnom nákupe. Overené {date}.",
   "og_title": "Index poplatkov za Bitcoin: koľko nákup Bitcoinu naozaj stojí",
   "og_alt": "Virtuse Index poplatkov za Bitcoin",
   "crumb_home": "Domov",
@@ -75,8 +75,8 @@
   "rel_pf_p": "Partneri, ktorí zodpovedajú vašim kritériám.",
   "disclaimer": "Nejde o investičné poradenstvo. Virtuse nikdy nedrží vaše kľúče ani prostriedky. KYC a registráciu vybavíte na regulovanej platforme každého partnera.",
   "sp_pending": "Meria sa",
-  "spread_note_21_pending": "21bitcoin nemá verejnú knihu objednávok. Jeho spread meriame z cien v aplikácii, preto je 21bitcoin dovtedy uvedený bez poradia.",
+  "spread_note_21_pending": "21bitcoin nemá verejnú knihu objednávok. Jeho spread zatiaľ meriame z cien v aplikácii; kým meranie neskončí, je 21bitcoin uvedený bez poradia.",
   "kraken_instant": "Okamžitý nákup (Instant Buy) v aplikácii Kraken je iný spôsob nákupu: poplatok 1 % plus spread.",
-  "aff_note": "Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
+  "aff_note": "Partnerský odkaz: ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
   "aff_how": "Ako zarábame"
 }

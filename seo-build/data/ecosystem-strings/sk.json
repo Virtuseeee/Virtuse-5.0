@@ -6,7 +6,7 @@
     "home": "Domov",
     "crumbEcosystem": "Ekosystém",
     "howWePick": "Ako vyberáme",
-    "howWePickText": "Každú položku vyberáme ručne. Musí byť zameraná iba na Bitcoin, relevantná pre Európu, aktívna a poctivá. Každé hodnotenie píšeme sami. Platené umiestnenia sú vždy označené ako \"Sponzorované\" a naše hodnotenie nikdy nemenia.",
+    "howWePickText": "Každú položku vyberáme ručne. Musí byť zameraná iba na Bitcoin, relevantná pre Európu, aktívna a poctivá. Každé hodnotenie píšeme sami. Platené umiestnenia sú vždy označené ako „Sponzorované“ a naše hodnotenie nikdy nemenia.",
     "criteriaLink": "Prečítajte si kritériá zaradenia",
     "related": "Súvisiace na Virtuse",
     "reviewed": "Naposledy skontrolované:",
@@ -24,7 +24,7 @@
     "tableDates": "Termín",
     "tableLink": "Web",
     "websiteButton": "Web",
-    "confTbcSep2027": "September 2027, termín sa ešte potvrdí",
+    "confTbcSep2027": "september 2027, termín sa ešte potvrdí",
     "confTba2027": "2027, termín bude oznámený",
     "cities": {
       "Amsterdam": "Amsterdam",
@@ -54,7 +54,7 @@
       },
       {
         "t": "Označení sponzori",
-        "d": "Platené umiestnenia sú vždy označené ako \"Sponzorované\" a nikdy nemenia naše kritériá ani hodnotenie."
+        "d": "Platené umiestnenia sú vždy označené ako „Sponzorované“ a nikdy nemenia naše kritériá ani hodnotenie."
       }
     ],
     "exploreSub": "Každú kategóriu overujeme ručne.",
@@ -75,7 +75,7 @@
       "<strong>Poctivé:</strong> žiadne sľuby výnosov a žiadna nezverejnená úschova."
     ],
     "paidH": "Platené umiestnenie",
-    "paid": "Niektoré položky sú označené ako \"Sponzorované\" alebo \"Odporúčané\". Ide o platené umiestnenia a niektoré odkazy sú partnerské. Platba nikdy nemení naše kritériá ani naše hodnotenie a nezaručuje prijatie. Pozrite si <a href=\"{howWeEarn}\">Ako zarábame</a>.",
+    "paid": "Niektoré položky sú označené ako „Sponzorované“ alebo „Odporúčané“. Ide o platené umiestnenia a niektoré odkazy sú partnerské. Platba nikdy nemení naše kritériá ani naše hodnotenie a nezaručuje prijatie. Pozrite si <a href=\"{howWeEarn}\">Ako zarábame</a>.",
     "removalH": "Odstránenie",
     "removal": "Položku môžeme odstrániť, ak už nespĺňa kritériá. O odstránenie môžete kedykoľvek požiadať aj vy.",
     "applyH": "Žiadosť",
@@ -147,7 +147,7 @@
         "<h2>Vzácnosť: limit 21 miliónov</h2>",
         "<p>Celkový počet bitcoinov, ktoré kedy budú existovať, je obmedzený na 21 miliónov. Nové mince dostávajú ťažiari ako odmenu za zabezpečenie siete a táto odmena sa zhruba každé štyri roky (každých 210 000 blokov) znižuje na polovicu. Väčšina ponuky už bola vydaná; zvyšné mince pribúdajú stále pomalšie, približne až do roku 2140.</p>",
         "<p>Tento pevný a predvídateľný harmonogram je hlavným dôvodom, prečo ľudia porovnávajú Bitcoin so zlatom. Keď dopyt rastie, viac sa ho vytlačiť nedá a žiadna centrálna banka nemôže rozhodnúť o zriedení existujúcich držiteľov. Či je Bitcoin pri vašom časovom horizonte dobrým uchovávateľom hodnoty, musíte posúdiť sami; história ukazuje dlhé obdobia silného rastu aj hlboké prepady o 70 % a viac.</p>",
-        "<h2>Bitcoin nie je \"krypto\"</h2>",
+        "<h2>Bitcoin nie je „krypto“</h2>",
         "<p>Tisíce iných tokenov skopírovali časti kódu Bitcoinu, no väčšina z nich má firmu, nadáciu alebo malú skupinu zasvätených, ktorí môžu meniť pravidlá, vydávať ďalšie jednotky alebo sieť pozastaviť. To je iný rizikový profil. Práve preto sa Virtuse venuje iba Bitcoinu: hodnota Bitcoinu vychádza z toho, že nemá emitenta ani nikoho, kto by ho riadil, a to sa veľmi ťažko napodobňuje, keď má projekt zakladateľov, predpredaj alebo marketingový rozpočet. Keď vám niekto ponúka novú mincu so sľúbenými výnosmi, berte to ako predajnú ponuku, nie ako Bitcoin.</p>",
         "<h2>Ako to funguje</h2>",
         "<p>Každá bitcoinová transakcia sa rozošle do siete a kontrolujú ju nezávislé počítače nazývané uzly (nodes). Každý uzol overí, že mince existujú, že ešte neboli minuté a že podpis odosielateľa je platný. Uzol môže prevádzkovať ktokoľvek na bežnom počítači, a práve to udržiava pravidlá poctivé: uzol bloky, ktoré ich porušujú, jednoducho ignoruje.</p>",
@@ -159,7 +159,7 @@
         "<p>Existujú tri bežné modely. Pri úschove u regulovaného poskytovateľa drží kľúče poskytovateľ a vy sa spoliehate na jeho zabezpečenie a solventnosť; je to jednoduché, ale nesie to riziko protistrany. Pri vlastnej úschove s jedným kľúčom držíte jeden kľúč sami, zvyčajne v aplikácii peňaženky alebo v samostatnom zariadení. Pri úschove s viacerými podpismi (multisig, kolaboratívna úschova) je na presun prostriedkov potrebných viac kľúčov, takže strata alebo kompromitácia jedného kľúča neznamená stratu všetkého. Správna voľba závisí od sumy, vašej technickej istoty a od toho, kto by mal mať k minciam prístup, ak sa vám niečo stane.</p>",
         "<p>Pre väčšinu ľudí je rozumné začať s malou sumou, vyskúšať si testovaciu obnovu, uchovávať seed frázu offline a nikdy ju nezadávať na žiadnom webe. Pri väčších sumách zvážte samostatné hardvérové zariadenie a plán pre dedičov. Podrobnosti nájdete na našej <a href=\"/secure.html\">stránke o úschove</a>, v <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">sprievodcovi studenými peňaženkami</a> a v <a href=\"/bitcoin-inheritance/\">kontrolnom zozname pre dedičstvo</a>.</p>",
         "<h2>Riziká, ktoré by ste mali poznať</h2>",
-        "<ul><li><strong>Volatilita.</strong> Cena môže v priebehu mesiacov klesnúť na polovicu. Držte len toľko, koľko dokážete udržať aj počas veľkých výkyvov.</li><li><strong>Nezvratnosť.</strong> Odoslané transakcie sa nedajú vrátiť a stratený kľúč zvyčajne znamená stratené mince.</li><li><strong>Podvody.</strong> Nikto dôveryhodný od vás nebude pýtať seed frázu, sľubovať zaručené výnosy ani vás súriť. Buďte obzvlášť opatrní pri \"krypto\" ponukách, ktoré nie sú Bitcoin.</li><li><strong>Dane a pravidlá.</strong> Zisky sú vo väčšine európskych krajín zdaniteľné a poskytovatelia musia dodržiavať MiCA a pravidlá proti praniu špinavých peňazí. Pozrite si naše <a href=\"/bitcoin-tax/\">daňové návody podľa krajín</a>.</li></ul>",
+        "<ul><li><strong>Volatilita.</strong> Cena môže v priebehu mesiacov klesnúť na polovicu. Držte len toľko, koľko dokážete udržať aj počas veľkých výkyvov.</li><li><strong>Nezvratnosť.</strong> Odoslané transakcie sa nedajú vrátiť a stratený kľúč zvyčajne znamená stratené mince.</li><li><strong>Podvody.</strong> Nikto dôveryhodný od vás nebude pýtať seed frázu, sľubovať zaručené výnosy ani vás súriť. Buďte obzvlášť opatrní pri „krypto“ ponukách, ktoré nie sú Bitcoin.</li><li><strong>Dane a pravidlá.</strong> Zisky sú vo väčšine európskych krajín zdaniteľné a poskytovatelia musia dodržiavať MiCA a pravidlá proti praniu špinavých peňazí. Pozrite si naše <a href=\"/bitcoin-tax/\">daňové návody podľa krajín</a>.</li></ul>",
         "<h2>Bitcoin v Európe</h2>",
         "<p>Odkedy nadobudlo účinnosť nariadenie EÚ o trhoch s kryptoaktívami (MiCA), firmy, ktoré v EÚ ponúkajú služby kryptoaktív, potrebujú povolenie národného regulátora a musia dodržiavať pravidlá proti praniu špinavých peňazí vrátane overovania totožnosti. Od roku 2026 navyše smernica DAC8 ukladá týmto poskytovateľom povinnosť hlásiť transakcie klientov daňovým úradom. Držať bitcoin vo vlastnej úschove je legálne v celej EÚ, no daňové zaobchádzanie sa výrazne líši: niektoré krajiny dlhodobé držanie oslobodzujú, iné zdaňujú každý predaj či výmenu. Pred predajom alebo platbou si overte pravidlá vo svojej krajine.</p>",
         "<p>Keď budete pripravení nakúpiť, porovnajte regulovaných partnerov na našej stránke <a href=\"/buy-bitcoin.html\">Kúpiť Bitcoin</a>. Táto stránka má vzdelávací charakter a nie je investičným poradenstvom.</p>"
@@ -264,7 +264,7 @@
       "h1": "Bitcoinové konferencie v Európe",
       "title": "Bitcoinové konferencie v Európe 2026–2027 | Virtuse",
       "description": "Nadchádzajúce bitcoinové konferencie v Európe s termínmi, mestami a odkazmi: Praha, Amsterdam, Kreuzlingen, Riga, Varšava a ďalšie.",
-      "intro": "Nadchádzajúce bitcoinové konferencie po celej Európe s termínmi, mestami a odkazom na oficiálny web. Všetky uvedené podujatia sú iba o Bitcoine. Minulé podujatia po skončení odstraňujeme; termíny označené ako \"termín sa ešte potvrdí\" organizátori zatiaľ nezverejnili.",
+      "intro": "Nadchádzajúce bitcoinové konferencie po celej Európe s termínmi, mestami a odkazom na oficiálny web. Všetky uvedené podujatia sú iba o Bitcoine. Minulé podujatia po skončení odstraňujeme; termíny označené ako „termín sa ešte potvrdí“ organizátori zatiaľ nezverejnili.",
       "related": [
         "Spriatelené projekty zamerané iba na Bitcoin",
         "Virtuse Brief: týždenné správy o Bitcoine",
@@ -296,7 +296,7 @@
       "intro": "Kde platiť bitcoinom v Európe: mapy obchodov, ktoré ho prijímajú, darčekové karty na bežné nákupy a online služby, ktoré môžete zaplatiť bitcoinom. Upozorňujeme, že v mnohých krajinách sa platba bitcoinom na daňové účely považuje za jeho predaj.",
       "related": [
         "Prijímajte bitcoin vo svojom obchode",
-        "Daňové výkazy pre Bitcoin",
+        "Daňové prehľady pre Bitcoin",
         "Daňové návody podľa krajín"
       ],
       "h1Accent": ": obchody, mapy a darčekové karty."
@@ -310,7 +310,7 @@
       "intro": "Nástroje na prijímanie bitcoinu v obchode, kaviarni alebo e-shope: platobné procesory, ktoré si prevádzkujete sami, pokladničné terminály pre Lightning a pluginy pre bežné e-commerce platformy. Držanie bitcoinu v súvahe firmy je samostatná téma, ktorej sa venujeme na stránke Treasury.",
       "related": [
         "Bitcoin treasury pre firmy",
-        "Daňové výkazy pre Bitcoin",
+        "Daňové prehľady pre Bitcoin",
         "Kde platiť bitcoinom"
       ],
       "h1Accent": ": prijímajte bitcoin vo svojom obchode."

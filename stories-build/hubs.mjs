@@ -120,7 +120,7 @@ const LINKS = {
     inheritance: ['sk/bitcoin-dedicstvo/', 'Bitcoin a dedičstvo: kontrolný zoznam', 'Čo potrebujú dedičia, aby našli a presunuli váš Bitcoin.'],
     mining: ['sk/mining.html', 'Hosting a hardvér na ťažbu', 'Partneri pre hosting a hardvér porovnaní podľa nákladov.'],
     treasury: ['sk/treasury.html', 'Úschova Bitcoinu pre firmy', 'Partneri pre úschovu a obchodovanie pre firmy.'],
-    cfo: ['sk/verdict.html', 'Verdikt', 'Skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká.'],
+    cfo: ['sk/verdict.html', 'Verdict', 'Skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká.'],
     concierge: ['sk/concierge.html', 'Partner Finder', 'Partneri podľa vašich kritérií za 60 sekúnd.'],
     news: ['news.html', 'Virtuse Brief', 'Týždenný newsletter o Bitcoine pre Európu (v angličtine).'],
     gold: ['sk/bitcoin-vs-gold.html', 'Bitcoin vs. zlato, striebro a komodity', 'Výnosy po rokoch a pomer BTC/zlato, denne aktualizované.'],

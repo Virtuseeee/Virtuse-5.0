@@ -65,7 +65,7 @@ export const GOALS: GoalOption[] = [
   { id: 'buy', label: { en: 'Buy Bitcoin', sk: 'Kúpiť Bitcoin', cs: 'Koupit Bitcoin' }, hint: { en: 'First purchase or regular stacking', sk: 'Prvý nákup alebo pravidelné dokupovanie', cs: 'První nákup nebo pravidelné dokupování' } },
   { id: 'loan', label: { en: 'Bitcoin-backed loan', sk: 'Pôžička krytá Bitcoinom', cs: 'Půjčka krytá Bitcoinem' }, hint: { en: 'Liquidity without selling', sk: 'Likvidita bez predaja', cs: 'Likvidita bez prodeje' } },
   { id: 'earn', label: { en: 'Automate & compound', sk: 'Automatizovať a zhodnocovať', cs: 'Automatizovat a zhodnocovat' }, hint: { en: 'Non-custodial trading & DCA bots', sk: 'Nekustodiálne obchodné a DCA boty', cs: 'Nekustodiální obchodní a DCA boti' } },
-  { id: 'treasury', label: { en: 'Corporate treasury', sk: 'Firemný treasury', cs: 'Firemní treasury' }, hint: { en: 'BTC on the balance sheet', sk: 'BTC v súvahe firmy', cs: 'BTC v rozvaze firmy' } },
+  { id: 'treasury', label: { en: 'Corporate treasury', sk: 'Firemné treasury', cs: 'Firemní treasury' }, hint: { en: 'BTC on the balance sheet', sk: 'BTC v súvahe firmy', cs: 'BTC v rozvaze firmy' } },
   { id: 'mining', label: { en: 'Mining', sk: 'Ťažba', cs: 'Těžba' }, hint: { en: 'Earn fresh sats', sk: 'Získavajte nové satoshi', cs: 'Získávejte nové satoshi' } },
   { id: 'custody', label: { en: 'Custody & inheritance', sk: 'Úschova a dedičstvo', cs: 'Úschova a dědictví' }, hint: { en: 'Keys, multisig, legacy', sk: 'Kľúče, multisig, odkaz', cs: 'Klíče, multisig, odkaz' } },
   { id: 'tax', label: { en: 'Tax help', sk: 'Pomoc s daňami', cs: 'Pomoc s daněmi' }, hint: { en: 'Reports & compliance', sk: 'Priznania a compliance', cs: 'Přiznání a compliance' } },
@@ -343,7 +343,7 @@ export const PARTNERS: Partner[] = [
     goals: ['earn'],
     custody: ['self', 'any'],
     url: 'https://app.revenuebot.io/external/r/90928',
-    feeNote: { en: 'Referral commissions paid in BTC', sk: 'Referral provízie vyplácané v BTC', cs: 'Referral provize vyplácené v BTC' },
+    feeNote: { en: 'Referral commissions paid in BTC', sk: 'Provízie za odporúčanie vyplácané v BTC', cs: 'Referral provize vyplácené v BTC' },
     countries: ['ALL'],
   },
 
@@ -574,7 +574,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         push('blockstream', 95, [
           t(lang,
             'Native support for multisig and collaborative custody vaults: the setup that answers "what happens to my bitcoin".',
-            'Natívna podpora multisigu a kolaboratívnych custody trezorov: riešenie na otázku „čo sa stane s mojím bitcoinom".',
+            'Natívna podpora multisigu a trezorov s kolaboratívnou úschovou: riešenie na otázku „čo sa stane s mojím bitcoinom“.',
             'Nativní podpora multisigu a kolaborativních custody trezorů: řešení na otázku „co se stane s mým bitcoinem".'),
         ]);
       }

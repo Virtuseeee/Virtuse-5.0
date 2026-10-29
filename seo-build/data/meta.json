@@ -524,7 +524,7 @@
       "healthLevy": "Zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí), zúčtuje ich zdravotná poisťovňa v ročnom zúčtovaní",
       "healthLevyShort": "16 % zdravotné odvody",
       "exemption": "Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje",
-      "filing": "Daňové priznanie fyzickej osoby typ B, do 31. marca",
+      "filing": "Daňové priznanie fyzickej osoby typu B, do 31. marca",
       "note": "Sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť. Celková strata z kryptomien neznižuje iné príjmy.",
       "titleHook": "sadzby a odvody",
       "seoDescription": "Ako sa zdaňuje Bitcoin na Slovensku v roku 2026: 19 až 35 % daň z príjmov, 16 % zdravotné odvody, bez oslobodenia. Nejde o daňové poradenstvo."
@@ -539,7 +539,7 @@
       "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
       "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia",
       "filing": "Priznanie pre zisky cez zahraničné burzy; rakúski poskytovatelia daň zrážajú",
-      "note": "Výmeny krypto za krypto sú daňovo neutrálne. Požičiavanie a ťažba sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou cenou)."
+      "note": "Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou obstarávacou cenou)."
     },
     "de": {
       "gainTax": "Až 45 % daň z príjmov (progresívna)",
@@ -549,7 +549,7 @@
     },
     "hu": {
       "gainTax": "15 % daň z kapitálových výnosov",
-      "exemption": "Bez oslobodenia podľa doby držby; malé transakcie do 10 % minimálnej mzdy sú bez dane (spolu najviac jedna minimálna mzda ročne)",
+      "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)",
       "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
       "note": "Preukázateľné obstarávacie náklady sa dajú odpočítať, preto uchovávajte každú faktúru."
     },
