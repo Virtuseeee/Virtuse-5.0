@@ -1028,7 +1028,7 @@
         "pl": {
           "title": "DAC8 w Polsce: co giełda zgłasza do KAS (2026)",
           "description": "Od 2026 r. giełdy rejestrują transakcje kryptowalutowe polskich rezydentów w ramach DAC8. Co trafia do KAS, terminy 2027 i podatek w PIT-38.",
-          "h1": "Giełda zgłasza Państwa transakcje Bitcoinem: DAC8 w Polsce",
+          "h1": "Giełda zgłasza Państwa transakcje z Bitcoinem: DAC8 w Polsce",
           "answer": "Od 1 stycznia 2026 r. giełdy kryptowalut rejestrują dane, numer podatkowy i transakcje polskich rezydentów w ramach DAC8. PIT-38 za 2026 r. trzeba złożyć do 30 kwietnia 2027 r., a dostawcy raportują do KAS do 30 czerwca 2027 r. Zysk podlega 19% podatkowi; wymiana kryptowaluty na kryptowalutę nie jest opodatkowana.",
           "crumbs": [
             "Strona główna",
@@ -1588,8 +1588,8 @@
           ]
         },
         "hu": {
-          "title": "DAC8 Magyarországon: mit jelent a tőzsde a NAV-nak (2026)",
-          "description": "2026-tól a tőzsdék a DAC8 alapján rögzítik a magyar adóügyi illetőségű ügyfelek kriptoügyleteit. Mit jelentenek, 2027-es határidők és a 15%-os adó.",
+          "title": "DAC8 Magyarországon: mit közöl a tőzsde a NAV-val (2026)",
+          "description": "2026-tól a tőzsdék a DAC8 alapján rögzítik a magyar adóügyi illetőségű ügyfelek kriptoügyleteit. Jelentett adatok, 2027-es határidők és a 15%-os adó.",
           "h1": "A tőzsde jelenti Bitcoin-ügyleteit: DAC8 Magyarországon",
           "answer": "2026. január 1-jétől a kriptotőzsdék a DAC8 alapján rögzítik a magyar ügyfelek adatait, adóazonosító jelét és ügyleteit a NAV számára. A 2026-os bevallás határideje 2027. május 20., és a NAV-tervezet nem tartalmazza a kriptojövedelmet. Az adó 15%; a kripto kriptóra cserélése nem adóköteles.",
           "crumbs": [

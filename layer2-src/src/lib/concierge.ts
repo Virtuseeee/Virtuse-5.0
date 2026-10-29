@@ -63,7 +63,7 @@ export interface Recommendation {
 
 export const GOALS: GoalOption[] = [
   { id: 'buy', label: { en: 'Buy Bitcoin', sk: 'Kúpiť Bitcoin', cs: 'Koupit Bitcoin' }, hint: { en: 'First purchase or regular stacking', sk: 'Prvý nákup alebo pravidelné dokupovanie', cs: 'První nákup nebo pravidelné dokupování' } },
-  { id: 'loan', label: { en: 'Bitcoin-backed loan', sk: 'Pôžička kryté Bitcoinom', cs: 'Půjčka krytá Bitcoinem' }, hint: { en: 'Liquidity without selling', sk: 'Likvidita bez predaja', cs: 'Likvidita bez prodeje' } },
+  { id: 'loan', label: { en: 'Bitcoin-backed loan', sk: 'Pôžička krytá Bitcoinom', cs: 'Půjčka krytá Bitcoinem' }, hint: { en: 'Liquidity without selling', sk: 'Likvidita bez predaja', cs: 'Likvidita bez prodeje' } },
   { id: 'earn', label: { en: 'Automate & compound', sk: 'Automatizovať a zhodnocovať', cs: 'Automatizovat a zhodnocovat' }, hint: { en: 'Non-custodial trading & DCA bots', sk: 'Nekustodiálne obchodné a DCA boty', cs: 'Nekustodiální obchodní a DCA boti' } },
   { id: 'treasury', label: { en: 'Corporate treasury', sk: 'Firemný treasury', cs: 'Firemní treasury' }, hint: { en: 'BTC on the balance sheet', sk: 'BTC v súvahe firmy', cs: 'BTC v rozvaze firmy' } },
   { id: 'mining', label: { en: 'Mining', sk: 'Ťažba', cs: 'Těžba' }, hint: { en: 'Earn fresh sats', sk: 'Získavajte nové satoshi', cs: 'Získávejte nové satoshi' } },

@@ -610,7 +610,7 @@
     {
       "id": "heir-aware",
       "name": "Informujte dediča",
-      "text": "Aspoň jedna dôveryhodná osoba musí vedieť, že váš Bitcoin existuje a kde začať. Bitcoin, ktorý sa nájde o roky neskôr alebo vôbec, je najčastejšie zlyhanie pri dedení."
+      "text": "Aspoň jedna dôveryhodná osoba musí vedieť, že váš Bitcoin existuje a kde začať. Bitcoin, ktorý sa nájde až po rokoch alebo sa nenájde vôbec, je najčastejšou chybou pri dedení."
     },
     {
       "id": "multisig",
