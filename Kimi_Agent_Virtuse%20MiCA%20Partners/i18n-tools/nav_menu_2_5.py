@@ -104,7 +104,7 @@ T = {  # new strings; existing keys in a language file are kept
         ru='Правила стран и проверка наследства'),
     'How much Bitcoin for retirement': dict(sk='Koľko Bitcoinu na dôchodok', cs='Kolik Bitcoinu na důchod', de='Wie viel Bitcoin für die Rente',
         fr='Combien de Bitcoin pour la retraite', es='Cuánto Bitcoin para la jubilación', pl='Ile Bitcoina na emeryturę',
-        hu='Mennyi Bitcoin kell a nyugdíjhoz', uk='Скільки Біткоїна на пенсію', ru='Сколько Биткоина нужно на пенсію'),
+        hu='Mennyi Bitcoin kell a nyugdíjhoz', uk='Скільки Біткоїна на пенсію', ru='Сколько Биткоина нужно на пенсию'),
 }
 
 

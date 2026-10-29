@@ -805,7 +805,7 @@ const GUIDE_TOOLS = {
   sk: { h: 'Súvisiace nástroje', tax: 'Daňové pravidlá podľa krajiny a kontrola pripravenosti na dedičstvo.', loanP: 'Predaj verzus pôžička so zábezpekou v Bitcoine.', pfP: 'Partneri, ktorí zodpovedajú vašim kritériám.', buyT: 'Kúpiť Bitcoin', buyP: 'Partneri na nákup a ich poplatky vedľa seba.' },
   cs: { h: 'Související nástroje', tax: 'Daňová pravidla podle země a kontrola připravenosti na dědictví.', loanP: 'Prodej versus půjčka se zajištěním Bitcoinem.', pfP: 'Partneři, kteří odpovídají vašim kritériím.', buyT: 'Koupit Bitcoin', buyP: 'Partneři pro nákup a jejich poplatky vedle sebe.' },
   uk: { h: 'Пов’язані інструменти', tax: 'Податкові правила за країною та перевірка готовності до спадщини.', loanP: 'Продаж чи позика під заставу Біткоїна.', pfP: 'Партнери, які відповідають вашим критеріям.', buyT: 'Купити Біткоїн', buyP: 'Партнери для купівлі та їхні комісії поруч.' },
-  ru: { h: 'Связанные инструменты', tax: 'Налоговые правила по странам и проверка готовности к наследованию.', loanP: 'Продажа или заём под залог Биткоина.', pfP: 'Партнёры, которые подходят под ваши критерии.', buyT: 'Купить Биткоин', buyP: 'Партнёры для покупки и их комиссии рядом.' },
+  ru: { h: 'Связанные инструменты', tax: 'Налоговые правила по странам и проверка готовности к наследованию.', loanP: 'Продажа или заём под залог Биткоина.', pfP: 'Партнёры, которые подходят под ваши критерии.', buyT: 'Купить Биткоин', buyP: 'Партнёры для покупки и их комиссии в одном сравнении.' },
   de: { h: 'Verwandte Tools', tax: 'Steuerregeln je Land und ein Check zur Nachlassplanung.', loanP: 'Verkaufen oder einen Kredit gegen Bitcoin aufnehmen.', pfP: 'Partner, die zu Ihren Kriterien passen.', buyT: 'Bitcoin kaufen', buyP: 'Kaufpartner und ihre Gebühren direkt nebeneinander.' },
   fr: { h: 'Outils associés', tax: 'Les règles fiscales par pays et un contrôle de préparation successorale.', loanP: 'Vendre ou emprunter en garantie de votre Bitcoin.', pfP: 'Les partenaires adaptés à vos critères.', buyT: 'Acheter du Bitcoin', buyP: 'Les partenaires d\'achat et leurs frais, côte à côte.' },
   es: { h: 'Herramientas relacionadas', tax: 'Normas fiscales por país y una revisión de la preparación sucesoria.', loanP: 'Vender o pedir prestado con Bitcoin como garantía.', pfP: 'Partners que encajan con sus criterios.', buyT: 'Comprar Bitcoin', buyP: 'Partners de compra y sus comisiones, uno junto a otro.' },
@@ -3780,7 +3780,7 @@ function ruHome(relFile) { return { name: 'Главная', href: toRoot(relFile
     esc(meta.taxRu[c.id].exemption)
   ]);
   const faqs = [
-    { q: 'Какие страны охватывает этот обзор?', a: `Обзор охватывает ${N} стран ЕС: ${COUNTRIES.map((c) => nameRu(c.id)).join(', ')}. ${guideText('ru', 'hubFaq')}` },
+    { q: 'Какие страны охватывает этот обзор?', a: `Обзор охватывает ${N} стран ЕС: ${COUNTRIES.map((c) => accRu(c.id)).join(', ')}. ${guideText('ru', 'hubFaq')}` },
     { q: 'Это налоговая консультация?', a: `Нет. ${guideLine('ru')} Правила текущего года уточните у местного консультанта.` },
     { q: 'Сообщает ли Virtuse о моих активах в налоговую службу?', a: 'Нет. Virtuse никогда не хранит ваши ключи и историю транзакций. KYC проводят сами партнёры.' },
     { q: 'Где проверить готовность к наследованию?', a: `В модуле Tax & Inheritance Agent, с теми же ${N} странами и проверкой готовности к мультиподписи.` }
@@ -3802,7 +3802,7 @@ function ruHome(relFile) { return { name: 'Главная', href: toRoot(relFile
     related: [
       { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' },
       { href: toRoot(relFile, 'ru/bitcoin-nasledstvo/'), label: 'Биткоин и наследство' },
-      { href: toRoot(relFile, 'ru/bitcoin-indeks-komissiy/'), label: 'Индекс комиссий за Биткоин' }
+      { href: toRoot(relFile, 'ru/bitcoin-indeks-komissiy/'), label: 'Индекс комиссий Биткоина' }
     ],
     moduleCta: { href: toRoot(relFile, 'ru/' + TAX_AGENT), label: 'Открыть Tax & Inheritance Agent →' },
     schemas: [faqLd(faqs)],
@@ -3831,7 +3831,7 @@ for (const c of COUNTRIES) {
   ];
   const answer = finalizeAnswer([
     `Налоги на Биткоин ${inN} по состоянию на ${asOfRu}: ${lcRu(gainFull(t))}.`,
-    /^Без /.test(t.exemption) ? `${t.exemption}.` : `Освобождение: ${lcRu(t.exemption)}.`,
+    /^(Без |Освобождени)/.test(t.exemption) ? `${t.exemption}.` : `Освобождение: ${lcRu(t.exemption)}.`,
     `Порядок подачи: ${lcRu(t.filing)}.`,
     t.note,
     guideLine('ru')
@@ -3883,7 +3883,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
   const faqs = [
     { q: 'Прогнозирует ли этот калькулятор цену Биткоина?', a: 'Нет. Он сравнивает только комиссии партнёров по опубликованной тарифной таблице. Доходность от цены Биткоина не моделируется.' },
     { q: 'Какой типовой план используется?', a: `Единоразово 500 €, затем 100 € в месяц в течение 12 месяцев, по состоянию на ${feeAsOfRu}. Рейтинг составлен по комиссиям первого года.` },
-    { q: 'У какого способа в этом плане самая низкая опубликованная комиссия?', a: `${win.partner} (${methodRu(win.method)}) с переменной комиссией ${formatPctPl(win.pct)} по формуле Stacking Strategist. Самая низкая общая стоимость со спредом в Bitcoin Fee Index: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € в месяц.` },
+    { q: 'У какого способа в этом плане самая низкая опубликованная комиссия?', a: `${win.partner} (${methodRu(win.method)}) с переменной комиссией ${formatPctPl(win.pct)} по формуле Stacking Strategist. Самая низкая полная стоимость со спредом в Индексе комиссий Биткоина: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € в месяц.` },
     { q: 'Это инвестиционная консультация?', a: 'Нет. Только для образовательных целей. KYC проходит у партнёра. Virtuse никогда не хранит ваши ключи.' }
   ];
   const answer = finalizeAnswer([
@@ -3901,7 +3901,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
     breadcrumbs: [ruHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
     related: [
-      { href: toRoot(relFile, 'ru/bitcoin-indeks-komissiy/'), label: 'Индекс комиссий за Биткоин' },
+      { href: toRoot(relFile, 'ru/bitcoin-indeks-komissiy/'), label: 'Индекс комиссий Биткоина' },
       { href: toRoot(relFile, 'ru/bitcoin-prodat-ili-zanyat/'), label: 'Биткоин: продать или занять' },
       { href: toRoot(relFile, 'ru/bitcoin-nalogi/germaniya/'), label: 'Налоги на Биткоин в Германии' }
     ],
@@ -3935,7 +3935,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Возникает ли налог при продаже в этих ${N} странах?`, a: `Обычно да, при продаже за деньги. Обмен криптовалюты на криптовалюту облагается в одних странах (Германия, Чехия, Испания), а в других нет (Польша, Франция, Австрия, Венгрия). Освобождения различаются: в Германии 0% после 1 года владения, в Чехии — 3-летний тест времени, в Польше освобождения нет. По состоянию на ${asOfRu}. Не является налоговой консультацией.` },
+    { q: `Возникает ли налог при продаже в этих ${N} странах?`, a: `Обычно да, при продаже за деньги. Обмен криптовалюты на криптовалюту облагается в одних странах (Германия, Чехия, Испания), а в других нет (Польша, Франция, Австрия, Венгрия). Освобождения различаются: в Германии 0% после 1 года владения, в Чехии — освобождение после 3 лет владения, в Польше освобождения нет. По состоянию на ${asOfRu}. Не является налоговой консультацией.` },
     { q: 'Является ли заём таким же налоговым событием, как продажа?', a: 'В этом обзоре — нет. Но проценты, риск ликвидации и KYC у партнёра всё равно остаются. Конкретные цифры рассчитает Loan & Liquidity Copilot.' },
     { q: 'Что такое риск ликвидации?', a: 'Если стоимость залога упадёт до порога партнёра, тот может продать залог, чтобы погасить заём. Virtuse никогда не хранит ваши ключи или залог.' },
     { q: 'Где рассчитать конкретную сумму?', a: 'В модуле Loan & Liquidity Copilot. Эта страница объясняет только разницу между налогом и риском на основе опубликованных налоговых ставок.' }
@@ -4048,16 +4048,16 @@ ${faqHtml(faqs, 'Частые вопросы')}
     { q: 'Можно ли цитировать таблицу?', a: `Да, со ссылкой и подписью «Источник: индекс комиссий за Биткоин от Virtuse, по состоянию на ${feeAsOfRu}».` }
   ];
   const answer = finalizeAnswer([
-    `Индекс комиссий за Биткоин от Virtuse по состоянию на ${feeAsOfRu} ранжирует способы покупки в ЕС по годовым комиссиям.`,
+    `Индекс комиссий Биткоина от Virtuse по состоянию на ${feeAsOfRu} ранжирует способы покупки в ЕС по годовым комиссиям.`,
     `При 100 € в месяц лидирует ${winner.partner} (${methodRu(winner.method)}) с комиссией ${formatPctPl(winner.pct)}, то есть ${formatEurSk(winner.annualDrag)} в год.`,
     beText,
     'Это не предложение. Virtuse никогда не хранит ваши ключи.'
   ], 'ru', 'fee');
   pushPage({
     relFile, lang: 'ru',
-    title: assertTitle('Индекс комиссий за Биткоин (ЕС) Q4 2026'),
+    title: assertTitle('Индекс комиссий Биткоина (ЕС) Q4 2026'),
     description: assertDescription(`Способы покупки Биткоина в ЕС по комиссиям, по состоянию на ${feeAsOfRu}. Самый дешёвый при 100 € в месяц: ${winner.partner}, ${formatPctPl(winner.pct)}.`),
-    h1: 'Индекс комиссий за Биткоин',
+    h1: 'Индекс комиссий Биткоина',
     answerHtml: esc(answer),
     breadcrumbs: [ruHome(relFile), { name: 'Индекс комиссий', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
@@ -4071,14 +4071,14 @@ ${faqHtml(faqs, 'Частые вопросы')}
       faqLd(faqs),
       {
         '@type': 'Article',
-        headline: 'Индекс комиссий за Биткоин от Virtuse',
+        headline: 'Индекс комиссий Биткоина от Virtuse',
         inLanguage: 'ru',
         datePublished: LASTMOD,
         author: { '@id': `${ORIGIN}/#org` }
       },
       {
         '@type': 'Dataset',
-        name: 'Индекс комиссий за Биткоин от Virtuse',
+        name: 'Индекс комиссий Биткоина от Virtuse',
         temporalCoverage: '2026-Q4',
         url: abs(relFile)
       }

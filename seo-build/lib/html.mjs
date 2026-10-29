@@ -34,7 +34,7 @@ export const AFF_NOTE = {
   es: ['Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.', 'Cómo ganamos dinero'],
   hu: ['Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.', 'Hogyan szerzünk bevételt'],
   uk: ['Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється.', 'Як ми заробляємо'],
-  ru: ['Партнёрская ссылка – если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется.', 'Как мы зарабатываем']
+  ru: ['Партнёрская ссылка: если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется.', 'Как мы зарабатываем']
 };
 
 const langFile = (lang, file) => (lang === 'en' ? file : `${lang}/${file}`);
