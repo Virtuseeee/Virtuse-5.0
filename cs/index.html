@@ -1180,9 +1180,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Verdikt zdarma</span>
         <h2>Váš AI CFO pro Bitcoin. <span>Čte vaše vlastní exporty a nikdy nevidí vaši peněženku.</span></h2>
-        <p class="lead">Kalkulačka výše používá zveřejněné poplatky. Virtuse CFO přečte váš vlastní export z burzy přímo ve vašem prohlížeči, ukáže, kolik jste skutečně zaplatili, a odpovídá na otázky na základě vašich vlastních čísel.<span class="only-wait"> Zapište se, dáme vám vědět, až se bezplatný audit otevře.</span></p>
+        <p class="lead">Kalkulačka výše používá zveřejněné poplatky. Virtuse CFO přečte váš vlastní export z burzy přímo ve vašem prohlížeči, ukáže, kolik jste skutečně zaplatili, a odpovídá na otázky na základě vašich vlastních čísel.<span class="only-wait"> Zapište se, dáme vám vědět, až se audit poplatků otevře.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Spustit bezplatný audit</a>
+          <a class="btn btn-primary" href="cfo.html">Spustit audit poplatků</a>
           <a class="btn btn-ghost" href="/verdict.html">Získat verdikt zdarma</a>
           <a class="btn btn-ghost" href="cfo.html">Jak to funguje</a>
         </div>
@@ -1834,7 +1834,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "Jste na seznamu. Napíšeme vám jednou, až se bezplatný audit otevře.";
+          msg.textContent = "Jste na seznamu. Napíšeme vám jednou, až se audit poplatků otevře.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Něco se pokazilo. Zkuste to prosím znovu.'; }
       })

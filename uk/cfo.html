@@ -786,7 +786,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>9 € <small>/ місяць</small></span><span data-y hidden>90 € <small>/ рік</small></span></div>
         <p class="for"><span data-m>Або 90 € на рік, два місяці безкоштовно.</span><span data-y hidden>Це 7,50 € на місяць при оплаті за рік.</span></p>
         <ul><li>Аудит комісій з вашого експорту</li><li>Необмежені оцінки та повні звіти</li><li>Ваші рішення в динаміці, зокрема казначейство компанії</li><li>Сповіщення про комісії та LTV позики</li><li>Податковий звіт, 13 країн ЄС, і набір для спадкування</li><li>Запитайте свого CFO без обмежень</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Почніть із безкоштовного аудиту</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Почніть з аудиту комісій</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="Електронна пошта" aria-label="Електронна пошта" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -802,7 +802,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>Повернення коштів протягом 30 днів</b>Без запитань і без форм.</span>
         <span class="ic ic-muted"><b>Скасування в один клік</b>На сторінці вашого акаунта.</span>
-        <span class="ic ic-orange"><b>Оплата через Lightning або карткою</b>Для безкоштовного аудиту картка не потрібна.</span>
+        <span class="ic ic-orange"><b>Оплата через Lightning або карткою</b>Для аудиту комісій картка не потрібна.</span>
         <span class="ic ic-blue"><b>14-денне право на відмову в ЄС</b>Ваше законне право на відмову діє додатково.</span>
       </div>
       <p class="terms-fine">Ціни включають ПДВ, де це застосовно. Однакова ціна всіма 10 мовами.</p>
@@ -853,7 +853,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Це все, що залишає ваш пристрій. <span>Відкрийте вкладку «Мережа» й перевірте.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Завантаження безкоштовного аудиту"><span class="c">// безкоштовний аудит</span>
+<pre class="code code-free" aria-label="Завантаження для аудиту комісій"><span class="c">// безкоштовний аудит</span>
 <span class="c ok">// нічого. 0 байтів.</span></pre>
 <pre class="code code-paid" aria-label="Завантаження платного акаунта"><span class="c">// акаунт CFO · щоб ваші сповіщення працювали</span>
 {
@@ -902,7 +902,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Як отримати експорт із Kraken?</summary><p>На kraken.com натисніть значок профілю вгорі праворуч і виберіть <b>Documents</b>. У розділі Exports натисніть <b>Create export</b>, виберіть <b>Ledgers</b>, задайте дату початку й кінця, виберіть <b>CSV</b> і натисніть Generate. Коли файл буде готовий, він з'явиться в тому самому списку. Це може тривати від кількох хвилин до кількох днів, і Kraken не надсилає листа. Вибирайте Ledgers, а не Trades: там є всі комісії та ваші миттєві покупки. Якщо ви користуєтеся Kraken Pro і не бачите Documents, пошукайте в розділі Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Інструкція Kraken</a></p></details>
       <details><summary>А з Bybit EU чи 21bitcoin?</summary><p>Bybit EU: експортуйте історію спотових угод у розділі Orders. Для довших періодів може знадобитися кілька файлів. 21bitcoin: у застосунку відкрийте свою активність і скористайтеся значком завантаження, щоб експортувати всі транзакції. Біржі час від часу змінюють меню, тож якщо крок виглядає інакше, перегляньте їхні довідкові сторінки.</p></details>
       <details><summary>Чи завантажується мій файл кудись?</summary><p>Ні. Аудит читає файл у вашому браузері й нічого не надсилає Virtuse. Ви можете самі перевірити це на вкладці «Мережа» у браузері.</p></details>
-      <details><summary>Чи потрібні акаунт або картка?</summary><p>Ні. Для безкоштовного аудиту не потрібно ні того, ні іншого. Акаунт ви створюєте, лише якщо згодом оберете Virtuse CFO.</p></details>
+      <details><summary>Чи потрібні акаунт або картка?</summary><p>Ні. Для аудиту комісій не потрібно ні того, ні іншого. Акаунт ви створюєте, лише якщо згодом оберете Virtuse CFO.</p></details>
       <details><summary>Які біржі працюють на старті?</summary><p>Kraken, Bybit EU та 21bitcoin. Інші біржі додамо після запуску.</p></details>
       <details><summary>Це інвестиційна чи податкова порада?</summary><p>Ні. Аудит показує, скільки ви заплатили, та опубліковані комісії ліцензованих партнерів. Що з цим робити, вирішуєте ви. З податковими питаннями звертайтеся до податкового консультанта.</p></details>
     </div>
@@ -1122,7 +1122,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'uk' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Ви в списку. Ми напишемо один раз, коли відкриються Verdict і безкоштовний аудит.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Ви в списку. Ми напишемо один раз, коли відкриються Verdict і аудит комісій.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Щось пішло не так. Спробуйте ще раз.'; }
       })

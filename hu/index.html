@@ -1180,9 +1180,9 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div>
         <span class="k" style="display:block;margin-bottom:16px">Virtuse CFO · Ingyenes Verdict</span>
         <h2>Az Ön AI CFO-ja Bitcoinhoz. <span>A saját exportjait olvassa, a tárcáját soha nem látja.</span></h2>
-        <p class="lead">A fenti kalkulátor közzétett díjakkal számol. A Virtuse CFO az Ön saját tőzsdei exportját olvassa be a böngészőjében, megmutatja, mennyit fizetett valójában, és az Ön saját számai alapján válaszol a kérdésekre.<span class="only-wait"> Iratkozzon fel, és szólunk, amikor az ingyenes audit elindul.</span></p>
+        <p class="lead">A fenti kalkulátor közzétett díjakkal számol. A Virtuse CFO az Ön saját tőzsdei exportját olvassa be a böngészőjében, megmutatja, mennyit fizetett valójában, és az Ön saját számai alapján válaszol a kérdésekre.<span class="only-wait"> Iratkozzon fel, és szólunk, amikor a díjaudit elindul.</span></p>
         <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Ingyenes audit indítása</a>
+          <a class="btn btn-primary" href="cfo.html">Díjaudit indítása</a>
           <a class="btn btn-ghost" href="/verdict.html">Ingyenes verdikt kérése</a>
           <a class="btn btn-ghost" href="cfo.html">Hogyan működik</a>
         </div>
@@ -1834,7 +1834,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          msg.textContent = "Felírtuk. Egyszer írunk, amikor az ingyenes audit elindul.";
+          msg.textContent = "Felírtuk. Egyszer írunk, amikor a díjaudit elindul.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
         } else { msg.textContent = (r.data && r.data.error) || 'Hiba történt. Kérjük, próbálja újra.'; }
       })

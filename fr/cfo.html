@@ -787,7 +787,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <div class="price"><span data-m>9 € <small>/ mois</small></span><span data-y hidden>90 € <small>/ an</small></span></div>
         <p class="for"><span data-m>Ou 90&nbsp;€ par an, deux mois offerts.</span><span data-y hidden>Soit 7,50&nbsp;€ par mois, facturés annuellement.</span></p>
         <ul><li>Audit des frais à partir de votre export</li><li>Verdicts et rapports complets illimités</li><li>Vos décisions dans le temps, y compris la trésorerie d'entreprise</li><li>Alertes frais et LTV de prêt</li><li>Rapport fiscal pour 13 pays de l'UE et kit de succession</li><li>Interrogez votre CFO, sans limite</li></ul>
-        <button class="btn btn-primary only-audit" type="button" data-run>Commencer par l'audit gratuit</button>
+        <button class="btn btn-primary only-audit" type="button" data-run>Commencer par l'audit des frais</button>
         <form class="wait wait-plan" id="cfoWaitForm" data-source="cfo_plan" novalidate>
           <input type="email" name="email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email" required>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -803,7 +803,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <div class="assure-row">
         <span class="ic ic-green"><b>Remboursement sous 30 jours</b>Sans question ni formulaire.</span>
         <span class="ic ic-muted"><b>Résiliation en un clic</b>Depuis la page de votre compte.</span>
-        <span class="ic ic-orange"><b>Paiement par Lightning ou carte</b>Aucune carte requise pour l'audit gratuit.</span>
+        <span class="ic ic-orange"><b>Paiement par Lightning ou carte</b>Aucune carte requise pour l'audit des frais.</span>
         <span class="ic ic-blue"><b>Droit de rétractation de 14 jours</b>Votre droit légal de rétractation s'applique en plus.</span>
       </div>
       <p class="terms-fine">Prix TTC le cas échéant. Même prix dans les 10 langues.</p>
@@ -854,7 +854,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <h2>Voici tout ce qui quitte votre appareil. <span>Ouvrez l'onglet Réseau et vérifiez.</span></h2>
     </div>
     <div class="proof">
-<pre class="code code-free" aria-label="Envoi lors de l'audit gratuit"><span class="c">// audit gratuit</span>
+<pre class="code code-free" aria-label="Envoi lors de l'audit des frais"><span class="c">// audit gratuit</span>
 <span class="c ok">// rien. 0 octet.</span></pre>
 <pre class="code code-paid" aria-label="Envoi avec un compte payant"><span class="c">// compte CFO · pour que vos alertes continuent</span>
 {
@@ -903,7 +903,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       <details><summary>Comment obtenir mon export Kraken&nbsp;?</summary><p>Sur kraken.com, cliquez sur l'icône de votre profil en haut à droite et choisissez <b>Documents</b>. Sous Exports, cliquez sur <b>Create export</b>, choisissez <b>Ledgers</b>, indiquez une date de début et de fin, sélectionnez <b>CSV</b> et cliquez sur Generate. Le fichier apparaît dans la même liste lorsqu'il est prêt. Cela peut prendre quelques minutes ou plusieurs jours, et Kraken ne vous envoie pas d'e-mail. Choisissez Ledgers plutôt que Trades&nbsp;: il inclut tous les frais et vos achats instantanés. Si vous utilisez Kraken Pro et ne voyez pas Documents, regardez sous Statements. <a href="https://support.kraken.com/articles/208267878-how-to-export-your-account-history" rel="noopener" target="_blank">Le guide de Kraken</a></p></details>
       <details><summary>Et depuis Bybit EU ou 21bitcoin&nbsp;?</summary><p>Bybit EU&nbsp;: exportez votre historique de trading spot depuis la section Orders. Les périodes plus longues peuvent nécessiter plusieurs fichiers. 21bitcoin&nbsp;: dans l'application, ouvrez votre activité et utilisez l'icône de téléchargement pour exporter toutes les transactions. Les plateformes déplacent parfois leurs menus&nbsp;; consultez leurs pages d'aide si une étape semble différente.</p></details>
       <details><summary>Mon fichier est-il envoyé quelque part&nbsp;?</summary><p>Non. L'audit lit le fichier dans votre navigateur et n'envoie rien à Virtuse. Vous pouvez le vérifier vous-même dans l'onglet Réseau de votre navigateur.</p></details>
-      <details><summary>Ai-je besoin d'un compte ou d'une carte&nbsp;?</summary><p>Non. L'audit gratuit ne demande ni l'un ni l'autre. Vous ne créez un compte que si vous choisissez ensuite Virtuse CFO.</p></details>
+      <details><summary>Ai-je besoin d'un compte ou d'une carte&nbsp;?</summary><p>Non. L'audit des frais ne demande ni l'un ni l'autre. Vous ne créez un compte que si vous choisissez ensuite Virtuse CFO.</p></details>
       <details><summary>Quelles plateformes sont prises en charge au lancement&nbsp;?</summary><p>Kraken, Bybit EU et 21bitcoin. D'autres plateformes suivront après le lancement.</p></details>
       <details><summary>Est-ce un conseil en investissement ou un conseil fiscal&nbsp;?</summary><p>Non. L'audit montre ce que vous avez payé et les frais publiés de partenaires agréés. Ce que vous en faites relève de votre décision. Pour les questions fiscales, adressez-vous à un conseiller fiscal.</p></details>
     </div>
@@ -1123,7 +1123,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'fr' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Vous êtes sur la liste. Nous vous écrirons une seule fois, à l'ouverture de Verdict et de l'audit gratuit.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Vous êtes sur la liste. Nous vous écrirons une seule fois, à l'ouverture de Verdict et de l'audit des frais.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Une erreur s\'est produite. Veuillez réessayer.'; }
       })
