@@ -67,7 +67,7 @@
     ru: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 57, lang: 'ru',
       listPage: 'ru/blog.html', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: true,
-      desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Кастоди', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
+      desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Хранение', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
         navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные о Биткоине', navHub: 'Virtuse', navGet: 'Получить Brief',
         crumbList: 'Блог', crumbStories: 'Статьи', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
