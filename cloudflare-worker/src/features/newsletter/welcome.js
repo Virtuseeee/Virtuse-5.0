@@ -25,11 +25,12 @@ export const WELCOME_LANGS = Object.keys(WELCOME_EMAILS);
 
 // The language a Brief sign-up is recorded and welcomed in. A missing,
 // non-string or unknown value (a bot, or a page that does not send it) is 'en'.
-// Note: `in` also matches Object.prototype keys; see the README's known issues.
+// Own keys only: `in` would also match Object.prototype keys ('toString',
+// 'constructor', ...), which have no template.
 export function welcomeLang(raw) {
-  return typeof raw === 'string' && raw in WELCOME_EMAILS ? raw : 'en';
+  return typeof raw === 'string' && Object.hasOwn(WELCOME_EMAILS, raw) ? raw : 'en';
 }
 
 export function welcomeEmailFor(lang) {
-  return WELCOME_EMAILS[lang] || WELCOME_EMAILS.en;
+  return Object.hasOwn(WELCOME_EMAILS, lang) ? WELCOME_EMAILS[lang] : WELCOME_EMAILS.en;
 }

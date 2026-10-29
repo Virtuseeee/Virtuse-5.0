@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-10-29, third round) — Worker: `lang` only matches own keys (branch `fix/worker-lang-own-keys`, PR; **not merged, not deployed**)
+
+- Fix for the one known issue left by the refactor: `welcomeLang` used `raw in WELCOME_EMAILS`, so `POST /subscribe` with `lang: "toString"` / `"constructor"` / any `Object.prototype` key created a Resend contact with that `lang`, then crashed building the welcome email (502, no email). Now `Object.hasOwn` in `welcomeLang`, `welcomeEmailFor` and `segmentFor` (`features/newsletter/welcome.js`, `segments.js`): such values are an English sign-up in the default segment. No other behaviour changes; `en`/`sk`/unknown/non-string unchanged.
+- New `test/newsletter.test.mjs` (6 tests: toString/constructor/hasOwnProperty/__proto__ → 200, contact `lang: en` in `RESEND_SEGMENT_ID`, English welcome email; `sk` still Slovak segment + email; unit checks). Tests 149 → 155, all pass; the 5 bug tests fail against the old `welcome.js`. README "Known issues" section removed (it held only this item).
+- After merge: the user runs `deploy_worker.sh`, then check `GET /version` = the merge commit.
 ## Session status (2026-10-29) — `.htaccess`: 1-year `immutable` cache for `/vendor/` and `?v=` assets (**live on production** — user uploaded the file via sftp 2026-10-29; live `curl -sI` checked)
 
 - One rule added after the `concierge-assets` line in the mod_headers block of public_html/.htaccess: `Header set Cache-Control "public, max-age=31536000, immutable" "expr=(%{REQUEST_URI} =~ m#^/vendor/# || %{QUERY_STRING} =~ /^v=/) && %{CONTENT_TYPE} !~ m#^(text/html|application/json)#"`. The live file downloaded first was identical to the repo copy; the upload = that file + 6 lines.
@@ -18,7 +23,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Proof: a characterization harness (108 scenarios, every route incl. error paths, recording fetch/KV/logs, frozen clock) gives byte-identical output for old vs new source **and** old vs new `wrangler --dry-run` bundles. Tests 133 → 149 (new `architecture.test.mjs` dependency rules, `kernel.test.mjs`), all pass. Harness lives in the session scratchpad only.
 - After the merge, the new CI freshness check failed on main: `src/generated/tax-facts.js` was stale since the SK proofreading round (`1d727ff9` changed the HU exemption wording in `meta.json` taxSk). Regenerated and pushed (`03368268`), CI green. Live checks after deploy: 13 routes answer as before (CORS, origin gate, honeypots, bad payloads, unsubscribe token, Pulse GET/PUT auth, WP proxy allow/deny, 404).
 - **Rule from now on:** after any change to `seo-build/data/seo-data.json`, `meta.json`, `footer-operator.json`, `email/waitlist-strings.json` or `data/partner-checklists.json`, run `node build.mjs` in `cloudflare-worker/` and commit `src/generated/` with it (CI fails otherwise).
-- Found, kept as is (README "Known issues"): `POST /subscribe` with `lang: "toString"` creates the contact, then 502 (prototype key via `in`); fix = `Object.hasOwn` in `features/newsletter/welcome.js`.
+- Found, kept as is in the refactor: `POST /subscribe` with `lang: "toString"` created the contact, then 502 (prototype key via `in`). **Fixed separately** on branch `fix/worker-lang-own-keys` (see the session status above).
 
 ## Session status (2026-10-29) — Runtime performance pass, sitewide (branch `perf/sitewide-runtime`, PR; **not merged, not deployed**)
 
