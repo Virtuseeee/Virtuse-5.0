@@ -88,7 +88,7 @@ export default {
    "note": "Documented acquisition costs are deductible, so keep every invoice.",
    "sk": {
     "gainTax": "15 % daň z kapitálových výnosov",
-    "exemption": "Bez oslobodenia podľa doby držby; malé transakcie do 10 % minimálnej mzdy sú bez dane (spolu najviac jedna minimálna mzda ročne)"
+    "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)"
    },
    "ru": {
     "gainTax": "Налог 15% на прирост капитала",
