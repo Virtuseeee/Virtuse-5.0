@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <script src="/partner-click.js" defer></script>
-<title>Verdict: lo que ha pasado por alto | Virtuse</title>
+<title>Virtuse CFO: comisiones, préstamos e impuestos | Virtuse</title>
 <meta name="description" content="Verdict puntúa gratis si su decisión sobre Bitcoin está completa. Virtuse CFO sigue comisiones, préstamos e impuestos.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch): remove noindex, add to sitemap + hreflang (docs/LAUNCH-CFO.md) -->
@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://virtuse.com/es/cfo.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Verdict: lo que ha pasado por alto | Virtuse">
+<meta property="og:title" content="Virtuse CFO: comisiones, préstamos e impuestos | Virtuse">
 <meta property="og:description" content="Verdict puntúa gratis si su decisión sobre Bitcoin está completa. Virtuse CFO sigue comisiones, préstamos e impuestos.">
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="https://virtuse.com/es/cfo.html">
@@ -723,7 +723,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn btn-primary" type="submit">Apuntarme</button>
         <div class="wait-msg" id="waitMsg" aria-live="polite"></div>
-        <p class="wait-note">Un solo correo, cuando abran Verdict y la auditoría gratuita de comisiones. Nada más. Puede darse de baja en cualquier momento desde ese correo. <a href="privacy-policy.html" style="color:inherit">Privacidad</a></p>
+        <p class="wait-note">Un solo correo, cuando abran la auditoría de comisiones y Virtuse CFO. Nada más. Puede darse de baja en cualquier momento desde ese correo. <a href="privacy-policy.html" style="color:inherit">Privacidad</a></p>
       </form>
       <p class="cfo-vlink"><a href="/verdict.html">Empiece con un Verdict gratuito →</a></p>
     </div>
@@ -1126,7 +1126,7 @@ document.querySelectorAll('form.wait').forEach(function (form) {
     Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: source, lang: 'es' }); })
       .then(function (r) {
         if (r.ok) {
-          form.reset(); msg.textContent = ok ? ok.textContent : "Ya está en la lista. Le escribiremos una sola vez, cuando abran Verdict y la auditoría gratuita.";
+          form.reset(); msg.textContent = ok ? ok.textContent : "Ya está en la lista. Le escribiremos una sola vez, cuando abran la auditoría de comisiones y Virtuse CFO.";
           (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: source === 'cfo_plan' ? 'cfo_plan_waitlist' : 'cfo_waitlist' });
         } else { msg.textContent = (r.data && r.data.error) || 'Algo salió mal. Inténtelo de nuevo.'; }
       })
