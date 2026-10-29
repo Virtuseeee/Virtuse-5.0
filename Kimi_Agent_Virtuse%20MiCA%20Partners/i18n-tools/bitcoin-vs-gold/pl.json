@@ -72,7 +72,7 @@
   "faq_h2_a": "Pytania",
   "faq_h2_b": "i odpowiedzi",
   "q1": "Czy mogę kupić złoto na Virtuse?",
-  "a1": "Nie. Virtuse to hub tylko dla Bitcoina, nie giełda, i nie sprzedaje złota, srebra, surowców ani żadnych innych aktywów. Ta strona jedynie porównuje zwroty. Jeśli chcesz kupić Bitcoina, strona <a href=\"buy-bitcoin.html\">Kup Bitcoin</a> zawiera listę sprawdzonych partnerów.",
+  "a1": "Nie. Virtuse to hub tylko dla Bitcoina, nie giełda, i nie sprzedaje złota, srebra, surowców ani żadnych innych aktywów. Ta strona jedynie porównuje zwroty. Kto chce kupić Bitcoina, znajdzie listę sprawdzonych partnerów na stronie <a href=\"buy-bitcoin.html\">Kup Bitcoin</a>.",
   "q2": "Skąd pochodzą dane?",
   "a2": "Ceny pochodzą z Yahoo Finance: ETF GLD, SLV, USO, CPER, PPLT i DBC dla zwrotów, kontrakty futures o najbliższym terminie GC=F, SI=F, CL=F, HG=F i PL=F dla cen i stosunków oraz BTC-USD dla Bitcoina. Skrypt przebudowuje zbiór danych codziennie po zamknięciu rynku w USA; jeśli któreś źródło zawiedzie, strona zachowuje ostatnie poprawne dane i pokazuje ich datę.",
   "q3": "Dlaczego ETF dla zwrotów, a futures dla stosunku?",
@@ -100,5 +100,5 @@
   "rel_retire_p": "Czy Bitcoin wystarczy na emeryturę?",
   "rel_buy_t": "Kup Bitcoin",
   "rel_buy_p": "Sprawdzeni partnerzy, opłaty od 0%.",
-  "disclaimer": "Dane wyłącznie informacyjne, mogą być opóźnione. To nie jest porada inwestycyjna. Virtuse to hub tylko dla Bitcoina, nie giełda, i nigdy nie przechowuje Twoich kluczy ani środków."
+  "disclaimer": "Dane wyłącznie informacyjne, mogą być opóźnione. To nie jest porada inwestycyjna. Virtuse to hub tylko dla Bitcoina, nie giełda, i nigdy nie przechowuje kluczy ani środków klientów."
 }

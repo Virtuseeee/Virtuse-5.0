@@ -825,14 +825,14 @@
     },
     "hu": {
       "gainTax": "15% podatku od zysków kapitałowych",
-      "exemption": "Brak zwolnienia za okres posiadania; drobne transakcje do 10% płacy minimalnej każda są zwolnione (łącznie do jednej płacy minimalnej rocznie)",
+      "exemption": "Brak zwolnienia za okres posiadania; drobne transakcje, każda do 10% płacy minimalnej, są zwolnione (łącznie do jednej płacy minimalnej rocznie)",
       "filing": "Roczne zeznanie w podatku dochodowym od osób fizycznych",
       "note": "Udokumentowane koszty nabycia można odliczyć: warto zachować każdą fakturę."
     },
     "si": {
       "gainTax": "Brak podatku od prywatnych zysków ze zbycia (handel w ramach działalności jest opodatkowany)",
       "exemption": "Prywatne zyski są wolne od podatku",
-      "filing": "Brak dla prywatnych zysków; dochód z kopania wymaga deklaracji zaliczki na podatek w ciągu 15 dni; dochód z działalności wykazuje się w zeznaniu z działalności",
+      "filing": "Nie dotyczy prywatnych zysków; dochód z kopania wymaga deklaracji zaliczki na podatek w ciągu 15 dni; dochód z działalności wykazuje się w zeznaniu z działalności",
       "note": "Kopanie jest opodatkowane jako inny dochód. Częsty handel może zostać uznany za działalność."
     },
     "hr": {

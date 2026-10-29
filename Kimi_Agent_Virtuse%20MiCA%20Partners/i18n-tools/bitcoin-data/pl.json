@@ -49,7 +49,7 @@
  "fees_equal": "Opłaty: {n} sat/vB dla wszystkich priorytetów",
  "n_links": "Powiązane:",
  "n_link_mining": "Partnerzy kopania",
- "n_link_fees": "Indeks opłat za Bitcoin",
+ "n_link_fees": "Indeks opłat za Bitcoina",
  "s_h2_a": "Podaż i halving.",
  "s_h2_b": "21 milionów według stałego harmonogramu.",
  "s_supply": "Podaż w obiegu",
