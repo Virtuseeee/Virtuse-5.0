@@ -64,17 +64,17 @@
       questions: [
         {
           label: 'Goal',
-          headline: "What's your main reason for being interested in crypto-assets?",
+          headline: "What's your main reason for being interested in Bitcoin?",
           options: [
             'Just want to learn / understand it',
             'Want to diversify beyond traditional assets',
             'Looking for long-term capital growth',
-            'Interested in passive income (staking, etc.)'
+            'Interested in passive income (mining, etc.)'
           ]
         },
         {
           label: 'Experience',
-          headline: 'What’s your current experience with crypto-assets?',
+          headline: "What's your current experience with Bitcoin?",
           options: [
             "None, I'm a complete beginner",
             "Basic — I own some but don't understand the details",

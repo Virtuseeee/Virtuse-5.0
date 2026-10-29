@@ -276,7 +276,7 @@ const de: Record<string, string> = {
   "Are your keys geographically separated?": "Sind Ihre Schlüssel räumlich getrennt?",
   "Never all backups in one home. Fire, theft or flood should never be able to destroy access.": "Nie alle Backups an einem Ort. Feuer, Diebstahl oder Hochwasser dürfen den Zugang niemals zerstören können.",
   "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.": "Bringen Sie einen Schlüssel oder ein Backup an einen zweiten Ort: Bankschließfach, vertrauenswürdige Familie oder ein professioneller Schlüsselverwahrer.",
-  "Does at least one heir know your bitcoin exists and where to start?": "Weiß mindestens ein Erbe, dass Ihre Bitcoin existieren und wo er ansetzen muss?",
+  "Does at least one heir know your Bitcoin exists and where to start?": "Weiß mindestens ein Erbe, dass Ihre Bitcoin existieren und wo er ansetzen muss?",
   "Bitcoin discovered years late, or never, is the most common inheritance failure.": "Bitcoin, die erst Jahre später oder nie gefunden werden, sind das häufigste Scheitern im Erbfall.",
   "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.": "Erzählen Sie einer Vertrauensperson, dass es eine Übersicht gibt und an wen sie sich wenden soll. Alle Details stehen nur im Letter of Instruction.",
   "Do you use multisig (2-of-3) instead of a single seed phrase?": "Nutzen Sie Multisig (2-von-3) statt einer einzelnen Seed-Phrase?",

@@ -15,7 +15,7 @@
   "s1_t": "Enter your numbers",
   "s1_p": "The cash you need, the Bitcoin you hold, the loan terms and your tax country.",
   "s2_t": "Compare both paths",
-  "s2_p": "Selling costs tax now. Borrowing costs interest and can be liquidated if the price falls.",
+  "s2_p": "Selling costs tax now. Borrowing costs interest, and the collateral can be liquidated if the price falls.",
   "s3_t": "Check the scenarios",
   "s3_p": "Five price paths show what is left of your Bitcoin either way. Both columns assume you spend the cash.",
   "faq_h2_a": "Questions",

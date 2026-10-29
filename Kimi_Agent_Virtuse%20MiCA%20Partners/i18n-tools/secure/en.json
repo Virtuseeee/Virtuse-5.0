@@ -32,7 +32,7 @@
  "s3_p": "Receive a small amount, check the address on the device screen, and practise a withdrawal before you move more.",
  "s4_t": "Optional: passphrase or multisig",
  "s4_p": "Add a passphrase, or a 2-of-3 multisig with a second device. Blockstream Jade supports native multisig.",
- "p_h2_a": "All 3 devices.",
+ "p_h2_a": "All 3 hardware wallets, plus a Bitcoin node.",
  "p_h2_b": "Sorted by published price, same as the table above.",
  "details": "Details",
  "b_h2_a": "Virtuse Brief.",

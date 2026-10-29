@@ -6,7 +6,7 @@
     "home": "Home",
     "crumbEcosystem": "Ecosystem",
     "howWePick": "How we pick",
-    "howWePickText": "Every entry is chosen by hand and must be bitcoin-only, relevant to Europe, live and honest. We write each verdict ourselves. Paid placements are always labelled \"Sponsored\" and never change our verdict.",
+    "howWePickText": "Every entry is chosen by hand and must be bitcoin-only, relevant to Europe, live and honest. We write each verdict ourselves. Paid placements are always labelled \"Sponsored\" or \"Featured\" and never change our verdict.",
     "criteriaLink": "Read our listing criteria",
     "related": "Related on Virtuse",
     "reviewed": "Last reviewed:",
@@ -50,11 +50,11 @@
       },
       {
         "t": "Relevant to Europe",
-        "d": "Bitcoin-only projects that serve users in the EU/EEA or Switzerland, live, maintained and honest."
+        "d": "Bitcoin-only projects that serve users in the EU/EEA or Switzerland and are live, maintained and honest."
       },
       {
         "t": "Sponsors labelled",
-        "d": "Paid placements are always marked \"Sponsored\" and never change our criteria or our verdict."
+        "d": "Paid placements are always marked \"Sponsored\" or \"Featured\" and never change our criteria or our verdict."
       }
     ],
     "exploreSub": "Every category reviewed by hand.",

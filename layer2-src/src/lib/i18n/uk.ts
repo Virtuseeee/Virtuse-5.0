@@ -276,7 +276,7 @@ const uk: Record<string, string> = {
   "Are your keys geographically separated?": "Чи розділені ваші ключі географічно?",
   "Never all backups in one home. Fire, theft or flood should never be able to destroy access.": "Ніколи не тримайте всі резервні копії в одному домі. Пожежа, крадіжка чи повінь не повинні позбавити доступу.",
   "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.": "Перенесіть один ключ або копію в друге місце: банківську скриньку, до довіреного родича чи професійного зберігача ключів.",
-  "Does at least one heir know your bitcoin exists and where to start?": "Чи знає хоча б один спадкоємець, що ваш Біткоїн існує і з чого почати?",
+  "Does at least one heir know your Bitcoin exists and where to start?": "Чи знає хоча б один спадкоємець, що ваш Біткоїн існує і з чого почати?",
   "Bitcoin discovered years late, or never, is the most common inheritance failure.": "Біткоїн, знайдений через роки або ніколи: найпоширеніша невдача при спадкуванні.",
   "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.": "Скажіть одній довіреній людині, що план існує і до кого звернутися. Повні подробиці лише в листі з інструкціями.",
   "Do you use multisig (2-of-3) instead of a single seed phrase?": "Чи використовуєте ви мультипідпис (2 з 3) замість однієї сід-фрази?",

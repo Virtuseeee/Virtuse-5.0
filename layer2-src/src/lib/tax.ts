@@ -176,7 +176,7 @@ export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
   },
   {
     id: 'heir-aware',
-    question: { en: 'Does at least one heir know your bitcoin exists and where to start?', sk: 'Vie aspoň jeden dedič, že váš bitcoin existuje a kde začať?', cs: 'Ví alespoň jeden dědic, že váš bitcoin existuje a kde začít?' },
+    question: { en: 'Does at least one heir know your Bitcoin exists and where to start?', sk: 'Vie aspoň jeden dedič, že váš bitcoin existuje a kde začať?', cs: 'Ví alespoň jeden dědic, že váš bitcoin existuje a kde začít?' },
     detail: { en: 'Bitcoin discovered years late, or never, is the most common inheritance failure.', sk: 'Bitcoin objavený o roky neskôr, alebo vôbec, je najčastejšie zlyhanie dedičstva.', cs: 'Bitcoin, který dědicové najdou až po letech nebo vůbec ne, je nejčastějším selháním při dědění.' },
     points: 15,
     action: { en: 'Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.', sk: 'Povedzte jednej dôveryhodnej osobe, že prehľad existuje a koho kontaktovať. Všetky detaily len v liste s pokynmi.', cs: 'Řekněte jedné důvěryhodné osobě, že přehled existuje a koho kontaktovat. Všechny detaily jen v dopise s pokyny.' },

@@ -25,7 +25,7 @@
         errTitle: 'Story not found', errText: 'This story may have been moved or unpublished. Browse the full archive instead.', errCta: 'All stories'
       },
       services: {
-        mining: ['Mine Bitcoin with vetted partners', 'Hosting, cloud and hardware partners compared on cost and payout.', 'Compare mining partners'],
+        mining: ['Mine Bitcoin with vetted partners', 'Hosting and home-mining hardware partners compared on cost and payout.', 'Compare mining partners'],
         treasury: ['Bitcoin for your balance sheet', 'Custody, execution and reporting partners for companies and family offices.', 'See treasury partners'],
         custody: ['Hold your own keys', 'Hardware wallets and multi-sig tooling from vetted partners.', 'Compare custody options'],
         policy: ['Get your Bitcoin taxes right', 'Country-specific reports from tax software partners.', 'See tax partners'],

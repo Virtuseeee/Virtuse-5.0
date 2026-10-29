@@ -1972,7 +1972,7 @@
               "ol": [
                 "Export your full trade history from every exchange you have used, including closed accounts.",
                 "Note the purchase date of every coin: the two-year exemption depends on it.",
-                "File JOPPD and pay the tax on 2026 gains by 1 March 2027, including for exempt sales.",
+                "File JOPPD (also for exempt sales) and pay the tax on 2026 gains by 1 March 2027.",
                 "If you did not report gains in earlier years, talk to a tax advisor about correcting them; the assessment period is six years.",
                 "When you withdraw to your own wallet, keep proof that the address belongs to you."
               ]
@@ -2101,7 +2101,7 @@
                 ]
               },
               "p": [
-                "Most of the foreign exchange data arrives after the filing deadline, so a missing gain can surface months later."
+                "Most of the data from foreign exchanges arrives after the filing deadline, so a missing gain can surface months later."
               ]
             },
             {

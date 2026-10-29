@@ -627,7 +627,7 @@
         {
           "name": "Mullvad VPN",
           "url": "https://mullvad.net",
-          "verdict": "A VPN subscription you can pay in bitcoin without giving an email address.",
+          "verdict": "A VPN subscription you can pay for in bitcoin without giving an email address.",
           "tags": [
             "Online service",
             "Sweden"
