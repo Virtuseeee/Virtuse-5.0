@@ -432,7 +432,7 @@
     "ro": {
       "gainTax": "16 % Einkommensteuer auf Krypto-Gewinne (bis 2025: 10 %)",
       "exemption": "Keine Haltedauer-Befreiung",
-      "filing": "Jährliche Erklärung (Einkünfte aus sonstigen Quellen)",
+      "filing": "Jährliche Steuererklärung (Einkünfte aus sonstigen Quellen)",
       "note": "Der Satz stieg für Gewinne ab 2026 von 10 % auf 16 %. Gewinne unter 200 Lei je Transaktion sind bis 600 Lei im Jahr steuerfrei."
     },
     "bg": {
@@ -451,7 +451,7 @@
     "fr": {
       "gainTax": "31,4 % Pauschalsteuer (PFU: 12,8 % Einkommensteuer + 18,6 % Sozialabgaben, 2026)",
       "exemption": "Keine Haltedauer-Befreiung; Verkäufe bis insgesamt 305 € pro Jahr sind steuerfrei",
-      "filing": "Jährliche Erklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis",
+      "filing": "Jährliche Steuererklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis",
       "note": "Krypto-zu-Krypto-Tausch ist steuerfrei: besteuert werden nur Verkäufe gegen Euro, Waren oder Dienstleistungen."
     },
     "es": {

@@ -8,7 +8,7 @@
   "eyebrow": "Über Virtuse",
   "h1": "Ein unabhängiger Hub",
   "h1_or": "für Bitcoin-Services.",
-  "lead": "Virtuse vergleicht Bitcoin-Services von Partnern und verlinkt Sie zu ihnen. Sie kaufen, verwahren und leihen auf der Plattform des Partners, unter dessen Lizenz. Virtuse wird von Virtuse Wealth Management, a.s. betrieben.",
+  "lead": "Virtuse vergleicht Bitcoin-Services von Partnern und verlinkt Sie zu ihnen. Sie kaufen, verwahren und beleihen auf der Plattform des Partners, unter dessen Lizenz. Virtuse wird von Virtuse Wealth Management, a.s. betrieben.",
   "stat_founded_n": "2018",
   "stat_founded": "Gegründet",
   "stat_partners": "Partner, Stand {date}",
@@ -56,7 +56,7 @@
   "k1_t": "Lizenz oder Registrierung",
   "k1_p": "Welche Lizenz oder Registrierung der Partner besitzt und in welchem Register er eingetragen ist.",
   "k2_t": "Verwahrung und Auszahlungen",
-  "k2_p": "Ob Sie Ihre Bitcoin auf Ihre eigene Wallet auszahlen können und wer sie verwahrt, solange sie auf der Plattform liegen.",
+  "k2_p": "Ob Sie Ihre Bitcoin auf Ihr eigenes Wallet auszahlen können und wer sie verwahrt, solange sie auf der Plattform liegen.",
   "k3_t": "Erfahrung",
   "k3_p": "Wie lange der Partner tätig ist und was über seine Geschichte öffentlich bekannt ist.",
   "k4_t": "Gebühren",
@@ -94,6 +94,6 @@
   "x_bots_t": "Bots",
   "x_bots_p": "Automatisiertes Trading und DCA.",
   "cfo_label": "Virtuse CFO",
-  "cfo_text": "Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Pläne nach dem Start: 9 €/Monat oder 90 €/Jahr.",
+  "cfo_text": "Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Tarife nach dem Start: 9 €/Monat oder 90 €/Jahr.",
   "cfo_link": "Benachrichtigen Sie mich →"
 }

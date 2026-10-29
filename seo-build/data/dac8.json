@@ -179,7 +179,7 @@
           ],
           "boxText": "DAC8: Seit 2026 erfasst Ihre Börse Ihre Transaktionen für das Finanzamt.",
           "boxLink": "Was das Finanzamt sehen wird",
-          "cta": "Deutschland im Tax-Agent prüfen →",
+          "cta": "Deutschland im Tax Agent prüfen →",
           "related": [
             "Bitcoin-Steuern Deutschland",
             "Bitcoin verkaufen oder beleihen",
@@ -215,12 +215,12 @@
                   ],
                   [
                     "Übertragungen",
-                    "Auszahlungen von der Börse, auch auf Ihre eigene Wallet"
+                    "Auszahlungen von der Börse, auch auf Ihr eigenes Wallet"
                   ]
                 ]
               },
               "p": [
-                "Die Übertragung auf Ihre eigene Hardware-Wallet ist kein Verkauf und nicht steuerpflichtig, erscheint aber in der Meldung. Halten Sie fest, dass die Adresse Ihnen gehört."
+                "Die Übertragung auf Ihr eigenes Hardware-Wallet ist kein Verkauf und nicht steuerpflichtig, erscheint aber in der Meldung. Halten Sie fest, dass die Adresse Ihnen gehört."
               ]
             },
             {
@@ -274,7 +274,7 @@
                 "Ermitteln Sie die Haltedauer jedes Kaufs. Sie entscheidet, ob 0 % oder bis zu 45 % Steuer anfallen.",
                 "Nutzen Sie eine Steuersoftware, die einen deutschen Bericht für die Anlage SO erstellt.",
                 "Haben Sie frühere Gewinne nicht erklärt, sprechen Sie vor 2027 mit einem Steuerberater. Erkennen Sie einen Fehler, müssen Sie die Erklärung berichtigen (§ 153 AO); eine Selbstanzeige (§ 371 AO) schützt nur, bevor das Finanzamt die Lücke entdeckt.",
-                "Bewahren Sie bei Auszahlungen auf Ihre eigene Wallet einen Nachweis auf, dass die Adresse Ihnen gehört."
+                "Bewahren Sie bei Auszahlungen auf Ihr eigenes Wallet einen Nachweis auf, dass die Adresse Ihnen gehört."
               ]
             },
             {
@@ -291,8 +291,8 @@
               "a": "DAC8 erfasst alle Anbieter, die Kunden in der EU bedienen, auch solche mit Sitz außerhalb der EU. Viele Nicht-EU-Staaten führen den parallelen OECD-Standard (CARF) mit ähnlichem Zeitplan ein."
             },
             {
-              "q": "Wird meine Hardware-Wallet gemeldet?",
-              "a": "Nein. Der Bestand Ihrer Wallet wird nicht gemeldet, Übertragungen von der Börse auf die Wallet aber schon."
+              "q": "Wird mein Hardware-Wallet gemeldet?",
+              "a": "Nein. Der Bestand Ihres Wallets wird nicht gemeldet, Übertragungen von der Börse auf das Wallet aber schon."
             },
             {
               "q": "Muss ich Bitcoin versteuern, den ich nicht verkauft habe?",
@@ -1311,7 +1311,7 @@
           "title": "DAC8 in Österreich: Was Ihre Börse meldet (2026)",
           "description": "Seit 2026 erfassen Kryptobörsen die Geschäfte österreichischer Steuerpflichtiger nach dem Krypto-MPfG. Meldedaten, Fristen 2027 und der Satz von 27,5 %.",
           "h1": "Ihre Börse meldet Ihre Bitcoin-Geschäfte: DAC8 in Österreich",
-          "answer": "Seit 1. Jänner 2026 erfassen Kryptobörsen Identität, Steuernummer und Geschäfte österreichischer Steuerpflichtiger nach DAC8. Österreichische Anbieter melden die Daten für 2026 bis 31. Juli 2027. Gewinne aus Bitcoin, das nach Februar 2021 gekauft wurde, unterliegen 27,5 % – unabhängig von der Haltedauer; steuerfrei ist nur Altvermögen nach mehr als einem Jahr.",
+          "answer": "Seit 1. Jänner 2026 erfassen Kryptobörsen Identität, Steuernummer und Geschäfte österreichischer Steuerpflichtiger nach DAC8. Österreichische Anbieter melden die Daten für 2026 bis 31. Juli 2027. Gewinne aus Bitcoin, der nach Februar 2021 gekauft wurde, unterliegen 27,5 % – unabhängig von der Haltedauer; steuerfrei ist nur Altvermögen nach mehr als einem Jahr.",
           "crumbs": [
             "Startseite",
             "Bitcoin-Steuern",
@@ -1356,7 +1356,7 @@
                   ],
                   [
                     "Übertragungen",
-                    "Auszahlungen von der Börse, auch auf Ihre eigene Wallet"
+                    "Auszahlungen von der Börse, auch auf Ihr eigenes Wallet"
                   ]
                 ]
               },
@@ -1412,7 +1412,7 @@
                 "Trennen Sie Altvermögen (gekauft vor März 2021) von späteren Käufen; nur Altvermögen kann steuerfrei sein.",
                 "Erklären Sie Gewinne über ausländische Börsen in Ihrer Steuererklärung 2026.",
                 "Wenn Sie Gewinne früherer Jahre nicht erklärt haben, sprechen Sie mit einem Steuerberater über eine Selbstanzeige, bevor das Finanzamt tätig wird.",
-                "Bewahren Sie bei Auszahlungen auf Ihre eigene Wallet einen Nachweis auf, dass die Adresse Ihnen gehört."
+                "Bewahren Sie bei Auszahlungen auf Ihr eigenes Wallet einen Nachweis auf, dass die Adresse Ihnen gehört."
               ]
             },
             {
@@ -1426,15 +1426,15 @@
           "faq": [
             {
               "q": "Ist Bitcoin in Österreich nach einem Jahr steuerfrei?",
-              "a": "Nur wenn Sie es vor dem 1. März 2021 gekauft haben. Später gekauftes Bitcoin unterliegt bei jedem Verkauf 27,5 %."
+              "a": "Nur wenn Sie ihn vor dem 1. März 2021 gekauft haben. Später gekaufter Bitcoin unterliegt bei jedem Verkauf 27,5 %."
             },
             {
               "q": "Ist der Tausch von Bitcoin gegen einen anderen Kryptowert steuerpflichtig?",
               "a": "Nein. Der Tausch Krypto gegen Krypto ist in Österreich steuerneutral; die Anschaffungskosten gehen auf die neue Münze über."
             },
             {
-              "q": "Wird meine Hardware-Wallet gemeldet?",
-              "a": "Nein. Der Bestand Ihrer Wallet wird nicht gemeldet, Auszahlungen von der Börse dorthin schon."
+              "q": "Wird mein Hardware-Wallet gemeldet?",
+              "a": "Nein. Der Bestand Ihres Wallets wird nicht gemeldet, Auszahlungen von der Börse dorthin schon."
             },
             {
               "q": "Meine österreichische Börse hat KESt einbehalten. Muss ich noch etwas erklären?",

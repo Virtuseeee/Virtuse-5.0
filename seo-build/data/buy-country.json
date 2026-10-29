@@ -219,7 +219,7 @@
       "breadcrumb": "Bitcoin kaufen in Deutschland",
       "breadcrumbParent": "Bitcoin kaufen",
       "answer": [
-        "In Deutschland kaufen Sie Bitcoin bei einem in der EU regulierten Partner: Konto eröffnen, Identität bestätigen, Euro per SEPA überweisen, kaufen und den Bitcoin auf Ihre eigene Wallet auszahlen.",
+        "In Deutschland kaufen Sie Bitcoin bei einem in der EU regulierten Partner: Konto eröffnen, Identität bestätigen, Euro per SEPA überweisen, kaufen und den Bitcoin auf Ihr eigenes Wallet auszahlen.",
         "Die niedrigste veröffentlichte Gebühr bei 100 € im Monat hat {partner} ({method}): {pct}, {drag} im Jahr, Stand {asof}.",
         "Die niedrigsten Gesamtkosten inklusive Spread hat laut Gebührenindex {fi} ({fipct}).",
         "Der Kauf selbst löst in Deutschland keine Steuer aus; besteuert werden Verkauf und Tausch.",
@@ -256,8 +256,8 @@
           "Kaufen Sie einmalig oder richten Sie einen Sparplan (DCA) ein. Beim Sparplan vergleichen Sie die Jahresgebühren in der Tabelle oben."
         ],
         [
-          "Auszahlung auf die eigene Wallet",
-          "Übertragen Sie den Bitcoin auf Ihre eigene Wallet, deren Schlüssel nur Sie haben."
+          "Auszahlung auf das eigene Wallet",
+          "Übertragen Sie den Bitcoin auf Ihr eigenes Wallet, dessen Schlüssel nur Sie haben."
         ]
       ],
       "walletLink": "Hardware-Wallets und Verwahrung",
@@ -280,7 +280,7 @@
         ],
         [
           "Hält Virtuse meinen Bitcoin?",
-          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrer eigenen Wallet."
+          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrem eigenen Wallet."
         ]
       ],
       "related": [
@@ -319,7 +319,7 @@
       "breadcrumb": "Bitcoin kaufen in Österreich",
       "breadcrumbParent": "Bitcoin kaufen",
       "answer": [
-        "In Österreich kaufen Sie Bitcoin bei einem in der EU regulierten Partner: Konto eröffnen, Identität bestätigen, Euro per SEPA überweisen, kaufen und den Bitcoin auf Ihre eigene Wallet auszahlen.",
+        "In Österreich kaufen Sie Bitcoin bei einem in der EU regulierten Partner: Konto eröffnen, Identität bestätigen, Euro per SEPA überweisen, kaufen und den Bitcoin auf Ihr eigenes Wallet auszahlen.",
         "Die niedrigste veröffentlichte Gebühr bei 100 € im Monat hat {partner} ({method}): {pct}, {drag} im Jahr, Stand {asof}.",
         "Die niedrigsten Gesamtkosten inklusive Spread hat laut Gebührenindex {fi} ({fipct}).",
         "Der Kauf selbst löst in Österreich keine Steuer aus; besteuert wird der Verkauf gegen Euro, Krypto-zu-Krypto-Tausch ist steuerneutral.",
@@ -356,13 +356,13 @@
           "Kaufen Sie einmalig oder richten Sie einen Sparplan (DCA) ein. Beim Sparplan vergleichen Sie die Jahresgebühren in der Tabelle oben."
         ],
         [
-          "Auszahlung auf die eigene Wallet",
-          "Übertragen Sie den Bitcoin auf Ihre eigene Wallet, deren Schlüssel nur Sie haben."
+          "Auszahlung auf das eigene Wallet",
+          "Übertragen Sie den Bitcoin auf Ihr eigenes Wallet, dessen Schlüssel nur Sie haben."
         ]
       ],
       "walletLink": "Hardware-Wallets und Verwahrung",
       "taxHeading": "Steuern bei Kauf und Verkauf",
-      "taxIntro": "Der Kauf von Bitcoin gilt in dieser Übersicht nicht als steuerpflichtiger Vorgang. Steuer entsteht beim Verkauf gegen Euro; Krypto-zu-Krypto-Tausch ist steuerneutral:",
+      "taxIntro": "Der Kauf von Bitcoin gilt in dieser Übersicht nicht als steuerpflichtiger Vorgang. Krypto-zu-Krypto-Tausch ist steuerneutral. Steuer entsteht beim Verkauf gegen Euro:",
       "taxGuideLink": "Bitcoin-Steuern in Österreich",
       "faqHeading": "FAQ",
       "faqs": [
@@ -380,7 +380,7 @@
         ],
         [
           "Hält Virtuse meinen Bitcoin?",
-          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrer eigenen Wallet."
+          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrem eigenen Wallet."
         ]
       ],
       "related": [

@@ -94,7 +94,7 @@ T = {
   'stacking': ("Stacking Strategist – DCA-Plan und Gebühren | Virtuse",
    "Legen Sie Ihren Bitcoin-Kaufrhythmus fest, sehen Sie die langfristige DCA-Projektion und vergleichen Sie die Gebühren der Partner pro Kauf.",
    "Stacking Strategist: Bitcoin-DCA planen und Gebühren vergleichen",
-   ["Wählen Sie Ihren Betrag und ob Sie wöchentlich oder monatlich kaufen, und sehen Sie die langfristige Projektion Ihres Plans. Die Gebührentabelle vergleicht die Wege über die Partner und zeigt, wie viel Bitcoin pro 1.000 € tatsächlich in Ihrer Wallet ankommt.",
+   ["Wählen Sie Ihren Betrag und ob Sie wöchentlich oder monatlich kaufen, und sehen Sie die langfristige Projektion Ihres Plans. Die Gebührentabelle vergleicht die Wege über die Partner und zeigt, wie viel Bitcoin pro 1.000 € tatsächlich in Ihrem Wallet ankommt.",
     "Projektionen sind mathematische Szenarien, keine Versprechen. Keine Finanzberatung."],
    [("Was ist DCA?", "Durchschnittskosteneffekt (Dollar-Cost-Averaging): Sie kaufen in regelmäßigen Abständen Bitcoin für einen festen Betrag, statt den richtigen Zeitpunkt abzupassen."),
     ("Welche Gebühren werden verglichen?", "Partnergebühren mit Stand Q4 2026, zum Beispiel 0 % beim Auto-Invest-Sparplan von 21bitcoin, ab 0,25 % bei Bybit EU und ab 0,8 % bei Kraken. Aktuelle Preise finden Sie auf der Website des Partners."),

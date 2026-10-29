@@ -708,7 +708,7 @@ function taxFaqsDe(c) {
     },
     {
       q: 'Verwahrt Virtuse meinen Bitcoin oder übernimmt Virtuse die Steuererklärung?',
-      a: `Nein. Virtuse verwahrt niemals Ihre Schlüssel. KYC und Onboarding erfolgen beim Partner. Der Tax-Agent vergleicht die ${N}-Länder-Übersicht; die Steuererklärung erstellt ein qualifizierter Steuerberater.`
+      a: `Nein. Virtuse verwahrt niemals Ihre Schlüssel. KYC und Onboarding erfolgen beim Partner. Im Tax Agent vergleichen Sie die ${N}-Länder-Übersicht; die Steuererklärung reichen Sie mit einem qualifizierten Steuerberater ein.`
     }
   ];
 }
@@ -932,12 +932,12 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Welche Länder umfasst dieser Überblick?', a: `${N} EU-Länder: ${COUNTRIES.map((c) => nameDe(c.id)).join(', ')}. ${guideText('de', 'hubFaq')}` },
     { q: 'Ist das Steuerberatung?', a: `Nein. ${guideLine('de')}` },
     { q: 'Meldet Virtuse Bestände an Finanzämter?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel und führt keine Transaktionshistorie.' },
-    { q: 'Wo prüfe ich neben der Steuer auch die Nachlassplanung?', a: `Im Tax- & Inheritance-Agent (Live-Modul) mit denselben ${N} Ländern plus Multisig-Check.` }
+    { q: 'Wo prüfe ich neben der Steuer auch die Nachlassplanung?', a: `Im Tax & Inheritance Agent mit denselben ${N} Ländern plus Multisig-Check.` }
   ];
   const answer = finalizeAnswer([
     `Dieser Hub vergleicht die Bitcoin-Besteuerung in ${N} EU-Ländern, Stand ${asOfDe}.`,
     guideText('de', 'hubSrc'),
-    'Deutschland: Spekulationsfrist 1 Jahr. Kroatien: 2 Jahre. Tschechien: 3-Jahres-Zeittest. Slowenien: private Gewinne steuerfrei. Niederlande: Box 3 statt Kapitalertragsteuer.',
+    'Deutschland: Spekulationsfrist 1 Jahr. Kroatien: 2 Jahre. Tschechien: steuerfrei nach 3 Jahren Haltedauer. Slowenien: private Gewinne steuerfrei. Niederlande: Box 3 statt Kapitalertragsteuer.',
     guideLine('de')
   ], 'de', 'guide');
   pushPage({
@@ -956,7 +956,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' },
       { href: toRoot(relFile, 'de/bitcoin-gebuehrenindex/'), label: 'Bitcoin-Gebührenindex' }
     ],
-    moduleCta: { href: toRoot(relFile, 'de/' + TAX_AGENT), label: 'Tax-Agent öffnen →' },
+    moduleCta: { href: toRoot(relFile, 'de/' + TAX_AGENT), label: 'Tax Agent öffnen →' },
     schemas: [faqLd(faqs)],
     bodyHtml: `
 <p>Pro Land: Gewinnbesteuerung, etwaige Haltedauer-Befreiung und Steuererklärung, Stand ${esc(asOfDe)}.</p>
@@ -1036,7 +1036,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(deRel, nbs[0] ? `de/bitcoin-steuern/${slugDe(nbs[0].id)}/` : 'de/bitcoin-steuern/'), label: nbs[0] ? `Steuern ${inDe(nbs[0].id)}` : 'Alle Länder' },
       ...buyCountryLink('de', c.id, deRel)
     ],
-    moduleCta: { href: toRoot(deRel, `de/${TAX_AGENT}?country=${c.id}`), label: `${nameDe(c.id)} im Tax-Agent prüfen →` },
+    moduleCta: { href: toRoot(deRel, `de/${TAX_AGENT}?country=${c.id}`), label: `${nameDe(c.id)} im Tax Agent prüfen →` },
     schemas: [faqLd(faqsDe), sourcesLd(c.id, deRel, 'de')],
     bodyHtml: `
 <p>${esc(c.flag)} ${esc(guideText('de', 'intro'))}</p>
@@ -1049,7 +1049,7 @@ ${tableHtml(['Feld', 'Stand ' + asOfDe], [
   ['Hinweis', esc(d.note)]
 ])}
 ${dac8Box(c.id, 'de', deRel)}<h2>Wann entsteht typischerweise Steuer?</h2>
-<p>${esc(d.note)}</p>
+<p>${esc(d.note)} Der Kauf von Bitcoin gilt in dieser Übersicht nicht als Veräußerung; prüfen Sie die lokalen Regeln, bevor Sie Bitcoin ausgeben, tauschen, verschenken oder verleihen.</p>
 <h2>Nachbarländer</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(deRel, `de/bitcoin-steuern/${slugDe(n.id)}/`))}">${esc(nameDe(n.id))}</a></li>`).join('')}</ul>
 ${faqHtml(faqsDe, 'FAQ')}
@@ -1215,13 +1215,13 @@ ${faqHtml(faqs, 'FAQ')}
   const faqs = [
     { q: 'Prognostiziert dieser Rechner den Bitcoin-Preis?', a: 'Nein. Er isoliert die Partnergebühren laut Gebührenplan. Keine Renditeannahme.' },
     { q: `Was ist der Standardplan Stand ${feeAsOfDe}?`, a: '500 € Einmalbetrag plus 100 €/Monat über 12 Monate. Sortierung nach Gebührenlast im ersten Jahr.' },
-    { q: 'Welche Route hat in diesem Plan die niedrigste veröffentlichte Gebühr?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin Fee Index: ${FI_TOP.name} (${formatPctDe(FI_TOP.pct)}) bei 100 €/Monat.` },
+    { q: 'Welche Route hat in diesem Plan die niedrigste veröffentlichte Gebühr?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin-Gebührenindex: ${FI_TOP.name} (${formatPctDe(FI_TOP.pct)}) bei 100 €/Monat.` },
     { q: 'Ist das eine Anlageberatung?', a: 'Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.' }
   ];
   const answer = finalizeAnswer([
     `Stand ${feeAsOfDe} liegt im gebührenbasierten DCA-Beispiel (500 € plus 100 €/Monat über 12 Monate) ${win.partner} nach veröffentlichter Gebühr auf Platz 1.`,
     `Variable Gebühr ${formatPctDe(win.pct)}. Keine Kursprognose.`,
-    'Zahlen aus dem Live-Stacking-Modul. Unverbindlicher Überblick 2026.'
+    'Zahlen aus dem Stacking Strategist. Unverbindlicher Überblick 2026.'
   ], 'de', 'fee');
   const ranked = rankRoutes(FEE_ROWS, 100);
   pushPage({
@@ -1254,7 +1254,7 @@ ${faqHtml(faqs, 'FAQ')}
       }
     ],
     bodyHtml: `
-<p>Standardbeispiel: 500 € plus 100 €/Monat × 12. Formel wie im Live-Stacking-Modul.</p>
+<p>Standardbeispiel: 500 € plus 100 €/Monat × 12. Formel wie im Stacking Strategist.</p>
 <h2>Rangfolge bei 100 €/Monat</h2>
 ${tableHtml(['Rang', 'Partner', 'Methode', 'Variable Gebühr', 'Jahreslast'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodDe(r.method)), esc(formatPctDe(r.pct)), esc(formatEurDe(r.annualDrag))
@@ -1333,8 +1333,8 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const faqs = [
-    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja, beim Verkauf gegen Geld. Krypto-zu-Krypto-Tausch ist in manchen Ländern steuerpflichtig (Deutschland, Tschechien, Spanien), in anderen nicht (Polen, Frankreich, Österreich, Ungarn). Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: 3-Jahres-Zeittest. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
-    { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und das KYC beim Partner bleiben. Konkrete Zinssätze zeigt der Loan-Copilot.' },
+    { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja, beim Verkauf gegen Geld. Krypto-zu-Krypto-Tausch ist in manchen Ländern steuerpflichtig (Deutschland, Tschechien, Spanien), in anderen nicht (Polen, Frankreich, Österreich, Ungarn). Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: steuerfrei nach 3 Jahren Haltedauer. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
+    { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und das KYC beim Partner bleiben. Konkrete Zinssätze zeigt der Loan Copilot.' },
     { q: 'Was ist Liquidationsrisiko?', a: 'Fällt der Wert der Sicherheit (Collateral) auf die Schwelle des Partners, kann die Sicherheit zwangsverkauft werden. Virtuse verwahrt weder Schlüssel noch Sicherheiten.' },
     { q: 'Wo berechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur die Abwägung anhand der veröffentlichten Steuerangaben.' }
   ];
@@ -1359,7 +1359,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-dca-rechner/'), label: 'DCA-Rechner' },
       { href: toRoot(relFile, 'de/bitcoin-erbrecht/'), label: 'Bitcoin und Erbrecht' }
     ],
-    moduleCta: { href: toRoot(relFile, 'de/loan.html'), label: 'Im Loan-Copilot vergleichen →' },
+    moduleCta: { href: toRoot(relFile, 'de/loan.html'), label: 'Im Loan Copilot vergleichen →' },
     schemas: [
       faqLd(faqs),
       {
@@ -1450,10 +1450,10 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Dürfen Seed-Wörter im Schreiben stehen?', a: 'Nein. Das Schreiben nennt Inventar, Orte und Kontakte – niemals Seed-Phrasen. Aufbewahrung beim Testament oder Anwalt.' },
     { q: 'Warum Multisig 2-von-3?', a: 'Eine einzelne Seed-Phrase ist ein Single Point of Failure für Sie und für Erben.' },
     { q: 'Verwahrt Virtuse Schlüssel für Erben?', a: 'Nein. Virtuse verwahrt niemals Ihre Schlüssel.' },
-    { q: 'Ist das Rechtsberatung?', a: 'Nein. Eine Checkliste zu Bildungszwecken aus dem Tax-Modul, Stand ' + asOfDe + '.' }
+    { q: 'Ist das Rechtsberatung?', a: 'Nein. Eine Checkliste zu Bildungszwecken aus dem Tax Agent, Stand ' + asOfDe + '.' }
   ];
   const answer = finalizeAnswer([
-    `Stand ${asOfDe} umfasst die Checkliste des Tax-Moduls sechs Punkte: Schreiben mit Anweisungen, geografische Schlüsseltrennung, informierte Erben, Multisig 2-von-3, Wiederherstellungstest und dokumentierte Konten.`,
+    `Stand ${asOfDe} umfasst die Checkliste des Tax Agent sechs Punkte: Schreiben mit Anweisungen, geografische Schlüsseltrennung, informierte Erben, Multisig 2-von-3, Wiederherstellungstest und dokumentierte Konten.`,
     'Eine einzelne Seed-Phrase ist ein Single Point of Failure. Virtuse verwahrt niemals Ihre Schlüssel.',
     'Keine Rechtsberatung.'
   ], 'de');
@@ -1484,10 +1484,10 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'de/bitcoin-steuern/'), label: `${N}-Länder-Steuerhub` },
       { href: toRoot(relFile, 'de/bitcoin-verkaufen-oder-beleihen/'), label: 'Verkaufen oder beleihen' }
     ],
-    moduleCta: { href: toRoot(relFile, 'de/' + TAX_AGENT), label: 'Checkliste im Tax-Agent bewerten →' },
+    moduleCta: { href: toRoot(relFile, 'de/' + TAX_AGENT), label: 'Checkliste im Tax Agent bewerten →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
-<p>Inhalt entspricht der Checkliste des Tax-Moduls. Keine Rechtsberatung.</p>
+<p>Inhalt entspricht der Checkliste des Tax Agent. Keine Rechtsberatung.</p>
 <h2>Anleitung: sechs Prüfschritte</h2>
 <ol>${meta.inheritanceDe.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
 ${faqHtml(faqs, 'FAQ')}
