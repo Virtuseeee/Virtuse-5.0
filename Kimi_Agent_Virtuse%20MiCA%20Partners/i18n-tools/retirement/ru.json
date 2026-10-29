@@ -60,6 +60,7 @@
   "c_base": "Базовый",
   "c_optimistic": "Оптимистичный",
   "c_custom": "Свой",
+  "custom_range": "от 0 до 30%",
   "c_hypothetical": "(гипотетический)",
   "c_custom_label": "Ваша ставка роста в год (от 0 до 30%)",
   "c_inflation": "Инфляция в год",

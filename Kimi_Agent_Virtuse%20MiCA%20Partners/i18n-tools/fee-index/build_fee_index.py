@@ -219,14 +219,17 @@ def absolutize(fragment, L):
     return re.sub(r'\b(href|src)="([^"]*)"', fix, fragment)
 
 
-def chrome(L, lang_url):
-    """Nav + footer of the language's v2 homepage; the language menus point at lang_url(x)."""
+def chrome(L, lang_url, comma=True):
+    """Nav + footer of the language's v2 homepage; the language menus point at lang_url(x).
+    comma=True: the footer Brief line gets a comma instead of the long dash (fee-index and SEO pages);
+    the hub and tool pages keep the homepage's own line (sk: comma, other languages: &mdash;)."""
     home = open(os.path.join(SITE, ('' if L == 'en' else L + '/') + 'index.html')).read()
     nav = home[home.index('<header class="nav">'):home.index('</header>') + len('</header>')]
     nav = re.sub(r'<a class="logo" href="[^"]*"', '<a class="logo" href="index.html"', nav)
     foot = home[home.index('<footer class="footer-main">'):home.index('</footer>') + len('</footer>')]
     nav, foot = absolutize(nav, L), absolutize(foot, L)
-    foot = foot.replace(' &mdash; ', ', ').replace(' \u2014 ', ', ')   # no long dash in the footer line
+    if comma:
+        foot = foot.replace(' &mdash; ', ', ').replace(' \u2014 ', ', ')   # no long dash in the footer line
 
     def langs(seg):
         def one(m):
@@ -279,9 +282,9 @@ def write(rel, out):
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
-def brief_card(L, t, source='fee_index_brief'):
+def brief_card(L, t, source='fee_index_brief', days=None):
     """Shared Brief card; its cover image comes from virtuse.com (the issue's og_image), not blog.virtuse.com."""
-    b = absolutize(C.brief(L, lambda k: t[k], '', source), L).replace('data-root=""', 'data-root="/"')
+    b = absolutize(C.brief(L, lambda k: t[k], '', source, days), L).replace('data-root=""', 'data-root="/"')
     iss = [x for x in json.load(open(os.path.join(SITE, 'news', 'issues.json')))['issues'] if x.get('slug') and not x.get('essay')][0]
     if iss.get('og_image'):
         b = re.sub(r'(<img id="briefImg" src=")[^"]*', lambda m: m.group(1) + iss['og_image'], b)
@@ -432,7 +435,7 @@ def build_main(L, fi, s21, extra_pages):
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, mlink=t['method_link'], arrow=C.ARROW,
            qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, psum=t['press_sum'], pintro=t['press_intro'], pbh=t['press_blurb_h'],
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
-           brief=brief_card(L, t),
+           brief=brief_card(L, t, days='90 d'),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
     out += body + C.scripts('/')
     check_text(out, L)

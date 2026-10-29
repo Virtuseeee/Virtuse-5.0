@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 import csp_tight
 import cf_analytics
 import aff_note as A
+import v2common as C
 
 # partners in published-fee order (same order in the hero table and the cards)
 PARTNERS = [
@@ -196,7 +197,7 @@ def build(L):
       </a>
       <div class="signup">
         <div class="btc-spark" id="btcSpark" hidden>
-          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <div class="btc-top"><span>BTC / EUR · {days}</span><b id="btcLast"></b><em id="btcChg"></em></div>
           <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
         </div>
         <h3>{gh} <span>{free}</span></h3>
@@ -213,7 +214,7 @@ def build(L):
     </div>
   </section>'''.format(h2a=t('b_h2_a'), h2b=t('b_h2_b'), root=root, langq=('&amp;lang=' + L) if L != 'en' else '', latest=t('b_latest'),
                        note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), img_alt=t('b_img_alt'), gh=t('b_get_h'), free=t('b_free'), gp=t('b_get_p'),
-                       email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'))
+                       email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'), days=C.DAYS90.get(L, '90 d'))
 
     body = '''<body class="page-buy no-split">
 {nav}

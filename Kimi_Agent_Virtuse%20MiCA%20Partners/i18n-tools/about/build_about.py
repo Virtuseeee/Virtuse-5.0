@@ -124,7 +124,7 @@ def build(L):
                  og_image=ORIGIN + '/og/about.jpg')
     # CSP: C.finalize() keeps only the third-party origins this page uses.
     out = out.replace('</head>', CSS + '</head>', 1)
-    nav, foot = F.chrome(L, url)
+    nav, foot = F.chrome(L, url, comma=False)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
 
     loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p

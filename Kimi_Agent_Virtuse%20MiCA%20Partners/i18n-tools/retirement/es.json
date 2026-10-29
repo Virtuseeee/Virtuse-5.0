@@ -60,6 +60,7 @@
   "c_base": "Base",
   "c_optimistic": "Optimista",
   "c_custom": "Personalizado",
+  "custom_range": "0–30 %",
   "c_hypothetical": "(hipotético)",
   "c_custom_label": "Su tasa de crecimiento anual (del 0 al 30 %)",
   "c_inflation": "Inflación anual",

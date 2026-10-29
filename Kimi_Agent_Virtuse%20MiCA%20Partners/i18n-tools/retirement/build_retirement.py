@@ -127,7 +127,7 @@ def calculator(L, t, links):
         return '<button type="button" class="rc-btn" data-g="%s" aria-pressed="%s" aria-label="%s %d%% %s">%s %d%%<small>%s</small></button>' % (
             rate, 'true' if on else 'false', esc(t['c_' + key]), rate, esc(t['c_hypothetical']), t['c_' + key], rate, t['c_hypothetical'])
     scen_btns = scen('conservative', 10, False) + scen('base', 20, True) + scen('optimistic', 30, False) + \
-        '<button type="button" class="rc-btn" data-g="custom" aria-pressed="false" aria-controls="rc-custom">%s<small>0 to 30%%</small></button>' % t['c_custom']
+        '<button type="button" class="rc-btn" data-g="custom" aria-pressed="false" aria-controls="rc-custom">%s<small>%s</small></button>' % (t['c_custom'], t['custom_range'])
 
     return '''<div class="pf-app st-app rc" id="plan">
     <form class="rc-panel" id="rc-form" novalidate onsubmit="return false">
@@ -216,7 +216,7 @@ def build(L):
     # CSP: C.finalize() keeps only the third-party origins this page uses.
     assert 'https://api.coingecko.com' in out
     out = out.replace('</head>', CSS + '</head>', 1)
-    nav, foot = F.chrome(L, url)
+    nav, foot = F.chrome(L, url, comma=False)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
 
     loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p
@@ -306,8 +306,10 @@ def check_dashes(out, strings, where):
     """No en/em dash in our visible text, title, meta or the calculator strings (the shared nav/footer are the homepage's)."""
     own = re.sub(r'<header class="nav">.*?</header>|<footer\b.*?</footer>|<script type="application/ld\+json">.*?</script>', '', out, flags=re.S)
     own = re.sub(r'<script\b[^>]*src=[^>]*></script>', '', own)
+    own = re.sub(r'(?<=\d)–(?=\d)', '', own)   # a number range (0–30 %) is not a dash in prose
+    vals = [re.sub(r'(?<=\d)–(?=\d)', '', v) for v in strings.values()]
     for ch in ('—', '–', '&mdash;', '&ndash;'):
-        if ch in own or any(ch in v for v in strings.values()):
+        if ch in own or any(ch in v for v in vals):
             sys.exit('%s: dash %r in page text or calculator strings' % (where, ch))
 
 

@@ -161,6 +161,8 @@ def build(L):
             return '%s="../blog-sk.html%s"' % (attr, url[len(path):])
         if os.path.exists(os.path.join(SITE, L, path)):
             return m.group(0)
+        if path == 'verdict.html':   # same form as verdict-landing/nav_split.py: languages without their own Verdict page
+            return '%s="/%s"' % (attr, url)
         return '%s="../%s"' % (attr, url)
     b = h.index('<body')
     h = h[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix_url, h[b:])
@@ -193,7 +195,7 @@ def build(L):
     h = one(h, '<div class="amount">€<span id="amtOut">500</span>', '<div class="amount"><span id="amtOut">500</span>&nbsp;€')
     for key in ["Open menu", "Close menu", "Cover image: ", "Please enter a valid email address.", "You're in. Brief goes out Monday.",
                 "Something went wrong. Please try again.", "Network error. Please try again.",
-                "You're on the list. We'll email you once, when the free audit opens.", "Sending...", "Latest Brief · ", " min"]:
+                "You're on the list. We'll email you once, when the fee audit opens.", "Sending...", "Latest Brief · ", " min"]:
         v = html_mod.unescape(tr[key])  # set via textContent / alt, so no entities
         for q in ("'", '"'):
             lit = q + js_lit(key, q) + q

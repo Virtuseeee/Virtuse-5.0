@@ -61,7 +61,7 @@ def build(L, n, c, k, partners):
     # inside the site's launcher iframe only the chat is shown (decided before first paint)
     embed = "<script>try{if(window.top!==window.self||/[?&]utm_medium=launcher(&|$)/.test(location.search))document.documentElement.classList.add('vc-embed')}catch(e){document.documentElement.classList.add('vc-embed')}</script>\n"
     out = out.replace('</head>', embed + assets + '\n</head>', 1)
-    nav, foot = F.chrome(L, url)
+    nav, foot = F.chrome(L, url, comma=False)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
 
     loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p

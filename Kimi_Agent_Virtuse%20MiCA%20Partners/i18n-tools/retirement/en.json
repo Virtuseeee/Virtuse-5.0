@@ -60,6 +60,7 @@
   "c_base": "Base",
   "c_optimistic": "Optimistic",
   "c_custom": "Custom",
+  "custom_range": "0 to 30%",
   "c_hypothetical": "(hypothetical)",
   "c_custom_label": "Your growth rate per year (0 to 30%)",
   "c_inflation": "Inflation per year",

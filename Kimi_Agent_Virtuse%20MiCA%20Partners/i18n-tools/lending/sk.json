@@ -1,7 +1,7 @@
 {
  "eyebrow": "Pôžičky zabezpečené Bitcoinom · Nekustodiálny escrow · Od 5&nbsp;%&nbsp;p.a.",
  "h1": "Ponechajte si svoj Bitcoin.",
- "h1_grey": "Požičajte si oproti nemu od 5 % p.a.",
+ "h1_grey": "Požičajte si s ním ako so zábezpekou, od 5 % p. a.",
  "widget_title": "Kalkulačka pôžičky Firefish",
  "d_title": "Parametre pôžičky v skratke",
  "d_rate": "Úroková sadzba",
@@ -55,7 +55,7 @@
  "a2": "Váš Bitcoin je uzamknutý v on-chain multisig escrow. Virtuse nikdy nedrží mince, kľúče ani peniaze; Firefish je technologickým sprostredkovateľom medzi dlžníkmi a investormi.",
  "q3": "Je pôžička alebo úrok zdaniteľný?",
  "a3": "Závisí to od vašej krajiny. Naši daňoví sprievodcovia po krajinách zhŕňajú pravidlá pre 13 krajín EÚ. Ide o všeobecné informácie, nie daňové poradenstvo.",
- "a3_link": "Daňoví sprievodcovia pre Bitcoin",
+ "a3_link": "Daňové návody podľa krajín",
  "b_h2_a": "Virtuse Brief.",
  "b_h2_b": "Iba Bitcoin, každý pondelok.",
  "b_latest": "Najnovší Brief",

@@ -74,7 +74,7 @@
  "a2": "Áno. Automatizácia neodstraňuje trhové riziko a backtesty nezaručujú budúce výsledky. Začnite s malou sumou a najprv vyskúšajte paper trading.",
  "q3": "Je DCA cez bota zdanené?",
  "a3": "Nákup spravidla nie je zdaniteľnou udalosťou; predaj alebo výmena môžu byť. Naše daňové prehľady zhŕňajú pravidlá v 13 krajinách EÚ. Ide o všeobecné informácie, nie daňové poradenstvo.",
- "a3_link": "Daňoví sprievodcovia pre Bitcoin",
+ "a3_link": "Daňové návody podľa krajín",
  "q4": "Je môj Bitcoin na burze v bezpečí?",
  "a4": "Bot nikdy nedrží vaše prostriedky, burza áno: drží vaše mince aj kľúče. Na burze majte len to, s čím obchodujete, a zvyšok presuňte do vlastnej úschovy.",
  "a4_link": "Možnosti vlastnej úschovy",

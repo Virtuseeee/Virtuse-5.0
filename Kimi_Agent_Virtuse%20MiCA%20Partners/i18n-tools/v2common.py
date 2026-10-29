@@ -74,7 +74,12 @@ def chrome(home, page):
     return nav, foot
 
 
-def brief(L, t, root, source):
+# label of the Brief card's 90-day BTC chart; the generated fee-index / SEO pages keep '90 d' (days='90 d')
+DAYS90 = {'en': '90 d', 'sk': '90 dní', 'cs': '90 dní', 'de': '90 Tage', 'fr': '90 j', 'es': '90 d', 'pl': '90 dni', 'hu': '90 nap',
+          'uk': '90 дн.', 'ru': '90 дн.'}
+
+
+def brief(L, t, root, source, days=None):
     return '''<section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>{h2a} <span>{h2b}</span></h2></div></div>
     <div class="brief brief-slim">
@@ -89,7 +94,7 @@ def brief(L, t, root, source):
       </a>
       <div class="signup">
         <div class="btc-spark" id="btcSpark" hidden>
-          <div class="btc-top"><span>BTC / EUR · 90 d</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <div class="btc-top"><span>BTC / EUR · {days}</span><b id="btcLast"></b><em id="btcChg"></em></div>
           <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round"/></svg>
         </div>
         <h3>{gh} <span>{free}</span></h3>
@@ -106,7 +111,8 @@ def brief(L, t, root, source):
     </div>
   </section>'''.format(h2a=t('b_h2_a'), h2b=t('b_h2_b'), root=root, langq=('&amp;lang=' + L) if L != 'en' else '', latest=t('b_latest'),
                        note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), img_alt=t('b_img_alt'), gh=t('b_get_h'),
-                       free=t('b_free'), gp=t('b_get_p'), email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'), source=source)
+                       free=t('b_free'), gp=t('b_get_p'), email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'), source=source,
+                       days=days or DAYS90.get(L, '90 d'))
 
 
 def fix_links(L, out):

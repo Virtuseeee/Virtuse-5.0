@@ -60,6 +60,7 @@
   "c_base": "Bazowy",
   "c_optimistic": "Optymistyczny",
   "c_custom": "Własny",
+  "custom_range": "0–30%",
   "c_hypothetical": "(hipotetyczny)",
   "c_custom_label": "Własna stopa wzrostu rocznie (od 0 do 30%)",
   "c_inflation": "Roczna inflacja",

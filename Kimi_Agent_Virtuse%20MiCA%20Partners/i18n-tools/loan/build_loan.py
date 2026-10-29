@@ -45,7 +45,7 @@ def build(L):
     # reserve room for the React app (it is taller than the screen at every width), so the sections
     # below don't jump down when it mounts (Lighthouse CLS 0.59 -> 0)
     out = out.replace('</head>', '<style>.st-app #root { min-height: min(100vh, 1000px); }</style>\n' + assets + '\n</head>', 1)
-    nav, foot = F.chrome(L, url)
+    nav, foot = F.chrome(L, url, comma=False)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
 
     loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p

@@ -23,10 +23,10 @@ LANGS = {
          'cta': 'Get your free Verdict', 'back': '← About Verdict', 'free_items': ['Score 0–100 and band', 'Executive summary', 'The bottleneck: the signal that decides the score', 'What holds / what breaks, assumptions (headline)', 'Next steps, with the tool to check them'],
          'report_items': ['All 10 signals with scores and reasons', 'Type 1 vs Type 2: reversible or not?', "Regret minimizer: what you'd wish you knew", 'Risks &amp; Plan B', 'What holds / what breaks and assumptions in full', 'Next steps with owner and deadline', 'A PDF to keep, no subscription']},
   'sk': {'page': 'sk/verdict.html', 'cfo': 'sk/cfo.html',
-         'title': 'Verdikt: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
-         'desc': 'Verdikt ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',
+         'title': 'Verdict: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
+         'desc': 'Verdict ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',
          'pricing_eyebrow': 'Ceny', 'pricing_h2': 'Tri úrovne. <span>Začnite bezplatným verdiktom.</span>',
-         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdikte', 'free_items': ['Skóre 0 – 100 a pásmo', 'Zhrnutie', 'Úzke miesto: signál, ktorý rozhoduje o skóre', 'Čo drží / čo sa zlomí, predpoklady (hlavná veta)', 'Ďalšie kroky s nástrojom na overenie'],
+         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdicte', 'free_items': ['Skóre 0 – 100 a pásmo', 'Zhrnutie', 'Úzke miesto: signál, ktorý rozhoduje o skóre', 'Čo drží / čo sa zlomí, predpoklady (hlavná veta)', 'Ďalšie kroky s nástrojom na overenie'],
          'report_items': ['Všetkých 10 signálov so skóre a dôvodmi', 'Typ 1 vs. Typ 2: vratné, alebo nie?', 'Minimalizácia ľútosti: čo by ste chceli vedieť', 'Riziká a plán B', 'Čo drží / čo sa zlomí a predpoklady celé', 'Ďalšie kroky s tým, kto a dokedy', 'PDF na uloženie, bez predplatného']},
 }
 

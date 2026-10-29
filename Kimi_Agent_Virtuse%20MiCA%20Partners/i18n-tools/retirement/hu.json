@@ -60,6 +60,7 @@
   "c_base": "Alap",
   "c_optimistic": "Optimista",
   "c_custom": "Egyéni",
+  "custom_range": "0–30%",
   "c_hypothetical": "(feltételezett)",
   "c_custom_label": "Az Ön éves növekedési rátája (0 és 30% között)",
   "c_inflation": "Éves infláció",

@@ -8,7 +8,7 @@ import os, re, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 LANGS = ('sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru')
 OWN = ('en', 'sk', 'ru')
-VNAME = {'sk': 'Verdikt', 'cs': 'Verdikt'}
+VNAME = {}   # sk/cs said 'Verdikt' until the SK/CS proofreading rounds (2026-10-29): Verdict in every language
 CFO_D = {'en': 'Fees, loans and tax over time · planned', 'sk': 'Poplatky, pôžičky a dane v čase · pripravujeme',
          'cs': 'Poplatky, půjčky a daně v čase · připravujeme', 'de': 'Gebühren, Kredite und Steuern im Blick · in Planung',
          'fr': 'Frais, prêts et impôts dans la durée · en préparation', 'es': 'Comisiones, préstamos e impuestos en el tiempo · en preparación',
@@ -70,7 +70,7 @@ def run(text, flang):
         return '/verdict.html' + qs
     text = re.sub(r'((?:\.\./)*(?:(sk|cs|de|fr|es|pl|hu|uk|ru)/)?)cfo\.html(\?[^"#\s]*)?#verdict', hero, text)
     # remaining text mentions
-    for a, b in (('Virtuse CFO · Verdict zadarmo', 'Verdikt zadarmo'), ('Virtuse CFO · Verdict zdarma', 'Verdikt zdarma'),
+    for a, b in (('Virtuse CFO · Verdict zadarmo', 'Verdict zadarmo'), ('Virtuse CFO · Verdict zdarma', 'Verdict zdarma'),
                  ('Virtuse CFO · Verdict', 'Verdict')):
         c = text.count(a); n += c; text = text.replace(a, b)
     return text, n

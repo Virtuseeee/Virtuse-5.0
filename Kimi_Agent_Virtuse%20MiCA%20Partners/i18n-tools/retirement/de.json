@@ -60,6 +60,7 @@
   "c_base": "Basis",
   "c_optimistic": "Optimistisch",
   "c_custom": "Eigene",
+  "custom_range": "0–30 %",
   "c_hypothetical": "(hypothetisch)",
   "c_custom_label": "Ihre Wachstumsrate pro Jahr (0 bis 30 %)",
   "c_inflation": "Inflation pro Jahr",

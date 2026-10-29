@@ -247,7 +247,7 @@ def build(L):
                  og_image=ORIGIN + '/og/' + og_file)
     out = out.replace("connect-src 'self'", "connect-src 'self' https://raw.githubusercontent.com", 1)
     out = out.replace('</head>', CSS + '</head>', 1)
-    nav, foot = F.chrome(L, lambda x: ('/' if x == 'en' else '/%s/' % x) + PAGE)
+    nav, foot = F.chrome(L, lambda x: ('/' if x == 'en' else '/%s/' % x) + PAGE, comma=False)
     nav = nav.replace('<div class="nav-group current" id="ng-services">', '<div class="nav-group" id="ng-services">')
     nav = nav.replace('<div class="nav-group" id="ng-learn">', '<div class="nav-group current" id="ng-learn">')
     nav = re.sub(r'(<a href="%sbitcoin-data\.html")' % re.escape(loc), r'\1 aria-current="page"', nav, count=1)

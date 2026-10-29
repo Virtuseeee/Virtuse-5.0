@@ -60,6 +60,7 @@
   "c_base": "Základní",
   "c_optimistic": "Optimistický",
   "c_custom": "Vlastní",
+  "custom_range": "0–30 %",
   "c_hypothetical": "(hypotetický)",
   "c_custom_label": "Váš roční růst (0 až 30 %)",
   "c_inflation": "Roční inflace",

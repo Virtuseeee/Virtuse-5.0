@@ -48,7 +48,7 @@ def build():
         nav, foot = F.chrome(L, lambda x: '/')
         nav, foot = placeholders(nav, foot)
         t = json.load(open(os.path.join(F.TOOLS, 'bots', L + '.json')))
-        brief = F.brief_card(L, t, source='seo_page')
+        brief = F.brief_card(L, t, source='seo_page', days='90 d')
         i18n = F.i18n_script(L).strip()
         for part in (nav, foot, brief):
             assert '{' not in part.replace('{{ALT:', ''), (L, 'unfilled placeholder')
