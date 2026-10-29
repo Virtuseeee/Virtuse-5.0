@@ -68,9 +68,9 @@ def build(L):
         <span class="why-by">{art_by}</span>
         <span class="tlink">{art_cta} {arrow}</span>
       </a>
-      <a class="pcard2 indigo why-card why-data" href="{root}asset-returns.html">
+      <a class="pcard2 indigo why-card why-data" href="asset-returns.html">
         <span class="why-k">{data_k}</span>
-        <h3>{data_title}{en_note}</h3>
+        <h3>{data_title}</h3>
         <p>{data_p}</p>
         <div class="ar-stat" id="arStat" hidden data-src="{raw}" data-local="{root}data/asset-returns.json" data-locale="{loc}" data-pct="{pct}" data-label="{label}">
           <b id="arStatVal"></b><span id="arStatLabel"></span>
