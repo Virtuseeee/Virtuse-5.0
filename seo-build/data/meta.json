@@ -1354,7 +1354,7 @@
   "taxFr": {
     "cz": {
       "gainTax": "Impôt sur le revenu de 15 % (23 % au-delà du seuil)",
-      "exemption": "Exonéré après 3 ans de détention (jusqu'à 40 millions de CZK par an), ou si le total des cessions de cryptoactifs de l'année ne dépasse pas 100 000 CZK",
+      "exemption": "Exonéré après 3 ans de détention (jusqu'à 40 millions de CZK par an), ou si le total des cessions de crypto-actifs de l'année ne dépasse pas 100 000 CZK",
       "filing": "Déclaration annuelle de revenus des personnes physiques",
       "note": "Chaque cession (y compris les échanges crypto contre crypto) est un fait générateur d'impôt : conservez des relevés complets dès le premier jour."
     },
@@ -1393,7 +1393,7 @@
     "si": {
       "gainTax": "Pas d'impôt sur les plus-values des particuliers (le trading professionnel est imposé)",
       "exemption": "Les gains privés ne sont pas imposés",
-      "filing": "Aucune pour les gains privés ; les revenus de minage exigent une déclaration d'acompte d'impôt sous 15 jours ; les revenus professionnels figurent dans la déclaration fiscale de l'entreprise",
+      "filing": "Aucune déclaration pour les gains privés ; les revenus de minage exigent une déclaration d'acompte d'impôt sous 15 jours ; les revenus professionnels figurent dans la déclaration fiscale de l'entreprise",
       "note": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle."
     },
     "hr": {
@@ -1429,8 +1429,8 @@
     "es": {
       "gainTax": "Impôt progressif de 19 à 30 % sur les revenus de l'épargne",
       "exemption": "Aucune exonération liée à la durée de détention",
-      "filing": "Déclaration annuelle IRPF ; Modelo 721 pour les cryptoactifs détenus auprès de dépositaires à l'étranger au-delà de 50 000 €",
-      "note": "Les échanges crypto contre crypto sont des cessions imposables : appliquez la méthode FIFO aux cryptoactifs identiques."
+      "filing": "Déclaration annuelle IRPF ; Modelo 721 pour les crypto-actifs détenus auprès de dépositaires à l'étranger au-delà de 50 000 €",
+      "note": "Les échanges crypto contre crypto sont des cessions imposables : appliquez la méthode FIFO aux crypto-actifs identiques."
     }
   },
   "inheritanceFr": [

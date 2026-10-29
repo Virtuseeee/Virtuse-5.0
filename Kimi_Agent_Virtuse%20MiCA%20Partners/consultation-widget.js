@@ -518,7 +518,7 @@
           options: [
             'Acheter / vendre du Bitcoin',
             'Minage',
-            'Custody / conservation des actifs',
+            'Conservation des actifs',
             'Gestion de trésorerie d’entreprise',
             'Aspects fiscaux',
             'Bots automatisés / trading algorithmique',

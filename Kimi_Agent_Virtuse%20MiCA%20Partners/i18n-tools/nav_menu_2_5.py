@@ -95,7 +95,7 @@ T = {  # new strings; existing keys in a language file are kept
         pl='Plan regularnych zakupów i opłaty', hu='Rendszeres vásárlás tervezése', uk='План регулярних покупок і комісії',
         ru='План регулярных покупок и комиссии'),
     'Sell or borrow against your Bitcoin': dict(sk='Predať, alebo si požičať so zábezpekou v Bitcoine', cs='Prodat, nebo si půjčit se zajištěním Bitcoinem',
-        de='Verkaufen oder mit Bitcoin beleihen', fr='Vendre ou emprunter sur vos Bitcoin', es='Vender o pedir prestado con su Bitcoin',
+        de='Verkaufen oder mit Bitcoin beleihen', fr='Vendre ou emprunter avec votre Bitcoin en garantie', es='Vender o pedir prestado con su Bitcoin',
         pl='Sprzedać czy pożyczyć pod zastaw Bitcoina', hu='Eladás vagy hitel Bitcoin-fedezettel', uk='Продати чи позичити під заставу Біткоїна',
         ru='Продать или занять под залог Биткоина'),
     'Country rules and an inheritance check': dict(sk='Pravidlá krajín a kontrola dedičstva', cs='Pravidla zemí a kontrola dědictví',

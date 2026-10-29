@@ -49,7 +49,7 @@
   "q4": "À quelle fréquence les chiffres sont-ils vérifiés ?",
   "a4": "Nous vérifions les pages de frais et mesurons les spreads chaque trimestre, ainsi qu'à chaque changement de prix d'un partenaire. La date en haut de la page indique la dernière vérification.",
   "press_sum": "Pour les journalistes et les sites",
-  "press_intro": "Vous pouvez citer et intégrer l'indice en indiquant la source : \"Source : Indice des frais Bitcoin de Virtuse, frais vérifiés le {date}\" et un lien vers cette page.",
+  "press_intro": "Vous pouvez citer et intégrer l'indice en indiquant la source : « Source : Indice des frais Bitcoin de Virtuse, frais vérifiés le {date} » et un lien vers cette page.",
   "press_blurb_h": "Texte pour la presse",
   "press_blurb": "Indice des frais Bitcoin de Virtuse (frais vérifiés le {date}) : pour {amount} par mois, {w} présente le coût total le plus bas parmi les voies d'achat de Bitcoin agréées dans l'UE répertoriées ({wt}, frais publiés plus spread estimé). Les frais de réseau, de retrait et de change ne sont pas inclus. Source : https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Code d'intégration",
@@ -75,7 +75,7 @@
   "rel_pf_p": "Les partenaires adaptés à vos critères.",
   "disclaimer": "Ceci n'est pas un conseil en investissement. Virtuse ne détient jamais vos clés ni vos fonds. Le KYC et l'inscription se font sur la plateforme réglementée de chaque partenaire.",
   "sp_pending": "En cours de mesure",
-  "spread_note_21_pending": "21bitcoin n’a pas de carnet d’ordres public. Nous mesurons son spread à partir des prix de l’application ; d’ici là, 21bitcoin figure sans rang.",
+  "spread_note_21_pending": "21bitcoin n’a pas de carnet d’ordres public. Nous mesurerons son spread à partir des prix de l’application ; d’ici là, 21bitcoin figure sans rang.",
   "kraken_instant": "L’achat instantané (Instant Buy) dans l’application Kraken est une autre voie d’achat : 1 % de frais plus un spread.",
   "aff_note": "Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas.",
   "aff_how": "Comment nous gagnons de l’argent"
