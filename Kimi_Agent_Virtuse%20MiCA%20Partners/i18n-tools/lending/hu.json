@@ -54,7 +54,7 @@
  "q2": "Ki őrzi a Bitcoinomat?",
  "a2": "A Bitcoin egy láncon belüli multisig escrow-ban van zárolva. A Virtuse soha nem kezel coinokat, kulcsokat vagy pénzt; a Firefish technológiai közvetítőként működik a hitelfelvevők és a befektetők között.",
  "q3": "Adóköteles a hitel vagy a kamat?",
- "a3": "Ez az adott országtól függ. Országos adózási útmutatóink 13 EU-ország szabályait foglalják össze. Ez általános tájékoztatás, nem adótanácsadás.",
+ "a3": "Ez az adott országtól függ. Országonkénti adózási útmutatóink 13 EU-ország szabályait foglalják össze. Ez általános tájékoztatás, nem adótanácsadás.",
  "a3_link": "Bitcoin-adózási útmutatók",
  "b_h2_a": "Virtuse Brief.",
  "b_h2_b": "Csak Bitcoin, minden hétfőn.",

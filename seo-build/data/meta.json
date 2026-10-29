@@ -943,7 +943,7 @@
     "at": {
       "gainTax": "27,5% KESt (tőkenyereségadó)",
       "exemption": "1 év után csak a 2021 márciusa előtt vett kripto adómentes; a későbbi vételekre nincs mentesség",
-      "filing": "Bevallás a külföldi tőzsdéken elért nyereségre; az osztrák szolgáltatók levonják az adót",
+      "filing": "Külföldi tőzsdei nyereséget be kell vallani; az osztrák szolgáltatók levonják az adót",
       "note": "A kripto-kripto csere adósemleges. A kölcsönzés és a bányászat jóváíráskor adózik, a staking és az airdrop csak eladáskor (nulla bekerülési értékkel)."
     },
     "de": {

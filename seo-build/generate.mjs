@@ -368,7 +368,7 @@ function lcAfterColon(s, lang) {
   const w = s.split(/[\s,.:(]/)[0];
   if (lang === 'de') return LC_DE.has(w) ? s[0].toLowerCase() + s.slice(1) : s;
   if (LC_KEEP.has(w)) return s;
-  return /^[A-ZÁÄČĎÉĚÍĹĽŇÓÔŐŔŘŠŤÚŮŰÝŽĄĆĘŁŃŚŹŻ][a-záäčďéěíĺľňóôőŕřšťúůűýžąćęłńśźżß]/.test(s) || /^[А-ЯЁІЇЄҐ][а-яёіїєґ]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s;
+  return /^[A-ZÁÄČĎÉĚÍĹĽŇÓÔÖŐŔŘŠŤÚÜŮŰÝŽĄĆĘŁŃŚŹŻ][a-záäčďéěíĺľňóôöőŕřšťúüůűýžąćęłńśźżß]/.test(s) || /^[А-ЯЁІЇЄҐ][а-яёіїєґ]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s;
 }
 const lcEn = (s) => lcAfterColon(s, 'en'), lcSk = (s) => lcAfterColon(s, 'sk'), lcCs = (s) => lcAfterColon(s, 'cs'), lcDe = (s) => lcAfterColon(s, 'de'),
   lcPl = (s) => lcAfterColon(s, 'pl'), lcHu = (s) => lcAfterColon(s, 'hu'), lcUk = (s) => lcAfterColon(s, 'uk');
@@ -810,7 +810,7 @@ const GUIDE_TOOLS = {
   fr: { h: 'Outils associés', tax: 'Les règles fiscales par pays et un contrôle de préparation successorale.', loanP: 'Vendre ou emprunter en garantie de votre Bitcoin.', pfP: 'Les partenaires adaptés à vos critères.', buyT: 'Acheter du Bitcoin', buyP: 'Les partenaires d\'achat et leurs frais, côte à côte.' },
   es: { h: 'Herramientas relacionadas', tax: 'Normas fiscales por país y una revisión de la preparación sucesoria.', loanP: 'Vender o pedir prestado con Bitcoin como garantía.', pfP: 'Partners que encajan con sus criterios.', buyT: 'Comprar Bitcoin', buyP: 'Partners de compra y sus comisiones, uno junto a otro.' },
   pl: { h: 'Powiązane narzędzia', tax: 'Zasady podatkowe według kraju i sprawdzenie gotowości spadkowej.', loanP: 'Sprzedaż a pożyczka pod zastaw Bitcoina.', pfP: 'Partnerzy pasujący do kryteriów.', buyT: 'Kup Bitcoin', buyP: 'Partnerzy do zakupu i ich opłaty obok siebie.' },
-  hu: { h: 'Kapcsolódó eszközök', tax: 'Adószabályok országonként és öröklési felkészültségi ellenőrzés.', loanP: 'Eladás vagy hitelfelvétel Bitcoin fedezetére.', pfP: 'Az Ön szempontjaihoz illő partnerek.', buyT: 'Bitcoin-vásárlás', buyP: 'Vásárlási partnerek és díjaik egymás mellett.' }
+  hu: { h: 'Kapcsolódó eszközök', tax: 'Adószabályok országonként és öröklési felkészültségi ellenőrzés.', loanP: 'Eladás vagy hitelfelvétel Bitcoin-fedezettel.', pfP: 'Az Ön szempontjaihoz illő partnerek.', buyT: 'Bitcoin-vásárlás', buyP: 'Vásárlási partnerek és díjaik egymás mellett.' }
 };
 function guideTools(spec) {
   const L = spec.lang;
@@ -3227,7 +3227,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   const faqs = [
     { q: 'Előre jelzi a kalkulátor a Bitcoin árfolyamát?', a: 'Nem. Csak a partnerek díjait hasonlítja össze a közzétett díjtáblázat alapján. A Bitcoin árfolyamából származó hozamot nem modellezi.' },
     { q: `Mi az alapterv, ${feeAsOfHu} állapot szerint?`, a: 'Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjai alapján.' },
-    { q: 'Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin Fee Indexben: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) havi 100 € esetén.` },
+    { q: 'Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin-díjindexben: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) havi 100 € esetén.` },
     { q: 'Befektetési tanácsadásnak számít ez?', a: 'Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.' }
   ];
   const answer = finalizeAnswer([
