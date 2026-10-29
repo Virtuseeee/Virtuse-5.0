@@ -80,16 +80,6 @@ writes `src/generated/`:
 Wrangler bundles `src/index.js` directly (`main` in `wrangler.toml`); there
 is no `dist/` and nothing is patched into the source.
 
-## Known issues
-
-- **`POST /subscribe` with `lang: "toString"`** (or any other
-  `Object.prototype` key): `welcomeLang` uses `in`, which also matches
-  inherited keys, so the contact is created in Resend with that `lang`
-  property and the request then fails with 502 and no welcome email. Not
-  reachable from the site's own forms. Kept as is in the 2026-10-29
-  refactor (behaviour unchanged by design); the fix is `Object.hasOwn` in
-  `src/features/newsletter/welcome.js`.
-
 ## One-time setup
 
 ### 1. Install Wrangler and log in

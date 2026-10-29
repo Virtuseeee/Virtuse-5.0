@@ -13,7 +13,8 @@
 const LANG_SEGMENT_SECRETS = { sk: 'RESEND_SK_SEGMENT_ID' };
 
 export function segmentFor(env, lang) {
-  const secretName = LANG_SEGMENT_SECRETS[lang];
+  // Own keys only, so 'constructor' etc. never resolve to a prototype member.
+  const secretName = Object.hasOwn(LANG_SEGMENT_SECRETS, lang) ? LANG_SEGMENT_SECRETS[lang] : undefined;
   return (secretName ? env[secretName] : undefined) || env.RESEND_SEGMENT_ID;
 }
 
