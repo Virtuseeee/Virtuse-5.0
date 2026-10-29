@@ -28,5 +28,5 @@ def apply(html):
     if 'data-consultation-trigger' not in html:
         html = WIDGET_RE.sub('', html)
     else:
-        html = EAGER_WIDGET_RE.sub(r'<script src="\1consultation-lazy.js?v=1" defer></script>', html)
+        html = EAGER_WIDGET_RE.sub(r'<script src="\1consultation-lazy.js?v=2" defer></script>', html)
     return html
