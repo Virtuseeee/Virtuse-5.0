@@ -2819,7 +2819,7 @@ function descFit(main, tail) { return (main + ' ' + tail).length <= 155 ? `${mai
     related: [
       { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' },
       { href: toRoot(relFile, 'pl/bitcoin-dziedziczenie/'), label: 'Bitcoin i dziedziczenie' },
-      { href: toRoot(relFile, 'pl/bitcoin-indeks-oplat/'), label: 'Indeks opłat za Bitcoin' }
+      { href: toRoot(relFile, 'pl/bitcoin-indeks-oplat/'), label: 'Indeks opłat za Bitcoina' }
     ],
     moduleCta: { href: toRoot(relFile, 'pl/' + TAX_AGENT), label: 'Otwórz Tax & Inheritance Agent →' },
     schemas: [faqLd(faqs)],
@@ -2849,7 +2849,7 @@ for (const c of COUNTRIES) {
   const answer = finalizeAnswer([
     `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${lcPl(gainFull(t))}.`,
     /^(Brak |Zwolnienie)/.test(t.exemption) ? `${t.exemption}.` : `Zwolnienie: ${lcPl(t.exemption)}.`,
-    `Zeznanie: ${lcPl(t.filing)}.`,
+    `Rozliczenie: ${lcPl(t.filing)}.`,
     t.note,
     guideLine('pl')
   ], 'pl', 'guide');
@@ -2900,7 +2900,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   const faqs = [
     { q: 'Czy ten kalkulator prognozuje cenę Bitcoina?', a: 'Nie. Porównuje tylko opłaty partnerów według opublikowanego cennika. Nie modeluje zwrotu z ceny Bitcoina.' },
     { q: `Jaki jest plan standardowy, stan na ${feeAsOfPl}?`, a: 'Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku.' },
-    { q: 'Która ścieżka ma w tym planie najniższą opublikowaną opłatę?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist. Najniższy łączny koszt ze spreadem w Bitcoin Fee Index: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) przy 100 € miesięcznie.` },
+    { q: 'Która ścieżka ma w tym planie najniższą opublikowaną opłatę?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist. Najniższy całkowity koszt ze spreadem w Indeksie opłat za Bitcoina: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) przy 100 € miesięcznie.` },
     { q: 'Czy to porada inwestycyjna?', a: 'Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.' }
   ];
   const answer = finalizeAnswer([
@@ -2918,7 +2918,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
     breadcrumbs: [plHome(relFile), { name: 'Kalkulator DCA', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
     related: [
-      { href: toRoot(relFile, 'pl/bitcoin-indeks-oplat/'), label: 'Indeks opłat za Bitcoin' },
+      { href: toRoot(relFile, 'pl/bitcoin-indeks-oplat/'), label: 'Indeks opłat za Bitcoina' },
       { href: toRoot(relFile, 'pl/bitcoin-sprzedac-czy-pozyczyc/'), label: 'Bitcoin: sprzedać czy pożyczyć' },
       { href: toRoot(relFile, 'pl/bitcoin-podatki/polska/'), label: 'Podatek od Bitcoina w Polsce' }
     ],

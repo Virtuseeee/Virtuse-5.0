@@ -719,8 +719,8 @@
           sublabel: 'Można wybrać więcej niż jedną opcję — lub kontynuować bez wyboru.',
           options: [
             'Kupno / sprzedaż Bitcoina',
-            'Mining',
-            'Custody / przechowywanie aktywów',
+            'Kopanie',
+            'Przechowywanie aktywów',
             'Zarządzanie treasury w firmie',
             'Aspekty podatkowe',
             'Automatyczne boty / handel algorytmiczny',
