@@ -2,11 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-10-29, third round) — Worker: `lang` only matches own keys (PR #147, merged `f82b9835`; **not deployed yet**: run `deploy_worker.sh`, then `GET /version` = `f82b9835`)
+## Session status (2026-10-29, third round) — Worker: `lang` only matches own keys (PR #147, merged `f82b9835`; **Worker deployed** 2026-10-29 by the user, `WORKER DEPLOY OK`, live `GET /version` = `90ef373c`)
 
 - Fix for the one known issue left by the refactor: `welcomeLang` used `raw in WELCOME_EMAILS`, so `POST /subscribe` with `lang: "toString"` / `"constructor"` / any `Object.prototype` key created a Resend contact with that `lang`, then crashed building the welcome email (502, no email). Now `Object.hasOwn` in `welcomeLang`, `welcomeEmailFor` and `segmentFor` (`features/newsletter/welcome.js`, `segments.js`): such values are an English sign-up in the default segment. No other behaviour changes; `en`/`sk`/unknown/non-string unchanged.
 - New `test/newsletter.test.mjs` (6 tests: toString/constructor/hasOwnProperty/__proto__ → 200, contact `lang: en` in `RESEND_SEGMENT_ID`, English welcome email; `sk` still Slovak segment + email; unit checks). Tests 149 → 155, all pass; the 5 bug tests fail against the old `welcome.js`. README "Known issues" section removed (it held only this item).
-- After merge: the user runs `deploy_worker.sh`, then check `GET /version` = the merge commit.
+- Not tested live with a real `lang: "toString"` request (it would create a real Resend contact and send an email); covered by the tests.
 ## Session status (2026-10-29) — `.htaccess`: 1-year `immutable` cache for `/vendor/` and `?v=` assets (**live on production** — user uploaded the file via sftp 2026-10-29; live `curl -sI` checked)
 
 - One rule added after the `concierge-assets` line in the mod_headers block of public_html/.htaccess: `Header set Cache-Control "public, max-age=31536000, immutable" "expr=(%{REQUEST_URI} =~ m#^/vendor/# || %{QUERY_STRING} =~ /^v=/) && %{CONTENT_TYPE} !~ m#^(text/html|application/json)#"`. The live file downloaded first was identical to the repo copy; the upload = that file + 6 lines.
