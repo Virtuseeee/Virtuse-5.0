@@ -53,7 +53,7 @@
         "d": "Kizárólag Bitcoinnal foglalkozó projektek, amelyek az EU, az EGT vagy Svájc felhasználóit szolgálják, működnek, karbantartottak és tisztességesek."
       },
       {
-        "t": "Jelölt szponzorok",
+        "t": "Megjelölt szponzorok",
         "d": "A fizetett megjelenéseket mindig „Szponzorált” címkével jelöljük, és ezek soha nem változtatják meg a feltételeinket vagy az értékelésünket."
       }
     ],
@@ -75,7 +75,7 @@
       "<strong>Tisztességes:</strong> nem ígér hozamot, és nem tart titkolt letétkezelést."
     ],
     "paidH": "Fizetett megjelenés",
-    "paid": "Egyes bejegyzések „Szponzorált” vagy „Kiemelt” jelölést kapnak. Ezek fizetett megjelenések, és egyes linkek partnerlinkek. A fizetés soha nem változtat a feltételeinken vagy az értékelésünkön, és nem garantálja a felvételt. Részletek: <a href=\"{howWeEarn}\">Miből élünk</a>.",
+    "paid": "Egyes bejegyzések „Szponzorált” vagy „Kiemelt” jelölést kapnak. Ezek fizetett megjelenések, és egyes linkek partnerlinkek. A fizetés soha nem változtat a feltételeinken vagy az értékelésünkön, és nem garantálja a felvételt. Részletek: <a href=\"{howWeEarn}\">Hogyan szerzünk bevételt</a>.",
     "removalH": "Eltávolítás",
     "removal": "Egy bejegyzést eltávolíthatunk, ha már nem felel meg a feltételeknek. Az eltávolítást Ön bármikor kérheti.",
     "applyH": "Jelentkezés",
@@ -279,11 +279,11 @@
       "title": "Bitcoin-adatvédelem: eszközök és útmutatók | Virtuse",
       "description": "Eszközök és útmutatók európai bitcoinereknek magánszférájuk védelméhez, a hálózati adatvédelemtől a címek újrahasználatáig, legálisan és gyakorlatiasan.",
       "intro": "Az adatvédelem megóvja a lopástól, a profilalkotástól és a célzott csalásoktól. Ezek az eszközök és útmutatók segítenek a törvényes keretek között privátként kezelni Bitcoin-tevékenységét és mindennapi böngészését.",
-      "legalNote": "Ez az oldal a törvényes adatvédelemről szól: arról, hogyan óvhatja meg személyes és pénzügyi adatait a bűnözőktől, az adatkereskedőktől és a szükségtelen kitettségtől. Nem segít senkinek kijátszani a pénzmosás elleni szabályokat, a szankciókat vagy az adókötelezettségeket. Lásd <a href=\"/aml-compliance.html\">AML &amp; megfelelőségi oldalunkat</a>. Kíváncsi, hogyan kezeli a Virtuse az Ön adatait? Erről szól <a href=\"/privacy-policy.html\">adatvédelmi szabályzatunk</a>.",
+      "legalNote": "Ez az oldal a törvényes adatvédelemről szól: arról, hogyan óvhatja meg személyes és pénzügyi adatait a bűnözőktől, az adatkereskedőktől és a szükségtelen kitettségtől. Nem segít senkinek kijátszani a pénzmosás elleni szabályokat, a szankciókat vagy az adókötelezettségeket. Lásd <a href=\"/aml-compliance.html\">AML és megfelelés oldalunkat</a>. Kíváncsi, hogyan kezeli a Virtuse az Ön adatait? Erről szól <a href=\"/privacy-policy.html\">adatvédelmi szabályzatunk</a>.",
       "related": [
         "Letétkezelés: tartsa biztonságban Bitcoinját",
         "Bitcoin-fejlesztői eszközök",
-        "AML és megfelelőség a Virtuse-nál"
+        "AML és megfelelés a Virtuse-nál"
       ],
       "h1Accent": ", a törvény keretein belül."
     },

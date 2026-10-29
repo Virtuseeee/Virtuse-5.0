@@ -821,7 +821,7 @@
           options: [
             'Bitcoin vétele / eladása',
             'Bányászat',
-            'Custody / eszközök megőrzése',
+            'Letétkezelés / eszközök megőrzése',
             'Vállalati treasury-kezelés',
             'Adózási kérdések',
             'Automatizált botok / algoritmikus kereskedés',

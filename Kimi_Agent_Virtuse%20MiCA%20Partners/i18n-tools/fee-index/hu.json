@@ -49,7 +49,7 @@
   "q4": "Milyen gyakran ellenőrzik a számokat?",
   "a4": "A díjoldalakat negyedévente ellenőrizzük és a spreadeket negyedévente mérjük, valamint akkor is, amikor egy partner módosítja az árait. A fenti dátum az utolsó ellenőrzést mutatja.",
   "press_sum": "Újságíróknak és weboldalaknak",
-  "press_intro": "Az index forrásmegjelöléssel idézhető és beágyazható, a következő forrássorral: \"Forrás: Virtuse Bitcoin-díjindex, díjak ellenőrizve {date}\", valamint egy erre az oldalra mutató linkkel.",
+  "press_intro": "Az index forrásmegjelöléssel idézhető és beágyazható, a következő forrássorral: „Forrás: Virtuse Bitcoin-díjindex, díjak ellenőrizve: {date}”, valamint egy erre az oldalra mutató linkkel.",
   "press_blurb_h": "Sajtószöveg",
   "press_blurb": "Virtuse Bitcoin-díjindex (díjak ellenőrizve: {date}): havi {amount} esetén a felsorolt EU-engedélyes Bitcoin-vásárlási módok közül a legalacsonyabb teljes költség: {w} ({wt}, közzétett díj plusz becsült spread). A hálózati, kivételi és devizaváltási díjak nincsenek benne. Forrás: https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Beágyazási kód",
@@ -75,7 +75,7 @@
   "rel_pf_p": "Az Ön szempontjaihoz illő partnerek.",
   "disclaimer": "Nem befektetési tanács. A Virtuse soha nem őrzi a kulcsait vagy a pénzét. A KYC és a regisztráció az egyes partnerek szabályozott platformján történik.",
   "sp_pending": "Mérés alatt",
-  "spread_note_21_pending": "A 21bitcoin nem tesz közzé ajánlati könyvet. A spreadjét az alkalmazás áraiból mérjük, ezért addig rangsor nélkül szerepel.",
+  "spread_note_21_pending": "A 21bitcoin nem tesz közzé ajánlati könyvet. A spreadjét most mérjük az alkalmazás áraiból, ezért a mérés végéig rangsor nélkül szerepel.",
   "kraken_instant": "A Kraken alkalmazás Instant Buy funkciója más vásárlási mód: 1% díj plusz spread.",
   "aff_note": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
   "aff_how": "Hogyan szerzünk bevételt"

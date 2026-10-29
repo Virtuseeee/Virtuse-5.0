@@ -86,7 +86,7 @@
   "c_res_value_sub": "kivetített, nominális euró",
   "c_res_spend": "Első évi kiadás",
   "c_res_spend_sub": "a kiadása {0} évesen, inflációval",
-  "c_res_needed": "Ma szükséges BTC a {0} éves nyugdíjhoz további megtakarítás nélkül",
+  "c_res_needed": "Ma szükséges BTC, hogy {0} évesen további megtakarítás nélkül nyugdíjba mehessen",
   "c_res_needed_sub": "{0} mai árfolyamon",
   "c_res_needed_more": "több mint {0}",
   "c_chart": "Portfólió-kivetítés",
