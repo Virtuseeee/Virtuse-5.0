@@ -9,7 +9,7 @@
  */
 (function () {
   if (window.VirtuseConsultation) return;
-  var WIDGET = 'consultation-widget.js?v=20261029';
+  var WIDGET = 'consultation-widget.js?v=20261029b';
   var me = document.currentScript;
   var src = me && me.src ? me.src.replace(/consultation-lazy\.js[^#]*$/, WIDGET) : '/' + WIDGET;
   var p = null, ready = false;
