@@ -36,7 +36,7 @@
   "spread_21bitcoin": {
     "pct": null,
     "measured": [],
-    "method": "21bitcoin buy price shown in the app before confirming, against Kraken BTC/EUR mid price (1-minute OHLC close) at the same minute."
+    "method": "We compare the buy price the 21bitcoin app shows before confirming with the Kraken BTC/EUR mid price (1-minute OHLC close) at the same minute."
   },
   "spreads": {
     "measured": [

@@ -18,10 +18,10 @@
     },
     {
       "id": "heir-aware",
-      "question": "Does at least one heir know your bitcoin exists and where to start?",
+      "question": "Does at least one heir know your Bitcoin exists and where to start?",
       "detail": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
       "points": 15,
-      "action": "Tell one trusted person that your bitcoin exists and whom to contact. Full details belong only in the letter of instruction."
+      "action": "Tell one trusted person that your Bitcoin exists and whom to contact. Full details belong only in the letter of instruction."
     },
     {
       "id": "multisig",

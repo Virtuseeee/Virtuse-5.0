@@ -264,7 +264,7 @@
     }
     var P = M.years[y - 1];
     if (!Y.ytd) {
-      obs.push('That ranks ' + ordinal(Y.rank) + ' of ' + M.fullYears.length + ' full years since ' + M.fullYears[0] + (P && !P.ytd && P.ret != null ? ', after ' + pct(P.ret) + ' in ' + (y - 1) + '.' : '.'));
+      obs.push('That ranks ' + ordinal(Y.rank) + ' of ' + M.fullYears.length + ' full years since ' + M.fullYears[0] + '.' + (P && !P.ytd && P.ret != null ? ' The year before (' + (y - 1) + ') returned ' + pct(P.ret) + '.' : ''));
     } else if (P && Y.n) {
       var lm = Y.n, a = M.close(y - 2, 12), b = M.close(y - 1, lm), c = M.close(y, lm);
       if (a != null && b != null && c != null) obs.push('Over the same months (' + (lm === 1 ? 'January' : 'January–' + MONTHS[lm - 1]) + '), ' + y + ' returned ' + pct(c / Y.start - 1) + ' against ' + pct(b / a - 1) + ' in ' + (y - 1) + '.');

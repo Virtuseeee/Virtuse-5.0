@@ -276,7 +276,7 @@ const hu: Record<string, string> = {
   "Are your keys geographically separated?": "Földrajzilag szét vannak választva a kulcsok?",
   "Never all backups in one home. Fire, theft or flood should never be able to destroy access.": "Soha ne legyen minden biztonsági mentés ugyanabban az otthonban. Tűz, lopás vagy árvíz soha ne szüntethesse meg a hozzáférést.",
   "Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.": "Vigyen egy kulcsot vagy mentést egy második helyre: banki széf, megbízható családtag vagy professzionális kulcsőrző.",
-  "Does at least one heir know your bitcoin exists and where to start?": "Tudja legalább egy örökös, hogy a Bitcoinja létezik, és hol kezdje?",
+  "Does at least one heir know your Bitcoin exists and where to start?": "Tudja legalább egy örökös, hogy a Bitcoinja létezik, és hol kezdje?",
   "Bitcoin discovered years late, or never, is the most common inheritance failure.": "Az évekkel később, vagy soha fel nem fedezett Bitcoin a leggyakoribb öröklési kudarc.",
   "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.": "Mondja el egy megbízható személynek, hogy létezik terv, és kit kell keresni. A részletek csak az utasítólevélben legyenek.",
   "Do you use multisig (2-of-3) instead of a single seed phrase?": "Multisiget (2 a 3-ból) használ egyetlen helyreállítási kifejezés helyett?",

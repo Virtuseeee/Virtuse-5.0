@@ -359,6 +359,22 @@ function countryById(id) { return COUNTRIES.find((c) => c.id === id); }
 function theEn(c) { return c.id === 'nl' ? 'the Netherlands' : c.name; }
 function TheEn(c) { const n = theEn(c); return n.charAt(0).toUpperCase() + n.slice(1); }
 function lcFirst(t) { return t.charAt(0).toLowerCase() + t.slice(1); }
+/** EN FAQ "What is the Bitcoin tax rate…?": NL taxes holdings (Box 3), SI does not tax private gains. */
+function gainSentenceEn(c) {
+  const g = gainFull(c);
+  if (c.id === 'nl' && /^Box 3 wealth tax/.test(g)) return `the Netherlands taxes Bitcoin under ${g.replace(/^Box 3 wealth tax/, 'Box 3, a wealth tax')}`;
+  const si = /^No tax on private disposal gains(.*)$/.exec(g);
+  if (si) return `private Bitcoin gains in ${theEn(c)} are not taxed${si[1]}`;
+  return `Bitcoin gains in ${theEn(c)} are taxed as follows: ${lcEn(g)}`;
+}
+/** EN FAQ "Is there a holding-period exemption…?": answer the question, then the exemption field. */
+function exemptionAnswerEn(c) {
+  if (c.id === 'nl') return `No. Box 3 has no holding period; instead there is a ${lcFirst(c.exemption)}.`;
+  if (c.id === 'si' && /^Private gains are not taxed/.test(c.exemption)) return `No holding period is needed: ${lcFirst(c.exemption)} at all.`;
+  return `${c.exemption}.`;
+}
+/** "(about 36% of the assumed yield)" from the NL gain-tax field. */
+function nlRateEn(c) { const m = /\(([^)]+)\)\s*$/.exec(gainFull(c)); return m ? m[1] : gainFull(c); }
 // Lowercase the first word of a data value that follows a colon ("Exemption: tax-free…"), keeping acronyms (KESt, PIT-38),
 // proper nouns (Box 3) and, in German, nouns: only the listed function/adjective words are lowered there.
 const LC_KEEP = new Set(['Box', 'Modelo', 'JOPPD', 'KESt', 'IRPF', 'PIT', 'DAC8', 'NAV']);
@@ -670,21 +686,21 @@ const be = breakEvenBotsVsManual(FEE_ROWS);
 function taxFaqsEn(c) {
   return [
     {
-      q: `What is the bitcoin tax rate in ${theEn(c)}?`,
-      a: `As of ${asOfEn}, bitcoin gains in ${theEn(c)} are taxed as follows: ${gainFull(c)}. Checked ${formatChecked(CHECKED, 'en')} against the official source linked on this page. Not tax advice.`
+      q: `What is the Bitcoin tax rate in ${theEn(c)}?`,
+      a: `As of ${asOfEn}, ${gainSentenceEn(c)}. Checked ${formatChecked(CHECKED, 'en')} against the official source linked on this page. Not tax advice.`
     },
     {
       q: `Is there a holding-period exemption in ${theEn(c)}?`,
-      a: `${c.exemption}. Confirm the current year’s rules with a local advisor before you file.`
+      a: `${exemptionAnswerEn(c)} Confirm the current year’s rules with a local advisor before you file.`
     },
     {
-      q: `How do you file bitcoin taxes in ${theEn(c)}?`,
+      q: `How do you file Bitcoin taxes in ${theEn(c)}?`,
       a: `${c.filing}. ${c.note}`
     },
     // optional per-country questions (seo-data.json extraFaq), worded only from the fields above
     ...(c.extraFaq || []),
     {
-      q: 'Does Virtuse hold my bitcoin or file my tax return?',
+      q: 'Does Virtuse hold my Bitcoin or file my tax return?',
       a: `No. Virtuse never holds your keys. KYC and onboarding happen on each partner’s regulated platform. Use the Tax & Inheritance Agent to compare the ${N}-country overview, then file with a qualified advisor.`
     }
   ];
@@ -717,14 +733,14 @@ function buyFaqsEn(c, winner) {
   const cur = meta.currency[c.id];
   return [
     {
-      q: `How do bitcoin buy fees compare in ${theEn(c)} as of ${feeAsOfEn}?`,
+      q: `How do Bitcoin buy fees compare in ${theEn(c)} as of ${feeAsOfEn}?`,
       a: `Lowest published fee at €100/month: ${winner.partner} (${winner.method}), a ${formatPct(winner.pct)} variable fee and ${formatEur(winner.annualDrag)} a year. That ranking uses the published partner fee schedule, not spreads or currency conversion. Lowest total cost incl. spread on the Virtuse Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)})${FI_PENDING.length ? `; ${FI_PENDING.join(', ')} is not ranked there until its spread is measured` : ''}.`
     },
     {
-      q: `Does buying bitcoin trigger tax in ${theEn(c)}?`,
+      q: `Does buying Bitcoin trigger tax in ${theEn(c)}?`,
       a: c.id === 'nl'
-        ? `The Netherlands does not use a classic capital gains tax. Box 3 wealth tax on a deemed return still applies to holdings (as of ${feeAsOfEn}: ${gainFull(c)}).`
-        : `No. In this overview, tax arises when you sell or swap (a disposal), not when you buy. Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}. Indicative 2026 overview, not tax advice.`
+        ? `No. The Netherlands does not use a classic capital gains tax, but Box 3 wealth tax on a deemed return still applies to your holdings (${nlRateEn(c)}, as of ${asOfEn}).`
+        : `No. In this overview, tax can arise only when you sell or swap (a disposal), not when you buy. Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}. Indicative 2026 overview, not tax advice.`
     },
     {
       q: 'Are these fees the full cost of buying?',
@@ -881,13 +897,13 @@ function dac8Box(id, lang, relFile) {
     esc(c.exemption)
   ]);
   const faqs = [
-    { q: 'Which EU countries does this bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ')}. ${guideText('en', 'hubFaq')}` },
+    { q: 'Which EU countries does this Bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ')}. ${guideText('en', 'hubFaq')}` },
     { q: 'Is this tax advice?', a: `No. ${guideLine('en')} Confirm current-year rules with a local advisor.` },
     { q: 'Does Virtuse report my holdings to tax authorities?', a: 'No. Virtuse never holds your keys or your transaction history. Partners complete their own KYC.' },
     { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N} countries plus a multisig readiness check.` }
   ];
   const answer = finalizeAnswer([
-    `This hub compares bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
+    `This hub compares Bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
     guideText('en', 'hubSrc'),
     'Germany exempts gains after a 1-year holding period, Croatia after 2 years and Czechia after 3; Slovenia does not tax private gains; the Netherlands taxes a deemed return under Box 3.',
     guideLine('en')
@@ -895,7 +911,7 @@ function dac8Box(id, lang, relFile) {
   pushPage({
     relFile, lang: 'en', guide: true,
     title: assertTitle(`Bitcoin tax in ${N} EU countries (2026)`),
-    description: assertDescription(descParts(`Compare bitcoin tax rates, holding exemptions and filing notes for ${N} EU countries as of ${asOfEn}.`, checkedSentence('en'), 'Not tax advice.')),
+    description: assertDescription(descParts(`Compare Bitcoin tax rates, holding exemptions and filing notes for ${N} EU countries as of ${asOfEn}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${N} EU countries`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -984,10 +1000,10 @@ ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Note', esc(c.note)]
 ])}
 ${dac8Box(c.id, 'en', enRel)}<h2>What usually creates a taxable event</h2>
-<p>${esc(c.note)} Buying bitcoin is not treated as a disposal in this overview; check local rules before you spend, swap, gift or lend coins.</p>
+<p>${esc(c.note)} Buying Bitcoin is not treated as a disposal in this overview; check local rules before you spend, swap, gift or lend coins.</p>
 <h2>Nearby country guides</h2>
 <ul>${nbs.map((n) => `<li><a href="${esc(toRoot(enRel, `bitcoin-tax/${slugEn(n.id)}/`))}">Bitcoin tax in ${esc(theEn(n))}</a></li>`).join('')}</ul>
-<p>Buy routes and fees here: <a href="${esc(toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`))}">Buy bitcoin in ${esc(theEn(c))}</a>.</p>
+<p>Buy routes and fees here: <a href="${esc(toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`))}">Buy Bitcoin in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `;
   pushPage({
@@ -995,7 +1011,7 @@ ${faqHtml(faqs, 'FAQ')}
     // titleHook / seoDescription (seo-data.json) = search-led title and meta for countries with GSC demand; the rest keep the template
     title: assertTitle(c.titleHook ? `Bitcoin Tax in ${theEn(c)} ${AS_OF_YEAR}: ${c.titleHook} | Virtuse` : `Bitcoin tax in ${theEn(c)} (${asOfEn})`),
     description: assertDescription(c.seoDescription ? `${c.seoDescription} ${checkedSentence('en')} Not tax advice.`
-      : descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${gainFull(c)}.`, checkedSentence('en'), 'Not tax advice.')),
+      : descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${lcEn(gainFull(c))}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1005,7 +1021,7 @@ ${faqHtml(faqs, 'FAQ')}
     ],
     hreflang: hrefLangPair(enRel, deRel),
     related: [
-      { href: toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`), label: `Buy bitcoin in ${theEn(c)}` },
+      { href: toRoot(enRel, `buy-bitcoin/${slugEn(c.id)}/`), label: `Buy Bitcoin in ${theEn(c)}` },
       { href: toRoot(enRel, 'bitcoin-inheritance/'), label: 'Bitcoin inheritance checklist' },
       { href: toRoot(enRel, nbs[0] ? `bitcoin-tax/${slugEn(nbs[0].id)}/` : 'bitcoin-tax/'), label: nbs[0] ? `Bitcoin tax in ${theEn(nbs[0])}` : 'All country tax guides' }
     ],
@@ -1073,13 +1089,13 @@ for (const c of COUNTRIES) {
   ]);
   pushPage({
     relFile, lang: 'en',
-    title: assertTitle(`Buy bitcoin in ${theEn(c)}: fees compared`),
+    title: assertTitle(`Buy Bitcoin in ${theEn(c)}: fees compared`),
     description: assertDescription(`Bitcoin buy fees in ${theEn(c)}, ${feeAsOfEn}: lowest published fee ${winner.partner} (${formatPct(winner.pct)}), lowest total cost incl. spread ${FI_TOP.name}.`),
-    h1: `Buy bitcoin in ${theEn(c)}`,
+    h1: `Buy Bitcoin in ${theEn(c)}`,
     answerHtml: esc(answer),
     breadcrumbs: [
       { name: 'Home', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
-      { name: 'Buy bitcoin', href: toRoot(relFile, 'buy-bitcoin.html'), abs: abs('buy-bitcoin.html') },
+      { name: 'Buy Bitcoin', href: toRoot(relFile, 'buy-bitcoin.html'), abs: abs('buy-bitcoin.html') },
       { name: c.name, abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(relFile, DE_BUY[relFile] || null),
@@ -1118,7 +1134,7 @@ ${faqHtml(faqs, 'FAQ')}
   });
   const win = ranked[0];
   const faqs = [
-    { q: 'Does this calculator forecast bitcoin’s price?', a: 'No. It isolates partner fees from the published fee schedule. Price returns are not modelled.' },
+    { q: 'Does this calculator forecast Bitcoin’s price?', a: 'No. It isolates partner fees from the published fee schedule. Price returns are not modelled.' },
     { q: `What default plan is shown as of ${feeAsOfEn}?`, a: `€${initial} upfront plus €${monthly}/month for 12 months (${formatEur(invested)} invested), ranked by first-year fees using the Stacking Strategist formula.` },
     { q: 'Which route has the lowest published fee on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: about ${formatEur(win.yearOneFees)} in first-year fees in this fee-only example. Lowest total cost incl. spread on the Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)}) at €100/month.` },
     { q: 'Is this financial advice?', a: 'No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.' }
@@ -1142,7 +1158,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Bitcoin DCA calculator (EU fees 2026)'),
-    description: assertDescription(`Fee-only bitcoin DCA calculator using Q4 2026 partner fees. Lowest published fee on €500 + €100/month: ${win.partner}. Not a return forecast.`),
+    description: assertDescription(`Fee-only Bitcoin DCA calculator using Q4 2026 partner fees. Lowest published fee on €500 + €100/month: ${win.partner}. Not a return forecast.`),
     h1: 'Bitcoin DCA calculator',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1152,8 +1168,8 @@ ${faqHtml(faqs, 'FAQ')}
     hreflang: hrefLangPair(relFile, deFile),
     related: [
       { href: toRoot(relFile, 'bitcoin-fee-index/'), label: 'Bitcoin Fee Index' },
-      { href: toRoot(relFile, 'sell-vs-borrow-bitcoin/'), label: 'Sell vs borrow bitcoin' },
-      { href: toRoot(relFile, 'buy-bitcoin/germany/'), label: 'Buy bitcoin in Germany' }
+      { href: toRoot(relFile, 'sell-vs-borrow-bitcoin/'), label: 'Sell vs borrow Bitcoin' },
+      { href: toRoot(relFile, 'buy-bitcoin/germany/'), label: 'Buy Bitcoin in Germany' }
     ],
     moduleCta: { href: toRoot(relFile, CTAS.stacking.replace(/^\//, '')), label: 'Open Stacking Strategist →' },
     schemas: [
@@ -1269,14 +1285,14 @@ ${faqHtml(faqs, 'FAQ')}
   const relFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Does selling bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, when you sell for money. Crypto-to-crypto swaps are taxed in some countries (Germany, Czechia, Spain) but not in others (Poland, France, Austria, Hungary). Exemptions differ: Germany 0% after a 1-year holding period; Czechia a 3-year time test; Poland none. As of ${asOfEn}. Not tax advice.` },
-    { q: 'Does borrowing against bitcoin trigger the same tax?', a: 'In this educational overview, a loan is not the same event as a sale. Interest, liquidation risk and partner KYC still apply. Model the numbers in the live Loan & Liquidity Copilot.' },
+    { q: `Does selling Bitcoin trigger tax in these ${N} countries?`, a: `Usually yes, when you sell for money. Crypto-to-crypto swaps are taxed in some countries (Germany, Czechia, Spain) but not in others (Poland, France, Austria, Hungary). Exemptions differ: Germany 0% after a 1-year holding period; Czechia a 3-year time test; Poland none. As of ${asOfEn}. Not tax advice.` },
+    { q: 'Does borrowing against Bitcoin trigger the same tax?', a: 'In this educational overview, a loan is not the same event as a sale. Interest, liquidation risk and partner KYC still apply. Model the numbers in the live Loan & Liquidity Copilot.' },
     { q: 'What is liquidation risk?', a: 'If the value of your collateral falls to the partner’s threshold, the partner can sell the collateral to repay the loan. Virtuse never holds your keys or the collateral.' },
     { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the trade-off between tax and risk using only the published country tax rates.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${asOfEn}, selling bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period, or Spekulationsfrist; 16% in Romania from 2026).`,
-    'Borrowing against your bitcoin keeps your market exposure but adds interest and liquidation risk on a partner platform.',
+    `As of ${asOfEn}, selling Bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period, or Spekulationsfrist; 16% in Romania from 2026).`,
+    'Borrowing against your Bitcoin keeps your market exposure but adds interest and liquidation risk on a partner platform.',
     'Indicative 2026 overview, not tax or credit advice. Virtuse never holds your keys.'
   ], 'en');
   const rows = COUNTRIES.map((c) => [
@@ -1286,9 +1302,9 @@ ${faqHtml(faqs, 'FAQ')}
   ]);
   pushPage({
     relFile, lang: 'en',
-    title: assertTitle('Sell vs borrow bitcoin (EU tax 2026)'),
-    description: assertDescription(`Sell bitcoin and pay tax, or borrow against it and stay invested. Tax rates for ${N} EU countries as of ${asOfEn}. Not credit advice.`),
-    h1: 'Sell bitcoin vs borrow against it',
+    title: assertTitle('Sell vs borrow Bitcoin (EU tax 2026)'),
+    description: assertDescription(`Sell Bitcoin and pay tax, or borrow against it and stay invested. Tax rates for ${N} EU countries as of ${asOfEn}. Not credit advice.`),
+    h1: 'Sell Bitcoin vs borrow against it',
     answerHtml: esc(answer),
     breadcrumbs: [
       { name: 'Home', href: toRoot(relFile, 'index.html'), abs: abs('index.html') },
@@ -1305,7 +1321,7 @@ ${faqHtml(faqs, 'FAQ')}
       faqLd(faqs),
       {
         '@type': 'WebApplication',
-        name: 'Sell vs borrow bitcoin',
+        name: 'Sell vs borrow Bitcoin',
         url: abs(relFile),
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'All',
@@ -1314,7 +1330,7 @@ ${faqHtml(faqs, 'FAQ')}
     ],
     bodyHtml: `
 <h2>Tax if you sell</h2>
-<p>The rates below are the same as in the country tax guides (Tax module, ${esc(asOfEn)}). Selling shortly before a holding period ends can cost you an exemption you were about to qualify for.</p>
+<p>The rates below are the same as in the country tax guides (Tax &amp; Inheritance Agent, ${esc(asOfEn)}). Selling shortly before a holding period ends can cost you an exemption you were about to qualify for.</p>
 ${tableHtml(['Country', 'Gain tax', 'Exemption'], rows)}
 <h2>Risk if you borrow</h2>
 <p>Bitcoin-backed loans are offered by regulated partners, not by Virtuse. You keep your price exposure and pay interest, and your collateral can be liquidated. Virtuse never holds the collateral. The live Loan & Liquidity Copilot runs the scenarios; this page stays qualitative and quotes no interest rates.</p>
@@ -1391,19 +1407,19 @@ ${faqHtml(faqs, 'FAQ')}
   const deFile = 'de/bitcoin-erbrecht/index.html';
   const items = inheritance.items;
   const faqs = [
-    { q: 'Should a letter of instruction contain seed phrases?', a: 'No. The Tax module’s checklist says the letter lists inventory, locations and contacts – never seed phrases. Store it with your will or attorney.' },
+    { q: 'Should a letter of instruction contain seed phrases?', a: 'No. The Tax & Inheritance Agent’s checklist says the letter lists inventory, locations and contacts – never seed phrases. Store it with your will or attorney.' },
     { q: 'Why is 2-of-3 multisig on the checklist?', a: 'A single seed is a single point of failure for you and for your heirs. The module scores 2-of-3 with two keys held by you and one by a partner or attorney.' },
     { q: 'Does Virtuse custody keys for heirs?', a: 'No. Virtuse never holds your keys. Inheritance is handled by your attorney, your heirs and any vault partner you choose.' },
-    { q: 'How is the readiness score weighted?', a: 'The live Tax module assigns points (letter 20, separation 20, heir awareness 15, multisig 20, tested recovery 15, accounts 15). This page lists the same items without scoring them.' }
+    { q: 'How is the readiness score weighted?', a: 'The live Tax & Inheritance Agent assigns points (letter 20, separation 20, heir awareness 15, multisig 20, tested recovery 15, accounts 15). This page lists the same items without scoring them.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${asOfEn}, the Virtuse Tax module’s inheritance checklist has six items: letter of instruction, geographic key separation, heir awareness, 2-of-3 multisig, a recovery drill, and documented accounts.`,
+    `As of ${asOfEn}, the Tax & Inheritance Agent’s inheritance checklist has six items: letter of instruction, geographic key separation, heir awareness, 2-of-3 multisig, a recovery drill, and documented accounts.`,
     'A single seed is a single point of failure. Virtuse never holds your keys.',
     'Educational checklist, not legal advice.'
   ], 'en');
   const howto = {
     '@type': 'HowTo',
-    name: 'Prepare a bitcoin inheritance plan',
+    name: 'Prepare a Bitcoin inheritance plan',
     description: 'Six-step checklist from the Virtuse Tax & Inheritance Agent.',
     totalTime: 'P7D',
     step: items.map((it, i) => ({
@@ -1416,7 +1432,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Bitcoin inheritance checklist (2026)'),
-    description: assertDescription(`Six-step bitcoin inheritance checklist as of ${asOfEn}: letter of instruction, key separation, heir awareness, 2-of-3 multisig. Not legal advice.`),
+    description: assertDescription(`Six-step Bitcoin inheritance checklist as of ${asOfEn}: letter of instruction, key separation, heir awareness, 2-of-3 multisig. Not legal advice.`),
     h1: 'Bitcoin inheritance checklist',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1432,7 +1448,7 @@ ${faqHtml(faqs, 'FAQ')}
     moduleCta: { href: toRoot(relFile, TAX_AGENT), label: 'Score this checklist in the Tax Agent →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
-<p>The items and wording come from the live Tax module checklist. Educational only, not legal advice.</p>
+<p>The items and wording come from the live Tax &amp; Inheritance Agent checklist. Educational only, not legal advice.</p>
 <h2>Six checks</h2>
 <ol>
   ${items.map((it) => `<li><h3>${esc(it.question)}</h3><p>${esc(it.detail)}</p><p>${esc(it.action)}</p></li>`).join('')}
@@ -1709,7 +1725,7 @@ function pressBlurb() {
     inLanguage: 'en',
     author: { '@id': `${ORIGIN}/#org` },
     publisher: { '@id': `${ORIGIN}/#org` },
-    description: `EU bitcoin buy-route fee ranking as of ${feeAsOfEn}.`
+    description: `EU Bitcoin buy-route fee ranking as of ${feeAsOfEn}.`
   };
   const dataset = {
     '@type': 'Dataset',
@@ -1723,7 +1739,7 @@ function pressBlurb() {
   pushPage({
     relFile, lang: 'en',
     title: assertTitle('Bitcoin Fee Index (EU) Q4 2026'),
-    description: assertDescription(`EU bitcoin buy-route ranking as of ${feeAsOfEn}. Cheapest at €100/month: ${winner.partner} at ${formatPct(winner.pct)}. Spreads excluded.`),
+    description: assertDescription(`EU Bitcoin buy-route ranking as of ${feeAsOfEn}. Cheapest at €100/month: ${winner.partner} at ${formatPct(winner.pct)}. Spreads excluded.`),
     h1: 'Bitcoin Fee Index',
     answerHtml: esc(answer),
     breadcrumbs: [
