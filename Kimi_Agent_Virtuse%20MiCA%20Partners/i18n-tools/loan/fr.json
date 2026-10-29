@@ -1,7 +1,7 @@
 {
   "title": "Loan & Liquidity Copilot : vendre ou emprunter | Virtuse",
   "description": "Vendre ou prendre un prêt garanti par Bitcoin : impôt, intérêts, prix de liquidation et ce qui reste dans cinq scénarios de prix. Pas un conseil.",
-  "og_title": "Loan & Liquidity Copilot : vendre ou emprunter contre Bitcoin",
+  "og_title": "Loan & Liquidity Copilot : vendre ou emprunter avec du Bitcoin en garantie",
   "crumb_home": "Accueil",
   "crumb_page": "Loan & Liquidity Copilot",
   "eyebrow": "Loan & Liquidity Copilot",
@@ -15,7 +15,7 @@
   "s1_t": "Saisissez vos chiffres",
   "s1_p": "La somme dont vous avez besoin, le Bitcoin que vous détenez, les conditions du prêt et votre pays fiscal.",
   "s2_t": "Comparez les deux options",
-  "s2_p": "Vendre coûte de l'impôt tout de suite. Emprunter coûte des intérêts, et la garantie peut être liquidée si le prix baisse.",
+  "s2_p": "Vendre déclenche l'impôt tout de suite. Emprunter coûte des intérêts, et la garantie peut être liquidée si le prix baisse.",
   "s3_t": "Vérifiez les scénarios",
   "s3_p": "Cinq trajectoires de prix montrent ce qui reste de votre Bitcoin dans chaque cas. Les deux colonnes supposent que vous dépensez la somme.",
   "faq_h2_a": "Questions",

@@ -179,7 +179,8 @@ function healthRows(id, t, lang) {
 }
 /** "Checked 13 Oct 2026." for meta descriptions. */
 function checkedSentence(lang) {
-  const c = GUIDE[lang].checkedS || GUIDE[lang].checked; // es: agrees with "Datos"
+  // es: checkedS agrees with "Datos"; fr: a bare "Vérifiée le …" has no noun to agree with, so the standalone sentence names one
+  const c = lang === 'fr' ? 'informations vérifiées le' : (GUIDE[lang].checkedS || GUIDE[lang].checked);
   const d = formatChecked(CHECKED, lang);
   return `${c.charAt(0).toUpperCase()}${c.slice(1)} ${d}${d.endsWith('.') ? '' : '.'}`;
 }
@@ -807,7 +808,7 @@ const GUIDE_TOOLS = {
   uk: { h: 'Пов’язані інструменти', tax: 'Податкові правила за країною та перевірка готовності до спадщини.', loanP: 'Продаж чи позика під заставу Біткоїна.', pfP: 'Партнери, які відповідають вашим критеріям.', buyT: 'Купити Біткоїн', buyP: 'Партнери для купівлі та їхні комісії поруч.' },
   ru: { h: 'Связанные инструменты', tax: 'Налоговые правила по странам и проверка готовности к наследованию.', loanP: 'Продажа или заём под залог Биткоина.', pfP: 'Партнёры, которые подходят под ваши критерии.', buyT: 'Купить Биткоин', buyP: 'Партнёры для покупки и их комиссии рядом.' },
   de: { h: 'Verwandte Tools', tax: 'Steuerregeln je Land und ein Check zur Nachlassplanung.', loanP: 'Verkaufen oder einen Kredit gegen Bitcoin aufnehmen.', pfP: 'Partner, die zu Ihren Kriterien passen.', buyT: 'Bitcoin kaufen', buyP: 'Kaufpartner und ihre Gebühren direkt nebeneinander.' },
-  fr: { h: 'Outils associés', tax: 'Les règles fiscales par pays et un contrôle de préparation successorale.', loanP: 'Vendre ou emprunter en garantie de votre Bitcoin.', pfP: 'Les partenaires adaptés à vos critères.', buyT: 'Acheter du Bitcoin', buyP: 'Les partenaires d\'achat et leurs frais, côte à côte.' },
+  fr: { h: 'Outils associés', tax: 'Les règles fiscales par pays et un contrôle de préparation successorale.', loanP: 'Vendre ou emprunter avec votre Bitcoin en garantie.', pfP: 'Les partenaires adaptés à vos critères.', buyT: 'Acheter du Bitcoin', buyP: 'Les partenaires d\'achat et leurs frais, côte à côte.' },
   es: { h: 'Herramientas relacionadas', tax: 'Normas fiscales por país y una revisión de la preparación sucesoria.', loanP: 'Vender o pedir prestado con Bitcoin como garantía.', pfP: 'Partners que encajan con sus criterios.', buyT: 'Comprar Bitcoin', buyP: 'Partners de compra y sus comisiones, uno junto a otro.' },
   pl: { h: 'Powiązane narzędzia', tax: 'Zasady podatkowe według kraju i sprawdzenie gotowości spadkowej.', loanP: 'Sprzedaż a pożyczka pod zastaw Bitcoina.', pfP: 'Partnerzy pasujący do kryteriów.', buyT: 'Kup Bitcoin', buyP: 'Partnerzy do zakupu i ich opłaty obok siebie.' },
   hu: { h: 'Kapcsolódó eszközök', tax: 'Adószabályok országonként és öröklési felkészültségi ellenőrzés.', loanP: 'Eladás vagy hitelfelvétel Bitcoin fedezetére.', pfP: 'Az Ön szempontjaihoz illő partnerek.', buyT: 'Bitcoin-vásárlás', buyP: 'Vásárlási partnerek és díjaik egymás mellett.' }
@@ -4157,7 +4158,7 @@ for (const c of COUNTRIES) {
     { q: `Quel est l'impôt sur le Bitcoin ${inN} ?`, a: `Situation au ${asOfFr} : ${lcFr(gainFull(t))}. ${checkedSentence('fr')} ${GUIDE.fr.notAdvice}.` },
     { q: `Existe-t-il ${inN} une exonération liée à la durée de détention ?`, a: `${t.exemption}. Avant de déclarer, vérifiez les règles de l'année en cours auprès d'un conseiller fiscal local.` },
     { q: `Comment déclarer ses plus-values en Bitcoin ${inN} ?`, a: `${t.filing}. ${t.note}` },
-    { q: 'Virtuse détient-il mes bitcoins ou dépose-t-il ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent présente l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
+    { q: 'Virtuse détient-elle mes bitcoins ou dépose-t-elle ma déclaration ?', a: `Non. Virtuse ne détient jamais vos clés. Le KYC et l'inscription se font chez le partenaire. Le Tax Agent présente l'aperçu des ${N} pays ; la déclaration est préparée par un conseiller fiscal qualifié.` }
   ];
   const answer = finalizeAnswer([
     `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(gainFull(t))}.`,
@@ -4213,7 +4214,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const faqs = [
     { q: 'Ce calculateur prévoit-il le cours du Bitcoin ?', a: "Non. Il compare uniquement les frais des partenaires selon le barème publié. Le rendement lié au cours du Bitcoin n'est pas modélisé." },
     { q: 'Quel plan type est utilisé ?', a: `Un versement initial de 500 €, puis 100 € par mois pendant 12 mois, situation au ${feeAsOfFr}. Le classement repose sur les frais de la première année.` },
-    { q: 'Quelle voie a les frais publiés les plus bas pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist. Coût total le plus bas, spread compris, dans le Bitcoin Fee Index : ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) à 100 € par mois.` },
+    { q: 'Quelle voie a les frais publiés les plus bas pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist. Coût total le plus bas, spread compris, dans l'Indice des frais Bitcoin : ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) à 100 € par mois.` },
     { q: 'Est-ce un conseil en investissement ?', a: 'Non. À des fins éducatives uniquement. Le KYC se fait chez le partenaire. Virtuse ne détient jamais vos clés.' }
   ];
   const answer = finalizeAnswer([
@@ -4322,7 +4323,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const faqs = [
     { q: "La lettre d'instructions peut-elle contenir la phrase de récupération ?", a: "Non. La lettre contient l'inventaire, les emplacements et les contacts, jamais de phrase de récupération. Conservez-la avec votre testament ou chez votre avocat." },
     { q: 'Pourquoi un multisig 2 sur 3 ?', a: 'Une seule phrase de récupération est un point de défaillance unique, pour vous comme pour vos héritiers.' },
-    { q: 'Virtuse détient-il des clés pour les héritiers ?', a: 'Non. Virtuse ne détient jamais vos clés.' },
+    { q: 'Virtuse détient-elle des clés pour les héritiers ?', a: 'Non. Virtuse ne détient jamais vos clés.' },
     { q: 'Est-ce un conseil juridique ?', a: `Non. C'est une check-list à but éducatif issue du module Tax, situation au ${asOfFr}.` }
   ];
   const answer = finalizeAnswer([

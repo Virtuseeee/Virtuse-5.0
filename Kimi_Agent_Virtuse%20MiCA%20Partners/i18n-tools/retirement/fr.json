@@ -26,7 +26,7 @@
   "a2": "Les avoirs minimaux dont vous auriez besoin aujourd'hui pour partir à la retraite à l'âge choisi sans épargner davantage, avec les mêmes hypothèses de croissance et d'inflation.",
   "q3": "Les impôts sont-ils inclus ?",
   "a3": "Non. La vente de Bitcoin peut être imposable dans votre pays. Les guides fiscaux Bitcoin expliquent les règles de 13 pays de l'UE.",
-  "q4": "Virtuse détient-il mon Bitcoin ?",
+  "q4": "Virtuse détient-elle mon Bitcoin ?",
   "a4": "Non. Le simulateur fonctionne dans votre navigateur et n'enregistre rien. Virtuse ne détient jamais vos clés ni vos fonds.",
   "rel_h2_a": "Outils",
   "rel_h2_b": "associés",

@@ -171,7 +171,7 @@
         },
         {
           "q": "Pourquoi l'offre est-elle limitée à 21 millions ?",
-          "a": "La limite est inscrite dans le logiciel qu'utilise chaque nœud. Les nouveaux bitcoins sont versés aux mineurs selon un calendrier fixe qui est divisé par deux environ tous les quatre ans : l'émission tend donc vers zéro et le total ne dépasse jamais 21 millions."
+          "a": "La limite est inscrite dans le logiciel qu'utilise chaque nœud. Les nouveaux bitcoins sont versés aux mineurs selon un calendrier fixe, et la récompense est divisée par deux environ tous les quatre ans : l'émission tend donc vers zéro et le total ne dépasse jamais 21 millions."
         },
         {
           "q": "Le Bitcoin est-il légal en Europe ?",

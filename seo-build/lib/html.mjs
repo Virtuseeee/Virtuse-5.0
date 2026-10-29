@@ -487,7 +487,7 @@ export const CHROME = {
     asOfPrefix: 'Données au',
     disclaimerTax: 'Aperçu indicatif 2026 – pas un conseil fiscal.',
     disclaimerKeys: 'Virtuse ne détient jamais vos clés.',
-    disclaimerKyc: 'Le KYC et l’inscription se font sur la plateforme régulée de chaque partenaire. Virtuse est un hub non custodial et ne détient ni les fonds ni les données clients de ces plateformes.',
+    disclaimerKyc: 'Le KYC et l’inscription se font sur la plateforme régulée de chaque partenaire. Virtuse est un hub non dépositaire et ne détient ni les fonds ni les données clients de ces plateformes.',
     privacy: 'Politique de confidentialité',
     terms: 'CGU',
     locale: 'fr_FR',
