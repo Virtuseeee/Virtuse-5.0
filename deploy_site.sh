@@ -133,7 +133,15 @@ md5_check() {  # $1 list, $2 out-file, $3 base url, $4 extra curl args
 
 # ---- 2/5 main ----
 echo "== 2/5 push main"
-git push origin HEAD:main || fail "push to main failed, nothing uploaded"
+if ! git push origin HEAD:main; then
+  # Another session may have pushed while the password was typed. That is fine when
+  # our HEAD is already on origin/main and the newer commits touch no site file:
+  # the upload below is built from FROM..TO, which those commits do not change.
+  git fetch -q origin || fail "git fetch failed, nothing uploaded"
+  git merge-base --is-ancestor HEAD origin/main || fail "push to main failed and HEAD is not on origin/main, nothing uploaded"
+  [ -z "$(git diff --name-only HEAD origin/main -- "$SITE")" ] || fail "origin/main got newer site changes during this deploy, nothing uploaded. Merge them and re-run."
+  echo "   push not needed: HEAD is already on origin/main; the newer commits there touch no site files"
+fi
 
 # ---- 3/5 staging ----
 echo "== 3/5 staging (gh-pages)"
