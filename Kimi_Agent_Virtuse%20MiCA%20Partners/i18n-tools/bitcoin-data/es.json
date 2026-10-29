@@ -48,7 +48,7 @@
  "n_fee_min": "Relay mínimo",
  "fees_equal": "Comisiones: {n} sat/vB en todas las prioridades",
  "n_links": "Relacionado:",
- "n_link_mining": "Socios de minería",
+ "n_link_mining": "Partners de minería",
  "n_link_fees": "Índice de comisiones de Bitcoin",
  "s_h2_a": "Suministro y halving.",
  "s_h2_b": "21 millones, con un calendario fijo.",

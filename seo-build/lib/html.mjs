@@ -24,6 +24,7 @@ export const CF_SNIPPET = `<!-- Cloudflare Web Analytics --><script>(function(d)
 const OPERATOR = JSON.parse(fs.readFileSync(new URL('../data/footer-operator.json', import.meta.url), 'utf8'));
 
 // Partner-link note (legal pack chapter 9.2), placed directly after every block that holds referral links.
+const CRUMBS_LABEL = { es: 'Ruta de navegación' };
 export const AFF_NOTE = {
   en: ['Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.', 'How we earn'],
   sk: ['Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.', 'Ako zarábame'],
@@ -31,7 +32,7 @@ export const AFF_NOTE = {
   pl: ['Link partnerski – jeśli się Państwo zarejestrują, Virtuse może otrzymać prowizję. Państwa cena się przez to nie zmienia.', 'Jak zarabiamy'],
   de: ['Partnerlink – wenn Sie sich registrieren, kann Virtuse eine Provision erhalten. Ihr Preis ändert sich dadurch nicht.', 'Wie wir verdienen'],
   fr: ['Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas.', 'Comment nous gagnons de l’argent'],
-  es: ['Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.', 'Cómo ganamos dinero'],
+  es: ['Enlace de partner: si se registra, Virtuse puede recibir una comisión. Su precio no cambia.', 'Cómo ganamos dinero'],
   hu: ['Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.', 'Hogyan szerzünk bevételt'],
   uk: ['Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється.', 'Як ми заробляємо'],
   ru: ['Партнёрская ссылка – если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется.', 'Как мы зарабатываем']
@@ -263,7 +264,7 @@ ${nav}
 
 <main class="wrap${accent ? ` acc acc-${accent}` : ''}" id="top">
 <article class="seo">
-  <nav class="crumbs" aria-label="Breadcrumb">${crumbHtml}</nav>
+  <nav class="crumbs" aria-label="${esc(CRUMBS_LABEL[lang] || 'Breadcrumb')}">${crumbHtml}</nav>
   <p class="asof">${esc(chrome.asOfPrefix)} ${esc(asOfLabel)}</p>
   <h1>${esc(h1)}</h1>
 ${updated ? `  <p class="asof updated">${esc(updated.label)} <time datetime="${esc(updated.iso)}">${esc(updated.text)}</time></p>

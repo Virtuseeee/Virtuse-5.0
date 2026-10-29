@@ -61,7 +61,7 @@
     "pickSub": "Tres reglas para cada entrada.",
     "relatedSub": "Más de Virtuse.",
     "listH": "Nuestras recomendaciones.",
-    "listSub": "Cada una con una valoración de una línea.",
+    "listSub": "Cada entrada con una valoración de una línea.",
     "faqSub": "Respuestas breves.",
     "onThisPage": "En esta página"
   },
@@ -133,7 +133,7 @@
         "Por qué Bitcoin no es un esquema Ponzi",
         "23 razones para tener Bitcoin",
         "Cinco formas de entender Bitcoin",
-        "Comprar Bitcoin: compare socios",
+        "Comprar Bitcoin: compare partners",
         "Custodia: mantenga su Bitcoin a salvo"
       ],
       "primer": [
@@ -162,7 +162,7 @@
         "<ul><li><strong>Volatilidad.</strong> El precio puede caer a la mitad en meses. Mantenga solo lo que pueda conservar durante grandes oscilaciones.</li><li><strong>Irreversibilidad.</strong> Las transacciones enviadas no se pueden revertir, y una clave perdida suele significar monedas perdidas.</li><li><strong>Estafas.</strong> Nadie legítimo le pedirá su frase de recuperación, le prometerá rentabilidades garantizadas ni le meterá prisa. Tenga especial cuidado con las ofertas \"cripto\" que no son Bitcoin.</li><li><strong>Impuestos y normas.</strong> Las ganancias tributan en la mayoría de los países europeos, y los proveedores deben cumplir MiCA y las normas contra el blanqueo de capitales. Consulte nuestras <a href=\"/bitcoin-tax/\">guías fiscales por país</a>.</li></ul>",
         "<h2>Bitcoin en Europa</h2>",
         "<p>Desde la entrada en vigor del Reglamento de la UE relativo a los mercados de criptoactivos (MiCA), las empresas que prestan servicios de criptoactivos en la UE necesitan una autorización de un regulador nacional y deben cumplir las normas contra el blanqueo de capitales, incluida la verificación de identidad. Desde 2026, la directiva DAC8 obliga además a estos proveedores a comunicar las transacciones de sus clientes a las autoridades fiscales. Mantener bitcoin en autocustodia es legal en toda la UE, pero el tratamiento fiscal varía mucho: algunos países eximen las tenencias a largo plazo y otros gravan cada venta o permuta. Compruebe las normas de su país antes de vender o gastar.</p>",
-        "<p>Cuando esté preparado para comprar, compare socios regulados en nuestra <a href=\"/buy-bitcoin.html\">página Comprar Bitcoin</a>. Esta página es educativa y no constituye asesoramiento de inversión.</p>"
+        "<p>Cuando esté preparado para comprar, compare partners regulados en nuestra <a href=\"/buy-bitcoin.html\">página Comprar Bitcoin</a>. Esta página es educativa y no constituye asesoramiento de inversión.</p>"
       ],
       "faq": [
         {
@@ -279,7 +279,7 @@
       "title": "Privacidad en Bitcoin: herramientas y guías | Virtuse",
       "description": "Herramientas y guías para proteger su privacidad como bitcoiner en Europa, desde la privacidad en la red hasta la reutilización de direcciones.",
       "intro": "La privacidad le protege frente a robos, perfilados y estafas dirigidas. Estas herramientas y guías le ayudan a mantener privada su actividad con Bitcoin y su navegación diaria, dentro de la ley.",
-      "legalNote": "Esta página trata sobre la privacidad lícita: mantener su información personal y financiera a salvo de delincuentes, intermediarios de datos y exposiciones innecesarias. No ayuda a nadie a eludir las normas contra el blanqueo de capitales, las sanciones ni las obligaciones fiscales. Consulte nuestra <a href=\"/aml-compliance.html\">página de AML y cumplimiento</a>. ¿Quiere saber cómo trata Virtuse sus datos? Eso es nuestra <a href=\"/privacy-policy.html\">política de privacidad</a>.",
+      "legalNote": "Esta página trata sobre la privacidad lícita: mantener su información personal y financiera a salvo de delincuentes, intermediarios de datos y exposiciones innecesarias. No ayuda a nadie a eludir las normas contra el blanqueo de capitales, las sanciones ni las obligaciones fiscales. Consulte nuestra <a href=\"/aml-compliance.html\">página de AML y cumplimiento</a>. ¿Quiere saber cómo trata Virtuse sus datos? Para eso está nuestra <a href=\"/privacy-policy.html\">política de privacidad</a>.",
       "related": [
         "Custodia: mantenga su Bitcoin a salvo",
         "Herramientas para desarrolladores de Bitcoin",
@@ -335,7 +335,7 @@
       "h1": "Empleo en Bitcoin",
       "title": "Empleo en Bitcoin en Europa: empresas solo Bitcoin | Virtuse",
       "description": "Dónde encontrar empleo en empresas solo Bitcoin en Europa y en remoto, desde ingeniería hasta marketing y atención al cliente.",
-      "intro": "Dónde encontrar trabajo en Bitcoin: bolsas de empleo de empresas solo Bitcoin, además de becas, programas de formación y fellowships para desarrolladores. No publicamos ofertas de empleo; cada enlace lleva a la fuente original.",
+      "intro": "Dónde encontrar trabajo en Bitcoin: bolsas de empleo de empresas solo Bitcoin, además de subvenciones, becas y programas de formación para desarrolladores. No publicamos ofertas de empleo; cada enlace lleva a la fuente original.",
       "related": [
         "Herramientas para desarrolladores de Bitcoin",
         "Conferencias de Bitcoin en Europa",
@@ -349,10 +349,10 @@
       "h1": "Proyectos afines",
       "title": "Proyectos afines: iniciativas solo Bitcoin | Virtuse",
       "description": "Proyectos, directorios y divulgadores independientes y solo Bitcoin que respetamos y recomendamos. Sin fines comerciales, seleccionados a mano.",
-      "intro": "Proyectos independientes, sin fines comerciales y solo Bitcoin que respetamos: directorios, divulgadores y comunidades que comparten nuestra visión de que Bitcoin es suficiente. Los socios comerciales no aparecen aquí; solo figuran en Partner Finder.",
-      "partnerNote": "¿Busca socios regulados para comprar, guardar o pedir prestado? Use <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Finder</a>.",
+      "intro": "Proyectos independientes, sin fines comerciales y solo Bitcoin que respetamos: directorios, divulgadores y comunidades que comparten nuestra visión de que Bitcoin es suficiente. Los partners comerciales no aparecen aquí; solo figuran en Partner Finder.",
+      "partnerNote": "¿Busca partners regulados para comprar, guardar o pedir prestado? Use <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Finder</a>.",
       "related": [
-        "¿Busca socios regulados? Use Partner Finder",
+        "¿Busca partners regulados? Use Partner Finder",
         "Haga que su proyecto aparezca",
         "Conferencias de Bitcoin en Europa"
       ],

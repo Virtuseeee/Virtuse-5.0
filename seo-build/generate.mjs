@@ -153,7 +153,7 @@ const GUIDE = {
   uk: { src: 'Джерело', checked: 'перевірено', line: 'Станом на {a}, перевірено {d}. Це не податкова консультація.', notAdvice: 'Це не податкова консультація', pad: 'Дані взято з офіційних джерел, посилання на які є на сторінках країн.', intro: 'Дані станом на {a} взято з офіційних джерел, наведених у таблиці; перевірено {d}.', hubSrc: 'Ставки, звільнення і примітки щодо декларування взято з офіційних джерел, посилання на які є на сторінці кожної країни.', hubFaq: 'Станом на {a}; сторінка кожної країни містить посилання на офіційні джерела (перевірено {d}).' },
   ru: { src: 'Источник', checked: 'проверено', line: 'По состоянию на {a}, проверено {d}. Это не налоговая консультация.', notAdvice: 'Это не налоговая консультация', pad: 'Данные взяты из официальных источников, ссылки на которые есть на страницах стран.', intro: 'Данные по состоянию на {a} взяты из официальных источников, указанных в таблице; проверено {d}.', hubSrc: 'Ставки, освобождения и примечания по декларированию взяты из официальных источников, ссылки на которые есть на странице каждой страны.', hubFaq: 'По состоянию на {a}; на странице каждой страны есть ссылки на официальные источники (проверено {d}).' },
   fr: { src: 'Source', checked: 'vérifiée le', line: 'Situation au {a}, vérifiée le {d}. Pas un conseil fiscal.', notAdvice: 'Pas un conseil fiscal', pad: 'Les données proviennent des sources officielles citées sur les pages pays.', intro: 'Données au {a}, issues des sources officielles citées dans le tableau, vérifiées le {d}.', hubSrc: 'Les taux, exonérations et notes de déclaration proviennent de sources officielles, citées sur chaque page pays.', hubFaq: 'Situation au {a} ; chaque page pays cite ses sources officielles (vérifiées le {d}).' },
-  es: { src: 'Fuente', checked: 'comprobada el', line: 'Datos del {a}, comprobados el {d}. No es asesoramiento fiscal.', notAdvice: 'No es asesoramiento fiscal', pad: 'Los datos proceden de las fuentes oficiales enlazadas en la página de cada país.', intro: 'Datos del {a}, tomados de las fuentes oficiales enlazadas en la tabla, comprobados el {d}.', hubSrc: 'Los tipos, las exenciones y las notas sobre la declaración proceden de fuentes oficiales, enlazadas en la página de cada país.', hubFaq: 'Datos del {a}; la página de cada país enlaza sus fuentes oficiales (comprobados el {d}).' }
+  es: { src: 'Fuente', checked: 'comprobada el', checkedS: 'comprobados el', line: 'Datos del {a}, comprobados el {d}. No es asesoramiento fiscal.', notAdvice: 'No es asesoramiento fiscal', pad: 'Los datos proceden de las fuentes oficiales enlazadas en la página de cada país.', intro: 'Datos del {a}, tomados de las fuentes oficiales enlazadas en la tabla, comprobados el {d}.', hubSrc: 'Los tipos, las exenciones y las notas sobre la declaración proceden de fuentes oficiales, enlazadas en la página de cada país.', hubFaq: 'Datos del {a}; la página de cada país enlaza sus fuentes oficiales (comprobadas el {d}).' }
 };
 function gfill(t, lang) { return t.replace('{a}', asOfByLang(lang)).replace('{d}', formatChecked(CHECKED, lang)); }
 /** "As of Q3 2026, checked 13 Oct 2026. Not tax advice." in the page language. */
@@ -179,7 +179,7 @@ function healthRows(id, t, lang) {
 }
 /** "Checked 13 Oct 2026." for meta descriptions. */
 function checkedSentence(lang) {
-  const c = GUIDE[lang].checked;
+  const c = GUIDE[lang].checkedS || GUIDE[lang].checked; // es: agrees with "Datos"
   const d = formatChecked(CHECKED, lang);
   return `${c.charAt(0).toUpperCase()}${c.slice(1)} ${d}${d.endsWith('.') ? '' : '.'}`;
 }
@@ -4543,7 +4543,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const faqs = [
     { q: '¿Predice esta calculadora el precio de Bitcoin?', a: 'No. Solo compara las comisiones de los partners según el baremo publicado. No modela la rentabilidad del precio de Bitcoin.' },
     { q: '¿Qué plan tipo se usa?', a: `Una aportación inicial de 500 € y después 100 € al mes durante 12 meses, con datos del ${feeAsOfEs}. La clasificación se basa en las comisiones del primer año.` },
-    { q: '¿Qué vía tiene la comisión publicada más baja en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist. Coste total más bajo con spread incluido en el Bitcoin Fee Index: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) con 100 € al mes.` },
+    { q: '¿Qué vía tiene la comisión publicada más baja en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist. Coste total más bajo con spread incluido en el Índice de comisiones de Bitcoin: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) con 100 € al mes.` },
     { q: '¿Es asesoramiento de inversión?', a: 'No. Solo con fines educativos. El KYC se realiza con el partner. Virtuse nunca guarda sus claves.' }
   ];
   const answer = finalizeAnswer([
@@ -4595,7 +4595,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender a cambio de dinero. Los intercambios cripto por cripto tributan en algunos países (Alemania, República Checa, España) y en otros no (Polonia, Francia, Austria, Hungría). Las exenciones varían: Alemania, 0 % tras 1 año de tenencia; la República Checa, prueba temporal de 3 años; Polonia, sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
+    { q: `¿Genera impuestos la venta en estos ${N} países?`, a: `Por lo general sí, al vender a cambio de dinero. Los intercambios cripto por cripto tributan en algunos países (Alemania, República Checa, España) y en otros no (Polonia, Francia, Austria, Hungría). Las exenciones varían: Alemania, 0 % tras 1 año de tenencia; la República Checa, plazo de tenencia de 3 años; Polonia, sin exención. Datos del ${asOfEs}. No es asesoramiento fiscal.` },
     { q: '¿Es un préstamo el mismo hecho imponible que una venta?', a: 'En este resumen, no. Pero hay intereses, riesgo de liquidación y KYC con el partner. El Loan & Liquidity Copilot calcula las cifras concretas.' },
     { q: '¿Qué es el riesgo de liquidación?', a: 'Si el valor de la garantía cae hasta el umbral del partner, este puede vender la garantía para devolver el préstamo. Virtuse nunca guarda sus claves ni la garantía.' },
     { q: '¿Dónde calculo un importe concreto?', a: 'En el módulo Loan & Liquidity Copilot. Esta página solo explica la diferencia entre impuesto y riesgo a partir de los tipos publicados.' }

@@ -231,7 +231,7 @@ CC = {
  'cs': "Česko, Slovensko, Polsko, Rakousko, Německo, Maďarsko, Slovinsko, Chorvatsko, Rumunsko, Bulharsko, Nizozemsko, Francie a Španělsko",
  'de': "Tschechien, Slowakei, Polen, Österreich, Deutschland, Ungarn, Slowenien, Kroatien, Rumänien, Bulgarien, Niederlande, Frankreich und Spanien",
  'fr': "Tchéquie, Slovaquie, Pologne, Autriche, Allemagne, Hongrie, Slovénie, Croatie, Roumanie, Bulgarie, Pays-Bas, France et Espagne",
- 'es': "Chequia, Eslovaquia, Polonia, Austria, Alemania, Hungría, Eslovenia, Croacia, Rumanía, Bulgaria, Países Bajos, Francia y España",
+ 'es': "República Checa, Eslovaquia, Polonia, Austria, Alemania, Hungría, Eslovenia, Croacia, Rumanía, Bulgaria, Países Bajos, Francia y España",
  'pl': "Czechy, Słowacja, Polska, Austria, Niemcy, Węgry, Słowenia, Chorwacja, Rumunia, Bułgaria, Holandia, Francja i Hiszpania",
  'hu': "Csehország, Szlovákia, Lengyelország, Ausztria, Németország, Magyarország, Szlovénia, Horvátország, Románia, Bulgária, Hollandia, Franciaország és Spanyolország",
  'uk': "Чехія, Словаччина, Польща, Австрія, Німеччина, Угорщина, Словенія, Хорватія, Румунія, Болгарія, Нідерланди, Франція та Іспанія",

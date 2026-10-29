@@ -1,6 +1,6 @@
 {
   "title": "Índice de comisiones de Bitcoin (UE): coste total de compra",
-  "description": "Vías de compra de Bitcoin autorizadas en la UE por coste total (comisión más spread estimado), compra mensual. Comisiones revisadas el {date}.",
+  "description": "Vías de compra de Bitcoin autorizadas en la UE, ordenadas por el coste total de una compra mensual (comisión más spread estimado). Revisión: {date}.",
   "og_title": "Índice de comisiones de Bitcoin: lo que cuesta comprar",
   "og_alt": "Índice de comisiones de Bitcoin de Virtuse",
   "crumb_home": "Inicio",
@@ -49,7 +49,7 @@
   "q4": "¿Con qué frecuencia se revisan las cifras?",
   "a4": "Revisamos las páginas de comisiones y medimos los spreads cada trimestre, y siempre que un partner cambia sus precios. La fecha de arriba indica la última revisión.",
   "press_sum": "Para periodistas y sitios web",
-  "press_intro": "Puede citar e insertar el índice indicando la fuente: \"Fuente: Índice de comisiones de Bitcoin de Virtuse, comisiones revisadas el {date}\" y un enlace a esta página.",
+  "press_intro": "Puede citar e insertar el índice indicando la fuente: «Fuente: Índice de comisiones de Bitcoin de Virtuse, comisiones revisadas el {date}» y un enlace a esta página.",
   "press_blurb_h": "Texto para prensa",
   "press_blurb": "Índice de comisiones de Bitcoin de Virtuse (comisiones revisadas el {date}): con {amount} al mes, {w} tiene el coste total más bajo entre las vías de compra de Bitcoin autorizadas en la UE incluidas ({wt}, comisión publicada más spread estimado). No se incluyen comisiones de red, de retirada ni de cambio de divisa. Fuente: https://virtuse.com/bitcoin-fee-index/",
   "embed_h": "Código para insertar",
@@ -75,8 +75,8 @@
   "rel_pf_p": "Partners que encajan con sus criterios.",
   "disclaimer": "No es asesoramiento de inversión. Virtuse nunca custodia sus claves ni sus fondos. El KYC y el registro se realizan en la plataforma regulada de cada partner.",
   "sp_pending": "En medición",
-  "spread_note_21_pending": "21bitcoin no tiene un libro de órdenes público. Medimos su spread con los precios de la aplicación; hasta entonces, 21bitcoin aparece sin posición en la clasificación.",
+  "spread_note_21_pending": "21bitcoin no tiene un libro de órdenes público. Estamos midiendo su spread con los precios de la aplicación; hasta entonces, 21bitcoin aparece sin posición en la clasificación.",
   "kraken_instant": "La compra instantánea (Instant Buy) en la app de Kraken es otra vía de compra: comisión del 1 % más un spread.",
-  "aff_note": "Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
+  "aff_note": "Enlace de partner: si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
   "aff_how": "Cómo ganamos dinero"
 }

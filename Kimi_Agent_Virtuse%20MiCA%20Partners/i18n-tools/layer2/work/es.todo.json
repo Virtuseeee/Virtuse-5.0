@@ -97,7 +97,7 @@
  },
  {
   "en": "Virtuse may earn a referral fee. It doesn't change the results.",
-  "tr": "Virtuse puede recibir una comisión por recomendación. Eso no cambia los resultados."
+  "tr": "Virtuse puede recibir una comisión por referido. Eso no cambia los resultados."
  },
  {
   "en": "Adjust answers",
@@ -125,7 +125,7 @@
  },
  {
   "en": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
-  "tr": "Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia."
+  "tr": "Enlace de partner: si se registra, Virtuse puede recibir una comisión. Su precio no cambia."
  },
  {
   "en": "How we earn",
@@ -853,7 +853,7 @@
  },
  {
   "en": "Auto-Invest plan: 0% fees from day 8 (0.99%, or 0.79% with a referral code, for the first 7 days)",
-  "tr": "Plan Auto-Invest: 0 % de comisiones a partir del día 8 (0,99 %, o 0,79 % con un código de recomendación, los primeros 7 días)"
+  "tr": "Plan Auto-Invest: 0 % de comisiones a partir del día 8 (0,99 %, o 0,79 % con un código de referido, los primeros 7 días)"
  },
  {
   "en": "Spot: 0.25% fee",
@@ -1545,7 +1545,7 @@
  },
  {
   "en": "Virtuse may earn a referral fee. It doesn't change the overview.",
-  "tr": "Virtuse puede recibir una comisión por recomendación. Eso no cambia el resumen."
+  "tr": "Virtuse puede recibir una comisión por referido. Eso no cambia el resumen."
  },
  {
   "en": "Gain tax",

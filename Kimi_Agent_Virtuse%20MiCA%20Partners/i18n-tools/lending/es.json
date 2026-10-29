@@ -23,7 +23,7 @@
  "fine_risk": "Los préstamos los concede Firefish bajo su propia licencia o registro. No es asesoramiento de inversión. Si el precio de Bitcoin cae, es posible que deba aportar más garantía o que la garantía se liquide.",
  "talk": "¿Prefiere hablar?",
  "call": "Reservar una llamada gratuita de 15 minutos",
- "t_funded": "Depósito multi-sig en cadena",
+ "t_funded": "Depósito multifirma on-chain",
  "t_investors": "Prestatarios conectados con inversores",
  "t_esma": "Registrada en el Registro MiCA de la ESMA",
  "t_btc": "Solo Bitcoin",
@@ -68,6 +68,6 @@
  "b_btn": "Recibir el Brief",
  "b_fine": "Puede darse de baja cuando quiera. No es asesoramiento.",
  "b_img_alt": "Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026",
- "aff_note": "Enlace de socio – si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
+ "aff_note": "Enlace de partner: si se registra, Virtuse puede recibir una comisión. Su precio no cambia.",
  "aff_how": "Cómo ganamos dinero"
 }

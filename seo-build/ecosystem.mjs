@@ -194,7 +194,9 @@ function confDates(e, l) {
   const f = new Intl.DateTimeFormat(LOCALE[l], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   return f.formatRange(new Date(e.start + 'T12:00:00Z'), new Date(e.end + 'T12:00:00Z'));
 }
-const countryName = (cc, l) => new Intl.DisplayNames([LOCALE[l]], { type: 'region' }).of(cc);
+// Intl gives 'Chequia' for es; the site's Spanish form is 'República Checa'.
+const COUNTRY_OVERRIDE = { es: { CZ: 'República Checa' } };
+const countryName = (cc, l) => (COUNTRY_OVERRIDE[l] && COUNTRY_OVERRIDE[l][cc]) || new Intl.DisplayNames([LOCALE[l]], { type: 'region' }).of(cc);
 const city = (c, l) => S[l].ui.cities[c] || c;
 
 // Conferences: the Treasury comparison table (rounded panel, mono column headers, outlined buttons).
@@ -604,7 +606,7 @@ ${nav}
 
 <main class="wrap eco-acc-${p.accent}" id="top">
   <div class="buy-hero2 eco-hero">
-    <nav class="eco-crumbs" aria-label="Breadcrumb">${crumbs}</nav>
+    <nav class="eco-crumbs" aria-label="${l === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}">${crumbs}</nav>
     ${eyebrow(p, l)}
     <h1>${heroH1(t)}</h1>
     <p class="sp-lead">${esc(t.intro)}</p>
